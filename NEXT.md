@@ -1,30 +1,44 @@
 # NEXT.md — content-wiki-documentation
 
 > **Scope: this repo only.** Cross-repo and workspace-level open
-> items live at `~/Foundry/NEXT.md`.
+> items live at `~/Foundry/NEXT.md`. Per-file defects and rolling
+> cleanup decisions live at `.claude/rules/cleanup-log.md`; this
+> file holds the higher-level work items.
 >
 > Read at session start when a Root Claude opens in this repo. Update
 > at session end when repo-scope open items change.
 
-Last updated: 2026-04-22.
+Last updated: 2026-04-23.
 
 ---
 
 ## Currently open
 
-- **Repo-level `CLAUDE.md` missing.** Create a repo-level `CLAUDE.md`
-  defining this repo's scope (engineering documentation wiki for the
-  PointSav platform — holds `sys-adr-*.yaml` ADRs,
-  `service-*-01.yaml` service specs, glossary, and platform
-  reference material). Flat content repo — no project registry
-  applies (per framework §8).
-- **Content-specific open items** — not yet inventoried. A first pass
-  by a Root Claude in this repo should identify which ADRs, service
-  specs, or topic files need updates given the 2026-04-22 taxonomy
-  expansion and cleanup-log entries.
+- **Content normalisation to contract-conforming layout.**
+  Execute the migration described in `cleanup-log.md`: add
+  `index.md` at repo root, create category directories
+  (`architecture/`, `services/`, `governance/`, others tbd), move
+  and rename existing topic files, classify structured-record YAML
+  files, write category `_index.md` pages, rewrite cross-references
+  to `[[slug]]` wikilinks. Sequencing candidate: one category at a
+  time, beginning with `architecture/` (already seeded).
+
+- **Remove the `upstream` remote.** Points at
+  `pointsav/pointsav-monorepo.git`, unused by this repo's flow.
+  Removal is `git remote remove upstream` — non-destructive but
+  requires explicit operator approval.
+
+## Recently closed
+
+- 2026-04-23 — Repo-level `CLAUDE.md` created.
+- 2026-04-23 — `.claude/rules/` bootstrap complete:
+  `content-contract.md`, `repo-layout.md`, `cleanup-log.md`,
+  `handoffs-outbound.md` all written.
 
 ## Pointers
 
 - Workspace-level open items: `~/Foundry/NEXT.md`
+- Per-file cleanup decisions: `.claude/rules/cleanup-log.md`
+- Cross-repo handoffs: `.claude/rules/handoffs-outbound.md`
 - Workspace changelog: `~/Foundry/CHANGELOG.md`
-- Nomenclature Matrix: `~/Foundry/IT_SUPPORT_Nomenclature_Matrix_V8.md`.
+- Nomenclature Matrix: `~/Foundry/IT_SUPPORT_Nomenclature_Matrix_V8.md`
