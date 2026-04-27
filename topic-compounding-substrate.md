@@ -101,7 +101,7 @@ model. They cannot operate a true federation.
 ### Property 5 — Continued-Pretraining Path
 
 OLMo 3 base flows to a PointSav continued-pretraining variant,
-released as the substrate for next-generation deployments. Each
+released as the substrate for subsequent deployments. Each
 year's curated commons feeds the next year's base. By 2030, the
 federation-trained base is competitive with frontier proprietary
 models on the federation's domains.

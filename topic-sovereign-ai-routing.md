@@ -24,5 +24,5 @@ This guarantees that the external AI model never holds the actual corporate trut
 ## IV. REAL-WORLD DEPLOYMENT MODEL
 This architecture strictly follows the Institutional Model (Vendor/Customer):
 
-* **The Vendor (PointSav Digital Systems™):** Engineers the routing gateways (`service-llm`) and maintains the local sanitization models within the PointSav Monorepo.
-* **The Customer (Woodfine Management Corp.):** Deploys these secure routers to safely leverage advanced computational intelligence without compromising the fiduciary data mandate of its real estate assets.
+* **The Vendor (PointSav Digital Systems™):** Engineers the routing gateways (`service-slm`) and maintains the local sanitization models within the PointSav Monorepo.
+* **The Customer (Woodfine Management Corp.):** Deploys these secure routers to safely use advanced computational intelligence without compromising the fiduciary data mandate of its real estate assets.
