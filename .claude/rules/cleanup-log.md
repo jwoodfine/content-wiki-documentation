@@ -16,6 +16,48 @@ Last updated: 2026-04-23.
 
 ## Open
 
+### 2026-04-27 — Three style-guide TOPICs added at repo root (legacy pattern, frontmatter present)
+
+Six new files landed at repo root on `cluster/project-language` from
+the project-language Task session, following workspace `NEXT.md`
+Phase 2 of the cluster brief:
+
+- `topic-style-guide-readme.md` + `.es.md`
+- `topic-style-guide-topic.md` + `.es.md`
+- `topic-style-guide-guide.md` + `.es.md`
+
+These are Phase 2 of the language-protocol-substrate convention —
+public-facing operational documents explaining how to write each
+genre. They are the customer-facing pair of
+`pointsav-monorepo/service-disclosure/templates/*.toml`.
+
+Layout state: at repo root in the legacy `topic-*.md` pattern,
+matching every other existing `topic-*.md` file. **Improvement vs
+existing files**: these carry proper YAML frontmatter per
+`content-contract.md` §4 (title, slug, category, status,
+last_edited, editor, cites). Most existing `topic-*.md` files do
+not.
+
+Bilingual pair: the workspace-tier rule (`~/Foundry/CLAUDE.md` §6)
+requires bilingual TOPICs and overrides this repo's local
+"English-only wiki content" note. Spanish files follow strategic-
+adaptation pattern per DOCTRINE.md §XII — not 1:1 translation.
+The repo `CLAUDE.md` "wiki content English-only" line is
+inherited drift from before the bilingual rule was workspace-
+tier; surfacing for a future repo-CLAUDE update pass.
+
+Pending future migration into `reference/` category directory as
+part of the broader category-migration item already tracked
+above. The new files migrate alongside the existing legacy
+topics; no separate migration is needed.
+
+Categorisation hint: `category: reference` is declared in
+frontmatter, so the migration into `reference/<slug>.md` is a
+straightforward `git mv` plus updating the slug field to drop the
+`topic-` prefix (current frontmatter has slug
+`topic-style-guide-readme`; future slug becomes
+`style-guide-readme` per `naming-convention.md` §5).
+
 ### 2026-04-23 — Naming convention draft awaiting ratification
 
 `.claude/rules/naming-convention.md` drafted, status `Draft`.
