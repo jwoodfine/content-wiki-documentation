@@ -16,6 +16,30 @@ Last updated: 2026-04-23.
 
 ## Open
 
+### 2026-04-27 — Three more substrate-explainer TOPICs (Part D)
+
+Six new files landed at repo root following Master's 2026-04-27 v0.1.26
+reply confirming Option 4 as the next-session direction:
+
+- `topic-apprenticeship-substrate.md` + `.es.md`
+- `topic-compounding-substrate.md` + `.es.md`
+- `topic-contributor-model.md` + `.es.md`
+
+Same legacy `topic-*.md` pattern at root, frontmatter present per
+content-contract.md §4. category fields anticipate future migration to
+`architecture/` (apprenticeship + compounding) and `governance/`
+(contributor-model).
+
+**Naming-convention note**: Master's v0.1.26 reply named the third
+TOPIC as `topic-four-tier-contributor-model.md`. The authoritative
+convention at `~/Foundry/conventions/knowledge-commons.md` §7 names
+the model as "Three-Tier Contributor Model" with three numbered
+subsections (Core / Paid / Open). Per workspace CLAUDE.md §6 "use
+the operationally correct name in new work; do not silently
+propagate stale forms" — landed as `topic-contributor-model.md`
+(concise canonical form matching the convention's three-tier
+naming). Surfaced to Master in outbox.
+
 ### 2026-04-27 — Phase 4 substrate-explainer TOPICs added at repo root
 
 Eight new files landed at repo root on `cluster/project-language` from
