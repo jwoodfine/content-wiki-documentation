@@ -16,6 +16,56 @@ Last updated: 2026-04-23.
 
 ## Open
 
+### 2026-04-27 — Phase 4 substrate-explainer TOPICs added at repo root
+
+Eight new files landed at repo root on `cluster/project-language` from
+the project-language Task session, following the GO AHEAD in Master's
+2026-04-27 v0.1.24 reply:
+
+- `topic-language-protocol-substrate.md` + `.es.md`
+- `topic-customer-hostability.md` + `.es.md`
+- `topic-anti-homogenization-discipline.md` + `.es.md`
+- `topic-canadian-simple-copyright.md` + `.es.md`
+
+These are Phase 4 of the project-language cluster brief — public-
+facing TOPICs explaining the substrate convention, the customer-
+hostability architecture, the anti-homogenization editorial posture,
+and the Canadian-simple copyright posture (the operational complement
+in `factory-release-engineering/README.md` §6 is the source of
+truth; this TOPIC is the public-facing pair).
+
+Layout state: at repo root in the legacy `topic-*.md` pattern,
+matching Phase 2 and every existing `topic-*.md` file. **Frontmatter
+present** per `content-contract.md` §4 (improvement vs existing
+legacy files which mostly carry no frontmatter).
+
+Bilingual pairs per workspace CLAUDE.md §6 (which overrides the
+local "English-only wiki content" line in this repo's CLAUDE.md §6;
+that drift is logged in workspace NEXT.md v0.1.24 for future Root
+pickup per Master's 2026-04-27 v0.1.24 reply).
+
+cites discipline: `ni-51-102` and `osc-sn-51-721` used where the
+disclosure language warrants. The Cornell / arXiv 2409.11360 study
+on AI homogenization is referenced in prose (no citations.yaml
+entry yet — descriptive reference avoids a registry gap). The
+Canadian-simple TOPIC references the doctrine without depending
+on the GitHub URL of the workspace v0.1.21 / commit `7266884`
+that established it (held local-only pending operator decision
+per Master's note).
+
+Categorisation hint for the future migration:
+
+| File | Future category |
+|---|---|
+| `topic-language-protocol-substrate.md` | `architecture/` |
+| `topic-customer-hostability.md` | `architecture/` |
+| `topic-anti-homogenization-discipline.md` | `architecture/` |
+| `topic-canadian-simple-copyright.md` | `governance/` |
+
+Frontmatter `category` fields already declare the targets.
+Migration is a `git mv` plus dropping the `topic-` prefix from
+the slug field at that time.
+
 ### 2026-04-27 — Three style-guide TOPICs added at repo root (legacy pattern, frontmatter present)
 
 Six new files landed at repo root on `cluster/project-language` from
