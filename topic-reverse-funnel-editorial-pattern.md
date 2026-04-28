@@ -1,15 +1,18 @@
 ---
+schema: foundry-doc-v1
 title: "The Reverse-Funnel Editorial Pattern"
 slug: topic-reverse-funnel-editorial-pattern
 category: architecture
 status: pre-build
-last_edited: 2026-04-27
+last_edited: 2026-04-28
 editor: pointsav-engineering
 cites:
   - ni-51-102
+  - osc-sn-51-721
   - constitutional-ai-2212-08073
   - olmo3-allenai
   - llguidance
+  - knowledge-commons-wiki
 ---
 
 The substrate inverts the conventional editorial cycle. Most
@@ -100,9 +103,8 @@ training corpus.
 Banned-vocabulary grammars, BCSC discipline templates,
 language-protocol adapters are tenant-specific. Hyperscaler
 products expose neither grammar composition nor adapter
-composition primitives. Tenants get OpenAI's JSON-mode or
-Anthropic's structured-output, not "here is your tenant's grammar
-that loads at inference time."
+composition primitives. Tenants get structured-output modes, not
+"here is your tenant's grammar that loads at inference time."
 
 **3. The closed loop demands tenant-sovereign training data.**
 Even if a hyperscaler captured Creative edits, the resulting
@@ -127,14 +129,14 @@ pretraining loop on craft, not just structure:
 
 After enough cycles, the substrate produces draft baselines at
 80% → 90% → 95% of Creative's craft level. Creative load drops
-monotonically; their leverage grows. They move upstream to brand
+monotonically; their scope expands. They move upstream to brand
 strategy, architectural framing, novel-form authorship — work the
 substrate cannot reach yet.
 
 ## Three-Tier Contributor Model — explicit mapping
 
-The Three-Tier Contributor Model (Core / Paid / Open) maps onto
-the cycle position:
+The Three-Tier Contributor Model `[knowledge-commons-wiki]`
+(Core / Paid / Open) maps onto the cycle position:
 
 - **Core** (4-7 operators): operate the substrate; cluster Tasks;
   doctrine; throughout the cycle
@@ -144,25 +146,60 @@ the cycle position:
   the cycle
 
 Paid contributors in this pattern are not tech writers. They are
-craft specialists — designers, narrative editors, brand voice
-contributors. The job description optimises for taste, not
-synthesis.
+craft specialists — designers, narrative editors, brand-voice
+contributors. The recruitment profile optimises for taste, not
+technical synthesis. The substrate-generated draft supplies the
+technical floor; the Creative's job is to raise the ceiling.
+
+Each tier works at a distinct timescale: Core in real-time
+(sessions per day); Paid per-publication-event (edits per
+refined-publication batch); Open per-consumption-event (citations
+and forks over months and years).
+
+## Operational implications
+
+Recruitment shifts. Because the substrate-generated draft already
+carries accurate technical content, Paid-tier contributors do not
+require deep engineering background. The hiring profile shifts
+toward craft discipline: narrative specialists, brand-voice
+editors, illustration contributors.
+
+Quality control simplifies. The substrate floor is verifiable
+mechanically — banned-vocabulary violations are caught before
+publication; BCSC posture is enforced by grammar, not by auditor.
+Human QC focuses on brand alignment, narrative coherence, and
+graphics rendering rather than factual accuracy. Most accuracy
+verification is automated.
+
+Per-tenant voice distils into per-tenant adapters. As
+creative-edited preference pairs accumulate on a given tenant's
+namespace, the tenant adapter learns the tenant's voice.
+Subsequent drafts on that namespace arrive closer to the tenant's
+established baseline without additional human instruction. This is
+Adapter Composition Algebra (Doctrine claim #22) applied to the
+editorial layer.
 
 ## Forward-looking — pending substrate work
 
-Per `[ni-51-102]` continuous-disclosure language, the trajectory
-below is `planned` and `intended`:
+Per `[ni-51-102]` and `[osc-sn-51-721]` continuous-disclosure
+language, the trajectory below is `planned` and `intended`.
+Material assumptions include continued availability of OLMo
+open-weight models under Apache 2.0 licensing, sufficient
+Creative-edited corpus volume to support meaningful DPO fine-
+tuning, and uninterrupted operation of the project-language
+editorial gateway. Actual outcomes may differ.
 
-- AS-2 (project-slm Task) integrates `[llguidance]` into the
-  Doorman so vLLM Tier B accepts `extra_body.structured_outputs.grammar`.
-  service-language is the primary consumer.
-- Per-tenant Creative-voice adapters distill from accumulated
-  Stage-2 DPO pairs over the first year of operation.
-- The Stage-1 + Stage-2 OLMo continued-pretraining run targets
+- AS-2 (project-slm Task) intends to integrate `[llguidance]`
+  into the Doorman so vLLM Tier B accepts
+  `extra_body.structured_outputs.grammar`. service-language is
+  the planned primary consumer.
+- Per-tenant Creative-voice adapters are intended to distil from
+  accumulated Stage-2 DPO pairs over the first year of operation.
+- The Stage-1 + Stage-2 OLMo continued-pretraining run targets a
   quarterly cadence.
-- Creative-tier hiring kicks off after the first batch of refined
-  TOPICs publishes; the first cycles are operator-edited as
-  bootstrapping data.
+- Creative-tier recruitment is planned to begin after the first
+  batch of refined TOPICs publishes; the first cycles are
+  operator-edited as bootstrapping data.
 
 ## See also
 

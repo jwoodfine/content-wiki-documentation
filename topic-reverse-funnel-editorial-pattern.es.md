@@ -1,90 +1,149 @@
 ---
-title: "El patrón editorial de embudo invertido (resumen)"
+schema: foundry-doc-v1
+title: "El Patrón Editorial de Embudo Invertido"
 slug: topic-reverse-funnel-editorial-pattern
 category: architecture
 status: pre-build
-last_edited: 2026-04-27
+last_edited: 2026-04-28
 editor: pointsav-engineering
+lang: es
+paired_with: topic-reverse-funnel-editorial-pattern.md
 cites:
   - ni-51-102
+  - osc-sn-51-721
+  - constitutional-ai-2212-08073
   - olmo3-allenai
+  - llguidance
+  - knowledge-commons-wiki
 ---
 
-El sustrato invierte el ciclo editorial convencional. La mayoría
-de las canalizaciones de publicación colocan al Contribuyente
-Creativo humano al INICIO del bucle — borradores, edición, envío
-a lectores. El sustrato de Foundry coloca al Creativo al FINAL.
-Las Tareas del clúster envían borradores en bruto hacia adelante
-a una única puerta editorial; la puerta refina al registro; la
-versión refinada sale en vivo; los Contribuyentes Creativos editan
-el archivo publicado; sus ediciones alimentan el siguiente ciclo
-de entrenamiento como datos de preferencia.
+El substrato invierte el ciclo editorial convencional. En la
+mayoría de los flujos de publicación, el colaborador creativo
+inicia el proceso — redacta el manuscrito, lo pasa a corrección,
+lo envía al lector. En el substrato de Foundry, el Colaborador
+Creativo entra al **final** del ciclo. Los clústeres de trabajo
+generan borradores técnicos; la pasarela editorial los refina
+hasta el registro de producción; la versión refinada se publica;
+los Colaboradores Creativos editan el archivo publicado; y sus
+ediciones alimentan el siguiente ciclo de entrenamiento como datos
+de preferencia. Esta inversión es lo que permite que un equipo
+creativo pequeño escale a un substrato del tamaño de Wikipedia.
 
-## Cómo funciona
+## Definición
 
-Tres puertos de entrada — borradores de Tarea en
-`~/Foundry/clones/<clúster>/.claude/drafts-outbound/`, borradores
-de Root en `<repo>/.claude/drafts-outbound/`, borradores de Master
-en `~/Foundry/.claude/drafts-outbound/` — alimentan una única
-puerta editorial (`service-language`, el clúster project-language).
-La puerta aplica cuatro disciplinas: gramática de vocabulario
-prohibido, postura de divulgación continua de la BCSC `[ni-51-102]`,
-resolución del registro de citas, generación del par bilingüe. La
-salida refinada se entrega al repositorio de destino vía el
-mecanismo estándar de `handoffs-outbound.md`.
+El Patrón Editorial de Embudo Invertido es una disciplina de
+publicación en la que:
 
-## Por qué los hiperescaladores no pueden replicarlo
+1. Múltiples clústeres de origen producen **borradores en bloque**
+   — técnicamente precisos, con referencias libres, en registro
+   informal.
+2. Una única pasarela editorial (`service-language`, el clúster
+   project-language) refina cada borrador al registro de
+   producción: aplicación del vocabulario prohibido, postura de
+   divulgación continua BCSC, generación de pares bilingües y
+   resolución del registro de citas.
+3. La versión refinada se publica de inmediato en el repositorio
+   de destino.
+4. Los Colaboradores Creativos entran al **final** — editan el
+   archivo publicado. Sus ediciones constituyen la segunda parte
+   de un par de preferencia.
+5. El preentrenamiento continuo trimestral sobre el corpus de
+   tuplas (borrador → refinado → edición creativa) produce una
+   línea base del substrato que converge hacia (refinado ⊕
+   Creativo) con el tiempo.
 
-Tres razones estructurales:
+## Por qué los proveedores de infraestructura no pueden replicar esto
 
-- Los SLMs multi-inquilino no tienen un sustrato de pretraining
-  continuado por inquilino — las ediciones del Creativo no pueden
-  alimentar un modelo específico del inquilino.
-- Los adaptadores de gramática editorial por inquilino están
-  estructuralmente ausentes en los productos de IA gestionada.
-- El bucle cerrado requiere datos de entrenamiento soberanos del
-  inquilino — los hiperescaladores no pueden conceder esto sin
-  desmantelar su modelo de negocio multi-inquilino.
+Tres razones estructurales.
 
-## El ciclo continuo de entrenamiento
+Primero: el preentrenamiento continuo por inquilino está
+estructuralmente ausente en los SaaS multiinquilino. Un modelo
+compartido no puede personalizar su voz en función de las ediciones
+de un único cliente. El bucle de compounding del Embudo Invertido
+solo se cierra cuando el modelo de lenguaje cuenta con adaptadores
+privados por inquilino y un corpus de entrenamiento igualmente
+privado.
 
-Cada edición Creativa se convierte en un par de preferencia DPO
-`(refinado, editado-por-Creativo)`. El pretraining continuado
-trimestral de OLMo `[olmo3-allenai]` absorbe el par. La línea de
-base generada por el sustrato se acerca al 80% → 90% → 95% del
-nivel del Creativo a lo largo del tiempo. La carga incremental
-del Creativo cae monotónicamente; su apalancamiento crece. Se
-mueven hacia arriba a la estrategia de marca, autoría de formas
-novelísticas, arco narrativo — trabajo que el sustrato aún no
-puede alcanzar.
+Segundo: los adaptadores de piso editorial por inquilino no
+existen en los productos de los grandes proveedores. Las gramáticas
+de vocabulario prohibido, las plantillas de postura BCSC y los
+adaptadores de protocolo de lenguaje son específicos de cada
+inquilino en Foundry. Los proveedores de infraestructura exponen
+modos de salida estructurada genéricos, no "esta es la gramática
+de su inquilino que se carga en tiempo de inferencia."
 
-## Modelo de Contribuyente de Tres Niveles
+Tercero: el bucle cerrado exige soberanía sobre los datos de
+entrenamiento `[constitutional-ai-2212-08073]`. Aunque un
+proveedor de infraestructura capturara las ediciones creativas, los
+datos resultantes alimentarían un modelo neutro para el proveedor.
+El inquilino no puede poseer un modelo que aprenda su voz
+particular.
 
-El Modelo de Contribuyente de Tres Niveles (Núcleo / Pagado /
-Abierto) se asigna a la posición del ciclo:
+## Lo que esto habilita en Foundry
 
-- **Núcleo** (4-7 operadores): operan el sustrato; Tareas de
-  clúster; durante todo el ciclo
-- **Pagado** (50-100 Contribuyentes Creativos): editan la versión
-  refinada publicada al FINAL del ciclo; arte + marca + voz
-- **Abierto** (10K+ consumidores de wiki): consumen + citan +
-  bifurcan fuera del ciclo
+El substrato cierra un bucle de preentrenamiento continuo sobre el
+oficio editorial, no solo sobre la estructura. La etapa de
+aprendizaje por aprendiz (Doctrina, afirmación #32) cierra el
+bucle sobre la corrección estructural mediante pares DPO de
+Etapa 1. El Patrón de Embudo Invertido cierra el bucle sobre el
+**oficio editorial** mediante pares DPO de Etapa 2. Ambas etapas
+alimentan el mismo corpus de preentrenamiento continuo de OLMo
+`[olmo3-allenai]`.
 
-Los contribuyentes Pagados en este patrón no son redactores
-técnicos. Son especialistas en oficio — diseñadores, editores
-narrativos, contribuyentes de voz de marca.
+Tras suficientes ciclos, el substrato produce borradores que
+alcanzan el 80% → 90% → 95% del nivel creativo humano. La carga
+sobre los Colaboradores Creativos disminuye de forma monótona; su
+alcance se amplía hacia estrategia de marca, enmarcado
+arquitectónico y formas de autoría que el substrato aún no puede
+alcanzar.
 
-## Trabajo planificado
+## Implicaciones operativas
 
-Por la postura de divulgación continua de la BCSC (`[ni-51-102]`),
-la trayectoria es `planificada` e `intencionada`. AS-2 (clúster
-project-slm) integra `llguidance` en el Doorman; los adaptadores
-de voz por inquilino destilan en el primer año; el ciclo
-trimestral de OLMo opera a partir del primer pretraining
-continuado.
+El perfil de contratación cambia. Dado que el borrador generado
+por el substrato ya contiene contenido técnico preciso, los
+colaboradores de nivel Pagado no necesitan formación técnica
+profunda. El perfil se orienta hacia especialistas en narrativa,
+editores de voz de marca y colaboradores de ilustración.
+
+El control de calidad se simplifica. El piso del substrato es
+verificable de forma mecánica; el trabajo creativo es principalmente
+mejora. El control humano se enfoca en coherencia narrativa y
+alineación de marca, no en precisión técnica.
+
+La voz creativa por inquilino se destila en adaptadores por
+inquilino. A medida que se acumulan pares de preferencia editados
+creativamente en el espacio de nombres de un inquilino, el
+adaptador aprende la voz de ese inquilino. Los borradores
+posteriores en ese espacio de nombres llegan más cerca de la línea
+base establecida por el cliente. Esto es la Álgebra de Composición
+de Adaptadores (afirmación #22 de Doctrina) aplicada a la capa
+editorial.
+
+## Perspectivas — trabajo pendiente en el substrato
+
+Conforme a las obligaciones de divulgación continua bajo
+`[ni-51-102]` y `[osc-sn-51-721]`, la trayectoria que se describe
+a continuación es `planificada` e `intencionada`. Los resultados
+reales pueden diferir según la disponibilidad de modelos OLMo bajo
+licencia Apache 2.0, el volumen de corpus editado creativamente y
+la operación ininterrumpida de la pasarela editorial.
+
+- Se prevé integrar `[llguidance]` en el Portero para que el Tier B
+  de vLLM acepte gramáticas estructuradas. service-language es el
+  consumidor principal planificado.
+- Se prevé que los adaptadores de voz creativa por inquilino se
+  destilen a partir de los pares DPO acumulados de Etapa 2 durante
+  el primer año de operación.
+- El ciclo de preentrenamiento continuo de OLMo apunta a una
+  cadencia trimestral.
+- La contratación del nivel Creativo está planificada para comenzar
+  tras la publicación del primer lote de TOPICs refinados.
 
 ## Véase también
 
-- [El Sustrato Compuesto](topic-compounding-substrate.es.md)
-- [El sustrato de aprendizaje](topic-apprenticeship-substrate.es.md)
-- [Restricciones en tiempo de decodificación](topic-decode-time-constraints.es.md)
+- [El Substrato de Compounding](topic-compounding-substrate.es.md)
+- [El Substrato de Aprendizaje](topic-apprenticeship-substrate.es.md)
+- [El Modelo de Contribuidor en Tres Niveles](topic-contributor-model.es.md)
+- Convenciones del espacio de trabajo:
+  `~/Foundry/conventions/reverse-funnel-editorial-pattern.md`
+  `~/Foundry/conventions/cluster-wiki-draft-pipeline.md`
