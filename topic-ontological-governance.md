@@ -1,23 +1,83 @@
-# 📡 topic-07: Ontological Governance & The Surveyor Loop
-**Protocol Identifier:** DS-ADR-09
-**Status:** Active Deployment (v1.6)
+---
+schema: foundry-doc-v1
+title: "Ontological Governance"
+slug: topic-ontological-governance
+category: governance
+type: topic
+quality: stub
+short_description: "Ontological governance describes the four self-healing control ledgers that govern how service-content classifies and accumulates knowledge, and the human-verification loop that keeps extracted identity data accurate before it is permanently committed."
+status: pre-build
+last_edited: 2026-04-30
+editor: pointsav-engineering
+cites: []
+paired_with: topic-ontological-governance.es.md
+---
 
-## I. THE TRIPARTITE PIPELINE
-Data extraction is not a monolith. It operates across three mechanically isolated services:
-1. **`service-email` (Ingestion):** Splinters MIME payloads and deposits raw inert text/CSV files into the Spool. Zero intelligence applied.
-2. **`service-people` (Identity Resolution):** Scans the Spool for human identity clusters.
-3. **`service-content` (Linguistic Compilation):** Scans the Spool for narrative knowledge, cross-referencing text against the 4 Control Valves.
+# Ontological Governance
 
-## II. THE VERIFICATION SURVEYOR (`app-console-input`)
-To prevent AI hallucination and enforce absolute data fidelity, `service-people` utilizes a decentralized Human-in-the-Loop workflow. 
-* The system isolates unverified Identity Fragments ("Index Cards").
-* A human operator uses their personal, off-network browser to verify the entity (e.g., via LinkedIn), bypassing API taxes.
-* The operator inputs the verified URL and Archetype back into the Console OS.
-* **Throttle:** Operators are mathematically limited to 40-60 verifications per day to ensure high-fidelity inputs and eliminate cognitive fatigue.
+> Ontological governance is the discipline of governing what the platform *means* by its categories over time — enforced through four throttled CSV ledgers that define classification vocabulary, and a human-verification loop that prevents automated extraction errors from compounding.
 
-## III. THE ONTOLOGICAL CONTROL VALVES (HEALING SPEEDS)
-`service-content` is governed by four `.csv` ledgers that self-heal at heavily throttled rates to preserve longitudinal data stability:
-1. **Archetypes (>24 Months):** The psychological and functional identity of the firm (e.g., *The Fiduciary*).
-2. **Chart of Accounts (18-24 Months):** The structural/financial geometry (e.g., *Compliance*, *IT Support*). Requires Executive override to alter.
-3. **Domains (>12 Months):** Bilingual Glossaries defining the macro-theaters: `Corporate` (Finance), `Projects` (Real Estate), and `Documentation` (Tech). 
-4. **Themes (>3-8 Months):** The active, frontline narratives (e.g., *Co-Location Expansion*).
+**Ontological governance** is the framework that keeps the
+platform's classification vocabulary stable and its extracted
+identity data accurate. It operates across two mechanisms: the
+four control ledgers that govern how `service-content` classifies
+knowledge, and the verification surveyor that forces extracted
+identity fragments through human review before they are permanently
+written into the verified ledger. These two mechanisms are
+structurally separate but serve the same goal: preventing
+accumulated classification drift from undermining the integrity of
+long-lived institutional data.
+
+## The three-stage extraction pipeline
+
+Data extraction across the platform is mechanically isolated into
+three services:
+
+1. **`service-email` (ingestion).** Processes MIME payloads and
+   deposits raw text and CSV files into the spool. No
+   classification is applied at this stage.
+2. **`service-people` (identity resolution).** Scans the spool
+   for human identity clusters and routes them to the verification
+   surveyor before committing to the verified ledger.
+3. **`service-content` (linguistic classification).** Scans the
+   spool for narrative knowledge and cross-references text against
+   the four control ledgers.
+
+## The four control ledgers
+
+`service-content` is governed by four CSV ledgers that update at
+heavily throttled rates to preserve longitudinal data stability:
+
+| Ledger | Minimum update interval | Governs |
+|---|---|---|
+| Archetypes | More than 24 months | The psychological and functional identity of the firm (for example, "The Fiduciary") |
+| Chart of Accounts | 18–24 months; requires executive override | The structural and financial geometry of the operation (for example, "Compliance", "IT Support") |
+| Domains | More than 12 months | Bilingual glossaries defining the macro-categories: Corporate (Finance), Projects (Real Estate), Documentation (Technology) |
+| Themes | 3–8 months | The active frontline narratives (for example, "Co-Location Expansion") |
+
+Update rates are intentionally asymmetric. The slowest ledgers
+(Archetypes, Chart of Accounts) capture what the firm fundamentally
+is; the fastest (Themes) capture what it is currently working on.
+Premature updates to the slower ledgers corrupt the longitudinal
+coherence of the data corpus.
+
+## The verification loop
+
+`service-people` uses a human-in-the-loop verification step to
+prevent automated extraction errors from entering the verified
+ledger. The process is described in detail at
+[[topic-verification-surveyor|Verification Surveyor]]. In brief:
+the system isolates unverified identity fragments for operator
+review; the operator verifies each entity using their own personal
+browser and off-network lookup; the verified result is then
+committed to the ledger. The daily throughput limit ensures that
+operator attention remains high-fidelity rather than habitual.
+
+## See Also
+
+- [[topic-verification-surveyor|Verification Surveyor]]
+- [[topic-message-courier|Message Courier Service]]
+- [[topic-moonshot-initiatives|Moonshot Initiatives]]
+- [[topic-sovereign-replacement-initiative|Sovereign Replacement Initiative]]
+
+## References

@@ -1,20 +1,66 @@
-# 📡 topic-08: The Verification Surveyor & Air-Gapped Fidelity
-**Protocol Identifier:** DS-ADR-10
-**Status:** Active Deployment (v1.0)
+---
+schema: foundry-doc-v1
+title: "Verification Surveyor"
+slug: topic-verification-surveyor
+category: architecture
+type: topic
+quality: stub
+short_description: "The Verification Surveyor is the human-in-the-loop component of service-people that presents extracted identity fragments to an operator for manual verification before they are permanently committed to the verified ledger."
+status: pre-build
+last_edited: 2026-04-30
+editor: pointsav-engineering
+cites: []
+paired_with: topic-verification-surveyor.es.md
+---
 
-## I. THE HUMAN-IN-THE-LOOP PHILOSOPHY
-Unsupervised extraction algorithms generate compounding errors. A purely automated ingestion pipeline scraping thousands of emails will inevitably extract false positives ("Name: Unsubscribe"). 
+# Verification Surveyor
 
-The **Verification Surveyor** is the deliberate, architectural bottleneck. It forces all extracted data fragments to pass through a human cognitive filter before they are permanently socketed into the `verified-ledger`.
+> The Verification Surveyor is the architectural checkpoint in service-people that prevents automated extraction errors from compounding by requiring a human operator to confirm each identity fragment against an off-network source before it is committed to the verified ledger.
 
-## II. AIR-GAPPED VERIFICATION
-The Surveyor deliberately does *not* utilize APIs to query LinkedIn or corporate directories. 
-1. API integrations require foreign tokens that violate the Sovereign Data Protocol.
-2. High-volume API calls incur SaaS taxation and risk IP bans.
+Unsupervised extraction algorithms accumulate errors. A fully
+automated ingestion pipeline processing large volumes of email
+will inevitably produce false positives — an "Unsubscribe" link
+parsed as a person's name, a role title extracted from a footer
+rather than a bio. The **Verification Surveyor** is the deliberate
+architectural bottleneck that forces all extracted identity
+fragments through a human cognitive filter before they are
+permanently written into the verified ledger. The design accepts
+the throughput cost in exchange for high-fidelity, long-term
+institutional data.
 
-Instead, the Surveyor acts as an air-gapped "Index Card". It presents the extracted text to the operator's terminal. The operator utilizes their *own* personal browser and their *own* personal LinkedIn account to locate the individual, verify their current employment, and paste the resulting URL back into the terminal. The machine never touches the foreign network.
+## Human-in-the-loop philosophy
 
-## III. THE 10-LIMIT COGNITIVE THROTTLE
-Humans are incapable of performing high-fidelity data entry for prolonged periods. To prevent operators from blindly clicking "Approve" to clear a massive queue, the Surveyor enforces a hard limit of **10 verifications per day**.
+Every identity fragment extracted by `service-people` is held as
+unverified until an operator confirms it. The Surveyor presents the
+fragment — the extracted text, the inferred entity type, the source
+context — to the operator. The operator then looks up the individual
+using their own personal browser and their own personal account on
+an external directory (such as LinkedIn), confirms the entity, and
+pastes the verified URL back into the terminal. The platform never
+initiates the external lookup itself.
 
-By creating artificial scarcity, the system transforms a menial data-entry task into a high-value operational ritual. Ten perfect, verified records a day yields 3,650 flawlessly mapped institutional relationships a year with zero data corruption.
+This design is deliberate. API-based lookups against external
+directories would require persistent foreign tokens, incur
+per-query costs, and expose the platform to rate-limiting or
+IP-ban risk. The air-gapped approach avoids all three.
+
+## Daily throughput limit
+
+The Surveyor enforces a hard limit of ten verifications per
+operator per day. The limit is not a capacity constraint; it is a
+quality control mechanism. High-volume data entry at speed
+produces habitual approvals rather than genuine verification. Ten
+careful verifications per day produce roughly 3,650 confirmed
+institutional relationships per year with negligible error rate.
+The scarcity is structural: it transforms what would otherwise be
+a mechanical clearing task into a deliberate, high-attention
+operational step.
+
+## See Also
+
+- [[topic-ontological-governance|Ontological Governance]]
+- [[topic-message-courier|Message Courier Service]]
+- [[topic-sovereign-telemetry|Zero-State Telemetry Architecture]]
+- [[topic-moonshot-initiatives|Moonshot Initiatives]]
+
+## References

@@ -4,17 +4,19 @@ title: "documentation.pointsav.com — Home"
 slug: index
 category: root
 status: pre-build
-last_edited: 2026-04-29
+last_edited: 2026-04-30
 editor: pointsav-engineering
 ---
 
 <!-- ENGINE: render this file at the URL `/` — it is the wiki home,
      served as index.md per content-contract.md §1/§2/§7. -->
 
-PointSav's platform documentation covers the architecture, services,
-operating systems, and governance conventions of the PointSav substrate.
-Articles are written for engineers, writers, designers, and readers with
-a financial interest in the platform. All content is published under
+PointSav Digital Systems builds the platform substrate for regulated small and
+mid-size businesses that need permanent, portable, and verifiable records on
+infrastructure they control. This wiki documents the platform's architecture,
+services, operating systems, and governance conventions. Articles are written
+for engineers, writers, designers, and readers with a financial interest in
+the platform. All content is published under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 <!-- ENGINE: insert live TOPIC count: "N articles across 9 categories,
@@ -93,13 +95,23 @@ the platform and its documentation.
      featured-topic.yaml schema: slug: (required), since: (optional
      YYYY-MM-DD), note: (optional one-liner; engine ignores). -->
 
-[[compounding-substrate]] — The Compounding Substrate describes how
-PointSav's platform is designed so that each capability a customer installs
-makes the next capability easier to operate. The substrate pattern is the
-design philosophy behind the three-ring architecture and the leapfrog-2030
-trajectory.
+<!-- ENGINE: read featured-topic.yaml, fetch slug article's title + first 100–150 words
+     of its lead section. Render as: title (bold), excerpt, "Read more →" link.
+     If pin file absent, suppress section. -->
+
+**[[compounding-substrate|The Compounding Substrate]]**
+
+The **Compounding Substrate** is the architectural pattern PointSav builds
+and stewards. It answers a single structural question: how does a software
+platform let customers own their data, run on their own infrastructure, and
+compose AI in or out at will — while still benefiting from collective
+improvement without surrendering that ownership? Five structural properties
+combine to produce a substrate where every operational interaction generates
+training signal that compounds across deployments.
 
 [Read more →](/architecture/compounding-substrate)
+
+*Featured articles represent the wiki's most complete and carefully reviewed content.*
 
 ---
 
@@ -118,6 +130,20 @@ trajectory.
 *Most recently added or updated articles:*
 
 <!-- ENGINE: dynamic list — 5 items, last_edited desc -->
+
+---
+
+## Latest updates
+
+<!-- ENGINE: render the 3 most recent entries from CHANGELOG.md or git log
+     on the content-wiki-documentation repository (canonical main branch).
+     Format: "- YYYY-MM-DD — brief description of what changed"
+     If no changelog is available, render the 3 most recent commit messages.
+     Static fallback (remove when engine supports dynamic): -->
+
+- 2026-04-29 — Category landing pages added for all nine platform areas
+- 2026-04-29 — Home page and featured-article pin established
+- 2026-04-27 — Initial platform documentation published
 
 ---
 
@@ -142,6 +168,10 @@ Content originates from the PointSav and Woodfine contributor flow.
 See [[contributing-as-engineer]], [[contributing-as-writer]], and
 [[contributing-as-designer]] for onboarding guides. These articles are
 planned for the help/ category; they will render as red links until written.
+
+Articles are graded **Complete**, **Core**, or **Stub** based on lead length,
+section count, and reference completeness. Stub articles display an
+expansion notice and are the highest-priority contribution targets.
 
 Corrections and additions follow the staging-tier commit flow described
 in [[style-guide-topic]].

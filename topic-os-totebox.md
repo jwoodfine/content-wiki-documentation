@@ -1,36 +1,58 @@
-# 🗄️ TOPIC: THE SOVEREIGN DATA ARCHIVE (OS-TOTEBOX)
-**Protocol Identifier:** DS-ADR-02
-**Status:** Active Deployment
-**Primary Vendor:** PointSav Digital Systems™
-
+---
+schema: foundry-doc-v1
+title: "ToteboxOS"
+slug: topic-os-totebox
+category: systems
+type: topic
+quality: stub
+short_description: "ToteboxOS is the microkernel-based data-archive operating system used by PointSav to store institutional records as inert flat files with cryptographic integrity verification at the filesystem level."
+status: pre-build
+last_edited: 2026-04-30
+editor: pointsav-engineering
+cites: []
+paired_with: topic-os-totebox.es.md
 ---
 
-## I. THE PHILOSOPHY OF THE TOTEBOX
-In legacy SaaS architectures, corporate data is poured into massive, multi-tenant databases (SQL/Postgres) hosted by third-party hyperscalers. If the database engine is compromised, the entire corporate history is exposed, altered, or destroyed.
+# ToteboxOS
 
-**The Solution:** The `os-totebox`. 
-A return to fundamental computing physics. The Totebox mandate declares that institutional ledgers must be stored as inert, flat files (Markdown, YAML, CSV). Software engines are explicitly decoupled from the data they process.
+> ToteboxOS is the microkernel-based data-archive operating system used by PointSav to store institutional records as inert flat files with cryptographic integrity verification at the filesystem level.
 
-## II. FILES OVER DATABASES
-A database is a complex, running software engine. A flat file is a static sequence of bytes on a disk. 
+**ToteboxOS** is the core data-archive layer of the PointSav platform. It runs on an seL4 microkernel and enforces a strict separation between software execution engines and the corporate ledgers those engines read and write. Every institutional record lives as an inert flat file — Markdown, YAML, or CSV — that requires no proprietary runtime to open or interpret decades later.
 
-By migrating corporate knowledge out of databases and into organized flat files, the Customer achieves absolute data sovereignty. A `.yaml` file or a `.csv` ledger will be universally readable in 100 years, requiring zero proprietary software to decrypt or access.
+The design rejects the conventional multi-tenant database model, in which a shared database engine becomes a single point of failure and exposure for every customer record it holds. In the Totebox model, the execution software and the data it processes occupy distinct directories, connected only through explicit, audited access paths.
 
-**The Totebox Directory Structure:**
-```text
+## Directory structure
+
+A Totebox deployment follows a three-directory layout:
+
+```
 cluster-totebox-corporate/
-├── app-console-input/      <-- (The Execution Software)
-├── assets/                 <-- (The Physical Vault: PDFs, Images)
-└── ledger/                 <-- (The State Machine: YAML metadata, CSV ledgers)
+├── app-console-input/      execution software
+├── assets/                 physical vault — PDFs, images
+└── ledger/                 state machine — YAML metadata, CSV ledgers
 ```
 
-## III. CRYPTOGRAPHIC INTEGRITY
-Because the files are completely inert, they cannot defend themselves. Therefore, the PointSav OS enforces integrity at the filesystem level. 
+The `ledger/` directory is the canonical record. The `assets/` directory holds binary artefacts. The `app-console-input/` directory contains the execution software that reads and writes to the other two. None of the three directories are permitted to commingle their contents.
 
-Every time a physical asset (like an investor contract) is dropped into the Totebox, the system generates a cryptographic SHA-256 checksum of that file and stores it in the `ledger/`. If a malicious actor alters a single pixel in the contract, the checksum shatters, and the system instantly flags the vault as mathematically compromised.
+## Flat files over databases
 
-## IV. REAL-WORLD DEPLOYMENT MODEL
-This architecture strictly follows the Institutional Model (Vendor/Customer):
+A flat file is a static sequence of bytes on disk. A relational database is a running software engine with its own memory model, parser, and network surface. ToteboxOS stores corporate knowledge as flat files because a `.yaml` ledger or `.csv` register is universally readable without proprietary tooling and remains structurally stable across hardware generations.
 
-* **The Vendor (PointSav Digital Systems™):** Engineers the Rust-based execution engines that safely read and write to the file directories without corrupting them.
-* **The Customer (Woodfine Management Corp.):** Deploys the Toteboxes on physically isolated, heavily firewalled Tier-2 cloud nodes or bare-metal Tier-3 on-premise hardware to secure multi-generational real estate capital.
+The practical consequence is that data migration cost falls toward zero: the customer always holds the source in a form any text editor can open.
+
+## Cryptographic integrity
+
+Because flat files cannot defend themselves against tampering, ToteboxOS enforces integrity at the filesystem level. When a physical asset — such as a contract document — enters the Totebox, the system generates a SHA-256 checksum of that file and records it in the `ledger/`. Any subsequent modification to the asset invalidates the recorded checksum, flagging the vault as compromised.
+
+## Deployment model
+
+The Vendor (PointSav Digital Systems) engineers the Rust-based execution engines that safely read and write to the Totebox directories. The Customer deploys the Totebox on their own hardware — an isolated cloud node or on-premise bare metal — and holds the audit ledger directly. No vendor intermediary sits between the customer's records and the customer's filesystem.
+
+## See Also
+
+- [[topic-totebox-orchestration]]
+- [[topic-substrate-native-compatibility]]
+- [[topic-customer-hostability]]
+- [[topic-compounding-substrate]]
+
+## References

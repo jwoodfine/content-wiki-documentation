@@ -1,25 +1,31 @@
 ---
+schema: foundry-doc-v1
 title: "Style Guide — TOPIC"
 slug: topic-style-guide-topic
 category: reference
+type: topic
+quality: core
+short_description: "Editorial standards for TOPIC files in Foundry content wikis, covering where TOPICs live, the bilingual pair requirement, frontmatter citation discipline, voice, forward-looking statement treatment, and the distinction from GUIDE files."
 status: pre-build
-last_edited: 2026-04-27
+last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:
   - ni-51-102
   - osc-sn-51-721
+paired_with: topic-style-guide-topic.es.md
 ---
 
 # Style Guide — TOPIC
 
-A TOPIC file (`topic-<subject>.md`) in a Foundry content wiki
+> A TOPIC file explains what something is — doctrine, architecture, or background that a fresh reader needs to understand the platform — and is the counterpart of a GUIDE, which explains how to operate it.
+
+A **TOPIC** file (`topic-<subject>.md`) in a Foundry content wiki
 explains what something *is*. It is doctrine, architecture, or
 background — material a fresh reader needs to understand the
-system. It is not how to operate something; that is a GUIDE
-file, covered in [Style Guide — GUIDE](topic-style-guide-guide.md).
-
-This article is itself a TOPIC. The shape it follows is the shape
-it documents.
+platform. It is not how to operate something; that is a GUIDE
+file, covered in [[topic-style-guide-guide|Style Guide — GUIDE]].
+This article is itself a TOPIC, and the structure it follows is
+the structure it documents.
 
 ## Where TOPICs live
 
@@ -173,11 +179,12 @@ A TOPIC is not internal-only material. Anything internal-only
 notes) lives in the workspace `.claude/` directories or
 deployment instances, not in a content wiki.
 
-## See also
+## See Also
 
-- [Style Guide — README](topic-style-guide-readme.md)
-- [Style Guide — GUIDE](topic-style-guide-guide.md)
-- The convention this article reflects:
-  `~/Foundry/conventions/language-protocol-substrate.md` §2
-- The machine-readable template:
-  `pointsav-monorepo/service-disclosure/templates/topic.toml`
+- [[topic-style-guide-readme|Style Guide — README]]
+- [[topic-style-guide-guide|Style Guide — GUIDE]]
+- [[topic-language-protocol-substrate|Language Protocol Substrate]]
+- [[topic-citation-substrate|Citation Substrate]]
+- [[topic-anti-homogenization-discipline|Anti-Homogenization Discipline]]
+
+## References

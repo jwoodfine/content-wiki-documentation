@@ -16,6 +16,37 @@ Last updated: 2026-04-23.
 
 ## Open
 
+### 2026-04-28 — substantial productivity wave (15 new TOPIC publications + 1 collision-merge update)
+
+Session 17230305b03d3e32 (project-language Task) shipped 11 commits to this repo across 2026-04-27 → 2026-04-28, publishing **12 bilingual TOPIC pairs + 1 mid-session merged update**. All at repo root in legacy `topic-*.md` pattern matching the existing flat-at-root convention; future migration to category subdirectories per `naming-convention.md` §10 ratification (still pending operator decision on the 4 §10 sub-questions).
+
+Commits to this repo this session:
+
+- `8bc17cb` — banned-vocab + legacy-name fixes in 3 substrate-explainer TOPICs (compounding-substrate, sovereign-ai-routing, service-slm)
+- `6ecc9d1` + `2e0ba67` — rename topic-service-parser → topic-service-extraction (legacy name retired per pointsav-monorepo cleanup-log Completed migrations); body edits applied as follow-up after git-mv state-tracking gap
+- `6c1b178` — DELETE README-pointsav-wiki.md (redundant draft per Sonnet sub-agent #14 classification; closed the 2026-04-23 layout-defect entry)
+- `73642a8` — Phase 1B explainer TOPIC `topic-decode-time-constraints` bilingual pair (Master's confirmed next-session direction post-Phase 3 substrate-readiness)
+- `8d2396f` — meta-recursive Reverse-Funnel TOPIC bilingual pair (first end-to-end pipeline pilot per Doctrine claim #35)
+- `bad779c` — PL.6 batch refining 3 PK TOPIC drafts (app-mediakit-knowledge, documentation-pointsav-com-launch, substrate-native-compatibility) bilingual pairs (570 lines, 3 Sonnet sub-agents in parallel)
+- `8b6f91a` — PL.1.a collision merge (Master's reverse-funnel draft over my 8d2396f publication; preserved structural skeleton + added Operational implications section + cites updated)
+- `fd1ff64` — Wave 2 top-3 substrate-explainer TOPICs (trajectory-substrate, citation-substrate, disclosure-substrate) bilingual pairs (1093 lines, 3 Sonnet sub-agents in parallel)
+- `70e0ff2` — Wave 3a refining 2 PD substantives (design-system-substrate, worm-ledger-architecture) bilingual pairs (527 lines)
+
+Plus 1 commit to woodfine-fleet (`7f710f4` — moved GUIDE-mesh-execution → route-network-admin/) + 1 to pointsav-fleet (`362bba0` — refined GUIDE-operate-knowledge-wiki to media-knowledge-documentation/) + 1 to woodfine-fleet (`eb21c6c` — Wave 3b GUIDE-fs-anchor-emitter to vault-privategit-source/).
+
+Total wiki-leg deliverables this milestone: **12 bilingual TOPIC pairs + 2 English-only GUIDEs = 26 markdown files published**. Completed_topics_this_milestone counted in cluster manifest = 21 (tracking TOPICs only; GUIDEs counted separately).
+
+Disciplines applied per cluster-wiki-draft-pipeline.md §6:
+
+1. Banned-vocab grammar — substitutions made in compounding-substrate (next-generation→subsequent), sovereign-ai-routing (leverage→use), substrate-native-compatibility (leverage→control), design-system-substrate (leverage→advantage point), worm-ledger (robust + seamless removed)
+2. BCSC continuous-disclosure posture — forward-looking sections in worm-ledger §10-11, decode-time §6, design-system §5/§9, disclosure-substrate §6/§9, reverse-funnel §6, all carry planned/intended/may + cautionary framing per ni-51-102 + osc-sn-51-721
+3. Citation registry resolution — 21 unique IDs cited across the 12 TOPIC pairs; all registered in /srv/foundry/citations.yaml
+4. Bilingual pair generation per DOCTRINE §XII — Spanish strategic-adaptation overviews (~250-400 words each)
+
+NO body H1 in the new TOPICs (renderer supplies from frontmatter `title:` per content-contract.md §5.2). Discipline correction vs prior Phase 4/Part D files — those still have body H1 from the legacy authoring pattern.
+
+Process note (added to feedback memory `feedback_never_chmod_canonical_identity_store.md`): Bash wrappers for `bin/commit-as-next.sh` invocations should NOT chmod the canonical identity store at `/srv/foundry/identity/`. Per CLAUDE.md §11 action matrix, that's workspace-tier infrastructure (Master scope). Canonical at 0600 mathew-only is the deliberate posture per workspace v0.1.36+ jennifer-setup.md. Tasks that need other identities use per-user copies at `$HOME/.ssh/foundry-keys/` via the commit-as-next.sh `get_sigkey()` resolver. The chmod-then-restore workaround codified in earlier outbox messages is REJECTED.
+
 ### 2026-04-27 — Three more substrate-explainer TOPICs (Part D)
 
 Six new files landed at repo root following Master's 2026-04-27 v0.1.26

@@ -1,15 +1,14 @@
 ---
 schema: foundry-doc-v1
-document_version: 0.1.0
-title: "app-mediakit-knowledge — the wiki engine"
+title: "app-mediakit-knowledge"
 slug: topic-app-mediakit-knowledge
 category: applications
+type: topic
+quality: complete
+short_description: "app-mediakit-knowledge is the single-binary Rust wiki engine that serves PointSav's engineering documentation at documentation.pointsav.com, treating a markdown file tree as the canonical record and the running binary as a stateless view over it."
 status: pre-build
-last_edited: 2026-04-27
+last_edited: 2026-04-30
 editor: pointsav-engineering
-audience: vendor-public
-bcsc_class: no-disclosure-implication
-language_protocol: PROSE-TOPIC
 cites:
   - ni-51-102
   - osc-sn-51-721
@@ -20,27 +19,26 @@ cites:
   - mcp-spec
   - llguidance
   - json-ld-schema-org
+paired_with: topic-app-mediakit-knowledge.es.md
 ---
 
-## §1 What it is
+# app-mediakit-knowledge
 
-`app-mediakit-knowledge` is the wiki engine that serves PointSav's engineering documentation at `https://documentation.pointsav.com`. The engine is a single-binary Rust service composed of an `axum` HTTP server, a `comrak` CommonMark renderer with PointSav-specific extensions for wikilinks, footnotes, table of contents, and section anchors; a `tantivy` full-text search backend; and a `maud` templating layer that ships four article templates and accompanying static-asset bundles. The engine reads markdown files from a content directory the operator names at startup, renders them on demand into HTML, and returns them with caching headers tuned for a documentation audience.
+> app-mediakit-knowledge is the single-binary Rust wiki engine that serves PointSav's engineering documentation at documentation.pointsav.com, treating a markdown file tree as the canonical record and the running binary as a stateless view over it.
 
-The engine is a *view* over a markdown tree, not a content repository. The markdown tree is canonical; the running binary is a view that any number of operators can stand up over the same content tree, or different content trees, with no shared mutable state on the binary side. This source-of-truth inversion is the single most important design choice and is treated more substantively in §2.
+**app-mediakit-knowledge** is the wiki engine that serves PointSav's engineering documentation at `https://documentation.pointsav.com`. The engine is a single-binary Rust service composed of an `axum` HTTP server, a `comrak` CommonMark renderer with PointSav-specific extensions for wikilinks, footnotes, table of contents, and section anchors; a `tantivy` full-text search backend; and a `maud` templating layer that ships four article templates and accompanying static-asset bundles. The engine reads markdown files from a content directory named at startup, renders them on demand into HTML, and returns them with caching headers tuned for a documentation audience.
 
-The engine's first public deployment went live on 2026-04-27 at 16:25 UTC, serving a four-file placeholder content tree at `https://documentation.pointsav.com`. The full route surface from build phases 1, 1.1, 2, and 3 is operational; phases 4 through 8 are planned but not yet implemented.
+The engine's first public deployment went live on 2026-04-27 at 16:25 UTC. The full route surface from build phases 1, 1.1, 2, and 3 is operational; phases 4 through 8 are planned.
 
-## §2 Source-of-truth inversion
+## Source-of-truth inversion
 
-The substrate's load-bearing design choice: **git is canonical; the running binary is a view; CRDT (when collaboration is enabled) is session-ephemeral**.
+The engine's load-bearing design choice: **git is canonical; the running binary is a view; CRDT (when collaboration is enabled) is session-ephemeral**.
 
-Every concrete artefact a reader of the wiki interacts with — the HTML page, the Atom feed entry, the JSON-LD block, the search-result hit, the wikilink graph — is derived at request time from the markdown tree on disk. The disk state is what gets committed, reviewed, replicated, and disclosed. The HTML is throwaway. The Tantivy index is throwaway (rebuilt from the markdown tree on startup). The redb wikilink graph (Phase 4) is throwaway. The collaborative CRDT (Phase 2 Step 7, default-off) is throwaway between sessions.
+Every concrete artefact a reader encounters — the HTML page, the Atom feed entry, the JSON-LD block, the search-result hit, the wikilink graph — is derived at request time from the markdown tree on disk. The disk state is what gets committed, reviewed, replicated, and disclosed. The Tantivy index is throwaway (rebuilt from the markdown tree on startup). The redb wikilink graph (Phase 4, planned) is throwaway. The collaborative CRDT (Phase 2 Step 7, default-off) is throwaway between sessions.
 
-This inversion is the inverse of MediaWiki's traditional model, where the database is canonical and the file system is a derived working copy. The engine flips that: the file system is canonical, and the database (search index, link graph) is a derived working copy. The motivation is operational simplicity — a content-tree backup is a `git clone`; replication is a `git pull`; audit is a `git log` — and a substrate-level invariant: every published claim is a signed git commit, the disclosure record is the git history, and the BCSC continuous-disclosure posture per `conventions/bcsc-disclosure-posture.md` is enforced by the substrate's structure rather than by policy alone.
+This inverts the conventional model, where a database is canonical and the file system is a derived working copy. The motivation is operational simplicity — a content-tree backup is a `git clone`; replication is a `git pull`; audit is a `git log` — and a substrate-level invariant: every published claim is a signed git commit, and the BCSC continuous-disclosure posture `[ni-51-102]` is enforced by the substrate's structure rather than by policy alone.
 
-Other patterns follow from the inversion. The wiki has no preview-then-publish workflow because the canonical state is what was committed; an edit committed *is* a publication. There is no scheduled-publish workflow because the same property holds. There is no server-side draft state because drafts live in the contributor's git working copy or in the project-knowledge cluster's drafts-outbound port (per `conventions/cluster-wiki-draft-pipeline.md`), not in a database the wiki engine owns.
-
-## §3 The route surface
+## Route surface
 
 The engine exposes a tight set of HTTP routes. Each is independent; no route depends on session state or on a database the engine owns.
 
@@ -59,116 +57,87 @@ The engine exposes a tight set of HTTP routes. Each is independent; no route dep
 | `/robots.txt` | Crawler discovery | 3 |
 | `/llms.txt` | llmstxt.org convention for LLM crawlers | 3 |
 | `/git/{slug}` | Raw markdown source for git-clone-style ingestion | 3 |
-| `/ws/collab/{slug}` | WebSocket passthrough relay (default-off behind `--enable-collab`) | 2.7 |
+| `/ws/collab/{slug}` | WebSocket passthrough relay (default-off) | 2.7 |
 
-Phase 4 is intended to add `/history/{slug}`, `/blame/{slug}`, `/diff/{a}/{b}`, `/backlinks/{slug}`, an MCP server route `[mcp-spec]` for agent clients, and a read-only Git remote over smart-HTTP — letting any git client clone the served content tree as a regular git repository, riding the existing TLS termination.
+Phase 4 is intended to add `/history/{slug}`, `/blame/{slug}`, `/diff/{a}/{b}`, `/backlinks/{slug}`, an MCP server route `[mcp-spec]` for agent clients, and a read-only Git remote over smart-HTTP.
 
-The engine emits JSON-LD `TechArticle` and `DefinedTerm` schema `[json-ld-schema-org]` in every rendered article's `<head>` block (Phase 2 Step 1) for search-engine and LLM-crawler comprehension. The structured data is generated from the article's frontmatter, not hand-authored per page; the schema shape is consistent across the corpus.
+The engine emits JSON-LD `TechArticle` and `DefinedTerm` schema `[json-ld-schema-org]` in every rendered article's `<head>` block (Phase 2 Step 1). The structured data is generated from the article's frontmatter, consistent across the corpus.
 
-## §4 Wikipedia muscle-memory chrome (Phase 1.1)
+## Wikipedia muscle-memory chrome
 
-The engine ships with a deliberately Wikipedia-recognisable chrome. A reader of any Wikipedia article will navigate the engine without prompting, and a reader unfamiliar with Wikipedia will pick up the patterns in seconds because they are well-documented conventions.
+The engine ships with a deliberately Wikipedia-recognisable chrome. A reader who knows any Wikipedia article navigates the engine without prompting.
 
-What was kept (per `UX-DESIGN.md` §1):
+What was kept per `UX-DESIGN.md` §1:
 
-- Article / Talk tabs at the top of the page (Talk reserved for a future implementation; tab structure present today)
+- Article / Talk tabs at the top of the page
 - Read / Edit / View history tabs alongside the Article / Talk pair
-- Per-section `[edit]` pencils on every `## H2` and `### H3` heading
-- End-of-article ordering: References, See also, Categories, with a footer band naming the article's licence and the substrate
-- Hatnote band at the top of the article (used for disambiguation and cross-references)
+- Per-section `[edit]` pencils on every H2 and H3 heading
+- End-of-article ordering: References, See also, Categories, with a footer band
+- Hatnote band at the top of the article
 - Lead first-sentence convention (the article's subject is the bolded subject of the lead sentence)
-- Tagline directly under the article title
-- Collapsible left-rail TOC (built from `## H2` and `### H3` headings; deeper headings render normally but do not enter the TOC)
-- Language switcher (currently English / Spanish; structurally ready for additional languages without re-templating)
+- Collapsible left-rail TOC built from H2 and H3 headings
+- Language switcher (currently English / Spanish)
 
-What was added (substrate-specific, not Wikipedia-traditional):
+What was added (substrate-specific):
 
-- Citation badges next to inline `[citation-id]` references; hover reveals the registry entry from `~/Foundry/citations.yaml`
-- Forward-Looking-Information cautionary banner (Phase 8 is intended to harden this into a linter check `[ni-51-102]` `[osc-sn-51-721]`; today the banner renders when an article's frontmatter sets `forward_looking: true`)
-- BCSC `disclosure_class` field rendered as a small badge in the article header (`narrative` / `financial` / `governance`); not visible in default chrome but exposed in the JSON-LD
-- Information Verifiability Citation (IVC) masthead band placeholder (Phase 7 is intended to light up the IVC machinery; the band is a visual surface only at this time)
-- Reader density toggle (compact / comfortable; settings persist client-side)
+- Citation badges next to inline `[citation-id]` references
+- Forward-Looking-Information cautionary banner `[ni-51-102]`
+- BCSC `disclosure_class` field rendered as a small badge in the article header
+- Information Verifiability Citation (IVC) masthead band placeholder (Phase 7, planned)
+- Reader density toggle (compact / comfortable)
 
-The chrome is implemented in four `maud` HTML templates (`article.html`, `category.html`, `search.html`, `editor.html`) and a CSS bundle that tracks the Wikipedia *Vector* skin's spacing and typography rather than imitating its colour palette. The target is muscle memory, not literal mimicry; a reader who knows Wikipedia recognises the layout, but the visual identity is distinct.
+The chrome is implemented in four `maud` HTML templates and a CSS bundle that tracks the Wikipedia Vector skin's spacing and typography rather than imitating its colour palette.
 
-## §5 Editor surface (Phase 2)
+## Editor surface
 
-The wiki's editor is a CodeMirror 6 instance vendored into the binary's static-asset bundle, served at `/edit/{slug}`. It supports markdown highlighting with line numbers, configurable line wrap, undo/redo history with a keyboard accelerator, and atomic disk write via the engine's `POST /edit/{slug}` endpoint.
+The wiki's editor is a CodeMirror 6 instance vendored into the binary's static-asset bundle, served at `/edit/{slug}`. It supports markdown highlighting with line numbers, configurable line wrap, and atomic disk write via the engine's `POST /edit/{slug}` endpoint.
 
 Three substrate-aware editor features distinguish the implementation:
 
-**Squiggle linting (Phase 2 Step 4).** Seven deterministic rules flag editorial issues at typing time, each with a cited authority visible in a hover-card. The rules cover banned vocabulary, forward-looking framings without the cautionary banner pattern, BCSC-discipline checks (Sovereign Data Foundation referenced in current-tense without a planned/intended qualifier `[ni-51-102]`), and a set of Bloomberg-article-standard register checks. The rules are deterministic at edit time; the AS-2 grammar-time constraint (Doctrine claim #31, Constitutional Constrained Author `[constitutional-ai-2212-08073]`) is intended to harden these into compile-time-equivalent guarantees once the service-slm Doorman ships the `llguidance` `[llguidance]` integration.
+**Squiggle linting (Phase 2 Step 4).** Seven deterministic rules flag editorial issues at typing time, each with a cited authority visible in a hover-card. The rules cover banned vocabulary, forward-looking framings without the cautionary banner, BCSC-discipline checks, and Bloomberg-article-standard register checks. The AS-2 grammar-time constraint (Doctrine claim #31, Constitutional Constrained Author `[constitutional-ai-2212-08073]`) is intended to harden these into compile-time-equivalent guarantees once the service-slm Doorman ships the `llguidance` `[llguidance]` integration.
 
-**Citation autocomplete (Phase 2 Step 5).** Pressing `[` triggers a typeahead populated from the workspace citation registry at `~/Foundry/citations.yaml`. The contributor types `[ni-51` and the list narrows to `[ni-51-102]` (BCSC continuous disclosure) plus any other matches. Selecting an entry inserts the canonical `[citation-id]` form and adds the citation to the article's frontmatter `cites:` list automatically. The pattern keeps citation discipline straightforward to follow and difficult to skip.
+**Citation autocomplete (Phase 2 Step 5).** Pressing `[` triggers a typeahead populated from the workspace citation registry. Selecting an entry inserts the canonical `[citation-id]` form and adds the citation to the article's frontmatter `cites:` list automatically.
 
-**Three-keystroke ladder for Doorman (Phase 2 Step 6 stubs).** Tab opens a ladder of "ask Doorman" affordances at the cursor position — find a citation, suggest a hatnote target, generate a disambiguation link, propose a section heading. The affordances return 501 stubs in the v0.1.29 binary; Phase 4 is intended to wire them to the service-slm Doorman per `conventions/three-ring-architecture.md` Ring 3 routing.
+**Three-keystroke ladder for Doorman (Phase 2 Step 6 stubs).** Tab opens a ladder of "ask Doorman" affordances — find a citation, suggest a hatnote target, generate a disambiguation link, propose a section heading. The affordances return 501 stubs in the current binary; Phase 4 is intended to wire them to the service-slm Doorman.
 
-The editor's atomic-write semantics are conservative: the engine writes the new file content to a temporary path in the same directory, fsyncs, and renames over the destination. A failed write is visible to the contributor (the page returns an error state) and leaves the canonical content untouched. Concurrent edits from two non-collab sessions race at the rename step; the last-writer-wins convention is documented.
+The editor's atomic-write semantics are conservative: the engine writes the new file content to a temporary path, fsyncs, and renames over the destination. A failed write leaves the canonical content untouched.
 
-## §6 Search, feeds, and ingestion (Phase 3)
+## Search, feeds, and ingestion
 
-The engine indexes the content tree on startup and incrementally on edit. The index is on-disk Tantivy (BM25 by default) at `<state-dir>/search/`, rebuilt from the content tree if missing. Re-indexing on edit is triggered from the `POST /edit/{slug}` flow; the Tantivy `IndexWriter` is held in an `Arc<Mutex<>>` per the crate's typical pattern and released before reader reload to avoid the asynchronous-reload race identified during Phase 3 work.
+The engine indexes the content tree on startup and incrementally on edit. The index is on-disk Tantivy (BM25 by default), rebuilt from the content tree if missing.
 
-Three syndication formats render the corpus to crawlers: `/feed.atom` (RFC 4287 — each article is a feed entry with `title`, `summary`, `published`, `updated`, and the article's `cites:` list resolved against the registry), `/feed.json` (JSON Feed 1.1 — identical content shape, format differs), and `/sitemap.xml` (sitemaps.org-compliant — every article URL with last-modified date).
+Three syndication formats render the corpus to crawlers: `/feed.atom` (RFC 4287), `/feed.json` (JSON Feed 1.1), and `/sitemap.xml` (sitemaps.org-compliant). Two crawler-discovery files round out the surface: `/robots.txt` and `/llms.txt`.
 
-Two crawler-discovery files round out the surface: `/robots.txt` (User-agent rules; currently permissive) and `/llms.txt` (the llmstxt.org convention for LLM crawlers, listing the corpus's authoritative source URLs and the per-article markdown URLs at `/git/{slug}` for ingestion).
+The `/git/{slug}` route serves raw markdown source. An LLM crawler or a future federation peer can ingest the content tree by following `/llms.txt` to discover the article list, then fetching `/git/{slug}` for each article's source.
 
-The `/git/{slug}` route serves raw markdown source. An LLM crawler or a future federation peer can ingest the content tree by following `/llms.txt` to discover the article list, then fetching `/git/{slug}` for each article's source. This is the substrate's content-addressed federation path; Phase 7 is intended to harden it with blake3 hashing (Phase 4 Step 4.5 lays the groundwork). The route accepts an optional `.md` suffix on the slug for tools that expect markdown URLs to end in `.md`.
+## Real-time collaboration
 
-## §7 Real-time collaboration (Phase 2 Step 7)
+The engine optionally supports real-time collaborative editing via Yjs CRDT, default-off behind the `--enable-collab` CLI flag.
 
-The engine optionally supports real-time collaborative editing via Yjs CRDT. The feature is default-off behind the `--enable-collab` CLI flag; the production deployment at v0.1.29 does not enable it.
+The implementation follows the source-of-truth inversion: the server is a passthrough WebSocket relay, not a Yjs server. Yjs document state never lives on the server. The relay is a thin `tokio::sync::broadcast` per-slug room; clients send Yjs update packets, the server forwards them to other clients, and persistence flows through the existing `POST /edit/{slug}` save path on deliberate save. When all clients leave the room, the room closes and any unsaved CRDT state is discarded.
 
-The implementation follows the substrate's source-of-truth inversion: **the server is a passthrough WebSocket relay, not a Yjs server**. Yjs document state never lives on the server. The relay is a thin `tokio::sync::broadcast` per-slug room with a 256-message lag buffer; clients send Yjs update packets, the server forwards them to other clients in the room, and persistence flows through the existing `POST /edit/{slug}` save path on deliberate save (not on every keystroke). When all clients leave the room, the room closes and any unsaved CRDT state is discarded.
+## Substrate-native compatibility
 
-The motivation: the substrate's canonical record is git, not a Yjs document. A long-lived Yjs document on the server would create a parallel canonical record that drifts from git, defeats the disclosure-substrate posture, and complicates audit. The passthrough relay keeps git canonical and the CRDT session-ephemeral.
+The engine is substrate-native, not a MediaWiki shim. This reflects Doctrine claim #29 (Substrate Substitution). What was kept: xml-dump import path, URL conventions (`/wiki/{slug}`), wikilink syntax (`[[slug]]`), and footnote syntax (`[^1]`). What was dropped: the MediaWiki Action API shim `[mediawiki-action-api]`, MediaWiki templates and parser functions, and the pywikibot ecosystem. See [[topic-substrate-native-compatibility]] for the full rationale.
 
-The client lazy-loads `cm-collab.bundle.js` (302 KB; built out-of-tree and committed to `static/vendor/`) only when the template's `window.WIKI_COLLAB_ENABLED` flag is set by the server, so production deploys without `--enable-collab` never load any of the Yjs JavaScript and never expose the `/ws/collab/{slug}` route.
+## Build phases trajectory
 
-## §8 Substrate-native compatibility surface
+As of 2026-04-27 the engine is at the end of Phase 3:
 
-The engine is a substrate-native wiki, not a MediaWiki shim. This reflects DOCTRINE claim #29 (Substrate Substitution) ratified at workspace v0.1.10 and refined at v0.1.14.
+- **Phase 1** — axum server, comrak rendering, four templates, static assets, core routes (shipped; 8 tests)
+- **Phase 1.1** — Wikipedia muscle-memory chrome (shipped; 19 tests)
+- **Phase 2** — JSON-LD baseline, atomic edit endpoint, CodeMirror vendoring, squiggle linter, citation autocomplete, Doorman ladder stubs, collaboration passthrough relay (Steps 1–7 all shipped; 97 tests)
+- **Phase 3** — Tantivy search backend, on-disk index, `/search?q=`, edit-triggers-reindex, `/feed.atom`, `/feed.json`, `/sitemap.xml`, `/robots.txt`, `/llms.txt`, `/git/{slug}` (Steps 3.1–3.4 shipped)
+- **Phase 4** — git2 commit-on-edit, history and blame via gix, diff, redb wikilink graph, backlinks, blake3 federation seam, MCP server via rmcp, smart-HTTP read-only Git remote, OpenAPI 3.1 specification (planned)
+- **Phases 5–8** — image handling, per-tenant shaping, federation, disclosure-class linter (planned)
 
-What was kept: the `xml-dump` import path (the engine accepts MediaWiki XML dumps `[mediawiki-xml-dump]` for one-time corpus migration; a future `import-mediawiki-xml` tool consumes the dump format and emits the engine's markdown + frontmatter shape; the migration is one-shot, the live wiki does not run a MediaWiki API), URL conventions (`/wiki/{slug}` matches MediaWiki's URL layout so existing links from external sites continue to resolve), wikilink syntax (`[[slug]]` and `[[slug|display text]]` match Wikipedia's convention), and footnote syntax (`[^1]` matches CommonMark).
+Phases 4–8 are planned; cautionary language applies per `[ni-51-102]` and `[osc-sn-51-721]`. Material changes to the build plan are recorded in the workspace `CHANGELOG.md`.
 
-What was dropped: the MediaWiki Action API shim `[mediawiki-action-api]` (scoped at v0.1.10, dropped at v0.1.14 — substrate-native API surface covers the use cases without introducing a parallel authoritative interface), MediaWiki templates / parser functions (rendering path is CommonMark with PointSav-specific extensions, not a MediaWiki parser; templates not supported), and the pywikibot ecosystem (substrate's automation path is the workspace's existing tooling, not pywikibot).
+## See Also
 
-The trade-off is a narrower compatibility surface against a substrate-coherent posture. A reader migrating from a MediaWiki deployment loses templates and the Action API; they gain source-of-truth inversion, deterministic rendering, a BCSC-grounded disclosure posture `[ni-51-102]`, and a smaller attack surface. For PointSav's engineering documentation use case, the trade is favourable. A separate sibling TOPIC ([substrate-native-compatibility](topic-substrate-native-compatibility.md)) goes deeper on the rationale.
+- [[topic-substrate-native-compatibility]]
+- [[topic-reverse-funnel-editorial-pattern]]
+- [[topic-documentation-pointsav-com-launch-2026-04-27]]
+- [[topic-decode-time-constraints]]
 
-## §9 Inventions catalogue
-
-`INVENTIONS.md` at the crate root catalogues eight engine-specific inventions (current count as of v0.1.29; the catalogue grows as phases ratify). The inventions are substantive design choices that distinguish this engine from a generic markdown-served-as-HTML implementation:
-
-1. **Source-of-truth inversion** — git canonical, binary view, CRDT ephemeral; covered in §2 above.
-2. **Substrate-native compatibility** — Doctrine claim #29; covered in §8 above.
-3. **Constitutional Constrained Author (CCA)** — Doctrine claim #31 `[constitutional-ai-2212-08073]`; the editor's squiggle linter at edit time plus the AS-2 grammar constraint at decode time produce text that is structurally incapable of violating the BCSC disclosure posture or the workspace banned-vocabulary policy.
-4. **Information Verifiability Citation (IVC)** — Phase 7+ (planned); the masthead band that surfaces verification status of every published claim. Today a placeholder; the IVC machinery is substantive intended future work.
-5. **Substrate-Authored Affordances (SAA)** — the squiggle linter's seven deterministic rules; visible at edit time via hover-cards with cited authority.
-6. **`verify://` URL scheme** — Phase 7+ (planned); intended to resolve a citation ID to its verifiable source via the substrate's verification path, not a public DNS lookup.
-7. **The passthrough WebSocket relay** — covered in §7 above; the collaboration implementation that does not introduce a parallel authoritative record.
-8. **The substrate-native API surface set** — the route table in §3 above; what the Action API shim would have replicated, done coherently with the substrate's other invariants.
-
-The catalogue is open. New inventions land in `INVENTIONS.md` with a brief description, the substrate justification, the implementation phase, and the references that anchor it.
-
-## §10 Build phases trajectory
-
-The engine is shipped through a sequenced build plan documented in `ARCHITECTURE.md` §3. As of 2026-04-27 the engine is at the end of Phase 3:
-
-- **Phase 1** — axum server, comrak rendering, four templates, static assets, `/healthz` + `/` + `/wiki/{slug}` + `/static/{*path}` (shipped; 8 tests)
-- **Phase 1.1** — Wikipedia muscle-memory chrome; covered in §4 above (shipped; 19 tests)
-- **Phase 2** — JSON-LD baseline + atomic edit endpoint + CodeMirror vendoring + squiggle linter + citation autocomplete + Doorman ladder stubs + collaboration passthrough relay (Steps 1–7 all shipped; 97 tests)
-- **Phase 3** — Tantivy search backend + on-disk index + `/search?q=` + edit-triggers-reindex + `/feed.atom` + `/feed.json` + `/sitemap.xml` + `/robots.txt` + `/llms.txt` + `/git/{slug}` (Steps 3.1–3.4 shipped)
-- **Phase 4** — git2 commit-on-edit + `/history` + `/blame` via gix + `/diff` + redb wikilink graph + `/backlinks` + blake3 federation seam + MCP server `[mcp-spec]` via rmcp + smart-HTTP read-only Git remote + OpenAPI 3.1 specification (planned; Phase 4 plan document landed at v0.1.29; seven open questions require operator clearance before implementation begins)
-- **Phase 5** — image and asset handling (planned)
-- **Phase 6** — per-tenant shaping for Customer wikis (planned)
-- **Phase 7** — federation and content-addressed retrieval against the blake3 substrate; IVC machinery (planned)
-- **Phase 8** — disclosure-class linter intended to harden the BCSC invariants into compile-time-equivalent checks (planned)
-
-Phases 4–8 are planned; cautionary language applies per `[ni-51-102]` and `[osc-sn-51-721]`. Material changes to the build plan are recorded in the phase plan documents at `docs/PHASE-N-PLAN.md` and in the workspace `CHANGELOG.md`.
-
-## See also
-
-- [Decode-Time Constraints](topic-decode-time-constraints.md)
-- [The Reverse-Funnel Editorial Pattern](topic-reverse-funnel-editorial-pattern.md)
-- [Substrate-Native Compatibility](topic-substrate-native-compatibility.md)
-- [documentation.pointsav.com Launch](topic-documentation-pointsav-com-launch-2026-04-27.md)
+## References

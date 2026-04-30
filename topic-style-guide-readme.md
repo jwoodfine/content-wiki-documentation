@@ -1,29 +1,32 @@
 ---
+schema: foundry-doc-v1
 title: "Style Guide — README"
 slug: topic-style-guide-readme
 category: reference
+type: topic
+quality: core
+short_description: "Editorial standards for README files in Foundry repositories, covering the three README sub-types, the bilingual pair requirement, voice discipline, forward-looking statement treatment, and the Standard Readme structure."
 status: pre-build
-last_edited: 2026-04-27
+last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:
   - ni-51-102
   - osc-sn-51-721
+paired_with: topic-style-guide-readme.es.md
 ---
 
 # Style Guide — README
 
-The README is the most-read file in any repository. It is the
+> A Foundry README is the first file a cold reader encounters in any repository and must orient them in three elements — identity, scope, and where to look next — before supplying any further detail.
+
+The **README** is the most-read file in any repository. It is the
 first artefact a cold reader, contributor, or evaluator sees, and
 it sets the tone for everything else they read in the project.
 Foundry has three README sub-types — workspace, repository, and
-project — each with its own scope, but a shared editorial
-discipline.
-
-This style guide is the public-facing operational document for
-contributors. It is the customer-facing pair of the
-`service-disclosure/templates/readme-*.toml` files in the
-`pointsav-monorepo`, which carry the same rules in
-machine-readable form for the per-tenant adapter pipeline.
+project — each with its own scope but a shared editorial
+discipline. This style guide is the public-facing operational
+document for contributors; the machine-readable counterpart lives
+in `service-disclosure/templates/readme-*.toml`.
 
 ## What "README" means here
 
@@ -133,11 +136,11 @@ on every editorial action so the per-tenant adapter learns the
 voice over time. This article tells contributors and the
 apprentice what voice they are aiming for.
 
-## See also
+## See Also
 
-- [Style Guide — TOPIC](topic-style-guide-topic.md)
-- [Style Guide — GUIDE](topic-style-guide-guide.md)
-- The convention this article reflects:
-  `~/Foundry/conventions/language-protocol-substrate.md` §2
-- The machine-readable template:
-  `pointsav-monorepo/service-disclosure/templates/readme-*.toml`
+- [[topic-style-guide-topic|Style Guide — TOPIC]]
+- [[topic-style-guide-guide|Style Guide — GUIDE]]
+- [[topic-language-protocol-substrate|Language Protocol Substrate]]
+- [[topic-anti-homogenization-discipline|Anti-Homogenization Discipline]]
+
+## References

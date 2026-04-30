@@ -1,20 +1,31 @@
 ---
+schema: foundry-doc-v1
 title: "Style Guide — GUIDE"
 slug: topic-style-guide-guide
 category: reference
+type: topic
+quality: core
+short_description: "How to write a GUIDE file: the operational runbook format used inside Foundry deployment subfolders, covering required structure, voice, command formatting, and the distinction from TOPIC files."
 status: pre-build
-last_edited: 2026-04-27
+last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []
+paired_with: topic-style-guide-guide.es.md
 ---
 
 # Style Guide — GUIDE
 
-A GUIDE file (`GUIDE-<subject>.md`) is an operational runbook —
+> A GUIDE file is the operational runbook format for Foundry deployment subfolders — how to run, configure, or recover from failure — and is distinct from a TOPIC, which explains what something is and why.
+
+A **GUIDE** file (`guide-<subject>.md`) is an operational runbook —
 how to run, configure, or recover from failure. It tells the
 operator what to do, in order, with the commands they will copy
-and paste. It is not the explanation of why; that is a TOPIC,
-covered in [Style Guide — TOPIC](topic-style-guide-topic.md).
+and paste. It is not an explanation of why something works; that
+reasoning belongs in a TOPIC, covered in
+[[topic-style-guide-topic|Style Guide — TOPIC]]. Every GUIDE
+lives inside the deployment subfolder it operates; a GUIDE that
+appears at a catalog root without a containing subfolder is
+misplaced and must be moved.
 
 ## Where GUIDEs live
 
@@ -146,11 +157,11 @@ escalation path — does not belong in TOPIC files served to a
 public audience. It belongs in GUIDEs read by operators with
 deployment access.
 
-## See also
+## See Also
 
-- [Style Guide — README](topic-style-guide-readme.md)
-- [Style Guide — TOPIC](topic-style-guide-topic.md)
-- The convention this article reflects:
-  `~/Foundry/conventions/language-protocol-substrate.md` §2
-- The machine-readable template:
-  `pointsav-monorepo/service-disclosure/templates/guide.toml`
+- [[topic-style-guide-readme|Style Guide — README]]
+- [[topic-style-guide-topic|Style Guide — TOPIC]]
+- [[topic-language-protocol-substrate|Language Protocol Substrate]]
+- [[topic-customer-hostability|Customer Hostability]]
+
+## References

@@ -1,15 +1,22 @@
 ---
+schema: foundry-doc-v1
 title: "Canadian-Simple Copyright Posture"
 slug: topic-canadian-simple-copyright
 category: governance
+type: topic
+quality: core
+short_description: "Foundry's intellectual property vests in a single Canadian parent holding company by operation of Canadian Copyright Act § 13(3), without inter-company assignment, and is designed to be evolved incrementally as the corporate structure matures."
 status: pre-build
-last_edited: 2026-04-27
+last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:
   - ni-51-102
+paired_with: topic-canadian-simple-copyright.es.md
 ---
 
 # Canadian-Simple Copyright Posture
+
+> Foundry intellectual property vests in Woodfine Capital Projects Inc. by operation of Canadian Copyright Act § 13(3) without requiring inter-company assignment, preserving both share-sale optionality and a clean downstream-rollover path at incorporation.
 
 Foundry's intellectual property is held under a deliberately
 minimal corporate posture chosen to preserve flexibility while
@@ -151,16 +158,15 @@ corporate structure looks like; the disclosure regime per
 whether or not the relevant entity is currently a reporting
 issuer.
 
-## See also
+## See Also
 
-- The operational complement at
-  `factory-release-engineering/README.md` §6
-  (governance source-of-truth; this TOPIC is the public-facing
-  pair).
-- [Customer Hostability](topic-customer-hostability.md)
-- Canadian Copyright Act —
-  <https://laws-lois.justice.gc.ca/eng/acts/c-42/>
-- BC Business Corporations Act —
-  <https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/02057_00>
-- Income Tax Act § 85 (rollover) —
-  <https://laws-lois.justice.gc.ca/eng/acts/i-3.3/section-85.html>
+- [[topic-customer-hostability|Customer Hostability]]
+- [[topic-contributor-model|Contributor Model]]
+- [[topic-sovereign-replacement-initiative|Sovereign Replacement Initiative]]
+- [[topic-ontological-governance|Ontological Governance]]
+
+## References
+
+- Canadian Copyright Act — <https://laws-lois.justice.gc.ca/eng/acts/c-42/>
+- BC Business Corporations Act — <https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/02057_00>
+- Income Tax Act § 85 (rollover) — <https://laws-lois.justice.gc.ca/eng/acts/i-3.3/section-85.html>
