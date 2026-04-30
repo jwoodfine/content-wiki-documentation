@@ -10,11 +10,33 @@
 > layout-rule enforcement, defect resolution, surfaced open
 > questions — does.
 
-Last updated: 2026-04-23.
+Last updated: 2026-04-30.
 
 ---
 
 ## Open
+
+### 2026-04-30 — Wikipedia normalization pass + 5 architecture/reference TOPIC pairs committed
+
+Session: project-language Task (session 2026-04-30, continuation from session 12376c0e4bc33ea7).
+
+**Commits this session** (6 commits, alternating Jennifer/Peter Woodfine):
+
+1. `07d2d25` — Wikipedia-structure normalization of all 40 root topic-*.md files + index.md: foundry-doc-v1 frontmatter, quality grades (complete/core/stub), See Also + References sections, body H1 removed per content-contract §5.2, ADR/emoji headers removed. topic-sovereign-telemetry retitled to "Zero-State Telemetry Architecture" (descriptive "sovereign" removed per BCSC posture).
+
+2. `5aa030f` — NEW: `architecture/compounding-substrate.md` + `architecture/compounding-substrate.es.md` bilingual pair. Slug = `compounding-substrate` (matches featured-topic.yaml pin; `topic-` prefix is content-contract legacy per §3). Closes the featured-pin gap on documentation.pointsav.com home page. Competitive-by-name references removed (structural positioning discipline); BCSC forward-looking framing on quarterly federation cadence.
+
+3. `4c5cca7` — NEW: `architecture/brief-queue-substrate.md` + `.es.md` and `architecture/service-slm-yoyo-operational.md` + `.es.md`. Operational state as of workspace v0.1.91. BCSC forward-looking framing on LoRA training cycle targets.
+
+4. `5c4674c` — NEW: `architecture/pointsav-llm.md` + `.es.md`. Planned Tier 3 product. Competitive comparison section (Sierra/Decagon/Cresta) removed per structural-positioning discipline; replaced with structural market-gap analysis.
+
+5. `cec1003` — NEW: `reference/wikipedia-structure.md` + `.es.md`. 9-panel Main Page anatomy, 16-element article structure, 3 quality tiers, infobox schemas. Research conducted via live web-fetch sub-agent.
+
+**Open state after this session**:
+- All 40 root topic-*.md files are now Wikipedia-normalized but remain at root (legacy flat-at-root pattern). Category migration (topic-*.md → architecture/<slug>.md, services/<slug>.md, etc.) is still pending, tracked in the 2026-04-23 cleanup item below. The new architecture/ and reference/ articles use the correct category subdirectory pattern.
+- `topic-compounding-substrate.md` at root is now superseded by `architecture/compounding-substrate.md` (the featured-pin version). The root file should be retired at next migration pass.
+- `quality:` frontmatter field is in active use across all TOPICs; visual badge rendering is project-knowledge engine scope (not yet implemented).
+- Doorman Tier B (`has_yoyo=true`) is live; editorial bilingual passes are a candidate for routing through Doorman (pending `bin/doorman-editorial-call.sh` helper from Master).
 
 ### 2026-04-28 — substantial productivity wave (15 new TOPIC publications + 1 collision-merge update)
 
