@@ -8,11 +8,22 @@
 > Read at session start when a Root Claude opens in this repo. Update
 > at session end when repo-scope open items change.
 
-Last updated: 2026-04-23.
+Last updated: 2026-04-30.
 
 ---
 
 ## Currently open
+
+- **Evolve `glossary-documentation.csv` as unified master glossary.**
+  The file at repo root is now the active unified glossary covering
+  TOPIC-*, GUIDE-*, README-*, and DESIGN-* vocabulary — do not wait
+  for service-content to own it programmatically. Current state
+  preserved as `glossary-documentation-v1-2026-04-30.csv` (snapshot).
+  Evolution plan: (1) fill definitions and Spanish for existing 271
+  terms; (2) add new terms as TOPIC/GUIDE/DESIGN content lands from
+  project-language and project-design pipelines; (3) add `Content_Scope`
+  column when multi-type coverage warrants it. Slow and continuous —
+  no single migration pass.
 
 - **Content normalisation to contract-conforming layout.**
   Execute the migration described in `cleanup-log.md`: add
