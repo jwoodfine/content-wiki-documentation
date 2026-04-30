@@ -1,29 +1,71 @@
-# 🔐 TOPIC: CRYPTOGRAPHIC LEDGERS (IMMUTABLE STATE)
-**Protocol Identifier:** DS-ADR-12 (Payload-Agnostic Flat-File Ledger)
-**Status:** Active Execution
-**Primary Vendor:** PointSav Digital Systems™
-
+---
+schema: foundry-doc-v1
+title: "Cryptographic Ledgers"
+slug: topic-cryptographic-ledgers
+category: architecture
+type: topic
+quality: core
+short_description: "Cryptographic ledgers are the immutable-state storage pattern used in the PointSav platform, enforcing mathematical immutability so that any alteration to a recorded fact breaks a verifiable cryptographic hash chain rather than requiring trust in administrative access controls."
+status: pre-build
+last_edited: 2026-04-30
+editor: pointsav-engineering
+cites: []
+paired_with: topic-cryptographic-ledgers.es.md
 ---
 
-## I. THE PHILOSOPHY OF IMMUTABLE HISTORY
-In traditional corporate governance, data is held in mutable tables. A system administrator with sufficient privileges can silently edit a database cell, altering a financial record or compliance log without triggering physical alarms. This introduces severe liability and breaks the chain of custody.
+# Cryptographic Ledgers
 
-**The Solution:** The Cryptographic Ledger. 
-A physical architecture that enforces mathematical immutability. It guarantees that once a corporate fact is recorded, any subsequent alteration—even by a single pixel or byte—shatters the mathematical lock and alerts the Customer to the breach.
+> Cryptographic ledgers are the immutable-state storage pattern used in the PointSav platform, enforcing mathematical immutability so that any alteration to a recorded fact breaks a verifiable cryptographic hash chain rather than requiring trust in administrative access controls.
 
-## II. THE STRUCTURAL SEPARATION (DS-ADR-12)
-To achieve immutability without complex database engines, the PointSav OS physically splits every incoming payload into two distinct entities: The Asset and The State.
+**Cryptographic ledgers** are the immutable-state storage architecture used across the PointSav platform to guarantee that once a corporate fact is recorded, any subsequent alteration — down to a single byte — breaks a mathematical lock that any third party can independently verify. In traditional database systems, a system administrator with sufficient privileges can silently edit a record, altering a financial entry or compliance log without triggering any automatic alarm. The cryptographic ledger eliminates this vulnerability by removing the concept of a privileged mutable path: the storage architecture enforces append-only writes at the code level, and every record's integrity is bound into a cryptographic hash chain where modifying any prior entry produces a detectable inconsistency in all subsequent entries.
 
-1. **The Physical Vault (`/assets/`):** When a user drops a file (e.g., a `.pdf` contract or an `.xlsx` ledger) into the system, the execution software drops it into an isolated asset vault. The kernel instantly strips all execution permissions from the file. It becomes an inert binary blob.
-2. **The State Machine (`/ledger/`):** The system concurrently generates a deterministic `.yaml` file. This file contains the human-readable metadata (author, date, taxonomy) and, critically, a mathematically unique SHA-256 cryptographic checksum of the original asset.
+## Overview
 
-## III. THE MATHEMATICAL LOCK (SHA-256)
-The SHA-256 checksum acts as a physical software lock sealing the asset. 
+The PointSav platform implements cryptographic ledger discipline through `service-fs`, the per-tenant WORM (Write-Once-Read-Many) immutable ledger. The architecture physically separates every incoming payload into two entities: the asset and its state record.
 
-If an auditor or internal compliance engine needs to verify the integrity of the corporate history, they simply re-hash the physical asset and compare it to the checksum permanently written in the `.yaml` ledger. If the hashes match, the physical reality is absolutely verified. If they deviate, the asset has been mathematically compromised.
+**The asset** — when a user submits a file (a PDF contract, a spreadsheet, a document) into the system, the storage layer places it in an isolated vault and strips all execution permissions. It becomes an inert binary object.
 
-## IV. REAL-WORLD DEPLOYMENT MODEL
-This architecture strictly follows the Institutional Model (Vendor/Customer):
+**The state record** — the system concurrently generates a deterministic record containing human-readable metadata (author, date, taxonomy, type) and a SHA-256 cryptographic checksum of the original asset. The state record is appended to the ledger; it cannot be modified after appending.
 
-* **The Vendor (PointSav Digital Systems™):** Engineers the `app-console-input` engines that intercept user data, generate the deterministic YAML pointers, and execute the cryptographic hashing algorithms.
-* **The Customer (Woodfine Management Corp.):** Executes these ledgers to maintain SOC 3 and DARP compliance. By utilizing mathematically verified flat files, the Customer proves structural integrity to institutional auditors without exposing live, mutable infrastructure.
+## How It Works
+
+The cryptographic lock works through the Merkle hash chain structure. Each new entry is hashed; the hash of the new entry is combined with the hash of the prior entry to produce the hash of the current tree state (the "tree head" or checkpoint). The checkpoint is signed by the tenant key and published.
+
+If an auditor or compliance engine needs to verify the integrity of a historical record:
+
+1. Re-hash the physical asset.
+2. Compare the computed hash to the checksum in the state record.
+3. Verify the state record is present in the Merkle tree at the claimed position by computing an inclusion proof against the signed checkpoint.
+4. Verify the checkpoint signature against the tenant's public key.
+
+If the hashes match and the inclusion proof verifies, the record is intact. If either check fails, the asset has been altered or the ledger has been tampered with — and the Merkle chain makes tampering externally detectable even without access to the original file.
+
+## Architecture
+
+The PointSav cryptographic ledger uses C2SP tlog-tiles format — the same on-disk structure used by Certificate Transparency logs and Sigstore Rekor. Tiles are static, base64-encoded text files containing 256 entries each at the leaf level, with intermediate Merkle-level tiles above them. This format is human-readable (consistent with Doctrine Pillar 1: plain text only), independently verifiable, and compatible with standard Certificate Transparency tooling.
+
+Monthly, each tenant's signed checkpoint is submitted to the Sigstore Rekor v2 public transparency log (Doctrine Invention #7 — Sigstore Rekor anchoring). Once anchored, the checkpoint is public and the tenant cannot retroactively alter any prior record without the tampered state being detectable against the anchored checkpoint.
+
+## Applications
+
+The cryptographic ledger applies across all customer-facing data in the platform:
+
+- **Corporate records** — financial entries, compliance documents, and operational logs are all appended to the WORM ledger before any other processing.
+- **SOC 2 compliance** — the ledger's append-only invariant and Rekor anchoring satisfy SOC 2 Processing Integrity requirements (PI4 — Outputs are complete, accurate, and timely).
+- **Regulatory recordkeeping** — the architecture is structurally aligned with SEC Rule 17a-4(f) broker-dealer electronic recordkeeping requirements (WORM path) and eIDAS qualified preservation service requirements for long-term proof-of-existence.
+- **Audit trail** — every read of the ledger is itself logged to an audit sub-ledger, which is also WORM and also anchored.
+
+## See Also
+
+- [[worm-ledger-architecture]]
+- [[crypto-attestation]]
+- [[capability-based-security]]
+- [[compounding-substrate]]
+- [[sel4-foundation]]
+
+## References
+
+- `conventions/worm-ledger-design.md` — canonical WORM ledger specification; C2SP tlog-tiles format rationale; four-layer architecture detail
+- `DOCTRINE.md §II.7` — Doctrine Invention #7: Integrity Anchor via Sigstore Rekor
+- `DOCTRINE.md §IX` — SOC 2 posture and external WORM standard alignment
+- `conventions/bcsc-disclosure-posture.md` — audit trail requirements for continuous-disclosure compliance

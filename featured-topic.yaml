@@ -1,0 +1,8 @@
+# featured-topic.yaml — pin file for documentation.pointsav.com home page
+# Schema confirmed by project-knowledge 2026-04-29T00:00:00Z (Q2 closure)
+# Engine reads on each request; absent → suppress featured panel; present → parse slug.
+# Update this file to rotate the featured TOPIC.
+
+slug: compounding-substrate
+since: 2026-04-29
+note: launch pin for iteration 1 — representative substrate-doctrine article

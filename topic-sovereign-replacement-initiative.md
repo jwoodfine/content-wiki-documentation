@@ -1,28 +1,80 @@
-# 🚀 TOPIC: SOVEREIGN REPLACEMENT INITIATIVE (MOONSHOTS)
-**Protocol Identifier:** SYS-MOONSHOT-01
-**Status:** Active Engineering
-**Primary Vendor:** PointSav Digital Systems™
-
+---
+schema: foundry-doc-v1
+title: "Sovereign Replacement Initiative"
+slug: topic-sovereign-replacement-initiative
+category: governance
+type: topic
+quality: stub
+short_description: "The Sovereign Replacement Initiative is the engineering governance program that tracks third-party dependencies, isolates them in quarantined component directories, and coordinates the active moonshot programs that build native replacements."
+status: pre-build
+last_edited: 2026-04-30
+editor: pointsav-engineering
+cites: []
+paired_with: topic-sovereign-replacement-initiative.es.md
 ---
 
-## I. THE PHILOSOPHY OF TECHNICAL DEBT
-Any enterprise executing a digital transformation inherits foreign third-party architecture. Reliance on legacy dependencies (e.g., proprietary cloud auth, foreign GPU drivers, commercial graph APIs) represents a terminal threat to institutional sovereignty. If a third-party vendor alters their terms of service or deprecates an API, the corporate infrastructure collapses.
+# Sovereign Replacement Initiative
 
-**The Solution:** The Sovereign Replacement Initiative. 
-A physical ledger of technical debt and an active engineering pipeline to eradicate it.
+> The Sovereign Replacement Initiative is the formal program that records every foreign dependency in a structured ledger, enforces quarantine isolation until a native replacement is ready, and retires the dependency once the replacement reaches structural parity.
 
-## II. THE QUARANTINE PROTOCOL
-Until a legacy component can be replaced, it must be mathematically contained. 
+Any platform that has passed through a digital-transformation
+phase inherits third-party architectural components it did not
+design. Reliance on those components — proprietary cloud
+authentication providers, foreign GPU drivers, commercial graph
+APIs — creates a structural risk: if a third-party vendor changes
+its terms of service or deprecates an API, the dependent platform
+either adapts under pressure or halts. The **Sovereign Replacement
+Initiative** is the Foundry response to this class of risk. It is
+a physical ledger of outstanding third-party dependencies and an
+active engineering pipeline designed to eliminate them
+systematically.
 
-Foreign dependencies are physically isolated into Quarantined Component silos (e.g., `vendor-azure-auth`, `vendor-microsoft-graph`). These directories serve as structural placeholders. They strictly monitor and restrict the foreign code, preventing it from executing outside of a tightly controlled capability sandbox.
+## Technical debt ledger
 
-## III. THE MOONSHOT PIPELINE
-For every quarantined foreign dependency, the Vendor establishes a corresponding "Moonshot" directory (e.g., `moonshot-database`, `moonshot-kernel`). 
+The initiative maintains a ledger that records each identified
+third-party dependency alongside its isolation status and the
+corresponding moonshot initiative, if one has been opened. The
+ledger is a live document: entries are added when new dependencies
+are identified and closed when a native replacement achieves
+structural parity. Auditors and contributors can read the ledger
+to see the platform's current external exposure.
 
-These are active engineering initiatives to build native, mathematically verified sovereign replacements. Once a Moonshot component achieves structural parity, it physically replaces the quarantined third-party code. This continuously shrinks the enterprise's attack surface and eliminates vendor lock-in.
+## Quarantine protocol
 
-## IV. REAL-WORLD DEPLOYMENT MODEL
-This architecture strictly follows the Institutional Model (Vendor/Customer):
+Until a native replacement is available, a legacy component is
+physically isolated into a quarantined component silo (for example,
+`vendor-azure-auth` or `vendor-microsoft-graph`). These directories
+are structural containers that restrict the foreign code to a
+controlled capability boundary. The isolation prevents coupling from
+spreading into adjacent platform layers while the replacement is
+under development.
 
-* **The Vendor (PointSav Digital Systems™):** Maintains the Moonshot ledgers. Engineers the Rust-based hypervisors, native databases, and secure network interfaces required to replace foreign silicon and software.
-* **The Customer (Woodfine Management Corp.):** Audits the Moonshot pipeline to verify the enterprise's trajectory toward 100% operational independence from legacy hyperscalers.
+## Moonshot pipeline
+
+For every quarantined dependency, the engineering team opens a
+corresponding moonshot directory (for example, `moonshot-database`
+or `moonshot-kernel`). These are active development efforts
+targeting native, formally verifiable implementations. Once a
+moonshot component achieves structural parity with its quarantined
+counterpart, it replaces the isolated directory and the ledger
+entry closes.
+
+## Vendor and customer roles
+
+The initiative operates across the vendor-customer structure:
+
+- **Vendor (PointSav Digital Systems).** Maintains the ledger,
+  engineers the native replacements, and owns the moonshot
+  directories.
+- **Customer (Woodfine Management Corp.).** Audits the pipeline to
+  verify progress toward operational independence from legacy
+  external providers.
+
+## See Also
+
+- [[topic-moonshot-initiatives|Moonshot Initiatives]]
+- [[topic-ontological-governance|Ontological Governance]]
+- [[topic-verification-surveyor|Verification Surveyor]]
+- [[topic-customer-hostability|Customer Hostability]]
+
+## References
