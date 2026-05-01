@@ -3,6 +3,6 @@
 # Engine reads on each request; absent → suppress featured panel; present → parse slug.
 # Update this file to rotate the featured TOPIC.
 
-slug: compounding-substrate
-since: 2026-04-29
-note: launch pin for iteration 1 — representative substrate-doctrine article
+slug: architecture/topic-leapfrog-2030-architecture
+since: 2026-05-01
+note: iteration-2 re-launch — Leapfrog 2030 flagship article pinned for launch

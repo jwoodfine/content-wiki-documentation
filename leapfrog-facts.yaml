@@ -1,0 +1,37 @@
+# leapfrog-facts.yaml — Leapfrog 2030 invention facts panel
+# Rendered as the right-column "Leapfrog 2030 inventions" panel on the
+# documentation.pointsav.com home page. Engine reads on each request;
+# absent → suppress panel; present → render bulleted list with optional
+# wikilink anchors. Update this file to rotate facts.
+#
+# Schema per iteration-2 engine:
+#   facts:
+#     - text: <one-sentence fact ending with article context>
+#       link_slug: <optional routing slug for hyperlink; omit to render plain text>
+#
+# Updated: 2026-05-01 by project-knowledge Task (iteration-2 re-launch)
+
+facts:
+  - text: "The Doorman is the only process in the substrate that holds external API keys — across all three compute tiers."
+    link_slug: "architecture/topic-single-boundary-compute-discipline"
+
+  - text: "A Tier 0 specialist runs on a $300–$500 mini-PC and operates without any cloud connection."
+    link_slug: "architecture/topic-tier-zero-customer-side-sovereign-specialist"
+
+  - text: "Every Ring 1 and Ring 2 service functions fully without AI — intelligence is structurally optional."
+    link_slug: "architecture/topic-substrate-without-inference-base-case"
+
+  - text: "The knowledge graph stays on the customer's hardware; Foundry has no access to it."
+    link_slug: "architecture/topic-customer-owned-graph-ip"
+
+  - text: "A Vertical Seed Pack installs a calibrated, industry-specific AI substrate in approximately 30 minutes."
+    link_slug: "architecture/topic-seed-taxonomy-as-smb-bootstrap"
+
+  - text: "Documentation is written to be read by AI agents first, producing structured training data as a byproduct."
+    link_slug: "architecture/topic-code-for-machines-first"
+
+  - text: "The WORM ledger is structured to satisfy SEC 17a-4(f) and eIDAS by architecture, not by policy."
+    link_slug: "architecture/topic-worm-ledger-design"
+
+  - text: "Revenue flows to the customer via the substrate — the platform earns alongside the customer, not from them."
+    link_slug: "architecture/topic-reverse-flow-substrate"
