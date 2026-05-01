@@ -57,3 +57,8 @@ sustituye el asesoramiento de un abogado.
 - [[topic-style-guide-cla|Guía de estilo — Acuerdo de Licencia de Contribuidor]]
 - [[topic-language-protocol-substrate|Substrato del Protocolo de Lenguaje]]
 - [[topic-canadian-simple-copyright|Derechos de Autor Simplificados (Canadá)]]
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

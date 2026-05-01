@@ -77,3 +77,8 @@ El Sobre B (unikernel seL4) y la capa de persistencia con conciencia de capacida
 - Convención: `~/Foundry/conventions/worm-ledger-design.md`
 - Arquitectura de tres anillos: `~/Foundry/conventions/three-ring-architecture.md`
 - Doctrina Invención #7: `~/Foundry/DOCTRINE.md` §II.7
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

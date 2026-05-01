@@ -40,3 +40,8 @@ Un memo nunca se versiona creando una copia `_V2` o `_V3`. Se edita el archivo e
 - [[topic-style-guide-topic|Guía de estilo: TOPIC]]
 - [[topic-style-guide-guide|Guía de estilo: GUIDE]]
 - [[topic-citation-substrate|Sustrato de citas]]
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

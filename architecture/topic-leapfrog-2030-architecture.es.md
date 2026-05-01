@@ -28,3 +28,7 @@ Cada interacción con el sistema es un posible ejemplo de entrenamiento para el 
 - [[compounding-substrate]] — El Sustrato Compuesto: fundamento económico y técnico
 - [[service-slm-yoyo-operational]] — Estado operacional del nivel B (Yo-Yo) y Doorman
 - [[source-of-truth-inversion]] — El patrón canónico/vista/efímero que sustenta el sustrato
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

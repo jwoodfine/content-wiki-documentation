@@ -35,3 +35,7 @@ Because raw payloads are sanitized at the boundary and the cleaned records are w
 - [[topic-worm-ledger-architecture]] — the WORM ledger that stores the sanitized records
 - [[topic-service-email]] — Ring 1 ingest for email
 - [[compounding-substrate]] — the three-ring architecture in context
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

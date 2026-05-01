@@ -54,3 +54,8 @@ del Nomenclature Matrix se usan con exactitud.
 - [[topic-style-guide-readme|Guía de estilo — README]]
 - [[topic-style-guide-topic|Guía de estilo — TOPIC]]
 - [[topic-language-protocol-substrate|Substrato del Protocolo de Lenguaje]]
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

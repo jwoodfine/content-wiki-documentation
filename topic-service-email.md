@@ -58,3 +58,8 @@ The service surrenders execution to the downstream parser (`service-extraction`)
 - DOCTRINE.md §XI — Ring 1 boundary-ingest architecture
 - `pointsav-monorepo/service-email/` — implementation crate
 - SYS-ADR-07 — structured data never routes through AI (governs downstream handling of service-email output)
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

@@ -170,3 +170,8 @@ issuer.
 - Canadian Copyright Act — <https://laws-lois.justice.gc.ca/eng/acts/c-42/>
 - BC Business Corporations Act — <https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/02057_00>
 - Income Tax Act § 85 (rollover) — <https://laws-lois.justice.gc.ca/eng/acts/i-3.3/section-85.html>
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

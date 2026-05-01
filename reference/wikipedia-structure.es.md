@@ -33,3 +33,7 @@ Lo opuesto también es cierto: una wiki donde cada artículo tiene una estructur
 La versión completa en inglés ([wikipedia-structure.md](wikipedia-structure.md)) describe los nueve paneles de la página principal de Wikipedia, los dieciséis elementos de la anatomía de un artículo, las tres plantillas de recuadro de datos para documentación de PointSav (endpoint de API, función, integración), y el sistema de calificación de calidad.
 
 Los colaboradores que escriban o editen artículos deben consultar ese artículo como referencia de estilo. Los tres elementos esenciales para el trabajo cotidiano son: escribir el párrafo de apertura como si fuera el único texto que el lector verá; usar el campo `quality:` con honestidad desde el primer commit; y mantener el orden estándar de secciones (cuerpo → Véase también → Referencias).
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

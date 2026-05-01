@@ -116,3 +116,7 @@ For deployments that include Ring 3, the read-only constraint means the determin
 ## Provenance
 
 Source material: workspace-root draft `topic-three-ring-architecture.md`, workspace conventions `three-ring-architecture.md` and `compounding-substrate.md`, service catalog in MEMO §6.3. Refinement disciplines applied: no body H1 (renderer supplies from frontmatter title); structural-positioning discipline (no competitive-by-name framing); BCSC posture applied (no forward-looking claims requiring labelling in this article — the ring structure is an operational present-state description); banned-vocabulary pass (no substitutions required).
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

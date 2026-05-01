@@ -57,3 +57,7 @@ El certificado indica `notAfter=Jul 26 16:24:00 2026 GMT` según la salida de `o
 ## Procedencia
 
 Narrativa de hechos actuales, redactada el 2026-04-27 inmediatamente después del lanzamiento v0.1.29. Las declaraciones prospectivas sobre las Fases 4–8 siguen [ni-51-102] y [osc-sn-51-721]. Refinado por project-language 2026-04-30.
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

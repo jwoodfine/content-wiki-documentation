@@ -222,3 +222,7 @@ This audit was conducted 2026-04-30 with web-fetch primary research across all 2
 Authored 2026-04-30 by a project-knowledge Task Claude session (Opus parent synthesis from Sonnet sub-agent C report that conducted web-fetch primary research across all 25 providers). Refined by project-language, 2026-04-30. This TOPIC is structural competitive analysis — its purpose requires naming providers and describing their limitations factually, consistent with workspace `CLAUDE.md` §6 "Structural positioning (no competitive comparison)": each provider is described factually with its strongest positioning and named genuine advantages; PointSav's substrate is framed structurally, not as a "winner" claim.
 
 Forward-looking framings follow [ni-51-102] and [osc-sn-51-721] continuous-disclosure posture. Material assumptions: the substrate's governance and editorial preconditions remain on the design trajectory described in Foundry DOCTRINE.md and workspace NEXT.md.
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

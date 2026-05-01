@@ -152,3 +152,8 @@ The pattern does not displace hyperscalers in volume; they retain the unregulate
 - `DOCTRINE.md §XIV` — doctrine context
 - `conventions/three-ring-architecture.md` — architectural backbone
 - `conventions/customer-first-ordering.md` — deployment ordering rationale
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

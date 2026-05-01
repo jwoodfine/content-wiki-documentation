@@ -140,3 +140,8 @@ The quarterly pretraining cadence is intended once L3 is operational. Substrate 
 - `[olmo3-allenai]` — OLMo 3 base model (Allen Institute for AI)
 - `[ni-51-102]` — NI 51-102 Continuous Disclosure Obligations
 - `[osc-sn-51-721]` — OSC Staff Notice 51-721 Forward-Looking Information Disclosure
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

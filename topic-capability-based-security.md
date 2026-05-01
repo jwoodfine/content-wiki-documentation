@@ -64,3 +64,8 @@ The capability model applies across the full PointSav deployment stack:
 - `DOCTRINE.md §XIV` — Compounding Substrate and the seL4 foundation context
 - `conventions/three-ring-architecture.md` — Ring 1 / Ring 2 service isolation model
 - `IT_SUPPORT_Nomenclature_Matrix_V8.md` — canonical OS names (ToteboxOS, MediaKit OS)
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

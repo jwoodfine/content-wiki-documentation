@@ -41,3 +41,7 @@ La especificación técnica completa, incluyendo la taxonomía de servicios, las
 - [[service-slm]] — el servicio Doorman del anillo 3
 - [[compounding-doorman]] — el patrón operativo que implementa el Doorman y por qué se compone con el tiempo
 - [[worm-ledger-architecture]] — el registro inmutable de solo adición del anillo 1
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

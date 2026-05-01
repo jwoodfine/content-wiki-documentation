@@ -216,3 +216,8 @@ The seL4 unikernel envelope (Envelope B) and the `moonshot-database` capability-
 - `clones/project-data/service-fs/RESEARCH.md` — full synthesis with alternatives and ten ratification decisions
 - `clones/project-data/service-fs/ARCHITECTURE.md` — durable architecture overview
 - `clones/project-data/service-fs/SECURITY.md` — compliance posture mapping
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

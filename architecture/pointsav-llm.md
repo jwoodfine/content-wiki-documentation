@@ -159,3 +159,7 @@ Tiers 0, A, and B are operational today. Tier C (PointSav-LLM) is planned, with 
 ## Provenance
 
 Source material: PointSav Doctrine claims #15, #40; `conventions/four-tier-slm-substrate.md`; `conventions/llm-substrate-decision.md`; `conventions/apprenticeship-substrate.md`; `conventions/knowledge-commons.md`. Research on customer-service AI market structure and pricing consulted. All capability and timeline statements in this article are planned trajectory per BCSC disclosure posture. [ni-51-102] [osc-sn-51-721]
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

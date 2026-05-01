@@ -36,3 +36,7 @@ This property is intended to guarantee operational continuity when a primary dep
 - [[topic-worm-ledger-architecture]] — WORM ledger design that underpins archive integrity
 - [[compounding-substrate]] — how structural properties compound across deployments
 - [[topic-customer-hostability]] — the design properties that allow a customer to host the full stack
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

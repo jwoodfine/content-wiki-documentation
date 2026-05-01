@@ -46,3 +46,7 @@ El Doorman (`service-slm`) está operativo en el servidor del espacio de trabajo
 - [[compounding-substrate]] — las cinco propiedades estructurales a las que contribuye el Doorman
 - [[brief-queue-substrate]] — la cola durable que mantiene continua la captura del corpus
 - [[apprenticeship-substrate]] — cómo los eventos del Doorman generan señal de entrenamiento para adaptadores LoRA
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

@@ -87,3 +87,8 @@ de agregación multi-inquilino sin capital de escala VC.
 - [El sustrato de aprendizaje](topic-apprenticeship-substrate.md)
 - [Hospedaje por el cliente](topic-customer-hostability.md)
 - [Postura de derechos de autor canadiense-simple](topic-canadian-simple-copyright.md)
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

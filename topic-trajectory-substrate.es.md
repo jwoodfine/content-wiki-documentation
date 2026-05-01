@@ -147,3 +147,8 @@ señal se está acumulando.
 - [Restricciones en Tiempo de Decodificación](topic-decode-time-constraints.es.md)
 - La convención que sustenta este artículo:
   `~/Foundry/conventions/trajectory-substrate.md`
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

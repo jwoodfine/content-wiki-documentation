@@ -50,3 +50,7 @@ Con una utilización típica de desarrollo de aproximadamente el 25 por ciento, 
 ## Convención SERVICE-SLM-PROPOSAL
 
 El sistema de Tasks en clústeres identifica trabajo de rutina que service-SLM puede manejar y lo propone mediante el buzón de salida. Master agrupa las propuestas en la cola de aprendizaje; service-SLM produce intentos; los veredictos senior firman las salidas de calidad en el corpus DPO. Las decisiones arquitectónicas, el diseño original y la coordinación entre capas permanecen fuera del alcance de service-SLM.
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

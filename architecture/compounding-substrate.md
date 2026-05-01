@@ -93,3 +93,7 @@ The Compounding Substrate is the platform's structural commitment to a market th
 Source material: workspace canonical specification `conventions/compounding-substrate.md` (ratified 2026-04-25); DOCTRINE.md §XIV (claims #14–#18); `conventions/three-ring-architecture.md`; `conventions/sovereign-ai-commons.md` curator framing.
 
 Refinement disciplines applied: structural-positioning discipline (competitive-by-name references removed; structural contrasts retained); BCSC forward-looking adapter (quarterly federation cadence labelled per ni-51-102 / osc-sn-51-721); banned-vocabulary adapter (no substitutions required in source draft); body H1 removed per content-contract.md §5.2 (renderer supplies from title: frontmatter); slug set to `compounding-substrate` to match featured-topic.yaml pin; citations registered in citations.yaml.
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

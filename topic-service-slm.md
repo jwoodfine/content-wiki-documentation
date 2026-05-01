@@ -72,3 +72,8 @@ See `infrastructure/local-doorman/` for the live systemd unit and `conventions/a
 - `conventions/apprenticeship-substrate.md` — routing inversion and verdict-signed training
 - `infrastructure/local-doorman/` — systemd unit (live since workspace v0.1.13)
 - SYS-ADR-07 — structured data never routes through AI
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

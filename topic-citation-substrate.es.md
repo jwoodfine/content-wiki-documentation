@@ -91,3 +91,8 @@ mensualmente.
 - [El Sustrato del Protocolo de Lenguaje](topic-language-protocol-substrate.es.md)
 - Convención de referencia: `~/Foundry/conventions/citation-substrate.md`
 - Registro: `~/Foundry/citations.yaml`
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

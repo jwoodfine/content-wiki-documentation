@@ -75,3 +75,7 @@ El motor wiki `app-mediakit-knowledge` se convierte en la demostración instalab
 ## Procedencia
 
 Vista general estratégica en español elaborada por project-language el 2026-04-30. Basada en el borrador de project-knowledge (síntesis Opus desde informe Sonnet sub-agente C, 2026-04-30). La investigación primaria se realizó mediante web-fetch en los 25 proveedores y búsqueda web con términos de revisión y comparación. Por DOCTRINE.md §XII, esta vista general no es una traducción literal — adapta el análisis del campo para lectores en español. Las afirmaciones prospectivas siguen [ni-51-102] y [osc-sn-51-721].
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

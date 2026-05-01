@@ -107,3 +107,7 @@ The wiki engine itself *plans* further development through Phases 4–8 (git2 co
 ## Provenance
 
 Current-fact narrative, authored 2026-04-27 immediately following the v0.1.29 launch. Cert validity (through 2026-07-26) is verifiable via `openssl s_client` until that date. Public smoke results in the Verification section are reproducible from any external host. Refined by project-language 2026-04-30.
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

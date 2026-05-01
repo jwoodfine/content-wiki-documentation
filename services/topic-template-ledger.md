@@ -38,3 +38,7 @@ No push notification is sent to the operator. The current template is always pre
 - [[topic-service-email]] — the Ring 1 email ingest service that handles inbound messages
 - [[topic-style-guide-guide]] — operational register conventions for deployment runbooks
 - [[topic-disclosure-substrate]] — the disclosure architecture that governs outbound communications
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

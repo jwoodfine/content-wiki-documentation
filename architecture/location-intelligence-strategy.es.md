@@ -70,3 +70,7 @@ La especificación técnica completa, incluyendo el esquema de registros, el alg
 - [[compounding-substrate]] — las propiedades de soberanía e inteligencia opcional que este sustrato implementa
 - [[worm-ledger-architecture]] — el libro mayor de solo adición que ancla los registros de co-localización en el Totebox Archive del cliente
 - [[service-slm]] — el servicio opcional del Anillo 3 disponible para anotación y detección de anomalías
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

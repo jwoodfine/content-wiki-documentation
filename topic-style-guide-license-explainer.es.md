@@ -43,3 +43,8 @@ Los explicadores de licencias son públicos; se requiere par bilingüe.
 - [[topic-style-guide-readme|Guía de estilo: README]]
 - [[topic-style-guide-terms|Guía de estilo: Términos de servicio]]
 - [[topic-canadian-simple-copyright|Derechos de autor simplificados canadienses]]
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.
