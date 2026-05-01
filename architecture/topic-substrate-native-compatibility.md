@@ -134,3 +134,7 @@ The common thread: the substrate replicates structural compatibility where it pa
 ## Provenance
 
 Authored by project-knowledge Task Claude (session 619abe3eff24497e, 2026-04-27). Refined by project-language, 2026-04-30. Load-bearing references: Doctrine claim #29 (Substrate Substitution), `app-mediakit-knowledge/ARCHITECTURE.md` §7 and §11, `conventions/disclosure-substrate.md` §5–6.
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

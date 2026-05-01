@@ -60,3 +60,7 @@ El **lector de la comunidad financiera** llega a un artículo específico. Naveg
 ## Procedencia
 
 Redactado el 2026-04-28 por el cluster project-knowledge basándose en `UX-DESIGN.md` y `ARCHITECTURE.md`. Refinado por project-language 2026-04-30. Las declaraciones prospectivas sobre las fases planificadas siguen [ni-51-102] y [osc-sn-51-721].
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

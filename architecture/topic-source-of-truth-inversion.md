@@ -81,3 +81,7 @@ The pattern is not application-specific. It recurs because the same structural l
 ## Provenance
 
 Authored by project-knowledge Task Claude (sub-agent brief 03, 2026-04-28). Refined by project-language, 2026-04-30. Load-bearing references: Doctrine claims #29 and #34, `app-mediakit-knowledge/ARCHITECTURE.md` §2, `infrastructure/local-fs/` (service-fs WORM ledger), `conventions/disclosure-substrate.md`.
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

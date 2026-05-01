@@ -41,3 +41,7 @@ La elección de archivos JSONL locales en lugar de un broker como NATS JetStream
 ## Estado de implementación
 
 La convención del Sustrato de Cola de Briefs fue ratificada en la versión v0.1.78 del workspace. La implementación — API de cola, proceso de vaciado en el Doorman, y graduación del hook post-commit — está en curso bajo el ámbito del cluster project-slm. El formato del corpus JSONL no cambia; solo el camino de escritura.
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

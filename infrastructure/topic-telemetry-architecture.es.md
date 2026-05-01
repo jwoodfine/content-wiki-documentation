@@ -29,3 +29,7 @@ Enrutar la telemetría hacia un nodo bajo control local significa que el operado
 - [[topic-worm-ledger-architecture]] — el diseño del registro WORM que comparte el modelo de escritura de solo adición
 - [[topic-edge-deployment]] — la arquitectura de ingesta en el perímetro
 - [[compounding-substrate]] — el contexto más amplio del sustrato para la custodia de datos local
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

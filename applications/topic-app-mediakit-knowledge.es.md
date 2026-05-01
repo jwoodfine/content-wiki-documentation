@@ -52,3 +52,7 @@ A fecha de 2026-04-27, el motor está al final de la Fase 3. Las Fases 1, 1.1, 2
 - [[topic-collab-via-passthrough-relay]] — la implementación del relé WebSocket
 - [[topic-wikipedia-leapfrog-design]] — intención de diseño del cromo y el contrato 95%/5%
 - [[topic-documentation-pointsav-com-launch-2026-04-27]] — la narrativa del lanzamiento público v0.1.29
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

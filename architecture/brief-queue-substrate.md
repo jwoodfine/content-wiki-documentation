@@ -98,3 +98,7 @@ The implementation does not change the corpus JSONL schema. Consumers of the app
 ## Provenance
 
 This article was drafted based on architectural documentation describing the four-directory queue design, the Yo-Yo idle-shutdown operational requirement, and the apprenticeship corpus capture pipeline. Source materials consulted include the apprenticeship substrate convention, the Yo-Yo operational runbook and its associated startup procedure, the Foundry Doctrine's treatment of the Compounding Substrate, and session trajectory logs from the project-slm cluster documenting the rationale for the file-JSONL approach. The §7C signal-complete acknowledgment from the apprenticeship substrate convention was the proximate event that established the queue as a required structural component.
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

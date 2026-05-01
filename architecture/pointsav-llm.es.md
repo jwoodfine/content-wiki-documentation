@@ -59,3 +59,7 @@ La base técnica de PointSav-LLM es OLMo 3 32B Think, publicado por AllenAI bajo
 - [[service-slm-yoyo-operational]] — el estado operativo actual de los Niveles A/B del que este artículo describe el Nivel 3
 - [[apprenticeship-substrate]] — el bucle DPO que alimenta el corpus CPT
 - [[contributor-model]] — el Modelo de Contribuidor de Tres Niveles alineado con los niveles de precios
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

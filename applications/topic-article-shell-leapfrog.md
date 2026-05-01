@@ -120,3 +120,7 @@ A public Talk-page surface for each article is planned. The substrate may surfac
 Authored 2026-04-30 by the project-knowledge cluster, synthesising parallel sub-agent research and direct workspace-document consultation. The substrate-internal design research at `clones/project-knowledge/.claude/drafts-outbound/research-wikipedia-leapfrog-2030.draft.md` is the source of truth for the primitive prioritisation. The companion DESIGN-COMPONENT recipes (`component-citation-authority-ribbon`, `component-research-trail-footer`, `component-freshness-ribbon`) define the substrate-canonical visual contract; this TOPIC is the public-facing narrative. Refined by project-language 2026-04-30.
 
 Forward-looking statements per [ni-51-102] and [osc-sn-51-721] continuous-disclosure posture. Material assumptions: design-system substrate refines token-bundle and component recipes per the companion drafts; editorial labour for the project-language gateway is sustained; the engine work for per-section JSON-LD emission is shipped in a future project-knowledge cluster iteration tracked in NEXT.md.
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

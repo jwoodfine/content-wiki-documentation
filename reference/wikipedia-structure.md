@@ -155,3 +155,7 @@ Consistent placement is more valuable than inventive placement. Once readers lea
 ## Provenance
 
 Source material: Wikipedia Main Page; Wikipedia Manual of Style/Lead section; Wikipedia:Article structure; Wikipedia:Hatnote; Wikipedia:Content assessment; Wikipedia Special:Statistics; Old Faithful Featured Article. All fetched live 2026-04-30. Research conducted by web-fetch sub-agent. 7 sources consulted; 5 suggested for future review. Three open questions resolved inline: "Did You Know" and "Latest Updates" panels confirmed as static markdown in iteration 1 with panel engine support deferred to iteration 2; code-block infoboxes confirmed as the iteration-1 form with template engine integration as future project-knowledge scope; `quality:` frontmatter field confirmed as already in active use, with visual badge rendering identified as project-knowledge engine scope.
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

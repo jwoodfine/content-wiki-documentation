@@ -60,3 +60,7 @@ La especificación técnica completa, incluyendo la tabla de tipos de tarea, el 
 - [[compounding-doorman]] — el patrón operativo del Doorman y por qué se compone con el tiempo
 - [[apprenticeship-substrate]] — la cadena de captura del corpus y firma de veredictos
 - [[brief-queue-substrate]] — la cola durable que mantiene continua la captura del corpus
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

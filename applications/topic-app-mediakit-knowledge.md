@@ -180,3 +180,7 @@ Phases 4–8 are *planned*; cautionary language applies per [ni-51-102] and [osc
 Authored 2026-04-27 by the project-knowledge cluster based on `app-mediakit-knowledge/ARCHITECTURE.md`, `UX-DESIGN.md`, and `INVENTIONS.md`. Refined by project-language 2026-04-30. Doctrine-claim references and invention-catalogue counts are current as of v0.1.29; the catalogue grows as phases ratify.
 
 Forward-looking statements about Phases 4–8 follow [ni-51-102] and [osc-sn-51-721] continuous-disclosure posture. Material assumptions: the workspace VM remains available; operator clearance of the Phase 4 design review; editorial labour at the project-language gateway is sustained.
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

@@ -49,3 +49,7 @@ Cada primitiva de salto tecnológico en este TOPIC es aditiva — ninguna modifi
 ## Procedencia
 
 Redactado el 2026-04-30 por el cluster project-knowledge, sintetizando investigación paralela de sub-agentes y consulta directa de documentos del espacio de trabajo. Refinado por project-language 2026-04-30. Las declaraciones prospectivas siguen la postura de divulgación continua [ni-51-102] y [osc-sn-51-721].
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

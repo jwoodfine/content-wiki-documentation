@@ -52,3 +52,7 @@ El patrón: cada interfaz que el sustrato no replica es una obligación que no a
 ## Procedencia
 
 Vista general estratégica en español elaborada por project-language el 2026-04-30. Basada en el borrador de project-knowledge (sesión 619abe3eff24497e, 2026-04-27). Por DOCTRINE.md §XII, esta vista general no es una traducción literal — adapta el concepto central para lectores en español.
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

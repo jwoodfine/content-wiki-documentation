@@ -28,3 +28,7 @@ La respuesta se articula en cinco propiedades estructurales:
 **Preentrenamiento continuo como compuesta.** El curador incorpora la señal de federación en el preentrenamiento continuo del modelo base abierto (actualmente OLMo 3, licencia Apache 2.0) y redistribuye los pesos mejorados como nueva base del sustrato. Los adaptadores del cliente — capas LoRA con estilo, clasificación y voz propios — se recompilan contra la nueva base. El despliegue mejora sin que el cliente vuelva a pagar el trabajo, y sin que sus datos se muevan.
 
 Este patrón es el compromiso estructural de la plataforma con un mercado que exige privacidad, residencia de datos y verificabilidad de auditoría. La especificación técnica completa está disponible en inglés en el artículo principal.
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

@@ -101,3 +101,7 @@ A public Talk-page surface for each article is planned. As of this writing, edit
 Authored 2026-04-30 by the project-knowledge cluster based on parallel sub-agent research and direct workspace-document consultation. The companion design-research draft at `clones/project-knowledge/.claude/drafts-outbound/research-wikipedia-leapfrog-2030.draft.md` (entering project-design's gateway in the same pickup batch) is the substrate-internal source of truth; this TOPIC is its public-facing narrative. Refined by project-language 2026-04-30.
 
 Forward-looking statements about planned iterations and award competitiveness follow [ni-51-102] and [osc-sn-51-721] continuous-disclosure posture. Material assumptions: editorial labour cadence is sustained; corpus growth follows the staged trajectory in NEXT.md; design-system substrate refines token-bundle additions per the companion DESIGN-TOKEN-CHANGE draft.
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

@@ -29,3 +29,7 @@ Dado que los payloads en bruto se sanean en el perímetro y son los registros li
 - [[topic-worm-ledger-architecture]] — el registro WORM que almacena los datos saneados
 - [[topic-service-email]] — ingesta del Anillo 1 para correo electrónico
 - [[compounding-substrate]] — la arquitectura de tres anillos en contexto
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

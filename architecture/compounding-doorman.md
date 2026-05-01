@@ -93,3 +93,7 @@ LoRA adapter training — the mechanism that makes the Doorman compound — depe
 ## Provenance
 
 Source material: workspace-root draft `topic-compounding-doorman.md`, conventions `compounding-substrate.md` and `three-ring-architecture.md`, MEMO §6.3 service-slm specification. Refinement disciplines applied: no body H1; structural-positioning discipline (metaphor framing retained as operational precision, not competitive contrast; no vendor names used); BCSC forward-looking adapter applied to federation claim (Tier B integration and federation cadence labelled as planned); banned-vocabulary pass (no substitutions required); implementation status section grounded in operational workspace state as of 2026-04-30.
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

@@ -29,3 +29,7 @@ Esta propiedad está diseñada para garantizar la continuidad operativa cuando e
 - [[topic-worm-ledger-architecture]] — diseño del registro WORM que sustenta la integridad del archivo
 - [[compounding-substrate]] — cómo las propiedades estructurales se acumulan entre despliegues
 - [[topic-customer-hostability]] — propiedades de diseño que permiten al cliente alojar la plataforma completa
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

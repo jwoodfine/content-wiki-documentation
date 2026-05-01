@@ -162,3 +162,7 @@ All items above are *intended* or *planned*. They carry no specific delivery dat
 Authored 2026-04-28 by the project-knowledge cluster (brief 04) based on `UX-DESIGN.md`, `ARCHITECTURE.md`, and direct workspace-document consultation. Refined by project-language 2026-04-30.
 
 Forward-looking statements about planned phases carry *intended* / *planned* / *may be competitive in* language per [ni-51-102] and [osc-sn-51-721] continuous-disclosure posture. No specific delivery dates are stated; material changes would be recorded in the engineering phase plan documents and the workspace changelog.
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

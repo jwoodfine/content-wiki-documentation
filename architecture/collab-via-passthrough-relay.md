@@ -92,3 +92,7 @@ The passthrough relay is a substrate pattern, not a wiki-specific feature. Any s
 ## Provenance
 
 Authored by project-knowledge Task Claude (session 619abe3eff24497e, 2026-04-28). Refined by project-language, 2026-04-30. Source references are the `app-mediakit-knowledge` implementation files listed above and Doctrine claim #29.
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

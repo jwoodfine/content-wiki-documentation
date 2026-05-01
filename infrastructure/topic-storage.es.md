@@ -27,3 +27,7 @@ Cuando el disco principal alcanza su capacidad, se realizan copias de seguridad 
 - [[topic-worm-ledger-architecture]] — especificación completa del registro WORM
 - [[topic-architecture]] — portabilidad del archivo y arranque soberano
 - [[topic-edge-deployment]] — cómo entran los datos al sistema antes de llegar al almacenamiento
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

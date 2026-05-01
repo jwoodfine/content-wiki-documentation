@@ -56,3 +56,7 @@ El patrón aplica directamente cuando el tipo de documento CRDT se mapea con cla
 ## Procedencia
 
 Versión en español elaborada por project-language el 2026-04-30, basada en el borrador de project-knowledge (sesión 619abe3eff24497e, 2026-04-28). Vista general estratégica por DOCTRINE.md §XII — no es una traducción literal del inglés canónico.
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*

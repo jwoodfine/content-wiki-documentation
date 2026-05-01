@@ -121,3 +121,7 @@ The service-slm-as-sysadmin capability is available across three customer tiers,
 ## Provenance
 
 Source material: workspace-root draft `topic-service-slm-as-totebox-sysadmin.md` (authored 2026-04-29 at workspace v0.1.80). Background corpus: ten GUIDE files surveyed in cluster-totebox-personnel for operational ground truth; conventions `apprenticeship-substrate.md` and `compounding-substrate.md`; trainer-scoping document (commit `562baa0`) for engineering-side alignment. Refinement disciplines applied: no body H1; structural-positioning discipline (vendor-by-name contrast removed; structural market-gap framing retained); BCSC forward-looking adapter (cost projections, Tier 2 pricing, Tier 3 timeline, and Phase 3 training cycle all labelled with planned/intended/may framing per ni-51-102 / osc-sn-51-721); banned-vocabulary pass (no substitutions required); Open Questions section from source (§7) omitted from published TOPIC — those are internal research items, not public doctrine; Provenance footer BCSC-scrubbed.
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*
