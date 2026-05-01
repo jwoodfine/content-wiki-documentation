@@ -69,3 +69,8 @@ The cryptographic ledger applies across all customer-facing data in the platform
 - `DOCTRINE.md §II.7` — Doctrine Invention #7: Integrity Anchor via Sigstore Rekor
 - `DOCTRINE.md §IX` — SOC 2 posture and external WORM standard alignment
 - `conventions/bcsc-disclosure-posture.md` — audit trail requirements for continuous-disclosure compliance
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

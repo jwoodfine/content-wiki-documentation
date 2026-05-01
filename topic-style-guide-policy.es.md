@@ -43,3 +43,8 @@ El registro es legal pero el nivel de lectura es grado 12. Se prefiere el lengua
 - [[topic-style-guide-terms|Guía de estilo: Términos de servicio]]
 - [[topic-style-guide-memo|Guía de estilo: Memo]]
 - [[topic-language-protocol-substrate|Sustrato de protocolo de lenguaje]]
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

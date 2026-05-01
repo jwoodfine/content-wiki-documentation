@@ -81,3 +81,8 @@ operator attention remains high-fidelity rather than habitual.
 - [[topic-sovereign-replacement-initiative|Sovereign Replacement Initiative]]
 
 ## References
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

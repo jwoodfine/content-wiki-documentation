@@ -45,3 +45,8 @@ El registro es legal, pero el nivel de lectura objetivo es grado 12. La longitud
 - [[topic-style-guide-policy|Guía de estilo: Política]]
 - [[topic-style-guide-license-explainer|Guía de estilo: Explicador de licencias]]
 - [[topic-canadian-simple-copyright|Derechos de autor simplificados canadienses]]
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

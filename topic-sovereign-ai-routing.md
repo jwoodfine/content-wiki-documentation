@@ -69,3 +69,8 @@ The customer does not select the tier. Request shape, prompt length, and the ten
 - `DOCTRINE.md §XIV` — service-slm as the Doorman boundary in the Compounding Substrate
 - `conventions/three-ring-architecture.md` — Ring 3 optional intelligence placement
 - `IT_SUPPORT_Nomenclature_Matrix_V8.md` — canonical service names (service-slm, Doorman)
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

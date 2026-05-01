@@ -112,3 +112,8 @@ inglés: [The Disclosure Substrate](topic-disclosure-substrate.md).
 - [Compatibilidad nativa del sustrato](topic-substrate-native-compatibility.md)
 - [Postura de derecho de autor simple canadiense](topic-canadian-simple-copyright.es.md)
 - Convención operacional: `conventions/disclosure-substrate.md`
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

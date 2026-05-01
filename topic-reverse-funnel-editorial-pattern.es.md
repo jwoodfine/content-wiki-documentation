@@ -147,3 +147,8 @@ la operación ininterrumpida de la pasarela editorial.
 - Convenciones del espacio de trabajo:
   `~/Foundry/conventions/reverse-funnel-editorial-pattern.md`
   `~/Foundry/conventions/cluster-wiki-draft-pipeline.md`
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

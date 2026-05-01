@@ -69,3 +69,8 @@ The routing decision is deterministic and tag-driven. No AI inference is require
 - DOCTRINE.md §XI — Ring 2 knowledge-and-processing architecture
 - `pointsav-monorepo/service-extraction/` — implementation crate
 - SYS-ADR-07 — structured data never routes through AI (governs the boundary between Ring 2 deterministic routing and Ring 3 AI invocation)
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

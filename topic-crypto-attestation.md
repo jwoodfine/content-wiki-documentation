@@ -65,3 +65,8 @@ The attestation proves integrity at the moment of viewing — it does not prove 
 - `DOCTRINE.md §IX` — DARP (Direct, Auditable, Reproducible, Plain-text) posture
 - `conventions/worm-ledger-design.md` — complementary WORM integrity mechanism for stored records
 - `conventions/bcsc-disclosure-posture.md` — continuous-disclosure context; independently verifiable disclosures
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

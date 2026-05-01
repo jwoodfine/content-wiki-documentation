@@ -116,3 +116,8 @@ Per `[ni-51-102]` continuous-disclosure language, the trajectory toward token-el
 - `pointsav-monorepo/service-disclosure/CORPUS-SCHEMA.md` — the corpus schema
 - DOCTRINE.md Claim #32 — Apprenticeship Substrate
 - `[ni-51-102]` — NI 51-102 Continuous Disclosure Obligations (governs forward-looking statements in this article)
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

@@ -58,3 +58,8 @@ The service operates as a CLI tool. It exposes strictly defined query and update
 - DOCTRINE.md §XI — Ring 1 boundary-ingest architecture and MCP server interface
 - `pointsav-monorepo/service-people/` — implementation crate
 - DS-ADR-02 — flat-file state machine standard (files over databases)
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

@@ -88,3 +88,8 @@ también una transacción de un solo evento.
 - El complemento operativo en
   `factory-release-engineering/README.md` §6
 - [Hospedaje por el cliente](topic-customer-hostability.md)
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

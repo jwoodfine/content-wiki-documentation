@@ -45,3 +45,8 @@ el canal de adaptadores por inquilino.
 - [Documento canónico en inglés](topic-style-guide-readme.md)
 - [Guía de estilo — TOPIC](topic-style-guide-topic.md)
 - [Guía de estilo — GUIDE](topic-style-guide-guide.md)
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.

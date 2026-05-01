@@ -79,3 +79,8 @@ el significado de *forkable on day one*.
 - [Documento canónico en inglés](topic-language-protocol-substrate.md)
 - [Hospedaje por el cliente](topic-customer-hostability.md)
 - [Disciplina anti-homogenización](topic-anti-homogenization-discipline.md)
+
+---
+Copyright © 2026 Woodfine Capital Projects Inc.
+Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
+PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.
