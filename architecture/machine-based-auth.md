@@ -48,3 +48,10 @@ Machine-based authorization connects to three other architectural layers:
 - `conventions/system-substrate-doctrine.md` — capability ledger substrate; hardware-binding within the capability model
 - `DOCTRINE.md §XIV` — Compounding Substrate context; machine-based authorization as part of the Boot-Anywhere Capability Recovery mechanism
 - `conventions/three-ring-architecture.md` — Ring 1 boundary ingest; where machine-based authorization applies at the service layer
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

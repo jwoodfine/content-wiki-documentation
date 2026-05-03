@@ -40,3 +40,10 @@ Foundry’s posture is intended to defend against high-level institutional risks
 *   **Operator Tampering:** Even an administrator with root access cannot alter the ledger without breaking the Merkle chain and failing public Rekor consistency checks.
 *   **Vendor Obsolescence:** Open-standard formats ensure data survival beyond the lifespan of the software vendor.
 *   **Cryptographic Agility:** The system is designed to transition to post-quantum signature schemes (e.g., Dilithium) without requiring a full storage migration.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

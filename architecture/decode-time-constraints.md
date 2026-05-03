@@ -92,3 +92,10 @@ Per `[ni-51-102]` continuous-disclosure language, the trajectory below is `plann
 - `pointsav-monorepo/service-content/schemas/banned-vocab.lark` — the banned-vocabulary grammar
 - `pointsav-monorepo/service-content/schemas/validate.py` — offline validation harness
 - `conventions/compounding-substrate.md` — federated-compounding property that depends on this enforcement layer
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

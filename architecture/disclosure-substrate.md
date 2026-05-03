@@ -154,3 +154,10 @@ Actual results may vary from the planned trajectory described above. All forward
 - `[w3c-verifiable-credentials]` — W3C Verifiable Credentials
 - `[c2pa]` — Coalition for Content Provenance and Authenticity
 - `[c3ai-acm-2025]` — ACM study on AI disclosure practices
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

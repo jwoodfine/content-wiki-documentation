@@ -41,3 +41,10 @@ The storage engine is engineered to satisfy strict regulatory requirements:
 ## 4. Synthesis of Innovation
 
 The primary innovation in Foundry’s storage layer is the integration of high-performance verifiable logs with a "sovereign-first" deployment model. Unlike legacy WORM solutions that require proprietary hardware or specific cloud vendors, Foundry’s tile-based logs are portable, open-standard, and self-verifying across any hardware from a virtual machine to an seL4-hardened Totebox appliance.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

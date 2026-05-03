@@ -74,3 +74,10 @@ The orchestration workflow is managed via the `build-clusters.py` and `build-rad
 - **Draft Source:** `GUIDE-totebox-orchestration-gis.md` (project-gis)
 - **Refinement:** 2026-05-02 by project-language Task
 - **Verification:** Orchestration steps verified against `gateway-orchestration-gis-1` deployment configuration.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

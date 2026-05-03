@@ -35,3 +35,10 @@ El panel adapta su funcionalidad mediante la propiedad `data-mode`:
 ## Recomendaciones de Implementación
 
 Es obligatorio incluir una opción para "copiar al portapapeles" el GlobalID (GUID), ya que estos códigos de 22 caracteres son esenciales para las auditorías pero imposibles de transcribir manualmente.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

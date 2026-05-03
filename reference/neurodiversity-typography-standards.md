@@ -34,3 +34,10 @@ The following constraints are mandatory for all dense text presentations:
 ## 4. Institutional Print Engine
 
 Every application must include a `@media print` CSS block. Upon execution of a print command, the DOM is instantly reformatted for physical output: removing UI navigation, stripping backgrounds, and applying 1-inch margins suitable for hardware printers or PDF archiving.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

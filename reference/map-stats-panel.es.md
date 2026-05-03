@@ -61,3 +61,10 @@ El componente está diseñado para cumplir con los estándares WCAG 2.2 AA:
 Las mejoras futuras prevén incluir:
 - **Minigráficos (Sparklines)**: Soporte planificado para visualizaciones de datos compactas debajo de los valores numéricos para mostrar la distribución de calificaciones.
 - **Auto-colapso Móvil**: Se está investigando el umbral de colapso óptimo para pantallas móviles para maximizar la visibilidad del mapa.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

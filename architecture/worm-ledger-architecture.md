@@ -45,3 +45,10 @@ The design is engineered to align with SEC Rule 17a-4(f) {{gli|WORM}} requiremen
 ## Cross-Target Synthesis
 
 Foundry’s implementation is unique in its dual-target Rust strategy, allowing the same binary to serve as a Linux daemon today and an {{gli|seL4}} unikernel tomorrow. This ensures that the storage substrate is portable from a virtual machine to a future ToteboxOS hardware appliance without a core rewrite.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

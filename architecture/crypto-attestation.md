@@ -65,3 +65,10 @@ The attestation proves integrity at the moment of viewing — it does not prove 
 - `DOCTRINE.md §IX` — DARP (Direct, Auditable, Reproducible, Plain-text) posture
 - `conventions/worm-ledger-design.md` — complementary WORM integrity mechanism for stored records
 - `conventions/bcsc-disclosure-posture.md` — continuous-disclosure context; independently verifiable disclosures
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

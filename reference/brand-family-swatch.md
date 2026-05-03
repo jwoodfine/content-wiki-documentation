@@ -61,3 +61,10 @@ The component is engineered to meet WCAG 2.2 AA standards:
 Future iterations are intended to include:
 - **Pattern Infills**: Planned support for geometric patterns within the dot to enhance distinguishability for users with advanced color vision deficiencies.
 - **Dynamic Pie Charts**: Research is underway to transition the cluster-centroid ring into a dynamic donut chart when cluster density exceeds 10 anchors.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

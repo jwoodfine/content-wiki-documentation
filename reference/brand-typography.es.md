@@ -24,3 +24,10 @@ Para garantizar la soberanía de los activos digitales, utilizamos exclusivament
 ## Autoridad Institucional
 
 Esta estrategia asegura que todos los documentos generados por la plataforma tengan una estética de "Libro Blanco" profesional. La tipografía no se carga desde la nube; se incrusta directamente en los archivos PDF finales, garantizando que el documento mantenga su autoridad visual en cualquier dispositivo o sistema de impresión.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

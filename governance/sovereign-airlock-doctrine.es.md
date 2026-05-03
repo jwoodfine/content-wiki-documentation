@@ -31,3 +31,10 @@ Está prohibido editar directamente en las carpetas `stage-*`. El flujo de infor
 5. **Finalización:** Un administrador realiza la fusión final hacia los repositorios de la organización.
 
 Esta doctrina asegura que ningún fallo de seguridad individual pueda comprometer la separación entre la infraestructura del proveedor y los datos críticos del cliente.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

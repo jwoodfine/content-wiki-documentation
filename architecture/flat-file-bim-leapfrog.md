@@ -67,3 +67,10 @@ The architecture satisfies mandatory open-standard requirements for US federal a
 ## Strategic Trade-offs
 
 PointSav acknowledges that real-time multi-user design workshops are currently faster in synchronous cloud SaaS. Additionally, while the substrate is designed to be AI-ready, a generative BIM authoring tool is not planned for the v0.0.1 release. These are deliberate trade-offs to prioritize an offline-first, vendor-independent posture.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

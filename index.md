@@ -75,3 +75,10 @@ The **Compounding Substrate** is an AI-substrate architecture where the platform
 For definitions of technical terminology (e.g., *Air-Gapped*, *Hypervisor*, *Sovereign Airlock*), please consult the central **[[glossary-documentation|Platform Glossary]]**. Terms marked with a dashed underline throughout the encyclopedia can be hovered over for instant, inline definitions.
 
 ---
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

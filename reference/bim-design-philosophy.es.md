@@ -25,3 +25,10 @@ La filosofía de Foundry se centra en cinco capacidades únicas:
 ## El Salto del Código Componible
 
 Foundry propone un modelo donde las normativas urbanísticas se publican como "tokens de diseño" (IDS 1.0). El diseñador trabaja dentro de envolventes ya validadas, haciendo que los errores de cumplimiento sean geométricamente imposibles desde el primer trazo. Este enfoque de "cumplimiento por construcción" es el núcleo de la ventaja tecnológica de PointSav.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

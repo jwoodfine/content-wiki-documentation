@@ -27,3 +27,10 @@ El sistema es dual por diseño:
 - **Futuro:** Está preparado para ejecutarse como un micro-kernel verificado (seL4) en dispositivos físicos, proporcionando la máxima seguridad matemática posible hoy en día.
 
 Esta arquitectura protege contra la obsolescencia tecnológica y el secuestro de datos, devolviendo el control total del archivo histórico al propietario del edificio o empresa.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

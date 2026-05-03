@@ -56,3 +56,10 @@ Las investigaciones futuras prevén investigar:
 - **Revelación Multitier**: Un sistema planificado de tres niveles (Regional → Conglomerado → Individual) para entornos urbanos de ultra alta densidad.
 - **Umbrales Adaptativos**: Desarrollo previsto de umbrales dinámicos que se ajusten en función de la densidad de datos local, garantizando una claridad visual constante tanto en conjuntos de datos rurales como metropolitanos.
 - **Rutas de Clic para Zoom**: Se está investigando si al hacer clic en un centroide de conglomerado se debe volar exactamente al umbral de revelación o a una vista de detalle de mayor aumento predefinida (p. ej., zoom 13).
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

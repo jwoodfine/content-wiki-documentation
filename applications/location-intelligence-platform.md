@@ -62,3 +62,10 @@ Planned enhancements to the platform surface include the integration of origin-d
 - **Refinement:** 2026-05-02 by project-language Task
 - **Verification:** Layer architecture and algorithmic composition confirmed against `app-orchestration-gis` deployment.
 - **BCSC Posture:** OD data integration and European expansion targets labeled per ni-51-102.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

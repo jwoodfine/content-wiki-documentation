@@ -61,3 +61,10 @@ El componente está diseñado para cumplir con los estándares WCAG 2.2 AA:
 Se prevé que las futuras iteraciones incluyan:
 - **Rellenos con Patrones**: Soporte planificado para patrones geométricos dentro del punto para mejorar la distinción para usuarios con deficiencias avanzadas de visión cromática.
 - **Gráficos de Tarta Dinámicos**: Se está investigando la transición del anillo de centroide de conglomerado a un gráfico de dona dinámico cuando la densidad del conglomerado supere las 10 anclas.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

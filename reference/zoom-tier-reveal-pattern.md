@@ -56,3 +56,10 @@ Future research is intended to investigate:
 - **Multi-Tier Reveal**: A planned three-tier system (Regional → Cluster → Individual) for ultra-high-density urban environments.
 - **Adaptive Thresholds**: Intended development of dynamic thresholds that adjust based on local data density, ensuring consistent visual clarity in both rural and metropolitan datasets.
 - **Click-to-Zoom Pathing**: Research is ongoing to determine if clicking a cluster centroid should fly to the exact reveal threshold or to a predefined higher-magnification detail view (e.g., zoom 13).
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

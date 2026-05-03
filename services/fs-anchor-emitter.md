@@ -45,3 +45,10 @@ Before emitting a new checkpoint, the emitter is intended to perform an internal
 
 ## External Anchoring
 While the emitter produces checkpoints hourly, external publication to Rekor is currently planned for a monthly cadence. This provides a balance between evidentiary density and network overhead.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

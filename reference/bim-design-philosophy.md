@@ -37,3 +37,10 @@ The BIM-SEMANTIC layer sits atop project-design’s META-substrate. While projec
 *   Uniclass 2015 as the universal classification floor.
 
 This architecture ensures that BIM components remain consistent with the broader Foundry design language while meeting the rigorous semantic requirements of ISO-standardized building data.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

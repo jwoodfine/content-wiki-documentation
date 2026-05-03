@@ -20,3 +20,10 @@ Foundry prioriza la accesibilidad cognitiva mediante estándares tipográficos d
 - **Interlineado Generoso:** Se establece entre 1.6 y 1.8 para mejorar la separación entre líneas de texto.
 - **Áreas de Interacción:** Todos los botones y enlaces mantienen un tamaño mínimo de 44x44 píxeles para facilitar la interacción táctil y evitar errores.
 - **Motor de Impresión Institucional:** El sistema incluye reglas automáticas para que cualquier documento se imprima en formato de "papel blanco" profesional, eliminando elementos de navegación innecesarios.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

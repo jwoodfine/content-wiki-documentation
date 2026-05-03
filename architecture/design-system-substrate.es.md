@@ -50,3 +50,10 @@ El substrato está en producción como v0.0.1 desde el 28 de abril de 2026. El t
 ## Para profundizar
 
 La documentación técnica completa está disponible en inglés en el documento correspondiente (`topic-design-system-substrate.md`). Los runbooks operativos se encuentran en `vault-privategit-design/GUIDE-deploy-design-substrate.md`. La convención de arquitectura se documenta en `conventions/design-system-substrate.md` y la reclamación doctrinal de referencia es la #38 en `DOCTRINE.md`.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

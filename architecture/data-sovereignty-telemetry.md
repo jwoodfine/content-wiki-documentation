@@ -31,3 +31,10 @@ All public-facing interfaces are required to append the following disclosure to 
 > *"Digital Infrastructure & Privacy Posture: This interface operates on a Zero-Execution and Zero-State Telemetry architecture. It does not deploy tracking cookies, retain session states, or harvest Personally Identifiable Information (PII). System interactions are limited to the collection of anonymized, masked network routing data strictly for the purpose of auditing infrastructure security and verifying document access."*
 
 This commitment ensures that Foundry remains the benchmark for privacy-first institutional infrastructure.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

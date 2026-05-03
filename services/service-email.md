@@ -58,3 +58,10 @@ The service surrenders execution to the downstream parser (`service-extraction`)
 -  §XI — Ring 1 boundary-ingest architecture
 - `pointsav-monorepo/service-email/` — implementation crate
 - SYS-ADR-07 — structured data never routes through AI (governs downstream handling of service-email output)
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

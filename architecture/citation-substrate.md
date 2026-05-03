@@ -106,3 +106,10 @@ Until each lands, the manual discipline is the operational form.
 - `[opentimestamps]` — OpenTimestamps anchoring (planned integration)
 - `[ni-51-102]` — NI 51-102 Continuous Disclosure Obligations
 - `[osc-sn-51-721]` — OSC Staff Notice 51-721 Forward-Looking Information Disclosure
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

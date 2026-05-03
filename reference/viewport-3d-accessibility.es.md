@@ -31,3 +31,10 @@ El visor implementa los atajos estándar de la industria AEC para permitir el co
 ## Postura Técnica
 
 En el **Modo Console**, el visor puede mostrar miniaturas SVG de alta fidelidad en lugar de un entorno 3D completo. Esto optimiza el rendimiento y mantiene la integridad de la licencia EUPL-1.2 en superficies de consulta. En el **Modo Workplace**, se activa el motor 3D completo para tareas de coordinación y autoría.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

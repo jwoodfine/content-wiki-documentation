@@ -112,3 +112,10 @@ inglés: [The Disclosure Substrate](topic-disclosure-substrate.md).
 - [Compatibilidad nativa del sustrato](topic-substrate-native-compatibility.md)
 - [Postura de derecho de autor simple canadiense](topic-canadian-simple-copyright.es.md)
 - Convención operacional: `conventions/disclosure-substrate.md`
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

@@ -41,3 +41,10 @@ The panel’s behavior adapts based on the `data-mode` property:
 
 *   **GlobalID Portability:** Always provide a "copy-to-clipboard" affordance for GlobalIDs. IFC GUIDs are critical for audit trails but impossible to transcribe manually.
 *   **Namespace Discipline:** Do not author custom Property Set names without a registered namespace. All non-standard properties must follow the custom Pset prefix conventions to remain IFC-compliant.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

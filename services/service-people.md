@@ -58,3 +58,10 @@ The service operates as a CLI tool. It exposes strictly defined query and update
 -  §XI — Ring 1 boundary-ingest architecture and MCP server interface
 - `pointsav-monorepo/service-people/` — implementation crate
 - DS-ADR-02 — flat-file state machine standard (files over databases)
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

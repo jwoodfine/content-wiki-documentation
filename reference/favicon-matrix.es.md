@@ -25,3 +25,10 @@ Al incrustar el SVG directamente en el encabezado HTML, logramos:
 - **Cliente (Woodfine):** Círculo Azul Woodfine (`#164679`). Representa la empresa operativa.
 
 Este estándar garantiza una identidad de marca coherente y de carga instantánea en todas las aplicaciones de la plataforma.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

@@ -70,3 +70,10 @@ The Doorman is deployed as a systemd unit (`infrastructure/local-doorman/`) on t
 -  §XI — Three-ring architecture and three-tier compute routing
 - `infrastructure/local-doorman/` — systemd unit (live since workspace v0.1.13)
 - SYS-ADR-07 — structured data never routes through AI
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

@@ -49,3 +49,10 @@ The viewport implements industry-standard AEC shortcuts to ensure full control w
 
 *   **Zero IPC for Geometry:** Do not pipe raw IFC or geometry bytes over the IPC boundary. Use localized asset protocols to load visualization caches (e.g., XKT files) directly into the GPU.
 *   **Decoupled CSS:** Viewport-specific 3D engine CSS should remain decoupled from the Building Design System’s core styles to allow for runtime-specific engine updates.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

@@ -61,3 +61,10 @@ El componente cumple con los requisitos WCAG 2.2 AA para controles interactivos:
 Las mejoras futuras prevén incluir:
 - **Agrupación Geográfica**: Se está investigando si la agrupación continental (p. ej., "Américas", "Europa") proporciona una mejor usabilidad para conjuntos de datos que abarcan más de diez países.
 - **Variante Multiselección**: Una variación planificada que utiliza `role="group"` y `aria-pressed` para permitir la composición de datos entre países.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

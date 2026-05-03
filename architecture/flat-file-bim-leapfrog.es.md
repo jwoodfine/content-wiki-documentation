@@ -32,3 +32,10 @@ La estrategia se basa en cinco restricciones que garantizan la independencia del
 ## Postura Regulatoria
 
 Este enfoque cumple nativamente con los requisitos de entrega en estándares abiertos de agencias federales de EE. UU. (GSA, VA), estados miembros de la UE y el marco BIM del Reino Unido. Es la única arquitectura que satisface por diseño los requisitos de aislamiento (air-gap) para proyectos de defensa y soberanía de datos europea.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

@@ -42,3 +42,10 @@ Web-based releases utilize specific semantic tags and separators to ensure high-
     **For immediate release | Vancouver, British Columbia | [Date]**
 
 These standards ensure that every Foundry disclosure maintains a consistent voice of authority, whether viewed on a high-DPI display or a physical printed page.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

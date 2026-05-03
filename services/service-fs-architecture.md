@@ -37,3 +37,10 @@ Foundry achieves structural {{gli|WORM}} compliance by structurally denying reco
 *   **Audit-Log Sub-Ledger:** A dedicated {{gli|WORM}} ledger that records every read event to satisfy SOC 2 processing integrity requirements.
 
 This architecture ensures that `service-fs` remains portable, verifiable, and resilient to vendor obsolescence.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

@@ -25,3 +25,10 @@ Los elementos interactivos (como el cambio de idioma o botones dinámicos) funci
 - **Carga Simultánea:** El navegador carga todos los bloques de idioma a la vez.
 - **Cambio Instantáneo:** Las reglas de CSS muestran u ocultan el contenido según el estado de un selector nativo del navegador.
 - **Cero Latencia:** Se logra la fluidez de una aplicación moderna sin los riesgos de seguridad y retrasos asociados a la ejecución de scripts externos.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

@@ -26,3 +26,10 @@ El esquema permite seguir la evolución de los roles de una persona (empleado, c
 ## Integración MCP
 
 El sistema publica estas identidades mediante el protocolo MCP, permitiendo que otros servicios de Foundry consulten datos de personas de forma segura y estandarizada, sirviendo como la base de confianza para toda la plataforma.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

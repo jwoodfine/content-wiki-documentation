@@ -50,3 +50,10 @@ The tree includes a search interface (`<input type="search">`) that filters node
 
 *   **Avoid Generic Scene-Graphs:** Do not utilize generic "outliner" widgets. The `SpatialTree` is a purpose-built AEC tool with specific expansion and search logic.
 *   **Storey-First Expansion:** Adhere to the storey-default expansion rule to match professional AEC mental models.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

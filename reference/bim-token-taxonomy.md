@@ -50,3 +50,10 @@ Host frameworks (e.g., Yew, Leptos, or vanilla TypeScript) integrate by mounting
 
 *   **v0.0.1 (Current):** `SpatialTree`, `PropertiesPanel`, and `Viewport3D` are released as foundational components.
 *   **v0.0.2 (Planned):** Console-unique and workplace-unique components will ship alongside the building element index and BIM authoring features.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

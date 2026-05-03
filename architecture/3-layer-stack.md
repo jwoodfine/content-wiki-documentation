@@ -42,3 +42,10 @@ The three layers map directly to the operational concerns of a regulated SMB dep
 - `conventions/three-ring-architecture.md` — the Ring 1 / Ring 2 / Ring 3 service model that sits inside the platform layer
 - `DOCTRINE.md §IV` — workspace topology and deployment pattern
 - `IT_SUPPORT_Nomenclature_Matrix_V8.md §3` — canonical OS and service names
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

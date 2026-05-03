@@ -27,3 +27,10 @@ Interactive interface elements, such as language toggles and dynamic download bu
 *   **Zero Latency:** This method provides the illusion of a high-performance Web 2.0 application with zero execution latency and no client-side script vulnerability.
 
 This "Leapfrog 2030" standard ensures that Foundry interfaces are accessible, secure, and instantaneous across all network environments.
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*
