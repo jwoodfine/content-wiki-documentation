@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "The Compounding Substrate"
-slug: topic-compounding-substrate
+slug: compounding-substrate
 category: architecture
 type: topic
 quality: complete
@@ -12,10 +12,8 @@ editor: pointsav-engineering
 cites:
   - ni-51-102
   - osc-sn-51-721
-paired_with: topic-compounding-substrate.es.md
+paired_with: compounding-substrate.es.md
 ---
-
-# The Compounding Substrate
 
 > The Compounding Substrate is the architectural pattern PointSav builds and stewards, combining five structural properties to produce a platform where every operational interaction generates training signal that compounds across all tenant deployments.
 
