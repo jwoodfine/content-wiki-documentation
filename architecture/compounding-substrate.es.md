@@ -1,34 +1,81 @@
 ---
-schema: foundry-doc-v1
-title: "El Sustrato Compuesto"
-slug: compounding-substrate.es
 category: architecture
-type: topic
-quality: complete
-status: pre-build
-last_edited: 2026-04-30
-editor: pointsav-engineering
-paired_with: compounding-substrate.md
 ---
 
-## Adaptación estratégica — El Sustrato Compuesto
+# El sustrato compuesto (resumen)
 
-El **Sustrato Compuesto** es el patrón arquitectónico que PointSav construye y administra. Su propósito es resolver una pregunta estructural: ¿cómo puede una plataforma de software permitir que cada cliente sea propietario de sus datos, opere en su propia infraestructura y componga inteligencia artificial según su criterio — sin dejar de beneficiarse del aprendizaje colectivo?
+El patrón arquitectónico que PointSav construye y administra.
+Cinco propiedades estructurales se combinan para producir un
+sustrato donde cada interacción operativa genera señal de
+entrenamiento que se compone a través de los despliegues — y
+cada propiedad nombra una razón específica por la que la IA
+gestionada por hiperescaladores no puede igualarla
+estructuralmente.
 
-La respuesta se articula en cinco propiedades estructurales:
+## Definición
 
-**Soberanía de sustrato.** Cada cliente es propietario de su pila completa: datos, cómputo, adaptadores y composición de despliegue. El código del sustrato es abierto y puede ser bifurcado. Los datos del cliente nunca abandonan la infraestructura que el cliente controla.
+Un sustrato compuesto es una arquitectura donde:
 
-**Capa de inteligencia opcional.** La capa de datos determinística — sistemas de archivos, registros contables, grafos de conocimiento, índices de búsqueda — funciona plenamente sin cómputo de inteligencia artificial. La IA se incorpora cuando y donde el cliente lo decide, en el nivel que elija: modelo local en CPU, ráfaga de GPU, o API externa.
+1. El código del sustrato es abierto y bifurcable.
+2. La capa de datos determinista funciona independientemente
+   de cualquier cómputo de IA.
+3. La IA se añade como **Capa de Inteligencia Opcional** que
+   cualquier inquilino puede componer adentro o afuera.
+4. Cada interacción operativa genera señal de entrenamiento
+   que se compone a través de los despliegues.
+5. Un curador (PointSav) integra periódicamente la señal
+   acumulada en modelos base mejorados que regresan a todos los
+   despliegues sin alterar la soberanía de datos del cliente.
 
-**Enrutamiento de cómputo en tres niveles.** Cuando opera la IA, enruta entre tres niveles bajo una política explícita por solicitud: local (coste marginal cero, localidad de datos completa), ráfaga de GPU (instancia efímera en la cuenta del cliente), y API externa (registrada en el registro de auditoría del cliente, no en el del proveedor).
+Es el patrón de la Apache Software Foundation combinado con el
+modelo de distribución de Red Hat, aplicado al sustrato de IA.
 
-**Composición federada.** Cada interacción operativa genera una señal de entrenamiento estructurada que se acumula en el corpus de aprendizaje de cada cliente. Periódicamente, quienes opten por la federación contribuyen señal destilada al curador (PointSav, en esta instancia). El curador incorpora la señal acumulada a un modelo base mejorado que regresa a todos los despliegues. Ningún dato bruto del cliente abandona su infraestructura.
+## Cinco propiedades estructurales
 
-**Preentrenamiento continuo como compuesta.** El curador incorpora la señal de federación en el preentrenamiento continuo del modelo base abierto (actualmente OLMo 3, licencia Apache 2.0) y redistribuye los pesos mejorados como nueva base del sustrato. Los adaptadores del cliente — capas LoRA con estilo, clasificación y voz propios — se recompilan contra la nueva base. El despliegue mejora sin que el cliente vuelva a pagar el trabajo, y sin que sus datos se muevan.
+| Propiedad | Brecha estructural del hiperescalador |
+|---|---|
+| **Soberanía del sustrato** — el cliente posee toda la pila | Su negocio es monetizar el sustrato como servicio rentado |
+| **Inteligencia opcional** — datos y procesamiento determinista funcionan sin IA | Su producto IA acopla cómputo a servicios de datos |
+| **Ruteo multi-nivel de cómputo** — Doorman único entre local / nube-burst / API externa | Cada nivel es una relación de facturación distinta |
+| **Composición federada** — agregación que preserva privacidad de adaptadores | Su facturación por inquilino hace ilegal el agrupamiento entre inquilinos |
+| **Camino de pre-formación continuada** — base anual curada de la federación | No pueden dejar que datos del cliente entrenen un modelo base que el cliente luego posee |
 
-Este patrón es el compromiso estructural de la plataforma con un mercado que exige privacidad, residencia de datos y verificabilidad de auditoría. La especificación técnica completa está disponible en inglés en el artículo principal.
+## La inversión de la cadena de valor
 
----
+La cadena de valor del hiperescalador depende de que el cliente
+permanezca en el sustrato del proveedor. La cadena de valor del
+sustrato compuesto depende de que el cliente componga *fuera*
+del sustrato del proveedor. Los dos modelos de negocio están
+matemáticamente opuestos; uno no puede adoptar el otro sin
+desmantelarse.
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*
+## Qué es PointSav en este patrón
+
+No es proveedor. No es guardián. **Administrador.**
+
+Administrador del protocolo, administrador del modelo base,
+administrador del mercado, operador de registro (vende
+appliances con integración y soporte), cliente de referencia
+(el propio Foundry y Woodfine — prueba de que el patrón
+funciona).
+
+El sustrato se vuelve patrimonio común abierto; el valor migra
+hacia operaciones, integración, y el mercado de bibliotecas de
+LoRA.
+
+## El premio 2030
+
+El patrón apunta a producir una federación de cien-y-más
+clientes, cada uno con su pila completa, cada uno
+contribuyendo al patrimonio común y beneficiándose de él. No
+desplaza a los hiperescaladores en volumen — captura el
+mercado PYME regulado que los hiperescaladores no pueden
+alcanzar económicamente.
+
+## Véase también
+
+- [Documento canónico en inglés](topic-compounding-substrate.md)
+- [El sustrato de aprendizaje](topic-apprenticeship-substrate.md)
+- [El modelo de contribuyentes en tres niveles](topic-contributor-model.md)
+- [El sustrato de protocolo de lenguaje](topic-language-protocol-substrate.md)
+- [Hospedaje por el cliente](topic-customer-hostability.md)

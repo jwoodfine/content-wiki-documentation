@@ -1,3 +1,7 @@
+---
+category: governance
+---
+
 # El modelo de contribuyentes en tres niveles (resumen)
 
 El sustrato de Foundry es demasiado amplio para que un solo

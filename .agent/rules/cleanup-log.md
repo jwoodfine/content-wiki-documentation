@@ -272,12 +272,7 @@ the wiki as an article.
 
 ### 2026-04-23 — `glossary-documentation.csv` has no contracted home
 
-CSV at repo root (~8 KB). The content contract describes Markdown
-articles, not tabular data. Options: (a) convert to an article
-`reference/glossary.md` where terms appear in a table; (b) move to
-the monorepo under a service that owns term definitions; (c) leave
-until a contract decision is made. Defer until the taxonomy above
-is decided.
+`Closed: 2026-05-02.` The glossary has been converted to `reference/glossary-documentation.md` in markdown table format, with proper frontmatter.
 
 ---
 

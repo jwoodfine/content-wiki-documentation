@@ -1,3 +1,7 @@
+---
+category: architecture
+---
+
 # Hospedaje por el cliente — *We Own It* (resumen)
 
 La disciplina de hospedaje por el cliente en Foundry es el

@@ -4,87 +4,115 @@ title: "The Apprenticeship Substrate"
 slug: topic-apprenticeship-substrate
 category: architecture
 type: topic
-quality: published
-short_description: "A production routing protocol that inverts the usual AI-to-human workflow: a local model attempts a task first, a senior reviewer signs a verdict, and the disagreement between them — captured as signed training tuples — generates the highest-quality continued-pretraining signal the platform can produce."
+quality: complete
+short_description: "The Apprenticeship Substrate is the Foundry mechanism that routes code-shaped and editorial work first through a local Small Language Model, captures signed senior verdicts on every attempt, and uses the resulting preference pairs as continued-pretraining signal."
 status: pre-build
-last_edited: 2026-05-01
+last_edited: 2026-04-30
 editor: pointsav-engineering
-cites: []
+cites:
+  - ni-51-102
 paired_with: topic-apprenticeship-substrate.es.md
 ---
 
-The Apprenticeship Substrate inverts the usual order of AI-assisted work. Rather than a senior session authoring a result and optionally asking an AI to verify it, the local model — the apprentice — attempts the task first. The senior reviewer reviews the attempt and signs a verdict. The disagreement between attempt and verdict is captured as a signed training tuple and fed into the platform's continued-pretraining pipeline.
+# The Apprenticeship Substrate
 
-Every production session exercises the apprentice. Every signed verdict is a training tuple. Every task type that accumulates enough accepted verdicts graduates toward autonomous operation, eliminating the token cost of senior review for that type. The two effects — production value now, training signal for the future — compound with each other.
+> The Apprenticeship Substrate is the Foundry mechanism that routes code-shaped and editorial work first through a local Small Language Model, captures signed senior verdicts on every attempt, and uses the resulting preference pairs as continued-pretraining signal.
 
-## Why interaction data is the most valuable training signal
+**The Apprenticeship Substrate** is an architecture-layer pattern in the Foundry platform that inverts the conventional human-AI authorship sequence. Rather than having a senior author a diff directly, the Doorman routes the task to the local SLM (`service-slm`) first; the human operator with their senior reviewer assistant becomes the verifier rather than the primary author. The disagreement between apprentice attempt and senior verdict — captured as signed, append-only training tuples — is the highest-quality continued-pretraining signal Foundry produces. This article describes the routing protocol, the brief-attempt-verdict format, the promotion ledger, and what makes this posture structurally inaccessible to hyperscaler-managed AI.
 
-Training a language model on observations of what a senior reviewer wrote produces one kind of improvement. Training on the interaction between an apprentice's attempt and the senior's correction produces an order-of-magnitude more efficient improvement per training example. This is the core finding from direct preference optimisation and related alignment training research.
+## Overview
 
-The Apprenticeship Substrate is designed to produce interaction data on real production work, not synthetic benchmarks. Every task the platform performs in production is a candidate for apprenticeship capture. The quality of the signal is higher because the tasks are real, the stakes are real, and the senior's corrections reflect genuine judgment about what the correct result is.
+Captured observation trains a model on what the senior wrote. Captured interaction — apprentice attempt plus signed senior verdict — trains an order of magnitude more efficiently per tuple. This is the central finding of the RLHF, DPO, and RLAIF literature from 2024–2026: signed preference data is the most valuable training input.
 
-This training signal is structurally inaccessible to platforms whose preference signal is averaged across all users — they cannot produce per-customer, per-task-type, per-contributor interaction data at the granularity the Apprenticeship Substrate generates.
+The Apprenticeship Substrate is the routing inversion that produces those interaction tuples on real production work, not synthetic benchmarks. Every Foundry session exercises the apprentice; every signed verdict is a training tuple; every graduated task-type eliminates external AI tokens monotonically.
 
-## Three stages of progression
+Four preconditions make this work, and all four hold only inside Foundry-shaped substrates:
 
-Every registered task type progresses through three stages based on accumulated verdict history.
+1. Per-customer constitutional charter (the Doctrine).
+2. Per-customer signing identities (`allowed_signers`).
+3. Per-customer task-type granularity (the promotion ledger).
+4. Per-customer continued pretraining.
 
-**Review.** The apprentice attempts the task; the senior reviews every result before it is committed. The attempt and the verdict are captured as a training tuple regardless of outcome. New task types start here.
+Hyperscalers structurally lack all four.
 
-**Spot-check.** The apprentice's results are committed without per-result review; the senior reviews a sampled fraction and any results flagged by an anomaly detector. The sampling and flagging criteria are defined by the accumulated ledger evidence for that task type.
+## Ring and Role
 
-**Autonomous.** The apprentice operates without active review. Periodic batch audits provide the assurance layer. Post-commit reverts traced to apprentice results trigger an automatic demotion to the preceding stage.
+The Apprenticeship Substrate spans Ring 3 — Optional Intelligence and the training-corpus infrastructure. `service-slm` (the Doorman) is the Ring 3 service that executes apprentice routing. The promotion ledger and corpus capture scripts live in the workspace engineering layer. The substrate is active whenever a Foundry session issues a brief rather than authoring directly.
 
-The thresholds for promotion — 50 verdicts with an acceptance rate above 85% for the first promotion, 100 verdicts with an acceptance rate above 95% and no traced reverts for the second — are the initial values. They are tunable per-task-type based on what the ledger evidence shows.
+## Architecture
 
-## The brief, attempt, and verdict format
+### The three stages
 
-Each interaction has a structured format at all three stages.
+Routing operates per task-type. Promotion is automatic on threshold crossing; demotion is automatic on any post-commit revert traced to an apprentice diff.
 
-A **brief** names the task type, the files in scope, the acceptance test the apprentice should make pass, and the doctrine citations that bound the work. The senior writes the brief before authoring the result themselves.
+| Stage | Routing | Senior review |
+|---|---|---|
+| `review` | Apprentice attempts; senior reviews every diff before commit | Every diff |
+| `spot-check` | Apprentice commits; senior reviews 1-in-N sampled and auto-flagged anomalies | Sampled and flagged |
+| `autonomous` | Apprentice commits autonomously; monthly batch audit | Batch audit |
 
-An **attempt** is the apprentice's proposed result: a chain of reasoning, a diff, a self-assessed confidence score, and a flag indicating whether the apprentice is requesting escalation to a more capable model.
+Initial promotion thresholds:
 
-A **verdict** is the senior's assessment: accept, refine, reject, or defer to a higher compute tier. For refine and reject verdicts, a one-sentence explanation is required. The verdict is signed with the same cryptographic signing primitive used for all platform commits, binding the senior's identity to their review. The signature cannot be repurposed — a namespace tag in the signing protocol ties each signature specifically to the apprenticeship-verdict context.
+- `review → spot-check`: at least 50 verdicts AND accept-rate at least 0.85 over the rolling 50.
+- `spot-check → autonomous`: at least 100 verdicts AND accept-rate at least 0.95 over the rolling 100 AND zero post-commit reverts traced to apprentice diffs.
 
-Verdicts are append-only once signed. Corrections require a new superseding verdict, recorded in the promotion ledger as a separate event.
+Demotion: a single revert traced to an apprentice diff drops the task-type one stage. Recorded as a signed event in the ledger. New task-types start at `review`.
 
-## Shadow routing and continuous corpus growth
+### The brief, the attempt, the verdict
 
-For task types not yet registered for production routing, the platform operates a shadow path: after every commit, a brief describing that commit is submitted and the apprentice produces what it would have done. The triple of brief, apprentice attempt, and actual result that landed is captured as a training tuple without a senior verdict.
+A senior who would author a diff issues a **brief** instead. The brief states what is being done, the invariants the diff must preserve, the doctrine clauses cited, and the acceptance test the apprentice should make pass.
 
-Shadow-route tuples land in the corpus immediately at capture — they do not wait for a verdict to be written. This addresses a failure mode in naive apprenticeship systems where tuples accumulate in memory and are lost when a process restarts. The captured tuple carries a null verdict field that is filled in when a verdict is eventually signed; the corpus entry is updated in place rather than duplicated.
+The apprentice responds with an **attempt**: chain-of-thought reasoning citing the brief invariants, a self-confidence value calibrated against its prior ledger record on this task-type, and a unified diff. If self-confidence falls below 0.5, the apprentice escalates without diff — surfacing "this task-type is harder than I can handle today" rather than producing a low-confidence diff that wastes senior review.
 
-Training paths consume different subsets of the corpus: supervised fine-tuning uses the full corpus; direct preference optimisation uses only the verdict-signed subset, where the senior's correction is the preferred output and the apprentice's rejected attempt is the dispreferred output; continued pretraining uses the full corpus weighted by stage, with autonomous-stage tuples weighted most heavily.
+The senior reads the attempt and signs a **verdict**: `accept`, `refine`, `reject`, or `defer-tier-c`. Verdicts on `refine` and `reject` carry one-sentence notes — these are the highest-signal training data the corpus produces. The signature uses `ssh-keygen -Y sign` with a namespace tag (`apprenticeship-verdict-v1`) that binds the signature to this protocol; a commit-signing signature cannot be repurposed as a verdict signature.
 
-## The durable brief queue
+### The promotion ledger
 
-When the GPU burst model is used for apprentice inference and the burst instance is idle, a naive implementation would lose the brief when the HTTP call times out. The platform addresses this with a file-backed queue: the post-commit hook writes the brief as a file rather than making an HTTP call, and a background process drains the queue as inference capacity becomes available. Briefs queued while the burst instance is asleep are processed when it wakes.
+A single plain-text file tracks every task-type's stage and the event log that drives promotion and demotion. Every event line carries an embedded SSH signature block; the writer (the Doorman) appends only after verifying the senior's signature on the verdict batch. Single-writer concurrency via `flock(2)`; acceptable latency at the expected verdict rate of tens per day.
 
-The queue uses rename-based atomic state transitions and file-lock-based lease semantics, so a crashed worker does not leave briefs permanently in-flight — leases expire and return the brief to the queue. The corpus tuple lands after the apprentice completes, not at queue time.
+Event types: `task-type-add`, `verdict-batch`, `promotion`, `demotion`, `verdict-supersession`, `task-type-retire`. The schema is closed; new event types require ledger discipline because promotion threshold computations depend on them.
 
-## The editorial task type
+### Production routing vs shadow routing
 
-The platform's editorial pipeline — where bulk draft content is refined through a structured register-alignment process — generates its own apprenticeship corpus. Every draft that enters the pipeline produces a creation event; every refinement produces a refinement event. Drafts that receive a subsequent creative-contributor edit produce a third event capturing the before and after of the creative pass.
+Two paths run in parallel.
 
-Two distinct preference pairs emerge from the editorial lifecycle: one capturing the transformation from raw draft to register-aligned output, and one capturing the transformation from aligned output to creatively polished output. These pairs operate at different levels of the writing craft and do not conflict when used together in continued pretraining.
+**Production routing** runs on graduated task-types. The senior issues a brief before authoring the diff; the apprentice's attempt is the candidate diff; on `accept`, the apprentice's diff lands in the commit. This eliminates senior authoring tokens on graduated task-types.
 
-The editorial task type generates more tuples per unit time than code-oriented task types, because editorial output is produced at higher volume and more frequently than code changes. It is the primary source of domain-voice training signal for the platform's AI substrate.
+**Shadow routing** runs on every other code-shaped commit across every active cluster. After the diff is authored the existing way, the session fires a brief to the apprentice; the apprentice produces what it would have done; the (brief, attempt, actual-diff) triple is captured to the corpus as a training tuple. No verdict; no signing. The apprentice is exercised continuously; the corpus grows on every cluster's work.
+
+Production routing eliminates senior tokens on graduated types. Shadow routing generates the training data that graduates the next type. The two paths compound.
+
+### Capture pipeline
+
+The apprenticeship corpus is a fourth corpus alongside the constitutional, engineering, and tenant-runtime corpora. Per-tenant partitioning lives at the directory level:
+
+```
+~/Foundry/data/training-corpus/apprenticeship/<task-type>/<tenant>/<ulid>.jsonl
+```
+
+One file per (brief, attempt, verdict) triple. Tenant-private records never leave the tenant's substrate per Doctrine §IV.b.
+
+A `refine` or `reject` verdict additionally produces a Direct Preference Optimisation triple: (rejected attempt, corrected diff, doctrine-violation tag). DPO triples feed adapter training on the apprentice's policy.
+
+## Configuration
+
+The first registered task-type is `version-bump-manifest`. Every workspace MINOR and PATCH bump touches `MANIFEST.md` and `CHANGELOG.md`. Well-shaped, no architectural judgment required, easily verifiable. The apprentice graduates this type first; senior tokens drop on this class of work; the next task-type registers.
+
+The end state is a continuum — code-shaped work the apprentice handles autonomously, code-shaped work the apprentice handles with spot-check, code-shaped work that still requires senior review. The continuum shifts as the corpus matures.
+
+Per `[ni-51-102]` continuous-disclosure language, the trajectory toward token-elimination across graduated task-types is forward-looking. The shape is in place; the operational throughput matures as the corpus grows and task-types graduate.
 
 ## See Also
 
-- [[topic-trajectory-substrate]] — the broader corpus typology of which the apprenticeship corpus is one component
-- [[compounding-doorman]] — the Doorman that routes briefs to the local model and manages key custody for higher-tier inference
-- [[topic-llm-substrate-decision]] — why OLMo 3's fully open structure makes the intended continued-pretraining outcome possible
-- [[topic-four-tier-slm-substrate]] — the tier model that determines which compute handles apprentice inference at each stage
+- [[topic-compounding-substrate]]
+- [[topic-contributor-model]]
+- [[topic-language-protocol-substrate]]
+- [[topic-trajectory-substrate]]
+- [[topic-customer-hostability]]
 
 ## References
 
-1. Constitutional AI paper, arXiv 2212.08073 — foundational work on preference learning and verdict-based training.
-2. Federated LoRA paper, arXiv 2502.05087 — federated adapter training mechanics.
-3. S-LoRA, 2024 — concurrent adapter serving.
-4. `conventions/apprenticeship-substrate.md` — source convention for this article.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*
+- `~/Foundry/conventions/apprenticeship-substrate.md` — the convention this article reflects
+- `pointsav-monorepo/service-disclosure/CORPUS-SCHEMA.md` — the corpus schema
+- DOCTRINE.md Claim #32 — Apprenticeship Substrate
+- `[ni-51-102]` — NI 51-102 Continuous Disclosure Obligations (governs forward-looking statements in this article)

@@ -4,114 +4,103 @@ title: "The Language-Protocol Substrate"
 slug: topic-language-protocol-substrate
 category: architecture
 type: topic
-quality: published
-short_description: The editorial infrastructure that makes writing in a PointSav deployment an audited, per-tenant, forkable practice — a four-family adapter taxonomy, genre templates, and a compounding training pipeline that compounds the per-tenant voice over time.
+quality: complete
+short_description: "The Language-Protocol Substrate is the Foundry editorial infrastructure that provides four adapter families, eighteen genre templates, a frontmatter validator, and a banned-vocabulary list, making editorial work a per-tenant, audited, and forkable practice."
 status: pre-build
-last_edited: 2026-05-01
+last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:
-  - constitutional-ai-2212-08073
-  - federated-lora-2502-05087
-  - lorax-predibase
-  - olmo3-allenai
-  - s-lora-2024
+  - ni-51-102
+  - osc-sn-51-721
 paired_with: topic-language-protocol-substrate.es.md
 ---
 
-The **Language-Protocol Substrate** is the architecture that makes editorial work in a PointSav deployment structured, per-tenant, and auditable. It defines a four-family adapter taxonomy for language generation, a set of genre templates delivered as prompt scaffolding at request time, a service split that keeps data, inference, and operational concerns in separate components, and a training pipeline whose output compounds with each editorial action the tenant takes.
+# The Language-Protocol Substrate
 
-## Why this exists
+> The Language-Protocol Substrate is the Foundry editorial infrastructure that provides four adapter families, eighteen genre templates, a frontmatter validator, and a banned-vocabulary list, making editorial work a per-tenant, audited, and forkable practice.
 
-Cloud writing assistants typically route customer text through provider infrastructure, train on provider models, and store per-customer voice profiles at the provider. When a customer leaves, the model leaves with the provider. The per-customer voice evaporates. The audit trail of what the AI wrote on the customer's behalf is inaccessible.
+**The Language-Protocol Substrate** is a cross-cutting architecture pattern in the Foundry platform. It carries four families, eighteen genre templates, and a four-service split that lets a customer replace any single component without touching the rest. The substrate makes editorial work in Foundry an audited, per-tenant, forkable practice by encoding register, brand voice, document sub-type, and target audience as reusable prompt scaffolding rather than ad-hoc instruction. This article explains what it does, why it exists, and how it composes with the other Foundry substrates.
 
-The Language-Protocol Substrate inverts these properties. Per-tenant LoRA adapters are trained on the customer's own corpus, held on the customer's own hardware, and portable if the customer moves. The audit ledger of every editorial AI call is owned by the customer. The substrate ships as four composable services the customer can run independently, swap individually, or fork entirely.
+## Overview
 
-## The four-family adapter taxonomy
+The substrate provides four artefacts:
 
-Production multi-LoRA infrastructure supports up to three adapters per request before multi-task interference degrades quality. The substrate's taxonomy is designed around this constraint:
+1. **A 4-family adapter taxonomy.** PROSE for long-form English, COMMS for short-form interpersonal, LEGAL for volume-gated formal documents, TRANSLATE as a meta-protocol layered on top of any other family.
+2. **A genre-template registry.** Eighteen templates, each carrying its required sections, register parameters, bilingual-pair convention, frontmatter schema, and prompt scaffolding.
+3. **A frontmatter validator.** Returns every per-genre rule violation in one pass rather than first-fail.
+4. **A banned-vocabulary list.** Eight cross-genre prohibited terms that survive in marketing prose and have no place in precise writing.
 
-| Family | Generation responsibility |
-|---|---|
-| **PROSE** | Long-form English prose — READMEs, TOPICs, GUIDEs, memos, architecture documents, changelogs |
-| **COMMS** | Short-form interpersonal — email, chat, ticket comments, meeting notes |
-| **LEGAL** | Volume-gated; routes to Tier C (external API via Doorman) unless per-tenant legal corpus justifies a dedicated adapter |
-| **TRANSLATE** | Meta-protocol; transforms the output of any other family across a language pair or register shift |
+These four artefacts ship as a Rust crate (`service-disclosure`) that any Foundry component can consume. The Doorman composes the templates into prompts at request time; the per-tenant write-assistant validates inbound and outbound text against the schema; the apprenticeship pipeline produces verdict-signed training tuples on every editorial action.
 
-At request time the Doorman composes three adapter layers:
+## Ring and Role
+
+The Language-Protocol Substrate spans Ring 3 — Optional Intelligence (inference via the Doorman) and Ring 2 — Knowledge and Processing (schema validation and template management via `service-content` and `service-disclosure`). It has no Ring 1 component: editorial work begins after boundary ingest completes. The substrate is activated on every editorial action that passes through the Doorman, whether that action is a document generation request, a validation pass, or a training-tuple capture.
+
+## Architecture
+
+### The four families
+
+| Family | Generation responsibility | Templates |
+|---|---|---|
+| **PROSE** | Long-form English prose | README (workspace / repo / project), TOPIC, GUIDE, MEMO, ARCHITECTURE, INVENTORY, license-explainer, CHANGELOG |
+| **COMMS** | Short-form interpersonal | email, chat, ticket comment, meeting notes |
+| **LEGAL** | Volume-gated formal | contract, CLA, policy, terms (default-routes to Tier C) |
+| **TRANSLATE** | Meta-protocol | Operates over the other families; not a separate generation track |
+
+Three adapters compose at request time:
 
 ```
 composed_weights =
-    base_model[OLMo 1B or 32B]
-    ⊕ tenant_adapter[<tenant_id>]
+    base_model
+    ⊕ tenant_adapter[<tenant_id>]      // brand voice
     ⊕ protocol_adapter[PROSE | COMMS | LEGAL | TRANSLATE]
 ```
 
-Register, brand voice, document sub-type, channel formality, and target audience all live as **prompt scaffolding** — structured prompt fragments composed at request time — rather than as additional adapters.
+Five or more adapters per request crosses into multi-task interference per the 2025 LoRA literature (LoRAX, S-LoRA, TC-LoRA, LoRI). Foundry stays at three.
 
-## Genre templates
+Register, brand voice, document sub-type, and target audience live as prompt scaffolding rather than additional adapters. This is the Writer Brand IQ pattern and the Jasper brand-voice configuration — fewer adapters, richer scaffolding, retrieval grounding, decode-time constraints. The 2026 industry consensus.
 
-Each genre template is a structured prompt fragment that the Doorman composes at request time. Templates carry required sections, a banned-vocabulary list (terms such as "leverage," "seamless," "next-generation," "cutting-edge" are prohibited across all genres), register parameters (target reading level, sentence-length budget, active/passive preference), the bilingual-pair convention (English canonical plus Spanish overview), and frontmatter schema requirements (citations, license, forward-looking flag).
+### The four-service split
 
-Templates are versioned. They live in `service-disclosure` and are served by the Doorman at request time so that every request automatically receives the current schema constraints.
+The editorial-write path runs through four services. Each owns one shape:
 
-## The service split
+| Service | Shape | Owner cluster |
+|---|---|---|
+| `service-content` | Data — taxonomy ledger and knowledge graph | project-slm |
+| `service-slm` | Inference — Doorman, tier routing, audit ledger | project-slm |
+| `service-disclosure` | Schema — types, validators, CFG, templates | project-language |
+| `service-proofreader` | Operational — request-shaped HTTP write-assistant | project-proofreader |
 
-Four services compose the substrate. Each has a distinct contract and can be deployed, swapped, or replaced independently:
+A customer can replace any one without touching the rest. Replace `service-slm` with a customer-owned GPU host while keeping `service-content` and `service-disclosure`. Replace `service-content` with a customer's existing knowledge graph while keeping `service-slm`. The contract between services is the only thing that needs to hold.
 
-- **`service-content`** — data substrate; the per-tenant knowledge graph, taxonomy ledger, embeddings, and indexes. Multi-tenant via `moduleId` namespacing inside one instance per deployment.
-- **`service-slm`** — inference router; the Doorman, Tier A local model, Tier B GPU burst, and Tier C external API allowlist. Enforces sanitise-outbound and audit-ledger discipline on every call.
-- **`service-disclosure`** — schema and constraint substrate; TOPIC/GUIDE/README schemas as Rust types, banned-vocabulary context-free grammar, genre template registry, frontmatter validators. Library-shaped; consumed by `service-proofreader` as a Cargo dependency.
-- **`service-proofreader`** — operational write-assistant; text in, improved text out, diff displayed. Consumes `service-slm`, `service-content`, and `service-disclosure` at request time.
+This matches Microsoft's synced-versus-federated-connector framing, LangChain's swappable-retriever pattern, and llama-agents' independently-deployable-microservice approach. Foundry's contribution is the per-tenant audit ledger that makes the substitution composable across regulatory contexts.
 
-A customer who wants to replace their inference backend replaces `service-slm` while keeping the other three unchanged. A customer who wants to extend the schema for a new document genre edits `service-disclosure` without touching inference or data.
+### Multi-tenant via moduleId namespacing
 
-## AI-garbage prevention
+The standard 2024–2026 pattern, drawn from Pinecone, Microsoft 365 Copilot Semantic Index, and AWS Bedrock Knowledge Bases, is namespace-per-tenant inside one service instance — not separate per-tenant deployments.
 
-The substrate addresses four documented failure modes in AI writing systems:
+For Foundry: one `service-content` instance per Foundry deployment, with `moduleId` partitioning Woodfine, PointSav, and future tenants inside. Per-tenant isolated deployment is the escalation path — when a customer needs key-management-per-tenant or stronger isolation, they spin up their own Foundry instance in their own substrate and get their own `service-content` there.
 
-**Register collapse.** AI suggestions can silently coerce writers toward a homogenised Western register. The substrate's default is flag-and-display rather than auto-rewrite. The per-tenant adapter preserves the customer's voice. Protocol selection is explicit, not auto-detected.
+This is the meaning of "tenant escalation happens at the deployment boundary, not the service-naming boundary." The service stays multi-tenant; the deployment topology grows isolation when warranted.
 
-**Hallucinated legal citations.** The LEGAL protocol disables citation generation. Factual claims route to an explicit citation-check step drawing only from `citations.yaml`. The substrate never invents a citation.
+## Configuration
 
-**Customer-text training.** The deployment MANIFEST explicitly prohibits training on tenant text without opt-in. The Doorman's audit trail records every call. Constrained decoding prevents tenant-text leakage at generation time.
+Eight editorial task-types are defined in the project-language cluster manifest: `prose-edit`, `comms-edit`, `frontmatter-normalize`, `citation-insert`, `register-tighten`, `cross-link-verify`, `schema-validate`, `template-author`. Each generates verdict-signed training tuples through the apprenticeship-substrate pipeline (Doctrine claim #32). The tuples feed continued pretraining on the customer's adapter when corpus volume warrants.
 
-**Wrapper-startup failure.** The substrate's moat is per-tenant adapter plus customer-owned weights plus on-customer-substrate compute — the structural properties that prompt-only wrappers lack.
-
-## The editorial gateway role
-
-At workspace v0.1.31, the Language-Protocol Substrate's operational expression — `service-language` — became the editorial gateway for all of Foundry's wiki and documentation output. Drafts from Task, Root, and Master sessions stage to `drafts-outbound/` directories. `project-language` sweeps those drafts, applies the substrate's constraints (banned-vocabulary grammar, citation registry resolution, bilingual pair generation, BCSC forward-looking discipline), and hands refined output to the appropriate destination repository.
-
-The two-stage DPO loop closes over time: Stage 1 captures structural correctness from the apprenticeship substrate; Stage 2 captures editorial craft from Creative Contributor edits at the end of the cycle. Quarterly OLMo continued pretraining on the combined corpus means the substrate-generated baseline converges toward the combined standard of structure and craft. Creative incremental load drops as the baseline improves; Creative leverage grows.
-
-## Customer-hostability
-
-Every component ships with a bootstrap script. The customer's per-tenant adapters live in `data/adapters/<tenant>.safetensors` on the customer's own hardware, trained on the customer's own corpus, never transmitted outside customer-controlled storage. The audit ledger is owned by the customer and anchored to the customer's signing key. The stack can be taken and operated independently of any vendor relationship.
-
-## Implementation state
-
-`service-disclosure` scaffold, genre template registry, and apprenticeship corpus directory tree are planned for initial phases of the `project-language` cluster. `service-proofreader` and `app-console-proofreader` are operational at `proofreader.woodfinegroup.com`. Yo-Yo training pipeline scripts are a longer-horizon item. The constrained-decoding upgrade that would allow the Doorman to enforce banned-vocabulary grammar at decode time (rather than post-hoc) depends on the AS-2 integration work in the `project-slm` cluster.
+Per `[ni-51-102]` continuous-disclosure language and in accordance with the forward-looking information principles of `[osc-sn-51-721]`, the substrate's training pipeline is described in planned terms. The shape is in place; the operational throughput is what matures over time. The pipeline target: every editorial action a Foundry-shaped deployment performs is one tuple of training data for the customer's adapter. The customer's voice deepens over time without their text leaving their substrate.
 
 ## See Also
 
-- [[compounding-doorman]] — the inference boundary the substrate routes through
-- [[apprenticeship-substrate]] — the training mechanism the substrate extends to editorial work
-- [[topic-adapter-composition]] — the algebra that makes three-adapter composition work
-- [[topic-disclosure-substrate]] — the wiki-as-disclosure-record framing that depends on this substrate's output quality
+- [[topic-style-guide-topic]]
+- [[topic-style-guide-readme]]
+- [[topic-customer-hostability]]
+- [[topic-anti-homogenization-discipline]]
+- [[topic-apprenticeship-substrate]]
 
 ## References
 
-1. Constitutional AI: Harmlessness from AI Feedback, Bai et al., arXiv 2212.08073.
-2. Federated LoRA, arXiv 2502.05087.
-3. LoRAX — Predibase multi-LoRA inference server.
-4. OLMo 3 — Allen Institute for AI, Apache 2.0.
-5. S-LoRA — scalable serving of thousands of concurrent LoRA adapters.
-
----
-
-## Provenance
-
-Source material: `conventions/language-protocol-substrate.md` (ratified 2026-04-27, doctrine v0.0.8). Disciplines applied: no body H1; structural positioning (competitor products removed by name; capability contrast retained structurally); BCSC forward-looking framing on constrained-decoding upgrade and training pipeline (planned/depends on); banned-vocabulary pass; workspace-internal operational details stripped.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*
+- `~/Foundry/conventions/language-protocol-substrate.md` — the convention this article reflects
+- `pointsav-monorepo/service-disclosure/` — the implementation crate
+- DOCTRINE.md Claims #21, #22, #25, #31, #32 — the composition claims this substrate realises
+- `[ni-51-102]` — NI 51-102 Continuous Disclosure Obligations
+- `[osc-sn-51-721]` — OSC Staff Notice 51-721 Forward-Looking Information Disclosure

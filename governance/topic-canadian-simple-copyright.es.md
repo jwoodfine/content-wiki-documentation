@@ -1,3 +1,18 @@
+---
+schema: foundry-doc-v1
+title: "Canadian-Simple Copyright Posture"
+slug: topic-canadian-simple-copyright-es
+category: governance
+type: topic
+quality: core
+short_description: "Foundry's intellectual property vests in a single Canadian parent holding company by operation of Canadian Copyright Act § 13(3), without inter-company assignment, and is designed to be evolved incrementally as the corporate structure matures."
+status: pre-build
+last_edited: 2026-04-30
+editor: pointsav-engineering
+cites:
+  - ni-51-102
+paired_with: topic-canadian-simple-copyright.md
+---
 # Postura de derechos de autor canadiense-simple (resumen)
 
 La propiedad intelectual de Foundry se mantiene bajo una postura

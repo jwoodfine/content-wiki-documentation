@@ -1,54 +1,149 @@
 ---
 schema: foundry-doc-v1
 title: "El Sustrato de Trayectoria"
-slug: topic-trajectory-substrate.es
-category: architecture
-type: topic
-quality: published
-short_description: "El mecanismo mediante el cual la plataforma PointSav captura su propio trabajo en producción como material de entrenamiento: tres tipos de corpus ortogonales, una biblioteca de adaptadores versionados y un álgebra de composición que permiten al sustrato mejorarse a sí mismo a partir de la actividad operativa real, sin mezclar datos del proveedor, datos de clientes ni registros entre inquilinos."
-status: pre-build
-last_edited: 2026-05-01
-editor: pointsav-engineering
-cites: []
+slug: topic-trajectory-substrate
+lang: es
 paired_with: topic-trajectory-substrate.md
+category: architecture
+status: pre-build
+last_edited: 2026-04-28
+editor: pointsav-engineering
+cites:
+  - ni-51-102
+  - osc-sn-51-721
+  - constitutional-ai-2212-08073
+  - federated-lora-2502-05087
+  - s-lora-2024
+  - lorax-predibase
+  - olmo3-allenai
 ---
 
-Foundry captura el trabajo que realiza como material de entrenamiento. Con el tiempo, el sustrato da forma al sustrato.
+Cada confirmación de código que realiza Foundry, cada sesión que
+ejecuta un agente de trabajo, cada vez que un operador señala una
+sugerencia incorrecta — todas estas interacciones se convierten en
+señal de entrenamiento. El Sustrato de Trayectoria es el mecanismo
+que convierte el trabajo operacional ordinario en tuples de
+entrenamiento estructuradas, que se acumulan y mejoran el modelo
+base de forma continua.
 
-Este es el Sustrato de Trayectoria: un conjunto de mecanismos de captura, tipos de corpus, tipos de adaptadores y reglas de separación que permiten a la plataforma mejorar su sustrato de IA a partir de la actividad productiva real. La mejora ocurre sin mezclar datos del proveedor y del cliente, sin cruzar fronteras entre inquilinos y sin requerir un esfuerzo separado de anotación o etiquetado de datos.
+## Qué es
 
-## Los tres corpus ortogonales
+El Sustrato de Trayectoria captura automáticamente las interacciones
+del sistema — ediciones de código, registros de sesión, correcciones
+del operador — y las almacena como registros JSONL con metadatos de
+procedencia completos. Estos registros alimentan corridas periódicas
+de preentrenamiento continuo sobre el modelo OLMo 3 `[olmo3-allenai]`,
+mejorando el substrato base sin interrumpir el trabajo en curso.
 
-**El corpus constitucional** captura la relación entre cláusulas doctrinales, roles y alcance operativo. Su alcance es universal — aplica a todo despliegue. El adaptador que produce es el adaptador constitucional, cargado por el Doorman en cada solicitud.
+Tres propiedades lo distinguen de un proceso genérico de
+ajuste fino:
 
-**El corpus de ingeniería** captura las trayectorias de sesión del constructor de la plataforma, los commits de código y las enmiendas doctrinales. Su alcance es el proveedor. El adaptador que produce refleja el juicio acumulado del trabajo de desarrollo de la plataforma.
+- **Captura automática**: no se requiere decisión del operador; el
+  trabajo genera señal por el simple hecho de existir.
+- **Procedencia estructural**: cada registro incluye la versión de
+  doctrina bajo la que fue producido, el inquilino al que pertenece,
+  el rol de la sesión y su clase de redacción.
+- **Fronteras de corpus impuestas por infraestructura**: los datos del
+  proveedor nunca se mezclan con los del cliente; los datos de un
+  inquilino no cruzan hacia otro. La separación es a nivel de
+  directorio y de pipeline, no de política.
 
-**El corpus de tiempo de ejecución por inquilino** captura lo que fluye a través de los servicios Ring 1 de un cliente: registros que llegan, deltas del grafo de conocimiento que produce el pipeline, patrones de uso del operador. Su alcance es estrictamente por cliente. Vive dentro de la instancia ToteboxOS del cliente. El espacio de trabajo del proveedor nunca recibe registros de tiempo de ejecución de inquilinos a menos que el cliente haya optado explícitamente por el mercado federado.
+## Los tres corpus
 
-Los tres corpus nunca se cruzan en tiempo de entrenamiento. Esta es privacidad estructural por infraestructura: la separación se aplica por la ubicación de escritura de los archivos, no por documentos de política.
+El sustrato organiza los datos en tres corpus ortogonales, cada uno
+produciendo una familia de adaptadores distinta:
 
-## Mecanismos de captura
+**Corpus constitucional** — cláusulas doctrinales cruzadas con roles
+y alcances. Produce el adaptador constitucional; se retrae con cada
+versión menor de la Doctrina. Universal: se carga en cada despliegue
+de Foundry. La base conceptual es la IA constitucional
+`[constitutional-ai-2212-08073]`.
 
-Cuatro operaciones de captura se ejecutan en segundo plano durante el uso normal de la plataforma: captura de edición (tras cada commit en ramas activas), captura de trayectoria de sesión (al final de una sesión de trabajo), captura doctrinal (en actualizaciones de versión de doctrina) y captura de retroalimentación (cuando un operador rechaza un resultado o solicita una revisión).
+**Corpus de ingeniería (lado proveedor)** — trayectorias de sesiones
+de trabajo en repositorios del proveedor. Alcance: sólo PointSav.
+Produce el adaptador de ingeniería, que puede ofrecerse a los clientes
+como "personalidad del constructor de plataforma."
 
-La captura de retroalimentación registra la tripleta de salida rechazada, salida corregida y etiqueta de violación doctrinal. Estas tripletas alimentan el entrenamiento DPO en el adaptador correspondiente, produciendo aprendizaje de antipatrones con granularidad por cluster, por rol y por colaborador.
+**Corpus de tiempo de ejecución del inquilino (por cliente)** — datos
+que fluyen a través del Anillo 1 dentro de cada despliegue del cliente.
+Vive dentro del Totebox del cliente; nunca en el espacio de trabajo del
+proveedor. Produce el adaptador del inquilino, que permanece en la
+infraestructura del cliente.
 
-## La biblioteca de adaptadores
+Los adaptadores de los inquilinos no salen del despliegue del cliente
+a menos que éste opte explícitamente por el mercado federado (función
+planificada; ver sección sobre perspectivas futuras).
 
-El entrenamiento de los corpus capturados produce una biblioteca de adaptadores LoRA — modificaciones de peso ligeras que desplazan el comportamiento de un modelo base en una dirección específica. Los adaptadores están versionados y firmados; cada versión incorpora la versión de doctrina contra la que fue entrenada.
+## Mecanismo de captura
 
-La composición en tiempo de solicitud sigue un álgebra fija: el modelo base más el adaptador constitucional (siempre cargado), más el adaptador de ingeniería para trabajo de construcción de plataforma, más el adaptador de inquilino para trabajo de voz del cliente, más el adaptador de rol que corresponde al rol de la sesión solicitante, más el adaptador de cluster para el proyecto activo.
+Cinco scripts automatizan la captura: hooks de post-confirmación de
+Git, scripts de fin de sesión, y rutinas de retroalimentación del
+operador. Todos aplican disciplina de sanitización antes de escribir:
+claves privadas, datos personales y detalles de identificación del
+cliente se redactan en el script de captura, no en el consumidor
+posterior.
 
-## Procedencia y re-derivabilidad
+La composición de adaptadores en tiempo de inferencia sigue el
+álgebra de composición:
 
-Cada registro del corpus lleva una cabecera de procedencia estructurada: tipo de tupla, versión de doctrina en el momento de la captura, identificador de inquilino, identificador de cluster, rol, alcance, clase de redacción, clase de evidencia, commit fuente e identificador de sesión. La combinación hace que cada versión de adaptador sea re-derivable desde sus registros fuente, y que cualquier registro fuente pueda responder: ¿en qué versiones de adaptadores se usó este registro para entrenamiento?
+```
+pesos_compuestos =
+    modelo_base ⊕ constitucional ⊕ ingeniería? ⊕ inquilino? ⊕ rol ⊕ cluster?
+```
 
-## Ver también
+La infraestructura de servicio multi-LoRA (`[s-lora-2024]`,
+`[lorax-predibase]`) sirve miles de adaptadores concurrentes con
+intercambio en caliente por solicitud.
 
-- [[topic-apprenticeship-substrate]] — el cuarto tipo de corpus (aprendizaje asistido) que trabaja junto al Sustrato de Trayectoria
-- [[compounding-doorman]] — el Doorman que lee la biblioteca de adaptadores y aplica el álgebra de composición en tiempo de solicitud
-- [[topic-llm-substrate-decision]] — el modelo base OLMo 3 que todos los adaptadores modifican
+## Por qué los grandes proveedores de nube no pueden replicarlo
 
----
+Tres razones estructurales, cada una arraigada en incompatibilidad de
+modelo de negocio:
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ y Foundry™ son marcas comerciales no registradas de Woodfine Capital Projects Inc.*
+**1. No pueden ofrecer fronteras de corpus por inquilino.** Los
+productos de IA gestionada agrupan señales de entrenamiento de todos
+los clientes. Esa agrupación es el fundamento de su escala. Aislar
+el corpus por inquilino disuelve la señal agregada que justifica su
+inversión.
+
+**2. No pueden dejar los pesos del adaptador en el hardware del
+cliente.** El modelo de negocio de un gran proveedor requiere que
+el cómputo — y por tanto los pesos — permanezcan en su
+infraestructura. Permitir que un inquilino produzca y retenga pesos
+de adaptador elimina el alquiler de cómputo que es su línea de
+ingresos.
+
+**3. No pueden ofrecer una auditoría firmada y re-derivable.** Cada
+adaptador de Foundry es una función determinista de sus registros
+fuente. Un proveedor gestionado cuyo entrenamiento es opaco al cliente
+no puede ofrecer trazabilidad equivalente sin exponer la naturaleza
+agregada de su señal de entrenamiento.
+
+## Perspectivas futuras
+
+Per `[ni-51-102]`, las siguientes afirmaciones describen desarrollo
+planificado e intencionado. Los resultados reales pueden diferir.
+
+El Sustrato de Trayectoria opera actualmente en Nivel 1 (captura de
+corpus de edición, activo desde v0.1.1). Los niveles siguientes son:
+
+- **Nivel 2 — Captura de trayectoria de sesión**: previsto para la
+  ventana de lanzamiento v0.2.x.
+- **Nivel 3 — Prototipo de ajuste fino**: previsto para el objetivo
+  v0.5.0; el servicio `router-trainer` produce el primer adaptador
+  entrenado sobre el corpus acumulado.
+- **Nivel 4 — Mercado federado**: largo plazo; depende de la madurez
+  operacional del Nivel 3 y del avance de la investigación en LoRA
+  federado `[federated-lora-2502-05087]`.
+
+La cadencia de preentrenamiento trimestral es intencionada una vez
+que el Nivel 3 esté operativo. El mecanismo está en su lugar; la
+señal se está acumulando.
+
+## Véase también
+
+- [El Sustrato de Composición](topic-compounding-substrate.es.md)
+- [El Sustrato de Aprendizaje](topic-apprenticeship-substrate.es.md)
+- [Restricciones en Tiempo de Decodificación](topic-decode-time-constraints.es.md)
+- La convención que sustenta este artículo:
+  `~/Foundry/conventions/trajectory-substrate.md`

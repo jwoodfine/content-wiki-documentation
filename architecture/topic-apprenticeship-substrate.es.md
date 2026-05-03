@@ -1,54 +1,91 @@
 ---
 schema: foundry-doc-v1
-title: "El Sustrato de Aprendizaje Asistido"
-slug: topic-apprenticeship-substrate.es
+title: "The Apprenticeship Substrate"
+slug: topic-apprenticeship-substrate-es
 category: architecture
 type: topic
-quality: published
-short_description: "Un protocolo de enrutamiento en producción que invierte el flujo habitual de trabajo asistido por IA: el modelo local intenta la tarea primero, un revisor senior firma un veredicto, y el desacuerdo entre ambos — capturado como tuplas de entrenamiento firmadas — genera la señal de preentrenamiento continuo de mayor calidad que la plataforma puede producir."
+quality: complete
+short_description: "The Apprenticeship Substrate is the Foundry mechanism that routes code-shaped and editorial work first through a local Small Language Model, captures signed senior verdicts on every attempt, and uses the resulting preference pairs as continued-pretraining signal."
 status: pre-build
-last_edited: 2026-05-01
+last_edited: 2026-04-30
 editor: pointsav-engineering
-cites: []
+cites:
+  - ni-51-102
 paired_with: topic-apprenticeship-substrate.md
 ---
+# El sustrato de aprendizaje (resumen)
 
-El Sustrato de Aprendizaje Asistido invierte el orden habitual del trabajo asistido por IA. En lugar de que una sesión senior redacte un resultado y opcionalmente pida a la IA que lo verifique, el modelo local — el aprendiz — intenta la tarea en primer lugar. El revisor senior revisa el intento y firma un veredicto. El desacuerdo entre intento y veredicto se captura como una tupla de entrenamiento firmada y se incorpora al pipeline de preentrenamiento continuo de la plataforma.
+La mayoría de los asistentes de escritura con IA empujan
+silenciosamente a sus usuarios hacia una voz única. Investigación
+de Cornell (arXiv 2409.11360, 2024) encontró que las sugerencias
+de IA empujan a escritores no occidentales hacia el registro
+occidental con tasas más altas y con ganancias de productividad
+más pequeñas, porque los escritores gastan tiempo adicional
+corrigiendo la deriva de la IA hacia su voz auténtica. La
+disciplina anti-homogenización de Foundry es la postura
+arquitectónica que resiste esa deriva explícitamente.
 
-## Por qué los datos de interacción son la señal de entrenamiento más valiosa
+## Por qué existe
 
-Entrenar un modelo de lenguaje con observaciones de lo que escribió un revisor senior produce un tipo de mejora. Entrenar con la interacción entre el intento del aprendiz y la corrección del senior produce una mejora un orden de magnitud más eficiente por ejemplo de entrenamiento. Esta es la conclusión central de la investigación sobre optimización por preferencias directas (DPO) y entrenamiento de alineación relacionado.
+La observación capturada entrena al modelo sobre lo que escribió
+el sénior. La **interacción** capturada — intento del aprendiz
+más veredicto firmado del sénior — entrena con un orden de
+magnitud más eficiencia por tupla. Es el hallazgo central de la
+literatura RLHF / DPO / RLAIF de 2024-2026.
 
-Esta señal de entrenamiento es estructuralmente inaccesible para plataformas cuya señal de preferencia se promedia entre todos los usuarios — no pueden producir datos de interacción por cliente, por tipo de tarea y por colaborador con la granularidad que genera el Sustrato de Aprendizaje Asistido.
+Cuatro precondiciones hacen funcionar esto, y las cuatro solo
+se sostienen dentro de sustratos con forma Foundry: carta
+constitucional por cliente (la Doctrina), identidades de firma
+por cliente (`allowed_signers`), granularidad por tipo-de-tarea
+por cliente (el libro de promoción), y pre-formación continuada
+por cliente. Los hiperescaladores carecen estructuralmente de
+las cuatro.
 
-## Los tres estadios de progresión
+## Las tres etapas
 
-Cada tipo de tarea registrado progresa a través de tres estadios según el historial de veredictos acumulados.
+| Etapa | Ruteo | Revisión sénior |
+|---|---|---|
+| `review` | El aprendiz intenta; el sénior revisa cada diff antes del commit | Cada diff |
+| `spot-check` | El aprendiz commitea; el sénior revisa 1-en-N + anomalías auto-marcadas | Muestreado + marcado |
+| `autonomous` | El aprendiz commitea autónomamente; auditoría mensual por lotes | Auditoría por lotes |
 
-**Revisión.** El aprendiz intenta la tarea; el senior revisa cada resultado antes de que se confirme. Los nuevos tipos de tareas comienzan aquí.
+La promoción es automática al cruzar el umbral; la degradación
+es automática ante cualquier reversión post-commit rastreada a
+un diff del aprendiz.
 
-**Verificación muestral.** Los resultados del aprendiz se confirman sin revisión por resultado individual; el senior revisa una fracción muestreada y cualquier resultado marcado por un detector de anomalías.
+## Brief, intento, veredicto
 
-**Autónomo.** El aprendiz opera sin revisión activa. Las reversiones post-confirmación trazadas a resultados del aprendiz desencadenan una regresión automática al estadio anterior.
+El sénior emite un **brief** en lugar de escribir el diff
+directamente. El aprendiz responde con un **intento**:
+razonamiento citando los invariantes del brief, una confianza
+propia calibrada contra su registro previo del libro, y un diff
+unificado. Si la confianza cae por debajo de 0.5, el aprendiz
+escala sin diff.
 
-## El formato de encargo, intento y veredicto
+El sénior lee el intento y firma un **veredicto**: `accept`,
+`refine`, `reject`, o `defer-tier-c`. Los veredictos `refine`
+y `reject` llevan notas de una oración — son los datos de
+entrenamiento de mayor señal que produce el corpus. La firma
+usa `ssh-keygen -Y sign` con etiqueta de espacio de nombres
+que vincula la firma a este protocolo.
 
-Un **encargo** nombra el tipo de tarea, los archivos en alcance, el test de aceptación y las citas doctrinales que acotan el trabajo. Un **intento** es el resultado propuesto por el aprendiz: razonamiento, diferencia de cambios, nivel de confianza autoevaluado y bandera de escalación. Un **veredicto** es la evaluación del senior — aceptar, refinar, rechazar o derivar a un nivel de cómputo superior — firmado con la misma primitiva criptográfica usada para los commits de la plataforma.
+## Ruteo de producción vs. ruteo en sombra
 
-## Enrutamiento en sombra y crecimiento continuo del corpus
+Dos rutas corren en paralelo. **Producción** opera sobre tipos
+de tarea graduados — elimina tokens del sénior en esa clase de
+trabajo. **Sombra** opera sobre cada commit de forma de código
+en cada cluster activo — el aprendiz produce lo que habría
+hecho, la tupla (brief, intento, diff-real) entra al corpus
+como tupla de entrenamiento, sin veredicto y sin firma. El
+aprendiz se ejercita continuamente; el corpus crece en cada
+trabajo.
 
-Para los tipos de tarea no registrados para enrutamiento en producción, la plataforma opera un camino en sombra: tras cada confirmación, el aprendiz produce lo que habría hecho. La tripleta de encargo, intento del aprendiz y resultado real se captura como tupla de entrenamiento sin veredicto senior. Las tuplas capturadas en sombra no esperan un veredicto para ingresar al corpus — aterrizan inmediatamente, con el campo de veredicto en nulo hasta que un senior lo firme.
+Producción elimina tokens. Sombra genera los datos que gradúan
+el próximo tipo. Las dos rutas se componen.
 
-## El tipo de tarea editorial
+## Véase también
 
-El pipeline editorial de la plataforma genera su propio corpus de aprendizaje asistido. Cada borrador que entra al pipeline produce un evento de creación; cada refinamiento produce un evento de refinamiento. Los borradores que reciben posteriormente una edición creativa producen un tercer evento que captura la transformación antes y después del paso creativo. El tipo de tarea editorial genera más tuplas por unidad de tiempo que los tipos orientados a código, y es la principal fuente de señal de entrenamiento de voz de dominio para el sustrato de IA de la plataforma.
-
-## Ver también
-
-- [[topic-trajectory-substrate]] — la tipología de corpus más amplia de la que el corpus de aprendizaje asistido es un componente
-- [[compounding-doorman]] — el Doorman que enruta los encargos al modelo local
-- [[topic-llm-substrate-decision]] — por qué la estructura completamente abierta de OLMo 3 hace posible el preentrenamiento continuo previsto
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ y Foundry™ son marcas comerciales no registradas de Woodfine Capital Projects Inc.*
+- [Documento canónico en inglés](topic-apprenticeship-substrate.md)
+- [El sustrato compuesto](topic-compounding-substrate.md)
+- [El modelo de contribuyentes en tres niveles](topic-contributor-model.md)
+- [El sustrato de protocolo de lenguaje](topic-language-protocol-substrate.md)

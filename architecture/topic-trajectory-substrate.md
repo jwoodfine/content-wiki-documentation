@@ -4,84 +4,139 @@ title: "The Trajectory Substrate"
 slug: topic-trajectory-substrate
 category: architecture
 type: topic
-quality: published
-short_description: "The mechanism by which the PointSav platform captures its own production work as training material: three orthogonal corpus types, a versioned adapter library, and a composition algebra that allow the substrate to improve itself from real operational activity without mixing vendor data, customer data, or cross-tenant records."
+quality: complete
+short_description: "The Trajectory Substrate is the Foundry mechanism that converts operational work — commits, sessions, operator feedback — into structured JSONL training tuples, routing them into a continued-pretraining corpus that improves the OLMo base model over time."
 status: pre-build
-last_edited: 2026-05-01
+last_edited: 2026-04-30
 editor: pointsav-engineering
-cites: []
+cites:
+  - ni-51-102
+  - osc-sn-51-721
+  - constitutional-ai-2212-08073
+  - federated-lora-2502-05087
+  - s-lora-2024
+  - lorax-predibase
+  - olmo3-allenai
 paired_with: topic-trajectory-substrate.es.md
 ---
 
-Foundry captures the work it does as training material. Over time, the substrate shapes the substrate.
+# The Trajectory Substrate
 
-This is the Trajectory Substrate: a set of capture mechanics, corpus types, adapter types, and separation rules that allow the platform to improve its AI substrate from real production activity. The improvement happens without mixing vendor and customer data, without crossing tenant boundaries, and without requiring a separate annotation or data-labelling effort. The work itself is the training material.
+> The Trajectory Substrate is the Foundry mechanism that converts operational work — commits, sessions, operator feedback — into structured JSONL training tuples, routing them into a continued-pretraining corpus that improves the OLMo base model over time.
 
-## Three orthogonal corpora
+Every commit Foundry makes, every session a Task Claude runs, every time an operator marks a suggestion as wrong — these interactions are not discarded. They are captured as structured JSONL tuples, tagged with provenance metadata, and routed into a training corpus whose accumulated signal shapes the OLMo base model each time a continued-pretraining run closes. The substrate trains itself on the work it performs. That loop — operational interaction to training signal to improved model to better operational output — is **The Trajectory Substrate**.
 
-The corpus is not a single file. It is three separate types, each producing a different adapter class, each living in a different location, and each enforcing different tenant-isolation rules. Mixing them is the failure mode.
+## Overview
 
-**The constitutional corpus** captures the relationship between doctrine clauses, roles, and operational scope. Its scope is universal — it applies to every deployment. The adapter it produces is the constitutional adapter, loaded by the Doorman on every request regardless of other context.
+The Trajectory Substrate is the Foundry mechanism that converts operational work into continued-pretraining signal without interrupting that work. It operates in the background of every commit, every session, and every operator feedback exchange.
 
-**The engineering corpus** captures the platform builder's session trajectories, code commits, and doctrine amendments. Its scope is the vendor. The adapter it produces — the engineering adapter — reflects the accumulated judgment of the platform's development work. It is offered to customers as the "platform-builder personality" under the SMB Customer service tier, but the training records behind it are vendor-only.
+Three properties distinguish a trajectory substrate from a generic fine-tuning pipeline:
 
-**The tenant-runtime corpus** captures what actually flows through a customer's Ring 1 services: the records that arrive, the graph deltas that the knowledge pipeline produces, the usage patterns the operator establishes. Its scope is strictly per-customer. It lives inside the customer's ToteboxOS instance. The vendor workspace never receives tenant-runtime records unless the customer has explicitly opted into the federated marketplace. The adapter it produces lives on the customer's instance, not at the vendor.
+1. **Capture is automatic.** No operator decision is required to generate a training tuple. The `git post-commit` hook fires; the session-end script fires; the rejected-suggestion script fires. Work produces signal by existing.
+2. **Provenance is structural.** Every JSONL record carries the doctrine version it was produced under, the tenant it belongs to, the role of the session, the cluster, and its redaction class. The training pipeline does not trust prose; it filters on these fields.
+3. **Corpus boundaries are enforced by infrastructure.** Vendor data never co-mingles with Customer data at training time. Tenant data never crosses tenants. The separation is directory-level and pipeline-level — not policy-level.
 
-The three corpora never cross at training time. This is structural privacy by infrastructure — the separation is enforced by where files are written, not by policy documents or contractual terms.
+## Ring and Role
 
-## Capture mechanics
+The Trajectory Substrate does not map to a single ring. Capture happens at every layer — Ring 1 runtime events, Ring 2 processing events, Ring 3 inference interactions, and workspace-level commit hooks. The substrate is the infrastructure that runs beneath all three rings, converting their operational outputs into training material. `service-slm` (Ring 3) is the primary consumer of the resulting adapters at inference time.
 
-Four capture operations run in the background during normal platform use.
+## Architecture
 
-Edit capture fires after every commit on active development branches. It records the diff, the session context, the cluster scope, and a redacted version of the changed content. The redaction pass strips private keys, authentication tokens, and identifying strings before the record is written — redaction happens at capture, not at consumption.
+### Three corpora, three adapter families
 
-Session trajectory capture fires at the end of a working session. It records what the session was attempting, the sequence of actions taken, and the outcome. This is the session-level complement to edit capture: where edit capture records individual changes, trajectory capture records the arc of a session.
+The convention behind this article (`~/Foundry/conventions/trajectory-substrate.md`) defines three orthogonal corpus types. Each produces a different adapter class. Mixing them is the failure mode.
 
-Doctrine capture fires on doctrine version bumps. It records the clause-by-clause changes to the platform's constitutional document as a set of structured training tuples that can be used to retrain the constitutional adapter when the doctrine advances.
+**Constitutional corpus**
 
-Feedback capture fires when an operator rejects a result, requests a revision, or marks output as incorrect. It records the triple of the rejected output, the corrected output, and a tag identifying what doctrine rule the rejection corresponds to. These triples are the input to direct preference optimisation training on the engineering adapter.
+Captures doctrine clauses crossed with role and scope: what the Foundry constitutional charter says a Master / Root / Task session may and may not do. Lives at `~/Foundry/data/training-corpus/doctrine/<doctrine-version>/`. Produces the constitutional adapter (`constitutional-doctrine-vM.m.p.lora`). Retrains on every Doctrine MINOR version bump. Universal — loaded by every Foundry deployment, regardless of tenant.
 
-## The adapter library
+The doctrinal basis is `[constitutional-ai-2212-08073]`: a model whose behaviour is governed by a written charter, not only by aggregate preference signal.
 
-Training the captured corpora produces a library of LoRA adapters — lightweight weight modifications that shift a base model's behaviour in a specific direction. The adapters are versioned and signed; each version record embeds the doctrine version it was trained against, so an adapter trained on an earlier doctrine does not silently apply to requests under a newer doctrine.
+**Engineering corpus (Vendor side)**
 
-The adapter composition at request time follows a fixed algebra: the base model plus a constitutional adapter (always loaded), plus an engineering adapter for platform-building work, plus a tenant adapter for customer-voice work, plus a role adapter matching the operational role of the requesting session, plus a cluster adapter for the specific project cluster in use. The maximum composition depth at any given request is bounded; the Doorman selects which adapters to compose based on the request's context.
+Captures Master, Root, and Task session trajectories on Vendor repos: commit diffs, session logs, and Doctrine amendments in flight. Lives at `~/Foundry/data/training-corpus/engineering/`. Tenant scope: PointSav only. Produces the engineering adapter (`engineering-pointsav-vN.lora`), which PointSav may offer as a "platform-builder personality" to Customers via service contract.
 
-## Per-cluster training and consumption
+**Tenant-runtime corpus (per Customer)**
 
-Each active development cluster declares which adapters its work feeds (the training side) and which adapters the Doorman composes when that cluster queries the model (the consumption side). A cluster doing platform engineering feeds the engineering adapter and consumes the engineering adapter. A cluster producing customer-voice content adds the tenant adapter on both sides. These declarations sit in each cluster's manifest and are read by both the capture pipeline (to tag records correctly) and the Doorman (to assemble the request-time composition).
+Captures what flows through Ring 1 inside each Customer deployment: `service-fs`, `service-people`, `service-email`, `service-input` events; curated graph deltas from `service-content`; operator usage trajectories. Lives inside the Customer deployment instance at `<deployment-instance>/training-corpus/<tenant>/`. Never in the Vendor workspace. Produces the tenant adapter (`tenant-<tenant>-vK.lora`) inside and held by the Customer deployment.
 
-The default rule is that every cluster always feeds the engineering adapter — every commit on any active cluster contributes to the platform-wide engineering corpus — and always consumes the constitutional and engineering adapters. Tenant-specific adapters are additive when the work scope calls for them.
+Tenant adapters do not leave the customer's deployment unless that customer explicitly opts into the federated marketplace (Doctrine claim #14, a forward-looking feature). This is structural privacy by infrastructure.
 
-## Negative trajectory distillation
+### Capture mechanics
 
-When an operator rejects a result, the rejection is not just discarded. The capture-feedback script records the triple: the rejected output, the corrected output, and the doctrine violation tag that explains the rejection. These triples feed DPO training on the appropriate adapter. The model learns what not to do at per-cluster, per-role, per-contributor granularity — the inverse of the aggregate preference averaging that is the only option on platforms where all users' feedback is pooled.
+Five scripts in `~/Foundry/bin/` handle capture:
 
-## Provenance and re-derivability
+| Script | Trigger | Writes |
+|---|---|---|
+| `capture-edit.py` | `git post-commit` hook on `cluster/*` branches and workspace `main` | `engineering/<cluster>/<sha>.jsonl` |
+| `capture-trajectory.sh` | Session end via `bin/claude-role.sh` | `engineering/sessions/<id>.jsonl` |
+| `capture-doctrine.sh` | Per Doctrine MINOR bump | `doctrine/<version>/<tuple>.jsonl` |
+| `capture-feedback.sh` | Inbox-archive of rejected or redo messages | `engineering/feedback/<record>.jsonl` |
+| `capture-tenant-runtime.sh` | Scheduled inside deployment instance | `<instance>/training-corpus/<tenant>/<shard>.jsonl` |
 
-Every corpus record carries a structured provenance header: tuple type, doctrine version at time of capture, tenant identifier, cluster identifier, role, scope, redaction class, evidence class, source commit, and session identifier. The combination makes every adapter version re-derivable from its source records. Any source record can answer the question: which adapter versions was this record used in training?
+Sanitize-outbound discipline applies at every capture point: private keys, PII, and customer-identifying details are redacted before write. Redaction runs at the capture script, not at the downstream consumer. Diff output is truncated at 1,000 lines.
 
-Evidence classes carry different lifecycles. Primary evidence — original observations — is immutable once captured. Derived evidence — versioned reasoning built on primary records — is supersedable, with the supersession tracked. Cited evidence — references to external authority — is verified against the source on a regular schedule.
+Every JSONL record carries a provenance header with fields `tuple_type`, `doctrine_version`, `tenant`, `moduleId`, `cluster`, `role`, `scope`, `redaction_class`, `evidence_class`, `source_commit`, `session_id`, and `created`. The training pipeline filters on `(tenant, redaction_class, evidence_class)` to assemble each corpus. Any adapter version is re-derivable from its source records; any record can answer which adapter versions it trained.
 
-## Implementation state
+### Adapter composition at request time
 
-The first capture tier — edit corpus capture via a post-commit hook — is operational on all active development clusters. Every commit on a registered branch produces a structured JSONL record in the engineering corpus. Session trajectory capture and doctrine-grounded adapter training are in development; the adapter library and full training pipeline are planned for later platform milestones.
+At inference time the Doorman (`service-slm`) composes adapters per request:
+
+```
+composed_weights =
+    base_model[OLMo-3-1125-7B-Q4]
+    ⊕ constitutional[doctrine_v0.0.x]   ← always
+    ⊕ engineering[pointsav_vN]?          ← if request is platform-build context
+    ⊕ tenant[<tenant>_vK]?               ← if request is tenant-data context
+    ⊕ role[<role>]                        ← what role is asking
+    ⊕ cluster[<cluster>_vJ]?             ← if cluster scope applies
+```
+
+Multi-LoRA serving infrastructure — `[s-lora-2024]`, `[lorax-predibase]` — serves thousands of concurrent adapters with hot-swap per request. The composition algebra is specified at `conventions/adapter-composition.md`.
+
+Each cluster manifest declares `adapter_routing.trains:` (which adapters this cluster's commits and sessions feed) and `adapter_routing.consumes:` (which adapters the Doorman composes when this cluster's sessions query the SLM). Every cluster defaults to training the engineering-pointsav adapter — the substrate is always improving from every cluster's work.
+
+### Negative-trajectory distillation
+
+When an operator rejects a suggestion, asks for a revision, or marks a result as wrong, that exchange is a training signal of the highest quality. The `capture-feedback.sh` script records the triple:
+
+```
+(rejected_trajectory, corrected_trajectory, doctrine_violation_tag)
+```
+
+These pairs feed Direct Preference Optimisation (DPO) training, per the RLAIF literature lineage `[constitutional-ai-2212-08073]`. The adapter family learns, per cluster and per role, which outputs to avoid and which corrections to prefer.
+
+This per-contributor inverse of aggregate preference learning is structurally inaccessible to platforms whose preference signal is averaged across all users. An operator's specific correction pattern shapes their own cluster's adapter — no other tenant benefits or is burdened by it.
+
+## Configuration
+
+The Trajectory Substrate currently operates at L1 (edit-corpus capture, live since v0.1.1). Per `[ni-51-102]` continuous-disclosure language, and in accordance with the forward-looking information principles of `[osc-sn-51-721]`, the statements below describe planned and intended development. Material assumptions: continued-pretraining technology matures on the current trajectory; OLMo 3 base model `[olmo3-allenai]` remains openly licensed; engineering corpus accumulates at the current Foundry development cadence. Actual outcomes may differ.
+
+Planned subsequent tiers:
+
+- **L2 — Trajectory capture** (`bin/capture-trajectory.sh` + sanitize-outbound): intended for the v0.2.x release window; adds full session-log tuples to the corpus.
+- **L3 — Fine-tuning prototype**: intended for the v0.5.0 target; the `router-trainer` service reads the accumulated corpus and produces the first trained adapter against the OLMo 3 base.
+- **L4 — Federated marketplace**: long-horizon; depends on L3 operational maturity and the federated-LoRA research lineage `[federated-lora-2502-05087]` proving out in production at scale.
+
+The quarterly pretraining cadence is intended once L3 is operational. Substrate baselines are designed to improve monotonically as the corpus accumulates; the mechanism is in place and the signal is accumulating.
 
 ## See Also
 
-- [[topic-apprenticeship-substrate]] — the fourth corpus type (apprenticeship) that the Trajectory Substrate works alongside
-- [[compounding-doorman]] — the Doorman that reads the adapter library and applies the composition algebra at request time
-- [[topic-llm-substrate-decision]] — the OLMo 3 base model that all adapters modify
-- [[topic-four-tier-slm-substrate]] — the tier model that determines which compute handles requests at each stage of adapter progression
+- [[topic-compounding-substrate]]
+- [[topic-apprenticeship-substrate]]
+- [[topic-decode-time-constraints]]
+- [[topic-language-protocol-substrate]]
+- [[topic-citation-substrate]]
 
 ## References
 
-1. Constitutional AI paper, arXiv 2212.08073 — foundational DPO and preference training work.
-2. Federated LoRA paper, arXiv 2502.05087 — federated adapter exchange mechanics.
-3. S-LoRA, 2024 — concurrent adapter serving infrastructure.
-4. LoRAX (Predibase) — multi-LoRA serving.
-5. `conventions/trajectory-substrate.md` — source convention for this article.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*
+- `~/Foundry/conventions/trajectory-substrate.md` — the convention this article reflects
+- `pointsav-monorepo/service-disclosure/CORPUS-SCHEMA.md` — the corpus schema
+- `~/Foundry/bin/install-capture-hook.sh` — the capture hook installer
+- `[constitutional-ai-2212-08073]` — Constitutional AI: Harmlessness from AI Feedback (Bai et al., 2022)
+- `[federated-lora-2502-05087]` — Federated LoRA research lineage
+- `[s-lora-2024]` — S-LoRA: Serving Thousands of Concurrent LoRA Adapters
+- `[lorax-predibase]` — LoRAX multi-LoRA serving
+- `[olmo3-allenai]` — OLMo 3 base model (Allen Institute for AI)
+- `[ni-51-102]` — NI 51-102 Continuous Disclosure Obligations
+- `[osc-sn-51-721]` — OSC Staff Notice 51-721 Forward-Looking Information Disclosure

@@ -1,61 +1,114 @@
 ---
 schema: foundry-doc-v1
-title: "El Sustrato de Divulgación Continua"
-slug: topic-disclosure-substrate.es
+document_version: 0.1.0
+title: "El Sustrato de Divulgación"
+slug: topic-disclosure-substrate
+lang: es
+paired_with: topic-disclosure-substrate.md
 category: architecture
-type: topic
-quality: published
-short_description: Un wiki de documentación que funciona simultáneamente como registro de divulgación continua del emisor, con procedencia criptográfica y adaptadores de exportación regulatoria por jurisdicción.
 status: pre-build
-last_edited: 2026-05-01
+last_edited: 2026-04-28
 editor: pointsav-engineering
+audience: vendor-public
+bcsc_class: disclosure-implication
+language_protocol: PROSE-TOPIC
 cites:
   - ni-51-102
   - osc-sn-51-721
+  - bcsc-continuous-disclosure
   - sec-17a-4-f
+  - eidas-qualified-preservation
   - ixbrl-esef
+  - esap-eu-2027
   - opentimestamps
   - rfc-3161
-paired_with: topic-disclosure-substrate.md
+  - sigstore-rekor-v2
+  - cloud-act-us
 ---
 
-El **Sustrato de Divulgación Continua** es el patrón arquitectónico mediante el cual un wiki de documentación de PointSav funciona simultáneamente como documentación operativa y como registro de divulgación autorizado del emisor. En lugar de mantener documentación interna, un sitio de relaciones con inversores gestionado por un proveedor externo y presentaciones estatutarias periódicas como tres cuerpos de texto separados, el sustrato los unifica en un único corpus Markdown que se renderiza en todos los formatos requeridos desde una sola fuente canónica.
+La práctica convencional de relaciones con inversionistas divide la
+divulgación en tres capas: documentación interna, un sitio de relaciones
+con inversionistas administrado por un proveedor externo, y presentaciones
+regulatorias periódicas en plataformas como SEDAR+ o EDGAR. Las tres capas
+se escriben por separado, a menudo son inconsistentes entre sí y resultan
+difíciles de auditar en conjunto.
 
-## La inversión del modelo tradicional
+El sustrato de divulgación invierte este patrón. La wiki de documentación
+de PointSav —el mismo corpus que escriben los colaboradores internos— es
+el registro de divulgación primario. No es una descripción de las
+divulgaciones de la empresa: es la divulgación misma.
 
-Los emisores tradicionales mantienen registros superpuestos: un sistema de documentación interno, un sitio de relaciones con inversores en infraestructura de un proveedor, y presentaciones periódicas a reguladores nacionales. Estos tres cuerpos de texto frecuentemente son inconsistentes, se mantienen en ciclos de actualización diferentes y se alojan en proveedores cuya jurisdicción puede no coincidir con la del emisor.
+## Qué lo hace posible estructuralmente
 
-El Sustrato de Divulgación Continua invierte este patrón. Un conjunto de archivos TOPIC en Markdown, confirmados con procedencia firmada en un repositorio wiki alojado en la infraestructura propia del emisor, genera todos los resultados requeridos: HTML renderizado para lectores públicos, documentos iXBRL para presentaciones ESEF de la UE, paquetes de presentación para SEDAR+ en Canadá, envíos XBRL para EDGAR en los Estados Unidos, y equivalentes para otras jurisdicciones mediante adaptadores de exportación configurables. La misma fuente Markdown que un lector navega en el wiki público es el registro de divulgación.
+Cada artículo del corpus Markdown (denominado TOPIC) lleva una cadena
+criptográfica de autoría, un hash de contenido estable y, en fases
+planificadas de implementación del motor wiki, marcas de tiempo ancladas
+a registros externos (OpenTimestamps `[opentimestamps]` hacia la cadena
+de bloques de Bitcoin; RFC 3161 `[rfc-3161]` con reconocimiento legal en
+la UE y la mayoría de jurisdicciones de derecho consuetudinario). Cada
+confirmación (*commit*) está firmada. Reguladores y analistas pueden leer
+exactamente el mismo corpus que alimenta la presentación regulatoria.
 
-## Procedencia criptográfica y disciplina de dos relojes
+Las afirmaciones sobre capacidades futuras en este artículo son
+prospectivas (*forward-looking*) conforme a `[ni-51-102]` y
+`[osc-sn-51-721]`. Los resultados reales dependen de la capacidad de
+ingeniería, la priorización por parte del operador y los supuestos
+materiales descritos en el artículo en inglés.
 
-Cada TOPIC lleva dos capas de procedencia criptográfica. El SHA del commit de Git más la ruta del archivo forman una identidad de contenido estable y verificable. Los mecanismos de sellado de tiempo — OpenTimestamps anclado a Bitcoin y el protocolo RFC 3161 mediante una Autoridad de Sellado de Tiempo con reconocimiento legal formal — se aplican de forma redundante a cada confirmación en la rama del wiki.
+## Adaptadores por jurisdicción (planificados)
 
-Una disciplina de dos relojes distingue `published_at` (cuándo el wiki renderizó el estado del contenido) de `valid_at` (cuándo el hecho subyacente es válido). Esta distinción aborda la brecha estándar en la divulgación: el momento de publicación no equivale al momento de validez del hecho. Ambas marcas de tiempo se anclan de forma independiente.
+Se planea una capa de adaptadores enchufables para transformar el corpus
+Markdown en el formato de presentación que exige cada superficie
+regulatoria: SEDAR+ para emisores canadienses bajo `[ni-51-102]`, SEC
+EDGAR para emisores en Estados Unidos, el mandato ESEF de la UE con
+iXBRL `[ixbrl-esef]` (Fase 1 de ESAP prevista para julio de 2027
+`[esap-eu-2027]`), y plataformas equivalentes en Japón, Corea e Israel.
 
-## Adaptadores de exportación y postura jurisdiccional
+Para jurisdicciones que exigen preservación electrónica cualificada —como
+eIDAS `[eidas-qualified-preservation]` en la UE— los adaptadores están
+diseñados para incluir la cadena de certificados del emisor y el token de
+marca de tiempo RFC 3161 en el paquete de presentación. Cada adaptador
+está planificado como un crate de Rust separado; las nuevas jurisdicciones
+son aditivas y no modifican el núcleo del sustrato.
 
-Un adaptador de exportación configurable por superficie regulatoria transforma el corpus Markdown junto con las anotaciones de metadatos en el formato de presentación requerido por cada regulador — incluyendo adaptadores para SEC EDGAR, SEDAR+ canadiense, ESEF europeo, EDINET de Japón, DART de Corea y MAGNA de Israel.
+## Sustitución de sustrato aplicada a plataformas de divulgación
 
-Para jurisdicciones con repositorios estatutarios sólidos, el sustrato es el complemento de frescura continua a las presentaciones periódicas. Para jurisdicciones donde el repositorio estatutario es cerrado, propietario o inaccesible al público, el sustrato se convierte en el registro abierto canónico. El registro de divulgación vive en la infraestructura propia del emisor, bajo su propia jurisdicción, portable por construcción entre jurisdicciones.
+Conforme a la Reclamación Doctrinal #29 (Sustitución de Sustrato), la
+wiki reemplaza la función de registro primario que convencionalmente ocupa
+una plataforma de relaciones con inversionistas operada por un tercero.
+La razón es estructural: la Ley CLOUD `[cloud-act-us]` de Estados Unidos
+extiende la autoridad extraterritorial de acceso a datos sobre
+proveedores de ese país, independientemente de dónde estén almacenados
+los datos del cliente. Para un emisor en una jurisdicción donde la
+soberanía del proveedor importa —RGPD europeo tras Schrems II, mandatos
+de residencia de Salud Canadá, PDPL de Arabia Saudita— el sustrato ofrece
+que el registro viva bajo la infraestructura propia del emisor, firmado
+con su propia clave.
 
-## Estado de implementación
+Los servicios que plataformas de relaciones con inversionistas
+convencionales proveen y que el sustrato no replica —segmentación de
+inversionistas, agregación de consenso del lado de la venta, analítica de
+vigilancia— son componibles mediante adaptadores MCP del Anillo 1 a medida
+que el sustrato madura. El sustrato reemplaza donde la sustitución es
+limpia; compone donde no lo es.
 
-El motor del wiki (Rust, axum + comrak + maud) está operativo. Los adaptadores de exportación por jurisdicción, el módulo de extracción iXBRL, el sellado de tiempo criptográfico y el mecanismo de fundamentación de IA impuesto por el sustrato están planificados para un clúster dedicado `project-disclosure`. Cuando esté operativo, el sustrato será estructuralmente incapaz de publicar resultados de IA sin fundamentación — una propiedad necesaria para que el wiki funcione como registro de divulgación bajo escrutinio regulatorio.
+## El principio fundamental
+
+Nada en el sustrato declara *"cumplimos con NI 51-102"*. El cumplimiento
+es el artefacto: el historial de confirmaciones firmadas, la trazabilidad
+de citas en el frontmatter de cada artículo, los tokens de marca de tiempo
+en cada MINOR del Doctrinario, las entradas de CHANGELOG aptas para
+revisión legal. Un regulador o auditor que revise el corpus puede
+reconstruir qué sabía Foundry, cuándo y cómo actuó al respecto, sin
+instantáneas (*snapshots*) ni declaraciones de cumplimiento periódicas.
+
+Para una descripción completa de la arquitectura técnica, los adaptadores
+planificados y el diseño de fundamentación de IA, consulte el artículo en
+inglés: [The Disclosure Substrate](topic-disclosure-substrate.md).
 
 ## Véase también
 
-- [[compounding-doorman]] — el límite de inferencia que hace cumplir la disciplina de sanitización de salida en cada llamada editorial asistida por IA
-- [[knowledge-commons]] — la línea entre conocimiento público y servicios de pago
-- [[topic-language-protocol-substrate]] — el proceso editorial que produce contenido TOPIC al registro requerido
-
-## Referencias
-
-1. NI 51-102 Obligaciones de Divulgación Continua — Administradores de Valores de Canadá.
-2. Reglamento ESEF — Formato Electrónico Único Europeo, iXBRL.
-3. OpenTimestamps — sellado de tiempo anclado a Bitcoin, código abierto.
-4. RFC 3161 — Protocolo de Sellado de Tiempo PKI de Internet X.509.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Atribución 4.0 Internacional](https://creativecommons.org/licenses/by/4.0/). PointSav™ y Foundry™ son marcas comerciales no registradas de Woodfine Capital Projects Inc.*
+- [El Sustrato Compuesto](topic-compounding-substrate.es.md)
+- [Compatibilidad nativa del sustrato](topic-substrate-native-compatibility.md)
+- [Postura de derecho de autor simple canadiense](topic-canadian-simple-copyright.es.md)
+- Convención operacional: `conventions/disclosure-substrate.md`

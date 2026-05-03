@@ -1,3 +1,18 @@
+---
+schema: foundry-doc-v1
+title: "Anti-Homogenization Discipline"
+slug: topic-anti-homogenization-discipline-es
+category: governance
+type: topic
+quality: stub
+short_description: "Anti-homogenization discipline is the architectural posture that resists AI writing assistants pulling contributors toward a single voice, by defaulting to flagging potential issues rather than silently rewriting text."
+status: pre-build
+last_edited: 2026-04-30
+editor: pointsav-engineering
+cites:
+  - ni-51-102
+paired_with: topic-anti-homogenization-discipline.md
+---
 # Disciplina anti-homogenización (resumen)
 
 La mayoría de los asistentes de escritura con IA empujan

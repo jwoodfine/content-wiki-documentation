@@ -1,60 +1,90 @@
 ---
 schema: foundry-doc-v1
-title: "El Sustrato del Protocolo de Lenguaje"
-slug: topic-language-protocol-substrate.es
-category: architecture
-type: topic
-quality: published
-short_description: La infraestructura editorial que hace del trabajo de escritura en un despliegue de PointSav una práctica auditada, por inquilino y bifurcable, con una taxonomía de adaptadores y un ciclo de entrenamiento que mejora con el tiempo.
-status: pre-build
-last_edited: 2026-05-01
-editor: pointsav-engineering
-cites:
-  - constitutional-ai-2212-08073
-  - lorax-predibase
-  - olmo3-allenai
+title: "El sustrato de protocolo de lenguaje (resumen)"
+slug: topic-language-protocol-substrate
+lang: es
 paired_with: topic-language-protocol-substrate.md
+category: architecture
 ---
 
-El **Sustrato del Protocolo de Lenguaje** es la arquitectura que hace del trabajo editorial en un despliegue de PointSav algo estructurado, por inquilino y auditable. Define una taxonomía de adaptadores de cuatro familias para la generación de texto, un conjunto de plantillas de género entregadas como andamiaje de prompts en tiempo de solicitud, una división de servicios que mantiene los datos, la inferencia y las preocupaciones operativas en componentes separados, y un ciclo de entrenamiento cuyo resultado se acumula con cada acción editorial que realiza el inquilino.
+# El sustrato de protocolo de lenguaje (resumen)
 
-## La inversión del modelo tradicional
+El sustrato que convierte el trabajo editorial en Foundry en
+una práctica auditada, por inquilino y bifurcable. Lleva cuatro
+familias, dieciocho plantillas de género y una división en
+cuatro servicios que permite al cliente intercambiar cualquier
+componente sin tocar los demás.
 
-Los asistentes de escritura en la nube típicamente enrutan el texto del cliente a través de la infraestructura del proveedor, entrenan en modelos del proveedor y almacenan los perfiles de voz por cliente en el proveedor. El Sustrato del Protocolo de Lenguaje invierte estas propiedades: los adaptadores LoRA por inquilino se entrenan en el corpus propio del cliente, se alojan en el hardware propio del cliente y son portables si el cliente se va. El registro de auditoría de cada llamada editorial de IA es propiedad del cliente.
+## Qué hace
 
-## Taxonomía de cuatro familias
+El sustrato provee cuatro artefactos:
 
-La producción de infraestructura multi-LoRA soporta hasta tres adaptadores por solicitud antes de que la interferencia multitarea degrade la calidad. La taxonomía del sustrato está diseñada alrededor de esta restricción:
+1. **Una taxonomía de adaptadores en cuatro familias.** PROSE
+   para texto largo en inglés, COMMS para mensajería corta,
+   LEGAL para documentos formales con volumen gatillado,
+   TRANSLATE como meta-protocolo sobre las demás familias.
+2. **Un registro de plantillas de género.** Dieciocho plantillas;
+   cada una con sus secciones requeridas, parámetros de registro,
+   convención bilingüe, esquema de portada y andamiaje de
+   indicaciones (*prompt scaffolding*).
+3. **Un validador de portada.** Devuelve todas las violaciones
+   por género en una sola pasada, no la primera falla.
+4. **Una lista de vocabulario prohibido.** Ocho términos
+   transversales que sobreviven en prosa de marketing y no
+   tienen lugar en escritura precisa.
 
-- **PROSE** — Prosa larga en inglés: READMEs, TOPICs, GUIDEs, memorandos, documentos de arquitectura.
-- **COMMS** — Texto interpersonal corto: correo electrónico, chat, comentarios de tickets, notas de reuniones.
-- **LEGAL** — Volumen limitado; se enruta a través de la API externa (Tier C) salvo que el corpus legal del inquilino justifique un adaptador dedicado.
-- **TRANSLATE** — Meta-protocolo; transforma la salida de cualquier otra familia a través de un par de idiomas o un cambio de registro.
+Estos cuatro artefactos viajan en un crate de Rust
+(`service-disclosure`) que cualquier componente Foundry puede
+consumir. El Doorman compone las plantillas en indicaciones al
+momento del pedido; el asistente de escritura por inquilino
+valida texto entrante y saliente contra el esquema; la línea de
+aprendizaje produce tuplas de entrenamiento firmadas por el
+revisor en cada acción editorial.
 
-En tiempo de solicitud, el Doorman compone tres capas de adaptadores: modelo base + adaptador de inquilino + adaptador de protocolo. El registro, la voz de marca, el subtipo de documento, la formalidad del canal y el público objetivo se expresan como **andamiaje de prompt** en lugar de adaptadores adicionales.
+## Por qué existe
 
-## División de servicios y portabilidad del cliente
+Los asistentes de escritura de los hiperescaladores — Grammarly
+Business, Microsoft 365 Copilot, Google Workspace, Apple
+Intelligence — son nube-por-defecto con cadenas de atestación
+ancladas en el proveedor. El texto del cliente cruza la red del
+proveedor; los pesos del modelo viven con el proveedor; el
+cliente no puede bifurcar pesos ni operar sobre metal propio.
 
-Cuatro servicios componen el sustrato con contratos distintos y pueden desplegarse, intercambiarse o reemplazarse de forma independiente: `service-content` (datos), `service-slm` (inferencia), `service-disclosure` (esquemas y restricciones), y `service-proofreader` (asistente de escritura operativo). El cliente puede reemplazar el backend de inferencia sin tocar los otros tres componentes.
+La táctica de Foundry es composición, no invención. Reclamos
+existentes (#15, #21, #22, #25, #31, #32) componen para producir:
+**tus datos, tus pesos, tu adaptador, auditado, en tu metal.**
+Los hiperescaladores estructuralmente no pueden ofrecer esto a
+economía PYME porque su economía unitaria requiere entrenamiento
+central y raíces de confianza compartidas.
 
-## El rol de puerta de enlace editorial
+## Las cuatro familias
 
-En la versión v0.1.31 del espacio de trabajo, `service-language` se convirtió en la puerta de enlace editorial para toda la producción de wiki y documentación de Foundry. Los borradores de las sesiones de Task, Root y Master se publican en directorios `drafts-outbound/`. `project-language` barre esos borradores, aplica las restricciones del sustrato (gramática de vocabulario prohibido, resolución del registro de citas, generación de pares bilingües, disciplina BCSC de información prospectiva) y entrega el resultado refinado al repositorio de destino correspondiente.
+| Familia | Responsabilidad | Plantillas |
+|---|---|---|
+| **PROSE** | Prosa larga en inglés | README, TOPIC, GUIDE, MEMO, ARCHITECTURE, INVENTORY, license-explainer, CHANGELOG |
+| **COMMS** | Comunicación corta | correo, chat, comentario de ticket, notas de reunión |
+| **LEGAL** | Formal con volumen gatillado | contrato, CLA, política, términos (rutea a Tier C por defecto) |
+| **TRANSLATE** | Meta-protocolo | Opera sobre las otras familias |
 
-Un ciclo DPO de dos etapas se cierra con el tiempo: la Etapa 1 captura la corrección estructural del sustrato de aprendizaje; la Etapa 2 captura el arte editorial de las ediciones del Contribuidor Creativo al final del ciclo. El preentrenamiento continuo trimestral en el corpus combinado hace que la línea base generada por el sustrato converja hacia el estándar combinado de estructura y arte.
+Tres adaptadores se componen al momento del pedido:
+`base ⊕ adaptador-inquilino ⊕ adaptador-protocolo`. Cinco o
+más cruzan a interferencia multi-tarea según la literatura LoRA
+de 2025; Foundry se mantiene en tres.
+
+## La división en cuatro servicios
+
+| Servicio | Forma | Cluster propietario |
+|---|---|---|
+| `service-content` | Datos — grafo de conocimiento | project-slm |
+| `service-slm` | Inferencia — Doorman + ruteo de niveles | project-slm |
+| `service-disclosure` | Esquema — tipos, validadores, CFG, plantillas | project-language |
+| `service-proofreader` | Operativo — asistente HTTP por petición | project-proofreader |
+
+Un cliente puede sustituir cualquiera sin tocar los demás. Es
+el significado de *forkable on day one*.
 
 ## Véase también
 
-- [[compounding-doorman]] — el límite de inferencia a través del cual enruta el sustrato
-- [[apprenticeship-substrate]] — el mecanismo de entrenamiento que el sustrato extiende al trabajo editorial
-- [[topic-adapter-composition]] — el álgebra que hace funcionar la composición de tres adaptadores
-
-## Referencias
-
-1. IA Constitucional: Inofensividad a partir de la Retroalimentación de IA, Bai et al., arXiv 2212.08073.
-2. OLMo 3 — Allen Institute for AI, Apache 2.0.
-3. LoRAX — servidor de inferencia multi-LoRA de Predibase.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Atribución 4.0 Internacional](https://creativecommons.org/licenses/by/4.0/). PointSav™ y Foundry™ son marcas comerciales no registradas de Woodfine Capital Projects Inc.*
+- [Documento canónico en inglés](topic-language-protocol-substrate.md)
+- [Hospedaje por el cliente](topic-customer-hostability.md)
+- [Disciplina anti-homogenización](topic-anti-homogenization-discipline.md)

@@ -1,3 +1,15 @@
+---
+schema: foundry-doc-v1
+title: "Guía de estilo — TOPIC (resumen)"
+slug: topic-style-guide-topic-es
+category: reference
+type: topic
+quality: core
+status: pre-build
+last_edited: 2026-04-30
+editor: pointsav-engineering
+paired_with: topic-style-guide-topic.md
+---
 # Guía de estilo — TOPIC (resumen)
 
 Un archivo TOPIC (`topic-<asunto>.md`) en una wiki de contenido

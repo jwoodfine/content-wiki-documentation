@@ -1,3 +1,15 @@
+---
+schema: foundry-doc-v1
+title: "Guía de estilo — README (resumen)"
+slug: topic-style-guide-readme-es
+category: reference
+type: topic
+quality: core
+status: pre-build
+last_edited: 2026-04-30
+editor: pointsav-engineering
+paired_with: topic-style-guide-readme.md
+---
 # Guía de estilo — README (resumen)
 
 El archivo README es el más leído de cualquier repositorio. Es

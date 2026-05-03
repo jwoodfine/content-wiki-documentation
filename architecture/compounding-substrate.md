@@ -1,99 +1,154 @@
 ---
 schema: foundry-doc-v1
 title: "The Compounding Substrate"
-slug: compounding-substrate
+slug: topic-compounding-substrate
 category: architecture
 type: topic
 quality: complete
-short_description: "The five structural properties that define PointSav's open-substrate architecture, where every operational interaction generates training signal that compounds across deployments while customers retain full ownership of data, compute, and governance."
+short_description: "The Compounding Substrate is the architectural pattern PointSav builds and stewards, combining five structural properties to produce a platform where every operational interaction generates training signal that compounds across all tenant deployments."
 status: pre-build
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:
   - ni-51-102
   - osc-sn-51-721
-paired_with: compounding-substrate.es.md
+paired_with: topic-compounding-substrate.es.md
 ---
 
-The **Compounding Substrate** is the architectural pattern PointSav builds and stewards. It answers a single structural question: how does a software platform let every customer own their data, run on their own infrastructure, and compose AI in or out at will — while still benefiting from collective improvement without surrendering that ownership?
+# The Compounding Substrate
 
-Five structural properties define the answer. Each is non-replicable by any vendor whose revenue depends on multi-tenant data centralisation. Together they produce a substrate that compounds: every operational interaction generates training signal; the signal flows to a curator; the curator rolls accumulated learning into improved base models; the improved models return to every deployment; and customer ownership of data, compute, and governance is preserved at every step.
+> The Compounding Substrate is the architectural pattern PointSav builds and stewards, combining five structural properties to produce a platform where every operational interaction generates training signal that compounds across all tenant deployments.
 
-This article introduces the pattern. The ratified specification lives at `conventions/compounding-substrate.md`. Doctrine context is at DOCTRINE.md §XIV (claims #14–#18).
+**The Compounding Substrate** is an AI-substrate architecture where the platform code is open and forkable, the deterministic data layer functions independently of any AI compute, and AI is added as an optional layer that any tenant can compose in or out. Every operational interaction generates training signal that compounds across the substrate's deployments. A curator — PointSav — periodically rolls accumulated signal into improved base models that flow back to all deployments without disrupting customer data ownership. The pattern applies the open-source foundation model (Apache Software Foundation) combined with the commercial distribution model (Red Hat) to AI substrate: substrate becomes open commons, and value migrates up to operations, integration, and a federated marketplace.
 
-## Substrate sovereignty
+This article describes the pattern, names the five properties, and explains the value-chain inversion that makes the model durable.
 
-Every customer owns their full stack: data, compute, adapters, and deployment composition. The substrate code is open, forkable, and openly licensed. The base model carries open weights trained on openly declared data. The customer's data, adapters, and audit ledger never leave customer-controlled hardware.
+## Definition
 
-A multi-tenant service-as-a-product cannot offer this by design. Its tenancy boundary is what prevents data co-mingling, enables centralised billing, and gates feature access. A substrate has no tenancy boundary in the data plane — only in the business plane (commercial-support contracts, certification programmes, training services). A tenant can be evicted; a substrate user cannot.
+A Compounding Substrate is an AI-substrate architecture where:
 
-## Optional Intelligence Layer
+1. The substrate code is open and forkable.
+2. The deterministic data layer functions independently of any
+   AI compute.
+3. AI is added as an **Optional Intelligence Layer** that any
+   tenant can compose in or out.
+4. Every operational interaction generates training signal that
+   compounds across the substrate's deployments.
+5. A curator (PointSav) periodically rolls accumulated signal
+   into improved base models that flow back to all deployments
+   without disrupting customer data ownership.
 
-AI is composed in, never built in. The deterministic data layer — filesystems, ledgers, knowledge graphs, search indexes — functions fully without any AI compute. AI is added when and where the customer chooses, at the tier they choose: local CPU model, GPU burst, or external API. The customer holds the routing configuration.
+## Five Structural Properties
 
-This is structurally distinct from products where AI is the primary interface. In a Compounding Substrate, AI is a peripheral — useful, optional, swappable, observable, and auditable. A regulated buyer who requires an air-gapped deployment with no AI at all can run the substrate at full capability. The substrate stays useful; the customer stays compliant.
+Each property is a structural claim. Each names a specific reason hyperscalers cannot replicate it without dismantling their own business model.
 
-## Three-tier compute routing
+### Property 1 — Substrate Ownership
 
-When AI operates, it routes among three tiers under explicit per-request policy:
+Every customer owns their full stack: data, compute, adapters, and deployment composition. The substrate (code plus base model) is open under permissive licence. Data and adapters are the customer's intellectual property.
 
-- **Tier A (local)** — CPU-class small language model on the customer's own hardware. Default for most operations. Zero marginal cost; full data locality.
-- **Tier B (GPU burst)** — short-lived GPU instance in the customer's cloud account, billed by inference-second. Used for workloads the local tier cannot handle efficiently. The owner controls start and stop; idle-shutdown is the default.
-- **Tier C (external API)** — external vendor APIs used only with an explicit per-request allowlist. Audit-logged at the customer's substrate, not at the vendor. Used for narrow precision tasks the local and burst tiers cannot match.
+Hyperscaler structural gap: their business is monetising the substrate as rented service. Substrate ownership erodes lock-in — the foundation of their billing model.
 
-The customer's configuration — request shape and budget caps — determines tier selection; no per-request manual choice is required. The substrate enforces an audit-ledger rule across all three tiers: every external call is recorded in the customer's per-tenant audit log with sanitised-outbound and rehydrate-inbound semantics.
+### Property 2 — Optional Intelligence
 
-## Federated compounding
+The data and deterministic-processing rings function fully without the AI ring. Customers, community members, regulated buyers, and air-gapped sites can deploy a fully-functional PointSav data platform with zero AI compute. AI is additive value, not table stakes.
 
-The substrate's most distinctive property is its compounding mechanism. Every operational interaction — a refinement, a verdict, a classification, a clarification — generates a structured training signal. The signal accumulates locally in each customer's apprenticeship corpus. Periodically, customers who opt into federation contribute distilled signal to the curator (PointSav, in this substrate's instance). The curator rolls accumulated signal across many federations into an improved base model. The improved model flows back to every deployment. No customer's raw data leaves customer-controlled storage; only structurally distilled signal travels.
+Hyperscaler structural gap: their AI products tightly couple AI compute to data services. Decoupling them eliminates AI-compute revenue from any deployment that opts out.
 
-*The federation cadence is currently planned for quarterly cycles, with timing subject to the first full federation cycle. Actual cadence may differ materially based on operating conditions. Material assumptions include continued pretraining capability on the selected open base model family and customer opt-in to federation. [ni-51-102] [osc-sn-51-721]*
+### Property 3 — Multi-Tier Compute Routing
 
-The curator role is itself a substrate property, not a vendor position. The curator is bound by the substrate's open-licence and audit obligations. A different curator can fork the role and the process if PointSav's stewardship breaks down. The substrate outlives its current curator.
+`service-slm` is the single Doorman boundary that transparently routes among three compute tiers: local OLMo 3 7B on the customer's machine, multi-cloud burst (Cloud Run / RunPod / Modal / customer GPU), and external API (Claude / Gemini / GPT). The customer does not pick the tier; request shape and budget caps do.
 
-## Continued pretraining as compounding
+Hyperscaler structural gap: each tier in their world is a separate billing relationship; their ecosystem does not span competitors' frontier models. They cannot abstract this routing.
 
-The structural advantage of this pattern is most visible in what the curator does: roll federation signal into continued pretraining of an open base model (currently OLMo 3 by Allen AI, Apache 2.0 licence), then redistribute the improved weights as the new substrate baseline. The customer's adapters — LoRA layers carrying per-tenant style, classification, and voice — are recompiled against the new baseline. The customer's deployment improves without the customer re-paying for the work; prior adapters still compose; the customer's data never moved.
+### Property 4 — Federated Compounding
 
-This is what "the customer benefits from collective learning" means in an ownership-preserving architecture. Centralised pretraining requires centralised data access. The Compounding Substrate achieves the equivalent outcome through curator-mediated distilled signal. The customer can verify their data never left their hardware because the substrate's audit ledger and the curator's distilled-signal contract are both open and forkable.
+Customers opt in to a federated LoRA marketplace (privacy-preserving aggregation per the SDFLoRA / FedEx-LoRA / HeLoRA research lineage). Every customer's improvements lift the substrate. The customer's own data never leaves; only adapter weights and KV cache blocks (without source data) flow into the federation.
 
-## What this enables
+Hyperscaler structural gap: per-tenant billing and compliance posture make cross-tenant pooling structurally illegal in their model. They cannot operate a true federation.
 
-Building on the substrate, customers can assemble capabilities that depend on the five structural properties above:
+### Property 5 — Continued-Pretraining Path
 
-- **Vendor-obsolescence-survivable archives** — when the curator's organisation disappears, the data, deployments, adapters, and substrate remain readable, deployable, and improvable. A twenty-year-old archive opens on any forked substrate.
-- **Air-gapped deployments with optional AI** — the substrate runs in environments where Tier C is impossible by policy. Tier A plus a local adapter plus customer-side audit produces the same classification, summarisation, and structured-output capabilities available to cloud customers.
-- **Per-jurisdiction data residency** — customers in different jurisdictions run the same substrate with different audit ledgers and tenant configurations. The substrate is jurisdiction-neutral; the customer's compliance posture rides in the per-tenant configuration.
-- **Cross-substrate composition** — a single deployment can run the bookkeeping substrate, the design-system substrate, the documentation substrate, and the proofreader substrate, all on shared identity, shared audit ledger, and shared three-ring architecture.
+OLMo 3 base flows to a PointSav continued-pretraining variant, released as the substrate for subsequent deployments. Each year's curated commons feeds the next year's base. By 2030, the federation-trained base is intended to be competitive with frontier proprietary models on the federation's domains.
 
-The Compounding Substrate is the platform's structural commitment to a market that requires giving up the centralisation that other platforms sell.
+Hyperscaler structural gap: they cannot let customers' data train a base model the customer subsequently owns. That destroys the lock-in that justifies their margins.
+
+## The Value-Chain Inversion
+
+Hyperscalers' value chain depends on the customer remaining on the vendor's substrate. The Compounding Substrate's value chain depends on the customer compounding *off* the vendor's substrate. The two business models are mathematically opposed; one cannot adopt the other without dismantling itself.
+
+This is the asymmetry that makes the pattern durable. A hyperscaler that copied the substrate-ownership property would erode its own lock-in. A hyperscaler that copied the optional-intelligence property would lose AI-compute revenue on every deployment that opted out. A hyperscaler that copied the federated-compounding property would breach its own per-tenant compliance contracts.
+
+## What PointSav Is, in This Pattern
+
+Not vendor. Not gatekeeper. **Steward.**
+
+- Steward of the protocol (governs the Doorman specification,
+  runs the Constitutional Convention process per Doctrine §III).
+- Steward of the base model (publishes the continued-pretraining
+  variant, contributes upstream to OLMo when relevant).
+- Steward of the marketplace (operates the federated LoRA pool,
+  takes a percentage of revenue-share LoRAs).
+- Operator-of-record (sells appliances plus integration plus
+  support).
+- Reference customer (Foundry itself plus Woodfine — proof the
+  pattern works).
+
+The substrate is open commons; value migrates to operations, integration, and the LoRA library marketplace.
+
+## The Compounding Loop
+
+Every action produces data; every data produces knowledge; every knowledge improves future actions. The loop runs continuously, in every tenant deployment, federated through the commons.
+
+```
+operator + assistant does work
+    ↓ produces
+git commits + file edits + session logs + conversation turns
+    ↓ ingested by
+service-fs[tenant]   ← WORM ledger
+    ↓ parsed by
+service-extraction[tenant]   ← deterministic
+    ↓ writes structured to
+service-content[tenant]   ← knowledge graph
+    ↓ indexed by
+service-search[tenant]   ← full-text index
+    ↓ queried by (when AI active)
+service-slm   ← Doorman; routes among 3 compute tiers
+    ↓ trains (periodically)
+LoRA adapters   ← per-tenant skill packs
+    ↓ contributes (opt-in, federated)
+federated LoRA pool   ← commons benefit
+    ↓ rolls into (annually)
+base-model continued-pretraining   ← curated by PointSav
+    ↓ ships in
+appliance update   ← every customer benefits
+    ↓ used by
+operator + assistant in next session   ← loop closes, compounded
+```
+
+## Forward-Looking — the 2030 Trajectory
+
+Per `[ni-51-102]` continuous-disclosure language and the forward-looking discipline of `[osc-sn-51-721]`, the trajectory described below is `planned` and `intended`, not declarative-future. The shape is in place; the operational throughput matures over time.
+
+By 2030, the Compounding Substrate aims to produce:
+
+- A base model competitive with hyperscaler frontier on regulated SMB tasks.
+- A federation of one hundred-plus customers, each owning their full stack, each contributing to and benefiting from the commons.
+- A protocol stack versioned twice through Constitutional Convention and validated in production.
+- A market position where regulated SMB industries — small clinics, mid-sized law firms, regional financial advisors, real-estate operators — have standardised on this pattern because their compliance posture requires it and the substrate's design delivers it.
+
+The pattern does not displace hyperscalers in volume; they retain the unregulated long tail of cloud AI. The trajectory captures the regulated SMB market that hyperscalers cannot economically reach.
 
 ## See Also
 
-- [[three-ring-architecture]] — the Ring 1 / Ring 2 / Ring 3 service composition that implements the Compounding Substrate
-- [[service-slm]] — the Doorman service that routes across the three compute tiers and logs every call to the per-tenant audit ledger
-- [[apprenticeship-substrate]] — how training signal accumulates in the per-customer corpus between federation cycles
-- [[trajectory-substrate]] — session-level signal capture that feeds the apprenticeship corpus
-- [[worm-ledger-architecture]] — the append-only immutable ledger that underpins the audit-log guarantee
-- [[disclosure-substrate]] — how the substrate's open-licence and audit obligations apply to regulatory disclosure
+- [[apprenticeship-substrate]]
+- [[3-layer-stack]]
+- [[worm-ledger-architecture]]
+- [[sovereign-ai-routing]]
+- [[language-protocol-substrate]]
 
 ## References
 
-1. PointSav Doctrine §XIV, The Compounding Substrate — claims #14–#18 ratified workspace v0.0.4, 2026-04-25.
-2. `conventions/compounding-substrate.md` — workspace canonical specification, ratified 2026-04-25.
-3. `conventions/sovereign-ai-commons.md` — curator-of-the-commons framing and the commons/sovereign layer table.
-4. `conventions/llm-substrate-decision.md` — OLMo 3 base model selection and continued-pretraining specifics.
-5. NI 51-102, Continuous Disclosure Obligations (BCSC). [ni-51-102]
-6. OSC Staff Notice 51-721, Forward-Looking Information Disclosure. [osc-sn-51-721]
-
----
-
-## Provenance
-
-Source material: workspace canonical specification `conventions/compounding-substrate.md` (ratified 2026-04-25); DOCTRINE.md §XIV (claims #14–#18); `conventions/three-ring-architecture.md`; `conventions/sovereign-ai-commons.md` curator framing.
-
-Refinement disciplines applied: structural-positioning discipline (competitive-by-name references removed; structural contrasts retained); BCSC forward-looking adapter (quarterly federation cadence labelled per ni-51-102 / osc-sn-51-721); banned-vocabulary adapter (no substitutions required in source draft); body H1 removed per content-contract.md §5.2 (renderer supplies from title: frontmatter); slug set to `compounding-substrate` to match featured-topic.yaml pin; citations registered in citations.yaml.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*
+- `conventions/compounding-substrate.md` — canonical specification
+- `DOCTRINE.md §XIV` — doctrine context
+- `conventions/three-ring-architecture.md` — architectural backbone
+- `conventions/customer-first-ordering.md` — deployment ordering rationale
