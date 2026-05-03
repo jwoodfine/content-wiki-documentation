@@ -16,8 +16,8 @@ The primary operating system is ToteboxOS — a formally verified capability-bas
 
 ## Articles in this category
 
-- [[topic-os-totebox]] — ToteboxOS: the seL4-based capability OS at the platform's foundation layer; formal verification, capability model, and tenant isolation.
-- [[topic-totebox-orchestration]] — How ToteboxOS instances are orchestrated across a fleet deployment; scheduling, isolation boundaries, and upgrade paths.
+- [[os-totebox]] — ToteboxOS: the seL4-based capability OS at the platform's foundation layer; formal verification, capability model, and tenant isolation.
+- [[totebox-orchestration]] — How ToteboxOS instances are orchestrated across a fleet deployment; scheduling, isolation boundaries, and upgrade paths.
 
 <!-- ENGINE: this list is editorial in iteration-1; iteration-2+
 generates it from category-directory file listing once PL.7

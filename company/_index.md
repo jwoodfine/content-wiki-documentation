@@ -17,7 +17,7 @@ This category covers the corporate entities, organisational structure, and publi
 
 Articles in this category describe what each entity is, how the entities relate to one another, and what each entity's role is in the platform's development and deployment. Where articles address future plans, capabilities, or outcomes, those statements carry forward-looking language per the continuous-disclosure discipline applicable to all content in this wiki: words such as "planned," "intended," and "may" mark statements that involve material assumptions and known uncertainties. Readers should not treat forward-looking statements as guarantees of future performance.
 
-The corporate structure places Woodfine Capital Projects Inc. as the parent holding entity. PointSav Digital Systems operates as the technology vendor; Woodfine Management Corp. operates as the customer. The contributor flow, licensing posture, and governance conventions documented in the [[topic-contributor-model]] article reflect this structure.
+The corporate structure places Woodfine Capital Projects Inc. as the parent holding entity. PointSav Digital Systems operates as the technology vendor; Woodfine Management Corp. operates as the customer. The contributor flow, licensing posture, and governance conventions documented in the [[contributor-model]] article reflect this structure.
 
 Articles in this category are planned. The category will populate as the platform documentation expands.
 

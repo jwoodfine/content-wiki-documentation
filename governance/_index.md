@@ -16,9 +16,9 @@ Architecture decision records (ADRs) document specific design choices that carry
 
 ## Articles in this category
 
-- [[topic-contributor-model]] — The three-tier contributor model: open community, paid integrators, and the canonical vendor tier; how work flows between them.
-- [[topic-canadian-simple-copyright]] — The Canadian-simple copyright posture: licence selection, attribution conventions, and the Canadian legal context.
-- [[topic-sovereign-replacement-initiative]] — The replacement-initiative governance posture for sovereign AI deployments under the PointSav substrate.
+- [[contributor-model]] — The three-tier contributor model: open community, paid integrators, and the canonical vendor tier; how work flows between them.
+- [[canadian-simple-copyright]] — The Canadian-simple copyright posture: licence selection, attribution conventions, and the Canadian legal context.
+- [[sovereign-replacement-initiative]] — The replacement-initiative governance posture for sovereign AI deployments under the PointSav substrate.
 
 <!-- ENGINE: this list is editorial in iteration-1; iteration-2+
 generates it from category-directory file listing once PL.7

@@ -102,7 +102,7 @@ render, but metadata is empty.
 ```yaml
 ---
 title: "ToteboxOS"
-slug: os-totebox
+slug: content-contract
 category: architecture
 subcategory: foundation-layer
 last_edited: 2026-04-22

@@ -84,10 +84,10 @@ The passthrough relay is a substrate pattern, not a wiki-specific feature. Any s
 
 ## See also
 
-- [[topic-source-of-truth-inversion]] — The canonical / view / ephemeral three-layer storage taxonomy that this pattern instantiates.
-- [[topic-app-mediakit-knowledge]] — Architecture of the wiki engine that ships this pattern.
-- [[topic-substrate-native-compatibility]] — Why the wiki engine declines interface mimicry in favour of substrate-native surfaces.
-- [[topic-disclosure-substrate]] — The broader disclosure-posture convention this design satisfies.
+- [[source-of-truth-inversion]] — The canonical / view / ephemeral three-layer storage taxonomy that this pattern instantiates.
+- [[app-mediakit-knowledge]] — Architecture of the wiki engine that ships this pattern.
+- [[substrate-native-compatibility]] — Why the wiki engine declines interface mimicry in favour of substrate-native surfaces.
+- [[disclosure-substrate]] — The broader disclosure-posture convention this design satisfies.
 
 ## Provenance
 

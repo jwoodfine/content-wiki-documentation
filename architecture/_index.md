@@ -16,21 +16,21 @@ The platform is organised around a three-ring stack: Ring 1 handles per-tenant b
 
 ## Articles in this category
 
-- [[topic-compounding-substrate]] — The five structural properties of the Compounding Substrate and the value-chain inversion they produce.
-- [[topic-3-layer-stack]] — The three-ring architecture: boundary ingest, knowledge and processing, and optional intelligence.
-- [[topic-apprenticeship-substrate]] — How every operational interaction generates training signal that compounds across deployments.
-- [[topic-citation-substrate]] — The machine-readable citation graph that links every published claim to its evidential source.
-- [[topic-customer-hostability]] — The design properties that allow a customer to host the full stack on their own hardware.
-- [[topic-decode-time-constraints]] — Inference-time constraints applied at the boundary to enforce compliance and safety without post-processing.
-- [[topic-design-system-substrate]] — The visual and component substrate that keeps UI consistent across the platform's applications.
-- [[topic-disclosure-substrate]] — The continuous-disclosure architecture that produces BCSC-compliant output as a structural property.
-- [[topic-language-protocol-substrate]] — The four-family adapter taxonomy that routes editorial work through a shared linguistic air-lock.
-- [[topic-reverse-funnel-editorial-pattern]] — The pipeline by which cluster drafts are refined and published to the documentation wiki.
-- [[topic-substrate-native-compatibility]] — How the substrate maintains compatibility across tenant deployments without a compatibility layer.
-- [[topic-trajectory-substrate]] — The session-trajectory capture mechanism that feeds the continued-pretraining path.
-- [[topic-worm-ledger-architecture]] — The four-layer WORM ledger that satisfies SEC 17a-4(f) and eIDAS requirements by structure.
-- [[topic-anti-homogenization-discipline]] — The editorial discipline that prevents AI-generated content from converging to a single voice.
-- [[topic-capability-based-security]] — Capability-based security as the foundation of the ToteboxOS isolation model.
+- [[compounding-substrate]] — The five structural properties of the Compounding Substrate and the value-chain inversion they produce.
+- [[3-layer-stack]] — The three-ring architecture: boundary ingest, knowledge and processing, and optional intelligence.
+- [[apprenticeship-substrate]] — How every operational interaction generates training signal that compounds across deployments.
+- [[citation-substrate]] — The machine-readable citation graph that links every published claim to its evidential source.
+- [[customer-hostability]] — The design properties that allow a customer to host the full stack on their own hardware.
+- [[decode-time-constraints]] — Inference-time constraints applied at the boundary to enforce compliance and safety without post-processing.
+- [[design-system-substrate]] — The visual and component substrate that keeps UI consistent across the platform's applications.
+- [[disclosure-substrate]] — The continuous-disclosure architecture that produces BCSC-compliant output as a structural property.
+- [[language-protocol-substrate]] — The four-family adapter taxonomy that routes editorial work through a shared linguistic air-lock.
+- [[reverse-funnel-editorial-pattern]] — The pipeline by which cluster drafts are refined and published to the documentation wiki.
+- [[substrate-native-compatibility]] — How the substrate maintains compatibility across tenant deployments without a compatibility layer.
+- [[trajectory-substrate]] — The session-trajectory capture mechanism that feeds the continued-pretraining path.
+- [[worm-ledger-architecture]] — The four-layer WORM ledger that satisfies SEC 17a-4(f) and eIDAS requirements by structure.
+- [[anti-homogenization-discipline]] — The editorial discipline that prevents AI-generated content from converging to a single voice.
+- [[capability-based-security]] — Capability-based security as the foundation of the ToteboxOS isolation model.
 
 <!-- ENGINE: this list is editorial in iteration-1; iteration-2+
 generates it from category-directory file listing once PL.7

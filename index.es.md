@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "documentation.pointsav.com"
-slug: index
+slug: index.es
 lang: es
 paired_with: index.md
 category: root

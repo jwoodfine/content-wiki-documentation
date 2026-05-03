@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Empresa — Página de categoría"
-slug: _index
+slug: _index.es
 lang: es
 paired_with: _index.md
 category: company

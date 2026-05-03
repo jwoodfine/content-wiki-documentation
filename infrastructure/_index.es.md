@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Infraestructura — Página de categoría"
-slug: _index
+slug: _index.es
 lang: es
 paired_with: _index.md
 category: infrastructure

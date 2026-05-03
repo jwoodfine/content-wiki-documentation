@@ -48,10 +48,10 @@ El patrón aplica directamente cuando el tipo de documento CRDT se mapea con cla
 
 ## Véase también
 
-- [[topic-source-of-truth-inversion]] — La taxonomía de tres capas (canónica / vista / efímera) que este patrón instancia.
-- [[topic-app-mediakit-knowledge]] — Arquitectura del motor wiki que implementa este patrón.
-- [[topic-substrate-native-compatibility]] — Por qué el motor wiki no imita interfaces existentes.
-- [[topic-disclosure-substrate]] — La convención de postura de divulgación que este diseño satisface.
+- [[source-of-truth-inversion]] — La taxonomía de tres capas (canónica / vista / efímera) que este patrón instancia.
+- [[app-mediakit-knowledge]] — Arquitectura del motor wiki que implementa este patrón.
+- [[substrate-native-compatibility]] — Por qué el motor wiki no imita interfaces existentes.
+- [[disclosure-substrate]] — La convención de postura de divulgación que este diseño satisface.
 
 ## Procedencia
 

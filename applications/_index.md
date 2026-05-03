@@ -16,7 +16,7 @@ Applications in this category include the wiki engine that renders this site, wo
 
 ## Articles in this category
 
-- [[topic-app-mediakit-knowledge]] — The Rust wiki engine that renders this documentation site; Markdown pipeline, wikilink resolver, full-text search, and browser editor.
+- [[app-mediakit-knowledge]] — The Rust wiki engine that renders this documentation site; Markdown pipeline, wikilink resolver, full-text search, and browser editor.
 
 <!-- ENGINE: this list is editorial in iteration-1; iteration-2+
 generates it from category-directory file listing once PL.7

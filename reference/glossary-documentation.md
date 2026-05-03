@@ -1,6 +1,6 @@
 ---
 title: Glossary
-slug: glossary
+slug: glossary-documentation
 category: reference
 status: complete
 last_edited: 2026-05-02

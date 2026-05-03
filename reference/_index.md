@@ -16,9 +16,9 @@ Reference articles are not narrative — they are looked up, not read front to b
 
 ## Articles in this category
 
-- [[topic-style-guide-readme]] — How to write a README: the bilingual convention, the required sections, and the register appropriate for each audience.
-- [[topic-style-guide-topic]] — How to write a TOPIC article: frontmatter schema, body structure, wikilink syntax, and the relationship between English and Spanish pairs.
-- [[topic-style-guide-guide]] — How to write a GUIDE runbook: the operational register, command blocks, recovery procedures, and the catalog vs instance distinction.
+- [[style-guide-readme]] — How to write a README: the bilingual convention, the required sections, and the register appropriate for each audience.
+- [[style-guide-topic]] — How to write a TOPIC article: frontmatter schema, body structure, wikilink syntax, and the relationship between English and Spanish pairs.
+- [[style-guide-guide]] — How to write a GUIDE runbook: the operational register, command blocks, recovery procedures, and the catalog vs instance distinction.
 
 <!-- ENGINE: this list is editorial in iteration-1; iteration-2+
 generates it from category-directory file listing once PL.7
