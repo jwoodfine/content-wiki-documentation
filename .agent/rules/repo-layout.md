@@ -5,7 +5,7 @@
 > Companion to `content-contract.md` (which governs file *contents*);
 > this file governs file *placement*.
 
-Last updated: 2026-04-23.
+Last updated: 2026-05-03.
 
 ---
 
@@ -21,11 +21,11 @@ Only the following may appear at repo root:
 | `CODE_OF_CONDUCT.md` | Governance scaffold |
 | `CHANGELOG.md` | Meaningful-change log (create when first entry lands) |
 | `NEXT.md` | Repo-scope open items |
-| `CLAUDE.md` | Repo-level session guide |
+| `AGENT.md` | Repo-level session guide |
 | `.gitignore` | Untracked-file rules |
 | `.git/` | Git metadata |
 | `.github/` | Issue templates, workflows, profile material |
-| `.claude/` | Local rule files (see §4 of `CLAUDE.md`) |
+| `.agent/` | Local rule files (see §4 of `AGENT.md`) |
 | `index.md` | Wiki home (served at `/` by app-mediakit-knowledge) |
 
 Anything else at repo root is a layout defect until closed.
@@ -38,7 +38,7 @@ category directory contains:
 | File | Purpose |
 |---|---|
 | `_index.md` | Category landing page (served at `/<category>`) |
-| `<slug>.md` | Articles, one per file, filename stem == slug |
+| `<slug>.md` | Articles or Guides, one per file, filename stem == slug |
 
 Category directory names are lowercase kebab-case. Depth is strictly
 two — no nested subcategory directories (see `content-contract.md`
@@ -58,10 +58,11 @@ home:
 | Source code (Rust, Python, TypeScript, etc.) | `pointsav-monorepo/<prefix>-<name>/` — via outbox in `handoffs-outbound.md` |
 | Compiled binaries, `.zip`, `.tar.gz` archives | Never check in. If the file is the input to a migration, handoff its extracted contents per §9. |
 | Design-system material (tokens, component specs, brand guidelines) | `pointsav-design-system/` — via outbox |
-| Operational scripts, tool-*.sh | `~/Foundry/` workspace root (Master Claude scope) |
+| Operational scripts, tool-*.sh | `~/Foundry/bin/` workspace root (Master Claude scope) |
 | YAML-only structured records without Markdown bodies | Classify per `cleanup-log.md`: become article, become article front-matter, or cross-repo move |
 | Images used inline in articles | `<category>/<slug>.assets/` alongside the article (to be specified — not yet in contract) |
 | Large reference PDFs / research dumps | Not this repo. Consider `pointsav-media-assets` or out-of-repo storage. |
+| **Operational Guides (`guide-*.md`)** | Misplaced guides in other repos (e.g. `content-wiki-projects`) MUST be moved here. |
 
 ## 4. Defect-closure procedure
 

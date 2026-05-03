@@ -1,10 +1,10 @@
 # content-wiki-documentation — Repo Guide
 
-> This file is the repo-level complement to `~/Foundry/CLAUDE.md`.
+> This file is the repo-level complement to `~/Foundry/GEMINI.md`.
 > A session that opens here inherits the workspace guide and then
 > applies the repo-specific rules below. Read cold at session start.
 
-Last updated: 2026-04-23.
+Last updated: 2026-05-03.
 
 ---
 
@@ -16,6 +16,8 @@ Scope:
 
 - Platform reference articles (architecture, services, ADRs, glossary).
 - Topic pages used for internal explanation and external publication.
+- **Operational Guides (`guide-*.md`)** — all technical runbooks and
+  how-to articles are exclusively hosted here.
 - Category landing pages and a single repo-root `index.md` serving
   as the wiki home.
 
@@ -32,8 +34,8 @@ here; sessions in this repo operate as Root Claude throughout.
 A session that opens in this repo is **Root Claude for
 `content-wiki-documentation`**. Scope of writes per workspace §9:
 
-- Repo-level `CLAUDE.md` (this file).
-- `.claude/rules/*.md` — local rule files (see §4).
+- Repo-level `GEMINI.md` (this file).
+- `.agent/rules/*.md` — local rule files (see §4).
 - `NEXT.md` — repo-scope open items.
 - Article Markdown files in category subdirectories.
 - Main-branch maintenance via the staging-tier commit flow.
@@ -53,16 +55,16 @@ wiki server that renders the content at `documentation.pointsav.com`.
   per Nomenclature Matrix §3 (`app-*` prefix = monorepo project).
 - **This repo** is the crate's sole content source.
 - The **contract between them** is pinned in
-  `.claude/rules/content-contract.md` — front-matter schema,
+  `.agent/rules/content-contract.md` — front-matter schema,
   directory layout, wikilink and footnote conventions, URL routing.
   When in doubt about how to shape content, read the contract.
 
 The crate is the ground truth for the render pipeline. If the crate
 changes the contract (new required field, different markdown
-extension, etc.), `.claude/rules/content-contract.md` is updated
+extension, etc.), `.agent/rules/content-contract.md` is updated
 in the same change-set.
 
-## 4. Local rules — `.claude/rules/`
+## 4. Local rules — `.agent/rules/`
 
 | File | Purpose |
 |---|---|
@@ -128,35 +130,29 @@ content is publicly served at `documentation.pointsav.com`:
 - **Edit in place.** No `_V2` / `_V3` duplicate files. Use Git
   history for versioning.
 
-## 7. Migration state (as of 2026-04-23)
+## 7. Migration state (as of 2026-05-03)
 
-This repo predates the `app-mediakit-knowledge` contract. Rule
-scaffolding is now in place — the four files under `.claude/rules/`
-describe what valid content looks like, where files belong, what
-cleanup is in flight, and what is queued for cross-repo handoff.
+The repo has completed the PL.7 normalization pass.
 
-The content itself still does not conform to the contract. Visible
-gaps:
-
-- No `index.md` at repo root.
-- No category subdirectories; articles are currently flat at root.
-- Filename-case inconsistency: `topic-*.md`, `TOPIC-*.md`, `TOPIC_*.md`
-  all coexist.
+- `index.md` is active at repo root.
+- All articles have moved into category subdirectories.
+- Legacy `topic-` prefixes have been removed from all filenames
+  and internal links.
 - Structured-record files (`topic-*.yaml`, `sys-adr-*.yaml`,
   `service-*-01.yaml`, `os-workplace-01.yaml`) sit at root without
   markdown bodies; each needs classification (become article / become
   article front-matter / move cross-repo to the owning service crate
   in the monorepo).
 
-Normalisation is queued, not executed. Per-file decisions are
-tracked in `.claude/rules/cleanup-log.md`; higher-level work items
+Normalisation is complete. Per-file decisions are
+tracked in `.agent/rules/cleanup-log.md`; higher-level work items
 are tracked in `NEXT.md`.
 
 ## 8. Where to look next
 
 - `NEXT.md` — repo-scope open items and migration queue.
-- `.claude/rules/content-contract.md` — what valid content looks like.
-- `~/Foundry/CLAUDE.md` — workspace guide (inherited).
+- `.agent/rules/content-contract.md` — what valid content looks like.
+- `~/Foundry/GEMINI.md` — workspace guide (inherited).
 - `~/Foundry/IT_SUPPORT_Nomenclature_Matrix_V8.md` — names, prefixes,
   conventions (authoritative per workspace §5).
 - `~/Foundry/NEXT.md` — workspace-level open items, including anything
