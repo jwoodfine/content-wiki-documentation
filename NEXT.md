@@ -46,6 +46,19 @@ Last updated: 2026-04-30.
   `content-contract.md`, `repo-layout.md`, `cleanup-log.md`,
   `handoffs-outbound.md` all written.
 
+## 🚨 Authorship Roadmap (Red Links)
+
+- [ ] `ConsoleOS`
+- [ ] `InfrastructureOS`
+- [ ] `MediaKitOS`
+- [ ] `NetworkAdminOS`
+- [ ] `OrchestrationOS`
+- [ ] `PrivateGitOS`
+- [ ] `ToteboxArchive`
+- [ ] `ToteboxOS`
+- [ ] `co-location-methodology`
+- [ ] `development-regions`
+
 ## Pointers
 
 - Workspace-level open items: `~/Foundry/NEXT.md`
