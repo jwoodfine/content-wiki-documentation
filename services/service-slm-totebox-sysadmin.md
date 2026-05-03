@@ -5,23 +5,23 @@ slug: service-slm-totebox-sysadmin
 category: services
 type: topic
 quality: core
-short_description: "How service-slm becomes the operational assistant and support centre for Totebox Archive and Totebox Orchestration deployments — the training strategy, the ten operational task families, and the four-stage pipeline from corpus capture to per-tenant LoRA adapters."
+short_description: "How service-slm becomes the operational assistant and support centre for Totebox Archive and Totebox Orchestration deployments — the training strategy, the ten operational task families, and the four-stage pipeline from corpus capture to per-tenant {{gli|LoRA}} adapters."
 status: pre-build
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:
   - olmo3-allenai
-  - federated-lora-2502-05087
+  - federated-{{gli|lora}}-2502-05087
   - lorax-predibase
-  - s-lora-2024
+  - s-{{gli|lora}}-2024
   - constitutional-ai-2212-08073
-  - vllm-multi-lora
+  - vllm-multi-{{gli|lora}}
   - ni-51-102
   - osc-sn-51-721
 paired_with: service-slm-totebox-sysadmin.es.md
 ---
 
-`service-slm` — the Compounding Doorman at Ring 3 of the platform — is designed to become the operational assistant and support centre for Totebox Archive and Totebox Orchestration deployments. This article describes the strategy: the operational task families a sysadmin handles, why service-slm is structurally suited to handle them, the corpus shape required to train it, and the four stages that take a deployment from initial capture to a per-tenant LoRA adapter running in production.
+`service-slm` — the Compounding Doorman at Ring 3 of the platform — is designed to become the operational assistant and support centre for Totebox Archive and Totebox Orchestration deployments. This article describes the strategy: the operational task families a sysadmin handles, why service-slm is structurally suited to handle them, the corpus shape required to train it, and the four stages that take a deployment from initial capture to a per-tenant {{gli|LoRA}} adapter running in production.
 
 The premise is grounded in present state, not projection. The Doorman is operational. The apprenticeship corpus pipeline is wired. The substrate is configured to learn. What remains is to direct it at the operational work that matters most.
 
@@ -31,7 +31,7 @@ A survey of the GUIDE files across the three Totebox deployment clusters — per
 
 | Task family | Example surfaces | Common error states |
 |---|---|---|
-| **Node provisioning** | 9-step physical sequence: power, boot drive, MBA handshake, isolated container mount, Diode Standard, terminal lock | Boot-drive cryptographic mismatch; MBA handshake failure; Diode reverse-flow violation |
+| **Node provisioning** | 9-step physical sequence: power, boot drive, MBA handshake, isolated {{gli|container}} mount, Diode Standard, terminal lock | Boot-drive cryptographic mismatch; MBA handshake failure; Diode reverse-flow violation |
 | **Ingress operations** | MSFT Graph harvester, First Derivative emission, spool-daemon watchdog | Auth tokens expired; Outlook target folders missing; spool-daemon not monitoring `maildir/new/` |
 | **Sovereign data extraction (DARP)** | `tool-extract-content.sh`, `tool-extract-people.sh` | Cloud-side temp file not destroyed; SSH credentials missing; partial flatten step |
 | **Cold-storage egress** | Quarterly rsync to attached secure drive; JSON-to-CSV ledger extraction | Drive not mounted; rsync permission denied; partial transfer; integrity mismatch |
@@ -39,7 +39,7 @@ A survey of the GUIDE files across the three Totebox deployment clusters — per
 | **Sovereign search operations** | Tantivy index, boolean query at command terminal, DARP extraction by encrypted volume | Index not regenerating; query parser rejecting valid boolean; index drift |
 | **Identity and capability operations** | Tenant ID, Client ID, Secret Value — Zero-Touch Parser locks keys at 600 permissions; per-node MBA handshake | Keys in Git history; permission drift on `.env`; MBA registration desync |
 | **Adapter injection validation** | Drop adapter into `private-adapters/`; volume cap at 75–100 ops/cycle; read-only service-people query | Adapter writing to local store; volume cap exceeded; service-people write attempt |
-| **Audit-trail reconciliation** | Cross-check per-tenant audit ledger against WORM Immutable Ledger; verify signed verdict events; resolve anchor timestamps | Audit row missing for an apprentice diff; verdict signature fails verification; anchor lag |
+| **Audit-trail reconciliation** | Cross-check per-tenant audit ledger against {{gli|WORM}} Immutable Ledger; verify signed verdict events; resolve anchor timestamps | Audit row missing for an apprentice diff; verdict signature fails verification; anchor lag |
 | **Schema-conforming data import** | Imports following canonical Glossary CSV; Archetype + Chart-of-Accounts + Domain mapping at ingress | Term not in canonical Term_EN; Domain mismatch; YAML structural-tag failure |
 
 ## Why service-slm rather than an external API for these tasks
@@ -52,13 +52,12 @@ Four structural properties make these workloads suited to service-slm over third
 
 **Cost at volume.** The planned amortised cost of Tier B on a preemptible A100 with idle-shutdown lands near $0.0001 per typical sysadmin request once the instance is shared across multiple customer deployments. Tier C equivalents at full prompt context exceed $0.05 per request. At sustained operational volumes — thousands of sysadmin queries per day across an active fleet — the differential compounds. [ni-51-102] [osc-sn-51-721] *Forward-looking cost figures reflect planned substrate economics; actual costs may differ based on model, provider pricing, and prompt size.*
 
-**Personalisation.** Per-tenant LoRA adapters trained on each customer's specific operational patterns — the actual error states they encounter, the command shapes they prefer, the glossary terms they use — make service-slm a more accurate assistant for that customer than a generic inference service can be at any scale. The structural basis for this is that the customer's data and interaction history stay within the customer's substrate, available for training, without any sharing or external transmission.
+**Personalisation.** Per-tenant {{gli|LoRA}} adapters trained on each customer's specific operational patterns — the actual error states they encounter, the command shapes they prefer, the glossary terms they use — make service-slm a more accurate assistant for that customer than a generic inference service can be at any scale. The structural basis for this is that the customer's data and interaction history stay within the customer's substrate, available for training, without any sharing or external transmission.
 
 **Continuous availability.** Tier A (local CPU model) operates during Tier B cold starts, spot preemption windows, or network-isolated periods. The Brief Queue Substrate keeps corpus capture continuous across all three failure modes. The training signal is never lost.
 
 ## The corpus shape: ten new task-type registrations
 
-The apprenticeship corpus accumulates at `data/training-corpus/apprenticeship/<task-type>/<tenant>/`. For Totebox sysadmin work, ten new task-types should be registered in the promotion ledger via signed `task-type-add` events per `conventions/apprenticeship-substrate.md` §6. The proposed registrations correspond directly to the ten task families above:
 
 | task_type | Trigger | Input shape | Output shape | Verdict criteria |
 |---|---|---|---|---|
@@ -70,7 +69,7 @@ The apprenticeship corpus accumulates at `data/training-corpus/apprenticeship/<t
 | `sovereign-search-debug` | Tantivy index drift or parser rejection | Boolean query + index state + last Forge run timestamp | Diagnosis + index regeneration command | Regeneration succeeds without losing prior index |
 | `identity-cap-handshake` | MBA handshake failure | Hardware fingerprint + MBA state + per-node `.env` | Step-by-step recovery preserving Zero-Touch Parser invariants | Recovery preserves MBA registration; no key leakage; 600 permissions maintained |
 | `adapter-injection-validate` | Operator drops new private adapter | Adapter source + placement + volume-cap declaration | Pass or fail with specific structural-rule citations | Adapter passes Diode Standard; volume cap declared; no service-people writes |
-| `audit-row-reconcile` | Audit ledger row missing for a known brief | brief_id + commit SHA + ledger range | Trace locating the missing row + repair sequence | Repair preserves WORM append-only invariant |
+| `audit-row-reconcile` | Audit ledger row missing for a known brief | brief_id + commit SHA + ledger range | Trace locating the missing row + repair sequence | Repair preserves {{gli|WORM}} append-only invariant |
 | `schema-import-validate` | CSV or JSON import fails the deterministic parser | Source row + Glossary Term_EN + expected Archetype | Reformatted row + structural-tag YAML | Term_EN is canonical; Archetype correct; YAML passes lexical grammar |
 
 Each new task-type starts at `review` stage. Promotion to `spot-check` requires at least 50 verdicts at a rate of 0.85 or higher.
@@ -81,9 +80,9 @@ Each new task-type starts at `review` stage. Promotion to `spot-check` requires 
 
 **Stage 2 — Promote via signed verdict.** A senior identity — Master, Root, or operator at the chat surface — reviews captured tuples and signs verdicts using `ssh-keygen -Y sign -n apprenticeship-verdict-v1`. Verdict outcomes: Approve, Refine (producing a DPO pair), Reject, or Defer to Tier C. A weekly batch at session end is the sustainable cadence; per-commit signing does not scale. Signing is local cryptographic operation: zero compute cost. Verification uses the `identity/allowed_signers` file.
 
-**Stage 3 — Per-cluster LoRA training cycle.** When a task-type's corpus crosses 50 verdict-signed tuples, the trainer is triggered. Initial cycle runs CPU-only on the workspace VM (zero cost; informs Phase 1 scope). Production cycles move to Tier B once the Yo-Yo GPU instance is provisioned (planned cost: $1–3 per training run, hours of wall time) [olmo3-allenai]. LoRA rank 16–32, targeting attention and feed-forward layers. The trained adapter lands at `data/adapters/<task-type>-<cluster>-<tenant>-v0.1.lora` and is SSH-signed before deployment. *Training timeline and cost projections are planned targets, subject to corpus accumulation rate, hardware availability, and operator review. [ni-51-102] [osc-sn-51-721]*
+**Stage 3 — Per-cluster {{gli|LoRA}} training cycle.** When a task-type's corpus crosses 50 verdict-signed tuples, the trainer is triggered. Initial cycle runs CPU-only on the workspace VM (zero cost; informs Phase 1 scope). Production cycles move to Tier B once the Yo-Yo GPU instance is provisioned (planned cost: $1–3 per training run, hours of wall time) [olmo3-allenai]. {{gli|LoRA}} rank 16–32, targeting attention and feed-forward layers. The trained adapter lands at `data/adapters/<task-type>-<cluster>-<tenant>-v0.1.{{gli|lora}}` and is SSH-signed before deployment. *Training timeline and cost projections are planned targets, subject to corpus accumulation rate, hardware availability, and operator review. [ni-51-102] [osc-sn-51-721]*
 
-**Stage 4 — Multi-adapter composition at request time.** The Doorman composes up to three adapters per request: `base ⊕ engineering-pointsav ⊕ cluster-<name>` or `base ⊕ apprenticeship-pointsav ⊕ tenant-<name>`. Tier B vLLM Multi-LoRA serves the composition [vllm-multi-lora] [s-lora-2024] [lorax-predibase]. Every request's audit-ledger entry records the composed adapter set, making the influence of each adapter traceable.
+**Stage 4 — Multi-adapter composition at request time.** The Doorman composes up to three adapters per request: `base ⊕ engineering-pointsav ⊕ cluster-<name>` or `base ⊕ apprenticeship-pointsav ⊕ tenant-<name>`. Tier B vLLM Multi-{{gli|LoRA}} serves the composition [vllm-multi-lora] [s-{{gli|lora}}-2024] [lorax-predibase]. Every request's audit-ledger entry records the composed adapter set, making the influence of each adapter traceable.
 
 Stage 5 — continued pretraining into a PointSav-OLMo base — is a long-horizon trajectory planned for workspace v0.5.0, contingent on corpus accumulation crossing 50–100B tokens across all tenants. This is an intended capability; actual timeline depends on corpus growth rate and operational conditions [olmo3-allenai]. [ni-51-102] [osc-sn-51-721]
 
@@ -93,7 +92,7 @@ The service-slm-as-sysadmin capability is available across three customer tiers,
 
 **Tier 1 — Single-Totebox SMB.** OLMo 3 7B Q4 running on the customer's appliance (8–12 GB consumer GPU or 8 GB CPU laptop). The Doorman handles routine sysadmin queries from the ten task families. Tier C external API access remains for cases the local model defers. Sovereignty: complete — no data flow to vendor infrastructure for routine operations.
 
-**Tier 2 — Multi-Totebox customer.** Tier 1 plus access to vendor-hosted Tier B (OLMo 3.1 32B Think) for harder queries. Per-tenant LoRA adapters trained on the customer's own corpus deploy on Tier B. Pricing: per-token at PointSav rates, planned to be structurally below the $95,000–$590,000 annual floors that gate comparable closed-source SMB offerings. *Planned pricing is intended to be structurally favourable relative to those alternatives; actual pricing is not yet set and is subject to operator decision before any commercial offer.* [ni-51-102] [osc-sn-51-721]
+**Tier 2 — Multi-Totebox customer.** Tier 1 plus access to vendor-hosted Tier B (OLMo 3.1 32B Think) for harder queries. Per-tenant {{gli|LoRA}} adapters trained on the customer's own corpus deploy on Tier B. Pricing: per-token at PointSav rates, planned to be structurally below the $95,000–$590,000 annual floors that gate comparable closed-source SMB offerings. *Planned pricing is intended to be structurally favourable relative to those alternatives; actual pricing is not yet set and is subject to operator decision before any commercial offer.* [ni-51-102] [osc-sn-51-721]
 
 **Tier 3 — PointSav-LLM specialist product.** A vendor-hosted model trained on Foundry's aggregated multi-tenant corpus plus curated public corpus; a specialist in Totebox Archive operation, PointSav conventions, and the ten task families. L1 AI resolution of a planned 80–90 percent of customer queries autonomously; L2 human-in-the-loop escalation; L3 engineering for rare complex cases. Each L2 response feeds back as DPO training signal. *Tier 3 deployment timeline is planned for v0.5.0 (Q1 2027 per current roadmap); actual timing is subject to corpus accumulation rate and operator decision. [ni-51-102] [osc-sn-51-721]*
 
@@ -107,12 +106,10 @@ The service-slm-as-sysadmin capability is available across three customer tiers,
 ## References
 
 1. OLMo 3 tech report, AI2. Token throughput and fine-tuning recipe. [olmo3-allenai]
-2. vLLM Multi-LoRA documentation — serving multiple LoRA adapters per request. [vllm-multi-lora]
-3. S-LoRA — scalable LoRA serving reference. [s-lora-2024]
-4. LoRAX — multi-LoRA serving infrastructure (Predibase). [lorax-predibase]
-5. Federated LoRA framework. [federated-lora-2502-05087]
-6. `conventions/apprenticeship-substrate.md` — brief/attempt/verdict format; promotion ledger; per-task-type stage transitions.
-7. `conventions/compounding-substrate.md` — five structural properties; multi-tier compute routing.
+2. vLLM Multi-{{gli|LoRA}} documentation — serving multiple {{gli|LoRA}} adapters per request. [vllm-multi-lora]
+3. S-{{gli|LoRA}} — scalable {{gli|LoRA}} serving reference. [s-{{gli|lora}}-2024]
+4. LoRAX — multi-{{gli|LoRA}} serving infrastructure (Predibase). [lorax-predibase]
+5. Federated {{gli|LoRA}} framework. [federated-{{gli|lora}}-2502-05087]
 8. NI 51-102, Continuous Disclosure Obligations (BCSC). [ni-51-102]
 9. OSC Staff Notice 51-721, Forward-Looking Information Disclosure. [osc-sn-51-721]
 

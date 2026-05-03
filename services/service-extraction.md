@@ -19,7 +19,7 @@ paired_with: service-extraction.es.md
 
 **service-extraction** is a Ring 2 knowledge-and-processing service in the PointSav three-ring architecture. It receives raw payloads from Ring 1 ingest services, strips proprietary third-party formatting (JSON, MIME, Base64), and constructs machine-readable Entity Bundles — self-contained directory structures that hold both the text payload and any associated binary attachments. It is the canonical successor to the legacy working name `service-parser`.
 
-## Overview
+## Architectural Baseline
 
 Every message that passes through Ring 1 arrives at service-extraction as an unprocessed, vendor-formatted payload. The service has one responsibility: transform that payload into a clean, traceable Entity Bundle and route it to the correct downstream service. It assigns a transaction ID to each bundle, providing a chain-of-custody reference that persists through every subsequent processing step.
 
@@ -27,7 +27,7 @@ Every message that passes through Ring 1 arrives at service-extraction as an unp
 
 service-extraction occupies **Ring 2 — Knowledge and Processing** in the three-ring architecture. Ring 2 is multi-tenant (via `moduleId` namespacing) and deterministic: it processes data without invoking AI inference unless the data shape requires it. When a payload contains unstructured text that cannot be classified by deterministic rules, service-extraction routes that text to Ring 3 (service-slm) for AI-assisted extraction. Structured and semi-structured payloads route entirely within Ring 2.
 
-## Architecture
+## Structural Organization of Components
 
 ### The Entity Bundle
 
@@ -66,6 +66,6 @@ The routing decision is deterministic and tag-driven. No AI inference is require
 
 ## References
 
-- DOCTRINE.md §XI — Ring 2 knowledge-and-processing architecture
+-  §XI — Ring 2 knowledge-and-processing architecture
 - `pointsav-monorepo/service-extraction/` — implementation crate
 - SYS-ADR-07 — structured data never routes through AI (governs the boundary between Ring 2 deterministic routing and Ring 3 AI invocation)

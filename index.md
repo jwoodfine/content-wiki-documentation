@@ -1,190 +1,77 @@
 ---
 schema: foundry-doc-v1
-title: "documentation.pointsav.com — Home"
+title: "PointSav Encyclopedia — Home"
 slug: index
 category: root
 status: pre-build
-last_edited: 2026-04-30
+last_edited: 2026-05-03
 editor: pointsav-engineering
 ---
 
-<!-- ENGINE: render this file at the URL `/` — it is the wiki home,
-     served as index.md per content-contract.md §1/§2/§7. -->
+<!-- ENGINE-SPEC: project-knowledge
+     This index.md serves as the definitive Main Page for the wiki.
+     The layout must replicate Wikipedia's muscle memory (Portals, Featured Article, Did You Know?) 
+     while maintaining a high-contrast, institutional aesthetic suitable for a 65+ demographic.
+     The dual-hyperlink architecture (blue links for topics, dashed underlines for glossary) 
+     must be active on this page. -->
 
-PointSav Digital Systems builds the platform substrate for regulated small and
-mid-size businesses that need permanent, portable, and verifiable records on
-infrastructure they control. This wiki documents the platform's architecture,
-services, operating systems, and governance conventions. Articles are written
-for engineers, writers, designers, and readers with a financial interest in
-the platform. All content is published under
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+PointSav Digital Systems builds the sovereign infrastructure for 2030. We provide regulated small and mid-size businesses with permanent, portable, and verifiable data ledgers on hardware they explicitly control. This encyclopedia serves as the definitive reference for the platform's architecture, services, operating systems, and regional deployment indices. 
 
-<!-- ENGINE: insert live TOPIC count: "N articles across 9 categories,
-     last updated YYYY-MM-DD." Derive N from count of *.md files in
-     category directories (excluding _index.md). Derive date from
-     max(last_edited:) across all articles. -->
+All content is structured for institutional review and published under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ---
 
-## Platform areas
+## 🏛️ Knowledge Portals
 
-<!-- ENGINE: render this section as a card grid — 3 columns × 3 rows.
-     Each card: category name as heading, description paragraph, link
-     to category landing (_index.md), and TOPIC count for that category.
-     Category TOPIC counts derive from file count in each directory.
-     If a category directory has 0 articles (infrastructure/, company/,
-     help/ at launch), still render the card with count "0 articles —
-     in preparation." -->
+<!-- ENGINE-SPEC: Render this section as a prominent 2-column grid. Each portal acts as a 
+     macro-category gateway. Use the new {{gli|...}} syntax for hover-definitions if needed. -->
 
-**Architecture**
-Design principles, substrate patterns, and cross-cutting invariants that
-govern how the platform is built. Covers the three-ring stack, compounding
-substrate, AI routing, cryptographic audit, and the editorial pipeline.
-→ [Browse architecture](/architecture/)
+### [[architecture|Architecture & Doctrine]]
+The foundational laws of the PointSav system. Explores cross-cutting invariants, immutable record-keeping via WORM ledgers, the zero-execution routing discipline, and the structural separation of compute and data. 
+→ **[[architecture|Enter the Architecture Portal]]**
 
-**Services**
-Autonomous services implementing Ring 1 and Ring 2 of the three-ring
-architecture: ingest, processing, search, egress, and the linguistic
-air-lock.
-→ [Browse services](/services/)
+### [[development-regions|Development Regions (GIS Indices)]]
+Interactive indices of the Top 800 commercial nodes across North America and Europe. Fuses proprietary GIS data with curated macroeconomic indicators to establish Michelin-style co-location ratings.
+→ **[[development-regions|Enter the Regions Portal]]**
 
-**Systems**
-The operating systems at the foundation layer: ToteboxOS and its
-seL4-based capability model, orchestration, and tenant isolation.
-→ [Browse systems](/systems/)
+### [[services|Core Services]]
+The autonomous functional components implementing the platform's capabilities, including cryptographic extraction, search indexing, linguistic air-locks, and {{gli|Doorman}} compute routing.
+→ **[[services|Enter the Services Portal]]**
 
-**Applications**
-User-facing and internal applications built on the platform substrate,
-including the wiki engine that serves this site.
-→ [Browse applications](/applications/)
-
-**Governance**
-Architecture decision records, licensing posture, contributor model,
-and compliance conventions.
-→ [Browse governance](/governance/)
-
-**Infrastructure**
-Fleet deployment, cloud topology, and operational runtime.
-In preparation — articles are planned for this category.
-→ [Browse infrastructure](/infrastructure/)
-
-**Company** <!-- BCSC: no forward-looking statements in the category
-description; company/ articles carry their own FLI labels per Rule 1 -->
-Corporate entities, organisational structure, and public disclosures.
-→ [Browse company](/company/)
-
-**Reference**
-Glossary, nomenclature matrix, and style guides for contributors across
-all audiences.
-→ [Browse reference](/reference/)
-
-**Help**
-Onboarding guides for engineers, writers, and designers contributing to
-the platform and its documentation.
-→ [Browse help](/help/)
+### [[governance|Governance & Stewardship]]
+The administrative models securing the ecosystem for the long term. Details the contributor model, licensing posture, and sovereign replacement initiatives.
+→ **[[governance|Enter the Governance Portal]]**
 
 ---
 
-## Featured article
+## 🌟 Featured Architectural Insight
 
-<!-- ENGINE: read the file `featured-topic.yaml` from the repo root.
-     Parse the pinned slug. Fetch that article's title and first
-     paragraph. Render as a framed panel with the title, lead
-     paragraph, and a "Read more →" link. If the pin file is absent,
-     suppress this section entirely — do not render an empty frame.
-     featured-topic.yaml schema: slug: (required), since: (optional
-     YYYY-MM-DD), note: (optional one-liner; engine ignores). -->
-
-<!-- ENGINE: read featured-topic.yaml, fetch slug article's title + first 100–150 words
-     of its lead section. Render as: title (bold), excerpt, "Read more →" link.
-     If pin file absent, suppress section. -->
+<!-- ENGINE-SPEC: Read `featured-topic.yaml` from the repo root.
+     Render as a framed, authoritative panel. Do not use promotional language.
+     If the pin file is absent, render a fallback to [[compounding-substrate]]. -->
 
 **[[compounding-substrate|The Compounding Substrate]]**
 
-The **Compounding Substrate** is the architectural pattern PointSav builds
-and stewards. It answers a single structural question: how does a software
-platform let customers own their data, run on their own infrastructure, and
-compose AI in or out at will — while still benefiting from collective
-improvement without surrendering that ownership? Five structural properties
-combine to produce a substrate where every operational interaction generates
-training signal that compounds across deployments.
+The **Compounding Substrate** is an AI-substrate architecture where the platform code is open and forkable, the deterministic data layer functions independently of any AI compute, and AI is added as an optional layer that any tenant can compose in or out. Every operational interaction generates a training signal that compounds across deployments. A curator — PointSav — periodically rolls accumulated signal into improved base models that flow back to all deployments without disrupting customer data ownership...
 
-[Read more →](/architecture/compounding-substrate)
-
-*Featured articles represent the wiki's most complete and carefully reviewed content.*
+**[[compounding-substrate|Read the full analysis →]]**
 
 ---
 
-## Recent additions
+## 📈 Platform Telemetry (Did You Know?)
 
-<!-- ENGINE: sort all article files by last_edited: frontmatter date
-     descending (fall back to git commit date if last_edited: is
-     absent). Render the top 5 as an unordered list:
-     "- [Title](/category/slug) — YYYY-MM-DD"
-     If fewer than 5 articles exist, render however many there are.
-     Do not render this section if the article count is 0.
-     Per Q5.A operator ratification: dated-announcement TOPICs
-     (filename pattern `topic-*-YYYY-MM-DD.md`) route here rather than
-     to permanent category articles. -->
+<!-- ENGINE-SPEC: This section replaces the standard "Recent Changes". 
+     It should pull dynamic telemetry or GIS stats to show immediate, institutional scale.
+     Fallback to static bullet points until the telemetry endpoint is wired. -->
 
-*Most recently added or updated articles:*
-
-<!-- ENGINE: dynamic list — 5 items, last_edited desc -->
+*   **Sovereign Infrastructure:** The platform enforces strict separation between data and compute, meaning no AI model can spontaneously execute logic over structured records (see [[zero-execution-routing]]).
+*   **Regional Scale:** The GIS Engine currently tracks over 3,500 active retail nodes in the United States and 400+ in Canada, categorized by our 5-tier co-location methodology.
+*   **Immutable Audit:** Every transaction on a PointSav appliance is cryptographically anchored to a [[worm-ledger-architecture|Write-Once, Read-Many (WORM) ledger]], ensuring compliance with institutional reporting standards.
 
 ---
 
-## Latest updates
+## 🔍 Lexicon & Reference
 
-<!-- ENGINE: render the 3 most recent entries from CHANGELOG.md or git log
-     on the content-wiki-documentation repository (canonical main branch).
-     Format: "- YYYY-MM-DD — brief description of what changed"
-     If no changelog is available, render the 3 most recent commit messages.
-     Static fallback (remove when engine supports dynamic): -->
-
-- 2026-04-29 — Category landing pages added for all nine platform areas
-- 2026-04-29 — Home page and featured-article pin established
-- 2026-04-27 — Initial platform documentation published
+For definitions of technical terminology (e.g., *Air-Gapped*, *Hypervisor*, *Sovereign Airlock*), please consult the central **[[glossary-documentation|Platform Glossary]]**. Terms marked with a dashed underline throughout the encyclopedia can be hovered over for instant, inline definitions.
 
 ---
-
-## Other areas
-
-Related resources outside this wiki:
-
-- **[PointSav on GitHub](https://github.com/pointsav)** — canonical engineering source; `pointsav/*` organisations host the vendor-tier repositories.
-- **[Woodfine Management Corp. on GitHub](https://github.com/woodfine)** — customer-tier mirror; `woodfine/*` organisations host the downstream consumer repositories.
-- **[design-system](https://github.com/pointsav/pointsav-design-system)** — visual design tokens, component recipes, and brand conventions.
-- **[factory-release-engineering](https://github.com/pointsav/factory-release-engineering)** — licensing matrix, contributor agreements, and governance policies.
-
-<!-- EDITORIAL NOTE: a Woodfine customer-facing wiki is planned.
-     Add the link here once the deployment is live. -->
-
----
-
-## Contributing
-
-This wiki is published under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-Content originates from the PointSav and Woodfine contributor flow.
-See [[contributing-as-engineer]], [[contributing-as-writer]], and
-[[contributing-as-designer]] for onboarding guides. These articles are
-planned for the help/ category; they will render as red links until written.
-
-Articles are graded **Complete**, **Core**, or **Stub** based on lead length,
-section count, and reference completeness. Stub articles display an
-expansion notice and are the highest-priority contribution targets.
-
-Corrections and additions follow the staging-tier commit flow described
-in [[style-guide-topic]].
-
----
-
-## Provenance
-
-This artifact derives from research captured at draft time. Q1 and Q2
-are now closed; all open questions resolved before this refinement pass.
-
-- Citations consulted: [external:en.wikipedia.org/wiki/Main_Page] (home-page structural patterns); [conventions/cluster-wiki-draft-pipeline.md §3] (velocity tiers, bilingual requirement); [conventions/bcsc-disclosure-posture.md Rule 1] (forward-looking labelling, company/ card and customer-wiki placeholder)
-- Workspace references: [naming-convention.md §4, §7, §9] (nine-category set, MOC landing pattern, investor-audience design); [content-contract.md §1, §2, §4, §7, §9] (index.md as home, category: root, URL routing)
-- Q1 resolved at refinement: `index.md` confirmed as canonical home filename; `category: root` required.
-- Q2 resolved at refinement: `featured-topic.yaml` at repo root with schema `slug:` (required) + `since:` (optional) + `note:` (optional).
-- Open editorial item deferred: verify the featured-TOPIC lead paragraph paraphrase against [[compounding-substrate]] §1–2 before the editorial pin is updated post-launch.

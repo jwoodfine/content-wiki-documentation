@@ -12,12 +12,12 @@ editor: pointsav-engineering
 
 This category covers the operating systems at the foundation layer of the PointSav platform. Each article describes one OS: its capability model, its role in tenant isolation, and how it composes with the services and applications that run on top of it.
 
-The primary operating system is ToteboxOS — a formally verified capability-based OS built on seL4. Its design provides the tenant-isolation and cryptographic-attestation properties that the rest of the platform depends on. A second OS, the workplace operating environment, handles the employee-facing application surface. The orchestration layer connects them. Articles in this category are technical in register; readers should be comfortable with OS-level concepts, capability-based security, and hardware-level trust models.
+The primary operating system is [[ToteboxOS]] — a formally verified capability-based OS built on seL4. Its design provides the tenant-isolation and cryptographic-attestation properties that the rest of the platform depends on. A second OS, the workplace operating environment, handles the employee-facing application surface. The orchestration layer connects them. Articles in this category are technical in register; readers should be comfortable with OS-level concepts, capability-based security, and hardware-level trust models.
 
 ## Articles in this category
 
-- [[os-totebox]] — ToteboxOS: the seL4-based capability OS at the platform's foundation layer; formal verification, capability model, and tenant isolation.
-- [[totebox-orchestration]] — How ToteboxOS instances are orchestrated across a fleet deployment; scheduling, isolation boundaries, and upgrade paths.
+- [[os-totebox]] — [[ToteboxOS]]: the seL4-based capability OS at the platform's foundation layer; formal verification, capability model, and tenant isolation.
+- [[totebox-orchestration]] — How [[ToteboxOS]] instances are orchestrated across a fleet deployment; scheduling, isolation boundaries, and upgrade paths.
 
 <!-- ENGINE: this list is editorial in iteration-1; iteration-2+
 generates it from category-directory file listing once PL.7

@@ -26,7 +26,7 @@ This TOPIC covers what extends beyond. Five article-shell primitives that Wikipe
 
 Wikipedia's article shell is the most-imitated reading surface on the public internet. It is the gold standard for general-knowledge encyclopedic depth precisely because its primitives are honed by twenty years of editorial-community refinement. It is also structurally limited in 2026 by ten specific weaknesses that no commercial wiki competitor has addressed.
 
-The leapfrog primitives in this TOPIC are not novelties. Each addresses a specific named weakness with a specific named primitive. The substrate ships the fix because it has the engineering surface (Rust + axum + maud + comrak + git2 + Tantivy under `app-mediakit-knowledge`) and the editorial discipline (the project-language gateway with the draft-research-trail-discipline mandate per Doctrine claim #39) to do so. Wikipedia structurally cannot — its codebase is 25 years old, its community-consensus governance has not achieved coalition for substantial article-shell change since 2012, and its labour model rewards new articles over revisions to existing structural infrastructure.
+The leapfrog primitives in this TOPIC are not novelties. Each addresses a specific named weakness with a specific named primitive. The substrate ships the fix because it has the engineering surface (Rust + axum + maud + comrak + git2 + Tantivy under `app-mediakit-knowledge`) and the editorial discipline (the project-language gateway with the draft-research-trail-discipline mandate per fundamental architectural invariants) to do so. Wikipedia structurally cannot — its codebase is 25 years old, its community-consensus governance has not achieved coalition for substantial article-shell change since 2012, and its labour model rewards new articles over revisions to existing structural infrastructure.
 
 ## Where Wikipedia's article shell is structurally weak
 
@@ -62,7 +62,7 @@ A reader can see at a glance whether the article is backed by academic and regul
 
 ### Research-trail footer block (first-class)
 
-A collapsible footer block below the References section, rendered when the article frontmatter declares `research_trail: true`. Three subsections per the draft-research-trail-discipline (Doctrine claim #39): Research done (sources consulted with status), Suggested research (next-leg open tasks), Open questions (claims requiring verification). Collapsed by default.
+A collapsible footer block below the References section, rendered when the article frontmatter declares `research_trail: true`. Three subsections per the draft-research-trail-discipline (fundamental architectural invariants): Research done (sources consulted with status), Suggested research (next-leg open tasks), Open questions (claims requiring verification). Collapsed by default.
 
 The trail is emitted as structured JSON-LD `potentialAction` nodes — `SearchAction` for suggested research, `Question` for open questions. LLM consumers identify the article's epistemic frontier without reading prose. This addresses weaknesses (viii) and (x) simultaneously.
 

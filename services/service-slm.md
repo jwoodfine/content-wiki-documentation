@@ -19,7 +19,7 @@ paired_with: service-slm.es.md
 
 **service-slm**, also called the Doorman, is the Ring 3 optional-intelligence boundary in the PointSav three-ring architecture. It is the only service that holds API keys for external AI providers. Every AI inference request from any other service routes through the Doorman, which selects among three compute tiers — Tier A local OLMo on the workspace VM, Tier B Yo-Yo GPU burst on multi-cloud, and Tier C external API calls to Anthropic, Google, or OpenAI — based on request shape and tenant budget caps. The Doorman enforces sanitise-outbound and rehydrate-inbound discipline so that customer-identifying details do not reach external providers in raw form. It writes a signed audit entry to the per-tenant ledger on every call, whether internal or external.
 
-## Overview
+## Architectural Baseline
 
 The Doorman acts as the air-lock for unstructured text entering the knowledge pipeline. Raw text arriving from Ring 1 services — emails, PDFs, form submissions — passes through service-slm before any structured facts are written to the knowledge graph. The service applies a Small Language Model to extract verifiable facts, formats them as clean Markdown, and closes the AI processing window before data continues downstream to Ring 2. This containment is the implementation of SYS-ADR-07: structured data never routes through AI.
 
@@ -37,7 +37,7 @@ The three compute tiers the Doorman routes across:
 
 Customers do not choose the tier. Request shape and budget caps determine routing automatically.
 
-## Architecture
+## Structural Organization of Components
 
 The Doorman enforces three invariants at every call boundary:
 
@@ -56,7 +56,6 @@ The Doorman is deployed as a systemd unit (`infrastructure/local-doorman/`) on t
 - Routing thresholds (conditions under which a request escalates from Tier A to Tier B or C)
 - Audit ledger path and rotation schedule
 
-See `infrastructure/local-doorman/` for the live systemd unit and `conventions/apprenticeship-substrate.md` for the routing-inversion (apprenticeship) configuration that runs on top of this service.
 
 ## See Also
 
@@ -68,7 +67,6 @@ See `infrastructure/local-doorman/` for the live systemd unit and `conventions/a
 
 ## References
 
-- DOCTRINE.md §XI — Three-ring architecture and three-tier compute routing
-- `conventions/apprenticeship-substrate.md` — routing inversion and verdict-signed training
+-  §XI — Three-ring architecture and three-tier compute routing
 - `infrastructure/local-doorman/` — systemd unit (live since workspace v0.1.13)
 - SYS-ADR-07 — structured data never routes through AI

@@ -96,7 +96,7 @@ The forward-looking framings in this section are *planned*, not *committed*. Cau
 
 The project-knowledge cluster *plans* to author bulk drafts of substantive TOPIC content covering the wiki engine itself, the substrate-native compatibility surface, and the launch milestone narrative. The project-language cluster *plans* to refine the legacy 30+ TOPIC corpus over a separate editorial pass, intended to produce a ratified content tree for which `--content-dir` *may* be swapped — producing a single material-change disclosure event rather than many.
 
-The wiki engine itself *plans* further development through Phases 4–8 (git2 commit-on-edit, history and blame, redb wikilink graph, federation seam, MCP server, OpenAPI 3.1, image handling, per-tenant shaping, disclosure-class linter). These plans *may* shift in response to operator decisions, customer requirements, or substrate-level doctrine changes. Material changes will be disclosed via signed commits and CHANGELOG entries.
+The wiki engine itself *plans* further development through Phases 4–8 (git2 commit-on-edit, history and blame, redb wikilink graph, federation seam, MCP server, OpenAPI 3.1, image handling, per-tenant shaping, disclosure-class linter). These plans *may* shift in response to operator decisions, customer requirements, or substrate-level doctrine changes. Material changes is planned to be disclosed via signed commits and CHANGELOG entries.
 
 ## See also
 

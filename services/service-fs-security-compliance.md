@@ -11,13 +11,13 @@ paired_with: service-fs-security-compliance.es.md
 
 # Service-FS Security and Compliance Posture
 
-`service-fs` is engineered to meet the highest international standards for immutable storage and data sovereignty. By implementing a structural WORM (Write-Once-Read-Many) architecture, Foundry provides a verifiable assurance that data records are non-rewriteable and non-erasable, satisfying the core requirements of global financial and trust regulations.
+`service-fs` is engineered to meet the highest international standards for immutable storage and data sovereignty. By implementing a structural {{gli|WORM}} (Write-Once-Read-Many) architecture, Foundry provides a verifiable assurance that data records are non-rewriteable and non-erasable, satisfying the core requirements of global financial and trust regulations.
 
 ## 1. Regulatory Alignment
 
 Foundry’s security posture is designed to satisfy multiple international regulatory frameworks:
 
-*   **SEC Rule 17a-4(f):** Foundry targets the strict "WORM path," structurally denying record modification. This exceeds the "Audit-Trail" alternative often used by cloud vendors to mask mutable underlying storage.
+*   **SEC Rule 17a-4(f):** Foundry targets the strict "{{gli|WORM}} path," structurally denying record modification. This exceeds the "Audit-Trail" alternative often used by cloud vendors to mask mutable underlying storage.
 *   **eIDAS (EU 2025/1946):** Aligns with Qualified Preservation standards by ensuring long-term integrity, authenticity, and accessibility "irrespective of future technological changes."
 *   **SOC 2 Trust Services Criteria:** Directly addresses Processing Integrity (PI1, PI4) through signed ingest and read-audit sub-ledgers, and Logical Access (CC6) via tenant-level isolation.
 

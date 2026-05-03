@@ -85,16 +85,16 @@ Low-cost choices made today smooth the transition to the end state. Hardcoded co
 
 The full system breaks into three layers.
 
-**Infrastructure.** Raw computing power. Physical servers, cloud instances, or dedicated hardware that provides CPU, memory, storage, and networking. In the end state, this layer runs a PointSav-built virtualization substrate called InfrastructureOS. In the MVP, it is cloud compute (GCP/AWS).
+**Infrastructure.** Raw computing power. Physical servers, cloud instances, or dedicated hardware that provides CPU, memory, storage, and networking. In the end state, this layer runs a PointSav-built virtualization substrate called [[InfrastructureOS]]. In the MVP, it is cloud compute (GCP/AWS).
 
-**Platform.** The operating systems themselves — the ToteboxOS archives (data vaults), the OrchestrationOS hubs, and the NetworkAdminOS that manages the network. These components run as kernel-isolated virtual machines on top of the infrastructure layer.
+**Platform.** The operating systems themselves — the [[ToteboxOS]] archives (data vaults), the [[OrchestrationOS]] hubs, and the [[NetworkAdminOS]] that manages the network. These components run as kernel-isolated virtual machines on top of the infrastructure layer.
 
-**Delivery.** The ConsoleOS — the software each operator uses at their desk. In the end state, each variant runs as its own virtual machine on the user's workstation. In the MVP, it is a browser-based Heads-Up Display served over the Private Network.
+**Delivery.** The [[ConsoleOS]] — the software each operator uses at their desk. In the end state, each variant runs as its own virtual machine on the user's workstation. In the MVP, it is a browser-based Heads-Up Display served over the Private Network.
 
 ```
 +--------------------------------------------------+
 |  DELIVERY LAYER                                  |
-|  ConsoleOS variants on operator workstations     |
+|  [[ConsoleOS]] variants on operator workstations     |
 |  (FKeysConsole, InputMachine, BIMConsole, etc.)  |
 +--------------------------------------------------+
                         |
@@ -102,26 +102,26 @@ The full system breaks into three layers.
                         |
 +--------------------------------------------------+
 |  PLATFORM LAYER                                  |
-|  ToteboxOS archives  (data)                      |
-|  OrchestrationOS hubs (logic)                    |
-|  NetworkAdminOS      (management)                |
+|  [[ToteboxOS]] archives  (data)                      |
+|  [[OrchestrationOS]] hubs (logic)                    |
+|  [[NetworkAdminOS]]      (management)                |
 +--------------------------------------------------+
                         |
                         | runs on
                         |
 +--------------------------------------------------+
 |  INFRASTRUCTURE LAYER                            |
-|  InfrastructureOS / GCP / AWS / on-prem servers  |
+|  [[InfrastructureOS]] / GCP / AWS / on-prem servers  |
 +--------------------------------------------------+
 ```
 
 ## The Licensing Boundary
 
-Single-archive use — one person, one Totebox Archive, one ConsoleOS — is completely free and open source. This is the Community Member path.
+Single-archive use — one person, one Totebox Archive, one [[ConsoleOS]] — is completely free and open source. This is the Community Member path.
 
-The moment you need to aggregate across multiple archives (for example, pulling together personnel records and property records for a project team), you need OrchestrationOS, which is proprietary software. This aggregation layer is how PointSav monetizes: it does not charge for private data storage, but it charges for the logic that connects multiple archives together.
+The moment you need to aggregate across multiple archives (for example, pulling together personnel records and property records for a project team), you need [[OrchestrationOS]], which is proprietary software. This aggregation layer is how PointSav monetizes: it does not charge for private data storage, but it charges for the logic that connects multiple archives together.
 
-This boundary is not just commercial — it is a design constraint. FOSS (free and open source) components must never contain proprietary logic. An independent developer should be able to run a Totebox Archive and a ConsoleOS variant for their own use without touching any proprietary code.
+This boundary is not just commercial — it is a design constraint. FOSS (free and open source) components must never contain proprietary logic. An independent developer should be able to run a Totebox Archive and a [[ConsoleOS]] variant for their own use without touching any proprietary code.
 
 ---
 
@@ -131,13 +131,13 @@ This boundary is not just commercial — it is a design constraint. FOSS (free a
 
 The platform is organized around five named components. These names are canonical — they appear in code, documentation, and conversation. Do not substitute synonyms.
 
-### ToteboxOS (Totebox Archives)
+### [[ToteboxOS]] (Totebox Archives)
 
-A ToteboxOS instance is a self-contained store for one specific asset. Think of it as a sealed filing cabinet that belongs entirely to one entity — a building, a company, or a person. Everything relating to that entity lives inside it: documents, records, and logs.
+A [[ToteboxOS]] instance is a self-contained store for one specific asset. Think of it as a sealed filing cabinet that belongs entirely to one entity — a building, a company, or a person. Everything relating to that entity lives inside it: documents, records, and logs.
 
-In the current phase, a ToteboxOS instance is a structured directory on a cloud server. In the end state, it is a minimal operating system — a unikernel — that runs as a virtual machine, boots from a disk image, and can be physically moved to another computer.
+In the current phase, a [[ToteboxOS]] instance is a structured directory on a cloud server. In the end state, it is a minimal operating system — a unikernel — that runs as a virtual machine, boots from a disk image, and can be physically moved to another computer.
 
-All data is stored as inert flat files (Markdown, YAML, CSV). Software engines are explicitly decoupled from the data they process. A `.yaml` file or a `.csv` ledger will be universally readable in 100 years, requiring zero proprietary software to decrypt or access.
+All data is stored as inert flat files (Markdown, YAML, CSV). Software engines are explicitly decoupled from the data they process. A `.yaml` file or a `.csv` ledger is planned to be universally readable in 100 years, requiring zero proprietary software to decrypt or access.
 
 There are three preset types of Totebox Archives:
 
@@ -149,15 +149,15 @@ There are three preset types of Totebox Archives:
 
 The anchor identifier is the universal key. A PersonnelArchive anchored to a SIN number ties together every record about that individual regardless of which system generated it.
 
-### OrchestrationOS (The Logic Hub)
+### [[OrchestrationOS]] (The Logic Hub)
 
-OrchestrationOS is a stateless layer — it holds no data of its own. Its job is to connect a ConsoleOS to one or more ToteboxOS archives and apply business logic to the combined result. It also provides the extended compute capacity that the base archive node cannot deliver — BIM rendering, GIS spatial analysis, SLM inference, and data warehouse operations all require OrchestrationOS capacity.
+[[OrchestrationOS]] is a stateless layer — it holds no data of its own. Its job is to connect a [[ConsoleOS]] to one or more [[ToteboxOS]] archives and apply business logic to the combined result. It also provides the extended compute capacity that the base archive node cannot deliver — BIM rendering, GIS spatial analysis, SLM inference, and data warehouse operations all require [[OrchestrationOS]] capacity.
 
-If a user only needs to view one archive, they can connect to it directly from their ConsoleOS. OrchestrationOS becomes necessary when they need to see across multiple archives simultaneously — for example, a project manager who needs to view both the building's records and the personnel records for the project team at the same time.
+If a user only needs to view one archive, they can connect to it directly from their [[ConsoleOS]]. [[OrchestrationOS]] becomes necessary when they need to see across multiple archives simultaneously — for example, a project manager who needs to view both the building's records and the personnel records for the project team at the same time.
 
 This aggregation function is the monetization boundary. The main variant used by Woodfine is the CommandCentre, which aggregates PersonnelArchives and CorporateArchives.
 
-Other OrchestrationOS variants include:
+Other [[OrchestrationOS]] variants include:
 
 | Variant | Purpose |
 |---|---|
@@ -169,13 +169,13 @@ Other OrchestrationOS variants include:
 | BuildingIDServer | Links digital archives to physical building identifiers |
 | JobShackServer | Construction project coordination |
 
-### ConsoleOS (The User Interface)
+### [[ConsoleOS]] (The User Interface)
 
-The ConsoleOS is what operators use at their desk. Each variant is purpose-built for a specific workflow and connects to a specific OrchestrationOS variant. In the current phase, these are browser-based Heads-Up Displays served via NGINX. In the end state, each variant runs as its own virtual machine on the user's workstation.
+The [[ConsoleOS]] is what operators use at their desk. Each variant is purpose-built for a specific workflow and connects to a specific [[OrchestrationOS]] variant. In the current phase, these are browser-based Heads-Up Displays served via NGINX. In the end state, each variant runs as its own virtual machine on the user's workstation.
 
 The primary variant is the FKeysConsole — a keyboard-driven interface where each function key activates a different context within the corporate record system. It is designed to be fast, keyboard-driven, and stable across backend upgrades.
 
-Other ConsoleOS variants:
+Other [[ConsoleOS]] variants:
 
 | Variant | Purpose |
 |---|---|
@@ -187,17 +187,17 @@ Other ConsoleOS variants:
 | BuildingPreferences | IoT device management and building state control |
 | SiteSuper | Construction site coordination |
 
-### InfrastructureOS (The Virtualization Substrate)
+### [[InfrastructureOS]] (The Virtualization Substrate)
 
-InfrastructureOS is the layer that physical hardware runs. It provides the virtualization environment for all other components — the CPU, memory, storage, and networking that ToteboxOS instances and OrchestrationOS hubs run on top of.
+[[InfrastructureOS]] is the layer that physical hardware runs. It provides the virtualization environment for all other components — the CPU, memory, storage, and networking that [[ToteboxOS]] instances and [[OrchestrationOS]] hubs run on top of.
 
 In the MVP phase, this is cloud compute (GCP/AWS). In the end state, it is a purpose-built PointSav operating system that can run on on-premises servers, leased dedicated servers, and public cloud simultaneously.
 
-### NetworkAdminOS (The Network Manager)
+### [[NetworkAdminOS]] (The Network Manager)
 
-NetworkAdminOS gives operators visibility and control over everything running in the Private Network. It maintains a registry of which components are paired to which — the MBA registry (see Part IV). It handles health monitoring, deployment status, and network isolation commands.
+[[NetworkAdminOS]] gives operators visibility and control over everything running in the Private Network. It maintains a registry of which components are paired to which — the MBA registry (see Part IV). It handles health monitoring, deployment status, and network isolation commands.
 
-The distinction from InfrastructureOS is worth emphasizing: InfrastructureOS is the substrate (like a server rack), while NetworkAdminOS is the management console (like the dashboard that shows you what is running in the rack).
+The distinction from [[InfrastructureOS]] is worth emphasizing: [[InfrastructureOS]] is the substrate (like a server rack), while [[NetworkAdminOS]] is the management console (like the dashboard that shows you what is running in the rack).
 
 ## The Canonical Naming Table
 
@@ -205,12 +205,12 @@ The table below lists canonical names and what NOT to substitute them with. Usin
 
 | Canonical Name | Do NOT Call It |
 |---|---|
-| ToteboxOS | ArchiveOS, VaultOS, DataNode |
-| OrchestrationOS | InterfaceOS, LogicLayer, AggregationService, MiddleTier |
-| ConsoleOS | ClientApp, Terminal, Frontend |
-| InfrastructureOS | HypervisorLayer, VMSubstrate |
-| NetworkAdminOS | MeshController, NodeManager |
-| ToteboxArchive | (generic name for any ToteboxOS instance with its data) |
+| [[ToteboxOS]] | ArchiveOS, VaultOS, DataNode |
+| [[OrchestrationOS]] | InterfaceOS, LogicLayer, AggregationService, MiddleTier |
+| [[ConsoleOS]] | ClientApp, Terminal, Frontend |
+| [[InfrastructureOS]] | HypervisorLayer, VMSubstrate |
+| [[NetworkAdminOS]] | MeshController, NodeManager |
+| [[ToteboxArchive]] | (generic name for any [[ToteboxOS]] instance with its data) |
 | PersonnelArchive | HRArchive, PeopleNode |
 | CorporateArchive | FinanceArchive, BusinessNode |
 | PropertyArchive | RealPropertyArchive, BuildingArchive, AssetNode |
@@ -237,13 +237,13 @@ This model is called **Pairing as Permission** and it is implemented through **M
 
 ## How It Works
 
-Every node in the network has a machine identity — a cryptographic certificate tied to that specific hardware instance. When two nodes are paired, they exchange cryptographic keys and register the pairing in the MBA registry maintained by NetworkAdminOS.
+Every node in the network has a machine identity — a cryptographic certificate tied to that specific hardware instance. When two nodes are paired, they exchange cryptographic keys and register the pairing in the MBA registry maintained by [[NetworkAdminOS]].
 
-From that point on, the question the system asks is not "Does this user have permission?" but rather "Is this ConsoleOS instance paired with this OrchestrationOS instance?" The answer is visible directly from the network topology.
+From that point on, the question the system asks is not "Does this user have permission?" but rather "Is this [[ConsoleOS]] instance paired with this [[OrchestrationOS]] instance?" The answer is visible directly from the network topology.
 
 **An example:** A project team needs access to two buildings and their associated staff records.
 
-1. Deploy one CommandCentre (OrchestrationOS) instance.
+1. Deploy one CommandCentre ([[OrchestrationOS]]) instance.
 2. Pair it to the two PropertyArchive instances for those buildings.
 3. Pair it to the PersonnelArchive instances for the team members.
 4. Pair each team member's FKeysConsole to the CommandCentre.
@@ -260,7 +260,7 @@ When designing any component that involves access control, the question to ask i
 
 Underneath the MBA model is a deeper principle: Capability-Based Security. In a conventional operating system, an application can often escalate its privileges if it finds a vulnerability — a compromised application can reach out and touch other parts of the system.
 
-In the PointSav architecture, each component holds a cryptographic capability token that specifies exactly which other components it is allowed to communicate with. An application cannot communicate with something it doesn't hold a capability for. If an edge node (such as the MediaKitOS web layer) is compromised, the attacker is trapped inside that node's memory sandbox. They hold no capabilities to reach the ToteboxOS vaults. The blast radius is physically contained.
+In the PointSav architecture, each component holds a cryptographic capability token that specifies exactly which other components it is allowed to communicate with. An application cannot communicate with something it doesn't hold a capability for. If an edge node (such as the [[MediaKitOS]] web layer) is compromised, the attacker is trapped inside that node's memory sandbox. They hold no capabilities to reach the [[ToteboxOS]] vaults. The blast radius is physically contained.
 
 The seL4 kernel is the reference point for this approach because it is the only operating system kernel whose security properties have been mathematically proven — not just tested, but formally verified using machine-checked mathematical proofs.
 
@@ -272,7 +272,7 @@ Because components are physically locked into isolated memory sectors, the syste
 
 The Snap (formally the IssuerSnap) is a verification mechanism that cross-checks records across multiple archives. It is used primarily for producing authenticated quarterly reports as required of Reporting Issuers (publicly-traded limited partnerships).
 
-The MediaKitOS pulls data from Corporate Archives (financial records) and Property Archives (property data), cross-references them against Personnel Archives (who is responsible for what), and generates a report whose data chain can be verified end-to-end. Each cross-reference uses the anchor identifiers described in Part III — a Corporate Archive references a person by their SIN, not by a local database ID.
+The [[MediaKitOS]] pulls data from Corporate Archives (financial records) and Property Archives (property data), cross-references them against Personnel Archives (who is responsible for what), and generates a report whose data chain can be verified end-to-end. Each cross-reference uses the anchor identifiers described in Part III — a Corporate Archive references a person by their SIN, not by a local database ID.
 
 ---
 
@@ -297,11 +297,11 @@ The `assets/` directory holds the physical files. The `ledger/` directory holds 
 
 ## The Freely Transferable Standard
 
-A ToteboxArchive must be exportable as a complete, self-contained package that a recipient can deploy on their own infrastructure without any proprietary runtime, vendor relationship, or platform subscription.
+A [[ToteboxArchive]] must be exportable as a complete, self-contained package that a recipient can deploy on their own infrastructure without any proprietary runtime, vendor relationship, or platform subscription.
 
-In the end state, this export artifact is a Bootable Disk Image — a virtual machine image file that boots on any standard hypervisor (bare metal, AWS, Azure, Google Cloud, Oracle Cloud).
+In the end state, this export artifact is a Bootable Disk Image — a virtual machine image file that boots on any standard hypervisor ({{gli|bare metal}}, AWS, Azure, Google Cloud, Oracle Cloud).
 
-**Important distinction:** A Docker container is NOT Freely Transferable. It requires Docker to run. A bootable disk image requires only a standard hypervisor, which is a universal commodity.
+**Important distinction:** A Docker {{gli|container}} is NOT Freely Transferable. It requires Docker to run. A bootable disk image requires only a standard hypervisor, which is a universal commodity.
 
 A practical example: When Woodfine sells a building, the entire history of that building — permits, contracts, IoT logs, maintenance records — lives in a PropertyArchive. The buyer receives a Bootable Disk Image of that archive. They boot it on their own infrastructure. The complete history is now under their control, with zero ongoing dependency on Woodfine's systems.
 
@@ -311,7 +311,7 @@ In the MVP phase, "Freely Transferable" means: no proprietary data formats, no v
 
 Because flat files cannot defend themselves — a rogue system administrator could silently edit a YAML file and backdate the change — PointSav enforces integrity at the filesystem level using SHA-256 checksums.
 
-When a physical asset (a PDF contract, an invoice, a compliance document) is stored in a ToteboxArchive, the system performs two simultaneous operations:
+When a physical asset (a PDF contract, an invoice, a compliance document) is stored in a [[ToteboxArchive]], the system performs two simultaneous operations:
 
 1. The file is placed in the `/assets/` vault with execution permissions stripped. It becomes an inert binary — software cannot run it, only read it.
 
@@ -319,11 +319,11 @@ When a physical asset (a PDF contract, an invoice, a compliance document) is sto
 
 A SHA-256 checksum is a mathematical fingerprint. If anyone changes even a single character in the original file — a number in a financial record, a date on a contract — the fingerprint no longer matches. Any auditor can independently re-run the checksum against the stored file and compare it to the one in the ledger. If they match, the document is verified. If they don't, the archive has been tampered with.
 
-This is the WORM principle — Write Once, Read Many. Once a record enters cold storage, it is mathematically sealed.
+This is the {{gli|WORM}} principle — Write Once, Read Many. Once a record enters cold storage, it is mathematically sealed.
 
 ## Cryptographic Payload Attestation
 
-For public-facing content (such as investor disclosures served through MediaKitOS), the system extends the integrity model to the browser. The JavaScript engine reads the visible text on screen, computes a SHA-256 hash using the browser's native `crypto.subtle.digest` API, and displays the resulting fingerprint live in the interface sidebar. Any institutional investor or auditor can independently copy the text, run their own hash, and verify it matches — proving the disclosure has not been tampered with in transit. This operation occurs 100% client-side with zero server execution.
+For public-facing content (such as investor disclosures served through [[MediaKitOS]]), the system extends the integrity model to the browser. The JavaScript engine reads the visible text on screen, computes a SHA-256 hash using the browser's native `crypto.subtle.digest` API, and displays the resulting fingerprint live in the interface sidebar. Any institutional investor or auditor can independently copy the text, run their own hash, and verify it matches — proving the disclosure has not been tampered with in transit. This operation occurs 100% client-side with zero server execution.
 
 ## The Replacement Programme
 
@@ -337,9 +337,9 @@ When the native replacement reaches parity, it physically replaces the quarantin
 
 # Part VI: The Data Pipeline — How Information Flows
 
-## Overview
+## Architectural Baseline
 
-The data pipeline describes how information from the outside world — primarily email — enters the ToteboxArchive system, gets processed, and becomes queryable corporate knowledge. This is the first implemented pipeline; additional service pipelines will be developed as the platform matures. There are seven named components in this pipeline.
+The data pipeline describes how information from the outside world — primarily email — enters the [[ToteboxArchive]] system, gets processed, and becomes queryable corporate knowledge. This is the first implemented pipeline; additional service pipelines is planned to be developed as the platform matures. There are seven named components in this pipeline.
 
 ```
  +================================+
@@ -464,15 +464,15 @@ This is the "point-in-time execution" model. It prevents two failure modes that 
 
 | Path | What the operator does | PointSav's role |
 |---|---|---|
-| No AI | Run ToteboxOS at base tier. Full WORM compliance and search with zero AI dependency. | None required |
+| No AI | Run [[ToteboxOS]] at base tier. Full {{gli|WORM}} compliance and search with zero AI dependency. | None required |
 | DIY via Doorman | Install `service-slm` and wire any external AI model to the gateway protocol independently. | Provides the open-source doorman standard only |
-| Packaged product | Deploy `app-orchestration-slm` on OrchestrationOS. PointSav provides a packaged, pre-configured open-source model ready to run. | Packaging, configuration, and integration |
+| Packaged product | Deploy `app-orchestration-slm` on [[OrchestrationOS]]. PointSav provides a packaged, pre-configured open-source model ready to run. | Packaging, configuration, and integration |
 
 ## service-people — The Personnel Ledger
 
 The personnel ledger maintains the master contact database for the organization. It stores unique identifiers (SIN or Passport ID as the anchor), contact states, and communication history for every person in the corporate network.
 
-It operates as a deterministic flat-file engine — a JSON-based state machine rather than a conventional database. It processes queries and updates from authorized execution adapters (the ConsoleOS F2 key interface) and executes read/write operations against the stored files.
+It operates as a deterministic flat-file engine — a JSON-based state machine rather than a conventional database. It processes queries and updates from authorized execution adapters (the [[ConsoleOS]] F2 key interface) and executes read/write operations against the stored files.
 
 ## service-content — The Knowledge Graph
 
@@ -515,7 +515,7 @@ This design keeps client-specific operational data (credentials, target URLs) ou
 
 ## The Command Ledger
 
-The operator's primary interface is the Command Ledger — accessible at `console.woodfinegroup.com`. It is built as a Heads-Up Display (HUD): a window that routes data between the operator and the underlying archives, not a destination in itself (SYS-ADR-18). The ConsoleOS is explicitly not a "web app" — it is a routing terminal.
+The operator's primary interface is the Command Ledger — accessible at `console.woodfinegroup.com`. It is built as a Heads-Up Display (HUD): a window that routes data between the operator and the underlying archives, not a destination in itself (SYS-ADR-18). The [[ConsoleOS]] is explicitly not a "web app" — it is a routing terminal.
 
 The HUD exposes three layers of the Derivative Architecture:
 
@@ -545,7 +545,7 @@ This Zero-Form design eliminates the overhead of navigating through nested menus
 
 ## The Verification Airgap (Git for Knowledge)
 
-The ConsoleOS operates with a Git-like Checkout/Commit model for institutional knowledge (SYS-ADR-19). This is designed to prevent automated AI systems from silently publishing hallucinated content to verified corporate ledgers.
+The [[ConsoleOS]] operates with a Git-like Checkout/Commit model for institutional knowledge (SYS-ADR-19). This is designed to prevent automated AI systems from silently publishing hallucinated content to verified corporate ledgers.
 
 **Checkout:** The F8 Command Ledger presents AI-staged "Overlays" — draft content the system has prepared. Operators physically eject (checkout) the raw Markdown/JSON drafts to their local, air-gapped desktop for native editing.
 
@@ -555,7 +555,7 @@ Automated AI publishing to verified ledgers is mathematically forbidden. The Tot
 
 ## Micro-Frontend Cartridge Architecture
 
-The ConsoleOS is built as a strict two-part system (SYS-ADR-11):
+The [[ConsoleOS]] is built as a strict two-part system (SYS-ADR-11):
 
 **The Chassis** (os-console): An empty picture frame. It holds the global stylesheet, the F-key routing logic, and the Machine-Based Authorization parameters. It contains zero business data and zero application logic. It does not know what a PersonnelArchive is.
 
@@ -622,20 +622,20 @@ The full fleet deployment directory maps to the following roles:
 
 | Directory | Type | Purpose |
 |---|---|---|
-| cluster-totebox-corporate | ToteboxOS | CorporateArchive: financial records, minute books, ledgers |
-| cluster-totebox-personnel | ToteboxOS | PersonnelArchive: contacts, identity records |
-| cluster-totebox-property | ToteboxOS | PropertyArchive: properties, permits, BIM |
-| fleet-infrastructure-cloud | InfrastructureOS | Cloud compute nodes |
-| fleet-infrastructure-leased | InfrastructureOS | Dedicated leased server nodes |
-| fleet-infrastructure-onprem | InfrastructureOS | On-premises hardware nodes |
-| gateway-interface-command | OrchestrationOS | CommandCentre: aggregates archives for administration |
-| media-knowledge-corporate | MediaKitOS | Corporate knowledge wiki |
-| media-knowledge-distribution | MediaKitOS | Distribution / newsroom |
-| media-knowledge-projects | MediaKitOS | Projects wiki |
-| media-marketing-landing | MediaKitOS | Public-facing marketing site |
-| node-console-operator | ConsoleOS | FKeysConsole operator terminal |
-| route-network-admin | NetworkAdminOS | PPN management and MBA registry |
-| vault-privategit-source | PrivateGitOS | Air-gapped version control |
+| cluster-totebox-corporate | [[ToteboxOS]] | CorporateArchive: financial records, minute books, ledgers |
+| cluster-totebox-personnel | [[ToteboxOS]] | PersonnelArchive: contacts, identity records |
+| cluster-totebox-property | [[ToteboxOS]] | PropertyArchive: properties, permits, BIM |
+| fleet-infrastructure-cloud | [[InfrastructureOS]] | Cloud compute nodes |
+| fleet-infrastructure-leased | [[InfrastructureOS]] | Dedicated leased server nodes |
+| fleet-infrastructure-onprem | [[InfrastructureOS]] | On-premises hardware nodes |
+| gateway-interface-command | [[OrchestrationOS]] | CommandCentre: aggregates archives for administration |
+| media-knowledge-corporate | [[MediaKitOS]] | Corporate knowledge wiki |
+| media-knowledge-distribution | [[MediaKitOS]] | Distribution / newsroom |
+| media-knowledge-projects | [[MediaKitOS]] | Projects wiki |
+| media-marketing-landing | [[MediaKitOS]] | Public-facing marketing site |
+| node-console-operator | [[ConsoleOS]] | FKeysConsole operator terminal |
+| route-network-admin | [[NetworkAdminOS]] | PPN management and MBA registry |
+| vault-privategit-source | [[PrivateGitOS]] | Air-gapped version control |
 
 ---
 
@@ -757,7 +757,7 @@ Architecture Decision Records (ADRs) are formal commitments to specific design c
 
 **The decision:** These are two physically separate systems that serve completely different purposes.
 
-- `service-email` is the **Compliance Layer**: an immutable WORM (Write Once, Read Many) archive of every raw email received. It is a legal record. It is mathematically forbidden from modification.
+- `service-email` is the **Compliance Layer**: an immutable {{gli|WORM}} (Write Once, Read Many) archive of every raw email received. It is a legal record. It is mathematically forbidden from modification.
 - `service-content` is the **Intelligence Layer**: a self-healing knowledge graph that continuously updates as new information arrives. Old facts are replaced with current truths to give the AI a clean, accurate picture of the present.
 - `service-slm` is the **Bridge**: it reads the compliance layer, extracts the intelligence, and writes exclusively to the intelligence layer. The bridge only flows in one direction.
 
@@ -782,13 +782,13 @@ All inbound compound files (e.g., MIME multipart .eml files) must be vaulted in 
 
 **The decision:** `systemd` is formally classified as a Quarantined Foreign Component — a piece of technical debt that is accepted temporarily. It is used for the 5-second automated ingestion loops because removing it from Debian would cause a system failure. It is not used for anything beyond basic process supervision.
 
-**The implication:** Do not add new `systemd` integrations. Do not rely on `systemd` for any function beyond basic process management. When the cloud relays are migrated to a FreeBSD substrate or native seL4, `systemd` will be replaced with minimalist text-based supervision (rc.d or runit).
+**The implication:** Do not add new `systemd` integrations. Do not rely on `systemd` for any function beyond basic process management. When the cloud relays are migrated to a FreeBSD substrate or native seL4, `systemd` is planned to be replaced with minimalist text-based supervision (rc.d or runit).
 
 ## SYS-ADR-10: The Fiduciary Anchor (F12 Input Machine)
 
 **The problem:** Fully automated AI categorization of documents is a fiduciary liability. If an AI autonomously assigns a source document to the wrong account in the Chart of Accounts, every downstream calculation, report, and compliance record built on that document is wrong. By the time the error is discovered, it may have propagated through years of records.
 
-**The decision:** The F12 Input Machine is the mandatory human checkpoint for all base asset ingestion. The human operator must manually select three things before any document enters cold storage: (1) the destination ToteboxArchive, (2) the Totebox Service, and (3) the Chart of Accounts category.
+**The decision:** The F12 Input Machine is the mandatory human checkpoint for all base asset ingestion. The human operator must manually select three things before any document enters cold storage: (1) the destination [[ToteboxArchive]], (2) the Totebox Service, and (3) the Chart of Accounts category.
 
 The SLM may silently suggest a classification while the operator reviews the document. It is strictly forbidden from executing the commit. The human must physically authorize the ledger entry.
 
@@ -798,7 +798,7 @@ The SLM may silently suggest a classification while the operator reviews the doc
 
 **The problem:** A monolithic user interface becomes increasingly fragile as it grows. A bug in one feature can break an unrelated feature. Deploying a small update requires re-deploying and re-testing the entire interface.
 
-**The decision:** The ConsoleOS is split into two physically separate components:
+**The decision:** The [[ConsoleOS]] is split into two physically separate components:
 
 - **The Chassis** (`os-console`): A static shell with no business logic. It holds the layout, routing rules, and authentication parameters. When an operator presses an F-key, the Chassis fetches the corresponding Cartridge.
 - **The Cartridges** (`app-console-*`): Isolated fragments of HTML and JavaScript. Each Cartridge is self-contained and knows nothing about the broader system. The Chassis mounts them on demand using the native browser `fetch()` API.
@@ -861,7 +861,7 @@ The SLM may silently suggest a classification while the operator reviews the doc
 - F3 Email / F2 People: Querying the Index (First Derivative, output as CSV Index Cards)
 - F4 Drafting: Forging the Third Derivative (output as Markdown files)
 
-**The implication:** The ConsoleOS is not a destination. It is a routing terminal. All outputs are physical files dropped to the operator's desktop.
+**The implication:** The [[ConsoleOS]] is not a destination. It is a routing terminal. All outputs are physical files dropped to the operator's desktop.
 
 ## SYS-ADR-19: The Verification Airgap (Git for Knowledge)
 
@@ -926,7 +926,7 @@ None of this requires over-engineering today. It requires awareness: choosing an
 
 | Term | Plain-Language Definition |
 |---|---|
-| Archive Preset | One of three standard ToteboxArchive configurations: PersonnelArchive, CorporateArchive, or PropertyArchive. Each is pre-loaded with the right services for its asset type. |
+| Archive Preset | One of three standard [[ToteboxArchive]] configurations: PersonnelArchive, CorporateArchive, or PropertyArchive. Each is pre-loaded with the right services for its asset type. |
 | Assignment | What PointSav calls a task or work ticket. Assignments must compile and function before they are considered complete. |
 | Base Asset | The raw, immutable original file — an email (.eml), a contract (.pdf), a spreadsheet (.xlsx). Stored in cold storage via F12. Cannot be altered after entry. |
 | BIM | Building Information Modelling. A digital 3D representation of a physical building that includes structural, mechanical, and spatial data. |
@@ -935,56 +935,56 @@ None of this requires over-engineering today. It requires awareness: choosing an
 | Cartridge | An isolated HTML/JS micro-frontend fragment loaded into the Console OS Chassis on demand via fetch(). Each cartridge is self-contained and unaware of the broader system (SYS-ADR-11). |
 | Chart of Accounts | A structured list of financial and operational categories used to classify every document and transaction. Requires Executive override to change (update rate: 18-24 months). |
 | Chassis | The empty UI frame (os-console) holding CSS, F-Key routing, and MBA parameters. Contains zero business data. The "picture frame" into which Cartridges are mounted (SYS-ADR-11). |
-| CommandCentre | The primary OrchestrationOS variant. Aggregates PersonnelArchives and CorporateArchives for administrative use. |
-| ConsoleOS | The user-facing delivery layer. Each variant is a purpose-built interface for a specific workflow. |
+| CommandCentre | The primary [[OrchestrationOS]] variant. Aggregates PersonnelArchives and CorporateArchives for administrative use. |
+| [[ConsoleOS]] | The user-facing delivery layer. Each variant is a purpose-built interface for a specific workflow. |
 | Contributor | A PointSav developer or designer. Individual contributors, not agency teams. |
 | Control Valve | One of four CSV ledgers (Archetypes, Chart of Accounts, Domains, Themes) governing the self-healing speed of service-content. Each updates at a different rate to preserve longitudinal data stability. |
-| CorporateArchive | A ToteboxArchive for a legal entity. Anchored to a Business Incorporation Number or Tax ID. Contains financial records, minute books, and statutory ledgers. |
+| CorporateArchive | A [[ToteboxArchive]] for a legal entity. Anchored to a Business Incorporation Number or Tax ID. Contains financial records, minute books, and statutory ledgers. |
 | CostingEmail | What PointSav calls a statement of work or work order. The commercial document that defines an assignment. |
-| Customer | An organization that pays for institutional-scale Totebox Orchestration using proprietary OrchestrationOS components. |
+| Customer | An organization that pays for institutional-scale Totebox Orchestration using proprietary [[OrchestrationOS]] components. |
 | DARP | Data Access and Retention Protocol. The compliance standard governing how data must be stored, accessed, and retained. Requires data to be searchable without proprietary software. |
 | Derivative Architecture | The three-tier data model: Base Assets (ground truth) -> First Derivative (indexed knowledge) -> Third Derivative (generated outputs). Defined in SYS-ADR-17. |
 | DiodeStandard | The one-way command flow principle. Data moves in one direction only: from source to destination. No reverse channel. Applies to both the telemetry pull and the overall security architecture. |
 | F-Key | A hardware function key on the keyboard that activates a specific context in the FKeysConsole. F2 = People, F3 = Email, F4 = Drafting, F8 = Network, F12 = Input Machine. |
 | First Derivative | The processed, self-healing knowledge graph derived from Base Assets by service-slm. Contains the organization's current operational reality in a clean, queryable form. Governed by the four Control Valves. |
-| FKeysConsole | The primary ConsoleOS variant for administrative work. A keyboard-driven HUD where each function key activates a different layer of the Derivative Architecture (SYS-ADR-18). |
-| Freely Transferable | The non-negotiable standard that every ToteboxArchive must be exportable as a complete, self-contained package deployable without proprietary runtimes or vendor relationships. |
+| FKeysConsole | The primary [[ConsoleOS]] variant for administrative work. A keyboard-driven HUD where each function key activates a different layer of the Derivative Architecture (SYS-ADR-18). |
+| Freely Transferable | The non-negotiable standard that every [[ToteboxArchive]] must be exportable as a complete, self-contained package deployable without proprietary runtimes or vendor relationships. |
 | GeneralStaff | The Woodfine employees who use the platform for daily operations. |
 | Geometric Security | Peter Woodfine's term for the Machine-Based Authorization model. The topology of the network defines the access control. |
 | GIS | Geographic Information System. Software for capturing, storing, and analyzing spatial and geographic data. |
-| InfrastructureOS | The virtualization substrate. The operating system that physical hardware runs. Provides the environment for all other components. |
-| OrchestrationOS | The stateless logic and compute layer. Holds no data. Connects ConsoleOS terminals to one or more ToteboxArchives and provides extended compute capacity for BIM, GIS, SLM, and data warehouse operations. Required for multi-archive use cases (the monetization boundary). |
+| [[InfrastructureOS]] | The virtualization substrate. The operating system that physical hardware runs. Provides the environment for all other components. |
+| [[OrchestrationOS]] | The stateless logic and compute layer. Holds no data. Connects [[ConsoleOS]] terminals to one or more ToteboxArchives and provides extended compute capacity for BIM, GIS, SLM, and data warehouse operations. Required for multi-archive use cases (the monetization boundary). |
 | Inverted Index | A search structure where each word in a corpus maps to a list of files containing that word — like the index at the back of a textbook. Enables microsecond search without a running database. |
-| IoTConnect | An OrchestrationOS variant that bridges IoT sensor data into the ToteboxArchive system. |
+| IoTConnect | An [[OrchestrationOS]] variant that bridges IoT sensor data into the [[ToteboxArchive]] system. |
 | IssuerSnap | See: TheSnap. |
 | Machine-Based Authorization (MBA) | A security model where access is granted through cryptographic hardware pairing between machines, not through usernames and passwords. |
-| MediaKitOS | The web framework and CMS layer for public-facing web properties and Reporting Issuers' disclosure obligations. |
+| [[MediaKitOS]] | The web framework and CMS layer for public-facing web properties and Reporting Issuers' disclosure obligations. |
 | Minute Book | The corporate governance record required by law for any incorporated entity. Records resolutions, meetings, and structural changes of the corporation. |
 | Moonshot | An engineering initiative to build a native replacement for a quarantined third-party dependency. Named `moonshot-*` in the codebase. Prohibited from production until parity is achieved. |
-| NetworkAdminOS | The management layer for the Private Network. Maintains the MBA registry, monitors node health, and provides fleet control interfaces. |
+| [[NetworkAdminOS]] | The management layer for the Private Network. Maintains the MBA registry, monitors node health, and provides fleet control interfaces. |
 | Operator | Someone who manages a ToteboxOrchestration at the infrastructure level. Distinct from an Owner (who owns the archives). |
 | Owner | The entity that owns the ToteboxArchives. Distinct from the Operator who administers them. |
 | PairingAsPermission | The core security principle: access is determined by which machines are cryptographically paired to which, not by user credentials or role assignments. |
-| PersonnelArchive | A ToteboxArchive for an individual person. Anchored to a SIN (Social Insurance Number) or Passport ID. Contains professional network records, identity data, and communication history. |
+| PersonnelArchive | A [[ToteboxArchive]] for an individual person. Anchored to a SIN (Social Insurance Number) or Passport ID. Contains professional network records, identity data, and communication history. |
 | PointSav Private Network (PPN) | The encrypted mesh network connecting all fleet nodes. Runs over WireGuard. The master routing node resides on the Executive's physical desk (SYS-ADR-13). |
-| PrivateGitOS | The self-hosted version control system. Preferred on-premises for physical IP possession. |
+| [[PrivateGitOS]] | The self-hosted version control system. Preferred on-premises for physical IP possession. |
 | RAG | Retrieval-Augmented Generation. An AI technique where a model is given relevant context documents before generating a response, rather than relying solely on its training data. |
-| PropertyArchive | A ToteboxArchive for a physical property. Anchored to a Land Title PIN or legal address. Contains permits, lifecycle records, BIM drawings, IoT data, lease register, and maintenance history. |
+| PropertyArchive | A [[ToteboxArchive]] for a physical property. Anchored to a Land Title PIN or legal address. Contains permits, lifecycle records, BIM drawings, IoT data, lease register, and maintenance history. |
 | Reporting Issuer | A publicly-traded limited partnership that is required by securities law to disclose financial and operational information to investors on a regular schedule. Woodfine LPs are Reporting Issuers. |
-| seL4 | A mathematically proven microkernel. The seL4 security properties have been formally verified using machine-checked mathematical proofs — not just tested but proven. Reference point for the ToteboxOS kernel. |
+| seL4 | A mathematically proven microkernel. The seL4 security properties have been formally verified using machine-checked mathematical proofs — not just tested but proven. Reference point for the [[ToteboxOS]] kernel. |
 | ServiceProvider | External professionals (lawyers, accountants, architects, trades) who interact with the organization. |
 | SLM | Small Language Model. A compact AI model (sub-one-billion parameters) that runs entirely on the organization's own hardware. Used for text extraction and AI routing. Operates as a point-in-time process that terminates after execution. |
 | Verification Airgap | A Git-like Checkout/Commit workflow for institutional knowledge. Operators check out AI-staged drafts to their local desktop, verify them, and commit back via F12. Automated AI publishing to verified ledgers is forbidden (SYS-ADR-19). |
 | TheSnap | The cross-archive integrity verification mechanism. Pulls verified data from Corporate and Property Archives, cross-references against Personnel Archives, and generates authenticated quarterly reports. Used for Reporting Issuer compliance. |
 | Third Derivative | Generated outputs synthesized from the First Derivative: drafts, memos, reports, CSV exports for data markets. |
-| ToteboxArchive | A self-contained data store for one specific asset. Contains both the data and the services that process it. The unit of ownership, backup, and export. |
-| ToteboxOrchestration | A complete, interconnected deployment of all platform components — ToteboxOS archives, OrchestrationOS hubs, ConsoleOS terminals, and NetworkAdminOS. |
-| ToteboxOS | The operating system of a ToteboxArchive. In the end state, a unikernel running as a kernel-isolated virtual machine. |
+| [[ToteboxArchive]] | A self-contained data store for one specific asset. Contains both the data and the services that process it. The unit of ownership, backup, and export. |
+| ToteboxOrchestration | A complete, interconnected deployment of all platform components — [[ToteboxOS]] archives, [[OrchestrationOS]] hubs, [[ConsoleOS]] terminals, and [[NetworkAdminOS]]. |
+| [[ToteboxOS]] | The operating system of a [[ToteboxArchive]]. In the end state, a unikernel running as a kernel-isolated virtual machine. |
 | Unikernel | A minimal operating system containing only the kernel, the libraries, and the application code needed for one specific purpose. No shell, no package manager, no multi-user support. Fast to boot, tiny attack surface. |
 | Vendor-* | Quarantined third-party dependencies. Isolated in their own directories. Tracked as technical debt with corresponding moonshot replacements. |
 | Verification Surveyor | The human-in-the-loop checkpoint for identity records. Operators verify extracted person records using their own browser. Throttled to 10 verifications per day to ensure quality. |
-| WorkplaceOS | A Linux-based desktop environment for General Staff. Separate from Totebox Orchestration. The alternative delivery path for users who prefer a full desktop OS over running ConsoleOS as a virtual machine. |
-| WORM | Write Once, Read Many. A data storage principle where records cannot be modified after they are written. The compliance archive (service-email) is WORM. Enforced by SHA-256 cryptographic checksums. |
+| WorkplaceOS | A Linux-based desktop environment for General Staff. Separate from Totebox Orchestration. The alternative delivery path for users who prefer a full desktop OS over running [[ConsoleOS]] as a virtual machine. |
+| {{gli|WORM}} | Write Once, Read Many. A data storage principle where records cannot be modified after they are written. The compliance archive (service-email) is {{gli|WORM}}. Enforced by SHA-256 cryptographic checksums. |
 | WireGuard | An open-source VPN protocol used to create the encrypted tunnels of the PointSav Private Network. Operates as a Layer-3 point-to-point tunnel (SYS-ADR-16). |
 | WoodfineLP | A limited partnership within the Woodfine Capital Projects network. These are the Reporting Issuers subject to securities disclosure requirements. |
 | Zero-Form | UI paradigm rejecting traditional web forms. Data entry via file drop, queries via natural language, outputs as physical files to the desktop. The operator works at the speed of language, not at the speed of a form wizard. |
@@ -1003,7 +1003,7 @@ None of this requires over-engineering today. It requires awareness: choosing an
 - **Added**: 4-tier telemetry routing model in Part IX Telemetry Operations
 - **Added**: Glossary entries for Cartridge, Chassis, Control Valve, Sovereign Airgap, Zero-Form with ADR cross-references
 - **Changed**: Technical Debt Ledger in Part XI updated to match actual monorepo vendor-*/moonshot-* directories (11 entries vs previous 5)
-- **Changed**: ConsoleOS description updated from "Linux applications" to "browser-based HUD" to align with SYS-ADR-18 and implementation
+- **Changed**: [[ConsoleOS]] description updated from "Linux applications" to "browser-based HUD" to align with SYS-ADR-18 and implementation
 - **Changed**: SYS-ADR-07 entry expanded to include forensic chain of custody rule (raw files vaulted before extraction)
 - **Changed**: MBA shim noted as active workspace crate (system-mba-shim) providing conventional auth behind clean interface
 - **Changed**: Verification Surveyor section expanded with API-avoidance rationale from topic-verification-surveyor.md

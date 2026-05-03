@@ -11,11 +11,11 @@ paired_with: fs-anchor-emitter.es.md
 
 # FS Anchor Emitter Configuration Guide
 
-The `fs-anchor-emitter` is the component responsible for generating signed checkpoints of the WORM ledger and preparing them for external anchoring. This guide details the setup and operational requirements for ensuring ledger integrity across both Vendor (Foundry) and Customer (Totebox) environments.
+The `fs-anchor-emitter` is the component responsible for generating signed checkpoints of the {{gli|WORM}} ledger and preparing them for external anchoring. This guide details the setup and operational requirements for ensuring ledger integrity across both Vendor (Foundry) and Customer (Totebox) environments.
 
 ## Overview of Operation
 
-The emitter operates at Layer 4 of the WORM stack. It periodically reads the latest state of the per-tenant tile tree, generates a `signed-note` checkpoint, and stores it in the authoritative `$FS_LEDGER_ROOT/<moduleId>/checkpoint` file. These checkpoints are then consumed by the monthly workspace anchoring process to be posted to the Sigstore Rekor transparency log.
+The emitter operates at Layer 4 of the {{gli|WORM}} stack. It periodically reads the latest state of the per-tenant tile tree, generates a `signed-note` checkpoint, and stores it in the authoritative `$FS_LEDGER_ROOT/<moduleId>/checkpoint` file. These checkpoints are then consumed by the monthly workspace anchoring process to be posted to the Sigstore Rekor transparency log.
 
 ## Configuration Requirements
 

@@ -18,7 +18,7 @@ Each article describes one service: its purpose, its position in the ring struct
 
 ## Articles in this category
 
-- [[service-email]] — The Ring 1 ingest service for email: MCP interface, per-tenant isolation, and the WORM-ledger write path.
+- [[service-email]] — The Ring 1 ingest service for email: MCP interface, per-tenant isolation, and the {{gli|WORM}}-ledger write path.
 - [[service-extraction]] — The Ring 2 extraction service: deterministic parsing, structured-record production, and the service-content write path.
 - [[service-people]] — The Ring 1 identity and contacts ingest service: person records, role assignments, and tenant scoping.
 - [[service-search]] — The Ring 2 full-text search service: Tantivy index, per-tenant sharding, and query API.

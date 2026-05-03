@@ -17,14 +17,14 @@ PointSav digital systems are engineered for absolute data sovereignty, utilizing
 
 Foundry strictly prohibits the use of tracking cookies, persistent local storage tracking, and third-party analytics integrations. This posture eliminates the legal requirement for intrusive cookie consent banners, providing a cleaner and more focused user experience.
 
-## 2. Actionable Intelligence via IP Masking
+## 2. Geospatial Anonymization Protocol
 
 Operational metrics are gathered exclusively through a First-Party Ping Architecture. This system converts network metadata into anonymized geospatial data without retaining PII:
 
 *   **Mandatory IP Masking:** The ingestion server instantly drops the final octet of the incoming IP address (e.g., `192.168.1.45` becomes `192.168.1.0`).
 *   **Anonymized Auditing:** Interaction data—such as document downloads—is used strictly to map deal velocity and platform friction, ensuring compliance while maintaining infrastructure security.
 
-## 3. Mandatory Disclosure Posture
+## 3. Mandatory Regulatory Disclosure
 
 All public-facing interfaces are required to append the following disclosure to their legal blocks:
 

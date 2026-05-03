@@ -19,7 +19,7 @@ paired_with: service-people.es.md
 
 **service-people** is a Ring 1 boundary-ingest service in the PointSav three-ring architecture. It acts as the centralized contact database for the enterprise, storing unique identifiers, contact states, and communication ledgers for every known contact. The service uses a flat-file JSON state machine rather than a centralized database cluster, which keeps the contact data portable across infrastructure changes and makes the ledger natively compatible with future local intelligence model training without schema fracturing.
 
-## Overview
+## Architectural Baseline
 
 Every communication that enters through Ring 1 carries sender identity. service-people receives sender-identity records from service-extraction and maintains a persistent, queryable ledger of known contacts. Because the ledger is a flat-file JSON structure rather than a relational or document database, it can be copied, audited, and inspected with standard filesystem tools and does not require a running database process to remain readable.
 
@@ -27,7 +27,7 @@ Every communication that enters through Ring 1 carries sender identity. service-
 
 service-people occupies **Ring 1 — Boundary Ingest** in the three-ring architecture. Ring 1 services are per-tenant and implement an MCP (Model Context Protocol) server interface. service-people's role within Ring 1 is to maintain identity state: as communications arrive through service-email and other Ring 1 channels, service-people receives the parsed sender records from service-extraction and updates the contact ledger accordingly. Downstream Ring 2 services query service-people to enrich content with known contact context.
 
-## Architecture
+## Structural Organization of Components
 
 The service enforces the DS-ADR-02 flat-file standard, which rejects centralized database clusters in favour of a verifiable JSON flat-file state machine. The design choices that follow from this standard:
 
@@ -55,6 +55,6 @@ The service operates as a CLI tool. It exposes strictly defined query and update
 
 ## References
 
-- DOCTRINE.md §XI — Ring 1 boundary-ingest architecture and MCP server interface
+-  §XI — Ring 1 boundary-ingest architecture and MCP server interface
 - `pointsav-monorepo/service-people/` — implementation crate
 - DS-ADR-02 — flat-file state machine standard (files over databases)

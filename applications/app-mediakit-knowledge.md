@@ -23,11 +23,9 @@ references:
   - https://www.jsonfeed.org/version/1.1/
   - https://llmstxt.org/
   - https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style/Layout
-  - DOCTRINE.md claim #29 (Substrate Substitution)
-  - DOCTRINE.md claim #31 (Constitutional Constrained Author)
-  - DOCTRINE.md claim #16 (Optional Intelligence Layer)
-  - conventions/disclosure-substrate.md
-  - conventions/three-ring-architecture.md
+  - 
+  - 
+  - 
 ---
 
 `app-mediakit-knowledge` is the wiki engine that serves PointSav's engineering documentation at `https://documentation.pointsav.com`. The engine is a single-binary Rust service composed of an `axum` HTTP server, a `comrak` CommonMark renderer with PointSav-specific extensions for wikilinks, footnotes, table of contents, and section anchors, a `tantivy` full-text search backend, and a `maud` templating layer that ships four article templates and static-asset bundles. The engine reads markdown files from a content directory the operator names at startup, renders them on demand into HTML, and returns them with caching headers tuned for a documentation audience.
@@ -92,7 +90,7 @@ What was added beyond Wikipedia:
 - Citation badges next to inline `[citation-id]` references, with hover-card showing the registry entry
 - Forward-Looking-Information cautionary banner when an article's frontmatter sets `forward_looking: true`
 - BCSC `disclosure_class` field rendered in JSON-LD (not visible in default chrome)
-- Information Verifiability Citation (IVC) masthead band placeholder (Phase 7 will provide the verification machinery)
+- Information Verifiability Citation (IVC) masthead band placeholder (Phase 7 is intended to provide the verification machinery)
 - Reader density toggle (compact / comfortable; settings persist client-side)
 
 The chrome is implemented in four `maud` HTML templates and a CSS bundle that tracks Vector 2022's spacing and typography rather than its colour palette. The aim is muscle memory, not literal mimicry — a reader who knows Wikipedia recognises the layout, but the visual identity is distinct.
@@ -129,7 +127,7 @@ The client lazy-loads `cm-collab.bundle.js` (302 KB) only when the template's `w
 
 ## Substrate-native compatibility surface
 
-The engine is a substrate-native wiki, not a MediaWiki shim. This reflects Doctrine claim #29 (Substrate Substitution) ratified at workspace v0.1.10 and refined at v0.1.14.
+The engine is a substrate-native wiki, not a MediaWiki shim. This reflects fundamental architectural invariants (Substrate Substitution) ratified at workspace v0.1.10 and refined at v0.1.14.
 
 What was kept: the **`xml-dump` import path** for one-time corpus migration; **URL conventions** (`/wiki/{slug}`); **wikilink syntax** (`[[slug]]` and `[[slug|display text]]`); **footnote syntax** (`[^1]`).
 
@@ -144,8 +142,8 @@ A separate sibling TOPIC ([[substrate-native-compatibility]]) covers the rationa
 `INVENTIONS.md` at the crate root catalogues eight engine-specific inventions (count as of v0.1.29):
 
 1. **Source-of-truth inversion** — git canonical, binary view, CRDT ephemeral
-2. **Substrate-native compatibility** — Doctrine claim #29
-3. **Constitutional Constrained Author (CCA)** — Doctrine claim #31; squiggle linter at edit time
+2. **Substrate-native compatibility** — fundamental architectural invariants
+3. **Constitutional Constrained Author (CCA)** — fundamental architectural invariants; squiggle linter at edit time
 4. **Information Verifiability Citation (IVC)** — Phase 7 planned; masthead band placeholder
 5. **Substrate-Authored Affordances (SAA)** — the squiggle linter's seven deterministic rules
 6. **`verify://` URL scheme** — Phase 7 planned; resolves a citation ID to its verifiable source

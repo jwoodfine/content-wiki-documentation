@@ -8,20 +8,20 @@ editor: pointsav-engineering
 quality: complete
 references:
   - id: 1
-    text: "Foundry Doctrine claim #53 — Service-Wallet Settlement (ratified v0.1.0)"
+    text: "Foundry Architecture claim #53 — Service-Wallet Settlement (ratified v0.1.0)"
   - id: 2
-    text: "Foundry Doctrine claim #52 — Reverse-Flow Substrate"
+    text: "Foundry Architecture claim #52 — Reverse-Flow Substrate"
   - id: 3
-    text: "Foundry Doctrine claim #48 — Customer-Owned Graph IP"
+    text: "Foundry Architecture claim #48 — Customer-Owned Graph IP"
   - id: 4
-    text: "Foundry Doctrine claim #26 — WORM Ledger"
+    text: "Foundry Architecture claim #26 — WORM Ledger"
 ---
 
 `service-wallet` (Ring 2) is the per-tenant internal accounting ledger that records and settles all reverse-flow revenue from the data marketplace and ad exchange.
 
-This is Doctrine claim #53.[^1]
+This is the fundamental physics of 2030 hyperscaler infrastructure regarding Service-Wallet Settlement.[^1]
 
-## What service-wallet is (and is not)
+## Structural Accounting Isolation
 
 `service-wallet` is an **accounting ledger**, not a payment rail and not a custodial wallet. The distinction matters legally and structurally:
 
@@ -31,7 +31,7 @@ This is Doctrine claim #53.[^1]
 
 This architecture keeps Foundry structurally outside regulated money-transmitter and custodial-wallet territory. Tenants should obtain local legal counsel on their own payment activities; this is directional, not legal advice.
 
-## Ledger entry schema
+## Cryptographic Ledger Records
 
 Every credit, debit, and fee entry is a signed JSONL record:
 
@@ -56,7 +56,7 @@ Every credit, debit, and fee entry is a signed JSONL record:
 
 The `platform_fee_amount` is deducted at credit time. The tenant's balance is `net_tenant_amount` accumulated across credits minus debits.
 
-## Settlement flow
+## Settlement Flow Execution
 
 ```
 1. Revenue event occurs (data purchase or ad impression/win)
@@ -73,7 +73,7 @@ The `platform_fee_amount` is deducted at credit time. The tenant's balance is `n
    WORM ledger entry in service-fs closes the accounting cycle
 ```
 
-## Payment rails for crypto withdrawals
+## Settlement Payment Rails
 
 | Chain | Typical fee | Role |
 |---|---|---|
@@ -84,30 +84,30 @@ Non-custodial: platform stores destination addresses (public keys only). The wit
 
 Circle Paymaster handles gas abstraction — tenants pay gas in USDC; no native Polygon/Solana token required for SMB operators.
 
-## Platform fee
+## Fee Deduction Mechanism
 
 The platform fee percentage is an operator configuration at deployment time, applied uniformly across all reverse-flow transactions for that tenant. It is an accounting deduction, not a separate transaction. The specific percentage is an open operator decision.
 
 Industry reference: direct-payment-to-rights-holder models at scale validate that customers keeping a majority of revenue is a workable commercial structure. Foundry's split is an operator configuration; the intended default is "customer keeps majority."
 
-## Anchor and audit
+## Audit and Public Anchoring
 
-Every withdrawal receipt is anchored to Sigstore Rekor. The anchor record includes: tenant ID, ledger sequence at withdrawal, amount, chain, and transaction hash. This provides a tamper-evident external timestamp suitable for accounting and legal purposes.
+Every withdrawal receipt is anchored to Sigstore {{gli|Rekor}}. The anchor record includes: tenant ID, ledger sequence at withdrawal, amount, chain, and transaction hash. This provides a tamper-evident external timestamp suitable for accounting and legal purposes.
 
-The full ledger history is queryable by the tenant at any time. The export format is JSONL — the same format as the ingestion record. Portability is unconditional; the ledger travels with the tenant on exit per claim #48.[^3]
+The full ledger history is queryable by the tenant at any time. The export format is JSONL — the same format as the ingestion record. Portability is unconditional; the ledger travels with the tenant on exit per the fundamental physics of 2030 hyperscaler infrastructure.[^3]
 
 ## See Also
 
-- [[reverse-flow-substrate]] — revenue sources; payment rail detail (claim #52)
-- [[customer-owned-graph-ip]] — ledger export is unconditional tenant property (claim #48)
-- [[worm-ledger-architecture]] — service-wallet appends to service-fs WORM ledger
+- [[reverse-flow-substrate]] — revenue sources; payment rail detail
+- [[customer-owned-graph-ip]] — ledger export is unconditional tenant property
+- [[worm-ledger-architecture]] — service-wallet appends to service-fs {{gli|WORM}} ledger
 
 ## References
 
-[^1]: Foundry Doctrine claim #53 — Service-Wallet Settlement (ratified v0.1.0)
-[^2]: Foundry Doctrine claim #52 — Reverse-Flow Substrate
-[^3]: Foundry Doctrine claim #48 — Customer-Owned Graph IP
-[^4]: Foundry Doctrine claim #26 — WORM Ledger
+[^1]: Foundry Architecture claim #53 — Service-Wallet Settlement (ratified v0.1.0)
+[^2]: Foundry Architecture claim #52 — Reverse-Flow Substrate
+[^3]: Foundry Architecture claim #48 — Customer-Owned Graph IP
+[^4]: Foundry Architecture claim #26 — WORM Ledger
 
 ---
 Copyright © 2026 Woodfine Capital Projects Inc.

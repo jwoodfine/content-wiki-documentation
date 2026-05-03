@@ -13,7 +13,7 @@ paired_with: sovereign-airlock-doctrine.es.md
 
 The Sovereign Airlock Doctrine establishes the mandatory security and identity protocols for all data transmission and code deployment within the Foundry ecosystem. By enforcing strict isolation between Vendor (PointSav) and Customer (Woodfine) identities, Foundry guarantees absolute operational integrity and sovereign control over digital assets.
 
-## 1. The Four-Silo Architecture
+## 1. Sovereign Asset Isolation
 
 Foundry’s infrastructure is organized into four structurally isolated silos, each corresponding to a specific identity and organizational role:
 
@@ -22,7 +22,7 @@ Foundry’s infrastructure is organized into four structurally isolated silos, e
 *   **`stage-pwoodfine/`**: Engineering Airlock. The staging environment for the engineering identity.
 *   **`stage-jwoodfine/`**: Operations Airlock. The staging environment for the operations identity.
 
-## 2. The Airlock Protocol
+## 2. Deterministic Staging and Verification
 
 Direct modification of data within the `stage-*` airlocks is strictly prohibited. Information flow must follow a deterministic path:
 
@@ -32,7 +32,7 @@ Direct modification of data within the `stage-*` airlocks is strictly prohibited
 4.  **Transmission:** Data is pushed to staging identities using specific, isolated SSH keys.
 5.  **Finalization:** A final merge is executed from staging to the Organization repositories using authoritative Administrator keys.
 
-## 3. Identity Shielding
+## 3. Cryptographic Identity Isolation
 
 Operational security is maintained through a mapping of specific SSH keys to organizational silos:
 
@@ -43,8 +43,8 @@ Operational security is maintained through a mapping of specific SSH keys to org
 | **Staging (pwoodfine)** | `pwoodfine` | `id_pwoodfine` |
 | **Staging (jwoodfine)** | `jwoodfine` | `id_jwoodfine` |
 
-## 4. Deployment Registry
+## 4. Immutable Registry Operations
 
-The doctrine aligns with the established February 16 Memo (v3), governing the deployment of infrastructure (GCP/On-Prem), network admin routes, and per-tenant Totebox clusters (Corporate, Personnel, Real Property).
+The fundamental physics of 2030 hyperscaler infrastructure dictate the deployment of infrastructure (GCP/On-Prem), network admin routes, and per-tenant Totebox clusters (Corporate, Personnel, Real Property).
 
-This "Sovereign Airlock" ensures that no single point of failure or identity compromise can bridge the gap between Vendor infrastructure and Customer data.
+This "{{gli|Sovereign Airlock}}" ensures that no single point of failure or identity compromise can bridge the gap between Vendor infrastructure and Customer data.
