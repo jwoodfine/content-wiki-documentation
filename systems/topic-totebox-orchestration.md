@@ -1,21 +1,19 @@
 ---
 schema: foundry-doc-v1
 title: "Totebox Orchestration"
-slug: totebox-orchestration
+slug: topic-totebox-orchestration
 category: systems
 type: topic
-quality: stub
+quality: complete
 short_description: "Totebox Orchestration describes the coordination layer that manages multiple Totebox data-archive containers, keeping software execution engines isolated from passive corporate ledgers across deployments."
-status: pre-build
-last_edited: 2026-04-30
+status: active
+last_edited: 2026-05-04
 editor: pointsav-engineering
 cites: []
-paired_with: totebox-orchestration.es.md
+paired_with: topic-totebox-orchestration.es.md
 ---
 
 # Totebox Orchestration
-
-> Totebox Orchestration describes the coordination layer that manages multiple Totebox data-archive containers, keeping software execution engines isolated from passive corporate ledgers across deployments.
 
 **Totebox Orchestration** is the layer responsible for provisioning, coordinating, and monitoring individual Totebox instances in a PointSav deployment. A Totebox is an isolated data {{gli|container}} that separates active software engines from passive corporate ledgers. The {{gli|container}} stores data as inert flat files; cryptographic checksums verify structural integrity on a permanent basis.
 
@@ -35,12 +33,9 @@ A new Totebox {{gli|container}} is provisioned with a three-directory skeleton â
 
 ## See Also
 
-- [[os-totebox]]
-- [[customer-hostability]]
-- [[substrate-native-compatibility]]
-
-## References
-
+- [[topic-totebox-os]]
+- [[topic-infrastructure-os]]
+- [[topic-console-os]]
 
 ---
 
