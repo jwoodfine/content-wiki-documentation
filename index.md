@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "documentation.pointsav.com — Home"
+title: "PointSav Knowledge"
 slug: index
 category: root
 status: pre-build
@@ -17,22 +17,9 @@ Articles are written for engineers, writers, designers, and readers with
 a financial interest in the platform. All content is published under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
-<!-- ENGINE: insert live TOPIC count: "N articles across 9 categories,
-     last updated YYYY-MM-DD." Derive N from count of *.md files in
-     category directories (excluding _index.md). Derive date from
-     max(last_edited:) across all articles. -->
-
 ---
 
 ## Platform areas
-
-<!-- ENGINE: render this section as a card grid — 3 columns × 3 rows.
-     Each card: category name as heading, description paragraph, link
-     to category landing (_index.md), and TOPIC count for that category.
-     Category TOPIC counts derive from file count in each directory.
-     If a category directory has 0 articles (infrastructure/, company/,
-     help/ at launch), still render the card with count "0 articles —
-     in preparation." -->
 
 **Architecture**
 Design principles, substrate patterns, and cross-cutting invariants that
@@ -130,9 +117,6 @@ Related resources outside this wiki:
 - **[Woodfine Management Corp. on GitHub](https://github.com/woodfine)** — customer-tier mirror; `woodfine/*` organisations host the downstream consumer repositories.
 - **[design-system](https://github.com/pointsav/pointsav-design-system)** — visual design tokens, component recipes, and brand conventions.
 - **[factory-release-engineering](https://github.com/pointsav/factory-release-engineering)** — licensing matrix, contributor agreements, and governance policies.
-
-<!-- EDITORIAL NOTE: a Woodfine customer-facing wiki is planned.
-     Add the link here once the deployment is live. -->
 
 ---
 
