@@ -1,6 +1,7 @@
-# Cleanup Log Archive — project-editorial/content-wiki-documentation
+# Cleanup Log Archive — content-wiki-documentation/content-wiki-documentation
 
-Closed entries archived from cleanup-log.md.
+Closed entries archived from `cleanup-log.md`.
+Open items remain in `cleanup-log.md`.
 
 ---
 
