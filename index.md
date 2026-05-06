@@ -3,8 +3,8 @@ schema: foundry-doc-v1
 title: "PointSav Knowledge"
 slug: index
 category: root
-status: pre-build
-last_edited: 2026-05-05
+status: active
+last_edited: 2026-05-06
 editor: pointsav-engineering
 ---
 
@@ -16,6 +16,6 @@ editor: pointsav-engineering
      home_chrome() in app-mediakit-knowledge/src/server.rs. -->
 
 PointSav's platform documentation covers the architecture, services,
-operating systems, and governance conventions of the PointSav substrate.
-Articles are written for engineers, writers, designers, and readers with
-a financial interest in the platform.
+operating systems, design system, and governance conventions of the
+PointSav substrate. Articles are written for engineers, writers,
+designers, and readers with a financial interest in the platform.
