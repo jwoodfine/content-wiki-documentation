@@ -5,7 +5,8 @@ slug: _index.es
 lang: es
 paired_with: _index.md
 category: applications
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-29
 editor: pointsav-engineering
 ---

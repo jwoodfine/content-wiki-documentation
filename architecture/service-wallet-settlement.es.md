@@ -3,6 +3,7 @@ title: "Liquidación con Service-Wallet"
 slug: service-wallet-settlement.es
 category: architecture
 status: stable
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 quality: complete

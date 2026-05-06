@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: stub
 short_description: "The Verification Surveyor is the human-in-the-loop component of service-people that presents extracted identity fragments to an operator for manual verification before they are permanently committed to the verified ledger."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []

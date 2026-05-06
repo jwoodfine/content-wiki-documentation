@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: published
 short_description: "La estructura comercial de dos niveles de PointSav: un nivel Community gratuito como embudo de adopción, y un nivel de Cliente PYME de pago orientado a pequeñas y medianas empresas reguladas que las grandes plataformas no pueden atender económicamente."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: stub
 short_description: "The seL4 foundation is the formally verified microkernel that acts as the root of trust in PointSav's operating-system layer, providing mathematically proven isolation between all hardware resources and software components."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []

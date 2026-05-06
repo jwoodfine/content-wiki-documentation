@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: published
 short_description: "El pago por transacciones del mercado está planificado para fluir directamente del comprador al inquilino-cliente; la participación de Foundry es una comisión por transacción en el momento de la liquidación, no una suscripción recurrente."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

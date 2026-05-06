@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: complete
 short_description: "The Citation Substrate is the Foundry mechanism that connects every written artifact to the external authorities it depends on through a workspace-wide YAML registry, per-document frontmatter cites fields, and inline reference syntax that makes provenance machine-auditable."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:

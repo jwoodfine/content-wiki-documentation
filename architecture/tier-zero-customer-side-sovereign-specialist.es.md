@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: published
 short_description: "El Nivel 0 Totebox es un despliegue especialista soberano que funciona en el propio hardware del cliente sin ninguna dependencia de nube requerida y con una huella total de 1 GB."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

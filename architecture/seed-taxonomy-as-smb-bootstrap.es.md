@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: published
 short_description: "Cada despliegue de inquilino Foundry provisiona una taxonomía semilla de cuatro partes — Arquetipos, Plan de Cuentas, Dominios, Temas — como el arranque del grafo de conocimiento."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

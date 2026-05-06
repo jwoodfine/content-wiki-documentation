@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: published
 short_description: "The four-layer Write-Once-Read-Many ledger substrate used across PointSav Ring 1 services: a tile-based, hash-chained, cryptographically signed persistence format that satisfies US broker-dealer recordkeeping, EU qualified preservation, and SOC 2 requirements by structure rather than by policy."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

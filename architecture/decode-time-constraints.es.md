@@ -2,7 +2,8 @@
 title: "Restricciones en tiempo de decodificación (resumen)"
 slug: decode-time-constraints.es
 category: architecture
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-27
 editor: pointsav-engineering
 cites:

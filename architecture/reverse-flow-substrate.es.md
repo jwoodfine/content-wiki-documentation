@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: published
 short_description: "La puerta de enlace del Portero y el registro de auditoría que aplican la disciplina de datos de entrada están planificados para también aplicar flujos comerciales de salida — mercado de datos e intercambio de anuncios — ambos opt-in por inquilino."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

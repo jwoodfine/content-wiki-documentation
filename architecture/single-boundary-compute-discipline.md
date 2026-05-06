@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: published
 short_description: "Every AI inference request in a Foundry deployment routes exclusively through the Doorman, with bypass structurally prevented at the kernel level."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

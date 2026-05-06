@@ -5,7 +5,8 @@ slug: location-intelligence-strategy.es
 category: architecture
 type: topic
 quality: core
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:

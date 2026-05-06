@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: published
 short_description: Un repositorio ligero que se sitúa sobre el código de los proyectos y proporciona a los agentes un contexto compartido sin acoplar los historiales de Git — el patrón estructural que organiza el espacio de trabajo Foundry.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: published
 short_description: "Un camino gradual hacia la soberanía en IA: cuatro niveles de despliegue para el cliente, desde una pasarela de API sin modelo local hasta un servicio de IA especializado entrenado sobre el corpus agregado del proveedor, donde cada nivel añade capacidad sin romper la garantía del nivel inferior."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

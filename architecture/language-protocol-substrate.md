@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: complete
 short_description: "The Language-Protocol Substrate is the Foundry editorial infrastructure that provides four adapter families, eighteen genre templates, a frontmatter validator, and a banned-vocabulary list, making editorial work a per-tenant, audited, and forkable practice."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:

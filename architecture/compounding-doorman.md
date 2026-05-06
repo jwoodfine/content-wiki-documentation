@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: complete
 short_description: "The operational pattern at the heart of sovereign AI substrates: a single service that mediates every external compute call, enforces sanitise-and-rehydrate discipline, logs every event to an audit ledger, and accumulates training signal that compounds the substrate over time."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []

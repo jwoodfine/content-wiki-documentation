@@ -6,7 +6,8 @@ category: governance
 type: topic
 quality: stub
 short_description: "Moonshot initiatives are active engineering programs that build native replacements for quarantined third-party dependencies, with the goal of eliminating vendor lock-in and reducing the platform's external attack surface over time."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []

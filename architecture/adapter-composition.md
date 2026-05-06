@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: published
 short_description: The operating-system metaphor for AI in PointSav — the Doorman as kernel, adapters as processes, service-content as filesystem — and the composition algebra that assembles per-request intelligence from versioned, customer-owned LoRA adapter layers.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:

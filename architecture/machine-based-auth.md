@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: stub
 short_description: "Machine-based authorization is the authentication model used in the PointSav platform, replacing username and password structures with cryptographic pairing of physical hardware verified by the capability manager."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []

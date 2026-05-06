@@ -3,7 +3,8 @@ schema: foundry-doc-v1
 title: "Governance — Category Landing"
 slug: _index
 category: governance
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-29
 editor: pointsav-engineering
 ---

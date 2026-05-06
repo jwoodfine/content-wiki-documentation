@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: published
 short_description: "The three-ring compute substrate that lets service-slm spin GPU inference capacity up and down while retaining state, accumulating skill, and producing an audit ledger of every compute event."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

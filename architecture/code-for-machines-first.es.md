@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: published
 short_description: "Cada contrato entre servicios Foundry, registro de auditoría, configuración y ontología es legible por máquinas como superficie primaria; las interfaces para humanos son capas sobre APIs primero-para-máquinas."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

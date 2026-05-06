@@ -5,7 +5,8 @@ slug: citation-substrate.es
 lang: es
 paired_with: citation-substrate.md
 category: architecture
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-28
 editor: pointsav-engineering
 cites:

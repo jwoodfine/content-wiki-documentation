@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: published
 short_description: "Todo el tráfico de inferencia de IA en un despliegue Foundry pasa exclusivamente por el Portero, con la omisión estructuralmente impedida a nivel de kernel."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

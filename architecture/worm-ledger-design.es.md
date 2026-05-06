@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: published
 short_description: "El sustrato de persistencia de escritura única y lectura múltiple (WORM) utilizado en los servicios Ring 1 de PointSav: un formato por bloques con encadenamiento criptográfico que satisface los requisitos de conservación de registros bajo regulación estadounidense, europea y SOC 2 por estructura, no por política."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

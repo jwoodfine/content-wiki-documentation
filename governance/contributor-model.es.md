@@ -1,5 +1,7 @@
 ---
 category: governance
+bcsc_class: public-disclosure-safe
+
 ---
 
 # El modelo de contribuyentes en tres niveles (resumen)

@@ -3,7 +3,8 @@ schema: foundry-doc-v1
 title: "El Patrón Editorial de Embudo Invertido"
 slug: reverse-funnel-editorial-pattern.es
 category: architecture
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-28
 editor: pointsav-engineering
 lang: es

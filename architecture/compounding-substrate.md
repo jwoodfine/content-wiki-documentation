@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: complete
 short_description: "The Compounding Substrate is the architectural pattern PointSav builds and stewards, combining five structural properties to produce a platform where every operational interaction generates training signal that compounds across all tenant deployments."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:

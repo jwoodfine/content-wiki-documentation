@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: complete
 short_description: "The Disclosure Substrate is the Foundry mechanism that makes a version-controlled Markdown wiki the primary continuous-disclosure record, combining signed authorship chains, cryptographic content hashes, and planned per-jurisdiction export adapters to produce regulator-compliant outputs from a single source."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:

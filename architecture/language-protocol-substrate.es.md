@@ -5,6 +5,8 @@ slug: language-protocol-substrate.es
 lang: es
 paired_with: language-protocol-substrate.md
 category: architecture
+bcsc_class: public-disclosure-safe
+
 ---
 
 # El sustrato de protocolo de lenguaje (resumen)

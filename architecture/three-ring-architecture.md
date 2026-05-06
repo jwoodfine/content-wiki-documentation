@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: complete
 short_description: "The durable composition pattern for the PointSav platform: three concentric rings with strict one-way dependencies, where the AI ring is structurally optional and the deterministic data pipeline operates fully without it."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []

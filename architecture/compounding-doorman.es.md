@@ -5,7 +5,8 @@ slug: compounding-doorman.es
 category: architecture
 type: topic
 quality: complete
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 paired_with: compounding-doorman.md

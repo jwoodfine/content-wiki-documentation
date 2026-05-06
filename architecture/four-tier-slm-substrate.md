@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: published
 short_description: "A graduated sovereignty path for AI deployment: four customer tiers from a lightweight API gateway with no local model up through a domain-specialist AI service trained on the vendor's aggregated corpus, each tier adding capability without breaking the lower-tier guarantee."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

@@ -6,7 +6,7 @@ slug: disclosure-substrate.es
 lang: es
 paired_with: disclosure-substrate.md
 category: architecture
-status: pre-build
+status: active
 last_edited: 2026-04-28
 editor: pointsav-engineering
 audience: vendor-public

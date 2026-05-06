@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: stub
 short_description: "The zero-state telemetry architecture describes how Foundry's V4 Intent Beacon collects behavioural and hardware signals from edge clients without cookies, session identifiers, or third-party analytics, using client-side compilation and asynchronous beacon transmission."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []

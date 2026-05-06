@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: core
 short_description: "The strategic and architectural frame for the platform's Location Intelligence substrate: a flat-file open-GIS approach that lets customers own their location data end-to-end, running offline, without ongoing per-seat or per-request vendor costs."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:

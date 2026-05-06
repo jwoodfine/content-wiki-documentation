@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: published
 short_description: "The rationale for selecting OLMo 3 as the local and GPU-burst language model substrate: the only fully open model family — training data, training code, and checkpoints included — that permits continued pretraining and satisfies a Canadian public-company procurement posture."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

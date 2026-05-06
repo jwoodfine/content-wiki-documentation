@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: complete
 short_description: "Visión general del enrutador de inferencia de tres niveles de service-SLM y la instancia GPU de explosión Yo-Yo, incluyendo el límite de costo y el techo de gastos mensuales."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:

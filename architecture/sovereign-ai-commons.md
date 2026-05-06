@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: published
 short_description: "PointSav's market positioning as a steward of shared, open AI infrastructure for regulated small-to-medium businesses: five structural properties that large-scale cloud providers cannot offer without dismantling their own billing models."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

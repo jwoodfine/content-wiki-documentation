@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: published
 short_description: Resumen público fiel de la carta constitucional de la Doctrina Foundry — seis pilares, cincuenta y dos afirmaciones de salto adelante, ocho invenciones operativas entre industrias, y el modelo económico que las sostiene.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:

@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: published
 short_description: The kernel-level architecture beneath every PointSav service — a customer-rooted capability ledger that is the audit log, a two-bottoms sovereign OS strategy, and three mechanisms for time-bound capabilities, reproducible verification, and boot-anywhere recovery.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:

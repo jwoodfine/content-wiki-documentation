@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: complete
 short_description: "The Trajectory Substrate is the Foundry mechanism that converts operational work — commits, sessions, operator feedback — into structured JSONL training tuples, routing them into a continued-pretraining corpus that improves the OLMo base model over time."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:

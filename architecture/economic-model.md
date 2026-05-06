@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: published
 short_description: "PointSav's two-tier commercial structure: a free Community tier that serves as an adoption funnel, and a paid SMB Customer tier targeting regulated small-to-medium businesses that hyperscalers cannot serve economically."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

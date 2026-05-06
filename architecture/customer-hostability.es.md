@@ -1,5 +1,7 @@
 ---
 category: architecture
+bcsc_class: public-disclosure-safe
+
 ---
 
 # Hospedaje por el cliente — *We Own It* (resumen)

@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: published
 short_description: "El grafo de conocimiento por inquilino y los pesos del adaptador entrenado son propiedad intelectual del cliente, portátiles y exportables sin aprobación del proveedor."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

@@ -6,7 +6,8 @@ category: architecture
 type: topic
 quality: published
 short_description: The economic model that separates what PointSav publishes freely from what it sells — public knowledge artifacts under open licenses, paid service at the point of multi-Totebox aggregation.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

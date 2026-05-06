@@ -4,6 +4,7 @@ title: "Visión General de la Arquitectura de la Plataforma"
 slug: architecture.es
 category: architecture
 status: published
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 ---
