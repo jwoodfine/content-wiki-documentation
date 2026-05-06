@@ -10,11 +10,26 @@
 > layout-rule enforcement, defect resolution, surfaced open
 > questions — does.
 
-Last updated: 2026-04-30.
+Last updated: 2026-05-06.
 
 ---
 
 ## Open
+
+### 2026-05-06 — GIS service topics + design-system/ category + editorial fixes (project-editorial Task)
+
+Session: project-editorial Task (2026-05-06).
+
+**Commits this session** (2 commits, alternating Peter/Jennifer Woodfine):
+
+1. `4d5a499` (Peter) — GIS service topics + bcsc/competitive editorial fixes: added `applications/app-orchestration-gis.md` + `.es.md` bilingual pair; added `services/service-business-clustering.md`, `service-fs-data-lake.md`, `service-places-filtering.md` (all foundry-doc-v1, public-disclosure-safe). Fixed `applications/location-intelligence-ux.md` bcsc_class from `internal` → `public-disclosure-safe`. Removed named vendor from `services/pointsav-gis-engine.md` §Flat-File Substrate per structural-positioning discipline. SafeGraph references removed from service-business and service-fs raw drafts; internal deployment paths removed.
+
+2. `0bf2f6d` (Jennifer) — `design-system/` category: new wiki section with 6 bilingual foundation topics (design-philosophy, design-color, design-typography, design-spacing, design-motion, design-primitive-vocabulary) + 16 component guides (badge, breadcrumb, button, checkbox, citation-authority-ribbon, freshness-ribbon, home-grid, input-text, link, navigation-bar, notification, research-trail-footer, select, surface, switch, tab). Source: project-design exports (`dtcg-vault/exports/topics/` + `dtcg-vault/exports/guides/`). Editorial changes: named competitor references stripped from design-philosophy + design-primitive-vocabulary (per operator C15 decision); "How AI agents should use this file" sections removed; "future theme-composition endpoint" → "planned theme-composition endpoint" (BCSC framing); "IBM Plex (IBM-trademarked open-source)" → "IBM Plex Sans (open-source, SIL OFL 1.1)"; FIGMA MCP claim reframed to remove named vendor.
+
+**Outstanding from this pass:**
+- `content-wiki-documentation/CLAUDE.md` §6 "wiki content English-only" line is drift — Spanish pairs are now live. Should be updated per workspace CLAUDE.md §6 (bilingual rule overrides local). Surfacing here for next session pickup.
+- `design-system/` category is not yet in `naming-convention.md` §4 proposed category set (nine-category proposal). New tenth category; needs operator ratification addition. Naming-convention.md §10 ratification still pending (four operator decisions outstanding since 2026-04-23).
+- `services/pointsav-gis-engine.md` See Also section has `[[guide-totebox-orchestration-gis]]` and `[[co-location-methodology]]` as redlinks (pre-existing from prior session, not introduced here) — placeholders until those articles land.
 
 ### 2026-04-30 — Wikipedia normalization pass + 5 architecture/reference TOPIC pairs committed
 
