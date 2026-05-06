@@ -63,6 +63,13 @@ The well-structured substrate IS the message the SMB sends to its implementation
 - Editor lock-in (single-editor-only features rejected).
 - Marketing vocabulary in research files (per workspace §6).
 
+## See Also
+
+- [[design-color]]
+- [[design-typography]]
+- [[design-spacing]]
+- [[design-motion]]
+
 ## References
 
 - W3C Design Tokens Community Group format — https://design-tokens.github.io/community-group/format/

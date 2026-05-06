@@ -73,13 +73,6 @@ A token named for a chromatic family in PointSav's code that uses a vendor's exa
 
 The structural patterns are field-shared; the literal tokens are not.
 
-## References
-
-- W3C Design Tokens Community Group format — https://design-tokens.github.io/community-group/format/
-- WCAG 2.2 — https://www.w3.org/TR/WCAG22/
-- Doctrine claim #38 — `~/Foundry/DOCTRINE.md` §III row 38
-- Convention — `~/Foundry/conventions/design-system-substrate.md`
-
 ## See Also
 
 - [[design-philosophy]]
@@ -91,3 +84,10 @@ The structural patterns are field-shared; the literal tokens are not.
 *Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
 
 *Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*
+
+## References
+
+- W3C Design Tokens Community Group format — https://design-tokens.github.io/community-group/format/
+- WCAG 2.2 — https://www.w3.org/TR/WCAG22/
+- Doctrine claim #38 — `~/Foundry/DOCTRINE.md` §III row 38
+- Convention — `~/Foundry/conventions/design-system-substrate.md`

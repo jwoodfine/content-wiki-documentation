@@ -10,6 +10,12 @@ audience: vendor-public
 bcsc_class: current-fact
 language_protocol: DESIGN-COMPONENT
 authored: 2026-04-30
+## See Also
+
+- [[brand-typography]]
+- [[design-typography]]
+- [[design-color]]
+
 ---
 
 

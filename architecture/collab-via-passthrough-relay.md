@@ -71,17 +71,6 @@ The passthrough relay is a substrate pattern, not a wiki-specific feature. Any s
 
 **`app-workplace-proforma` table collaboration.** The canonical storage for a proforma is structured tabular data — rows and columns with typed values, stored as TOML or structured JSON alongside the git tree. Collaborative editing of table cells requires a different CRDT type than character-level text merging (`Y.Map` and `Y.Array` rather than `Y.Text`), but the `yjs` library handles this. If the proforma's canonical storage is git-committed structured data and the CRDT overlay is session-ephemeral, the passthrough design applies with the same logic as the wiki case. The difference from the text case is that the serialisation step must produce valid structured data, adding a validation requirement at `POST /save` time. Note: CRDT collaboration for `app-workplace-proforma` is planned; it is not yet implemented as of 2026-04-27.
 
-## References
-
-- **Yjs** — Conflict-free replicated data type library for collaborative applications. Client-side CRDT engine used in `cm-collab.bundle.js`. https://github.com/yjs/yjs
-- **CodeMirror collab integration** — `y-codemirror.next` binds a Yjs `Y.Text` to a CodeMirror 6 editor state; cursor presence is rendered via CodeMirror's `DecorationSet` API. https://codemirror.net/
-- **`tokio::sync::broadcast`** — Multi-producer multi-consumer channel used as the per-slug relay room. 256-message buffer is the channel capacity argument passed to `broadcast::channel(256)`. https://docs.rs/tokio/latest/tokio/sync/broadcast/
-- **`PHASE-2-PLAN.md` §1 Step 7** — Original Step 7 brief specifying the collab design. `vendor/pointsav-monorepo/app-mediakit-knowledge/docs/PHASE-2-PLAN.md`
-- **`STEP-7-COLLAB-SMOKE.md`** (commit `ea26118`) — Manual two-client smoke procedure, pre-staged systemd unit diff, and rollback runbook for production enable. `vendor/pointsav-monorepo/app-mediakit-knowledge/docs/STEP-7-COLLAB-SMOKE.md`
-- **`ARCHITECTURE.md` §11** — Full API surface set table listing `/ws/collab/{slug}` as a Phase 2+ opt-in route. `vendor/pointsav-monorepo/app-mediakit-knowledge/ARCHITECTURE.md`
-- **`UX-DESIGN.md` §4.7** — Collab UX wireframe and cursor-presence pattern for the SAA editor surface. `vendor/pointsav-monorepo/app-mediakit-knowledge/UX-DESIGN.md`
-- **Doctrine claim #29** (Substrate Substitution) — Establishes that the canonical disclosure record is git; no parallel server-side store may compete with it for authority. `~/Foundry/DOCTRINE.md`
-
 ## See also
 
 - [[source-of-truth-inversion]] — The canonical / view / ephemeral three-layer storage taxonomy that this pattern instantiates.
@@ -98,3 +87,14 @@ Authored by project-knowledge Task Claude (session 619abe3eff24497e, 2026-04-28)
 *Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
 
 *Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*
+
+## References
+
+- **Yjs** — Conflict-free replicated data type library for collaborative applications. Client-side CRDT engine used in `cm-collab.bundle.js`. https://github.com/yjs/yjs
+- **CodeMirror collab integration** — `y-codemirror.next` binds a Yjs `Y.Text` to a CodeMirror 6 editor state; cursor presence is rendered via CodeMirror's `DecorationSet` API. https://codemirror.net/
+- **`tokio::sync::broadcast`** — Multi-producer multi-consumer channel used as the per-slug relay room. 256-message buffer is the channel capacity argument passed to `broadcast::channel(256)`. https://docs.rs/tokio/latest/tokio/sync/broadcast/
+- **`PHASE-2-PLAN.md` §1 Step 7** — Original Step 7 brief specifying the collab design. `vendor/pointsav-monorepo/app-mediakit-knowledge/docs/PHASE-2-PLAN.md`
+- **`STEP-7-COLLAB-SMOKE.md`** (commit `ea26118`) — Manual two-client smoke procedure, pre-staged systemd unit diff, and rollback runbook for production enable. `vendor/pointsav-monorepo/app-mediakit-knowledge/docs/STEP-7-COLLAB-SMOKE.md`
+- **`ARCHITECTURE.md` §11** — Full API surface set table listing `/ws/collab/{slug}` as a Phase 2+ opt-in route. `vendor/pointsav-monorepo/app-mediakit-knowledge/ARCHITECTURE.md`
+- **`UX-DESIGN.md` §4.7** — Collab UX wireframe and cursor-presence pattern for the SAA editor surface. `vendor/pointsav-monorepo/app-mediakit-knowledge/UX-DESIGN.md`
+- **Doctrine claim #29** (Substrate Substitution) — Establishes that the canonical disclosure record is git; no parallel server-side store may compete with it for authority. `~/Foundry/DOCTRINE.md`

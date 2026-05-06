@@ -266,6 +266,13 @@ model, IDC and Techaisle SMB 2026 forecasts, and per-vertical comparisons.
 Citation IDs resolved against `~/Foundry/citations.yaml` where registered;
 external URLs left as-is for unregistered sources.
 
+## See Also
+
+- [[compounding-substrate]]
+- [[service-slm-yoyo-operational]]
+- [[source-of-truth-inversion]]
+- [[four-tier-slm-substrate]]
+
 ## References
 
 - `DOCTRINE.md` v0.1.0 (constitutional source)

@@ -7,6 +7,13 @@ audience: vendor-public
 bcsc_class: current-fact
 language: en
 paired_with: identity-ledger-schema-design.es.md
+## See Also
+
+- [[machine-based-auth]]
+- [[capability-based-security]]
+- [[worm-ledger-design]]
+- [[cryptographic-ledgers]]
+
 ---
 
 
