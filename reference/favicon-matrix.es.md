@@ -9,7 +9,6 @@ language: es
 paired_with: favicon-matrix.md
 ---
 
-# Matriz de Favicon e Identidad de Pestañas
 
 El sistema de Foundry utiliza URIs de datos SVG para la identificación de pestañas en el navegador, optimizando el rendimiento y la claridad visual.
 

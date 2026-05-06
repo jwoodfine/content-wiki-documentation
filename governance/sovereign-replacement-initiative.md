@@ -14,7 +14,6 @@ cites: []
 paired_with: sovereign-replacement-initiative.es.md
 ---
 
-# Sovereign Replacement Initiative
 
 > The Sovereign Replacement Initiative is the formal program that records every foreign dependency in a structured ledger, enforces quarantine isolation until a native replacement is ready, and retires the dependency once the replacement reaches structural parity.
 

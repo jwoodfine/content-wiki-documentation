@@ -14,7 +14,6 @@ cites: []
 paired_with: message-courier.es.md
 ---
 
-# Message Courier Service
 
 > The message courier service is a headless automation engine that reads pending dispatch records from an internal ledger, executes portal interactions via private runtime adapters, and writes completion timestamps back without embedding any client-specific logic in the open-source codebase.
 

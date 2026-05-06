@@ -9,7 +9,6 @@ language: en
 paired_with: worm-ledger-architecture.es.md
 ---
 
-# WORM Ledger Substrate: Four-Layer Architecture
 
 Foundry’s `service-fs` provides the per-tenant Write-Once-Read-Many (WORM) immutable ledger that serves as the durable backbone for all Ring 1 boundary-ingest services. By enforcing a strict append-only invariant through cryptographic hash-chaining and structural isolation, Foundry ensures that identity, communications, and document records remain tamper-evident and permanently accessible.
 

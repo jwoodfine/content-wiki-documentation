@@ -9,7 +9,6 @@ language: en
 paired_with: identity-ledger-schema-design.es.md
 ---
 
-# Identity Ledger Schema Design
 
 The Identity Ledger provides a JSONL-based, append-only record of canonical person identities within the Foundry ecosystem. Following the Three-Ring Architecture’s boundary-ingest pattern, `service-people` publishes this schema to enable deterministic identity resolution across all Ring 2 and Ring 3 knowledge-extraction services.
 

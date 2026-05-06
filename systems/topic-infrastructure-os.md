@@ -13,7 +13,6 @@ editor: pointsav-engineering
 cites: []
 ---
 
-# Infrastructure OS
 
 **Infrastructure OS** is the virtualization and networking backbone of the PointSav ecosystem. It operates as the foundational host layer that permits the execution of multiple isolated {{gli|Totebox Archive}} instances on a single physical or virtual machine.
 

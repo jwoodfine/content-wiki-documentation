@@ -12,7 +12,6 @@ language_protocol: DESIGN-COMPONENT
 authored: 2026-04-30
 ---
 
-# Panel Lateral de Mapa (Map Side Drawer)
 
 El "Map Side Drawer" es un patrón de superposición persistente diseñado para la inspección detallada de características sin perder el contexto geográfico. Sustituye a las ventanas emergentes (popups) transitorias por un panel de ancho fijo que se desliza desde el borde derecho, proporcionando un espacio dedicado para metadatos complejos, contexto de conglomerados y divulgaciones regulatorias.
 

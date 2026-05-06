@@ -9,7 +9,6 @@ language: es
 paired_with: properties-panel-accessibility.md
 ---
 
-# Accesibilidad del Panel de Propiedades
 
 El componente `bim-properties-panel` muestra los datos semánticos y de rendimiento de los elementos seleccionados. Su diseño está optimizado para presentar información técnica densa de manera clara y accesible para lectores de pantalla y usuarios de teclado.
 

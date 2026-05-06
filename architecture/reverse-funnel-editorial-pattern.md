@@ -20,7 +20,6 @@ cites:
 paired_with: reverse-funnel-editorial-pattern.es.md
 ---
 
-# Reverse-Funnel Editorial Pattern
 
 > The Reverse-Funnel Editorial Pattern is a publishing discipline in which multiple cluster Tasks produce bulk technical drafts, a single editorial gateway refines them to production register, and Creative Contributors edit the published output — generating preference data that trains the per-tenant substrate over time.
 

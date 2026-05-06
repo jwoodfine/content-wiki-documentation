@@ -12,7 +12,6 @@ language_protocol: DESIGN-COMPONENT
 authored: 2026-04-30
 ---
 
-# Map Stats Panel
 
 The Map Stats Panel is a reactive data-display component that surfaces real-time aggregate statistics based on active map filters. Positioned as a floating overlay, it provides users with constant visibility into key performance indicators such as anchor counts, jurisdictional distribution, and cluster grades.
 

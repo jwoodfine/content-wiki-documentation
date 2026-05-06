@@ -14,7 +14,6 @@ cites: []
 paired_with: moonshot-initiatives.es.md
 ---
 
-# Moonshot Initiatives
 
 > Moonshot initiatives are long-running engineering programs that replace quarantined third-party dependencies with internally built, formally verifiable equivalents — reducing vendor lock-in and shrinking the platform's external attack surface.
 

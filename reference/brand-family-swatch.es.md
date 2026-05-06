@@ -12,7 +12,6 @@ language_protocol: DESIGN-COMPONENT
 authored: 2026-04-30
 ---
 
-# Muestrario de Familias de Marcas (Brand-Family Swatch)
 
 El "Brand-Family Swatch" es la primitiva taxonómica principal para la clasificación de anclas comerciales en el ecosistema GIS de Foundry. Codifica la taxonomía tripartita ratificada por el operador —Department (Departamental), Hardware (Ferretería) y Warehouse Club (Club de Compras)— manteniendo una arquitectura agnóstica de datos que admite extensiones impulsadas por el cliente mediante capas de datos soberanas.
 

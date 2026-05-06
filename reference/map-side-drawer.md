@@ -12,7 +12,6 @@ language_protocol: DESIGN-COMPONENT
 authored: 2026-04-30
 ---
 
-# Map Side Drawer
 
 The Map Side Drawer is a persistent overlay pattern designed for detailed feature inspection without loss of geographic context. It replaces transient popups with a fixed-width panel that slides from the right edge, providing a dedicated space for complex metadata, cluster context, and regulatory disclosures.
 

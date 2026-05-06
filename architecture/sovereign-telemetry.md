@@ -14,7 +14,6 @@ cites: []
 paired_with: sovereign-telemetry.es.md
 ---
 
-# Zero-State Telemetry Architecture
 
 > The zero-state telemetry architecture collects behavioural and hardware signals from edge clients using only native browser APIs — no cookies, no session identifiers, no third-party analytics aggregators — and transmits the compiled payload asynchronously at tab-close.
 

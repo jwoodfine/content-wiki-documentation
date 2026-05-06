@@ -14,7 +14,6 @@ cites:
   - ni-51-102
 paired_with: apprenticeship-substrate.md
 ---
-# El sustrato de aprendizaje (resumen)
 
 La mayoría de los asistentes de escritura con IA empujan
 silenciosamente a sus usuarios hacia una voz única. Investigación

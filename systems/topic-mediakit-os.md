@@ -13,7 +13,6 @@ editor: pointsav-engineering
 cites: []
 ---
 
-# MediaKit OS
 
 **MediaKit OS** is the specialized toolkit within the PointSav platform dedicated to the management, curation, and distribution of institutional media assets and knowledge. It consolidates a suite of refined Open Source tools into a unified execution environment.
 

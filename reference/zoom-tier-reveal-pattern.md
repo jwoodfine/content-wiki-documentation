@@ -12,7 +12,6 @@ language_protocol: DESIGN-RESEARCH
 authored: 2026-04-30
 ---
 
-# Zoom-Tier Reveal Pattern
 
 The Zoom-Tier Reveal Pattern is a foundational geographic visualization strategy that preserves data semantics across varying scales of magnification. By transitioning between aggregate cluster representations and individual feature markers at defined zoom thresholds, the pattern ensures that high-level density signals remain as informative as granular per-anchor details.
 

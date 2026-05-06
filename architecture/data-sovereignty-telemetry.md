@@ -9,7 +9,6 @@ language: en
 paired_with: data-sovereignty-telemetry.es.md
 ---
 
-# Data Sovereignty and Zero-State Telemetry
 
 PointSav digital systems are engineered for absolute data sovereignty, utilizing a "Zero-State" architecture that eliminates the collection of personally identifiable information (PII). By prioritizing DARP compliance (Data Archive Retrieval Protocol), Foundry ensures that platform metrics never compromise the privacy of the asset holder or the individual user.
 

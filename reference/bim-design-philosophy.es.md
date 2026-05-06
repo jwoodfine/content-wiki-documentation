@@ -9,7 +9,6 @@ language: es
 paired_with: bim-design-philosophy.md
 ---
 
-# Filosofía de Diseño BIM
 
 El Sistema de Diseño de Edificios es la contraparte AEC del sustrato de diseño de Foundry. Se basa en una postura estructural: los compromisos de PointSav —almacenamiento en archivos planos, estándares abiertos, ejecución fuera de línea y seguridad seL4— no son preferencias estéticas, sino las ventajas que permiten superar las debilidades del software en la nube tradicional.
 

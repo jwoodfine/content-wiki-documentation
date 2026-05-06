@@ -12,7 +12,6 @@ language_protocol: DESIGN-RESEARCH
 authored: 2026-04-30
 ---
 
-# Patrón de Revelación por Niveles de Zoom (Zoom-Tier Reveal Pattern)
 
 El "Zoom-Tier Reveal Pattern" es una estrategia fundamental de visualización geográfica que preserva la semántica de los datos a través de diferentes escalas de aumento. Al transicionar entre representaciones de conglomerados (clusters) agregados y marcadores de características individuales en umbrales de zoom definidos, el patrón garantiza que las señales de densidad de alto nivel sigan siendo tan informativas como los detalles granulares de cada ancla.
 

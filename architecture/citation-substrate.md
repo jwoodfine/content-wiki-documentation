@@ -21,7 +21,6 @@ cites:
 paired_with: citation-substrate.es.md
 ---
 
-# The Citation Substrate
 
 > The Citation Substrate is the Foundry mechanism that connects every written artifact to the external authorities it depends on through a workspace-wide YAML registry, per-document frontmatter cites fields, and inline reference syntax that makes provenance machine-auditable.
 

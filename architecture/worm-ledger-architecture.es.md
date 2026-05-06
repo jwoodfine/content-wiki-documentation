@@ -9,7 +9,6 @@ language: es
 paired_with: worm-ledger-architecture.md
 ---
 
-# Sustrato del Ledger WORM: Arquitectura de Cuatro Capas
 
 El servicio `service-fs` de Foundry proporciona el sustrato de almacenamiento inmutable de "escritura única y lectura múltiple" (WORM) para cada cliente. Esta arquitectura garantiza que todos los registros —desde identidades hasta comunicaciones— sean permanentes, imposibles de borrar y verificables criptográficamente.
 

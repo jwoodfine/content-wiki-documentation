@@ -14,7 +14,6 @@ cites: []
 paired_with: service-search.es.md
 ---
 
-# service-search: Inverted Index
 
 > service-search is the Ring 2 full-text search service built on the Tantivy Rust library, providing microsecond retrieval across millions of files through a static binary inverted index that requires no active database process.
 

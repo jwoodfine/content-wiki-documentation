@@ -9,7 +9,6 @@ language: es
 paired_with: viewport-3d-accessibility.md
 ---
 
-# Accesibilidad del Visor 3D (3D Viewport)
 
 El componente `bim-viewport-3d` es la capa principal de visualización de modelos. Aunque el contenido de un lienzo (canvas) 3D es gráfico por naturaleza, el visor de Foundry está diseñado para ser plenamente operativo mediante la sincronización con componentes de texto y el uso de atajos de teclado estándar.
 

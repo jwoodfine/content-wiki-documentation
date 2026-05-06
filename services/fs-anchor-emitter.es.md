@@ -9,7 +9,6 @@ language: es
 paired_with: fs-anchor-emitter.md
 ---
 
-# Guía de Configuración del Emisor de Anclaje (FS Anchor Emitter)
 
 El emisor de anclaje es el componente encargado de generar "puntos de control" (checkpoints) firmados del ledger inmutable. Estos puntos de control son esenciales para demostrar la integridad de los datos ante auditorías externas.
 

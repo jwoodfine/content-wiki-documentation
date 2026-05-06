@@ -9,7 +9,6 @@ language: es
 paired_with: zero-execution-routing.md
 ---
 
-# Enrutamiento y Presentación de Ejecución Cero
 
 La capa de presentación de Foundry sigue un mandato de "Ejecución Cero", eliminando el uso de JavaScript en el cliente para la manipulación de la interfaz y el enrutamiento de idiomas. Esta arquitectura minimiza la superficie de ataque y garantiza un rendimiento instantáneo.
 

@@ -9,7 +9,6 @@ language: es
 paired_with: worm-ledger-storage-architecture.md
 ---
 
-# Arquitectura de Almacenamiento del Ledger WORM
 
 La arquitectura de Foundry se basa en la inmutabilidad estructural, garantizando que los archivos de datos sean permanentes y legibles a largo plazo.
 

@@ -14,7 +14,6 @@ cites: []
 paired_with: topic-totebox-orchestration.es.md
 ---
 
-# Totebox Orchestration
 
 **Totebox Orchestration** is the layer responsible for provisioning, coordinating, and monitoring individual Totebox instances in a PointSav deployment. A Totebox is an isolated data {{gli|container}} that separates active software engines from passive corporate ledgers. The {{gli|container}} stores data as inert flat files; cryptographic checksums verify structural integrity on a permanent basis.
 

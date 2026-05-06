@@ -14,7 +14,6 @@ cites: []
 paired_with: style-guide-guide.es.md
 ---
 
-# Style Guide — GUIDE
 
 > A GUIDE file is the operational runbook format for Foundry deployment subfolders — how to run, configure, or recover from failure — and is distinct from a TOPIC, which explains what something is and why.
 

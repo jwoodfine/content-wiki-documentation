@@ -9,7 +9,6 @@ language: en
 paired_with: neurodiversity-typography-standards.es.md
 ---
 
-# Neurodiversity and Typographic Standards
 
 Foundry prioritizes cognitive accessibility by implementing strict typographic standards designed to accommodate neurodivergent users. By adhering to WCAG 2.2 institutional accessibility guidelines, the system ensures that complex technical and financial disclosures remain legible for individuals with dyslexia, astigmatism, and other processing variances.
 

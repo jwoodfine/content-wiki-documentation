@@ -9,7 +9,6 @@ language: en
 paired_with: brand-typography.es.md
 ---
 
-# Brand Typography and Print Standards
 
 Foundry enforces a strict boundary between web interface presentation and institutional print output. While web layers prioritize performance via native system fonts, brand typography is reserved for offline print and PDF generation to project institutional authority and ensure DARP compliance.
 

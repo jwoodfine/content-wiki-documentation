@@ -9,7 +9,6 @@ language: es
 paired_with: service-fs-security-compliance.md
 ---
 
-# Seguridad y Cumplimiento de Service-FS
 
 `service-fs` está diseñado para cumplir con los estándares internacionales más exigentes de almacenamiento inmutable y soberanía de datos. Nuestra arquitectura WORM asegura que los registros no puedan ser borrados ni modificados, cumpliendo con las normativas financieras y de confianza globales.
 

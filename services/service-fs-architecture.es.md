@@ -9,7 +9,6 @@ language: es
 paired_with: service-fs-architecture.md
 ---
 
-# Arquitectura de Service-FS: El Núcleo WORM
 
 `service-fs` es el sustrato de almacenamiento inmutable (WORM) de Foundry, diseñado para ser la columna vertebral de persistencia para todos los servicios de la plataforma. Garantiza que cada registro sea permanente, auditable y soberano.
 

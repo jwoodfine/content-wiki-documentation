@@ -16,7 +16,6 @@ cites:
   - pmtiles-spec
 ---
 
-# GUIDE — Totebox Orchestration for GIS
 
 This guide details the integration and operational lifecycle of the `app-orchestration-gis` application surface with the underlying Totebox Archive data layer. It provides the runbook for maintaining the service-to-data boundary.
 

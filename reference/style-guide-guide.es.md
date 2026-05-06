@@ -1,4 +1,18 @@
-# Guía de estilo — GUIDE (resumen)
+---
+schema: foundry-doc-v1
+title: "Guía de estilo — GUIDE"
+slug: style-guide-guide
+language: es
+paired_with: style-guide-guide.md
+category: reference
+type: topic
+quality: core
+status: active
+bcsc_class: public-disclosure-safe
+last_edited: 2026-05-06
+editor: pointsav-engineering
+cites: []
+---
 
 Un archivo GUIDE (`GUIDE-<asunto>.md`) es un manual operativo —
 cómo ejecutar, configurar o recuperarse de una falla. Le indica

@@ -14,7 +14,6 @@ cites: []
 paired_with: machine-based-auth.es.md
 ---
 
-# Machine-Based Authorization
 
 > Machine-based authorization is the authentication model used in the PointSav platform, replacing username and password structures with cryptographic pairing of physical hardware verified by the capability manager.
 

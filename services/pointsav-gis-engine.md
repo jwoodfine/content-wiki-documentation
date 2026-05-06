@@ -17,7 +17,6 @@ cites:
   - tippecanoe-tool
 ---
 
-# PointSav GIS Engine
 
 The PointSav GIS Engine is a high-performance, sovereign Location Intelligence platform designed for offline-first, flat-file operation. Built in Rust, it represents a structural departure from traditional, proprietary geographic information systems (GIS) that rely on centralized database instances.
 

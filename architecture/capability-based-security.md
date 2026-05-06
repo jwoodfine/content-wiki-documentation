@@ -14,7 +14,6 @@ cites: []
 paired_with: capability-based-security.es.md
 ---
 
-# Capability-Based Security
 
 > Capability-based security is the access-control model PointSav uses at the hardware and operating-system layers, where each software component must hold a mathematically verified cryptographic token to communicate with any other component.
 

@@ -9,7 +9,6 @@ language: en
 paired_with: spatial-tree-accessibility.es.md
 ---
 
-# Spatial Tree Accessibility
 
 The `bim-spatial-tree` component provides a navigable hierarchy of a building’s spatial elements. It is designed to follow WAI-ARIA best practices for tree widgets, ensuring that complex architectural structures remain accessible to users relying on assistive technologies (AT).
 

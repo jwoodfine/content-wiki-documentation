@@ -14,7 +14,6 @@ cites: []
 paired_with: service-people.es.md
 ---
 
-# service-people: Personnel Ledger
 
 > service-people is the Ring 1 boundary-ingest service that maintains a deterministic flat-file personnel ledger, storing unique contact identifiers, communication states, and contact histories as a portable, schema-stable JSON flat-file database.
 

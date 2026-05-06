@@ -9,7 +9,6 @@ language: es
 paired_with: spatial-tree-accessibility.md
 ---
 
-# Accesibilidad del Árbol Espacial (Spatial Tree)
 
 El componente `bim-spatial-tree` permite navegar por la jerarquía espacial de un edificio. Su diseño sigue las mejores prácticas de WAI-ARIA para asegurar que las estructuras arquitectónicas complejas sean accesibles para todos los usuarios.
 

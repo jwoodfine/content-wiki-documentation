@@ -14,7 +14,6 @@ cites:
   - ni-51-102
 paired_with: anti-homogenization-discipline.md
 ---
-# Disciplina anti-homogenización (resumen)
 
 La mayoría de los asistentes de escritura con IA empujan
 silenciosamente a sus usuarios hacia una voz única. Investigación

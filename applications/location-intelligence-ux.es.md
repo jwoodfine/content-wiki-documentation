@@ -14,7 +14,6 @@ editor: pointsav-engineering
 paired_with: location-intelligence-ux.md
 ---
 
-# Filosofía de Diseño UX de Inteligencia de Ubicación
 
 La interfaz de Inteligencia de Ubicación de PointSav está diseñada para priorizar la claridad en la toma de decisiones por encima del volumen de datos brutos. Utilizando una filosofía de "conclusión primero", la plataforma comunica la confianza en la selección de sitios mediante jerarquía visual y una clasificación estructural.
 

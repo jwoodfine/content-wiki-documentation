@@ -12,7 +12,6 @@ language_protocol: DESIGN-COMPONENT
 authored: 2026-04-30
 ---
 
-# Selectores de Filtro por País (Country Filter Chips)
 
 El componente "Country Filter Chip" es una primitiva de navegación especializada diseñada para conjuntos de datos geográficos multijurisdiccionales. Permite a los usuarios ejecutar cortes de datos globales o específicos por país a través de una interfaz de selección exclusiva, filtrando simultáneamente las características del mapa y recentrando la ventana de visualización en los límites nacionales de destino.
 

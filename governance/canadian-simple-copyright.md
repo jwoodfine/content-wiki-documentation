@@ -15,7 +15,6 @@ cites:
 paired_with: canadian-simple-copyright.es.md
 ---
 
-# Canadian-Simple Copyright Posture
 
 > Foundry intellectual property vests in Woodfine Capital Projects Inc. by operation of Canadian Copyright Act § 13(3) without requiring inter-company assignment, preserving both share-sale optionality and a clean downstream-rollover path at incorporation.
 

@@ -21,7 +21,6 @@ cites:
 paired_with: trajectory-substrate.es.md
 ---
 
-# The Trajectory Substrate
 
 > The Trajectory Substrate is the Foundry mechanism that converts operational work — commits, sessions, operator feedback — into structured JSONL training tuples, routing them into a continued-pretraining corpus that improves the OLMo base model over time.
 

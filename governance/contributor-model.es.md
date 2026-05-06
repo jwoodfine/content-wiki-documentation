@@ -4,7 +4,6 @@ bcsc_class: public-disclosure-safe
 
 ---
 
-# El modelo de contribuyentes en tres niveles (resumen)
 
 El sustrato de Foundry es demasiado amplio para que un solo
 equipo lo mantenga, y demasiado valioso para atarlo a la

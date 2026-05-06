@@ -9,7 +9,6 @@ language: en
 paired_with: favicon-matrix.es.md
 ---
 
-# Favicon Matrix and Tab Identity
 
 The PointSav Building Design System utilizes high-fidelity SVG data URIs to manage browser tab identification. This approach optimizes performance and visual clarity across all display types while reinforcing corporate identity at the infrastructure level.
 

@@ -19,7 +19,6 @@ cites:
 paired_with: design-system-substrate.es.md
 ---
 
-# Design-System Substrate
 
 > The design-system substrate is a self-hosted, customer-owned design-system engine that stores tokens and components in the customer's own Git repository, serves them through a machine-readable {{gli|MCP}} endpoint, and uses the W3C DTCG token format to remain editor-agnostic.
 

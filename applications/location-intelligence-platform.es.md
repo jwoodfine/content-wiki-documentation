@@ -19,7 +19,6 @@ cites:
   - osc-sn-51-721
 ---
 
-# Plataforma de Inteligencia de Ubicación
 
 La plataforma de Inteligencia de Ubicación de PointSav es una aplicación GIS soberana, basada en archivos planos, diseñada para el análisis de clústeres minoristas y la selección estratégica de sitios. Construida como una alternativa de alto rendimiento a los productos SaaS comerciales, la plataforma permite a los clientes mantener el control total sobre sus conjuntos de datos geográficos, algoritmos e infraestructura de visualización.
 

@@ -9,7 +9,6 @@ language: en
 paired_with: sovereign-airlock-doctrine.es.md
 ---
 
-# The Sovereign Airlock Doctrine
 
 The Sovereign Airlock Doctrine establishes the mandatory security and identity protocols for all data transmission and code deployment within the Foundry ecosystem. By enforcing strict isolation between Vendor (PointSav) and Customer (Woodfine) identities, Foundry guarantees absolute operational integrity and sovereign control over digital assets.
 

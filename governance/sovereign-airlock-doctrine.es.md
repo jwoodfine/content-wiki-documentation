@@ -9,7 +9,6 @@ language: es
 paired_with: sovereign-airlock-doctrine.md
 ---
 
-# La Doctrina del Exclusa Soberana (Sovereign Airlock)
 
 La Doctrina del Exclusa Soberana establece los protocolos obligatorios de seguridad e identidad para la transmisión de datos y el despliegue de código en Foundry. Al separar estrictamente las identidades del Proveedor (PointSav) y del Cliente (Woodfine), garantizamos la integridad operativa y el control total de los activos digitales.
 

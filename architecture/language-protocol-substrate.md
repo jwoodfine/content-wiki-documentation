@@ -16,7 +16,6 @@ cites:
 paired_with: language-protocol-substrate.es.md
 ---
 
-# The Language-Protocol Substrate
 
 > The Language-Protocol Substrate is the Foundry editorial infrastructure that provides four adapter families, eighteen genre templates, a frontmatter validator, and a banned-vocabulary list, making editorial work a per-tenant, audited, and forkable practice.
 

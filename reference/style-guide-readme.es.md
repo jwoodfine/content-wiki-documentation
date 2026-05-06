@@ -11,7 +11,6 @@ last_edited: 2026-04-30
 editor: pointsav-engineering
 paired_with: style-guide-readme.md
 ---
-# Guía de estilo — README (resumen)
 
 El archivo README es el más leído de cualquier repositorio. Es
 el primer artefacto que ve un lector frío, un colaborador o un

@@ -16,7 +16,6 @@ cites:
 paired_with: style-guide-readme.es.md
 ---
 
-# Style Guide — README
 
 > A Foundry README is the first file a cold reader encounters in any repository and must orient them in three elements — identity, scope, and where to look next — before supplying any further detail.
 

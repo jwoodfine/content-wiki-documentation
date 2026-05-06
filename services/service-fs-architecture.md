@@ -9,7 +9,6 @@ language: en
 paired_with: service-fs-architecture.es.md
 ---
 
-# Service-FS Architecture: The {{gli|WORM}} Backbone
 
 `service-fs` is the per-tenant Write-Once-Read-Many ({{gli|WORM}}) immutable ledger substrate. It serves as the durable backbone for the Foundry Three-Ring Architecture, providing the primary landing zone for all Ring 1 boundary-ingest services. Every critical record—including identity anchors, email communications, and document artifacts—is persisted through this substrate to guarantee tamper-evidence and long-term availability.
 

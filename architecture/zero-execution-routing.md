@@ -9,7 +9,6 @@ language: en
 paired_with: zero-execution-routing.es.md
 ---
 
-# Zero-Execution Routing and Presentation
 
 Foundry’s public presentation layers adhere to a "Zero-Execution" mandate, eliminating client-side JavaScript for core DOM manipulation, language routing, and file serving. This architectural constraint minimizes the attack surface and guarantees SOC 3 compliance by relying entirely on deterministic files and native CSS state management.
 

@@ -9,7 +9,6 @@ language: es
 paired_with: identity-ledger-schema-design.md
 ---
 
-# Diseño del Esquema del Ledger de Identidad
 
 El Ledger de Identidad es el registro canónico y permanente de las personas dentro del ecosistema Foundry. Utiliza un formato de "solo anexar" (append-only) para asegurar que la historia de cada identidad sea inmutable y auditable.
 

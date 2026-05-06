@@ -15,7 +15,6 @@ cites:
 paired_with: apprenticeship-substrate.es.md
 ---
 
-# The Apprenticeship Substrate
 
 > The Apprenticeship Substrate is the Foundry mechanism that routes code-shaped and editorial work first through a local Small Language Model, captures signed senior verdicts on every attempt, and uses the resulting preference pairs as continued-pretraining signal.
 

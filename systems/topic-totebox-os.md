@@ -14,7 +14,6 @@ cites: []
 paired_with: os-totebox.es.md
 ---
 
-# Totebox OS
 
 **Totebox OS** is the core data-archive layer of the PointSav platform. It runs on an seL4 {{gli|microkernel}} and enforces a strict separation between software execution engines and the corporate ledgers those engines read and write. Every institutional record lives as an inert flat file — Markdown, YAML, or CSV — that requires no proprietary runtime to open or interpret decades later.
 

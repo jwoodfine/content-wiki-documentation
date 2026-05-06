@@ -14,7 +14,6 @@ cites: []
 paired_with: sovereign-ai-routing.es.md
 ---
 
-# AI Routing and the Linguistic Air-Lock
 
 > AI routing in the PointSav platform processes language model requests through a local sanitization step before any data reaches external models, ensuring that internal structured data never travels to third-party servers in identifiable form.
 

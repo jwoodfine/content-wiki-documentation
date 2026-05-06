@@ -14,7 +14,6 @@ cites: []
 paired_with: service-email.es.md
 ---
 
-# service-email: Email Transport Bridge
 
 > service-email is the Ring 1 boundary-ingest service that polls a Microsoft 365 mailbox via the Microsoft Graph API, extracts raw email payloads, and writes them to a local queue without interpreting their content.
 

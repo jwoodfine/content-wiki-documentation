@@ -17,7 +17,6 @@ cites:
   - maplibre-gl-js
 ---
 
-# app-orchestration-gis
 
 `app-orchestration-gis` is the stateless spatial analytics engine of the PointSav GIS platform. It performs linear-geometry calculations and coordinate mapping to produce the Woodfine co-location rankings and the interactive map surface at [gis.woodfinegroup.com](https://gis.woodfinegroup.com).
 

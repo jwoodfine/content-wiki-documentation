@@ -20,7 +20,6 @@ cites:
 paired_with: decode-time-constraints.es.md
 ---
 
-# Decode-Time Constraints
 
 > Decode-time constraints are structural rules applied to a language model's output at each token-emission step, making banned vocabulary or structurally invalid responses mathematically impossible to produce rather than catching them after the fact.
 

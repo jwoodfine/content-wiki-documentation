@@ -9,7 +9,6 @@ language: en
 paired_with: service-fs-security-compliance.es.md
 ---
 
-# Service-FS Security and Compliance Posture
 
 `service-fs` is engineered to meet the highest international standards for immutable storage and data sovereignty. By implementing a structural {{gli|WORM}} (Write-Once-Read-Many) architecture, Foundry provides a verifiable assurance that data records are non-rewriteable and non-erasable, satisfying the core requirements of global financial and trust regulations.
 

@@ -9,7 +9,6 @@ language: en
 paired_with: bim-aec-muscle-memory.es.md
 ---
 
-# AEC Muscle Memory and Interface Conventions
 
 The Building Design System adopts established interface vocabularies from industry-standard tools (Revit, ArchiCAD, BricsCAD, and Bonsai) to ensure a zero-learning curve for AEC practitioners. By mirroring universal navigation and layout conventions, Foundry allows users to focus on strategic innovations—such as the flat-file vault and code-as-composable-geometry—rather than basic tool interaction.
 

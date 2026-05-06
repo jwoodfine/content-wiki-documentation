@@ -9,7 +9,6 @@ language: es
 paired_with: data-sovereignty-telemetry.md
 ---
 
-# Soberanía de Datos y Telemetría de Estado Cero
 
 Los sistemas de PointSav están diseñados para garantizar la soberanía absoluta de los datos mediante una arquitectura de "Estado Cero" que elimina la recolección de información de identificación personal (PII).
 

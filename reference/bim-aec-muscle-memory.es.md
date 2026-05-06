@@ -9,7 +9,6 @@ language: es
 paired_with: bim-aec-muscle-memory.md
 ---
 
-# Memoria Muscular AEC y Convenciones de Interfaz
 
 El Sistema de Diseño de Edificios adopta el vocabulario de interfaz universal de la industria (Revit, ArchiCAD, BricsCAD y Bonsai) para garantizar que los profesionales del sector AEC (Arquitectura, Ingeniería y Construcción) no tengan curva de aprendizaje. Al respetar las convenciones establecidas, Foundry permite que los usuarios se concentren en las innovaciones estratégicas de la plataforma.
 

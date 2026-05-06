@@ -9,7 +9,6 @@ language: en
 paired_with: fs-anchor-emitter.es.md
 ---
 
-# FS Anchor Emitter Configuration Guide
 
 The `fs-anchor-emitter` is the component responsible for generating signed checkpoints of the {{gli|WORM}} ledger and preparing them for external anchoring. This guide details the setup and operational requirements for ensuring ledger integrity across both Vendor (Foundry) and Customer (Totebox) environments.
 

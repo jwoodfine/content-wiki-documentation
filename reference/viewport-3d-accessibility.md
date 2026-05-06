@@ -9,7 +9,6 @@ language: en
 paired_with: viewport-3d-accessibility.es.md
 ---
 
-# 3D Viewport Accessibility
 
 The `bim-viewport-3d` component is the primary visualization layer for building models. While 3D canvas content is inherently graphical, the component is designed to remain operational and informative for all users through selection synchronization and robust keyboard navigation.
 

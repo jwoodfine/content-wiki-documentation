@@ -14,7 +14,6 @@ cites:
   - ni-51-102
 paired_with: canadian-simple-copyright.md
 ---
-# Postura de derechos de autor canadiense-simple (resumen)
 
 La propiedad intelectual de Foundry se mantiene bajo una postura
 corporativa deliberadamente mínima, elegida para preservar

@@ -14,7 +14,6 @@ editor: pointsav-engineering
 paired_with: location-intelligence-ux.es.md
 ---
 
-# Location Intelligence UX Design Philosophy
 
 The PointSav Location Intelligence interface is engineered to prioritize decision-maker clarity over raw data volume. By utilizing a "Conclusion-First" design philosophy, the platform communicates site selection confidence through visual hierarchy and structural grading.
 

@@ -4,7 +4,6 @@ bcsc_class: public-disclosure-safe
 
 ---
 
-# Hospedaje por el cliente — *We Own It* (resumen)
 
 La disciplina de hospedaje por el cliente en Foundry es el
 compromiso arquitectónico de que cada artefacto que un cliente

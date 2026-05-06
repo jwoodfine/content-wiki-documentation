@@ -9,7 +9,6 @@ language: en
 paired_with: worm-ledger-storage-architecture.es.md
 ---
 
-# WORM Ledger Storage Architecture
 
 Foundry’s storage architecture is built on the principle of structural immutability, ensuring that data archives remain tamper-evident and readable for the long term. This document synthesizes the engineering decisions behind the tile-based storage engine and the transition from hosted environments to verified microkernels.
 

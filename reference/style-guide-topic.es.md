@@ -11,7 +11,6 @@ last_edited: 2026-04-30
 editor: pointsav-engineering
 paired_with: style-guide-topic.md
 ---
-# Guía de estilo — TOPIC (resumen)
 
 Un archivo TOPIC (`topic-<asunto>.md`) en una wiki de contenido
 de Foundry explica *qué es* algo. Es doctrina, arquitectura o

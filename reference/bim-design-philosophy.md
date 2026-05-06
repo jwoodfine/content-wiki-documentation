@@ -9,7 +9,6 @@ language: en
 paired_with: bim-design-philosophy.es.md
 ---
 
-# BIM Design Philosophy
 
 The Building Design System serves as the AEC-specific extension of Foundry’s design substrate, analogous to the relationship between IBM Carbon and specialized industry modules. It is anchored to the IFC 4.3 entity hierarchy and prioritized for high-fidelity operational environments. The system translates Foundry’s core commitments—flat-file storage, open standards, and offline-first execution—into a professional toolset that addresses the structural weaknesses of legacy cloud-only BIM.
 

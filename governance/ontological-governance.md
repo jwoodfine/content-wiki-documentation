@@ -14,7 +14,6 @@ cites: []
 paired_with: ontological-governance.es.md
 ---
 
-# Ontological Governance
 
 > Ontological governance is the discipline of governing what the platform *means* by its categories over time — enforced through four throttled CSV ledgers that define classification vocabulary, and a human-verification loop that prevents automated extraction errors from compounding.
 

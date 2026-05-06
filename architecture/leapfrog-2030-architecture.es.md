@@ -1,5 +1,18 @@
-
-# La Arquitectura Leapfrog 2030
+---
+schema: foundry-doc-v1
+title: "La Arquitectura Leapfrog 2030"
+slug: leapfrog-2030-architecture
+language: es
+paired_with: leapfrog-2030-architecture.md
+category: architecture
+type: concept
+quality: complete
+status: active
+bcsc_class: public-disclosure-safe
+last_edited: 2026-05-06
+editor: pointsav-engineering
+cites: []
+---
 
 Cómo un sustrato de inteligencia artificial para pequeñas y medianas empresas se diferencia estructuralmente de la infraestructura de los grandes proveedores de nube.
 

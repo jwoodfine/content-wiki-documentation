@@ -13,7 +13,6 @@ editor: pointsav-engineering
 cites: []
 ---
 
-# Totebox Archive
 
 A **Totebox Archive** is the fundamental unit of data storage and sovereignty within the PointSav platform. It operates as a **Micro Virtual Machine** that provides self-contained services for specific institutional assets.
 

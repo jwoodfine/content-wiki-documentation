@@ -14,7 +14,6 @@ cites: []
 paired_with: service-slm.es.md
 ---
 
-# service-slm: Linguistic Air-Lock
 
 > service-slm is the Doorman service — the single network boundary that holds API keys, routes AI inference across three compute tiers, and writes an immutable per-tenant audit record of every external call.
 

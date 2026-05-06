@@ -12,7 +12,6 @@ language_protocol: DESIGN-COMPONENT
 authored: 2026-04-30
 ---
 
-# Panel de Estadísticas de Mapa (Map Stats Panel)
 
 El "Map Stats Panel" es un componente reactivo de visualización de datos que presenta estadísticas agregadas en tiempo real basadas en los filtros activos del mapa. Posicionado como una superposición flotante, proporciona a los usuarios visibilidad constante de los indicadores clave de rendimiento, como el recuento de anclas, la distribución jurisdiccional y las calificaciones de los conglomerados (clusters).
 

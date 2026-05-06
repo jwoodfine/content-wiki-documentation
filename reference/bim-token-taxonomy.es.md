@@ -9,7 +9,6 @@ language: es
 paired_with: bim-token-taxonomy.md
 ---
 
-# Taxonomía de Tokens BIM
 
 La taxonomía de tokens BIM de Foundry organiza el sistema en ocho categorías primitivas ancladas a la jerarquía de entidades de IFC 4.3 (ISO 16739-1:2024). Esta alineación garantiza que los tokens del sistema de diseño correspondan directamente a las convenciones de clasificación AEC universales.
 

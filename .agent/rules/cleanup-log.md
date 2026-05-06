@@ -16,6 +16,28 @@ Last updated: 2026-05-06.
 
 ## Open
 
+### 2026-05-06 — Body H1 batch remediation (project-editorial Task, session 4)
+
+Session: project-editorial Task (2026-05-06, fourth session).
+
+**103 files fixed** via Python batch script: removed duplicate body `# Title` H1 from all category-subdirectory articles with `foundry-doc-v1` frontmatter. Script respected code blocks (no false positives).
+
+**3 files received frontmatter + H1 removal:**
+- `architecture/leapfrog-2030-architecture.md` — frontmatter added (was bare article)
+- `architecture/leapfrog-2030-architecture.es.md` — frontmatter added (was bare article)
+- `reference/style-guide-guide.es.md` — frontmatter added (was bare article, ES pair of style-guide-guide.md)
+
+**1 file logged as open item — `infrastructure/guide-telemetry.md`:**
+- Starts with `# 📊 WOODFINE ASSET LEDGERS: Telemetry Governance` at line 1, no frontmatter
+- Contains Woodfine-specific internal operational content (entity, model, executive summary)
+- Not a standard wiki article — needs classification before frontmatter can be assigned
+- Decision needed: (a) add frontmatter + normalize as wiki article, (b) move to woodfine-fleet-deployment as a GUIDE, or (c) remove from this repo entirely
+- Leaving H1 in place until disposition is decided (removing H1 without frontmatter would break the article title)
+
+**`applications/user-guide-2026-03-30-v2.md`** — deferred (no frontmatter, uses `# Part I:` / `# Part II:` as chapter markers throughout; `# Step 1:` etc. are inside code blocks). Needs separate classification pass.
+
+**`reference/style-guide-changelog.md`** — clean (the `^# Changelog` line at line 92 is inside a ```` ```markdown ```` code block; correctly skipped by script).
+
 ### 2026-05-06 — flat-file-bim-leapfrog sweep (project-editorial Task, session 3)
 
 Session: project-editorial Task (2026-05-06, third session).

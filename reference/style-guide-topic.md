@@ -16,7 +16,6 @@ cites:
 paired_with: style-guide-topic.es.md
 ---
 
-# Style Guide — TOPIC
 
 > A TOPIC file explains what something is — doctrine, architecture, or background that a fresh reader needs to understand the platform — and is the counterpart of a GUIDE, which explains how to operate it.
 

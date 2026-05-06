@@ -9,7 +9,6 @@ last_edited: 2026-05-03
 editor: project-language Task
 ---
 
-# 📖 Glossary & Lexicon
 
 This is the definitive, public-facing A-Z Lexicon for PointSav Digital Systems. It bridges standard industry terminology (layman terms) with our specialized **2030 Sovereign Infrastructure Doctrine**. 
 

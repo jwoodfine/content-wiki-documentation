@@ -9,7 +9,6 @@ bcsc_class: public-disclosure-safe
 
 ---
 
-# El sustrato de protocolo de lenguaje (resumen)
 
 El sustrato que convierte el trabajo editorial en Foundry en
 una práctica auditada, por inquilino y bifurcable. Lleva cuatro

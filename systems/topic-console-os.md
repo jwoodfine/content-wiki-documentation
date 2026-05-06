@@ -13,7 +13,6 @@ editor: pointsav-engineering
 cites: []
 ---
 
-# Console OS
 
 **Console OS** is a lightweight, terminal-based operating system designed for the administration of PointSav services and infrastructure. It operates as the primary interface for system administrators and power users, providing direct access to the platform's underlying mechanics.
 

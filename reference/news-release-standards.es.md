@@ -9,7 +9,6 @@ language: es
 paired_with: news-release-standards.md
 ---
 
-# Estándares de Tipografía y Diseño de Comunicados de Prensa
 
 Foundry impone reglas estrictas de formato para la difusión de noticias corporativas, siguiendo los principios de Lenguaje Claro ISO 24495-1. Esto asegura que cada comunicado proyecte autoridad institucional y sea perfectamente legible tanto en formato digital como impreso.
 

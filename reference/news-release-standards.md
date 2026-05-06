@@ -9,7 +9,6 @@ language: en
 paired_with: news-release-standards.es.md
 ---
 
-# News Release Typography and Layout Standards
 
 Foundry enforces strict formatting rules for corporate news syndication to ensure absolute clarity and institutional authority. By adhering to ISO 24495-1 Plain Language principles, the system guarantees that disclosures are accessible and professional across both digital and physical mediums.
 

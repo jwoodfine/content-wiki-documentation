@@ -1,5 +1,17 @@
-
-# The Leapfrog 2030 Architecture
+---
+schema: foundry-doc-v1
+title: "The Leapfrog 2030 Architecture"
+slug: leapfrog-2030-architecture
+category: architecture
+type: concept
+quality: complete
+status: active
+bcsc_class: public-disclosure-safe
+last_edited: 2026-05-06
+editor: pointsav-engineering
+cites: []
+paired_with: leapfrog-2030-architecture.es.md
+---
 
 How a small-and-medium-business AI substrate becomes structurally different from
 the hyperscaler stack.

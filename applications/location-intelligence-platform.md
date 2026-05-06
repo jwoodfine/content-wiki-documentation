@@ -19,7 +19,6 @@ cites:
   - osc-sn-51-721
 ---
 
-# Location Intelligence Platform
 
 The PointSav Location Intelligence platform is a sovereign, flat-file GIS application designed for retail cluster analysis and strategic site selection. Built as a high-performance alternative to commercial SaaS products, the platform enables customers to maintain complete control over their geographic datasets, algorithms, and rendering infrastructure.
 

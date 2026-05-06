@@ -14,7 +14,6 @@ cites: []
 paired_with: crypto-attestation.es.md
 ---
 
-# Cryptographic Payload Attestation
 
 > Cryptographic payload attestation is the mechanism by which PointSav edge nodes dynamically prove the integrity of their published text content to any viewer, using client-side SHA-256 hashing so that any auditor can independently verify a disclosure has not been altered in transit.
 

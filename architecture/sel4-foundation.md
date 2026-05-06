@@ -14,7 +14,6 @@ cites: []
 paired_with: sel4-foundation.es.md
 ---
 
-# seL4 Foundation
 
 > The seL4 foundation is the formally verified microkernel that acts as the root of trust in PointSav's operating-system layer, providing mathematically proven isolation between all hardware resources and software components.
 

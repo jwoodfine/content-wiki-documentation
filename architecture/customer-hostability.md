@@ -16,7 +16,6 @@ cites:
 paired_with: customer-hostability.es.md
 ---
 
-# Customer Hostability
 
 > Customer hostability is the architectural commitment that every PointSav artefact can run on the customer's own hardware, against the customer's own keys, with the customer's own audit ledger — making self-hosted deployment the canonical pattern, not a tier.
 
