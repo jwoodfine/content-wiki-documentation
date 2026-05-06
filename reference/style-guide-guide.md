@@ -8,7 +8,7 @@ quality: core
 short_description: "How to write a GUIDE file: the operational runbook format used inside Foundry deployment subfolders, covering required structure, voice, command formatting, and the distinction from TOPIC files."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-06
 editor: pointsav-engineering
 cites: []
 paired_with: style-guide-guide.es.md
@@ -72,18 +72,22 @@ whether the procedure is fresh.
 
 ## Required structure
 
-Every GUIDE has four sections:
+Every GUIDE has six sections, in this order:
 
-1. **Purpose** — one sentence saying what this GUIDE accomplishes.
-2. **Procedure** — numbered steps in imperative voice.
-3. **Verification** — how the operator confirms each step worked.
-4. **Recovery** — what to do if a step fails.
+1. **Prerequisites** — what the operator must have in place before starting: installed tools, access permissions, running services, environment variables, any prior GUIDE that must have been completed first.
+2. **Purpose** — one sentence saying what this GUIDE accomplishes.
+3. **Procedure** — numbered steps in imperative voice.
+4. **Expected outcome** — the post-condition this GUIDE is intended to establish: what the system looks like when the procedure has succeeded. Stated as a verifiable fact, not a narrative ("The service reports `active (running)`" not "the service should be running").
+5. **Verification** — the sequence of commands the operator runs to confirm the expected outcome holds. Each check specifies the command and the expected output.
+6. **Rollback** — how to undo the procedure if verification fails or the procedure is interrupted. Name the failure mode, the diagnostic command, and the corrective steps. If the operation is idempotent or irreversible, say so explicitly — "this operation is idempotent; re-run the procedure" or "no rollback path; escalate to on-call before proceeding".
 
-Sections that do not apply are not omitted. If the GUIDE
-describes a procedure with no recovery path (because the
-procedure is idempotent, for instance), the Recovery section
-says so explicitly. Omission would be ambiguous; a stated
-"no recovery needed; the operation is idempotent" is informative.
+Sections that do not apply are not omitted — they explain why they do not apply. A Prerequisites section that lists nothing still says "No prerequisites; the procedure is self-contained." Omission would be ambiguous.
+
+## Prerequisites are explicit
+
+Prerequisites list everything the operator must have before the first numbered step. Items include: installed packages or binaries (`~/Foundry/bin/commit-as-next.sh` available), access permissions (SSH key loaded, `sudo` rights, membership in a Unix group), running services (`local-doorman.service` active), environment variables (`TENANT_ID` set), and any prior GUIDE that must have completed successfully (with a `[[slug]]` link to that GUIDE).
+
+A Prerequisites section that lists nothing says explicitly: "No prerequisites; the procedure is self-contained." This tells the operator the GUIDE is safe to start without context.
 
 ## Voice — terse imperative
 
@@ -126,18 +130,16 @@ individual steps. The Verification section at the bottom of the
 GUIDE confirms the post-condition the GUIDE is meant to
 establish.
 
-## Recovery is concrete
+## Rollback is concrete
 
-When a step fails, the operator should know exactly what to
-try next. Recovery instructions name the failure mode they
-address, the diagnostic command that confirms the failure mode,
-and the corrective procedure.
+When verification fails, the operator must know what to try next. Rollback instructions name the failure mode they address, the diagnostic command that confirms it, and the corrective steps.
 
-A GUIDE with vague recovery ("restart the service if it does
-not work") is worse than no GUIDE — it suggests the operator
-has options when in fact the procedure has not been thought
-through. Better to write "no automatic recovery; escalate to
-on-call" than to gesture at recovery without specifying it.
+A GUIDE with vague rollback ("restart the service if it does not work") is worse than no GUIDE — it suggests the operator has options when in fact the procedure has not been thought through. Better to write "no automatic rollback; escalate to on-call" than to gesture at recovery without specifying it.
+
+Two special cases handled explicitly:
+
+- **Idempotent procedure**: "This procedure is idempotent. If interrupted, re-run from step 1 — no partial state to clean up."
+- **Irreversible procedure**: "This operation cannot be undone. Verify prerequisites and expected outcome before executing step N."
 
 ## What a GUIDE is not
 
