@@ -16,6 +16,35 @@ Last updated: 2026-05-06.
 
 ## Open
 
+### 2026-05-06 — flat-file-bim-leapfrog sweep (project-editorial Task, session 3)
+
+Session: project-editorial Task (2026-05-06, third session).
+
+**Commit `9c805a1`** (Jennifer Woodfine) — `architecture/flat-file-bim-leapfrog.md` + `.es.md` updated from project-bim inbound draft (Doctrine claim #40 — Flat-File BIM Substrate).
+
+Changes: expanded standards-stack maturity section; extended format table (9 formats); added government regulatory acceptance section; added trade-offs section; §6 applied (all named competitors genericized); body H1 removed per content-contract §5.2; ES strategic-adaptation refreshed.
+
+No new open items introduced. 4 existing outstanding items carried forward (see Phase D+E entry below).
+
+### 2026-05-06 — Phase D + E batch (project-editorial Task, session 2)
+
+Session: project-editorial Task (2026-05-06, second session).
+
+**Phase D — 28 Spanish strategic-adaptation pairs committed (2 commits):**
+
+- `088491b` (Peter) — architecture/ (9 ES files: 3-layer-stack, capability-based-security, crypto-attestation, cryptographic-ledgers, machine-based-auth, sel4-foundation, sovereign-ai-routing, sovereign-telemetry, verification-surveyor) + governance/ (3 ES files: moonshot-initiatives, ontological-governance, sovereign-replacement-initiative)
+- `5d5f205` (Jennifer) — services/ (10 ES files: message-courier, pointsav-gis-engine, service-business-clustering, service-email, service-extraction, service-fs-data-lake, service-people, service-places-filtering, service-search, service-slm) + systems/ (6 ES files: topic-console-os, topic-infrastructure-os, topic-mediakit-os, topic-totebox-archive, topic-totebox-orchestration, topic-totebox-os)
+
+**Phase E — bcsc_class + status sweep (2 commits):**
+
+- `2029518` (Peter) — architecture/ (113 files total across EN+ES): `bcsc_class: public-disclosure-safe` added to all files missing it; `status: pre-build → active` on all applicable files
+- `8e92790` (Jennifer) — services/, systems/, infrastructure/, reference/, design-system/ (100 files): same treatment
+
+Total files modified by Phase E: 213 across all categories.
+
+**Outstanding (carried forward):**
+- See prior session entry below for items 1–4.
+
 ### 2026-05-06 — GIS service topics + design-system/ category + editorial fixes (project-editorial Task)
 
 Session: project-editorial Task (2026-05-06).
