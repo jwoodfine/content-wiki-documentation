@@ -7,6 +7,13 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: service-fs-security-compliance.md
+## Véase también
+
+- [[service-fs-architecture]]
+- [[capability-based-security]]
+- [[machine-based-auth]]
+- [[sel4-foundation]]
+
 ---
 
 

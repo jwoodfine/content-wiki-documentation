@@ -16,6 +16,13 @@ cites:
   - wcag-22
   - dtcg-spec
   - doctrine-38
+## Véase también
+
+- [[design-color]]
+- [[design-typography]]
+- [[design-spacing]]
+- [[design-motion]]
+
 ---
 
 El sustrato de sistema de diseño de PointSav existe como respuesta directa a cuatro brechas estructurales en el panorama del diseño de 2026.

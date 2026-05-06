@@ -13,6 +13,13 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: verification-surveyor.md
 cites: []
+## Véase también
+
+- [[ontological-governance]]
+- [[message-courier]]
+- [[sovereign-telemetry]]
+- [[moonshot-initiatives]]
+
 ---
 
 El Verificador de Identidad es el punto de control arquitectónico en `service-people` que impide que los errores de extracción automatizada se acumulen. Requiere que un operador humano confirme cada fragmento de identidad contra una fuente externa antes de que se comprometa permanentemente en el libro contable verificado.

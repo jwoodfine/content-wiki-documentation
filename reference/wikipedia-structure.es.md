@@ -11,6 +11,13 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 paired_with: wikipedia-structure.md
+## Véase también
+
+- [[style-guide-topic]]
+- [[style-guide-readme]]
+- [[compounding-substrate]]
+- [[apprenticeship-substrate]]
+
 ---
 
 Wikipedia es la convención de documentación más interiorizada del mundo. Cualquier persona que haya utilizado Wikipedia durante un tiempo lleva un modelo inconsciente de dónde vive la información en una página: el resumen ejecutivo al inicio, el recuadro de datos a la derecha, las referencias al pie. `documentation.pointsav.com` adopta las mismas convenciones estructurales para que los lectores lleguen ya sabiendo cómo utilizarla.

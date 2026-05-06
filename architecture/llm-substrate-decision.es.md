@@ -12,6 +12,13 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: llm-substrate-decision.md
+## Véase también
+
+- [[four-tier-slm-substrate]]
+- [[apprenticeship-substrate]]
+- [[trajectory-substrate]]
+- [[compounding-doorman]]
+
 ---
 
 La plataforma PointSav utiliza la familia de modelos OLMo 3 como sustrato de inferencia de lenguaje. OLMo 3 7B se ejecuta localmente en el hardware del cliente. OLMo 3.1 32B Think se ejecuta en instancias de GPU bajo demanda para tareas de inferencia más exigentes. La selección no responde principalmente al desempeño en benchmarks, sino a la profundidad de propiedad que cada modelo permite.

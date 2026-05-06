@@ -12,6 +12,12 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: seed-taxonomy-as-smb-bootstrap.md
+## Véase también
+
+- [[vertical-seed-packs-marketplace]]
+- [[knowledge-graph-grounded-apprenticeship]]
+- [[customer-owned-graph-ip]]
+
 ---
 
 Cada despliegue de inquilino Foundry comienza con una **taxonomía semilla**: una estructura compacta, ajustable manualmente y de cuatro partes que forma el andamiaje inicial del grafo de conocimiento por inquilino. Las cuatro partes son Arquetipos, Plan de Cuentas, Dominios y Temas. Cada entidad lleva palabras clave de gravedad — anclajes de palabras clave explicables que impulsan la clasificación del contenido entrante. Este patrón codifica la reclamación doctrinal #47.

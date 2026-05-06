@@ -13,6 +13,13 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: topic-totebox-archive.md
 cites: []
+## Véase también
+
+- [[topic-totebox-os]]
+- [[topic-totebox-orchestration]]
+- [[topic-infrastructure-os]]
+- [[topic-site-ledger-integration]]
+
 ---
 
 Un Totebox Archive es la unidad fundamental de almacenamiento y soberanía de datos dentro de la plataforma PointSav. Opera como una **Micro Máquina Virtual** que proporciona servicios autocontenidos para activos institucionales específicos.

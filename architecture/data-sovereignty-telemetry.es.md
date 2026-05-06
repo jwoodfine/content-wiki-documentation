@@ -7,6 +7,13 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: data-sovereignty-telemetry.md
+## Véase también
+
+- [[sovereign-telemetry]]
+- [[machine-based-auth]]
+- [[zero-execution-routing]]
+- [[cryptographic-ledgers]]
+
 ---
 
 

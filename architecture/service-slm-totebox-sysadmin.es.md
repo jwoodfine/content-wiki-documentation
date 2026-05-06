@@ -7,6 +7,13 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 quality: complete
+## Véase también
+
+- [[apprenticeship-substrate]]
+- [[four-tier-slm-substrate]]
+- [[single-boundary-compute-discipline]]
+- [[trajectory-substrate]]
+
 ---
 
 `service-slm` — el Portero — es el administrador del sistema operativo y el centro de soporte previsto para los despliegues de Totebox Archive y Totebox Orchestration. Este documento delimita lo que el modelo necesita saber, cómo se captura ese conocimiento de las operaciones reales y la trayectoria del producto para el cliente en tres niveles que resulta de ello.

@@ -15,6 +15,12 @@ paired_with: design-color.md
 cites:
   - wcag-22
   - dtcg-spec
+## Véase también
+
+- [[design-typography]]
+- [[design-spacing]]
+- [[design-philosophy]]
+
 ---
 
 El sistema de color del sustrato tiene tres capas: primitiva, semántica y de componente. La marca de cada cliente vive en la capa semántica; los primitivos son estables entre clientes; los componentes referencian semánticas, nunca primitivos directamente.

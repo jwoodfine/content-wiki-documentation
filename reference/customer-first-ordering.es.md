@@ -12,6 +12,11 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: customer-first-ordering.md
+## Véase también
+
+- [[compounding-substrate]]
+- [[data-vault-bookkeeping-substrate]]
+
 ---
 
 ## Resumen estratégico

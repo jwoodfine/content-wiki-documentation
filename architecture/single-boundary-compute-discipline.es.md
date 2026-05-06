@@ -12,6 +12,12 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: single-boundary-compute-discipline.md
+## Véase también
+
+- [[knowledge-graph-grounded-apprenticeship]]
+- [[mcp-substrate-protocol]]
+- [[substrate-without-inference-base-case]]
+
 ---
 
 La **Disciplina de Cómputo de Límite Único** establece que todo el tráfico de inferencia de IA en un despliegue Foundry pasa por un único punto de frontera: el Portero (`service-slm`). Ningún proceso, sesión ni servicio accede a un nivel de inferencia —local, GPU en ráfaga o API externa— excepto a través de esta frontera. Esta disciplina codifica la reclamación doctrinal #43.

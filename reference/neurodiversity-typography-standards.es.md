@@ -7,6 +7,12 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: neurodiversity-typography-standards.md
+## Véase también
+
+- [[brand-typography]]
+- [[design-typography]]
+- [[viewport-3d-accessibility]]
+
 ---
 
 

@@ -12,6 +12,11 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: project-tetrad-discipline.md
+## Véase también
+
+- [[project-triad-discipline]]
+- [[reverse-funnel-editorial-pattern]]
+
 ---
 
 La Disciplina de Tétrada de Proyecto establece que todo clúster de ingeniería activo debe mantener cuatro componentes estructurales en paralelo: código en el repositorio de proveedor, manuales operativos para el cliente, una instancia de despliegue funcional y una contribución al wiki público de documentación. Ningún hito puede ser ratificado si alguna de estas cuatro patas está silenciosamente ausente.

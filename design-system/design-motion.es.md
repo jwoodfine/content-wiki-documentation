@@ -15,6 +15,12 @@ paired_with: design-motion.md
 cites:
   - wcag-22
   - dtcg-spec
+## Véase también
+
+- [[design-spacing]]
+- [[design-color]]
+- [[design-philosophy]]
+
 ---
 
 El movimiento comunica causalidad. El sustrato incluye cuatro curvas de easing y seis pasos de duración. Se combinan según la clase de interacción.

@@ -7,6 +7,12 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: spatial-tree-accessibility.md
+## Véase también
+
+- [[viewport-3d-accessibility]]
+- [[properties-panel-accessibility]]
+- [[neurodiversity-typography-standards]]
+
 ---
 
 

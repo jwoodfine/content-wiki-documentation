@@ -7,6 +7,12 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: fs-anchor-emitter.md
+## Véase también
+
+- [[service-fs-architecture]]
+- [[service-fs-security-compliance]]
+- [[worm-ledger-design]]
+
 ---
 
 

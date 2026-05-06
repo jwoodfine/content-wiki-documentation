@@ -13,6 +13,13 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: service-extraction.md
 cites: []
+## Véase también
+
+- [[service-email]]
+- [[service-people]]
+- [[service-slm]]
+- [[service-search]]
+
 ---
 
 `service-extraction` es el controlador de tráfico central del Anillo 2 que elimina el formato propietario de las cargas útiles en bruto, construye Paquetes de Entidades estructurados, asigna IDs de transacción, y enruta los datos a servicios deterministas o a `service-slm` para extracción asistida por IA.

@@ -13,6 +13,13 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: ontological-governance.md
 cites: []
+## Véase también
+
+- [[verification-surveyor]]
+- [[message-courier]]
+- [[moonshot-initiatives]]
+- [[sovereign-replacement-initiative]]
+
 ---
 
 La gobernanza ontológica describe los cuatro libros contables de control de autocorrección que rigen cómo `service-content` clasifica y acumula conocimiento, y el bucle de verificación humana que mantiene los datos de identidad extraídos precisos antes de que se comprometan permanentemente.

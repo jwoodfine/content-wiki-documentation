@@ -11,6 +11,14 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 paired_with: compounding-substrate.md
+## Véase también
+
+- [[apprenticeship-substrate]]
+- [[3-layer-stack]]
+- [[worm-ledger-architecture]]
+- [[sovereign-ai-routing]]
+- [[language-protocol-substrate]]
+
 ---
 
 > El sustrato compuesto es el patrón arquitectónico que PointSav construye y administra, combinando cinco propiedades estructurales para producir una plataforma donde cada interacción operativa genera señal de entrenamiento que se compone a través de todos los despliegues de inquilinos.

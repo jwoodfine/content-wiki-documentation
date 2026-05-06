@@ -9,6 +9,13 @@ language: es
 paired_with: flat-file-bim-leapfrog.md
 status: active
 last_edited: 2026-05-06
+## Véase también
+
+- [[worm-ledger-design]]
+- [[service-fs-architecture]]
+- [[sel4-foundation]]
+- [[sovereign-ai-routing]]
+
 ---
 
 El Sistema de Diseño de Edificios de PointSav redefine la categoría de producto BIM mediante un enfoque de "archivo plano" que devuelve la soberanía del dato al propietario del activo. La pila de estándares abiertos — IFC 4.3 (ISO 16739-1:2024, publicado en abril de 2024), IDS 1.0 (buildingSMART, junio 2024) y BCF 3.0 — alcanzó madurez de producción en 2024 y proporciona la infraestructura que hace viable esta estrategia. Mientras que las grandes plataformas de software fuerzan un modelo de alquiler de datos en la nube, la arquitectura de Foundry permite que el gemelo digital sea una propiedad permanente, transferible y legible durante décadas.

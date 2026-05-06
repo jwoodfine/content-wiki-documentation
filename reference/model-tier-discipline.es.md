@@ -12,6 +12,11 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: model-tier-discipline.md
+## Véase también
+
+- [[compounding-substrate]]
+- [[cluster-wiki-draft-pipeline]]
+
 ---
 
 ## Resumen estratégico

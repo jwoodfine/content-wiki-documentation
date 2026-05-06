@@ -7,6 +7,13 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: sovereign-airlock-doctrine.md
+## Véase también
+
+- [[sovereign-ai-routing]]
+- [[machine-based-auth]]
+- [[service-slm]]
+- [[capability-based-security]]
+
 ---
 
 

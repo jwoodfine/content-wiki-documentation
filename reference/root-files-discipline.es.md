@@ -12,6 +12,10 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: root-files-discipline.md
+## Véase también
+
+- [[project-tetrad-discipline]]
+
 ---
 
 La Disciplina de Archivos en la Raíz establece que todo repositorio del marco de ingeniería de PointSav mantiene un directorio raíz limpio. Limpio significa que una lista pequeña y explícitamente enumerada de archivos es permitida en la raíz, y cualquier otro archivo es un defecto que requiere reubicación. La convención organiza los archivos en seis niveles según el momento del ciclo de vida del repositorio en que se vuelven obligatorios.

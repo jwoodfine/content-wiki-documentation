@@ -13,6 +13,14 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: service-slm.md
 cites: []
+## Véase también
+
+- [[service-extraction]]
+- [[service-search]]
+- [[apprenticeship-substrate]]
+- [[language-protocol-substrate]]
+- [[trajectory-substrate]]
+
 ---
 
 `service-slm`, también llamado el Portero (Doorman), es el límite del Anillo 3 de inteligencia opcional en la arquitectura de tres anillos de PointSav. Es el único servicio que posee claves de API para proveedores de IA externos. Cada solicitud de inferencia de IA de cualquier otro servicio se enruta a través del Portero.

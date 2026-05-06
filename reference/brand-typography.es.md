@@ -7,6 +7,12 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: brand-typography.md
+## Véase también
+
+- [[brand-family-swatch]]
+- [[design-typography]]
+- [[news-release-standards]]
+
 ---
 
 

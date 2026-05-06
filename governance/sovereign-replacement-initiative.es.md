@@ -13,6 +13,13 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: sovereign-replacement-initiative.md
 cites: []
+## Véase también
+
+- [[moonshot-initiatives]]
+- [[ontological-governance]]
+- [[verification-surveyor]]
+- [[customer-hostability]]
+
 ---
 
 La Iniciativa de Reemplazo Soberano es el programa formal que registra cada dependencia foránea en un libro contable estructurado, aplica aislamiento de cuarentena hasta que un reemplazo nativo esté listo, y retira la dependencia una vez que el reemplazo alcanza paridad estructural.

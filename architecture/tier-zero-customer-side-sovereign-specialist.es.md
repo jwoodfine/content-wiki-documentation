@@ -12,6 +12,12 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: tier-zero-customer-side-sovereign-specialist.md
+## Véase también
+
+- [[substrate-without-inference-base-case]]
+- [[single-boundary-compute-discipline]]
+- [[seed-taxonomy-as-smb-bootstrap]]
+
 ---
 
 El **Especialista Soberano en el Lado del Cliente — Nivel 0** es el modelo de despliegue de referencia para Foundry: la pila de plataforma completa funcionando en el propio hardware del cliente, sin dependencia de nube requerida, sin conectividad a internet requerida, y con una huella de disco total de aproximadamente un gigabyte. Este patrón codifica la reclamación doctrinal #49.

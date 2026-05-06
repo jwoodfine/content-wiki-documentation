@@ -7,6 +7,13 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: bim-token-taxonomy.md
+## Véase también
+
+- [[bim-design-philosophy]]
+- [[bim-aec-muscle-memory]]
+- [[flat-file-bim-leapfrog]]
+- [[design-color]]
+
 ---
 
 

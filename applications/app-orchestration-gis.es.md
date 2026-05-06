@@ -15,6 +15,12 @@ paired_with: app-orchestration-gis.md
 cites:
   - pmtiles-spec
   - maplibre-gl-js
+## Véase también
+
+- [[pointsav-gis-engine]]
+- [[service-business-clustering]]
+- [[service-places-filtering]]
+
 ---
 
 `app-orchestration-gis` es el motor de procesamiento geoespacial que transforma datos sin procesar de operadores minoristas e infraestructura cívica en índices de co-ubicación por niveles, listos para renderizado en la interfaz de inteligencia de ubicación de PointSav.

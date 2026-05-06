@@ -13,6 +13,11 @@ editor: pointsav-engineering
 cites:
   - ni-51-102
 paired_with: data-vault-bookkeeping-substrate.md
+## Véase también
+
+- [[compounding-substrate]]
+- [[design-system-substrate]]
+
 ---
 
 ## Resumen estratégico

@@ -13,6 +13,13 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: topic-totebox-os.md
 cites: []
+## Véase también
+
+- [[topic-totebox-archive]]
+- [[topic-totebox-orchestration]]
+- [[topic-console-os]]
+- [[topic-infrastructure-os]]
+
 ---
 
 Totebox OS es la capa de archivo de datos central de la plataforma PointSav. Se ejecuta en un microkernel seL4 y aplica una separación estricta entre los motores de ejecución de software y los libros contables corporativos que esos motores leen y escriben. Cada registro institucional vive como un archivo plano inerte — Markdown, YAML o CSV — que no requiere ningún tiempo de ejecución propietario para abrirse o interpretarse décadas después.

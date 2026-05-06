@@ -12,6 +12,11 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: wikipedia-leapfrog-pattern.md
+## Véase también
+
+- [[reverse-funnel-editorial-pattern]]
+- [[wiki-provider-landscape]]
+
 ---
 
 La autoridad editorial de Wikipedia descansa en veinte años de convenciones estructurales acumuladas: anatomía de artículos, notas de desambiguación, densidad de notas al pie, primitivas de navegación, plantillas de cuadros informativos, deliberación en páginas de discusión, grados de calidad, escritura en estilo de resumen y contribución atribuida. Estas convenciones se aplican mediante normas sociales voluntarias, patrullaje de bots, revisión editorial y gobernanza comunitaria. Son poderosas porque han sido iteradas durante décadas; también son frágiles porque su aplicación depende de atención voluntaria sostenida que es desigual en todo el corpus.

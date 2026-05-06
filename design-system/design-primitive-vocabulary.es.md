@@ -16,6 +16,12 @@ cites:
   - wcag-22
   - dtcg-spec
   - doctrine-38
+## Véase también
+
+- [[design-philosophy]]
+- [[design-color]]
+- [[design-typography]]
+
 ---
 
 La capa de tokens primitivos del sustrato preserva cuatro patrones estructurales en los que el campo moderno de sistemas de diseño ha convergido (2018–2026): escalas de color numéricas, capas primitivo → semántico → componente, la división de tipografía productiva vs expresiva, y escalas de espaciado numéricas de ~12–15 pasos.

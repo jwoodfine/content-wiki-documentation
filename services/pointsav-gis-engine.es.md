@@ -16,6 +16,11 @@ cites:
   - maplibre-gl-js
   - pmtiles-spec
   - tippecanoe-tool
+## Véase también
+
+- [[guide-totebox-orchestration-gis]]
+- [[co-location-methodology]]
+
 ---
 
 El Motor GIS de PointSav es una plataforma de Inteligencia de Ubicación de alto rendimiento y soberana, diseñada para operación offline-first con sustrato de archivos planos. Construido en Rust, representa un alejamiento estructural de los sistemas de información geográfica (SIG) tradicionales que dependen de instancias de bases de datos centralizadas.

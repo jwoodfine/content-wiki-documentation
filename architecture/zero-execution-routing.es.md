@@ -7,6 +7,13 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: zero-execution-routing.md
+## Véase también
+
+- [[sovereign-ai-routing]]
+- [[machine-based-auth]]
+- [[decode-time-constraints]]
+- [[sel4-foundation]]
+
 ---
 
 

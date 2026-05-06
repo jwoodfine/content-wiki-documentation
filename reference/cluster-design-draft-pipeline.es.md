@@ -13,6 +13,12 @@ editor: pointsav-engineering
 cites:
   - ni-51-102
 paired_with: cluster-design-draft-pipeline.md
+## Véase también
+
+- [[design-system-substrate]]
+- [[cluster-wiki-draft-pipeline]]
+- [[draft-research-trail-discipline]]
+
 ---
 
 ## Resumen estratégico

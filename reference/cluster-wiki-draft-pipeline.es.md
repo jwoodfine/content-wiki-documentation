@@ -14,6 +14,13 @@ cites:
   - ni-51-102
   - osc-sn-51-721
 paired_with: cluster-wiki-draft-pipeline.md
+## Véase también
+
+- [[cluster-design-draft-pipeline]]
+- [[draft-research-trail-discipline]]
+- [[bcsc-disclosure-posture]]
+- [[citation-substrate]]
+
 ---
 
 ## Resumen estratégico

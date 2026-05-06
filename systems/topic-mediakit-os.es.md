@@ -13,6 +13,13 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: topic-mediakit-os.md
 cites: []
+## Véase también
+
+- [[topic-totebox-os]]
+- [[topic-console-os]]
+- [[topic-privategit-os]]
+- [[topic-user-interface-design]]
+
 ---
 
 MediaKit OS es el conjunto de herramientas especializado dentro de la plataforma PointSav dedicado a la gestión, curaduría y distribución de activos de medios institucionales y conocimiento. Consolida una suite de herramientas de código abierto refinadas en un entorno de ejecución unificado.

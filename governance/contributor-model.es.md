@@ -1,7 +1,18 @@
 ---
+schema: foundry-doc-v1
+title: "El Modelo de Contribuyentes en Tres Niveles"
+slug: contributor-model
+language: es
+paired_with: contributor-model.md
 category: governance
+type: topic
+quality: core
+status: active
 bcsc_class: public-disclosure-safe
-
+last_edited: 2026-05-06
+editor: pointsav-engineering
+cites:
+  - ni-51-102
 ---
 
 
@@ -87,11 +98,11 @@ de agregación multi-inquilino sin capital de escala VC.
 
 ## Véase también
 
-- [Documento canónico en inglés](topic-contributor-model.md)
-- [El sustrato compuesto](topic-compounding-substrate.md)
-- [El sustrato de aprendizaje](topic-apprenticeship-substrate.md)
-- [Hospedaje por el cliente](topic-customer-hostability.md)
-- [Postura de derechos de autor canadiense-simple](topic-canadian-simple-copyright.md)
+- [[contributor-model]]
+- [[compounding-substrate]]
+- [[apprenticeship-substrate]]
+- [[customer-hostability]]
+- [[canadian-simple-copyright]]
 
 
 ---

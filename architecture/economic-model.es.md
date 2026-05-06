@@ -12,6 +12,13 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: economic-model.md
+## Véase también
+
+- [[compounding-substrate]]
+- [[sovereign-ai-commons]]
+- [[llm-substrate-decision]]
+- [[four-tier-slm-substrate]]
+
 ---
 
 El modelo comercial de PointSav opera en dos niveles: Community (gratuito) y Cliente PYME (de pago). No existe un nivel Enterprise. Esta decisión no responde a un posicionamiento de mercado, sino a una realidad estructural: las pequeñas y medianas empresas reguladas ocupan un segmento que las grandes plataformas de computación en la nube no pueden atender de forma económicamente viable.

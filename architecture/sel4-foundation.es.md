@@ -13,6 +13,14 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: sel4-foundation.md
 cites: []
+## Véase también
+
+- [[capability-based-security]]
+- [[worm-ledger-architecture]]
+- [[3-layer-stack]]
+- [[compounding-substrate]]
+- [[machine-based-auth]]
+
 ---
 
 La fundación seL4 es el microkernel verificado formalmente que actúa como raíz de confianza en la capa del sistema operativo de PointSav. Proporciona aislamiento matemáticamente probado entre todos los recursos de hardware y los componentes de software.

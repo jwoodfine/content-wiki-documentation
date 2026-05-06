@@ -13,6 +13,13 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: service-search.md
 cites: []
+## Véase también
+
+- [[service-extraction]]
+- [[service-slm]]
+- [[service-people]]
+- [[trajectory-substrate]]
+
 ---
 
 `service-search` es el servicio de búsqueda de texto completo del Anillo 2, construido sobre la biblioteca Rust Tantivy. Proporciona recuperación en microsegundos en millones de archivos a través de un índice invertido binario estático que no requiere ningún proceso de base de datos activo.

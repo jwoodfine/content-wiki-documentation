@@ -10,6 +10,13 @@ audience: vendor-public
 bcsc_class: current-fact
 language_protocol: DESIGN-COMPONENT
 authored: 2026-04-30
+## Véase también
+
+- [[map-stats-panel]]
+- [[map-side-drawer]]
+- [[zoom-tier-reveal-pattern]]
+- [[location-intelligence-ux]]
+
 ---
 
 

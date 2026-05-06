@@ -10,6 +10,13 @@ audience: vendor-public
 bcsc_class: current-fact
 language_protocol: DESIGN-RESEARCH
 authored: 2026-04-30
+## Véase también
+
+- [[map-stats-panel]]
+- [[map-side-drawer]]
+- [[country-filter-chips]]
+- [[location-intelligence-ux]]
+
 ---
 
 

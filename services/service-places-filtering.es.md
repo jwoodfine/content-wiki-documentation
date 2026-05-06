@@ -13,6 +13,12 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: service-places-filtering.md
 cites: []
+## Véase también
+
+- [[service-fs-data-lake]]
+- [[service-business-clustering]]
+- [[app-orchestration-gis]]
+
 ---
 
 `service-places` es el servicio responsable de validar y agrupar la infraestructura cívica e institucional. Su función principal es filtrar los datos cívicos en bruto para retener únicamente instalaciones de escala regional — hospitales, universidades y centros de transporte principales — garantizando que las clasificaciones de nivel GIS reflejen la concentración a nivel institucional en lugar de la densidad de servicios locales.

@@ -7,6 +7,13 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: worm-ledger-architecture.md
+## Véase también
+
+- [[worm-ledger-design]]
+- [[worm-ledger-storage-architecture]]
+- [[cryptographic-ledgers]]
+- [[sel4-foundation]]
+
 ---
 
 

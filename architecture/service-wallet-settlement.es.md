@@ -7,6 +7,12 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 quality: complete
+## Véase también
+
+- [[reverse-flow-substrate]]
+- [[customer-owned-graph-ip]]
+- [[worm-ledger-architecture]]
+
 ---
 
 `service-wallet` (Anillo 2) es el libro mayor de contabilidad interna por inquilino que registra y liquida todos los ingresos de flujo inverso procedentes del mercado de datos y el intercambio publicitario.

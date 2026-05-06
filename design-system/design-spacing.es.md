@@ -14,6 +14,12 @@ editor: pointsav-engineering
 paired_with: design-spacing.md
 cites:
   - dtcg-spec
+## Véase también
+
+- [[design-color]]
+- [[design-typography]]
+- [[design-motion]]
+
 ---
 
 Una escala de espaciado de 13 pasos sobre una base de 16 px. Numérico — `space-1` hasta `space-13` — proporciona una respuesta canónica para cada decisión de diseño.

@@ -13,6 +13,12 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: topic-totebox-orchestration.md
 cites: []
+## Véase también
+
+- [[topic-totebox-os]]
+- [[topic-infrastructure-os]]
+- [[topic-console-os]]
+
 ---
 
 La Orquestación Totebox es la capa responsable de aprovisionar, coordinar y monitorear instancias individuales de Totebox en un despliegue de PointSav. Un Totebox es un contenedor de datos aislado que separa los motores de software activos de los libros contables corporativos pasivos.

@@ -12,6 +12,12 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: substrate-without-inference-base-case.md
+## Véase también
+
+- [[tier-zero-customer-side-sovereign-specialist]]
+- [[customer-owned-graph-ip]]
+- [[single-boundary-compute-discipline]]
+
 ---
 
 El **Substrato sin Inferencia — El Caso Base** establece que el Archivo Totebox debe permanecer completamente operativo y transferible libremente incluso cuando `service-slm` no puede ejecutar ninguna inferencia. La inferencia de IA es un valor añadido. El substrato determinístico — el registro de archivos, el grafo de conocimiento, el pipeline de extracción y los servicios editoriales — es la base estructural. Esta distinción está codificada en la reclamación doctrinal #54.

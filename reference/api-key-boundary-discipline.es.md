@@ -13,6 +13,12 @@ editor: pointsav-engineering
 cites:
   - ni-51-102
 paired_with: api-key-boundary-discipline.md
+## Véase también
+
+- [[compounding-substrate]]
+- [[design-system-substrate]]
+- [[cluster-wiki-draft-pipeline]]
+
 ---
 
 ## Resumen estratégico

@@ -7,6 +7,12 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 quality: complete
+## Véase también
+
+- [[three-ring-architecture]]
+- [[substrate-without-inference-base-case]]
+- [[customer-owned-graph-ip]]
+
 ---
 
 El Sustrato de Inteligencia de Localización de Foundry es una arquitectura SIG de archivos planos y código abierto que permite a los clientes poseer sus conjuntos de datos geográficos de extremo a extremo — sin facturación de API de tiles, sin licencias de almacén de datos, sin bloqueo a ningún proveedor de nube. El sustrato se construye sobre fundamentos de datos abiertos con licencia Apache (Overture Maps Foundation, Foursquare Open Source Places) y se renderiza mediante una pila de código abierto alineada con Rust (MapLibre GL JS, servidor de tiles Martin, PMTiles).

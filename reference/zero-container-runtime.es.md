@@ -12,6 +12,10 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: zero-container-runtime.md
+## Véase también
+
+- [[service-slm-operationalization-plan]]
+
 ---
 
 Todo despliegue de PointSav — en todos los anillos de servicio, todos los niveles de cómputo y todos los contextos de despliegue desde la implementación de referencia hasta un futuro despliegue en appliance — se ejecuta como un binario ELF de Linux supervisado por systemd en una máquina virtual simple o un host bare-metal. Sin tiempo de ejecución de contenedores. Sin orquestador. Sin plataforma de tiempo de ejecución gestionada.

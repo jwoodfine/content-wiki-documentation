@@ -15,6 +15,14 @@ cites:
   - osc-sn-51-721
   - olmo3-allenai
 paired_with: service-slm-yoyo-operational.md
+## Véase también
+
+- [[compounding-substrate]]
+- [[service-slm]]
+- [[apprenticeship-substrate]]
+- [[brief-queue-substrate]]
+- [[worm-ledger-architecture]]
+
 ---
 
 **service-SLM** es el componente Ring 3 de Foundry: la capa de Inteligencia Opcional (Doctrine claim #16). Actúa como enrutador de inferencia de tres niveles, dirigiendo el trabajo de rutina — ediciones editoriales, traducción bilingüe, generación de salida estructurada — hacia el modelo apropiado sin necesidad de enviar datos a una API de terceros. Los anillos 1 y 2 (ingesta de límites y procesamiento de conocimiento) funcionan de forma completa sin él; Ring 3 es estructuralmente opcional.

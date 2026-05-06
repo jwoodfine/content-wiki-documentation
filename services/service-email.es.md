@@ -13,6 +13,13 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: service-email.md
 cites: []
+## Véase también
+
+- [[service-extraction]]
+- [[service-people]]
+- [[service-slm]]
+- [[trajectory-substrate]]
+
 ---
 
 `service-email` es el servicio de ingestión perimetral del Anillo 1 que sondea un buzón de Microsoft 365 a través de la API de Microsoft Graph, extrae las cargas útiles de correo electrónico en bruto, y las escribe en una cola local sin interpretar su contenido.

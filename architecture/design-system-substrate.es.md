@@ -13,6 +13,13 @@ cites:
   - mcp-spec
   - ni-51-102
   - osc-sn-51-721
+## Véase también
+
+- [[compounding-substrate]]
+- [[substrate-native-compatibility]]
+- [[reverse-funnel-editorial-pattern]]
+- [[customer-hostability]]
+
 ---
 
 ## Visión estratégica

@@ -15,6 +15,12 @@ paired_with: design-typography.md
 cites:
   - wcag-22
   - dtcg-spec
+## Véase también
+
+- [[design-color]]
+- [[design-spacing]]
+- [[design-philosophy]]
+
 ---
 
 Dos escalas tipográficas — Utility y Display — dividen la carga tipográfica entre el texto funcional de la interfaz y las superficies expresivas.

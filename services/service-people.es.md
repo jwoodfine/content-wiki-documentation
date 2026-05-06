@@ -13,6 +13,13 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: service-people.md
 cites: []
+## Véase también
+
+- [[service-email]]
+- [[service-extraction]]
+- [[service-search]]
+- [[trajectory-substrate]]
+
 ---
 
 `service-people` es el servicio de ingestión perimetral del Anillo 1 que mantiene un libro contable de personal determinista en archivos planos, almacenando identificadores únicos de contacto, estados de comunicación e historiales de contacto como una base de datos de archivos planos JSON portátil y estable en cuanto al esquema.

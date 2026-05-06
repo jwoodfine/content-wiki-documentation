@@ -12,6 +12,12 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: reverse-funnel-editorial-pattern.md
+## Véase también
+
+- [[project-tetrad-discipline]]
+- [[service-slm-operationalization-plan]]
+- [[wikipedia-leapfrog-pattern]]
+
 ---
 
 En el flujo editorial convencional, un redactor sintetiza material técnico en un primer borrador. Los ingenieros revisan la exactitud técnica. Un editor revisa el registro y la voz de marca. Solo entonces se publica el documento. La carga de síntesis recae en el redactor; la velocidad está limitada por la persona más lenta de la cadena.
