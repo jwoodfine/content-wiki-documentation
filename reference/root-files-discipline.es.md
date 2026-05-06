@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: La convención que establece que todo repositorio mantiene un conjunto pequeño y enumerado de archivos de acompañamiento canónicos en su raíz — y nada más.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

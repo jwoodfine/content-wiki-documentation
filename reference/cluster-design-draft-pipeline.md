@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: The workspace pipeline that routes UI component, design research, and token-change drafts through a design-system gateway into the canonical design substrate.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:

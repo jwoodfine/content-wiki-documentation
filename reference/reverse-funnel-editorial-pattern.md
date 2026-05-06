@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: The structural inversion of conventional editorial workflow — the substrate generates drafts, an editorial gateway refines them to register, and creative contributors enter at the end of the cycle rather than the beginning.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

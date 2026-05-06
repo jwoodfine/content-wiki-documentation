@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: The structural commitment that every PointSav deployment runs as a Linux binary under systemd on a plain virtual machine or bare-metal host, with no container runtime, container orchestrator, or managed-runtime platform.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

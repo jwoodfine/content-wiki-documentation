@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: A self-hosted, customer-owned, AI-readable design system architecture that SMB customers run on their own infrastructure, with per-tenant Git ownership and a machine-readable research backplane.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:

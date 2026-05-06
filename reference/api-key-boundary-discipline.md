@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: The rule that all external LLM API credentials belong exclusively at the gateway service and never at inference engines.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:

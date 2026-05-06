@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: core
 short_description: "Editorial standards for README files in Foundry repositories, covering the three README sub-types, the bilingual pair requirement, voice discipline, forward-looking statement treatment, and the Standard Readme structure."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:

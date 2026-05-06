@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: How PointSav builds a machine-readable citation graph into every doctrine clause, convention, and published document as a first-class substrate element.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:

@@ -7,6 +7,7 @@ type: topic
 quality: complete
 short_description: "A Totebox Archive is a self-contained, freely transferable micro-virtual machine that persists institutional data as immutable flat files."
 status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-04
 editor: pointsav-engineering
 cites: []

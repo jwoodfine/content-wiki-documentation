@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: La regla estructural de cuatro patas que todo clúster de proyecto debe satisfacer — código fuente, manual operativo, instancia de despliegue y contribución al wiki de conocimiento.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: Una arquitectura de sistema de diseño autoalojada, propiedad del cliente y legible por IA que las PYMEs ejecutan en su propia infraestructura, con propiedad Git por tenant y un plano de respaldo de investigación legible por máquinas.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:

@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: The discipline for routing work to the appropriate AI model tier — deep-think, implementation, or mechanical — to match model capability to work shape and control inference cost.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

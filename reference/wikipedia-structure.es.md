@@ -6,7 +6,8 @@ category: reference
 type: reference
 quality: core
 short_description: "Anatomía de artículos y estructura de la página principal de Wikipedia, con orientación de adaptación para colaboradores de documentation.pointsav.com."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 paired_with: wikipedia-structure.md

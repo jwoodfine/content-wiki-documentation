@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: core
 short_description: "Editorial standards for the ticket-comment template in Foundry's service-disclosure library, covering conclusion-first structure, reference conventions for commits and files, the durable-record principle, and the operational register."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []

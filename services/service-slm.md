@@ -6,7 +6,8 @@ category: services
 type: topic
 quality: complete
 short_description: "service-slm is the Doorman service — the single network boundary that holds API keys, routes AI inference across three compute tiers, and writes an immutable per-tenant audit record of every external call."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []

@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: El requisito de que cada borrador que entra en un pipeline editorial o de diseño lleve documentación estructurada de la investigación que lo informó y la investigación que debe realizar la siguiente etapa.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:

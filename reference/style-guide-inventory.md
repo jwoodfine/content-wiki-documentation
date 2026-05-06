@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: core
 short_description: "Editorial standards for INVENTORY.md files in Foundry fleet-deployment repos and aggregator directories, covering required sections, the table-first discipline, and the operational register."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []

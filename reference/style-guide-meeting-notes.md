@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: core
 short_description: "Editorial standards for the meeting-notes template in Foundry's service-disclosure library, covering the three required sections, the action-item discipline, what to omit, and the operational register."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []

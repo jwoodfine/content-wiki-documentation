@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: core
 short_description: "Editorial standards for the memo template in Foundry's service-disclosure library, covering the Background–Decision–Consequences structure, frontmatter citation requirements, Bloomberg register, and the edit-in-place rule for revisions."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:

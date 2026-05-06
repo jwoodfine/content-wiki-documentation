@@ -6,7 +6,8 @@ category: services
 type: topic
 quality: stub
 short_description: "The message courier service is a headless web-automation engine that bridges internal identity ledgers with external web portals using runtime-injected adapters, keeping proprietary operational logic out of the open-source monorepo."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []

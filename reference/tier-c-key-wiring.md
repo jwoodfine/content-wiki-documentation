@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: The operational procedure for managing external API keys in the Doorman service — where keys live, how they are provisioned, how they rotate, and how a breach is contained.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

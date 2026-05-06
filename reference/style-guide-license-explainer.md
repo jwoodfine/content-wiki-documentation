@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: core
 short_description: "Editorial standards for the license-explainer template in Foundry's service-disclosure library, covering structure, the four required sections, bilingual pair requirements, reading-level targets, and the relationship to the canonical license file."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:

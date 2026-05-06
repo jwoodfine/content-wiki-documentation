@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: Nine Wikipedia structural patterns and their substrate-enforced equivalents — the leapfrog transformation that replaces volunteer editorial norms with generation-time, commit-time, and training-loop enforcement.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

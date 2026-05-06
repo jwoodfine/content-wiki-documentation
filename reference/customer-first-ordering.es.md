@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: El principio de que un proveedor de software que construye algo que un cliente instalará debe construirlo en el mismo orden que el cliente lo instalará, en el mismo sustrato que el cliente usará.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

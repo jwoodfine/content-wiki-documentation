@@ -4,6 +4,7 @@ title: "PointSav Encyclopedia — Glossary & Lexicon"
 slug: glossary-documentation
 category: reference
 status: complete
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-03
 editor: project-language Task
 ---

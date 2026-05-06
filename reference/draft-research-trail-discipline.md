@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: The requirement that every draft entering an editorial or design pipeline carries structured documentation of the research that informed it and the research the next leg should do.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:

@@ -6,7 +6,8 @@ category: services
 type: topic
 quality: complete
 short_description: "service-extraction is the Ring 2 central traffic controller that strips proprietary formatting from raw payloads, constructs structured Entity Bundles, assigns transaction IDs, and routes data to deterministic services or to service-slm for AI-assisted extraction."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []

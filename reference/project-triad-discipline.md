@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: The predecessor three-leg structural rule for project clusters — vendor code, customer runbook, and deployment instance — now superseded by the Project Tetrad Discipline.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

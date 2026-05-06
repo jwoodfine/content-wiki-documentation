@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: La regla estructural predecesora de tres patas para clústeres de proyecto — código fuente, manual operativo e instancia de despliegue — actualmente reemplazada por la Disciplina de Tétrada.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

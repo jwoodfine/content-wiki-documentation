@@ -6,7 +6,8 @@ category: reference
 type: reference
 quality: core
 short_description: "Wikipedia's article anatomy and Main Page panel structure, with adaptation guidance for documentation.pointsav.com contributors. Use as the style guide reference when writing or editing articles."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 paired_with: wikipedia-structure.es.md

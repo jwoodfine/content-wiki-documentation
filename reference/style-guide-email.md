@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: core
 short_description: "Editorial standards for outbound email produced through the Foundry language-protocol stack, covering the COMMS family, the three required parts, the tenant-voice discipline, and the distinction from marketing copy."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []

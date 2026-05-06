@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: The four-leg structural rule every project cluster must satisfy — vendor code, customer runbook, deployment instance, and wiki TOPIC contribution.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

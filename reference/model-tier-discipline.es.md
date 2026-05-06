@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: La disciplina para enrutar el trabajo al nivel de modelo de IA apropiado — pensamiento profundo, implementación o mecánico — para adaptar la capacidad del modelo a la forma del trabajo y controlar el costo de inferencia.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

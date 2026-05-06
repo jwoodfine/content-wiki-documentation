@@ -7,6 +7,7 @@ type: topic
 quality: complete
 short_description: "Totebox OS is the microkernel-based data-archive operating system used by PointSav to store institutional records as inert flat files with cryptographic integrity verification at the filesystem level."
 status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-04
 editor: pointsav-engineering
 cites: []

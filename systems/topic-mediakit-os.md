@@ -7,6 +7,7 @@ type: topic
 quality: complete
 short_description: "MediaKit OS is the consolidated toolkit of Open Source tools, protocols, and libraries used to manage and distribute PointSav media assets and knowledge documentation."
 status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-04
 editor: pointsav-engineering
 cites: []

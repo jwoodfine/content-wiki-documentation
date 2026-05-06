@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: El pipeline de espacio de trabajo que enruta borradores de componentes de UI, investigación de diseño y cambios de tokens a través de una pasarela de sistema de diseño hacia el sustrato canónico.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:

@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: El pipeline de espacio de trabajo que enruta borradores editoriales de todas las capas de contribuidores a través de una pasarela editorial hacia temas de documentación, runbooks de implementación y documentos de gobernanza publicados.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:

@@ -6,7 +6,8 @@ category: services
 type: topic
 quality: complete
 short_description: "service-email is the Ring 1 boundary-ingest service that polls a Microsoft 365 mailbox via the Microsoft Graph API, extracts raw email payloads, and writes them to a local queue without interpreting their content."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []

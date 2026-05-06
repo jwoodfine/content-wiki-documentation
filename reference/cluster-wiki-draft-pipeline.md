@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: The workspace pipeline that routes editorial drafts from all contributor layers through an editorial gateway into published documentation, wiki topics, deployment runbooks, and governance documents.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:

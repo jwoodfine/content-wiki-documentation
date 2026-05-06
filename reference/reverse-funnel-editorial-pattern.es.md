@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: La inversión estructural del flujo editorial convencional — el sustrato genera los borradores, el portal editorial los refina y los colaboradores creativos entran al final del ciclo para añadir oficio y voz de marca.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

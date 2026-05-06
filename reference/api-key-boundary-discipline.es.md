@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: La regla que establece que todas las credenciales externas de LLM pertenecen exclusivamente al servicio de pasarela y nunca a los motores de inferencia.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:

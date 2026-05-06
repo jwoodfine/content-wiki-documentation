@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: An SMB bookkeeping and accounting architecture built on an immutable source vault, append-only journal, and structural separation between the bookkeeping record and any accounting tool.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:

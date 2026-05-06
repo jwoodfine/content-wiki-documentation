@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: core
 short_description: "Editorial standards for CHANGELOG.md files across Foundry repositories, covering keep-a-changelog format, the workspace versioning rule, per-line discipline, and the distinction between the changelog and git history."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []

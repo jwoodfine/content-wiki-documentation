@@ -6,7 +6,8 @@ category: services
 type: topic
 quality: core
 short_description: "How service-slm becomes the operational assistant and support centre for Totebox Archive and Totebox Orchestration deployments — the training strategy, the ten operational task families, and the four-stage pipeline from corpus capture to per-tenant {{gli|LoRA}} adapters."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:

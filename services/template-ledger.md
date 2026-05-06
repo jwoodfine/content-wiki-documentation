@@ -4,6 +4,7 @@ title: "Template Ledger (service-email-template)"
 slug: template-ledger
 category: services
 status: published
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 ---

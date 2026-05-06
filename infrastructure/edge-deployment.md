@@ -4,6 +4,7 @@ title: "Edge Deployment and Boundary Ingest"
 slug: edge-deployment
 category: infrastructure
 status: published
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 ---

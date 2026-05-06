@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: core
 short_description: "Editorial standards for TOPIC files in Foundry content wikis, covering where TOPICs live, the bilingual pair requirement, frontmatter citation discipline, voice, forward-looking statement treatment, and the distinction from GUIDE files."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:

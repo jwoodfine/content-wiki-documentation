@@ -7,6 +7,7 @@ type: topic
 quality: complete
 short_description: "Console OS is the terminal-based interface and Type II Hypervisor used for managing PointSav services and interacting with the Digital Twin record-keeping system."
 status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-04
 editor: pointsav-engineering
 cites: []

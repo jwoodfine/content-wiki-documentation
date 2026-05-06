@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: Nueve patrones estructurales de Wikipedia y sus equivalentes aplicados por el sustrato — la transformación que reemplaza las normas editoriales voluntarias con aplicación en tiempo de generación, en tiempo de commit y en el bucle de entrenamiento.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []

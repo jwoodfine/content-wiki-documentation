@@ -7,6 +7,7 @@ type: topic
 quality: complete
 short_description: "Infrastructure OS is the virtualization layer and private network engine that hosts and coordinates multiple Totebox Archives across on-premise and cloud environments."
 status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-04
 editor: pointsav-engineering
 cites: []

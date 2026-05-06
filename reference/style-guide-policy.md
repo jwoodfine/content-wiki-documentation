@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: core
 short_description: "Editorial standards for the policy template in Foundry's service-disclosure library, covering the four required sections, LEGAL family routing, the mandatory draft header, reading-level requirements, and the distinction from Terms of Service."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []

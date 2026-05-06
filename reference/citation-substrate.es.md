@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: Cómo PointSav incorpora un grafo de citaciones legible por máquinas en cada cláusula doctrinal, convención y documento publicado como un elemento de sustrato de primera clase.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:

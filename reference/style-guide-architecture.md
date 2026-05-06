@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: core
 short_description: "Editorial standards for ARCHITECTURE.md files at project roots in the Foundry monorepo, covering required sections, technical register, module-layout conventions, and the non-goals discipline."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []

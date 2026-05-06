@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: core
 short_description: "Editorial standards for chat messages routed through the Foundry language-protocol stack, covering the COMMS family, the six-line cap, casual register, and the channel-tone discipline."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []

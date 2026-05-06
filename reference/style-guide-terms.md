@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: core
 short_description: "Editorial standards for the terms template in Foundry's service-disclosure library, covering the six required sections, LEGAL family routing, the mandatory draft header, bilingual pair requirements, and the intentionally longer sentence-length allowance."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:

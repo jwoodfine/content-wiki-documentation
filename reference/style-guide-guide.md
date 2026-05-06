@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: core
 short_description: "How to write a GUIDE file: the operational runbook format used inside Foundry deployment subfolders, covering required structure, voice, command formatting, and the distinction from TOPIC files."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []

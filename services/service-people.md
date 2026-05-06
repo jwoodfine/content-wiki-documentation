@@ -6,7 +6,8 @@ category: services
 type: topic
 quality: complete
 short_description: "service-people is the Ring 1 boundary-ingest service that maintains a deterministic flat-file personnel ledger, storing unique contact identifiers, communication states, and contact histories as a portable, schema-stable JSON flat-file database."
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []

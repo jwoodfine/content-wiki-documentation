@@ -6,7 +6,8 @@ category: reference
 type: topic
 quality: published
 short_description: The strategic and operational plan for transitioning from externally hosted language model calls toward a per-tenant small language model substrate that heals through a compounding feedback loop.
-status: pre-build
+status: active
+bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
