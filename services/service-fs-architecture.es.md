@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: service-fs-architecture
-title: Arquitectura de Service-FS: El Núcleo WORM
+title: "Arquitectura de Service-FS: El Núcleo WORM"
 audience: vendor-public
 bcsc_class: current-fact
 language: es

@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: worm-ledger-architecture
-title: WORM Ledger Substrate: Four-Layer Architecture
+title: "WORM Ledger Substrate: Four-Layer Architecture"
 audience: vendor-public
 bcsc_class: current-fact
 language: en

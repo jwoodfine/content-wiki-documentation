@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: worm-ledger-architecture
-title: Sustrato del Ledger WORM: Arquitectura de Cuatro Capas
+title: "Sustrato del Ledger WORM: Arquitectura de Cuatro Capas"
 audience: vendor-public
 bcsc_class: current-fact
 language: es
