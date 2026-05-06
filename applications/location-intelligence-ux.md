@@ -7,7 +7,7 @@ type: topic
 quality: complete
 status: active
 audience: public
-bcsc_class: internal
+bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
 last_edited: 2026-05-02
 editor: pointsav-engineering

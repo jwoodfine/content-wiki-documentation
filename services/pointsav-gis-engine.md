@@ -26,7 +26,7 @@ The PointSav GIS Engine is a high-performance, sovereign Location Intelligence p
 The engine is engineered to operate as a stateless application surface, adhering to the PointSav principle of complete data sovereignty. 
 
 ### Flat-File Substrate
-Unlike traditional GIS stacks (e.g., PostGIS, Esri) which require persistent database management, the PointSav engine utilizes a flat-file substrate. It consumes geographic data directly from `JSONL`, `GeoParquet`, and `YAML` formats versioned within a Totebox Archive. This architecture ensures the data layer remains entirely decoupled from the application logic, eliminating database maintenance overhead and preventing vendor lock-in.
+Unlike traditional GIS stacks that require persistent database management, the PointSav engine utilizes a flat-file substrate. It consumes geographic data directly from `JSONL`, `GeoParquet`, and `YAML` formats versioned within a Totebox Archive. This architecture ensures the data layer remains entirely decoupled from the application logic, eliminating database maintenance overhead and preventing vendor lock-in.
 
 ### Sovereign Rendering Stack
 The platform avoids commercial SaaS mapping dependencies by utilizing a high-performance, open-source rendering stack:
