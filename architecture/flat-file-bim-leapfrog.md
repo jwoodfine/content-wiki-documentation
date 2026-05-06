@@ -7,66 +7,79 @@ audience: vendor-public
 bcsc_class: vendor-public
 language: en
 paired_with: flat-file-bim-leapfrog.es.md
+status: active
+last_edited: 2026-05-06
 ---
 
-# The Flat-File BIM Leapfrog
+PointSav's Building Design System is built on five architectural constraints that, individually, are mild inconveniences for any single feature comparison and, together, define a product category that hyperscalers cannot occupy without cannibalising their own revenue model. The constraints are flat-file storage, open standards, Rust + Tauri, offline-first, and EUPL-licensed. The open BIM standards stack matured between 2023 and 2025 into the infrastructure that makes this strategy viable; the property-manager market gap is documented in peer-reviewed literature; and the open toolchain is commercial-grade today.
 
-PointSav’s Building Design System achieves a structural competitive advantage by adopting five architectural constraints that are individually simple but collectively occupy a market category hyperscalers cannot enter without cannibalizing their own revenue models. By prioritizing flat-file storage, open standards, a Rust-based offline-first architecture, and the EUPL license, Foundry delivers a BIM substrate that is inherently owned by the asset holder rather than rented from a cloud vendor.
+This document explains what flat-file BIM is, what it is not, and why five specific capabilities follow from the architecture rather than needing to be added on top.
 
-## Structural Constraints as Competitive Moat
+## The standards stack reached production maturity in 2024
 
-The strategy is predicated on five foundational architectural decisions:
+The foundation is that the standards exist, specify plain-text encodings, and sit inside ISO. IFC 4.3 was formally published as ISO 16739-1:2024 in April 2024, extending IFC from buildings to bridges, roads, rail, ports, and waterways. The canonical serialisation, IFC-SPF, is ISO 10303-21 clear-text — readable in any text editor. IDS 1.0 became the official buildingSMART standard on 1 June 2024. BCF 3.0 is a ZIP of XML markup files plus PNG snapshots — unzip it and the per-topic directory tree is git-friendly diff-able prose. CityJSON 2.0 is an OGC community standard, with CityJSONSeq used at national scale by TU Delft's 3DBAG dataset for 10M+ Dutch buildings.
 
-1.  **Flat-File Storage:** All building data resides in human-readable, plain-text files.
-2.  **Open Standards:** Strict adherence to ISO-standardized IFC, IDS, and BCF.
-3.  **Rust + Tauri:** A high-performance, memory-safe execution environment.
-4.  **Offline-First:** Full functionality without mandatory internet connectivity.
-5.  **EUPL-Licensed:** Open-source legal protection that is procurement-friendly for governments.
+What is not yet production-ready matters as much. ifcJSON remains a community draft. IFC 5 is alpha, with a JSON-based IFCX serialisation borrowing USD-like composition from Pixar's OpenUSD; breaking changes are expected. The pragmatic conclusion: canonicalise on IFC-SPF today, mirror to ifcJSON opportunistically, and architect the object model so that an IFC 5 / IFCX migration is intended to be a serialisation swap, not a rewrite.
 
-## Production Maturity of the Open BIM Stack
+## What "flat-file" means
 
-As of 2024, the open BIM standards stack has reached sufficient maturity for commercial-grade infrastructure. IFC 4.3 (ISO 16739-1:2024) extends the schema from buildings to civil infrastructure, including bridges, rail, and waterways. The canonical serialization (IFC-SPF) remains a plain-text format (ISO 10303-21) that is readable in any standard text editor.
+A directory of plain-text and standardised-binary files that an ordinary text editor or SVG viewer can open without a proprietary SDK, decades after the software vendor that produced it is gone.
 
-Foundry canonicalizes on IFC-SPF today, with intended opportunistic mirroring to ifcJSON. While IFC 5/IFCX is in development, the PointSav architecture is designed such that future migration is intended to be a serialization swap rather than a core rewrite.
+| Format | ISO / publisher | Role |
+|---|---|---|
+| IFC-SPF (`.ifc`) | ISO 16739-1:2024 | Authoritative geometry + semantics |
+| IDS 1.0 | buildingSMART (June 2024) | Validation contract |
+| BCF 3.0 | buildingSMART | Per-topic collaboration history |
+| COBie via ifccsv | NIST | Asset handover |
+| Per-element YAML sidecars | local convention | Pset_* + sensor + work-order data |
+| Hash-addressed object store | local convention; Speckle-inspired | Versioned Merkle DAG |
+| glTF 2.0 | ISO/IEC 12113:2022 | Visualisation cache (regenerable) |
+| SVG | ISO/IEC 14496-22:2019 | 2D drawings (regenerable) |
+| CityJSONSeq | OGC | Portfolio / urban context |
 
-## Flat-File Definition and Taxonomy
+The `.ifc` file is the authoritative spatial and semantic state of the building. The sidecars carry non-geometric data (ratings, quantities, sensor readings, work orders, lease references). The object store layer gives the whole vault git-grade versioning semantics. Visualisation derivatives are caches that regenerate at will from the authoritative source. Any specific BIM viewer or authoring tool is replaceable. The archive is permanent.
 
-"Flat-file BIM" refers to a directory of plain-text and standardized binary files accessible without proprietary SDKs.
+## Five capabilities that follow from the architecture
 
-| Format | Standard | Role |
-| :--- | :--- | :--- |
-| **IFC-SPF (.ifc)** | ISO 16739-1:2024 | Authoritative geometry + semantics |
-| **IDS 1.0** | buildingSMART (2024) | Validation contract |
-| **BCF 3.0** | buildingSMART | Collaboration history |
-| **Per-element YAML** | Local Convention | Sensor and work-order metadata |
-| **glTF 2.0** | ISO/IEC 12113:2022 | Visualization cache |
+### 1. Asset-anchored BIM
 
-The `.ifc` file serves as the authoritative spatial state, while YAML sidecars handle dynamic data such as sensor readings and lease references.
+The digital twin is signed with the land title and travels with the property deed when ownership changes hands. Multi-tenant SaaS cannot offer this without breaking the tenancy model — a new owner would need to be onboarded to the vendor's tenant, the model migrated, permissions reconstructed, the subscription repriced. A flat-file twin is owned like the building itself: forever, transferrably, without vendor permission.
 
-## Five Differentiated Capabilities
+A major cloud BIM platform's subscription licence makes the risk explicit: a term lapse requires the owner to enter into a new subscription agreement for continued access to project data. The digital twin rents; it does not sell.
 
-### 1. Asset-Anchored BIM
-The digital twin travels with the property deed. Unlike multi-tenant SaaS models where data is "rented," a flat-file twin is owned like the physical building—permanently and transferably.
+### 2. Offline-capable BIM for field use
 
-### 2. Offline-Capable Field Operations
-By construction, cloud-authoritative twins are unusable in air-gapped facilities, basements, or remote construction sites. Foundry preserves full BIM functionality without network dependency.
+Basements, rooftops, remote construction sites, air-gapped defence facilities, healthcare campuses with strict data-residency rules, developing-world connectivity — all are workflows where a cloud-authoritative twin is structurally impossible. Cloud-authoritative BIM platforms require live internet access by construction. The Tauri + Rust shell hosting an offline IFC archive on a laptop or tablet preserves full BIM functionality without any network dependency.
 
-### 3. Vendor-Obsolescence Survival
-Buildings have a 50-year lifespan; proprietary formats often last fewer than five. A flat-file substrate ensures data remains readable for decades after the software vendor disappears.
+### 3. Vendor-obsolescence-survivable BIM
 
-### 4. Direct IoT Integration
-Per-element YAML sidecars ingest sensor data via local MQTT brokers. This eliminates sensor-count-based token charges and satisfies strict data residency requirements (GDPR, HIPAA).
+Buildings live 50+ years. Proprietary BIM authoring formats have compatibility windows of roughly three to five years. The flat-file substrate is readable for decades after any specific vendor disappears. This matters most for public-sector BIM (UK Government Level 2, US GSA, DoD, VA), cultural-heritage custodians, and long-horizon property owners — exactly the buyers most exposed to vendor-discontinuation risk.
 
-### 5. Unified Asset Archive
-The building, lease, and ledger converge into a single portable archive. The Totebox Archive is the first architecture where a building’s legal, financial, and spatial identity are a single, portable artifact.
+### 4. IoT integration directly into the BIM archive
 
-## Regulatory and Security Alignment
+A flat-file archive with per-element YAML sidecars can ingest sensor readings via local MQTT broker, written as timestamped JSON records into the element's sidecar, without the data ever leaving the owner's premises. This matters economically (no sensor-count-based token charges), legally (GDPR data residency, HIPAA in healthcare, export control in defence), and architecturally (the sensor graph is versioned alongside the model).
 
-The architecture satisfies mandatory open-standard requirements for US federal agencies (GSA, VA), EU member states, and Singapore’s CORENET X. It is uniquely positioned to meet ITAR air-gapped requirements and EU Data Act sovereignty mandates.
+### 5. BIM + lease register + financial ledger as one portable archive
 
-## Strategic Trade-offs
+For a property owner, the building, the lease, the rent, and the financing are the same asset. The building is where the lease applies; the lease is where the rent comes from; the rent services the loan; the loan justified the building. Multi-tenant cloud cannot commingle BIM, lease register, and rent roll in a single owner-controlled archive — commercial confidentiality, data residency, financial-audit trails, and multi-tenant isolation each prevent it on its own.
 
-PointSav acknowledges that real-time multi-user design workshops are currently faster in synchronous cloud SaaS. Additionally, while the substrate is designed to be AI-ready, a generative BIM authoring tool is not planned for the v0.0.1 release. These are deliberate trade-offs to prioritize an offline-first, vendor-independent posture.
+The Foundry workplace family — `app-workplace-memo`, `app-workplace-presentation`, `app-workplace-proforma`, and `app-workplace-bim` — is intended to converge these into one portable archive. The Totebox Archive is the first data architecture where a building's legal, financial, spatial, and operational identity are one artifact that travels with the asset.
+
+## Government regulatory acceptance is structurally favourable
+
+The format stack — IFC-SPF + IDS 1.0 + BCF 3.0 + COBie — fulfills mandatory open-standard delivery requirements across US federal (GSA, USACE, VA, NAVFAC), EU member states (Germany, Italy, Spain, Denmark, Norway, Netherlands, Poland), the UK BIM Framework, Singapore CORENET X (mandatory October 2026), Dubai (mandatory since January 2024), and the broader buildingSMART openBIM movement.
+
+The offline-first, flat-file architecture is the only approach that natively satisfies ITAR air-gapped requirements for defence projects, EU Data Act data sovereignty for European projects, HIPAA technical safeguards for VA healthcare facilities, and GDPR data residency for EU government clients — without dependency on a cloud vendor's contractual assurances. The EUPL-1.2 licence is OSI-approved, FAR 12.212-compatible, and EU-procurement-preferred.
+
+## What flat-file BIM does not do well — yet
+
+Honest accounting:
+
+- Real-time multi-user editing is slower than synchronous SaaS for charette-style design workshops. Cloud SaaS is genuinely better for synchronous design sessions.
+- City-scale federation (1M+ buildings) needs a different streaming architecture than a single-property archive.
+- Generative-AI BIM authoring tools from major vendors are proprietary today. The substrate is AI-ready (the Doorman dispatches generative requests through an audit ledger), but a generative BIM authoring tool is not planned for the v0.0.1 release.
+
+These are deliberate trade-offs for the offline-first, vendor-obsolescence-survivable posture; not oversights to be patched in the next release.
 
 
 ---
