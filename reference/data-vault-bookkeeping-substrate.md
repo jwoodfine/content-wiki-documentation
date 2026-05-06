@@ -8,7 +8,7 @@ quality: published
 short_description: An SMB bookkeeping and accounting architecture built on an immutable source vault, append-only journal, and structural separation between the bookkeeping record and any accounting tool.
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-06
 editor: pointsav-engineering
 cites:
   - ni-51-102
@@ -23,7 +23,7 @@ The substrate rests on three architectural choices that invert the hyperscaler p
 
 **The vault is the only canonical layer.** Source documents — invoices, receipts, purchase orders — arrive in any supported format and are stored immutably in the platform's append-only ledger. The parsed semantic fields, the original document, and a cryptographic commitment are stored together. The vault retains the original document alongside every derived representation of it; nothing is ever overwritten.
 
-**Bookkeeping and accounting are separate concerns.** The bookkeeping application is a read surface: it allows browsing, auditing, searching, and exporting from the vault. The accounting application is a productive surface: it generates trial balances, financial statements, and tax compliance documents. The customer's accountant can use any tool — including tools the vendor has no relationship with — against the vault export. The vendor does not own the accounting logic; it owns the vault.
+**Bookkeeping and accounting are separate concerns.** The bookkeeping application is a read surface: it allows browsing, auditing, searching, and exporting from the vault. The accounting application is a productive surface: it generates trial balances, financial statements, and tax compliance documents. The customer's accountant can use any tool — including tools the vendor has no relationship with — against the vault export. The vendor does not own the accounting logic; it owns the vault platform, not the data within it.
 
 **No accounting logic lives inside the vault.** The vault stores facts; consumers compute derived views. Migration away from the accounting tool is structurally costless: the vault remains intact, the new tool replays the ledger, and the derived views are rebuilt from the same canonical source.
 

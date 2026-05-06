@@ -16,6 +16,28 @@ Last updated: 2026-05-06.
 
 ## Open
 
+### 2026-05-06 — BIM batch: 5 EN+ES TOPIC pairs committed (project-editorial Task, session 5)
+
+Session: project-editorial Task (2026-05-06, fifth session).
+
+**Commit `c6d233d`** (Jennifer Woodfine) — 10 files: 5 EN TOPICs + 5 ES strategic adaptations sourced from `project-bim` PROSE-TOPIC drafts.
+
+Files:
+- `reference/bim-token-what-it-is.md` + `.es.md` — BIM Token definition and pre-constraining thesis
+- `reference/bim-token-three-layers.md` + `.es.md` — Specification, Regulation, Climate Zone layers
+- `architecture/building-design-system-bim.md` + `.es.md` — BIM Design System platform overview
+- `architecture/city-code-as-composable-geometry.md` + `.es.md` — Doctrine claim #41 compositional compliance
+- `reference/open-bim-regulatory-acceptance.md` + `.es.md` — G7 BIM mandates, sovereign data, EUPL-1.2
+
+Editorial discipline applied:
+- §6: competitor names genericized (proprietary BIM Family formats, commercial validation platforms)
+- BCSC: forward-looking items carry planned/intended language throughout
+- foundry-doc-v1 frontmatter; no body H1; colon-quoting rule applied to titles
+- Bilingual EN + ES strategic adaptations; Véase también with [[slug]] wikilinks
+- Five-move lede pattern applied per cluster-wiki-draft-pipeline.md §8.1
+
+**BIM GUIDE** (`guide-climate-zone-tokens.md`) committed to `woodfine-fleet-deployment/gateway-orchestration-bim/` on branch `cluster/project-language` (commit `9e6d311`). Not yet pushed/merged to `origin main`. Pending Master or Root to push `cluster/project-language` branch to `woodfine/woodfine-fleet-deployment` and merge.
+
 ### 2026-05-06 — Body H1 batch remediation (project-editorial Task, session 4)
 
 Session: project-editorial Task (2026-05-06, fourth session).
