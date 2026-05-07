@@ -16,6 +16,14 @@ Last updated: 2026-05-07.
 
 ## Open
 
+### 2026-05-07 — Root layout defects: guide-proofreader-distillation.md + topic-radical-proofreader-ui.md
+
+Two untracked files at repo root violate `repo-layout.md` §1 (root allowed-files list).
+
+**Open — `guide-proofreader-distillation.md`:** GUIDE files belong in `customer/woodfine-fleet-deployment/` per workspace §14. Move to appropriate fleet-deployment gateway; do not commit to this repo.
+
+**Open — `topic-radical-proofreader-ui.md`:** TOPIC files belong in a category subdirectory. Classify into `applications/` or `design-system/` and migrate.
+
 ### 2026-05-06 — BIM batch: 5 EN+ES TOPIC pairs committed (project-editorial)
 
 Commit `c6d233d` — `reference/bim-token-what-it-is.md`, `bim-token-three-layers.md`, `open-bim-regulatory-acceptance.md` + pairs; `architecture/building-design-system-bim.md`, `city-code-as-composable-geometry.md` + pairs.
