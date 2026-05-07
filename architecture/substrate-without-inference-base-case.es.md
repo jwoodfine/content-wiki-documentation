@@ -57,9 +57,3 @@ El caso base restringe cada implementación de servicio. Cada servicio debe tene
 ## Procedencia
 
 Resumen de adaptación estratégica del archivo fuente `convention-substrate-without-inference-base-case.md` (refinado el 30 de abril de 2026). Las referencias al flujo de transferencia y al mercado llevan encuadre "previsto" donde la implementación de la Fase 5 está pendiente. Postura de divulgación continua BCSC aplicada.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

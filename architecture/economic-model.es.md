@@ -51,9 +51,3 @@ Las capacidades de federación — el mercado de adaptadores LoRA, el pool Moonc
 
 - [[compounding-substrate]] — las cinco propiedades estructurales que este modelo económico financia
 - [[sovereign-ai-commons]] — el posicionamiento del sustrato como un bien común soberano
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

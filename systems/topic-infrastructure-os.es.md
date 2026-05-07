@@ -37,7 +37,3 @@ Infrastructure OS crea y mantiene la **Red Privada de PointSav**. Esta es una re
 Cada nodo que ejecuta Infrastructure OS se convierte en un miembro verificado de esta red, permitiendo:
 - **Transferencia de datos cifrada:** Mover imágenes de disco arrancables de Totebox Archive entre ubicaciones de forma segura.
 - **Comunicación entre dispositivos:** Sincronización segura de estado entre instancias distribuidas de PointSav.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

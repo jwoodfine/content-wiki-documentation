@@ -40,7 +40,3 @@ La attestación es de cero ejecución en el servidor para el cálculo del hash: 
 - Divulgaciones regulatorias públicas en nodos perimetrales operados por PointSav.
 - Artículos del wiki de contenido donde la verificación de integridad importa a lectores institucionales.
 - Cualquier superficie de contenido donde un lector necesite confirmar que está leyendo la versión publicada.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

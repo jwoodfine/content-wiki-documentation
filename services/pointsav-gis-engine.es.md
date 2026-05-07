@@ -40,7 +40,3 @@ La plataforma evita dependencias de SaaS de mapas comerciales utilizando una pil
 ## Procesamiento espacial
 
 La lógica central del motor reside en el servicio `app-orchestration-gis`, que ejecuta deterministamente la metodología de co-ubicación de Woodfine para identificar y clasificar nodos comerciales en los mercados cubiertos.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

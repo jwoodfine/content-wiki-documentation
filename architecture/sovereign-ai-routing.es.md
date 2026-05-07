@@ -40,7 +40,3 @@ El flujo es el siguiente:
 4. El Doorman aplica la pasada de rehidratación antes de devolver la respuesta al solicitante.
 
 El modelo externo nunca posee los registros estructurados reales del libro contable del cliente.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

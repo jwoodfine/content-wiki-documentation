@@ -54,15 +54,3 @@ The planned reverse flows depend on [[single-boundary-compute-discipline]] — a
 1. Doctrine claim #52 — Reverse-Flow Substrate (ratified v0.1.0).
 2. IAB OpenRTB 2.6 specification — planned ad exchange alignment.
 3. `conventions/customer-owned-graph-ip.md` — claim #48 composition.
-
----
-
-## Provenance
-
-Source: `convention-reverse-flow-substrate.md` (refined 2026-04-30). Workspace-internal file paths and open questions removed. All marketplace, ad exchange, and settlement claims carry "planned," "intended," and "is intended to" framing throughout — Phase 5 implementation has not begun. BCSC continuous-disclosure posture applied.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

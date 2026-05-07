@@ -68,15 +68,3 @@ The Doorman's existing OpenAI-compatible HTTP interface is preserved alongside M
 1. Doctrine claim #46 — MCP-as-Substrate-Protocol (ratified v0.1.0).
 2. MCP specification — https://modelcontextprotocol.io/specification/2025-11-25
 3. `conventions/single-boundary-compute-discipline.md` — claim #43 composition.
-
----
-
-## Provenance
-
-Source: `convention-mcp-substrate-protocol.md` (refined 2026-04-30). Workspace-internal file paths, migration tables, and open questions removed. Phase 5 marketplace and settlement references carry "planned" and "intended" framing per BCSC continuous-disclosure posture.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

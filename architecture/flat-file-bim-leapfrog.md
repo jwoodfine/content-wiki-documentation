@@ -87,10 +87,3 @@ Honest accounting:
 - Generative-AI BIM authoring tools from major vendors are proprietary today. The substrate is AI-ready (the Doorman dispatches generative requests through an audit ledger), but a generative BIM authoring tool is not planned for the v0.0.1 release.
 
 These are deliberate trade-offs for the offline-first, vendor-obsolescence-survivable posture; not oversights to be patched in the next release.
-
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

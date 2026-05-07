@@ -93,15 +93,3 @@ The implementation does not change the corpus JSONL schema. Consumers of the app
 2. `conventions/apprenticeship-substrate.md` §7C — the signal-complete acknowledgment that established the queue as a required durability layer for corpus capture.
 3. PointSav Doctrine Pillar 1 — Plain text only: structured state is stored as version-controllable plain text; binary state and daemon-held state are avoided where the operational requirement can be met by a text-based alternative.
 4. DOCTRINE.md §XIV — Compounding Substrate: the three-tier compute routing pattern (Local / Yo-Yo / External API) that the Brief Queue Substrate makes operationally continuous across tier transitions.
-
----
-
-## Provenance
-
-This article was drafted based on architectural documentation describing the four-directory queue design, the Yo-Yo idle-shutdown operational requirement, and the apprenticeship corpus capture pipeline. Source materials consulted include the apprenticeship substrate convention, the Yo-Yo operational runbook and its associated startup procedure, the Foundry Doctrine's treatment of the Compounding Substrate, and session trajectory logs from the project-slm cluster documenting the rationale for the file-JSONL approach. The §7C signal-complete acknowledgment from the apprenticeship substrate convention was the proximate event that established the queue as a required structural component.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

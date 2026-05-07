@@ -40,9 +40,3 @@ Routing telemetry to a locally controlled node rather than a cloud aggregation s
 - [[worm-ledger-architecture]] — the WORM ledger design that shares the append-only write model
 - [[edge-deployment]] — the boundary ingest architecture for the Ring 1 services
 - [[compounding-substrate]] — the broader substrate context for local-first data custody
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

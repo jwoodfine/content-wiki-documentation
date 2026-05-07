@@ -47,9 +47,3 @@ El Doorman (`service-slm`) está operativo en el servidor del espacio de trabajo
 - [[compounding-substrate]] — las cinco propiedades estructurales a las que contribuye el Doorman
 - [[brief-queue-substrate]] — la cola durable que mantiene continua la captura del corpus
 - [[apprenticeship-substrate]] — cómo los eventos del Doorman generan señal de entrenamiento para adaptadores LoRA
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

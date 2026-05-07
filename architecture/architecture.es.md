@@ -30,9 +30,3 @@ Esta propiedad está diseñada para garantizar la continuidad operativa cuando e
 - [[worm-ledger-architecture]] — diseño del registro WORM que sustenta la integridad del archivo
 - [[compounding-substrate]] — cómo las propiedades estructurales se acumulan entre despliegues
 - [[customer-hostability]] — propiedades de diseño que permiten al cliente alojar la plataforma completa
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

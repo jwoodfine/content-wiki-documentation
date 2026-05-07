@@ -46,7 +46,3 @@ Ningún campo captura información personalmente identificable. El campo `timezo
 ## Independencia operativa
 
 La arquitectura es operacionalmente independiente de plataformas de análisis externas. La señal de telemetría existe en la infraestructura del cliente, no en sistemas de terceros.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

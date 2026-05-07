@@ -59,9 +59,3 @@ The incident log entry in the workspace cleanup log carries the leak source, the
 ## See also
 
 - [[service-slm-operationalization-plan]] — The broader compute routing architecture that defines the Tier A, B, and C structure.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

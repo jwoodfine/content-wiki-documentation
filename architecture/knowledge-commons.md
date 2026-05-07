@@ -90,15 +90,3 @@ The model is not fixed. An Open contributor whose recurring work demonstrates op
 3. Knowledge Commons Wiki — commons-based peer production.
 4. Open Knowledge Foundation — open data and open content standards.
 5. Creative Commons — CC BY 4.0 and CC0 license texts.
-
----
-
-## Provenance
-
-Source material: ratified 2026-04-26, extended with three-tier contributor model. Disciplines applied: no body H1; structural positioning; BCSC forward-looking framing on federated marketplace and PointSav-LLM (planned/may); banned-vocabulary pass; workspace-internal operational paths stripped.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

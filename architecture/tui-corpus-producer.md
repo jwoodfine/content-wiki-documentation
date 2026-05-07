@@ -61,15 +61,3 @@ Some terminal sessions should not contribute to the training corpus: test sessio
 1. Doctrine claim #45 — TUI-as-Corpus-Producer (ratified v0.1.0).
 2. `conventions/apprenticeship-substrate.md` §7D — TUI extension to the apprenticeship substrate.
 3. Published OLMo 2 fine-tuning literature on quality-over-volume for narrow-domain adapters.
-
----
-
-## Provenance
-
-Source: `convention-tui-corpus-producer.md` (refined 2026-04-30). Workspace-internal file paths, implementation scaffolding details, and open questions removed. BCSC forward-looking framing applied to adapter training schedule claims (described as intended targets, not guarantees).
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

@@ -91,9 +91,3 @@ El modelo de contribuidores que sostiene esto: 4–7 empleados del Núcleo, 50�
 2. Aviso de Personal OSC 51-721 Divulgación de Información Prospectiva.
 3. Especificación MCP — Protocolo de Contexto de Modelo, Anthropic, 2024.
 4. OLMo 3 — Allen Institute for AI, Apache 2.0.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

@@ -50,7 +50,3 @@ Los números indican luminosidad: `10` es el más claro, `90`/`100` es el más o
 ## Garantías de contraste WCAG
 
 Las elecciones de primitivos del sustrato garantizan contraste AAA de WCAG 2.2 (7:1) para los pares texto-sobre-superficie canónicos. Un tema de cliente que sobreescriba los primitivos por debajo del nivel AA de WCAG 2.2 falla el endpoint de auditoría (hito posterior). El sustrato aplica el nivel mínimo; el cliente elige todo lo que está por encima de él.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

@@ -57,9 +57,3 @@ El certificado indica `notAfter=Jul 26 16:24:00 2026 GMT` según la salida de `o
 ## Procedencia
 
 Narrativa de hechos actuales, redactada el 2026-04-27 inmediatamente después del lanzamiento v0.1.29. Las declaraciones prospectivas sobre las Fases 4–8 siguen [ni-51-102] y [osc-sn-51-721]. Refinado por project-language 2026-04-30.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

@@ -119,9 +119,3 @@ The PointSav BIM platform is published under the European Union Public Licence v
 - EU Directive 2014/24/EU — European Parliament and Council
 - ITAR / EAR — US Department of State / Commerce
 - GDPR 2016/679 — European Parliament and Council
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

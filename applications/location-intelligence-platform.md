@@ -55,10 +55,3 @@ The platform integrates high-fidelity open data sources to ensure transparency a
 ## Future Roadmap
 
 Planned enhancements to the platform surface include the integration of origin-destination (OD) mobility data for trade-area flow analysis and the expansion of the European institutional dataset. [ni-51-102] [osc-sn-51-721]
-
----
-## Provenance
-- **Draft Source:** `PROSE-TOPIC-location-intelligence-platform.draft.md` (project-gis)
-- **Refinement:** 2026-05-02 by project-language Task
-- **Verification:** Layer architecture and algorithmic composition confirmed against `app-orchestration-gis` deployment.
-- **BCSC Posture:** OD data integration and European expansion targets labeled per ni-51-102.

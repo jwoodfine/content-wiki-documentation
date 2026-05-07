@@ -36,7 +36,3 @@ Console OS prioriza la estabilidad y la eficiencia sobre la novedad gráfica. La
 
 1. **Interfaz de Línea de Comandos (CLI):** Proporciona el control más granular para la configuración técnica, la orquestación del despliegue y los scripts.
 2. **Interfaz de Usuario de Terminal (TUI):** Ofrece un entorno semi-gráfico controlado por teclado para tareas administrativas rutinarias, como la gestión de los estados de Totebox Archive y el monitoreo de la telemetría del sistema.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

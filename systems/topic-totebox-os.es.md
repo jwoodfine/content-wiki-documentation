@@ -44,7 +44,3 @@ Un registro institucional en formato de texto sin formato puede ser leído por c
 ## Atestación de integridad
 
 Cada archivo en el directorio de activos y libro contable está respaldado por checksums SHA-256. El Totebox OS ejecuta verificación de integridad periódica; cualquier discrepancia entre el hash almacenado y el contenido del archivo activo activa una alerta al operador.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

@@ -56,9 +56,3 @@ El patrón aplica directamente cuando el tipo de documento CRDT se mapea con cla
 ## Procedencia
 
 Versión en español elaborada por project-language el 2026-04-30, basada en el borrador de project-knowledge (sesión 619abe3eff24497e, 2026-04-28). Vista general estratégica por DOCTRINE.md §XII — no es una traducción literal del inglés canónico.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

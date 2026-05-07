@@ -135,15 +135,3 @@ Each of these may integrate as a configuration addition or new subdirectory. Non
 3. SYS-ADR-07 — structured data never routes through AI; the sanitise-outbound discipline the Doorman enforces before any Yo-Yo compute call.
 4. SYS-ADR-10 — the mandatory human checkpoint; the Doorman enforces this at the Ring 2 write path regardless of compute tier.
 5. `conventions/compounding-substrate.md` — the five structural properties the Yo-Yo substrate contributes to.
-
----
-
-## Provenance
-
-Source material: workspace-root `YOYO-COMPUTE.md` (v1, 2026-04-20). Naming corrections applied: `cognitive-forge` / `Cognitive Forge` → `service-slm` / `Doorman` (context-dependent); `Data Vault` → `service-content` / knowledge graph (context-dependent); `vendor-phi3-mini` → `vendor-olmo-3` / OLMo 3; `service-datamarket` → `service-market`; `frontend` → ConsoleOS; `ArchiveOS` → ToteboxOS. Structural-positioning discipline applied: §7 "What Hyperscalers Structurally Cannot Offer" table retained as factual structural analysis (specific vendor names not present in original); no competitive-by-name comparison added. BCSC forward-looking framing applied: Phase 2–4 roadmap items carry planned/intended/target language; Sovereign Data Foundation not referenced in this document. Bloomberg register throughout.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

@@ -35,7 +35,3 @@ La regla de composición es estricta: se compone el espaciado mayor a partir de 
 El sustrato utiliza una cuadrícula de línea base de 16 px (`space-5`). El texto del cuerpo y los encabezados se alinean a múltiplos de 16 px en su cálculo de altura de línea; el relleno del contenedor se alinea a múltiplos de 16 px en el eje en línea. Esto es estructural: garantiza que el ritmo vertical permanezca consistente entre superficies.
 
 Esta disciplina es lo que distingue un sistema de diseño maduro de una colección de estilos: el espaciado no es una decisión casual sino una consecuencia calculada del sistema.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

@@ -65,15 +65,3 @@ Knowledge-graph-grounded apprenticeship depends on the [[single-boundary-compute
 1. Doctrine claim #44 — Knowledge-Graph-Grounded Apprenticeship (ratified v0.1.0).
 2. `conventions/apprenticeship-substrate.md` — upstream training tuple substrate.
 3. Microsoft GraphRAG (2024) — published evidence for hallucination reduction via graph-grounded inference.
-
----
-
-## Provenance
-
-Source: `convention-knowledge-graph-grounded-apprenticeship.md` (refined 2026-04-30). Workspace-internal file paths and open questions removed. BCSC forward-looking framing applied to the co-evolution claim (graph and adapter improvement described as a structural pattern, not a guaranteed schedule).
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

@@ -40,7 +40,3 @@ Un tema de cliente puede sustituir cualquier familia tipográfica en la capa pri
 ## Jerarquía de encabezados
 
 Un salto de nivel de encabezado (h1 → h3 sin h2 entre ellos) rompe la accesibilidad — los lectores de pantalla dependen de la jerarquía para navegar. El sustrato aplica esta regla en el trabajo de auditoría de hitos posteriores.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

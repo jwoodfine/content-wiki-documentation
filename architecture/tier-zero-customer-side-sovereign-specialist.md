@@ -62,15 +62,3 @@ Tier C (external API) is opt-in per tenant and off by default. When configured, 
 
 1. Doctrine claim #49 — Tier 0 Customer-Side Sovereign Specialist (ratified v0.1.0).
 2. Empirical validation: workspace VM Tier A swap, 2026-04-30 — OLMo 2 1B Q4 at 7 tokens/second on CPU.
-
----
-
-## Provenance
-
-Source: `convention-tier-zero-customer-side-sovereign-specialist.md` (refined 2026-04-30). Workspace-internal file paths and open questions removed. Hardware cost estimates and market analysis presented as structural observations; BCSC forward-looking framing applied to commercial focus claims.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

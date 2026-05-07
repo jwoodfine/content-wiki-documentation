@@ -36,9 +36,3 @@ El sustrato del sistema de diseño invierte el patrón de los grandes proveedore
 ## Arquitectura de tres capas
 
 La **bóveda** es el almacén de contenido canónico: definiciones de tokens, recetas HTML y CSS de componentes, especificaciones ARIA, temas y un directorio de investigación legible por IA. El **motor del sustrato** es un servicio sin estado que lee la bóveda y expone la superficie de investigación a los agentes de IA. El **showcase** es la aplicación web que sirve el sistema de diseño en un dominio. El showcase propio del proveedor usa el mismo código base y arquitectura que cualquier instancia del cliente.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

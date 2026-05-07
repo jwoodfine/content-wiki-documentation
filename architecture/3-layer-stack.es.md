@@ -36,7 +36,3 @@ La Pila de Tres Capas es el patrón de descomposición de infraestructura utiliz
 ## Por qué importa la separación
 
 Cada capa es reemplazable de forma independiente. Un cliente puede migrar de una capa de infraestructura en la nube a hardware local sin cambiar cómo opera la capa de plataforma. La lógica operativa no está acoplada al sustrato físico que la ejecuta.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

@@ -250,22 +250,6 @@ where hyperscaler vendors are structurally unable to follow.
 The substrate is in place. The architecture is ratified. The first customer is
 in deployment. The next chapter is operational scale.
 
----
-
-## Provenance
-
-This topic synthesizes from project-slm Task iter-24 research
-(`service-slm/docs/yoyo-training-substrate-and-service-content-integration.md`),
-Master Claude leapfrog-synthesis session (workspace v0.1.96, 2026-04-30), direct
-reads of service-content, service-extraction, and service-input code, empirical
-Tier A swap validation (2026-04-30), and 30+ external industry sources covering
-MCP 2026 standards, OLMo 2 capabilities, LadybugDB substrate, IAB OpenRTB
-ad-exchange standard, Snowflake Marketplace patterns, Brave BAT direct-payment
-model, IDC and Techaisle SMB 2026 forecasts, and per-vertical comparisons.
-
-Citation IDs resolved against `~/Foundry/citations.yaml` where registered;
-external URLs left as-is for unregistered sources.
-
 ## See Also
 
 - [[compounding-substrate]]
@@ -288,9 +272,3 @@ external URLs left as-is for unregistered sources.
   - `topic-purpose-routed-tier-discipline.md`
   - `topic-seed-taxonomy-smb-bootstrap.md`
   - `topic-cross-industry-leapfrog-evidence.md`
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

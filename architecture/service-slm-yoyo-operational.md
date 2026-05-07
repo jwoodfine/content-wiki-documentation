@@ -126,13 +126,3 @@ When AllenAI publishes OLMo 3 32B Think or Instruct in a Q4 GGUF format, the Yo-
 5. `conventions/apprenticeship-substrate.md` §7B, §7C — drain worker protocol, corpus schema, and brief-queue mechanics.
 6. NI 51-102 Continuous Disclosure Obligations. British Columbia Securities Commission. [ni-51-102] https://www.bcsc.bc.ca/securities-law/law-and-policy/instruments-and-policies/5-ongoing-requirements-for-issuers-insiders/current/51-102
 7. OSC Staff Notice 51-721 Forward-Looking Information Disclosure. Ontario Securities Commission. [osc-sn-51-721] https://www.osc.ca/en/securities-law/instruments-rules-policies/5/51-721/osc-staff-notice-51-721-forward-looking-information-disclosure
-
-## Provenance
-
-This article draws on direct observation of workspace substrate state at v0.1.91: the Doorman `/readyz` endpoint was queried to confirm tier-availability flags; the Yo-Yo `/health` endpoint was queried to confirm model service; the cost estimate was calculated from Doorman audit ledger entries and GCP billing data. AllenAI's HuggingFace model pages were consulted to confirm OLMo 2 and OLMo 3 model availability, quantization levels, and licensing. The llama.cpp project's GitHub releases and documentation were consulted to confirm OLMo 2 architecture support and build flags. GCP Compute Engine API and Cloud NAT documentation were consulted to confirm service-account scope inheritance and external-IP requirements. HuggingFace rate-limit documentation was consulted to confirm CDN bandwidth shaping behaviour and the `aria2c -x 4` community practice.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

@@ -39,9 +39,3 @@ El sustrato de citaciones hace de la trazabilidad de fuentes una propiedad estru
 ## Conexión con la postura de divulgación
 
 El sustrato de citaciones es la forma operacional de un elemento de la postura de divulgación continua: las citaciones se comprometen junto con el texto que respaldan, son legibles por máquinas y auditables. Un auditor puede seguir la cadena de citación desde una afirmación publicada hasta su fuente sin depender de la caracterización que hace la organización publicadora de lo que dice la fuente.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

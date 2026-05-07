@@ -44,7 +44,3 @@ Uses native `<details>`/`<summary>` — browsers provide keyboard (Space/Enter t
 
 - [[guide-component-citation-authority-ribbon]]
 - [[guide-component-freshness-ribbon]]
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

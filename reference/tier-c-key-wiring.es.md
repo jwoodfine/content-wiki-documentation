@@ -37,9 +37,3 @@ La rotación trimestral por proveedor es el ritmo predeterminado. La rotación a
 ## Postura de auditoría y respuesta a brechas
 
 Cada llamada al Nivel C produce una entrada en el registro de auditoría por inquilino con: nombre del proveedor, nombre del modelo, conteos de tokens, costo en USD calculado, latencia de extremo a extremo, identificador del inquilino, propósito de la llamada y estado de éxito. Una brecha — cualquier evento que exponga el valor de una clave más allá del límite del Doorman — requiere revocación inmediata en la consola del proveedor antes de limpiar la fuente de la filtración.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

@@ -38,7 +38,3 @@ Los grandes campus institucionales frecuentemente aparecen en datos geoespaciale
 ## Salida de datos
 
 El `cleansed-places.jsonl` resultante proporciona el conjunto de datos de anclas regionales que `app-orchestration-gis` utiliza al otorgar las clasificaciones de nivel de co-ubicación finales.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

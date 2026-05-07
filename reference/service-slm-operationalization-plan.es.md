@@ -36,9 +36,3 @@ El sustrato es autocorrectivo a nivel de corpus. Cuando el portal editorial acep
 ## Marco de entrenamiento LoRA y corpus por inquilino
 
 El entrenamiento de adaptadores usa el marco Axolotl con el modelo OLMo 3.1 32B Think. Un adaptador por inquilino se entrena con adaptación de bajo rango. Los datos de entrenamiento por inquilino viven en instancias de despliegue separadas, una por inquilino, para mantener los datos de cada uno estructuralmente separados entre sí.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

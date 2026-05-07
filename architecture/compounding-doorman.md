@@ -88,15 +88,3 @@ LoRA adapter training — the mechanism that makes the Doorman compound — depe
 3. SYS-ADR-07 — structured data never routes through AI; the sanitise-outbound discipline at the Doorman boundary.
 4. SYS-ADR-10 — the mandatory human checkpoint that the Doorman enforces at the Ring 2 write path.
 5. MEMO §6.3 — `service-slm` specification: AI Gateway with sanitise-outbound boundary.
-
----
-
-## Provenance
-
-Source material: workspace-root draft `topic-compounding-doorman.md`, conventions `compounding-substrate.md` and `three-ring-architecture.md`, MEMO §6.3 service-slm specification. Refinement disciplines applied: no body H1; structural-positioning discipline (metaphor framing retained as operational precision, not competitive contrast; no vendor names used); BCSC forward-looking adapter applied to federation claim (Tier B integration and federation cadence labelled as planned); banned-vocabulary pass (no substitutions required); implementation status section grounded in operational workspace state as of 2026-04-30.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

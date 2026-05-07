@@ -34,7 +34,3 @@ El diseño garantiza que los datos operativos propietarios — selectores de por
 ## Flujo operativo
 
 El servicio lee los registros de despacho pendientes del libro contable interno, ejecuta las interacciones del portal a través de los adaptadores privados en tiempo de ejecución, y escribe las marcas de tiempo de finalización de vuelta sin incrustar ninguna lógica específica del cliente en la base de código de código abierto.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

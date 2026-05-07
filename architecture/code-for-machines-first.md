@@ -54,15 +54,3 @@ This discipline is the structural claim that [[mcp-substrate-protocol]] realizes
 
 1. Doctrine claim #51 — Code-for-Machines First (ratified v0.1.0).
 2. `conventions/mcp-substrate-protocol.md` — claim #46 as structural realization of this principle.
-
----
-
-## Provenance
-
-Source: `convention-code-for-machines-first.md` (refined 2026-04-30). Workspace-internal file paths removed. No forward-looking commercial claims present in this convention.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

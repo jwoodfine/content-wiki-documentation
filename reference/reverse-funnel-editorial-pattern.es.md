@@ -37,9 +37,3 @@ El par (borrador refinado, versión editada creativamente) se almacena como par 
 ## El modelo de tres niveles de colaboradores
 
 Los colaboradores del núcleo operan el sustrato a lo largo de todo el ciclo. Los colaboradores de pago — los especialistas creativos — entran al final de cada ciclo para elevar el contenido publicado. Los consumidores del nivel abierto reciben y citan el resultado editado creativamente. Cada nivel trabaja en escala de tiempo distinta: el núcleo en tiempo real, los de pago por evento de publicación, el nivel abierto durante meses o años de uso.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

@@ -40,9 +40,3 @@ Cuatro propiedades gobiernan esto en la práctica: brief delimitado (una tarea, 
 ## El encuadre de costo
 
 La estructura de tres niveles produce un multiplicador efectivo significativo con presupuestos diarios de tokens fijos. Ejecutar trabajo mecánico en el nivel mecánico en lugar del nivel de pensamiento profundo extiende el presupuesto en aproximadamente un factor de quince. Un grupo de contribuidores que opera con disciplina de niveles puede mantener un volumen sustancialmente mayor de trabajo dentro del mismo costo de infraestructura.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

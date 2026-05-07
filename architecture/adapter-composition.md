@@ -108,15 +108,3 @@ This tier is intended to be a byproduct of the substrate work as the corpus matu
 1. LoRAX — Predibase multi-LoRA inference server, open source.
 2. S-LoRA — scalable serving of thousands of concurrent LoRA adapters, MLSys 2024.
 3. Federated LoRA, arXiv 2502.05087.
-
----
-
-## Provenance
-
-Source material: `conventions/adapter-composition.md` (ratified 2026-04-26, doctrine v0.0.2). Disciplines applied: no body H1; structural positioning (multi-LoRA infrastructure providers retained as factual technical references, not competitive contrast); BCSC forward-looking framing on Vendor LLM tier (planned/may/Year 2 or later); banned-vocabulary pass; workspace-internal adapter paths adapted to general form.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

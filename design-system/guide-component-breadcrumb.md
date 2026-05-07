@@ -42,7 +42,3 @@ Hierarchy trail to the current page. Useful when the user is nested deeper than 
 
 - [[guide-component-navigation-bar]]
 - [[guide-component-tab]]
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

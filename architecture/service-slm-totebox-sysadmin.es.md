@@ -52,15 +52,3 @@ Cuatro propiedades estructurales hacen que estas cargas de trabajo sean especial
 **Nivel 2 — Cliente multi-Totebox (planificado)**: el mismo sustrato más una suscripción a Nivel B Yo-Yo (32B Think) alojado por el proveedor. Los adaptadores LoRA por clúster entrenados en el corpus de tipos de tareas del cliente despliegan en el Nivel B. El precio está previsto que sea estructuralmente inferior a las ofertas de código cerrado comparables. Sujeto a la tasa de acumulación del corpus y a los precios de cómputo en el momento del despliegue.
 
 **Nivel 3 — Producto especializado PointSav-LLM (planificado)**: PointSav-OLMo-N alojado por el proveedor, con preentrenamiento continuo. La IA resuelve entre un 80 y un 90% previsto de las consultas de los clientes de forma autónoma; los humanos en el bucle gestionan las escaladas; cada respuesta del Nivel L2 retroalimenta el corpus de aprendizaje. El calendario de despliegue y los precios son objetivos planificados sujetos a la acumulación del corpus y la disponibilidad de cómputo.
-
----
-Copyright © 2026 Woodfine Capital Projects Inc.
-Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
-PointSav™ y Foundry™ son marcas no registradas de Woodfine Capital Projects Inc.
-
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

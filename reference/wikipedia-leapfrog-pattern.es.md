@@ -42,9 +42,3 @@ El wiki de documentación de PointSav toma su memoria muscular estructural de Wi
 **Escritura en estilo de resumen.** La sincronización de resúmenes en Wikipedia es manual y periódica. La alineación de las páginas de contenido del mapa de categoría es una propiedad de la tubería, no un problema de programación.
 
 **Atribución.** La atribución en Wikipedia es anónima abierta. La atribución en PointSav es estratificada por nivel, firmada criptográficamente y simultáneamente un registro de proveniencia de señal de entrenamiento.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

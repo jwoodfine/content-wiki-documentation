@@ -40,7 +40,3 @@ La arquitectura separa cada carga entrante en dos entidades: el activo y su regi
 ## Estructura de árbol Merkle
 
 Cada nueva entrada es hasheada; el hash de la nueva entrada se combina con el hash de la entrada anterior para producir el hash del estado actual del árbol. El checkpoint es firmado por la clave del inquilino y publicado. Si los hashes coinciden y la prueba de inclusión se verifica, el registro está intacto.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

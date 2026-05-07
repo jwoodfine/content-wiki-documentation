@@ -43,7 +43,3 @@ Each badge carries an `aria-label` with the full source class name (`Academic so
 
 - [[guide-component-freshness-ribbon]]
 - [[guide-component-research-trail-footer]]
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

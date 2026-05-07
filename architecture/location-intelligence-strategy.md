@@ -219,17 +219,3 @@ If the operator later finds `node-workplace-*` insufficient — for example, bec
 25. EUPL-1.2 — European Union Public Licence. [eupl-1-2]
 26. NI 51-102, Continuous Disclosure Obligations (BCSC). [ni-51-102]
 27. OSC Staff Notice 51-721, Forward-Looking Information Disclosure. [osc-sn-51-721]
-
----
-
-## Provenance
-
-Source material: workspace-root draft `topic-location-intelligence-strategy.md` (authored 2026-04-30 at workspace v0.1.88). Background references: `clones/project-gis/.claude/manifest.md`, `clones/project-bim/.claude/manifest.md` (parallel cluster pattern), DOCTRINE.md claims #14/#16/#18/#28/#38, `conventions/four-tier-slm-substrate.md`, `IT_SUPPORT_Nomenclature_Matrix_V8.md` §4. Web research: 17 primary sources consulted — market survey (CARTO, ArcGIS, Mapbox, Placer.ai architectures), open-data foundations (Foursquare OS, Overture Maps), tile stack (MapLibre, Martin, PMTiles, Tippecanoe, deck.gl), Spain DIY-retail landscape (Bricomart/Obramat, Leroy Merlin, Bauhaus, Brico Depôt), store-count data across US/CA/MX/ES, retail-clustering literature.
-
-Refinement disciplines applied: no body H1; structural-positioning discipline (market-survey section describes structural revenue mechanisms, not competitive-by-name contrast; no service named by competitive framing); BCSC forward-looking adapter (implementation milestone schedule, co-location demo deliverables, service-places expansion, and Workplace OS scaffold all labelled as intended targets per ni-51-102/osc-sn-51-721); banned-vocabulary pass (`blazingly-fast` removed from Martin description; no other substitutions required); Open Questions §10 from source omitted from published TOPIC (internal operator decisions, not public doctrine); Provenance footer BCSC-scrubbed.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

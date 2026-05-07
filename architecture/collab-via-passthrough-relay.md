@@ -78,16 +78,6 @@ The passthrough relay is a substrate pattern, not a wiki-specific feature. Any s
 - [[substrate-native-compatibility]] — Why the wiki engine declines interface mimicry in favour of substrate-native surfaces.
 - [[disclosure-substrate]] — The broader disclosure-posture convention this design satisfies.
 
-## Provenance
-
-Authored by project-knowledge Task Claude (session 619abe3eff24497e, 2026-04-28). Refined by project-language, 2026-04-30. Source references are the `app-mediakit-knowledge` implementation files listed above and Doctrine claim #29.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*
-
 ## References
 
 - **Yjs** — Conflict-free replicated data type library for collaborative applications. Client-side CRDT engine used in `cm-collab.bundle.js`. https://github.com/yjs/yjs

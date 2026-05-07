@@ -141,15 +141,3 @@ The BCSC Continuous Disclosure Posture applies to all claims, conventions, and p
 7. OpenTimestamps — Bitcoin-anchored timestamping.
 8. RFC 3161 — Internet X.509 PKI Time-Stamp Protocol.
 9. ESEF Regulation — European Single Electronic Format, iXBRL.
-
----
-
-## Provenance
-
-Source material: v0.1.0 ALPHA (ratified 2026-04-30). Summary covers: Six Pillars, selected Architectural Claims (full treatment of #43–#54 plus selected earlier claims), Eight Cross-Industry Inventions, Three-Ring Architecture, economic model. Stripped: full action matrix table specifics, mailbox file paths, cluster manifest YAML schemas, commit-flow mechanics, personal contributor identity details. BCSC forward-looking framing applied to all planned capabilities. No body H1. Structural positioning throughout.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

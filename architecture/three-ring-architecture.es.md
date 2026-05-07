@@ -42,9 +42,3 @@ La especificación técnica completa, incluyendo la taxonomía de servicios, las
 - [[service-slm]] — el servicio Doorman del anillo 3
 - [[compounding-doorman]] — el patrón operativo que implementa el Doorman y por qué se compone con el tiempo
 - [[worm-ledger-architecture]] — el registro inmutable de solo adición del anillo 1
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

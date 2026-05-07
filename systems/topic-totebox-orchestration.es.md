@@ -41,7 +41,3 @@ Cuando un cliente necesita un nuevo Totebox — para alojar un nuevo tipo de act
 4. Inicia la verificación de checksum inicial.
 
 La capa de orquestación también gestiona el retiro seguro de contenedores — garantizando que los libros contables se archiven o transfieran correctamente antes de que el contenedor sea desaprovisionado.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

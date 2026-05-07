@@ -58,15 +58,3 @@ The module identifier that scopes each graph also isolates it. The knowledge gra
 1. Doctrine claim #48 — Customer-Owned Graph IP (ratified v0.1.0).
 2. `conventions/two-bottoms-sovereign-substrate.md` — claim #34; sovereignty substrate that the ownership principle extends.
 3. `conventions/substrate-without-inference-base-case.md` — claim #54; operational form of data portability.
-
----
-
-## Provenance
-
-Source: `convention-customer-owned-graph-ip.md` (refined 2026-04-30). Workspace-internal file paths and open questions removed. BCSC forward-looking framing applied to monetization claims — described as planned and opt-in mechanisms, not current operating revenue.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

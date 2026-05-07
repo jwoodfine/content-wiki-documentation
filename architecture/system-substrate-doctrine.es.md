@@ -57,9 +57,3 @@ NetBSD se elige específicamente por su transferibilidad BSD de 2 cláusulas, Ve
 2. Reglamento eIDAS — firmas electrónicas cualificadas y servicios de confianza.
 3. RFC 3161 — Protocolo de Sellado de Tiempo.
 4. OpenTimestamps — sellado de tiempo anclado a Bitcoin.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

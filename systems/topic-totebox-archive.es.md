@@ -37,7 +37,3 @@ Un requisito arquitectónico clave del sistema PointSav es que los datos deben s
 ## Especialización de activos
 
 Cada Totebox se especializa en un tipo de activo institucional. Los casos de uso comunes incluyen archivos de contratos, registros financieros, correspondencia y conjuntos de datos geoespaciales. La especialización previene que los datos de diferentes dominios se entremezclen en un único contenedor.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

@@ -52,7 +52,3 @@ Each tab is a real `<a href>` link to a real page. `aria-current="page"` marks t
 
 - [[guide-component-navigation-bar]]
 - [[guide-component-breadcrumb]]
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

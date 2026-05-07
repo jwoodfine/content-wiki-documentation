@@ -59,9 +59,3 @@ This loop is intentionally closed per-tenant. A creative contributor editing con
 - [[project-tetrad-discipline]] — The wiki leg of the Tetrad is what generates bulk draft input for this pipeline.
 - [[service-slm-operationalization-plan]] — The operational plan for bringing the substrate model into active use as a draft generator.
 - [[wikipedia-leapfrog-pattern]] — How Wikipedia's editorial structures map to substrate-enforced equivalents.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

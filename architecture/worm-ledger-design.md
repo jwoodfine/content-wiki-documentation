@@ -73,9 +73,3 @@ The `service-fs` Ring 1 service implements the WORM ledger substrate in producti
 5. SEC Rule 17a-4(f) — electronic recordkeeping requirements for broker-dealers.
 6. Commission Implementing Regulation (EU) 2025/1946 — qualified electronic preservation service requirements under eIDAS.
 7. `conventions/worm-ledger-design.md` — source convention for this article.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

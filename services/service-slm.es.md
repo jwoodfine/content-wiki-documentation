@@ -42,7 +42,3 @@ El Portero actúa como la esclusa de aire para el texto no estructurado que ingr
 ## SYS-ADR-07
 
 La implementación de `service-slm` satisface SYS-ADR-07: los datos estructurados nunca se enrutan a través de IA. El texto sin procesar que llega de los servicios del Anillo 1 pasa por `service-slm` antes de que cualquier hecho estructurado se escriba en el grafo de conocimiento.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

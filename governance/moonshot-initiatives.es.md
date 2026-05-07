@@ -36,7 +36,3 @@ La cuarentena no es una medida punitiva — es una postura arquitectónica. Un c
 ## Gobernanza
 
 La Iniciativa de Reemplazo Soberano es el programa de gobernanza que coordina estos esfuerzos. Proporciona el marco para priorizar qué dependencias de terceros se apuntan, en qué secuencia, y qué criterios definen el éxito de cada iniciativa.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

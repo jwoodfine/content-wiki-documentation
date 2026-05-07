@@ -39,9 +39,3 @@ La supervisión de procesos se maneja con unidades systemd. Los binarios Linux E
 ## La compensación declarada
 
 El compromiso acepta un tiempo de inicio en frío más largo para el cómputo de ráfaga en comparación con las plataformas de contenedores gestionadas. A cambio: cada proceso en ejecución en cada despliegue es visible para el cliente con herramientas estándar de administración del sistema, y el mismo binario y archivo de unidad se ejecuta en cualquier host Linux sin modificación.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

@@ -38,7 +38,3 @@ Esto significa que la base de código del kernel verificado formalmente es lo su
 ## Postura flexible de hardware
 
 Cuando la plataforma PointSav opera en hardware donde seL4 puede arrancar de forma nativa, el límite de aislamiento es aplicado por el kernel y verificado formalmente. Cuando el hardware no admite el arranque nativo de seL4, una VM invitada de Linux o BSD alojada dentro de un hipervisor basado en seL4 proporciona un aislamiento estructural equivalente alrededor del invitado.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

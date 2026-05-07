@@ -91,15 +91,3 @@ Phase 0 workspace hygiene for the `project-system` cluster is pending. Phase 1A 
 4. OpenTimestamps — Bitcoin-anchored timestamping.
 5. Constitutional AI: Harmlessness from AI Feedback, Bai et al., arXiv 2212.08073.
 6. OLMo 3 — Allen Institute for AI, Apache 2.0.
-
----
-
-## Provenance
-
-Source material: ratified 2026-04-26. Disciplines applied: no body H1; structural positioning (competitor attestation products removed by competitive comparison; architectural contrast retained structurally); BCSC forward-looking framing on moonshot-kernel, {{gli|seL4}} SMP verification target, Phase 1A-1B implementation (planned/intended/target); banned-vocabulary pass; workspace-internal cluster paths and author attribution stripped.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

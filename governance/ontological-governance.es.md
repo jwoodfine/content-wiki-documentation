@@ -39,7 +39,3 @@ La gobernanza ontológica opera a través de cuatro libros contables CSV limitad
 ## El bucle de verificación humana
 
 La gobernanza ontológica también abarca el Verificador de Identidad, que fuerza los fragmentos de identidad extraídos a través de la revisión humana antes de que se escriban permanentemente en el libro contable verificado. Los dos mecanismos sirven al mismo objetivo: prevenir que los errores de clasificación acumulados socaven la integridad de los datos institucionales a largo plazo.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

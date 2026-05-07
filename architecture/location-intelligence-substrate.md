@@ -132,15 +132,3 @@ Statements regarding deployment schedule, customer outcomes, and feature roadmap
 [^7]: PMTiles — Single-file tile archive with HTTP range requests. protomaps.com/pmtiles
 [^8]: NI 51-102 Continuous Disclosure Obligations — BCSC
 [^9]: OSC Staff Notice 51-721 Forward-Looking Information Disclosure
-
----
-Copyright © 2026 Woodfine Capital Projects Inc.
-Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
-PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.
-
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

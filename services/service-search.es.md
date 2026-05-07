@@ -38,7 +38,3 @@ Un índice invertido funciona construyendo un mapa comprimido de cada palabra de
 - **Portátil.** El archivo de índice puede copiarse a almacenamiento USB o una máquina diferente y consultarse inmediatamente.
 - **Comprimido.** El formato de índice de Tantivy usa codificación block-maximal para datos de frecuencia de términos.
 - **Actualizable.** Los nuevos documentos se añaden al índice a través de un proceso de indexación en segundo plano que fusiona nuevos segmentos.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

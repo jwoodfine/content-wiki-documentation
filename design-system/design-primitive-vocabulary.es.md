@@ -39,7 +39,3 @@ Un diseñador o desarrollador que llega de cualquier entorno de sistema de dise�
 ## Por qué importa el vocabulario
 
 Un token nombrado por familia cromática con los valores exactos de un proveedor específico pone al sustrato a un litigio de marcas de distancia de un rediseño. Un token nombrado por rol con valores elegidos por PointSav, no.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

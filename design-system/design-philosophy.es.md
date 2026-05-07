@@ -36,7 +36,3 @@ El sustrato responde con tres inversiones estructurales:
 3. **Neutralidad de editor** en lugar de dependencia de editor. El formato DTCG es el denominador común: cualquier editor compatible produce contenido que el sustrato acepta.
 
 En la era de la IA 2026–2030, el sustrato de sistema de diseño de una pyme es un medio: su forma — legibilidad por máquinas, interoperabilidad sin dependencia de editor, auto-alojamiento, investigación consumible por IA — determina cómo la marca de la pyme llega a cada superficie orientada al cliente.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

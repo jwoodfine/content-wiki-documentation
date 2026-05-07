@@ -81,9 +81,3 @@ The material assumption underlying this trajectory is that the Open Data Commons
 2. Dolma 3 dataset, Open Data Commons license — <https://huggingface.co/datasets/allenai/dolma>
 3. OLMo 3.1 release notes (December 2025) — AllenAI engineering blog.
 4. `conventions/llm-substrate-decision.md` — source convention for this article.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

@@ -103,15 +103,3 @@ For clusters that work across multiple repositories — for example, a cluster w
 
 1. Meta-Repo Pattern — 2026 industry vocabulary; Mars meta-repo precedent.
 2. Augment Code 2026 Multi-Agent Workspace Guide.
-
----
-
-## Provenance
-
-Source material: `conventions/meta-repo-pattern.md` (ratified 2026-04-26, doctrine v0.0.2). Disciplines applied: no body H1; structural positioning; BCSC framing not required (no forward-looking commercial claims); banned-vocabulary pass; workspace-internal file paths adapted to be general where internal context is not needed for understanding.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

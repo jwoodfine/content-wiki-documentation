@@ -37,7 +37,3 @@ La función principal de MediaKit OS es potenciar los motores de documentación 
 MediaKit OS aplica un conjunto de **Protocolos Unificados** en todo el ecosistema. Esto garantiza que cada pieza de medios o documentación se adhiera al mismo estándar institucional, independientemente del clúster que la haya creado.
 
 La arquitectura de MediaKit OS sigue el principio de solo texto sin formato: todos los activos de contenido se almacenan como archivos de texto plano (Markdown, YAML) sin dependencias de formatos propietarios.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

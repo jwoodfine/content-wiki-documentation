@@ -40,7 +40,3 @@ El diseño adopta el estándar de archivos planos DS-ADR-02, que rechaza los cl�
 ## Integración con el Verificador de Identidad
 
 `service-people` se integra con el Verificador de Identidad, el punto de control humano en el bucle que previene que los errores de extracción automatizada se acumulen en el libro contable verificado.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

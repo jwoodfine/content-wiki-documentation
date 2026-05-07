@@ -68,9 +68,3 @@ The orchestration workflow is managed via the `build-clusters.py` and `build-rad
 ## See Also
 *   [[pointsav-gis-engine]]
 *   [Totebox Orchestration Convention](totebox-orchestration-convention)
-
----
-## Provenance
-- **Draft Source:** `GUIDE-totebox-orchestration-gis.md` (project-gis)
-- **Refinement:** 2026-05-02 by project-language Task
-- **Verification:** Orchestration steps verified against `gateway-orchestration-gis-1` deployment configuration.

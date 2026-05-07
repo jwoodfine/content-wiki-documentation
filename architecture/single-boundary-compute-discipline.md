@@ -67,15 +67,3 @@ This discipline composes with several other Doctrine claims. The Knowledge-Graph
 1. Doctrine claim #43 — Single-Boundary Compute Discipline (ratified v0.1.0).
 2. `conventions/three-ring-architecture.md` — Ring 3 structural optionality.
 3. SYS-ADR-07 — structured data never routes through AI; the sanitise-outbound discipline.
-
----
-
-## Provenance
-
-Source: `convention-single-boundary-compute-discipline.md` (refined 2026-04-30). Workspace-internal operational notes and file paths removed. BCSC forward-looking framing not required for this convention — no commercial roadmap claims present. Banned-vocabulary pass applied.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

@@ -42,7 +42,3 @@ Este no es un detalle de implementación secundario: es un requisito de accesibi
 - Animaciones que bloquean la entrada del usuario. La entrada modal es `speed-5` para lo visual; el foco se mueve de inmediato en duración 0.
 - Movimiento decorativo que añade tiempo a una tarea productiva.
 - Duraciones fuera de escala. La escala de 6 pasos cubre cada clase de interacción.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

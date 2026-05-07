@@ -53,9 +53,3 @@ La ventaja de esta estructura es que el nivel abierto mantiene características 
 1. Manual de Código Abierto, 2026 — mejores prácticas de licencias de código abierto.
 2. Open Knowledge Foundation — datos abiertos y estándares de contenido abierto.
 3. Creative Commons — textos de licencias CC BY 4.0 y CC0.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

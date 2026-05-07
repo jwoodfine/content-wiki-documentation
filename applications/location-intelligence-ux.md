@@ -40,9 +40,3 @@ The GIS surface utilizes a standardized component set designed for rapid re-prov
 -   **cluster-grade-marker:** A five-state vector symbol with built-in accessibility labeling (D1-D5).
 -   **location-index-card:** A responsive, data-dense drawer for cluster-level metadata.
 -   **map-layer-controls:** A consistent UI panel for managing the three-layer architecture.
-
----
-## Provenance
-- **Draft Source:** `DESIGN-RESEARCH-location-intelligence-ux.draft.md` (project-gis)
-- **Refinement:** 2026-05-02 by project-language Task
-- **Verification:** UI patterns verified against `app-orchestration-gis` application surface.

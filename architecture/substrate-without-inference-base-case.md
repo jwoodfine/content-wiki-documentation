@@ -64,15 +64,3 @@ The base case constrains every service implementation. Every service must have a
 2. Doctrine claim #16 — Three-Ring Architecture; Ring 3 is structurally optional.
 3. Doctrine claim #34 — Two-Bottoms Sovereign Substrate; sovereignty without vendor dependency.
 4. Sigstore Rekor transparency log — cryptographic anchoring for transfer bundle integrity.
-
----
-
-## Provenance
-
-Source: `convention-substrate-without-inference-base-case.md` (refined 2026-04-30). Workspace-internal file paths and open questions removed. Transfer flow and marketplace references carry "intended" framing where Phase 5 implementation is pending. BCSC continuous-disclosure posture applied.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

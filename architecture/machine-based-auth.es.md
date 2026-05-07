@@ -38,7 +38,3 @@ En la plataforma PointSav, el emparejamiento criptográfico es gestionado por la
 ## Eliminación de ataques de phishing
 
 Una sesión no puede establecerse desde hardware que no haya completado el emparejamiento criptográfico, independientemente de las credenciales que un atacante pueda haber obtenido. La clase completa de ataques de robo remoto de credenciales queda estructuralmente eliminada.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

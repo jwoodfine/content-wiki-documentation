@@ -54,9 +54,3 @@ Una única regla aplica en todos los niveles: las claves API residen exclusivame
 - [[compounding-doorman]] — la frontera del Doorman que aplica la regla de custodia de claves en todos los niveles
 - [[llm-substrate-decision]] — por qué OLMo 3 es el modelo base en todos los niveles
 - [[apprenticeship-substrate]] — el ciclo de entrenamiento que hace que los niveles superiores compongan a lo largo del tiempo
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

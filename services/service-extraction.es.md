@@ -35,7 +35,3 @@ Cada mensaje que pasa a través del Anillo 1 llega a `service-extraction` como u
 ## El Paquete de Entidades
 
 Cada carga útil se aísla en un directorio Unix nombrado por su marca de tiempo e ID de enrutamiento. El paquete contiene `payload.txt` — el registro legible permanente — más adjuntos binarios almacenados de forma nativa junto al texto.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

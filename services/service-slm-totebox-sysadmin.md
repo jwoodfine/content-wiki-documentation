@@ -113,15 +113,3 @@ The service-slm-as-sysadmin capability is available across three customer tiers,
 5. Federated {{gli|LoRA}} framework. [federated-{{gli|lora}}-2502-05087]
 8. NI 51-102, Continuous Disclosure Obligations (BCSC). [ni-51-102]
 9. OSC Staff Notice 51-721, Forward-Looking Information Disclosure. [osc-sn-51-721]
-
----
-
-## Provenance
-
-Source material: workspace-root draft `topic-service-slm-as-totebox-sysadmin.md` (authored 2026-04-29 at workspace v0.1.80). Background corpus: ten GUIDE files surveyed in cluster-totebox-personnel for operational ground truth; conventions `apprenticeship-substrate.md` and `compounding-substrate.md`; trainer-scoping document (commit `562baa0`) for engineering-side alignment. Refinement disciplines applied: no body H1; structural-positioning discipline (vendor-by-name contrast removed; structural market-gap framing retained); BCSC forward-looking adapter (cost projections, Tier 2 pricing, Tier 3 timeline, and Phase 3 training cycle all labelled with planned/intended/may framing per ni-51-102 / osc-sn-51-721); banned-vocabulary pass (no substitutions required); Open Questions section from source (§7) omitted from published TOPIC — those are internal research items, not public doctrine; Provenance footer BCSC-scrubbed.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

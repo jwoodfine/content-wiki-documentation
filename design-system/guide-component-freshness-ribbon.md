@@ -43,7 +43,3 @@ Each ribbon carries an `aria-label` announcing the ISO date and semantic stop (`
 
 - [[guide-component-citation-authority-ribbon]]
 - [[guide-component-research-trail-footer]]
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

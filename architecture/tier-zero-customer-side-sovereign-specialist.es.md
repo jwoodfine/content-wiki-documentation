@@ -59,9 +59,3 @@ El Nivel B (capacidad de GPU en ráfaga) es opt-in por inquilino. El Nivel C (AP
 ## Procedencia
 
 Resumen de adaptación estratégica del archivo fuente `convention-tier-zero-customer-side-sovereign-specialist.md` (refinado el 30 de abril de 2026). Las estimaciones de costos de hardware y el análisis de mercado se presentan como observaciones estructurales; las afirmaciones de enfoque comercial llevan encuadre BCSC prospectivo.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

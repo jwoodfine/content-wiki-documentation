@@ -49,9 +49,3 @@ This stateless approach ensures that the entire GIS environment can be re-provis
 ## See Also
 *   [[guide-totebox-orchestration-gis]]
 *   [[co-location-methodology]]
-
----
-## Provenance
-- **Draft Source:** `topic-pointsav-gis-engine.md` (project-gis)
-- **Refinement:** 2026-05-02 by project-language Task
-- **Verification:** Architectural details and rendering stack confirmed against `app-orchestration-gis` build configuration.
