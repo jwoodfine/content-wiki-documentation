@@ -9,7 +9,7 @@ status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-06
 editor: pointsav-engineering
-cites: [eupl-1-2]
+cites: [ifc-4-3, ids-1-0, iso-19650]
 paired_with: open-bim-regulatory-acceptance.es.md
 ---
 

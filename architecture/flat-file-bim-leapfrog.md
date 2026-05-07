@@ -9,6 +9,7 @@ language: en
 paired_with: flat-file-bim-leapfrog.es.md
 status: active
 last_edited: 2026-05-06
+cites: [ifc-4-3, iso-19650]
 ## See Also
 
 - [[worm-ledger-design]]
