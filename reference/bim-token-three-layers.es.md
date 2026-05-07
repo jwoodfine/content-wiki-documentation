@@ -10,7 +10,7 @@ status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-06
 editor: pointsav-engineering
-cites: []
+cites: [ifc-4-3, uniclass-2015, bsdd-v1, ids-1-0, dtcg-w3c, ashrae-90-1]
 paired_with: bim-token-three-layers.md
 ---
 

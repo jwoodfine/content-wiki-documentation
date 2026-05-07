@@ -46,8 +46,9 @@ The engine's core logic resides in the `app-orchestration-gis` service. This com
 This stateless approach ensures that the entire GIS environment can be re-provisioned instantly from the immutable data layer, providing maximum service resilience and auditability.
 
 ## See Also
-*   [[guide-totebox-orchestration-gis]]
-*   [[co-location-methodology]]
+
+- Totebox Orchestration GIS operations guide (planned — `guide-totebox-orchestration-gis`)
+- Co-location Methodology (planned — `co-location-methodology`)
 
 ---
 ## Provenance

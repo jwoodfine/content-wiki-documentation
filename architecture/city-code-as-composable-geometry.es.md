@@ -10,7 +10,7 @@ status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-06
 editor: pointsav-engineering
-cites: []
+cites: [ifc-4-3, ids-1-0, bsdd-v1]
 paired_with: city-code-as-composable-geometry.md
 ---
 

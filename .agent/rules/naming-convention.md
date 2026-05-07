@@ -1,10 +1,9 @@
 # Naming convention and information architecture — content-wiki-documentation
 
-> **Status: Draft.** Proposed 2026-04-23. Awaiting operator
-> decisions on the items in §10 before ratification. Once ratified,
-> the proposed rules become binding and this file is promoted from
-> Draft to Active. Existing content is normalised against it per
-> entries in `cleanup-log.md`.
+> **Status: Active.** Proposed 2026-04-23. Ratified 2026-05-07.
+> Operator decisions on the four §10 items are recorded in §13.
+> The rules in this file are binding. Existing content is
+> normalised against it per entries in `cleanup-log.md`.
 >
 > **Scope.** This document governs the human-facing design of the
 > wiki: category taxonomy, slug conventions, front-matter
@@ -13,7 +12,7 @@
 > `content-contract.md` (which governs what the rendering app
 > structurally enforces).
 
-Last updated: 2026-04-23.
+Last updated: 2026-05-07.
 
 ---
 
@@ -130,11 +129,14 @@ MOC landing.
 | `company/` | Organisational structure, roles, roadmap, financial disclosures | **Financial community**, general public | `pointsav`, `woodfine-management-corp`, `woodfine-capital-projects`, `roadmap-2026-2028`, `bcsc-disclosures` |
 | `reference/` | Glossary, nomenclature, style guide, templates | Writers, engineers | `glossary`, `nomenclature-matrix`, `style-guide`, `article-template` |
 | `help/` | Contributor onboarding per audience | Future contributors | `contributing-as-engineer`, `contributing-as-writer`, `contributing-as-designer`, `proposing-an-adr` |
+| `design-system/` | Design system — components, tokens, foundations, and contribution guides | Engineers, designers | `design-philosophy`, `design-color`, `design-typography`, `badge`, `button`, `navigation-bar` |
 
 Rationale:
 
-- Nine sits in the 6–10 range the research identifies as common
-  across major engineering documentation sites.
+- Ten sits in the 6–10 range the research identifies as common
+  across major engineering documentation sites. `design-system/`
+  added 2026-05-07 following project-editorial commit 4d5a499 which
+  published 30 component and foundation articles in this category.
 - Each is materially distinct from its neighbours:
   - `architecture` (cross-cutting logical) vs `systems` (per-OS)
     vs `services` (per-service) vs `applications` (per-app) — the
@@ -281,26 +283,10 @@ wiki drops `company/` entirely. Either disposition is coherent.
 The one to avoid is "serve both audiences without naming the
 tradeoff," which produces compromised IA for both.
 
-## 10. Pending operator decisions
+## 10. Ratified operator decisions (2026-05-07)
 
-Ratification of this draft requires the operator to decide:
-
-1. **Category set.** Accept the nine-category proposal, or revise?
-   Specifically: are `company/` and `governance/` both needed?
-   Is `infrastructure/` distinct from `architecture/` at this
-   scale?
-2. **Investor audience.** Accept `company/` as first-class
-   category (§9 primary proposal), or redirect investors
-   elsewhere and drop `company/`?
-3. **Front-matter schema changes.** Accept the six additions
-   (`id`, `type`, `tags`, `aliases`, named relations, extended
-   `status`) and one deletion (`subcategory`)? Staged adoption
-   is acceptable — which go in the first pass?
-4. **ID format.** ULID (26 chars, time-ordered, typographically
-   compact), UUIDv7 (36 chars, time-ordered, standard), or other?
-
-Decisions are recorded as an addendum to this file below §13
-when made.
+Four decisions required for ratification. All ratified 2026-05-07.
+Full decision text in §13.
 
 ## 11. Relationship to other rule files
 
@@ -344,4 +330,25 @@ pass:
 
 ## 13. Decision log
 
-*(empty until operator decisions are recorded)*
+Ratified 2026-05-07 by operator.
+
+**1. Category set.** Accept with amendment. Nine-category proposal accepted.
+`company/` and `governance/` both kept. `infrastructure/` kept distinct from
+`architecture/`. `design-system/` added as tenth category (per project-editorial
+commit 4d5a499, 2026-05-06 — 30 articles published). Final category set is the
+ten categories listed in §4.
+
+**2. Investor audience.** `company/` accepted as first-class category (§9 primary
+proposal). Investor-facing content lives in `company/`. No split to a separate
+domain at this scale.
+
+**3. Front-matter schema changes.** Staged adoption. First pass: `id` (ULID),
+`type`, `bcsc_class`, `status` (extended values). `tags`, `aliases`, and named
+relations deferred to second pass when search-facet infrastructure is wired.
+`subcategory:` field to be retired — existing values are treated as metadata-only
+until removal completes in a future normalisation pass.
+
+**4. ID format.** ULID (26 chars, time-ordered, typographically compact). Rationale:
+time-ordered enables chronological sort without a separate field; 26-char
+alphanumeric is copy-paste friendly; no hyphen breakage in URLs. UUIDv7 is a
+valid alternative but not chosen — ULID is already in use in Foundry tooling.
