@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Filosofía de Diseño UX de Inteligencia de Ubicación"
-slug: location-intelligence-ux.es
+slug: location-intelligence-ux
 category: applications
 type: topic
 quality: complete
@@ -12,15 +12,9 @@ language_protocol: TRANSLATE-ES
 last_edited: 2026-05-02
 editor: pointsav-engineering
 paired_with: location-intelligence-ux.md
-## Véase también
-
-- [[location-intelligence-platform]]
-- [[zoom-tier-reveal-pattern]]
-- [[map-side-drawer]]
-- [[map-stats-panel]]
-
 ---
 
+# Filosofía de Diseño UX de Inteligencia de Ubicación
 
 La interfaz de Inteligencia de Ubicación de PointSav está diseñada para priorizar la claridad en la toma de decisiones por encima del volumen de datos brutos. Utilizando una filosofía de "conclusión primero", la plataforma comunica la confianza en la selección de sitios mediante jerarquía visual y una clasificación estructural.
 
@@ -36,10 +30,3 @@ A diferencia de los productos GIS comerciales que muestran puntos individuales p
 ## Procedencia
 - **Adaptación Estratégica:** Basada en el documento inglés `location-intelligence-ux.md`.
 - **Refinement:** 2026-05-02 por project-language Task.
-
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

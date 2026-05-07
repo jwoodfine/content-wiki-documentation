@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Plataforma de Inteligencia de Ubicación"
-slug: location-intelligence-platform.es
+slug: location-intelligence-platform
 category: applications
 type: topic
 quality: complete
@@ -17,15 +17,9 @@ cites:
   - overture-maps-cdla-2-0
   - ni-51-102
   - osc-sn-51-721
-## Véase también
-
-- [[location-intelligence-ux]]
-- [[location-intelligence-strategy]]
-- [[pointsav-gis-engine]]
-- [[service-places-filtering]]
-
 ---
 
+# Plataforma de Inteligencia de Ubicación
 
 La plataforma de Inteligencia de Ubicación de PointSav es una aplicación GIS soberana, basada en archivos planos, diseñada para el análisis de clústeres minoristas y la selección estratégica de sitios. Construida como una alternativa de alto rendimiento a los productos SaaS comerciales, la plataforma permite a los clientes mantener el control total sobre sus conjuntos de datos geográficos, algoritmos e infraestructura de visualización.
 
@@ -52,10 +46,3 @@ La plataforma se adhiere a los principios de soberanía de datos del [Motor GIS 
 ## Procedencia
 - **Adaptación Estratégica:** Basada en el documento inglés `location-intelligence-platform.md`.
 - **Refinement:** 2026-05-02 por project-language Task.
-
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

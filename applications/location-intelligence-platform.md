@@ -17,15 +17,9 @@ cites:
   - overture-maps-cdla-2-0
   - ni-51-102
   - osc-sn-51-721
-## See Also
-
-- [[location-intelligence-ux]]
-- [[location-intelligence-strategy]]
-- [[pointsav-gis-engine]]
-- [[service-places-filtering]]
-
 ---
 
+# Location Intelligence Platform
 
 The PointSav Location Intelligence platform is a sovereign, flat-file GIS application designed for retail cluster analysis and strategic site selection. Built as a high-performance alternative to commercial SaaS products, the platform enables customers to maintain complete control over their geographic datasets, algorithms, and rendering infrastructure.
 
@@ -68,10 +62,3 @@ Planned enhancements to the platform surface include the integration of origin-d
 - **Refinement:** 2026-05-02 by project-language Task
 - **Verification:** Layer architecture and algorithmic composition confirmed against `app-orchestration-gis` deployment.
 - **BCSC Posture:** OD data integration and European expansion targets labeled per ni-51-102.
-
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*
