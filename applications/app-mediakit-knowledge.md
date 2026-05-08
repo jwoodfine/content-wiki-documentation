@@ -175,4 +175,4 @@ Phases 4–8 are *planned*; cautionary language applies per [ni-51-102] and [osc
 - [[substrate-native-compatibility]] — the Action API drop rationale and the substrate-native surface set
 - [[collab-via-passthrough-relay]] — the WebSocket relay implementation in depth
 - [[wikipedia-leapfrog-design]] — chrome design intent and the 95%/5% muscle-memory contract
-- [[documentation-pointsav-com-launch-2026-04-27]] — the v0.1.29 public launch narrative
+- [[article-shell-leapfrog]] — five article-shell primitives that extend beyond Wikipedia's reading surface

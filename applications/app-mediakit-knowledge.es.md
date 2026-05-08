@@ -56,4 +56,4 @@ A fecha de 2026-04-27, el motor está al final de la Fase 3. Las Fases 1, 1.1, 2
 - [[substrate-native-compatibility]] — la decisión de eliminar el shim de la Action API
 - [[collab-via-passthrough-relay]] — la implementación del relé WebSocket
 - [[wikipedia-leapfrog-design]] — intención de diseño del cromo y el contrato 95%/5%
-- [[documentation-pointsav-com-launch-2026-04-27]] — la narrativa del lanzamiento público v0.1.29
+- [[article-shell-leapfrog]] — cinco primitivas de la capa de artículo que extienden más allá de Wikipedia

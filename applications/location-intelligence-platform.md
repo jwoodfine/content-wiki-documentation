@@ -5,11 +5,12 @@ slug: location-intelligence-platform
 category: applications
 type: topic
 quality: complete
+short_description: "The PointSav Location Intelligence platform is a customer-owned flat-file GIS application designed for retail cluster analysis and strategic site selection — composed of app-orchestration-gis (the analytics engine) and pointsav-gis-engine (the rendering layer), with every dataset, algorithm, and rendering decision under the customer's direct control."
 status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-02
+last_edited: 2026-05-08
 editor: pointsav-engineering
 paired_with: location-intelligence-platform.es.md
 cites:
@@ -19,9 +20,7 @@ cites:
   - osc-sn-51-721
 ---
 
-# Location Intelligence Platform
-
-The PointSav Location Intelligence platform is a sovereign, flat-file GIS application designed for retail cluster analysis and strategic site selection. Built as a high-performance alternative to commercial SaaS products, the platform enables customers to maintain complete control over their geographic datasets, algorithms, and rendering infrastructure.
+The PointSav Location Intelligence platform is a customer-owned flat-file GIS application designed for retail cluster analysis and strategic site selection — composed of [[app-orchestration-gis]] (the analytics engine) and [[pointsav-gis-engine]] (the rendering layer), with every dataset, algorithm, and rendering decision under the customer's direct control. The platform answers a fundamental commercial question — *which geographic nodes possess the capital-validated density required to support adjacent development?* — by transforming raw store locations into actionable commercial nodes through the [[co-location-methodology]].
 
 ## Operational Capabilities
 
