@@ -9,14 +9,13 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-08
 editor: pointsav-engineering
 paired_with: service-places-filtering.md
 cites: []
 ---
 
-
-`service-places` es el servicio responsable de validar y agrupar la infraestructura cívica e institucional. Su función principal es filtrar los datos cívicos en bruto para retener únicamente instalaciones de escala regional — hospitales, universidades y centros de transporte principales — garantizando que las clasificaciones de nivel GIS reflejen la concentración a nivel institucional en lugar de la densidad de servicios locales.
+Las clasificaciones de nivel GIS dependen de saber dónde se ubican las instituciones regionales, no dónde se ubica cada clínica y colegio comunitario. **`service-places`** filtra los datos cívicos en bruto para retener únicamente instalaciones de escala regional — hospitales con al menos 50 camas dotadas, universidades con al menos 1.000 estudiantes equivalentes a tiempo completo, centros de transporte principales validados — y aplica un búfer espacial de 200 m para consolidar grandes campus institucionales en anclas regionales únicas. La densidad de servicios locales se filtra en esta etapa; las clasificaciones descendentes reflejan la concentración institucional en lugar del recuento de instalaciones.
 
 ## Umbrales de filtrado
 

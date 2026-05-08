@@ -9,14 +9,13 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-08
 editor: pointsav-engineering
 paired_with: message-courier.md
 cites: []
 ---
 
-
-`service-message-courier` es un componente de automatización web sin cabeza y mensajería diseñado para conectar `service-people`, el libro contable de identidades interno, con portales web externos. El servicio opera como un motor de ejecución genérico: toda la lógica específica del portal se suministra en tiempo de ejecución a través del patrón de adaptadores.
+`service-message-courier` es el motor de automatización web sin cabeza que conecta el libro contable de identidades interno de la plataforma con portales web externos — sin incrustar ninguna lógica específica del cliente en la base de código abierta. El motor central lee registros de despacho pendientes del libro contable, ejecuta interacciones con portales a través de adaptadores en tiempo de ejecución distribuidos de forma privada, y escribe marcas de tiempo de finalización; el motor en sí permanece libre de selectores codificados, credenciales o lógica específica del portal.
 
 ## Patrón de adaptadores
 

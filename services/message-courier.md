@@ -8,21 +8,13 @@ quality: stub
 short_description: "The message courier service is a headless web-automation engine that bridges internal identity ledgers with external web portals using runtime-injected adapters, keeping proprietary operational logic out of the open-source monorepo."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-08
 editor: pointsav-engineering
 cites: []
 paired_with: message-courier.es.md
 ---
 
-
-> The message courier service is a headless automation engine that reads pending dispatch records from an internal ledger, executes portal interactions via private runtime adapters, and writes completion timestamps back without embedding any client-specific logic in the open-source codebase.
-
-**`service-message-courier`** is a headless web-automation and
-messaging component designed to bridge `service-people`, the
-internal identity ledger, with external web portals. The service
-operates as a generic execution engine: all portal-specific logic
-is supplied at runtime through the adapter pattern, so the core
-engine remains free of hard-coded selectors, credentials, or
+**`service-message-courier`** is the headless web-automation engine that bridges the platform's internal identity ledger with external web portals — without embedding any client-specific logic in the open-source codebase. The core engine reads pending dispatch records from the ledger, executes portal interactions through privately distributed runtime adapters, and writes completion timestamps back; the engine itself remains free of hard-coded selectors, credentials, or
 target URLs. The adapter directory (`private-adapters/`) is
 excluded from version control so proprietary client operational
 data never enters the public Git history.

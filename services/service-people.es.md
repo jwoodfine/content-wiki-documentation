@@ -9,14 +9,13 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-08
 editor: pointsav-engineering
 paired_with: service-people.md
 cites: []
 ---
 
-
-`service-people` es el servicio de ingestión perimetral del Anillo 1 que mantiene un libro contable de personal determinista en archivos planos, almacenando identificadores únicos de contacto, estados de comunicación e historiales de contacto como una base de datos de archivos planos JSON portátil y estable en cuanto al esquema.
+Cada comunicación que entra a la plataforma lleva identidad del remitente, y `service-people` es el servicio de ingestión perimetral del Anillo 1 que convierte esas identidades en un libro contable de personal consultable. El libro contable es un directorio de archivos JSON planos en lugar de una base de datos relacional — portátil entre cambios de infraestructura, auditable con herramientas estándar del sistema de archivos y nativamente compatible con tuberías de entrenamiento de modelos locales que requieren un esquema estable. `service-people` recibe registros del remitente desde `service-extraction`, mantiene el estado de los contactos y sirve a los servicios del Anillo 2 que enriquecen el contenido con contexto de contacto.
 
 ## Línea de base arquitectónica
 

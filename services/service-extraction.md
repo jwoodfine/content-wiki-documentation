@@ -8,16 +8,13 @@ quality: complete
 short_description: "service-extraction is the Ring 2 central traffic controller that strips proprietary formatting from raw payloads, constructs structured Entity Bundles, assigns transaction IDs, and routes data to deterministic services or to service-slm for AI-assisted extraction."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-08
 editor: pointsav-engineering
 cites: []
 paired_with: service-extraction.es.md
 ---
 
-
-> service-extraction is the Ring 2 central traffic controller that strips proprietary formatting from raw payloads, constructs structured Entity Bundles, assigns transaction IDs, and routes data to deterministic services or to service-slm for AI-assisted extraction.
-
-**service-extraction** is a Ring 2 knowledge-and-processing service in the PointSav three-ring architecture. It receives raw payloads from Ring 1 ingest services, strips proprietary third-party formatting (JSON, MIME, Base64), and constructs machine-readable Entity Bundles — self-contained directory structures that hold both the text payload and any associated binary attachments. It is the canonical successor to the legacy working name `service-parser`.
+Every payload that crosses the platform boundary lands at **service-extraction**, the Ring 2 traffic controller that strips proprietary formatting (JSON, MIME, Base64), constructs a machine-readable Entity Bundle, and assigns the transaction identifier that follows the bundle through every downstream step. Structured payloads route entirely within Ring 2; unstructured text routes onward to `service-slm` for AI-assisted extraction. service-extraction is the canonical successor to the legacy working name `service-parser`.
 
 ## Architectural Baseline
 

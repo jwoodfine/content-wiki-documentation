@@ -9,14 +9,13 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-08
 editor: pointsav-engineering
 paired_with: service-extraction.md
 cites: []
 ---
 
-
-`service-extraction` es el controlador de tráfico central del Anillo 2 que elimina el formato propietario de las cargas útiles en bruto, construye Paquetes de Entidades estructurados, asigna IDs de transacción, y enruta los datos a servicios deterministas o a `service-slm` para extracción asistida por IA.
+Cada carga útil que cruza el límite de la plataforma llega a `service-extraction`, el controlador de tráfico del Anillo 2 que elimina el formato propietario (JSON, MIME, Base64), construye un Paquete de Entidades legible por máquina y asigna el identificador de transacción que sigue al paquete a través de cada paso descendente. Las cargas útiles estructuradas se enrutan completamente dentro del Anillo 2; el texto no estructurado se enruta a `service-slm` para extracción asistida por IA. `service-extraction` es el sucesor canónico del nombre de trabajo heredado `service-parser`.
 
 ## Línea de base arquitectónica
 

@@ -9,14 +9,13 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-08
 editor: pointsav-engineering
 paired_with: service-search.md
 cites: []
 ---
 
-
-`service-search` es el servicio de búsqueda de texto completo del Anillo 2, construido sobre la biblioteca Rust Tantivy. Proporciona recuperación en microsegundos en millones de archivos a través de un índice invertido binario estático que no requiere ningún proceso de base de datos activo.
+`service-search` responde consultas de texto completo en millones de documentos de la plataforma en microsegundos, utilizando un índice invertido binario estático construido en Rust sobre la biblioteca Tantivy — y dado que el índice es un archivo en lugar de un proceso de base de datos activo, puede copiarse a medios portátiles y consultarse en cualquier máquina sin dependencias adicionales. El servicio es un componente del Anillo 2 — conocimiento y procesamiento — y cumple con el estándar Data Archive and Retrieval Protocol (DARP). Localiza documentos; no los genera ni los clasifica.
 
 ## Línea de base arquitectónica
 
