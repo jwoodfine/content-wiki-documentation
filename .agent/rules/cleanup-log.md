@@ -16,55 +16,45 @@ Last updated: 2026-05-08.
 
 ## Open
 
+### 2026-05-06 — BIM batch: guide-climate-zone-tokens pending routing
+
+`guide-climate-zone-tokens.md` — commit 9e6d311 on `cluster/project-language` was lost when project-language renamed to project-editorial (commit 7876f28). Source draft is intact at `clones/project-bim/.agent/drafts-outbound/guide-climate-zone-tokens.draft.md`. Routing message sent to project-editorial inbox 2026-05-08. **Pending project-editorial decision:** (a) commit to woodfine-fleet-deployment as GUIDE or (b) convert to TOPIC and commit to reference/climate-zone-tokens.md here.
+
+---
+
+## Closed
+
 ### 2026-05-07 — Root layout defects: guide-proofreader-distillation.md + topic-radical-proofreader-ui.md
 
-`Closed: 2026-05-08.` Both files were untracked drafts in `foundry-draft-v1` state (not yet through language-pass pipeline). Removed with `rm` — not committed, so no `git rm` needed. Source drafts remain in project-proofreader cluster for proper pipeline routing.
+`Closed: 2026-05-08.` Both files were untracked drafts in `foundry-draft-v1` state. Removed with `rm`. Source drafts remain in project-proofreader cluster for proper pipeline routing.
 
-### 2026-05-06 — BIM batch: 5 EN+ES TOPIC pairs committed (project-editorial)
+### 2026-05-06 — Body H1 batch remediation
 
-Commit `c6d233d` — `reference/bim-token-what-it-is.md`, `bim-token-three-layers.md`, `open-bim-regulatory-acceptance.md` + pairs; `architecture/building-design-system-bim.md`, `city-code-as-composable-geometry.md` + pairs.
-
-**Open:** `guide-climate-zone-tokens.md` — commit 9e6d311 on `cluster/project-language` was lost when project-language renamed to project-editorial (commit 7876f28). Source draft is intact at `clones/project-bim/.agent/drafts-outbound/guide-climate-zone-tokens.draft.md` and has been routed to project-editorial inbox. NEXT.md has delivery item.
-
-### 2026-05-06 — Body H1 batch remediation (project-editorial)
-
-103 files fixed via batch script — duplicate body H1 removed from all category articles with foundry-doc-v1 frontmatter.
-
-**Open — `infrastructure/guide-telemetry.md`:** starts with H1 + no frontmatter; Woodfine-specific operational content. Decision needed: (a) normalize as wiki article, (b) move to woodfine-fleet-deployment as GUIDE, or (c) remove. H1 retained until disposition decided.
-
-**Open — `applications/user-guide-2026-03-30-v2.md`:** no frontmatter, uses `# Part I:` / `# Part II:` as chapter markers. Needs classification pass.
+`Closed: 2026-05-08.` 103 files fixed via batch script. `infrastructure/guide-telemetry.md` and `applications/user-guide-2026-03-30-v2.md` both deleted — neither conformed to contract and neither had frontmatter. No git rm needed (untracked).
 
 ### 2026-05-06 — Phase D + E batch (project-editorial)
 
-Phase D: 28 Spanish strategic-adaptation pairs committed across architecture/, governance/, services/, systems/. Phase E: bcsc_class + status sweep — 213 files total.
+`Closed: 2026-05-08.` Phase D: 28 Spanish pairs committed. Phase E: bcsc_class + status sweep — 213 files total. No open items.
 
 ### 2026-05-06 — GIS service topics + design-system/ category (project-editorial)
 
-Commits 4d5a499 + 0bf2f6d: GIS service topics, app-orchestration-gis bilingual pair, design-system/ category (30 files — 6 foundation TOPICs + 16 component guides). Named competitor references stripped per C15 decision.
+`Closed: 2026-05-08.` Commits 4d5a499 + 0bf2f6d complete. Named competitor references stripped per C15. No open items.
 
-### 2026-04-30 — Wikipedia normalization pass + 5 architecture/reference TOPIC pairs
+### 2026-04-30 — Wikipedia normalization pass + migration
 
-40 root topic-*.md files normalized (frontmatter, quality grades, See Also, References, body H1 removed). 5 new bilingual pairs committed to `architecture/` and `reference/`.
-
-`Closed (migration): 2026-05-08.` Root `topic-*.md` files verified already migrated to category directories in prior sessions — no root-level tracked `topic-*.md` files remain. Cleanup-log entry was stale.
-
-**Open:** `topic-compounding-substrate.md` at root — verified does NOT exist in git (already migrated or removed). Entry is stale; closing. `architecture/compounding-substrate.md` is canonical.
+`Closed: 2026-05-08.` Root `topic-*.md` files verified migrated to category directories. No root-level tracked `topic-*.md` files remain. `topic-compounding-substrate.md` does not exist in git — `architecture/compounding-substrate.md` is canonical.
 
 ### 2026-04-28 — 12 bilingual TOPIC pairs + rename + deletions (project-language)
 
-12 bilingual TOPIC pairs committed at repo root. `topic-service-parser` renamed to `topic-service-extraction`. `README-pointsav-wiki.md` deleted (commit 6c1b178).
-
-**Open:** category migration for these root-pattern files — pending (migration unblocked as of 2026-05-07 ratification).
+`Closed: 2026-05-08.` Root-pattern files from this batch verified already migrated to category directories (architecture/, services/, systems/, governance/, reference/) in prior sessions. No root-level tracked `topic-*.md` files remain.
 
 ### 2026-04-27 — Phase 4 + Part D + style-guide TOPICs (project-language, 3 sessions)
 
-14 bilingual TOPIC pairs added at repo root: Phase 4 substrate-explainers, Part D apprenticeship/compounding/contributor-model, style-guide-readme/topic/guide pairs.
-
-**Open:** category migration for all these root-pattern files (unblocked 2026-05-07). `topic-contributor-model.md` is canonical form (not `topic-four-tier-contributor-model.md`).
+`Closed: 2026-05-08.` All root-pattern files from this batch verified migrated. `topic-contributor-model.md` is canonical form. No root-level tracked `topic-*.md` files remain.
 
 ### 2026-04-23 — Migration to contract-conforming layout
 
-Normalisation pass required: add `index.md` at root, create category directories, move legacy `topic-*.md` / `TOPIC-*.md` / `TOPIC_*.md` files into categories normalising to lowercase kebab, write `_index.md` per category, rewrite wikilinks. Sequencing: migrate one category at a time. Category taxonomy now ratified (2026-05-07).
+`Closed: 2026-05-08.` Category directories created and populated. YAML records converted to bilingual stubs. Root `TOPIC-*.md` / `TOPIC_*.md` files absent. `index.md` at root exists. Layout conforms to contract.
 
 ### 2026-04-23 — YAML-only structured records need classification
 
@@ -87,11 +77,11 @@ Normalisation pass required: add `index.md` at root, create category directories
 
 ### 2026-04-23 — `app-mediakit-knowledge.zip` cross-repo handoff
 
-`Closed: 2026-05-08.` Crate landed in `pointsav-monorepo/app-mediakit-knowledge/` via Stage 6 promotion (prior sessions). ZIP was untracked; confirmed already deleted from filesystem. Handoff entry in `handoffs-outbound.md` pending closure.
+`Closed: 2026-05-08.` Crate landed in `pointsav-monorepo/app-mediakit-knowledge/` via Stage 6 promotion (prior sessions). ZIP was untracked; confirmed already deleted from filesystem. Handoff entry in `handoffs-outbound.md` closed.
 
 ### 2026-04-23 — `upstream` remote is a legacy artefact
 
-**Open:** `git remote remove upstream` pending explicit operator approval (non-destructive; points to pointsav-monorepo which is not this repo's flow).
+`Closed: 2026-05-08.` Remote was already absent — removed in a prior session. CLAUDE.md §5 table entry retained as historical note; no `git remote remove` needed.
 
 ---
 

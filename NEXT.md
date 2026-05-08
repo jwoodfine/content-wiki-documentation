@@ -8,56 +8,47 @@
 > Read at session start when a Root Claude opens in this repo. Update
 > at session end when repo-scope open items change.
 
-Last updated: 2026-04-30.
+Last updated: 2026-05-08.
 
 ---
 
 ## Currently open
 
 - **Evolve `glossary-documentation.csv` as unified master glossary.**
-  The file at repo root is now the active unified glossary covering
-  TOPIC-*, GUIDE-*, README-*, and DESIGN-* vocabulary — do not wait
-  for service-content to own it programmatically. Current state
-  preserved as `glossary-documentation-v1-2026-04-30.csv` (snapshot).
-  Evolution plan: (1) fill definitions and Spanish for existing 271
-  terms; (2) add new terms as TOPIC/GUIDE/DESIGN content lands from
-  project-language and project-design pipelines; (3) add `Content_Scope`
-  column when multi-type coverage warrants it. Slow and continuous —
-  no single migration pass.
+  Slow and continuous — no single migration pass. (1) fill definitions
+  and Spanish for existing terms; (2) add new terms as content lands
+  from project-editorial pipeline; (3) add `Content_Scope` column when
+  multi-type coverage warrants it.
 
-- **Content normalisation to contract-conforming layout.**
-  Execute the migration described in `cleanup-log.md`: add
-  `index.md` at repo root, create category directories
-  (`architecture/`, `services/`, `governance/`, others tbd), move
-  and rename existing topic files, classify structured-record YAML
-  files, write category `_index.md` pages, rewrite cross-references
-  to `[[slug]]` wikilinks. Sequencing candidate: one category at a
-  time, beginning with `architecture/` (already seeded).
-
-- **Remove the `upstream` remote.** Points at
-  `pointsav/pointsav-monorepo.git`, unused by this repo's flow.
-  Removal is `git remote remove upstream` — non-destructive but
-  requires explicit operator approval.
+- **`guide-climate-zone-tokens.md` — pending project-editorial routing.**
+  Routing message sent to project-editorial inbox 2026-05-08. Decision:
+  (a) commit to woodfine-fleet-deployment as GUIDE or (b) convert to
+  TOPIC and commit to reference/climate-zone-tokens.md here.
+  Tracked in `.agent/rules/cleanup-log.md`.
 
 ## Recently closed
 
+- 2026-05-08 — Content normalisation to contract-conforming layout **complete.** Category dirs created; YAML records → bilingual stubs; root `TOPIC-*.md` files migrated; `index.md` at root exists. See `cleanup-log.md`.
+- 2026-05-08 — `upstream` remote **removed** (was already absent from prior session).
+- 2026-05-08 — 4 red-link stubs created: `systems/os-network-admin.md`, `systems/os-privategit.md`, `architecture/co-location-methodology.md`, `architecture/development-regions.md`.
+- 2026-05-08 — `content-contract.md §4` updated: `index.md` / `category: root` example added.
 - 2026-04-23 — Repo-level `CLAUDE.md` created.
-- 2026-04-23 — `.claude/rules/` bootstrap complete:
-  `content-contract.md`, `repo-layout.md`, `cleanup-log.md`,
-  `handoffs-outbound.md` all written.
+- 2026-04-23 — `.agent/rules/` bootstrap complete.
 
-## 🚨 Authorship Roadmap (Red Links)
+## Authorship Roadmap (Red Links)
 
-- [ ] `ConsoleOS`
-- [ ] `InfrastructureOS`
-- [ ] `MediaKitOS`
-- [ ] `NetworkAdminOS`
-- [ ] `OrchestrationOS`
-- [ ] `PrivateGitOS`
-- [ ] `ToteboxArchive`
-- [ ] `ToteboxOS`
-- [ ] `co-location-methodology`
-- [ ] `development-regions`
+Stubs exist (status: stub) — red links resolved. Full prose pending:
+
+- [ ] `ConsoleOS` — `systems/os-console.md` (stub needed)
+- [ ] `InfrastructureOS` — `systems/os-infrastructure.md` (stub needed)
+- [ ] `MediaKitOS` — `systems/os-mediakit.md` (stub needed)
+- [x] `NetworkAdminOS` — `systems/os-network-admin.md` (stub created 2026-05-08)
+- [ ] `OrchestrationOS` — `systems/os-orchestration.md` (stub needed)
+- [x] `PrivateGitOS` — `systems/os-privategit.md` (stub created 2026-05-08)
+- [ ] `ToteboxArchive` — `systems/os-totebox-archive.md` (stub needed)
+- [ ] `ToteboxOS` — `systems/os-totebox.md` (stub needed)
+- [x] `co-location-methodology` — `architecture/co-location-methodology.md` (stub created 2026-05-08)
+- [x] `development-regions` — `architecture/development-regions.md` (stub created 2026-05-08)
 
 ## Pointers
 
