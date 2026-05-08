@@ -35,7 +35,7 @@ The full deployment stack for a Yo-Yo inference instance consists of: an OpenTof
 
 ## What this rules out
 
-Cloud Run, Kubernetes, SkyPilot, OCI image registries, `cargo-chef` Docker layer caching, and container build pipelines. These are not excluded because they are inferior in general; they are excluded because they introduce operator surface that is inconsistent with the [[zero-container-runtime]] structural commitment and the SMB economics case described above.
+Managed container orchestration platforms, container runtime systems, multi-cloud abstraction frameworks, OCI image registries, layered Docker build caching, and container build pipelines. These categories are not excluded because they are inferior in general; they are excluded because they introduce operator surface that is inconsistent with the [[zero-container-runtime]] structural commitment and the SMB economics case described above.
 
 ## See also
 

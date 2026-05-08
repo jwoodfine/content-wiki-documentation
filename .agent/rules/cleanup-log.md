@@ -37,20 +37,8 @@ Commits `96e221d`, `91b8910`, `f470a11`, `aad5c7d`, `09637ed`, `ad88bc3`, `1868a
 - **Step 5 priority 4c — applications category COMPLETE.** 3 named app-* EN+ES pairs (`500f201` app-mediakit-knowledge; `5f17aa1` app-mediakit-marketing + app-orchestration-gis); 4 design-intent articles moved `applications/` → `architecture/` + location-intelligence-platform refined + launch announcement retired (`dc9acec`); frontmatter+lead edits to 4 moved articles (`0a5b96f`).
 - Stage 6 reconciliation merge with origin/main (`dcec4f6` — 7 conflicts resolved) and cleanup-log archive split (`5880bd0`) both promoted to canonical at 2026-05-08T20:55Z.
 
-**Open — GUIDEs (~72 files):** Step 5 priority 5 — next-session resume point.
-
-**Open — category migration:** root topic-*.md files → category subdirectories
-(unblocked 2026-05-07 ratification). cleanup-log indicates this is mostly already
-complete from earlier sessions; quick verification pass needed to confirm and close.
-
-**Open — competitor-name violation in zero-container-inference.md:** "What this rules out"
-section names Cloud Run, Kubernetes, SkyPilot, cargo-chef explicitly. Workspace §6
-prohibits competitive comparisons by name. Surfaced via Phase 3 of 2026-05-08 session;
-not actioned in scope. Replace with generic categories (managed container orchestration
-platforms, container runtime systems, multi-cloud abstraction frameworks, OCI image
-registries) at next editorial pass.
-
-Staging-mirror state at session close: cluster main at `0a5b96f`; 2 commits ahead of canonical (`5880bd0`). Master canonical promote queue includes `dc9acec` + `0a5b96f` (clean fast-forward).
+**Open — GUIDEs (~77 files):** Step 5 priority 5 — in progress this session;
+scaffold-batch + operational-starter dispatched.
 
 ---
 
@@ -58,6 +46,8 @@ Staging-mirror state at session close: cluster main at `0a5b96f`; 2 commits ahea
 
 > Detailed session-note text archived in `cleanup-log-archive.md`.
 
+- **2026-05-08 — competitor-name violation in zero-container-inference.md:** fixed 2026-05-08 — "What this rules out" section now uses generic categories (managed container orchestration platforms, container runtime systems, etc.) per workspace §6.
+- **2026-05-08 — Category migration verification:** verified complete 2026-05-08 — `find content-wiki-documentation -maxdepth 1 -name 'topic-*.md'` returns no tracked root-level legacy files; migration to category subdirectories complete from earlier sessions.
 - **2026-05-07 — Root layout defects (guide-proofreader-distillation, topic-radical-proofreader-ui):** untracked drafts removed `rm`; source drafts remain in project-proofreader cluster.
 - **2026-05-06 — BIM batch: guide-climate-zone-tokens routed to TOPIC:** option (b) — `15d0942` (TOPIC) + `a928b70` (stale GUIDE removed).
 - **2026-05-06 — Body H1 batch remediation:** 103 files batch-fixed; `infrastructure/guide-telemetry.md` + `applications/user-guide-2026-03-30-v2.md` both deleted in canonical sweep `c2b7ac9`.
