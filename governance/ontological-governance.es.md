@@ -9,20 +9,13 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-08
 editor: pointsav-engineering
 paired_with: ontological-governance.md
 cites: []
-## Véase también
-
-- [[verification-surveyor]]
-- [[message-courier]]
-- [[moonshot-initiatives]]
-- [[sovereign-replacement-initiative]]
-
 ---
 
-La gobernanza ontológica describe los cuatro libros contables de control de autocorrección que rigen cómo `service-content` clasifica y acumula conocimiento, y el bucle de verificación humana que mantiene los datos de identidad extraídos precisos antes de que se comprometan permanentemente.
+Los sistemas de clasificación automatizada derivan con el tiempo: las categorías se amplían o contraen, el vocabulario se fragmenta y los errores se acumulan más rápido de lo que pueden corregirse. La **gobernanza ontológica** evita esta deriva mediante dos mecanismos estructurales: cuatro libros contables de control con velocidad de actualización deliberadamente lenta que definen el vocabulario de clasificación, y un bucle de verificación humana que obliga a los fragmentos de identidad extraídos a pasar por revisión humana antes de que se escriban permanentemente en el libro contable verificado. Para un operador regulado, esto significa que el grafo de conocimiento de la plataforma permanece auditable y los registros de identidad se mantienen precisos sin curación manual continua.
 
 ## El problema de la deriva de clasificación
 
@@ -39,3 +32,10 @@ La gobernanza ontológica opera a través de cuatro libros contables CSV limitad
 ## El bucle de verificación humana
 
 La gobernanza ontológica también abarca el Verificador de Identidad, que fuerza los fragmentos de identidad extraídos a través de la revisión humana antes de que se escriban permanentemente en el libro contable verificado. Los dos mecanismos sirven al mismo objetivo: prevenir que los errores de clasificación acumulados socaven la integridad de los datos institucionales a largo plazo.
+
+## Véase también
+
+- [[verification-surveyor]]
+- [[message-courier]]
+- [[moonshot-initiatives]]
+- [[sovereign-replacement-initiative]]

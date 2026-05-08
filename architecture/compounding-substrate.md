@@ -16,9 +16,7 @@ cites:
 paired_with: compounding-substrate.es.md
 ---
 
-> The Compounding Substrate is the architectural pattern PointSav builds and stewards, combining five structural properties to produce a platform where every operational interaction generates training signal that compounds across all tenant deployments.
-
-**The Compounding Substrate** is an AI-substrate architecture where the platform code is open and forkable, the deterministic data layer functions independently of any AI compute, and AI is added as an optional layer that any tenant can compose in or out. Every operational interaction generates training signal that compounds across the substrate's deployments. A curator — PointSav — periodically rolls accumulated signal into improved base models that flow back to all deployments without disrupting customer data ownership. The pattern applies the open-source foundation model (Apache Software Foundation) combined with the commercial distribution model (Red Hat) to AI substrate: substrate becomes open commons, and value migrates up to operations, integration, and a federated marketplace.
+Every operational interaction on the PointSav platform generates training signal that compounds across all tenant deployments — producing an AI system that improves continuously without any tenant surrendering ownership of their data. **The Compounding Substrate** is the architectural pattern that makes this possible: open, forkable platform code; a deterministic data layer that functions independently of any AI compute; and AI added as an optional layer any tenant can compose in or out. A curator — PointSav — periodically rolls accumulated signal into improved base models that flow back to all deployments without disrupting customer data ownership. The pattern applies the open-source foundation model (Apache Software Foundation) combined with the commercial distribution model (Red Hat) to AI substrate: the platform becomes open commons, and value migrates up to operations, integration, and a federated marketplace.
 
 This article describes the pattern, names the five properties, and explains the value-chain inversion that makes the model durable.
 
@@ -55,13 +53,13 @@ Hyperscaler structural gap: their AI products tightly couple AI compute to data 
 
 ### 3. Dynamic Compute Routing
 
-`service-slm` is the single {{gli|Doorman}} boundary that transparently routes among three compute tiers: local OLMo 3 7B on the customer's machine, multi-cloud burst (Cloud Run / RunPod / Modal / customer GPU), and external API (Claude / Gemini / GPT). The customer does not pick the tier; request shape and budget caps do.
+`service-slm` is the platform's sole access-control gateway (the Doorman) — transparently routing among three compute tiers: local OLMo 3 7B on the customer's machine, multi-cloud burst (Cloud Run / RunPod / Modal / customer GPU), and external API (Claude / Gemini / GPT). The customer does not pick the tier; request shape and budget caps do.
 
 Hyperscaler structural gap: each tier in their world is a separate billing relationship; their ecosystem does not span competitors' frontier models. They cannot abstract this routing.
 
 ### 4. Privacy-Preserving Federation
 
-Customers opt in to a federated {{gli|LoRA}} marketplace (privacy-preserving aggregation per the SDFLoRA / FedEx-LoRA / HeLoRA research lineage). Every customer's improvements lift the substrate. The customer's own data never leaves; only adapter weights and KV cache blocks (without source data) flow into the federation.
+Customers opt in to a federated LoRA marketplace (privacy-preserving aggregation per the SDFLoRA / FedEx-LoRA / HeLoRA research lineage). Every customer's improvements lift the substrate. The customer's own data never leaves; only adapter weights and KV cache blocks (without source data) flow into the federation.
 
 Hyperscaler structural gap: per-tenant billing and compliance posture make cross-tenant pooling structurally illegal in their model. They cannot operate a true federation.
 
@@ -81,22 +79,22 @@ This is the asymmetry that makes the pattern durable. A hyperscaler that copied 
 
 Not vendor. Not gatekeeper. **Steward.**
 
-- Steward of the protocol (governs the {{gli|Doorman}} specification,
+- Steward of the protocol (governs the Doorman specification,
   runs the Constitutional Convention process aligned with the fundamental physics of 2030 hyperscaler infrastructure).
 - Steward of the base model (publishes the continued-pretraining
   variant, contributes upstream to OLMo when relevant).
-- Steward of the marketplace (operates the federated {{gli|LoRA}} pool,
+- Steward of the marketplace (operates the federated LoRA pool,
   takes a percentage of revenue-share LoRAs).
 - Operator-of-record (sells appliances plus integration plus
   support).
-- Reference customer (Foundry itself plus Woodfine — proof the
+- Reference customer (the PointSav development environment plus Woodfine Management Corp. — proof the
   pattern works).
 
-The substrate is open commons; value migrates to operations, integration, and the {{gli|LoRA}} library marketplace.
+The substrate is open commons; value migrates to operations, integration, and the LoRA library marketplace.
 
 ## Continuous Compounding Cycle
 
-Every action produces data; every data produces knowledge; every knowledge improves future actions. The loop runs continuously, in every tenant deployment, federated through the commons.
+Every action produces data; every data produces knowledge; every knowledge improves future actions. The loop runs continuously, in every tenant deployment, federated through the commons. For an operator evaluating the platform: each month of production use makes the AI layer materially better — without additional investment or data sharing beyond what the operator chose at onboarding.
 
 ```
 operator + assistant does work

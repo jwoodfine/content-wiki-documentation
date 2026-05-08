@@ -13,11 +13,11 @@ cites:
   - doctrine-claim-1
 ---
 
-El Protocolo Doorman describe la disciplina de enrutamiento y auditoría implementada por `service-slm`, el único servicio en el Anillo 3 de la [[three-ring-architecture]]. Toda llamada de inferencia que sale de un Totebox pasa por un único servicio en un único límite — el Doorman — que aplica la disciplina sanitizar-y-rehidratar, enruta al nivel de cómputo apropiado y registra cada evento en un libro de auditoría inmutable.
+`service-slm` es la única puerta de control de acceso de la plataforma (el Doorman) — toda llamada de inferencia pasa por este único límite, que aplica la disciplina sanitizar-y-rehidratar, enruta al nivel de cómputo apropiado y registra cada evento en un libro de auditoría inmutable. Ninguna llamada de inferencia sale de la bóveda de datos del cliente sin atravesar este límite único. El Protocolo Doorman define las reglas de enrutamiento, el esquema de auditoría y la captura de señal de entrenamiento que hacen de este límite una garantía estructural, no una opción de configuración.
 
 ## Por qué un Doorman
 
-El problema del límite: un Totebox contiene los datos estructurados autorizados del cliente; el cómputo externo (los grandes modelos de lenguaje) no puede recibir esos datos sin procesamiento previo. Sin un único límite, cada servicio del Totebox desarrolla su propia ruta de salida, cada ruta necesita su propia auditoría, y la disciplina sanitizar-y-rehidratar (SYS-ADR-07) se convierte en disciplina por servicio en lugar de disciplina de sustrato.
+El problema del límite: la bóveda de datos del cliente contiene sus datos estructurados autorizados; el cómputo externo (los grandes modelos de lenguaje) no puede recibir esos datos sin procesamiento previo. Sin un único límite, cada servicio del Totebox desarrolla su propia ruta de salida, cada ruta necesita su propia auditoría, y la disciplina sanitizar-y-rehidratar (SYS-ADR-07) se convierte en disciplina por servicio en lugar de disciplina de sustrato.
 
 ## Enrutamiento de cómputo en tres niveles
 
@@ -25,7 +25,7 @@ El Doorman enruta las llamadas de inferencia en tres niveles:
 
 **Nivel A — Local.** Se ejecuta en la VM del servidor usando CPU y RAM. Para inferencia local en el modelo alojado (`OLMo-2-0425-1B-Instruct` en el despliegue de referencia). El Nivel A es operativamente verificado.
 
-**Nivel B — Grupo Yo-Yo (previsto).** Enruta cargas de trabajo a instancias GPU dedicadas en Google Cloud Platform, que se inician bajo demanda y se detienen en reposo. El enrutamiento al Nivel B está previsto; no está operativo hoy.
+**Nivel B — Grupo de GPU por demanda (previsto).** Enruta cargas de trabajo a instancias GPU dedicadas (el grupo de GPU efímeras) en Google Cloud Platform, que se inician bajo demanda y se detienen en reposo. El enrutamiento al Nivel B está previsto; no está operativo hoy.
 
 **Nivel C — Proxy de API externa (previsto).** Enruta tareas especializadas de refinamiento lingüístico a modelos fronteras externos. El Doorman aplica límites de coste e inyecta ontologías de contenido de servicio predefinidas.
 
@@ -35,9 +35,9 @@ Cada llamada de inferencia produce una entrada JSONL en un archivo diario de sol
 
 ## La disciplina de moduleId
 
-Un único campo `moduleId` cumple cinco funciones: selecciona la unidad systemd; delimita bloques de caché Mooncake KV; circunscribe los recorridos del grafo LadybugDB al arrendatario correcto; selecciona la pila de adaptadores LoRA; y etiqueta las entradas del libro de auditoría para la contabilidad de costes por proyecto.
+Un único campo `moduleId` cumple cinco funciones: selecciona la unidad systemd; delimita bloques de caché KV; circunscribe los recorridos de la base de datos de grafo de propiedades (LadybugDB) al arrendatario correcto; selecciona la pila de adaptadores LoRA; y etiqueta las entradas del libro de auditoría para la contabilidad de costes por proyecto.
 
-## Enrutamiento del Substrato de Aprendizaje
+## Enrutamiento de la tubería de aprendizaje
 
 El Doorman implementa la inversión de polaridad del [[apprenticeship-substrate]] para trabajo con forma de código y editorial: `service-slm` intenta primero; la sesión senior revisa. Cada veredicto firmado se captura en el corpus de aprendizaje como una tupla de entrenamiento.
 

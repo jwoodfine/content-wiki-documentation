@@ -13,8 +13,7 @@ cites: []
 paired_with: leapfrog-2030-architecture.es.md
 ---
 
-How a small-and-medium-business AI substrate becomes structurally different from
-the hyperscaler stack.
+Three market forces converging in 2026 — viable small language models on commodity hardware, the Model Context Protocol as the standard for AI-native service composition, and on-premises as the fastest-growing SMB deployment type — open a structural gap that hyperscaler vendors cannot close without dismantling their own business model. The Leapfrog 2030 architecture is PointSav's commitment to that gap: sovereign platform code, composable services, and transactional revenue rather than recurring license fees. The customer owns their hardware, their data, and their adapter weights; PointSav takes a transaction percentage when value flows.
 
 ## The bet
 
@@ -46,8 +45,7 @@ This document describes the architecture that realizes that commitment.
 
 Three structural distinctions from the hyperscaler stack:
 
-**Sovereignty over service.** The customer's Totebox is designed to boot, run,
-query, audit, and export without any Foundry-side dependency. If Foundry ceases
+**Sovereignty over service.** The customer's Totebox (the customer data vault — a compact on-premises appliance) is designed to boot, run, query, audit, and export without any Foundry-side dependency. If Foundry ceases
 operations, the customer's substrate is intended to continue functioning. This
 is not a backup feature; it is the designed default operational mode (per
 Doctrine claim #54).
@@ -83,7 +81,7 @@ service-ad-exchange (IAB OpenRTB 2.6+ gateway), service-settlement (Stripe
 Connect and crypto rail).
 
 **Ring 3 — Optional Intelligence.** service-slm Doorman as MCP gateway; Tier A
-1B sysadmin specialist (always-on); Tier B 32B generalist (Yo-Yo or customer
+1B sysadmin specialist (always-on); Tier B 32B generalist (on-demand GPU pool or customer
 GPU; on-demand); Tier C external API (rare; allowlist-gated).
 
 The Single-Boundary Compute Discipline (claim #43) makes the Doorman the only
@@ -108,7 +106,7 @@ adapter (claim #45, TUI-as-Corpus-Producer); over weeks, the specialist is
 intended to become tuned to their environment.
 
 When the owner needs editorial or bilingual work — a customer newsletter, a
-translation of menu items — they may enable Tier B on-demand. The Yo-Yo instance
+translation of menu items — they may enable Tier B on-demand. The on-demand GPU instance
 wakes, processes the request, and idles back down. Cost is metered by the
 minute, not by seat.
 
@@ -197,11 +195,11 @@ running well.
 
 ## The first reference implementation
 
-Foundry itself is the first reference implementation. The workspace VM at
-`~/Foundry/` is `vault-privategit-source-1`, a Tier 0 instance of the substrate
+The PointSav development environment is the first reference implementation. The workspace VM at
+`~/Foundry/` is `vault-privategit-source-1`, a Tier 0 instance of the platform stack
 (per `MANIFEST.md`). PointSav Digital Systems operates this instance as their
-dogfood deployment; Woodfine Management Corp. is the first customer. The
-substrate composes the same shape for both.
+production deployment; Woodfine Management Corp. is the first customer. The
+platform composes the same shape for both.
 
 This is the structural realization of the customer-first-ordering convention:
 PointSav builds what Woodfine will install, on the same substrate Woodfine will
@@ -237,17 +235,17 @@ Phase 6 reference customer.
 This is **a structural commitment** to sovereignty, composability, and SMB-first
 design.
 
-This is **not** a hyperscaler-replacement product. Foundry is not designed to
+This is **not** a hyperscaler-replacement product. PointSav is not designed to
 serve enterprises with $1B+ revenue that want vendor-managed compute with
-recurring license fees. That is a well-served market. Foundry is designed for
+recurring license fees. That is a well-served market. The platform is designed for
 the market that is not well served.
 
 This is **not** a niche or experimental architecture. The 2026 industry research
 [idc-smb-2026] and [mcp-spec] consistently point toward the structural shape
-Foundry is building. Foundry is deliberately positioned at the intersection
+PointSav is building. The platform is deliberately positioned at the intersection
 where hyperscaler vendors are structurally unable to follow.
 
-The substrate is in place. The architecture is ratified. The first customer is
+The platform is in place. The architecture is ratified. The first customer is
 in deployment. The next chapter is operational scale.
 
 ## See Also

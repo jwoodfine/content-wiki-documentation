@@ -15,18 +15,7 @@ paired_with: ontological-governance.es.md
 ---
 
 
-> Ontological governance is the discipline of governing what the platform *means* by its categories over time — enforced through four throttled CSV ledgers that define classification vocabulary, and a human-verification loop that prevents automated extraction errors from compounding.
-
-**Ontological governance** is the framework that keeps the
-platform's classification vocabulary stable and its extracted
-identity data accurate. It operates across two mechanisms: the
-four control ledgers that govern how `service-content` classifies
-knowledge, and the verification surveyor that forces extracted
-identity fragments through human review before they are permanently
-written into the verified ledger. These two mechanisms are
-structurally separate but serve the same goal: preventing
-accumulated classification drift from undermining the integrity of
-long-lived institutional data.
+Automated classification systems drift over time — categories multiply, vocabulary fractures, and extracted data accumulates errors faster than they can be corrected. **Ontological governance** prevents this through two structural mechanisms: four throttled control ledgers that define classification vocabulary at intentionally slow update rates, and a human-verification loop that forces extracted identity fragments through human review before they are permanently written into the verified ledger. These two mechanisms are structurally separate but serve the same goal: preventing accumulated classification drift from undermining the integrity of long-lived institutional data. For a regulated operator, this means the platform's knowledge graph remains auditable and its identity records remain accurate without continuous manual curation.
 
 ## The three-stage extraction pipeline
 
