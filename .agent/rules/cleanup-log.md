@@ -18,7 +18,7 @@ Last updated: 2026-05-08.
 
 ### 2026-05-08 — Step 5 register-correct rewrite pass (project-editorial)
 
-Commits `96e221d`, `91b8910`, `f470a11`, `aad5c7d`, `09637ed`, `ad88bc3`, `1868a20`, `e7b14c3`, `11d617a` across two sessions.
+Commits `96e221d`, `91b8910`, `f470a11`, `aad5c7d`, `09637ed`, `ad88bc3`, `1868a20`, `e7b14c3`, `11d617a`, `500f201` across two sessions.
 
 **Complete:**
 - 4 high-urgency architecture/governance EN+ES pairs rewritten (compounding-substrate,
@@ -34,8 +34,9 @@ Commits `96e221d`, `91b8910`, `f470a11`, `aad5c7d`, `09637ed`, `ad88bc3`, `1868a
   message-courier, service-business-clustering, service-places-filtering, fs-anchor-emitter,
   service-fs-security-compliance, service-fs-data-lake, service-slm-totebox-sysadmin,
   template-ledger, pointsav-gis-engine) — `e7b14c3` + `11d617a`
+- 1 application EN+ES pair refined in-flight (app-mediakit-knowledge — schema upgrade + lead) — `500f201`
 
-**Open — applications category:** app-mediakit-knowledge, app-mediakit-marketing,
+**Open — applications category (Phase 4c paused):** app-mediakit-marketing,
 app-orchestration-gis, and others (Step 5 priority 4c)
 
 **Open — GUIDEs (~72 files):** Step 5 priority 5
@@ -50,79 +51,77 @@ not actioned in scope. Replace with generic categories (managed container orches
 platforms, container runtime systems, multi-cloud abstraction frameworks, OCI image
 registries) at next editorial pass.
 
-Stage 6 promotions pending across 9 commits — flag to Master at session close.
-
-### 2026-05-06 — BIM batch: 5 EN+ES TOPIC pairs committed (project-editorial)
-
-Commit `c6d233d` — `reference/bim-token-what-it-is.md`, `bim-token-three-layers.md`, `open-bim-regulatory-acceptance.md` + pairs; `architecture/building-design-system-bim.md`, `city-code-as-composable-geometry.md` + pairs.
-
-**Open:** `guide-climate-zone-tokens.md` — commit 9e6d311 on `cluster/project-language` was lost when project-language renamed to project-editorial (commit 7876f28). Source draft is intact at `clones/project-bim/.agent/drafts-outbound/guide-climate-zone-tokens.draft.md` and has been routed to project-editorial inbox. NEXT.md has delivery item.
-
-### 2026-05-06 — Body H1 batch remediation (project-editorial)
-
-103 files fixed via batch script — duplicate body H1 removed from all category articles with foundry-doc-v1 frontmatter.
-
-**Open — `infrastructure/guide-telemetry.md`:** starts with H1 + no frontmatter; Woodfine-specific operational content. Decision needed: (a) normalize as wiki article, (b) move to woodfine-fleet-deployment as GUIDE, or (c) remove. H1 retained until disposition decided.
-
-**Open — `applications/user-guide-2026-03-30-v2.md`:** no frontmatter, uses `# Part I:` / `# Part II:` as chapter markers. Needs classification pass.
-
-### 2026-05-06 — Phase D + E batch (project-editorial)
-
-Phase D: 28 Spanish strategic-adaptation pairs committed across architecture/, governance/, services/, systems/. Phase E: bcsc_class + status sweep — 213 files total.
-
-### 2026-05-06 — GIS service topics + design-system/ category (project-editorial)
-
-Commits 4d5a499 + 0bf2f6d: GIS service topics, app-orchestration-gis bilingual pair, design-system/ category (30 files — 6 foundation TOPICs + 16 component guides). Named competitor references stripped per C15 decision.
-
-### 2026-04-30 — Wikipedia normalization pass + 5 architecture/reference TOPIC pairs
-
-40 root topic-*.md files normalized (frontmatter, quality grades, See Also, References, body H1 removed). 5 new bilingual pairs committed to `architecture/` and `reference/`.
-
-**Open:** 40 root topic-*.md files remain at root (legacy flat-at-root). Category migration (topic-*.md → category subdirectories) pending — naming-convention.md §10 now ratified (2026-05-07), unblocking migration.
-
-**Open:** `topic-compounding-substrate.md` at root is superseded by `architecture/compounding-substrate.md`. Retire at next migration pass.
-
-### 2026-04-28 — 12 bilingual TOPIC pairs + rename + deletions (project-language)
-
-12 bilingual TOPIC pairs committed at repo root. `topic-service-parser` renamed to `topic-service-extraction`. `README-pointsav-wiki.md` deleted (commit 6c1b178).
-
-**Open:** category migration for these root-pattern files — pending (migration unblocked as of 2026-05-07 ratification).
-
-### 2026-04-27 — Phase 4 + Part D + style-guide TOPICs (project-language, 3 sessions)
-
-14 bilingual TOPIC pairs added at repo root: Phase 4 substrate-explainers, Part D apprenticeship/compounding/contributor-model, style-guide-readme/topic/guide pairs.
-
-**Open:** category migration for all these root-pattern files (unblocked 2026-05-07). `topic-contributor-model.md` is canonical form (not `topic-four-tier-contributor-model.md`).
-
-### 2026-04-23 — Migration to contract-conforming layout
-
-Normalisation pass required: add `index.md` at root, create category directories, move legacy `topic-*.md` / `TOPIC-*.md` / `TOPIC_*.md` files into categories normalising to lowercase kebab, write `_index.md` per category, rewrite wikilinks. Sequencing: migrate one category at a time. Category taxonomy now ratified (2026-05-07).
-
-### 2026-04-23 — YAML-only structured records need classification
-
-Root-level files without Markdown bodies: `sys-adr-06.yaml` … `sys-adr-19.yaml` (11 files → `governance/`), `service-*-01.yaml` (4 files → pair with `services/<name>.md`), `os-workplace-01.yaml` (→ `architecture/`), 3 `topic-*.yaml` files (→ pair with topic articles). No migrations executed yet.
-
-### 2026-04-23 — Filename-case normalisation
-
-Three conventions coexist at root: `topic-*.md`, `TOPIC-*.md`, `TOPIC_*.md`. Rename to lowercase kebab as part of category-migration pass above.
-
-### 2026-04-23 — `RESEARCH-BIM-MARKET.md` classification needed
-
-Untracked file at repo root dated 2026-04-22. Decision needed: wiki article, internal-only (do not commit), or different repo? Hold until classified.
-
-### 2026-04-23 — `app-mediakit-knowledge.zip` cross-repo handoff
-
-Untracked ZIP at root. Handoff entry open in `handoffs-outbound.md` — destination `pointsav-monorepo`. Delete local ZIP once destination commit lands.
-
-### 2026-04-23 — `upstream` remote is a legacy artefact
-
-`git remote remove upstream` pending explicit operator approval (non-destructive; points to pointsav-monorepo which is not this repo's flow).
+Stage 6 promotions pending across 10 commits — Stage 6 reconciliation merge with origin/main
+in progress this session.
 
 ---
 
 ## Closed
 
-> Full session-note text archived in `cleanup-log-archive.md`.
+### 2026-05-06 — BIM batch: guide-climate-zone-tokens routed to TOPIC
+
+`Closed: 2026-05-08.` Resolved via option (b) — converted to TOPIC and committed at `15d0942` as `reference/climate-zone-tokens.md` + `.es.md`. Stale GUIDE removed from woodfine-fleet-deployment cluster at `a928b70`.
+
+### 2026-05-07 — Root layout defects: guide-proofreader-distillation.md + topic-radical-proofreader-ui.md
+
+`Closed: 2026-05-08.` Both files were untracked drafts in `foundry-draft-v1` state. Removed with `rm`. Source drafts remain in project-proofreader cluster for proper pipeline routing.
+
+### 2026-05-06 — Body H1 batch remediation
+
+`Closed: 2026-05-08.` 103 files fixed via batch script. `infrastructure/guide-telemetry.md` and `applications/user-guide-2026-03-30-v2.md` both deleted — neither conformed to contract and neither had frontmatter. No git rm needed (untracked).
+
+### 2026-05-06 — Phase D + E batch (project-editorial)
+
+`Closed: 2026-05-08.` Phase D: 28 Spanish pairs committed. Phase E: bcsc_class + status sweep — 213 files total. No open items.
+
+### 2026-05-06 — GIS service topics + design-system/ category (project-editorial)
+
+`Closed: 2026-05-08.` Commits 4d5a499 + 0bf2f6d complete. Named competitor references stripped per C15. No open items.
+
+### 2026-04-30 — Wikipedia normalization pass + migration
+
+`Closed: 2026-05-08.` Root `topic-*.md` files verified migrated to category directories. No root-level tracked `topic-*.md` files remain. `topic-compounding-substrate.md` does not exist in git — `architecture/compounding-substrate.md` is canonical.
+
+### 2026-04-28 — 12 bilingual TOPIC pairs + rename + deletions (project-language)
+
+`Closed: 2026-05-08.` Root-pattern files from this batch verified already migrated to category directories (architecture/, services/, systems/, governance/, reference/) in prior sessions. No root-level tracked `topic-*.md` files remain.
+
+### 2026-04-27 — Phase 4 + Part D + style-guide TOPICs (project-language, 3 sessions)
+
+`Closed: 2026-05-08.` All root-pattern files from this batch verified migrated. `topic-contributor-model.md` is canonical form. No root-level tracked `topic-*.md` files remain.
+
+### 2026-04-23 — Migration to contract-conforming layout
+
+`Closed: 2026-05-08.` Category directories created and populated. YAML records converted to bilingual stubs. Root `TOPIC-*.md` / `TOPIC_*.md` files absent. `index.md` at root exists. Layout conforms to contract.
+
+### 2026-04-23 — YAML-only structured records need classification
+
+`Closed: 2026-05-08.` All YAML records converted to bilingual stub articles and git rm'd:
+- `sys-adr-06` through `sys-adr-19` → `governance/sys-adr-{06,07,08,10,11,13,14,15,16,17,18,19}.md` + `.es.md`
+- `service-content-01.yaml`, `service-egress-01.yaml` → `services/service-content.md`, `services/service-egress.md` + pairs
+- `service-email-01.yaml`, `service-people-01.yaml` → existing articles in `services/`; YAMLs removed
+- `os-workplace-01.yaml` → `systems/os-workplace.md` + `.es.md`
+- `3d-asset-tokens.yaml` → `architecture/3d-asset-tokens.md` + `.es.md`
+- `system-slm.yaml` → existing `services/service-slm.md`; YAML removed
+- `system-udp.yaml` → `architecture/sovereign-mesh.md` + `.es.md`
+
+### 2026-04-23 — Filename-case normalisation
+
+`Closed: 2026-05-08.` Root-level tracked `TOPIC-*.md` / `TOPIC_*.md` files verified absent — already migrated in prior sessions. No action needed.
+
+### 2026-04-23 — `RESEARCH-BIM-MARKET.md` classification needed
+
+`Closed: 2026-05-08.` Converted to `reference/bim-market-context.md` + `.es.md` stub. Section 3 (competitive landscape with named vendors) removed per C15 decision. Standards/regulatory/technical content preserved. `RESEARCH-BIM-MARKET.md` git rm'd.
+
+### 2026-04-23 — `app-mediakit-knowledge.zip` cross-repo handoff
+
+`Closed: 2026-05-08.` Crate landed in `pointsav-monorepo/app-mediakit-knowledge/` via Stage 6 promotion (prior sessions). ZIP was untracked; confirmed already deleted from filesystem. Handoff entry in `handoffs-outbound.md` closed.
+
+### 2026-04-23 — `upstream` remote is a legacy artefact
+
+`Closed: 2026-05-08.` Remote was already absent — removed in a prior session. CLAUDE.md §5 table entry retained as historical note; no `git remote remove` needed.
+
+### Older closed entries (full session-note text archived in `cleanup-log-archive.md`)
 
 - **2026-04-23 — Naming convention draft:** `naming-convention.md` ratified 2026-05-07. Status promoted Draft → Active. Four operator decisions recorded in §13.
 - **2026-04-23 — README-pointsav-wiki.md:** deleted 2026-04-28 at commit 6c1b178 (redundant draft).

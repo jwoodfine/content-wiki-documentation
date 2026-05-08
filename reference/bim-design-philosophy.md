@@ -7,6 +7,7 @@ audience: vendor-public
 bcsc_class: current-fact
 language: en
 paired_with: bim-design-philosophy.es.md
+cites: [ifc-4-3, uniclass-2015, bsdd-v1]
 ---
 
 
