@@ -10,11 +10,35 @@
 > layout-rule enforcement, defect resolution, surfaced open
 > questions — does.
 
-Last updated: 2026-05-07.
+Last updated: 2026-05-08.
 
 ---
 
 ## Open
+
+### 2026-05-08 — Step 5 register-correct rewrite pass (project-editorial)
+
+Commits `96e221d`, `91b8910`, `f470a11` (content-wiki-documentation, this session).
+
+**Complete:**
+- 4 high-urgency architecture/governance EN+ES pairs rewritten (compounding-substrate,
+  doorman-protocol, ontological-governance, leapfrog-2030-architecture)
+- 3 services EN+ES pairs rewritten (service-slm, service-email, service-fs-architecture)
+- 124 files: frontmatter bug (## headings inside YAML block) — batch fixed
+- 19 files: `{{gli|X}}` template markup — batch replaced with plain term
+
+**Open — remaining services:** service-people, service-extraction, service-search,
+service-business-clustering, service-places-filtering, message-courier,
+fs-anchor-emitter, service-fs-security-compliance, service-fs-data-lake,
+service-slm-totebox-sysadmin, template-ledger, pointsav-gis-engine
+
+**Open — applications category:** app-mediakit-knowledge, app-mediakit-marketing,
+app-orchestration-gis, and others
+
+**Open — category migration:** root topic-*.md files → category subdirectories
+(unblocked 2026-05-07 ratification). Tracked in existing open entry below.
+
+Stage 6 promotions pending: 96e221d, 91b8910, f470a11 — flag to Master.
 
 ### 2026-05-06 — BIM batch: 5 EN+ES TOPIC pairs committed (project-editorial)
 
