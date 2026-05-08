@@ -7,14 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: worm-ledger-storage-architecture.md
-## Véase también
-
-- [[worm-ledger-architecture]]
-- [[worm-ledger-design]]
-- [[service-fs-architecture]]
-- [[cryptographic-ledgers]]
-
 ---
+
 
 
 La arquitectura de Foundry se basa en la inmutabilidad estructural, garantizando que los archivos de datos sean permanentes y legibles a largo plazo.
@@ -34,3 +28,10 @@ El mismo código está diseñado para funcionar en dos entornos:
 ## Cumplimiento Global
 
 Este diseño cumple con las normativas SEC (EE. UU.) y eIDAS (UE), devolviendo la soberanía de los datos a la empresa y asegurando que la información sea accesible y válida legalmente durante décadas, independientemente de la evolución del software.
+
+## Véase también
+
+- [[worm-ledger-architecture]]
+- [[worm-ledger-design]]
+- [[service-fs-architecture]]
+- [[cryptographic-ledgers]]

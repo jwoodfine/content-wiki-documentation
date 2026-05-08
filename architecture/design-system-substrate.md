@@ -20,7 +20,7 @@ paired_with: design-system-substrate.es.md
 ---
 
 
-> The design-system substrate is a self-hosted, customer-owned design-system engine that stores tokens and components in the customer's own Git repository, serves them through a machine-readable {{gli|MCP}} endpoint, and uses the W3C DTCG token format to remain editor-agnostic.
+> The design-system substrate is a self-hosted, customer-owned design-system engine that stores tokens and components in the customer's own Git repository, serves them through a machine-readable MCP endpoint, and uses the W3C DTCG token format to remain editor-agnostic.
 
 The PointSav **design-system substrate** is a self-hosted, customer-owned design-system engine. The vendor showcase at `design.pointsav.com` is the canonical instance. Each SMB customer who forks the substrate runs their own instance at their own domain. Single codebase, single deployment shape, two contexts — vendor showcase and customer instance.
 
@@ -43,7 +43,7 @@ The substrate's content lives in a per-tenant vault directory:
 
 The vault is the only canonical layer. Rendered exports — Figma Variables JSON, Tailwind config, CSS variables, Style Dictionary builds — are derived caches recomputable from the canonical four directories above.
 
-The substrate engine is a stateless HTTP service that reads the vault from disk. Per-tenant isolation is achieved by running one engine process per tenant, each pointed at its own vault. Persistence above the vault filesystem is via the substrate's {{gli|WORM}} ledger (service-fs). Token and component history is anchored monthly to Sigstore {{gli|Rekor}} `[sigstore-rekor-v2]`, producing a customer-rooted Merkle log using the C2SP tlog-tiles format `[c2sp-tlog-tiles]` per the fundamental physics of 2030 hyperscaler infrastructure.
+The substrate engine is a stateless HTTP service that reads the vault from disk. Per-tenant isolation is achieved by running one engine process per tenant, each pointed at its own vault. Persistence above the vault filesystem is via the substrate's WORM ledger (service-fs). Token and component history is anchored monthly to Sigstore Rekor `[sigstore-rekor-v2]`, producing a customer-rooted Merkle log using the C2SP tlog-tiles format `[c2sp-tlog-tiles]` per the fundamental physics of 2030 hyperscaler infrastructure.
 
 ## Machine-Readable Context Backplane
 
@@ -65,7 +65,7 @@ ai_consumption_hint: "When generating a button for a primary
 ---
 ```
 
-The frontmatter is machine-readable; the body is prose-readable. AI agents consume the research through the substrate's {{gli|MCP}} endpoint `[mcp-spec]` at decode time. Methods include `list_tokens`, `list_components`, `list_research`, and `describe`. An AI agent registers the substrate as an {{gli|MCP}} server, then queries it during UI generation to align with the SMB's brand intent.
+The frontmatter is machine-readable; the body is prose-readable. AI agents consume the research through the substrate's MCP endpoint `[mcp-spec]` at decode time. Methods include `list_tokens`, `list_components`, `list_research`, and `describe`. An AI agent registers the substrate as an MCP server, then queries it during UI generation to align with the SMB's brand intent.
 
 Design systems that publish only token values and component shapes omit the rationale behind those choices. The substrate publishes both, in the same machine-readable tier, served through the same endpoint.
 
@@ -106,7 +106,7 @@ The customer ends up with a fully self-hosted, customer-owned design-system subs
 
 **AI-readable research backplane in customer-owned form** requires per-customer hosting. A platform can publish its own design research; it cannot publish the SMB customer's research, because it does not host the SMB customer's design system.
 
-**Customer-rooted attestation.** The substrate's quarterly Trustworthy System Attestation combines the {{gli|WORM}} ledger, Sigstore {{gli|Rekor}} anchoring `[sigstore-rekor-v2]`, and per-tenant `allowed_signers`. The resulting attestation covers the customer's design data — not the platform provider's controls.
+**Customer-rooted attestation.** The substrate's quarterly Trustworthy System Attestation combines the WORM ledger, Sigstore Rekor anchoring `[sigstore-rekor-v2]`, and per-tenant `allowed_signers`. The resulting attestation covers the customer's design data — not the platform provider's controls.
 
 **Editor agnosticism.** Commercial design-system platforms have an incentive to keep the customer in their editor ecosystem. The substrate has no such incentive — DTCG is the common denominator.
 

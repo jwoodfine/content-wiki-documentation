@@ -12,14 +12,8 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: reverse-flow-substrate.md
-## Véase también
-
-- [[customer-owned-graph-ip]]
-- [[direct-payment-settlement]]
-- [[vertical-seed-packs-marketplace]]
-- [[single-boundary-compute-discipline]]
-
 ---
+
 
 El **Substrato de Flujo Inverso** es la extensión planificada de la puerta de enlace del Portero, el registro de auditoría y el identificador de módulo por inquilino para gobernar los flujos comerciales de salida. La misma frontera que media las solicitudes de inferencia de entrada está prevista para también mediar dos flujos de salida: un mercado de datos y un intercambio de anuncios. Ambos están planificados como opt-in por inquilino, estructuralmente deshabilitados por defecto, y requieren procedencia criptográfica por registro. Este patrón codifica la reclamación doctrinal #52.
 
@@ -57,3 +51,10 @@ Los flujos inversos planificados dependen de [[single-boundary-compute-disciplin
 ## Procedencia
 
 Resumen de adaptación estratégica del archivo fuente `convention-reverse-flow-substrate.md` (refinado el 30 de abril de 2026). Todas las reclamaciones de mercado, intercambio de anuncios y liquidación llevan encuadre "planificado," "previsto" y "está previsto para" conforme a la postura de divulgación continua BCSC.
+
+## Véase también
+
+- [[customer-owned-graph-ip]]
+- [[direct-payment-settlement]]
+- [[vertical-seed-packs-marketplace]]
+- [[single-boundary-compute-discipline]]

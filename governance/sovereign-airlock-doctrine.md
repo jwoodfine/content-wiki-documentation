@@ -7,14 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: en
 paired_with: sovereign-airlock-doctrine.es.md
-## See Also
-
-- [[sovereign-ai-routing]]
-- [[machine-based-auth]]
-- [[service-slm]]
-- [[capability-based-security]]
-
 ---
+
 
 
 The Sovereign Airlock Doctrine establishes the mandatory security and identity protocols for all data transmission and code deployment within the Foundry ecosystem. By enforcing strict isolation between Vendor (PointSav) and Customer (Woodfine) identities, Foundry guarantees absolute operational integrity and sovereign control over digital assets.
@@ -53,4 +47,11 @@ Operational security is maintained through a mapping of specific SSH keys to org
 
 The fundamental physics of 2030 hyperscaler infrastructure dictate the deployment of infrastructure (GCP/On-Prem), network admin routes, and per-tenant Totebox clusters (Corporate, Personnel, Real Property).
 
-This "{{gli|Sovereign Airlock}}" ensures that no single point of failure or identity compromise can bridge the gap between Vendor infrastructure and Customer data.
+This "Sovereign Airlock" ensures that no single point of failure or identity compromise can bridge the gap between Vendor infrastructure and Customer data.
+
+## See Also
+
+- [[sovereign-ai-routing]]
+- [[machine-based-auth]]
+- [[service-slm]]
+- [[capability-based-security]]

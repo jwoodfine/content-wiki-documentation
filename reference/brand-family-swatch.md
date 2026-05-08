@@ -10,13 +10,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language_protocol: DESIGN-COMPONENT
 authored: 2026-04-30
-## See Also
-
-- [[brand-typography]]
-- [[design-typography]]
-- [[design-color]]
-
 ---
+
 
 
 The Brand-Family Swatch is the primary taxonomic primitive for retail anchor classification within the Foundry GIS ecosystem. It encodes the tripartite operator-ratified taxonomy—Department, Hardware, and Warehouse Club—while maintaining a data-agnostic architecture that supports customer-driven extensions via sovereign data layers.
@@ -66,3 +61,9 @@ The component is engineered to meet WCAG 2.2 AA standards:
 Future iterations are intended to include:
 - **Pattern Infills**: Planned support for geometric patterns within the dot to enhance distinguishability for users with advanced color vision deficiencies.
 - **Dynamic Pie Charts**: Research is underway to transition the cluster-centroid ring into a dynamic donut chart when cluster density exceeds 10 anchors.
+
+## See Also
+
+- [[brand-typography]]
+- [[design-typography]]
+- [[design-color]]

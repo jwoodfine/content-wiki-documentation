@@ -12,14 +12,8 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: customer-owned-graph-ip.md
-## Véase también
-
-- [[seed-taxonomy-as-smb-bootstrap]]
-- [[reverse-flow-substrate]]
-- [[direct-payment-settlement]]
-- [[substrate-without-inference-base-case]]
-
 ---
+
 
 La **Propiedad Intelectual del Grafo del Cliente** es el principio por el cual el grafo de conocimiento por inquilino mantenido en `service-content` es propiedad intelectual del cliente, no un subproducto del uso de la plataforma Foundry. Los adaptadores del modelo entrenados con el corpus de ese cliente también son propiedad del cliente. Este principio codifica la reclamación doctrinal #48.
 
@@ -53,3 +47,10 @@ El identificador de módulo que determina el alcance de cada grafo también lo a
 ## Procedencia
 
 Resumen de adaptación estratégica del archivo fuente `convention-customer-owned-graph-ip.md` (refinado el 30 de abril de 2026). Las reclamaciones de monetización llevan encuadre "planificado" y "opt-in" conforme a la postura de divulgación continua BCSC.
+
+## Véase también
+
+- [[seed-taxonomy-as-smb-bootstrap]]
+- [[reverse-flow-substrate]]
+- [[direct-payment-settlement]]
+- [[substrate-without-inference-base-case]]

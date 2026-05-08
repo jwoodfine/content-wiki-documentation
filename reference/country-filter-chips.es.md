@@ -10,14 +10,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language_protocol: DESIGN-COMPONENT
 authored: 2026-04-30
-## Véase también
-
-- [[map-stats-panel]]
-- [[map-side-drawer]]
-- [[zoom-tier-reveal-pattern]]
-- [[location-intelligence-ux]]
-
 ---
+
 
 
 El componente "Country Filter Chip" es una primitiva de navegación especializada diseñada para conjuntos de datos geográficos multijurisdiccionales. Permite a los usuarios ejecutar cortes de datos globales o específicos por país a través de una interfaz de selección exclusiva, filtrando simultáneamente las características del mapa y recentrando la ventana de visualización en los límites nacionales de destino.
@@ -67,3 +61,10 @@ El componente cumple con los requisitos WCAG 2.2 AA para controles interactivos:
 Las mejoras futuras prevén incluir:
 - **Agrupación Geográfica**: Se está investigando si la agrupación continental (p. ej., "Américas", "Europa") proporciona una mejor usabilidad para conjuntos de datos que abarcan más de diez países.
 - **Variante Multiselección**: Una variación planificada que utiliza `role="group"` y `aria-pressed` para permitir la composición de datos entre países.
+
+## Véase también
+
+- [[map-stats-panel]]
+- [[map-side-drawer]]
+- [[zoom-tier-reveal-pattern]]
+- [[location-intelligence-ux]]

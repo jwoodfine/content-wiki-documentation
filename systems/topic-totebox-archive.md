@@ -20,7 +20,7 @@ A **Totebox Archive** is the fundamental unit of data storage and sovereignty wi
 
 Unlike traditional databases that require active processes to access data, a Totebox Archive persists information as **immutable flat files** (JSONL, GeoParquet, Markdown). This decoupling ensures that the data remains accessible and readable even if the original software engine is no longer running.
 
-Each archive is cryptographically anchored to a {{gli|WORM ledger}}, creating a permanent, verifiable {{gli|Audit trail}} for all transactions and state changes.
+Each archive is cryptographically anchored to a WORM ledger, creating a permanent, verifiable Audit trail for all transactions and state changes.
 
 ## Freely Transferable System
 

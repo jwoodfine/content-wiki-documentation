@@ -14,14 +14,8 @@ cites:
   - ni-51-102
   - osc-sn-51-721
 paired_with: draft-research-trail-discipline.md
-## Véase también
-
-- [[cluster-wiki-draft-pipeline]]
-- [[cluster-design-draft-pipeline]]
-- [[citation-substrate]]
-- [[bcsc-disclosure-posture]]
-
 ---
+
 
 ## Resumen estratégico
 
@@ -40,3 +34,10 @@ En tiempo de refinamiento, la pasarela lee la subsección de sugeridos antes de 
 ## Disciplina sin burocracia
 
 El mecanismo está diseñado para ser ligero en la práctica: hallazgos de una línea; la investigación detallada va en un archivo de investigación separado, referenciado una vez; los recuentos vacíos son válidos y transparentes; las preguntas abiertas que la pasarela no puede resolver se convierten en solicitudes de vuelta al contribuidor de origen.
+
+## Véase también
+
+- [[cluster-wiki-draft-pipeline]]
+- [[cluster-design-draft-pipeline]]
+- [[citation-substrate]]
+- [[bcsc-disclosure-posture]]

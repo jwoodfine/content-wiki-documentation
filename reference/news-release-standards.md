@@ -7,13 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: en
 paired_with: news-release-standards.es.md
-## See Also
-
-- [[brand-typography]]
-- [[brand-family-swatch]]
-- [[style-guide-readme]]
-
 ---
+
 
 
 Foundry enforces strict formatting rules for corporate news syndication to ensure absolute clarity and institutional authority. By adhering to ISO 24495-1 Plain Language principles, the system guarantees that disclosures are accessible and professional across both digital and physical mediums.
@@ -47,3 +42,9 @@ Web-based releases utilize specific semantic tags and separators to ensure high-
     **For immediate release | Vancouver, British Columbia | [Date]**
 
 These standards ensure that every Foundry disclosure maintains a consistent voice of authority, whether viewed on a high-DPI display or a physical printed page.
+
+## See Also
+
+- [[brand-typography]]
+- [[brand-family-swatch]]
+- [[style-guide-readme]]

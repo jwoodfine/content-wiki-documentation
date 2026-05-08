@@ -10,14 +10,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language_protocol: DESIGN-COMPONENT
 authored: 2026-04-30
-## See Also
-
-- [[map-side-drawer]]
-- [[country-filter-chips]]
-- [[zoom-tier-reveal-pattern]]
-- [[location-intelligence-ux]]
-
 ---
+
 
 
 The Map Stats Panel is a reactive data-display component that surfaces real-time aggregate statistics based on active map filters. Positioned as a floating overlay, it provides users with constant visibility into key performance indicators such as anchor counts, jurisdictional distribution, and cluster grades.
@@ -67,3 +61,10 @@ The component is engineered for compliance with WCAG 2.2 AA standards:
 Future enhancements are intended to include:
 - **Inline Sparklines**: Planned support for compact data visualizations below numeric values to show grade distribution.
 - **Mobile Auto-Collapse**: Research is ongoing to determine the optimal collapse threshold for mobile viewports to maximize map visibility.
+
+## See Also
+
+- [[map-side-drawer]]
+- [[country-filter-chips]]
+- [[zoom-tier-reveal-pattern]]
+- [[location-intelligence-ux]]

@@ -7,13 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: fs-anchor-emitter.md
-## Véase también
-
-- [[service-fs-architecture]]
-- [[service-fs-security-compliance]]
-- [[worm-ledger-design]]
-
 ---
+
 
 
 El emisor de anclaje es el componente encargado de generar "puntos de control" (checkpoints) firmados del ledger inmutable. Estos puntos de control son esenciales para demostrar la integridad de los datos ante auditorías externas.
@@ -34,3 +29,9 @@ El emisor requiere las siguientes variables de entorno:
 ## Anclaje Externo
 
 Aunque los puntos de control se generan cada hora, su publicación en la red de transparencia Rekor está programada actualmente para realizarse de forma mensual, proporcionando una prueba de existencia externa e irrefutable de los datos de la empresa.
+
+## Véase también
+
+- [[service-fs-architecture]]
+- [[service-fs-security-compliance]]
+- [[worm-ledger-design]]

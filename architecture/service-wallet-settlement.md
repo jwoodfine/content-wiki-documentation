@@ -93,7 +93,7 @@ Industry reference: direct-payment-to-rights-holder models at scale validate tha
 
 ## Audit and Public Anchoring
 
-Every withdrawal receipt is anchored to Sigstore {{gli|Rekor}}. The anchor record includes: tenant ID, ledger sequence at withdrawal, amount, chain, and transaction hash. This provides a tamper-evident external timestamp suitable for accounting and legal purposes.
+Every withdrawal receipt is anchored to Sigstore Rekor. The anchor record includes: tenant ID, ledger sequence at withdrawal, amount, chain, and transaction hash. This provides a tamper-evident external timestamp suitable for accounting and legal purposes.
 
 The full ledger history is queryable by the tenant at any time. The export format is JSONL — the same format as the ingestion record. Portability is unconditional; the ledger travels with the tenant on exit per the fundamental physics of 2030 hyperscaler infrastructure.[^3]
 
@@ -101,7 +101,7 @@ The full ledger history is queryable by the tenant at any time. The export forma
 
 - [[reverse-flow-substrate]] — revenue sources; payment rail detail
 - [[customer-owned-graph-ip]] — ledger export is unconditional tenant property
-- [[worm-ledger-architecture]] — service-wallet appends to service-fs {{gli|WORM}} ledger
+- [[worm-ledger-architecture]] — service-wallet appends to service-fs WORM ledger
 
 ## References
 

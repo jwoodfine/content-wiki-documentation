@@ -7,13 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: bim-design-philosophy.md
-## Véase también
-
-- [[bim-aec-muscle-memory]]
-- [[bim-token-taxonomy]]
-- [[flat-file-bim-leapfrog]]
-
 ---
+
 
 
 El Sistema de Diseño de Edificios es la contraparte AEC del sustrato de diseño de Foundry. Se basa en una postura estructural: los compromisos de PointSav —almacenamiento en archivos planos, estándares abiertos, ejecución fuera de línea y seguridad seL4— no son preferencias estéticas, sino las ventajas que permiten superar las debilidades del software en la nube tradicional.
@@ -30,3 +25,9 @@ La filosofía de Foundry se centra en cinco capacidades únicas:
 ## El Salto del Código Componible
 
 Foundry propone un modelo donde las normativas urbanísticas se publican como "tokens de diseño" (IDS 1.0). El diseñador trabaja dentro de envolventes ya validadas, haciendo que los errores de cumplimiento sean geométricamente imposibles desde el primer trazo. Este enfoque de "cumplimiento por construcción" es el núcleo de la ventaja tecnológica de PointSav.
+
+## Véase también
+
+- [[bim-aec-muscle-memory]]
+- [[bim-token-taxonomy]]
+- [[flat-file-bim-leapfrog]]

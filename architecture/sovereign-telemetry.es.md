@@ -13,14 +13,8 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: sovereign-telemetry.md
 cites: []
-## Véase también
-
-- [[ontological-governance]]
-- [[verification-surveyor]]
-- [[message-courier]]
-- [[customer-hostability]]
-
 ---
+
 
 La arquitectura de telemetría de estado cero recopila señales de comportamiento y hardware de los clientes perimetrales sin cookies, identificadores de sesión ni agregadores de análisis de terceros. Utiliza la compilación del lado del cliente y la transmisión de balizas asíncrona en el cierre de la pestaña.
 
@@ -46,3 +40,10 @@ Ningún campo captura información personalmente identificable. El campo `timezo
 ## Independencia operativa
 
 La arquitectura es operacionalmente independiente de plataformas de análisis externas. La señal de telemetría existe en la infraestructura del cliente, no en sistemas de terceros.
+
+## Véase también
+
+- [[ontological-governance]]
+- [[verification-surveyor]]
+- [[message-courier]]
+- [[customer-hostability]]

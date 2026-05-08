@@ -10,14 +10,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language_protocol: DESIGN-COMPONENT
 authored: 2026-04-30
-## Véase también
-
-- [[map-stats-panel]]
-- [[country-filter-chips]]
-- [[zoom-tier-reveal-pattern]]
-- [[location-intelligence-ux]]
-
 ---
+
 
 
 El "Map Side Drawer" es un patrón de superposición persistente diseñado para la inspección detallada de características sin perder el contexto geográfico. Sustituye a las ventanas emergentes (popups) transitorias por un panel de ancho fijo que se desliza desde el borde derecho, proporcionando un espacio dedicado para metadatos complejos, contexto de conglomerados y divulgaciones regulatorias.
@@ -67,3 +61,10 @@ El componente está diseñado para una compatibilidad total con el teclado y los
 Los desarrollos futuros prevén incluir:
 - **Vista de Comparación**: Una variante planificada de panel dividido para admitir la comparación federada de conglomerados (Invención de Doctrina #9).
 - **Ancho Adaptativo**: Se está investigando si se requiere una expansión a ancho completo para pantallas móviles preservando al mismo tiempo un contexto mínimo del mapa.
+
+## Véase también
+
+- [[map-stats-panel]]
+- [[country-filter-chips]]
+- [[zoom-tier-reveal-pattern]]
+- [[location-intelligence-ux]]

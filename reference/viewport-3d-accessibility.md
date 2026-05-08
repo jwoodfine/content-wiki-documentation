@@ -7,13 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: en
 paired_with: viewport-3d-accessibility.es.md
-## See Also
-
-- [[spatial-tree-accessibility]]
-- [[properties-panel-accessibility]]
-- [[neurodiversity-typography-standards]]
-
 ---
+
 
 
 The `bim-viewport-3d` component is the primary visualization layer for building models. While 3D canvas content is inherently graphical, the component is designed to remain operational and informative for all users through selection synchronization and robust keyboard navigation.
@@ -54,3 +49,9 @@ The viewport implements industry-standard AEC shortcuts to ensure full control w
 
 *   **Zero IPC for Geometry:** Do not pipe raw IFC or geometry bytes over the IPC boundary. Use localized asset protocols to load visualization caches (e.g., XKT files) directly into the GPU.
 *   **Decoupled CSS:** Viewport-specific 3D engine CSS should remain decoupled from the Building Design System’s core styles to allow for runtime-specific engine updates.
+
+## See Also
+
+- [[spatial-tree-accessibility]]
+- [[properties-panel-accessibility]]
+- [[neurodiversity-typography-standards]]

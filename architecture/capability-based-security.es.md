@@ -13,15 +13,8 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: capability-based-security.md
 cites: []
-## Véase también
-
-- [[sel4-foundation]]
-- [[worm-ledger-architecture]]
-- [[3-layer-stack]]
-- [[machine-based-auth]]
-- [[compounding-substrate]]
-
 ---
+
 
 La seguridad basada en capacidades es el modelo de control de acceso utilizado en las capas de hardware y sistema operativo de la plataforma PointSav. A diferencia de los sistemas operativos convencionales, que otorgan amplios permisos a través de cuentas administrativas, la seguridad basada en capacidades exige que cada componente de software aislado posea un token criptográfico verificado matemáticamente — denominado capacidad — antes de poder comunicarse con cualquier otro componente.
 
@@ -39,3 +32,11 @@ Los sistemas operativos estándar son vulnerables a la escalada de privilegios. 
 - **Mínimo privilegio por defecto.** Los componentes comienzan sin capacidades; el sistema concede el conjunto mínimo requerido para su función declarada.
 - **Contención del radio de explosión.** El compromiso de un componente no puede propagarse a componentes para los que no posee concesiones de capacidad.
 - **Auditabilidad.** Las concesiones de capacidades se registran; el conjunto de concesiones en vigor en cualquier momento es inspeccionable.
+
+## Véase también
+
+- [[sel4-foundation]]
+- [[worm-ledger-architecture]]
+- [[3-layer-stack]]
+- [[machine-based-auth]]
+- [[compounding-substrate]]

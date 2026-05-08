@@ -7,13 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: news-release-standards.md
-## Véase también
-
-- [[brand-typography]]
-- [[brand-family-swatch]]
-- [[style-guide-readme]]
-
 ---
+
 
 
 Foundry impone reglas estrictas de formato para la difusión de noticias corporativas, siguiendo los principios de Lenguaje Claro ISO 24495-1. Esto asegura que cada comunicado proyecte autoridad institucional y sea perfectamente legible tanto en formato digital como impreso.
@@ -32,3 +27,9 @@ Cada noticia debe seguir una jerarquía visual clara:
 3. **Línea de Fecha:** Separada del cuerpo del texto por un guion largo (—) o una pleca (|) en la web.
 
 Estos estándares garantizan que la voz de PointSav y Woodfine sea coherente y profesional en todos los canales de comunicación, manteniendo una estética de "Libro Blanco" institucional.
+
+## Véase también
+
+- [[brand-typography]]
+- [[brand-family-swatch]]
+- [[style-guide-readme]]

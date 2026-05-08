@@ -7,13 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: en
 paired_with: favicon-matrix.es.md
-## See Also
-
-- [[brand-family-swatch]]
-- [[design-color]]
-- [[design-typography]]
-
 ---
+
 
 
 The PointSav Building Design System utilizes high-fidelity SVG data URIs to manage browser tab identification. This approach optimizes performance and visual clarity across all display types while reinforcing corporate identity at the infrastructure level.
@@ -41,3 +36,9 @@ Icons are encoded as follows:
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23869FB9'/%3E%3C/svg%3E">
 ```
 This standardized implementation ensures that tab identity is established immediately and consistently across the entire suite of Foundry applications.
+
+## See Also
+
+- [[brand-family-swatch]]
+- [[design-color]]
+- [[design-typography]]

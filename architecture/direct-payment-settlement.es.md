@@ -12,13 +12,8 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: direct-payment-settlement.md
-## Véase también
-
-- [[reverse-flow-substrate]]
-- [[customer-owned-graph-ip]]
-- [[single-boundary-compute-discipline]]
-
 ---
+
 
 El **Acuerdo de Pago Directo** es la arquitectura de pago planificada para los flujos de mercado de datos e intercambio de anuncios de Foundry. Bajo este modelo, el pago está previsto para viajar directamente del comprador al inquilino-cliente, con Foundry deduciendo una comisión por transacción transparente en el momento de la liquidación. No está planificado que los fondos fluyan a través de las cuentas de Foundry; no están planificados ciclos de pago; y el acceso del cliente a la plataforma no está condicionado a ninguna suscripción o pago mínimo. Este patrón codifica la reclamación doctrinal #53.
 
@@ -57,3 +52,9 @@ El Acuerdo de Pago Directo compone con el [[reverse-flow-substrate]] — cada tr
 ## Procedencia
 
 Resumen de adaptación estratégica del archivo fuente `convention-direct-payment-settlement.md` (refinado el 30 de abril de 2026). Todas las reclamaciones de liquidación, comisiones y hoja de ruta llevan encuadre "planificado," "previsto" e "intencional" — la implementación de la Fase 5 no ha comenzado. Postura de divulgación continua BCSC aplicada.
+
+## Véase también
+
+- [[reverse-flow-substrate]]
+- [[customer-owned-graph-ip]]
+- [[single-boundary-compute-discipline]]

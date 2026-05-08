@@ -10,13 +10,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language_protocol: DESIGN-COMPONENT
 authored: 2026-04-30
-## Véase también
-
-- [[brand-typography]]
-- [[design-typography]]
-- [[design-color]]
-
 ---
+
 
 
 El "Brand-Family Swatch" es la primitiva taxonómica principal para la clasificación de anclas comerciales en el ecosistema GIS de Foundry. Codifica la taxonomía tripartita ratificada por el operador —Department (Departamental), Hardware (Ferretería) y Warehouse Club (Club de Compras)— manteniendo una arquitectura agnóstica de datos que admite extensiones impulsadas por el cliente mediante capas de datos soberanas.
@@ -66,3 +61,9 @@ El componente está diseñado para cumplir con los estándares WCAG 2.2 AA:
 Se prevé que las futuras iteraciones incluyan:
 - **Rellenos con Patrones**: Soporte planificado para patrones geométricos dentro del punto para mejorar la distinción para usuarios con deficiencias avanzadas de visión cromática.
 - **Gráficos de Tarta Dinámicos**: Se está investigando la transición del anillo de centroide de conglomerado a un gráfico de dona dinámico cuando la densidad del conglomerado supere las 10 anclas.
+
+## Véase también
+
+- [[brand-typography]]
+- [[design-typography]]
+- [[design-color]]

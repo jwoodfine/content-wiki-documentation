@@ -10,14 +10,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language_protocol: DESIGN-RESEARCH
 authored: 2026-04-30
-## Véase también
-
-- [[map-stats-panel]]
-- [[map-side-drawer]]
-- [[country-filter-chips]]
-- [[location-intelligence-ux]]
-
 ---
+
 
 
 El "Zoom-Tier Reveal Pattern" es una estrategia fundamental de visualización geográfica que preserva la semántica de los datos a través de diferentes escalas de aumento. Al transicionar entre representaciones de conglomerados (clusters) agregados y marcadores de características individuales en umbrales de zoom definidos, el patrón garantiza que las señales de densidad de alto nivel sigan siendo tan informativas como los detalles granulares de cada ancla.
@@ -62,3 +56,10 @@ Las investigaciones futuras prevén investigar:
 - **Revelación Multitier**: Un sistema planificado de tres niveles (Regional → Conglomerado → Individual) para entornos urbanos de ultra alta densidad.
 - **Umbrales Adaptativos**: Desarrollo previsto de umbrales dinámicos que se ajusten en función de la densidad de datos local, garantizando una claridad visual constante tanto en conjuntos de datos rurales como metropolitanos.
 - **Rutas de Clic para Zoom**: Se está investigando si al hacer clic en un centroide de conglomerado se debe volar exactamente al umbral de revelación o a una vista de detalle de mayor aumento predefinida (p. ej., zoom 13).
+
+## Véase también
+
+- [[map-stats-panel]]
+- [[map-side-drawer]]
+- [[country-filter-chips]]
+- [[location-intelligence-ux]]

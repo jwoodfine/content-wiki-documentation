@@ -299,9 +299,9 @@ The `assets/` directory holds the physical files. The `ledger/` directory holds 
 
 A [[ToteboxArchive]] must be exportable as a complete, self-contained package that a recipient can deploy on their own infrastructure without any proprietary runtime, vendor relationship, or platform subscription.
 
-In the end state, this export artifact is a Bootable Disk Image — a virtual machine image file that boots on any standard hypervisor ({{gli|bare metal}}, AWS, Azure, Google Cloud, Oracle Cloud).
+In the end state, this export artifact is a Bootable Disk Image — a virtual machine image file that boots on any standard hypervisor (bare metal, AWS, Azure, Google Cloud, Oracle Cloud).
 
-**Important distinction:** A Docker {{gli|container}} is NOT Freely Transferable. It requires Docker to run. A bootable disk image requires only a standard hypervisor, which is a universal commodity.
+**Important distinction:** A Docker container is NOT Freely Transferable. It requires Docker to run. A bootable disk image requires only a standard hypervisor, which is a universal commodity.
 
 A practical example: When Woodfine sells a building, the entire history of that building — permits, contracts, IoT logs, maintenance records — lives in a PropertyArchive. The buyer receives a Bootable Disk Image of that archive. They boot it on their own infrastructure. The complete history is now under their control, with zero ongoing dependency on Woodfine's systems.
 
@@ -319,7 +319,7 @@ When a physical asset (a PDF contract, an invoice, a compliance document) is sto
 
 A SHA-256 checksum is a mathematical fingerprint. If anyone changes even a single character in the original file — a number in a financial record, a date on a contract — the fingerprint no longer matches. Any auditor can independently re-run the checksum against the stored file and compare it to the one in the ledger. If they match, the document is verified. If they don't, the archive has been tampered with.
 
-This is the {{gli|WORM}} principle — Write Once, Read Many. Once a record enters cold storage, it is mathematically sealed.
+This is the WORM principle — Write Once, Read Many. Once a record enters cold storage, it is mathematically sealed.
 
 ## Cryptographic Payload Attestation
 
@@ -464,7 +464,7 @@ This is the "point-in-time execution" model. It prevents two failure modes that 
 
 | Path | What the operator does | PointSav's role |
 |---|---|---|
-| No AI | Run [[ToteboxOS]] at base tier. Full {{gli|WORM}} compliance and search with zero AI dependency. | None required |
+| No AI | Run [[ToteboxOS]] at base tier. Full WORM compliance and search with zero AI dependency. | None required |
 | DIY via Doorman | Install `service-slm` and wire any external AI model to the gateway protocol independently. | Provides the open-source doorman standard only |
 | Packaged product | Deploy `app-orchestration-slm` on [[OrchestrationOS]]. PointSav provides a packaged, pre-configured open-source model ready to run. | Packaging, configuration, and integration |
 
@@ -757,7 +757,7 @@ Architecture Decision Records (ADRs) are formal commitments to specific design c
 
 **The decision:** These are two physically separate systems that serve completely different purposes.
 
-- `service-email` is the **Compliance Layer**: an immutable {{gli|WORM}} (Write Once, Read Many) archive of every raw email received. It is a legal record. It is mathematically forbidden from modification.
+- `service-email` is the **Compliance Layer**: an immutable WORM (Write Once, Read Many) archive of every raw email received. It is a legal record. It is mathematically forbidden from modification.
 - `service-content` is the **Intelligence Layer**: a self-healing knowledge graph that continuously updates as new information arrives. Old facts are replaced with current truths to give the AI a clean, accurate picture of the present.
 - `service-slm` is the **Bridge**: it reads the compliance layer, extracts the intelligence, and writes exclusively to the intelligence layer. The bridge only flows in one direction.
 
@@ -984,7 +984,7 @@ None of this requires over-engineering today. It requires awareness: choosing an
 | Vendor-* | Quarantined third-party dependencies. Isolated in their own directories. Tracked as technical debt with corresponding moonshot replacements. |
 | Verification Surveyor | The human-in-the-loop checkpoint for identity records. Operators verify extracted person records using their own browser. Throttled to 10 verifications per day to ensure quality. |
 | WorkplaceOS | A Linux-based desktop environment for General Staff. Separate from Totebox Orchestration. The alternative delivery path for users who prefer a full desktop OS over running [[ConsoleOS]] as a virtual machine. |
-| {{gli|WORM}} | Write Once, Read Many. A data storage principle where records cannot be modified after they are written. The compliance archive (service-email) is {{gli|WORM}}. Enforced by SHA-256 cryptographic checksums. |
+| WORM | Write Once, Read Many. A data storage principle where records cannot be modified after they are written. The compliance archive (service-email) is WORM. Enforced by SHA-256 cryptographic checksums. |
 | WireGuard | An open-source VPN protocol used to create the encrypted tunnels of the PointSav Private Network. Operates as a Layer-3 point-to-point tunnel (SYS-ADR-16). |
 | WoodfineLP | A limited partnership within the Woodfine Capital Projects network. These are the Reporting Issuers subject to securities disclosure requirements. |
 | Zero-Form | UI paradigm rejecting traditional web forms. Data entry via file drop, queries via natural language, outputs as physical files to the desktop. The operator works at the speed of language, not at the speed of a form wizard. |

@@ -13,14 +13,8 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: topic-infrastructure-os.md
 cites: []
-## Véase también
-
-- [[topic-totebox-os]]
-- [[topic-totebox-orchestration]]
-- [[topic-totebox-archive]]
-- [[topic-network-admin-os]]
-
 ---
+
 
 Infrastructure OS es la columna vertebral de virtualización y redes del ecosistema de PointSav. Opera como la capa de host fundacional que permite la ejecución de múltiples instancias de Totebox Archive aisladas en una sola máquina física o virtual.
 
@@ -37,3 +31,10 @@ Infrastructure OS crea y mantiene la **Red Privada de PointSav**. Esta es una re
 Cada nodo que ejecuta Infrastructure OS se convierte en un miembro verificado de esta red, permitiendo:
 - **Transferencia de datos cifrada:** Mover imágenes de disco arrancables de Totebox Archive entre ubicaciones de forma segura.
 - **Comunicación entre dispositivos:** Sincronización segura de estado entre instancias distribuidas de PointSav.
+
+## Véase también
+
+- [[topic-totebox-os]]
+- [[topic-totebox-orchestration]]
+- [[topic-totebox-archive]]
+- [[topic-network-admin-os]]

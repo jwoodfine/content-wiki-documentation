@@ -7,16 +7,8 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 quality: complete
-## Véase también
-
-- [[compounding-substrate]]
-- [[three-ring-architecture]]
-- [[single-boundary-compute-discipline]]
-- [[system-substrate-doctrine]]
-- [[slm-stack-architecture]]
-- [[yoyo-compute-substrate]]
-
 ---
+
 
 La Doctrina Foundry es la carta constitucional de la plataforma PointSav. Codifica los principios, compromisos y afirmaciones estructurales que rigen cada decisión de ingeniería, operaciones y editorial en todo el espacio de trabajo. La versión actual es v0.1.0 ALPHA, ratificada el 30 de abril de 2026.
 
@@ -61,3 +53,12 @@ Más allá de las afirmaciones estructurales, la doctrina se inspira en ocho inv
 ## Postura de Divulgación Continua
 
 Cada artefacto escrito en el espacio de trabajo se trata como potencialmente revisable bajo las obligaciones de divulgación continua. Las declaraciones prospectivas sobre capacidad futura, cronograma o resultados del cliente llevan el encuadre "planificado"/"previsto"/"puede", una base razonable declarada y lenguaje cautelar.
+
+## Véase también
+
+- [[compounding-substrate]]
+- [[three-ring-architecture]]
+- [[single-boundary-compute-discipline]]
+- [[system-substrate-doctrine]]
+- [[slm-stack-architecture]]
+- [[yoyo-compute-substrate]]

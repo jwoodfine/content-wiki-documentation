@@ -7,13 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: viewport-3d-accessibility.md
-## Véase también
-
-- [[spatial-tree-accessibility]]
-- [[properties-panel-accessibility]]
-- [[neurodiversity-typography-standards]]
-
 ---
+
 
 
 El componente `bim-viewport-3d` es la capa principal de visualización de modelos. Aunque el contenido de un lienzo (canvas) 3D es gráfico por naturaleza, el visor de Foundry está diseñado para ser plenamente operativo mediante la sincronización con componentes de texto y el uso de atajos de teclado estándar.
@@ -36,3 +31,9 @@ El visor implementa los atajos estándar de la industria AEC para permitir el co
 ## Postura Técnica
 
 En el **Modo Console**, el visor puede mostrar miniaturas SVG de alta fidelidad en lugar de un entorno 3D completo. Esto optimiza el rendimiento y mantiene la integridad de la licencia EUPL-1.2 en superficies de consulta. En el **Modo Workplace**, se activa el motor 3D completo para tareas de coordinación y autoría.
+
+## Véase también
+
+- [[spatial-tree-accessibility]]
+- [[properties-panel-accessibility]]
+- [[neurodiversity-typography-standards]]

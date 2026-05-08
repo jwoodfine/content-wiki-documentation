@@ -13,13 +13,8 @@ editor: pointsav-engineering
 cites:
   - ni-51-102
 paired_with: api-key-boundary-discipline.md
-## Véase también
-
-- [[compounding-substrate]]
-- [[design-system-substrate]]
-- [[cluster-wiki-draft-pipeline]]
-
 ---
+
 
 ## Resumen estratégico
 
@@ -49,3 +44,9 @@ Tres propiedades estructurales justifican la regla:
 ## Cumplimiento
 
 La combinación de límite de pasarela, ledger de auditoría por tenant y lista de propósitos permitidos produce un rastro de auditoría criptográfico sobre cada llamada de inferencia externa. Esta estructura satisface los requisitos de integridad de procesamiento de SOC 2 y los principios de cadena de custodia de ISAE 3402 por construcción.
+
+## Véase también
+
+- [[compounding-substrate]]
+- [[design-system-substrate]]
+- [[cluster-wiki-draft-pipeline]]

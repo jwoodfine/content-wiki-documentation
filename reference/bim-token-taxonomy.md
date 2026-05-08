@@ -7,14 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: en
 paired_with: bim-token-taxonomy.es.md
-## See Also
-
-- [[bim-design-philosophy]]
-- [[bim-aec-muscle-memory]]
-- [[flat-file-bim-leapfrog]]
-- [[design-color]]
-
 ---
+
 
 
 Foundry’s BIM Token Taxonomy organizes the Building Design System into eight primitive categories anchored to the IFC 4.3 (ISO 16739-1:2024) entity hierarchy. This alignment ensures that design-system tokens correspond directly to canonical AEC classification conventions, facilitating seamless data exchange across the openBIM ecosystem.
@@ -56,3 +50,10 @@ Host frameworks (e.g., Yew, Leptos, or vanilla TypeScript) integrate by mounting
 
 *   **v0.0.1 (Current):** `SpatialTree`, `PropertiesPanel`, and `Viewport3D` are released as foundational components.
 *   **v0.0.2 (Planned):** Console-unique and workplace-unique components will ship alongside the building element index and BIM authoring features.
+
+## See Also
+
+- [[bim-design-philosophy]]
+- [[bim-aec-muscle-memory]]
+- [[flat-file-bim-leapfrog]]
+- [[design-color]]

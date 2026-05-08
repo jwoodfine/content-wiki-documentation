@@ -13,15 +13,8 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: sovereign-ai-routing.md
 cites: []
-## Véase también
-
-- [[compounding-substrate]]
-- [[worm-ledger-architecture]]
-- [[decode-time-constraints]]
-- [[machine-based-auth]]
-- [[3-layer-stack]]
-
 ---
+
 
 El enrutamiento de IA en la plataforma PointSav procesa las solicitudes de modelos de lenguaje a través de una etapa de sanitización local antes de que cualquier dato llegue a modelos externos. Esto garantiza que los datos estructurados internos nunca viajen a servidores de terceros en forma identificable.
 
@@ -40,3 +33,11 @@ El flujo es el siguiente:
 4. El Doorman aplica la pasada de rehidratación antes de devolver la respuesta al solicitante.
 
 El modelo externo nunca posee los registros estructurados reales del libro contable del cliente.
+
+## Véase también
+
+- [[compounding-substrate]]
+- [[worm-ledger-architecture]]
+- [[decode-time-constraints]]
+- [[machine-based-auth]]
+- [[3-layer-stack]]

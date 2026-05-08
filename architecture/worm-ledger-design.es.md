@@ -12,13 +12,8 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: worm-ledger-design.md
-## Véase también
-
-- [[three-ring-architecture]]
-- [[compounding-doorman]]
-- [[trajectory-substrate]]
-
 ---
+
 
 Los servicios del anillo 1 de la plataforma PointSav — la capa de ingesta de límites que gestiona registros del sistema de archivos, datos de personas, correo electrónico y entrada estructurada — requieren una persistencia que no pueda modificarse silenciosamente. Un registro escrito en un libro de registros del anillo 1 debe permanecer exactamente tal como fue escrito durante toda la vida del despliegue.
 
@@ -54,3 +49,9 @@ La conservación cualificada bajo eIDAS exige preservación independiente de cam
 
 - [[three-ring-architecture]] — el límite del anillo 1 donde opera el libro de registros WORM
 - [[compounding-doorman]] — el servicio del anillo 3 cuyo libro de auditoría usa el mismo primitivo
+
+## Véase también
+
+- [[three-ring-architecture]]
+- [[compounding-doorman]]
+- [[trajectory-substrate]]

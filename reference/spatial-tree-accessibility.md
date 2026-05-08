@@ -7,13 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: en
 paired_with: spatial-tree-accessibility.es.md
-## See Also
-
-- [[viewport-3d-accessibility]]
-- [[properties-panel-accessibility]]
-- [[neurodiversity-typography-standards]]
-
 ---
+
 
 
 The `bim-spatial-tree` component provides a navigable hierarchy of a building’s spatial elements. It is designed to follow WAI-ARIA best practices for tree widgets, ensuring that complex architectural structures remain accessible to users relying on assistive technologies (AT).
@@ -55,3 +50,9 @@ The tree includes a search interface (`<input type="search">`) that filters node
 
 *   **Avoid Generic Scene-Graphs:** Do not utilize generic "outliner" widgets. The `SpatialTree` is a purpose-built AEC tool with specific expansion and search logic.
 *   **Storey-First Expansion:** Adhere to the storey-default expansion rule to match professional AEC mental models.
+
+## See Also
+
+- [[viewport-3d-accessibility]]
+- [[properties-panel-accessibility]]
+- [[neurodiversity-typography-standards]]

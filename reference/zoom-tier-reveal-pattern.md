@@ -10,14 +10,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language_protocol: DESIGN-RESEARCH
 authored: 2026-04-30
-## See Also
-
-- [[map-stats-panel]]
-- [[map-side-drawer]]
-- [[country-filter-chips]]
-- [[location-intelligence-ux]]
-
 ---
+
 
 
 The Zoom-Tier Reveal Pattern is a foundational geographic visualization strategy that preserves data semantics across varying scales of magnification. By transitioning between aggregate cluster representations and individual feature markers at defined zoom thresholds, the pattern ensures that high-level density signals remain as informative as granular per-anchor details.
@@ -62,3 +56,10 @@ Future research is intended to investigate:
 - **Multi-Tier Reveal**: A planned three-tier system (Regional → Cluster → Individual) for ultra-high-density urban environments.
 - **Adaptive Thresholds**: Intended development of dynamic thresholds that adjust based on local data density, ensuring consistent visual clarity in both rural and metropolitan datasets.
 - **Click-to-Zoom Pathing**: Research is ongoing to determine if clicking a cluster centroid should fly to the exact reveal threshold or to a predefined higher-magnification detail view (e.g., zoom 13).
+
+## See Also
+
+- [[map-stats-panel]]
+- [[map-side-drawer]]
+- [[country-filter-chips]]
+- [[location-intelligence-ux]]

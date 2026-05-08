@@ -13,15 +13,8 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: machine-based-auth.md
 cites: []
-## Véase también
-
-- [[capability-based-security]]
-- [[sel4-foundation]]
-- [[worm-ledger-architecture]]
-- [[crypto-attestation]]
-- [[3-layer-stack]]
-
 ---
+
 
 La autorización basada en hardware reemplaza las estructuras de nombre de usuario y contraseña por un modelo en el que la autorización requiere el emparejamiento criptográfico del hardware físico, verificado por el gestor de capacidades.
 
@@ -38,3 +31,11 @@ En la plataforma PointSav, el emparejamiento criptográfico es gestionado por la
 ## Eliminación de ataques de phishing
 
 Una sesión no puede establecerse desde hardware que no haya completado el emparejamiento criptográfico, independientemente de las credenciales que un atacante pueda haber obtenido. La clase completa de ataques de robo remoto de credenciales queda estructuralmente eliminada.
+
+## Véase también
+
+- [[capability-based-security]]
+- [[sel4-foundation]]
+- [[worm-ledger-architecture]]
+- [[crypto-attestation]]
+- [[3-layer-stack]]

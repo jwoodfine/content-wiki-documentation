@@ -7,13 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: en
 paired_with: brand-typography.es.md
-## See Also
-
-- [[brand-family-swatch]]
-- [[design-typography]]
-- [[news-release-standards]]
-
 ---
+
 
 
 Foundry enforces a strict boundary between web interface presentation and institutional print output. While web layers prioritize performance via native system fonts, brand typography is reserved for offline print and PDF generation to project institutional authority and ensure DARP compliance.
@@ -36,3 +31,9 @@ To guarantee absolute compliance with the Digital Asset Resolution Package (DARP
 ## 3. Institutional Authority in Output
 
 Brand typography is utilized to establish a professional "White Paper" aesthetic for all generated documents. The use of **Zilla Slab** for headers and **Barlow Condensed** for financial data ensures that PointSav and Woodfine disclosures are immediately recognizable as authoritative, high-precision reports.
+
+## See Also
+
+- [[brand-family-swatch]]
+- [[design-typography]]
+- [[news-release-standards]]

@@ -12,12 +12,8 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: wikipedia-leapfrog-pattern.md
-## Véase también
-
-- [[reverse-funnel-editorial-pattern]]
-- [[wiki-provider-landscape]]
-
 ---
+
 
 La autoridad editorial de Wikipedia descansa en veinte años de convenciones estructurales acumuladas: anatomía de artículos, notas de desambiguación, densidad de notas al pie, primitivas de navegación, plantillas de cuadros informativos, deliberación en páginas de discusión, grados de calidad, escritura en estilo de resumen y contribución atribuida. Estas convenciones se aplican mediante normas sociales voluntarias, patrullaje de bots, revisión editorial y gobernanza comunitaria. Son poderosas porque han sido iteradas durante décadas; también son frágiles porque su aplicación depende de atención voluntaria sostenida que es desigual en todo el corpus.
 
@@ -42,3 +38,8 @@ El wiki de documentación de PointSav toma su memoria muscular estructural de Wi
 **Escritura en estilo de resumen.** La sincronización de resúmenes en Wikipedia es manual y periódica. La alineación de las páginas de contenido del mapa de categoría es una propiedad de la tubería, no un problema de programación.
 
 **Atribución.** La atribución en Wikipedia es anónima abierta. La atribución en PointSav es estratificada por nivel, firmada criptográficamente y simultáneamente un registro de proveniencia de señal de entrenamiento.
+
+## Véase también
+
+- [[reverse-funnel-editorial-pattern]]
+- [[wiki-provider-landscape]]

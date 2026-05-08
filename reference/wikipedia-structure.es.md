@@ -11,14 +11,8 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 paired_with: wikipedia-structure.md
-## Véase también
-
-- [[style-guide-topic]]
-- [[style-guide-readme]]
-- [[compounding-substrate]]
-- [[apprenticeship-substrate]]
-
 ---
+
 
 Wikipedia es la convención de documentación más interiorizada del mundo. Cualquier persona que haya utilizado Wikipedia durante un tiempo lleva un modelo inconsciente de dónde vive la información en una página: el resumen ejecutivo al inicio, el recuadro de datos a la derecha, las referencias al pie. `documentation.pointsav.com` adopta las mismas convenciones estructurales para que los lectores lleguen ya sabiendo cómo utilizarla.
 
@@ -41,3 +35,10 @@ Lo opuesto también es cierto: una wiki donde cada artículo tiene una estructur
 La versión completa en inglés ([wikipedia-structure.md](wikipedia-structure.md)) describe los nueve paneles de la página principal de Wikipedia, los dieciséis elementos de la anatomía de un artículo, las tres plantillas de recuadro de datos para documentación de PointSav (endpoint de API, función, integración), y el sistema de calificación de calidad.
 
 Los colaboradores que escriban o editen artículos deben consultar ese artículo como referencia de estilo. Los tres elementos esenciales para el trabajo cotidiano son: escribir el párrafo de apertura como si fuera el único texto que el lector verá; usar el campo `quality:` con honestidad desde el primer commit; y mantener el orden estándar de secciones (cuerpo → Véase también → Referencias).
+
+## Véase también
+
+- [[style-guide-topic]]
+- [[style-guide-readme]]
+- [[compounding-substrate]]
+- [[apprenticeship-substrate]]

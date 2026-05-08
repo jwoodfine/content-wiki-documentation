@@ -7,14 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: en
 paired_with: zero-execution-routing.es.md
-## See Also
-
-- [[sovereign-ai-routing]]
-- [[machine-based-auth]]
-- [[decode-time-constraints]]
-- [[sel4-foundation]]
-
 ---
+
 
 
 Foundry’s public presentation layers adhere to a "Zero-Execution" mandate, eliminating client-side JavaScript for core DOM manipulation, language routing, and file serving. This architectural constraint minimizes the attack surface and guarantees SOC 3 compliance by relying entirely on deterministic files and native CSS state management.
@@ -33,3 +27,10 @@ Interactive interface elements, such as language toggles and dynamic download bu
 *   **Zero Latency:** This method provides the illusion of a high-performance Web 2.0 application with zero execution latency and no client-side script vulnerability.
 
 This "Leapfrog 2030" standard ensures that Foundry interfaces are accessible, secure, and instantaneous across all network environments.
+
+## See Also
+
+- [[sovereign-ai-routing]]
+- [[machine-based-auth]]
+- [[decode-time-constraints]]
+- [[sel4-foundation]]

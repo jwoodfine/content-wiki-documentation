@@ -13,13 +13,8 @@ editor: pointsav-engineering
 cites:
   - ni-51-102
 paired_with: design-system-substrate.md
-## Véase también
-
-- [[data-vault-bookkeeping-substrate]]
-- [[cluster-design-draft-pipeline]]
-- [[compounding-substrate]]
-
 ---
+
 
 ## Resumen estratégico
 
@@ -36,3 +31,9 @@ El sustrato del sistema de diseño invierte el patrón de los grandes proveedore
 ## Arquitectura de tres capas
 
 La **bóveda** es el almacén de contenido canónico: definiciones de tokens, recetas HTML y CSS de componentes, especificaciones ARIA, temas y un directorio de investigación legible por IA. El **motor del sustrato** es un servicio sin estado que lee la bóveda y expone la superficie de investigación a los agentes de IA. El **showcase** es la aplicación web que sirve el sistema de diseño en un dominio. El showcase propio del proveedor usa el mismo código base y arquitectura que cualquier instancia del cliente.
+
+## Véase también
+
+- [[data-vault-bookkeeping-substrate]]
+- [[cluster-design-draft-pipeline]]
+- [[compounding-substrate]]

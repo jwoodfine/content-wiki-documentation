@@ -12,12 +12,8 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: customer-first-ordering.md
-## Véase también
-
-- [[compounding-substrate]]
-- [[data-vault-bookkeeping-substrate]]
-
 ---
+
 
 ## Resumen estratégico
 
@@ -38,3 +34,8 @@ El principio se asigna a una estructura de responsabilidad de tres capas: pasos 
 ## Excepciones documentadas
 
 Algunos pasos no pueden ser utilizados internamente porque son estructuralmente imposibles de realizar desde dentro de un sistema en ejecución: pasos en el límite de hardware, pasos de publicación de paquetes, e investigación de preproducción que produce las recomendaciones que los clientes consumen.
+
+## Véase también
+
+- [[compounding-substrate]]
+- [[data-vault-bookkeeping-substrate]]

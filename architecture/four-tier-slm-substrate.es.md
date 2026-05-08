@@ -12,14 +12,8 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: four-tier-slm-substrate.md
-## Véase también
-
-- [[compounding-doorman]]
-- [[llm-substrate-decision]]
-- [[apprenticeship-substrate]]
-- [[economic-model]]
-
 ---
+
 
 La plataforma PointSav estructura el despliegue de IA como una escalera de cuatro niveles. Los clientes comienzan en el nivel que corresponde a su hardware, presupuesto y requisitos de soberanía actuales. Cada nivel superior añade capacidad; rebajar a un nivel inferior en cualquier momento no rompe el sustrato que el cliente ya opera.
 
@@ -54,3 +48,10 @@ Una única regla aplica en todos los niveles: las claves API residen exclusivame
 - [[compounding-doorman]] — la frontera del Doorman que aplica la regla de custodia de claves en todos los niveles
 - [[llm-substrate-decision]] — por qué OLMo 3 es el modelo base en todos los niveles
 - [[apprenticeship-substrate]] — el ciclo de entrenamiento que hace que los niveles superiores compongan a lo largo del tiempo
+
+## Véase también
+
+- [[compounding-doorman]]
+- [[llm-substrate-decision]]
+- [[apprenticeship-substrate]]
+- [[economic-model]]

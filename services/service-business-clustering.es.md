@@ -13,13 +13,8 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: service-business-clustering.md
 cites: []
-## Véase también
-
-- [[app-orchestration-gis]]
-- [[service-fs-data-lake]]
-- [[service-places-filtering]]
-
 ---
+
 
 `service-business` es la capa de inteligencia responsable de transformar puntos de datos minoristas crudos en clústeres comerciales accionables. Implementa un patrón de agrupación padre-hijo para manejar entornos minoristas físicos complejos donde múltiples operadores distintos comparten un único nodo comercial.
 
@@ -39,3 +34,9 @@ Para realizar esto a escala, el servicio utiliza un índice espacial basado en c
 ## Salida de datos depurada
 
 La salida es un archivo `cleansed-clusters.jsonl` refinado. Este conjunto de datos procesado es consumido por el `app-orchestration-gis` descendente para construir el índice de co-ubicación regional.
+
+## Véase también
+
+- [[app-orchestration-gis]]
+- [[service-fs-data-lake]]
+- [[service-places-filtering]]

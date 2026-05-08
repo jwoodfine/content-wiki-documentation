@@ -15,13 +15,8 @@ paired_with: app-orchestration-gis.md
 cites:
   - pmtiles-spec
   - maplibre-gl-js
-## Véase también
-
-- [[pointsav-gis-engine]]
-- [[service-business-clustering]]
-- [[service-places-filtering]]
-
 ---
+
 
 `app-orchestration-gis` es el motor de procesamiento geoespacial que transforma datos sin procesar de operadores minoristas e infraestructura cívica en índices de co-ubicación por niveles, listos para renderizado en la interfaz de inteligencia de ubicación de PointSav.
 
@@ -40,3 +35,9 @@ La salida se entrega como archivos PMTiles — un formato de archivo plano que e
 ## Diseño sin estado
 
 La arquitectura de la aplicación es completamente sin estado: no persiste datos entre ejecuciones. Todo el estado reside en el archivo PMTiles de salida, versionado en el Totebox Archive. Esto permite re-provisionar el entorno GIS completo de forma instantánea desde la capa de datos inmutable.
+
+## Véase también
+
+- [[pointsav-gis-engine]]
+- [[service-business-clustering]]
+- [[service-places-filtering]]

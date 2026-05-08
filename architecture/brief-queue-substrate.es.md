@@ -14,13 +14,8 @@ cites:
   - ni-51-102
   - osc-sn-51-721
 paired_with: brief-queue-substrate.md
-## Véase también
-
-- [[apprenticeship-substrate]]
-- [[service-slm-yoyo-operational]]
-- [[service-slm]]
-
 ---
+
 
 El **Sustrato de Cola de Briefs** es una cola persistente respaldada en archivos que conecta el flujo editorial de la plataforma PointSav con el sistema de captura del corpus de aprendizaje. Su propósito central es recibir registros de ejecución de briefs — eventos en formato JSON Lines que describen una operación editorial — y conservarlos de forma confiable hasta que el proceso de vaciado pueda escribirlos en el corpus a largo plazo.
 
@@ -48,3 +43,9 @@ La elección de archivos JSONL locales en lugar de un broker como NATS JetStream
 ## Estado de implementación
 
 La convención del Sustrato de Cola de Briefs fue ratificada en la versión v0.1.78 del workspace. La implementación — API de cola, proceso de vaciado en el Doorman, y graduación del hook post-commit — está en curso bajo el ámbito del cluster project-slm. El formato del corpus JSONL no cambia; solo el camino de escritura.
+
+## Véase también
+
+- [[apprenticeship-substrate]]
+- [[service-slm-yoyo-operational]]
+- [[service-slm]]

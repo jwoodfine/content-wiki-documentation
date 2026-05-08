@@ -7,14 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: service-fs-security-compliance.md
-## Véase también
-
-- [[service-fs-architecture]]
-- [[capability-based-security]]
-- [[machine-based-auth]]
-- [[sel4-foundation]]
-
 ---
+
 
 
 `service-fs` está diseñado para cumplir con los estándares internacionales más exigentes de almacenamiento inmutable y soberanía de datos. Nuestra arquitectura WORM asegura que los registros no puedan ser borrados ni modificados, cumpliendo con las normativas financieras y de confianza globales.
@@ -33,3 +27,10 @@ paired_with: service-fs-security-compliance.md
 4. **Lectura a 100 años:** Usamos formatos de texto abierto, permitiendo que cualquier arqueólogo digital del futuro pueda leer los datos sin necesidad de software propietario.
 
 Esta postura protege a la empresa contra el secuestro de datos (ransomware), el error humano y la obsolescencia del proveedor de software.
+
+## Véase también
+
+- [[service-fs-architecture]]
+- [[capability-based-security]]
+- [[machine-based-auth]]
+- [[sel4-foundation]]

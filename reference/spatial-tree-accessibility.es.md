@@ -7,13 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: spatial-tree-accessibility.md
-## Véase también
-
-- [[viewport-3d-accessibility]]
-- [[properties-panel-accessibility]]
-- [[neurodiversity-typography-standards]]
-
 ---
+
 
 
 El componente `bim-spatial-tree` permite navegar por la jerarquía espacial de un edificio. Su diseño sigue las mejores prácticas de WAI-ARIA para asegurar que las estructuras arquitectónicas complejas sean accesibles para todos los usuarios.
@@ -40,3 +35,9 @@ El Árbol Espacial permite una navegación completa sin ratón:
 ## Búsqueda y Filtrado
 
 El componente incluye una entrada de búsqueda que filtra por el nombre de `IfcSpace`. Al encontrar coincidencias, el árbol expande automáticamente la ruta hacia el resultado y oculta las ramas que no coinciden, facilitando la localización rápida de activos dentro del modelo.
+
+## Véase también
+
+- [[viewport-3d-accessibility]]
+- [[properties-panel-accessibility]]
+- [[neurodiversity-typography-standards]]

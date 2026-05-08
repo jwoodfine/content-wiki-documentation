@@ -12,14 +12,8 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: mcp-substrate-protocol.md
-## Véase también
-
-- [[single-boundary-compute-discipline]]
-- [[knowledge-graph-grounded-apprenticeship]]
-- [[code-for-machines-first]]
-- [[vertical-seed-packs-marketplace]]
-
 ---
+
 
 **MCP como Protocolo Substrato** designa el Protocolo de Contexto de Modelo (MCP) como el contrato de cable para toda la composición de servicios en la plataforma Foundry. Cada servicio del Anillo 1 y Anillo 2 expone una interfaz de servidor MCP como su contrato externo primario. El Portero (`service-slm`) es la puerta de enlace MCP. Las extensiones del cliente se conectan como servidores MCP adicionales. Esta decisión es estructural y está codificada en la reclamación doctrinal #46.
 
@@ -55,3 +49,10 @@ La interfaz HTTP compatible con OpenAI del Portero se preserva junto a MCP. Los 
 ## Procedencia
 
 Resumen de adaptación estratégica del archivo fuente `convention-mcp-substrate-protocol.md` (refinado el 30 de abril de 2026). Las referencias a la implementación de Fase 5 llevan encuadre "planificado" e "intencional" conforme a la postura de divulgación continua BCSC.
+
+## Véase también
+
+- [[single-boundary-compute-discipline]]
+- [[knowledge-graph-grounded-apprenticeship]]
+- [[code-for-machines-first]]
+- [[vertical-seed-packs-marketplace]]

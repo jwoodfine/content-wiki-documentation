@@ -12,13 +12,8 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: reverse-funnel-editorial-pattern.md
-## Véase también
-
-- [[project-tetrad-discipline]]
-- [[service-slm-operationalization-plan]]
-- [[wikipedia-leapfrog-pattern]]
-
 ---
+
 
 En el flujo editorial convencional, un redactor sintetiza material técnico en un primer borrador. Los ingenieros revisan la exactitud técnica. Un editor revisa el registro y la voz de marca. Solo entonces se publica el documento. La carga de síntesis recae en el redactor; la velocidad está limitada por la persona más lenta de la cadena.
 
@@ -37,3 +32,9 @@ El par (borrador refinado, versión editada creativamente) se almacena como par 
 ## El modelo de tres niveles de colaboradores
 
 Los colaboradores del núcleo operan el sustrato a lo largo de todo el ciclo. Los colaboradores de pago — los especialistas creativos — entran al final de cada ciclo para elevar el contenido publicado. Los consumidores del nivel abierto reciben y citan el resultado editado creativamente. Cada nivel trabaja en escala de tiempo distinta: el núcleo en tiempo real, los de pago por evento de publicación, el nivel abierto durante meses o años de uso.
+
+## Véase también
+
+- [[project-tetrad-discipline]]
+- [[service-slm-operationalization-plan]]
+- [[wikipedia-leapfrog-pattern]]

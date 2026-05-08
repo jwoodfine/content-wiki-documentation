@@ -13,12 +13,8 @@ editor: pointsav-engineering
 cites:
   - ni-51-102
 paired_with: data-vault-bookkeeping-substrate.md
-## Véase también
-
-- [[compounding-substrate]]
-- [[design-system-substrate]]
-
 ---
+
 
 ## Resumen estratégico
 
@@ -39,3 +35,8 @@ La capa de bóveda organiza los datos de facturas analizadas en tres directorios
 ## Auditoría y garantía
 
 La estructura del sustrato satisface los requisitos de cadena de custodia de ISAE 3402 Tipo II y SOC 2 Integridad de Procesamiento por construcción. Un informe de attestation trimestral cita estas propiedades explícitamente. Un auditor puede verificar el attestation de forma independiente usando herramientas de verificación disponibles públicamente, sin depender de la caracterización del proveedor de sus propios controles.
+
+## Véase también
+
+- [[compounding-substrate]]
+- [[design-system-substrate]]

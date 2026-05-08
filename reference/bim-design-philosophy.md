@@ -7,13 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: en
 paired_with: bim-design-philosophy.es.md
-## See Also
-
-- [[bim-aec-muscle-memory]]
-- [[bim-token-taxonomy]]
-- [[flat-file-bim-leapfrog]]
-
 ---
+
 
 
 The Building Design System serves as the AEC-specific extension of Foundry’s design substrate, analogous to the relationship between IBM Carbon and specialized industry modules. It is anchored to the IFC 4.3 entity hierarchy and prioritized for high-fidelity operational environments. The system translates Foundry’s core commitments—flat-file storage, open standards, and offline-first execution—into a professional toolset that addresses the structural weaknesses of legacy cloud-only BIM.
@@ -42,3 +37,9 @@ The BIM-SEMANTIC layer sits atop project-design’s META-substrate. While projec
 *   Uniclass 2015 as the universal classification floor.
 
 This architecture ensures that BIM components remain consistent with the broader Foundry design language while meeting the rigorous semantic requirements of ISO-standardized building data.
+
+## See Also
+
+- [[bim-aec-muscle-memory]]
+- [[bim-token-taxonomy]]
+- [[flat-file-bim-leapfrog]]

@@ -7,14 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: data-sovereignty-telemetry.md
-## Véase también
-
-- [[sovereign-telemetry]]
-- [[machine-based-auth]]
-- [[zero-execution-routing]]
-- [[cryptographic-ledgers]]
-
 ---
+
 
 
 Los sistemas de PointSav están diseñados para garantizar la soberanía absoluta de los datos mediante una arquitectura de "Estado Cero" que elimina la recolección de información de identificación personal (PII).
@@ -32,3 +26,10 @@ La recopilación de datos operativos se realiza exclusivamente mediante una arqu
 ## Transparencia Institucional
 
 Todas las interfaces públicas incluyen una declaración de privacidad que certifica que el sistema no rastrea estados de sesión ni cosecha datos personales, cumpliendo con los estándares más exigentes de seguridad y confidencialidad.
+
+## Véase también
+
+- [[sovereign-telemetry]]
+- [[machine-based-auth]]
+- [[zero-execution-routing]]
+- [[cryptographic-ledgers]]

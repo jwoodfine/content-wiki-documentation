@@ -7,14 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: sovereign-airlock-doctrine.md
-## Véase también
-
-- [[sovereign-ai-routing]]
-- [[machine-based-auth]]
-- [[service-slm]]
-- [[capability-based-security]]
-
 ---
+
 
 
 La Doctrina del Exclusa Soberana establece los protocolos obligatorios de seguridad e identidad para la transmisión de datos y el despliegue de código en Foundry. Al separar estrictamente las identidades del Proveedor (PointSav) y del Cliente (Woodfine), garantizamos la integridad operativa y el control total de los activos digitales.
@@ -37,3 +31,10 @@ Está prohibido editar directamente en las carpetas `stage-*`. El flujo de infor
 5. **Finalización:** Un administrador realiza la fusión final hacia los repositorios de la organización.
 
 Esta doctrina asegura que ningún fallo de seguridad individual pueda comprometer la separación entre la infraestructura del proveedor y los datos críticos del cliente.
+
+## Véase también
+
+- [[sovereign-ai-routing]]
+- [[machine-based-auth]]
+- [[service-slm]]
+- [[capability-based-security]]

@@ -7,13 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: favicon-matrix.md
-## Véase también
-
-- [[brand-family-swatch]]
-- [[design-color]]
-- [[design-typography]]
-
 ---
+
 
 
 El sistema de Foundry utiliza URIs de datos SVG para la identificación de pestañas en el navegador, optimizando el rendimiento y la claridad visual.
@@ -30,3 +25,9 @@ Al incrustar el SVG directamente en el encabezado HTML, logramos:
 - **Cliente (Woodfine):** Círculo Azul Woodfine (`#164679`). Representa la empresa operativa.
 
 Este estándar garantiza una identidad de marca coherente y de carga instantánea en todas las aplicaciones de la plataforma.
+
+## Véase también
+
+- [[brand-family-swatch]]
+- [[design-color]]
+- [[design-typography]]

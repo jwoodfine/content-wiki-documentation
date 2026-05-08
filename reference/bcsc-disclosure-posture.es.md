@@ -14,13 +14,8 @@ cites:
   - ni-51-102
   - osc-sn-51-721
 paired_with: bcsc-disclosure-posture.md
-## Véase también
-
-- [[citation-substrate]]
-- [[draft-research-trail-discipline]]
-- [[cluster-wiki-draft-pipeline]]
-
 ---
+
 
 ## Resumen estratégico
 
@@ -41,3 +36,9 @@ La postura de divulgación continua trata cada artefacto publicado en un reposit
 ## Alcance
 
 La postura aplica a todos los archivos Markdown publicados, todos los mensajes de commit en ramas que pueden enviarse a repositorios públicos, todos los archivos README, todos los temas TOPIC en wikis de documentación y cualquier comentario de código visible en tiempo de ejecución. Las citas forman parte de la práctica: cada cláusula doctrinal y documento público declara sus dependencias de citación en metadatos estructurados.
+
+## Véase también
+
+- [[citation-substrate]]
+- [[draft-research-trail-discipline]]
+- [[cluster-wiki-draft-pipeline]]

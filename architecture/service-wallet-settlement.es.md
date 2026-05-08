@@ -7,13 +7,8 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 quality: complete
-## Véase también
-
-- [[reverse-flow-substrate]]
-- [[customer-owned-graph-ip]]
-- [[worm-ledger-architecture]]
-
 ---
+
 
 `service-wallet` (Anillo 2) es el libro mayor de contabilidad interna por inquilino que registra y liquida todos los ingresos de flujo inverso procedentes del mercado de datos y el intercambio publicitario.
 
@@ -34,3 +29,9 @@ Polygon PoS (aproximadamente $0,002/tx; principal) y Solana (aproximadamente $0,
 ## Portabilidad
 
 El historial completo del libro mayor es consultable por el inquilino en cualquier momento. El formato de exportación es JSONL. La portabilidad es incondicional; el libro mayor viaja con el inquilino al salir (reclamación #48).
+
+## Véase también
+
+- [[reverse-flow-substrate]]
+- [[customer-owned-graph-ip]]
+- [[worm-ledger-architecture]]

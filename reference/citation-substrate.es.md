@@ -14,13 +14,8 @@ cites:
   - ni-51-102
   - osc-sn-51-721
 paired_with: citation-substrate.md
-## Véase también
-
-- [[bcsc-disclosure-posture]]
-- [[draft-research-trail-discipline]]
-- [[cluster-wiki-draft-pipeline]]
-
 ---
+
 
 ## Resumen estratégico
 
@@ -39,3 +34,9 @@ El sustrato de citaciones hace de la trazabilidad de fuentes una propiedad estru
 ## Conexión con la postura de divulgación
 
 El sustrato de citaciones es la forma operacional de un elemento de la postura de divulgación continua: las citaciones se comprometen junto con el texto que respaldan, son legibles por máquinas y auditables. Un auditor puede seguir la cadena de citación desde una afirmación publicada hasta su fuente sin depender de la caracterización que hace la organización publicadora de lo que dice la fuente.
+
+## Véase también
+
+- [[bcsc-disclosure-posture]]
+- [[draft-research-trail-discipline]]
+- [[cluster-wiki-draft-pipeline]]

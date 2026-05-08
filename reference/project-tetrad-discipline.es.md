@@ -12,12 +12,8 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: project-tetrad-discipline.md
-## Véase también
-
-- [[project-triad-discipline]]
-- [[reverse-funnel-editorial-pattern]]
-
 ---
+
 
 La Disciplina de Tétrada de Proyecto establece que todo clúster de ingeniería activo debe mantener cuatro componentes estructurales en paralelo: código en el repositorio de proveedor, manuales operativos para el cliente, una instancia de despliegue funcional y una contribución al wiki público de documentación. Ningún hito puede ser ratificado si alguna de estas cuatro patas está silenciosamente ausente.
 
@@ -36,3 +32,8 @@ Cada manifiesto de clúster declara un campo `tetrad:` con al menos una entrada 
 ## Legado de la Tríada
 
 Los clústeres creados bajo la Tríada reciben una difusión de actualización en su buzón de entrada. La tarea consiste en renombrar el campo `triad:` a `tetrad:`, agregar la pata de wiki con temas planificados y confirmar los cambios. Los hitos anteriores ratificados bajo la Tríada permanecen válidos; la disciplina de Tétrada se aplica desde el compromiso de actualización en adelante.
+
+## Véase también
+
+- [[project-triad-discipline]]
+- [[reverse-funnel-editorial-pattern]]

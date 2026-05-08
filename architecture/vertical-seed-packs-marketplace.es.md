@@ -12,14 +12,8 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: vertical-seed-packs-marketplace.md
-## Véase también
-
-- [[seed-taxonomy-as-smb-bootstrap]]
-- [[customer-owned-graph-ip]]
-- [[reverse-flow-substrate]]
-- [[mcp-substrate-protocol]]
-
 ---
+
 
 El **Mercado de Paquetes de Semilla Vertical** es un mecanismo de distribución planificado para taxonomías de inicio específicas de la industria que aprovisionan el grafo de conocimiento de un nuevo inquilino Foundry. Cada paquete agrupa Arquetipos, un Plan de Cuentas, Dominios, Temas, un glosario y extensiones de servidor MCP adecuadas para una vertical de negocio particular. Este patrón codifica la reclamación doctrinal #50.
 
@@ -61,3 +55,10 @@ Los Paquetes de Semilla Vertical son el mecanismo de distribución del patrón [
 ## Procedencia
 
 Resumen de adaptación estratégica del archivo fuente `convention-vertical-seed-packs-marketplace.md` (refinado el 30 de abril de 2026). Todas las reclamaciones de distribución, contribución y gobernanza llevan encuadre "planificado," "previsto" y "puede" conforme a la postura de divulgación continua BCSC.
+
+## Véase también
+
+- [[seed-taxonomy-as-smb-bootstrap]]
+- [[customer-owned-graph-ip]]
+- [[reverse-flow-substrate]]
+- [[mcp-substrate-protocol]]

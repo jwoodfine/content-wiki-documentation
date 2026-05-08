@@ -13,13 +13,8 @@ editor: pointsav-engineering
 cites:
   - ni-51-102
 paired_with: cluster-design-draft-pipeline.md
-## Véase también
-
-- [[design-system-substrate]]
-- [[cluster-wiki-draft-pipeline]]
-- [[draft-research-trail-discipline]]
-
 ---
+
 
 ## Resumen estratégico
 
@@ -40,3 +35,9 @@ Los borradores se originan desde tres capas: nivel de clúster (una funcionalida
 ## Corpus de aprendizaje
 
 Cada transición a través del pipeline emite un evento estructurado al corpus de aprendizaje: `draft-created`, `draft-refined` y `creative-edited`. El primer par forma un ejemplo de entrenamiento de Etapa 1; el segundo par forma un ejemplo de Etapa 2 del diseñador creativo. El pipeline está diseñado como opt-in para clústeres sin superficies de usuario, pero es obligatorio cuando un clúster introduce nuevos elementos visuales.
+
+## Véase también
+
+- [[design-system-substrate]]
+- [[cluster-wiki-draft-pipeline]]
+- [[draft-research-trail-discipline]]

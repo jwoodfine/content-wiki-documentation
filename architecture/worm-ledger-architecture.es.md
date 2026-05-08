@@ -7,14 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: worm-ledger-architecture.md
-## Véase también
-
-- [[worm-ledger-design]]
-- [[worm-ledger-storage-architecture]]
-- [[cryptographic-ledgers]]
-- [[sel4-foundation]]
-
 ---
+
 
 
 El servicio `service-fs` de Foundry proporciona el sustrato de almacenamiento inmutable de "escritura única y lectura múltiple" (WORM) para cada cliente. Esta arquitectura garantiza que todos los registros —desde identidades hasta comunicaciones— sean permanentes, imposibles de borrar y verificables criptográficamente.
@@ -29,3 +23,10 @@ El servicio `service-fs` de Foundry proporciona el sustrato de almacenamiento in
 ## Soberanía y Cumplimiento
 
 Este diseño permite que Foundry funcione hoy como un demonio en Linux y, en el futuro, como un micro-kernel verificado (seL4) en dispositivos físicos (Totebox). Cumple nativamente con los requisitos de inmutabilidad de la SEC estadounidense y los estándares de preservación calificada eIDAS de la Unión Europea, devolviendo el control total del archivo histórico al propietario de los datos.
+
+## Véase también
+
+- [[worm-ledger-design]]
+- [[worm-ledger-storage-architecture]]
+- [[cryptographic-ledgers]]
+- [[sel4-foundation]]

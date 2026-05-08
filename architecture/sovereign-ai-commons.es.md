@@ -12,14 +12,8 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: sovereign-ai-commons.md
-## Véase también
-
-- [[compounding-substrate]]
-- [[economic-model]]
-- [[llm-substrate-decision]]
-- [[four-tier-slm-substrate]]
-
 ---
+
 
 PointSav construye y administra un bien común de IA soberana: un sustrato, una pila de protocolos y una federación diseñados para que las pequeñas y medianas empresas reguladas puedan ejecutar IA soberana sin ceder la propiedad de sus datos ni pagar por infraestructura que no controlan.
 
@@ -59,3 +53,10 @@ La trayectoria prevista, como se planifica actualmente, contempla para 2030 un m
 
 - [[compounding-substrate]] — las cinco propiedades estructurales en detalle arquitectónico
 - [[economic-model]] — la estructura comercial de dos niveles que financia el bien común
+
+## Véase también
+
+- [[compounding-substrate]]
+- [[economic-model]]
+- [[llm-substrate-decision]]
+- [[four-tier-slm-substrate]]

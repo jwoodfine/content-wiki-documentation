@@ -14,13 +14,8 @@ editor: pointsav-engineering
 paired_with: design-spacing.md
 cites:
   - dtcg-spec
-## Véase también
-
-- [[design-color]]
-- [[design-typography]]
-- [[design-motion]]
-
 ---
+
 
 Una escala de espaciado de 13 pasos sobre una base de 16 px. Numérico — `space-1` hasta `space-13` — proporciona una respuesta canónica para cada decisión de diseño.
 
@@ -35,3 +30,9 @@ La regla de composición es estricta: se compone el espaciado mayor a partir de 
 El sustrato utiliza una cuadrícula de línea base de 16 px (`space-5`). El texto del cuerpo y los encabezados se alinean a múltiplos de 16 px en su cálculo de altura de línea; el relleno del contenedor se alinea a múltiplos de 16 px en el eje en línea. Esto es estructural: garantiza que el ritmo vertical permanezca consistente entre superficies.
 
 Esta disciplina es lo que distingue un sistema de diseño maduro de una colección de estilos: el espaciado no es una decisión casual sino una consecuencia calculada del sistema.
+
+## Véase también
+
+- [[design-color]]
+- [[design-typography]]
+- [[design-motion]]

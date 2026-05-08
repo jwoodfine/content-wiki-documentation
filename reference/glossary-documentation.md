@@ -7,14 +7,8 @@ status: complete
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-03
 editor: project-language Task
-## See Also
-
-- [[style-guide-topic]]
-- [[style-guide-guide]]
-- [[style-guide-readme]]
-- [[wikipedia-structure]]
-
 ---
+
 
 
 This is the definitive, public-facing A-Z Lexicon for PointSav Digital Systems. It bridges standard industry terminology (layman terms) with our specialized **2030 Sovereign Infrastructure Doctrine**. 
@@ -652,3 +646,10 @@ A word processing application in Workplace OS for creating, editing, and formatt
 
 ### Zero-party Data
 Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+
+## See Also
+
+- [[style-guide-topic]]
+- [[style-guide-guide]]
+- [[style-guide-readme]]
+- [[wikipedia-structure]]

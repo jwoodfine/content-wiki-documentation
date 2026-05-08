@@ -30,7 +30,7 @@ MediaKit OS enforces a set of **Unified Protocols** across the ecosystem. This e
 Key protocols include:
 *   **Linguistic Tokens:** Standardizing the "Bloomberg-grade" tone and industry-validated terminology.
 *   **Metadata Schemas:** Utilizing `foundry-doc-v1` and other structured frontmatter for all knowledge artifacts.
-*   **Integrity Checks:** Verifying the cryptographic anchors of media assets stored within a {{gli|Totebox Archive}}.
+*   **Integrity Checks:** Verifying the cryptographic anchors of media assets stored within a Totebox Archive.
 
 ## Integration with Totebox
 

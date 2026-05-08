@@ -7,14 +7,8 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 quality: complete
-## Véase también
-
-- [[apprenticeship-substrate]]
-- [[four-tier-slm-substrate]]
-- [[single-boundary-compute-discipline]]
-- [[trajectory-substrate]]
-
 ---
+
 
 `service-slm` — el Portero — es el administrador del sistema operativo y el centro de soporte previsto para los despliegues de Totebox Archive y Totebox Orchestration. Este documento delimita lo que el modelo necesita saber, cómo se captura ese conocimiento de las operaciones reales y la trayectoria del producto para el cliente en tres niveles que resulta de ello.
 
@@ -52,3 +46,10 @@ Cuatro propiedades estructurales hacen que estas cargas de trabajo sean especial
 **Nivel 2 — Cliente multi-Totebox (planificado)**: el mismo sustrato más una suscripción a Nivel B Yo-Yo (32B Think) alojado por el proveedor. Los adaptadores LoRA por clúster entrenados en el corpus de tipos de tareas del cliente despliegan en el Nivel B. El precio está previsto que sea estructuralmente inferior a las ofertas de código cerrado comparables. Sujeto a la tasa de acumulación del corpus y a los precios de cómputo en el momento del despliegue.
 
 **Nivel 3 — Producto especializado PointSav-LLM (planificado)**: PointSav-OLMo-N alojado por el proveedor, con preentrenamiento continuo. La IA resuelve entre un 80 y un 90% previsto de las consultas de los clientes de forma autónoma; los humanos en el bucle gestionan las escaladas; cada respuesta del Nivel L2 retroalimenta el corpus de aprendizaje. El calendario de despliegue y los precios son objetivos planificados sujetos a la acumulación del corpus y la disponibilidad de cómputo.
+
+## Véase también
+
+- [[apprenticeship-substrate]]
+- [[four-tier-slm-substrate]]
+- [[single-boundary-compute-discipline]]
+- [[trajectory-substrate]]

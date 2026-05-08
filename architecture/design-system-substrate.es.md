@@ -13,14 +13,8 @@ cites:
   - mcp-spec
   - ni-51-102
   - osc-sn-51-721
-## Véase también
-
-- [[compounding-substrate]]
-- [[substrate-native-compatibility]]
-- [[reverse-funnel-editorial-pattern]]
-- [[customer-hostability]]
-
 ---
+
 
 ## Visión estratégica
 
@@ -57,3 +51,10 @@ El substrato está en producción como v0.0.1 desde el 28 de abril de 2026. El t
 ## Para profundizar
 
 La documentación técnica completa está disponible en inglés en el documento correspondiente (`topic-design-system-substrate.md`). Los runbooks operativos se encuentran en `vault-privategit-design/GUIDE-deploy-design-substrate.md`. La convención de arquitectura se documenta en `conventions/design-system-substrate.md` y la reclamación doctrinal de referencia es la #38 en `DOCTRINE.md`.
+
+## Véase también
+
+- [[compounding-substrate]]
+- [[substrate-native-compatibility]]
+- [[reverse-funnel-editorial-pattern]]
+- [[customer-hostability]]

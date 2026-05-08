@@ -12,13 +12,8 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: tui-corpus-producer.md
-## Véase también
-
-- [[single-boundary-compute-discipline]]
-- [[customer-owned-graph-ip]]
-- [[knowledge-graph-grounded-apprenticeship]]
-
 ---
+
 
 El patrón **TUI como Productora de Corpus** designa la interfaz de terminal del operador (`slm-cli`) como fuente primaria de datos de entrenamiento de alta calidad para el adaptador del modelo por inquilino. Cada interacción con el Portero a través de esta interfaz es una contribución curada al corpus. Este patrón codifica la reclamación doctrinal #45.
 
@@ -55,3 +50,9 @@ Ciertas sesiones de terminal no deben contribuir al corpus de entrenamiento: las
 ## Procedencia
 
 Resumen de adaptación estratégica del archivo fuente `convention-tui-corpus-producer.md` (refinado el 30 de abril de 2026).
+
+## Véase también
+
+- [[single-boundary-compute-discipline]]
+- [[customer-owned-graph-ip]]
+- [[knowledge-graph-grounded-apprenticeship]]

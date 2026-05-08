@@ -7,14 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: en
 paired_with: worm-ledger-storage-architecture.es.md
-## See Also
-
-- [[worm-ledger-architecture]]
-- [[worm-ledger-design]]
-- [[service-fs-architecture]]
-- [[cryptographic-ledgers]]
-
 ---
+
 
 
 Foundry’s storage architecture is built on the principle of structural immutability, ensuring that data archives remain tamper-evident and readable for the long term. This document synthesizes the engineering decisions behind the tile-based storage engine and the transition from hosted environments to verified microkernels.
@@ -47,3 +41,10 @@ The storage engine is engineered to satisfy strict regulatory requirements:
 ## 4. Synthesis of Innovation
 
 The primary innovation in Foundry’s storage layer is the integration of high-performance verifiable logs with a "sovereign-first" deployment model. Unlike legacy WORM solutions that require proprietary hardware or specific cloud vendors, Foundry’s tile-based logs are portable, open-standard, and self-verifying across any hardware from a virtual machine to an seL4-hardened Totebox appliance.
+
+## See Also
+
+- [[worm-ledger-architecture]]
+- [[worm-ledger-design]]
+- [[service-fs-architecture]]
+- [[cryptographic-ledgers]]

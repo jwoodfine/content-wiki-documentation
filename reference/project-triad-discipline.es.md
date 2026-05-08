@@ -12,11 +12,8 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: project-triad-discipline.md
-## Véase también
-
-- [[project-tetrad-discipline]]
-
 ---
+
 
 La Disciplina de Tríada de Proyecto, introducida en la versión 0.0.4 de la Doctrina, exigía que todo clúster de proyecto activo mantuviera tres patas estructurales en paralelo: código en el repositorio de proveedor, manuales operativos para el cliente y una instancia de despliegue funcional. Esta convención ha sido reemplazada por la Disciplina de Tétrada de Proyecto a partir de la versión 0.0.10 de la Doctrina, que añade una cuarta pata obligatoria para las contribuciones al wiki de conocimiento. Este artículo documenta el fundamento de diseño de la Tríada, que permanece como base de la Tétrada.
 
@@ -33,3 +30,7 @@ La disciplina se aplica a nivel de clúster a lo largo de su ciclo de vida, no a
 ## Relación con la Tétrada
 
 La Tríada se conserva aquí como referencia histórica. Todos los clústeres nuevos, y todos los existentes tras recibir la difusión de actualización a Tétrada, siguen la Disciplina de Tétrada de Proyecto. Las tres patas de la Tríada son idénticas dentro de la Tétrada; únicamente se añade la cuarta pata de wiki.
+
+## Véase también
+
+- [[project-tetrad-discipline]]

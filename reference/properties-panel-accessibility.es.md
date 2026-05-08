@@ -7,13 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: properties-panel-accessibility.md
-## Véase también
-
-- [[viewport-3d-accessibility]]
-- [[spatial-tree-accessibility]]
-- [[neurodiversity-typography-standards]]
-
 ---
+
 
 
 El componente `bim-properties-panel` muestra los datos semánticos y de rendimiento de los elementos seleccionados. Su diseño está optimizado para presentar información técnica densa de manera clara y accesible para lectores de pantalla y usuarios de teclado.
@@ -40,3 +35,9 @@ El panel adapta su funcionalidad mediante la propiedad `data-mode`:
 ## Recomendaciones de Implementación
 
 Es obligatorio incluir una opción para "copiar al portapapeles" el GlobalID (GUID), ya que estos códigos de 22 caracteres son esenciales para las auditorías pero imposibles de transcribir manualmente.
+
+## Véase también
+
+- [[viewport-3d-accessibility]]
+- [[spatial-tree-accessibility]]
+- [[neurodiversity-typography-standards]]

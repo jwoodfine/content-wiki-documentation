@@ -13,14 +13,8 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: topic-console-os.md
 cites: []
-## Véase también
-
-- [[topic-totebox-os]]
-- [[topic-infrastructure-os]]
-- [[topic-mediakit-os]]
-- [[topic-privategit-os]]
-
 ---
+
 
 Console OS es el sistema operativo basado en terminal diseñado para la administración de los servicios e infraestructura de PointSav. Opera como la interfaz principal para los administradores del sistema y los usuarios avanzados, proporcionando acceso directo a los mecanismos subyacentes de la plataforma.
 
@@ -36,3 +30,10 @@ Console OS prioriza la estabilidad y la eficiencia sobre la novedad gráfica. La
 
 1. **Interfaz de Línea de Comandos (CLI):** Proporciona el control más granular para la configuración técnica, la orquestación del despliegue y los scripts.
 2. **Interfaz de Usuario de Terminal (TUI):** Ofrece un entorno semi-gráfico controlado por teclado para tareas administrativas rutinarias, como la gestión de los estados de Totebox Archive y el monitoreo de la telemetría del sistema.
+
+## Véase también
+
+- [[topic-totebox-os]]
+- [[topic-infrastructure-os]]
+- [[topic-mediakit-os]]
+- [[topic-privategit-os]]

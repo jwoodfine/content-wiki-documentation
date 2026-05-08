@@ -7,13 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: brand-typography.md
-## Véase también
-
-- [[brand-family-swatch]]
-- [[design-typography]]
-- [[news-release-standards]]
-
 ---
+
 
 
 Foundry establece una separación estricta entre la interfaz web y los documentos impresos institucionales. Mientras que la web utiliza fuentes nativas para mayor rapidez, la tipografía de marca se reserva para la generación de PDFs y documentos físicos.
@@ -29,3 +24,9 @@ Para garantizar la soberanía de los activos digitales, utilizamos exclusivament
 ## Autoridad Institucional
 
 Esta estrategia asegura que todos los documentos generados por la plataforma tengan una estética de "Libro Blanco" profesional. La tipografía no se carga desde la nube; se incrusta directamente en los archivos PDF finales, garantizando que el documento mantenga su autoridad visual en cualquier dispositivo o sistema de impresión.
+
+## Véase también
+
+- [[brand-family-swatch]]
+- [[design-typography]]
+- [[news-release-standards]]

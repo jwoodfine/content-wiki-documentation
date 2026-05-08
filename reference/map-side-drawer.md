@@ -10,14 +10,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language_protocol: DESIGN-COMPONENT
 authored: 2026-04-30
-## See Also
-
-- [[map-stats-panel]]
-- [[country-filter-chips]]
-- [[zoom-tier-reveal-pattern]]
-- [[location-intelligence-ux]]
-
 ---
+
 
 
 The Map Side Drawer is a persistent overlay pattern designed for detailed feature inspection without loss of geographic context. It replaces transient popups with a fixed-width panel that slides from the right edge, providing a dedicated space for complex metadata, cluster context, and regulatory disclosures.
@@ -67,3 +61,10 @@ The component is engineered for full keyboard and screen-reader compatibility:
 Future developments are intended to include:
 - **Comparison View**: A planned split-drawer variant to support federated cluster comparison (Doctrine Invention #9).
 - **Adaptive Width**: Research is ongoing to determine if a full-width expansion is required for mobile viewports while preserving minimal map context.
+
+## See Also
+
+- [[map-stats-panel]]
+- [[country-filter-chips]]
+- [[zoom-tier-reveal-pattern]]
+- [[location-intelligence-ux]]

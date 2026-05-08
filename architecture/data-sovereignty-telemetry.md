@@ -7,14 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: en
 paired_with: data-sovereignty-telemetry.es.md
-## See Also
-
-- [[sovereign-telemetry]]
-- [[machine-based-auth]]
-- [[zero-execution-routing]]
-- [[cryptographic-ledgers]]
-
 ---
+
 
 
 PointSav digital systems are engineered for absolute data sovereignty, utilizing a "Zero-State" architecture that eliminates the collection of personally identifiable information (PII). By prioritizing DARP compliance (Data Archive Retrieval Protocol), Foundry ensures that platform metrics never compromise the privacy of the asset holder or the individual user.
@@ -37,3 +31,10 @@ All public-facing interfaces are required to append the following disclosure to 
 > *"Digital Infrastructure & Privacy Posture: This interface operates on a Zero-Execution and Zero-State Telemetry architecture. It does not deploy tracking cookies, retain session states, or harvest Personally Identifiable Information (PII). System interactions are limited to the collection of anonymized, masked network routing data strictly for the purpose of auditing infrastructure security and verifying document access."*
 
 This commitment ensures that Foundry remains the benchmark for privacy-first institutional infrastructure.
+
+## See Also
+
+- [[sovereign-telemetry]]
+- [[machine-based-auth]]
+- [[zero-execution-routing]]
+- [[cryptographic-ledgers]]

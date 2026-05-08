@@ -14,14 +14,8 @@ cites:
   - ni-51-102
   - osc-sn-51-721
 paired_with: cluster-wiki-draft-pipeline.md
-## Véase también
-
-- [[cluster-design-draft-pipeline]]
-- [[draft-research-trail-discipline]]
-- [[bcsc-disclosure-posture]]
-- [[citation-substrate]]
-
 ---
+
 
 ## Resumen estratégico
 
@@ -50,3 +44,10 @@ Los borradores editoriales se originan desde tres capas:
 ## Corpus de aprendizaje
 
 Cada transición editorial emite un evento estructurado al corpus de aprendizaje: `draft-created`, `draft-refined` y `creative-edited`. Estos pares se acumulan como material de entrenamiento para la capacidad de inferencia local de la plataforma, generando dos pares de preferencia por ciclo de vida de borrador.
+
+## Véase también
+
+- [[cluster-design-draft-pipeline]]
+- [[draft-research-trail-discipline]]
+- [[bcsc-disclosure-posture]]
+- [[citation-substrate]]

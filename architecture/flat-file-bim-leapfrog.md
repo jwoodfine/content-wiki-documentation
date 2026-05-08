@@ -9,14 +9,8 @@ language: en
 paired_with: flat-file-bim-leapfrog.es.md
 status: active
 last_edited: 2026-05-06
-## See Also
-
-- [[worm-ledger-design]]
-- [[service-fs-architecture]]
-- [[sel4-foundation]]
-- [[sovereign-ai-routing]]
-
 ---
+
 
 PointSav's Building Design System is built on five architectural constraints that, individually, are mild inconveniences for any single feature comparison and, together, define a product category that hyperscalers cannot occupy without cannibalising their own revenue model. The constraints are flat-file storage, open standards, Rust + Tauri, offline-first, and EUPL-licensed. The open BIM standards stack matured between 2023 and 2025 into the infrastructure that makes this strategy viable; the property-manager market gap is documented in peer-reviewed literature; and the open toolchain is commercial-grade today.
 
@@ -87,3 +81,10 @@ Honest accounting:
 - Generative-AI BIM authoring tools from major vendors are proprietary today. The substrate is AI-ready (the Doorman dispatches generative requests through an audit ledger), but a generative BIM authoring tool is not planned for the v0.0.1 release.
 
 These are deliberate trade-offs for the offline-first, vendor-obsolescence-survivable posture; not oversights to be patched in the next release.
+
+## See Also
+
+- [[worm-ledger-design]]
+- [[service-fs-architecture]]
+- [[sel4-foundation]]
+- [[sovereign-ai-routing]]

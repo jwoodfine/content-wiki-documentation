@@ -15,13 +15,8 @@ paired_with: design-motion.md
 cites:
   - wcag-22
   - dtcg-spec
-## Véase también
-
-- [[design-spacing]]
-- [[design-color]]
-- [[design-philosophy]]
-
 ---
+
 
 El movimiento comunica causalidad. El sustrato incluye cuatro curvas de easing y seis pasos de duración. Se combinan según la clase de interacción.
 
@@ -42,3 +37,9 @@ Este no es un detalle de implementación secundario: es un requisito de accesibi
 - Animaciones que bloquean la entrada del usuario. La entrada modal es `speed-5` para lo visual; el foco se mueve de inmediato en duración 0.
 - Movimiento decorativo que añade tiempo a una tarea productiva.
 - Duraciones fuera de escala. La escala de 6 pasos cubre cada clase de interacción.
+
+## Véase también
+
+- [[design-spacing]]
+- [[design-color]]
+- [[design-philosophy]]

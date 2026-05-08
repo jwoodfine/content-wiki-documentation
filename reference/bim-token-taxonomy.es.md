@@ -7,14 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: bim-token-taxonomy.md
-## Véase también
-
-- [[bim-design-philosophy]]
-- [[bim-aec-muscle-memory]]
-- [[flat-file-bim-leapfrog]]
-- [[design-color]]
-
 ---
+
 
 
 La taxonomía de tokens BIM de Foundry organiza el sistema en ocho categorías primitivas ancladas a la jerarquía de entidades de IFC 4.3 (ISO 16739-1:2024). Esta alineación garantiza que los tokens del sistema de diseño correspondan directamente a las convenciones de clasificación AEC universales.
@@ -43,3 +37,10 @@ Cada uno de los 18 componentes del sistema se define mediante una "receta" indep
 - `aria.md`: El contrato de accesibilidad e interacción.
 
 Este enfoque permite que cualquier tecnología (Yew, Leptos o TS) pueda implementar los componentes respetando siempre el contrato de diseño y accesibilidad de PointSav.
+
+## Véase también
+
+- [[bim-design-philosophy]]
+- [[bim-aec-muscle-memory]]
+- [[flat-file-bim-leapfrog]]
+- [[design-color]]
