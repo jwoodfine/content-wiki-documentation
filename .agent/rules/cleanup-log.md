@@ -18,7 +18,7 @@ Last updated: 2026-05-08.
 
 ### 2026-05-08 — Step 5 register-correct rewrite pass (project-editorial)
 
-Commits `96e221d`, `91b8910`, `f470a11`, `aad5c7d`, `09637ed`, `ad88bc3`, `1868a20`, `e7b14c3`, `11d617a`, `500f201` across two sessions.
+Commits `96e221d`, `91b8910`, `f470a11`, `aad5c7d`, `09637ed`, `ad88bc3`, `1868a20`, `e7b14c3`, `11d617a`, `500f201`, `dcec4f6`, `5f17aa1`, `5880bd0`, `dc9acec`, `0a5b96f` across two sessions; canonical promote landed at 2026-05-08T20:55Z (5880bd0). Two further commits on staging (dc9acec, 0a5b96f) since the promote.
 
 **Complete:**
 - 4 high-urgency architecture/governance EN+ES pairs rewritten (compounding-substrate,
@@ -34,15 +34,14 @@ Commits `96e221d`, `91b8910`, `f470a11`, `aad5c7d`, `09637ed`, `ad88bc3`, `1868a
   message-courier, service-business-clustering, service-places-filtering, fs-anchor-emitter,
   service-fs-security-compliance, service-fs-data-lake, service-slm-totebox-sysadmin,
   template-ledger, pointsav-gis-engine) — `e7b14c3` + `11d617a`
-- 1 application EN+ES pair refined in-flight (app-mediakit-knowledge — schema upgrade + lead) — `500f201`
+- **Step 5 priority 4c — applications category COMPLETE.** 3 named app-* EN+ES pairs (`500f201` app-mediakit-knowledge; `5f17aa1` app-mediakit-marketing + app-orchestration-gis); 4 design-intent articles moved `applications/` → `architecture/` + location-intelligence-platform refined + launch announcement retired (`dc9acec`); frontmatter+lead edits to 4 moved articles (`0a5b96f`).
+- Stage 6 reconciliation merge with origin/main (`dcec4f6` — 7 conflicts resolved) and cleanup-log archive split (`5880bd0`) both promoted to canonical at 2026-05-08T20:55Z.
 
-**Open — applications category (Phase 4c paused):** app-mediakit-marketing,
-app-orchestration-gis, and others (Step 5 priority 4c)
-
-**Open — GUIDEs (~72 files):** Step 5 priority 5
+**Open — GUIDEs (~72 files):** Step 5 priority 5 — next-session resume point.
 
 **Open — category migration:** root topic-*.md files → category subdirectories
-(unblocked 2026-05-07 ratification). Tracked in existing open entry below.
+(unblocked 2026-05-07 ratification). cleanup-log indicates this is mostly already
+complete from earlier sessions; quick verification pass needed to confirm and close.
 
 **Open — competitor-name violation in zero-container-inference.md:** "What this rules out"
 section names Cloud Run, Kubernetes, SkyPilot, cargo-chef explicitly. Workspace §6
@@ -51,8 +50,7 @@ not actioned in scope. Replace with generic categories (managed container orches
 platforms, container runtime systems, multi-cloud abstraction frameworks, OCI image
 registries) at next editorial pass.
 
-Stage 6 promotions pending across 10 commits — Stage 6 reconciliation merge with origin/main
-in progress this session.
+Staging-mirror state at session close: cluster main at `0a5b96f`; 2 commits ahead of canonical (`5880bd0`). Master canonical promote queue includes `dc9acec` + `0a5b96f` (clean fast-forward).
 
 ---
 
