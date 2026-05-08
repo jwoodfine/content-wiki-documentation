@@ -9,20 +9,13 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-08
 editor: pointsav-engineering
 paired_with: service-email.md
 cites: []
-## Véase también
-
-- [[service-extraction]]
-- [[service-people]]
-- [[service-slm]]
-- [[trajectory-substrate]]
-
 ---
 
-`service-email` es el servicio de ingestión perimetral del Anillo 1 que sondea un buzón de Microsoft 365 a través de la API de Microsoft Graph, extrae las cargas útiles de correo electrónico en bruto, y las escribe en una cola local sin interpretar su contenido.
+El correo electrónico entrante llega a la plataforma PointSav en un único punto auditable — **service-email** se autentica contra el buzón de Microsoft 365 a través de la API de Microsoft Graph, recupera los mensajes entrantes y escribe las cargas útiles en bruto en una cola local sin interpretar el contenido. Los servicios del Anillo 2 se encargan de todo lo que sigue. El servicio no mantiene ningún conocimiento del contenido del mensaje: su único trabajo es la extracción autenticada y confiable a través del límite de la nube.
 
 ## Línea de base arquitectónica
 
@@ -37,3 +30,10 @@ El servicio aborda una limitación estructural de IMAP y SMTP: ambos protocolos 
 1. **Autenticación.** Un handshake OAuth2 contra la API de Microsoft Graph produce un token de portador.
 2. **Extracción.** El servicio sondea mensajes no leídos y recupera la carga útil JSON OData en bruto para cada mensaje encontrado.
 3. **Escritura y marcado.** La carga útil se escribe en la cola temporal local. El servicio emite una solicitud `PATCH` autorizada para marcar cada mensaje extraído como leído en el servidor remoto, evitando la re-extracción en el siguiente ciclo de sondeo.
+
+## Véase también
+
+- [[service-extraction]]
+- [[service-people]]
+- [[service-slm]]
+- [[trajectory-substrate]]

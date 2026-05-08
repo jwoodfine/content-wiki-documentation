@@ -15,9 +15,7 @@ paired_with: service-email.es.md
 ---
 
 
-> service-email is the Ring 1 boundary-ingest service that polls a Microsoft 365 mailbox via the Microsoft Graph API, extracts raw email payloads, and writes them to a local queue without interpreting their content.
-
-**service-email** is a Ring 1 boundary-ingest service in the PointSav three-ring architecture. It functions as a transport interceptor: it authenticates against the Microsoft Graph API, retrieves inbound email messages, and writes the raw payloads to a local temporary queue for downstream processing by Ring 2 services. The service deliberately maintains no knowledge of message content or semantic meaning — its only job is reliable, authenticated extraction across the cloud boundary.
+Inbound email enters the PointSav platform at a single, auditable point — **service-email** authenticates against the Microsoft 365 mailbox via the Microsoft Graph API, retrieves inbound messages, and writes raw payloads to a local queue without interpreting content. Ring 2 services handle everything downstream. The service deliberately maintains no knowledge of message content or semantic meaning: its only job is reliable, authenticated extraction across the cloud boundary, so that content processing is confined to the platform's own compute.
 
 ## Architectural Baseline
 
