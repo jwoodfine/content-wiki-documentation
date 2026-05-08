@@ -1,19 +1,24 @@
 ---
-schema: foundry-topic-v1
-status: published
-last_edited: 2026-04-30
+schema: foundry-doc-v1
+title: "app-mediakit-knowledge"
+slug: app-mediakit-knowledge.es
 category: applications
+type: topic
+quality: complete
+short_description: "app-mediakit-knowledge es el motor wiki Rust de binario único que sirve la documentación de ingeniería de PointSav en documentation.pointsav.com — una vista sobre un árbol de Markdown, no un repositorio de contenido, donde los commits de Markdown son canónicos y cada binario en ejecución es un estado derivado descartable."
+status: active
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-language: es
-companion: topic-app-mediakit-knowledge.md
+last_edited: 2026-05-08
+editor: pointsav-engineering
+paired_with: app-mediakit-knowledge.md
 cites:
   - ni-51-102
   - osc-sn-51-721
 ---
 
-`app-mediakit-knowledge` es el motor wiki que sirve la documentación de ingeniería de PointSav en `https://documentation.pointsav.com`. El motor es un servicio Rust de binario único compuesto por un servidor HTTP `axum`, un renderizador CommonMark `comrak` con extensiones específicas para wikilinks y notas al pie, un backend de búsqueda de texto completo `tantivy`, y una capa de plantillas `maud` que incluye cuatro plantillas de artículo. El motor lee archivos Markdown de un directorio de contenido que el operador designa al arrancar, los renderiza en HTML bajo demanda, y los devuelve con cabeceras de caché adecuadas para una audiencia de documentación.
+`app-mediakit-knowledge` es el motor wiki Rust de binario único que sirve la documentación de ingeniería de PointSav en `https://documentation.pointsav.com` — una vista sobre un árbol de Markdown, no un repositorio de contenido. Los commits de Markdown son canónicos; cada binario en ejecución es un estado derivado descartable, incluyendo el HTML renderizado, el índice Tantivy y (cuando la edición colaborativa está habilitada) la sala CRDT. El motor combina un servidor HTTP `axum`, un renderizador CommonMark `comrak` con extensiones específicas de la plataforma para wikilinks y notas al pie, un backend de búsqueda de texto completo `tantivy`, y una capa de plantillas `maud` con cuatro plantillas de artículo. La primera implementación pública del motor entró en servicio el 2026-04-27 a las 16:25 UTC.
 
 El motor es una *vista* sobre un árbol de Markdown, no un repositorio de contenido. El árbol de Markdown es canónico; el binario en ejecución es una vista. Esta inversión de la fuente de verdad es la decisión de diseño más importante del sistema.
 

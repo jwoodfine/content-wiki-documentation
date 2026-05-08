@@ -1,11 +1,18 @@
 ---
-schema: foundry-topic-v1
-status: published
-last_edited: 2026-04-30
+schema: foundry-doc-v1
+title: "app-mediakit-knowledge"
+slug: app-mediakit-knowledge
 category: applications
+type: topic
+quality: complete
+short_description: "app-mediakit-knowledge is the single-binary Rust wiki engine that serves PointSav's engineering documentation at documentation.pointsav.com — a view over a markdown tree, not a content repository, where the markdown commits are canonical and every running binary is a throwaway derived state."
+status: active
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
+last_edited: 2026-05-08
+editor: pointsav-engineering
+paired_with: app-mediakit-knowledge.es.md
 cites:
   - ni-51-102
   - osc-sn-51-721
@@ -23,12 +30,9 @@ references:
   - https://www.jsonfeed.org/version/1.1/
   - https://llmstxt.org/
   - https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style/Layout
-  - 
-  - 
-  - 
 ---
 
-`app-mediakit-knowledge` is the wiki engine that serves PointSav's engineering documentation at `https://documentation.pointsav.com`. The engine is a single-binary Rust service composed of an `axum` HTTP server, a `comrak` CommonMark renderer with PointSav-specific extensions for wikilinks, footnotes, table of contents, and section anchors, a `tantivy` full-text search backend, and a `maud` templating layer that ships four article templates and static-asset bundles. The engine reads markdown files from a content directory the operator names at startup, renders them on demand into HTML, and returns them with caching headers tuned for a documentation audience.
+`app-mediakit-knowledge` is the single-binary Rust wiki engine that serves PointSav's engineering documentation at `https://documentation.pointsav.com` — a view over a markdown tree, not a content repository. The markdown commits are canonical; every running binary is a throwaway derived state, including the rendered HTML, the Tantivy index, and (when collaborative editing is enabled) the CRDT room. The engine combines an `axum` HTTP server, a `comrak` CommonMark renderer with platform-specific extensions for wikilinks and footnotes, a `tantivy` full-text search backend, and a `maud` templating layer with four article templates. The engine's first public deployment went live on 2026-04-27 at 16:25 UTC.
 
 The engine is a *view* over a markdown tree, not a content repository. The markdown tree is canonical; the running binary is a view that any number of operators can stand up over the same content tree, or different content trees, with no shared mutable state on the binary side. This source-of-truth inversion is the single most important design choice and is treated in detail in §2.
 
