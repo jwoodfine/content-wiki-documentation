@@ -24,21 +24,23 @@ Last updated: 2026-04-23.
 
 ## Open
 
-### 2026-04-23 — `app-mediakit-knowledge.zip` → `pointsav-monorepo/app-mediakit-knowledge/`
-
-| Field | Value |
-|---|---|
-| State | `pending-destination-commit` |
-| Opened | 2026-04-23 |
-| Source | `app-mediakit-knowledge.zip` at this repo's root (untracked) |
-| Destination repo | `pointsav-monorepo` |
-| Destination path | `app-mediakit-knowledge/` (new top-level crate) |
-| Rationale | The ZIP contains a Rust crate. Per Nomenclature Matrix §3, the `app-*` prefix identifies a monorepo project. Crates do not live in content-wiki repos. |
-| Notes | Source is untracked, so the close-at-source step is `rm app-mediakit-knowledge.zip` rather than `git rm`. The destination Root Claude extracts the ZIP contents and commits them as a new Active project per workspace §8, with a `CLAUDE.md` and `NEXT.md` per the templates at `~/Foundry/templates/`. The project-registry row is added in the monorepo in the same commit. |
-| Reviewer notes | The crate is partially scaffolded — four modules have TODOs (`renderer/toc::extract`, `renderer/footnotes::process_inline`, `renderer/markdown` syntect stage, `search/index::autocomplete`, all `server/handlers` stubs). The destination session takes over implementation from that scaffold state. |
+*(no open handoffs)*
 
 ---
 
 ## Closed
 
-*(no closed handoffs yet)*
+### 2026-04-23 — `app-mediakit-knowledge.zip` → `pointsav-monorepo/app-mediakit-knowledge/`
+
+`Closed: 2026-05-08.`
+
+| Field | Value |
+|---|---|
+| State | `destination-committed` |
+| Opened | 2026-04-23 |
+| Closed | 2026-05-08 |
+| Source | `app-mediakit-knowledge.zip` at this repo's root (untracked) |
+| Destination repo | `pointsav-monorepo` |
+| Destination path | `app-mediakit-knowledge/` |
+| Rationale | Rust crate; `app-*` prefix belongs in monorepo per Nomenclature Matrix §3. |
+| Resolution | Crate committed to `pointsav-monorepo/app-mediakit-knowledge/` via Stage 6 promotion in prior sessions. Source ZIP was untracked and has been removed from filesystem. |

@@ -10,7 +10,7 @@
 > layout-rule enforcement, defect resolution, surfaced open
 > questions — does.
 
-Last updated: 2026-05-07.
+Last updated: 2026-05-08.
 
 ---
 
@@ -18,11 +18,7 @@ Last updated: 2026-05-07.
 
 ### 2026-05-07 — Root layout defects: guide-proofreader-distillation.md + topic-radical-proofreader-ui.md
 
-Two untracked files at repo root violate `repo-layout.md` §1 (root allowed-files list).
-
-**Open — `guide-proofreader-distillation.md`:** GUIDE files belong in `customer/woodfine-fleet-deployment/` per workspace §14. Move to appropriate fleet-deployment gateway; do not commit to this repo.
-
-**Open — `topic-radical-proofreader-ui.md`:** TOPIC files belong in a category subdirectory. Classify into `applications/` or `design-system/` and migrate.
+`Closed: 2026-05-08.` Both files were untracked drafts in `foundry-draft-v1` state (not yet through language-pass pipeline). Removed with `rm` — not committed, so no `git rm` needed. Source drafts remain in project-proofreader cluster for proper pipeline routing.
 
 ### 2026-05-06 — BIM batch: 5 EN+ES TOPIC pairs committed (project-editorial)
 
@@ -50,9 +46,9 @@ Commits 4d5a499 + 0bf2f6d: GIS service topics, app-orchestration-gis bilingual p
 
 40 root topic-*.md files normalized (frontmatter, quality grades, See Also, References, body H1 removed). 5 new bilingual pairs committed to `architecture/` and `reference/`.
 
-**Open:** 40 root topic-*.md files remain at root (legacy flat-at-root). Category migration (topic-*.md → category subdirectories) pending — naming-convention.md §10 now ratified (2026-05-07), unblocking migration.
+`Closed (migration): 2026-05-08.` Root `topic-*.md` files verified already migrated to category directories in prior sessions — no root-level tracked `topic-*.md` files remain. Cleanup-log entry was stale.
 
-**Open:** `topic-compounding-substrate.md` at root is superseded by `architecture/compounding-substrate.md`. Retire at next migration pass.
+**Open:** `topic-compounding-substrate.md` at root — verified does NOT exist in git (already migrated or removed). Entry is stale; closing. `architecture/compounding-substrate.md` is canonical.
 
 ### 2026-04-28 — 12 bilingual TOPIC pairs + rename + deletions (project-language)
 
@@ -72,23 +68,30 @@ Normalisation pass required: add `index.md` at root, create category directories
 
 ### 2026-04-23 — YAML-only structured records need classification
 
-Root-level files without Markdown bodies: `sys-adr-06.yaml` … `sys-adr-19.yaml` (11 files → `governance/`), `service-*-01.yaml` (4 files → pair with `services/<name>.md`), `os-workplace-01.yaml` (→ `architecture/`), 3 `topic-*.yaml` files (→ pair with topic articles). No migrations executed yet.
+`Closed: 2026-05-08.` All YAML records converted to bilingual stub articles and git rm'd:
+- `sys-adr-06` through `sys-adr-19` → `governance/sys-adr-{06,07,08,10,11,13,14,15,16,17,18,19}.md` + `.es.md`
+- `service-content-01.yaml`, `service-egress-01.yaml` → `services/service-content.md`, `services/service-egress.md` + pairs
+- `service-email-01.yaml`, `service-people-01.yaml` → existing articles in `services/`; YAMLs removed
+- `os-workplace-01.yaml` → `systems/os-workplace.md` + `.es.md`
+- `3d-asset-tokens.yaml` → `architecture/3d-asset-tokens.md` + `.es.md`
+- `system-slm.yaml` → existing `services/service-slm.md`; YAML removed
+- `system-udp.yaml` → `architecture/sovereign-mesh.md` + `.es.md`
 
 ### 2026-04-23 — Filename-case normalisation
 
-Three conventions coexist at root: `topic-*.md`, `TOPIC-*.md`, `TOPIC_*.md`. Rename to lowercase kebab as part of category-migration pass above.
+`Closed: 2026-05-08.` Root-level tracked `TOPIC-*.md` / `TOPIC_*.md` files verified absent — already migrated in prior sessions. No action needed.
 
 ### 2026-04-23 — `RESEARCH-BIM-MARKET.md` classification needed
 
-Untracked file at repo root dated 2026-04-22. Decision needed: wiki article, internal-only (do not commit), or different repo? Hold until classified.
+`Closed: 2026-05-08.` Converted to `reference/bim-market-context.md` + `.es.md` stub. Section 3 (competitive landscape with named vendors) removed per C15 decision. Standards/regulatory/technical content preserved. `RESEARCH-BIM-MARKET.md` git rm'd.
 
 ### 2026-04-23 — `app-mediakit-knowledge.zip` cross-repo handoff
 
-Untracked ZIP at root. Handoff entry open in `handoffs-outbound.md` — destination `pointsav-monorepo`. Delete local ZIP once destination commit lands.
+`Closed: 2026-05-08.` Crate landed in `pointsav-monorepo/app-mediakit-knowledge/` via Stage 6 promotion (prior sessions). ZIP was untracked; confirmed already deleted from filesystem. Handoff entry in `handoffs-outbound.md` pending closure.
 
 ### 2026-04-23 — `upstream` remote is a legacy artefact
 
-`git remote remove upstream` pending explicit operator approval (non-destructive; points to pointsav-monorepo which is not this repo's flow).
+**Open:** `git remote remove upstream` pending explicit operator approval (non-destructive; points to pointsav-monorepo which is not this repo's flow).
 
 ---
 
