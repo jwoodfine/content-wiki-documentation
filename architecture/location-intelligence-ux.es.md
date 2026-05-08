@@ -1,22 +1,21 @@
 ---
 schema: foundry-doc-v1
-title: "Filosofía de Diseño UX de Inteligencia de Ubicación"
-slug: location-intelligence-ux
-category: applications
+title: "Filosofía de diseño UX de Inteligencia de Ubicación"
+slug: location-intelligence-ux.es
+category: architecture
 type: topic
 quality: complete
+short_description: "La interfaz de Inteligencia de Ubicación utiliza una filosofía de diseño Conclusion-First — renderizando conclusiones de nivel clasificadas en lugar de puntos de datos individuales — de modo que un usuario que compara mercados a nivel de zoom nacional ve los nodos comerciales más defendibles de inmediato, y solo profundiza en operadores individuales cuando un nodo ha ganado la atención."
 status: active
 audience: public
-bcsc_class: internal
+bcsc_class: no-disclosure-implication
 language_protocol: TRANSLATE-ES
-last_edited: 2026-05-02
+last_edited: 2026-05-08
 editor: pointsav-engineering
 paired_with: location-intelligence-ux.md
 ---
 
-# Filosofía de Diseño UX de Inteligencia de Ubicación
-
-La interfaz de Inteligencia de Ubicación de PointSav está diseñada para priorizar la claridad en la toma de decisiones por encima del volumen de datos brutos. Utilizando una filosofía de "conclusión primero", la plataforma comunica la confianza en la selección de sitios mediante jerarquía visual y una clasificación estructural.
+La interfaz de Inteligencia de Ubicación de PointSav utiliza una filosofía de diseño Conclusion-First — renderizando conclusiones de nivel clasificadas en lugar de puntos de datos individuales — de modo que un usuario que compara mercados a nivel de zoom nacional ve los nodos comerciales más defendibles de inmediato, y solo profundiza en operadores individuales cuando un nodo ha ganado la atención. La interfaz se inspira en plataformas espaciales de grado profesional donde modelos multi-paramétricos complejos se renderizan como superficies de navegación por capas intuitivas en lugar de mapas de puntos guiados por leyenda.
 
 ## Diferenciación: El Grado de Clúster como Unidad Primaria
 

@@ -1,19 +1,24 @@
 ---
-schema: foundry-topic-v1
-status: published
-last_edited: 2026-04-30
-category: applications
+schema: foundry-doc-v1
+title: "Diseño del salto tecnológico de Wikipedia"
+slug: wikipedia-leapfrog-design.es
+category: architecture
+type: topic
+quality: complete
+short_description: "La narrativa de diseño detrás del cromo de app-mediakit-knowledge — qué se mantuvo de Wikipedia, qué se añadió más allá, la divergencia deliberada de identidad visual y qué significa el 5% de espacio de maniobra del salto tecnológico para lectores e ingenieros — construido sobre un contrato de memoria muscular 95%/5% que adopta los patrones portantes de Wikipedia y se extiende solo donde el sustrato tiene ventaja estructural."
+status: active
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-language: es
-companion: topic-wikipedia-leapfrog-design.md
+last_edited: 2026-05-08
+editor: pointsav-engineering
+paired_with: wikipedia-leapfrog-design.md
 cites:
   - ni-51-102
   - osc-sn-51-721
 ---
 
-La narrativa de diseño detrás del cromo de `app-mediakit-knowledge`: qué se mantuvo de Wikipedia, qué se añadió más allá de Wikipedia, la divergencia deliberada de identidad visual, y qué significa el 5% de espacio de maniobra del salto tecnológico para lectores e ingenieros.
+La narrativa de diseño detrás del cromo de `app-mediakit-knowledge`: qué se mantuvo de Wikipedia, qué se añadió más allá de Wikipedia, la divergencia deliberada de identidad visual, y qué significa el 5% de espacio de maniobra del salto tecnológico para lectores e ingenieros. El inventario del cromo vive en [[app-mediakit-knowledge]] §4 — lo que contiene el cromo. Este artículo explica por qué se tomó cada decisión, y cómo se ve el contrato estructural con dos audiencias distintas. El contrato es 95%/5%: el sustrato adopta los patrones portantes de Wikipedia en su totalidad y se extiende solo donde tiene ventaja estructural que el modelo de gobernanza voluntaria de Wikipedia no puede alcanzar.
 
 ## El contrato de memoria muscular
 

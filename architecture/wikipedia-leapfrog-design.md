@@ -1,11 +1,18 @@
 ---
-schema: foundry-topic-v1
-status: published
-last_edited: 2026-04-30
-category: applications
+schema: foundry-doc-v1
+title: "Wikipedia Leapfrog Design"
+slug: wikipedia-leapfrog-design
+category: architecture
+type: topic
+quality: complete
+short_description: "The design narrative behind app-mediakit-knowledge's chrome — what was kept from Wikipedia, what was added beyond it, the deliberate visual-identity divergence, and what the 5% leapfrog headroom means for both readers and engineers — built on a 95%/5% muscle-memory contract that adopts Wikipedia's load-bearing patterns and extends only where the substrate has structural advantage."
+status: active
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
+last_edited: 2026-05-08
+editor: pointsav-engineering
+paired_with: wikipedia-leapfrog-design.es.md
 cites:
   - ni-51-102
   - osc-sn-51-721
@@ -14,12 +21,9 @@ references:
   - vendor/pointsav-monorepo/app-mediakit-knowledge/ARCHITECTURE.md
   - https://en.wikipedia.org/wiki/Wikipedia:Vector_2022
   - https://www.mdpi.com/2227-9709/12/3/97
-  - https://blog.chromium.org/2023/05/an-update-on-lock-icon.html
 ---
 
-The design narrative behind `app-mediakit-knowledge`'s chrome: what was kept from Wikipedia, what was added beyond Wikipedia, the deliberate visual-identity divergence, and what the 5% leapfrog headroom means for both readers and engineers.
-
-This TOPIC goes deeper than the chrome inventory at [[app-mediakit-knowledge]] §4. That TOPIC lists what the chrome contains; this TOPIC explains why each choice was made and what the structural contract with two different audiences looks like.
+The design narrative behind `app-mediakit-knowledge`'s chrome: what was kept from Wikipedia, what was added beyond Wikipedia, the deliberate visual-identity divergence, and what the 5% leapfrog headroom means for both readers and engineers. The chrome inventory lives at [[app-mediakit-knowledge]] §4 — what the chrome contains. This article explains why each choice was made, and what the structural contract with two different audiences looks like. The contract is 95%/5%: the substrate adopts Wikipedia's load-bearing patterns wholesale and extends only where it has structural advantage Wikipedia's volunteer-governance model cannot reach.
 
 ## The muscle-memory contract
 

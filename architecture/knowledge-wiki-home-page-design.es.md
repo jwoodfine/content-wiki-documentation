@@ -1,19 +1,24 @@
 ---
-schema: foundry-topic-v1
-status: published
-last_edited: 2026-04-30
-category: applications
+schema: foundry-doc-v1
+title: "Diseño de la página de inicio del wiki de conocimiento"
+slug: knowledge-wiki-home-page-design.es
+category: architecture
+type: topic
+quality: complete
+short_description: "La página de inicio del wiki de documentación se hereda estructuralmente de la Página principal de Wikipedia — el estándar de oro de las páginas de inicio de conocimiento general en internet público — y extiende esa herencia para servir a dos lectores (ingeniería y comunidad financiera) en la misma URL, con la misma composición derivada de hechos estructurales en lugar de copia de marketing."
+status: active
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-language: es
-companion: topic-knowledge-wiki-home-page-design.md
+last_edited: 2026-05-08
+editor: pointsav-engineering
+paired_with: knowledge-wiki-home-page-design.md
 cites:
   - ni-51-102
   - osc-sn-51-721
 ---
 
-El wiki de documentación de PointSav en documentation.pointsav.com es la superficie de lectura canónica para la arquitectura, los servicios, los sistemas operativos, la gobernanza, la infraestructura, las aplicaciones, la postura corporativa, el vocabulario de referencia y la ayuda para colaboradores de la plataforma. Su página de inicio se hereda estructuralmente de la Página principal de Wikipedia — el estándar de oro de las páginas de inicio de conocimiento general en internet público — y extiende esa herencia con primitivas que el modelo de gobernanza voluntaria de Wikipedia no ha podido implementar en la última década.
+El wiki de documentación de PointSav en `documentation.pointsav.com` sirve a un lector de ingeniería y a un lector de la comunidad financiera en la misma URL con la misma composición — y su página de inicio se hereda estructuralmente de la Página principal de Wikipedia, el estándar de oro de las páginas de inicio de conocimiento general en internet público. Las afirmaciones sobre la plataforma son estructurales ("9 categorías", "N artículos", "última actualización YYYY-MM-DD"), no promocionales. El lector que llega escéptico ajusta su postura epistémica hacia la curiosidad, no hacia la defensa contra un registro comercial. Este artículo explica qué se preserva verbatim de Wikipedia, qué se añade más allá, y qué ve cada audiencia al llegar.
 
 ## Dos lectores, una página de inicio
 

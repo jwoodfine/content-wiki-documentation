@@ -1,11 +1,18 @@
 ---
-schema: foundry-topic-v1
-status: published
-last_edited: 2026-04-30
-category: applications
+schema: foundry-doc-v1
+title: "Knowledge Wiki Home Page Design"
+slug: knowledge-wiki-home-page-design
+category: architecture
+type: topic
+quality: complete
+short_description: "The documentation wiki home page is structurally inherited from Wikipedia's Main Page — the gold-standard general-knowledge home page on the public internet — and extends that inheritance to serve two readers (engineering and financial-community) at the same URL, with the same composition derived from structural facts rather than marketing copy."
+status: active
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
+last_edited: 2026-05-08
+editor: pointsav-engineering
+paired_with: knowledge-wiki-home-page-design.es.md
 cites:
   - ni-51-102
   - osc-sn-51-721
@@ -15,12 +22,9 @@ references:
   - external:mediawiki.org/wiki/Skin:Vector/2022/Design_documentation
   - vendor/pointsav-monorepo/app-mediakit-knowledge/src/server.rs
   - vendor/pointsav-monorepo/app-mediakit-knowledge/docs/UX-DESIGN.md
-  - content-wiki-documentation/.claude/rules/naming-convention.md
 ---
 
-The PointSav documentation wiki at documentation.pointsav.com is the canonical reading surface for the platform's architecture, services, operating systems, governance, infrastructure, applications, company posture, reference vocabulary, and contributor help. Its home page is structurally inherited from Wikipedia's Main Page — the gold-standard general-knowledge home page on the public internet — and extends that inheritance with primitives Wikipedia's volunteer-governance model has been structurally unable to ship in the past decade.
-
-This TOPIC explains the design intent of the home page: what is preserved verbatim from Wikipedia (the muscle-memory contract), what is added beyond Wikipedia (the leapfrog primitives), and what financial-community readers and engineering readers each see when they arrive.
+The PointSav documentation wiki at `documentation.pointsav.com` serves an engineering reader and a financial-community reader at the same URL with the same composition — and its home page is structurally inherited from Wikipedia's Main Page, the gold-standard general-knowledge home page on the public internet. Statements about the platform are structural ("9 categories", "N articles", "last updated YYYY-MM-DD"), not promotional. The reader who arrives sceptical adjusts their epistemic posture toward curiosity, not toward defence against a sales register. This article explains what is preserved verbatim from Wikipedia, what is added beyond it, and what each audience sees on arrival.
 
 ## Two readers, one home page
 

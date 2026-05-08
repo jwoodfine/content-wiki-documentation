@@ -1,16 +1,22 @@
 ---
-schema: foundry-topic-v1
-status: published
-last_edited: 2026-04-30
-category: applications
+schema: foundry-doc-v1
+title: "Article Shell Leapfrog"
+slug: article-shell-leapfrog
+category: architecture
+type: topic
+quality: complete
+short_description: "Five article-shell primitives that Wikipedia's volunteer-governance model has been structurally unable to ship in fifteen years — each addressing a specific named weakness in the encyclopedic reading surface — implemented in app-mediakit-knowledge because the substrate has both the engineering surface and the editorial discipline to do so."
+status: active
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
+last_edited: 2026-05-08
+editor: pointsav-engineering
+paired_with: article-shell-leapfrog.es.md
 cites:
   - ni-51-102
   - osc-sn-51-721
 references:
-  - clones/project-knowledge/.claude/drafts-outbound/research-wikipedia-leapfrog-2030.draft.md
   - external:en.wikipedia.org/wiki/Wikipedia:Manual_of_Style/Lead_section
   - external:en.wikipedia.org/wiki/Wikipedia:Verifiability
   - external:en.wikipedia.org/wiki/Wikipedia:Citing_sources
@@ -18,9 +24,7 @@ references:
   - external:schema.org/TechArticle
 ---
 
-The PointSav documentation wiki at documentation.pointsav.com inherits its article reading surface from Wikipedia under the Vector 2022 design. Article tabs, edit pencils, hatnotes, lead-section conventions, collapsible tables of contents, infobox conventions, references sections, and category breadcrumbs all preserve the structural primitives a Wikipedia reader recognises without conscious thought. The companion TOPIC [[wikipedia-leapfrog-design]] covers what is preserved verbatim — the muscle-memory contract.
-
-This TOPIC covers what extends beyond. Five article-shell primitives that Wikipedia's volunteer-governance model has been structurally unable to ship in fifteen years are described here. Three are first-class — the substrate ships them at iteration 1. Two are second-class — the substrate defines their token and engine surfaces and ships them when the corpus reaches the scale where they pay off the editorial cost.
+The PointSav documentation wiki at `documentation.pointsav.com` inherits its article reading surface from Wikipedia under the Vector 2022 design — article tabs, edit pencils, hatnotes, lead-section conventions, collapsible tables of contents, references sections, category breadcrumbs. The companion topic [[wikipedia-leapfrog-design]] covers what is preserved verbatim. **This article covers what extends beyond.** Five article-shell primitives that Wikipedia's volunteer-governance model has been structurally unable to ship in fifteen years are described here. Three are first-class — the substrate ships them at iteration one. Two are second-class — the substrate defines their token and engine surfaces and ships them when the corpus reaches the scale where they pay off the editorial cost.
 
 ## Why the leapfrog is needed
 

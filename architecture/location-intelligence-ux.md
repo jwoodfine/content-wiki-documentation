@@ -2,21 +2,20 @@
 schema: foundry-doc-v1
 title: "Location Intelligence UX Design Philosophy"
 slug: location-intelligence-ux
-category: applications
+category: architecture
 type: topic
 quality: complete
+short_description: "The Location Intelligence interface uses a Conclusion-First design philosophy — rendering ranked tier conclusions rather than individual data points — so a user comparing markets at a national zoom level sees the most defensible commercial nodes immediately, and only drills into individual operators when a node has earned the attention."
 status: active
 audience: public
-bcsc_class: internal
+bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-02
+last_edited: 2026-05-08
 editor: pointsav-engineering
 paired_with: location-intelligence-ux.es.md
 ---
 
-# Location Intelligence UX Design Philosophy
-
-The PointSav Location Intelligence interface is engineered to prioritize decision-maker clarity over raw data volume. By utilizing a "Conclusion-First" design philosophy, the platform communicates site selection confidence through visual hierarchy and structural grading.
+The PointSav Location Intelligence interface uses a Conclusion-First design philosophy — rendering ranked tier conclusions rather than individual data points — so a user comparing markets at a national zoom level sees the most defensible commercial nodes immediately, and only drills into individual operators when a node has earned the attention. The interface draws inspiration from professional-grade spatial platforms where complex multi-parameter models are rendered as intuitive layered navigation surfaces rather than legend-driven dot maps.
 
 ## Quality Benchmark: The Professional Map
 

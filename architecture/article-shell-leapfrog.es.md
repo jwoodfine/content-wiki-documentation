@@ -1,21 +1,24 @@
 ---
-schema: foundry-topic-v1
-status: published
-last_edited: 2026-04-30
-category: applications
+schema: foundry-doc-v1
+title: "Salto en la capa de artículo (article-shell-leapfrog)"
+slug: article-shell-leapfrog.es
+category: architecture
+type: topic
+quality: complete
+short_description: "Cinco primitivas de la capa de artículo que el modelo de gobernanza voluntaria de Wikipedia ha sido estructuralmente incapaz de implementar en quince años — cada una abordando una debilidad específica nombrada en la superficie de lectura enciclopédica — implementadas en app-mediakit-knowledge porque el sustrato tiene tanto la superficie de ingeniería como la disciplina editorial para hacerlo."
+status: active
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-language: es
-companion: topic-article-shell-leapfrog.md
+last_edited: 2026-05-08
+editor: pointsav-engineering
+paired_with: article-shell-leapfrog.md
 cites:
   - ni-51-102
   - osc-sn-51-721
 ---
 
-El wiki de documentación de PointSav en documentation.pointsav.com hereda su superficie de lectura de artículos de Wikipedia bajo el diseño Vector 2022. El TOPIC complementario [[wikipedia-leapfrog-design]] cubre lo que se preserva verbatim — el contrato de memoria muscular. Este TOPIC cubre lo que se extiende más allá.
-
-Cinco primitivas de la capa de artículo que el modelo de gobernanza voluntaria de Wikipedia ha sido estructuralmente incapaz de desarrollar en quince años se describen aquí. Tres son de primera clase — el sustrato las implementa en la iteración 1. Dos son de segunda clase — el sustrato define sus superficies de token y motor y las implementa cuando el corpus alcanza la escala donde compensan el costo editorial.
+El wiki de documentación de PointSav en `documentation.pointsav.com` hereda su superficie de lectura de artículos de Wikipedia bajo el diseño Vector 2022 — pestañas de artículo, lápices de edición, hatnotes, convenciones de sección de introducción, tablas de contenidos colapsables, secciones de referencias, migas de pan de categoría. El artículo complementario [[wikipedia-leapfrog-design]] cubre lo que se preserva verbatim. **Este artículo cubre lo que se extiende más allá.** Cinco primitivas de la capa de artículo que el modelo de gobernanza voluntaria de Wikipedia ha sido estructuralmente incapaz de implementar en quince años se describen aquí. Tres son de primera clase — el sustrato las implementa en la iteración uno. Dos son de segunda clase — el sustrato define sus superficies de token y motor y las implementa cuando el corpus alcanza la escala donde compensan el costo editorial.
 
 ## Por qué es necesario el salto tecnológico
 
