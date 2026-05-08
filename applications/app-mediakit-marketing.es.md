@@ -1,24 +1,19 @@
 ---
 schema: foundry-doc-v1
 title: "app-mediakit-marketing"
-slug: app-mediakit-marketing
-language: es
+slug: app-mediakit-marketing.es
 category: applications
 type: topic
 quality: core
+short_description: "app-mediakit-marketing sirve páginas de inicio de marketing multi-inquilino desde un único binario Rust compilado estáticamente — sin PHP, sin MySQL, sin infraestructura de plugins — preservando al mismo tiempo la memoria muscular de WordPress.org en la superficie de URL y navegación orientada al operador."
 status: active
 bcsc_class: vendor-public
-last_edited: 2026-05-07
+last_edited: 2026-05-08
 editor: pointsav-engineering
 paired_with: app-mediakit-marketing.md
 ---
 
-`app-mediakit-marketing` es el servidor de páginas de inicio de marketing de PointSav.
-Entrega superficies web de marketing multi-inquilino desde un binario Rust compilado
-estáticamente, respaldado por contenido en archivos planos, aplicando el vocabulario de
-URL y navegación compatible con WordPress.org sobre la arquitectura interna leapfrog-2030
-de PointSav. La aplicación alcanzó el estado MVP v0.0.1 en mayo de 2026, sirviendo dos
-despliegues de producción simultáneos en la VM foundry-workspace.
+`app-mediakit-marketing` sirve páginas de inicio de marketing multi-inquilino desde un único binario Rust compilado estáticamente — sin PHP, sin MySQL, sin infraestructura de plugins — preservando al mismo tiempo la memoria muscular de WordPress.org en la superficie de URL y navegación orientada al operador. La aplicación entró en servicio en la versión v0.0.1 en mayo de 2026 y ejecuta dos inquilinos simultáneos en producción — Woodfine en `home.woodfinegroup.com` y PointSav en `home.pointsav.com` — desde el mismo binario en una única máquina virtual de bajo coste, separados únicamente por configuración de variables de entorno.
 
 ## Función y arquitectura
 

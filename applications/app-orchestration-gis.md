@@ -7,9 +7,10 @@ type: topic
 quality: complete
 status: active
 audience: public
+short_description: "app-orchestration-gis is the stateless spatial analytics engine that performs linear-geometry calculations and coordinate mapping to produce the Woodfine co-location rankings and the interactive map at gis.woodfinegroup.com — a pure function that holds no canonical data and can be re-provisioned by pointing a fresh instance at the immutable data layer."
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-08
 editor: pointsav-engineering
 paired_with: app-orchestration-gis.es.md
 cites:
@@ -17,8 +18,7 @@ cites:
   - maplibre-gl-js
 ---
 
-
-`app-orchestration-gis` is the stateless spatial analytics engine of the PointSav GIS platform. It performs linear-geometry calculations and coordinate mapping to produce the Woodfine co-location rankings and the interactive map surface at [gis.woodfinegroup.com](https://gis.woodfinegroup.com).
+`app-orchestration-gis` is the stateless spatial analytics engine that performs linear-geometry calculations and coordinate mapping to produce the Woodfine co-location rankings and the interactive map at [gis.woodfinegroup.com](https://gis.woodfinegroup.com). The application holds no canonical data — it operates as a pure function from cleansed cluster files to ranked geo-tiles, so a lost instance can be re-provisioned by pointing a fresh process at the immutable data layer with no state migration.
 
 ## Scoring Algorithm
 

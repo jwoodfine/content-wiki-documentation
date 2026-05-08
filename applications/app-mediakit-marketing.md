@@ -5,20 +5,16 @@ slug: app-mediakit-marketing
 category: applications
 type: topic
 quality: core
+short_description: "app-mediakit-marketing serves multi-tenant marketing landing pages from a single statically-compiled Rust binary — no PHP, no MySQL, no plugin infrastructure — while preserving WordPress.org muscle memory at the operator-facing URL and navigation surface."
 status: active
 bcsc_class: vendor-public
-last_edited: 2026-05-07
+last_edited: 2026-05-08
 editor: pointsav-engineering
 cites: []
 paired_with: app-mediakit-marketing.es.md
 ---
 
-`app-mediakit-marketing` is the PointSav marketing landing page server. It delivers
-multi-tenant web marketing surfaces from a statically compiled Rust binary backed by
-flat-file content, applying a WordPress.org-compatible URL and navigation vocabulary
-over the PointSav leapfrog-2030 internal architecture. The application shipped at v0.0.1
-MVP in May 2026, serving two simultaneous production deployments on the foundry-workspace
-VM.
+`app-mediakit-marketing` serves multi-tenant marketing landing pages from a single statically-compiled Rust binary — no PHP, no MySQL, no plugin infrastructure — while preserving WordPress.org muscle memory at the operator-facing URL and navigation surface. The application shipped at v0.0.1 in May 2026 and runs two simultaneous production tenants — Woodfine at `home.woodfinegroup.com` and PointSav at `home.pointsav.com` — from the same binary on a single low-cost virtual machine, separated only by environment-variable configuration.
 
 ## Function
 
