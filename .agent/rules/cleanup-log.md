@@ -18,27 +18,39 @@ Last updated: 2026-05-08.
 
 ### 2026-05-08 — Step 5 register-correct rewrite pass (project-editorial)
 
-Commits `96e221d`, `91b8910`, `f470a11` (content-wiki-documentation, this session).
+Commits `96e221d`, `91b8910`, `f470a11`, `aad5c7d`, `09637ed`, `ad88bc3`, `1868a20`, `e7b14c3`, `11d617a` across two sessions.
 
 **Complete:**
 - 4 high-urgency architecture/governance EN+ES pairs rewritten (compounding-substrate,
-  doorman-protocol, ontological-governance, leapfrog-2030-architecture)
-- 3 services EN+ES pairs rewritten (service-slm, service-email, service-fs-architecture)
-- 124 files: frontmatter bug (## headings inside YAML block) — batch fixed
-- 19 files: `{{gli|X}}` template markup — batch replaced with plain term
-
-**Open — remaining services:** service-people, service-extraction, service-search,
-service-business-clustering, service-places-filtering, message-courier,
-fs-anchor-emitter, service-fs-security-compliance, service-fs-data-lake,
-service-slm-totebox-sysadmin, template-ledger, pointsav-gis-engine
+  doorman-protocol, ontological-governance, leapfrog-2030-architecture) — `96e221d`
+- 3 services EN+ES pairs rewritten (service-slm, service-email, service-fs-architecture) — `91b8910`
+- 124 files: frontmatter bug (## headings inside YAML block) — batch fixed in `f470a11`
+- 19 files: `{{gli|X}}` template markup — batch replaced with plain term in `f470a11`
+- 5 Master Totebox Orchestration TOPIC EN+ES pairs published (totebox-orchestration-development,
+  pairing-as-permission, os-orchestration, totebox-session, personnel-permissions) — `aad5c7d`,
+  `09637ed`, `ad88bc3`
+- 1 governance EN+ES pair published (favicon-matrix) — `1868a20`
+- **12 services-remaining EN+ES pairs refined** (service-people, service-extraction, service-search,
+  message-courier, service-business-clustering, service-places-filtering, fs-anchor-emitter,
+  service-fs-security-compliance, service-fs-data-lake, service-slm-totebox-sysadmin,
+  template-ledger, pointsav-gis-engine) — `e7b14c3` + `11d617a`
 
 **Open — applications category:** app-mediakit-knowledge, app-mediakit-marketing,
-app-orchestration-gis, and others
+app-orchestration-gis, and others (Step 5 priority 4c)
+
+**Open — GUIDEs (~72 files):** Step 5 priority 5
 
 **Open — category migration:** root topic-*.md files → category subdirectories
 (unblocked 2026-05-07 ratification). Tracked in existing open entry below.
 
-Stage 6 promotions pending: 96e221d, 91b8910, f470a11 — flag to Master.
+**Open — competitor-name violation in zero-container-inference.md:** "What this rules out"
+section names Cloud Run, Kubernetes, SkyPilot, cargo-chef explicitly. Workspace §6
+prohibits competitive comparisons by name. Surfaced via Phase 3 of 2026-05-08 session;
+not actioned in scope. Replace with generic categories (managed container orchestration
+platforms, container runtime systems, multi-cloud abstraction frameworks, OCI image
+registries) at next editorial pass.
+
+Stage 6 promotions pending across 9 commits — flag to Master at session close.
 
 ### 2026-05-06 — BIM batch: 5 EN+ES TOPIC pairs committed (project-editorial)
 
