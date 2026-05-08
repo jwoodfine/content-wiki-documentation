@@ -9,14 +9,13 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-08
 editor: pointsav-engineering
 paired_with: service-fs-data-lake.md
 cites: []
 ---
 
-
-`service-fs` es la capa de almacenamiento fundacional para la plataforma GIS de PointSav. Implementa un modelo de lago de datos donde los puntos geoespaciales en bruto ingeridos desde fuentes geoespaciales abiertas se almacenan en un sistema de archivos duradero y modular para el procesamiento analítico descendente.
+**`service-fs`** es la capa de almacenamiento fundacional para la canalización GIS de la plataforma — un lago de datos en archivos planos que almacena puntos geoespaciales en bruto ingeridos desde fuentes abiertas (OpenStreetMap, Overture Maps Foundation) en zonas de aterrizaje separadas para datos minoristas y cívicos, disponibles inmediatamente para cada servicio descendente sin una etapa ETL. Los registros minoristas — operadores comerciales, tiendas ancla, estaciones de combustible — y los registros cívicos — hospitales, universidades, centros de transporte — se mantienen en subárboles distintos para que los servicios de filtrado y agrupación puedan trabajar en cada dominio de forma independiente.
 
 ## Ingestión y almacenamiento de datos
 

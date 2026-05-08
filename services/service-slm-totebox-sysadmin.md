@@ -8,7 +8,7 @@ quality: core
 short_description: "How service-slm becomes the operational assistant and support centre for Totebox Archive and Totebox Orchestration deployments — the training strategy, the ten operational task families, and the four-stage pipeline from corpus capture to per-tenant LoRA adapters."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-08
 editor: pointsav-engineering
 cites:
   - olmo3-allenai
@@ -22,7 +22,7 @@ cites:
 paired_with: service-slm-totebox-sysadmin.es.md
 ---
 
-`service-slm` — the Compounding Doorman at Ring 3 of the platform — is designed to become the operational assistant and support centre for Totebox Archive and Totebox Orchestration deployments. This article describes the strategy: the operational task families a sysadmin handles, why service-slm is structurally suited to handle them, the corpus shape required to train it, and the four stages that take a deployment from initial capture to a per-tenant LoRA adapter running in production.
+`service-slm` — the access-control gateway at Ring 3 of the platform, also referred to as the Doorman — is intended to become the operational assistant and support centre for Totebox Archive and Totebox Orchestration deployments. This article describes the strategy: the operational task families a sysadmin handles, why `service-slm` is structurally suited to handle them, the corpus shape required to train it, and the four stages that take a deployment from initial capture to a per-tenant LoRA adapter running in production.
 
 The premise is grounded in present state, not projection. The Doorman is operational. The apprenticeship corpus pipeline is wired. The substrate is configured to learn. What remains is to direct it at the operational work that matters most.
 

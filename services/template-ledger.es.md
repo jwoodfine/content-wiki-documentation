@@ -1,15 +1,20 @@
 ---
-schema: foundry-topic-v1
+schema: foundry-doc-v1
 title: "Registro de Plantillas (service-email-template)"
 slug: template-ledger.es
 category: services
-status: published
+type: topic
+quality: complete
+short_description: "El Registro de Plantillas es el mecanismo de distribución dentro de service-email-template que sincroniza una única copia autoritativa de cada plantilla aprobada con el entorno de correo del operador — eliminando la deriva de versiones entre el diseño de la plantilla y la ejecución del operador, y eliminando cada paso de redacción de la correspondencia corporativa rutinaria."
+status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-08
 editor: pointsav-engineering
+paired_with: template-ledger.md
+cites: []
 ---
 
-El Registro de Plantillas es el mecanismo de distribución dentro de `service-email-template` que garantiza que todas las comunicaciones corporativas salientes utilicen la versión actual y aprobada de cada plantilla. Elimina la deriva de versiones entre el diseño de la plantilla y su ejecución por parte del operador, manteniendo una única copia autoritativa por identificador de plantilla y sincronizándola automáticamente con el entorno de correo del operador.
+El Registro de Plantillas es el mecanismo de distribución dentro de `service-email-template` que sincroniza automáticamente una única copia autoritativa de cada plantilla aprobada con el entorno de correo del operador. Elimina la deriva de versiones entre el diseño de la plantilla y la ejecución del operador manteniendo una sola copia canónica por identificador de plantilla; el operador recupera la versión actual mediante una clave y la envía directamente. La distinción entre redactar y desplegar se vuelve estructural en lugar de procedimental — el operador no está redactando correspondencia corporativa rutinaria, solo seleccionando qué plantilla aprobada despachar.
 
 ## Intención de diseño
 

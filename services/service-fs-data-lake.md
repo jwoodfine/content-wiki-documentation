@@ -7,14 +7,16 @@ type: topic
 quality: complete
 status: active
 audience: public
+short_description: "service-fs is the foundational storage layer for the platform's GIS pipeline — a flat-file data lake that stores raw geospatial points ingested from open sources in separate retail and civic landing zones, available immediately to every downstream service without an ETL step."
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-08
 editor: pointsav-engineering
+paired_with: service-fs-data-lake.es.md
 cites: []
 ---
 
-`service-fs` is the foundational storage layer for the PointSav GIS platform. It implements a data lake model where raw geospatial points ingested from open geospatial sources are stored in a durable, modular file system for downstream analytical processing.
+**`service-fs`** is the foundational storage layer for the platform's GIS pipeline — a flat-file data lake that stores raw geospatial points ingested from open sources (OpenStreetMap, Overture Maps Foundation) in separate retail and civic landing zones, available immediately to every downstream service without an ETL step. Retail records — commercial operators, anchor stores, fuel outlets — and civic records — hospitals, universities, transport hubs — are kept in distinct subtrees so the filtering and clustering services can work on each domain independently.
 
 ## Data Ingestion and Storage
 

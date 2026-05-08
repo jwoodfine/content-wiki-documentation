@@ -1,17 +1,20 @@
 ---
 schema: foundry-doc-v1
+title: "Postura de seguridad y cumplimiento de service-fs"
+slug: service-fs-security-compliance.es
+category: services
 type: topic
-slug: service-fs-security-compliance
-title: Seguridad y Cumplimiento de Service-FS
+quality: complete
+short_description: "service-fs está diseñado para almacenamiento estructural Write-Once-Read-Many que satisface SEC Rule 17a-4(f), eIDAS y SOC 2 — la modificación de registros no se deniega en la capa de políticas; se deniega por el motor de almacenamiento mismo, y el anclaje externo a Sigstore Rekor proporciona una prueba de estado independiente de los propios sistemas de la plataforma."
+status: active
 audience: vendor-public
 bcsc_class: current-fact
-language: es
+last_edited: 2026-05-08
+editor: pointsav-engineering
 paired_with: service-fs-security-compliance.md
 ---
 
-
-
-`service-fs` está diseñado para cumplir con los estándares internacionales más exigentes de almacenamiento inmutable y soberanía de datos. Nuestra arquitectura WORM asegura que los registros no puedan ser borrados ni modificados, cumpliendo con las normativas financieras y de confianza globales.
+`service-fs` está diseñado para almacenamiento estructural Write-Once-Read-Many que satisface los requisitos de SEC Rule 17a-4(f), eIDAS y SOC 2 — la modificación de registros no se deniega en la capa de políticas; se deniega por el motor de almacenamiento mismo, y el anclaje externo a Sigstore Rekor proporciona una prueba de estado independiente de los propios sistemas de la plataforma. La postura de cumplimiento se deriva de propiedades arquitectónicas, no de controles configurables: el motor de almacenamiento Rust físicamente carece de la capacidad de eliminar o modificar registros; cada entrada está vinculada criptográficamente a la siguiente; y cualquier intento de alterar el historial es detectable mediante pruebas de consistencia Merkle.
 
 ## Alineación Regulatoria
 

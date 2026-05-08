@@ -9,17 +9,17 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-02
+last_edited: 2026-05-08
 editor: pointsav-engineering
+short_description: "The PointSav GIS Engine is a high-performance, customer-owned location intelligence platform built in Rust for offline-first, flat-file operation — a structural departure from traditional geographic information systems that rely on centralised database instances and continuous network connectivity."
+paired_with: pointsav-gis-engine.es.md
 cites:
   - maplibre-gl-js
   - pmtiles-spec
   - tippecanoe-tool
 ---
 
-# PointSav GIS Engine
-
-The PointSav GIS Engine is a high-performance, sovereign Location Intelligence platform designed for offline-first, flat-file operation. Built in Rust, it represents a structural departure from traditional, proprietary geographic information systems (GIS) that rely on centralized database instances.
+The PointSav GIS Engine is a high-performance, customer-owned location intelligence platform built in Rust for offline-first, flat-file operation — a structural departure from traditional geographic information systems that rely on centralised database instances and continuous network connectivity. The engine reads from a static PMTiles archive on the customer's own filesystem, renders interactively through MapLibre GL JS in the browser, and serves every query without an external dependency. The map data lives in the customer's archive; nothing leaves the deployment unless the operator explicitly chooses to publish.
 
 ## Architectural Principles
 

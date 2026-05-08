@@ -1,15 +1,16 @@
 ---
 schema: foundry-doc-v1
 title: "Motor GIS de PointSav"
-slug: pointsav-gis-engine
+slug: pointsav-gis-engine.es
 category: services
 type: topic
 quality: complete
 status: active
 audience: public
+short_description: "El Motor GIS de PointSav es una plataforma de inteligencia de ubicación de alto rendimiento y propiedad del cliente construida en Rust para operación offline-first sobre archivos planos — una desviación estructural de los sistemas de información geográfica tradicionales que dependen de instancias de bases de datos centralizadas y conectividad de red continua."
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-08
 editor: pointsav-engineering
 paired_with: pointsav-gis-engine.md
 cites:
@@ -18,8 +19,7 @@ cites:
   - tippecanoe-tool
 ---
 
-
-El Motor GIS de PointSav es una plataforma de Inteligencia de Ubicación de alto rendimiento y soberana, diseñada para operación offline-first con sustrato de archivos planos. Construido en Rust, representa un alejamiento estructural de los sistemas de información geográfica (SIG) tradicionales que dependen de instancias de bases de datos centralizadas.
+El Motor GIS de PointSav es una plataforma de inteligencia de ubicación de alto rendimiento y propiedad del cliente construida en Rust para operación offline-first sobre archivos planos — una desviación estructural de los sistemas de información geográfica tradicionales que dependen de instancias de bases de datos centralizadas y conectividad de red continua. El motor lee desde un archivo PMTiles estático en el sistema de archivos del propio cliente, renderiza interactivamente a través de MapLibre GL JS en el navegador y sirve cada consulta sin una dependencia externa. Los datos del mapa viven en el archivo del cliente; nada sale del despliegue a menos que el operador elija explícitamente publicar.
 
 ## Sustrato de archivos planos
 

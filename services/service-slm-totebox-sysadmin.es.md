@@ -7,7 +7,7 @@ type: topic
 quality: core
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-08
 editor: pointsav-engineering
 cites:
   - ni-51-102
@@ -15,9 +15,7 @@ cites:
 paired_with: service-slm-totebox-sysadmin.md
 ---
 
-## Adaptación estratégica — service-slm como administrador Totebox
-
-`service-slm` — el Doorman Compuesto en el Anillo 3 de la plataforma — está diseñado para convertirse en el asistente operativo y centro de soporte para los despliegues de Totebox Archive y Totebox Orchestration. Este artículo describe la estrategia: las diez familias de tareas operativas que maneja un administrador, por qué service-slm es estructuralmente adecuado para ellas, y los cuatro etapas que llevan un despliegue desde la captura inicial del corpus hasta un adaptador LoRA por tenant en producción.
+`service-slm` — la pasarela de control de acceso en el Anillo 3 de la plataforma, también referida como el Doorman — está prevista para convertirse en el asistente operativo y centro de soporte de los despliegues de Totebox Archive y Totebox Orchestration. Este artículo describe la estrategia: las familias de tareas operativas que maneja un administrador, por qué `service-slm` es estructuralmente adecuado para manejarlas, la forma del corpus necesaria para entrenarlo, y las cuatro etapas que llevan un despliegue desde la captura inicial hasta un adaptador LoRA por inquilino en producción.
 
 ## Las diez familias de tareas operativas
 

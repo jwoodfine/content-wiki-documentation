@@ -1,17 +1,20 @@
 ---
 schema: foundry-doc-v1
-type: topic
+title: "service-fs Security and Compliance Posture"
 slug: service-fs-security-compliance
-title: Service-FS Security and Compliance Posture
+category: services
+type: topic
+quality: complete
+short_description: "service-fs is engineered for structural Write-Once-Read-Many storage that satisfies SEC Rule 17a-4(f), eIDAS, and SOC 2 — record modification is not denied at the policy layer; it is denied by the storage engine itself, and external Sigstore Rekor anchoring provides proof-of-state independent of the platform's own systems."
+status: active
 audience: vendor-public
 bcsc_class: current-fact
-language: en
+last_edited: 2026-05-08
+editor: pointsav-engineering
 paired_with: service-fs-security-compliance.es.md
 ---
 
-
-
-`service-fs` is engineered to meet the highest international standards for immutable storage and data sovereignty. By implementing a structural WORM (Write-Once-Read-Many) architecture, Foundry provides a verifiable assurance that data records are non-rewriteable and non-erasable, satisfying the core requirements of global financial and trust regulations.
+`service-fs` is engineered for structural Write-Once-Read-Many storage that meets the requirements of SEC Rule 17a-4(f), eIDAS, and SOC 2 — record modification is not denied at the policy layer; it is denied by the storage engine itself, and external Sigstore Rekor anchoring provides proof-of-state independent of the platform's own systems. The compliance posture follows from architectural properties, not from configurable controls: the Rust storage engine physically lacks the ability to delete or modify records; every entry is cryptographically linked to the next; and any attempt to alter history is detectable through Merkle consistency proofs.
 
 ## 1. Regulatory Alignment
 

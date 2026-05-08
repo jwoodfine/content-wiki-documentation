@@ -1,17 +1,20 @@
 ---
 schema: foundry-doc-v1
-type: guide
-slug: fs-anchor-emitter
-title: Guía de Configuración del Emisor de Anclaje (FS Anchor Emitter)
+title: "fs-anchor-emitter"
+slug: fs-anchor-emitter.es
+category: services
+type: topic
+quality: complete
+short_description: "fs-anchor-emitter genera puntos de control firmados del libro mayor inmutable Write-Once-Read-Many a cadencia horaria y los prepara para el anclaje externo al registro público de transparencia Sigstore Rekor con cadencia mensual — el mecanismo que hace que el estado del libro mayor de la plataforma sea criptográficamente auditable desde fuera de la plataforma misma."
+status: active
 audience: vendor-public
 bcsc_class: current-fact
-language: es
+last_edited: 2026-05-08
+editor: pointsav-engineering
 paired_with: fs-anchor-emitter.md
 ---
 
-
-
-El emisor de anclaje es el componente encargado de generar "puntos de control" (checkpoints) firmados del ledger inmutable. Estos puntos de control son esenciales para demostrar la integridad de los datos ante auditorías externas.
+`fs-anchor-emitter` es el componente que genera puntos de control firmados del libro mayor inmutable Write-Once-Read-Many a cadencia horaria y los prepara para el anclaje externo al registro público de transparencia Sigstore Rekor con cadencia mensual — el mecanismo que hace que el estado del libro mayor de la plataforma sea criptográficamente auditable desde fuera de la plataforma. El emisor opera en la Capa 4 de la pila WORM, lee el estado actual del árbol de mosaicos por inquilino, genera un punto de control en formato `signed-note` y lo almacena en la ruta autoritativa bajo `$FS_LEDGER_ROOT/<moduleId>/checkpoint`. El proceso mensual de anclaje del espacio de trabajo consume esos puntos de control y los publica en el registro público de transparencia.
 
 ## Requisitos de Configuración
 
