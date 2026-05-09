@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 type: topic
 slug: sovereign-mesh
 title: Sovereign Mesh
-category: architecture
+category: infrastructure
 language: en
 paired_with: sovereign-mesh.es.md
 status: stub

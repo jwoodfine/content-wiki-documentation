@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 type: topic
 slug: sovereign-mesh
 title: Malla Soberana
-category: architecture
+category: infrastructure
 language: es
 paired_with: sovereign-mesh.md
 status: stub

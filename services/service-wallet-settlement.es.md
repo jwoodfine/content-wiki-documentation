@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Liquidación con Service-Wallet"
 slug: service-wallet-settlement.es
-category: architecture
+category: services
 type: topic
 quality: complete
 status: active

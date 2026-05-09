@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Arquitectura de Telemetría de Estado Cero"
 slug: sovereign-telemetry
-category: architecture
+category: infrastructure
 type: topic
 quality: stub
 status: active

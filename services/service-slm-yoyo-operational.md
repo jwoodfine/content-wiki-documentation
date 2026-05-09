@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "service-SLM and Yo-Yo — Operational State"
 slug: service-slm-yoyo-operational
-category: architecture
+category: services
 type: topic
 quality: complete
 short_description: "How service-SLM's three-tier inference router and the Yo-Yo GPU burst VM operate at workspace v0.1.91, including the Doorman boundary, Tier A/B configuration, apprenticeship brief queue, and idle-shutdown cost ceiling."

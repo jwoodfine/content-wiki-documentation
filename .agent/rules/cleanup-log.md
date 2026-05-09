@@ -16,6 +16,58 @@ Last updated: 2026-05-08.
 
 ## Open
 
+### 2026-05-09 — Category-balance analysis: 4 imbalances surfaced; 7 mechanical moves done; 3 deeper questions for operator
+
+Operator dispatched a category-balance check before live wiki updates: "we don't want any blanks or categories that are too big or too small."
+
+**Pre-rebalance distribution (after schema-clean + slug-collision fix):**
+
+| Category | EN | Status |
+|---|---|---|
+| architecture | 82 | TOO BIG (~4× mean) |
+| reference | 55 | TOO BIG (~2.5× mean) |
+| design-system | 25 | OK |
+| governance | 20 | OK (at mean) |
+| services | 17 | OK |
+| systems | 10 | borderline-small |
+| applications | 4 | TOO SMALL |
+| infrastructure | 4 | TOO SMALL |
+| company | 0 | EMPTY |
+| help | 0 | EMPTY |
+
+**Mean: 21.7. Median: 17.** Four imbalances: 2 oversized, 2 undersized, 2 empty.
+
+**Mechanical moves done this session (commit `<this-commit>`):**
+
+7 articles (14 files) moved from architecture/ to better-fit categories:
+- → services/ (was 17, now 19): service-slm-yoyo-operational, service-wallet-settlement (both were named services in the wrong category).
+- → infrastructure/ (was 4, now 9): worm-ledger-architecture, worm-ledger-design, worm-ledger-storage-architecture (storage = infrastructure), sovereign-mesh, sovereign-telemetry (network/telemetry = infrastructure).
+
+**Post-rebalance distribution:**
+
+| Category | EN | Δ |
+|---|---|---|
+| architecture | 75 | −7 |
+| reference | 55 | (unchanged this commit) |
+| design-system | 25 | — |
+| governance | 20 | — |
+| services | 19 | +2 |
+| systems | 10 | — |
+| infrastructure | 9 | +5 |
+| applications | 4 | — |
+| company | 0 | — |
+| help | 0 | — |
+
+**Three deeper questions surfaced for operator:**
+
+1. **Split architecture/?** At 75 EN articles it's still 3× the mean. Natural sub-groupings exist (substrate concepts, design patterns, doctrine articles) but URL depth is capped at 2 per content-contract.md §2 — splitting requires adding a top-level category, which is a naming-convention.md taxonomy change. Candidate splits: substrate/ (compounding-substrate, apprenticeship-substrate, language-protocol-substrate, etc., ~25 articles); patterns/ (article-shell-leapfrog, source-of-truth-inversion, meta-repo-pattern, etc., ~10 articles).
+
+2. **Split reference/ or move design-system articles out?** reference/ has 55 articles including ~11 that look like they belong in design-system/ (brand-family-swatch, brand-typography, country-filter-chips, map-side-drawer, map-stats-panel, neurodiversity-typography-standards, properties-panel-accessibility, spatial-tree-accessibility, viewport-3d-accessibility, climate-zone-tokens, zoom-tier-reveal-pattern). Moving these would: reference/ 55 → 44, design-system/ 25 → 36.
+
+3. **Populate company/ and help/, or retire from taxonomy?** Per naming-convention.md §13 ratification, both are intentional first-class categories — but they're empty. Either populate (write stub articles for `pointsav`, `woodfine-management-corp`, `roadmap-2026-2028`, `bcsc-disclosures`, `contributing-as-engineer`, etc.) or retire and reduce taxonomy from 10 → 8 categories.
+
+This session: actioned the unambiguous mechanical moves (7 files) + slug collision fix (separate commit `d0b5b58`). The taxonomy-level decisions on (1)–(3) need operator input. Surfaced via outbox addendum.
+
 ### 2026-05-08 — Step 5 register-correct rewrite pass (project-editorial)
 
 Commits `96e221d`, `91b8910`, `f470a11`, `aad5c7d`, `09637ed`, `ad88bc3`, `1868a20`, `e7b14c3`, `11d617a`, `500f201`, `dcec4f6`, `5f17aa1`, `5880bd0`, `dc9acec`, `0a5b96f` across two sessions; canonical promote landed at 2026-05-08T20:55Z (5880bd0). Two further commits on staging (dc9acec, 0a5b96f) since the promote.

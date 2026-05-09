@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Diseño del Libro de Registros WORM"
 slug: worm-ledger-design.es
-category: architecture
+category: infrastructure
 type: topic
 quality: published
 short_description: "El sustrato de persistencia de escritura única y lectura múltiple (WORM) utilizado en los servicios Ring 1 de PointSav: un formato por bloques con encadenamiento criptográfico que satisface los requisitos de conservación de registros bajo regulación estadounidense, europea y SOC 2 por estructura, no por política."

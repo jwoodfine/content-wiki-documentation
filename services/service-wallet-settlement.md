@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Service-Wallet Settlement"
 slug: service-wallet-settlement
-category: architecture
+category: services
 type: topic
 quality: complete
 status: active

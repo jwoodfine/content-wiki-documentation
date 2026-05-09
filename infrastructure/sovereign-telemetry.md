@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Zero-State Telemetry Architecture"
 slug: sovereign-telemetry
-category: architecture
+category: infrastructure
 type: topic
 quality: stub
 short_description: "The zero-state telemetry architecture describes how Foundry's V4 Intent Beacon collects behavioural and hardware signals from edge clients without cookies, session identifiers, or third-party analytics, using client-side compilation and asynchronous beacon transmission."

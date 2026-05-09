@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "service-SLM y Yo-Yo — Estado Operativo"
 slug: service-slm-yoyo-operational.es
-category: architecture
+category: services
 type: topic
 quality: complete
 short_description: "Visión general del enrutador de inferencia de tres niveles de service-SLM y la instancia GPU de explosión Yo-Yo, incluyendo el límite de costo y el techo de gastos mensuales."

@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "WORM Ledger Design"
 slug: worm-ledger-design
-category: architecture
+category: infrastructure
 type: topic
 quality: published
 short_description: "The four-layer Write-Once-Read-Many ledger substrate used across PointSav Ring 1 services: a tile-based, hash-chained, cryptographically signed persistence format that satisfies US broker-dealer recordkeeping, EU qualified preservation, and SOC 2 requirements by structure rather than by policy."
