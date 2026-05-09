@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Climate Zone Tokens"
 slug: climate-zone-tokens
-category: reference
+category: design-system
 status: stub
 bcsc_class: no-disclosure-implication
 last_edited: 2026-05-08

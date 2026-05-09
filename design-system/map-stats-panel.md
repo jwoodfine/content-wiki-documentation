@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 type: topic
-category: reference
+category: design-system
 slug: map-stats-panel
 title: Map Stats Panel
 paired_with: map-stats-panel.es.md

@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 type: topic
-category: reference
+category: design-system
 slug: country-filter-chips
 title: Country Filter Chips
 paired_with: country-filter-chips.es.md

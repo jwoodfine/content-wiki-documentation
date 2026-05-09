@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 type: topic
-category: reference
+category: design-system
 slug: brand-family-swatch
 title: Muestrario de Familias de Marcas
 paired_with: brand-family-swatch.md

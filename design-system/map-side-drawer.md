@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 type: topic
-category: reference
+category: design-system
 slug: map-side-drawer
 title: Map Side Drawer
 paired_with: map-side-drawer.es.md

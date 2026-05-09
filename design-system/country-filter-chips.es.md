@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 type: topic
-category: reference
+category: design-system
 slug: country-filter-chips
 title: Selectores de Filtro por País
 paired_with: country-filter-chips.md

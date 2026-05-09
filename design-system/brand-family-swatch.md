@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 type: topic
-category: reference
+category: design-system
 slug: brand-family-swatch
 title: Brand-Family Swatch
 paired_with: brand-family-swatch.es.md

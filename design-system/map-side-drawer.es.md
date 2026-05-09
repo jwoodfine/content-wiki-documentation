@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 type: topic
-category: reference
+category: design-system
 slug: map-side-drawer
 title: Panel Lateral de Mapa
 paired_with: map-side-drawer.md

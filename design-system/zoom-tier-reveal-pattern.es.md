@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 type: topic
-category: reference
+category: design-system
 slug: zoom-tier-reveal-pattern
 title: Patrón de Revelación por Niveles de Zoom
 paired_with: zoom-tier-reveal-pattern.md
