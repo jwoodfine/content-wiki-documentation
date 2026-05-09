@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Foundry Doctrine — Architectural Overview"
+title: "Foundry — Architectural Overview"
 slug: foundry-doctrine-architecture
 category: architecture
 type: topic

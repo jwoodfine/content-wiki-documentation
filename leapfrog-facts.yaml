@@ -1,37 +1,43 @@
-# leapfrog-facts.yaml — Leapfrog 2030 invention facts panel
-# Rendered as the right-column "Leapfrog 2030 inventions" panel on the
-# documentation.pointsav.com home page. Engine reads on each request;
-# absent → suppress panel; present → render bulleted list with optional
-# wikilink anchors. Update this file to rotate facts.
+# leapfrog-facts.yaml — Did You Know panel for documentation.pointsav.com home page
 #
-# Schema per iteration-2 engine:
+# Rendered as the right-column panel on the home page (label rendered by
+# the engine; this YAML supplies the body bullets). Engine reads on each
+# request; absent → suppress panel; present → render bulleted list with
+# optional wikilink anchors.
+#
+# Schema:
 #   facts:
-#     - text: <one-sentence fact ending with article context>
-#       link_slug: <optional routing slug for hyperlink; omit to render plain text>
+#     - text: <one sentence drawn from a TOPIC, banker register, no marketing copy>
+#       link_slug: <slug of the source TOPIC for [more] link>
 #
-# Updated: 2026-05-01 by project-knowledge Task (iteration-2 re-launch)
+# Reader: dual audience — engineering reader and financial-community reader.
+# Each fact should be surprising to someone who knows the AI-vendor landscape
+# but not PointSav specifically: structural defensibility (not feature lists),
+# governance discipline (not testimonials), clear answer to "why is this not
+# just another AI vendor?"
+#
+# Refreshed 2026-05-09 by project-editorial Task —
+# replaced prior "leapfrog inventions" framing with banker-grade Structural
+# Facts; vocabulary scrubbed of workspace-internal governance terms.
 
 facts:
-  - text: "The Doorman is the only process in the substrate that holds external API keys — across all three compute tiers."
-    link_slug: "architecture/topic-single-boundary-compute-discipline"
+  - text: "The platform runs entirely on commodity hardware — the base inference model runs on a standard 4-vCPU node with no GPU, and only specialised workloads burst to GPU on demand."
+    link_slug: doorman-protocol
 
-  - text: "A Tier 0 specialist runs on a $300–$500 mini-PC and operates without any cloud connection."
-    link_slug: "architecture/topic-tier-zero-customer-side-sovereign-specialist"
+  - text: "The platform remains fully operational with zero AI inference active — the deterministic file ledger, knowledge graph, and extraction pipeline are load-bearing; AI is an optional layer."
+    link_slug: substrate-without-inference-base-case
 
-  - text: "Every Ring 1 and Ring 2 service functions fully without AI — intelligence is structurally optional."
-    link_slug: "architecture/topic-substrate-without-inference-base-case"
+  - text: "Customer data never leaves the customer's infrastructure: every adapter and every audit-ledger entry stays in the customer's filesystem; the vendor has zero data custody."
+    link_slug: customer-hostability
 
-  - text: "The knowledge graph stays on the customer's hardware; Foundry has no access to it."
-    link_slug: "architecture/topic-customer-owned-graph-ip"
+  - text: "OLMo 3 is the only open language model where training data, training code, and intermediate checkpoints are all published — the depth of openness that enables five-year customer ownership of derivative models."
+    link_slug: llm-substrate-decision
 
-  - text: "A Vertical Seed Pack installs a calibrated, industry-specific AI substrate in approximately 30 minutes."
-    link_slug: "architecture/topic-seed-taxonomy-as-smb-bootstrap"
+  - text: "Disclosure compliance is built into the commit layer, not bolted on: the engineering wiki itself — version control with signed authorship and cryptographic hashes — is the continuous-disclosure record, satisfying BCSC and SEC Rule 17a-4(f) by structure."
+    link_slug: disclosure-substrate
 
-  - text: "Documentation is written to be read by AI agents first, producing structured training data as a byproduct."
-    link_slug: "architecture/topic-code-for-machines-first"
+  - text: "Every inference call is logged to an immutable audit ledger and routed through a single boundary, enforcing a sanitise-before-leaving discipline on every AI request that exits the customer vault."
+    link_slug: doorman-protocol
 
-  - text: "The WORM ledger is structured to satisfy SEC 17a-4(f) and eIDAS by architecture, not by policy."
-    link_slug: "architecture/topic-worm-ledger-design"
-
-  - text: "Revenue flows to the customer via the substrate — the platform earns alongside the customer, not from them."
-    link_slug: "architecture/topic-reverse-flow-substrate"
+  - text: "The commercial threshold is not a feature tier but an architectural boundary — the revenue model crosses only when two or more archives must coordinate; single-archive operation is sovereignty infrastructure, published under open licenses."
+    link_slug: knowledge-commons

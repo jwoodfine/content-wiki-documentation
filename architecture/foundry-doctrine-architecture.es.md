@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Doctrina Foundry — Visión Arquitectónica"
+title: "Foundry — Visión Arquitectónica"
 slug: foundry-doctrine-architecture.es
 category: architecture
 type: topic

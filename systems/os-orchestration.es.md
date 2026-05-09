@@ -1,11 +1,11 @@
 ---
 schema: foundry-doc-v1
-title: "OrchestrationOS"
+title: "Orchestration OS"
 slug: os-orchestration.es
 category: systems
 type: os
 quality: complete
-short_description: "OrchestrationOS es la capa del sistema operativo que administra un clúster de archivos Totebox — agregando archivos, exponiendo una interfaz unificada para operadores y enrutando los mensajes de coordinación entre sesiones de IA entre los archivos."
+short_description: "Orchestration OS es la capa del sistema operativo que administra un clúster de archivos Totebox — agregando archivos, exponiendo una interfaz unificada para operadores y enrutando los mensajes de coordinación entre sesiones de IA entre los archivos."
 status: active
 bcsc_class: forward-looking
 last_edited: 2026-05-08

@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: sovereign-airlock-doctrine
-title: La Doctrina del Exclusa Soberana (Sovereign Airlock)
+title: La Exclusa Soberana
 audience: vendor-public
 bcsc_class: current-fact
 language: es

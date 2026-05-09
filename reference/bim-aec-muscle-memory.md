@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: bim-aec-muscle-memory
-title: AEC Muscle Memory and Interface Conventions
+title: AEC Muscle Memory and Interface Patterns
 audience: vendor-public
 bcsc_class: current-fact
 language: en

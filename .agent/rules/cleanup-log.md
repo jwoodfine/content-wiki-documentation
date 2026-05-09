@@ -10,11 +10,85 @@
 > layout-rule enforcement, defect resolution, surfaced open
 > questions — does.
 
-Last updated: 2026-05-08.
+Last updated: 2026-05-09.
 
 ---
 
 ## Open
+
+### 2026-05-09 — Body-level Doctrine/Convention vocabulary scrub (~120 EN files)
+
+Per operator constraint (workspace v0.1.x; saved as feedback memory
+`feedback_no_doctrine_convention_in_public.md`): "Doctrine" and
+"Convention" are workspace-internal governance vocabulary and must
+not appear in public-facing wiki content. A Goldman Sachs banker
+reading the public wiki should encounter the underlying idea in
+institutional prose, not internal naming for the governance machinery.
+
+**Scope of leak** (audit performed 2026-05-09 during the home-page
+muscle-memory work):
+
+| Wiki | Files mentioning "Doctrine" | Files mentioning "Convention" |
+|---|---|---|
+| corporate | 0 | 0 |
+| projects | 0 | 0 |
+| **documentation** | **72** | **49** |
+
+Documentation wiki carries the entire load. With overlap between the
+two terms, the unique-file count is approximately 120.
+
+**Title-level scrub completed this session** (3 files, 6 with EN+ES
+pairs):
+- `governance/sovereign-airlock-doctrine.md` + `.es.md` — title now
+  "The Sovereign Airlock" / "La Exclusa Soberana"
+- `reference/bim-aec-muscle-memory.md` + `.es.md` — title now
+  "AEC Muscle Memory and Interface Patterns" / "Memoria Muscular AEC
+  y Patrones de Interfaz"
+- `architecture/foundry-doctrine-architecture.md` + `.es.md` — title
+  now "Foundry — Architectural Overview" / "Foundry — Visión
+  Arquitectónica"
+
+Slugs retained unchanged per content-contract.md §3 immortality rule;
+URLs unaffected.
+
+**Body-level scrub deferred — phased approach** (this entry surfaces
+the work; execution is multi-session):
+
+1. **First sweep — Featured rotation pool (12 banker-relevant articles).**
+   Scrub Doctrine/Convention from the 12 articles that will rotate
+   through the home-page Featured Article slot
+   (compounding-substrate, doorman-protocol, disclosure-substrate,
+   economic-model, leapfrog-2030-architecture, sovereign-ai-commons,
+   customer-hostability, three-ring-architecture, llm-substrate-decision,
+   worm-ledger-design, knowledge-commons, substrate-native-compatibility).
+   Highest editorial value; narrow scope; one session.
+
+2. **Second sweep — substrate/ + architecture/ categories.** Where
+   the body text leaks workspace governance vocabulary, replace
+   "Doctrine claim #N — X" with "X" + wikilink to the underlying
+   TOPIC; replace "per Convention X" with the rule expressed in
+   prose. ~50 files; multi-session.
+
+3. **Third sweep — remaining categories.** services/, systems/,
+   patterns/, reference/, governance/, infrastructure/, design-system/,
+   applications/. Remaining ~60 files.
+
+**Per-file editorial discipline:**
+- Some matches are legitimate references to outside concepts (e.g.,
+  general English "doctrine" or "convention" usage). Per-file judgment
+  required; not a mechanical find-replace.
+- Where the term is being defined within the article (e.g., a TOPIC
+  about Foundry's governance machinery), retain with plain-language
+  translation immediately preceding — same discipline as
+  vocabulary-retirement list per Editorial Reference Plan.
+- Bilingual ES pairs follow the EN scrub in lockstep.
+
+**Triggered by:** workspace constraint surfaced 2026-05-09 during
+Plan #7 (Wikipedia Main Page institutional adaptation). Slot designs
+this session removed all Doctrine/Convention vocabulary; this entry
+extends that discipline to the article corpus.
+
+---
 
 ### 2026-05-09 — Category-balance audit: COMPLETE — taxonomy ratified, all imbalances resolved
 

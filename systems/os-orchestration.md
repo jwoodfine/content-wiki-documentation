@@ -1,11 +1,11 @@
 ---
 schema: foundry-doc-v1
-title: "OrchestrationOS"
+title: "Orchestration OS"
 slug: os-orchestration
 category: systems
 type: os
 quality: complete
-short_description: "OrchestrationOS is the operating-system layer that manages a Totebox Archive cluster — aggregating archives, exposing a unified interface for operators, and routing AI session coordination messages between archives."
+short_description: "Orchestration OS is the operating-system layer that manages a Totebox Archive cluster — aggregating archives, exposing a unified interface for operators, and routing AI session coordination messages between archives."
 status: active
 bcsc_class: forward-looking
 last_edited: 2026-05-08
