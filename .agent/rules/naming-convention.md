@@ -112,44 +112,52 @@ Compressed findings that drove the proposal below:
   unresolved wikilinks is a contributor-experience win at near-
   zero cost.
 
-## 4. Proposed top-level category set
+## 4. Top-level category set
 
-Nine categories. Placed at repo root as sibling directories. Each
+Ten categories. Placed at repo root as sibling directories. Each
 maps to the URL `/<category>` route and carries a `_index.md`
 MOC landing.
 
 | Category | Purpose | Primary audience | Example articles |
 |---|---|---|---|
-| `architecture/` | Cross-cutting platform architecture — layers, principles, invariants | Engineers | `three-layer-stack`, `archive-types`, `platform-invariants` |
+| `architecture/` | Cross-cutting platform architecture, doctrine, concrete systems composition | Engineers | `three-ring-architecture`, `foundry-doctrine-architecture`, `doorman-protocol`, `totebox-orchestration-development` |
+| `substrate/` | Foundational mechanism concepts — substrates, primitives, disciplines | Engineers, financial community | `compounding-substrate`, `apprenticeship-substrate`, `citation-substrate`, `disclosure-substrate`, `language-protocol-substrate` |
+| `patterns/` | Named design patterns recurring across the platform | Engineers, designers | `source-of-truth-inversion`, `pairing-as-permission`, `reverse-funnel-editorial-pattern`, `wikipedia-leapfrog-design` |
 | `systems/` | Operating systems (`os-*`) — one article per OS | Engineers | `os-totebox`, `os-workplace`, `os-mediakit`, `os-orchestration` |
 | `services/` | Autonomous services (`service-*`) — one article per service | Engineers | `service-email`, `service-people`, `service-slm`, `service-content`, `service-egress` |
 | `applications/` | User-facing and internal apps (`app-*`) | Engineers, designers | `app-mediakit-knowledge`, `app-workplace-presentation` |
 | `governance/` | ADRs, licensing, release engineering, compliance | Engineers, financial community | `sys-adr-07`, `sys-adr-19`, `licensing-matrix`, `release-engineering-process` |
-| `infrastructure/` | Fleet deployment, cloud topology, operational runtime | Engineers, financial community | `fleet-infrastructure-cloud`, `deployment-topology`, `observability` |
-| `company/` | Organisational structure, roles, roadmap, financial disclosures | **Financial community**, general public | `pointsav`, `woodfine-management-corp`, `woodfine-capital-projects`, `roadmap-2026-2028`, `bcsc-disclosures` |
+| `infrastructure/` | Fleet deployment, cloud topology, storage, network, telemetry | Engineers, financial community | `fleet-infrastructure-cloud`, `worm-ledger-architecture`, `sovereign-mesh`, `sovereign-telemetry` |
 | `reference/` | Glossary, nomenclature, style guide, templates | Writers, engineers | `glossary`, `nomenclature-matrix`, `style-guide`, `article-template` |
-| `help/` | Contributor onboarding per audience | Future contributors | `contributing-as-engineer`, `contributing-as-writer`, `contributing-as-designer`, `proposing-an-adr` |
 | `design-system/` | Design system — components, tokens, foundations, and contribution guides | Engineers, designers | `design-philosophy`, `design-color`, `design-typography`, `badge`, `button`, `navigation-bar` |
 
 Rationale:
 
-- Ten sits in the 6–10 range the research identifies as common
-  across major engineering documentation sites. `design-system/`
-  added 2026-05-07 following project-editorial commit 4d5a499 which
-  published 30 component and foundation articles in this category.
-- Each is materially distinct from its neighbours:
-  - `architecture` (cross-cutting logical) vs `systems` (per-OS)
+- Ten categories. The split of the original `architecture/` into
+  `architecture/` + `substrate/` + `patterns/` (ratified 2026-05-09)
+  was a balance fix — the pre-split `architecture/` carried 75 articles,
+  ~3× the wiki mean. The new three-way split puts foundational mechanism
+  concepts in `substrate/`, named recurring design patterns in `patterns/`,
+  and cross-cutting platform/doctrine articles in `architecture/`.
+- `company/` and `help/` were retired 2026-05-09 (operator decision —
+  empty categories carry no editorial value; if their TOPICs come up
+  they can be re-added). Originally they were investor-facing and
+  contributor-onboarding categories; in practice no articles were
+  authored.
+- Each remaining category is materially distinct:
+  - `architecture` (cross-cutting + doctrine + concrete systems composition)
+    vs `substrate` (mechanism concepts) vs `patterns` (recurring shapes).
+  - `architecture` (composition + doctrine) vs `systems` (per-OS)
     vs `services` (per-service) vs `applications` (per-app) — the
     platform's own taxonomy from the Nomenclature Matrix.
-  - `governance` (formal technical decisions, ADRs) vs `company`
-    (organisational, financial, investor-facing) — kept separate
-    because they serve different audiences at different depths.
-  - `infrastructure` (physical / deployed runtime) vs
-    `architecture` (abstract / logical). Blurry edge; the rule is
-    deployment artefacts go in `infrastructure`, design intent
-    goes in `architecture`.
-  - `reference` (definitional) vs `help` (procedural). "What is
-    X" vs "how do I do X".
+  - `governance` (formal technical decisions, ADRs) — financial-community
+    facing material lives here in disclosure articles + ADRs.
+  - `infrastructure` (physical / deployed runtime + storage + network +
+    telemetry) vs `architecture` (abstract / logical). The rule is
+    deployment artefacts and runtime concerns go in `infrastructure`;
+    cross-cutting design intent and doctrine go in `architecture`.
+  - `reference` (definitional and stylistic) — what something is, how
+    style is determined.
 
 Mapping of existing legacy files to the new taxonomy is a separate
 migration tracked in `cleanup-log.md`.
@@ -352,3 +360,37 @@ until removal completes in a future normalisation pass.
 time-ordered enables chronological sort without a separate field; 26-char
 alphanumeric is copy-paste friendly; no hyphen breakage in URLs. UUIDv7 is a
 valid alternative but not chosen — ULID is already in use in Foundry tooling.
+
+---
+
+Ratified 2026-05-09 by operator (category-balance audit).
+
+**5. architecture/ split into architecture/ + substrate/ + patterns/.**
+Pre-split `architecture/` carried 75 articles after schema and slug-collision
+cleanup, ~3× the wiki mean — too big to navigate or browse usefully. Split
+into three categories:
+
+- `substrate/` (30 articles): foundational mechanism concepts — the
+  X-substrate articles, plus the disciplines and primitives that compose
+  them. Named to match the workspace's "substrate" vocabulary used in
+  doctrine claims.
+- `patterns/` (10 articles): named design patterns recurring across the
+  platform at the editorial / interface / coordination layer (e.g.,
+  source-of-truth-inversion, pairing-as-permission, reverse-funnel-editorial-pattern).
+- `architecture/` retained (~35 articles): cross-cutting platform
+  architecture, doctrine articles, concrete systems composition.
+
+The names were chosen for distinctiveness and stability — `substrate` and
+`patterns` are recognised industry vocabulary (Christopher Alexander → GoF
+patterns; Apache / Red Hat substrate model) while still carrying the
+workspace-specific meaning we use in doctrine. Earlier candidate names
+considered and rejected: `concepts/` (too generic), `doctrine/` (ambiguous
+with the Foundry Doctrine document), `frameworks/` (too engineering-specific).
+
+**6. Empty categories company/ + help/ retired.** Both categories were
+ratified at decision #1 above (2026-05-07) but no articles were authored
+in either. They render as empty surfaces, which carries no editorial
+value. Operator decision: retire from §4 taxonomy now; re-add if and
+when their first TOPICs are authored. The retirement reduces taxonomy
+from 11 categories (after the architecture split would have been 12) to
+10 active.
