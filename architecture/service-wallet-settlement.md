@@ -1,12 +1,15 @@
 ---
+schema: foundry-doc-v1
 title: "Service-Wallet Settlement"
 slug: service-wallet-settlement
 category: architecture
-status: stable
-bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
-editor: pointsav-engineering
+type: topic
 quality: complete
+status: active
+bcsc_class: public-disclosure-safe
+last_edited: 2026-05-09
+editor: pointsav-engineering
+paired_with: service-wallet-settlement.es.md
 references:
   - id: 1
     text: "Foundry Architecture claim #53 — Service-Wallet Settlement (ratified v0.1.0)"

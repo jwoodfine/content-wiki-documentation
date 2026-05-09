@@ -1,14 +1,17 @@
 ---
-schema: foundry-topic-v1
+schema: foundry-doc-v1
 title: "Inversión de la fuente de verdad"
-status: published
+slug: source-of-truth-inversion.es
+status: active
 category: architecture
-last_edited: 2026-04-30
+type: topic
+quality: complete
+last_edited: 2026-05-09
+editor: pointsav-engineering
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-language: es
-companion: architecture/topic-source-of-truth-inversion.md
+paired_with: source-of-truth-inversion.md
 cites:
   - doctrine-claim-29
   - doctrine-claim-34

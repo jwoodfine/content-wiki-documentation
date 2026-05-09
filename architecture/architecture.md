@@ -1,12 +1,15 @@
 ---
-schema: foundry-topic-v1
+schema: foundry-doc-v1
 title: "Platform Architecture Overview"
 slug: architecture
 category: architecture
-status: published
+type: topic
+quality: complete
+status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-09
 editor: pointsav-engineering
+paired_with: architecture.es.md
 ---
 
 The PointSav platform is designed around two structural properties: distributed cryptographic consistency and sovereign bootability. Both properties are preserved across cloud and offline-vault environments simultaneously.

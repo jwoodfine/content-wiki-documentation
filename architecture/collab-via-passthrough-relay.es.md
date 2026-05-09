@@ -1,14 +1,17 @@
 ---
-schema: foundry-topic-v1
+schema: foundry-doc-v1
 title: "Colaboración en tiempo real mediante relé de paso — un patrón de sustrato"
-status: published
+slug: collab-via-passthrough-relay.es
+status: active
 category: architecture
-last_edited: 2026-04-30
+type: topic
+quality: complete
+last_edited: 2026-05-09
+editor: pointsav-engineering
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-language: es
-companion: architecture/collab-via-passthrough-relay.md
+paired_with: collab-via-passthrough-relay.md
 cites:
   - doctrine-claim-29
   - doctrine-claim-16

@@ -1,17 +1,17 @@
 ---
-schema: foundry-topic-v1
+schema: foundry-doc-v1
 title: "Real-time collaboration via passthrough relay — a substrate pattern"
-status: published
+slug: collab-via-passthrough-relay
+status: active
 category: architecture
-last_edited: 2026-04-30
+type: topic
+quality: complete
+last_edited: 2026-05-09
+editor: pointsav-engineering
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-research_done_count: 9
-research_suggested_count: 2
-open_questions_count: 1
-research_provenance: project-knowledge cluster session 619abe3eff24497e
-research_inline: false
+paired_with: collab-via-passthrough-relay.es.md
 cites:
   - doctrine-claim-29
   - doctrine-claim-16

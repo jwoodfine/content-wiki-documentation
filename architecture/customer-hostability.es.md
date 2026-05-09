@@ -1,7 +1,15 @@
 ---
+schema: foundry-doc-v1
+title: "Hospedaje por el cliente"
+slug: customer-hostability.es
 category: architecture
+type: topic
+quality: complete
+status: active
 bcsc_class: public-disclosure-safe
-
+last_edited: 2026-05-09
+editor: pointsav-engineering
+paired_with: customer-hostability.md
 ---
 
 

@@ -1,11 +1,15 @@
 ---
+schema: foundry-doc-v1
 title: "Restricciones en tiempo de decodificación (resumen)"
 slug: decode-time-constraints.es
 category: architecture
+type: topic
+quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-27
+last_edited: 2026-05-09
 editor: pointsav-engineering
+paired_with: decode-time-constraints.md
 cites:
   - ni-51-102
   - llguidance

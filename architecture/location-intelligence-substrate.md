@@ -1,12 +1,15 @@
 ---
+schema: foundry-doc-v1
 title: "Location Intelligence Substrate"
 slug: location-intelligence-substrate
 category: architecture
-status: stable
-bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
-editor: pointsav-engineering
+type: topic
 quality: complete
+status: active
+bcsc_class: public-disclosure-safe
+last_edited: 2026-05-09
+editor: pointsav-engineering
+paired_with: location-intelligence-substrate.es.md
 references:
   - id: 1
     text: "Overture Maps Foundation — GeoParquet places schema. overturemaps.org"

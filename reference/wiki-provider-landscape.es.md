@@ -1,14 +1,17 @@
 ---
-schema: foundry-topic-v1
+schema: foundry-doc-v1
 title: "Panorama de proveedores de wiki — cómo se ve el campo en 2026"
-status: published
+slug: wiki-provider-landscape.es
+status: active
 category: reference
-last_edited: 2026-04-30
+type: topic
+quality: complete
+last_edited: 2026-05-09
+editor: pointsav-engineering
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-language: es
-companion: reference/topic-wiki-provider-landscape.md
+paired_with: wiki-provider-landscape.md
 cites:
   - ni-51-102
   - osc-sn-51-721

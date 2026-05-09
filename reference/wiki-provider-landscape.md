@@ -1,17 +1,17 @@
 ---
-schema: foundry-topic-v1
+schema: foundry-doc-v1
 title: "Wiki provider landscape — what the 2026 wiki, knowledge-base, and documentation field looks like"
-status: published
+slug: wiki-provider-landscape
+status: active
 category: reference
-last_edited: 2026-04-30
+type: topic
+quality: complete
+last_edited: 2026-05-09
+editor: pointsav-engineering
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-research_done_count: 25
-research_suggested_count: 4
-open_questions_count: 1
-research_provenance: web-fetch + web-search across 25 providers + workspace-direct-consultation, 2026-04-30
-research_inline: false
+paired_with: wiki-provider-landscape.es.md
 cites:
   - ni-51-102
   - osc-sn-51-721

@@ -1,17 +1,17 @@
 ---
-schema: foundry-topic-v1
+schema: foundry-doc-v1
 title: "Substrate-native compatibility — why the Action API shim was dropped"
-status: published
+slug: substrate-native-compatibility
+status: active
 category: architecture
-last_edited: 2026-04-30
+type: topic
+quality: complete
+last_edited: 2026-05-09
+editor: pointsav-engineering
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-research_done_count: 12
-research_suggested_count: 2
-open_questions_count: 0
-research_provenance: project-knowledge cluster session 619abe3eff24497e, 2026-04-27
-research_inline: false
+paired_with: substrate-native-compatibility.es.md
 cites:
   - doctrine-claim-29
   - doctrine-claim-16

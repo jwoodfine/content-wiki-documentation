@@ -1,17 +1,17 @@
 ---
-schema: foundry-topic-v1
+schema: foundry-doc-v1
 title: "Source-of-truth inversion"
-status: published
+slug: source-of-truth-inversion
+status: active
 category: architecture
-last_edited: 2026-04-30
+type: topic
+quality: complete
+last_edited: 2026-05-09
+editor: pointsav-engineering
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-research_done_count: 6
-research_suggested_count: 2
-open_questions_count: 0
-research_provenance: project-knowledge cluster, sub-agent brief 03, 2026-04-28
-research_inline: false
+paired_with: source-of-truth-inversion.es.md
 cites:
   - doctrine-claim-29
   - doctrine-claim-34

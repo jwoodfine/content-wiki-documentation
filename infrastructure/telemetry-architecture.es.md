@@ -1,12 +1,15 @@
 ---
-schema: foundry-topic-v1
+schema: foundry-doc-v1
 title: "Arquitectura de Telemetría"
 slug: telemetry-architecture.es
 category: infrastructure
-status: published
+type: topic
+quality: complete
+status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-09
 editor: pointsav-engineering
+paired_with: telemetry-architecture.md
 ---
 
 El sistema de telemetría de la plataforma recopila analítica de tráfico web desde los nodos de borde en producción y la enruta hacia un entorno de procesamiento local, sin pasar por ningún servicio de agregación en la nube de terceros. Todo el análisis se ejecuta en hardware bajo control del operador.

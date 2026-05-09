@@ -1,12 +1,15 @@
 ---
+schema: foundry-doc-v1
 title: "Liquidación con Service-Wallet"
 slug: service-wallet-settlement.es
 category: architecture
-status: stable
-bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
-editor: pointsav-engineering
+type: topic
 quality: complete
+status: active
+bcsc_class: public-disclosure-safe
+last_edited: 2026-05-09
+editor: pointsav-engineering
+paired_with: service-wallet-settlement.md
 ---
 
 

@@ -1,12 +1,15 @@
 ---
+schema: foundry-doc-v1
 title: "Foundry Doctrine — Architectural Overview"
 slug: foundry-doctrine-architecture
 category: architecture
-status: stable
-bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
-editor: pointsav-engineering
+type: topic
 quality: complete
+status: active
+bcsc_class: public-disclosure-safe
+last_edited: 2026-05-09
+editor: pointsav-engineering
+paired_with: foundry-doctrine-architecture.es.md
 references:
   - id: 1
     text: "NI 51-102 Continuous Disclosure Obligations — BCSC"
