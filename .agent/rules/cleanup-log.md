@@ -16,6 +16,19 @@ Last updated: 2026-05-08.
 
 ## Open
 
+### 2026-05-09 — Category-balance audit: COMPLETE — taxonomy ratified, all imbalances resolved
+
+`Closed: 2026-05-09.` 5 commits closed the audit:
+- `729c39b` — Schema scrub (24 files; foundry-topic-v1 → foundry-doc-v1, missing-schema fills, slug-collision setup)
+- `d0b5b58` — 5 slug collisions resolved (10 files git rm'd, kept canonical version of each)
+- `333a59d` — 7 articles moved architecture/ → services/ (2) + infrastructure/ (5)
+- `eaac482` — 11 articles moved reference/ → design-system/ (visual/UX content)
+- `2e843fb` — Taxonomy ratified: architecture/ split into architecture/+substrate/+patterns/; company/+help/ retired
+
+Final wiki state: 10 active categories, no empties, no category >2× mean. naming-convention.md §4 + §13 updated. Original 4 imbalances all resolved (architecture oversized → split; reference oversized → trimmed; applications/infrastructure undersized → infrastructure populated, applications stable; company/help empty → retired).
+
+Original 2026-05-09 entry kept here for audit trail:
+
 ### 2026-05-09 — Category-balance analysis: 4 imbalances surfaced; 7 mechanical moves done; 3 deeper questions for operator
 
 Operator dispatched a category-balance check before live wiki updates: "we don't want any blanks or categories that are too big or too small."
