@@ -8,7 +8,7 @@
 > Read at session start when a Root Claude opens in this repo. Update
 > at session end when repo-scope open items change.
 
-Last updated: 2026-04-30.
+Last updated: 2026-05-12.
 
 ---
 
@@ -31,8 +31,9 @@ Last updated: 2026-04-30.
   (`architecture/`, `services/`, `governance/`, others tbd), move
   and rename existing topic files, classify structured-record YAML
   files, write category `_index.md` pages, rewrite cross-references
-  to `[[slug]]` wikilinks. Sequencing candidate: one category at a
-  time, beginning with `architecture/` (already seeded).
+  to `[[slug]]` wikilinks.
+  
+  [x] YAML files reorganization (May 2026): Classified and moved root YAML files into `architecture/`, `governance/`, `reference/`, and `services/`.
 
 - **Remove the `upstream` remote.** Points at
   `pointsav/pointsav-monorepo.git`, unused by this repo's flow.
