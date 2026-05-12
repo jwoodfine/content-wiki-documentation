@@ -9,6 +9,7 @@ language: es
 paired_with: flat-file-bim-leapfrog.md
 status: active
 last_edited: 2026-05-06
+category: architecture
 ---
 
 

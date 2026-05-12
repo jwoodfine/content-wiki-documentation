@@ -7,6 +7,7 @@ audience: vendor-public
 bcsc_class: current-fact
 language: en
 paired_with: properties-panel-accessibility.es.md
+category: design-system
 ---
 
 

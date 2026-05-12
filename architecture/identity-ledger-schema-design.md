@@ -7,6 +7,7 @@ audience: vendor-public
 bcsc_class: current-fact
 language: en
 paired_with: identity-ledger-schema-design.es.md
+category: architecture
 ---
 
 

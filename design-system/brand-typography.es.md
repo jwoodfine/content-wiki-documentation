@@ -7,6 +7,7 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: brand-typography.md
+category: design-system
 ---
 
 
