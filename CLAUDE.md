@@ -110,10 +110,11 @@ tracks signing extension as a Tier 1 Phase B2 item.
 Inherited from workspace §6 and reaffirmed here because this repo's
 content is publicly served at `documentation.pointsav.com`:
 
-- **Bilingual READMEs.** `README.md` and `README.es.md` at repo root
-  are both maintained. The wiki content itself (articles in category
-  subdirectories) is English-only unless a future decision adds
-  Spanish content.
+- **Bilingual content.** `README.md` and `README.es.md` at repo root
+  are both maintained. Wiki articles (category subdirectories) are
+  bilingual — English articles carry Spanish strategic-adaptation
+  pairs (`.es.md`) per workspace §6. Operational files (CLAUDE.md,
+  NEXT.md, `.agent/rules/`) are English-only.
 - **Canonical names.** Names from the Nomenclature Matrix are used
   verbatim in article titles, slugs, and wikilink targets. No
   synonyms, no legacy prefixes.

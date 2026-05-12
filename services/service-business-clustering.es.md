@@ -9,19 +9,13 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-08
 editor: pointsav-engineering
 paired_with: service-business-clustering.md
 cites: []
-## Véase también
-
-- [[app-orchestration-gis]]
-- [[service-fs-data-lake]]
-- [[service-places-filtering]]
-
 ---
 
-`service-business` es la capa de inteligencia responsable de transformar puntos de datos minoristas crudos en clústeres comerciales accionables. Implementa un patrón de agrupación padre-hijo para manejar entornos minoristas físicos complejos donde múltiples operadores distintos comparten un único nodo comercial.
+Los datos minoristas son inherentemente ruidosos — un único sitio comercial frecuentemente contiene múltiples puntos distintos, como una tienda ancla de gran formato, una farmacia integrada y una estación de combustible que comparten la misma zona de estacionamiento. **`service-business`** convierte esos puntos crudos en clústeres comerciales accionables utilizando un esquema espacial padre-hijo, de modo que el motor GIS recibe una entidad comercial unificada por sitio físico en lugar de varios registros superpuestos. El servicio itera el lago de datos crudos de `service-fs`, agrupa entidades que comparten una huella dentro de un umbral de proximidad de 100 m y asigna el ancla nombrada de mayor peso como el padre.
 
 ## El problema de los datos minoristas
 
@@ -40,6 +34,8 @@ Para realizar esto a escala, el servicio utiliza un índice espacial basado en c
 
 La salida es un archivo `cleansed-clusters.jsonl` refinado. Este conjunto de datos procesado es consumido por el `app-orchestration-gis` descendente para construir el índice de co-ubicación regional.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+- [[app-orchestration-gis]]
+- [[service-fs-data-lake]]
+- [[service-places-filtering]]

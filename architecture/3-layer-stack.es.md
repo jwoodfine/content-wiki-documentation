@@ -13,15 +13,8 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: 3-layer-stack.md
 cites: []
-## Véase también
-
-- [[compounding-substrate]]
-- [[capability-based-security]]
-- [[sel4-foundation]]
-- [[sovereign-ai-routing]]
-- [[worm-ledger-architecture]]
-
 ---
+
 
 La Pila de Tres Capas es el patrón de descomposición de infraestructura utilizado en los despliegues de PointSav. El patrón separa la capacidad de cómputo bruto, la ejecución de la plataforma aislada y el acceso seguro del operador en tres capas distintas.
 
@@ -37,6 +30,10 @@ La Pila de Tres Capas es el patrón de descomposición de infraestructura utiliz
 
 Cada capa es reemplazable de forma independiente. Un cliente puede migrar de una capa de infraestructura en la nube a hardware local sin cambiar cómo opera la capa de plataforma. La lógica operativa no está acoplada al sustrato físico que la ejecuta.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+- [[compounding-substrate]]
+- [[capability-based-security]]
+- [[sel4-foundation]]
+- [[sovereign-ai-routing]]
+- [[worm-ledger-architecture]]

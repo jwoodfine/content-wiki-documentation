@@ -7,14 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: identity-ledger-schema-design.md
-## Véase también
-
-- [[machine-based-auth]]
-- [[capability-based-security]]
-- [[worm-ledger-design]]
-- [[cryptographic-ledgers]]
-
 ---
+
 
 
 El Ledger de Identidad es el registro canónico y permanente de las personas dentro del ecosistema Foundry. Utiliza un formato de "solo anexar" (append-only) para asegurar que la historia de cada identidad sea inmutable y auditable.
@@ -33,9 +27,9 @@ El esquema permite seguir la evolución de los roles de una persona (empleado, c
 
 El sistema publica estas identidades mediante el protocolo MCP, permitiendo que otros servicios de Foundry consulten datos de personas de forma segura y estandarizada, sirviendo como la base de confianza para toda la plataforma.
 
+## Véase también
 
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*
+- [[machine-based-auth]]
+- [[capability-based-security]]
+- [[worm-ledger-design]]
+- [[cryptographic-ledgers]]

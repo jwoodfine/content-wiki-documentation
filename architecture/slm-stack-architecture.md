@@ -128,15 +128,3 @@ The mandatory rule for the entire dependency graph: every entry is one of `MIT`,
 2. `YOYO-COMPUTE.md` — workspace-root specification for the Yo-Yo compute substrate; companion to this topic.
 3. SYS-ADR-07 — structured data never routes through AI; the sanitise-outbound discipline at the Doorman boundary.
 4. `conventions/compounding-substrate.md` — the meta-pattern service-slm implements.
-
----
-
-## Provenance
-
-Source material: workspace-root `SLM-STACK.md` (v1, 2026-04-20). Naming corrections applied: `vendor-phi3-mini` / `phi3-mini` → `OLMo 3` / `vendor-olmo-3`; `frontend` → `ConsoleOS`; `ArchiveOS` → `ToteboxOS`. Structural-positioning discipline applied: no competitive platform named by contrast. BCSC forward-looking framing applied to open-source release path (Apache-2.0 option labelled "intended"). Bloomberg register throughout.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

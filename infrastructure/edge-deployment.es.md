@@ -1,12 +1,15 @@
 ---
-schema: foundry-topic-v1
+schema: foundry-doc-v1
 title: "Despliegue en el Borde e Ingesta en el Perímetro"
 slug: edge-deployment.es
 category: infrastructure
-status: published
+type: topic
+quality: complete
+status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-09
 editor: pointsav-engineering
+paired_with: edge-deployment.md
 ---
 
 La plataforma traslada todas las conexiones de red externas al perímetro más externo del sistema antes de que cualquier dato llegue a los anillos de procesamiento central. Esta arquitectura impide que los ataques de red habituales alcancen los registros financieros y los datos estructurados almacenados en el Anillo 2.
@@ -30,9 +33,3 @@ Dado que los payloads en bruto se sanean en el perímetro y son los registros li
 - [[worm-ledger-architecture]] — el registro WORM que almacena los datos saneados
 - [[service-email]] — ingesta del Anillo 1 para correo electrónico
 - [[compounding-substrate]] — la arquitectura de tres anillos en contexto
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

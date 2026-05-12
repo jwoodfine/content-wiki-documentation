@@ -2,18 +2,14 @@
 schema: foundry-doc-v1
 type: topic
 slug: bim-aec-muscle-memory
-title: AEC Muscle Memory and Interface Conventions
+title: AEC Muscle Memory and Interface Patterns
 audience: vendor-public
 bcsc_class: current-fact
 language: en
 paired_with: bim-aec-muscle-memory.es.md
-## See Also
-
-- [[bim-design-philosophy]]
-- [[bim-token-taxonomy]]
-- [[flat-file-bim-leapfrog]]
-
+cites: [ifc-4-3, uniclass-2015, bsdd-v1]
 ---
+
 
 
 The Building Design System adopts established interface vocabularies from industry-standard tools (Revit, ArchiCAD, BricsCAD, and Bonsai) to ensure a zero-learning curve for AEC practitioners. By mirroring universal navigation and layout conventions, Foundry allows users to focus on strategic innovations—such as the flat-file vault and code-as-composable-geometry—rather than basic tool interaction.
@@ -53,9 +49,8 @@ Existing BIM tools predominantly target designers. The Building Design System is
 
 These capabilities are planned for the v0.0.2 release and represent the convergence of spatial and operational data.
 
+## See Also
 
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*
+- [[bim-design-philosophy]]
+- [[bim-token-taxonomy]]
+- [[flat-file-bim-leapfrog]]

@@ -13,13 +13,8 @@ editor: pointsav-engineering
 cites:
   - ni-51-102
 paired_with: cluster-design-draft-pipeline.md
-## Véase también
-
-- [[design-system-substrate]]
-- [[cluster-wiki-draft-pipeline]]
-- [[draft-research-trail-discipline]]
-
 ---
+
 
 ## Resumen estratégico
 
@@ -41,8 +36,8 @@ Los borradores se originan desde tres capas: nivel de clúster (una funcionalida
 
 Cada transición a través del pipeline emite un evento estructurado al corpus de aprendizaje: `draft-created`, `draft-refined` y `creative-edited`. El primer par forma un ejemplo de entrenamiento de Etapa 1; el segundo par forma un ejemplo de Etapa 2 del diseñador creativo. El pipeline está diseñado como opt-in para clústeres sin superficies de usuario, pero es obligatorio cuando un clúster introduce nuevos elementos visuales.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*
+- [[design-system-substrate]]
+- [[cluster-wiki-draft-pipeline]]
+- [[draft-research-trail-discipline]]

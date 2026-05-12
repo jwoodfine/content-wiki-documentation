@@ -13,14 +13,8 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: sovereign-replacement-initiative.md
 cites: []
-## Véase también
-
-- [[moonshot-initiatives]]
-- [[ontological-governance]]
-- [[verification-surveyor]]
-- [[customer-hostability]]
-
 ---
+
 
 La Iniciativa de Reemplazo Soberano es el programa formal que registra cada dependencia foránea en un libro contable estructurado, aplica aislamiento de cuarentena hasta que un reemplazo nativo esté listo, y retira la dependencia una vez que el reemplazo alcanza paridad estructural.
 
@@ -38,6 +32,9 @@ El libro contable hace la deuda visible. La visibilidad evita que se acumule sil
 
 Una dependencia se retira del libro contable cuando la implementación nativa que la reemplaza alcanza **paridad estructural** — la misma funcionalidad, sin diferencias de comportamiento observables para los servicios descendentes. En ese punto, el directorio en cuarentena se elimina físicamente y la dependencia de terceros deja de estar presente en el despliegue.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+- [[moonshot-initiatives]]
+- [[ontological-governance]]
+- [[verification-surveyor]]
+- [[customer-hostability]]

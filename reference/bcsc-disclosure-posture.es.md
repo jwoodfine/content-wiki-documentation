@@ -14,13 +14,8 @@ cites:
   - ni-51-102
   - osc-sn-51-721
 paired_with: bcsc-disclosure-posture.md
-## Véase también
-
-- [[citation-substrate]]
-- [[draft-research-trail-discipline]]
-- [[cluster-wiki-draft-pipeline]]
-
 ---
+
 
 ## Resumen estratégico
 
@@ -42,8 +37,8 @@ La postura de divulgación continua trata cada artefacto publicado en un reposit
 
 La postura aplica a todos los archivos Markdown publicados, todos los mensajes de commit en ramas que pueden enviarse a repositorios públicos, todos los archivos README, todos los temas TOPIC en wikis de documentación y cualquier comentario de código visible en tiempo de ejecución. Las citas forman parte de la práctica: cada cláusula doctrinal y documento público declara sus dependencias de citación en metadatos estructurados.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*
+- [[citation-substrate]]
+- [[draft-research-trail-discipline]]
+- [[cluster-wiki-draft-pipeline]]

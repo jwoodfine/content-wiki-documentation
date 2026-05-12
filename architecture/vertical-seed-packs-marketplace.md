@@ -65,15 +65,3 @@ Vertical Seed Packs are the distribution mechanism for the [[seed-taxonomy-as-sm
 
 1. Doctrine claim #50 — Vertical Seed Packs Marketplace (ratified v0.1.0).
 2. Reference pack: Woodfine real estate seed at `vendor/pointsav-monorepo/service-content/seeds/`.
-
----
-
-## Provenance
-
-Source: `convention-vertical-seed-packs-marketplace.md` (refined 2026-04-30). Workspace-internal file paths and open questions removed. All distribution, contribution, and governance claims carry "planned," "intended," and "may" framing per BCSC continuous-disclosure posture, as Phase 5 implementation has not begun.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

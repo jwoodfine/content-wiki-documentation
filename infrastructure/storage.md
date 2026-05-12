@@ -1,12 +1,15 @@
 ---
-schema: foundry-topic-v1
+schema: foundry-doc-v1
 title: "Immutable Storage and Secure Backup"
 slug: storage
 category: infrastructure
-status: published
+type: topic
+quality: complete
+status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-09
 editor: pointsav-engineering
+paired_with: storage.es.md
 ---
 
 The platform is designed to provide auditors and investors with a tamper-evident record: once data is written, it cannot be secretly overwritten or deleted. This property is enforced at the hardware level, not solely by software policy.
@@ -38,9 +41,3 @@ The pairing is established at provisioning time and is specific to the primary s
 - [[worm-ledger-architecture]] — the full WORM ledger specification
 - [[architecture]] — archive portability and sovereign bootability
 - [[edge-deployment]] — how data enters the system before reaching storage
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

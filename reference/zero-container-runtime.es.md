@@ -12,11 +12,8 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: zero-container-runtime.md
-## Véase también
-
-- [[service-slm-operationalization-plan]]
-
 ---
+
 
 Todo despliegue de PointSav — en todos los anillos de servicio, todos los niveles de cómputo y todos los contextos de despliegue desde la implementación de referencia hasta un futuro despliegue en appliance — se ejecuta como un binario ELF de Linux supervisado por systemd en una máquina virtual simple o un host bare-metal. Sin tiempo de ejecución de contenedores. Sin orquestador. Sin plataforma de tiempo de ejecución gestionada.
 
@@ -40,8 +37,6 @@ La supervisión de procesos se maneja con unidades systemd. Los binarios Linux E
 
 El compromiso acepta un tiempo de inicio en frío más largo para el cómputo de ráfaga en comparación con las plataformas de contenedores gestionadas. A cambio: cada proceso en ejecución en cada despliegue es visible para el cliente con herramientas estándar de administración del sistema, y el mismo binario y archivo de unidad se ejecuta en cualquier host Linux sin modificación.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*
+- [[service-slm-operationalization-plan]]

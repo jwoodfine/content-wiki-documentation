@@ -13,13 +13,8 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: moonshot-initiatives.md
 cites: []
-## Véase también
-
-- [[sovereign-replacement-initiative]]
-- [[ontological-governance]]
-- [[verification-surveyor]]
-
 ---
+
 
 Las iniciativas moonshot son programas de ingeniería activos que construyen reemplazos nativos para dependencias de terceros en cuarentena, con el objetivo de eliminar el bloqueo de proveedores y reducir la superficie de ataque externa de la plataforma a lo largo del tiempo.
 
@@ -37,6 +32,8 @@ La cuarentena no es una medida punitiva — es una postura arquitectónica. Un c
 
 La Iniciativa de Reemplazo Soberano es el programa de gobernanza que coordina estos esfuerzos. Proporciona el marco para priorizar qué dependencias de terceros se apuntan, en qué secuencia, y qué criterios definen el éxito de cada iniciativa.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+- [[sovereign-replacement-initiative]]
+- [[ontological-governance]]
+- [[verification-surveyor]]

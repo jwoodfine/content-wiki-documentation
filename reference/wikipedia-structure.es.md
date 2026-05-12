@@ -11,14 +11,8 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 paired_with: wikipedia-structure.md
-## Véase también
-
-- [[style-guide-topic]]
-- [[style-guide-readme]]
-- [[compounding-substrate]]
-- [[apprenticeship-substrate]]
-
 ---
+
 
 Wikipedia es la convención de documentación más interiorizada del mundo. Cualquier persona que haya utilizado Wikipedia durante un tiempo lleva un modelo inconsciente de dónde vive la información en una página: el resumen ejecutivo al inicio, el recuadro de datos a la derecha, las referencias al pie. `documentation.pointsav.com` adopta las mismas convenciones estructurales para que los lectores lleguen ya sabiendo cómo utilizarla.
 
@@ -42,8 +36,9 @@ La versión completa en inglés ([wikipedia-structure.md](wikipedia-structure.md
 
 Los colaboradores que escriban o editen artículos deben consultar ese artículo como referencia de estilo. Los tres elementos esenciales para el trabajo cotidiano son: escribir el párrafo de apertura como si fuera el único texto que el lector verá; usar el campo `quality:` con honestidad desde el primer commit; y mantener el orden estándar de secciones (cuerpo → Véase también → Referencias).
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*
+- [[style-guide-topic]]
+- [[style-guide-readme]]
+- [[compounding-substrate]]
+- [[apprenticeship-substrate]]

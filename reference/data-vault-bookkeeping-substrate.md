@@ -64,13 +64,3 @@ The behavioral specification for the bookkeeping substrate is intended to emerge
 
 - [[compounding-substrate]] — the substrate sovereignty pattern this architecture extends
 - [[design-system-substrate]] — a parallel substrate with the same vault-as-canonical, consumer-as-interchangeable pattern
-
-## Provenance
-
-Authored 2026-05-01 by project-language Task Claude. Source: `conventions/data-vault-bookkeeping-substrate.md` (ratified 2026-04-27). External references: EN 16931, Peppol BIS Billing 3.0, ZUGFeRD/Factur-X, ISAE 3402, SOC 2 Trust Services Criteria, ISO 20022. Forward-looking statements (planned e-invoicing integrations, FedNow support, domain-expert development pattern) carry intended/planned framing per [ni-51-102].
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

@@ -14,14 +14,8 @@ cites:
   - ni-51-102
   - osc-sn-51-721
 paired_with: cluster-wiki-draft-pipeline.md
-## Véase también
-
-- [[cluster-design-draft-pipeline]]
-- [[draft-research-trail-discipline]]
-- [[bcsc-disclosure-posture]]
-- [[citation-substrate]]
-
 ---
+
 
 ## Resumen estratégico
 
@@ -51,8 +45,9 @@ Los borradores editoriales se originan desde tres capas:
 
 Cada transición editorial emite un evento estructurado al corpus de aprendizaje: `draft-created`, `draft-refined` y `creative-edited`. Estos pares se acumulan como material de entrenamiento para la capacidad de inferencia local de la plataforma, generando dos pares de preferencia por ciclo de vida de borrador.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*
+- [[cluster-design-draft-pipeline]]
+- [[draft-research-trail-discipline]]
+- [[bcsc-disclosure-posture]]
+- [[citation-substrate]]

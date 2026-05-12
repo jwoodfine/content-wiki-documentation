@@ -13,15 +13,8 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: crypto-attestation.md
 cites: []
-## Véase también
-
-- [[worm-ledger-architecture]]
-- [[cryptographic-ledgers]]
-- [[machine-based-auth]]
-- [[compounding-substrate]]
-- [[sovereign-ai-routing]]
-
 ---
+
 
 La attestación criptográfica de cargas es el mecanismo por el cual los nodos perimetrales de PointSav demuestran dinámicamente la integridad de su contenido textual publicado a cualquier espectador. Utiliza hashing SHA-256 del lado del cliente, de modo que cualquier auditor puede verificar independientemente que una divulgación no ha sido alterada en tránsito.
 
@@ -41,6 +34,10 @@ La attestación es de cero ejecución en el servidor para el cálculo del hash: 
 - Artículos del wiki de contenido donde la verificación de integridad importa a lectores institucionales.
 - Cualquier superficie de contenido donde un lector necesite confirmar que está leyendo la versión publicada.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+- [[worm-ledger-architecture]]
+- [[cryptographic-ledgers]]
+- [[machine-based-auth]]
+- [[compounding-substrate]]
+- [[sovereign-ai-routing]]

@@ -1,11 +1,15 @@
 ---
+schema: foundry-doc-v1
 title: "Restricciones en tiempo de decodificación (resumen)"
 slug: decode-time-constraints.es
 category: architecture
+type: topic
+quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-27
+last_edited: 2026-05-09
 editor: pointsav-engineering
+paired_with: decode-time-constraints.md
 cites:
   - ni-51-102
   - llguidance
@@ -96,10 +100,3 @@ trayectoria descrita a continuación es `planificada` e `intencionada`:
 - [El sustrato de aprendizaje](topic-apprenticeship-substrate.es.md)
 - La convención que refleja este artículo:
   `~/Foundry/conventions/language-protocol-substrate.md` §3
-
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

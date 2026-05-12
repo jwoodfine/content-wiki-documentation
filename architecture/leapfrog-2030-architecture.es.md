@@ -14,21 +14,21 @@ editor: pointsav-engineering
 cites: []
 ---
 
-Cómo un sustrato de inteligencia artificial para pequeñas y medianas empresas se diferencia estructuralmente de la infraestructura de los grandes proveedores de nube.
+Tres fuerzas de mercado que convergen en 2026 — modelos de lenguaje ligeros viables en hardware de consumo, el Protocolo de Contexto de Modelos como estándar de composición de servicios de IA, y el despliegue en instalaciones propias como el segmento de mayor crecimiento en el mercado de software para pymes — abren un espacio estructural que los grandes proveedores de nube no pueden ocupar sin desmantelar su propio modelo de negocio. La Arquitectura Leapfrog 2030 es el compromiso de PointSav con ese espacio: código de plataforma soberano, servicios componibles e ingresos por transacción en lugar de cuotas de licencia recurrentes. El cliente posee su hardware, sus datos y sus pesos de adaptador; PointSav toma un porcentaje por transacción cuando el valor fluye.
 
 ## La apuesta estructural
 
 En 2026, tres fuerzas convergen. Los modelos de lenguaje ligeros de código abierto han alcanzado un umbral de utilidad práctica para tareas especializadas. El Protocolo de Contexto de Modelos se ha convertido en el estándar de composición de servicios con inteligencia artificial [mcp-spec]. Y el despliegue en instalaciones propias es el segmento de mayor crecimiento dentro del mercado de software para pymes [idc-smb-2026].
 
-Estas tres fuerzas abren un espacio que los grandes proveedores de nube no pueden ocupar por razones estructurales: su modelo de negocio requiere flujos continuos de datos hacia sus servidores y cobros recurrentes por acceso. Foundry propone una alternativa: el cliente posee su hardware, sus datos, sus pesos de adaptador y sus relaciones comerciales.
+Estas tres fuerzas abren un espacio que los grandes proveedores de nube no pueden ocupar por razones estructurales: su modelo de negocio requiere flujos continuos de datos hacia sus servidores y cobros recurrentes por acceso. PointSav propone una alternativa: el cliente posee su hardware, sus datos, sus pesos de adaptador y sus relaciones comerciales.
 
 ## Tres distinciones estructurales
 
-**Soberanía sobre el servicio.** El sistema del cliente está diseñado para operar sin dependencia continua de Foundry. Si Foundry cesa operaciones, el sustrato del cliente está previsto para continuar funcionando.
+**Soberanía sobre el servicio.** El sistema del cliente está diseñado para operar sin dependencia continua de PointSav. Si PointSav cesa operaciones, la plataforma del cliente está prevista para continuar funcionando.
 
 **Especialización sobre generalización.** El nivel A —siempre activo, instalado en el sitio del cliente— es un especialista de mil millones de parámetros entrenado con los datos del propio cliente. Con el tiempo se torna útil de forma específica para el entorno de ese cliente. El nivel generalista (nivel B, modelos de 32 mil millones de parámetros en GPU) es opcional y por demanda.
 
-**Composición en lugar de captura.** Los ingresos previstos de Foundry se acumulan junto con los ingresos del cliente, no a expensas de ellos. El sustrato de liquidación directa (doctrina, punto #53) está diseñado para que las transacciones de datos fluyan directamente del comprador al cliente.
+**Composición en lugar de captura.** Los ingresos previstos de PointSav se acumulan junto con los ingresos del cliente, no a expensas de ellos. El sustrato de liquidación directa (doctrina, punto #53) está diseñado para que las transacciones de datos fluyan directamente del comprador al cliente.
 
 ## Para la pequeña empresa
 
@@ -41,9 +41,3 @@ Cada interacción con el sistema es un posible ejemplo de entrenamiento para el 
 - [[compounding-substrate]] — El Sustrato Compuesto: fundamento económico y técnico
 - [[service-slm-yoyo-operational]] — Estado operacional del nivel B (Yo-Yo) y Doorman
 - [[source-of-truth-inversion]] — El patrón canónico/vista/efímero que sustenta el sustrato
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

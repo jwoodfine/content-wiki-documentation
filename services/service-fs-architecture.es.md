@@ -3,40 +3,38 @@ schema: foundry-doc-v1
 type: topic
 slug: service-fs-architecture
 title: "Arquitectura de Service-FS: El Núcleo WORM"
+category: services
 audience: vendor-public
 bcsc_class: current-fact
+status: active
 language: es
+last_edited: 2026-05-08
+editor: pointsav-engineering
 paired_with: service-fs-architecture.md
+---
+
+Cada registro escrito en la plataforma PointSav — anclajes de identidad, comunicaciones de correo electrónico, artefactos de documentos — llega a `service-fs`, un libro contable inmutable de escritura única y lectura múltiple (WORM) por inquilino. Una vez escrito, los registros no pueden modificarse ni eliminarse; el libro contable es la columna vertebral con evidencia de manipulación que los servicios del Anillo 2 consultan y los servicios del Anillo 1 escriben.
+
+## Estructura de Cuatro Capas
+
+- **Anclaje (L4):** Publicación mensual de pruebas de integridad en registros públicos externos (Sigstore Rekor).
+- **Protocolo (L3):** Interfaz de comunicación que asegura que los datos de un cliente nunca se mezclen con otros — límites por inquilino aplicados por `moduleId`.
+- **Contrato API WORM (L2):** Definiciones en Rust (`append`, `read_since`, `checkpoint`) que aseguran la consistencia del sistema independientemente de la tecnología de disco.
+- **Almacenamiento (L1):** El motor físico que guarda los datos en formato de texto estándar (C2SP tlog-tiles), asegurando su legibilidad por un siglo.
+
+## Entornos de Ejecución
+
+El sistema es dual por diseño:
+- **Actualidad:** Funciona como un servicio estándar en Linux (daemon), ideal para servidores actuales.
+- **Futuro previsto:** Está preparado para ejecutarse como un dominio de protección seL4 verificado en dispositivos físicos, proporcionando la máxima seguridad matemáticamente verificable.
+
+## Durabilidad y Cumplimiento
+
+La plataforma logra el cumplimiento estructural WORM al denegar estructuralmente la modificación de registros en la capa de almacenamiento. Los puntos de control firmados (C2SP signed-note) prueban el estado del libro contable en cualquier momento. Un sub-libro contable de auditoría registra cada evento de lectura para satisfacer los requisitos de integridad de procesamiento de SOC 2.
+
 ## Véase también
 
 - [[fs-anchor-emitter]]
 - [[service-fs-security-compliance]]
 - [[worm-ledger-architecture]]
 - [[sel4-foundation]]
-
----
-
-
-`service-fs` es el sustrato de almacenamiento inmutable (WORM) de Foundry, diseñado para ser la columna vertebral de persistencia para todos los servicios de la plataforma. Garantiza que cada registro sea permanente, auditable y soberano.
-
-## Estructura de Cuatro Capas
-
-- **Anclaje (L4):** Publicación mensual de pruebas de integridad en registros públicos externos.
-- **Protocolo (L3):** Interfaz de comunicación que asegura que los datos de un cliente nunca se mezclen con otros.
-- **Contrato API (L2):** Definiciones en Rust que aseguran la consistencia del sistema independientemente de la tecnología de disco.
-- **Almacenamiento (L1):** El motor físico que guarda los datos en formato de texto estándar (ISO IFC compatible), asegurando su lectura dentro de un siglo.
-
-## Entornos de Ejecución
-
-El sistema es dual por diseño:
-- **Actualidad:** Funciona como un servicio estándar en Linux (Daemon), ideal para servidores actuales.
-- **Futuro:** Está preparado para ejecutarse como un micro-kernel verificado (seL4) en dispositivos físicos, proporcionando la máxima seguridad matemática posible hoy en día.
-
-Esta arquitectura protege contra la obsolescencia tecnológica y el secuestro de datos, devolviendo el control total del archivo histórico al propietario del edificio o empresa.
-
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

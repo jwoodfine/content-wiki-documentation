@@ -8,16 +8,13 @@ quality: complete
 short_description: "service-people is the Ring 1 boundary-ingest service that maintains a deterministic flat-file personnel ledger, storing unique contact identifiers, communication states, and contact histories as a portable, schema-stable JSON flat-file database."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-08
 editor: pointsav-engineering
 cites: []
 paired_with: service-people.es.md
 ---
 
-
-> service-people is the Ring 1 boundary-ingest service that maintains a deterministic flat-file personnel ledger, storing unique contact identifiers, communication states, and contact histories as a portable, schema-stable JSON flat-file database.
-
-**service-people** is a Ring 1 boundary-ingest service in the PointSav three-ring architecture. It acts as the centralized contact database for the enterprise, storing unique identifiers, contact states, and communication ledgers for every known contact. The service uses a flat-file JSON state machine rather than a centralized database cluster, which keeps the contact data portable across infrastructure changes and makes the ledger natively compatible with future local intelligence model training without schema fracturing.
+Every communication that enters the platform carries sender identity, and **service-people** is the Ring 1 boundary-ingest service that turns those identities into a queryable personnel ledger. The ledger is a directory of JSON flat files rather than a relational database — portable across infrastructure changes, auditable with standard filesystem tools, and natively compatible with local-model training pipelines that need a stable schema. service-people receives sender records from `service-extraction`, maintains contact state, and serves Ring 2 services that enrich content with contact context.
 
 ## Architectural Baseline
 
@@ -58,10 +55,3 @@ The service operates as a CLI tool. It exposes strictly defined query and update
 -  §XI — Ring 1 boundary-ingest architecture and MCP server interface
 - `pointsav-monorepo/service-people/` — implementation crate
 - DS-ADR-02 — flat-file state machine standard (files over databases)
-
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

@@ -15,13 +15,8 @@ paired_with: design-typography.md
 cites:
   - wcag-22
   - dtcg-spec
-## Véase también
-
-- [[design-color]]
-- [[design-spacing]]
-- [[design-philosophy]]
-
 ---
+
 
 Dos escalas tipográficas — Utility y Display — dividen la carga tipográfica entre el texto funcional de la interfaz y las superficies expresivas.
 
@@ -41,6 +36,8 @@ Un tema de cliente puede sustituir cualquier familia tipográfica en la capa pri
 
 Un salto de nivel de encabezado (h1 → h3 sin h2 entre ellos) rompe la accesibilidad — los lectores de pantalla dependen de la jerarquía para navegar. El sustrato aplica esta regla en el trabajo de auditoría de hitos posteriores.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+- [[design-color]]
+- [[design-spacing]]
+- [[design-philosophy]]

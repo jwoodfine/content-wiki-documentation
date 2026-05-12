@@ -1,12 +1,15 @@
 ---
-schema: foundry-topic-v1
+schema: foundry-doc-v1
 title: "Platform Architecture Overview"
 slug: architecture
 category: architecture
-status: published
+type: topic
+quality: complete
+status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-09
 editor: pointsav-engineering
+paired_with: architecture.es.md
 ---
 
 The PointSav platform is designed around two structural properties: distributed cryptographic consistency and sovereign bootability. Both properties are preserved across cloud and offline-vault environments simultaneously.
@@ -37,9 +40,3 @@ This property is intended to guarantee operational continuity when a primary dep
 - [[worm-ledger-architecture]] — WORM ledger design that underpins archive integrity
 - [[compounding-substrate]] — how structural properties compound across deployments
 - [[customer-hostability]] — the design properties that allow a customer to host the full stack
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

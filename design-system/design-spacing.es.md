@@ -14,13 +14,8 @@ editor: pointsav-engineering
 paired_with: design-spacing.md
 cites:
   - dtcg-spec
-## Véase también
-
-- [[design-color]]
-- [[design-typography]]
-- [[design-motion]]
-
 ---
+
 
 Una escala de espaciado de 13 pasos sobre una base de 16 px. Numérico — `space-1` hasta `space-13` — proporciona una respuesta canónica para cada decisión de diseño.
 
@@ -36,6 +31,8 @@ El sustrato utiliza una cuadrícula de línea base de 16 px (`space-5`). El text
 
 Esta disciplina es lo que distingue un sistema de diseño maduro de una colección de estilos: el espaciado no es una decisión casual sino una consecuencia calculada del sistema.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+- [[design-color]]
+- [[design-typography]]
+- [[design-motion]]

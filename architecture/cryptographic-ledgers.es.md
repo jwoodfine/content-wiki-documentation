@@ -13,15 +13,8 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: cryptographic-ledgers.md
 cites: []
-## Véase también
-
-- [[worm-ledger-architecture]]
-- [[crypto-attestation]]
-- [[capability-based-security]]
-- [[compounding-substrate]]
-- [[sel4-foundation]]
-
 ---
+
 
 Los libros contables criptográficos son el patrón de almacenamiento de estado inmutable utilizado en la plataforma PointSav. Aplican inmutabilidad matemática de modo que cualquier alteración a un hecho registrado rompe una cadena de hash criptográfica verificable, en lugar de requerir confianza en controles de acceso administrativos.
 
@@ -41,6 +34,10 @@ La arquitectura separa cada carga entrante en dos entidades: el activo y su regi
 
 Cada nueva entrada es hasheada; el hash de la nueva entrada se combina con el hash de la entrada anterior para producir el hash del estado actual del árbol. El checkpoint es firmado por la clave del inquilino y publicado. Si los hashes coinciden y la prueba de inclusión se verifica, el registro está intacto.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+- [[worm-ledger-architecture]]
+- [[crypto-attestation]]
+- [[capability-based-security]]
+- [[compounding-substrate]]
+- [[sel4-foundation]]

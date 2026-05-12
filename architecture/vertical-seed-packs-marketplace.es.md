@@ -12,14 +12,8 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: vertical-seed-packs-marketplace.md
-## Véase también
-
-- [[seed-taxonomy-as-smb-bootstrap]]
-- [[customer-owned-graph-ip]]
-- [[reverse-flow-substrate]]
-- [[mcp-substrate-protocol]]
-
 ---
+
 
 El **Mercado de Paquetes de Semilla Vertical** es un mecanismo de distribución planificado para taxonomías de inicio específicas de la industria que aprovisionan el grafo de conocimiento de un nuevo inquilino Foundry. Cada paquete agrupa Arquetipos, un Plan de Cuentas, Dominios, Temas, un glosario y extensiones de servidor MCP adecuadas para una vertical de negocio particular. Este patrón codifica la reclamación doctrinal #50.
 
@@ -62,8 +56,9 @@ Los Paquetes de Semilla Vertical son el mecanismo de distribución del patrón [
 
 Resumen de adaptación estratégica del archivo fuente `convention-vertical-seed-packs-marketplace.md` (refinado el 30 de abril de 2026). Todas las reclamaciones de distribución, contribución y gobernanza llevan encuadre "planificado," "previsto" y "puede" conforme a la postura de divulgación continua BCSC.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*
+- [[seed-taxonomy-as-smb-bootstrap]]
+- [[customer-owned-graph-ip]]
+- [[reverse-flow-substrate]]
+- [[mcp-substrate-protocol]]

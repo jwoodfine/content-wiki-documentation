@@ -1,12 +1,15 @@
 ---
-schema: foundry-topic-v1
+schema: foundry-doc-v1
 title: "Almacenamiento Inmutable y Respaldo Seguro"
 slug: storage.es
 category: infrastructure
-status: published
+type: topic
+quality: complete
+status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-09
 editor: pointsav-engineering
+paired_with: storage.md
 ---
 
 La plataforma está diseñada para ofrecer a auditores e inversores un registro resistente a manipulaciones: una vez que los datos se escriben, no pueden sobrescribirse ni eliminarse en secreto. Esta propiedad se aplica a nivel de hardware, no solo mediante políticas de software.
@@ -28,9 +31,3 @@ Cuando el disco principal alcanza su capacidad, se realizan copias de seguridad 
 - [[worm-ledger-architecture]] — especificación completa del registro WORM
 - [[architecture]] — portabilidad del archivo y arranque soberano
 - [[edge-deployment]] — cómo entran los datos al sistema antes de llegar al almacenamiento
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

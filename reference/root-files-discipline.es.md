@@ -12,11 +12,8 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: root-files-discipline.md
-## Véase también
-
-- [[project-tetrad-discipline]]
-
 ---
+
 
 La Disciplina de Archivos en la Raíz establece que todo repositorio del marco de ingeniería de PointSav mantiene un directorio raíz limpio. Limpio significa que una lista pequeña y explícitamente enumerada de archivos es permitida en la raíz, y cualquier otro archivo es un defecto que requiere reubicación. La convención organiza los archivos en seis niveles según el momento del ciclo de vida del repositorio en que se vuelven obligatorios.
 
@@ -38,8 +35,6 @@ El **nivel 6** está prohibido en la raíz: scripts (van dentro del proyecto que
 
 El archivo `LICENSE` en cada repositorio se obtiene de un directorio centralizado de licencias en el repositorio de ingeniería de lanzamiento. Un mapa de asignaciones declara qué licencia aplica a qué repositorio; un script de propagación copia los textos apropiados. La postura bilingüe distingue entre material público — que lleva par en español — y documentación operativa interna — que es solo en inglés.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*
+- [[project-tetrad-discipline]]

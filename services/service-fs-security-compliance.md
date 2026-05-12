@@ -1,29 +1,26 @@
 ---
 schema: foundry-doc-v1
-type: topic
+title: "service-fs Security and Compliance Posture"
 slug: service-fs-security-compliance
-title: Service-FS Security and Compliance Posture
+category: services
+type: topic
+quality: complete
+short_description: "service-fs is engineered for structural Write-Once-Read-Many storage that satisfies SEC Rule 17a-4(f), eIDAS, and SOC 2 — record modification is not denied at the policy layer; it is denied by the storage engine itself, and external Sigstore Rekor anchoring provides proof-of-state independent of the platform's own systems."
+status: active
 audience: vendor-public
 bcsc_class: current-fact
-language: en
+last_edited: 2026-05-08
+editor: pointsav-engineering
 paired_with: service-fs-security-compliance.es.md
-## See Also
-
-- [[service-fs-architecture]]
-- [[capability-based-security]]
-- [[machine-based-auth]]
-- [[sel4-foundation]]
-
 ---
 
-
-`service-fs` is engineered to meet the highest international standards for immutable storage and data sovereignty. By implementing a structural {{gli|WORM}} (Write-Once-Read-Many) architecture, Foundry provides a verifiable assurance that data records are non-rewriteable and non-erasable, satisfying the core requirements of global financial and trust regulations.
+`service-fs` is engineered for structural Write-Once-Read-Many storage that meets the requirements of SEC Rule 17a-4(f), eIDAS, and SOC 2 — record modification is not denied at the policy layer; it is denied by the storage engine itself, and external Sigstore Rekor anchoring provides proof-of-state independent of the platform's own systems. The compliance posture follows from architectural properties, not from configurable controls: the Rust storage engine physically lacks the ability to delete or modify records; every entry is cryptographically linked to the next; and any attempt to alter history is detectable through Merkle consistency proofs.
 
 ## 1. Regulatory Alignment
 
 Foundry’s security posture is designed to satisfy multiple international regulatory frameworks:
 
-*   **SEC Rule 17a-4(f):** Foundry targets the strict "{{gli|WORM}} path," structurally denying record modification. This exceeds the "Audit-Trail" alternative often used by cloud vendors to mask mutable underlying storage.
+*   **SEC Rule 17a-4(f):** Foundry targets the strict "WORM path," structurally denying record modification. This exceeds the "Audit-Trail" alternative often used by cloud vendors to mask mutable underlying storage.
 *   **eIDAS (EU 2025/1946):** Aligns with Qualified Preservation standards by ensuring long-term integrity, authenticity, and accessibility "irrespective of future technological changes."
 *   **SOC 2 Trust Services Criteria:** Directly addresses Processing Integrity (PI1, PI4) through signed ingest and read-audit sub-ledgers, and Logical Access (CC6) via tenant-level isolation.
 
@@ -47,9 +44,9 @@ Foundry’s posture is intended to defend against high-level institutional risks
 *   **Vendor Obsolescence:** Open-standard formats ensure data survival beyond the lifespan of the software vendor.
 *   **Cryptographic Agility:** The system is designed to transition to post-quantum signature schemes (e.g., Dilithium) without requiring a full storage migration.
 
+## See Also
 
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*
+- [[service-fs-architecture]]
+- [[capability-based-security]]
+- [[machine-based-auth]]
+- [[sel4-foundation]]

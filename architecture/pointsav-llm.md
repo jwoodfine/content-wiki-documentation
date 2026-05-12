@@ -154,15 +154,3 @@ Tiers 0, A, and B are operational today. Tier C (PointSav-LLM) is planned, with 
 6. AllenAI. *OLMo 3 model family*. Apache 2.0 license; training data under Open Data Commons license. https://allenai.org/olmo
 7. *National Instrument 51-102 Continuous Disclosure Obligations.* British Columbia Securities Commission. [ni-51-102]
 8. *OSC Staff Notice 51-721: Forward-Looking Information Disclosure.* Ontario Securities Commission. [osc-sn-51-721]
-
----
-
-## Provenance
-
-Source material: PointSav Doctrine claims #15, #40; `conventions/four-tier-slm-substrate.md`; `conventions/llm-substrate-decision.md`; `conventions/apprenticeship-substrate.md`; `conventions/knowledge-commons.md`. Research on customer-service AI market structure and pricing consulted. All capability and timeline statements in this article are planned trajectory per BCSC disclosure posture. [ni-51-102] [osc-sn-51-721]
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

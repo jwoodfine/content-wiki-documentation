@@ -7,14 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: en
 paired_with: data-sovereignty-telemetry.es.md
-## See Also
-
-- [[sovereign-telemetry]]
-- [[machine-based-auth]]
-- [[zero-execution-routing]]
-- [[cryptographic-ledgers]]
-
 ---
+
 
 
 PointSav digital systems are engineered for absolute data sovereignty, utilizing a "Zero-State" architecture that eliminates the collection of personally identifiable information (PII). By prioritizing DARP compliance (Data Archive Retrieval Protocol), Foundry ensures that platform metrics never compromise the privacy of the asset holder or the individual user.
@@ -38,9 +32,9 @@ All public-facing interfaces are required to append the following disclosure to 
 
 This commitment ensures that Foundry remains the benchmark for privacy-first institutional infrastructure.
 
+## See Also
 
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*
+- [[sovereign-telemetry]]
+- [[machine-based-auth]]
+- [[zero-execution-routing]]
+- [[cryptographic-ledgers]]

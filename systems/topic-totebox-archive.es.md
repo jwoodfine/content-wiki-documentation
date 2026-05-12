@@ -13,14 +13,8 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: topic-totebox-archive.md
 cites: []
-## Véase también
-
-- [[topic-totebox-os]]
-- [[topic-totebox-orchestration]]
-- [[topic-infrastructure-os]]
-- [[topic-site-ledger-integration]]
-
 ---
+
 
 Un Totebox Archive es la unidad fundamental de almacenamiento y soberanía de datos dentro de la plataforma PointSav. Opera como una **Micro Máquina Virtual** que proporciona servicios autocontenidos para activos institucionales específicos.
 
@@ -38,6 +32,9 @@ Un requisito arquitectónico clave del sistema PointSav es que los datos deben s
 
 Cada Totebox se especializa en un tipo de activo institucional. Los casos de uso comunes incluyen archivos de contratos, registros financieros, correspondencia y conjuntos de datos geoespaciales. La especialización previene que los datos de diferentes dominios se entremezclen en un único contenedor.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+- [[topic-totebox-os]]
+- [[topic-totebox-orchestration]]
+- [[topic-infrastructure-os]]
+- [[topic-site-ledger-integration]]

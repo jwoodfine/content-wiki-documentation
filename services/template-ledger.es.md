@@ -1,15 +1,20 @@
 ---
-schema: foundry-topic-v1
+schema: foundry-doc-v1
 title: "Registro de Plantillas (service-email-template)"
 slug: template-ledger.es
 category: services
-status: published
+type: topic
+quality: complete
+short_description: "El Registro de Plantillas es el mecanismo de distribución dentro de service-email-template que sincroniza una única copia autoritativa de cada plantilla aprobada con el entorno de correo del operador — eliminando la deriva de versiones entre el diseño de la plantilla y la ejecución del operador, y eliminando cada paso de redacción de la correspondencia corporativa rutinaria."
+status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-08
 editor: pointsav-engineering
+paired_with: template-ledger.md
+cites: []
 ---
 
-El Registro de Plantillas es el mecanismo de distribución dentro de `service-email-template` que garantiza que todas las comunicaciones corporativas salientes utilicen la versión actual y aprobada de cada plantilla. Elimina la deriva de versiones entre el diseño de la plantilla y su ejecución por parte del operador, manteniendo una única copia autoritativa por identificador de plantilla y sincronizándola automáticamente con el entorno de correo del operador.
+El Registro de Plantillas es el mecanismo de distribución dentro de `service-email-template` que sincroniza automáticamente una única copia autoritativa de cada plantilla aprobada con el entorno de correo del operador. Elimina la deriva de versiones entre el diseño de la plantilla y la ejecución del operador manteniendo una sola copia canónica por identificador de plantilla; el operador recupera la versión actual mediante una clave y la envía directamente. La distinción entre redactar y desplegar se vuelve estructural en lugar de procedimental — el operador no está redactando correspondencia corporativa rutinaria, solo seleccionando qué plantilla aprobada despachar.
 
 ## Intención de diseño
 
@@ -27,9 +32,3 @@ Cuando un ingeniero de PointSav actualiza una plantilla, el servicio de sincroni
 
 - [[service-email]] — el servicio de ingesta de correo del Anillo 1
 - [[disclosure-substrate]] — la arquitectura de divulgación que rige las comunicaciones salientes
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

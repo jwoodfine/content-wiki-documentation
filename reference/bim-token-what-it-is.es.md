@@ -10,7 +10,7 @@ status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-06
 editor: pointsav-engineering
-cites: []
+cites: [ifc-4-3, uniclass-2015, bsdd-v1, ids-1-0, dtcg-w3c, ashrae-90-1, cobiev3, corenet-x-2021]
 paired_with: bim-token-what-it-is.md
 ---
 
@@ -57,9 +57,3 @@ El formato legible por máquina permite la integración con cualquier herramient
 - [[city-code-as-composable-geometry]]
 - [[flat-file-bim-leapfrog]]
 - [[bim-token-taxonomy]]
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

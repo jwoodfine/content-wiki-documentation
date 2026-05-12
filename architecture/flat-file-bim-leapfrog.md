@@ -9,14 +9,9 @@ language: en
 paired_with: flat-file-bim-leapfrog.es.md
 status: active
 last_edited: 2026-05-06
-## See Also
-
-- [[worm-ledger-design]]
-- [[service-fs-architecture]]
-- [[sel4-foundation]]
-- [[sovereign-ai-routing]]
-
+cites: [ifc-4-3, iso-19650]
 ---
+
 
 PointSav's Building Design System is built on five architectural constraints that, individually, are mild inconveniences for any single feature comparison and, together, define a product category that hyperscalers cannot occupy without cannibalising their own revenue model. The constraints are flat-file storage, open standards, Rust + Tauri, offline-first, and EUPL-licensed. The open BIM standards stack matured between 2023 and 2025 into the infrastructure that makes this strategy viable; the property-manager market gap is documented in peer-reviewed literature; and the open toolchain is commercial-grade today.
 
@@ -88,9 +83,9 @@ Honest accounting:
 
 These are deliberate trade-offs for the offline-first, vendor-obsolescence-survivable posture; not oversights to be patched in the next release.
 
+## See Also
 
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*
+- [[worm-ledger-design]]
+- [[service-fs-architecture]]
+- [[sel4-foundation]]
+- [[sovereign-ai-routing]]

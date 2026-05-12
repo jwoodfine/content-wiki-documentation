@@ -12,11 +12,8 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: tier-c-key-wiring.md
-## Véase también
-
-- [[service-slm-operationalization-plan]]
-
 ---
+
 
 El Nivel C de la arquitectura de enrutamiento de cómputo de PointSav enruta las solicitudes asistidas por inteligencia artificial a proveedores externos de modelos de lenguaje a través de HTTPS. El servicio Doorman es el único componente del marco que conserva las claves de API de los proveedores. Este artículo describe el procedimiento operativo para gestionar las claves del Nivel C: dónde se almacenan, cómo se aprovisionan y rotan, cómo se auditan el costo y el uso, y cómo se contiene un compromiso sospechado.
 
@@ -38,8 +35,6 @@ La rotación trimestral por proveedor es el ritmo predeterminado. La rotación a
 
 Cada llamada al Nivel C produce una entrada en el registro de auditoría por inquilino con: nombre del proveedor, nombre del modelo, conteos de tokens, costo en USD calculado, latencia de extremo a extremo, identificador del inquilino, propósito de la llamada y estado de éxito. Una brecha — cualquier evento que exponga el valor de una clave más allá del límite del Doorman — requiere revocación inmediata en la consola del proveedor antes de limpiar la fuente de la filtración.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*
+- [[service-slm-operationalization-plan]]

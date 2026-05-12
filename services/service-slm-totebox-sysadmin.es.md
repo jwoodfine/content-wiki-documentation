@@ -7,7 +7,7 @@ type: topic
 quality: core
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-08
 editor: pointsav-engineering
 cites:
   - ni-51-102
@@ -15,9 +15,7 @@ cites:
 paired_with: service-slm-totebox-sysadmin.md
 ---
 
-## Adaptación estratégica — service-slm como administrador Totebox
-
-`service-slm` — el Doorman Compuesto en el Anillo 3 de la plataforma — está diseñado para convertirse en el asistente operativo y centro de soporte para los despliegues de Totebox Archive y Totebox Orchestration. Este artículo describe la estrategia: las diez familias de tareas operativas que maneja un administrador, por qué service-slm es estructuralmente adecuado para ellas, y los cuatro etapas que llevan un despliegue desde la captura inicial del corpus hasta un adaptador LoRA por tenant en producción.
+`service-slm` — la pasarela de control de acceso en el Anillo 3 de la plataforma, también referida como el Doorman — está prevista para convertirse en el asistente operativo y centro de soporte de los despliegues de Totebox Archive y Totebox Orchestration. Este artículo describe la estrategia: las familias de tareas operativas que maneja un administrador, por qué `service-slm` es estructuralmente adecuado para manejarlas, la forma del corpus necesaria para entrenarlo, y las cuatro etapas que llevan un despliegue desde la captura inicial hasta un adaptador LoRA por inquilino en producción.
 
 ## Las diez familias de tareas operativas
 
@@ -61,9 +59,3 @@ La especificación técnica completa, incluyendo la tabla de tipos de tarea, el 
 - [[compounding-doorman]] — el patrón operativo del Doorman y por qué se compone con el tiempo
 - [[apprenticeship-substrate]] — la cadena de captura del corpus y firma de veredictos
 - [[brief-queue-substrate]] — la cola durable que mantiene continua la captura del corpus
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

@@ -1,12 +1,15 @@
 ---
-schema: foundry-topic-v1
+schema: foundry-doc-v1
 title: "Arquitectura de Telemetría"
 slug: telemetry-architecture.es
 category: infrastructure
-status: published
+type: topic
+quality: complete
+status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-09
 editor: pointsav-engineering
+paired_with: telemetry-architecture.md
 ---
 
 El sistema de telemetría de la plataforma recopila analítica de tráfico web desde los nodos de borde en producción y la enruta hacia un entorno de procesamiento local, sin pasar por ningún servicio de agregación en la nube de terceros. Todo el análisis se ejecuta en hardware bajo control del operador.
@@ -30,9 +33,3 @@ Enrutar la telemetría hacia un nodo bajo control local significa que el operado
 - [[worm-ledger-architecture]] — el diseño del registro WORM que comparte el modelo de escritura de solo adición
 - [[edge-deployment]] — la arquitectura de ingesta en el perímetro
 - [[compounding-substrate]] — el contexto más amplio del sustrato para la custodia de datos local
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

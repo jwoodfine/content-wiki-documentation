@@ -1,29 +1,24 @@
 ---
 schema: foundry-doc-v1
 title: "app-orchestration-gis"
-slug: app-orchestration-gis
+slug: app-orchestration-gis.es
 category: applications
 type: topic
 quality: complete
 status: active
 audience: public
+short_description: "app-orchestration-gis es el motor de análisis espacial sin estado que realiza cálculos de geometría lineal y mapeo de coordenadas para producir las clasificaciones de co-ubicación de Woodfine y el mapa interactivo en gis.woodfinegroup.com — una función pura que no contiene datos canónicos y puede ser reprovisionada apuntando una nueva instancia a la capa de datos inmutable."
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-08
 editor: pointsav-engineering
 paired_with: app-orchestration-gis.md
 cites:
   - pmtiles-spec
   - maplibre-gl-js
-## Véase también
-
-- [[pointsav-gis-engine]]
-- [[service-business-clustering]]
-- [[service-places-filtering]]
-
 ---
 
-`app-orchestration-gis` es el motor de procesamiento geoespacial que transforma datos sin procesar de operadores minoristas e infraestructura cívica en índices de co-ubicación por niveles, listos para renderizado en la interfaz de inteligencia de ubicación de PointSav.
+`app-orchestration-gis` es el motor de análisis espacial sin estado que realiza cálculos de geometría lineal y mapeo de coordenadas para producir las clasificaciones de co-ubicación de Woodfine y el mapa interactivo en [gis.woodfinegroup.com](https://gis.woodfinegroup.com). La aplicación no contiene datos canónicos — opera como una función pura desde archivos de clúster depurados hacia mosaicos geográficos clasificados, de modo que una instancia perdida puede reprovisionarse apuntando un nuevo proceso a la capa de datos inmutable sin migración de estado.
 
 ## Posición estructural
 
@@ -41,8 +36,8 @@ La salida se entrega como archivos PMTiles — un formato de archivo plano que e
 
 La arquitectura de la aplicación es completamente sin estado: no persiste datos entre ejecuciones. Todo el estado reside en el archivo PMTiles de salida, versionado en el Totebox Archive. Esto permite re-provisionar el entorno GIS completo de forma instantánea desde la capa de datos inmutable.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos dueños.*
+- [[pointsav-gis-engine]]
+- [[service-business-clustering]]
+- [[service-places-filtering]]

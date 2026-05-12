@@ -5,11 +5,12 @@ slug: location-intelligence-platform
 category: applications
 type: topic
 quality: complete
+short_description: "The PointSav Location Intelligence platform is a customer-owned flat-file GIS application designed for retail cluster analysis and strategic site selection — composed of app-orchestration-gis (the analytics engine) and pointsav-gis-engine (the rendering layer), with every dataset, algorithm, and rendering decision under the customer's direct control."
 status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-02
+last_edited: 2026-05-08
 editor: pointsav-engineering
 paired_with: location-intelligence-platform.es.md
 cites:
@@ -17,17 +18,9 @@ cites:
   - overture-maps-cdla-2-0
   - ni-51-102
   - osc-sn-51-721
-## See Also
-
-- [[location-intelligence-ux]]
-- [[location-intelligence-strategy]]
-- [[pointsav-gis-engine]]
-- [[service-places-filtering]]
-
 ---
 
-
-The PointSav Location Intelligence platform is a sovereign, flat-file GIS application designed for retail cluster analysis and strategic site selection. Built as a high-performance alternative to commercial SaaS products, the platform enables customers to maintain complete control over their geographic datasets, algorithms, and rendering infrastructure.
+The PointSav Location Intelligence platform is a customer-owned flat-file GIS application designed for retail cluster analysis and strategic site selection — composed of [[app-orchestration-gis]] (the analytics engine) and [[pointsav-gis-engine]] (the rendering layer), with every dataset, algorithm, and rendering decision under the customer's direct control. The platform answers a fundamental commercial question — *which geographic nodes possess the capital-validated density required to support adjacent development?* — by transforming raw store locations into actionable commercial nodes through the [[co-location-methodology]].
 
 ## Operational Capabilities
 
@@ -61,17 +54,3 @@ The platform integrates high-fidelity open data sources to ensure transparency a
 ## Future Roadmap
 
 Planned enhancements to the platform surface include the integration of origin-destination (OD) mobility data for trade-area flow analysis and the expansion of the European institutional dataset. [ni-51-102] [osc-sn-51-721]
-
----
-## Provenance
-- **Draft Source:** `PROSE-TOPIC-location-intelligence-platform.draft.md` (project-gis)
-- **Refinement:** 2026-05-02 by project-language Task
-- **Verification:** Layer architecture and algorithmic composition confirmed against `app-orchestration-gis` deployment.
-- **BCSC Posture:** OD data integration and European expansion targets labeled per ni-51-102.
-
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

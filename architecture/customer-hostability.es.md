@@ -1,7 +1,15 @@
 ---
+schema: foundry-doc-v1
+title: "Hospedaje por el cliente"
+slug: customer-hostability.es
 category: architecture
+type: topic
+quality: complete
+status: active
 bcsc_class: public-disclosure-safe
-
+last_edited: 2026-05-09
+editor: pointsav-engineering
+paired_with: customer-hostability.md
 ---
 
 
@@ -64,10 +72,3 @@ de adaptador localmente.
 - [Documento canónico en inglés](topic-customer-hostability.md)
 - [El sustrato de protocolo de lenguaje](topic-language-protocol-substrate.md)
 - [Disciplina anti-homogenización](topic-anti-homogenization-discipline.md)
-
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

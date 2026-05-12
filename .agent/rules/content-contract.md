@@ -97,14 +97,15 @@ render, but metadata is empty.
 | `status` | enum | `stable` (default), `pre-build`, `draft`. Kebab-case. |
 | `references` | list | See §6. Only cited entries render into the bibliography. |
 
-### Example
+### Examples
+
+Standard article:
 
 ```yaml
 ---
 title: "ToteboxOS"
-slug: content-contract
-category: architecture
-subcategory: foundation-layer
+slug: os-totebox
+category: systems
 last_edited: 2026-04-22
 editor: pointsav-engineering
 status: stable
@@ -112,6 +113,19 @@ references:
   - id: 1
     text: "Klein, G. et al. seL4: Formal Verification of an OS Kernel. ACM SOSP 2009."
     url: "https://sel4.systems/"
+---
+```
+
+Wiki home (`index.md` at repo root):
+
+```yaml
+---
+title: "Documentation"
+slug: index
+category: root
+last_edited: 2026-05-08
+editor: pointsav-engineering
+status: stable
 ---
 ```
 

@@ -1,12 +1,15 @@
 ---
-title: "Foundry Doctrine — Architectural Overview"
+schema: foundry-doc-v1
+title: "Foundry — Architectural Overview"
 slug: foundry-doctrine-architecture
 category: architecture
-status: stable
-bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
-editor: pointsav-engineering
+type: topic
 quality: complete
+status: active
+bcsc_class: public-disclosure-safe
+last_edited: 2026-05-09
+editor: pointsav-engineering
+paired_with: foundry-doctrine-architecture.es.md
 references:
   - id: 1
     text: "NI 51-102 Continuous Disclosure Obligations — BCSC"
@@ -93,15 +96,3 @@ Every artifact written to the workspace — documentation, doctrine sections, co
 
 [^1]: NI 51-102 Continuous Disclosure Obligations — BCSC
 [^2]: OSC Staff Notice 51-721 Forward-Looking Information Disclosure
-
----
-Copyright © 2026 Woodfine Capital Projects Inc.
-Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
-PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.
-
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

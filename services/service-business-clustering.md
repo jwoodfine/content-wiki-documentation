@@ -7,14 +7,16 @@ type: topic
 quality: complete
 status: active
 audience: public
+short_description: "service-business turns raw retail data points into actionable commercial clusters by applying a parent-child spatial schema — so when multiple distinct operators share a single physical site, the GIS engine receives one commercial entity per site rather than several overlapping points."
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-08
 editor: pointsav-engineering
+paired_with: service-business-clustering.es.md
 cites: []
 ---
 
-`service-business` is the intelligence layer responsible for transforming raw retail data points into actionable commercial clusters. It implements a parent-child clustering pattern to handle complex physical retail environments where multiple distinct operators share a single commercial node.
+Retail data is inherently messy — a single commercial site often contains multiple distinct points, such as a big-box anchor, a nested pharmacy, and a fuel outlet sharing the same parking area. **`service-business`** turns those raw points into actionable commercial clusters using a parent-child spatial schema, so the GIS engine receives one unified commercial entity per physical site rather than several overlapping records. The service iterates the `service-fs` raw data lake, groups entities that share a footprint within a 100 m proximity threshold, and assigns the highest-weight named anchor as the parent.
 
 ## The Clustering Logic
 
@@ -38,9 +40,3 @@ The output is a refined `cleansed-clusters.jsonl` file. This processed dataset i
 - [[app-orchestration-gis]]
 - [[service-fs-data-lake]]
 - [[service-places-filtering]]
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

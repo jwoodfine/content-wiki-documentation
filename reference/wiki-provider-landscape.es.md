@@ -1,14 +1,17 @@
 ---
-schema: foundry-topic-v1
+schema: foundry-doc-v1
 title: "Panorama de proveedores de wiki — cómo se ve el campo en 2026"
-status: published
+slug: wiki-provider-landscape.es
+status: active
 category: reference
-last_edited: 2026-04-30
+type: topic
+quality: complete
+last_edited: 2026-05-09
+editor: pointsav-engineering
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-language: es
-companion: reference/topic-wiki-provider-landscape.md
+paired_with: wiki-provider-landscape.md
 cites:
   - ni-51-102
   - osc-sn-51-721
@@ -75,9 +78,3 @@ El motor wiki `app-mediakit-knowledge` se convierte en la demostración instalab
 ## Procedencia
 
 Vista general estratégica en español elaborada por project-language el 2026-04-30. Basada en el borrador de project-knowledge (síntesis Opus desde informe Sonnet sub-agente C, 2026-04-30). La investigación primaria se realizó mediante web-fetch en los 25 proveedores y búsqueda web con términos de revisión y comparación. Por DOCTRINE.md §XII, esta vista general no es una traducción literal — adapta el análisis del campo para lectores en español. Las afirmaciones prospectivas siguen [ni-51-102] y [osc-sn-51-721].
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

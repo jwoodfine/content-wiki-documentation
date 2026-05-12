@@ -13,14 +13,8 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: verification-surveyor.md
 cites: []
-## Véase también
-
-- [[ontological-governance]]
-- [[message-courier]]
-- [[sovereign-telemetry]]
-- [[moonshot-initiatives]]
-
 ---
+
 
 El Verificador de Identidad es el punto de control arquitectónico en `service-people` que impide que los errores de extracción automatizada se acumulen. Requiere que un operador humano confirme cada fragmento de identidad contra una fuente externa antes de que se comprometa permanentemente en el libro contable verificado.
 
@@ -38,6 +32,9 @@ Este diseño es deliberado. Las búsquedas basadas en API contra directorios ext
 
 El Verificador aplica un límite estricto de diez verificaciones por operador por día. El límite no es una restricción de capacidad; es una disciplina de calidad de datos. Los datos verificados a una tasa controlada mantienen una fidelidad a largo plazo que los datos verificados en masa no pueden igualar.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+- [[ontological-governance]]
+- [[message-courier]]
+- [[sovereign-telemetry]]
+- [[moonshot-initiatives]]

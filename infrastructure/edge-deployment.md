@@ -1,12 +1,15 @@
 ---
-schema: foundry-topic-v1
+schema: foundry-doc-v1
 title: "Edge Deployment and Boundary Ingest"
 slug: edge-deployment
 category: infrastructure
-status: published
+type: topic
+quality: complete
+status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-09
 editor: pointsav-engineering
+paired_with: edge-deployment.es.md
 ---
 
 The platform moves all external network connections to the outermost boundary of the system before any data reaches the core processing rings. This architecture prevents common network-based attacks from reaching the financial ledgers and structured records held in Ring 2.
@@ -36,9 +39,3 @@ Because raw payloads are sanitized at the boundary and the cleaned records are w
 - [[worm-ledger-architecture]] — the WORM ledger that stores the sanitized records
 - [[service-email]] — Ring 1 ingest for email
 - [[compounding-substrate]] — the three-ring architecture in context
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

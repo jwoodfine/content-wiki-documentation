@@ -60,9 +60,3 @@ La base técnica de PointSav-LLM es OLMo 3 32B Think, publicado por AllenAI bajo
 - [[service-slm-yoyo-operational]] — el estado operativo actual de los Niveles A/B del que este artículo describe el Nivel 3
 - [[apprenticeship-substrate]] — el bucle DPO que alimenta el corpus CPT
 - [[contributor-model]] — el Modelo de Contribuidor de Tres Niveles alineado con los niveles de precios
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

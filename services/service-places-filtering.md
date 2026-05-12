@@ -7,14 +7,16 @@ type: topic
 quality: complete
 status: active
 audience: public
+short_description: "service-places filters raw civic and institutional infrastructure data to retain only regional-grade facilities — hospitals, universities, and major transport hubs — so GIS tier rankings reflect institutional-level concentration rather than local-service density."
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-08
 editor: pointsav-engineering
+paired_with: service-places-filtering.es.md
 cites: []
 ---
 
-`service-places` is the service responsible for validating and clustering civic and institutional infrastructure. Its primary role is to filter raw civic data to retain only regional-grade facilities — hospitals, universities, and major transport hubs — ensuring that GIS tier rankings reflect institutional-level concentration rather than local-service density.
+GIS tier rankings depend on knowing where regional institutions sit, not where every clinic and community college sits. **`service-places`** filters raw civic data to retain only regional-grade facilities — hospitals with at least 50 staffed beds, universities with at least 1,000 full-time-equivalent students, validated major regional transport hubs — and applies a 200 m spatial buffer to consolidate large institutional campuses into single regional anchors. Local-service density is filtered out at this stage; downstream rankings reflect institutional concentration rather than facility count.
 
 ## Filtering Thresholds
 
@@ -37,9 +39,3 @@ The resulting `cleansed-places.jsonl` provides the regional anchor dataset that 
 - [[service-fs-data-lake]]
 - [[service-business-clustering]]
 - [[app-orchestration-gis]]
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

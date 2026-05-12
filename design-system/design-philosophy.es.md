@@ -16,14 +16,8 @@ cites:
   - wcag-22
   - dtcg-spec
   - doctrine-38
-## Véase también
-
-- [[design-color]]
-- [[design-typography]]
-- [[design-spacing]]
-- [[design-motion]]
-
 ---
+
 
 El sustrato de sistema de diseño de PointSav existe como respuesta directa a cuatro brechas estructurales en el panorama del diseño de 2026.
 
@@ -37,6 +31,9 @@ El sustrato responde con tres inversiones estructurales:
 
 En la era de la IA 2026–2030, el sustrato de sistema de diseño de una pyme es un medio: su forma — legibilidad por máquinas, interoperabilidad sin dependencia de editor, auto-alojamiento, investigación consumible por IA — determina cómo la marca de la pyme llega a cada superficie orientada al cliente.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+- [[design-color]]
+- [[design-typography]]
+- [[design-spacing]]
+- [[design-motion]]

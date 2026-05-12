@@ -1,22 +1,17 @@
 ---
-title: "Doctrina Foundry — Visión Arquitectónica"
+schema: foundry-doc-v1
+title: "Foundry — Visión Arquitectónica"
 slug: foundry-doctrine-architecture.es
 category: architecture
-status: stable
-bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
-editor: pointsav-engineering
+type: topic
 quality: complete
-## Véase también
-
-- [[compounding-substrate]]
-- [[three-ring-architecture]]
-- [[single-boundary-compute-discipline]]
-- [[system-substrate-doctrine]]
-- [[slm-stack-architecture]]
-- [[yoyo-compute-substrate]]
-
+status: active
+bcsc_class: public-disclosure-safe
+last_edited: 2026-05-09
+editor: pointsav-engineering
+paired_with: foundry-doctrine-architecture.md
 ---
+
 
 La Doctrina Foundry es la carta constitucional de la plataforma PointSav. Codifica los principios, compromisos y afirmaciones estructurales que rigen cada decisión de ingeniería, operaciones y editorial en todo el espacio de trabajo. La versión actual es v0.1.0 ALPHA, ratificada el 30 de abril de 2026.
 
@@ -62,14 +57,11 @@ Más allá de las afirmaciones estructurales, la doctrina se inspira en ocho inv
 
 Cada artefacto escrito en el espacio de trabajo se trata como potencialmente revisable bajo las obligaciones de divulgación continua. Las declaraciones prospectivas sobre capacidad futura, cronograma o resultados del cliente llevan el encuadre "planificado"/"previsto"/"puede", una base razonable declarada y lenguaje cautelar.
 
----
-Copyright © 2026 Woodfine Capital Projects Inc.
-Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).
-PointSav™ y Foundry™ son marcas no registradas de Woodfine Capital Projects Inc.
+## Véase también
 
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*
+- [[compounding-substrate]]
+- [[three-ring-architecture]]
+- [[single-boundary-compute-discipline]]
+- [[system-substrate-doctrine]]
+- [[slm-stack-architecture]]
+- [[yoyo-compute-substrate]]

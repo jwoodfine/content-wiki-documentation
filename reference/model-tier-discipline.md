@@ -60,13 +60,3 @@ Tier discipline and model version progression are orthogonal axes. A new model v
 
 - [[compounding-substrate]] — the contributor model this discipline makes economically viable
 - [[cluster-wiki-draft-pipeline]] — a concrete application of sub-agent dispatch in the editorial pipeline
-
-## Provenance
-
-Authored 2026-05-01 by project-language Task Claude. Source: `conventions/model-tier-discipline.md` (ratified 2026-04-26). Version note: the v0.1.30 amendment replaced the prior exit-and-re-enter recommendation mechanism with in-seat sub-agent dispatch as the preferred path; the earlier mechanism remains available for operator-elective session restarts.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

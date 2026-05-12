@@ -15,13 +15,8 @@ paired_with: design-motion.md
 cites:
   - wcag-22
   - dtcg-spec
-## Véase también
-
-- [[design-spacing]]
-- [[design-color]]
-- [[design-philosophy]]
-
 ---
+
 
 El movimiento comunica causalidad. El sustrato incluye cuatro curvas de easing y seis pasos de duración. Se combinan según la clase de interacción.
 
@@ -43,6 +38,8 @@ Este no es un detalle de implementación secundario: es un requisito de accesibi
 - Movimiento decorativo que añade tiempo a una tarea productiva.
 - Duraciones fuera de escala. La escala de 6 pasos cubre cada clase de interacción.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+- [[design-spacing]]
+- [[design-color]]
+- [[design-philosophy]]

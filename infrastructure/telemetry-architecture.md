@@ -1,12 +1,15 @@
 ---
-schema: foundry-topic-v1
+schema: foundry-doc-v1
 title: "Telemetry Architecture"
 slug: telemetry-architecture
 category: infrastructure
-status: published
+type: topic
+quality: complete
+status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-09
 editor: pointsav-engineering
+paired_with: telemetry-architecture.es.md
 ---
 
 The platform's telemetry system collects web traffic analytics from production edge nodes and routes them to a local processing environment without passing through a third-party cloud aggregation service. All analysis runs on hardware the operator controls.
@@ -40,9 +43,3 @@ Routing telemetry to a locally controlled node rather than a cloud aggregation s
 - [[worm-ledger-architecture]] — the WORM ledger design that shares the append-only write model
 - [[edge-deployment]] — the boundary ingest architecture for the Ring 1 services
 - [[compounding-substrate]] — the broader substrate context for local-first data custody
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

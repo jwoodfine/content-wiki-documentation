@@ -1,17 +1,17 @@
 ---
-schema: foundry-topic-v1
+schema: foundry-doc-v1
 title: "Wiki provider landscape — what the 2026 wiki, knowledge-base, and documentation field looks like"
-status: published
+slug: wiki-provider-landscape
+status: active
 category: reference
-last_edited: 2026-04-30
+type: topic
+quality: complete
+last_edited: 2026-05-09
+editor: pointsav-engineering
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-research_done_count: 25
-research_suggested_count: 4
-open_questions_count: 1
-research_provenance: web-fetch + web-search across 25 providers + workspace-direct-consultation, 2026-04-30
-research_inline: false
+paired_with: wiki-provider-landscape.es.md
 cites:
   - ni-51-102
   - osc-sn-51-721
@@ -216,15 +216,3 @@ This audit was conducted 2026-04-30 with web-fetch primary research across all 2
 - [[article-shell-leapfrog]] — The article-shell leapfrog primitives that pair with the competitive analysis here.
 - [[wikipedia-leapfrog-design]] — The design narrative behind the 95%/5% muscle-memory contract.
 - [[substrate-native-compatibility]] — Why the substrate ships its own surface rather than adapting an existing provider.
-
-## Provenance
-
-Authored 2026-04-30 by a project-knowledge Task Claude session (Opus parent synthesis from Sonnet sub-agent C report that conducted web-fetch primary research across all 25 providers). Refined by project-language, 2026-04-30. This TOPIC is structural competitive analysis — its purpose requires naming providers and describing their limitations factually, consistent with workspace `CLAUDE.md` §6 "Structural positioning (no competitive comparison)": each provider is described factually with its strongest positioning and named genuine advantages; PointSav's substrate is framed structurally, not as a "winner" claim.
-
-Forward-looking framings follow [ni-51-102] and [osc-sn-51-721] continuous-disclosure posture. Material assumptions: the substrate's governance and editorial preconditions remain on the design trajectory described in Foundry DOCTRINE.md and workspace NEXT.md.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

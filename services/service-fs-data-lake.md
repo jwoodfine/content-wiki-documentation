@@ -7,14 +7,16 @@ type: topic
 quality: complete
 status: active
 audience: public
+short_description: "service-fs is the foundational storage layer for the platform's GIS pipeline — a flat-file data lake that stores raw geospatial points ingested from open sources in separate retail and civic landing zones, available immediately to every downstream service without an ETL step."
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-08
 editor: pointsav-engineering
+paired_with: service-fs-data-lake.es.md
 cites: []
 ---
 
-`service-fs` is the foundational storage layer for the PointSav GIS platform. It implements a data lake model where raw geospatial points ingested from open geospatial sources are stored in a durable, modular file system for downstream analytical processing.
+**`service-fs`** is the foundational storage layer for the platform's GIS pipeline — a flat-file data lake that stores raw geospatial points ingested from open sources (OpenStreetMap, Overture Maps Foundation) in separate retail and civic landing zones, available immediately to every downstream service without an ETL step. Retail records — commercial operators, anchor stores, fuel outlets — and civic records — hospitals, universities, transport hubs — are kept in distinct subtrees so the filtering and clustering services can work on each domain independently.
 
 ## Data Ingestion and Storage
 
@@ -36,9 +38,3 @@ In production, `service-fs` is deployed as a low-overhead unikernel. It provides
 - [[service-business-clustering]]
 - [[service-places-filtering]]
 - [[app-orchestration-gis]]
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

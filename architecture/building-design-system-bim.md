@@ -9,7 +9,7 @@ status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-06
 editor: pointsav-engineering
-cites: []
+cites: [ifc-4-3, uniclass-2015, bsdd-v1, ids-1-0, dtcg-w3c]
 paired_with: building-design-system-bim.es.md
 ---
 
@@ -106,9 +106,3 @@ The vendor-tier `pointsav-design-system` maintains the universal token primitive
 - IDS 1.0 (Information Delivery Specification) — buildingSMART International
 - W3C Design Token Community Group (DTCG) format — W3C
 - W3C ARIA 1.2 — W3C Web Accessibility Initiative
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

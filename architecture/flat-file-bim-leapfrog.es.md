@@ -9,14 +9,8 @@ language: es
 paired_with: flat-file-bim-leapfrog.md
 status: active
 last_edited: 2026-05-06
-## Véase también
-
-- [[worm-ledger-design]]
-- [[service-fs-architecture]]
-- [[sel4-foundation]]
-- [[sovereign-ai-routing]]
-
 ---
+
 
 El Sistema de Diseño de Edificios de PointSav redefine la categoría de producto BIM mediante un enfoque de "archivo plano" que devuelve la soberanía del dato al propietario del activo. La pila de estándares abiertos — IFC 4.3 (ISO 16739-1:2024, publicado en abril de 2024), IDS 1.0 (buildingSMART, junio 2024) y BCF 3.0 — alcanzó madurez de producción en 2024 y proporciona la infraestructura que hace viable esta estrategia. Mientras que las grandes plataformas de software fuerzan un modelo de alquiler de datos en la nube, la arquitectura de Foundry permite que el gemelo digital sea una propiedad permanente, transferible y legible durante décadas.
 
@@ -48,9 +42,9 @@ La arquitectura offline-first es la única que satisface por diseño los requisi
 
 El BIM de archivo plano presenta limitaciones reconocidas: la edición colaborativa simultánea en tiempo real es más lenta que los SaaS síncronos para talleres de diseño intensivos; la federación a escala urbana (más de un millón de edificios) requiere una arquitectura de transmisión distinta; las herramientas de autoría BIM generativa disponibles actualmente en el mercado son propietarias. Estas son concesiones deliberadas para priorizar una postura offline-first e independiente del proveedor, no carencias pendientes de corrección.
 
+## Véase también
 
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*
+- [[worm-ledger-design]]
+- [[service-fs-architecture]]
+- [[sel4-foundation]]
+- [[sovereign-ai-routing]]

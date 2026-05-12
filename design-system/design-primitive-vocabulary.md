@@ -79,12 +79,6 @@ The structural patterns are field-shared; the literal tokens are not.
 - [[design-color]]
 - [[design-typography]]
 
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*
-
 ## References
 
 - W3C Design Tokens Community Group format — https://design-tokens.github.io/community-group/format/

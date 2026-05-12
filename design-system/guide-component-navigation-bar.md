@@ -45,7 +45,3 @@ Mark the active page with `aria-current="page"`. The `<nav>` element with `aria-
 
 - [[guide-component-tab]]
 - [[guide-component-breadcrumb]]
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

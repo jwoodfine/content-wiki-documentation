@@ -9,23 +9,24 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-02
+last_edited: 2026-05-08
 editor: pointsav-engineering
+short_description: "The PointSav GIS Engine is a high-performance, customer-owned location intelligence platform built in Rust for offline-first, flat-file operation — a structural departure from traditional geographic information systems that rely on centralised database instances and continuous network connectivity."
+paired_with: pointsav-gis-engine.es.md
 cites:
   - maplibre-gl-js
   - pmtiles-spec
   - tippecanoe-tool
 ---
 
-
-The PointSav GIS Engine is a high-performance, sovereign Location Intelligence platform designed for offline-first, flat-file operation. Built in Rust, it represents a structural departure from traditional, proprietary geographic information systems (GIS) that rely on centralized database instances.
+The PointSav GIS Engine is a high-performance, customer-owned location intelligence platform built in Rust for offline-first, flat-file operation — a structural departure from traditional geographic information systems that rely on centralised database instances and continuous network connectivity. The engine reads from a static PMTiles archive on the customer's own filesystem, renders interactively through MapLibre GL JS in the browser, and serves every query without an external dependency. The map data lives in the customer's archive; nothing leaves the deployment unless the operator explicitly chooses to publish.
 
 ## Architectural Principles
 
 The engine is engineered to operate as a stateless application surface, adhering to the PointSav principle of complete data sovereignty. 
 
 ### Flat-File Substrate
-Unlike traditional GIS stacks that require persistent database management, the PointSav engine utilizes a flat-file substrate. It consumes geographic data directly from `JSONL`, `GeoParquet`, and `YAML` formats versioned within a Totebox Archive. This architecture ensures the data layer remains entirely decoupled from the application logic, eliminating database maintenance overhead and preventing vendor lock-in.
+Unlike traditional GIS stacks (e.g., PostGIS, Esri) which require persistent database management, the PointSav engine utilizes a flat-file substrate. It consumes geographic data directly from `JSONL`, `GeoParquet`, and `YAML` formats versioned within a Totebox Archive. This architecture ensures the data layer remains entirely decoupled from the application logic, eliminating database maintenance overhead and preventing vendor lock-in.
 
 ### Sovereign Rendering Stack
 The platform avoids commercial SaaS mapping dependencies by utilizing a high-performance, open-source rendering stack:
@@ -48,16 +49,3 @@ This stateless approach ensures that the entire GIS environment can be re-provis
 ## See Also
 *   [[guide-totebox-orchestration-gis]]
 *   [[co-location-methodology]]
-
----
-## Provenance
-- **Draft Source:** `topic-pointsav-gis-engine.md` (project-gis)
-- **Refinement:** 2026-05-02 by project-language Task
-- **Verification:** Architectural details and rendering stack confirmed against `app-orchestration-gis` build configuration.
-
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

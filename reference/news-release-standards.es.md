@@ -7,13 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: news-release-standards.md
-## Véase también
-
-- [[brand-typography]]
-- [[brand-family-swatch]]
-- [[style-guide-readme]]
-
 ---
+
 
 
 Foundry impone reglas estrictas de formato para la difusión de noticias corporativas, siguiendo los principios de Lenguaje Claro ISO 24495-1. Esto asegura que cada comunicado proyecte autoridad institucional y sea perfectamente legible tanto en formato digital como impreso.
@@ -33,9 +28,8 @@ Cada noticia debe seguir una jerarquía visual clara:
 
 Estos estándares garantizan que la voz de PointSav y Woodfine sea coherente y profesional en todos los canales de comunicación, manteniendo una estética de "Libro Blanco" institucional.
 
+## Véase también
 
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*
+- [[brand-typography]]
+- [[brand-family-swatch]]
+- [[style-guide-readme]]

@@ -58,9 +58,3 @@ Per-tenant training data lives in deployment instances rather than at workspace 
 
 - [[reverse-funnel-editorial-pattern]] — The editorial pipeline that generates the craft preference pairs consumed by Stage-2 training.
 - [[tier-c-key-wiring]] — The operational form of Tier C external API key management.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

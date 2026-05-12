@@ -2,18 +2,13 @@
 schema: foundry-doc-v1
 type: topic
 slug: bim-aec-muscle-memory
-title: Memoria Muscular AEC y Convenciones de Interfaz
+title: Memoria Muscular AEC y Patrones de Interfaz
 audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: bim-aec-muscle-memory.md
-## Véase también
-
-- [[bim-design-philosophy]]
-- [[bim-token-taxonomy]]
-- [[flat-file-bim-leapfrog]]
-
 ---
+
 
 
 El Sistema de Diseño de Edificios adopta el vocabulario de interfaz universal de la industria (Revit, ArchiCAD, BricsCAD y Bonsai) para garantizar que los profesionales del sector AEC (Arquitectura, Ingeniería y Construcción) no tengan curva de aprendizaje. Al respetar las convenciones establecidas, Foundry permite que los usuarios se concentren en las innovaciones estratégicas de la plataforma.
@@ -35,9 +30,8 @@ A diferencia de las herramientas tradicionales enfocadas solo en el diseño, Fou
 
 Estas capacidades, previstas para la versión v0.0.2, transforman el BIM de una herramienta de dibujo en un sustrato operativo para la gestión de inmuebles.
 
+## Véase también
 
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*
+- [[bim-design-philosophy]]
+- [[bim-token-taxonomy]]
+- [[flat-file-bim-leapfrog]]

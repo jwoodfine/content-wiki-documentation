@@ -13,13 +13,8 @@ editor: pointsav-engineering
 cites:
   - ni-51-102
 paired_with: api-key-boundary-discipline.md
-## Véase también
-
-- [[compounding-substrate]]
-- [[design-system-substrate]]
-- [[cluster-wiki-draft-pipeline]]
-
 ---
+
 
 ## Resumen estratégico
 
@@ -50,8 +45,8 @@ Tres propiedades estructurales justifican la regla:
 
 La combinación de límite de pasarela, ledger de auditoría por tenant y lista de propósitos permitidos produce un rastro de auditoría criptográfico sobre cada llamada de inferencia externa. Esta estructura satisface los requisitos de integridad de procesamiento de SOC 2 y los principios de cadena de custodia de ISAE 3402 por construcción.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*
+- [[compounding-substrate]]
+- [[design-system-substrate]]
+- [[cluster-wiki-draft-pipeline]]

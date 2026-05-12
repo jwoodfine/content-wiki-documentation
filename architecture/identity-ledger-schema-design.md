@@ -7,14 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: en
 paired_with: identity-ledger-schema-design.es.md
-## See Also
-
-- [[machine-based-auth]]
-- [[capability-based-security]]
-- [[worm-ledger-design]]
-- [[cryptographic-ledgers]]
-
 ---
+
 
 
 The Identity Ledger provides a JSONL-based, append-only record of canonical person identities within the Foundry ecosystem. Following the Three-Ring Architecture’s boundary-ingest pattern, `service-people` publishes this schema to enable deterministic identity resolution across all Ring 2 and Ring 3 knowledge-extraction services.
@@ -52,9 +46,9 @@ Per ADR-07, identity resolution must be deterministic and bypass AI inference at
 
 `service-people` exposes identity data through the Model Context Protocol (MCP), providing resources for looking up records by ID or email, and tools for appending new identity claims from Ring 1 inbound services. This architecture ensures that identity remains a stable, verifiable sustrato for all downstream automated processing.
 
+## See Also
 
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*
+- [[machine-based-auth]]
+- [[capability-based-security]]
+- [[worm-ledger-design]]
+- [[cryptographic-ledgers]]

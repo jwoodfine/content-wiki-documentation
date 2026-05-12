@@ -7,13 +7,9 @@ audience: vendor-public
 bcsc_class: current-fact
 language: en
 paired_with: bim-design-philosophy.es.md
-## See Also
-
-- [[bim-aec-muscle-memory]]
-- [[bim-token-taxonomy]]
-- [[flat-file-bim-leapfrog]]
-
+cites: [ifc-4-3, uniclass-2015, bsdd-v1]
 ---
+
 
 
 The Building Design System serves as the AEC-specific extension of Foundry’s design substrate, analogous to the relationship between IBM Carbon and specialized industry modules. It is anchored to the IFC 4.3 entity hierarchy and prioritized for high-fidelity operational environments. The system translates Foundry’s core commitments—flat-file storage, open standards, and offline-first execution—into a professional toolset that addresses the structural weaknesses of legacy cloud-only BIM.
@@ -43,9 +39,8 @@ The BIM-SEMANTIC layer sits atop project-design’s META-substrate. While projec
 
 This architecture ensures that BIM components remain consistent with the broader Foundry design language while meeting the rigorous semantic requirements of ISO-standardized building data.
 
+## See Also
 
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*
+- [[bim-aec-muscle-memory]]
+- [[bim-token-taxonomy]]
+- [[flat-file-bim-leapfrog]]

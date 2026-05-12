@@ -5,11 +5,12 @@ slug: location-intelligence-platform.es
 category: applications
 type: topic
 quality: complete
+short_description: "La plataforma de Inteligencia de Ubicación de PointSav es una aplicación GIS de archivos planos propiedad del cliente diseñada para análisis de clústeres minoristas y selección estratégica de sitios — compuesta por app-orchestration-gis (el motor analítico) y pointsav-gis-engine (la capa de renderizado), con cada conjunto de datos, algoritmo y decisión de renderizado bajo el control directo del cliente."
 status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: TRANSLATE-ES
-last_edited: 2026-05-02
+last_edited: 2026-05-08
 editor: pointsav-engineering
 paired_with: location-intelligence-platform.md
 cites:
@@ -17,17 +18,9 @@ cites:
   - overture-maps-cdla-2-0
   - ni-51-102
   - osc-sn-51-721
-## Véase también
-
-- [[location-intelligence-ux]]
-- [[location-intelligence-strategy]]
-- [[pointsav-gis-engine]]
-- [[service-places-filtering]]
-
 ---
 
-
-La plataforma de Inteligencia de Ubicación de PointSav es una aplicación GIS soberana, basada en archivos planos, diseñada para el análisis de clústeres minoristas y la selección estratégica de sitios. Construida como una alternativa de alto rendimiento a los productos SaaS comerciales, la plataforma permite a los clientes mantener el control total sobre sus conjuntos de datos geográficos, algoritmos e infraestructura de visualización.
+La plataforma de Inteligencia de Ubicación de PointSav es una aplicación GIS de archivos planos propiedad del cliente diseñada para análisis de clústeres minoristas y selección estratégica de sitios — compuesta por [[app-orchestration-gis]] (el motor analítico) y [[pointsav-gis-engine]] (la capa de renderizado), con cada conjunto de datos, algoritmo y decisión de renderizado bajo el control directo del cliente. La plataforma responde a una pregunta comercial fundamental — *¿qué nodos geográficos poseen la densidad validada por capital requerida para soportar desarrollo adyacente?* — transformando ubicaciones de tiendas en bruto en nodos comerciales accionables a través de la [[co-location-methodology]].
 
 ## Capacidades Operativas
 
@@ -52,10 +45,3 @@ La plataforma se adhiere a los principios de soberanía de datos del [Motor GIS 
 ## Procedencia
 - **Adaptación Estratégica:** Basada en el documento inglés `location-intelligence-platform.md`.
 - **Refinement:** 2026-05-02 por project-language Task.
-
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

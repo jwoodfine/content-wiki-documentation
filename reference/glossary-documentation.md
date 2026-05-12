@@ -7,14 +7,8 @@ status: complete
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-03
 editor: project-language Task
-## See Also
-
-- [[style-guide-topic]]
-- [[style-guide-guide]]
-- [[style-guide-readme]]
-- [[wikipedia-structure]]
-
 ---
+
 
 
 This is the definitive, public-facing A-Z Lexicon for PointSav Digital Systems. It bridges standard industry terminology (layman terms) with our specialized **2030 Sovereign Infrastructure Doctrine**. 
@@ -653,10 +647,9 @@ A word processing application in Workplace OS for creating, editing, and formatt
 ### Zero-party Data
 Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
 
+## See Also
 
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*
+- [[style-guide-topic]]
+- [[style-guide-guide]]
+- [[style-guide-readme]]
+- [[wikipedia-structure]]

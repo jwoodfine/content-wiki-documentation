@@ -41,7 +41,3 @@ Badge is decorative status; the surrounding context provides meaning. If the bad
 
 - [[design-color]]
 - [[guide-component-notification]]
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*

@@ -1,26 +1,20 @@
 ---
 schema: foundry-doc-v1
-type: guide
+title: "fs-anchor-emitter"
 slug: fs-anchor-emitter
-title: FS Anchor Emitter Configuration Guide
+category: services
+type: topic
+quality: complete
+short_description: "fs-anchor-emitter generates signed checkpoints of the immutable Write-Once-Read-Many ledger at hourly cadence and prepares them for external anchoring to the Sigstore Rekor transparency log on a monthly schedule — the mechanism that makes the platform's ledger state cryptographically auditable from outside the platform."
+status: active
 audience: vendor-public
 bcsc_class: current-fact
-language: en
+last_edited: 2026-05-08
+editor: pointsav-engineering
 paired_with: fs-anchor-emitter.es.md
-## See Also
-
-- [[service-fs-architecture]]
-- [[service-fs-security-compliance]]
-- [[worm-ledger-design]]
-
 ---
 
-
-The `fs-anchor-emitter` is the component responsible for generating signed checkpoints of the {{gli|WORM}} ledger and preparing them for external anchoring. This guide details the setup and operational requirements for ensuring ledger integrity across both Vendor (Foundry) and Customer (Totebox) environments.
-
-## Overview of Operation
-
-The emitter operates at Layer 4 of the {{gli|WORM}} stack. It periodically reads the latest state of the per-tenant tile tree, generates a `signed-note` checkpoint, and stores it in the authoritative `$FS_LEDGER_ROOT/<moduleId>/checkpoint` file. These checkpoints are then consumed by the monthly workspace anchoring process to be posted to the Sigstore Rekor transparency log.
+`fs-anchor-emitter` is the component that generates signed checkpoints of the immutable Write-Once-Read-Many ledger at hourly cadence and prepares them for external anchoring to the Sigstore Rekor transparency log on a monthly schedule — the mechanism that makes the platform's ledger state cryptographically auditable from outside the platform itself. The emitter operates at Layer 4 of the WORM stack, reads the latest state of the per-tenant tile tree, generates a `signed-note` checkpoint, and stores it at the authoritative path under `$FS_LEDGER_ROOT/<moduleId>/checkpoint`. The monthly workspace anchoring process consumes those checkpoints and posts them to the public transparency log.
 
 ## Configuration Requirements
 
@@ -51,9 +45,8 @@ Before emitting a new checkpoint, the emitter is intended to perform an internal
 ## External Anchoring
 While the emitter produces checkpoints hourly, external publication to Rekor is currently planned for a monthly cadence. This provides a balance between evidentiary density and network overhead.
 
+## See Also
 
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*
+- [[service-fs-architecture]]
+- [[service-fs-security-compliance]]
+- [[worm-ledger-design]]

@@ -1,12 +1,15 @@
 ---
-schema: foundry-topic-v1
+schema: foundry-doc-v1
 title: "Visión General de la Arquitectura de la Plataforma"
 slug: architecture.es
 category: architecture
-status: published
+type: topic
+quality: complete
+status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-09
 editor: pointsav-engineering
+paired_with: architecture.md
 ---
 
 La plataforma PointSav está diseñada en torno a dos propiedades estructurales: consistencia criptográfica distribuida y capacidad de arranque soberano. Ambas propiedades se mantienen de forma simultánea en entornos en la nube y en bóvedas físicas desconectadas.
@@ -30,9 +33,3 @@ Esta propiedad está diseñada para garantizar la continuidad operativa cuando e
 - [[worm-ledger-architecture]] — diseño del registro WORM que sustenta la integridad del archivo
 - [[compounding-substrate]] — cómo las propiedades estructurales se acumulan entre despliegues
 - [[customer-hostability]] — propiedades de diseño que permiten al cliente alojar la plataforma completa
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

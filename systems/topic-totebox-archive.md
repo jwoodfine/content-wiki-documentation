@@ -20,7 +20,7 @@ A **Totebox Archive** is the fundamental unit of data storage and sovereignty wi
 
 Unlike traditional databases that require active processes to access data, a Totebox Archive persists information as **immutable flat files** (JSONL, GeoParquet, Markdown). This decoupling ensures that the data remains accessible and readable even if the original software engine is no longer running.
 
-Each archive is cryptographically anchored to a {{gli|WORM ledger}}, creating a permanent, verifiable {{gli|Audit trail}} for all transactions and state changes.
+Each archive is cryptographically anchored to a WORM ledger, creating a permanent, verifiable Audit trail for all transactions and state changes.
 
 ## Freely Transferable System
 
@@ -40,9 +40,3 @@ Totebox Archives are typically deployed as specialized containers for distinct i
 - [[topic-totebox-orchestration]]
 - [[topic-infrastructure-os]]
 - [[topic-site-ledger-integration]]
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

@@ -111,15 +111,3 @@ For deployments that include Ring 3, the read-only constraint means the determin
 2. `conventions/three-ring-architecture.md` — workspace canonical specification.
 3. `conventions/compounding-substrate.md` — meta-pattern the rings implement.
 4. SYS-ADR-07 — structured data never routes through AI; enforces the Ring 2 / Ring 3 boundary.
-
----
-
-## Provenance
-
-Source material: workspace-root draft `topic-three-ring-architecture.md`, workspace conventions `three-ring-architecture.md` and `compounding-substrate.md`, service catalog in MEMO §6.3. Refinement disciplines applied: no body H1 (renderer supplies from frontmatter title); structural-positioning discipline (no competitive-by-name framing); BCSC posture applied (no forward-looking claims requiring labelling in this article — the ring structure is an operational present-state description); banned-vocabulary pass (no substitutions required).
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

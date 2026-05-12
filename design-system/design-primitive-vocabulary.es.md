@@ -16,13 +16,8 @@ cites:
   - wcag-22
   - dtcg-spec
   - doctrine-38
-## Véase también
-
-- [[design-philosophy]]
-- [[design-color]]
-- [[design-typography]]
-
 ---
+
 
 La capa de tokens primitivos del sustrato preserva cuatro patrones estructurales en los que el campo moderno de sistemas de diseño ha convergido (2018–2026): escalas de color numéricas, capas primitivo → semántico → componente, la división de tipografía productiva vs expresiva, y escalas de espaciado numéricas de ~12–15 pasos.
 
@@ -40,6 +35,8 @@ Un diseñador o desarrollador que llega de cualquier entorno de sistema de dise�
 
 Un token nombrado por familia cromática con los valores exactos de un proveedor específico pone al sustrato a un litigio de marcas de distancia de un rediseño. Un token nombrado por rol con valores elegidos por PointSav, no.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
+- [[design-philosophy]]
+- [[design-color]]
+- [[design-typography]]

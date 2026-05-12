@@ -15,13 +15,11 @@ paired_with: service-slm.es.md
 ---
 
 
-> service-slm is the Doorman service — the single network boundary that holds API keys, routes AI inference across three compute tiers, and writes an immutable per-tenant audit record of every external call.
-
-**service-slm**, also called the Doorman, is the Ring 3 optional-intelligence boundary in the PointSav three-ring architecture. It is the only service that holds API keys for external AI providers. Every AI inference request from any other service routes through the Doorman, which selects among three compute tiers — Tier A local OLMo on the workspace VM, Tier B Yo-Yo GPU burst on multi-cloud, and Tier C external API calls to Anthropic, Google, or OpenAI — based on request shape and tenant budget caps. The Doorman enforces sanitise-outbound and rehydrate-inbound discipline so that customer-identifying details do not reach external providers in raw form. It writes a signed audit entry to the per-tenant ledger on every call, whether internal or external.
+Every AI inference call on the PointSav platform routes through a single service — **service-slm** (the Doorman) — which holds all provider API keys, selects the cheapest compute tier that meets the request's deadline, and writes an immutable audit record before returning the result. A request that resolves on the local model never leaves the customer's infrastructure and never appears on a cloud billing statement. The routing logic, tier thresholds, and audit log are all operator-controlled. service-slm is the Ring 3 optional-intelligence boundary: it holds API keys for external AI providers, enforces sanitise-outbound and rehydrate-inbound discipline so that customer-identifying details do not reach external providers in raw form, and writes a signed audit entry to the per-tenant ledger on every call.
 
 ## Architectural Baseline
 
-The Doorman acts as the air-lock for unstructured text entering the knowledge pipeline. Raw text arriving from Ring 1 services — emails, PDFs, form submissions — passes through service-slm before any structured facts are written to the knowledge graph. The service applies a Small Language Model to extract verifiable facts, formats them as clean Markdown, and closes the AI processing window before data continues downstream to Ring 2. This containment is the implementation of SYS-ADR-07: structured data never routes through AI.
+The Doorman is the platform's sole AI boundary — no inference call enters or exits the knowledge pipeline without passing through it. The Doorman acts as the air-lock for unstructured text entering the knowledge pipeline. Raw text arriving from Ring 1 services — emails, PDFs, form submissions — passes through service-slm before any structured facts are written to the knowledge graph. The service applies a Small Language Model to extract verifiable facts, formats them as clean Markdown, and closes the AI processing window before data continues downstream to Ring 2. This containment is the implementation of SYS-ADR-07: structured data never routes through AI.
 
 ## Ring and Role
 
@@ -32,7 +30,7 @@ The three compute tiers the Doorman routes across:
 | Tier | Compute | When used |
 |---|---|---|
 | Tier A — Local | OLMo 3 7B Q4 on workspace VM (CPU) | High-volume, low-latency, budget-sensitive requests |
-| Tier B — Yo-Yo | OLMo 3.1 32B Think on multi-cloud GPU burst (GCP Cloud Run / RunPod / Modal) | Requests that require larger model capacity |
+| Tier B — On-demand GPU | OLMo 3.1 32B Think on multi-cloud GPU burst (GCP Cloud Run / RunPod / Modal) | Requests that require larger model capacity |
 | Tier C — External API | Anthropic Claude / Google Gemini / OpenAI | Narrow precision tasks: citation grounding, initial graph build |
 
 Customers do not choose the tier. Request shape and budget caps determine routing automatically.
@@ -70,10 +68,3 @@ The Doorman is deployed as a systemd unit (`infrastructure/local-doorman/`) on t
 -  §XI — Three-ring architecture and three-tier compute routing
 - `infrastructure/local-doorman/` — systemd unit (live since workspace v0.1.13)
 - SYS-ADR-07 — structured data never routes through AI
-
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

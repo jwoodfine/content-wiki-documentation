@@ -9,7 +9,7 @@ status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-06
 editor: pointsav-engineering
-cites: []
+cites: [ifc-4-3, uniclass-2015, bsdd-v1, ids-1-0, dtcg-w3c, ashrae-90-1]
 paired_with: bim-token-three-layers.es.md
 ---
 
@@ -184,9 +184,3 @@ This is the same relationship as between a CSS property specification (declaring
 - ASHRAE Standard 90.1-2022 — American Society of Heating, Refrigerating and Air-Conditioning Engineers
 - National Building Code of Canada 2020 (NBC 2020) — National Research Council Canada
 - EN ISO 52000-1:2017 — European Committee for Standardization
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

@@ -14,14 +14,8 @@ cites:
   - ni-51-102
   - osc-sn-51-721
 paired_with: draft-research-trail-discipline.md
-## Véase también
-
-- [[cluster-wiki-draft-pipeline]]
-- [[cluster-design-draft-pipeline]]
-- [[citation-substrate]]
-- [[bcsc-disclosure-posture]]
-
 ---
+
 
 ## Resumen estratégico
 
@@ -41,8 +35,9 @@ En tiempo de refinamiento, la pasarela lee la subsección de sugeridos antes de 
 
 El mecanismo está diseñado para ser ligero en la práctica: hallazgos de una línea; la investigación detallada va en un archivo de investigación separado, referenciado una vez; los recuentos vacíos son válidos y transparentes; las preguntas abiertas que la pasarela no puede resolver se convierten en solicitudes de vuelta al contribuidor de origen.
 
----
+## Véase también
 
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*
+- [[cluster-wiki-draft-pipeline]]
+- [[cluster-design-draft-pipeline]]
+- [[citation-substrate]]
+- [[bcsc-disclosure-posture]]

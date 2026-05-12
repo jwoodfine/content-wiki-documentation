@@ -1,15 +1,20 @@
 ---
-schema: foundry-topic-v1
+schema: foundry-doc-v1
 title: "Template Ledger (service-email-template)"
 slug: template-ledger
 category: services
-status: published
+type: topic
+quality: complete
+short_description: "The Template Ledger is the distribution mechanism within service-email-template that synchronises a single authoritative copy of every approved template to the operator's mail environment — eliminating version drift between template design and operator execution and removing every drafting step from routine corporate correspondence."
+status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-08
 editor: pointsav-engineering
+paired_with: template-ledger.es.md
+cites: []
 ---
 
-The Template Ledger is the distribution mechanism within `service-email-template` that ensures all outbound corporate communications use the current, approved version of each template. It eliminates version drift between template design and operator execution by maintaining a single authoritative copy per template identifier and synchronizing it to the operator's mail environment automatically.
+The Template Ledger is the distribution mechanism within `service-email-template` that synchronises a single authoritative copy of every approved template to the operator's mail environment automatically. It eliminates version drift between template design and operator execution by maintaining one canonical copy per template identifier; the operator retrieves the current version by key and sends it directly. The distinction between drafting and deploying becomes structural rather than procedural — the operator is not authoring routine corporate correspondence, only selecting which approved template to dispatch.
 
 ## Design intent
 
@@ -39,9 +44,3 @@ No push notification is sent to the operator. The current template is always pre
 - [[service-email]] — the Ring 1 email ingest service that handles inbound messages
 - [[style-guide-guide]] — operational register conventions for deployment runbooks
 - [[disclosure-substrate]] — the disclosure architecture that governs outbound communications
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

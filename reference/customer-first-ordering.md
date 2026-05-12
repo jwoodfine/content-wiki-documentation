@@ -56,13 +56,3 @@ The customer-first ordering principle is the operational form of the three-tier 
 
 - [[compounding-substrate]] — the substrate architecture this principle serves
 - [[data-vault-bookkeeping-substrate]] — an example of a product built in customer-installation order
-
-## Provenance
-
-Authored 2026-05-01 by project-language Task Claude. Source: `conventions/customer-first-ordering.md` (version 0.0.1).
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

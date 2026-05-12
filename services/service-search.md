@@ -8,16 +8,13 @@ quality: complete
 short_description: "service-search is the Ring 2 full-text search service built on the Tantivy Rust library, providing microsecond retrieval across millions of files through a static binary inverted index that requires no active database process."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-08
 editor: pointsav-engineering
 cites: []
 paired_with: service-search.es.md
 ---
 
-
-> service-search is the Ring 2 full-text search service built on the Tantivy Rust library, providing microsecond retrieval across millions of files through a static binary inverted index that requires no active database process.
-
-**service-search** is a Ring 2 knowledge-and-processing service in the PointSav three-ring architecture. It provides full-text search across the platform's document archive through a static binary inverted index built in Rust using the Tantivy library. Because the index is a static binary structure rather than a live database, the entire search index can be copied to portable media and queried on any machine without additional software dependencies. The service guarantees compliance with the DARP (Data Archive and Retrieval Protocol) standard.
+**service-search** answers full-text queries across millions of platform documents in microseconds, using a static binary inverted index built in Rust on the Tantivy library — and because the index is a file rather than a live database process, it can be copied to portable media and queried on any machine without additional dependencies. The service is a Ring 2 knowledge-and-processing component and conforms to the Data Archive and Retrieval Protocol (DARP) standard. It locates documents; it does not generate or classify them.
 
 ## Architectural Baseline
 
@@ -60,10 +57,3 @@ The service is integrated with `app-workplace-presentation` for interactive sear
 - `pointsav-monorepo/service-search/` — implementation crate
 - Tantivy documentation — <https://docs.rs/tantivy/>
 - DARP (Data Archive and Retrieval Protocol) — compliance requirement governing the index portability guarantee
-
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

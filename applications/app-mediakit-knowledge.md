@@ -1,11 +1,18 @@
 ---
-schema: foundry-topic-v1
-status: published
-last_edited: 2026-04-30
+schema: foundry-doc-v1
+title: "app-mediakit-knowledge"
+slug: app-mediakit-knowledge
 category: applications
+type: topic
+quality: complete
+short_description: "app-mediakit-knowledge is the single-binary Rust wiki engine that serves PointSav's engineering documentation at documentation.pointsav.com — a view over a markdown tree, not a content repository, where the markdown commits are canonical and every running binary is a throwaway derived state."
+status: active
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
+last_edited: 2026-05-08
+editor: pointsav-engineering
+paired_with: app-mediakit-knowledge.es.md
 cites:
   - ni-51-102
   - osc-sn-51-721
@@ -23,12 +30,9 @@ references:
   - https://www.jsonfeed.org/version/1.1/
   - https://llmstxt.org/
   - https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style/Layout
-  - 
-  - 
-  - 
 ---
 
-`app-mediakit-knowledge` is the wiki engine that serves PointSav's engineering documentation at `https://documentation.pointsav.com`. The engine is a single-binary Rust service composed of an `axum` HTTP server, a `comrak` CommonMark renderer with PointSav-specific extensions for wikilinks, footnotes, table of contents, and section anchors, a `tantivy` full-text search backend, and a `maud` templating layer that ships four article templates and static-asset bundles. The engine reads markdown files from a content directory the operator names at startup, renders them on demand into HTML, and returns them with caching headers tuned for a documentation audience.
+`app-mediakit-knowledge` is the single-binary Rust wiki engine that serves PointSav's engineering documentation at `https://documentation.pointsav.com` — a view over a markdown tree, not a content repository. The markdown commits are canonical; every running binary is a throwaway derived state, including the rendered HTML, the Tantivy index, and (when collaborative editing is enabled) the CRDT room. The engine combines an `axum` HTTP server, a `comrak` CommonMark renderer with platform-specific extensions for wikilinks and footnotes, a `tantivy` full-text search backend, and a `maud` templating layer with four article templates. The engine's first public deployment went live on 2026-04-27 at 16:25 UTC.
 
 The engine is a *view* over a markdown tree, not a content repository. The markdown tree is canonical; the running binary is a view that any number of operators can stand up over the same content tree, or different content trees, with no shared mutable state on the binary side. This source-of-truth inversion is the single most important design choice and is treated in detail in §2.
 
@@ -171,14 +175,4 @@ Phases 4–8 are *planned*; cautionary language applies per [ni-51-102] and [osc
 - [[substrate-native-compatibility]] — the Action API drop rationale and the substrate-native surface set
 - [[collab-via-passthrough-relay]] — the WebSocket relay implementation in depth
 - [[wikipedia-leapfrog-design]] — chrome design intent and the 95%/5% muscle-memory contract
-- [[documentation-pointsav-com-launch-2026-04-27]] — the v0.1.29 public launch narrative
-
-## Provenance
-
-Authored 2026-04-27 by the project-knowledge cluster based on `app-mediakit-knowledge/ARCHITECTURE.md`, `UX-DESIGN.md`, and `INVENTIONS.md`. Refined by project-language 2026-04-30. Doctrine-claim references and invention-catalogue counts are current as of v0.1.29; the catalogue grows as phases ratify.
-
-Forward-looking statements about Phases 4–8 follow [ni-51-102] and [osc-sn-51-721] continuous-disclosure posture. Material assumptions: the workspace VM remains available; operator clearance of the Phase 4 design review; editorial labour at the project-language gateway is sustained.
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). PointSav™ and Foundry™ are unregistered trademarks of Woodfine Capital Projects Inc.*
+- [[article-shell-leapfrog]] — five article-shell primitives that extend beyond Wikipedia's reading surface

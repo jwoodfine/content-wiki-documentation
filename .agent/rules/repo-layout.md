@@ -5,7 +5,7 @@
 > Companion to `content-contract.md` (which governs file *contents*);
 > this file governs file *placement*.
 
-Last updated: 2026-05-03.
+Last updated: 2026-05-07.
 
 ---
 
@@ -27,6 +27,12 @@ Only the following may appear at repo root:
 | `.github/` | Issue templates, workflows, profile material |
 | `.agent/` | Local rule files (see §4 of `AGENT.md`) |
 | `index.md` | Wiki home (served at `/` by app-mediakit-knowledge) |
+| `index.es.md` | Spanish wiki home (bilingual pair for `index.md`) |
+| `featured-topic.yaml` | Homepage featured article selection (YAML pointer to a slug) |
+| `leapfrog-facts.yaml` | Homepage leapfrog facts panel (YAML data consumed by home page engine) |
+| `TRADEMARK.md` | Trademark and copyright notice for PointSav and Woodfine marks |
+| `CLAUDE.md` | Claude Code session guide (imports `AGENT.md`; required for Root sessions) |
+| `glossary-documentation.csv` | Master terminology glossary — canonical term source pending service-content migration |
 
 Anything else at repo root is a layout defect until closed.
 

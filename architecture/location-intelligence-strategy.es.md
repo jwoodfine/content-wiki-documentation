@@ -71,9 +71,3 @@ La especificación técnica completa, incluyendo el esquema de registros, el alg
 - [[compounding-substrate]] — las propiedades de soberanía e inteligencia opcional que este sustrato implementa
 - [[worm-ledger-architecture]] — el libro mayor de solo adición que ancla los registros de co-localización en el Totebox Archive del cliente
 - [[service-slm]] — el servicio opcional del Anillo 3 disponible para anotación y detección de anomalías
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*

@@ -14,7 +14,7 @@ cites: []
 ---
 
 
-**Infrastructure OS** is the virtualization and networking backbone of the PointSav ecosystem. It operates as the foundational host layer that permits the execution of multiple isolated {{gli|Totebox Archive}} instances on a single physical or virtual machine.
+**Infrastructure OS** is the virtualization and networking backbone of the PointSav ecosystem. It operates as the foundational host layer that permits the execution of multiple isolated Totebox Archive instances on a single physical or virtual machine.
 
 ## Virtualization and Orchestration
 
@@ -27,13 +27,13 @@ Through its integration with [[topic-totebox-orchestration]], Infrastructure OS 
 Infrastructure OS creates and maintains the **PointSav Private Network**. This is an encrypted, peer-to-peer overlay network that permits secure communication between distributed PointSav appliances. 
 
 Every node running Infrastructure OS becomes a verified member of this network, allowing for:
-*   **Encrypted Data Transfer:** Moving {{gli|Totebox Archive}} bootable images between locations safely.
+*   **Encrypted Data Transfer:** Moving Totebox Archive bootable images between locations safely.
 *   **Linguistic Signaling:** Coordinating task execution across clusters without exposing raw data to the public internet.
 *   **Remote Administration:** Enabling secure access via [[topic-console-os]].
 
 ## Hybrid Deployment
 
-Infrastructure OS is designed for **Hybrid Deployment**. It can boot directly on {{gli|Bare metal resources}} for maximum performance and security on-premise, or it can be deployed on public cloud resources (such as GCP, AWS, or Azure) to provide scalable infrastructure while maintaining the same sovereign security protocols.
+Infrastructure OS is designed for **Hybrid Deployment**. It can boot directly on Bare metal resources for maximum performance and security on-premise, or it can be deployed on public cloud resources (such as GCP, AWS, or Azure) to provide scalable infrastructure while maintaining the same sovereign security protocols.
 
 ## See Also
 
@@ -41,9 +41,3 @@ Infrastructure OS is designed for **Hybrid Deployment**. It can boot directly on
 - [[topic-totebox-orchestration]]
 - [[topic-totebox-archive]]
 - [[topic-network-admin-os]]
-
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

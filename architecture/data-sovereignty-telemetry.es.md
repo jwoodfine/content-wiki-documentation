@@ -7,14 +7,8 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: data-sovereignty-telemetry.md
-## Véase también
-
-- [[sovereign-telemetry]]
-- [[machine-based-auth]]
-- [[zero-execution-routing]]
-- [[cryptographic-ledgers]]
-
 ---
+
 
 
 Los sistemas de PointSav están diseñados para garantizar la soberanía absoluta de los datos mediante una arquitectura de "Estado Cero" que elimina la recolección de información de identificación personal (PII).
@@ -33,9 +27,9 @@ La recopilación de datos operativos se realiza exclusivamente mediante una arqu
 
 Todas las interfaces públicas incluyen una declaración de privacidad que certifica que el sistema no rastrea estados de sesión ni cosecha datos personales, cumpliendo con los estándares más exigentes de seguridad y confidencialidad.
 
+## Véase también
 
----
-
-*Copyright © 2026 Woodfine Capital Projects Inc. Licenciado bajo [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/).*
-
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos titulares.*
+- [[sovereign-telemetry]]
+- [[machine-based-auth]]
+- [[zero-execution-routing]]
+- [[cryptographic-ledgers]]
