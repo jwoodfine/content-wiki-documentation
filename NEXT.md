@@ -8,7 +8,7 @@
 > Read at session start when a Root Claude opens in this repo. Update
 > at session end when repo-scope open items change.
 
-Last updated: 2026-05-08.
+Last updated: 2026-05-12.
 
 ---
 
