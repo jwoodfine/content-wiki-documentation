@@ -6,11 +6,30 @@ category: patterns
 type: topic
 quality: core
 status: active
-bcsc_class: public-disclosure-safe
-last_edited: 2026-05-07
+bcsc_class: no-disclosure-implication
+language_protocol: PROSE-TOPIC
+last_edited: 2026-05-14
 editor: pointsav-engineering
-cites: []
+cites:
+  - ni-51-102
+  - osc-sn-51-721
 paired_with: knowledge-wiki-leapfrog-architecture.es.md
+references:
+  - id: 1
+    text: "MediaWiki architecture documentation."
+    url: "https://www.mediawiki.org/wiki/Manual:MediaWiki_architecture"
+  - id: 2
+    text: "Parsoid — MediaWiki."
+    url: "https://www.mediawiki.org/wiki/Parsoid/About"
+  - id: 3
+    text: "Skin:Vector/2022 design documentation."
+    url: "https://www.mediawiki.org/wiki/Skin:Vector/2022/Design_documentation"
+  - id: 4
+    text: "Extension:Cite — MediaWiki."
+    url: "https://www.mediawiki.org/wiki/Extension:Cite"
+  - id: 5
+    text: "comrak — ExtensionOptions."
+    url: "https://docs.rs/comrak/latest/comrak/struct.ExtensionOptions.html"
 ---
 
 `app-mediakit-knowledge` is the PointSav knowledge platform engine, a Rust binary that serves three wiki instances — `documentation.pointsav.com`, `projects.woodfinegroup.com`, and `corporate.woodfinegroup.com` — from flat Markdown files stored in git repositories. The engine renders content with Wikipedia-shaped chrome: sticky table of contents, wikilink resolution with red-link signalling, category pages, edit history, and full-text search. As of May 2026, it implements approximately 78 percent of the full Wikipedia muscle-memory surface. A planned multi-sprint roadmap is intended to bring that figure to approximately 95 percent before adding a Leapfrog 2030 differentiation layer that goes beyond what Wikipedia offers.
@@ -19,19 +38,19 @@ paired_with: knowledge-wiki-leapfrog-architecture.es.md
 
 MediaWiki is the software that runs Wikipedia. Porting it to Rust would not serve the platform's goals.
 
-MediaWiki was designed in 2003 for a PHP-and-MySQL stack. Its parser — the component that converts wikitext into HTML — was described by its original author as "a huge pile of regular expressions." The Parsoid project, MediaWiki's attempt to replace that parser with a clean bidirectional HTML↔wikitext converter, took ten years to ship and is still completing its rollout as of 2025.
+MediaWiki was designed in 2003 for a PHP-and-MySQL stack. Its parser — the component that converts wikitext into HTML — was described by its original author Tim Starling as "a huge pile of regular expressions."[^1] The Parsoid project, MediaWiki's attempt to replace that parser with a clean bidirectional HTML↔wikitext converter, took ten years to ship and is still completing its rollout as of 2025.[^2]
 
 The wikitext template system is the core of MediaWiki's content richness — infoboxes, navboxes, citation templates, and geographic coordinate templates are all implemented as wiki pages in the `Template:` namespace, processed by a recursive macro expansion interpreter that calls back into the database during parsing. This design couples the parser to the database, complicates caching, and makes the system difficult to run without MySQL.
 
-The architectural goal of `app-mediakit-knowledge` is not to replicate this design but to achieve the same reader experience through a fundamentally different stack. The content format is Markdown with YAML frontmatter, not wikitext. Version control is git, not a MySQL revision table. The search backend is Tantivy — embedded, zero operational overhead — not an Elasticsearch-backed cluster. Template transclusion is replaced by six native block types that cover the vast majority of what templates are actually used for on Wikipedia.
+The architectural goal of `app-mediakit-knowledge` is not to replicate this design but to achieve the same reader experience through a fundamentally different stack. The content format is Markdown with YAML frontmatter, not wikitext. Version control is git, not a MySQL revision table. The search backend is Tantivy — embedded, zero operational overhead — not an Elasticsearch-backed cluster. Template transclusion is replaced by six native block types that cover approximately 95 percent of what templates are actually used for on Wikipedia.[^3]
 
 ## MediaWiki architecture, understood
 
 MediaWiki's namespace system defines 30 namespaces in two axes: subject pages (Article, User, File, Template, Category, Help, Module, Draft) paired with Talk pages. Special pages form a separate class of software-generated pages with no talk equivalent.
 
-The Vector 2022 skin divides every page into: a sticky header (logo, search, language switcher, personal tools), a left sidebar (navigation menu and table of contents), an article header (namespace tabs, view tabs, title, short description, hatnotes), the article body (infobox floated right, body text, tables, images, footnote superscripts), an appendix (See also, References, External links), navboxes, category strip, and a footer (last-edited timestamp, licence, legal links).
+The Vector 2022 skin divides every page into: a sticky header (logo, search, language switcher, personal tools), a left sidebar (navigation menu and table of contents), an article header (namespace tabs, view tabs, title, short description, hatnotes), the article body (infobox floated right, body text, tables, images, footnote superscripts), an appendix (See also, References, External links), navboxes, category strip, and a footer (last-edited timestamp, licence, legal links).[^3]
 
-The Cite extension handles footnotes: `<ref>citation text</ref>` in the article body inserts a numbered superscript; `<references/>` at the section bottom renders the numbered list. Reference Tooltips — a JavaScript gadget — shows citation text on hover without requiring the reader to scroll.
+The Cite extension handles footnotes: `<ref>citation text</ref>` in the article body inserts a numbered superscript; `<references/>` at the section bottom renders the numbered list. Reference Tooltips — a JavaScript gadget — shows citation text on hover without requiring the reader to scroll.[^4]
 
 These elements constitute the muscle memory that Wikipedia readers have developed over two decades. A wiki missing the infobox, the sticky TOC, the `[1][2][3]` footnote superscripts, or the navboxes does not feel like Wikipedia regardless of how good its content is.
 
@@ -52,10 +71,10 @@ As of May 2026, `app-mediakit-knowledge` implements approximately 78 percent of 
 - Atom 1.0 and JSON Feed 1.1 syndication
 - Hover card page previews
 - Glossary auto-linker with tooltips
-- Authentication and edit review queue
+- Authentication and edit review queue (Phase 5)
 - Read-only git remote (smart-HTTP protocol)
 - MCP server (JSON-RPC 2.0) for agent integration
-- Notify-based incremental search reindex
+- Notify-based incremental search reindex (no restart required on file changes)
 - Mobile hamburger navigation
 
 The following elements are stubbed or absent, ranked by muscle-memory impact:
@@ -95,9 +114,9 @@ The engine walks the comrak AST, matches `CodeBlock` nodes with `info = "infobox
 
 **Navbox** — a similar fenced block intended to render a collapsible horizontal table at the article bottom, grouping related article links under a shared title. JavaScript collapses navboxes when two or more appear on the same page, matching Wikipedia's `autocollapse` behaviour.
 
-**Cite block** — inline citation syntax (`[^id]` with `[^id]: text` at article bottom) that the comrak footnotes extension already parses. The remaining work is CSS styling and a JavaScript hover tooltip.
+**Cite block** — inline citation syntax (`[^id]` with `[^id]: text` at article bottom) that the comrak footnotes extension already parses. The remaining work is CSS styling matching `[1][2][3]` superscript form and a JavaScript hover tooltip.[^4] The `citations.yaml` registry used by the editor's autocomplete system extends naturally into citation rendering.
 
-Implementing the infobox and navbox block types requires upgrading comrak from version 0.29 to 0.52 as a planned step. The newer version adds the `block_directive` extension (`:::infobox`, `:::navbox` syntax), which is cleaner than fenced code blocks for multi-line Markdown content inside the block body. The API is stable across these versions.
+Implementing the infobox and navbox block types requires upgrading comrak from version 0.29 to 0.52 as a planned step.[^5] The newer version adds the `block_directive` extension (`:::infobox`, `:::navbox` syntax), which is cleaner than fenced code blocks for multi-line Markdown content inside the block body. The API is stable across these versions; existing code compiles without change.
 
 ## The Leapfrog 2030 layer
 

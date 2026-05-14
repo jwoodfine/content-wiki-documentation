@@ -7,14 +7,17 @@ type: topic
 quality: core
 status: active
 language: es
-bcsc_class: public-disclosure-safe
-last_edited: 2026-05-07
+bcsc_class: no-disclosure-implication
+language_protocol: PROSE-TOPIC
+last_edited: 2026-05-14
 editor: pointsav-engineering
-cites: []
+cites:
+  - ni-51-102
+  - osc-sn-51-721
 paired_with: knowledge-wiki-leapfrog-architecture.md
 ---
 
-## Resumen estratégico
+## Adaptación estratégica
 
 `app-mediakit-knowledge` es el motor del wiki de conocimiento de PointSav: un binario Rust que sirve tres instancias wiki — `documentation.pointsav.com`, `projects.woodfinegroup.com` y `corporate.woodfinegroup.com` — desde archivos Markdown almacenados en repositorios git. El motor renderiza contenido con la interfaz visual de Wikipedia: tabla de contenidos adherente, resolución de wikilinks con señalización de enlaces rojos, páginas de categoría, historial de edición y búsqueda de texto completo.
 
