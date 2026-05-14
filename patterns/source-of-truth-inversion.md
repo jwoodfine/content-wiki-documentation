@@ -6,15 +6,13 @@ status: active
 category: patterns
 type: topic
 quality: complete
-last_edited: 2026-05-09
+last_edited: 2026-05-14
 editor: pointsav-engineering
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
 paired_with: source-of-truth-inversion.es.md
 cites:
-  - doctrine-claim-29
-  - doctrine-claim-34
   - ni-51-102
   - osc-sn-51-721
 ---
@@ -37,9 +35,9 @@ This case grounds the pattern with a live deployment: `https://documentation.poi
 
 `service-extraction` is the Ring 2 service that runs the multi-author document review pipeline. The source-of-truth mapping:
 
-**Canonical**: the extraction event log committed to the WORM immutable ledger managed by `service-fs` (live on the workspace VM since v0.1.23, binding `127.0.0.1:9100`, ledger root at `/var/lib/local-fs/ledger/`). An extraction event is durably sequenced the moment it is appended to the ledger; the ledger enforces total order over all events. Ledger entries are not modifiable after the fact — that is what WORM (Write Once Read Many) means structurally, not just operationally. The WORM ledger as canonical storage is an instance of Doctrine claim #29 (Substrate Substitution) applied to Ring 2: instead of a mutable relational database as the authority for review state, the substrate is an append-only signed log.
+**Canonical**: the extraction event log committed to the WORM immutable ledger managed by `service-fs` (live on the workspace VM since v0.1.23, binding `127.0.0.1:9100`, ledger root at `/var/lib/local-fs/ledger/`). An extraction event is durably sequenced the moment it is appended to the ledger; the ledger enforces total order over all events. Ledger entries are not modifiable after the fact — that is what WORM (Write Once Read Many) means structurally, not just operationally. The WORM ledger as canonical storage follows the substrate's general preference for append-only signed records: instead of a mutable relational database as the authority for review state, the substrate is an append-only signed log.
 
-**View**: the review queue shown to each reviewer is derived from the set of ledger entries that have not yet received a verdict commit. The per-reviewer verdict summary is derived similarly. Neither the queue nor the summary is stored separately — both re-derive on each query from the ledger. The derivation is deterministic: the same ledger produces the same queue and summary every time it is queried.
+**View**: the review queue shown to each reviewer is derived from the set of ledger entries that have not yet received a verdict commit. The per-reviewer verdict summary is derived similarly. Neither the queue nor the summary is stored separately — both re-derive on each query from the ledger. The derivation is deterministic: the same ledger produces the same queue and summary every time it is queried, because the ledger is immutable and total-ordered.
 
 **Ephemeral**: reviewer annotations made before a verdict commit are session-ephemeral. One reviewer's working annotations cannot see or corrupt another reviewer's working annotations, because those annotations have not yet been committed to the canonical ledger. Concurrent reviewers work against their own in-process state; the ledger reconciles when a verdict commit lands. The total-order enforcement of the ledger is the substrate mechanism that makes concurrent review safe without coordination locks.
 
@@ -47,11 +45,11 @@ This case grounds the pattern with a live deployment: `https://documentation.poi
 
 `app-workplace-presentation` is a planned application for collaborative slide-deck authoring. The intended source-of-truth mapping follows the same pattern:
 
-**Canonical**: the slide deck source, intended to be committed to the customer's Git repository under the vault pattern — the customer's Git repository is the canonical authority for presentation content, not a proprietary document server. A commit to the deck's Git repository is the disclosure event; the deck's git history is the audit record.
+**Canonical**: the slide deck source, intended to be committed to the customer's git repository — the customer's git repository is the canonical authority for presentation content, not a proprietary document server. A commit to the deck's git repository is the disclosure event; the deck's git history is the audit record.
 
 **View**: rendered slide frames served to browser clients, computed from the committed deck source on demand. The rendered frames are not stored persistently; they are rebuilt from the committed source on each request.
 
-**Ephemeral**: CRDT multi-cursor collaboration state for real-time co-authoring sessions is planned as session-ephemeral. Participating authors see each other's edits in real time via a passthrough relay analogous to the wiki engine's Phase 2 Step 7 relay design. That session-state does not persist between sessions without an explicit commit by a human author. Note: the CRDT collaboration layer for `app-workplace-presentation` is planned; it is not yet implemented as of 2026-04-27.
+**Ephemeral**: CRDT multi-cursor collaboration state for real-time co-authoring sessions is planned as session-ephemeral. Participating authors see each other's edits in real time via a passthrough relay analogous to the wiki engine's Phase 2 Step 7 relay design. That session-state does not persist between sessions without an explicit commit by a human author. When all authors leave the session, the ephemeral state is discarded; the canonical record in git is unchanged. Note: the CRDT collaboration layer for `app-workplace-presentation` is planned; it is not yet implemented as of 2026-04-27.
 
 ## Application: app-workplace-proforma (table collaboration, planned)
 
@@ -65,9 +63,9 @@ This case grounds the pattern with a live deployment: `https://documentation.poi
 
 ## Why this pattern matters
 
-**BCSC continuous-disclosure posture.** In each application, canonical is the disclosed state. Per `conventions/bcsc-disclosure-posture.md` and [ni-51-102] continuous-disclosure requirements, the record that is disclosed is the record that is signed, committed, and replicated — not the rendered view, not the search index, not the session-ephemeral CRDT buffer. Source-of-truth inversion enforces this by construction: the substrate cannot accidentally disclose a view-layer artefact as authoritative because the view is explicitly not the record. The audit trail for any disclosed claim is a `git log`; the claim lives in a signed commit. This property is not achieved by policy — it is a structural consequence of the storage layer designation.
+**BCSC continuous-disclosure posture.** In each application, canonical is the disclosed state. Per [ni-51-102] continuous-disclosure requirements, the record that is disclosed is the record that is signed, committed, and replicated — not the rendered view, not the search index, not the session-ephemeral CRDT buffer. Source-of-truth inversion enforces this by construction: the substrate cannot accidentally disclose a view-layer artefact as authoritative because the view is explicitly not the record. The audit trail for any disclosed claim is a `git log`; the claim lives in a signed commit. This property is not achieved by policy — it is a structural consequence of the storage layer designation.
 
-**Doctrine claim #34 (Two-Bottoms Sovereign Substrate).** Claim #34 establishes that the same `os-*` binaries run on both substrate bottoms (native seL4 and compatibility NetBSD) via a thin shim. The application-layer consequence is that canonical storage must be kernel-agnostic: a signed git tree and a signed WORM ledger entry are valid records regardless of which OS kernel the view process runs on. Source-of-truth inversion achieves this — by keeping the canonical record as signed structured data (git commits, ledger entries) and the view as a derived process, the substrate binaries can move between bottoms without the canonical record changing its identity. The deeper seL4/NetBSD design is treated in [[substrate-native-compatibility]]; the connection here is only the kernel-agnostic canonical storage claim.
+**Kernel-agnostic canonical storage.** The platform's two-substrate design requires that the same `os-*` binaries run on both substrate bottoms (native seL4 and compatibility NetBSD) via a thin shim. The application-layer consequence is that canonical storage must be kernel-agnostic: a signed git tree and a signed WORM ledger entry are valid records regardless of which OS kernel the view process runs on. Source-of-truth inversion achieves this — by keeping the canonical record as signed structured data (git commits, ledger entries) and the view as a derived process, the substrate binaries can move between bottoms without the canonical record changing its identity. The deeper seL4/NetBSD design is treated in [[substrate-native-compatibility]]; the connection here is only the kernel-agnostic canonical storage claim.
 
 The pattern is not application-specific. It recurs because the same structural logic applies wherever a substrate needs a clear audit record, clean replication, and collaboration that does not corrupt the canonical state. The four applications above are four instances of one pattern, not four independent design decisions.
 

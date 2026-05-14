@@ -6,16 +6,16 @@ status: active
 category: patterns
 type: topic
 quality: complete
-last_edited: 2026-05-09
+language: es
+last_edited: 2026-05-14
 editor: pointsav-engineering
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
 paired_with: source-of-truth-inversion.md
 cites:
-  - doctrine-claim-29
-  - doctrine-claim-34
   - ni-51-102
+  - osc-sn-51-721
 ---
 
 ## Descripción del patrón
@@ -34,7 +34,7 @@ Para `service-extraction` (canalización de revisión multiautor de Ring 2), el 
 
 En cada aplicación, lo canónico es el estado divulgado. Conforme a los requisitos de divulgación continua de [ni-51-102], el registro que se divulga es el que está firmado, confirmado y replicado — no la vista renderizada, no el índice de búsqueda, no el búfer CRDT efímero de sesión. La inversión de la fuente de verdad hace cumplir esto por construcción: el sustrato no puede divulgar accidentalmente un artefacto de capa de vista como autoritativo, porque la vista no es el registro por definición. La trazabilidad de auditoría para cualquier afirmación divulgada es un `git log`.
 
-La reclamación #34 de Doctrine (Sustrato Soberano de Dos Fondos) establece que los mismos binarios `os-*` se ejecutan en ambos fondos del sustrato (seL4 nativo y NetBSD de compatibilidad). La consecuencia a nivel de aplicación es que el almacenamiento canónico debe ser agnóstico al kernel: un árbol git firmado y una entrada de ledger WORM firmada son registros válidos independientemente de qué kernel del sistema operativo ejecute el proceso de vista.
+El diseño de dos sustratos de la plataforma requiere que los mismos binarios `os-*` se ejecuten en ambos fondos del sustrato (seL4 nativo y NetBSD de compatibilidad) mediante un shim delgado. La consecuencia a nivel de aplicación es que el almacenamiento canónico debe ser agnóstico al kernel: un árbol git firmado y una entrada de ledger WORM firmada son registros válidos independientemente de qué kernel del sistema operativo ejecute el proceso de vista.
 
 ## Aplicaciones planificadas
 
@@ -47,6 +47,3 @@ Para las aplicaciones planificadas `app-workplace-presentation` (autoría colabo
 - [[substrate-native-compatibility]] — Almacenamiento canónico agnóstico al kernel en el contexto de Sustrato Soberano de Dos Fondos.
 - [[disclosure-substrate]] — La convención de postura de divulgación que este patrón satisface.
 
-## Procedencia
-
-Vista general estratégica en español elaborada por project-language el 2026-04-30. Basada en el borrador de project-knowledge (sub-agente brief 03, 2026-04-28). Por DOCTRINE.md §XII, esta vista general no es una traducción literal — adapta el concepto central para lectores en español.
