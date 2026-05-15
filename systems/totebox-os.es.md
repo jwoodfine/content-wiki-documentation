@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Totebox OS"
-slug: topic-totebox-os
+slug: totebox-os
 category: systems
 type: topic
 quality: complete

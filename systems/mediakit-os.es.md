@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "MediaKit OS"
-slug: topic-mediakit-os
+slug: mediakit-os
 category: systems
 type: topic
 quality: complete

@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Infrastructure OS"
-slug: topic-infrastructure-os
+slug: infrastructure-os
 category: systems
 type: topic
 quality: complete

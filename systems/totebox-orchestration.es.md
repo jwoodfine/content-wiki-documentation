@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Orquestación Totebox"
-slug: topic-totebox-orchestration
+slug: totebox-orchestration
 category: systems
 type: topic
 quality: complete

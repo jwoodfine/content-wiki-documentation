@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Totebox Archive"
-slug: topic-totebox-archive
+slug: totebox-archive
 category: systems
 type: topic
 quality: complete

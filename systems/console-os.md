@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Console OS"
-slug: topic-console-os
+slug: console-os
 category: systems
 type: topic
 quality: complete
