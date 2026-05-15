@@ -33,6 +33,6 @@ A new Totebox container is provisioned with a three-directory skeleton — `app-
 
 ## See Also
 
-- [[topic-totebox-os]]
-- [[topic-infrastructure-os]]
-- [[topic-console-os]]
+- [[totebox-os]]
+- [[infrastructure-os]]
+- [[console-os]]

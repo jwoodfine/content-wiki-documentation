@@ -34,7 +34,7 @@ Cada Totebox se especializa en un tipo de activo institucional. Los casos de uso
 
 ## Véase también
 
-- [[topic-totebox-os]]
-- [[topic-totebox-orchestration]]
-- [[topic-infrastructure-os]]
-- [[topic-site-ledger-integration]]
+- [[totebox-os]]
+- [[totebox-orchestration]]
+- [[infrastructure-os]]
+- site-ledger-integration

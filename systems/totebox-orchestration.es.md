@@ -39,6 +39,6 @@ La capa de orquestación también gestiona el retiro seguro de contenedores — 
 
 ## Véase también
 
-- [[topic-totebox-os]]
-- [[topic-infrastructure-os]]
-- [[topic-console-os]]
+- [[totebox-os]]
+- [[infrastructure-os]]
+- [[console-os]]
