@@ -7,8 +7,19 @@ type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-14
+last_edited: 2026-05-15
 editor: pointsav-engineering
+cites: []
+references:
+  - id: 1
+    text: "Dettmers, T. et al. 'QLoRA: Efficient Finetuning of Quantized LLMs.' NeurIPS, 2023."
+    url: "https://arxiv.org/abs/2305.14314"
+  - id: 2
+    text: "Hu, E. et al. 'LoRA: Low-Rank Adaptation of Large Language Models.' ICLR, 2022."
+    url: "https://arxiv.org/abs/2106.09685"
+  - id: 3
+    text: "Rafailov, R. et al. 'Direct Preference Optimization: Your Language Model is Secretly a Reward Model.' NeurIPS, 2023."
+    url: "https://arxiv.org/abs/2305.18290"
 paired_with: yo-yo-lora-training-pipeline.md
 ---
 
@@ -84,7 +95,7 @@ y trl.
 QLoRA (Quantised Low-Rank Adaptation) es un método de ajuste fino eficiente
 en parámetros que carga un modelo base en cuantización 4-bit NF4 y entrena
 un conjunto pequeño de matrices de peso adicionales — llamadas adaptador —
-en lugar de actualizar el modelo completo. Para un modelo de 7 mil millones
+en lugar de actualizar el modelo completo. [^1] Para un modelo de 7 mil millones
 de parámetros como OLMo 3 7B Think, la cuantización a 4 bits reduce la
 demanda de GPU de aproximadamente 14 GB (en bfloat16) a cerca de 6 GB,
 dejando margen suficiente en la L4 de 24 GB para el ciclo de entrenamiento.
@@ -92,7 +103,7 @@ El adaptador apunta a siete capas de proyección lineal: `q_proj`, `v_proj`,
 `k_proj`, `o_proj`, `gate_proj`, `up_proj` y `down_proj`. El entrenamiento
 se ejecuta durante dos épocas con rango 16 (`r=16`), alpha 32
 (`lora_alpha=32`), una longitud de secuencia máxima de 512 tokens y
-verificación de gradientes activada para gestionar la memoria de activaciones.
+verificación de gradientes activada para gestionar la memoria de activaciones. [^2]
 
 La configuración de entrenamiento es intencionalmente conservadora. El
 objetivo es desplazar el modelo base hacia el vocabulario, los patrones de
@@ -117,7 +128,7 @@ par consiste en una respuesta en sombra (la salida sin guía del modelo) y
 una respuesta veredicto (la formulación preferida confirmada por el
 operador). El entrenamiento DPO sobre estos pares mueve el modelo hacia la
 distribución de respuestas preferidas sin requerir etiquetas explícitas
-para cada token.
+para cada token. [^3]
 
 ## Salida del adaptador y publicación
 

@@ -8,13 +8,20 @@ quality: published
 short_description: The economic model that separates what PointSav publishes freely from what it sells — public knowledge artifacts under open licenses, paid service at the point of multi-Totebox aggregation.
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "Creative Commons. 'About the Licenses.' Creative Commons, 2024."
+    url: "https://creativecommons.org/licenses/"
+  - id: 2
+    text: "GitHub. 'Open Source Guides.' GitHub, Inc., 2024."
+    url: "https://opensource.guide/"
 paired_with: knowledge-commons.es.md
 ---
 
-The **Knowledge Commons / Service Commerce** model is PointSav's economic architecture. Knowledge artifacts — design primitives, conventions, training recipes, adapter weights, and sanitised trajectory corpus — are published under open licenses and freely reusable. The commercial threshold is crossed precisely when two or more Totebox Archives must be operated as a single coordinated system. Solo Totebox operation is sovereign infrastructure; multi-Totebox aggregation is paid service.
+The **Knowledge Commons / Service Commerce** model is PointSav's economic architecture. Knowledge artifacts — design primitives, conventions, training recipes, adapter weights, and sanitised trajectory corpus — are published under open licenses and freely reusable. [^1] The commercial threshold is crossed precisely when two or more Totebox Archives must be operated as a single coordinated system. Solo Totebox operation is sovereign infrastructure; multi-Totebox aggregation is paid service.
 
 The line between them is bright and structural. It is not a pricing decision — it follows directly from the architecture.
 
@@ -68,7 +75,7 @@ The Knowledge Commons model operationally produces three contributor tiers:
 
 **Paid contributors (50–100 people, PointSav-funded)** — project-tier engineering work paid by PointSav and executed via GitHub pull requests against the public substrate repositories. Per-jurisdiction export adapters, LoRA adapter authoring, customer-specific deployment provisioning, multi-Totebox aggregation services. Outcome-based contracts tied to Customer service revenue.
 
-**Open contributors (10,000+, CC/Apache-licensed)** — contributions to the public substrate via pull requests to `pointsav/factory-release-engineering`, the design system, the wiki engine, MCP server adapters, and TOPIC content in the content wikis. No CLA required for open-core contributions. Reputation accrues via the Trajectory Substrate's per-contributor attribution. A path to the paid tier exists for contributors whose work demonstrates recurring quality and operational fluency.
+**Open contributors (10,000+, CC/Apache-licensed)** — contributions to the public substrate via pull requests to `pointsav/factory-release-engineering`, the design system, the wiki engine, MCP server adapters, and TOPIC content in the content wikis. No CLA required for open-core contributions. [^2] Reputation accrues via the Trajectory Substrate's per-contributor attribution. A path to the paid tier exists for contributors whose work demonstrates recurring quality and operational fluency.
 
 The leverage of this structure is that the Open tier sustains features and coverage that a Core of 4–7 people could not maintain alone. Most substrate features are intended to ship via Open contribution; Core reviews and accepts; Paid implements commercial-tier extensions.
 
@@ -82,11 +89,3 @@ The model is not fixed. An Open contributor whose recurring work demonstrates op
 - [[disclosure-substrate]] — the substrate-substitution pattern applied to continuous-disclosure platforms
 - [[apprenticeship-substrate]] — the training mechanism that makes per-tenant corpus contribution valuable
 - [[adapter-composition]] — how per-tenant adapters are composed and versioned
-
-## References
-
-1. Open Core Handbook, 2026 — open-core licensing best practice.
-2. Open Source Guides — leadership in open source communities.
-3. Knowledge Commons Wiki — commons-based peer production.
-4. Open Knowledge Foundation — open data and open content standards.
-5. Creative Commons — CC BY 4.0 and CC0 license texts.

@@ -8,9 +8,19 @@ quality: complete
 short_description: "The nightly two-phase pipeline on Yo-Yo #1: Phase 1 runs entity extraction for the business DataGraph; Phase 2 trains a LoRA adapter against engineering and apprenticeship corpora using QLoRA on a single L4 GPU."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-14
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "Dettmers, T. et al. 'QLoRA: Efficient Finetuning of Quantized LLMs.' NeurIPS, 2023."
+    url: "https://arxiv.org/abs/2305.14314"
+  - id: 2
+    text: "Hu, E. et al. 'LoRA: Low-Rank Adaptation of Large Language Models.' ICLR, 2022."
+    url: "https://arxiv.org/abs/2106.09685"
+  - id: 3
+    text: "Rafailov, R. et al. 'Direct Preference Optimization: Your Language Model is Secretly a Reward Model.' NeurIPS, 2023."
+    url: "https://arxiv.org/abs/2305.18290"
 paired_with: yo-yo-lora-training-pipeline.es.md
 ---
 
@@ -76,14 +86,14 @@ QLoRA using the peft, bitsandbytes, and trl libraries.
 QLoRA (Quantised Low-Rank Adaptation) is a parameter-efficient fine-tuning
 method that loads a base model in 4-bit NF4 quantisation and trains a small
 set of additional weight matrices — called an adapter — rather than updating
-the full model. For a 7B-parameter model like OLMo 3 7B Think, 4-bit
+the full model. [^1] For a 7B-parameter model like OLMo 3 7B Think, 4-bit
 quantisation reduces the GPU footprint from roughly 14 GB (in bfloat16) to
 approximately 6 GB, leaving adequate headroom on the 24 GB L4 for the
 training loop itself. The adapter targets seven linear projection layers:
 `q_proj`, `v_proj`, `k_proj`, `o_proj`, `gate_proj`, `up_proj`, and
 `down_proj`. Training runs for two epochs with rank 16 (`r=16`), alpha 32
 (`lora_alpha=32`), a maximum sequence length of 512 tokens, and gradient
-checkpointing enabled to manage activation memory.
+checkpointing enabled to manage activation memory. [^2]
 
 The training configuration is intentionally conservative. The goal is to
 shift the base model toward the vocabulary, formatting patterns, and
@@ -105,7 +115,7 @@ produced by the apprenticeship routing substrate. Each pair consists of a
 shadow response (the model's unguided output) and a verdict response (the
 preferred formulation confirmed by the operator). DPO training on these
 pairs moves the model toward the preferred response distribution without
-requiring explicit labels for every token.
+requiring explicit labels for every token. [^3]
 
 ## Adapter Output and Publication
 

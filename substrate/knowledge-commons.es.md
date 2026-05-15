@@ -8,13 +8,20 @@ quality: published
 short_description: El modelo económico que separa lo que PointSav publica libremente de lo que vende — artefactos de conocimiento bajo licencias abiertas, servicio de pago en el punto de agregación multi-Totebox.
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "Creative Commons. 'About the Licenses.' Creative Commons, 2024."
+    url: "https://creativecommons.org/licenses/"
+  - id: 2
+    text: "GitHub. 'Open Source Guides.' GitHub, Inc., 2024."
+    url: "https://opensource.guide/"
 paired_with: knowledge-commons.md
 ---
 
-El modelo de **Conocimiento Común / Comercio de Servicios** es la arquitectura económica de PointSav. Los artefactos de conocimiento — doctrina, convenciones, recetas de entrenamiento, pesos de adaptadores y corpus de trayectoria depurado — se publican bajo licencias abiertas y son reutilizables libremente. El umbral comercial se supera precisamente cuando dos o más Archivos Totebox deben operar como un sistema coordinado único. La operación de un solo Totebox es infraestructura soberana; la agregación de múltiples Totebox es un servicio de pago.
+El modelo de **Conocimiento Común / Comercio de Servicios** es la arquitectura económica de PointSav. Los artefactos de conocimiento — doctrina, convenciones, recetas de entrenamiento, pesos de adaptadores y corpus de trayectoria depurado — se publican bajo licencias abiertas y son reutilizables libremente. [^1] El umbral comercial se supera precisamente cuando dos o más Archivos Totebox deben operar como un sistema coordinado único. La operación de un solo Totebox es infraestructura soberana; la agregación de múltiples Totebox es un servicio de pago.
 
 La línea entre ambos es clara y estructural. No es una decisión de precio — se deriva directamente de la arquitectura.
 
@@ -38,7 +45,7 @@ El modelo de Conocimiento Común produce operativamente tres niveles de contribu
 
 **Contribuidores de pago (50–100 personas, financiados por PointSav)** — trabajo de ingeniería por proyecto ejecutado mediante pull requests contra los repositorios públicos del sustrato: adaptadores de exportación por jurisdicción, autoría de adaptadores LoRA, aprovisionamiento de despliegues específicos del cliente, servicios de agregación multi-Totebox.
 
-**Contribuidores abiertos (más de 10,000, licencias CC/Apache)** — contribuciones al sustrato público mediante pull requests. Sin CLA requerido para contribuciones al núcleo abierto. La reputación se acumula mediante la atribución por contribuidor del Sustrato de Trayectoria. Existe un camino hacia el nivel de pago para contribuidores cuyo trabajo demuestra calidad recurrente.
+**Contribuidores abiertos (más de 10,000, licencias CC/Apache)** — contribuciones al sustrato público mediante pull requests. Sin CLA requerido para contribuciones al núcleo abierto. [^2] La reputación se acumula mediante la atribución por contribuidor del Sustrato de Trayectoria. Existe un camino hacia el nivel de pago para contribuidores cuyo trabajo demuestra calidad recurrente.
 
 La ventaja de esta estructura es que el nivel abierto mantiene características y cobertura que un Núcleo de 4–7 personas no podría sostener solo. La mayoría de las características del sustrato están previstas para llegar mediante contribuciones abiertas; el Núcleo revisa y acepta; los de pago implementan las extensiones del nivel comercial.
 
@@ -48,8 +55,3 @@ La ventaja de esta estructura es que el nivel abierto mantiene características 
 - [[disclosure-substrate]] — el patrón de sustitución de sustrato aplicado a las plataformas de divulgación continua
 - [[apprenticeship-substrate]] — el mecanismo de entrenamiento que hace valiosa la contribución de corpus por inquilino
 
-## Referencias
-
-1. Manual de Código Abierto, 2026 — mejores prácticas de licencias de código abierto.
-2. Open Knowledge Foundation — datos abiertos y estándares de contenido abierto.
-3. Creative Commons — textos de licencias CC BY 4.0 y CC0.
