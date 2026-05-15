@@ -8,9 +8,16 @@ quality: published
 short_description: "Every terminal interaction with service-slm through the operator TUI is a curated training corpus contribution for the per-tenant adapter."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "Rafailov, R. et al. 'Direct Preference Optimization: Your Language Model is Secretly a Reward Model.' NeurIPS, 2023."
+    url: "https://arxiv.org/abs/2305.18290"
+  - id: 2
+    text: "Zhou, C. et al. 'LIMA: Less Is More for Alignment.' NeurIPS, 2023."
+    url: "https://arxiv.org/abs/2305.11206"
 paired_with: tui-corpus-producer.es.md
 ---
 
@@ -24,7 +31,7 @@ Three properties distinguish system administration and IT-support interactions f
 
 **Narrow domain.** Archive operations, system conventions, and customer-specific workflow vocabulary form a bounded command set and failure-mode space. Models train more efficiently on bounded domains than on general corpora because the signal-to-noise ratio is higher.
 
-**Domain-expert feedback.** The operator issuing a verdict is the person who knows whether the response was correct — not a proxy labeler separated from the actual work. Published reinforcement-learning-from-human-feedback literature consistently reports that high-quality verdict-signed interaction tuples train an order of magnitude more efficiently than observation-only tuples.
+**Domain-expert feedback.** The operator issuing a verdict is the person who knows whether the response was correct — not a proxy labeler separated from the actual work. Published reinforcement-learning-from-human-feedback literature consistently reports that high-quality verdict-signed interaction tuples train an order of magnitude more efficiently than observation-only tuples. [^1]
 
 ## The /feedback mechanism
 
@@ -40,7 +47,7 @@ If the operator dismisses without providing a verdict, the tuple is captured as 
 
 ## Adapter quality budget
 
-Published fine-tuning literature suggests 200 to 500 high-quality verdict-signed interactions are sufficient for a first adapter training cycle in a narrow domain. Foundry's intended sequence for each tenant is: accumulate signed interactions from dogfood operations, train the first per-tenant adapter, apply a validation quality gate, and promote the adapter to the deployment. Each subsequent training cycle incorporates additional interactions, progressively tuning the adapter to the customer's specific environment — their systemd units, their seed taxonomy, their workflow vocabulary.
+Published fine-tuning literature suggests 200 to 500 high-quality verdict-signed interactions are sufficient for a first adapter training cycle in a narrow domain. [^2] Foundry's intended sequence for each tenant is: accumulate signed interactions from dogfood operations, train the first per-tenant adapter, apply a validation quality gate, and promote the adapter to the deployment. Each subsequent training cycle incorporates additional interactions, progressively tuning the adapter to the customer's specific environment — their systemd units, their seed taxonomy, their workflow vocabulary.
 
 ## Per-tenant adapter ownership
 
@@ -56,8 +63,3 @@ Some terminal sessions should not contribute to the training corpus: test sessio
 - [[customer-owned-graph-ip]] — per-tenant adapter weights are the customer's intellectual property
 - [[knowledge-graph-grounded-apprenticeship]] — training tuples carry graph context when the Doorman grounds the request
 
-## References
-
-1. Doctrine claim #45 — TUI-as-Corpus-Producer (ratified v0.1.0).
-2. `conventions/apprenticeship-substrate.md` §7D — TUI extension to the apprenticeship substrate.
-3. Published OLMo 2 fine-tuning literature on quality-over-volume for narrow-domain adapters.

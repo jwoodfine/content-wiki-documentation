@@ -8,9 +8,16 @@ quality: published
 short_description: "Cada interacción del operador con service-slm a través de la interfaz de terminal es una contribución curada al corpus de entrenamiento del adaptador por inquilino."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "Rafailov, R. et al. 'Direct Preference Optimization: Your Language Model is Secretly a Reward Model.' NeurIPS, 2023."
+    url: "https://arxiv.org/abs/2305.18290"
+  - id: 2
+    text: "Zhou, C. et al. 'LIMA: Less Is More for Alignment.' NeurIPS, 2023."
+    url: "https://arxiv.org/abs/2305.11206"
 paired_with: tui-corpus-producer.md
 ---
 
@@ -25,7 +32,7 @@ Las interacciones de administración de sistemas e infraestructura tienen tres p
 
 **Dominio acotado.** Las operaciones de archivo, las convenciones del sistema y el vocabulario de flujo de trabajo específico del cliente forman un conjunto acotado de comandos y modos de fallo. Los modelos se entrenan más eficientemente sobre dominios acotados que sobre corpus generales.
 
-**Retroalimentación de expertos en el dominio.** El operador que emite un veredicto es la persona que sabe si la respuesta fue correcta, no un anotador distante del trabajo real. La literatura publicada sobre aprendizaje por refuerzo a partir de retroalimentación humana reporta consistentemente que las tuplas de interacción firmadas con veredicto entrenan un orden de magnitud más eficientemente que las tuplas sin veredicto.
+**Retroalimentación de expertos en el dominio.** El operador que emite un veredicto es la persona que sabe si la respuesta fue correcta, no un anotador distante del trabajo real. La literatura publicada sobre aprendizaje por refuerzo a partir de retroalimentación humana reporta consistentemente que las tuplas de interacción firmadas con veredicto entrenan un orden de magnitud más eficientemente que las tuplas sin veredicto. [^1]
 
 ## El mecanismo de /feedback
 
