@@ -54,7 +54,7 @@ Cada archivo Totebox declara cuatro patas de la tétrada del proyecto. El trabaj
 |---|---|
 | vendor | Código de característica en el clon `pointsav-monorepo` del archivo |
 | customer | Guías operativas en el clon `woodfine-fleet-deployment` del archivo |
-| deployment | Provisión de la instancia en ejecución en `~/Foundry/deployments/` |
+| deployment | Provisión de la instancia en ejecución en el directorio de despliegue |
 | wiki | Archivos de borrador TOPIC almacenados en `.agent/drafts-outbound/` |
 
 La sesión de Comando ratifica la completitud de la tétrada cuando las cuatro patas están presentes.
@@ -96,5 +96,5 @@ Los niveles se aplican mediante emparejamientos, no comparaciones de cadenas. El
 
 ## Referencias
 
-- **`DOCTRINE.md`** — carta constitucional de Foundry.
+- **`DOCTRINE.md`** — carta constitucional de la plataforma.
 - **`conventions/project-tetrad-discipline.md`** — especificación ratificada de la tétrada del proyecto.
