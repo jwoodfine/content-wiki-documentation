@@ -17,13 +17,19 @@ cites:
  - osc-sn-51-721
 ---
 
+The PointSav wiki at `documentation.pointsav.com` provides structural compatibility with MediaWiki's reader-facing conventions — URL patterns, wikilink syntax, footnote syntax — while deliberately declining to replicate MediaWiki's internal API surface. Every interface the substrate does not replicate is a compliance obligation it does not assume.
+
+That decision has a concrete cost and a concrete benefit. The cost: contributors migrating automation workflows from MediaWiki-compatible tools re-implement against new interfaces. The benefit: every Action API endpoint MediaWiki ships, deprecates, or modifies would have generated a maintenance event; the platform has no leverage over that velocity, and the BCSC continuous-disclosure posture makes every public interface a continuous-disclosure surface. Declining the shim means the wiki's disclosure commitments are bounded to what the substrate actually provides.
+
+The result is a wiki with the reader and integrator ecosystem reach of a MediaWiki-replacement — resolving wikilinks, serving `sitemap.xml`, accepting Wikipedia-style markup — and a maintenance surface that scales with the platform's own velocity, not MediaWiki's.
+
 ## The choice
 
 The PointSav engineering wiki at `documentation.pointsav.com` is a substrate-native wiki. It accepts a one-shot MediaWiki XML import, serves URLs in MediaWiki's familiar `/wiki/{slug}` shape, accepts Wikipedia-style `[[wikilink]]` and `[^footnote]` syntax, and stops there. It does not implement MediaWiki's Action API, does not support MediaWiki templates, does not run a bot framework compatible with pywikibot, and does not provide a write surface that mimics MediaWiki's REST endpoints.
 
 The core architectural distinction: when an existing platform's role is substituted by the substrate, the substrate replicates *structural compatibility* — the surfaces a reader or external integrator encounters — without replicating *interface mimicry* — the API shape an internal-system integration would consume. The distinction is load-bearing.
 
-The MediaWiki Action API shim was scoped during the wiki engine's initial design phase at workspace v0.1.10 and dropped at v0.1.14 after the maintenance burden and the disclosure-posture risk the shim would have introduced were surfaced. This article covers the rationale.
+The MediaWiki Action API shim was scoped during the wiki engine's initial design phase at version 0.1.10 and dropped at version 0.1.14 after the maintenance burden and the disclosure-posture risk the shim would have introduced were surfaced. This article covers the rationale.
 
 ## Ecosystem moat — what compatibility actually buys
 
@@ -67,7 +73,7 @@ Three surfaces in the high-cost-to-provide category were declined:
 
 **MediaWiki templates and parser functions.** The wiki's renderer is `comrak` (CommonMark) plus PointSav-specific extensions for wikilinks, footnotes, table of contents, and section anchors. It is not a MediaWiki parser. Templates do not expand server-side. The workaround for content that would be a template in MediaWiki is Markdown partials, inlined by the contributor at edit time; the substrate accepts the duplication cost in exchange for a deterministic rendering pipeline that can be audited without parsing a Turing-complete template language at render time.
 
-**The pywikibot ecosystem.** The substrate's automation path is the workspace's existing tooling — the commit workflow, the corpus capture, the session protocol, the editorial pipeline's draft intake. None of these implement the pywikibot interface. A contributor migrating from pywikibot to the substrate's tooling re-implements against the new interfaces; the substrate accepts the migration cost in exchange for keeping its automation path coherent with the rest of the workspace's session model.
+**The pywikibot ecosystem.** The substrate's automation path is the platform's existing tooling — the commit workflow, the corpus capture, the session protocol, the editorial pipeline's draft intake. None of these implement the pywikibot interface. A contributor migrating from pywikibot to the substrate's tooling re-implements against the new interfaces; the substrate accepts the migration cost in exchange for keeping its automation path coherent with the rest of the workspace's session model.
 
 ## The substrate-native API surface set
 
@@ -91,7 +97,7 @@ The interfaces compose with the substrate's other invariants. The JSON-LD is gen
 
 ## The `verify://` URL scheme (planned)
 
-A future substrate-specific URL scheme — `verify://{citation-id}` — is *intended* to resolve a citation reference to its verifiable source through the substrate's verification path, not through public DNS. The scheme is named in `UX-DESIGN.md` §4.8 and is *planned* for Phase 7 of the wiki engine; it is not implemented as of v0.1.29.
+A future substrate-specific URL scheme — `verify://{citation-id}` — is *intended* to resolve a citation reference to its verifiable source through the substrate's verification path, not through public DNS. The scheme is *planned* for Phase 7 of the wiki engine; it is not implemented as of v0.1.29.
 
 The motivation: a `[citation-id]` in an article is a structured reference that the substrate can resolve to an authoritative source through the citation registry. The registry maps the ID to a (title, URL, optional clause reference) tuple, and a future Information Verifiability Citation (IVC) machinery is *intended* to harden the resolution to a cryptographically-verifiable proof of provenance. This is forward-looking. Cautionary language applies per [ni-51-102] and [osc-sn-51-721]. The reasonable basis is the citation-registry substrate already operating at v0.1.29. The material assumption is that the IVC machinery is ratified before Phase 7 implementation begins.
 

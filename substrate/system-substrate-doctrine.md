@@ -8,7 +8,7 @@ quality: complete
 short_description: The kernel-level architecture beneath every PointSav service — a customer-rooted capability ledger that is the audit log, a two-bottoms sovereign OS strategy, and three mechanisms for time-bound capabilities, reproducible verification, and boot-anywhere recovery.
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites:
  - sec-17a-4-f
@@ -20,23 +20,25 @@ cites:
 paired_with: system-substrate-doctrine.es.md
 ---
 
-The **System Substrate Architecture** defines the layer beneath every PointSav operating system, service, and application — the kernel, the capability model, the audit ledger, and the ownership-transfer ceremony that together constitute a cryptographically sovereign deployment.
+Every PointSav operating system, service, and application rests on a common substrate layer: the kernel, the capability model, the audit ledger, and an ownership-transfer ceremony that together constitute a cryptographically sovereign deployment. The customer's apex signing key is held by the customer alone — no platform service, no provider, no chip vendor sits between the customer and the ledger root.
 
-Two core structural properties drive the architecture. **The Capability Ledger Substrate**: the running system's capability state IS the append-only WORM ledger; the kernel consults the ledger before honoring any invocation; the deployment is derived from the ledger. **The Two-Bottoms Sovereign Substrate**: the same binaries run on either a formally verified kernel (seL4 today, with a future no-std Rust moonshot-kernel) or a sovereignty-grade compatibility kernel (NetBSD with Veriexec and offline-reproducible builds), depending on hardware constraints and required assurance level.
+Two structural properties drive the architecture. **The Capability Ledger Substrate**: the running system's capability state IS the append-only WORM ledger; the kernel consults the ledger before honouring any invocation; the deployment is derived from the ledger. **The Two-Bottoms Sovereign Substrate**: the same binaries run on either a formally verified kernel (seL4 today, with a future no-std Rust moonshot-kernel) or a sovereignty-grade compatibility kernel (NetBSD with Veriexec and offline-reproducible builds), depending on hardware constraints and required assurance level.
+
+No production system in 2026 bundles source, formal verification proofs, capability graph, audit ledger, and signing keys under a single transparency-log root with an ownership-transfer ceremony. The cryptographic primitives are mature individually — C2SP `signed-note` supports witness cosigning, C2SP `tlog-tiles` provides the WORM substrate, seL4 delivers kernel-mediated capability invocation, CHERIoT 1.0 silicon shipped commercially in March 2026. What is new is their composition into a single deployable artefact with an apex signing key the customer holds.
+
+For regulated buyers, the consequence is concrete: an auditor with the ledger and the source can reconstruct any historical deployment state. The deployment IS the ledger — to boot is to replay from genesis; to upgrade is to append a version entry; to rotate keys is to append a rotation entry. The historical record is deterministic and customer-controlled.
 
 ## Cryptographic State Composition
 
-No production system in 2026 bundles source, formal verification proofs, capability graph, audit ledger, and signing keys under a single transparency-log root with an ownership-transfer ceremony. The cryptographic primitives are mature individually — C2SP `signed-note` supports witness cosigning, C2SP `tlog-tiles` provides the WORM substrate, seL4 delivers kernel-mediated capability invocation, CHERIoT 1.0 silicon shipped commercially in March 2026. What is new is their composition into a single deployable artefact.
-
-Existing approaches root attestation in the vendor's keys (cloud providers), the state (national digital-identity stacks), or the chip vendor (secure enclave silicon). In each case, the attested proof is proof of the vendor's controls, not proof of the customer's controls. The Foundry composition inverts this: every attestation chain terminates at the customer's own apex signing key.
+Existing approaches root attestation in the vendor's keys (cloud providers), the state (national digital-identity stacks), or the chip vendor (secure enclave silicon). In each case, the attested proof is proof of the vendor's controls, not proof of the customer's controls. This composition inverts that pattern: every attestation chain terminates at the customer's own apex signing key.
 
 ## Immutable Capability Ledger
 
 Every kernel-mediated capability invocation, grant, revocation, and transition emits a signed entry to a customer-rooted Merkle log. Before the kernel honors any capability invocation, it consults the ledger for the current revocation status, the time-bound expiry, and the validity of the apex root.
 
-**The deployment IS the ledger.** To boot a Foundry deployment is to replay the ledger from genesis forward. To shut down is to append a shutdown entry. To upgrade is to append a version-bump entry. To rotate keys is to append a rotation entry. The deployment state at any point in time is the deterministic application of all ledger entries up to that point. An auditor with the ledger and the source can reconstruct any historical state.
+**The deployment IS the ledger.** To boot a platform deployment is to replay the ledger from genesis forward. To shut down is to append a shutdown entry. To upgrade is to append a version-bump entry. To rotate keys is to append a rotation entry. The deployment state at any point in time is the deterministic application of all ledger entries up to that point. An auditor with the ledger and the source can reconstruct any historical state.
 
-The customer's apex signing key is held by the customer — in their TPM, in an HSM they own and operate, or as a paper-printed seed for air-gapped recovery. No Foundry service, no provider, no chip vendor sits between the customer and the ledger root.
+The customer's apex signing key is held by the customer — in their TPM, in an HSM they own and operate, or as a paper-printed seed for air-gapped recovery. No platform service, no provider, no chip vendor sits between the customer and the ledger root.
 
 ## Apex Cosigning and Ownership Transfer
 

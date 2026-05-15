@@ -44,7 +44,7 @@ Each MINOR bump produces a signed, versioned bundle pushed to `pointsav/factory-
 
 ## The Commercial Aggregation Boundary
 
-A single Totebox running its own Foundry deployment is sovereign infrastructure. The Customer owns the substrate, the data, the adapter, and the runtime. Nothing about a single Totebox crosses the commercial threshold.
+A single Totebox running its own platform deployment is sovereign infrastructure. The Customer owns the substrate, the data, the adapter, and the runtime. Nothing about a single Totebox crosses the commercial threshold.
 
 The threshold is crossed when two or more Totebox Archives — or a Totebox Archive plus an external system in coordination — must be operated as one. Examples include:
 

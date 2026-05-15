@@ -8,7 +8,7 @@ quality: complete
 short_description: "The design-system substrate is a self-hosted, customer-owned design-system engine that stores tokens and components in the customer's own Git repository, serves them through a machine-readable MCP endpoint, and uses the W3C DTCG token format to remain editor-agnostic."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites:
  - mcp-spec
@@ -20,11 +20,9 @@ paired_with: design-system-substrate.es.md
 ---
 
 
-> The design-system substrate is a self-hosted, customer-owned design-system engine that stores tokens and components in the customer's own Git repository, serves them through a machine-readable MCP endpoint, and uses the W3C DTCG token format to remain editor-agnostic.
+The PointSav design-system substrate is a self-hosted, customer-owned design-system engine. The vendor showcase at `design.pointsav.com` is the canonical instance. Each SMB customer who forks the substrate runs their own instance at their own domain — single codebase, single deployment shape, two contexts.
 
-The PointSav **design-system substrate** is a self-hosted, customer-owned design-system engine. The vendor showcase at `design.pointsav.com` is the canonical instance. Each SMB customer who forks the substrate runs their own instance at their own domain. Single codebase, single deployment shape, two contexts — vendor showcase and customer instance.
-
-Most SMB design systems are hosted on hyperscaler infrastructure. Enterprise-scale platforms — IBM Carbon, Google Material, Salesforce Lightning — place the design system inside the hyperscaler's own infrastructure. Enterprise SaaS tools in the design-system space carry entry pricing of $40–100 per seat per month. The SMB below the enterprise tier has structurally been underserved by this arrangement.
+Enterprise-scale managed design systems place tokens, components, and design decisions inside the platform provider's own infrastructure. The customer's theme files live in the vendor's storage; the vendor's continued operation is a dependency for every UI build. Enterprise SaaS tools in this space carry entry pricing that is prohibitive for SMB customers.
 
 The substrate inverts that pattern on three structural axes: the customer's design system lives in the customer's Git repository, signed by the customer's key, replayable into any tool; design-decision research lives in the same vault as the tokens and components, served through the same Model Context Protocol endpoint `[mcp-spec]` that AI agents use; and tokens are stored in the W3C Design Tokens Community Group (DTCG) format, keeping the substrate editor-agnostic by construction.
 
@@ -43,7 +41,7 @@ The substrate's content lives in a per-tenant vault directory:
 
 The vault is the only canonical layer. Rendered exports — Figma Variables JSON, Tailwind config, CSS variables, Style Dictionary builds — are derived caches recomputable from the canonical four directories above.
 
-The substrate engine is a stateless HTTP service that reads the vault from disk. Per-tenant isolation is achieved by running one engine process per tenant, each pointed at its own vault. Persistence above the vault filesystem is via the substrate's WORM ledger (service-fs). Token and component history is anchored monthly to Sigstore Rekor `[sigstore-rekor-v2]`, producing a customer-rooted Merkle log using the C2SP tlog-tiles format `[c2sp-tlog-tiles]` per the fundamental physics of 2030 hyperscaler infrastructure.
+The substrate engine is a stateless HTTP service that reads the vault from disk. Per-tenant isolation is achieved by running one engine process per tenant, each pointed at its own vault. Persistence above the vault filesystem is via the substrate's WORM ledger (service-fs). Token and component history is anchored monthly to Sigstore Rekor `[sigstore-rekor-v2]`, producing a customer-rooted Merkle log using the C2SP tlog-tiles format `[c2sp-tlog-tiles]`.
 
 ## Machine-Readable Context Backplane
 
@@ -76,7 +74,7 @@ The W3C Design Tokens Community Group format reached its 2025.10 stable specific
 On the consumer side:
 
 - **Figma** — via the Tokens Studio plugin or Figma's native variable system
-- **Penpot** — imports DTCG natively; the substrate-Penpot pairing is the fully-open-source design workflow Foundry recommends to SMB customers who prefer a self-hostable editor
+- **Penpot** — imports DTCG natively; the substrate-Penpot pairing is the fully-open-source design workflow the platform recommends to SMB customers who prefer a self-hostable editor
 - **Sketch** — via the Tokens Studio Sketch plugin
 - **Hand-authoring** — designers edit DTCG JSON directly; this is also the path most accessible to AI agents
 
@@ -122,7 +120,7 @@ It is not a SaaS platform. A managed-hosting option for SMB customers who prefer
 
 It is not a JavaScript-framework choice. Components are HTML+CSS+ARIA recipes; the customer's chosen framework consumes the recipe.
 
-It is not a container artefact. Per the fundamental physics of 2030 hyperscaler infrastructure, the substrate ships as a native binary deployed via systemd.
+It is not a container artefact. The substrate ships as a native binary deployed via systemd.
 
 ## See also
 

@@ -5,10 +5,10 @@ slug: disclosure-substrate
 category: substrate
 type: topic
 quality: complete
-short_description: "The Disclosure Substrate is the Foundry mechanism that makes a version-controlled Markdown wiki the primary continuous-disclosure record, combining signed authorship chains, cryptographic content hashes, and planned per-jurisdiction export adapters to produce regulator-compliant outputs from a single source."
+short_description: "The mechanism that makes a version-controlled Markdown wiki the primary continuous-disclosure record — signed authorship chains, cryptographic content hashes, and planned per-jurisdiction export adapters producing regulator-compliant outputs from a single source held under the issuer's own infrastructure."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -38,9 +38,13 @@ paired_with: disclosure-substrate.es.md
 ---
 
 
-> The Disclosure Substrate is the Foundry mechanism that makes a version-controlled Markdown wiki the primary continuous-disclosure record, combining signed authorship chains, cryptographic content hashes, and planned per-jurisdiction export adapters to produce regulator-compliant outputs from a single source.
+A documentation wiki can be designed so that it is not a description of a company's disclosures — it is the disclosure record. Every committed article carries a signed authorship chain, a cryptographic hash, and a timestamp anchored to an external ledger. Regulators and analysts read the same corpus that internal contributors write. The filing and the working document are the same artefact.
 
-A documentation wiki can be designed so that it is not a description of a company's disclosures — it is the disclosure record. Every committed article carries a signed authorship chain, a cryptographic hash, and a timestamp anchored to an external ledger. Regulators and analysts read the same corpus that internal contributors write. The filing and the working document are the same artefact. That is **The Disclosure Substrate**. This article explains what it means structurally, how it differs from conventional investor relations practice, and what components make it operational.
+The practical consequence for regulated buyers: a reporting issuer that serves its disclosure wiki from infrastructure it owns and signs can satisfy a regulator's records request without coordinating with a third-party platform, without a vendor's continued operation, and without risk that the disclosure record and the internal documentation have drifted apart — because they are the same file.
+
+The substrate collapses three conventionally separate bodies of text — internal documentation, an investor relations website, and statutory filings — into one Markdown corpus under issuer infrastructure, rendered into reader-facing wiki pages, regulator-compliant export packages, and cryptographic proof-of-state artefacts from the same source.
+
+For regulated issuers under `[ni-51-102]` and `[osc-sn-51-721]`, the export adapters and cryptographic anchoring described in this article are planned infrastructure; the signed authorship chain and content-hash anchoring are operational today.
 
 ## Overview
 
@@ -52,17 +56,17 @@ The substrate collapses the three into one: a single Markdown corpus under issue
 
 ## Ring and Role
 
-The Disclosure Substrate spans all three rings and the workspace documentation layer. Ring 1 provides the inbound content stream (articles authored and committed by contributors). Ring 2 provides the search and knowledge-graph layer that indexes the corpus. Ring 3 provides the AI grounding layer (planned) that validates citations before publication. The cryptographic anchoring, export adapters, and the registry that validates every citation are workspace-layer infrastructure. The substrate is activated on every commit to the content-wiki repos.
+The Disclosure Substrate spans all three rings and the documentation layer. Ring 1 provides the inbound content stream (articles authored and committed by contributors). Ring 2 provides the search and knowledge-graph layer that indexes the corpus. Ring 3 provides the AI grounding layer (planned) that validates citations before publication. The cryptographic anchoring, export adapters, and the registry that validates every citation are workspace-layer infrastructure. The substrate is activated on every commit to the content-wiki repos.
 
 ## Architecture
 
 ### How the substrate operates
 
-Every article (called a TOPIC) in the wiki carries YAML frontmatter declaring its title, slug, category, status, and — where the content is grounded in external material — its citation dependencies. Citations are resolved against a workspace-level registry; inline references use stable IDs (`[ni-51-102]`); the registry maps each ID to a title, URL, and optional clause reference. This is the citation-substrate layer per `conventions/citation-substrate.md`.
+Every article (called a TOPIC) in the wiki carries YAML frontmatter declaring its title, slug, category, status, and — where the content is grounded in external material — its citation dependencies. Citations are resolved against a workspace-level registry; inline references use stable IDs (`[ni-51-102]`); the registry maps each ID to a title, URL, and optional clause reference. This is the [[citation-substrate]] layer.
 
 Every committed TOPIC acquires a stable cryptographic identity: a Git commit SHA plus file path, and a content hash. Both are exposed in the rendered HTML so that an external indexer or regulator fetcher can pin a specific content state.
 
-Two timestamp mechanisms are planned for Phase 7 of the wiki engine (intended subject to the milestone schedule described in `conventions/disclosure-substrate.md` §6; actual delivery is subject to engineering capacity and milestone sequencing):
+Two timestamp mechanisms are planned for Phase 7 of the wiki engine (intended; actual delivery is subject to engineering capacity and milestone sequencing):
 
 - **OpenTimestamps anchoring** `[opentimestamps]` — planned cryptographic anchoring of each commit to the Bitcoin blockchain. Bitcoin anchoring is free, open-source, and external to the issuer's infrastructure; it produces proof that a specific content state existed at a specific block height, without requiring trust in any single intermediary.
 - **RFC 3161 timestamping** `[rfc-3161]` — planned formal timestamp tokens from a recognised Time-Stamp Authority. RFC 3161 tokens carry legal recognition in EU and most common-law jurisdictions. The planned use of both mechanisms provides cryptographic redundancy: one anchors to a decentralised ledger; the other provides the formally-recognised token a regulator or court can verify.
@@ -73,7 +77,7 @@ Material-change commits — those whose TOPIC edits constitute material changes 
 
 ### Per-jurisdiction export adapters (planned)
 
-A pluggable adapter layer is planned (intended, pending `project-disclosure` cluster scope; actual delivery subject to cluster activation and engineering sequencing) to transform the Markdown corpus into the submission format each regulatory surface requires:
+A pluggable adapter layer is planned (intended; actual delivery subject to cluster activation and engineering sequencing) to transform the Markdown corpus into the submission format each regulatory surface requires:
 
 | Adapter | Target surface |
 |---|---|
@@ -88,13 +92,13 @@ Where a jurisdiction requires qualified electronic preservation — for example,
 
 The FCA PS24/19 `[fca-ps-24-19]` modernisation of the UK's National Storage Mechanism to an iXBRL-based system is incorporated into the planned `export-esef` adapter's scope, as UK-listed issuers following the post-Brexit iXBRL path use the same technical format as ESEF.
 
-Each adapter is planned as a separable Rust crate. New jurisdictions are intended to be additive without changing the substrate's core. Forward-looking statements in this section depend on the material assumption that the `project-disclosure` cluster activates and that the XBRL taxonomy mapping work described in `conventions/disclosure-substrate.md` §3.4 completes before the adapters are required in production.
+Each adapter is planned as a separable Rust crate. New jurisdictions are intended to be additive without changing the substrate's core. Forward-looking statements in this section depend on the material assumption that the disclosure cluster activates and that the XBRL taxonomy mapping work completes before the adapters are required in production.
 
 ### Substrate Substitution applied to disclosure platforms
 
 Conventional investor relations practice positions a separate IR platform between the issuer's internal documentation and public disclosure. Such platforms typically operate on third-party cloud infrastructure and serve the disclosure to investors from that infrastructure, with the legally-material record living at the vendor rather than under the issuer's own infrastructure.
 
-Per Doctrine claim #29 (Substrate Substitution), the substrate's positioning is different: the wiki is the disclosure record, served directly under the issuer's own domain, signed under the issuer's own key, and anchored to external ledgers the issuer controls. There is no separate disclosure-distribution platform between the Markdown source and the reader.
+Under the substrate-substitution model, the positioning is different: the wiki is the disclosure record, served directly under the issuer's own domain, signed under the issuer's own key, and anchored to external ledgers the issuer controls. There is no separate disclosure-distribution platform between the Markdown source and the reader.
 
 What IR-platform services provide that the substrate does not — investor targeting, sell-side consensus aggregation, surveillance analytics — are composable via Ring 1 MCP adapters `[computerweekly-sovereign-2026]` as the substrate matures. The substrate replaces the substrate-of-record function; it composes with adjacent services that depend on multi-issuer panel data the substrate cannot replicate from a single deployment.
 
@@ -114,15 +118,15 @@ The planned mechanism (Phase 9 of the wiki engine; intended subject to the `proj
 
 This mechanism does not depend on the model that authored the TOPIC being trustworthy. It depends only on the citation registry being accurate and the adversary-AI verdict being more conservative than the authoring model. The C2PA standard `[c2pa]` for content provenance and the ACM study on AI disclosure practices `[c3ai-acm-2025]` are the external reference points for the grounding discipline's design.
 
-Material assumptions: the `project-disclosure` cluster activates; the constitutional-layer adapter from the `project-slm` cluster is available before Phase 9 begins; the citation registry maintains content hashes as specified in `conventions/citation-substrate.md` §5.
+Material assumptions: the disclosure cluster activates; the constitutional-layer adapter from the inference cluster is available before Phase 9 begins; the citation registry maintains content hashes as specified in [[citation-substrate]].
 
 ## Configuration
 
 Per `[ni-51-102]` continuous-disclosure language, the following items in this article are forward-looking:
 
 - The planned per-jurisdiction export adapters depend on `project-disclosure` cluster activation and XBRL taxonomy mapping work. Actual delivery is subject to engineering sequencing and operator prioritisation.
-- The planned Sigstore Rekor v2 monthly anchoring and RFC 3161 timestamping depend on the `fs-anchor-emitter` binary completing and on the IaC units in `infrastructure/local-fs-anchoring/` activating.
-- The planned substrate-enforced AI grounding (Phase 9) depends on the constitutional-layer adapter from `project-slm` cluster and on `project-disclosure` reaching that phase.
+- The planned Sigstore Rekor v2 monthly anchoring and RFC 3161 timestamping depend on the `fs-anchor-emitter` binary completing and on the anchoring infrastructure activating.
+- The planned substrate-enforced AI grounding (Phase 9) depends on the constitutional-layer adapter from the inference cluster and on the disclosure cluster reaching that phase.
 - The planned Disclosure-Diff signed artefacts and Subscriber Proof-of-Receipt W3C VCs depend on Phase 8 completing before Phase 9.
 
 Actual results may vary from the planned trajectory described above. All forward-looking statements depend on the material assumptions named in each section and are subject to operational reality, engineering capacity, and operator decisions on cluster prioritisation.
