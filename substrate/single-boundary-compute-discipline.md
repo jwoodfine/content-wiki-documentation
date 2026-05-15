@@ -66,4 +66,4 @@ This discipline composes with several other Doctrine claims. The Knowledge-Graph
 
 1. Doctrine claim #43 — Single-Boundary Compute Discipline (ratified v0.1.0).
 2. `conventions/three-ring-architecture.md` — Ring 3 structural optionality.
-3. SYS-ADR-07 — structured data never routes through AI; the sanitise-outbound discipline.
+3. [[sys-adr-07|SYS-ADR-07]] — structured data never routes through AI; the sanitise-outbound discipline.

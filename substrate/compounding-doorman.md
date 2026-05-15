@@ -22,7 +22,7 @@ In the PointSav platform, `service-slm` is the Compounding Doorman. It is the so
 
 The Doorman enforces four disciplines simultaneously on every call:
 
-**Sanitise outbound, rehydrate inbound.** SYS-ADR-07 prohibits structured data from routing through AI. Before any request leaves the Doorman boundary, identifiers, foreign keys, and structured fields are replaced with opaque tokens. After the response returns, the tokens are resolved back to their original values. The AI model sees only prose and opaque tokens; it never receives or returns structured records. This is what makes the audit-routing path reversible and auditable.
+**Sanitise outbound, rehydrate inbound.** [[sys-adr-07|SYS-ADR-07]] prohibits structured data from routing through AI. Before any request leaves the Doorman boundary, identifiers, foreign keys, and structured fields are replaced with opaque tokens. After the response returns, the tokens are resolved back to their original values. The AI model sees only prose and opaque tokens; it never receives or returns structured records. This is what makes the audit-routing path reversible and auditable.
 
 **Three-tier compute routing.** The Doorman selects among three compute tiers per request shape and budget policy:
 - **Tier A — local**: OLMo 3 7B on the customer's own hardware. Zero marginal cost, full data locality. Default for most operations.
@@ -55,7 +55,7 @@ The metaphor maps precisely to the operational discipline:
 - A doorman directs guests to the right destination — routing to local, GPU burst, or external API per policy.
 - A doorman carries bags through the door — rehydrating the response with full identifiers stripped at outbound.
 - A doorman keeps a log of who came and went — the audit ledger.
-- A doorman never enters the rooms themselves — the Doorman never writes to the authoritative knowledge graph; it only proposes, per SYS-ADR-07.
+- A doorman never enters the rooms themselves — the Doorman never writes to the authoritative knowledge graph; it only proposes, per [[sys-adr-07|SYS-ADR-07]].
 
 The discipline is what makes sovereign AI auditable, reversible, and compoundable.
 
@@ -63,7 +63,7 @@ The discipline is what makes sovereign AI auditable, reversible, and compoundabl
 
 The Compounding Doorman is the entirety of Ring 3. It is the single point at which AI touches the platform. Its read-only posture toward Ring 2 is not a limitation but an architectural guarantee: the deterministic knowledge pipeline in Rings 1 and 2 remains the authoritative record regardless of what Ring 3 proposes.
 
-This is what allows a deployment to operate Ring 3 at any trust level — from full AI-assisted operations to a configuration where Ring 3 is present but all proposals require explicit human approval before entering Ring 2. The Doorman enforces the human-checkpoint rule (SYS-ADR-10) at the point where AI output would otherwise flow silently into the knowledge graph.
+This is what allows a deployment to operate Ring 3 at any trust level — from full AI-assisted operations to a configuration where Ring 3 is present but all proposals require explicit human approval before entering Ring 2. The Doorman enforces the human-checkpoint rule ([[sys-adr-10|SYS-ADR-10]]) at the point where AI output would otherwise flow silently into the knowledge graph.
 
 ## Implementation state
 
@@ -85,6 +85,6 @@ LoRA adapter training — the mechanism that makes the Doorman compound — depe
 
 1. `conventions/compounding-substrate.md` — the meta-pattern the Compounding Doorman implements; five structural properties.
 2. `conventions/three-ring-architecture.md` — internal specification; the Doorman at Ring 3.
-3. SYS-ADR-07 — structured data never routes through AI; the sanitise-outbound discipline at the Doorman boundary.
-4. SYS-ADR-10 — the mandatory human checkpoint that the Doorman enforces at the Ring 2 write path.
+3. [[sys-adr-07|SYS-ADR-07]] — structured data never routes through AI; the sanitise-outbound discipline at the Doorman boundary.
+4. [[sys-adr-10|SYS-ADR-10]] — the mandatory human checkpoint that the Doorman enforces at the Ring 2 write path.
 5. MEMO §6.3 — `service-slm` specification: AI Gateway with sanitise-outbound boundary.

@@ -132,6 +132,6 @@ Each of these may integrate as a configuration addition or new subdirectory. Non
 
 1. `YOYO-COMPUTE.md` — workspace-root technical specification for the Yo-Yo compute substrate; source document for this topic.
 2. `SLM-STACK.md` — workspace-root Rust stack specification; companion to this topic.
-3. SYS-ADR-07 — structured data never routes through AI; the sanitise-outbound discipline the Doorman enforces before any Yo-Yo compute call.
-4. SYS-ADR-10 — the mandatory human checkpoint; the Doorman enforces this at the Ring 2 write path regardless of compute tier.
+3. [[sys-adr-07|SYS-ADR-07]] — structured data never routes through AI; the sanitise-outbound discipline the Doorman enforces before any Yo-Yo compute call.
+4. [[sys-adr-10|SYS-ADR-10]] — the mandatory human checkpoint; the Doorman enforces this at the Ring 2 write path regardless of compute tier.
 5. `conventions/compounding-substrate.md` — the five structural properties the Yo-Yo substrate contributes to.

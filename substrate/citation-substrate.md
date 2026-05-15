@@ -60,7 +60,7 @@ The registry entry schema makes provenance explicit at each step. A regulatory c
 
 The `content_hash` field is the self-healing mechanism. When service-slm runs its nightly hygiene pass, it fetches each URL, computes a SHA-256 of the page content, and compares against the stored hash. A match updates the `last_verified` date. A mismatch is flagged as a material change candidate and surfaced to the Master inbox with the diff. A 404 is flagged as link rot alongside candidate-replacement search results.
 
-Until service-slm is operational, Master Claude performs a manual review of the registry monthly.
+Until [[service-slm]] is operational, Master Claude performs a manual review of the registry monthly.
 
 Adding a new citation follows the seeding principle: the registry entry and the inline reference land in the same commit. An orphaned inline reference — one whose ID does not resolve in the registry — is a defect, not a convention.
 
@@ -81,7 +81,7 @@ The Citation Substrate currently requires manual discipline — registry entry a
 - A workspace-tier post-commit hook that validates every new `[id]` inline reference resolves in the registry. Implementation targeted at `v0.1.0`.
 - Auto-generation of a References section at the bottom of each article from the `cites:` frontmatter plus the registry — to be wired into `app-mediakit-knowledge` as a renderer stage.
 - A `cited_by:` reverse index persisted as `~/Foundry/data/citation-graph.json` (local-only, rebuilt on demand by the SLM hygiene pass).
-- Nightly hygiene passes by service-slm covering citation verification, forward-citation validation, reverse index build, drift detection, stale-topic surfacing, and citation suggestions — all as suggestions to Master, not automated fixes.
+- Nightly hygiene passes by [[service-slm]] covering citation verification, forward-citation validation, reverse index build, drift detection, stale-topic surfacing, and citation suggestions — all as suggestions to Master, not automated fixes.
 - Export of citation graph data as part of the `[knowledge-commons-wiki]` public-knowledge publication pattern.
 
 Until each lands, the manual discipline is the operational form.
