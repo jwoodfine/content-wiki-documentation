@@ -37,7 +37,7 @@ por construcción, Foundry.
 3. **Libro de auditoría anclado en el cliente.** El corpus de
    aprendizaje vive en `data/training-corpus/apprenticeship/`
    dentro del sustrato del cliente. Los registros privados de
-   inquilino nunca salen, según Doctrine §IV.b.
+   inquilino nunca salen de la infraestructura del cliente.
 
 ## Por qué los hiperescaladores no pueden replicar esto
 

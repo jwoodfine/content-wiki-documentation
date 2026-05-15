@@ -4,7 +4,7 @@ title: "Conocimiento Común y Comercio de Servicios"
 slug: knowledge-commons.es
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: El modelo económico que separa lo que PointSav publica libremente de lo que vende — artefactos de conocimiento bajo licencias abiertas, servicio de pago en el punto de agregación multi-Totebox.
 status: active
 bcsc_class: public-disclosure-safe

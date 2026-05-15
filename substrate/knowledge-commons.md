@@ -4,7 +4,7 @@ title: "Knowledge Commons and Service Commerce"
 slug: knowledge-commons
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: The economic model that separates what PointSav publishes freely from what it sells — public knowledge artifacts under open licenses, paid service at the point of multi-Totebox aggregation.
 status: active
 bcsc_class: public-disclosure-safe
@@ -21,7 +21,7 @@ references:
 paired_with: knowledge-commons.es.md
 ---
 
-The **Knowledge Commons / Service Commerce** model is PointSav's economic architecture. Knowledge artifacts — design primitives, conventions, training recipes, adapter weights, and sanitised trajectory corpus — are published under open licenses and freely reusable. [^1] The commercial threshold is crossed precisely when two or more Totebox Archives must be operated as a single coordinated system. Solo Totebox operation is sovereign infrastructure; multi-Totebox aggregation is paid service.
+The **Knowledge Commons / Service Commerce** model is PointSav's economic architecture. Knowledge artifacts — architecture definitions, published specifications, training recipes, adapter weights, and sanitised training corpus — are published under open licenses and freely reusable. [^1] The commercial threshold is crossed precisely when two or more Totebox Archives must be operated as a single coordinated system. Solo Totebox operation is sovereign infrastructure; multi-Totebox aggregation is paid service.
 
 The line between them is bright and structural. It is not a pricing decision — it follows directly from the architecture.
 
@@ -32,7 +32,7 @@ The following artifacts are published at every MINOR version bump under open lic
 | Artifact | License |
 |---|---|
 | Architecture definitions and amendments | CC BY 4.0 |
-| Conventions | CC BY 4.0 |
+| Published governance specifications | CC BY 4.0 |
 | Citation registry (`citations.yaml`) | CC0 |
 | Sanitised trajectory corpus shard | CC BY 4.0 with redaction |
 | Adapter recipes (training scripts, hyperparameters) | Apache 2.0 |
@@ -83,7 +83,7 @@ The leverage of this structure is that the Open tier sustains features and cover
 
 The model is not fixed. An Open contributor whose recurring work demonstrates operational quality may be offered Paid contracts. A Paid contributor may in time move toward Core. Any contributor can fork, take their adapters and tenant data, and operate independently — the substrate is designed to make graceful exit the default, not litigation.
 
-## See Also
+## See also
 
 - [[compounding-substrate]] — the five structural properties that make the substrate compound over time
 - [[disclosure-substrate]] — the substrate-substitution pattern applied to continuous-disclosure platforms
