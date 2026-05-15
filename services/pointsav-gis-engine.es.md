@@ -39,5 +39,5 @@ La lógica central del motor reside en el servicio `app-orchestration-gis`, que 
 
 ## Véase también
 
-- [[guide-totebox-orchestration-gis]]
+- Guía: Orquestación Totebox para GIS (manual operacional; disponible en la documentación de despliegue de flota)
 - [[co-location-methodology]]
