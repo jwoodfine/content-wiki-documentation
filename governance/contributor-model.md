@@ -70,7 +70,7 @@ Three architectural primitives make it real:
 
 Per `[ni-51-102]` continuous-disclosure language, the trajectory toward 10,000-plus Open contributors is planned and intended, not declared as a current state. The shape is in place; the operational throughput matures as the substrate's user base grows.
 
-The path: each Foundry-shaped customer who runs the substrate becomes a candidate Open contributor; a fraction of those contribute back; a fraction of those graduate to Paid; a small number graduate to Core over decades. The model is slow at the top tier and fast at the bottom — by design.
+The path: each customer who runs the platform substrate becomes a candidate Open contributor; a fraction of those contribute back; a fraction of those graduate to Paid; a small number graduate to Core over decades. The model is slow at the top tier and fast at the bottom — by design.
 
 ## What this model is not
 

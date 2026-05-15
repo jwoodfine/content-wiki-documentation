@@ -24,7 +24,7 @@ authentication providers, foreign GPU drivers, commercial graph
 APIs — creates a structural risk: if a third-party vendor changes
 its terms of service or deprecates an API, the dependent platform
 either adapts under pressure or halts. The **Sovereign Replacement
-Initiative** is the Foundry response to this class of risk. It is
+Initiative** is the platform's response to this class of risk. It is
 a physical ledger of outstanding third-party dependencies and an
 active engineering pipeline designed to eliminate them
 systematically.

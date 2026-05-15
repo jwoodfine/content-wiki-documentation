@@ -5,7 +5,7 @@ slug: canadian-simple-copyright.es
 category: governance
 type: topic
 quality: complete
-short_description: "Foundry's intellectual property vests in a single Canadian parent holding company by operation of Canadian Copyright Act § 13(3), without inter-company assignment, and is designed to be evolved incrementally as the corporate structure matures."
+short_description: "The platform's intellectual property vests in a single Canadian parent holding company by operation of Canadian Copyright Act § 13(3), without inter-company assignment, and is designed to be evolved incrementally as the corporate structure matures."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
@@ -15,7 +15,7 @@ cites:
 paired_with: canadian-simple-copyright.md
 ---
 
-La propiedad intelectual de Foundry se mantiene bajo una postura
+La propiedad intelectual de la plataforma se mantiene bajo una postura
 corporativa deliberadamente mínima, elegida para preservar
 flexibilidad mientras el proyecto madura. Los derechos de autor
 se asignan a una sola entidad canadiense holding por operación
@@ -30,7 +30,7 @@ asesor jurídico antes de cualquier evento disparador.
 
 Los derechos de autor son del **Woodfine Capital Projects Inc.**
 ("WCP Inc."), una corporación de Columbia Británica que es la
-entidad holding matriz de la trayectoria Foundry.
+entidad holding matriz de la trayectoria PointSav.
 
 ## Base estatutaria — Ley canadiense de derechos de autor § 13(3)
 

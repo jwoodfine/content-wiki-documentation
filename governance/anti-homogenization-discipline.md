@@ -26,11 +26,11 @@ A writing assistant trained centrally on a homogeneous corpus will, on average, 
 
 The Cornell finding is concrete: writers from non-Western contexts spent more time editing AI suggestions back toward their original voice than they saved by accepting suggestions. Net productivity for those users was lower. The assistant was not neutral; it was actively counter-productive.
 
-The same dynamic operates across organisations. A Foundry-hosted writing assistant fine-tuned on a generic corpus will push every customer's voice toward that corpus's centroid. A distinctive corporate voice — terse, formal, region-specific, trade-specific — will erode under continuous use.
+The same dynamic operates across organisations. A platform-hosted writing assistant fine-tuned on a generic corpus will push every customer's voice toward that corpus's centroid. A distinctive corporate voice — terse, formal, region-specific, trade-specific — will erode under continuous use.
 
 ## Flag, not rewrite
 
-Foundry's default editorial action is `flag`, not `rewrite`. When the assistant identifies a potential issue, it surfaces the issue and proposes an edit; it does not silently rewrite the user's text. The user's voice is the authority unless the user explicitly delegates a rewrite.
+The platform's default editorial action is `flag`, not `rewrite`. When the assistant identifies a potential issue, it surfaces the issue and proposes an edit; it does not silently rewrite the user's text. The user's voice is the authority unless the user explicitly delegates a rewrite.
 
 This default applies across every editorial task-type:
 
@@ -43,11 +43,11 @@ A user who explicitly requests "rewrite this in Bloomberg register" gets a rewri
 
 ## Per-tenant adapters preserve voice
 
-Foundry's adapter-composition algebra separates the per-tenant adapter from the protocol adapter. The per-tenant adapter trains on the customer's own corpus inside the customer's own substrate. It learns the customer's voice — the words they use, the sentence rhythms they favour, the register they default to.
+The platform's adapter-composition algebra separates the per-tenant adapter from the protocol adapter. The per-tenant adapter trains on the customer's own corpus inside the customer's own substrate. It learns the customer's voice — the words they use, the sentence rhythms they favour, the register they default to.
 
-When the protocol adapter (PROSE / COMMS / LEGAL / TRANSLATE) composes with the per-tenant adapter at request time, the output reflects both: the genre conventions of the protocol and the voice of the tenant. A README authored by Foundry inside Customer A's substrate sounds like Customer A; the same README authored inside Customer B's substrate sounds like Customer B.
+When the protocol adapter (PROSE / COMMS / LEGAL / TRANSLATE) composes with the per-tenant adapter at request time, the output reflects both: the genre conventions of the protocol and the voice of the tenant. A README authored by the platform inside Customer A's substrate sounds like Customer A; the same README authored inside Customer B's substrate sounds like Customer B.
 
-This is the Writer Brand IQ pattern adapted to customer data ownership. Brand-voice adapters work; Foundry establishes that they work without the customer's text leaving the customer's substrate.
+This is the Writer Brand IQ pattern adapted to customer data ownership. Brand-voice adapters work; the platform establishes that they work without the customer's text leaving the customer's substrate.
 
 ## Forward-looking — federated voice preservation
 
@@ -59,7 +59,7 @@ A customer who does not contribute continues to benefit from base-model improvem
 
 It is not a refusal to suggest improvements. The discipline is the opposite of inertia — every editorial action produces a verdict-signed training tuple that improves the per-tenant adapter over time. The customer's voice is preserved, not frozen.
 
-It is not a rejection of standardisation. Foundry's banned-vocabulary list, sentence-length budgets, and register parameters are standardised across all tenants because the absence of `leverage` and `seamless` is universally an improvement. Standardisation operates at the level of mechanical defects; voice operates at the level above that.
+It is not a rejection of standardisation. The platform's banned-vocabulary list, sentence-length budgets, and register parameters are standardised across all tenants because the absence of `leverage` and `seamless` is universally an improvement. Standardisation operates at the level of mechanical defects; voice operates at the level above that.
 
 It is not a passive posture. The discipline is active — flag-don't-rewrite requires the assistant to surface what it sees rather than silently smoothing it over.
 

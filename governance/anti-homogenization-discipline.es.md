@@ -22,7 +22,7 @@ de IA empujan a escritores no occidentales hacia el registro
 occidental con tasas más altas y con ganancias de productividad
 más pequeñas, porque los escritores gastan tiempo adicional
 corrigiendo la deriva de la IA hacia su voz auténtica. La
-disciplina anti-homogenización de Foundry es la postura
+disciplina anti-homogenización de la plataforma es la postura
 arquitectónica que resiste esa deriva explícitamente.
 
 ## El problema
@@ -37,7 +37,7 @@ en los datos de entrenamiento.
 
 ## La disciplina — marcar, no reescribir
 
-La acción editorial por defecto en Foundry es **marcar**, no
+La acción editorial por defecto de la plataforma es **marcar**, no
 **reescribir**. Cuando el asistente identifica un problema
 potencial, lo expone y propone una edición; no reescribe
 silenciosamente el texto del usuario. La voz del usuario es la
@@ -45,7 +45,7 @@ autoridad, salvo delegación explícita de reescritura.
 
 ## Adaptadores por inquilino preservan la voz
 
-El álgebra de composición de adaptadores de Foundry separa el
+El álgebra de composición de adaptadores de la plataforma separa el
 adaptador por inquilino del adaptador de protocolo. El
 adaptador por inquilino entrena sobre el corpus del cliente
 dentro de su sustrato y aprende su voz: las palabras que usa,
@@ -53,7 +53,7 @@ los ritmos de oración que prefiere, el registro por defecto.
 
 Al componer en tiempo de petición, la salida refleja ambos:
 las convenciones del género del protocolo y la voz del
-inquilino. Un README escrito por Foundry dentro del sustrato
+inquilino. Un README escrito por la plataforma dentro del sustrato
 del Cliente A suena como el Cliente A; el mismo README dentro
 del sustrato del Cliente B suena como el Cliente B.
 

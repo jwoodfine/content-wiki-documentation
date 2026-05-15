@@ -12,7 +12,7 @@ category: governance
 
 
 
-La Doctrina del Exclusa Soberana establece los protocolos obligatorios de seguridad e identidad para la transmisión de datos y el despliegue de código en Foundry. Al separar estrictamente las identidades del Proveedor (PointSav) y del Cliente (Woodfine), garantizamos la integridad operativa y el control total de los activos digitales.
+La Doctrina del Exclusa Soberana establece los protocolos obligatorios de seguridad e identidad para la transmisión de datos y el despliegue de código en la plataforma. Al separar estrictamente las identidades del Proveedor (PointSav) y del Cliente (Woodfine), garantizamos la integridad operativa y el control total de los activos digitales.
 
 ## Arquitectura de Cuatro Silos
 

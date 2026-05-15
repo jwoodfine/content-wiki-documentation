@@ -16,7 +16,7 @@ cites:
 ---
 
 
-El sustrato de Foundry es demasiado amplio para que un solo
+El sustrato de la plataforma es demasiado amplio para que un solo
 equipo lo mantenga, y demasiado valioso para atarlo a la
 cadencia de lanzamiento de un solo equipo. El modelo de
 contribuyentes que se sigue de esta restricción produce

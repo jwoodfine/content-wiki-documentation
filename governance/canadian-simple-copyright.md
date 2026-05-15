@@ -5,7 +5,7 @@ slug: canadian-simple-copyright
 category: governance
 type: topic
 quality: complete
-short_description: "Foundry's intellectual property vests in a single Canadian parent holding company by operation of Canadian Copyright Act § 13(3), without inter-company assignment, and is designed to be evolved incrementally as the corporate structure matures."
+short_description: "The platform's intellectual property vests in a single Canadian parent holding company by operation of Canadian Copyright Act § 13(3), without inter-company assignment, and is designed to be evolved incrementally as the corporate structure matures."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
@@ -16,9 +16,9 @@ paired_with: canadian-simple-copyright.es.md
 ---
 
 
-> Foundry intellectual property vests in Woodfine Capital Projects Inc. by operation of Canadian Copyright Act § 13(3) without requiring inter-company assignment, preserving both share-sale optionality and a clean downstream-rollover path at incorporation.
+> The platform's intellectual property vests in Woodfine Capital Projects Inc. by operation of Canadian Copyright Act § 13(3) without requiring inter-company assignment, preserving both share-sale optionality and a clean downstream-rollover path at incorporation.
 
-Foundry's intellectual property is held under a deliberately
+The platform's intellectual property is held under a deliberately
 minimal corporate posture chosen to preserve flexibility while
 the project matures. Copyright vests at a single Canadian holding
 entity by operation of statute rather than by inter-company
@@ -35,7 +35,7 @@ trigger event below.
 
 Copyright is held by **Woodfine Capital Projects Inc.** ("WCP
 Inc."), a British Columbia corporation that sits as the parent
-holding entity of the Foundry trajectory.
+holding entity of the PointSav trajectory.
 
 ## The statutory basis — Canadian Copyright Act § 13(3)
 
@@ -142,7 +142,7 @@ cleaner downstream-rollover path at incorporation.
 ## What this posture is not
 
 It is not a permanent state. It is the minimum viable structure
-chosen for the current state of the Foundry trajectory, designed
+chosen for the current state of the PointSav trajectory, designed
 to be evolved as the project matures without unwinding pre-
 existing agreements.
 

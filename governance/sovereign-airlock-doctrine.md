@@ -12,11 +12,11 @@ category: governance
 
 
 
-The Sovereign Airlock Doctrine establishes the mandatory security and identity protocols for all data transmission and code deployment within the Foundry ecosystem. By enforcing strict isolation between Vendor (PointSav) and Customer (Woodfine) identities, Foundry guarantees absolute operational integrity and sovereign control over digital assets.
+The Sovereign Airlock Doctrine establishes the mandatory security and identity protocols for all data transmission and code deployment within the platform. By enforcing strict isolation between Vendor (PointSav) and Customer (Woodfine) identities, the platform guarantees absolute operational integrity and sovereign control over digital assets.
 
 ## 1. Sovereign Asset Isolation
 
-Foundry’s infrastructure is organized into four structurally isolated silos, each corresponding to a specific identity and organizational role:
+The platform’s infrastructure is organized into four structurally isolated silos, each corresponding to a specific identity and organizational role:
 
 * **`factory-pointsav/`**: The Vendor Source. Contains the primary codebase and infrastructure blueprints owned by PointSav AG.
 * **`fleet-woodfine/`**: The Customer Operations. Contains the proprietary operational data and fleet configurations for Woodfine Management Corp.

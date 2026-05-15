@@ -20,7 +20,7 @@ Las iniciativas moonshot son programas de ingeniería activos que construyen ree
 
 ## Qué son
 
-La plataforma Foundry rastrea activamente la deuda de ingeniería de terceros en un libro contable estructurado. Los componentes arquitectónicos foráneos están contenidos en directorios aislados, denominados silos de componentes en cuarentena, hasta que una **iniciativa moonshot** entregue un reemplazo nativo.
+La plataforma rastrea activamente la deuda de ingeniería de terceros en un libro contable estructurado. Los componentes arquitectónicos foráneos están contenidos en directorios aislados, denominados silos de componentes en cuarentena, hasta que una **iniciativa moonshot** entregue un reemplazo nativo.
 
 Cada iniciativa moonshot es un esfuerzo de ingeniería distinto que apunta a una clase de dependencia. La finalización se define como paridad estructural con el componente que reemplaza, punto en el cual la implementación nativa suplanta físicamente el directorio en cuarentena.
 

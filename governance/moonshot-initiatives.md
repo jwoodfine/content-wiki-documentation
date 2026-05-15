@@ -17,7 +17,7 @@ paired_with: moonshot-initiatives.es.md
 
 > Moonshot initiatives are long-running engineering programs that replace quarantined third-party dependencies with internally built, formally verifiable equivalents — reducing vendor lock-in and shrinking the platform's external attack surface.
 
-The Foundry platform actively tracks third-party engineering debt in
+The platform actively tracks third-party engineering debt in
 a structured ledger. Foreign architectural components are contained
 in isolated directories, called quarantined component silos, until
 a **moonshot initiative** delivers a native replacement. The
