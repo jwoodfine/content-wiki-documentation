@@ -37,7 +37,7 @@ Una sesión F12 típica tiene una forma determinista de cinco pasos. Cada paso t
 | 2 | Seleccionar una categoría del [[archetypes-and-chart-of-accounts\|Plan de Cuentas]] (Perfil → Dominio → Subdominio) | El sistema prepara un destino de enrutamiento |
 | 3 | Revisar las entidades y temas que el sistema preextrajo mediante [[service-extraction]] y [[service-content]] | El sistema muestra una solicitud de verificación Sí / No para cada afirmación |
 | 4 | Aprobar o rechazar cada afirmación con teclas individuales | Las afirmaciones aprobadas avanzan al estado L5 verificado; las rechazadas quedan en cuarentena |
-| 5 | Confirmar el destino de enrutamiento | El archivo se sella en [[service-minutebook]] o [[service-bookkeeper]]; se escribe una entrada en el libro mayor; el [[worm-ledger-design\|registro de auditoría]] captura la identidad del operador, la marca de tiempo y la decisión de enrutamiento |
+| 5 | Confirmar el destino de enrutamiento | El archivo se sella en service-minutebook o service-bookkeeper; se escribe una entrada en el libro mayor; el [[worm-ledger-design\|registro de auditoría]] captura la identidad del operador, la marca de tiempo y la decisión de enrutamiento |
 
 La interacción es solo con teclado y deliberadamente rápida. El operador no escribe nombres de archivo, completa formularios de metadatos ni compone consultas de base de datos. [[service-extraction]] y [[service-content]] ya realizaron el trabajo computacional; el papel del operador es verificar o rechazar cada afirmación en secuencia y luego confirmar el destino.
 
@@ -65,7 +65,7 @@ Si [[service-extraction]] o [[service-content]] enrutaran un documento fuente a 
 
 [[sys-adr-10]] hace que F12 sea obligatorio precisamente porque este modo de fallo es estructural, no probabilístico: cualquier arquitectura que delegue la decisión final de enrutamiento a un sistema automatizado crea una entrada en el libro mayor sin un autor humano responsable. [[sys-adr-07]] extiende el principio a los datos estructurados de manera más amplia — ningún registro producido por IA ingresa a un libro mayor verificado sin un paso de confirmación humana. [[sys-adr-19]] cierra el camino restante — sin publicación automatizada en libros mayores verificados, independientemente de la puntuación de confianza.
 
-Los fiduciarios institucionales — gestores de activos, abogados, entidades financieras reguladas — requieren un registro de auditoría que puedan defender bajo escrutinio. La puerta F12 es lo que hace posible esa defensa: cada entrada en [[service-minutebook]] y [[service-bookkeeper]] se remonta a un operador específico, una decisión específica y una marca de tiempo específica. [^2]
+Los fiduciarios institucionales — gestores de activos, abogados, entidades financieras reguladas — requieren un registro de auditoría que puedan defender bajo escrutinio. La puerta F12 es lo que hace posible esa defensa: cada entrada en service-minutebook y service-bookkeeper se remonta a un operador específico, una decisión específica y una marca de tiempo específica. [^2]
 
 ## Lo que la superficie F12 no es
 

@@ -75,7 +75,7 @@ Tres superficies de [[console-os|os-console]] están previstas para el trabajo d
 | Variante GIS de `app-console-bim` | Superposición geoespacial y análisis mediante un conjunto de herramientas de caja blanca nativo de Rust; previsto para reemplazar las herramientas geoespaciales C++ heredadas |
 | Consola de mapas de `app-console-bim` | Visualización espacial con un diseño de Consola basado en mapas |
 
-La [[app-console-input|puerta de entrada F12]] gestiona la ingesta de documentos BIM — un operador arrastra un archivo IFC o un plano a F12, selecciona el destino en el Plan de Cuentas, confirma las entidades extraídas y el archivo ingresa al [[service-minutebook|archivo Totebox]] con un sufijo ISO 19650 y un registro de auditoría con marca de tiempo.
+La [[app-console-input|puerta de entrada F12]] gestiona la ingesta de documentos BIM — un operador arrastra un archivo IFC o un plano a F12, selecciona el destino en el Plan de Cuentas, confirma las entidades extraídas y el archivo ingresa al archivo Totebox con un sufijo ISO 19650 y un registro de auditoría con marca de tiempo.
 
 ## Véase también
 

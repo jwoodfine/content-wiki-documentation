@@ -77,7 +77,7 @@ Three [[console-os|os-console]] surfaces are planned for BIM-domain work. All th
 
 Each planned surface is single-purpose and Rust-native. The substrate design explicitly avoids legacy C++ BIM tooling, which carries decades of accumulated complexity and exceeds the hardware profiles of the lower Totebox tiers.
 
-The [[app-console-input|F12 input gate]] handles BIM document ingestion — an operator drags an IFC or drawing file into F12, selects the Chart-of-Accounts destination, confirms the extracted entities, and the file enters the [[service-minutebook|Totebox archive]] with an ISO 19650 suffix and a timestamped audit record.
+The [[app-console-input|F12 input gate]] handles BIM document ingestion — an operator drags an IFC or drawing file into F12, selects the Chart-of-Accounts destination, confirms the extracted entities, and the file enters the Totebox archive with an ISO 19650 suffix and a timestamped audit record.
 
 ## See also
 

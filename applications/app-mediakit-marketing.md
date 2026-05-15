@@ -69,5 +69,5 @@ concurrently on the foundry-workspace VM (e2-medium, 2 vCPU, 4 GB RAM).
 ## See Also
 
 - [[app-mediakit-knowledge]]
-- [[app-orchestration-bim]]
+- app-orchestration-bim
 - [[leapfrog-2030-architecture]]

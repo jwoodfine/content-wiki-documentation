@@ -37,7 +37,7 @@ A typical F12 session has a deterministic five-step shape. Each step has a clear
 | 2 | Select a category from the [[archetypes-and-chart-of-accounts\|Chart of Accounts]] (Profile → Domain → Sub-Domain) | The system prepares a routing destination |
 | 3 | Review the entities and themes the system pre-extracted via [[service-extraction]] and [[service-content]] | The system displays a Yes / No verification prompt for each claim |
 | 4 | Approve or reject each claim with single keystrokes | Approved claims advance to L5 verified status; rejected claims are quarantined |
-| 5 | Confirm the routing destination | The file is sealed into [[service-minutebook]] or [[service-bookkeeper]]; a ledger entry is written; the [[worm-ledger-design\|audit log]] captures the operator identity, timestamp, and routing decision |
+| 5 | Confirm the routing destination | The file is sealed into service-minutebook or service-bookkeeper; a ledger entry is written; the [[worm-ledger-design\|audit log]] captures the operator identity, timestamp, and routing decision |
 
 The interaction is keyboard-only and intentionally fast. The operator does not type filenames, fill out metadata forms, or compose database queries. [[service-extraction]] and [[service-content]] have already done the computational work; the operator's role is to verify or reject each claim in sequence, then confirm the destination.
 
@@ -65,7 +65,7 @@ If [[service-extraction]] or [[service-content]] were to route a source document
 
 [[sys-adr-10]] makes F12 mandatory precisely because this failure mode is structural, not probabilistic: any architecture that delegates the final routing decision to an automated system creates a ledger entry without an accountable human author. [[sys-adr-07]] extends the principle to structured data more broadly — no AI-produced record enters a verified ledger without a human confirmation step. [[sys-adr-19]] closes the remaining path — no automated publishing to verified ledgers, regardless of confidence score.
 
-Institutional fiduciaries — asset managers, lawyers, regulated financial entities — require an audit trail they can defend under examination. The F12 gate is what makes that defense possible: every entry in [[service-minutebook]] and [[service-bookkeeper]] traces to a specific operator, a specific decision, and a specific timestamp. [^2]
+Institutional fiduciaries — asset managers, lawyers, regulated financial entities — require an audit trail they can defend under examination. The F12 gate is what makes that defense possible: every entry in service-minutebook and service-bookkeeper traces to a specific operator, a specific decision, and a specific timestamp. [^2]
 
 ## What the F12 surface is not
 

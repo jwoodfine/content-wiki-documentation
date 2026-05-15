@@ -48,5 +48,5 @@ completo equivalente a WordPress están previstos para hitos posteriores.
 ## Véase también
 
 - [[app-mediakit-knowledge]]
-- [[app-orchestration-bim]]
+- app-orchestration-bim
 - [[leapfrog-2030-architecture]]
