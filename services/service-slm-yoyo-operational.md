@@ -17,9 +17,9 @@ cites:
 paired_with: service-slm-yoyo-operational.es.md
 ---
 
-**service-SLM** is Foundry's Ring 3 component — the Optional Intelligence layer. It is a three-tier inference router that clusters and contributors use to delegate routine work: editorial polish, mechanical schema-conforming edits, bilingual translation drafts, and structured-output generation. The work is handled locally or on a dedicated GPU burst VM, without routing to a third-party API. Rings 1 and 2 (boundary ingest and knowledge processing) function fully without it; Ring 3 is structurally optional.
+**service-SLM** is the platform's Ring 3 component — the Optional Intelligence layer. It is a three-tier inference router that clusters and contributors use to delegate routine work: editorial polish, mechanical schema-conforming edits, bilingual translation drafts, and structured-output generation. The work is handled locally or on a dedicated GPU burst VM, without routing to a third-party API. Rings 1 and 2 (boundary ingest and knowledge processing) function fully without it; Ring 3 is structurally optional.
 
-The **Yo-Yo** is the name for Foundry's on-demand GPU burst instance — a GCE VM that runs a 32-billion-parameter instruction-tuned model at approximately 50-100 tokens per second. It starts on demand, shuts down after 30 minutes of inactivity, and accumulates a brief queue through its idle windows. The combination — a lightweight always-available local model on the workspace VM and a capable on-demand burst VM — defines the two active inference tiers. A third tier (external API) is configured for future use; Tier C has no active keys in workspace v0.1.91.
+The **Yo-Yo** is the name for the platform's on-demand GPU burst instance — a GCE VM that runs a 32-billion-parameter instruction-tuned model at approximately 50-100 tokens per second. It starts on demand, shuts down after 30 minutes of inactivity, and accumulates a brief queue through its idle windows. The combination — a lightweight always-available local model on the workspace VM and a capable on-demand burst VM — defines the two active inference tiers. A third tier (external API) is configured for future use; Tier C has no active keys in workspace v0.1.91.
 
 This document describes how service-SLM and the Yo-Yo operate as of workspace v0.1.91, when the substrate-arc was marked complete.
 
@@ -119,8 +119,8 @@ When AllenAI publishes OLMo 3 32B Think or Instruct in a Q4 GGUF format, the Yo-
 
 ## References
 
-1. PointSav Doctrine claim #16 — Optional Intelligence Layer. Defines Ring 3 as structurally optional; Rings 1 and 2 function without it.
-2. PointSav Doctrine claim #40 — Four-Tier SLM Substrate Ladder. Ratified workspace v0.1.78; defines Tier 0 (none) / Tier 1 (local 7B) / Tier 2 (Yo-Yo 32B vendor-hosted) / Tier 3 (PointSav-LLM, planned).
+1. Optional Intelligence Layer — Ring 3 is structurally optional; Rings 1 and 2 function without it.
+2. Four-Tier SLM Substrate Ladder — Tier 0 (none) / Tier 1 (local 7B) / Tier 2 (Yo-Yo 32B vendor-hosted) / Tier 3 (PointSav-LLM, planned).
 3. AllenAI OLMo 3 model family. Apache 2.0 (model weights); Open Data Commons (training data). [olmo3-allenai] https://huggingface.co/allenai
 4. `conventions/four-tier-slm-substrate.md` — workspace convention defining the four-tier ladder and routing heuristics.
 5. `conventions/apprenticeship-substrate.md` §7B, §7C — drain worker protocol, corpus schema, and brief-queue mechanics.

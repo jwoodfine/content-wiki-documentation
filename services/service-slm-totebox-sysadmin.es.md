@@ -29,7 +29,7 @@ Estas diez familias de tareas se convierten en los tipos de tareas nombrados par
 
 Cuatro propiedades estructurales hacen que estas cargas de trabajo sean idóneas para service-slm:
 
-**Soberanía.** Cada familia de tareas toca datos del tenant — registros de personal, libros mayores corporativos, archivos de bienes raíces, pistas de auditoría. Enviar estos datos a un servicio externo para operaciones rutinarias de administración rompe la garantía de soberanía de datos en la Doctrina §IV.b. service-slm ejecutándose localmente dentro del límite del Doorman del cliente es la única arquitectura donde los datos nunca salen del sustrato controlado por el cliente.
+**Soberanía.** Cada familia de tareas toca datos del tenant — registros de personal, libros mayores corporativos, archivos de bienes raíces, pistas de auditoría. Enviar estos datos a un servicio externo para operaciones rutinarias de administración rompe la garantía de soberanía de datos de la plataforma. service-slm ejecutándose localmente dentro del límite del Doorman del cliente es la única arquitectura donde los datos nunca salen del sustrato controlado por el cliente.
 
 **Latencia.** El trabajo de administración es de alta frecuencia y baja latencia. El Nivel B (OLMo 3.1 32B Think en GPU A100) entrega aproximadamente 100–150 tokens por segundo. Una llamada de API externa añade 5–15 segundos por llamada incluyendo red y cola del proveedor. En una secuencia de aprovisionamiento de varios pasos, esa diferencia de latencia es material.
 

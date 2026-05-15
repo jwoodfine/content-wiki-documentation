@@ -11,4 +11,4 @@ last_edited: 2026-05-08
 editor: pointsav-engineering
 ---
 
-Private Git OS is the operating system layer that hosts the private Git infrastructure underpinning the Foundry workspace and staging-tier commit flow.
+Private Git OS is the operating system layer that hosts the private Git infrastructure underpinning the development workspace and staging-tier commit flow.

@@ -15,11 +15,9 @@ paired_with: service-wallet-settlement.md
 
 `service-wallet` (Anillo 2) es el libro mayor de contabilidad interna por inquilino que registra y liquida todos los ingresos de flujo inverso procedentes del mercado de datos y el intercambio publicitario.
 
-Esta es la reclamación de Doctrina #53.
-
 ## Qué es service-wallet (y qué no es)
 
-`service-wallet` es un **libro mayor de contabilidad**, no un riel de pago ni una cartera custodiada. Esta distinción importa legal y estructuralmente: registra créditos, débitos y comisiones como entradas JSONL firmadas; Foundry no tiene fondos en tránsito; Foundry nunca tiene las claves privadas del inquilino. Esta arquitectura mantiene a Foundry estructuralmente fuera del territorio regulado de transmisores de dinero y carteras custodiadas.
+`service-wallet` es un **libro mayor de contabilidad**, no un riel de pago ni una cartera custodiada. Esta distinción importa legal y estructuralmente: registra créditos, débitos y comisiones como entradas JSONL firmadas; PointSav no tiene fondos en tránsito; la plataforma nunca tiene las claves privadas del inquilino. Esta arquitectura mantiene a la plataforma estructuralmente fuera del territorio regulado de transmisores de dinero y carteras custodiadas.
 
 ## Flujo de liquidación
 
@@ -27,7 +25,7 @@ El flujo va de: evento de ingresos → crédito registrado (con comisión de pla
 
 ## Rieles de pago para retiros en criptomoneda
 
-Polygon PoS (aproximadamente $0,002/tx; principal) y Solana (aproximadamente $0,0005/tx; secundario). No custodiado: la plataforma almacena solo las direcciones de destino (claves públicas); el retiro lo firma la cartera del inquilino, no Foundry. Circle Paymaster maneja la abstracción del gas — los inquilinos pagan el gas en USDC; no se requiere token nativo de Polygon/Solana.
+Polygon PoS (aproximadamente $0,002/tx; principal) y Solana (aproximadamente $0,0005/tx; secundario). No custodiado: la plataforma almacena solo las direcciones de destino (claves públicas); el retiro lo firma la cartera del inquilino, no la plataforma. Circle Paymaster maneja la abstracción del gas — los inquilinos pagan el gas en USDC; no se requiere token nativo de Polygon/Solana.
 
 ## Portabilidad
 

@@ -18,9 +18,9 @@ paired_with: service-slm-yoyo-operational.md
 ---
 
 
-**service-SLM** es el componente Ring 3 de Foundry: la capa de Inteligencia Opcional. Actúa como enrutador de inferencia de tres niveles, dirigiendo el trabajo de rutina — ediciones editoriales, traducción bilingüe, generación de salida estructurada — hacia el modelo apropiado sin necesidad de enviar datos a una API de terceros. Los anillos 1 y 2 (ingesta de límites y procesamiento de conocimiento) funcionan de forma completa sin él; Ring 3 es estructuralmente opcional.
+**service-SLM** es el componente Ring 3 de la plataforma: la capa de Inteligencia Opcional. Actúa como enrutador de inferencia de tres niveles, dirigiendo el trabajo de rutina — ediciones editoriales, traducción bilingüe, generación de salida estructurada — hacia el modelo apropiado sin necesidad de enviar datos a una API de terceros. Los anillos 1 y 2 (ingesta de límites y procesamiento de conocimiento) funcionan de forma completa sin él; Ring 3 es estructuralmente opcional.
 
-El **Yo-Yo** es la instancia GPU de explosión a demanda de Foundry: una máquina virtual en GCE que ejecuta un modelo de 32 mil millones de parámetros a aproximadamente 50-100 tokens por segundo. Se inicia bajo demanda y se apaga automáticamente tras 30 minutos de inactividad.
+El **Yo-Yo** es la instancia GPU de explosión a demanda de la plataforma: una máquina virtual en GCE que ejecuta un modelo de 32 mil millones de parámetros a aproximadamente 50-100 tokens por segundo. Se inicia bajo demanda y se apaga automáticamente tras 30 minutos de inactividad.
 
 ## Arquitectura de tres niveles
 
