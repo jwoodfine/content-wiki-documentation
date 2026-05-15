@@ -1,47 +1,79 @@
 ---
 schema: foundry-doc-v1
-title: "Totebox OS"
+title: "os-totebox — La Bóveda Soberana y Host de Servicios"
 slug: totebox-os
 category: systems
-type: topic
+type: concept
 quality: complete
 status: active
-audience: public
+audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-15
 editor: pointsav-engineering
-paired_with: topic-totebox-os.md
+paired_with: totebox-os.md
+short_description: "os-totebox es la capa de archivo de la familia PointSav — una bóveda aislada a nivel de núcleo por entidad, que almacena registros como archivos planos inertes sin operación de borrado y los expone únicamente a través del Diodo bajo comando de os-console u os-orchestration."
 cites: []
 ---
 
+`os-totebox` es la capa de archivo de la familia PointSav: una bóveda aislada a nivel de núcleo por entidad. Almacena los registros, ejecuta los servicios que los procesan y no expone nada más. Una entidad es cualquier cosa que necesita su propio conjunto de libros — una persona, una corporación, una propiedad inmobiliaria, un proyecto, un hogar. Cada entidad tiene su propio `os-totebox`. Los Toteboxes no comparten archivos, no comparten usuarios y no pueden verse entre sí. Se comunican únicamente a través del [[diode-standard|Diodo]], y solo bajo comando de [[console-os|os-console]] u [[os-orchestration]]. Este artículo cubre los servicios internos, la disciplina WORM, la evolución de la forma del host, los niveles de cómputo y el diseño libremente transferible.
 
-Totebox OS es la capa de archivo de datos central de la plataforma PointSav. Se ejecuta en un microkernel seL4 y aplica una separación estricta entre los motores de ejecución de software y los libros contables corporativos que esos motores leen y escriben. Cada registro institucional vive como un archivo plano inerte — Markdown, YAML o CSV — que no requiere ningún tiempo de ejecución propietario para abrirse o interpretarse décadas después.
+## Qué vive dentro
 
-## Modelo de directorio
+Cada `os-totebox` aloja un conjunto fijo de servicios:
 
-Un despliegue de Totebox sigue un diseño de tres directorios:
+| Servicio | Función |
+|---|---|
+| `service-email` | Ingesta SMTP/IMAP; Maildir WORM; saneamiento de HTML y píxeles de rastreo |
+| `service-people` | Libro mayor de identidades; la superficie F2; reclamaciones de entidad y el grafo Sovereign-ID |
+| `service-content` | Lee cargas útiles, aplica el pipeline de síntesis editorial, genera resultados |
+| `service-extraction` | Extracción de masa de entidades a través del archivo |
+| `service-slm` | Modelo de lenguaje pequeño local; opera detrás del límite de auditoría Doorman |
+| `service-minutebook` | Archivo de registros profundos — PDFs inmutables, DOCX, XLSX, con sumas de verificación criptográficas |
+| `service-bookkeeper` | Libro mayor financiero |
+| `service-fs` (previsto) | Servicio de sistema de archivos unikernel — el único servicio que toca el disco sin procesar |
+| `service-audit` (previsto) | Libro mayor de solo adición a nivel de micronúcleo |
+| `service-resolution` (previsto) | Empaquetador de resolución de activos — el paracaídas auto-ejecutable ante fallo del proveedor |
 
-```
-cluster-totebox-corporate/
-├── app-console-input/      # software de ejecución
-├── assets/                 # bóveda física — PDFs, imágenes
-└── ledger/                 # máquina de estados — metadatos YAML, libros contables CSV
-```
+## La disciplina WORM
 
-La ejecución del software y los datos que procesa ocupan directorios distintos, conectados solo a través de rutas de acceso explícitas y auditadas.
+`os-totebox` escribe cargas útiles sin procesar directamente en almacenamiento de bloque de solo adición. No existe operación de borrado en el flujo de código. Un servicio comprometido no puede sobrescribir el historial porque el verbo no existe en la interfaz de almacenamiento. Esta es la capa de aplicación arquitectónica para la integridad de procesamiento y la disciplina de segregación de activos.
 
-## Por qué importa el texto sin formato
+Cada registro institucional vive como un archivo plano inerte — Markdown, YAML o CSV — que no requiere ningún tiempo de ejecución propietario para leer décadas después. Un libro mayor `.yaml` o registro `.csv` puede ser leído por cualquier editor de texto, en cualquier hardware, en cualquier década. El costo de migración de datos tiende a cero: el operador siempre tiene la fuente en un formato que ningún software propietario puede bloquear.
 
-Un registro institucional en formato de texto sin formato puede ser leído por cualquier herramienta estándar — ahora, dentro de diez años, o dentro de treinta años. Un registro en un formato de base de datos propietario depende de que el proveedor siga siendo solvente y mantenga el software de decodificación. La arquitectura de Totebox OS elige la legibilidad a largo plazo sobre la conveniencia a corto plazo.
+## La forma del host
 
-## Atestación de integridad
+`os-totebox` está diseñado para evolucionar a través de cuatro fases a medida que el sustrato seL4 madura:
 
-Cada archivo en el directorio de activos y libro contable está respaldado por checksums SHA-256. El Totebox OS ejecuta verificación de integridad periódica; cualquier discrepancia entre el hash almacenado y el contenido del archivo activo activa una alerta al operador.
+| Fase | Forma | Caso de uso |
+|---|---|---|
+| 1 | Jaula LXC / FreeBSD | Desarrollo activo; itera rápidamente |
+| 2 | Instancia FreeBSD reforzada | Primeros despliegues para clientes (previsto) |
+| 3 | Monolito seL4 + Rust | Endurecimiento para producción (previsto) |
+| 4 | Unikernel — binario único, ~15 MB, arranque <50 ms | Estado final (previsto) |
+
+El objetivo unikernel es la meta de diseño. El estado final no tiene SSH, ni shell, ni Bash, ni intérprete Python — solo un binario compilado fusionado a los controladores de hardware. Un operador recompila el código fuente del proveedor en el monorepo y reinicia el nodo en la nube con la nueva imagen; no hay shell al que conectarse.
+
+## Niveles de cómputo
+
+`os-totebox` ajusta su comportamiento según el hardware disponible:
+
+| Nivel | Perfil | Capacidad |
+|---|---|---|
+| Bóveda de Cero Cómputo | Nodo en la nube ~$7/mes, ≤1 GB RAM | Solo libro mayor WORM y enrutador criptográfico; delega el procesamiento pesado al Relé Yo-Yo |
+| Relé Yo-Yo | Nodo en la nube elástico aprovisionado por el operador | Puente con estado hacia un nodo de cómputo temporal; ejecuta extracción en lote, luego se desmonta |
+| Hierro Soberano | Estación de trabajo con ≥16 GB RAM o servidor bare-metal | Carga el modelo de lenguaje pequeño local completo en RAM; sin egreso a la nube |
+
+## Libremente transferible
+
+Cada instancia de `os-totebox` está prevista para distribuirse como una única imagen de disco (`.img` o `.vmdk`). El operador la toma y la mueve entre proveedores de nube, un servidor privado o hardware propio en sus instalaciones. No hay sistema operativo anfitrión subyacente que posea las claves. Esta es la intención del Addendum Soberano en forma física: la instancia en ejecución permanece como propiedad del operador en cualquier entorno.
 
 ## Véase también
 
-- [[topic-totebox-archive]]
-- [[topic-totebox-orchestration]]
-- [[topic-console-os]]
-- [[topic-infrastructure-os]]
+- [[os-family-overview]] — dónde encaja os-totebox en la familia de ocho SO
+- [[console-os]] — el Libro Mayor de Comandos que se conecta a os-totebox y presenta su estado
+- [[os-orchestration]] — el agregador de flota que consulta muchos Toteboxes a la vez
+- [[diode-standard]] — el protocolo unidireccional a través del cual se comunica el Totebox
+- [[sel4-microkernel-substrate]] — el núcleo que sustenta las garantías de aislamiento de os-totebox
+- [[machine-based-auth]] — cómo el emparejamiento rige el acceso a un Totebox
+- [[worm-ledger-design]] — la disciplina de almacenamiento de solo adición aplicada por os-totebox
