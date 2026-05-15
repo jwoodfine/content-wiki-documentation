@@ -5,58 +5,37 @@ slug: style-guide-guide
 category: reference
 type: topic
 quality: complete
-short_description: "How to write a GUIDE file: the operational runbook format used inside Foundry deployment subfolders, covering required structure, voice, command formatting, and the distinction from TOPIC files."
+short_description: "How to write a GUIDE file: the operational runbook format for Foundry deployment subfolders, covering required six-section structure, terse imperative voice, named actors, command formatting, concrete verification, and the distinction from TOPIC files."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-06
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
 paired_with: style-guide-guide.es.md
 ---
 
-
 > A GUIDE file is the operational runbook format for Foundry deployment subfolders — how to run, configure, or recover from failure — and is distinct from a TOPIC, which explains what something is and why.
 
-A **GUIDE** file (`guide-<subject>.md`) is an operational runbook —
-how to run, configure, or recover from failure. It tells the
-operator what to do, in order, with the commands they will copy
-and paste. It is not an explanation of why something works; that
-reasoning belongs in a TOPIC, covered in
-[[style-guide-topic|Style Guide — TOPIC]]. Every GUIDE
-lives inside the deployment subfolder it operates; a GUIDE that
-appears at a catalog root without a containing subfolder is
-misplaced and must be moved.
+A **GUIDE** file (`guide-<subject>.md`) is an operational runbook — how to run, configure, or recover from failure. It tells the operator what to do, in order, with the commands they will copy and paste. It is not an explanation of why something works; that reasoning belongs in a TOPIC, covered in [[style-guide-topic|Style Guide — TOPIC]]. Every GUIDE lives inside the deployment subfolder it operates; a GUIDE that appears at a catalog root without a containing subfolder is misplaced and must be moved.
 
 ## Where GUIDEs live
 
-GUIDEs live inside the deployment subfolder they operate. There
-are two tiers:
+GUIDEs live inside the deployment subfolder they operate. There are two tiers:
 
 | Tier | Path shape | Purpose |
 |---|---|---|
-| **Catalog** | `customer/woodfine-fleet-deployment/<deployment-name>/GUIDE-*.md` | Defines how this deployment-name is operated. Every catalog entry that is operationally meaningful carries at least one. |
-| **Instance** | `~/Foundry/deployments/<instance>/GUIDE-*.md` | Variation only when an instance has operationally significant deviations from its catalog GUIDE. |
+| **Catalog** | `customer/woodfine-fleet-deployment/<deployment-name>/guide-*.md` | Defines how this deployment is operated. Every catalog entry that is operationally meaningful carries at least one. |
+| **Instance** | `deployments/<instance>/guide-*.md` | Variation only when an instance has operationally significant deviations from its catalog GUIDE. |
 
-A GUIDE at a fleet-deployment catalog *root* (no containing
-deployment subfolder) is misplaced. The workspace
-`~/Foundry/CLAUDE.md` §14 names this as drift; move into the
-owning deployment subfolder.
+A GUIDE at a fleet-deployment catalog root (no containing deployment subfolder) is misplaced. Move it into the owning deployment subfolder.
 
 ## English only
 
-GUIDE files are English-only. They are operational, not
-public-facing — bilingual pairs add maintenance cost without
-benefit, because the audience is operators with English working
-proficiency. This is the asymmetry against TOPIC files, which
-are always bilingual.
+GUIDE files are English-only. They are operational, not public-facing — bilingual pairs add maintenance cost without benefit, because the audience is operators with English working proficiency. This is the asymmetry against TOPIC files, which are always bilingual.
 
 ## Frontmatter is optional
 
-GUIDEs do not declare citations in the citation-substrate sense
-because they describe procedures rather than make claims. A
-GUIDE may carry a brief frontmatter block declaring its
-deployment-name and last-verified date, but it is not required
-and the renderer does not depend on it.
+GUIDEs do not declare citations in the citation-substrate sense because they describe procedures rather than make claims. A GUIDE may carry a brief frontmatter block declaring its deployment name and last-verified date, but it is not required.
 
 ```yaml
 ---
@@ -65,10 +44,7 @@ last_verified: 2026-04-27
 ---
 ```
 
-The verification date is more meaningful than the edit date. A
-GUIDE that has not been re-verified against the live deployment
-in the last quarter is suspect; the date tells the operator
-whether the procedure is fresh.
+The verification date is more meaningful than the edit date. A GUIDE that has not been re-verified against the live deployment in the last quarter is suspect; the date tells the operator whether the procedure is fresh.
 
 ## Required structure
 
@@ -85,50 +61,33 @@ Sections that do not apply are not omitted — they explain why they do not appl
 
 ## Prerequisites are explicit
 
-Prerequisites list everything the operator must have before the first numbered step. Items include: installed packages or binaries (`~/Foundry/bin/commit-as-next.sh` available), access permissions (SSH key loaded, `sudo` rights, membership in a Unix group), running services (`local-doorman.service` active), environment variables (`TENANT_ID` set), and any prior GUIDE that must have completed successfully (with a `[[slug]]` link to that GUIDE).
+Prerequisites list everything the operator must have before the first numbered step. Items include: installed packages or binaries (a specific CLI available and on `$PATH`), access permissions (SSH key loaded, `sudo` rights, membership in a Unix group), running services (a specific systemd unit active), environment variables (`TENANT_ID` set), and any prior GUIDE that must have completed successfully (with a `[[slug]]` link to that GUIDE).
 
 A Prerequisites section that lists nothing says explicitly: "No prerequisites; the procedure is self-contained." This tells the operator the GUIDE is safe to start without context.
 
 ## Voice — terse imperative
 
-GUIDEs use shorter sentences than TOPICs. Sentence-length
-budget: mean around fourteen words, maximum around twenty-four.
-Imperative voice — `run`, `confirm`, `restart`, `verify`. Active
-voice always; passive voice in a runbook hides who or what is
-doing the action, which matters when something fails.
+GUIDEs use shorter sentences than TOPICs. Sentence-length budget: mean around fourteen words, maximum around twenty-four. Imperative voice — `run`, `confirm`, `restart`, `verify`. Active voice always; passive voice in a runbook hides who or what is doing the action, which matters when something fails.
 
-The banned-vocabulary list applies. The list includes verbal
-tics that survive in operational prose (`leverage`, `seamless`,
-`robust`) — these have no place in a runbook because they
-describe nothing the operator can verify.
+**Named actors.** Every step names the agent and the object: "the operator runs the following command" not "the following command is run." When a step changes state in a service or system, say what changes — "this writes a row to the per-tenant audit ledger" not "this completes the action." A step the operator cannot verify did not happen.
+
+The banned-vocabulary list applies. The list includes verbal tics that survive in operational prose (`leverage`, `seamless`, `robust`) — these have no place in a runbook because they describe nothing the operator can verify.
 
 ## Commands are copy-pasteable
 
-Every command in a GUIDE is in a fenced code block, alone on
-its line, ready to copy and paste. Inline backtick code is for
-referring to a command, not running it.
+Every command in a GUIDE is in a fenced code block, alone on its line, ready to copy and paste. Inline backtick code is for referring to a command, not running it.
 
 ```sh
 systemctl status local-doorman.service
 ```
 
-Where a command takes arguments that the operator must
-substitute, the placeholders are obvious — `<tenant-id>`,
-`<instance-name>`, `<commit-sha>`. They are never `xxx`,
-`YOUR_VALUE`, or `[insert here]`.
+Where a command takes arguments that the operator must substitute, the placeholders are obvious — `<tenant-id>`, `<instance-name>`, `<commit-sha>`. They are never `xxx`, `YOUR_VALUE`, or `[insert here]`.
 
 ## Verification is concrete
 
-Every step has a check the operator can run to confirm the step
-worked. The check is a command with an expected output, not a
-narrative. "Verify the service is healthy" is not a check;
-"`systemctl is-active local-doorman.service` returns `active`"
-is a check.
+Every step has a check the operator can run to confirm the step worked. The check is a command with an expected output, not a narrative. "Verify the service is healthy" is not a check; "`systemctl is-active local-doorman.service` returns `active`" is a check.
 
-This rule applies to the procedure as a whole, not only to
-individual steps. The Verification section at the bottom of the
-GUIDE confirms the post-condition the GUIDE is meant to
-establish.
+This rule applies to the procedure as a whole, not only to individual steps. The Verification section at the bottom of the GUIDE confirms the post-condition the GUIDE is meant to establish.
 
 ## Rollback is concrete
 
@@ -143,25 +102,14 @@ Two special cases handled explicitly:
 
 ## What a GUIDE is not
 
-A GUIDE is not a TOPIC. The reasoning, design intent, or
-architectural background that motivates a procedure lives in a
-TOPIC; the procedure itself lives in the GUIDE. A document that
-mixes both is split.
+A GUIDE is not a TOPIC. The reasoning, design intent, or architectural background that motivates a procedure lives in a TOPIC; the procedure itself lives in the GUIDE. A document that mixes both is split.
 
-A GUIDE is not a script. A script that the GUIDE invokes lives
-in the project's `scripts/` directory; the GUIDE references it
-by path. Embedding script logic in GUIDE prose duplicates
-authority and rots when the script changes.
+A GUIDE is not a script. A script that the GUIDE invokes lives in the project's `scripts/` directory; the GUIDE references it by path. Embedding script logic in GUIDE prose duplicates authority and rots when the script changes.
 
-A GUIDE is not a public-facing artefact. Operational detail —
-the SSH command shape, the systemd unit name, the on-call
-escalation path — does not belong in TOPIC files served to a
-public audience. It belongs in GUIDEs read by operators with
-deployment access.
+A GUIDE is not a public-facing artefact. Operational detail — the SSH command shape, the systemd unit name, the on-call escalation path — does not belong in TOPIC files served to a public audience. It belongs in GUIDEs read by operators with deployment access.
 
 ## See also
 
-- [[style-guide-readme|Style Guide — README]]
 - [[style-guide-topic|Style Guide — TOPIC]]
 - [[language-protocol-substrate|Language Protocol Substrate]]
 - [[customer-hostability|Customer Hostability]]
