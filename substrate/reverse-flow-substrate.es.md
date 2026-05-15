@@ -19,7 +19,7 @@ paired_with: reverse-flow-substrate.md
 ---
 
 
-El **Substrato de Flujo Inverso** es la extensión planificada de la puerta de enlace del Portero, el registro de auditoría y el identificador de módulo por inquilino para gobernar los flujos comerciales de salida. La misma frontera que media las solicitudes de inferencia de entrada está prevista para también mediar dos flujos de salida: un mercado de datos y un intercambio de anuncios. Ambos están planificados como opt-in por inquilino, estructuralmente deshabilitados por defecto, y requieren procedencia criptográfica por registro. Este patrón codifica la reclamación doctrinal #52.
+El **Substrato de Flujo Inverso** es la extensión planificada de la puerta de enlace del Portero, el registro de auditoría y el identificador de módulo por inquilino para gobernar los flujos comerciales de salida. La misma frontera que media las solicitudes de inferencia de entrada está prevista para también mediar dos flujos de salida: un mercado de datos y un intercambio de anuncios. Ambos están planificados como opt-in por inquilino, estructuralmente deshabilitados por defecto, y requieren procedencia criptográfica por registro.
 
 ## Los dos flujos inversos planificados
 

@@ -5,7 +5,7 @@ slug: single-boundary-compute-discipline
 category: substrate
 type: topic
 quality: complete
-short_description: "Every AI inference request in a Foundry deployment routes exclusively through the Doorman, with bypass structurally prevented at the kernel level."
+short_description: "Every AI inference request in a platform deployment routes exclusively through the Doorman, with bypass structurally prevented at the kernel level."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
@@ -14,9 +14,9 @@ cites: []
 paired_with: single-boundary-compute-discipline.es.md
 ---
 
-The **Single-Boundary Compute Discipline** is the structural rule that all AI inference traffic in a Foundry deployment passes through one and only one boundary point: the Doorman (`service-slm`). No process, session, or service reaches an inference tier — local, GPU burst, or external API — except through this boundary.
+The **Single-Boundary Compute Discipline** is the structural rule that all AI inference traffic in a platform deployment passes through one and only one boundary point: the Doorman (`service-slm`). No process, session, or service reaches an inference tier — local, GPU burst, or external API — except through this boundary.
 
-The discipline encodes Doctrine claim #43. It is not a preferred-path routing convention that allows bypass by configuration; it is enforced at the kernel and secret boundaries so that no other process on the system can reach inference compute.
+It is not a preferred-path routing convention that allows bypass by configuration; it is enforced at the kernel and secret boundaries so that no other process on the system can reach inference compute.
 
 ## Why one boundary
 
@@ -54,7 +54,7 @@ The Doorman is the entry point to Ring 3. The [[three-ring-architecture]] makes 
 
 ## Composition
 
-This discipline composes with several other Doctrine claims. The Knowledge-Graph-Grounded Apprenticeship (claim #44) depends on it: graph context is assembled at the Doorman before dispatch; bypass means ungrounded inference. The MCP-as-Substrate-Protocol (claim #46) designates the Doorman as the MCP gateway; bypass breaks the MCP graph. The Two-Bottoms Sovereign Substrate (claim #34) enforces customer sovereignty at the Doorman boundary; bypass is a sovereignty leak.
+This discipline composes with several other substrate patterns. The [[knowledge-graph-grounded-apprenticeship]] depends on it: graph context is assembled at the Doorman before dispatch; bypass means ungrounded inference. The [[mcp-substrate-protocol]] designates the Doorman as the MCP gateway; bypass breaks the MCP graph. The sovereign substrate enforces customer sovereignty at the Doorman boundary; bypass is a sovereignty leak.
 
 ## See also
 
