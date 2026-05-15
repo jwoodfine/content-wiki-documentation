@@ -11,13 +11,13 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:
-  - ni-51-102
-  - osc-sn-51-721
-  - olmo3-allenai
+ - ni-51-102
+ - osc-sn-51-721
+ - olmo3-allenai
 paired_with: service-slm-yoyo-operational.es.md
 ---
 
-**service-SLM** is Foundry's Ring 3 component — the Optional Intelligence layer (Doctrine claim #16). It is a three-tier inference router that clusters and contributors use to delegate routine work: editorial polish, mechanical schema-conforming edits, bilingual translation drafts, and structured-output generation. The work is handled locally or on a dedicated GPU burst VM, without routing to a third-party API. Rings 1 and 2 (boundary ingest and knowledge processing) function fully without it; Ring 3 is structurally optional.
+**service-SLM** is Foundry's Ring 3 component — the Optional Intelligence layer. It is a three-tier inference router that clusters and contributors use to delegate routine work: editorial polish, mechanical schema-conforming edits, bilingual translation drafts, and structured-output generation. The work is handled locally or on a dedicated GPU burst VM, without routing to a third-party API. Rings 1 and 2 (boundary ingest and knowledge processing) function fully without it; Ring 3 is structurally optional.
 
 The **Yo-Yo** is the name for Foundry's on-demand GPU burst instance — a GCE VM that runs a 32-billion-parameter instruction-tuned model at approximately 50-100 tokens per second. It starts on demand, shuts down after 30 minutes of inactivity, and accumulates a brief queue through its idle windows. The combination — a lightweight always-available local model on the workspace VM and a capable on-demand burst VM — defines the two active inference tiers. A third tier (external API) is configured for future use; Tier C has no active keys in workspace v0.1.91.
 
@@ -37,11 +37,11 @@ The `/readyz` endpoint returns live tier-availability flags. As of workspace v0.
 
 ```json
 {
-  "ready": true,
-  "has_local": true,
-  "has_yoyo": true,
-  "has_external": false,
-  "apprenticeship_enabled": true
+ "ready": true,
+ "has_local": true,
+ "has_yoyo": true,
+ "has_external": false,
+ "apprenticeship_enabled": true
 }
 ```
 
@@ -49,7 +49,7 @@ The `/readyz` endpoint returns live tier-availability flags. As of workspace v0.
 
 Tier A runs `llama-server` — the C++ HTTP server from llama.cpp — on the workspace VM CPU. The model is `OLMo-3-1125-7B-Think-Q4_K_M.gguf`, self-quantized from AllenAI's published safetensors release (Apache 2.0; sovereign supply chain). It binds `127.0.0.1:8080` as `local-slm.service`.
 
-Throughput on the workspace VM (an `e2-standard-4` GCE instance, CPU only) is approximately 2-3 tokens per second. This is sufficient for short briefs and trivial completions. It is not sufficient for routine editorial work at scale. The Tier A latency constraint was documented operationally at workspace v0.1.77 and motivated the v0.1.78 ratification of the four-tier substrate ladder (Doctrine claim #40).
+Throughput on the workspace VM (an `e2-standard-4` GCE instance, CPU only) is approximately 2-3 tokens per second. This is sufficient for short briefs and trivial completions. It is not sufficient for routine editorial work at scale. The Tier A latency constraint was documented operationally at workspace v0.1.77 and motivated the v0.1.78 ratification of the four-tier substrate ladder.
 
 ## Tier B — Yo-Yo on L4 GPU
 

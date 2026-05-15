@@ -13,7 +13,7 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: design-spacing.es.md
 cites:
-  - dtcg-spec
+ - dtcg-spec
 ---
 
 A 13-step spacing scale on a 16 px base. Numeric — `space-1` through `space-13` — gives one canonical answer per layout decision.

@@ -17,15 +17,15 @@ Foundry’s public presentation layers adhere to a "Zero-Execution" mandate, eli
 ## 1. Deterministic Bilingual Routing
 
 Foundry avoids the security risks and latency of IP-sniffing scripts or conditional server-side redirects. Language routing is achieved through structural determinism:
-*   **English (Root):** The primary `index.html` resides in the root directory.
-*   **Spanish (/es/):** A structurally identical `index.html` resides in the `/es/` sub-directory, with the `checked` attribute natively applied to the language-state checkbox.
+* **English (Root):** The primary `index.html` resides in the root directory.
+* **Spanish (/es/):** A structurally identical `index.html` resides in the `/es/` sub-directory, with the `checked` attribute natively applied to the language-state checkbox.
 
 ## 2. The Pure CSS State Machine
 
 Interactive interface elements, such as language toggles and dynamic download buttons, operate via native CSS checkbox patterns rather than script-driven state:
-*   **Simultaneous Loading:** The DOM loads all language blocks and button variations simultaneously.
-*   **Native Switching:** CSS rules (`display: block` / `none`) are tied to the `:checked` state of hidden inputs.
-*   **Zero Latency:** This method provides the illusion of a high-performance Web 2.0 application with zero execution latency and no client-side script vulnerability.
+* **Simultaneous Loading:** The DOM loads all language blocks and button variations simultaneously.
+* **Native Switching:** CSS rules (`display: block` / `none`) are tied to the `:checked` state of hidden inputs.
+* **Zero Latency:** This method provides the illusion of a high-performance Web 2.0 application with zero execution latency and no client-side script vulnerability.
 
 This "Leapfrog 2030" standard ensures that Foundry interfaces are accessible, secure, and instantaneous across all network environments.
 

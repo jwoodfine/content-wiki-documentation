@@ -21,10 +21,10 @@ A 3-column responsive category-browse grid for knowledge-wiki home pages. Shows 
 
 ```html
 <section class="ps-home-grid" aria-label="Browse by category">
-  <h2 class="ps-home-grid__heading">Browse by category</h2>
-  <div class="ps-home-grid__row">
-    <!-- ps-home-grid__card elements, one per category -->
-  </div>
+ <h2 class="ps-home-grid__heading">Browse by category</h2>
+ <div class="ps-home-grid__row">
+ <!-- ps-home-grid__card elements, one per category -->
+ </div>
 </section>
 ```
 

@@ -21,18 +21,18 @@ componente sin tocar los demás.
 El sustrato provee cuatro artefactos:
 
 1. **Una taxonomía de adaptadores en cuatro familias.** PROSE
-   para texto largo en inglés, COMMS para mensajería corta,
-   LEGAL para documentos formales con volumen gatillado,
-   TRANSLATE como meta-protocolo sobre las demás familias.
+ para texto largo en inglés, COMMS para mensajería corta,
+ LEGAL para documentos formales con volumen gatillado,
+ TRANSLATE como meta-protocolo sobre las demás familias.
 2. **Un registro de plantillas de género.** Dieciocho plantillas;
-   cada una con sus secciones requeridas, parámetros de registro,
-   convención bilingüe, esquema de portada y andamiaje de
-   indicaciones (*prompt scaffolding*).
+ cada una con sus secciones requeridas, parámetros de registro,
+ convención bilingüe, esquema de portada y andamiaje de
+ indicaciones (*prompt scaffolding*).
 3. **Un validador de portada.** Devuelve todas las violaciones
-   por género en una sola pasada, no la primera falla.
+ por género en una sola pasada, no la primera falla.
 4. **Una lista de vocabulario prohibido.** Ocho términos
-   transversales que sobreviven en prosa de marketing y no
-   tienen lugar en escritura precisa.
+ transversales que sobreviven en prosa de marketing y no
+ tienen lugar en escritura precisa.
 
 Estos cuatro artefactos viajan en un crate de Rust
 (`service-disclosure`) que cualquier componente Foundry puede

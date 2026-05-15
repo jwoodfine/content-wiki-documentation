@@ -11,8 +11,8 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:
-  - ni-51-102
-  - osc-sn-51-721
+ - ni-51-102
+ - osc-sn-51-721
 paired_with: brief-queue-substrate.es.md
 ---
 
@@ -71,7 +71,7 @@ When the platform scales to multi-node corpus producers — a planned future sta
 
 ## Implementation status
 
-The Brief Queue Substrate convention was ratified at workspace v0.1.78 / Doctrine v0.0.14. Implementation is in progress under the project-slm cluster scope.
+The Brief Queue Substrate convention was ratified at workspace v0.1.78. Implementation is in progress under the project-slm cluster scope.
 
 The functional components being built are:
 
@@ -83,6 +83,5 @@ The implementation does not change the corpus JSONL schema. Consumers of the app
 
 ## See also
 
-- [[apprenticeship-substrate]] — the apprenticeship corpus the Brief Queue Substrate feeds into; Doctrine claim #32
 - [[service-slm-yoyo-operational]] — the Yo-Yo operational state that motivated the queue's idle-shutdown tolerance requirement
 - [[service-slm]] — the Doorman service that hosts the drain worker and enforces audit-routing discipline

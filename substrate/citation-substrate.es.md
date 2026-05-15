@@ -10,9 +10,9 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-28
 editor: pointsav-engineering
 cites:
-  - ni-51-102
-  - osc-sn-51-721
-  - cff-spec
+ - ni-51-102
+ - osc-sn-51-721
+ - cff-spec
 ---
 
 Cada cláusula doctrinal, convención y documento público del
@@ -31,23 +31,23 @@ con las autoridades externas de las que depende. Tres componentes
 trabajan en conjunto:
 
 - **El registro** — un archivo YAML en formato CFF que contiene
-  una entrada por identificador de cita. Cada entrada incluye el
-  tipo, la jurisdicción (para instrumentos regulatorios), el título
-  oficial, la URL estable, la fecha de la última verificación, un
-  hash de contenido para detectar cambios, y la clase de evidencia.
-  Al 27 de abril de 2026, el registro contiene 62 entradas.
+ una entrada por identificador de cita. Cada entrada incluye el
+ tipo, la jurisdicción (para instrumentos regulatorios), el título
+ oficial, la URL estable, la fecha de la última verificación, un
+ hash de contenido para detectar cambios, y la clase de evidencia.
+ Al 27 de abril de 2026, el registro contiene 62 entradas.
 
 - **El encabezado de cada documento** — un campo `cites:` en el
-  YAML de cada cláusula doctrinal, convención y artículo. Los
-  identificadores declarados se resuelven contra el registro;
-  las herramientas pueden validar que existan, generar
-  automáticamente una sección de referencias, y construir un
-  índice inverso de quién cita a quién.
+ YAML de cada cláusula doctrinal, convención y artículo. Los
+ identificadores declarados se resuelven contra el registro;
+ las herramientas pueden validar que existan, generar
+ automáticamente una sección de referencias, y construir un
+ índice inverso de quién cita a quién.
 
 - **La sintaxis de referencia en línea** — en el cuerpo del
-  texto, una cita aparece entre corchetes: `[ni-51-102]`. Las
-  referencias a cláusulas específicas añaden la sección:
-  `[ni-51-102 §4A.2]`.
+ texto, una cita aparece entre corchetes: `[ni-51-102]`. Las
+ referencias a cláusulas específicas añaden la sección:
+ `[ni-51-102 §4A.2]`.
 
 ## Por qué importa esta disciplina
 

@@ -12,13 +12,13 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
 references:
-  - id: 1
-    text: "Sigstore. 'Rekor: Software Supply Chain Transparency Log.' Sigstore.dev, 2024."
-    url: "https://docs.sigstore.dev/logging/overview/"
+ - id: 1
+ text: "Sigstore. 'Rekor: Software Supply Chain Transparency Log.' Sigstore.dev, 2024."
+ url: "https://docs.sigstore.dev/logging/overview/"
 paired_with: substrate-without-inference-base-case.es.md
 ---
 
-The **Substrate-Without-Inference Base Case** establishes that the Totebox Archive must remain fully operational and freely transferable even when `service-slm` cannot run any inference. AI inference is value-add. The deterministic substrate — the file ledger, the knowledge graph, the extraction pipeline, and the editorial services — is load-bearing. This distinction is encoded in Doctrine claim #54.
+The **Substrate-Without-Inference Base Case** establishes that the Totebox Archive must remain fully operational and freely transferable even when `service-slm` cannot run any inference. AI inference is value-add. The deterministic substrate — the file ledger, the knowledge graph, the extraction pipeline, and the editorial services — is load-bearing. This distinction is.
 
 ## What the base case requires
 

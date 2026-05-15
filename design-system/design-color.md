@@ -13,8 +13,8 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: design-color.es.md
 cites:
-  - wcag-22
-  - dtcg-spec
+ - wcag-22
+ - dtcg-spec
 ---
 
 The substrate's color system has three layers — primitive, semantic, and component. Each tenant's brand lives at the semantic layer; primitives are stable across tenants; components reference semantics, never primitives directly.
@@ -22,11 +22,11 @@ The substrate's color system has three layers — primitive, semantic, and compo
 ## Three-layer model
 
 ```
-   primitive    color.primary-60  →  #234ed8
-        ↓
-   semantic     interactive-primary  →  {color.primary-60}
-        ↓
-   component    button.background-default  →  {semantic.interactive-primary}
+ primitive color.primary-60 → #234ed8
+ ↓
+ semantic interactive-primary → {color.primary-60}
+ ↓
+ component button.background-default → {semantic.interactive-primary}
 ```
 
 A tenant who wants their primary action to be teal instead of blue overrides only the semantic layer:

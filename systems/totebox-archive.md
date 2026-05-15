@@ -30,9 +30,9 @@ A key architectural requirement of the PointSav system is that data must be an a
 
 Totebox Archives are typically deployed as specialized containers for distinct institutional domains. Common archive types seen in the `cluster-totebox-jennifer` deployment include:
 
-*   **Totebox Archive - Personnel:** Encrypted records and identification.
-*   **Totebox Archive - Corporate:** Tax identification, formation documents, and minutes.
-*   **Totebox Archive - Property:** Land titles, zoning records, and construction ledgers.
+* **Totebox Archive - Personnel:** Encrypted records and identification.
+* **Totebox Archive - Corporate:** Tax identification, formation documents, and minutes.
+* **Totebox Archive - Property:** Land titles, zoning records, and construction ledgers.
 
 ## See also
 

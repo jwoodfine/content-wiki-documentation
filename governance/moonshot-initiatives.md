@@ -58,9 +58,9 @@ point.
 ## Vendor and customer roles
 
 - The Vendor (PointSav Digital Systems) maintains the moonshot
-  ledgers and engineers the native replacements.
+ ledgers and engineers the native replacements.
 - The Customer (Woodfine Management Corp.) audits the pipeline to
-  verify progress toward operational independence.
+ verify progress toward operational independence.
 
 ## See also
 

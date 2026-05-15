@@ -21,9 +21,9 @@ La interfaz de Inteligencia de Ubicación de PointSav utiliza una filosofía de 
 
 A diferencia de los productos GIS comerciales que muestran puntos individuales por defecto, la plataforma de PointSav utiliza el **Grado de Clúster** como la unidad visual y analítica principal:
 
-1.  **Rampa de Confianza:** Los sitios se codifican mediante una rampa de color (desde el ámbar pálido hasta el intenso). Los marcadores más oscuros y grandes indican mayores niveles de convergencia de capital.
-2.  **Jerarquía Estructural:** La interfaz guía al usuario hacia los nodos comerciales más defendibles, haciendo que los sitios Tier 5 y Tier 4 dominen la vista nacional.
-3.  **Tarjetas de Índice Contextuales:** Al hacer clic en un clúster, se activa un panel lateral que proporciona metadatos inmediatos (ranking municipal, operadores presentes) sin perder el contexto del mapa.
+1. **Rampa de Confianza:** Los sitios se codifican mediante una rampa de color (desde el ámbar pálido hasta el intenso). Los marcadores más oscuros y grandes indican mayores niveles de convergencia de capital.
+2. **Jerarquía Estructural:** La interfaz guía al usuario hacia los nodos comerciales más defendibles, haciendo que los sitios Tier 5 y Tier 4 dominen la vista nacional.
+3. **Tarjetas de Índice Contextuales:** Al hacer clic en un clúster, se activa un panel lateral que proporciona metadatos inmediatos (ranking municipal, operadores presentes) sin perder el contexto del mapa.
 
 ---
 ## Procedencia

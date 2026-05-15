@@ -11,15 +11,15 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:
-  - ni-51-102
-  - osc-sn-51-721
-  - constitutional-ai-2212-08073
-  - mcp-spec
-  - olmo3-allenai
-  - lorax-predibase
-  - opentimestamps
-  - rfc-3161
-  - ixbrl-esef
+ - ni-51-102
+ - osc-sn-51-721
+ - constitutional-ai-2212-08073
+ - mcp-spec
+ - olmo3-allenai
+ - lorax-predibase
+ - opentimestamps
+ - rfc-3161
+ - ixbrl-esef
 paired_with: foundry-doctrine-overview.es.md
 ---
 

@@ -24,9 +24,9 @@ Foundry’s GIS surfaces employ the Zoom-Tier Reveal Pattern to resolve the conf
 
 ### Threshold Calibration
 The transition threshold is calibrated based on three primary factors:
-1.  **Spatial Separation**: The zoom level at which individual anchors occupy sufficient screen real estate to be visually distinct.
-2.  **Semantic Priority**: The point at which a regional density signal (e.g., "this corridor is Hardware-dominant") becomes less valuable than specific asset identification.
-3.  **Crossfade Logic**: A 0.5-stop zoom interval (8.0 to 8.5) is utilized to interpolate opacity between layers, preventing the jarring "snap" associated with hard-threshold toggling.
+1. **Spatial Separation**: The zoom level at which individual anchors occupy sufficient screen real estate to be visually distinct.
+2. **Semantic Priority**: The point at which a regional density signal (e.g., "this corridor is Hardware-dominant") becomes less valuable than specific asset identification.
+3. **Crossfade Logic**: A 0.5-stop zoom interval (8.0 to 8.5) is utilized to interpolate opacity between layers, preventing the jarring "snap" associated with hard-threshold toggling.
 
 ### Layer Composition
 - **Low Magnification (< 8.0)**: Only cluster-centroid rings are intended to render. These rings utilize concentric or pie-chart geometry to represent the brand-family mix within a co-location cluster.
@@ -40,9 +40,9 @@ The pattern is implemented through declarative paint expressions within the MapL
 ```javascript
 // Example: Interpolated Opacity for Cluster Centroids
 'circle-opacity': [
-  'interpolate', ['linear'], ['zoom'],
-  8.0, 1.0,  // Fully opaque below threshold
-  8.5, 0.0   // Fully transparent above threshold
+ 'interpolate', ['linear'], ['zoom'],
+ 8.0, 1.0, // Fully opaque below threshold
+ 8.5, 0.0 // Fully transparent above threshold
 ]
 ```
 

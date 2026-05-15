@@ -13,9 +13,9 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: design-primitive-vocabulary.es.md
 cites:
-  - wcag-22
-  - dtcg-spec
-  - doctrine-38
+ - wcag-22
+ - dtcg-spec
+ - doctrine-38
 ---
 
 ## What the substrate kept structurally
@@ -83,5 +83,3 @@ The structural patterns are field-shared; the literal tokens are not.
 
 - W3C Design Tokens Community Group format — https://design-tokens.github.io/community-group/format/
 - WCAG 2.2 — https://www.w3.org/TR/WCAG22/
-- Doctrine claim #38 — `~/Foundry/DOCTRINE.md` §III row 38
-- Convention — `~/Foundry/conventions/design-system-substrate.md`

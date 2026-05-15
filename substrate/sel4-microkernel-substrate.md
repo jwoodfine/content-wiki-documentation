@@ -13,12 +13,12 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: sel4-microkernel-substrate.es.md
 references:
-  - id: 1
-    text: "Klein, G., et al. 'seL4: Formal Verification of an OS Kernel.' ACM SOSP, 2009."
-    url: "https://dl.acm.org/doi/10.1145/1629575.1629596"
-  - id: 2
-    text: "seL4 Foundation. 'seL4 Reference Manual.' seL4 Foundation, 2023."
-    url: "https://sel4.systems/Info/Docs/seL4-manual-latest.pdf"
+ - id: 1
+ text: "Klein, G., et al. 'seL4: Formal Verification of an OS Kernel.' ACM SOSP, 2009."
+ url: "https://dl.acm.org/doi/10.1145/1629575.1629596"
+ - id: 2
+ text: "seL4 Foundation. 'seL4 Reference Manual.' seL4 Foundation, 2023."
+ url: "https://sel4.systems/Info/Docs/seL4-manual-latest.pdf"
 ---
 
 The seL4 microkernel is the mathematically formally-verified L1 kernel on which all PointSav operating systems run — its security properties are proved by formal mathematical proof, not asserted by testing. [^1] PointSav adopts seL4 as raw material rather than building a custom kernel, and constructs its proprietary Rust layer above it. Memory isolation, zero buffer overflows, capability-based permissions, and deterministic execution are guaranteed structurally — the foundation for security claims that can be reasoned about formally and presented to regulators rather than merely asserted through penetration testing. This article covers the architectural rationale, the layered stack, the toolchain constraints, and the language discipline enforced above the kernel.

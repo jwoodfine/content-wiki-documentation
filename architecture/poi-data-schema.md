@@ -10,7 +10,7 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-05-07
 editor: pointsav-engineering
 cites:
-  - ni-51-102
+ - ni-51-102
 paired_with: poi-data-schema.es.md
 ---
 

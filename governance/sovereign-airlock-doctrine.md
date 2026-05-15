@@ -18,20 +18,20 @@ The Sovereign Airlock Doctrine establishes the mandatory security and identity p
 
 Foundry’s infrastructure is organized into four structurally isolated silos, each corresponding to a specific identity and organizational role:
 
-*   **`factory-pointsav/`**: The Vendor Source. Contains the primary codebase and infrastructure blueprints owned by PointSav AG.
-*   **`fleet-woodfine/`**: The Customer Operations. Contains the proprietary operational data and fleet configurations for Woodfine Management Corp.
-*   **`stage-pwoodfine/`**: Engineering Airlock. The staging environment for the engineering identity.
-*   **`stage-jwoodfine/`**: Operations Airlock. The staging environment for the operations identity.
+* **`factory-pointsav/`**: The Vendor Source. Contains the primary codebase and infrastructure blueprints owned by PointSav AG.
+* **`fleet-woodfine/`**: The Customer Operations. Contains the proprietary operational data and fleet configurations for Woodfine Management Corp.
+* **`stage-pwoodfine/`**: Engineering Airlock. The staging environment for the engineering identity.
+* **`stage-jwoodfine/`**: Operations Airlock. The staging environment for the operations identity.
 
 ## 2. Deterministic Staging and Verification
 
 Direct modification of data within the `stage-*` airlocks is strictly prohibited. Information flow must follow a deterministic path:
 
-1.  **Development:** Edits occur exclusively within the primary `factory-` or `fleet-` silos.
-2.  **Synchronization:** Payloads are synchronized to the Airlock via `rsync`, deliberately stripping `.git` metadata to ensure a clean state transfer.
-3.  **Verification:** Files are audited for correctness within the Airlock environment.
-4.  **Transmission:** Data is pushed to staging identities using specific, isolated SSH keys.
-5.  **Finalization:** A final merge is executed from staging to the Organization repositories using authoritative Administrator keys.
+1. **Development:** Edits occur exclusively within the primary `factory-` or `fleet-` silos.
+2. **Synchronization:** Payloads are synchronized to the Airlock via `rsync`, deliberately stripping `.git` metadata to ensure a clean state transfer.
+3. **Verification:** Files are audited for correctness within the Airlock environment.
+4. **Transmission:** Data is pushed to staging identities using specific, isolated SSH keys.
+5. **Finalization:** A final merge is executed from staging to the Organization repositories using authoritative Administrator keys.
 
 ## 3. Cryptographic Identity Isolation
 

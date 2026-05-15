@@ -10,9 +10,9 @@ editor: pointsav-engineering
 language: es
 paired_with: merkle-proofs-as-substrate-primitive.md
 cites:
-  - rfc-9162
-  - doctrine-claim-33
-  - doctrine-claim-34
+ - rfc-9162
+ - doctrine-claim-33
+ - doctrine-claim-34
 ---
 
 `system-core` incluye dos primitivas de prueba Merkle según RFC 9162 — pruebas de inclusión y pruebas de consistencia — como piso criptográfico del Sustrato del Libro de Capacidades (afirmación doctrinal #33). Junto con el formato de checkpoint firmado C2SP, validan la escritura en el libro y hacen auditable el estado de capacidades sin exigir buena conducta al consumidor.

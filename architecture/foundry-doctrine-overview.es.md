@@ -11,10 +11,10 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:
-  - ni-51-102
-  - osc-sn-51-721
-  - mcp-spec
-  - olmo3-allenai
+ - ni-51-102
+ - osc-sn-51-721
+ - mcp-spec
+ - olmo3-allenai
 paired_with: foundry-doctrine-overview.md
 ---
 

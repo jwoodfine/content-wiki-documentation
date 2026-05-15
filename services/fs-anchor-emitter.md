@@ -29,10 +29,10 @@ The emitter requires the following environment variables to be defined at runtim
 ## Implementation of the Signed-Note Format
 
 Checkpoints must strictly follow the **C2SP signed-note** format to ensure interoperability with the Sigstore ecosystem. A valid emitter output includes:
-1.  **Origin:** The service identifier (e.g., `service-fs.foundry.example`).
-2.  **Tree Size:** The current monotonic entry count.
-3.  **Root Hash:** The base64-encoded SHA-256 Merkle root.
-4.  **Signature:** A detached Ed25519 signature from the tenant key.
+1. **Origin:** The service identifier (e.g., `service-fs.foundry.example`).
+2. **Tree Size:** The current monotonic entry count.
+3. **Root Hash:** The base64-encoded SHA-256 Merkle root.
+4. **Signature:** A detached Ed25519 signature from the tenant key.
 
 ## Operational Procedures
 

@@ -10,9 +10,9 @@ last_edited: 2026-04-28
 editor: pointsav-engineering
 bcsc_class: current-fact + forward-looking
 cites:
-  - mcp-spec
-  - ni-51-102
-  - osc-sn-51-721
+ - mcp-spec
+ - ni-51-102
+ - osc-sn-51-721
 ---
 
 

@@ -11,9 +11,9 @@ last_edited: 2026-05-09
 editor: pointsav-engineering
 paired_with: decode-time-constraints.md
 cites:
-  - ni-51-102
-  - llguidance
-  - llm-structured-output-2026
+ - ni-51-102
+ - llguidance
+ - llm-structured-output-2026
 ---
 
 El sustrato impone reglas estructurales en el momento en que el modelo
@@ -46,22 +46,22 @@ inferencia, la gramática activa es
 Tres razones estructurales:
 
 - **La gramática debe escribirse localmente.** Una restricción en
-  tiempo de decodificación ejecuta dentro del bucle de inferencia.
-  El inquilino necesita acceso de escritura al archivo de gramática
-  que el runtime carga. Los productos de IA gestionados por
-  hiperescaladores tratan la gramática como parte del despliegue
-  cerrado del modelo.
+ tiempo de decodificación ejecuta dentro del bucle de inferencia.
+ El inquilino necesita acceso de escritura al archivo de gramática
+ que el runtime carga. Los productos de IA gestionados por
+ hiperescaladores tratan la gramática como parte del despliegue
+ cerrado del modelo.
 - **La restricción debe componerse con el enrutamiento de
-  adaptadores.** El Doorman de Foundry (`service-slm`) compone
-  adaptadores por solicitud; las restricciones de decodificación
-  viajan con esa composición. La IA gestionada por hiperescaladores
-  no expone primitivos de composición de adaptadores.
+ adaptadores.** El Doorman de Foundry (`service-slm`) compone
+ adaptadores por solicitud; las restricciones de decodificación
+ viajan con esa composición. La IA gestionada por hiperescaladores
+ no expone primitivos de composición de adaptadores.
 - **La restricción debe ser auditable.** Por la postura de
-  divulgación continua de la BCSC (`[ni-51-102]`), cada salida
-  editorial debe ser trazable a las reglas bajo las cuales fue
-  generada. El libro mayor de auditoría por inquilino de Foundry
-  captura la versión de la gramática, la composición de adaptadores
-  y la respuesta — juntas.
+ divulgación continua de la BCSC (`[ni-51-102]`), cada salida
+ editorial debe ser trazable a las reglas bajo las cuales fue
+ generada. El libro mayor de auditoría por inquilino de Foundry
+ captura la versión de la gramática, la composición de adaptadores
+ y la respuesta — juntas.
 
 ## Qué habilita esto
 
@@ -83,15 +83,15 @@ Por la postura de divulgación continua de la BCSC (`[ni-51-102]`), la
 trayectoria descrita a continuación es `planificada` e `intencionada`:
 
 - Gramáticas por género para las 16 plantillas en
-  `service-disclosure/templates/`.
+ `service-disclosure/templates/`.
 - Extensiones de vocabulario prohibido por inquilino (palabras
-  específicas de marca de un Cliente que estén en su lista de
-  No-Usar).
+ específicas de marca de un Cliente que estén en su lista de
+ No-Usar).
 - Composición de adaptadores con composición de gramática a través
-  del Doorman de `service-slm`.
+ del Doorman de `service-slm`.
 - Entradas en el libro mayor de auditoría que registren
-  `grammar_version + adapter_composition + response_hash` por
-  solicitud.
+ `grammar_version + adapter_composition + response_hash` por
+ solicitud.
 
 ## Véase también
 
@@ -99,4 +99,4 @@ trayectoria descrita a continuación es `planificada` e `intencionada`:
 - [El sustrato de protocolo de lenguaje](topic-language-protocol-substrate.es.md)
 - [El sustrato de aprendizaje](topic-apprenticeship-substrate.es.md)
 - La convención que refleja este artículo:
-  `~/Foundry/conventions/language-protocol-substrate.md` §3
+ `~/Foundry/conventions/language-protocol-substrate.md` §3

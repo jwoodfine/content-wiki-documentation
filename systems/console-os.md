@@ -15,12 +15,12 @@ paired_with: console-os.es.md
 short_description: "os-console is the human-facing surface of the PointSav platform — a Command Ledger that connects to a Totebox and renders its state to the operator via a keyboard-driven, F-key-structured interface."
 cites: []
 references:
-  - id: 1
-    text: "Green, C. 'Improved Alpha-Tested Magnification for Vector Textures and Special Effects.' ACM SIGGRAPH 2007 courses, 2007."
-    url: "https://dl.acm.org/doi/10.1145/1281500.1281665"
-  - id: 2
-    text: "ISO 19650-1:2018 — Organization and digitization of information about buildings and civil engineering works, including building information modelling (BIM)."
-    url: "https://www.iso.org/standard/68078.html"
+ - id: 1
+ text: "Green, C. 'Improved Alpha-Tested Magnification for Vector Textures and Special Effects.' ACM SIGGRAPH 2007 courses, 2007."
+ url: "https://dl.acm.org/doi/10.1145/1281500.1281665"
+ - id: 2
+ text: "ISO 19650-1:2018 — Organization and digitization of information about buildings and civil engineering works, including building information modelling (BIM)."
+ url: "https://www.iso.org/standard/68078.html"
 ---
 
 `os-console` is the human-facing surface of the PointSav platform — a Command Ledger that connects to one [[totebox-os|Totebox]] and renders its state to the operator. It does not store data and does not run services; it is a high-fidelity terminal purpose-built around keyboard-driven operator flow. The reference point is the Bloomberg Terminal: a single keyboard, a small set of function keys, and a relentless focus on the operator's context. The binary is written from scratch in Rust for sub-50-millisecond cold start and a 15-megabyte footprint. This article covers how os-console runs, the F-key surface, the rendering stack, and the two operating modes.

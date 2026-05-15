@@ -15,12 +15,12 @@ paired_with: service-email.es.md
 short_description: "service-email is the Totebox's email server — it ingests SMTP and IMAP traffic, sanitises every payload, and writes raw text to an append-only Maildir on local block storage. Content interpretation is handled upstream by service-content."
 cites: []
 references:
-  - id: 1
-    text: "Hardt, D. (Ed.). 'The OAuth 2.0 Authorization Framework.' IETF RFC 6749, 2012."
-    url: "https://www.rfc-editor.org/rfc/rfc6749"
-  - id: 2
-    text: "NIST. 'Security Guidelines for Storage Infrastructure.' SP 800-209, 2020."
-    url: "https://doi.org/10.6028/NIST.SP.800-209"
+ - id: 1
+ text: "Hardt, D. (Ed.). 'The OAuth 2.0 Authorization Framework.' IETF RFC 6749, 2012."
+ url: "https://www.rfc-editor.org/rfc/rfc6749"
+ - id: 2
+ text: "NIST. 'Security Guidelines for Storage Infrastructure.' SP 800-209, 2020."
+ url: "https://doi.org/10.6028/NIST.SP.800-209"
 ---
 
 `service-email` is the Totebox's email server. It listens for SMTP and IMAP traffic, sanitises every payload — stripping HTML rendering logic and tracking pixels — and writes the raw text into an append-only Maildir on local block storage. The service does not interpret content; that work happens upstream in `service-content`. This article covers the ingest pipeline, the Sovereign properties that distinguish it from a conventional email client, and its relationship with the Microsoft 365 integration path.

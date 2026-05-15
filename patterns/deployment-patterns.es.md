@@ -14,12 +14,12 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: deployment-patterns.md
 references:
-  - id: 1
-    text: "Jackson, Cam. 'Micro Frontends.' martinfowler.com, 2019. El artículo técnico fundacional que describe el patrón arquitectónico de micro-frontends aplicado en la ingeniería web moderna."
-    url: "https://martinfowler.com/articles/micro-frontends.html"
-  - id: 2
-    text: "The Open Group, Estándar TOGAF, 10.ª edición, 2022. Capítulo 20: Patrones de Arquitectura. Tratamiento canónico de configuraciones de despliegue reutilizables en arquitectura empresarial."
-    url: "https://www.opengroup.org/togaf"
+ - id: 1
+ text: "Jackson, Cam. 'Micro Frontends.' martinfowler.com, 2019. El artículo técnico fundacional que describe el patrón arquitectónico de micro-frontends aplicado en la ingeniería web moderna."
+ url: "https://martinfowler.com/articles/micro-frontends.html"
+ - id: 2
+ text: "The Open Group, Estándar TOGAF, 10.ª edición, 2022. Capítulo 20: Patrones de Arquitectura. Tratamiento canónico de configuraciones de despliegue reutilizables en arquitectura empresarial."
+ url: "https://www.opengroup.org/togaf"
 ---
 
 Los patrones de despliegue describen las seis configuraciones canónicas en las que se despliega el sustrato PointSav en diferentes contextos institucionales. Cada configuración se basa en los mismos cinco primitivos — Personas, Comunicaciones, Borradores, Registros, Dinero — y la misma superficie de [[console-os|Libro Mayor de Comandos]]; lo que cambia por configuración es el [[archetypes-and-chart-of-accounts|Plan de Cuentas]] y la superficie de cumplimiento. El sustrato no se bifurca entre segmentos; se adapta. Al finalizar este artículo, el lector comprenderá el posicionamiento de Compañero, las seis configuraciones canónicas y el modelo de aislamiento de micro-frontend que hace práctica la versión independiente en los seis.

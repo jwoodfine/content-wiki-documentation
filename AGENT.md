@@ -17,9 +17,9 @@ Scope:
 - Platform reference articles (architecture, services, ADRs, glossary).
 - Topic pages used for internal explanation and external publication.
 - **Operational Guides (`guide-*.md`)** — all technical runbooks and
-  how-to articles are exclusively hosted here.
+ how-to articles are exclusively hosted here.
 - Category landing pages and a single repo-root `index.md` serving
-  as the wiki home.
+ as the wiki home.
 
 This repo is **content only**. It holds no code and no compiled
 binaries. Runtime is elsewhere (see §3).
@@ -52,12 +52,12 @@ This repo's content is consumed by `app-mediakit-knowledge`, a Rust
 wiki server that renders the content at `documentation.pointsav.com`.
 
 - The **crate** lives in `pointsav-monorepo/app-mediakit-knowledge/`
-  per Nomenclature Matrix §3 (`app-*` prefix = monorepo project).
+ per Nomenclature Matrix §3 (`app-*` prefix = monorepo project).
 - **This repo** is the crate's sole content source.
 - The **contract between them** is pinned in
-  `.agent/rules/content-contract.md` — front-matter schema,
-  directory layout, wikilink and footnote conventions, URL routing.
-  When in doubt about how to shape content, read the contract.
+ `.agent/rules/content-contract.md` — front-matter schema,
+ directory layout, wikilink and footnote conventions, URL routing.
+ When in doubt about how to shape content, read the contract.
 
 The crate is the ground truth for the render pipeline. If the crate
 changes the contract (new required field, different markdown
@@ -86,14 +86,14 @@ admin-only repo. Commits flow through the staging tier per
 workspace §4 and §7.
 
 - Use `~/Foundry/tool-commit-as-next.sh` for every commit. Author
-  identity alternates between `jwoodfine` and `pwoodfine` per commit.
+ identity alternates between `jwoodfine` and `pwoodfine` per commit.
 - Staged-file discipline: `git add <specific files>`, never
-  `git add .` or `git add -A`.
+ `git add .` or `git add -A`.
 - Pushing is deferred to the workspace §7 "Stage 6" promotion flow.
-  Do not push from this repo without explicit operator approval.
+ Do not push from this repo without explicit operator approval.
 - **Do not** commit directly to `origin` (canonical
-  `pointsav/content-wiki-documentation`). Humans do not write to
-  canonical directly for engineering repos.
+ `pointsav/content-wiki-documentation`). Humans do not write to
+ canonical directly for engineering repos.
 
 ### Remotes currently configured
 
@@ -113,22 +113,22 @@ Inherited from workspace §6 and reaffirmed here because this repo's
 content is publicly served at `documentation.pointsav.com`:
 
 - **Bilingual READMEs.** `README.md` and `README.es.md` at repo root
-  are both maintained. The wiki content itself (articles in category
-  subdirectories) is English-only unless a future decision adds
-  Spanish content.
+ are both maintained. The wiki content itself (articles in category
+ subdirectories) is English-only unless a future decision adds
+ Spanish content.
 - **Canonical names.** Names from the Nomenclature Matrix are used
-  verbatim in article titles, slugs, and wikilink targets. No
-  synonyms, no legacy prefixes.
+ verbatim in article titles, slugs, and wikilink targets. No
+ synonyms, no legacy prefixes.
 - **BCSC disclosure rule.** Sovereign Data Foundation is referred
-  to in planned / intended terms only. Never as a current equity
-  holder or active governance body. This rule applies with full
-  weight here because content in this repo is public once served.
+ to in planned / intended terms only. Never as a current equity
+ holder or active governance body. This rule applies with full
+ weight here because content in this repo is public once served.
 - **ADR hard rules.** SYS-ADR-07 (no AI on structured data), SYS-ADR-10
-  (F12 checkpoint), SYS-ADR-19 (no automated AI publishing). Content
-  in this repo does not invoke AI; articles that describe these
-  ADRs must describe them accurately as written.
+ (F12 checkpoint), SYS-ADR-19 (no automated AI publishing). Content
+ in this repo does not invoke AI; articles that describe these
+ ADRs must describe them accurately as written.
 - **Edit in place.** No `_V2` / `_V3` duplicate files. Use Git
-  history for versioning.
+ history for versioning.
 
 ## 7. Migration state (as of 2026-05-03)
 
@@ -137,12 +137,12 @@ The repo has completed the PL.7 normalization pass.
 - `index.md` is active at repo root.
 - All articles have moved into category subdirectories.
 - Legacy `topic-` prefixes have been removed from all filenames
-  and internal links.
+ and internal links.
 - Structured-record files (`topic-*.yaml`, `sys-adr-*.yaml`,
-  `service-*-01.yaml`, `os-workplace-01.yaml`) sit at root without
-  markdown bodies; each needs classification (become article / become
-  article front-matter / move cross-repo to the owning service crate
-  in the monorepo).
+ `service-*-01.yaml`, `os-workplace-01.yaml`) sit at root without
+ markdown bodies; each needs classification (become article / become
+ article front-matter / move cross-repo to the owning service crate
+ in the monorepo).
 
 Normalisation is complete. Per-file decisions are
 tracked in `.agent/rules/cleanup-log.md`; higher-level work items
@@ -154,9 +154,9 @@ are tracked in `NEXT.md`.
 - `.agent/rules/content-contract.md` — what valid content looks like.
 - `~/Foundry/GEMINI.md` — workspace guide (inherited).
 - `~/Foundry/IT_SUPPORT_Nomenclature_Matrix_V8.md` — names, prefixes,
-  conventions (authoritative per workspace §5).
+ conventions (authoritative per workspace §5).
 - `~/Foundry/NEXT.md` — workspace-level open items, including anything
-  cross-repo that touches this repo.
+ cross-repo that touches this repo.
 
 
 ---

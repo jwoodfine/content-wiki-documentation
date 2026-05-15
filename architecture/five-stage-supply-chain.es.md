@@ -15,12 +15,12 @@ paired_with: five-stage-supply-chain.md
 short_description: "La cadena de suministro soberana de cinco etapas describe cómo el código se mueve desde el entorno local de un contribuyente hasta una implementación de producción a través de cinco etapas distintas, con una brecha de aire de doble ciego que permite a los contribuyentes trabajar en sistemas de producción sin tocar credenciales de producción ni ver datos de producción."
 cites: []
 references:
-  - id: 1
-    text: "OpenSSF. 'Supply Chain Levels for Software Artifacts (SLSA) v1.0.' Open Source Security Foundation, 2023."
-    url: "https://slsa.dev/spec/v1.0/"
-  - id: 2
-    text: "Hammant, P. 'Trunk Based Development.' trunkbaseddevelopment.com, 2017."
-    url: "https://trunkbaseddevelopment.com/"
+ - id: 1
+ text: "OpenSSF. 'Supply Chain Levels for Software Artifacts (SLSA) v1.0.' Open Source Security Foundation, 2023."
+ url: "https://slsa.dev/spec/v1.0/"
+ - id: 2
+ text: "Hammant, P. 'Trunk Based Development.' trunkbaseddevelopment.com, 2017."
+ url: "https://trunkbaseddevelopment.com/"
 ---
 
 El código se mueve desde el entorno local de un contribuyente hasta una implementación de producción a través de cinco etapas distintas — cada una con un actor definido, una acción específica y un equivalente estándar de la industria. El arreglo es deliberadamente circular: cada sesión de trabajo comienza restableciendo al estado del proveedor verificado más reciente, eliminando la deriva lógica que se acumula cuando los contribuyentes construyen sobre sus propias ramas desactualizadas. Una única puerta de gobernanza — el squash-and-merge del administrador — es donde se transfiere la propiedad intelectual y los commits experimentales se colapsan en un único registro corporativo. [^1] Este artículo cubre las cinco etapas, la brecha de aire de doble ciego y la topología del repositorio.

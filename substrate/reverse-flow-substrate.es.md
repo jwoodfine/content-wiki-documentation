@@ -12,9 +12,9 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
 references:
-  - id: 1
-    text: "Interactive Advertising Bureau Tech Lab. 'OpenRTB API Specification Version 2.6.' IAB Tech Lab, 2022."
-    url: "https://iabtechlab.com/standards/openrtb/"
+ - id: 1
+ text: "Interactive Advertising Bureau Tech Lab. 'OpenRTB API Specification Version 2.6.' IAB Tech Lab, 2022."
+ url: "https://iabtechlab.com/standards/openrtb/"
 paired_with: reverse-flow-substrate.md
 ---
 

@@ -21,9 +21,9 @@ Single-line text entry with label, helper text, and error state.
 
 ```html
 <div class="ps-field">
-  <label class="ps-field__label" for="{{id}}">{{label}}</label>
-  <input type="text" id="{{id}}" class="ps-input" placeholder="{{placeholder}}" />
-  <span class="ps-field__helper">{{helper}}</span>
+ <label class="ps-field__label" for="{{id}}">{{label}}</label>
+ <input type="text" id="{{id}}" class="ps-input" placeholder="{{placeholder}}" />
+ <span class="ps-field__helper">{{helper}}</span>
 </div>
 ```
 

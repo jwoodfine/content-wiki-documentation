@@ -34,11 +34,11 @@ own private adapter set.
 The courier follows a three-step cycle per dispatch:
 
 1. **Query.** The engine polls the local ledger for pending
-   dispatch records.
+ dispatch records.
 2. **Execution.** It mounts the specified private adapter and runs
-   the headless browser routine against the target portal.
+ the headless browser routine against the target portal.
 3. **Write-back.** On success, the engine logs the completion
-   timestamp to the ledger and unloads the adapter.
+ timestamp to the ledger and unloads the adapter.
 
 Each step is isolated. A failure at execution does not corrupt the
 ledger record; the dispatch remains pending until a successful

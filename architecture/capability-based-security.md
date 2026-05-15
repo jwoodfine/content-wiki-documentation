@@ -12,12 +12,12 @@ last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []
 references:
-  - id: 1
-    text: "Klein, G. et al. 'seL4: Formal Verification of an OS Kernel.' ACM SOSP, 2009."
-    url: "https://dl.acm.org/doi/10.1145/1629575.1629596"
-  - id: 2
-    text: "Lampson, B. W. 'Protection.' ACM SIGOPS Operating Systems Review, 8(1):18–24, 1974."
-    url: "https://dl.acm.org/doi/10.1145/775265.775268"
+ - id: 1
+ text: "Klein, G. et al. 'seL4: Formal Verification of an OS Kernel.' ACM SOSP, 2009."
+ url: "https://dl.acm.org/doi/10.1145/1629575.1629596"
+ - id: 2
+ text: "Lampson, B. W. 'Protection.' ACM SIGOPS Operating Systems Review, 8(1):18–24, 1974."
+ url: "https://dl.acm.org/doi/10.1145/775265.775268"
 paired_with: capability-based-security.es.md
 ---
 

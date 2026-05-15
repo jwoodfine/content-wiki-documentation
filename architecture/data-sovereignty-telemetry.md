@@ -22,8 +22,8 @@ Foundry strictly prohibits the use of tracking cookies, persistent local storage
 
 Operational metrics are gathered exclusively through a First-Party Ping Architecture. This system converts network metadata into anonymized geospatial data without retaining PII:
 
-*   **Mandatory IP Masking:** The ingestion server instantly drops the final octet of the incoming IP address (e.g., `192.168.1.45` becomes `192.168.1.0`).
-*   **Anonymized Auditing:** Interaction data—such as document downloads—is used strictly to map deal velocity and platform friction, ensuring compliance while maintaining infrastructure security.
+* **Mandatory IP Masking:** The ingestion server instantly drops the final octet of the incoming IP address (e.g., `192.168.1.45` becomes `192.168.1.0`).
+* **Anonymized Auditing:** Interaction data—such as document downloads—is used strictly to map deal velocity and platform friction, ensuring compliance while maintaining infrastructure security.
 
 ## 3. Mandatory Regulatory Disclosure
 

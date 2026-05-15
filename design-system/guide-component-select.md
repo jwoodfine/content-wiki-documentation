@@ -21,13 +21,13 @@ Single-choice picker from a known list. Native `<select>` element for keyboard a
 
 ```html
 <div class="ps-field">
-  <label class="ps-field__label" for="{{id}}">{{label}}</label>
-  <select id="{{id}}" class="ps-select">
-    <option value="">Choose…</option>
-    <option>Option one</option>
-    <option>Option two</option>
-    <option>Option three</option>
-  </select>
+ <label class="ps-field__label" for="{{id}}">{{label}}</label>
+ <select id="{{id}}" class="ps-select">
+ <option value="">Choose…</option>
+ <option>Option one</option>
+ <option>Option two</option>
+ <option>Option three</option>
+ </select>
 </div>
 ```
 

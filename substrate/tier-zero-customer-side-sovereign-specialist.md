@@ -14,7 +14,7 @@ cites: []
 paired_with: tier-zero-customer-side-sovereign-specialist.es.md
 ---
 
-The **Tier 0 Customer-Side Sovereign Specialist** is the reference deployment model for Foundry: the complete platform stack running on the customer's own hardware, with no required cloud dependency, no required internet connectivity, and a total disk footprint of approximately one gigabyte. This pattern encodes Doctrine claim #49.
+The **Tier 0 Customer-Side Sovereign Specialist** is the reference deployment model for Foundry: the complete platform stack running on the customer's own hardware, with no required cloud dependency, no required internet connectivity, and a total disk footprint of approximately one gigabyte.
 
 ## The reference unit
 

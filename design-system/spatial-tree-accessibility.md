@@ -17,18 +17,18 @@ The `bim-spatial-tree` component provides a navigable hierarchy of a building’
 ## Structural Role and ARIA Mapping
 
 The component utilizes a semantic tree structure to reflect the building’s containment hierarchy:
-*   **Container:** An `<aside aria-label="Spatial hierarchy">` element.
-*   **Tree Root:** A `<ul role="tree">` list.
-*   **Spatial Items:** Each node is a `<li role="treeitem">` with an `aria-expanded` attribute.
-*   **Child Groups:** Nested levels are contained within `<ul role="group">`.
+* **Container:** An `<aside aria-label="Spatial hierarchy">` element.
+* **Tree Root:** A `<ul role="tree">` list.
+* **Spatial Items:** Each node is a `<li role="treeitem">` with an `aria-expanded` attribute.
+* **Child Groups:** Nested levels are contained within `<ul role="group">`.
 
 Following AEC industry conventions, storey-level nodes default to `aria-expanded="true"`, while deeper spatial elements remain collapsed by default to reduce initial cognitive load.
 
 ## Selection and Multi-Select
 
 Selection state is tracked via the `aria-selected` attribute:
-*   **Console Mode:** Single-select only (`aria-selected="true"` on one item).
-*   **Workplace Mode:** Supports multi-selection via `Ctrl/Cmd-click` or `Shift-click` patterns.
+* **Console Mode:** Single-select only (`aria-selected="true"` on one item).
+* **Workplace Mode:** Supports multi-selection via `Ctrl/Cmd-click` or `Shift-click` patterns.
 
 ## Keyboard Interaction
 
@@ -49,8 +49,8 @@ The tree includes a search interface (`<input type="search">`) that filters node
 
 ## Implementation Guardrails
 
-*   **Avoid Generic Scene-Graphs:** Do not utilize generic "outliner" widgets. The `SpatialTree` is a purpose-built AEC tool with specific expansion and search logic.
-*   **Storey-First Expansion:** Adhere to the storey-default expansion rule to match professional AEC mental models.
+* **Avoid Generic Scene-Graphs:** Do not utilize generic "outliner" widgets. The `SpatialTree` is a purpose-built AEC tool with specific expansion and search logic.
+* **Storey-First Expansion:** Adhere to the storey-default expansion rule to match professional AEC mental models.
 
 ## See also
 

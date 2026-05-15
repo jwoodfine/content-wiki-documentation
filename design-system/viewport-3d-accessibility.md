@@ -16,16 +16,16 @@ The `bim-viewport-3d` component is the primary visualization layer for building 
 
 ## Structural Role and Interface
 
-*   **Container:** A `<section aria-label="3D viewport">` element.
-*   **Canvas:** A `<canvas aria-label="3D model canvas">`. As canvas content is not directly inspectable, all selection states are mirrored in the accessible `SpatialTree` and `PropertiesPanel`.
-*   **Viewport Toolbar:** A `<div role="toolbar">` containing accessible buttons for view control.
-*   **Navigation Cube:** The NavCube is presentational only (`aria-hidden="true"`); its functionality is fully duplicated by standardized keyboard shortcuts.
+* **Container:** A `<section aria-label="3D viewport">` element.
+* **Canvas:** A `<canvas aria-label="3D model canvas">`. As canvas content is not directly inspectable, all selection states are mirrored in the accessible `SpatialTree` and `PropertiesPanel`.
+* **Viewport Toolbar:** A `<div role="toolbar">` containing accessible buttons for view control.
+* **Navigation Cube:** The NavCube is presentational only (`aria-hidden="true"`); its functionality is fully duplicated by standardized keyboard shortcuts.
 
 ## Selection Synchronization
 
 Interaction between the 3D view and accessible text-based components is bidirectional:
-*   Selecting an element in the canvas triggers an announcement in the `PropertiesPanel` live region.
-*   Selecting or focusing an item in the `SpatialTree` highlights the corresponding geometry in the viewport and adjusts the camera as necessary.
+* Selecting an element in the canvas triggers an announcement in the `PropertiesPanel` live region.
+* Selecting or focusing an item in the `SpatialTree` highlights the corresponding geometry in the viewport and adjusts the camera as necessary.
 
 ## Keyboard Parity for Navigation
 
@@ -43,13 +43,13 @@ The viewport implements industry-standard AEC shortcuts to ensure full control w
 
 ## Mode-Specific Behavior
 
-*   **Console Mode:** The viewport may degrade to high-fidelity static SVG plan thumbnails. This preserves the EUPL-1.2 license boundary by avoiding 3D engine overhead in read-only surfaces.
-*   **Workplace Mode:** Enables full interactive 3D rendering (xeokit-based) for authoring and coordination. Large model data is loaded via Tauri’s `asset:` protocol to prevent IPC bottlenecks.
+* **Console Mode:** The viewport may degrade to high-fidelity static SVG plan thumbnails. This preserves the EUPL-1.2 license boundary by avoiding 3D engine overhead in read-only surfaces.
+* **Workplace Mode:** Enables full interactive 3D rendering (xeokit-based) for authoring and coordination. Large model data is loaded via Tauri’s `asset:` protocol to prevent IPC bottlenecks.
 
 ## Implementation Guardrails
 
-*   **Zero IPC for Geometry:** Do not pipe raw IFC or geometry bytes over the IPC boundary. Use localized asset protocols to load visualization caches (e.g., XKT files) directly into the GPU.
-*   **Decoupled CSS:** Viewport-specific 3D engine CSS should remain decoupled from the Building Design System’s core styles to allow for runtime-specific engine updates.
+* **Zero IPC for Geometry:** Do not pipe raw IFC or geometry bytes over the IPC boundary. Use localized asset protocols to load visualization caches (e.g., XKT files) directly into the GPU.
+* **Decoupled CSS:** Viewport-specific 3D engine CSS should remain decoupled from the Building Design System’s core styles to allow for runtime-specific engine updates.
 
 ## See also
 

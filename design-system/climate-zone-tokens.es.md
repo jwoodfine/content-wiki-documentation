@@ -10,10 +10,10 @@ editor: pointsav-engineering
 language: es
 paired_with: climate-zone-tokens.md
 cites:
-  - ifc-4-3
-  - ids-1-0
-  - ashrae-90-1
-  - nbc-2020
+ - ifc-4-3
+ - ids-1-0
+ - ashrae-90-1
+ - nbc-2020
 ---
 
 Los tokens de zona climática son datos de especificación de rendimiento integrados en el sistema de [[bim-token-what-it-is|Token BIM]]. Cada token registra los requisitos de rendimiento térmico y estructural que aplican a un tipo de elemento IFC determinado dentro de una zona climática registrada. Los datos residen en `tokens/bim/climate-zones.dtcg.json` en el almacén de tokens BIM — ya sea `pointsav-design-system` o un almacén de cliente como `woodfine-design-bim` — y son leídos por `app-orchestration-bim` al arrancar.

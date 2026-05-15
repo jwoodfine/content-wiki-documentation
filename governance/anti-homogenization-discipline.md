@@ -11,7 +11,7 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:
-  - ni-51-102
+ - ni-51-102
 paired_with: anti-homogenization-discipline.es.md
 ---
 
@@ -43,7 +43,7 @@ A user who explicitly requests "rewrite this in Bloomberg register" gets a rewri
 
 ## Per-tenant adapters preserve voice
 
-Foundry's adapter-composition algebra (Doctrine claim #22) separates the per-tenant adapter from the protocol adapter. The per-tenant adapter trains on the customer's own corpus inside the customer's own substrate. It learns the customer's voice — the words they use, the sentence rhythms they favour, the register they default to.
+Foundry's adapter-composition algebra separates the per-tenant adapter from the protocol adapter. The per-tenant adapter trains on the customer's own corpus inside the customer's own substrate. It learns the customer's voice — the words they use, the sentence rhythms they favour, the register they default to.
 
 When the protocol adapter (PROSE / COMMS / LEGAL / TRANSLATE) composes with the per-tenant adapter at request time, the output reflects both: the genre conventions of the protocol and the voice of the tenant. A README authored by Foundry inside Customer A's substrate sounds like Customer A; the same README authored inside Customer B's substrate sounds like Customer B.
 

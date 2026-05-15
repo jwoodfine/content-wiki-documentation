@@ -26,26 +26,26 @@ A wiki article page is composed from a stack of components:
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│  wiki-drawer-mobile-nav  (compact only — hamburger) │
+│ wiki-drawer-mobile-nav (compact only — hamburger) │
 ├──────────────────────────────────────────────────────┤
-│  wiki-article-header  (breadcrumb + H1 + badge + meta)│
+│ wiki-article-header (breadcrumb + H1 + badge + meta)│
 ├──────────────────┬──────────────────────────────────┤
-│                  │  wiki-toc-sidebar  (right rail)  │
-│  Article body    │  (desktop only)                  │
-│  (prose)         ├──────────────────────────────────┤
-│                  │  wiki-badge-tag (quality/category)│
+│ │ wiki-toc-sidebar (right rail) │
+│ Article body │ (desktop only) │
+│ (prose) ├──────────────────────────────────┤
+│ │ wiki-badge-tag (quality/category)│
 ├──────────────────┴──────────────────────────────────┤
-│  wiki-article-footer  (categories + refs + edit)     │
+│ wiki-article-footer (categories + refs + edit) │
 ├─────────────────────────────────────────────────────┤
-│  wiki-pagination  (prev/next article in category)    │
+│ wiki-pagination (prev/next article in category) │
 └─────────────────────────────────────────────────────┘
 
 Overlays (triggered by user action):
-  wiki-modal-dialog     — image lightbox, search overlay
-  wiki-dark-mode-toggle — persistent theme switch (site header)
+ wiki-modal-dialog — image lightbox, search overlay
+ wiki-dark-mode-toggle — persistent theme switch (site header)
 
 Search:
-  wiki-search-results   — results list (own page or in modal)
+ wiki-search-results — results list (own page or in modal)
 ```
 
 ## Components

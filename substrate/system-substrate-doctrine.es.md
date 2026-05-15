@@ -11,10 +11,10 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:
-  - sec-17a-4-f
-  - eidas-qualified-preservation
-  - rfc-3161
-  - opentimestamps
+ - sec-17a-4-f
+ - eidas-qualified-preservation
+ - rfc-3161
+ - opentimestamps
 paired_with: system-substrate-doctrine.md
 ---
 

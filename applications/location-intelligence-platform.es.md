@@ -14,10 +14,10 @@ last_edited: 2026-05-08
 editor: pointsav-engineering
 paired_with: location-intelligence-platform.md
 cites:
-  - osm-odbl
-  - overture-maps-cdla-2-0
-  - ni-51-102
-  - osc-sn-51-721
+ - osm-odbl
+ - overture-maps-cdla-2-0
+ - ni-51-102
+ - osc-sn-51-721
 ---
 
 La plataforma de Inteligencia de Ubicación de PointSav es una aplicación GIS de archivos planos propiedad del cliente diseñada para análisis de clústeres minoristas y selección estratégica de sitios — compuesta por [[app-orchestration-gis]] (el motor analítico) y [[pointsav-gis-engine]] (la capa de renderizado), con cada conjunto de datos, algoritmo y decisión de renderizado bajo el control directo del cliente. La plataforma responde a una pregunta comercial fundamental — *¿qué nodos geográficos poseen la densidad validada por capital requerida para soportar desarrollo adyacente?* — transformando ubicaciones de tiendas en bruto en nodos comerciales accionables a través de la [[co-location-methodology]].
@@ -31,15 +31,15 @@ La plataforma calcula clústeres de co-ubicación alrededor de anclas principale
 
 ### 2. Interfaz Interactiva Multicapa
 El mapa interactivo en [gis.woodfinegroup.com](https://gis.woodfinegroup.com) utiliza una arquitectura de tres capas:
--   **Capa 1 — Puntos de Interés Globales:** Vista de más de 31,000 ubicaciones minoristas individuales.
--   **Capa 2 — Clústeres de Co-ubicación:** La vista analítica principal, que codifica la fuerza del clúster mediante saturación visual y tamaño.
--   **Capa 3 — Radios de Captación:** Visualización de los límites de proximidad (predeterminado 3.0 km) que definen el alcance del análisis de área de influencia.
+- **Capa 1 — Puntos de Interés Globales:** Vista de más de 31,000 ubicaciones minoristas individuales.
+- **Capa 2 — Clústeres de Co-ubicación:** La vista analítica principal, que codifica la fuerza del clúster mediante saturación visual y tamaño.
+- **Capa 3 — Radios de Captación:** Visualización de los límites de proximidad (predeterminado 3.0 km) que definen el alcance del análisis de área de influencia.
 
 ## Arquitectura Soberana
 
 La plataforma se adhiere a los principios de soberanía de datos del [Motor GIS de PointSav](pointsav-gis-engine):
--   **Operación basada en Archivos Planos:** Los datos persisten como archivos JSONL y GeoParquet versionados en un Totebox Archive.
--   **Visualización con Estándares Abiertos:** Utiliza PMTiles y MapLibre GL JS para servir mapas vectoriales sin dependencias de APIs de terceros.
+- **Operación basada en Archivos Planos:** Los datos persisten como archivos JSONL y GeoParquet versionados en un Totebox Archive.
+- **Visualización con Estándares Abiertos:** Utiliza PMTiles y MapLibre GL JS para servir mapas vectoriales sin dependencias de APIs de terceros.
 
 ---
 ## Procedencia

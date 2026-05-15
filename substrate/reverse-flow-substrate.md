@@ -12,13 +12,13 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
 references:
-  - id: 1
-    text: "Interactive Advertising Bureau Tech Lab. 'OpenRTB API Specification Version 2.6.' IAB Tech Lab, 2022."
-    url: "https://iabtechlab.com/standards/openrtb/"
+ - id: 1
+ text: "Interactive Advertising Bureau Tech Lab. 'OpenRTB API Specification Version 2.6.' IAB Tech Lab, 2022."
+ url: "https://iabtechlab.com/standards/openrtb/"
 paired_with: reverse-flow-substrate.es.md
 ---
 
-The **Reverse-Flow Substrate** is the planned extension of the Doorman gateway, audit ledger, and per-tenant module identifier to govern outbound commercial flows. The same boundary that mediates inbound inference requests is intended to also mediate two outbound flows: a data marketplace and an ad exchange. Both are planned as opt-in per tenant, structurally disabled by default, and require per-record cryptographic provenance. This pattern encodes Doctrine claim #52.
+The **Reverse-Flow Substrate** is the planned extension of the Doorman gateway, audit ledger, and per-tenant module identifier to govern outbound commercial flows. The same boundary that mediates inbound inference requests is intended to also mediate two outbound flows: a data marketplace and an ad exchange. Both are planned as opt-in per tenant, structurally disabled by default, and require per-record cryptographic provenance.
 
 ## The two planned reverse flows
 

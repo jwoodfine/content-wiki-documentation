@@ -15,12 +15,12 @@ paired_with: machine-based-auth.es.md
 short_description: "Machine-based authorization replaces username and password structures with cryptographic pairing of physical hardware — the pair is the permission."
 cites: []
 references:
-  - id: 1
-    text: "Perrin, T. 'The Noise Protocol Framework.' noiseprotocol.org, 2016."
-    url: "https://noiseprotocol.org/noise.html"
-  - id: 2
-    text: "Donenfeld, J. A. 'WireGuard: Next Generation Kernel Network Tunnel.' NDSS Symposium, 2017."
-    url: "https://www.ndss-symposium.org/ndss2017/ndss-2017-programme/wireguard-next-generation-kernel-network-tunnel/"
+ - id: 1
+ text: "Perrin, T. 'The Noise Protocol Framework.' noiseprotocol.org, 2016."
+ url: "https://noiseprotocol.org/noise.html"
+ - id: 2
+ text: "Donenfeld, J. A. 'WireGuard: Next Generation Kernel Network Tunnel.' NDSS Symposium, 2017."
+ url: "https://www.ndss-symposium.org/ndss2017/ndss-2017-programme/wireguard-next-generation-kernel-network-tunnel/"
 ---
 
 Machine-based authorization replaces username and password structures with cryptographic pairing of physical hardware — the pair is the permission. When a device requests access, both sides of the pair demonstrate possession of complementary key material; if the pair verifies, the connection is established; if not, the machines are mutually invisible. Because authorization is bound to hardware rather than a memorized secret, the entire class of remote credential-theft attacks — phishing, password guessing, and social engineering — is structurally eliminated. This article covers how pairings work, the four pairing types, the structural advantages over passwords, and the relationship to the [[diode-standard|Diode]] and audit layers.

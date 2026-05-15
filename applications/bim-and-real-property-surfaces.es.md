@@ -14,12 +14,12 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: bim-and-real-property-surfaces.md
 references:
-  - id: 1
-    text: "Organización Internacional de Normalización, ISO 19650-1:2018 — Organización y digitalización de información sobre edificios y obras de ingeniería civil, incluido el modelado de información de construcción (BIM). Parte 1: Conceptos y principios."
-    url: "https://www.iso.org/standard/68078.html"
-  - id: 2
-    text: "buildingSMART International, Industry Foundation Classes (IFC) — el estándar BIM abierto para el intercambio de datos de edificios."
-    url: "https://www.buildingsmart.org/standards/bsi-standards/industry-foundation-classes/"
+ - id: 1
+ text: "Organización Internacional de Normalización, ISO 19650-1:2018 — Organización y digitalización de información sobre edificios y obras de ingeniería civil, incluido el modelado de información de construcción (BIM). Parte 1: Conceptos y principios."
+ url: "https://www.iso.org/standard/68078.html"
+ - id: 2
+ text: "buildingSMART International, Industry Foundation Classes (IFC) — el estándar BIM abierto para el intercambio de datos de edificios."
+ url: "https://www.buildingsmart.org/standards/bsi-standards/industry-foundation-classes/"
 ---
 
 BIM y superficies de bienes raíces describe cómo la plataforma PointSav trata el Modelado de Información de Construcción (BIM) como un dominio operativo de primera clase en los despliegues de clientes del sector inmobiliario. La plataforma proporciona herramientas de sistema de diseño dedicadas, convenciones de registro ISO 19650[^1] y patrones de archivo [[totebox-os|Totebox]] para datos inmobiliarios. Los componentes, tokens y primitivas geoespaciales de BIM residen en un sistema de diseño de nivel cliente separado (`woodfine-design-bim`), distinto del vendor `pointsav-design-system` — este artículo resume los puntos de integración; el contenido detallado de BIM está en `woodfine-design-bim`. Al finalizar este artículo, el lector comprenderá la separación de los dos sistemas de diseño, la disciplina de sufijos ISO 19650 y la ubicación de los colaboradores BIM en el [[archetypes-and-chart-of-accounts|Plan de Cuentas]].

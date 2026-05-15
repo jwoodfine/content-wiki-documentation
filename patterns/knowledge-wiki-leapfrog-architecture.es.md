@@ -12,8 +12,8 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-14
 editor: pointsav-engineering
 cites:
-  - ni-51-102
-  - osc-sn-51-721
+ - ni-51-102
+ - osc-sn-51-721
 paired_with: knowledge-wiki-leapfrog-architecture.md
 ---
 

@@ -16,10 +16,10 @@ El servicio `service-fs` de Foundry proporciona el sustrato de almacenamiento in
 
 ## Arquitectura de Cuatro Capas
 
-1.  **Capa 4 - Anclaje (Anchoring):** Se prevé el anclaje mensual de estados a la red pública Sigstore Rekor, proporcionando una prueba externa de integridad sin exponer datos privados.
-2.  **Capa 3 - Protocolo de Red:** Comunicación actual mediante HTTP/JSON, con una transición planificada al protocolo MCP (Model Context Protocol).
-3.  **Capa 2 - API del Ledger:** Un contrato en Rust que define las operaciones de escritura y lectura, independiente del sistema operativo subyacente.
-4.  **Capa 1 - Almacenamiento de Teselas (Tiles):** Uso del estándar internacional **C2SP tlog-tiles** (RFC 9162 v2), asegurando que los datos sean legibles durante los próximos 100 años mediante herramientas estándar.
+1. **Capa 4 - Anclaje (Anchoring):** Se prevé el anclaje mensual de estados a la red pública Sigstore Rekor, proporcionando una prueba externa de integridad sin exponer datos privados.
+2. **Capa 3 - Protocolo de Red:** Comunicación actual mediante HTTP/JSON, con una transición planificada al protocolo MCP (Model Context Protocol).
+3. **Capa 2 - API del Ledger:** Un contrato en Rust que define las operaciones de escritura y lectura, independiente del sistema operativo subyacente.
+4. **Capa 1 - Almacenamiento de Teselas (Tiles):** Uso del estándar internacional **C2SP tlog-tiles** (RFC 9162 v2), asegurando que los datos sean legibles durante los próximos 100 años mediante herramientas estándar.
 
 ## Soberanía y Cumplimiento
 

@@ -15,12 +15,12 @@ paired_with: totebox-os.es.md
 short_description: "os-totebox is the archive layer of the PointSav family — one isolated, kernel-level vault per entity, storing records as inert flat files with no delete operation and exposing them only through the Diode on command from os-console or os-orchestration."
 cites: []
 references:
-  - id: 1
-    text: "NIST. 'Security Guidelines for Storage Infrastructure.' SP 800-209, 2020."
-    url: "https://doi.org/10.6028/NIST.SP.800-209"
-  - id: 2
-    text: "Madhavapeddy, A. et al. 'Unikernels: Library Operating Systems for the Cloud.' ACM ASPLOS, 2013."
-    url: "https://dl.acm.org/doi/10.1145/2451116.2451167"
+ - id: 1
+ text: "NIST. 'Security Guidelines for Storage Infrastructure.' SP 800-209, 2020."
+ url: "https://doi.org/10.6028/NIST.SP.800-209"
+ - id: 2
+ text: "Madhavapeddy, A. et al. 'Unikernels: Library Operating Systems for the Cloud.' ACM ASPLOS, 2013."
+ url: "https://dl.acm.org/doi/10.1145/2451116.2451167"
 ---
 
 `os-totebox` is the archive layer of the PointSav family: one isolated, kernel-level vault per entity. It stores the records, runs the services that process them, and exposes nothing else. An entity is whatever needs a separate set of books — a person, a corporation, a real property, a project, a household. Each entity has its own `os-totebox`. Toteboxes do not share files, do not share users, and cannot see each other. They communicate only through the [[diode-standard|Diode]], and only on command from [[console-os|os-console]] or [[os-orchestration]]. This article covers the services inside, the WORM discipline, the host shape evolution, the compute tiers, and the freely transferable design.

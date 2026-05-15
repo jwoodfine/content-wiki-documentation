@@ -12,15 +12,15 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
 references:
-  - id: 1
-    text: "Dettmers, T. et al. 'QLoRA: Efficient Finetuning of Quantized LLMs.' NeurIPS, 2023."
-    url: "https://arxiv.org/abs/2305.14314"
-  - id: 2
-    text: "Hu, E. et al. 'LoRA: Low-Rank Adaptation of Large Language Models.' ICLR, 2022."
-    url: "https://arxiv.org/abs/2106.09685"
-  - id: 3
-    text: "Rafailov, R. et al. 'Direct Preference Optimization: Your Language Model is Secretly a Reward Model.' NeurIPS, 2023."
-    url: "https://arxiv.org/abs/2305.18290"
+ - id: 1
+ text: "Dettmers, T. et al. 'QLoRA: Efficient Finetuning of Quantized LLMs.' NeurIPS, 2023."
+ url: "https://arxiv.org/abs/2305.14314"
+ - id: 2
+ text: "Hu, E. et al. 'LoRA: Low-Rank Adaptation of Large Language Models.' ICLR, 2022."
+ url: "https://arxiv.org/abs/2106.09685"
+ - id: 3
+ text: "Rafailov, R. et al. 'Direct Preference Optimization: Your Language Model is Secretly a Reward Model.' NeurIPS, 2023."
+ url: "https://arxiv.org/abs/2305.18290"
 paired_with: yo-yo-lora-training-pipeline.es.md
 ---
 

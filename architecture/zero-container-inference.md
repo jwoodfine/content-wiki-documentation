@@ -8,7 +8,7 @@ bcsc_class: forward-looking
 last_edited: 2026-04-28
 editor: pointsav-engineering
 cites:
-  - osc-sn-51-721
+ - osc-sn-51-721
 ---
 
 Zero-container inference is the planned deployment pattern for Foundry's Tier B GPU compute: native Linux binaries under systemd on GCE virtual machine instances, with no container runtime or orchestrator. The economics close because idle-shutdown timers ensure GPU billing stops precisely when inference is not running — a 30-minute daily window on a preemptible A100 costs approximately $7–8 per month. The Yo-Yo compute pool that embodies this pattern is planned; it is not yet in production.

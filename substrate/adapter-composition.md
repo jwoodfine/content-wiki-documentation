@@ -11,9 +11,9 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:
-  - lorax-predibase
-  - s-lora-2024
-  - federated-lora-2502-05087
+ - lorax-predibase
+ - s-lora-2024
+ - federated-lora-2502-05087
 paired_with: adapter-composition.es.md
 ---
 
@@ -25,12 +25,12 @@ At request time, the Doorman composes adapters by stacking onto the base model:
 
 ```
 composed_weights =
-    base_model[OLMo-3-1125-7B-Q4]
-    ⊕ constitutional_adapter[doctrine_vM.m.p]
-    ⊕ engineering_adapter[pointsav_vN]?
-    ⊕ tenant_adapter[<tenant>_vK]?
-    ⊕ role_adapter[master | root | task]
-    ⊕ cluster_adapter[<cluster-name>_vJ]?
+ base_model[OLMo-3-1125-7B-Q4]
+ ⊕ constitutional_adapter[doctrine_vM.m.p]
+ ⊕ engineering_adapter[pointsav_vN]?
+ ⊕ tenant_adapter[<tenant>_vK]?
+ ⊕ role_adapter[master | root | task]
+ ⊕ cluster_adapter[<cluster-name>_vJ]?
 ```
 
 Where `?` denotes an optional adapter loaded only when the request context applies. `⊕` is the LoRA-stacking operator — a rank-r delta added to the base model weights at runtime.

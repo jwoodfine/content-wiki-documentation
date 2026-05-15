@@ -11,8 +11,8 @@ bcsc_class: forward-looking
 last_edited: 2026-05-08
 editor: pointsav-engineering
 cites:
-  - ni-51-102
-  - osc-sn-51-721
+ - ni-51-102
+ - osc-sn-51-721
 paired_with: totebox-orchestration-development.es.md
 ---
 

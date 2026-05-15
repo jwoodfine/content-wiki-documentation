@@ -13,8 +13,8 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: design-typography.es.md
 cites:
-  - wcag-22
-  - dtcg-spec
+ - wcag-22
+ - dtcg-spec
 ---
 
 The PointSav design system organises every typeface across the product family into six functional families and two brand assets, then divides the typographic load between two rendering scales — Utility for functional UI text and Display for expressive surfaces. Each family ships as a self-hosted binary; no surface calls an external font service. Screen-to-print fidelity is a regulatory requirement, not a stylistic preference: a signed record must render identically in 2026 and in 2030. This article covers the two scales, six families, packaging model, and the fidelity requirement underlying them all.

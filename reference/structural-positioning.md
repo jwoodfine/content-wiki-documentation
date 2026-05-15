@@ -14,15 +14,15 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: structural-positioning.es.md
 cites:
-  - ni-51-102
-  - osc-sn-51-721
+ - ni-51-102
+ - osc-sn-51-721
 references:
-  - id: 1
-    text: "NIST, Open Security Controls Assessment Language (OSCAL) — a set of formats expressed in XML, JSON, and YAML that provide machine-readable representations of control catalogs, control baselines, system security plans, and assessment plans and results."
-    url: "https://pages.nist.gov/OSCAL/"
-  - id: 2
-    text: "Committee of Sponsoring Organizations of the Treadway Commission (COSO), Internal Control — Integrated Framework, 2013. Part II: Framework — Principles and Points of Focus."
-    url: "https://www.coso.org/guidance-on-ic"
+ - id: 1
+ text: "NIST, Open Security Controls Assessment Language (OSCAL) — a set of formats expressed in XML, JSON, and YAML that provide machine-readable representations of control catalogs, control baselines, system security plans, and assessment plans and results."
+ url: "https://pages.nist.gov/OSCAL/"
+ - id: 2
+ text: "Committee of Sponsoring Organizations of the Treadway Commission (COSO), Internal Control — Integrated Framework, 2013. Part II: Framework — Principles and Points of Focus."
+ url: "https://www.coso.org/guidance-on-ic"
 ---
 
 Structural positioning is the approach PointSav uses to describe the architecture to the market: articulating commitments that are visible at the file system, the protocol, or the kernel level, rather than making named-competitor comparisons or relative performance claims. The architecture is built for institutional fiduciaries — public-company General Counsel, regulated asset managers, medical and legal practitioners — who evaluate software on architectural defensibility under audit rather than on marketing copy. The eight commitments described in this article are checkable by an auditor directly in the deployed substrate. By the end of this article, a reader will understand the eight structural commitments, the legacy patterns they structurally replace, and the customer segments they address.

@@ -8,10 +8,10 @@ bcsc_class: no-disclosure-implication
 last_edited: 2026-05-08
 editor: pointsav-engineering
 cites:
-  - ifc-4-3
-  - ids-1-0
-  - ashrae-90-1
-  - nbc-2020
+ - ifc-4-3
+ - ids-1-0
+ - ashrae-90-1
+ - nbc-2020
 ---
 
 Climate zone tokens are performance specification data embedded in the [[bim-token-what-it-is|BIM Token]] system. Each token records the thermal and structural performance requirements that apply to a given IFC element type within a registered climate zone. The data lives in `tokens/bim/climate-zones.dtcg.json` in the BIM token vault — either `pointsav-design-system` or a customer vault such as `woodfine-design-bim` — and is read by `app-orchestration-bim` at startup.
@@ -24,14 +24,14 @@ The DTCG 1.0 schema for a climate zone entry:
 
 ```json
 {
-  "$type": "bim-climate-zone",
-  "zone_id": "ASHRAE-5C",
-  "ifc_class": "IfcWall",
-  "parameter": "max_u_value",
-  "required_value": 0.104,
-  "unit": "Btu/h·ft²·°F",
-  "source_standard": "ASHRAE 90.1-2022 Table 5.5-5",
-  "$value": "climate-zone-spec"
+ "$type": "bim-climate-zone",
+ "zone_id": "ASHRAE-5C",
+ "ifc_class": "IfcWall",
+ "parameter": "max_u_value",
+ "required_value": 0.104,
+ "unit": "Btu/h·ft²·°F",
+ "source_standard": "ASHRAE 90.1-2022 Table 5.5-5",
+ "$value": "climate-zone-spec"
 }
 ```
 
@@ -40,8 +40,8 @@ The DTCG 1.0 schema for a climate zone entry:
 ```
 <token-vault>/
 └── tokens/
-    └── bim/
-        └── climate-zones.dtcg.json
+ └── bim/
+ └── climate-zones.dtcg.json
 ```
 
 Each row in the file covers one combination of zone, element type, and performance parameter. A project site with three element types in a single climate zone will match three rows; the token resolver binds all matched rows to the element during placement.

@@ -100,24 +100,24 @@ to validate incoming protocol requests before routing.
 
 - `Family` — four-variant enum identifying the adapter family.
 - `GenreTemplate` — eighteen-variant enum; each maps to a
-  `.toml` + `.md` pair under `templates/`.
+ `.toml` + `.md` pair under `templates/`.
 - `validate_frontmatter(fm: &Frontmatter) -> Result<(), ValidationError>`
 
 ## Module layout
 
 service-disclosure/
 ├── src/
-│   ├── lib.rs          # crate root; re-exports; BANNED_VOCABULARY
-│   ├── genre.rs        # Family + GenreTemplate
-│   ├── frontmatter.rs  # Frontmatter struct
-│   └── validate.rs     # validate_frontmatter + ValidationError
-└── templates/          # 18 .toml + 18 .md pairs
+│ ├── lib.rs # crate root; re-exports; BANNED_VOCABULARY
+│ ├── genre.rs # Family + GenreTemplate
+│ ├── frontmatter.rs # Frontmatter struct
+│ └── validate.rs # validate_frontmatter + ValidationError
+└── templates/ # 18 .toml + 18 .md pairs
 
 ## What this is not
 
 - Not an inference engine. Prompt scaffolding lives in the
-  template `.toml` files; the Doorman composes prompts at
-  request time.
+ template `.toml` files; the Doorman composes prompts at
+ request time.
 - Not a storage layer. Documents live in `service-content`.
 ```
 

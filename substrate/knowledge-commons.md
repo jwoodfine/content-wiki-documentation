@@ -12,12 +12,12 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
 references:
-  - id: 1
-    text: "Creative Commons. 'About the Licenses.' Creative Commons, 2024."
-    url: "https://creativecommons.org/licenses/"
-  - id: 2
-    text: "GitHub. 'Open Source Guides.' GitHub, Inc., 2024."
-    url: "https://opensource.guide/"
+ - id: 1
+ text: "Creative Commons. 'About the Licenses.' Creative Commons, 2024."
+ url: "https://creativecommons.org/licenses/"
+ - id: 2
+ text: "GitHub. 'Open Source Guides.' GitHub, Inc., 2024."
+ url: "https://opensource.guide/"
 paired_with: knowledge-commons.es.md
 ---
 

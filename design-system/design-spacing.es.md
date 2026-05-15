@@ -13,7 +13,7 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: design-spacing.md
 cites:
-  - dtcg-spec
+ - dtcg-spec
 ---
 
 

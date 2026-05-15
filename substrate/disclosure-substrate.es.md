@@ -13,17 +13,17 @@ audience: vendor-public
 bcsc_class: disclosure-implication
 language_protocol: PROSE-TOPIC
 cites:
-  - ni-51-102
-  - osc-sn-51-721
-  - bcsc-continuous-disclosure
-  - sec-17a-4-f
-  - eidas-qualified-preservation
-  - ixbrl-esef
-  - esap-eu-2027
-  - opentimestamps
-  - rfc-3161
-  - sigstore-rekor-v2
-  - cloud-act-us
+ - ni-51-102
+ - osc-sn-51-721
+ - bcsc-continuous-disclosure
+ - sec-17a-4-f
+ - eidas-qualified-preservation
+ - ixbrl-esef
+ - esap-eu-2027
+ - opentimestamps
+ - rfc-3161
+ - sigstore-rekor-v2
+ - cloud-act-us
 ---
 
 La práctica convencional de relaciones con inversionistas divide la

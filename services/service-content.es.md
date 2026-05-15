@@ -15,12 +15,12 @@ paired_with: service-content.md
 short_description: "service-content es el motor de síntesis de la familia PointSav — el Motor de Gravedad que lee cargas útiles en bruto de un Totebox, las procesa contra una taxonomía institucional y genera los documentos estructurados que publica una organización."
 cites: []
 references:
-  - id: 1
-    text: "Aho, A. V. & Corasick, M. J. 'Efficient String Matching: An Aid to Bibliographic Search.' Communications of the ACM, 18(6):333–340, 1975."
-    url: "https://dl.acm.org/doi/10.1145/360825.360855"
-  - id: 2
-    text: "OIT. 'CIUO-08: Clasificación Internacional Uniforme de Ocupaciones.' Organización Internacional del Trabajo, 2012."
-    url: "https://www.ilo.org/public/english/bureau/stat/isco/isco08/"
+ - id: 1
+ text: "Aho, A. V. & Corasick, M. J. 'Efficient String Matching: An Aid to Bibliographic Search.' Communications of the ACM, 18(6):333–340, 1975."
+ url: "https://dl.acm.org/doi/10.1145/360825.360855"
+ - id: 2
+ text: "OIT. 'CIUO-08: Clasificación Internacional Uniforme de Ocupaciones.' Organización Internacional del Trabajo, 2012."
+ url: "https://www.ilo.org/public/english/bureau/stat/isco/isco08/"
 ---
 
 `service-content` es el motor de síntesis de la familia PointSav. Lee cargas útiles en bruto desde el interior de un Totebox, las procesa contra una taxonomía institucional, produce densos Vectores de Gravedad y, en última instancia, genera los documentos que publica una organización — wikis, comunicados de prensa, libros mayores de debida diligencia, memorandos internos. Es la diferencia entre un almacén de archivos y un motor de inteligencia activo. Este artículo cubre la Bóveda de Semillas de Cuatro Pilares, el pipeline del Motor de Gravedad, la Ontología Estratificada y el límite de intervención humana que rige lo que el motor puede escribir de forma autónoma.

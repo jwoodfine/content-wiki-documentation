@@ -14,9 +14,9 @@ editor: pointsav-engineering
 paired_with: service-search.md
 cites: []
 references:
-  - id: 1
-    text: "Tantivy. 'Tantivy — A Full-Text Search Engine Library in Rust.' docs.rs, 2024."
-    url: "https://docs.rs/tantivy/"
+ - id: 1
+ text: "Tantivy. 'Tantivy — A Full-Text Search Engine Library in Rust.' docs.rs, 2024."
+ url: "https://docs.rs/tantivy/"
 ---
 
 `service-search` responde consultas de texto completo en millones de documentos de la plataforma en microsegundos, utilizando un índice invertido binario estático construido en Rust sobre la biblioteca Tantivy [^1] — y dado que el índice es un archivo en lugar de un proceso de base de datos activo, puede copiarse a medios portátiles y consultarse en cualquier máquina sin dependencias adicionales. El servicio es un componente del Anillo 2 — conocimiento y procesamiento — y cumple con el estándar Data Archive and Retrieval Protocol (DARP). Localiza documentos; no los genera ni los clasifica.

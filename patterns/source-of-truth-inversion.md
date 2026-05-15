@@ -13,8 +13,8 @@ bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
 paired_with: source-of-truth-inversion.es.md
 cites:
-  - ni-51-102
-  - osc-sn-51-721
+ - ni-51-102
+ - osc-sn-51-721
 ---
 
 ## Pattern statement

@@ -21,10 +21,10 @@ Hierarchy trail to the current page. Useful when the user is nested deeper than 
 
 ```html
 <nav class="ps-crumbs" aria-label="Breadcrumb">
-  <ol class="ps-crumbs__list">
-    {{#each items}}<li class="ps-crumbs__item"><a class="ps-crumbs__link" href="{{href}}">{{label}}</a></li>{{/each}}
-    <li class="ps-crumbs__item ps-crumbs__item--current" aria-current="page">{{currentLabel}}</li>
-  </ol>
+ <ol class="ps-crumbs__list">
+ {{#each items}}<li class="ps-crumbs__item"><a class="ps-crumbs__link" href="{{href}}">{{label}}</a></li>{{/each}}
+ <li class="ps-crumbs__item ps-crumbs__item--current" aria-current="page">{{currentLabel}}</li>
+ </ol>
 </nav>
 ```
 

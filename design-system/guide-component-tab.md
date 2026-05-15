@@ -21,20 +21,20 @@ URL-reflected page-section navigation. Each tab is a separate route; state lives
 
 ```html
 <nav class="ps-tabs" aria-label="Page sections">
-  <ul class="ps-tabs__list">
-    <li class="ps-tabs__item">
-      <a class="ps-tabs__link ps-tabs__link--active" aria-current="page" href="#">Usage</a>
-    </li>
-    <li class="ps-tabs__item">
-      <a class="ps-tabs__link" href="#">Style</a>
-    </li>
-    <li class="ps-tabs__item">
-      <a class="ps-tabs__link" href="#">Code</a>
-    </li>
-    <li class="ps-tabs__item">
-      <a class="ps-tabs__link" href="#">Accessibility</a>
-    </li>
-  </ul>
+ <ul class="ps-tabs__list">
+ <li class="ps-tabs__item">
+ <a class="ps-tabs__link ps-tabs__link--active" aria-current="page" href="#">Usage</a>
+ </li>
+ <li class="ps-tabs__item">
+ <a class="ps-tabs__link" href="#">Style</a>
+ </li>
+ <li class="ps-tabs__item">
+ <a class="ps-tabs__link" href="#">Code</a>
+ </li>
+ <li class="ps-tabs__item">
+ <a class="ps-tabs__link" href="#">Accessibility</a>
+ </li>
+ </ul>
 </nav>
 ```
 

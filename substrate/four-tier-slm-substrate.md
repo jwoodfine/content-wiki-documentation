@@ -12,12 +12,12 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
 references:
-  - id: 1
-    text: "Federated LoRA research. arXiv:2502.05087, 2025."
-    url: "https://arxiv.org/abs/2502.05087"
-  - id: 2
-    text: "AI2. 'OLMo 3.' Allen Institute for AI, 2025."
-    url: "https://allenai.org/blog/olmo3"
+ - id: 1
+ text: "Federated LoRA research. arXiv:2502.05087, 2025."
+ url: "https://arxiv.org/abs/2502.05087"
+ - id: 2
+ text: "AI2. 'OLMo 3.' Allen Institute for AI, 2025."
+ url: "https://allenai.org/blog/olmo3"
 paired_with: four-tier-slm-substrate.es.md
 ---
 

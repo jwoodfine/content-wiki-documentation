@@ -11,8 +11,8 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:
-  - lorax-predibase
-  - s-lora-2024
+ - lorax-predibase
+ - s-lora-2024
 paired_with: adapter-composition.md
 ---
 
@@ -24,12 +24,12 @@ En tiempo de solicitud, el Doorman compone adaptadores apilándolos sobre el mod
 
 ```
 pesos_compuestos =
-    modelo_base[OLMo-3-1125-7B-Q4]
-    ⊕ adaptador_constitucional[doctrina_vM.m.p]
-    ⊕ adaptador_ingeniería[pointsav_vN]?
-    ⊕ adaptador_inquilino[<inquilino>_vK]?
-    ⊕ adaptador_rol[master | root | task]
-    ⊕ adaptador_clúster[<nombre-clúster>_vJ]?
+ modelo_base[OLMo-3-1125-7B-Q4]
+ ⊕ adaptador_constitucional[doctrina_vM.m.p]
+ ⊕ adaptador_ingeniería[pointsav_vN]?
+ ⊕ adaptador_inquilino[<inquilino>_vK]?
+ ⊕ adaptador_rol[master | root | task]
+ ⊕ adaptador_clúster[<nombre-clúster>_vJ]?
 ```
 
 Donde `?` denota un adaptador opcional cargado solo cuando aplica el contexto de la solicitud. La composición es determinista dado el contexto de la solicitud; no hay una decisión en tiempo de ejecución sobre qué adaptadores usar.

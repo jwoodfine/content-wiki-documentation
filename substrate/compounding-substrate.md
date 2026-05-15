@@ -11,8 +11,8 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:
-  - ni-51-102
-  - osc-sn-51-721
+ - ni-51-102
+ - osc-sn-51-721
 paired_with: compounding-substrate.es.md
 ---
 
@@ -26,14 +26,14 @@ A Compounding Substrate is an AI-substrate architecture where:
 
 1. The substrate code is open and forkable.
 2. The deterministic data layer functions independently of any
-   AI compute.
+ AI compute.
 3. AI is added as an **Optional Intelligence Layer** that any
-   tenant can compose in or out.
+ tenant can compose in or out.
 4. Every operational interaction generates training signal that
-   compounds across the substrate's deployments.
+ compounds across the substrate's deployments.
 5. A curator (PointSav) periodically rolls accumulated signal
-   into improved base models that flow back to all deployments
-   without disrupting customer data ownership.
+ into improved base models that flow back to all deployments
+ without disrupting customer data ownership.
 
 ## Structural Platform Properties
 
@@ -80,15 +80,15 @@ This is the asymmetry that makes the pattern durable. A hyperscaler that copied 
 Not vendor. Not gatekeeper. **Steward.**
 
 - Steward of the protocol (governs the Doorman specification,
-  runs the Constitutional Convention process aligned with the fundamental physics of 2030 hyperscaler infrastructure).
+ runs the Constitutional Convention process aligned with the fundamental physics of 2030 hyperscaler infrastructure).
 - Steward of the base model (publishes the continued-pretraining
-  variant, contributes upstream to OLMo when relevant).
+ variant, contributes upstream to OLMo when relevant).
 - Steward of the marketplace (operates the federated LoRA pool,
-  takes a percentage of revenue-share LoRAs).
+ takes a percentage of revenue-share LoRAs).
 - Operator-of-record (sells appliances plus integration plus
-  support).
+ support).
 - Reference customer (the PointSav development environment plus Woodfine Management Corp. — proof the
-  pattern works).
+ pattern works).
 
 The substrate is open commons; value migrates to operations, integration, and the LoRA library marketplace.
 
@@ -98,28 +98,28 @@ Every action produces data; every data produces knowledge; every knowledge impro
 
 ```
 operator + assistant does work
-    ↓ produces
+ ↓ produces
 git commits + file edits + session logs + conversation turns
-    ↓ ingested by
-service-fs[tenant]   ← WORM ledger
-    ↓ parsed by
-service-extraction[tenant]   ← deterministic
-    ↓ writes structured to
-service-content[tenant]   ← knowledge graph
-    ↓ indexed by
-service-search[tenant]   ← full-text index
-    ↓ queried by (when AI active)
-service-slm   ← Doorman; routes among 3 compute tiers
-    ↓ trains (periodically)
-LoRA adapters   ← per-tenant skill packs
-    ↓ contributes (opt-in, federated)
-federated LoRA pool   ← commons benefit
-    ↓ rolls into (annually)
-base-model continued-pretraining   ← curated by PointSav
-    ↓ ships in
-appliance update   ← every customer benefits
-    ↓ used by
-operator + assistant in next session   ← loop closes, compounded
+ ↓ ingested by
+service-fs[tenant] ← WORM ledger
+ ↓ parsed by
+service-extraction[tenant] ← deterministic
+ ↓ writes structured to
+service-content[tenant] ← knowledge graph
+ ↓ indexed by
+service-search[tenant] ← full-text index
+ ↓ queried by (when AI active)
+service-slm ← Doorman; routes among 3 compute tiers
+ ↓ trains (periodically)
+LoRA adapters ← per-tenant skill packs
+ ↓ contributes (opt-in, federated)
+federated LoRA pool ← commons benefit
+ ↓ rolls into (annually)
+base-model continued-pretraining ← curated by PointSav
+ ↓ ships in
+appliance update ← every customer benefits
+ ↓ used by
+operator + assistant in next session ← loop closes, compounded
 ```
 
 ## 2030 Operational Trajectory

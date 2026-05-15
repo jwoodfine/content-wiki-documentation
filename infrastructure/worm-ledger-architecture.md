@@ -18,8 +18,8 @@ Foundry’s `service-fs` provides the per-tenant Write-Once-Read-Many (WORM) imm
 
 The WORM ledger sits at the critical boundary between the per-tenant data plane and the multi-tenant knowledge plane. Every ingest service—including `service-people` and `service-email`—writes through this substrate, while Ring 2 services access data via cursor-paged MCP queries.
 
-*   **Current Posture:** Isolation is achieved through separate daemon processes per tenant `moduleId` and rigorous filesystem permissioning.
-*   **Intended Trajectory:** Migration to seL4 microkernel-level capability enforcement is planned to provide formally verified tenant isolation.
+* **Current Posture:** Isolation is achieved through separate daemon processes per tenant `moduleId` and rigorous filesystem permissioning.
+* **Intended Trajectory:** Migration to seL4 microkernel-level capability enforcement is planned to provide formally verified tenant isolation.
 
 ## Multi-Tier Protocol Stack
 
@@ -35,9 +35,9 @@ Today, services communicate via axum-based HTTP with mandatory `X-Foundry-Module
 The stable core contract defining methods for `append`, `read_since`, and `checkpoint`. This target-independent layer ensures consistency regardless of the underlying storage engine.
 
 ### Layer 1: Storage Primitives
-*   **Linux/BSD (Current):** POSIX files using atomic write-then-rename discipline.
-*   **seL4 (Intended):** Capability-addressed objects mediated by `moonshot-database`.
-*   **Format:** Standardized **C2SP tlog-tiles** (matching RFC 9162 v2 / Rekor v2) ensure 100-year readability.
+* **Linux/BSD (Current):** POSIX files using atomic write-then-rename discipline.
+* **seL4 (Intended):** Capability-addressed objects mediated by `moonshot-database`.
+* **Format:** Standardized **C2SP tlog-tiles** (matching RFC 9162 v2 / Rekor v2) ensure 100-year readability.
 
 ## Regulatory Compliance and Durability
 

@@ -13,8 +13,8 @@ bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
 paired_with: collab-via-passthrough-relay.es.md
 cites:
-  - doctrine-claim-29
-  - doctrine-claim-16
+ - doctrine-claim-29
+ - doctrine-claim-16
 ---
 
 ## The pattern in one paragraph
@@ -87,4 +87,3 @@ The passthrough relay is a substrate pattern, not a wiki-specific feature. Any s
 - **`STEP-7-COLLAB-SMOKE.md`** (commit `ea26118`) — Manual two-client smoke procedure, pre-staged systemd unit diff, and rollback runbook for production enable. `vendor/pointsav-monorepo/app-mediakit-knowledge/docs/STEP-7-COLLAB-SMOKE.md`
 - **`ARCHITECTURE.md` §11** — Full API surface set table listing `/ws/collab/{slug}` as a Phase 2+ opt-in route. `vendor/pointsav-monorepo/app-mediakit-knowledge/ARCHITECTURE.md`
 - **`UX-DESIGN.md` §4.7** — Collab UX wireframe and cursor-presence pattern for the SAA editor surface. `vendor/pointsav-monorepo/app-mediakit-knowledge/UX-DESIGN.md`
-- **Doctrine claim #29** (Substrate Substitution) — Establishes that the canonical disclosure record is git; no parallel server-side store may compete with it for authority. `~/Foundry/DOCTRINE.md`

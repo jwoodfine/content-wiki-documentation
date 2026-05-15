@@ -21,11 +21,11 @@ A per-section date badge that signals content review currency. Three semantic st
 
 ```html
 <h2 class="ps-article__section-heading">
-  Section title
-  <span class="ps-freshness-ribbon ps-freshness-ribbon--{{stop}}"
-        data-source="{{source}}"
-        data-iso="{{date}}"
-        aria-label="Last reviewed {{date}} — {{stop}}">{{date}}</span>
+ Section title
+ <span class="ps-freshness-ribbon ps-freshness-ribbon--{{stop}}"
+ data-source="{{source}}"
+ data-iso="{{date}}"
+ aria-label="Last reviewed {{date}} — {{stop}}">{{date}}</span>
 </h2>
 ```
 

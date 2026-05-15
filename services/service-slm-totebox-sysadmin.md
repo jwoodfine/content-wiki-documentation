@@ -11,14 +11,14 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-05-08
 editor: pointsav-engineering
 cites:
-  - olmo3-allenai
-  - federated-lora-2502-05087
-  - lorax-predibase
-  - s-lora-2024
-  - constitutional-ai-2212-08073
-  - vllm-multi-lora
-  - ni-51-102
-  - osc-sn-51-721
+ - olmo3-allenai
+ - federated-lora-2502-05087
+ - lorax-predibase
+ - s-lora-2024
+ - constitutional-ai-2212-08073
+ - vllm-multi-lora
+ - ni-51-102
+ - osc-sn-51-721
 paired_with: service-slm-totebox-sysadmin.es.md
 ---
 

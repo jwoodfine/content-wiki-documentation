@@ -11,13 +11,13 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:
-  - ni-51-102
-  - osc-sn-51-721
-  - constitutional-ai-2212-08073
-  - federated-lora-2502-05087
-  - s-lora-2024
-  - lorax-predibase
-  - olmo3-allenai
+ - ni-51-102
+ - osc-sn-51-721
+ - constitutional-ai-2212-08073
+ - federated-lora-2502-05087
+ - s-lora-2024
+ - lorax-predibase
+ - olmo3-allenai
 paired_with: trajectory-substrate.es.md
 ---
 
@@ -84,12 +84,12 @@ At inference time the Doorman (`service-slm`) composes adapters per request:
 
 ```
 composed_weights =
-    base_model[OLMo-3-1125-7B-Q4]
-    ⊕ constitutional[doctrine_v0.0.x]   ← always
-    ⊕ engineering[pointsav_vN]?          ← if request is platform-build context
-    ⊕ tenant[<tenant>_vK]?               ← if request is tenant-data context
-    ⊕ role[<role>]                        ← what role is asking
-    ⊕ cluster[<cluster>_vJ]?             ← if cluster scope applies
+ base_model[OLMo-3-1125-7B-Q4]
+ ⊕ constitutional[doctrine_v0.0.x] ← always
+ ⊕ engineering[pointsav_vN]? ← if request is platform-build context
+ ⊕ tenant[<tenant>_vK]? ← if request is tenant-data context
+ ⊕ role[<role>] ← what role is asking
+ ⊕ cluster[<cluster>_vJ]? ← if cluster scope applies
 ```
 
 Multi-LoRA serving infrastructure — `[s-lora-2024]`, `[lorax-predibase]` — serves thousands of concurrent adapters with hot-swap per request. The composition algebra is specified at `conventions/adapter-composition.md`.

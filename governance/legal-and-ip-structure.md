@@ -13,8 +13,8 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: legal-and-ip-structure.es.md
 cites:
-  - ni-51-102
-  - osc-sn-51-721
+ - ni-51-102
+ - osc-sn-51-721
 ---
 
 The PointSav legal structure describes the three-corporation topology that governs intellectual property transfer from contributors to vendor to customer. A squash-and-merge git operation serves as the atomic IP-transfer event; the vendor is the only party bridging contributors and the customer. The design is intentional: contributor experimental commits never reach the customer, and the customer's operational records never reach the vendor. This article covers the three-corporation topology, the IP-transfer mechanic, the contributor protocol, the intended license structure, and the planned patent streams.

@@ -71,17 +71,17 @@ The cargo workspace produces one binary: `slm-cli`. Logical modules communicate 
 ```
 service-slm/
 ├── crates/
-│   ├── slm-core/            shared types, moduleId discipline
-│   ├── slm-doorman/         sanitise / send / receive / rehydrate
-│   ├── slm-ledger/          append-only audit trail (SQLite + CSV)
-│   ├── slm-compute/         Cloud Run driver, container management
-│   ├── slm-memory-kv/       LMCache + Mooncake wire protocol client
-│   ├── slm-memory-adapters/ LoRA adapter registry and loader
-│   ├── slm-inference-local/ mistral.rs-backed local inference
-│   ├── slm-inference-remote/ GPU burst driver
-│   ├── slm-api/             axum inbound endpoints
-│   └── slm-cli/             binary entry point
-└── xtask/                   build helpers, release automation
+│ ├── slm-core/ shared types, moduleId discipline
+│ ├── slm-doorman/ sanitise / send / receive / rehydrate
+│ ├── slm-ledger/ append-only audit trail (SQLite + CSV)
+│ ├── slm-compute/ Cloud Run driver, container management
+│ ├── slm-memory-kv/ LMCache + Mooncake wire protocol client
+│ ├── slm-memory-adapters/ LoRA adapter registry and loader
+│ ├── slm-inference-local/ mistral.rs-backed local inference
+│ ├── slm-inference-remote/ GPU burst driver
+│ ├── slm-api/ axum inbound endpoints
+│ └── slm-cli/ binary entry point
+└── xtask/ build helpers, release automation
 ```
 
 This is the shape a ToteboxOS appliance component requires: one process, one log stream, one set of metrics, one binary to sign with Sigstore, one configuration file.

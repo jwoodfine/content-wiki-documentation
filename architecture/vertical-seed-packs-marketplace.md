@@ -14,7 +14,7 @@ cites: []
 paired_with: vertical-seed-packs-marketplace.es.md
 ---
 
-The **Vertical Seed Packs Marketplace** is a planned distribution mechanism for industry-specific starter taxonomies that provision the knowledge graph of a new Foundry tenant. Each pack bundles Archetypes, a Chart of Accounts, Domains, Themes, a glossary, and MCP server extensions suited to a particular business vertical. Customers may install packs at provisioning, update them as new versions are released, and are intended to be able to contribute refinements back to the marketplace for other operators in the same vertical. This pattern encodes Doctrine claim #50.
+The **Vertical Seed Packs Marketplace** is a planned distribution mechanism for industry-specific starter taxonomies that provision the knowledge graph of a new Foundry tenant. Each pack bundles Archetypes, a Chart of Accounts, Domains, Themes, a glossary, and MCP server extensions suited to a particular business vertical. Customers may install packs at provisioning, update them as new versions are released, and are intended to be able to contribute refinements back to the marketplace for other operators in the same vertical.
 
 ## Pack content
 

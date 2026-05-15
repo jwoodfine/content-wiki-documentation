@@ -15,12 +15,12 @@ paired_with: os-workplace.es.md
 short_description: "os-workplace is the free desktop operating system in the PointSav family — a native-Rust sovereign desktop that pairs with a Totebox archive, runs on deliberate reference hardware, and serves as the adoption gateway to the commercial PointSav product line."
 cites: []
 references:
-  - id: 1
-    text: "ISO 19005-1:2005 — Document management — Electronic document file format for long-term preservation — Part 1: Use of PDF 1.4 (PDF/A-1)."
-    url: "https://www.iso.org/standard/38920.html"
-  - id: 2
-    text: "W3C. 'WebRTC 1.0: Real-Time Communication Between Browsers.' W3C Recommendation, 2021."
-    url: "https://www.w3.org/TR/webrtc/"
+ - id: 1
+ text: "ISO 19005-1:2005 — Document management — Electronic document file format for long-term preservation — Part 1: Use of PDF 1.4 (PDF/A-1)."
+ url: "https://www.iso.org/standard/38920.html"
+ - id: 2
+ text: "W3C. 'WebRTC 1.0: Real-Time Communication Between Browsers.' W3C Recommendation, 2021."
+ url: "https://www.w3.org/TR/webrtc/"
 ---
 
 `os-workplace` is the free desktop operating system in the PointSav family. It provides a clean, secure, native-Rust desktop environment that pairs naturally with a Totebox archive and brings the F-key discipline and security model of the platform to a community user installing it for the first time. The strategy is deliberate: `os-workplace` is the adoption gateway. A new user installs it because it is free and fast; once their daily work happens inside the PointSav ecosystem, the commercial `os-orchestration` aggregator becomes a logical next step. This article covers the reference hardware, the application suite, the pairing model, and the strategic rationale for a free desktop.

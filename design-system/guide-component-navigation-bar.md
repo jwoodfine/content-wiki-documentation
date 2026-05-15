@@ -21,13 +21,13 @@ Page-level navigation header. Logo, primary nav, optional actions, optional acco
 
 ```html
 <header class="ps-nav">
-  <a class="ps-nav__logo" href="/">{{brand}}</a>
-  <nav class="ps-nav__primary" aria-label="Primary">
-    <ul class="ps-nav__list">
-      {{#each items}}<li><a class="ps-nav__link" href="{{href}}">{{label}}</a></li>{{/each}}
-    </ul>
-  </nav>
-  <div class="ps-nav__actions">{{actions}}</div>
+ <a class="ps-nav__logo" href="/">{{brand}}</a>
+ <nav class="ps-nav__primary" aria-label="Primary">
+ <ul class="ps-nav__list">
+ {{#each items}}<li><a class="ps-nav__link" href="{{href}}">{{label}}</a></li>{{/each}}
+ </ul>
+ </nav>
+ <div class="ps-nav__actions">{{actions}}</div>
 </header>
 ```
 

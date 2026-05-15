@@ -14,15 +14,15 @@ last_edited: 2026-05-14
 editor: pointsav-engineering
 paired_with: collab-via-passthrough-relay.es.md
 references:
-  - id: 1
-    text: "Yjs — Conflict-free replicated data type library for collaborative applications."
-    url: "https://github.com/yjs/yjs"
-  - id: 2
-    text: "y-codemirror.next — Yjs binding for CodeMirror 6."
-    url: "https://codemirror.net/"
-  - id: 3
-    text: "tokio::sync::broadcast — Tokio multi-producer multi-consumer channel documentation."
-    url: "https://docs.rs/tokio/latest/tokio/sync/broadcast/"
+ - id: 1
+ text: "Yjs — Conflict-free replicated data type library for collaborative applications."
+ url: "https://github.com/yjs/yjs"
+ - id: 2
+ text: "y-codemirror.next — Yjs binding for CodeMirror 6."
+ url: "https://codemirror.net/"
+ - id: 3
+ text: "tokio::sync::broadcast — Tokio multi-producer multi-consumer channel documentation."
+ url: "https://docs.rs/tokio/latest/tokio/sync/broadcast/"
 ---
 
 The passthrough relay pattern inverts the normal assumption about where a collaborative editing server sits in the authority chain: the relay holds no document state at all, so the canonical git tree remains the sole authoritative record of every article's content at every point in time. Concurrent editors connect over WebSocket to a `tokio::sync::broadcast` channel keyed by slug — one broadcast room per document — and the server's only job is to forward Yjs CRDT update messages between those clients.[^1] The server neither decodes nor stores the document state those messages encode. The sole persistence boundary in the entire system is the `POST /edit/{slug}` atomic-write path, which is unchanged from the single-author case: when an editor saves, the client serialises its local Yjs document to Markdown, sends it over HTTP, and the server atomically renames the new file into place on disk — exactly the same operation as a non-collab save.

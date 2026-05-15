@@ -11,29 +11,29 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:
-  - ni-51-102
-  - osc-sn-51-721
-  - bcsc-continuous-disclosure
-  - mondaq-ni-51-102-summary
-  - sec-17a-4-f
-  - eidas-qualified-preservation
-  - etsi-ts-119-511
-  - etsi-en-319-401
-  - cen-ts-18170-2025
-  - fca-ps-24-19
-  - ixbrl-esef
-  - esap-eu-2027
-  - opentimestamps
-  - rfc-3161
-  - rfc-9162
-  - sigstore-rekor-v2
-  - c2sp-tlog-tiles
-  - cloud-act-us
-  - w3c-verifiable-credentials
-  - vectara-hhem
-  - c2pa
-  - c3ai-acm-2025
-  - computerweekly-sovereign-2026
+ - ni-51-102
+ - osc-sn-51-721
+ - bcsc-continuous-disclosure
+ - mondaq-ni-51-102-summary
+ - sec-17a-4-f
+ - eidas-qualified-preservation
+ - etsi-ts-119-511
+ - etsi-en-319-401
+ - cen-ts-18170-2025
+ - fca-ps-24-19
+ - ixbrl-esef
+ - esap-eu-2027
+ - opentimestamps
+ - rfc-3161
+ - rfc-9162
+ - sigstore-rekor-v2
+ - c2sp-tlog-tiles
+ - cloud-act-us
+ - w3c-verifiable-credentials
+ - vectara-hhem
+ - c2pa
+ - c3ai-acm-2025
+ - computerweekly-sovereign-2026
 paired_with: disclosure-substrate.es.md
 ---
 
@@ -114,7 +114,7 @@ The planned mechanism (Phase 9 of the wiki engine; intended subject to the `proj
 
 This mechanism does not depend on the model that authored the TOPIC being trustworthy. It depends only on the citation registry being accurate and the adversary-AI verdict being more conservative than the authoring model. The C2PA standard `[c2pa]` for content provenance and the ACM study on AI disclosure practices `[c3ai-acm-2025]` are the external reference points for the grounding discipline's design.
 
-Material assumptions: the `project-disclosure` cluster activates; the constitutional-layer adapter from the `project-slm` cluster (Doctrine claim #31) is available before Phase 9 begins; the citation registry maintains content hashes as specified in `conventions/citation-substrate.md` §5.
+Material assumptions: the `project-disclosure` cluster activates; the constitutional-layer adapter from the `project-slm` cluster is available before Phase 9 begins; the citation registry maintains content hashes as specified in `conventions/citation-substrate.md` §5.
 
 ## Configuration
 

@@ -14,12 +14,12 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: archetypes-and-chart-of-accounts.es.md
 references:
-  - id: 1
-    text: "IFRS Foundation, IAS 1 — Presentation of Financial Statements, §54–76: Statement of Financial Position — line-item and sub-classification requirements for accounts."
-    url: "https://www.ifrs.org/issued-standards/list-of-standards/ias-1-presentation-of-financial-statements/"
-  - id: 2
-    text: "International Labour Organization, International Standard Classification of Occupations 2008 (ISCO-08): Conceptual Framework and Methodology. ILO, Geneva, 2012."
-    url: "https://www.ilo.org/public/english/bureau/stat/isco/docs/publication08.pdf"
+ - id: 1
+ text: "IFRS Foundation, IAS 1 — Presentation of Financial Statements, §54–76: Statement of Financial Position — line-item and sub-classification requirements for accounts."
+ url: "https://www.ifrs.org/issued-standards/list-of-standards/ias-1-presentation-of-financial-statements/"
+ - id: 2
+ text: "International Labour Organization, International Standard Classification of Occupations 2008 (ISCO-08): Conceptual Framework and Methodology. ILO, Geneva, 2012."
+ url: "https://www.ilo.org/public/english/bureau/stat/isco/docs/publication08.pdf"
 ---
 
 The Chart of Accounts and the eleven archetypes are the two-part institutional taxonomy at the core of [[service-people]] and [[service-content]]. Together they let the platform classify personnel and documents by structural position and functional role, without relying on volatile job-title text. Unlike a free-text personnel record, the taxonomy is socket-based: each person occupies a fixed position in the Chart and inherits properties from one of eleven immutable archetype classes. By the end of this article, a reader will understand the archetype taxonomy, the Chart of Accounts hierarchy, and the self-healing mechanism their intersection enables.

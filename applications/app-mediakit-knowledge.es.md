@@ -14,8 +14,8 @@ last_edited: 2026-05-08
 editor: pointsav-engineering
 paired_with: app-mediakit-knowledge.md
 cites:
-  - ni-51-102
-  - osc-sn-51-721
+ - ni-51-102
+ - osc-sn-51-721
 ---
 
 `app-mediakit-knowledge` es el motor wiki Rust de binario único que sirve la documentación de ingeniería de PointSav en `https://documentation.pointsav.com` — una vista sobre un árbol de Markdown, no un repositorio de contenido. Los commits de Markdown son canónicos; cada binario en ejecución es un estado derivado descartable, incluyendo el HTML renderizado, el índice Tantivy y (cuando la edición colaborativa está habilitada) la sala CRDT. El motor combina un servidor HTTP `axum`, un renderizador CommonMark `comrak` con extensiones específicas de la plataforma para wikilinks y notas al pie, un backend de búsqueda de texto completo `tantivy`, y una capa de plantillas `maud` con cuatro plantillas de artículo. La primera implementación pública del motor entró en servicio el 2026-04-27 a las 16:25 UTC.
@@ -44,7 +44,7 @@ Los añadidos más allá de Wikipedia incluyen insignias de citas junto a refere
 
 ## Inventario de inventos
 
-`INVENTIONS.md` en la raíz del crate cataloga ocho inventos específicos del motor (conteo a la fecha de v0.1.29): inversión de la fuente de verdad, compatibilidad nativa del sustrato (Doctrine claim #29), Autor Constitucionalmente Restringido (CCA, Doctrine claim #31), Cita de Verificabilidad de Información (IVC, planificado Fase 7), Prestaciones Autorizadas por el Sustrato (SAA), esquema de URL `verify://` (planificado Fase 7), el relé WebSocket de paso, y el conjunto de superficie API nativa del sustrato.
+`INVENTIONS.md` en la raíz del crate cataloga ocho inventos específicos del motor (conteo a la fecha de v0.1.29): inversión de la fuente de verdad, compatibilidad nativa del sustrato, Autor Constitucionalmente Restringido (CCA, Doctrine claim #31), Cita de Verificabilidad de Información (IVC, planificado Fase 7), Prestaciones Autorizadas por el Sustrato (SAA), esquema de URL `verify://` (planificado Fase 7), el relé WebSocket de paso, y el conjunto de superficie API nativa del sustrato.
 
 ## Trayectoria de fases de construcción
 

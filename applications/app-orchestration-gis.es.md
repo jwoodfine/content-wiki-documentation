@@ -14,8 +14,8 @@ last_edited: 2026-05-08
 editor: pointsav-engineering
 paired_with: app-orchestration-gis.md
 cites:
-  - pmtiles-spec
-  - maplibre-gl-js
+ - pmtiles-spec
+ - maplibre-gl-js
 ---
 
 `app-orchestration-gis` es el motor de análisis espacial sin estado que realiza cálculos de geometría lineal y mapeo de coordenadas para producir las clasificaciones de co-ubicación de Woodfine y el mapa interactivo en [gis.woodfinegroup.com](https://gis.woodfinegroup.com). La aplicación no contiene datos canónicos — opera como una función pura desde archivos de clúster depurados hacia mosaicos geográficos clasificados, de modo que una instancia perdida puede reprovisionarse apuntando un nuevo proceso a la capa de datos inmutable sin migración de estado.

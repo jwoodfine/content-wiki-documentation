@@ -13,15 +13,15 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: leapfrog-2030-architecture.es.md
 cites:
-  - ni-51-102
-  - osc-sn-51-721
+ - ni-51-102
+ - osc-sn-51-721
 references:
-  - id: 1
-    text: "IDC. 'The SMB 2026 Digital Landscape: How AI is Redefining Growth.' IDC Research, 2026."
-    url: "https://www.idc.com/resource-center/blog/the-smb-2026-digital-landscape-how-ai-is-redefining-growth/"
-  - id: 2
-    text: "Anthropic, Google, and contributors. 'Model Context Protocol Specification.' modelcontextprotocol.io, 2024."
-    url: "https://modelcontextprotocol.io/"
+ - id: 1
+ text: "IDC. 'The SMB 2026 Digital Landscape: How AI is Redefining Growth.' IDC Research, 2026."
+ url: "https://www.idc.com/resource-center/blog/the-smb-2026-digital-landscape-how-ai-is-redefining-growth/"
+ - id: 2
+ text: "Anthropic, Google, and contributors. 'Model Context Protocol Specification.' modelcontextprotocol.io, 2024."
+ url: "https://modelcontextprotocol.io/"
 ---
 
 Three market forces converging in 2026 — viable small language models on commodity hardware, the Model Context Protocol as the standard for AI-native service composition, and on-premises as the fastest-growing SMB deployment type — open a structural gap that hyperscaler vendors cannot close without dismantling their own business model. The Leapfrog 2030 architecture is PointSav's commitment to that gap: sovereign platform code, composable services, and transactional revenue rather than recurring license fees. The customer owns their hardware, their data, and their adapter weights; PointSav takes a transaction percentage when value flows. This article covers the five structural shifts the thesis describes, the substrate that realizes them, and the compounding loop that makes the commitment durable over time.

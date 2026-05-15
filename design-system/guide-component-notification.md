@@ -21,8 +21,8 @@ Inline messaging — informational, positive, caution, critical. Toast variant i
 
 ```html
 <aside class="ps-notif ps-notif--{{variant}}" role="status" aria-live="polite">
-  <span class="ps-notif__title">{{title}}</span>
-  <p class="ps-notif__body">{{body}}</p>
+ <span class="ps-notif__title">{{title}}</span>
+ <p class="ps-notif__body">{{body}}</p>
 </aside>
 ```
 

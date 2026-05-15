@@ -14,7 +14,7 @@ cites: []
 paired_with: customer-owned-graph-ip.es.md
 ---
 
-**Customer-Owned Graph IP** is the principle that the per-tenant knowledge graph held in `service-content` is the customer's intellectual property, not a by-product of using the Foundry platform. The trained model adapters produced from that customer's corpus are also the customer's property. This principle encodes Doctrine claim #48.
+**Customer-Owned Graph IP** is the principle that the per-tenant knowledge graph held in `service-content` is the customer's intellectual property, not a by-product of using the Foundry platform. The trained model adapters produced from that customer's corpus are also the customer's property.
 
 ## What ownership means
 

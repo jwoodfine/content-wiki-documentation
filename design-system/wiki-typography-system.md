@@ -81,23 +81,23 @@ All values are CSS custom properties defined on `:root` in `dist/tokens.css`:
 ```css
 --ps-wiki-font-body: 'IBM Plex Sans', -apple-system, …;
 --ps-wiki-font-mono: 'IBM Plex Mono', 'SFMono-Regular', …;
---ps-wiki-font-size-base:   1.0625rem;
+--ps-wiki-font-size-base: 1.0625rem;
 --ps-wiki-line-height-body: 1.6;
---ps-wiki-measure:          65ch;
+--ps-wiki-measure: 65ch;
 --ps-wiki-text-h1: 2.25rem;
 --ps-wiki-text-h2: 1.75rem;
 --ps-wiki-text-h3: 1.375rem;
 --ps-wiki-text-h4: 1.125rem;
 
 /* Short-form aliases used by wiki templates */
---font-sans:    var(--ps-wiki-font-body);
---font-mono:    var(--ps-wiki-font-mono);
+--font-sans: var(--ps-wiki-font-body);
+--font-mono: var(--ps-wiki-font-mono);
 --leading-body: 1.6;
---measure:      65ch;
---text-h1:      var(--ps-wiki-text-h1);
---text-h2:      var(--ps-wiki-text-h2);
---text-h3:      var(--ps-wiki-text-h3);
---text-h4:      var(--ps-wiki-text-h4);
+--measure: 65ch;
+--text-h1: var(--ps-wiki-text-h1);
+--text-h2: var(--ps-wiki-text-h2);
+--text-h3: var(--ps-wiki-text-h3);
+--text-h4: var(--ps-wiki-text-h4);
 ```
 
 ## See also

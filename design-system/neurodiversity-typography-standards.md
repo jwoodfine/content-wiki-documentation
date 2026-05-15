@@ -23,14 +23,14 @@ To eliminate layout shifts (Flash of Unstyled Text) and reduce network latency, 
 
 The following constraints are mandatory for all dense text presentations:
 
-*   **Left Alignment (Ragged Right):** Text must remain left-aligned. Justified text is strictly prohibited, as it creates erratic "rivers of white space" that disrupt reading flow for neurodivergent users.
-*   **Optimal Line Height:** Line height must be maintained between `1.6` and `1.8` for all body copy.
-*   **Orphan and Widow Control:** Utilize `text-wrap: pretty` to ensure balanced text blocks where supported by modern CSS Level 4 rendering engines.
+* **Left Alignment (Ragged Right):** Text must remain left-aligned. Justified text is strictly prohibited, as it creates erratic "rivers of white space" that disrupt reading flow for neurodivergent users.
+* **Optimal Line Height:** Line height must be maintained between `1.6` and `1.8` for all body copy.
+* **Orphan and Widow Control:** Utilize `text-wrap: pretty` to ensure balanced text blocks where supported by modern CSS Level 4 rendering engines.
 
 ## 3. Fluidity and Precision
 
-*   **Mathematical Scaling:** Typography utilizes the CSS `clamp()` function to scale fluidly across viewports, eliminating the need for rigid media query breakpoints.
-*   **Hit Area Standards:** All interactive elements, such as toggles and PDF links, must maintain a minimum physical boundary of 44x44 pixels to prevent input errors.
+* **Mathematical Scaling:** Typography utilizes the CSS `clamp()` function to scale fluidly across viewports, eliminating the need for rigid media query breakpoints.
+* **Hit Area Standards:** All interactive elements, such as toggles and PDF links, must maintain a minimum physical boundary of 44x44 pixels to prevent input errors.
 
 ## 4. Institutional Print Engine
 

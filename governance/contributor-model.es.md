@@ -12,7 +12,7 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-05-06
 editor: pointsav-engineering
 cites:
-  - ni-51-102
+ - ni-51-102
 ---
 
 

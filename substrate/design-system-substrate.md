@@ -11,11 +11,11 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:
-  - mcp-spec
-  - sigstore-rekor-v2
-  - c2sp-tlog-tiles
-  - ni-51-102
-  - osc-sn-51-721
+ - mcp-spec
+ - sigstore-rekor-v2
+ - c2sp-tlog-tiles
+ - ni-51-102
+ - osc-sn-51-721
 paired_with: design-system-substrate.es.md
 ---
 
@@ -34,11 +34,11 @@ The substrate's content lives in a per-tenant vault directory:
 
 ```
 <tenant-vault>/
-├── tokens/        DTCG primitive + semantic + component layers
-├── components/    HTML+CSS+ARIA recipe files
-├── themes/        per-brand semantic-layer overrides
-├── research/      AI-readable design-decision rationale (markdown)
-└── exports/       derived caches (Figma, Tailwind, Style Dictionary)
+├── tokens/ DTCG primitive + semantic + component layers
+├── components/ HTML+CSS+ARIA recipe files
+├── themes/ per-brand semantic-layer overrides
+├── research/ AI-readable design-decision rationale (markdown)
+└── exports/ derived caches (Figma, Tailwind, Style Dictionary)
 ```
 
 The vault is the only canonical layer. Rendered exports — Figma Variables JSON, Tailwind config, CSS variables, Style Dictionary builds — are derived caches recomputable from the canonical four directories above.
@@ -60,8 +60,8 @@ status: ratified
 brand_voice_alignment: [confident, direct, professional]
 accessibility_targets: [wcag-2-2-aa, focus-visible]
 ai_consumption_hint: "When generating a button for a primary
-  action, use this component. When the action is destructive, use
-  button-danger instead."
+ action, use this component. When the action is destructive, use
+ button-danger instead."
 ---
 ```
 

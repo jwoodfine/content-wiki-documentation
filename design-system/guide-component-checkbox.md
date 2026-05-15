@@ -21,9 +21,9 @@ Boolean choice. Use when each option is independent of the others.
 
 ```html
 <label class="ps-check">
-  <input type="checkbox" class="ps-check__input" id="{{id}}">
-  <span class="ps-check__box" aria-hidden="true"></span>
-  <span class="ps-check__label">{{label}}</span>
+ <input type="checkbox" class="ps-check__input" id="{{id}}">
+ <span class="ps-check__box" aria-hidden="true"></span>
+ <span class="ps-check__label">{{label}}</span>
 </label>
 ```
 

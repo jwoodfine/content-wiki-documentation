@@ -21,12 +21,12 @@ A collapsible disclosure at article foot showing the research pipeline trail —
 
 ```html
 <details class="ps-research-trail">
-  <summary class="ps-research-trail__summary">
-    Research trail — {{done}} done · {{suggested}} suggested · {{open}} open question(s)
-  </summary>
-  <section class="ps-research-trail__body" aria-label="Research trail detail">
-    <!-- done / suggested / open subsections -->
-  </section>
+ <summary class="ps-research-trail__summary">
+ Research trail — {{done}} done · {{suggested}} suggested · {{open}} open question(s)
+ </summary>
+ <section class="ps-research-trail__body" aria-label="Research trail detail">
+ <!-- done / suggested / open subsections -->
+ </section>
 </details>
 ```
 

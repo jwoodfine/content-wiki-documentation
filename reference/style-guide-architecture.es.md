@@ -35,13 +35,13 @@ generalmente no lo requieren.
 La plantilla exige cuatro secciones en este orden:
 
 1. **Position** — dónde se ubica este proyecto en el sistema más
-   amplio, con referencias a sus pares por nombre canónico.
+ amplio, con referencias a sus pares por nombre canónico.
 2. **Public surface** — la API, interfaz o contrato que el
-   proyecto expone al resto del sistema.
+ proyecto expone al resto del sistema.
 3. **Module layout** — árbol de directorios anotado de la
-   organización interna del proyecto.
+ organización interna del proyecto.
 4. **What this is not** — objetivos explícitamente excluidos, para
-   limitar la interpretación del lector.
+ limitar la interpretación del lector.
 
 ## Registro
 

@@ -11,8 +11,8 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:
-  - ni-51-102
-  - osc-sn-51-721
+ - ni-51-102
+ - osc-sn-51-721
 paired_with: language-protocol-substrate.es.md
 ---
 
@@ -51,9 +51,9 @@ Three adapters compose at request time:
 
 ```
 composed_weights =
-    base_model
-    ⊕ tenant_adapter[<tenant_id>]      // brand voice
-    ⊕ protocol_adapter[PROSE | COMMS | LEGAL | TRANSLATE]
+ base_model
+ ⊕ tenant_adapter[<tenant_id>] // brand voice
+ ⊕ protocol_adapter[PROSE | COMMS | LEGAL | TRANSLATE]
 ```
 
 Five or more adapters per request crosses into multi-task interference per the 2025 LoRA literature (LoRAX, S-LoRA, TC-LoRA, LoRI). Foundry stays at three.
@@ -85,7 +85,7 @@ This is the meaning of "tenant escalation happens at the deployment boundary, no
 
 ## Configuration
 
-Eight editorial task-types are defined in the project-language cluster manifest: `prose-edit`, `comms-edit`, `frontmatter-normalize`, `citation-insert`, `register-tighten`, `cross-link-verify`, `schema-validate`, `template-author`. Each generates verdict-signed training tuples through the apprenticeship-substrate pipeline (Doctrine claim #32). The tuples feed continued pretraining on the customer's adapter when corpus volume warrants.
+Eight editorial task-types are defined in the project-language cluster manifest: `prose-edit`, `comms-edit`, `frontmatter-normalize`, `citation-insert`, `register-tighten`, `cross-link-verify`, `schema-validate`, `template-author`. Each generates verdict-signed training tuples through the apprenticeship-substrate pipeline. The tuples feed continued pretraining on the customer's adapter when corpus volume warrants.
 
 Per `[ni-51-102]` continuous-disclosure language and in accordance with the forward-looking information principles of `[osc-sn-51-721]`, the substrate's training pipeline is described in planned terms. The shape is in place; the operational throughput is what matures over time. The pipeline target: every editorial action a Foundry-shaped deployment performs is one tuple of training data for the customer's adapter. The customer's voice deepens over time without their text leaving their substrate.
 

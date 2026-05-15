@@ -36,22 +36,22 @@ Foundry adopts **Uniclass 2015** as its universal classification floor. Publishe
 
 The Building Design System defines 18 core components across three categories:
 
-1.  **Universal AEC (10):** `SpatialTree`, `PropertiesPanel`, `Viewport3D`, `ViewNavigator`, `Toolbar`, `StatusBar`, `SelectionFilter`, `TypeBrowser`, `SectionPlane`, `AnnotationLayer`.
-2.  **Console-Unique (4):** `BimGuidSearch`, `BimAuditLog`, `BimDashboard`, `BimExportPanel`.
-3.  **Workplace-Unique (4):** `MaterialsBrowser`, `TypeEditor`, `ClashDetector`, `VersionHistory`.
+1. **Universal AEC (10):** `SpatialTree`, `PropertiesPanel`, `Viewport3D`, `ViewNavigator`, `Toolbar`, `StatusBar`, `SelectionFilter`, `TypeBrowser`, `SectionPlane`, `AnnotationLayer`.
+2. **Console-Unique (4):** `BimGuidSearch`, `BimAuditLog`, `BimDashboard`, `BimExportPanel`.
+3. **Workplace-Unique (4):** `MaterialsBrowser`, `TypeEditor`, `ClashDetector`, `VersionHistory`.
 
 ### The Component-Recipe Pattern
 Each component follows a standardized recipe structure to ensure framework independence:
-*   `recipe.html`: Semantic, framework-agnostic markup.
-*   `recipe.css`: Namespaced BEM CSS.
-*   `aria.md`: The accessibility and interaction contract.
+* `recipe.html`: Semantic, framework-agnostic markup.
+* `recipe.css`: Namespaced BEM CSS.
+* `aria.md`: The accessibility and interaction contract.
 
 Host frameworks (e.g., Yew, Leptos, or vanilla TypeScript) integrate by mounting the recipe markup and attaching the required logic while strictly adhering to the ARIA contract.
 
 ## Release Roadmap
 
-*   **v0.0.1 (Current):** `SpatialTree`, `PropertiesPanel`, and `Viewport3D` are released as foundational components.
-*   **v0.0.2 (Planned):** Console-unique and workplace-unique components will ship alongside the building element index and BIM authoring features.
+* **v0.0.1 (Current):** `SpatialTree`, `PropertiesPanel`, and `Viewport3D` are released as foundational components.
+* **v0.0.2 (Planned):** Console-unique and workplace-unique components will ship alongside the building element index and BIM authoring features.
 
 ## See also
 

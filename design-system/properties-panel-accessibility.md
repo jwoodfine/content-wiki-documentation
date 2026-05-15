@@ -16,10 +16,10 @@ The `bim-properties-panel` displays semantic and performance data for selected b
 
 ## Structural Role and Hierarchy
 
-*   **Container:** An `<aside aria-label="Element properties">` element.
-*   **Organization:** Each IFC Property Set (Pset) or Quantity Set (Qto) is contained within a `<section>` marked by an `<h4>` heading.
-*   **Data Representation:** Properties are rendered as `<dt>` (description term) and `<dd>` (description details) pairs within a `<dl>` (description list).
-*   **Subject Context:** The elemental class and GlobalID (GUID) are displayed as a sub-header to provide persistent context.
+* **Container:** An `<aside aria-label="Element properties">` element.
+* **Organization:** Each IFC Property Set (Pset) or Quantity Set (Qto) is contained within a `<section>` marked by an `<h4>` heading.
+* **Data Representation:** Properties are rendered as `<dt>` (description term) and `<dd>` (description details) pairs within a `<dl>` (description list).
+* **Subject Context:** The elemental class and GlobalID (GUID) are displayed as a sub-header to provide persistent context.
 
 ## Live Regions and Selection Feedback
 
@@ -28,8 +28,8 @@ To ensure that changes in selection are communicated to users of assistive techn
 ## Mode-Specific Interactions
 
 The panel’s behavior adapts based on the `data-mode` property:
-*   **Console Mode:** A read-only presentation of `<dt>` and `<dd>` pairs.
-*   **Workplace Mode:** The `<dd>` elements are replaced with appropriate form controls (`<input>`, `<select>`) to allow data entry.
+* **Console Mode:** A read-only presentation of `<dt>` and `<dd>` pairs.
+* **Workplace Mode:** The `<dd>` elements are replaced with appropriate form controls (`<input>`, `<select>`) to allow data entry.
 
 ### Keyboard Parity (Workplace Mode)
 | Key | Action |
@@ -40,8 +40,8 @@ The panel’s behavior adapts based on the `data-mode` property:
 
 ## Implementation Guardrails
 
-*   **GlobalID Portability:** Always provide a "copy-to-clipboard" affordance for GlobalIDs. IFC GUIDs are critical for audit trails but impossible to transcribe manually.
-*   **Namespace Discipline:** Do not author custom Property Set names without a registered namespace. All non-standard properties must follow the custom Pset prefix conventions to remain IFC-compliant.
+* **GlobalID Portability:** Always provide a "copy-to-clipboard" affordance for GlobalIDs. IFC GUIDs are critical for audit trails but impossible to transcribe manually.
+* **Namespace Discipline:** Do not author custom Property Set names without a registered namespace. All non-standard properties must follow the custom Pset prefix conventions to remain IFC-compliant.
 
 ## See also
 

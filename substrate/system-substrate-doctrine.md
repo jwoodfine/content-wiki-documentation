@@ -11,12 +11,12 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:
-  - sec-17a-4-f
-  - eidas-qualified-preservation
-  - rfc-3161
-  - opentimestamps
-  - constitutional-ai-2212-08073
-  - olmo3-allenai
+ - sec-17a-4-f
+ - eidas-qualified-preservation
+ - rfc-3161
+ - opentimestamps
+ - constitutional-ai-2212-08073
+ - olmo3-allenai
 paired_with: system-substrate-doctrine.es.md
 ---
 

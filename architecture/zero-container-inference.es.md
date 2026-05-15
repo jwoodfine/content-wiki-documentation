@@ -10,7 +10,7 @@ editor: pointsav-engineering
 language: es
 paired_with: zero-container-inference.md
 cites:
-  - osc-sn-51-721
+ - osc-sn-51-721
 ---
 
 La inferencia sin contenedores es el patrón de despliegue previsto para el cómputo GPU de Nivel B de Foundry: binarios Linux nativos bajo systemd en instancias de máquina virtual de GCE, sin entorno de ejecución de contenedores ni orquestador. La economía funciona porque los temporizadores de apagado en reposo garantizan que la facturación de GPU se detiene exactamente cuando la inferencia no está en ejecución — una ventana diaria de 30 minutos en una A100 de renta interrumpible cuesta aproximadamente 7–8 USD al mes. El grupo de cómputo Yo-Yo que encarna este patrón está previsto; no está en producción actualmente.

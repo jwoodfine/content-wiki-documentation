@@ -30,14 +30,14 @@ no per-component `[data-theme="dark"]` selectors are needed.
 ```css
 /* Light (default) — defined on :root */
 :root {
-  --ps-surface-base: #ffffff;
-  --ps-ink-primary: #0e0f12;
+ --ps-surface-base: #ffffff;
+ --ps-ink-primary: #0e0f12;
 }
 
 /* Dark — overrides only semantic tokens */
 [data-theme="dark"] {
-  --ps-surface-base: #1f2125;
-  --ps-ink-primary: #f5f6f8;
+ --ps-surface-base: #1f2125;
+ --ps-ink-primary: #f5f6f8;
 }
 ```
 
@@ -49,16 +49,16 @@ of the wrong theme (FOUT-theme) that would occur if the script ran after paint:
 
 ```html
 <head>
-  <script>
-    (function() {
-      var stored = localStorage.getItem('ps-theme');
-      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (stored === 'dark' || (!stored && prefersDark)) {
-        document.documentElement.dataset.theme = 'dark';
-      }
-    })();
-  </script>
-  <link rel="stylesheet" href="/static/tokens.css">
+ <script>
+ (function() {
+ var stored = localStorage.getItem('ps-theme');
+ var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+ if (stored === 'dark' || (!stored && prefersDark)) {
+ document.documentElement.dataset.theme = 'dark';
+ }
+ })();
+ </script>
+ <link rel="stylesheet" href="/static/tokens.css">
 </head>
 ```
 
@@ -111,16 +111,16 @@ and automated audit.
 The wiki CSS uses short-form aliases that map to the semantic tokens:
 
 ```css
---color-surface-page:    var(--ps-surface-base);
+--color-surface-page: var(--ps-surface-base);
 --color-surface-sidebar: var(--ps-surface-subtle);
---color-surface-code:    var(--ps-surface-code);
---color-text-primary:    var(--ps-ink-primary);
---color-text-secondary:  var(--ps-ink-secondary);
---color-text-link:       var(--ps-wiki-link);
---color-text-redlink:    var(--ps-wiki-redlink);
---color-border-subtle:   var(--ps-border-subtle);
---color-accent-primary:  var(--ps-interactive-primary);
---color-code-keyword:    var(--ps-wiki-code-keyword);
+--color-surface-code: var(--ps-surface-code);
+--color-text-primary: var(--ps-ink-primary);
+--color-text-secondary: var(--ps-ink-secondary);
+--color-text-link: var(--ps-wiki-link);
+--color-text-redlink: var(--ps-wiki-redlink);
+--color-border-subtle: var(--ps-border-subtle);
+--color-accent-primary: var(--ps-interactive-primary);
+--color-code-keyword: var(--ps-wiki-code-keyword);
 ```
 
 ## See also

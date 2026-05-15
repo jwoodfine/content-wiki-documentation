@@ -12,13 +12,13 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
 references:
-  - id: 1
-    text: "Anthropic. 'Model Context Protocol Specification.' modelcontextprotocol.io, 2025."
-    url: "https://modelcontextprotocol.io/specification/2025-11-25"
+ - id: 1
+ text: "Anthropic. 'Model Context Protocol Specification.' modelcontextprotocol.io, 2025."
+ url: "https://modelcontextprotocol.io/specification/2025-11-25"
 paired_with: mcp-substrate-protocol.es.md
 ---
 
-**MCP-as-Substrate-Protocol** designates the Model Context Protocol (MCP) as the wire contract for all inter-service composition in the Foundry platform. Every Ring 1 and Ring 2 service exposes an MCP server interface as its primary external contract. The Doorman (`service-slm`) is the MCP gateway. Customer extensions plug in as additional MCP servers. This is not a preference or an implementation convenience — it is a structural decision encoded in Doctrine claim #46.
+**MCP-as-Substrate-Protocol** designates the Model Context Protocol (MCP) as the wire contract for all inter-service composition in the Foundry platform. Every Ring 1 and Ring 2 service exposes an MCP server interface as its primary external contract. The Doorman (`service-slm`) is the MCP gateway. Customer extensions plug in as additional MCP servers. This is not a preference or an implementation convenience — it is a structural decision.
 
 ## Why MCP is substrate-level
 

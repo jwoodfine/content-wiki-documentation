@@ -13,9 +13,9 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: design-philosophy.es.md
 cites:
-  - wcag-22
-  - dtcg-spec
-  - doctrine-38
+ - wcag-22
+ - dtcg-spec
+ - doctrine-38
 ---
 
 ## Why the substrate exists
@@ -74,6 +74,4 @@ The well-structured substrate IS the message the SMB sends to its implementation
 
 - W3C Design Tokens Community Group format — https://design-tokens.github.io/community-group/format/
 - WCAG 2.2 (accessibility floor) — https://www.w3.org/TR/WCAG22/
-- Doctrine claim #38 — `~/Foundry/DOCTRINE.md` §III row 38
-- Convention — `~/Foundry/conventions/design-system-substrate.md`
 - Marshall McLuhan, *Understanding Media: The Extensions of Man* (1964) ch. 1 "The Medium is the Message"

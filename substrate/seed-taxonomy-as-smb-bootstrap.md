@@ -14,7 +14,7 @@ cites: []
 paired_with: seed-taxonomy-as-smb-bootstrap.es.md
 ---
 
-Every Foundry tenant deployment begins with a **seed taxonomy**: a compact, hand-tunable four-part structure that forms the initial scaffold of the per-tenant knowledge graph. The four parts are Archetypes, Chart of Accounts, Domains, and Themes. Each entity carries gravity keywords — explainable keyword anchors that drive classification of incoming content. This pattern encodes Doctrine claim #47.
+Every Foundry tenant deployment begins with a **seed taxonomy**: a compact, hand-tunable four-part structure that forms the initial scaffold of the per-tenant knowledge graph. The four parts are Archetypes, Chart of Accounts, Domains, and Themes. Each entity carries gravity keywords — explainable keyword anchors that drive classification of incoming content.
 
 ## The four parts
 

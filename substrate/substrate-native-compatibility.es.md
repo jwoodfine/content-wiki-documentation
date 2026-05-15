@@ -13,8 +13,8 @@ bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
 paired_with: substrate-native-compatibility.md
 cites:
-  - doctrine-claim-29
-  - ni-51-102
+ - doctrine-claim-29
+ - ni-51-102
 ---
 
 ## La elección

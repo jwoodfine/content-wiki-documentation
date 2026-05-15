@@ -11,24 +11,24 @@ last_edited: 2026-05-09
 editor: pointsav-engineering
 paired_with: location-intelligence-substrate.es.md
 references:
-  - id: 1
-    text: "Overture Maps Foundation — GeoParquet places schema. overturemaps.org"
-  - id: 2
-    text: "Foursquare Open Source Places — 100M+ POIs, Apache 2.0. huggingface.co/datasets/foursquare"
-  - id: 3
-    text: "GeoParquet specification — OGC incubating standard. geoparquet.org"
-  - id: 4
-    text: "FlatGeobuf — Hilbert R-tree packed flat-file format. flatgeobuf.org"
-  - id: 5
-    text: "MapLibre GL JS — Community-driven vector-tile renderer. maplibre.org"
-  - id: 6
-    text: "Martin tile server — Rust tile server (MapLibre Foundation). maplibre.org/martin"
-  - id: 7
-    text: "PMTiles — Single-file tile archive with HTTP range requests. protomaps.com/pmtiles"
-  - id: 8
-    text: "NI 51-102 Continuous Disclosure Obligations — BCSC"
-  - id: 9
-    text: "OSC Staff Notice 51-721 Forward-Looking Information Disclosure"
+ - id: 1
+ text: "Overture Maps Foundation — GeoParquet places schema. overturemaps.org"
+ - id: 2
+ text: "Foursquare Open Source Places — 100M+ POIs, Apache 2.0. huggingface.co/datasets/foursquare"
+ - id: 3
+ text: "GeoParquet specification — OGC incubating standard. geoparquet.org"
+ - id: 4
+ text: "FlatGeobuf — Hilbert R-tree packed flat-file format. flatgeobuf.org"
+ - id: 5
+ text: "MapLibre GL JS — Community-driven vector-tile renderer. maplibre.org"
+ - id: 6
+ text: "Martin tile server — Rust tile server (MapLibre Foundation). maplibre.org/martin"
+ - id: 7
+ text: "PMTiles — Single-file tile archive with HTTP range requests. protomaps.com/pmtiles"
+ - id: 8
+ text: "NI 51-102 Continuous Disclosure Obligations — BCSC"
+ - id: 9
+ text: "OSC Staff Notice 51-721 Forward-Looking Information Disclosure"
 ---
 
 Foundry's Location Intelligence Substrate is a flat-file, open-GIS architecture that lets customers own their geographic datasets end-to-end — no tile API billing, no warehouse licensing, no cloud-vendor lock-in. The substrate is built on Apache-licensed open-data foundations (Overture Maps Foundation, Foursquare Open Source Places) and rendered via a Rust-aligned open-source stack (MapLibre GL JS, Martin tile server, PMTiles).[^1][^2]
@@ -63,19 +63,19 @@ A single record shape covers all three Ring 1 location services with discriminat
 
 ```jsonc
 {
-  "id": "01HZ...",                     // ULID
-  "service": "business" | "places" | "parking",
-  "operator": "walmart",               // brand slug
-  "operator_brand_family": "walmart",  // unifies regional equivalents
-  "name": "Walmart Supercenter Burnaby",
-  "country_code": "US" | "CA" | "MX" | "ES",
-  "address": "...",
-  "lat": 49.2827,
-  "lng": -123.1207,
-  "geometry": { "type": "Point", ... },
-  "store_type": "supercenter" | "warehouse" | "diy" | "warehouse-club",
-  "data_source": "official-store-locator" | "openstreetmap" | "overture" | "foursquare-os" | "manual",
-  "captured_at": "2026-04-30T00:00:00Z"
+ "id": "01HZ...", // ULID
+ "service": "business" | "places" | "parking",
+ "operator": "walmart", // brand slug
+ "operator_brand_family": "walmart", // unifies regional equivalents
+ "name": "Walmart Supercenter Burnaby",
+ "country_code": "US" | "CA" | "MX" | "ES",
+ "address": "...",
+ "lat": 49.2827,
+ "lng": -123.1207,
+ "geometry": { "type": "Point", ... },
+ "store_type": "supercenter" | "warehouse" | "diy" | "warehouse-club",
+ "data_source": "official-store-locator" | "openstreetmap" | "overture" | "foursquare-os" | "manual",
+ "captured_at": "2026-04-30T00:00:00Z"
 }
 ```
 

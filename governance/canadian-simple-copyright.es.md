@@ -11,7 +11,7 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:
-  - ni-51-102
+ - ni-51-102
 paired_with: canadian-simple-copyright.md
 ---
 
@@ -63,18 +63,18 @@ hay uso inter-empresa que documentar.
 La postura depende de:
 
 - **Solo contribuyentes empleados.** Cada contribuyente que crea
-  PI es empleado bona fide de WCP Inc. en nómina T4. Los
-  contratistas independientes retienen los derechos de autor
-  por defecto bajo la ley canadiense y requerirían cesión
-  escrita bajo § 13(4).
+ PI es empleado bona fide de WCP Inc. en nómina T4. Los
+ contratistas independientes retienen los derechos de autor
+ por defecto bajo la ley canadiense y requerirían cesión
+ escrita bajo § 13(4).
 - **Woodfine Management Corp. permanece no-operativa** respecto
-  a la PI de WCP.
+ a la PI de WCP.
 - **"PointSav Digital Systems" es nombre comercial de WCP**
-  bajo la Partnership Act de BC hasta su incorporación.
+ bajo la Partnership Act de BC hasta su incorporación.
 - **Brecha de derechos morales reconocida.** Los derechos
-  morales § 14.1 no pueden cederse, solo renunciarse por
-  escrito. § 13(3) no los renuncia; la postura admite esta
-  brecha residual sin papelearla.
+ morales § 14.1 no pueden cederse, solo renunciarse por
+ escrito. § 13(3) no los renuncia; la postura admite esta
+ brecha residual sin papelearla.
 
 ## Eventos disparadores
 
@@ -101,5 +101,5 @@ también una transacción de un solo evento.
 
 - [Documento canónico en inglés](topic-canadian-simple-copyright.md)
 - El complemento operativo en
-  `factory-release-engineering/README.md` §6
+ `factory-release-engineering/README.md` §6
 - [Hospedaje por el cliente](topic-customer-hostability.md)

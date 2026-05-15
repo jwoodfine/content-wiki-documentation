@@ -11,13 +11,13 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:
-  - ni-51-102
-  - osc-sn-51-721
-  - cff-spec
-  - cff-github
-  - turing-way-cff
-  - knowledge-commons-wiki
-  - opentimestamps
+ - ni-51-102
+ - osc-sn-51-721
+ - cff-spec
+ - cff-github
+ - turing-way-cff
+ - knowledge-commons-wiki
+ - opentimestamps
 paired_with: citation-substrate.es.md
 ---
 
@@ -34,17 +34,17 @@ Three components work together to constitute the Citation Substrate:
 
 2. **Per-document frontmatter**. A `cites:` field in the YAML frontmatter of every doctrine clause, convention, and article:
 
-   ```yaml
-   ---
-   schema: foundry-doc-v1
-   document_version: 0.0.2
-   cites:
-     - ni-51-102
-     - osc-sn-51-721
-   ---
-   ```
+ ```yaml
+ ---
+ schema: foundry-doc-v1
+ document_version: 0.0.2
+ cites:
+ - ni-51-102
+ - osc-sn-51-721
+ ---
+ ```
 
-   The IDs in `cites:` are resolvable against the registry. Tooling can validate that every declared ID exists, auto-generate a References section, and build a `cited_by:` reverse index.
+ The IDs in `cites:` are resolvable against the registry. Tooling can validate that every declared ID exists, auto-generate a References section, and build a `cited_by:` reverse index.
 
 3. **Inline reference syntax**. Body prose references a citation with its ID in square brackets: `[ni-51-102]`. Clause-specific references append the section: `[ni-51-102 §4A.2]`. Until rendering tooling is wired into `app-mediakit-knowledge`, the brackets are human-readable cues that a registry-resolvable reference is present.
 
@@ -70,7 +70,7 @@ Three reasons drive the discipline, not one.
 
 **Regulatory traceability.** Per `[ni-51-102]` and `[osc-sn-51-721]`, forward-looking information in public-facing content must carry cautionary language, a stated basis, and material assumptions. The citation graph makes "stated basis" machine-auditable: a reviewer can walk from a public-facing claim back through the doctrine clause that asserts it to the regulatory instrument or research paper that grounds it. Without per-claim citations, the walk is manual and incomplete.
 
-**Drift prevention.** The corpus grows across sessions, contributors, and years. Two documents citing the same authority can make divergent claims about what it says — the Knowledge Provenance Pillar (Doctrine claim #27) identifies this as the primary failure mode of large knowledge corpora. The nightly SLM hygiene pass's drift-detection step finds exactly these divergent-claim pairs and surfaces them as review items before they propagate into training data or public publication.
+**Drift prevention.** The corpus grows across sessions, contributors, and years. Two documents citing the same authority can make divergent claims about what it says — the Knowledge Provenance Pillar identifies this as the primary failure mode of large knowledge corpora. The nightly SLM hygiene pass's drift-detection step finds exactly these divergent-claim pairs and surfaces them as review items before they propagate into training data or public publication.
 
 **Public-knowledge compounding.** Per `[knowledge-commons-wiki]`, the content-wiki repos are the public leg of the Compounding Substrate. Cited content carries its provenance into any export, mirror, or derivative corpus. A reader or machine consumer does not need to trust the platform's own claims — they can follow the citation to the primary source.
 

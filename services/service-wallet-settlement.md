@@ -11,14 +11,14 @@ last_edited: 2026-05-09
 editor: pointsav-engineering
 paired_with: service-wallet-settlement.es.md
 references:
-  - id: 1
-    text: "Foundry Architecture claim #53 — Service-Wallet Settlement (ratified v0.1.0)"
-  - id: 2
-    text: "Foundry Architecture claim #52 — Reverse-Flow Substrate"
-  - id: 3
-    text: "Foundry Architecture claim #48 — Customer-Owned Graph IP"
-  - id: 4
-    text: "Foundry Architecture claim #26 — WORM Ledger"
+ - id: 1
+ text: "Foundry Architecture claim #53 — Service-Wallet Settlement (ratified v0.1.0)"
+ - id: 2
+ text: "Foundry Architecture claim #52 — Reverse-Flow Substrate"
+ - id: 3
+ text: "Foundry Architecture claim #48 — Customer-Owned Graph IP"
+ - id: 4
+ text: "Foundry Architecture claim #26 — WORM Ledger"
 ---
 
 `service-wallet` (Ring 2) is the per-tenant internal accounting ledger that records and settles all reverse-flow revenue from the data marketplace and ad exchange.
@@ -41,20 +41,20 @@ Every credit, debit, and fee entry is a signed JSONL record:
 
 ```json
 {
-  "schema": "foundry-wallet-entry-v1",
-  "entry_id": "<ulid>",
-  "tenant_id": "<module_id>",
-  "type": "credit | debit | fee_deduction | withdrawal",
-  "amount": "<decimal string>",
-  "currency": "USDC | USD | CAD | <operator-configured>",
-  "chain": "polygon-pos | solana | fiat | null",
-  "tx_hash": "<on-chain tx hash if applicable>",
-  "source_service": "service-market | service-exchange",
-  "platform_fee_pct": "<decimal string>",
-  "platform_fee_amount": "<decimal string>",
-  "net_tenant_amount": "<decimal string>",
-  "signed_at": "<ISO 8601>",
-  "ledger_seq": "<monotonic integer>"
+ "schema": "foundry-wallet-entry-v1",
+ "entry_id": "<ulid>",
+ "tenant_id": "<module_id>",
+ "type": "credit | debit | fee_deduction | withdrawal",
+ "amount": "<decimal string>",
+ "currency": "USDC | USD | CAD | <operator-configured>",
+ "chain": "polygon-pos | solana | fiat | null",
+ "tx_hash": "<on-chain tx hash if applicable>",
+ "source_service": "service-market | service-exchange",
+ "platform_fee_pct": "<decimal string>",
+ "platform_fee_amount": "<decimal string>",
+ "net_tenant_amount": "<decimal string>",
+ "signed_at": "<ISO 8601>",
+ "ledger_seq": "<monotonic integer>"
 }
 ```
 
@@ -65,16 +65,16 @@ The `platform_fee_amount` is deducted at credit time. The tenant's balance is `n
 ```
 1. Revenue event occurs (data purchase or ad impression/win)
 2. Incoming credit recorded in service-wallet ledger
-   Platform fee deducted at this step (accounting deduction)
+ Platform fee deducted at this step (accounting deduction)
 3. Tenant's net balance increases
 4. Tenant initiates withdrawal (tenant-controlled; not automatic)
-   Options:
-   (a) Crypto withdrawal → tenant's pre-registered address (EVM or Solana)
-   (b) Fiat withdrawal → tenant's bank account (via Stripe Connect or equivalent)
-   (c) Tier B credit → balance reinvested as Yo-Yo compute budget
+ Options:
+ (a) Crypto withdrawal → tenant's pre-registered address (EVM or Solana)
+ (b) Fiat withdrawal → tenant's bank account (via Stripe Connect or equivalent)
+ (c) Tier B credit → balance reinvested as Yo-Yo compute budget
 5. Withdrawal event recorded in ledger
-   Receipt anchored to Sigstore Rekor
-   WORM ledger entry in service-fs closes the accounting cycle
+ Receipt anchored to Sigstore Rekor
+ WORM ledger entry in service-fs closes the accounting cycle
 ```
 
 ## Settlement Payment Rails

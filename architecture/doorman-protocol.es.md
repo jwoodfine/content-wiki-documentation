@@ -10,7 +10,7 @@ editor: pointsav-engineering
 language: es
 paired_with: doorman-protocol.md
 cites:
-  - doctrine-claim-1
+ - doctrine-claim-1
 ---
 
 `service-slm` es la única puerta de control de acceso de la plataforma (el Doorman) — toda llamada de inferencia pasa por este único límite, que aplica la disciplina sanitizar-y-rehidratar, enruta al nivel de cómputo apropiado y registra cada evento en un libro de auditoría inmutable. Ninguna llamada de inferencia sale de la bóveda de datos del cliente sin atravesar este límite único. El Protocolo Doorman define las reglas de enrutamiento, el esquema de auditoría y la captura de señal de entrenamiento que hacen de este límite una garantía estructural, no una opción de configuración.

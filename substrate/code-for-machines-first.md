@@ -14,7 +14,7 @@ cites: []
 paired_with: code-for-machines-first.es.md
 ---
 
-**Code-for-Machines First** is the design discipline that every Foundry inter-service contract, audit record, configuration file, and ontology must be machine-readable as its primary surface. Human-facing interfaces — the operator TUI, web interfaces, mobile clients — are skins over machine-first APIs. This discipline encodes Doctrine claim #51.
+**Code-for-Machines First** is the design discipline that every Foundry inter-service contract, audit record, configuration file, and ontology must be machine-readable as its primary surface. Human-facing interfaces — the operator TUI, web interfaces, mobile clients — are skins over machine-first APIs.
 
 ## The data formats
 

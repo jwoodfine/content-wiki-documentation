@@ -13,8 +13,8 @@ bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
 paired_with: wiki-provider-landscape.md
 cites:
-  - ni-51-102
-  - osc-sn-51-721
+ - ni-51-102
+ - osc-sn-51-721
 ---
 
 El wiki de documentación de PointSav en `documentation.pointsav.com` es uno de los participantes en un campo donde veinticinco proveedores distinguibles ofrecen alguna variación de "superficie de conocimiento con forma de wiki" en 2026. La mayoría no son plataformas de conocimiento enciclopédico; son herramientas de productividad para equipos privados, generadores de sitios de documentación para desarrolladores, o sistemas de pensamiento personal en red. Ninguno ha reemplazado a Wikipedia para el conocimiento enciclopédico de profundidad general. Esta TOPIC documenta el campo, nombra las razones estructurales por las que ningún proveedor ha cerrado la brecha, e identifica las ventajas genuinas que cada proveedor tiene sobre Wikipedia.

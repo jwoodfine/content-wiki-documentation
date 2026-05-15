@@ -13,8 +13,8 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: design-motion.md
 cites:
-  - wcag-22
-  - dtcg-spec
+ - wcag-22
+ - dtcg-spec
 ---
 
 

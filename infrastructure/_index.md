@@ -28,6 +28,6 @@ chunked-migration moves articles into category subdirectories. -->
 - [Systems](/systems/)
 
 <!-- EDITORIAL NOTE: PL.7 chunked normalization sweep will migrate
-     root-prefixed TOPICs into this category subdirectory. Until
-     migration lands, the existing root TOPICs render at their current
-     URLs (topic-<slug>.md); this landing references them by current slug. -->
+ root-prefixed TOPICs into this category subdirectory. Until
+ migration lands, the existing root TOPICs render at their current
+ URLs (topic-<slug>.md); this landing references them by current slug. -->

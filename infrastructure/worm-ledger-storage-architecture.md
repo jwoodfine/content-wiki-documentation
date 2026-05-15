@@ -18,9 +18,9 @@ Foundry’s storage architecture is built on the principle of structural immutab
 
 Foundry adopts the **C2SP tlog-tiles** specification as its fundamental storage primitive. This format, utilized by Sigstore Rekor and Google’s Certificate Transparency, breaks a Merkle tree into static, append-only files (tiles).
 
-*   **Atomic Durability:** Finalized tiles are written using a write-then-rename discipline followed by a mandatory `fsync`. This ensures that partial writes never corrupt the ledger state.
-*   **Plain-Text Transparency:** In alignment with Doctrine Pillar 1 (DARP), tiles are stored as newline-delimited base64 text. This ensures that the storage remains inspectable using standard Unix utilities (`cat`, `base64`, `sha256sum`).
-*   **MERKLE-Based Integrity:** Every entry is chained into a Merkle DAG, allowing for efficient inclusion proofs and consistency checks without re-reading the entire ledger.
+* **Atomic Durability:** Finalized tiles are written using a write-then-rename discipline followed by a mandatory `fsync`. This ensures that partial writes never corrupt the ledger state.
+* **Plain-Text Transparency:** Following the DARP principle, tiles are stored as newline-delimited base64 text. This ensures that the storage remains inspectable using standard Unix utilities (`cat`, `base64`, `sha256sum`).
+* **MERKLE-Based Integrity:** Every entry is chained into a Merkle DAG, allowing for efficient inclusion proofs and consistency checks without re-reading the entire ledger.
 
 ## 2. Dual-Target Runtime Envelopes
 
@@ -35,9 +35,9 @@ The long-term trajectory involves deploying `service-fs` as an seL4 Microkit Pro
 ## 3. Cryptographic and Compliance Alignment
 
 The storage engine is engineered to satisfy strict regulatory requirements:
-*   **SEC 17a-4(f):** Satisfies the "WORM path" by structurally denying modification at the storage layer.
-*   **eIDAS Qualified Preservation:** Ensures 100-year readability through open-standard plain-text encodings and algorithm-agile hash functions.
-*   **SOC 2 Processing Integrity:** Provides verifiable audit trails through a dedicated sub-ledger that records every read event.
+* **SEC 17a-4(f):** Satisfies the "WORM path" by structurally denying modification at the storage layer.
+* **eIDAS Qualified Preservation:** Ensures 100-year readability through open-standard plain-text encodings and algorithm-agile hash functions.
+* **SOC 2 Processing Integrity:** Provides verifiable audit trails through a dedicated sub-ledger that records every read event.
 
 ## 4. Synthesis of Innovation
 

@@ -11,34 +11,34 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:
-  - geoparquet-spec
-  - flatgeobuf
-  - overture-maps
-  - foursquare-os-places
-  - maplibre-gl-js
-  - martin-tile-server
-  - pmtiles-spec
-  - tippecanoe
-  - meteoblue-maps-api
-  - mdpi-vector-rendering-2025
-  - carto-tile-architecture
-  - esri-arcgis-online-pricing
-  - mapbox-pricing
-  - placer-ai
-  - planetizen-retail-clusters
-  - nber-w17220-costco
-  - walmart-store-count-2025
-  - homedepot-store-count-2025
-  - costco-store-count-2025
-  - ikea-spain-stores
-  - bricomart-spain
-  - leroy-merlin-spain
-  - nominatim-osm
-  - photon-geocoder
-  - deck-gl
-  - eupl-1-2
-  - ni-51-102
-  - osc-sn-51-721
+ - geoparquet-spec
+ - flatgeobuf
+ - overture-maps
+ - foursquare-os-places
+ - maplibre-gl-js
+ - martin-tile-server
+ - pmtiles-spec
+ - tippecanoe
+ - meteoblue-maps-api
+ - mdpi-vector-rendering-2025
+ - carto-tile-architecture
+ - esri-arcgis-online-pricing
+ - mapbox-pricing
+ - placer-ai
+ - planetizen-retail-clusters
+ - nber-w17220-costco
+ - walmart-store-count-2025
+ - homedepot-store-count-2025
+ - costco-store-count-2025
+ - ikea-spain-stores
+ - bricomart-spain
+ - leroy-merlin-spain
+ - nominatim-osm
+ - photon-geocoder
+ - deck-gl
+ - eupl-1-2
+ - ni-51-102
+ - osc-sn-51-721
 paired_with: location-intelligence-strategy.es.md
 ---
 
@@ -90,31 +90,31 @@ A single record shape covers all three Ring 1 services with discriminator fields
 
 ```jsonc
 {
-  "id": "01HZ...",                          // ULID
-  "service": "business" | "places" | "parking",
-  "operator": "walmart",                    // brand slug
-  "operator_brand_family": "walmart",       // unifies regional equivalents
-  "name": "Walmart Supercenter Burnaby",    // localised
-  "country_code": "US" | "CA" | "MX" | "ES",
-  "address": "...",
-  "lat": 49.2827,
-  "lng": -123.1207,
-  "geometry": { "type": "Point", ... },     // GeoJSON; Polygon for parking
-  "store_type": "supercenter" | "warehouse" | "diy" | "warehouse-club",
-  "place_type": null,                       // service-places only: hospital | university | airport
-  "open_year": 2018,
-  "data_source": "official-store-locator" | "openstreetmap" | "overture" | "foursquare-os" | "manual",
-  "data_provenance_url": "https://...",
-  "captured_at": "2026-04-30T00:00:00Z"
+ "id": "01HZ...", // ULID
+ "service": "business" | "places" | "parking",
+ "operator": "walmart", // brand slug
+ "operator_brand_family": "walmart", // unifies regional equivalents
+ "name": "Walmart Supercenter Burnaby", // localised
+ "country_code": "US" | "CA" | "MX" | "ES",
+ "address": "...",
+ "lat": 49.2827,
+ "lng": -123.1207,
+ "geometry": { "type": "Point", ... }, // GeoJSON; Polygon for parking
+ "store_type": "supercenter" | "warehouse" | "diy" | "warehouse-club",
+ "place_type": null, // service-places only: hospital | university | airport
+ "open_year": 2018,
+ "data_source": "official-store-locator" | "openstreetmap" | "overture" | "foursquare-os" | "manual",
+ "data_provenance_url": "https://...",
+ "captured_at": "2026-04-30T00:00:00Z"
 }
 ```
 
 Brand-family normalisation lets the co-location query treat regional equivalents as one logical operator across countries:
 
 ```yaml
-walmart_family:    [walmart, ikea-spain]        # large-format consumer general merchandise
-homedepot_family:  [homedepot, bricomart-spain] # warehouse-format DIY and trade
-costco_family:     [costco]                     # warehouse-club; present in Spain since 2014
+walmart_family: [walmart, ikea-spain] # large-format consumer general merchandise
+homedepot_family: [homedepot, bricomart-spain] # warehouse-format DIY and trade
+costco_family: [costco] # warehouse-club; present in Spain since 2014
 ```
 
 ## Spain Home Depot equivalent — research finding

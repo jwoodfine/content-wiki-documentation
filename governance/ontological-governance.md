@@ -23,14 +23,14 @@ Data extraction across the platform is mechanically isolated into
 three services:
 
 1. **`service-email` (ingestion).** Processes MIME payloads and
-   deposits raw text and CSV files into the spool. No
-   classification is applied at this stage.
+ deposits raw text and CSV files into the spool. No
+ classification is applied at this stage.
 2. **`service-people` (identity resolution).** Scans the spool
-   for human identity clusters and routes them to the verification
-   surveyor before committing to the verified ledger.
+ for human identity clusters and routes them to the verification
+ surveyor before committing to the verified ledger.
 3. **`service-content` (linguistic classification).** Scans the
-   spool for narrative knowledge and cross-references text against
-   the four control ledgers.
+ spool for narrative knowledge and cross-references text against
+ the four control ledgers.
 
 ## The four control ledgers
 

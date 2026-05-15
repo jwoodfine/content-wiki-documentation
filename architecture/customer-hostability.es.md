@@ -27,17 +27,17 @@ por construcción, Foundry.
 ## Tres compromisos concretos
 
 1. **Bootstrap auto-hospedable.** Cada servicio Foundry envía un
-   `bootstrap.sh` que levanta el servicio en la máquina propia
-   del cliente — sin dependencia SaaS, sin login con proveedor,
-   sin API medida.
+ `bootstrap.sh` que levanta el servicio en la máquina propia
+ del cliente — sin dependencia SaaS, sin login con proveedor,
+ sin API medida.
 2. **Adaptadores por inquilino en el sistema de archivos del
-   cliente.** Cuando el adaptador del cliente entrena sobre el
-   corpus del cliente, el `.lora` resultante vive en
-   `data/adapters/` dentro del sustrato del cliente.
+ cliente.** Cuando el adaptador del cliente entrena sobre el
+ corpus del cliente, el `.lora` resultante vive en
+ `data/adapters/` dentro del sustrato del cliente.
 3. **Libro de auditoría anclado en el cliente.** El corpus de
-   aprendizaje vive en `data/training-corpus/apprenticeship/`
-   dentro del sustrato del cliente. Los registros privados de
-   inquilino nunca salen de la infraestructura del cliente.
+ aprendizaje vive en `data/training-corpus/apprenticeship/`
+ dentro del sustrato del cliente. Los registros privados de
+ inquilino nunca salen de la infraestructura del cliente.
 
 ## Por qué los hiperescaladores no pueden replicar esto
 
@@ -50,13 +50,13 @@ regulatoria del cliente no dependa de la del proveedor.
 ## Qué no es el hospedaje por el cliente
 
 - No es licencia de código abierto permisiva. Una licencia
-  permisiva sobre un servicio que requiere plano de control
-  alojado no satisface el hospedaje por el cliente.
+ permisiva sobre un servicio que requiere plano de control
+ alojado no satisface el hospedaje por el cliente.
 - No es "el proveedor lo aloja por ti". El alojamiento por
-  proveedor es una opción operativa, no la forma canónica.
+ proveedor es una opción operativa, no la forma canónica.
 - No es exportación de datos. El hospedaje por el cliente es
-  estructural — los datos ya están en el metal del cliente
-  desde el momento en que se escribieron.
+ estructural — los datos ya están en el metal del cliente
+ desde el momento en que se escribieron.
 
 ## Prueba operativa
 

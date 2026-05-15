@@ -13,8 +13,8 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: design-motion.es.md
 cites:
-  - wcag-22
-  - dtcg-spec
+ - wcag-22
+ - dtcg-spec
 ---
 
 Motion communicates causation. The substrate ships four easing curves and six duration steps. Combine them per interaction class.
@@ -47,10 +47,10 @@ Productive curves are designed for short durations (≤200ms); expressive curves
 
 ```css
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
+ *, *::before, *::after {
+ animation-duration: 0.01ms !important;
+ transition-duration: 0.01ms !important;
+ }
 }
 ```
 

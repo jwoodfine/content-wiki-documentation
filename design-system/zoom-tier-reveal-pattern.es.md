@@ -24,9 +24,9 @@ Las superficies GIS de Foundry emplean el Patrón de Revelación por Niveles de 
 
 ### Calibración de Umbrales
 El umbral de transición se calibra en función de tres factores principales:
-1.  **Separación Espacial**: El nivel de zoom en el que las anclas individuales ocupan suficiente espacio en pantalla para ser visualmente distintas.
-2.  **Prioridad Semántica**: El punto en el que una señal de densidad regional (p. ej., "este corredor está dominado por Ferretería") se vuelve menos valiosa que la identificación de activos específicos.
-3.  **Lógica de Desvanecimiento**: Se utiliza un intervalo de zoom de 0.5 puntos (8.0 a 8.5) para interpolar la opacidad entre capas, evitando el "salto" brusco asociado con la alternancia de umbrales rígidos.
+1. **Separación Espacial**: El nivel de zoom en el que las anclas individuales ocupan suficiente espacio en pantalla para ser visualmente distintas.
+2. **Prioridad Semántica**: El punto en el que una señal de densidad regional (p. ej., "este corredor está dominado por Ferretería") se vuelve menos valiosa que la identificación de activos específicos.
+3. **Lógica de Desvanecimiento**: Se utiliza un intervalo de zoom de 0.5 puntos (8.0 a 8.5) para interpolar la opacidad entre capas, evitando el "salto" brusco asociado con la alternancia de umbrales rígidos.
 
 ### Composición de Capas
 - **Bajo Aumento (< 8.0)**: Se prevé que solo se representen los anillos de centroide de conglomerado. Estos anillos utilizan una geometría concéntrica o de gráfico de tarta para representar la mezcla de familias de marcas dentro de un conglomerado de coubicación.
@@ -40,9 +40,9 @@ El patrón se implementa mediante expresiones de pintura declarativas dentro del
 ```javascript
 // Ejemplo: Opacidad interpolada para centroides de conglomerados
 'circle-opacity': [
-  'interpolate', ['linear'], ['zoom'],
-  8.0, 1.0,  // Totalmente opaco por debajo del umbral
-  8.5, 0.0   // Totalmente transparente por encima del umbral
+ 'interpolate', ['linear'], ['zoom'],
+ 8.0, 1.0, // Totalmente opaco por debajo del umbral
+ 8.5, 0.0 // Totalmente transparente por encima del umbral
 ]
 ```
 

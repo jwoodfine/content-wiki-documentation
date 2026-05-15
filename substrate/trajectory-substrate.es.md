@@ -10,13 +10,13 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-28
 editor: pointsav-engineering
 cites:
-  - ni-51-102
-  - osc-sn-51-721
-  - constitutional-ai-2212-08073
-  - federated-lora-2502-05087
-  - s-lora-2024
-  - lorax-predibase
-  - olmo3-allenai
+ - ni-51-102
+ - osc-sn-51-721
+ - constitutional-ai-2212-08073
+ - federated-lora-2502-05087
+ - s-lora-2024
+ - lorax-predibase
+ - olmo3-allenai
 ---
 
 Cada confirmación de código que realiza Foundry, cada sesión que
@@ -40,14 +40,14 @@ Tres propiedades lo distinguen de un proceso genérico de
 ajuste fino:
 
 - **Captura automática**: no se requiere decisión del operador; el
-  trabajo genera señal por el simple hecho de existir.
+ trabajo genera señal por el simple hecho de existir.
 - **Procedencia estructural**: cada registro incluye la versión de
-  doctrina bajo la que fue producido, el inquilino al que pertenece,
-  el rol de la sesión y su clase de redacción.
+ doctrina bajo la que fue producido, el inquilino al que pertenece,
+ el rol de la sesión y su clase de redacción.
 - **Fronteras de corpus impuestas por infraestructura**: los datos del
-  proveedor nunca se mezclan con los del cliente; los datos de un
-  inquilino no cruzan hacia otro. La separación es a nivel de
-  directorio y de pipeline, no de política.
+ proveedor nunca se mezclan con los del cliente; los datos de un
+ inquilino no cruzan hacia otro. La separación es a nivel de
+ directorio y de pipeline, no de política.
 
 ## Los tres corpus
 
@@ -89,7 +89,7 @@ La composición de adaptadores en tiempo de inferencia sigue el
 
 ```
 pesos_compuestos =
-    modelo_base ⊕ constitucional ⊕ ingeniería? ⊕ inquilino? ⊕ rol ⊕ cluster?
+ modelo_base ⊕ constitucional ⊕ ingeniería? ⊕ inquilino? ⊕ rol ⊕ cluster?
 ```
 
 La infraestructura de servicio multi-LoRA (`[s-lora-2024]`,
@@ -129,13 +129,13 @@ El Sustrato de Trayectoria opera actualmente en Nivel 1 (captura de
 corpus de edición, activo desde v0.1.1). Los niveles siguientes son:
 
 - **Nivel 2 — Captura de trayectoria de sesión**: previsto para la
-  ventana de lanzamiento v0.2.x.
+ ventana de lanzamiento v0.2.x.
 - **Nivel 3 — Prototipo de ajuste fino**: previsto para el objetivo
-  v0.5.0; el servicio `router-trainer` produce el primer adaptador
-  entrenado sobre el corpus acumulado.
+ v0.5.0; el servicio `router-trainer` produce el primer adaptador
+ entrenado sobre el corpus acumulado.
 - **Nivel 4 — Mercado federado**: largo plazo; depende de la madurez
-  operacional del Nivel 3 y del avance de la investigación en LoRA
-  federado `[federated-lora-2502-05087]`.
+ operacional del Nivel 3 y del avance de la investigación en LoRA
+ federado `[federated-lora-2502-05087]`.
 
 La cadencia de preentrenamiento trimestral es intencionada una vez
 que el Nivel 3 esté operativo. El mecanismo está en su lugar; la
@@ -147,4 +147,4 @@ señal se está acumulando.
 - [El Sustrato de Aprendizaje](topic-apprenticeship-substrate.es.md)
 - [Restricciones en Tiempo de Decodificación](topic-decode-time-constraints.es.md)
 - La convención que sustenta este artículo:
-  `~/Foundry/conventions/trajectory-substrate.md`
+ `~/Foundry/conventions/trajectory-substrate.md`

@@ -11,12 +11,12 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:
-  - ni-51-102
-  - llguidance
-  - llm-structured-output-2026
-  - vllm-multi-lora
-  - xgrammar
-  - olmo3-allenai
+ - ni-51-102
+ - llguidance
+ - llm-structured-output-2026
+ - vllm-multi-lora
+ - xgrammar
+ - olmo3-allenai
 paired_with: decode-time-constraints.es.md
 ---
 

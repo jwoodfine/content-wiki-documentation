@@ -14,7 +14,7 @@ cites: []
 paired_with: direct-payment-settlement.es.md
 ---
 
-**Direct-Payment Settlement** is the planned payment architecture for Foundry's data marketplace and ad exchange flows. Under this model, payment is intended to travel directly from the buyer to the customer-tenant, with Foundry deducting a transparent transaction fee at the moment of settlement. No funds are planned to flow through Foundry's accounts; no payout cycles are planned; and the customer's access to the platform is not contingent on any subscription or minimum payment. This pattern encodes Doctrine claim #53.
+**Direct-Payment Settlement** is the planned payment architecture for Foundry's data marketplace and ad exchange flows. Under this model, payment is intended to travel directly from the buyer to the customer-tenant, with Foundry deducting a transparent transaction fee at the moment of settlement. No funds are planned to flow through Foundry's accounts; no payout cycles are planned; and the customer's access to the platform is not contingent on any subscription or minimum payment.
 
 ## Why direct payment matters for small businesses
 

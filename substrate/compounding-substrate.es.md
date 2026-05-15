@@ -85,28 +85,28 @@ Cada acción produce datos; cada dato produce conocimiento; cada conocimiento me
 
 ```
 operador + asistente hace el trabajo
-    ↓ produce
+ ↓ produce
 commits de git + ediciones de archivos + registros de sesión + turnos de conversación
-    ↓ ingerido por
-service-fs[inquilino]   ← registro WORM
-    ↓ analizado por
-service-extraction[inquilino]   ← determinista
-    ↓ escribe estructurado en
-service-content[inquilino]   ← grafo de conocimiento
-    ↓ indexado por
-service-search[inquilino]   ← índice de texto completo
-    ↓ consultado por (cuando la IA está activa)
-service-slm   ← Doorman; enruta entre 3 niveles de cómputo
-    ↓ entrena (periódicamente)
-adaptadores LoRA   ← paquetes de habilidades por inquilino
-    ↓ contribuye (con opción de participar, federado)
-grupo federado de LoRA   ← beneficio común
-    ↓ se incorpora a (anualmente)
-preentrenamiento continuo del modelo base   ← curado por PointSav
-    ↓ se envía en
-actualización del dispositivo   ← cada cliente se beneficia
-    ↓ usado por
-operador + asistente en la siguiente sesión   ← el bucle se cierra, compuesto
+ ↓ ingerido por
+service-fs[inquilino] ← registro WORM
+ ↓ analizado por
+service-extraction[inquilino] ← determinista
+ ↓ escribe estructurado en
+service-content[inquilino] ← grafo de conocimiento
+ ↓ indexado por
+service-search[inquilino] ← índice de texto completo
+ ↓ consultado por (cuando la IA está activa)
+service-slm ← Doorman; enruta entre 3 niveles de cómputo
+ ↓ entrena (periódicamente)
+adaptadores LoRA ← paquetes de habilidades por inquilino
+ ↓ contribuye (con opción de participar, federado)
+grupo federado de LoRA ← beneficio común
+ ↓ se incorpora a (anualmente)
+preentrenamiento continuo del modelo base ← curado por PointSav
+ ↓ se envía en
+actualización del dispositivo ← cada cliente se beneficia
+ ↓ usado por
+operador + asistente en la siguiente sesión ← el bucle se cierra, compuesto
 ```
 
 ## Prospectiva — la trayectoria hacia 2030

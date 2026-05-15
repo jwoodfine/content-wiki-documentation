@@ -15,15 +15,15 @@ last_edited: 2026-05-14
 editor: pointsav-engineering
 paired_with: collab-via-passthrough-relay.md
 references:
-  - id: 1
-    text: "Yjs — Biblioteca de tipos de datos replicados sin conflictos para aplicaciones colaborativas."
-    url: "https://github.com/yjs/yjs"
-  - id: 2
-    text: "y-codemirror.next — Enlace de Yjs para CodeMirror 6."
-    url: "https://codemirror.net/"
-  - id: 3
-    text: "tokio::sync::broadcast — Documentación del canal multi-productor multi-consumidor de Tokio."
-    url: "https://docs.rs/tokio/latest/tokio/sync/broadcast/"
+ - id: 1
+ text: "Yjs — Biblioteca de tipos de datos replicados sin conflictos para aplicaciones colaborativas."
+ url: "https://github.com/yjs/yjs"
+ - id: 2
+ text: "y-codemirror.next — Enlace de Yjs para CodeMirror 6."
+ url: "https://codemirror.net/"
+ - id: 3
+ text: "tokio::sync::broadcast — Documentación del canal multi-productor multi-consumidor de Tokio."
+ url: "https://docs.rs/tokio/latest/tokio/sync/broadcast/"
 ---
 
 ## Adaptación estratégica

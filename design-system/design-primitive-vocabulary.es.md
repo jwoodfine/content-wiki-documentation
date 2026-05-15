@@ -13,9 +13,9 @@ last_edited: 2026-05-06
 editor: pointsav-engineering
 paired_with: design-primitive-vocabulary.md
 cites:
-  - wcag-22
-  - dtcg-spec
-  - doctrine-38
+ - wcag-22
+ - dtcg-spec
+ - doctrine-38
 ---
 
 

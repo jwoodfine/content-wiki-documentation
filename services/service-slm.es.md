@@ -15,12 +15,12 @@ paired_with: service-slm.md
 short_description: "service-slm es el servicio de modelo de lenguaje de la familia PointSav — un Modelo de Lenguaje Pequeño cuantizado y estrecho que traduce la intención institucional en salidas deterministas y enruta cada llamada de inferencia de IA a través del límite de auditoría del Portero."
 cites: []
 references:
-  - id: 1
-    text: "ISO/IEC 42001:2023 — Tecnología de la información — Inteligencia artificial — Sistema de gestión."
-    url: "https://www.iso.org/standard/81230.html"
-  - id: 2
-    text: "Groeneveld, D. et al. 'OLMo: Accelerating the Science of Language Models.' arXiv:2402.00838, 2024."
-    url: "https://arxiv.org/abs/2402.00838"
+ - id: 1
+ text: "ISO/IEC 42001:2023 — Tecnología de la información — Inteligencia artificial — Sistema de gestión."
+ url: "https://www.iso.org/standard/81230.html"
+ - id: 2
+ text: "Groeneveld, D. et al. 'OLMo: Accelerating the Science of Language Models.' arXiv:2402.00838, 2024."
+ url: "https://arxiv.org/abs/2402.00838"
 ---
 
 `service-slm` es el servicio de modelo de lenguaje de la familia PointSav. Es intencionalmente un Modelo de Lenguaje Pequeño — cuantizado, estrecho, rápido — en lugar de un modelo de escala de frontera. Su trabajo no es la conversación. Su trabajo es la traducción semántica: convertir la intención institucional (comandos en inglés, contenido de documentos, consultas de taxonomía) en salidas deterministas (comandos binarios, decisiones `VALID`/`REJECT`, asignaciones de enchufe del Plan de Cuentas). Es invisible — no hay ventana de chat, y el operador nunca escribe directamente en `service-slm`. La superficie por encima de él presenta un flujo de trabajo estructurado; `service-slm` es el intermediario silencioso. Este artículo cubre las cuatro operaciones, los tres niveles de cómputo, el límite de auditoría del Portero y por qué un modelo pequeño es una elección estructural, no un compromiso de costo.

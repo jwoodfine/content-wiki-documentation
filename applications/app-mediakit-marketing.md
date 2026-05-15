@@ -35,12 +35,12 @@ serves both the Woodfine and PointSav tenants through environment variable confi
 - **Substrate:** Rust + Axum web framework; statically linked binary
 - **Content layer:** Flat-file content directories; no database dependency
 - **DataGraph references:** Entity references resolved against the PointSav DataGraph at
-  runtime
+ runtime
 - **Multi-tenant routing:** Tenant identity (`TENANT_ID`) configured via environment
-  variable; a single binary instance serves one tenant
+ variable; a single binary instance serves one tenant
 - **WordPress UX surface:** Route vocabulary (`/wp-admin/`, `/wp-admin/post.php`,
-  `/wp-admin/upload.php`) and navigation labels match WordPress.org conventions at the
-  HTTP layer
+ `/wp-admin/upload.php`) and navigation labels match WordPress.org conventions at the
+ HTTP layer
 
 ## Deployments
 

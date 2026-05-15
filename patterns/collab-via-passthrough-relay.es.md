@@ -13,8 +13,8 @@ bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
 paired_with: collab-via-passthrough-relay.md
 cites:
-  - doctrine-claim-29
-  - doctrine-claim-16
+ - doctrine-claim-29
+ - doctrine-claim-16
 ---
 
 ## El patrón en un párrafo

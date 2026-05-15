@@ -24,24 +24,24 @@ Foundry utilizes a WORM (Write-Once-Read-Many) discipline for identity records. 
 
 ### 3. Multi-Channel Communication
 Identity records serve as a unified source for all communication endpoints, including:
-*   **Email:** RFC 5322 compliant, case-insensitive addresses.
-*   **Phone:** E.164 formatted numbers.
-*   **Endpoints:** Typed handles for Slack, Teams, Signal, and other integrated platforms.
+* **Email:** RFC 5322 compliant, case-insensitive addresses.
+* **Phone:** E.164 formatted numbers.
+* **Endpoints:** Typed handles for Slack, Teams, Signal, and other integrated platforms.
 
 ## Temporal Role Snapshots
 
 Roles are recorded as immutable snapshots within the `roles` array. This allows the system to track an individual's progression (e.g., from contractor to employee) over time. Each role assignment includes:
-*   A unique `role_id`.
-*   A categorical `role_type` (Employee, Vendor, Customer, etc.).
-*   `effective_at` and `expires_at` temporal markers.
-*   Extensible attributes for department, title, and permissions.
+* A unique `role_id`.
+* A categorical `role_type` (Employee, Vendor, Customer, etc.).
+* `effective_at` and `expires_at` temporal markers.
+* Extensible attributes for department, title, and permissions.
 
 ## Entity Resolution Standards
 
 Per ADR-07, identity resolution must be deterministic and bypass AI inference at the Ring 1 layer:
-*   **Regex Extraction:** Email and phone data are extracted via deterministic patterns.
-*   **Ambiguity Management:** Unknown or conflicting identities are surfaced to a human operator rather than being silently merged by a probabilistic model.
-*   **Normalization:** Emails are lowercased and deduplicated prior to UUID derivation.
+* **Regex Extraction:** Email and phone data are extracted via deterministic patterns.
+* **Ambiguity Management:** Unknown or conflicting identities are surfaced to a human operator rather than being silently merged by a probabilistic model.
+* **Normalization:** Emails are lowercased and deduplicated prior to UUID derivation.
 
 ## MCP Integration
 

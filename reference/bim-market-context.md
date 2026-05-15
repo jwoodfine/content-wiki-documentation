@@ -172,9 +172,9 @@ Project Haystack is an open-source tagging taxonomy for building equipment data,
 
 ```
 Physical sensor (BACnet / KNX / MQTT)
-        ↓  local MQTT broker on ToteboxOS node
+ ↓ local MQTT broker on ToteboxOS node
 service-bim ingestion
-        ↓  writes to element YAML sidecar
+ ↓ writes to element YAML sidecar
 elements/{IFC-GUID}/sensors.yaml
 ```
 
@@ -188,11 +188,11 @@ The ISO 19650-compliant project delivery workflow that every government-mandated
 
 ```
 Architect authors in BIM authoring tool
-        ↓  IFC export (at each project milestone)
+ ↓ IFC export (at each project milestone)
 Coordination platform
-        ↓  IFC as exchange format
+ ↓ IFC as exchange format
 FM platform / archive (PointSav PropertyArchive)
-        ↓  IFC as permanent record
+ ↓ IFC as permanent record
 ```
 
 PointSav sits at the end of this workflow as the permanent archive — the ISO 19650 "Asset Information Model" that ISO 19650 Part 3 requires to be handed over and maintained. The architect never opens PointSav. The contractor never opens PointSav. They deliver IFC at handover, which is what the law already requires on any mandated project.

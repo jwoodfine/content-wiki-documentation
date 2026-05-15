@@ -8,7 +8,7 @@ bcsc_class: current-fact
 last_edited: 2026-04-28
 editor: pointsav-engineering
 cites:
-  - doctrine-claim-1
+ - doctrine-claim-1
 ---
 
 `service-slm` is the platform's sole AI request boundary — every inference call routes through a single access-control gateway (the Doorman) — which enforces sanitise-and-rehydrate discipline, routes to the appropriate compute tier, logs every event to an immutable audit ledger, and accumulates the training signal that compounds the platform over time. No inference call exits the customer data vault without passing through this single boundary. The Doorman Protocol defines the routing rules, audit schema, and training-signal capture that make this boundary work as a structural guarantee, not a configuration option.

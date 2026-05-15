@@ -13,8 +13,8 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: design-typography.md
 cites:
-  - wcag-22
-  - dtcg-spec
+ - wcag-22
+ - dtcg-spec
 ---
 
 El sistema de diseño PointSav organiza cada familia tipográfica del producto en seis familias funcionales y dos activos de marca, dividiendo la carga tipográfica entre dos escalas de renderizado — Utility para texto funcional de interfaz y Display para superficies expresivas. Cada familia se distribuye como un binario autohospedado; ninguna superficie realiza llamadas a servicios tipográficos externos. La fidelidad pantalla-impresión es un requisito regulatorio, no una preferencia estética: un documento firmado debe renderizarse de forma idéntica en 2026 y en 2030. Este artículo cubre las dos escalas, las seis familias, el modelo de empaquetado y el requisito de fidelidad que los sustenta.

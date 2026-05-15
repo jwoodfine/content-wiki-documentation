@@ -15,12 +15,12 @@ paired_with: service-slm.es.md
 short_description: "service-slm is the language-model service of the PointSav family — a quantised, narrow Small Language Model that translates institutional intent into deterministic outputs and routes every AI inference call through the Doorman audit boundary."
 cites: []
 references:
-  - id: 1
-    text: "ISO/IEC 42001:2023 — Information technology — Artificial intelligence — Management system."
-    url: "https://www.iso.org/standard/81230.html"
-  - id: 2
-    text: "Groeneveld, D. et al. 'OLMo: Accelerating the Science of Language Models.' arXiv:2402.00838, 2024."
-    url: "https://arxiv.org/abs/2402.00838"
+ - id: 1
+ text: "ISO/IEC 42001:2023 — Information technology — Artificial intelligence — Management system."
+ url: "https://www.iso.org/standard/81230.html"
+ - id: 2
+ text: "Groeneveld, D. et al. 'OLMo: Accelerating the Science of Language Models.' arXiv:2402.00838, 2024."
+ url: "https://arxiv.org/abs/2402.00838"
 ---
 
 `service-slm` is the language-model service of the PointSav family. It is intentionally a Small Language Model — quantised, narrow, fast — rather than a frontier-scale model. Its job is not conversation. Its job is semantic translation: turning institutional intent (English commands, document content, taxonomy queries) into deterministic outputs (binary commands, `VALID`/`REJECT` decisions, Chart-of-Accounts socket assignments). It is invisible — there is no chat window, and the operator never types into `service-slm` directly. The surface above it presents a structured workflow; `service-slm` is the silent intermediary. This article covers the four operations, the three compute tiers, the Doorman audit boundary, and why a small model is a structural choice, not a cost compromise.

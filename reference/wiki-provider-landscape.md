@@ -12,8 +12,8 @@ audience: vendor-public
 bcsc_class: no-disclosure-implication
 paired_with: wiki-provider-landscape.es.md
 cites:
-  - ni-51-102
-  - osc-sn-51-721
+ - ni-51-102
+ - osc-sn-51-721
 ---
 
 The PointSav documentation wiki at `documentation.pointsav.com` is one
@@ -39,19 +39,19 @@ the wiki market."
 Twenty-five providers in four groups by their target use case.
 
 - **Group A — Collaborative knowledge bases**: Notion, Confluence,
-  Coda, ClickUp Docs. Built for private organisational knowledge
-  management. Sell seat licenses to enterprise IT.
+ Coda, ClickUp Docs. Built for private organisational knowledge
+ management. Sell seat licenses to enterprise IT.
 - **Group B — Public-facing wiki engines**: Wiki.js, BookStack,
-  Outline, MediaWiki (what Wikipedia runs on), Fandom, Wikidot,
-  DokuWiki, TiddlyWiki. The closest in shape to a Wikipedia-class
-  platform; widest variance in editorial governance.
+ Outline, MediaWiki (what Wikipedia runs on), Fandom, Wikidot,
+ DokuWiki, TiddlyWiki. The closest in shape to a Wikipedia-class
+ platform; widest variance in editorial governance.
 - **Group C — Developer documentation site generators**: Docusaurus,
-  MkDocs Material, VitePress, Nextra, Fumadocs, Astro Starlight,
-  GitBook, Read the Docs. Generate docs sites for software projects;
-  static-site-first; collaborative-editing-second or none.
+ MkDocs Material, VitePress, Nextra, Fumadocs, Astro Starlight,
+ GitBook, Read the Docs. Generate docs sites for software projects;
+ static-site-first; collaborative-editing-second or none.
 - **Group D — Personal/networked-thought tools**: Obsidian Publish,
-  Roam Research, Logseq, Capacities, Quartz v4. Single-author
-  personal-knowledge-management primarily; some publish surfaces.
+ Roam Research, Logseq, Capacities, Quartz v4. Single-author
+ personal-knowledge-management primarily; some publish surfaces.
 
 ## 2. Per-provider one-pagers
 

@@ -21,11 +21,11 @@ A leading source-classification badge in a references list. Six source types —
 
 ```html
 <ol class="ps-references">
-  <li data-source-authority="academic">
-    <span class="ps-citation-badge ps-citation-badge--academic" aria-label="Academic source" title="Academic source">A</span>
-    <span>Klein et al. 2009 — seL4: Formal Verification of an OS Kernel.</span>
-    <a href="#cite-ref-1" aria-label="Back to reference 1">↑</a>
-  </li>
+ <li data-source-authority="academic">
+ <span class="ps-citation-badge ps-citation-badge--academic" aria-label="Academic source" title="Academic source">A</span>
+ <span>Klein et al. 2009 — seL4: Formal Verification of an OS Kernel.</span>
+ <a href="#cite-ref-1" aria-label="Back to reference 1">↑</a>
+ </li>
 </ol>
 ```
 

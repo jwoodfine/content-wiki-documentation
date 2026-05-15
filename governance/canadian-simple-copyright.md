@@ -11,7 +11,7 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:
-  - ni-51-102
+ - ni-51-102
 paired_with: canadian-simple-copyright.es.md
 ---
 
@@ -66,11 +66,11 @@ The structure has **no inter-company IP flow** while it operates
 this way:
 
 - WCP holds IP and, through its employees, creates and uses it
-  directly.
+ directly.
 - Woodfine Management Corp. is genuinely non-operating with
-  respect to WCP IP.
+ respect to WCP IP.
 - "PointSav Digital Systems" is a trade name of WCP, not a
-  separate legal person.
+ separate legal person.
 
 Canadian Copyright Act § 13(3) is sufficient for vesting. CRA
 § 247 transfer-pricing documentation requirements, which attach
@@ -82,26 +82,26 @@ company use to document.
 The posture depends on the following disciplines being kept:
 
 - **Employee-only contributors.** Every IP-creating contributor
-  is a bona fide WCP Inc. employee on T4 payroll, performing
-  in-scope work under WCP direction. Independent contractors
-  retain copyright by default under Canadian law and would
-  require separate written assignment under § 13(4). Until
-  counsel-drafted contractor IP-assignment templates are in
-  place, the posture admits no contractor contributions to
-  in-scope work.
+ is a bona fide WCP Inc. employee on T4 payroll, performing
+ in-scope work under WCP direction. Independent contractors
+ retain copyright by default under Canadian law and would
+ require separate written assignment under § 13(4). Until
+ counsel-drafted contractor IP-assignment templates are in
+ place, the posture admits no contractor contributions to
+ in-scope work.
 - **Woodfine Management Corp. stays non-operating** with
-  respect to WCP IP. If Woodfine Management Corp. begins using
-  WCP IP to generate revenue, an inter-company licence with
-  arm's-length pricing documentation becomes expected.
+ respect to WCP IP. If Woodfine Management Corp. begins using
+ WCP IP to generate revenue, an inter-company licence with
+ arm's-length pricing documentation becomes expected.
 - **"PointSav Digital Systems" is a trade name of WCP** under
-  BC's Partnership Act until incorporation. A Declaration of
-  Trade Name with the BC Registrar should be filed if the brand
-  is used commercially before incorporation.
+ BC's Partnership Act until incorporation. A Declaration of
+ Trade Name with the BC Registrar should be filed if the brand
+ is used commercially before incorporation.
 - **Moral rights gap acknowledged.** § 14.1 moral rights cannot
-  be assigned, only waived in writing. § 13(3) does not waive
-  them. The current posture admits this residual gap and does
-  not paper it; counsel-drafted moral-rights waivers may be
-  added later as the structure matures.
+ be assigned, only waived in writing. § 13(3) does not waive
+ them. The current posture admits this residual gap and does
+ not paper it; counsel-drafted moral-rights waivers may be
+ added later as the structure matures.
 
 ## Trigger events that require revisiting
 
@@ -111,14 +111,14 @@ IP-assignment agreement, moral-rights waivers) become standard:
 
 - First hire who is not a founder or officer.
 - First contractor contribution to in-scope code, content, or
-  design work.
+ design work.
 - First external revenue generated using WCP IP.
 - Reporting-issuer status under BCSC `[ni-51-102]`.
 - PointSav Digital Systems Inc. incorporation event (handled at
-  the rollover; Income Tax Act § 85 rollover transfers the IP
-  estate to the new entity in a single transaction).
+ the rollover; Income Tax Act § 85 rollover transfers the IP
+ estate to the new entity in a single transaction).
 - Any inter-company IP use between WCP and an operating
-  subsidiary.
+ subsidiary.
 
 ## Why this preserves equity value
 

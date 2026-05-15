@@ -12,12 +12,12 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
 references:
-  - id: 1
-    text: "AI2. 'OLMo 3.' Allen Institute for AI, 2025."
-    url: "https://allenai.org/blog/olmo3"
-  - id: 2
-    text: "AI2. 'Dolma 3 Dataset.' Open Data Commons License. Allen Institute for AI, 2024."
-    url: "https://huggingface.co/datasets/allenai/dolma"
+ - id: 1
+ text: "AI2. 'OLMo 3.' Allen Institute for AI, 2025."
+ url: "https://allenai.org/blog/olmo3"
+ - id: 2
+ text: "AI2. 'Dolma 3 Dataset.' Open Data Commons License. Allen Institute for AI, 2024."
+ url: "https://huggingface.co/datasets/allenai/dolma"
 paired_with: llm-substrate-decision.md
 ---
 

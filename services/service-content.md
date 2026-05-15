@@ -15,12 +15,12 @@ paired_with: service-content.es.md
 short_description: "service-content is the synthesis engine of the PointSav family — the Gravity Engine that reads raw payloads from a Totebox, runs them against an institutional taxonomy, and generates the structured documents an organisation publishes."
 cites: []
 references:
-  - id: 1
-    text: "Aho, A. V. & Corasick, M. J. 'Efficient String Matching: An Aid to Bibliographic Search.' Communications of the ACM, 18(6):333–340, 1975."
-    url: "https://dl.acm.org/doi/10.1145/360825.360855"
-  - id: 2
-    text: "ILO. 'ISCO-08: International Standard Classification of Occupations.' International Labour Organization, 2012."
-    url: "https://www.ilo.org/public/english/bureau/stat/isco/isco08/"
+ - id: 1
+ text: "Aho, A. V. & Corasick, M. J. 'Efficient String Matching: An Aid to Bibliographic Search.' Communications of the ACM, 18(6):333–340, 1975."
+ url: "https://dl.acm.org/doi/10.1145/360825.360855"
+ - id: 2
+ text: "ILO. 'ISCO-08: International Standard Classification of Occupations.' International Labour Organization, 2012."
+ url: "https://www.ilo.org/public/english/bureau/stat/isco/isco08/"
 ---
 
 `service-content` is the synthesis engine of the PointSav family. It reads raw payloads from inside a Totebox, runs them against an institutional taxonomy, produces dense Gravity Vectors, and ultimately generates the documents an organisation publishes — wikis, news releases, due-diligence ledgers, internal memos. It is the difference between a file store and an active intelligence engine. This article covers the Four-Pillar Seed Vault, the Gravity Engine pipeline, the Stratified Ontology, and the human-in-the-loop boundary that governs what the engine can write autonomously.

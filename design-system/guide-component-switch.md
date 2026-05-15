@@ -21,11 +21,11 @@ On/off toggle for settings that take effect immediately. Use when the action is 
 
 ```html
 <label class="ps-switch">
-  <input type="checkbox" role="switch" class="ps-switch__input" id="{{id}}">
-  <span class="ps-switch__track" aria-hidden="true">
-    <span class="ps-switch__thumb"></span>
-  </span>
-  <span class="ps-switch__label">{{label}}</span>
+ <input type="checkbox" role="switch" class="ps-switch__input" id="{{id}}">
+ <span class="ps-switch__track" aria-hidden="true">
+ <span class="ps-switch__thumb"></span>
+ </span>
+ <span class="ps-switch__label">{{label}}</span>
 </label>
 ```
 

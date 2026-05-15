@@ -11,8 +11,8 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:
-  - ni-51-102
-  - osc-sn-51-721
+ - ni-51-102
+ - osc-sn-51-721
 paired_with: pointsav-llm.es.md
 ---
 
@@ -61,9 +61,9 @@ PointSav-LLM is intended to carry explicit confidence signalling. When the model
 
 ```json
 {
-  "confidence": "low",
-  "escalate_to_human": true,
-  "escalation_reason": "<structured tag>"
+ "confidence": "low",
+ "escalate_to_human": true,
+ "escalation_reason": "<structured tag>"
 }
 ```
 

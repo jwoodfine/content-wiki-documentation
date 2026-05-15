@@ -21,18 +21,18 @@ This arrangement answers a compliance question that surfaces in every regulated 
 ## Ring layout
 
 ```
-                 Ring 3 — Optional Intelligence
-                 service-slm + Yo-Yo (multi-cloud burst)
-                 + Tier C external API integration
-                          ↓ queries (read-only)
-                 Ring 2 — Knowledge and Processing
-                 service-content + service-extraction
-                 + service-search + service-egress
-                          ↑ feeds              ↓ writes
-                 Ring 1 — Boundary Ingest (per-tenant)
-                 service-fs + service-people
-                 + service-email + service-input
-                 (data flows in; per-tenant; MCP servers)
+ Ring 3 — Optional Intelligence
+ service-slm + Yo-Yo (multi-cloud burst)
+ + Tier C external API integration
+ ↓ queries (read-only)
+ Ring 2 — Knowledge and Processing
+ service-content + service-extraction
+ + service-search + service-egress
+ ↑ feeds ↓ writes
+ Ring 1 — Boundary Ingest (per-tenant)
+ service-fs + service-people
+ + service-email + service-input
+ (data flows in; per-tenant; MCP servers)
 ```
 
 **Directional invariants:**

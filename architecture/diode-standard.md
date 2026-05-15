@@ -15,12 +15,12 @@ paired_with: diode-standard.es.md
 short_description: "The Diode Standard is the foundational security topology of the PointSav family — a unidirectional command flow discipline where traffic moves from authority to subject and never the reverse, structurally removing lateral movement attacks by eliminating the routing logic that would allow them."
 cites: []
 references:
-  - id: 1
-    text: "Rose, S. et al. 'Zero Trust Architecture.' NIST SP 800-207, 2020."
-    url: "https://doi.org/10.6028/NIST.SP.800-207"
-  - id: 2
-    text: "MITRE. 'ATT&CK Tactic: Lateral Movement (TA0008).' MITRE Corporation, 2023."
-    url: "https://attack.mitre.org/tactics/TA0008/"
+ - id: 1
+ text: "Rose, S. et al. 'Zero Trust Architecture.' NIST SP 800-207, 2020."
+ url: "https://doi.org/10.6028/NIST.SP.800-207"
+ - id: 2
+ text: "MITRE. 'ATT&CK Tactic: Lateral Movement (TA0008).' MITRE Corporation, 2023."
+ url: "https://attack.mitre.org/tactics/TA0008/"
 ---
 
 In electrical engineering, a diode conducts current in one direction and blocks it in the other. The Diode Standard applies the same principle to commands across the PointSav operating system family: traffic flows from authority to subject, and never the reverse. [^1] It is the foundational security topology of the entire family — not a feature of a single operating system, but the law governing how all operating systems communicate with each other. This article covers the authority hierarchy, the three traffic categories, the structural removal of lateral movement, and the adapter that enforces the standard.
