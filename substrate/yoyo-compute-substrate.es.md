@@ -8,9 +8,13 @@ quality: published
 short_description: "El substrato de cómputo de tres anillos que permite a service-slm activar y desactivar cómputo GPU mientras retiene estado, acumula habilidad y produce un ledger de auditoría de cada evento de inferencia."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "Open Source Security Foundation. 'SLSA: Supply chain Levels for Software Artifacts v1.0.' SLSA.dev, 2023."
+    url: "https://slsa.dev/spec/v1.0/"
 paired_with: yoyo-compute-substrate.md
 ---
 
@@ -30,7 +34,7 @@ Para cargas de trabajo con estructura de prefijo repetido — cada documento pro
 
 **Anillo 3a — Memoria semántica a largo plazo**: el grafo de conocimiento en LadybugDB, dentro de `service-content`. `service-slm` lo lee en tiempo de ensamblado de contexto. Nunca escribe directamente en él; todas las escrituras fluyen a través de la ruta validada de aplicación de deltas. Este anillo es el registro autoritativo de cada proyecto; su alcance está delimitado por `moduleId`.
 
-**Anillo 3b — Habilidad a largo plazo (adaptadores LoRA)**: la capa que hace compoundar el substrato. Cada proyecto nuevo deja tras de sí un adaptador LoRA afinado — un módulo pequeño y versionado que codifica comportamiento específico de la tarea (clasificación, resolución de entidades, detección de arquetipos, síntesis terminológica). Los adaptadores se almacenan como OCI Artifacts firmados con Sigstore y se activan en el arranque del motor de inferencia.
+**Anillo 3b — Habilidad a largo plazo (adaptadores LoRA)**: la capa que hace compoundar el substrato. Cada proyecto nuevo deja tras de sí un adaptador LoRA afinado — un módulo pequeño y versionado que codifica comportamiento específico de la tarea (clasificación, resolución de entidades, detección de arquetipos, síntesis terminológica). Los adaptadores se almacenan como OCI Artifacts firmados con Sigstore y se activan en el arranque del motor de inferencia. [^1]
 
 La arquitectura distingue entre **adaptadores compartidos** (prefijo `dka-*`) que acumulan habilidad general entre proyectos, y **adaptadores por proyecto** (`{cliente}-*`) que retienen conocimiento específico del cliente. Los primeros mejoran con cada proyecto; los segundos permanecen con su propietario.
 
