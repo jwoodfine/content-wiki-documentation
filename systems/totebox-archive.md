@@ -28,7 +28,7 @@ A key architectural requirement of the PointSav system is that data must be an a
 
 ## Asset Specialization
 
-Totebox Archives are typically deployed as specialized containers for distinct institutional domains. Common archive types seen in the `cluster-totebox-jennifer` deployment include:
+Totebox Archives are typically deployed as specialized containers for distinct institutional domains. Common archive types include:
 
 * **Totebox Archive - Personnel:** Encrypted records and identification.
 * **Totebox Archive - Corporate:** Tax identification, formation documents, and minutes.
