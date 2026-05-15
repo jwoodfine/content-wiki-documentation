@@ -5,39 +5,33 @@ slug: apprenticeship-substrate
 category: substrate
 type: topic
 quality: complete
-short_description: "The Apprenticeship Substrate is the Foundry mechanism that routes code-shaped and editorial work first through a local Small Language Model, captures signed senior verdicts on every attempt, and uses the resulting preference pairs as continued-pretraining signal."
+short_description: "The platform mechanism that routes code-shaped and editorial work first through a local Small Language Model, captures signed senior verdicts on every attempt, and uses the resulting preference pairs as continued-pretraining signal — compounding toward graduated task types that require no senior authoring."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites:
  - ni-51-102
 paired_with: apprenticeship-substrate.es.md
 ---
 
+The PointSav platform routes every code-shaped and editorial task through a local small language model before a senior reviewer sees it. The human operator shifts from primary author to verifier — and the signed disagreement between apprentice attempt and senior verdict produces preference-pair training data that compounds in value over time.
 
-> The Apprenticeship Substrate is the Foundry mechanism that routes code-shaped and editorial work first through a local Small Language Model, captures signed senior verdicts on every attempt, and uses the resulting preference pairs as continued-pretraining signal.
+Three routing stages are tracked per task type: `review` (every apprentice diff reviewed before commit), `spot-check` (apprentice commits; 1-in-N sampled), and `autonomous` (apprentice commits; monthly batch audit). Promotion thresholds are quantified: 50 accepted verdicts at 0.85 acceptance rate to graduate from `review` to `spot-check`; 100 verdicts at 0.95 acceptance rate with zero post-commit reverts to reach `autonomous`.
 
-**The Apprenticeship Substrate** is an architecture-layer pattern in the Foundry platform that inverts the conventional human-AI authorship sequence. Rather than having a senior author a diff directly, the Doorman routes the task to the local SLM (`service-slm`) first; the human operator with their senior reviewer assistant becomes the verifier rather than the primary author. The disagreement between apprentice attempt and senior verdict — captured as signed, append-only training tuples — is the highest-quality continued-pretraining signal Foundry produces. This article describes the routing protocol, the brief-attempt-verdict format, the promotion ledger, and what makes this posture structurally inaccessible to hyperscaler-managed AI.
+The routing compounds. Each signed verdict is a training tuple; graduated task types eliminate senior-author tokens on that class of work permanently; shadow routing generates additional training data from every other code-shaped commit across the fleet, without a verdict or signing step. The first registered task type is `version-bump-manifest` — deterministic, verifiable, low-judgment. It graduates first; the next type registers.
+
+Four conditions make this work, and all four are structural properties of a customer-owned deployment: a per-customer governance charter, per-customer signing identities, per-customer task-type granularity in the promotion ledger, and per-customer continued pretraining. Cloud-managed AI platforms structurally lack all four — training on customer interaction data requires pooling it, which eliminates the per-customer isolation guarantee. Per `[ni-51-102]` continuous-disclosure language, the trajectory toward token elimination across graduated task types is forward-looking; the routing structure is operational today.
 
 ## Overview
 
 Captured observation trains a model on what the senior wrote. Captured interaction — apprentice attempt plus signed senior verdict — trains an order of magnitude more efficiently per tuple. This is the central finding of the RLHF, DPO, and RLAIF literature from 2024–2026: signed preference data is the most valuable training input.
 
-The Apprenticeship Substrate is the routing inversion that produces those interaction tuples on real production work, not synthetic benchmarks. Every Foundry session exercises the apprentice; every signed verdict is a training tuple; every graduated task-type eliminates external AI tokens monotonically.
-
-Four preconditions make this work, and all four hold only inside Foundry-shaped substrates:
-
-1. Per-customer governance charter.
-2. Per-customer signing identities (`allowed_signers`).
-3. Per-customer task-type granularity (the promotion ledger).
-4. Per-customer continued pretraining.
-
-Hyperscalers structurally lack all four.
+This routing pattern produces those interaction tuples on real production work, not synthetic benchmarks. Every session exercises the apprentice; every signed verdict is a training tuple; every graduated task-type eliminates external AI tokens monotonically.
 
 ## Ring and Role
 
-The Apprenticeship Substrate spans Ring 3 — Optional Intelligence and the training-corpus infrastructure. `service-slm` (the Doorman) is the Ring 3 service that executes apprentice routing. The promotion ledger and corpus capture scripts live in the workspace engineering layer. The substrate is active whenever a Foundry session issues a brief rather than authoring directly.
+The Apprenticeship Substrate spans Ring 3 — Optional Intelligence and the training-corpus infrastructure. `service-slm` (the Doorman) is the Ring 3 service that executes apprentice routing. The promotion ledger and corpus capture scripts live within the customer's deployment infrastructure. The substrate is active whenever a session issues a brief rather than authoring directly.
 
 ## Architecture
 
@@ -60,7 +54,7 @@ Demotion: a single revert traced to an apprentice diff drops the task-type one s
 
 ### The brief, the attempt, the verdict
 
-A senior who would author a diff issues a **brief** instead. The brief states what is being done, the invariants the diff must preserve, the doctrine clauses cited, and the acceptance test the apprentice should make pass.
+A senior who would author a diff issues a **brief** instead. The brief states what is being done, the invariants the diff must preserve, the constraints cited, and the acceptance test the apprentice should make pass.
 
 The apprentice responds with an **attempt**: chain-of-thought reasoning citing the brief invariants, a self-confidence value calibrated against its prior ledger record on this task-type, and a unified diff. If self-confidence falls below 0.5, the apprentice escalates without diff — surfacing "this task-type is harder than I can handle today" rather than producing a low-confidence diff that wastes senior review.
 
@@ -87,16 +81,16 @@ Production routing eliminates senior tokens on graduated types. Shadow routing g
 The apprenticeship corpus is a fourth corpus alongside the constitutional, engineering, and tenant-runtime corpora. Per-tenant partitioning lives at the directory level:
 
 ```
-~/Foundry/data/training-corpus/apprenticeship/<task-type>/<tenant>/<ulid>.jsonl
+data/training-corpus/apprenticeship/<task-type>/<tenant>/<ulid>.jsonl
 ```
 
 One file per (brief, attempt, verdict) triple. Tenant-private records never leave the tenant's infrastructure.
 
-A `refine` or `reject` verdict additionally produces a Direct Preference Optimisation triple: (rejected attempt, corrected diff, doctrine-violation tag). DPO triples feed adapter training on the apprentice's policy.
+A `refine` or `reject` verdict additionally produces a Direct Preference Optimisation triple: (rejected attempt, corrected diff, constraint-violation tag). DPO triples feed adapter training on the apprentice's policy.
 
 ## Configuration
 
-The first registered task-type is `version-bump-manifest`. Every workspace MINOR and PATCH bump touches `MANIFEST.md` and `CHANGELOG.md`. Well-shaped, no architectural judgment required, easily verifiable. The apprentice graduates this type first; senior tokens drop on this class of work; the next task-type registers.
+The first registered task-type is `version-bump-manifest`. Every platform MINOR and PATCH bump touches `MANIFEST.md` and `CHANGELOG.md`. Well-shaped, no architectural judgment required, easily verifiable. The apprentice graduates this type first; senior tokens drop on this class of work; the next task-type registers.
 
 The end state is a continuum — code-shaped work the apprentice handles autonomously, code-shaped work the apprentice handles with spot-check, code-shaped work that still requires senior review. The continuum shifts as the corpus matures.
 
