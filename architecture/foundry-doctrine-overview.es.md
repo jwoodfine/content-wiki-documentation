@@ -18,7 +18,7 @@ cites:
 paired_with: foundry-doctrine-overview.md
 ---
 
-La **Doctrina Foundry 2030** es la carta constitucional del entorno de desarrollo de software de PointSav. Define los seis pilares de la arquitectura de la plataforma, cincuenta y dos afirmaciones de salto adelante que constituyen sus compromisos estructurales, ocho invenciones operativas entre industrias, y el modelo económico que la sostiene. La propia doctrina es un artefacto público — versionada, firmada y publicada bajo CC BY 4.0 en cada versión MINOR.
+La **arquitectura PointSav 2030** es la carta constitucional del entorno de desarrollo de software de PointSav. Define los seis pilares de la arquitectura de la plataforma, cincuenta y dos afirmaciones de salto adelante que constituyen sus compromisos estructurales, ocho invenciones operativas entre industrias, y el modelo económico que la sostiene. La propia doctrina es un artefacto público — versionada, firmada y publicada bajo CC BY 4.0 en cada versión MINOR.
 
 Este artículo es un resumen público de la doctrina v0.1.0 ALPHA (ratificada el 30 de abril de 2026). El texto autorizado es DOCTRINE.md, disponible a través del repositorio `pointsav/factory-release-engineering`.
 

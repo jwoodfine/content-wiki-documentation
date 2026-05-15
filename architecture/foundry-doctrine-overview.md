@@ -23,7 +23,7 @@ cites:
 paired_with: foundry-doctrine-overview.es.md
 ---
 
-**Foundry Architecture 2030** is the constitutional charter for the PointSav software development environment. It defines the six pillars of the platform's architecture, fifty-two structural claims that constitute its operational commitments, eight cross-industry operational inventions, and the economic model that sustains it across a small core team, paid contributors, and a large open-contributor population. The text is itself a public artifact — versioned, signed, and published under CC BY 4.0 at every MINOR version bump.
+**PointSav Architecture 2030** is the constitutional charter for the PointSav software development environment. It defines the six pillars of the platform's architecture, fifty-two structural claims that constitute its operational commitments, eight cross-industry operational inventions, and the economic model that sustains it across a small core team, paid contributors, and a large open-contributor population. The text is itself a public artifact — versioned, signed, and published under CC BY 4.0 at every MINOR version bump.
 
 This article is a public summary of v0.1.0 ALPHA (ratified 2026-04-30). The authoritative text is available via the `pointsav/factory-release-engineering` repository.
 
@@ -49,7 +49,7 @@ The central thesis: a platform whose model fits entirely in plain text on one VM
 
 Fifty-two claims constitute this structural commitment. The sovereign-SMB architectural commitment includes:
 
-**Single-Boundary Compute Discipline.** Every AI inference call in every Foundry deployment passes through a single service boundary — the Doorman. Bearer tokens and compute endpoints for all inference tiers live exclusively in the Doorman's configuration. The audit ledger is complete and cryptographic because the boundary is exclusive, not preferred.
+**Single-Boundary Compute Discipline.** Every AI inference call in every platform deployment passes through a single service boundary — the Doorman. Bearer tokens and compute endpoints for all inference tiers live exclusively in the Doorman's configuration. The audit ledger is complete and cryptographic because the boundary is exclusive, not preferred.
 
 **Knowledge-Graph-Grounded Apprenticeship.** The inference service consults the per-tenant knowledge graph before every substantive request. Training tuples include the graph context alongside the query and response. Adapters trained on graph-grounded tuples generate graph-coherent responses, and accepted responses update the graph — a co-evolution loop.
 

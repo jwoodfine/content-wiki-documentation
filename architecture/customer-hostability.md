@@ -19,13 +19,13 @@ paired_with: customer-hostability.es.md
 
 **Customer hostability** is the architectural commitment that every artefact a customer adopts can be run on the customer's own hardware, with the customer's own data, against the customer's own keys, with the customer's own audit ledger. The customer can fork it on day one.
 
-This is not a pricing tier or a deployment option. It is the shape of the substrate. A version of Foundry that requires hosted-by-vendor infrastructure to function is, by construction, not Foundry.
+This is not a pricing tier or a deployment option. It is the shape of the substrate. A platform variant that requires hosted-by-vendor infrastructure to function is not customer-hostable by construction.
 
 ## What self-ownership means
 
 Three concrete commitments, each operationally testable:
 
-1. **Self-hostable bootstrap.** Every Foundry service ships with a `bootstrap.sh` that brings the service up on the customer's own machine — no SaaS dependency, no provider login, no metered API. The pattern is established by the `infrastructure/local-slm/`, `infrastructure/local-doorman/`, and `infrastructure/local-knowledge/` precedents.
+1. **Self-hostable bootstrap.** Every platform service ships with a `bootstrap.sh` that brings the service up on the customer's own machine — no SaaS dependency, no provider login, no metered API. The pattern is established by the `infrastructure/local-slm/`, `infrastructure/local-doorman/`, and `infrastructure/local-knowledge/` precedents.
 2. **Per-tenant adapters in the customer's filesystem.** When the customer's adapter trains on the customer's corpus, the resulting `.lora` lives at `data/adapters/` inside the customer's substrate. It never traverses the vendor's network. Loss-of-adapter risk falls on the customer's backup discipline, not on the vendor's continued operation.
 3. **Customer-anchored audit ledger.** The apprenticeship corpus that records every editorial action and verdict lives at `data/training-corpus/apprenticeship/<task-type>/<tenant>/` inside the customer's substrate. Tenant-private records never leave the customer's infrastructure.
 
@@ -37,7 +37,7 @@ Hyperscaler economics depend on central training, shared trust roots, and provid
 - Shared trust roots concentrate the regulatory burden at the provider; customer-anchored attestation distributes it to the customer.
 - Provider-rooted attestation makes a customer audit a vendor audit; customer-anchored attestation lets the customer audit themselves.
 
-Foundry is built so the customer's regulatory posture does not depend on the vendor's. A BCSC reporting issuer per `[ni-51-102]` who deploys Foundry inside their own substrate can satisfy continuous-disclosure obligations against records they own and control. A vendor outage does not impair their ability to respond to a regulator's request.
+The platform is built so the customer's regulatory posture does not depend on the vendor's. A BCSC reporting issuer per `[ni-51-102]` who deploys the platform inside their own substrate can satisfy continuous-disclosure obligations against records they own and control. A vendor outage does not impair their ability to respond to a regulator's request.
 
 ## Bootstrap pattern
 
@@ -55,13 +55,13 @@ Three already in production:
 - `infrastructure/local-doorman/` — Tier-A routing on the workspace VM
 - `infrastructure/local-knowledge/` — wiki-engine bootstrap
 
-Each was built to the same shape so a Foundry-shaped customer substrate is predictable: the customer reads one bootstrap runbook and applies it across services.
+Each was built to the same shape so a platform-shaped customer substrate is predictable: the customer reads one bootstrap runbook and applies it across services.
 
 ## What customer hostability is not
 
 It is not "open source under a permissive licence." Permissive licensing is necessary but not sufficient. A permissively-licensed service that requires a hosted control plane to function does not satisfy customer hostability — the customer cannot fork it without forking the control plane.
 
-It is not "the vendor will host it for you." Vendor-hosted deployment is one operational option among several. Foundry runs at `documentation.pointsav.com` because PointSav itself is the canonical-tier customer of every package PointSav ships. Customer-hosted deployment is the canonical pattern; vendor hosting is a convenience.
+It is not "the vendor will host it for you." Vendor-hosted deployment is one operational option among several. PointSav runs `documentation.pointsav.com` because PointSav itself is the canonical-tier customer of every package it ships. Customer-hosted deployment is the canonical pattern; vendor hosting is a convenience.
 
 It is not "you can export your data." Data export is a feature. Customer hostability is structural — the substrate does not have a data-export feature because the data was already on the customer's hardware from the moment it was written.
 
@@ -75,7 +75,7 @@ This is the federated-LoRA pattern adapted to per-customer data ownership. Reaso
 
 ## Operational test for customer hostability
 
-A new Foundry service is customer-hostable if a customer can:
+A new platform service is customer-hostable if a customer can:
 
 1. Clone the relevant repos.
 2. Run `bootstrap.sh` on a machine they own.

@@ -39,6 +39,6 @@ Managed container orchestration platforms, container runtime systems, multi-clou
 
 ## See also
 
-- [[zero-container-runtime]] — the structural commitment underlying this deployment pattern; applies across all Foundry service rings
+- [[zero-container-runtime]] — the structural commitment underlying this deployment pattern; applies across all platform service rings
 - [[doorman-protocol]] — the Tier B routing path that dispatches to Yo-Yo pool instances
 - [[substrate-without-inference-base-case]] — the substrate functions fully without Tier B; inference is additive

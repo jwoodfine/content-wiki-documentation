@@ -20,7 +20,7 @@ The Identity Ledger provides a JSONL-based, append-only record of canonical pers
 The primary identifier (`identity_id`) is derived deterministically from the user’s primary email address using a UUIDv5 namespace. This ensures that the same email always produces the identical UUID across any node without requiring AI or probabilistic matching, satisfying the strict requirements of ADR-07.
 
 ### 2. Append-Only Integrity
-Foundry utilizes a WORM (Write-Once-Read-Many) discipline for identity records. To update an identity—such as a role change or a new communication endpoint—a new record is appended to the ledger. Readers always fetch the latest record per `identity_id`, preserving a full, immutable audit trail of the identity’s history.
+The platform utilizes a WORM (Write-Once-Read-Many) discipline for identity records. To update an identity—such as a role change or a new communication endpoint—a new record is appended to the ledger. Readers always fetch the latest record per `identity_id`, preserving a full, immutable audit trail of the identity’s history.
 
 ### 3. Multi-Channel Communication
 Identity records serve as a unified source for all communication endpoints, including:

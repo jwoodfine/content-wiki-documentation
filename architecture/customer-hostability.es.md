@@ -13,20 +13,20 @@ paired_with: customer-hostability.md
 ---
 
 
-La disciplina de hospedaje por el cliente en Foundry es el
+La disciplina de hospedaje por el cliente es el
 compromiso arquitectónico de que cada artefacto que un cliente
 adopta puede ejecutarse sobre metal del cliente, con datos del
 cliente, contra llaves del cliente, con un libro de auditoría
 del cliente. El cliente puede bifurcarlo desde el día uno.
 
 No es un nivel de precios ni una opción de despliegue. Es la
-forma del sustrato. Una versión de Foundry que requiera
-infraestructura alojada por el proveedor para funcionar no es,
-por construcción, Foundry.
+forma del sustrato. Una variante de la plataforma que requiera
+infraestructura alojada por el proveedor para funcionar no es
+hospedable por el cliente por construcción.
 
 ## Tres compromisos concretos
 
-1. **Bootstrap auto-hospedable.** Cada servicio Foundry envía un
+1. **Bootstrap auto-hospedable.** Cada servicio de la plataforma envía un
  `bootstrap.sh` que levanta el servicio en la máquina propia
  del cliente — sin dependencia SaaS, sin login con proveedor,
  sin API medida.
@@ -44,7 +44,7 @@ por construcción, Foundry.
 Su economía unitaria depende de entrenamiento central, raíces
 de confianza compartidas y atestación anclada en el proveedor.
 La pre-formación continuada por cliente no calza a escala PYME
-con esa economía. Foundry está construido para que la postura
+con esa economía. La plataforma está construida para que la postura
 regulatoria del cliente no dependa de la del proveedor.
 
 ## Qué no es el hospedaje por el cliente
@@ -60,7 +60,7 @@ regulatoria del cliente no dependa de la del proveedor.
 
 ## Prueba operativa
 
-Un servicio Foundry nuevo es hospedable por el cliente si éste
+Un servicio nuevo de la plataforma es hospedable por el cliente si éste
 puede clonar los repositorios, ejecutar `bootstrap.sh` en una
 máquina propia, generar y servir adaptadores desde disco local,
 operar el servicio sin contactar nunca un endpoint del

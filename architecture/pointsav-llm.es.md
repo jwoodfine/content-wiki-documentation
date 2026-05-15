@@ -5,7 +5,7 @@ slug: pointsav-llm.es
 category: architecture
 type: topic
 quality: complete
-short_description: "El modelo de IA especialista planificado para el Nivel 3 del sistema de cuatro niveles SLM de PointSav, construido mediante entrenamiento continuo de OLMo 3 32B sobre el corpus federated de aprendizaje de Foundry."
+short_description: "El modelo de IA especialista planificado para el Nivel 3 del sistema de cuatro niveles SLM de PointSav, construido mediante entrenamiento continuo de OLMo 3 32B sobre el corpus federado de aprendizaje de la plataforma."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
@@ -24,9 +24,9 @@ paired_with: pointsav-llm.md
 
 ## Lo que es y lo que no es
 
-PointSav-LLM está planificado como especialista en un dominio concreto, no como modelo de propósito general. Su corpus de entrenamiento previsto proviene del sustrato de aprendizaje de Foundry: los registros de trayectoria, los pares de decisiones editoriales y los historiales de commits alineados con el código que producen las sesiones de Task Claude contribuyentes en toda la plataforma.
+PointSav-LLM está planificado como especialista en un dominio concreto, no como modelo de propósito general. Su corpus de entrenamiento previsto proviene del sustrato de aprendizaje de la plataforma: los registros de trayectoria, los pares de decisiones editoriales y los historiales de commits alineados con el código que producen las sesiones de agente contribuyentes en toda la plataforma.
 
-Sus áreas de especialización previstas incluyen la operación del Archivo Totebox, las convenciones de PointSav, los patrones editoriales multiusuario, la generación de código alineada con las convenciones de Foundry y los flujos de contribución de entrenamiento federado.
+Sus áreas de especialización previstas incluyen la operación del Archivo Totebox, las convenciones de PointSav, los patrones editoriales multiusuario, la generación de código alineada con las convenciones de la plataforma y los flujos de contribución de entrenamiento federado.
 
 PointSav-LLM no está planificado para competir con modelos de frontera de amplio alcance en conocimiento general, profundidad creativa o razonamiento multidisciplinar. Las consultas que requieran esa amplitud continuarán siendo enrutadas por el Doorman del cliente hacia las APIs externas del Nivel C (Nivel C externo). La base OLMo 3 (Apache 2.0; Open Data Commons) es abierta, y los adaptadores portátiles por cliente están planificados para preservar la soberanía del tenant conforme a la claim #28 de la Doctrina (Tenancy Diseñada para la Desvinculación).
 
@@ -50,7 +50,7 @@ Los eventos de escalado resueltos por ingenieros humanos están planificados par
 
 ## Fundamento de código abierto
 
-La base técnica de PointSav-LLM es OLMo 3 32B Think, publicado por AllenAI bajo licencia Apache 2.0, con datos de entrenamiento base bajo Open Data Commons. Esta elección es estructural: una base completamente abierta permite el entrenamiento continuo propio (CPT), la auditoría independiente de los pesos y la portabilidad para el cliente. Los pesos base son abiertos; el valor comercial de PointSav reside en el CPT especialista sobre el corpus agregado de Foundry, la infraestructura de escalado con intervención humana, el sustrato de auditoría por tenant y el SLA.
+La base técnica de PointSav-LLM es OLMo 3 32B Think, publicado por AllenAI bajo licencia Apache 2.0, con datos de entrenamiento base bajo Open Data Commons. Esta elección es estructural: una base completamente abierta permite el entrenamiento continuo propio (CPT), la auditoría independiente de los pesos y la portabilidad para el cliente. Los pesos base son abiertos; el valor comercial de PointSav reside en el CPT especialista sobre el corpus agregado de la plataforma, la infraestructura de escalado con intervención humana, el sustrato de auditoría por tenant y el SLA.
 
 ---
 

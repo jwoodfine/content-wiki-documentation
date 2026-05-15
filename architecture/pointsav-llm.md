@@ -47,7 +47,7 @@ The planned access path routes entirely through each customer's local Doorman. N
 1. Customer application sends a query to the local Doorman (127.0.0.1:9080 by default).
 2. Doorman classifies query complexity using the current Tier A local model (OLMo 3 7B Q4).
 3. For queries classified as simple or routine, the Doorman routes to Tier A and returns a local response — no external call.
-4. For queries classified as requiring specialist depth (domain-specific Foundry conventions, Totebox Archive operations, multi-tenant editorial structure), the Doorman is intended to route to the PointSav-LLM Tier C endpoint, authenticating via the customer's provisioned API key.
+4. For queries classified as requiring specialist depth (domain-specific platform conventions, Totebox Archive operations, multi-tenant editorial structure), the Doorman is intended to route to the PointSav-LLM Tier C endpoint, authenticating via the customer's provisioned API key.
 5. The response returns through the Doorman. An audit row is written simultaneously at the customer's local Doorman and at the PointSav-LLM gateway — two-ledger, per-call audit trail.
 6. Per-token billing is computed at the gateway and reported to the customer's subscription account.
 
@@ -89,7 +89,7 @@ SMBs with 10–200 employees that require AI assistance across their archive ope
 
 PointSav-LLM is intended to serve this gap. The planned architecture routes specialist queries through a vendor-maintained model without requiring customers to provision GPU infrastructure, manage model updates, or negotiate enterprise-tier contracts. The per-token pricing model, when published, is intended to be accessible at SMB contract sizes. The open OLMo 3 base and the Designed-for-Breakout Tenancy principle mean customers are not structurally locked in.
 
-The commercial logic mirrors the open-source software service model: the base training weights are open (Apache 2.0); the commercial line is the value PointSav adds — specialist CPT on the aggregated Foundry corpus, the human-in-the-loop escalation infrastructure, the per-tenant audit and compliance substrate, and the SLA. Customers who contribute trajectory data to the corpus under the contributing tier are intended to receive preferential per-token rates, as their data compounds the model's specialist depth for every subsequent subscriber.
+The commercial logic mirrors the open-source software service model: the base training weights are open (Apache 2.0); the commercial line is the value PointSav adds — specialist CPT on the aggregated platform corpus, the human-in-the-loop escalation infrastructure, the per-tenant audit and compliance substrate, and the SLA. Customers who contribute trajectory data to the corpus under the contributing tier are intended to receive preferential per-token rates, as their data compounds the model's specialist depth for every subsequent subscriber.
 
 ---
 
