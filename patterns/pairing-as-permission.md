@@ -8,8 +8,19 @@ quality: complete
 short_description: "PairingAsPermission is the Object Capability access-control model used in Totebox Orchestration: a cryptographic pairing between two nodes is the permission, and the absence of a pairing makes the connection structurally impossible — not access-denied, but no pathway."
 status: active
 bcsc_class: no-disclosure-implication
-last_edited: 2026-05-08
+last_edited: 2026-05-15
 editor: pointsav-engineering
+cites: []
+references:
+  - id: 1
+    text: "Miller, M. S. et al. 'Capability Myths Demolished.' SRL2003-02, Johns Hopkins University, 2003."
+    url: "https://srl.cs.jhu.edu/pubs/SRL2003-02.pdf"
+  - id: 2
+    text: "Google. 'Fuchsia Component Framework: Capabilities overview.' Fuchsia.dev, 2024."
+    url: "https://fuchsia.dev/fuchsia-src/concepts/components/v2/capabilities"
+  - id: 3
+    text: "seL4 Project. 'seL4: Formally Verified Microkernel.' The seL4 Foundation, 2024."
+    url: "https://sel4.systems/"
 paired_with: pairing-as-permission.es.md
 ---
 
@@ -23,7 +34,7 @@ In most access-control systems, a request arrives, the system looks up whether t
 
 PairingAsPermission eliminates the lookup. Two nodes communicate only if a cryptographic pairing has been established between them. If no pairing exists, no connection exists and no request is made. The question "does this node have permission to reach that node?" has a structural answer: check whether a pairing exists. If not, no pathway exists to ask in the first place.
 
-This is the Object Capability Model — a formally proven security pattern first described by Mark S. Miller in *Capability Myths Demolished* (2003). The central axiom: **connectivity begets connectivity.** Object A can send a message to B only if A holds a reference to B. The reference is the capability. Without the reference, the connection is structurally impossible — not access-denied, but no pathway.
+This is the Object Capability Model — a formally proven security pattern first described by Mark S. Miller in *Capability Myths Demolished* (2003). [^1] The central axiom: **connectivity begets connectivity.** Object A can send a message to B only if A holds a reference to B. The reference is the capability. Without the reference, the connection is structurally impossible — not access-denied, but no pathway.
 
 ## The topology in Totebox Orchestration
 
@@ -55,9 +66,9 @@ In the Object Capability Model, this vulnerability is an architectural invariant
 
 This is not a theoretical model. It is deployed at scale in production systems.
 
-**Fuchsia OS** (Google) implements PairingAsPermission at the operating-system level. Every component must have capabilities explicitly routed to it through the component topology. A component that has not been given a capability route is structurally unreachable from the resource — not access-denied, but no pathway. Fuchsia runs on every Google Nest Hub model.
+**Fuchsia OS** (Google) implements PairingAsPermission at the operating-system level. Every component must have capabilities explicitly routed to it through the component topology. A component that has not been given a capability route is structurally unreachable from the resource — not access-denied, but no pathway. Fuchsia runs on every Google Nest Hub model. [^2]
 
-**seL4 microkernel** has a machine-checked formal proof of capability confinement: a process cannot access a resource it was not explicitly given a capability for. The proof covers integrity (data cannot be modified without authority) and authority confinement (authority cannot exceed what was delegated). seL4 is the gold standard for formally verified security models.
+**seL4 microkernel** has a machine-checked formal proof of capability confinement: a process cannot access a resource it was not explicitly given a capability for. The proof covers integrity (data cannot be modified without authority) and authority confinement (authority cannot exceed what was delegated). seL4 is the gold standard for formally verified security models. [^3]
 
 **WireGuard** implements the same pattern at the network layer. The `AllowedIPs` table is the capability table. A node with no entry for a destination cannot send packets to it. Access control is structural to the routing, not a check at transmission time.
 
@@ -97,9 +108,3 @@ Pairing is the permission. Topology is the audit.
 - [[compounding-substrate]]
 - [[three-ring-architecture]]
 
-## References
-
-- **`DOCTRINE.md`** — Foundry constitutional charter.
-- **Miller, M. S. *et al.*** *Capability Myths Demolished.* 2003. <https://srl.cs.jhu.edu/pubs/SRL2003-02.pdf>
-- **Fuchsia Component Framework** — capability routing model. <https://fuchsia.dev/fuchsia-src/concepts/components/v2/capabilities>
-- **seL4 microkernel** — formally verified capability confinement. <https://sel4.systems/>

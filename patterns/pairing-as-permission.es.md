@@ -8,8 +8,19 @@ quality: complete
 short_description: "PairingAsPermission es el modelo de control de acceso por capacidades de objeto utilizado en la orquestación Totebox: un emparejamiento criptográfico entre dos nodos es el permiso, y la ausencia de emparejamiento hace estructuralmente imposible la conexión — no es acceso denegado, sino la inexistencia de un camino."
 status: active
 bcsc_class: no-disclosure-implication
-last_edited: 2026-05-08
+last_edited: 2026-05-15
 editor: pointsav-engineering
+cites: []
+references:
+  - id: 1
+    text: "Miller, M. S. et al. 'Capability Myths Demolished.' SRL2003-02, Johns Hopkins University, 2003."
+    url: "https://srl.cs.jhu.edu/pubs/SRL2003-02.pdf"
+  - id: 2
+    text: "Google. 'Fuchsia Component Framework: Capabilities overview.' Fuchsia.dev, 2024."
+    url: "https://fuchsia.dev/fuchsia-src/concepts/components/v2/capabilities"
+  - id: 3
+    text: "seL4 Project. 'seL4: Formally Verified Microkernel.' The seL4 Foundation, 2024."
+    url: "https://sel4.systems/"
 paired_with: pairing-as-permission.md
 ---
 
@@ -23,7 +34,7 @@ En la mayoría de los sistemas de control de acceso, llega una solicitud, el sis
 
 PairingAsPermission elimina la búsqueda. Dos nodos se comunican solo si se ha establecido un emparejamiento criptográfico entre ellos. Si no existe emparejamiento, no existe conexión y no se realiza solicitud. La pregunta "¿tiene este nodo permiso para alcanzar a aquel nodo?" tiene una respuesta estructural: comprobar si existe un emparejamiento. Si no, no existe camino para preguntar en primer lugar.
 
-Este es el modelo de Capacidades de Objeto — un patrón de seguridad formalmente probado descrito por primera vez por Mark S. Miller en *Capability Myths Demolished* (2003). El axioma central: **la conectividad genera conectividad.** El objeto A puede enviar un mensaje a B solo si A posee una referencia a B. La referencia es la capacidad. Sin la referencia, la conexión es estructuralmente imposible — no es acceso denegado, sino la inexistencia de un camino.
+Este es el modelo de Capacidades de Objeto — un patrón de seguridad formalmente probado descrito por primera vez por Mark S. Miller en *Capability Myths Demolished* (2003). [^1] El axioma central: **la conectividad genera conectividad.** El objeto A puede enviar un mensaje a B solo si A posee una referencia a B. La referencia es la capacidad. Sin la referencia, la conexión es estructuralmente imposible — no es acceso denegado, sino la inexistencia de un camino.
 
 ## La topología en la orquestación Totebox
 
@@ -55,9 +66,9 @@ En el modelo de Capacidades de Objeto, esta vulnerabilidad es un invariante arqu
 
 No es un modelo teórico. Está desplegado a escala en sistemas de producción.
 
-**Fuchsia OS** (Google) implementa PairingAsPermission a nivel del sistema operativo. Cada componente debe tener capacidades enrutadas explícitamente a él a través de la topología de componentes. Un componente que no ha recibido una ruta de capacidad es estructuralmente inalcanzable desde el recurso — no es acceso denegado, sino la inexistencia de un camino. Fuchsia se ejecuta en cada modelo de Google Nest Hub.
+**Fuchsia OS** (Google) implementa PairingAsPermission a nivel del sistema operativo. Cada componente debe tener capacidades enrutadas explícitamente a él a través de la topología de componentes. Un componente que no ha recibido una ruta de capacidad es estructuralmente inalcanzable desde el recurso — no es acceso denegado, sino la inexistencia de un camino. Fuchsia se ejecuta en cada modelo de Google Nest Hub. [^2]
 
-**El microkernel seL4** tiene una prueba formal verificada por máquina del confinamiento de capacidades: un proceso no puede acceder a un recurso para el que no se le ha otorgado explícitamente una capacidad. La prueba cubre la integridad (los datos no pueden modificarse sin autoridad) y el confinamiento de la autoridad (la autoridad no puede exceder lo delegado). seL4 es el estándar de referencia para los modelos de seguridad formalmente verificados.
+**El microkernel seL4** tiene una prueba formal verificada por máquina del confinamiento de capacidades: un proceso no puede acceder a un recurso para el que no se le ha otorgado explícitamente una capacidad. La prueba cubre la integridad (los datos no pueden modificarse sin autoridad) y el confinamiento de la autoridad (la autoridad no puede exceder lo delegado). seL4 es el estándar de referencia para los modelos de seguridad formalmente verificados. [^3]
 
 **WireGuard** implementa el mismo patrón en la capa de red. La tabla `AllowedIPs` es la tabla de capacidades. Un nodo sin entrada para un destino no puede enviar paquetes hacia él. El control de acceso es estructural al enrutamiento, no una verificación en el momento de la transmisión.
 
@@ -97,9 +108,3 @@ El emparejamiento es el permiso. La topología es la auditoría.
 - [[compounding-substrate]]
 - [[three-ring-architecture]]
 
-## Referencias
-
-- **`DOCTRINE.md`** — carta constitucional de Foundry.
-- **Miller, M. S. *et al.*** *Capability Myths Demolished.* 2003. <https://srl.cs.jhu.edu/pubs/SRL2003-02.pdf>
-- **Marco de componentes Fuchsia** — modelo de enrutamiento de capacidades. <https://fuchsia.dev/fuchsia-src/concepts/components/v2/capabilities>
-- **Microkernel seL4** — confinamiento de capacidades formalmente verificado. <https://sel4.systems/>
