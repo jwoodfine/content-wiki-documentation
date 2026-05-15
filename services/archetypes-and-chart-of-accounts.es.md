@@ -91,7 +91,7 @@ La propiedad más distintiva del diseño de doble libro mayor es que [[service-p
 | Posición en el Plan no coincide, señal de arquetipo elevada | Descubrimiento de talento | El sistema señala un posible desajuste de rol y propone un ajuste del Plan al administrador |
 | Ninguna dimensión coincide | Ruido sistémico | El sistema suspende el cálculo de métricas para evitar contaminar datos agregados; se activa una auditoría manual |
 
-El mecanismo no toma acciones de personal autónomas. La plataforma no mueve, asciende ni da de baja a personas. Señala desajustes estructurales y propone ajustes; un operador toma cada decisión. El registro de auditoría en [[service-minutebook]] captura la propuesta, la decisión del operador y la marca de tiempo — el mismo patrón que la [[app-console-input|puerta de entrada F12]].
+El mecanismo no toma acciones de personal autónomas. La plataforma no mueve, asciende ni da de baja a personas. Señala desajustes estructurales y propone ajustes; un operador toma cada decisión. El registro de auditoría en service-minutebook captura la propuesta, la decisión del operador y la marca de tiempo — el mismo patrón que la [[app-console-input|puerta de entrada F12]].
 
 ## Por qué la taxonomía basada en conectores supera los títulos en texto libre
 

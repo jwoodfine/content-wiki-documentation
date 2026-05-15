@@ -91,7 +91,7 @@ The most distinctive property of the dual-ledger design is that [[service-people
 | Chart position mismatches, high archetype signal | Talent discovery | The system flags a potential role mismatch and proposes a Chart adjustment to the administrator |
 | Neither dimension matches | Systemic noise | The system suspends metric calculation to prevent contaminating aggregate data; a manual audit is flagged |
 
-The mechanism does not take autonomous personnel action. The platform does not move, promote, or dismiss people. It surfaces structural mismatches and proposes adjustments; an operator makes every decision. The audit trail in [[service-minutebook]] captures the proposal, the operator's decision, and the timestamp — the same pattern as the [[app-console-input|F12 input gate]].
+The mechanism does not take autonomous personnel action. The platform does not move, promote, or dismiss people. It surfaces structural mismatches and proposes adjustments; an operator makes every decision. The audit trail in service-minutebook captures the proposal, the operator's decision, and the timestamp — the same pattern as the [[app-console-input|F12 input gate]].
 
 ## Why socket-based taxonomy outperforms free-text job titles
 
