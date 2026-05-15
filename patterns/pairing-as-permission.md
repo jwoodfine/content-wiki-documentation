@@ -87,7 +87,7 @@ Defence: per-project archives operate fully without the Command — they serve l
 **Risk 3 — Multi-tenancy on shared physical nodes (medium)**
 When multiple logical projects share a single Totebox Archive node, the Command holds capabilities for multiple tenants. If the Command uses the wrong capability token for a request, one tenant's data is accessible under another tenant's scope.
 
-Defence: capability attenuation via separate module identifiers. The Command holds distinct `X-Foundry-Module-ID` tokens per tenant. The shared archive enforces per-identifier partitions. The `service-slm` access-control gateway already implements this pattern — the Command must pass the correct module identifier for the requesting archive on every call, never its own.
+Defence: capability attenuation via separate module identifiers. The Command holds distinct `X-Module-ID` tokens per tenant. The shared archive enforces per-identifier partitions. The `service-slm` access-control gateway already implements this pattern — the Command must pass the correct module identifier for the requesting archive on every call, never its own.
 
 ## Implementation
 

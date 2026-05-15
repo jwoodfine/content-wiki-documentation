@@ -14,7 +14,7 @@ cites: []
 paired_with: tier-zero-customer-side-sovereign-specialist.es.md
 ---
 
-The **Tier 0 Customer-Side Sovereign Specialist** is the reference deployment model for Foundry: the complete platform stack running on the customer's own hardware, with no required cloud dependency, no required internet connectivity, and a total disk footprint of approximately one gigabyte.
+The **Tier 0 Customer-Side Sovereign Specialist** is the reference deployment model for the platform: the complete platform stack running on the customer's own hardware, with no required cloud dependency, no required internet connectivity, and a total disk footprint of approximately one gigabyte.
 
 ## The reference unit
 
@@ -38,13 +38,13 @@ No GPU acquisition, no driver maintenance, and no thermal management are require
 
 ## Sovereignty properties
 
-The Totebox operates without Foundry's servers, without any continuing relationship with the model's original authors (existing files work indefinitely), without external API keys (Tier C is opt-in and off by default), without internet connectivity, and without any cloud subscription. The substrate works fully offline.
+The Totebox operates without the platform's servers, without any continuing relationship with the model's original authors (existing files work indefinitely), without external API keys (Tier C is opt-in and off by default), without internet connectivity, and without any cloud subscription. The substrate works fully offline.
 
 The [[substrate-without-inference-base-case]] convention extends this: even the AI tier itself is optional. The deterministic Ring 1 and Ring 2 services — the ledger, the knowledge graph, and the processing services — operate independently of the AI tier. The Totebox is the customer's property in the strongest sense.
 
 ## Hardware scale
 
-For a five-person business, a mini-PC class appliance is sufficient. For a thirty-person firm, a slightly larger appliance handles concurrent Ring 1, Ring 2, and AI tier operations. For a three-hundred-person firm or a regional hospital, a multi-unit cluster with an optional GPU box is intended. The Foundry commercial focus is the first two scales; larger deployments are possible but not the primary market.
+For a five-person business, a mini-PC class appliance is sufficient. For a thirty-person firm, a slightly larger appliance handles concurrent Ring 1, Ring 2, and AI tier operations. For a three-hundred-person firm or a regional hospital, a multi-unit cluster with an optional GPU box is intended. The platform's commercial focus is the first two scales; larger deployments are possible but not the primary market.
 
 ## Optional tiers
 

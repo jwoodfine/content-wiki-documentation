@@ -21,7 +21,7 @@ references:
 paired_with: tui-corpus-producer.es.md
 ---
 
-The **TUI-as-Corpus-Producer** pattern designates the operator terminal interface (`slm-cli`) as a primary source of high-quality training data for the per-tenant model adapter. Every interaction with the Doorman through this interface is a curated corpus contribution. The pattern encodes Doctrine claim #45.
+The **TUI-as-Corpus-Producer** pattern designates the operator terminal interface (`slm-cli`) as a primary source of high-quality training data for the per-tenant model adapter. Every interaction with the Doorman through this interface is a curated corpus contribution.
 
 ## Why terminal interactions are high-quality training data
 
@@ -47,11 +47,11 @@ If the operator dismisses without providing a verdict, the tuple is captured as 
 
 ## Adapter quality budget
 
-Published fine-tuning literature suggests 200 to 500 high-quality verdict-signed interactions are sufficient for a first adapter training cycle in a narrow domain. [^2] Foundry's intended sequence for each tenant is: accumulate signed interactions from dogfood operations, train the first per-tenant adapter, apply a validation quality gate, and promote the adapter to the deployment. Each subsequent training cycle incorporates additional interactions, progressively tuning the adapter to the customer's specific environment — their systemd units, their seed taxonomy, their workflow vocabulary.
+Published fine-tuning literature suggests 200 to 500 high-quality verdict-signed interactions are sufficient for a first adapter training cycle in a narrow domain. [^2] The platform's intended sequence for each tenant is: accumulate signed interactions from dogfood operations, train the first per-tenant adapter, apply a validation quality gate, and promote the adapter to the deployment. Each subsequent training cycle incorporates additional interactions, progressively tuning the adapter to the customer's specific environment — their systemd units, their seed taxonomy, their workflow vocabulary.
 
 ## Per-tenant adapter ownership
 
-The corpus produced by a customer's operators trains that customer's adapter, not a general adapter. Per the [[customer-owned-graph-ip]] convention, the trained adapter weights are the customer's property. Foundry distributes the model architecture and the training pipeline; the customer retains the trained adapter that results.
+The corpus produced by a customer's operators trains that customer's adapter, not a general adapter. Per the [[customer-owned-graph-ip]] convention, the trained adapter weights are the customer's property. The platform distributes the model architecture and the training pipeline; the customer retains the trained adapter that results.
 
 ## Verdict capture discipline
 

@@ -50,7 +50,7 @@ The freely transferable property distinguishes a sovereign asset from a service 
 
 When a business dissolves or splits, each party receives their share of the graph as a portable, cryptographically-signed artefact. When the acquiring party in a corporate transaction imports the bundle, patient or client records, audit history, and operational patterns are available immediately with verifiable provenance.
 
-If Foundry itself ceases operations, the customer continues operating their Totebox indefinitely. The deterministic substrate works without Foundry. The customer loses the ability to receive new vertical packs and to transact on Foundry's marketplace, but their existing operations do not pause.
+If the platform itself ceases operations, the customer continues operating their Totebox indefinitely. The deterministic substrate works without the platform. The customer loses the ability to receive new vertical packs and to transact on the platform's marketplace, but their existing operations do not pause.
 
 ## Implementation requirement
 

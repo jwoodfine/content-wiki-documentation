@@ -31,7 +31,7 @@ references:
  text: "OSC Staff Notice 51-721 Forward-Looking Information Disclosure"
 ---
 
-Foundry's Location Intelligence Substrate is a flat-file, open-GIS architecture that lets customers own their geographic datasets end-to-end — no tile API billing, no warehouse licensing, no cloud-vendor lock-in. The substrate is built on Apache-licensed open-data foundations (Overture Maps Foundation, Foursquare Open Source Places) and rendered via a Rust-aligned open-source stack (MapLibre GL JS, Martin tile server, PMTiles).[^1][^2]
+The Location Intelligence Substrate is a flat-file, open-GIS architecture that lets customers own their geographic datasets end-to-end — no tile API billing, no warehouse licensing, no cloud-vendor lock-in. The substrate is built on Apache-licensed open-data foundations (Overture Maps Foundation, Foursquare Open Source Places) and rendered via a Rust-aligned open-source stack (MapLibre GL JS, Martin tile server, PMTiles).[^1][^2]
 
 The first deployed surface is `gis.woodfinegroup.com` — a co-location map showing retail anchor co-presence across the United States, Canada, Mexico, and Spain.
 
@@ -43,7 +43,7 @@ Three options exist for canonical storage of geographic records:
 
 **Database canonical** — PostgreSQL plus a spatial extension, the genre's industry default. Advantages: rich spatial SQL, multi-writer concurrency, production-tested operations. Limitation: the customer's data lives in a running daemon they must operate; portability requires a dump-and-restore that is not a directory move.
 
-**Hybrid** — flat-file canonical, ephemeral database materialised from the flat-file as a query cache. Matches the vault-as-canonical, derived-tables-as-cache approach Foundry uses for bookkeeping.
+**Hybrid** — flat-file canonical, ephemeral database materialised from the flat-file as a query cache. Matches the vault-as-canonical, derived-tables-as-cache approach the platform uses for bookkeeping.
 
 For workloads of tens of thousands of POI records across a small number of countries, with infrequent batch writes and read-mostly queries, flat-file is sufficient and is the architecture both Foursquare and Overture Maps Foundation chose for their substrate releases.[^1][^2] The recommendation: GeoParquet as the canonical at-rest format (one file per country per service, rolled monthly), JSONL siblings for git-tracked human-diffable history, FlatGeobuf as the browser-streamable derivative.
 
@@ -98,9 +98,9 @@ At 15,000 POI records (combined coverage across four countries and three brand f
 
 Retail co-location clustering is a documented phenomenon with academic precedent: major retail anchor categories exhibit strong tendencies toward mutual proximity. Costco entry effects on neighbouring retailers have been studied formally. The co-location analysis the substrate produces maps directly to established methodology (average distance to nearest neighbour, tested against a permutation null distribution).
 
-## Composition with the rest of Foundry
+## Composition with the rest of the platform
 
-The co-location triples produced by the location intelligence substrate compose with the rest of the Foundry substrate: a retail catchment polygon from the GIS layer and a building envelope from the BIM layer can share the same coordinate frame, the same per-element YAML sidecars, and the same WORM ledger anchoring. Two clusters; one substrate.
+The co-location triples produced by the location intelligence substrate compose with the rest of the platform substrate: a retail catchment polygon from the GIS layer and a building envelope from the BIM layer can share the same coordinate frame, the same per-element YAML sidecars, and the same WORM ledger anchoring. Two clusters; one substrate.
 
 `service-slm` is available for routine annotation work (suggesting categories for newly-ingested POIs, summarising dataset deltas, labelling anomalies) but the platform is fully functional with the Doorman shut down — the Optional Intelligence principle applied to geographic data. This is by design: GIS analysis does not require AI; AI is additive.
 

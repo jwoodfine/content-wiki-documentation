@@ -5,7 +5,7 @@ slug: seed-taxonomy-as-smb-bootstrap
 category: substrate
 type: topic
 quality: complete
-short_description: "Every Foundry tenant deployment provisions a four-part seed taxonomy — Archetypes, Chart of Accounts, Domains, Themes — as the knowledge graph bootstrap."
+short_description: "Every tenant deployment provisions a four-part seed taxonomy — Archetypes, Chart of Accounts, Domains, Themes — as the knowledge graph bootstrap."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
@@ -14,15 +14,15 @@ cites: []
 paired_with: seed-taxonomy-as-smb-bootstrap.es.md
 ---
 
-Every Foundry tenant deployment begins with a **seed taxonomy**: a compact, hand-tunable four-part structure that forms the initial scaffold of the per-tenant knowledge graph. The four parts are Archetypes, Chart of Accounts, Domains, and Themes. Each entity carries gravity keywords — explainable keyword anchors that drive classification of incoming content.
+Every tenant deployment begins with a **seed taxonomy**: a compact, hand-tunable four-part structure that forms the initial scaffold of the per-tenant knowledge graph. The four parts are Archetypes, Chart of Accounts, Domains, and Themes. Each entity carries gravity keywords — explainable keyword anchors that drive classification of incoming content.
 
 ## The four parts
 
-**Archetypes — who acts.** Five to seven role-by-cognitive-pattern identities. The Foundry default carries five universal roles that appear in some form in every business regardless of industry: the Executive (Strategic Direction), the Guardian (Risk and Compliance), the Fiduciary (Resource Integrity), the Architect (System Design), and the Constructor (Physical Realization). Industry-specific roles are added via [[vertical-seed-packs-marketplace]].
+**Archetypes — who acts.** Five to seven role-by-cognitive-pattern identities. The default carries five universal roles that appear in some form in every business regardless of industry: the Executive (Strategic Direction), the Guardian (Risk and Compliance), the Fiduciary (Resource Integrity), the Architect (System Design), and the Constructor (Physical Realization). Industry-specific roles are added via [[vertical-seed-packs-marketplace]].
 
 **Chart of Accounts — what business this is.** Five to ten industry-specific business profiles, each with an identifier, a profile name, a sub-domain, and gravity keywords. The profiles mirror the business's actual revenue and expense categories. A property development firm's Chart of Accounts looks different from a law firm's or a regional hospital's; the form is consistent while the substance is industry-specific.
 
-**Domains — macro categories of work.** Three to five macro categories that group work units. The Foundry default provides Corporate, Projects, and Documentation. Each Domain holds a Glossary and Topic collection that structure the wiki content, composed through the editorial pipeline.
+**Domains — macro categories of work.** Three to five macro categories that group work units. The default provides Corporate, Projects, and Documentation. Each Domain holds a Glossary and Topic collection that structure the wiki content, composed through the editorial pipeline.
 
 **Themes — time-bound initiatives.** Four to ten active themes representing current strategic focus. Each Theme carries an identifier, a short name, and gravity keywords. Themes are the most volatile part of the taxonomy — they may change quarterly as initiatives open and close.
 
@@ -36,13 +36,13 @@ Embedding similarity is provided at a separate layer to augment keyword classifi
 
 ## Provisioning a new tenant
 
-When a new Foundry tenant is provisioned, the operator selects a Vertical Seed Pack (see [[vertical-seed-packs-marketplace]]) appropriate to their industry. The service imports the pack's JSON files into the per-tenant graph. The operator then customizes the result — adding, editing, or removing entities — using the TUI. A typical small business is intended to complete the review and customization in approximately 30 minutes.
+When a new tenant is provisioned, the operator selects a Vertical Seed Pack (see [[vertical-seed-packs-marketplace]]) appropriate to their industry. The service imports the pack's JSON files into the per-tenant graph. The operator then customizes the result — adding, editing, or removing entities — using the TUI. A typical small business is intended to complete the review and customization in approximately 30 minutes.
 
 ## Structural difference from enterprise ontology approaches
 
 Enterprise software platforms tend to optimize their ontologies for completeness across all possible customers. Any specific customer faces an extensive hierarchy and typically requires specialist staff to configure it for their needs.
 
-Foundry's seed taxonomy optimizes for actionability for one specific customer. The entire taxonomy is intended to be readable and understandable by the customer's own operators in a single session. The trade-off is that the taxonomy does not transfer unchanged between customers — each vertical pack is industry-specific. The benefit is that the customer can operate the taxonomy themselves without engaging ontology specialists.
+The platform's seed taxonomy optimizes for actionability for one specific customer. The entire taxonomy is intended to be readable and understandable by the customer's own operators in a single session. The trade-off is that the taxonomy does not transfer unchanged between customers — each vertical pack is industry-specific. The benefit is that the customer can operate the taxonomy themselves without engaging ontology specialists.
 
 ## Relationship to the knowledge graph
 

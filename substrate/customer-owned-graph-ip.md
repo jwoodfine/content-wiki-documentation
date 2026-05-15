@@ -14,11 +14,11 @@ cites: []
 paired_with: customer-owned-graph-ip.es.md
 ---
 
-**Customer-Owned Graph IP** is the principle that the per-tenant knowledge graph held in `service-content` is the customer's intellectual property, not a by-product of using the Foundry platform. The trained model adapters produced from that customer's corpus are also the customer's property.
+**Customer-Owned Graph IP** is the principle that the per-tenant knowledge graph held in `service-content` is the customer's intellectual property, not a by-product of using the platform. The trained model adapters produced from that customer's corpus are also the customer's property.
 
 ## What ownership means
 
-Every node, edge, mutation, and audit-ledger entry scoped to a tenant's module identifier is owned by that tenant. Foundry has no claim to aggregate, resell, or use tenant graph data outside the specific per-tenant opt-ins defined elsewhere in the Doctrine.
+Every node, edge, mutation, and audit-ledger entry scoped to a tenant's module identifier is owned by that tenant. The platform has no claim to aggregate, resell, or use tenant graph data outside the specific per-tenant opt-ins defined in the platform's architecture.
 
 Ownership carries four operational properties:
 
@@ -26,21 +26,21 @@ Ownership carries four operational properties:
 
 **No format lock-in.** The export bundle uses open formats: a Cypher dump for the graph, JSONL for the audit ledger, and standard tensor formats for the adapter weights. The bundle is importable into any compatible system.
 
-**No aggregate license.** Foundry does not retain rights to use the customer's data to train cross-tenant models without explicit per-tenant consent.
+**No aggregate license.** The platform does not retain rights to use the customer's data to train cross-tenant models without explicit per-tenant consent.
 
-**Transfer of ownership.** The customer may sell, gift, or transfer their Totebox and export bundle without Foundry's involvement. This is addressed in more detail in [[substrate-without-inference-base-case]].
+**Transfer of ownership.** The customer may sell, gift, or transfer their Totebox and export bundle without vendor involvement. This is addressed in more detail in [[substrate-without-inference-base-case]].
 
 ## Why this matters
 
 Most enterprise software platforms shape customer data to the vendor's ontology. When a customer attempts to leave, the data must be re-shaped to fit whatever system they are moving to — a migration project that typically requires vendor cooperation and specialist staff.
 
-Foundry's approach inverts this. The customer's data is shaped by their own seed taxonomy (see [[seed-taxonomy-as-smb-bootstrap]]). Export is a single-command operation producing an open-format bundle. The customer's access to their data does not depend on Foundry's servers remaining operational.
+The platform's approach inverts this. The customer's data is shaped by their own seed taxonomy (see [[seed-taxonomy-as-smb-bootstrap]]). Export is a single-command operation producing an open-format bundle. The customer's access to their data does not depend on the platform's servers remaining operational.
 
-The economic complement is the transaction-fee pricing model (see [[direct-payment-settlement]]): the customer pays Foundry a fee only when they earn from their data, not a recurring subscription for access to their own records.
+The economic complement is the transaction-fee pricing model (see [[direct-payment-settlement]]): the customer pays a platform fee only when they earn from their data, not a recurring subscription for access to their own records.
 
 ## Relationship to reverse flows
 
-The [[reverse-flow-substrate]] describes the mechanisms by which a customer's accumulated graph may become a saleable asset — patterns such as a data marketplace or an ad exchange. These reverse flows are opt-in per tenant and require explicit operator consent at each transaction. The customer's ownership is the foundation that makes monetization a customer decision: the customer is selling or licensing their own intellectual property, with Foundry facilitating the transaction for a fee.
+The [[reverse-flow-substrate]] describes the mechanisms by which a customer's accumulated graph may become a saleable asset — patterns such as a data marketplace or an ad exchange. These reverse flows are opt-in per tenant and require explicit operator consent at each transaction. The customer's ownership is the foundation that makes monetization a customer decision: the customer is selling or licensing their own intellectual property, with the platform facilitating the transaction for a fee.
 
 ## Per-tenant isolation
 

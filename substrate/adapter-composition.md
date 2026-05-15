@@ -41,13 +41,13 @@ The composition is deterministic given the request context. There is no runtime 
 
 | Adapter | Loaded when | Ownership |
 |---|---|---|
-| `constitutional` | Always — every Foundry deployment | Constitutional adapter; ships with the knowledge commons (Apache 2.0) |
+| `constitutional` | Always — every platform deployment | Constitutional adapter; ships with the knowledge commons (Apache 2.0) |
 | `engineering` | Request scope is "build or modify the platform" | Vendor-curated; offered to Customers via service contract |
 | `tenant` | Request scope operates on tenant data | Inside Customer Totebox; per-tenant; never leaves customer storage |
 | `role` | Request originates from a Master/Root/Task session | Universal across deployments; learned from doctrine and role-tagged trajectories |
 | `cluster` | Request scope is a specific project cluster | Per-cluster; declared in the cluster manifest |
 
-The constitutional adapter is universal and is loaded by every Foundry deployment. The tenant adapter is strictly per-tenant and is produced and held inside the Customer Totebox. The engineering adapter ships with the knowledge commons and is not treated as private vendor IP.
+The constitutional adapter is universal and is loaded by every platform deployment. The tenant adapter is strictly per-tenant and is produced and held inside the Customer Totebox. The engineering adapter ships with the knowledge commons and is not treated as private vendor IP.
 
 ## Implementation
 
@@ -69,7 +69,7 @@ This solves AI drift at the substrate level: the model is verifiably aligned to 
 
 The analogy maps precisely:
 
-| OS concept | AI concept | Foundry artifact |
+| OS concept | AI concept | Platform artifact |
 |---|---|---|
 | Firmware | Pretrained base model | OLMo 3 7B / 32B GGUF |
 | Kernel | Request router | Doorman (`service-slm`) |

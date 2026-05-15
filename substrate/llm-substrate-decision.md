@@ -71,7 +71,7 @@ The customer's routing configuration determines which tier handles which request
 
 ## The intended continued-pretraining path
 
-The platform's intended multi-year trajectory, as currently planned, is to move from using OLMo 3 as a base through a process of continued pretraining that produces PointSav-OLMo-N — a derivative model trained on accumulated Foundry corpus data, customer LoRA adapter distillation, and curated public material. Year two onwards is the intended start window for the first continued-pretraining run, targeting the 7B variant at an estimated cost of $30,000 to $100,000 on cloud GPU infrastructure. This trajectory is planned but not yet initiated; the current platform operates on the published OLMo 3 base.
+The platform's intended multi-year trajectory, as currently planned, is to move from using OLMo 3 as a base through a process of continued pretraining that produces PointSav-OLMo-N — a derivative model trained on accumulated platform corpus data, customer LoRA adapter distillation, and curated public material. Year two onwards is the intended start window for the first continued-pretraining run, targeting the 7B variant at an estimated cost of $30,000 to $100,000 on cloud GPU infrastructure. This trajectory is planned but not yet initiated; the current platform operates on the published OLMo 3 base.
 
 The material assumption underlying this trajectory is that the Open Data Commons license on Dolma 3 and the Apache 2.0 license on OLMo 3's training code remain in effect and permit commercial continued pretraining. That assumption holds as of May 2026; it would require re-evaluation if the license terms changed.
 

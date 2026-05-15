@@ -20,7 +20,7 @@ paired_with: knowledge-graph-grounded-apprenticeship.es.md
 
 **Knowledge-Graph-Grounded Apprenticeship** is the pattern by which the Doorman (`service-slm`) consults the per-tenant knowledge graph in `service-content` before routing every substantive inference request. The grounding context — a subgraph of entities and relationships relevant to the query — is supplied to the model alongside the request. The resulting training tuple carries both the graph context and the model's response, which means the knowledge graph and the per-tenant adapter improve together over time.
 
-This pattern encodes Doctrine claim #44 and extends the apprenticeship substrate with a graph-grounding layer.
+This pattern extends the apprenticeship substrate with a graph-grounding layer.
 
 ## Pre-inference grounding
 
