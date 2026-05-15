@@ -1,41 +1,84 @@
 ---
 schema: foundry-doc-v1
-title: "Console OS"
+title: "os-console — The Command Ledger"
 slug: console-os
 category: systems
-type: topic
+type: concept
 quality: complete
-short_description: "Console OS is the terminal-based interface and Type II Hypervisor used for managing PointSav services and interacting with the Digital Twin record-keeping system."
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-04
+language_protocol: PROSE-TOPIC
+last_edited: 2026-05-15
 editor: pointsav-engineering
+paired_with: console-os.es.md
+short_description: "os-console is the human-facing surface of the PointSav platform — a Command Ledger that connects to a Totebox and renders its state to the operator via a keyboard-driven, F-key-structured interface."
 cites: []
 ---
 
+`os-console` is the human-facing surface of the PointSav platform — a Command Ledger that connects to one [[totebox-os|Totebox]] and renders its state to the operator. It does not store data and does not run services; it is a high-fidelity terminal purpose-built around keyboard-driven operator flow. The reference point is the Bloomberg Terminal: a single keyboard, a small set of function keys, and a relentless focus on the operator's context. The binary is written from scratch in Rust for sub-50-millisecond cold start and a 15-megabyte footprint. This article covers how os-console runs, the F-key surface, the rendering stack, and the two operating modes.
 
-**Console OS** is a lightweight, terminal-based operating system designed for the administration of PointSav services and infrastructure. It operates as the primary interface for system administrators and power users, providing direct access to the platform's underlying mechanics.
+## How it runs
 
-## Hypervisor Architecture
+`os-console` ships as a single executable. On the host operating system — Windows, macOS, or Linux — it acts as a Virtual Machine Monitor: it uses the host's native virtualisation API to create a small, isolated VM in RAM and boots an seL4 environment inside it.
 
-In the PointSav system, **Console OS** functions as a **Type II Hypervisor**. It typically deploys within a Virtual machine on a host device, allowing users to run standard desktop operating systems on their local hardware while maintaining a secure, isolated environment for institutional management.
+| Host | Native VMM API |
+|---|---|
+| Windows | Windows Hypervisor Platform (WHPX) |
+| macOS | `Hypervisor.framework` |
+| Linux | KVM |
 
-For users requiring a native execution environment, Console OS can also be deployed directly onto Bare metal resources.
+The operator thinks they opened an application. What they have done is spun up a hardware-isolated secure environment in roughly 50 milliseconds. When the application closes, the secure memory is wiped. Nothing touches the host hard drive.
 
-## Operational Interface
+## The F-key surface
 
-Console OS prioritizes stability and efficiency over graphical novelty. The system architecture is built around two primary interaction models:
+The interface organises every entity's reality into a fixed set of pillars. Each pillar is a function key:
 
-1.  **Command Line Interface (CLI):** Provides the most granular control for technical configuration, deployment orchestration, and scripting.
-2.  **Terminal User Interface (TUI):** Offers a semi-graphical, keyboard-driven environment for routine administrative tasks, such as managing Totebox Archive states and monitoring system telemetry.
+| Key | Pillar | Service |
+|---|---|---|
+| F1 | HELP | [[app-console-input\|content-wiki-documentation]] (read-only operating procedures) |
+| F2 | PEOPLE | [[service-people\|service-people]] — the identity ledger |
+| F3 | EMAIL | [[service-email\|service-email]] — the Comm Diode |
+| F4 | CONTENT | [[service-content\|service-content]] — the drafting and synthesis engine |
+| F5 | MINUTEBOOK | [[service-minutebook\|service-minutebook]] — deep records |
+| F6 | BOOKKEEPER | [[service-bookkeeper\|service-bookkeeper]] — the financial ledger |
+| F12 | INPUT MACHINE | [[app-console-input]] — the human-in-the-loop ingestion gateway |
 
-## Record Keeping and the Digital Twin
+F12 is mandatory per [[sys-adr-10]]. The [[app-console-input|Input Machine]] is the only surface through which raw external files can enter a Totebox. Files dropped into F12 have execution permissions stripped, are tagged against the operator's [[archetypes-and-chart-of-accounts|Chart of Accounts]], and are routed to F5 or F6.
 
-A critical function of Console OS is providing the secure path to institutional **Record Keeping**. It serves as the gateway to the **Digital Twin**, allowing administrators to remotely control physical assets (such as Woodfine Buildings) and view real-time data from IoT Sensors through an audited, cryptographically verified session.
+## The rendering stack
 
-## See Also
+`os-console` is not a TUI inside a host terminal. It is a standalone graphics application that happens to display text. The stack is owned end-to-end:
 
-- [[topic-totebox-os]]
-- [[topic-infrastructure-os]]
-- [[topic-mediakit-os]]
-- [[topic-privategit-os]]
+| Layer | Component | Notes |
+|---|---|---|
+| Window | `pointsav-window` | Custom Win32 / Cocoa / X11/Wayland wrapper |
+| GPU | `pointsav-gpu` | WGPU (Vulkan / Metal / DX12 abstraction); licence embedded in binary |
+| Text | `pointsav-text` | Signed Distance Field (SDF) glyph renderer; infinite-zoom fidelity |
+| Layout | `pointsav-layout` | Recursive row/column grid in roughly 500 lines of Rust |
+| Widget logic | Forked from ratatui core | Logic only; ratatui's renderer replaced by the WGPU pipeline |
+
+The result is a terminal interface with variable-weight headers, bloom effects, and smooth scrolling — while remaining purely keyboard-driven and rendering at the fidelity required by ISO 19650 document-state suffixes.
+
+## Direct mode and aggregate mode
+
+`os-console` operates in two modes determined by what it pairs with:
+
+| Mode | Pair | Use case |
+|---|---|---|
+| Direct | One [[totebox-os\|Totebox]] | A single entity's deep view; the default for individual operators |
+| Aggregate | One [[os-orchestration\|os-orchestration]] (which aggregates many Toteboxes) | A portfolio view for executives and commercial-tier deployments |
+
+Both modes use the same `os-console` binary. The aggregator does not require a different Console. The complexity lives in `os-orchestration`.
+
+## Single, unified, universal
+
+`os-console` is one product. There is no "Home" edition and no "Pro" edition. An individual hosting one Totebox uses the same Command Ledger as the administrator of a Reporting Issuer aggregating hundreds. Commercial differentiation is determined by the presence or absence of `os-orchestration`, never by a tiered Console.
+
+## See also
+
+- [[totebox-os]] — the Totebox archive that os-console connects to and renders
+- [[app-console-input]] — the F12 Input Machine; deep coverage of the mandatory ingestion gateway
+- [[diode-standard]] — why commands flow in one direction through the established pair
+- [[os-family-overview]] — the five OS surfaces and how os-console fits among them
+- [[deployment-patterns]] — how os-console appears in each of the six canonical deployment configurations
