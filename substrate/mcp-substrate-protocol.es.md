@@ -8,9 +8,13 @@ quality: published
 short_description: "Cada servicio Foundry del Anillo 1 y Anillo 2 expone una interfaz de servidor MCP como su contrato externo primario, con el Portero actuando como la puerta de enlace MCP."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "Anthropic. 'Model Context Protocol Specification.' modelcontextprotocol.io, 2025."
+    url: "https://modelcontextprotocol.io/specification/2025-11-25"
 paired_with: mcp-substrate-protocol.md
 ---
 
@@ -19,7 +23,7 @@ paired_with: mcp-substrate-protocol.md
 
 ## Por qué MCP es a nivel de substrato
 
-El Protocolo de Contexto de Modelo se ha convertido en el estándar de la industria para la composición de aplicaciones nativas de IA. Define una interfaz estable y legible por máquinas entre clientes, servidores y procesos anfitriones. Foundry lo adopta a nivel de substrato porque la alternativa — formatos de cable personalizados por servicio — acumula deuda de versionado, costos de prueba por par de contratos e implementaciones de clientes personalizados en cada consumidor.
+El Protocolo de Contexto de Modelo se ha convertido en el estándar de la industria para la composición de aplicaciones nativas de IA. Define una interfaz estable y legible por máquinas entre clientes, servidores y procesos anfitriones. [^1] Foundry lo adopta a nivel de substrato porque la alternativa — formatos de cable personalizados por servicio — acumula deuda de versionado, costos de prueba por par de contratos e implementaciones de clientes personalizados en cada consumidor.
 
 El resultado práctico: un agente construido por el cliente, una extensión de IDE y la TUI del operador de Foundry interactúan con las mismas interfaces de servicio usando el mismo protocolo. No existe una "API para desarrolladores" distinta de la "API para usuarios." El contrato de cable está unificado.
 

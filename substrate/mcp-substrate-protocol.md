@@ -8,9 +8,13 @@ quality: published
 short_description: "Every Foundry Ring 1 and Ring 2 service exposes a Model Context Protocol server interface as its primary external contract, with the Doorman as the MCP gateway."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "Anthropic. 'Model Context Protocol Specification.' modelcontextprotocol.io, 2025."
+    url: "https://modelcontextprotocol.io/specification/2025-11-25"
 paired_with: mcp-substrate-protocol.es.md
 ---
 
@@ -18,7 +22,7 @@ paired_with: mcp-substrate-protocol.es.md
 
 ## Why MCP is substrate-level
 
-The Model Context Protocol has become the industry standard for AI-native application composition. It defines a stable, machine-readable interface between clients, servers, and host processes. Foundry adopts it at the substrate level because the alternative — bespoke per-service wire formats — accumulates versioning debt, per-pair contract testing costs, and custom client implementations in every consumer. MCP is the coordination point that prevents that drift.
+The Model Context Protocol has become the industry standard for AI-native application composition. It defines a stable, machine-readable interface between clients, servers, and host processes. [^1] Foundry adopts it at the substrate level because the alternative — bespoke per-service wire formats — accumulates versioning debt, per-pair contract testing costs, and custom client implementations in every consumer. MCP is the coordination point that prevents that drift.
 
 The practical result: a customer-built agent, an IDE extension, and the Foundry operator TUI all interact with the same service interfaces using the same protocol. There is no "developer API" distinct from the "user API." The wire contract is unified.
 
@@ -63,8 +67,3 @@ The Doorman's existing OpenAI-compatible HTTP interface is preserved alongside M
 - [[code-for-machines-first]] — MCP as the structural realization of machine-first service contracts
 - [[vertical-seed-packs-marketplace]] — planned packs ship with vertical-specific MCP server extensions
 
-## References
-
-1. Doctrine claim #46 — MCP-as-Substrate-Protocol (ratified v0.1.0).
-2. MCP specification — https://modelcontextprotocol.io/specification/2025-11-25
-3. `conventions/single-boundary-compute-discipline.md` — claim #43 composition.

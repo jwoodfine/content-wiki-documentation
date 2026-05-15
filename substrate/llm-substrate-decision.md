@@ -8,9 +8,16 @@ quality: published
 short_description: "The rationale for selecting OLMo 3 as the local and GPU-burst language model substrate: the only fully open model family — training data, training code, and checkpoints included — that permits continued pretraining and satisfies a Canadian public-company procurement posture."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "AI2. 'OLMo 3.' Allen Institute for AI, 2025."
+    url: "https://allenai.org/blog/olmo3"
+  - id: 2
+    text: "AI2. 'Dolma 3 Dataset.' Open Data Commons License. Allen Institute for AI, 2024."
+    url: "https://huggingface.co/datasets/allenai/dolma"
 paired_with: llm-substrate-decision.es.md
 ---
 
@@ -26,7 +33,7 @@ The language model market in 2026 offers three distinct depths of openness, and 
 
 **Level 3 — Fully open model.** Training data, training code, and checkpoints at every stage of training are published, alongside the weights and a permissive license. At this level you can continue pretraining — starting from a known checkpoint, on your own corpus, to produce a derivative model that your organisation subsequently owns.
 
-OLMo 3 is the only model in the 2026 non-Chinese open model landscape that operates at Level 3. Its training data is the Dolma 3 corpus (9.3 trillion tokens, published under the Open Data Commons license). Its training code is published under Apache 2.0. Checkpoints at intermediate stages are available for download.
+OLMo 3 is the only model in the 2026 non-Chinese open model landscape that operates at Level 3. [^1] Its training data is the Dolma 3 corpus (9.3 trillion tokens, published under the Open Data Commons license). [^2] Its training code is published under Apache 2.0. Checkpoints at intermediate stages are available for download.
 
 For a platform designed to compound over a five-year horizon — where the intended outcome is a customer-owned, specialised base model trained on accumulated customer data — Level 3 is the only depth that makes that outcome possible. Level 1 and Level 2 produce fine-tuning capability but not ownership of the base.
 
@@ -75,9 +82,3 @@ The material assumption underlying this trajectory is that the Open Data Commons
 - [[trajectory-substrate]] — the corpus capture mechanism that feeds continued pretraining
 - [[compounding-doorman]] — the service that routes all inference calls across the three compute tiers
 
-## References
-
-1. AllenAI OLMo 3 announcement and technical report — <https://allenai.org/blog/olmo3>
-2. Dolma 3 dataset, Open Data Commons license — <https://huggingface.co/datasets/allenai/dolma>
-3. OLMo 3.1 release notes (December 2025) — AllenAI engineering blog.
-4. `conventions/llm-substrate-decision.md` — source convention for this article.

@@ -8,9 +8,16 @@ quality: published
 short_description: "La justificación para seleccionar OLMo 3 como sustrato de inferencia local y en GPU: la única familia de modelos completamente abierta — datos, código de entrenamiento y puntos de control incluidos — que permite el preentrenamiento continuo y satisface la postura de adquisición de una empresa pública canadiense."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "AI2. 'OLMo 3.' Allen Institute for AI, 2025."
+    url: "https://allenai.org/blog/olmo3"
+  - id: 2
+    text: "AI2. 'Dolma 3 Dataset.' Open Data Commons License. Allen Institute for AI, 2024."
+    url: "https://huggingface.co/datasets/allenai/dolma"
 paired_with: llm-substrate-decision.md
 ---
 
@@ -27,7 +34,7 @@ El mercado de modelos de lenguaje en 2026 ofrece tres niveles distintos de apert
 
 **Nivel 3 — Modelo completamente abierto.** Se publican los datos de entrenamiento, el código de entrenamiento y los puntos de control en cada etapa, junto con los pesos y una licencia permisiva. A este nivel es posible continuar el preentrenamiento: partiendo de un punto de control conocido, sobre un corpus propio, para producir un modelo derivado que la organización posee de forma efectiva.
 
-OLMo 3 es el único modelo en el panorama abierto no chino de 2026 que opera en el Nivel 3. Sus datos de entrenamiento son el corpus Dolma 3 (9.3 billones de tokens, publicado bajo Open Data Commons). Su código de entrenamiento es Apache 2.0. Los puntos de control intermedios están disponibles públicamente.
+OLMo 3 es el único modelo en el panorama abierto no chino de 2026 que opera en el Nivel 3. [^1] Sus datos de entrenamiento son el corpus Dolma 3 (9.3 billones de tokens, publicado bajo Open Data Commons). [^2] Su código de entrenamiento es Apache 2.0. Los puntos de control intermedios están disponibles públicamente.
 
 ## Por qué se descartaron las alternativas
 
