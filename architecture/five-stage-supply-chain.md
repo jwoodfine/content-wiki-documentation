@@ -14,9 +14,16 @@ editor: pointsav-engineering
 paired_with: five-stage-supply-chain.es.md
 short_description: "The five-stage sovereign supply chain describes how code moves from a contributor's local environment to a production deployment through five distinct stages, with a double-blind air-gap that lets contributors work on production systems without ever touching production credentials or seeing production data."
 cites: []
+references:
+  - id: 1
+    text: "OpenSSF. 'Supply Chain Levels for Software Artifacts (SLSA) v1.0.' Open Source Security Foundation, 2023."
+    url: "https://slsa.dev/spec/v1.0/"
+  - id: 2
+    text: "Hammant, P. 'Trunk Based Development.' trunkbaseddevelopment.com, 2017."
+    url: "https://trunkbaseddevelopment.com/"
 ---
 
-Code moves from a contributor's local environment to a production deployment through five distinct stages — each with a defined actor, a specific action, and an industry-standard counterpart. The arrangement is deliberately circular: every working session begins by resetting to the freshly-verified vendor truth, eliminating the logic drift that accumulates when contributors build atop their own outdated branches. A single governance gate — the administrator's squash-and-merge — is where intellectual property transfers and experimental commits are collapsed into a single corporate record. This article covers the five stages, the double-blind air-gap, and the repository topology.
+Code moves from a contributor's local environment to a production deployment through five distinct stages — each with a defined actor, a specific action, and an industry-standard counterpart. The arrangement is deliberately circular: every working session begins by resetting to the freshly-verified vendor truth, eliminating the logic drift that accumulates when contributors build atop their own outdated branches. A single governance gate — the administrator's squash-and-merge — is where intellectual property transfers and experimental commits are collapsed into a single corporate record. [^1] This article covers the five stages, the double-blind air-gap, and the repository topology.
 
 ## The five stages
 
@@ -41,7 +48,7 @@ Code moves from a contributor's local environment to a production deployment thr
 
 **Stage 5 — Deploy.** The customer pulls the verified tag onto its production hosts. The `--ff-only` constraint ensures that production cannot accumulate merge conflicts — it must mirror the customer's GitHub ledger exactly. If a deploy fails, the failure surfaces immediately rather than silently diverging.
 
-**The Loop — Reset.** The contributor fetches the verified vendor state into their local environment and rebases their next work on top. Every working session begins from the same point as every other contributor.
+**The Loop — Reset.** The contributor fetches the verified vendor state into their local environment and rebases their next work on top. Every working session begins from the same point as every other contributor. [^2]
 
 ## The double-blind air-gap
 

@@ -14,9 +14,16 @@ editor: pointsav-engineering
 paired_with: five-stage-supply-chain.md
 short_description: "La cadena de suministro soberana de cinco etapas describe cómo el código se mueve desde el entorno local de un contribuyente hasta una implementación de producción a través de cinco etapas distintas, con una brecha de aire de doble ciego que permite a los contribuyentes trabajar en sistemas de producción sin tocar credenciales de producción ni ver datos de producción."
 cites: []
+references:
+  - id: 1
+    text: "OpenSSF. 'Supply Chain Levels for Software Artifacts (SLSA) v1.0.' Open Source Security Foundation, 2023."
+    url: "https://slsa.dev/spec/v1.0/"
+  - id: 2
+    text: "Hammant, P. 'Trunk Based Development.' trunkbaseddevelopment.com, 2017."
+    url: "https://trunkbaseddevelopment.com/"
 ---
 
-El código se mueve desde el entorno local de un contribuyente hasta una implementación de producción a través de cinco etapas distintas — cada una con un actor definido, una acción específica y un equivalente estándar de la industria. El arreglo es deliberadamente circular: cada sesión de trabajo comienza restableciendo al estado del proveedor verificado más reciente, eliminando la deriva lógica que se acumula cuando los contribuyentes construyen sobre sus propias ramas desactualizadas. Una única puerta de gobernanza — el squash-and-merge del administrador — es donde se transfiere la propiedad intelectual y los commits experimentales se colapsan en un único registro corporativo. Este artículo cubre las cinco etapas, la brecha de aire de doble ciego y la topología del repositorio.
+El código se mueve desde el entorno local de un contribuyente hasta una implementación de producción a través de cinco etapas distintas — cada una con un actor definido, una acción específica y un equivalente estándar de la industria. El arreglo es deliberadamente circular: cada sesión de trabajo comienza restableciendo al estado del proveedor verificado más reciente, eliminando la deriva lógica que se acumula cuando los contribuyentes construyen sobre sus propias ramas desactualizadas. Una única puerta de gobernanza — el squash-and-merge del administrador — es donde se transfiere la propiedad intelectual y los commits experimentales se colapsan en un único registro corporativo. [^1] Este artículo cubre las cinco etapas, la brecha de aire de doble ciego y la topología del repositorio.
 
 ## Las cinco etapas
 
@@ -41,7 +48,7 @@ El código se mueve desde el entorno local de un contribuyente hasta una impleme
 
 **Etapa 5 — Implementación.** El cliente extrae el tag verificado en sus hosts de producción. La restricción `--ff-only` garantiza que la producción no pueda acumular conflictos de fusión — debe reflejar exactamente el libro mayor de GitHub del cliente. Si una implementación falla, el fallo se manifiesta inmediatamente en lugar de divergir silenciosamente.
 
-**El Bucle — Reinicio.** El contribuyente obtiene el estado verificado del proveedor en su entorno local y reorganiza su próximo trabajo sobre él. Cada sesión de trabajo comienza desde el mismo punto que todos los demás contribuyentes.
+**El Bucle — Reinicio.** El contribuyente obtiene el estado verificado del proveedor en su entorno local y reorganiza su próximo trabajo sobre él. Cada sesión de trabajo comienza desde el mismo punto que todos los demás contribuyentes. [^2]
 
 ## La brecha de aire de doble ciego
 

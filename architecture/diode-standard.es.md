@@ -14,9 +14,16 @@ editor: pointsav-engineering
 paired_with: diode-standard.md
 short_description: "El Estándar del Diodo es la topología de seguridad fundacional de la familia PointSav — una disciplina de flujo de comandos unidireccional donde el tráfico se mueve de la autoridad al sujeto y nunca al revés, eliminando estructuralmente los ataques de movimiento lateral al suprimir la lógica de enrutamiento que los haría posibles."
 cites: []
+references:
+  - id: 1
+    text: "Rose, S. et al. 'Arquitectura de Confianza Cero.' NIST SP 800-207, 2020."
+    url: "https://doi.org/10.6028/NIST.SP.800-207"
+  - id: 2
+    text: "MITRE. 'ATT&CK Tactic: Movimiento Lateral (TA0008).' MITRE Corporation, 2023."
+    url: "https://attack.mitre.org/tactics/TA0008/"
 ---
 
-En ingeniería eléctrica, un diodo conduce corriente en una dirección y la bloquea en la otra. El Estándar del Diodo aplica el mismo principio a los comandos en toda la familia de sistemas operativos PointSav: el tráfico fluye de la autoridad al sujeto, y nunca al revés. Es la topología de seguridad fundacional de toda la familia — no una característica de un solo sistema operativo, sino la ley que rige cómo todos los sistemas operativos se comunican entre sí. Este artículo cubre la jerarquía de autoridad, las tres categorías de tráfico, la eliminación estructural del movimiento lateral y el adaptador que hace cumplir el estándar.
+En ingeniería eléctrica, un diodo conduce corriente en una dirección y la bloquea en la otra. El Estándar del Diodo aplica el mismo principio a los comandos en toda la familia de sistemas operativos PointSav: el tráfico fluye de la autoridad al sujeto, y nunca al revés. [^1] Es la topología de seguridad fundacional de toda la familia — no una característica de un solo sistema operativo, sino la ley que rige cómo todos los sistemas operativos se comunican entre sí. Este artículo cubre la jerarquía de autoridad, las tres categorías de tráfico, la eliminación estructural del movimiento lateral y el adaptador que hace cumplir el estándar.
 
 ## La jerarquía
 
@@ -39,7 +46,7 @@ El control ascendente no está bloqueado por una regla de firewall. Está bloque
 
 ## Por qué esto importa
 
-La categoría de ataques llamada movimiento lateral — donde un atacante compromete un nodo y lo usa para alcanzar nodos más valiosos — es el patrón dominante en los informes modernos de brechas de seguridad. El Estándar del Diodo lo elimina estructuralmente.
+La categoría de ataques llamada movimiento lateral — donde un atacante compromete un nodo y lo usa para alcanzar nodos más valiosos — es el patrón dominante en los informes modernos de brechas de seguridad. [^2] El Estándar del Diodo lo elimina estructuralmente.
 
 | Escenario | Sin el Diodo | Con el Diodo |
 |---|---|---|
