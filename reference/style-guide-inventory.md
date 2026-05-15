@@ -104,7 +104,7 @@ All four target the Woodfine Management tenant.
 | cluster-totebox-corporate-1 | active | woodfine | Serving production traffic |
 | cluster-totebox-property-1 | active | woodfine | Read-only access until Q3 |
 | media-knowledge-documentation-1 | dormant | woodfine | Awaiting DNS cutover |
-| route-network-admin-1 | pending | woodfine | Instance directory created; not provisioned |
+| route-network-admin | pending | woodfine | Showcase folder exists; instance not provisioned |
 ```
 
 ## See also
