@@ -14,6 +14,13 @@ editor: pointsav-engineering
 paired_with: os-workplace.md
 short_description: "os-workplace es el sistema operativo de escritorio gratuito de la familia PointSav — un escritorio soberano nativo en Rust que se empareja con un archivo Totebox, funciona en hardware de referencia deliberado y sirve como puerta de entrada a la línea de productos comerciales de PointSav."
 cites: []
+references:
+  - id: 1
+    text: "ISO 19005-1:2005 — Gestión de documentos — Formato de archivo de documento electrónico para preservación a largo plazo — Parte 1: Uso de PDF 1.4 (PDF/A-1)."
+    url: "https://www.iso.org/standard/38920.html"
+  - id: 2
+    text: "W3C. 'WebRTC 1.0: Comunicación en Tiempo Real entre Navegadores.' Recomendación W3C, 2021."
+    url: "https://www.w3.org/TR/webrtc/"
 ---
 
 `os-workplace` es el sistema operativo de escritorio gratuito de la familia PointSav. Proporciona un entorno de escritorio limpio, seguro y nativo en Rust que se empareja naturalmente con un archivo Totebox y lleva la disciplina de teclas de función y el modelo de seguridad de la plataforma a un usuario comunitario que lo instala por primera vez. La estrategia es deliberada: `os-workplace` es la puerta de entrada a la adopción. Un nuevo usuario lo instala porque es gratuito y rápido; una vez que su trabajo diario ocurre dentro del ecosistema PointSav, el agregador comercial `os-orchestration` se convierte en el siguiente paso lógico. Este artículo cubre el hardware de referencia, la suite de aplicaciones, el modelo de emparejamiento y la justificación estratégica de un escritorio gratuito.
@@ -35,12 +42,12 @@ Todas las aplicaciones son binarios nativos en Rust. La elección es razonada: u
 
 | Aplicación | Enfoque del código fuente |
 |---|---|
-| `app-workplace-pdfs` | Bifurcación de `pdf-rs`; solo fidelidad ISO PDF/A |
+| `app-workplace-pdfs` | Bifurcación de `pdf-rs`; solo fidelidad ISO PDF/A [^1] |
 | `app-workplace-wordprocessor` | Motor Typst para maquetación de documentos |
 | `app-workplace-spreadsheet` | IronCalc — motor Rust con matemáticas deterministas |
 | `app-workplace-email` | Bifurcación de Himalaya; TUI-primero, local-primero |
 | `app-workplace-browser` | Bifurcación de Servo; telemetría eliminada |
-| `app-workplace-communications` | Cliente Rust punto a punto basado en WebRTC |
+| `app-workplace-communications` | Cliente Rust punto a punto basado en WebRTC [^2] |
 | `app-workplace-chat` | Mensajería segura en tiempo real |
 | `app-workplace-file-manager` | Bifurcación de Broot; búsqueda difusa, activado por acciones |
 | `app-workplace-wiki` | Visor de documentación local-primero |

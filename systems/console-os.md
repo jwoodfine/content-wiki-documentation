@@ -14,6 +14,13 @@ editor: pointsav-engineering
 paired_with: console-os.es.md
 short_description: "os-console is the human-facing surface of the PointSav platform — a Command Ledger that connects to a Totebox and renders its state to the operator via a keyboard-driven, F-key-structured interface."
 cites: []
+references:
+  - id: 1
+    text: "Green, C. 'Improved Alpha-Tested Magnification for Vector Textures and Special Effects.' ACM SIGGRAPH 2007 courses, 2007."
+    url: "https://dl.acm.org/doi/10.1145/1281500.1281665"
+  - id: 2
+    text: "ISO 19650-1:2018 — Organization and digitization of information about buildings and civil engineering works, including building information modelling (BIM)."
+    url: "https://www.iso.org/standard/68078.html"
 ---
 
 `os-console` is the human-facing surface of the PointSav platform — a Command Ledger that connects to one [[totebox-os|Totebox]] and renders its state to the operator. It does not store data and does not run services; it is a high-fidelity terminal purpose-built around keyboard-driven operator flow. The reference point is the Bloomberg Terminal: a single keyboard, a small set of function keys, and a relentless focus on the operator's context. The binary is written from scratch in Rust for sub-50-millisecond cold start and a 15-megabyte footprint. This article covers how os-console runs, the F-key surface, the rendering stack, and the two operating modes.
@@ -54,11 +61,11 @@ F12 is mandatory per [[sys-adr-10]]. The [[app-console-input|Input Machine]] is 
 |---|---|---|
 | Window | `pointsav-window` | Custom Win32 / Cocoa / X11/Wayland wrapper |
 | GPU | `pointsav-gpu` | WGPU (Vulkan / Metal / DX12 abstraction); licence embedded in binary |
-| Text | `pointsav-text` | Signed Distance Field (SDF) glyph renderer; infinite-zoom fidelity |
+| Text | `pointsav-text` | Signed Distance Field (SDF) glyph renderer [^1]; infinite-zoom fidelity |
 | Layout | `pointsav-layout` | Recursive row/column grid in roughly 500 lines of Rust |
 | Widget logic | Forked from ratatui core | Logic only; ratatui's renderer replaced by the WGPU pipeline |
 
-The result is a terminal interface with variable-weight headers, bloom effects, and smooth scrolling — while remaining purely keyboard-driven and rendering at the fidelity required by ISO 19650 document-state suffixes.
+The result is a terminal interface with variable-weight headers, bloom effects, and smooth scrolling — while remaining purely keyboard-driven and rendering at the fidelity required by ISO 19650 [^2] document-state suffixes.
 
 ## Direct mode and aggregate mode
 

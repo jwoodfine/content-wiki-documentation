@@ -14,6 +14,13 @@ editor: pointsav-engineering
 paired_with: totebox-os.md
 short_description: "os-totebox es la capa de archivo de la familia PointSav — una bóveda aislada a nivel de núcleo por entidad, que almacena registros como archivos planos inertes sin operación de borrado y los expone únicamente a través del Diodo bajo comando de os-console u os-orchestration."
 cites: []
+references:
+  - id: 1
+    text: "NIST. 'Directrices de Seguridad para Infraestructura de Almacenamiento.' SP 800-209, 2020."
+    url: "https://doi.org/10.6028/NIST.SP.800-209"
+  - id: 2
+    text: "Madhavapeddy, A. et al. 'Unikernels: Library Operating Systems for the Cloud.' ACM ASPLOS, 2013."
+    url: "https://dl.acm.org/doi/10.1145/2451116.2451167"
 ---
 
 `os-totebox` es la capa de archivo de la familia PointSav: una bóveda aislada a nivel de núcleo por entidad. Almacena los registros, ejecuta los servicios que los procesan y no expone nada más. Una entidad es cualquier cosa que necesita su propio conjunto de libros — una persona, una corporación, una propiedad inmobiliaria, un proyecto, un hogar. Cada entidad tiene su propio `os-totebox`. Los Toteboxes no comparten archivos, no comparten usuarios y no pueden verse entre sí. Se comunican únicamente a través del [[diode-standard|Diodo]], y solo bajo comando de [[console-os|os-console]] u [[os-orchestration]]. Este artículo cubre los servicios internos, la disciplina WORM, la evolución de la forma del host, los niveles de cómputo y el diseño libremente transferible.
@@ -37,7 +44,7 @@ Cada `os-totebox` aloja un conjunto fijo de servicios:
 
 ## La disciplina WORM
 
-`os-totebox` escribe cargas útiles sin procesar directamente en almacenamiento de bloque de solo adición. No existe operación de borrado en el flujo de código. Un servicio comprometido no puede sobrescribir el historial porque el verbo no existe en la interfaz de almacenamiento. Esta es la capa de aplicación arquitectónica para la integridad de procesamiento y la disciplina de segregación de activos.
+`os-totebox` escribe cargas útiles sin procesar directamente en almacenamiento de bloque de solo adición. No existe operación de borrado en el flujo de código. [^1] Un servicio comprometido no puede sobrescribir el historial porque el verbo no existe en la interfaz de almacenamiento. Esta es la capa de aplicación arquitectónica para la integridad de procesamiento y la disciplina de segregación de activos.
 
 Cada registro institucional vive como un archivo plano inerte — Markdown, YAML o CSV — que no requiere ningún tiempo de ejecución propietario para leer décadas después. Un libro mayor `.yaml` o registro `.csv` puede ser leído por cualquier editor de texto, en cualquier hardware, en cualquier década. El costo de migración de datos tiende a cero: el operador siempre tiene la fuente en un formato que ningún software propietario puede bloquear.
 
@@ -52,7 +59,7 @@ Cada registro institucional vive como un archivo plano inerte — Markdown, YAML
 | 3 | Monolito seL4 + Rust | Endurecimiento para producción (previsto) |
 | 4 | Unikernel — binario único, ~15 MB, arranque <50 ms | Estado final (previsto) |
 
-El objetivo unikernel es la meta de diseño. El estado final no tiene SSH, ni shell, ni Bash, ni intérprete Python — solo un binario compilado fusionado a los controladores de hardware. Un operador recompila el código fuente del proveedor en el monorepo y reinicia el nodo en la nube con la nueva imagen; no hay shell al que conectarse.
+El objetivo unikernel es la meta de diseño. [^2] El estado final no tiene SSH, ni shell, ni Bash, ni intérprete Python — solo un binario compilado fusionado a los controladores de hardware. Un operador recompila el código fuente del proveedor en el monorepo y reinicia el nodo en la nube con la nueva imagen; no hay shell al que conectarse.
 
 ## Niveles de cómputo
 

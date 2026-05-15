@@ -14,6 +14,13 @@ editor: pointsav-engineering
 paired_with: console-os.md
 short_description: "os-console es la superficie de cara al operador de la plataforma PointSav — un Libro Mayor de Comandos que se conecta a un Totebox y le presenta su estado al operador a través de una interfaz estructurada por teclas de función."
 cites: []
+references:
+  - id: 1
+    text: "Green, C. 'Improved Alpha-Tested Magnification for Vector Textures and Special Effects.' ACM SIGGRAPH 2007 courses, 2007."
+    url: "https://dl.acm.org/doi/10.1145/1281500.1281665"
+  - id: 2
+    text: "ISO 19650-1:2018 — Organización y digitalización de la información sobre edificios e ingeniería civil, incluido el modelado de información de construcción (BIM)."
+    url: "https://www.iso.org/standard/68078.html"
 ---
 
 `os-console` es la superficie de cara al operador de la plataforma PointSav — un Libro Mayor de Comandos que se conecta a un [[totebox-os|Totebox]] y le presenta su estado al operador. No almacena datos ni ejecuta servicios; es un terminal de alta fidelidad diseñado específicamente para el flujo de trabajo del operador mediante teclado. El punto de referencia es el Bloomberg Terminal: un único teclado, un pequeño conjunto de teclas de función y un enfoque implacable en el contexto del operador. El binario está escrito desde cero en Rust para un arranque en frío por debajo de los 50 milisegundos y un tamaño de 15 megabytes. Este artículo cubre el funcionamiento de os-console, la superficie de teclas de función, la pila de renderizado y los dos modos de operación.
@@ -54,11 +61,11 @@ F12 es obligatorio según [[sys-adr-10]]. La [[app-console-input|Máquina de Ent
 |---|---|---|
 | Ventana | `pointsav-window` | Envoltorio personalizado Win32 / Cocoa / X11/Wayland |
 | GPU | `pointsav-gpu` | WGPU (abstracción Vulkan / Metal / DX12); licencia embebida en el binario |
-| Texto | `pointsav-text` | Renderizador de glifos por Campo de Distancia con Signo (SDF); fidelidad de zoom infinito |
+| Texto | `pointsav-text` | Renderizador de glifos por Campo de Distancia con Signo (SDF) [^1]; fidelidad de zoom infinito |
 | Disposición | `pointsav-layout` | Cuadrícula recursiva de filas/columnas en aproximadamente 500 líneas de Rust |
 | Lógica de widgets | Bifurcación del núcleo de ratatui | Solo lógica; el renderizador de ratatui reemplazado por la cadena WGPU |
 
-El resultado es una interfaz de terminal con encabezados de peso variable, efectos de brillo y desplazamiento suave — manteniéndose puramente controlada por teclado y renderizando con la fidelidad requerida por los sufijos de estado de documentos ISO 19650.
+El resultado es una interfaz de terminal con encabezados de peso variable, efectos de brillo y desplazamiento suave — manteniéndose puramente controlada por teclado y renderizando con la fidelidad requerida por los sufijos de estado de documentos ISO 19650 [^2].
 
 ## Modo directo y modo agregado
 
