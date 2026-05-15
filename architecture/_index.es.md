@@ -59,7 +59,7 @@ Los principios y mecanismos por los cuales los clientes son dueños plenos de su
 
 - [[customer-hostability]] — El compromiso arquitectónico de que cada artefacto se ejecuta sobre el hardware del cliente, contra sus propias claves, con su propio libro de auditoría.
 - [[economic-model]] — La estructura comercial de dos niveles: un nivel Comunidad gratuito y un nivel Cliente PYME de pago dimensionado para empresas reguladas que los hiperescaladores no pueden atender económicamente.
-- [[direct-payment-settlement]] — Los pagos de transacciones del mercado fluyen directamente del comprador al inquilino-cliente; la comisión de Foundry se cobra en la liquidación.
+- [[direct-payment-settlement]] — Los pagos de transacciones del mercado fluyen directamente del comprador al inquilino-cliente; la comisión de la plataforma se cobra en la liquidación.
 - [[totebox-orchestration-development]] — El entorno de desarrollo es en sí mismo una instancia de Totebox Orchestration; el espacio de trabajo que construye la plataforma funciona sobre la misma arquitectura que entrega.
 - [[totebox-session]] — Una Sesión Totebox: una sesión de colaboración asistida por IA, circunscrita a un solo archivo, incapaz de escribir fuera de él.
 - [[vertical-seed-packs-marketplace]] — Taxonomías iniciales específicas del sector distribuidas como paquetes semilla; los inquilinos contribuyen con refinamientos a través de un mercado planificado.

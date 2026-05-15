@@ -110,4 +110,3 @@ inglés: [The Disclosure Substrate](topic-disclosure-substrate.md).
 - [El Sustrato Compuesto](topic-compounding-substrate.es.md)
 - [Compatibilidad nativa del sustrato](topic-substrate-native-compatibility.md)
 - [Postura de derecho de autor simple canadiense](topic-canadian-simple-copyright.es.md)
-- Convención operacional: `conventions/disclosure-substrate.md`

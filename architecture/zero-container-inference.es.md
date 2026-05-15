@@ -43,5 +43,5 @@ Cloud Run, Kubernetes, SkyPilot, registros de imágenes OCI y cadenas de constru
 
 ## Referencias
 
-- **`conventions/zero-container-runtime.md`** — especificación ratificada para el compromiso de despliegue sin contenedores.
+- [[zero-container-runtime]] — especificación del compromiso de despliegue sin contenedores.
 - **Aviso de personal OSC 51-721** — Divulgación de información prospectiva. El grupo de cómputo Yo-Yo y los plazos de despliegue en este artículo son declaraciones prospectivas sujetas a cambios.

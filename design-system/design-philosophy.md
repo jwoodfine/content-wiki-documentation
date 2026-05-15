@@ -59,7 +59,7 @@ The well-structured substrate IS the message the SMB sends to its implementation
 - Storybook integration (parallel renderer; substrate owns rendering).
 - Enterprise-tier design-system SaaS dependency.
 - JS-framework-locked components (HTML+CSS+ARIA recipes are the canonical form).
-- Container packaging (per `conventions/zero-container-runtime.md`).
+- Container packaging (per [[zero-container-runtime]]).
 - Editor lock-in (single-editor-only features rejected).
 - Marketing vocabulary in research files (per workspace §6).
 

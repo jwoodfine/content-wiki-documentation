@@ -97,4 +97,3 @@ Los niveles se aplican mediante emparejamientos, no comparaciones de cadenas. El
 ## Referencias
 
 - **`DOCTRINE.md`** — carta constitucional de la plataforma.
-- **`conventions/project-tetrad-discipline.md`** — especificación ratificada de la tétrada del proyecto.

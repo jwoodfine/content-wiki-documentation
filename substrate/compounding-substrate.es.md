@@ -132,7 +132,4 @@ El patrón no desplaza a los hiperescaladores en volumen; ellos conservan la lar
 
 ## Referencias
 
-- `conventions/compounding-substrate.md` — especificación canónica
 - `DOCTRINE.md §XIV` — contexto de la doctrina
-- `conventions/three-ring-architecture.md` — columna vertebral arquitectónica
-- `conventions/customer-first-ordering.md` — justificación del orden de despliegue

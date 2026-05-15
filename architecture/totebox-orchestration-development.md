@@ -76,7 +76,7 @@ An archive with all four legs ratified is complete. Archives with pending legs c
 
 ## The shared access-control gateway
 
-Every Totebox Archive routes inference through the same `service-slm` access-control gateway instance. The gateway is multi-tenant: it accepts requests tagged with an `X-Foundry-Module-ID` header identifying which archive is making the request, routes to the appropriate compute tier, and enforces per-tenant boundaries on every call.
+Every Totebox Archive routes inference through the same `service-slm` access-control gateway instance. The gateway is multi-tenant: it accepts requests tagged with an `X-Module-ID` header identifying which archive is making the request, routes to the appropriate compute tier, and enforces per-tenant boundaries on every call.
 
 A single `service-slm` instance currently serves all thirteen active archives. Each archive's manifest declares `slm_endpoint: http://localhost:8011`, pointing at this shared instance. When archives eventually move to separate virtual machines, each machine is intended to run its own gateway instance — the manifest field updates with no other changes required of calling code.
 

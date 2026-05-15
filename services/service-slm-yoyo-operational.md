@@ -122,7 +122,5 @@ When AllenAI publishes OLMo 3 32B Think or Instruct in a Q4 GGUF format, the Yo-
 1. Optional Intelligence Layer — Ring 3 is structurally optional; Rings 1 and 2 function without it.
 2. Four-Tier SLM Substrate Ladder — Tier 0 (none) / Tier 1 (local 7B) / Tier 2 (Yo-Yo 32B vendor-hosted) / Tier 3 (PointSav-LLM, planned).
 3. AllenAI OLMo 3 model family. Apache 2.0 (model weights); Open Data Commons (training data). [olmo3-allenai] https://huggingface.co/allenai
-4. `conventions/four-tier-slm-substrate.md` — workspace convention defining the four-tier ladder and routing heuristics.
-5. `conventions/apprenticeship-substrate.md` §7B, §7C — drain worker protocol, corpus schema, and brief-queue mechanics.
-6. NI 51-102 Continuous Disclosure Obligations. British Columbia Securities Commission. [ni-51-102] https://www.bcsc.bc.ca/securities-law/law-and-policy/instruments-and-policies/5-ongoing-requirements-for-issuers-insiders/current/51-102
-7. OSC Staff Notice 51-721 Forward-Looking Information Disclosure. Ontario Securities Commission. [osc-sn-51-721] https://www.osc.ca/en/securities-law/instruments-rules-policies/5/51-721/osc-staff-notice-51-721-forward-looking-information-disclosure
+4. NI 51-102 Continuous Disclosure Obligations. British Columbia Securities Commission. [ni-51-102] https://www.bcsc.bc.ca/securities-law/law-and-policy/instruments-and-policies/5-ongoing-requirements-for-issuers-insiders/current/51-102
+5. OSC Staff Notice 51-721 Forward-Looking Information Disclosure. Ontario Securities Commission. [osc-sn-51-721] https://www.osc.ca/en/securities-law/instruments-rules-policies/5/51-721/osc-staff-notice-51-721-forward-looking-information-disclosure

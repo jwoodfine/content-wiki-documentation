@@ -52,4 +52,4 @@ The Capability Ledger Substrate requires a customer-rooted Merkle log to make ca
 ## References
 
 - **RFC 9162** — Certificate Transparency Version 2.0. IETF, 2021. Defines the Merkle tree hash algorithm, inclusion proof, and consistency proof specifications used verbatim in `system-core`. https://datatracker.ietf.org/doc/html/rfc9162
-- **`conventions/worm-ledger-design.md`** — WORM ledger design convention; `system-ledger` implements this convention.
+- [[worm-ledger-design]] — WORM ledger design; `system-ledger` implements this.

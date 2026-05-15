@@ -73,7 +73,7 @@ Un archivo con las cuatro patas ratificadas está completo. Los archivos con pat
 
 ## La pasarela compartida de control de acceso
 
-Cada archivo Totebox enruta la inferencia a través de la misma instancia de la pasarela `service-slm`. La pasarela es multi-inquilino: acepta solicitudes etiquetadas con un encabezado `X-Foundry-Module-ID` que identifica qué archivo está realizando la solicitud, enruta al nivel de cómputo apropiado y aplica los límites por inquilino en cada llamada.
+Cada archivo Totebox enruta la inferencia a través de la misma instancia de la pasarela `service-slm`. La pasarela es multi-inquilino: acepta solicitudes etiquetadas con un encabezado `X-Module-ID` que identifica qué archivo está realizando la solicitud, enruta al nivel de cómputo apropiado y aplica los límites por inquilino en cada llamada.
 
 Una sola instancia de `service-slm` actualmente sirve a los trece archivos activos. El manifiesto de cada archivo declara `slm_endpoint: http://localhost:8011`, apuntando a esta instancia compartida. Cuando los archivos finalmente se trasladen a máquinas virtuales separadas, cada máquina está prevista para ejecutar su propia instancia de pasarela — el campo del manifiesto se actualiza sin que el código que llama requiera otros cambios.
 
@@ -110,5 +110,4 @@ El siguiente paso previsto es la aplicación planificada `app-orchestration-comm
 
 - **`DOCTRINE.md`** — carta constitucional de la plataforma; disciplina de composición de sustratos.
 - **`MANIFEST.md`** — pasaporte del espacio de trabajo que declara la identidad de la instancia `vault-privategit-source-1`.
-- **`conventions/project-tetrad-discipline.md`** — especificación ratificada de la tétrada del proyecto.
-- **`conventions/three-ring-architecture.md`** — referencia de composición de sustrato del Anillo 1/2/3.
+- [[three-ring-architecture]] — referencia de composición de sustrato del Anillo 1/2/3.

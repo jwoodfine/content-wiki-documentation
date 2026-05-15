@@ -80,5 +80,5 @@ El agregador planificado `app-orchestration-command` (CommandCentre) está previ
 
 ## Referencias
 
-- **`DOCTRINE.md`** — carta constitucional de Foundry; modelo de permisos.
-- **`conventions/three-ring-architecture.md`** — referencia de composición de sustrato de tres niveles.
+- **`DOCTRINE.md`** — carta constitucional de la plataforma; modelo de permisos.
+- [[three-ring-architecture]] — referencia de composición de sustrato de tres niveles.

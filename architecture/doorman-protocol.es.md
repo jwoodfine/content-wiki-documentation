@@ -49,6 +49,4 @@ El Doorman implementa la inversión de polaridad del [[apprenticeship-substrate]
 
 ## Referencias
 
-- **Afirmación doctrinal #1** — El Límite Soberano. Foundry DOCTRINE.md v0.1.0.
-- **`conventions/llm-substrate-decision.md`** — registro de decisión para la arquitectura de enrutamiento en tres niveles.
 - **`service-slm/ARCHITECTURE.md`** — especificación de implementación completa del servicio Doorman.
