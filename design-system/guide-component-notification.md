@@ -36,7 +36,7 @@ Inline messaging — informational, positive, caution, critical. Toast variant i
 
 `role="status"` announces inline (`aria-live="polite"`). Critical notifications use `role="alert"` `aria-live="assertive"` for time-sensitive failures. Notifications never auto-disappear without an undo affordance.
 
-## See Also
+## See also
 
 - [[guide-component-badge]]
 - [[design-color]]

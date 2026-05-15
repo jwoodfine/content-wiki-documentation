@@ -4,7 +4,7 @@ title: "service-slm as Totebox Sysadmin and Support Centre"
 slug: service-slm-totebox-sysadmin
 category: services
 type: topic
-quality: core
+quality: complete
 short_description: "How service-slm becomes the operational assistant and support centre for Totebox Archive and Totebox Orchestration deployments — the training strategy, the ten operational task families, and the four-stage pipeline from corpus capture to per-tenant LoRA adapters."
 status: active
 bcsc_class: public-disclosure-safe
@@ -47,7 +47,7 @@ A survey of the GUIDE files across the three Totebox deployment clusters — per
 
 Four structural properties make these workloads suited to service-slm over third-party inference APIs:
 
-**Sovereignty.** Every task family above touches tenant data — personnel records, corporate ledgers, real-property archives, audit trails. Routing these to an external service for routine sysadmin operations breaks the data-sovereignty guarantee at Doctrine §IV.b. service-slm running locally inside the customer's Doorman boundary is the only architecture where the data never leaves the customer-controlled substrate.
+**Sovereignty.** Every task family above touches tenant data — personnel records, corporate ledgers, real-property archives, audit trails. Routing these to an external service for routine sysadmin operations breaks the platform's data-sovereignty guarantee. service-slm running locally inside the customer's Doorman boundary is the only architecture where the data never leaves the customer-controlled substrate.
 
 **Latency.** Sysadmin work is high-frequency and low-latency in character. Diagnosing a stalled spool-daemon, reconciling an audit-row mismatch, or walking through a 9-step provisioning sequence requires a responsive assistant. Tier B (OLMo 3.1 32B Think on A100 80GB) delivers approximately 100–150 tokens per second at modest batch sizes [olmo3-allenai]. A Tier C external-API round-trip adds 5–15 seconds per call including network and provider queuing. On a multi-step provisioning walkthrough, that latency difference is material.
 
@@ -97,19 +97,9 @@ The service-slm-as-sysadmin capability is available across three customer tiers,
 
 **Tier 3 — PointSav-LLM specialist product.** A vendor-hosted model trained on Foundry's aggregated multi-tenant corpus plus curated public corpus; a specialist in Totebox Archive operation, PointSav conventions, and the ten task families. L1 AI resolution of a planned 80–90 percent of customer queries autonomously; L2 human-in-the-loop escalation; L3 engineering for rare complex cases. Each L2 response feeds back as DPO training signal. *Tier 3 deployment timeline is planned for v0.5.0 (Q1 2027 per current roadmap); actual timing is subject to corpus accumulation rate and operator decision. [ni-51-102] [osc-sn-51-721]*
 
-## See Also
+## See also
 
 - [[service-slm]] — the service that implements this capability; Ring 3 Doorman specification
 - [[compounding-doorman]] — the operational pattern the Doorman implements; why it compounds
 - [[apprenticeship-substrate]] — the corpus capture and verdict-signing pipeline that feeds Stage 1 and Stage 2
 - [[brief-queue-substrate]] — the durable queue that keeps corpus capture continuous across compute-tier transitions
-
-## References
-
-1. OLMo 3 tech report, AI2. Token throughput and fine-tuning recipe. [olmo3-allenai]
-2. vLLM Multi-LoRA documentation — serving multiple LoRA adapters per request. [vllm-multi-lora]
-3. S-LoRA — scalable LoRA serving reference. [s-lora-2024]
-4. LoRAX — multi-LoRA serving infrastructure (Predibase). [lorax-predibase]
-5. Federated LoRA framework. [federated-lora-2502-05087]
-8. NI 51-102, Continuous Disclosure Obligations (BCSC). [ni-51-102]
-9. OSC Staff Notice 51-721, Forward-Looking Information Disclosure. [osc-sn-51-721]

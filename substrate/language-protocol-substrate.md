@@ -89,18 +89,10 @@ Eight editorial task-types are defined in the project-language cluster manifest:
 
 Per `[ni-51-102]` continuous-disclosure language and in accordance with the forward-looking information principles of `[osc-sn-51-721]`, the substrate's training pipeline is described in planned terms. The shape is in place; the operational throughput is what matures over time. The pipeline target: every editorial action a Foundry-shaped deployment performs is one tuple of training data for the customer's adapter. The customer's voice deepens over time without their text leaving their substrate.
 
-## See Also
+## See also
 
 - [[style-guide-topic]]
 - [[style-guide-readme]]
 - [[customer-hostability]]
 - [[anti-homogenization-discipline]]
 - [[apprenticeship-substrate]]
-
-## References
-
-- `~/Foundry/conventions/language-protocol-substrate.md` — the convention this article reflects
-- `pointsav-monorepo/service-disclosure/` — the implementation crate
-- DOCTRINE.md Claims #21, #22, #25, #31, #32 — the composition claims this substrate realises
-- `[ni-51-102]` — NI 51-102 Continuous Disclosure Obligations
-- `[osc-sn-51-721]` — OSC Staff Notice 51-721 Forward-Looking Information Disclosure

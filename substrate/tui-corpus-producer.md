@@ -4,7 +4,7 @@ title: "TUI as Corpus Producer"
 slug: tui-corpus-producer
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "Every terminal interaction with service-slm through the operator TUI is a curated training corpus contribution for the per-tenant adapter."
 status: active
 bcsc_class: public-disclosure-safe
@@ -57,7 +57,7 @@ The corpus produced by a customer's operators trains that customer's adapter, no
 
 Some terminal sessions should not contribute to the training corpus: test sessions initiated with a no-corpus flag, sessions interrupted by unavailable tiers before completion, and sessions using forced-tier debug mode are audit-logged but excluded from normal training data. The boundary between operational corpus and test corpus is enforced at the Doorman's verdict intake endpoint.
 
-## See Also
+## See also
 
 - [[single-boundary-compute-discipline]] — the TUI never calls inference tiers directly; all calls route through the Doorman
 - [[customer-owned-graph-ip]] — per-tenant adapter weights are the customer's intellectual property

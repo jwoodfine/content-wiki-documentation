@@ -48,7 +48,7 @@ URL-reflected page-section navigation. Each tab is a separate route; state lives
 
 Each tab is a real `<a href>` link to a real page. `aria-current="page"` marks the active tab. The substrate's tab pattern is URL-reflected — clicking a tab navigates to a separate route, not an in-page state change. This makes deep-linking, back/forward navigation, and sharing canonical.
 
-## See Also
+## See also
 
 - [[guide-component-navigation-bar]]
 - [[guide-component-breadcrumb]]

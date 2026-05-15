@@ -41,7 +41,7 @@ Single-choice picker from a known list. Native `<select>` element for keyboard a
 
 Native `<select>` handles keyboard (arrow keys, Home/End, type-ahead) and screen-reader announcement automatically. Bind label via `for`/`id`. Use `aria-required` when the field is required.
 
-## See Also
+## See also
 
 - [[guide-component-input-text]]
 - [[guide-component-checkbox]]

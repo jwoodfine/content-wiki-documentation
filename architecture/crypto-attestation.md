@@ -4,7 +4,7 @@ title: "Cryptographic Payload Attestation"
 slug: crypto-attestation
 category: architecture
 type: topic
-quality: core
+quality: complete
 short_description: "Cryptographic payload attestation is the mechanism by which PointSav edge nodes dynamically prove the integrity of their published text content to any viewer, using client-side SHA-256 hashing so that any auditor can independently verify a disclosure has not been altered in transit."
 status: active
 bcsc_class: public-disclosure-safe
@@ -52,16 +52,10 @@ Cryptographic payload attestation applies to:
 
 The attestation proves integrity at the moment of viewing — it does not prove the content was published at a specific time or that it has not been legitimately updated since a prior version. For time-stamped proof of prior content states, the WORM ledger architecture (`service-fs`) and monthly Rekor anchoring provide the complementary mechanism.
 
-## See Also
+## See also
 
 - [[worm-ledger-architecture]]
 - [[cryptographic-ledgers]]
 - [[machine-based-auth]]
 - [[compounding-substrate]]
 - [[sovereign-ai-routing]]
-
-## References
-
-- `DOCTRINE.md §IX` — DARP (Direct, Auditable, Reproducible, Plain-text) posture
-- `conventions/worm-ledger-design.md` — complementary WORM integrity mechanism for stored records
-- `conventions/bcsc-disclosure-posture.md` — continuous-disclosure context; independently verifiable disclosures

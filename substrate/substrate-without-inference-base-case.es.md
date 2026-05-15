@@ -4,7 +4,7 @@ title: "El Substrato sin Inferencia — El Caso Base"
 slug: substrate-without-inference-base-case.es
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "El Archivo Totebox permanece completamente operativo y transferible libremente incluso cuando no hay ningún nivel de inferencia de IA disponible; el substrato determinístico es la base estructural."
 status: active
 bcsc_class: public-disclosure-safe

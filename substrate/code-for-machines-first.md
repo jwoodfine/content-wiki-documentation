@@ -4,7 +4,7 @@ title: "Code for Machines First"
 slug: code-for-machines-first
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "Every Foundry inter-service contract, audit record, configuration, and ontology is machine-readable as a primary surface; human-facing interfaces are skins on machine-first APIs."
 status: active
 bcsc_class: public-disclosure-safe
@@ -44,13 +44,8 @@ Topic and guide documentation follows the same pattern. Frontmatter is structure
 
 This discipline is the structural claim that [[mcp-substrate-protocol]] realizes at the wire level. Every service exposes its contract through MCP `describe`, which returns a machine-readable tool catalog. Human-facing surfaces consume this catalog the same way any automated client would.
 
-## See Also
+## See also
 
 - [[mcp-substrate-protocol]] — the structural realization of machine-first service contracts via MCP
 - [[knowledge-graph-grounded-apprenticeship]] — graph queries are machine-first MCP tool calls
 - [[substrate-without-inference-base-case]] — export bundles are machine-readable open formats
-
-## References
-
-1. Doctrine claim #51 — Code-for-Machines First (ratified v0.1.0).
-2. `conventions/mcp-substrate-protocol.md` — claim #46 as structural realization of this principle.

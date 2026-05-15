@@ -38,7 +38,7 @@ A 3-column responsive category-browse grid for knowledge-wiki home pages. Shows 
 
 Use `<section aria-label="Browse by category">` as the outer wrapper. Each card is an `<article>` with an `<h3>` title (`<h2>` if no `<h1>` above). Badge and child links are native `<a>` elements — no custom keyboard handling needed. Empty-state card uses `ps-home-grid__card--empty` modifier; screen readers read the empty-state message as body text after the heading.
 
-## See Also
+## See also
 
 - [[guide-component-navigation-bar]]
 - [[guide-component-surface]]

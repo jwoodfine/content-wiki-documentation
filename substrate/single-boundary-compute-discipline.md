@@ -4,7 +4,7 @@ title: "Single-Boundary Compute Discipline"
 slug: single-boundary-compute-discipline
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "Every AI inference request in a Foundry deployment routes exclusively through the Doorman, with bypass structurally prevented at the kernel level."
 status: active
 bcsc_class: public-disclosure-safe
@@ -56,14 +56,8 @@ The Doorman is the entry point to Ring 3. The [[three-ring-architecture]] makes 
 
 This discipline composes with several other Doctrine claims. The Knowledge-Graph-Grounded Apprenticeship (claim #44) depends on it: graph context is assembled at the Doorman before dispatch; bypass means ungrounded inference. The MCP-as-Substrate-Protocol (claim #46) designates the Doorman as the MCP gateway; bypass breaks the MCP graph. The Two-Bottoms Sovereign Substrate (claim #34) enforces customer sovereignty at the Doorman boundary; bypass is a sovereignty leak.
 
-## See Also
+## See also
 
 - [[knowledge-graph-grounded-apprenticeship]] — graph grounding assembled at the Doorman before each request
 - [[mcp-substrate-protocol]] — the Doorman as MCP gateway
 - [[substrate-without-inference-base-case]] — deterministic-only operation when the Doorman's inference tiers are unavailable
-
-## References
-
-1. Doctrine claim #43 — Single-Boundary Compute Discipline (ratified v0.1.0).
-2. `conventions/three-ring-architecture.md` — Ring 3 structural optionality.
-3. [[sys-adr-07|SYS-ADR-07]] — structured data never routes through AI; the sanitise-outbound discipline.

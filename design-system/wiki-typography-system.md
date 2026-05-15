@@ -4,7 +4,7 @@ title: "Wiki Typography System"
 slug: wiki-typography-system
 category: design-system
 type: topic
-quality: core
+quality: complete
 status: active
 bcsc_class: vendor-public
 last_edited: 2026-05-07
@@ -100,7 +100,7 @@ All values are CSS custom properties defined on `:root` in `dist/tokens.css`:
 --text-h4:      var(--ps-wiki-text-h4);
 ```
 
-## See Also
+## See also
 
 - [[wiki-dark-mode]]
 - [[wiki-component-library]]

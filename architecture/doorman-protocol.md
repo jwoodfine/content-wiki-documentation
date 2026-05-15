@@ -45,9 +45,3 @@ The Doorman implements the [[apprenticeship-substrate]] (the learning pipeline) 
 - [[apprenticeship-substrate]] — the routing inversion and verdict-signing protocol that compounds the substrate
 - [[three-ring-architecture]] — Ring 3 framing; the Doorman is the sole Ring 3 service
 - [[service-slm]] — implementation detail of the service-slm crate
-
-## References
-
-- **Doctrine claim #1** — The Sovereign Boundary. Foundry DOCTRINE.md v0.1.0.
-- **`conventions/llm-substrate-decision.md`** — ratified decision record for the three-tier compute routing architecture.
-- **`service-slm/ARCHITECTURE.md`** — full implementation specification for the Doorman service.

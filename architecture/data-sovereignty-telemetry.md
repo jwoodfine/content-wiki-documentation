@@ -33,7 +33,7 @@ All public-facing interfaces are required to append the following disclosure to 
 
 This commitment ensures that Foundry remains the benchmark for privacy-first institutional infrastructure.
 
-## See Also
+## See also
 
 - [[sovereign-telemetry]]
 - [[machine-based-auth]]

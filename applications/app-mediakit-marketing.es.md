@@ -4,7 +4,7 @@ title: "app-mediakit-marketing"
 slug: app-mediakit-marketing.es
 category: applications
 type: topic
-quality: core
+quality: complete
 short_description: "app-mediakit-marketing sirve páginas de inicio de marketing multi-inquilino desde un único binario Rust compilado estáticamente — sin PHP, sin MySQL, sin infraestructura de plugins — preservando al mismo tiempo la memoria muscular de WordPress.org en la superficie de URL y navegación orientada al operador."
 status: active
 bcsc_class: vendor-public

@@ -4,7 +4,7 @@ title: "The System Substrate Architecture"
 slug: system-substrate-doctrine
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: The kernel-level architecture beneath every PointSav service — a customer-rooted capability ledger that is the audit log, a two-bottoms sovereign OS strategy, and three mechanisms for time-bound capabilities, reproducible verification, and boot-anywhere recovery.
 status: active
 bcsc_class: public-disclosure-safe
@@ -77,17 +77,8 @@ The substrate does not claim to own what it does not own. Silicon, microcode, an
 
 Phase 0 workspace hygiene for the `project-system` cluster is pending. Phase 1A — a capability-ledger primitive prototype binding C2SP signed-note multi-signature checkpoints to capability invocation — is planned work. Phase 1B — the `moonshot-toolkit` Rust CLI for orchestrating seL4 builds with a reproducible-build harness — is planned foundational work. NetBSD compat-bottom prototype, TOPIC and GUIDE drafting, and the minimal moonshot-kernel capability subset are subsequent phases.
 
-## See Also
+## See also
 
 - [[worm-ledger-architecture]] — the WORM substrate primitive (C2SP tlog-tiles + signed-note) that the Capability Ledger extends
 - [[compounding-doorman]] — the inference boundary that operates above the system substrate
 - [[disclosure-substrate]] — the disclosure-record substrate that sits above this layer
-
-## References
-
-1. SEC Rule 17a-4(f) — electronic records preservation requirements.
-2. eIDAS Regulation — qualified electronic signatures and trust services.
-3. RFC 3161 — Time-Stamp Protocol.
-4. OpenTimestamps — Bitcoin-anchored timestamping.
-5. Constitutional AI: Harmlessness from AI Feedback, Bai et al., arXiv 2212.08073.
-6. OLMo 3 — Allen Institute for AI, Apache 2.0.

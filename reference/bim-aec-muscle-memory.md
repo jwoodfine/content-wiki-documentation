@@ -50,7 +50,7 @@ Existing BIM tools predominantly target designers. The Building Design System is
 
 These capabilities are planned for the v0.0.2 release and represent the convergence of spatial and operational data.
 
-## See Also
+## See also
 
 - [[bim-design-philosophy]]
 - [[bim-token-taxonomy]]

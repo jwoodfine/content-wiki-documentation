@@ -4,7 +4,7 @@ title: "Esquema de Datos POI"
 slug: poi-data-schema.es
 category: architecture
 type: topic
-quality: core
+quality: complete
 status: active
 language: es
 bcsc_class: public-disclosure-safe

@@ -4,7 +4,7 @@ title: "PointSav-LLM"
 slug: pointsav-llm
 category: architecture
 type: topic
-quality: core
+quality: complete
 short_description: "The planned vendor-tier specialist AI model for substrate-sovereign SMBs — Tier 3 of the Four-Tier SLM Substrate Ladder, built by continued pretraining of OLMo 3 32B on Foundry's federated apprenticeship corpus."
 status: active
 bcsc_class: public-disclosure-safe
@@ -36,7 +36,7 @@ When the first CPT cycle completes, the model is intended to demonstrate depth i
 
 What PointSav-LLM is not intended to be is equally important. It is not planned to compete with broad-capability frontier models on general knowledge, creative breadth, or multi-domain reasoning. Customers whose queries require that breadth will continue routing those requests through Tier C external API calls (Anthropic Claude, Google Gemini) via the Doorman's classification logic. PointSav-LLM is intended to serve the narrow slice of queries where specialist depth and per-token economics matter more than frontier-model breadth.
 
-The OLMo 3 base (Apache 2.0; Open Data Commons for training data) means the base weights are open. Customer-portable adapters are planned to preserve tenancy sovereignty per Doctrine claim #28 (Designed-for-Breakout Tenancy): a customer who leaves the platform is intended to retain the right to carry their contributed data and any tenant-specific fine-tune they funded. This is a structural property of the planned architecture, not a contractual carve-out.
+The OLMo 3 base (Apache 2.0; Open Data Commons for training data) means the base weights are open. Customer-portable adapters are planned to preserve tenancy sovereignty — a customer who leaves the platform is intended to retain the right to carry their contributed data and any tenant-specific fine-tune they funded. This is a structural property of the planned architecture, not a contractual carve-out.
 
 ---
 
@@ -69,7 +69,7 @@ PointSav-LLM is intended to carry explicit confidence signalling. When the model
 
 The customer's Doorman, on receiving this envelope, is intended to surface an escalation prompt to the end user — for example, "Ask a PointSav engineer." The customer does not see the raw confidence score; they see a product-level prompt tuned to their configured language and escalation SLA.
 
-Escalation events are planned to become training data. A resolved escalation — where a human engineer provides the correct answer — is intended to generate a Direct Preference Optimization (DPO) pair that feeds back into the next CPT cycle via the apprenticeship-substrate pipeline (Doctrine claim #32). The intended tiering:
+Escalation events are planned to become training data. A resolved escalation — where a human engineer provides the correct answer — is intended to generate a Direct Preference Optimization (DPO) pair that feeds back into the next CPT cycle via the apprenticeship-substrate pipeline. The intended tiering:
 
 | Tier | Planned handling | Target query share (planned) |
 |------|-----------------|------------------------------|
@@ -87,7 +87,7 @@ The customer-service and enterprise-knowledge AI market in 2026 is served primar
 
 SMBs with 10–200 employees that require AI assistance across their archive operations, editorial workflows, or customer-service function face two options under the current market structure: absorb pricing aimed at organizations an order of magnitude larger, or operate without AI assistance. A third option — self-hosting open-source general-purpose models — requires ML infrastructure expertise that most SMBs do not have.
 
-PointSav-LLM is intended to serve this gap. The planned architecture routes specialist queries through a vendor-maintained model without requiring customers to provision GPU infrastructure, manage model updates, or negotiate enterprise-tier contracts. The per-token pricing model, when published, is intended to be accessible at SMB contract sizes. The open OLMo 3 base and the Designed-for-Breakout Tenancy principle (Doctrine claim #28) mean customers are not structurally locked in.
+PointSav-LLM is intended to serve this gap. The planned architecture routes specialist queries through a vendor-maintained model without requiring customers to provision GPU infrastructure, manage model updates, or negotiate enterprise-tier contracts. The per-token pricing model, when published, is intended to be accessible at SMB contract sizes. The open OLMo 3 base and the Designed-for-Breakout Tenancy principle mean customers are not structurally locked in.
 
 The commercial logic mirrors the open-source software service model: the base training weights are open (Apache 2.0); the commercial line is the value PointSav adds — specialist CPT on the aggregated Foundry corpus, the human-in-the-loop escalation infrastructure, the per-tenant audit and compliance substrate, and the SLA. Customers who contribute trajectory data to the corpus under the contributing tier are intended to receive preferential per-token rates, as their data compounds the model's specialist depth for every subsequent subscriber.
 
@@ -101,7 +101,7 @@ Three planned subscription tiers, details and specific token rates not yet publi
 - Intended access: knowledge-commons read access, community forum, public documentation.
 - Model access: Tier A local model only (customer-hosted).
 - Corpus contribution: not included.
-- Target entry point: individuals and organizations contributing to the knowledge commons, currently targeted at 10,000 or more registered users at the platform level per Doctrine claim #23 (§7.3).
+- Target entry point: individuals and organizations contributing to the knowledge commons, with a target of 10,000 or more registered users at the platform level.
 
 **Paid Tier C (per-token, subscription)**
 - Intended access: PointSav-LLM API via Doorman routing.
@@ -121,7 +121,7 @@ Specific token rates and escalation SLA windows will be published when the first
 
 ## Relationship to the Four-Tier SLM Substrate Ladder
 
-PointSav-LLM occupies Tier 3 of the planned Four-Tier SLM Substrate Ladder (Doctrine claim #40). The four tiers, as currently designed:
+PointSav-LLM occupies Tier 3 of the planned Four-Tier SLM Substrate Ladder. The four tiers, as currently designed:
 
 | Tier | Name | Base | Status |
 |------|------|------|--------|
@@ -134,7 +134,7 @@ Tiers 0, A, and B are operational today. Tier C (PointSav-LLM) is planned, with 
 
 ---
 
-## See Also
+## See also
 
 - [[compounding-substrate]] — the five structural properties that enable the federated CPT path
 - [[service-slm-yoyo-operational]] — the current Tier A/B operational state this article describes Tier 3 of
@@ -146,11 +146,6 @@ Tiers 0, A, and B are operational today. Tier C (PointSav-LLM) is planned, with 
 
 ## References
 
-1. PointSav Doctrine claim #15 — Continued-pretraining path: the planned mechanism by which Foundry's aggregated corpus feeds vendor-tier specialist model development.
-2. PointSav Doctrine claim #23 — Knowledge Commons / Service Commerce: the open-knowledge access tier and the commercial service layer built on top of it.
-3. PointSav Doctrine claim #28 — Designed-for-Breakout Tenancy: customer-portable adapters and data-sovereignty protections that prevent structural lock-in.
-4. PointSav Doctrine claim #32 — Apprenticeship Substrate: the DPO-loop mechanism that converts human-in-the-loop escalation resolutions into next-cycle training data.
-5. PointSav Doctrine claim #40 — Four-Tier SLM Substrate Ladder: the full ladder from deterministic core (Tier 0) through vendor specialist (Tier C).
-6. AllenAI. *OLMo 3 model family*. Apache 2.0 license; training data under Open Data Commons license. https://allenai.org/olmo
-7. *National Instrument 51-102 Continuous Disclosure Obligations.* British Columbia Securities Commission. [ni-51-102]
-8. *OSC Staff Notice 51-721: Forward-Looking Information Disclosure.* Ontario Securities Commission. [osc-sn-51-721]
+1. AllenAI. *OLMo 3 model family*. Apache 2.0 license; training data under Open Data Commons license. https://allenai.org/olmo
+2. *National Instrument 51-102 Continuous Disclosure Obligations.* British Columbia Securities Commission. [ni-51-102]
+3. *OSC Staff Notice 51-721: Forward-Looking Information Disclosure.* Ontario Securities Commission. [osc-sn-51-721]

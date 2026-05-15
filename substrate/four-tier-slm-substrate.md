@@ -4,7 +4,7 @@ title: "The Four-Tier SLM Substrate Ladder"
 slug: four-tier-slm-substrate
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "A graduated sovereignty path for AI deployment: four customer tiers from a lightweight API gateway with no local model up through a domain-specialist AI service trained on the vendor's aggregated corpus, each tier adding capability without breaking the lower-tier guarantee."
 status: active
 bcsc_class: public-disclosure-safe
@@ -73,7 +73,7 @@ The federated LoRA marketplace — where customers contribute privacy-preserved 
 
 The open-substrate customer-service specialist — a domain-expert AI accessible at per-token pricing within reach of SMB contract values, built on a fully open model base — is also unclaimed in 2026. Managed AI services for the customer-service vertical operate at price floors that structurally exclude PointSav's target market. Tier 3 as described is intended to occupy this gap, pending the continued-pretraining timeline above.
 
-## See Also
+## See also
 
 - [[compounding-doorman]] — the Doorman boundary that enforces the key custody rule across all tiers
 - [[llm-substrate-decision]] — why OLMo 3 is the base model across all tiers

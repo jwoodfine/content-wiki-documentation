@@ -4,7 +4,7 @@ title: "Model Tier Discipline"
 slug: model-tier-discipline
 category: patterns
 type: topic
-quality: published
+quality: complete
 short_description: The discipline for routing work to the appropriate AI model tier — deep-think, implementation, or mechanical — to match model capability to work shape and control inference cost.
 status: active
 bcsc_class: public-disclosure-safe

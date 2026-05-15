@@ -50,7 +50,7 @@ Off-scale values (5px, 14px, 22px) break the rhythm and accumulate as drift. The
 
 The substrate uses a 16px (`space-5`) baseline grid. Body text and headings align to multiples of 16px in their line-height calculation; container padding aligns to multiples of 16px in the inline axis. This is structural — it ensures vertical rhythm remains consistent across surfaces.
 
-## See Also
+## See also
 
 - [[design-color]]
 - [[design-typography]]

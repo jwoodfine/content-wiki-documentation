@@ -4,7 +4,7 @@ title: "The Adapter Composition Algebra"
 slug: adapter-composition
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: The operating-system metaphor for AI in PointSav — the Doorman as kernel, adapters as processes, service-content as filesystem — and the composition algebra that assembles per-request intelligence from versioned, customer-owned LoRA adapter layers.
 status: active
 bcsc_class: public-disclosure-safe
@@ -96,15 +96,9 @@ When the Vendor's engineering corpus accumulates sufficient scale — planned fo
 
 This tier is intended to be a byproduct of the substrate work as the corpus matures, not a separately developed product.
 
-## See Also
+## See also
 
 - [[compounding-doorman]] — the Doorman that implements the kernel role in this algebra
 - [[apprenticeship-substrate]] — the mechanism that produces the per-tenant adapter corpus
 - [[language-protocol-substrate]] — the language-family adapter taxonomy that extends this algebra for editorial work
 - [[knowledge-commons]] — how constitutional and engineering adapters are published as commons artifacts
-
-## References
-
-1. LoRAX — Predibase multi-LoRA inference server, open source.
-2. S-LoRA — scalable serving of thousands of concurrent LoRA adapters, MLSys 2024.
-3. Federated LoRA, arXiv 2502.05087.

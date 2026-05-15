@@ -4,7 +4,7 @@ title: "Plataforma de Inteligencia de Localización — Estrategia y Arquitectur
 slug: location-intelligence-strategy.es
 category: architecture
 type: topic
-quality: core
+quality: complete
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30

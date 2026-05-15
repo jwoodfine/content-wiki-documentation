@@ -4,7 +4,7 @@ title: "Mercado de Paquetes de Semilla Vertical"
 slug: vertical-seed-packs-marketplace.es
 category: architecture
 type: topic
-quality: published
+quality: complete
 short_description: "Foundry tiene previsto distribuir paquetes de semilla curados específicos de la industria como taxonomías de inicio, con un mercado planificado que permite a los inquilinos contribuir mejoras."
 status: active
 bcsc_class: public-disclosure-safe

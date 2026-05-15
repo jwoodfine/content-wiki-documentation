@@ -29,16 +29,10 @@ The three layers map directly to the operational concerns of a regulated SMB dep
 - **Platform layer** — the operating system and service execution environment: ToteboxOS, capability managers, and the Ring 1/Ring 2 service processes. Isolation between components is enforced at this layer. No component at the platform layer can exceed the capabilities explicitly granted to it.
 - **Delivery layer** — the terminal and console interfaces operators use: ConsoleOS terminals, the proofreader interface, and any browser-based access surface. The delivery layer is the only layer operators interact with directly; it forwards requests down into the platform and returns results upward.
 
-## See Also
+## See also
 
 - [[compounding-substrate]]
 - [[capability-based-security]]
 - [[sel4-microkernel-substrate]]
 - [[sovereign-ai-routing]]
 - [[worm-ledger-architecture]]
-
-## References
-
-- `conventions/three-ring-architecture.md` — the Ring 1 / Ring 2 / Ring 3 service model that sits inside the platform layer
-- `DOCTRINE.md §IV` — workspace topology and deployment pattern
-- `IT_SUPPORT_Nomenclature_Matrix_V8.md §3` — canonical OS and service names

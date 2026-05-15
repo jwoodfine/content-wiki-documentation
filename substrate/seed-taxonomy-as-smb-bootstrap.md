@@ -4,7 +4,7 @@ title: "Seed Taxonomy as SMB Bootstrap"
 slug: seed-taxonomy-as-smb-bootstrap
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "Every Foundry tenant deployment provisions a four-part seed taxonomy — Archetypes, Chart of Accounts, Domains, Themes — as the knowledge graph bootstrap."
 status: active
 bcsc_class: public-disclosure-safe
@@ -50,13 +50,8 @@ The seeded taxonomy becomes the initial structure of the per-tenant knowledge gr
 
 The [[knowledge-graph-grounded-apprenticeship]] pattern depends on this seeded graph: the graph provides the grounding context for every subsequent inference request.
 
-## See Also
+## See also
 
 - [[vertical-seed-packs-marketplace]] — industry-specific packs that populate the seed taxonomy at provisioning
 - [[knowledge-graph-grounded-apprenticeship]] — the seeded graph is the grounding source for inference
 - [[customer-owned-graph-ip]] — the customer's customized taxonomy is their intellectual property
-
-## References
-
-1. Doctrine claim #47 — Seed Taxonomy as SMB Bootstrap (ratified v0.1.0).
-2. Reference implementation: `vendor/pointsav-monorepo/service-content/seeds/` — Woodfine deployment seed (five Archetypes, four Chart of Accounts profiles, three Domains, four active Themes).

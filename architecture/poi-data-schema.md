@@ -4,7 +4,7 @@ title: "POI Data Schema"
 slug: poi-data-schema
 category: architecture
 type: topic
-quality: core
+quality: complete
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-07

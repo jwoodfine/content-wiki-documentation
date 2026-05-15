@@ -48,7 +48,7 @@ The service is integrated with `app-workplace-presentation` for interactive sear
 | Merge policy | Segment merge configuration controlling index compaction frequency |
 | Writer threads | Number of indexing threads for parallel document ingestion |
 
-## See Also
+## See also
 
 - [[service-extraction]]
 - [[service-slm]]

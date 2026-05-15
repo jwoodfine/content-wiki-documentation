@@ -47,7 +47,7 @@ The design is engineered to align with SEC Rule 17a-4(f) WORM requirements and E
 
 Foundry’s implementation is unique in its dual-target Rust strategy, allowing the same binary to serve as a Linux daemon today and an seL4 unikernel tomorrow. This ensures that the storage substrate is portable from a virtual machine to a future ToteboxOS hardware appliance without a core rewrite.
 
-## See Also
+## See also
 
 - [[worm-ledger-design]]
 - [[worm-ledger-storage-architecture]]

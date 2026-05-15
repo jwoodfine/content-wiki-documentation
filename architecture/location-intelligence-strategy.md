@@ -4,7 +4,7 @@ title: "Location Intelligence Platform — Strategy and Architecture"
 slug: location-intelligence-strategy
 category: architecture
 type: topic
-quality: core
+quality: complete
 short_description: "The strategic and architectural frame for the platform's Location Intelligence substrate: a flat-file open-GIS approach that lets customers own their location data end-to-end, running offline, without ongoing per-seat or per-request vendor costs."
 status: active
 bcsc_class: public-disclosure-safe
@@ -183,39 +183,9 @@ The correct Nomenclature prefix for a Workplace OS deployment instance is `node-
 
 If the operator later finds `node-workplace-*` insufficient — for example, because dedicated hardware warrants a visually distinct prefix — the alternative is a `desktop-` prefix amendment to the Nomenclature Matrix, which is a Master-scope edit gated on operator ratification.
 
-## See Also
+## See also
 
 - [[three-ring-architecture]] — the Ring 1 / Ring 2 / Ring 3 composition that service-business, service-places, and service-parking implement
 - [[compounding-substrate]] — the sovereignty and optional-intelligence properties this substrate implements
 - [[worm-ledger-architecture]] — the append-only ledger that anchors co-location records in the customer's Totebox Archive
 - [[service-slm]] — the optional Ring 3 service available for annotation and anomaly detection on ingested POI records
-
-## References
-
-1. Foursquare Open Source Places — 100M+ POIs, Apache 2.0, monthly Parquet. [foursquare-os-places]
-2. Overture Maps Foundation — GeoParquet places schema, v1.13.0, October 2025. [overture-maps]
-3. GeoParquet specification (OGC incubating). [geoparquet-spec]
-4. FlatGeobuf — packed Hilbert R-tree, HTTP range request streaming. [flatgeobuf]
-5. MapLibre GL JS — community-maintained WebGL vector-tile renderer. [maplibre-gl-js]
-6. MDPI vector-rendering benchmark 2025 — WebGL vs raster at scale. [mdpi-vector-rendering-2025]
-7. Martin tile server (MapLibre Foundation, Rust). [martin-tile-server]
-8. Tippecanoe (Felt fork) — GeoJSON to MBTiles/PMTiles conversion. [tippecanoe]
-9. PMTiles specification — single-file HTTP range-request archive. [pmtiles-spec]
-10. CARTO tile architecture — query-on-warehouse pattern. [carto-tile-architecture]
-11. ArcGIS Online pricing — user-type licence model. [esri-arcgis-online-pricing]
-12. Mapbox pricing — per-traffic cost model. [mapbox-pricing]
-13. Placer.ai — mobile-device-panel foot-traffic analytics. [placer-ai]
-14. Planetizen — retail co-location clustering patterns. [planetizen-retail-clusters]
-15. NBER W17220 — Costco entry effects on incumbents. [nber-w17220-costco]
-16. Walmart US store count 2025. [walmart-store-count-2025]
-17. Home Depot US store count 2025. [homedepot-store-count-2025]
-18. Costco store count 2025 (US, CA, MX, ES). [costco-store-count-2025]
-19. IKEA Spain store count. [ikea-spain-stores]
-20. Bricomart Spain — Obramat rebrand 2024. [bricomart-spain]
-21. Leroy Merlin Spain store count. [leroy-merlin-spain]
-22. Nominatim / OSM geocoder. [nominatim-osm]
-23. Photon geocoder. [photon-geocoder]
-24. deck.gl — WebGL data-visualisation framework. [deck-gl]
-25. EUPL-1.2 — European Union Public Licence. [eupl-1-2]
-26. NI 51-102, Continuous Disclosure Obligations (BCSC). [ni-51-102]
-27. OSC Staff Notice 51-721, Forward-Looking Information Disclosure. [osc-sn-51-721]

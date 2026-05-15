@@ -4,7 +4,7 @@ title: "Yo-Yo Compute Substrate"
 slug: yoyo-compute-substrate
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "The three-ring compute substrate that lets service-slm spin GPU inference capacity up and down while retaining state, accumulating skill, and producing an audit ledger of every compute event."
 status: active
 bcsc_class: public-disclosure-safe
@@ -125,7 +125,7 @@ Each of these may integrate as a configuration addition or new subdirectory. Non
 
 **Phase 4 (intended — when research matures)**: CUDA checkpoint/restore integration. Single-adapter C-LoRA migration. Multi-cloud KV pool.
 
-## See Also
+## See also
 
 - [[compounding-doorman]] — the Doorman pattern that service-slm implements; the Yo-Yo substrate is its Tier B compute path
 - [[slm-stack-architecture]] — the Rust dependency graph and binary layout for service-slm

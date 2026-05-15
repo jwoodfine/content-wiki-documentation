@@ -35,7 +35,7 @@ To perform this at scale, the service uses a grid-based spatial index (approxima
 
 The output is a refined `cleansed-clusters.jsonl` file. This processed dataset is consumed by the downstream `app-orchestration-gis` to build the regional co-location index.
 
-## See Also
+## See also
 
 - [[app-orchestration-gis]]
 - [[service-fs-data-lake]]

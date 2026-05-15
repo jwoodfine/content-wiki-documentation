@@ -52,7 +52,7 @@ The tree includes a search interface (`<input type="search">`) that filters node
 *   **Avoid Generic Scene-Graphs:** Do not utilize generic "outliner" widgets. The `SpatialTree` is a purpose-built AEC tool with specific expansion and search logic.
 *   **Storey-First Expansion:** Adhere to the storey-default expansion rule to match professional AEC mental models.
 
-## See Also
+## See also
 
 - [[viewport-3d-accessibility]]
 - [[properties-panel-accessibility]]

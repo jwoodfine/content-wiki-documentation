@@ -4,7 +4,7 @@ title: "Seguridad Basada en Capacidades"
 slug: capability-based-security
 category: architecture
 type: topic
-quality: core
+quality: complete
 status: active
 audience: public
 bcsc_class: public-disclosure-safe

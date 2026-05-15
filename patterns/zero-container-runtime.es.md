@@ -4,7 +4,7 @@ title: "Tiempo de Ejecución Sin Contenedores"
 slug: zero-container-runtime.es
 category: patterns
 type: topic
-quality: published
+quality: complete
 short_description: El compromiso estructural de que todo despliegue de PointSav se ejecuta como un binario Linux bajo systemd en una máquina virtual simple o hardware bare-metal, sin tiempo de ejecución de contenedores ni orquestador.
 status: active
 bcsc_class: public-disclosure-safe

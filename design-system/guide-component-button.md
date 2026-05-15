@@ -48,7 +48,7 @@ A trigger that initiates an action. Five variants — primary, secondary, ghost,
 
 Native `<button type="button">` carries the button role implicitly. Set `aria-label` when the visible label is not descriptive (icon-only buttons). Critical variants must be paired with a confirmation step (modal, dialog, or undo affordance) — destructive actions one click away from completion are an anti-pattern.
 
-## See Also
+## See also
 
 - [[design-color]]
 - [[design-motion]]

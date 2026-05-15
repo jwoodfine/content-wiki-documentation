@@ -76,9 +76,3 @@ The result is compounding improvement. Each monthly pass produces better trainin
 - [[style-guide-topic]] — article structure and Wikipedia-pattern conventions
 - [[style-guide-guide]] — operational guide structure
 - [[glossary-documentation]] — canonical term definitions
-
-## References
-
-- Wikipedia:Article structure — the encyclopedic lead, section organisation, and internal linking conventions that this model is based on.
-- Stripe Developer Documentation — stripe.com/docs. Reference for the documentation wiki engineering register.
-- Financial Times Style Guide. Reference for the corporate and projects wiki register.

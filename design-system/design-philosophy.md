@@ -63,7 +63,7 @@ The well-structured substrate IS the message the SMB sends to its implementation
 - Editor lock-in (single-editor-only features rejected).
 - Marketing vocabulary in research files (per workspace §6).
 
-## See Also
+## See also
 
 - [[design-color]]
 - [[design-typography]]

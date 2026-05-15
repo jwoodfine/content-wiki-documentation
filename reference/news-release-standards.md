@@ -44,7 +44,7 @@ Web-based releases utilize specific semantic tags and separators to ensure high-
 
 These standards ensure that every Foundry disclosure maintains a consistent voice of authority, whether viewed on a high-DPI display or a physical printed page.
 
-## See Also
+## See also
 
 - [[brand-typography]]
 - [[brand-family-swatch]]

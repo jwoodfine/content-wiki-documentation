@@ -41,7 +41,7 @@ The platform achieves structural WORM compliance by structurally denying record 
 
 This architecture ensures that `service-fs` remains portable, verifiable, and resilient to vendor obsolescence.
 
-## See Also
+## See also
 
 - [[fs-anchor-emitter]]
 - [[service-fs-security-compliance]]

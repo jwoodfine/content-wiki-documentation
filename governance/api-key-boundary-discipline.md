@@ -4,7 +4,7 @@ title: "API Key Boundary Discipline"
 slug: api-key-boundary-discipline
 category: governance
 type: topic
-quality: published
+quality: complete
 short_description: The rule that all external LLM API credentials belong exclusively at the gateway service and never at inference engines.
 status: active
 bcsc_class: public-disclosure-safe

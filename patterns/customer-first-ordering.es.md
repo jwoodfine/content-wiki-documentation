@@ -4,7 +4,7 @@ title: "Ordenamiento cliente-primero"
 slug: customer-first-ordering.es
 category: patterns
 type: topic
-quality: published
+quality: complete
 short_description: El principio de que un proveedor de software que construye algo que un cliente instalará debe construirlo en el mismo orden que el cliente lo instalará, en el mismo sustrato que el cliente usará.
 status: active
 bcsc_class: public-disclosure-safe

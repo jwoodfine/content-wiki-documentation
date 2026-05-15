@@ -4,7 +4,7 @@ title: "City Code as Composable Geometry"
 slug: city-code-as-composable-geometry
 category: architecture
 type: topic
-quality: core
+quality: complete
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-06
@@ -84,18 +84,10 @@ The City Code as Composable Geometry model is implemented progressively.
 
 **Stage 3 (intended, future):** Authoring tool integration. A plugin or API surface that delivers BIM Token constraints to IFC-capable authoring tools at placement time, not at submission time. The authoring tool receives the element palette constrained to conformant tokens for the project's jurisdiction and climate zone.
 
-## See Also
+## See also
 
 - [[bim-token-what-it-is]]
 - [[bim-token-three-layers]]
 - [[flat-file-bim-leapfrog]]
 - [[open-bim-regulatory-acceptance]]
 - [[leapfrog-2030-architecture]]
-
-## References
-
-- IFC 4.3 (ISO 16739-1:2024) — buildingSMART International
-- IDS 1.0 (Information Delivery Specification) — buildingSMART International
-- buildingSMART Data Dictionary (bSDD) — buildingSMART International
-- Singapore CORENET X — Building and Construction Authority, Singapore
-- DOCTRINE.md claim #41 — City Code as Composable Geometry

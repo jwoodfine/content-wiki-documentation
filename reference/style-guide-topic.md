@@ -4,7 +4,7 @@ title: "Style Guide — TOPIC"
 slug: style-guide-topic
 category: reference
 type: topic
-quality: core
+quality: complete
 short_description: "Editorial standards for TOPIC files in Foundry content wikis, covering where TOPICs live, the bilingual pair requirement, frontmatter citation discipline, voice, forward-looking statement treatment, and the distinction from GUIDE files."
 status: active
 bcsc_class: public-disclosure-safe
@@ -179,12 +179,10 @@ A TOPIC is not internal-only material. Anything internal-only
 notes) lives in the workspace `.claude/` directories or
 deployment instances, not in a content wiki.
 
-## See Also
+## See also
 
 - [[style-guide-readme|Style Guide — README]]
 - [[style-guide-guide|Style Guide — GUIDE]]
 - [[language-protocol-substrate|Language Protocol Substrate]]
 - [[citation-substrate|Citation Substrate]]
 - [[anti-homogenization-discipline|Anti-Homogenization Discipline]]
-
-## References

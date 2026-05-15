@@ -4,7 +4,7 @@ title: "Knowledge Wiki Leapfrog Architecture"
 slug: knowledge-wiki-leapfrog-architecture
 category: patterns
 type: topic
-quality: core
+quality: complete
 status: active
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC

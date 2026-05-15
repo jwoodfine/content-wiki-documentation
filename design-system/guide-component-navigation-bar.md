@@ -41,7 +41,7 @@ Page-level navigation header. Logo, primary nav, optional actions, optional acco
 
 Mark the active page with `aria-current="page"`. The `<nav>` element with `aria-label="Primary"` is the canonical landmark for top-level navigation. Mobile collapse pattern (drawer) is subsequent-milestone work.
 
-## See Also
+## See also
 
 - [[guide-component-tab]]
 - [[guide-component-breadcrumb]]

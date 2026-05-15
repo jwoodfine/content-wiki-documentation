@@ -4,7 +4,7 @@ title: "What Is a BIM Token"
 slug: bim-token-what-it-is
 category: reference
 type: topic
-quality: core
+quality: complete
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-06
@@ -76,18 +76,10 @@ The BIM Token system parallels the structure of a software design system. Where 
 
 The analogy is structural, not metaphorical. Both systems address the same problem: enforcing consistency across independent authoring surfaces by encoding decisions as reusable, aliasable, versionable units with machine-readable constraint specifications. The BIM platform extends the model into a physical constraint domain that software design systems do not address.
 
-## See Also
+## See also
 
 - [[bim-token-three-layers]]
 - [[building-design-system-bim]]
 - [[city-code-as-composable-geometry]]
 - [[flat-file-bim-leapfrog]]
 - [[bim-token-taxonomy]]
-
-## References
-
-- IFC 4.3 (ISO 16739-1:2024) — buildingSMART International
-- Uniclass 2015 — NBS / RIBA Enterprises
-- buildingSMART Data Dictionary (bSDD) — buildingSMART International
-- IDS 1.0 (Information Delivery Specification) — buildingSMART International
-- W3C Design Token Community Group (DTCG) format — W3C

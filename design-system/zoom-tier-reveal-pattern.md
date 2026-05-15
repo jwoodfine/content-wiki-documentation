@@ -57,7 +57,7 @@ Future research is intended to investigate:
 - **Adaptive Thresholds**: Intended development of dynamic thresholds that adjust based on local data density, ensuring consistent visual clarity in both rural and metropolitan datasets.
 - **Click-to-Zoom Pathing**: Research is ongoing to determine if clicking a cluster centroid should fly to the exact reveal threshold or to a predefined higher-magnification detail view (e.g., zoom 13).
 
-## See Also
+## See also
 
 - [[map-stats-panel]]
 - [[map-side-drawer]]

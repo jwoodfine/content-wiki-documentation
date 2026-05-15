@@ -41,7 +41,7 @@ The engine compiles scored output into vector tile assets for delivery to the in
 
 The application holds no canonical data. It operates as a pure function: cleansed cluster files enter, ranked geo-tiles exit. If the application instance is lost, the entire analytics environment can be re-provisioned by pointing a fresh instance at the immutable data layer — no state migration required.
 
-## See Also
+## See also
 
 - [[pointsav-gis-engine]]
 - [[service-business-clustering]]

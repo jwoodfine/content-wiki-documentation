@@ -33,7 +33,7 @@ A container that groups related content. Three elevation levels — subtle, base
 
 A surface is a container — it has no implicit role. Add `role="region"` with `aria-labelledby` when the surface contains a labelled section. Modal surfaces add `role="dialog"` `aria-modal="true"`.
 
-## See Also
+## See also
 
 - [[design-color]]
 - [[guide-component-notification]]

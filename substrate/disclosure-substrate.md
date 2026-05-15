@@ -127,30 +127,10 @@ Per `[ni-51-102]` continuous-disclosure language, the following items in this ar
 
 Actual results may vary from the planned trajectory described above. All forward-looking statements depend on the material assumptions named in each section and are subject to operational reality, engineering capacity, and operator decisions on cluster prioritisation.
 
-## See Also
+## See also
 
 - [[compounding-substrate]]
 - [[substrate-native-compatibility]]
 - [[decode-time-constraints]]
 - [[canadian-simple-copyright]]
 - [[citation-substrate]]
-
-## References
-
-- `conventions/disclosure-substrate.md` — the operational convention
-- `conventions/bcsc-disclosure-posture.md` — the FLI labelling rules
-- DOCTRINE.md Claim #29 — Substrate Substitution
-- `[ni-51-102]` — NI 51-102 Continuous Disclosure Obligations
-- `[osc-sn-51-721]` — OSC Staff Notice 51-721 Forward-Looking Information Disclosure
-- `[bcsc-continuous-disclosure]` — BCSC continuous disclosure guidance
-- `[eidas-qualified-preservation]` — EU eIDAS qualified electronic preservation
-- `[etsi-ts-119-511]` — ETSI TS 119 511 long-term preservation
-- `[rfc-3161]` — RFC 3161 Internet X.509 PKI Time-Stamp Protocol
-- `[rfc-9162]` — RFC 9162 Certificate Transparency Version 2.0
-- `[sigstore-rekor-v2]` — Sigstore Rekor v2 transparency log
-- `[c2sp-tlog-tiles]` — C2SP tlog-tiles format
-- `[opentimestamps]` — OpenTimestamps anchoring
-- `[cloud-act-us]` — US CLOUD Act (extraterritorial data access)
-- `[w3c-verifiable-credentials]` — W3C Verifiable Credentials
-- `[c2pa]` — Coalition for Content Provenance and Authenticity
-- `[c3ai-acm-2025]` — ACM study on AI disclosure practices

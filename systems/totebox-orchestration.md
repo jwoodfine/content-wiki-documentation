@@ -31,7 +31,7 @@ The orchestration layer schedules periodic checksum audits across all managed co
 
 A new Totebox container is provisioned with a three-directory skeleton — `app-console-input/`, `assets/`, and `ledger/` — and registered with the orchestration layer at creation time. The orchestration layer tracks container state across its operational lifecycle: active, suspended, or archived.
 
-## See Also
+## See also
 
 - [[totebox-os]]
 - [[infrastructure-os]]

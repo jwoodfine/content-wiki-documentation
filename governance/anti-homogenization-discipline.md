@@ -4,7 +4,7 @@ title: "Anti-Homogenization Discipline"
 slug: anti-homogenization-discipline
 category: governance
 type: topic
-quality: core
+quality: complete
 short_description: "Anti-homogenization discipline is the architectural posture that resists AI writing assistants pulling contributors toward a single voice, by defaulting to flagging potential issues rather than silently rewriting text."
 status: active
 bcsc_class: public-disclosure-safe
@@ -72,11 +72,9 @@ A new editorial feature satisfies the anti-homogenization discipline if:
 3. The training pipeline produces verdict-signed tuples that feed continued pretraining on the customer's adapter, not on a shared adapter.
 4. The customer can audit which adapters were active for any editorial action by reading the adapter-composition log in the apprenticeship corpus.
 
-## See Also
+## See also
 
 - [[language-protocol-substrate]]
 - [[customer-hostability]]
 - [[contributor-model]]
 - [[reverse-funnel-editorial-pattern]]
-
-## References

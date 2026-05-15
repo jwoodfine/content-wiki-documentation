@@ -4,7 +4,7 @@ title: "Three-Tier Contributor Model"
 slug: contributor-model
 category: governance
 type: topic
-quality: core
+quality: complete
 short_description: "The Three-Tier Contributor Model organises PointSav substrate contributors into Core (4–7 salaried engineers), Paid (50–100 contracted project contributors), and Open (10,000-plus public participants), with explicit mobility paths between tiers."
 status: active
 bcsc_class: public-disclosure-safe
@@ -16,9 +16,7 @@ paired_with: contributor-model.es.md
 ---
 
 
-> The Three-Tier Contributor Model organises PointSav substrate contributors into Core (4–7 salaried engineers), Paid (50–100 contracted project contributors), and Open (10,000-plus public participants), with explicit mobility paths between tiers.
-
-The PointSav substrate is too broad for any single team to maintain and too valuable to lock to a single team's release cadence. The **Three-Tier Contributor Model** that follows from this constraint produces three distinct tiers — Core, Paid, and Open — with explicit mobility paths between them. This article describes the tiers, the mathematics of why the model works, and the architectural primitives that make it tractable.
+The PointSav platform is too broad for any single team to maintain and too valuable to lock to a single team's release cadence. The **Three-Tier Contributor Model** that follows from this constraint produces three distinct tiers — Core, Paid, and Open — with explicit mobility paths between them. This article describes the tiers, the mathematics of why the model works, and the architectural primitives that make it tractable.
 
 ## The three tiers
 
@@ -78,15 +76,13 @@ The path: each Foundry-shaped customer who runs the substrate becomes a candidat
 
 It is not a hierarchy in the dignity sense. The Open tier is not lower than Core; it is differently scoped. A contributor who ships a substrate-shaping LoRA adapter as Open is doing work the Core tier could not have done alone.
 
-It is not a replacement for governance. Core makes architectural decisions; Paid implements; Open contributes. But the Constitutional Convention process per Doctrine §III is the venue for substrate-level disagreements, and any contributor can bring an amendment.
+It is not a replacement for governance. Core makes architectural decisions; Paid implements; Open contributes. But the platform's constitutional convention process is the venue for architectural disagreements, and any contributor can bring an amendment.
 
 It is not a venture-scale labour model. The 50–100 Paid tier sustains on multi-tenant aggregation revenue without venture-scale capital — the unit economics work because the headcount is small, the deliverables are bounded, and the customer base pays for outcomes rather than tickets.
 
-## See Also
+## See also
 
 - [[compounding-substrate]]
 - [[apprenticeship-substrate]]
 - [[customer-hostability]]
 - [[canadian-simple-copyright]]
-
-## References

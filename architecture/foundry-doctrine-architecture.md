@@ -83,7 +83,7 @@ Three session roles operate the workspace: Master (workspace control plane, sing
 
 Every artifact written to the workspace — documentation, doctrine sections, commit messages, code comments — is treated as potentially reviewable under continuous-disclosure obligations. Forward-looking statements about future capability, timeline, or customer outcome carry "planned"/"intended"/"may" framing, a stated reasonable basis, cautionary language, and material assumptions. This is not a compliance statement; it is the operational practice that makes compliance a byproduct.[^1][^2]
 
-## See Also
+## See also
 
 - [[compounding-substrate]] — the Compounding Substrate claim in detail
 - [[three-ring-architecture]] — Ring 1, Ring 2, Ring 3 service composition
@@ -91,8 +91,3 @@ Every artifact written to the workspace — documentation, doctrine sections, co
 - [[system-substrate-doctrine]] — the capability ledger and two-bottoms claims
 - [[slm-stack-architecture]] — the Rust stack that implements the Doorman
 - [[yoyo-compute-substrate]] — Tier B cloud GPU burst substrate
-
-## References
-
-[^1]: NI 51-102 Continuous Disclosure Obligations — BCSC
-[^2]: OSC Staff Notice 51-721 Forward-Looking Information Disclosure

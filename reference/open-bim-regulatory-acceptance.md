@@ -4,7 +4,7 @@ title: "Open BIM and Regulatory Acceptance"
 slug: open-bim-regulatory-acceptance
 category: reference
 type: topic
-quality: core
+quality: complete
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-06
@@ -101,21 +101,10 @@ The PointSav BIM platform is published under the European Union Public Licence v
 
 **EU public body alignment.** EUPL-1.2 was authored by the European Commission for software produced by or for EU public bodies. Contracting authorities in EU member states have a policy preference for EUPL-1.2 licensed software under the Commission's EUPL guidance.
 
-## See Also
+## See also
 
 - [[flat-file-bim-leapfrog]]
 - [[city-code-as-composable-geometry]]
 - [[bim-token-what-it-is]]
 - [[bcsc-disclosure-posture]]
 - [[leapfrog-2030-architecture]]
-
-## References
-
-- IFC 4.3 (ISO 16739-1:2024) — buildingSMART International
-- ISO 19650 Parts 1 and 2 — ISO
-- COBie (Construction Operations Building Information Exchange) v3 — buildingSMART
-- IDS 1.0 (Information Delivery Specification) — buildingSMART International
-- EUPL v1.2 — European Commission
-- EU Directive 2014/24/EU — European Parliament and Council
-- ITAR / EAR — US Department of State / Commerce
-- GDPR 2016/679 — European Parliament and Council

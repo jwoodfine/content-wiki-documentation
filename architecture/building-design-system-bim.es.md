@@ -5,7 +5,7 @@ slug: building-design-system-bim
 language: es
 category: architecture
 type: topic
-quality: core
+quality: complete
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-06

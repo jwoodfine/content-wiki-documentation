@@ -4,7 +4,7 @@ title: "Vertical Seed Packs Marketplace"
 slug: vertical-seed-packs-marketplace
 category: architecture
 type: topic
-quality: published
+quality: complete
 short_description: "Foundry intends to distribute curated industry-specific seed packs as starter taxonomies, enabling tenants to contribute refinements back through a planned marketplace."
 status: active
 bcsc_class: public-disclosure-safe
@@ -54,14 +54,9 @@ The [[customer-owned-graph-ip]] principle applies at the instance level, not the
 
 Vertical Seed Packs are the distribution mechanism for the [[seed-taxonomy-as-smb-bootstrap]] pattern — they carry the canonical form of the four-part taxonomy for a specific industry. The planned [[reverse-flow-substrate]] marketplace is intended to include packs as first-class inventory alongside data listings and adapter weights.
 
-## See Also
+## See also
 
 - [[seed-taxonomy-as-smb-bootstrap]] — the four-part taxonomy structure that packs instantiate
 - [[customer-owned-graph-ip]] — the customer's customized instance is their IP; the pack itself is licensed
 - [[reverse-flow-substrate]] — the planned marketplace gateway that would distribute packs
 - [[mcp-substrate-protocol]] — pack MCP server extensions plug into the Doorman's tool discovery
-
-## References
-
-1. Doctrine claim #50 — Vertical Seed Packs Marketplace (ratified v0.1.0).
-2. Reference pack: Woodfine real estate seed at `vendor/pointsav-monorepo/service-content/seeds/`.

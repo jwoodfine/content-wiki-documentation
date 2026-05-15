@@ -4,7 +4,7 @@ title: "La Escalera de Cuatro Niveles del Sustrato SLM"
 slug: four-tier-slm-substrate.es
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "Un camino gradual hacia la soberanía en IA: cuatro niveles de despliegue para el cliente, desde una pasarela de API sin modelo local hasta un servicio de IA especializado entrenado sobre el corpus agregado del proveedor, donde cada nivel añade capacidad sin romper la garantía del nivel inferior."
 status: active
 bcsc_class: public-disclosure-safe

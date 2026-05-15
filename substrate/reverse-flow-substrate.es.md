@@ -4,7 +4,7 @@ title: "Substrato de Flujo Inverso"
 slug: reverse-flow-substrate.es
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "La puerta de enlace del Portero y el registro de auditoría que aplican la disciplina de datos de entrada están planificados para también aplicar flujos comerciales de salida — mercado de datos e intercambio de anuncios — ambos opt-in por inquilino."
 status: active
 bcsc_class: public-disclosure-safe

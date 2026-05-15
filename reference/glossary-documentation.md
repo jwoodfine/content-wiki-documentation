@@ -647,7 +647,7 @@ A word processing application in Workplace OS for creating, editing, and formatt
 ### Zero-party Data
 Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
 
-## See Also
+## See also
 
 - [[style-guide-topic]]
 - [[style-guide-guide]]

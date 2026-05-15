@@ -4,7 +4,7 @@ title: "Style Guide — GUIDE"
 slug: style-guide-guide
 category: reference
 type: topic
-quality: core
+quality: complete
 short_description: "How to write a GUIDE file: the operational runbook format used inside Foundry deployment subfolders, covering required structure, voice, command formatting, and the distinction from TOPIC files."
 status: active
 bcsc_class: public-disclosure-safe
@@ -159,11 +159,9 @@ escalation path — does not belong in TOPIC files served to a
 public audience. It belongs in GUIDEs read by operators with
 deployment access.
 
-## See Also
+## See also
 
 - [[style-guide-readme|Style Guide — README]]
 - [[style-guide-topic|Style Guide — TOPIC]]
 - [[language-protocol-substrate|Language Protocol Substrate]]
 - [[customer-hostability|Customer Hostability]]
-
-## References

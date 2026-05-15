@@ -4,7 +4,7 @@ title: "The Three Layers of a BIM Token"
 slug: bim-token-three-layers
 category: reference
 type: topic
-quality: core
+quality: complete
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-06
@@ -167,20 +167,10 @@ The BIM Token Regulation layer consumes the IFC Property Set structure (it refer
 
 This is the same relationship as between a CSS property specification (declaring that `color` accepts a colour value) and a design token (`--color-primary: #164679`). The property set defines the shape; the token populates the values and adds the constraint hierarchy.
 
-## See Also
+## See also
 
 - [[bim-token-what-it-is]]
 - [[building-design-system-bim]]
 - [[city-code-as-composable-geometry]]
 - [[flat-file-bim-leapfrog]]
 - [[open-bim-regulatory-acceptance]]
-
-## References
-
-- IFC 4.3 (ISO 16739-1:2024) — buildingSMART International
-- Uniclass 2015 — NBS / RIBA Enterprises
-- buildingSMART Data Dictionary (bSDD) — buildingSMART International
-- IDS 1.0 (Information Delivery Specification) — buildingSMART International
-- ASHRAE Standard 90.1-2022 — American Society of Heating, Refrigerating and Air-Conditioning Engineers
-- National Building Code of Canada 2020 (NBC 2020) — National Research Council Canada
-- EN ISO 52000-1:2017 — European Committee for Standardization

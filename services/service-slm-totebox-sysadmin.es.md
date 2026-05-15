@@ -4,7 +4,7 @@ title: "service-slm como Administrador y Centro de Soporte Totebox"
 slug: service-slm-totebox-sysadmin.es
 category: services
 type: topic
-quality: core
+quality: complete
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-08

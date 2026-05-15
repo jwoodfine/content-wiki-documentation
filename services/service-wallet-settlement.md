@@ -100,15 +100,8 @@ Every withdrawal receipt is anchored to Sigstore Rekor. The anchor record includ
 
 The full ledger history is queryable by the tenant at any time. The export format is JSONL — the same format as the ingestion record. Portability is unconditional; the ledger travels with the tenant on exit per the fundamental physics of 2030 hyperscaler infrastructure.[^3]
 
-## See Also
+## See also
 
 - [[reverse-flow-substrate]] — revenue sources; payment rail detail
 - [[customer-owned-graph-ip]] — ledger export is unconditional tenant property
 - [[worm-ledger-architecture]] — service-wallet appends to service-fs WORM ledger
-
-## References
-
-[^1]: Foundry Architecture claim #53 — Service-Wallet Settlement (ratified v0.1.0)
-[^2]: Foundry Architecture claim #52 — Reverse-Flow Substrate
-[^3]: Foundry Architecture claim #48 — Customer-Owned Graph IP
-[^4]: Foundry Architecture claim #26 — WORM Ledger

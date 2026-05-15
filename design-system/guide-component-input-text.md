@@ -37,7 +37,7 @@ Single-line text entry with label, helper text, and error state.
 
 The label is bound to the input via `for`/`id`. Error messages set `aria-describedby` on the input and `aria-live="polite"` on the helper to announce changes. Required fields use `aria-required="true"` — do not rely on the visual asterisk alone.
 
-## See Also
+## See also
 
 - [[guide-component-select]]
 - [[guide-component-checkbox]]

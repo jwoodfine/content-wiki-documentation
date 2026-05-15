@@ -36,7 +36,7 @@ The following constraints are mandatory for all dense text presentations:
 
 Every application must include a `@media print` CSS block. Upon execution of a print command, the DOM is instantly reformatted for physical output: removing UI navigation, stripping backgrounds, and applying 1-inch margins suitable for hardware printers or PDF archiving.
 
-## See Also
+## See also
 
 - [[brand-typography]]
 - [[design-typography]]

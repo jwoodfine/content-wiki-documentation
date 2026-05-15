@@ -4,7 +4,7 @@ title: "Wiki Dark Mode"
 slug: wiki-dark-mode
 category: design-system
 type: topic
-quality: core
+quality: complete
 status: active
 bcsc_class: vendor-public
 last_edited: 2026-05-07
@@ -123,7 +123,7 @@ The wiki CSS uses short-form aliases that map to the semantic tokens:
 --color-code-keyword:    var(--ps-wiki-code-keyword);
 ```
 
-## See Also
+## See also
 
 - [[wiki-typography-system]]
 - [[wiki-component-library]]

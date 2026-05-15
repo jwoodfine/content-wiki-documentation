@@ -62,11 +62,9 @@ browser and off-network lookup; the verified result is then
 committed to the ledger. The daily throughput limit ensures that
 operator attention remains high-fidelity rather than habitual.
 
-## See Also
+## See also
 
 - [[verification-surveyor|Verification Surveyor]]
 - [[message-courier|Message Courier Service]]
 - [[moonshot-initiatives|Moonshot Initiatives]]
 - [[sovereign-replacement-initiative|Sovereign Replacement Initiative]]
-
-## References

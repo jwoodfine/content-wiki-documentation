@@ -4,7 +4,7 @@ title: "Disciplina de Cómputo de Límite Único"
 slug: single-boundary-compute-discipline.es
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "Todo el tráfico de inferencia de IA en un despliegue Foundry pasa exclusivamente por el Portero, con la omisión estructuralmente impedida a nivel de kernel."
 status: active
 bcsc_class: public-disclosure-safe

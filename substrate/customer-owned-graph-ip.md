@@ -4,7 +4,7 @@ title: "Customer-Owned Graph IP"
 slug: customer-owned-graph-ip
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "The per-tenant knowledge graph and trained adapter weights are the customer's intellectual property, portable and exportable without vendor approval."
 status: active
 bcsc_class: public-disclosure-safe
@@ -46,15 +46,9 @@ The [[reverse-flow-substrate]] describes the mechanisms by which a customer's ac
 
 The module identifier that scopes each graph also isolates it. The knowledge graph and training corpus of one tenant cannot be accessed by another tenant or used to train another tenant's adapter. The boundaries are structural, not policy.
 
-## See Also
+## See also
 
 - [[seed-taxonomy-as-smb-bootstrap]] — the customer's customized seed taxonomy is part of their intellectual property
 - [[reverse-flow-substrate]] — planned mechanisms for monetizing customer-owned graph assets
 - [[direct-payment-settlement]] — the payment model that makes customer ownership commercially meaningful
 - [[substrate-without-inference-base-case]] — the transfer-of-ownership flow that makes the ownership right exercisable
-
-## References
-
-1. Doctrine claim #48 — Customer-Owned Graph IP (ratified v0.1.0).
-2. `conventions/two-bottoms-sovereign-substrate.md` — claim #34; sovereignty substrate that the ownership principle extends.
-3. `conventions/substrate-without-inference-base-case.md` — claim #54; operational form of data portability.

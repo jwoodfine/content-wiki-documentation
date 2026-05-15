@@ -44,7 +44,7 @@ Foundry’s posture is intended to defend against high-level institutional risks
 *   **Vendor Obsolescence:** Open-standard formats ensure data survival beyond the lifespan of the software vendor.
 *   **Cryptographic Agility:** The system is designed to transition to post-quantum signature schemes (e.g., Dilithium) without requiring a full storage migration.
 
-## See Also
+## See also
 
 - [[service-fs-architecture]]
 - [[capability-based-security]]

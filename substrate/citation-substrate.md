@@ -86,23 +86,9 @@ The Citation Substrate currently requires manual discipline — registry entry a
 
 Until each lands, the manual discipline is the operational form.
 
-## See Also
+## See also
 
 - [[compounding-substrate]]
 - [[language-protocol-substrate]]
 - [[decode-time-constraints]]
 - [[disclosure-substrate]]
-
-## References
-
-- `~/Foundry/conventions/citation-substrate.md` — the convention this article reflects
-- `~/Foundry/citations.yaml` — the registry
-- `~/Foundry/conventions/bcsc-disclosure-posture.md` — the BCSC disclosure posture that motivates this discipline
-- DOCTRINE.md Claim #25 — Citation Substrate
-- `[cff-spec]` — Citation File Format specification
-- `[cff-github]` — GitHub CFF support
-- `[turing-way-cff]` — The Turing Way on citation practice
-- `[knowledge-commons-wiki]` — Knowledge commons and public-knowledge compounding
-- `[opentimestamps]` — OpenTimestamps anchoring (planned integration)
-- `[ni-51-102]` — NI 51-102 Continuous Disclosure Obligations
-- `[osc-sn-51-721]` — OSC Staff Notice 51-721 Forward-Looking Information Disclosure

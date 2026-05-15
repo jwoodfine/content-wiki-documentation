@@ -50,7 +50,7 @@ The fundamental physics of 2030 hyperscaler infrastructure dictate the deploymen
 
 This "Sovereign Airlock" ensures that no single point of failure or identity compromise can bridge the gap between Vendor infrastructure and Customer data.
 
-## See Also
+## See also
 
 - [[sovereign-ai-routing]]
 - [[machine-based-auth]]

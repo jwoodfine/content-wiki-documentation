@@ -4,7 +4,7 @@ title: "Disciplina de Archivos en la Raíz"
 slug: root-files-discipline.es
 category: reference
 type: topic
-quality: published
+quality: complete
 short_description: La convención que establece que todo repositorio mantiene un conjunto pequeño y enumerado de archivos de acompañamiento canónicos en su raíz — y nada más.
 status: active
 bcsc_class: public-disclosure-safe

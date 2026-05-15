@@ -43,7 +43,7 @@ The storage engine is engineered to satisfy strict regulatory requirements:
 
 The primary innovation in Foundry’s storage layer is the integration of high-performance verifiable logs with a "sovereign-first" deployment model. Unlike legacy WORM solutions that require proprietary hardware or specific cloud vendors, Foundry’s tile-based logs are portable, open-standard, and self-verifying across any hardware from a virtual machine to an seL4-hardened Totebox appliance.
 
-## See Also
+## See also
 
 - [[worm-ledger-architecture]]
 - [[worm-ledger-design]]

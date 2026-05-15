@@ -4,7 +4,7 @@ title: "MCP as Substrate Protocol"
 slug: mcp-substrate-protocol
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "Every Foundry Ring 1 and Ring 2 service exposes a Model Context Protocol server interface as its primary external contract, with the Doorman as the MCP gateway."
 status: active
 bcsc_class: public-disclosure-safe
@@ -60,7 +60,7 @@ MCP is the structural realization of the [[code-for-machines-first]] principle. 
 
 The Doorman's existing OpenAI-compatible HTTP interface is preserved alongside MCP. Third-party clients that use the OpenAI SDK continue to work without modification. MCP is added as the substrate-level composition standard, not as a replacement for existing compatibility.
 
-## See Also
+## See also
 
 - [[single-boundary-compute-discipline]] — the Doorman as the single MCP gateway for inference
 - [[knowledge-graph-grounded-apprenticeship]] — graph query and mutation are MCP tool calls

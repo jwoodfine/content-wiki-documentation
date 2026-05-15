@@ -60,7 +60,7 @@ Productive curves are designed for short durations (≤200ms); expressive curves
 - Decorative motion that adds time to a productive task. Save expressive motion for moments that warrant the user's attention.
 - Off-scale durations (350ms, 500ms). The 6-step scale covers every interaction class.
 
-## See Also
+## See also
 
 - [[design-spacing]]
 - [[design-color]]

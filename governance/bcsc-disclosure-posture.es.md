@@ -4,7 +4,7 @@ title: "Postura de divulgación continua BCSC"
 slug: bcsc-disclosure-posture.es
 category: governance
 type: topic
-quality: published
+quality: complete
 short_description: La disciplina operacional que trata cada artefacto publicado como potencialmente revisable bajo las obligaciones canadienses de divulgación continua de valores.
 status: active
 bcsc_class: public-disclosure-safe

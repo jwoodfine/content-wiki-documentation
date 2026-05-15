@@ -45,7 +45,7 @@ Before emitting a new checkpoint, the emitter is intended to perform an internal
 ## External Anchoring
 While the emitter produces checkpoints hourly, external publication to Rekor is currently planned for a monthly cadence. This provides a balance between evidentiary density and network overhead.
 
-## See Also
+## See also
 
 - [[service-fs-architecture]]
 - [[service-fs-security-compliance]]

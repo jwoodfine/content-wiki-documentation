@@ -37,7 +37,7 @@ Badge is decorative status; the surrounding context provides meaning. If the bad
 <span class="sr-only">Status: </span><span class="ps-badge">active</span>
 ```
 
-## See Also
+## See also
 
 - [[design-color]]
 - [[guide-component-notification]]

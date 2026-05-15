@@ -66,11 +66,9 @@ generates executive-grade Markdown reports partitioned into
 standard financial reporting windows: 1D, 1W, 30D, 60D, 90D,
 year-to-date, and inception-to-date.
 
-## See Also
+## See also
 
 - [[ontological-governance|Ontological Governance]]
 - [[verification-surveyor|Verification Surveyor]]
 - [[message-courier|Message Courier Service]]
 - [[customer-hostability|Customer Hostability]]
-
-## References

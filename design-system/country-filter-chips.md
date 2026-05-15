@@ -62,7 +62,7 @@ Future enhancements are intended to include:
 - **Geographic Grouping**: Research is underway to determine if continental grouping (e.g., "Americas", "Europe") provides better usability for datasets spanning more than ten countries.
 - **Multi-Select Variant**: A planned variation that utilizes `role="group"` and `aria-pressed` to allow for cross-country data composition.
 
-## See Also
+## See also
 
 - [[map-stats-panel]]
 - [[map-side-drawer]]

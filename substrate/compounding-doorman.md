@@ -73,18 +73,10 @@ Tier B integration (Yo-Yo GPU burst) is in progress. Tier C external API routing
 
 LoRA adapter training — the mechanism that makes the Doorman compound — depends on the Brief Queue Substrate for corpus capture and the apprenticeship substrate for the training pipeline. Both are operational or in active development.
 
-## See Also
+## See also
 
 - [[three-ring-architecture]] — the ring structure the Compounding Doorman occupies (Ring 3)
 - [[service-slm]] — the specific service that implements the Compounding Doorman in the PointSav platform
 - [[compounding-substrate]] — the five structural properties the Compounding Doorman contributes to
 - [[brief-queue-substrate]] — the durable queue that keeps corpus capture continuous across compute-tier transitions
 - [[apprenticeship-substrate]] — how the Doorman's audit events generate training signal for per-tenant LoRA adapters
-
-## References
-
-1. `conventions/compounding-substrate.md` — the meta-pattern the Compounding Doorman implements; five structural properties.
-2. `conventions/three-ring-architecture.md` — internal specification; the Doorman at Ring 3.
-3. [[sys-adr-07|SYS-ADR-07]] — structured data never routes through AI; the sanitise-outbound discipline at the Doorman boundary.
-4. [[sys-adr-10|SYS-ADR-10]] — the mandatory human checkpoint that the Doorman enforces at the Ring 2 write path.
-5. MEMO §6.3 — `service-slm` specification: AI Gateway with sanitise-outbound boundary.

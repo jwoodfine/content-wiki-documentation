@@ -4,7 +4,7 @@ title: "Tier C Key Wiring"
 slug: tier-c-key-wiring
 category: infrastructure
 type: topic
-quality: published
+quality: complete
 short_description: The operational procedure for managing external API keys in the Doorman service — where keys live, how they are provisioned, how they rotate, and how a breach is contained.
 status: active
 bcsc_class: public-disclosure-safe

@@ -6,7 +6,7 @@ language: es
 paired_with: style-guide-guide.md
 category: reference
 type: topic
-quality: core
+quality: complete
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-06

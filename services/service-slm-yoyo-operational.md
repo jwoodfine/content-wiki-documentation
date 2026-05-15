@@ -109,7 +109,7 @@ Per the workspace v0.1.86 first-week target, it is currently planned for the app
 
 When AllenAI publishes OLMo 3 32B Think or Instruct in a Q4 GGUF format, the Yo-Yo deployment is designed to swap to it via a single configuration line. Per-cluster LoRA adapters compose on top of whatever base model is current; the substrate is base-model-agnostic by design.
 
-## See Also
+## See also
 
 - [[compounding-substrate]] — the five-property architectural pattern this implements
 - [[service-slm]] — service-SLM service overview

@@ -4,7 +4,7 @@ title: "Propiedad Intelectual del Grafo del Cliente"
 slug: customer-owned-graph-ip.es
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "El grafo de conocimiento por inquilino y los pesos del adaptador entrenado son propiedad intelectual del cliente, portátiles y exportables sin aprobación del proveedor."
 status: active
 bcsc_class: public-disclosure-safe

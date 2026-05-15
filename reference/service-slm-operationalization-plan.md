@@ -4,7 +4,7 @@ title: "Service-SLM Operationalization Plan"
 slug: service-slm-operationalization-plan
 category: reference
 type: topic
-quality: published
+quality: complete
 short_description: The strategic and operational plan for transitioning from externally hosted language model calls toward a per-tenant small language model substrate that heals through a compounding feedback loop.
 status: active
 bcsc_class: public-disclosure-safe

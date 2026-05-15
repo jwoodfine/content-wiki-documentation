@@ -4,7 +4,7 @@ title: "Conexión de Claves del Nivel C"
 slug: tier-c-key-wiring.es
 category: infrastructure
 type: topic
-quality: published
+quality: complete
 short_description: El procedimiento operativo para gestionar las claves de API externas en el servicio Doorman — dónde viven las claves, cómo se aprovisionan, cómo rotan y cómo se contiene una brecha.
 status: active
 bcsc_class: public-disclosure-safe

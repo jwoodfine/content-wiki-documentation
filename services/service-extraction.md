@@ -54,15 +54,9 @@ The routing decision is deterministic and tag-driven. No AI inference is require
 | Routing rules | TOML configuration file mapping origin tags to routing destinations |
 | Transaction ID format | Timestamp + routing ID composition format |
 
-## See Also
+## See also
 
 - [[service-email]]
 - [[service-people]]
 - [[service-slm]]
 - [[service-search]]
-
-## References
-
--  §XI — Ring 2 knowledge-and-processing architecture
-- `pointsav-monorepo/service-extraction/` — implementation crate
-- [[sys-adr-07|SYS-ADR-07]] — structured data never routes through AI (governs the boundary between Ring 2 deterministic routing and Ring 3 AI invocation)

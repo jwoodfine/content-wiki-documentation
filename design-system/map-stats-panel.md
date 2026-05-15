@@ -62,7 +62,7 @@ Future enhancements are intended to include:
 - **Inline Sparklines**: Planned support for compact data visualizations below numeric values to show grade distribution.
 - **Mobile Auto-Collapse**: Research is ongoing to determine the optimal collapse threshold for mobile viewports to maximize map visibility.
 
-## See Also
+## See also
 
 - [[map-side-drawer]]
 - [[country-filter-chips]]

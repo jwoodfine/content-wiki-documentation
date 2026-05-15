@@ -4,7 +4,7 @@ title: "Acuerdo de Pago Directo"
 slug: direct-payment-settlement.es
 category: architecture
 type: topic
-quality: published
+quality: complete
 short_description: "El pago por transacciones del mercado está planificado para fluir directamente del comprador al inquilino-cliente; la participación de Foundry es una comisión por transacción en el momento de la liquidación, no una suscripción recurrente."
 status: active
 bcsc_class: public-disclosure-safe

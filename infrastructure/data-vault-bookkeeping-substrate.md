@@ -4,7 +4,7 @@ title: "Data Vault Bookkeeping Substrate"
 slug: data-vault-bookkeeping-substrate
 category: infrastructure
 type: topic
-quality: published
+quality: complete
 short_description: An SMB bookkeeping and accounting architecture built on an immutable source vault, append-only journal, and structural separation between the bookkeeping record and any accounting tool.
 status: active
 bcsc_class: public-disclosure-safe

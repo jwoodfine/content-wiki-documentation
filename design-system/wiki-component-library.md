@@ -4,7 +4,7 @@ title: "Wiki Component Library"
 slug: wiki-component-library
 category: design-system
 type: topic
-quality: core
+quality: complete
 status: active
 bcsc_class: vendor-public
 last_edited: 2026-05-07
@@ -130,7 +130,7 @@ Closes on Escape or backdrop click.
 `inert` is natively supported in Chrome 102+, Firefox 112+, Safari 15.5+. A WICG
 polyfill (~3 KB gzipped) covers older browsers.
 
-## See Also
+## See also
 
 - [[wiki-dark-mode]]
 - [[wiki-typography-system]]

@@ -4,7 +4,7 @@ title: "Root Files Discipline"
 slug: root-files-discipline
 category: reference
 type: topic
-quality: published
+quality: complete
 short_description: The convention that every repository and project sub-clone keeps a small, explicitly enumerated set of canonical companion files at its root — and nothing else.
 status: active
 bcsc_class: public-disclosure-safe

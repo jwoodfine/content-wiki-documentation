@@ -4,7 +4,7 @@ title: "Style Guide — ARCHITECTURE"
 slug: style-guide-architecture
 category: reference
 type: topic
-quality: core
+quality: complete
 short_description: "Editorial standards for ARCHITECTURE.md files at project roots in the Foundry monorepo, covering required sections, technical register, module-layout conventions, and the non-goals discipline."
 status: active
 bcsc_class: public-disclosure-safe
@@ -127,5 +127,3 @@ service-disclosure/
 - [[style-guide-topic|Style Guide — TOPIC]]
 - [[style-guide-guide|Style Guide — GUIDE]]
 - [[language-protocol-substrate|Language Protocol Substrate]]
-
-## References

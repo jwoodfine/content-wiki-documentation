@@ -43,7 +43,7 @@ The panel’s behavior adapts based on the `data-mode` property:
 *   **GlobalID Portability:** Always provide a "copy-to-clipboard" affordance for GlobalIDs. IFC GUIDs are critical for audit trails but impossible to transcribe manually.
 *   **Namespace Discipline:** Do not author custom Property Set names without a registered namespace. All non-standard properties must follow the custom Pset prefix conventions to remain IFC-compliant.
 
-## See Also
+## See also
 
 - [[viewport-3d-accessibility]]
 - [[spatial-tree-accessibility]]

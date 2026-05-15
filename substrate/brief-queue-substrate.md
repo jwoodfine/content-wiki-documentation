@@ -4,7 +4,7 @@ title: "The Brief Queue Substrate"
 slug: brief-queue-substrate
 category: substrate
 type: topic
-quality: core
+quality: complete
 short_description: "A durable file-backed queue that makes idle-shutdown Yo-Yo compute viable without losing apprenticeship corpus capture data — the durability layer of the three-tier SLM substrate."
 status: active
 bcsc_class: public-disclosure-safe
@@ -81,15 +81,8 @@ The functional components being built are:
 
 The implementation does not change the corpus JSONL schema. Consumers of the apprenticeship corpus — including the future PointSav-LLM pretraining pipeline — observe no change in corpus format; only the write path changes.
 
-## See Also
+## See also
 
 - [[apprenticeship-substrate]] — the apprenticeship corpus the Brief Queue Substrate feeds into; Doctrine claim #32
 - [[service-slm-yoyo-operational]] — the Yo-Yo operational state that motivated the queue's idle-shutdown tolerance requirement
 - [[service-slm]] — the Doorman service that hosts the drain worker and enforces audit-routing discipline
-
-## References
-
-1. PointSav Doctrine claim #32 — Apprenticeship Substrate: every editorial Task session generates signed draft-created / draft-refined / creative-edited JSONL events that form the continued-pretraining corpus for a future PointSav-LLM.
-2. `conventions/apprenticeship-substrate.md` §7C — the signal-complete acknowledgment that established the queue as a required durability layer for corpus capture.
-3. PointSav Doctrine Pillar 1 — Plain text only: structured state is stored as version-controllable plain text; binary state and daemon-held state are avoided where the operational requirement can be met by a text-based alternative.
-4. DOCTRINE.md §XIV — Compounding Substrate: the three-tier compute routing pattern (Local / Yo-Yo / External API) that the Brief Queue Substrate makes operationally continuous across tier transitions.

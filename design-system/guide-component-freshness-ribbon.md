@@ -39,7 +39,7 @@ A per-section date badge that signals content review currency. Three semantic st
 
 Each ribbon carries an `aria-label` announcing the ISO date and semantic stop (`Last reviewed 2026-03-15 — fresh`). Colour is not the sole differentiator — the stop name (`fresh`/`stale`/`archived`) is in the `aria-label`. The `data-iso` attribute is the machine-readable date surface. Archived variant: #4a4f59 on #f5f6f8 = 5.2:1 (passes WCAG 4.5:1 AA).
 
-## See Also
+## See also
 
 - [[guide-component-citation-authority-ribbon]]
 - [[guide-component-research-trail-footer]]

@@ -4,7 +4,7 @@ title: "Código para Máquinas Primero"
 slug: code-for-machines-first.es
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "Cada contrato entre servicios Foundry, registro de auditoría, configuración y ontología es legible por máquinas como superficie primaria; las interfaces para humanos son capas sobre APIs primero-para-máquinas."
 status: active
 bcsc_class: public-disclosure-safe

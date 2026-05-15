@@ -34,7 +34,7 @@ Totebox Archives are typically deployed as specialized containers for distinct i
 *   **Totebox Archive - Corporate:** Tax identification, formation documents, and minutes.
 *   **Totebox Archive - Property:** Land titles, zoning records, and construction ledgers.
 
-## See Also
+## See also
 
 - [[totebox-os]]
 - [[totebox-orchestration]]

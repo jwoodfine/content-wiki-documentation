@@ -4,7 +4,7 @@ title: "PointSav-LLM"
 slug: pointsav-llm.es
 category: architecture
 type: topic
-quality: core
+quality: complete
 short_description: "El modelo de IA especialista planificado para el Nivel 3 del sistema de cuatro niveles SLM de PointSav, construido mediante entrenamiento continuo de OLMo 3 32B sobre el corpus federated de aprendizaje de Foundry."
 status: active
 bcsc_class: public-disclosure-safe

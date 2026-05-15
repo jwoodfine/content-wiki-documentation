@@ -42,9 +42,3 @@ Managed container orchestration platforms, container runtime systems, multi-clou
 - [[zero-container-runtime]] — the structural commitment underlying this deployment pattern; applies across all Foundry service rings
 - [[doorman-protocol]] — the Tier B routing path that dispatches to Yo-Yo pool instances
 - [[substrate-without-inference-base-case]] — the substrate functions fully without Tier B; inference is additive
-
-## References
-
-- **`conventions/zero-container-runtime.md`** — ratified specification for the zero-container deployment commitment.
-- **`infrastructure/slm-yoyo/`** — OpenTofu modules and systemd units for the planned Yo-Yo inference pool.
-- **OSC Staff Notice 51-721** — Forward-Looking Information Disclosure. The Yo-Yo compute pool and all deployment timelines in this article are forward-looking statements subject to change.

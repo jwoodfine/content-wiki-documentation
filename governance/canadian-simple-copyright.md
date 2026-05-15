@@ -4,7 +4,7 @@ title: "Canadian-Simple Copyright Posture"
 slug: canadian-simple-copyright
 category: governance
 type: topic
-quality: core
+quality: complete
 short_description: "Foundry's intellectual property vests in a single Canadian parent holding company by operation of Canadian Copyright Act § 13(3), without inter-company assignment, and is designed to be evolved incrementally as the corporate structure matures."
 status: active
 bcsc_class: public-disclosure-safe
@@ -158,7 +158,7 @@ corporate structure looks like; the disclosure regime per
 whether or not the relevant entity is currently a reporting
 issuer.
 
-## See Also
+## See also
 
 - [[customer-hostability|Customer Hostability]]
 - [[contributor-model|Contributor Model]]

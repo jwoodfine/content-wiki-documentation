@@ -33,7 +33,7 @@ As the stateful layer of the platform, `service-fs` is responsible for data pers
 
 In production, `service-fs` is deployed as a low-overhead unikernel. It provides a restricted API for the `service-business` and `service-places` intelligence layers to read raw data and write back processed results, enforcing clean separation between storage and analysis concerns.
 
-## See Also
+## See also
 
 - [[service-business-clustering]]
 - [[service-places-filtering]]

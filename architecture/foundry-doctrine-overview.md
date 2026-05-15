@@ -4,7 +4,7 @@ title: "Foundry Architecture 2030 — An Overview"
 slug: foundry-doctrine-overview
 category: architecture
 type: topic
-quality: published
+quality: complete
 short_description: A faithful public summary of the Foundry constitutional charter — six pillars, fifty-two structural claims, eight cross-industry inventions, a three-tier compute model, three-ring service architecture, and the economic model that sustains it.
 status: active
 bcsc_class: public-disclosure-safe
@@ -121,7 +121,7 @@ MAJOR bumps require a 30-day public comment period. MINOR bumps produce a signed
 
 The BCSC Continuous Disclosure Posture applies to all claims, conventions, and public artifacts: forward-looking statements carry "planned," "intended," or "may" language with a stated basis and cautionary framing. The text does not describe future capabilities as current facts.
 
-## See Also
+## See also
 
 - [[compounding-substrate]] — the five structural properties of the Compounding Substrate
 - [[compounding-doorman]] — the single-boundary compute discipline at the inference layer
@@ -129,15 +129,3 @@ The BCSC Continuous Disclosure Posture applies to all claims, conventions, and p
 - [[knowledge-commons]] — the Knowledge Commons / Service Commerce model
 - [[system-substrate-doctrine]] — the Capability Ledger and Two-Bottoms Sovereign Substrate
 - [[disclosure-substrate]] — the Continuous-Disclosure Substrate applied to the wiki layer
-
-## References
-
-1. NI 51-102 Continuous Disclosure Obligations — Canadian Securities Administrators.
-2. OSC Staff Notice 51-721 Forward-Looking Information Disclosure.
-3. Constitutional AI: Harmlessness from AI Feedback, Bai et al., arXiv 2212.08073.
-4. MCP Specification — Model Context Protocol, Anthropic, 2024.
-5. OLMo 3 — Allen Institute for AI, Apache 2.0.
-6. LoRAX — Predibase multi-LoRA inference server.
-7. OpenTimestamps — Bitcoin-anchored timestamping.
-8. RFC 3161 — Internet X.509 PKI Time-Stamp Protocol.
-9. ESEF Regulation — European Single Electronic Format, iXBRL.

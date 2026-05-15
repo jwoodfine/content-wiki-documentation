@@ -73,7 +73,7 @@ A token named for a chromatic family in PointSav's code that uses a vendor's exa
 
 The structural patterns are field-shared; the literal tokens are not.
 
-## See Also
+## See also
 
 - [[design-philosophy]]
 - [[design-color]]

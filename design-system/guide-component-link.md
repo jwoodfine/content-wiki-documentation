@@ -33,7 +33,7 @@ A navigation primitive — moves the user to a destination without state change.
 
 Use semantic `<a>` with `href`. Never use a `<button>` styled as a link or vice versa. Distinguish links from buttons by behaviour: links navigate, buttons act.
 
-## See Also
+## See also
 
 - [[guide-component-button]]
 - [[guide-component-navigation-bar]]

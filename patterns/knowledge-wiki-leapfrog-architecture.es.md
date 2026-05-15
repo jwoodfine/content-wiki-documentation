@@ -4,7 +4,7 @@ title: "Arquitectura Leapfrog del Wiki de Conocimiento"
 slug: knowledge-wiki-leapfrog-architecture.es
 category: patterns
 type: topic
-quality: core
+quality: complete
 status: active
 language: es
 bcsc_class: no-disclosure-implication

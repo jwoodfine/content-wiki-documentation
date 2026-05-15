@@ -62,7 +62,7 @@ Future iterations are intended to include:
 - **Pattern Infills**: Planned support for geometric patterns within the dot to enhance distinguishability for users with advanced color vision deficiencies.
 - **Dynamic Pie Charts**: Research is underway to transition the cluster-centroid ring into a dynamic donut chart when cluster density exceeds 10 anchors.
 
-## See Also
+## See also
 
 - [[brand-typography]]
 - [[design-typography]]

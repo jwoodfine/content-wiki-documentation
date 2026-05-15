@@ -4,7 +4,7 @@ title: "Taxonomía Semilla como Bootstrap para PYMEs"
 slug: seed-taxonomy-as-smb-bootstrap.es
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "Cada despliegue de inquilino Foundry provisiona una taxonomía semilla de cuatro partes — Arquetipos, Plan de Cuentas, Dominios, Temas — como el arranque del grafo de conocimiento."
 status: active
 bcsc_class: public-disclosure-safe

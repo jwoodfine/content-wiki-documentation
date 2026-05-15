@@ -4,7 +4,7 @@ title: "AI Routing and the Linguistic Air-Lock"
 slug: sovereign-ai-routing
 category: architecture
 type: topic
-quality: core
+quality: complete
 short_description: "AI routing in the PointSav platform processes language model requests through a local sanitization step before any data reaches external models, ensuring that internal structured data never travels to third-party servers in identifiable form."
 status: active
 bcsc_class: public-disclosure-safe
@@ -55,17 +55,10 @@ The customer does not select the tier. Request shape, prompt length, and the ten
 - **Financial advisory firms:** ledger summaries routed for analysis strip account numbers, client names, and jurisdiction identifiers before leaving the office network.
 - **Real estate operations:** property records routed for description generation replace addresses and owner names with pseudonymous tokens for the external call.
 
-## See Also
+## See also
 
 - [[compounding-substrate]]
 - [[worm-ledger-architecture]]
 - [[decode-time-constraints]]
 - [[machine-based-auth]]
 - [[3-layer-stack]]
-
-## References
-
-- `conventions/compounding-substrate.md §3` — Multi-Tier Compute Routing property
-- `DOCTRINE.md §XIV` — service-slm as the Doorman boundary in the Compounding Substrate
-- `conventions/three-ring-architecture.md` — Ring 3 optional intelligence placement
-- `IT_SUPPORT_Nomenclature_Matrix_V8.md` — canonical service names (service-slm, Doorman)

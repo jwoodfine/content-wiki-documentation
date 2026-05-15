@@ -4,7 +4,7 @@ title: "service-slm Rust Stack Architecture"
 slug: slm-stack-architecture
 category: architecture
 type: topic
-quality: published
+quality: complete
 short_description: "The full Rust dependency graph and binary architecture for service-slm, the Doorman service that mediates every inference call in the PointSav platform."
 status: active
 bcsc_class: public-disclosure-safe
@@ -115,16 +115,9 @@ The mandatory rule for the entire dependency graph: every entry is one of `MIT`,
 
 `cargo-deny` with a `deny.toml` policy file enforces this. The `deny.toml` is committed to the repository and reviewed at every dependency addition.
 
-## See Also
+## See also
 
 - [[compounding-doorman]] — the operational pattern service-slm implements
 - [[yoyo-compute-substrate]] — the multi-ring compute substrate service-slm drives
 - [[apprenticeship-substrate]] — how the audit ledger feeds LoRA adapter training
 - [[three-ring-architecture]] — Ring 3 placement of service-slm in the platform
-
-## References
-
-1. `SLM-STACK.md` — workspace-root technical specification for the service-slm Rust stack; source document for this topic.
-2. `YOYO-COMPUTE.md` — workspace-root specification for the Yo-Yo compute substrate; companion to this topic.
-3. [[sys-adr-07|SYS-ADR-07]] — structured data never routes through AI; the sanitise-outbound discipline at the Doorman boundary.
-4. `conventions/compounding-substrate.md` — the meta-pattern service-slm implements.

@@ -4,7 +4,7 @@ title: "The Building Design System for the Built Environment"
 slug: building-design-system-bim
 category: architecture
 type: topic
-quality: core
+quality: complete
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-06
@@ -90,19 +90,10 @@ The Building Design System is not a hosted service. It is a set of JSON files in
 
 The vendor-tier `pointsav-design-system` maintains the universal token primitives, component recipes, and research files. Customer-tier vaults extend the vendor layer with jurisdiction-specific and programme-specific additions. Deployment instances read from the customer vault. No data flows upward: vendor → customer → deployment only.
 
-## See Also
+## See also
 
 - [[bim-token-what-it-is]]
 - [[bim-token-three-layers]]
 - [[design-system-substrate]]
 - [[flat-file-bim-leapfrog]]
 - [[bim-token-taxonomy]]
-
-## References
-
-- IFC 4.3 (ISO 16739-1:2024) — buildingSMART International
-- Uniclass 2015 — NBS / RIBA Enterprises
-- buildingSMART Data Dictionary (bSDD) — buildingSMART International
-- IDS 1.0 (Information Delivery Specification) — buildingSMART International
-- W3C Design Token Community Group (DTCG) format — W3C
-- W3C ARIA 1.2 — W3C Web Accessibility Initiative

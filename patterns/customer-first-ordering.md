@@ -4,7 +4,7 @@ title: "Customer-First Ordering"
 slug: customer-first-ordering
 category: patterns
 type: topic
-quality: published
+quality: complete
 short_description: The principle that a software vendor building something a customer will install should build it in the same order the customer will install it, on the same substrate the customer will use.
 status: active
 bcsc_class: public-disclosure-safe

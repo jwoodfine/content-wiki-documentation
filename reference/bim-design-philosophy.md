@@ -40,7 +40,7 @@ The BIM-SEMANTIC layer sits atop project-design’s META-substrate. While projec
 
 This architecture ensures that BIM components remain consistent with the broader Foundry design language while meeting the rigorous semantic requirements of ISO-standardized building data.
 
-## See Also
+## See also
 
 - [[bim-aec-muscle-memory]]
 - [[bim-token-taxonomy]]

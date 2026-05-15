@@ -70,11 +70,9 @@ The initiative operates across the vendor-customer structure:
   verify progress toward operational independence from legacy
   external providers.
 
-## See Also
+## See also
 
 - [[moonshot-initiatives|Moonshot Initiatives]]
 - [[ontological-governance|Ontological Governance]]
 - [[verification-surveyor|Verification Surveyor]]
 - [[customer-hostability|Customer Hostability]]
-
-## References

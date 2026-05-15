@@ -135,7 +135,7 @@ By 2030, the Compounding Substrate aims to produce:
 
 The pattern does not displace hyperscalers in volume; they retain the unregulated long tail of cloud AI. The trajectory captures the regulated SMB market that hyperscalers cannot economically reach.
 
-## See Also
+## See also
 
 - [[apprenticeship-substrate]]
 - [[3-layer-stack]]

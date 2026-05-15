@@ -78,17 +78,10 @@ Per `[ni-51-102]` continuous-disclosure language, the trajectory below is `plann
 - Live adapter composition with grammar composition through `service-slm`'s Doorman.
 - Audit-ledger entries recording `grammar_version + adapter_composition + response_hash` per request.
 
-## See Also
+## See also
 
 - [[compounding-substrate]]
 - [[language-protocol-substrate]]
 - [[apprenticeship-substrate]]
 - [[sovereign-ai-routing]]
 - [[worm-ledger-architecture]]
-
-## References
-
-- `conventions/language-protocol-substrate.md §3` — CFG enforcement within the language-protocol model
-- `pointsav-monorepo/service-content/schemas/banned-vocab.lark` — the banned-vocabulary grammar
-- `pointsav-monorepo/service-content/schemas/validate.py` — offline validation harness
-- `conventions/compounding-substrate.md` — federated-compounding property that depends on this enforcement layer

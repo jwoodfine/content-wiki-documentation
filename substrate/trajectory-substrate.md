@@ -120,23 +120,10 @@ Planned subsequent tiers:
 
 The quarterly pretraining cadence is intended once L3 is operational. Substrate baselines are designed to improve monotonically as the corpus accumulates; the mechanism is in place and the signal is accumulating.
 
-## See Also
+## See also
 
 - [[compounding-substrate]]
 - [[apprenticeship-substrate]]
 - [[decode-time-constraints]]
 - [[language-protocol-substrate]]
 - [[citation-substrate]]
-
-## References
-
-- `~/Foundry/conventions/trajectory-substrate.md` — the convention this article reflects
-- `pointsav-monorepo/service-disclosure/CORPUS-SCHEMA.md` — the corpus schema
-- `~/Foundry/bin/install-capture-hook.sh` — the capture hook installer
-- `[constitutional-ai-2212-08073]` — Constitutional AI: Harmlessness from AI Feedback (Bai et al., 2022)
-- `[federated-lora-2502-05087]` — Federated LoRA research lineage
-- `[s-lora-2024]` — S-LoRA: Serving Thousands of Concurrent LoRA Adapters
-- `[lorax-predibase]` — LoRAX multi-LoRA serving
-- `[olmo3-allenai]` — OLMo 3 base model (Allen Institute for AI)
-- `[ni-51-102]` — NI 51-102 Continuous Disclosure Obligations
-- `[osc-sn-51-721]` — OSC Staff Notice 51-721 Forward-Looking Information Disclosure

@@ -77,8 +77,3 @@ The planned `app-orchestration-command` aggregator (CommandCentre) is intended t
 - [[totebox-orchestration-development]]
 - [[totebox-session]]
 - [[doorman-protocol]]
-
-## References
-
-- **`DOCTRINE.md`** — Foundry constitutional charter; permission model.
-- **`conventions/three-ring-architecture.md`** — three-tier substrate composition reference.

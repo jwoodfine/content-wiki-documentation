@@ -62,7 +62,7 @@ Future developments are intended to include:
 - **Comparison View**: A planned split-drawer variant to support federated cluster comparison (Doctrine Invention #9).
 - **Adaptive Width**: Research is ongoing to determine if a full-width expansion is required for mobile viewports while preserving minimal map context.
 
-## See Also
+## See also
 
 - [[map-stats-panel]]
 - [[country-filter-chips]]

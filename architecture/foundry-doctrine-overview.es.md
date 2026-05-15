@@ -4,7 +4,7 @@ title: "Doctrina Foundry 2030 — Resumen"
 slug: foundry-doctrine-overview.es
 category: architecture
 type: topic
-quality: published
+quality: complete
 short_description: Resumen público fiel de la carta constitucional de la Doctrina Foundry — seis pilares, cincuenta y dos afirmaciones de salto adelante, ocho invenciones operativas entre industrias, y el modelo económico que las sostiene.
 status: active
 bcsc_class: public-disclosure-safe

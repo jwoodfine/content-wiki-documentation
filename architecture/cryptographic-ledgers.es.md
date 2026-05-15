@@ -4,7 +4,7 @@ title: "Libros Contables Criptográficos"
 slug: cryptographic-ledgers
 category: architecture
 type: topic
-quality: core
+quality: complete
 status: active
 audience: public
 bcsc_class: public-disclosure-safe

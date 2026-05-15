@@ -4,7 +4,7 @@ title: "Reverse-Flow Substrate"
 slug: reverse-flow-substrate
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "The Doorman gateway and audit ledger that enforce inbound data discipline are planned to also enforce outbound commercial flows — data marketplace and ad exchange — both opt-in per tenant."
 status: active
 bcsc_class: public-disclosure-safe
@@ -46,7 +46,7 @@ The customer's decision to combine their own audience data with other data sourc
 
 The planned reverse flows depend on [[single-boundary-compute-discipline]] — all marketplace and ad exchange traffic is intended to route through the Doorman, so the same audit boundary that captures inference also captures monetization events. They depend on [[customer-owned-graph-ip]] — the inventory is the customer's intellectual property, and reverse flows are the mechanism through which the customer may realize commercial value from that property. And they depend on [[direct-payment-settlement]] — payment flows directly from buyer to the customer-tenant, with Foundry taking a transaction fee at settlement.
 
-## See Also
+## See also
 
 - [[customer-owned-graph-ip]] — the ownership principle that makes reverse flows a customer-controlled decision
 - [[direct-payment-settlement]] — the planned payment mechanism for marketplace and ad exchange transactions

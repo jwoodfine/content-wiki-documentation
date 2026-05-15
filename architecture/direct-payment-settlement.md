@@ -4,7 +4,7 @@ title: "Direct-Payment Settlement"
 slug: direct-payment-settlement
 category: architecture
 type: topic
-quality: published
+quality: complete
 short_description: "Payment for marketplace transactions is planned to flow directly from buyer to the customer-tenant; Foundry's share is a transaction fee at settlement, not a recurring subscription."
 status: active
 bcsc_class: public-disclosure-safe
@@ -44,14 +44,8 @@ Every planned settlement event is intended to record a structured entry in the a
 
 Direct-Payment Settlement composes with the [[reverse-flow-substrate]] — every marketplace and ad exchange transaction is intended to trigger a settlement event. It composes with [[customer-owned-graph-ip]] — revenue from monetizing customer-owned intellectual property flows to the IP holder. And it composes with [[single-boundary-compute-discipline]] — settlement traffic is intended to route through the Doorman so that the same audit boundary captures monetization as well as inference.
 
-## See Also
+## See also
 
 - [[reverse-flow-substrate]] — the planned marketplace and ad exchange flows that generate settlement events
 - [[customer-owned-graph-ip]] — the ownership principle that makes customer-direct payment the correct model
 - [[single-boundary-compute-discipline]] — the Doorman as the intended settlement audit boundary
-
-## References
-
-1. Doctrine claim #53 — Direct-Payment Settlement (ratified v0.1.0).
-2. `conventions/reverse-flow-substrate.md` — claim #52 composition.
-3. Sigstore Rekor transparency log — intended cryptographic anchoring for settlement audit chain.

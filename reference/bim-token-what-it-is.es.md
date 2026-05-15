@@ -5,7 +5,7 @@ slug: bim-token-what-it-is
 language: es
 category: reference
 type: topic
-quality: core
+quality: complete
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-06

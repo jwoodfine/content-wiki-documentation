@@ -4,7 +4,7 @@ title: "Sustrato de bóveda de datos para contabilidad"
 slug: data-vault-bookkeeping-substrate.es
 category: infrastructure
 type: topic
-quality: published
+quality: complete
 short_description: Una arquitectura de contabilidad para PYMEs construida sobre una bóveda de fuente inmutable, un diario de solo adición y separación estructural entre el registro contable y cualquier herramienta de contabilidad.
 status: active
 bcsc_class: public-disclosure-safe

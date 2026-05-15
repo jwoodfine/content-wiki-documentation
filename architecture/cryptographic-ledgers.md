@@ -4,7 +4,7 @@ title: "Cryptographic Ledgers"
 slug: cryptographic-ledgers
 category: architecture
 type: topic
-quality: core
+quality: complete
 short_description: "Cryptographic ledgers are the immutable-state storage pattern used in the PointSav platform, enforcing mathematical immutability so that any alteration to a recorded fact breaks a verifiable cryptographic hash chain rather than requiring trust in administrative access controls."
 status: active
 bcsc_class: public-disclosure-safe
@@ -55,17 +55,10 @@ The cryptographic ledger applies across all customer-facing data in the platform
 - **Regulatory recordkeeping** — the architecture is structurally aligned with SEC Rule 17a-4(f) broker-dealer electronic recordkeeping requirements (WORM path) and eIDAS qualified preservation service requirements for long-term proof-of-existence.
 - **Audit trail** — every read of the ledger is itself logged to an audit sub-ledger, which is also WORM and also anchored.
 
-## See Also
+## See also
 
 - [[worm-ledger-architecture]]
 - [[crypto-attestation]]
 - [[capability-based-security]]
 - [[compounding-substrate]]
 - [[sel4-microkernel-substrate]]
-
-## References
-
-- `conventions/worm-ledger-design.md` — canonical WORM ledger specification; C2SP tlog-tiles format rationale; four-layer architecture detail
-- `DOCTRINE.md §II.7` — Doctrine Invention #7: Integrity Anchor via Sigstore Rekor
-- `DOCTRINE.md §IX` — SOC 2 posture and external WORM standard alignment
-- `conventions/bcsc-disclosure-posture.md` — audit trail requirements for continuous-disclosure compliance

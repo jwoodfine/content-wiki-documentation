@@ -39,7 +39,7 @@ On/off toggle for settings that take effect immediately. Use when the action is 
 
 Native `<input type="checkbox" role="switch">` announces as a switch (instead of a checkbox) on conformant screen readers. Visual track and thumb are `aria-hidden` decorative. Action takes effect immediately on toggle — pair with a status notification when the change is non-trivial.
 
-## See Also
+## See also
 
 - [[guide-component-checkbox]]
 - [[guide-component-notification]]

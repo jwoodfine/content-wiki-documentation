@@ -4,7 +4,7 @@ title: "app-mediakit-marketing"
 slug: app-mediakit-marketing
 category: applications
 type: topic
-quality: core
+quality: complete
 short_description: "app-mediakit-marketing serves multi-tenant marketing landing pages from a single statically-compiled Rust binary — no PHP, no MySQL, no plugin infrastructure — while preserving WordPress.org muscle memory at the operator-facing URL and navigation surface."
 status: active
 bcsc_class: vendor-public
@@ -66,7 +66,7 @@ The server is Tier 0 compatible: it runs on a single low-cost VM alongside other
 PointSav substrate services without requiring dedicated compute. Both deployments run
 concurrently on the foundry-workspace VM (e2-medium, 2 vCPU, 4 GB RAM).
 
-## See Also
+## See also
 
 - [[app-mediakit-knowledge]]
 - app-orchestration-bim

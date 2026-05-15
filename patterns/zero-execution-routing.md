@@ -29,7 +29,7 @@ Interactive interface elements, such as language toggles and dynamic download bu
 
 This "Leapfrog 2030" standard ensures that Foundry interfaces are accessible, secure, and instantaneous across all network environments.
 
-## See Also
+## See also
 
 - [[sovereign-ai-routing]]
 - [[machine-based-auth]]

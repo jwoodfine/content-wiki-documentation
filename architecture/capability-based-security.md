@@ -4,7 +4,7 @@ title: "Capability-Based Security"
 slug: capability-based-security
 category: architecture
 type: topic
-quality: core
+quality: complete
 short_description: "Capability-based security is the access-control model PointSav uses at the hardware and operating-system layers, where each software component must hold a mathematically verified cryptographic token to communicate with any other component."
 status: active
 bcsc_class: public-disclosure-safe
@@ -57,7 +57,7 @@ The capability model applies across the full PointSav deployment stack:
 - **MediaKit OS** — the edge delivery environment; deliberately holds no capability grants reaching ToteboxOS, so a compromised delivery node cannot reach stored data.
 - **service-fs** — the WORM ledger; append capability is granted to Ring 1 ingest services; no read-modify-write capability exists at the API surface.
 
-## See Also
+## See also
 
 - [[sel4-microkernel-substrate]]
 - [[worm-ledger-architecture]]

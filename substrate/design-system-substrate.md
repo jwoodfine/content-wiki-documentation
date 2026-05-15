@@ -124,11 +124,9 @@ It is not a JavaScript-framework choice. Components are HTML+CSS+ARIA recipes; t
 
 It is not a container artefact. Per the fundamental physics of 2030 hyperscaler infrastructure, the substrate ships as a native binary deployed via systemd.
 
-## See Also
+## See also
 
 - [[compounding-substrate]]
 - [[substrate-native-compatibility]]
 - [[reverse-funnel-editorial-pattern]]
 - [[customer-hostability]]
-
-## References

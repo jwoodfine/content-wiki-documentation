@@ -4,7 +4,7 @@ title: "MCP como Protocolo Substrato"
 slug: mcp-substrate-protocol.es
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "Cada servicio Foundry del Anillo 1 y Anillo 2 expone una interfaz de servidor MCP como su contrato externo primario, con el Portero actuando como la puerta de enlace MCP."
 status: active
 bcsc_class: public-disclosure-safe

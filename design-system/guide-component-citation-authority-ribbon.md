@@ -39,7 +39,7 @@ A leading source-classification badge in a references list. Six source types —
 
 Each badge carries an `aria-label` with the full source class name (`Academic source`, `Regulator source`, etc.) and a single-letter glyph — colour is never the sole differentiator. The badge is a `<span>`, not interactive. Only `<a>` elements (citation URL, backref arrow) are keyboard-reachable. Use `<ol class="ps-references">` as the outer wrapper — the ordered list preserves citation numbering. The `data-source-authority` attribute is the machine-readable surface for JSON-LD consumers.
 
-## See Also
+## See also
 
 - [[guide-component-freshness-ribbon]]
 - [[guide-component-research-trail-footer]]

@@ -4,7 +4,7 @@ title: "La Doctrina del Sustrato del Sistema"
 slug: system-substrate-doctrine.es
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: La arquitectura de nivel de kernel bajo cada servicio de PointSav — un registro de capacidades con raíz en el cliente, una estrategia de SO soberana de dos bases, y mecanismos para capacidades de tiempo limitado, verificación reproducible y recuperación universal.
 status: active
 bcsc_class: public-disclosure-safe

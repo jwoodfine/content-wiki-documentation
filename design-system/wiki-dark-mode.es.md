@@ -5,7 +5,7 @@ slug: wiki-dark-mode
 language: es
 category: design-system
 type: topic
-quality: core
+quality: complete
 status: active
 bcsc_class: vendor-public
 last_edited: 2026-05-07

@@ -4,7 +4,7 @@ title: "Knowledge-Graph-Grounded Apprenticeship"
 slug: knowledge-graph-grounded-apprenticeship
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "The Doorman consults the per-tenant knowledge graph before every inference request, producing training tuples where the graph and the model adapter co-evolve."
 status: active
 bcsc_class: public-disclosure-safe
@@ -58,7 +58,7 @@ These metrics feed the verdict process. A response with high hallucination rate 
 
 Knowledge-graph-grounded apprenticeship depends on the [[single-boundary-compute-discipline]]. If inference can bypass the Doorman, it bypasses graph grounding. An ungrounded inference call produces no graph context field in the training tuple, no citation rate measurement, and no proposed graph mutation. The two claims compose as a structural dependency: without single-boundary enforcement, graph-grounded apprenticeship cannot be guaranteed.
 
-## See Also
+## See also
 
 - [[single-boundary-compute-discipline]] — structural prerequisite; grounding happens at the Doorman boundary
 - [[seed-taxonomy-as-smb-bootstrap]] — the per-tenant taxonomy that seeds the knowledge graph used for grounding

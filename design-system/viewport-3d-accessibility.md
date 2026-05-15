@@ -51,7 +51,7 @@ The viewport implements industry-standard AEC shortcuts to ensure full control w
 *   **Zero IPC for Geometry:** Do not pipe raw IFC or geometry bytes over the IPC boundary. Use localized asset protocols to load visualization caches (e.g., XKT files) directly into the GPU.
 *   **Decoupled CSS:** Viewport-specific 3D engine CSS should remain decoupled from the Building Design System’s core styles to allow for runtime-specific engine updates.
 
-## See Also
+## See also
 
 - [[spatial-tree-accessibility]]
 - [[properties-panel-accessibility]]

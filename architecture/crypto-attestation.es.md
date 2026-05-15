@@ -4,7 +4,7 @@ title: "Attestación Criptográfica de Cargas"
 slug: crypto-attestation
 category: architecture
 type: topic
-quality: core
+quality: complete
 status: active
 audience: public
 bcsc_class: public-disclosure-safe

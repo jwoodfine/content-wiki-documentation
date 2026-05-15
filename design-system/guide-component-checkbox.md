@@ -37,7 +37,7 @@ Boolean choice. Use when each option is independent of the others.
 
 The hidden native `<input type="checkbox">` drives keyboard and screen-reader behaviour. The visual `<span class="ps-check__box">` is decorative (`aria-hidden`). Click target is the entire `<label>`, which works for both mouse and touch.
 
-## See Also
+## See also
 
 - [[guide-component-switch]]
 - [[guide-component-input-text]]

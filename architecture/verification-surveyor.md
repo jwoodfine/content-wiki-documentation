@@ -56,11 +56,9 @@ The scarcity is structural: it transforms what would otherwise be
 a mechanical clearing task into a deliberate, high-attention
 operational step.
 
-## See Also
+## See also
 
 - [[ontological-governance|Ontological Governance]]
 - [[message-courier|Message Courier Service]]
 - [[sovereign-telemetry|Zero-State Telemetry Architecture]]
 - [[moonshot-initiatives|Moonshot Initiatives]]
-
-## References

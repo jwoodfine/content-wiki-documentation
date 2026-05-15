@@ -84,7 +84,7 @@ Honest accounting:
 
 These are deliberate trade-offs for the offline-first, vendor-obsolescence-survivable posture; not oversights to be patched in the next release.
 
-## See Also
+## See also
 
 - [[worm-ledger-design]]
 - [[service-fs-architecture]]

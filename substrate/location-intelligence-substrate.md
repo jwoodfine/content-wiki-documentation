@@ -118,20 +118,8 @@ Direct scraping of retailer websites is not used where terms of service prohibit
 
 Statements regarding deployment schedule, customer outcomes, and feature roadmap for the Location Intelligence Substrate are intended targets subject to change. Actual timelines depend on operator review at each stage, open-data coverage accuracy, and development velocity. These statements carry "planned"/"intended"/"may" framing per the workspace's continuous-disclosure posture.[^8][^9]
 
-## See Also
+## See also
 
 - [[three-ring-architecture]] — `service-business`, `service-places`, and `service-parking` are Ring 1 services
 - [[substrate-without-inference-base-case]] — GIS substrate functions fully without the AI ring
 - [[customer-owned-graph-ip]] — geographic datasets owned by the customer, not the vendor
-
-## References
-
-[^1]: Overture Maps Foundation — GeoParquet places schema. overturemaps.org
-[^2]: Foursquare Open Source Places — 100M+ POIs, Apache 2.0. huggingface.co/datasets/foursquare
-[^3]: GeoParquet specification — OGC incubating standard. geoparquet.org
-[^4]: FlatGeobuf — Hilbert R-tree packed flat-file format. flatgeobuf.org
-[^5]: MapLibre GL JS — Community-driven vector-tile renderer. maplibre.org
-[^6]: Martin tile server — Rust tile server (MapLibre Foundation). maplibre.org/martin
-[^7]: PMTiles — Single-file tile archive with HTTP range requests. protomaps.com/pmtiles
-[^8]: NI 51-102 Continuous Disclosure Obligations — BCSC
-[^9]: OSC Staff Notice 51-721 Forward-Looking Information Disclosure

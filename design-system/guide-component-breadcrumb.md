@@ -38,7 +38,7 @@ Hierarchy trail to the current page. Useful when the user is nested deeper than 
 
 `<nav aria-label="Breadcrumb">` wraps an ordered list. The current page is marked with `aria-current="page"` and is not rendered as a link.
 
-## See Also
+## See also
 
 - [[guide-component-navigation-bar]]
 - [[guide-component-tab]]

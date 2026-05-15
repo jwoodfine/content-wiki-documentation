@@ -4,7 +4,7 @@ title: "Enrutamiento de IA y la Esclusa Lingüística"
 slug: sovereign-ai-routing
 category: architecture
 type: topic
-quality: core
+quality: complete
 status: active
 audience: public
 bcsc_class: public-disclosure-safe

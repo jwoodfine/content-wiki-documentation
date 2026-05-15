@@ -4,7 +4,7 @@ title: "La TUI como Productora de Corpus"
 slug: tui-corpus-producer.es
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "Cada interacción del operador con service-slm a través de la interfaz de terminal es una contribución curada al corpus de entrenamiento del adaptador por inquilino."
 status: active
 bcsc_class: public-disclosure-safe

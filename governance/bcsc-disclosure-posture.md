@@ -4,7 +4,7 @@ title: "BCSC Continuous-Disclosure Posture"
 slug: bcsc-disclosure-posture
 category: governance
 type: topic
-quality: published
+quality: complete
 short_description: The operating discipline that treats every published artifact as potentially reviewable under Canadian securities continuous-disclosure obligations.
 status: active
 bcsc_class: public-disclosure-safe

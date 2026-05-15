@@ -4,7 +4,7 @@ title: "Tier 0 Customer-Side Sovereign Specialist"
 slug: tier-zero-customer-side-sovereign-specialist
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "The Tier 0 Totebox is a sovereign specialist deployment running on the customer's own hardware with no required cloud dependency and a 1 GB total footprint."
 status: active
 bcsc_class: public-disclosure-safe
@@ -52,13 +52,8 @@ Tier B (GPU burst capacity) is opt-in per tenant. The customer chooses between a
 
 Tier C (external API) is opt-in per tenant and off by default. When configured, external API calls are limited to an explicit allowlist of purposes, are audit-logged at the customer's ledger rather than the vendor's, and are disclosed to the operator. Most customers are intended to operate without Tier C entirely.
 
-## See Also
+## See also
 
 - [[substrate-without-inference-base-case]] — deterministic-only operation when all AI tiers are unavailable
 - [[single-boundary-compute-discipline]] — all inference, including the local specialist, routes through the Doorman
 - [[seed-taxonomy-as-smb-bootstrap]] — the per-tenant taxonomy that the Tier 0 deployment boots with
-
-## References
-
-1. Doctrine claim #49 — Tier 0 Customer-Side Sovereign Specialist (ratified v0.1.0).
-2. Empirical validation: workspace VM Tier A swap, 2026-04-30 — OLMo 2 1B Q4 at 7 tokens/second on CPU.

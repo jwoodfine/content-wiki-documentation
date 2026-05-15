@@ -4,7 +4,7 @@ title: "Substrate Without Inference — The Base Case"
 slug: substrate-without-inference-base-case
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "The Totebox Archive remains fully operational and freely transferable even when no AI inference tier is available; the deterministic substrate is the load-bearing foundation."
 status: active
 bcsc_class: public-disclosure-safe
@@ -56,7 +56,7 @@ If Foundry itself ceases operations, the customer continues operating their Tote
 
 The base case constrains every service implementation. Every service must have a deterministic baseline that operates without AI. AI-enhanced operations are documented as requiring the AI tier and gracefully degrading when it is unavailable. Regression in the deterministic baseline — any service that fails when all tiers are down — is a doctrine-level signal that a load-bearing function has been made to depend on AI.
 
-## See Also
+## See also
 
 - [[tier-zero-customer-side-sovereign-specialist]] — the Tier 0 deployment that this base case guarantees
 - [[customer-owned-graph-ip]] — the ownership right that the transfer flow exercises

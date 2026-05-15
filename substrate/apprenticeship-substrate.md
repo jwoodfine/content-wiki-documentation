@@ -28,7 +28,7 @@ The Apprenticeship Substrate is the routing inversion that produces those intera
 
 Four preconditions make this work, and all four hold only inside Foundry-shaped substrates:
 
-1. Per-customer constitutional charter (the Doctrine).
+1. Per-customer governance charter.
 2. Per-customer signing identities (`allowed_signers`).
 3. Per-customer task-type granularity (the promotion ledger).
 4. Per-customer continued pretraining.
@@ -90,7 +90,7 @@ The apprenticeship corpus is a fourth corpus alongside the constitutional, engin
 ~/Foundry/data/training-corpus/apprenticeship/<task-type>/<tenant>/<ulid>.jsonl
 ```
 
-One file per (brief, attempt, verdict) triple. Tenant-private records never leave the tenant's substrate per Doctrine §IV.b.
+One file per (brief, attempt, verdict) triple. Tenant-private records never leave the tenant's infrastructure.
 
 A `refine` or `reject` verdict additionally produces a Direct Preference Optimisation triple: (rejected attempt, corrected diff, doctrine-violation tag). DPO triples feed adapter training on the apprentice's policy.
 
@@ -102,17 +102,10 @@ The end state is a continuum — code-shaped work the apprentice handles autonom
 
 Per `[ni-51-102]` continuous-disclosure language, the trajectory toward token-elimination across graduated task-types is forward-looking. The shape is in place; the operational throughput matures as the corpus grows and task-types graduate.
 
-## See Also
+## See also
 
 - [[compounding-substrate]]
 - [[contributor-model]]
 - [[language-protocol-substrate]]
 - [[trajectory-substrate]]
 - [[customer-hostability]]
-
-## References
-
-- `~/Foundry/conventions/apprenticeship-substrate.md` — the convention this article reflects
-- `pointsav-monorepo/service-disclosure/CORPUS-SCHEMA.md` — the corpus schema
-- DOCTRINE.md Claim #32 — Apprenticeship Substrate
-- `[ni-51-102]` — NI 51-102 Continuous Disclosure Obligations (governs forward-looking statements in this article)

@@ -123,7 +123,7 @@ The substrate's primitive choices guarantee WCAG 2.2 AAA contrast (7:1) for the 
 
 A tenant theme that overrides primitives below the WCAG 2.2 AA floor (4.5:1 normal text, 3:1 large text) fails the audit endpoint (subsequent milestone). The substrate enforces the floor; the tenant chooses everything above it.
 
-## See Also
+## See also
 
 - [[design-typography]]
 - [[design-spacing]]

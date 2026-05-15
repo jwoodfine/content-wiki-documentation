@@ -47,7 +47,7 @@ Per ADR-07, identity resolution must be deterministic and bypass AI inference at
 
 `service-people` exposes identity data through the Model Context Protocol (MCP), providing resources for looking up records by ID or email, and tools for appending new identity claims from Ring 1 inbound services. This architecture ensures that identity remains a stable, verifiable sustrato for all downstream automated processing.
 
-## See Also
+## See also
 
 - [[machine-based-auth]]
 - [[capability-based-security]]

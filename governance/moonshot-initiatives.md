@@ -62,10 +62,8 @@ point.
 - The Customer (Woodfine Management Corp.) audits the pipeline to
   verify progress toward operational independence.
 
-## See Also
+## See also
 
 - [[sovereign-replacement-initiative|Sovereign Replacement Initiative]]
 - [[ontological-governance|Ontological Governance]]
 - [[verification-surveyor|Verification Surveyor]]
-
-## References

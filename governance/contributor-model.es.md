@@ -6,7 +6,7 @@ language: es
 paired_with: contributor-model.md
 category: governance
 type: topic
-quality: core
+quality: complete
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-06

@@ -44,10 +44,8 @@ Each step is isolated. A failure at execution does not corrupt the
 ledger record; the dispatch remains pending until a successful
 write-back closes it.
 
-## See Also
+## See also
 
 - [[ontological-governance|Ontological Governance]]
 - [[verification-surveyor|Verification Surveyor]]
 - [[sovereign-telemetry|Zero-State Telemetry Architecture]]
-
-## References

@@ -34,7 +34,7 @@ Large institutional campuses frequently appear in raw open geospatial data as mu
 
 The resulting `cleansed-places.jsonl` provides the regional anchor dataset that `app-orchestration-gis` uses when awarding final co-location tier rankings.
 
-## See Also
+## See also
 
 - [[service-fs-data-lake]]
 - [[service-business-clustering]]

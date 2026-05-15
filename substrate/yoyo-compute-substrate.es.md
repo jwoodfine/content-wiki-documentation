@@ -4,7 +4,7 @@ title: "Substrato de Cómputo Yo-Yo"
 slug: yoyo-compute-substrate.es
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "El substrato de cómputo de tres anillos que permite a service-slm activar y desactivar cómputo GPU mientras retiene estado, acumula habilidad y produce un ledger de auditoría de cada evento de inferencia."
 status: active
 bcsc_class: public-disclosure-safe

@@ -33,7 +33,7 @@ To guarantee absolute compliance with the Digital Asset Resolution Package (DARP
 
 Brand typography is utilized to establish a professional "White Paper" aesthetic for all generated documents. The use of **Zilla Slab** for headers and **Barlow Condensed** for financial data ensures that PointSav and Woodfine disclosures are immediately recognizable as authoritative, high-precision reports.
 
-## See Also
+## See also
 
 - [[brand-family-swatch]]
 - [[design-typography]]

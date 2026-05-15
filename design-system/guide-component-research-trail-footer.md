@@ -40,7 +40,7 @@ A collapsible disclosure at article foot showing the research pipeline trail —
 
 Uses native `<details>`/`<summary>` — browsers provide keyboard (Space/Enter to toggle), `aria-expanded`, and screen-reader announcements natively. The summary announces the count summary line. The `<section aria-label="Research trail detail">` provides a landmark for the expanded body. Three `<h3>` headings (Research done / Research suggested / Open questions) use coloured left-borders as subsection signals; colour is supplemental — heading text is the primary differentiator.
 
-## See Also
+## See also
 
 - [[guide-component-citation-authority-ribbon]]
 - [[guide-component-freshness-ribbon]]
