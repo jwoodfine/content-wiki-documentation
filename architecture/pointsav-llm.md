@@ -5,7 +5,7 @@ slug: pointsav-llm
 category: architecture
 type: topic
 quality: complete
-short_description: "The planned vendor-tier specialist AI model for substrate-sovereign SMBs — Tier 3 of the Four-Tier SLM Substrate Ladder, built by continued pretraining of OLMo 3 32B on Foundry's federated apprenticeship corpus."
+short_description: "The planned vendor-tier specialist AI model for substrate-sovereign SMBs — Tier 3 of the Four-Tier SLM Substrate Ladder, built by continued pretraining of OLMo 3 32B on the platform's federated apprenticeship corpus."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
@@ -16,7 +16,7 @@ cites:
 paired_with: pointsav-llm.es.md
 ---
 
-**PointSav-LLM** is the planned Tier 3 specialist AI model in PointSav's Four-Tier SLM Substrate Ladder — the vendor-trained layer that is intended to emerge from continued pretraining of OLMo 3 32B Think (Apache 2.0) on Foundry's federated, multi-tenant apprenticeship corpus. It is not an active product. It is a planned trajectory: a first continued-pretraining (CPT) cycle is currently targeted for v0.5.0, Q1 2027, with a productized deployment currently targeted for v1.0.0, Q4 2027. When operational, PointSav-LLM is intended to serve small and medium-sized businesses that require a specialist model trained on PointSav conventions, Totebox Archive operations, and multi-tenant editorial patterns — without requiring the infrastructure investment or minimum-spend commitments that closed-source enterprise AI products impose.
+**PointSav-LLM** is the planned Tier 3 specialist AI model in PointSav's Four-Tier SLM Substrate Ladder — the vendor-trained layer that is intended to emerge from continued pretraining of OLMo 3 32B Think (Apache 2.0) on the platform's federated, multi-tenant apprenticeship corpus. It is not an active product. It is a planned trajectory: a first continued-pretraining (CPT) cycle is currently targeted for v0.5.0, Q1 2027, with a productized deployment currently targeted for v1.0.0, Q4 2027. When operational, PointSav-LLM is intended to serve small and medium-sized businesses that require a specialist model trained on PointSav conventions, Totebox Archive operations, and multi-tenant editorial patterns — without requiring the infrastructure investment or minimum-spend commitments that closed-source enterprise AI products impose.
 
 *All capability descriptions, timelines, pricing structures, and performance targets in this article are forward-looking. They are planned or intended, not current operational facts. Actual outcomes depend on corpus growth rate, model performance, engineering capacity, and market conditions. [ni-51-102] [osc-sn-51-721]*
 
@@ -24,14 +24,14 @@ paired_with: pointsav-llm.es.md
 
 ## What PointSav-LLM is intended to be
 
-PointSav-LLM is planned as a narrow specialist, not a general-purpose model. Its intended training corpus comes from Foundry's aggregated, multi-tenant apprenticeship substrate: the trajectory logs, editorial decision pairs, escalation records, and code-aligned commit histories produced by contributing Task Claude sessions across the platform.
+PointSav-LLM is planned as a narrow specialist, not a general-purpose model. Its intended training corpus comes from the platform's aggregated, multi-tenant apprenticeship substrate: the trajectory logs, editorial decision pairs, escalation records, and code-aligned commit histories produced by contributing AI agent sessions across the platform.
 
 When the first CPT cycle completes, the model is intended to demonstrate depth in:
 
 - **Totebox Archive operation** — query patterns, ingestion formats, tenant namespace isolation, and ledger-consistency checks specific to PointSav's storage substrate.
-- **PointSav conventions** — Foundry commit patterns, mailbox protocol structure, repo-layout discipline, and the Tetrad milestone format.
+- **PointSav conventions** — platform commit patterns, mailbox protocol structure, repo-layout discipline, and the Tetrad milestone format.
 - **Multi-tenant editorial patterns** — the PROSE / COMMS / LEGAL / TRANSLATE adapter families, bilingual pairing conventions, BCSC-posture editing, and banned-vocabulary substitution.
-- **Code generation aligned to Foundry** — Rust workspace conventions, Ring 1/2/3 service boundaries, and the three-tier compute routing interface.
+- **Code generation aligned to the platform** — Rust workspace conventions, Ring 1/2/3 service boundaries, and the three-tier compute routing interface.
 - **Federated training contribution** — the mechanics by which a customer's contributing-tier subscription routes anonymized trajectory data back into the corpus, compounding the model's value over each CPT cycle.
 
 What PointSav-LLM is not intended to be is equally important. It is not planned to compete with broad-capability frontier models on general knowledge, creative breadth, or multi-domain reasoning. Customers whose queries require that breadth will continue routing those requests through Tier C external API calls (Anthropic Claude, Google Gemini) via the Doorman's classification logic. PointSav-LLM is intended to serve the narrow slice of queries where specialist depth and per-token economics matter more than frontier-model breadth.

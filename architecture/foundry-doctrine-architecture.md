@@ -71,7 +71,7 @@ Beyond the structural claims, the doctrine draws on eight process inventions bor
 
 ## Workspace Structure
 
-The workspace (`~/Foundry/`) is itself a deployment of the substrate — `vault-privategit-source-1`. Three tiers flow in one direction:
+The workspace is itself a deployment of the substrate — `vault-privategit-source-1`. Three tiers flow in one direction:
 
 - `vendor/` — engineering source (`pointsav/*`) — GitHub-tracked
 - `customer/` — guide catalog (`woodfine/*`) — GitHub-tracked

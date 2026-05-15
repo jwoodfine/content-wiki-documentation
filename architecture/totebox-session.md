@@ -54,7 +54,7 @@ Every Totebox Archive declares four legs of the Project Tetrad. A session's work
 |---|---|
 | vendor | Feature code in the archive's `pointsav-monorepo` clone |
 | customer | Operational guides in the archive's `woodfine-fleet-deployment` clone |
-| deployment | Provisioning the running instance in `~/Foundry/deployments/` |
+| deployment | Provisioning the running instance in the deployment directory |
 | wiki | TOPIC draft files staged in `.agent/drafts-outbound/` |
 
 The Command Session ratifies tetrad completeness when all four legs are present.

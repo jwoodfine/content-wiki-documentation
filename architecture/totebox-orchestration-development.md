@@ -28,7 +28,7 @@ The Foundry workspace maps directly onto this topology:
 
 | Foundry concept | Totebox Orchestration equivalent |
 |---|---|
-| The workspace at `~/Foundry/` | Command Session — hub, identity store, cross-archive coordination |
+| The workspace | Command Session — hub, identity store, cross-archive coordination |
 | Each `clones/project-*/` directory | A Totebox Archive |
 | A session opened in a cluster clone | A Totebox Session |
 | `service-slm` access-control gateway | The shared Orchestration AI routing layer |
@@ -51,7 +51,7 @@ The Command Session is the only session that can write workspace-level files. In
 
 ## Totebox Sessions
 
-A Totebox Session opens within a specific archive at `~/Foundry/clones/<archive>/`. It works inside that archive — writing code, committing to staging branches, drafting wiki content, updating the deployment. It does not write to other archives, does not modify workspace files, and does not have direct access to the identity store.
+A Totebox Session opens within a specific archive. It works inside that archive — writing code, committing to staging branches, drafting wiki content, updating the deployment. It does not write to other archives, does not modify workspace files, and does not have direct access to the identity store.
 
 The intended entry point is `bin/open-archive.sh <archive-name>`, planned to read the archive manifest, surface the archive's tetrad status and pending messages, set archive-scoped environment variables, and open a session at the archive's root directory. This is intended to mirror how a customer or community member opens a Totebox Archive via `os-console`: the development workflow is the same as the customer workflow.
 
