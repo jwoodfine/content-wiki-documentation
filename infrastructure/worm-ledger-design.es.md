@@ -8,9 +8,22 @@ quality: published
 short_description: "El sustrato de persistencia de escritura única y lectura múltiple (WORM) utilizado en los servicios Ring 1 de PointSav: un formato por bloques con encadenamiento criptográfico que satisface los requisitos de conservación de registros bajo regulación estadounidense, europea y SOC 2 por estructura, no por política."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "C2SP. 'tlog-tiles: Tile-based logs specification.' C2SP.org, 2024."
+    url: "https://c2sp.org/tlog-tiles"
+  - id: 2
+    text: "Sigstore Project. 'Rekor — Software Supply Chain Transparency Log.' Sigstore.dev, 2024."
+    url: "https://rekor.sigstore.dev/"
+  - id: 3
+    text: "C2SP. 'signed-note: Signed checkpoint note format.' C2SP.org, 2024."
+    url: "https://c2sp.org/signed-note"
+  - id: 4
+    text: "Laurie, B. et al. 'RFC 9162: Certificate Transparency Version 2.0.' IETF, 2021."
+    url: "https://www.rfc-editor.org/rfc/rfc9162"
 paired_with: worm-ledger-design.md
 ---
 
@@ -21,9 +34,9 @@ Este requisito no es exclusivo de PointSav. La regulación de conservación de r
 
 ## La pila de cuatro capas
 
-**Capa 1 — Almacenamiento por bloques (tiles).** El formato en disco sigue la especificación C2SP tlog-tiles de forma literal — el mismo formato de bloques utilizado internamente por Trillian-Tessera y externamente por Sigstore Rekor v2. Esta alineación no es incidental: significa que cualquier herramienta del ecosistema de registros de transparencia puede verificar los bloques escritos por Foundry sin conversión de formato.
+**Capa 1 — Almacenamiento por bloques (tiles).** El formato en disco sigue la especificación C2SP tlog-tiles de forma literal [^1] — el mismo formato de bloques utilizado internamente por Trillian-Tessera y externamente por Sigstore Rekor v2. [^2] Esta alineación no es incidental: significa que cualquier herramienta del ecosistema de registros de transparencia puede verificar los bloques escritos por Foundry sin conversión de formato.
 
-**Capa 2 — API del libro de registros WORM.** Un trait de Rust que expone las operaciones de apertura, adición, lectura, producción de punto de control firmado y verificación de pruebas de inclusión y consistencia. Implementaciones intercambiables: en memoria para pruebas, POSIX para producción.
+**Capa 2 — API del libro de registros WORM.** Un trait de Rust que expone las operaciones de apertura, adición, lectura, producción de punto de control firmado [^3] y verificación de pruebas de inclusión y consistencia. Implementaciones intercambiables: en memoria para pruebas, POSIX para producción.
 
 **Capa 3 — Protocolo de red.** Una capa de servicio HTTP que expone la API del libro de registros en red, con el protocolo MCP (estándar 2026 para servicios de herramientas de IA) superpuesto.
 

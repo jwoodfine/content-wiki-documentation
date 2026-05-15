@@ -8,9 +8,22 @@ quality: published
 short_description: "The four-layer Write-Once-Read-Many ledger substrate used across PointSav Ring 1 services: a tile-based, hash-chained, cryptographically signed persistence format that satisfies US broker-dealer recordkeeping, EU qualified preservation, and SOC 2 requirements by structure rather than by policy."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "C2SP. 'tlog-tiles: Tile-based logs specification.' C2SP.org, 2024."
+    url: "https://c2sp.org/tlog-tiles"
+  - id: 2
+    text: "Sigstore Project. 'Rekor — Software Supply Chain Transparency Log.' Sigstore.dev, 2024."
+    url: "https://rekor.sigstore.dev/"
+  - id: 3
+    text: "C2SP. 'signed-note: Signed checkpoint note format.' C2SP.org, 2024."
+    url: "https://c2sp.org/signed-note"
+  - id: 4
+    text: "Laurie, B. et al. 'RFC 9162: Certificate Transparency Version 2.0.' IETF, 2021."
+    url: "https://www.rfc-editor.org/rfc/rfc9162"
 paired_with: worm-ledger-design.es.md
 ---
 
@@ -22,9 +35,9 @@ This requirement is not unique to PointSav. US broker-dealer recordkeeping regul
 
 The ledger is built in four layers.
 
-**Layer 1 — Tile storage.** On-disk format follows the C2SP tlog-tiles specification verbatim — the same tile format used internally by Trillian-Tessera and externally by Sigstore Rekor v2. This is not an incidental alignment: it means every tile Foundry writes can be verified by any tool in the transparency-log ecosystem without format conversion.
+**Layer 1 — Tile storage.** On-disk format follows the C2SP tlog-tiles specification verbatim [^1] — the same tile format used internally by Trillian-Tessera and externally by Sigstore Rekor v2. [^2] This is not an incidental alignment: it means every tile Foundry writes can be verified by any tool in the transparency-log ecosystem without format conversion.
 
-**Layer 2 — WORM ledger API.** A Rust trait that exposes five operations: open a ledger for a given tenant, append a payload and receive a cursor, read entries since a cursor, produce a signed checkpoint, and verify inclusion and consistency proofs. This trait has an in-memory implementation for testing and a POSIX filesystem implementation for production. A future capability-mediated storage backend can implement the same trait without changing any code above it.
+**Layer 2 — WORM ledger API.** A Rust trait that exposes five operations: open a ledger for a given tenant, append a payload and receive a cursor, read entries since a cursor, produce a signed checkpoint [^3], and verify inclusion and consistency proofs. This trait has an in-memory implementation for testing and a POSIX filesystem implementation for production. A future capability-mediated storage backend can implement the same trait without changing any code above it.
 
 **Layer 3 — Wire protocol.** An HTTP service layer that exposes the ledger API over the network. The MCP server protocol — the 2026 standard for tool-bearing AI services — is layered on top. The same wire shape operates on a standard Linux daemon and on a seL4 Microkit unikernel; the execution envelope changes but the protocol does not.
 
@@ -44,7 +57,7 @@ Every ledger is associated with a `moduleId` — a tenant identifier that the wi
 
 **SEC Rule 17a-4(f)** requires records to be preserved in a non-rewriteable, non-erasable format with verifiable timestamps and independent third-party verification capability. The tile format satisfies the first requirement structurally. Each signed checkpoint carries a timestamp field under the per-tenant signing key. Monthly publication to the Rekor transparency log provides third-party verification that does not require the platform operator's cooperation.
 
-**EU qualified preservation under eIDAS** requires long-term preservation independent of future technological changes, integrity preservation, and authentication of the originator. Algorithm agility — the ledger carries an explicit hash-algorithm field in each checkpoint, so migration to a different hash function is a per-tenant decision that does not require rewriting historical tiles — addresses the first requirement. The tile format is an open specification (RFC 9162 and C2SP); it is readable with standard tools that will remain available regardless of what commercial software exists in the future. The second and third requirements are satisfied by the same mechanisms as SEC Rule 17a-4(f).
+**EU qualified preservation under eIDAS** requires long-term preservation independent of future technological changes, integrity preservation, and authentication of the originator. Algorithm agility — the ledger carries an explicit hash-algorithm field in each checkpoint, so migration to a different hash function is a per-tenant decision that does not require rewriting historical tiles — addresses the first requirement. The tile format is an open specification (RFC 9162 [^4] and C2SP); it is readable with standard tools that will remain available regardless of what commercial software exists in the future. The second and third requirements are satisfied by the same mechanisms as SEC Rule 17a-4(f).
 
 **SOC 2 Trust Services Criteria.** Logical access controls are enforced at the wire layer via per-tenant `moduleId` validation. System operations are captured via standard process management and log collection. Change management is covered by the audit sub-ledger — a separate ledger instance that records every read and write to the primary ledger, itself a WORM record. Processing integrity is satisfied by the hash chain and public anchoring.
 
@@ -64,12 +77,3 @@ The `service-fs` Ring 1 service implements the WORM ledger substrate in producti
 - [[compounding-doorman]] — the Ring 3 service whose audit ledger uses the same primitive
 - [[trajectory-substrate]] — the training corpus capture that will use the same ledger format when its archival shape stabilises
 
-## References
-
-1. C2SP tlog-tiles specification — <https://c2sp.org/tlog-tiles>
-2. C2SP signed-note specification — <https://c2sp.org/signed-note>
-3. RFC 9162 — Certificate Transparency Version 2.0 — <https://www.rfc-editor.org/rfc/rfc9162>
-4. Sigstore Rekor v2 — <https://rekor.sigstore.dev/>
-5. SEC Rule 17a-4(f) — electronic recordkeeping requirements for broker-dealers.
-6. Commission Implementing Regulation (EU) 2025/1946 — qualified electronic preservation service requirements under eIDAS.
-7. `conventions/worm-ledger-design.md` — source convention for this article.
