@@ -1,42 +1,58 @@
 ---
 schema: foundry-doc-v1
-title: "service-people — Libro Contable de Personal"
+title: "service-people — El Libro Mayor de Identidades"
 slug: service-people
 category: services
-type: topic
+type: concept
 quality: complete
 status: active
-audience: public
+audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-08
+last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: service-people.md
+short_description: "service-people mantiene el libro mayor de identidades determinista del Totebox — la superficie F2 en os-console y la fuente de verdad sobre quién aparece en cualquier carga útil del Totebox, usando un modelo de datos Ancla-Reclamación-Enchufe que nunca sobrescribe el estado."
 cites: []
 ---
 
-Cada comunicación que entra a la plataforma lleva identidad del remitente, y `service-people` es el servicio de ingestión perimetral del Anillo 1 que convierte esas identidades en un libro contable de personal consultable. El libro contable es un directorio de archivos JSON planos en lugar de una base de datos relacional — portátil entre cambios de infraestructura, auditable con herramientas estándar del sistema de archivos y nativamente compatible con tuberías de entrenamiento de modelos locales que requieren un esquema estable. `service-people` recibe registros del remitente desde `service-extraction`, mantiene el estado de los contactos y sirve a los servicios del Anillo 2 que enriquecen el contenido con contexto de contacto.
+`service-people` mantiene el libro mayor de identidades determinista del Totebox. Es la superficie F2 en `os-console` y la fuente de verdad sobre "quién" aparece en cualquier carga útil del Totebox. El modelo de datos se construye alrededor del patrón Ancla-Reclamación-Enchufe (ACS): la identidad nunca sobrescribe el estado, las reclamaciones se acumulan con el tiempo y el panorama actual de cualquier persona siempre puede recomputarse a partir del historial. Este artículo cubre el modelo de datos de tres entidades, el patrón ACS y la Red Infinita — el mecanismo mediante el cual las identidades entran al libro mayor desde cargas útiles en bruto sin intervención del operador.
 
-## Línea de base arquitectónica
+## El modelo de datos de tres entidades
 
-Cada comunicación que entra a través del Anillo 1 lleva identidad del remitente. `service-people` recibe registros de identidad del remitente de `service-extraction` y mantiene un libro contable persistente y consultable de contactos conocidos. Dado que el libro contable es una estructura JSON de archivos planos en lugar de una base de datos relacional o documental, puede copiarse, auditarse e inspeccionarse con herramientas estándar del sistema de archivos.
+`service-people` organiza la identidad en tres tipos de entidades distintos:
 
-## El estándar de archivos planos
+| Entidad | Rol | Regla de almacenamiento |
+|---|---|---|
+| Objetivo (el Ancla) | Una persona u organización única, anclada por un identificador de alta fidelidad (hash de correo, hash de teléfono, URN de red profesional) | Mínimo — solo un Sovereign-ID estable y el ancla; los campos volátiles (cargo, empleador) no se almacenan aquí |
+| Reclamación (la Observación) | Cada dato asociado a un Objetivo: `UUID_Objetivo | Atributo | Valor | Fuente | Marca_Tiempo` | Solo adición — las reclamaciones se acumulan con el tiempo; ninguna reclamación se elimina jamás |
+| Enchufe Semántico (el Puente) | Una etiqueta de clasificación que mapea el Objetivo a una fila del Plan de Cuentas | Recomputado de forma determinista a partir de las reclamaciones más las anulaciones del operador |
 
-El diseño adopta el estándar de archivos planos DS-ADR-02, que rechaza los clústeres de bases de datos centralizados en favor de una máquina de estados JSON en archivos planos:
+Si el rol de un contacto de correo aparece listado de forma diferente en dos fuentes, ambas reclamaciones existen en el Totebox. La capa de consulta (`service-content` y `service-slm`) decide qué reclamación es la actual en el momento de la consulta. Esto previene la sobrescritura de datos y preserva la evolución completa de cada identidad.
 
-- **Portabilidad.** El libro contable completo es un directorio de archivos JSON que puede moverse a cualquier sistema.
-- **Estabilidad del esquema.** Los archivos planos JSON no requieren migraciones de esquema cuando se añaden campos.
-- **Auditabilidad.** El libro contable puede inspeccionarse, compararse y versionarse con herramientas estándar.
-- **Compatibilidad con modelos.** El formato de archivos planos permite que el libro contable alimente directamente modelos de inteligencia local.
+## El modelo Ancla-Reclamación-Enchufe
 
-## Integración con el Verificador de Identidad
+El diseño de tres entidades, abreviado ACS, es el event sourcing aplicado a la identidad: nunca sobrescribir el estado; siempre añadir observaciones; recomputar el presente a partir del historial.
 
-`service-people` se integra con el Verificador de Identidad, el punto de control humano en el bucle que previene que los errores de extracción automatizada se acumulen en el libro contable verificado.
+| Propiedad | Por qué importa |
+|---|---|
+| Las reclamaciones son inmutables | El registro de auditoría captura el historial completo de cómo el sistema llegó a conocer un hecho |
+| Los enchufes son reproducibles | Cualquier enchufe del Plan de Cuentas puede regenerarse reproduciendo las reclamaciones |
+| Los objetivos son estables | El Sovereign-ID nunca cambia; los atributos volátiles nunca provocan un rekeying |
+
+## La Red Infinita
+
+La identidad no entra en `service-people` solo mediante la entrada manual del operador. `service-extraction` ejecuta Aho-Corasick sobre cada carga útil entrante — cuerpo de correo, texto PDF, texto DOCX — y extrae cada nombre, dirección de correo, número de teléfono y organización que encuentra. Cada entidad extraída recibe un Sovereign-ID y entra al libro mayor en estado `Discovery`.
+
+Con el tiempo, `service-slm` cruza las entidades descubiertas con los Vectores de Gravedad producidos por `service-content`. Si una entidad acumula gravedad — apareciendo en cargas útiles alineadas con Dominios, Arquetipos y Temas — se enchufa a una fila del Plan de Cuentas y se eleva a estado activo. Si nunca acumula gravedad (el remitente de un boletín promocional; una firma de un solo uso), sale del índice activo después de 30 días, permaneciendo en el registro WORM pero invisible para la búsqueda activa.
+
+## El sustrato de archivos planos
+
+El libro mayor es un directorio de archivos planos JSON en lugar de una base de datos relacional — portátil entre cambios de infraestructura, auditable con herramientas estándar del sistema de archivos y nativamente compatible con pipelines de entrenamiento de modelos locales que necesitan un esquema estable. No se requiere migración de base de datos cuando se añaden campos; los registros existentes permanecen válidos a medida que el esquema evoluciona.
 
 ## Véase también
 
-- [[service-email]]
-- [[service-extraction]]
-- [[service-search]]
-- [[trajectory-substrate]]
+- [[service-email]] — el servicio de ingesta de correo que alimenta registros del remitente a service-people a través de service-extraction
+- [[service-content]] — el Motor de Gravedad que produce los Vectores de Gravedad que service-slm usa para enchufar entidades
+- [[archetypes-and-chart-of-accounts]] — el Plan de Cuentas al que se mapean los Enchufes Semánticos
+- [[totebox-os]] — el Totebox que aloja service-people y su almacenamiento WORM

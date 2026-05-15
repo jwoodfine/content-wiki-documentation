@@ -1,39 +1,54 @@
 ---
 schema: foundry-doc-v1
-title: "service-email — Puente de Transporte de Correo"
+title: "service-email — La Ingesta WORM"
 slug: service-email
 category: services
-type: topic
+type: concept
 quality: complete
 status: active
-audience: public
+audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-08
+last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: service-email.md
+short_description: "service-email es el servidor de correo del Totebox — ingesta tráfico SMTP e IMAP, saneea cada carga útil y escribe texto en bruto en un Maildir de solo adición en almacenamiento local. La interpretación del contenido se maneja en sentido ascendente por service-content."
 cites: []
 ---
 
-El correo electrónico entrante llega a la plataforma PointSav en un único punto auditable — **service-email** se autentica contra el buzón de Microsoft 365 a través de la API de Microsoft Graph, recupera los mensajes entrantes y escribe las cargas útiles en bruto en una cola local sin interpretar el contenido. Los servicios del Anillo 2 se encargan de todo lo que sigue. El servicio no mantiene ningún conocimiento del contenido del mensaje: su único trabajo es la extracción autenticada y confiable a través del límite de la nube.
+`service-email` es el servidor de correo del Totebox. Escucha el tráfico SMTP e IMAP, saneea cada carga útil — eliminando la lógica de renderizado HTML y los píxeles de rastreo — y escribe el texto en bruto en un Maildir de solo adición en almacenamiento de bloque local. El servicio no interpreta el contenido; ese trabajo ocurre en sentido ascendente en `service-content`. Este artículo cubre el pipeline de ingesta, las propiedades Soberanas que lo distinguen de un cliente de correo convencional y su relación con el camino de integración de Microsoft 365.
 
-## Línea de base arquitectónica
+## El pipeline de ingesta
 
-El servicio aborda una limitación estructural de IMAP y SMTP: ambos protocolos requieren mantener una conexión persistente y exponen la gestión del estado de mensajes a través de mecanismos heredados. `service-email` utiliza autenticación OAuth2 contra la API de Microsoft Graph, lo que convierte cada ciclo de sondeo en un intercambio HTTP discreto y autenticado. Este enfoque confina el límite de confianza en la nube a un único punto bien definido en el pipeline.
+El servicio opera en seis etapas, cada una con una propiedad Soberana específica:
 
-## Anillo y función
+| Etapa | Acción | Propiedad Soberana |
+|---|---|---|
+| Arranque | El binario Rust escanea el almacén de auditoría local y recupera trabajos pendientes | Auto-reparable — no se pierde trabajo entre reinicios |
+| Autenticación | Actualización de token OAuth2 a través de Microsoft Entra (flujo de credenciales de cliente) | Inmunidad — sin autenticación heredada de usuario/contraseña |
+| Sincronización | El bucle espejo IMAP escribe el correo verificado en el Maildir usando operaciones atómicas del sistema de archivos | Resiliencia — las escrituras atómicas evitan registros parciales |
+| Limpieza | El agente de higiene aplica reglas TTL en la fuente en la nube mientras la copia del Maildir permanece permanente | Soberanía — la nube del proveedor no puede borrar retroactivamente el registro del operador |
+| Renderizado | Cuando el operador redacta un correo electrónico con plantilla, el motor renderiza la carga útil HTML y la prepara para reenvío manual | Disciplina de intervención humana |
+| Auditoría | El registrador de auditoría escribe entradas JSONL no bloqueantes que consumen los servicios posteriores | Ingesta independiente por `service-people` y el Motor de Gravedad |
 
-`service-email` ocupa el **Anillo 1 — Ingestión Perimetral** en la arquitectura de tres anillos. Los servicios del Anillo 1 son por inquilino e implementan una interfaz de servidor MCP. No hay ningún servicio del Anillo 1 que procese contenido semánticamente — ese es el ámbito del Anillo 2.
+## Integración con Microsoft 365
 
-## Flujo de extracción
+La configuración OAuth2 usa un registro de Cliente Confidencial en Microsoft Entra. Se requieren tres permisos de Graph: `Mail.ReadWrite` (para sincronizar en el Maildir), `Mail.Send` (para preparar plantillas) y `User.Read.All` (para verificar identidades del remitente). El consentimiento de administrador se concede una vez para que el servicio se ejecute como daemon sin interacción humana por mensaje.
 
-1. **Autenticación.** Un handshake OAuth2 contra la API de Microsoft Graph produce un token de portador.
-2. **Extracción.** El servicio sondea mensajes no leídos y recupera la carga útil JSON OData en bruto para cada mensaje encontrado.
-3. **Escritura y marcado.** La carga útil se escribe en la cola temporal local. El servicio emite una solicitud `PATCH` autorizada para marcar cada mensaje extraído como leído en el servidor remoto, evitando la re-extracción en el siguiente ciclo de sondeo.
+Este enfoque confina el límite de confianza en la nube a un único punto bien definido en el pipeline. Cada ciclo de sondeo es un intercambio HTTP discreto y autenticado — en lugar de una conexión IMAP persistente — haciendo que el límite de ingesta sea auditable y sin estado.
+
+## La disciplina WORM
+
+`service-email` escribe cargas útiles en el Maildir WORM — una estructura de solo adición en el almacenamiento de bloque local del Totebox. No hay operación de borrado. Una carga útil escrita en el Maildir no puede borrarse, incluso si la fuente en la nube (el buzón de Microsoft 365) es modificada, eliminada o la suscripción vence. El registro de correo del operador es soberano: pertenece al archivo, no al proveedor de nube.
+
+## Lo que service-email no es
+
+`service-email` es el límite de ingesta, no el cliente de correo. No renderiza correos HTML para que el operador los lea. No sintetiza contenido. No clasifica ni enruta mensajes. Entrega la carga útil en bruto saneada a `service-content` y `service-extraction` y cede la ejecución. Los servicios posteriores manejan todo desde la extracción de entidades hasta la superficie F3 CORREO que ve el operador en `os-console`.
 
 ## Véase también
 
-- [[service-extraction]]
-- [[service-people]]
-- [[service-slm]]
-- [[trajectory-substrate]]
+- [[service-people]] — el libro mayor de identidades que recibe registros del remitente de service-email a través de service-extraction
+- [[service-content]] — el Motor de Gravedad que sintetiza contenido del Maildir WORM
+- [[app-console-input]] — la Máquina de Entrada F12; superficie de ingesta complementaria para cargas útiles que no son correo
+- [[sys-adr-07]] — los datos estructurados nunca se enrutan a través de IA (rige el manejo posterior de la salida de service-email)
+- [[totebox-os]] — el Totebox que aloja service-email y su almacenamiento WORM

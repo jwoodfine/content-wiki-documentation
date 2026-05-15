@@ -1,58 +1,54 @@
 ---
 schema: foundry-doc-v1
-title: "service-email: Email Transport Bridge"
+title: "service-email — The WORM Ingest"
 slug: service-email
 category: services
-type: topic
+type: concept
 quality: complete
-short_description: "service-email is the Ring 1 boundary-ingest service that polls a Microsoft 365 mailbox via the Microsoft Graph API, extracts raw email payloads, and writes them to a local queue without interpreting their content."
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+language_protocol: PROSE-TOPIC
+last_edited: 2026-05-15
 editor: pointsav-engineering
-cites: []
 paired_with: service-email.es.md
+short_description: "service-email is the Totebox's email server — it ingests SMTP and IMAP traffic, sanitises every payload, and writes raw text to an append-only Maildir on local block storage. Content interpretation is handled upstream by service-content."
+cites: []
 ---
 
+`service-email` is the Totebox's email server. It listens for SMTP and IMAP traffic, sanitises every payload — stripping HTML rendering logic and tracking pixels — and writes the raw text into an append-only Maildir on local block storage. The service does not interpret content; that work happens upstream in `service-content`. This article covers the ingest pipeline, the Sovereign properties that distinguish it from a conventional email client, and its relationship with the Microsoft 365 integration path.
 
-Inbound email enters the PointSav platform at a single, auditable point — **service-email** authenticates against the Microsoft 365 mailbox via the Microsoft Graph API, retrieves inbound messages, and writes raw payloads to a local queue without interpreting content. Ring 2 services handle everything downstream. The service deliberately maintains no knowledge of message content or semantic meaning: its only job is reliable, authenticated extraction across the cloud boundary, so that content processing is confined to the platform's own compute.
+## The ingest pipeline
 
-## Architectural Baseline
+The service operates in six stages, each carrying a specific Sovereign property:
 
-The service addresses a structural limitation of IMAP and SMTP: both protocols require maintaining a persistent connection and expose message state management through legacy mechanisms. service-email uses OAuth2 authentication against the Microsoft Graph API instead, making each polling cycle a discrete, authenticated HTTP exchange. This approach confines the cloud-trust boundary to a single well-defined point in the pipeline.
+| Stage | Action | Sovereign property |
+|---|---|---|
+| Boot | The Rust binary scans the local audit store and recovers pending jobs | Self-healing — no work is lost across restarts |
+| Auth | OAuth2 token refresh via Microsoft Entra (client-credentials flow) | Immunity — no legacy username/password authentication |
+| Sync | IMAP mirror loop writes verified mail into Maildir using atomic filesystem operations | Resilience — atomic writes prevent partial records |
+| Clean | Hygiene agent enforces TTL rules on the cloud source while the Maildir copy remains permanent | Sovereignty — the vendor cloud cannot retroactively erase the operator's record |
+| Render | When the operator drafts a templated email, the engine renders the HTML payload and stages it for manual forwarding | Human-in-the-loop discipline |
+| Audit | The audit logger writes non-blocking JSONL entries that downstream services consume | Independent ingest by `service-people` and the Gravity Engine |
 
-## Ring and Role
+## Microsoft 365 integration
 
-service-email occupies **Ring 1 — Boundary Ingest** in the three-ring architecture. Ring 1 services are per-tenant and implement an MCP (Model Context Protocol) server interface. Each Ring 1 service handles one inbound channel; service-email handles the email channel. Other Ring 1 services cover filesystem, people records, and structured input. No Ring 1 service processes content semantically — that is Ring 2's scope.
+The OAuth2 setup uses a Confidential Client registration in Microsoft Entra. Three Graph permissions are required: `Mail.ReadWrite` (to sync into Maildir), `Mail.Send` (to stage templates), and `User.Read.All` (to verify sender identities). Admin consent is granted once so the service runs as a daemon without per-message human interaction.
 
-## Structural Organization of Components
+This approach confines the cloud-trust boundary to a single, well-defined point in the pipeline. Each polling cycle is a discrete, authenticated HTTP exchange — rather than a persistent IMAP connection — making the ingest boundary auditable and stateless.
 
-The extraction loop operates in three steps:
+## The WORM discipline
 
-1. **Authenticate.** An OAuth2 handshake against the Microsoft Graph API produces a bearer token scoped to mail read operations for the configured mailbox.
-2. **Extract.** The service polls for unread messages (excluding drafts stored only in the local UI). It retrieves the raw OData JSON payload for each message found.
-3. **Write and mark.** The payload is written to the local temporary queue at `assets/tmp-maildir/`. The service then issues an authorized `PATCH` request to mark each extracted message as read on the remote server, preventing re-extraction on the next polling cycle.
+`service-email` writes payloads to the WORM Maildir — an append-only structure on the Totebox's local block storage. There is no delete operation. A payload written to the Maildir cannot be erased, even if the cloud source (the Microsoft 365 mailbox) is later modified, deleted, or the subscription lapses. The operator's email record is sovereign: it belongs to the archive, not the cloud provider.
 
-The service surrenders execution to the downstream parser (`service-extraction`) once the payload lands in the queue. No parsing, classification, or content inspection occurs within service-email.
+## What service-email is not
 
-## Configuration
+`service-email` is the ingest boundary, not the email client. It does not render HTML emails for the operator to read. It does not synthesise content. It does not classify or route messages. It hands the sanitised raw payload to `service-content` and `service-extraction` and surrenders execution. Downstream services handle everything from entity extraction to the F3 EMAIL surface the operator sees in `os-console`.
 
-| Parameter | Purpose |
-|---|---|
-| OAuth2 credentials | Client ID and secret for the registered Microsoft Graph application |
-| Mailbox address | The Microsoft 365 mailbox to monitor |
-| Poll interval | How often the extraction loop runs |
-| Queue path | Local filesystem path for the temporary maildir queue |
+## See also
 
-## See Also
-
-- [[service-extraction]]
-- [[service-people]]
-- [[service-slm]]
-- [[trajectory-substrate]]
-
-## References
-
--  §XI — Ring 1 boundary-ingest architecture
-- `pointsav-monorepo/service-email/` — implementation crate
-- [[sys-adr-07|SYS-ADR-07]] — structured data never routes through AI (governs downstream handling of service-email output)
+- [[service-people]] — the identity ledger that receives sender records from service-email via service-extraction
+- [[service-content]] — the Gravity Engine that synthesises content from the WORM Maildir
+- [[app-console-input]] — the F12 Input Machine; companion ingest surface for non-email payloads
+- [[sys-adr-07]] — structured data never routes through AI (governs downstream handling of service-email output)
+- [[totebox-os]] — the Totebox that hosts service-email and its WORM storage

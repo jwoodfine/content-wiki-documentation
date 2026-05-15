@@ -1,57 +1,58 @@
 ---
 schema: foundry-doc-v1
-title: "service-people: Personnel Ledger"
+title: "service-people — The Identity Ledger"
 slug: service-people
 category: services
-type: topic
+type: concept
 quality: complete
-short_description: "service-people is the Ring 1 boundary-ingest service that maintains a deterministic flat-file personnel ledger, storing unique contact identifiers, communication states, and contact histories as a portable, schema-stable JSON flat-file database."
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-08
+language_protocol: PROSE-TOPIC
+last_edited: 2026-05-15
 editor: pointsav-engineering
-cites: []
 paired_with: service-people.es.md
+short_description: "service-people maintains the Totebox's deterministic identity ledger — the F2 surface in os-console and the source of truth for who appears in any payload across the Totebox, using an Anchor-Claim-Socket data model that never overwrites state."
+cites: []
 ---
 
-Every communication that enters the platform carries sender identity, and **service-people** is the Ring 1 boundary-ingest service that turns those identities into a queryable personnel ledger. The ledger is a directory of JSON flat files rather than a relational database — portable across infrastructure changes, auditable with standard filesystem tools, and natively compatible with local-model training pipelines that need a stable schema. service-people receives sender records from `service-extraction`, maintains contact state, and serves Ring 2 services that enrich content with contact context.
+`service-people` maintains the Totebox's deterministic identity ledger. It is the F2 surface in `os-console` and the source of truth for "who" appears in any payload across the Totebox. The data model is built around the Anchor-Claim-Socket (ACS) pattern: identity never overwrites state, claims accumulate over time, and the current picture of any person can always be recomputed from the history. This article covers the three-entity data model, the ACS pattern, and the Infinite Net — the mechanism through which identities enter the ledger from raw payloads without operator input.
 
-## Architectural Baseline
+## The three-entity data model
 
-Every communication that enters through Ring 1 carries sender identity. service-people receives sender-identity records from service-extraction and maintains a persistent, queryable ledger of known contacts. Because the ledger is a flat-file JSON structure rather than a relational or document database, it can be copied, audited, and inspected with standard filesystem tools and does not require a running database process to remain readable.
+`service-people` organises identity into three distinct entity types:
 
-## Ring and Role
+| Entity | Role | Storage rule |
+|---|---|---|
+| Target (the Anchor) | A unique person or organisation, anchored by a high-fidelity identifier (email hash, phone hash, professional network URN) | Minimal — a stable Sovereign-ID and the anchor only; volatile fields (job title, employer) are not stored here |
+| Claim (the Observation) | Every piece of data attached to a Target: `Target_UUID | Attribute | Value | Source | Timestamp` | Append-only — claims accumulate over time; no claim is ever deleted |
+| Semantic Socket (the Bridge) | A classification tag mapping the Target to a Chart-of-Accounts row | Recomputed deterministically from claims plus operator overrides |
 
-service-people occupies **Ring 1 — Boundary Ingest** in the three-ring architecture. Ring 1 services are per-tenant and implement an MCP (Model Context Protocol) server interface. service-people's role within Ring 1 is to maintain identity state: as communications arrive through service-email and other Ring 1 channels, service-people receives the parsed sender records from service-extraction and updates the contact ledger accordingly. Downstream Ring 2 services query service-people to enrich content with known contact context.
+If an email contact's role is listed differently in two sources, both claims exist in the Totebox. The query layer (`service-content` and `service-slm`) decides which claim is current at query time. This prevents data overwrites and preserves the full evolution of every identity.
 
-## Structural Organization of Components
+## The Anchor-Claim-Socket model
 
-The service enforces the DS-ADR-02 flat-file standard, which rejects centralized database clusters in favour of a verifiable JSON flat-file state machine. The design choices that follow from this standard:
+The three-entity design, abbreviated ACS, is event sourcing applied to identity: never overwrite state; always append observations; recompute the present from the history.
 
-- **Portability.** The entire ledger is a directory of JSON files that can be moved to any system with a filesystem. No database migration is required.
-- **Schema stability.** JSON flat files do not require schema migrations when fields are added. Existing records remain valid as the schema evolves.
-- **Auditability.** The ledger can be inspected, diffed, and versioned with standard tools.
-- **Model compatibility.** The flat-file format allows the ledger to feed local intelligence models directly, without an ETL step to extract from a database schema.
-
-The service operates as a CLI tool. It exposes strictly defined query and update operations, processes sub-process calls from authorized execution adapters, and executes read and write operations against the JSON ledger files.
-
-## Configuration
-
-| Parameter | Purpose |
+| Property | Why it matters |
 |---|---|
-| Ledger path | Filesystem path for the JSON contact database |
-| Update adapter | Identity of the authorized process permitted to write contact records |
-| Query interface | CLI flags for read operations against the ledger |
+| Claims are immutable | The audit trail captures the full history of how the system came to know a fact |
+| Sockets are reproducible | Any Chart-of-Accounts socket can be regenerated by replaying the claims |
+| Targets are stable | The Sovereign-ID never changes; volatile attributes never trigger a re-keying |
 
-## See Also
+## The Infinite Net
 
-- [[service-email]]
-- [[service-extraction]]
-- [[service-search]]
-- [[trajectory-substrate]]
+Identity does not enter `service-people` only through manual operator input. `service-extraction` runs Aho-Corasick over every incoming payload — email body, PDF text, DOCX text — and pulls every name, email address, phone number, and organisation it finds. Each extracted entity receives a Sovereign-ID and enters the ledger in `Discovery` status.
 
-## References
+Over time, `service-slm` cross-references discovered entities against the Gravity Vectors produced by `service-content`. If an entity accrues gravity — appearing in payloads aligned with Domains, Archetypes, and Themes — it is socketed to a Chart-of-Accounts row and elevated to active status. If it never accrues gravity (a promotional newsletter sender; a one-time signature), it ages out of the active index after 30 days, remaining in the WORM record but invisible to active search.
 
--  §XI — Ring 1 boundary-ingest architecture and MCP server interface
-- `pointsav-monorepo/service-people/` — implementation crate
-- DS-ADR-02 — flat-file state machine standard (files over databases)
+## The flat-file substrate
+
+The ledger is a directory of JSON flat files rather than a relational database — portable across infrastructure changes, auditable with standard filesystem tools, and natively compatible with local-model training pipelines that need a stable schema. No database migration is required when fields are added; existing records remain valid as the schema evolves.
+
+## See also
+
+- [[service-email]] — the email ingest service that feeds sender records into service-people via service-extraction
+- [[service-content]] — the Gravity Engine that produces the Gravity Vectors service-slm uses to socket entities
+- [[archetypes-and-chart-of-accounts]] — the Chart of Accounts that Semantic Sockets map to
+- [[totebox-os]] — the Totebox that hosts service-people and its WORM storage
