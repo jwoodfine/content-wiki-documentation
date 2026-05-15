@@ -5,7 +5,7 @@ slug: sovereign-telemetry
 category: infrastructure
 type: topic
 quality: stub
-short_description: "The zero-state telemetry architecture describes how Foundry's V4 Intent Beacon collects behavioural and hardware signals from edge clients without cookies, session identifiers, or third-party analytics, using client-side compilation and asynchronous beacon transmission."
+short_description: "The zero-state telemetry architecture describes how the platform's V4 Intent Beacon collects behavioural and hardware signals from edge clients without cookies, session identifiers, or third-party analytics, using client-side compilation and asynchronous beacon transmission."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
@@ -17,7 +17,7 @@ paired_with: sovereign-telemetry.es.md
 
 > The zero-state telemetry architecture collects behavioural and hardware signals from edge clients using only native browser APIs — no cookies, no session identifiers, no third-party analytics aggregators — and transmits the compiled payload asynchronously at tab-close.
 
-The **zero-state telemetry architecture** is the Foundry approach
+The **zero-state telemetry architecture** is the platform approach
 to understanding user behaviour without accumulating persistent
 client state. The current implementation, codename **V4 Intent
 Beacon**, enforces a strict no-cookie, no-session-ID posture. Data

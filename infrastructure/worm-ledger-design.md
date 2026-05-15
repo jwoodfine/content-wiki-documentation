@@ -35,7 +35,7 @@ This requirement is not unique to PointSav. US broker-dealer recordkeeping regul
 
 The ledger is built in four layers.
 
-**Layer 1 — Tile storage.** On-disk format follows the C2SP tlog-tiles specification verbatim [^1] — the same tile format used internally by Trillian-Tessera and externally by Sigstore Rekor v2. [^2] This is not an incidental alignment: it means every tile Foundry writes can be verified by any tool in the transparency-log ecosystem without format conversion.
+**Layer 1 — Tile storage.** On-disk format follows the C2SP tlog-tiles specification verbatim [^1] — the same tile format used internally by Trillian-Tessera and externally by Sigstore Rekor v2. [^2] This is not an incidental alignment: it means every tile the platform writes can be verified by any tool in the transparency-log ecosystem without format conversion.
 
 **Layer 2 — WORM ledger API.** A Rust trait that exposes five operations: open a ledger for a given tenant, append a payload and receive a cursor, read entries since a cursor, produce a signed checkpoint [^3], and verify inclusion and consistency proofs. This trait has an in-memory implementation for testing and a POSIX filesystem implementation for production. A future capability-mediated storage backend can implement the same trait without changing any code above it.
 

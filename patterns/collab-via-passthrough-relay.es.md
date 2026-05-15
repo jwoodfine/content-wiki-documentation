@@ -27,7 +27,7 @@ Herramientas como Etherpad y HackMD operan bajo un modelo de documento autoritat
 
 El diseño de relé de paso elimina ese segundo registro por completo. El servidor es un conducto de mensajes, no un almacén. Cuando un cliente Yjs envía un mensaje de actualización binario, el manejador Rust recibe los bytes en bruto del WebSocket y los difunde a todos los demás clientes de la misma sala mediante `tokio::sync::broadcast`. El servidor nunca deserializa el protocolo Yjs; nunca construye un Y.Doc; nunca escribe nada en disco como efecto secundario de una operación de relé.
 
-Esto importa para la postura de divulgación descrita en la reclamación #29 de Doctrine (Sustitución de Sustrato). El registro de divulgación canónico es el árbol git. Bajo el diseño de relé de paso, no existe ningún registro paralelo: el estado CRDT en curso no forma parte del registro de divulgación por construcción, porque nunca se escribe en ningún lugar. El registro se cierra en el momento de `POST /edit`, no antes.
+El registro de divulgación canónico es el árbol git. Bajo el diseño de relé de paso, no existe ningún registro paralelo: el estado CRDT en curso no forma parte del registro de divulgación por construcción, porque nunca se escribe en ningún lugar. El registro se cierra en el momento de `POST /edit`, no antes.
 
 ## Implementación en `app-mediakit-knowledge`
 

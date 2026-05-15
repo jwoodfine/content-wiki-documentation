@@ -19,7 +19,7 @@ cites:
 
 ## Pattern statement
 
-Source-of-truth inversion is a named Foundry substrate pattern. In each PointSav application, one storage layer is declared canonical — the authoritative record that is committed, signed, replicated, and disclosed. A second layer is a derived view: the running process's in-memory index, rendered output, or computed summary — rebuilt deterministically from the canonical record on demand and discardable without loss. A third layer, when collaborative editing is enabled, is session-ephemeral: it exists for the duration of a shared editing session and does not write back to canonical until a human author makes a deliberate commit.
+Source-of-truth inversion is a named platform design pattern. In each PointSav application, one storage layer is declared canonical — the authoritative record that is committed, signed, replicated, and disclosed. A second layer is a derived view: the running process's in-memory index, rendered output, or computed summary — rebuilt deterministically from the canonical record on demand and discardable without loss. A third layer, when collaborative editing is enabled, is session-ephemeral: it exists for the duration of a shared editing session and does not write back to canonical until a human author makes a deliberate commit.
 
 The pattern recurs across the wiki engine, the Ring 2 extraction pipeline, and the planned `app-workplace-presentation` and `app-workplace-proforma` applications. In each case, the choice of what is canonical follows the same structural logic: the layer with the longest durability requirement, the strongest audit obligation, and the cleanest replication story is canonical. Everything else is derived.
 

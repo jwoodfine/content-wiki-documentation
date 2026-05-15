@@ -12,7 +12,7 @@ category: infrastructure
 
 
 
-Foundry’s `service-fs` provides the per-tenant Write-Once-Read-Many (WORM) immutable ledger that serves as the durable backbone for all Ring 1 boundary-ingest services. By enforcing a strict append-only invariant through cryptographic hash-chaining and structural isolation, Foundry ensures that identity, communications, and document records remain tamper-evident and permanently accessible.
+`service-fs` provides the per-tenant Write-Once-Read-Many (WORM) immutable ledger that serves as the durable backbone for all Ring 1 boundary-ingest services. By enforcing a strict append-only invariant through cryptographic hash-chaining and structural isolation, the platform ensures that identity, communications, and document records remain tamper-evident and permanently accessible.
 
 ## Architectural Integration
 
@@ -29,7 +29,7 @@ The architecture utilizes a layered design to ensure that individual components 
 Checkpoints are intended to be anchored monthly to the public Sigstore Rekor transparency log (per the fundamental physics of 2030 hyperscaler infrastructure). This provides external verifiability without exposing raw tenant data.
 
 ### Layer 3: Wire-Level Abstraction
-Today, services communicate via axum-based HTTP with mandatory `X-Foundry-Module-ID` headers. Long-term, this is intended to transition to a native MCP-server interface across both Linux and seL4 targets.
+Today, services communicate via axum-based HTTP with mandatory `X-Module-ID` headers. Long-term, this is intended to transition to a native MCP-server interface across both Linux and seL4 targets.
 
 ### Layer 2: Core State API
 The stable core contract defining methods for `append`, `read_since`, and `checkpoint`. This target-independent layer ensures consistency regardless of the underlying storage engine.
@@ -41,11 +41,11 @@ The stable core contract defining methods for `append`, `read_since`, and `check
 
 ## Regulatory Compliance and Durability
 
-The design is engineered to align with SEC Rule 17a-4(f) WORM requirements and EU eIDAS qualified preservation standards. By adopting the plain-text C2SP tile format, Foundry guarantees that a forensic analyst in the year 2126 could decode the storage using only basic Unix utilities and a SHA-256 implementation.
+The design is engineered to align with SEC Rule 17a-4(f) WORM requirements and EU eIDAS qualified preservation standards. By adopting the plain-text C2SP tile format, the platform guarantees that a forensic analyst in the year 2126 could decode the storage using only basic Unix utilities and a SHA-256 implementation.
 
 ## Cross-Target Synthesis
 
-Foundry’s implementation is unique in its dual-target Rust strategy, allowing the same binary to serve as a Linux daemon today and an seL4 unikernel tomorrow. This ensures that the storage substrate is portable from a virtual machine to a future ToteboxOS hardware appliance without a core rewrite.
+The platform’s implementation is unique in its dual-target Rust strategy, allowing the same binary to serve as a Linux daemon today and an seL4 unikernel tomorrow. This ensures that the storage substrate is portable from a virtual machine to a future ToteboxOS hardware appliance without a core rewrite.
 
 ## See also
 

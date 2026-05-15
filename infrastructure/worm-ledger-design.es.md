@@ -34,7 +34,7 @@ Este requisito no es exclusivo de PointSav. La regulación de conservación de r
 
 ## La pila de cuatro capas
 
-**Capa 1 — Almacenamiento por bloques (tiles).** El formato en disco sigue la especificación C2SP tlog-tiles de forma literal [^1] — el mismo formato de bloques utilizado internamente por Trillian-Tessera y externamente por Sigstore Rekor v2. [^2] Esta alineación no es incidental: significa que cualquier herramienta del ecosistema de registros de transparencia puede verificar los bloques escritos por Foundry sin conversión de formato.
+**Capa 1 — Almacenamiento por bloques (tiles).** El formato en disco sigue la especificación C2SP tlog-tiles de forma literal [^1] — el mismo formato de bloques utilizado internamente por Trillian-Tessera y externamente por Sigstore Rekor v2. [^2] Esta alineación no es incidental: significa que cualquier herramienta del ecosistema de registros de transparencia puede verificar los bloques escritos por la plataforma sin conversión de formato.
 
 **Capa 2 — API del libro de registros WORM.** Un trait de Rust que expone las operaciones de apertura, adición, lectura, producción de punto de control firmado [^3] y verificación de pruebas de inclusión y consistencia. Implementaciones intercambiables: en memoria para pruebas, POSIX para producción.
 

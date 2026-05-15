@@ -12,11 +12,11 @@ category: infrastructure
 
 
 
-Foundry’s storage architecture is built on the principle of structural immutability, ensuring that data archives remain tamper-evident and readable for the long term. This document synthesizes the engineering decisions behind the tile-based storage engine and the transition from hosted environments to verified microkernels.
+The platform’s storage architecture is built on the principle of structural immutability, ensuring that data archives remain tamper-evident and readable for the long term. This document synthesizes the engineering decisions behind the tile-based storage engine and the transition from hosted environments to verified microkernels.
 
 ## 1. The Tile-Based Storage Engine
 
-Foundry adopts the **C2SP tlog-tiles** specification as its fundamental storage primitive. This format, utilized by Sigstore Rekor and Google’s Certificate Transparency, breaks a Merkle tree into static, append-only files (tiles).
+The platform adopts the **C2SP tlog-tiles** specification as its fundamental storage primitive. This format, utilized by Sigstore Rekor and Google’s Certificate Transparency, breaks a Merkle tree into static, append-only files (tiles).
 
 * **Atomic Durability:** Finalized tiles are written using a write-then-rename discipline followed by a mandatory `fsync`. This ensures that partial writes never corrupt the ledger state.
 * **Plain-Text Transparency:** Following the DARP principle, tiles are stored as newline-delimited base64 text. This ensures that the storage remains inspectable using standard Unix utilities (`cat`, `base64`, `sha256sum`).
@@ -41,7 +41,7 @@ The storage engine is engineered to satisfy strict regulatory requirements:
 
 ## 4. Synthesis of Innovation
 
-The primary innovation in Foundry’s storage layer is the integration of high-performance verifiable logs with a "sovereign-first" deployment model. Unlike legacy WORM solutions that require proprietary hardware or specific cloud vendors, Foundry’s tile-based logs are portable, open-standard, and self-verifying across any hardware from a virtual machine to an seL4-hardened Totebox appliance.
+The primary innovation in the platform’s storage layer is the integration of high-performance verifiable logs with a "sovereign-first" deployment model. Unlike legacy WORM solutions that require proprietary hardware or specific cloud vendors, the platform’s tile-based logs are portable, open-standard, and self-verifying across any hardware from a virtual machine to an seL4-hardened Totebox appliance.
 
 ## See also
 

@@ -12,11 +12,11 @@ category: infrastructure
 
 
 
-La arquitectura de Foundry se basa en la inmutabilidad estructural, garantizando que los archivos de datos sean permanentes y legibles a largo plazo.
+La arquitectura de la plataforma se basa en la inmutabilidad estructural, garantizando que los archivos de datos sean permanentes y legibles a largo plazo.
 
 ## El Motor de Almacenamiento por Teselas (Tiles)
 
-Foundry utiliza el estándar **C2SP tlog-tiles**, dividiendo el historial de datos en archivos estáticos e inmutables:
+La plataforma utiliza el estándar **C2SP tlog-tiles**, dividiendo el historial de datos en archivos estáticos e inmutables:
 - **Transparencia DARP:** Los datos se guardan en formato de texto plano (base64), legibles por cualquier sistema operativo futuro.
 - **Integridad Criptográfica:** Cada dato se encadena en un "Árbol de Merkle", permitiendo demostrar que ningún registro ha sido alterado sin necesidad de leer todo el archivo.
 

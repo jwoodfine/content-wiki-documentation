@@ -12,7 +12,7 @@ category: patterns
 
 
 
-La capa de presentación de Foundry sigue un mandato de "Ejecución Cero", eliminando el uso de JavaScript en el cliente para la manipulación de la interfaz y el enrutamiento de idiomas. Esta arquitectura minimiza la superficie de ataque y garantiza un rendimiento instantáneo.
+Las capas de presentación de la plataforma siguen un mandato de "Ejecución Cero", eliminando el uso de JavaScript en el cliente para la manipulación de la interfaz y el enrutamiento de idiomas. Esta arquitectura minimiza la superficie de ataque y garantiza un rendimiento instantáneo.
 
 ## Enrutamiento Bilingüe Determinista
 
