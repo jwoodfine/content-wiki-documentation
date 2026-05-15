@@ -44,7 +44,7 @@ The Doorman implements the [[apprenticeship-substrate]] (the learning pipeline) 
 - [[compounding-doorman]] — conceptual overview of the Doorman as a sovereign AI substrate pattern
 - [[apprenticeship-substrate]] — the routing inversion and verdict-signing protocol that compounds the substrate
 - [[three-ring-architecture]] — Ring 3 framing; the Doorman is the sole Ring 3 service
-- [[service-slm-architecture]] — implementation detail of the `service-slm` crate
+- [[service-slm]] — implementation detail of the service-slm crate
 
 ## References
 
