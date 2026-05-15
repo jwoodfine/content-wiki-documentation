@@ -1,0 +1,22 @@
+# leapfrog-facts.yaml — pin file for the "Did you know..." home-page panel.
+# Engine reads on each request; absent → suppress DYK panel entirely.
+# Operator rotates monthly; newest facts at the top.
+# Each fact must link to a published slug and contain one falsifiable claim.
+
+facts:
+  - text: "...that all PointSav AI requests pass through a single boundary called the Doorman, which routes each call across local, burst, and external compute tiers and writes every routing decision to the audit ledger?"
+    link_slug: doorman-protocol
+  - text: "...that the inner two rings of the three-ring architecture function fully without any AI compute, allowing a regulated buyer to run a fully air-gapped deployment with the complete data pipeline intact?"
+    link_slug: three-ring-architecture
+  - text: "...that the platform's commercial structure has no Enterprise tier — it is designed entirely around regulated businesses with $5,000–$50,000 annual contract values, a segment hyperscalers cannot serve economically?"
+    link_slug: economic-model
+  - text: "...that the WORM ledger architecture satisfies SEC Rule 17a-4(f) and eIDAS qualified-preservation requirements by structure, not by configuration?"
+    link_slug: worm-ledger-design
+  - text: "...that ToteboxOS is built on seL4, the only widely-deployed operating-system kernel with a complete machine-checked formal proof of functional correctness?"
+    link_slug: sel4-microkernel-substrate
+  - text: "...that every operational interaction on a PointSav deployment generates training signal that compounds across the platform's deployments, without any tenant surrendering ownership of their data?"
+    link_slug: compounding-substrate
+  - text: "...that PointSav's base model is OLMo 3 at Allen Institute Level-3 openness — meaning a customer can reproduce the exact training run from public weights, public data, and public code?"
+    link_slug: llm-substrate-decision
+  - text: "...that the PointSav documentation wiki is itself a continuous-disclosure record, with every article carrying a signed authorship chain and a content hash verifiable against the platform's WORM ledger?"
+    link_slug: disclosure-substrate
