@@ -70,7 +70,7 @@ Three commitments carried forward from the rest of the platform define what the 
 
 **Intelligence is optional.** The map renders, the co-location query runs, and the layers compose without any AI compute. `service-slm` becomes available for annotation work — suggesting categories for newly-ingested POIs, summarising dataset deltas, flagging anomalies — but the platform operates fully with the Doorman shut down.
 
-**The substrate composes with the rest of Foundry.** Co-location triples produced in `service-business` today can compose with building envelopes from `service-bim` tomorrow. Two clusters, one coordinate system, one WORM ledger, one identity model.
+**The substrate composes with the rest of the platform.** Co-location triples produced in `service-business` today can compose with building envelopes from `service-bim` tomorrow. Two clusters, one coordinate system, one WORM ledger, one identity model.
 
 ## Data architecture — flat-file canonical for service-business
 

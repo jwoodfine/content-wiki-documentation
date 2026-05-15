@@ -11,11 +11,11 @@ cites:
  - osc-sn-51-721
 ---
 
-Zero-container inference is the planned deployment pattern for Foundry's Tier B GPU compute: native Linux binaries under systemd on GCE virtual machine instances, with no container runtime or orchestrator. The economics close because idle-shutdown timers ensure GPU billing stops precisely when inference is not running — a 30-minute daily window on a preemptible A100 costs approximately $7–8 per month. The Yo-Yo compute pool that embodies this pattern is planned; it is not yet in production.
+Zero-container inference is the planned deployment pattern for the platform's Tier B GPU compute: native Linux binaries under systemd on GCE virtual machine instances, with no container runtime or orchestrator. The economics close because idle-shutdown timers ensure GPU billing stops precisely when inference is not running — a 30-minute daily window on a preemptible A100 costs approximately $7–8 per month. The Yo-Yo compute pool that embodies this pattern is planned; it is not yet in production.
 
 ## Why no containers
 
-OCI container images imply a container registry: the registry becomes the durable artefact, and the operator must maintain image build chains, registry credentials, and CVE remediation for base images. For a one-shot inference VM that boots, runs for 30 minutes, and stops, the container layer adds operator surface without solving any problem the virtual machine approach does not address more directly. The single-binary, systemd-supervised approach is consistent with the [[zero-container-runtime]] structural commitment that governs all Foundry service deployments.
+OCI container images imply a container registry: the registry becomes the durable artefact, and the operator must maintain image build chains, registry credentials, and CVE remediation for base images. For a one-shot inference VM that boots, runs for 30 minutes, and stops, the container layer adds operator surface without solving any problem the virtual machine approach does not address more directly. The single-binary, systemd-supervised approach is consistent with the [[zero-container-runtime]] structural commitment that governs all platform service deployments.
 
 ## What is used instead
 

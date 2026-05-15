@@ -66,7 +66,7 @@ A flat-file archive with per-element YAML sidecars can ingest sensor readings vi
 
 For a property owner, the building, the lease, the rent, and the financing are the same asset. The building is where the lease applies; the lease is where the rent comes from; the rent services the loan; the loan justified the building. Multi-tenant cloud cannot commingle BIM, lease register, and rent roll in a single owner-controlled archive — commercial confidentiality, data residency, financial-audit trails, and multi-tenant isolation each prevent it on its own.
 
-The Foundry workplace family — `app-workplace-memo`, `app-workplace-presentation`, `app-workplace-proforma`, and `app-workplace-bim` — is intended to converge these into one portable archive. The Totebox Archive is the first data architecture where a building's legal, financial, spatial, and operational identity are one artifact that travels with the asset.
+The workplace application family — `app-workplace-memo`, `app-workplace-presentation`, `app-workplace-proforma`, and `app-workplace-bim` — is intended to converge these into one portable archive. The Totebox Archive is the first data architecture where a building's legal, financial, spatial, and operational identity are one artifact that travels with the asset.
 
 ## Government regulatory acceptance is structurally favourable
 

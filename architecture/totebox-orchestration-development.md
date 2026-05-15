@@ -16,7 +16,7 @@ cites:
 paired_with: totebox-orchestration-development.es.md
 ---
 
-PointSav's development environment is deployed as a Totebox Orchestration instance — the same architecture the platform delivers to customers. The Foundry workspace, where the platform is written and shipped, runs as a hub coordinating thirteen Totebox Archives over a single shared `service-slm` access-control gateway. The development workflow is the customer workflow. There is no test environment that diverges from production architecture; the environment that produces the code is the architecture the code describes.
+PointSav's development environment is deployed as a Totebox Orchestration instance — the same architecture the platform delivers to customers. The development workspace, where the platform is written and shipped, runs as a hub coordinating thirteen Totebox Archives over a single shared `service-slm` access-control gateway. The development workflow is the customer workflow. There is no test environment that diverges from production architecture; the environment that produces the code is the architecture the code describes.
 
 This article documents how the workspace maps onto Totebox Orchestration, what the Command Session and Totebox Sessions own, and which components are operationally live versus planned.
 
@@ -24,9 +24,9 @@ This article documents how the workspace maps onto Totebox Orchestration, what t
 
 Totebox Orchestration organises work into Totebox Archives — self-contained units, each holding source code, operational guides, a live deployment, and a wiki contribution. A Command Session acts as the hub: it holds pairings to every archive and coordinates cross-archive work. A Totebox Session opens within a single archive and operates only within that archive's declared scope.
 
-The Foundry workspace maps directly onto this topology:
+The development workspace maps directly onto this topology:
 
-| Foundry concept | Totebox Orchestration equivalent |
+| Development workspace | Totebox Orchestration equivalent |
 |---|---|
 | The workspace | Command Session — hub, identity store, cross-archive coordination |
 | Each `clones/project-*/` directory | A Totebox Archive |
@@ -69,7 +69,7 @@ Every Totebox Archive declares a Project Tetrad: four legs that together represe
 |---|---|
 | vendor | Source code in `pointsav-monorepo` — the implementation |
 | customer | Operational guides in `woodfine-fleet-deployment` — how to use it |
-| deployment | Live instance in `~/Foundry/deployments/` — the running service |
+| deployment | Live instance in the deployment directory — the running service |
 | wiki | Articles in `content-wiki-documentation` or `content-wiki-projects` — the knowledge contribution |
 
 An archive with all four legs ratified is complete. Archives with pending legs carry `leg-pending` status and a plan. The Command Session ratifies tetrad completeness as part of milestone review.

@@ -59,7 +59,7 @@ The principles and mechanisms by which customers own their deployment outright.
 
 - [[customer-hostability]] — The architectural commitment that every artefact runs on the customer's own hardware, against the customer's own keys, with the customer's own audit ledger.
 - [[economic-model]] — The two-tier commercial structure: a free Community tier and a paid SMB Customer tier sized for regulated businesses that hyperscalers cannot serve economically.
-- [[direct-payment-settlement]] — Marketplace transaction payments flow directly from buyer to customer-tenant; Foundry's share is a transaction fee at settlement.
+- [[direct-payment-settlement]] — Marketplace transaction payments flow directly from buyer to customer-tenant; PointSav's share is a transaction fee at settlement.
 - [[totebox-orchestration-development]] — The development environment itself is a Totebox Orchestration instance; the workspace that builds the platform runs on the architecture it delivers.
 - [[totebox-session]] — A Totebox Session: an AI-assisted contributor session scoped to one archive, unable to write outside it, the standard entry point for all development work.
 - [[vertical-seed-packs-marketplace]] — Curated industry-specific starter taxonomies distributed as seed packs; tenants contribute refinements back through a planned marketplace.

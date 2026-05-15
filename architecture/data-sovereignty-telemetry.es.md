@@ -16,7 +16,7 @@ Los sistemas de PointSav están diseñados para garantizar la soberanía absolut
 
 ## Infraestructura sin Cookies
 
-Foundry prohíbe estrictamente el uso de cookies de seguimiento y analíticas de terceros. Esto elimina la necesidad legal de banners de consentimiento de cookies, permitiendo una interfaz más limpia y profesional.
+La plataforma prohíbe estrictamente el uso de cookies de seguimiento y analíticas de terceros. Esto elimina la necesidad legal de banners de consentimiento de cookies, permitiendo una interfaz más limpia y profesional.
 
 ## Inteligencia mediante Anonimización de IP
 

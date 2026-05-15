@@ -5,7 +5,7 @@ slug: vertical-seed-packs-marketplace
 category: architecture
 type: topic
 quality: complete
-short_description: "Foundry intends to distribute curated industry-specific seed packs as starter taxonomies, enabling tenants to contribute refinements back through a planned marketplace."
+short_description: "PointSav intends to distribute curated industry-specific seed packs as starter taxonomies, enabling tenants to contribute refinements back through a planned marketplace."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
@@ -14,7 +14,7 @@ cites: []
 paired_with: vertical-seed-packs-marketplace.es.md
 ---
 
-The **Vertical Seed Packs Marketplace** is a planned distribution mechanism for industry-specific starter taxonomies that provision the knowledge graph of a new Foundry tenant. Each pack bundles Archetypes, a Chart of Accounts, Domains, Themes, a glossary, and MCP server extensions suited to a particular business vertical. Customers may install packs at provisioning, update them as new versions are released, and are intended to be able to contribute refinements back to the marketplace for other operators in the same vertical.
+The **Vertical Seed Packs Marketplace** is a planned distribution mechanism for industry-specific starter taxonomies that provision the knowledge graph of a new customer tenant. Each pack bundles Archetypes, a Chart of Accounts, Domains, Themes, a glossary, and MCP server extensions suited to a particular business vertical. Customers may install packs at provisioning, update them as new versions are released, and are intended to be able to contribute refinements back to the marketplace for other operators in the same vertical.
 
 ## Pack content
 
@@ -30,7 +30,7 @@ Each pack is a curated bundle in open formats:
 
 ## Reference packs
 
-Foundry intends to develop and maintain a set of reference packs at Phase 5 launch. The planned set includes a pack for small and mid-size restaurants, one for law firms of thirty to three hundred lawyers, one for small and rural hospitals, one for mid-size property development firms, and a universal default pack for businesses that do not fit a specific vertical.
+PointSav intends to develop and maintain a set of reference packs at Phase 5 launch. The planned set includes a pack for small and mid-size restaurants, one for law firms of thirty to three hundred lawyers, one for small and rural hospitals, one for mid-size property development firms, and a universal default pack for businesses that do not fit a specific vertical.
 
 The Woodfine real estate pack is the current reference implementation, derived from the Woodfine deployment's existing seed taxonomy and validated in production operation.
 
@@ -40,7 +40,7 @@ The planned distribution mechanism routes through the marketplace gateway. Opera
 
 ## Customer contribution
 
-When a customer extends their pack with additions useful to others in the same vertical, they may be able to contribute the additions back. The intended flow guides the operator through review, sanitization, and consent before creating a marketplace contribution. Accepted contributions are intended to land in the next pack version, benefiting other tenants in the vertical without requiring Foundry to author all pack content.
+When a customer extends their pack with additions useful to others in the same vertical, they may be able to contribute the additions back. The intended flow guides the operator through review, sanitization, and consent before creating a marketplace contribution. Accepted contributions are intended to land in the next pack version, benefiting other tenants in the vertical without requiring PointSav to author all pack content.
 
 This contribution mechanism is the structural opening for community-driven vertical evolution. Its governance model — how contributions are reviewed and accepted — is a pending operator decision that will be determined during Phase 5 implementation.
 

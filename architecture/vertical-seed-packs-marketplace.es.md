@@ -5,7 +5,7 @@ slug: vertical-seed-packs-marketplace.es
 category: architecture
 type: topic
 quality: complete
-short_description: "Foundry tiene previsto distribuir paquetes de semilla curados específicos de la industria como taxonomías de inicio, con un mercado planificado que permite a los inquilinos contribuir mejoras."
+short_description: "PointSav tiene previsto distribuir paquetes de semilla curados específicos de la industria como taxonomías de inicio, con un mercado planificado que permite a los inquilinos contribuir mejoras."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
@@ -15,7 +15,7 @@ paired_with: vertical-seed-packs-marketplace.md
 ---
 
 
-El **Mercado de Paquetes de Semilla Vertical** es un mecanismo de distribución planificado para taxonomías de inicio específicas de la industria que aprovisionan el grafo de conocimiento de un nuevo inquilino Foundry. Cada paquete agrupa Arquetipos, un Plan de Cuentas, Dominios, Temas, un glosario y extensiones de servidor MCP adecuadas para una vertical de negocio particular. Este patrón codifica la reclamación doctrinal #50.
+El **Mercado de Paquetes de Semilla Vertical** es un mecanismo de distribución planificado para taxonomías de inicio específicas de la industria que aprovisionan el grafo de conocimiento de un nuevo inquilino de la plataforma. Cada paquete agrupa Arquetipos, un Plan de Cuentas, Dominios, Temas, un glosario y extensiones de servidor MCP adecuadas para una vertical de negocio particular.
 
 ## Contenido del paquete
 
@@ -23,7 +23,7 @@ Cada paquete es un conjunto curado en formatos abiertos: un archivo JSON de Arqu
 
 ## Paquetes de referencia planificados
 
-Foundry tiene previsto desarrollar y mantener un conjunto de paquetes de referencia en el lanzamiento de la Fase 5. El conjunto planificado incluye un paquete para restaurantes pequeños y medianos, uno para firmas legales de treinta a trescientos abogados, uno para hospitales pequeños y rurales, uno para empresas medianas de desarrollo inmobiliario, y un paquete universal predeterminado para negocios que no encajan en una vertical específica.
+PointSav tiene previsto desarrollar y mantener un conjunto de paquetes de referencia en el lanzamiento de la Fase 5. El conjunto planificado incluye un paquete para restaurantes pequeños y medianos, uno para firmas legales de treinta a trescientos abogados, uno para hospitales pequeños y rurales, uno para empresas medianas de desarrollo inmobiliario, y un paquete universal predeterminado para negocios que no encajan en una vertical específica.
 
 El paquete inmobiliario de Woodfine es la implementación de referencia actual, derivada de la taxonomía semilla existente del despliegue de Woodfine y validada en operación en producción.
 
@@ -31,7 +31,7 @@ El paquete inmobiliario de Woodfine es la implementación de referencia actual, 
 
 El mecanismo de distribución planificado enruta a través de la puerta de enlace del mercado. Se prevé que los operadores puedan explorar paquetes disponibles dentro de la TUI, instalar un paquete con un único comando y recibir una vista previa de las diferencias antes de aplicar actualizaciones futuras del paquete.
 
-Cuando un cliente extiende su paquete con adiciones útiles para otros en la misma vertical, se tiene previsto que puedan contribuir esas adiciones de vuelta al mercado. Las contribuciones aceptadas están previstas para aterrizar en la próxima versión del paquete, beneficiando a otros inquilinos en la vertical sin requerir que Foundry cree todo el contenido del paquete.
+Cuando un cliente extiende su paquete con adiciones útiles para otros en la misma vertical, se tiene previsto que puedan contribuir esas adiciones de vuelta al mercado. Las contribuciones aceptadas están previstas para aterrizar en la próxima versión del paquete, beneficiando a otros inquilinos en la vertical sin requerir que PointSav cree todo el contenido del paquete.
 
 ## Licencia de los paquetes
 

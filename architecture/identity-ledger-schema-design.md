@@ -12,7 +12,7 @@ category: architecture
 
 
 
-The Identity Ledger provides a JSONL-based, append-only record of canonical person identities within the Foundry ecosystem. Following the Three-Ring Architecture’s boundary-ingest pattern, `service-people` publishes this schema to enable deterministic identity resolution across all Ring 2 and Ring 3 knowledge-extraction services.
+The Identity Ledger provides a JSONL-based, append-only record of canonical person identities within the platform. Following the Three-Ring Architecture’s boundary-ingest pattern, `service-people` publishes this schema to enable deterministic identity resolution across all Ring 2 and Ring 3 knowledge-extraction services.
 
 ## Core Design Principles
 

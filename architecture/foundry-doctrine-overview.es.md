@@ -5,7 +5,7 @@ slug: foundry-doctrine-overview.es
 category: architecture
 type: topic
 quality: complete
-short_description: Resumen público fiel de la carta constitucional de la Doctrina Foundry — seis pilares, cincuenta y dos afirmaciones de salto adelante, ocho invenciones operativas entre industrias, y el modelo económico que las sostiene.
+short_description: Resumen público fiel de la carta constitucional de PointSav — seis pilares, cincuenta y dos afirmaciones de salto adelante, ocho invenciones operativas entre industrias, y el modelo económico que las sostiene.
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01

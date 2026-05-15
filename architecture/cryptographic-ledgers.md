@@ -42,9 +42,9 @@ If the hashes match and the inclusion proof verifies, the record is intact. If e
 
 ## Architecture
 
-The PointSav cryptographic ledger uses C2SP tlog-tiles format — the same on-disk structure used by Certificate Transparency logs and Sigstore Rekor. Tiles are static, base64-encoded text files containing 256 entries each at the leaf level, with intermediate Merkle-level tiles above them. This format is human-readable (consistent with Doctrine Pillar 1: plain text only), independently verifiable, and compatible with standard Certificate Transparency tooling.
+The PointSav cryptographic ledger uses C2SP tlog-tiles format — the same on-disk structure used by Certificate Transparency logs and Sigstore Rekor. Tiles are static, base64-encoded text files containing 256 entries each at the leaf level, with intermediate Merkle-level tiles above them. This format is human-readable, independently verifiable, and compatible with standard Certificate Transparency tooling.
 
-Monthly, each tenant's signed checkpoint is submitted to the Sigstore Rekor v2 public transparency log (Doctrine Invention #7 — Sigstore Rekor anchoring). Once anchored, the checkpoint is public and the tenant cannot retroactively alter any prior record without the tampered state being detectable against the anchored checkpoint.
+Monthly, each tenant's signed checkpoint is submitted to the Sigstore Rekor v2 public transparency log. Once anchored, the checkpoint is public and the tenant cannot retroactively alter any prior record without the tampered state being detectable against the anchored checkpoint.
 
 ## Applications
 

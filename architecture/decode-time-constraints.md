@@ -65,9 +65,9 @@ Three structural reasons hyperscaler-managed AI cannot match this approach:
 
 **1. The grammar must be authored locally.** A constraint that lives at decode time runs inside the inference loop. To author a grammar specific to a tenant's editorial standards, the tenant needs write access to the grammar file the runtime loads. Hyperscaler-managed AI products treat the grammar as part of the closed model deployment — tenants get structured-output modes, not a tenant-specific grammar that loads at inference time.
 
-**2. The constraint must compose with adapter routing.** Foundry's Doorman routes among three compute tiers and composes adapters per request. Decode-time constraints must travel with the adapter composition. Hyperscaler-managed AI does not expose adapter composition primitives, let alone constraint composition.
+**2. The constraint must compose with adapter routing.** The platform's Doorman routes among three compute tiers and composes adapters per request. Decode-time constraints must travel with the adapter composition. Hyperscaler-managed AI does not expose adapter composition primitives, let alone constraint composition.
 
-**3. The constraint must be auditable.** Per `[ni-51-102]` continuous-disclosure language, every editorial output must be traceable to the rules it was generated under. Foundry's per-tenant audit ledger captures the grammar version, the adapter composition, and the response — together. Hyperscaler-managed AI offers neither the grammar version nor the adapter composition for inspection.
+**3. The constraint must be auditable.** Per `[ni-51-102]` continuous-disclosure language, every editorial output must be traceable to the rules it was generated under. The per-tenant audit ledger captures the grammar version, the adapter composition, and the response — together. Hyperscaler-managed AI offers neither the grammar version nor the adapter composition for inspection.
 
 ## Forward-Looking
 

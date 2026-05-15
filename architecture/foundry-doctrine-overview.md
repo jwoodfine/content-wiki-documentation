@@ -5,7 +5,7 @@ slug: foundry-doctrine-overview
 category: architecture
 type: topic
 quality: complete
-short_description: A faithful public summary of the Foundry constitutional charter — six pillars, fifty-two structural claims, eight cross-industry inventions, a three-tier compute model, three-ring service architecture, and the economic model that sustains it.
+short_description: A faithful public summary of the PointSav constitutional charter — six pillars, fifty-two structural claims, eight cross-industry inventions, a three-tier compute model, three-ring service architecture, and the economic model that sustains it.
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01

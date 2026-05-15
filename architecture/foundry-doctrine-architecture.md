@@ -23,11 +23,11 @@ references:
  text: "Overture Maps Foundation. overturemaps.org"
 ---
 
-Foundry Doctrine is the constitutional charter for the PointSav platform. It encodes the principles, commitments, and structural claims that govern every engineering, operational, and editorial decision across the workspace. The current release is v0.1.0 ALPHA, ratified 2026-04-30 under the `ps-administrator` signing identity.
+The PointSav constitutional charter encodes the principles, commitments, and structural claims that govern every engineering, operational, and editorial decision across the platform. The current release is v0.1.0 ALPHA, ratified 2026-04-30 under the `ps-administrator` signing identity.
 
 ## The Six Pillars
 
-Foundry is built on six foundational commitments that take precedence over any specific design decision or engineering convenience:
+The platform is built on six foundational commitments that take precedence over any specific design decision or engineering convenience:
 
 **Plain text, flat file, open source.** Every artifact produced by the substrate — knowledge graphs, audit ledgers, documentation, configuration, training data — is plain text. No binary-only stores, no proprietary formats that require a running service to read.
 
@@ -43,11 +43,11 @@ Foundry is built on six foundational commitments that take precedence over any s
 
 ## The Fifty-Two Leapfrog Claims
 
-The doctrine enumerates 54 numbered structural claims that together constitute Foundry's competitive positioning relative to hyperscaler software-as-a-service. Each claim identifies a structural property of the Foundry substrate that hyperscaler economics or architecture structurally foreclose — not a feature advantage, but a property that cannot be replicated without changing the underlying business model.
+The doctrine enumerates 54 numbered structural claims that together constitute the platform's competitive positioning relative to hyperscaler software-as-a-service. Each claim identifies a structural property of the platform substrate that hyperscaler economics or architecture structurally foreclose — not a feature advantage, but a property that cannot be replicated without changing the underlying business model.
 
 Representative clusters from the full claim set:
 
-**Sovereignty and data ownership (claims #1–#11, #48, #54).** The customer's knowledge graph is the customer's intellectual property. The per-tenant WORM ledger is customer-rooted. Export formats are open at day zero. The substrate runs fully — queries, audit, search, transfer of ownership — with no Foundry-side dependency. No hyperscaler SaaS can offer this without abandoning per-tenant hosting economics.
+**Sovereignty and data ownership (claims #1–#11, #48, #54).** The customer's knowledge graph is the customer's intellectual property. The per-tenant WORM ledger is customer-rooted. Export formats are open at day zero. The substrate runs fully — queries, audit, search, transfer of ownership — with no platform-side dependency. No hyperscaler SaaS can offer this without abandoning per-tenant hosting economics.
 
 **Compounding substrate (claim #18).** Each unit of work — a commit, a session, an editorial pass, a training run — increases the capability of the next unit. Engineering work trains the engineering adapter; editorial work trains the language-protocol adapter; sysadmin interactions train the sysadmin adapter. The capability curve is monotonically increasing with work volume; the marginal cost of capability declines over time.
 

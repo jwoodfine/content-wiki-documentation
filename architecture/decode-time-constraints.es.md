@@ -24,7 +24,7 @@ imposible — el modelo elige del conjunto de tokens válidos restantes.
 Es la diferencia entre un humano calificando trabajo después de la
 entrega y una barandilla que evita la violación antes de que suceda.
 
-## Cómo lo usa Foundry
+## Uso en la plataforma
 
 El sustrato envía `service-content/schemas/banned-vocab.lark` — una
 gramática Lark EBNF que declara ocho términos editoriales prohibidos
@@ -52,14 +52,14 @@ Tres razones estructurales:
  hiperescaladores tratan la gramática como parte del despliegue
  cerrado del modelo.
 - **La restricción debe componerse con el enrutamiento de
- adaptadores.** El Doorman de Foundry (`service-slm`) compone
+ adaptadores.** El Doorman de la plataforma (`service-slm`) compone
  adaptadores por solicitud; las restricciones de decodificación
  viajan con esa composición. La IA gestionada por hiperescaladores
  no expone primitivos de composición de adaptadores.
 - **La restricción debe ser auditable.** Por la postura de
  divulgación continua de la BCSC (`[ni-51-102]`), cada salida
  editorial debe ser trazable a las reglas bajo las cuales fue
- generada. El libro mayor de auditoría por inquilino de Foundry
+ generada. El libro mayor de auditoría por inquilino de la plataforma
  captura la versión de la gramática, la composición de adaptadores
  y la respuesta — juntas.
 
@@ -98,5 +98,4 @@ trayectoria descrita a continuación es `planificada` e `intencionada`:
 - [El Sustrato Compuesto](topic-compounding-substrate.es.md)
 - [El sustrato de protocolo de lenguaje](topic-language-protocol-substrate.es.md)
 - [El sustrato de aprendizaje](topic-apprenticeship-substrate.es.md)
-- La convención que refleja este artículo:
- `~/Foundry/conventions/language-protocol-substrate.md` §3
+- [[language-protocol-substrate]] — the convention this article implements

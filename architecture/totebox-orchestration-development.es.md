@@ -13,7 +13,7 @@ editor: pointsav-engineering
 paired_with: totebox-orchestration-development.md
 ---
 
-El entorno de desarrollo de PointSav está desplegado como una instancia de orquestación Totebox — la misma arquitectura que la plataforma entrega a los clientes. El espacio de trabajo Foundry, donde se escribe y publica la plataforma, opera como un concentrador que coordina trece archivos Totebox a través de una única pasarela compartida de control de acceso `service-slm`. El flujo de trabajo de desarrollo es el flujo de trabajo del cliente. No existe un entorno de pruebas que se aparte de la arquitectura de producción; el entorno que produce el código es la arquitectura que el código describe.
+El entorno de desarrollo de PointSav está desplegado como una instancia de orquestación Totebox — la misma arquitectura que la plataforma entrega a los clientes. El espacio de trabajo de desarrollo, donde se escribe y publica la plataforma, opera como un concentrador que coordina trece archivos Totebox a través de una única pasarela compartida de control de acceso `service-slm`. El flujo de trabajo de desarrollo es el flujo de trabajo del cliente. No existe un entorno de pruebas que se aparte de la arquitectura de producción; el entorno que produce el código es la arquitectura que el código describe.
 
 Este artículo documenta cómo el espacio de trabajo se asigna a la orquestación Totebox, qué responsabilidades tienen la sesión de Comando y las sesiones Totebox, y qué componentes están operativos frente a los planificados.
 
@@ -21,11 +21,11 @@ Este artículo documenta cómo el espacio de trabajo se asigna a la orquestació
 
 La orquestación Totebox organiza el trabajo en archivos Totebox — unidades autocontenidas, cada una con código fuente, guías operativas, un despliegue activo y una contribución al wiki. Una sesión de Comando actúa como concentrador: mantiene los emparejamientos con cada archivo y coordina el trabajo entre archivos. Una sesión Totebox se abre dentro de un único archivo y opera solo dentro del alcance declarado de ese archivo.
 
-El espacio de trabajo Foundry se asigna directamente a esta topología:
+El espacio de trabajo de desarrollo se asigna directamente a esta topología:
 
-| Concepto Foundry | Equivalente en orquestación Totebox |
+| Espacio de trabajo de desarrollo | Equivalente en orquestación Totebox |
 |---|---|
-| El espacio de trabajo en `~/Foundry/` | Sesión de Comando — concentrador, almacén de identidades, coordinación entre archivos |
+| El espacio de trabajo | Sesión de Comando — concentrador, almacén de identidades, coordinación entre archivos |
 | Cada directorio `clones/project-*/` | Un archivo Totebox |
 | Una sesión abierta en un clon de cluster | Una sesión Totebox |
 | Pasarela de control de acceso `service-slm` | La capa compartida de enrutamiento de IA de la orquestación |
@@ -48,7 +48,7 @@ La sesión de Comando es la única sesión que puede escribir archivos a nivel d
 
 ## Sesiones Totebox
 
-Una sesión Totebox se abre dentro de un archivo específico en `~/Foundry/clones/<archive>/`. Opera dentro de ese archivo — escribiendo código, confirmando en ramas de staging, redactando contenido del wiki, actualizando el despliegue. No escribe en otros archivos, no modifica archivos del espacio de trabajo y no tiene acceso directo al almacén de identidades.
+Una sesión Totebox se abre dentro de un archivo específico. Opera dentro de ese archivo — escribiendo código, confirmando en ramas de staging, redactando contenido del wiki, actualizando el despliegue. No escribe en otros archivos, no modifica archivos del espacio de trabajo y no tiene acceso directo al almacén de identidades.
 
 El punto de entrada planificado es `bin/open-archive.sh <archive-name>`, previsto para leer el manifiesto del archivo, mostrar el estado de la tétrada y los mensajes pendientes, establecer las variables de entorno con alcance al archivo y abrir una sesión en el directorio raíz del archivo. Esto está pensado para reflejar cómo un cliente o miembro de la comunidad abre un archivo Totebox a través de `os-console`: el flujo de trabajo de desarrollo es idéntico al flujo del cliente.
 
@@ -66,7 +66,7 @@ Cada archivo Totebox declara una tétrada del proyecto: cuatro patas que en conj
 |---|---|
 | vendor | Código fuente en `pointsav-monorepo` — la implementación |
 | customer | Guías operativas en `woodfine-fleet-deployment` — cómo usarla |
-| deployment | Instancia activa en `~/Foundry/deployments/` — el servicio en ejecución |
+| deployment | Instancia activa en el directorio de despliegue — el servicio en ejecución |
 | wiki | Artículos en `content-wiki-documentation` o `content-wiki-projects` — la contribución de conocimiento |
 
 Un archivo con las cuatro patas ratificadas está completo. Los archivos con patas pendientes llevan el estado `leg-pending` con un plan. La sesión de Comando ratifica la completitud de la tétrada como parte de la revisión del hito.
@@ -108,7 +108,7 @@ El siguiente paso previsto es la aplicación planificada `app-orchestration-comm
 
 ## Referencias
 
-- **`DOCTRINE.md`** — carta constitucional de Foundry; disciplina de composición de sustratos.
+- **`DOCTRINE.md`** — carta constitucional de la plataforma; disciplina de composición de sustratos.
 - **`MANIFEST.md`** — pasaporte del espacio de trabajo que declara la identidad de la instancia `vault-privategit-source-1`.
 - **`conventions/project-tetrad-discipline.md`** — especificación ratificada de la tétrada del proyecto.
 - **`conventions/three-ring-architecture.md`** — referencia de composición de sustrato del Anillo 1/2/3.

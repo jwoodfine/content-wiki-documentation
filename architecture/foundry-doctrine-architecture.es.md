@@ -13,11 +13,11 @@ paired_with: foundry-doctrine-architecture.md
 ---
 
 
-La Doctrina Foundry es la carta constitucional de la plataforma PointSav. Codifica los principios, compromisos y afirmaciones estructurales que rigen cada decisión de ingeniería, operaciones y editorial en todo el espacio de trabajo. La versión actual es v0.1.0 ALPHA, ratificada el 30 de abril de 2026.
+La carta constitucional de la plataforma PointSav codifica los principios, compromisos y afirmaciones estructurales que rigen cada decisión de ingeniería, operaciones y editorial. La versión actual es v0.1.0 ALPHA, ratificada el 30 de abril de 2026.
 
 ## Los Seis Pilares
 
-Foundry se construye sobre seis compromisos fundamentales que tienen prioridad sobre cualquier decisión de diseño específica:
+La plataforma se construye sobre seis compromisos fundamentales que tienen prioridad sobre cualquier decisión de diseño específica:
 
 **Texto plano, archivo plano, código abierto.** Cada artefacto producido por el sustrato — grafos de conocimiento, libros de auditoría, documentación, configuración, datos de entrenamiento — es texto plano. Sin almacenes de solo binarios, sin formatos propietarios.
 
@@ -33,7 +33,7 @@ Foundry se construye sobre seis compromisos fundamentales que tienen prioridad s
 
 ## Las Cincuenta y Dos Afirmaciones de Salto
 
-La doctrina enumera 54 afirmaciones estructurales numeradas que juntas constituyen el posicionamiento de Foundry frente al software como servicio de hiperescaladores. Cada afirmación identifica una propiedad estructural del sustrato Foundry que la economía o arquitectura de los hiperescaladores no puede replicar sin cambiar el modelo de negocio subyacente.
+La doctrina enumera 54 afirmaciones estructurales numeradas que juntas constituyen el posicionamiento de la plataforma frente al software como servicio de hiperescaladores. Cada afirmación identifica una propiedad estructural del sustrato de la plataforma que la economía o arquitectura de los hiperescaladores no puede replicar sin cambiar el modelo de negocio subyacente.
 
 Grupos representativos del conjunto completo de afirmaciones:
 
