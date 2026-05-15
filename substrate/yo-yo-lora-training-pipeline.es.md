@@ -45,7 +45,7 @@ configurable, con un valor predeterminado de 7200 segundos.
 
 Al inicio de la ventana nocturna, `start-yoyo.sh` arranca la VM de Yo-Yo #1
 y espera hasta 90 minutos a que vLLM señale su disponibilidad. Una vez que
-el servidor de inferencia está activo, `jennifer-datagraph-rebuild.sh`
+el servidor de inferencia está activo, `nightly-datagraph-rebuild.sh`
 procesa tres flujos de documentos del despliegue: archivos
 markdown de transcripciones de reuniones, archivos YAML y markdown de
 investigación de agentes, y registros JSON de fuentes de contactos. Para
