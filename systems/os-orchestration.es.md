@@ -1,68 +1,74 @@
 ---
 schema: foundry-doc-v1
-title: "Orchestration OS"
-slug: os-orchestration.es
+title: "os-orchestration — El Agregador de Flota"
+slug: os-orchestration
 category: systems
-type: os
+type: concept
 quality: complete
-short_description: "Orchestration OS es la capa del sistema operativo que administra un clúster de archivos Totebox — agregando archivos, exponiendo una interfaz unificada para operadores y enrutando los mensajes de coordinación entre sesiones de IA entre los archivos."
 status: active
-bcsc_class: forward-looking
-last_edited: 2026-05-08
+audience: vendor-public
+bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
+last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: os-orchestration.md
+short_description: "os-orchestration es el sistema operativo de nivel comercial que permite a un único operador ver, consultar y comandar muchos archivos Totebox a la vez — el Agregador de Flota para portafolios multi-entidad y despliegues empresariales."
+cites: []
 ---
 
-OrchestrationOS (`os-orchestration`) es la capa del sistema operativo que administra un clúster de archivos Totebox. Agrega los archivos que supervisa, expone una interfaz unificada para los operadores y otros nodos de orquestación, y enruta los mensajes de coordinación entre sesiones de IA entre los archivos. Tres instancias por proyecto están operativamente activas en el espacio de trabajo hoy; el agregador planificado `app-orchestration-command` que expone la interfaz unificada es el siguiente hito de implementación.
+`os-orchestration` es el sistema operativo de nivel comercial que permite a un único operador ver, consultar y comandar muchos archivos Totebox a la vez. Mientras `os-console` se conecta a un único `os-totebox`, `os-orchestration` es el concentrador entre la Consola de un operador y una flota de Toteboxes. Es lo que un ejecutivo visualiza cuando quiere la posición de cada propiedad en un portafolio, cada entidad en una sociedad holding o cada proyecto en un pipeline de desarrollo — una respuesta única y unificada a "¿cuál es el estado de todo el patrimonio ahora mismo?" Este artículo cubre qué hace `os-orchestration`, qué no hace deliberadamente, cómo funciona la agregación, las funciones comerciales que agrega y cuándo desplegarlo.
 
-Este artículo describe los dos roles que puede ocupar una instancia de orquestación, las instancias por proyecto activas y cómo la coordinación entre archivos preserva el invariante [[pairing-as-permission]].
+## Qué no hace
 
-## Roles
+`os-orchestration` no almacena registros sin procesar. No tiene estado. Extrae metadatos de los Toteboxes, sintetiza una vista unificada y la presenta a través de `os-console`. Los datos sin procesar nunca abandonan su Totebox soberano. El agregador solo ve lo que el Totebox tiene permitido exponer.
 
-**Comando** — Una única instancia de Comando está emparejada con cada archivo Totebox, ambos nodos os-mediakit y ambos nodos os-privategit. El Comando es el concentrador de la topología de orquestación Totebox. Es el único nodo con visibilidad completa entre archivos; su lista de emparejamientos es el registro topológico operativo.
+Este límite es estructuralmente importante: incluso si `os-orchestration` se ve comprometido, los Toteboxes subyacentes permanecen sellados. El agregador no posee claves a los archivos.
 
-**Instancias por proyecto** — Cada clúster de proyecto activo ejecuta su propia instancia de orquestación con alcance a los archivos de ese clúster. Una instancia por proyecto está emparejada únicamente con sus propios archivos. No tiene emparejamiento con el Comando (la comunicación fluye por mensaje, no por conexión directa) y no tiene emparejamiento con instancias por proyecto hermanas.
+## Su lugar en la línea de productos
 
-## Instancias por proyecto activas
-
-Las siguientes instancias de orquestación por proyecto están actualmente activas en el espacio de trabajo Foundry:
-
-| Instancia | Clúster | Alcance |
+| Componente | Rol | Modelo de licencia (previsto) |
 |---|---|---|
-| `gateway-orch-bim-1` | `project-bim` | Archivos de información de construcción |
-| `gateway-orch-gis-1` | `project-gis` | Archivos de información geográfica |
-| `gateway-orch-proofreader` | `project-proofreader` | Archivos de la aplicación de corrección |
+| `os-console` | Terminal de cara al operador | Apache 2.0 (previsto como gratuito) |
+| `os-totebox` | Archivo de datos por entidad | Apache 2.0 (previsto como gratuito) |
+| `os-orchestration` | Agregador de flota | Propietario (previsto como producto comercial) |
 
-Se planifican instancias adicionales por proyecto a medida que los clústeres restantes completen las patas de su tétrada.
+La línea comercial se traza en el agregador. La Consola y el Totebox están previstos como libres y libremente transferibles. El agregador de Orquestación es el producto de pago — un operador individual que gestiona una sola entidad nunca lo necesita.
 
-## CommandCentre
+## Cómo funciona la agregación
 
-`app-orchestration-command` — denominado CommandCentre — es la aplicación agregadora concentradora prevista que se ejecutará en la instancia de orquestación de Comando. Está planificada para exponer:
+`os-orchestration` se conecta a los Toteboxes a través del Protocolo PointSav (PSP) — un protocolo binario basado en capacidades que tuneliza a través de TLS estándar en el borde. Dentro del túnel:
 
-- `GET /archives` — salud y estado de la tétrada de todos los archivos Totebox emparejados
-- `POST /message` — acepta un mensaje de coordinación entre archivos, valida el alcance del solicitante (la defensa contra el adjunto confuso) y enruta al archivo objetivo
-- `GET /personnel/<user>` — devuelve el nivel de permiso y el conjunto de emparejamientos de un colaborador
+1. El agregador envía un objeto de capacidad firmado que concede permiso para leer una fila específica de un Totebox específico durante una ventana de tiempo fija.
+2. El Totebox verifica la capacidad, ejecuta la consulta internamente y emite solo el resultado — nunca el registro sin procesar.
+3. El agregador combina resultados de muchos Toteboxes en una vista única unificada.
 
-CommandCentre es la implementación prevista del concentrador de Comando. El clúster (`project-command`) está provisionado; la aplicación está pendiente de implementación.
+El pipeline de promesas y la asignación de memoria de copia cero hacen que la experiencia se sienta local incluso cuando los Toteboxes están distribuidos en múltiples regiones.
 
-## Relación con os-mediakit
+## Las funciones comerciales
 
-La orquestación y os-mediakit se ejecutan en nodos físicos separados por diseño. El nodo de orquestación gestiona el desarrollo, el staging y todo el trabajo de archivo. El nodo os-mediakit gestiona la entrega de sitios web públicos. Se comunican a través de un puente rsync con compuerta humana — una compuerta de despliegue deliberada coherente con `SYS-ADR-19` (sin publicación automatizada de IA a libros mayores verificados).
+Tres capacidades están reservadas exclusivamente a `os-orchestration`:
 
-## Coordinación entre archivos
+| Función | Qué permite |
+|---|---|
+| Agregación | Leer metadatos de múltiples Toteboxes simultáneamente |
+| Multi-tenancy | Servir a múltiples operadores contra la misma flota subyacente |
+| Vistas complejas | Paneles entre archivos — resúmenes de portafolio, conciliación entre entidades, resúmenes ejecutivos |
 
-Las instancias de orquestación por proyecto no se conectan directamente entre sí. Cuando `project-bim` necesita información de `project-editorial`, envía un mensaje al Comando. El Comando, emparejado con ambos, recupera los datos y los devuelve, o reenvía el mensaje. No se crea ninguna conexión lateral. La topología no cambia. PairingAsPermission se preserva.
+Estas funciones están intencionalmente ausentes del código base abierto de `os-console`. Viven en el código base de `os-orchestration` y en ningún otro lugar.
 
-El patrón — procesos aislados más un concentrador de paso de mensajes — implica que una instancia por proyecto comprometida no puede alcanzar archivos hermanos. La conexión literalmente no existe. Véase [[pairing-as-permission]] para la base formal de seguridad.
+## La disciplina Diodo
+
+`os-orchestration` puede emitir comandos a los Toteboxes que gestiona. Los Toteboxes no pueden emitir comandos de vuelta. El agregador es él mismo un sujeto Diodo: recibe comandos solo de `os-console`, nunca de un Totebox. Esto hace que el movimiento lateral sea estructuralmente imposible — un Totebox comprometido no puede usar el agregador como puente hacia la Consola del operador.
+
+## Cuándo desplegarlo
+
+`os-orchestration` es un producto comercial para operadores multi-entidad. Los operadores de entidad única que gestionan un Totebox no lo necesitan. Los operadores multi-entidad — portafolios inmobiliarios, empresas públicas con subsidiarias, oficinas familiares con múltiples tenencias — lo despliegan cuando la carga cognitiva de ejecutar Consolas separadas contra Toteboxes individuales justifica el agregador.
 
 ## Véase también
 
-- [[totebox-orchestration-development]]
-- [[pairing-as-permission]]
-- [[totebox-session]]
-- [[doorman-protocol]]
-
-## Referencias
-
-- **`DOCTRINE.md`** — carta constitucional de Foundry; topología de orquestación Totebox.
-- **`MANIFEST.md`** — pasaporte del espacio de trabajo; declaración de identidad de la instancia de Comando.
+- [[console-os]] — la distinción entre modo Directo y modo Agregado; os-console se empareja con os-orchestration en modo Agregado
+- [[totebox-os]] — los archivos que se están agregando
+- [[diode-standard]] — la disciplina de comandos unidireccional que rige el agregador
+- [[machine-based-auth]] — cómo los emparejamientos aseguran las conexiones del agregador con los Toteboxes
+- [[deployment-patterns]] — cómo os-orchestration aparece en las configuraciones de despliegue comerciales
+- [[os-family-overview]] — la familia de ocho SO y cómo encaja os-orchestration

@@ -1,68 +1,74 @@
 ---
 schema: foundry-doc-v1
-title: "Orchestration OS"
+title: "os-orchestration — The Fleet Aggregator"
 slug: os-orchestration
 category: systems
-type: os
+type: concept
 quality: complete
-short_description: "Orchestration OS is the operating-system layer that manages a Totebox Archive cluster — aggregating archives, exposing a unified interface for operators, and routing AI session coordination messages between archives."
 status: active
-bcsc_class: forward-looking
-last_edited: 2026-05-08
+audience: vendor-public
+bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
+last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: os-orchestration.es.md
+short_description: "os-orchestration is the commercial-tier operating system that lets a single operator see, query, and command many Totebox archives at once — the Fleet Aggregator for multi-entity portfolios and enterprise deployments."
+cites: []
 ---
 
-OrchestrationOS (`os-orchestration`) is the operating-system layer that manages a Totebox Archive cluster. It aggregates the archives it oversees, exposes a unified interface for operators and other orchestration nodes, and routes AI session coordination messages between archives. Three per-project instances are operationally live in the workspace today; the planned `app-orchestration-command` aggregator that exposes the unified interface is the next implementation milestone.
+`os-orchestration` is the commercial-tier operating system that lets a single operator see, query, and command many Totebox archives at once. Where `os-console` connects to one `os-totebox`, `os-orchestration` is the hub between an operator's Console and a fleet of Toteboxes. It is what an executive views when they want the position of every property in a portfolio, every entity in a holding company, or every project in a development pipeline — a single unified answer to "what is the state of the entire estate, right now?" This article covers what `os-orchestration` does, what it deliberately does not do, how aggregation works, the commercial features it adds, and when to deploy it.
 
-This article describes the two roles an orchestration instance can occupy, the live per-project instances, and how cross-archive coordination preserves the [[pairing-as-permission]] invariant.
+## What it does not do
 
-## Roles
+`os-orchestration` does not store raw records. It is stateless. It pulls metadata from Toteboxes, synthesises a unified view, and presents it through `os-console`. Raw data never leaves its sovereign Totebox. The aggregator sees only what the Totebox is permitted to expose.
 
-**Command** — A single Command instance is paired to every Totebox Archive, both os-mediakit nodes, and both os-privategit nodes. The Command is the hub of the Totebox Orchestration topology. It is the only node with full cross-archive visibility; its pairing list is the operational topology record.
+This boundary is structurally important: even if `os-orchestration` is compromised, the underlying Toteboxes remain sealed. The aggregator holds no keys to the archives.
 
-**Per-project instances** — Each active project cluster runs its own orchestration instance scoped to that cluster's archives. A per-project instance is paired to its own archives only. It has no pairing with the Command (communication flows by message, not direct connection) and no pairing with sibling per-project instances.
+## Where it sits in the product line
 
-## Live per-project instances
-
-The following per-project orchestration instances are currently live in the Foundry workspace:
-
-| Instance | Cluster | Scope |
+| Component | Role | Licence model (planned) |
 |---|---|---|
-| `gateway-orch-bim-1` | `project-bim` | Building-information archives |
-| `gateway-orch-gis-1` | `project-gis` | Geographic-information archives |
-| `gateway-orch-proofreader` | `project-proofreader` | Proofreader application archives |
+| `os-console` | Operator-facing terminal | Apache 2.0 (intended to be free) |
+| `os-totebox` | Data archive per entity | Apache 2.0 (intended to be free) |
+| `os-orchestration` | Fleet aggregator | Proprietary (intended as a commercial product) |
 
-Additional per-project instances are planned as remaining clusters complete their tetrad legs.
+The commercial line is drawn at the aggregator. The Console and the Totebox are intended to be free and freely transferable. The Orchestration aggregator is the paid product — an individual operator managing one entity never needs it.
 
-## CommandCentre
+## How aggregation works
 
-`app-orchestration-command` — referred to as CommandCentre — is the intended hub aggregator application running on the Command orchestration instance. It is planned to expose:
+`os-orchestration` connects to Toteboxes through the PointSav Protocol (PSP) — a capability-based binary protocol that tunnels through standard TLS at the edge. Inside the tunnel:
 
-- `GET /archives` — health and tetrad status of all paired Totebox Archives
-- `POST /message` — accepts a cross-archive coordination message, validates per-caller scope (the confused-deputy defence), and routes to the target archive
-- `GET /personnel/<user>` — returns a contributor's permission tier and pairing set
+1. The aggregator sends a signed capability object granting permission to read a specific row of a specific Totebox for a fixed time window.
+2. The Totebox verifies the capability, runs the query internally, and emits only the result — never the raw record.
+3. The aggregator combines results from many Toteboxes into a single unified view.
 
-CommandCentre is the intended implementation of the Command hub. The cluster (`project-command`) is provisioned; the application is pending implementation.
+Promise pipelining and zero-copy memory mapping make the experience feel local even when Toteboxes are distributed across multiple regions.
 
-## Relationship to os-mediakit
+## The commercial features
 
-Orchestration and os-mediakit run on separate physical nodes by design. The orchestration node handles development, staging, and all archive work. The os-mediakit node handles public website delivery. They communicate through a human-gated rsync bridge — a deliberate deployment gate consistent with `SYS-ADR-19` (no automated AI publishing to verified ledgers).
+Three capabilities are reserved exclusively to `os-orchestration`:
 
-## Cross-archive coordination
+| Feature | What it enables |
+|---|---|
+| Aggregation | Reading metadata from multiple Toteboxes simultaneously |
+| Multi-tenancy | Serving multiple operators against the same underlying fleet |
+| Complex viewports | Cross-archive dashboards — portfolio rollups, cross-entity reconciliation, executive summaries |
 
-Per-project orchestration instances do not connect to each other directly. When `project-bim` needs information from `project-editorial`, it sends a message to the Command. The Command, paired to both, fetches the data and returns it, or routes the message onward. No lateral connection is created. The topology does not change. PairingAsPermission is preserved.
+These features are intentionally absent from the open `os-console` codebase. They live in the `os-orchestration` codebase and nowhere else.
 
-The pattern — isolated processes plus a message-passing hub — means a compromised per-project instance cannot reach sibling archives. The connection literally does not exist. See [[pairing-as-permission]] for the formal security basis.
+## The Diode discipline
+
+`os-orchestration` can issue commands downstream to the Toteboxes it manages. The Toteboxes cannot issue commands back up. The aggregator is itself a Diode subject: it receives commands only from `os-console`, never from a Totebox. This makes lateral movement structurally impossible — a compromised Totebox cannot use the aggregator as a bridge to the operator's Console.
+
+## When to deploy
+
+`os-orchestration` is a commercial product for multi-entity operators. Single-entity operators managing one Totebox do not need it. Multi-entity operators — real-estate portfolios, public companies with subsidiaries, family offices with multiple holdings — deploy it when the cognitive load of running separate Consoles against individual Toteboxes justifies the aggregator.
 
 ## See also
 
-- [[totebox-orchestration-development]]
-- [[pairing-as-permission]]
-- [[totebox-session]]
-- [[doorman-protocol]]
-
-## References
-
-- **`DOCTRINE.md`** — Foundry constitutional charter; Totebox Orchestration topology.
-- **`MANIFEST.md`** — workspace passport; Command instance identity declaration.
+- [[console-os]] — the Direct vs. Aggregate mode distinction; os-console pairs with os-orchestration in Aggregate mode
+- [[totebox-os]] — the archives being aggregated
+- [[diode-standard]] — the unidirectional command discipline that governs the aggregator
+- [[machine-based-auth]] — how pairings secure aggregator-to-Totebox connections
+- [[deployment-patterns]] — how os-orchestration appears in commercial deployment configurations
+- [[os-family-overview]] — the eight-OS family and how os-orchestration fits
