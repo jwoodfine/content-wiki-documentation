@@ -33,7 +33,7 @@ The three layers map directly to the operational concerns of a regulated SMB dep
 
 - [[compounding-substrate]]
 - [[capability-based-security]]
-- [[sel4-foundation]]
+- [[sel4-microkernel-substrate]]
 - [[sovereign-ai-routing]]
 - [[worm-ledger-architecture]]
 

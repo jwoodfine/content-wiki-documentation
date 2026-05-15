@@ -61,7 +61,7 @@ The cryptographic ledger applies across all customer-facing data in the platform
 - [[crypto-attestation]]
 - [[capability-based-security]]
 - [[compounding-substrate]]
-- [[sel4-foundation]]
+- [[sel4-microkernel-substrate]]
 
 ## References
 

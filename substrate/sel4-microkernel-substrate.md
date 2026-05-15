@@ -48,6 +48,8 @@ The principle is to use seL4 as a raw material — like structural steel — and
 
 The boundary between L2 (kernel-adjacent) and L3 (PointSav-owned) is the line PointSav draws around its proprietary value. Everything below is adopted commodity; everything above is owned.
 
+When the target hardware does not support native seL4 boot, a Linux or BSD guest VM inside a seL4-based hypervisor provides equivalent structural isolation around the guest OS. The hypervisor layer supplies formally-verified containment even when the guest itself is a conventional operating system.
+
 ## What seL4 provides
 
 | Property | What it means in practice |

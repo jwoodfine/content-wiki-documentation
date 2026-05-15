@@ -52,7 +52,7 @@ The capability model applies across the full PointSav deployment stack:
 
 ## See Also
 
-- [[sel4-foundation]]
+- [[sel4-microkernel-substrate]]
 - [[worm-ledger-architecture]]
 - [[3-layer-stack]]
 - [[machine-based-auth]]

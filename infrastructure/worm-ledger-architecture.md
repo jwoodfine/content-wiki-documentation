@@ -52,4 +52,4 @@ Foundry’s implementation is unique in its dual-target Rust strategy, allowing 
 - [[worm-ledger-design]]
 - [[worm-ledger-storage-architecture]]
 - [[cryptographic-ledgers]]
-- [[sel4-foundation]]
+- [[sel4-microkernel-substrate]]

@@ -48,6 +48,8 @@ El principio es usar seL4 como materia prima — como el acero estructural — y
 
 El límite entre L2 (adyacente al núcleo) y L3 (propiedad de PointSav) es la línea que PointSav traza alrededor de su valor propietario. Todo lo que está por debajo es una materia prima adoptada; todo lo que está por encima es propiedad.
 
+Cuando el hardware de destino no admite el arranque nativo de seL4, una máquina virtual invitada Linux o BSD dentro de un hipervisor basado en seL4 proporciona un aislamiento estructural equivalente alrededor del SO invitado. La capa del hipervisor ofrece contención formalmente verificada incluso cuando el invitado en sí es un sistema operativo convencional.
+
 ## Qué proporciona seL4
 
 | Propiedad | Qué significa en la práctica |

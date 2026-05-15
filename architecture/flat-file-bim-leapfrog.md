@@ -88,5 +88,5 @@ These are deliberate trade-offs for the offline-first, vendor-obsolescence-survi
 
 - [[worm-ledger-design]]
 - [[service-fs-architecture]]
-- [[sel4-foundation]]
+- [[sel4-microkernel-substrate]]
 - [[sovereign-ai-routing]]

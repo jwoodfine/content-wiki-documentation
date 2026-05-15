@@ -34,4 +34,4 @@ This "Leapfrog 2030" standard ensures that Foundry interfaces are accessible, se
 - [[sovereign-ai-routing]]
 - [[machine-based-auth]]
 - [[decode-time-constraints]]
-- [[sel4-foundation]]
+- [[sel4-microkernel-substrate]]

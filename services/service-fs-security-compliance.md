@@ -49,4 +49,4 @@ Foundry’s posture is intended to defend against high-level institutional risks
 - [[service-fs-architecture]]
 - [[capability-based-security]]
 - [[machine-based-auth]]
-- [[sel4-foundation]]
+- [[sel4-microkernel-substrate]]
