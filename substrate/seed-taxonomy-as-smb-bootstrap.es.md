@@ -5,7 +5,7 @@ slug: seed-taxonomy-as-smb-bootstrap.es
 category: substrate
 type: topic
 quality: complete
-short_description: "Cada despliegue de inquilino Foundry provisiona una taxonomía semilla de cuatro partes — Arquetipos, Plan de Cuentas, Dominios, Temas — como el arranque del grafo de conocimiento."
+short_description: "Cada despliegue de inquilino provisiona una taxonomía semilla de cuatro partes — Arquetipos, Plan de Cuentas, Dominios, Temas — como el arranque del grafo de conocimiento."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
@@ -15,11 +15,11 @@ paired_with: seed-taxonomy-as-smb-bootstrap.md
 ---
 
 
-Cada despliegue de inquilino Foundry comienza con una **taxonomía semilla**: una estructura compacta, ajustable manualmente y de cuatro partes que forma el andamiaje inicial del grafo de conocimiento por inquilino. Las cuatro partes son Arquetipos, Plan de Cuentas, Dominios y Temas. Cada entidad lleva palabras clave de gravedad — anclajes de palabras clave explicables que impulsan la clasificación del contenido entrante. Este patrón codifica la reclamación doctrinal #47.
+Cada despliegue de inquilino comienza con una **taxonomía semilla**: una estructura compacta, ajustable manualmente y de cuatro partes que forma el andamiaje inicial del grafo de conocimiento por inquilino. Las cuatro partes son Arquetipos, Plan de Cuentas, Dominios y Temas. Cada entidad lleva palabras clave de gravedad — anclajes de palabras clave explicables que impulsan la clasificación del contenido entrante.
 
 ## Las cuatro partes
 
-**Arquetipos — quién actúa.** Cinco a siete identidades de rol por patrón cognitivo. El valor predeterminado de Foundry lleva cinco roles universales que aparecen en alguna forma en cualquier negocio: el Ejecutivo (Dirección Estratégica), el Guardián (Riesgo y Cumplimiento), el Fiduciario (Integridad de Recursos), el Arquitecto (Diseño del Sistema) y el Constructor (Realización Física). Los roles específicos de la industria se añaden a través de los Paquetes de Semilla Vertical.
+**Arquetipos — quién actúa.** Cinco a siete identidades de rol por patrón cognitivo. El valor predeterminado lleva cinco roles universales que aparecen en alguna forma en cualquier negocio: el Ejecutivo (Dirección Estratégica), el Guardián (Riesgo y Cumplimiento), el Fiduciario (Integridad de Recursos), el Arquitecto (Diseño del Sistema) y el Constructor (Realización Física). Los roles específicos de la industria se añaden a través de los Paquetes de Semilla Vertical.
 
 **Plan de Cuentas — qué negocio es este.** Cinco a diez perfiles de negocio específicos de la industria, cada uno con un identificador, un nombre de perfil, un subdominio y palabras clave de gravedad. Los perfiles reflejan las categorías reales de ingresos y gastos del negocio.
 
@@ -35,7 +35,7 @@ La clasificación del nuevo contenido usa coincidencia de palabras clave en luga
 
 Las plataformas de software empresariales tienden a optimizar sus ontologías para la exhaustividad en todos los clientes posibles. Cualquier cliente específico enfrenta una jerarquía extensa y normalmente necesita personal especializado para configurarla.
 
-La taxonomía semilla de Foundry optimiza para la acción de un cliente específico. Toda la taxonomía está prevista para ser legible y comprensible por los propios operadores del cliente en una sesión única. La contrapartida es que la taxonomía no se transfiere sin cambios entre clientes — cada paquete vertical es específico de la industria. El beneficio es que el cliente puede operar la taxonomía por sí mismo sin contratar especialistas en ontología.
+La taxonomía semilla optimiza para la acción de un cliente específico. Toda la taxonomía está prevista para ser legible y comprensible por los propios operadores del cliente en una sesión única. La contrapartida es que la taxonomía no se transfiere sin cambios entre clientes — cada paquete vertical es específico de la industria. El beneficio es que el cliente puede operar la taxonomía por sí mismo sin contratar especialistas en ontología.
 
 ## Relación con el grafo de conocimiento
 

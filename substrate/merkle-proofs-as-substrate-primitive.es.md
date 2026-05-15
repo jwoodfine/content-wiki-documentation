@@ -15,7 +15,7 @@ cites:
  - doctrine-claim-34
 ---
 
-`system-core` incluye dos primitivas de prueba Merkle según RFC 9162 — pruebas de inclusión y pruebas de consistencia — como piso criptográfico del Sustrato del Libro de Capacidades (afirmación doctrinal #33). Junto con el formato de checkpoint firmado C2SP, validan la escritura en el libro y hacen auditable el estado de capacidades sin exigir buena conducta al consumidor.
+`system-core` incluye dos primitivas de prueba Merkle según RFC 9162 — pruebas de inclusión y pruebas de consistencia — como piso criptográfico del Sustrato del Libro de Capacidades. Junto con el formato de checkpoint firmado C2SP, validan la escritura en el libro y hacen auditable el estado de capacidades sin exigir buena conducta al consumidor.
 
 ## Qué son las pruebas de Merkle
 
@@ -39,7 +39,7 @@ La estructura `ConsistencyProof` y su método `verify` inicializan ambos acumula
 
 ## Por qué importa como primitiva de sustrato
 
-El Sustrato del Libro de Capacidades (afirmación #33) exige un registro Merkle con raíz en el cliente para que el estado de capacidades sea auditable. El Sustrato de Dos Bases Soberanas (afirmación #34) exige que un despliegue como artefacto criptográfico sea heredable entre sustratos nativos (seL4) y compatibles (NetBSD). Las pruebas de inclusión y consistencia hacen posibles ambas propiedades sin exigir buena conducta al consumidor.
+El Sustrato del Libro de Capacidades exige un registro Merkle con raíz en el cliente para que el estado de capacidades sea auditable. El Sustrato de Dos Bases Soberanas exige que un despliegue como artefacto criptográfico sea heredable entre sustratos nativos (seL4) y compatibles (NetBSD). Las pruebas de inclusión y consistencia hacen posibles ambas propiedades sin exigir buena conducta al consumidor.
 
 ## Véase también
 
@@ -50,5 +50,5 @@ El Sustrato del Libro de Capacidades (afirmación #33) exige un registro Merkle 
 ## Referencias
 
 - **RFC 9162** — Certificate Transparency Version 2.0. IETF, 2021. https://datatracker.ietf.org/doc/html/rfc9162
-- **Afirmación doctrinal #33** — El Sustrato del Libro de Capacidades. Foundry DOCTRINE.md v0.1.0.
-- **Afirmación doctrinal #34** — El Sustrato de Dos Bases Soberanas. Foundry DOCTRINE.md v0.1.0.
+- **El Sustrato del Libro de Capacidades** — fundamento criptográfico del registro de capacidades.
+- **El Sustrato de Dos Bases Soberanas** — compatibilidad entre sustratos seL4 y NetBSD.

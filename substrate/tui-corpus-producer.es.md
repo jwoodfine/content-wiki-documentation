@@ -22,7 +22,7 @@ paired_with: tui-corpus-producer.md
 ---
 
 
-El patrón **TUI como Productora de Corpus** designa la interfaz de terminal del operador (`slm-cli`) como fuente primaria de datos de entrenamiento de alta calidad para el adaptador del modelo por inquilino. Cada interacción con el Portero a través de esta interfaz es una contribución curada al corpus. Este patrón codifica la reclamación doctrinal #45.
+El patrón **TUI como Productora de Corpus** designa la interfaz de terminal del operador (`slm-cli`) como fuente primaria de datos de entrenamiento de alta calidad para el adaptador del modelo por inquilino. Cada interacción con el Portero a través de esta interfaz es una contribución curada al corpus.
 
 ## Por qué las interacciones de terminal producen datos de alta calidad
 
@@ -40,7 +40,7 @@ Después de cada respuesta del asistente en la TUI, el operador recibe tres opci
 
 ## Propiedad del adaptador por inquilino
 
-El corpus producido por los operadores de un cliente entrena el adaptador de ese cliente, no un adaptador general. Por la convención [[customer-owned-graph-ip]], los pesos del adaptador entrenado son propiedad del cliente. Foundry distribuye la arquitectura del modelo y el pipeline de entrenamiento; el cliente retiene el adaptador resultante.
+El corpus producido por los operadores de un cliente entrena el adaptador de ese cliente, no un adaptador general. Por la convención [[customer-owned-graph-ip]], los pesos del adaptador entrenado son propiedad del cliente. La plataforma distribuye la arquitectura del modelo y el pipeline de entrenamiento; el cliente retiene el adaptador resultante.
 
 ## Disciplina de captura de veredicto
 

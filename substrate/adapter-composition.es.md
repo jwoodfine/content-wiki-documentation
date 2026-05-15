@@ -36,11 +36,11 @@ Donde `?` denota un adaptador opcional cargado solo cuando aplica el contexto de
 
 ## Tipología de adaptadores
 
-El adaptador constitucional es universal y lo carga cada despliegue de Foundry. El adaptador de inquilino es estrictamente por inquilino, se produce y se mantiene dentro del Totebox del Cliente, y nunca sale del almacenamiento del cliente. El adaptador de ingeniería se publica con el conocimiento común (Apache 2.0) y no es propiedad intelectual privada del proveedor.
+El adaptador constitucional es universal y lo carga cada despliegue de la plataforma. El adaptador de inquilino es estrictamente por inquilino, se produce y se mantiene dentro del Totebox del Cliente, y nunca sale del almacenamiento del cliente. El adaptador de ingeniería se publica con el conocimiento común (Apache 2.0) y no es propiedad intelectual privada del proveedor.
 
 ## La metáfora del SO de la IA
 
-| Concepto del SO | Concepto de IA | Artefacto de Foundry |
+| Concepto del SO | Concepto de IA | Artefacto de la plataforma |
 |---|---|---|
 | Firmware | Modelo base preentrenado | OLMo 3 7B / 32B GGUF |
 | Kernel | Enrutador de solicitudes | Doorman (`service-slm`) |

@@ -73,8 +73,7 @@ son aditivas y no modifican el núcleo del sustrato.
 
 ## Sustitución de sustrato aplicada a plataformas de divulgación
 
-Conforme a la Reclamación Doctrinal #29 (Sustitución de Sustrato), la
-wiki reemplaza la función de registro primario que convencionalmente ocupa
+La wiki reemplaza la función de registro primario que convencionalmente ocupa
 una plataforma de relaciones con inversionistas operada por un tercero.
 La razón es estructural: la Ley CLOUD `[cloud-act-us]` de Estados Unidos
 extiende la autoridad extraterritorial de acceso a datos sobre
@@ -99,7 +98,7 @@ es el artefacto: el historial de confirmaciones firmadas, la trazabilidad
 de citas en el frontmatter de cada artículo, los tokens de marca de tiempo
 en cada MINOR del Doctrinario, las entradas de CHANGELOG aptas para
 revisión legal. Un regulador o auditor que revise el corpus puede
-reconstruir qué sabía Foundry, cuándo y cómo actuó al respecto, sin
+reconstruir qué sabía la plataforma, cuándo y cómo actuó al respecto, sin
 instantáneas (*snapshots*) ni declaraciones de cumplimiento periódicas.
 
 Para una descripción completa de la arquitectura técnica, los adaptadores

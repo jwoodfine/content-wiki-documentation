@@ -5,7 +5,7 @@ slug: code-for-machines-first.es
 category: substrate
 type: topic
 quality: complete
-short_description: "Cada contrato entre servicios Foundry, registro de auditoría, configuración y ontología es legible por máquinas como superficie primaria; las interfaces para humanos son capas sobre APIs primero-para-máquinas."
+short_description: "Cada contrato entre servicios, registro de auditoría, configuración y ontología es legible por máquinas como superficie primaria; las interfaces para humanos son capas sobre APIs primero-para-máquinas."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
@@ -15,7 +15,7 @@ paired_with: code-for-machines-first.md
 ---
 
 
-**Código para Máquinas Primero** es la disciplina de diseño por la cual cada contrato entre servicios Foundry, registro de auditoría, archivo de configuración y ontología debe ser legible por máquinas como su superficie primaria. Las interfaces para el operador — la TUI de terminal, las interfaces web, los clientes móviles — son capas sobre APIs primero-para-máquinas. Esta disciplina codifica la reclamación doctrinal #51.
+**Código para Máquinas Primero** es la disciplina de diseño por la cual cada contrato entre servicios, registro de auditoría, archivo de configuración y ontología debe ser legible por máquinas como su superficie primaria. Las interfaces para el operador — la TUI de terminal, las interfaces web, los clientes móviles — son capas sobre APIs primero-para-máquinas.
 
 ## Los formatos de datos
 

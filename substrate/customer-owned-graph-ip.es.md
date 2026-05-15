@@ -15,21 +15,21 @@ paired_with: customer-owned-graph-ip.md
 ---
 
 
-La **Propiedad Intelectual del Grafo del Cliente** es el principio por el cual el grafo de conocimiento por inquilino mantenido en `service-content` es propiedad intelectual del cliente, no un subproducto del uso de la plataforma Foundry. Los adaptadores del modelo entrenados con el corpus de ese cliente también son propiedad del cliente. Este principio codifica la reclamación doctrinal #48.
+La **Propiedad Intelectual del Grafo del Cliente** es el principio por el cual el grafo de conocimiento por inquilino mantenido en `service-content` es propiedad intelectual del cliente, no un subproducto del uso de la plataforma. Los adaptadores del modelo entrenados con el corpus de ese cliente también son propiedad del cliente.
 
 ## Lo que significa la propiedad operacionalmente
 
-Cada nodo, arista, mutación y entrada del registro de auditoría con alcance en el identificador de módulo de un inquilino es propiedad de ese inquilino. Foundry no tiene derecho a agregar, revender ni usar los datos del grafo del inquilino fuera de los consentimientos explícitos por inquilino definidos en otras partes de la Doctrina.
+Cada nodo, arista, mutación y entrada del registro de auditoría con alcance en el identificador de módulo de un inquilino es propiedad de ese inquilino. La plataforma no tiene derecho a agregar, revender ni usar los datos del grafo del inquilino fuera de los consentimientos explícitos por inquilino definidos en la arquitectura de la plataforma.
 
-La propiedad conlleva cuatro propiedades operacionales: exportación en cualquier momento mediante un único comando que produce un paquete completo en formatos abiertos; sin bloqueo de formato (volcado Cypher para el grafo, JSONL para el registro de auditoría, formatos de tensor estándar para los pesos del adaptador); sin licencia agregada (Foundry no retiene derechos para usar los datos del cliente en el entrenamiento de modelos entre inquilinos sin consentimiento explícito); y transferencia de propiedad sin involucrar a Foundry.
+La propiedad conlleva cuatro propiedades operacionales: exportación en cualquier momento mediante un único comando que produce un paquete completo en formatos abiertos; sin bloqueo de formato (volcado Cypher para el grafo, JSONL para el registro de auditoría, formatos de tensor estándar para los pesos del adaptador); sin licencia agregada (la plataforma no retiene derechos para usar los datos del cliente en el entrenamiento de modelos entre inquilinos sin consentimiento explícito); y transferencia de propiedad sin involucrar al proveedor.
 
 ## Por qué esto invierte el patrón SaaS
 
 La mayoría de las plataformas de software empresariales moldean los datos del cliente según la ontología del proveedor. Cuando un cliente intenta salir, los datos deben re-moldearse para adaptarse al sistema de destino — un proyecto de migración que típicamente requiere cooperación del proveedor y personal especializado.
 
-El enfoque de Foundry invierte esto. Los datos del cliente son moldeados por su propia taxonomía semilla. La exportación es una operación de un solo comando que produce un paquete en formato abierto. El acceso del cliente a sus datos no depende de que los servidores de Foundry permanezcan operativos.
+El enfoque de la plataforma invierte esto. Los datos del cliente son moldeados por su propia taxonomía semilla. La exportación es una operación de un solo comando que produce un paquete en formato abierto. El acceso del cliente a sus datos no depende de que los servidores de la plataforma permanezcan operativos.
 
-El complemento económico es el modelo de comisión por transacción: el cliente paga a Foundry una comisión solo cuando gana de sus datos, no una suscripción recurrente por acceso a sus propios registros.
+El complemento económico es el modelo de comisión por transacción: el cliente paga una comisión a la plataforma solo cuando gana de sus datos, no una suscripción recurrente por acceso a sus propios registros.
 
 ## Aislamiento por inquilino
 

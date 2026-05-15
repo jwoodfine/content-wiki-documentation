@@ -5,7 +5,7 @@ slug: mcp-substrate-protocol.es
 category: substrate
 type: topic
 quality: complete
-short_description: "Cada servicio Foundry del Anillo 1 y Anillo 2 expone una interfaz de servidor MCP como su contrato externo primario, con el Portero actuando como la puerta de enlace MCP."
+short_description: "Cada servicio del Anillo 1 y Anillo 2 expone una interfaz de servidor MCP como su contrato externo primario, con el Portero actuando como la puerta de enlace MCP."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-15
@@ -19,17 +19,17 @@ paired_with: mcp-substrate-protocol.md
 ---
 
 
-**MCP como Protocolo Substrato** designa el Protocolo de Contexto de Modelo (MCP) como el contrato de cable para toda la composición de servicios en la plataforma Foundry. Cada servicio del Anillo 1 y Anillo 2 expone una interfaz de servidor MCP como su contrato externo primario. El Portero (`service-slm`) es la puerta de enlace MCP. Las extensiones del cliente se conectan como servidores MCP adicionales. Esta decisión es estructural y está codificada en la reclamación doctrinal #46.
+**MCP como Protocolo Substrato** designa el Protocolo de Contexto de Modelo (MCP) como el contrato de cable para toda la composición de servicios en la plataforma. Cada servicio del Anillo 1 y Anillo 2 expone una interfaz de servidor MCP como su contrato externo primario. El Portero (`service-slm`) es la puerta de enlace MCP. Las extensiones del cliente se conectan como servidores MCP adicionales. Esta decisión es estructural.
 
 ## Por qué MCP es a nivel de substrato
 
-El Protocolo de Contexto de Modelo se ha convertido en el estándar de la industria para la composición de aplicaciones nativas de IA. Define una interfaz estable y legible por máquinas entre clientes, servidores y procesos anfitriones. [^1] Foundry lo adopta a nivel de substrato porque la alternativa — formatos de cable personalizados por servicio — acumula deuda de versionado, costos de prueba por par de contratos e implementaciones de clientes personalizados en cada consumidor.
+El Protocolo de Contexto de Modelo se ha convertido en el estándar de la industria para la composición de aplicaciones nativas de IA. Define una interfaz estable y legible por máquinas entre clientes, servidores y procesos anfitriones. [^1] La plataforma lo adopta a nivel de substrato porque la alternativa — formatos de cable personalizados por servicio — acumula deuda de versionado, costos de prueba por par de contratos e implementaciones de clientes personalizados en cada consumidor.
 
-El resultado práctico: un agente construido por el cliente, una extensión de IDE y la TUI del operador de Foundry interactúan con las mismas interfaces de servicio usando el mismo protocolo. No existe una "API para desarrolladores" distinta de la "API para usuarios." El contrato de cable está unificado.
+El resultado práctico: un agente construido por el cliente, una extensión de IDE y la TUI del operador interactúan con las mismas interfaces de servicio usando el mismo protocolo. No existe una "API para desarrolladores" distinta de la "API para usuarios." El contrato de cable está unificado.
 
 ## Cómo la arquitectura de tres anillos se mapea a los roles MCP
 
-MCP define tres roles. La arquitectura de Foundry se mapea directamente sobre ellos: **Servidor MCP** — cada servicio del Anillo 1 y Anillo 2; **Cliente MCP** — el Portero (consumiendo servicios de los Anillos 1 y 2 como herramientas), la TUI del operador, agentes construidos por el cliente, extensiones de IDE; **Anfitrión MCP** — el Portero para flujos de inferencia, la TUI para flujos del operador.
+MCP define tres roles. La arquitectura de la plataforma se mapea directamente sobre ellos: **Servidor MCP** — cada servicio del Anillo 1 y Anillo 2; **Cliente MCP** — el Portero (consumiendo servicios de los Anillos 1 y 2 como herramientas), la TUI del operador, agentes construidos por el cliente, extensiones de IDE; **Anfitrión MCP** — el Portero para flujos de inferencia, la TUI para flujos del operador.
 
 El Portero es tanto Cliente MCP (llamando a `service-content` para la fundamentación del grafo) como Anfitrión MCP (presentando la interfaz de inferencia unificada a los llamadores externos). Esta dualidad es deliberada: el mismo proceso que custodia las credenciales de inferencia también media la composición de herramientas.
 

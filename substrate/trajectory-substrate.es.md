@@ -19,7 +19,7 @@ cites:
  - olmo3-allenai
 ---
 
-Cada confirmación de código que realiza Foundry, cada sesión que
+Cada confirmación de código que realiza la plataforma, cada sesión que
 ejecuta un agente de trabajo, cada vez que un operador señala una
 sugerencia incorrecta — todas estas interacciones se convierten en
 señal de entrenamiento. El Sustrato de Trayectoria es el mecanismo
@@ -57,7 +57,7 @@ produciendo una familia de adaptadores distinta:
 **Corpus constitucional** — cláusulas doctrinales cruzadas con roles
 y alcances. Produce el adaptador constitucional; se retrae con cada
 versión menor de la Doctrina. Universal: se carga en cada despliegue
-de Foundry. La base conceptual es la IA constitucional
+de la plataforma. La base conceptual es la IA constitucional
 `[constitutional-ai-2212-08073]`.
 
 **Corpus de ingeniería (lado proveedor)** — trayectorias de sesiones
@@ -115,7 +115,7 @@ de adaptador elimina el alquiler de cómputo que es su línea de
 ingresos.
 
 **3. No pueden ofrecer una auditoría firmada y re-derivable.** Cada
-adaptador de Foundry es una función determinista de sus registros
+adaptador de la plataforma es una función determinista de sus registros
 fuente. Un proveedor gestionado cuyo entrenamiento es opaco al cliente
 no puede ofrecer trazabilidad equivalente sin exponer la naturaleza
 agregada de su señal de entrenamiento.
@@ -146,5 +146,3 @@ señal se está acumulando.
 - [El Sustrato de Composición](topic-compounding-substrate.es.md)
 - [El Sustrato de Aprendizaje](topic-apprenticeship-substrate.es.md)
 - [Restricciones en Tiempo de Decodificación](topic-decode-time-constraints.es.md)
-- La convención que sustenta este artículo:
- `~/Foundry/conventions/trajectory-substrate.md`

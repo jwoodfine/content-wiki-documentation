@@ -87,7 +87,7 @@ Defensa: los archivos por proyecto operan plenamente sin el Comando — sirven r
 **Riesgo 3 — Multitenencia en nodos físicos compartidos (medio)**
 Cuando múltiples proyectos lógicos comparten un único nodo de archivo Totebox, el Comando posee capacidades de múltiples inquilinos. Si el Comando usa el token de capacidad incorrecto para una solicitud, los datos de un inquilino quedan accesibles bajo el alcance de otro inquilino.
 
-Defensa: atenuación de capacidades mediante identificadores de módulo separados. El Comando posee tokens `X-Foundry-Module-ID` distintos por inquilino. El archivo compartido aplica las particiones por identificador. La pasarela de control de acceso `service-slm` ya implementa este patrón — el Comando debe pasar el identificador de módulo correcto del archivo solicitante en cada llamada, nunca el suyo propio.
+Defensa: atenuación de capacidades mediante identificadores de módulo separados. El Comando posee tokens `X-Module-ID` distintos por inquilino. El archivo compartido aplica las particiones por identificador. La pasarela de control de acceso `service-slm` ya implementa este patrón — el Comando debe pasar el identificador de módulo correcto del archivo solicitante en cada llamada, nunca el suyo propio.
 
 ## Implementación
 

@@ -52,7 +52,7 @@ El Doorman enruta las solicitudes entre tres capas:
 
 ## Trayectoria de preentrenamiento continuo (planificada)
 
-La trayectoria prevista para la plataforma contempla, a partir del segundo año, el inicio del preentrenamiento continuo del modelo base OLMo 3 7B sobre el corpus acumulado de Foundry, con el objetivo de producir PointSav-OLMo-N — un modelo derivado que incorpora los patrones de uso reales de los clientes. Esta trayectoria es una intención declarada y está sujeta a las condiciones técnicas y económicas del momento.
+La trayectoria prevista para la plataforma contempla, a partir del segundo año, el inicio del preentrenamiento continuo del modelo base OLMo 3 7B sobre el corpus acumulado de la plataforma, con el objetivo de producir PointSav-OLMo-N — un modelo derivado que incorpora los patrones de uso reales de los clientes. Esta trayectoria es una intención declarada y está sujeta a las condiciones técnicas y económicas del momento.
 
 ## Véase también
 

@@ -19,7 +19,7 @@ paired_with: knowledge-graph-grounded-apprenticeship.md
 ---
 
 
-El **Aprendizaje Fundamentado en Grafos de Conocimiento** es el patrón por el cual el Portero (`service-slm`) consulta el grafo de conocimiento por inquilino en `service-content` antes de despachar cualquier solicitud de inferencia sustantiva. El contexto de fundamentación — un subgrafo de entidades y relaciones relevantes para la consulta — se suministra al modelo junto con la solicitud. La tupla de entrenamiento resultante contiene tanto el contexto del grafo como la respuesta del modelo, lo que significa que el grafo de conocimiento y el adaptador por inquilino mejoran juntos con el tiempo. Esta reclamación codifica el punto doctrinal #44.
+El **Aprendizaje Fundamentado en Grafos de Conocimiento** es el patrón por el cual el Portero (`service-slm`) consulta el grafo de conocimiento por inquilino en `service-content` antes de despachar cualquier solicitud de inferencia sustantiva. El contexto de fundamentación — un subgrafo de entidades y relaciones relevantes para la consulta — se suministra al modelo junto con la solicitud. La tupla de entrenamiento resultante contiene tanto el contexto del grafo como la respuesta del modelo, lo que significa que el grafo de conocimiento y el adaptador por inquilino mejoran juntos con el tiempo.
 
 ## Fundamentación previa a la inferencia
 

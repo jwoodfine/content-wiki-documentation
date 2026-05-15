@@ -19,7 +19,7 @@ paired_with: substrate-without-inference-base-case.md
 ---
 
 
-El **Substrato sin Inferencia — El Caso Base** establece que el Archivo Totebox debe permanecer completamente operativo y transferible libremente incluso cuando `service-slm` no puede ejecutar ninguna inferencia. La inferencia de IA es un valor añadido. El substrato determinístico — el registro de archivos, el grafo de conocimiento, el pipeline de extracción y los servicios editoriales — es la base estructural. Esta distinción está codificada en la reclamación doctrinal #54.
+El **Substrato sin Inferencia — El Caso Base** establece que el Archivo Totebox debe permanecer completamente operativo y transferible libremente incluso cuando `service-slm` no puede ejecutar ninguna inferencia. La inferencia de IA es un valor añadido. El substrato determinístico — el registro de archivos, el grafo de conocimiento, el pipeline de extracción y los servicios editoriales — es la base estructural.
 
 ## Lo que requiere el caso base
 
@@ -39,7 +39,7 @@ La propiedad transferible libremente distingue un activo soberano de una suscrip
 
 Cuando se disuelve o divide un negocio, cada parte recibe su porción del grafo como un artefacto portátil firmado criptográficamente. En una adquisición corporativa, el sistema adquirente importa el paquete del Totebox y tiene el historial operativo con procedencia verificable disponible de inmediato.
 
-Si Foundry cesa sus operaciones, el cliente continúa operando su Totebox indefinidamente. El substrato determinístico funciona sin Foundry. El cliente pierde la capacidad de recibir nuevos paquetes verticales y de transaccionar en el mercado de Foundry, pero sus operaciones existentes no se detienen.
+Si la plataforma cesa sus operaciones, el cliente continúa operando su Totebox indefinidamente. El substrato determinístico funciona sin la plataforma. El cliente pierde la capacidad de recibir nuevos paquetes verticales y de transaccionar en el mercado de la plataforma, pero sus operaciones existentes no se detienen.
 
 ## Requisito de implementación
 

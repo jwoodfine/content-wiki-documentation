@@ -15,7 +15,7 @@ paired_with: tier-zero-customer-side-sovereign-specialist.md
 ---
 
 
-El **Especialista Soberano en el Lado del Cliente — Nivel 0** es el modelo de despliegue de referencia para Foundry: la pila de plataforma completa funcionando en el propio hardware del cliente, sin dependencia de nube requerida, sin conectividad a internet requerida, y con una huella de disco total de aproximadamente un gigabyte. Este patrón codifica la reclamación doctrinal #49.
+El **Especialista Soberano en el Lado del Cliente — Nivel 0** es el modelo de despliegue de referencia para la plataforma: la pila de plataforma completa funcionando en el propio hardware del cliente, sin dependencia de nube requerida, sin conectividad a internet requerida, y con una huella de disco total de aproximadamente un gigabyte.
 
 ## La unidad de referencia
 
@@ -37,7 +37,7 @@ No se requieren GPU, mantenimiento de controladores ni gestión térmica. El per
 
 ## Propiedades de soberanía
 
-El Totebox opera sin los servidores de Foundry, sin ninguna relación continua con los autores originales del modelo (los archivos GGUF existentes funcionan indefinidamente), sin claves de API externas (el Nivel C es opt-in y está desactivado por defecto), sin conectividad a internet y sin ninguna suscripción a la nube. El substrato funciona completamente sin conexión.
+El Totebox opera sin los servidores de la plataforma, sin ninguna relación continua con los autores originales del modelo (los archivos GGUF existentes funcionan indefinidamente), sin claves de API externas (el Nivel C es opt-in y está desactivado por defecto), sin conectividad a internet y sin ninguna suscripción a la nube. El substrato funciona completamente sin conexión.
 
 ## Niveles opcionales
 

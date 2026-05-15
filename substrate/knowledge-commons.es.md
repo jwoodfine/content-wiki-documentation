@@ -33,7 +33,7 @@ Cada versión MINOR produce un paquete firmado y versionado publicado en `points
 
 ## El umbral comercial
 
-Un solo Totebox con su propio despliegue de Foundry es infraestructura soberana. El Cliente posee el sustrato, los datos, el adaptador y el entorno de ejecución. Nada de un solo Totebox supera el umbral comercial. El umbral se supera cuando dos o más Archivos Totebox deben operar como uno: consultas consolidadas entre instancias regionales, federación con sistemas de socios, enrutamiento a capacidad LLM alojada, o participación en el mercado de adaptadores.
+Un solo Totebox con su propio despliegue de la plataforma es infraestructura soberana. El Cliente posee el sustrato, los datos, el adaptador y el entorno de ejecución. Nada de un solo Totebox supera el umbral comercial. El umbral se supera cuando dos o más Archivos Totebox deben operar como uno: consultas consolidadas entre instancias regionales, federación con sistemas de socios, enrutamiento a capacidad LLM alojada, o participación en el mercado de adaptadores.
 
 La línea es estructural porque la agregación requiere cruzar límites de confianza, identidad y operación que un único Totebox soberano no tiene. Los clientes pagan por el sustrato que cruza esos límites, no por el acceso al conocimiento que no tiene límites.
 

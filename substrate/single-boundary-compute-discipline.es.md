@@ -5,7 +5,7 @@ slug: single-boundary-compute-discipline.es
 category: substrate
 type: topic
 quality: complete
-short_description: "Todo el tráfico de inferencia de IA en un despliegue Foundry pasa exclusivamente por el Portero, con la omisión estructuralmente impedida a nivel de kernel."
+short_description: "Todo el tráfico de inferencia de IA en un despliegue de la plataforma pasa exclusivamente por el Portero, con la omisión estructuralmente impedida a nivel de kernel."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
@@ -15,7 +15,7 @@ paired_with: single-boundary-compute-discipline.md
 ---
 
 
-La **Disciplina de Cómputo de Límite Único** establece que todo el tráfico de inferencia de IA en un despliegue Foundry pasa por un único punto de frontera: el Portero (`service-slm`). Ningún proceso, sesión ni servicio accede a un nivel de inferencia —local, GPU en ráfaga o API externa— excepto a través de esta frontera. Esta disciplina codifica la reclamación doctrinal #43.
+La **Disciplina de Cómputo de Límite Único** establece que todo el tráfico de inferencia de IA en un despliegue de la plataforma pasa por un único punto de frontera: el Portero (`service-slm`). Ningún proceso, sesión ni servicio accede a un nivel de inferencia —local, GPU en ráfaga o API externa— excepto a través de esta frontera.
 
 ## Por qué un solo límite
 
