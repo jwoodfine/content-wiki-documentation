@@ -1,36 +1,52 @@
 ---
 schema: foundry-doc-v1
-title: "Systems — Category Landing"
+title: "Systems"
 slug: _index
 category: systems
+type: topic
+quality: complete
+short_description: "Eight purpose-built operating systems that share a common seL4 and Rust substrate — each does one job, contains no features it does not need, and communicates through a common Diode-based protocol discipline."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-29
+last_edited: 2026-05-15
 editor: pointsav-engineering
+paired_with: _index.es.md
 ---
 
-## Systems
+PointSav builds eight purpose-built operating systems that share a common seL4 and Rust substrate. Each does one job, contains no features it does not need, and communicates through a common Diode-based protocol discipline. The result is a family that can be audited component by component, upgraded independently, and deployed in any configuration without unexpected coupling between systems.
 
-This category covers the operating systems at the foundation layer of the PointSav platform. Each article describes one OS: its capability model, its role in tenant isolation, and how it composes with the services and applications that run on top of it.
+[[os-family-overview]] is the entry point for readers new to the family. It explains the common substrate, the capability model that every OS inherits, and the Diode rule that governs how they communicate.
 
-The primary operating system is [[totebox-os|ToteboxOS]] — a formally verified capability-based OS built on seL4. Its design provides the tenant-isolation and cryptographic-attestation properties that the rest of the platform depends on. A second OS, the workplace operating environment, handles the employee-facing application surface. The orchestration layer connects them. Articles in this category are technical in register; readers should be comfortable with OS-level concepts, capability-based security, and hardware-level trust models.
+## The archive layer
 
-## Articles in this category
+The core record-keeping systems at the foundation of every deployment.
 
-- [[totebox-os]] — [[totebox-os|ToteboxOS]]: the seL4-based capability OS at the platform's foundation layer; formal verification, capability model, and tenant isolation.
-- [[totebox-orchestration]] — How [[totebox-os|ToteboxOS]] instances are orchestrated across a fleet deployment; scheduling, isolation boundaries, and upgrade paths.
+- [[totebox-os]] — The archive layer: one isolated, kernel-level vault per entity, storing records as inert flat files with no delete operation, exposed only through the Diode on command from os-console or os-orchestration.
+- [[totebox-archive]] — A self-contained, freely transferable micro-virtual machine that persists institutional data as immutable flat files.
+- [[totebox-orchestration]] — How Totebox instances are coordinated across a fleet deployment; scheduling, isolation boundaries, and upgrade paths.
 
-<!-- ENGINE: this list is editorial in iteration-1; iteration-2+
-generates it from category-directory file listing once PL.7
-chunked-migration moves articles into category subdirectories. -->
+## Operator surfaces
+
+The systems through which a human operator interacts with the platform.
+
+- [[console-os]] — The human-facing surface: a Command Ledger that connects to a Totebox and renders its state through a keyboard-driven, F-key-structured interface.
+- [[os-workplace]] — The free desktop operating system: a native-Rust sovereign desktop that pairs with a Totebox archive and serves as the adoption gateway to the commercial product line.
+- [[os-orchestration]] — The Fleet Aggregator for multi-entity portfolios: one operator sees, queries, and commands many Totebox archives at once.
+
+## Network control and infrastructure
+
+The systems that manage the network fabric and underlying compute.
+
+- [[infrastructure-os]] — The compute substrate that hosts PointSav operating systems across on-premises, leased, and cloud hardware; bootstraps isolated fleets through the Genesis Protocol.
+- [[os-network-admin]] — The control plane for a PointSav fleet: manages the pairing registry, Diode rules, and mesh routing policy; commands broadcast as 16-byte binary packets across the WireGuard mesh.
+- [[os-privategit]] — Private Git hosting for sovereign version control within a fleet.
+
+## Publishing and media
+
+- [[mediakit-os]] — The public-facing OS: hosts a company's marketing website, internal wiki, and compliance newsroom on a single sovereign appliance the company owns outright.
 
 ## See also
 
-- [Wiki home](/)
-- [Architecture](/architecture/)
-- [Infrastructure](/infrastructure/)
-
-<!-- EDITORIAL NOTE: PL.7 chunked normalization sweep will migrate
- root-prefixed TOPICs into this category subdirectory. Until
- migration lands, the existing root TOPICs render at their current
- URLs (topic-<slug>.md); this landing references them by current slug. -->
+- [Architecture](/architecture/) — cross-cutting platform architecture and the three-ring model
+- [Services](/services/) — the autonomous services that run within and across operating systems
+- [Infrastructure](/infrastructure/) — fleet deployment topology and cloud operational runtime

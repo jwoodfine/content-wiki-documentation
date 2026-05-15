@@ -1,33 +1,47 @@
 ---
 schema: foundry-doc-v1
-title: "Infrastructure — Category Landing"
+title: "Infrastructure"
 slug: _index
 category: infrastructure
+type: topic
+quality: complete
+short_description: "Fleet deployment topology, cloud operational runtime, and physical infrastructure — from the WORM ledger storage substrate to edge deployment patterns, the sovereign mesh, and telemetry architecture."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-29
+last_edited: 2026-05-15
 editor: pointsav-engineering
+paired_with: _index.es.md
 ---
 
-## Infrastructure
+Infrastructure articles sit at the boundary between the abstract platform architecture and the concrete machines, services, and network paths that constitute a live deployment. This category covers storage substrate design, fleet topology, edge deployment patterns, key management operations, and the telemetry and mesh network that connect a fleet.
 
-This category covers the fleet deployment topology, cloud operational runtime, and the physical and virtual infrastructure on which the PointSav platform runs. Infrastructure articles sit at the boundary between the abstract platform architecture and the concrete machines, services, and network paths that constitute a live deployment.
+## Storage substrate
 
-Topics include the Woodfine fleet configuration, cloud region selection and compute topology, the deployment catalog and instance pattern, operational monitoring, and the scripts and tooling that provision and update instances. Articles are written for engineers responsible for deploying or maintaining a platform instance, and for architects designing a new deployment on customer hardware or cloud infrastructure.
+The foundational persistence layer — the WORM ledger and the audit surface it provides.
 
-Articles in this category are planned. The category will populate as the platform documentation expands.
+- [[worm-ledger-design]] — The four-layer Write-Once-Read-Many ledger: tile-based, hash-chained, cryptographically signed; satisfies SEC 17a-4(f), eIDAS, and SOC 2 by structure rather than policy.
+- [[worm-ledger-architecture]] — Architectural layout of the WORM ledger across Ring 1 services.
+- [[worm-ledger-storage-architecture]] — Physical storage organisation for WORM ledger deployments.
+- [[storage]] — Storage topology and block-device configuration for PointSav deployments.
+- [[data-vault-bookkeeping-substrate]] — An SMB bookkeeping architecture built on an immutable source vault and append-only journal, with structural separation between the bookkeeping record and any accounting tool.
 
-<!-- ENGINE: this list is editorial in iteration-1; iteration-2+
-generates it from category-directory file listing once PL.7
-chunked-migration moves articles into category subdirectories. -->
+## Fleet and edge deployment
+
+How a deployment is provisioned, updated, and maintained across on-premises and cloud hardware.
+
+- [[edge-deployment]] — Edge deployment patterns for PointSav instances operating at the network edge or in low-connectivity environments.
+- [[tier-c-key-wiring]] — The operational procedure for managing external API keys in the Doorman service: where keys live, how they rotate, and how a breach is contained.
+
+## Network and telemetry
+
+How fleet nodes communicate and how observability signals are collected without centralising identifiable data.
+
+- [[sovereign-mesh]] — The WireGuard-based peer-to-peer mesh network that connects PointSav fleet nodes without a central routing authority.
+- [[sovereign-telemetry]] — Zero-state telemetry: the V4 Intent Beacon collects behavioural and hardware signals from edge clients without cookies, session identifiers, or third-party analytics.
+- [[telemetry-architecture]] — Architecture of the telemetry pipeline across PointSav deployments.
 
 ## See also
 
-- [Wiki home](/)
-- [Architecture](/architecture/)
-- [Systems](/systems/)
-
-<!-- EDITORIAL NOTE: PL.7 chunked normalization sweep will migrate
- root-prefixed TOPICs into this category subdirectory. Until
- migration lands, the existing root TOPICs render at their current
- URLs (topic-<slug>.md); this landing references them by current slug. -->
+- [Architecture](/architecture/) — cross-cutting platform architecture and the three-ring model
+- [Systems](/systems/) — the operating systems that run on this infrastructure
+- [Services](/services/) — the services that depend on the storage and network substrate

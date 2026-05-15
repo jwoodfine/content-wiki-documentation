@@ -1,41 +1,64 @@
 ---
 schema: foundry-doc-v1
-title: "Services — Category Landing"
+title: "Services"
 slug: _index
 category: services
+type: topic
+quality: complete
+short_description: "The autonomous services that implement Ring 1 boundary ingest and Ring 2 deterministic knowledge processing in the PointSav three-ring architecture — grouped by ring layer and function."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-29
+last_edited: 2026-05-15
 editor: pointsav-engineering
+paired_with: _index.es.md
 ---
 
-## Services
+PointSav's three-ring architecture assigns every service to a layer with defined authority and dependencies. Ring 1 services handle per-tenant boundary ingest — each accepts raw data from one external source and writes it to a durable ledger. Ring 2 services provide deterministic knowledge and processing: they read from Ring 1 and produce structured records, knowledge graphs, and search indexes. Ring 3 is a single service, service-slm, which reads from Ring 2 and never writes to it.
 
-This category covers the autonomous services that implement Ring 1 and Ring 2 of the three-ring architecture. Ring 1 services handle per-tenant boundary ingest — each one implements a Model Context Protocol server interface, the standard by which external systems connect to the platform. Ring 2 services provide deterministic knowledge and processing: extraction, content management, search, and egress. The platform functions fully across both rings without AI compute.
+The platform functions fully across Rings 1 and 2 without AI compute. Removing Ring 3 shrinks the attack surface, satisfies network-isolation requirements, and answers the compliance question of whether AI has touched the authoritative record. The answer is architectural: Rings 1 and 2 have no import, no dependency, and no runtime call that reaches Ring 3.
 
-Each article describes one service: its purpose, its position in the ring structure, the API contract it presents, and the data it owns. Articles are written for engineers integrating with or extending a service, and for architects evaluating how the platform composes.
+## Ring 1 — Boundary ingest
 
-`service-slm` is the single boundary between Ring 2 and Ring 3 — the Doorman that routes AI requests among three compute tiers and holds all API keys. Its article describes the routing logic and the audit surface it produces.
+Per-tenant boundary services. Each runs as a separate process per tenant and exposes a Model Context Protocol server interface.
 
-## Articles in this category
+- [[service-fs-architecture]] — The filesystem service: append-only WORM ledger, per-tenant storage root, the foundation every other Ring 1 service writes to.
+- [[service-email]] — Email ingest: SMTP and IMAP, sanitised payloads, append-only Maildir on local block storage.
+- [[service-people]] — Identity ledger: person records, role assignments, and the Anchor-Claim-Socket data model that never overwrites state.
 
-- [[service-email]] — The Ring 1 ingest service for email: MCP interface, per-tenant isolation, and the WORM-ledger write path.
-- [[service-extraction]] — The Ring 2 extraction service: deterministic parsing, structured-record production, and the service-content write path.
-- [[service-people]] — The Ring 1 identity and contacts ingest service: person records, role assignments, and tenant scoping.
-- [[service-search]] — The Ring 2 full-text search service: Tantivy index, per-tenant sharding, and query API.
-- [[service-slm]] — The Ring 3 Doorman: AI routing across local, burst, and external compute tiers; audit ledger; key management.
+## Ring 2 — Knowledge and processing
 
-<!-- ENGINE: this list is editorial in iteration-1; iteration-2+
-generates it from category-directory file listing once PL.7
-chunked-migration moves articles into category subdirectories. -->
+Deterministic processing services. Each reads from Ring 1 and produces structured records — no AI variance enters the authoritative record.
+
+- [[service-extraction]] — The central Ring 2 traffic controller: strips proprietary formatting, constructs Entity Bundles, assigns transaction IDs, routes to deterministic services or to service-slm.
+- [[service-content]] — The Gravity Engine: reads raw payloads from a Totebox, runs them against an institutional taxonomy, generates the structured documents an organisation publishes.
+- [[service-search]] — Full-text search on Tantivy: per-tenant sharding, microsecond retrieval, no active database process required.
+- [[service-egress]] — Physical release valve: structured records leave the platform only through this service.
+- [[archetypes-and-chart-of-accounts]] — The institutional taxonomy: eleven archetypes and a Chart of Accounts that classify personnel and documents by structural position and functional role.
+
+## Ring 3 — AI gateway
+
+One service spans Ring 3. It reads from Ring 2 and produces proposals a human reviews; it never writes to the knowledge graph or the ledger.
+
+- [[service-slm]] — The Doorman: AI routing across local, burst, and external compute tiers; audit ledger on every call; every API key held at this boundary.
+- [[service-slm-yoyo-operational]] — Operational state of service-slm and the Yo-Yo GPU burst VM: Tier A/B configuration, apprenticeship brief queue, idle-shutdown cost ceiling.
+- [[service-slm-totebox-sysadmin]] — How service-slm becomes the operational assistant for Totebox deployments: ten operational task families, four-stage pipeline from corpus capture to per-tenant LoRA adapters.
+
+## Specialist and domain services
+
+Services built for specific platform capabilities.
+
+- [[service-business-clustering]] — Turns raw retail data into commercial clusters: parent-child spatial schema, one commercial entity per site.
+- [[service-places-filtering]] — Filters civic and institutional infrastructure to retain only regional-grade facilities for GIS tier rankings.
+- [[pointsav-gis-engine]] — High-performance location intelligence in Rust: offline-first, flat-file, no centralised database instances.
+- [[service-wallet-settlement]] — Wallet and direct payment settlement infrastructure.
+- [[message-courier]] — Headless web-automation engine bridging internal identity ledgers with external web portals.
+- [[fs-anchor-emitter]] — Signed WORM ledger checkpoints at hourly cadence, anchored to Sigstore Rekor on a monthly schedule for external auditability.
+- [[service-fs-security-compliance]] — service-fs compliance posture for SEC 17a-4(f), eIDAS, and SOC 2 by structural guarantee.
+- [[service-fs-data-lake]] — Flat-file data lake for the GIS pipeline: raw geospatial points from open sources, no ETL step.
+- [[template-ledger]] — Distributes approved email templates to the operator's mail environment; eliminates version drift between template design and execution.
 
 ## See also
 
-- [Wiki home](/)
-- [Architecture](/architecture/)
-- [Systems](/systems/)
-
-<!-- EDITORIAL NOTE: PL.7 chunked normalization sweep will migrate
- root-prefixed TOPICs into this category subdirectory. Until
- migration lands, the existing root TOPICs render at their current
- URLs (topic-<slug>.md); this landing references them by current slug. -->
+- [Systems](/systems/) — the operating systems that services run within
+- [Architecture](/architecture/) — the three-ring model and the invariants that govern ring interaction
+- [Infrastructure](/infrastructure/) — fleet deployment and the physical layer services run on

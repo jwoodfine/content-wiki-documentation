@@ -1,32 +1,40 @@
 ---
 schema: foundry-doc-v1
-title: "Aplicaciones — Página de categoría"
+title: "Aplicaciones"
 slug: _index.es
 lang: es
-paired_with: _index.md
 category: applications
+type: topic
+quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-29
+last_edited: 2026-05-15
 editor: pointsav-engineering
+paired_with: _index.md
 ---
 
-## Aplicaciones
+Las aplicaciones se sitúan por encima de la capa de servicios de tres anillos. Consumen datos deterministas y salida opcional de IA de los anillos y los presentan a través de una interfaz definida. Una aplicación no contiene datos canónicos — es una vista sobre la capa de servicios y puede ser reprovisada sin pérdida de datos apuntando una instancia nueva a los datos inmutables subyacentes.
 
-Esta categoría cubre las aplicaciones orientadas al usuario y las herramientas internas construidas sobre el sustrato de la plataforma PointSav. Las aplicaciones se sitúan por encima de la capa de servicios de tres anillos: consumen los datos deterministas y los servicios opcionales de IA que producen los anillos, y presentan ese resultado a los usuarios a través de una interfaz definida.
+## Conocimiento y editorial
 
-En iteración 1, la categoría incluye el motor de wiki que renderiza este sitio. Están previstas aplicaciones adicionales que cubren la productividad en el espacio de trabajo y la presentación de datos extraídos por los servicios del Anillo 2.
+- [[app-mediakit-knowledge]] — El motor de wiki Rust de binario único que renderiza la documentación de ingeniería de PointSav; una vista sobre un árbol de Markdown donde los commits de git son canónicos y cada binario en ejecución es estado derivado desechable.
+- [[app-mediakit-marketing]] — Páginas de aterrizaje de marketing multiinquilino desde un único binario Rust compilado estáticamente; memoria muscular de WordPress.org en la URL orientada al operador, infraestructura soberana debajo.
 
-## Artículos en esta categoría
+## GIS e inteligencia de ubicación
 
-Los artículos de esta categoría cubren el motor de wiki `app-mediakit-knowledge` y las aplicaciones de espacio de trabajo planificadas.
+- [[app-orchestration-gis]] — El motor de análisis espacial sin estado para cálculos de geometría lineal y clasificación de co-localización; una función pura sin datos canónicos que puede reprovisarse apuntando una instancia nueva a la capa de datos.
+- [[location-intelligence-platform]] — La plataforma completa de inteligencia de ubicación: app-orchestration-gis (análisis) y pointsav-gis-engine (renderizado), con cada conjunto de datos, algoritmo y decisión de renderizado bajo el control del cliente.
 
-<!-- ENGINE: this list is editorial in iteration-1; iteration-2+
-generates it from category-directory file listing once PL.7
-chunked-migration moves articles into category subdirectories. -->
+## Entrada e ingesta
+
+- [[app-console-input]] — La superficie F12 en os-console: la puerta de entrada estructurada a través de la cual los archivos externos brutos entran en un Totebox antes de ser sellados en el libro verificado.
+
+## Aplicaciones de dominio
+
+- [[bim-and-real-property-surfaces]] — Cómo PointSav trata el Modelado de Información de Edificios como un dominio operativo de primera clase, con herramientas de sistema de diseño dedicadas y disciplina de mantenimiento de registros ISO 19650.
 
 ## Véase también
 
-- [Inicio del wiki](/)
-- [Servicios](/services/)
-- [Arquitectura](/architecture/)
+- [Servicios](/services/) — la capa de servicios sobre la que construyen las aplicaciones
+- [Sistemas](/systems/) — los sistemas operativos que alojan las aplicaciones
+- [Arquitectura](/architecture/) — el modelo de tres anillos y los principios de propiedad del cliente
