@@ -45,7 +45,7 @@ The Capability Ledger Substrate (Doctrine claim #33) requires a customer-rooted 
 
 ## See also
 
-- [[capability-ledger-substrate]] — Doctrine claim #33; the ledger the proofs protect
+- capability-ledger-substrate — the ledger the proofs protect
 - [[worm-ledger-architecture]] — WORM ledger design that composes with checkpoint verification
 - [[disclosure-substrate]] — how the ledger audit trail satisfies disclosure obligations
 

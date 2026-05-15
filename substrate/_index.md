@@ -25,5 +25,5 @@ For the implementation primitives that substrates compose: [[adapter-composition
 
 ## See also
 
-- [[architecture]] — cross-cutting platform architecture
-- [[patterns]] — named design patterns realised on top of substrates
+- [Architecture](/architecture/) — cross-cutting platform architecture
+- [Patterns](/patterns/) — named design patterns realised on top of substrates

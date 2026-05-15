@@ -43,7 +43,7 @@ El Sustrato del Libro de Capacidades (afirmación #33) exige un registro Merkle 
 
 ## Véase también
 
-- [[capability-ledger-substrate]] — Afirmación doctrinal #33; el libro que protegen las pruebas
+- capability-ledger-substrate — el libro que protegen las pruebas
 - [[worm-ledger-architecture]] — Diseño del libro WORM que compone con la verificación de checkpoints
 - [[disclosure-substrate]] — Cómo la cadena de auditoría satisface las obligaciones de divulgación
 
