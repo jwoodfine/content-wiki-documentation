@@ -126,5 +126,5 @@ The mandatory rule for the entire dependency graph: every entry is one of `MIT`,
 
 1. `SLM-STACK.md` — workspace-root technical specification for the service-slm Rust stack; source document for this topic.
 2. `YOYO-COMPUTE.md` — workspace-root specification for the Yo-Yo compute substrate; companion to this topic.
-3. SYS-ADR-07 — structured data never routes through AI; the sanitise-outbound discipline at the Doorman boundary.
+3. [[sys-adr-07|SYS-ADR-07]] — structured data never routes through AI; the sanitise-outbound discipline at the Doorman boundary.
 4. `conventions/compounding-substrate.md` — the meta-pattern service-slm implements.

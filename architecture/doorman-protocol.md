@@ -15,7 +15,7 @@ cites:
 
 ## Why a Doorman
 
-The boundary problem: a customer data vault holds the customer's authoritative structured data; external compute (large language models) cannot be trusted with raw structured facts. Without a single boundary, every service in the Totebox grows its own egress path, every egress path needs its own audit, and the sanitise-and-rehydrate discipline (SYS-ADR-07) becomes per-service discipline rather than substrate discipline. The Doorman centralises the boundary so the discipline is enforced once.
+The boundary problem: a customer data vault holds the customer's authoritative structured data; external compute (large language models) cannot be trusted with raw structured facts. Without a single boundary, every service in the Totebox grows its own egress path, every egress path needs its own audit, and the sanitise-and-rehydrate discipline ([[sys-adr-07|SYS-ADR-07]]) becomes per-service discipline rather than substrate discipline. The Doorman centralises the boundary so the discipline is enforced once.
 
 ## Three-tier compute routing
 

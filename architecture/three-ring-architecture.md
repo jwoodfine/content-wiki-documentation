@@ -45,14 +45,14 @@ This separation is a structural choice, not a design preference. A regulated buy
 | Ring | Service | Purpose | Required at all tiers? |
 |---|---|---|---|
 | 1 | service-fs | Immutable Ledger (WORM append-only) | Required |
-| 1 | service-people | Identity Ledger | Optional |
-| 1 | service-email | Communications Ledger | Optional |
+| 1 | [[service-people]] | Identity Ledger | Optional |
+| 1 | [[service-email]] | Communications Ledger | Optional |
 | 1 | service-input | Generic document ingestion | Optional |
-| 2 | service-extraction | Deterministic parser (no AI, per SYS-ADR-07) | Required |
-| 2 | service-content | Taxonomy Ledger and knowledge graph | Required |
-| 2 | service-search | Search index (Tantivy, DARP-compliant) | Required |
-| 2 | service-egress | Physical release valve | Required for output |
-| 3 | service-slm | AI Gateway — the Doorman | Optional |
+| 2 | [[service-extraction]] | Deterministic parser (no AI, per SYS-ADR-07) | Required |
+| 2 | [[service-content]] | Taxonomy Ledger and knowledge graph | Required |
+| 2 | [[service-search]] | Search index (Tantivy, DARP-compliant) | Required |
+| 2 | [[service-egress]] | Physical release valve | Required for output |
+| 3 | [[service-slm]] | AI Gateway — the Doorman | Optional |
 | 3 | (slm-yoyo) | Multi-cloud GPU burst orchestrator | Optional |
 
 ## Ring 1 — Boundary Ingest
@@ -65,7 +65,7 @@ Because Ring 1 is per-tenant, each tenant's data lives in a separate service ins
 
 ## Ring 2 — Knowledge and Processing
 
-Ring 2 reads from Ring 1 and produces structured knowledge: parsed records, knowledge graphs, classified entities, search indexes. All Ring 2 processing is deterministic. SYS-ADR-07 prohibits AI from writing to the knowledge graph or the structured record stores; those paths are exclusively Ring 2's.
+Ring 2 reads from Ring 1 and produces structured knowledge: parsed records, knowledge graphs, classified entities, search indexes. All Ring 2 processing is deterministic. [[sys-adr-07|SYS-ADR-07]] prohibits AI from writing to the knowledge graph or the structured record stores; those paths are exclusively Ring 2's.
 
 The practical effect: Ring 2 output is reproducible given the same Ring 1 input. An audit that questions a classification can replay the deterministic parse against the unchanged Ring 1 ledger and get the same result. No AI variance enters the authoritative record.
 
@@ -110,4 +110,4 @@ For deployments that include Ring 3, the read-only constraint means the determin
 1. PointSav Doctrine §XIV, The Compounding Substrate — claims #14–#18; Three-Ring composition as the structural basis for Optional Intelligence Layer (claim #16).
 2. `conventions/three-ring-architecture.md` — workspace canonical specification.
 3. `conventions/compounding-substrate.md` — meta-pattern the rings implement.
-4. SYS-ADR-07 — structured data never routes through AI; enforces the Ring 2 / Ring 3 boundary.
+4. [[sys-adr-07|SYS-ADR-07]] — structured data never routes through AI; enforces the Ring 2 / Ring 3 boundary.

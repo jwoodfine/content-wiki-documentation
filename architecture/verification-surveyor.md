@@ -15,7 +15,7 @@ paired_with: verification-surveyor.es.md
 ---
 
 
-> The Verification Surveyor is the architectural checkpoint in service-people that prevents automated extraction errors from compounding by requiring a human operator to confirm each identity fragment against an off-network source before it is committed to the verified ledger.
+> The Verification Surveyor is the architectural checkpoint in [[service-people]] that prevents automated extraction errors from compounding by requiring a human operator to confirm each identity fragment against an off-network source before it is committed to the verified ledger.
 
 Unsupervised extraction algorithms accumulate errors. A fully
 automated ingestion pipeline processing large volumes of email

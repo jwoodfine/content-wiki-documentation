@@ -70,17 +70,17 @@ revenue partner, not a license-payer.
 A Foundry deployment is composed of three rings:
 
 **Ring 1 — Boundary Ingest.** Per-tenant MCP servers handling inbound data:
-service-fs (WORM ledger), service-input (file, email, and voice), service-extraction
-(entity extraction), service-people (CRM), service-email. Each is bounded;
+service-fs (WORM ledger), service-input (file, email, and voice), [[service-extraction]]
+(entity extraction), [[service-people]] (CRM), [[service-email]]. Each is bounded;
 each is auditable; each is deterministic at its baseline.
 
 **Ring 2 — Knowledge and Processing.** Multi-tenant via moduleId:
-service-content (the per-tenant graph and vector store), service-egress
+[[service-content]] (the per-tenant graph and vector store), [[service-egress]]
 (outbound formatting), service-marketplace (data marketplace gateway),
 service-ad-exchange (IAB OpenRTB 2.6+ gateway), service-settlement (Stripe
 Connect and crypto rail).
 
-**Ring 3 — Optional Intelligence.** service-slm Doorman as MCP gateway; Tier A
+**Ring 3 — Optional Intelligence.** [[service-slm]] Doorman as MCP gateway; Tier A
 1B sysadmin specialist (always-on); Tier B 32B generalist (on-demand GPU pool or customer
 GPU; on-demand); Tier C external API (rare; allowlist-gated).
 
