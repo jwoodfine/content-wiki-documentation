@@ -8,15 +8,15 @@ quality: complete
 short_description: "The durable composition pattern for the PointSav platform: three concentric rings with strict one-way dependencies, where the AI ring is structurally optional and the deterministic data pipeline operates fully without it."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
 paired_with: three-ring-architecture.es.md
 ---
 
-The **Three-Ring Architecture** is the platform's core composition pattern. It organises every service into one of three rings, each with a clean one-way dependency on the rings below it. The outermost ring adds AI inference. The inner two rings — boundary ingest and deterministic knowledge — function fully without it.
+A regulated deployment of PointSav can operate without any AI component — not by flipping a configuration flag, but because the platform's architecture makes AI structurally optional from the ground up. The Three-Ring Architecture organises every service into one of three concentric rings with strict one-way dependencies. The two inner rings — boundary ingest and deterministic knowledge processing — function fully without the outermost ring, which adds AI inference and can be excluded entirely.
 
-This separation is a structural choice, not a design preference. A regulated buyer who requires an air-gapped deployment with no AI can run the full data pipeline at Ring 1 and Ring 2. A deployment that adds Ring 3 gains intelligence without any change to the data model, the audit surface, or the identity boundaries that the inner rings maintain.
+This arrangement answers a compliance question that surfaces in every regulated procurement: how does a buyer verify that AI has not touched the authoritative record? The answer is architectural rather than procedural. Rings 1 and 2 have no import, no dependency, and no runtime call that reaches Ring 3. A deployment that excludes Ring 3 runs fewer processes, exposes less attack surface, and satisfies the network-isolation requirements common to regulated financial and property operations. For deployments that include Ring 3, the read-only constraint on AI ensures that the deterministic core remains the sole authoritative record — AI proposals enter the record only after a human approves them through the platform's mandatory checkpoint.
 
 ## Ring layout
 
@@ -48,7 +48,7 @@ This separation is a structural choice, not a design preference. A regulated buy
 | 1 | [[service-people]] | Identity Ledger | Optional |
 | 1 | [[service-email]] | Communications Ledger | Optional |
 | 1 | service-input | Generic document ingestion | Optional |
-| 2 | [[service-extraction]] | Deterministic parser (no AI, per SYS-ADR-07) | Required |
+| 2 | [[service-extraction]] | Deterministic parser (no AI; structured data never routes through Ring 3) | Required |
 | 2 | [[service-content]] | Taxonomy Ledger and knowledge graph | Required |
 | 2 | [[service-search]] | Search index (Tantivy, DARP-compliant) | Required |
 | 2 | [[service-egress]] | Physical release valve | Required for output |
@@ -65,7 +65,7 @@ Because Ring 1 is per-tenant, each tenant's data lives in a separate service ins
 
 ## Ring 2 — Knowledge and Processing
 
-Ring 2 reads from Ring 1 and produces structured knowledge: parsed records, knowledge graphs, classified entities, search indexes. All Ring 2 processing is deterministic. [[sys-adr-07|SYS-ADR-07]] prohibits AI from writing to the knowledge graph or the structured record stores; those paths are exclusively Ring 2's.
+Ring 2 reads from Ring 1 and produces structured knowledge: parsed records, knowledge graphs, classified entities, search indexes. All Ring 2 processing is deterministic. One of the platform's binding [[architecture-decisions|architecture decisions]] prohibits AI from writing to the knowledge graph or the structured record stores; those paths are exclusively Ring 2's.
 
 The practical effect: Ring 2 output is reproducible given the same Ring 1 input. An audit that questions a classification can replay the deterministic parse against the unchanged Ring 1 ledger and get the same result. No AI variance enters the authoritative record.
 
@@ -97,17 +97,11 @@ The three-ring pattern makes AI optional by construction rather than by configur
 
 For deployments that include Ring 3, the read-only constraint means the deterministic core remains the authoritative record. Operators who want to audit AI involvement in any output can inspect the audit ledger entry for the relevant Doorman call, compare the proposal against the Ring 2 record it was drawn from, and confirm that no AI path modified the underlying structured data.
 
-## See Also
+## See also
 
 - [[compounding-substrate]] — the five structural properties that the Three-Ring Architecture implements
 - [[service-slm]] — the Ring 3 Doorman service that routes among compute tiers and logs every call
 - [[compounding-doorman]] — the operational pattern the Doorman implements and why it compounds over time
 - [[worm-ledger-architecture]] — the Ring 1 append-only ledger that underpins the audit guarantee
 - [[apprenticeship-substrate]] — how Ring 3 interactions generate training signal that improves the local model over time
-
-## References
-
-1. PointSav Doctrine §XIV, The Compounding Substrate — claims #14–#18; Three-Ring composition as the structural basis for Optional Intelligence Layer (claim #16).
-2. `conventions/three-ring-architecture.md` — workspace canonical specification.
-3. `conventions/compounding-substrate.md` — meta-pattern the rings implement.
-4. [[sys-adr-07|SYS-ADR-07]] — structured data never routes through AI; enforces the Ring 2 / Ring 3 boundary.
+- [[architecture-decisions]] — the twelve binding decisions that govern how rings interact and where AI is permitted

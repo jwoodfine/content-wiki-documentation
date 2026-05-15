@@ -4,7 +4,7 @@ title: "Economic Model — Community and SMB Customer Tiers"
 slug: economic-model
 category: architecture
 type: topic
-quality: published
+quality: complete
 short_description: "PointSav's two-tier commercial structure: a free Community tier that serves as an adoption funnel, and a paid SMB Customer tier targeting regulated small-to-medium businesses that hyperscalers cannot serve economically."
 status: active
 bcsc_class: public-disclosure-safe
@@ -58,15 +58,9 @@ SMBs can do LoRA fine-tuning on their own data. They cannot do continued pretrai
 
 Ring 1 services (boundary ingest: filesystem, people, email, and input) and Ring 2 services (knowledge and processing: content, extraction, search, and egress) are available in both tiers. Ring 3 services differ: Community includes optional local model inference; SMB Customer adds GPU burst, external API integration, multi-archive aggregation, federation, and access to updated base models. Support and integration services are community-forum only for Community and contracted for SMB Customer.
 
-## See Also
+## See also
 
 - [[compounding-substrate]] — the five structural properties this economic model funds
 - [[sovereign-ai-commons]] — the market positioning of the substrate as a commons
 - [[llm-substrate-decision]] — how the model choice maps to Community and SMB Customer capability tiers
 - [[four-tier-slm-substrate]] — the four deployment tiers within the SMB Customer model
-
-## References
-
-1. PointSav factory-release-engineering `LICENSE-MATRIX.md` — authoritative license assignment per tier.
-2. `conventions/sovereign-ai-commons.md` — structural market positioning.
-3. `conventions/economic-model.md` — source convention for this article.

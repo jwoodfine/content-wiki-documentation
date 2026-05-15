@@ -4,7 +4,7 @@ title: "Modelo Económico — Niveles Community y Cliente PYME"
 slug: economic-model.es
 category: architecture
 type: topic
-quality: published
+quality: complete
 short_description: "La estructura comercial de dos niveles de PointSav: un nivel Community gratuito como embudo de adopción, y un nivel de Cliente PYME de pago orientado a pequeñas y medianas empresas reguladas que las grandes plataformas no pueden atender económicamente."
 status: active
 bcsc_class: public-disclosure-safe
@@ -41,14 +41,9 @@ El ajuste fino LoRA de un modelo de siete mil millones de parámetros cuesta ent
 
 Las capacidades de federación — el mercado de adaptadores LoRA, el pool Mooncake KV y las actualizaciones del modelo base — están incluidas en la licencia de Cliente PYME. No existe un nivel de federación separado. La privacidad de los datos de cada cliente se preserva mediante técnicas de aprendizaje federado con privacidad diferencial que son maduras en 2026.
 
-## Ver también
+## Véase también
 
 - [[compounding-substrate]] — las cinco propiedades estructurales que este modelo económico financia
 - [[sovereign-ai-commons]] — el posicionamiento del sustrato como un bien común soberano
-
-## Véase también
-
-- [[compounding-substrate]]
-- [[sovereign-ai-commons]]
-- [[llm-substrate-decision]]
-- [[four-tier-slm-substrate]]
+- [[llm-substrate-decision]] — cómo la elección del modelo se corresponde con los niveles de capacidad
+- [[four-tier-slm-substrate]] — los cuatro niveles de despliegue dentro del modelo de Cliente PYME

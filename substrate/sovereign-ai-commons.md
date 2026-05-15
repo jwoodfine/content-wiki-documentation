@@ -4,7 +4,7 @@ title: "The Sovereign AI Commons"
 slug: sovereign-ai-commons
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "PointSav's market positioning as a steward of shared, open AI infrastructure for regulated small-to-medium businesses: five structural properties that large-scale cloud providers cannot offer without dismantling their own billing models."
 status: active
 bcsc_class: public-disclosure-safe
@@ -70,7 +70,7 @@ By 2030, the intended outcome includes a PointSav-OLMo-N model variant that is c
 
 These are forward-looking statements based on the platform's current design and trajectory. They carry material assumptions: that the OLMo 3 license terms remain in effect, that GPU compute costs continue to decline, that the federated learning techniques underlying the marketplace remain viable at scale, and that the platform reaches the customer base necessary to fund continued pretraining. Each assumption could be disrupted. The structural foundation for the trajectory is in place; the execution remains to be demonstrated.
 
-## See Also
+## See also
 
 - [[compounding-substrate]] — the five structural properties in architectural detail
 - [[economic-model]] — the two-tier commercial structure that funds the commons

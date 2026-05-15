@@ -4,7 +4,7 @@ title: "LLM Substrate Decision — OLMo 3 Family"
 slug: llm-substrate-decision
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "The rationale for selecting OLMo 3 as the local and GPU-burst language model substrate: the only fully open model family — training data, training code, and checkpoints included — that permits continued pretraining and satisfies a Canadian public-company procurement posture."
 status: active
 bcsc_class: public-disclosure-safe
@@ -75,7 +75,7 @@ The platform's intended multi-year trajectory, as currently planned, is to move 
 
 The material assumption underlying this trajectory is that the Open Data Commons license on Dolma 3 and the Apache 2.0 license on OLMo 3's training code remain in effect and permit commercial continued pretraining. That assumption holds as of May 2026; it would require re-evaluation if the license terms changed.
 
-## See Also
+## See also
 
 - [[four-tier-slm-substrate]] — the four deployment tiers built on this substrate
 - [[apprenticeship-substrate]] — how continued pretraining signal is generated from production work

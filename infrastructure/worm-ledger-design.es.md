@@ -4,7 +4,7 @@ title: "Diseño del Libro de Registros WORM"
 slug: worm-ledger-design.es
 category: infrastructure
 type: topic
-quality: published
+quality: complete
 short_description: "El sustrato de persistencia de escritura única y lectura múltiple (WORM) utilizado en los servicios Ring 1 de PointSav: un formato por bloques con encadenamiento criptográfico que satisface los requisitos de conservación de registros bajo regulación estadounidense, europea y SOC 2 por estructura, no por política."
 status: active
 bcsc_class: public-disclosure-safe
@@ -58,13 +58,8 @@ La Norma SEC 17a-4(f) exige formato no reescribible con verificación de marca d
 
 La conservación cualificada bajo eIDAS exige preservación independiente de cambios tecnológicos futuros, integridad y autenticación del originador. La agilidad de algoritmo — el libro de registros lleva un campo de algoritmo de hash explícito en cada punto de control — aborda el primer requisito. El formato de bloques es una especificación abierta legible con herramientas estándar.
 
-## Ver también
+## Véase también
 
 - [[three-ring-architecture]] — el límite del anillo 1 donde opera el libro de registros WORM
 - [[compounding-doorman]] — el servicio del anillo 3 cuyo libro de auditoría usa el mismo primitivo
-
-## Véase también
-
-- [[three-ring-architecture]]
-- [[compounding-doorman]]
-- [[trajectory-substrate]]
+- [[trajectory-substrate]] — el registro de señal de entrenamiento que utiliza el mismo formato de libro

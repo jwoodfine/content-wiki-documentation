@@ -4,7 +4,7 @@ title: "El Bien Común de IA Soberana"
 slug: sovereign-ai-commons.es
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "El posicionamiento de PointSav como administrador de infraestructura de IA abierta y compartida para pequeñas y medianas empresas reguladas: cinco propiedades estructurales que los grandes proveedores de servicios en la nube no pueden ofrecer sin desmantelar sus propios modelos de facturación."
 status: active
 bcsc_class: public-disclosure-safe
@@ -53,14 +53,9 @@ Lo que PointSav no hace: retener a los clientes mediante dependencia de infraest
 
 La trayectoria prevista, como se planifica actualmente, contempla para 2030 un modelo PointSav-OLMo-N competitivo con modelos frontier propietarios en tareas de PYME reguladas; una base de clientes activos en la federación; y una pila de protocolos ratificada a través de convención constitucional. Estas son declaraciones de futuro basadas en el diseño y la trayectoria actuales de la plataforma, sujetas a supuestos materiales que podrían verse afectados por cambios en el entorno tecnológico, regulatorio o de mercado.
 
-## Ver también
+## Véase también
 
 - [[compounding-substrate]] — las cinco propiedades estructurales en detalle arquitectónico
 - [[economic-model]] — la estructura comercial de dos niveles que financia el bien común
-
-## Véase también
-
-- [[compounding-substrate]]
-- [[economic-model]]
-- [[llm-substrate-decision]]
-- [[four-tier-slm-substrate]]
+- [[llm-substrate-decision]] — por qué OLMo 3 permite el camino de preentrenamiento continuo
+- [[four-tier-slm-substrate]] — los cuatro niveles de despliegue por los que avanzan los clientes

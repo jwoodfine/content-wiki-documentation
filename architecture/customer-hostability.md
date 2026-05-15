@@ -4,11 +4,11 @@ title: "Customer Hostability"
 slug: customer-hostability
 category: architecture
 type: topic
-quality: core
+quality: complete
 short_description: "Customer hostability is the architectural commitment that every PointSav artefact can run on the customer's own hardware, against the customer's own keys, with the customer's own audit ledger — making self-hosted deployment the canonical pattern, not a tier."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites:
   - ni-51-102
@@ -16,8 +16,6 @@ cites:
 paired_with: customer-hostability.es.md
 ---
 
-
-> Customer hostability is the architectural commitment that every PointSav artefact can run on the customer's own hardware, against the customer's own keys, with the customer's own audit ledger — making self-hosted deployment the canonical pattern, not a tier.
 
 **Customer hostability** is the architectural commitment that every artefact a customer adopts can be run on the customer's own hardware, with the customer's own data, against the customer's own keys, with the customer's own audit ledger. The customer can fork it on day one.
 
@@ -29,7 +27,7 @@ Three concrete commitments, each operationally testable:
 
 1. **Self-hostable bootstrap.** Every Foundry service ships with a `bootstrap.sh` that brings the service up on the customer's own machine — no SaaS dependency, no provider login, no metered API. The pattern is established by the `infrastructure/local-slm/`, `infrastructure/local-doorman/`, and `infrastructure/local-knowledge/` precedents.
 2. **Per-tenant adapters in the customer's filesystem.** When the customer's adapter trains on the customer's corpus, the resulting `.lora` lives at `data/adapters/` inside the customer's substrate. It never traverses the vendor's network. Loss-of-adapter risk falls on the customer's backup discipline, not on the vendor's continued operation.
-3. **Customer-anchored audit ledger.** The apprenticeship corpus that records every editorial action and verdict lives at `data/training-corpus/apprenticeship/<task-type>/<tenant>/` inside the customer's substrate. Tenant-private records never leave per Doctrine §IV.b strict isolation.
+3. **Customer-anchored audit ledger.** The apprenticeship corpus that records every editorial action and verdict lives at `data/training-corpus/apprenticeship/<task-type>/<tenant>/` inside the customer's substrate. Tenant-private records never leave the customer's infrastructure.
 
 ## Why hyperscaler economics preclude this
 
@@ -73,7 +71,7 @@ Per `[osc-sn-51-721]`, the language describing the federated continued-pretraini
 
 The trajectory: a customer's adapter trains on the customer's corpus inside the customer's substrate (Tier B Yo-Yo or the customer's own GPU host). Aggregated improvements may feed back to a shared base model when the customer chooses to contribute, under explicit consent. Customers who do not contribute continue to benefit from base-model improvements driven by customers who do, with no leakage of corpus contents either direction.
 
-This is the federated-LoRA pattern adapted to per-customer data ownership. Reasonable basis: the federated-learning literature 2024–2026 and the LoRA-aggregation work surveyed in the language-protocol-substrate convention §1.
+This is the federated-LoRA pattern adapted to per-customer data ownership. Reasonable basis: the federated-learning literature 2024–2026 and the LoRA-aggregation research surveyed in the [[language-protocol-substrate]] article.
 
 ## Operational test for customer hostability
 
@@ -87,11 +85,9 @@ A new Foundry service is customer-hostable if a customer can:
 
 Each of these is testable in CI. A service that fails any test is, by definition, not customer-hostable yet — and the gap is treated as a defect, not a feature.
 
-## See Also
+## See also
 
-- [[language-protocol-substrate]]
-- [[anti-homogenization-discipline]]
-- [[compounding-substrate]]
-- [[contributor-model]]
-
-## References
+- [[language-protocol-substrate]] — the language model research that underpins the federated pretraining path
+- [[anti-homogenization-discipline]] — the complementary discipline that keeps federated training from homogenising tenants
+- [[compounding-substrate]] — the five structural properties that customer hostability enables
+- [[contributor-model]] — how contributors interact with the open-substrate artifact ecosystem

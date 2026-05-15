@@ -4,7 +4,7 @@ title: "Decisión de Sustrato LLM — Familia OLMo 3"
 slug: llm-substrate-decision.es
 category: substrate
 type: topic
-quality: published
+quality: complete
 short_description: "La justificación para seleccionar OLMo 3 como sustrato de inferencia local y en GPU: la única familia de modelos completamente abierta — datos, código de entrenamiento y puntos de control incluidos — que permite el preentrenamiento continuo y satisface la postura de adquisición de una empresa pública canadiense."
 status: active
 bcsc_class: public-disclosure-safe
@@ -54,14 +54,9 @@ El Doorman enruta las solicitudes entre tres capas:
 
 La trayectoria prevista para la plataforma contempla, a partir del segundo año, el inicio del preentrenamiento continuo del modelo base OLMo 3 7B sobre el corpus acumulado de Foundry, con el objetivo de producir PointSav-OLMo-N — un modelo derivado que incorpora los patrones de uso reales de los clientes. Esta trayectoria es una intención declarada y está sujeta a las condiciones técnicas y económicas del momento.
 
-## Ver también
-
-- [[four-tier-slm-substrate]] — los cuatro niveles de despliegue construidos sobre este sustrato
-- [[compounding-doorman]] — el servicio que enruta todas las llamadas de inferencia
-
 ## Véase también
 
-- [[four-tier-slm-substrate]]
-- [[apprenticeship-substrate]]
-- [[trajectory-substrate]]
-- [[compounding-doorman]]
+- [[four-tier-slm-substrate]] — los cuatro niveles de despliegue construidos sobre este sustrato
+- [[apprenticeship-substrate]] — cómo el uso en producción genera señal de entrenamiento para el preentrenamiento continuo
+- [[trajectory-substrate]] — el mecanismo de captura de corpus que alimenta el preentrenamiento continuo
+- [[compounding-doorman]] — el servicio que enruta todas las llamadas de inferencia entre las tres capas

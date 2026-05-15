@@ -4,7 +4,7 @@ title: "WORM Ledger Design"
 slug: worm-ledger-design
 category: infrastructure
 type: topic
-quality: published
+quality: complete
 short_description: "The four-layer Write-Once-Read-Many ledger substrate used across PointSav Ring 1 services: a tile-based, hash-chained, cryptographically signed persistence format that satisfies US broker-dealer recordkeeping, EU qualified preservation, and SOC 2 requirements by structure rather than by policy."
 status: active
 bcsc_class: public-disclosure-safe
@@ -71,7 +71,7 @@ This structural property — customer key sovereignty with optional vendor redun
 
 The `service-fs` Ring 1 service implements the WORM ledger substrate in production. It binds at the standard Ring 1 port, enforces per-tenant `moduleId` separation, and writes tile files following the structural immutability discipline described above. The `/v1/checkpoint` endpoint returns the latest signed checkpoint. Monthly Rekor anchoring of production checkpoints is planned as a formal recurring operation; the format is already compatible.
 
-## See Also
+## See also
 
 - [[three-ring-architecture]] — the Ring 1 boundary where the WORM ledger operates
 - [[compounding-doorman]] — the Ring 3 service whose audit ledger uses the same primitive
