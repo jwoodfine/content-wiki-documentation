@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "The Meta-Repo Pattern"
 slug: meta-repo-pattern
-category: substrate
+category: patterns
 type: topic
 quality: published
 short_description: A lightweight repository sitting above project code that provides agents with shared context without coupling git histories — the structural pattern that organises the Foundry workspace and its per-project cluster directories.

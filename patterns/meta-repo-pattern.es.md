@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "El Patrón Meta-Repositorio"
 slug: meta-repo-pattern.es
-category: substrate
+category: patterns
 type: topic
 quality: published
 short_description: Un repositorio ligero que se sitúa sobre el código de los proyectos y proporciona a los agentes un contexto compartido sin acoplar los historiales de Git — el patrón estructural que organiza el espacio de trabajo Foundry.
