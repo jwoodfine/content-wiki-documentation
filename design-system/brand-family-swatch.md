@@ -14,11 +14,11 @@ authored: 2026-04-30
 
 
 
-The Brand-Family Swatch is the primary taxonomic primitive for retail anchor classification within the Foundry GIS ecosystem. It encodes the tripartite operator-ratified taxonomy—Department, Hardware, and Warehouse Club—while maintaining a data-agnostic architecture that supports customer-driven extensions via sovereign data layers.
+The Brand-Family Swatch is the primary taxonomic primitive for retail anchor classification within the platform's GIS ecosystem. It encodes the tripartite operator-ratified taxonomy—Department, Hardware, and Warehouse Club—while maintaining a data-agnostic architecture that supports customer-driven extensions via sovereign data layers.
 
 ## Executive Summary
 
-Foundry’s geographic information systems utilize the Brand-Family Swatch to standardize the visual representation of retail anchors. By combining a color-coded identifier with a semantic label, the component ensures accessible data density across map surfaces, tabular filters, and detail drawers. The architecture is intentionally decoupled from the specific taxonomy; it resolves family identifiers through a runtime JSON configuration, permitting operators to modify or extend classification categories without code changes.
+The platform’s geographic information systems utilize the Brand-Family Swatch to standardize the visual representation of retail anchors. By combining a color-coded identifier with a semantic label, the component ensures accessible data density across map surfaces, tabular filters, and detail drawers. The architecture is intentionally decoupled from the specific taxonomy; it resolves family identifiers through a runtime JSON configuration, permitting operators to modify or extend classification categories without code changes.
 
 ## Usage Guidelines
 

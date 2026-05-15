@@ -18,7 +18,7 @@ El "Map Side Drawer" es un patrón de superposición persistente diseñado para 
 
 ## Resumen Ejecutivo
 
-La interfaz GIS de Foundry utiliza el Panel Lateral de Mapa para centralizar los datos de atributos de las características seleccionadas del mapa. A diferencia de los subtítulos o ventanas emergentes tradicionales que oscurecen el lienzo del mapa, el panel mantiene una huella fija de 340px en el margen derecho, lo que permite que el mapa permanezca interactivo y visible. El componente está diseñado para el procesamiento rápido de datos, utilizando una cuadrícula de hechos estructurada y banners de divulgación opcionales para cumplir con los requisitos operativos y de transparencia regulatoria.
+La interfaz GIS de la plataforma utiliza el Panel Lateral de Mapa para centralizar los datos de atributos de las características seleccionadas del mapa. A diferencia de los subtítulos o ventanas emergentes tradicionales que oscurecen el lienzo del mapa, el panel mantiene una huella fija de 340px en el margen derecho, lo que permite que el mapa permanezca interactivo y visible. El componente está diseñado para el procesamiento rápido de datos, utilizando una cuadrícula de hechos estructurada y banners de divulgación opcionales para cumplir con los requisitos operativos y de transparencia regulatoria.
 
 ## Directrices de Uso
 

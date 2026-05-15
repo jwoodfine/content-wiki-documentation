@@ -12,7 +12,7 @@ category: design-system
 
 
 
-Foundry establece una separación estricta entre la interfaz web y los documentos impresos institucionales. Mientras que la web utiliza fuentes nativas para mayor rapidez, la tipografía de marca se reserva para la generación de PDFs y documentos físicos.
+La plataforma establece una separación estricta entre la interfaz web y los documentos impresos institucionales. Mientras que la web utiliza fuentes nativas para mayor rapidez, la tipografía de marca se reserva para la generación de PDFs y documentos físicos.
 
 ## Estándares de Tipografía (OFL)
 

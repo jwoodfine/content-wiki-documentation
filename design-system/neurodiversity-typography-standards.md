@@ -12,11 +12,11 @@ category: design-system
 
 
 
-Foundry prioritizes cognitive accessibility by implementing strict typographic standards designed to accommodate neurodivergent users. By adhering to WCAG 2.2 institutional accessibility guidelines, the system ensures that complex technical and financial disclosures remain legible for individuals with dyslexia, astigmatism, and other processing variances.
+The platform prioritizes cognitive accessibility by implementing strict typographic standards designed to accommodate neurodivergent users. By adhering to WCAG 2.2 institutional accessibility guidelines, the system ensures that complex technical and financial disclosures remain legible for individuals with dyslexia, astigmatism, and other processing variances.
 
 ## 1. Native System UI Stack
 
-To eliminate layout shifts (Flash of Unstyled Text) and reduce network latency, Foundry bypasses external font services. All interfaces strictly utilize the native operating system font stack:
+To eliminate layout shifts (Flash of Unstyled Text) and reduce network latency, the platform bypasses external font services. All interfaces strictly utilize the native operating system font stack:
 `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`.
 
 ## 2. Reducing Cognitive Load

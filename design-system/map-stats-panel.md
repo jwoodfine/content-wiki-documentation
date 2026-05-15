@@ -18,7 +18,7 @@ The Map Stats Panel is a reactive data-display component that surfaces real-time
 
 ## Executive Summary
 
-Foundry map surfaces utilize the Map Stats Panel to provide immediate quantitative context to geographic visualizations. As users manipulate country chips or brand-family filters, the panel reactively updates to reflect the current data subset. The component is designed for non-intrusive persistent visibility, typically anchored to the top-right margin to avoid collision with standard map navigation controls.
+Platform map surfaces utilize the Map Stats Panel to provide immediate quantitative context to geographic visualizations. As users manipulate country chips or brand-family filters, the panel reactively updates to reflect the current data subset. The component is designed for non-intrusive persistent visibility, typically anchored to the top-right margin to avoid collision with standard map navigation controls.
 
 ## Usage Guidelines
 

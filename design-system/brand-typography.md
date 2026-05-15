@@ -12,7 +12,7 @@ category: design-system
 
 
 
-Foundry enforces a strict boundary between web interface presentation and institutional print output. While web layers prioritize performance via native system fonts, brand typography is reserved for offline print and PDF generation to project institutional authority and ensure DARP compliance.
+The platform enforces a strict boundary between web interface presentation and institutional print output. While web layers prioritize performance via native system fonts, brand typography is reserved for offline print and PDF generation to project institutional authority and ensure DARP compliance.
 
 ## 1. The Execution Boundary
 

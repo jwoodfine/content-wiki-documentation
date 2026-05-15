@@ -12,7 +12,7 @@ category: design-system
 
 
 
-Foundry prioriza la accesibilidad cognitiva mediante estándares tipográficos diseñados para usuarios neurodivergentes. Siguiendo las guías WCAG 2.2, aseguramos que la información técnica y financiera sea legible para personas con dislexia, astigmatismo y otras variantes de procesamiento.
+La plataforma prioriza la accesibilidad cognitiva mediante estándares tipográficos diseñados para usuarios neurodivergentes. Siguiendo las guías WCAG 2.2, aseguramos que la información técnica y financiera sea legible para personas con dislexia, astigmatismo y otras variantes de procesamiento.
 
 ## Principios de Diseño Accesible
 

@@ -12,7 +12,7 @@ category: design-system
 
 
 
-El componente `bim-viewport-3d` es la capa principal de visualización de modelos. Aunque el contenido de un lienzo (canvas) 3D es gráfico por naturaleza, el visor de Foundry está diseñado para ser plenamente operativo mediante la sincronización con componentes de texto y el uso de atajos de teclado estándar.
+El componente `bim-viewport-3d` es la capa principal de visualización de modelos. Aunque el contenido de un lienzo (canvas) 3D es gráfico por naturaleza, el visor de la plataforma está diseñado para ser plenamente operativo mediante la sincronización con componentes de texto y el uso de atajos de teclado estándar.
 
 ## Sincronización de Selección
 

@@ -18,7 +18,7 @@ The Map Side Drawer is a persistent overlay pattern designed for detailed featur
 
 ## Executive Summary
 
-Foundry’s GIS interface utilizes the Map Side Drawer to centralize attribute data for selected map features. Unlike traditional tooltips or popups that obscure the map canvas, the drawer maintains a 340px fixed-width footprint on the right margin, allowing the map to remain interactive and visible. The component is engineered for rapid data parsing, utilizing a structured facts grid and optional disclosure banners to meet both operational and regulatory transparency requirements.
+The platform’s GIS interface utilizes the Map Side Drawer to centralize attribute data for selected map features. Unlike traditional tooltips or popups that obscure the map canvas, the drawer maintains a 340px fixed-width footprint on the right margin, allowing the map to remain interactive and visible. The component is engineered for rapid data parsing, utilizing a structured facts grid and optional disclosure banners to meet both operational and regulatory transparency requirements.
 
 ## Usage Guidelines
 
@@ -59,7 +59,7 @@ The component is engineered for full keyboard and screen-reader compatibility:
 
 ## Strategic Roadmap
 Future developments are intended to include:
-- **Comparison View**: A planned split-drawer variant to support federated cluster comparison (Doctrine Invention #9).
+- **Comparison View**: A planned split-drawer variant to support federated cluster comparison.
 - **Adaptive Width**: Research is ongoing to determine if a full-width expansion is required for mobile viewports while preserving minimal map context.
 
 ## See also

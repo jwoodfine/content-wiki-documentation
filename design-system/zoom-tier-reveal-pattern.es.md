@@ -18,7 +18,7 @@ El "Zoom-Tier Reveal Pattern" es una estrategia fundamental de visualización ge
 
 ## Resumen Ejecutivo
 
-Las superficies GIS de Foundry emplean el Patrón de Revelación por Niveles de Zoom para resolver el conflicto entre la densidad de datos y la legibilidad. El agrupamiento (clustering) estándar de mapas normalmente colapsa múltiples puntos en un recuento numérico genérico, sacrificando los datos cualitativos por el rendimiento. Por el contrario, el Patrón de Revelación por Niveles de Zoom utiliza una banda de transición —actualmente establecida entre los niveles de zoom 8.0 y 8.5— para realizar un desvanecimiento cruzado (crossfade) entre los anillos de centroide de conglomerado agregados (que muestran la distribución por familia de marcas) y los marcadores de anclas individuales. Esto garantiza que la taxonomía comercial permanezca visible y procesable en cada escala.
+Las superficies GIS de la plataforma emplean el Patrón de Revelación por Niveles de Zoom para resolver el conflicto entre la densidad de datos y la legibilidad. El agrupamiento (clustering) estándar de mapas normalmente colapsa múltiples puntos en un recuento numérico genérico, sacrificando los datos cualitativos por el rendimiento. Por el contrario, el Patrón de Revelación por Niveles de Zoom utiliza una banda de transición —actualmente establecida entre los niveles de zoom 8.0 y 8.5— para realizar un desvanecimiento cruzado (crossfade) entre los anillos de centroide de conglomerado agregados (que muestran la distribución por familia de marcas) y los marcadores de anclas individuales. Esto garantiza que la taxonomía comercial permanezca visible y procesable en cada escala.
 
 ## Estrategia de Implementación
 

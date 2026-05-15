@@ -18,7 +18,7 @@ El componente "Country Filter Chip" es una primitiva de navegación especializad
 
 ## Resumen Ejecutivo
 
-Las superficies de mapas de Foundry utilizan los Selectores de Filtro por País para facilitar una segmentación geográfica rápida. Al proporcionar un grupo de radio horizontal de activadores específicos de la jurisdicción —incluyendo un estado "ALL" (TODO) por defecto— el componente permite a los usuarios navegar por conjuntos de datos globales complejos con una sola interacción. Cada selección activa una transición automática de la ventana de visualización (fly-to) a la extensión geográfica del país respectivo, garantizando que los datos relevantes se prioricen y enmarquen de inmediato.
+Las superficies de mapas de la plataforma utilizan los Selectores de Filtro por País para facilitar una segmentación geográfica rápida. Al proporcionar un grupo de radio horizontal de activadores específicos de la jurisdicción —incluyendo un estado "ALL" (TODO) por defecto— el componente permite a los usuarios navegar por conjuntos de datos globales complejos con una sola interacción. Cada selección activa una transición automática de la ventana de visualización (fly-to) a la extensión geográfica del país respectivo, garantizando que los datos relevantes se prioricen y enmarquen de inmediato.
 
 ## Directrices de Uso
 

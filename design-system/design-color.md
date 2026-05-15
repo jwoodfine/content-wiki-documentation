@@ -111,7 +111,7 @@ A tenant can ship multiple themes:
 - `<tenant>-seasonal-2026-q4.json` for time-bounded campaigns
 - `<tenant>-acquisition-x.json` for sub-brand fan-outs
 
-The planned theme-composition endpoint (`GET /api/themes/compose?base=...&override=...`) is intended to let multiple themes resolve into one DTCG bundle at request time — see Doctrine claim #38 leapfrog target L8.
+The planned theme-composition endpoint (`GET /api/themes/compose?base=...&override=...`) is intended to let multiple themes resolve into one DTCG bundle at request time.
 
 ## WCAG contrast floor
 

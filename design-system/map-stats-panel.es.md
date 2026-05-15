@@ -18,7 +18,7 @@ El "Map Stats Panel" es un componente reactivo de visualización de datos que pr
 
 ## Resumen Ejecutivo
 
-Las superficies de mapas de Foundry utilizan el Panel de Estadísticas de Mapa para proporcionar un contexto cuantitativo inmediato a las visualizaciones geográficas. A medida que los usuarios manipulan los selectores de país o los filtros de familia de marcas, el panel se actualiza de forma reactiva para reflejar el subconjunto de datos actual. El componente está diseñado para una visibilidad persistente no intrusiva, normalmente anclado al margen superior derecho para evitar colisiones con los controles de navegación estándar del mapa.
+Las superficies de mapas de la plataforma utilizan el Panel de Estadísticas de Mapa para proporcionar un contexto cuantitativo inmediato a las visualizaciones geográficas. A medida que los usuarios manipulan los selectores de país o los filtros de familia de marcas, el panel se actualiza de forma reactiva para reflejar el subconjunto de datos actual. El componente está diseñado para una visibilidad persistente no intrusiva, normalmente anclado al margen superior derecho para evitar colisiones con los controles de navegación estándar del mapa.
 
 ## Directrices de Uso
 

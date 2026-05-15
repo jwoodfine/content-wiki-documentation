@@ -18,7 +18,7 @@ The Zoom-Tier Reveal Pattern is a foundational geographic visualization strategy
 
 ## Executive Summary
 
-Foundry’s GIS surfaces employ the Zoom-Tier Reveal Pattern to resolve the conflict between data density and legibility. Standard map clustering typically collapses multiple points into a generic numeric count, sacrificing qualitative data for performance. In contrast, the Zoom-Tier Reveal Pattern utilizes a transition band—currently set between zoom levels 8.0 and 8.5—to crossfade between aggregate cluster-centroid rings (showing brand-family distribution) and individual anchor markers. This ensures that the retail taxonomy remains visible and actionable at every scale.
+The platform’s GIS surfaces employ the Zoom-Tier Reveal Pattern to resolve the conflict between data density and legibility. Standard map clustering typically collapses multiple points into a generic numeric count, sacrificing qualitative data for performance. In contrast, the Zoom-Tier Reveal Pattern utilizes a transition band—currently set between zoom levels 8.0 and 8.5—to crossfade between aggregate cluster-centroid rings (showing brand-family distribution) and individual anchor markers. This ensures that the retail taxonomy remains visible and actionable at every scale.
 
 ## Implementation Strategy
 

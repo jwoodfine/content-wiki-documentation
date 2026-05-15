@@ -18,7 +18,7 @@ The Country Filter Chip component is a specialized navigation primitive designed
 
 ## Executive Summary
 
-Foundry map surfaces utilize Country Filter Chips to facilitate rapid geographic segmentation. By providing a horizontal radiogroup of jurisdiction-specific triggers—including a default "ALL" state—the component allows users to navigate complex global datasets with a single interaction. Each selection triggers an automated viewport transition (fly-to) to the respective country's geographic extent, ensuring the relevant data is immediately prioritized and framed.
+Platform map surfaces utilize Country Filter Chips to facilitate rapid geographic segmentation. By providing a horizontal radiogroup of jurisdiction-specific triggers—including a default "ALL" state—the component allows users to navigate complex global datasets with a single interaction. Each selection triggers an automated viewport transition (fly-to) to the respective country's geographic extent, ensuring the relevant data is immediately prioritized and framed.
 
 ## Usage Guidelines
 

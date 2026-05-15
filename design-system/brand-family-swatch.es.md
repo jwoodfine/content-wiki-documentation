@@ -14,11 +14,11 @@ authored: 2026-04-30
 
 
 
-El "Brand-Family Swatch" es la primitiva taxonómica principal para la clasificación de anclas comerciales en el ecosistema GIS de Foundry. Codifica la taxonomía tripartita ratificada por el operador —Department (Departamental), Hardware (Ferretería) y Warehouse Club (Club de Compras)— manteniendo una arquitectura agnóstica de datos que admite extensiones impulsadas por el cliente mediante capas de datos soberanas.
+El "Brand-Family Swatch" es la primitiva taxonómica principal para la clasificación de anclas comerciales en el ecosistema GIS de la plataforma. Codifica la taxonomía tripartita ratificada por el operador —Department (Departamental), Hardware (Ferretería) y Warehouse Club (Club de Compras)— manteniendo una arquitectura agnóstica de datos que admite extensiones impulsadas por el cliente mediante capas de datos soberanas.
 
 ## Resumen Ejecutivo
 
-Los sistemas de información geográfica de Foundry utilizan el Muestrario de Familias de Marcas para estandarizar la representación visual de las anclas comerciales. Al combinar un identificador codificado por colores con una etiqueta semántica, el componente garantiza una densidad de datos accesible en superficies de mapas, filtros tabulares y paneles de detalles. La arquitectura está desacoplada intencionalmente de la taxonomía específica; resuelve los identificadores de familia a través de una configuración JSON en tiempo de ejecución, lo que permite a los operadores modificar o ampliar las categorías de clasificación sin cambios en el código.
+Los sistemas de información geográfica de la plataforma utilizan el Muestrario de Familias de Marcas para estandarizar la representación visual de las anclas comerciales. Al combinar un identificador codificado por colores con una etiqueta semántica, el componente garantiza una densidad de datos accesible en superficies de mapas, filtros tabulares y paneles de detalles. La arquitectura está desacoplada intencionalmente de la taxonomía específica; resuelve los identificadores de familia a través de una configuración JSON en tiempo de ejecución, lo que permite a los operadores modificar o ampliar las categorías de clasificación sin cambios en el código.
 
 ## Directrices de Uso
 
