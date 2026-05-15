@@ -48,13 +48,13 @@ The platform is positioned as a complementary engine, not a replacement for exis
 | Spreadsheet applications | The intended sovereign spreadsheet surface stores executed financial models in the [[worm-ledger-design\|WORM ledger]] |
 | Word-processing applications | The intended sovereign word-processing surface uses Typst for print-fidelity output; F4 in the [[console-os\|Command Ledger]] synthesises content from structured records |
 | Professional networking platforms | [[service-people]] is intended to harvest verified contact data into the Totebox identity ledger |
-| Corporate document repositories | [[service-minutebook]] cryptographically seals signed records against the [[worm-ledger-design\|WORM ledger]] substrate |
+| Corporate document repositories | service-minutebook cryptographically seals signed records against the [[worm-ledger-design\|WORM ledger]] substrate |
 
 The customer is not asked to abandon any working tool. The substrate operates in the background; the Command Ledger provides a sovereign view over the records the incumbent tools produce.
 
 ## Six canonical deployment configurations
 
-The six configurations represent distinct GUIDE families in the fleet-deployment catalogue. Each is a configuration, not a separate product; the underlying [[os-totebox|os-totebox]], [[console-os|os-console]], and services are identical across all six.
+The six configurations represent distinct GUIDE families in the fleet-deployment catalogue. Each is a configuration, not a separate product; the underlying [[totebox-os]], [[console-os|os-console]], and services are identical across all six.
 
 | Configuration | Primary records | [[archetypes-and-chart-of-accounts\|Chart of Accounts]] adaptation |
 |---|---|---|
@@ -88,7 +88,7 @@ Each canonical configuration has a corresponding subdirectory under the fleet-de
 |---|---|---|
 | `vault-privategit-source-1` | Internal source-control deployment; the workspace is an instance of this template | Active |
 | Real-property asset-management | The reference operational deployment for a real-property firm | Planned |
-| Reporting Issuer | An [[os-mediakit|os-mediakit]] and [[os-totebox|os-totebox]] pair for public-company disclosure | Planned |
+| Reporting Issuer | An [[mediakit-os]] and [[totebox-os]] pair for public-company disclosure | Planned |
 
 Templates in the Showcase Layer correspond to numbered instances in the Instance Layer — private to the operator, gitignored from all public repositories. See [[three-layer-architecture]] for the three-layer model.
 

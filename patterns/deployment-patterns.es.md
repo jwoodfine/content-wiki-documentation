@@ -48,13 +48,13 @@ La plataforma se posiciona como un motor complementario, no como un reemplazo de
 | Aplicaciones de hojas de cálculo | La superficie de hoja de cálculo soberana prevista almacena modelos financieros ejecutados en el [[worm-ledger-design\|libro mayor WORM]] |
 | Aplicaciones de procesamiento de texto | La superficie de procesamiento de texto soberana prevista usa Typst para salida con fidelidad de impresión |
 | Plataformas de redes profesionales | Se prevé que [[service-people]] recopile datos de contacto verificados en el libro mayor de identidad del Totebox |
-| Repositorios de documentos corporativos | [[service-minutebook]] sella criptográficamente los registros firmados contra el sustrato [[worm-ledger-design\|WORM]] |
+| Repositorios de documentos corporativos | service-minutebook sella criptográficamente los registros firmados contra el sustrato [[worm-ledger-design\|WORM]] |
 
 El cliente no necesita abandonar ninguna herramienta funcional. El sustrato opera en segundo plano; el Libro Mayor de Comandos proporciona una vista soberana sobre los registros que producen las herramientas incumbentes.
 
 ## Seis configuraciones de despliegue canónicas
 
-Las seis configuraciones representan familias de GUIDEs distintas en el catálogo de despliegue de flota. Cada una es una configuración, no un producto separado; el [[os-totebox|os-totebox]], el [[console-os|os-console]] y los servicios subyacentes son idénticos en las seis.
+Las seis configuraciones representan familias de GUIDEs distintas en el catálogo de despliegue de flota. Cada una es una configuración, no un producto separado; el [[totebox-os]], el [[console-os|os-console]] y los servicios subyacentes son idénticos en las seis.
 
 | Configuración | Registros principales | Adaptación del [[archetypes-and-chart-of-accounts\|Plan de Cuentas]] |
 |---|---|---|
@@ -84,7 +84,7 @@ El modelo de aislamiento se deriva del patrón arquitectónico de micro-frontend
 |---|---|---|
 | `vault-privategit-source-1` | Despliegue de control de fuentes interno; el espacio de trabajo es una instancia de esta plantilla | Activo |
 | Gestión de activos inmobiliarios | El despliegue operativo de referencia para una empresa inmobiliaria | Planeado |
-| Emisor de información | Un par de [[os-mediakit\|os-mediakit]] y [[os-totebox\|os-totebox]] para divulgación de empresa pública | Planeado |
+| Emisor de información | Un par de [[mediakit-os]] y [[totebox-os]] para divulgación de empresa pública | Planeado |
 
 Las plantillas en la Capa de Exhibición corresponden a instancias numeradas en la Capa de Instancias — privadas para el operador, ignoradas por git en todos los repositorios públicos. Consulte [[three-layer-architecture]] para el modelo de tres capas.
 

@@ -23,5 +23,5 @@ Patterns differ from substrates: a substrate is a load-bearing mechanism the pla
 
 ## See also
 
-- [[substrate]] — foundational mechanisms patterns build on
-- [[architecture]] — concrete platform architecture
+- [Substrate](/substrate/) — foundational mechanisms patterns build on
+- [Architecture](/architecture/) — concrete platform architecture
