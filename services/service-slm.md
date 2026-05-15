@@ -1,70 +1,79 @@
 ---
 schema: foundry-doc-v1
-title: "service-slm: Linguistic Air-Lock"
+title: "service-slm — The Institutional Small Language Model"
 slug: service-slm
 category: services
-type: topic
+type: concept
 quality: complete
-short_description: "service-slm is the Doorman service — the single network boundary that holds API keys, routes AI inference across three compute tiers, and writes an immutable per-tenant audit record of every external call."
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+language_protocol: PROSE-TOPIC
+last_edited: 2026-05-15
 editor: pointsav-engineering
-cites: []
 paired_with: service-slm.es.md
+short_description: "service-slm is the language-model service of the PointSav family — a quantised, narrow Small Language Model that translates institutional intent into deterministic outputs and routes every AI inference call through the Doorman audit boundary."
+cites: []
 ---
 
+`service-slm` is the language-model service of the PointSav family. It is intentionally a Small Language Model — quantised, narrow, fast — rather than a frontier-scale model. Its job is not conversation. Its job is semantic translation: turning institutional intent (English commands, document content, taxonomy queries) into deterministic outputs (binary commands, `VALID`/`REJECT` decisions, Chart-of-Accounts socket assignments). It is invisible — there is no chat window, and the operator never types into `service-slm` directly. The surface above it presents a structured workflow; `service-slm` is the silent intermediary. This article covers the four operations, the three compute tiers, the Doorman audit boundary, and why a small model is a structural choice, not a cost compromise.
 
-Every AI inference call on the PointSav platform routes through a single service — **service-slm** (the Doorman) — which holds all provider API keys, selects the cheapest compute tier that meets the request's deadline, and writes an immutable audit record before returning the result. A request that resolves on the local model never leaves the customer's infrastructure and never appears on a cloud billing statement. The routing logic, tier thresholds, and audit log are all operator-controlled. service-slm is the Ring 3 optional-intelligence boundary: it holds API keys for external AI providers, enforces sanitise-outbound and rehydrate-inbound discipline so that customer-identifying details do not reach external providers in raw form, and writes a signed audit entry to the per-tenant ledger on every call.
+## What service-slm does
 
-## Architectural Baseline
+The service performs four operations in order of increasing institutional weight:
 
-The Doorman is the platform's sole AI boundary — no inference call enters or exits the knowledge pipeline without passing through it. The Doorman acts as the air-lock for unstructured text entering the knowledge pipeline. Raw text arriving from Ring 1 services — emails, PDFs, form submissions — passes through service-slm before any structured facts are written to the knowledge graph. The service applies a Small Language Model to extract verifiable facts, formats them as clean Markdown, and closes the AI processing window before data continues downstream to Ring 2. This containment is the implementation of [[sys-adr-07|SYS-ADR-07]]: structured data never routes through AI.
-
-## Ring and Role
-
-service-slm occupies **Ring 3 — Optional Intelligence** in the three-ring compounding-substrate architecture. Ring 3 is structurally optional: Ring 1 boundary ingest and Ring 2 knowledge and processing operate without it. When Ring 3 is active, the Doorman mediates all AI calls on behalf of any ring, applying per-tenant configuration and routing policy.
-
-The three compute tiers the Doorman routes across:
-
-| Tier | Compute | When used |
+| Operation | Inputs | Output |
 |---|---|---|
-| Tier A — Local | OLMo 3 7B Q4 on workspace VM (CPU) | High-volume, low-latency, budget-sensitive requests |
-| Tier B — On-demand GPU | OLMo 3.1 32B Think on multi-cloud GPU burst (GCP Cloud Run / RunPod / Modal) | Requests that require larger model capacity |
-| Tier C — External API | Anthropic Claude / Google Gemini / OpenAI | Narrow precision tasks: citation grounding, initial graph build |
+| Semantic command parsing | English intent from the F8 Terminal | Binary UDP command for `service-udp` |
+| Gravity verification | 50-word Gravity Vector from `service-content` | `VALID` or `REJECT` single token |
+| Socket assignment | Entity bundle from `service-extraction` + Chart of Accounts | Sovereign-ID with Chart-of-Accounts socket |
+| Theme suggestion | Recurring patterns the Gravity Engine flags | Proposed new entries to the Themes Seed Vault (for operator approval) |
 
-Customers do not choose the tier. Request shape and budget caps determine routing automatically.
+The model never publishes structured data autonomously. Every output transits a human-in-the-loop verification step before it can be written to a verified ledger.
 
-## Structural Organization of Components
+## The three compute tiers
 
-The Doorman enforces three invariants at every call boundary:
+The same `service-slm` interface adapts to the host hardware through three execution modes:
 
-1. **Key custody.** No other service holds provider API keys. The Doorman is the exclusive key holder. A compromise of any Ring 1 or Ring 2 service does not expose provider keys.
-2. **Audit logging.** Every call — including Tier A local calls — writes a signed record to the per-tenant audit ledger at `~/Foundry/data/audit-ledger/<tenant>/<YYYY-MM>.jsonl`. The record captures the request shape, tier selected, token count, and response hash.
-3. **Sanitise-outbound / rehydrate-inbound.** Before any request leaves the workspace, the Doorman strips customer-identifying details per the per-tenant sanitisation policy. The response is rehydrated with the stripped context before returning to the caller.
+| Tier | Where it runs | Model size | Use case |
+|---|---|---|---|
+| Local | Operator's workstation or `os-totebox` with ≥16 GB RAM | 1B–7B parameter quantised model loaded locally | Sovereign Iron Vault — institutional customers; no cloud egress |
+| Yo-Yo | Operator-provisioned elastic GPU node | Larger model on rented hardware; data tunnelled via WireGuard | Cost-optimised heavy batch processing; node is torn down after the run |
+| External API | Licensed third-party API endpoint | Frontier model | Last-resort routing for tasks where local capacity is insufficient |
 
-The service listens on `127.0.0.1:9080` and speaks an OpenAI-compatible HTTP API, allowing any Ring 2 service to address it without bespoke integration.
+All three tiers transit the Doorman audit boundary. No tier bypasses it.
 
-## Configuration
+## The Doorman boundary
 
-The Doorman is deployed as a systemd unit (`infrastructure/local-doorman/`) on the workspace VM. Key configuration fields:
+The Doorman is the audit-routing checkpoint between `service-slm` and the rest of the system. Every prompt and every completion is captured before the response returns to the caller. The audit trail lives in the local per-tenant ledger and forms the institutional record of every AI decision.
 
-- Per-tenant budget caps (monthly token limits per tier)
-- Sanitisation policy (field list stripped before outbound calls)
-- Routing thresholds (conditions under which a request escalates from Tier A to Tier B or C)
-- Audit ledger path and rotation schedule
+The Doorman exists for three reasons:
 
+1. **Regulatory.** ISO/IEC 42001 (AI Management System) requires an immutable log of AI-assisted decisions.
+2. **Operational.** A self-healing system needs a corpus of its own past behaviour. The Doorman captures it.
+3. **Sovereign.** No request reaches a third-party API without passing through a local boundary the operator controls.
 
-## See Also
+## Model selection
 
-- [[service-extraction]]
-- [[service-search]]
-- [[apprenticeship-substrate]]
-- [[language-protocol-substrate]]
-- [[trajectory-substrate]]
+The canonical local model is from the OLMo family (Apache 2.0 + Open Data Commons). Two profiles are available:
 
-## References
+| Profile | Model | RAM target |
+|---|---|---|
+| Edge | OLMo-2-0425-1B-Instruct | ~2 GB |
+| Standard | OLMo-3-1125-7B-Think-Q4_K_M | ~6 GB |
 
--  §XI — Three-ring architecture and three-tier compute routing
-- `infrastructure/local-doorman/` — systemd unit (live since workspace v0.1.13)
-- [[sys-adr-07|SYS-ADR-07]] — structured data never routes through AI
+OLMo is preferred because it ships with fully-open weights and training-data documentation — a prerequisite for continued pre-training on an operator's own corpus, which is the long-term path to a domain-specialised institutional model.
+
+## Why a small model
+
+Frontier-scale models impose three costs `service-slm` cannot accept: they require cloud egress, they consume tens of gigabytes of RAM, and they cannot be audited in any meaningful sense. A 1B-parameter quantised model is sufficient for its one narrow task — translating institutional English into deterministic outputs — and fits inside the cost envelope of a $7 cloud node alongside a Totebox.
+
+Specialisation, not scale, is the design principle.
+
+## See also
+
+- [[service-content]] — the upstream Gravity Engine; primary caller of service-slm for gravity verification
+- [[os-network-admin]] — the F8 Terminal where semantic command parsing originates
+- [[totebox-os]] — the Totebox that hosts service-slm in Sovereign Iron mode
+- [[sys-adr-07]] — structured data never routes through AI; service-slm is the implementation of this boundary
+- [[doorman-protocol]] — the Doorman audit-routing protocol in detail
