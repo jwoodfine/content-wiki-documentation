@@ -8,9 +8,13 @@ quality: published
 short_description: "PointSav's market positioning as a steward of shared, open AI infrastructure for regulated small-to-medium businesses: five structural properties that large-scale cloud providers cannot offer without dismantling their own billing models."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "McMahan, B. et al. 'Communication-Efficient Learning of Deep Networks from Decentralized Data.' AISTATS, 2017."
+    url: "https://arxiv.org/abs/1602.05629"
 paired_with: sovereign-ai-commons.es.md
 ---
 
@@ -46,7 +50,7 @@ The platform's design incorporates five properties that are, taken together, str
 
 **Multi-tier compute routing.** The Doorman selects among a local model, a GPU burst instance, and external API services per request. The selection spans infrastructure that includes competitors' frontier models at Tier C. No single organisation controls all three tiers, and the customer's routing configuration governs which tier handles which request.
 
-**Federated compounding.** The intended path to improving the platform's AI capability involves pooling privacy-preserved training signal from many customers' LoRA adapters into improvements to a shared base model. Per-tenant billing and compliance structures make this arrangement unavailable to platforms where each customer's data is held by the vendor under a managed-service agreement.
+**Federated compounding.** The intended path to improving the platform's AI capability involves pooling privacy-preserved training signal from many customers' LoRA adapters into improvements to a shared base model. [^1] Per-tenant billing and compliance structures make this arrangement unavailable to platforms where each customer's data is held by the vendor under a managed-service agreement.
 
 **Continued-pretraining path.** The base model is OLMo 3, published under Apache 2.0 with full training data and training code available. This is the only 2026 non-Chinese open model that permits a deploying organisation to continue training the base, starting from a known checkpoint, on corpus material that the deploying organisation itself accumulates. The intended outcome — a customer-owned specialised base model — requires this property. It is unavailable from any model where the training data is closed.
 
@@ -73,8 +77,3 @@ These are forward-looking statements based on the platform's current design and 
 - [[llm-substrate-decision]] — why OLMo 3 enables the continued-pretraining path
 - [[four-tier-slm-substrate]] — the four deployment tiers customers move through
 
-## References
-
-1. `conventions/sovereign-ai-commons.md` — source convention for this article.
-2. `conventions/compounding-substrate.md` — five structural properties in architectural detail.
-3. `conventions/economic-model.md` — two-tier commercial structure.

@@ -8,9 +8,13 @@ quality: published
 short_description: "El posicionamiento de PointSav como administrador de infraestructura de IA abierta y compartida para pequeñas y medianas empresas reguladas: cinco propiedades estructurales que los grandes proveedores de servicios en la nube no pueden ofrecer sin desmantelar sus propios modelos de facturación."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "McMahan, B. et al. 'Communication-Efficient Learning of Deep Networks from Decentralized Data.' AISTATS, 2017."
+    url: "https://arxiv.org/abs/1602.05629"
 paired_with: sovereign-ai-commons.md
 ---
 
@@ -36,7 +40,7 @@ El diseño de la plataforma incorpora cinco propiedades que, en conjunto, son es
 1. **Soberanía del sustrato.** El código es abierto y bifurcable; un cliente que desee operar de forma independiente del proveedor tiene un camino completo para hacerlo.
 2. **Inteligencia opcional.** Los anillos 1 y 2 — todo el procesamiento determinista — funcionan completamente sin la capa de IA en el anillo 3.
 3. **Enrutamiento de cómputo de múltiples capas.** El Doorman selecciona entre modelo local, ráfaga GPU y API externas por solicitud, incluyendo modelos frontier de terceros en la Capa C.
-4. **Composición federada.** La señal de entrenamiento preservada con privacidad de múltiples adaptadores LoRA de clientes puede agregarse para mejorar el modelo base compartido.
+4. **Composición federada.** La señal de entrenamiento preservada con privacidad de múltiples adaptadores LoRA de clientes puede agregarse para mejorar el modelo base compartido. [^1]
 5. **Camino de preentrenamiento continuo.** El modelo base OLMo 3 publica datos de entrenamiento, código y puntos de control bajo licencias que permiten continuar el preentrenamiento desde un punto conocido sobre corpus propio.
 
 ## El papel de PointSav
