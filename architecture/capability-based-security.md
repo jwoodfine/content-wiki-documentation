@@ -11,13 +11,20 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "Klein, G. et al. 'seL4: Formal Verification of an OS Kernel.' ACM SOSP, 2009."
+    url: "https://dl.acm.org/doi/10.1145/1629575.1629596"
+  - id: 2
+    text: "Lampson, B. W. 'Protection.' ACM SIGOPS Operating Systems Review, 8(1):18–24, 1974."
+    url: "https://dl.acm.org/doi/10.1145/775265.775268"
 paired_with: capability-based-security.es.md
 ---
 
 
 > Capability-based security is the access-control model PointSav uses at the hardware and operating-system layers, where each software component must hold a mathematically verified cryptographic token to communicate with any other component.
 
-**Capability-based security** is the access-control model that replaces traditional operating-system privilege hierarchies in the PointSav platform. Where conventional operating systems (Windows, macOS, Linux) grant broad permissions through administrative accounts and assume components at the same privilege level can be trusted, capability-based security requires each isolated component to hold an explicit, mathematically verified cryptographic token — called a capability — before it can communicate with any other component. A capability cannot be forged or copied; it is granted by the kernel at process start and revoked when the capability is withdrawn. This makes the blast radius of any compromise mathematically bounded to the components the compromised process held capabilities for.
+**Capability-based security** is the access-control model that replaces traditional operating-system privilege hierarchies in the PointSav platform. Where conventional operating systems (Windows, macOS, Linux) grant broad permissions through administrative accounts and assume components at the same privilege level can be trusted, capability-based security requires each isolated component to hold an explicit, mathematically verified cryptographic token — called a capability — before it can communicate with any other component. A capability cannot be forged or copied; it is granted by the kernel at process start and revoked when the capability is withdrawn. [^2] This makes the blast radius of any compromise mathematically bounded to the components the compromised process held capabilities for.
 
 ## Overview
 
@@ -33,7 +40,7 @@ The platform enforces a strict, one-way command flow between isolation domains. 
 
 ## Properties
 
-- **Formal verification.** The seL4 microkernel underlying the capability manager is formally verified in Isabelle/HOL, which means the isolation properties are mathematically proven for the verified configuration — not asserted.
+- **Formal verification.** The seL4 microkernel underlying the capability manager is formally verified in Isabelle/HOL [^1], which means the isolation properties are mathematically proven for the verified configuration — not asserted.
 - **Least privilege by default.** Components start with no capabilities; the system grants the minimum set required for their declared function. Unused capabilities are never held.
 - **Blast-radius containment.** Compromise of one component cannot propagate to components it holds no capability grants for. The scope of a breach is bounded at grant time.
 - **Auditability.** Capability grants are recorded; the set of grants in force at any time is inspectable. There is no hidden administrative path.
@@ -58,9 +65,3 @@ The capability model applies across the full PointSav deployment stack:
 - [[machine-based-auth]]
 - [[compounding-substrate]]
 
-## References
-
-- `conventions/system-substrate-doctrine.md` — capability ledger substrate specification
-- `DOCTRINE.md §XIV` — Compounding Substrate and the seL4 foundation context
-- `conventions/three-ring-architecture.md` — Ring 1 / Ring 2 service isolation model
-- `IT_SUPPORT_Nomenclature_Matrix_V8.md` — canonical OS names (ToteboxOS, MediaKit OS)

@@ -14,6 +14,13 @@ editor: pointsav-engineering
 paired_with: machine-based-auth.md
 short_description: "La autorización basada en hardware reemplaza las estructuras de usuario y contraseña con el emparejamiento criptográfico del hardware físico — el par es el permiso."
 cites: []
+references:
+  - id: 1
+    text: "Perrin, T. 'The Noise Protocol Framework.' noiseprotocol.org, 2016."
+    url: "https://noiseprotocol.org/noise.html"
+  - id: 2
+    text: "Donenfeld, J. A. 'WireGuard: Next Generation Kernel Network Tunnel.' NDSS Symposium, 2017."
+    url: "https://www.ndss-symposium.org/ndss2017/ndss-2017-programme/wireguard-next-generation-kernel-network-tunnel/"
 ---
 
 La autorización basada en hardware reemplaza las estructuras de nombre de usuario y contraseña con el emparejamiento criptográfico del hardware físico — el par es el permiso. Cuando un dispositivo solicita acceso, ambos extremos del par demuestran posesión de material clave complementario; si el par se verifica, la conexión se establece; si no, las máquinas son mutuamente invisibles. Dado que la autorización está vinculada al hardware y no a un secreto memorizado, toda la clase de ataques de robo remoto de credenciales — phishing, adivinación de contraseñas e ingeniería social — queda estructuralmente eliminada. Este artículo cubre cómo funcionan los emparejamientos, los cuatro tipos de emparejamiento, las ventajas estructurales sobre las contraseñas y la relación con las capas [[diode-standard|Diodo]] y de auditoría.
@@ -22,7 +29,7 @@ La autorización basada en hardware reemplaza las estructuras de nombre de usuar
 
 Un emparejamiento es un protocolo criptográfico entre dos máquinas. Los dos extremos del par poseen material de clave pública/privada complementario. Cuando un [[console-os|Libro Mayor de Comandos]] se conecta a un [[totebox-os|Totebox]], ambos lados demuestran posesión de la clave correspondiente. Si el par se verifica, la conexión se establece. Si no, las máquinas son invisibles entre sí.
 
-`service-pairing` gestiona estos emparejamientos utilizando claves de estilo Noise Protocol y WireGuard, derivadas de la atestación de hardware donde la plataforma subyacente lo admite.
+`service-pairing` gestiona estos emparejamientos utilizando Noise Protocol [^1] y claves de estilo WireGuard [^2], derivadas de la atestación de hardware donde la plataforma subyacente lo admite.
 
 | Propiedad | Comportamiento |
 |---|---|
