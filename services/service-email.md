@@ -14,6 +14,13 @@ editor: pointsav-engineering
 paired_with: service-email.es.md
 short_description: "service-email is the Totebox's email server — it ingests SMTP and IMAP traffic, sanitises every payload, and writes raw text to an append-only Maildir on local block storage. Content interpretation is handled upstream by service-content."
 cites: []
+references:
+  - id: 1
+    text: "Hardt, D. (Ed.). 'The OAuth 2.0 Authorization Framework.' IETF RFC 6749, 2012."
+    url: "https://www.rfc-editor.org/rfc/rfc6749"
+  - id: 2
+    text: "NIST. 'Security Guidelines for Storage Infrastructure.' SP 800-209, 2020."
+    url: "https://doi.org/10.6028/NIST.SP.800-209"
 ---
 
 `service-email` is the Totebox's email server. It listens for SMTP and IMAP traffic, sanitises every payload — stripping HTML rendering logic and tracking pixels — and writes the raw text into an append-only Maildir on local block storage. The service does not interpret content; that work happens upstream in `service-content`. This article covers the ingest pipeline, the Sovereign properties that distinguish it from a conventional email client, and its relationship with the Microsoft 365 integration path.
@@ -33,13 +40,13 @@ The service operates in six stages, each carrying a specific Sovereign property:
 
 ## Microsoft 365 integration
 
-The OAuth2 setup uses a Confidential Client registration in Microsoft Entra. Three Graph permissions are required: `Mail.ReadWrite` (to sync into Maildir), `Mail.Send` (to stage templates), and `User.Read.All` (to verify sender identities). Admin consent is granted once so the service runs as a daemon without per-message human interaction.
+The OAuth2 setup uses a Confidential Client registration in Microsoft Entra [^1]. Three Graph permissions are required: `Mail.ReadWrite` (to sync into Maildir), `Mail.Send` (to stage templates), and `User.Read.All` (to verify sender identities). Admin consent is granted once so the service runs as a daemon without per-message human interaction.
 
 This approach confines the cloud-trust boundary to a single, well-defined point in the pipeline. Each polling cycle is a discrete, authenticated HTTP exchange — rather than a persistent IMAP connection — making the ingest boundary auditable and stateless.
 
 ## The WORM discipline
 
-`service-email` writes payloads to the WORM Maildir — an append-only structure on the Totebox's local block storage. There is no delete operation. A payload written to the Maildir cannot be erased, even if the cloud source (the Microsoft 365 mailbox) is later modified, deleted, or the subscription lapses. The operator's email record is sovereign: it belongs to the archive, not the cloud provider.
+`service-email` writes payloads to the WORM Maildir — an append-only structure on the Totebox's local block storage. [^2] There is no delete operation. A payload written to the Maildir cannot be erased, even if the cloud source (the Microsoft 365 mailbox) is later modified, deleted, or the subscription lapses. The operator's email record is sovereign: it belongs to the archive, not the cloud provider.
 
 ## What service-email is not
 

@@ -14,6 +14,13 @@ editor: pointsav-engineering
 paired_with: service-content.md
 short_description: "service-content es el motor de síntesis de la familia PointSav — el Motor de Gravedad que lee cargas útiles en bruto de un Totebox, las procesa contra una taxonomía institucional y genera los documentos estructurados que publica una organización."
 cites: []
+references:
+  - id: 1
+    text: "Aho, A. V. & Corasick, M. J. 'Efficient String Matching: An Aid to Bibliographic Search.' Communications of the ACM, 18(6):333–340, 1975."
+    url: "https://dl.acm.org/doi/10.1145/360825.360855"
+  - id: 2
+    text: "OIT. 'CIUO-08: Clasificación Internacional Uniforme de Ocupaciones.' Organización Internacional del Trabajo, 2012."
+    url: "https://www.ilo.org/public/english/bureau/stat/isco/isco08/"
 ---
 
 `service-content` es el motor de síntesis de la familia PointSav. Lee cargas útiles en bruto desde el interior de un Totebox, las procesa contra una taxonomía institucional, produce densos Vectores de Gravedad y, en última instancia, genera los documentos que publica una organización — wikis, comunicados de prensa, libros mayores de debida diligencia, memorandos internos. Es la diferencia entre un almacén de archivos y un motor de inteligencia activo. Este artículo cubre la Bóveda de Semillas de Cuatro Pilares, el pipeline del Motor de Gravedad, la Ontología Estratificada y el límite de intervención humana que rige lo que el motor puede escribir de forma autónoma.
@@ -36,7 +43,7 @@ Un quinto pilar, Temas, captura las corrientes multidimensionales que emergen de
 Cuando llega una carga útil (un correo electrónico, un PDF, un DOCX), el motor realiza una secuencia determinista ajustada:
 
 1. **Ingesta.** `service-email` (o la [[app-console-input|Máquina de Entrada]]) escribe la carga útil en bruto en la bóveda WORM del Totebox. Nada se muta todavía.
-2. **Extracción de entidades.** `service-extraction` ejecuta Aho-Corasick sobre el texto en bruto y extrae cada nombre, correo electrónico, número de teléfono y organización. Cada uno recibe un Sovereign-ID determinista y comienza en estado `Discovery`.
+2. **Extracción de entidades.** `service-extraction` ejecuta Aho-Corasick sobre el texto en bruto y extrae cada nombre, correo electrónico, número de teléfono y organización. [^1] Cada uno recibe un Sovereign-ID determinista y comienza en estado `Discovery`.
 3. **Cálculo de gravedad.** `service-content` carga los cuatro pilares, los fusiona en un único autómata de búsqueda y extrae solo las oraciones que contienen palabras clave estructurales. Una carga útil de 5 MB se convierte en un Vector de Gravedad de 50 palabras.
 4. **Verificación.** El vector y el paquete de entidades pasan a `service-slm`, que evalúa si la carga útil se alinea con la taxonomía de la institución. La salida es un único token — `VALID` o `REJECT`.
 5. **Enrutamiento.** Las cargas útiles verificadas van al almacenamiento profundo; las rechazadas van a cuarentena. Las entidades verificadas tienen su estado `Discovery` actualizado y son conectadas al Plan de Cuentas.
@@ -49,7 +56,7 @@ Cuando llega una carga útil (un correo electrónico, un PDF, un DOCX), el motor
 |---|---|
 | L0 — Geometría Base | Archivos en bruto (`/source`, `/assets`, `/ledger`) — inmutables, locales |
 | L1/L2 — Grafo en Bruto | Extracción ciega al 100% en un grafo de conocimiento JSONL |
-| L3 — Anclas Globales | Estándares universales (IFRS/GAAP para finanzas, O*NET/ISCO para personal) |
+| L3 — Anclas Globales | Estándares universales (IFRS/GAAP para finanzas, O*NET/ISCO para personal) [^2] |
 | L4 — Taxonomía Soberana | La realidad operativa propia de la institución — Dominios, Glosarios, Temas |
 | L5 — Corteza de Verificación | El libro mayor de verdad con intervención humana; solo salidas de contenido verificado por el operador |
 

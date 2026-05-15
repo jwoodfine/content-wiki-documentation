@@ -14,6 +14,13 @@ editor: pointsav-engineering
 paired_with: service-content.es.md
 short_description: "service-content is the synthesis engine of the PointSav family — the Gravity Engine that reads raw payloads from a Totebox, runs them against an institutional taxonomy, and generates the structured documents an organisation publishes."
 cites: []
+references:
+  - id: 1
+    text: "Aho, A. V. & Corasick, M. J. 'Efficient String Matching: An Aid to Bibliographic Search.' Communications of the ACM, 18(6):333–340, 1975."
+    url: "https://dl.acm.org/doi/10.1145/360825.360855"
+  - id: 2
+    text: "ILO. 'ISCO-08: International Standard Classification of Occupations.' International Labour Organization, 2012."
+    url: "https://www.ilo.org/public/english/bureau/stat/isco/isco08/"
 ---
 
 `service-content` is the synthesis engine of the PointSav family. It reads raw payloads from inside a Totebox, runs them against an institutional taxonomy, produces dense Gravity Vectors, and ultimately generates the documents an organisation publishes — wikis, news releases, due-diligence ledgers, internal memos. It is the difference between a file store and an active intelligence engine. This article covers the Four-Pillar Seed Vault, the Gravity Engine pipeline, the Stratified Ontology, and the human-in-the-loop boundary that governs what the engine can write autonomously.
@@ -36,7 +43,7 @@ A fifth pillar, Themes, captures the multidimensional undercurrents emerging fro
 When a payload arrives (an email, a PDF, a DOCX), the engine performs a tight, deterministic sequence:
 
 1. **Ingest.** `service-email` (or the [[app-console-input|Input Machine]]) writes the raw payload to the Totebox's WORM vault. Nothing is mutated yet.
-2. **Entity extraction.** `service-extraction` runs Aho-Corasick over the raw text and pulls out every name, email, phone number, and organisation. Each gets a deterministic Sovereign-ID and begins in `Discovery` status.
+2. **Entity extraction.** `service-extraction` runs Aho-Corasick over the raw text and pulls out every name, email, phone number, and organisation. [^1] Each gets a deterministic Sovereign-ID and begins in `Discovery` status.
 3. **Gravity calculation.** `service-content` loads the four pillars, fuses them into a single search automaton, and extracts only sentences containing structural keywords. A 5 MB payload becomes a 50-word Gravity Vector.
 4. **Verification.** The vector and the entity bundle pass to `service-slm`, which evaluates whether the payload aligns with the institution's taxonomy. The output is a single token — `VALID` or `REJECT`.
 5. **Routing.** Verified payloads go to deep storage; rejected payloads go to quarantine. Verified entities have their `Discovery` status upgraded and are socketed to the Chart of Accounts.
@@ -49,7 +56,7 @@ When a payload arrives (an email, a PDF, a DOCX), the engine performs a tight, d
 |---|---|
 | L0 — Base Geometry | Raw files (`/source`, `/assets`, `/ledger`) — immutable, local |
 | L1/L2 — Raw Graph | Blind 100% extraction into a JSONL knowledge graph |
-| L3 — Global Anchors | Universal standards (IFRS/GAAP for finance, O*NET/ISCO for personnel) |
+| L3 — Global Anchors | Universal standards (IFRS/GAAP for finance, O*NET/ISCO for personnel) [^2] |
 | L4 — Sovereign Taxonomy | The institution's bespoke operational reality — Domains, Glossaries, Topics |
 | L5 — Verification Crust | The human-in-the-loop truth ledger; outputs from operator-verified content only |
 

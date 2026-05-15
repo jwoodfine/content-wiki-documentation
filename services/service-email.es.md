@@ -14,6 +14,13 @@ editor: pointsav-engineering
 paired_with: service-email.md
 short_description: "service-email es el servidor de correo del Totebox — ingesta tráfico SMTP e IMAP, saneea cada carga útil y escribe texto en bruto en un Maildir de solo adición en almacenamiento local. La interpretación del contenido se maneja en sentido ascendente por service-content."
 cites: []
+references:
+  - id: 1
+    text: "Hardt, D. (Ed.). 'El Marco de Autorización OAuth 2.0.' IETF RFC 6749, 2012."
+    url: "https://www.rfc-editor.org/rfc/rfc6749"
+  - id: 2
+    text: "NIST. 'Directrices de Seguridad para Infraestructura de Almacenamiento.' SP 800-209, 2020."
+    url: "https://doi.org/10.6028/NIST.SP.800-209"
 ---
 
 `service-email` es el servidor de correo del Totebox. Escucha el tráfico SMTP e IMAP, saneea cada carga útil — eliminando la lógica de renderizado HTML y los píxeles de rastreo — y escribe el texto en bruto en un Maildir de solo adición en almacenamiento de bloque local. El servicio no interpreta el contenido; ese trabajo ocurre en sentido ascendente en `service-content`. Este artículo cubre el pipeline de ingesta, las propiedades Soberanas que lo distinguen de un cliente de correo convencional y su relación con el camino de integración de Microsoft 365.
@@ -33,13 +40,13 @@ El servicio opera en seis etapas, cada una con una propiedad Soberana específic
 
 ## Integración con Microsoft 365
 
-La configuración OAuth2 usa un registro de Cliente Confidencial en Microsoft Entra. Se requieren tres permisos de Graph: `Mail.ReadWrite` (para sincronizar en el Maildir), `Mail.Send` (para preparar plantillas) y `User.Read.All` (para verificar identidades del remitente). El consentimiento de administrador se concede una vez para que el servicio se ejecute como daemon sin interacción humana por mensaje.
+La configuración OAuth2 usa un registro de Cliente Confidencial en Microsoft Entra [^1]. Se requieren tres permisos de Graph: `Mail.ReadWrite` (para sincronizar en el Maildir), `Mail.Send` (para preparar plantillas) y `User.Read.All` (para verificar identidades del remitente). El consentimiento de administrador se concede una vez para que el servicio se ejecute como daemon sin interacción humana por mensaje.
 
 Este enfoque confina el límite de confianza en la nube a un único punto bien definido en el pipeline. Cada ciclo de sondeo es un intercambio HTTP discreto y autenticado — en lugar de una conexión IMAP persistente — haciendo que el límite de ingesta sea auditable y sin estado.
 
 ## La disciplina WORM
 
-`service-email` escribe cargas útiles en el Maildir WORM — una estructura de solo adición en el almacenamiento de bloque local del Totebox. No hay operación de borrado. Una carga útil escrita en el Maildir no puede borrarse, incluso si la fuente en la nube (el buzón de Microsoft 365) es modificada, eliminada o la suscripción vence. El registro de correo del operador es soberano: pertenece al archivo, no al proveedor de nube.
+`service-email` escribe cargas útiles en el Maildir WORM — una estructura de solo adición en el almacenamiento de bloque local del Totebox. [^2] No hay operación de borrado. Una carga útil escrita en el Maildir no puede borrarse, incluso si la fuente en la nube (el buzón de Microsoft 365) es modificada, eliminada o la suscripción vence. El registro de correo del operador es soberano: pertenece al archivo, no al proveedor de nube.
 
 ## Lo que service-email no es
 

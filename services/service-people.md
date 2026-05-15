@@ -14,6 +14,13 @@ editor: pointsav-engineering
 paired_with: service-people.es.md
 short_description: "service-people maintains the Totebox's deterministic identity ledger — the F2 surface in os-console and the source of truth for who appears in any payload across the Totebox, using an Anchor-Claim-Socket data model that never overwrites state."
 cites: []
+references:
+  - id: 1
+    text: "Fowler, M. 'Event Sourcing.' martinfowler.com, 2005."
+    url: "https://martinfowler.com/eaaDev/EventSourcing.html"
+  - id: 2
+    text: "Aho, A. V. & Corasick, M. J. 'Efficient String Matching: An Aid to Bibliographic Search.' Communications of the ACM, 18(6):333–340, 1975."
+    url: "https://dl.acm.org/doi/10.1145/360825.360855"
 ---
 
 `service-people` maintains the Totebox's deterministic identity ledger. It is the F2 surface in `os-console` and the source of truth for "who" appears in any payload across the Totebox. The data model is built around the Anchor-Claim-Socket (ACS) pattern: identity never overwrites state, claims accumulate over time, and the current picture of any person can always be recomputed from the history. This article covers the three-entity data model, the ACS pattern, and the Infinite Net — the mechanism through which identities enter the ledger from raw payloads without operator input.
@@ -32,7 +39,7 @@ If an email contact's role is listed differently in two sources, both claims exi
 
 ## The Anchor-Claim-Socket model
 
-The three-entity design, abbreviated ACS, is event sourcing applied to identity: never overwrite state; always append observations; recompute the present from the history.
+The three-entity design, abbreviated ACS, is event sourcing applied to identity: never overwrite state; always append observations; recompute the present from the history. [^1]
 
 | Property | Why it matters |
 |---|---|
@@ -42,7 +49,7 @@ The three-entity design, abbreviated ACS, is event sourcing applied to identity:
 
 ## The Infinite Net
 
-Identity does not enter `service-people` only through manual operator input. `service-extraction` runs Aho-Corasick over every incoming payload — email body, PDF text, DOCX text — and pulls every name, email address, phone number, and organisation it finds. Each extracted entity receives a Sovereign-ID and enters the ledger in `Discovery` status.
+Identity does not enter `service-people` only through manual operator input. `service-extraction` runs Aho-Corasick over every incoming payload — email body, PDF text, DOCX text — and pulls every name, email address, phone number, and organisation it finds. [^2] Each extracted entity receives a Sovereign-ID and enters the ledger in `Discovery` status.
 
 Over time, `service-slm` cross-references discovered entities against the Gravity Vectors produced by `service-content`. If an entity accrues gravity — appearing in payloads aligned with Domains, Archetypes, and Themes — it is socketed to a Chart-of-Accounts row and elevated to active status. If it never accrues gravity (a promotional newsletter sender; a one-time signature), it ages out of the active index after 30 days, remaining in the WORM record but invisible to active search.
 

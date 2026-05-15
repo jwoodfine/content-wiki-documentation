@@ -14,6 +14,13 @@ editor: pointsav-engineering
 paired_with: service-people.md
 short_description: "service-people mantiene el libro mayor de identidades determinista del Totebox — la superficie F2 en os-console y la fuente de verdad sobre quién aparece en cualquier carga útil del Totebox, usando un modelo de datos Ancla-Reclamación-Enchufe que nunca sobrescribe el estado."
 cites: []
+references:
+  - id: 1
+    text: "Fowler, M. 'Event Sourcing.' martinfowler.com, 2005."
+    url: "https://martinfowler.com/eaaDev/EventSourcing.html"
+  - id: 2
+    text: "Aho, A. V. & Corasick, M. J. 'Efficient String Matching: An Aid to Bibliographic Search.' Communications of the ACM, 18(6):333–340, 1975."
+    url: "https://dl.acm.org/doi/10.1145/360825.360855"
 ---
 
 `service-people` mantiene el libro mayor de identidades determinista del Totebox. Es la superficie F2 en `os-console` y la fuente de verdad sobre "quién" aparece en cualquier carga útil del Totebox. El modelo de datos se construye alrededor del patrón Ancla-Reclamación-Enchufe (ACS): la identidad nunca sobrescribe el estado, las reclamaciones se acumulan con el tiempo y el panorama actual de cualquier persona siempre puede recomputarse a partir del historial. Este artículo cubre el modelo de datos de tres entidades, el patrón ACS y la Red Infinita — el mecanismo mediante el cual las identidades entran al libro mayor desde cargas útiles en bruto sin intervención del operador.
@@ -32,7 +39,7 @@ Si el rol de un contacto de correo aparece listado de forma diferente en dos fue
 
 ## El modelo Ancla-Reclamación-Enchufe
 
-El diseño de tres entidades, abreviado ACS, es el event sourcing aplicado a la identidad: nunca sobrescribir el estado; siempre añadir observaciones; recomputar el presente a partir del historial.
+El diseño de tres entidades, abreviado ACS, es el event sourcing aplicado a la identidad: nunca sobrescribir el estado; siempre añadir observaciones; recomputar el presente a partir del historial. [^1]
 
 | Propiedad | Por qué importa |
 |---|---|
@@ -42,7 +49,7 @@ El diseño de tres entidades, abreviado ACS, es el event sourcing aplicado a la 
 
 ## La Red Infinita
 
-La identidad no entra en `service-people` solo mediante la entrada manual del operador. `service-extraction` ejecuta Aho-Corasick sobre cada carga útil entrante — cuerpo de correo, texto PDF, texto DOCX — y extrae cada nombre, dirección de correo, número de teléfono y organización que encuentra. Cada entidad extraída recibe un Sovereign-ID y entra al libro mayor en estado `Discovery`.
+La identidad no entra en `service-people` solo mediante la entrada manual del operador. `service-extraction` ejecuta Aho-Corasick sobre cada carga útil entrante — cuerpo de correo, texto PDF, texto DOCX — y extrae cada nombre, dirección de correo, número de teléfono y organización que encuentra. [^2] Cada entidad extraída recibe un Sovereign-ID y entra al libro mayor en estado `Discovery`.
 
 Con el tiempo, `service-slm` cruza las entidades descubiertas con los Vectores de Gravedad producidos por `service-content`. Si una entidad acumula gravedad — apareciendo en cargas útiles alineadas con Dominios, Arquetipos y Temas — se enchufa a una fila del Plan de Cuentas y se eleva a estado activo. Si nunca acumula gravedad (el remitente de un boletín promocional; una firma de un solo uso), sale del índice activo después de 30 días, permaneciendo en el registro WORM pero invisible para la búsqueda activa.
 
