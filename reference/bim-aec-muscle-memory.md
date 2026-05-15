@@ -13,11 +13,11 @@ category: reference
 
 
 
-The Building Design System adopts established interface vocabularies from industry-standard tools (Revit, ArchiCAD, BricsCAD, and Bonsai) to ensure a zero-learning curve for AEC practitioners. By mirroring universal navigation and layout conventions, Foundry allows users to focus on strategic innovations—such as the flat-file vault and code-as-composable-geometry—rather than basic tool interaction.
+The Building Design System adopts established interface vocabularies from industry-standard tools (Revit, ArchiCAD, BricsCAD, and Bonsai) to ensure a zero-learning curve for AEC practitioners. By mirroring universal navigation and layout conventions, the platform allows users to focus on strategic innovations—such as the flat-file vault and code-as-composable-geometry—rather than basic tool interaction.
 
 ## Universal AEC Interface Conventions
 
-Foundry implements the following industry-standard layout patterns:
+The platform implements the following industry-standard layout patterns:
 
 | Convention | Standard Location | Building Design System Component |
 | :--- | :--- | :--- |
@@ -34,11 +34,11 @@ Foundry implements the following industry-standard layout patterns:
 
 ## Strategic Divergence from Generic Modeling
 
-While Foundry respects professional conventions, it deliberately avoids artifacts of general-purpose 3D modeling software (e.g., Blender-host artifacts in Bonsai):
+While the platform respects professional conventions, it deliberately avoids artifacts of general-purpose 3D modeling software (e.g., Blender-host artifacts in Bonsai):
 
-1. **Dedicated Spatial Tree:** Foundry utilizes a purpose-built `SpatialTree` widget rather than a generic scene-graph outliner, enabling features like search-by-space-name and floor-plan thumbnails.
+1. **Dedicated Spatial Tree:** The platform utilizes a purpose-built `SpatialTree` widget rather than a generic scene-graph outliner, enabling features like search-by-space-name and floor-plan thumbnails.
 2. **Standardized Keymaps:** Navigation uses the standard 1–6 number row for view switching (top, bottom, front, back, left, right), accommodating the lack of numpads on modern laptops.
-3. **Removal of Modal Editing:** Foundry eliminates complex "mode-switching" (e.g., Object vs. Edit mode) common in general 3D software, providing a streamlined authoring experience.
+3. **Removal of Modal Editing:** The platform eliminates complex "mode-switching" (e.g., Object vs. Edit mode) common in general 3D software, providing a streamlined authoring experience.
 
 ## Addressing the FM Operator Persona
 

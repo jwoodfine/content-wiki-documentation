@@ -13,7 +13,7 @@ category: reference
 
 
 
-Foundry’s BIM Token Taxonomy organizes the Building Design System into eight primitive categories anchored to the IFC 4.3 (ISO 16739-1:2024) entity hierarchy. This alignment ensures that design-system tokens correspond directly to canonical AEC classification conventions, facilitating seamless data exchange across the openBIM ecosystem.
+The platform’s BIM Token Taxonomy organizes the Building Design System into eight primitive categories anchored to the IFC 4.3 (ISO 16739-1:2024) entity hierarchy. This alignment ensures that design-system tokens correspond directly to canonical AEC classification conventions, facilitating seamless data exchange across the openBIM ecosystem.
 
 ## Eight Primitive Token Categories
 
@@ -30,7 +30,7 @@ Foundry’s BIM Token Taxonomy organizes the Building Design System into eight p
 
 ## Classification Floor: Uniclass 2015
 
-Foundry adopts **Uniclass 2015** as its universal classification floor. Published by the NBS and recognized globally in the openBIM community, Uniclass provides the baseline semantic tagging for every element in the system. While deployment-specific taxonomies (e.g., OmniClass or MasterFormat) can be layered on top, Uniclass 2015 serves as the mandatory default, ensuring consistent data structures from day one.
+The platform adopts **Uniclass 2015** as its universal classification floor. Published by the NBS and recognized globally in the openBIM community, Uniclass provides the baseline semantic tagging for every element in the system. While deployment-specific taxonomies (e.g., OmniClass or MasterFormat) can be layered on top, Uniclass 2015 serves as the mandatory default, ensuring consistent data structures from day one.
 
 ## Component Architecture
 

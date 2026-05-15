@@ -12,11 +12,11 @@ category: reference
 
 
 
-El Sistema de Diseño de Edificios es la contraparte AEC del sustrato de diseño de Foundry. Se basa en una postura estructural: los compromisos de PointSav —almacenamiento en archivos planos, estándares abiertos, ejecución fuera de línea y seguridad seL4— no son preferencias estéticas, sino las ventajas que permiten superar las debilidades del software en la nube tradicional.
+El Sistema de Diseño de Edificios es la contraparte AEC del sustrato de diseño de la plataforma. Se basa en una postura estructural: los compromisos de PointSav —almacenamiento en archivos planos, estándares abiertos, ejecución fuera de línea y seguridad seL4— no son preferencias estéticas, sino las ventajas que permiten superar las debilidades del software en la nube tradicional.
 
 ## Diferenciadores Estratégicos
 
-La filosofía de Foundry se centra en cinco capacidades únicas:
+La filosofía de la plataforma se centra en cinco capacidades únicas:
 1. **BIM Anclado al Activo:** El gemelo digital es un activo legal que viaja con la escritura del edificio.
 2. **Capacidad fuera de línea:** Funcionalidad total en entornos sin internet o de alta seguridad.
 3. **Supervivencia a la Obsolescencia:** Datos legibles durante 50 años mediante el uso de estándares ISO abiertos.
@@ -25,7 +25,7 @@ La filosofía de Foundry se centra en cinco capacidades únicas:
 
 ## El Salto del Código Componible
 
-Foundry propone un modelo donde las normativas urbanísticas se publican como "tokens de diseño" (IDS 1.0). El diseñador trabaja dentro de envolventes ya validadas, haciendo que los errores de cumplimiento sean geométricamente imposibles desde el primer trazo. Este enfoque de "cumplimiento por construcción" es el núcleo de la ventaja tecnológica de PointSav.
+La plataforma propone un modelo donde las normativas urbanísticas se publican como "tokens de diseño" (IDS 1.0). El diseñador trabaja dentro de envolventes ya validadas, haciendo que los errores de cumplimiento sean geométricamente imposibles desde el primer trazo. Este enfoque de "cumplimiento por construcción" es el núcleo de la ventaja tecnológica de PointSav.
 
 ## Véase también
 

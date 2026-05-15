@@ -24,7 +24,7 @@ La referencia de hardware PointSav define los perfiles de dispositivos y las con
 |---|---|---|
 | Insignia | Dell XPS 13 / 14 (Developer Edition) | Dell distribuye un perfil Linux oficial; los controladores de WiFi Intel y gráficos maduran rápidamente en FreeBSD |
 | Flota | HP ProBook 400 series (445 / 450) | Chipsets WiFi de grado empresarial con compatibilidad BSD; adecuados para despliegues de clientes PyME más grandes |
-| Anfitrión de compilación (legado) | iMac 12.1 (Sandy Bridge, 2011) | La máquina de compilación original de Foundry hasta principios de 2026; posteriormente reemplazada para el trabajo de desarrollo de `service-content` |
+| Anfitrión de compilación (legado) | iMac 12.1 (Sandy Bridge, 2011) | La máquina de compilación original hasta principios de 2026; posteriormente reemplazada para el trabajo de desarrollo de `service-content` |
 
 El criterio de selección es la disponibilidad de controladores, no la preferencia de marca. Los portátiles de consumo con módulos WiFi propietarios que carecen de controladores compatibles con BSD quedan excluidos por esa sola razón.
 

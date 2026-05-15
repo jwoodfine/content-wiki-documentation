@@ -11,7 +11,7 @@ editor: project-language Task
 
 
 
-This is the definitive, public-facing A-Z Lexicon for PointSav Digital Systems. It bridges standard industry terminology (layman terms) with our specialized **2030 Sovereign Infrastructure Doctrine**.
+This is the definitive, public-facing A-Z Lexicon for PointSav Digital Systems. It bridges standard industry terminology (layman terms) with the platform's **2030 Sovereign Infrastructure vision**.
 
 <div class="wiki-toc" style="padding: 10px; background: #f9f9f9; border: 1px solid #ccc; text-align: center; font-weight: bold; margin-bottom: 2em;">
  <a href="#A">A</a> | <a href="#B">B</a> | <a href="#C">C</a> | <a href="#D">D</a> | <a href="#E">E</a> | <a href="#F">F</a> | <a href="#G">G</a> | <a href="#H">H</a> | <a href="#I">I</a> | <a href="#J">J</a> | <a href="#K">K</a> | <a href="#L">L</a> | <a href="#M">M</a> | <a href="#N">N</a> | <a href="#O">O</a> | <a href="#P">P</a> | Q | <a href="#R">R</a> | <a href="#S">S</a> | <a href="#T">T</a> | <a href="#U">U</a> | <a href="#V">V</a> | <a href="#W">W</a> | X | Y | <a href="#Z">Z</a>
@@ -99,7 +99,7 @@ Standard IT infrastructure term, re-contextualized within PointSav's air-gapped 
 
 The delivery of computing services—including servers, storage, databases, networking, software, analytics, and intelligence—over the Internet ("the cloud") to offer faster innovation, flexible resources, and economies of scale.
 
-> **2030 Doctrine Context:** Addressed by PointSav's Sovereign Infrastructure to eliminate vendor lock-in and structural dependency (Technofeudalism).
+> **2030 Platform Context:** Addressed by PointSav's Sovereign Infrastructure to eliminate vendor lock-in and structural dependency (Technofeudalism).
 
 - **Collaborators**
 - **Command Line Interface**
@@ -432,10 +432,10 @@ Standard IT infrastructure term, re-contextualized within PointSav's air-gapped 
 - **Public Browser Delivery – Input Machine**
 - **Public Browser Delivery – Maps**
 ### Public Cloud
-Traditional off-premise infrastructure. In the 2030 Doctrine, this represents a structural dependency that Sovereign Infrastructure aims to mitigate.
+Traditional off-premise infrastructure. In the 2030 platform vision, this represents a structural dependency that Sovereign Infrastructure aims to mitigate.
 
 ### Public Cloud Resources
-Traditional off-premise infrastructure. In the 2030 Doctrine, this represents a structural dependency that Sovereign Infrastructure aims to mitigate.
+Traditional off-premise infrastructure. In the 2030 platform vision, this represents a structural dependency that Sovereign Infrastructure aims to mitigate.
 
 
 ## R

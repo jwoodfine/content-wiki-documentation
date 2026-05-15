@@ -5,7 +5,7 @@ slug: style-guide-guide
 category: reference
 type: topic
 quality: complete
-short_description: "How to write a GUIDE file: the operational runbook format for Foundry deployment subfolders, covering required six-section structure, terse imperative voice, named actors, command formatting, concrete verification, and the distinction from TOPIC files."
+short_description: "How to write a GUIDE file: the operational runbook format for platform deployment subfolders, covering required six-section structure, terse imperative voice, named actors, command formatting, concrete verification, and the distinction from TOPIC files."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-15
@@ -14,7 +14,7 @@ cites: []
 paired_with: style-guide-guide.es.md
 ---
 
-> A GUIDE file is the operational runbook format for Foundry deployment subfolders — how to run, configure, or recover from failure — and is distinct from a TOPIC, which explains what something is and why.
+> A GUIDE file is the operational runbook format for platform deployment subfolders — how to run, configure, or recover from failure — and is distinct from a TOPIC, which explains what something is and why.
 
 A **GUIDE** file (`guide-<subject>.md`) is an operational runbook — how to run, configure, or recover from failure. It tells the operator what to do, in order, with the commands they will copy and paste. It is not an explanation of why something works; that reasoning belongs in a TOPIC, covered in [[style-guide-topic|Style Guide — TOPIC]]. Every GUIDE lives inside the deployment subfolder it operates; a GUIDE that appears at a catalog root without a containing subfolder is misplaced and must be moved.
 

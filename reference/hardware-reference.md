@@ -24,7 +24,7 @@ The PointSav hardware reference defines the device profiles and infrastructure c
 |---|---|---|
 | Flagship | Dell XPS 13 / 14 (Developer Edition) | Dell ships an official Linux profile; Intel WiFi and graphics drivers mature into FreeBSD quickly |
 | Fleet | HP ProBook 400 series (445 / 450) | Enterprise-grade WiFi chipsets with BSD compatibility; suitable for larger SMB and customer deployments |
-| Build host (legacy) | iMac 12.1 (Sandy Bridge, 2011) | The original Foundry build machine through early 2026; subsequently superseded for `service-content` development work |
+| Build host (legacy) | iMac 12.1 (Sandy Bridge, 2011) | The original build machine through early 2026; subsequently superseded for `service-content` development work |
 
 The selection criterion is driver availability, not brand preference. Consumer laptops with proprietary WiFi modules that lack BSD-compatible drivers are excluded on that basis alone.
 

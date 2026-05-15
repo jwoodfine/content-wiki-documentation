@@ -12,7 +12,7 @@ category: reference
 
 
 
-Foundry impone reglas estrictas de formato para la difusión de noticias corporativas, siguiendo los principios de Lenguaje Claro ISO 24495-1. Esto asegura que cada comunicado proyecte autoridad institucional y sea perfectamente legible tanto en formato digital como impreso.
+La plataforma impone reglas estrictas de formato para la difusión de noticias corporativas, siguiendo los principios de Lenguaje Claro ISO 24495-1. Esto asegura que cada comunicado proyecte autoridad institucional y sea perfectamente legible tanto en formato digital como impreso.
 
 ## Reglas Universales de Formato
 

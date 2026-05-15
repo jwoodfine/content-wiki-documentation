@@ -9,7 +9,7 @@ last_edited: 2026-05-08
 editor: pointsav-engineering
 ---
 
-Every article in the Foundry wikis is a learning resource, not a reference lookup. A reader who finishes an article should understand the subject — not just have retrieved a fact. Wikipedia is the model: structured, internally linked, deep enough to build genuine understanding, and consistent enough that a reader who knows Wikipedia recognises the layout immediately and knows how to navigate it. This article explains what that means in practice and how it shapes every editorial decision.
+Every article in the PointSav wikis is a learning resource, not a reference lookup. A reader who finishes an article should understand the subject — not just have retrieved a fact. Wikipedia is the model: structured, internally linked, deep enough to build genuine understanding, and consistent enough that a reader who knows Wikipedia recognises the layout immediately and knows how to navigate it. This article explains what that means in practice and how it shapes every editorial decision.
 
 ## The Wikipedia model
 
@@ -23,7 +23,7 @@ Three structural choices produce this outcome:
 
 **3. Consistent structure.** Lead paragraph → body sections → See also → References. This structure is Wikipedia's muscle memory. A reader who has used Wikipedia for ten minutes recognises it. The recognition is itself a form of trust — the reader knows how to use the article before they read it.
 
-The Foundry wikis apply this model to three distinct audiences in three distinct language registers. The structure is the same. The register shifts to match the reader.
+The PointSav wikis apply this model to three distinct audiences in three distinct language registers. The structure is the same. The register shifts to match the reader.
 
 ## The encyclopedic test
 
@@ -43,7 +43,7 @@ If an article fails this test, the rewrite adds the relationships, context, and 
 
 ## DataGraph-enriched content
 
-The Foundry wikis are connected to a property graph database — the DataGraph — that accumulates knowledge about every entity in the platform: what each entity connects to, which domain it belongs to, which themes span it, and what the research corpus says about it.
+The PointSav wikis are connected to a property graph database — the DataGraph — that accumulates knowledge about every entity in the platform: what each entity connects to, which domain it belongs to, which themes span it, and what the research corpus says about it.
 
 The wiki articles were authored before the DataGraph was fully populated. The DataGraph now knows things that many articles do not yet express. A DataGraph-informed rewrite adds that knowledge to the article:
 
@@ -62,7 +62,7 @@ The language tokens govern register. The DataGraph governs substance. An article
 
 ## The monthly improvement cycle
 
-The Foundry wikis improve continuously through a monthly content sweep. Each sweep runs against an updated DataGraph — refined by on-demand GPU inference passes that run daily and external API passes that run weekly or monthly as new source data accumulates. Each sweep takes every article one level higher in quality.
+The PointSav wikis improve continuously through a monthly content sweep. Each sweep runs against an updated DataGraph — refined by on-demand GPU inference passes that run daily and external API passes that run weekly or monthly as new source data accumulates. Each sweep takes every article one level higher in quality.
 
 The mechanism: the inference system generates a new draft of each article against the current DataGraph. Editorial review produces a verdict — accept, refine, or reject. Each verdict is a training example that makes the next month's generated draft better. The language tokens score each generated draft for register correctness, so register drift is caught automatically.
 

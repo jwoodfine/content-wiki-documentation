@@ -13,11 +13,11 @@ category: reference
 
 
 
-The Building Design System serves as the AEC-specific extension of Foundry’s design substrate, analogous to the relationship between IBM Carbon and specialized industry modules. It is anchored to the IFC 4.3 entity hierarchy and prioritized for high-fidelity operational environments. The system translates Foundry’s core commitments—flat-file storage, open standards, and offline-first execution—into a professional toolset that addresses the structural weaknesses of legacy cloud-only BIM.
+The Building Design System serves as the AEC-specific extension of the platform’s design substrate, analogous to the relationship between IBM Carbon and specialized industry modules. It is anchored to the IFC 4.3 entity hierarchy and prioritized for high-fidelity operational environments. The system translates the platform’s core commitments—flat-file storage, open standards, and offline-first execution—into a professional toolset that addresses the structural weaknesses of legacy cloud-only BIM.
 
 ## Structural Differentiators
 
-Foundry’s design philosophy is predicated on five capabilities that are structurally incompatible with multi-tenant SaaS models:
+The platform’s design philosophy is predicated on five capabilities that are structurally incompatible with multi-tenant SaaS models:
 
 1. **Asset-Anchored BIM:** The digital twin is a legal artifact signed with the land title, moving with the property deed rather than being tied to a vendor’s tenant model.
 2. **Offline-Capable Operations:** Full BIM functionality is maintained in basements, air-gapped facilities, and remote sites where internet access is unavailable.
@@ -27,9 +27,9 @@ Foundry’s design philosophy is predicated on five capabilities that are struct
 
 ## Compositional-First Regulatory Compliance
 
-Foundry introduces a "compositional-first" approach to building codes and jurisdictional rules. Instead of post-design validation, cities are intended to publish codes as composable design tokens (bSDD dictionaries + IDS 1.0 constraints). Designers then assemble models within pre-constrained envelopes where violations become geometrically impossible by construction.
+The platform introduces a "compositional-first" approach to building codes and jurisdictional rules. Instead of post-design validation, cities are intended to publish codes as composable design tokens (bSDD dictionaries + IDS 1.0 constraints). Designers then assemble models within pre-constrained envelopes where violations become geometrically impossible by construction.
 
-This shift from "check-after-design" to "compliant-by-construction" represents a significant leapfrog in AEC technology (Proposed Doctrine Claim #41).
+This shift from "check-after-design" to "compliant-by-construction" represents a significant leapfrog in AEC technology.
 
 ## Integration with the META-Substrate
 
@@ -38,7 +38,7 @@ The BIM-SEMANTIC layer sits atop project-design’s META-substrate. While projec
 * 18 specialized component recipes.
 * Uniclass 2015 as the universal classification floor.
 
-This architecture ensures that BIM components remain consistent with the broader Foundry design language while meeting the rigorous semantic requirements of ISO-standardized building data.
+This architecture ensures that BIM components remain consistent with the broader platform design language while meeting the rigorous semantic requirements of ISO-standardized building data.
 
 ## See also
 

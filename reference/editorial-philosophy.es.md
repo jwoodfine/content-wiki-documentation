@@ -11,7 +11,7 @@ language: es
 paired_with: editorial-philosophy.md
 ---
 
-Cada artículo de los wikis de Foundry es un recurso de aprendizaje, no una consulta de referencia. Un lector que termina un artículo debe comprender el tema, no solo haber recuperado un dato. Wikipedia es el modelo: estructurado, enlazado internamente, con la profundidad necesaria para construir comprensión genuina, y lo suficientemente consistente para que un lector que conoce Wikipedia reconozca el diseño de inmediato y sepa cómo navegar en él.
+Cada artículo de los wikis de PointSav es un recurso de aprendizaje, no una consulta de referencia. Un lector que termina un artículo debe comprender el tema, no solo haber recuperado un dato. Wikipedia es el modelo: estructurado, enlazado internamente, con la profundidad necesaria para construir comprensión genuina, y lo suficientemente consistente para que un lector que conoce Wikipedia reconozca el diseño de inmediato y sepa cómo navegar en él.
 
 ## El modelo Wikipedia
 
@@ -35,7 +35,7 @@ Un artículo de recuperación de datos responde "¿qué es X?". Un artículo enc
 
 ## Contenido enriquecido por el DataGraph
 
-Los wikis de Foundry están conectados a una base de datos de grafos de propiedades — el DataGraph — que acumula conocimiento sobre cada entidad de la plataforma: a qué se conecta cada entidad, a qué dominio pertenece, qué temas la atraviesan y qué dice el corpus de investigación sobre ella.
+Los wikis de PointSav están conectados a una base de datos de grafos de propiedades — el DataGraph — que acumula conocimiento sobre cada entidad de la plataforma: a qué se conecta cada entidad, a qué dominio pertenece, qué temas la atraviesan y qué dice el corpus de investigación sobre ella.
 
 Una reescritura informada por el DataGraph añade ese conocimiento al artículo con dos entradas distintas:
 
@@ -48,7 +48,7 @@ Los tokens de lenguaje rigen el registro. El DataGraph rige el contenido. Un art
 
 ## El ciclo mensual de mejora
 
-Los wikis de Foundry mejoran continuamente mediante una revisión mensual del contenido. Cada revisión se ejecuta contra un DataGraph actualizado — refinado por pasadas de inferencia de GPU bajo demanda que se ejecutan diariamente y pasadas de API externa que se ejecutan semanal o mensualmente a medida que se acumulan nuevos datos fuente.
+Los wikis de PointSav mejoran continuamente mediante una revisión mensual del contenido. Cada revisión se ejecuta contra un DataGraph actualizado — refinado por pasadas de inferencia de GPU bajo demanda que se ejecutan diariamente y pasadas de API externa que se ejecutan semanal o mensualmente a medida que se acumulan nuevos datos fuente.
 
 El objetivo de cada artículo en cualquier revisión es "borrador 2 de 10" — suficientemente bueno para que la siguiente pasada automática produzca un borrador 3 claramente mejor. La perfección en un único pase desperdicia esfuerzo que sería mejor dedicar a establecer el marco que hace que cada pase posterior sea mejor.
 

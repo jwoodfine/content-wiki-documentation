@@ -5,7 +5,7 @@ slug: style-guide-architecture
 category: reference
 type: topic
 quality: complete
-short_description: "Editorial standards for ARCHITECTURE.md files at project roots in the Foundry monorepo, covering required sections, technical register, module-layout conventions, and the non-goals discipline."
+short_description: "Editorial standards for ARCHITECTURE.md files at project roots in the platform monorepo, covering required sections, technical register, module-layout conventions, and the non-goals discipline."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
@@ -91,7 +91,7 @@ specific interface, or the specific dependency.
 ```markdown
 ## Position
 
-`service-disclosure` holds the schema substrate for Foundry
+`service-disclosure` holds the schema substrate for the platform's
 editorial work. It sits in Ring 2 alongside `service-content`
 and is consumed at request time by `service-slm` (the Doorman)
 to validate incoming protocol requests before routing.

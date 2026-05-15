@@ -12,7 +12,7 @@ category: reference
 
 
 
-La taxonomía de tokens BIM de Foundry organiza el sistema en ocho categorías primitivas ancladas a la jerarquía de entidades de IFC 4.3 (ISO 16739-1:2024). Esta alineación garantiza que los tokens del sistema de diseño correspondan directamente a las convenciones de clasificación AEC universales.
+La taxonomía de tokens BIM de la plataforma organiza el sistema en ocho categorías primitivas ancladas a la jerarquía de entidades de IFC 4.3 (ISO 16739-1:2024). Esta alineación garantiza que los tokens del sistema de diseño correspondan directamente a las convenciones de clasificación AEC universales.
 
 ## Categorías Primitivas
 
@@ -28,7 +28,7 @@ Las ocho categorías base son:
 
 ## Estándar de Clasificación: Uniclass 2015
 
-Foundry adopta **Uniclass 2015** como su base de clasificación obligatoria. Actúa como el sustrato semántico sobre el cual se pueden añadir otras clasificaciones (como OmniClass o MasterFormat), garantizando que todos los elementos tengan una estructura de datos coherente desde su creación.
+La plataforma adopta **Uniclass 2015** como su base de clasificación obligatoria. Actúa como el sustrato semántico sobre el cual se pueden añadir otras clasificaciones (como OmniClass o MasterFormat), garantizando que todos los elementos tengan una estructura de datos coherente desde su creación.
 
 ## Patrón de Recetas de Componentes
 
