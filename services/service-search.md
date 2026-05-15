@@ -8,9 +8,13 @@ quality: complete
 short_description: "service-search is the Ring 2 full-text search service built on the Tantivy Rust library, providing microsecond retrieval across millions of files through a static binary inverted index that requires no active database process."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-08
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "Tantivy. 'Tantivy — A Full-Text Search Engine Library in Rust.' docs.rs, 2024."
+    url: "https://docs.rs/tantivy/"
 paired_with: service-search.es.md
 ---
 
@@ -18,7 +22,7 @@ paired_with: service-search.es.md
 
 ## Architectural Baseline
 
-An inverted index works by building a compressed map from every word in the corpus to the list of documents that contain it — analogous to the index at the back of a reference book. At query time, the service looks up the query terms in this map and returns matching documents in microseconds, regardless of corpus size. Tantivy, the underlying Rust library, is designed for high-throughput indexing and low-latency retrieval on commodity hardware.
+An inverted index works by building a compressed map from every word in the corpus to the list of documents that contain it — analogous to the index at the back of a reference book. At query time, the service looks up the query terms in this map and returns matching documents in microseconds, regardless of corpus size. Tantivy, the underlying Rust library, is designed for high-throughput indexing and low-latency retrieval on commodity hardware. [^1]
 
 ## Ring and Role
 
@@ -51,9 +55,3 @@ The service is integrated with `app-workplace-presentation` for interactive sear
 - [[service-people]]
 - [[trajectory-substrate]]
 
-## References
-
--  §XI — Ring 2 knowledge-and-processing architecture
-- `pointsav-monorepo/service-search/` — implementation crate
-- Tantivy documentation — <https://docs.rs/tantivy/>
-- DARP (Data Archive and Retrieval Protocol) — compliance requirement governing the index portability guarantee
