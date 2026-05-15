@@ -40,8 +40,8 @@ After constructing the bundle, the service routes it based on the payload's orig
 | Route | Destination | Condition |
 |---|---|---|
 | Immutable ledger | Cold storage via service-fs | Standard assets (most messages) |
-| Identity ledger | service-people | Sender identity records for CRM downstream ingestion |
-| AI synthesis | service-slm, then purge | Consumable media (newsletters, low-retention items) |
+| Identity ledger | [[service-people]] | Sender identity records for CRM downstream ingestion |
+| AI synthesis | [[service-slm]], then purge | Consumable media (newsletters, low-retention items) |
 
 The routing decision is deterministic and tag-driven. No AI inference is required for the routing step itself.
 
@@ -65,4 +65,4 @@ The routing decision is deterministic and tag-driven. No AI inference is require
 
 -  §XI — Ring 2 knowledge-and-processing architecture
 - `pointsav-monorepo/service-extraction/` — implementation crate
-- SYS-ADR-07 — structured data never routes through AI (governs the boundary between Ring 2 deterministic routing and Ring 3 AI invocation)
+- [[sys-adr-07|SYS-ADR-07]] — structured data never routes through AI (governs the boundary between Ring 2 deterministic routing and Ring 3 AI invocation)

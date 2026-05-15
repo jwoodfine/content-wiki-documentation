@@ -55,4 +55,4 @@ The service surrenders execution to the downstream parser (`service-extraction`)
 
 -  §XI — Ring 1 boundary-ingest architecture
 - `pointsav-monorepo/service-email/` — implementation crate
-- SYS-ADR-07 — structured data never routes through AI (governs downstream handling of service-email output)
+- [[sys-adr-07|SYS-ADR-07]] — structured data never routes through AI (governs downstream handling of service-email output)

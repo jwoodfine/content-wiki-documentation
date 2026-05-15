@@ -19,7 +19,7 @@ Every AI inference call on the PointSav platform routes through a single service
 
 ## Architectural Baseline
 
-The Doorman is the platform's sole AI boundary — no inference call enters or exits the knowledge pipeline without passing through it. The Doorman acts as the air-lock for unstructured text entering the knowledge pipeline. Raw text arriving from Ring 1 services — emails, PDFs, form submissions — passes through service-slm before any structured facts are written to the knowledge graph. The service applies a Small Language Model to extract verifiable facts, formats them as clean Markdown, and closes the AI processing window before data continues downstream to Ring 2. This containment is the implementation of SYS-ADR-07: structured data never routes through AI.
+The Doorman is the platform's sole AI boundary — no inference call enters or exits the knowledge pipeline without passing through it. The Doorman acts as the air-lock for unstructured text entering the knowledge pipeline. Raw text arriving from Ring 1 services — emails, PDFs, form submissions — passes through service-slm before any structured facts are written to the knowledge graph. The service applies a Small Language Model to extract verifiable facts, formats them as clean Markdown, and closes the AI processing window before data continues downstream to Ring 2. This containment is the implementation of [[sys-adr-07|SYS-ADR-07]]: structured data never routes through AI.
 
 ## Ring and Role
 
@@ -67,4 +67,4 @@ The Doorman is deployed as a systemd unit (`infrastructure/local-doorman/`) on t
 
 -  §XI — Three-ring architecture and three-tier compute routing
 - `infrastructure/local-doorman/` — systemd unit (live since workspace v0.1.13)
-- SYS-ADR-07 — structured data never routes through AI
+- [[sys-adr-07|SYS-ADR-07]] — structured data never routes through AI
