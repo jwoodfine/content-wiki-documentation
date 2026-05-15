@@ -17,11 +17,23 @@ The twelve binding [[architecture-decisions|architecture decisions]] are the mos
 
 ## Articles in this category
 
-- [[architecture-decisions]] — The twelve binding architecture decisions that constrain all future engineering on the platform; grouped by compliance weight, data separation, deployment custody, and operational integrity.
-- [[contributor-model]] — The three-tier contributor model: open community, paid integrators, and the canonical vendor tier; how work flows between them.
-- [[bcsc-disclosure-posture]] — The British Columbia Securities Commission continuous-disclosure posture and how the platform satisfies it by structure.
-- [[canadian-simple-copyright]] — The Canadian-simple copyright posture: licence selection, attribution requirements, and the Canadian legal context.
+### Institutional due diligence
+
+Start here for procurement, security, and compliance evaluation.
+
+- [[procurement-overview]] — What a regulated buyer acquires: customer-owned hardware deployment, no vendor-held data, no minimum-spend commitment, and the compliance properties enforced by architecture rather than contractual promise.
+- [[security-overview]] — The platform's security posture: capability-based isolation, the Diode unidirectional command-flow standard, the Doorman AI boundary, the WORM audit ledger, and how each property is enforced by architecture.
 - [[compliance-and-continuous-disclosure]] — How the platform produces continuous-disclosure-grade records and what that means for regulated buyers.
+- [[bcsc-disclosure-posture]] — The BCSC continuous-disclosure posture and how the platform satisfies it by structure.
+
+### Formal decision records
+
+- [[architecture-decisions]] — The twelve binding architecture decisions that constrain all future engineering; grouped by compliance weight, data separation, deployment custody, and operational integrity.
+
+### Licensing and contribution
+
+- [[contributor-model]] — The three-tier contributor model: open community, paid integrators, and the canonical vendor tier; how work flows between them.
+- [[canadian-simple-copyright]] — The Canadian-simple copyright posture: licence selection, attribution requirements, and the Canadian legal context.
 
 ## See also
 

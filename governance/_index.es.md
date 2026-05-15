@@ -19,11 +19,23 @@ Las doce [[architecture-decisions|decisiones de arquitectura vinculantes]] son l
 
 ## Artículos en esta categoría
 
-- [[architecture-decisions]] — Las doce decisiones de arquitectura vinculantes que restringen toda la ingeniería futura; agrupadas por peso regulatorio, separación de datos, custodia del despliegue e integridad operativa.
-- [[contributor-model]] — El modelo de colaboración de tres niveles: comunidad abierta, integradores de pago y el nivel de proveedor canónico.
-- [[bcsc-disclosure-posture]] — La postura de divulgación continua de la Comisión de Valores de Columbia Británica y cómo la plataforma la satisface por estructura.
-- [[canadian-simple-copyright]] — La postura de derechos de autor conforme al derecho canadiense: selección de licencias y contexto jurídico.
+### Debida diligencia institucional
+
+Punto de entrada para la evaluación de adquisición, seguridad y cumplimiento.
+
+- [[procurement-overview]] — Lo que adquiere un comprador regulado: despliegue en hardware propiedad del cliente, datos que el proveedor nunca posee, sin compromiso de gasto mínimo, y propiedades de cumplimiento aplicadas por arquitectura.
+- [[security-overview]] — La postura de seguridad de la plataforma: aislamiento basado en capacidades, el estándar Diode de flujo de comandos unidireccional, el límite de IA Portero, el libro de auditoría WORM y cómo cada propiedad es aplicada por arquitectura.
 - [[compliance-and-continuous-disclosure]] — Cómo la plataforma produce registros con calidad de divulgación continua y qué significa esto para los compradores regulados.
+- [[bcsc-disclosure-posture]] — La postura de divulgación continua de la BCSC y cómo la plataforma la satisface por estructura.
+
+### Registros de decisiones formales
+
+- [[architecture-decisions]] — Las doce decisiones de arquitectura vinculantes que restringen toda la ingeniería futura; agrupadas por peso regulatorio, separación de datos, custodia del despliegue e integridad operativa.
+
+### Licencias y contribución
+
+- [[contributor-model]] — El modelo de colaboración de tres niveles: comunidad abierta, integradores de pago y el nivel de proveedor canónico.
+- [[canadian-simple-copyright]] — La postura de derechos de autor conforme al derecho canadiense: selección de licencias y contexto jurídico.
 
 ## Véase también
 
