@@ -8,9 +8,13 @@ quality: published
 short_description: "The Doorman gateway and audit ledger that enforce inbound data discipline are planned to also enforce outbound commercial flows — data marketplace and ad exchange — both opt-in per tenant."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "Interactive Advertising Bureau Tech Lab. 'OpenRTB API Specification Version 2.6.' IAB Tech Lab, 2022."
+    url: "https://iabtechlab.com/standards/openrtb/"
 paired_with: reverse-flow-substrate.es.md
 ---
 
@@ -20,7 +24,7 @@ The **Reverse-Flow Substrate** is the planned extension of the Doorman gateway, 
 
 **Data Marketplace.** The customer's accumulated knowledge graph, audit ledger, and trained adapter weights are intended to be saleable assets. The planned marketplace gateway (`service-marketplace`) is intended to expose per-tenant inventory to external buyers. Planned inventory categories include anonymized aggregate queries against the per-tenant graph, trained adapter weights (saleable to other tenants in the same vertical with explicit permission), curated content-wiki material with consent and license terms, and verdict-signed corpus tuples with cryptographic provenance for AI training data buyers.
 
-**Ad Exchange.** The customer is planned to operate as both seller and buyer in a standards-compliant real-time bidding exchange. As seller, the customer's first-party audience — with per-record consent and AI intent classification — is intended to be real-time-bid inventory. As buyer, the customer's adapter may classify their own audience intent to support targeted outbound campaigns. The customer's budget controls the bid.
+**Ad Exchange.** The customer is planned to operate as both seller and buyer in a standards-compliant real-time bidding exchange. [^1] As seller, the customer's first-party audience — with per-record consent and AI intent classification — is intended to be real-time-bid inventory. As buyer, the customer's adapter may classify their own audience intent to support targeted outbound campaigns. The customer's budget controls the bid.
 
 ## Per-tenant opt-in discipline
 
@@ -49,8 +53,3 @@ The planned reverse flows depend on [[single-boundary-compute-discipline]] — a
 - [[vertical-seed-packs-marketplace]] — planned packs as first-class marketplace inventory
 - [[single-boundary-compute-discipline]] — the Doorman boundary that governs outbound as well as inbound flows
 
-## References
-
-1. Doctrine claim #52 — Reverse-Flow Substrate (ratified v0.1.0).
-2. IAB OpenRTB 2.6 specification — planned ad exchange alignment.
-3. `conventions/customer-owned-graph-ip.md` — claim #48 composition.

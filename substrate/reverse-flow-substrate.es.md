@@ -8,9 +8,13 @@ quality: published
 short_description: "La puerta de enlace del Portero y el registro de auditoría que aplican la disciplina de datos de entrada están planificados para también aplicar flujos comerciales de salida — mercado de datos e intercambio de anuncios — ambos opt-in por inquilino."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "Interactive Advertising Bureau Tech Lab. 'OpenRTB API Specification Version 2.6.' IAB Tech Lab, 2022."
+    url: "https://iabtechlab.com/standards/openrtb/"
 paired_with: reverse-flow-substrate.md
 ---
 
@@ -21,7 +25,7 @@ El **Substrato de Flujo Inverso** es la extensión planificada de la puerta de e
 
 **Mercado de Datos.** El grafo de conocimiento acumulado, el registro de auditoría y los pesos del adaptador entrenado del cliente están previstos para ser activos vendibles. La puerta de enlace del mercado planificada (`service-marketplace`) está prevista para exponer el inventario por inquilino a compradores externos. Las categorías de inventario planificadas incluyen consultas agregadas anonimizadas contra el grafo por inquilino, pesos del adaptador entrenado vendibles a otros inquilinos en la misma vertical con permiso explícito, material de wiki de contenido curado con términos de consentimiento y licencia, y tuplas de corpus firmadas con veredicto con procedencia criptográfica para compradores de datos de entrenamiento de IA.
 
-**Intercambio de Anuncios.** El cliente tiene previsto operar como vendedor y comprador en un intercambio de pujas en tiempo real conforme a estándares. Como vendedor, la audiencia propia del cliente — con consentimiento por registro y clasificación de intención de IA — está prevista para ser inventario de subasta en tiempo real. Como comprador, el adaptador del cliente puede clasificar la intención de su propia audiencia para apoyar campañas de salida dirigidas.
+**Intercambio de Anuncios.** El cliente tiene previsto operar como vendedor y comprador en un intercambio de pujas en tiempo real conforme a estándares. [^1] Como vendedor, la audiencia propia del cliente — con consentimiento por registro y clasificación de intención de IA — está prevista para ser inventario de subasta en tiempo real. Como comprador, el adaptador del cliente puede clasificar la intención de su propia audiencia para apoyar campañas de salida dirigidas.
 
 ## Disciplina de opt-in por inquilino
 

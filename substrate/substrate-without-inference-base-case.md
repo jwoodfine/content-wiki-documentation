@@ -8,9 +8,13 @@ quality: published
 short_description: "The Totebox Archive remains fully operational and freely transferable even when no AI inference tier is available; the deterministic substrate is the load-bearing foundation."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "Sigstore. 'Rekor: Software Supply Chain Transparency Log.' Sigstore.dev, 2024."
+    url: "https://docs.sigstore.dev/logging/overview/"
 paired_with: substrate-without-inference-base-case.es.md
 ---
 
@@ -36,7 +40,7 @@ Deterministic slash commands remain fully operational: status and health queries
 
 ## Transfer of ownership
 
-The "freely transferable" property is more than a philosophical statement. It is implemented through a structured transfer flow. The operator runs a transfer preparation command to produce a self-contained, cryptographically signed bundle: the per-tenant graph snapshot, the audit ledger, the trained adapter weights, the seed taxonomy, the pack manifest, and the tenant configuration. The bundle is signed by the operator's identity key and the integrity is anchored to a public transparency log.
+The "freely transferable" property is more than a philosophical statement. It is implemented through a structured transfer flow. The operator runs a transfer preparation command to produce a self-contained, cryptographically signed bundle: the per-tenant graph snapshot, the audit ledger, the trained adapter weights, the seed taxonomy, the pack manifest, and the tenant configuration. The bundle is signed by the operator's identity key and the integrity is anchored to a public transparency log. [^1]
 
 The receiving party imports the bundle into a fresh Totebox. Deterministic operations work immediately on the imported state. AI-assisted operations become available once the new operator configures the compute tier.
 
@@ -58,9 +62,3 @@ The base case constrains every service implementation. Every service must have a
 - [[customer-owned-graph-ip]] — the ownership right that the transfer flow exercises
 - [[single-boundary-compute-discipline]] — the Doorman's behavior in the base case (503 from inference endpoints; health endpoints always responsive)
 
-## References
-
-1. Doctrine claim #54 — Substrate-Without-Inference Base Case (ratified v0.1.0).
-2. Doctrine claim #16 — Three-Ring Architecture; Ring 3 is structurally optional.
-3. Doctrine claim #34 — Two-Bottoms Sovereign Substrate; sovereignty without vendor dependency.
-4. Sigstore Rekor transparency log — cryptographic anchoring for transfer bundle integrity.

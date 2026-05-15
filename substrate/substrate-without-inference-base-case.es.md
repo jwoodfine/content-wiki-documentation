@@ -8,9 +8,13 @@ quality: published
 short_description: "El Archivo Totebox permanece completamente operativo y transferible libremente incluso cuando no hay ningún nivel de inferencia de IA disponible; el substrato determinístico es la base estructural."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "Sigstore. 'Rekor: Software Supply Chain Transparency Log.' Sigstore.dev, 2024."
+    url: "https://docs.sigstore.dev/logging/overview/"
 paired_with: substrate-without-inference-base-case.md
 ---
 
@@ -25,7 +29,7 @@ El caso base también cubre los servicios de mercado y liquidación cuando está
 
 ## El flujo de transferencia de propiedad
 
-La propiedad "transferible libremente" está implementada a través de un flujo de transferencia estructurado. El operador ejecuta un comando de preparación de transferencia para producir un paquete autónomo y firmado criptográficamente: el instantáneo del grafo por inquilino, el registro de auditoría, los pesos del adaptador entrenado, la taxonomía semilla, el manifiesto del paquete y la configuración del inquilino. El paquete es firmado por la clave de identidad del operador y su integridad está anclada en un registro de transparencia criptográfica público.
+La propiedad "transferible libremente" está implementada a través de un flujo de transferencia estructurado. El operador ejecuta un comando de preparación de transferencia para producir un paquete autónomo y firmado criptográficamente: el instantáneo del grafo por inquilino, el registro de auditoría, los pesos del adaptador entrenado, la taxonomía semilla, el manifiesto del paquete y la configuración del inquilino. El paquete es firmado por la clave de identidad del operador y su integridad está anclada en un registro de transparencia criptográfica público. [^1]
 
 La parte receptora importa el paquete en un Totebox nuevo. Las operaciones determinísticas funcionan inmediatamente con el estado importado. Las operaciones asistidas por IA están disponibles cuando el nuevo operador configura el nivel de cómputo.
 
