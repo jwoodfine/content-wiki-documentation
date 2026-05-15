@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Data Vault Bookkeeping Substrate"
 slug: data-vault-bookkeeping-substrate
-category: reference
+category: infrastructure
 type: topic
 quality: published
 short_description: An SMB bookkeeping and accounting architecture built on an immutable source vault, append-only journal, and structural separation between the bookkeeping record and any accounting tool.

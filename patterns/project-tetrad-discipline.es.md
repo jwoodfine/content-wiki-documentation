@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Disciplina de Tétrada de Proyecto"
 slug: project-tetrad-discipline.es
-category: reference
+category: patterns
 type: topic
 quality: published
 short_description: La regla estructural de cuatro patas que todo clúster de proyecto debe satisfacer — código fuente, manual operativo, instancia de despliegue y contribución al wiki de conocimiento.

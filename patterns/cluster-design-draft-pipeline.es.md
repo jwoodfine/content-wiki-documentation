@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Pipeline de borradores de diseño por clúster"
 slug: cluster-design-draft-pipeline.es
-category: reference
+category: patterns
 type: topic
 quality: published
 short_description: El pipeline de espacio de trabajo que enruta borradores de componentes de UI, investigación de diseño y cambios de tokens a través de una pasarela de sistema de diseño hacia el sustrato canónico.

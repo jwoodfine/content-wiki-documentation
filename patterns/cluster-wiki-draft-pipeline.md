@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Cluster Wiki Draft Pipeline"
 slug: cluster-wiki-draft-pipeline
-category: reference
+category: patterns
 type: topic
 quality: published
 short_description: The workspace pipeline that routes editorial drafts from all contributor layers through an editorial gateway into published documentation, wiki topics, deployment runbooks, and governance documents.

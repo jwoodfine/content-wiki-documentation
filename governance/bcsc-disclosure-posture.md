@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "BCSC Continuous-Disclosure Posture"
 slug: bcsc-disclosure-posture
-category: reference
+category: governance
 type: topic
 quality: published
 short_description: The operating discipline that treats every published artifact as potentially reviewable under Canadian securities continuous-disclosure obligations.

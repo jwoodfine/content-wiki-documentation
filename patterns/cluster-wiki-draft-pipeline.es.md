@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Pipeline de borradores wiki por clúster"
 slug: cluster-wiki-draft-pipeline.es
-category: reference
+category: patterns
 type: topic
 quality: published
 short_description: El pipeline de espacio de trabajo que enruta borradores editoriales de todas las capas de contribuidores a través de una pasarela editorial hacia temas de documentación, runbooks de implementación y documentos de gobernanza publicados.

@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Disciplina de niveles de modelo"
 slug: model-tier-discipline.es
-category: reference
+category: patterns
 type: topic
 quality: published
 short_description: La disciplina para enrutar el trabajo al nivel de modelo de IA apropiado — pensamiento profundo, implementación o mecánico — para adaptar la capacidad del modelo a la forma del trabajo y controlar el costo de inferencia.

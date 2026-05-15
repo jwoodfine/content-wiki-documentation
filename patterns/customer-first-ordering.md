@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Customer-First Ordering"
 slug: customer-first-ordering
-category: reference
+category: patterns
 type: topic
 quality: published
 short_description: The principle that a software vendor building something a customer will install should build it in the same order the customer will install it, on the same substrate the customer will use.

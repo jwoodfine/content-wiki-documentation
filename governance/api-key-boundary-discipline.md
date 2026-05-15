@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "API Key Boundary Discipline"
 slug: api-key-boundary-discipline
-category: reference
+category: governance
 type: topic
 quality: published
 short_description: The rule that all external LLM API credentials belong exclusively at the gateway service and never at inference engines.

@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Disciplina de rastro de investigación en borradores"
 slug: draft-research-trail-discipline.es
-category: reference
+category: patterns
 type: topic
 quality: published
 short_description: El requisito de que cada borrador que entra en un pipeline editorial o de diseño lleve documentación estructurada de la investigación que lo informó y la investigación que debe realizar la siguiente etapa.

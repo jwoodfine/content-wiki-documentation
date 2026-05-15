@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Zero-Container Runtime"
 slug: zero-container-runtime
-category: reference
+category: patterns
 type: topic
 quality: published
 short_description: The structural commitment that every PointSav deployment runs as a Linux binary under systemd on a plain virtual machine or bare-metal host, with no container runtime, container orchestrator, or managed-runtime platform.

@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Disciplina de límite para claves de API"
 slug: api-key-boundary-discipline.es
-category: reference
+category: governance
 type: topic
 quality: published
 short_description: La regla que establece que todas las credenciales externas de LLM pertenecen exclusivamente al servicio de pasarela y nunca a los motores de inferencia.

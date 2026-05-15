@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Cluster Design Draft Pipeline"
 slug: cluster-design-draft-pipeline
-category: reference
+category: patterns
 type: topic
 quality: published
 short_description: The workspace pipeline that routes UI component, design research, and token-change drafts through a design-system gateway into the canonical design substrate.

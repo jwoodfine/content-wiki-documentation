@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Draft Research-Trail Discipline"
 slug: draft-research-trail-discipline
-category: reference
+category: patterns
 type: topic
 quality: published
 short_description: The requirement that every draft entering an editorial or design pipeline carries structured documentation of the research that informed it and the research the next leg should do.

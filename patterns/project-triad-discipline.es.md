@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Disciplina de Tríada de Proyecto"
 slug: project-triad-discipline.es
-category: reference
+category: patterns
 type: topic
 quality: published
 short_description: La regla estructural predecesora de tres patas para clústeres de proyecto — código fuente, manual operativo e instancia de despliegue — actualmente reemplazada por la Disciplina de Tétrada.

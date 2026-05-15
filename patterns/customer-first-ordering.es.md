@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Ordenamiento cliente-primero"
 slug: customer-first-ordering.es
-category: reference
+category: patterns
 type: topic
 quality: published
 short_description: El principio de que un proveedor de software que construye algo que un cliente instalará debe construirlo en el mismo orden que el cliente lo instalará, en el mismo sustrato que el cliente usará.

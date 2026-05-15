@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Project Triad Discipline"
 slug: project-triad-discipline
-category: reference
+category: patterns
 type: topic
 quality: published
 short_description: The predecessor three-leg structural rule for project clusters — vendor code, customer runbook, and deployment instance — now superseded by the Project Tetrad Discipline.

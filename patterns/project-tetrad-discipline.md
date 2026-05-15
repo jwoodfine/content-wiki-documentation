@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Project Tetrad Discipline"
 slug: project-tetrad-discipline
-category: reference
+category: patterns
 type: topic
 quality: published
 short_description: The four-leg structural rule every project cluster must satisfy — vendor code, customer runbook, deployment instance, and wiki TOPIC contribution.
