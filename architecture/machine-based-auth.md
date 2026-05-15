@@ -3,48 +3,79 @@ schema: foundry-doc-v1
 title: "Machine-Based Authorization"
 slug: machine-based-auth
 category: architecture
-type: topic
-quality: stub
-short_description: "Machine-based authorization is the authentication model used in the PointSav platform, replacing username and password structures with cryptographic pairing of physical hardware verified by the capability manager."
+type: concept
+quality: complete
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+language_protocol: PROSE-TOPIC
+last_edited: 2026-05-15
 editor: pointsav-engineering
-cites: []
 paired_with: machine-based-auth.es.md
+short_description: "Machine-based authorization replaces username and password structures with cryptographic pairing of physical hardware — the pair is the permission."
+cites: []
 ---
 
+Machine-based authorization replaces username and password structures with cryptographic pairing of physical hardware — the pair is the permission. When a device requests access, both sides of the pair demonstrate possession of complementary key material; if the pair verifies, the connection is established; if not, the machines are mutually invisible. Because authorization is bound to hardware rather than a memorized secret, the entire class of remote credential-theft attacks — phishing, password guessing, and social engineering — is structurally eliminated. This article covers how pairings work, the four pairing types, the structural advantages over passwords, and the relationship to the [[diode-standard|Diode]] and audit layers.
 
-> Machine-based authorization is the authentication model used in the PointSav platform, replacing username and password structures with cryptographic pairing of physical hardware verified by the capability manager.
+## How a pairing works
 
-**Machine-based authorization** replaces traditional username and password credential structures with a model where authorization requires the cryptographic pairing of physical hardware. The capability manager verifies a cryptographic handshake between the requesting device and the platform before granting access. Because authorization is bound to hardware — not to a memorized secret that can be phished, guessed, or stolen through social engineering — the entire class of remote credential-theft attacks is structurally eliminated. A session cannot be established from hardware that has not completed the cryptographic pairing, regardless of what credentials an attacker may have obtained.
+A pairing is a cryptographic handshake between two machines. The two ends of the pair hold complementary public/private key material. When a [[console-os|Command Ledger]] connects to a [[totebox-os|Totebox]], both sides demonstrate possession of the corresponding key. If the pair verifies, the connection is established. If it does not, the machines are invisible to each other.
 
-<!-- EXPAND: lead needs 200+ words -->
+`service-pairing` manages these pairings using Noise Protocol and WireGuard-style keys, derived from hardware attestation where the underlying platform supports it.
 
-## Overview
+| Property | Behaviour |
+|---|---|
+| Authentication | The pairing key itself — no password is ever transmitted or stored |
+| Authorisation | The presence of the pairing; permission is the pair |
+| Revocation | The pairing is severed at one or both ends; the machines become mutually invisible |
+| Hardware binding | Where possible, the private key is sealed in the host's hardware enclave |
 
-Conventional authentication relies on shared secrets: the user knows a password, and the server checks it against a stored hash. This model creates a persistent attack surface — passwords can be leaked, guessed, intercepted, or extracted through social-engineering techniques that bypass the technical security of the platform entirely. Machine-based authorization shifts the trust anchor from "something the user knows" to "something the hardware holds and can prove cryptographically."
+## The four pairing types
 
-In the PointSav platform, the cryptographic pairing is managed by the capability-based security layer. Each authorized device holds a key pair generated at provisioning time; the private key never leaves the device. When the device requests a capability grant from the platform, it presents a cryptographic proof of possession of that key. The capability manager verifies the proof and issues capability tokens appropriate for the device's declared role. The capability tokens govern exactly what the device can access — no capability token, no access, regardless of any other credential presented.
+A [[totebox-os|Totebox]] recognises four pairing types, distinguished by the relationship between the pair endpoints and the data:
 
-## Architecture
+| Pairing | Endpoint | Access | Sovereign function |
+|---|---|---|---|
+| ADMIN | Owner's primary machine ↔ Totebox | Absolute | Master key for VM and hardware control, migration, and key management |
+| INPUT | Operator's daily machine ↔ Totebox | Read / Write | The default state — full agency over personal data, email, and files |
+| USER | Restricted-access machine ↔ Totebox | Read-only | Consulting the data without modifying it — auditors, advisors |
+| INTERFACE | Orchestration aggregator ↔ Totebox | Metadata only | High-level fleet visibility without granting record-level access |
+
+The INPUT pairing is the default and the most powerful pairing type. The Totebox's owner has full agency by default; restrictions are deliberate downgrades, not default settings.
+
+## Why this beats passwords
+
+Three structural advantages emerge from replacing passwords with pairings:
+
+**No central database to breach.** There is no "users table" anywhere in the architecture. A successful breach of any one component yields no credential material useful elsewhere.
+
+**No phishing surface.** An operator cannot be tricked into typing their pairing into a fake login form because the pairing is never typed. It is demonstrated cryptographically by the hardware itself.
+
+**Physical revocation.** When an operator's access should be removed, the pairing is severed at the machine level. Even if they retain a copy of the software binary, they lack the key material to connect. There is no password to reset; the machine is simply no longer paired.
+
+## The boundary discipline
+
+Pairing alone does not grant data access. It grants the ability to attempt access. The [[diode-standard|Diode Standard]] governs what flows through any established pair. The audit ledger records every command and every response. The pair is the prerequisite; the Diode and the [[worm-ledger-design|WORM ledger]] are the gates.
+
+The combination — pairing as access, Diode as direction, audit as record — makes the system auditable end-to-end without ever requiring a password rotation policy.
+
+## Architecture connections
 
 Machine-based authorization connects to three other architectural layers:
 
-- **seL4 foundation** — the kernel enforces that capability tokens cannot be forged by software running at user privilege.
-- **Capability-based security** — the capability manager issues and revokes hardware-bound tokens; the access-control model depends on the hardware-binding for its security guarantees.
-- **service-fs audit ledger** — every authorization event is logged to the WORM ledger, providing an externally verifiable record of which hardware accessed which resources and when.
+- **[[sel4-microkernel-substrate|seL4 microkernel]]** — the kernel enforces that capability tokens cannot be forged by software running at user privilege.
+- **Capability-based security** — the capability manager issues and revokes hardware-bound tokens; the access-control model depends on hardware-binding for its security guarantees.
+- **[[worm-ledger-design|WORM ledger]]** — every authorization event is logged to the append-only ledger, providing an externally verifiable record of which hardware accessed which resources and when.
 
-## See Also
+## Why service-auth was rejected
 
-- [[capability-based-security]]
-- [[sel4-foundation]]
-- [[worm-ledger-architecture]]
-- [[crypto-attestation]]
-- [[3-layer-stack]]
+Early designs considered `service-auth`, modelled on a traditional directory service, as the identity provider. The decision was reversed: a traditional directory service is structured around users, passwords, and group hierarchies — the exact model PointSav is replacing. `service-pairing` was created as a deliberate alternative, and `service-auth` was removed from the architecture before any code was written.
 
-## References
+## See also
 
-- `conventions/system-substrate-doctrine.md` — capability ledger substrate; hardware-binding within the capability model
-- `DOCTRINE.md §XIV` — Compounding Substrate context; machine-based authorization as part of the Boot-Anywhere Capability Recovery mechanism
-- `conventions/three-ring-architecture.md` — Ring 1 boundary ingest; where machine-based authorization applies at the service layer
+- [[diode-standard]] — the unidirectional command flow that governs what passes through an established pair
+- [[worm-ledger-design]] — the append-only audit ledger that records every authorization event
+- [[sel4-microkernel-substrate]] — the seL4 microkernel that enforces capability-token integrity
+- [[compliance-and-continuous-disclosure]] — how hardware-bound authorization supports continuous-proof compliance
+- [[deployment-patterns]] — how MBA pairing applies across the six canonical deployment configurations

@@ -3,39 +3,79 @@ schema: foundry-doc-v1
 title: "Autorización Basada en Hardware"
 slug: machine-based-auth
 category: architecture
-type: topic
-quality: stub
+type: concept
+quality: complete
 status: active
-audience: public
+audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: machine-based-auth.md
+short_description: "La autorización basada en hardware reemplaza las estructuras de usuario y contraseña con el emparejamiento criptográfico del hardware físico — el par es el permiso."
 cites: []
 ---
 
+La autorización basada en hardware reemplaza las estructuras de nombre de usuario y contraseña con el emparejamiento criptográfico del hardware físico — el par es el permiso. Cuando un dispositivo solicita acceso, ambos extremos del par demuestran posesión de material clave complementario; si el par se verifica, la conexión se establece; si no, las máquinas son mutuamente invisibles. Dado que la autorización está vinculada al hardware y no a un secreto memorizado, toda la clase de ataques de robo remoto de credenciales — phishing, adivinación de contraseñas e ingeniería social — queda estructuralmente eliminada. Este artículo cubre cómo funcionan los emparejamientos, los cuatro tipos de emparejamiento, las ventajas estructurales sobre las contraseñas y la relación con las capas [[diode-standard|Diodo]] y de auditoría.
 
-La autorización basada en hardware reemplaza las estructuras de nombre de usuario y contraseña por un modelo en el que la autorización requiere el emparejamiento criptográfico del hardware físico, verificado por el gestor de capacidades.
+## Cómo funciona un emparejamiento
 
-## El problema de las credenciales
+Un emparejamiento es un protocolo criptográfico entre dos máquinas. Los dos extremos del par poseen material de clave pública/privada complementario. Cuando un [[console-os|Libro Mayor de Comandos]] se conecta a un [[totebox-os|Totebox]], ambos lados demuestran posesión de la clave correspondiente. Si el par se verifica, la conexión se establece. Si no, las máquinas son invisibles entre sí.
 
-La autenticación convencional depende de secretos compartidos: el usuario conoce una contraseña y el servidor la verifica contra un hash almacenado. Este modelo crea una superficie de ataque persistente — las contraseñas pueden filtrarse, adivinarse, interceptarse o extraerse mediante técnicas de ingeniería social que eluden la seguridad técnica de la plataforma.
+`service-pairing` gestiona estos emparejamientos utilizando claves de estilo Noise Protocol y WireGuard, derivadas de la atestación de hardware donde la plataforma subyacente lo admite.
 
-La autorización basada en hardware desplaza el anclaje de confianza de "algo que el usuario sabe" a "algo que el hardware posee y puede demostrar criptográficamente".
+| Propiedad | Comportamiento |
+|---|---|
+| Autenticación | La clave de emparejamiento en sí misma — no se transmite ni almacena ninguna contraseña |
+| Autorización | La presencia del emparejamiento; el permiso es el par |
+| Revocación | El emparejamiento se corta en uno o ambos extremos; las máquinas se vuelven mutuamente invisibles |
+| Vinculación al hardware | Donde es posible, la clave privada está sellada en el enclave de hardware del equipo |
 
-## Cómo funciona
+## Los cuatro tipos de emparejamiento
 
-En la plataforma PointSav, el emparejamiento criptográfico es gestionado por la capa de seguridad basada en capacidades. Cada dispositivo autorizado posee un par de claves generado en el momento del aprovisionamiento; la clave privada nunca sale del dispositivo. Cuando el dispositivo solicita una concesión de capacidad a la plataforma, presenta una prueba criptográfica de posesión de esa clave. El gestor de capacidades verifica la prueba y emite tokens de capacidad apropiados para el rol declarado del dispositivo.
+Un [[totebox-os|Totebox]] reconoce cuatro tipos de emparejamiento, distinguidos por la relación entre los extremos del par y los datos:
 
-## Eliminación de ataques de phishing
+| Emparejamiento | Extremo | Acceso | Función soberana |
+|---|---|---|---|
+| ADMIN | Máquina principal del propietario ↔ Totebox | Absoluto | Clave maestra para el control de VM y hardware, migración y gestión de claves |
+| INPUT | Máquina de uso diario del operador ↔ Totebox | Lectura / Escritura | El estado predeterminado — plena agencia sobre datos personales, correo y archivos |
+| USER | Máquina de acceso restringido ↔ Totebox | Solo lectura | Consultar los datos sin modificarlos — auditores, asesores |
+| INTERFACE | Agregador de orquestación ↔ Totebox | Solo metadatos | Visibilidad de la flota de alto nivel sin acceso a registros individuales |
 
-Una sesión no puede establecerse desde hardware que no haya completado el emparejamiento criptográfico, independientemente de las credenciales que un atacante pueda haber obtenido. La clase completa de ataques de robo remoto de credenciales queda estructuralmente eliminada.
+El emparejamiento INPUT es el predeterminado y el más potente. El propietario del Totebox tiene plena agencia por defecto; las restricciones son degradaciones deliberadas, no configuraciones predeterminadas.
+
+## Por qué supera a las contraseñas
+
+Tres ventajas estructurales emergen al reemplazar las contraseñas con emparejamientos:
+
+**Sin base de datos central que vulnerar.** No existe ninguna "tabla de usuarios" en ninguna parte de la arquitectura. Una vulneración exitosa de cualquier componente no produce material de credenciales útil en otros lugares.
+
+**Sin superficie de phishing.** Un operador no puede ser engañado para que escriba su emparejamiento en un formulario de inicio de sesión falso porque el emparejamiento nunca se escribe. Lo demuestra criptográficamente el propio hardware.
+
+**Revocación física.** Cuando se debe eliminar el acceso de un operador, el emparejamiento se corta a nivel de máquina. Aunque conserve una copia del binario de software, carece del material clave para conectarse. No hay contraseña que restablecer; la máquina simplemente deja de estar emparejada.
+
+## La disciplina de límite
+
+El emparejamiento por sí solo no concede acceso a los datos. Concede la capacidad de intentar el acceso. El [[diode-standard|Estándar Diodo]] rige lo que fluye a través de cualquier par establecido. El libro de auditoría registra cada comando y cada respuesta. El par es el prerrequisito; el Diodo y el [[worm-ledger-design|libro mayor WORM]] son las puertas.
+
+La combinación — emparejamiento como acceso, Diodo como dirección, auditoría como registro — hace que el sistema sea auditable de extremo a extremo sin requerir nunca una política de rotación de contraseñas.
+
+## Conexiones arquitectónicas
+
+La autorización basada en hardware se conecta a otras tres capas arquitectónicas:
+
+- **[[sel4-microkernel-substrate|Micronúcleo seL4]]** — el núcleo aplica que los tokens de capacidad no pueden ser falsificados por software que se ejecuta en privilegio de usuario.
+- **Seguridad basada en capacidades** — el gestor de capacidades emite y revoca tokens vinculados al hardware; el modelo de control de acceso depende de la vinculación al hardware para sus garantías de seguridad.
+- **[[worm-ledger-design|Libro mayor WORM]]** — cada evento de autorización se registra en el libro de solo adición, proporcionando un registro verificable externamente de qué hardware accedió a qué recursos y cuándo.
+
+## Por qué se rechazó service-auth
+
+Los primeros diseños consideraron `service-auth`, modelado en un servicio de directorio tradicional, como proveedor de identidad. La decisión se revirtió: un servicio de directorio tradicional está estructurado en torno a usuarios, contraseñas y jerarquías de grupos — exactamente el modelo que PointSav está reemplazando. `service-pairing` fue creado como alternativa deliberada, y `service-auth` fue eliminado de la arquitectura antes de que se escribiera ningún código.
 
 ## Véase también
 
-- [[capability-based-security]]
-- [[sel4-foundation]]
-- [[worm-ledger-architecture]]
-- [[crypto-attestation]]
-- [[3-layer-stack]]
+- [[diode-standard]] — el flujo de comandos unidireccional que rige lo que pasa a través de un par establecido
+- [[worm-ledger-design]] — el libro mayor de solo adición que registra cada evento de autorización
+- [[sel4-microkernel-substrate]] — el micronúcleo seL4 que aplica la integridad de los tokens de capacidad
+- [[compliance-and-continuous-disclosure]] — cómo la autorización vinculada al hardware apoya el cumplimiento de prueba continua
+- [[deployment-patterns]] — cómo el emparejamiento MBA se aplica en las seis configuraciones de despliegue canónicas
