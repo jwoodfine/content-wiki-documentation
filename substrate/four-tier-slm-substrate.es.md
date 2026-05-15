@@ -8,9 +8,16 @@ quality: published
 short_description: "Un camino gradual hacia la soberanía en IA: cuatro niveles de despliegue para el cliente, desde una pasarela de API sin modelo local hasta un servicio de IA especializado entrenado sobre el corpus agregado del proveedor, donde cada nivel añade capacidad sin romper la garantía del nivel inferior."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "Federated LoRA research. arXiv:2502.05087, 2025."
+    url: "https://arxiv.org/abs/2502.05087"
+  - id: 2
+    text: "AI2. 'OLMo 3.' Allen Institute for AI, 2025."
+    url: "https://allenai.org/blog/olmo3"
 paired_with: four-tier-slm-substrate.md
 ---
 
@@ -27,7 +34,7 @@ Los servicios de los anillos 1 y 2 — todo el procesamiento determinista de con
 
 En el Nivel 1 el cliente ejecuta OLMo 3 7B Think localmente. El Doorman enruta la mayoría de las solicitudes al modelo local en la Capa A; las solicitudes más exigentes se dirigen a servicios externos de Capa C cuando están configurados, o al modelo de 32B alojado por el proveedor si el cliente ha suscrito el Nivel 2.
 
-El entrenamiento de adaptadores LoRA por inquilino está disponible desde el Nivel 1. Un primer adaptador puede entrenarse con un corpus de aproximadamente 1,000 a 5,000 pares de preferencias de alta calidad extraídos del historial operativo propio del cliente. Ese adaptador permanece en la instancia ToteboxOS del cliente y no sale de ella a menos que el cliente opte explícitamente por el mercado federado.
+El entrenamiento de adaptadores LoRA por inquilino está disponible desde el Nivel 1. Un primer adaptador puede entrenarse con un corpus de aproximadamente 1,000 a 5,000 pares de preferencias de alta calidad extraídos del historial operativo propio del cliente. Ese adaptador permanece en la instancia ToteboxOS del cliente y no sale de ella a menos que el cliente opte explícitamente por el mercado federado. [^1]
 
 ## Nivel 2 — Modelo de 32B alojado por el proveedor (Yo-Yo)
 
@@ -35,7 +42,7 @@ En el Nivel 2 el proveedor opera un modelo de 32B en una instancia de GPU bajo d
 
 ## Nivel 3 — Servicio especialista PointSav-LLM (planificado)
 
-El Nivel 3 es un servicio de IA autónomo planificado, entrenado mediante preentrenamiento continuo sobre el corpus multi-inquilino acumulado del proveedor. No es un adaptador LoRA aplicado sobre un modelo base — es un nuevo modelo base producido siguiendo la receta publicada de AI2: 100 mil millones de tokens de entrenamiento intermedio, extensión de contexto largo y alineación posterior.
+El Nivel 3 es un servicio de IA autónomo planificado, entrenado mediante preentrenamiento continuo sobre el corpus multi-inquilino acumulado del proveedor. No es un adaptador LoRA aplicado sobre un modelo base — es un nuevo modelo base producido siguiendo la receta publicada de AI2: 100 mil millones de tokens de entrenamiento intermedio, extensión de contexto largo y alineación posterior. [^2]
 
 El resultado previsto es un modelo con profunda familiaridad operativa con la plataforma PointSav, accesible como servicio API multi-inquilino a precios por token diseñados para estar al alcance de los contratos SMB. El primer ciclo de preentrenamiento continuo está planificado para iniciarse en 2027, sujeto a la acumulación de corpus y la disponibilidad operativa.
 

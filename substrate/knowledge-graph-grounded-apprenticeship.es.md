@@ -8,9 +8,13 @@ quality: published
 short_description: "El Portero consulta el grafo de conocimiento por inquilino antes de cada solicitud de inferencia, produciendo tuplas de entrenamiento donde el grafo y el adaptador del modelo co-evolucionan."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "Edge, D. et al. 'From Local to Global: A Graph RAG Approach to Query-Focused Summarization.' arXiv:2404.16130, 2024."
+    url: "https://arxiv.org/abs/2404.16130"
 paired_with: knowledge-graph-grounded-apprenticeship.md
 ---
 
@@ -35,7 +39,7 @@ El identificador de módulo que determina el alcance de cada grafo también aís
 
 ## Métricas de calidad basadas en coherencia con el grafo
 
-Una respuesta del modelo puede evaluarse contra el grafo en tres dimensiones: la tasa de citación (qué fracción de las entidades nombradas en la respuesta existen en el grafo), la precisión de las relaciones (qué fracción de las relaciones declaradas coinciden con aristas del grafo) y la tasa de alucinación (qué fracción de las entidades nombradas no están presentes en el grafo). Una tasa de alucinación elevada es el principal modo de fallo; las respuestas por encima de un umbral son candidatas para rechazo o refinamiento.
+Una respuesta del modelo puede evaluarse contra el grafo en tres dimensiones: la tasa de citación (qué fracción de las entidades nombradas en la respuesta existen en el grafo), la precisión de las relaciones (qué fracción de las relaciones declaradas coinciden con aristas del grafo) y la tasa de alucinación (qué fracción de las entidades nombradas no están presentes en el grafo). Una tasa de alucinación elevada es el principal modo de fallo; las respuestas por encima de un umbral son candidatas para rechazo o refinamiento. [^1]
 
 ## Dependencia de la Disciplina de Límite Único
 

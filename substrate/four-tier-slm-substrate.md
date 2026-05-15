@@ -8,9 +8,16 @@ quality: published
 short_description: "A graduated sovereignty path for AI deployment: four customer tiers from a lightweight API gateway with no local model up through a domain-specialist AI service trained on the vendor's aggregated corpus, each tier adding capability without breaking the lower-tier guarantee."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "Federated LoRA research. arXiv:2502.05087, 2025."
+    url: "https://arxiv.org/abs/2502.05087"
+  - id: 2
+    text: "AI2. 'OLMo 3.' Allen Institute for AI, 2025."
+    url: "https://allenai.org/blog/olmo3"
 paired_with: four-tier-slm-substrate.es.md
 ---
 
@@ -30,7 +37,7 @@ At Tier 1 the customer runs OLMo 3 7B Think locally. A consumer GPU with 8 GB of
 
 Tier 1 is the baseline for SMB Customer deployments. It provides offline-capable narrow AI participation and selective access to larger inference capacity, without giving up data locality for routine operations.
 
-At Tier 1, the customer's per-tenant LoRA adapter training is available. A first adapter can be trained on a corpus of roughly 1,000 to 5,000 high-quality preference pairs from the customer's own operational history. That adapter lives on the customer's ToteboxOS instance and does not leave it unless the customer explicitly opts into the federated marketplace.
+At Tier 1, the customer's per-tenant LoRA adapter training is available. A first adapter can be trained on a corpus of roughly 1,000 to 5,000 high-quality preference pairs from the customer's own operational history. That adapter lives on the customer's ToteboxOS instance and does not leave it unless the customer explicitly opts into the federated marketplace. [^1]
 
 ## Tier 2 — Vendor-Hosted Burst Compute
 
@@ -42,7 +49,7 @@ The pricing structure is intended to sit structurally below that of fully-manage
 
 ## Tier 3 — Domain-Specialist Inference
 
-Tier 3 is a planned standalone AI service trained via continued pretraining on the vendor's aggregated multi-tenant corpus. It is not a LoRA adapter applied to a base model — it is a new base model, produced by following the published AI2 continued-pretraining recipe: 100 billion tokens of midtraining, long-context extension, and post-training alignment.
+Tier 3 is a planned standalone AI service trained via continued pretraining on the vendor's aggregated multi-tenant corpus. It is not a LoRA adapter applied to a base model — it is a new base model, produced by following the published AI2 continued-pretraining recipe: 100 billion tokens of midtraining, long-context extension, and post-training alignment. [^2]
 
 The intended result, at the planned scale of 32B parameters, is a model with deep operational familiarity with the PointSav platform: archive deployment and configuration, standard editorial patterns, code generation aligned to platform conventions, and the mechanics of federated contribution. It would operate as a multi-tenant API service, accessible from customer Doorman instances via a per-customer authentication token with the same shape as any Tier C external key.
 
@@ -73,7 +80,3 @@ The open-substrate customer-service specialist — a domain-expert AI accessible
 - [[apprenticeship-substrate]] — the training loop that makes higher tiers compound over time
 - [[economic-model]] — how the four tiers map to Community and SMB Customer commercial tiers
 
-## References
-
-1. AllenAI OLMo 3 blog — continued pretraining recipe and model architecture.
-2. Federated LoRA framework paper, arXiv 2502.05087 — privacy-preserving federated learning foundations.

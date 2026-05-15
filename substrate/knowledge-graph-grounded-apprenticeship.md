@@ -8,9 +8,13 @@ quality: published
 short_description: "The Doorman consults the per-tenant knowledge graph before every inference request, producing training tuples where the graph and the model adapter co-evolve."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
+references:
+  - id: 1
+    text: "Edge, D. et al. 'From Local to Global: A Graph RAG Approach to Query-Focused Summarization.' arXiv:2404.16130, 2024."
+    url: "https://arxiv.org/abs/2404.16130"
 paired_with: knowledge-graph-grounded-apprenticeship.es.md
 ---
 
@@ -46,7 +50,7 @@ A model response can be evaluated against the knowledge graph on three dimension
 
 **Relationship accuracy** — the fraction of stated relationships that match edges in the graph. Inaccurate relationships signal model drift from the grounded record.
 
-**Hallucination rate** — the fraction of named entities in the response that are not present in the graph. Hallucination rate is the primary failure mode; responses above a threshold are candidates for refinement or rejection.
+**Hallucination rate** — the fraction of named entities in the response that are not present in the graph. Hallucination rate is the primary failure mode; responses above a threshold are candidates for refinement or rejection. [^1]
 
 These metrics feed the verdict process. A response with high hallucination rate is rejected; one with low citation rate is a candidate for refinement before acceptance.
 
@@ -60,8 +64,3 @@ Knowledge-graph-grounded apprenticeship depends on the [[single-boundary-compute
 - [[seed-taxonomy-as-smb-bootstrap]] — the per-tenant taxonomy that seeds the knowledge graph used for grounding
 - [[mcp-substrate-protocol]] — the MCP tools (`graph_query`, `graph_mutate`) through which the Doorman interacts with `service-content`
 
-## References
-
-1. Doctrine claim #44 — Knowledge-Graph-Grounded Apprenticeship (ratified v0.1.0).
-2. `conventions/apprenticeship-substrate.md` — upstream training tuple substrate.
-3. Microsoft GraphRAG (2024) — published evidence for hallucination reduction via graph-grounded inference.
