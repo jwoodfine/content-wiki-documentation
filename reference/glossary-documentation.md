@@ -23,7 +23,7 @@ This is the definitive, public-facing A-Z Lexicon for PointSav Digital Systems. 
 <hr>
 
 ### Administration Panel or System Administrator or Control Panel or System Preferences
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+In PointSav, system administration is performed through the os-console command ledger and MBA-authenticated web interfaces; no single-point administration panel exists — every privileged action is a signed, auditable transaction.
 
 - **Administration Suite**
 ### AEC Community
@@ -45,7 +45,7 @@ The theory and development of computer systems able to perform tasks that normal
 
 - **Assignments**
 ### Audience Data
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+Audience data describes the characteristics and preferences of a communication's intended recipients; in PointSav, it is derived from service-people identity records and service-content gravity scores, never from external data brokers.
 
 - **Audit Trail**
 - **Authentication**
@@ -91,7 +91,7 @@ The process of managing a business or non-profit organization, so that it remain
 A style sheet language used for describing the presentation of a document written in a markup language such as HTML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.
 
 ### CCTV Data Collection
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+CCTV data collection refers to the ingestion of video surveillance feeds; in a PointSav deployment, such streams enter through the os-totebox secure ingestion boundary under the six-tier sovereignty matrix and are never routed through the public internet.
 
 - **Chart of Accounts**
 ### Cloud Computing
@@ -118,7 +118,7 @@ A lightweight, terminal-based operating system for managing and interacting with
 - **Console OS – Maps**
 - **Console OS – Marketplace**
 ### Console OS – Systems Administrator
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+The ConsoleOS systems administrator is the Tier A operator who manages network policy, package signing, and identity provisioning on the os-console layer, working exclusively through the F12-gated command terminal.
 
 - **Contact Us**
 ### Container
@@ -130,7 +130,7 @@ A standard unit of software that packages up code and all its dependencies so th
 - **Container Orchestration – Platform for Containerized APPs**
 - **Content Creation**
 ### Content Management System (CMS)
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+A CMS manages creation and publication of digital content; in PointSav, this function is performed by the combination of service-content (gravity engine) and app-mediakit-knowledge (wiki renderer), eliminating a traditional CMS dependency.
 
 - **Contributors**
 - **Cookies**
@@ -144,19 +144,19 @@ Standard IT infrastructure term, re-contextualized within PointSav's air-gapped 
 <hr>
 
 ### Data Entry
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+Data entry is the manual input of structured information into a system; in PointSav, all data writes by AI components are prohibited — only deterministic, human-verified writes reach the knowledge graph per SYS-ADR-07.
 
 ### Data Migration
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+Data migration is the transfer of data between storage systems or formats; in PointSav, migrations are handled by service-content's deterministic ingestion pipeline and subject to the worm-ledger-design append-only guarantee.
 
 ### Decentralized Network
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+A decentralized network distributes functions and data across multiple nodes without a single controlling authority; PointSav implements this as a sovereign mesh topology with deterministic routing and cryptographic anchoring in os-infrastructure.
 
 ### Design System
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+A design system is a collection of reusable components, tokens, and documented patterns that standardize a product's visual and interactive language; PointSav's implementation is pointsav-design-system, a DTCG-format vault delivered as a Git repository.
 
 ### Design System Components
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+Design system components are the individual reusable UI building blocks — buttons, navigation bars, form inputs — documented in pointsav-design-system/components/ with HTML+CSS+ARIA recipes and token references.
 
 - **Device-based Permissions**
 ### DevOps
@@ -176,7 +176,7 @@ A virtual model designed to accurately reflect a physical object. In the context
 
 - **Disclaimer**
 ### Distributed Network
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+A distributed network spreads computation and storage across many nodes, each capable of independent operation; PointSav's fleet implements this through os-orchestration coordinating multiple ToteboxOS archives.
 
 ### Docker
 *Docker*
@@ -202,12 +202,12 @@ A set of platform as a service (PaaS) products that use OS-level virtualization 
 <hr>
 
 ### File System
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+A file system organizes and stores files on a storage medium; in PointSav, the sovereign file system is managed by os-totebox under WORM-ledger constraints, with os-mediakit providing the public-facing document store.
 
 - **.FIN**
 - **Financial Community**
 ### First-party Data
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+First-party data is information collected directly from users by the organization that will use it; in PointSav, it enters through service-content's authenticated ingestion endpoints and is stored in the sovereign ToteboxOS archive.
 
 - **Fog Computing**
 - **Fork**
@@ -299,13 +299,13 @@ Physical devices that connect to the internet to collect and share data. In the 
 An operating system designed for managing and distributing media assets, including the PointSav design system, marketing materials, and documentation.
 
 ### MediaKit OS – Design System
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+The MediaKit OS design system integration provides the visual component vocabulary and token layer used by os-mediakit's document and asset generation pipeline.
 
 - **MediaKit OS – Distribution**
 - **MediaKit OS – Hosting**
 - **MediaKit OS – Marketing**
 ### MediaKit OS – System Administration
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+MediaKit OS system administration covers the Tier A operator functions for managing os-mediakit's document pipeline configuration, ingestion rules, and storage allocation.
 
 - **MediaKit OS – Wiki**
 - **MediaWiki**
@@ -346,11 +346,6 @@ The software that supports a computer's basic functions, such as scheduling task
 
 The stateless logic and compute layer. Holds no data. Connects ConsoleOS terminals to one or more ToteboxOS archives and provides extended compute capacity for BIM rendering, GIS spatial analysis, SLM inference, and data warehouse operations. Required for multi-archive use cases — the monetisation boundary between free and proprietary tiers.
 
-### OrchestrationOS
-*OrchestrationOS*
-
-The stateless logic and compute layer. Holds no data. Connects ConsoleOS terminals to one or more ToteboxOS archives and provides extended compute capacity for BIM rendering, GIS spatial analysis, SLM inference, and data warehouse operations. Required for multi-archive use cases — the monetisation boundary between free and proprietary tiers.
-
 ### OrchestrationOS – BIM Server
 *Servidor BIM de OrchestrationOS*
 
@@ -378,7 +373,7 @@ A component of OrchestrationOS that provides Geospatial Information System (GIS)
 
 - **P1 – Input Machine**
 ### P2 – System Administration / Package Manager
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+The Tier 2 system administration and package management layer manages software installation, update verification, and signing for PointSav OS deployments below the ConsoleOS root level.
 
 - **P3 – Users**
 - **P4 – Interface**
@@ -391,15 +386,15 @@ Standard IT infrastructure term, re-contextualized within PointSav's air-gapped 
 - **PointSav.com**
 - **PointSav Corporate Support Centre**
 ### PointSav Design System
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+The PointSav design system is a tokenized, DTCG-format component library and token vault delivered as a Git-tracked repository, providing the visual and interactive vocabulary for all PointSav product surfaces.
 
 ### PointSav Digital Systems
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+PointSav Digital Systems is the software vendor entity that builds and maintains the PointSav platform, publishing canonical open-source engineering repositories at github.com/pointsav under the Apache 2.0 license.
 
 - **PointSav Documentation or PointSav Documentation Wiki**
 - **PointSav Landing Page**
 ### PointSav Private Network
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+The PointSav private network is the on-premises sovereign mesh that connects os-console terminals, os-orchestration compute, and os-totebox archives within a customer deployment, isolated from the public internet by the os-infrastructure layer.
 
 - **Privacy Policy**
 ### PrivateGit OS
@@ -408,7 +403,7 @@ Standard IT infrastructure term, re-contextualized within PointSav's air-gapped 
 An operating system for managing private Git repositories, providing a secure, self-hosted alternative to public Git hosting services.
 
 ### Private Network
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+A private network restricts access to authorized users and devices; in PointSav, the six-tier sovereignty matrix defines which network segments are accessible at each trust tier, enforced by os-infrastructure.
 
 - **Product Design**
 - **Products**
@@ -427,7 +422,7 @@ Function of proprietary software.
 - **Public Browser Delivery**
 - **Public Browser Delivery – BIM**
 ### Public Browser Delivery – Data Marketplace
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+Public browser delivery for the data marketplace provides browser-accessible endpoints through which external consumers purchase and retrieve licensed data assets curated by service-content.
 
 - **Public Browser Delivery – Input Machine**
 - **Public Browser Delivery – Maps**
@@ -444,7 +439,7 @@ Traditional off-premise infrastructure. In the 2030 platform vision, this repres
 - **README Files or README.txt**
 - **Real Estate Community**
 ### Real-Time Operating System
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+A real-time operating system guarantees bounded response times for time-sensitive tasks; PointSav's IoT ingestion path relies on os-totebox to receive real-time streams from RTOS-equipped field devices.
 
 ### Record Keeping
 *Mantenimiento de Registros*
@@ -459,7 +454,7 @@ Function of proprietary software.
 
 - **Scaling**
 ### Second-party Data
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+Second-party data is first-party data obtained through a direct partnership agreement; in PointSav, it enters through controlled service-content endpoints with explicit data-sharing contracts recorded in the sovereign ledger.
 
 - **Service Design**
 ### service-extraction
@@ -488,7 +483,7 @@ A building that uses technology to automatically control its operations, includi
 Monitoring of user activity or system behaviour for security or analytical purposes. PointSav replaces third-party surveillance dependencies with zero-cookie first-party telemetry pipelines.
 
 ### System Design
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+System design is the process of defining the architecture, components, and interfaces of a system to satisfy specified requirements; PointSav's platform design is governed by the three-ring-architecture and the six-tier sovereignty matrix.
 
 
 ## T
@@ -504,7 +499,7 @@ A term describing structural dependency on platform providers who control access
 - **Tenants**
 - **Terminal**
 ### Third-party Data
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+Third-party data is collected by an entity with no direct relationship to the end user and sold commercially; PointSav evaluates all third-party data through SYS-ADR-07 and ingests approved datasets via the service-content deterministic pipeline.
 
 - **Tokens**
 - **Topics**
@@ -533,7 +528,7 @@ The operating system that runs within a Totebox Archive, providing a secure envi
 - **Totebox OS – eMail**
 - **Totebox OS – FTP**
 ### Totebox OS – IoT Data
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+ToteboxOS IoT data handling receives telemetry streams from connected physical devices and writes them to the WORM-secured archive, available for service-content gravity classification and os-mediakit report generation.
 
 - **Totebox OS – IoT Device Library**
 - **Totebox OS – IoT Sensor Library**
@@ -600,7 +595,7 @@ A software-based emulation of a physical computer. It has its own operating syst
 - **White Paper Discovery Process**
 - **Wi-Fi**
 ### Windows Operating System
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+Microsoft Windows is used by PointSav for os-workplace deployments on managed desktop hardware, with the os-workplace sovereign desktop layer providing the management and security boundary above it.
 
 - **Wireframes**
 - **WordPress**
@@ -645,7 +640,7 @@ A word processing application in Workplace OS for creating, editing, and formatt
 <hr>
 
 ### Zero-party Data
-Standard IT infrastructure term, re-contextualized within PointSav's air-gapped and zero-execution routing topology.
+Zero-party data is information that users intentionally and proactively share with an organization; in PointSav, it is the highest-trust input class for service-content, requiring no inference and carrying explicit user consent.
 
 ## See also
 
