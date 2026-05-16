@@ -82,5 +82,5 @@ Specialisation, not scale, is the design principle.
 - [[service-content]] — the upstream Gravity Engine; primary caller of service-slm for gravity verification
 - [[os-network-admin]] — the F8 Terminal where semantic command parsing originates
 - [[totebox-os]] — the Totebox that hosts service-slm in Sovereign Iron mode
-- [[sys-adr-07]] — structured data never routes through AI; service-slm is the implementation of this boundary
+- [[architecture-decisions|SYS-ADR-07]] — structured data never routes through AI; service-slm is the implementation of this boundary
 - [[doorman-protocol]] — the Doorman audit-routing protocol in detail

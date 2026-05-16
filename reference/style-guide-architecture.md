@@ -123,7 +123,6 @@ service-disclosure/
 
 ## See also
 
-- [[style-guide-readme|Style Guide — README]]
 - [[style-guide-topic|Style Guide — TOPIC]]
 - [[style-guide-guide|Style Guide — GUIDE]]
 - [[language-protocol-substrate|Language Protocol Substrate]]

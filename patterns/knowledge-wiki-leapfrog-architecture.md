@@ -142,5 +142,4 @@ Platforms that impose hierarchical organisation typically lack redlinks (the sig
 
 - [[app-mediakit-knowledge]] — application overview, deployment configuration, and phase roadmap
 - [[leapfrog-2030-architecture]] — Leapfrog 2030 doctrine and eight-invention framework
-- [[wikipedia-structure]] — Wikipedia article structure research: 16-element anatomy and infobox schemas
 - [[compounding-substrate]] — the broader compounding pattern that the wiki leg implements

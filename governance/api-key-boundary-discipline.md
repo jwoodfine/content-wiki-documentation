@@ -64,4 +64,3 @@ The gateway boundary, combined with a per-tenant audit ledger and a purpose allo
 
 - [[compounding-substrate]] — the three-ring architecture this discipline is embedded in
 - [[design-system-substrate]] — the design system substrate, which routes AI-readable research through the same gateway boundary
-- [[cluster-wiki-draft-pipeline]] — the editorial pipeline, whose inference calls route through the gateway

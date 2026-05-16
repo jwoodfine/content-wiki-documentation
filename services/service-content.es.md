@@ -72,7 +72,7 @@ El Motor de Gravedad es auto-reparable en un sentido específico y limitado: sus
 
 ## El límite de intervención humana
 
-`service-content` no publica en libros mayores verificados de forma autónoma. Cada entrada L5 debe transitar un paso de verificación con intervención humana — ya sea a través de la [[app-console-input|Máquina de Entrada]] (F12) o a través de la superficie de revisión de contenido — antes de que pueda escribirse en un libro mayor verificado. Esto satisface [[sys-adr-07]] (sin datos estructurados a través de IA) y [[sys-adr-19]] (sin publicación automatizada de IA en libros mayores verificados).
+`service-content` no publica en libros mayores verificados de forma autónoma. Cada entrada L5 debe transitar un paso de verificación con intervención humana — ya sea a través de la [[app-console-input|Máquina de Entrada]] (F12) o a través de la superficie de revisión de contenido — antes de que pueda escribirse en un libro mayor verificado. Esto satisface [[architecture-decisions|SYS-ADR-07]] (sin datos estructurados a través de IA) y [[architecture-decisions|SYS-ADR-19]] (sin publicación automatizada de IA en libros mayores verificados).
 
 ## Véase también
 

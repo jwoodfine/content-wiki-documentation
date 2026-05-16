@@ -126,5 +126,4 @@ It is not a container artefact. The substrate ships as a native binary deployed 
 
 - [[compounding-substrate]]
 - [[substrate-native-compatibility]]
-- [[reverse-funnel-editorial-pattern]]
 - [[customer-hostability]]

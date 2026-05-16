@@ -130,5 +130,4 @@ The common thread: the substrate replicates structural compatibility where it pa
 
 - [[source-of-truth-inversion]] — the storage-layer designation this pattern depends on (git as canonical record)
 - [[app-mediakit-knowledge]] — the wiki engine this pattern governs
-- [[wikipedia-leapfrog-design]] — the design intent of the wiki's chrome and what it preserves from Wikipedia
 - [[disclosure-substrate]] — the continuous-disclosure posture and broader substitution cases

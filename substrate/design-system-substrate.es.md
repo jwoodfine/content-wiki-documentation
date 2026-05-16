@@ -56,5 +56,4 @@ La documentación técnica completa está disponible en inglés en el documento 
 
 - [[compounding-substrate]]
 - [[substrate-native-compatibility]]
-- [[reverse-funnel-editorial-pattern]]
 - [[customer-hostability]]

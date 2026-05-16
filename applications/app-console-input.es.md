@@ -63,7 +63,7 @@ El patrón difiere del autocompletado asistido por IA, donde un modelo completa 
 
 Si [[service-extraction]] o [[service-content]] enrutaran un documento fuente a la cuenta incorrecta sin confirmación humana, el libro mayor verificado llevaría una entrada matemáticamente comprometida desde ese punto en adelante. Reclasificar el documento más tarde no repara el registro de auditoría — la entrada original ya lleva una marca de tiempo de verificación que registra una decisión que ningún ser humano tomó.
 
-[[sys-adr-10]] hace que F12 sea obligatorio precisamente porque este modo de fallo es estructural, no probabilístico: cualquier arquitectura que delegue la decisión final de enrutamiento a un sistema automatizado crea una entrada en el libro mayor sin un autor humano responsable. [[sys-adr-07]] extiende el principio a los datos estructurados de manera más amplia — ningún registro producido por IA ingresa a un libro mayor verificado sin un paso de confirmación humana. [[sys-adr-19]] cierra el camino restante — sin publicación automatizada en libros mayores verificados, independientemente de la puntuación de confianza.
+[[architecture-decisions|SYS-ADR-10]] hace que F12 sea obligatorio precisamente porque este modo de fallo es estructural, no probabilístico: cualquier arquitectura que delegue la decisión final de enrutamiento a un sistema automatizado crea una entrada en el libro mayor sin un autor humano responsable. [[architecture-decisions|SYS-ADR-07]] extiende el principio a los datos estructurados de manera más amplia — ningún registro producido por IA ingresa a un libro mayor verificado sin un paso de confirmación humana. [[architecture-decisions|SYS-ADR-19]] cierra el camino restante — sin publicación automatizada en libros mayores verificados, independientemente de la puntuación de confianza.
 
 Los fiduciarios institucionales — gestores de activos, abogados, entidades financieras reguladas — requieren un registro de auditoría que puedan defender bajo escrutinio. La puerta F12 es lo que hace posible esa defensa: cada entrada en service-minutebook y service-bookkeeper se remonta a un operador específico, una decisión específica y una marca de tiempo específica. [^2]
 
@@ -73,13 +73,13 @@ F12 no es una interfaz de conversación. El operador no compone consultas ni con
 
 F12 no es una superficie de autoguardado. Un documento ingresa al [[worm-ledger-design|libro mayor WORM]] solo cuando el operador confirma explícitamente el destino de enrutamiento. Esto protege el registro de auditoría de escrituras parciales y sesiones abandonadas. Los borradores en progreso no se acumulan en el libro mayor; un documento solo se registra cuando el operador llega al paso cinco y confirma.
 
-F12 no es una interfaz de importación masiva. El operador puede tener una cola de documentos para procesar, pero cada uno pasa por la puerta de cinco pasos individualmente, produciendo un registro de auditoría distinto por documento. La restricción secuencial no es una limitación de rendimiento — es una disciplina de auditoría. [[sys-adr-10]] es inequívoco en este punto: el límite F12 es obligatorio por documento.
+F12 no es una interfaz de importación masiva. El operador puede tener una cola de documentos para procesar, pero cada uno pasa por la puerta de cinco pasos individualmente, produciendo un registro de auditoría distinto por documento. La restricción secuencial no es una limitación de rendimiento — es una disciplina de auditoría. [[architecture-decisions|SYS-ADR-10]] es inequívoco en este punto: el límite F12 es obligatorio por documento.
 
 ## Véase también
 
-- [[sys-adr-07]] — la decisión arquitectónica que exige verificación humana antes de que los datos estructurados ingresen a un libro mayor verificado
-- [[sys-adr-10]] — la decisión arquitectónica que establece F12 como la puerta de entrada obligatoria
-- [[sys-adr-19]] — la decisión arquitectónica que prohíbe la publicación automatizada en libros mayores verificados
+- [[architecture-decisions|SYS-ADR-07]] — la decisión arquitectónica que exige verificación humana antes de que los datos estructurados ingresen a un libro mayor verificado
+- [[architecture-decisions|SYS-ADR-10]] — la decisión arquitectónica que establece F12 como la puerta de entrada obligatoria
+- [[architecture-decisions|SYS-ADR-19]] — la decisión arquitectónica que prohíbe la publicación automatizada en libros mayores verificados
 - [[console-os|os-console]] — el sistema operativo que aloja la superficie F12
 - [[service-extraction]] — el motor de extracción de entidades y temas en sentido ascendente
 - [[service-content]] — el motor de clasificación y enrutamiento en sentido ascendente

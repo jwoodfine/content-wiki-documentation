@@ -40,5 +40,3 @@ La postura aplica a todos los archivos Markdown publicados, todos los mensajes d
 ## Véase también
 
 - [[citation-substrate]]
-- [[draft-research-trail-discipline]]
-- [[cluster-wiki-draft-pipeline]]

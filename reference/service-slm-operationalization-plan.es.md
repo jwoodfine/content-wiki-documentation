@@ -35,5 +35,4 @@ El entrenamiento de adaptadores usa el marco Axolotl con el modelo OLMo 3.1 32B 
 
 ## Véase también
 
-- [[reverse-funnel-editorial-pattern]]
 - [[tier-c-key-wiring]]

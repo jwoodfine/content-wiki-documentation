@@ -21,7 +21,7 @@ The category answers questions like: *what makes the platform improve continuous
 
 Start with [[compounding-substrate]] for the canonical pattern PointSav stewards. Then read [[apprenticeship-substrate]] (how editorial verdicts feed continued pretraining), [[citation-substrate]] (how every claim resolves to an authoritative source), and [[disclosure-substrate]] (how forward-looking statements remain BCSC-compliant by structure).
 
-For the implementation primitives that substrates compose: [[adapter-composition]] (how request adapters compose), [[mcp-substrate-protocol]] (the machine-readable protocol surface), [[merkle-proofs-as-substrate-primitive]] (the cryptographic foundation), [[meta-repo-pattern]] (the repository topology).
+For the implementation primitives that substrates compose: [[adapter-composition]] (how request adapters compose), [[mcp-substrate-protocol]] (the machine-readable protocol surface), [[merkle-proofs-as-substrate-primitive]] (the cryptographic foundation).
 
 ## See also
 

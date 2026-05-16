@@ -57,5 +57,5 @@ Este enfoque confina el límite de confianza en la nube a un único punto bien d
 - [[service-people]] — el libro mayor de identidades que recibe registros del remitente de service-email a través de service-extraction
 - [[service-content]] — el Motor de Gravedad que sintetiza contenido del Maildir WORM
 - [[app-console-input]] — la Máquina de Entrada F12; superficie de ingesta complementaria para cargas útiles que no son correo
-- [[sys-adr-07]] — los datos estructurados nunca se enrutan a través de IA (rige el manejo posterior de la salida de service-email)
+- [[architecture-decisions|SYS-ADR-07]] — los datos estructurados nunca se enrutan a través de IA (rige el manejo posterior de la salida de service-email)
 - [[totebox-os]] — el Totebox que aloja service-email y su almacenamiento WORM

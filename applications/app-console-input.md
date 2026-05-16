@@ -63,7 +63,7 @@ The pattern differs from AI-assisted autofill, where a model populates fields an
 
 If [[service-extraction]] or [[service-content]] were to route a source document into the wrong account without human confirmation, the downstream verified ledger would carry a mathematically compromised entry from that point forward. Re-sorting the document later does not repair the audit trail — the original entry already carries a verification timestamp that records a decision no human made.
 
-[[sys-adr-10]] makes F12 mandatory precisely because this failure mode is structural, not probabilistic: any architecture that delegates the final routing decision to an automated system creates a ledger entry without an accountable human author. [[sys-adr-07]] extends the principle to structured data more broadly — no AI-produced record enters a verified ledger without a human confirmation step. [[sys-adr-19]] closes the remaining path — no automated publishing to verified ledgers, regardless of confidence score.
+[[architecture-decisions|SYS-ADR-10]] makes F12 mandatory precisely because this failure mode is structural, not probabilistic: any architecture that delegates the final routing decision to an automated system creates a ledger entry without an accountable human author. [[architecture-decisions|SYS-ADR-07]] extends the principle to structured data more broadly — no AI-produced record enters a verified ledger without a human confirmation step. [[architecture-decisions|SYS-ADR-19]] closes the remaining path — no automated publishing to verified ledgers, regardless of confidence score.
 
 Institutional fiduciaries — asset managers, lawyers, regulated financial entities — require an audit trail they can defend under examination. The F12 gate is what makes that defense possible: every entry in service-minutebook and service-bookkeeper traces to a specific operator, a specific decision, and a specific timestamp. [^2]
 
@@ -73,13 +73,13 @@ F12 is not a chat interface. The operator does not compose queries or converse w
 
 F12 is not an autosave surface. A document enters the [[worm-ledger-design|WORM ledger]] only when the operator explicitly confirms the routing destination. This protects the audit trail from partial writes and abandoned sessions. Drafts in progress do not accumulate in the ledger; a document only lands when the operator reaches step five and confirms.
 
-F12 is not a bulk-import interface. The operator may have a queue of documents to process, but each passes through the five-step gate individually, producing a distinct audit record per document. The sequential constraint is not a throughput limitation — it is an audit discipline. [[sys-adr-10]] is unambiguous on this point: the F12 boundary is mandatory per document.
+F12 is not a bulk-import interface. The operator may have a queue of documents to process, but each passes through the five-step gate individually, producing a distinct audit record per document. The sequential constraint is not a throughput limitation — it is an audit discipline. [[architecture-decisions|SYS-ADR-10]] is unambiguous on this point: the F12 boundary is mandatory per document.
 
 ## See also
 
-- [[sys-adr-07]] — the architectural decision mandating human verification before structured data enters a verified ledger
-- [[sys-adr-10]] — the architectural decision mandating F12 as the required input gate
-- [[sys-adr-19]] — the architectural decision prohibiting automated publishing to verified ledgers
+- [[architecture-decisions|SYS-ADR-07]] — the architectural decision mandating human verification before structured data enters a verified ledger
+- [[architecture-decisions|SYS-ADR-10]] — the architectural decision mandating F12 as the required input gate
+- [[architecture-decisions|SYS-ADR-19]] — the architectural decision prohibiting automated publishing to verified ledgers
 - [[console-os|os-console]] — the operating system that hosts the F12 surface
 - [[service-extraction]] — the upstream entity and theme extraction engine
 - [[service-content]] — the upstream classification and routing engine

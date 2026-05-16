@@ -77,4 +77,3 @@ A new editorial feature satisfies the anti-homogenization discipline if:
 - [[language-protocol-substrate]]
 - [[customer-hostability]]
 - [[contributor-model]]
-- [[reverse-funnel-editorial-pattern]]

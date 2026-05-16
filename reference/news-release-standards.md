@@ -48,4 +48,3 @@ These standards ensure that every platform disclosure maintains a consistent voi
 
 - [[brand-typography]]
 - [[brand-family-swatch]]
-- [[style-guide-readme]]

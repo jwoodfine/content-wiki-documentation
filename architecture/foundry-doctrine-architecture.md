@@ -39,7 +39,7 @@ The platform is built on six foundational commitments that take precedence over 
 
 **Every session trains the model.** Every Task, Root, and Master session that produces output — diffs, briefs, editorial refinements, sysadmin interactions — generates a training tuple that accumulates in the apprenticeship corpus. The substrate sharpens monotonically with use.
 
-**Human checkpoint at F12 is mandatory.** [[sys-adr-10|SYS-ADR-10]] — the final human checkpoint before any state is committed to a verified ledger — is never bypassed. Automation serves the human; no automated path exists around F12.
+**Human checkpoint at F12 is mandatory.** [[architecture-decisions|SYS-ADR-10]] — the final human checkpoint before any state is committed to a verified ledger — is never bypassed. Automation serves the human; no automated path exists around F12.
 
 ## The Fifty-Two Leapfrog Claims
 

@@ -196,5 +196,3 @@ Phases 4–8 are *planned*; cautionary language applies per [ni-51-102] and [osc
 - [[source-of-truth-inversion]] — the canonical / view / ephemeral pattern generalised across the substrate
 - [[substrate-native-compatibility]] — the Action API drop rationale and the substrate-native surface set
 - [[collab-via-passthrough-relay]] — the WebSocket relay implementation in depth
-- [[wikipedia-leapfrog-design]] — chrome design intent and the 95%/5% muscle-memory contract
-- [[article-shell-leapfrog]] — five article-shell primitives that extend beyond Wikipedia's reading surface

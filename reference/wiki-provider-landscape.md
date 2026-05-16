@@ -480,8 +480,8 @@ customer-installable demonstration of that substrate. The structural
 argument for the leapfrog claim is what this article documents: the gap
 exists because of the five structural causes above; closing it requires
 the three preconditions above; the substrate has those preconditions as
-design intent. The award framings in [[knowledge-wiki-home-page-design]]
-§5 and [[article-shell-leapfrog]] §5 are the planned downstream
+design intent. The award framings in knowledge-wiki-home-page-design
+§5 and article-shell-leapfrog §5 are the planned downstream
 consequences.
 
 ## 7. Open editorial item

@@ -97,8 +97,8 @@ Every public document the platform publishes — including this article — appl
 
 ## See also
 
-- [[sys-adr-07]] — the architectural decision prohibiting structured data from passing through AI without human verification
-- [[sys-adr-19]] — the architectural decision prohibiting automated AI publishing to verified ledgers
+- [[architecture-decisions|SYS-ADR-07]] — the architectural decision prohibiting structured data from passing through AI without human verification
+- [[architecture-decisions|SYS-ADR-19]] — the architectural decision prohibiting automated AI publishing to verified ledgers
 - [[worm-ledger-design]] — the WORM ledger substrate that enforces append-only record-keeping
 - [[doorman-protocol]] — the AI gateway whose audit boundary supports ISO/IEC 42001 logging intentions
 - [[diode-standard]] — unidirectional command flow that enforces the single-direction control constraint

@@ -82,5 +82,5 @@ La especialización, no la escala, es el principio de diseño.
 - [[service-content]] — el Motor de Gravedad ascendente; principal solicitante de service-slm para la verificación de gravedad
 - [[os-network-admin]] — el Terminal F8 donde se origina el análisis de comandos semánticos
 - [[totebox-os]] — el Totebox que aloja service-slm en modo Hierro Soberano
-- [[sys-adr-07]] — los datos estructurados nunca se enrutan a través de IA; service-slm es la implementación de este límite
+- [[architecture-decisions|SYS-ADR-07]] — los datos estructurados nunca se enrutan a través de IA; service-slm es la implementación de este límite
 - [[doorman-protocol]] — el protocolo de auditoría y enrutamiento del Portero en detalle

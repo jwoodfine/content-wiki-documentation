@@ -33,4 +33,3 @@ Estos estándares garantizan que la voz de PointSav y Woodfine sea coherente y p
 
 - [[brand-typography]]
 - [[brand-family-swatch]]
-- [[style-guide-readme]]

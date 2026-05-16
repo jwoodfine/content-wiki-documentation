@@ -59,4 +59,3 @@ Tier discipline and model version progression are orthogonal axes. A new model v
 ## See also
 
 - [[compounding-substrate]] — the contributor model this discipline makes economically viable
-- [[cluster-wiki-draft-pipeline]] — a concrete application of sub-agent dispatch in the editorial pipeline

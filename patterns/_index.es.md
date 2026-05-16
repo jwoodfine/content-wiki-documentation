@@ -19,7 +19,7 @@ Los patrones se diferencian de los sustratos: un sustrato es un mecanismo portan
 
 ## Orden de lectura
 
-[[source-of-truth-inversion]] (la división canónico / vista / efímero) y [[pairing-as-permission]] (control de acceso basado en capacidades) son los patrones más fundamentales — léalos primero. [[reverse-funnel-editorial-pattern]] explica la canalización editorial utilizada para refinar borradores a escala. [[wikipedia-leapfrog-design]] y [[article-shell-leapfrog]] explican el contrato del cromo del wiki con la memoria muscular del lector. [[collab-via-passthrough-relay]] documenta el mecanismo de colaboración en tiempo real que no contiene estado del documento.
+[[source-of-truth-inversion]] (la división canónico / vista / efímero) y [[pairing-as-permission]] (control de acceso basado en capacidades) son los patrones más fundamentales — léalos primero. [[collab-via-passthrough-relay]] documenta el mecanismo de colaboración en tiempo real que no contiene estado del documento.
 
 ## Véase también
 

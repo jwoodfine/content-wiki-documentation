@@ -52,4 +52,3 @@ Missing files surface at session start when any session in a repository observes
 
 ## See also
 
-- [[project-tetrad-discipline]] — The project lifecycle that determines when Tier-2 files become required.

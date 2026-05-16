@@ -49,4 +49,3 @@ La combinación de límite de pasarela, ledger de auditoría por tenant y lista 
 
 - [[compounding-substrate]]
 - [[design-system-substrate]]
-- [[cluster-wiki-draft-pipeline]]

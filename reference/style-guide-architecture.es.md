@@ -52,6 +52,5 @@ del Nomenclature Matrix se usan con exactitud.
 
 ## Véase también
 
-- [[style-guide-readme|Guía de estilo — README]]
 - [[style-guide-topic|Guía de estilo — TOPIC]]
 - [[language-protocol-substrate|Substrato del Protocolo de Lenguaje]]

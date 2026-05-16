@@ -70,9 +70,6 @@ El motor wiki `app-mediakit-knowledge` se convierte en la demostración instalab
 
 ## Véase también
 
-- [[knowledge-wiki-home-page-design]] — La intención de diseño de la página de inicio y el encuadre competitivo de premios.
-- [[article-shell-leapfrog]] — Las primitivas de salto generacional del shell de artículo.
-- [[wikipedia-leapfrog-design]] — La narrativa de diseño detrás del contrato de memoria muscular 95%/5%.
 - [[substrate-native-compatibility]] — Por qué el sustrato envía su propia superficie en lugar de adaptar un proveedor existente.
 
 ## Procedencia

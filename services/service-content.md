@@ -72,7 +72,7 @@ The Gravity Engine is self-healing in a specific, narrow sense: its own outputs 
 
 ## The human-in-the-loop boundary
 
-`service-content` does not publish to verified ledgers autonomously. Every L5 entry must transit a human-in-the-loop verification step — either through the [[app-console-input|Input Machine]] (F12) or through the content review surface — before it can be written to a verified ledger. This satisfies [[sys-adr-07]] (no structured data through AI) and [[sys-adr-19]] (no automated AI publishing to verified ledgers).
+`service-content` does not publish to verified ledgers autonomously. Every L5 entry must transit a human-in-the-loop verification step — either through the [[app-console-input|Input Machine]] (F12) or through the content review surface — before it can be written to a verified ledger. This satisfies [[architecture-decisions|SYS-ADR-07]] (no structured data through AI) and [[architecture-decisions|SYS-ADR-19]] (no automated AI publishing to verified ledgers).
 
 ## See also
 

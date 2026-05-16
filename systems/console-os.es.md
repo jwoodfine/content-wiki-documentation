@@ -51,7 +51,7 @@ La interfaz organiza la realidad de cada entidad en un conjunto fijo de pilares.
 | F6 | BOOKKEEPER | [[service-bookkeeper\|service-bookkeeper]] — el libro mayor financiero |
 | F12 | MÁQUINA DE ENTRADA | [[app-console-input]] — la puerta de ingesta con intervención humana |
 
-F12 es obligatorio según [[sys-adr-10]]. La [[app-console-input|Máquina de Entrada]] es la única superficie a través de la cual archivos externos sin procesar pueden entrar a un Totebox. Los archivos depositados en F12 tienen eliminados sus permisos de ejecución, se etiquetan contra el [[archetypes-and-chart-of-accounts|Plan de Cuentas]] del operador y se enrutan a F5 o F6.
+F12 es obligatorio según [[architecture-decisions|SYS-ADR-10]]. La [[app-console-input|Máquina de Entrada]] es la única superficie a través de la cual archivos externos sin procesar pueden entrar a un Totebox. Los archivos depositados en F12 tienen eliminados sus permisos de ejecución, se etiquetan contra el [[archetypes-and-chart-of-accounts|Plan de Cuentas]] del operador y se enrutan a F5 o F6.
 
 ## La pila de renderizado
 

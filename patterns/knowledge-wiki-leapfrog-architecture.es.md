@@ -53,5 +53,4 @@ Una vez alcanzada la paridad con Wikipedia, se prevé añadir tres primitivas de
 
 - [[app-mediakit-knowledge]] — descripción de la aplicación, configuración de despliegue y hoja de ruta por fases
 - [[leapfrog-2030-architecture]] — doctrina Leapfrog 2030 y ocho inventos del marco
-- [[wikipedia-structure]] — investigación sobre la anatomía de los artículos de Wikipedia: 16 elementos y esquemas de infobox
 - [[compounding-substrate]] — el patrón de compounding que implementa el pilar wiki

@@ -21,7 +21,7 @@ La categoría responde a preguntas como: *¿qué hace que la plataforma mejore c
 
 Comience con [[compounding-substrate]] para el patrón canónico que PointSav administra. Después lea [[apprenticeship-substrate]] (cómo los veredictos editoriales alimentan el preentrenamiento continuo), [[citation-substrate]] (cómo cada afirmación se resuelve a una fuente autoritativa), y [[disclosure-substrate]] (cómo las declaraciones prospectivas permanecen conformes con BCSC por estructura).
 
-Para las primitivas de implementación que componen los sustratos: [[adapter-composition]] (cómo se componen los adaptadores de solicitud), [[mcp-substrate-protocol]] (la superficie de protocolo legible por máquina), [[merkle-proofs-as-substrate-primitive]] (la base criptográfica), [[meta-repo-pattern]] (la topología de repositorios).
+Para las primitivas de implementación que componen los sustratos: [[adapter-composition]] (cómo se componen los adaptadores de solicitud), [[mcp-substrate-protocol]] (la superficie de protocolo legible por máquina), [[merkle-proofs-as-substrate-primitive]] (la base criptográfica).
 
 ## Véase también
 

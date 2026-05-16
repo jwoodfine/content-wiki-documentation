@@ -40,4 +40,3 @@ La estructura de tres niveles produce un multiplicador efectivo significativo co
 ## Véase también
 
 - [[compounding-substrate]]
-- [[cluster-wiki-draft-pipeline]]

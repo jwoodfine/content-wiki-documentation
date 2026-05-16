@@ -37,4 +37,3 @@ El archivo `LICENSE` en cada repositorio se obtiene de un directorio centralizad
 
 ## Véase también
 
-- [[project-tetrad-discipline]]

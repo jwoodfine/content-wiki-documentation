@@ -72,5 +72,3 @@ A sixth element of this posture — introduced alongside a citation substrate co
 ## See also
 
 - [[citation-substrate]] — the citation graph that makes regulatory grounding machine-readable
-- [[draft-research-trail-discipline]] — how forward-looking research items are scrubbed at refinement time
-- [[cluster-wiki-draft-pipeline]] — the editorial pipeline where this posture is applied uniformly

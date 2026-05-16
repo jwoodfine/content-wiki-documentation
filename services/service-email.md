@@ -57,5 +57,5 @@ This approach confines the cloud-trust boundary to a single, well-defined point 
 - [[service-people]] — the identity ledger that receives sender records from service-email via service-extraction
 - [[service-content]] — the Gravity Engine that synthesises content from the WORM Maildir
 - [[app-console-input]] — the F12 Input Machine; companion ingest surface for non-email payloads
-- [[sys-adr-07]] — structured data never routes through AI (governs downstream handling of service-email output)
+- [[architecture-decisions|SYS-ADR-07]] — structured data never routes through AI (governs downstream handling of service-email output)
 - [[totebox-os]] — the Totebox that hosts service-email and its WORM storage

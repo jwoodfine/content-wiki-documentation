@@ -19,7 +19,7 @@ Patterns differ from substrates: a substrate is a load-bearing mechanism the pla
 
 ## Reading order
 
-[[source-of-truth-inversion]] (the canonical / view / ephemeral split) and [[pairing-as-permission]] (capability-based access control) are the most foundational patterns — read first. [[reverse-funnel-editorial-pattern]] explains the editorial pipeline used to refine drafts at scale. [[wikipedia-leapfrog-design]] and [[article-shell-leapfrog]] explain the wiki chrome's contract with reader muscle memory. [[collab-via-passthrough-relay]] documents the real-time-collab mechanism that holds no document state.
+[[source-of-truth-inversion]] (the canonical / view / ephemeral split) and [[pairing-as-permission]] (capability-based access control) are the most foundational patterns — read first. [[collab-via-passthrough-relay]] documents the real-time-collab mechanism that holds no document state.
 
 ## See also
 

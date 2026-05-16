@@ -646,5 +646,3 @@ Zero-party data is information that users intentionally and proactively share wi
 
 - [[style-guide-topic]]
 - [[style-guide-guide]]
-- [[style-guide-readme]]
-- [[wikipedia-structure]]

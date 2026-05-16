@@ -49,7 +49,6 @@ El patrón: cada interfaz que el sustrato no replica es una obligación que no a
 
 - [[source-of-truth-inversion]] — La designación de capa de almacenamiento de la que depende este patrón.
 - [[app-mediakit-knowledge]] — El motor wiki que este patrón gobierna.
-- [[wikipedia-leapfrog-design]] — La intención de diseño del chrome del wiki.
 - [[disclosure-substrate]] — La convención de divulgación continua y los casos de sustitución adicionales.
 
 ## Procedencia

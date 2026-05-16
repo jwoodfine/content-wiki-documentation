@@ -97,8 +97,8 @@ Cada documento público que publica la plataforma aplica la siguiente disciplina
 
 ## Véase también
 
-- [[sys-adr-07]] — la decisión arquitectónica que prohíbe que los datos estructurados pasen por IA sin verificación humana
-- [[sys-adr-19]] — la decisión arquitectónica que prohíbe la publicación automatizada de IA en libros mayores verificados
+- [[architecture-decisions|SYS-ADR-07]] — la decisión arquitectónica que prohíbe que los datos estructurados pasen por IA sin verificación humana
+- [[architecture-decisions|SYS-ADR-19]] — la decisión arquitectónica que prohíbe la publicación automatizada de IA en libros mayores verificados
 - [[worm-ledger-design]] — el sustrato del libro mayor WORM que aplica el mantenimiento de registros de solo adición
 - [[doorman-protocol]] — la puerta de IA cuyo límite de auditoría apoya las intenciones de registro ISO/IEC 42001
 - [[diode-standard]] — flujo de comandos unidireccional que aplica la restricción de control de dirección única

@@ -56,5 +56,4 @@ Per-tenant training data lives in deployment instances rather than at workspace 
 
 ## See also
 
-- [[reverse-funnel-editorial-pattern]] — The editorial pipeline that generates the craft preference pairs consumed by Stage-2 training.
 - [[tier-c-key-wiring]] — The operational form of Tier C external API key management.

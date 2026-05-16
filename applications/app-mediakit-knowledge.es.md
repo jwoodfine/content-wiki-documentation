@@ -55,5 +55,3 @@ A fecha de 2026-04-27, el motor está al final de la Fase 3. Las Fases 1, 1.1, 2
 - [[source-of-truth-inversion]] — el patrón canónico / vista / efímero generalizado
 - [[substrate-native-compatibility]] — la decisión de eliminar el shim de la Action API
 - [[collab-via-passthrough-relay]] — la implementación del relé WebSocket
-- [[wikipedia-leapfrog-design]] — intención de diseño del cromo y el contrato 95%/5%
-- [[article-shell-leapfrog]] — cinco primitivas de la capa de artículo que extienden más allá de Wikipedia
