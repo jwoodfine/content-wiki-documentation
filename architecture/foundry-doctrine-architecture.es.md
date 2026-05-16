@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Foundry — Visión Arquitectónica"
+title: "PointSav Platform — Visión Arquitectónica"
 slug: foundry-doctrine-architecture.es
 category: architecture
 type: topic

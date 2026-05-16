@@ -9,11 +9,11 @@ last_edited: 2026-05-08
 editor: pointsav-engineering
 ---
 
-The three Foundry wikis address three distinct primary audiences. Each audience has different financial and technical literacy, different reasons for reading, and different vocabulary expectations. Writing in the wrong register produces content that fails to communicate — not because it is inaccurate, but because it addresses the wrong reader. This article defines the three registers, explains who each audience is, and provides the vocabulary rules that govern all three wikis.
+The three PointSav wikis address three distinct primary audiences. Each audience has different financial and technical literacy, different reasons for reading, and different vocabulary expectations. Writing in the wrong register produces content that fails to communicate — not because it is inaccurate, but because it addresses the wrong reader. This article defines the three registers, explains who each audience is, and provides the vocabulary rules that govern all three wikis.
 
 ## What a register is
 
-A language register is the combination of sentence structure, vocabulary, depth, and tone appropriate for a specific audience in a specific context. A financial brief uses a different register than a technical specification. Bloomberg and the Financial Times use a different register than a building code. Stripe's developer documentation uses a different register than either. The Foundry wikis are written in three distinct registers — one per audience — applied consistently across every article.
+A language register is the combination of sentence structure, vocabulary, depth, and tone appropriate for a specific audience in a specific context. A financial brief uses a different register than a technical specification. Bloomberg and the Financial Times use a different register than a building code. Stripe's developer documentation uses a different register than either. The PointSav wikis are written in three distinct registers — one per audience — applied consistently across every article.
 
 Register is not style preference. It is the difference between a reader who understands what they came to learn and a reader who gives up and closes the tab.
 

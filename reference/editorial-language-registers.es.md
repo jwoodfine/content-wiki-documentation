@@ -11,7 +11,7 @@ language: es
 paired_with: editorial-language-registers.md
 ---
 
-Los tres wikis de Foundry se dirigen a tres audiencias primarias distintas. Cada audiencia tiene diferente nivel de alfabetización financiera y técnica, diferentes razones para leer y diferentes expectativas de vocabulario. Este artículo define los tres registros, explica quién es cada audiencia y establece las reglas de vocabulario que rigen los tres wikis.
+Los tres wikis de PointSav se dirigen a tres audiencias primarias distintas. Cada audiencia tiene diferente nivel de alfabetización financiera y técnica, diferentes razones para leer y diferentes expectativas de vocabulario. Este artículo define los tres registros, explica quién es cada audiencia y establece las reglas de vocabulario que rigen los tres wikis.
 
 ## Mapa de audiencias
 
