@@ -38,7 +38,7 @@ The following artifacts are published at every MINOR version bump under open lic
 | Adapter recipes (training scripts, hyperparameters) | Apache 2.0 |
 | Constitutional adapter weights | Apache 2.0 |
 | Engineering adapter weights | Apache 2.0 |
-| Design-system tokens, components, guidelines | MIT + CC BY 4.0 |
+| Design-system tokens, components, guidelines | Apache 2.0 |
 
 Each MINOR bump produces a signed, versioned bundle pushed to `pointsav/factory-release-engineering` with a stable ID. The bundle is itself a citable artifact. Downstream deployments and Customers can pin against a specific bundle version and know what they are running.
 

@@ -27,7 +27,7 @@ La línea entre ambos es clara y estructural. No es una decisión de precio — 
 
 ## La parte pública
 
-Los siguientes artefactos se publican en cada versión MINOR de la Doctrina bajo licencias abiertas: DOCTRINE.md y enmiendas (CC BY 4.0), convenciones (CC BY 4.0), registro de citas (CC0), fragmento de corpus de trayectoria depurado (CC BY 4.0 con redacción), recetas de adaptadores (Apache 2.0), pesos de adaptadores constitucionales y de ingeniería (Apache 2.0), y tokens, componentes y directrices del sistema de diseño (MIT + CC BY 4.0).
+Los siguientes artefactos se publican en cada versión MINOR de la Doctrina bajo licencias abiertas: DOCTRINE.md y enmiendas (CC BY 4.0), convenciones (CC BY 4.0), registro de citas (CC0), fragmento de corpus de trayectoria depurado (CC BY 4.0 con redacción), recetas de adaptadores (Apache 2.0), pesos de adaptadores constitucionales y de ingeniería (Apache 2.0), y tokens, componentes y directrices del sistema de diseño (Apache 2.0).
 
 Cada versión MINOR produce un paquete firmado y versionado publicado en `pointsav/factory-release-engineering` con un identificador estable. El paquete es en sí mismo un artefacto citable; los despliegues posteriores pueden fijar una versión específica y saber exactamente qué están ejecutando.
 

@@ -44,7 +44,7 @@ Contributors to the public substrate via pull requests against the open reposito
 
 Apache 2.0 / MIT / CC BY 4.0 licensed contributions per the artefact tier. No CLA required for contributions to the open core; CLAs are only needed for dual-licensed commercial-tier components.
 
-The 10,000-plus scale is plausible because comparable substrate communities have demonstrated it: the Linux kernel sustains roughly 14,000 contributors per year, the Apache Foundation crosses tens of thousands across projects, and Kubernetes carries 4,000-plus on a single project. The licensing posture (Apache 2.0 weights, CC BY 4.0 docs, MIT design-system) matches the licensing patterns that have demonstrably scaled to these levels.
+The 10,000-plus scale is plausible because comparable substrate communities have demonstrated it: the Linux kernel sustains roughly 14,000 contributors per year, the Apache Foundation crosses tens of thousands across projects, and Kubernetes carries 4,000-plus on a single project. The licensing posture (Apache 2.0 weights, CC BY 4.0 docs, Apache 2.0 design-system) matches the licensing patterns that have demonstrably scaled to these levels.
 
 The Open tier is what makes the substrate self-sustaining at a scale that 4–7 Core could not possibly maintain alone. Most substrate features ship via Open contribution; Core reviews and accepts; Paid implements the commercial-tier extensions that Open contributors do not typically tackle.
 
