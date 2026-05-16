@@ -129,7 +129,7 @@ MOC landing.
 | `governance/` | ADRs, licensing, release engineering, compliance | Engineers, financial community | `sys-adr-07`, `sys-adr-19`, `licensing-matrix`, `release-engineering-process` |
 | `infrastructure/` | Fleet deployment, cloud topology, storage, network, telemetry | Engineers, financial community | `fleet-infrastructure-cloud`, `worm-ledger-architecture`, `sovereign-mesh`, `sovereign-telemetry` |
 | `reference/` | Glossary, nomenclature, style guide, templates | Writers, engineers | `glossary`, `nomenclature-matrix`, `style-guide`, `article-template` |
-| `design-system/` | Design system — components, tokens, foundations, and contribution guides | Engineers, designers | `design-philosophy`, `design-color`, `design-typography`, `badge`, `button`, `navigation-bar` |
+| `design-system/` | Design system as a platform component — architectural framing and brand surface context. Component guides, token specs, and accessibility documentation live in `pointsav-design-system/` (see naming-convention.md §13 Decision #7). | Engineers, designers, financial community | `design-philosophy`, `design-primitive-vocabulary`, `brand-family-swatch`, `brand-typography` |
 
 Rationale:
 
@@ -386,6 +386,8 @@ patterns; Apache / Red Hat substrate model) while still carrying the
 workspace-specific meaning we use in doctrine. Earlier candidate names
 considered and rejected: `concepts/` (too generic), `doctrine/` (ambiguous
 with the Foundry Doctrine document), `frameworks/` (too engineering-specific).
+
+**7. design-system/ category split (2026-05-16).** Ratified by OPUS editorial analysis and operator acceptance. Trigger: 48 of 57 articles in `design-system/` were design-system implementation specifications (token docs, component guides, accessibility specs) — not platform-documentation articles. The category had grown into a mirror of `pointsav-design-system/` rather than a commentary on the design system as a platform component. Decision: move 48 files (3 batches) to `pointsav-design-system/`. Retain 4 EN+ES pairs (design-philosophy, design-primitive-vocabulary, brand-family-swatch, brand-typography) which cover the design system as a platform concept. Permanent routing boundary: articles *about* the design system as a platform component → `content-wiki-documentation/design-system/`; component specs, token docs, implementation guides → `pointsav-design-system/`. Batches: Batch 1 (8 files) foundation token docs → `pointsav-design-system/docs/foundations/`; Batch 2 (22 files) component guides + wiki-surface → `pointsav-design-system/components/<name>/guide.md` + `docs/wiki-surface/`; Batch 3 (18 files) spatial/accessibility → `pointsav-design-system/components/<name>/guide.md` + `docs/accessibility/`. Redirects: `content-wiki-documentation/redirects.yaml` (48 entries).
 
 **6. Empty categories company/ + help/ retired.** Both categories were
 ratified at decision #1 above (2026-05-07) but no articles were authored

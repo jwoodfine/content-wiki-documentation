@@ -9,46 +9,20 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-16
 editor: pointsav-engineering
 paired_with: _index.es.md
 ---
 
-The PointSav design-system substrate is a self-hosted, customer-owned design-system engine. It delivers a complete token vocabulary, component recipe library, and editorial voice guide in a Git-tracked vault the customer owns outright — without dependency on Enterprise-tier design-system platforms.
+The design-system category covers the PointSav design system as a platform component — its foundational vocabulary, design philosophy, and brand surface context. It addresses the design system as a concept within the platform: why it exists, how it is structured, and what brand identity it carries. Component implementation guides, token specifications, accessibility documentation, and spatial UI specifications live in the design system repository at `design.pointsav.com`.
 
-The substrate serves three consumer types from the same vault: AI agents querying the MCP endpoint at codegen time, design tools synchronising against the DTCG token bundle, and human designers reading the component research.
+## Articles in this category
 
-## Foundation elements
-
-The foundation layer defines the five primitives every surface is built from.
-
-- [[design-color]] — three-layer color model (primitive, semantic, component) with five color families and WCAG 2.2 AAA contrast guarantees.
-- [[design-typography]] — Utility and Display type scales; Inter canonical typeface; system-stack fallback.
-- [[design-spacing]] — 13-step spacing scale on a 16 px base.
-- [[design-motion]] — four easing curves and six duration steps; `prefers-reduced-motion` honoured unconditionally.
-
-## Research
-
-- [[design-philosophy]] — why the substrate exists; three structural inversions of the Enterprise-tier pattern.
+- [[design-philosophy]] — why the substrate exists; three structural inversions of the enterprise-tier pattern.
 - [[design-primitive-vocabulary]] — vocabulary rationale; what the substrate preserved from field convention and what it replaced.
+- [[brand-family-swatch]] — the PointSav brand colour families and their application across product surfaces.
+- [[brand-typography]] — the editorial voice and typographic identity of the PointSav brand.
 
-## Component guides
+## Component guides and token documentation
 
-Usage guides for individual components — HTML+CSS+ARIA recipes, token references, and accessibility requirements for each.
-
-- [[guide-component-badge]]
-- [[guide-component-breadcrumb]]
-- [[guide-component-button]]
-- [[guide-component-checkbox]]
-- [[guide-component-citation-authority-ribbon]]
-- [[guide-component-freshness-ribbon]]
-- [[guide-component-home-grid]]
-- [[guide-component-input-text]]
-- [[guide-component-link]]
-- [[guide-component-navigation-bar]]
-- [[guide-component-notification]]
-- [[guide-component-research-trail-footer]]
-- [[guide-component-select]]
-- [[guide-component-surface]]
-- [[guide-component-switch]]
-- [[guide-component-tab]]
+Component usage guides (HTML+CSS+ARIA recipes), foundation token specifications, wiki-surface component documentation, and spatial and accessibility specifications have moved to the design system repository. Browse them at `design.pointsav.com`.

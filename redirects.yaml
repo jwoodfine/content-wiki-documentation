@@ -1,0 +1,109 @@
+# Redirects for content-wiki-documentation
+# Articles moved to pointsav-design-system on 2026-05-16 as part of the
+# design-system category split (see naming-convention.md §13 Decision #7).
+# Format: Hugo-compatible redirect list. The wiki engine emits 301 for
+# each `from` path. Language variants are handled by the engine's i18n
+# routing; only EN slugs are listed here.
+
+redirects:
+
+  # Batch 1 — Foundation token docs → pointsav-design-system/docs/foundations/
+  - from: /design-system/design-color
+    to: https://design.pointsav.com/foundations/design-color
+
+  - from: /design-system/design-typography
+    to: https://design.pointsav.com/foundations/design-typography
+
+  - from: /design-system/design-spacing
+    to: https://design.pointsav.com/foundations/design-spacing
+
+  - from: /design-system/design-motion
+    to: https://design.pointsav.com/foundations/design-motion
+
+  # Batch 2 — Component guides → pointsav-design-system/components/<name>/guide.md
+  - from: /design-system/guide-component-badge
+    to: https://design.pointsav.com/components/badge/guide
+
+  - from: /design-system/guide-component-breadcrumb
+    to: https://design.pointsav.com/components/breadcrumb/guide
+
+  - from: /design-system/guide-component-button
+    to: https://design.pointsav.com/components/button/guide
+
+  - from: /design-system/guide-component-checkbox
+    to: https://design.pointsav.com/components/checkbox/guide
+
+  - from: /design-system/guide-component-citation-authority-ribbon
+    to: https://design.pointsav.com/components/citation-authority-ribbon/guide
+
+  - from: /design-system/guide-component-freshness-ribbon
+    to: https://design.pointsav.com/components/freshness-ribbon/guide
+
+  - from: /design-system/guide-component-home-grid
+    to: https://design.pointsav.com/components/home-grid/guide
+
+  - from: /design-system/guide-component-input-text
+    to: https://design.pointsav.com/components/input-text/guide
+
+  - from: /design-system/guide-component-link
+    to: https://design.pointsav.com/components/link/guide
+
+  - from: /design-system/guide-component-navigation-bar
+    to: https://design.pointsav.com/components/navigation-bar/guide
+
+  - from: /design-system/guide-component-notification
+    to: https://design.pointsav.com/components/notification/guide
+
+  - from: /design-system/guide-component-research-trail-footer
+    to: https://design.pointsav.com/components/research-trail-footer/guide
+
+  - from: /design-system/guide-component-select
+    to: https://design.pointsav.com/components/select/guide
+
+  - from: /design-system/guide-component-surface
+    to: https://design.pointsav.com/components/surface/guide
+
+  - from: /design-system/guide-component-switch
+    to: https://design.pointsav.com/components/switch/guide
+
+  - from: /design-system/guide-component-tab
+    to: https://design.pointsav.com/components/tab/guide
+
+  # Batch 2 — Wiki-surface docs → pointsav-design-system/docs/wiki-surface/
+  - from: /design-system/wiki-component-library
+    to: https://design.pointsav.com/wiki-surface/wiki-component-library
+
+  - from: /design-system/wiki-dark-mode
+    to: https://design.pointsav.com/wiki-surface/wiki-dark-mode
+
+  - from: /design-system/wiki-typography-system
+    to: https://design.pointsav.com/wiki-surface/wiki-typography-system
+
+  # Batch 3 — Spatial components → pointsav-design-system/components/<name>/guide.md
+  - from: /design-system/country-filter-chips
+    to: https://design.pointsav.com/components/country-filter-chips/guide
+
+  - from: /design-system/map-side-drawer
+    to: https://design.pointsav.com/components/map-side-drawer/guide
+
+  - from: /design-system/map-stats-panel
+    to: https://design.pointsav.com/components/map-stats-panel/guide
+
+  - from: /design-system/climate-zone-tokens
+    to: https://design.pointsav.com/components/climate-zone-tokens/guide
+
+  - from: /design-system/zoom-tier-reveal-pattern
+    to: https://design.pointsav.com/components/zoom-tier-reveal-pattern/guide
+
+  # Batch 3 — Accessibility docs → pointsav-design-system/docs/accessibility/
+  - from: /design-system/neurodiversity-typography-standards
+    to: https://design.pointsav.com/accessibility/neurodiversity-typography-standards
+
+  - from: /design-system/properties-panel-accessibility
+    to: https://design.pointsav.com/accessibility/properties-panel-accessibility
+
+  - from: /design-system/spatial-tree-accessibility
+    to: https://design.pointsav.com/accessibility/spatial-tree-accessibility
+
+  - from: /design-system/viewport-3d-accessibility
+    to: https://design.pointsav.com/accessibility/viewport-3d-accessibility
