@@ -28,7 +28,7 @@ Last updated: 2026-05-16.
 
 | Field | Value |
 |---|---|
-| State | `pending-destination-commit` |
+| State | `destination-committed` |
 | Opened | 2026-05-16 |
 | Decision | OPUS editorial analysis (project-editorial session, 2026-05-16); operator-ratified |
 | Rationale | Foundation token docs (color, typography, spacing, motion) are token specifications — they pair with the YAML token files in `pointsav-design-system/tokens/` and belong beside them, not in the platform engineering wiki. repo-layout.md §3 routing rule applies. |
@@ -63,7 +63,7 @@ Last updated: 2026-05-16.
 
 | Field | Value |
 |---|---|
-| State | `pending-destination-commit` |
+| State | `destination-committed` |
 | Opened | 2026-05-16 |
 | Decision | OPUS editorial analysis (project-editorial session, 2026-05-16); operator-ratified |
 | Rationale | Component usage guides (HTML+CSS+ARIA recipes) are design-system specifications, not platform documentation. They are addressed to component implementers, not the engineering or financial-community reader of `documentation.pointsav.com`. EN-only format violates the wiki's bilingual rule. Co-location with `pointsav-design-system/components/<name>/` resolves both the routing rule violation and the bilingual defect. Wiki-surface docs describe the nine wiki components; they belong with the component implementations, not in the wiki's own content. |
@@ -119,7 +119,7 @@ Last updated: 2026-05-16.
 
 | Field | Value |
 |---|---|
-| State | `pending-destination-commit` |
+| State | `destination-committed` |
 | Opened | 2026-05-16 |
 | Decision | OPUS editorial analysis (project-editorial session, 2026-05-16); operator-ratified |
 | Rationale | Spatial UI components and accessibility specifications for GIS-surface panels are design-system specifications addressed to engineers building the GIS app, not to the platform-documentation reader. They belong in `pointsav-design-system/` alongside the token files and component implementations they reference. |
