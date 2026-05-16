@@ -136,7 +136,7 @@ which is authoritative.
 
 
 
-Copyright (c) 2026 Woodfine Capital Projects Inc.. All rights not expressly
+Copyright © 2026 Woodfine Capital Projects Inc. All rights not expressly
 granted by the license are reserved.
 
 <!-- ================================================================== -->
@@ -152,6 +152,6 @@ legal completo, el cual es la versión autoritativa.
 
 
 
-Copyright (c) 2026 Woodfine Capital Projects Inc.. Se reservan todos los
+Copyright © 2026 Woodfine Capital Projects Inc. Se reservan todos los
 derechos no concedidos expresamente por la licencia.
 <!-- END: factory-release-engineering license-section -->
