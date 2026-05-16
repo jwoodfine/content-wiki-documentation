@@ -10,13 +10,27 @@
 > layout-rule enforcement, defect resolution, surfaced open
 > questions — does.
 
-Last updated: 2026-05-09.
+Last updated: 2026-05-16.
 
 ---
 
 ## Open
 
-### 2026-05-09 — Body-level Doctrine/Convention vocabulary scrub (~120 EN files)
+*(none)*
+
+---
+
+### 2026-05-09 — Body-level Doctrine/Convention vocabulary scrub — COMPLETE
+
+`Closed: 2026-05-16.` Phase 2 sub-phases 2g + 2j completed this scrub in full.
+Sub-phase 2g verified that 4 remaining "Convention" uses in the corpus are legitimate
+English and not governance vocabulary. Sub-phase 2j ran a final grep across all
+non-architecture categories and returned zero hits. Phase 2 §9.4 verification:
+Foundry/Doctrine CLEAN. No further action required.
+
+Original entry retained below for reference.
+
+---
 
 Per operator constraint (workspace v0.1.x; saved as feedback memory
 `feedback_no_doctrine_convention_in_public.md`): "Doctrine" and
