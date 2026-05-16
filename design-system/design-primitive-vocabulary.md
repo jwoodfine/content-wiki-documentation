@@ -76,8 +76,6 @@ The structural patterns are field-shared; the literal tokens are not.
 ## See also
 
 - [[design-philosophy]]
-- [[design-color]]
-- [[design-typography]]
 
 ## References
 

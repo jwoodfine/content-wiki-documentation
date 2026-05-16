@@ -65,5 +65,3 @@ Se prevé que las futuras iteraciones incluyan:
 ## Véase también
 
 - [[brand-typography]]
-- [[design-typography]]
-- [[design-color]]

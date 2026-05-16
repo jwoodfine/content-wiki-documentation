@@ -44,4 +44,3 @@ Este enfoque permite que cualquier tecnología (Yew, Leptos o TS) pueda implemen
 - [[bim-design-philosophy]]
 - [[bim-aec-muscle-memory]]
 - [[flat-file-bim-leapfrog]]
-- [[design-color]]

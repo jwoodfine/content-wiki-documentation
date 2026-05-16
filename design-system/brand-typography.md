@@ -36,5 +36,4 @@ Brand typography is utilized to establish a professional "White Paper" aesthetic
 ## See also
 
 - [[brand-family-swatch]]
-- [[design-typography]]
 - [[news-release-standards]]

@@ -40,5 +40,4 @@ A reader who has both vendor and customer sites open in adjacent browser tabs ca
 ## See also
 
 - [[design-system-substrate]]
-- [[design-typography]]
 - [[anti-homogenization-discipline]]

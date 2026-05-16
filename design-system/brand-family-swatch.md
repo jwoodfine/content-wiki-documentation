@@ -65,5 +65,3 @@ Future iterations are intended to include:
 ## See also
 
 - [[brand-typography]]
-- [[design-typography]]
-- [[design-color]]

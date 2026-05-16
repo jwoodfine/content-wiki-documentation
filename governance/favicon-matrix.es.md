@@ -40,5 +40,4 @@ Un lector que tenga abiertos sitios del proveedor y del cliente en pestañas ady
 ## Véase también
 
 - [[design-system-substrate]]
-- [[design-typography]]
 - [[anti-homogenization-discipline]]

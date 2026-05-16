@@ -29,5 +29,4 @@ Esta estrategia asegura que todos los documentos generados por la plataforma ten
 ## Véase también
 
 - [[brand-family-swatch]]
-- [[design-typography]]
 - [[news-release-standards]]

@@ -58,4 +58,3 @@ Host frameworks (e.g., Yew, Leptos, or vanilla TypeScript) integrate by mounting
 - [[bim-design-philosophy]]
 - [[bim-aec-muscle-memory]]
 - [[flat-file-bim-leapfrog]]
-- [[design-color]]

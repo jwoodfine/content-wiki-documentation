@@ -38,5 +38,3 @@ Un token nombrado por familia cromática con los valores exactos de un proveedor
 ## Véase también
 
 - [[design-philosophy]]
-- [[design-color]]
-- [[design-typography]]

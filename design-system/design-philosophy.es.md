@@ -31,9 +31,3 @@ El sustrato responde con tres inversiones estructurales:
 
 En la era de la IA 2026–2030, el sustrato de sistema de diseño de una pyme es un medio: su forma — legibilidad por máquinas, interoperabilidad sin dependencia de editor, auto-alojamiento, investigación consumible por IA — determina cómo la marca de la pyme llega a cada superficie orientada al cliente.
 
-## Véase también
-
-- [[design-color]]
-- [[design-typography]]
-- [[design-spacing]]
-- [[design-motion]]
