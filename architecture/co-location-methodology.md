@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: co-location-methodology
-title: "Co-location Methodology"
+title: "Co-location methodology"
 category: architecture
 language: en
 paired_with: co-location-methodology.es.md

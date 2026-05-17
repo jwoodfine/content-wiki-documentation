@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The Building Design System for the Built Environment"
+title: "The building design system for the built environment"
 slug: building-design-system-bim
 category: architecture
 type: topic

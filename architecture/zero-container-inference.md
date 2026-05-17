@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Zero-Container Inference"
+title: "Zero-container inference"
 slug: zero-container-inference
 category: architecture
 status: stub

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "app-console-input"
+title: "Console input application"
 slug: app-console-input
 category: applications
 type: app
@@ -34,10 +34,10 @@ A typical F12 session has a deterministic five-step shape. Each step has a clear
 | Step | Operator action | System response |
 |---|---|---|
 | 1 | Drag a file from the desktop into the F12 window | The system computes a content hash and strips execution permissions |
-| 2 | Select a category from the [[archetypes-and-chart-of-accounts\|Chart of Accounts]] (Profile → Domain → Sub-Domain) | The system prepares a routing destination |
+| 2 | Select a category from the [[archetypes-and-chart-of-accounts|Chart of Accounts]] (Profile → Domain → Sub-Domain) | The system prepares a routing destination |
 | 3 | Review the entities and themes the system pre-extracted via [[service-extraction]] and [[service-content]] | The system displays a Yes / No verification prompt for each claim |
 | 4 | Approve or reject each claim with single keystrokes | Approved claims advance to L5 verified status; rejected claims are quarantined |
-| 5 | Confirm the routing destination | The file is sealed into service-minutebook or service-bookkeeper; a ledger entry is written; the [[worm-ledger-design\|audit log]] captures the operator identity, timestamp, and routing decision |
+| 5 | Confirm the routing destination | The file is sealed into service-minutebook or service-bookkeeper; a ledger entry is written; the [[worm-ledger-design|audit log]] captures the operator identity, timestamp, and routing decision |
 
 The interaction is keyboard-only and intentionally fast. The operator does not type filenames, fill out metadata forms, or compose database queries. [[service-extraction]] and [[service-content]] have already done the computational work; the operator's role is to verify or reject each claim in sequence, then confirm the destination.
 
@@ -53,7 +53,7 @@ The pattern has three properties:
 |---|---|
 | Low cognitive load | The operator processes a stream of Yes/No decisions rather than authoring structured data |
 | Fiduciary clarity | Every claim that enters the verified ledger carries an explicit operator decision, not a system default |
-| Audit completeness | The [[worm-ledger-design\|audit record]] captures the exact decision on each claim, not only the final routing destination |
+| Audit completeness | The [[worm-ledger-design|audit record]] captures the exact decision on each claim, not only the final routing destination |
 
 This model reflects a deliberate boundary between platform and operator. [[service-extraction]] and [[service-content]] handle entity detection, theme classification, and routing suggestion. The operator handles the binary gate. Institutions subject to continuous-disclosure obligations [ni-51-102] [osc-sn-51-721] and electronic-record standards [^2] can point to a specific, timestamped operator decision for every document that enters the verified ledger.
 
@@ -69,7 +69,7 @@ Institutional fiduciaries — asset managers, lawyers, regulated financial entit
 
 ## What the F12 surface is not
 
-F12 is not a chat interface. The operator does not compose queries or converse with [[service-slm|the language model]]. The surface is structured: a file, a [[archetypes-and-chart-of-accounts\|Chart of Accounts]] selection, a sequence of binary prompts, and a confirmation. All language-model work occurs upstream in [[service-extraction]] and [[service-content]] before the F12 session begins; the operator never sees raw model output.
+F12 is not a chat interface. The operator does not compose queries or converse with [[service-slm|the language model]]. The surface is structured: a file, a [[archetypes-and-chart-of-accounts|Chart of Accounts]] selection, a sequence of binary prompts, and a confirmation. All language-model work occurs upstream in [[service-extraction]] and [[service-content]] before the F12 session begins; the operator never sees raw model output.
 
 F12 is not an autosave surface. A document enters the [[worm-ledger-design|WORM ledger]] only when the operator explicitly confirms the routing destination. This protects the audit trail from partial writes and abandoned sessions. Drafts in progress do not accumulate in the ledger; a document only lands when the operator reaches step five and confirms.
 

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "deployment-patterns"
+title: "Deployment patterns"
 slug: deployment-patterns
 category: patterns
 type: concept
@@ -44,11 +44,11 @@ The platform is positioned as a complementary engine, not a replacement for exis
 
 | Incumbent tool category | What the substrate adds |
 |---|---|
-| Professional email client | [[service-email\|service-email]] ingests each message into a WORM Maildir; the cloud copy may rotate while the sovereign copy remains sealed |
-| Spreadsheet applications | The intended sovereign spreadsheet surface stores executed financial models in the [[worm-ledger-design\|WORM ledger]] |
-| Word-processing applications | The intended sovereign word-processing surface uses Typst for print-fidelity output; F4 in the [[console-os\|Command Ledger]] synthesises content from structured records |
+| Professional email client | [[service-email|service-email]] ingests each message into a WORM Maildir; the cloud copy may rotate while the sovereign copy remains sealed |
+| Spreadsheet applications | The intended sovereign spreadsheet surface stores executed financial models in the [[worm-ledger-design|WORM ledger]] |
+| Word-processing applications | The intended sovereign word-processing surface uses Typst for print-fidelity output; F4 in the [[console-os|Command Ledger]] synthesises content from structured records |
 | Professional networking platforms | [[service-people]] is intended to harvest verified contact data into the Totebox identity ledger |
-| Corporate document repositories | service-minutebook cryptographically seals signed records against the [[worm-ledger-design\|WORM ledger]] substrate |
+| Corporate document repositories | service-minutebook cryptographically seals signed records against the [[worm-ledger-design|WORM ledger]] substrate |
 
 The customer is not asked to abandon any working tool. The substrate operates in the background; the Command Ledger provides a sovereign view over the records the incumbent tools produce.
 
@@ -56,7 +56,7 @@ The customer is not asked to abandon any working tool. The substrate operates in
 
 The six configurations represent distinct GUIDE families in the fleet-deployment catalogue. Each is a configuration, not a separate product; the underlying [[totebox-os]], [[console-os|os-console]], and services are identical across all six.
 
-| Configuration | Primary records | [[archetypes-and-chart-of-accounts\|Chart of Accounts]] adaptation |
+| Configuration | Primary records | [[archetypes-and-chart-of-accounts|Chart of Accounts]] adaptation |
 |---|---|---|
 | Real-property asset manager | Lease documents, building information models, tenant communications, permits | Real Estate / Leasing / Tenants / Municipalities anchors |
 | Public-company Reporting Issuer | Press releases, regulatory filings, board minutes, executive commentary | Investor Relations / Finance / Media anchors |

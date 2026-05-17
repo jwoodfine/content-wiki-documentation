@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "os-mediakit — The Sovereign Compliance Appliance"
+title: "Sovereign compliance appliance"
 slug: mediakit-os
 category: systems
 type: concept

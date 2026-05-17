@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The OS Family — Eight Operating Systems, One Substrate"
+title: "The OS family — eight operating systems, one substrate"
 slug: os-family-overview
 category: systems
 type: concept
@@ -41,7 +41,7 @@ All eight operating systems share the same foundational layer:
 
 | Layer | Component | Purpose |
 |---|---|---|
-| Kernel | [[sel4-microkernel-substrate\|seL4 microkernel]] | Mathematically verified hardware isolation |
+| Kernel | [[sel4-microkernel-substrate|seL4 microkernel]] | Mathematically verified hardware isolation |
 | Language | Rust (memory-safe; no garbage collector) | All `system-*`, `service-*`, and `os-*` code; C/C++ banned at L3 and above |
 | Drivers | sDDF (seL4 Device Driver Framework) | Direct hardware access without runtime bloat |
 | Protocol | PointSav Protocol (PSP) | Capability-based binary protocol; tunnels through TLS and VirtIO at the edge |

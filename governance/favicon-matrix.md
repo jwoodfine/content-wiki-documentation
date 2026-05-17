@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Favicon Matrix and Tab Identity"
+title: "Favicon matrix and tab identity"
 slug: favicon-matrix
 category: governance
 type: topic

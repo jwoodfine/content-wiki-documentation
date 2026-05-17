@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The Diode Standard — Unidirectional Command Flow"
+title: "The Diode Standard"
 slug: diode-standard
 category: architecture
 type: concept

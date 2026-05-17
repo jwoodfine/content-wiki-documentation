@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "LLM Substrate Decision — OLMo 3 Family"
+title: "LLM substrate decision — OLMo 3 family"
 slug: llm-substrate-decision
 category: substrate
 type: topic

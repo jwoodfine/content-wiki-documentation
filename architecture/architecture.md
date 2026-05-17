@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Platform Architecture Overview"
+title: "Platform architecture overview"
 slug: architecture
 category: architecture
 type: topic

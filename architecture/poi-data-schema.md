@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "POI Data Schema"
+title: "POI data schema"
 slug: poi-data-schema
 category: architecture
 type: topic

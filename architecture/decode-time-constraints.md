@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Decode-Time Constraints"
+title: "Decode-time constraints"
 slug: decode-time-constraints
 category: architecture
 type: topic

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Design-System Substrate"
+title: "Design-system substrate"
 slug: design-system-substrate
 category: substrate
 type: topic

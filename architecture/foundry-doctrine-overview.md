@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "PointSav Architecture 2030 — An Overview"
+title: "PointSav architecture 2030 — an overview"
 slug: foundry-doctrine-overview
 category: architecture
 type: topic

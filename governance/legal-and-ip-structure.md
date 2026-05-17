@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Legal and IP Structure"
+title: "Legal and IP structure"
 slug: legal-and-ip-structure
 category: governance
 type: concept

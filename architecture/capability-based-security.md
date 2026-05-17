@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Capability-Based Security"
+title: "Capability-based security"
 slug: capability-based-security
 category: architecture
 type: topic

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The Three Layers of a BIM Token"
+title: "The three layers of a BIM token"
 slug: bim-token-three-layers
 category: reference
 type: topic

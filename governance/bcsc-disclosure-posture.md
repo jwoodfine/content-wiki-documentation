@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "BCSC Continuous-Disclosure Posture"
+title: "BCSC continuous-disclosure posture"
 slug: bcsc-disclosure-posture
 category: governance
 type: topic

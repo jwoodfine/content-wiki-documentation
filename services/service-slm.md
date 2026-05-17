@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-slm — The Institutional Small Language Model"
+title: "Institutional small language model"
 slug: service-slm
 category: services
 type: concept

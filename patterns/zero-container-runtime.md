@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Zero-Container Runtime"
+title: "Zero-container runtime"
 slug: zero-container-runtime
 category: patterns
 type: topic

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Location Intelligence Platform — Strategy and Architecture"
+title: "Location intelligence platform — strategy and architecture"
 slug: location-intelligence-strategy
 category: architecture
 type: topic

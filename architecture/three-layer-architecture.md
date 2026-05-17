@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The Three-Layer Architecture — Software, Showcase, Instances"
+title: "Three-layer architecture"
 slug: three-layer-architecture
 category: architecture
 type: concept

@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: bim-design-philosophy
-title: BIM Design Philosophy
+title: "BIM design philosophy"
 audience: vendor-public
 bcsc_class: current-fact
 language: en

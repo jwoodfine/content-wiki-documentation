@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Tier C Key Wiring"
+title: "Tier c key wiring"
 slug: tier-c-key-wiring
 category: infrastructure
 type: topic

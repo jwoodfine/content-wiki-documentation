@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-slm Rust Stack Architecture"
+title: "SLM Rust stack architecture"
 slug: slm-stack-architecture
 category: architecture
 type: topic

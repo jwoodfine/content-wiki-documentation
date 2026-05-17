@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Service-Wallet Settlement"
+title: "Wallet settlement"
 slug: service-wallet-settlement
 category: services
 type: topic

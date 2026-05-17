@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Merkle Proofs as a Substrate Primitive"
+title: "Merkle proofs as a substrate primitive"
 slug: merkle-proofs-as-substrate-primitive
 category: substrate
 status: stub

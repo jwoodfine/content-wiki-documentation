@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Model Tier Discipline"
+title: "Model tier discipline"
 slug: model-tier-discipline
 category: patterns
 type: topic

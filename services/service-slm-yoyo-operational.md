@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-SLM and Yo-Yo — Operational State"
+title: "SLM and Yo-Yo operational state"
 slug: service-slm-yoyo-operational
 category: services
 type: topic

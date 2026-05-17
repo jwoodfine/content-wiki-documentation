@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: bim-market-context
-title: BIM Market Context and Regulatory Landscape
+title: "BIM market context and regulatory landscape"
 category: reference
 language: en
 paired_with: bim-market-context.es.md

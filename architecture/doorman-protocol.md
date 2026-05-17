@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Doorman Protocol"
+title: "Doorman protocol"
 slug: doorman-protocol
 category: architecture
 status: stub

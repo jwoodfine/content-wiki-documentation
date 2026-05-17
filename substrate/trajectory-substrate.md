@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The Trajectory Substrate"
+title: "The trajectory substrate"
 slug: trajectory-substrate
 category: substrate
 type: topic

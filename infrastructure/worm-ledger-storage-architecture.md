@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: worm-ledger-storage-architecture
-title: WORM Ledger Storage Architecture
+title: "WORM ledger storage architecture"
 audience: vendor-public
 bcsc_class: current-fact
 language: en

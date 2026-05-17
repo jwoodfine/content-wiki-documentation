@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: brand-typography
-title: Brand Typography and Print Standards
+title: "Brand typography and print standards"
 audience: vendor-public
 bcsc_class: current-fact
 language: en

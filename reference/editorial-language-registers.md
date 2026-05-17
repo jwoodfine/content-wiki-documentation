@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Editorial Language Registers"
+title: "Editorial language registers"
 slug: editorial-language-registers
 category: reference
 status: stable

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "TUI as Corpus Producer"
+title: "TUI as corpus producer"
 slug: tui-corpus-producer
 category: substrate
 type: topic

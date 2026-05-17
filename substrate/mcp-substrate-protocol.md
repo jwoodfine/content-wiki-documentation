@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "MCP as Substrate Protocol"
+title: "MCP as substrate protocol"
 slug: mcp-substrate-protocol
 category: substrate
 type: topic

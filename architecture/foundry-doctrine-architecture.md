@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "PointSav Platform — Architectural Overview"
+title: "PointSav platform — architectural overview"
 slug: foundry-doctrine-architecture
 category: architecture
 type: topic

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Reverse-Flow Substrate"
+title: "Reverse-flow substrate"
 slug: reverse-flow-substrate
 category: substrate
 type: topic

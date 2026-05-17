@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Economic Model — Community and SMB Customer Tiers"
+title: "Economic model — community and SMB customer tiers"
 slug: economic-model
 category: architecture
 type: topic

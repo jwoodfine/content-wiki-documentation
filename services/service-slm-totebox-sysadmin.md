@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-slm as Totebox Sysadmin and Support Centre"
+title: "SLM as Totebox sysadmin and support centre"
 slug: service-slm-totebox-sysadmin
 category: services
 type: topic

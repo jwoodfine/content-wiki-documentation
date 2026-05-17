@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Moonshot Initiatives"
+title: "Moonshot initiatives"
 slug: moonshot-initiatives
 category: governance
 type: topic

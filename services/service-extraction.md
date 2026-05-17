@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-extraction: Deterministic Parser"
+title: "Deterministic parser"
 slug: service-extraction
 category: services
 type: topic

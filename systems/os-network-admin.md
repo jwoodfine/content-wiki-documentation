@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "os-network-admin — The Fleet Control Plane"
+title: "Fleet control plane"
 slug: os-network-admin
 category: systems
 type: concept
@@ -25,7 +25,7 @@ cites: []
 | Function | Description |
 |---|---|
 | Pairing registry | Maintains the authoritative list of valid `service-pairing` entries across the fleet; issues and revokes hardware-bound fiduciary tokens |
-| Diode rule enforcement | Defines which command flows are permitted between fleet members per the [[diode-standard\|Diode Standard]]; changes propagate to all nodes via mesh broadcast |
+| Diode rule enforcement | Defines which command flows are permitted between fleet members per the [[diode-standard|Diode Standard]]; changes propagate to all nodes via mesh broadcast |
 | Mesh routing policy | Manages the WireGuard overlay topology — peer lists, allowed IP ranges, handshake schedules |
 | Fleet claims | Accepts incoming Genesis Protocol claim requests from new `os-infrastructure` nodes joining the fleet |
 

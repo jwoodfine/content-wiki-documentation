@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The Leapfrog 2030 Architecture"
+title: "The leapfrog 2030 architecture"
 slug: leapfrog-2030-architecture
 category: architecture
 type: concept
@@ -31,8 +31,8 @@ Three market forces converging in 2026 — viable small language models on commo
 | From (incumbent pattern) | To (PointSav pattern) |
 |---|---|
 | Rented SaaS interface | Owned operating system |
-| Centralised vendor cloud database | Per-entity [[totebox-os\|Totebox]] archive |
-| Username + password (RBAC) | Hardware-bound pairing ([[machine-based-auth\|MBA]]) |
+| Centralised vendor cloud database | Per-entity [[totebox-os|Totebox]] archive |
+| Username + password (RBAC) | Hardware-bound pairing ([[machine-based-auth|MBA]]) |
 | Single source of truth | Self-healing claims ledger |
 | 50-page annual audit reports | Machine-readable continuous proof |
 

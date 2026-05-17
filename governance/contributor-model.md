@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Three-Tier Contributor Model"
+title: "Three-tier contributor model"
 slug: contributor-model
 category: governance
 type: topic

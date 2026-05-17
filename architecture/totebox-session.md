@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Totebox Session"
+title: "Totebox session"
 slug: totebox-session
 category: architecture
 type: topic

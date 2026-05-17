@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The seL4 Microkernel Substrate"
+title: "The seL4 microkernel substrate"
 slug: sel4-microkernel-substrate
 category: substrate
 type: concept
@@ -38,7 +38,7 @@ The principle is to use seL4 as a raw material — like structural steel — and
 
 | Layer | Component | Owner |
 |---|---|---|
-| L0 — Hardware | x86_64 Haswell+ CPU (see [[hardware-reference\|hardware reference]]) | Hardware vendor |
+| L0 — Hardware | x86_64 Haswell+ CPU (see [[hardware-reference|hardware reference]]) | Hardware vendor |
 | L1 — Microkernel | seL4 [^2] | seL4 project (adopted upstream; minor patches) |
 | L2 — Driver framework | sDDF (seL4 Device Driver Framework) with VirtIO | seL4 ecosystem |
 | L3 — System packages | `system-*` Rust crates — drivers, networking, filesystem | PointSav |

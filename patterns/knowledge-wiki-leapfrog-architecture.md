@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Knowledge Wiki Leapfrog Architecture"
+title: "Knowledge wiki leapfrog architecture"
 slug: knowledge-wiki-leapfrog-architecture
 category: patterns
 type: topic

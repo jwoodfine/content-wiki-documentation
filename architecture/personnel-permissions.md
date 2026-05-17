@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Personnel and Permissions"
+title: "Personnel and permissions"
 slug: personnel-permissions
 category: architecture
 type: topic

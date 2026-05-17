@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: development-regions
-title: "Development Regions"
+title: "Development regions"
 category: architecture
 language: en
 paired_with: development-regions.es.md

@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: 3d-asset-tokens
-title: Three-Dimensional Asset Token
+title: "Three-dimensional asset token"
 category: architecture
 language: en
 paired_with: 3d-asset-tokens.es.md

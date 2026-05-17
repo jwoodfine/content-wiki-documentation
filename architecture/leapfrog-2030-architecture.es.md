@@ -31,8 +31,8 @@ Tres fuerzas de mercado que convergen en 2026 — modelos de lenguaje ligeros vi
 | Desde (patrón incumbente) | Hacia (patrón PointSav) |
 |---|---|
 | Interfaz SaaS arrendada | Sistema operativo propio |
-| Base de datos centralizada en la nube del proveedor | Archivo [[totebox-os\|Totebox]] por entidad |
-| Usuario + contraseña (RBAC) | Emparejamiento vinculado al hardware ([[machine-based-auth\|MBA]]) |
+| Base de datos centralizada en la nube del proveedor | Archivo [[totebox-os|Totebox]] por entidad |
+| Usuario + contraseña (RBAC) | Emparejamiento vinculado al hardware ([[machine-based-auth|MBA]]) |
 | Fuente única de verdad | Libro mayor de afirmaciones autocorrector |
 | Informes de auditoría anuales de 50 páginas | Prueba continua legible por máquina |
 

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Editorial Philosophy"
+title: "Editorial philosophy"
 slug: editorial-philosophy
 category: reference
 status: stable

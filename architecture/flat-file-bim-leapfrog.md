@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: flat-file-bim-leapfrog
-title: The Flat-File BIM Leapfrog
+title: "The flat-file BIM leapfrog"
 audience: vendor-public
 bcsc_class: vendor-public
 language: en

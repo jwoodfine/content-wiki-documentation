@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "app-orchestration-gis"
+title: "Aplicación de orquestación GIS"
 slug: app-orchestration-gis.es
 category: applications
 type: topic

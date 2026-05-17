@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Real-time collaboration via passthrough relay — a substrate pattern"
+title: "Collaboration via passthrough relay — substrate pattern"
 slug: collab-via-passthrough-relay
 status: active
 category: patterns

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Root Files Discipline"
+title: "Root files discipline"
 slug: root-files-discipline
 category: reference
 type: topic

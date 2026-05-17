@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Message Courier Service"
+title: "Message courier service"
 slug: message-courier
 category: services
 type: topic

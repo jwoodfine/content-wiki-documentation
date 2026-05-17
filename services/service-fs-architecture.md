@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: service-fs-architecture
-title: "Service-FS Architecture: The WORM Backbone"
+title: "FS architecture and the WORM backbone"
 category: services
 audience: vendor-public
 bcsc_class: current-fact

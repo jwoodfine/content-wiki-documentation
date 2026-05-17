@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Machine-Based Authorization"
+title: "Machine-based authorization"
 slug: machine-based-auth
 category: architecture
 type: concept

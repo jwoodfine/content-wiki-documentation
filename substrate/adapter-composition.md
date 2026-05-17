@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The Adapter Composition Algebra"
+title: "The adapter composition algebra"
 slug: adapter-composition
 category: substrate
 type: topic

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Design System — Primitive Vocabulary Rationale"
+title: "Design system — primitive vocabulary rationale"
 slug: design-primitive-vocabulary
 category: design-system
 type: reference

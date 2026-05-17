@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "app-mediakit-knowledge"
+title: "Aplicación MediaKit Knowledge"
 slug: app-mediakit-knowledge.es
 category: applications
 type: topic

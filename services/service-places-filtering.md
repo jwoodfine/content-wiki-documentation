@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-places"
+title: "Places filtering service"
 slug: service-places-filtering
 category: services
 type: topic

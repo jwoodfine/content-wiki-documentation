@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Location Intelligence UX Design Philosophy"
+title: "Location intelligence UX design philosophy"
 slug: location-intelligence-ux
 category: patterns
 type: topic

@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: data-sovereignty-telemetry
-title: Data Sovereignty and Zero-State Telemetry
+title: "Data sovereignty and zero-state telemetry"
 audience: vendor-public
 bcsc_class: current-fact
 language: en

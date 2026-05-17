@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The Compounding Doorman"
+title: "The compounding Doorman"
 slug: compounding-doorman
 category: substrate
 type: topic

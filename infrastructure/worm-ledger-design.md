@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "WORM Ledger Design"
+title: "WORM ledger design"
 slug: worm-ledger-design
 category: infrastructure
 type: topic

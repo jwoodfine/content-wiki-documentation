@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-business"
+title: "Business clustering service"
 slug: service-business-clustering
 category: services
 type: topic

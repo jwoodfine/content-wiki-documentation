@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-content — The Gravity Engine"
+title: "Gravity engine"
 slug: service-content
 category: services
 type: concept

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Location Intelligence Platform"
+title: "Location intelligence platform"
 slug: location-intelligence-platform
 category: applications
 type: topic

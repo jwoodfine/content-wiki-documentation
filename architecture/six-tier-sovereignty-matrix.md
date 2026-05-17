@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The Six-Tier Sovereignty Matrix"
+title: "The six-tier sovereignty matrix"
 slug: six-tier-sovereignty-matrix
 category: architecture
 type: concept

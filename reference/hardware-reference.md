@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Hardware Reference"
+title: "Hardware reference"
 slug: hardware-reference
 category: reference
 type: reference

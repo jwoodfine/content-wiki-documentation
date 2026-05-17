@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: news-release-standards
-title: News Release Typography and Layout Standards
+title: "News release typography and layout standards"
 audience: vendor-public
 bcsc_class: current-fact
 language: en

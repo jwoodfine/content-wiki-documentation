@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Telemetry Architecture"
+title: "Telemetry architecture"
 slug: telemetry-architecture
 category: infrastructure
 type: topic

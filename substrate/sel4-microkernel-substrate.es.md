@@ -38,7 +38,7 @@ El principio es usar seL4 como materia prima — como el acero estructural — y
 
 | Capa | Componente | Propietario |
 |---|---|---|
-| L0 — Hardware | CPU x86_64 Haswell+ (véase [[hardware-reference\|referencia de hardware]]) | Proveedor de hardware |
+| L0 — Hardware | CPU x86_64 Haswell+ (véase [[hardware-reference|referencia de hardware]]) | Proveedor de hardware |
 | L1 — Micronúcleo | seL4 [^2] | Proyecto seL4 (adoptado upstream; parches menores) |
 | L2 — Marco de controladores | sDDF (Marco de Controladores de Dispositivos seL4) con VirtIO | Ecosistema seL4 |
 | L3 — Paquetes del sistema | Crates Rust `system-*` — controladores, red, sistema de archivos | PointSav |

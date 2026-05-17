@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Yo-Yo #1 Nightly LoRA Training Pipeline"
+title: "Yo-Yo #1 nightly LoRA training pipeline"
 slug: yo-yo-lora-training-pipeline
 category: substrate
 type: topic

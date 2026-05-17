@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "archetypes-and-chart-of-accounts"
+title: "Archetypes and chart of accounts"
 slug: archetypes-and-chart-of-accounts
 category: services
 type: concept

@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 type: topic
 category: design-system
 slug: brand-family-swatch
-title: Brand-Family Swatch
+title: "Brand-family swatch"
 paired_with: brand-family-swatch.es.md
 state: authoritative
 audience: vendor-public

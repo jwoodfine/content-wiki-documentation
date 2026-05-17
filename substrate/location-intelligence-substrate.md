@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Location Intelligence Substrate"
+title: "Location intelligence substrate"
 slug: location-intelligence-substrate
 category: substrate
 type: topic

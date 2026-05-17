@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: bim-token-taxonomy
-title: BIM Token Taxonomy
+title: "BIM token taxonomy"
 audience: vendor-public
 bcsc_class: current-fact
 language: en

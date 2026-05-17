@@ -41,7 +41,7 @@ Los ocho sistemas operativos comparten la misma capa fundacional:
 
 | Capa | Componente | Propósito |
 |---|---|---|
-| Núcleo | [[sel4-microkernel-substrate\|Micronúcleo seL4]] | Aislamiento de hardware verificado matemáticamente |
+| Núcleo | [[sel4-microkernel-substrate|Micronúcleo seL4]] | Aislamiento de hardware verificado matemáticamente |
 | Lenguaje | Rust (seguro en memoria; sin recolector de basura) | Todo el código `system-*`, `service-*` y `os-*`; C/C++ prohibido en L3 y superior |
 | Controladores | sDDF (Marco de Controladores de Dispositivos seL4) | Acceso directo al hardware sin sobrecarga de tiempo de ejecución |
 | Protocolo | Protocolo PointSav (PSP) | Protocolo binario basado en capacidades; tuneliza a través de TLS y VirtIO en el borde |

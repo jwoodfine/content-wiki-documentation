@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: sovereign-airlock-doctrine
-title: The Sovereign Airlock
+title: "The sovereign airlock"
 audience: vendor-public
 bcsc_class: current-fact
 language: en

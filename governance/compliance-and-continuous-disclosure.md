@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "compliance-and-continuous-disclosure"
+title: "Compliance and continuous disclosure"
 slug: compliance-and-continuous-disclosure
 category: governance
 type: concept
@@ -41,14 +41,14 @@ The PointSav substrate approaches this by placing controls at a level where they
 | Digital Asset Resolution Package (DARP) | Structural sovereignty | Planned: cryptographic segregation of assets so they remain transferable on vendor failure |
 | OSCAL (NIST Open Security Controls Assessment Language) [^1] | Machine-readable compliance | Planned: manifests in `oscal-manifests/` per repository; 60-second self-audit cycle |
 | ISO 19650 | Records management | Document-state suffixes enforced across BIM and real-property artefacts |
-| ISO/IEC 42001:2023 — AI Management System [^2] | Algorithmic transparency | Planned: immutable log of every AI routing decision through the [[doorman-protocol\|Doorman]] audit boundary |
+| ISO/IEC 42001:2023 — AI Management System [^2] | Algorithmic transparency | Planned: immutable log of every AI routing decision through the [[doorman-protocol|Doorman]] audit boundary |
 | DORA (EU Digital Operational Resilience Act) | EU sector regulation | Targeted: supports intended EU customer deployments |
 | FedRAMP | US Government | Targeted: supports intended US public-sector deployments |
 | GDPR | EU privacy | Targeted: supports intended EU privacy compliance |
 | BCSC (NI 51-102, OSC SN 51-721) [ni-51-102] [osc-sn-51-721] | Continuous disclosure | All forward-looking claims carry planned/intended/may/target language |
 | SLSA (Supply-chain Levels for Software Artifacts) | Supply-chain integrity | Planned: vendor-side build attestation |
 | ISO 15489 | Records management | Repository documentation naming conventions |
-| ISO 24495-1 | Plain language | Voice and tone discipline for [[service-content\|service-content]] outputs |
+| ISO 24495-1 | Plain language | Voice and tone discipline for [[service-content|service-content]] outputs |
 
 "Targeted" in the table means the architecture is designed with the framework's requirements in mind; certification against that framework is intended but has not been obtained. No compliance claim in this article should be interpreted as a current certification.
 
@@ -58,7 +58,7 @@ Two components are planned at the system tier to carry SOC 3 and DARP obligation
 
 | Planned component | Role |
 |---|---|
-| `service-audit` | An intended immutable, append-only log that runs alongside the capability-based manager. Every communication from a [[totebox-os\|Totebox]] to the outside world is intended to hash the capability routing into the microkernel log. Because the component is intended to run below the OS, an administrator cannot disable it without disabling the operating system. |
+| `service-audit` | An intended immutable, append-only log that runs alongside the capability-based manager. Every communication from a [[totebox-os|Totebox]] to the outside world is intended to hash the capability routing into the microkernel log. Because the component is intended to run below the OS, an administrator cannot disable it without disabling the operating system. |
 | `service-resolution` | The planned cryptographic packager for DARP. Intended to ensure every Totebox is structurally segregated. On vendor failure or deliberate system halt, this planned component severs the data and returns it cleanly to the legal owner. |
 
 The design principle is that controls at the policy layer are valid until an administrator overrides them; controls at the system tier cannot be overridden without stopping the system. The second class of control is what institutional fiduciaries require and what these planned components are intended to provide.
@@ -69,9 +69,9 @@ When the planned dashboard is realised, it is intended to expose three machine-r
 
 | Planned asset | Contents |
 |---|---|
-| Hardware Bill of Materials (HBOM) | Every hardware component in the customer's [[os-workplace\|os-workplace]] reference profile |
+| Hardware Bill of Materials (HBOM) | Every hardware component in the customer's [[os-workplace|os-workplace]] reference profile |
 | Software Bill of Materials (SBOM) | Every dependency used in the customer's deployed substrate |
-| Real-Time Audit Log | The current operational heartbeat of the [[diode-standard\|Diode Standard]], intended to be queryable on demand by the customer's own risk-management systems |
+| Real-Time Audit Log | The current operational heartbeat of the [[diode-standard|Diode Standard]], intended to be queryable on demand by the customer's own risk-management systems |
 
 All three are planned outputs; the intended delivery timeframe is not published here. Any specific availability date is a forward-looking statement subject to the BCSC continuous-disclosure posture.
 

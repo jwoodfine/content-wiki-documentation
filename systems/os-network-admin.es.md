@@ -25,7 +25,7 @@ cites: []
 | Función | Descripción |
 |---|---|
 | Registro de emparejamientos | Mantiene la lista autoritativa de entradas válidas de `service-pairing` en toda la flota; emite y revoca tokens fiduciarios vinculados al hardware |
-| Cumplimiento de reglas Diodo | Define qué flujos de comandos están permitidos entre los miembros de la flota según el [[diode-standard\|Estándar Diodo]]; los cambios se propagan a todos los nodos mediante transmisión en malla |
+| Cumplimiento de reglas Diodo | Define qué flujos de comandos están permitidos entre los miembros de la flota según el [[diode-standard|Estándar Diodo]]; los cambios se propagan a todos los nodos mediante transmisión en malla |
 | Política de enrutamiento en malla | Gestiona la topología de superposición WireGuard — listas de pares, rangos de IP permitidos, calendarios de intercambio de claves |
 | Reclamaciones de flota | Acepta solicitudes de reclamación del Protocolo Génesis de nuevos nodos `os-infrastructure` que se unen a la flota |
 

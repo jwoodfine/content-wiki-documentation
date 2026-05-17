@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Totebox Archive"
+title: "Totebox archive"
 slug: totebox-archive
 category: systems
 type: topic

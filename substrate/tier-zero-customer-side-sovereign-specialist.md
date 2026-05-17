@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Tier 0 Customer-Side Sovereign Specialist"
+title: "Tier 0 customer-side sovereign specialist"
 slug: tier-zero-customer-side-sovereign-specialist
 category: substrate
 type: topic

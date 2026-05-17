@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Anti-Homogenization Discipline"
+title: "Anti-homogenization discipline"
 slug: anti-homogenization-discipline
 category: governance
 type: topic

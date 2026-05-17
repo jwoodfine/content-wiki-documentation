@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "app-mediakit-marketing"
+title: "MediaKit marketing application"
 slug: app-mediakit-marketing
 category: applications
 type: topic

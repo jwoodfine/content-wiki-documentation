@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "os-infrastructure — The Compute Substrate"
+title: "Compute substrate"
 slug: infrastructure-os
 category: systems
 type: concept

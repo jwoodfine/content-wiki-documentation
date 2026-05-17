@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Immutable Storage and Secure Backup"
+title: "Immutable storage and secure backup"
 slug: storage
 category: infrastructure
 type: topic

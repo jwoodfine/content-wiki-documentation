@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Template Ledger (service-email-template)"
+title: "Template ledger"
 slug: template-ledger
 category: services
 type: topic

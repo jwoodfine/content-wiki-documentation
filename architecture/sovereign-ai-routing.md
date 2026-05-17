@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "AI Routing and the Linguistic Air-Lock"
+title: "AI routing and the linguistic air-lock"
 slug: sovereign-ai-routing
 category: architecture
 type: topic

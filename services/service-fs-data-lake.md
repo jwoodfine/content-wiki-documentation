@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-fs"
+title: "FS data lake"
 slug: service-fs-data-lake
 category: services
 type: topic

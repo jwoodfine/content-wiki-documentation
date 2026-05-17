@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Wiki provider landscape — what the 2026 wiki, knowledge-base, and documentation field looks like"
+title: "Wiki provider landscape"
 slug: wiki-provider-landscape
 status: active
 category: reference

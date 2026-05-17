@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Code for Machines First"
+title: "Code for machines first"
 slug: code-for-machines-first
 category: substrate
 type: topic

@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: service-egress
-title: service-egress
+title: "Servicio de egreso"
 category: services
 language: es
 paired_with: service-egress.md

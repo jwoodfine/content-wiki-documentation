@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Sovereign Replacement Initiative"
+title: "Sovereign replacement initiative"
 slug: sovereign-replacement-initiative
 category: governance
 type: topic

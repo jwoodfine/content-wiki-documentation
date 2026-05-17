@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The Brief Queue Substrate"
+title: "The brief queue substrate"
 slug: brief-queue-substrate
 category: substrate
 type: topic

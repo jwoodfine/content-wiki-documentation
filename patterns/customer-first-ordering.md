@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Customer-First Ordering"
+title: "Customer-first ordering"
 slug: customer-first-ordering
 category: patterns
 type: topic

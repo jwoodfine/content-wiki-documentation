@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "What Is a BIM Token"
+title: "What is a BIM token"
 slug: bim-token-what-it-is
 category: reference
 type: topic

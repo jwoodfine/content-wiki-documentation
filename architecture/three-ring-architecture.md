@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Three-Ring Architecture"
+title: "Three-ring architecture"
 slug: three-ring-architecture
 category: architecture
 type: topic

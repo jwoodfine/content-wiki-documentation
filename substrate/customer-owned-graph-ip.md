@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Customer-Owned Graph IP"
+title: "Customer-owned graph IP"
 slug: customer-owned-graph-ip
 category: substrate
 type: topic

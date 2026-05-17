@@ -34,10 +34,10 @@ Una sesión F12 típica tiene una forma determinista de cinco pasos. Cada paso t
 | Paso | Acción del operador | Respuesta del sistema |
 |---|---|---|
 | 1 | Arrastrar un archivo desde el escritorio a la ventana F12 | El sistema calcula un hash del contenido y elimina los permisos de ejecución |
-| 2 | Seleccionar una categoría del [[archetypes-and-chart-of-accounts\|Plan de Cuentas]] (Perfil → Dominio → Subdominio) | El sistema prepara un destino de enrutamiento |
+| 2 | Seleccionar una categoría del [[archetypes-and-chart-of-accounts|Plan de Cuentas]] (Perfil → Dominio → Subdominio) | El sistema prepara un destino de enrutamiento |
 | 3 | Revisar las entidades y temas que el sistema preextrajo mediante [[service-extraction]] y [[service-content]] | El sistema muestra una solicitud de verificación Sí / No para cada afirmación |
 | 4 | Aprobar o rechazar cada afirmación con teclas individuales | Las afirmaciones aprobadas avanzan al estado L5 verificado; las rechazadas quedan en cuarentena |
-| 5 | Confirmar el destino de enrutamiento | El archivo se sella en service-minutebook o service-bookkeeper; se escribe una entrada en el libro mayor; el [[worm-ledger-design\|registro de auditoría]] captura la identidad del operador, la marca de tiempo y la decisión de enrutamiento |
+| 5 | Confirmar el destino de enrutamiento | El archivo se sella en service-minutebook o service-bookkeeper; se escribe una entrada en el libro mayor; el [[worm-ledger-design|registro de auditoría]] captura la identidad del operador, la marca de tiempo y la decisión de enrutamiento |
 
 La interacción es solo con teclado y deliberadamente rápida. El operador no escribe nombres de archivo, completa formularios de metadatos ni compone consultas de base de datos. [[service-extraction]] y [[service-content]] ya realizaron el trabajo computacional; el papel del operador es verificar o rechazar cada afirmación en secuencia y luego confirmar el destino.
 
@@ -53,7 +53,7 @@ El patrón tiene tres propiedades:
 |---|---|
 | Baja carga cognitiva | El operador procesa una secuencia de decisiones de Sí/No en lugar de crear datos estructurados |
 | Claridad fiduciaria | Cada afirmación que ingresa al libro mayor verificado lleva una decisión explícita del operador, no un valor predeterminado del sistema |
-| Integridad del registro de auditoría | El [[worm-ledger-design\|registro de auditoría]] captura la decisión exacta sobre cada afirmación, no solo el destino final de enrutamiento |
+| Integridad del registro de auditoría | El [[worm-ledger-design|registro de auditoría]] captura la decisión exacta sobre cada afirmación, no solo el destino final de enrutamiento |
 
 Este modelo refleja un límite deliberado entre la plataforma y el operador. [[service-extraction]] y [[service-content]] gestionan la detección de entidades, la clasificación temática y la sugerencia de enrutamiento. El operador gestiona la puerta binaria. Las instituciones sujetas a obligaciones de divulgación continua [ni-51-102] [osc-sn-51-721] y estándares de registros electrónicos [^2] pueden señalar una decisión específica del operador con marca de tiempo para cada documento que ingresa al libro mayor verificado.
 
@@ -69,7 +69,7 @@ Los fiduciarios institucionales — gestores de activos, abogados, entidades fin
 
 ## Lo que la superficie F12 no es
 
-F12 no es una interfaz de conversación. El operador no compone consultas ni conversa con [[service-slm|el modelo de lenguaje]]. La superficie es estructurada: un archivo, una selección del [[archetypes-and-chart-of-accounts\|Plan de Cuentas]], una secuencia de solicitudes binarias y una confirmación. Todo el trabajo del modelo de lenguaje ocurre en sentido ascendente en [[service-extraction]] y [[service-content]] antes de que comience la sesión F12; el operador nunca ve la salida bruta del modelo.
+F12 no es una interfaz de conversación. El operador no compone consultas ni conversa con [[service-slm|el modelo de lenguaje]]. La superficie es estructurada: un archivo, una selección del [[archetypes-and-chart-of-accounts|Plan de Cuentas]], una secuencia de solicitudes binarias y una confirmación. Todo el trabajo del modelo de lenguaje ocurre en sentido ascendente en [[service-extraction]] y [[service-content]] antes de que comience la sesión F12; el operador nunca ve la salida bruta del modelo.
 
 F12 no es una superficie de autoguardado. Un documento ingresa al [[worm-ledger-design|libro mayor WORM]] solo cuando el operador confirma explícitamente el destino de enrutamiento. Esto protege el registro de auditoría de escrituras parciales y sesiones abandonadas. Los borradores en progreso no se acumulan en el libro mayor; un documento solo se registra cuando el operador llega al paso cinco y confirma.
 

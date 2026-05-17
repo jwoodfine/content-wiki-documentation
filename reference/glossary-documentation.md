@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "PointSav Encyclopedia — Glossary & Lexicon"
+title: "PointSav encyclopedia — glossary and lexicon"
 slug: glossary-documentation
 category: reference
 status: complete

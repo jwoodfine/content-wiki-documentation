@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Totebox Orchestration as the Development Environment"
+title: "Totebox orchestration as the development environment"
 slug: totebox-orchestration-development
 category: architecture
 type: topic

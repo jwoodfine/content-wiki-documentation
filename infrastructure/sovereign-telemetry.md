@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Zero-State Telemetry Architecture"
+title: "Zero-state telemetry architecture"
 slug: sovereign-telemetry
 category: infrastructure
 type: topic

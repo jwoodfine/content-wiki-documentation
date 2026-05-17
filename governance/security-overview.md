@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Security Overview"
+title: "Security overview"
 slug: security-overview
 category: governance
 type: topic

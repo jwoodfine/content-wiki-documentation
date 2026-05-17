@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: zero-execution-routing
-title: Zero-Execution Routing and Presentation
+title: "Zero-execution routing and presentation"
 audience: vendor-public
 bcsc_class: current-fact
 language: en

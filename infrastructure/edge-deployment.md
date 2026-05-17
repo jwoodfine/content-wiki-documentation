@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Edge Deployment and Boundary Ingest"
+title: "Edge deployment and boundary ingest"
 slug: edge-deployment
 category: infrastructure
 type: topic

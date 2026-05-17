@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Knowledge Commons and Service Commerce"
+title: "Knowledge commons and service commerce"
 slug: knowledge-commons
 category: substrate
 type: topic

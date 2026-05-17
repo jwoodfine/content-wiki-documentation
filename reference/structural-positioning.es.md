@@ -42,9 +42,9 @@ Ocho propiedades distinguen el sustrato PointSav de los patrones que está dise�
 | Compromiso | Cómo se aplica |
 |---|---|
 | Propiedad del sistema operativo | El cliente posee una imagen de disco transferible, no una licencia de suscripción |
-| Libro mayor de solo adición | El verbo de eliminación está ausente de la ruta de código del [[worm-ledger-design\|libro mayor WORM]] |
-| Flujo de comandos unidireccional | El [[diode-standard\|adaptador Diodo]] es el único componente de enrutamiento entre la autoridad y el sujeto |
-| Emparejamiento como permiso | No existen bases de datos de nombres de usuario y contraseñas en ningún lugar del sustrato; el acceso se rige por [[machine-based-auth\|emparejamiento basado en máquina]] |
+| Libro mayor de solo adición | El verbo de eliminación está ausente de la ruta de código del [[worm-ledger-design|libro mayor WORM]] |
+| Flujo de comandos unidireccional | El [[diode-standard|adaptador Diodo]] es el único componente de enrutamiento entre la autoridad y el sujeto |
+| Emparejamiento como permiso | No existen bases de datos de nombres de usuario y contraseñas en ningún lugar del sustrato; el acceso se rige por [[machine-based-auth|emparejamiento basado en máquina]] |
 | Auditoría continua | El registro de auditoría se ejecuta a nivel del sistema; un administrador no puede deshabilitarlo |
 | Resolución de activos en caso de fallo del proveedor | El Paquete de Resolución de Activos Digitales separa los datos limpiamente y los devuelve al propietario en caso de fallo del proveedor |
 | Sustrato soberano | El cómputo y el almacenamiento se desacoplan entre sustratos — en las instalaciones, arrendado, nube — sin trampa de salida |
@@ -77,7 +77,7 @@ Tres afirmaciones que la plataforma no hace en material público, con las razone
 
 La misma configuración de sustrato sirve a cada uno de los siguientes segmentos de clientes. Los compromisos estructurales anteriores se aplican de manera idéntica en todos los segmentos; lo que cambia es la configuración del [[archetypes-and-chart-of-accounts|Plan de Cuentas]] y la superficie de cumplimiento.
 
-| Segmento de clientes | Registros en archivos [[totebox-os\|Totebox]] |
+| Segmento de clientes | Registros en archivos [[totebox-os|Totebox]] |
 |---|---|
 | Gestor de activos inmobiliarios | Documentos de arrendamiento, modelos de información de construcción, comunicaciones con inquilinos |
 | Emisor de información pública [ni-51-102] [osc-sn-51-721] | Comunicados de prensa, presentaciones regulatorias, actas de la junta |

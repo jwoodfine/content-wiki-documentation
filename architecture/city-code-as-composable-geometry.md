@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "City Code as Composable Geometry"
+title: "City code as composable geometry"
 slug: city-code-as-composable-geometry
 category: architecture
 type: topic

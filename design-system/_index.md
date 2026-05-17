@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Design System"
+title: "Design system"
 slug: _index
 category: design-system
 type: reference

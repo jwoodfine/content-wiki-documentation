@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Knowledge-Graph-Grounded Apprenticeship"
+title: "Knowledge-graph-grounded apprenticeship"
 slug: knowledge-graph-grounded-apprenticeship
 category: substrate
 type: topic

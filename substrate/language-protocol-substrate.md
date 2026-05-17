@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The Language-Protocol Substrate"
+title: "The language-protocol substrate"
 slug: language-protocol-substrate
 category: substrate
 type: topic

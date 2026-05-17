@@ -41,14 +41,14 @@ El sustrato PointSav aborda esto colocando controles a un nivel donde no pueden 
 | Paquete de Resolución de Activos Digitales (DARP) | Soberanía estructural | Planeado: segregación criptográfica de activos para que permanezcan transferibles ante el fallo del proveedor |
 | OSCAL (Lenguaje de Evaluación de Controles de Seguridad Abierto de NIST) [^1] | Cumplimiento legible por máquina | Planeado: manifiestos en `oscal-manifests/` por repositorio; ciclo de autoauditoría de 60 segundos |
 | ISO 19650 | Gestión de registros | Sufijos de estado de documentos aplicados en artefactos BIM e inmobiliarios |
-| ISO/IEC 42001:2023 — Sistema de Gestión de IA [^2] | Transparencia algorítmica | Planeado: registro inmutable de cada decisión de enrutamiento de IA a través del límite de auditoría del [[doorman-protocol\|Portero]] |
+| ISO/IEC 42001:2023 — Sistema de Gestión de IA [^2] | Transparencia algorítmica | Planeado: registro inmutable de cada decisión de enrutamiento de IA a través del límite de auditoría del [[doorman-protocol|Portero]] |
 | DORA (Ley de Resiliencia Operativa Digital de la UE) | Regulación sectorial de la UE | Objetivo: apoya los despliegues previstos de clientes en la UE |
 | FedRAMP | Gobierno de EE.UU. | Objetivo: apoya los despliegues previstos en el sector público de EE.UU. |
 | GDPR | Privacidad en la UE | Objetivo: apoya el cumplimiento previsto de privacidad en la UE |
 | BCSC (NI 51-102, OSC SN 51-721) [ni-51-102] [osc-sn-51-721] | Divulgación continua | Todas las afirmaciones prospectivas llevan lenguaje de planeado/previsto/puede/objetivo |
 | SLSA (Niveles de la Cadena de Suministro para Artefactos de Software) | Integridad de la cadena de suministro | Planeado: atestación de construcción del lado del proveedor |
 | ISO 15489 | Gestión de registros | Convenciones de nomenclatura de documentación del repositorio |
-| ISO 24495-1 | Lenguaje claro | Disciplina de voz y tono para las salidas de [[service-content\|service-content]] |
+| ISO 24495-1 | Lenguaje claro | Disciplina de voz y tono para las salidas de [[service-content|service-content]] |
 
 "Objetivo" en la tabla significa que la arquitectura está diseñada teniendo en cuenta los requisitos del marco; la certificación contra ese marco está prevista pero no se ha obtenido.
 
@@ -58,7 +58,7 @@ Dos componentes están planeados a nivel del sistema para asumir las obligacione
 
 | Componente planeado | Función |
 |---|---|
-| `service-audit` | Un registro de solo adición inmutable previsto que se ejecutará junto al gestor basado en capacidades. Cada comunicación de un [[totebox-os\|Totebox]] con el exterior está previsto que registre el enrutamiento de capacidades en el log del micronúcleo. Dado que el componente está previsto para ejecutarse por debajo del SO, un administrador no podría deshabilitarlo sin deshabilitar el sistema operativo. |
+| `service-audit` | Un registro de solo adición inmutable previsto que se ejecutará junto al gestor basado en capacidades. Cada comunicación de un [[totebox-os|Totebox]] con el exterior está previsto que registre el enrutamiento de capacidades en el log del micronúcleo. Dado que el componente está previsto para ejecutarse por debajo del SO, un administrador no podría deshabilitarlo sin deshabilitar el sistema operativo. |
 | `service-resolution` | El empaquetador criptográfico planeado para DARP. Previsto para garantizar que cada Totebox esté estructuralmente segregado. Ante el fallo del proveedor o la detención deliberada del sistema, este componente planeado separará los datos y los devolverá limpiamente al propietario legal. |
 
 El principio de diseño es que los controles en la capa de políticas son válidos hasta que un administrador los anula; los controles a nivel del sistema no pueden anularse sin detener el sistema.
@@ -69,9 +69,9 @@ Cuando el panel previsto sea realizado, está previsto que exponga tres activos 
 
 | Activo planeado | Contenidos |
 |---|---|
-| Lista de Materiales de Hardware (HBOM) | Cada componente de hardware en el perfil de referencia de [[os-workplace\|os-workplace]] del cliente |
+| Lista de Materiales de Hardware (HBOM) | Cada componente de hardware en el perfil de referencia de [[os-workplace|os-workplace]] del cliente |
 | Lista de Materiales de Software (SBOM) | Cada dependencia usada en el sustrato desplegado del cliente |
-| Registro de Auditoría en Tiempo Real | El latido operativo actual del [[diode-standard\|Estándar Diodo]], previsto para ser consultable bajo demanda por los propios sistemas de gestión de riesgos del cliente |
+| Registro de Auditoría en Tiempo Real | El latido operativo actual del [[diode-standard|Estándar Diodo]], previsto para ser consultable bajo demanda por los propios sistemas de gestión de riesgos del cliente |
 
 Los tres son salidas planeadas; el plazo de entrega previsto no se publica aquí.
 

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "os-totebox — The Sovereign Vault and Service Host"
+title: "Sovereign vault and service host"
 slug: totebox-os
 category: systems
 type: concept

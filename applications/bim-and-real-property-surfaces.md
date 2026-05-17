@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "bim-and-real-property-surfaces"
+title: "BIM and real property surfaces"
 slug: bim-and-real-property-surfaces
 category: applications
 type: concept
@@ -30,7 +30,7 @@ The single most important structural clarification: PointSav operates two distin
 
 | Design system | Repository | Audience | Domain |
 |---|---|---|---|
-| `pointsav-design-system` | `github.com/pointsav` (vendor) | PointSav contributors and fleet operators | UI and UX substrate for [[console-os\|os-console]], [[os-workplace]], and the full vendor OS family |
+| `pointsav-design-system` | `github.com/pointsav` (vendor) | PointSav contributors and fleet operators | UI and UX substrate for [[console-os|os-console]], [[os-workplace]], and the full vendor OS family |
 | `woodfine-design-bim` | `github.com/woodfine` (customer) | Architects, engineers, real-property operators | BIM tokens, IFC components[^2], geospatial visual primitives, real-property design system |
 
 The two systems share authoring methodology — `foundry-draft-v1` frontmatter, the six-tier sovereignty structure, strict kebab-case naming — but they do not share content. The separation is structural: BIM concerns real property; the vendor design system concerns operating-system surfaces. Content or tokens that are specific to BIM workflows belong in `woodfine-design-bim`, never in `pointsav-design-system`.

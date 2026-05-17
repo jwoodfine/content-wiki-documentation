@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "fs-anchor-emitter"
+title: "FS anchor emitter"
 slug: fs-anchor-emitter
 category: services
 type: topic

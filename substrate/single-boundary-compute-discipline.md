@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Single-Boundary Compute Discipline"
+title: "Single-boundary compute discipline"
 slug: single-boundary-compute-discipline
 category: substrate
 type: topic

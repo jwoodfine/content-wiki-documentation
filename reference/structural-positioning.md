@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "structural-positioning"
+title: "Structural positioning"
 slug: structural-positioning
 category: reference
 type: concept
@@ -42,9 +42,9 @@ Eight properties distinguish the PointSav substrate from the patterns it is desi
 | Commitment | How it is enforced |
 |---|---|
 | Ownership of the operating system | The customer holds a transferable disk image, not a subscription seat |
-| Append-only ledger | The delete verb is absent from the [[worm-ledger-design\|WORM ledger]] code path |
-| Unidirectional command flow | The [[diode-standard\|Diode adapter]] is the only routing component between authority and subject |
-| Pairing as permission | No username-and-password databases exist anywhere in the substrate; access is governed by [[machine-based-auth\|machine-based pairing]] |
+| Append-only ledger | The delete verb is absent from the [[worm-ledger-design|WORM ledger]] code path |
+| Unidirectional command flow | The [[diode-standard|Diode adapter]] is the only routing component between authority and subject |
+| Pairing as permission | No username-and-password databases exist anywhere in the substrate; access is governed by [[machine-based-auth|machine-based pairing]] |
 | Continuous audit | The audit log runs at the system tier; an administrator cannot disable it |
 | Asset resolution on vendor failure | The Digital Asset Resolution Package severs data cleanly and returns it to the owner on vendor failure |
 | Sovereign substrate | Compute and storage decouple across substrates — on-premises, leased, cloud — without an egress trap |
@@ -81,7 +81,7 @@ Three claims the platform does not make in public material, for reasons stated h
 
 The same substrate configuration serves each of the following customer segments. The structural commitments above apply identically across all segments; what changes is the [[archetypes-and-chart-of-accounts|Chart of Accounts]] configuration and the compliance surface.
 
-| Customer segment | Records held in [[totebox-os\|Totebox]] archives |
+| Customer segment | Records held in [[totebox-os|Totebox]] archives |
 |---|---|
 | Real-property asset manager | Lease documents, building information models, tenant communications |
 | Public-company Reporting Issuer [ni-51-102] [osc-sn-51-721] | Press releases, regulatory filings, board minutes |

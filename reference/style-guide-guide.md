@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Style Guide — GUIDE"
+title: "Style guide — guide"
 slug: style-guide-guide
 category: reference
 type: topic

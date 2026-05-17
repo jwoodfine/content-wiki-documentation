@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Procurement Overview"
+title: "Procurement overview"
 slug: procurement-overview
 category: governance
 type: topic

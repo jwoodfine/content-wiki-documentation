@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Pairing as Permission"
+title: "Pairing as permission"
 slug: pairing-as-permission
 category: patterns
 type: topic

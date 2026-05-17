@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "os-orchestration — The Fleet Aggregator"
+title: "Fleet aggregator"
 slug: os-orchestration
 category: systems
 type: concept

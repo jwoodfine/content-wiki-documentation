@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Design System Philosophy"
+title: "Design system philosophy"
 slug: design-philosophy
 category: design-system
 type: reference

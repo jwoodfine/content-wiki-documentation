@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Architecture Decisions"
+title: "Architecture decisions"
 slug: architecture-decisions
 category: governance
 type: governance

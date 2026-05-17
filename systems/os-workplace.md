@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "os-workplace — The Sovereign Desktop"
+title: "Sovereign desktop"
 slug: os-workplace
 category: systems
 type: concept

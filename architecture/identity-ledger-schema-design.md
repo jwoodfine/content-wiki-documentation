@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: identity-ledger-schema-design
-title: Identity Ledger Schema Design
+title: "Identity ledger schema design"
 audience: vendor-public
 bcsc_class: current-fact
 language: en

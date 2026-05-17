@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-search: Inverted Index"
+title: "Inverted index"
 slug: service-search
 category: services
 type: topic

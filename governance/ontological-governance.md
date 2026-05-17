@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Ontological Governance"
+title: "Ontological governance"
 slug: ontological-governance
 category: governance
 type: topic

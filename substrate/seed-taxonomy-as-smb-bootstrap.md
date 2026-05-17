@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Seed Taxonomy as SMB Bootstrap"
+title: "Seed taxonomy as SMB bootstrap"
 slug: seed-taxonomy-as-smb-bootstrap
 category: substrate
 type: topic

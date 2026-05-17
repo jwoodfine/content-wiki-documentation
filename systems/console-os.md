@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "os-console — The Command Ledger"
+title: "Command ledger"
 slug: console-os
 category: systems
 type: concept
@@ -43,12 +43,12 @@ The interface organises every entity's reality into a fixed set of pillars. Each
 
 | Key | Pillar | Service |
 |---|---|---|
-| F1 | HELP | [[app-console-input\|content-wiki-documentation]] (read-only operating procedures) |
-| F2 | PEOPLE | [[service-people\|service-people]] — the identity ledger |
-| F3 | EMAIL | [[service-email\|service-email]] — the Comm Diode |
-| F4 | CONTENT | [[service-content\|service-content]] — the drafting and synthesis engine |
-| F5 | MINUTEBOOK | [[service-minutebook\|service-minutebook]] — deep records |
-| F6 | BOOKKEEPER | [[service-bookkeeper\|service-bookkeeper]] — the financial ledger |
+| F1 | HELP | [[app-console-input|content-wiki-documentation]] (read-only operating procedures) |
+| F2 | PEOPLE | [[service-people|service-people]] — the identity ledger |
+| F3 | EMAIL | [[service-email|service-email]] — the Comm Diode |
+| F4 | CONTENT | [[service-content|service-content]] — the drafting and synthesis engine |
+| F5 | MINUTEBOOK | [[service-minutebook|service-minutebook]] — deep records |
+| F6 | BOOKKEEPER | [[service-bookkeeper|service-bookkeeper]] — the financial ledger |
 | F12 | INPUT MACHINE | [[app-console-input]] — the human-in-the-loop ingestion gateway |
 
 F12 is mandatory per [[architecture-decisions|SYS-ADR-10]]. The [[app-console-input|Input Machine]] is the only surface through which raw external files can enter a Totebox. Files dropped into F12 have execution permissions stripped, are tagged against the operator's [[archetypes-and-chart-of-accounts|Chart of Accounts]], and are routed to F5 or F6.
@@ -73,8 +73,8 @@ The result is a terminal interface with variable-weight headers, bloom effects, 
 
 | Mode | Pair | Use case |
 |---|---|---|
-| Direct | One [[totebox-os\|Totebox]] | A single entity's deep view; the default for individual operators |
-| Aggregate | One [[os-orchestration\|os-orchestration]] (which aggregates many Toteboxes) | A portfolio view for executives and commercial-tier deployments |
+| Direct | One [[totebox-os|Totebox]] | A single entity's deep view; the default for individual operators |
+| Aggregate | One [[os-orchestration|os-orchestration]] (which aggregates many Toteboxes) | A portfolio view for executives and commercial-tier deployments |
 
 Both modes use the same `os-console` binary. The aggregator does not require a different Console. The complexity lives in `os-orchestration`.
 

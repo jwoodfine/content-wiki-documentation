@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Verification Surveyor"
+title: "Verification surveyor"
 slug: verification-surveyor
 category: architecture
 type: topic

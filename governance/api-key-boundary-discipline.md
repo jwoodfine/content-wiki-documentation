@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "API Key Boundary Discipline"
+title: "API key boundary discipline"
 slug: api-key-boundary-discipline
 category: governance
 type: topic

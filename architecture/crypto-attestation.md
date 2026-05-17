@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Cryptographic Payload Attestation"
+title: "Cryptographic payload attestation"
 slug: crypto-attestation
 category: architecture
 type: topic

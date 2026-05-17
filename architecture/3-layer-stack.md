@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Three-Layer Stack"
+title: "Three-layer stack"
 slug: 3-layer-stack
 category: architecture
 type: topic

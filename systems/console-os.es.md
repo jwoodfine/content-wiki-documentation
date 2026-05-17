@@ -43,12 +43,12 @@ La interfaz organiza la realidad de cada entidad en un conjunto fijo de pilares.
 
 | Tecla | Pilar | Servicio |
 |---|---|---|
-| F1 | AYUDA | [[app-console-input\|content-wiki-documentation]] (procedimientos operativos de solo lectura) |
-| F2 | PERSONAS | [[service-people\|service-people]] — el libro mayor de identidades |
-| F3 | CORREO | [[service-email\|service-email]] — el Diodo de Comunicación |
-| F4 | CONTENIDO | [[service-content\|service-content]] — el motor de redacción y síntesis |
-| F5 | MINUTEBOOK | [[service-minutebook\|service-minutebook]] — registros profundos |
-| F6 | BOOKKEEPER | [[service-bookkeeper\|service-bookkeeper]] — el libro mayor financiero |
+| F1 | AYUDA | [[app-console-input|content-wiki-documentation]] (procedimientos operativos de solo lectura) |
+| F2 | PERSONAS | [[service-people|service-people]] — el libro mayor de identidades |
+| F3 | CORREO | [[service-email|service-email]] — el Diodo de Comunicación |
+| F4 | CONTENIDO | [[service-content|service-content]] — el motor de redacción y síntesis |
+| F5 | MINUTEBOOK | [[service-minutebook|service-minutebook]] — registros profundos |
+| F6 | BOOKKEEPER | [[service-bookkeeper|service-bookkeeper]] — el libro mayor financiero |
 | F12 | MÁQUINA DE ENTRADA | [[app-console-input]] — la puerta de ingesta con intervención humana |
 
 F12 es obligatorio según [[architecture-decisions|SYS-ADR-10]]. La [[app-console-input|Máquina de Entrada]] es la única superficie a través de la cual archivos externos sin procesar pueden entrar a un Totebox. Los archivos depositados en F12 tienen eliminados sus permisos de ejecución, se etiquetan contra el [[archetypes-and-chart-of-accounts|Plan de Cuentas]] del operador y se enrutan a F5 o F6.
@@ -73,8 +73,8 @@ El resultado es una interfaz de terminal con encabezados de peso variable, efect
 
 | Modo | Par | Caso de uso |
 |---|---|---|
-| Directo | Un [[totebox-os\|Totebox]] | Vista profunda de una única entidad; el predeterminado para operadores individuales |
-| Agregado | Un [[os-orchestration\|os-orchestration]] (que agrega muchos Toteboxes) | Vista de portafolio para ejecutivos y despliegues de nivel comercial |
+| Directo | Un [[totebox-os|Totebox]] | Vista profunda de una única entidad; el predeterminado para operadores individuales |
+| Agregado | Un [[os-orchestration|os-orchestration]] (que agrega muchos Toteboxes) | Vista de portafolio para ejecutivos y despliegues de nivel comercial |
 
 Ambos modos utilizan el mismo binario de `os-console`. El agregador no requiere una Consola diferente. La complejidad reside en `os-orchestration`.
 

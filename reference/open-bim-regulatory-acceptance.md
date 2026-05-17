@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Open BIM and Regulatory Acceptance"
+title: "Open BIM and regulatory acceptance"
 slug: open-bim-regulatory-acceptance
 category: reference
 type: topic

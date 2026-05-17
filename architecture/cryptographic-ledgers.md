@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Cryptographic Ledgers"
+title: "Cryptographic ledgers"
 slug: cryptographic-ledgers
 category: architecture
 type: topic

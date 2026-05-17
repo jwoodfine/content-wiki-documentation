@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Totebox Orchestration"
+title: "Totebox orchestration"
 slug: totebox-orchestration
 category: systems
 type: topic

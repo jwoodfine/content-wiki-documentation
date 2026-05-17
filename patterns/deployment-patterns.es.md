@@ -44,11 +44,11 @@ La plataforma se posiciona como un motor complementario, no como un reemplazo de
 
 | Categoría de herramienta incumbente | Lo que agrega el sustrato |
 |---|---|
-| Clientes de correo electrónico profesional | [[service-email\|service-email]] ingiere cada mensaje en un Maildir WORM; la copia en la nube puede rotar mientras la copia soberana permanece sellada |
-| Aplicaciones de hojas de cálculo | La superficie de hoja de cálculo soberana prevista almacena modelos financieros ejecutados en el [[worm-ledger-design\|libro mayor WORM]] |
+| Clientes de correo electrónico profesional | [[service-email|service-email]] ingiere cada mensaje en un Maildir WORM; la copia en la nube puede rotar mientras la copia soberana permanece sellada |
+| Aplicaciones de hojas de cálculo | La superficie de hoja de cálculo soberana prevista almacena modelos financieros ejecutados en el [[worm-ledger-design|libro mayor WORM]] |
 | Aplicaciones de procesamiento de texto | La superficie de procesamiento de texto soberana prevista usa Typst para salida con fidelidad de impresión |
 | Plataformas de redes profesionales | Se prevé que [[service-people]] recopile datos de contacto verificados en el libro mayor de identidad del Totebox |
-| Repositorios de documentos corporativos | service-minutebook sella criptográficamente los registros firmados contra el sustrato [[worm-ledger-design\|WORM]] |
+| Repositorios de documentos corporativos | service-minutebook sella criptográficamente los registros firmados contra el sustrato [[worm-ledger-design|WORM]] |
 
 El cliente no necesita abandonar ninguna herramienta funcional. El sustrato opera en segundo plano; el Libro Mayor de Comandos proporciona una vista soberana sobre los registros que producen las herramientas incumbentes.
 
@@ -56,7 +56,7 @@ El cliente no necesita abandonar ninguna herramienta funcional. El sustrato oper
 
 Las seis configuraciones representan familias de GUIDEs distintas en el catálogo de despliegue de flota. Cada una es una configuración, no un producto separado; el [[totebox-os]], el [[console-os|os-console]] y los servicios subyacentes son idénticos en las seis.
 
-| Configuración | Registros principales | Adaptación del [[archetypes-and-chart-of-accounts\|Plan de Cuentas]] |
+| Configuración | Registros principales | Adaptación del [[archetypes-and-chart-of-accounts|Plan de Cuentas]] |
 |---|---|---|
 | Gestor de activos inmobiliarios | Documentos de arrendamiento, modelos BIM, comunicaciones con inquilinos, permisos | Anclajes en Bienes Raíces / Arrendamiento / Inquilinos / Municipios |
 | Emisor de información pública | Comunicados de prensa, presentaciones regulatorias, actas de la junta | Anclajes en Relaciones con Inversores / Finanzas / Medios |
@@ -96,6 +96,6 @@ Los patrones de despliegue se lanzan con una cadencia de visible-primero: la URL
 
 - [[three-layer-architecture]] — el modelo de tres capas Software / Exhibición / Instancias
 - [[archetypes-and-chart-of-accounts]] — la taxonomía del Plan de Cuentas que se adapta por configuración
-- [[console-os\|os-console]] — la superficie del Libro Mayor de Comandos común a las seis configuraciones
+- [[console-os|os-console]] — la superficie del Libro Mayor de Comandos común a las seis configuraciones
 - [[totebox-os]] — el sistema operativo Totebox que aloja los archivos de cada configuración
 - [[structural-positioning]] — los compromisos estructurales que se aplican uniformemente en las seis configuraciones

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Vertical Seed Packs Marketplace"
+title: "Vertical seed packs marketplace"
 slug: vertical-seed-packs-marketplace
 category: architecture
 type: topic

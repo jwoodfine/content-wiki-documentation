@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Customer Hostability"
+title: "Customer hostability"
 slug: customer-hostability
 category: architecture
 type: topic

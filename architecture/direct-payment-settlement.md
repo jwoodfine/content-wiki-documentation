@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Direct-Payment Settlement"
+title: "Direct-payment settlement"
 slug: direct-payment-settlement
 category: architecture
 type: topic

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-people — The Identity Ledger"
+title: "Identity ledger"
 slug: service-people
 category: services
 type: concept

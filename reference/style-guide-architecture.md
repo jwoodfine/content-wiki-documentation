@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Style Guide — ARCHITECTURE"
+title: "Style guide — architecture"
 slug: style-guide-architecture
 category: reference
 type: topic
