@@ -1,31 +1,3 @@
-# featured-topic.yaml — pin file for documentation.pointsav.com home page
-# Engine reads on each request; absent → suppress featured panel; present → parse slug.
-# Update the `slug:` line to rotate the featured article.
-#
-# Reader: dual audience served at the same URL —
-#   (a) engineering reader (architect, developer, technical writer)
-#   (b) financial-community reader (Goldman Sachs banker, OSC analyst,
-#       institutional investor, enterprise procurement evaluator)
-# Bloomberg/FT register; no marketing copy.
-#
-# Twelve-week rotation pool (12 banker-relevant articles ranked by
-# institutional defensibility argument):
-#
-#   1. economic-model                  — $5K–$50K ACV gap; SMB segment hyperscalers cannot reach
-#   2. disclosure-substrate            — wiki itself is the disclosure record (BCSC, SEC 17a-4(f))
-#   3. compounding-substrate           — five structural properties of the defensible-moat thesis
-#   4. sovereign-ai-commons            — market segmentation: who, what, why
-#   5. customer-hostability            — every artefact runs on customer hardware, customer keys
-#   6. three-ring-architecture         — deterministic substrate operates without AI; air-gap-able
-#   7. llm-substrate-decision          — OLMo 3 Level 3 openness; five-year customer ownership
-#   8. doorman-protocol                — single inference boundary; every call logged, routed
-#   9. worm-ledger-design              — SEC 17a-4(f), eIDAS, SOC 2 by architecture
-#  10. knowledge-commons               — bright line at multi-archive aggregation
-#  11. substrate-native-compatibility  — Wikipedia structural compatibility without API mimicry
-#  12. leapfrog-2030-architecture      — three converging 2026 forces; structural opening
-#
-# Operator advances the pin weekly by editing the slug line below.
-
-slug: economic-model
-since: 2026-05-09
-note: rotation 1 — addressable-market thesis; the $5K–$50K ACV gap that hyperscaler economics cannot reach
+slug: architecture/economic-model
+since: 2026-05-17
+note: "The platform has no Enterprise tier — not as a positioning choice, but because the regulated SMB segment that hyperscalers cannot reach economically is the entire point."
