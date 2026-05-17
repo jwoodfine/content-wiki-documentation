@@ -8,7 +8,7 @@ bcsc_class: vendor-public
 language: es
 paired_with: flat-file-bim-leapfrog.md
 status: active
-last_edited: 2026-05-06
+last_edited: 2026-05-17
 category: architecture
 ---
 
@@ -23,7 +23,7 @@ La estrategia se basa en cinco restricciones que garantizan la independencia del
 2. **Estándares Abiertos:** Uso estricto de ISO IFC 4.3, IDS 1.0 y BCF 3.0 como formatos autoritativos.
 3. **Rust + Tauri:** Entorno de ejecución seguro, eficiente en memoria y de alto rendimiento.
 4. **Primero fuera de línea (Offline-First):** Funcionalidad BIM total sin dependencia de conexión a internet.
-5. **Licencia EUPL-1.2:** Código abierto aprobado por la OSI, compatible con la contratación pública europea (FAR 12.212) y preferido por la UE.
+5. **Licencia Apache 2.0:** Los archivos de datos de Objetos BIM se publican bajo Apache 2.0, aprobado por la OSI, compatible con la contratación pública (FAR 12.212) y con el uso comercial derivado.
 
 ## Capacidades Diferenciadoras
 

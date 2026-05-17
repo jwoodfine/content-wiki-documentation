@@ -8,13 +8,13 @@ type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-06
+last_edited: 2026-05-17
 editor: pointsav-engineering
 cites: [ifc-4-3, ids-1-0, bsdd-v1]
 paired_with: city-code-as-composable-geometry.md
 ---
 
-Toda herramienta de verificación de cumplimiento normativo en producción sigue la misma arquitectura: un modelo de diseño terminado se envía a un motor de reglas, que genera un informe de infracciones, que un profesional debe revisar y corregir antes de reenviar. Este modelo de validación posterior al diseño ha sido el estándar de la industria durante veinte años y genera una tensión estructural entre la velocidad de iteración del diseño y la verificación del cumplimiento. Es posible una arquitectura diferente: si los requisitos normativos se codifican directamente en los elementos disponibles para un diseñador — no como reglas aplicadas a un modelo terminado, sino como restricciones geométricas y numéricas incorporadas en la especificación del elemento — entonces las configuraciones no conformes no pueden colocarse. Este es el modelo del Código Urbano como Geometría Composable, y es la afirmación arquitectónica subyacente a la plataforma de BIM Tokens (Doctrina, afirmación #41, 2026).
+Toda herramienta de verificación de cumplimiento normativo en producción sigue la misma arquitectura: un modelo de diseño terminado se envía a un motor de reglas, que genera un informe de infracciones, que un profesional debe revisar y corregir antes de reenviar. Este modelo de validación posterior al diseño ha sido el estándar de la industria durante veinte años y genera una tensión estructural entre la velocidad de iteración del diseño y la verificación del cumplimiento. Es posible una arquitectura diferente: si los requisitos normativos se codifican directamente en los elementos disponibles para un diseñador — no como reglas aplicadas a un modelo terminado, sino como restricciones geométricas y numéricas incorporadas en la especificación del elemento — entonces las configuraciones no conformes no pueden colocarse. Este es el modelo del Código Urbano como Geometría Composable, y es la afirmación arquitectónica subyacente a la plataforma de Objetos BIM.
 
 ## El paradigma de validación posterior
 
@@ -26,9 +26,9 @@ Las consecuencias son operativas. Los equipos de diseño presupuestan tiempo de 
 
 El Código Urbano como Geometría Composable opera a través de un mecanismo técnico de tres capas.
 
-**Capa 1: Identidad semántica mediante bSDD.** Cada BIM Token lleva una URI de concepto bSDD que identifica su tipo de elemento de manera neutral a la jurisdicción y a la herramienta.
+**Capa 1: Identidad semántica mediante bSDD.** Cada Objeto BIM lleva una URI de concepto bSDD que identifica su tipo de elemento de manera neutral a la jurisdicción y a la herramienta.
 
-**Capa 2: Restricción normativa mediante IDS 1.0.** Cada superposición jurisdiccional registrada para un BIM Token incluye un archivo de restricción IDS 1.0 que codifica restricciones numéricas y de propiedades: valores máximos de transmitancia térmica, clasificaciones mínimas estructurales, requisitos de clase de resistencia al fuego, espacios libres de accesibilidad. Cuando se coloca un BIM Token, sus restricciones IDS registradas son parte de su especificación — la herramienta de autoría las recibe como requisitos del elemento en el momento de la colocación, no como reglas post-colocación.
+**Capa 2: Restricción normativa mediante IDS 1.0.** Cada superposición jurisdiccional registrada para un Objeto BIM incluye un archivo de restricción IDS 1.0 que codifica restricciones numéricas y de propiedades: valores máximos de transmitancia térmica, clasificaciones mínimas estructurales, requisitos de clase de resistencia al fuego, espacios libres de accesibilidad. Cuando se coloca un Objeto BIM, sus restricciones IDS registradas son parte de su especificación — la herramienta de autoría las recibe como requisitos del elemento en el momento de la colocación, no como reglas post-colocación.
 
 **Capa 3: Geometría de exclusión mediante fragmento IFC.** Donde un requisito normativo tiene expresión geométrica — un límite de compartimento contra incendios, un retranqueo de lindero, una envolvente de accesibilidad que debe permanecer libre — la superposición jurisdiccional incluye un fragmento IFC: una geometría sólida codificada en formato IFC que define el espacio excluido o requerido. Este fragmento se instancia en el momento de la colocación y no puede ser anulado por restricciones numéricas.
 
@@ -40,16 +40,16 @@ El modelo del Código Urbano como Geometría Composable es especialmente relevan
 
 ## Etapas de implementación
 
-**Etapa 1 (actual, prevista para v0.0.3):** bóveda de BIM Tokens con capa de Especificación completa. Esqueleto de la capa de Normativa con el primer conjunto de superposiciones: requisitos de zonificación residencial RS-1 de Columbia Británica.
+**Etapa 1 (actual, prevista para v0.0.3):** bóveda de Objetos BIM con capa de Especificación completa. Esqueleto de la capa de Normativa con el primer conjunto de superposiciones: requisitos de zonificación residencial RS-1 de Columbia Británica.
 
 **Etapa 2 (prevista, v0.1.x):** generación de archivos de restricción IDS 1.0 para cada superposición normativa registrada, permitiendo que los validadores IDS existentes consuman especificaciones de restricción de PointSav.
 
-**Etapa 3 (prevista, futuro):** integración en herramientas de autoría BIM mediante un plugin o superficie API que entregue las restricciones del BIM Token en el momento de la colocación, no al enviar el modelo.
+**Etapa 3 (prevista, futuro):** integración en herramientas de autoría BIM mediante un plugin o superficie API que entregue las restricciones del Objeto BIM en el momento de la colocación, no al enviar el modelo.
 
 ## Véase también
 
-- [[bim-token-what-it-is]]
-- [[bim-token-three-layers]]
+- [[bim-objects-what-they-are]]
+- [[bim-objects-three-layers]]
 - [[flat-file-bim-leapfrog]]
 - [[open-bim-regulatory-acceptance]]
 - [[leapfrog-2030-architecture]]

@@ -8,13 +8,13 @@ bcsc_class: vendor-public
 language: en
 paired_with: flat-file-bim-leapfrog.es.md
 status: active
-last_edited: 2026-05-06
+last_edited: 2026-05-17
 cites: [ifc-4-3, iso-19650]
 category: architecture
 ---
 
 
-PointSav's Building Design System is built on five architectural constraints that, individually, are mild inconveniences for any single feature comparison and, together, define a product category that hyperscalers cannot occupy without cannibalising their own revenue model. The constraints are flat-file storage, open standards, Rust + Tauri, offline-first, and EUPL-licensed. The open BIM standards stack matured between 2023 and 2025 into the infrastructure that makes this strategy viable; the property-manager market gap is documented in peer-reviewed literature; and the open toolchain is commercial-grade today.
+PointSav's Building Design System is built on five architectural constraints that, individually, are mild inconveniences for any single feature comparison and, together, define a product category that hyperscalers cannot occupy without cannibalising their own revenue model. The constraints are flat-file storage, open standards, Rust + Tauri, offline-first, and Apache 2.0-licensed. The open BIM standards stack matured between 2023 and 2025 into the infrastructure that makes this strategy viable; the property-manager market gap is documented in peer-reviewed literature; and the open toolchain is commercial-grade today.
 
 This document explains what flat-file BIM is, what it is not, and why five specific capabilities follow from the architecture rather than needing to be added on top.
 
@@ -72,7 +72,7 @@ The workplace application family — `app-workplace-memo`, `app-workplace-presen
 
 The format stack — IFC-SPF + IDS 1.0 + BCF 3.0 + COBie — fulfills mandatory open-standard delivery requirements across US federal (GSA, USACE, VA, NAVFAC), EU member states (Germany, Italy, Spain, Denmark, Norway, Netherlands, Poland), the UK BIM Framework, Singapore CORENET X (mandatory October 2026), Dubai (mandatory since January 2024), and the broader buildingSMART openBIM movement.
 
-The offline-first, flat-file architecture is the only approach that natively satisfies ITAR air-gapped requirements for defence projects, EU Data Act data sovereignty for European projects, HIPAA technical safeguards for VA healthcare facilities, and GDPR data residency for EU government clients — without dependency on a cloud vendor's contractual assurances. The EUPL-1.2 licence is OSI-approved, FAR 12.212-compatible, and EU-procurement-preferred.
+The offline-first, flat-file architecture is the only approach that natively satisfies ITAR air-gapped requirements for defence projects, EU Data Act data sovereignty for European projects, HIPAA technical safeguards for VA healthcare facilities, and GDPR data residency for EU government clients — without dependency on a cloud vendor's contractual assurances. The Apache 2.0 licence governing the BIM Object data files is OSI-approved, FAR 12.212-compatible, and compatible with both public-sector procurement requirements and commercial derivative use.
 
 ## What flat-file BIM does not do well — yet
 
