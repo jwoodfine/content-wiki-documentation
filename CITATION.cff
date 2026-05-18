@@ -1,0 +1,50 @@
+cff-version: 1.2.0
+message: >-
+  If you use or reference PointSav Documentation Wiki content, please
+  cite it using these metadata.
+type: dataset
+title: "PointSav Documentation Wiki — content-wiki-documentation"
+abstract: >-
+  Bilingual (English + Spanish) documentation wiki for the PointSav
+  Compounding Substrate platform. Covers architecture topics, system
+  guides, the Leapfrog 2030 design pattern, service-slm AI Doorman,
+  design system substrate, and location-intelligence GIS surface.
+  Content conforms to the Wikipedia muscle-memory structural pattern
+  (Foundry Doctrine 2030 claim #46) and the BCSC continuous-disclosure
+  posture. Published at documentation.pointsav.com via the
+  app-mediakit-knowledge engine.
+authors:
+  - given-names: System Administrator
+    name-particle: PointSav
+    family-names: Digital Systems
+    email: open.source@pointsav.com
+    affiliation: PointSav Digital Systems
+repository-code: "https://github.com/pointsav/content-wiki-documentation"
+url: "https://documentation.pointsav.com"
+license: CC-BY-4.0
+version: "0.1.133"
+date-released: "2026-05-18"
+keywords:
+  - documentation
+  - wiki
+  - bilingual
+  - compounding-substrate
+  - leapfrog-2030
+  - knowledge-commons
+  - bcsc-disclosure
+identifiers:
+  - type: url
+    value: "https://documentation.pointsav.com"
+    description: Live deployment of this wiki content
+preferred-citation:
+  type: dataset
+  title: "PointSav Documentation Wiki — content-wiki-documentation"
+  authors:
+    - given-names: System Administrator
+      name-particle: PointSav
+      family-names: Digital Systems
+      email: open.source@pointsav.com
+      affiliation: PointSav Digital Systems
+  version: "0.1.133"
+  date-released: "2026-05-18"
+  url: "https://documentation.pointsav.com"
