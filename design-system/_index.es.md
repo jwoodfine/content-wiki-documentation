@@ -10,9 +10,10 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-16
+last_edited: 2026-05-18
 editor: pointsav-engineering
 paired_with: _index.md
+short_description: "El sistema de diseño de PointSav como componente de la plataforma — estructuración arquitectónica, primitivos de diseño y contexto de identidad de marca."
 ---
 
 La categoría de sistema de diseño abarca el sistema de diseño de PointSav como componente de la plataforma — su vocabulario fundamental, filosofía de diseño y contexto de identidad de marca. Trata el sistema de diseño como concepto dentro de la plataforma: por qué existe, cómo está estructurado y qué identidad de marca porta. Las guías de implementación de componentes, las especificaciones de tokens, la documentación de accesibilidad y las especificaciones de interfaz espacial se encuentran en el repositorio del sistema de diseño en `design.pointsav.com`.

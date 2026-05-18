@@ -13,6 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-18
 editor: pointsav-engineering
 paired_with: _index.es.md
+short_description: "The PointSav design system as a platform component — architectural framing, design primitives, and brand surface context."
 ---
 
 The design-system category covers the PointSav design system as a platform component — its foundational vocabulary, design philosophy, and brand surface context. It addresses the design system as a concept within the platform: why it exists, how it is structured, and what brand identity it carries. Component implementation guides, token specifications, accessibility documentation, and spatial UI specifications live in the design system repository at `design.pointsav.com`.
