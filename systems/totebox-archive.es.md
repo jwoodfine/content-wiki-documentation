@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Totebox Archive"
 slug: totebox-archive
+short_description: "Un Totebox Archive es una máquina virtual micro auto-contenida y libremente transferible que persiste datos institucionales como archivos planos inmutables."
 category: systems
 type: topic
 quality: complete

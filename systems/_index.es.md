@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Sistemas"
 slug: _index.es
+short_description: "Ocho sistemas operativos diseñados con propósito que comparten un sustrato seL4 y Rust común — cada uno realiza un trabajo, no contiene características que no necesita, y se comunica a través de una disciplina de protocolo común basada en Diode."
 lang: es
 category: systems
 type: topic

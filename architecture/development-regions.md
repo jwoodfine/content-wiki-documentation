@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 type: concept
 slug: development-regions
+short_description: "Development regions are geographic and jurisdictional zones that segment the platform's market data, regulatory context, and deployment topology. Each region defines a jurisdictional envelope, geographic boundary, and market data scope that governs co-location evaluation and compliance rule application."
 title: "Development regions"
 category: architecture
 language: en

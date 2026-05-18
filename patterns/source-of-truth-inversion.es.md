@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Inversión de la fuente de verdad"
 slug: source-of-truth-inversion.es
+short_description: "La inversión de origen de verdad designa una capa de almacenamiento como canónica (el registro autorizado, comprometido y firmado), una segunda como una vista derivada (reconstruida determinísticamente bajo demanda), y una tercera como efímera de sesión (estado colaborativo descartado hasta confirmación explícita)."
 status: active
 category: patterns
 type: topic

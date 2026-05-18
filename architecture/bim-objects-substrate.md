@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "BIM Objects — Substrate"
 slug: bim-objects-substrate
+short_description: "BIM Objects anchor to the IFC 4.3 entity hierarchy, Uniclass 2015 classification, and bSDD URIs, organizing into eight primitive categories that encode spatial, elemental, material, assembly, system, performance, and climate-zone specifications."
 category: architecture
 type: topic
 status: active

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "BIM Abierto y Aceptación Regulatoria"
 slug: open-bim-regulatory-acceptance
+short_description: "El modelado de información de construcción es obligatorio en la mayoría de las economías del G7 para contratación pública, con estándares abiertos — IFC 4.3, IDS 1.0, COBie — como requisito de entrega en lugar de formatos propietarios. Las plataformas BIM sin conexión y autohospedadas son el único tipo de arquitectura que satisface de forma nativa los requisitos de datos soberanos impuestos por ITAR, GDPR, HIPAA y marcos regulatorios equivalentes."
 language: es
 category: architecture
 type: topic

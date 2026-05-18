@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: sovereign-airlock-doctrine
+short_description: "The mandatory security and identity protocols for data transmission and code deployment, enforcing strict isolation between Vendor and Customer identities through four structurally isolated infrastructure silos and deterministic staging verification."
 title: "The sovereign airlock"
 audience: vendor-public
 bcsc_class: current-fact

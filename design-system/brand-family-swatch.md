@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 type: topic
 category: design-system
 slug: brand-family-swatch
+short_description: "The brand color families assigned to retail and institutional anchor categories in the platform's co-location GIS surface, providing consistent color-coded identifiers for map visualization and tabular data across accessible and standard display modes."
 title: "Brand-family swatch"
 paired_with: brand-family-swatch.es.md
 state: authoritative

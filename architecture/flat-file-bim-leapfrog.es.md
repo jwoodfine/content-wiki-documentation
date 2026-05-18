@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: flat-file-bim-leapfrog
+short_description: "El Building Design System se construye sobre cinco restricciones arquitectónicas — almacenamiento de archivos planos, estándares abiertos, Rust y Tauri, funcionamiento sin conexión y licencia Apache 2.0 — permitiendo modelos de información de construcción supervivientes a la obsolescencia de proveedores. La propiedad anclada en activos, la capacidad sin conexión, la integración IoT y la convergencia de BIM con libros mayores de arrendamiento y financieros se derivan de la arquitectura en sí."
 title: El Salto Tecnológico del BIM de Archivo Plano
 audience: vendor-public
 bcsc_class: vendor-public

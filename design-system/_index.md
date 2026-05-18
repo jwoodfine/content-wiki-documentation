@@ -5,11 +5,12 @@ slug: _index
 category: design-system
 type: reference
 quality: complete
+short_description: "The PointSav design system as a platform component — its foundational vocabulary, design philosophy, and brand surface context. Component implementation guides, token specifications, and accessibility documentation live at design.pointsav.com."
 status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-16
+last_edited: 2026-05-18
 editor: pointsav-engineering
 paired_with: _index.es.md
 ---

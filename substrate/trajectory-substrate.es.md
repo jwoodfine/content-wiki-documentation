@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "El Sustrato de Trayectoria"
 slug: trajectory-substrate.es
+short_description: "El mecanismo de plataforma que convierte trabajo operativo — commits, sesiones, retroalimentación de operador — en tuplas de capacitación JSONL estructuradas, enrutándolas en un corpus de preentrenamiento continuado que mejora el modelo base OLMo a lo largo del tiempo."
 lang: es
 paired_with: trajectory-substrate.md
 category: substrate

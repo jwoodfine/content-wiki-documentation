@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Compatibilidad nativa del sustrato — por qué se descartó el adaptador de Action API"
 slug: substrate-native-compatibility.es
+short_description: "Establece compatibilidad estructural con convenciones de lector e integrador de MediaWiki mientras rechaza deliberadamente la mimicría de API, manteniendo interfaces nativas de sustrato que reducen carga de mantenimiento y evitan obligaciones de divulgación ligadas a garantías de compatibilidad."
 status: active
 category: substrate
 type: topic

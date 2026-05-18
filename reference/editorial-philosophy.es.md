@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Filosofía Editorial"
 slug: editorial-philosophy
+short_description: "Cada artículo es un recurso de aprendizaje que enseña comprensión en lugar de recuperar hechos, estructurado con párrafos de apertura enciclopédicos, vinculación interna y jerarquía de encabezados consistente adecuada tanto para lectores humanos como para máquinas."
 category: reference
 status: stable
 bcsc_class: no-disclosure-implication

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Inferencia sin contenedores"
 slug: zero-container-inference
+short_description: "La inferencia sin contenedor es el patrón de implementación planeado para cómputo GPU de Tier B utilizando binarios Linux nativos bajo systemd en máquinas virtuales en la nube sin tiempo de ejecución de contenedor, logrando economía viable de SMB a través de temporizadores de apagado inactivo que detienen la facturación de GPU cuando las colas de inferencia están vacías."
 category: architecture
 status: stub
 bcsc_class: forward-looking

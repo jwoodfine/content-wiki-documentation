@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Convenciones de Interfaz AEC"
 slug: aec-interface-conventions
+short_description: "Las cuatro convenciones universales de interfaz — árbol espacial, panel de propiedades, visor 3D y navegador de vistas — que todas las herramientas de autoría BIM implementan, proporcionando vocabulario compartido para superficies de coordinación transversales consistentes."
 language: es
 category: architecture
 type: topic

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Source-of-truth inversion"
 slug: source-of-truth-inversion
+short_description: "Source-of-truth inversion designates one storage layer as canonical (the authoritative, committed, signed record), a second as a derived view (rebuilt deterministically on demand), and a third as session-ephemeral (collaborative state discarded until explicit commit)."
 status: active
 category: patterns
 type: topic

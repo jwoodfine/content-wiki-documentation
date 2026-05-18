@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Objetos BIM — Tres Capas de Composición"
 slug: bim-objects-three-layers
+short_description: "Los BIM Objects incrustan tres capas de restricción simultáneas — Especificación (identidad permanente del elemento), Regulación (requisitos específicos de jurisdicción) y Zona Climática (requisitos de desempeño) — como datos de referencia estática con una regla de composición que aplica el valor más restrictivo."
 language: es
 category: architecture
 type: topic

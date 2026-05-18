@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Open BIM y Aceptación Regulatoria"
 slug: open-bim-regulatory-acceptance
+short_description: "La Modelización de Información de Construcción es un requisito de adquisición de base en agencias federales de EE.UU. y jurisdicciones europeas, con certificación buildingSMART validando cumplimiento Open BIM. La arquitectura de datos soberana aborda requisitos ITAR, GDPR e HIPAA que plataformas BIM alojadas en la nube no pueden satisfacer estructuralmente."
 language: es
 category: reference
 type: topic

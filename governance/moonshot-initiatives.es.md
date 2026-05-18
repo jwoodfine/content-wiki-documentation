@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Iniciativas Moonshot"
 slug: moonshot-initiatives
+short_description: "Las iniciativas moonshot son programas de ingeniería activos que construyen reemplazos nativos para dependencias de terceros en cuarentena, con el objetivo de eliminar el bloqueo de proveedor y reducir la superficie de ataque externa de la plataforma a lo largo del tiempo."
 category: governance
 type: topic
 quality: stub

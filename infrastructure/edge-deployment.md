@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Edge deployment and boundary ingest"
 slug: edge-deployment
+short_description: "The platform routes all external network connections through Ring 1 boundary-ingest services at the system edge, sanitizing incoming payloads before they reach core processing rings and recording clean, validated events to the audit ledger rather than raw network traffic."
 category: infrastructure
 type: topic
 quality: complete

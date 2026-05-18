@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Wiki provider landscape"
 slug: wiki-provider-landscape
+short_description: "An audit of 25 wiki platforms across four groups documents structural reasons no competitor has closed Wikipedia's encyclopedic gap, and identifies the governance software, navigation primitives, and editorial culture required to do so."
 status: active
 category: reference
 type: topic

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "PointSav Knowledge"
 slug: index.es
+short_description: "PointSav desarrolla sistemas operativos y servicios para empresas reguladas que necesitan poseer sus datos, su inteligencia artificial y su registro contable de forma íntegra, con hardware del cliente, registros con calidad de divulgación continua y software de código abierto."
 lang: es
 paired_with: index.md
 category: root

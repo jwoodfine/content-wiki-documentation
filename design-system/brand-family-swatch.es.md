@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 type: topic
 category: design-system
 slug: brand-family-swatch
+short_description: "Las familias de color de marca asignadas a categorías de anclaje minoristas e institucionales en la superficie GIS de co-ubicación de la plataforma, proporcionando identificadores codificados por color consistentes para visualización de mapas y datos tabulares en modos de visualización accesible y estándar."
 title: Muestrario de Familias de Marcas
 paired_with: brand-family-swatch.md
 state: authoritative

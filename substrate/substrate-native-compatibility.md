@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Substrate-native compatibility — why the Action API shim was dropped"
 slug: substrate-native-compatibility
+short_description: "Establishes structural compatibility with MediaWiki reader and integrator conventions while deliberately declining API mimicry, maintaining substrate-native interfaces that reduce maintenance burden and avoid disclosure obligations tied to compatibility guarantees."
 status: active
 category: substrate
 type: topic

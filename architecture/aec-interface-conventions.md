@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "AEC interface conventions"
 slug: aec-interface-conventions
+short_description: "The four universal interface conventions — spatial tree, properties panel, 3D viewport, and view navigator — that all BIM authoring tools implement, providing shared vocabulary for consistent cross-tool coordination surfaces."
 category: architecture
 type: topic
 status: active

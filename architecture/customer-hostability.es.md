@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Hospedaje por el cliente"
 slug: customer-hostability.es
+short_description: "La capacidad de alojamiento del cliente es el compromiso arquitectónico de que cada artefacto de PointSav pueda ejecutarse en el hardware del cliente, contra las claves del cliente, con el libro mayor de auditoría del cliente — haciendo que la implementación autohospedada sea el patrón canónico, no un nivel."
 category: architecture
 type: topic
 quality: complete

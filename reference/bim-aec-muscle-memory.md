@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: bim-aec-muscle-memory
+short_description: "The Building Design System adopts established interface patterns from industry-standard tools to ensure zero learning curve for AEC practitioners, while enabling facility management workflows through work-order linking, lease integration, and sensor overlays."
 title: "AEC muscle memory and interface patterns"
 audience: vendor-public
 bcsc_class: current-fact

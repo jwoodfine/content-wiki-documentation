@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "The building design system for the built environment"
 slug: building-design-system-bim
+short_description: "A design-system platform for the built environment organized into eight BIM Object primitive categories and ten universal AEC interface components, providing shared specification vocabulary for independent authoring surfaces to coordinate without introducing new learning surfaces."
 category: architecture
 type: topic
 quality: complete

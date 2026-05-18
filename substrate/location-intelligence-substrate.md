@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Location intelligence substrate"
 slug: location-intelligence-substrate
+short_description: "A flat-file, open-GIS architecture enabling customers to own geographic datasets end-to-end using Apache-licensed open data and a Rust-aligned open-source rendering stack, with retail co-location analysis as the first deployed surface."
 category: substrate
 type: topic
 quality: complete

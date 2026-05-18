@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Referencia de Hardware"
 slug: hardware-reference
+short_description: "Perfiles de hardware de referencia para estaciones de trabajo de desarrolladores y dispositivos de flota, especificando requisitos de arquitectura de CPU incluyendo soporte x86_64 generación Haswell y fsgsbase, y definiendo tres patrones de implementación de infraestructura desde local hasta nube."
 category: reference
 type: reference
 quality: complete

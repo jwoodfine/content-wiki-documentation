@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: sovereign-mesh
+short_description: "La malla soberana es una capa de red punto a punto que utiliza unidifusión a nivel de aplicación sobre túneles criptográficos WireGuard para entregar comandos a cada nodo sin depender de corredores de mensajes centralizados."
 title: Malla Soberana
 category: infrastructure
 language: es

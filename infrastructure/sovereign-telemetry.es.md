@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Arquitectura de Telemetría de Estado Cero"
 slug: sovereign-telemetry
+short_description: "La arquitectura de telemetría de estado cero describe cómo el Faro de Intención V4 de la plataforma recopila señales de comportamiento y hardware de clientes perimetrales sin cookies, identificadores de sesión o análisis de terceros, utilizando compilación del lado del cliente y transmisión de balizas asincrónicas."
 category: infrastructure
 type: topic
 quality: stub

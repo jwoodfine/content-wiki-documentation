@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: news-release-standards
+short_description: "Aplica reglas estrictas de formato para sindicación de noticias corporativas: alineación a la izquierda, disciplina de mayúsculas de título, precisión geográfica y estructuras estandarizadas de encabezado y línea de fecha que aseguran autoridad institucional en medios físicos y digitales."
 title: Estándares de Tipografía y Diseño de Comunicados de Prensa
 audience: vendor-public
 bcsc_class: current-fact

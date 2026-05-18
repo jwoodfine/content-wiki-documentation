@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Servicios"
 slug: _index.es
+short_description: "Los servicios autónomos que implementan ingestión de límite Ring 1 y procesamiento de conocimiento determinista Ring 2 en la arquitectura de tres anillos de PointSav — agrupados por capa de anillo y función."
 lang: es
 category: services
 type: topic

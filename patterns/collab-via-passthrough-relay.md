@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Collaboration via passthrough relay — substrate pattern"
 slug: collab-via-passthrough-relay
+short_description: "The passthrough relay pattern holds no document state on the server and forwards CRDT updates directly between clients, keeping the canonical git tree as the sole authoritative record of content at every point in time."
 status: active
 category: patterns
 type: topic

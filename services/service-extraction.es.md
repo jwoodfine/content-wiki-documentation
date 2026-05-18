@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "service-extraction — Analizador Determinista"
 slug: service-extraction
+short_description: "service-extraction es el controlador de tráfico central Ring 2 que elimina formato propietario de cargas útiles sin procesar, construye Entity Bundles estructurados, asigna IDs de transacción y enruta datos a servicios deterministas o a service-slm para extracción asistida por IA."
 category: services
 type: topic
 quality: complete

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "El Código Urbano como Geometría Composable"
 slug: city-code-as-composable-geometry
+short_description: "Un modelo arquitectónico que codifica requisitos regulatorios directamente en especificaciones de elementos como restricciones geométricas y numéricas en lugar de aplicarlas después del diseño, haciendo que las configuraciones no conformes sean estructuralmente imposibles por construcción."
 language: es
 category: architecture
 type: topic

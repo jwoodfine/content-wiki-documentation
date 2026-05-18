@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: sovereign-airlock-doctrine
+short_description: "Los protocolos obligatorios de seguridad e identidad para transmisión de datos e implementación de código, ejecutando aislamiento estricto entre identidades de Proveedor y Cliente a través de cuatro silos de infraestructura estructuralmente aislados y verificación de staging determinista."
 title: La Exclusa Soberana
 audience: vendor-public
 bcsc_class: current-fact

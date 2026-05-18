@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Merkle proofs as a substrate primitive"
 slug: merkle-proofs-as-substrate-primitive
+short_description: "Ships RFC 9162 Merkle proof primitives — inclusion and consistency proofs — as the cryptographic floor of the platform's capability ledger, enabling ledger validity verification without requiring consumer trust in any central authority."
 category: substrate
 status: stub
 bcsc_class: no-disclosure-implication

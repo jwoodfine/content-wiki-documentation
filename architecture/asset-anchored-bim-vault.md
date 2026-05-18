@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "The asset-anchored BIM vault"
 slug: asset-anchored-bim-vault
+short_description: "A building's authoritative digital record structured as plain-text and standardized-binary files in a git-versioned directory, qualifying as an ISO 19650-conforming Common Data Environment that travels with the property deed."
 category: architecture
 type: topic
 status: active

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Resumen de seguridad"
 slug: security-overview.es
+short_description: "La postura de seguridad de la plataforma: aislamiento de hardware basado en capacidades, el estándar unidireccional Diode de flujo de comandos, el límite de inteligencia artificial Doorman, el registro de auditoría WORM, y cómo cada propiedad se ejecuta por arquitectura en lugar de controles de política que pueden configurarse incorrectamente."
 lang: es
 category: governance
 type: topic

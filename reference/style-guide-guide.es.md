@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Guía de estilo — GUIDE"
 slug: style-guide-guide.es
+short_description: "Cómo escribir un archivo GUIDE: el formato de runbook operativo para subcarpetas de implementación de plataforma, cubriendo estructura requerida de seis secciones, voz imperativa lacónica, actores nombrados, formato de comando, verificación concreta y la distinción de archivos TOPIC."
 lang: es
 category: reference
 type: topic

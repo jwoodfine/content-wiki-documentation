@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: worm-ledger-architecture
+short_description: "The WORM ledger is an immutable, append-only substrate using cryptographic hash-chaining and structural isolation to provide a durable backbone for boundary-ingest services while maintaining tamper-evident records suitable for regulatory compliance."
 title: "WORM ledger substrate: four-layer architecture"
 audience: vendor-public
 bcsc_class: current-fact

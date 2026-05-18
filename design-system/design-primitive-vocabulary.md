@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Design system — primitive vocabulary rationale"
 slug: design-primitive-vocabulary
+short_description: "Documents the structural patterns preserved in the design system's primitive token layer — numeric color scales, layered semantic aliasing, productive-versus-expressive type split, and numeric spacing scales — aligned with 2018 to 2026 field conventions while using PointSav-specific naming and values."
 category: design-system
 type: reference
 quality: complete

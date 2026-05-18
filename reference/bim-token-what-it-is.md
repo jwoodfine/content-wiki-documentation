@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "What is a BIM token"
 slug: bim-token-what-it-is
+short_description: "A BIM Token is a composable built-environment specification unit that pre-constrains design space across three axes — element identity, jurisdictional requirements, and climate performance — making code violations geometrically impossible by construction rather than discovered in post-design review."
 category: reference
 type: topic
 quality: complete

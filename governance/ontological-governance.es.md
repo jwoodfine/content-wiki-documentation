@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Gobernanza Ontológica"
 slug: ontological-governance
+short_description: "La gobernanza ontológica describe los cuatro registros de control auto-reparadores que rigen cómo service-content clasifica y acumula conocimiento, y el bucle de verificación humana que mantiene precisos los datos de identidad extraídos antes de ser comprometidos permanentemente."
 category: governance
 type: topic
 quality: stub

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "BIM Objects — What They Are"
 slug: bim-objects-what-they-are
+short_description: "BIM Objects are composable built-environment specification units that encode element type, regulatory requirements by jurisdiction, and climate zone performance requirements, pre-constraining the design space so non-compliant configurations cannot be placed."
 category: architecture
 type: topic
 status: active

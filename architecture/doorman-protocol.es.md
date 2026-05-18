@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Protocolo Doorman"
 slug: doorman-protocol
+short_description: "Doorman es el único límite de solicitud de IA a través del cual se enruta toda llamada de inferencia, imponiendo disciplina de sanitizar-e-rehidratar, registrando en un libro mayor de auditoría inmutable y capturando señales de entrenamiento que componen la plataforma a lo largo del tiempo."
 category: architecture
 status: stub
 bcsc_class: current-fact

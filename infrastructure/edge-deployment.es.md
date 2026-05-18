@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Despliegue en el Borde e Ingesta en el Perímetro"
 slug: edge-deployment.es
+short_description: "La plataforma enruta todas las conexiones de red externas a través de servicios de ingesta perimetral de Ring 1 en el borde del sistema, desinfectando cargas útiles entrantes antes de que lleguen a los anillos de procesamiento central y registrando eventos limpios y validados en el registro de auditoría en lugar de tráfico de red sin procesar."
 category: infrastructure
 type: topic
 quality: complete

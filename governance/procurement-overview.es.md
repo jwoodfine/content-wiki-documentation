@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Resumen de adquisición"
 slug: procurement-overview.es
+short_description: "Lo que un comprador regulado adquiere al implementar PointSav: hardware que el cliente posee íntegramente, datos que el proveedor nunca posee, sin compromiso de gasto mínimo, y propiedades de cumplimiento ejecutadas por arquitectura en lugar de promesas contractuales."
 lang: es
 category: governance
 type: topic

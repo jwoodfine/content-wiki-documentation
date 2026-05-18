@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Telemetry architecture"
 slug: telemetry-architecture
+short_description: "The platform collects web traffic analytics from production edge nodes and routes them to a locally controlled processing environment through an encrypted path without passing through third-party cloud services."
 category: infrastructure
 type: topic
 quality: complete

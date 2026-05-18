@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Legal and IP structure"
 slug: legal-and-ip-structure
+short_description: "The three-corporation topology governing intellectual property transfer from contributors to vendor to customer, with squash-and-merge as the atomic IP-transfer event and strict separation preventing unaudited code or operational-record exposure."
 category: governance
 type: concept
 quality: complete

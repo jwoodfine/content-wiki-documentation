@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Panorama de proveedores de wiki — cómo se ve el campo en 2026"
 slug: wiki-provider-landscape.es
+short_description: "Una auditoría de 25 plataformas wiki en cuatro grupos documenta razones estructurales por las que ningún competidor ha cerrado la brecha enciclopédica de Wikipedia, e identifica el software de gobernanza, primitivas de navegación y cultura editorial requeridos para hacerlo."
 status: active
 category: reference
 type: topic

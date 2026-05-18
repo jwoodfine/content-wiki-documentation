@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "The seL4 microkernel substrate"
 slug: sel4-microkernel-substrate
+short_description: "The platform adopts the mathematically formally verified seL4 microkernel as the L1 kernel for all PointSav operating systems, providing structurally guaranteed memory isolation, zero buffer overflows, capability-based permissions, and deterministic execution without building a custom kernel."
 category: substrate
 type: concept
 quality: complete

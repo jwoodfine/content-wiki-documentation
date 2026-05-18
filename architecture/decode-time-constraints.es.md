@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Restricciones en tiempo de decodificación (resumen)"
 slug: decode-time-constraints.es
+short_description: "Las restricciones de tiempo de decodificación son reglas estructurales aplicadas a la salida de un modelo de lenguaje en cada paso de emisión de token, haciendo que el vocabulario prohibido o las respuestas estructuralmente inválidas sean matemáticamente imposibles de producir en lugar de detectarlas después del hecho."
 category: architecture
 type: topic
 quality: complete

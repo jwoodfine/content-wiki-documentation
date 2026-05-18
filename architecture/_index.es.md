@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Arquitectura"
 slug: _index.es
+short_description: "Arquitectura de plataforma transversal: el modelo de composición de tres anillos, límite de enrutamiento e inferencia de IA, sustrato de seguridad e identidad, principios de propiedad del cliente y el dominio de inteligencia de ubicación."
 lang: es
 category: architecture
 type: topic

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: os-privategit
+short_description: "The operating system layer hosting the private Git infrastructure that underpins the development workspace, staging-tier commit flow, and canonical source repositories for all PointSav engineering repos."
 title: "Private Git OS"
 category: systems
 language: en

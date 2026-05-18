@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: zero-execution-routing
+short_description: "Las capas de presentación en la plataforma cumplen un mandato de ejecución cero, eliminando JavaScript del lado del cliente para manipulación central de DOM mediante el uso de determinismo estructural para enrutamiento bilingüe y máquinas de estado CSS nativas para elementos interactivos."
 title: Enrutamiento y Presentación de Ejecución Cero
 audience: vendor-public
 bcsc_class: current-fact

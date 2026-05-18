@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Pruebas de Merkle como Primitiva de Sustrato"
 slug: merkle-proofs-as-substrate-primitive
+short_description: "Envía primitivos de prueba Merkle RFC 9162 — pruebas de inclusión y consistencia — como el piso criptográfico del libro mayor de capacidad de la plataforma, habilitando verificación de validez de libro mayor sin requerir confianza del consumidor en ninguna autoridad central."
 category: substrate
 status: stub
 bcsc_class: no-disclosure-implication

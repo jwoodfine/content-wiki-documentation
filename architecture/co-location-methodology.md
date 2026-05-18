@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 type: concept
 slug: co-location-methodology
+short_description: "A structured approach for ranking hardware co-location candidates across jurisdictional, network, infrastructure, and cost dimensions, constrained first by regulatory requirements before other optimization occurs."
 title: "Co-location methodology"
 category: architecture
 language: en

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Las Tres Capas de un BIM Token"
 slug: bim-token-three-layers
+short_description: "Un BIM Token incrusta tres capas de restricción simultáneas — Especificación, Regulación y Zona Climática — como datos de referencia estática sin selección en tiempo de ejecución, permitiendo que los requisitos regulatorios y el rendimiento climático se compongan en restricciones de diseño efectivas."
 language: es
 category: reference
 type: topic

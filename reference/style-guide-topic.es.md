@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Guía de estilo — TOPIC"
 slug: style-guide-topic.es
+short_description: "Estándares editoriales para archivos TOPIC en wikis de contenido: la apertura de cuatro párrafos Bloomberg, registro institucional 75/25, prueba de oración de CFO, regla de actores nombrados, voz, lenguaje orientado al futuro, disciplina de cita y la distinción de archivos GUIDE."
 lang: es
 category: reference
 type: topic

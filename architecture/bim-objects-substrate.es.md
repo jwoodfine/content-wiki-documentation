@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Objetos BIM — Sustrato"
 slug: bim-objects-substrate
+short_description: "Los BIM Objects se anclan a la jerarquía de entidades IFC 4.3, la clasificación Uniclass 2015 y URIs bSDD, organizándose en ocho categorías primitivas que codifican especificaciones espaciales, elementales, de materiales, de ensamblajes, de sistemas, de desempeño y de zona climática."
 language: es
 category: architecture
 type: topic

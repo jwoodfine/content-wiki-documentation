@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 slug: service-fs-architecture
+short_description: "A per-tenant Write-Once-Read-Many immutable ledger serving as the tamper-evident backbone for all platform records, implemented as a four-layer decoupled stack with dual Linux and seL4 microkernel runtime envelopes."
 title: "FS architecture and the WORM backbone"
 category: services
 audience: vendor-public

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Colaboración en tiempo real mediante relé de paso — un patrón de sustrato"
 slug: collab-via-passthrough-relay.es
+short_description: "El patrón de retransmisión de paso no mantiene estado de documento en el servidor y reenvía actualizaciones CRDT directamente entre clientes, manteniendo el árbol de git canónico como el único registro autorizado de contenido en todo momento."
 status: active
 category: patterns
 type: topic

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "El substrato del sistema de diseño"
 slug: design-system-substrate.es
+short_description: "El sustrato del sistema de diseño es un motor de sistema de diseño auto-alojado y propiedad del cliente que almacena tokens y componentes en el repositorio Git del cliente, los sirve a través de un extremo MCP legible por máquina, y utiliza el formato de token DTCG de W3C para permanecer agnóstico del editor."
 lang: es
 paired_with: design-system-substrate.md
 category: substrate

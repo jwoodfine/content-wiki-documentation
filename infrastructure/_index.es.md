@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Infraestructura"
 slug: _index.es
+short_description: "Topología de implementación de flota, runtime operacional en la nube e infraestructura física — desde el sustrato de almacenamiento del registro WORM hasta patrones de implementación perimetral, la malla soberana y la arquitectura de telemetría."
 lang: es
 category: infrastructure
 type: topic

@@ -1,12 +1,16 @@
 ---
 schema: foundry-doc-v1
-title: "Governance — Category Landing"
+title: "Governance"
 slug: _index
 category: governance
+type: topic
+quality: complete
+short_description: "Formal decision records, licensing posture, contributor model, and compliance requirements that govern how the PointSav platform is built, licensed, and changed — including the twelve binding architecture decisions, the BCSC continuous-disclosure posture, and the licence matrix."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-05-18
 editor: pointsav-engineering
+paired_with: _index.es.md
 ---
 
 ## Governance
