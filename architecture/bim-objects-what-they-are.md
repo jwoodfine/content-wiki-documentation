@@ -74,6 +74,9 @@ The BIM Object system parallels the structure of a software design system. Where
 
 The analogy is structural, not metaphorical. Both systems address the same problem: enforcing consistency across independent authoring surfaces by encoding decisions as reusable, aliasable, versionable units with machine-readable constraint specifications. The BIM platform extends the model into a physical constraint domain that software design systems do not address.
 
-## Open Questions
+## See also
 
-**bSDD version stability.** The buildingSMART Data Dictionary API is versioned separately from IFC 4.3. BIM Object frontmatter includes bSDD URI references. A policy for handling bSDD URI deprecation or schema migration is not yet formalised. This is a planned documentation task for v0.0.3.
+- [[bim-objects-three-layers]] — how the three composition layers (Specification, Regulation, Climate Zone) are structured
+- [[bim-objects-substrate]] — the eight BIM Object primitive categories and their IFC entity anchors
+- [[building-design-system-bim]] — the broader Building Design System for the built environment
+- [[flat-file-bim-leapfrog]] — the flat-file substrate that makes pre-constraining composition possible

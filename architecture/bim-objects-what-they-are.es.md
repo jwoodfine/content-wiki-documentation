@@ -74,3 +74,10 @@ El formato legible por máquinas permite:
 El sistema de Objetos BIM es paralelo a la estructura de un sistema de diseño de software. Donde IBM Carbon o un sistema similar proporciona una capa primitiva de tokens, una capa de recetas de componentes y una capa de extensiones específicas por superficie, la plataforma de Objetos BIM proporciona una capa primitiva de objetos (las 8 categorías de objetos DTCG ancladas a IFC 4.3), una capa de componentes AEC universal y extensiones específicas por superficie por tipo de programa del entorno construido.
 
 La analogía es estructural, no metafórica. Ambos sistemas abordan el mismo problema: aplicar coherencia entre superficies de autoría independientes codificando decisiones como unidades reutilizables, reasignables y versionables con especificaciones de restricciones legibles por máquinas.
+
+## Véase también
+
+- [[bim-objects-three-layers]] — cómo se estructuran las tres capas de composición (Especificación, Regulación, Zona Climática)
+- [[bim-objects-substrate]] — las ocho categorías de Objetos BIM primitivos y sus anclas de entidades IFC
+- [[building-design-system-bim]] — el Sistema de Diseño de la Construcción para el entorno construido
+- [[flat-file-bim-leapfrog]] — el sustrato de archivo plano que hace posible la composición pre-restringida

@@ -109,6 +109,9 @@ IDS 1.0 rule: IfcSpace.MaxWorkstationToWindow ≤ 6000 mm
 
 This separation — author with BIM Objects, validate with IDS — is the substrate that makes [[city-code-as-composable-geometry]] possible at the next layer.
 
-## Open Questions
+## See also
 
-Whether DTCG W3C CG format will be superseded by a formal W3C Recommendation before the object library ships a v1.0 release. The v0.0.x object files use the community-group schema; a format migration at v1.0 may be needed.
+- [[bim-objects-what-they-are]] — the pre-constraining thesis and how BIM Objects differ from IFC property sets
+- [[bim-objects-three-layers]] — the Specification, Regulation, and Climate Zone layers and their composition rule
+- [[building-design-system-bim]] — the broader Building Design System for the built environment
+- [[flat-file-bim-leapfrog]] — the flat-file architecture that underpins the BIM Object vault

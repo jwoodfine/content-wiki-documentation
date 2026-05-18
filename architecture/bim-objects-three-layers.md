@@ -154,8 +154,9 @@ An IFC Property Set (`Pset_WallCommon`) is a list of property definitions: prope
 
 The BIM Object Regulation layer consumes the IFC Property Set structure but adds the values that the Property Set specification omits: the required value, the jurisdiction for which it applies, and the IDS 1.0 file that formally encodes the constraint in a machine-executable form.
 
-## Open Questions
+## See also
 
-**Climate zone boundary data.** The ASHRAE climate zone map is available in GIS format but requires a licence for commercial redistribution. A project site's climate zone classification must currently be looked up manually. A planned feature in `app-privategit-bim` (intended, v0.1.x) would accept project coordinates and return the applicable climate zone IDs. The data sourcing question is unresolved.
-
-**Regulatory overlay deprecation.** Building regulations are updated on irregular cycles. An overlay published for a regulation version may become out of date without notification. A policy for overlay versioning and deprecation notice is not yet specified.
+- [[bim-objects-what-they-are]] — what a BIM Object is and how it differs from IFC entity types, Revit families, and property sets
+- [[bim-objects-substrate]] — the eight BIM Object primitive categories and their DTCG delivery format
+- [[open-bim-regulatory-acceptance]] — how jurisdictions are adopting open BIM standards
+- [[building-design-system-bim]] — the broader Building Design System for the built environment

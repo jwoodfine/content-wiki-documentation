@@ -87,3 +87,10 @@ Esta es una composición de límite inferior: ambas capas expresan mínimos de d
 Cuando se crea un nuevo Objeto BIM, la interfaz de autoría sigue un modelo de cuatro zonas que se corresponde directamente con las tres capas del objeto más una zona de flujo de trabajo de publicación.
 
 La interfaz CMS es la interfaz prevista para `app-console-bim` (planificado, v0.1.x). En v0.0.1, los Objetos BIM se crean directamente como archivos JSON DTCG y se confirman mediante git.
+
+## Véase también
+
+- [[bim-objects-what-they-are]] — qué es un Objeto BIM y cómo difiere de los tipos de entidad IFC, familias de Revit y conjuntos de propiedades
+- [[bim-objects-substrate]] — las ocho categorías de Objetos BIM primitivos y su formato de entrega DTCG
+- [[open-bim-regulatory-acceptance]] — cómo las jurisdicciones adoptan los estándares BIM abiertos
+- [[building-design-system-bim]] — el Sistema de Diseño de la Construcción para el entorno construido

@@ -103,3 +103,10 @@ Regla IDS 1.0: IfcSpace.MaxWorkstationToWindow ≤ 6000 mm
 ```
 
 Esta separación — crear con Objetos BIM, validar con IDS — es el sustrato que hace posible el [[city-code-as-composable-geometry]] en la siguiente capa.
+
+## Véase también
+
+- [[bim-objects-what-they-are]] — la tesis de pre-restricción y cómo los Objetos BIM difieren de los conjuntos de propiedades IFC
+- [[bim-objects-three-layers]] — las capas de Especificación, Regulación y Zona Climática y su regla de composición
+- [[building-design-system-bim]] — el Sistema de Diseño de la Construcción para el entorno construido
+- [[flat-file-bim-leapfrog]] — la arquitectura de archivo plano que sustenta la bóveda de Objetos BIM
