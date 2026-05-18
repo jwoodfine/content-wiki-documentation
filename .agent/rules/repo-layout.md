@@ -30,6 +30,7 @@ Only the following may appear at repo root:
 | `index.es.md` | Spanish wiki home (bilingual pair for `index.md`) |
 | `featured-topic.yaml` | Homepage featured article selection (YAML pointer to a slug) |
 | `leapfrog-facts.yaml` | Homepage leapfrog facts panel (YAML data consumed by home page engine) |
+| `reference-invariants.yaml` | Homepage reference invariants panel — three plain-English structural claims (replaces hardcoded "From the doctrine" panel when engine Phase D lands) |
 | `TRADEMARK.md` | Trademark and copyright notice for PointSav and Woodfine marks |
 | `CLAUDE.md` | Claude Code session guide (imports `AGENT.md`; required for Root sessions) |
 | `glossary-documentation.csv` | Master terminology glossary — canonical term source pending service-content migration |

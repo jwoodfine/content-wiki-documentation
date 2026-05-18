@@ -1,0 +1,17 @@
+# reference-invariants.yaml — "From the engineering record" home-page panel.
+# Engine reads on each request; absent → suppress the panel.
+# Three plain-English structural invariants the corpus stands on.
+# No governance vocabulary (no "doctrine", "convention", "NOTAM").
+# Each item must be falsifiable and link to a published slug.
+
+heading: "From the engineering record"
+items:
+  - label: "Compute boundary"
+    text: "Every AI request enters and exits through a single audited gateway. No model call occurs outside this path — not by configuration, not by policy, but by structural firewall and bearer-only enforcement."
+    link_slug: doorman-protocol
+  - label: "Data ownership"
+    text: "Operational interactions generate training signal that compounds across deployments. No tenant surrenders ownership of their data or model improvements."
+    link_slug: compounding-substrate
+  - label: "Audit ledger"
+    text: "Every record appended to the WORM ledger is immutable. Retroactive rewrites are structurally impossible, not merely prohibited."
+    link_slug: worm-ledger-design

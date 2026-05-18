@@ -4,7 +4,7 @@ title: "PointSav Knowledge"
 slug: index
 category: root
 status: active
-last_edited: 2026-05-15
+last_edited: 2026-05-17
 editor: pointsav-engineering
 ---
 
@@ -21,10 +21,14 @@ The platform runs on customer hardware, produces continuous-disclosure-grade
 records by structure, and operates fully without AI for buyers that require
 an air-gap.
 
-This wiki is the engineering library for that platform. It documents the
-architecture, the services, the operating systems, the design system, and
-the governance commitments that bind future development. It is written for
-institutional readers — auditors, technical due diligence reviewers, and
+This wiki is the engineering library for that platform, maintained against
+the published [[style-guide-topic|editorial standard]]. It documents the
+architecture, the services, the operating systems, the governance commitments,
+and the design rationale that binds future development. It is written for
+institutional readers — auditors, technical due-diligence reviewers, and
 procurement evaluators — and for the engineers who build on or extend the
 platform. Where the engineering monorepo holds the code, this wiki holds
 the reasoning.
+
+Forward-looking statements in this wiki carry planned, intended, or target
+language per the [[style-guide-topic|editorial standard]].
