@@ -1,0 +1,36 @@
+---
+schema: foundry-doc-v1
+title: "Filosofía de diseño UX de inteligencia de ubicación"
+slug: location-intelligence-ux
+category: applications
+type: topic
+quality: complete
+status: active
+audience: public
+bcsc_class: public-disclosure-safe
+language_protocol: TRANSLATE-ES
+last_edited: 2026-05-19
+editor: pointsav-engineering
+short_description: "La interfaz de Inteligencia de Ubicación de PointSav está diseñada para priorizar la claridad en la toma de decisiones, utilizando una filosofía de conclusión primero que comunica la confianza en la selección de sitios mediante jerarquía visual y clasificación estructural."
+paired_with: location-intelligence-ux.md
+---
+
+La interfaz de la [[location-intelligence-platform]] de PointSav está diseñada para priorizar la claridad en la toma de decisiones por encima del volumen de datos brutos. Utilizando una filosofía de conclusión primero, la plataforma comunica la confianza en la selección de sitios mediante jerarquía visual y clasificación estructural.
+
+## Diferenciación: el grado de clúster como unidad primaria
+
+A diferencia de los productos GIS comerciales que muestran puntos individuales por defecto, la plataforma de PointSav utiliza el **Grado de Clúster** como la unidad visual y analítica principal:
+
+1. **Rampa de confianza:** Los sitios se codifican mediante una rampa de color de un solo tono (desde el ámbar pálido hasta el intenso). Los marcadores más oscuros y grandes indican mayores niveles de convergencia de capital.
+2. **Jerarquía estructural:** La interfaz guía al usuario hacia los nodos comerciales más defendibles, haciendo que los sitios Tier 5 y Tier 4 dominen la vista nacional.
+3. **Tarjetas de índice contextuales:** Al hacer clic en un clúster, se activa un panel lateral — no una ventana modal — que proporciona el ranking municipal, los operadores presentes y el recuento de apoyo institucional sin perder el contexto del mapa.
+
+## Arquitectura de componentes
+
+La superficie GIS utiliza un conjunto de componentes estandarizado construido sobre [[app-orchestration-gis]] (el motor analítico) y [[pointsav-gis-engine]] (la capa de renderizado), diseñado para un re-aprovisionamiento rápido entre despliegues.
+
+## Véase también
+
+* [[location-intelligence-platform]]
+* [[app-orchestration-gis]]
+* [[pointsav-gis-engine]]
