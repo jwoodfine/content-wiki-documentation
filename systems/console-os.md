@@ -47,8 +47,8 @@ The interface organises every entity's reality into a fixed set of pillars. Each
 | F2 | PEOPLE | [[service-people|service-people]] — the identity ledger |
 | F3 | EMAIL | [[service-email|service-email]] — the Comm Diode |
 | F4 | CONTENT | [[service-content|service-content]] — the drafting and synthesis engine |
-| F5 | MINUTEBOOK | [[service-minutebook|service-minutebook]] — deep records |
-| F6 | BOOKKEEPER | [[service-bookkeeper|service-bookkeeper]] — the financial ledger |
+| F5 | MINUTEBOOK | service-minutebook — deep records |
+| F6 | BOOKKEEPER | service-bookkeeper — the financial ledger |
 | F12 | INPUT MACHINE | [[app-console-input]] — the human-in-the-loop ingestion gateway |
 
 F12 is mandatory per [[architecture-decisions|SYS-ADR-10]]. The [[app-console-input|Input Machine]] is the only surface through which raw external files can enter a Totebox. Files dropped into F12 have execution permissions stripped, are tagged against the operator's [[archetypes-and-chart-of-accounts|Chart of Accounts]], and are routed to F5 or F6.

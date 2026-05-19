@@ -21,7 +21,7 @@ El sustrato tiene cuatro patas.
 
 **Cola de aprendizaje.** Un hook post-commit `bin/capture-edit.py` emite un brief para cada confirmación del espacio de trabajo. Un drenador de 15 minutos llama al local-slm (OLMo-2 7B Q4 vía llama-server) contra cada brief, captura el intento del modelo y escribe la tupla `(brief, intento, diff_real)` en `data/training-corpus/apprenticeship/<tipo-tarea>/<inquilino>/`. A 2026-05-18 se habían acumulado 502 tuplas.
 
-**Pares DPO editoriales.** Cada borrador que pasa por el [[reverse-funnel-editorial-pattern]] — de crudo a refinado a editado creativamente — emite dos pares DPO en `data/training-corpus/apprenticeship/prose-edit/<inquilino>/`. El par captura los deltas de mejora editorial. A esa fecha se habían acumulado 34 pares.
+**Pares DPO editoriales.** Cada borrador que pasa por el patrón editorial de embudo inverso — de crudo a refinado a editado creativamente — emite dos pares DPO en `data/training-corpus/apprenticeship/prose-edit/<inquilino>/`. El par captura los deltas de mejora editorial. A esa fecha se habían acumulado 34 pares.
 
 **Destilación de trayectorias negativas.** `bin/capture-feedback.sh` analiza los archivos de bandeja de entrada en busca de correcciones del operador y emite señales de trayectoria negativa en `data/training-corpus/feedback/`. Esta cuarta pata captura lo que el modelo no debe hacer.
 

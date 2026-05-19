@@ -21,7 +21,7 @@ The substrate has four legs.
 
 **Apprenticeship queue.** A `bin/capture-edit.py` post-commit hook emits a brief for every workspace commit. A 15-minute queue drainer calls local-slm (OLMo-2 7B Q4 via llama-server) against each brief, captures the model's attempt, and writes the `(brief, attempt, actual_diff)` tuple to `data/training-corpus/apprenticeship/<task-type>/<tenant>/`. 502 tuples had accumulated as of 2026-05-18.
 
-**Editorial DPO pairs.** Every draft that passes through the [[reverse-funnel-editorial-pattern]] — raw to refined to creative-edited — emits two DPO pairs to `data/training-corpus/apprenticeship/prose-edit/<tenant>/`. The pair captures the editorial improvement deltas. 34 pairs had accumulated to that date.
+**Editorial DPO pairs.** Every draft that passes through the reverse-funnel editorial pattern — raw to refined to creative-edited — emits two DPO pairs to `data/training-corpus/apprenticeship/prose-edit/<tenant>/`. The pair captures the editorial improvement deltas. 34 pairs had accumulated to that date.
 
 **Negative-trajectory distillation.** `bin/capture-feedback.sh` scans inbox archives for operator corrections and emits negative-trajectory signals to `data/training-corpus/feedback/`. This fourth leg captures what the model should not do.
 

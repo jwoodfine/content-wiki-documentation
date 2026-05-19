@@ -33,4 +33,4 @@ Los elementos interactivos (como el cambio de idioma o botones dinámicos) funci
 - [[sovereign-ai-routing]]
 - [[machine-based-auth]]
 - [[decode-time-constraints]]
-- [[sel4-foundation]]
+- [[sel4-microkernel-substrate]]

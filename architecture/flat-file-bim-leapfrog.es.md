@@ -48,5 +48,5 @@ El BIM de archivo plano presenta limitaciones reconocidas: la edición colaborat
 
 - [[worm-ledger-design]]
 - [[service-fs-architecture]]
-- [[sel4-foundation]]
+- [[sel4-microkernel-substrate]]
 - [[sovereign-ai-routing]]

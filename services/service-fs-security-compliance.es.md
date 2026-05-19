@@ -36,4 +36,4 @@ Esta postura protege a la empresa contra el secuestro de datos (ransomware), el 
 - [[service-fs-architecture]]
 - [[capability-based-security]]
 - [[machine-based-auth]]
-- [[sel4-foundation]]
+- [[sel4-microkernel-substrate]]

@@ -35,6 +35,6 @@ Cada capa es reemplazable de forma independiente. Un cliente puede migrar de una
 
 - [[compounding-substrate]]
 - [[capability-based-security]]
-- [[sel4-foundation]]
+- [[sel4-microkernel-substrate]]
 - [[sovereign-ai-routing]]
 - [[worm-ledger-architecture]]

@@ -41,4 +41,4 @@ Cada nueva entrada es hasheada; el hash de la nueva entrada se combina con el ha
 - [[crypto-attestation]]
 - [[capability-based-security]]
 - [[compounding-substrate]]
-- [[sel4-foundation]]
+- [[sel4-microkernel-substrate]]

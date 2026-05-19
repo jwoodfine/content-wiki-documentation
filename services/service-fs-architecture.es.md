@@ -38,4 +38,4 @@ La plataforma logra el cumplimiento estructural WORM al denegar estructuralmente
 - [[fs-anchor-emitter]]
 - [[service-fs-security-compliance]]
 - [[worm-ledger-architecture]]
-- [[sel4-foundation]]
+- [[sel4-microkernel-substrate]]

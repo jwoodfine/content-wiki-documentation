@@ -31,4 +31,4 @@ Este diseño permite que la plataforma funcione hoy como un demonio en Linux y, 
 - [[worm-ledger-design]]
 - [[worm-ledger-storage-architecture]]
 - [[cryptographic-ledgers]]
-- [[sel4-foundation]]
+- [[sel4-microkernel-substrate]]
