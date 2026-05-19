@@ -22,14 +22,17 @@ Last updated: 2026-05-18.
 
 - **D1/D2: Verify `featured-topic.yaml` + `leapfrog-facts.yaml` slugs** are path-qualified after Wave 1 migration. Quick grep check.
 
-- **D3: `_index.md` article counts** are stale in each category dir (counts predating the substrate/patterns split). Update after next binary rebuild confirms category routing.
+- **D10: Wikilink validation pass** — run after Stage 6 binary rebuild to confirm P0-C (bare-slug resolver) fixes all 280+ previously-broken links.
 
-- **D6: Fill 14 ADR stubs** (`governance/sys-adr-*`) with substantive content — each requires research into the actual ADR decision text. Multi-session effort.
+## Currently open
 
 - **D10: Wikilink validation pass** — run after Stage 6 binary rebuild to confirm P0-C (bare-slug resolver) fixes all 280+ previously-broken links.
 
 ## Recently closed
 
+- 2026-05-19 — **D3 COMPLETE** — `substrate/` + `patterns/` _index MOC pages expanded to full coverage (7→32 and 3→10 articles, EN+ES, commit `cf72e67`).
+- 2026-05-19 — **D6 COMPLETE** — governance category: `sovereign-airlock-doctrine` rewritten; `moonshot-initiatives`, `ontological-governance`, `sovereign-replacement-initiative` elevated stub→complete; `_index.md`+`.es.md` expanded with 8 unlisted articles (commit `a07bdf5`).
+- 2026-05-19 — **D1/D2 VERIFIED** — `featured-topic.yaml` + `leapfrog-facts.yaml` slugs confirmed path-qualified.
 - 2026-05-18 — **D5 COMPLETE** — `short_description` added to all 162 EN+ES articles (`c8192fc`). All wiki articles now surface subtitle text in article chrome.
 - 2026-05-18 — **D8 COMPLETE** — `governance/_index.md` + `design-system/_index.md` frontmatter fixed (type, quality, short_description, paired_with).
 - 2026-05-18 — **D7/D9 MOOT** — D7: guide-component files moved to design-system repo (Batch 2 handoff); D9: AGENT.md allowed per repo-layout.md + SYSTEM_FILE_STEMS.
