@@ -10,13 +10,19 @@
 > layout-rule enforcement, defect resolution, surfaced open
 > questions — does.
 
-Last updated: 2026-05-16.
+Last updated: 2026-05-19.
 
 ---
 
 ## Open
 
 *(none)*
+
+---
+
+### 2026-05-19 — foundry-services-slice-model slug contains governance vocabulary — logged, no action
+
+`Closed: 2026-05-19.` Slug `foundry-services-slice-model` was published with "foundry" (workspace-internal governance vocabulary) in the slug. Per naming-convention.md §5 slug immortality rule, the slug cannot be changed after publish. Title fixed to sentence case this session (was title case). No further action — slug drift is a known accepted artefact; if the article is ever significantly restructured, add `aliases:` for the current slug and publish a new slug without the vocabulary leak.
 
 ---
 

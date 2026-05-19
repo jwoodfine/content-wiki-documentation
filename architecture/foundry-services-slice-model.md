@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Workspace Services Slice — cgroup Partitioning for Multi-Developer Environments"
+title: "Workspace services slice — cgroup partitioning for multi-developer environments"
 slug: foundry-services-slice-model
 language: en
 category: architecture

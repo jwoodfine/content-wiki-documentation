@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Partición cgroup para Entornos de Múltiples Desarrolladores — la Capa de Servicios"
+title: "Partición cgroup para entornos de múltiples desarrolladores — la capa de servicios"
 slug: foundry-services-slice-model
 language: es
 category: architecture
