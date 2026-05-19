@@ -7,6 +7,7 @@ short_description: "The brand color families assigned to retail and institutiona
 title: "Brand-family swatch"
 paired_with: brand-family-swatch.es.md
 state: authoritative
+status: active
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: DESIGN-COMPONENT

@@ -7,6 +7,7 @@ short_description: "Las familias de color de marca asignadas a categorías de an
 title: Muestrario de Familias de Marcas
 paired_with: brand-family-swatch.md
 state: authoritative
+status: active
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: DESIGN-COMPONENT

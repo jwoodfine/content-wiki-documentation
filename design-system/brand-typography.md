@@ -9,6 +9,7 @@ bcsc_class: current-fact
 language: en
 paired_with: brand-typography.es.md
 category: design-system
+status: active
 ---
 
 
