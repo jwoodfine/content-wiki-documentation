@@ -8,7 +8,7 @@ paired_with: _index.md
 category: governance
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-05-19
 editor: pointsav-engineering
 ---
 
@@ -37,6 +37,20 @@ Punto de entrada para la evaluación de adquisición, seguridad y cumplimiento.
 
 - [[contributor-model]] — El modelo de colaboración de tres niveles: comunidad abierta, integradores de pago y el nivel de proveedor canónico.
 - [[canadian-simple-copyright]] — La postura de derechos de autor conforme al derecho canadiense: selección de licencias y contexto jurídico.
+- [[legal-and-ip-structure]] — La topología de IP de tres corporaciones: cómo se transfiere la propiedad intelectual de colaboradores al proveedor y al cliente, con squash-and-merge como el evento atómico de transferencia de IP.
+
+### Soberanía de ingeniería
+
+- [[sovereign-replacement-initiative]] — El programa formal que registra cada dependencia de terceros en un libro contable estructurado, aplica el aislamiento de cuarentena y retira cada dependencia cuando un reemplazo nativo alcanza paridad estructural.
+- [[moonshot-initiatives]] — Los nueve programas de ingeniería activos que construyen reemplazos nativos para dependencias de terceros en cuarentena, desde la capa del kernel hasta la cadena de herramientas de compilación.
+- [[sovereign-airlock-doctrine]] — El protocolo de commits por etapas que aplica una separación estructural entre las identidades de staging (autores de commits) y las identidades de push canónico, sin ruta directa entre ellos.
+
+### Disciplinas de plataforma
+
+- [[ontological-governance]] — Los cuatro libros contables de control con velocidad limitada y el bucle de verificación humana que evitan que la deriva de clasificación automatizada socave la integridad de los datos institucionales de larga duración.
+- [[anti-homogenization-discipline]] — La postura arquitectónica que resiste que los asistentes de escritura con IA empujen a los colaboradores hacia una única voz, aplicando por defecto el marcado en lugar de la reescritura silenciosa.
+- [[api-key-boundary-discipline]] — La regla de que todas las credenciales de API de LLM externas pertenecen exclusivamente al servicio de puerta de enlace y nunca a motores de inferencia ni consumidores descendentes.
+- [[favicon-matrix]] — La matriz de iconos que rige la identidad visual en todas las superficies de la plataforma: un glifo distinto por servicio, SO y aplicación, aplicado en la capa de la cadena de activos.
 
 ## Véase también
 

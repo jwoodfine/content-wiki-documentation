@@ -1,59 +1,64 @@
 ---
 schema: foundry-doc-v1
-type: topic
-slug: sovereign-airlock-doctrine
-short_description: "The mandatory security and identity protocols for data transmission and code deployment, enforcing strict isolation between Vendor and Customer identities through four structurally isolated infrastructure silos and deterministic staging verification."
 title: "The sovereign airlock"
-audience: vendor-public
-bcsc_class: current-fact
-language: en
-paired_with: sovereign-airlock-doctrine.es.md
+slug: sovereign-airlock-doctrine
 category: governance
+type: topic
+quality: complete
+short_description: "The sovereign airlock is the staged-commit protocol that enforces a hard separation between work-in-progress staging identities and canonical repository identities — two staging authors for all commits, two admin identities for canonical pushes, with no direct path between them."
+status: active
+bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
+last_edited: 2026-05-19
+editor: pointsav-engineering
+paired_with: sovereign-airlock-doctrine.es.md
 ---
 
+The **sovereign airlock** is the commit and deployment protocol that enforces a structural separation between the identities that write work and the identities that publish it to canonical repositories. No commit author has direct push access to a canonical repository. No canonical push identity is a commit author. The two roles are cryptographically separate: a session that writes code cannot push without routing through the explicit Stage 6 promotion step, and the promotion step cannot be performed by the same identity that made the commit. This is not a policy enforced by tooling configuration — it is a structural impossibility, because the commit-author key and the push key are held by different identity directories.
 
+## The four identities
 
-The Sovereign Airlock Doctrine establishes the mandatory security and identity protocols for all data transmission and code deployment within the platform. By enforcing strict isolation between Vendor (PointSav) and Customer (Woodfine) identities, the platform guarantees absolute operational integrity and sovereign control over digital assets.
+The platform's identity store defines four named identities in `~/Foundry/identity/`, each backed by a dedicated SSH key:
 
-## 1. Sovereign Asset Isolation
+| Identity | Key | Role | Scope |
+|---|---|---|---|
+| `jwoodfine` | `id_jwoodfine` | Staging — Jennifer | All commits across engineering repos |
+| `pwoodfine` | `id_pwoodfine` | Staging — Peter | All commits across engineering repos |
+| `ps-administrator` | `id_pointsav-administrator` | Push-only | Canonical `pointsav` org on GitHub |
+| `mcorp-administrator` | `id_woodfine-administrator` | Push-only | Canonical `woodfine` org on GitHub |
 
-The platform’s infrastructure is organized into four structurally isolated silos, each corresponding to a specific identity and organizational role:
+The staging identities (`jwoodfine`, `pwoodfine`) are used exclusively through `bin/commit-as-next.sh`. Their keys are present only in `~/Foundry/identity/` and are never elevated to push rights on canonical repos. The admin identities hold push rights to canonical repositories but are never used as commit authors.
 
-* **`factory-pointsav/`**: The Vendor Source. Contains the primary codebase and infrastructure blueprints owned by PointSav AG.
-* **`fleet-woodfine/`**: The Customer Operations. Contains the proprietary operational data and fleet configurations for Woodfine Management Corp.
-* **`stage-pwoodfine/`**: Engineering Airlock. The staging environment for the engineering identity.
-* **`stage-jwoodfine/`**: Operations Airlock. The staging environment for the operations identity.
+## The commit flow
 
-## 2. Deterministic Staging and Verification
+Work moves through three tiers:
 
-Direct modification of data within the `stage-*` airlocks is strictly prohibited. Information flow must follow a deterministic path:
+```
+Staging tier (jwoodfine, pwoodfine commits)
+       │
+       │ bin/promote.sh  (Stage 6 — operator-initiated, Command Session only)
+       ▼
+Canonical vendor tier  (pointsav/* — push via ps-administrator SSH alias)
+       │
+       │ factory-release-engineering governance
+       ▼
+Canonical customer tier  (woodfine/* — push via mcorp-administrator SSH alias)
+```
 
-1. **Development:** Edits occur exclusively within the primary `factory-` or `fleet-` silos.
-2. **Synchronization:** Payloads are synchronized to the Airlock via `rsync`, deliberately stripping `.git` metadata to ensure a clean state transfer.
-3. **Verification:** Files are audited for correctness within the Airlock environment.
-4. **Transmission:** Data is pushed to staging identities using specific, isolated SSH keys.
-5. **Finalization:** A final merge is executed from staging to the Organization repositories using authoritative Administrator keys.
+`bin/commit-as-next.sh` alternates authorship between `jwoodfine` and `pwoodfine` on successive commits. `bin/promote.sh` packages staged commits and pushes to the appropriate canonical remote using the admin identity's SSH alias (`github.com-pointsav-administrator` or `github.com-woodfine-administrator`). The admin identities' keys are configured for push authentication only; they do not appear as commit authors in `git log`.
 
-## 3. Cryptographic Identity Isolation
+## The structural guarantee
 
-Operational security is maintained through a mapping of specific SSH keys to organizational silos:
+The airlock's guarantee is not "users are unlikely to push directly" but rather "direct pushing is structurally impossible from a staging session." A staging session that attempts to `git push origin main` from within a Totebox Archive is pushing via the staging remote, not canonical origin. Pushing to canonical requires the admin SSH alias, which requires the admin key, which requires the operator to explicitly invoke `bin/promote.sh` from a Command Session.
 
-| Silo | Identity | SSH Key |
-| :--- | :--- | :--- |
-| **PointSav Factory** | `ps-administrator` | `id_ps-administrator` |
-| **Woodfine Fleet** | `mcorp-administrator` | `id_mcorp-administrator` |
-| **Staging (pwoodfine)** | `pwoodfine` | `id_pwoodfine` |
-| **Staging (jwoodfine)** | `jwoodfine` | `id_jwoodfine` |
+This separation serves two functions for regulated operators. First, it makes the staging tier a genuine review boundary: promoted commits carry implicit sign-off that the operator reviewed the work from a Command Session before authorising the canonical push. Second, it keeps the commit history clean — every commit in the canonical repository was authored by a known staging identity, reviewed at a known point in time, and promoted by a deliberate operator action.
 
-## 4. Immutable Registry Operations
+## Key custody discipline
 
-The fundamental physics of 2030 hyperscaler infrastructure dictate the deployment of infrastructure (GCP/On-Prem), network admin routes, and per-tenant Totebox clusters (Corporate, Personnel, Real Property).
-
-This "Sovereign Airlock" ensures that no single point of failure or identity compromise can bridge the gap between Vendor infrastructure and Customer data.
+All four keys reside in `~/Foundry/identity/` at permissions `0600`, accessible only to the `mathew` system user. Session tooling reads keys from this directory; no key is copied into a repo or exported to a session environment. The `chmod` rule is enforced by a pre-commit hook that blocks commits containing key material matching the `**/id_*` pattern.
 
 ## See also
 
-- [[sovereign-ai-routing]]
-- [[machine-based-auth]]
-- [[service-slm]]
-- [[capability-based-security]]
+- [[pairing-as-permission]] — the cryptographic pairing pattern that governs which nodes can connect
+- [[machine-based-auth]] — the platform's machine-based authentication protocol
+- [[single-boundary-compute-discipline]] — the AI inference boundary that the same key-separation discipline enforces at the model layer

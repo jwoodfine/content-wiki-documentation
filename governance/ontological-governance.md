@@ -4,11 +4,11 @@ title: "Ontological governance"
 slug: ontological-governance
 category: governance
 type: topic
-quality: stub
+quality: complete
 short_description: "Ontological governance describes the four self-healing control ledgers that govern how service-content classifies and accumulates knowledge, and the human-verification loop that keeps extracted identity data accurate before it is permanently committed."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-19
 editor: pointsav-engineering
 cites: []
 paired_with: ontological-governance.es.md
@@ -52,15 +52,13 @@ coherence of the data corpus.
 
 ## The verification loop
 
-`service-people` uses a human-in-the-loop verification step to
-prevent automated extraction errors from entering the verified
-ledger. The process is described in detail at
-[[verification-surveyor|Verification Surveyor]]. In brief:
-the system isolates unverified identity fragments for operator
-review; the operator verifies each entity using their own personal
-browser and off-network lookup; the verified result is then
-committed to the ledger. The daily throughput limit ensures that
-operator attention remains high-fidelity rather than habitual.
+`service-people` uses a human-in-the-loop verification step to prevent automated extraction errors from entering the verified ledger. The process is described in detail at [[verification-surveyor|Verification Surveyor]]. In brief: the system isolates unverified identity fragments for operator review; the operator verifies each entity using their own personal browser and off-network lookup; the verified result is then committed to the ledger. The daily throughput limit ensures that operator attention remains high-fidelity rather than habitual.
+
+## Why asymmetric update rates matter for regulated operators
+
+The asymmetric ledger structure produces a property that matters in regulated contexts: the base of the knowledge graph is stable enough to audit. A procurement evaluator or compliance reviewer reading data extracted two years ago and data extracted last week will find them classified against the same Archetypes and Chart of Accounts taxonomy — the categories have not drifted. Only the Themes layer, which updates most frequently, reflects the current operational focus.
+
+For financial disclosure purposes, this means that the platform's knowledge graph does not introduce spurious variation into the record. Consistent classification over time is not a side effect of discipline; it is a structural property enforced by the update-rate ledger. An auditor querying "what has this firm classified as Compliance over the past three years" receives a meaningful answer because the category boundaries have not shifted underneath the data.
 
 ## See also
 
