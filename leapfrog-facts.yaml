@@ -1,21 +1,34 @@
+# leapfrog-facts.yaml — Did You Know panel for documentation.pointsav.com home page.
+#
+# Engine reads on each request; absent → suppress panel entirely.
+# Operator rotates monthly; newest facts at the top.
+# Each fact must cite a published slug and carry one independently falsifiable claim.
+# Reader: institutional financial community — REIT analyst, sovereign-wealth allocator.
+#
+# Updated: 2026-05-19 by command@claude-code — Option C merge (declarative format +
+# path-qualified slugs + strongest facts from project-editorial + project-knowledge)
+
 facts:
-  - text: "The platform remains fully operational with zero AI inference active — the deterministic data layer, extraction pipeline, and file ledger carry full production load before a single inference call is made."
-    link_slug: substrate/substrate-without-inference-base-case
+  - text: "ToteboxOS is built on seL4 — the only widely-deployed operating-system kernel with a complete machine-checked formal proof of functional correctness, auditable by any customer."
+    link_slug: substrate/sel4-microkernel-substrate
 
-  - text: "Every write to the audit ledger is cryptographically sealed and append-only by design, satisfying SEC Rule 17a-4(f) and BCSC continuous-disclosure requirements without a compliance overlay."
-    link_slug: infrastructure/worm-ledger-design
+  - text: "The inner two rings of the three-ring architecture carry full production load with no AI inference active — a regulated buyer can operate a fully air-gapped deployment with the complete data and extraction pipeline intact."
+    link_slug: architecture/three-ring-architecture
 
-  - text: "The platform selected OLMo 3 over competing open models because its training data, training code, and intermediate checkpoints are all published — the depth of openness that allows customers to own derivative models for a five-year horizon."
-    link_slug: substrate/llm-substrate-decision
-
-  - text: "The commercial threshold is an architectural boundary, not a feature tier — single-archive operation is sovereignty infrastructure published under open licences, and the revenue model activates only when two or more archives must coordinate."
-    link_slug: substrate/knowledge-commons
-
-  - text: "Every deployment artefact and every audit-ledger entry lives in the customer's filesystem — the vendor has zero data custody and zero access to customer data at any point in the operational lifecycle."
+  - text: "Every deployment artefact and audit-ledger entry lives in the customer's filesystem — the vendor has zero data custody and zero access to customer data at any point in the operational lifecycle."
     link_slug: architecture/customer-hostability
 
-  - text: "Every inference call passes through a single logged boundary, making the platform the only AI-adjacent system where every call can be replayed from the cryptographic audit ledger."
+  - text: "The WORM ledger architecture satisfies SEC Rule 17a-4(f) and eIDAS qualified-preservation requirements by design, not configuration — append-only writes and cryptographic sealing are structural properties of the storage layer."
+    link_slug: infrastructure/worm-ledger-design
+
+  - text: "Every inference call passes through a single logged boundary, making the platform the only AI-adjacent system where every call can be replayed in full from the cryptographic audit ledger."
     link_slug: architecture/doorman-protocol
 
-  - text: "The platform's addressable market is the $5,000–$50,000 ACV band that hyperscaler economics structurally cannot serve — not a positioning claim, but an outcome of per-seat infrastructure costs at enterprise cloud scale."
+  - text: "Every operational interaction on a PointSav deployment generates training signal that compounds across the platform without any tenant surrendering ownership of their data."
+    link_slug: substrate/compounding-substrate
+
+  - text: "The platform selected OLMo 3 because its training data, training code, and intermediate checkpoints are all published — the depth of openness that allows customers to own derivative models across a five-year horizon."
+    link_slug: substrate/llm-substrate-decision
+
+  - text: "The addressable market is the $5,000–$50,000 ACV band that hyperscaler economics structurally cannot serve — an architectural outcome of per-seat infrastructure costs at enterprise cloud scale, not a positioning claim."
     link_slug: architecture/economic-model
