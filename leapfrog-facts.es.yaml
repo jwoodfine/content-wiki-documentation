@@ -1,0 +1,37 @@
+# leapfrog-facts.es.yaml — Panel "¿Sabías que?" para documentation.pointsav.com
+#
+# El motor lee este archivo en cada solicitud; si está ausente, suprime el panel.
+# El operador rota los hechos mensualmente; los más recientes van al inicio.
+# Cada hecho debe citar un slug publicado y contener una afirmación
+# independientemente verificable.
+# Lector: comunidad financiera institucional — analista de REIT, asignador
+# de fondos soberanos.
+#
+# Creado: 2026-05-20 por project-editorial@claude-code
+# Adaptación estratégica de leapfrog-facts.yaml para audiencias de
+# América Latina y España.
+
+facts:
+  - text: "ToteboxOS está construido sobre seL4, el único núcleo de sistema operativo desplegado ampliamente que cuenta con una demostración matemática completa y verificada en máquina de su corrección funcional — auditable por cualquier cliente."
+    link_slug: substrate/sel4-microkernel-substrate
+
+  - text: "Los dos anillos interiores de la arquitectura de tres anillos soportan carga de producción completa sin inferencia de inteligencia artificial activa: un comprador bajo regulación puede operar un despliegue totalmente aislado de red con el flujo completo de datos y extracción intacto."
+    link_slug: architecture/three-ring-architecture
+
+  - text: "Cada artefacto de despliegue y entrada del registro de auditoría reside en el sistema de archivos del cliente: el proveedor tiene cero custodia de datos y cero acceso a los datos del cliente en cualquier punto del ciclo de vida operativo."
+    link_slug: architecture/customer-hostability
+
+  - text: "La arquitectura del registro WORM satisface los requisitos de la SEC Rule 17a-4(f) y de preservación cualificada eIDAS por diseño, no por configuración: las escrituras de solo adición y el sellado criptográfico son propiedades estructurales de la capa de almacenamiento."
+    link_slug: infrastructure/worm-ledger-design
+
+  - text: "Cada llamada de inferencia atraviesa un único límite registrado, haciendo de esta plataforma el único sistema relacionado con IA donde cada llamada puede reproducirse en su totalidad desde el registro de auditoría criptográfico."
+    link_slug: architecture/doorman-protocol
+
+  - text: "Cada interacción operativa en un despliegue PointSav genera señal de entrenamiento que se acumula en toda la plataforma, sin que ningún inquilino ceda la propiedad de sus datos."
+    link_slug: substrate/compounding-substrate
+
+  - text: "La plataforma seleccionó OLMo 3 porque sus datos de entrenamiento, código de entrenamiento y puntos de control intermedios están todos publicados: la profundidad de apertura que permite a los clientes ser propietarios de modelos derivados en un horizonte de cinco años."
+    link_slug: substrate/llm-substrate-decision
+
+  - text: "El mercado objetivo es el segmento de 5.000 a 50.000 USD de ingreso anual por contrato que la economía de los hiperescaladores no puede atender estructuralmente: un resultado arquitectónico del costo de infraestructura por puesto a escala de nube empresarial, no una afirmación de posicionamiento."
+    link_slug: architecture/economic-model
