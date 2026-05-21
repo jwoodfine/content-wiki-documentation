@@ -8,7 +8,7 @@ quality: complete
 short_description: "Editorial standards for TOPIC files in content wikis: the Bloomberg four-paragraph lede, 75/25 institutional register, CFO sentence test, named actors rule, voice, forward-looking language, citation discipline, and the distinction from GUIDE files."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-05-21
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -19,6 +19,16 @@ paired_with: style-guide-topic.es.md
 > A TOPIC file explains what something is — architecture, background, or platform context that a fresh reader needs to understand the platform — and is the counterpart of a GUIDE, which explains how to operate it.
 
 A **TOPIC** file explains what something *is*. It is architecture, background — material a fresh reader needs to understand the platform. It is not how to operate something; that is a GUIDE file, covered in [[style-guide-guide|Style Guide — GUIDE]]. This article is itself a TOPIC, and the structure it follows is the structure it documents.
+
+## The editorial standard
+
+These five rules are the ratified editorial standard for every TOPIC. They were reconciled and operator-ratified on 2026-05-21. Where any other guidance in this document — or in [[editorial-language-registers]] — conflicts with a rule below, the rule below governs.
+
+1. **Sentence length is budgeted by sentence role.** An expansion sentence — one that develops a mechanism or an argument inside a body section — runs to about 45 words at most. A disclosure sentence — the lede, a compliance claim, a regulatory statement — runs to 25 words at most. Vary the rhythm: every paragraph carries at least one short declarative sentence, so the prose reads as an accordion rather than a monotone.
+2. **Active verbs describe present-fact mechanism.** Use the active voice to describe how something works now. Do not use it to assert a forward-looking claim as accomplished fact — capability, timeline, or outcome that is not yet true keeps `planned`, `intended`, `may`, or `target` (see "Forward-looking statements" below). Do not give a system human intent or feeling. There is no ban on `is`, `are`, or `was`: a plain copula is correct when the sentence states a fact.
+3. **Analogy is a ceiling, not a quota.** An analogy is optional. Where one is used, hold to at most one per 300 words. A TOPIC with no analogy is fully compliant; a TOPIC that reaches for an analogy in every paragraph is not.
+4. **The lede is the nut graf; the Franklin arc orders the body.** The Bloomberg four-paragraph lede carries the news in roughly the first 10% of the article. The Franklin arc — Crisis, then Quest, then Breakthrough — governs the order of body sections only. It never displaces the lede or delays the news.
+5. **The SaaS-marketing register is rejected.** Public content does not adopt the promotional voice of a software-product landing page. Internal codenames — "Liquid Glass" among them — stay internal; they do not appear in public TOPIC text.
 
 ## Where TOPICs live
 
@@ -78,7 +88,7 @@ A reader who stops after the lede should leave with the news. This is Bloomberg 
 
 ## Voice — Bloomberg, not marketing
 
-The standard is precise, professional prose understandable to a financially literate reader without a technical background. Active voice unless passive carries specific technical meaning. Sentence-length budget: mean around eighteen words, maximum around thirty.
+The standard is precise, professional prose understandable to a financially literate reader without a technical background. Active voice unless passive carries specific technical meaning. Sentence length follows the budgeted standard above — expansion sentences to about 45 words, disclosure prose to 25 — and every paragraph carries at least one short declarative sentence.
 
 The banned-vocabulary list applies in full: `leverage`, `empower`, `next-generation`, `industry-leading`, `seamless`, `robust`, `cutting-edge`, `world-class`. These words carry no information. Their absence sharpens the prose; their presence dilutes it.
 

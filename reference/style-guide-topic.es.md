@@ -9,7 +9,7 @@ type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-05-21
 editor: pointsav-engineering
 paired_with: style-guide-topic.md
 ---
@@ -17,6 +17,16 @@ paired_with: style-guide-topic.md
 Un archivo TOPIC explica *qué es* algo — arquitectura, contexto o antecedentes de la plataforma que un lector nuevo necesita para orientarse. No describe cómo operar algo; eso corresponde a un archivo GUIDE.
 
 Este artículo es en sí mismo un TOPIC y sigue la estructura que documenta.
+
+## El estándar editorial
+
+Estas cinco reglas son el estándar editorial ratificado para cada TOPIC. Fueron reconciliadas y ratificadas por el operador el 2026-05-21. Donde cualquier otra guía de este documento — o de [[editorial-language-registers]] — entre en conflicto con una regla siguiente, prevalece la regla.
+
+1. **La longitud de la oración se presupuesta según su función.** Una oración de desarrollo — la que desarrolla un mecanismo o un argumento dentro de una sección del cuerpo — llega a unas 45 palabras como máximo. Una oración de divulgación — el encabezado, una afirmación de cumplimiento, una declaración regulatoria — llega a 25 palabras como máximo. Varíe el ritmo: cada párrafo incluye al menos una oración corta y declarativa.
+2. **Los verbos activos describen el mecanismo como hecho presente.** Use la voz activa para describir cómo funciona algo ahora. No la use para afirmar como hecho consumado una afirmación prospectiva — la capacidad, el cronograma o el resultado aún no real conserva `planificado`, `previsto`, `puede` u `objetivo`. No atribuya intención ni emoción humana a un sistema. No hay prohibición de `es`, `son` o `era`.
+3. **La analogía es un techo, no una cuota.** Una analogía es opcional. Donde se use, manténgase en una como máximo por cada 300 palabras.
+4. **El encabezado es el núcleo informativo; el arco Franklin ordena el cuerpo.** El encabezado Bloomberg de cuatro párrafos lleva la noticia en aproximadamente el primer 10% del artículo. El arco Franklin — Crisis, luego Búsqueda, luego Avance — rige solo el orden de las secciones del cuerpo.
+5. **Se rechaza el registro de marketing SaaS.** El contenido público no adopta la voz promocional de una página de producto de software. Los nombres en clave internos se mantienen internos y no aparecen en el texto público de un TOPIC.
 
 ## Dónde viven los TOPICs
 
@@ -51,7 +61,7 @@ Un TOPIC abre con un encabezado de cuatro párrafos de estilo Bloomberg. El mode
 
 ## Voz — Bloomberg, no marketing
 
-El estándar es prosa precisa y profesional comprensible para un lector financieramente competente sin formación técnica. Voz activa salvo que la voz pasiva aporte un significado técnico específico. Presupuesto de longitud de oración: promedio de dieciocho palabras, máximo de treinta.
+El estándar es prosa precisa y profesional comprensible para un lector financieramente competente sin formación técnica. Voz activa salvo que la voz pasiva aporte un significado técnico específico. La longitud de la oración sigue el estándar presupuestado arriba — oraciones de desarrollo hasta unas 45 palabras, prosa de divulgación hasta 25 — y cada párrafo incluye al menos una oración corta y declarativa.
 
 La lista de vocabulario prohibido se aplica en su totalidad: `aprovechar`, `empoderar`, `próxima generación`, `líder del sector`, `sin fricciones`, `robusto`, `de vanguardia`.
 

@@ -6,13 +6,23 @@ short_description: "Las tres wikis de PointSav atienden audiencias distintas en 
 category: reference
 status: stable
 bcsc_class: no-disclosure-implication
-last_edited: 2026-05-08
+last_edited: 2026-05-21
 editor: pointsav-engineering
 language: es
 paired_with: editorial-language-registers.md
 ---
 
 Los tres wikis de PointSav se dirigen a tres audiencias primarias distintas. Cada audiencia tiene diferente nivel de alfabetización financiera y técnica, diferentes razones para leer y diferentes expectativas de vocabulario. Este artículo define los tres registros, explica quién es cada audiencia y establece las reglas de vocabulario que rigen los tres wikis.
+
+## El estándar editorial
+
+Cinco reglas, reconciliadas y ratificadas por el operador el 2026-05-21, son el estándar editorial detrás de cada registro definido aquí. Los registros siguientes especializan estas reglas para una audiencia concreta; nunca las relajan. Donde una regla de registro y una regla siguiente parezcan entrar en conflicto, prevalece la regla siguiente.
+
+1. **La longitud de la oración se presupuesta según su función.** Una oración de desarrollo — la que desarrolla un mecanismo o un argumento dentro de una sección del cuerpo — llega a unas 45 palabras como máximo. Una oración de divulgación — el encabezado, una afirmación de cumplimiento, una declaración regulatoria — llega a 25 palabras como máximo. Varíe el ritmo: cada párrafo incluye al menos una oración corta y declarativa.
+2. **Los verbos activos describen el mecanismo como hecho presente.** Use la voz activa para describir cómo funciona algo ahora. No la use para afirmar como hecho consumado una afirmación prospectiva — la capacidad, el cronograma o el resultado aún no real conserva `planificado`, `previsto`, `puede` u `objetivo`. No atribuya intención ni emoción humana a un sistema. No hay prohibición de `es`, `son` o `era`.
+3. **La analogía es un techo, no una cuota.** Una analogía es opcional. Donde se use, manténgase en una como máximo por cada 300 palabras.
+4. **El encabezado es el núcleo informativo; el arco Franklin ordena el cuerpo.** El encabezado Bloomberg de cuatro párrafos lleva la noticia en aproximadamente el primer 10% del artículo. El arco Franklin — Crisis, luego Búsqueda, luego Avance — rige solo el orden de las secciones del cuerpo.
+5. **Se rechaza el registro de marketing SaaS.** El contenido público no adopta la voz promocional de una página de producto de software. Los nombres en clave internos se mantienen internos.
 
 ## Mapa de audiencias
 

@@ -6,11 +6,21 @@ short_description: "The three PointSav wikis address distinct audiences in disti
 category: reference
 status: stable
 bcsc_class: no-disclosure-implication
-last_edited: 2026-05-08
+last_edited: 2026-05-21
 editor: pointsav-engineering
 ---
 
 The three PointSav wikis address three distinct primary audiences. Each audience has different financial and technical literacy, different reasons for reading, and different vocabulary expectations. Writing in the wrong register produces content that fails to communicate — not because it is inaccurate, but because it addresses the wrong reader. This article defines the three registers, explains who each audience is, and provides the vocabulary rules that govern all three wikis.
+
+## The editorial standard
+
+Five rules, reconciled and operator-ratified on 2026-05-21, are the editorial standard behind every register defined here. The registers below specialize these rules for a specific audience; they never relax them. Where a register rule and a rule below appear to conflict, the rule below governs.
+
+1. **Sentence length is budgeted by sentence role.** An expansion sentence — one that develops a mechanism or an argument inside a body section — runs to about 45 words at most. A disclosure sentence — the lede, a compliance claim, a regulatory statement — runs to 25 words at most. Vary the rhythm: every paragraph carries at least one short declarative sentence, so the prose reads as an accordion rather than a monotone.
+2. **Active verbs describe present-fact mechanism.** Use the active voice to describe how something works now. Do not use it to assert a forward-looking claim as accomplished fact — capability, timeline, or outcome that is not yet true keeps `planned`, `intended`, `may`, or `target`. Do not give a system human intent or feeling. There is no ban on `is`, `are`, or `was`: a plain copula is correct when the sentence states a fact.
+3. **Analogy is a ceiling, not a quota.** An analogy is optional. Where one is used, hold to at most one per 300 words. Prose with no analogy is fully compliant; prose that reaches for an analogy in every paragraph is not.
+4. **The lede is the nut graf; the Franklin arc orders the body.** The Bloomberg four-paragraph lede carries the news in roughly the first 10% of the article. The Franklin arc — Crisis, then Quest, then Breakthrough — governs the order of body sections only. It never displaces the lede or delays the news.
+5. **The SaaS-marketing register is rejected.** Public content does not adopt the promotional voice of a software-product landing page. Internal codenames — "Liquid Glass" among them — stay internal; they do not appear in public content.
 
 ## What a register is
 
