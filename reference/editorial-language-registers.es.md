@@ -55,7 +55,7 @@ El lector es un tomador de decisiones institucional con alfabetización financie
 
 **Aplica a:** `content-wiki-documentation`
 
-El lector primario es un ingeniero o diseñador. El lector secundario —cada vez más importante— es un lector institucional de nueva generación: el comité tecnológico de un banco, el responsable de una siguiente generación en una family office, o un desarrollador senior de una firma del Top-400 que evalúa si la plataforma merece respaldo financiero.
+El lector primario es un ingeniero o diseñador. El lector secundario —cada vez más importante— es un lector institucional emergente: el comité tecnológico de un banco, un responsable entrante en una family office, o un desarrollador senior de una firma del Top-400 que evalúa si la plataforma merece respaldo financiero.
 
 **Reglas principales:**
 - Estructura por sección: Concepto → Por qué importa (una oración, consecuencia primero, sin jerga) → Cómo funciona → Código → Casos límite

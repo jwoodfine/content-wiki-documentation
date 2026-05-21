@@ -34,7 +34,7 @@ Register is not style preference. It is the difference between a reader who unde
 |---|---|---|---|
 | `content-wiki-corporate` | Bankers, family offices, institutional investors | C-suite principals, corporate advisors | Bloomberg / FT / Economist |
 | `content-wiki-projects` | Top-400 development firms, commercial architects, construction programme managers | Same institutional investors reading project subject matter | Bloomberg / FT / Economist |
-| `content-wiki-documentation` | Software engineers, graphic designers, platform developers | Next-generation institutional readers evaluating technical credibility | Stripe / Cloudflare primary + Corporate accessibility layer |
+| `content-wiki-documentation` | Software engineers, graphic designers, platform developers | Emerging institutional readers evaluating technical credibility | Stripe / Cloudflare primary + Corporate accessibility layer |
 | `bim.woodfinegroup.com` | Architects, engineers, building code officials | — | RIBA / IFC specification |
 | `gis.woodfinegroup.com` | GIS analysts, co-location programme managers | — | Technical specification |
 | `design.pointsav.com` | Design system contributors, component authors | — | Design specification (DTCG, component API) |
@@ -69,7 +69,7 @@ Same reader, same register, different subject matter.
 
 **Applies to:** `content-wiki-documentation`
 
-The primary reader is a software engineer, designer, or developer. They have technical literacy and are reading to understand how the platform works, how to deploy it, or how to contribute to it. The secondary reader — increasingly important — is a next-generation institutional reader: a bank's technology committee, a family office's next-generation principal, a senior developer from a Top-400 firm who is evaluating whether the platform is credible enough to approve or fund. This reader is technically literate — they can read code — but does not know the platform's internal vocabulary.
+The primary reader is a software engineer, designer, or developer. They have technical literacy and are reading to understand how the platform works, how to deploy it, or how to contribute to it. The secondary reader — increasingly important — is an emerging institutional reader: a bank's technology committee, a family office's incoming principal, a senior developer from a Top-400 firm who is evaluating whether the platform is credible enough to approve or fund. This reader is technically literate — they can read code — but does not know the platform's internal vocabulary.
 
 **Rules:**
 - Structure per section: Concept → Why it matters (one sentence, consequence-first, no jargon) → How it works → Code → Edge cases
