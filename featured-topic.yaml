@@ -1,3 +1,17 @@
 slug: architecture/economic-model
 since: 2026-05-17
 note: "The platform has no Enterprise tier — not as a positioning choice, but because the regulated SMB segment that hyperscalers cannot reach economically is the entire point."
+
+candidates:
+  - substrate/compounding-substrate
+  - substrate/apprenticeship-substrate
+  - substrate/disclosure-substrate
+  - substrate/llm-substrate-decision
+  - substrate/sovereign-ai-commons
+  - substrate/knowledge-commons
+  - substrate/capability-ledger-substrate
+  - architecture/economic-model
+  - architecture/doorman-protocol
+  - architecture/three-ring-architecture
+  - architecture/leapfrog-2030-architecture
+  - architecture/worm-ledger-design
