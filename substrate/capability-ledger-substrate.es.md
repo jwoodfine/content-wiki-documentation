@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "El Sustrato del Libro de Capacidades"
+title: "El sustrato del libro de capacidades"
 slug: capability-ledger-substrate
 category: substrate
 type: topic

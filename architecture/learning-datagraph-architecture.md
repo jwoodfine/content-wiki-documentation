@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Learning Datagraph — SLM Trajectory Loop and Apprenticeship Queue"
+title: "Learning Datagraph — SLM trajectory loop and apprenticeship queue"
 slug: learning-datagraph-architecture
 language: en
 category: architecture

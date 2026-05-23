@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Modelo económico — niveles Community y Cliente PYME"
+title: "Modelo económico — niveles community y cliente PYME"
 slug: economic-model.es
 category: architecture
 type: topic

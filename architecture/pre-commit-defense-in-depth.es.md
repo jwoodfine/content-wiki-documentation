@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Defensa en Profundidad Pre-commit — Análisis de Secretos, Límite de Tamaño y Puerta de Ayudante"
+title: "Defensa en profundidad pre-commit — Análisis de secretos, límite de tamaño y puerta de ayudante"
 slug: pre-commit-defense-in-depth
 language: es
 category: architecture

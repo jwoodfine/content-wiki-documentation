@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Objetos BIM — Qué Son"
+title: "Objetos BIM — Qué son"
 slug: bim-objects-what-they-are
 short_description: "Los BIM Objects son unidades de especificación del entorno construido componibles que codifican el tipo de elemento, requisitos regulatorios por jurisdicción y requisitos de desempeño de zona climática, preconstriñendo el espacio de diseño para que las configuraciones no conformes no puedan colocarse."
 language: es

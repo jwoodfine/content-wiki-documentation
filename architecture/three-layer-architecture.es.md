@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "La Arquitectura de Tres Capas — Software, Escaparate, Instancias"
+title: "La arquitectura de tres capas — Software, escaparate, instancias"
 slug: three-layer-architecture
 category: architecture
 type: concept

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Verificador de Identidad"
+title: "Verificador de identidad"
 slug: verification-surveyor
 short_description: "El Verification Surveyor es el componente de bucle humano de service-people que presenta fragmentos de identidad extraídos a un operador para verificación manual antes de que se comprometan permanentemente en el libro mayor verificado."
 category: architecture

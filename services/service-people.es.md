@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-people — El Libro Mayor de Identidades"
+title: "service-people — El libro mayor de identidades"
 slug: service-people
 category: services
 type: concept

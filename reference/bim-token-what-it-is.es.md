@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Qué es un BIM Token"
+title: "Qué es un BIM token"
 slug: bim-token-what-it-is
 short_description: "Un BIM Token es una unidad de especificación del entorno construido componible que pre-restringe el espacio de diseño en tres ejes — identidad del elemento, requisitos jurisdiccionales y rendimiento climático — haciendo que las violaciones de código sean geométricamente imposibles por construcción en lugar de ser descubiertas en revisión post-diseño."
 language: es

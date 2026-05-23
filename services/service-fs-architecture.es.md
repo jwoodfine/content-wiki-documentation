@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 type: topic
 slug: service-fs-architecture
 short_description: "Un libro mayor inmutable Write-Once-Read-Many por tenant que sirve como la columna vertebral resistente a manipulación para todos los registros de plataforma, implementado como pila desacoplada de cuatro capas con envolventes de tiempo de ejecución de núcleo de microkernels duales Linux y seL4."
-title: "Arquitectura de Service-FS: El Núcleo WORM"
+title: "Arquitectura de Service-FS: el núcleo WORM"
 category: services
 audience: vendor-public
 bcsc_class: current-fact

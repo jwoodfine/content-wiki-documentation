@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Disciplina de Cómputo de Límite Único"
+title: "Disciplina de cómputo de límite único"
 slug: single-boundary-compute-discipline.es
 category: substrate
 type: topic

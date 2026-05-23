@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Plataforma de Inteligencia de Ubicación"
+title: "Plataforma de inteligencia de ubicación"
 slug: location-intelligence-platform.es
 category: applications
 type: topic

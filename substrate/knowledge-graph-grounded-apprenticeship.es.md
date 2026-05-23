@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Aprendizaje Fundamentado en Grafos de Conocimiento"
+title: "Aprendizaje fundamentado en grafos de conocimiento"
 slug: knowledge-graph-grounded-apprenticeship.es
 category: substrate
 type: topic

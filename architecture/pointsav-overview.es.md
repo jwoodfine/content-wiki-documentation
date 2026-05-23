@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "PointSav — Visión General de la Empresa y Estructura de Tres Organizaciones"
+title: "PointSav — Visión general de la empresa y estructura de tres organizaciones"
 slug: pointsav-overview
 category: architecture
 type: concept

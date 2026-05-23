@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Pre-Commit Defense in Depth — Secret Scan, Size Guard, Helper-Only Gate"
+title: "Pre-commit defense in depth — secret scan, size guard, helper-only gate"
 slug: pre-commit-defense-in-depth
 language: en
 category: architecture

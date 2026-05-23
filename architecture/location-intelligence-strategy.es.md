@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Plataforma de Inteligencia de Localización — Estrategia y Arquitectura"
+title: "Plataforma de inteligencia de localización — Estrategia y arquitectura"
 slug: location-intelligence-strategy.es
 short_description: "El marco estratégico y arquitectónico para el sustrato Location Intelligence de la plataforma: un enfoque de SIG abierto de archivos planos que permite a los clientes poseer sus datos de ubicación de extremo a extremo, ejecutándose sin conexión, sin costos recurrentes de proveedor por asiento o por solicitud."
 category: architecture

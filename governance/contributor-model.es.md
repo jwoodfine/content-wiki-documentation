@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "El Modelo de Contribuyentes en Tres Niveles"
+title: "El modelo de contribuyentes en tres niveles"
 slug: contributor-model
 short_description: "El Modelo de Contribuidor de Tres Capas organiza los contribuidores del sustrato PointSav en Core (4–7 ingenieros asalariados), Paid (50–100 contribuidores de proyectos contratados) y Open (10.000 o más participantes públicos), con trayectorias explícitas de movilidad entre capas."
 language: es

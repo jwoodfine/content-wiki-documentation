@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Servicio de Mensajería Courier"
+title: "Servicio de mensajería Courier"
 slug: message-courier
 short_description: "El servicio de mensajería es un motor de automatización web sin interfaz que vincula registros de identidad internos con portales web externos usando adaptadores inyectados en tiempo de ejecución, manteniendo lógica operativa propietaria fuera del monorepo de código abierto."
 category: services

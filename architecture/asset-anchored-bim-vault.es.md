@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "La Bóveda BIM Anclada al Activo"
+title: "La bóveda BIM anclada al activo"
 slug: asset-anchored-bim-vault
 short_description: "El registro digital autoritario de un edificio estructurado como archivos de texto plano y binarios estandarizados en un directorio versionado con git, calificando como un Entorno de Datos Común conforme a ISO 19650 que viaja con la escritura de propiedad."
 language: es

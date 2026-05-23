@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Multi-Engine Session Coordination — Session Locks, boot_id, and Role Guards"
+title: "Multi-engine session coordination — session locks, boot_id, and role guards"
 slug: multi-engine-session-coordination
 language: en
 category: architecture

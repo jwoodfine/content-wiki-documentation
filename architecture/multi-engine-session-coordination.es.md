@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Coordinación de Sesiones Multi-Motor — Bloqueos de Sesión, boot_id y Guardias de Rol"
+title: "Coordinación de sesiones multi-motor — bloqueos de sesión, boot_id y guardias de rol"
 slug: multi-engine-session-coordination
 language: es
 category: architecture

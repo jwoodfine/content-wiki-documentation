@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 type: topic
 slug: data-sovereignty-telemetry
 short_description: "La plataforma recopila solo telemetría geoespacial anonimizada y enmascarada por IP sin información de identificación personal retenida, añadiendo divulgación regulatoria obligatoria a las interfaces públicas."
-title: Soberanía de Datos y Telemetría de Estado Cero
+title: Soberanía de datos y telemetría de estado cero
 audience: vendor-public
 bcsc_class: current-fact
 language: es

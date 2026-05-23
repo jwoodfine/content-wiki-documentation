@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Grafo de Aprendizaje — Cola de Aprendizaje, Pares DPO y Captura de Trayectorias"
+title: "Grafo de aprendizaje — Cola de aprendizaje, pares DPO y captura de trayectorias"
 slug: learning-datagraph-architecture
 language: es
 category: architecture

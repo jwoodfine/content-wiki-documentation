@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Iniciativa de Reemplazo Soberano"
+title: "Iniciativa de reemplazo soberano"
 slug: sovereign-replacement-initiative
 short_description: "La Iniciativa de Reemplazo Soberano es el programa de gobernanza de ingeniería que rastrea dependencias de terceros, las aísla en directorios de componentes en cuarentena, y coordina los programas moonshot activos que construyen reemplazos nativos."
 category: governance

@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 type: topic
 slug: worm-ledger-storage-architecture
 short_description: "La arquitectura de almacenamiento adopta C2SP tlog-tiles como su primitivo fundamental, soportando implementación de objetivo dual desde demonios Linux hasta microkernels seL4 mientras asegura inmutabilidad estructural y legibilidad a largo plazo a través de transparencia de texto plano y durabilidad atómica."
-title: Arquitectura de Almacenamiento del Ledger WORM
+title: Arquitectura de almacenamiento del ledger WORM
 audience: vendor-public
 bcsc_class: current-fact
 language: es

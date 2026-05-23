@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Conocimiento Común y Comercio de Servicios"
+title: "Conocimiento común y comercio de servicios"
 slug: knowledge-commons.es
 category: substrate
 type: topic

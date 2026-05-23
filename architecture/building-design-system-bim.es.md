@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "El Sistema de Diseño de la Construcción"
+title: "El sistema de diseño de la construcción"
 slug: building-design-system-bim
 short_description: "Una plataforma de sistema de diseño para el entorno construido organizada en ocho categorías primitivas de BIM Objects y diez componentes universales de interfaz AEC, proporcionando vocabulario de especificación compartido para que superficies de autoría independientes se coordinen sin introducir nuevas superficies de aprendizaje."
 language: es

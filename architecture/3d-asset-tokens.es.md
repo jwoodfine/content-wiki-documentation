@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 type: topic
 slug: 3d-asset-tokens
 short_description: "La unidad de datos almacenados en el Totebox Archive, que combina una carga útil binaria inmutable, un esqueleto de metadatos legible por máquina y una conexión gráfica taxonómica dinámica que codifica la procedencia y el contexto."
-title: Token de Activo Tridimensional
+title: Token de activo tridimensional
 category: architecture
 language: es
 paired_with: 3d-asset-tokens.md

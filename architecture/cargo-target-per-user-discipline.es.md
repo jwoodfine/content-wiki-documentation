@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Caché de Compilación por Usuario — Prevención de Condiciones de Carrera en Cargo"
+title: "Caché de compilación por usuario — prevención de condiciones de carrera en Cargo"
 slug: cargo-target-per-user-discipline
 language: es
 category: architecture

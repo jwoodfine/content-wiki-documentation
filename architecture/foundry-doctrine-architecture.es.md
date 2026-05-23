@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "PointSav Platform — Visión Arquitectónica"
+title: "PointSav Platform — Visión arquitectónica"
 slug: foundry-doctrine-architecture.es
 short_description: "El charter constitucional de la plataforma PointSav codifica seis compromisos fundacionales que rigen las decisiones de ingeniería: texto plano y código abierto, soberanía estructural, IA opcional, flujo de proveedor a cliente a implementaciones, entrenamiento de modelo continuo y punto de control humano obligatorio. Cincuenta y cuatro afirmaciones estructurales numeradas definen la posición competitiva a través de propiedades que la economía de hiperscala estructuralmente cierra."
 category: architecture

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "El Substrato sin Inferencia — El Caso Base"
+title: "El substrato sin inferencia — El caso base"
 slug: substrate-without-inference-base-case.es
 category: substrate
 type: topic

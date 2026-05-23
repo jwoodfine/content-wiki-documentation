@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 type: topic
 slug: bim-token-taxonomy
 short_description: "El Building Design System se organiza en ocho categorías de token primitivos ancladas a IFC 4.3, establece Uniclass 2015 como el piso de clasificación universal, y define 18 componentes centrales en categorías universales de AEC, únicas de consola y únicas de lugar de trabajo."
-title: Taxonomía de Tokens BIM
+title: Taxonomía de tokens BIM
 audience: vendor-public
 bcsc_class: current-fact
 language: es

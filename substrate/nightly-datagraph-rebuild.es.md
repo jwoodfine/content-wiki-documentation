@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Reconstrucción Nocturna del Grafo de Datos"
+title: "Reconstrucción nocturna del grafo de datos"
 slug: nightly-datagraph-rebuild.es
 category: substrate
 type: concept

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Mailbox Atomicity — flock-Based Prepend and msg-id Idempotency"
+title: "Mailbox atomicity — flock-based prepend and msg-id idempotency"
 slug: mailbox-atomicity
 language: en
 category: architecture

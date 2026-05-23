@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "La Doctrina del Sustrato del Sistema"
+title: "La doctrina del sustrato del sistema"
 slug: system-substrate-doctrine.es
 category: substrate
 type: topic

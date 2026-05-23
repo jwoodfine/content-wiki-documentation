@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "os-mediakit — El Dispositivo de Cumplimiento Soberano"
+title: "os-mediakit — El dispositivo de cumplimiento soberano"
 slug: mediakit-os
 category: systems
 type: concept

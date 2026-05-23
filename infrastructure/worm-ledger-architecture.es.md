@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 type: topic
 slug: worm-ledger-architecture
 short_description: "El registro WORM es un sustrato inmutable de solo anexar que utiliza encadenamiento de hash criptográfico y aislamiento estructural para proporcionar una columna vertebral duradera para servicios de ingesta perimetral mientras mantiene registros a prueba de manipulaciones adecuados para cumplimiento regulatorio."
-title: "Sustrato del Ledger WORM: Arquitectura de Cuatro Capas"
+title: "Sustrato del ledger WORM: arquitectura de cuatro capas"
 audience: vendor-public
 bcsc_class: current-fact
 language: es

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-places — Filtrado de Infraestructura Cívica"
+title: "service-places — Filtrado de infraestructura cívica"
 slug: service-places-filtering
 short_description: "service-places filtra datos crudos de infraestructura cívica e institucional para retener solo instalaciones de nivel regional — hospitales, universidades y centros de transporte importantes — así los rankings de nivel de GIS reflejan concentración de nivel institucional en lugar de densidad de servicios locales."
 category: services

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The Diode Standard"
+title: "The diode standard"
 slug: diode-standard
 category: architecture
 type: concept

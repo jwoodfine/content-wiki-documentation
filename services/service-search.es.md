@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-search — Índice Invertido"
+title: "service-search — Índice invertido"
 slug: service-search
 short_description: "service-search es el servicio de búsqueda de texto completo Ring 2 construido en la biblioteca Rust Tantivy, proporcionando recuperación de microsegundos en millones de archivos a través de un índice invertido de binario estático que no requiere proceso de base de datos activo."
 category: services

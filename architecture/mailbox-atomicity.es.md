@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Atomicidad del Buzón — Escritura Exclusiva con flock e Idempotencia por msg-id"
+title: "Atomicidad del buzón — Escritura exclusiva con flock e idempotencia por msg-id"
 slug: mailbox-atomicity
 language: es
 category: architecture

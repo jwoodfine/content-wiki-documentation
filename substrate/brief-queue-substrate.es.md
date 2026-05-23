@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "El Sustrato de Cola de Briefs"
+title: "El sustrato de cola de briefs"
 slug: brief-queue-substrate.es
 category: substrate
 type: topic

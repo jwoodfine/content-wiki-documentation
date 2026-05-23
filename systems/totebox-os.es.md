@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "os-totebox — La Bóveda Soberana y Host de Servicios"
+title: "os-totebox — La bóveda soberana y host de servicios"
 slug: totebox-os
 category: systems
 type: concept

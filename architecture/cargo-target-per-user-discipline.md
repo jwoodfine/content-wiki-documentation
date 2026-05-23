@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Per-User Build Cache Discipline — Preventing Cross-User Cargo Races"
+title: "Per-user build cache discipline — preventing cross-user Cargo races"
 slug: cargo-target-per-user-discipline
 language: en
 category: architecture

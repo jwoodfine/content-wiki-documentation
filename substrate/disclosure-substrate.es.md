@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 document_version: 0.1.0
-title: "El Sustrato de Divulgación"
+title: "El sustrato de divulgación"
 slug: disclosure-substrate.es
 short_description: "El mecanismo que convierte una wiki Markdown con control de versiones en el registro de divulgación continua principal — cadenas de autoría criptográfica, hashes de contenido criptográficos y adaptadores de exportación por jurisdicción planeados que producen salidas conformes a reguladores desde una única fuente mantenida en la propia infraestructura del emisor."
 lang: es

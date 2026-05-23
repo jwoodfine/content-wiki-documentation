@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Decisión de Sustrato LLM — Familia OLMo 3"
+title: "Decisión de sustrato LLM — Familia OLMo 3"
 slug: llm-substrate-decision.es
 category: substrate
 type: topic

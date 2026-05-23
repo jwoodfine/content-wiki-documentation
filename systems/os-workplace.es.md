@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "os-workplace — El Escritorio Soberano"
+title: "os-workplace — El escritorio soberano"
 slug: os-workplace
 category: systems
 type: concept

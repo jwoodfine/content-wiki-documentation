@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "La Brecha BIM del Administrador de Propiedades"
+title: "La brecha BIM del administrador de propiedades"
 slug: property-manager-bim-gap
 short_description: "Menos del 40 por ciento de los gerentes de instalaciones utilizan activamente los modelos BIM entregados en la entrega del proyecto, debido al costo del software, requisitos de capacitación y opacidad del formato de archivo. Los componentes de interfaz específicos de FM del Building Design System proporcionan acceso de solo lectura a datos BIM de fidelidad completa a través de búsquedas GUID sin necesidad de licencias de herramienta de autoría propietarias."
 language: es

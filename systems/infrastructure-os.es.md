@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "os-infrastructure — El Sustrato de Cómputo"
+title: "os-infrastructure — El sustrato de cómputo"
 slug: infrastructure-os
 category: systems
 type: concept

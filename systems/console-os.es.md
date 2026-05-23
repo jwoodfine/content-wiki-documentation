@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "os-console — El Libro Mayor de Comandos"
+title: "os-console — El libro mayor de comandos"
 slug: console-os
 category: systems
 type: concept

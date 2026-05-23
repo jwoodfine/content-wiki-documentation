@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-email — La Ingesta WORM"
+title: "service-email — La ingesta WORM"
 slug: service-email
 category: services
 type: concept

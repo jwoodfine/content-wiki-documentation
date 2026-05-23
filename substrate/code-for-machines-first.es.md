@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Código para Máquinas Primero"
+title: "Código para máquinas primero"
 slug: code-for-machines-first.es
 category: substrate
 type: topic

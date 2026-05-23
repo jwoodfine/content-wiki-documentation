@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Acuerdo de Pago Directo"
+title: "Acuerdo de pago directo"
 slug: direct-payment-settlement.es
 category: architecture
 type: topic

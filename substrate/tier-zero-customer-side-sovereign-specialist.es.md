@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Especialista Soberano en el Lado del Cliente — Nivel 0"
+title: "Especialista soberano en el lado del cliente — Nivel 0"
 slug: tier-zero-customer-side-sovereign-specialist.es
 category: substrate
 type: topic

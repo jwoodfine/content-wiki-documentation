@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Liquidación con Service-Wallet"
+title: "Liquidación con Service-wallet"
 slug: service-wallet-settlement.es
 short_description: "Un libro mayor contable interno por tenant que registra y liquida ingresos de flujo inverso del mercado de datos como entradas JSONL firmadas, con opciones de retiro sin custodia a blockchain o moneda fiduciaria y deducciones de tarifa de plataforma aplicadas en tiempo de crédito."
 category: services

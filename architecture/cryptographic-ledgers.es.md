@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Libros Contables Criptográficos"
+title: "Libros contables criptográficos"
 slug: cryptographic-ledgers
 short_description: "Los libros mayores criptográficos son el patrón de almacenamiento de estado inmutable utilizado en la plataforma PointSav, imponiendo inmutabilidad matemática para que cualquier alteración de un hecho registrado rompa una cadena hash criptográfica verificable en lugar de requerir confianza en controles de acceso administrativo."
 category: architecture

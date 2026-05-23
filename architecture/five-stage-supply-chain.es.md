@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "La Cadena de Suministro Soberana de Cinco Etapas"
+title: "La cadena de suministro soberana de cinco etapas"
 slug: five-stage-supply-chain
 category: architecture
 type: concept

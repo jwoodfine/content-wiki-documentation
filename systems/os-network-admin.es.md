@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "os-network-admin — El Plano de Control de Flota"
+title: "os-network-admin — El plano de control de flota"
 slug: os-network-admin
 category: systems
 type: concept

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Plan de Operacionalización de service-slm"
+title: "Plan de operacionalización de service-slm"
 slug: service-slm-operationalization-plan.es
 category: reference
 type: topic

@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 type: topic
 slug: brand-typography
 short_description: "El sistema de tipografía PointSav separa las fuentes del sistema de interfaz web de la tipografía de impresión institucional, reservando tipografías serif con licencia abierta para generación de PDF y divulgaciones formales mientras que la interfaz de usuario utiliza fuentes del sistema de plataforma."
-title: Tipografía de Marca y Estándares de Impresión
+title: Tipografía de marca y estándares de impresión
 audience: vendor-public
 bcsc_class: current-fact
 language: es

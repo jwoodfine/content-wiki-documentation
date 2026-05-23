@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Enrutamiento de IA y la Esclusa Lingüística"
+title: "Enrutamiento de IA y la esclusa lingüística"
 slug: sovereign-ai-routing
 short_description: "El enrutamiento de IA en la plataforma PointSav procesa solicitudes de modelo de lenguaje a través de un paso de sanitización local antes de que cualquier dato llegue a modelos externos, asegurando que los datos estructurados internos nunca viajen a servidores de terceros en forma identificable."
 category: architecture

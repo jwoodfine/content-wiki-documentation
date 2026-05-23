@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Design Patterns"
+title: "Design patterns"
 slug: patterns-index
 category: patterns
 type: topic

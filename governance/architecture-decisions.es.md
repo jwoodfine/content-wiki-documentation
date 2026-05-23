@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Decisiones de Arquitectura"
+title: "Decisiones de arquitectura"
 slug: architecture-decisions.es
 lang: es
 paired_with: architecture-decisions.md

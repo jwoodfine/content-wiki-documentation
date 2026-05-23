@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The Capability Ledger Substrate"
+title: "The capability ledger substrate"
 slug: capability-ledger-substrate
 category: substrate
 type: topic

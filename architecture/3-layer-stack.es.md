@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "La Pila de Tres Capas"
+title: "La pila de tres capas"
 slug: 3-layer-stack
 short_description: "El Three-Layer Stack es el patrón de descomposición de infraestructura utilizado en todas las implementaciones de PointSav, separando la capacidad de cómputo puro, la ejecución de plataforma aislada y el acceso seguro del operador en tres capas distintas."
 category: architecture

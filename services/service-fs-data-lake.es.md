@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-fs — Lago de Datos GIS"
+title: "service-fs — Lago de datos GIS"
 slug: service-fs-data-lake
 short_description: "service-fs es la capa de almacenamiento fundamental para la canalización GIS de la plataforma — un lago de datos de archivos planos que almacena puntos geoespaciales sin procesar ingeridos de fuentes abiertas en zonas de aterrizaje separadas de venta minorista y cívicas, disponibles inmediatamente para cada servicio descendente sin un paso ETL."
 category: services

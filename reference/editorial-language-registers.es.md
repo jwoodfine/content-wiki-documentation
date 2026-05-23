@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Registros de Lenguaje Editorial"
+title: "Registros de lenguaje editorial"
 slug: editorial-language-registers
 short_description: "Las tres wikis de PointSav atienden audiencias distintas en registros de lenguaje distintos: tono institucional Bloomberg y FT para lectores corporativos y de proyectos, tono técnico Stripe y Cloudflare para ingenieros de documentación, y prosa de especificación RIBA para sitios de implementación especializada. Las reglas de retiro de vocabulario rigen traducción consistente entre registros."
 category: reference
