@@ -1,16 +1,16 @@
-# content-wiki-documentation — Repo Guide
+# media-knowledge-documentation — Repo Guide
 
 > This file is the repo-level complement to `~/Foundry/CLAUDE.md`.
 > A session that opens here inherits the workspace guide and then
 > applies the repo-specific rules below. Read cold at session start.
 
-Last updated: 2026-04-23.
+Last updated: 2026-05-23.
 
 ---
 
 ## 1. What this repo is
 
-`content-wiki-documentation` holds the engineering documentation wiki
+`media-knowledge-documentation` holds the engineering documentation wiki
 for the PointSav platform as flat-by-category Markdown content.
 Scope:
 
@@ -30,7 +30,7 @@ here; sessions in this repo operate as Root Claude throughout.
 ## 2. Role expectations
 
 A session that opens in this repo is **Root Claude for
-`content-wiki-documentation`**. Scope of writes per workspace §9:
+`media-knowledge-documentation`**. Scope of writes per workspace §9:
 
 - Repo-level `CLAUDE.md` (this file).
 - `.claude/rules/*.md` — local rule files (see §4).
@@ -90,16 +90,16 @@ workspace §4 and §7.
 - Pushing is deferred to the workspace §7 "Stage 6" promotion flow.
   Do not push from this repo without explicit operator approval.
 - **Do not** commit directly to `origin` (canonical
-  `pointsav/content-wiki-documentation`). Humans do not write to
+  `pointsav/media-knowledge-documentation`). Humans do not write to
   canonical directly for engineering repos.
 
 ### Remotes currently configured
 
 | Remote | Target | Notes |
 |---|---|---|
-| `origin` | `pointsav/content-wiki-documentation` | Canonical. Push only via Stage 6 promotion. |
-| `origin-staging-j` | `jwoodfine/content-wiki-documentation` | Staging-tier mirror — Jennifer. |
-| `origin-staging-p` | `pwoodfine/content-wiki-documentation` | Staging-tier mirror — Peter. |
+| `origin` | `pointsav/media-knowledge-documentation` | Canonical. Push only via Stage 6 promotion. |
+| `origin-staging-j` | `jwoodfine/media-knowledge-documentation` | Staging-tier mirror — Jennifer. (GitHub rename pending.) |
+| `origin-staging-p` | `pwoodfine/media-knowledge-documentation` | Staging-tier mirror — Peter. (GitHub rename pending.) |
 | `upstream` | `pointsav/pointsav-monorepo` | **Legacy artefact.** Not used by this repo's flow. Candidate for removal — tracked in `NEXT.md`. |
 
 Commit signing is not yet enabled in this repo; workspace §3
@@ -129,29 +129,13 @@ content is publicly served at `documentation.pointsav.com`:
 - **Edit in place.** No `_V2` / `_V3` duplicate files. Use Git
   history for versioning.
 
-## 7. Migration state (as of 2026-04-23)
+## 7. Migration state (as of 2026-05-23)
 
-This repo predates the `app-mediakit-knowledge` contract. Rule
-scaffolding is now in place — the four files under `.claude/rules/`
-describe what valid content looks like, where files belong, what
-cleanup is in flight, and what is queued for cross-repo handoff.
-
-The content itself still does not conform to the contract. Visible
-gaps:
-
-- No `index.md` at repo root.
-- No category subdirectories; articles are currently flat at root.
-- Filename-case inconsistency: `topic-*.md`, `TOPIC-*.md`, `TOPIC_*.md`
-  all coexist.
-- Structured-record files (`topic-*.yaml`, `sys-adr-*.yaml`,
-  `service-*-01.yaml`, `os-workplace-01.yaml`) sit at root without
-  markdown bodies; each needs classification (become article / become
-  article front-matter / move cross-repo to the owning service crate
-  in the monorepo).
-
-Normalisation is queued, not executed. Per-file decisions are
-tracked in `.claude/rules/cleanup-log.md`; higher-level work items
-are tracked in `NEXT.md`.
+Migration to the `app-mediakit-knowledge` contract is complete:
+category directories created, articles migrated, YAML stubs converted,
+design-system/ articles split (48 files moved to `pointsav-design-system/`).
+The `.agent/rules/` scaffold is mature (5 rule files). See `cleanup-log.md`
+for the closed entry history.
 
 ## 8. Where to look next
 
