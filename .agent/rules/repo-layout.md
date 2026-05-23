@@ -1,11 +1,11 @@
-# Repo layout — content-wiki-documentation
+# Repo layout — media-knowledge-documentation
 
 > Defines allowed files at repo root and inside category directories,
 > where misplaced items belong, and the defect-closure procedure.
 > Companion to `content-contract.md` (which governs file *contents*);
 > this file governs file *placement*.
 
-Last updated: 2026-05-07.
+Last updated: 2026-05-23.
 
 ---
 
@@ -21,7 +21,9 @@ Only the following may appear at repo root:
 | `CODE_OF_CONDUCT.md` | Governance scaffold |
 | `CHANGELOG.md` | Meaningful-change log (create when first entry lands) |
 | `NEXT.md` | Repo-scope open items |
-| `AGENT.md` | Repo-level session guide |
+| `AGENT.md` | Repo-level session guide (engine-agnostic; Gemini CLI primary) |
+| `AGENTS.md` | Vendor-neutral agent pointer (per AGENTS.md spec; thin redirect to `CLAUDE.md`) |
+| `CITATION.cff` | Machine-readable citation metadata |
 | `.gitignore` | Untracked-file rules |
 | `.git/` | Git metadata |
 | `.github/` | Issue templates, workflows, profile material |

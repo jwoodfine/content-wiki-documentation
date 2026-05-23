@@ -1,4 +1,4 @@
-# Cleanup log — content-wiki-documentation
+# Cleanup log — media-knowledge-documentation
 
 > Rolling log of in-flight cleanup work, decisions, and open
 > questions in this repo. Most-recent entries at top. Entries
@@ -10,13 +10,23 @@
 > layout-rule enforcement, defect resolution, surfaced open
 > questions — does.
 
-Last updated: 2026-05-19.
+Last updated: 2026-05-23.
 
 ---
 
 ## Open
 
-*(none)*
+### 2026-05-23 — `archive/` empty directory at repo root
+
+An empty `archive/` directory exists at repo root. It is not in the allowed-files list (`repo-layout.md §1`). The directory is empty and has no tracked git content.
+
+**Resolution:** Remove the directory (`rmdir archive/`) and close this entry. No content loss; directory is empty.
+
+### 2026-05-23 — Repo rename: `content-wiki-documentation` → `media-knowledge-documentation`
+
+GitHub canonical and staging mirror URLs updated to `media-knowledge-documentation`. CLAUDE.md, AGENT.md, and repo-layout.md updated. Local directory name (`content-wiki-documentation/`) and `PROJECT-CLONES.md` registry entry pending Command Session rename (`mv`).
+
+Staging mirror GitHub accounts (`jwoodfine/`, `pwoodfine/`) not yet renamed — local `origin-staging-*` remotes currently pointing to old names as a stopgap. Operator must rename staging mirrors, then Command Session updates `.git/config` staging remote URLs.
 
 ---
 
