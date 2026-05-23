@@ -1,18 +1,16 @@
 ---
 schema: foundry-doc-v1
 title: "El Sustrato del Libro de Capacidades"
-slug: topic-capability-ledger-substrate
-category: architecture
+slug: capability-ledger-substrate
+category: substrate
 type: topic
 quality: complete
 short_description: "El Sustrato del Libro de Capacidades es el mecanismo por el cual cada decisión de control de acceso en un despliegue de Foundry se convierte en un evento criptográficamente auditable, anclado en un registro que controla el cliente."
 status: active
-audience: public
 bcsc_class: no-disclosure-implication
-language_protocol: PROSE-TOPIC
 last_edited: 2026-05-22
 editor: pointsav-engineering
-paired_with: topic-capability-ledger-substrate.md
+paired_with: capability-ledger-substrate.md
 cites: []
 ---
 

@@ -1,8 +1,8 @@
 ---
 schema: foundry-doc-v1
 title: "The Capability Ledger Substrate"
-slug: topic-capability-ledger-substrate
-category: architecture
+slug: capability-ledger-substrate
+category: substrate
 type: topic
 quality: complete
 short_description: "The Capability Ledger Substrate is the mechanism by which every access-control decision in a Foundry deployment becomes a cryptographically auditable event anchored to a log the customer controls."
@@ -18,7 +18,7 @@ references:
   - id: 2
     text: "RFC 9162 — Certificate Transparency Version 2.0"
     url: "https://datatracker.ietf.org/doc/html/rfc9162"
-paired_with: topic-capability-ledger-substrate.es.md
+paired_with: capability-ledger-substrate.es.md
 ---
 
 

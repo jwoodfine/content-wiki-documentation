@@ -62,6 +62,7 @@ The formal verification and cryptographic foundations beneath every PointSav ope
 
 - [[sel4-microkernel-substrate]] — The mathematically formally verified seL4 microkernel as L1 kernel for all PointSav operating systems: structurally guaranteed memory isolation, zero buffer overflows, capability-based permissions.
 - [[merkle-proofs-as-substrate-primitive]] — RFC 9162 Merkle proof primitives as the cryptographic floor of the platform's capability ledger; ledger validity verifiable without trust in any central authority.
+- [[capability-ledger-substrate]] — The mechanism by which every access-control decision in a Foundry deployment becomes a cryptographically auditable event anchored to a customer-controlled log; extends seL4's formally verified capability model with a Merkle transparency layer.
 - [[system-substrate-doctrine]] — The kernel-level architecture: a customer-rooted capability ledger that is the audit log, a two-bottoms sovereign OS strategy, and three mechanisms for time-bound capabilities and boot-anywhere recovery.
 
 ## Sovereignty and customer ownership

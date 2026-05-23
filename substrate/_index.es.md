@@ -56,6 +56,7 @@ Los nueve sustratos nombrados: cada uno designa una propiedad estructural de la 
 
 - [[sel4-microkernel-substrate]] — El micronúcleo seL4 formalmente verificado como kernel L1 para todos los sistemas operativos de PointSav: aislamiento de memoria garantizado estructuralmente.
 - [[merkle-proofs-as-substrate-primitive]] — Primitivas de prueba Merkle RFC 9162 como piso criptográfico del registro de capacidades de la plataforma.
+- [[capability-ledger-substrate]] — El mecanismo por el cual cada decisión de control de acceso en un despliegue de Foundry se convierte en un evento criptográficamente auditable, anclado en un registro que controla el cliente; extiende el modelo de capacidades de seL4 con una capa de transparencia Merkle.
 - [[system-substrate-doctrine]] — La arquitectura a nivel de kernel: un registro de capacidades con raíz en el cliente que es el registro de auditoría.
 
 ## Soberanía y propiedad del cliente
