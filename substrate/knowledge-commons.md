@@ -77,7 +77,7 @@ The Knowledge Commons model operationally produces three contributor tiers:
 
 **Open contributors (10,000+, CC/Apache-licensed)** — contributions to the public substrate via pull requests to `pointsav/factory-release-engineering`, the design system, the wiki engine, MCP server adapters, and TOPIC content in the content wikis. No CLA required for open-core contributions. [^2] Reputation accrues via the Trajectory Substrate's per-contributor attribution. A path to the paid tier exists for contributors whose work demonstrates recurring quality and operational fluency.
 
-The leverage of this structure is that the Open tier sustains features and coverage that a Core of 4–7 people could not maintain alone. Most substrate features are intended to ship via Open contribution; Core reviews and accepts; Paid implements commercial-tier extensions.
+The structural value of this design is that the Open tier sustains features and coverage that a Core of 4–7 people could not maintain alone. Most substrate features are intended to ship via Open contribution; Core reviews and accepts; Paid implements commercial-tier extensions.
 
 ## Cross-Tier Operational Mobility
 
