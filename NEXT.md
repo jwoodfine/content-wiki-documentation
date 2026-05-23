@@ -8,7 +8,7 @@
 > Read at session start when a Root Claude opens in this repo. Update
 > at session end when repo-scope open items change.
 
-Last updated: 2026-05-18.
+Last updated: 2026-05-23.
 
 ---
 
@@ -20,13 +20,9 @@ Last updated: 2026-05-18.
   from project-editorial pipeline; (3) add `Content_Scope` column when
   multi-type coverage warrants it.
 
-- **D1/D2: Verify `featured-topic.yaml` + `leapfrog-facts.yaml` slugs** are path-qualified after Wave 1 migration. Quick grep check.
-
 - **D10: Wikilink validation pass** — run after Stage 6 binary rebuild to confirm P0-C (bare-slug resolver) fixes all 280+ previously-broken links.
 
-## Currently open
-
-- **D10: Wikilink validation pass** — run after Stage 6 binary rebuild to confirm P0-C (bare-slug resolver) fixes all 280+ previously-broken links.
+- **glossary-documentation.es.md** — stub created 2026-05-23; full translation deferred. Needs content pass before publication.
 
 ## Recently closed
 
