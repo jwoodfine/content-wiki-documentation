@@ -66,7 +66,7 @@ A designer or developer arriving from any modern design-system background recogn
 - "Primitive → semantic → component layering — same as DTCG aliasing."
 - "Two type tracks for UI vs expressive — same as the productive/expressive split."
 
-This recognition is the cognitive on-ramp. It is the substrate's biggest piece of free leverage — a practitioner ramps in days, not weeks. Discarding it for novelty's sake would be a bad trade.
+This recognition is the cognitive on-ramp. It is the substrate's most significant built-in advantage — a practitioner ramps in days, not weeks. Discarding it for novelty's sake would be a bad trade.
 
 ## Why the vocabulary matters
 

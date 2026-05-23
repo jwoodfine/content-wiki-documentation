@@ -20,12 +20,12 @@ The Brand-Family Swatch is the primary taxonomic primitive for retail anchor cla
 
 ## Executive Summary
 
-The platform’s geographic information systems utilize the Brand-Family Swatch to standardize the visual representation of retail anchors. By combining a color-coded identifier with a semantic label, the component ensures accessible data density across map surfaces, tabular filters, and detail drawers. The architecture is intentionally decoupled from the specific taxonomy; it resolves family identifiers through a runtime JSON configuration, permitting operators to modify or extend classification categories without code changes.
+The platform’s geographic information systems use the Brand-Family Swatch to standardize the visual representation of retail anchors. By combining a color-coded identifier with a semantic label, the component ensures accessible data density across map surfaces, tabular filters, and detail drawers. The architecture is intentionally decoupled from the specific taxonomy; it resolves family identifiers through a runtime JSON configuration, permitting operators to modify or extend classification categories without code changes.
 
 ## Usage Guidelines
 
 ### Deployment Scenarios
-- **Map Markers**: Functions as the visual foundation for anchor markers, utilizing color-coded dots to signal family affiliation.
+- **Map Markers**: Functions as the visual foundation for anchor markers, using color-coded dots to signal family affiliation.
 - **Data Filtering**: Serves as the interactive primitive within filter rows (typically paired with a checkbox).
 - **Detail Overlays**: Provides high-level categorization within side drawers and header chips.
 - **Cluster Analysis**: Employs a concentric ring variant to represent family distribution within aggregate map clusters.
@@ -36,7 +36,7 @@ The component is reserved for taxonomic classification. It must not be used for 
 ## Technical Specifications
 
 ### Anatomy and Composition
-- **Indicator**: A 12px (default) or 24px (marker) circular dot utilizing family-specific color tokens.
+- **Indicator**: A 12px (default) or 24px (marker) circular dot using family-specific color tokens.
 - **Label**: A taxonomy-resolved display name (e.g., "Warehouse Club").
 - **Accessibility Layer**: An `aria-label` that combines the dot and label semantics, ensuring the visual indicator is hidden from screen readers to prevent redundant announcements.
 

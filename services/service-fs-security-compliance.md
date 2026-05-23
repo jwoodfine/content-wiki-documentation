@@ -35,7 +35,7 @@ The security of `service-fs` is not a policy layer but a fundamental architectur
 
 ## 3. Data Archive Retrieval Protocol (DARP)
 
-`service-fs` utilizes a plain-text tile format (C2SP tlog-tiles). This ensures 100-year readability, allowing future archivists to decode storage using standard Unix utilities without the need for proprietary software or specific vendor assistance.
+`service-fs` uses a plain-text tile format (C2SP tlog-tiles). This ensures 100-year readability, allowing future archivists to decode storage using standard Unix utilities without the need for proprietary software or specific vendor assistance.
 
 ## 4. Threat Model Mitigation
 

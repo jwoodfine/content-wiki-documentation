@@ -14,7 +14,7 @@ category: reference
 
 
 
-The platform’s BIM Token Taxonomy organizes the Building Design System into eight primitive categories anchored to the IFC 4.3 (ISO 16739-1:2024) entity hierarchy. This alignment ensures that design-system tokens correspond directly to canonical AEC classification conventions, facilitating seamless data exchange across the openBIM ecosystem.
+The platform’s BIM Token Taxonomy organizes the Building Design System into eight primitive categories anchored to the IFC 4.3 (ISO 16739-1:2024) entity hierarchy. This alignment ensures that design-system tokens correspond directly to canonical AEC classification conventions, facilitating direct data exchange across the openBIM ecosystem.
 
 ## Eight Primitive Token Categories
 

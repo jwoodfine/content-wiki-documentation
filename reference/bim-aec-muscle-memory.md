@@ -37,7 +37,7 @@ The platform implements the following industry-standard layout patterns:
 
 While the platform respects professional conventions, it deliberately avoids artifacts of general-purpose 3D modeling software (e.g., Blender-host artifacts in Bonsai):
 
-1. **Dedicated Spatial Tree:** The platform utilizes a purpose-built `SpatialTree` widget rather than a generic scene-graph outliner, enabling features like search-by-space-name and floor-plan thumbnails.
+1. **Dedicated Spatial Tree:** The platform uses a purpose-built `SpatialTree` widget rather than a generic scene-graph outliner, enabling features like search-by-space-name and floor-plan thumbnails.
 2. **Standardized Keymaps:** Navigation uses the standard 1–6 number row for view switching (top, bottom, front, back, left, right), accommodating the lack of numpads on modern laptops.
 3. **Removal of Modal Editing:** The platform eliminates complex "mode-switching" (e.g., Object vs. Edit mode) common in general 3D software, providing a streamlined authoring experience.
 

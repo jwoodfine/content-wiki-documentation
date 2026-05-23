@@ -24,7 +24,7 @@ The WORM ledger sits at the critical boundary between the per-tenant data plane 
 
 ## Multi-Tier Protocol Stack
 
-The architecture utilizes a layered design to ensure that individual components remain swappable without disrupting the core durability contract.
+The architecture uses a layered design to ensure that individual components remain swappable without disrupting the core durability contract.
 
 ### Layer 4: Cryptographic Anchoring
 Checkpoints are intended to be anchored monthly to the public Sigstore Rekor transparency log (per the fundamental physics of 2030 hyperscaler infrastructure). This provides external verifiability without exposing raw tenant data.

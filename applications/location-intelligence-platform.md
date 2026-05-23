@@ -30,7 +30,7 @@ The platform transforms raw store locations into actionable commercial nodes by 
 The platform computes co-location clusters around Primary Target anchors (e.g., Walmart Supercentres) using a deterministic spatial algorithm. Each cluster is scored based on the convergence of independent, capital-intensive operators (Costco, Home Depot, etc.) and supporting civic infrastructure (hospitals, universities).
 
 ### 2. Multi-Layer Interactive Interface
-The interactive map at [gis.woodfinegroup.com](https://gis.woodfinegroup.com) utilizes a three-layer architecture:
+The interactive map at [gis.woodfinegroup.com](https://gis.woodfinegroup.com) uses a three-layer architecture:
 - **Layer 1 — Global POIs:** Toggled view of 31,000+ individual retail locations, color-coded by brand family.
 - **Layer 2 — Co-location Clusters:** The primary analytical view, encoding cluster strength through visual saturation and size.
 - **Layer 3 — Catchment Radii:** Visualized proximity boundaries (default 3.0 km) that define the scope for trade-area analysis and mobility data procurement.
@@ -39,7 +39,7 @@ The interactive map at [gis.woodfinegroup.com](https://gis.woodfinegroup.com) ut
 
 The platform adheres to the [PointSav GIS Engine](pointsav-gis-engine) principles of data sovereignty:
 - **Flat-File Operation:** All data persists as versioned JSONL and GeoParquet files within a Totebox Archive, rather than a running database daemon.
-- **Open Standards Rendering:** Utilizes PMTiles and MapLibre GL JS to serve vector maps directly from standard web servers, eliminating proprietary tile-API dependencies.
+- **Open Standards Rendering:** Uses PMTiles and MapLibre GL JS to serve vector maps directly from standard web servers, eliminating proprietary tile-API dependencies.
 - **Reproducible Build:** If a gateway node is destroyed, the application surface can be re-provisioned instantly by pointing a fresh instance at the immutable data layer.
 
 ## Data Foundations and Licensing

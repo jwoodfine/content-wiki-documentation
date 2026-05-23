@@ -245,7 +245,7 @@ HyperText Markup Language, a standardized system for tagging text files to achie
 ### Information Technology
 *Information Technology*
 
-Required for robust operations.
+Required for reliable operations.
 
 ### Infrastructure OS
 *SO de Infraestructura*

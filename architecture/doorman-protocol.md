@@ -30,7 +30,7 @@ A customer data vault holds the customer's authoritative structured data, and ex
 
 The Doorman routes inference calls across three compute tiers.
 
-**Tier A — local.** Executes on the host VM using CPU and RAM, for fast, low-latency, low-cost inference on a locally hosted model. <!--claim id=tier-a-verified confidence=established cites=[]-->Tier A handles the majority of routing volume with no cloud spend, and is operationally verified.<!--/claim-->
+**Tier A — local.** Executes on the host VM using CPU and RAM, for fast, low-latency, low-cost inference on a locally hosted model. <!--claim id=tier-a-verified confidence=structural cites=[]-->Tier A handles the majority of routing volume with no cloud spend, and is operationally verified.<!--/claim-->
 
 **Tier B — on-demand GPU pool.** <!--claim id=tier-b-planned confidence=projected cites=[] valid_at=2026-->Tier B is planned to route workloads to ephemeral GPU instances, spun up on demand and shut down on idle, with two profiles: a trainer instance for continued training cycles on accumulated tuples, and an extractor instance for large-scale corpus ingestion.<!--/claim--> Both profiles use idle-shutdown timers so billing stops when the queue is empty.
 

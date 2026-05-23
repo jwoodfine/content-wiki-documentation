@@ -31,7 +31,7 @@ La bóveda de datos del cliente contiene sus datos estructurados autorizados, y 
 
 El Doorman enruta las llamadas de inferencia en tres niveles.
 
-**Nivel A — local.** Se ejecuta en la VM del servidor usando CPU y RAM, para inferencia rápida, de baja latencia y bajo costo sobre un modelo alojado localmente. <!--claim id=tier-a-verified confidence=established cites=[]-->El Nivel A gestiona la mayor parte del volumen de enrutamiento sin gasto en la nube, y está verificado operativamente.<!--/claim-->
+**Nivel A — local.** Se ejecuta en la VM del servidor usando CPU y RAM, para inferencia rápida, de baja latencia y bajo costo sobre un modelo alojado localmente. <!--claim id=tier-a-verified confidence=structural cites=[]-->El Nivel A gestiona la mayor parte del volumen de enrutamiento sin gasto en la nube, y está verificado operativamente.<!--/claim-->
 
 **Nivel B — grupo de GPU por demanda.** <!--claim id=tier-b-planned confidence=projected cites=[] valid_at=2026-->El Nivel B está planificado para enrutar cargas de trabajo a instancias GPU efímeras, iniciadas bajo demanda y detenidas en reposo, con dos perfiles: una instancia de entrenamiento para ciclos continuos sobre tuplas acumuladas, y una instancia de extracción para la ingesta de corpus a gran escala.<!--/claim--> Ambos perfiles usan temporizadores de apagado por inactividad para que la facturación se detenga cuando la cola está vacía.
 

@@ -18,7 +18,7 @@ The platform enforces a strict boundary between web interface presentation and i
 
 ## 1. The Execution Boundary
 
-All web-based user interfaces utilize native System UI fonts to maintain a Zero-Execution state and minimize latency. High-fidelity brand typography is strictly embedded during the `service-content` compilation phase for physical PDF binaries. This ensures that brand identity is projected through the resulting artifact rather than the delivery mechanism.
+All web-based user interfaces use native System UI fonts to maintain a Zero-Execution state and minimize latency. High-fidelity brand typography is strictly embedded during the `service-content` compilation phase for physical PDF binaries. This ensures that brand identity is projected through the resulting artifact rather than the delivery mechanism.
 
 ## 2. The OFL Typography Matrix
 
@@ -33,7 +33,7 @@ To guarantee absolute compliance with the Digital Asset Resolution Package (DARP
 
 ## 3. Institutional Authority in Output
 
-Brand typography is utilized to establish a professional "White Paper" aesthetic for all generated documents. The use of **Zilla Slab** for headers and **Barlow Condensed** for financial data ensures that PointSav and Woodfine disclosures are immediately recognizable as authoritative, high-precision reports.
+Brand typography is used to establish a professional "White Paper" aesthetic for all generated documents. The use of **Zilla Slab** for headers and **Barlow Condensed** for financial data ensures that PointSav and Woodfine disclosures are immediately recognizable as authoritative, high-precision reports.
 
 ## See also
 

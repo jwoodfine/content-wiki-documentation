@@ -15,7 +15,7 @@ short_description: "The PointSav Location Intelligence interface is engineered f
 paired_with: location-intelligence-ux.es.md
 ---
 
-The [[location-intelligence-platform]] interface is engineered to prioritize decision-maker clarity over raw data volume. By utilizing a Conclusion-First design philosophy, the platform communicates site-selection confidence through visual hierarchy and structural grading.
+The [[location-intelligence-platform]] interface is engineered to prioritize decision-maker clarity over raw data volume. By using a Conclusion-First design philosophy, the platform communicates site-selection confidence through visual hierarchy and structural grading.
 
 ## Quality benchmark: the professional map
 
@@ -27,7 +27,7 @@ The interface draws inspiration from professional-grade spatial platforms, where
 
 ## Design differentiation: cluster grade as primary unit
 
-Unlike commercial GIS products that default to individual points on a map, the PointSav platform utilizes **Cluster Grade** as the primary visual and analytical unit. This differentiation represents a core design principle:
+Unlike commercial GIS products that default to individual points on a map, the PointSav platform uses **Cluster Grade** as the primary visual and analytical unit. This differentiation represents a core design principle:
 
 1. **Confidence ramp:** Sites are encoded using a single-hue color ramp (pale to deep amber). Darker, larger markers indicate higher levels of capital-validated convergence.
 2. **Structural guardrails:** The interface enforces a strict visual hierarchy where Tier 5 and Tier 4 nodes dominate the national view, guiding the user toward the most defensible commercial nodes.
@@ -35,7 +35,7 @@ Unlike commercial GIS products that default to individual points on a map, the P
 
 ## Component architecture
 
-The GIS surface utilizes a standardized component set built on [[app-orchestration-gis]] (the analytics engine) and [[pointsav-gis-engine]] (the rendering layer), designed for rapid re-provisioning across deployments.
+The GIS surface uses a standardized component set built on [[app-orchestration-gis]] (the analytics engine) and [[pointsav-gis-engine]] (the rendering layer), designed for rapid re-provisioning across deployments.
 
 ## See also
 

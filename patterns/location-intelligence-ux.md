@@ -27,7 +27,7 @@ The interface draws inspiration from professional-grade spatial platforms (e.g.,
 
 ## Design Differentiation: Cluster-Grade-as-Primary-Unit
 
-Unlike commercial GIS products that default to individual "dots on a map," the PointSav platform utilizes **Cluster Grade** as the primary visual and analytical unit. This differentiation represents a core Leapfrog 2030 design principle:
+Unlike commercial GIS products that default to individual "dots on a map," the PointSav platform uses **Cluster Grade** as the primary visual and analytical unit. This differentiation represents a core Leapfrog 2030 design principle:
 
 1. **Confidence Ramp:** Sites are encoded using a single-hue color ramp (pale to deep amber). Darker, larger markers indicate higher levels of capital-validated convergence.
 2. **Structural Guardrails:** The interface enforces a strict visual hierarchy where Tier 5 and Tier 4 nodes dominate the national view, guiding the user toward the most defensible commercial nodes.
@@ -35,7 +35,7 @@ Unlike commercial GIS products that default to individual "dots on a map," the P
 
 ## Component Architecture
 
-The GIS surface utilizes a standardized component set designed for rapid re-provisioning:
+The GIS surface uses a standardized component set designed for rapid re-provisioning:
 - **cluster-grade-marker:** A five-state vector symbol with built-in accessibility labeling (D1-D5).
 - **location-index-card:** A responsive, data-dense drawer for cluster-level metadata.
 - **map-layer-controls:** A consistent UI panel for managing the three-layer architecture.

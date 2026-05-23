@@ -82,7 +82,7 @@ as it appears in the Nomenclature Matrix — no paraphrases, no
 abbreviations.
 
 The banned-vocabulary list applies. Technical writing that says
-"robust", "seamless", or "leverage" signals vagueness; an
+`"robust"`, `"seamless"`, or `"leverage"` signals vagueness; an
 `ARCHITECTURE.md` should name the specific invariant, the
 specific interface, or the specific dependency.
 

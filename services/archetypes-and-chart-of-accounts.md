@@ -57,7 +57,7 @@ Each of the eleven archetypes maps to a primary organisational function and a ma
 
 The archetypes function as object classes in the software sense: every entity in [[service-people]] inherits properties from one of the eleven base classes, and that inheritance determines which platform functions the system can apply to that person's record. Two people with different job titles who share an archetype share the same computational treatment; two people with the same title but different archetypes do not.
 
-The evaluator keys are not scores. They are dimension labels — the platform tracks the variance of each key over time rather than its absolute value, which makes the system robust to different baseline levels across individuals.
+The evaluator keys are not scores. They are dimension labels — the platform tracks the variance of each key over time rather than its absolute value, which makes the system stable across different baseline levels among individuals.
 
 ## How the Chart of Accounts anchors to archetype roles
 

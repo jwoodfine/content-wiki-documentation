@@ -17,7 +17,7 @@ The platform’s storage architecture is built on the principle of structural im
 
 ## 1. The Tile-Based Storage Engine
 
-The platform adopts the **C2SP tlog-tiles** specification as its fundamental storage primitive. This format, utilized by Sigstore Rekor and Google’s Certificate Transparency, breaks a Merkle tree into static, append-only files (tiles).
+The platform adopts the **C2SP tlog-tiles** specification as its fundamental storage primitive. This format, used by Sigstore Rekor and Google’s Certificate Transparency, breaks a Merkle tree into static, append-only files (tiles).
 
 * **Atomic Durability:** Finalized tiles are written using a write-then-rename discipline followed by a mandatory `fsync`. This ensures that partial writes never corrupt the ledger state.
 * **Plain-Text Transparency:** Following the DARP principle, tiles are stored as newline-delimited base64 text. This ensures that the storage remains inspectable using standard Unix utilities (`cat`, `base64`, `sha256sum`).
@@ -28,7 +28,7 @@ The platform adopts the **C2SP tlog-tiles** specification as its fundamental sto
 The architecture is designed to support two distinct operational environments using the same codebase:
 
 ### Envelope A: Hosted Daemon (Current)
-Running as a standard Linux/BSD process, `service-fs` utilizes POSIX file I/O for storage. Per-tenant isolation is enforced through separate process address spaces and strict filesystem permissions.
+Running as a standard Linux/BSD process, `service-fs` uses POSIX file I/O for storage. Per-tenant isolation is enforced through separate process address spaces and strict filesystem permissions.
 
 ### Envelope B: seL4 Unikernel (Intended)
 The long-term trajectory involves deploying `service-fs` as an seL4 Microkit Protection Domain. In this envelope, storage is mediated by `moonshot-database` (PSDB), where access is governed by formally verified microkernel capabilities.

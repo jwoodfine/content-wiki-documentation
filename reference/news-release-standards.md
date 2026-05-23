@@ -35,7 +35,7 @@ Physical news releases are intended to project institutional trust through a sta
 
 ## 3. Digital Presentation Standards
 
-Web-based releases utilize specific semantic tags and separators to ensure high-density readability:
+Web-based releases use specific semantic tags and separators to ensure high-density readability:
 * **Semantic Hierarchy:** Use H2 for the release category (e.g., "Operational Update") and H1 for the headline.
 * **Metadata Pipe:** Use a pipe symbol (|) to separate dateline elements on a dedicated metadata line.
 * **Structure:**

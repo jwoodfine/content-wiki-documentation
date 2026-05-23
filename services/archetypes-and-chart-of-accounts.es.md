@@ -57,7 +57,7 @@ Cada uno de los once arquetipos se corresponde con una función organizativa pri
 
 Los arquetipos funcionan como clases de objetos en el sentido del software: cada entidad en [[service-people]] hereda propiedades de una de las once clases base, y esa herencia determina qué funciones de la plataforma puede aplicar el sistema al registro de esa persona. Dos personas con títulos diferentes que comparten un arquetipo reciben el mismo tratamiento computacional; dos personas con el mismo título pero arquetipos diferentes, no.
 
-Las claves de evaluación no son puntuaciones. Son etiquetas de dimensión — la plataforma rastrea la varianza de cada clave a lo largo del tiempo en lugar de su valor absoluto, lo que hace que el sistema sea robusto ante diferentes niveles base entre individuos.
+Las claves de evaluación no son puntuaciones. Son etiquetas de dimensión — la plataforma rastrea la varianza de cada clave a lo largo del tiempo en lugar de su valor absoluto, lo que hace que el sistema sea estable ante diferentes niveles base entre individuos.
 
 ## Cómo el Plan de Cuentas se ancla a los roles de arquetipos
 

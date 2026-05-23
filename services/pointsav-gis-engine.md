@@ -26,10 +26,10 @@ The PointSav GIS Engine is a high-performance, customer-owned location intellige
 The engine is engineered to operate as a stateless application surface, adhering to the PointSav principle of complete data sovereignty.
 
 ### Flat-File Substrate
-Unlike traditional GIS stacks (e.g., PostGIS, Esri) which require persistent database management, the PointSav engine utilizes a flat-file substrate. It consumes geographic data directly from `JSONL`, `GeoParquet`, and `YAML` formats versioned within a Totebox Archive. This architecture ensures the data layer remains entirely decoupled from the application logic, eliminating database maintenance overhead and preventing vendor lock-in.
+Unlike traditional GIS stacks (e.g., PostGIS, Esri) which require persistent database management, the PointSav engine uses a flat-file substrate. It consumes geographic data directly from `JSONL`, `GeoParquet`, and `YAML` formats versioned within a Totebox Archive. This architecture ensures the data layer remains entirely decoupled from the application logic, eliminating database maintenance overhead and preventing vendor lock-in.
 
 ### Sovereign Rendering Stack
-The platform avoids commercial SaaS mapping dependencies by utilizing a high-performance, open-source rendering stack:
+The platform avoids commercial SaaS mapping dependencies by using a high-performance, open-source rendering stack:
 
 - **PMTiles:** A single-file archive format for tiled data that enables maps to be served directly from standard web servers (Nginx) or blob storage without a dedicated tile server. [pmtiles-spec]
 - **MapLibre GL JS:** A WebGL-based library for rendering interactive vector maps with high client-side performance. [maplibre-gl-js]

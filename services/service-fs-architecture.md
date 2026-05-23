@@ -23,14 +23,14 @@ To ensure modularity and survivability, `service-fs` is implemented as a decoupl
 - **L4: Anchoring (Workspace-Tier):** Monthly periodic work that anchors signed checkpoints to the public Sigstore Rekor log.
 - **L3: Wire Protocol:** The communication interface (HTTP/axum today; MCP long-term) that enforces per-tenant `moduleId` boundaries.
 - **L2: WORM Ledger API (Rust Trait):** The stable core contract (`append`, `read_since`, `checkpoint`) that survives changes to the layers above or below.
-- **L1: Tile Storage Primitive:** The envelope-specific storage engine (POSIX on Linux; capability-mediated on seL4) utilizing the **C2SP tlog-tiles** format.
+- **L1: Tile Storage Primitive:** The envelope-specific storage engine (POSIX on Linux; capability-mediated on seL4) using the **C2SP tlog-tiles** format.
 
 ## Dual Boot Envelopes
 
 A core design property of `service-fs` is its ability to operate across two distinct runtime envelopes using the same codebase:
 
-1. **Envelope A (Current):** A Linux/BSD daemon under systemd. It utilizes standard POSIX file I/O and process isolation.
-2. **Envelope B (Intended):** A verified seL4 Microkit Protection Domain. It is intended to utilize `moonshot-database` (PSDB) for capability-addressed storage, providing formally verified tenant isolation.
+1. **Envelope A (Current):** A Linux/BSD daemon under systemd. It uses standard POSIX file I/O and process isolation.
+2. **Envelope B (Intended):** A verified seL4 Microkit Protection Domain. It is intended to use `moonshot-database` (PSDB) for capability-addressed storage, providing formally verified tenant isolation.
 
 ## Durability and Compliance
 
