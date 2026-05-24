@@ -12,7 +12,7 @@ cites:
  - osc-sn-51-721
 ---
 
-Zero-container inference is the planned deployment pattern for the platform's Tier B GPU compute: native Linux binaries under systemd on GCE virtual machine instances, with no container runtime or orchestrator. The economics close because idle-shutdown timers ensure GPU billing stops precisely when inference is not running — a 30-minute daily window on a preemptible A100 costs approximately $7–8 per month. The Yo-Yo compute pool that embodies this pattern is planned; it is not yet in production.
+Zero-container inference is the planned deployment pattern for the platform's Tier B GPU compute: native Linux binaries under systemd on GCE virtual machine instances, with no container runtime or orchestrator. The economics close because idle-shutdown timers ensure GPU billing stops precisely when inference is not running — a 30-minute daily window on a preemptible A100 costs approximately $7–8 per month. The Tier B inference pool that embodies this pattern is planned; it is not yet in production.
 
 ## Why no containers
 
@@ -32,14 +32,14 @@ A GCE GPU instance from stopped state takes approximately 60–120 seconds to re
 
 ## Operational artefacts
 
-The full deployment stack for a Yo-Yo inference instance consists of: an OpenTofu module for instance lifecycle management; the GCE image (CUDA driver + vLLM + nginx + idle-shutdown timer + systemd unit); Secret Manager entries for the bearer token and provider API keys; Cloud Logging configuration pointing to the customer's own GCP project; and a Cloud Billing budget with a Pub/Sub kill-switch as defence-in-depth against runaway spend. The operator never interacts with the instance directly during inference; the systemd unit and idle-shutdown timer handle the lifecycle autonomously.
+The full deployment stack for a Tier B inference instance consists of: an OpenTofu module for instance lifecycle management; the GCE image (CUDA driver + vLLM + nginx + idle-shutdown timer + systemd unit); Secret Manager entries for the bearer token and provider API keys; Cloud Logging configuration pointing to the customer's own GCP project; and a Cloud Billing budget with a Pub/Sub kill-switch as defence-in-depth against runaway spend. The operator never interacts with the instance directly during inference; the systemd unit and idle-shutdown timer handle the lifecycle autonomously.
 
 ## What this rules out
 
-Managed container orchestration platforms, container runtime systems, multi-cloud abstraction frameworks, OCI image registries, layered Docker build caching, and container build pipelines. These categories are not excluded because they are inferior in general; they are excluded because they introduce operator surface that is inconsistent with the [[zero-container-runtime]] structural commitment and the SMB economics case described above.
+Managed container orchestration platforms, container runtime systems, multi-cloud abstraction frameworks, OCI image registries, layered container image build caching, and container build pipelines. These categories are not excluded because they are inferior in general; they are excluded because they introduce operator surface that is inconsistent with the [[zero-container-runtime]] structural commitment and the SMB economics case described above.
 
 ## See also
 
 - [[zero-container-runtime]] — the structural commitment underlying this deployment pattern; applies across all platform service rings
-- [[doorman-protocol]] — the Tier B routing path that dispatches to Yo-Yo pool instances
+- [[doorman-protocol]] — the Tier B routing path that dispatches to the inference pool
 - [[substrate-without-inference-base-case]] — the substrate functions fully without Tier B; inference is additive

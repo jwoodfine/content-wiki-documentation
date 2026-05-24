@@ -14,7 +14,7 @@ cites:
  - osc-sn-51-721
 ---
 
-La inferencia sin contenedores es el patrón de despliegue previsto para el cómputo GPU de Nivel B de la plataforma: binarios Linux nativos bajo systemd en instancias de máquina virtual de GCE, sin entorno de ejecución de contenedores ni orquestador. La economía funciona porque los temporizadores de apagado en reposo garantizan que la facturación de GPU se detiene exactamente cuando la inferencia no está en ejecución — una ventana diaria de 30 minutos en una A100 de renta interrumpible cuesta aproximadamente 7–8 USD al mes. El grupo de cómputo Yo-Yo que encarna este patrón está previsto; no está en producción actualmente.
+La inferencia sin contenedores es el patrón de despliegue previsto para el cómputo GPU de Nivel B de la plataforma: binarios Linux nativos bajo systemd en instancias de máquina virtual de GCE, sin entorno de ejecución de contenedores ni orquestador. La economía funciona porque los temporizadores de apagado en reposo garantizan que la facturación de GPU se detiene exactamente cuando la inferencia no está en ejecución — una ventana diaria de 30 minutos en una A100 de renta interrumpible cuesta aproximadamente 7–8 USD al mes. El conjunto de inferencia de Nivel B que encarna este patrón está previsto; no está en producción actualmente.
 
 ## Por qué sin contenedores
 
@@ -34,15 +34,15 @@ Una instancia GPU de GCE desde estado detenido tarda aproximadamente 60–120 se
 
 ## Lo que se descarta
 
-Cloud Run, Kubernetes, SkyPilot, registros de imágenes OCI y cadenas de construcción de contenedores. No se excluyen por ser inferiores en general; se excluyen porque introducen superficie operativa incompatible con el compromiso estructural [[zero-container-runtime]] y el caso económico SMB descrito anteriormente.
+Plataformas de orquestación de contenedores gestionadas, entornos de ejecución de contenedores, marcos de abstracción multinube, registros de imágenes OCI y cadenas de construcción de contenedores en capas. No se excluyen por ser inferiores en general; se excluyen porque introducen superficie operativa incompatible con el compromiso estructural [[zero-container-runtime]] y el caso económico SMB descrito anteriormente.
 
 ## Véase también
 
 - [[zero-container-runtime]] — el compromiso estructural que subyace a este patrón de despliegue
-- [[doorman-protocol]] — la ruta de enrutamiento de Nivel B que distribuye a instancias del grupo Yo-Yo
+- [[doorman-protocol]] — la ruta de enrutamiento de Nivel B que distribuye al conjunto de inferencia
 - [[substrate-without-inference-base-case]] — el sustrato funciona completamente sin Nivel B; la inferencia es aditiva
 
 ## Referencias
 
 - [[zero-container-runtime]] — especificación del compromiso de despliegue sin contenedores.
-- **Aviso de personal OSC 51-721** — Divulgación de información prospectiva. El grupo de cómputo Yo-Yo y los plazos de despliegue en este artículo son declaraciones prospectivas sujetas a cambios.
+- **Aviso de personal OSC 51-721** — Divulgación de información prospectiva. El conjunto de inferencia de Nivel B y los plazos de despliegue en este artículo son declaraciones prospectivas sujetas a cambios.
