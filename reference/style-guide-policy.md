@@ -48,6 +48,6 @@ Sentence-length budget: target under twenty-five words per rule. Numbered rules 
 
 ## See also
 
-- [[sys-adr-07|SYS-ADR-07 — No AI on Structured Data]]
+- [[architecture-decisions|SYS-ADR-07 — No AI on Structured Data]]
 - [[style-guide-architecture|Style Guide — ARCHITECTURE]]
 - [[language-protocol-substrate|Language Protocol Substrate]]

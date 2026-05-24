@@ -36,5 +36,5 @@ Legal-llano. Voz activa. Sin conjeturas: "debe" y "no puede" para requisitos. "D
 
 ## Véase también
 
-- [[sys-adr-07|SYS-ADR-07 — Sin IA en datos estructurados]]
+- [[architecture-decisions|SYS-ADR-07 — Sin IA en datos estructurados]]
 - [[language-protocol-substrate|Substrato del Protocolo de Lenguaje]]
