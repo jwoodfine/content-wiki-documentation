@@ -8,7 +8,7 @@
 > Read at session start when a Root Claude opens in this repo. Update
 > at session end when repo-scope open items change.
 
-Last updated: 2026-05-23.
+Last updated: 2026-05-24.
 
 ---
 
@@ -20,7 +20,7 @@ Last updated: 2026-05-23.
   from project-editorial pipeline; (3) add `Content_Scope` column when
   multi-type coverage warrants it.
 
-- **D10: Wikilink validation pass** — run after Stage 6 binary rebuild to confirm P0-C (bare-slug resolver) fixes all 280+ previously-broken links.
+- **D10: Wikilink validation pass** — completed 2026-05-24: 0 unresolved wikilinks across all three wikis. One stale `[[sys-adr-07]]` red link fixed in `reference/style-guide-policy.md` + `.es.md` (redirected to `[[architecture-decisions]]`). ~~Run after Stage 6 binary rebuild to confirm P0-C (bare-slug resolver) fixes all 280+ previously-broken links.~~
 
 - **glossary-documentation.es.md** — stub created 2026-05-23; full translation deferred. Needs content pass before publication.
 
@@ -44,16 +44,16 @@ Last updated: 2026-05-23.
 
 ## Authorship Roadmap (Red Links)
 
-Stubs exist (status: stub) — red links resolved. Full prose pending:
+Wikilink audit (2026-05-24): 0 unresolved wikilinks across all three wikis. All items below have full prose at their current slug. Note: the `os-*` canonical-prefix slug convention is NOT yet applied uniformly — `console-os`, `infrastructure-os`, `mediakit-os`, `totebox-os`, `totebox-archive` exist as complete articles under their current slugs. No articles currently reference the `os-*` prefixed variants via wikilink. Slug rename is blocked by content-contract §3 slug immortality rule; this is a tracked naming drift, not a functional gap.
 
-- [ ] `ConsoleOS` — `systems/os-console.md` (stub needed)
-- [ ] `InfrastructureOS` — `systems/os-infrastructure.md` (stub needed)
-- [ ] `MediaKitOS` — `systems/os-mediakit.md` (stub needed)
+- [x] `ConsoleOS` — `systems/console-os.md` (**complete 2026-05-15**, slug: `console-os`; canonical `os-console` slug unminted)
+- [x] `InfrastructureOS` — `systems/infrastructure-os.md` (**complete 2026-05-15**, slug: `infrastructure-os`; canonical `os-infrastructure` slug unminted)
+- [x] `MediaKitOS` — `systems/mediakit-os.md` (**complete 2026-05-15**, slug: `mediakit-os`; canonical `os-mediakit` slug unminted)
 - [x] `NetworkAdminOS` — `systems/os-network-admin.md` (**full prose 2026-05-13**)
-- [ ] `OrchestrationOS` — `systems/os-orchestration.md` (stub needed)
+- [x] `OrchestrationOS` — `systems/os-orchestration.md` (**full prose 2026-05-15**, correct `os-*` slug)
 - [x] `PrivateGitOS` — `systems/os-privategit.md` (**full prose 2026-05-13**)
-- [ ] `ToteboxArchive` — `systems/os-totebox-archive.md` (stub needed)
-- [ ] `ToteboxOS` — `systems/os-totebox.md` (stub needed)
+- [x] `ToteboxArchive` — `systems/totebox-archive.md` (**complete 2026-05-04**, slug: `totebox-archive`; canonical `os-totebox-archive` slug unminted)
+- [x] `ToteboxOS` — `systems/totebox-os.md` (**complete 2026-05-15**, slug: `totebox-os`; canonical `os-totebox` slug unminted)
 - [x] `co-location-methodology` — `architecture/co-location-methodology.md` (**full prose 2026-05-13**)
 - [x] `development-regions` — `architecture/development-regions.md` (**full prose 2026-05-13**)
 
