@@ -10,23 +10,23 @@
 > layout-rule enforcement, defect resolution, surfaced open
 > questions — does.
 
-Last updated: 2026-05-23.
+Last updated: 2026-05-24.
 
 ---
 
 ## Open
-
-### 2026-05-23 — `archive/` empty directory at repo root
-
-An empty `archive/` directory exists at repo root. It is not in the allowed-files list (`repo-layout.md §1`). The directory is empty and has no tracked git content.
-
-**Resolution:** Remove the directory (`rmdir archive/`) and close this entry. No content loss; directory is empty.
 
 ### 2026-05-23 — Repo rename: `content-wiki-documentation` → `media-knowledge-documentation`
 
 GitHub canonical and staging mirror URLs updated to `media-knowledge-documentation`. CLAUDE.md, AGENT.md, and repo-layout.md updated. Local directory name (`content-wiki-documentation/`) and `PROJECT-CLONES.md` registry entry pending Command Session rename (`mv`).
 
 Staging mirror GitHub accounts (`jwoodfine/`, `pwoodfine/`) not yet renamed — local `origin-staging-*` remotes currently pointing to old names as a stopgap. Operator must rename staging mirrors, then Command Session updates `.git/config` staging remote URLs.
+
+---
+
+### 2026-05-23 — `archive/` empty directory at repo root
+
+`Closed: 2026-05-24.` Directory was already absent from the filesystem when checked — not tracked by git, not present on disk. No `rmdir` needed. Entry closed.
 
 ---
 
