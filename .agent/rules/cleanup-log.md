@@ -10,11 +10,35 @@
 > layout-rule enforcement, defect resolution, surfaced open
 > questions — does.
 
-Last updated: 2026-05-24.
+Last updated: 2026-05-25.
 
 ---
 
 ## Open
+
+### 2026-05-25 — Institution quality pass + drafts-outbound routing: COMPLETE
+
+`Closed: 2026-05-25.` Commit `61ed7fe` (Jennifer Woodfine).
+
+**Scope:** Full quality pass across all four wiki repos + floating TOPIC/GUIDE routing from cluster drafts-outbound queues. 338 published articles elevated to banker/asset-manager POV standard.
+
+**Changes in media-knowledge-documentation:**
+- 97 articles modified (governance vocabulary removed, ledes rewritten, register corrected)
+- 32 new articles from drafts-outbound (6 pairs in architecture, 3 pairs in applications, 3 pairs in design-system, 1 pair in infrastructure, 1 pair in services, 3 pairs in systems)
+- LICENSE + CODE_OF_CONDUCT.md trailing newline corrected per verify-repo-compliance.sh
+- factory-release-engineering/mapping/repo-license-map.yaml updated to add media-knowledge-* entries (canonical push cc9ad42)
+
+**Other repos (separate commits):**
+- media-knowledge-projects: 30 modified + 16 new (commit f110d62, Peter Woodfine)
+- media-knowledge-corporate: 28 modified including critical fix — CC-BY-ND footer was `by/4.0` in all 28 articles; corrected to `by-nd/4.0` (commit d5bcc7f, Jennifer Woodfine)
+- woodfine-fleet-deployment: 73 guides modified + 7 new guides (commit 319497d, Peter Woodfine)
+
+**Pushed:** jwoodfine staging mirrors confirmed. pwoodfine staging mirror has pre-existing SSH key auth issue (noted in cleanup-log 2026-05-23 rename entry). woodfine-fleet-deployment has no staging mirrors; awaits Command Session Stage 6.
+
+**Open items surfaced (not actioned this session):**
+- DUPLICATE_CANDIDATES: `three-layer-architecture` + `3-layer-stack`; `sovereign-telemetry` + `telemetry-architecture`; `location-intelligence-platform` + `location-intelligence-ux`
+- STUBS still pending expansion: `architecture/3d-asset-tokens`, `architecture/identity-ledger-schema-design` (also has "sustrato" in EN body — editorial defect), `substrate/nightly-datagraph-rebuild`
+- `identity-ledger-schema-design.md`: Spanish word "sustrato" appears in EN body — editorial defect to fix next pass
 
 ### 2026-05-23 — Repo rename: `content-wiki-documentation` → `media-knowledge-documentation`
 
