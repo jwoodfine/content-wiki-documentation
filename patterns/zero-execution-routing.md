@@ -9,11 +9,13 @@ bcsc_class: current-fact
 language: en
 paired_with: zero-execution-routing.es.md
 category: patterns
+last_edited: 2026-05-25
+editor: pointsav-engineering
 ---
 
 
 
-Platform presentation layers adhere to a "Zero-Execution" mandate, eliminating client-side JavaScript for core DOM manipulation, language routing, and file serving. This architectural constraint minimizes the attack surface and guarantees SOC 3 compliance by relying entirely on deterministic files and native CSS state management.
+Platform presentation layers adhere to a zero-execution mandate, eliminating client-side JavaScript for core DOM manipulation, language routing, and file serving. This architectural constraint minimizes the attack surface and supports SOC 3 (Service Organization Control 3) compliance by relying entirely on deterministic files and native CSS state management.
 
 ## 1. Deterministic Bilingual Routing
 

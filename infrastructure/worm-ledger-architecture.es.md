@@ -9,6 +9,10 @@ bcsc_class: current-fact
 language: es
 paired_with: worm-ledger-architecture.md
 category: infrastructure
+status: active
+quality: complete
+last_edited: 2026-05-25
+editor: pointsav-engineering
 ---
 
 

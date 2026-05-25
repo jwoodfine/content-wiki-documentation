@@ -5,10 +5,10 @@ slug: service-slm-yoyo-operational
 category: services
 type: topic
 quality: complete
-short_description: "How service-SLM's three-tier inference router and the Yo-Yo GPU burst VM operate at workspace v0.1.91, including the Doorman boundary, Tier A/B configuration, apprenticeship brief queue, and idle-shutdown cost ceiling."
+short_description: "How service-SLM's three-tier inference router and the Yo-Yo GPU burst VM operate, including the Doorman boundary, Tier A/B configuration, apprenticeship brief queue, and idle-shutdown cost ceiling."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-25
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -19,9 +19,9 @@ paired_with: service-slm-yoyo-operational.es.md
 
 **service-SLM** is the platform's Ring 3 component — the Optional Intelligence layer. It is a three-tier inference router that clusters and contributors use to delegate routine work: editorial polish, mechanical schema-conforming edits, bilingual translation drafts, and structured-output generation. The work is handled locally or on a dedicated GPU burst VM, without routing to a third-party API. Rings 1 and 2 (boundary ingest and knowledge processing) function fully without it; Ring 3 is structurally optional.
 
-The **Yo-Yo** is the name for the platform's on-demand GPU burst instance — a GCE VM that runs a 32-billion-parameter instruction-tuned model at approximately 50-100 tokens per second. It starts on demand, shuts down after 30 minutes of inactivity, and accumulates a brief queue through its idle windows. The combination — a lightweight always-available local model on the workspace VM and a capable on-demand burst VM — defines the two active inference tiers. A third tier (external API) is configured for future use; Tier C has no active keys in workspace v0.1.91.
+The **Yo-Yo** is the name for the platform's on-demand GPU burst instance — a GCE VM that runs a 32-billion-parameter instruction-tuned model at approximately 50-100 tokens per second. It starts on demand, shuts down after 30 minutes of inactivity, and accumulates a brief queue through its idle windows. The combination — a lightweight always-available local model on the workspace VM and a capable on-demand burst VM — defines the two active inference tiers. A third tier (external API) is configured for future use; Tier C has no active keys in the current operational period.
 
-This document describes how service-SLM and the Yo-Yo operate as of workspace v0.1.91, when the substrate-arc was marked complete.
+This document describes how service-SLM and the Yo-Yo operate in the current operational period, when the inference-substrate design was marked complete.
 
 ## The Doorman boundary
 
@@ -31,9 +31,9 @@ Every inference request crosses the Doorman before reaching a model tier. The Do
 - Route requests to the correct tier based on complexity heuristics: request size, structured-output requirements, and audit-ledger semantics.
 - Sanitise outbound requests before they reach any external API (strip workspace identifiers; rehydrate on inbound).
 - Append every transit to a per-tenant audit ledger at `/var/lib/local-doorman/audit/<tenant>/<YYYY-MM>.jsonl`.
-- Drain the §7C apprenticeship brief queue (described below).
+- Drain the apprenticeship brief queue (described below).
 
-The `/readyz` endpoint returns live tier-availability flags. As of workspace v0.1.91:
+The `/readyz` endpoint returns live tier-availability flags. An example response when all tiers are operational:
 
 ```json
 {
@@ -49,15 +49,15 @@ The `/readyz` endpoint returns live tier-availability flags. As of workspace v0.
 
 Tier A runs `llama-server` — the C++ HTTP server from llama.cpp — on the workspace VM CPU. The model is `OLMo-3-1125-7B-Think-Q4_K_M.gguf`, self-quantized from AllenAI's published safetensors release (Apache 2.0; sovereign supply chain). It binds `127.0.0.1:8080` as `local-slm.service`.
 
-Throughput on the workspace VM (an `e2-standard-4` GCE instance, CPU only) is approximately 2-3 tokens per second. This is sufficient for short briefs and trivial completions. It is not sufficient for routine editorial work at scale. The Tier A latency constraint was documented operationally at workspace v0.1.77 and motivated the v0.1.78 ratification of the four-tier substrate ladder.
+Throughput on the workspace VM (an `e2-standard-4` GCE instance, CPU only) is approximately 2-3 tokens per second. This is sufficient for short briefs and trivial completions. It is not sufficient for routine editorial work at scale. The Tier A latency constraint was documented operationally and motivated the ratification of the four-tier substrate ladder.
 
 ## Tier B — Yo-Yo on L4 GPU
 
-Tier B runs `llama-server` with CUDA support on a separate GCE instance (`yoyo-tier-b-1`) in `us-west1-a`. The hardware is `g2-standard-4`: 4 vCPU, 16 GB RAM, and one NVIDIA L4 GPU with 24 GB VRAM. The model is AllenAI's published `OLMo-2-0325-32B-Instruct-Q4_K_S.gguf` (Apache 2.0). The instance is provisioned on-demand rather than as a spot instance — L4 spot capacity proved unreliable across multiple US zones during the workspace v0.1.81 through v0.1.88 bootstrap.
+Tier B runs `llama-server` with CUDA support on a separate GCE instance (`yoyo-tier-b-1`) in `us-west1-a`. The hardware is `g2-standard-4`: 4 vCPU, 16 GB RAM, and one NVIDIA L4 GPU with 24 GB VRAM. The model is AllenAI's published `OLMo-2-0325-32B-Instruct-Q4_K_S.gguf` (Apache 2.0). The instance is provisioned on-demand rather than as a spot instance — L4 spot capacity proved unreliable across multiple US zones during initial bootstrapping.
 
 Port 8080 on the Yo-Yo VM is restricted by GCE firewall rule `yoyo-tier-b-from-workspace` to the workspace VM's internal IP (`10.138.0.4/32`) only. The Doorman holds the bearer token (`SLM_YOYO_BEARER`, configured in `/etc/local-doorman/local-doorman.env`) and authenticates every request.
 
-Measured throughput (smoke test at workspace v0.1.88): approximately 50-100 tokens per second generation; 100 tokens per second prompt processing. A typical 500-token instruction task completes in 5-15 seconds wall-clock. Cold-start — loading the model into GPU memory — takes 60-180 seconds and is amortised across subsequent requests in the same session.
+Measured throughput (initial smoke test): approximately 50-100 tokens per second generation; 100 tokens per second prompt processing. A typical 500-token instruction task completes in 5-15 seconds wall-clock. Cold-start — loading the model into GPU memory — takes 60-180 seconds and is amortised across subsequent requests in the same session.
 
 ### Provisioning
 
@@ -72,14 +72,14 @@ The Yo-Yo VM is configured from the startup provisioning script at `infrastructu
 7. Configure the `yoyo-llama-server.service` systemd unit.
 8. Start the service and wait for `/health` to return `{"status":"ok"}`.
 
-The bootstrap pipeline incorporates 14 distinct fixes for failure modes encountered during the v0.1.81 through v0.1.88 iteration: spot capacity stockouts, networking edge cases, NVIDIA driver and kernel version mismatches (driver 550 does not support kernel 6.17; the solution is a DL VM image with NVIDIA 580 and a matched kernel), 16 GB RAM compilation OOM, dpkg lock races, model hosting changes, HuggingFace CDN rate-limiting, and llama-server architecture support gaps. Each fix is documented inline in `infrastructure/yoyo-manual/startup.sh`. The iteration history is preserved in the workspace CHANGELOG.
+The bootstrap pipeline incorporates 14 distinct fixes for failure modes encountered during initial iteration: spot capacity stockouts, networking edge cases, NVIDIA driver and kernel version mismatches (driver 550 does not support kernel 6.17; the solution is a DL VM image with NVIDIA 580 and a matched kernel), 16 GB RAM compilation OOM, dpkg lock races, model hosting changes, HuggingFace CDN rate-limiting, and llama-server architecture support gaps. Each fix is documented inline in `infrastructure/yoyo-manual/startup.sh`. The iteration history is preserved in the workspace CHANGELOG.
 
-## §7C — the apprenticeship brief queue
+## The apprenticeship brief queue
 
-Every commit on the workspace and on every active cluster triggers the `bin/capture-edit.py` post-commit hook. The hook writes two records:
+Every commit on the platform triggers the post-commit capture hook. The hook writes two records:
 
-- An engineering corpus tuple at `data/training-corpus/engineering/<scope>/<commit_sha>.jsonl` (accumulating since workspace v0.1.x).
-- A shadow brief at `data/apprenticeship/queue/<brief_id>.brief.jsonl` (workspace v0.1.85 onwards; replaces an earlier HTTP fire-and-forget path that proved unreliable under network interruptions).
+- An engineering corpus tuple at `data/training-corpus/engineering/<scope>/<commit_sha>.jsonl` (accumulating continuously).
+- A shadow brief at `data/apprenticeship/queue/<brief_id>.brief.jsonl` (replaces an earlier HTTP fire-and-forget path that proved unreliable under network interruptions).
 
 The Doorman runs a drain worker that polls the queue directory every 30 seconds. When a brief appears, the worker performs an atomic rename to `queue-in-flight/` (dequeue), dispatches to the apprentice tier — Tier A by default, Tier B when the brief size exceeds `SLM_BRIEF_TIER_B_THRESHOLD_CHARS=500` — and on completion writes a corpus tuple at `data/training-corpus/apprenticeship/<task-type>/<tenant>/<brief_id>.jsonl` at stage `review`. A reaper task reclaims expired leases (5-minute timeout) and returns briefs to the queue for retry.
 
@@ -97,15 +97,13 @@ At a typical development utilisation of approximately 25 percent, the idle-shutd
 
 ## What runs on Tier B today
 
-The v0.1.86 cluster broadcast established the `SERVICE-SLM-PROPOSAL` convention: cluster Tasks identify routine work that service-SLM can handle and propose it via outbox. Master batches the proposals into the apprenticeship queue; service-SLM produces attempts; senior verdicts sign quality outputs into the DPO corpus.
-
-Examples of routine work routed to Tier B: mechanical documentation updates, schema-conforming edits, pattern-based refactors, bilingual translation drafts, routine status reports, and boilerplate code. Architectural decisions, novel design, and cross-layer coordination remain on Claude per the broadcast's discipline rules. service-SLM is the multiplier for routine work; Claude is the engine for judgment.
+The platform's engineering workflow routes routine work to Tier B: mechanical documentation updates, schema-conforming edits, pattern-based refactors, bilingual translation drafts, routine status reports, and boilerplate code. Architectural decisions, novel design, and cross-layer coordination route to the frontier-model tier. service-SLM is the multiplier for routine work; the frontier model is the engine for judgment.
 
 ## What is next
 
 *Forward-looking statement: the targets in this section are planned, not committed outcomes. Actual timelines depend on apprenticeship corpus growth rate, operator availability, and model performance characteristics. [ni-51-102] [osc-sn-51-721]*
 
-Per the workspace v0.1.86 first-week target, it is currently planned for the apprenticeship corpus to reach 100 verdict-signed tuples by 2026-05-06, subject to commit cadence and senior-verdict throughput. It is intended that 50 percent of routine Task work routes through service-SLM within 30 days of the v0.1.86 broadcast, as clusters adopt the `SERVICE-SLM-PROPOSAL` convention and the drain worker accumulates a sufficient backlog of reviewed corpus tuples. The first per-cluster LoRA training cycle is planned for Week 4, targeting the densest existing corpus — the project-language Stage-1 `prose-edit/pointsav` collection.
+It is currently planned for the apprenticeship corpus to reach 100 verdict-signed tuples in the near term, subject to commit cadence and senior-verdict throughput. It is intended that a majority of routine platform work routes through service-SLM as the drain worker accumulates a sufficient backlog of reviewed corpus tuples. The first per-cluster LoRA training cycle is planned once the corpus threshold is met, targeting the densest existing editorial collection.
 
 When AllenAI publishes OLMo 3 32B Think or Instruct in a Q4 GGUF format, the Yo-Yo deployment is designed to swap to it via a single configuration line. Per-cluster LoRA adapters compose on top of whatever base model is current; the substrate is base-model-agnostic by design.
 
@@ -114,7 +112,7 @@ When AllenAI publishes OLMo 3 32B Think or Instruct in a Q4 GGUF format, the Yo-
 - [[compounding-substrate]] — the five-property architectural pattern this implements
 - [[service-slm]] — service-SLM service overview
 - [[apprenticeship-substrate]] — how training signal accumulates from operational corpus tuples
-- [[brief-queue-substrate]] — the durable queue that connects §7C to Tier A/B processing
+- [[brief-queue-substrate]] — the durable queue that connects the apprenticeship brief queue to Tier A/B processing
 - [[worm-ledger-architecture]] — the audit ledger that records every external call
 
 ## References

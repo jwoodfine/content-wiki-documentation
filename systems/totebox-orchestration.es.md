@@ -10,14 +10,14 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-25
 editor: pointsav-engineering
-paired_with: topic-totebox-orchestration.md
+paired_with: totebox-orchestration.md
 cites: []
 ---
 
 
-La Orquestación Totebox es la capa responsable de aprovisionar, coordinar y monitorear instancias individuales de Totebox en un despliegue de PointSav. Un Totebox es un contenedor de datos aislado que separa los motores de software activos de los libros contables corporativos pasivos.
+La Orquestación Totebox es la capa de coordinación que aprovisiona, supervisa y gestiona múltiples instancias de archivo Totebox en un único despliegue de PointSav. Cuando un operador mantiene archivos separados para contratos, registros financieros y correspondencia, la capa de orquestación garantiza que cada contenedor conserve su propio libro contable aislado, ejecute su propia verificación de integridad y reporte el estado de salud a través de una superficie de monitoreo unificada — sin permitir que ningún contenedor comparta estado mutable con otro. Para un operador regulado, esto significa que un incidente en un dominio no puede propagarse a los registros de otro.
 
 ## Aislamiento de contenedores
 

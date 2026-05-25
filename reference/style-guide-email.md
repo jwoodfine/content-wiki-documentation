@@ -8,7 +8,7 @@ quality: complete
 short_description: "Editorial standards for external and formal email in the platform (COMMS-EMAIL genre): lead-with-ask discipline, header requirements, body structure, and the professional register."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-24
+last_edited: 2026-05-25
 editor: pointsav-engineering
 cites: []
 paired_with: style-guide-email.es.md
@@ -53,7 +53,7 @@ Subject lines must be specific: "Request for NDA — Woodfine Management Corp. /
 
 Sentence-length budget: mean around twenty words, maximum thirty-five. Active voice. The banned-vocabulary list applies: state the action directly rather than using marketing-register phrases.
 
-BCSC posture applies when the recipient may be a current or prospective investor: forward-looking claims about the platform, products, or roadmap carry "planned / intended / may / target" language.
+When the recipient may be a current or prospective investor, forward-looking claims about the platform, products, or roadmap carry "planned / intended / may / target" language. This applies to all statements about future capability, timeline, or commercial outcome.
 
 ## See also
 

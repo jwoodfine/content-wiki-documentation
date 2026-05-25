@@ -5,10 +5,10 @@ slug: merkle-proofs-as-substrate-primitive
 category: substrate
 type: topic
 quality: complete
-short_description: "Las pruebas de Merkle son el mecanismo criptográfico que permite al sustrato de Foundry garantizar — a cualquier tercero, sin necesidad de confianza previa — que un registro específico forma parte de un registro de sólo-adición y que ese log no ha sido reescrito entre dos puntos de observación."
+short_description: "Las pruebas de Merkle son el mecanismo criptográfico que permite al sustrato de la plataforma garantizar — a cualquier tercero, sin necesidad de confianza previa — que un registro específico forma parte de un registro de sólo-adición y que ese log no ha sido reescrito entre dos puntos de observación."
 status: active
 bcsc_class: no-disclosure-implication
-last_edited: 2026-05-22
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: merkle-proofs-as-substrate-primitive.md
 cites: []
@@ -22,7 +22,7 @@ references:
 ---
 
 
-> Las pruebas de Merkle son el mecanismo criptográfico que permite al sustrato de Foundry garantizar — a cualquier tercero, sin necesidad de confianza previa — que un registro específico forma parte de un registro (log) de sólo-adición, y que ese log no ha sido reescrito entre dos puntos de observación.
+> Las pruebas de Merkle son el mecanismo criptográfico que permite al sustrato de la plataforma garantizar — a cualquier tercero, sin necesidad de confianza previa — que un registro específico forma parte de un registro (log) de sólo-adición, y que ese log no ha sido reescrito entre dos puntos de observación.
 
 Estas dos garantías fundamentan el Sustrato del Libro de Capacidades y el Sustrato Soberano de Dos Bases.
 

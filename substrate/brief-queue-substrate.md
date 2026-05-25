@@ -8,7 +8,7 @@ quality: complete
 short_description: "A durable file-backed queue that makes idle-shutdown Yo-Yo compute viable without losing apprenticeship corpus capture data — the durability layer of the three-tier SLM substrate."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-25
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -65,13 +65,13 @@ Message brokers such as NATS JetStream or Redis Streams offer strong durability 
 
 JSONL files have a further advantage for this use case: they are directly inspectable. An operator investigating a corpus anomaly can read a file in `queue-poison/` with any text editor. A message broker entry requires the broker's own query interface. The four-directory layout makes queue depth, in-flight count, and poison-file count observable with a single `find` or `ls -l` invocation — no broker dashboard required.
 
-The file-JSONL choice also aligns with DOCTRINE Pillar 1: plain text only. The corpus itself is JSONL; the queue payload format matches the corpus format; the drain worker's only job is to move events from one JSONL context (queue file) to another (corpus file). The entire path is auditable as plain text with no binary state.
+The file-JSONL choice also aligns with the platform's plain-text-only design principle. The corpus itself is JSONL; the queue payload format matches the corpus format; the drain worker's only job is to move events from one JSONL context (queue file) to another (corpus file). The entire path is auditable as plain text with no binary state.
 
 When the platform scales to multi-node corpus producers — a planned future state — the queue directory can be placed on a shared network filesystem (NFS, Cloud Filestore, or an equivalent) and the lease mechanics continue to hold on POSIX-compliant mounts. Alternatively, that future state may introduce a message broker as a speed layer while retaining the JSONL corpus format. The choice remains open and is not foreclosed by the current design.
 
 ## Implementation status
 
-The Brief Queue Substrate convention was ratified at workspace v0.1.78. Implementation is in progress under the project-slm cluster scope.
+The Brief Queue Substrate convention was ratified at workspace v0.1.78. Implementation is in progress within the SLM service engineering scope.
 
 The functional components being built are:
 

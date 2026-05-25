@@ -8,7 +8,7 @@ quality: complete
 short_description: "Contributor identity and permissions in Totebox Orchestration are expressed through cryptographic pairings — not roles stored in a database or checked at request time — and a contributor can reach a resource only if their os-console is paired with the orchestration node that manages it."
 status: active
 bcsc_class: forward-looking
-last_edited: 2026-05-08
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: personnel-permissions.es.md
 ---
@@ -32,16 +32,16 @@ The personnel store is itself a Totebox Archive — it does not use a separate i
 Four tiers describe what a contributor's pairing set looks like. The tier is not a runtime check; it is a human description of the pairings. Enforcement is always through the pairing topology.
 
 **P1 — System Administrator**
-Pairing set: Command, every Totebox Archive, both `os-privategit` nodes, both `os-mediakit` nodes, virtual-machine infrastructure.
-Can: provision archives, update workspace documentation, run Stage 6 promotions, add new pairings, manage the identity store, perform virtual-machine system administration.
+Pairing set: the hub session, every Totebox Archive, both `os-privategit` nodes, both `os-mediakit` nodes, virtual-machine infrastructure.
+Can: provision archives, update workspace documentation, run code promotion flows, add new pairings, manage the identity store, perform virtual-machine system administration.
 
 **P2 — Package Manager**
-Pairing set: specific archives plus Stage 6 promotion paths.
+Pairing set: specific archives plus promotion paths.
 Can: commit and promote within assigned archives. Cannot provision new archives or modify workspace-level documents.
 
 **P3 — User**
-Pairing set: specific archives only. No Command pairing.
-Can: work within assigned archives — write code, commit to staging, draft wiki content. Cannot: access cross-archive resources directly, modify other archives, or perform Stage 6 promotions. Cross-archive requests are sent as messages for the Command Session to process.
+Pairing set: specific archives only. No hub pairing.
+Can: work within assigned archives — write code, commit to staging, draft wiki content. Cannot: access cross-archive resources directly, modify other archives, or run promotion flows. Cross-archive requests are sent as messages for the hub session to process.
 
 **P4 — Interface**
 Pairing set: read-only API surface only.
@@ -62,10 +62,10 @@ There is no approval workflow in a separate system. The pairing is the approval.
 ## Example contributor scopes
 
 **A System Administrator (P1):**
-Paired to the Command, every active Totebox Archive, both `os-privategit` nodes, both `os-mediakit` nodes, and the personnel archive. Scope: full workspace. Can ratify tetrad milestones, manage the identity store, provision new archives, perform Stage 6 promotions.
+Paired to the hub session, every active Totebox Archive, both `os-privategit` nodes, both `os-mediakit` nodes, and the personnel archive. Scope: full workspace. Can ratify tetrad milestones, manage the identity store, provision new archives, run promotion flows.
 
 **A P3 User:**
-Paired to a specific project archive — for example, `project-bookkeeping` — and to a local-staging `os-mediakit` for review. Scope: archive work and staging review only. No Command pairing. Cannot access the identity store, other archives, or the canonical `vendor/` or `customer/` trees.
+Paired to a specific project archive — for example, `project-bookkeeping` — and to a local-staging `os-mediakit` for review. Scope: archive work and staging review only. No hub pairing. Cannot access the identity store, other archives, or the canonical source trees.
 
 ## Relationship to app-orchestration-command
 

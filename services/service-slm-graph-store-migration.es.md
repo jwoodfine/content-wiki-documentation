@@ -9,21 +9,21 @@ status: pre-build
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-24
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: service-slm-graph-store-migration.md
 short_description: "service-slm migró su almacén de grafos de LadybugDB a SQLite para nodos de flota e integra una reconstrucción nocturna del DataGraph que procesa el corpus de datos del operador a través de Doorman hacia el grafo de propiedades utilizado para la inyección de contexto en inferencia."
 cites: []
 ---
 
-Cada noche, `jennifer-datagraph-rebuild.sh` procesa el corpus de datos
+El almacén de grafos de `service-slm` es un grafo de propiedades activo de entidades de negocio nombradas, extraídas nocturnamente del corpus de datos del operador — la capa de entidades que `service-content` utiliza para inyectar contexto de negocio estructurado en cada solicitud de inferencia sin enviar datos propietarios a un modelo externo. El grafo se almacena en LadybugDB y se reconstruye en un ciclo nocturno mediante el script de reconstrucción del DataGraph, que se ejecuta como Fase 1 de la ventana nocturna de Elastic Compute antes de que la fase de entrenamiento reclame la GPU.
+
+Cada noche, el script de reconstrucción del DataGraph procesa el corpus de datos
 del operador y escribe las entidades nombradas extraídas en un grafo
 de propiedades almacenado en LadybugDB. Este grafo de propiedades — el
 DataGraph del despliegue — es la capa de entidades que service-content utiliza
 para inyectar contexto de negocio estructurado en las solicitudes de
-inferencia. La reconstrucción se ejecuta como Fase 1 de la ventana nocturna
-de Elastic Compute #1, antes de que la fase de entrenamiento reclame la GPU. El
-DataGraph del despliegue está activo, con un archivo LadybugDB de 11 MB
+inferencia. El DataGraph del despliegue está activo, con un archivo LadybugDB de 11 MB
 actualmente operativo en service-content.
 
 ## Qué contiene el DataGraph
@@ -52,7 +52,7 @@ opcionales de rol, ubicación y contacto. Luego, el script llama a
 `POST :9081/v1/graph/mutate` en service-content para escribir esas entidades
 en LadybugDB. La sonda de salud al final del ciclo consulta service-content
 para obtener el conteo actual de entidades y escribe un archivo JSON resumen
-en `$FOUNDRY_ROOT/data/datagraph-health.json`.
+en `$DEPLOYMENT_ROOT/data/datagraph-health.json`.
 
 El script procesa tres lotes de documentos por ejecución: el árbol completo de
 activos del minutebook, el árbol completo de service-agents y los 50 archivos
@@ -62,7 +62,7 @@ solicitudes que podría interferir con el inicio de la fase de entrenamiento.
 
 ## El principio de paridad de enrutamiento
 
-El script `jennifer-datagraph-rebuild.sh` llama únicamente a los mismos dos
+El script de reconstrucción del DataGraph llama únicamente a los mismos dos
 endpoints REST API que cualquier operador o miembro de la comunidad que ejecute
 service-slm y service-content llamaría desde su propia automatización:
 
@@ -82,7 +82,7 @@ interna que los usuarios reales nunca ejercerían.
 ## Idempotencia
 
 El script rastrea los documentos procesados mediante un registro local en
-`$FOUNDRY_ROOT/data/datagraph-processed.txt`. Cada documento se identifica
+`$DEPLOYMENT_ROOT/data/datagraph-processed.txt`. Cada documento se identifica
 mediante un hash de su contenido de archivo, prefijado con una etiqueta de
 origen (`mk-` para minutebook, `ag-` para service-agents, `sp-` para
 service-people). Antes de procesar cualquier documento, el script verifica si

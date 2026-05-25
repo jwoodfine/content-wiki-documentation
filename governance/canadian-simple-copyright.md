@@ -8,7 +8,7 @@ quality: complete
 short_description: "The platform's intellectual property vests in a single Canadian parent holding company by operation of Canadian Copyright Act § 13(3), without inter-company assignment, and is designed to be evolved incrementally as the corporate structure matures."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-25
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -26,8 +26,7 @@ assignment. This article describes the posture, names the
 statutes that make it work, and lists the trigger events that
 require it to be revisited.
 
-This article is the public-facing complement to the operational
-section in `factory-release-engineering/README.md` §6. It is
+This article is the public-facing overview of the copyright posture. It is
 **not legal advice**. Counsel review is appropriate before any
 trigger event below.
 

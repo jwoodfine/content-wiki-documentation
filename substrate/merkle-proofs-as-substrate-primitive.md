@@ -5,10 +5,10 @@ slug: merkle-proofs-as-substrate-primitive
 category: substrate
 type: topic
 quality: complete
-short_description: "Merkle proofs are the cryptographic mechanism that lets Foundry's substrate guarantee — to any third party, without trust — that a specific record is part of an append-only log and that the log has not been rewritten between two observed points in time."
+short_description: "Merkle proofs are the cryptographic mechanism that lets the platform substrate guarantee — to any third party, without trust — that a specific record is part of an append-only log and that the log has not been rewritten between two observed points in time."
 status: active
 bcsc_class: no-disclosure-implication
-last_edited: 2026-05-22
+last_edited: 2026-05-25
 editor: pointsav-engineering
 cites: []
 references:
@@ -22,7 +22,7 @@ paired_with: merkle-proofs-as-substrate-primitive.es.md
 ---
 
 
-> Merkle proofs are the cryptographic mechanism that lets Foundry's substrate guarantee — to any third party, without trust — that a specific record is part of an append-only log, and that the log has not been rewritten between two observed points in time.
+> Merkle proofs are the cryptographic mechanism that lets the platform substrate guarantee — to any third party, without trust — that a specific record is part of an append-only log, and that the log has not been rewritten between two observed points in time.
 
 These two guarantees together form the read-side and the replication-safety side of the Capability Ledger Substrate. This article explains what Merkle proofs are, why two distinct flavours exist, how the `system-core` crate implements both per RFC 9162 Certificate Transparency 2.0, and how the `system-ledger` crate uses them to gate write-side validity without degrading the read-side hot path.
 

@@ -8,13 +8,13 @@ type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-09
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: service-wallet-settlement.md
 ---
 
 
-`service-wallet` (Anillo 2) es el libro mayor de contabilidad interna por inquilino que registra y liquida todos los ingresos de flujo inverso procedentes del mercado de datos y el intercambio publicitario.
+`service-wallet` es el libro mayor de contabilidad interna por tenant que registra y liquida todos los ingresos de flujo inverso procedentes del mercado de datos y el intercambio publicitario de la plataforma. El servicio opera en el nivel de procesamiento del conocimiento de la plataforma y no custodia fondos: registra créditos, débitos y comisiones como entradas firmadas criptográficamente, y el retiro hacia la cartera o cuenta bancaria del operador se gestiona fuera de la plataforma.
 
 ## Qué es service-wallet (y qué no es)
 
@@ -30,7 +30,7 @@ Polygon PoS (aproximadamente $0,002/tx; principal) y Solana (aproximadamente $0,
 
 ## Portabilidad
 
-El historial completo del libro mayor es consultable por el inquilino en cualquier momento. El formato de exportación es JSONL. La portabilidad es incondicional; el libro mayor viaja con el inquilino al salir (reclamación #48).
+El historial completo del libro mayor es consultable por el inquilino en cualquier momento. El formato de exportación es JSONL. La portabilidad es incondicional; el libro mayor viaja con el tenant al salir, conforme a la garantía de portabilidad de datos de propiedad del cliente.
 
 ## Véase también
 

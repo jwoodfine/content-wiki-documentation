@@ -8,7 +8,7 @@ quality: complete
 short_description: The operational procedure for managing external API keys in the Doorman service — where keys live, how they are provisioned, how they rotate, and how a breach is contained.
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-25
 editor: pointsav-engineering
 cites: []
 paired_with: tier-c-key-wiring.es.md
@@ -40,7 +40,7 @@ Accelerated rotation is appropriate when a compromise is suspected (see the brea
 
 ## Per-provider operational specifics
 
-The Doorman supports three external providers as of the convention's ratification date: Anthropic Claude reached via the Messages API, Google Gemini reached via the Generative Language API, and OpenAI reached via the Chat Completions API. Each provider has a distinct authentication convention — header-based for Anthropic and OpenAI, URL-parameter-based for Gemini — and each has provider-specific rate-limit semantics that the Doorman handles with exponential backoff and retry capping.
+The Doorman supports three external providers as of the initial deployment: Anthropic Claude reached via the Messages API, Google Gemini reached via the Generative Language API, and OpenAI reached via the Chat Completions API. Each provider has a distinct authentication convention — header-based for Anthropic and OpenAI, URL-parameter-based for Gemini — and each has provider-specific rate-limit semantics that the Doorman handles with exponential backoff and retry capping.
 
 When a provider returns a server error, the Doorman falls back to Tier A local inference rather than returning an error to the caller. The caller receives a response flagged as degraded, and the audit-ledger entry records the fallback. Budget exhaustion is handled differently: a request that would exceed the per-tenant daily budget is rejected immediately rather than silently downgraded to local inference, because returning a budget-exceeded error is preferable to providing a degraded answer the caller did not ask for.
 

@@ -10,7 +10,7 @@ audience: public
 short_description: "service-business turns raw retail data points into actionable commercial clusters by applying a parent-child spatial schema — so when multiple distinct operators share a single physical site, the GIS engine receives one commercial entity per site rather than several overlapping points."
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-08
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: service-business-clustering.es.md
 cites: []
@@ -20,7 +20,7 @@ Retail data is inherently messy — a single commercial site often contains mult
 
 ## The Clustering Logic
 
-Retail data is inherently messy. A single commercial node often contains multiple distinct points — for example, a big-box anchor store, a nested pharmacy, and a fuel outlet in the same parking area. `service-business` processes these points so that the GIS engine produces a single, unified commercial entity per physical site.
+`service-business` processes raw commercial nodes so that the GIS engine produces a single, unified commercial entity per physical site.
 
 ### Grid-Based Spatial Indexing
 

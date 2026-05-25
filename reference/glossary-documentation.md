@@ -6,13 +6,13 @@ short_description: "A canonical A-to-Z lexicon bridging standard industry termin
 category: reference
 status: complete
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-03
+last_edited: 2026-05-25
 editor: project-language Task
 ---
 
 
 
-This is the definitive, public-facing A-Z Lexicon for PointSav Digital Systems. It bridges standard industry terminology (layman terms) with the platform's **2030 Sovereign Infrastructure vision**.
+This lexicon provides canonical definitions for PointSav platform terms, bridging standard industry vocabulary with the platform's architectural concepts. Each entry defines a term as used in platform documentation, with disambiguation notes and cross-references where relevant.
 
 <div class="wiki-toc" style="padding: 10px; background: #f9f9f9; border: 1px solid #ccc; text-align: center; font-weight: bold; margin-bottom: 2em;">
  <a href="#A">A</a> | <a href="#B">B</a> | <a href="#C">C</a> | <a href="#D">D</a> | <a href="#E">E</a> | <a href="#F">F</a> | <a href="#G">G</a> | <a href="#H">H</a> | <a href="#I">I</a> | <a href="#J">J</a> | <a href="#K">K</a> | <a href="#L">L</a> | <a href="#M">M</a> | <a href="#N">N</a> | <a href="#O">O</a> | <a href="#P">P</a> | Q | <a href="#R">R</a> | <a href="#S">S</a> | <a href="#T">T</a> | <a href="#U">U</a> | <a href="#V">V</a> | <a href="#W">W</a> | X | Y | <a href="#Z">Z</a>

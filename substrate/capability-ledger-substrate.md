@@ -5,7 +5,7 @@ slug: capability-ledger-substrate
 category: substrate
 type: topic
 quality: complete
-short_description: "The Capability Ledger Substrate is the mechanism by which every access-control decision in a Foundry deployment becomes a cryptographically auditable event anchored to a log the customer controls."
+short_description: "The Capability Ledger Substrate is the mechanism by which every access-control decision in a platform deployment becomes a cryptographically auditable event anchored to a log the customer controls."
 status: active
 bcsc_class: no-disclosure-implication
 last_edited: 2026-05-22
@@ -22,7 +22,7 @@ paired_with: capability-ledger-substrate.es.md
 ---
 
 
-> The Capability Ledger Substrate is the mechanism by which every access-control decision in a Foundry deployment becomes a cryptographically auditable event anchored to a log the customer controls.
+> The Capability Ledger Substrate is the mechanism by which every access-control decision in a platform deployment becomes a cryptographically auditable event anchored to a log the customer controls.
 
 The Capability Ledger Substrate extends the seL4 microkernel's native capability model — which is correct by formal proof — with a transparency layer that makes the audit record portable, customer-rooted, and verifiable by third parties without any trust relationship with the operator.
 
@@ -348,7 +348,7 @@ its own tier.
 ## 9. Cross-references
 
 - **The Capability Ledger Substrate** — the constitutional anchor for
-  customer-rooted Merkle-log binding in Foundry deployments. Every
+  customer-rooted Merkle-log binding in platform deployments. Every
   capability authorization is anchored to a customer-held transparency log.
 
 - **The Two-Bottoms Sovereign Substrate** — the Two-Bottoms composition

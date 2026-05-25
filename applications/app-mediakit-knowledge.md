@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-14
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: app-mediakit-knowledge.es.md
 cites:
@@ -150,7 +150,7 @@ The client lazy-loads `cm-collab.bundle.js` (302 KB) only when the template's `w
 
 ## Substrate-native compatibility surface
 
-The engine is a substrate-native wiki, not a MediaWiki shim. This reflects architectural decisions ratified at workspace v0.1.10 and refined at v0.1.14.
+The engine is a substrate-native wiki, not a MediaWiki shim. This reflects architectural decisions made during early platform development.
 
 What was kept: the **`xml-dump` import path** for one-time corpus migration; **URL conventions** (`/wiki/{slug}`); **wikilink syntax** (`[[slug]]` and `[[slug|display text]]`); **footnote syntax** (`[^1]`).
 

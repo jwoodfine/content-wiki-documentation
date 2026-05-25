@@ -9,20 +9,24 @@ bcsc_class: current-fact
 language: en
 paired_with: worm-ledger-architecture.es.md
 category: infrastructure
+status: active
+quality: complete
+last_edited: 2026-05-25
+editor: pointsav-engineering
 ---
 
 
 
 `service-fs` provides the per-tenant Write-Once-Read-Many (WORM) immutable ledger that serves as the durable backbone for all Ring 1 boundary-ingest services. By enforcing a strict append-only invariant through cryptographic hash-chaining and structural isolation, the platform ensures that identity, communications, and document records remain tamper-evident and permanently accessible.
 
-## Architectural Integration
+## Architectural integration
 
 The WORM ledger sits at the critical boundary between the per-tenant data plane and the multi-tenant knowledge plane. Every ingest service—including `service-people` and `service-email`—writes through this substrate, while Ring 2 services access data via cursor-paged MCP queries.
 
 * **Current Posture:** Isolation is achieved through separate daemon processes per tenant `moduleId` and rigorous filesystem permissioning.
 * **Intended Trajectory:** Migration to seL4 microkernel-level capability enforcement is planned to provide formally verified tenant isolation.
 
-## Multi-Tier Protocol Stack
+## Multi-tier protocol stack
 
 The architecture uses a layered design to ensure that individual components remain swappable without disrupting the core durability contract.
 
@@ -40,11 +44,11 @@ The stable core contract defining methods for `append`, `read_since`, and `check
 * **seL4 (Intended):** Capability-addressed objects mediated by `moonshot-database`.
 * **Format:** Standardized **C2SP tlog-tiles** (matching RFC 9162 v2 / Rekor v2) ensure 100-year readability.
 
-## Regulatory Compliance and Durability
+## Regulatory compliance and durability
 
 The design is engineered to align with SEC Rule 17a-4(f) WORM requirements and EU eIDAS qualified preservation standards. By adopting the plain-text C2SP tile format, the platform guarantees that a forensic analyst in the year 2126 could decode the storage using only basic Unix utilities and a SHA-256 implementation.
 
-## Cross-Target Synthesis
+## Cross-target synthesis
 
 The platform’s implementation is unique in its dual-target Rust strategy, allowing the same binary to serve as a Linux daemon today and an seL4 unikernel tomorrow. This ensures that the storage substrate is portable from a virtual machine to a future ToteboxOS hardware appliance without a core rewrite.
 

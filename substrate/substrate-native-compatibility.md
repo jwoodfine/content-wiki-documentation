@@ -7,7 +7,7 @@ status: active
 category: substrate
 type: topic
 quality: complete
-last_edited: 2026-05-14
+last_edited: 2026-05-25
 editor: pointsav-engineering
 audience: vendor-public
 bcsc_class: no-disclosure-implication
@@ -20,7 +20,7 @@ cites:
 
 The PointSav wiki at `documentation.pointsav.com` provides structural compatibility with MediaWiki's reader-facing conventions — URL patterns, wikilink syntax, footnote syntax — while deliberately declining to replicate MediaWiki's internal API surface. Every interface the substrate does not replicate is a compliance obligation it does not assume.
 
-That decision has a concrete cost and a concrete benefit. The cost: contributors migrating automation workflows from MediaWiki-compatible tools re-implement against new interfaces. The benefit: every Action API endpoint MediaWiki ships, deprecates, or modifies would have generated a maintenance event; the platform has no control over that velocity, and the BCSC continuous-disclosure posture makes every public interface a continuous-disclosure surface. Declining the shim means the wiki's disclosure commitments are bounded to what the substrate actually provides.
+That decision has a concrete cost and a concrete benefit. The cost: contributors migrating automation workflows from MediaWiki-compatible tools re-implement against new interfaces. The benefit: every Action API endpoint MediaWiki ships, deprecates, or modifies would have generated a maintenance event; the platform has no control over that velocity, and every public interface the platform exposes is a continuous-disclosure surface under Canadian securities law (National Instrument 51-102 and OSC Staff Notice 51-721). Declining the shim means the wiki's disclosure commitments are bounded to what the substrate actually provides.
 
 The result is a wiki with the reader and integrator ecosystem reach of a MediaWiki-replacement — resolving wikilinks, serving `sitemap.xml`, accepting Wikipedia-style markup — and a maintenance surface that scales with the platform's own velocity, not MediaWiki's.
 
@@ -46,7 +46,7 @@ The substrate's choice is to participate in the first part fully and decline the
 
 - Reader and integrator ecosystem effects scale via conventions, which are stable across a decade. The substrate adopts the convention once and benefits indefinitely.
 - Internal-system extension ecosystem effects scale via interfaces, which evolve with MediaWiki releases. The substrate would inherit a maintenance burden that grows with MediaWiki's ecosystem velocity, not the substrate's.
-- The BCSC continuous-disclosure posture makes every interface the substrate exposes a continuous-disclosure surface. An Action API shim would commit the substrate to disclosure-grounding every Action API endpoint's behaviour, which is a moving target.
+- Every interface the substrate exposes to the public is a continuous-disclosure surface under applicable securities regulation. An Action API shim would commit the substrate to disclosure-grounding every Action API endpoint's behaviour, which is a moving target.
 
 ## What was kept
 
@@ -69,7 +69,7 @@ Three surfaces in the high-cost-to-provide category were declined:
 **The MediaWiki Action API shim.** The shim was scoped at workspace v0.1.10 as an interface that would have replicated `?action=parse`, `?action=edit`, `?action=query`, `?action=login`, and the remaining Action API surface against the substrate's wiki engine. At v0.1.14 the shim was removed from scope. The reasoning:
 
 - *Maintenance scales with MediaWiki's velocity.* Every Action API endpoint MediaWiki ships, deprecates, or modifies generates a shim-side maintenance event. The substrate cannot govern that velocity.
-- *Compliance audit scales with the API surface.* BCSC continuous-disclosure requirements require every interface the substrate exposes to the public to be disclosure-grounded. The Action API shim would have multiplied the audit surface by an order of magnitude with no commensurate ecosystem benefit on the substrate's actual customer base.
+- *Compliance audit scales with the API surface.* Every interface the substrate exposes to the public must be disclosure-grounded under applicable continuous-disclosure requirements. The Action API shim would have multiplied the audit surface by an order of magnitude with no commensurate ecosystem benefit on the substrate's actual customer base.
 - *Substrate-native interfaces cover the use cases.* The wiki's route surface (`/wiki/{slug}`, JSON-LD, Atom, JSON Feed, sitemap, `llms.txt`, raw Markdown via `/git/{slug}`, `/search?q=`, `POST /edit/{slug}`) covers what the Action API shim would have served, without committing the substrate to Wikipedia's API contract.
 
 **MediaWiki templates and parser functions.** The wiki's renderer is `comrak` (CommonMark) plus PointSav-specific extensions for wikilinks, footnotes, table of contents, and section anchors. It is not a MediaWiki parser. Templates do not expand server-side. The workaround for content that would be a template in MediaWiki is Markdown partials, inlined by the contributor at edit time; the substrate accepts the duplication cost in exchange for a deterministic rendering pipeline that can be audited without parsing a Turing-complete template language at render time.
@@ -104,7 +104,7 @@ The motivation: a `[citation-id]` in an article is a structured reference that t
 
 ## Disclosure posture as compatibility lens
 
-The deeper reason the substrate-native posture wins is that the wiki engine's compatibility-surface choices are continuous-disclosure choices in disguise. Every interface the substrate exposes to the public commits the substrate to a disclosure obligation under BCSC continuous-disclosure requirements. What the substrate does not expose, it does not need to disclose about.
+The deeper reason the substrate-native posture wins is that the wiki engine's compatibility-surface choices are continuous-disclosure choices in disguise. Every interface the substrate exposes to the public commits the substrate to a disclosure obligation under applicable continuous-disclosure requirements. What the substrate does not expose, it does not need to disclose about.
 
 A few concrete cases:
 

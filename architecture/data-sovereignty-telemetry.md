@@ -8,31 +8,27 @@ audience: vendor-public
 bcsc_class: current-fact
 language: en
 paired_with: data-sovereignty-telemetry.es.md
+last_edited: 2026-05-25
 category: architecture
 ---
 
 
 
-PointSav digital systems are engineered for absolute data sovereignty, utilizing a "Zero-State" architecture that eliminates the collection of personally identifiable information (PII). By prioritizing DARP compliance (Data Archive Retrieval Protocol), the platform ensures that system metrics never compromise the privacy of the asset holder or the individual user.
+PointSav platform interfaces operate on a zero-state telemetry architecture: no personally identifiable information (PII) is collected, no tracking cookies are deployed, and no session state is retained. Operational metrics are limited to anonymized, IP-masked geospatial signals used for infrastructure auditing. Operators in regulated industries gain a public-facing posture consistent with GDPR, PIPEDA, and equivalent data-minimisation requirements, without requiring cookie-consent frameworks.
 
-## 1. Cookieless Infrastructure
+## No-cookie infrastructure
 
-The platform strictly prohibits the use of tracking cookies, persistent local storage tracking, and third-party analytics integrations. This posture eliminates the legal requirement for intrusive cookie consent banners, providing a cleaner and more focused user experience.
+The platform prohibits tracking cookies, persistent local-storage tracking, and third-party analytics integrations. Public-facing interfaces carry no third-party analytics scripts, eliminating the legal obligation to present cookie-consent banners under ePrivacy and equivalent regimes.
 
-## 2. Geospatial Anonymization Protocol
+## Geospatial anonymisation protocol
 
-Operational metrics are gathered exclusively through a First-Party Ping Architecture. This system converts network metadata into anonymized geospatial data without retaining PII:
+Operational metrics are gathered through a first-party ping architecture. The ingestion server applies mandatory IP masking — the final octet of the incoming IP address is dropped at receipt (for example, `192.168.1.45` becomes `192.168.1.0`). The resulting record is a coarse geospatial signal with no network-level identification. Interaction data — such as document-access events — is used to audit infrastructure security and measure platform usage patterns; no record is tied to an individual identity.
 
-* **Mandatory IP Masking:** The ingestion server instantly drops the final octet of the incoming IP address (e.g., `192.168.1.45` becomes `192.168.1.0`).
-* **Anonymized Auditing:** Interaction data—such as document downloads—is used strictly to map deal velocity and platform friction, ensuring compliance while maintaining infrastructure security.
+## Mandatory regulatory disclosure
 
-## 3. Mandatory Regulatory Disclosure
+All public-facing interfaces append the following disclosure to their legal blocks:
 
-All public-facing interfaces are required to append the following disclosure to their legal blocks:
-
-> *"Digital Infrastructure & Privacy Posture: This interface operates on a Zero-Execution and Zero-State Telemetry architecture. It does not deploy tracking cookies, retain session states, or harvest Personally Identifiable Information (PII). System interactions are limited to the collection of anonymized, masked network routing data strictly for the purpose of auditing infrastructure security and verifying document access."*
-
-This commitment positions PointSav as a benchmark for privacy-first institutional infrastructure.
+> "Digital Infrastructure and Privacy Posture: This interface operates on a zero-execution and zero-state telemetry architecture. It does not deploy tracking cookies, retain session states, or harvest personally identifiable information. System interactions are limited to the collection of anonymised, masked network routing data strictly for the purpose of auditing infrastructure security and verifying document access."
 
 ## See also
 

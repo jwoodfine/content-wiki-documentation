@@ -8,7 +8,7 @@ quality: complete
 short_description: "app-mediakit-marketing sirve páginas de inicio de marketing multi-inquilino desde un único binario Rust compilado estáticamente — sin PHP, sin MySQL, sin infraestructura de plugins — preservando al mismo tiempo la memoria muscular de WordPress.org en la superficie de URL y navegación orientada al operador."
 status: active
 bcsc_class: vendor-public
-last_edited: 2026-05-08
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: app-mediakit-marketing.md
 ---
@@ -31,12 +31,12 @@ HTTP, garantizando la integración con herramientas que esperan el vocabulario W
 
 ## Despliegues
 
-Dos despliegues de producción simultáneos operan en la VM foundry-workspace:
+Dos despliegues de producción simultáneos operan en una única máquina virtual de bajo coste:
 
-| Despliegue | Inquilino | Dominio | Puerto |
-|---|---|---|---|
-| `media-marketing-landing-1` | Woodfine | home.woodfinegroup.com | 9102 |
-| `media-marketing-landing-2` | PointSav | home.pointsav.com | 9101 |
+| Despliegue | Inquilino | Dominio |
+|---|---|---|
+| `media-marketing-landing-1` | Woodfine | home.woodfinegroup.com |
+| `media-marketing-landing-2` | PointSav | home.pointsav.com |
 
 ## Estado actual
 

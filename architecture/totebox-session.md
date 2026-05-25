@@ -8,7 +8,7 @@ quality: complete
 short_description: "A Totebox Session is an AI-assisted contributor session opened within a single Totebox Archive — scoped to the archive's declared repositories, unable to write outside them, and the standard entry point for all development work in Totebox Orchestration."
 status: active
 bcsc_class: forward-looking
-last_edited: 2026-05-08
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: totebox-session.es.md
 ---
@@ -19,7 +19,7 @@ This article describes how a session is opened, what it can and cannot do, the f
 
 ## How to open a session
 
-The intended entry point is `bin/open-archive.sh <archive-name>`, planned for invocation from the Command Session. When invoked, it is intended to:
+The intended entry point is the `open-archive` console command, planned for invocation from the hub session. When invoked, it is intended to:
 
 1. Read the archive manifest at `clones/<archive>/.agent/manifest.md`
 2. Print the archive name, tetrad status, AI gateway endpoint, and count of pending inbox messages
@@ -36,14 +36,14 @@ A Totebox Session:
 - Writes to any repository declared in the archive's manifest
 - Commits to the archive's staging branch (never directly to the canonical `main`)
 - Routes inference through the shared `service-slm` access-control gateway using the archive's module identifier
-- Sends cross-archive requests as messages to the Command Session (never writes to other archives)
+- Sends cross-archive requests as messages to the hub session (never writes to other archives)
 - Stages wiki drafts in `.agent/drafts-outbound/` for the editorial pipeline
 
 A Totebox Session does not:
 
-- Write workspace files (`CLAUDE.md`, `AGENT.md`, `bin/`, `pairings.yaml`)
+- Write workspace-level configuration or tool files
 - Write to the identity store
-- Access the canonical `vendor/` or `customer/` trees directly (those receive content by promotion, not direct write)
+- Access the canonical source trees directly (those receive content by promotion, not direct write)
 - Open connections to sibling archive sessions
 
 ## The Project Tetrad
@@ -57,7 +57,7 @@ Every Totebox Archive declares four legs of the Project Tetrad. A session's work
 | deployment | Provisioning the running instance in the deployment directory |
 | wiki | TOPIC draft files staged in `.agent/drafts-outbound/` |
 
-The Command Session ratifies tetrad completeness when all four legs are present.
+The hub session ratifies tetrad completeness when all four legs are present.
 
 ## The AI session coordination protocol
 
@@ -65,8 +65,8 @@ Sessions communicate through the inbox-and-outbox file protocol:
 
 - Each archive holds `.agent/inbox.md` and `.agent/outbox.md` files
 - A Totebox Session reads its inbox at session start and archives actioned messages
-- Outbound requests to other archives or to the Command Session are prepended to `.agent/outbox.md` (newest on top)
-- The Command Session sweeps cluster outboxes during workspace review and routes messages
+- Outbound requests to other archives or to the hub session are prepended to `.agent/outbox.md` (newest on top)
+- The hub session sweeps archive outboxes during workspace review and routes messages
 
 In the planned next phase, `app-orchestration-command` (CommandCentre) is intended to broker all cross-archive messages by HTTP, with each message transiting the access-control gateway and the immutable ledger automatically. The file-based protocol is intended to remain as the fallback and the development-mode mechanism.
 
@@ -85,7 +85,7 @@ Tiers are enforced by pairings, not string comparisons. A P3 contributor's `os-c
 
 ## Relationship to os-console
 
-`os-console` is the customer-facing entry point for opening a Totebox Archive. In the workspace, `bin/open-archive.sh` is the equivalent. Both are intended to perform the same function: read the archive manifest, validate the contributor's permission scope, set the session context, and open a working session inside the archive. The development environment uses the same pattern the customer is intended to use.
+`os-console` is the customer-facing entry point for opening a Totebox Archive. In the development workspace, the `open-archive` command is the equivalent. Both are intended to perform the same function: read the archive manifest, validate the contributor's permission scope, set the session context, and open a working session inside the archive. The development environment uses the same pattern the customer is intended to use.
 
 ## See also
 

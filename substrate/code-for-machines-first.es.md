@@ -8,7 +8,7 @@ quality: complete
 short_description: "Cada contrato entre servicios, registro de auditoría, configuración y ontología es legible por máquinas como superficie primaria; las interfaces para humanos son capas sobre APIs primero-para-máquinas."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-25
 editor: pointsav-engineering
 cites: []
 paired_with: code-for-machines-first.md
@@ -35,7 +35,7 @@ Cada artefacto es mutable e introspectable por máquinas. El endpoint `describe`
 
 ## Las dos excepciones limitadas
 
-Los documentos de doctrina y convención en prosa, incluido este artículo, tienen la prosa como su superficie primaria. El frontmatter es legible por máquinas; el cuerpo está escrito para lectores humanos. La documentación de temas y guías sigue el mismo patrón. Estas excepciones son explícitas y limitadas. El valor predeterminado es primero-para-máquinas.
+Los documentos de gobernanza y especificación en prosa, incluido este artículo, tienen la prosa como su superficie primaria. El frontmatter es legible por máquinas; el cuerpo está escrito para lectores humanos. La documentación de temas y guías sigue el mismo patrón. Estas excepciones son explícitas y limitadas. El valor predeterminado es primero-para-máquinas.
 
 ## Composición
 

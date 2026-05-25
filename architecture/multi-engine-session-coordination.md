@@ -7,21 +7,21 @@ category: architecture
 type: topic
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-18
+last_edited: 2026-05-25
 editor: pointsav-engineering
 cites: []
 paired_with: multi-engine-session-coordination.es.md
 ---
 
-The development workspace supports two AI engines (Claude Code and Gemini CLI) and two human operators on the same Linux box. The coordination problem is not theoretical — when two sessions touch the same `.git/index`, the working tree corrupts in ways that are expensive to diagnose.
+Totebox Orchestration supports multiple AI engines and human operators working concurrently on the same host. The coordination problem is not theoretical — when two sessions touch the same `.git/index`, the working tree corrupts in ways that are expensive to diagnose.
 
-The protocol is intentionally minimal: each engine writes `.agent/engines/<engine-id>/session.lock` at startup. The lock carries the engine identifier, role (Command or Totebox), parent PID, ISO-8601 start time, and the boot ID from `/proc/sys/kernel/random/boot_id`. The boot ID is the key — it lets a future session decide whether a lock is stale (a different boot ID means the VM rebooted between sessions, making the lock definitively dead) or potentially live (same boot ID, check `kill -0 <pid>` for process liveness).
+The protocol is intentionally minimal: each engine writes `.agent/engines/<engine-id>/session.lock` at startup. The lock carries the engine identifier, session role, parent PID, ISO-8601 start time, and the boot ID from `/proc/sys/kernel/random/boot_id`. The boot ID is the key — it lets a future session decide whether a lock is stale (a different boot ID means the host rebooted between sessions, making the lock definitively dead) or potentially live (same boot ID, check `kill -0 <pid>` for process liveness).
 
-The [[totebox-session]] model assigns exactly one Command Session to the workspace root. That Command Session writes `role.lock` at `.agent/role.lock`; a second attempt errors out unless the operator manually clears the lock. Totebox Sessions are scoped to individual archives and write their locks under `clones/<archive>/.agent/engines/<engine-id>/session.lock`.
+The [[totebox-session]] model assigns exactly one hub session to the workspace root. That session writes `role.lock` at `.agent/role.lock`; a second attempt errors out unless the operator manually clears the lock. Archive sessions are scoped to individual archives and write their locks under that archive's `.agent/engines/<engine-id>/session.lock`.
 
-What this does not solve: two engines opened in the same clone. The session-lock protocol detects the conflict and warns, but does not physically prevent it — `flock` on `.git/index` does that. A planned PreToolUse hook adds a check that refuses any Bash or Write tool call in a clone whose `session.lock` shows a different live engine. `bin/foundry-health.sh` includes a cross-user `index.lock` detector that surfaces same-repo locks held by different UIDs.
+What this does not solve: two engines opened in the same archive. The session-lock protocol detects the conflict and warns, but does not physically prevent it — `flock` on `.git/index` does that. A planned PreToolUse hook adds a check that refuses any write call in an archive whose `session.lock` shows a different live engine. The workspace health-check tool includes a cross-user `index.lock` detector that surfaces same-archive locks held by different operators.
 
-Stale-lock cleanup is automatic when boot IDs disagree, manual otherwise. A cleanup pass on 2026-05-18 removed 8 such locks — 3 from a previous boot, 5 from dead PIDs in the current boot. Command Sessions should run `foundry-health.sh` early and clear stale locks before opening any archive.
+Stale-lock cleanup is automatic when boot IDs disagree, manual otherwise. A cleanup pass on 2026-05-18 removed 8 such locks — 3 from a previous boot, 5 from dead PIDs in the current boot. Hub sessions should run the health-check tool early and clear stale locks before opening any archive.
 
 ## See also
 

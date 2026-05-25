@@ -9,7 +9,7 @@ short_description: "The sovereign airlock is the staged-commit protocol that enf
 status: active
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-19
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: sovereign-airlock-doctrine.es.md
 ---
@@ -18,7 +18,7 @@ The **sovereign airlock** is the commit and deployment protocol that enforces a 
 
 ## The four identities
 
-The platform's identity store defines four named identities in `~/Foundry/identity/`, each backed by a dedicated SSH key:
+The platform's identity store defines four named identities, each backed by a dedicated SSH key stored in an operator-controlled directory that no session can read or modify directly:
 
 | Identity | Key | Role | Scope |
 |---|---|---|---|
@@ -27,7 +27,7 @@ The platform's identity store defines four named identities in `~/Foundry/identi
 | `ps-administrator` | `id_pointsav-administrator` | Push-only | Canonical `pointsav` org on GitHub |
 | `mcorp-administrator` | `id_woodfine-administrator` | Push-only | Canonical `woodfine` org on GitHub |
 
-The staging identities (`jwoodfine`, `pwoodfine`) are used exclusively through `bin/commit-as-next.sh`. Their keys are present only in `~/Foundry/identity/` and are never elevated to push rights on canonical repos. The admin identities hold push rights to canonical repositories but are never used as commit authors.
+The staging identities (`jwoodfine`, `pwoodfine`) are used exclusively through the platform's commit tooling. Their keys are held in the operator-controlled identity store and are never elevated to push rights on canonical repositories. The admin identities hold push rights to canonical repositories but are never used as commit authors.
 
 ## The commit flow
 
@@ -36,26 +36,26 @@ Work moves through three tiers:
 ```
 Staging tier (jwoodfine, pwoodfine commits)
        │
-       │ bin/promote.sh  (Stage 6 — operator-initiated, Command Session only)
+       │ Stage 6 promotion — operator-initiated, admin identity only
        ▼
 Canonical vendor tier  (pointsav/* — push via ps-administrator SSH alias)
        │
-       │ factory-release-engineering governance
+       │ Release engineering governance
        ▼
 Canonical customer tier  (woodfine/* — push via mcorp-administrator SSH alias)
 ```
 
-`bin/commit-as-next.sh` alternates authorship between `jwoodfine` and `pwoodfine` on successive commits. `bin/promote.sh` packages staged commits and pushes to the appropriate canonical remote using the admin identity's SSH alias (`github.com-pointsav-administrator` or `github.com-woodfine-administrator`). The admin identities' keys are configured for push authentication only; they do not appear as commit authors in `git log`.
+The commit tooling alternates authorship between `jwoodfine` and `pwoodfine` on successive commits. The promotion step packages staged commits and pushes to the appropriate canonical remote using the admin identity's SSH alias. The admin identities' keys are configured for push authentication only; they do not appear as commit authors in the repository log.
 
 ## The structural guarantee
 
-The airlock's guarantee is not "users are unlikely to push directly" but rather "direct pushing is structurally impossible from a staging session." A staging session that attempts to `git push origin main` from within a Totebox Archive is pushing via the staging remote, not canonical origin. Pushing to canonical requires the admin SSH alias, which requires the admin key, which requires the operator to explicitly invoke `bin/promote.sh` from a Command Session.
+The airlock's guarantee is not "users are unlikely to push directly" but rather "direct pushing is structurally impossible from a staging session." A staging session that issues a push command targets the staging remote, not the canonical repository. Reaching the canonical repository requires the admin SSH alias, which requires the admin key, which requires the operator to explicitly initiate the Stage 6 promotion step.
 
-This separation serves two functions for regulated operators. First, it makes the staging tier a genuine review boundary: promoted commits carry implicit sign-off that the operator reviewed the work from a Command Session before authorising the canonical push. Second, it keeps the commit history clean — every commit in the canonical repository was authored by a known staging identity, reviewed at a known point in time, and promoted by a deliberate operator action.
+This separation serves two functions for regulated operators. First, it makes the staging tier a genuine review boundary: promoted commits carry implicit sign-off that the operator reviewed the work before authorising the canonical push. Second, it keeps the commit history clean — every commit in the canonical repository was authored by a known staging identity, reviewed at a known point in time, and promoted by a deliberate operator action.
 
 ## Key custody discipline
 
-All four keys reside in `~/Foundry/identity/` at permissions `0600`, accessible only to the `mathew` system user. Session tooling reads keys from this directory; no key is copied into a repo or exported to a session environment. The `chmod` rule is enforced by a pre-commit hook that blocks commits containing key material matching the `**/id_*` pattern.
+All four keys reside in the operator-controlled identity directory at permissions `0600`, accessible only to the system user that owns the workspace. Session tooling reads keys from this directory; no key is copied into a repository or exported to a session environment. A pre-commit hook blocks commits containing key material, enforcing the custody rule at the technical layer rather than the policy layer.
 
 ## See also
 

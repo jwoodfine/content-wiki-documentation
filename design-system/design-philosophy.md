@@ -10,7 +10,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: design-philosophy.es.md
 cites:
@@ -18,6 +18,8 @@ cites:
  - dtcg-spec
  - doctrine-38
 ---
+
+The PointSav design system is a self-hosted, customer-owned substrate for managing design tokens, components, and design-decision research. It addresses four structural gaps in the 2026 design-system landscape — the absence of machine-readable design rationale, enterprise-tier pricing that excludes small and medium businesses (SMBs), editor lock-in, and insufficient AI-consumable structure — through three architectural inversions of the dominant platform model.
 
 ## Why the substrate exists
 
@@ -62,7 +64,7 @@ The well-structured substrate IS the message the SMB sends to its implementation
 - JS-framework-locked components (HTML+CSS+ARIA recipes are the canonical form).
 - Container packaging (per [[zero-container-runtime]]).
 - Editor lock-in (single-editor-only features rejected).
-- Marketing vocabulary in research files (per workspace §6).
+- Marketing vocabulary in research files (research files describe structural rationale, not product positioning).
 
 ## References
 

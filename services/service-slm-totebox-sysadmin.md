@@ -8,7 +8,7 @@ quality: complete
 short_description: "How service-slm becomes the operational assistant and support centre for Totebox Archive and Totebox Orchestration deployments — the training strategy, the ten operational task families, and the four-stage pipeline from corpus capture to per-tenant LoRA adapters."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-08
+last_edited: 2026-05-25
 editor: pointsav-engineering
 cites:
  - olmo3-allenai
@@ -85,7 +85,7 @@ Each new task-type starts at `review` stage. Promotion to `spot-check` requires 
 
 **Stage 4 — Multi-adapter composition at request time.** The Doorman composes up to three adapters per request: `base ⊕ engineering-pointsav ⊕ cluster-<name>` or `base ⊕ apprenticeship-pointsav ⊕ tenant-<name>`. Tier B vLLM Multi-LoRA serves the composition [vllm-multi-lora] [s-lora-2024] [lorax-predibase]. Every request's audit-ledger entry records the composed adapter set, making the influence of each adapter traceable.
 
-Stage 5 — continued pretraining into a PointSav-OLMo base — is a long-horizon trajectory planned for workspace v0.5.0, contingent on corpus accumulation crossing 50–100B tokens across all tenants. This is an intended capability; actual timeline depends on corpus growth rate and operational conditions [olmo3-allenai]. [ni-51-102] [osc-sn-51-721]
+Stage 5 — continued pretraining into a PointSav-OLMo base — is a long-horizon trajectory planned for a future platform milestone, contingent on corpus accumulation crossing 50–100B tokens across all tenants. This is an intended capability; actual timeline depends on corpus growth rate and operational conditions [olmo3-allenai]. [ni-51-102] [osc-sn-51-721]
 
 ## Customer product tiers
 

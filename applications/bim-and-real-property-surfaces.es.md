@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: bim-and-real-property-surfaces.md
 references:
@@ -33,7 +33,7 @@ La aclaración estructural más importante: PointSav opera dos sistemas de dise�
 | `pointsav-design-system` | `github.com/pointsav` (vendor) | Colaboradores de PointSav y operadores de flota | Sustrato de UI y UX para [[console-os|os-console]], [[os-workplace]] y toda la familia de SO vendor |
 | `woodfine-design-bim` | `github.com/woodfine` (cliente) | Arquitectos, ingenieros, operadores inmobiliarios | Tokens BIM, componentes IFC[^2], primitivas visuales geoespaciales, sistema de diseño inmobiliario |
 
-Los dos sistemas comparten metodología de autoría — frontmatter `foundry-draft-v1`, estructura de soberanía de seis niveles, nomenclatura estricta en kebab-case — pero no comparten contenido. La separación es estructural: BIM concierne a los bienes raíces; el sistema de diseño del vendor concierne a las superficies del sistema operativo. El contenido o los tokens específicos de los flujos de trabajo BIM pertenecen a `woodfine-design-bim`, nunca a `pointsav-design-system`.
+Los dos sistemas comparten metodología de autoría — un esquema común de metadatos estructurados, estructura de soberanía de seis niveles, nomenclatura estricta en minúsculas con guiones — pero no comparten contenido. La separación es estructural: BIM concierne a los bienes raíces; el sistema de diseño del vendor concierne a las superficies del sistema operativo. El contenido o los tokens específicos de los flujos de trabajo BIM pertenecen a `woodfine-design-bim`, nunca a `pointsav-design-system`.
 
 El despliegue público previsto para `woodfine-design-bim` es `bim.woodfinegroup.com`. Las especificaciones completas de componentes BIM, definiciones de tokens y primitivas geoespaciales se mantienen allí.
 

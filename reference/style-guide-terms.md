@@ -8,7 +8,7 @@ quality: complete
 short_description: "Editorial standards for terms-of-use documents (LEGAL genre) in the platform: opening clause, required sections, defined-term discipline, liability-disclaimer conventions, and the governance review requirement."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-24
+last_edited: 2026-05-25
 editor: pointsav-engineering
 cites: []
 paired_with: style-guide-terms.es.md
@@ -46,7 +46,7 @@ Optional sections (at the end): Governing law and jurisdiction, Contact.
 
 ## Register and tone
 
-Legal-plain. Active voice where possible. Every defined Term is capitalised on every use after its definition. BCSC posture applies where the service touches investment or disclosure material: forward-looking claims about service features or roadmap carry "planned / intended / may / target" language.
+Legal-plain. Active voice where possible. Every defined Term is capitalised on every use after its definition. Where the service touches investment or disclosure material, forward-looking claims about service features or roadmap carry "planned / intended / may / target" language, in compliance with Canadian securities continuous-disclosure requirements.
 
 ## See also
 

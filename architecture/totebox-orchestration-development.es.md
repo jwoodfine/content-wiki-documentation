@@ -8,7 +8,7 @@ quality: complete
 short_description: "El entorno de desarrollo de PointSav está desplegado como una instancia de orquestación Totebox — el espacio de trabajo que construye la plataforma se ejecuta sobre la misma arquitectura que la plataforma entrega a los clientes."
 status: active
 bcsc_class: forward-looking
-last_edited: 2026-05-08
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: totebox-orchestration-development.md
 ---
@@ -50,13 +50,13 @@ La sesión de Comando es la única sesión que puede escribir archivos a nivel d
 
 Una sesión Totebox se abre dentro de un archivo específico. Opera dentro de ese archivo — escribiendo código, confirmando en ramas de staging, redactando contenido del wiki, actualizando el despliegue. No escribe en otros archivos, no modifica archivos del espacio de trabajo y no tiene acceso directo al almacén de identidades.
 
-El punto de entrada planificado es `bin/open-archive.sh <archive-name>`, previsto para leer el manifiesto del archivo, mostrar el estado de la tétrada y los mensajes pendientes, establecer las variables de entorno con alcance al archivo y abrir una sesión en el directorio raíz del archivo. Esto está pensado para reflejar cómo un cliente o miembro de la comunidad abre un archivo Totebox a través de `os-console`: el flujo de trabajo de desarrollo es idéntico al flujo del cliente.
+El punto de entrada planificado es el comando de consola `open-archive`, previsto para leer el manifiesto del archivo, mostrar el estado de la tétrada y los mensajes pendientes, establecer las variables de entorno con alcance al archivo y abrir una sesión en el directorio raíz del archivo. Esto está pensado para reflejar cómo un cliente o miembro de la comunidad abre un archivo Totebox a través de `os-console`: el flujo de trabajo de desarrollo es idéntico al flujo del cliente.
 
 ## La sesión raíz retirada
 
 Las versiones anteriores del flujo incluían una sesión raíz que se abría directamente dentro de los repositorios de ingeniería (`vendor/content-wiki-*`, `vendor/pointsav-design-system`). Los clientes nunca tuvieron un equivalente — no existe modo raíz en el modelo Totebox — por lo que el rol carecía de justificación arquitectónica.
 
-El reemplazo utiliza dos archivos Totebox de desarrollo dedicados: `project-source` para el trabajo del nivel canónico de PointSav y `project-woodfine` para el trabajo del nivel de cliente de Woodfine, ambos planificados. Todo el trabajo del repositorio se prevé que fluya a través de estos archivos y luego se promueva al libro mayor canónico mediante la etapa 6 (`bin/promote.sh`). Los directorios `vendor/` y `customer/` son destinos del libro mayor canónico — el trabajo se envía hacia ellos, nunca se abre en ellos para sesiones de IA.
+El reemplazo utiliza dos archivos Totebox de desarrollo dedicados: `project-source` para el trabajo del nivel canónico de PointSav y `project-woodfine` para el trabajo del nivel de cliente de Woodfine, ambos planificados. Todo el trabajo del repositorio se prevé que fluya a través de estos archivos y luego se promueva al libro mayor canónico mediante la canalización de la etapa 6. Los directorios de destino canónico son destinos del libro mayor — el trabajo se envía hacia ellos, nunca se abre en ellos para sesiones de IA.
 
 ## La tétrada del proyecto
 
@@ -94,7 +94,7 @@ La afirmación arquitectónica es demostrable a partir de artefactos ya en su lu
 - El espacio de trabajo está declarado como `vault-privategit-source-1` en `MANIFEST.md` — una instancia Totebox en sentido canónico.
 - Trece archivos Totebox están activos, cada uno siguiendo la disciplina de la tétrada del proyecto.
 - La pasarela compartida `service-slm` está operativamente activa (177 de 177 pruebas aprobadas) y sirve como capa de enrutamiento de IA de la orquestación.
-- El flujo de confirmaciones — ramas de staging promovidas mediante `bin/promote.sh` al libro mayor canónico — es la canalización de promoción Totebox.
+- El flujo de confirmaciones — ramas de staging promovidas mediante la canalización de la etapa 6 al libro mayor canónico — es la canalización de promoción Totebox.
 - El protocolo de archivos buzón-de-entrada-y-salida es el protocolo de coordinación entre sesiones de IA — el mismo patrón que los clientes están previstos a usar para la comunicación entre archivos.
 
 El siguiente paso previsto es la aplicación planificada `app-orchestration-command`: un agregador concentrador que expone una interfaz HTTP activa para la salud de los archivos, el enrutamiento de mensajes y las verificaciones de permisos del personal. El cluster (`project-command`) está provisionado; la aplicación es el siguiente hito de implementación.

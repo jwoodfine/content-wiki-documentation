@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: bim-and-real-property-surfaces.es.md
 references:
@@ -33,7 +33,7 @@ The single most important structural clarification: PointSav operates two distin
 | `pointsav-design-system` | `github.com/pointsav` (vendor) | PointSav contributors and fleet operators | UI and UX substrate for [[console-os|os-console]], [[os-workplace]], and the full vendor OS family |
 | `woodfine-design-bim` | `github.com/woodfine` (customer) | Architects, engineers, real-property operators | BIM tokens, IFC components[^2], geospatial visual primitives, real-property design system |
 
-The two systems share authoring methodology — `foundry-draft-v1` frontmatter, the six-tier sovereignty structure, strict kebab-case naming — but they do not share content. The separation is structural: BIM concerns real property; the vendor design system concerns operating-system surfaces. Content or tokens that are specific to BIM workflows belong in `woodfine-design-bim`, never in `pointsav-design-system`.
+The two systems share authoring methodology — a common structured-metadata schema, the six-tier sovereignty structure, strict lowercase-hyphenated naming — but they do not share content. The separation is structural: BIM concerns real property; the vendor design system concerns operating-system surfaces. Content or tokens that are specific to BIM workflows belong in `woodfine-design-bim`, never in `pointsav-design-system`.
 
 The intended public deployment for `woodfine-design-bim` is `bim.woodfinegroup.com`. Full BIM component specifications, token definitions, and geospatial primitives are maintained there.
 

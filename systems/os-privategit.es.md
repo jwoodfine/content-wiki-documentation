@@ -8,8 +8,8 @@ category: systems
 language: es
 paired_with: os-privategit.md
 status: stub
-last_edited: 2026-05-08
+last_edited: 2026-05-25
 editor: pointsav-engineering
 ---
 
-Private Git OS es la capa del sistema operativo que aloja la infraestructura Git privada que sustenta el espacio de trabajo de desarrollo y el flujo de confirmaciones de nivel de preparación.
+`os-privategit` es la capa del sistema operativo que aloja la infraestructura soberana de control de versiones de la plataforma — repositorios Git privados y alojamiento del sistema de diseño — en hardware propiedad del operador, sin enrutar el código fuente a través de un proveedor externo de alojamiento Git.

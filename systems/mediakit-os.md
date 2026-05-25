@@ -9,7 +9,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: mediakit-os.es.md
 short_description: "os-mediakit is the public-facing operating system in the PointSav family, hosting a company's marketing website, internal wiki, and compliance newsroom on a single sovereign appliance the company owns outright."
@@ -75,5 +75,5 @@ Both postures use the same `os-mediakit` binary. The transition is one command: 
 - [[totebox-os]] — the internal vault that pushes signed content to os-mediakit
 - [[diode-standard]] — the unidirectional adapter that separates the public surface from the private vault
 - [[app-mediakit-knowledge]] — the documentation wiki surface
-- [[compliance-and-continuous-disclosure]] — BCSC posture and continuous-disclosure obligations
+- [[compliance-and-continuous-disclosure]] — continuous-disclosure obligations and regulatory posture
 - [[deployment-patterns]] — how os-mediakit appears in each canonical deployment configuration

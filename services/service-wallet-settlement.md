@@ -8,23 +8,23 @@ type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-09
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: service-wallet-settlement.es.md
 references:
  - id: 1
- text: "PointSav Architecture claim #53 — Service-Wallet Settlement (ratified v0.1.0)"
+ text: "PointSav platform specification: per-tenant accounting ledger design for reverse-flow settlement — structural properties of the service-wallet component."
  - id: 2
- text: "PointSav Architecture claim #52 — Reverse-Flow Substrate"
+ text: "PointSav platform specification: reverse-flow substrate — the revenue-routing mechanism through which data marketplace proceeds reach operator wallets."
  - id: 3
- text: "PointSav Architecture claim #48 — Customer-Owned Graph IP"
+ text: "PointSav platform specification: customer-owned graph intellectual property — the portability and ownership guarantees for operator-generated graph data."
  - id: 4
- text: "PointSav Architecture claim #26 — WORM Ledger"
+ text: "PointSav platform specification: Write-Once-Read-Many (WORM) ledger design — the append-only storage substrate underpinning all platform accounting records."
 ---
 
-`service-wallet` (Ring 2) is the per-tenant internal accounting ledger that records and settles all reverse-flow revenue from the data marketplace and ad exchange.
+`service-wallet` is the per-tenant internal accounting ledger that records and settles all reverse-flow revenue from the platform's data marketplace and ad exchange. The service operates at Ring 2 — the knowledge-and-processing layer of the platform — and holds no funds: it tracks credits, debits, and fees as cryptographically signed entries, with withdrawal to the operator's own wallet or bank account handled outside the platform.
 
-This is the fundamental physics of 2030 hyperscaler infrastructure regarding Service-Wallet Settlement.[^1]
+The structural design properties are specified in the platform accounting ledger design.[^1]
 
 ## Structural Accounting Isolation
 
@@ -99,7 +99,7 @@ Industry reference: direct-payment-to-rights-holder models at scale validate tha
 
 Every withdrawal receipt is anchored to Sigstore Rekor. The anchor record includes: tenant ID, ledger sequence at withdrawal, amount, chain, and transaction hash. This provides a tamper-evident external timestamp suitable for accounting and legal purposes.
 
-The full ledger history is queryable by the tenant at any time. The export format is JSONL — the same format as the ingestion record. Portability is unconditional; the ledger travels with the tenant on exit per the fundamental physics of 2030 hyperscaler infrastructure.[^3]
+The full ledger history is queryable by the tenant at any time. The export format is JSONL — the same format as the ingestion record. Portability is unconditional; the ledger travels with the tenant on exit per the customer-owned data portability guarantee.[^3]
 
 ## See also
 

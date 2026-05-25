@@ -9,22 +9,16 @@ status: pre-build
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-24
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: elastic-compute-lora-training-pipeline.es.md
 short_description: "Elastic Compute #1 runs a nightly two-phase pipeline that rebuilds the deployment DataGraph and produces LoRA adapter weights for the workspace language model. Phase 1 uses a 32B inference model for entity extraction; Phase 2 trains a 7B parameter-efficient adapter from engineering and apprenticeship corpora."
 cites: []
 ---
 
-Elastic Compute #1 is a g2-standard-4 Google Cloud spot instance equipped with a
-single NVIDIA L4 GPU (24 GB VRAM). Each night it runs a two-phase, four-hour
-pipeline that produces fine-tuned adapter weights for the workspace language
-model. Phase 1 extracts structured business entities from the operator data
-corpus and writes them to a property graph. Phase 2 reads accumulated
-engineering and apprenticeship training tuples, checks whether the corpus
-has crossed a minimum threshold, and runs a parameter-efficient training
-pass against the base model. The two phases are mandatory and sequential —
-they cannot overlap because both require exclusive access to the L4 GPU.
+The PointSav compounding substrate requires periodic retraining to incorporate the operator interactions and editorial decisions accumulated since the previous cycle. Elastic Compute #1 is the compute node that runs this retraining nightly — a GPU-equipped cloud spot instance that rebuilds the knowledge graph and produces updated LoRA (Low-Rank Adaptation) adapter weights for the platform's local language model. The pipeline operationalises the theoretical claim that every productive session improves the platform for the next one: it converts raw interaction data into model weights the next session inherits.
+
+Elastic Compute #1 is a g2-standard-4 Google Cloud spot instance equipped with a single NVIDIA L4 GPU (24 GB VRAM). Each night it runs a two-phase, four-hour pipeline that produces fine-tuned adapter weights for the workspace language model. Phase 1 extracts structured business entities from the operator data corpus and writes them to a property graph. Phase 2 reads accumulated engineering and apprenticeship training tuples, checks whether the corpus has crossed a minimum threshold, and runs a parameter-efficient training pass against the base model. The two phases are mandatory and sequential — they cannot overlap because both require exclusive access to the L4 GPU.
 
 ## Why the phases are separate
 

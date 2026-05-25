@@ -9,12 +9,12 @@ short_description: "fs-anchor-emitter genera puntos de control firmados del libr
 status: active
 audience: vendor-public
 bcsc_class: current-fact
-last_edited: 2026-05-08
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: fs-anchor-emitter.md
 ---
 
-`fs-anchor-emitter` es el componente que genera puntos de control firmados del libro mayor inmutable Write-Once-Read-Many a cadencia horaria y los prepara para el anclaje externo al registro público de transparencia Sigstore Rekor con cadencia mensual — el mecanismo que hace que el estado del libro mayor de la plataforma sea criptográficamente auditable desde fuera de la plataforma. El emisor opera en la Capa 4 de la pila WORM, lee el estado actual del árbol de mosaicos por inquilino, genera un punto de control en formato `signed-note` y lo almacena en la ruta autoritativa bajo `$FS_LEDGER_ROOT/<moduleId>/checkpoint`. El proceso mensual de anclaje del espacio de trabajo consume esos puntos de control y los publica en el registro público de transparencia.
+`fs-anchor-emitter` es el componente que genera puntos de control firmados del libro mayor inmutable Write-Once-Read-Many a cadencia horaria y los prepara para el anclaje externo al registro público de transparencia Sigstore Rekor con cadencia mensual — el mecanismo que hace que el estado del libro mayor de la plataforma sea criptográficamente auditable desde fuera de la plataforma. El emisor opera en la Capa 4 de la pila WORM, lee el estado actual del árbol de mosaicos por inquilino, genera un punto de control en formato `signed-note` y lo almacena en la ruta autoritativa bajo `$FS_LEDGER_ROOT/<moduleId>/checkpoint`. El proceso mensual de anclaje de la plataforma consume esos puntos de control y los publica en el registro público de transparencia.
 
 ## Requisitos de Configuración
 

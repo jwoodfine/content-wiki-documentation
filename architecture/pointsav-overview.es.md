@@ -9,7 +9,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: pointsav-overview.md
 short_description: "PointSav Digital Systems es un proveedor de tecnología que construye sistemas operativos soberanos y con capacidad de instalación local para gestión de registros y administración empresarial. Se encuentra dentro de una estructura de tres organizaciones establecida por Woodfine Capital Projects Inc."
@@ -46,7 +46,7 @@ PointSav tiene previsto asociarse con la Sovereign Data Foundation para supervis
 
 ## Modelo de contribuidores
 
-El trabajo de ingeniería fluye a través de identidades de contribuidores de nivel de staging: `jwoodfine` y `pwoodfine` son los dos contribuidores de staging establecidos, ambos empleados de Woodfine Management Corp. que envían cambios a sus propias bifurcaciones de GitHub. La función de administración del proveedor acepta contribuciones mediante fusión-aplastada — el momento en que la propiedad intelectual se transfiere formalmente del contribuidor al proveedor. La organización cliente extrae etiquetas de versión del proveedor. Se aplica una compartimentación de doble cara: los contribuidores nunca envían directamente a los repositorios del cliente; la organización cliente nunca tiene visibilidad de las bifurcaciones de los contribuidores.
+El trabajo de ingeniería fluye a través de identidades de contribuidores de nivel de staging — contribuidores establecidos que son empleados de Woodfine Management Corp. y envían cambios a sus propias bifurcaciones de GitHub. La función de administración del proveedor acepta contribuciones mediante fusión-aplastada — el momento en que la propiedad intelectual se transfiere formalmente del contribuidor al proveedor. La organización cliente extrae etiquetas de versión del proveedor. Se aplica una compartimentación de doble cara: los contribuidores nunca envían directamente a los repositorios del cliente; la organización cliente nunca tiene visibilidad de las bifurcaciones de los contribuidores.
 
 ## Véase también
 
@@ -54,4 +54,4 @@ El trabajo de ingeniería fluye a través de identidades de contribuidores de ni
 - [[deployment-patterns]] — las seis configuraciones canónicas para despliegues de PointSav
 - [[os-family-overview]] — los ocho sistemas operativos que construye PointSav
 - [[machine-based-auth]] — el modelo de seguridad que subyace a la plataforma
-- [[compliance-and-continuous-disclosure]] — postura BCSC y obligaciones de divulgación continua
+- [[compliance-and-continuous-disclosure]] — obligaciones de divulgación continua y postura de cumplimiento

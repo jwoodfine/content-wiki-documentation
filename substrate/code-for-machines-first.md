@@ -8,7 +8,7 @@ quality: complete
 short_description: "Every inter-service contract, audit record, configuration, and ontology is machine-readable as a primary surface; human-facing interfaces are skins on machine-first APIs."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-25
 editor: pointsav-engineering
 cites: []
 paired_with: code-for-machines-first.es.md
@@ -36,7 +36,7 @@ Every artefact is machine-mutable and machine-introspectable. The MCP `describe`
 
 ## The two narrow exceptions
 
-Doctrine and convention prose documents, including this article, have prose as their primary surface. The frontmatter is machine-readable; the body is written for human readers. Operations on the body — refining register, resolving citations — are AI-assisted, but the artefact's primary surface is human.
+Governance and specification prose documents, including this article, have prose as their primary surface. The frontmatter is machine-readable; the body is written for human readers. Operations on the body — refining register, resolving citations — are AI-assisted, but the artefact's primary surface is human.
 
 Topic and guide documentation follows the same pattern. Frontmatter is structured and machine-parseable; body prose is for readers. These exceptions are explicit and narrow. The default is machine-first.
 

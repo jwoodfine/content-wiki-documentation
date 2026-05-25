@@ -8,7 +8,7 @@ quality: complete
 short_description: "app-mediakit-marketing serves multi-tenant marketing landing pages from a single statically-compiled Rust binary — no PHP, no MySQL, no plugin infrastructure — while preserving WordPress.org muscle memory at the operator-facing URL and navigation surface."
 status: active
 bcsc_class: vendor-public
-last_edited: 2026-05-08
+last_edited: 2026-05-25
 editor: pointsav-engineering
 cites: []
 paired_with: app-mediakit-marketing.es.md
@@ -44,12 +44,12 @@ serves both the Woodfine and PointSav tenants through environment variable confi
 
 ## Deployments
 
-Two simultaneous production deployments operate on the foundry-workspace VM:
+Two simultaneous production deployments operate on a single low-cost virtual machine:
 
-| Deployment | Tenant | Domain | Port |
-|---|---|---|---|
-| `media-marketing-landing-1` | Woodfine | home.woodfinegroup.com | 9102 |
-| `media-marketing-landing-2` | PointSav | home.pointsav.com | 9101 |
+| Deployment | Tenant | Domain |
+|---|---|---|
+| `media-marketing-landing-1` | Woodfine | home.woodfinegroup.com |
+| `media-marketing-landing-2` | PointSav | home.pointsav.com |
 
 Both instances serve from the same binary, separated by environment variable sets in
 each systemd unit.
@@ -63,8 +63,8 @@ full WordPress-equivalent admin dashboard are planned for subsequent milestones.
 ## Tier Compatibility
 
 The server is Tier 0 compatible: it runs on a single low-cost VM alongside other
-PointSav substrate services without requiring dedicated compute. Both deployments run
-concurrently on the foundry-workspace VM (e2-medium, 2 vCPU, 4 GB RAM).
+PointSav substrate services without requiring dedicated compute. Both production
+deployments run concurrently on the same VM instance (2 vCPU, 4 GB RAM).
 
 ## See also
 

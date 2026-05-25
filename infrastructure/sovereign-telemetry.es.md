@@ -10,7 +10,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: sovereign-telemetry.md
 cites: []

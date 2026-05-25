@@ -8,7 +8,7 @@ quality: complete
 short_description: A faithful public summary of the PointSav constitutional charter — six pillars, fifty-two structural claims, eight cross-industry inventions, a three-tier compute model, three-ring service architecture, and the economic model that sustains it.
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-25
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -119,7 +119,7 @@ The text versions independently of any single repository. PATCH increments per a
 
 MAJOR bumps require a 30-day public comment period. MINOR bumps produce a signed, versioned, publicly-citable bundle. Every commit is signed with SSH-based signing and anchored to a public transparency log via the Integrity Anchor.
 
-The BCSC Continuous Disclosure Posture applies to all claims, conventions, and public artifacts: forward-looking statements carry "planned," "intended," or "may" language with a stated basis and cautionary framing. The text does not describe future capabilities as current facts.
+Forward-looking statements in this document carry "planned," "intended," or "may" language with a stated basis and cautionary framing. The text does not describe future capabilities as current facts.
 
 ## See also
 

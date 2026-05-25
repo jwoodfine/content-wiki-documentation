@@ -8,7 +8,7 @@ quality: complete
 short_description: Resumen público fiel de la carta constitucional de PointSav — seis pilares, cincuenta y dos afirmaciones de salto adelante, ocho invenciones operativas entre industrias, y el modelo económico que las sostiene.
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-25
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -20,7 +20,7 @@ paired_with: foundry-doctrine-overview.md
 
 La **arquitectura PointSav 2030** es la carta constitucional del entorno de desarrollo de software de PointSav. Define los seis pilares de la arquitectura de la plataforma, cincuenta y dos afirmaciones de salto adelante que constituyen sus compromisos estructurales, ocho invenciones operativas entre industrias, y el modelo económico que la sostiene. La propia doctrina es un artefacto público — versionada, firmada y publicada bajo CC BY 4.0 en cada versión MINOR.
 
-Este artículo es un resumen público de la doctrina v0.1.0 ALPHA (ratificada el 30 de abril de 2026). El texto autorizado es DOCTRINE.md, disponible a través del repositorio `pointsav/factory-release-engineering`.
+Este artículo es un resumen público de la carta constitucional v0.1.0 ALPHA (ratificada el 30 de abril de 2026). El texto autorizado está disponible a través del repositorio `pointsav/factory-release-engineering`.
 
 ## Los Seis Pilares
 
@@ -28,7 +28,7 @@ Los seis pilares son los invariantes de la arquitectura. No son principios aspir
 
 **1. Solo texto plano.** UTF-8 Markdown para prosa, YAML simple para el enrutamiento. Sin formatos binarios, sin bases de datos, sin daemons, sin índices activos a nivel del sustrato.
 
-**2. Alcance geométrico.** El rol de una sesión está determinado por el directorio en el que comienza — no por configuración ni declaración. Master en la raíz del espacio de trabajo; Root en cualquier raíz de repositorio de ingeniería; Task dentro de un directorio de clúster por proyecto.
+**2. Alcance geométrico.** El rol de una sesión está determinado por el directorio en el que comienza — no por configuración ni declaración. El coordinador del espacio de trabajo opera en la raíz; las sesiones de archivo operan dentro del archivo que les corresponde; las sesiones de tarea operan dentro de un directorio de clúster por proyecto.
 
 **3. Flujo unidireccional.** El desarrollo de software siempre procede proveedor → cliente → despliegues. Sin escrituras directas inversas. Todas las solicitudes entre capas viajan a través de un buzón de archivos.
 

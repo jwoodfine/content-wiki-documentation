@@ -8,7 +8,7 @@ quality: complete
 short_description: "PointSav's development environment is itself deployed as a Totebox Orchestration instance — the workspace that builds the platform runs on the same architecture the platform delivers to customers."
 status: active
 bcsc_class: forward-looking
-last_edited: 2026-05-08
+last_edited: 2026-05-25
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -53,13 +53,13 @@ The Command Session is the only session that can write workspace-level files. In
 
 A Totebox Session opens within a specific archive. It works inside that archive — writing code, committing to staging branches, drafting wiki content, updating the deployment. It does not write to other archives, does not modify workspace files, and does not have direct access to the identity store.
 
-The intended entry point is `bin/open-archive.sh <archive-name>`, planned to read the archive manifest, surface the archive's tetrad status and pending messages, set archive-scoped environment variables, and open a session at the archive's root directory. This is intended to mirror how a customer or community member opens a Totebox Archive via `os-console`: the development workflow is the same as the customer workflow.
+The intended entry point is the `open-archive` console command, planned to read the archive manifest, surface the archive's tetrad status and pending messages, set archive-scoped environment variables, and open a session at the archive's root directory. This is intended to mirror how a customer or community member opens a Totebox Archive via `os-console`: the development workflow is the same as the customer workflow.
 
 ## The retired Root session
 
 Earlier versions of the workflow included a Root session that opened directly inside engineering repositories (`vendor/content-wiki-*`, `vendor/pointsav-design-system`). Customers never had an equivalent — there is no Root mode in the Totebox model — so the role had no architectural justification.
 
-The replacement uses two dedicated development Totebox Archives: `project-source` for PointSav canonical-tier work and `project-woodfine` for Woodfine customer-tier work, both planned. All repository work is intended to flow through these archives, then promote to the canonical ledger via Stage 6 (`bin/promote.sh`). The `vendor/` and `customer/` directories are canonical ledger destinations — work is pushed to them, never opened in them for AI sessions.
+The replacement uses two dedicated development Totebox Archives: `project-source` for PointSav canonical-tier work and `project-woodfine` for Woodfine customer-tier work, both planned. All repository work is intended to flow through these archives, then promote to the canonical ledger via the Stage 6 promotion pipeline. The canonical ledger directories are promotion destinations — work is pushed to them, never opened in them for AI sessions.
 
 ## The Project Tetrad
 
@@ -97,7 +97,7 @@ The architectural claim is provable from artefacts already in place:
 - The workspace is declared as `vault-privategit-source-1` in `MANIFEST.md` — a Totebox instance in the canonical sense.
 - Thirteen Totebox Archives are active, each following the Project Tetrad discipline.
 - The shared `service-slm` access-control gateway is operationally live (177 of 177 tests passing) and serves as the Orchestration AI routing layer.
-- The commit flow — staging branches promoted via `bin/promote.sh` to the canonical ledger — is the Totebox promotion pipeline.
+- The commit flow — staging branches promoted via the Stage 6 pipeline to the canonical ledger — is the Totebox promotion pipeline.
 - The inbox-and-outbox file protocol is the AI session coordination protocol — the same pattern customers are intended to use for cross-archive communication.
 
 The intended next step is the planned `app-orchestration-command` application: a hub aggregator exposing a live HTTP interface for archive health, message routing, and personnel permission checks. The cluster (`project-command`) is provisioned; the application is the next implementation milestone.

@@ -8,7 +8,7 @@ type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-09
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: foundry-doctrine-architecture.es.md
 references:
@@ -38,7 +38,7 @@ The platform is built on six foundational commitments that take precedence over 
 
 **Vendor → Customer → Deployments is the only flow.** Engineering source lives in `pointsav/*` canonical repos. Customer runbooks live in `woodfine/*`. Runtime instances are numbered and local-only. No reverse writes. No shortcuts through the layer boundary.
 
-**Every session trains the model.** Every Task, Root, and Master session that produces output — diffs, briefs, editorial refinements, sysadmin interactions — generates a training tuple that accumulates in the apprenticeship corpus. The substrate sharpens monotonically with use.
+**Every session trains the model.** Every contributor session that produces output — diffs, briefs, editorial refinements, sysadmin interactions — generates a training tuple that accumulates in the apprenticeship corpus. The substrate sharpens monotonically with use.
 
 **Human checkpoint at F12 is mandatory.** [[architecture-decisions|SYS-ADR-10]] — the final human checkpoint before any state is committed to a verified ledger — is never bypassed. Automation serves the human; no automated path exists around F12.
 
@@ -68,7 +68,7 @@ Representative clusters from the full claim set:
 
 Beyond the structural claims, the doctrine draws on eight process inventions borrowed from established industries:
 
-**Workspace Passport** (maritime) — every deployment carries a `MANIFEST.md` declaring origin, owner, and current state. **NOTAM** (aviation) — time-sensitive warnings read at every session start. **Recall Procedure** (pharmaceuticals) — defective vendor commits trigger recall notices into every downstream deployment inbox. **Bill of Lading** (shipping) — cross-realm handoffs generate append-only log entries. **Time-Vested Operation** (banking) — destructive operations post to `NEXT.md` with a vesting date; execution is blocked until the date passes. **Apprentice Mode** (aviation/medicine) — new model versions run in shadow mode; graduate after N approved actions. **Integrity Anchor** (notarization) — monthly workspace state hashes posted to Sigstore Rekor public transparency log. **Constitutional Convention** (IETF/constitutional amendment) — doctrine major-version bumps require 30-day public comment in `factory-release-engineering`.
+**Workspace Passport** (maritime) — every deployment carries a `MANIFEST.md` declaring origin, owner, and current state. **NOTAM** (aviation) — time-sensitive warnings read at every session start. **Recall Procedure** (pharmaceuticals) — defective vendor commits trigger recall notices into every downstream deployment inbox. **Bill of Lading** (shipping) — cross-realm handoffs generate append-only log entries. **Time-Vested Operation** (banking) — destructive operations post to a queue with a vesting date; execution is blocked until the date passes. **Apprentice Mode** (aviation/medicine) — new model versions run in shadow mode; graduate after N approved actions. **Integrity Anchor** (notarization) — monthly workspace state hashes posted to Sigstore Rekor public transparency log. **Constitutional Convention** (IETF/constitutional amendment) — doctrine major-version bumps require 30-day public comment in `factory-release-engineering`.
 
 ## Workspace Structure
 
@@ -78,11 +78,11 @@ The workspace is itself a deployment of the substrate — `vault-privategit-sour
 - `customer/` — guide catalog (`woodfine/*`) — GitHub-tracked
 - `deployments/` — numbered runtime instances — local-only, gitignored
 
-Three session roles operate the workspace: Master (workspace control plane, single at a time), Root (per engineering-repo plane, one per repo), Task (per project-cluster, multiple concurrent). The `.git/index` constraint — one session per index — is the hard race condition that determines this structure.
+Three session roles operate the workspace: the hub session (workspace control plane, single at a time), the archive session (per engineering-repo plane, one per repo), and the project session (per project-cluster, multiple concurrent). The `.git/index` constraint — one session per index — is the hard race condition that determines this structure.
 
 ## Continuous Disclosure Posture
 
-Every artifact written to the workspace — documentation, doctrine sections, commit messages, code comments — is treated as potentially reviewable under continuous-disclosure obligations. Forward-looking statements about future capability, timeline, or customer outcome carry "planned"/"intended"/"may" framing, a stated reasonable basis, cautionary language, and material assumptions. This is not a compliance statement; it is the operational practice that makes compliance a byproduct.[^1][^2]
+Every artifact written to the workspace — documentation, commit messages, code comments — is treated as potentially reviewable under continuous-disclosure obligations. Forward-looking statements about future capability, timeline, or customer outcome carry "planned"/"intended"/"may" framing, a stated reasonable basis, cautionary language, and material assumptions. This is not a compliance statement; it is the operational practice that makes compliance a byproduct.[^1][^2]
 
 ## See also
 

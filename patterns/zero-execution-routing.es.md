@@ -9,6 +9,8 @@ bcsc_class: current-fact
 language: es
 paired_with: zero-execution-routing.md
 category: patterns
+last_edited: 2026-05-25
+editor: pointsav-engineering
 ---
 
 
@@ -17,7 +19,7 @@ Las capas de presentación de la plataforma siguen un mandato de "Ejecución Cer
 
 ## Enrutamiento Bilingüe Determinista
 
-Evitamos el uso de scripts de detección de IP. El cambio de idioma es estructural:
+La plataforma no utiliza scripts de detección de IP. El cambio de idioma es estructural:
 - **Directorio Raíz (`/`):** Contiene la versión por defecto en inglés.
 - **Subdirectorio de Idioma (`/es/`):** Contiene el mismo archivo, pero con el estado de idioma español activado de forma nativa en el código HTML.
 

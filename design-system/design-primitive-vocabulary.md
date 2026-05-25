@@ -10,7 +10,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: design-primitive-vocabulary.es.md
 cites:
@@ -18,6 +18,8 @@ cites:
  - dtcg-spec
  - doctrine-38
 ---
+
+The design system's primitive token layer documents which structural patterns the field has converged on since 2018, which the substrate preserves verbatim, and which it replaces with PointSav-original vocabulary and values. The distinction matters for practitioners who arrive from other design systems: shared structural patterns produce immediate recognition; PointSav-original names and values prevent any intellectual-property entanglement with the systems they were drawn from.
 
 ## What the substrate kept structurally
 

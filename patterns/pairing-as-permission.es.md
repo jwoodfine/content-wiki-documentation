@@ -8,7 +8,7 @@ quality: complete
 short_description: "PairingAsPermission es el modelo de control de acceso por capacidades de objeto utilizado en la orquestación Totebox: un emparejamiento criptográfico entre dos nodos es el permiso, y la ausencia de emparejamiento hace estructuralmente imposible la conexión — no es acceso denegado, sino la inexistencia de un camino."
 status: active
 bcsc_class: no-disclosure-implication
-last_edited: 2026-05-15
+last_edited: 2026-05-25
 editor: pointsav-engineering
 cites: []
 references:
@@ -41,8 +41,8 @@ Este es el modelo de Capacidades de Objeto — un patrón de seguridad formalmen
 La topología de la orquestación Totebox es:
 
 - **Comando** (el concentrador os-orchestration) está emparejado con: cada archivo Totebox, ambos nodos os-mediakit y ambos nodos os-privategit. La lista de emparejamientos del Comando es el mapa topológico de hecho.
-- **Las instancias de os-orchestration por proyecto** están emparejadas únicamente con sus propios archivos Totebox. Una orquestación `project-bim` no puede alcanzar `project-editorial` — no existe emparejamiento.
-- **La coordinación entre proyectos** fluye a través del Comando: `project-bim` envía un mensaje al Comando; el Comando, emparejado con ambos, recupera los datos o enruta la solicitud. No se crea ninguna conexión lateral directa entre orquestaciones por proyecto.
+- **Las instancias de os-orchestration por proyecto** están emparejadas únicamente con sus propios archivos Totebox. Una orquestación de un proyecto no puede alcanzar la orquestación de otro proyecto — no existe emparejamiento.
+- **La coordinación entre proyectos** fluye a través del Comando: una orquestación de proyecto envía un mensaje al Comando; el Comando, emparejado con ambos, recupera los datos o enruta la solicitud. No se crea ninguna conexión lateral directa entre orquestaciones por proyecto.
 
 El mapa de permisos es el diagrama de arquitectura. No existe documento separado de control de acceso — la topología de emparejamientos en vivo es el registro autoritativo.
 

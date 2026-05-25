@@ -10,7 +10,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: design-philosophy.md
 cites:
@@ -19,6 +19,7 @@ cites:
  - doctrine-38
 ---
 
+El sistema de diseño de PointSav es un sustrato auto-alojado de propiedad del cliente para gestionar tokens de diseño, componentes e investigación de decisiones de diseño. Responde a cuatro brechas estructurales en el panorama del diseño de 2026 — la ausencia de justificación de diseño legible por máquinas, precios de nivel empresarial que excluyen a las pequeñas y medianas empresas (PyMES), la dependencia de editores específicos y la estructura insuficiente para el consumo por inteligencia artificial — mediante tres inversiones arquitectónicas del modelo de plataforma dominante.
 
 El sustrato de sistema de diseño de PointSav existe como respuesta directa a cuatro brechas estructurales en el panorama del diseño de 2026.
 

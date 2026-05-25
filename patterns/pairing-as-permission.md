@@ -8,7 +8,7 @@ quality: complete
 short_description: "PairingAsPermission is the Object Capability access-control model used in Totebox Orchestration: a cryptographic pairing between two nodes is the permission, and the absence of a pairing makes the connection structurally impossible — not access-denied, but no pathway."
 status: active
 bcsc_class: no-disclosure-implication
-last_edited: 2026-05-15
+last_edited: 2026-05-25
 editor: pointsav-engineering
 cites: []
 references:
@@ -41,8 +41,8 @@ This is the Object Capability Model — a formally proven security pattern first
 The Totebox Orchestration topology is:
 
 - **Command** (the os-orchestration hub) is paired to: every Totebox Archive, both os-mediakit nodes, and both os-privategit nodes. The Command's pairing list is the de-facto topology map.
-- **Per-project os-orchestration** instances are paired to: their own Totebox Archives only. A `project-bim` orchestration cannot reach `project-editorial` — no pairing exists.
-- **Cross-project coordination** flows through the Command: `project-bim` sends a message to the Command; the Command, paired to both, fetches data or routes the request. No direct lateral connection is created between per-project orchestrations.
+- **Per-project os-orchestration** instances are paired to: their own Totebox Archives only. One project-scoped orchestration cannot reach a different project's orchestration — no pairing exists.
+- **Cross-project coordination** flows through the Command: a project-scoped orchestration sends a message to the Command; the Command, paired to both, fetches data or routes the request. No direct lateral connection is created between per-project orchestrations.
 
 The permission map is the architecture diagram. There is no separate access-control document — the live pairing topology is the authoritative record.
 

@@ -7,14 +7,13 @@ status: active
 category: substrate
 type: topic
 quality: complete
-last_edited: 2026-05-09
+last_edited: 2026-05-25
 editor: pointsav-engineering
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
 paired_with: substrate-native-compatibility.md
 cites:
- - doctrine-claim-29
  - ni-51-102
 ---
 
@@ -22,7 +21,7 @@ cites:
 
 El wiki de ingeniería de PointSav en `documentation.pointsav.com` es un wiki nativo del sustrato. Acepta una importación única de XML de MediaWiki, sirve URLs con la forma familiar `/wiki/{slug}` de MediaWiki, acepta la sintaxis de Wikipedia con `[[wikilink]]` y `[^nota]`, y se detiene ahí. No implementa la Action API de MediaWiki, no soporta plantillas de MediaWiki, y no proporciona una superficie de escritura que imite los endpoints REST de MediaWiki.
 
-Esta es la postura nativa del sustrato conforme a la reclamación #29 de Doctrine (Sustitución de Sustrato): cuando el sustrato sustituye el papel de una plataforma existente, replica la compatibilidad estructural — las superficies que un lector o integrador externo encuentra — sin replicar la imitación de interfaces — la forma de API que una integración de sistema interno consumiría. La distinción es fundamental.
+Esta es la postura nativa del sustrato (Sustitución de Sustrato): cuando el sustrato sustituye el papel de una plataforma existente, replica la compatibilidad estructural — las superficies que un lector o integrador externo encuentra — sin replicar la imitación de interfaces — la forma de API que una integración de sistema interno consumiría. La distinción es fundamental.
 
 ## Por qué el foso del ecosistema es real pero costoso
 
@@ -42,7 +41,7 @@ Se descartaron tres superficies de la categoría de alto costo: el adaptador de 
 
 Las elecciones de superficie de compatibilidad del motor wiki son elecciones de divulgación continua encubiertas. Cada interfaz que el sustrato expone al público lo compromete con una obligación de divulgación conforme a [ni-51-102]. Lo que el sustrato no expone, no necesita divulgar.
 
-Un adaptador de Action API que retornara el historial de revisiones habría creado un segundo registro canónico paralelo al historial git — cualquier divergencia sería un fallo de divulgación. El sustrato declina el adaptador y mantiene git como canónico. El mismo razonamiento se aplica al renderizado del lado del servidor y a la edición autenticada: el sustrato conserva las garantías del trajectory-substrate (reclamación #15 de Doctrine) al no replicar el flujo de autenticación de MediaWiki con menor proveniencia.
+Un adaptador de Action API que retornara el historial de revisiones habría creado un segundo registro canónico paralelo al historial git — cualquier divergencia sería un fallo de divulgación. El sustrato declina el adaptador y mantiene git como canónico. El mismo razonamiento se aplica al renderizado del lado del servidor y a la edición autenticada: el sustrato preserva la proveniencia del registro al no replicar el flujo de autenticación de MediaWiki con menor trazabilidad.
 
 El patrón: cada interfaz que el sustrato no replica es una obligación que no asume.
 

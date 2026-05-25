@@ -8,7 +8,7 @@ quality: complete
 short_description: "La identidad y los permisos de los colaboradores en la orquestación Totebox se expresan mediante emparejamientos criptográficos — no mediante roles almacenados en una base de datos ni verificados en tiempo de solicitud — y un colaborador puede alcanzar un recurso únicamente si su os-console está emparejado con el nodo de orquestación que lo gestiona."
 status: active
 bcsc_class: forward-looking
-last_edited: 2026-05-08
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: personnel-permissions.md
 ---
@@ -32,16 +32,16 @@ El almacén de personal es en sí mismo un archivo Totebox — no utiliza un ser
 Cuatro niveles describen cómo es el conjunto de emparejamientos de un colaborador. El nivel no es una verificación en tiempo de ejecución; es una descripción humana de los emparejamientos. La aplicación se realiza siempre a través de la topología de emparejamientos.
 
 **P1 — Administrador del sistema**
-Conjunto de emparejamientos: Comando, cada archivo Totebox, ambos nodos `os-privategit`, ambos nodos `os-mediakit`, infraestructura de la máquina virtual.
-Puede: aprovisionar archivos, actualizar la documentación del espacio de trabajo, ejecutar promociones de la etapa 6, añadir nuevos emparejamientos, gestionar el almacén de identidades, realizar la administración del sistema de la máquina virtual.
+Conjunto de emparejamientos: la sesión concentradora, cada archivo Totebox, ambos nodos `os-privategit`, ambos nodos `os-mediakit`, infraestructura de la máquina virtual.
+Puede: aprovisionar archivos, actualizar la documentación del espacio de trabajo, ejecutar flujos de promoción de código, añadir nuevos emparejamientos, gestionar el almacén de identidades, realizar la administración del sistema de la máquina virtual.
 
 **P2 — Gerente de paquetes**
-Conjunto de emparejamientos: archivos específicos más rutas de promoción de la etapa 6.
+Conjunto de emparejamientos: archivos específicos más rutas de promoción.
 Puede: confirmar y promover dentro de los archivos asignados. No puede aprovisionar nuevos archivos ni modificar documentos a nivel de espacio de trabajo.
 
 **P3 — Usuario**
-Conjunto de emparejamientos: archivos específicos únicamente. Sin emparejamiento con el Comando.
-Puede: trabajar dentro de los archivos asignados — escribir código, confirmar en staging, redactar contenido del wiki. No puede: acceder a recursos entre archivos directamente, modificar otros archivos ni realizar promociones de la etapa 6. Las solicitudes entre archivos se envían como mensajes para que la sesión de Comando los procese.
+Conjunto de emparejamientos: archivos específicos únicamente. Sin emparejamiento con la sesión concentradora.
+Puede: trabajar dentro de los archivos asignados — escribir código, confirmar en staging, redactar contenido del wiki. No puede: acceder a recursos entre archivos directamente, modificar otros archivos ni ejecutar flujos de promoción. Las solicitudes entre archivos se envían como mensajes para que la sesión concentradora los procese.
 
 **P4 — Interfaz**
 Conjunto de emparejamientos: solo superficie de API de solo lectura.
@@ -62,10 +62,10 @@ No hay flujo de aprobación en un sistema separado. El emparejamiento es la apro
 ## Ejemplos de alcance del colaborador
 
 **Un administrador del sistema (P1):**
-Emparejado con el Comando, cada archivo Totebox activo, ambos nodos `os-privategit`, ambos nodos `os-mediakit` y el archivo de personal. Alcance: todo el espacio de trabajo. Puede ratificar hitos de la tétrada, gestionar el almacén de identidades, aprovisionar nuevos archivos, realizar promociones de la etapa 6.
+Emparejado con la sesión concentradora, cada archivo Totebox activo, ambos nodos `os-privategit`, ambos nodos `os-mediakit` y el archivo de personal. Alcance: todo el espacio de trabajo. Puede ratificar hitos de la tétrada, gestionar el almacén de identidades, aprovisionar nuevos archivos, ejecutar flujos de promoción.
 
 **Un usuario P3:**
-Emparejado con un archivo de proyecto específico — por ejemplo, `project-bookkeeping` — y con un `os-mediakit` de staging local para revisión. Alcance: solo trabajo del archivo y revisión de staging. Sin emparejamiento con el Comando. No puede acceder al almacén de identidades, otros archivos ni los árboles canónicos `vendor/` o `customer/`.
+Emparejado con un archivo de proyecto específico — por ejemplo, `project-bookkeeping` — y con un `os-mediakit` de staging local para revisión. Alcance: solo trabajo del archivo y revisión de staging. Sin emparejamiento con la sesión concentradora. No puede acceder al almacén de identidades, otros archivos ni los árboles fuente canónicos.
 
 ## Relación con app-orchestration-command
 
@@ -78,7 +78,6 @@ El agregador planificado `app-orchestration-command` (CommandCentre) está previ
 - [[totebox-session]]
 - [[doorman-protocol]]
 
-## Referencias
+## Véase también (continuación)
 
-- **`DOCTRINE.md`** — carta constitucional de la plataforma; modelo de permisos.
 - [[three-ring-architecture]] — referencia de composición de sustrato de tres niveles.

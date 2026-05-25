@@ -9,7 +9,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: pointsav-overview.es.md
 short_description: "PointSav Digital Systems is a technology vendor that builds sovereign, on-premise-capable operating systems for record-keeping and business administration. It sits within a three-organisation structure established by Woodfine Capital Projects Inc."
@@ -46,7 +46,7 @@ PointSav intends to partner with the Sovereign Data Foundation to oversee the in
 
 ## Contributor model
 
-Engineering work flows through staging-tier contributor identities: `jwoodfine` and `pwoodfine` are the two established staging contributors, both Woodfine Management Corp. employees who push to their own GitHub forks. The vendor administration function accepts contributions via squash-merge — the moment the intellectual property formally transfers from contributor to vendor. The customer organisation pulls release tags from the vendor. A double-blind air-gap applies: contributors never push directly to customer repositories; the customer organisation never has visibility into contributor forks.
+Engineering work flows through staging-tier contributor identities — established contributors who are Woodfine Management Corp. employees pushing to their own GitHub forks. The vendor administration function accepts contributions via squash-merge — the moment the intellectual property formally transfers from contributor to vendor. The customer organisation pulls release tags from the vendor. A double-blind air-gap applies: contributors never push directly to customer repositories; the customer organisation never has visibility into contributor forks.
 
 ## See also
 
@@ -54,4 +54,4 @@ Engineering work flows through staging-tier contributor identities: `jwoodfine` 
 - [[deployment-patterns]] — the six canonical configurations for PointSav deployments
 - [[os-family-overview]] — the eight operating systems PointSav builds
 - [[machine-based-auth]] — the security model that underlies the platform
-- [[compliance-and-continuous-disclosure]] — BCSC posture and continuous-disclosure obligations
+- [[compliance-and-continuous-disclosure]] — continuous-disclosure obligations and compliance posture

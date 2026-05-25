@@ -5,17 +5,17 @@ slug: capability-ledger-substrate
 category: substrate
 type: topic
 quality: complete
-short_description: "El Sustrato del Libro de Capacidades es el mecanismo por el cual cada decisión de control de acceso en un despliegue de Foundry se convierte en un evento criptográficamente auditable, anclado en un registro que controla el cliente."
+short_description: "El Sustrato del Libro de Capacidades es el mecanismo por el cual cada decisión de control de acceso en un despliegue de plataforma se convierte en un evento criptográficamente auditable, anclado en un registro que controla el cliente."
 status: active
 bcsc_class: no-disclosure-implication
-last_edited: 2026-05-22
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: capability-ledger-substrate.md
 cites: []
 ---
 
 
-> El Sustrato del Libro de Capacidades es el mecanismo por el cual cada decisión de control de acceso en un despliegue de Foundry se convierte en un evento criptográficamente auditable, anclado en un registro que controla el cliente.
+> El Sustrato del Libro de Capacidades es el mecanismo por el cual cada decisión de control de acceso en un despliegue de plataforma se convierte en un evento criptográficamente auditable, anclado en un registro que controla el cliente.
 
 Extiende el modelo de capacidades nativo del microkernel seL4 — verificado formalmente — con una capa de transparencia que hace que el registro de auditoría sea portátil, de raíz del cliente y verificable por terceros sin ninguna relación de confianza con el operador.
 

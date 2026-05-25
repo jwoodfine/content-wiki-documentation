@@ -10,23 +10,25 @@ language: es
 paired_with: brand-typography.md
 category: design-system
 status: active
+last_edited: 2026-05-25
+editor: pointsav-engineering
 ---
 
 
 
-La plataforma establece una separación estricta entre la interfaz web y los documentos impresos institucionales. Mientras que la web utiliza fuentes nativas para mayor rapidez, la tipografía de marca se reserva para la generación de PDFs y documentos físicos.
+La plataforma establece una separación estricta entre la interfaz web y los documentos impresos institucionales. Las capas web utilizan fuentes nativas del sistema para reducir la latencia; la tipografía de marca se reserva para la generación de PDF y documentos formales. Todas las tipografías están bajo la Licencia de Fuentes Abiertas SIL (OFL, por sus siglas en inglés), lo que garantiza el cumplimiento del principio de Paquete de Resolución de Activos Digitales (DARP) — el requisito de la plataforma de que todos los activos embebidos sean libremente distribuibles.
 
-## Estándares de Tipografía (OFL)
+## Estándares de tipografía (OFL)
 
-Para garantizar la soberanía de los activos digitales, utilizamos exclusivamente fuentes bajo licencia SIL Open Font (OFL), eliminando el uso de fuentes propietarias:
+La plataforma utiliza exclusivamente fuentes bajo licencia SIL Open Font (OFL) en sustitución de las fuentes propietarias previas:
 
 - **Zilla Slab (Primaria):** Transmite confianza institucional. Se utiliza en portadas de libros blancos y encabezados legales.
 - **Barlow Condensed (Datos):** Diseñada para la precisión matemática. Se aplica en libros contables financieros y tablas de datos densas.
 - **Nunito Sans (Cuerpo):** La fuente principal para el texto de lectura, memorandos y comunicaciones operativas.
 
-## Autoridad Institucional
+## Autoridad institucional
 
-Esta estrategia asegura que todos los documentos generados por la plataforma tengan una estética de "Libro Blanco" profesional. La tipografía no se carga desde la nube; se incrusta directamente en los archivos PDF finales, garantizando que el documento mantenga su autoridad visual en cualquier dispositivo o sistema de impresión.
+La tipografía de marca establece una estética institucional profesional y de alta precisión en todos los documentos generados. Zilla Slab en encabezados y Barlow Condensed en datos financieros otorgan a los documentos de PointSav y Woodfine un registro institucional coherente y reconocible. La tipografía se incrusta directamente en los archivos PDF finales; no se carga desde servicios externos.
 
 ## Véase también
 

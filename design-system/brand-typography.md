@@ -10,19 +10,21 @@ language: en
 paired_with: brand-typography.es.md
 category: design-system
 status: active
+last_edited: 2026-05-25
+editor: pointsav-engineering
 ---
 
 
 
-The platform enforces a strict boundary between web interface presentation and institutional print output. While web layers prioritize performance via native system fonts, brand typography is reserved for offline print and PDF generation to project institutional authority and ensure DARP compliance.
+The platform enforces a strict boundary between web interface presentation and institutional print output. Web layers use native system fonts for performance; brand typography is reserved for PDF generation and formal printed documents. All typefaces are licensed under the SIL Open Font License (OFL) to ensure the Digital Asset Resolution Package (DARP) — the platform's principle requiring all embedded assets to be freely distributable — is satisfied.
 
-## 1. The Execution Boundary
+## 1. The execution boundary
 
-All web-based user interfaces use native System UI fonts to maintain a Zero-Execution state and minimize latency. High-fidelity brand typography is strictly embedded during the `service-content` compilation phase for physical PDF binaries. This ensures that brand identity is projected through the resulting artifact rather than the delivery mechanism.
+All web-based user interfaces use native system UI fonts to minimize latency without loading external font files. High-fidelity brand typography is embedded during the `service-content` compilation phase for PDF binaries. Brand identity is expressed through the resulting document artifact rather than the delivery mechanism.
 
-## 2. The OFL Typography Matrix
+## 2. The OFL typography matrix
 
-To guarantee absolute compliance with the Digital Asset Resolution Package (DARP), all proprietary fonts have been replaced with 100% SIL Open Font License (OFL) equivalents. These binaries are secured within air-gapped vaults to prevent unauthorized distribution.
+All typefaces in the platform are SIL Open Font License (OFL) equivalents of the legacy proprietary fonts they replaced. Font binaries are embedded directly in generated PDFs.
 
 | Token | Active Font | Legacy Equivalent | Strategic Application |
 | :--- | :--- | :--- | :--- |
@@ -31,9 +33,9 @@ To guarantee absolute compliance with the Digital Asset Resolution Package (DARP
 | **sans_primary** | **Nunito Sans** | Avenir LT Std | Standard body copy and operational text. |
 | **serif_secondary**| **Sahitya** | N/A | Editorial pull-quotes and contrast markers. |
 
-## 3. Institutional Authority in Output
+## 3. Institutional authority in output
 
-Brand typography is used to establish a professional "White Paper" aesthetic for all generated documents. The use of **Zilla Slab** for headers and **Barlow Condensed** for financial data ensures that PointSav and Woodfine disclosures are immediately recognizable as authoritative, high-precision reports.
+Brand typography establishes a professional, high-precision aesthetic for all generated documents. Zilla Slab for headers and Barlow Condensed for financial data give PointSav and Woodfine disclosures a consistent, recognizable institutional register.
 
 ## See also
 

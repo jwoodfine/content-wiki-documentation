@@ -8,7 +8,7 @@ type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-09
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: foundry-doctrine-architecture.md
 ---
@@ -28,7 +28,7 @@ La plataforma se construye sobre seis compromisos fundamentales que tienen prior
 
 **Proveedor → Cliente → Despliegues es el único flujo.** El código fuente de ingeniería vive en los repositorios canónicos de `pointsav/*`. Los manuales de operación del cliente viven en `woodfine/*`. Las instancias de tiempo de ejecución están numeradas y son solo locales.
 
-**Cada sesión entrena el modelo.** Cada sesión de Tarea, Root y Master que produce salida genera una tupla de entrenamiento que se acumula en el corpus de aprendizaje. El sustrato se perfecciona de forma monótona con el uso.
+**Cada sesión entrena el modelo.** Cada sesión de colaborador que produce salida genera una tupla de entrenamiento que se acumula en el corpus de aprendizaje. El sustrato se perfecciona de forma monótona con el uso.
 
 **El punto de control humano en F12 es obligatorio.** SYS-ADR-10 — el punto de control humano final antes de que cualquier estado se confirme en un libro de contabilidad verificado — nunca se omite.
 

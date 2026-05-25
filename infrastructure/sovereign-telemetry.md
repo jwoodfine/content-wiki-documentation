@@ -8,25 +8,15 @@ quality: stub
 short_description: "The zero-state telemetry architecture describes how the platform's V4 Intent Beacon collects behavioural and hardware signals from edge clients without cookies, session identifiers, or third-party analytics, using client-side compilation and asynchronous beacon transmission."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-25
 editor: pointsav-engineering
 cites: []
 paired_with: sovereign-telemetry.es.md
 ---
 
+The zero-state telemetry architecture is the platform's approach to understanding user behaviour without accumulating persistent client state. It collects behavioural and hardware signals from edge clients using only native browser APIs — no cookies, no session identifiers, no third-party analytics aggregators — and transmits the compiled payload asynchronously at tab-close. The current implementation, the V4 Intent Beacon, is operationally independent of external analytics platforms by structure, not by policy.
 
-> The zero-state telemetry architecture collects behavioural and hardware signals from edge clients using only native browser APIs — no cookies, no session identifiers, no third-party analytics aggregators — and transmits the compiled payload asynchronously at tab-close.
-
-The **zero-state telemetry architecture** is the platform approach
-to understanding user behaviour without accumulating persistent
-client state. The current implementation, codename **V4 Intent
-Beacon**, enforces a strict no-cookie, no-session-ID posture. Data
-is compiled entirely on the client side using native browser APIs
-and transmitted asynchronously via `navigator.sendBeacon` on the
-`visibilitychange` event. No tracking pixels, session identifiers,
-or third-party analytics providers are involved. The result is a
-telemetry signal that is both privacy-preserving by structure and
-operationally independent of external analytics platforms.
+The V4 Intent Beacon enforces a strict no-cookie, no-session-ID posture. Data is compiled entirely on the client side using native browser APIs and transmitted asynchronously via `navigator.sendBeacon` on the `visibilitychange` event. No tracking pixels, session identifiers, or third-party analytics providers are involved.
 
 ## Payload structure
 

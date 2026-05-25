@@ -9,14 +9,16 @@ status: pre-build
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-24
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: service-slm-graph-store-migration.es.md
 short_description: "service-slm migrated its graph store from LadybugDB to SQLite for fleet nodes and integrates a nightly DataGraph rebuild that processes the operator data corpus through the Doorman into the property graph used for inference context injection."
 cites: []
 ---
 
-Each night, `jennifer-datagraph-rebuild.sh` processes the operator data
+The `service-slm` graph store is a live property graph of named business entities extracted nightly from an operator's data corpus — the entity layer that `service-content` uses to inject structured business context into every inference request without sending proprietary data to an external model. The graph is stored in LadybugDB and rebuilt on a nightly schedule by the DataGraph rebuild script, which runs as Phase 1 of the Elastic Compute nightly window before the model-training phase claims the GPU.
+
+Each night, the DataGraph rebuild script processes the operator data
 corpus and writes extracted named entities to a property graph stored in
 LadybugDB. This property graph — the deployment DataGraph — is the entity layer
 that service-content uses to inject structured business context into inference
@@ -48,7 +50,7 @@ confidence score, and optional role, location, and contact vectors. The script
 then calls `POST :9081/v1/graph/mutate` on service-content to write those
 entities into LadybugDB. The health probe at the end of the cycle queries
 service-content for the current entity count and writes a summary JSON file
-at `$FOUNDRY_ROOT/data/datagraph-health.json`.
+at `$DEPLOYMENT_ROOT/data/datagraph-health.json`.
 
 The script processes three document batches each run: the full minutebook
 asset tree, the full service-agents tree, and the 50 most recent unprocessed
@@ -58,7 +60,7 @@ interfere with the training phase startup.
 
 ## The routing parity principle
 
-The `jennifer-datagraph-rebuild.sh` script calls only the same two REST API
+The DataGraph rebuild script calls only the same two REST API
 endpoints that any operator or community member running service-slm and
 service-content would call from their own automation:
 
@@ -77,7 +79,7 @@ that real callers would never exercise.
 ## Idempotency
 
 The script tracks processed documents using a local ledger at
-`$FOUNDRY_ROOT/data/datagraph-processed.txt`. Each document is identified by
+`$DEPLOYMENT_ROOT/data/datagraph-processed.txt`. Each document is identified by
 a hash of its file content, prefixed with a source tag (`mk-` for minutebook,
 `ag-` for service-agents, `sp-` for service-people). Before processing any
 document, the script checks whether its identifier appears in the ledger. If

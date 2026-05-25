@@ -9,17 +9,19 @@ status: pre-build
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-24
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: elastic-compute-lora-training-pipeline.md
 short_description: "Elastic Compute #1 ejecuta un pipeline nocturno de dos fases que reconstruye el DataGraph del despliegue y produce pesos adaptadores LoRA para el modelo de lenguaje del espacio de trabajo. La Fase 1 usa un modelo de inferencia de 32B para extracción de entidades; la Fase 2 entrena un adaptador eficiente en parámetros de 7B a partir de corpus de ingeniería y aprendizaje."
 cites: []
 ---
 
+El sustrato acumulativo de PointSav requiere reentrenamiento periódico para incorporar las interacciones del operador y las decisiones editoriales acumuladas desde el ciclo anterior. Elastic Compute #1 es el nodo de cómputo que ejecuta este reentrenamiento cada noche — una instancia spot en la nube con GPU que reconstruye el grafo de conocimiento y produce pesos adaptadores LoRA (Adaptación de Bajo Rango, del inglés Low-Rank Adaptation) actualizados para el modelo de lenguaje local de la plataforma. El pipeline operacionaliza la afirmación estructural de que cada sesión productiva mejora la plataforma para la siguiente: convierte datos de interacción en bruto en pesos de modelo que hereda la próxima sesión.
+
 Elastic Compute #1 es una instancia spot g2-standard-4 de Google Cloud equipada con
 una GPU NVIDIA L4 de 24 GB de VRAM. Cada noche ejecuta un pipeline de dos
 fases y cuatro horas de duración que produce pesos adaptadores ajustados para
-el modelo de lenguaje del espacio de trabajo. La Fase 1 extrae entidades de
+el modelo de lenguaje de la plataforma. La Fase 1 extrae entidades de
 negocio estructuradas del corpus de datos del operador y las escribe en un
 grafo de propiedades. La Fase 2 lee los pares de entrenamiento de ingeniería
 y aprendizaje acumulados, verifica si el corpus ha superado un umbral mínimo,

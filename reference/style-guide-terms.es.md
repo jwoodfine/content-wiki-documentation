@@ -8,7 +8,7 @@ type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-24
+last_edited: 2026-05-25
 editor: pointsav-engineering
 cites: []
 paired_with: style-guide-terms.md
@@ -34,7 +34,7 @@ Cinco secciones en orden:
 
 ## Registro
 
-Legal-llano. Los términos definidos en mayúscula en cada uso posterior. La postura BCSC aplica donde el servicio toca material de inversión o divulgación.
+Legal-llano. Los términos definidos en mayúscula en cada uso posterior. Donde el servicio toca material de inversión o divulgación, las declaraciones prospectivas sobre funciones del servicio o hoja de ruta llevan lenguaje de "planificado / previsto / puede / objetivo", conforme a las obligaciones canadienses de divulgación continua en materia de valores.
 
 ## Véase también
 

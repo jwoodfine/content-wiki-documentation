@@ -8,7 +8,7 @@ quality: complete
 short_description: "Una cola persistente respaldada en archivos que hace viable el apagado inactivo de Yo-Yo sin perder datos del corpus de aprendizaje — la capa de durabilidad del sustrato SLM de tres niveles."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-05-25
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -38,11 +38,11 @@ El patrón de arrendamiento por renombre atómico garantiza que exactamente un p
 
 ## Por qué archivos JSONL y no un broker de mensajes
 
-La elección de archivos JSONL locales en lugar de un broker como NATS JetStream o Redis Streams responde al principio de soberanía de la plataforma: el productor de la cola, el consumidor y el almacenamiento del corpus residen en la misma máquina o volumen persistente en la nube. Un broker de red añadiría latencia y un modo de fallo sin aportar una capacidad que la plataforma requiera a esta escala. Los archivos JSONL son directamente inspeccionables con cualquier editor de texto, alineados con el Pilar 1 de la Doctrina PointSav: solo texto plano.
+La elección de archivos JSONL locales en lugar de un broker como NATS JetStream o Redis Streams responde al principio de soberanía de la plataforma: el productor de la cola, el consumidor y el almacenamiento del corpus residen en la misma máquina o volumen persistente en la nube. Un broker de red añadiría latencia y un modo de fallo sin aportar una capacidad que la plataforma requiera a esta escala. Los archivos JSONL son directamente inspeccionables con cualquier editor de texto, alineados con el principio de diseño de solo-texto-plano de la plataforma.
 
 ## Estado de implementación
 
-La convención del Sustrato de Cola de Briefs fue ratificada en la versión v0.1.78 del workspace. La implementación — API de cola, proceso de vaciado en el Doorman, y graduación del hook post-commit — está en curso bajo el ámbito del cluster project-slm. El formato del corpus JSONL no cambia; solo el camino de escritura.
+La convención del Sustrato de Cola de Briefs fue ratificada en la versión v0.1.78 del workspace. La implementación — API de cola, proceso de vaciado en el Doorman, y graduación del hook post-commit — está en curso dentro del ámbito de ingeniería del servicio SLM. El formato del corpus JSONL no cambia; solo el camino de escritura.
 
 ## Véase también
 

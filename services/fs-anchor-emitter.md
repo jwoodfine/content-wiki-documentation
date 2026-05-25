@@ -9,7 +9,7 @@ short_description: "fs-anchor-emitter generates signed checkpoints of the immuta
 status: active
 audience: vendor-public
 bcsc_class: current-fact
-last_edited: 2026-05-08
+last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: fs-anchor-emitter.es.md
 ---
@@ -22,7 +22,7 @@ The emitter requires the following environment variables to be defined at runtim
 
 | Variable | Description | Standard Value |
 | :--- | :--- | :--- |
-| **FS_LEDGER_ROOT** | Path to the tenant storage root. | `/srv/foundry/ledgers/` |
+| **FS_LEDGER_ROOT** | Path to the tenant storage root. | `/srv/platform/ledgers/` |
 | **FS_SIGNING_KEY** | Path to the tenant private key (Ed25519). | `/etc/foundry/keys/tenant.key` |
 | **FS_ANCHOR_INTERVAL** | Frequency of checkpoint generation. | `3600s` (1 hour) |
 

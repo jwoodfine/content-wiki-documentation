@@ -8,7 +8,7 @@ quality: complete
 short_description: El procedimiento operativo para gestionar las claves de API externas en el servicio Doorman — dónde viven las claves, cómo se aprovisionan, cómo rotan y cómo se contiene una brecha.
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-05-25
 editor: pointsav-engineering
 cites: []
 paired_with: tier-c-key-wiring.md
