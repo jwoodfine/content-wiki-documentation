@@ -10,11 +10,30 @@
 > layout-rule enforcement, defect resolution, surfaced open
 > questions — does.
 
-Last updated: 2026-05-25.
+Last updated: 2026-05-26.
 
 ---
 
 ## Open
+
+### 2026-05-26 — Guide section taxonomy + Operational Guide Catalog: COMPLETE
+
+`Closed: 2026-05-26.` Commit `0ecaaf4` (Jennifer Woodfine).
+
+**Scope:** Added `section:` frontmatter field to all 81 guides in woodfine-fleet-deployment (commit `142bcd2`, Peter Woodfine) and created bilingual Operational Guide Catalog TOPIC in this repo.
+
+**Changes in media-knowledge-documentation:**
+- `reference/guide-catalog.md` + `reference/guide-catalog.es.md` — new bilingual article; 10 H2 sections grouping all 81 operational guides by purpose (Provisioning & Deployment, BIM & Property, GIS & Geospatial, Personnel & Identity, Network & Infrastructure, Console & Operations, Content & Media, Source Control, AI & Intelligence, Workspace & Development).
+- Published at `/reference/guide-catalog`.
+
+**In woodfine-fleet-deployment (separate commit 142bcd2):**
+- 81 guides across 20 deployment folders each received `section: <key>` immediately after `type: guide` in YAML frontmatter.
+- Verification clean: `grep -rL "^section:" --include="guide-*.md"` → 0 files; no invalid section values.
+- woodfine-fleet-deployment has no staging mirrors; awaits Command Session Stage 6 push to woodfine canonical.
+
+**Pushed:** media-knowledge-documentation jwoodfine staging mirror confirmed (`0ecaaf4`).
+
+---
 
 ### 2026-05-25 — Institution quality pass + drafts-outbound routing: COMPLETE
 
