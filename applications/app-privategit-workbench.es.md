@@ -6,14 +6,11 @@ category: applications
 type: topic
 quality: stub
 status: active
-audience: vendor-public
 bcsc_class: no-disclosure-implication
-language_protocol: PROSE-TOPIC
-last_edited: 2026-05-28
-editor: jwoodfine
+last_edited: 2026-05-29
+editor: project-editorial
 short_description: "app-privategit-workbench es un editor de archivos basado en navegador incluido en el sistema operativo host os-privategit, que presenta una interfaz de tres columnas — árbol de archivos, visor y editor — para trabajar con archivos de texto plano y código fuente a través del árbol de archivos del clúster."
 paired_with: app-privategit-workbench.md
-cites: []
 ---
 
 > **Nota:** Esta página es un resumen provisional. La versión completa en español está prevista para una próxima revisión editorial.
