@@ -17,7 +17,7 @@ cites: []
 ---
 
 
-El enrutamiento de IA en la plataforma PointSav procesa las solicitudes de modelos de lenguaje a través de una etapa de sanitización local antes de que cualquier dato llegue a modelos externos. Esto garantiza que los datos estructurados internos nunca viajen a servidores de terceros en forma identificable.
+El enrutamiento de IA en la plataforma [[pointsav-overview|PointSav]] procesa las solicitudes de modelos de lenguaje a través de una etapa de sanitización local antes de que cualquier dato llegue a modelos externos. Esto garantiza que los datos estructurados internos nunca viajen a servidores de terceros en forma identificable. Véase [[single-boundary-compute-discipline|la disciplina de cómputo de frontera única]].
 
 ## El problema estructural
 
@@ -25,13 +25,13 @@ Los modelos de lenguaje comerciales operan como servicios externos. Cuando un op
 
 ## La esclusa lingüística
 
-`service-slm` actúa como la única frontera que posee claves de API, registra cada llamada externa al libro contable de auditoría por inquilino, y aplica la disciplina de sanitizar-salida / rehidratar-entrada en cada solicitud.
+[[service-slm|`service-slm`]] actúa como la única frontera que posee claves de API, registra cada llamada externa al libro contable de auditoría por inquilino, y aplica la disciplina de sanitizar-salida / rehidratar-entrada en cada solicitud.
 
 El flujo es el siguiente:
-1. El operador envía la solicitud al Doorman (`service-slm`).
+1. El operador envía la solicitud al [[doorman-protocol|Doorman]] ([[service-slm|`service-slm`]]).
 2. El Modelo de Lenguaje Pequeño local ejecuta la pasada de sanitización: identifica patrones de PII, elimina coordenadas físicas, reemplaza referencias identificables con tokens seudónimos, y registra el mapeo token-original en una tabla de rehidratación en memoria local.
 3. El prompt sanitizado se enruta al exterior hacia el modelo externo.
-4. El Doorman aplica la pasada de rehidratación antes de devolver la respuesta al solicitante.
+4. El [[doorman-protocol|Doorman]] aplica la pasada de rehidratación antes de devolver la respuesta al solicitante.
 
 El modelo externo nunca posee los registros estructurados reales del libro contable del cliente.
 

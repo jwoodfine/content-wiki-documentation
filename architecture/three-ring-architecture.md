@@ -16,7 +16,7 @@ paired_with: three-ring-architecture.es.md
 
 Before a regulated organization buys an AI platform, it has to answer one question: can AI silently touch the authoritative record? On most platforms the answer is procedural — a policy, a configuration flag. A flag can be flipped, and a policy is only as strong as its enforcement.
 
-PointSav answers the question architecturally. <!--claim id=three-rings confidence=structural cites=[]-->The Three-Ring Architecture organises every service into one of three concentric rings with strict one-way dependencies; the two inner rings — boundary ingest and deterministic processing — function fully without the outer AI ring.<!--/claim-->
+[[pointsav-overview|PointSav]] answers the question architecturally. <!--claim id=three-rings confidence=structural cites=[]-->The Three-Ring Architecture organises every service into one of three concentric rings with strict one-way dependencies; the two inner rings — boundary ingest and deterministic processing — function fully without the outer AI ring.<!--/claim-->
 
 <!--claim id=ai-optional-by-construction confidence=structural cites=[]-->Rings 1 and 2 contain no import, no dependency, and no runtime call that reaches Ring 3. A deployment can exclude Ring 3 entirely; where Ring 3 is included, it is a read-only consumer that produces proposals, never record writes.<!--/claim-->
 
@@ -45,7 +45,7 @@ For a regulated buyer the verification is structural rather than procedural. A d
 
 | Ring | Service | Purpose | Required at all tiers? |
 |---|---|---|---|
-| 1 | service-fs | Immutable Ledger (WORM append-only) | Required |
+| 1 | [[service-fs-architecture|service-fs]] | [[worm-ledger-architecture|Immutable Ledger (WORM append-only)]] | Required |
 | 1 | [[service-people]] | Identity Ledger | Optional |
 | 1 | [[service-email]] | Communications Ledger | Optional |
 | 1 | service-input | Generic document ingestion | Optional |
@@ -53,14 +53,14 @@ For a regulated buyer the verification is structural rather than procedural. A d
 | 2 | [[service-content]] | Taxonomy Ledger and knowledge graph | Required |
 | 2 | [[service-search]] | Search index | Required |
 | 2 | [[service-egress]] | Physical release valve | Required for output |
-| 3 | [[service-slm]] | AI Gateway — the Doorman | Optional |
-| 3 | GPU burst orchestrator | Ephemeral multi-cloud burst | Optional |
+| 3 | [[service-slm]] | AI Gateway — the [[doorman-protocol|Doorman]] | Optional |
+| 3 | GPU burst orchestrator | Ephemeral multi-cloud burst ([[yoyo-compute-substrate|Yo-Yo]]) | Optional |
 
 ## Ring 1 — Boundary Ingest
 
 Ring 1 is the per-tenant data boundary. Each service accepts raw data from one external source — the filesystem, an email inbox, a document upload, an identity provider — and writes it to a durable ledger. No Ring 1 data is transformed or classified; it is only stored.
 
-<!--claim id=ring1-mcp confidence=structural cites=[]-->Every Ring 1 service implements a Model Context Protocol server interface, and Ring 2 talks to Ring 1 as an MCP client. A customer who needs a new data source adds another MCP server without modifying any existing service.<!--/claim-->
+<!--claim id=ring1-mcp confidence=structural cites=[]-->Every Ring 1 service implements a [[mcp-substrate-protocol|Model Context Protocol]] server interface, and Ring 2 talks to Ring 1 as an MCP client. A customer who needs a new data source adds another MCP server without modifying any existing service.<!--/claim-->
 
 Because Ring 1 is per-tenant, each tenant's data lives in a separate service instance with its own storage root. There is no shared state between tenants at this ring.
 
@@ -74,12 +74,12 @@ An audit that questions a classification can replay the deterministic parse agai
 
 <!--claim id=ring3-read-only confidence=structural cites=[]-->Ring 3 is a single read-only consumer of Ring 2. It never writes to the knowledge graph, the ledger, or the structured record stores; its only outputs are proposals — text the operator reviews, drafts the operator approves. Every accepted output enters the record through a Ring 2 write path with a human at the checkpoint.<!--/claim-->
 
-`service-slm` is the single Ring 3 service. It implements the Doorman pattern: every request enters through one boundary, which sanitises outbound data, routes among the three compute tiers, and logs every call to the per-tenant audit ledger. No API key lives outside the Doorman boundary.
+[[service-slm|`service-slm`]] is the single Ring 3 service. It implements the [[doorman-protocol|Doorman]] pattern: every request enters through one boundary, which sanitises outbound data, routes among the three compute tiers, and logs every call to the per-tenant audit ledger. No API key lives outside the Doorman boundary.
 
 The three compute tiers available to Ring 3:
 
 - **Tier A — local.** A 7B-class model on the customer's own hardware. Zero marginal cost, full data locality. The default for most requests.
-- **Tier B — GPU burst.** A larger model on a short-lived GPU instance, used when Tier A cannot handle the request shape efficiently. The customer controls when it starts and stops.
+- **Tier B — GPU burst.** A larger model on a short-lived GPU instance ([[yoyo-compute-substrate|Yo-Yo]]), used when Tier A cannot handle the request shape efficiently. The customer controls when it starts and stops.
 - **Tier C — external API.** External vendor APIs, used only with an explicit per-request allowlist. Every call is logged at the customer's audit ledger.
 
 ## Multi-tenant isolation model
@@ -88,7 +88,7 @@ Tenant isolation varies by ring, by deliberate design.
 
 - **Ring 1** — hard isolation by service instance. Each tenant's boundary ingest runs as a separate process with separate storage. No code path reaches from one tenant's Ring 1 data to another's.
 - **Ring 2** — logical isolation by `moduleId`. One process, one set of indexes, strict namespace separation at every read and write. A query for tenant A cannot return tenant B's records.
-- **Ring 3** — a single `service-slm` instance with per-`moduleId` adapter loading. The Doorman writes the `moduleId` into every audit-ledger entry.
+- **Ring 3** — a single [[service-slm|`service-slm`]] instance with per-`moduleId` [[adapter-composition|adapter loading]]. The [[doorman-protocol|Doorman]] writes the `moduleId` into every audit-ledger entry.
 
 ## Why AI is structurally optional
 

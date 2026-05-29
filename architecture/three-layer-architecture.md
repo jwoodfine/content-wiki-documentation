@@ -16,13 +16,13 @@ short_description: "PointSav deliverables move through three architectural layer
 cites: []
 ---
 
-PointSav deliverables move through three architectural layers, each with a distinct purpose, a distinct audience, and a distinct ownership posture. The first layer is the vendor monorepo — the canonical home of every line of code in the family. The second is the customer's public catalogue of deployment patterns — operational runbooks and manifests showing how the vendor substrate is used in practice. The third is the private layer of actual running deployments, local to the operator and never committed to any shared repository.
+[[pointsav-overview|PointSav]] deliverables move through three architectural layers, each with a distinct purpose, a distinct audience, and a distinct ownership posture. The first layer is the vendor monorepo — the canonical home of every line of code in the family. The second is the customer's public catalogue of deployment patterns — operational runbooks and manifests showing how the vendor substrate is used in practice. The third is the private layer of actual running deployments, local to the operator and never committed to any shared repository.
 
 ## The three layers
 
 | Layer | Name | Lives at | Visibility | Owner |
 |---|---|---|---|---|
-| 1 | SOFTWARE | `pointsav/pointsav-monorepo` | Public | PointSav Digital Systems (vendor) |
+| 1 | SOFTWARE | `pointsav/pointsav-monorepo` | Public | [[pointsav-overview|PointSav Digital Systems]] (vendor) |
 | 2 | SHOWCASE | `woodfine/woodfine-fleet-deployment` | Public | Woodfine Management Corp. (customer reference catalogue) |
 | 3 | INSTANCES | Local storage on operator hardware | Private — not tracked in any shared repository | Each individual operator |
 
@@ -30,12 +30,12 @@ The directionality is strict: vendor builds → customer adopts → operators de
 
 ## Layer 1 — SOFTWARE
 
-The vendor monorepo is the canonical home of every line of code in the PointSav family. All `os-*` operating systems, all `app-*` user surfaces, all `service-*` daemons, and all `system-*` infrastructure crates live here.
+The vendor monorepo is the canonical home of every line of code in the [[pointsav-overview|PointSav]] family. All [[os-family-overview|`os-*`]] operating systems, all `app-*` user surfaces, all `service-*` daemons, and all `system-*` infrastructure crates live here.
 
 | Property | Value |
 |---|---|
 | Repository | `github.com/pointsav/pointsav-monorepo` |
-| Layout | Six-tier sovereignty matrix (`app-*`, `asset-*`, `moonshot-*`, `os-*`, `service-*`, `system-*`) |
+| Layout | [[six-tier-sovereignty-matrix|Six-tier sovereignty matrix]] (`app-*`, `asset-*`, `moonshot-*`, `os-*`, `service-*`, `system-*`) |
 | Write access | `ps-administrator` only |
 | Read access | Public |
 | Commit attribution | Vendor administrator identity, SSH-signed |
@@ -45,7 +45,7 @@ Contributors do not push directly into this repository. They push to personal fo
 
 ## Layer 2 — SHOWCASE
 
-The Showcase Layer is the customer's public-facing catalogue of deployment patterns. It is a curated set of operational runbooks and deployment manifests showing how a customer of PointSav uses the vendor's substrate to operate real businesses.
+The Showcase Layer is the customer's public-facing catalogue of deployment patterns. It is a curated set of operational runbooks and deployment manifests showing how a customer of [[pointsav-overview|PointSav]] uses the vendor's substrate to operate real businesses.
 
 | Property | Value |
 |---|---|
@@ -72,7 +72,7 @@ The strict privacy rule is structural: a deployment instance contains customer-s
 
 ## Why three layers, not two
 
-A simpler architecture would collapse Layers 2 and 3: the customer's actual deployments would be the customer's public catalogue. PointSav separates them deliberately:
+A simpler architecture would collapse Layers 2 and 3: the customer's actual deployments would be the customer's public catalogue. [[pointsav-overview|PointSav]] separates them deliberately:
 
 | Problem with two layers | How three layers solves it |
 |---|---|
@@ -85,7 +85,7 @@ The split is the structural answer to a question every B2B vendor faces: how to 
 
 ## The Tetrad
 
-Every PointSav project archive declares four legs — vendor, customer, deployment, and wiki. The three architectural layers above account for three of the four; the fourth is the public documentation content that explains the substrate to human readers. The Tetrad ensures that every project simultaneously has source code in the SOFTWARE layer, a deployment template in the SHOWCASE layer, a real instance in the INSTANCES layer, and explanatory articles in the documentation wiki — and that none of the four is missing.
+Every [[pointsav-overview|PointSav]] project archive declares four legs — vendor, customer, deployment, and wiki. The three architectural layers above account for three of the four; the fourth is the public documentation content that explains the substrate to human readers. The Tetrad ensures that every project simultaneously has source code in the SOFTWARE layer, a deployment template in the SHOWCASE layer, a real instance in the INSTANCES layer, and explanatory articles in the documentation wiki — and that none of the four is missing.
 
 ## See also
 

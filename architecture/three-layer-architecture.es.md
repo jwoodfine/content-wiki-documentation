@@ -16,13 +16,13 @@ short_description: "Los entregables de PointSav se mueven a través de tres capa
 cites: []
 ---
 
-Los entregables de PointSav se mueven a través de tres capas arquitectónicas, cada una con un propósito distinto, una audiencia distinta y una postura de propiedad distinta. La primera capa es el monorepo del proveedor — el hogar canónico de cada línea de código de la familia. La segunda es el catálogo público del cliente de patrones de implementación — guías operacionales y manifiestos que muestran cómo se usa el sustrato del proveedor en la práctica. La tercera es la capa privada de implementaciones en ejecución reales, local al operador y nunca comprometida en ningún repositorio compartido.
+Los entregables de [[pointsav-overview|PointSav]] se mueven a través de tres capas arquitectónicas, cada una con un propósito distinto, una audiencia distinta y una postura de propiedad distinta. La primera capa es el monorepo del proveedor — el hogar canónico de cada línea de código de la familia. La segunda es el catálogo público del cliente de patrones de implementación — guías operacionales y manifiestos que muestran cómo se usa el sustrato del proveedor en la práctica. La tercera es la capa privada de implementaciones en ejecución reales, local al operador y nunca comprometida en ningún repositorio compartido.
 
 ## Las tres capas
 
 | Capa | Nombre | Vive en | Visibilidad | Propietario |
 |---|---|---|---|---|
-| 1 | SOFTWARE | `pointsav/pointsav-monorepo` | Público | PointSav Digital Systems (proveedor) |
+| 1 | SOFTWARE | `pointsav/pointsav-monorepo` | Público | [[pointsav-overview|PointSav Digital Systems]] (proveedor) |
 | 2 | ESCAPARATE | `woodfine/woodfine-fleet-deployment` | Público | Woodfine Management Corp. (catálogo de referencia del cliente) |
 | 3 | INSTANCIAS | Almacenamiento local en hardware del operador | Privado — no rastreado en ningún repositorio compartido | Cada operador individual |
 
@@ -30,12 +30,12 @@ La direccionalidad es estricta: el proveedor construye → el cliente adopta →
 
 ## Capa 1 — SOFTWARE
 
-El monorepo del proveedor es el hogar canónico de cada línea de código de la familia PointSav. Todos los sistemas operativos `os-*`, todas las superficies de usuario `app-*`, todos los daemons `service-*` y todos los crates de infraestructura `system-*` viven aquí.
+El monorepo del proveedor es el hogar canónico de cada línea de código de la familia [[pointsav-overview|PointSav]]. Todos los sistemas operativos [[os-family-overview|`os-*`]], todas las superficies de usuario `app-*`, todos los daemons `service-*` y todos los crates de infraestructura `system-*` viven aquí.
 
 | Propiedad | Valor |
 |---|---|
 | Repositorio | `github.com/pointsav/pointsav-monorepo` |
-| Diseño | Matriz de seis niveles de soberanía (`app-*`, `asset-*`, `moonshot-*`, `os-*`, `service-*`, `system-*`) |
+| Diseño | [[six-tier-sovereignty-matrix|Matriz de seis niveles de soberanía]] (`app-*`, `asset-*`, `moonshot-*`, `os-*`, `service-*`, `system-*`) |
 | Acceso de escritura | Solo `ps-administrator` |
 | Acceso de lectura | Público |
 | Atribución de commits | Identidad del administrador del proveedor, firmada con SSH |
@@ -45,7 +45,7 @@ Los contribuyentes no envían directamente a este repositorio. Envían a bifurca
 
 ## Capa 2 — ESCAPARATE
 
-La Capa Escaparate es el catálogo público del cliente de patrones de implementación. Es un conjunto curado de guías operacionales y manifiestos de implementación que muestran cómo un cliente de PointSav usa el sustrato del proveedor para operar negocios reales.
+La Capa Escaparate es el catálogo público del cliente de patrones de implementación. Es un conjunto curado de guías operacionales y manifiestos de implementación que muestran cómo un cliente de [[pointsav-overview|PointSav]] usa el sustrato del proveedor para operar negocios reales.
 
 | Propiedad | Valor |
 |---|---|
@@ -72,7 +72,7 @@ La regla de privacidad estricta es estructural: una instancia de implementación
 
 ## Por qué tres capas, no dos
 
-Una arquitectura más simple colapsaría las Capas 2 y 3: las implementaciones reales del cliente serían el catálogo público del cliente. PointSav las separa deliberadamente:
+Una arquitectura más simple colapsaría las Capas 2 y 3: las implementaciones reales del cliente serían el catálogo público del cliente. [[pointsav-overview|PointSav]] las separa deliberadamente:
 
 | Problema con dos capas | Cómo lo resuelve tres capas |
 |---|---|
@@ -85,7 +85,7 @@ La separación es la respuesta estructural a una pregunta que enfrenta todo prov
 
 ## El Tétrade
 
-Cada archivo de proyecto de PointSav declara cuatro elementos — proveedor, cliente, implementación y wiki. Las tres capas arquitectónicas anteriores representan tres de los cuatro; el cuarto es el contenido público de documentación que explica el sustrato a los lectores humanos. El Tétrade garantiza que cada proyecto tenga simultáneamente código fuente en la capa SOFTWARE, una plantilla de implementación en la capa ESCAPARATE, una instancia real en la capa INSTANCIAS y artículos explicativos en la wiki de documentación — y que ninguno de los cuatro falte.
+Cada archivo de proyecto de [[pointsav-overview|PointSav]] declara cuatro elementos — proveedor, cliente, implementación y wiki. Las tres capas arquitectónicas anteriores representan tres de los cuatro; el cuarto es el contenido público de documentación que explica el sustrato a los lectores humanos. El Tétrade garantiza que cada proyecto tenga simultáneamente código fuente en la capa SOFTWARE, una plantilla de implementación en la capa ESCAPARATE, una instancia real en la capa INSTANCIAS y artículos explicativos en la wiki de documentación — y que ninguno de los cuatro falte.
 
 ## Véase también
 
