@@ -19,7 +19,7 @@ cites:
 
 ## La elección
 
-El wiki de ingeniería de PointSav en `documentation.pointsav.com` es un wiki nativo del sustrato. Acepta una importación única de XML de MediaWiki, sirve URLs con la forma familiar `/wiki/{slug}` de MediaWiki, acepta la sintaxis de Wikipedia con `[[wikilink]]` y `[^nota]`, y se detiene ahí. No implementa la Action API de MediaWiki, no soporta plantillas de MediaWiki, y no proporciona una superficie de escritura que imite los endpoints REST de MediaWiki.
+El [[app-mediakit-knowledge|wiki de ingeniería]] de PointSav en `documentation.pointsav.com` es un wiki nativo del sustrato. Acepta una importación única de XML de MediaWiki, sirve URLs con la forma familiar `/wiki/{slug}` de MediaWiki, acepta la sintaxis de Wikipedia con `[[wikilink]]` y `[^nota]`, y se detiene ahí. No implementa la Action API de MediaWiki, no soporta plantillas de MediaWiki, y no proporciona una superficie de escritura que imite los endpoints REST de MediaWiki.
 
 Esta es la postura nativa del sustrato (Sustitución de Sustrato): cuando el sustrato sustituye el papel de una plataforma existente, replica la compatibilidad estructural — las superficies que un lector o integrador externo encuentra — sin replicar la imitación de interfaces — la forma de API que una integración de sistema interno consumiría. La distinción es fundamental.
 
@@ -39,9 +39,9 @@ Se descartaron tres superficies de la categoría de alto costo: el adaptador de 
 
 ## La postura de divulgación como lente de compatibilidad
 
-Las elecciones de superficie de compatibilidad del motor wiki son elecciones de divulgación continua encubiertas. Cada interfaz que el sustrato expone al público lo compromete con una obligación de divulgación conforme a [ni-51-102]. Lo que el sustrato no expone, no necesita divulgar.
+Las elecciones de superficie de compatibilidad del motor wiki son elecciones de [[disclosure-substrate|divulgación continua]] encubiertas. Cada interfaz que el sustrato expone al público lo compromete con una obligación de divulgación conforme a [ni-51-102]. Lo que el sustrato no expone, no necesita divulgar.
 
-Un adaptador de Action API que retornara el historial de revisiones habría creado un segundo registro canónico paralelo al historial git — cualquier divergencia sería un fallo de divulgación. El sustrato declina el adaptador y mantiene git como canónico. El mismo razonamiento se aplica al renderizado del lado del servidor y a la edición autenticada: el sustrato preserva la proveniencia del registro al no replicar el flujo de autenticación de MediaWiki con menor trazabilidad.
+Un adaptador de Action API que retornara el historial de revisiones habría creado un segundo registro canónico paralelo al historial git — cualquier divergencia sería un fallo de divulgación. El sustrato declina el adaptador y mantiene git como canónico. El mismo razonamiento se aplica al renderizado del lado del servidor y a la edición autenticada: el sustrato preserva la proveniencia del registro al no replicar el flujo de autenticación de MediaWiki con menor trazabilidad gracias a la disciplina [[worm-ledger-design|de ledger]].
 
 El patrón: cada interfaz que el sustrato no replica es una obligación que no asume.
 

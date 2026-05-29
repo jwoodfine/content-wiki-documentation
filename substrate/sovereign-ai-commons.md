@@ -20,7 +20,7 @@ paired_with: sovereign-ai-commons.es.md
 
 PointSav builds and stewards a sovereign AI commons — a substrate, a protocol stack, and a federation designed for small-to-medium businesses that need sovereign AI without surrendering data ownership or paying for infrastructure they cannot control.
 
-The architecture specification is in the [[compounding-substrate]] article. The economic structure is in [[economic-model]]. This article is the market-positioning frame: who the commons serves, what makes it structurally distinct, and what PointSav's role within it is.
+The architecture specification is in the [[compounding-substrate]] article. The economic structure is in [[economic-model]]. This article is the market-positioning frame: who the commons serves, what makes it [[customer-hostability|structurally distinct]], and what PointSav's role within it is.
 
 ## The market the commons serves
 
@@ -36,7 +36,7 @@ Small clinics, regional law firms, mid-cap financial advisors, real-estate opera
 
 ## What is commons, what is sovereign
 
-The distinction matters. The substrate code, the base model, the protocol specifications, and the published research into federated learning techniques are commons: open, shared, improved by collective contribution. The customer's data graph, the customer's per-tenant LoRA adapters, the customer's tenant configuration, and the customer's audit ledger are sovereign: they stay on the customer's infrastructure and do not leave without the customer's explicit action.
+The distinction matters. The substrate code, the base model, the protocol specifications, and the published research into federated learning techniques are commons: open, shared, improved by collective contribution. The customer's [[knowledge-graph-grounded-apprenticeship|data graph]], the customer's per-tenant [[adapter-composition|LoRA adapters]], the customer's tenant configuration, and the customer's [[worm-ledger-architecture|audit ledger]] are sovereign: they stay on the customer's infrastructure and do not leave without the customer's explicit action.
 
 Commons increases the value of sovereign deployments: every customer's substrate is improved by improvements that any participant contributes to the shared base. Sovereign deployments protect what makes each customer distinctive. The two are co-designed rather than in tension.
 
@@ -46,13 +46,13 @@ The platform's design incorporates five properties that are, taken together, str
 
 **Substrate sovereignty.** The substrate code is open and forkable. A customer who wants to operate independently of the vendor has a complete path to do so. For a managed cloud service, forking the substrate would undermine the revenue model; the architecture cannot be structured that way.
 
-**Optional intelligence.** Rings 1 and 2 — all deterministic data handling and knowledge processing — function fully without the AI layer at Ring 3. Customers can run the platform without AI, add AI when they have a specific use for it, and withdraw it without losing the rest of the system. For a platform where AI compute is the primary revenue source, making AI genuinely optional removes the commercial incentive.
+**Optional intelligence.** Rings 1 and 2 — all deterministic data handling and knowledge processing — function fully without the AI layer at Ring 3. Customers can run the platform without AI, add AI when they have a specific use for it, and withdraw it without losing the rest of the system. See [[substrate-without-inference-base-case]] for the deterministic-only operation. For a platform where AI compute is the primary revenue source, making AI genuinely optional removes the commercial incentive.
 
-**Multi-tier compute routing.** The Doorman selects among a local model, a GPU burst instance, and external API services per request. The selection spans infrastructure that includes competitors' frontier models at Tier C. No single organisation controls all three tiers, and the customer's routing configuration governs which tier handles which request.
+**Multi-tier compute routing.** The [[compounding-doorman|Doorman]] selects among a local model, a [[yoyo-compute-substrate|GPU burst instance]], and external API services per request. The selection spans infrastructure that includes competitors' frontier models at Tier C. No single organisation controls all three tiers, and the customer's routing configuration governs which tier handles which request.
 
 **Federated compounding.** The intended path to improving the platform's AI capability involves pooling privacy-preserved training signal from many customers' LoRA adapters into improvements to a shared base model. [^1] Per-tenant billing and compliance structures make this arrangement unavailable to platforms where each customer's data is held by the vendor under a managed-service agreement.
 
-**Continued-pretraining path.** The base model is OLMo 3, published under Apache 2.0 with full training data and training code available. This is the only 2026 non-Chinese open model that permits a deploying organisation to continue training the base, starting from a known checkpoint, on corpus material that the deploying organisation itself accumulates. The intended outcome — a customer-owned specialised base model — requires this property. It is unavailable from any model where the training data is closed.
+**Continued-pretraining path.** The base model is OLMo 3, published under Apache 2.0 with full training data and training code available. This is the only 2026 non-Chinese open model that permits a deploying organisation to continue training the base, starting from a known checkpoint, on corpus material that the deploying organisation itself accumulates via the [[trajectory-substrate|trajectory substrate]]. The intended outcome — a customer-owned specialised base model — requires this property. It is unavailable from any model where the training data is closed.
 
 ## PointSav's role
 

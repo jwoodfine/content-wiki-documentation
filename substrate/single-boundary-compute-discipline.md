@@ -14,7 +14,7 @@ cites: []
 paired_with: single-boundary-compute-discipline.es.md
 ---
 
-The **Single-Boundary Compute Discipline** is the structural rule that all AI inference traffic in a platform deployment passes through one and only one boundary point: the Doorman (`service-slm`). No process, session, or service reaches an inference tier — local, GPU burst, or external API — except through this boundary.
+The **Single-Boundary Compute Discipline** is the structural rule that all AI inference traffic in a platform deployment passes through one and only one boundary point: the [[compounding-doorman|Doorman]] (`service-slm`). No process, session, or service reaches an inference tier — local, [[yoyo-compute-substrate|GPU burst]], or external API — except through this boundary.
 
 It is not a preferred-path routing convention that allows bypass by configuration; it is enforced at the kernel and secret boundaries so that no other process on the system can reach inference compute.
 
@@ -22,9 +22,9 @@ It is not a preferred-path routing convention that allows bypass by configuratio
 
 A single boundary makes four properties structurally guaranteed rather than policy-dependent:
 
-**Audit completeness.** The audit ledger records every inference call. An operator asking "did AI touch this record?" inspects the ledger and receives a definitive answer. If bypass were possible, the ledger would have gaps — and a gapped ledger is inadmissible as a compliance record.
+**Audit completeness.** The [[worm-ledger-architecture|audit ledger]] records every inference call. An operator asking "did AI touch this record?" inspects the ledger and receives a definitive answer. If bypass were possible, the ledger would have gaps — and a gapped ledger is inadmissible as a compliance record.
 
-**Corpus completeness.** The apprenticeship substrate captures every Doorman-mediated call as a training tuple. Bypass produces no shadow brief. The training corpus has gaps, and those gaps permanently degrade the quality of the per-tenant adapter that accumulates from the corpus.
+**Corpus completeness.** The [[apprenticeship-substrate|apprenticeship substrate]] captures every Doorman-mediated call as a training tuple. Bypass produces no shadow brief. The training corpus has gaps, and those gaps permanently degrade the quality of the per-tenant [[adapter-composition|adapter]] that accumulates from the corpus.
 
 **Cost control.** Budget caps and kill-switches operate at the Doorman boundary. Bypass routes around the cap. A deployment with a monthly inference budget has no enforceable budget if bypass is possible.
 
@@ -50,7 +50,7 @@ This interface is also the MCP gateway endpoint (see [[mcp-substrate-protocol]])
 
 ## Relationship to the three-ring architecture
 
-The Doorman is the entry point to Ring 3. The [[three-ring-architecture]] makes Ring 3 structurally optional — a deployment may operate without AI inference entirely and the deterministic Ring 1 and Ring 2 services remain fully functional. The single-boundary discipline is what makes that optionality safe: because all inference passes through one point, disabling that point produces a clean degraded state rather than a partially-bypassed one.
+The [[compounding-doorman|Doorman]] is the entry point to Ring 3. The [[three-ring-architecture]] makes Ring 3 structurally optional — a deployment may operate without AI inference entirely and the deterministic Ring 1 and Ring 2 services remain fully functional. The single-boundary discipline is what makes that optionality safe: because all inference passes through one point, disabling that point produces a clean degraded state rather than a partially-bypassed one.
 
 ## Composition
 

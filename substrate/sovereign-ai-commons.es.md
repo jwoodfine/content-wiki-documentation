@@ -19,7 +19,7 @@ paired_with: sovereign-ai-commons.md
 ---
 
 
-PointSav construye y administra un bien común de IA soberana: un sustrato, una pila de protocolos y una federación diseñados para que las pequeñas y medianas empresas reguladas puedan ejecutar IA soberana sin ceder la propiedad de sus datos ni pagar por infraestructura que no controlan.
+PointSav construye y administra un bien común de IA soberana: un sustrato, una pila de protocolos y una federación diseñados para que las pequeñas y medianas empresas reguladas puedan ejecutar IA soberana sin ceder la [[customer-owned-graph-ip|propiedad de sus datos]] ni pagar por infraestructura que no controlan.
 
 ## El mercado que sirve el bien común
 
@@ -29,7 +29,7 @@ Las características definitorias del cliente objetivo: valor contractual anual 
 
 ## Lo que es común, lo que es soberano
 
-El código del sustrato, el modelo base, las especificaciones de protocolo y los desarrollos publicados sobre aprendizaje federado son bienes comunes: abiertos, compartidos, mejorados por la contribución colectiva. El grafo de conocimiento del cliente, los adaptadores LoRA por inquilino, la configuración del inquilino y el libro de auditoría son soberanos: permanecen en la infraestructura del cliente y no salen de ella sin acción explícita del cliente.
+El código del sustrato, el modelo base, las especificaciones de protocolo y los desarrollos publicados sobre aprendizaje federado son bienes comunes: abiertos, compartidos, mejorados por la contribución colectiva. El [[knowledge-graph-grounded-apprenticeship|grafo de conocimiento]] del cliente, los [[adapter-composition|adaptadores LoRA]] por inquilino, la configuración del inquilino y el [[worm-ledger-architecture|libro de auditoría]] son soberanos: permanecen en la infraestructura del cliente y no salen de ella sin acción explícita del cliente.
 
 Los bienes comunes aumentan el valor de los despliegues soberanos: cada cliente se beneficia de las mejoras al sustrato compartido. Los despliegues soberanos protegen lo que hace único a cada cliente. Ambos están codiseñados, no en tensión.
 
@@ -39,9 +39,9 @@ El diseño de la plataforma incorpora cinco propiedades que, en conjunto, son es
 
 1. **Soberanía del sustrato.** El código es abierto y bifurcable; un cliente que desee operar de forma independiente del proveedor tiene un camino completo para hacerlo.
 2. **Inteligencia opcional.** Los anillos 1 y 2 — todo el procesamiento determinista — funcionan completamente sin la capa de IA en el anillo 3.
-3. **Enrutamiento de cómputo de múltiples capas.** El Doorman selecciona entre modelo local, ráfaga GPU y API externas por solicitud, incluyendo modelos frontier de terceros en la Capa C.
+3. **Enrutamiento de cómputo de múltiples capas.** El [[compounding-doorman|Portero]] selecciona entre modelo local, [[yoyo-compute-substrate|ráfaga GPU]] y API externas por solicitud, incluyendo modelos frontier de terceros en la Capa C.
 4. **Composición federada.** La señal de entrenamiento preservada con privacidad de múltiples adaptadores LoRA de clientes puede agregarse para mejorar el modelo base compartido. [^1]
-5. **Camino de preentrenamiento continuo.** El modelo base OLMo 3 publica datos de entrenamiento, código y puntos de control bajo licencias que permiten continuar el preentrenamiento desde un punto conocido sobre corpus propio.
+5. **Camino de preentrenamiento continuo.** El modelo base OLMo 3 publica datos de entrenamiento, código y puntos de control bajo licencias que permiten continuar el preentrenamiento desde un punto conocido sobre [[trajectory-substrate|corpus propio]].
 
 ## El papel de PointSav
 

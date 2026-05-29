@@ -12,7 +12,7 @@ editor: pointsav-engineering
 paired_with: nightly-datagraph-rebuild.es.md
 ---
 
-The nightly datagraph rebuild is the scheduled pipeline that reconstructs the platform's full knowledge graph from its canonical flat-file sources. Every graph-queryable relationship — entity links, extraction outputs, ledger entries, and location intelligence indexes — is derived from the same deterministic inputs each cycle.
+The nightly datagraph rebuild is the scheduled pipeline that reconstructs the platform's full knowledge graph from its canonical flat-file sources. Every graph-queryable relationship — entity links, [[service-extraction|extraction outputs]], [[worm-ledger-architecture|ledger entries]], and [[location-intelligence-substrate|location intelligence indexes]] — is derived from the same deterministic inputs each cycle.
 
 ## Purpose
 
@@ -22,7 +22,7 @@ The pipeline runs without AI inference. Relationships are computed by determinis
 
 ## Position in the substrate stack
 
-The nightly rebuild sits between the WORM ledger (which accumulates append-only writes during the day) and the query-serving tier (which reads the most recently completed graph). Consumers of the knowledge graph always read a stable snapshot, not a partially-constructed graph.
+The nightly rebuild sits between the [[worm-ledger-design|WORM ledger]] (which accumulates append-only writes during the day) and the query-serving tier (which reads the most recently completed graph). Consumers of the [[knowledge-graph-grounded-apprenticeship|knowledge graph]] always read a stable snapshot, not a partially-constructed graph.
 
 ## See also
 

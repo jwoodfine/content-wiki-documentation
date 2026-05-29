@@ -14,7 +14,7 @@ cites: []
 paired_with: seed-taxonomy-as-smb-bootstrap.es.md
 ---
 
-Every tenant deployment begins with a **seed taxonomy**: a compact, hand-tunable four-part structure that forms the initial scaffold of the per-tenant knowledge graph. The four parts are Archetypes, Chart of Accounts, Domains, and Themes. Each entity carries gravity keywords — explainable keyword anchors that drive classification of incoming content.
+Every tenant deployment begins with a **seed taxonomy**: a compact, hand-tunable four-part structure that forms the initial scaffold of the per-tenant [[knowledge-graph-grounded-apprenticeship|knowledge graph]]. The four parts are Archetypes, Chart of Accounts, Domains, and Themes. Each entity carries gravity keywords — explainable keyword anchors that drive [[service-content|classification of incoming content]].
 
 ## The four parts
 
@@ -28,7 +28,7 @@ Every tenant deployment begins with a **seed taxonomy**: a compact, hand-tunable
 
 ## The gravity_keywords mechanism
 
-Classification of new content into the taxonomy uses keyword matching rather than embedding similarity. When a document arrives, the extraction service counts keyword matches against each Archetype, Chart of Accounts profile, Domain, and Theme entity. The entity with the highest match count is the proposed classification.
+Classification of new content into the taxonomy uses keyword matching rather than embedding similarity. When a document arrives, the [[service-extraction|extraction service]] counts keyword matches against each Archetype, Chart of Accounts profile, Domain, and Theme entity. The entity with the highest match count is the proposed classification.
 
 This approach is deliberate. Keyword-based classification is explainable: "this document was classified as Real Estate because the terms Leasing, Office, and Industrial matched" is a statement an operator can read and verify. An embedding similarity score is not. Keyword classification is auditable — the classification path is reproducible across model versions, which matters for regulatory record-keeping. And it is hand-tunable: an operator who sees a misclassification edits the gravity keywords list. Retraining an embedding model is not a practical operation for a small business.
 
@@ -36,7 +36,7 @@ Embedding similarity is provided at a separate layer to augment keyword classifi
 
 ## Provisioning a new tenant
 
-When a new tenant is provisioned, the operator selects a Vertical Seed Pack (see [[vertical-seed-packs-marketplace]]) appropriate to their industry. The service imports the pack's JSON files into the per-tenant graph. The operator then customizes the result — adding, editing, or removing entities — using the TUI. A typical small business is intended to complete the review and customization in approximately 30 minutes.
+When a new tenant is provisioned, the operator selects a Vertical Seed Pack (see [[vertical-seed-packs-marketplace]]) appropriate to their industry. The [[service-content|service]] imports the pack's JSON files into the per-tenant graph. The operator then customizes the result — adding, editing, or removing entities — using the [[tui-corpus-producer|TUI]]. A typical small business is intended to complete the review and customization in approximately 30 minutes.
 
 ## Structural difference from enterprise ontology approaches
 
@@ -46,7 +46,7 @@ The platform's seed taxonomy optimizes for actionability for one specific custom
 
 ## Relationship to the knowledge graph
 
-The seeded taxonomy becomes the initial structure of the per-tenant knowledge graph in `service-content`. Every Archetype, Chart of Accounts profile, Domain, and Theme entity is a graph node. As the deployment operates, new entities discovered during inference (with accepted verdicts) are added to the graph, growing the taxonomy organically from actual use.
+The seeded taxonomy becomes the initial structure of the per-tenant knowledge graph in [[service-content]]. Every Archetype, Chart of Accounts profile, Domain, and Theme entity is a graph node. As the deployment operates, new entities discovered during inference (with accepted verdicts from the [[compounding-doorman|Doorman]]) are added to the graph, growing the taxonomy organically from actual use.
 
 The [[knowledge-graph-grounded-apprenticeship]] pattern depends on this seeded graph: the graph provides the grounding context for every subsequent inference request.
 

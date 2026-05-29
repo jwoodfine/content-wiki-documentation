@@ -18,11 +18,11 @@ cites:
  - osc-sn-51-721
 ---
 
-The PointSav wiki at `documentation.pointsav.com` provides structural compatibility with MediaWiki's reader-facing conventions — URL patterns, wikilink syntax, footnote syntax — while deliberately declining to replicate MediaWiki's internal API surface. Every interface the substrate does not replicate is a compliance obligation it does not assume.
+The PointSav wiki at `documentation.pointsav.com` provides structural compatibility with MediaWiki's reader-facing conventions — URL patterns, wikilink syntax, footnote syntax — while deliberately declining to replicate MediaWiki's internal API surface. Every interface the substrate does not replicate is a [[compliance-and-continuous-disclosure|compliance obligation]] it does not assume.
 
 That decision has a concrete cost and a concrete benefit. The cost: contributors migrating automation workflows from MediaWiki-compatible tools re-implement against new interfaces. The benefit: every Action API endpoint MediaWiki ships, deprecates, or modifies would have generated a maintenance event; the platform has no control over that velocity, and every public interface the platform exposes is a continuous-disclosure surface under Canadian securities law (National Instrument 51-102 and OSC Staff Notice 51-721). Declining the shim means the wiki's disclosure commitments are bounded to what the substrate actually provides.
 
-The result is a wiki with the reader and integrator ecosystem reach of a MediaWiki-replacement — resolving wikilinks, serving `sitemap.xml`, accepting Wikipedia-style markup — and a maintenance surface that scales with the platform's own velocity, not MediaWiki's.
+The result is a wiki with the reader and integrator ecosystem reach of a MediaWiki-replacement — resolving wikilinks, serving `sitemap.xml`, accepting Wikipedia-style markup — and a maintenance surface that scales with the [[app-mediakit-knowledge|platform's own velocity]], not MediaWiki's.
 
 ## The choice
 
@@ -30,7 +30,7 @@ The PointSav engineering wiki at `documentation.pointsav.com` is a substrate-nat
 
 The core architectural distinction: when an existing platform's role is substituted by the substrate, the substrate replicates *structural compatibility* — the surfaces a reader or external integrator encounters — without replicating *interface mimicry* — the API shape an internal-system integration would consume. The distinction is load-bearing.
 
-The MediaWiki Action API shim was scoped during the wiki engine's initial design phase at version 0.1.10 and dropped at version 0.1.14 after the maintenance burden and the disclosure-posture risk the shim would have introduced were surfaced. This article covers the rationale.
+The MediaWiki Action API shim was scoped during the [[app-mediakit-knowledge|wiki engine's]] initial design phase at version 0.1.10 and dropped at version 0.1.14 after the maintenance burden and the [[disclosure-substrate|disclosure-posture]] risk the shim would have introduced were surfaced. This article covers the rationale.
 
 ## Ecosystem moat — what compatibility actually buys
 
@@ -42,7 +42,7 @@ The first part is **reader and external-integrator structural compatibility**: a
 
 The second part is **internal-system interface mimicry**: extensions that read and write through the Action API, bots that authenticate against MediaWiki's login flow, templates that expand server-side using the MediaWiki parser. This part is high-cost to provide — every API endpoint mimicked is an interface that must be maintained against MediaWiki's evolution, hardened against MediaWiki's known attack surfaces, and audited under whatever compliance posture the substrate has committed to.
 
-The substrate's choice is to participate in the first part fully and decline the second part deliberately. The cost calculus favours decline:
+The substrate's choice is to participate in the first part fully and decline the second part deliberately. The cost calculus favours [[citation-substrate|decline]]:
 
 - Reader and integrator ecosystem effects scale via conventions, which are stable across a decade. The substrate adopts the convention once and benefits indefinitely.
 - Internal-system extension ecosystem effects scale via interfaces, which evolve with MediaWiki releases. The substrate would inherit a maintenance burden that grows with MediaWiki's ecosystem velocity, not the substrate's.
@@ -94,7 +94,7 @@ What the Action API shim would have served, the substrate's native interfaces se
 | `?action=expandtemplates` | not provided; the substrate's renderer does not expand templates |
 | `?action=login` / authentication | not provided over HTTP; authenticated edits use the Mutual Bidirectional Auth (MBA) path |
 
-The interfaces compose with the substrate's other invariants. The JSON-LD is generated from the article's frontmatter by the same code path that emits the article HTML, so the structured data cannot drift from the rendered content. The Atom feed shares its data source with the JSON Feed, the sitemap, and the index page; a content tree change updates all four atomically. The search backend (Tantivy) reads the same content tree as the HTML renderer; no separate write path needs to keep the search index synchronised with the article store, because the article store is the file system.
+The interfaces compose with the substrate's other invariants. The JSON-LD is generated from the article's frontmatter by the same code path that emits the article HTML, so the structured data cannot drift from the rendered content. The Atom feed shares its data source with the JSON Feed, the sitemap, and the index page; a content tree change updates all four atomically. The [[worm-ledger-design|search backend]] (Tantivy) reads the same content tree as the HTML renderer; no separate write path needs to keep the search index synchronised with the article store, because the article store is the file system.
 
 ## The `verify://` URL scheme (planned)
 

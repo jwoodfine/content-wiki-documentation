@@ -22,7 +22,7 @@ references:
  url: "https://sel4.systems/Info/Docs/seL4-manual-latest.pdf"
 ---
 
-El micronúcleo seL4 es el núcleo de L1, verificado formalmente por demostración matemática, sobre el que se ejecutan todos los sistemas operativos PointSav — sus propiedades de seguridad están demostradas, no aseveradas mediante pruebas. [^1] PointSav adopta seL4 como materia prima en lugar de construir un núcleo propio, y construye su capa Rust propietaria por encima de él. El aislamiento de memoria, los desbordamientos de búfer nulos, los permisos basados en capacidades y la ejecución determinista están garantizados estructuralmente — la base para afirmaciones de seguridad que pueden razonarse formalmente y presentarse a reguladores. Este artículo cubre la justificación arquitectónica, la pila de capas, las restricciones de la cadena de herramientas y la disciplina de lenguaje aplicada por encima del núcleo.
+El micronúcleo seL4 es el núcleo de L1, verificado formalmente por demostración matemática, sobre el que se ejecutan todos los sistemas operativos PointSav — sus propiedades de seguridad están demostradas, no aseveradas mediante pruebas. [^1] PointSav adopta seL4 como materia prima en lugar de construir un núcleo propio, y construye su capa Rust propietaria por encima de él. El aislamiento de memoria, los desbordamientos de búfer nulos, los [[capability-ledger-substrate|permisos basados en capacidades]] y la ejecución determinista están garantizados estructuralmente — la base para afirmaciones de seguridad que pueden razonarse formalmente y presentarse a reguladores. Este artículo cubre la justificación arquitectónica, la pila de capas, las restricciones de la cadena de herramientas y la [[system-substrate-doctrine|disciplina de lenguaje]] aplicada por encima del núcleo.
 
 ## Por qué adoptar en lugar de construir
 
@@ -60,7 +60,7 @@ Cuando el hardware de destino no admite el arranque nativo de seL4, una máquina
 | Seguridad basada en capacidades | Los permisos se pasan como tokens de capacidad criptográfica, no como entradas en una tabla de permisos central |
 | Cero desbordamientos de búfer en el núcleo | La clase de vulnerabilidad que produce la mayoría de los CVEs de sistemas operativos está matemáticamente excluida del núcleo |
 
-El resultado es un sustrato donde las propiedades de seguridad pueden razonarse formalmente en lugar de aseverarse mediante pruebas de penetración. Esto cambia el tipo de afirmaciones de seguridad que pueden presentarse defensiblemente a un regulador.
+El resultado es un sustrato donde las propiedades de seguridad pueden razonarse formalmente en lugar de aseverarse mediante pruebas de penetración. Esto cambia el tipo de afirmaciones de seguridad que pueden presentarse defensiblemente a un regulador, y constituye la base del [[compliance-and-continuous-disclosure|cumplimiento de prueba continua]].
 
 ## El Microkit y las restricciones de la cadena de herramientas
 
@@ -87,7 +87,7 @@ Permitir un servicio que no sea Rust en un Dominio de Protección reintroducirí
 
 La forma a largo plazo del sustrato es un Sistema Operativo de Micronúcleo Multi-Servidor: cada servicio — red, sistema de archivos, lógica de aplicación — se ejecuta como un unikernel aislado que pasa mensajes a través de IPC de seL4. El único trabajo del núcleo es el enrutamiento de hardware y la aplicación de capacidades.
 
-Este es uno de los patrones más difíciles de la informática para implementar correctamente. El sustrato es ahora lo suficientemente maduro — a través de marcos como Genode y compiladores de unikernel basados en Rust — para que un proveedor institucional construya productos sobre él.
+Este es uno de los patrones más difíciles de la informática para implementar correctamente. El sustrato es ahora lo suficientemente maduro — a través de marcos como Genode y compiladores de unikernel basados en Rust — para que un proveedor institucional construya [[os-family-overview|superficies de sistema operativo]] sobre él.
 
 ## Véase también
 

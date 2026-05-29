@@ -15,7 +15,7 @@ paired_with: seed-taxonomy-as-smb-bootstrap.md
 ---
 
 
-Cada despliegue de inquilino comienza con una **taxonomía semilla**: una estructura compacta, ajustable manualmente y de cuatro partes que forma el andamiaje inicial del grafo de conocimiento por inquilino. Las cuatro partes son Arquetipos, Plan de Cuentas, Dominios y Temas. Cada entidad lleva palabras clave de gravedad — anclajes de palabras clave explicables que impulsan la clasificación del contenido entrante.
+Cada despliegue de inquilino comienza con una **taxonomía semilla**: una estructura compacta, ajustable manualmente y de cuatro partes que forma el andamiaje inicial del [[knowledge-graph-grounded-apprenticeship|grafo de conocimiento]] por inquilino. Las cuatro partes son Arquetipos, Plan de Cuentas, Dominios y Temas. Cada entidad lleva palabras clave de gravedad — anclajes de palabras clave explicables que impulsan la [[service-content|clasificación del contenido entrante]].
 
 ## Las cuatro partes
 
@@ -29,7 +29,7 @@ Cada despliegue de inquilino comienza con una **taxonomía semilla**: una estruc
 
 ## El mecanismo de palabras clave de gravedad
 
-La clasificación del nuevo contenido usa coincidencia de palabras clave en lugar de similitud de embeddings. Este enfoque es deliberado: la clasificación basada en palabras clave es explicable (el operador puede leer y verificar "este documento fue clasificado como Bienes Raíces porque coincidieron los términos Arrendamiento, Oficina e Industrial"), auditable y ajustable manualmente. La similitud de embeddings se proporciona como capa adicional para los casos donde las palabras clave explícitas no coinciden, pero no reemplaza el mecanismo de palabras clave.
+La clasificación del nuevo contenido usa coincidencia de palabras clave en lugar de similitud de embeddings. Este enfoque es deliberado: la clasificación basada en palabras clave es explicable (el operador puede leer y verificar "este documento fue clasificado como Bienes Raíces porque coincidieron los términos Arrendamiento, Oficina e Industrial"), auditable y ajustable manualmente. La similitud de [[service-slm|embeddings]] se proporciona como capa adicional para los casos donde las palabras clave explícitas no coinciden, pero no reemplaza el mecanismo de palabras clave.
 
 ## Diferencia estructural con los enfoques de ontología empresarial
 
@@ -39,7 +39,7 @@ La taxonomía semilla optimiza para la acción de un cliente específico. Toda l
 
 ## Relación con el grafo de conocimiento
 
-La taxonomía sembrada se convierte en la estructura inicial del grafo de conocimiento por inquilino en `service-content`. A medida que opera el despliegue, las nuevas entidades descubiertas durante la inferencia se añaden al grafo, haciendo crecer la taxonomía orgánicamente a partir del uso real.
+La taxonomía sembrada se convierte en la estructura inicial del grafo de conocimiento por inquilino en [[service-content]]. A medida que opera el despliegue, las nuevas entidades descubiertas durante la inferencia (con veredictos aceptados por el [[compounding-doorman|Portero]]) se añaden al grafo, haciendo crecer la taxonomía orgánicamente a partir del uso real.
 
 ## Véase También
 

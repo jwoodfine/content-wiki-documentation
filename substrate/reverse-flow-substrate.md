@@ -18,17 +18,17 @@ references:
 paired_with: reverse-flow-substrate.es.md
 ---
 
-The **Reverse-Flow Substrate** is the planned extension of the Doorman gateway, audit ledger, and per-tenant module identifier to govern outbound commercial flows. The same boundary that mediates inbound inference requests is intended to also mediate two outbound flows: a data marketplace and an ad exchange. Both are planned as opt-in per tenant, structurally disabled by default, and require per-record cryptographic provenance.
+The **Reverse-Flow Substrate** is the planned extension of the [[compounding-doorman|Doorman]] gateway, [[worm-ledger-architecture|audit ledger]], and per-tenant module identifier to govern outbound commercial flows. The same boundary that mediates inbound inference requests is intended to also mediate two outbound flows: a data marketplace and an ad exchange. Both are planned as opt-in per tenant, structurally disabled by default, and require per-record cryptographic provenance.
 
 ## The two planned reverse flows
 
-**Data Marketplace.** The customer's accumulated knowledge graph, audit ledger, and trained adapter weights are intended to be saleable assets. The planned marketplace gateway (`service-marketplace`) is intended to expose per-tenant inventory to external buyers. Planned inventory categories include anonymized aggregate queries against the per-tenant graph, trained adapter weights (saleable to other tenants in the same vertical with explicit permission), curated content-wiki material with consent and license terms, and verdict-signed corpus tuples with cryptographic provenance for AI training data buyers.
+**Data Marketplace.** The customer's accumulated [[knowledge-graph-grounded-apprenticeship|knowledge graph]], [[worm-ledger-architecture|audit ledger]], and trained [[adapter-composition|adapter weights]] are intended to be saleable assets. The planned marketplace gateway (`service-marketplace`) is intended to expose per-tenant inventory to external buyers. Planned inventory categories include anonymized aggregate queries against the per-tenant graph, trained adapter weights (saleable to other tenants in the same vertical with explicit permission), curated content-wiki material with consent and license terms, and verdict-signed corpus tuples with cryptographic provenance for AI training data buyers.
 
 **Ad Exchange.** The customer is planned to operate as both seller and buyer in a standards-compliant real-time bidding exchange. [^1] As seller, the customer's first-party audience — with per-record consent and AI intent classification — is intended to be real-time-bid inventory. As buyer, the customer's adapter may classify their own audience intent to support targeted outbound campaigns. The customer's budget controls the bid.
 
 ## Per-tenant opt-in discipline
 
-Reverse flows are structurally disabled by default. Enabling them requires the operator to authenticate as the tenant's primary identity, run the appropriate enable command in the TUI, and complete a guided consent flow that includes inventory category selection, consent-record review, pricing configuration, and settlement rail selection. The configuration is signed by the operator's identity key and recorded in the audit ledger.
+Reverse flows are structurally disabled by default. Enabling them requires the operator to authenticate as the tenant's primary identity, run the appropriate enable command in the TUI, and complete a guided consent flow that includes inventory category selection, consent-record review, pricing configuration, and settlement rail selection. The configuration is signed by the operator's identity key and recorded in the [[worm-ledger-architecture|audit ledger]].
 
 There is no API path that enables marketplace or ad exchange flows without operator-signed consent. The TUI flow is the structural enforcement of the opt-in requirement.
 

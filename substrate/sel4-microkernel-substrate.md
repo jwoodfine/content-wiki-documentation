@@ -22,7 +22,7 @@ references:
  url: "https://sel4.systems/Info/Docs/seL4-manual-latest.pdf"
 ---
 
-The seL4 microkernel is the mathematically formally-verified L1 kernel on which all PointSav operating systems run — its security properties are proved by formal mathematical proof, not asserted by testing. [^1] PointSav adopts seL4 as raw material rather than building a custom kernel, and constructs its proprietary Rust layer above it. Memory isolation, zero buffer overflows, capability-based permissions, and deterministic execution are guaranteed structurally — the foundation for security claims that can be reasoned about formally and presented to regulators rather than merely asserted through penetration testing. This article covers the architectural rationale, the layered stack, the toolchain constraints, and the language discipline enforced above the kernel.
+The seL4 microkernel is the mathematically formally-verified L1 kernel on which all PointSav operating systems run — its security properties are proved by formal mathematical proof, not asserted by testing. [^1] PointSav adopts seL4 as raw material rather than building a custom kernel, and constructs its proprietary Rust layer above it. Memory isolation, zero buffer overflows, [[capability-ledger-substrate|capability-based permissions]], and deterministic execution are guaranteed structurally — the foundation for security claims that can be reasoned about formally and presented to regulators rather than merely asserted through penetration testing. This article covers the architectural rationale, the layered stack, the toolchain constraints, and the [[system-substrate-doctrine|language discipline]] enforced above the kernel.
 
 ## Why adopt rather than build
 
@@ -33,7 +33,7 @@ A reasonable alternative would be to write a custom kernel. PointSav explicitly 
 | Build a custom kernel | Tens of millions of dollars; five or more years of formal-verification work | Catching up to a 2009 standard in the 2030s |
 | Adopt seL4 | Zero | Already proved; ready to build on |
 
-The principle is to use seL4 as a raw material — like structural steel — and build the proprietary value above it. PointSav's competitive technical work happens in the Rust layer above seL4, not in the kernel itself.
+The principle is to use seL4 as a raw material — like structural steel — and build the proprietary value above it. PointSav's competitive technical work happens in the [[system-substrate-doctrine|Rust layer above seL4]], not in the kernel itself.
 
 ## The layered stack
 
@@ -60,7 +60,7 @@ When the target hardware does not support native seL4 boot, a Linux or BSD guest
 | Capability-based security | Permissions are passed as cryptographic capability tokens, not entries in a central permission table |
 | Zero buffer overflows in the kernel | The class of vulnerability that produces most OS CVEs is mathematically excluded from the kernel |
 
-The result is a substrate where security properties can be reasoned about formally rather than asserted by penetration testing. This changes what kinds of security claims can be defensibly presented to a regulator.
+The result is a substrate where security properties can be reasoned about formally rather than asserted by penetration testing. This changes what kinds of security claims can be defensibly presented to a regulator — and forms the [[compliance-and-continuous-disclosure|continuous-proof compliance]] foundation.
 
 ## The Microkit and toolchain constraints
 
@@ -87,7 +87,7 @@ Allowing one non-Rust service into a Protection Domain would reintroduce runtime
 
 The long-term shape of the substrate is a Multi-Server Microkernel OS: every service — networking, filesystem, application logic — runs as an isolated unikernel passing messages through seL4 IPC. The kernel's only job is hardware routing and capability enforcement.
 
-This is one of the most difficult patterns in computer science to engineer correctly. The substrate is now mature enough — through frameworks like Genode and Rust-based unikernel compilers — for an institutional vendor to build products on it.
+This is one of the most difficult patterns in computer science to engineer correctly. The substrate is now mature enough — through frameworks like Genode and Rust-based unikernel compilers — for an institutional vendor to build [[os-family-overview|operating system surfaces]] on it.
 
 ## See also
 

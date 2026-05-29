@@ -15,15 +15,15 @@ paired_with: single-boundary-compute-discipline.md
 ---
 
 
-La **Disciplina de Cómputo de Límite Único** establece que todo el tráfico de inferencia de IA en un despliegue de la plataforma pasa por un único punto de frontera: el Portero (`service-slm`). Ningún proceso, sesión ni servicio accede a un nivel de inferencia —local, GPU en ráfaga o API externa— excepto a través de esta frontera.
+La **Disciplina de Cómputo de Límite Único** establece que todo el tráfico de inferencia de IA en un despliegue de la plataforma pasa por un único punto de frontera: el [[compounding-doorman|Portero]] (`service-slm`). Ningún proceso, sesión ni servicio accede a un nivel de inferencia —local, [[yoyo-compute-substrate|GPU en ráfaga]] o API externa— excepto a través de esta frontera.
 
 ## Por qué un solo límite
 
 Un único punto de frontera garantiza estructuralmente cuatro propiedades clave:
 
-**Integridad del registro de auditoría.** El registro de auditoría captura cada llamada de inferencia. Un operador que necesite saber si la IA tocó un registro específico obtiene una respuesta definitiva al consultar el registro. Si existiera una ruta alternativa, el registro tendría lagunas, lo que lo haría inadmisible como evidencia de cumplimiento.
+**Integridad del registro de auditoría.** El [[worm-ledger-architecture|registro de auditoría]] captura cada llamada de inferencia. Un operador que necesite saber si la IA tocó un registro específico obtiene una respuesta definitiva al consultar el registro. Si existiera una ruta alternativa, el registro tendría lagunas, lo que lo haría inadmisible como evidencia de cumplimiento.
 
-**Integridad del corpus de entrenamiento.** El substrato de aprendizaje captura cada llamada mediada por el Portero como una tupla de entrenamiento. Las llamadas que evaden el Portero no producen ningún ejemplo de aprendizaje; las lagunas en el corpus degradan permanentemente la calidad del adaptador por inquilino.
+**Integridad del corpus de entrenamiento.** El [[apprenticeship-substrate|substrato de aprendizaje]] captura cada llamada mediada por el Portero como una tupla de entrenamiento. Las llamadas que evaden el Portero no producen ningún ejemplo de aprendizaje; las lagunas en el corpus degradan permanentemente la calidad del [[adapter-composition|adaptador]] por inquilino.
 
 **Control de costos.** Los límites de presupuesto y los interruptores de emergencia operan en la frontera del Portero. Las llamadas que evaden esa frontera también evaden los controles de gasto.
 
@@ -37,7 +37,7 @@ Los secretos de inferencia viven únicamente en el archivo de entorno del Porter
 
 ## Relación con la arquitectura de tres anillos
 
-El Portero es el único punto de entrada al Anillo 3. La arquitectura de tres anillos hace que el Anillo 3 sea estructuralmente opcional; la disciplina de límite único garantiza que deshabilitar ese punto produce un estado degradado limpio en lugar de un estado parcialmente comprometido. Para operaciones determinísticas en los Anillos 1 y 2, el substrato funciona completamente sin el Portero activo en modo de inferencia.
+El [[compounding-doorman|Portero]] es el único punto de entrada al Anillo 3. La [[three-ring-architecture|arquitectura de tres anillos]] hace que el Anillo 3 sea estructuralmente opcional; la disciplina de límite único garantiza que deshabilitar ese punto produce un estado degradado limpio en lugar de un estado parcialmente comprometido. Para operaciones determinísticas en los Anillos 1 y 2, el substrato funciona completamente sin el Portero activo en modo de inferencia.
 
 ## Composición con otras reclamaciones
 

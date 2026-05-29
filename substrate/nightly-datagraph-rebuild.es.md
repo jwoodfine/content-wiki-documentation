@@ -13,7 +13,7 @@ editor: pointsav-engineering
 paired_with: nightly-datagraph-rebuild.md
 ---
 
-La reconstrucción nocturna del grafo de datos es el proceso programado que reconstruye el grafo de conocimiento completo de la plataforma a partir de sus fuentes canónicas de archivos planos. Todas las relaciones consultables en el grafo — enlaces de entidades, resultados de extracción, entradas del libro de registros e índices de inteligencia de ubicación — se derivan de las mismas entradas deterministas en cada ciclo.
+La reconstrucción nocturna del grafo de datos es el proceso programado que reconstruye el [[knowledge-graph-grounded-apprenticeship|grafo de conocimiento]] completo de la plataforma a partir de sus fuentes canónicas de archivos planos. Todas las relaciones consultables en el grafo — enlaces de entidades, [[service-extraction|resultados de extracción]], [[worm-ledger-architecture|entradas del libro de registros]] e índices de [[location-intelligence-substrate|inteligencia de ubicación]] — se derivan de las mismas entradas deterministas en cada ciclo.
 
 ## Propósito
 
@@ -23,7 +23,7 @@ El proceso se ejecuta sin inferencia de inteligencia artificial. Las relaciones 
 
 ## Posición en la pila de substratos
 
-La reconstrucción nocturna se sitúa entre el libro de registros WORM (que acumula escrituras de solo adición durante el día) y el nivel de consulta (que lee el grafo completado más recientemente). Los consumidores del grafo de conocimiento siempre leen una instantánea estable, no un grafo parcialmente construido.
+La reconstrucción nocturna se sitúa entre el [[worm-ledger-design|libro de registros WORM]] (que acumula escrituras de solo adición durante el día) y el nivel de consulta (que lee el grafo completado más recientemente). Los consumidores del grafo de conocimiento siempre leen una instantánea estable, no un grafo parcialmente construido.
 
 ## Véase también
 
