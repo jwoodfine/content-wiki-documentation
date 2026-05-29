@@ -14,7 +14,7 @@ cites: [ifc-4-3, ids-1-0, bsdd-v1]
 paired_with: city-code-as-composable-geometry.es.md
 ---
 
-Every building code compliance tool in production follows the same architecture: a completed design model is submitted to a rules engine, which generates a violation report, which a human must review and remediate before resubmission. This post-design validation model has been the industry standard for twenty years. It produces a structural tension between design iteration speed and compliance verification. The more thorough the rules engine, the longer each review cycle. A different architecture is possible: if regulatory requirements are encoded directly into the elements available to a designer — not as rules applied to a finished model but as geometric and numeric constraints embedded in the element specification — then non-compliant configurations cannot be placed. This is the City Code as Composable Geometry model, and it is the architectural claim underlying the BIM Object platform.
+Every building code compliance tool in production follows the same architecture: a completed design model is submitted to a rules engine, which generates a violation report, which a human must review and remediate before resubmission. This post-design validation model has been the industry standard for twenty years. It produces a structural tension between design iteration speed and compliance verification. The more thorough the rules engine, the longer each review cycle. A different architecture is possible: if regulatory requirements are encoded directly into the elements available to a designer — not as rules applied to a finished model but as geometric and numeric constraints embedded in the element specification — then non-compliant configurations cannot be placed. This is the City Code as Composable Geometry model, and it is the architectural claim underlying the [[bim-objects-what-they-are|BIM Object]] platform.
 
 ## The Validation-First Paradigm
 
@@ -47,13 +47,13 @@ Research conducted in April 2026 identified four categories of prior art, all in
 
 City Code as Composable Geometry operates through a three-layer technical mechanism.
 
-**Layer 1: Semantic identity via bSDD.** Every BIM Object carries a bSDD concept URI identifying its element type in a jurisdiction-neutral, tool-neutral reference. This URI is the stable identity that allows Regulation and Climate Zone overlays to reference the same element type regardless of IFC version drift.
+**Layer 1: Semantic identity via bSDD.** Every [[bim-objects-what-they-are|BIM Object]] carries a bSDD concept URI identifying its element type in a jurisdiction-neutral, tool-neutral reference. This URI is the stable identity that allows Regulation and Climate Zone overlays to reference the same element type regardless of IFC version drift.
 
 **Layer 2: Regulatory constraint via IDS 1.0.** Each registered jurisdictional overlay for a BIM Object includes an IDS 1.0 constraint file. The IDS file encodes numeric and property constraints: maximum U-values, minimum structural ratings, fire resistance class requirements, accessibility clearances. When a BIM Object is placed in a model, its registered IDS constraints are part of its specification — the authoring environment receives these as element requirements at placement time, not as post-placement rules.
 
 **Layer 3: Exclusion geometry via IFC fragment.** Where a regulatory requirement has geometric expression — a fire compartment boundary that an element must not cross, a setback from a property line, an accessibility envelope that must remain clear — the jurisdictional overlay includes an IFC fragment: a solid geometry encoded in IFC format that defines the excluded or required space. This fragment is associated with the BIM Object and resolves at placement time. It cannot be overridden by numeric constraints.
 
-The composition of these three layers is what makes the geometry "encode" the code. The regulatory constraint is not stored in a separate validation database checked after authoring. It is stored in the BIM Object specification and instantiated with the element.
+The composition of these [[bim-objects-three-layers|three layers]] is what makes the geometry "encode" the code. The regulatory constraint is not stored in a separate validation database checked after authoring. It is stored in the BIM Object specification and instantiated with the element.
 
 ## Geometric Exclusion in Detail
 
@@ -71,7 +71,7 @@ Research identified three structural reasons why centralised cloud approaches ca
 
 **Regulatory data sovereignty.** Jurisdictional regulatory data is public law. Encoding it as a service hosted on a commercial cloud platform creates procurement and sovereignty concerns for non-US jurisdictions under EU data residency requirements, GDPR restrictions, and equivalent national frameworks. A neutral platform that cities and national governments can self-host or have hosted under national cloud frameworks is structurally required for broad adoption.
 
-**Offline-first requirement.** Construction sites frequently operate without reliable network connectivity. ITAR-restricted projects, remote sites, and many public infrastructure projects require the constraint data to be available offline. A cloud-dependent validation service cannot serve these use cases. A BIM Object vault cloned via git and stored locally is available offline unconditionally.
+**Offline-first requirement.** Construction sites frequently operate without reliable network connectivity. ITAR-restricted projects, remote sites, and many public infrastructure projects require the constraint data to be available offline. A cloud-dependent validation service cannot serve these use cases. A [[asset-anchored-bim-vault|BIM Object vault]] cloned via git and stored locally is available offline unconditionally.
 
 **Commercial platform neutrality.** Cities and national governments issuing regulatory requirements need to publish them to all conformant BIM platforms, not to specific commercial vendors. Publishing code requirements to a neutral, open-format JSON standard (W3C DTCG with BIM extensions) and distributing them via public git repositories is analogous to publishing building codes as PDF — neutral, reproducible, and vendor-independent.
 
@@ -79,9 +79,9 @@ Research identified three structural reasons why centralised cloud approaches ca
 
 The City Code as Composable Geometry model is implemented progressively.
 
-**Stage 1 (current, planned for v0.0.3):** BIM Object vault with Specification layer complete. Regulation layer skeleton present with first overlay set: British Columbia residential (RS-1 zoning) — selected because Woodfine Management Corp. operates in BC and is the reference customer. Climate Zone layer populated with BC temperate-coastal zone (ASHRAE 5C equivalent) performance parameters.
+**Stage 1 (current, planned for v0.0.3):** [[asset-anchored-bim-vault|BIM Object vault]] with Specification layer complete. Regulation layer skeleton present with first overlay set: British Columbia residential (RS-1 zoning) — selected because Woodfine Management Corp. operates in BC and is the reference customer. Climate Zone layer populated with BC temperate-coastal zone (ASHRAE 5C equivalent) performance parameters.
 
-**Stage 2 (intended, v0.1.x):** IDS 1.0 constraint file generation. For each registered Regulation overlay, a conformant IDS 1.0 file is generated from the BIM Object data and published alongside the DTCG JSON. This enables existing IDS-aware validators to consume PointSav-authored constraint specifications.
+**Stage 2 (intended, v0.1.x):** IDS 1.0 constraint file generation. For each registered Regulation overlay, a conformant IDS 1.0 file is generated from the BIM Object data and published alongside the DTCG JSON. This enables existing IDS-aware validators to consume [[pointsav-overview|PointSav]]-authored constraint specifications.
 
 **Stage 3 (intended, future):** Authoring tool integration. A plugin or API surface that delivers BIM Object constraints to IFC-capable authoring tools at placement time, not at submission time. The authoring tool receives the element palette constrained to conformant BIM Objects for the project's jurisdiction and climate zone.
 

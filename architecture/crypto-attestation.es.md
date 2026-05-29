@@ -17,7 +17,7 @@ cites: []
 ---
 
 
-La attestación criptográfica de cargas es el mecanismo por el cual los nodos perimetrales de PointSav demuestran dinámicamente la integridad de su contenido textual publicado a cualquier espectador. Utiliza hashing SHA-256 del lado del cliente, de modo que cualquier auditor puede verificar independientemente que una divulgación no ha sido alterada en tránsito.
+La attestación criptográfica de cargas es el mecanismo por el cual los nodos perimetrales de [[pointsav-overview|PointSav]] demuestran dinámicamente la integridad de su contenido textual publicado a cualquier espectador. Utiliza hashing SHA-256 del lado del cliente, de modo que cualquier auditor puede verificar independientemente que una divulgación no ha sido alterada en tránsito. Véase también [[cryptographic-ledgers|registros criptográficos]] y [[zero-execution-routing|enrutamiento de ejecución cero]].
 
 ## Cómo funciona
 
@@ -31,7 +31,7 @@ La attestación es de cero ejecución en el servidor para el cálculo del hash: 
 
 ## Aplicaciones
 
-- Divulgaciones regulatorias públicas en nodos perimetrales operados por PointSav.
+- Divulgaciones regulatorias públicas en nodos perimetrales operados por [[pointsav-overview|PointSav]].
 - Artículos del wiki de contenido donde la verificación de integridad importa a lectores institucionales.
 - Cualquier superficie de contenido donde un lector necesite confirmar que está leyendo la versión publicada.
 

@@ -17,11 +17,11 @@ paired_with: cryptographic-ledgers.es.md
 
 > Cryptographic ledgers are the immutable-state storage pattern used in the PointSav platform, enforcing mathematical immutability so that any alteration to a recorded fact breaks a verifiable cryptographic hash chain rather than requiring trust in administrative access controls.
 
-**Cryptographic ledgers** are the immutable-state storage architecture used across the PointSav platform to guarantee that once a corporate fact is recorded, any subsequent alteration — down to a single byte — breaks a mathematical lock that any third party can independently verify. In traditional database systems, a system administrator with sufficient privileges can silently edit a record, altering a financial entry or compliance log without triggering any automatic alarm. The cryptographic ledger eliminates this vulnerability by removing the concept of a privileged mutable path: the storage architecture enforces append-only writes at the code level, and every record's integrity is bound into a cryptographic hash chain where modifying any prior entry produces a detectable inconsistency in all subsequent entries.
+**Cryptographic ledgers** are the immutable-state storage architecture used across the [[pointsav-overview|PointSav]] platform to guarantee that once a corporate fact is recorded, any subsequent alteration — down to a single byte — breaks a mathematical lock that any third party can independently verify. In traditional database systems, a system administrator with sufficient privileges can silently edit a record, altering a financial entry or compliance log without triggering any automatic alarm. The cryptographic ledger eliminates this vulnerability by removing the concept of a privileged mutable path: the storage architecture enforces append-only writes at the code level, and every record's integrity is bound into a cryptographic hash chain where modifying any prior entry produces a detectable inconsistency in all subsequent entries. See also [[merkle-proofs-as-substrate-primitive|Merkle proofs as a substrate primitive]] and [[worm-ledger-design|the WORM ledger design]].
 
 ## Overview
 
-The PointSav platform implements cryptographic ledger discipline through `service-fs`, the per-tenant WORM (Write-Once-Read-Many) immutable ledger. The architecture physically separates every incoming payload into two entities: the asset and its state record.
+The [[pointsav-overview|PointSav]] platform implements cryptographic ledger discipline through [[service-fs-architecture|service-fs]], the per-tenant [[worm-ledger-architecture|WORM (Write-Once-Read-Many) immutable ledger]]. The architecture physically separates every incoming payload into two entities: the asset and its state record.
 
 **The asset** — when a user submits a file (a PDF contract, a spreadsheet, a document) into the system, the storage layer places it in an isolated vault and strips all execution permissions. It becomes an inert binary object.
 
@@ -29,7 +29,7 @@ The PointSav platform implements cryptographic ledger discipline through `servic
 
 ## How It Works
 
-The cryptographic lock works through the Merkle hash chain structure. Each new entry is hashed; the hash of the new entry is combined with the hash of the prior entry to produce the hash of the current tree state (the "tree head" or checkpoint). The checkpoint is signed by the tenant key and published.
+The cryptographic lock works through the [[merkle-proofs-as-substrate-primitive|Merkle hash chain]] structure. Each new entry is hashed; the hash of the new entry is combined with the hash of the prior entry to produce the hash of the current tree state (the "tree head" or checkpoint). The checkpoint is signed by the tenant key and published.
 
 If an auditor or compliance engine needs to verify the integrity of a historical record:
 
@@ -42,7 +42,7 @@ If the hashes match and the inclusion proof verifies, the record is intact. If e
 
 ## Architecture
 
-The PointSav cryptographic ledger uses C2SP tlog-tiles format — the same on-disk structure used by Certificate Transparency logs and Sigstore Rekor. Tiles are static, base64-encoded text files containing 256 entries each at the leaf level, with intermediate Merkle-level tiles above them. This format is human-readable, independently verifiable, and compatible with standard Certificate Transparency tooling.
+The [[pointsav-overview|PointSav]] cryptographic ledger uses C2SP tlog-tiles format — the same on-disk structure used by Certificate Transparency logs and Sigstore Rekor. Tiles are static, base64-encoded text files containing 256 entries each at the leaf level, with intermediate [[merkle-proofs-as-substrate-primitive|Merkle-level]] tiles above them. This format is human-readable, independently verifiable, and compatible with standard Certificate Transparency tooling.
 
 Monthly, each tenant's signed checkpoint is submitted to the Sigstore Rekor v2 public transparency log. Once anchored, the checkpoint is public and the tenant cannot retroactively alter any prior record without the tampered state being detectable against the anchored checkpoint.
 

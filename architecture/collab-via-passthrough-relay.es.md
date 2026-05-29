@@ -72,7 +72,7 @@ La ruta de reversión del indicador `--enable-collab` no es destructiva en ningu
 
 El relé de paso es un patrón de sustrato, no una característica específica del wiki. Cualquier servicio que desee semánticas de edición concurrente enfrenta la misma pregunta arquitectónica: ¿necesita la infraestructura de colaboración mantener el estado del documento en el servidor, o puede ese estado residir completamente en los clientes y en el almacenamiento canónico?
 
-**Revisión multiautor en la canalización de extracción.** El almacenamiento canónico para los resultados de extracción son los registros estructurados producidos por combinadores de análisis deterministas. Si el servidor CRDT materializa correcciones parciales no confirmadas de vuelta al almacén estructurado, el patrón de relé de paso no aplicaría directamente sin una capa adaptadora. El patrón aplica en su forma más simple solo cuando el tipo de documento CRDT se corresponde limpiamente con el tipo de almacenamiento canónico.
+**Revisión multiautor en la canalización de extracción.** El almacenamiento canónico para los resultados de extracción producidos por [[service-extraction]] son los registros estructurados producidos por combinadores de análisis deterministas. Si el servidor CRDT materializa correcciones parciales no confirmadas de vuelta al almacén estructurado, el patrón de relé de paso no aplicaría directamente sin una capa adaptadora. El patrón aplica en su forma más simple solo cuando el tipo de documento CRDT se corresponde limpiamente con el tipo de almacenamiento canónico.
 
 **Colaboración en presentaciones.** El patrón de relé de paso aplica si y solo si el archivo de presentación en disco es el registro canónico y la superposición CRDT se trata como efímera de sesión sobre él.
 

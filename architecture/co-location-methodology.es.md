@@ -15,7 +15,7 @@ paired_with: co-location-methodology.md
 cites: []
 ---
 
-La metodología de co-ubicación es el enfoque estructurado que utiliza PointSav para evaluar y clasificar oportunidades de co-ubicación física para despliegues de clientes. Combina datos de mercado, contexto regulatorio y características de infraestructura extraídos del canal de inteligencia de la plataforma y del [[compounding-substrate]] para producir una lista clasificada de sitios candidatos para un requisito de despliegue dado.
+La metodología de co-ubicación es el enfoque estructurado que utiliza [[pointsav-overview|PointSav]] para evaluar y clasificar oportunidades de co-ubicación física para despliegues de clientes. Combina datos de mercado, contexto regulatorio y características de infraestructura extraídos del canal de inteligencia de la plataforma y del [[compounding-substrate]] para producir una lista clasificada de sitios candidatos para un requisito de despliegue dado.
 
 ## Qué significa co-ubicación en este contexto
 
@@ -29,7 +29,7 @@ La metodología aborda el paso de selección de sitio: dado un requisito de desp
 
 **Características del tránsito de red.** La latencia hacia los usuarios primarios del cliente y hacia el punto de acceso del espacio de trabajo PointSav se mide en el momento de la selección de candidatos. Las instalaciones se puntúan por tiempo de ida y vuelta, diversidad de proveedores de tránsito, y disponibilidad de una ruta de emparejamiento BGP compatible con WireGuard.
 
-**Compatibilidad de infraestructura.** El perfil de energía y refrigeración de la instalación se compara con la clase de nodo que se va a colocar. Los nodos ToteboxOS requieren perfiles de energía modestos y siempre activos; los niveles de inferencia con GPU requieren mayor energía de pico y refrigeración activa.
+**Compatibilidad de infraestructura.** El perfil de energía y refrigeración de la instalación se compara con la clase de nodo que se va a colocar. Los nodos [[totebox-os|ToteboxOS]] requieren perfiles de energía modestos y siempre activos; los niveles de inferencia con GPU requieren mayor energía de pico y refrigeración activa.
 
 **Estructura de costos.** Las tarifas mensuales de co-ubicación, los cargos de interconexión y los compromisos de ancho de banda se normalizan a un costo total de propiedad durante un horizonte de 36 meses.
 
