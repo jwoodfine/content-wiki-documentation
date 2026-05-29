@@ -15,7 +15,7 @@ paired_with: direct-payment-settlement.md
 ---
 
 
-El **Acuerdo de Pago Directo** es la arquitectura de pago planificada para los flujos del mercado de datos e intercambio de anuncios de la plataforma. Bajo este modelo, el pago está previsto para viajar directamente del comprador al inquilino-cliente, con PointSav deduciendo una comisión por transacción transparente en el momento de la liquidación. No está planificado que los fondos fluyan a través de las cuentas de la plataforma; no están planificados ciclos de pago; y el acceso del cliente a la plataforma no está condicionado a ninguna suscripción o pago mínimo.
+El **Acuerdo de Pago Directo** es la arquitectura de pago planificada para los flujos del mercado de datos e intercambio de anuncios de la plataforma. Bajo este modelo, el pago está previsto para viajar directamente del comprador al inquilino-cliente, con [[pointsav-overview|PointSav]] deduciendo una comisión por transacción transparente en el momento de la liquidación. No está planificado que los fondos fluyan a través de las cuentas de la plataforma; no están planificados ciclos de pago; y el acceso del cliente a la plataforma no está condicionado a ninguna suscripción o pago mínimo. Véase también [[economic-model|el modelo económico]] y [[service-wallet-settlement|service-wallet-settlement]].
 
 ## Por qué el pago directo importa para las pequeñas empresas
 
@@ -25,7 +25,7 @@ El pago directo elimina estas complicaciones. El comprador paga al vendedor; Poi
 
 ## Dos raíles de liquidación planificados
 
-`service-settlement` (servicio del Anillo 2 planificado) está previsto para soportar dos raíles simultáneamente:
+[[service-wallet-settlement|`service-settlement`]] (servicio del [[three-ring-architecture|Anillo 2]] planificado) está previsto para soportar dos raíles simultáneamente:
 
 **Raíl bancario tradicional.** El patrón previsto conecta la cuenta bancaria empresarial del inquilino en el aprovisionamiento. Cuando un comprador inicia una transacción, el pago se enruta a través de un mecanismo de liquidación de mercado estándar — el comprador es cargado, la comisión de PointSav se deduce, y el resto se transfiere a la cuenta del inquilino. Este raíl gestiona las obligaciones de declaración fiscal para las jurisdicciones aplicables.
 
@@ -39,7 +39,7 @@ El aprovisionamiento del inquilino no está planificado para requerir ningún pa
 
 ## Composición
 
-El Acuerdo de Pago Directo compone con el [[reverse-flow-substrate]] — cada transacción de mercado e intercambio de anuncios está prevista para desencadenar un evento de liquidación. Compone con [[customer-owned-graph-ip]] — los ingresos de la monetización de la PI del cliente van al titular de la PI. Y compone con [[single-boundary-compute-discipline]] — el tráfico de liquidación está previsto para enrutarse a través del Portero de manera que la misma frontera de auditoría capture la monetización además de la inferencia.
+El Acuerdo de Pago Directo compone con el [[reverse-flow-substrate]] — cada transacción de mercado e intercambio de anuncios está prevista para desencadenar un evento de liquidación. Compone con [[customer-owned-graph-ip]] — los ingresos de la monetización de la PI del cliente van al titular de la PI. Y compone con [[single-boundary-compute-discipline]] — el tráfico de liquidación está previsto para enrutarse a través del [[doorman-protocol|Portero]] de manera que la misma frontera de auditoría capture la monetización además de la inferencia.
 
 ## Véase También
 

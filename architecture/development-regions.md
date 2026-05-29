@@ -15,7 +15,7 @@ paired_with: development-regions.es.md
 cites: []
 ---
 
-Development regions are the geographic and jurisdictional zones used by the PointSav platform to segment market data, regulatory context, and deployment topology. Each region defines a bounded envelope within which co-location candidates are evaluated, compliance postures are applied, and market intelligence accumulates. Regions are not delivery territories; they are analytical and operational boundaries that shape how the platform reasons about deployment decisions.
+Development regions are the geographic and jurisdictional zones used by the [[pointsav-overview|PointSav]] platform to segment market data, regulatory context, and deployment topology. Each region defines a bounded envelope within which [[co-location-methodology|co-location candidates]] are evaluated, compliance postures are applied, and market intelligence accumulates. Regions are not delivery territories; they are analytical and operational boundaries that shape how the platform reasons about deployment decisions.
 
 ## Purpose
 

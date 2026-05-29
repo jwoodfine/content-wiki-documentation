@@ -23,7 +23,7 @@ paired_with: decode-time-constraints.es.md
 
 > Decode-time constraints are structural rules applied to a language model's output at each token-emission step, making banned vocabulary or structurally invalid responses mathematically impossible to produce rather than catching them after the fact.
 
-**Decode-time constraints** are structural rules the PointSav substrate enforces at the moment a language model emits each token, not after the response is finished. When a rule says "no banned-vocabulary words" or "must produce valid JSON", the runtime makes the violating token mathematically impossible — the model picks from the remaining valid tokens. This is the difference between a human grading work after submission and a guard rail that prevents the violation from happening at emission. The constraint takes the form of a context-free grammar (CFG) or finite-state automaton; the runtime computes — token by token — which next-token candidates would still satisfy the grammar, and zeros out the probability of all others.
+**Decode-time constraints** are structural rules the [[pointsav-overview|PointSav]] substrate enforces at the moment a language model emits each token, not after the response is finished. When a rule says "no banned-vocabulary words" or "must produce valid JSON", the runtime makes the violating token mathematically impossible — the model picks from the remaining valid tokens. This is the difference between a human grading work after submission and a guard rail that prevents the violation from happening at emission. The constraint takes the form of a context-free grammar (CFG) or finite-state automaton; the runtime computes — token by token — which next-token candidates would still satisfy the grammar, and zeros out the probability of all others. See also [[language-protocol-substrate|the language protocol substrate]] and [[sovereign-ai-routing|sovereign AI routing]].
 
 This technique is called constrained decoding, structured generation, or grammar-guided generation. Implementations include Microsoft Research's `[llguidance]` library, Carnegie Mellon's `[xgrammar]`, vLLM's structured outputs `[vllm-multi-lora]`, and a growing body of literature on `[llm-structured-output-2026]`.
 
@@ -31,13 +31,13 @@ This technique is called constrained decoding, structured generation, or grammar
 
 The artefact a content session holds in their head: a `.lark` grammar file says what a valid response looks like. The runtime makes invalid tokens unreachable. There is no "but what if the model emits a banned word" — the banned word literally cannot be sampled.
 
-The substrate ships `service-content/schemas/banned-vocab.lark` — a Lark EBNF grammar declaring eight banned editorial terms (`leverage`, `empower`, `next-generation`, `industry-leading`, `seamless`, `robust`, `cutting-edge`, `world-class`) plus a backtick-quoted-escape rule. The grammar's top-level rule `response` allows any token that is not one of the eight banned forms (case-insensitive); backtick-quoted segments are exempt so that documents can quote a banned term without violating the rule.
+The substrate ships [[service-content|`service-content/schemas/banned-vocab.lark`]] — a Lark EBNF grammar declaring eight banned editorial terms (`leverage`, `empower`, `next-generation`, `industry-leading`, `seamless`, `robust`, `cutting-edge`, `world-class`) plus a backtick-quoted-escape rule. The grammar's top-level rule `response` allows any token that is not one of the eight banned forms (case-insensitive); backtick-quoted segments are exempt so that documents can quote a banned term without violating the rule.
 
 ## How It Works
 
-Production inference at Tier A (local OLMo 3 7B per `[olmo3-allenai]`) and Tier B (Yo-Yo bursting) loads the grammar via `[llguidance]` and applies it at decode time. Editorial-grade workspace validation (`validate.py`) runs the same grammar in Lark mode for offline checks before content ships.
+Production inference at Tier A (local OLMo 3 7B per `[olmo3-allenai]`) and Tier B ([[yoyo-compute-substrate|Yo-Yo bursting]]) loads the grammar via `[llguidance]` and applies it at decode time. Editorial-grade workspace validation (`validate.py`) runs the same grammar in Lark mode for offline checks before content ships.
 
-The pattern composes with the language-protocol-substrate: each genre template (TOPIC, GUIDE, README, contract, policy, and the rest) ships a per-genre grammar fragment. At inference time, the active grammar is `base-grammar ⊕ tenant-grammar ⊕ genre-grammar` — substrate-tier rules combined with tenant-tier customisations combined with the request's genre.
+The pattern composes with the [[language-protocol-substrate|language-protocol substrate]]: each genre template (TOPIC, GUIDE, README, contract, policy, and the rest) ships a per-genre grammar fragment. At inference time, the active grammar is `base-grammar ⊕ tenant-grammar ⊕ genre-grammar` — substrate-tier rules combined with tenant-tier customisations combined with the request's genre.
 
 ## Architecture
 
@@ -47,7 +47,7 @@ The constraint system is layered:
 2. **Tenant grammar** — per-customer extensions (brand-specific Do-Not-Use words, required citation density rules, prohibited claim patterns). Authored locally by the tenant and loaded by the Doorman.
 3. **Genre grammar** — per-genre structural rules (a TOPIC must have a lead paragraph; a GUIDE must have numbered steps; a regulatory disclosure must carry specific citation fields).
 
-At request time, the Doorman (`service-slm`) composes the three grammar layers, loads the result into the inference runtime, and runs decoding with the composed constraint active.
+At request time, the [[doorman-protocol|Doorman]] ([[service-slm]]) composes the three grammar layers, loads the result into the inference runtime, and runs decoding with the composed constraint active.
 
 ## Applications
 
@@ -57,7 +57,7 @@ The editorial path becomes structurally auditable:
 - A GUIDE rendered for a customer cannot contain forbidden tenant-specific terms — that tenant's grammar forbade them.
 - A regulatory disclosure draft cannot omit a required citation pattern — the grammar required it.
 
-The discipline shifts from human-grading-after-submission to runtime-impossibility-at-emission. This is the substrate enforcement layer the Compounding Substrate's federated-compounding property depends on; without it, federated training would propagate banned-vocabulary contamination from any tenant's training data into the next year's base model.
+The discipline shifts from human-grading-after-submission to runtime-impossibility-at-emission. This is the substrate enforcement layer the [[compounding-substrate|Compounding Substrate]]'s federated-compounding property depends on; without it, federated training would propagate banned-vocabulary contamination from any tenant's training data into the next year's base model.
 
 ## Limitations
 
@@ -75,7 +75,7 @@ Per `[ni-51-102]` continuous-disclosure language, the trajectory below is `plann
 
 - Per-genre grammars for the 16 genre templates currently in `service-disclosure/templates/` (Phase 1B grammar covers the universal banned-vocab; per-genre grammars are subsequent work).
 - Per-tenant banned-vocab extensions (for example, a customer's brand-specific Do-Not-Use words).
-- Live adapter composition with grammar composition through `service-slm`'s Doorman.
+- Live [[adapter-composition|adapter composition]] with grammar composition through [[service-slm]]'s [[doorman-protocol|Doorman]].
 - Audit-ledger entries recording `grammar_version + adapter_composition + response_hash` per request.
 
 ## See also

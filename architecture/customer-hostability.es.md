@@ -23,7 +23,7 @@ del cliente. El cliente puede bifurcarlo desde el día uno.
 No es un nivel de precios ni una opción de despliegue. Es la
 forma del sustrato. Una variante de la plataforma que requiera
 infraestructura alojada por el proveedor para funcionar no es
-hospedable por el cliente por construcción.
+hospedable por el cliente por construcción. Véase también [[customer-first-ordering|orden cliente primero]], [[six-tier-sovereignty-matrix|la matriz de soberanía de seis niveles]] y [[economic-model|el modelo económico]].
 
 ## Tres compromisos concretos
 
@@ -35,8 +35,8 @@ hospedable por el cliente por construcción.
  cliente.** Cuando el adaptador del cliente entrena sobre el
  corpus del cliente, el `.lora` resultante vive en
  `data/adapters/` dentro del sustrato del cliente.
-3. **Libro de auditoría anclado en el cliente.** El corpus de
- aprendizaje vive en `data/training-corpus/apprenticeship/`
+3. **Libro de auditoría anclado en el cliente.** El [[apprenticeship-substrate|corpus de
+ aprendizaje]] vive en `data/training-corpus/apprenticeship/`
  dentro del sustrato del cliente. Los registros privados de
  inquilino nunca salen de la infraestructura del cliente.
 

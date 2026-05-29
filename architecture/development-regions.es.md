@@ -15,7 +15,7 @@ paired_with: development-regions.md
 cites: []
 ---
 
-Las regiones de desarrollo son las zonas geográficas y jurisdiccionales utilizadas por la plataforma PointSav para segmentar datos de mercado, contexto regulatorio y topología de despliegue. Cada región define un alcance delimitado dentro del cual se evalúan los candidatos de co-ubicación, se aplican posturas de cumplimiento y se acumula inteligencia de mercado. Las regiones no son territorios de entrega; son límites analíticos y operativos que determinan cómo la plataforma razona sobre las decisiones de despliegue.
+Las regiones de desarrollo son las zonas geográficas y jurisdiccionales utilizadas por la plataforma [[pointsav-overview|PointSav]] para segmentar datos de mercado, contexto regulatorio y topología de despliegue. Cada región define un alcance delimitado dentro del cual se evalúan los candidatos de [[co-location-methodology|co-ubicación]], se aplican posturas de cumplimiento y se acumula inteligencia de mercado. Las regiones no son territorios de entrega; son límites analíticos y operativos que determinan cómo la plataforma razona sobre las decisiones de despliegue.
 
 ## Propósito
 

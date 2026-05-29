@@ -14,7 +14,7 @@ category: architecture
 
 
 
-PointSav platform interfaces operate on a zero-state telemetry architecture: no personally identifiable information (PII) is collected, no tracking cookies are deployed, and no session state is retained. Operational metrics are limited to anonymized, IP-masked geospatial signals used for infrastructure auditing. Operators in regulated industries gain a public-facing posture consistent with GDPR, PIPEDA, and equivalent data-minimisation requirements, without requiring cookie-consent frameworks.
+[[pointsav-overview|PointSav]] platform interfaces operate on a zero-state telemetry architecture: no personally identifiable information (PII) is collected, no tracking cookies are deployed, and no session state is retained. Operational metrics are limited to anonymized, IP-masked geospatial signals used for infrastructure auditing. Operators in regulated industries gain a public-facing posture consistent with GDPR, PIPEDA, and equivalent data-minimisation requirements, without requiring cookie-consent frameworks. See also [[sovereign-telemetry|sovereign telemetry]] and [[telemetry-architecture|the telemetry architecture]].
 
 ## No-cookie infrastructure
 

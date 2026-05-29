@@ -19,7 +19,7 @@ paired_with: customer-hostability.es.md
 
 **Customer hostability** is the architectural commitment that every artefact a customer adopts can be run on the customer's own hardware, with the customer's own data, against the customer's own keys, with the customer's own audit ledger. The customer can fork it on day one.
 
-This is not a pricing tier or a deployment option. It is the shape of the substrate. A platform variant that requires hosted-by-vendor infrastructure to function is not customer-hostable by construction.
+This is not a pricing tier or a deployment option. It is the shape of the substrate. A platform variant that requires hosted-by-vendor infrastructure to function is not customer-hostable by construction. See also [[customer-first-ordering|customer-first ordering]], [[six-tier-sovereignty-matrix|the six-tier sovereignty matrix]], and [[economic-model|the economic model]].
 
 ## What self-ownership means
 
@@ -27,7 +27,7 @@ Three concrete commitments, each operationally testable:
 
 1. **Self-hostable bootstrap.** Every platform service ships with a `bootstrap.sh` that brings the service up on the customer's own machine — no SaaS dependency, no provider login, no metered API. The pattern is established by the `infrastructure/local-slm/`, `infrastructure/local-doorman/`, and `infrastructure/local-knowledge/` precedents.
 2. **Per-tenant adapters in the customer's filesystem.** When the customer's adapter trains on the customer's corpus, the resulting `.lora` lives at `data/adapters/` inside the customer's substrate. It never traverses the vendor's network. Loss-of-adapter risk falls on the customer's backup discipline, not on the vendor's continued operation.
-3. **Customer-anchored audit ledger.** The apprenticeship corpus that records every editorial action and verdict lives at `data/training-corpus/apprenticeship/<task-type>/<tenant>/` inside the customer's substrate. Tenant-private records never leave the customer's infrastructure.
+3. **Customer-anchored audit ledger.** The [[apprenticeship-substrate|apprenticeship corpus]] that records every editorial action and verdict lives at `data/training-corpus/apprenticeship/<task-type>/<tenant>/` inside the customer's substrate. Tenant-private records never leave the customer's infrastructure.
 
 ## Why hyperscaler economics preclude this
 
@@ -61,7 +61,7 @@ Each was built to the same shape so a platform-shaped customer substrate is pred
 
 It is not "open source under a permissive licence." Permissive licensing is necessary but not sufficient. A permissively-licensed service that requires a hosted control plane to function does not satisfy customer hostability — the customer cannot fork it without forking the control plane.
 
-It is not "the vendor will host it for you." Vendor-hosted deployment is one operational option among several. PointSav runs `documentation.pointsav.com` because PointSav itself is the canonical-tier customer of every package it ships. Customer-hosted deployment is the canonical pattern; vendor hosting is a convenience.
+It is not "the vendor will host it for you." Vendor-hosted deployment is one operational option among several. [[pointsav-overview|PointSav]] runs `documentation.pointsav.com` because PointSav itself is the canonical-tier customer of every package it ships. Customer-hosted deployment is the canonical pattern; vendor hosting is a convenience.
 
 It is not "you can export your data." Data export is a feature. Customer hostability is structural — the substrate does not have a data-export feature because the data was already on the customer's hardware from the moment it was written.
 
@@ -69,7 +69,7 @@ It is not "you can export your data." Data export is a feature. Customer hostabi
 
 Per `[osc-sn-51-721]`, the language describing the federated continued-pretraining trajectory is forward-looking. The shape is in place; the operational throughput matures over time.
 
-The trajectory: a customer's adapter trains on the customer's corpus inside the customer's substrate (Tier B Yo-Yo or the customer's own GPU host). Aggregated improvements may feed back to a shared base model when the customer chooses to contribute, under explicit consent. Customers who do not contribute continue to benefit from base-model improvements driven by customers who do, with no leakage of corpus contents either direction.
+The trajectory: a customer's adapter trains on the customer's corpus inside the customer's substrate ([[yoyo-compute-substrate|Tier B Yo-Yo]] or the customer's own GPU host). Aggregated improvements may feed back to a shared base model when the customer chooses to contribute, under explicit consent. Customers who do not contribute continue to benefit from base-model improvements driven by customers who do, with no leakage of corpus contents either direction.
 
 This is the federated-LoRA pattern adapted to per-customer data ownership. Reasonable basis: the federated-learning literature 2024–2026 and the LoRA-aggregation research surveyed in the [[language-protocol-substrate]] article.
 

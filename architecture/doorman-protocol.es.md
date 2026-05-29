@@ -17,7 +17,7 @@ cites: []
 
 Cada servicio que puede llamar a un modelo de IA externo es su propio agujero en el muro. Diez servicios con diez rutas de salida significan diez superficies de auditoría, y diez lugares donde la disciplina de saneamiento puede olvidarse.
 
-El Doorman reduce el muro a una sola puerta. <!--claim id=sole-boundary confidence=structural cites=[]-->`service-slm` es el único límite de solicitud de IA de la plataforma; toda llamada de inferencia se enruta por una sola puerta de control de acceso, y ninguna llamada sale de la bóveda de datos del cliente sin atravesarla.<!--/claim-->
+El Doorman reduce el muro a una sola puerta. <!--claim id=sole-boundary confidence=structural cites=[]-->[[service-slm|`service-slm`]] es el único límite de solicitud de IA de la plataforma; toda llamada de inferencia se enruta por una sola puerta de control de acceso, y ninguna llamada sale de la bóveda de datos del cliente sin atravesarla.<!--/claim-->
 
 <!--claim id=doorman-functions confidence=structural cites=[]-->En ese único límite, el Doorman aplica la disciplina de sanitizar-y-rehidratar, enruta la llamada al nivel de cómputo apropiado, registra cada evento en un libro mayor de auditoría inmutable y captura la señal de entrenamiento que compone la plataforma con el tiempo.<!--/claim-->
 
@@ -25,7 +25,7 @@ Para un comprador regulado la consecuencia es concreta. Ninguna llamada de infer
 
 ## Por qué un Doorman
 
-La bóveda de datos del cliente contiene sus datos estructurados autorizados, y el cómputo externo — los grandes modelos de lenguaje — no puede recibir esos datos en bruto. <!--claim id=centralised-discipline confidence=structural cites=[]-->Sin un único límite, cada servicio del Totebox desarrolla su propia ruta de salida, cada ruta necesita su propia auditoría, y la disciplina de sanitizar-y-rehidratar (SYS-ADR-07) se convierte en disciplina por servicio en lugar de disciplina de sustrato.<!--/claim--> El Doorman centraliza el límite para que la disciplina se aplique una sola vez.
+La bóveda de datos del cliente contiene sus datos estructurados autorizados, y el cómputo externo — los grandes modelos de lenguaje — no puede recibir esos datos en bruto. <!--claim id=centralised-discipline confidence=structural cites=[]-->Sin un único límite, cada servicio del [[totebox-os|Totebox]] desarrolla su propia ruta de salida, cada ruta necesita su propia auditoría, y la disciplina de sanitizar-y-rehidratar (SYS-ADR-07) se convierte en disciplina por servicio en lugar de disciplina de sustrato.<!--/claim--> El Doorman centraliza el límite para que la disciplina se aplique una sola vez.
 
 ## Enrutamiento de cómputo en tres niveles
 
@@ -33,9 +33,9 @@ El Doorman enruta las llamadas de inferencia en tres niveles.
 
 **Nivel A — local.** Se ejecuta en la VM del servidor usando CPU y RAM, para inferencia rápida, de baja latencia y bajo costo sobre un modelo alojado localmente. <!--claim id=tier-a-verified confidence=structural cites=[]-->El Nivel A gestiona la mayor parte del volumen de enrutamiento sin gasto en la nube, y está verificado operativamente.<!--/claim-->
 
-**Nivel B — grupo de GPU por demanda.** <!--claim id=tier-b-planned confidence=projected cites=[] valid_at=2026-->El Nivel B está planificado para enrutar cargas de trabajo a instancias GPU efímeras, iniciadas bajo demanda y detenidas en reposo, con dos perfiles: una instancia de entrenamiento para ciclos continuos sobre tuplas acumuladas, y una instancia de extracción para la ingesta de corpus a gran escala.<!--/claim--> Ambos perfiles usan temporizadores de apagado por inactividad para que la facturación se detenga cuando la cola está vacía.
+**Nivel B — grupo de GPU por demanda.** <!--claim id=tier-b-planned confidence=projected cites=[] valid_at=2026-->El Nivel B está planificado para enrutar cargas de trabajo a instancias GPU efímeras ([[yoyo-compute-substrate|el sustrato de cómputo Yo-Yo]]), iniciadas bajo demanda y detenidas en reposo, con dos perfiles: una instancia de entrenamiento para ciclos continuos sobre tuplas acumuladas, y una instancia de extracción para la ingesta de corpus a gran escala.<!--/claim--> Ambos perfiles usan temporizadores de apagado por inactividad para que la facturación se detenga cuando la cola está vacía.
 
-**Nivel C — proxy de API externa.** El Nivel C está planificado para enrutar tareas especializadas de refinamiento lingüístico y formato a modelos de frontera externos. El Doorman aplica límites de costo e inyecta ontologías de `service-content` predefinidas para restringir la salida al vocabulario canónico de la plataforma.
+**Nivel C — proxy de API externa.** El Nivel C está planificado para enrutar tareas especializadas de refinamiento lingüístico y formato a modelos de frontera externos. El Doorman aplica límites de costo e inyecta ontologías de [[service-content|`service-content`]] predefinidas para restringir la salida al vocabulario canónico de la plataforma.
 
 ## El libro de auditoría
 

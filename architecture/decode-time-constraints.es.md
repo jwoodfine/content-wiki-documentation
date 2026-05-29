@@ -17,21 +17,21 @@ cites:
  - llm-structured-output-2026
 ---
 
-El sustrato impone reglas estructurales en el momento en que el modelo
+El sustrato de [[pointsav-overview|PointSav]] impone reglas estructurales en el momento en que el modelo
 emite cada token, no después de que la respuesta esté terminada.
 Cuando la regla dice "sin vocabulario prohibido" o "debe producir JSON
 válido", el runtime hace que el token infractor sea matemáticamente
 imposible — el modelo elige del conjunto de tokens válidos restantes.
 Es la diferencia entre un humano calificando trabajo después de la
-entrega y una barandilla que evita la violación antes de que suceda.
+entrega y una barandilla que evita la violación antes de que suceda. Véase también [[language-protocol-substrate|el sustrato de protocolo de lenguaje]] y [[sovereign-ai-routing|enrutamiento de IA soberano]].
 
 ## Uso en la plataforma
 
-El sustrato envía `service-content/schemas/banned-vocab.lark` — una
+El sustrato envía [[service-content|`service-content/schemas/banned-vocab.lark`]] — una
 gramática Lark EBNF que declara ocho términos editoriales prohibidos
 más una regla de escape entre comillas inversas. La inferencia de
-producción en el Nivel A (OLMo 3 7B local) y el Nivel B (Yo-Yo en la
-nube) carga la gramática vía `[llguidance]` y la aplica en tiempo de
+producción en el Nivel A (OLMo 3 7B local) y el Nivel B ([[yoyo-compute-substrate|Yo-Yo en la
+nube]]) carga la gramática vía `[llguidance]` y la aplica en tiempo de
 decodificación. La validación editorial en el espacio de trabajo
 (`validate.py`) ejecuta la misma gramática en modo Lark para
 verificación offline antes de que el contenido se publique.
@@ -53,8 +53,8 @@ Tres razones estructurales:
  hiperescaladores tratan la gramática como parte del despliegue
  cerrado del modelo.
 - **La restricción debe componerse con el enrutamiento de
- adaptadores.** El Doorman de la plataforma (`service-slm`) compone
- adaptadores por solicitud; las restricciones de decodificación
+ adaptadores.** El [[doorman-protocol|Doorman]] de la plataforma ([[service-slm]]) compone
+ [[adapter-composition|adaptadores]] por solicitud; las restricciones de decodificación
  viajan con esa composición. La IA gestionada por hiperescaladores
  no expone primitivos de composición de adaptadores.
 - **La restricción debe ser auditable.** Por la postura de

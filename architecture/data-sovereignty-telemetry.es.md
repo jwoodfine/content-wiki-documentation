@@ -12,7 +12,7 @@ last_edited: 2026-05-25
 category: architecture
 ---
 
-Las interfaces de la plataforma PointSav operan sobre una arquitectura de telemetría de estado cero: no se recopila información de identificación personal (PII), no se despliegan cookies de seguimiento y no se retiene ningún estado de sesión. Las métricas operativas se limitan a señales geoespaciales anónimas y enmascaradas por IP utilizadas para la auditoría de la infraestructura. Los operadores en sectores regulados obtienen una postura pública coherente con el RGPD, PIPEDA y requisitos equivalentes de minimización de datos, sin necesidad de marcos de consentimiento de cookies.
+Las interfaces de la plataforma [[pointsav-overview|PointSav]] operan sobre una arquitectura de telemetría de estado cero: no se recopila información de identificación personal (PII), no se despliegan cookies de seguimiento y no se retiene ningún estado de sesión. Las métricas operativas se limitan a señales geoespaciales anónimas y enmascaradas por IP utilizadas para la auditoría de la infraestructura. Los operadores en sectores regulados obtienen una postura pública coherente con el RGPD, PIPEDA y requisitos equivalentes de minimización de datos, sin necesidad de marcos de consentimiento de cookies. Véase también [[sovereign-telemetry|telemetría soberana]] y [[telemetry-architecture|la arquitectura de telemetría]].
 
 ## Infraestructura sin cookies
 
