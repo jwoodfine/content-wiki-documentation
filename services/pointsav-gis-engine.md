@@ -19,7 +19,7 @@ cites:
  - tippecanoe-tool
 ---
 
-The PointSav GIS Engine is a high-performance, customer-owned location intelligence platform built in Rust for offline-first, flat-file operation — a structural departure from traditional geographic information systems that rely on centralised database instances and continuous network connectivity. The engine reads from a static PMTiles archive on the customer's own filesystem, renders interactively through MapLibre GL JS in the browser, and serves every query without an external dependency. The map data lives in the customer's archive; nothing leaves the deployment unless the operator explicitly chooses to publish.
+The PointSav GIS Engine is a high-performance, customer-owned location intelligence platform built in Rust for offline-first, flat-file operation — a structural departure from traditional geographic information systems that rely on centralised database instances and continuous network connectivity. The engine reads from a static PMTiles archive on the customer's own [[service-fs-data-lake|filesystem]], renders interactively through MapLibre GL JS in the browser, and serves every query without an external dependency. The map data lives in the customer's archive; nothing leaves the deployment unless the operator explicitly chooses to publish.
 
 ## Architectural Principles
 
@@ -37,9 +37,9 @@ The platform avoids commercial SaaS mapping dependencies by using a high-perform
 
 ## Spatial Processing and Orchestration
 
-The engine's core logic resides in the `app-orchestration-gis` service. This component executes the Woodfine co-location methodology deterministically:
+The engine's core logic resides in the [[app-orchestration-gis]] service. This component executes the [[co-location-methodology|Woodfine co-location methodology]] deterministically:
 
-1. **Ingestion:** Reads retail and civic infrastructure records from the Totebox Archive.
+1. **Ingestion:** Reads retail and civic infrastructure records from the [[totebox-os|Totebox]] Archive via [[service-business-clustering]] and [[service-places-filtering]].
 2. **Analysis:** Executes spatial joins and proximity queries to identify co-location clusters across 1.0 km, 3.0 km, and 5.0 km radii.
 3. **Ranking:** Applies the 12-rank named-anchor matrix to generate site quality tiers.
 4. **Serialization:** Outputs the processed results as tiled data for the visual interface at [gis.woodfinegroup.com](https://gis.woodfinegroup.com).
@@ -47,5 +47,9 @@ The engine's core logic resides in the `app-orchestration-gis` service. This com
 This stateless approach ensures that the entire GIS environment can be re-provisioned instantly from the immutable data layer, providing maximum service resilience and auditability.
 
 ## See also
-* Guide: Totebox Orchestration for GIS (operational runbook; available in fleet deployment documentation)
-* [[co-location-methodology]]
+
+- [[co-location-methodology]] — the ranking methodology that drives tier assignment in the GIS engine
+- [[app-orchestration-gis]] — the orchestration layer that runs the spatial analysis pipeline
+- [[service-business-clustering]] — retail clustering service feeding the GIS tier computation
+- [[service-places-filtering]] — civic infrastructure filtering service feeding the GIS tier computation
+- [[service-fs-data-lake]] — the flat-file data lake that backs all GIS source data

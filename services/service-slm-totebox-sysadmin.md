@@ -22,7 +22,7 @@ cites:
 paired_with: service-slm-totebox-sysadmin.es.md
 ---
 
-`service-slm` — the access-control gateway at Ring 3 of the platform, also referred to as the Doorman — is intended to become the operational assistant and support centre for Totebox Archive and Totebox Orchestration deployments. This article describes the strategy: the operational task families a sysadmin handles, why `service-slm` is structurally suited to handle them, the corpus shape required to train it, and the four stages that take a deployment from initial capture to a per-tenant LoRA adapter running in production.
+[[service-slm]] — the access-control gateway at [[three-ring-architecture|Ring 3]] of the platform, also referred to as the [[doorman-protocol|Doorman]] — is intended to become the operational assistant and support centre for [[totebox-os|Totebox]] Archive and Totebox Orchestration deployments. This article describes the strategy: the operational task families a sysadmin handles, why `service-slm` is structurally suited to handle them, the corpus shape required to train it, and the four stages that take a deployment from initial capture to a per-tenant LoRA adapter running in production.
 
 The premise is grounded in present state, not projection. The Doorman is operational. The apprenticeship corpus pipeline is wired. The substrate is configured to learn. What remains is to direct it at the operational work that matters most.
 
@@ -40,7 +40,7 @@ A survey of the GUIDE files across the three Totebox deployment clusters — per
 | **Sovereign search operations** | Tantivy index, boolean query at command terminal, DARP extraction by encrypted volume | Index not regenerating; query parser rejecting valid boolean; index drift |
 | **Identity and capability operations** | Tenant ID, Client ID, Secret Value — Zero-Touch Parser locks keys at 600 permissions; per-node MBA handshake | Keys in Git history; permission drift on `.env`; MBA registration desync |
 | **Adapter injection validation** | Drop adapter into `private-adapters/`; volume cap at 75–100 ops/cycle; read-only service-people query | Adapter writing to local store; volume cap exceeded; service-people write attempt |
-| **Audit-trail reconciliation** | Cross-check per-tenant audit ledger against WORM Immutable Ledger; verify signed verdict events; resolve anchor timestamps | Audit row missing for an apprentice diff; verdict signature fails verification; anchor lag |
+| **Audit-trail reconciliation** | Cross-check per-tenant audit ledger against [[worm-ledger-design|WORM Immutable Ledger]]; verify signed verdict events; resolve anchor timestamps | Audit row missing for an apprentice diff; verdict signature fails verification; anchor lag |
 | **Schema-conforming data import** | Imports following canonical Glossary CSV; Archetype + Chart-of-Accounts + Domain mapping at ingress | Term not in canonical Term_EN; Domain mismatch; YAML structural-tag failure |
 
 ## Why service-slm rather than an external API for these tasks
@@ -77,7 +77,7 @@ Each new task-type starts at `review` stage. Promotion to `spot-check` requires 
 
 ## The four-stage training pipeline
 
-**Stage 1 — Capture.** Every shadow brief lands a corpus tuple at `stage_at_capture: review`, `verdict: null`. Capture is automatic on every commit's post-commit hook via the Brief Queue Substrate. No operator action; no additional compute. This stage is operational.
+**Stage 1 — Capture.** Every shadow brief lands a corpus tuple at `stage_at_capture: review`, `verdict: null`. Capture is automatic on every commit's post-commit hook via the [[apprenticeship-substrate|Brief Queue Substrate]]. No operator action; no additional compute. This stage is operational.
 
 **Stage 2 — Promote via signed verdict.** A senior identity — Master, Root, or operator at the chat surface — reviews captured tuples and signs verdicts using `ssh-keygen -Y sign -n apprenticeship-verdict-v1`. Verdict outcomes: Approve, Refine (producing a DPO pair), Reject, or Defer to Tier C. A weekly batch at session end is the sustainable cadence; per-commit signing does not scale. Signing is local cryptographic operation: zero compute cost. Verification uses the `identity/allowed_signers` file.
 

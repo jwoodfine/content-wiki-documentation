@@ -16,7 +16,7 @@ cites:
 paired_with: service-slm-totebox-sysadmin.md
 ---
 
-`service-slm` — la pasarela de control de acceso en el Anillo 3 de la plataforma, también referida como el Doorman — está prevista para convertirse en el asistente operativo y centro de soporte de los despliegues de Totebox Archive y Totebox Orchestration. Este artículo describe la estrategia: las familias de tareas operativas que maneja un administrador, por qué `service-slm` es estructuralmente adecuado para manejarlas, la forma del corpus necesaria para entrenarlo, y las cuatro etapas que llevan un despliegue desde la captura inicial hasta un adaptador LoRA por inquilino en producción.
+[[service-slm]] — la pasarela de control de acceso en el [[three-ring-architecture|Anillo 3]] de la plataforma, también referida como el [[doorman-protocol|Doorman]] — está prevista para convertirse en el asistente operativo y centro de soporte de los despliegues de [[totebox-os|Totebox]] Archive y Totebox Orchestration. Este artículo describe la estrategia: las familias de tareas operativas que maneja un administrador, por qué `service-slm` es estructuralmente adecuado para manejarlas, la forma del corpus necesaria para entrenarlo, y las cuatro etapas que llevan un despliegue desde la captura inicial hasta un adaptador LoRA por inquilino en producción.
 
 ## Las diez familias de tareas operativas
 
@@ -46,7 +46,7 @@ Cuatro propiedades estructurales hacen que estas cargas de trabajo sean idóneas
 
 **Etapa 3 — Ciclo de entrenamiento LoRA por cluster.** Cuando el corpus de un tipo de tarea supera 50 tuplas con veredicto firmado, se activa el entrenador. El ciclo inicial se ejecuta en CPU en el servidor del espacio de trabajo (coste cero). Los ciclos de producción se mueven al Nivel B una vez aprovisionada la instancia de GPU Yo-Yo (planificado). *Los objetivos de cronograma y coste están sujetos a la tasa de acumulación del corpus, disponibilidad de hardware y revisión del operador.* [ni-51-102] [osc-sn-51-721]
 
-**Etapa 4 — Composición multi-adaptador en tiempo de solicitud.** El Doorman compone hasta tres adaptadores por solicitud. Cada entrada del libro mayor de auditoría registra el conjunto de adaptadores compuesto, haciendo trazable la influencia de cada uno.
+**Etapa 4 — Composición multi-adaptador en tiempo de solicitud.** El Doorman compone hasta tres adaptadores por solicitud. Cada entrada del [[worm-ledger-design|libro mayor de auditoría]] registra el conjunto de adaptadores compuesto, haciendo trazable la influencia de cada uno.
 
 ## Niveles de producto para el cliente
 

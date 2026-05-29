@@ -17,7 +17,7 @@ cites:
 paired_with: service-slm-yoyo-operational.es.md
 ---
 
-**service-SLM** is the platform's Ring 3 component — the Optional Intelligence layer. It is a three-tier inference router that clusters and contributors use to delegate routine work: editorial polish, mechanical schema-conforming edits, bilingual translation drafts, and structured-output generation. The work is handled locally or on a dedicated GPU burst VM, without routing to a third-party API. Rings 1 and 2 (boundary ingest and knowledge processing) function fully without it; Ring 3 is structurally optional.
+**service-SLM** is the platform's [[three-ring-architecture|Ring 3]] component — the Optional Intelligence layer. It is a three-tier inference router that clusters and contributors use to delegate routine work: editorial polish, mechanical schema-conforming edits, bilingual translation drafts, and structured-output generation. The work is handled locally or on a dedicated GPU burst VM, without routing to a third-party API. Rings 1 and 2 (boundary ingest and knowledge processing) function fully without it; Ring 3 is structurally optional.
 
 The **Yo-Yo** is the name for the platform's on-demand GPU burst instance — a GCE VM that runs a 32-billion-parameter instruction-tuned model at approximately 50-100 tokens per second. It starts on demand, shuts down after 30 minutes of inactivity, and accumulates a brief queue through its idle windows. The combination — a lightweight always-available local model on the workspace VM and a capable on-demand burst VM — defines the two active inference tiers. A third tier (external API) is configured for future use; Tier C has no active keys in the current operational period.
 
@@ -25,12 +25,12 @@ This document describes how service-SLM and the Yo-Yo operate in the current ope
 
 ## The Doorman boundary
 
-Every inference request crosses the Doorman before reaching a model tier. The Doorman is a Rust binary running as systemd unit `local-doorman.service`, binding `127.0.0.1:9080`. Its responsibilities cover the full request lifecycle:
+Every inference request crosses the [[doorman-protocol|Doorman]] before reaching a model tier. The Doorman is a Rust binary running as systemd unit `local-doorman.service`, binding `127.0.0.1:9080`. Its responsibilities cover the full request lifecycle:
 
 - Hold all API keys — Tier C provider tokens and the Tier B bearer token. Keys exist nowhere else in the request path. This is the API-key boundary discipline: no key dispersal across call sites.
 - Route requests to the correct tier based on complexity heuristics: request size, structured-output requirements, and audit-ledger semantics.
 - Sanitise outbound requests before they reach any external API (strip workspace identifiers; rehydrate on inbound).
-- Append every transit to a per-tenant audit ledger at `/var/lib/local-doorman/audit/<tenant>/<YYYY-MM>.jsonl`.
+- Append every transit to a per-tenant [[worm-ledger-design|audit ledger]] at `/var/lib/local-doorman/audit/<tenant>/<YYYY-MM>.jsonl`.
 - Drain the apprenticeship brief queue (described below).
 
 The `/readyz` endpoint returns live tier-availability flags. An example response when all tiers are operational:

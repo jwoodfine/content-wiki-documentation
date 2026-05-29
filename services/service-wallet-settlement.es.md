@@ -14,7 +14,7 @@ paired_with: service-wallet-settlement.md
 ---
 
 
-`service-wallet` es el libro mayor de contabilidad interna por tenant que registra y liquida todos los ingresos de flujo inverso procedentes del mercado de datos y el intercambio publicitario de la plataforma. El servicio opera en el nivel de procesamiento del conocimiento de la plataforma y no custodia fondos: registra créditos, débitos y comisiones como entradas firmadas criptográficamente, y el retiro hacia la cartera o cuenta bancaria del operador se gestiona fuera de la plataforma.
+`service-wallet` es el libro mayor de contabilidad interna por tenant que registra y liquida todos los ingresos de flujo inverso procedentes del mercado de datos y el intercambio publicitario de la plataforma. El servicio opera en el [[three-ring-architecture|Anillo 2]] de la plataforma y no custodia fondos: registra créditos, débitos y comisiones como entradas firmadas criptográficamente, y el retiro hacia la cartera o cuenta bancaria del operador se gestiona fuera de la plataforma.
 
 ## Qué es service-wallet (y qué no es)
 
@@ -22,7 +22,7 @@ paired_with: service-wallet-settlement.md
 
 ## Flujo de liquidación
 
-El flujo va de: evento de ingresos → crédito registrado (con comisión de plataforma deducida) → el saldo neto del inquilino aumenta → el inquilino inicia el retiro (controlado por el inquilino, no automático) → el evento de retiro se registra en el libro mayor, el recibo se ancla a Sigstore Rekor, y la entrada en el libro mayor WORM en service-fs cierra el ciclo contable.
+El flujo va de: evento de ingresos → crédito registrado (con comisión de plataforma deducida) → el saldo neto del inquilino aumenta → el inquilino inicia el retiro (controlado por el inquilino, no automático) → el evento de retiro se registra en el libro mayor, el recibo se ancla a Sigstore Rekor mediante [[fs-anchor-emitter]], y la entrada en el [[worm-ledger-design|libro mayor WORM]] en [[service-fs-architecture|service-fs]] cierra el ciclo contable.
 
 ## Rieles de pago para retiros en criptomoneda
 
@@ -34,6 +34,6 @@ El historial completo del libro mayor es consultable por el inquilino en cualqui
 
 ## Véase también
 
-- [[reverse-flow-substrate]]
-- [[customer-owned-graph-ip]]
-- [[worm-ledger-architecture]]
+- [[reverse-flow-substrate]] — fuentes de ingresos; detalle del riel de pago
+- [[customer-owned-graph-ip]] — la exportación del libro mayor es propiedad incondicional del tenant
+- [[worm-ledger-architecture]] — service-wallet agrega entradas al libro mayor WORM de service-fs

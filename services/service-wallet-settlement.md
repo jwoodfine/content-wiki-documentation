@@ -22,7 +22,7 @@ references:
  text: "PointSav platform specification: Write-Once-Read-Many (WORM) ledger design — the append-only storage substrate underpinning all platform accounting records."
 ---
 
-`service-wallet` is the per-tenant internal accounting ledger that records and settles all reverse-flow revenue from the platform's data marketplace and ad exchange. The service operates at Ring 2 — the knowledge-and-processing layer of the platform — and holds no funds: it tracks credits, debits, and fees as cryptographically signed entries, with withdrawal to the operator's own wallet or bank account handled outside the platform.
+`service-wallet` is the per-tenant internal accounting ledger that records and settles all reverse-flow revenue from the platform's data marketplace and ad exchange. The service operates at [[three-ring-architecture|Ring 2]] — the knowledge-and-processing layer of the platform — and holds no funds: it tracks credits, debits, and fees as cryptographically signed entries, with withdrawal to the operator's own wallet or bank account handled outside the platform.
 
 The structural design properties are specified in the platform accounting ledger design.[^1]
 
@@ -75,7 +75,7 @@ The `platform_fee_amount` is deducted at credit time. The tenant's balance is `n
  (c) Tier B credit → balance reinvested as Yo-Yo compute budget
 5. Withdrawal event recorded in ledger
  Receipt anchored to Sigstore Rekor
- WORM ledger entry in service-fs closes the accounting cycle
+ [[worm-ledger-design|WORM ledger]] entry in [[service-fs-architecture|service-fs]] closes the accounting cycle
 ```
 
 ## Settlement Payment Rails
@@ -97,7 +97,7 @@ Industry reference: direct-payment-to-rights-holder models at scale validate tha
 
 ## Audit and Public Anchoring
 
-Every withdrawal receipt is anchored to Sigstore Rekor. The anchor record includes: tenant ID, ledger sequence at withdrawal, amount, chain, and transaction hash. This provides a tamper-evident external timestamp suitable for accounting and legal purposes.
+Every withdrawal receipt is anchored to Sigstore Rekor by [[fs-anchor-emitter]]. The anchor record includes: tenant ID, ledger sequence at withdrawal, amount, chain, and transaction hash. This provides a tamper-evident external timestamp suitable for accounting and legal purposes.
 
 The full ledger history is queryable by the tenant at any time. The export format is JSONL — the same format as the ingestion record. Portability is unconditional; the ledger travels with the tenant on exit per the customer-owned data portability guarantee.[^3]
 

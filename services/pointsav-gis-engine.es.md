@@ -19,7 +19,7 @@ cites:
  - tippecanoe-tool
 ---
 
-El Motor GIS de PointSav es una plataforma de inteligencia de ubicación de alto rendimiento y propiedad del cliente construida en Rust para operación offline-first sobre archivos planos — una desviación estructural de los sistemas de información geográfica tradicionales que dependen de instancias de bases de datos centralizadas y conectividad de red continua. El motor lee desde un archivo PMTiles estático en el sistema de archivos del propio cliente, renderiza interactivamente a través de MapLibre GL JS en el navegador y sirve cada consulta sin una dependencia externa. Los datos del mapa viven en el archivo del cliente; nada sale del despliegue a menos que el operador elija explícitamente publicar.
+El Motor GIS de PointSav es una plataforma de inteligencia de ubicación de alto rendimiento y propiedad del cliente construida en Rust para operación offline-first sobre archivos planos — una desviación estructural de los sistemas de información geográfica tradicionales que dependen de instancias de bases de datos centralizadas y conectividad de red continua. El motor lee desde un archivo PMTiles estático en el [[service-fs-data-lake|sistema de archivos del propio cliente]], renderiza interactivamente a través de MapLibre GL JS en el navegador y sirve cada consulta sin una dependencia externa. Los datos del mapa viven en el archivo del cliente; nada sale del despliegue a menos que el operador elija explícitamente publicar.
 
 ## Sustrato de archivos planos
 
@@ -35,9 +35,12 @@ La plataforma evita dependencias de SaaS de mapas comerciales utilizando una pil
 
 ## Procesamiento espacial
 
-La lógica central del motor reside en el servicio `app-orchestration-gis`, que ejecuta deterministamente la metodología de co-ubicación de Woodfine para identificar y clasificar nodos comerciales en los mercados cubiertos.
+La lógica central del motor reside en el servicio [[app-orchestration-gis]], que ejecuta deterministamente la [[co-location-methodology|metodología de co-ubicación de Woodfine]] para identificar y clasificar nodos comerciales en los mercados cubiertos a partir de datos de [[service-business-clustering]] y [[service-places-filtering]].
 
 ## Véase también
 
-- Guía: Orquestación Totebox para GIS (manual operacional; disponible en la documentación de despliegue de flota)
-- [[co-location-methodology]]
+- [[co-location-methodology]] — la metodología de clasificación que impulsa la asignación de nivel en el motor GIS
+- [[app-orchestration-gis]] — la capa de orquestación que ejecuta el pipeline de análisis espacial
+- [[service-business-clustering]] — servicio de agrupación minorista que alimenta el cálculo de nivel GIS
+- [[service-places-filtering]] — servicio de filtrado de infraestructura cívica que alimenta el cálculo de nivel GIS
+- [[service-fs-data-lake]] — el lago de datos de archivos planos que respalda todos los datos de origen GIS

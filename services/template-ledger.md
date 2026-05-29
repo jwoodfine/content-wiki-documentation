@@ -14,7 +14,7 @@ paired_with: template-ledger.es.md
 cites: []
 ---
 
-The Template Ledger is the distribution mechanism within `service-email-template` that synchronises a single authoritative copy of every approved template to the operator's mail environment automatically. It eliminates version drift between template design and operator execution by maintaining one canonical copy per template identifier; the operator retrieves the current version by key and sends it directly. The distinction between drafting and deploying becomes structural rather than procedural — the operator is not authoring routine corporate correspondence, only selecting which approved template to dispatch.
+The Template Ledger is the distribution mechanism within [[service-email|`service-email-template`]] that synchronises a single authoritative copy of every approved template to the operator's mail environment automatically. It eliminates version drift between template design and operator execution by maintaining one canonical copy per template identifier; the operator retrieves the current version by key and sends it directly. The distinction between drafting and deploying becomes structural rather than procedural — the operator is not authoring routine corporate correspondence, only selecting which approved [[disclosure-substrate|template]] to dispatch.
 
 ## Design intent
 
@@ -32,7 +32,7 @@ The key is the only input the operator supplies. The template content is sourced
 
 ## Silent synchronization via Microsoft Graph
 
-When a PointSav engineer updates a template — for example, adding a revised Direct-Hold Solutions rider — the synchronization service uses the Microsoft Graph API to:
+When a PointSav engineer updates a template — for example, adding a revised Direct-Hold Solutions rider — the synchronization service uses the [[machine-based-auth|Microsoft Graph]] API to:
 
 1. Remove the previous version of the template from the operator's sub-folder.
 2. Insert the updated version in its place.

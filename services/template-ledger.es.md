@@ -14,7 +14,7 @@ paired_with: template-ledger.md
 cites: []
 ---
 
-El Registro de Plantillas es el mecanismo de distribución dentro de `service-email-template` que sincroniza automáticamente una única copia autoritativa de cada plantilla aprobada con el entorno de correo del operador. Elimina la deriva de versiones entre el diseño de la plantilla y la ejecución del operador manteniendo una sola copia canónica por identificador de plantilla; el operador recupera la versión actual mediante una clave y la envía directamente. La distinción entre redactar y desplegar se vuelve estructural en lugar de procedimental — el operador no está redactando correspondencia corporativa rutinaria, solo seleccionando qué plantilla aprobada despachar.
+El Registro de Plantillas es el mecanismo de distribución dentro de [[service-email|`service-email-template`]] que sincroniza automáticamente una única copia autoritativa de cada plantilla aprobada con el entorno de correo del operador. Elimina la deriva de versiones entre el diseño de la plantilla y la ejecución del operador manteniendo una sola copia canónica por identificador de plantilla; el operador recupera la versión actual mediante una clave y la envía directamente. La distinción entre redactar y desplegar se vuelve estructural en lugar de procedimental — el operador no está redactando correspondencia corporativa rutinaria, sino seleccionando qué [[disclosure-substrate|plantilla aprobada]] despachar.
 
 ## Intención de diseño
 
@@ -26,7 +26,7 @@ El operador abre su carpeta `Template Ledger` en Microsoft 365, accede al catál
 
 ## Sincronización silenciosa
 
-Cuando un ingeniero de PointSav actualiza una plantilla, el servicio de sincronización utiliza la API de Microsoft Graph para reemplazar la versión anterior en la subcarpeta del operador por la nueva, sin enviar ninguna notificación. La ausencia de notificaciones es deliberada: la plantilla actual siempre está disponible en la carpeta y no se requiere ninguna acción por parte del operador para recibirla.
+Cuando un ingeniero de PointSav actualiza una plantilla, el servicio de sincronización utiliza la API de [[machine-based-auth|Microsoft Graph]] para reemplazar la versión anterior en la subcarpeta del operador por la nueva, sin enviar ninguna notificación. La ausencia de notificaciones es deliberada: la plantilla actual siempre está disponible en la carpeta y no se requiere ninguna acción por parte del operador para recibirla.
 
 ## Véase también
 

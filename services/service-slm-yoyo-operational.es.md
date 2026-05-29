@@ -18,7 +18,7 @@ paired_with: service-slm-yoyo-operational.md
 ---
 
 
-**service-SLM** es el componente Ring 3 de la plataforma: la capa de Inteligencia Opcional. Actúa como enrutador de inferencia de tres niveles, dirigiendo el trabajo de rutina — ediciones editoriales, traducción bilingüe, generación de salida estructurada — hacia el modelo apropiado sin necesidad de enviar datos a una API de terceros. Los anillos 1 y 2 (ingesta de límites y procesamiento de conocimiento) funcionan de forma completa sin él; Ring 3 es estructuralmente opcional.
+**service-SLM** es el componente [[three-ring-architecture|Anillo 3]] de la plataforma: la capa de Inteligencia Opcional. Actúa como enrutador de inferencia de tres niveles, dirigiendo el trabajo de rutina — ediciones editoriales, traducción bilingüe, generación de salida estructurada — hacia el modelo apropiado sin necesidad de enviar datos a una API de terceros. Los anillos 1 y 2 (ingesta de límites y procesamiento de conocimiento) funcionan de forma completa sin él; el Anillo 3 es estructuralmente opcional.
 
 El **Yo-Yo** es la instancia GPU de explosión a demanda de la plataforma: una máquina virtual en GCE que ejecuta un modelo de 32 mil millones de parámetros a aproximadamente 50-100 tokens por segundo. Se inicia bajo demanda y se apaga automáticamente tras 30 minutos de inactividad.
 
@@ -32,11 +32,11 @@ El sistema define tres niveles de cómputo, enrutados por el Doorman:
 
 ## El límite del Doorman
 
-Todas las solicitudes de inferencia pasan por el Doorman antes de llegar a cualquier nivel. El Doorman es un binario Rust (`local-doorman.service`) vinculado a `127.0.0.1:9080`. Sus responsabilidades:
+Todas las solicitudes de inferencia pasan por el [[doorman-protocol|Doorman]] antes de llegar a cualquier nivel. El Doorman es un binario Rust (`local-doorman.service`) vinculado a `127.0.0.1:9080`. Sus responsabilidades:
 
 - Retener todas las claves API (tokens de Tier C y el token bearer de Tier B). Las claves no existen en ningún otro punto de la ruta de solicitud.
 - Enrutar solicitudes al nivel correcto según heurísticas de complejidad (tamaño de la solicitud, requisitos de salida estructurada).
-- Registrar cada tránsito en el libro de auditoría por inquilino (`/var/lib/local-doorman/audit/<tenant>/<YYYY-MM>.jsonl`).
+- Registrar cada tránsito en el [[worm-ledger-design|libro de auditoría]] por inquilino (`/var/lib/local-doorman/audit/<tenant>/<YYYY-MM>.jsonl`).
 - Drenar la cola de borradores de aprendizaje (`data/apprenticeship/queue/`).
 
 ## Cola de aprendizaje
@@ -55,8 +55,8 @@ El flujo de trabajo de ingeniería de la plataforma enruta el trabajo de rutina 
 
 ## Véase también
 
-- [[compounding-substrate]]
-- [[service-slm]]
-- [[apprenticeship-substrate]]
-- [[brief-queue-substrate]]
-- [[worm-ledger-architecture]]
+- [[compounding-substrate]] — el patrón arquitectónico de cinco propiedades que implementa el Yo-Yo
+- [[service-slm]] — descripción general del servicio service-SLM
+- [[apprenticeship-substrate]] — cómo se acumula la señal de entrenamiento a partir de tuplas del corpus operativo
+- [[brief-queue-substrate]] — la cola durable que conecta el aprendizaje con el procesamiento en Tier A/B
+- [[worm-ledger-architecture]] — el libro mayor de auditoría que registra cada llamada externa
