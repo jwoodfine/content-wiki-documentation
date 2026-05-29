@@ -26,7 +26,7 @@ Use terms of use when:
 - The service's permitted and prohibited uses need to be on record.
 - Liability limitations and warranty disclaimers need to be formally stated.
 
-Internal tooling used only by workspace members does not require public terms of use — a policy document covers internal-use obligations.
+Internal tooling used only by workspace members does not require public terms of use — a [[style-guide-policy|policy document]] covers internal-use obligations.
 
 ## Structure
 
@@ -46,7 +46,7 @@ Optional sections (at the end): Governing law and jurisdiction, Contact.
 
 ## Register and tone
 
-Legal-plain. Active voice where possible. Every defined Term is capitalised on every use after its definition. Where the service touches investment or disclosure material, forward-looking claims about service features or roadmap carry "planned / intended / may / target" language, in compliance with Canadian securities continuous-disclosure requirements.
+Legal-plain. Active voice where possible. Every defined Term is capitalised on every use after its definition. Where the service touches investment or [[disclosure-substrate|disclosure]] material, forward-looking claims about service features or roadmap carry "planned / intended / may / target" language, in compliance with Canadian securities continuous-disclosure requirements.
 
 ## See also
 

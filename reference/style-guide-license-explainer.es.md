@@ -14,7 +14,7 @@ cites: []
 paired_with: style-guide-license-explainer.md
 ---
 
-Un explicador de licencia traduce un instrumento legal a términos llanos. No es la licencia. Si el explicador y la licencia entran en conflicto, la licencia prevalece.
+Un explicador de [[disclosure-substrate|licencia]] traduce un instrumento legal a términos llanos. No es la licencia. Si el explicador y la licencia entran en conflicto, la licencia prevalece.
 
 ## Cuándo usar esta plantilla
 

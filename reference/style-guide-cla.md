@@ -16,7 +16,7 @@ paired_with: style-guide-cla.es.md
 
 > A CLA transfers specific intellectual property rights from a contributor to the project. The canonical text is governed by factory-release-engineering — this template is for drafting or explaining one, not for executing one.
 
-A **Contributor License Agreement** (LEGAL-CLA genre) is an agreement between a project and a contributor that grants the project the rights it needs to use, modify, and redistribute the contributor's work. A CLA is not a copyright transfer — the contributor retains copyright and grants a license. Every CLA executed under this platform routes through `factory-release-engineering` governance before it binds any party. This article is the human-facing standard; the machine-readable counterpart lives in `service-disclosure/templates/cla.toml`.
+A **Contributor License Agreement** (LEGAL-CLA genre) is an agreement between a project and a contributor that grants the project the rights it needs to use, modify, and redistribute the contributor's work. A CLA is not a copyright transfer — the contributor retains copyright and grants a [[disclosure-substrate|license]]. Every CLA executed under this platform routes through `factory-release-engineering` governance before it binds any party. This article is the human-facing standard; the machine-readable counterpart lives in `service-disclosure/templates/cla.toml`.
 
 ## When to use this template
 
@@ -26,7 +26,7 @@ Use this template when:
 - A contributor's rights need to be explicit to satisfy a downstream licensing requirement.
 - A governance review of an existing CLA is needed for comparison against the canonical text.
 
-The canonical CLA text is maintained by `factory-release-engineering`. Do not draft a CLA for execution without routing it through governance review.
+The canonical CLA text is maintained by `factory-release-engineering`. Do not draft a CLA for execution without routing it through [[style-guide-policy|governance review]].
 
 ## Structure
 

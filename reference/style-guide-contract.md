@@ -26,7 +26,7 @@ Use the contract template when:
 - The obligations, term, and termination conditions need to be explicit and traceable.
 - The agreement will be reviewed by `factory-release-engineering` governance before execution.
 
-Informal operational agreements between team members or roles do not require a contract — a memo or ticket comment records them. Agreements that bind a legal entity (PointSav Digital Systems, Woodfine Management Corp., or a third party) require governance review before any signature.
+Informal operational agreements between team members or roles do not require a contract — a [[style-guide-memo|memo]] or [[style-guide-ticket-comment|ticket comment]] records them. Agreements that bind a legal entity (PointSav Digital Systems, Woodfine Management Corp., or a third party) require governance review before any signature.
 
 ## Structure
 

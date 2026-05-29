@@ -18,7 +18,7 @@ Un CLA transfiere derechos específicos de propiedad intelectual de un contribui
 
 ## Cuándo usar esta plantilla
 
-Se usa cuando un proyecto de código abierto en `pointsav-monorepo` acepta contribuciones externas y necesita un marco de contribución, cuando los derechos de un contribuidor deben ser explícitos para satisfacer un requisito de licencia, o cuando se necesita una revisión de gobernanza de un CLA existente. El texto canónico del CLA es mantenido por `factory-release-engineering`: no redactar un CLA para ejecución sin revisión de gobernanza.
+Se usa cuando un proyecto de código abierto en `pointsav-monorepo` acepta contribuciones externas y necesita un marco de contribución, cuando los derechos de un contribuidor deben ser explícitos para satisfacer un requisito de licencia, o cuando se necesita una revisión de gobernanza de un CLA existente. El texto canónico del CLA es mantenido por `factory-release-engineering`: no redactar un CLA para ejecución sin [[style-guide-policy|revisión de gobernanza]].
 
 ## Estructura requerida
 
@@ -39,7 +39,7 @@ Cinco secciones:
 
 ## Registro
 
-Legal-llano. Los términos definidos se escriben en mayúscula. Las declaraciones en Representations deben ser precisas: las declaraciones vagas reducen la aplicabilidad y crean ambigüedad.
+Legal-llano. Los términos definidos se escriben en mayúscula. Las declaraciones en Representations deben ser precisas: las declaraciones vagas reducen la [[disclosure-substrate|aplicabilidad]] y crean ambigüedad.
 
 ## Véase también
 

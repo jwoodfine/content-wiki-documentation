@@ -13,7 +13,7 @@ category: reference
 
 
 
-La plataforma impone reglas estrictas de formato para la difusión de noticias corporativas, siguiendo los principios de Lenguaje Claro ISO 24495-1. Esto asegura que cada comunicado proyecte autoridad institucional y sea perfectamente legible tanto en formato digital como impreso.
+La plataforma impone reglas estrictas de formato para la difusión de noticias corporativas, siguiendo los principios de Lenguaje Claro ISO 24495-1. Esto asegura que cada [[disclosure-substrate|comunicado]] proyecte autoridad institucional y sea perfectamente legible tanto en formato digital como impreso.
 
 ## Reglas Universales de Formato
 
@@ -28,7 +28,7 @@ Cada noticia debe seguir una jerarquía visual clara:
 2. **Titular:** En negrita y tamaño destacado.
 3. **Línea de Fecha:** Separada del cuerpo del texto por un guion largo (—) o una pleca (|) en la web.
 
-Estos estándares garantizan que la voz de PointSav y Woodfine sea coherente y profesional en todos los canales de comunicación, manteniendo una estética de "Libro Blanco" institucional.
+Estos estándares garantizan que la voz de PointSav y Woodfine sea coherente y profesional en todos los canales de comunicación, manteniendo una [[editorial-language-registers|estética de "Libro Blanco"]] institucional.
 
 ## Véase también
 

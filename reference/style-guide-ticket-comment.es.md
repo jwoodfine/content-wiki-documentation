@@ -36,7 +36,7 @@ Dos secciones:
 
 ## Registro
 
-Factual y breve. Tiempo pasado para lo que cambió; tiempo presente o futuro para los pasos siguientes. Sin conjeturas. Los valores del campo Status son un conjunto cerrado: `Open`, `In progress`, `Blocked`, `Review`, `Done`. Si "What changed" requiere más de tres oraciones, el cambio es suficientemente complejo para un brief o un memo; referenciar desde el comentario.
+Factual y breve. Tiempo pasado para lo que cambió; tiempo presente o futuro para los pasos siguientes. Sin conjeturas. Los valores del campo Status son un conjunto cerrado: `Open`, `In progress`, `Blocked`, `Review`, `Done`. Si "What changed" requiere más de tres oraciones, el cambio es suficientemente complejo para un brief o un [[style-guide-memo|memo]]; referenciar desde el comentario.
 
 ## Véase también
 

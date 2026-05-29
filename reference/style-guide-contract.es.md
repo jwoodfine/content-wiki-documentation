@@ -18,7 +18,7 @@ Un contrato nombra a sus partes, define sus términos y establece a qué está o
 
 ## Cuándo usar esta plantilla
 
-Se usa cuando se requiere un acuerdo formal vinculante entre partes nombradas, cuando las obligaciones, la vigencia y las condiciones de terminación deben ser explícitas y rastreables. Los acuerdos operativos informales entre miembros del equipo no requieren un contrato. Los acuerdos que obligan a una entidad legal requieren revisión de gobernanza antes de cualquier firma.
+Se usa cuando se requiere un acuerdo formal vinculante entre partes nombradas, cuando las obligaciones, la vigencia y las condiciones de terminación deben ser explícitas y rastreables. Los acuerdos operativos informales entre miembros del equipo no requieren un contrato — un [[style-guide-memo|memo]] o un [[style-guide-ticket-comment|comentario de ticket]] los registra. Los acuerdos que obligan a una entidad legal requieren revisión de gobernanza antes de cualquier firma.
 
 ## Estructura requerida
 

@@ -18,7 +18,7 @@ Las notas de reunión existen para los elementos de acción y las decisiones. To
 
 ## Cuándo usar esta plantilla
 
-Se usan notas para toda reunión que produzca decisiones o elementos de acción. Las verificaciones informales breves que no producen ninguno no requieren notas: un mensaje de chat al canal es suficiente. Son obligatorias cuando se toma una decisión que afecta el alcance, el cronograma o la propiedad del trabajo, o cuando se asigna un elemento de acción a una persona nombrada.
+Se usan notas para toda reunión que produzca decisiones o elementos de acción. Las verificaciones informales breves que no producen ninguno no requieren notas: un [[style-guide-chat|mensaje de chat]] al canal es suficiente. Son obligatorias cuando se toma una decisión que afecta el alcance, el cronograma o la propiedad del trabajo, o cuando se asigna un elemento de acción a una persona nombrada.
 
 ## Estructura requerida
 
@@ -39,7 +39,7 @@ Cuatro secciones:
 
 ## Registro
 
-Las decisiones se expresan como hechos consumados. Los elementos de acción usan forma imperativa con un responsable específico. Las notas son mínimas en prosa: contexto, no transcripción.
+Las decisiones se expresan como hechos consumados. Los elementos de acción usan forma imperativa con un responsable específico. Las notas son mínimas en [[editorial-language-registers|prosa]]: contexto, no transcripción.
 
 ## Véase también
 

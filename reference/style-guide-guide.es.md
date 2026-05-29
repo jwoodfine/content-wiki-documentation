@@ -51,7 +51,7 @@ Los GUIDEs usan oraciones más cortas que los TOPICs. Presupuesto de longitud de
 
 **Actores nombrados.** Cada paso nombra al agente y al objeto: "el operador ejecuta el siguiente comando", no "el siguiente comando se ejecuta". Cuando un paso cambia el estado de un servicio o sistema, diga qué cambia. Un paso que el operador no puede verificar no ocurrió.
 
-La lista de vocabulario prohibido se aplica. No tiene lugar en un manual operativo ninguna palabra que no describa algo que el operador pueda verificar.
+La [[editorial-language-registers|lista de vocabulario prohibido]] se aplica. No tiene lugar en un manual operativo ninguna palabra que no describa algo que el operador pueda verificar.
 
 ## Comandos copiables y pegables
 
@@ -74,7 +74,7 @@ Dos casos especiales se manejan explícitamente:
 
 ## Qué no es un GUIDE
 
-- No es un TOPIC. El razonamiento o la intención de diseño que motiva un procedimiento vive en un TOPIC.
+- No es un [[style-guide-topic|TOPIC]]. El razonamiento o la intención de diseño que motiva un procedimiento vive en un TOPIC.
 - No es un script. Un script que el GUIDE invoca vive en el directorio `scripts/` del proyecto; el GUIDE lo referencia por ruta.
 - No es un artefacto de cara al público. El detalle operativo pertenece a GUIDEs leídos por operadores con acceso al despliegue.
 

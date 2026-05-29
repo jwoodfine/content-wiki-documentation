@@ -18,7 +18,7 @@ Los términos de uso establecen qué puede hacer un usuario con un servicio, qu�
 
 ## Cuándo usar esta plantilla
 
-Se usan términos de uso cuando un servicio o sitio se pone a disposición de usuarios fuera del espacio de trabajo Foundry, cuando los usos permitidos y prohibidos del servicio deben quedar registrados, y cuando las limitaciones de responsabilidad y las exenciones de garantías deben ser declaradas formalmente. Las herramientas internas no requieren términos de uso públicos: una política cubre las obligaciones de uso interno. Todo documento de términos de uso ejecutado en esta plataforma es revisado por `factory-release-engineering` antes de su publicación.
+Se usan términos de uso cuando un servicio o sitio se pone a disposición de usuarios fuera del espacio de trabajo Foundry, cuando los usos permitidos y prohibidos del servicio deben quedar registrados, y cuando las limitaciones de responsabilidad y las exenciones de garantías deben ser declaradas formalmente. Las herramientas internas no requieren términos de uso públicos: una [[style-guide-policy|política]] cubre las obligaciones de uso interno. Todo documento de términos de uso ejecutado en esta plataforma es revisado por `factory-release-engineering` antes de su publicación.
 
 ## Estructura requerida
 
@@ -34,7 +34,7 @@ Cinco secciones en orden:
 
 ## Registro
 
-Legal-llano. Los términos definidos en mayúscula en cada uso posterior. Donde el servicio toca material de inversión o divulgación, las declaraciones prospectivas sobre funciones del servicio o hoja de ruta llevan lenguaje de "planificado / previsto / puede / objetivo", conforme a las obligaciones canadienses de divulgación continua en materia de valores.
+Legal-llano. Los términos definidos en mayúscula en cada uso posterior. Donde el servicio toca material de inversión o [[disclosure-substrate|divulgación]], las declaraciones prospectivas sobre funciones del servicio o hoja de ruta llevan lenguaje de "planificado / previsto / puede / objetivo", conforme a las obligaciones canadienses de divulgación continua en materia de valores.
 
 ## Véase también
 

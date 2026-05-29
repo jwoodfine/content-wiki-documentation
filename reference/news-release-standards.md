@@ -13,7 +13,7 @@ category: reference
 
 
 
-The platform enforces strict formatting rules for corporate news syndication to ensure absolute clarity and institutional authority. By adhering to ISO 24495-1 Plain Language principles, the system guarantees that disclosures are accessible and professional across both digital and physical mediums.
+The platform enforces strict formatting rules for corporate news syndication to ensure absolute clarity and institutional authority. By adhering to ISO 24495-1 Plain Language principles, the system guarantees that [[disclosure-substrate|disclosures]] are accessible and professional across both digital and physical mediums.
 
 ## 1. Universal Layout Requirements
 
@@ -43,7 +43,7 @@ Web-based releases use specific semantic tags and separators to ensure high-dens
  **[Headline Title Case]**
  **For immediate release | Vancouver, British Columbia | [Date]**
 
-These standards ensure that every platform disclosure maintains a consistent voice of authority, whether viewed on a high-DPI display or a physical printed page.
+These standards ensure that every platform disclosure maintains a consistent [[editorial-language-registers|voice of authority]], whether viewed on a high-DPI display or a physical printed page.
 
 ## See also
 

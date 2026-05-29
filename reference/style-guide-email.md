@@ -51,7 +51,7 @@ Professional, plain. Address the recipient by name or role in the opening where 
 
 Subject lines must be specific: "Request for NDA — Woodfine Management Corp. / [Counterparty]" rather than "Partnership discussion." Ambiguous subjects delay responses and reduce traceability in archives.
 
-Sentence-length budget: mean around twenty words, maximum thirty-five. Active voice. The banned-vocabulary list applies: state the action directly rather than using marketing-register phrases.
+Sentence-length budget: mean around twenty words, maximum thirty-five. Active voice. The [[editorial-language-registers|banned-vocabulary list]] applies: state the action directly rather than using marketing-register phrases.
 
 When the recipient may be a current or prospective investor, forward-looking claims about the platform, products, or roadmap carry "planned / intended / may / target" language. This applies to all statements about future capability, timeline, or commercial outcome.
 

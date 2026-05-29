@@ -18,7 +18,7 @@ Un mensaje de chat lleva un único punto. Si se necesita un segundo punto, se en
 
 ## Cuándo usar esta plantilla
 
-Se usa para comunicaciones cortas, oportunas y de bajo impacto dirigidas a destinatarios presentes o que estarán presentes próximamente en la misma plataforma. Si el contenido debe ser rastreable, recuperable o procesado por alguien que no está presente, se usa un comentario de ticket, un correo electrónico o un mensaje de bandeja de entrada.
+Se usa para comunicaciones cortas, oportunas y de bajo impacto dirigidas a destinatarios presentes o que estarán presentes próximamente en la misma plataforma. Si el contenido debe ser rastreable, recuperable o procesado por alguien que no está presente, se usa un [[style-guide-ticket-comment|comentario de ticket]], un [[style-guide-email|correo electrónico]] o un mensaje de bandeja de entrada.
 
 ## Estructura requerida
 
