@@ -14,9 +14,9 @@ cites: []
 paired_with: slm-stack-architecture.es.md
 ---
 
-`service-slm` is built as a single, statically-linked Rust binary. Every direct dependency in the stack is either pure Rust or Rust bindings to a permissively licensed native library. No copyleft licenses appear anywhere in the dependency graph, which means PointSav holds an unrestricted right to fork, modify, and redistribute the entire codebase. This property is called the "We Own It" criterion.
+[[service-slm|`service-slm`]] is built as a single, statically-linked Rust binary. Every direct dependency in the stack is either pure Rust or Rust bindings to a permissively licensed native library. No copyleft licenses appear anywhere in the dependency graph, which means [[pointsav-overview|PointSav]] holds an unrestricted right to fork, modify, and redistribute the entire codebase. This property is called the "We Own It" criterion.
 
-The choice of Rust is not a language preference. It is an engineering constraint imposed by the intended deployment target — ToteboxOS appliance hardware, where a CPython interpreter plus a large ML framework does not fit in the available memory envelope, and where cold-start predictability and the absence of a garbage collector are operational requirements rather than optional improvements.
+The choice of Rust is not a language preference. It is an engineering constraint imposed by the intended deployment target — [[totebox-os|ToteboxOS]] appliance hardware, where a CPython interpreter plus a large ML framework does not fit in the available memory envelope, and where cold-start predictability and the absence of a garbage collector are operational requirements rather than optional improvements.
 
 ## Why L2 Rust, not L3 Rust
 
@@ -42,11 +42,11 @@ The OLMo 3 model family is the production base model selection. OLMo 3 carries a
 
 ### HTTP and async runtime
 
-The Doorman's inbound HTTP surface is served by **axum** (MIT), with **tower** middleware for retries, timeouts, and backpressure, running on the **tokio** async runtime (MIT). Outbound HTTP calls — to Cloud Run GPU instances, to the Tier C external API allowlist — use **hyper** and **reqwest**.
+The [[doorman-protocol|Doorman]]'s inbound HTTP surface is served by **axum** (MIT), with **tower** middleware for retries, timeouts, and backpressure, running on the **tokio** async runtime (MIT). Outbound HTTP calls — to Cloud Run GPU instances ([[yoyo-compute-substrate|Yo-Yo]]), to the Tier C external API allowlist — use **hyper** and **reqwest**.
 
 ### Storage and state
 
-The audit ledger uses **sqlx** with an SQLite backend for local, append-only structured storage. The long-term knowledge graph is held by LadybugDB, addressed through Rust bindings (MIT). Cloud object storage for model weights and LoRA adapter artefacts is abstracted through **object_store** (Apache-2.0).
+The audit ledger uses **sqlx** with an SQLite backend for local, append-only structured storage. The long-term knowledge graph (held by [[service-content]]) is held by LadybugDB, addressed through Rust bindings (MIT). Cloud object storage for model weights and LoRA adapter artefacts is abstracted through **object_store** (Apache-2.0).
 
 ### Document processing
 
@@ -56,7 +56,7 @@ The document ingest path uses **oxidize-pdf** for PDF parsing (pure Rust, zero C
 
 ### Orchestration
 
-Internal job orchestration uses **apalis** (MIT) — a job-processing library with step-based workflow composition and tower middleware compatibility. apalis fits the service-slm work shape: sanitise, send, await, receive, rehydrate. It introduces no Python runtime dependency, which is the meaningful distinction from Python-native workflow engines used in the `service-content` derivative pipeline.
+Internal job orchestration uses **apalis** (MIT) — a job-processing library with step-based workflow composition and tower middleware compatibility. apalis fits the service-slm work shape: sanitise, send, await, receive, rehydrate. It introduces no Python runtime dependency, which is the meaningful distinction from Python-native workflow engines used in the [[service-content|`service-content`]] derivative pipeline.
 
 ### Observability and supply-chain security
 

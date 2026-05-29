@@ -14,11 +14,11 @@ cites: []
 paired_with: slm-stack-architecture.md
 ---
 
-`service-slm` — el Doorman de la plataforma PointSav — se construye como un único binario de Rust enlazado estáticamente. Cada dependencia directa en el stack es Rust puro o bindings Rust sobre una biblioteca nativa con licencia permisiva. No hay licencias copyleft en ningún punto del grafo de dependencias. Esta propiedad, denominada criterio "We Own It", garantiza que PointSav conserva el derecho irrestricto de bifurcar, modificar y redistribuir la totalidad del código base en cualquier momento.
+[[service-slm|`service-slm`]] — el [[doorman-protocol|Doorman]] de la plataforma [[pointsav-overview|PointSav]] — se construye como un único binario de Rust enlazado estáticamente. Cada dependencia directa en el stack es Rust puro o bindings Rust sobre una biblioteca nativa con licencia permisiva. No hay licencias copyleft en ningún punto del grafo de dependencias. Esta propiedad, denominada criterio "We Own It", garantiza que PointSav conserva el derecho irrestricto de bifurcar, modificar y redistribuir la totalidad del código base en cualquier momento.
 
 ## Por qué importa la elección de Rust
 
-La elección no es una preferencia de lenguaje. Es una restricción de ingeniería impuesta por el destino de despliegue previsto: hardware ToteboxOS, donde un intérprete CPython más un marco de ML de gran tamaño no caben en el presupuesto de memoria disponible. La ausencia de recolector de basura, el arranque predecible y el paralelismo real sobre múltiples núcleos sin bloqueo global de intérprete son requisitos operativos, no mejoras opcionales.
+La elección no es una preferencia de lenguaje. Es una restricción de ingeniería impuesta por el destino de despliegue previsto: hardware [[totebox-os|ToteboxOS]], donde un intérprete CPython más un marco de ML de gran tamaño no caben en el presupuesto de memoria disponible. La ausencia de recolector de basura, el arranque predecible y el paralelismo real sobre múltiples núcleos sin bloqueo global de intérprete son requisitos operativos, no mejoras opcionales.
 
 El objetivo técnico es lo que la industria denomina "Rust de nivel L2": todo el código escrito por PointSav es Rust, y cada crate de dependencia directa es un crate Rust — aunque internamente pueda usar FFI hacia C/C++ para kernels CUDA o motores de almacenamiento columnares. El nivel L3 (Rust transitive completo hasta el metal) no es alcanzable en 2026 para los motores de inferencia GPU, y tampoco es el objetivo correcto. La prueba "We Own It" es una cuestión de licencias, no de lenguaje: `MIT + Apache-2.0 = lo poseemos`.
 
@@ -26,9 +26,9 @@ El objetivo técnico es lo que la industria denomina "Rust de nivel L2": todo el
 
 **Inferencia**: `mistral.rs` (MIT) — binario Rust enlazado estáticamente, con FlashAttention V2/V3, PagedAttention y carga en caliente de adaptadores LoRA por token. El modelo base de producción es la familia **OLMo 3**, el único modelo de pesos abiertos cuya totalidad — pesos, datos de entrenamiento y código — está bajo licencias permisivas (Apache 2.0 + Open Data Commons). Esta es la condición necesaria para la ruta de preentrenamiento continuo del [[apprenticeship-substrate]].
 
-**HTTP y runtime**: `axum` + `tower` + `tokio` (todos MIT). Un único loop de eventos asíncrono atiende las peticiones entrantes del Doorman y despacha las llamadas salientes a Cloud Run GPU y a las APIs externas.
+**HTTP y runtime**: `axum` + `tower` + `tokio` (todos MIT). Un único loop de eventos asíncrono atiende las peticiones entrantes del [[doorman-protocol|Doorman]] y despacha las llamadas salientes a Cloud Run GPU ([[yoyo-compute-substrate|Yo-Yo]]) y a las APIs externas.
 
-**Almacenamiento y estado**: `sqlx` con SQLite para el ledger de auditoría de solo-lectura-apendizaje; LadybugDB via bindings Rust para el grafo de conocimiento; `object_store` (Apache-2.0) para pesos y adaptadores LoRA en almacenamiento en la nube.
+**Almacenamiento y estado**: `sqlx` con SQLite para el ledger de auditoría de solo-lectura-apendizaje; LadybugDB via bindings Rust (en [[service-content]]) para el grafo de conocimiento; `object_store` (Apache-2.0) para pesos y adaptadores LoRA en almacenamiento en la nube.
 
 **Procesamiento de documentos**: `oxidize-pdf` (Rust puro, cero dependencias C, 3.000–4.000 páginas/seg), `docx-rust`, `calamine` y `pulldown-cmark`. **mupdf-rs está explícitamente excluido** por su licencia AGPL-3.0, y la política `cargo-deny` en CI lo hace cumplir automáticamente en cada commit.
 

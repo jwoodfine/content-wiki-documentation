@@ -16,7 +16,7 @@ short_description: "The six-tier sovereignty matrix organises every directory in
 cites: []
 ---
 
-The PointSav monorepo organises every directory by purpose, not by programming language or compile format. Each directory at the repository root belongs to one of six tiers — `app-`, `asset-`, `moonshot-`, `os-`, `service-`, or `system-` — identified by a fixed prefix. A contributor reading the prefix knows immediately what layer a directory operates at without opening a file. This article covers the six tiers, the decision rule for classifying new directories, the kebab-case constraint that makes the taxonomy portable across operating systems and container registries, and the legacy names the taxonomy supersedes.
+The [[pointsav-overview|PointSav]] monorepo organises every directory by purpose, not by programming language or compile format. Each directory at the repository root belongs to one of six tiers — `app-`, `asset-`, `moonshot-`, `os-`, `service-`, or `system-` — identified by a fixed prefix. A contributor reading the prefix knows immediately what layer a directory operates at without opening a file. This article covers the six tiers, the decision rule for classifying new directories, the kebab-case constraint that makes the taxonomy portable across operating systems and container registries, and the legacy names the taxonomy supersedes.
 
 ## The six tiers
 
@@ -27,8 +27,8 @@ Every directory at the monorepo root falls into one of the following tiers:
 | 1 — Application | `app-` | User-facing surfaces — the personality cartridges that define how a job looks and feels | `app-console-input`, `app-mediakit-marketing`, `app-orchestration-command` |
 | 2 — Asset | `asset-` | Non-code resources — fonts, icons, 3D models, design tokens, brand assets | `asset-brand-pointsav`, `asset-brand-wcp` |
 | 3 — Moonshot | `moonshot-` | Research and development experiments not yet promoted to production | `moonshot-gpu` |
-| 4 — OS | `os-` | Operating-system compositions — the runtime containers that load other components | `os-console`, `os-totebox`, `os-orchestration` |
-| 5 — Service | `service-` | Background business-logic daemons | `service-slm`, `service-content`, `service-email`, `service-people` |
+| 4 — OS | `os-` | Operating-system compositions — the runtime containers that load other components | [[console-os|`os-console`]], [[totebox-os|`os-totebox`]], [[os-orchestration|`os-orchestration`]] |
+| 5 — Service | `service-` | Background business-logic daemons | [[service-slm|`service-slm`]], [[service-content|`service-content`]], [[service-email|`service-email`]], [[service-people|`service-people`]] |
 | 6 — System | `system-` | Foundational technology — drivers, networking, foundation utilities | `system-foundation`, `system-driver-network`, `system-audit` |
 
 The word "library" is explicitly retired as a category label. It describes how code is compiled, not what it does.

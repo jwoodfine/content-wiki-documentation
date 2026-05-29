@@ -16,7 +16,7 @@ short_description: "La matriz de seis niveles de soberanía organiza cada direct
 cites: []
 ---
 
-El monorepo de PointSav organiza cada directorio por propósito, no por lenguaje de programación o formato de compilación. Cada directorio en la raíz del repositorio pertenece a uno de seis niveles — `app-`, `asset-`, `moonshot-`, `os-`, `service-`, o `system-` — identificado por un prefijo fijo. Un contribuyente que lee el prefijo sabe inmediatamente en qué capa opera un directorio sin abrir ningún archivo. Este artículo cubre los seis niveles, la regla de propósito que rige la clasificación de nuevos directorios, la restricción kebab-case que hace que la taxonomía sea portable entre sistemas operativos y registros de contenedores, y los nombres anteriores que la taxonomía reemplaza.
+El monorepo de [[pointsav-overview|PointSav]] organiza cada directorio por propósito, no por lenguaje de programación o formato de compilación. Cada directorio en la raíz del repositorio pertenece a uno de seis niveles — `app-`, `asset-`, `moonshot-`, `os-`, `service-`, o `system-` — identificado por un prefijo fijo. Un contribuyente que lee el prefijo sabe inmediatamente en qué capa opera un directorio sin abrir ningún archivo. Este artículo cubre los seis niveles, la regla de propósito que rige la clasificación de nuevos directorios, la restricción kebab-case que hace que la taxonomía sea portable entre sistemas operativos y registros de contenedores, y los nombres anteriores que la taxonomía reemplaza.
 
 ## Los seis niveles
 
@@ -27,8 +27,8 @@ Cada directorio en la raíz del monorepo pertenece a uno de los siguientes nivel
 | 1 — Aplicación | `app-` | Superficies orientadas al usuario — los cartuchos de personalidad que definen el aspecto y la sensación de un trabajo | `app-console-input`, `app-mediakit-marketing`, `app-orchestration-command` |
 | 2 — Activo | `asset-` | Recursos no-código — fuentes, íconos, modelos 3D, tokens de diseño, activos de marca | `asset-brand-pointsav`, `asset-brand-wcp` |
 | 3 — Moonshot | `moonshot-` | Experimentos de investigación y desarrollo aún no promovidos a producción | `moonshot-gpu` |
-| 4 — OS | `os-` | Composiciones de sistemas operativos — los contenedores de ejecución que cargan otros componentes | `os-console`, `os-totebox`, `os-orchestration` |
-| 5 — Servicio | `service-` | Daemons de lógica de negocio en segundo plano | `service-slm`, `service-content`, `service-email`, `service-people` |
+| 4 — OS | `os-` | Composiciones de sistemas operativos — los contenedores de ejecución que cargan otros componentes | [[console-os|`os-console`]], [[totebox-os|`os-totebox`]], [[os-orchestration|`os-orchestration`]] |
+| 5 — Servicio | `service-` | Daemons de lógica de negocio en segundo plano | [[service-slm|`service-slm`]], [[service-content|`service-content`]], [[service-email|`service-email`]], [[service-people|`service-people`]] |
 | 6 — Sistema | `system-` | Tecnología fundacional — controladores, redes, utilidades de base | `system-foundation`, `system-driver-network`, `system-audit` |
 
 La palabra "librería" está explícitamente retirada como etiqueta de categoría. Describe cómo se compila el código, no qué hace.

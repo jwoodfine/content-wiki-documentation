@@ -13,7 +13,7 @@ paired_with: service-pointsav-link.md
 language: es
 ---
 
-`service-pointsav-link` es el adaptador hot-pluggable que conecta un nodo Sujeto `os-*` a una flota de PointSav. Es el único código responsable de traducir los comandos de autoridad — emitidos por `os-network-admin` y entregados a través del [[ppn-command-protocol|Protocolo de Comandos de la PPN]] — en operaciones ejecutables por el Sujeto. Su propiedad más importante es su estado predeterminado: no está instalado.
+`service-pointsav-link` es el adaptador hot-pluggable que conecta un nodo Sujeto [[os-family-overview|`os-*`]] a una flota de [[pointsav-overview|PointSav]]. Es el único código responsable de traducir los comandos de autoridad — emitidos por [[os-network-admin|`os-network-admin`]] y entregados a través del [[ppn-command-protocol|Protocolo de Comandos de la PPN]] — en operaciones ejecutables por el Sujeto. Su propiedad más importante es su estado predeterminado: no está instalado.
 
 ## Las cuatro propiedades
 
@@ -26,13 +26,13 @@ language: es
 
 ## Estado predeterminado: sin capacidad de llamar a casa
 
-Un nodo `os-infrastructure` recién arrancado no tiene `service-pointsav-link` instalado. Esto no es una elección de configuración — es una invariante arquitectónica. El sistema operativo Sujeto no contiene código que le permita iniciar contacto con ninguna autoridad.
+Un nodo [[infrastructure-os|`os-infrastructure`]] recién arrancado no tiene `service-pointsav-link` instalado. Esto no es una elección de configuración — es una invariante arquitectónica. El sistema operativo Sujeto no contiene código que le permita iniciar contacto con ninguna autoridad.
 
-Esta propiedad se aplica a toda la familia `os-*`. Poner un nodo bajo gestión es siempre una acción explícita del operador, nunca automática.
+Esta propiedad se aplica a toda la [[os-family-overview|familia `os-*`]]. Poner un nodo bajo gestión es siempre una acción explícita del operador, nunca automática.
 
 ## Activación: conectar el adaptador en caliente
 
-Un operador activa `service-pointsav-link` en un Sujeto con un único comando emitido desde `os-network-admin`. La secuencia de activación instala el paquete `pointsav-protocol`, registra el par de claves fiduciarias del nodo en el registro de emparejamiento de la flota como entrada de Sujeto, y abre el único canal de comandos entrantes del adaptador.
+Un operador activa `service-pointsav-link` en un Sujeto con un único comando emitido desde [[os-network-admin|`os-network-admin`]]. La secuencia de activación instala el paquete `pointsav-protocol`, registra el par de claves fiduciarias del nodo en el [[pairing-as-permission|registro de emparejamiento]] de la flota como entrada de Sujeto, y abre el único canal de comandos entrantes del adaptador.
 
 ## Modo de fallo: desconexión limpia
 
@@ -40,7 +40,7 @@ Si `service-pointsav-link` falla o se desinstala deliberadamente, el Sujeto no f
 
 ## El Estándar Universal
 
-`service-pointsav-link` no es una característica de un sistema operativo específico. El mismo paquete `pointsav-protocol`, con diferentes vinculaciones de política, es el adaptador entre cualquier par de instancias de SO de PointSav que necesiten comunicarse.
+`service-pointsav-link` no es una característica de un sistema operativo específico. El mismo paquete `pointsav-protocol`, con diferentes vinculaciones de política, es el adaptador entre cualquier par de instancias de SO de [[pointsav-overview|PointSav]] que necesiten comunicarse.
 
 ## Véase también
 
