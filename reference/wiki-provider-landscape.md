@@ -26,7 +26,7 @@ networked-thought systems. None of them has replaced Wikipedia for
 general-knowledge encyclopedic depth. This article documents the field,
 names the structural reasons no provider has closed the gap, and
 identifies the genuine advantages each provider has over Wikipedia —
-features worth preserving as the substrate iterates.
+features worth preserving as the [[app-mediakit-knowledge|substrate]] iterates.
 
 The audit is structural, not promotional. Each provider is described
 factually with its strongest published positioning and the structural
@@ -472,11 +472,11 @@ sideways, and exit via categories.
 Closing the gap requires simultaneously building governance software, a
 navigation primitive set, and an editorial culture. PointSav's
 substrate-sovereignty design, three-tier compute routing under the
-optional Intelligence Layer, apprenticeship-corpus capture, and the
+optional [[four-tier-slm-substrate|Intelligence Layer]], [[apprenticeship-substrate|apprenticeship-corpus capture]], and the
 editorial pipeline are the three preconditions no commercial competitor
 can simultaneously match.
 
-The wiki engine `app-mediakit-knowledge` is intended to become the
+The wiki engine [[app-mediakit-knowledge]] is intended to become the
 customer-installable demonstration of that substrate. The structural
 argument for the leapfrog claim is what this article documents: the gap
 exists because of the five structural causes above; closing it requires
@@ -496,3 +496,9 @@ modern UX layer, or Wiki.js adds NPOV-style editorial discipline — this
 article is amended in transit. Forward-looking framings carry stated
 assumptions and cautionary language per NI 51-102 and OSC Staff Notice
 51-721.
+
+## See also
+
+- [[app-mediakit-knowledge]] — the wiki engine that implements the leapfrog claim documented here
+- [[editorial-philosophy]] — the editorial model that the platform wiki implements
+- [[compounding-substrate]] — the compounding improvement loop that advances content quality over time

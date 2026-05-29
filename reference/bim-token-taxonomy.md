@@ -31,7 +31,7 @@ The platform’s BIM Token Taxonomy organizes the Building Design System into ei
 
 ## Classification Floor: Uniclass 2015
 
-The platform adopts **Uniclass 2015** as its universal classification floor. Published by the NBS and recognized globally in the openBIM community, Uniclass provides the baseline semantic tagging for every element in the system. While deployment-specific taxonomies (e.g., OmniClass or MasterFormat) can be layered on top, Uniclass 2015 serves as the mandatory default, ensuring consistent data structures from day one.
+The platform adopts **Uniclass 2015** as its universal classification floor. Published by the NBS and recognized globally in the openBIM community, Uniclass provides the baseline semantic tagging for every element in the system. While deployment-specific taxonomies (e.g., OmniClass or MasterFormat) can be layered on top, Uniclass 2015 serves as the mandatory default, ensuring consistent data structures from day one. The regulatory acceptance framework for BIM interoperability standards is covered in [[open-bim-regulatory-acceptance]].
 
 ## Component Architecture
 
@@ -59,3 +59,5 @@ Host frameworks (e.g., Yew, Leptos, or vanilla TypeScript) integrate by mounting
 - [[bim-design-philosophy]]
 - [[bim-aec-muscle-memory]]
 - [[flat-file-bim-leapfrog]]
+- [[bim-token-what-it-is]] — what a BIM token is and the pre-constraining thesis
+- [[bim-token-three-layers]] — the three-layer structure each token carries

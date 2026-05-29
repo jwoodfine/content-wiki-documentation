@@ -17,7 +17,7 @@ paired_with: style-guide-architecture.md
 Un archivo `ARCHITECTURE.md` en la raíz de un proyecto explica la
 posición del proyecto dentro del sistema más amplio, la interfaz
 que expone, la organización interna de sus módulos y, con igual
-importancia, lo que el proyecto no hace.
+importancia, lo que el proyecto no hace. La [[root-files-discipline|disciplina de archivos en la raíz]] rige qué archivos compañeros pueden aparecer junto a ARCHITECTURE.md en la raíz del proyecto.
 
 ## Cuándo usar esta plantilla
 

@@ -67,7 +67,7 @@ La brecha tiene cinco causas estructurales reforzadas mutuamente:
 
 ## Lo que esto significa para documentation.pointsav.com
 
-El motor wiki `app-mediakit-knowledge` se convierte en la demostración instalable por el cliente de ese sustrato. El argumento estructural para la afirmación de salto generacional es lo que esta TOPIC documenta: la brecha existe por las cinco causas estructurales anteriores; cerrarla requiere las condiciones previas descritas en la convención del sustrato compuesto y la postura de soberanía del sustrato de PointSav.
+El motor wiki [[app-mediakit-knowledge]] se convierte en la demostración instalable por el cliente de ese sustrato. El argumento estructural para la afirmación de salto generacional es lo que esta TOPIC documenta: la brecha existe por las cinco causas estructurales anteriores; cerrarla requiere las condiciones previas descritas en la convención del [[compounding-substrate|sustrato compuesto]] y la postura de soberanía del sustrato de PointSav.
 
 ## Véase también
 
