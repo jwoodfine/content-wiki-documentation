@@ -16,7 +16,7 @@ editor: pointsav-engineering
 
 
 
-The platform enforces a strict boundary between web interface presentation and institutional print output. Web layers use native system fonts for performance; brand typography is reserved for PDF generation and formal printed documents. All typefaces are licensed under the SIL Open Font License (OFL) to ensure the Digital Asset Resolution Package (DARP) — the platform's principle requiring all embedded assets to be freely distributable — is satisfied.
+The platform enforces a strict boundary between web interface presentation and institutional print output. Web layers use native system fonts for performance; brand typography is reserved for PDF generation and formal printed documents via [[service-content]]. All typefaces are licensed under the SIL Open Font License (OFL) to ensure the Digital Asset Resolution Package (DARP) — the platform's principle requiring all embedded assets to be freely distributable — is satisfied.
 
 ## 1. The execution boundary
 

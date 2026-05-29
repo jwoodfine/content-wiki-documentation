@@ -15,7 +15,7 @@ authored: 2026-04-30
 last_edited: 2026-05-25
 ---
 
-El muestrario de familias de marca es el componente de clasificación visual que la superficie del sistema de información geográfica (GIS) de la plataforma utiliza para identificar categorías de anclas comerciales — Departamental, Ferretería y Club de Compras — en mapas, filas de filtros y paneles de detalle. Combina un punto codificado por color con una etiqueta semántica para que la membresía de categoría sea legible de un vistazo sin depender únicamente del color. El componente está diseñado para ser agnóstico respecto a la taxonomía: los identificadores de familia se resuelven a través de una configuración en tiempo de ejecución, por lo que los operadores pueden ampliar o reclasificar categorías de anclas sin cambios en el código.
+El muestrario de familias de marca es el componente de clasificación visual que la [[app-orchestration-gis|superficie GIS de la plataforma]] utiliza para identificar categorías de anclas comerciales — Departamental, Ferretería y Club de Compras — en mapas, filas de filtros y paneles de detalle, como parte de la [[location-intelligence-platform|plataforma de inteligencia de ubicación]]. Combina un punto codificado por color con una etiqueta semántica para que la membresía de categoría sea legible de un vistazo sin depender únicamente del color, apoyando la visualización de niveles de la [[co-location-methodology|metodología de co-ubicación]]. El componente está diseñado para ser agnóstico respecto a la taxonomía: los identificadores de familia se resuelven a través de una configuración en tiempo de ejecución, por lo que los operadores pueden ampliar o reclasificar categorías de anclas sin cambios en el código.
 
 ## Representación visual
 
@@ -65,4 +65,7 @@ Se prevé que las futuras iteraciones incluyan:
 
 ## Véase también
 
-- [[brand-typography]]
+- [[brand-typography]] — los estándares de tipografía de impresión de la plataforma que complementan este sistema de identidad visual
+- [[app-orchestration-gis]] — el motor analítico GIS que produce los datos de clúster que este componente visualiza
+- [[location-intelligence-platform]] — la plataforma de inteligencia de ubicación que usa este componente en su superficie de mapa interactivo
+- [[co-location-methodology]] — la metodología de co-ubicación cuyos rankings de niveles impulsan las asignaciones de color del muestrario

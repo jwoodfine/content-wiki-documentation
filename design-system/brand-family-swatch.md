@@ -15,7 +15,7 @@ authored: 2026-04-30
 last_edited: 2026-05-25
 ---
 
-The brand-family swatch is the visual classification component the platform’s geographic information system (GIS) surface uses to identify retail anchor categories — Department, Hardware, and Warehouse Club — on maps, filter rows, and detail panels. It pairs a color-coded dot with a semantic label so that category membership is legible at a glance without relying on color alone. The component is designed to be taxonomy-agnostic: family identifiers resolve through a runtime configuration, so operators extend or reclassify anchor categories without code changes.
+The brand-family swatch is the visual classification component the [[app-orchestration-gis|platform’s GIS surface]] uses to identify retail anchor categories — Department, Hardware, and Warehouse Club — on maps, filter rows, and detail panels, as part of the [[location-intelligence-platform|location intelligence platform]]. It pairs a color-coded dot with a semantic label so that category membership is legible at a glance without relying on color alone, supporting the [[co-location-methodology|co-location scoring methodology]]’s tier visualization. The component is designed to be taxonomy-agnostic: family identifiers resolve through a runtime configuration, so operators extend or reclassify anchor categories without code changes.
 
 ## Visual representation
 
@@ -66,4 +66,7 @@ Future iterations are intended to include:
 
 ## See also
 
-- [[brand-typography]]
+- [[brand-typography]] — the platform's print typography standards that pair with this visual identity system
+- [[app-orchestration-gis]] — the GIS analytics engine that produces the cluster data this component visualizes
+- [[location-intelligence-platform]] — the location intelligence platform that uses this component on its interactive map surface
+- [[co-location-methodology]] — the co-location scoring methodology whose tier rankings drive the swatch color assignments

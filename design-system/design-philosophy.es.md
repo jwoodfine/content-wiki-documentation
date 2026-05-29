@@ -19,7 +19,7 @@ cites:
  - doctrine-38
 ---
 
-El sistema de diseño de PointSav es un sustrato auto-alojado de propiedad del cliente para gestionar tokens de diseño, componentes e investigación de decisiones de diseño. Responde a cuatro brechas estructurales en el panorama del diseño de 2026 — la ausencia de justificación de diseño legible por máquinas, precios de nivel empresarial que excluyen a las pequeñas y medianas empresas (PyMES), la dependencia de editores específicos y la estructura insuficiente para el consumo por inteligencia artificial — mediante tres inversiones arquitectónicas del modelo de plataforma dominante.
+El [[design-system-substrate|sistema de diseño]] de PointSav es un sustrato auto-alojado de propiedad del cliente para gestionar tokens de diseño, componentes e investigación de decisiones de diseño. Responde a cuatro brechas estructurales en el panorama del diseño de 2026 — la ausencia de justificación de diseño legible por máquinas, precios de nivel empresarial que excluyen a las pequeñas y medianas empresas (PyMES), la dependencia de editores específicos y la estructura insuficiente para el consumo por inteligencia artificial — mediante tres inversiones arquitectónicas del modelo de plataforma dominante. El vocabulario de tokens está documentado en [[design-primitive-vocabulary|el vocabulario primitivo del sistema de diseño]]; la superficie wiki construida sobre este sustrato es servida por [[app-mediakit-knowledge]].
 
 El sustrato de sistema de diseño de PointSav existe como respuesta directa a cuatro brechas estructurales en el panorama del diseño de 2026.
 
@@ -32,4 +32,11 @@ El sustrato responde con tres inversiones estructurales:
 3. **Neutralidad de editor** en lugar de dependencia de editor. El formato DTCG es el denominador común: cualquier editor compatible produce contenido que el sustrato acepta.
 
 En la era de la IA 2026–2030, el sustrato de sistema de diseño de una pyme es un medio: su forma — legibilidad por máquinas, interoperabilidad sin dependencia de editor, auto-alojamiento, investigación consumible por IA — determina cómo la marca de la pyme llega a cada superficie orientada al cliente.
+
+## Véase también
+
+- [[design-primitive-vocabulary]] — la capa de vocabulario de tokens: escalas de color numéricas, alias semántico y justificación de nomenclatura original de PointSav
+- [[design-system-substrate]] — la arquitectura del sustrato: bóveda rastreada en Git, endpoint MCP y estructura de anulación multitenant
+- [[wiki-component-library]] — nueve componentes del wiki construidos sobre este sistema de tokens
+- [[app-mediakit-knowledge]] — el motor wiki que renderiza la superficie pública del sistema de diseño
 

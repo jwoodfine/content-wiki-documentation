@@ -19,7 +19,7 @@ cites:
  - doctrine-38
 ---
 
-The design system's primitive token layer documents which structural patterns the field has converged on since 2018, which the substrate preserves verbatim, and which it replaces with PointSav-original vocabulary and values. The distinction matters for practitioners who arrive from other design systems: shared structural patterns produce immediate recognition; PointSav-original names and values prevent any intellectual-property entanglement with the systems they were drawn from.
+The [[design-system-substrate|design system]]'s primitive token layer documents which structural patterns the field has converged on since 2018, which the substrate preserves verbatim, and which it replaces with PointSav-original vocabulary and values. The distinction matters for practitioners who arrive from other design systems: shared structural patterns produce immediate recognition; PointSav-original names and values prevent any intellectual-property entanglement with the systems they were drawn from. The architectural rationale for the substrate itself is in [[design-philosophy]].
 
 ## What the substrate kept structurally
 
@@ -78,7 +78,9 @@ The structural patterns are field-shared; the literal tokens are not.
 
 ## See also
 
-- [[design-philosophy]]
+- [[design-philosophy]] — the three structural inversions that motivate the substrate's design choices
+- [[wiki-typography-system]] — the IBM Plex type stack built on these token conventions
+- [[wiki-component-library]] — nine wiki components that consume the token layers described here
 
 ## References
 

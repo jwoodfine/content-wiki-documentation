@@ -14,7 +14,7 @@ paired_with: wiki-typography-system.es.md
 
 # Wiki typography system
 
-The PointSav wiki typographic system uses IBM Plex Sans for body prose and IBM Plex Mono for code and technical notation. This article explains the font choice, the heading scale, the spacing tokens, and how the system achieves broad linguistic coverage for bilingual (English/Spanish) content.
+The [[app-mediakit-knowledge|PointSav wiki]]'s typographic system uses IBM Plex Sans for body prose and IBM Plex Mono for code and technical notation, built on [[design-system-substrate|the platform token system]] following the [[design-primitive-vocabulary|primitive vocabulary conventions]]. This article explains the font choice, the heading scale, the spacing tokens, and how the system achieves broad linguistic coverage for bilingual (English/Spanish) content.
 
 ---
 
@@ -93,8 +93,8 @@ All values are CSS custom properties defined on `:root` in `dist/tokens.css`:
 
 ---
 
-## See Also
+## See also
 
-- [[wiki-component-library]]
-- [[wiki-dark-mode]]
-- [[design-system-substrate]]
+- [[wiki-component-library]] — the nine components that use this type stack
+- [[wiki-dark-mode]] — the colour scheme system that pairs with these typographic tokens
+- [[design-system-substrate]] — the token vault where font stack and scale variables are defined

@@ -14,7 +14,7 @@ paired_with: wiki-dark-mode.es.md
 
 # Wiki dark mode
 
-The PointSav wiki supports light and dark colour schemes. Dark mode reduces eye strain in low-light environments and is preferred by a significant proportion of readers. This article describes the implementation: how the theme is set, persisted across sessions, and toggled, together with the full colour palette for each mode.
+The [[app-mediakit-knowledge|PointSav wiki]] supports light and dark colour schemes using [[design-system-substrate|semantic tokens]] from the platform design system. Dark mode reduces eye strain in low-light environments and is preferred by a significant proportion of readers. This article describes the implementation: how the theme is set, persisted across sessions, and toggled, together with the full colour palette for each mode.
 
 ---
 
@@ -123,8 +123,8 @@ The wiki CSS uses short-form aliases that map to the semantic tokens:
 
 ---
 
-## See Also
+## See also
 
-- [[wiki-component-library]]
-- [[wiki-typography-system]]
-- [[design-system-substrate]]
+- [[wiki-component-library]] — the nine components that consume these dark-mode token overrides
+- [[wiki-typography-system]] — the type stack that pairs with these colour settings
+- [[design-system-substrate]] — the token vault where semantic token values are defined and versioned

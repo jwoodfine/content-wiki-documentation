@@ -19,7 +19,7 @@ cites:
  - doctrine-38
 ---
 
-The PointSav design system is a self-hosted, customer-owned substrate for managing design tokens, components, and design-decision research. It addresses four structural gaps in the 2026 design-system landscape — the absence of machine-readable design rationale, enterprise-tier pricing that excludes small and medium businesses (SMBs), editor lock-in, and insufficient AI-consumable structure — through three architectural inversions of the dominant platform model.
+The PointSav [[design-system-substrate|design system]] is a self-hosted, customer-owned substrate for managing design tokens, components, and design-decision research. It addresses four structural gaps in the 2026 design-system landscape — the absence of machine-readable design rationale, enterprise-tier pricing that excludes small and medium businesses (SMBs), editor lock-in, and insufficient AI-consumable structure — through three architectural inversions of the dominant platform model. The token vocabulary is documented in [[design-primitive-vocabulary]]; the wiki rendering surface built on this substrate is served by [[app-mediakit-knowledge]].
 
 ## Why the substrate exists
 
@@ -65,6 +65,13 @@ The well-structured substrate IS the message the SMB sends to its implementation
 - Container packaging (per [[zero-container-runtime]]).
 - Editor lock-in (single-editor-only features rejected).
 - Marketing vocabulary in research files (research files describe structural rationale, not product positioning).
+
+## See also
+
+- [[design-primitive-vocabulary]] — the token vocabulary layer: numeric color scales, semantic aliasing, and PointSav-original naming rationale
+- [[design-system-substrate]] — the substrate architecture: Git-tracked vault, MCP endpoint, and multi-tenant override structure
+- [[wiki-component-library]] — nine wiki components built on this token system
+- [[app-mediakit-knowledge]] — the wiki engine that renders the design system's public showcase surface
 
 ## References
 

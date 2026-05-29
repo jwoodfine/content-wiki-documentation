@@ -14,7 +14,7 @@ paired_with: wiki-dark-mode.md
 
 # Modo oscuro del wiki
 
-El wiki de PointSav admite esquemas de color claro y oscuro. El modo oscuro reduce la fatiga visual en entornos con poca luz y es preferido por una proporción significativa de lectores. Este artículo describe la implementación: cómo se establece el tema, cómo se conserva entre sesiones y cómo se alterna, junto con la paleta de colores completa para cada modo.
+El [[app-mediakit-knowledge|wiki de PointSav]] admite esquemas de color claro y oscuro mediante [[design-system-substrate|tokens semánticos]] del sistema de diseño de la plataforma. El modo oscuro reduce la fatiga visual en entornos con poca luz y es preferido por una proporción significativa de lectores. Este artículo describe la implementación: cómo se establece el tema, cómo se conserva entre sesiones y cómo se alterna, junto con la paleta de colores completa para cada modo.
 
 ---
 
@@ -93,6 +93,6 @@ Todos los pares de colores del modo oscuro superan el nivel AAA de WCAG 2.1, ver
 
 ## Véase también
 
-- [[wiki-component-library]]
-- [[wiki-typography-system]]
-- [[design-system-substrate]]
+- [[wiki-component-library]] — los nueve componentes que consumen estas anulaciones de tokens del modo oscuro
+- [[wiki-typography-system]] — la pila tipográfica que se combina con estos ajustes de color
+- [[design-system-substrate]] — la bóveda de tokens donde se definen y versionan los valores de tokens semánticos

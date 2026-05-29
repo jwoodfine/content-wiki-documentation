@@ -14,7 +14,7 @@ paired_with: wiki-component-library.es.md
 
 # Wiki component library
 
-The PointSav wiki component library defines nine reusable interface units that together render a complete wiki article page. Each component targets Wikipedia's established layout conventions while applying current accessibility standards and the PointSav token system.
+The PointSav wiki component library defines nine reusable interface units that together render a complete wiki article page in the [[app-mediakit-knowledge]] wiki engine. Each component targets Wikipedia's established layout conventions — following the [[wikipedia-leapfrog-design|leapfrog design philosophy]] — while applying current accessibility standards and the [[design-system-substrate|PointSav token system]].
 
 ---
 
@@ -122,8 +122,9 @@ All nine components draw exclusively from the PointSav token system defined in `
 
 ---
 
-## See Also
+## See also
 
-- [[wiki-dark-mode]]
-- [[wiki-typography-system]]
-- [[design-system-substrate]]
+- [[wiki-dark-mode]] — light and dark colour schemes with WCAG-verified palettes and theme persistence
+- [[wiki-typography-system]] — IBM Plex Sans and IBM Plex Mono type stack used across these components
+- [[design-system-substrate]] — the token and component vault these nine components draw from
+- [[app-mediakit-knowledge]] — the wiki engine that composes these components into rendered article pages

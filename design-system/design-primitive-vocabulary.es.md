@@ -19,7 +19,7 @@ cites:
  - doctrine-38
 ---
 
-La capa de tokens primitivos del sistema de diseño documenta qué patrones estructurales ha consolidado el campo desde 2018, cuáles preserva el sustrato de forma literal y cuáles reemplaza con vocabulario y valores originales de PointSav. La distinción es relevante para los profesionales que llegan de otros sistemas de diseño: los patrones estructurales compartidos generan reconocimiento inmediato; los nombres y valores originales de PointSav evitan cualquier conflicto de propiedad intelectual con los sistemas de los que se tomaron referencias.
+La capa de tokens primitivos del [[design-system-substrate|sistema de diseño]] documenta qué patrones estructurales ha consolidado el campo desde 2018, cuáles preserva el sustrato de forma literal y cuáles reemplaza con vocabulario y valores originales de PointSav. La distinción es relevante para los profesionales que llegan de otros sistemas de diseño: los patrones estructurales compartidos generan reconocimiento inmediato; los nombres y valores originales de PointSav evitan cualquier conflicto de propiedad intelectual con los sistemas de los que se tomaron referencias. La justificación arquitectónica del sustrato está en [[design-philosophy|la filosofía del sistema de diseño]].
 
 La capa de tokens primitivos del sustrato preserva cuatro patrones estructurales en los que el campo moderno de sistemas de diseño ha convergido (2018–2026): escalas de color numéricas, capas primitivo → semántico → componente, la división de tipografía productiva vs expresiva, y escalas de espaciado numéricas de ~12–15 pasos.
 
@@ -39,4 +39,6 @@ Un token nombrado por familia cromática con los valores exactos de un proveedor
 
 ## Véase también
 
-- [[design-philosophy]]
+- [[design-philosophy]] — las tres inversiones estructurales que motivan las decisiones de diseño del sustrato
+- [[wiki-typography-system]] — la pila tipográfica IBM Plex construida sobre estas convenciones de tokens
+- [[wiki-component-library]] — nueve componentes del wiki que consumen las capas de tokens descritas aquí

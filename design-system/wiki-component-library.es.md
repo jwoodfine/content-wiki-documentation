@@ -14,7 +14,7 @@ paired_with: wiki-component-library.md
 
 # Biblioteca de componentes del wiki
 
-La biblioteca de componentes del wiki de PointSav define nueve unidades de interfaz reutilizables que, en conjunto, renderizan una página completa de artículo wiki. Cada componente sigue las convenciones de disposición establecidas por Wikipedia, aplicando estándares de accesibilidad actuales y el sistema de tokens de PointSav.
+La biblioteca de componentes del wiki de PointSav define nueve unidades de interfaz reutilizables que, en conjunto, renderizan una página completa de artículo wiki en el motor [[app-mediakit-knowledge]]. Cada componente sigue las convenciones de disposición establecidas por Wikipedia — conforme a la [[wikipedia-leapfrog-design|filosofía de diseño leapfrog]] — aplicando estándares de accesibilidad actuales y el [[design-system-substrate|sistema de tokens de PointSav]].
 
 ---
 
@@ -118,6 +118,7 @@ Los nueve componentes usan exclusivamente el sistema de tokens de PointSav defin
 
 ## Véase también
 
-- [[wiki-dark-mode]]
-- [[wiki-typography-system]]
-- [[design-system-substrate]]
+- [[wiki-dark-mode]] — esquemas de color claro y oscuro con paletas verificadas según WCAG y persistencia de tema
+- [[wiki-typography-system]] — la pila tipográfica IBM Plex Sans e IBM Plex Mono utilizada en estos componentes
+- [[design-system-substrate]] — la bóveda de tokens y componentes de la que se nutren estos nueve componentes
+- [[app-mediakit-knowledge]] — el motor wiki que compone estos componentes en páginas de artículos renderizadas

@@ -16,7 +16,7 @@ editor: pointsav-engineering
 
 
 
-La plataforma establece una separación estricta entre la interfaz web y los documentos impresos institucionales. Las capas web utilizan fuentes nativas del sistema para reducir la latencia; la tipografía de marca se reserva para la generación de PDF y documentos formales. Todas las tipografías están bajo la Licencia de Fuentes Abiertas SIL (OFL, por sus siglas en inglés), lo que garantiza el cumplimiento del principio de Paquete de Resolución de Activos Digitales (DARP) — el requisito de la plataforma de que todos los activos embebidos sean libremente distribuibles.
+La plataforma establece una separación estricta entre la interfaz web y los documentos impresos institucionales. Las capas web utilizan fuentes nativas del sistema para reducir la latencia; la tipografía de marca se reserva para la generación de PDF y documentos formales mediante [[service-content]]. Todas las tipografías están bajo la Licencia de Fuentes Abiertas SIL (OFL, por sus siglas en inglés), lo que garantiza el cumplimiento del principio de Paquete de Resolución de Activos Digitales (DARP) — el requisito de la plataforma de que todos los activos embebidos sean libremente distribuibles.
 
 ## Estándares de tipografía (OFL)
 

@@ -14,7 +14,7 @@ paired_with: wiki-typography-system.md
 
 # Sistema tipográfico del wiki
 
-El sistema tipográfico del wiki de PointSav usa IBM Plex Sans para la prosa principal e IBM Plex Mono para el código y la notación técnica. Este artículo explica la elección tipográfica, la escala de encabezados, los tokens de espaciado y cómo el sistema logra una cobertura lingüística amplia para el contenido bilingüe (inglés/español).
+El sistema tipográfico del [[app-mediakit-knowledge|wiki de PointSav]] usa IBM Plex Sans para la prosa principal e IBM Plex Mono para el código y la notación técnica, construido sobre [[design-system-substrate|el sistema de tokens de la plataforma]] conforme a las [[design-primitive-vocabulary|convenciones del vocabulario primitivo]]. Este artículo explica la elección tipográfica, la escala de encabezados, los tokens de espaciado y cómo el sistema logra una cobertura lingüística amplia para el contenido bilingüe (inglés/español).
 
 ---
 
@@ -85,6 +85,6 @@ Todos los valores son propiedades personalizadas CSS definidas en `:root` dentro
 
 ## Véase también
 
-- [[wiki-component-library]]
-- [[wiki-dark-mode]]
-- [[design-system-substrate]]
+- [[wiki-component-library]] — los nueve componentes que utilizan esta pila tipográfica
+- [[wiki-dark-mode]] — el sistema de esquemas de color que se combina con estos tokens tipográficos
+- [[design-system-substrate]] — la bóveda de tokens donde se definen las variables de pila tipográfica y escala
