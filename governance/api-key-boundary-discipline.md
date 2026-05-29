@@ -15,7 +15,7 @@ cites:
 paired_with: api-key-boundary-discipline.es.md
 ---
 
-In a platform that routes inference requests through multiple compute tiers, the single most consequential security discipline is also one of the simplest to state: API keys belong at the gateway, never at the inference engine. This TOPIC explains the rule, its structural rationale, and how it applies across every deployment tier in the PointSav substrate.
+In a platform that routes inference requests through multiple compute tiers, the single most consequential security discipline is also one of the simplest to state: API keys belong at the gateway, never at the inference engine. This TOPIC explains the rule, its structural rationale, and how it applies across every deployment tier in the PointSav [[three-ring-architecture|substrate]].
 
 ## The rule
 
@@ -37,7 +37,7 @@ Three structural properties follow from holding this discipline:
 
 The discipline applies consistently across every deployment shape:
 
-**Self-hosted Totebox (customer deployment).** The customer's local Doorman holds external LLM keys and, optionally, a subscription key for cloud-hosted model tiers. The local inference engine holds nothing. Customer keys never travel to the vendor.
+**Self-hosted [[totebox-os|Totebox]] (customer deployment).** The customer's local [[doorman-protocol|Doorman]] holds external LLM keys and, optionally, a subscription key for cloud-hosted model tiers. The local inference engine holds nothing. Customer keys never travel to the vendor.
 
 **Cloud-burst workers.** When a request routes to a GPU worker in a cloud provider's infrastructure, the worker holds no external API credentials. Authentication between the cloud-burst tier and any external provider is handled by the gateway that dispatched the request.
 
@@ -58,7 +58,7 @@ API keys for LLM providers are runtime credentials — they change on rotation, 
 
 ## Audit and compliance
 
-The gateway boundary, combined with a per-tenant audit ledger and a purpose allowlist, produces a cryptographic audit trail over every external inference call. This structure satisfies SOC 2 Processing Integrity requirements and ISAE 3402 chain-of-custody principles by construction rather than by periodic attestation. The customer's own per-tenant ledger covers the customer's calls; the vendor's ledger covers the vendor's calls; the two never intermingle.
+The [[doorman-protocol|gateway]] boundary, combined with a per-tenant [[worm-ledger-design|audit ledger]] and a purpose allowlist, produces a cryptographic audit trail over every external inference call. This structure satisfies SOC 2 Processing Integrity requirements and ISAE 3402 chain-of-custody principles by construction rather than by periodic attestation. The customer's own per-tenant ledger covers the customer's calls; the vendor's ledger covers the vendor's calls; the two never intermingle.
 
 ## See also
 

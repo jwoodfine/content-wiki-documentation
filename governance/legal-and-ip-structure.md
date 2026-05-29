@@ -45,7 +45,7 @@ The most distinctive legal mechanic is how intellectual property moves from a co
 | Execution | Production host | Deploy | The customer's licensed copy runs in production |
 | Reset | Contributor | Trunk-based rebase | The contributor's local environment is wiped to match the vendor's verified standard, ready for the next cycle |
 
-Squash-and-merge does the legal work because it rewrites history. The contributor's experimental commits, prototype attempts, and abandoned approaches do not survive into the corporate ledger. What survives is a single clean commit owned by PointSav and signed by the system administrator.
+Squash-and-merge does the legal work because it rewrites history. The contributor's experimental commits, prototype attempts, and abandoned approaches do not survive into the corporate ledger. What survives is a single clean commit owned by PointSav and signed by the system administrator — consistent with the [[canadian-simple-copyright|first-ownership posture]] under Canadian Copyright Act § 13(3).
 
 ## The double-blind air-gap
 
@@ -61,7 +61,7 @@ PointSav (the vendor org on GitHub) is the only entity that sees both contributo
 
 ## Contributor assignment protocol
 
-For paid contributors, the binding contract for a specific assignment is a handwritten note, not a digital ticket. The protocol enforces a deliberate, physical record of who agreed to what and when — an authority-of-assignment record that satisfies the documentation requirements of fiduciary and personnel-risk governance.
+For paid contributors, the binding contract for a specific assignment is a handwritten note, not a digital ticket. The protocol enforces a deliberate, physical record of who agreed to what and when — an authority-of-assignment record that satisfies the documentation requirements of fiduciary and personnel-risk governance. The full contributor taxonomy is described in the [[contributor-model]].
 
 A handwritten note is harder to forge, harder to lose, and clearer in its intent than a digital tracking entry or a messaging-platform thread.
 
@@ -77,7 +77,7 @@ Strategic and fiduciary decisions are escalated outside the routine contributor 
 
 ## License strategy (intended)
 
-The intended licensing pattern follows an open-core model. All licensing targets are planned and subject to the BCSC continuous-disclosure posture [ni-51-102] [osc-sn-51-721]:
+The intended licensing pattern follows an open-core model. All licensing targets are planned and subject to the [[bcsc-disclosure-posture|BCSC continuous-disclosure posture]] [ni-51-102] [osc-sn-51-721]:
 
 | Component | Planned licence |
 |---|---|

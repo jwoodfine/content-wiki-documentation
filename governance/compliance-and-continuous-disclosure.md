@@ -31,7 +31,7 @@ Compliance and continuous disclosure describes the regulatory frameworks the Poi
 
 The limitation of point-in-time auditing is architectural: a certificate issued after a six-month assessment window is accurate for that window and potentially inaccurate at every subsequent moment. For customers managing regulated records — Reporting Issuers, medical practitioners, legal professionals — the gap between assessment and current posture is a liability.
 
-The PointSav substrate approaches this by placing controls at a level where they cannot be administratively bypassed: if a control can be turned off by an administrator, it is a policy. If it cannot be turned off, it is an architectural guarantee. The intended approach moves controls from the policy layer to the system tier — below the operating system — so that the audit trail is not a feature that was enabled but a structural property that was never absent. [^1]
+The PointSav substrate approaches this by placing controls at a level where they cannot be administratively bypassed: if a control can be turned off by an administrator, it is a policy. If it cannot be turned off, it is an architectural guarantee. The intended approach moves controls from the policy layer to the system tier — below the operating system — so that the [[worm-ledger-architecture|audit trail]] is not a feature that was enabled but a structural property that was never absent. [^1]
 
 ## Compliance frameworks the architecture addresses
 
@@ -71,7 +71,7 @@ When the planned dashboard is realised, it is intended to expose three machine-r
 |---|---|
 | Hardware Bill of Materials (HBOM) | Every hardware component in the customer's [[os-workplace|os-workplace]] reference profile |
 | Software Bill of Materials (SBOM) | Every dependency used in the customer's deployed substrate |
-| Real-Time Audit Log | The current operational heartbeat of the [[diode-standard|Diode Standard]], intended to be queryable on demand by the customer's own risk-management systems |
+| Real-Time Audit Log | The current operational heartbeat of the [[diode-standard|Diode Standard]], anchored via [[fs-anchor-emitter|cryptographic checkpoints]], intended to be queryable on demand by the customer's own risk-management systems |
 
 All three are planned outputs; the intended delivery timeframe is not published here. Any specific availability date is a forward-looking statement subject to the BCSC continuous-disclosure posture.
 
@@ -93,7 +93,7 @@ A `_PUB` file is treated as signed and immutable. A `_JW` file is in flight and 
 
 PointSav operates inside a Canadian regulatory frame. The British Columbia Securities Commission requires that forward-looking statements carry appropriate cautionary language and that claims about current compliance accurately reflect the current state.
 
-Every public document the platform publishes — including this article — applies the following discipline: planned and intended language for controls not yet deployed; no claims of current certification without operator confirmation; all references to the Sovereign Data Foundation in planned and intended terms only, until operator clearance for a different classification.
+Every public document the platform publishes — including this article — applies the [[bcsc-disclosure-posture|following discipline]]: planned and intended language for controls not yet deployed; no claims of current certification without operator confirmation; all references to the Sovereign Data Foundation in planned and intended terms only, until operator clearance for a different classification.
 
 ## See also
 

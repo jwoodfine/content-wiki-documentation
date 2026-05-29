@@ -18,7 +18,7 @@ paired_with: anti-homogenization-discipline.es.md
 
 > Anti-homogenization discipline is the architectural posture that resists AI writing assistants pulling contributors toward a single voice, by defaulting to flagging potential issues rather than silently rewriting text.
 
-Most AI writing assistants silently coerce their users toward a single voice. Cornell research (arXiv 2409.11360, 2024) found that AI suggestions push non-Western writers toward Western register at higher rates, with smaller productivity gains because the writers spend additional time correcting the AI's drift away from their authentic voice. **Anti-homogenization discipline** is the architectural posture that resists this drift explicitly.
+Most AI writing assistants silently coerce their users toward a single voice. Cornell research (arXiv 2409.11360, 2024) found that AI suggestions push non-Western writers toward Western register at higher rates, with smaller productivity gains because the writers spend additional time correcting the AI's drift away from their authentic voice. **Anti-homogenization discipline** is the architectural posture that resists this drift explicitly, operating alongside the [[language-protocol-substrate]] that governs editorial task routing.
 
 A writing assistant trained centrally on a homogeneous corpus will, on average, suggest edits that move text toward that corpus's centroid. For users whose voice already sits at the centroid, the assistant is helpful. For users whose voice does not, the assistant is a constant force pulling them toward someone else's voice — usually the voice of the speaker with the largest training-data presence.
 
@@ -43,7 +43,7 @@ A user who explicitly requests "rewrite this in Bloomberg register" gets a rewri
 
 ## Per-tenant adapters preserve voice
 
-The platform's adapter-composition algebra separates the per-tenant adapter from the protocol adapter. The per-tenant adapter trains on the customer's own corpus inside the customer's own substrate. It learns the customer's voice — the words they use, the sentence rhythms they favour, the register they default to.
+The platform's adapter-composition algebra separates the per-tenant adapter from the protocol adapter. The per-tenant adapter trains on the customer's own corpus inside the customer's own [[totebox-os|substrate]]. It learns the customer's voice — the words they use, the sentence rhythms they favour, the register they default to.
 
 When the protocol adapter (PROSE / COMMS / LEGAL / TRANSLATE) composes with the per-tenant adapter at request time, the output reflects both: the genre conventions of the protocol and the voice of the tenant. A README authored by the platform inside Customer A's substrate sounds like Customer A; the same README authored inside Customer B's substrate sounds like Customer B.
 

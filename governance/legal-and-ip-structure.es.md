@@ -45,7 +45,7 @@ El mecanismo legal más distintivo es cómo la propiedad intelectual se transfie
 | Ejecución | Host de producción | Despliegue | La copia con licencia del cliente se ejecuta en producción |
 | Reinicio | Contribuyente | Rebase basado en trunk | El entorno local del contribuyente se limpia para coincidir con el estándar verificado del proveedor, listo para el siguiente ciclo |
 
-El squash-and-merge realiza el trabajo legal porque reescribe el historial. Los commits experimentales, los intentos de prototipo y los enfoques abandonados del contribuyente no sobreviven en el libro de registros corporativo. Lo que sobrevive es un único commit limpio propiedad de PointSav y firmado por el administrador del sistema.
+El squash-and-merge realiza el trabajo legal porque reescribe el historial. Los commits experimentales, los intentos de prototipo y los enfoques abandonados del contribuyente no sobreviven en el libro de registros corporativo. Lo que sobrevive es un único commit limpio propiedad de PointSav y firmado por el administrador del sistema — conforme a la [[canadian-simple-copyright|postura de primer-titular]] bajo § 13(3) de la Ley de Derechos de Autor canadiense.
 
 ## La barrera de doble ciego
 
@@ -61,7 +61,7 @@ PointSav (la organización proveedora en GitHub) es la única entidad que ve tan
 
 ## Protocolo de asignación para contribuyentes
 
-Para los contribuyentes pagados, el contrato vinculante para una asignación específica es una nota manuscrita, no un ticket digital. El protocolo aplica un registro físico y deliberado de quién acordó qué y cuándo — un registro de autoridad de asignación que satisface los requisitos de documentación de la gobernanza fiduciaria y de gestión de riesgos de personal.
+Para los contribuyentes pagados, el contrato vinculante para una asignación específica es una nota manuscrita, no un ticket digital. El protocolo aplica un registro físico y deliberado de quién acordó qué y cuándo — un registro de autoridad de asignación que satisface los requisitos de documentación de la gobernanza fiduciaria y de gestión de riesgos de personal. La taxonomía completa de contribuyentes se describe en el [[contributor-model|modelo de contribuyentes]].
 
 Una nota manuscrita es más difícil de falsificar, más difícil de perder y más clara en su intención que una entrada de seguimiento digital o un hilo de mensajería.
 
@@ -77,7 +77,7 @@ Las decisiones estratégicas y fiduciarias se escalan fuera del nivel de contrib
 
 ## Estrategia de licencias (prevista)
 
-La estrategia de licencias prevista sigue un modelo de núcleo abierto. Todos los objetivos de licencias son previstos y están sujetos a la postura de divulgación continua de la BCSC [ni-51-102] [osc-sn-51-721]:
+La estrategia de licencias prevista sigue un modelo de núcleo abierto. Todos los objetivos de licencias son previstos y están sujetos a la [[bcsc-disclosure-posture|postura de divulgación continua de la BCSC]] [ni-51-102] [osc-sn-51-721]:
 
 | Componente | Licencia planificada |
 |---|---|

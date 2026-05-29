@@ -30,13 +30,13 @@ The PointSav platform is too broad for any single team to maintain and too valua
 
 The Core tier owns workspace documents, doctrine amendments, conventions, and the citations registry. Architectural decisions flow through this tier. Apprentice-mode oversight — the senior review function in the apprenticeship substrate — for new model versions and new contributors lives here.
 
-This tier is small by design. Three architectural primitives keep it tractable: the substrate is operationally self-sufficient enough that customer breakouts do not require Core handholding; the Trajectory Substrate makes the substrate self-documenting; and the Adapter Composition Algebra makes operational personality composable rather than person-dependent.
+This tier is small by design. Three architectural primitives keep it tractable: the substrate is operationally self-sufficient enough that customer breakouts do not require Core handholding; the [[trajectory-substrate|Trajectory Substrate]] makes the substrate self-documenting; and the [[adapter-composition|Adapter Composition Algebra]] makes operational personality composable rather than person-dependent.
 
 ### Paid
 
 Project-tier engineering work, paid by PointSav, executed via GitHub pull requests against the public substrate repositories. Engineering work in `pointsav-monorepo/` and the per-project cluster paths. Multi-tenant aggregation services. Per-jurisdiction export adapters. LoRA adapter authoring. Customer-specific deployment provisioning and integration.
 
-The 50–100 band is the size where individual contributor reputation can be tracked through the Trajectory Substrate's attribution, per-deliverable contracting is tractable without enterprise procurement bureaucracy, and revenue from multi-tenant aggregation services can sustain the headcount without venture-scale capital.
+The 50–100 band is the size where individual contributor reputation can be tracked through the [[trajectory-substrate|Trajectory Substrate's attribution]], per-deliverable contracting is tractable without enterprise procurement bureaucracy, and revenue from multi-tenant aggregation services can sustain the headcount without venture-scale capital.
 
 ### Open
 
@@ -52,7 +52,7 @@ The Open tier is what makes the substrate self-sustaining at a scale that 4–7 
 
 The model is not caste-bound. Three mobility paths operate:
 
-- **Open to Paid.** A contributor whose recurring work shows operational quality is offered Paid contracts. Reputation derives from the Trajectory Substrate's attribution — how much each contributor's work shapes downstream recommendations.
+- **Open to Paid.** A contributor whose recurring work shows operational quality is offered Paid contracts. Reputation derives from the [[apprenticeship-substrate|Trajectory Substrate's attribution]] — how much each contributor's work shapes downstream recommendations.
 - **Paid to Core.** Rare; requires alignment with PointSav's long-term substrate stewardship and senior operational trust.
 - **Anyone can fork, leave, and operate their own substrate.** The Designed-for-Breakout property applies at the contributor level: a contributor can take their work, their adapters, and their tenant data and operate independently. The substrate does not lock contributors any more than it locks customers.
 
@@ -62,9 +62,9 @@ Naïve calculation: 4–7 employees plus 50–100 contractors plus 10,000-plus o
 
 Three architectural primitives make it real:
 
-1. The Trajectory Substrate makes contributor reputation cryptographically attributable, so Open-tier reputation can compound into Paid-tier eligibility without procurement bureaucracy.
-2. The Adapter Composition Algebra lets individual contributors ship adapters without owning the whole substrate.
-3. The Designed-for-Breakout property keeps the contributor relationship voluntary — no contributor is locked in, which means contributors participate because the substrate serves their interests, not because they cannot leave.
+1. The [[trajectory-substrate|Trajectory Substrate]] makes contributor reputation cryptographically attributable, so Open-tier reputation can compound into Paid-tier eligibility without procurement bureaucracy.
+2. The [[adapter-composition|Adapter Composition Algebra]] lets individual contributors ship adapters without owning the whole substrate.
+3. The [[customer-hostability|Designed-for-Breakout]] property keeps the contributor relationship voluntary — no contributor is locked in, which means contributors participate because the substrate serves their interests, not because they cannot leave.
 
 ## Forward-looking — scaling the Open tier
 
@@ -82,7 +82,8 @@ It is not a venture-scale labour model. The 50–100 Paid tier sustains on multi
 
 ## See also
 
-- [[compounding-substrate]]
-- [[apprenticeship-substrate]]
-- [[customer-hostability]]
-- [[canadian-simple-copyright]]
+- [[compounding-substrate]] — the substrate architecture that open contributors extend and improve
+- [[apprenticeship-substrate]] — corpus capture and attribution pipeline that tracks contributor reputation
+- [[trajectory-substrate]] — cryptographic attribution substrate that makes Open-to-Paid mobility tractable
+- [[customer-hostability]] — the breakout property that keeps contributor participation voluntary
+- [[canadian-simple-copyright]] — IP ownership posture governing work produced under the Paid and Core tiers

@@ -19,7 +19,7 @@ paired_with: bcsc-disclosure-posture.md
 
 ## Resumen estratégico
 
-La postura de divulgación continua trata cada artefacto publicado en un repositorio público — documentación, notas de lanzamiento, archivos README, entradas de changelog, temas de wiki — como potencialmente revisable bajo las obligaciones canadienses de divulgación continua de valores, independientemente de si alguna entidad afiliada es actualmente un emisor reportante. Operar esta disciplina en todo momento significa que no se requiere adaptación retroactiva si el estatus de reporte cambia.
+La postura de divulgación continua trata cada artefacto publicado en un repositorio público — documentación, notas de lanzamiento, archivos README, entradas de changelog, [[disclosure-substrate|temas de wiki]] — como potencialmente revisable bajo las obligaciones canadienses de divulgación continua de valores, independientemente de si alguna entidad afiliada es actualmente un emisor reportante. Operar esta disciplina en todo momento significa que no se requiere adaptación retroactiva si el estatus de reporte cambia.
 
 ## Las cinco reglas operativas
 
@@ -27,7 +27,7 @@ La postura de divulgación continua trata cada artefacto publicado en un reposit
 
 **Regla 2 — Las afirmaciones de gobernanza de terceros están documentadas antes de nombrarse.** Una parte solo se nombra como titular de una posición de gobernanza cuando esa posición está documentada y es actual.
 
-**Regla 3 — Los cambios materiales se evidencian a través del historial de versiones.** Los cambios significativos se comprometen con commits firmados con marca de tiempo y entradas de changelog adecuadas para revisión legal.
+**Regla 3 — Los cambios materiales se evidencian a través del historial de versiones.** Los cambios significativos se comprometen con [[worm-ledger-design|commits firmados con marca de tiempo]] y entradas de changelog adecuadas para revisión legal.
 
 **Regla 4 — La publicación en un repositorio público es divulgación pública.** Todo lo que se envía a un repositorio público se trata como material publicado en el momento del envío.
 
@@ -39,4 +39,6 @@ La postura aplica a todos los archivos Markdown publicados, todos los mensajes d
 
 ## Véase también
 
-- [[citation-substrate]]
+- [[citation-substrate]] — el grafo de citas que hace legible para las máquinas el fundamento regulatorio
+- [[disclosure-substrate]] — arquitectura de comunicaciones salientes sujeta a esta postura
+- [[worm-ledger-design]] — libro mayor inmutable que preserva el historial de versiones que exige la Regla 3

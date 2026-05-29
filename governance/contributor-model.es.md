@@ -38,16 +38,13 @@ Posee documentos del *workspace*, enmiendas a la doctrina,
 convenciones y el registro de citaciones. Las decisiones
 arquitectónicas fluyen por este nivel. Pequeño por diseño;
 tres primitivas arquitectónicas lo mantienen tratable: el
-sustrato es lo bastante auto-suficiente operativamente, el
-sustrato de trayectoria lo hace auto-documentado, y el álgebra
-de composición de adaptadores hace la personalidad operativa
+sustrato es lo bastante auto-suficiente operativamente, el [[trajectory-substrate|sustrato de trayectoria]] lo hace auto-documentado, y el [[adapter-composition|álgebra de composición de adaptadores]] hace la personalidad operativa
 componible en vez de dependiente de la persona.
 
 ### Pagado
 
 50-100 es la banda donde la reputación de cada contribuyente
-puede rastrearse mediante la atribución del sustrato de
-trayectoria, los contratos por entregable son tratables
+puede rastrearse mediante la [[trajectory-substrate|atribución del sustrato de trayectoria]], los contratos por entregable son tratables
 operativamente sin burocracia de aprovisionamiento empresarial,
 y los ingresos por servicios de agregación multi-inquilino
 pueden sostener la nómina sin capital de escala VC.
@@ -83,10 +80,10 @@ un equipo de plataforma a escala de hiperescalador
 (~1.000+) a aproximadamente el 5% del costo de nómina.
 
 Es la ventaja estructural. Tres primitivas la hacen real: la
-atribución criptográfica de la reputación de contribuyente, el
-álgebra de composición de adaptadores que permite enviar
-adaptadores sin poseer todo el sustrato, y la propiedad
-*Designed-for-Breakout* que mantiene voluntaria la relación.
+[[apprenticeship-substrate|atribución criptográfica de la reputación]] de contribuyente, el
+[[adapter-composition|álgebra de composición de adaptadores]] que permite enviar
+adaptadores sin poseer todo el sustrato, y la [[customer-hostability|propiedad
+*Designed-for-Breakout*]] que mantiene voluntaria la relación.
 
 ## Qué no es este modelo
 
@@ -99,8 +96,8 @@ de agregación multi-inquilino sin capital de escala VC.
 
 ## Véase también
 
-- [[contributor-model]]
-- [[compounding-substrate]]
-- [[apprenticeship-substrate]]
-- [[customer-hostability]]
-- [[canadian-simple-copyright]]
+- [[compounding-substrate]] — la arquitectura de sustrato que los contribuyentes abiertos extienden y mejoran
+- [[apprenticeship-substrate]] — cartera de corpus y atribución que rastrea la reputación del contribuyente
+- [[trajectory-substrate]] — sustrato de atribución criptográfica que hace tratable la movilidad Abierto→Pagado
+- [[customer-hostability|Hospedaje por el cliente]] — la propiedad de separación que mantiene voluntaria la participación del contribuyente
+- [[canadian-simple-copyright|Derechos de autor canadienses]] — postura de propiedad intelectual que gobierna el trabajo del nivel Pagado y Núcleo

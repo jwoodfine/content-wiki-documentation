@@ -63,7 +63,7 @@ hay uso inter-empresa que documentar.
 La postura depende de:
 
 - **Solo contribuyentes empleados.** Cada contribuyente que crea
- PI es empleado bona fide de WCP Inc. en nómina T4. Los
+ PI es empleado bona fide de WCP Inc. en nómina T4 conforme al [[contributor-model|modelo de contribución]]. Los
  contratistas independientes retienen los derechos de autor
  por defecto bajo la ley canadiense y requerirían cesión
  escrita bajo § 13(4).
@@ -81,7 +81,7 @@ La postura depende de:
 La postura se actualiza cuando ocurre cualquiera de los
 siguientes: primer empleado no-fundador / no-oficial; primera
 contribución de contratista al trabajo en alcance; primer
-ingreso externo usando PI de WCP; estado de emisor reportante
+ingreso externo usando PI de WCP; [[bcsc-disclosure-posture|estado de emisor reportante]]
 bajo BCSC NI 51-102; incorporación de PointSav Digital Systems
 Inc. (manejada al rollover, Ley del Impuesto sobre la Renta
 § 85); cualquier uso inter-empresa de PI entre WCP y una
@@ -99,7 +99,7 @@ también una transacción de un solo evento.
 
 ## Véase también
 
-- [Documento canónico en inglés](topic-canadian-simple-copyright.md)
-- El complemento operativo en
- `factory-release-engineering/README.md` §6
-- [Hospedaje por el cliente](topic-customer-hostability.md)
+- [[customer-hostability|Hospedaje por el cliente]] — la postura de soberanía de datos del cliente que esta estructura de derechos de autor habilita
+- [[contributor-model|Modelo de contribución]] — quién puede contribuir trabajo creador de PI y bajo qué condiciones
+- [[bcsc-disclosure-posture|Postura de divulgación continua]] — la disciplina de divulgación paralela que aplica junto con la gobernanza de derechos de autor
+- [[sovereign-replacement-initiative|Iniciativa de reemplazo soberano]] — el programa de independencia de proveedores cuya PI se gobierna aquí

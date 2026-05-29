@@ -18,7 +18,7 @@ paired_with: api-key-boundary-discipline.md
 
 ## Resumen estratégico
 
-La disciplina de límite para claves de API establece una regla fundamental en el diseño de plataformas de inteligencia artificial: las credenciales de proveedores externos pertenecen exclusivamente al servicio de pasarela (Doorman), nunca a los motores de inferencia. Esta disciplina aplica a todos los niveles de implementación, desde appliances autohospedados hasta trabajadores de cómputo en la nube.
+La disciplina de límite para claves de API establece una regla fundamental en el diseño de plataformas de inteligencia artificial: las credenciales de proveedores externos pertenecen exclusivamente al servicio de pasarela ([[doorman-protocol|Doorman]]), nunca a los motores de inferencia. Esta disciplina aplica a todos los niveles de implementación, desde appliances autohospedados hasta trabajadores de cómputo en la nube.
 
 ## Principio central
 
@@ -28,7 +28,7 @@ Cualquier proceso que ejecute inferencia de modelos — sea local en hardware de
 
 Tres propiedades estructurales justifican la regla:
 
-**Completitud de auditoría.** Toda llamada a la API pasa por el punto límite de la pasarela. Un ledger de auditoría por tenant puede capturar proveedor, propósito, volumen de tokens y costo en un único punto de control. Las rutas alternativas que evitan la pasarela generan gasto que no puede atribuirse ni auditarse.
+**Completitud de auditoría.** Toda llamada a la API pasa por el punto límite de la pasarela. Un [[worm-ledger-design|ledger de auditoría]] por tenant puede capturar proveedor, propósito, volumen de tokens y costo en un único punto de control. Las rutas alternativas que evitan la pasarela generan gasto que no puede atribuirse ni auditarse.
 
 **Aplicación de listas de permitidos.** Restringir las llamadas de inferencia a un conjunto definido de propósitos requiere un único punto de aplicación. Una pasarela que recibe todas las solicitudes puede aplicar la lista de permitidos; los motores de inferencia distribuidos entre múltiples nodos de cómputo no pueden.
 

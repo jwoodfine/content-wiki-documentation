@@ -16,7 +16,7 @@ cites:
 paired_with: bcsc-disclosure-posture.es.md
 ---
 
-Every artifact published to a public repository — documentation, release notes, README files, changelog entries, wiki topics — is treated as potentially reviewable under Canadian securities continuous-disclosure obligations, regardless of whether any affiliated entity is currently a reporting issuer. Operating this discipline at all times means no retrofit is required if reporting status changes.
+Every artifact published to a public repository — documentation, release notes, README files, changelog entries, [[disclosure-substrate|wiki topics]] — is treated as potentially reviewable under Canadian securities continuous-disclosure obligations, regardless of whether any affiliated entity is currently a reporting issuer. Operating this discipline at all times means no retrofit is required if reporting status changes.
 
 This TOPIC describes the five operating rules, how they manifest in published content, and why the compliance takes the form of practice rather than declaration.
 
@@ -43,7 +43,7 @@ A party is named as holding a governance position only when that position is doc
 
 ### Rule 3 — Material changes are surfaced through the version record
 
-Significant doctrinal changes, adapter version releases, and any change that could be material to a reporting issuer are committed with date-stamped, signed commits and changelog entries suitable for legal review. The versioning discipline — one changelog line per patch, one section per minor release, one chapter per major release — ensures no information is lost in squashes. A regulator reviewing the commit history can reconstruct what changed, when, and why.
+Significant doctrinal changes, adapter version releases, and any change that could be material to a reporting issuer are committed with date-stamped, signed commits and changelog entries suitable for legal review. The versioning discipline — one changelog line per patch, one section per minor release, one chapter per major release — ensures no information is lost in squashes. A regulator reviewing the [[worm-ledger-design|commit history]] can reconstruct what changed, when, and why.
 
 ### Rule 4 — Publication to a public repository is public disclosure
 
@@ -72,3 +72,5 @@ A sixth element of this posture — introduced alongside a citation substrate co
 ## See also
 
 - [[citation-substrate]] — the citation graph that makes regulatory grounding machine-readable
+- [[disclosure-substrate]] — outbound communications architecture that publishes content subject to this posture
+- [[worm-ledger-design]] — immutable append-only ledger that preserves the version record Rule 3 requires

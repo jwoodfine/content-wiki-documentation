@@ -33,11 +33,12 @@ Two marks are in use across all platform-served pages:
 | Mark | Colour | Shape | Identifies |
 |---|---|---|---|
 | Vendor | Steel blue (`#869FB9`) | Square | PointSav-served properties: documentation, design system, vendor-side wikis. |
-| Customer | Woodfine blue (`#164679`) | Circle | Woodfine-served properties: project portfolios, corporate disclosures, customer-side wikis. |
+| Customer | Woodfine blue (`#164679`) | Circle | Woodfine-served properties: project portfolios, [[disclosure-substrate|corporate disclosures]], customer-side wikis. |
 
 A reader who has both vendor and customer sites open in adjacent browser tabs can identify the source of each tab without reading the title. The geometric distinction (square vs circle) is preserved when colour vision is reduced.
 
 ## See also
 
-- [[design-system-substrate]]
-- [[anti-homogenization-discipline]]
+- [[design-system-substrate]] — the design system substrate that defines the visual language these marks belong to
+- [[anti-homogenization-discipline]] — the editorial discipline that preserves distinct brand voices alongside this visual identity
+- [[disclosure-substrate]] — the outbound communications architecture served under the customer mark

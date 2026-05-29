@@ -31,7 +31,7 @@ Cumplimiento y divulgación continua describe los marcos regulatorios que aborda
 
 La limitación de la auditoría en un momento puntual es arquitectónica: un certificado emitido después de un período de evaluación de seis meses es preciso para ese período y potencialmente inexacto en cada momento posterior. Para los clientes que gestionan registros regulados — Emisores de información, profesionales médicos, profesionales legales — la brecha entre la evaluación y la postura actual es una responsabilidad.
 
-El sustrato PointSav aborda esto colocando controles a un nivel donde no pueden ser evitados administrativamente: si un control puede ser desactivado por un administrador, es una política. Si no puede ser desactivado, es una garantía arquitectónica. El enfoque previsto mueve los controles de la capa de políticas al nivel del sistema — por debajo del sistema operativo — para que el registro de auditoría no sea una función que fue habilitada, sino una propiedad estructural que nunca estuvo ausente. [^1]
+El sustrato PointSav aborda esto colocando controles a un nivel donde no pueden ser evitados administrativamente: si un control puede ser desactivado por un administrador, es una política. Si no puede ser desactivado, es una garantía arquitectónica. El enfoque previsto mueve los controles de la capa de políticas al nivel del sistema — por debajo del sistema operativo — para que el [[worm-ledger-architecture|registro de auditoría]] no sea una función que fue habilitada, sino una propiedad estructural que nunca estuvo ausente. [^1]
 
 ## Marcos de cumplimiento que aborda la arquitectura
 
@@ -71,7 +71,7 @@ Cuando el panel previsto sea realizado, está previsto que exponga tres activos 
 |---|---|
 | Lista de Materiales de Hardware (HBOM) | Cada componente de hardware en el perfil de referencia de [[os-workplace|os-workplace]] del cliente |
 | Lista de Materiales de Software (SBOM) | Cada dependencia usada en el sustrato desplegado del cliente |
-| Registro de Auditoría en Tiempo Real | El latido operativo actual del [[diode-standard|Estándar Diodo]], previsto para ser consultable bajo demanda por los propios sistemas de gestión de riesgos del cliente |
+| Registro de Auditoría en Tiempo Real | El latido operativo actual del [[diode-standard|Estándar Diodo]], anclado mediante [[fs-anchor-emitter|puntos de verificación criptográficos]], previsto para ser consultable bajo demanda por los propios sistemas de gestión de riesgos del cliente |
 
 Los tres son salidas planeadas; el plazo de entrega previsto no se publica aquí.
 
@@ -93,7 +93,7 @@ Un archivo `_EXE` ha pasado la confirmación del operador en la [[app-console-in
 
 PointSav opera dentro de un marco regulatorio canadiense. La Comisión de Valores de Columbia Británica requiere que las declaraciones prospectivas lleven el lenguaje de advertencia apropiado y que las afirmaciones sobre el cumplimiento actual reflejen con precisión el estado actual.
 
-Cada documento público que publica la plataforma aplica la siguiente disciplina: lenguaje de planeado y previsto para controles aún no desplegados; sin afirmaciones de certificación actual sin confirmación del operador; todas las referencias a la Fundación de Datos Soberanos solo en términos planeados y previstos, hasta que el operador conceda autorización para una clasificación diferente.
+Cada documento público que publica la plataforma aplica la [[bcsc-disclosure-posture|siguiente disciplina]]: lenguaje de planeado y previsto para controles aún no desplegados; sin afirmaciones de certificación actual sin confirmación del operador; todas las referencias a la Fundación de Datos Soberanos solo en términos planeados y previstos, hasta que el operador conceda autorización para una clasificación diferente.
 
 ## Véase también
 

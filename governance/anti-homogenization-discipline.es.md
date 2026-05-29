@@ -23,7 +23,10 @@ occidental con tasas más altas y con ganancias de productividad
 más pequeñas, porque los escritores gastan tiempo adicional
 corrigiendo la deriva de la IA hacia su voz auténtica. La
 disciplina anti-homogenización de la plataforma es la postura
-arquitectónica que resiste esa deriva explícitamente.
+arquitectónica que resiste esa deriva explícitamente, en
+conjunción con el [[language-protocol-substrate|sustrato de
+protocolo de lenguaje]] que rige el enrutamiento de tareas
+editoriales.
 
 ## El problema
 
@@ -70,6 +73,6 @@ acción editorial.
 
 ## Véase también
 
-- [Documento canónico en inglés](topic-anti-homogenization-discipline.md)
-- [El sustrato de protocolo de lenguaje](topic-language-protocol-substrate.md)
-- [Hospedaje por el cliente](topic-customer-hostability.md)
+- [[language-protocol-substrate]] — el sustrato de protocolo de lenguaje que define las tareas editoriales
+- [[customer-hostability]] — hospedaje por el cliente y soberanía de datos
+- [[contributor-model]] — el modelo de contribución al que aplica esta disciplina

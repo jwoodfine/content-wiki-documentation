@@ -33,11 +33,12 @@ Dos marcas están en uso en todas las páginas servidas por la plataforma:
 | Marca | Color | Forma | Identifica |
 |---|---|---|---|
 | Proveedor | Azul acero (`#869FB9`) | Cuadrado | Propiedades servidas por PointSav: documentación, sistema de diseño, wikis del lado del proveedor. |
-| Cliente | Azul Woodfine (`#164679`) | Círculo | Propiedades servidas por Woodfine: carteras de proyectos, divulgaciones corporativas, wikis del lado del cliente. |
+| Cliente | Azul Woodfine (`#164679`) | Círculo | Propiedades servidas por Woodfine: carteras de proyectos, [[disclosure-substrate|divulgaciones corporativas]], wikis del lado del cliente. |
 
 Un lector que tenga abiertos sitios del proveedor y del cliente en pestañas adyacentes del navegador puede identificar la fuente de cada pestaña sin leer el título. La distinción geométrica (cuadrado frente a círculo) se preserva cuando la visión del color está reducida.
 
 ## Véase también
 
-- [[design-system-substrate]]
-- [[anti-homogenization-discipline]]
+- [[design-system-substrate]] — el sustrato de sistema de diseño que define el lenguaje visual al que pertenecen estas marcas
+- [[anti-homogenization-discipline]] — la disciplina editorial que preserva las voces de marca distintas junto a esta identidad visual
+- [[disclosure-substrate]] — la arquitectura de comunicaciones salientes servida bajo la marca del cliente
