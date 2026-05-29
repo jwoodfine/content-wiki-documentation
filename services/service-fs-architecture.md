@@ -14,23 +14,23 @@ editor: pointsav-engineering
 paired_with: service-fs-architecture.es.md
 ---
 
-Every record written to the PointSav platform — identity anchors, email communications, document artifacts — lands in `service-fs`, a per-tenant Write-Once-Read-Many (WORM) immutable ledger. Once written, records cannot be modified or deleted; the ledger is the tamper-evident backbone that Ring 2 services query and Ring 1 services write to. For a regulated operator, this means every data event has a provable, auditable history from the moment it enters the platform.
+Every record written to the PointSav platform — identity anchors, email communications, document artifacts — lands in `service-fs`, a per-tenant Write-Once-Read-Many (WORM) immutable ledger. Once written, records cannot be modified or deleted; the ledger is the tamper-evident backbone that [[three-ring-architecture|Ring 2]] services query and Ring 1 services write to. For a regulated operator, this means every data event has a provable, auditable history from the moment it enters the platform. The [[worm-ledger-design]] article describes the WORM design philosophy in detail.
 
 ## The Four-Layer Architecture
 
 To ensure modularity and survivability, `service-fs` is implemented as a decoupled four-layer stack:
 
-- **L4: Anchoring (Workspace-Tier):** Monthly periodic work that anchors signed checkpoints to the public Sigstore Rekor log.
-- **L3: Wire Protocol:** The communication interface (HTTP/axum today; MCP long-term) that enforces per-tenant `moduleId` boundaries.
+- **L4: Anchoring (Workspace-Tier):** Monthly periodic work performed by [[fs-anchor-emitter]] that anchors signed checkpoints to the public Sigstore Rekor log.
+- **L3: Wire Protocol:** The communication interface (HTTP/axum today; [[mcp-substrate-protocol|MCP]] long-term) that enforces per-tenant `moduleId` boundaries.
 - **L2: WORM Ledger API (Rust Trait):** The stable core contract (`append`, `read_since`, `checkpoint`) that survives changes to the layers above or below.
-- **L1: Tile Storage Primitive:** The envelope-specific storage engine (POSIX on Linux; capability-mediated on seL4) using the **C2SP tlog-tiles** format.
+- **L1: Tile Storage Primitive:** The envelope-specific storage engine (POSIX on Linux; capability-mediated on [[sel4-microkernel-substrate|seL4]]) using the **C2SP tlog-tiles** format.
 
 ## Dual Boot Envelopes
 
-A core design property of `service-fs` is its ability to operate across two distinct runtime envelopes using the same codebase:
+A core design property of `service-fs` is its ability to operate across two distinct runtime envelopes using the same codebase. The [[worm-ledger-storage-architecture|WORM storage architecture]] article describes how each envelope satisfies the append-only constraint.
 
 1. **Envelope A (Current):** A Linux/BSD daemon under systemd. It uses standard POSIX file I/O and process isolation.
-2. **Envelope B (Intended):** A verified seL4 Microkit Protection Domain. It is intended to use `moonshot-database` (PSDB) for capability-addressed storage, providing formally verified tenant isolation.
+2. **Envelope B (Intended):** A verified [[sel4-microkernel-substrate|seL4]] Microkit Protection Domain. It is intended to use `moonshot-database` (PSDB) for capability-addressed storage, providing formally verified tenant isolation.
 
 ## Durability and Compliance
 

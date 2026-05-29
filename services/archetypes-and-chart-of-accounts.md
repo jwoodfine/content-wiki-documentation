@@ -22,7 +22,7 @@ references:
  url: "https://www.ilo.org/public/english/bureau/stat/isco/docs/publication08.pdf"
 ---
 
-The Chart of Accounts and the eleven archetypes are the two-part institutional taxonomy at the core of [[service-people]] and [[service-content]]. Together they let the platform classify personnel and documents by structural position and functional role, without relying on volatile job-title text. Unlike a free-text personnel record, the taxonomy is socket-based: each person occupies a fixed position in the Chart and inherits properties from one of eleven immutable archetype classes. By the end of this article, a reader will understand the archetype taxonomy, the Chart of Accounts hierarchy, and the self-healing mechanism their intersection enables.
+The Chart of Accounts and the eleven archetypes are the two-part institutional taxonomy at the core of [[service-people]] and [[service-content]]. Together they let the platform classify personnel and documents by structural position and functional role, without relying on volatile job-title text. Unlike a free-text personnel record, the taxonomy is socket-based: each person occupies a fixed position in the Chart and inherits properties from one of eleven immutable archetype classes. The Chart is a component of the [[totebox-os|Totebox]] institutional intelligence layer, alongside the [[service-slm|small language model]] and the [[service-extraction|deterministic parser]]. By the end of this article, a reader will understand the archetype taxonomy, the Chart of Accounts hierarchy, and the self-healing mechanism their intersection enables.
 
 ## Two ledgers, one institution
 
@@ -33,7 +33,7 @@ The taxonomy is built from two interlocking ledgers. One defines the structural 
 | Chart of Accounts | Where authority, risk, and production reside in the organisation — a three-level hierarchy of Profile → Domain → Sub-Domain [^1] | Adjusted deliberately by operators; stable between adjustments |
 | Eleven Archetypes | How a person operates and what they produce, regardless of their job title [^2] | Fixed permanently; the eleven categories are exhaustive |
 
-The Chart of Accounts is the institution's general ledger and namespace simultaneously. To a financial reader, every row is a cost or revenue centre. To an engineering reader, every row is a stable namespace path that prevents orphaned documents. [[service-content]] consumes the Chart hierarchy when classifying incoming documents at the F12 gate; [[service-people]] consumes the archetype layer when evaluating personnel alignment.
+The Chart of Accounts is the institution's general ledger and namespace simultaneously. To a financial reader, every row is a cost or revenue centre. To an engineering reader, every row is a stable namespace path that prevents orphaned documents. [[service-content]] consumes the Chart hierarchy when classifying incoming documents at the [[input-machine|F12 gate]]; [[service-people]] consumes the archetype layer when evaluating personnel alignment.
 
 Neither ledger is a substitute for the other. The Chart captures *where* in the organisation a document or decision belongs; the archetype captures *how* the person producing it operates. Their intersection is the platform's working model of institutional behaviour.
 
@@ -55,7 +55,7 @@ Each of the eleven archetypes maps to a primary organisational function and a ma
 | The Steward | Logistics and support | `system_stability` |
 | The Sage | Theory and knowledge | `knowledge_depth` |
 
-The archetypes function as object classes in the software sense: every entity in [[service-people]] inherits properties from one of the eleven base classes, and that inheritance determines which platform functions the system can apply to that person's record. Two people with different job titles who share an archetype share the same computational treatment; two people with the same title but different archetypes do not.
+The archetypes function as object classes in the software sense: every entity in [[service-people]] inherits properties from one of the eleven base classes, and that inheritance determines which platform functions the system can apply to that person's record. Two people with different job titles who share an archetype share the same computational treatment; two people with the same title but different archetypes do not. The [[verification-surveyor|Verification Surveyor]] uses archetype keys as one signal when calculating alignment scores.
 
 The evaluator keys are not scores. They are dimension labels — the platform tracks the variance of each key over time rather than its absolute value, which makes the system stable across different baseline levels among individuals.
 
@@ -91,7 +91,7 @@ The most distinctive property of the dual-ledger design is that [[service-people
 | Chart position mismatches, high archetype signal | Talent discovery | The system flags a potential role mismatch and proposes a Chart adjustment to the administrator |
 | Neither dimension matches | Systemic noise | The system suspends metric calculation to prevent contaminating aggregate data; a manual audit is flagged |
 
-The mechanism does not take autonomous personnel action. The platform does not move, promote, or dismiss people. It surfaces structural mismatches and proposes adjustments; an operator makes every decision. The audit trail in service-minutebook captures the proposal, the operator's decision, and the timestamp — the same pattern as the [[app-console-input|F12 input gate]].
+The mechanism does not take autonomous personnel action. The platform does not move, promote, or dismiss people. It surfaces structural mismatches and proposes adjustments; an operator makes every decision. The audit trail captured in the [[worm-ledger-design|WORM ledger]] records the proposal, the operator's decision, and the timestamp — the same pattern as the [[app-console-input|F12 input gate]].
 
 ## Why socket-based taxonomy outperforms free-text job titles
 
@@ -105,7 +105,7 @@ The Chart of Accounts and archetype design resolves this structurally:
 | Semantic translation | Updating the definition of a role requires changing one row in the central Chart, not every personnel record that references it |
 | Behaviour-aware classification | The archetype layer tracks what the person produces, not what their title claims they produce |
 
-The deterministic identity assigned to an individual by [[service-extraction]] — a content-hash-derived identifier stable across renames and title changes — remains constant; the socket assignment and archetype reading evolve as the operator updates them.
+The deterministic identity assigned to an individual by [[service-extraction]] — a content-hash-derived identifier stable across renames and title changes — remains constant; the socket assignment and archetype reading evolve as the operator updates them. The full sequence from raw payload to socketed identity runs through the [[three-ring-architecture|three-ring architecture]]'s Ring 2 processing layer.
 
 ## See also
 

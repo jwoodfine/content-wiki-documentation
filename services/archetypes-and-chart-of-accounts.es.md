@@ -22,7 +22,7 @@ references:
  url: "https://www.ilo.org/public/english/bureau/stat/isco/docs/publication08.pdf"
 ---
 
-El Plan de Cuentas y los once arquetipos son la taxonomía institucional de dos partes en el núcleo de [[service-people]] y [[service-content]]. Juntos permiten que la plataforma clasifique al personal y los documentos por posición estructural y función, sin depender de texto de título de trabajo variable. A diferencia de un registro de personal en texto libre, la taxonomía se basa en conectores: cada persona ocupa una posición fija en el Plan y hereda propiedades de una de las once clases de arquetipos inmutables. Al finalizar este artículo, el lector comprenderá la taxonomía de arquetipos, la jerarquía del Plan de Cuentas y el mecanismo de autocorrección que produce su intersección.
+El Plan de Cuentas y los once arquetipos son la taxonomía institucional de dos partes en el núcleo de [[service-people]] y [[service-content]]. Juntos permiten que la plataforma clasifique al personal y los documentos por posición estructural y función, sin depender de texto de título de trabajo variable. A diferencia de un registro de personal en texto libre, la taxonomía se basa en conectores: cada persona ocupa una posición fija en el Plan y hereda propiedades de una de las once clases de arquetipos inmutables. El Plan es un componente de la capa de inteligencia institucional del [[totebox-os|Totebox]], junto con el [[service-slm|modelo de lenguaje pequeño]] y el [[service-extraction|analizador determinista]]. Al finalizar este artículo, el lector comprenderá la taxonomía de arquetipos, la jerarquía del Plan de Cuentas y el mecanismo de autocorrección que produce su intersección.
 
 ## Dos libros mayores, una institución
 
@@ -33,7 +33,7 @@ La taxonomía está construida sobre dos libros mayores interrelacionados. Uno d
 | Plan de Cuentas | Dónde residen la autoridad, el riesgo y la producción en la organización — una jerarquía de tres niveles: Perfil → Dominio → Subdominio [^1] | Ajustado deliberadamente por operadores; estable entre ajustes |
 | Once Arquetipos | Cómo opera una persona y qué produce, independientemente de su título [^2] | Fijo permanentemente; las once categorías son exhaustivas |
 
-El Plan de Cuentas es simultáneamente el libro mayor general y el espacio de nombres de la institución. Para un lector financiero, cada fila es un centro de costo o ingreso. Para un lector de ingeniería, cada fila es una ruta de espacio de nombres estable que previene documentos huérfanos. [[service-content]] consume la jerarquía del Plan cuando clasifica documentos entrantes en la puerta F12; [[service-people]] consume la capa de arquetipos cuando evalúa la alineación del personal.
+El Plan de Cuentas es simultáneamente el libro mayor general y el espacio de nombres de la institución. Para un lector financiero, cada fila es un centro de costo o ingreso. Para un lector de ingeniería, cada fila es una ruta de espacio de nombres estable que previene documentos huérfanos. [[service-content]] consume la jerarquía del Plan cuando clasifica documentos entrantes en la [[input-machine|puerta F12]]; [[service-people]] consume la capa de arquetipos cuando evalúa la alineación del personal.
 
 Ningún libro mayor sustituye al otro. El Plan captura *dónde* en la organización pertenece un documento o decisión; el arquetipo captura *cómo* opera la persona que lo produce. Su intersección es el modelo operativo de comportamiento institucional de la plataforma.
 
@@ -55,7 +55,7 @@ Cada uno de los once arquetipos se corresponde con una función organizativa pri
 | El Administrador | Logística y soporte | `system_stability` |
 | El Sabio | Teoría y conocimiento | `knowledge_depth` |
 
-Los arquetipos funcionan como clases de objetos en el sentido del software: cada entidad en [[service-people]] hereda propiedades de una de las once clases base, y esa herencia determina qué funciones de la plataforma puede aplicar el sistema al registro de esa persona. Dos personas con títulos diferentes que comparten un arquetipo reciben el mismo tratamiento computacional; dos personas con el mismo título pero arquetipos diferentes, no.
+Los arquetipos funcionan como clases de objetos en el sentido del software: cada entidad en [[service-people]] hereda propiedades de una de las once clases base, y esa herencia determina qué funciones de la plataforma puede aplicar el sistema al registro de esa persona. Dos personas con títulos diferentes que comparten un arquetipo reciben el mismo tratamiento computacional; dos personas con el mismo título pero arquetipos diferentes, no. El [[verification-surveyor|Supervisor de Verificación]] utiliza las claves de arquetipo como una señal al calcular las puntuaciones de alineación.
 
 Las claves de evaluación no son puntuaciones. Son etiquetas de dimensión — la plataforma rastrea la varianza de cada clave a lo largo del tiempo en lugar de su valor absoluto, lo que hace que el sistema sea estable ante diferentes niveles base entre individuos.
 
@@ -91,7 +91,7 @@ La propiedad más distintiva del diseño de doble libro mayor es que [[service-p
 | Posición en el Plan no coincide, señal de arquetipo elevada | Descubrimiento de talento | El sistema señala un posible desajuste de rol y propone un ajuste del Plan al administrador |
 | Ninguna dimensión coincide | Ruido sistémico | El sistema suspende el cálculo de métricas para evitar contaminar datos agregados; se activa una auditoría manual |
 
-El mecanismo no toma acciones de personal autónomas. La plataforma no mueve, asciende ni da de baja a personas. Señala desajustes estructurales y propone ajustes; un operador toma cada decisión. El registro de auditoría en service-minutebook captura la propuesta, la decisión del operador y la marca de tiempo — el mismo patrón que la [[app-console-input|puerta de entrada F12]].
+El mecanismo no toma acciones de personal autónomas. La plataforma no mueve, asciende ni da de baja a personas. Señala desajustes estructurales y propone ajustes; un operador toma cada decisión. El registro de auditoría capturado en el [[worm-ledger-design|libro mayor WORM]] registra la propuesta, la decisión del operador y la marca de tiempo — el mismo patrón que la [[app-console-input|puerta de entrada F12]].
 
 ## Por qué la taxonomía basada en conectores supera los títulos en texto libre
 
@@ -105,7 +105,7 @@ El diseño del Plan de Cuentas y los arquetipos resuelve esto estructuralmente:
 | Traducción semántica | Actualizar la definición de un rol requiere cambiar una fila en el Plan central, no cada registro de personal que lo referencia |
 | Clasificación consciente del comportamiento | La capa de arquetipos rastrea lo que la persona produce, no lo que su título afirma que produce |
 
-El identificador determinista asignado a un individuo por [[service-extraction]] — un identificador derivado de hash de contenido, estable ante cambios de nombre y título — permanece constante; la asignación del conector y la lectura del arquetipo evolucionan a medida que el operador los actualiza.
+El identificador determinista asignado a un individuo por [[service-extraction]] — un identificador derivado de hash de contenido, estable ante cambios de nombre y título — permanece constante; la asignación del conector y la lectura del arquetipo evolucionan a medida que el operador los actualiza. La secuencia completa desde la carga útil en bruto hasta la identidad con conector asignado transcurre por la capa de procesamiento Ring 2 de la [[three-ring-architecture|arquitectura de tres anillos]].
 
 ## Véase también
 

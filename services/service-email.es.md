@@ -23,7 +23,7 @@ references:
  url: "https://doi.org/10.6028/NIST.SP.800-209"
 ---
 
-`service-email` es el servidor de correo del Totebox. Escucha el tráfico SMTP e IMAP, saneea cada carga útil — eliminando la lógica de renderizado HTML y los píxeles de rastreo — y escribe el texto en bruto en un Maildir de solo adición en almacenamiento de bloque local. El servicio no interpreta el contenido; ese trabajo ocurre en sentido ascendente en `service-content`. Este artículo cubre el pipeline de ingesta, las propiedades Soberanas que lo distinguen de un cliente de correo convencional y su relación con el camino de integración de Microsoft 365.
+`service-email` es el servidor de correo del [[totebox-os|Totebox]]. Escucha el tráfico SMTP e IMAP, saneea cada carga útil — eliminando la lógica de renderizado HTML y los píxeles de rastreo — y escribe el texto en bruto en un Maildir de solo adición en almacenamiento de bloque local a través de [[service-fs-architecture|`service-fs`]]. El servicio no interpreta el contenido; ese trabajo ocurre en sentido ascendente en `service-content`. Este artículo cubre el pipeline de ingesta, las propiedades Soberanas que lo distinguen de un cliente de correo convencional y su relación con el camino de integración de Microsoft 365.
 
 ## El pipeline de ingesta
 
@@ -42,15 +42,15 @@ El servicio opera en seis etapas, cada una con una propiedad Soberana específic
 
 La configuración OAuth2 usa un registro de Cliente Confidencial en Microsoft Entra [^1]. Se requieren tres permisos de Graph: `Mail.ReadWrite` (para sincronizar en el Maildir), `Mail.Send` (para preparar plantillas) y `User.Read.All` (para verificar identidades del remitente). El consentimiento de administrador se concede una vez para que el servicio se ejecute como daemon sin interacción humana por mensaje.
 
-Este enfoque confina el límite de confianza en la nube a un único punto bien definido en el pipeline. Cada ciclo de sondeo es un intercambio HTTP discreto y autenticado — en lugar de una conexión IMAP persistente — haciendo que el límite de ingesta sea auditable y sin estado.
+Este enfoque confina el límite de confianza en la nube a un único punto bien definido en el pipeline. Cada ciclo de sondeo es un intercambio HTTP discreto y autenticado — en lugar de una conexión IMAP persistente — haciendo que el límite de ingesta sea auditable y sin estado. El sistema de [[machine-based-auth|autenticación basada en máquina]] gobierna las credenciales utilizadas en este intercambio.
 
 ## La disciplina WORM
 
-`service-email` escribe cargas útiles en el Maildir WORM — una estructura de solo adición en el almacenamiento de bloque local del Totebox. [^2] No hay operación de borrado. Una carga útil escrita en el Maildir no puede borrarse, incluso si la fuente en la nube (el buzón de Microsoft 365) es modificada, eliminada o la suscripción vence. El registro de correo del operador es soberano: pertenece al archivo, no al proveedor de nube.
+`service-email` escribe cargas útiles en el Maildir WORM — una estructura de solo adición en el almacenamiento de bloque local del Totebox regida por el [[worm-ledger-design|diseño del libro mayor WORM]]. [^2] No hay operación de borrado. Una carga útil escrita en el Maildir no puede borrarse, incluso si la fuente en la nube (el buzón de Microsoft 365) es modificada, eliminada o la suscripción vence. El registro de correo del operador es soberano: pertenece al archivo, no al proveedor de nube. El [[fs-anchor-emitter|emisor de anclaje]] crea periódicamente puntos de control firmados del estado completo del libro mayor.
 
 ## Lo que service-email no es
 
-`service-email` es el límite de ingesta, no el cliente de correo. No renderiza correos HTML para que el operador los lea. No sintetiza contenido. No clasifica ni enruta mensajes. Entrega la carga útil en bruto saneada a `service-content` y `service-extraction` y cede la ejecución. Los servicios posteriores manejan todo desde la extracción de entidades hasta la superficie F3 CORREO que ve el operador en `os-console`.
+`service-email` es el límite de ingesta, no el cliente de correo. No renderiza correos HTML para que el operador los lea. No sintetiza contenido. No clasifica ni enruta mensajes. Entrega la carga útil en bruto saneada a `service-content` y `service-extraction` y cede la ejecución. Los servicios posteriores manejan todo desde la extracción de entidades hasta la superficie F3 CORREO que ve el operador en [[os-console-platform|`os-console`]]. La [[three-ring-architecture|arquitectura de tres anillos]] posiciona `service-email` en el Anillo 1 — el perímetro de confianza donde las cargas útiles entran por primera vez a la plataforma.
 
 ## Véase también
 

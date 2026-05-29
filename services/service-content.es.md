@@ -27,7 +27,7 @@ Los archivos de una organización contienen su conocimiento pero no lo hacen afl
 
 <!--claim id=gravity-engine confidence=structural cites=[]-->`service-content` — el Motor de Gravedad — es el motor de síntesis de la familia PointSav. Lee cargas útiles en bruto desde el interior de un Totebox, las procesa contra una taxonomía institucional, produce densos Vectores de Gravedad y genera los documentos que publica una organización: wikis, comunicados de prensa, libros mayores de debida diligencia, memorandos internos.<!--/claim-->
 
-El motor se construye sobre una Bóveda de Semillas de Cuatro Pilares — la gramática institucional — un pipeline determinista de ingesta a enrutamiento, y una Ontología Estratificada de cinco capas. Es la diferencia entre un almacén de archivos y un motor de inteligencia activo.
+El motor se construye sobre una Bóveda de Semillas de Cuatro Pilares — la gramática institucional — un pipeline determinista de ingesta a enrutamiento, y una Ontología Estratificada de cinco capas. Es la diferencia entre un almacén de archivos y un motor de inteligencia activo. El [[archetypes-and-chart-of-accounts|Plan de Cuentas y los once arquetipos]] forman dos de los cuatro pilares de la Bóveda de Semillas.
 
 Para un comprador regulado, un solo límite gobierna todo. <!--claim id=human-loop-boundary confidence=structural cites=[]-->`service-content` no publica en un libro mayor verificado de forma autónoma; cada entrada verificada transita primero un paso de verificación con intervención humana.<!--/claim--> Este artículo cubre la Bóveda de Semillas, el pipeline del Motor de Gravedad, la Ontología Estratificada y ese límite.
 
@@ -56,7 +56,7 @@ Cuando llega una carga útil — un correo, un PDF, un DOCX — el motor ejecuta
 
 ## La Ontología Estratificada
 
-`service-content` organiza la información en una pila de cinco capas, con tres motores derivados encima.
+`service-content` organiza la información en una pila de cinco capas, con tres motores derivados encima. La capa base L0 alimenta directamente la [[service-fs-architecture|arquitectura del libro mayor WORM]] proporcionada por `service-fs`.
 
 | Capa | Qué contiene |
 |---|---|
@@ -74,7 +74,7 @@ Cuando llega una carga útil — un correo, un PDF, un DOCX — el motor ejecuta
 
 ## Auto-reparación
 
-El Motor de Gravedad es auto-reparable en un sentido específico y limitado: sus propias salidas retroalimentan sus entradas. Un memorando sintetizado con éxito se convierte en contenido nuevo que el motor indexa en su siguiente ejecución. Con el tiempo, los glosarios de Dominios crecen, los Temas rastrean preocupaciones institucionales reales y las síntesis del motor convergen en la voz real de la institución. Esto no es ajuste fino autónomo del modelo — la mejora es a nivel de corpus: el motor tiene más material verificado del que extraer.
+El Motor de Gravedad es auto-reparable en un sentido específico y limitado: sus propias salidas retroalimentan sus entradas. Un memorando sintetizado con éxito se convierte en contenido nuevo que el motor indexa en su siguiente ejecución. Con el tiempo, los glosarios de Dominios crecen, los Temas rastrean preocupaciones institucionales reales y las síntesis del motor convergen en la voz real de la institución. Esto no es ajuste fino autónomo del modelo — la mejora es a nivel de corpus: el motor tiene más material verificado del que extraer. El patrón del [[compounding-substrate|sustrato de composición]] describe la lógica arquitectónica detrás de este ciclo de retroalimentación.
 
 ## El límite de intervención humana
 

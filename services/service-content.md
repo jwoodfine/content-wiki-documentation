@@ -25,15 +25,15 @@ references:
 
 An organization's files hold its knowledge but do not surface it. An email archive, a folder of contracts, a store of PDFs — each is searchable, and none of it knows who relates to whom, which concerns recur, or what the organization's own terms mean.
 
-<!--claim id=gravity-engine confidence=structural cites=[]-->`service-content` — the Gravity Engine — is the synthesis engine of the PointSav family. It reads raw payloads from inside a Totebox, runs them against an institutional taxonomy, produces dense Gravity Vectors, and generates the documents an organisation publishes: wikis, news releases, due-diligence ledgers, internal memos.<!--/claim-->
+<!--claim id=gravity-engine confidence=structural cites=[]-->`service-content` — the Gravity Engine — is the synthesis engine of the PointSav family. It reads raw payloads from inside a [[totebox-os|Totebox]], runs them against an institutional taxonomy, produces dense Gravity Vectors, and generates the documents an organisation publishes: wikis, news releases, due-diligence ledgers, internal memos.<!--/claim-->
 
-The engine is built on a Four-Pillar Seed Vault — the institutional grammar — a deterministic ingest-to-routing pipeline, and a five-layer Stratified Ontology. It is the difference between a file store and an active intelligence engine.
+The engine is built on a Four-Pillar Seed Vault — the institutional grammar — a deterministic ingest-to-routing pipeline, and a five-layer Stratified Ontology. It is the difference between a file store and an active intelligence engine. The [[archetypes-and-chart-of-accounts|Chart of Accounts and eleven archetypes]] form two of the four Seed Vault pillars.
 
 For a regulated buyer, one boundary governs all of it. <!--claim id=human-loop-boundary confidence=structural cites=[]-->`service-content` does not publish to a verified ledger autonomously; every verified entry transits a human-in-the-loop verification step first.<!--/claim--> This article covers the Seed Vault, the Gravity Engine pipeline, the Stratified Ontology, and that boundary.
 
 ## The Four-Pillar Seed Vault
 
-<!--claim id=seed-vault confidence=structural cites=[]-->Every Totebox is provisioned with four JSON ledgers that form the institutional grammar of the system — the Seed Vault. The Seed Vault is built once, locked, and adjusted only by operators, never by AI.<!--/claim-->
+<!--claim id=seed-vault confidence=structural cites=[]-->Every [[totebox-os|Totebox]] is provisioned with four JSON ledgers that form the institutional grammar of the system — the Seed Vault. The Seed Vault is built once, locked, and adjusted only by operators, never by AI.<!--/claim-->
 
 | Pillar | What it captures | Example |
 |---|---|---|
@@ -56,7 +56,7 @@ When a payload arrives — an email, a PDF, a DOCX — the engine runs a tight, 
 
 ## The Stratified Ontology
 
-`service-content` organises information in a five-layer stack, with three derivative engines on top.
+`service-content` organises information in a five-layer stack, with three derivative engines on top. The L0 base layer feeds directly into the [[service-fs-architecture|WORM ledger architecture]] provided by `service-fs`.
 
 | Layer | What it holds |
 |---|---|
@@ -74,7 +74,7 @@ When a payload arrives — an email, a PDF, a DOCX — the engine runs a tight, 
 
 ## Self-healing
 
-The Gravity Engine is self-healing in a specific, narrow sense: its own outputs feed back into its inputs. A successfully synthesised memo becomes new content the engine indexes on its next run. Over months, the Domain glossaries grow, the Themes track real institutional concerns, and the engine's syntheses converge on the institution's actual voice. This is not autonomous model fine-tuning — the improvement is corpus-level: the engine has more verified material to draw from.
+The Gravity Engine is self-healing in a specific, narrow sense: its own outputs feed back into its inputs. A successfully synthesised memo becomes new content the engine indexes on its next run. Over months, the Domain glossaries grow, the Themes track real institutional concerns, and the engine's syntheses converge on the institution's actual voice. This is not autonomous model fine-tuning — the improvement is corpus-level: the engine has more verified material to draw from. The [[compounding-substrate|compounding substrate]] pattern describes the architectural logic behind this feedback loop.
 
 ## The human-in-the-loop boundary
 

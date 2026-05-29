@@ -14,7 +14,7 @@ editor: pointsav-engineering
 paired_with: fs-anchor-emitter.es.md
 ---
 
-`fs-anchor-emitter` is the component that generates signed checkpoints of the immutable Write-Once-Read-Many ledger at hourly cadence and prepares them for external anchoring to the Sigstore Rekor transparency log on a monthly schedule — the mechanism that makes the platform's ledger state cryptographically auditable from outside the platform itself. The emitter operates at Layer 4 of the WORM stack, reads the latest state of the per-tenant tile tree, generates a `signed-note` checkpoint, and stores it at the authoritative path under `$FS_LEDGER_ROOT/<moduleId>/checkpoint`. The monthly workspace anchoring process consumes those checkpoints and posts them to the public transparency log.
+`fs-anchor-emitter` is the component that generates signed checkpoints of the immutable [[worm-ledger-design|Write-Once-Read-Many ledger]] at hourly cadence and prepares them for external anchoring to the Sigstore Rekor transparency log on a monthly schedule — the mechanism that makes the platform's ledger state cryptographically auditable from outside the platform itself. The emitter operates at Layer 4 of the WORM stack as described in [[service-fs-architecture]], reads the latest state of the per-tenant tile tree, generates a `signed-note` checkpoint, and stores it at the authoritative path under `$FS_LEDGER_ROOT/<moduleId>/checkpoint`. The monthly workspace anchoring process consumes those checkpoints and posts them to the public transparency log.
 
 ## Configuration Requirements
 
@@ -37,13 +37,13 @@ Checkpoints must strictly follow the **C2SP signed-note** format to ensure inter
 ## Operational Procedures
 
 ### Bootstrapping a New Emitter
-Upon first initialization, the emitter verifies the presence of the `FS_SIGNING_KEY`. If no prior state exists, it generates a "Tree Size 0" checkpoint to establish the ledger’s origin.
+Upon first initialization, the emitter verifies the presence of the `FS_SIGNING_KEY`. If no prior state exists, it generates a "Tree Size 0" checkpoint to establish the ledger’s origin. The [[machine-based-auth|machine-based authentication]] layer controls which identities may hold signing keys.
 
 ### Verification of Consistency
-Before emitting a new checkpoint, the emitter is intended to perform an internal consistency proof against the previously signed state. If the new hash-chain does not append cleanly to the old one, the emitter must abort and trigger an infrastructure alert (SOC 2 CC7 alignment).
+Before emitting a new checkpoint, the emitter is intended to perform an internal consistency proof against the previously signed state. If the new hash-chain does not append cleanly to the old one, the emitter must abort and trigger an infrastructure alert (SOC 2 CC7 alignment). The [[merkle-proofs-as-substrate-primitive|Merkle proof substrate]] underpins this consistency verification.
 
 ## External Anchoring
-While the emitter produces checkpoints hourly, external publication to Rekor is currently planned for a monthly cadence. This provides a balance between evidentiary density and network overhead.
+While the emitter produces checkpoints hourly, external publication to Rekor is currently planned for a monthly cadence. This provides a balance between evidentiary density and network overhead. The [[service-fs-security-compliance|security and compliance posture]] document describes how this anchoring satisfies SEC Rule 17a-4(f) and eIDAS requirements.
 
 ## See also
 

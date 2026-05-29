@@ -14,12 +14,14 @@ editor: pointsav-engineering
 paired_with: service-fs-architecture.md
 ---
 
-Cada registro escrito en la plataforma PointSav — anclajes de identidad, comunicaciones de correo electrónico, artefactos de documentos — llega a `service-fs`, un libro contable inmutable de escritura única y lectura múltiple (WORM) por inquilino. Una vez escrito, los registros no pueden modificarse ni eliminarse; el libro contable es la columna vertebral con evidencia de manipulación que los servicios del Anillo 2 consultan y los servicios del Anillo 1 escriben.
+Cada registro escrito en la plataforma PointSav — anclajes de identidad, comunicaciones de correo electrónico, artefactos de documentos — llega a `service-fs`, un libro contable inmutable de escritura única y lectura múltiple (WORM) por inquilino. Una vez escrito, los registros no pueden modificarse ni eliminarse; el libro contable es la columna vertebral con evidencia de manipulación que los servicios del [[three-ring-architecture|Anillo 2]] consultan y los servicios del Anillo 1 escriben. El artículo sobre [[worm-ledger-design|diseño del libro mayor WORM]] describe la filosofía de diseño WORM en detalle.
 
 ## Estructura de Cuatro Capas
 
-- **Anclaje (L4):** Publicación mensual de pruebas de integridad en registros públicos externos (Sigstore Rekor).
-- **Protocolo (L3):** Interfaz de comunicación que asegura que los datos de un cliente nunca se mezclen con otros — límites por inquilino aplicados por `moduleId`.
+El artículo sobre [[worm-ledger-storage-architecture|arquitectura de almacenamiento WORM]] describe cómo cada envolvente satisface la restricción de solo adición.
+
+- **Anclaje (L4):** Publicación mensual de pruebas de integridad realizadas por [[fs-anchor-emitter]] en registros públicos externos (Sigstore Rekor).
+- **Protocolo (L3):** Interfaz de comunicación (HTTP/axum hoy; [[mcp-substrate-protocol|MCP]] a largo plazo) que asegura que los datos de un cliente nunca se mezclen con otros — límites por inquilino aplicados por `moduleId`.
 - **Contrato API WORM (L2):** Definiciones en Rust (`append`, `read_since`, `checkpoint`) que aseguran la consistencia del sistema independientemente de la tecnología de disco.
 - **Almacenamiento (L1):** El motor físico que guarda los datos en formato de texto estándar (C2SP tlog-tiles), asegurando su legibilidad por un siglo.
 
@@ -27,7 +29,7 @@ Cada registro escrito en la plataforma PointSav — anclajes de identidad, comun
 
 El sistema es dual por diseño:
 - **Actualidad:** Funciona como un servicio estándar en Linux (daemon), ideal para servidores actuales.
-- **Futuro previsto:** Está preparado para ejecutarse como un dominio de protección seL4 verificado en dispositivos físicos, proporcionando la máxima seguridad matemáticamente verificable.
+- **Futuro previsto:** Está preparado para ejecutarse como un dominio de protección [[sel4-microkernel-substrate|seL4]] verificado en dispositivos físicos, proporcionando la máxima seguridad matemáticamente verificable.
 
 ## Durabilidad y Cumplimiento
 

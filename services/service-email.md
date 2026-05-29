@@ -23,7 +23,7 @@ references:
  url: "https://doi.org/10.6028/NIST.SP.800-209"
 ---
 
-`service-email` is the Totebox's email server. It listens for SMTP and IMAP traffic, sanitises every payload — stripping HTML rendering logic and tracking pixels — and writes the raw text into an append-only Maildir on local block storage. The service does not interpret content; that work happens upstream in `service-content`. This article covers the ingest pipeline, the Sovereign properties that distinguish it from a conventional email client, and its relationship with the Microsoft 365 integration path.
+`service-email` is the [[totebox-os|Totebox]]'s email server. It listens for SMTP and IMAP traffic, sanitises every payload — stripping HTML rendering logic and tracking pixels — and writes the raw text into an append-only Maildir on local block storage via [[service-fs-architecture|`service-fs`]]. The service does not interpret content; that work happens upstream in `service-content`. This article covers the ingest pipeline, the Sovereign properties that distinguish it from a conventional email client, and its relationship with the Microsoft 365 integration path.
 
 ## The ingest pipeline
 
@@ -42,15 +42,15 @@ The service operates in six stages, each carrying a specific Sovereign property:
 
 The OAuth2 setup uses a Confidential Client registration in Microsoft Entra [^1]. Three Graph permissions are required: `Mail.ReadWrite` (to sync into Maildir), `Mail.Send` (to stage templates), and `User.Read.All` (to verify sender identities). Admin consent is granted once so the service runs as a daemon without per-message human interaction.
 
-This approach confines the cloud-trust boundary to a single, well-defined point in the pipeline. Each polling cycle is a discrete, authenticated HTTP exchange — rather than a persistent IMAP connection — making the ingest boundary auditable and stateless.
+This approach confines the cloud-trust boundary to a single, well-defined point in the pipeline. Each polling cycle is a discrete, authenticated HTTP exchange — rather than a persistent IMAP connection — making the ingest boundary auditable and stateless. The [[machine-based-auth|machine-based authentication]] system governs the credentials used for this exchange.
 
 ## The WORM discipline
 
-`service-email` writes payloads to the WORM Maildir — an append-only structure on the Totebox's local block storage. [^2] There is no delete operation. A payload written to the Maildir cannot be erased, even if the cloud source (the Microsoft 365 mailbox) is later modified, deleted, or the subscription lapses. The operator's email record is sovereign: it belongs to the archive, not the cloud provider.
+`service-email` writes payloads to the WORM Maildir — an append-only structure on the Totebox's local block storage governed by [[worm-ledger-design|the WORM ledger design]]. [^2] There is no delete operation. A payload written to the Maildir cannot be erased, even if the cloud source (the Microsoft 365 mailbox) is later modified, deleted, or the subscription lapses. The operator's email record is sovereign: it belongs to the archive, not the cloud provider. The [[fs-anchor-emitter|anchor emitter]] periodically creates signed checkpoints of the full ledger state.
 
 ## What service-email is not
 
-`service-email` is the ingest boundary, not the email client. It does not render HTML emails for the operator to read. It does not synthesise content. It does not classify or route messages. It hands the sanitised raw payload to `service-content` and `service-extraction` and surrenders execution. Downstream services handle everything from entity extraction to the F3 EMAIL surface the operator sees in `os-console`.
+`service-email` is the ingest boundary, not the email client. It does not render HTML emails for the operator to read. It does not synthesise content. It does not classify or route messages. It hands the sanitised raw payload to `service-content` and `service-extraction` and surrenders execution. Downstream services handle everything from entity extraction to the F3 EMAIL surface the operator sees in [[os-console-platform|`os-console`]]. The [[three-ring-architecture|three-ring architecture]] positions `service-email` at Ring 1 — the trust perimeter where payloads first enter the platform.
 
 ## See also
 
