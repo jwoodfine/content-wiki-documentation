@@ -12,19 +12,19 @@ editor: pointsav-engineering
 paired_with: service-input.es.md
 ---
 
-`service-input` is the Ring 1 document-intake service in the PointSav system architecture. It accepts files at the per-tenant boundary, routes them through format-specific parsers, and writes the normalized output into the per-tenant WORM Immutable Ledger via `service-fs`.
+`service-input` is the [[three-ring-architecture|Ring 1]] document-intake service in the PointSav system architecture. It accepts files at the per-tenant boundary, routes them through format-specific parsers, and writes the normalized output into the per-tenant [[worm-ledger-design|WORM Immutable Ledger]] via [[service-fs-architecture|`service-fs`]].
 
 ## The Anchor position
 
 The Ring 1 boundary is the trust perimeter of the system. Every artifact that crosses this boundary must pass through a deterministic, auditable processing step before it is committed to the WORM ledger. `service-input` occupies that position for structured documents.
 
-SYS-ADR-10 designates this position The Anchor (function F12 on `os-console`): the single, mandatory intake point where document bytes enter Ring 1, undergo deterministic parsing, and are handed off to `service-fs` for permanent append-only storage. Nothing about parsing is delegated to an AI model; nothing about the output schema varies non-deterministically. The same input bytes, on the same parser version, always produce the same `ParsedDocument`.
+[[architecture-decisions|SYS-ADR-10]] designates this position The Anchor (function F12 on [[os-console-platform|`os-console`]]): the single, mandatory intake point where document bytes enter Ring 1, undergo deterministic parsing, and are handed off to `service-fs` for permanent append-only storage. Nothing about parsing is delegated to an AI model; nothing about the output schema varies non-deterministically. The same input bytes, on the same parser version, always produce the same `ParsedDocument`.
 
 This is the Anchor property: the document's presence in the WORM ledger is anchored to a reproducible deterministic transformation, not to a probabilistic AI inference.
 
 ## Architecture
 
-The service is structured as an MCP handler that receives document bytes via `POST /mcp`, dispatches them through a format detector and per-format parser, and forwards the parsed result to `service-fs` via its FsClient. The HTTP boundary exposes three endpoints: `GET /healthz`, `GET /readyz`, and `POST /mcp`. The MCP endpoint is the only write surface. There is no read surface in this service; reads happen at `service-fs` via its own MCP resource interface.
+The service is structured as an [[mcp-substrate-protocol|MCP]] handler that receives document bytes via `POST /mcp`, dispatches them through a format detector and per-format parser, and forwards the parsed result to `service-fs` via its FsClient. The HTTP boundary exposes three endpoints: `GET /healthz`, `GET /readyz`, and `POST /mcp`. The MCP endpoint is the only write surface. There is no read surface in this service; reads happen at `service-fs` via its own MCP resource interface.
 
 ## Format detection
 
@@ -58,7 +58,7 @@ On success, the response includes the `cursor` — a monotonically increasing in
 
 ## ADR-07 compliance
 
-ADR-07 prohibits AI inference in Ring 1. `service-input` maintains this constraint throughout: format detection uses extension matching followed by magic-byte inspection; parsing uses purpose-built libraries that apply deterministic algorithms; text normalization is purely structural. A consequence of this constraint is that `service-input` does not attempt to extract meaning from the parsed text. Semantic interpretation is the responsibility of Ring 2 services downstream.
+[[architecture-decisions|ADR-07]] prohibits AI inference in Ring 1. `service-input` maintains this constraint throughout: format detection uses extension matching followed by magic-byte inspection; parsing uses purpose-built libraries that apply deterministic algorithms; text normalization is purely structural. A consequence of this constraint is that `service-input` does not attempt to extract meaning from the parsed text. Semantic interpretation is the responsibility of [[service-extraction|Ring 2 services]] downstream.
 
 ## Deployment configuration
 
@@ -70,7 +70,7 @@ ADR-07 prohibits AI inference in Ring 1. `service-input` maintains this constrai
 
 ## Relations to other Ring 1 services
 
-`service-input` is one of four Ring 1 boundary-ingest services. Each addresses a distinct document intake channel: `service-input` handles generic documents (PDF, DOCX, XLSX, Markdown); `service-email` handles Microsoft Exchange mailboxes; `service-people` handles identity records; and `service-fs` is the WORM ledger itself that all three write through. `service-extraction` in Ring 2 reads from `service-fs` and applies AI-assisted analysis downstream, outside the Ring 1 boundary.
+`service-input` is one of four Ring 1 boundary-ingest services. Each addresses a distinct document intake channel: `service-input` handles generic documents (PDF, DOCX, XLSX, Markdown); [[service-email]] handles Microsoft Exchange mailboxes; [[service-people]] handles identity records; and `service-fs` is the WORM ledger itself that all three write through. [[service-extraction]] in Ring 2 reads from `service-fs` and applies AI-assisted analysis downstream, outside the Ring 1 boundary.
 
 ## See also
 

@@ -16,11 +16,11 @@ paired_with: service-places-filtering.md
 cites: []
 ---
 
-Las clasificaciones de nivel GIS dependen de saber dónde se ubican las instituciones regionales, no dónde se ubica cada clínica y colegio comunitario. **`service-places`** filtra los datos cívicos en bruto para retener únicamente instalaciones de escala regional — hospitales con al menos 50 camas dotadas, universidades con al menos 1.000 estudiantes equivalentes a tiempo completo, centros de transporte principales validados — y aplica un búfer espacial de 200 m para consolidar grandes campus institucionales en anclas regionales únicas. La densidad de servicios locales se filtra en esta etapa; las clasificaciones descendentes reflejan la concentración institucional en lugar del recuento de instalaciones.
+Las [[co-location-methodology|clasificaciones de nivel GIS]] dependen de saber dónde se ubican las instituciones regionales, no dónde se ubica cada clínica y colegio comunitario. **`service-places`** filtra los datos cívicos en bruto para retener únicamente instalaciones de escala regional — hospitales con al menos 50 camas dotadas, universidades con al menos 1.000 estudiantes equivalentes a tiempo completo, centros de transporte principales validados — y aplica un búfer espacial de 200 m para consolidar grandes campus institucionales en anclas regionales únicas. La densidad de servicios locales se filtra en esta etapa; las clasificaciones descendentes reflejan la concentración institucional en lugar del recuento de instalaciones.
 
 ## Umbrales de filtrado
 
-El servicio aplica filtros de ponderación de atributos a los datos cívicos en bruto proporcionados por `service-fs`:
+El servicio aplica filtros de ponderación de atributos a los datos cívicos en bruto proporcionados por [[service-fs-data-lake|`service-fs`]]:
 
 - **Hospitales regionales:** umbral mínimo de capacidad (50+ camas con personal).
 - **Universidades regionales:** umbral mínimo de matrícula (1.000+ estudiantes equivalentes a tiempo completo).
@@ -32,10 +32,11 @@ Los grandes campus institucionales frecuentemente aparecen en datos geoespaciale
 
 ## Salida de datos
 
-El `cleansed-places.jsonl` resultante proporciona el conjunto de datos de anclas regionales que `app-orchestration-gis` utiliza al otorgar las clasificaciones de nivel de co-ubicación finales.
+El `cleansed-places.jsonl` resultante proporciona el conjunto de datos de anclas regionales que [[app-orchestration-gis]] utiliza al otorgar las [[co-location-methodology|clasificaciones de nivel de co-ubicación]] finales.
 
 ## Véase también
 
-- [[service-fs-data-lake]]
-- [[service-business-clustering]]
-- [[app-orchestration-gis]]
+- [[service-fs-data-lake]] — lago de datos GIS que suministra los datos cívicos y minoristas en bruto
+- [[service-business-clustering]] — servicio de agrupación minorista que consume los datos de lugares filtrados
+- [[app-orchestration-gis]] — capa de orquestación que ensambla las clasificaciones de nivel
+- [[co-location-methodology]] — la metodología de clasificación que impulsa las asignaciones de nivel

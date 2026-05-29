@@ -14,7 +14,7 @@ editor: pointsav-engineering
 paired_with: service-fs-security-compliance.es.md
 ---
 
-`service-fs` is engineered for structural Write-Once-Read-Many storage that meets the requirements of SEC Rule 17a-4(f), eIDAS, and SOC 2 — record modification is not denied at the policy layer; it is denied by the storage engine itself, and external Sigstore Rekor anchoring provides proof-of-state independent of the platform's own systems. The compliance posture follows from architectural properties, not from configurable controls: the Rust storage engine physically lacks the ability to delete or modify records; every entry is cryptographically linked to the next; and any attempt to alter history is detectable through Merkle consistency proofs.
+`service-fs` is engineered for structural Write-Once-Read-Many storage that meets the requirements of SEC Rule 17a-4(f), eIDAS, and SOC 2 — record modification is not denied at the policy layer; it is denied by the storage engine itself, and external Sigstore Rekor anchoring via [[fs-anchor-emitter]] provides proof-of-state independent of the platform's own systems. The compliance posture follows from architectural properties, not from configurable controls: the Rust storage engine physically lacks the ability to delete or modify records; every entry is cryptographically linked to the next using [[merkle-proofs-as-substrate-primitive|Merkle consistency proofs]]; and any attempt to alter history is detectable.
 
 ## 1. Regulatory Alignment
 
@@ -28,10 +28,10 @@ The platform’s security posture is designed to satisfy multiple international 
 
 The security of `service-fs` is not a policy layer but a fundamental architectural property:
 
-1. **Structural Immutability:** The Rust API surface and underlying storage engine physically lack the ability to delete or modify records.
+1. **Structural Immutability:** The Rust API surface and underlying storage engine physically lack the ability to delete or modify records. The [[worm-ledger-architecture|WORM ledger architecture]] article details the storage-layer invariants.
 2. **Merkle-Chain Integrity:** Every entry is cryptographically linked to the next. Any attempt to alter history is instantly detectable via consistency proofs.
-3. **External Witnessing:** Monthly anchoring to the Sigstore Rekor public log provides an irrefutable proof-of-state that is independent of the platform’s internal systems.
-4. **Tenant Isolation:** In the intended seL4 deployment, isolation is enforced by microkernel-level capabilities, making cross-tenant access mathematically impossible.
+3. **External Witnessing:** Monthly anchoring to the Sigstore Rekor public log by [[fs-anchor-emitter]] provides an irrefutable proof-of-state that is independent of the platform’s internal systems.
+4. **Tenant Isolation:** In the intended [[sel4-microkernel-substrate|seL4]] deployment, isolation is enforced by microkernel-level [[capability-based-security|capability-based security]], making cross-tenant access mathematically impossible.
 
 ## 3. Data Archive Retrieval Protocol (DARP)
 
@@ -40,7 +40,7 @@ The security of `service-fs` is not a policy layer but a fundamental architectur
 ## 4. Threat Model Mitigation
 
 The platform’s posture is intended to defend against high-level institutional risks:
-* **Operator Tampering:** Even an administrator with root access cannot alter the ledger without breaking the Merkle chain and failing public Rekor consistency checks.
+* **Operator Tampering:** Even an administrator with root access cannot alter the ledger without breaking the Merkle chain and failing public Rekor consistency checks. The [[machine-based-auth|machine-based authentication]] system prevents unauthorised signing.
 * **Vendor Obsolescence:** Open-standard formats ensure data survival beyond the lifespan of the software vendor.
 * **Cryptographic Agility:** The system is designed to transition to post-quantum signature schemes (e.g., Dilithium) without requiring a full storage migration.
 

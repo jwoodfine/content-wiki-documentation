@@ -20,7 +20,7 @@ references:
  url: "https://docs.rs/tantivy/"
 ---
 
-`service-search` responde consultas de texto completo en millones de documentos de la plataforma en microsegundos, utilizando un índice invertido binario estático construido en Rust sobre la biblioteca Tantivy [^1] — y dado que el índice es un archivo en lugar de un proceso de base de datos activo, puede copiarse a medios portátiles y consultarse en cualquier máquina sin dependencias adicionales. El servicio es un componente del Anillo 2 — conocimiento y procesamiento — y cumple con el estándar Data Archive and Retrieval Protocol (DARP). Localiza documentos; no los genera ni los clasifica.
+`service-search` responde consultas de texto completo en millones de documentos de la plataforma en microsegundos, utilizando un índice invertido binario estático construido en Rust sobre la biblioteca Tantivy [^1] — y dado que el índice es un archivo en lugar de un proceso de base de datos activo, puede copiarse a medios portátiles y consultarse en cualquier máquina sin dependencias adicionales. El servicio es un componente del [[three-ring-architecture|Anillo 2]] — conocimiento y procesamiento — y cumple con el estándar Data Archive and Retrieval Protocol (DARP). Localiza documentos; no los genera ni los clasifica.
 
 ## Línea de base arquitectónica
 
@@ -28,7 +28,7 @@ Un índice invertido funciona construyendo un mapa comprimido de cada palabra de
 
 ## Anillo y función
 
-`service-search` ocupa el **Anillo 2 — Conocimiento y Procesamiento** en la arquitectura de tres anillos. El Anillo 2 es multiinquilino a través del espacio de nombres `moduleId` y opera deterministamente sin inferencia de IA. La función de `service-search` dentro del Anillo 2 es la recuperación: responde consultas contra el corpus indexado y devuelve referencias de documentos clasificadas.
+`service-search` ocupa el **Anillo 2 — Conocimiento y Procesamiento** en la [[three-ring-architecture|arquitectura de tres anillos]]. El Anillo 2 es multiinquilino a través del espacio de nombres `moduleId` y opera deterministamente sin inferencia de IA. La función de `service-search` dentro del Anillo 2 es la recuperación: responde consultas contra el corpus indexado y devuelve referencias de documentos clasificadas que los servicios del Anillo 2 o [[service-slm|Anillo 3]] utilizan para el procesamiento descendente.
 
 ## Propiedades arquitectónicas clave
 
@@ -39,7 +39,7 @@ Un índice invertido funciona construyendo un mapa comprimido de cada palabra de
 
 ## Véase también
 
-- [[service-extraction]]
-- [[service-slm]]
-- [[service-people]]
-- [[trajectory-substrate]]
+- [[service-extraction]] — servicio del Anillo 2 cuya salida analizada se alimenta al índice
+- [[service-slm]] — capa de inteligencia del Anillo 3 que consume los resultados de recuperación
+- [[service-people]] — libro mayor de identidades cuyos registros forman parte del corpus consultable
+- [[trajectory-substrate]] — el modelo de sustrato para la inteligencia de recuperación compuesta

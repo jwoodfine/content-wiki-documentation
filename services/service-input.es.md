@@ -13,11 +13,11 @@ paired_with: service-input.md
 language: es
 ---
 
-`service-input` es el servicio de ingesta de documentos del Anillo 1 en la arquitectura del sistema de PointSav. Acepta archivos en el perímetro por arrendatario, los enruta a través de analizadores específicos de formato y escribe la salida normalizada en el Ledger Inmutable WORM por arrendatario a través de `service-fs`.
+`service-input` es el servicio de ingesta de documentos del [[three-ring-architecture|Anillo 1]] en la arquitectura del sistema de PointSav. Acepta archivos en el perímetro por arrendatario, los enruta a través de analizadores específicos de formato y escribe la salida normalizada en el [[worm-ledger-design|Ledger Inmutable WORM]] por arrendatario a través de [[service-fs-architecture|`service-fs`]].
 
 ## La posición de Ancla
 
-SYS-ADR-10 designa esta posición como El Ancla (tecla de función F12 en `os-console`): el único punto de ingesta obligatorio donde los bytes del documento entran en el Anillo 1, se someten a análisis determinista y se entregan a `service-fs` para almacenamiento permanente de solo adición. Nada sobre el análisis se delega a un modelo de IA; la misma entrada siempre produce el mismo `ParsedDocument`.
+[[architecture-decisions|SYS-ADR-10]] designa esta posición como El Ancla (tecla de función F12 en [[os-console-platform|`os-console`]]): el único punto de ingesta obligatorio donde los bytes del documento entran en el Anillo 1, se someten a análisis determinista y se entregan a `service-fs` para almacenamiento permanente de solo adición. Nada sobre el análisis se delega a un modelo de IA; la misma entrada siempre produce el mismo `ParsedDocument`.
 
 ## Detección de formato
 
@@ -29,11 +29,11 @@ Cuatro analizadores específicos de formato están registrados al inicio del dae
 
 ## Conformidad con ADR-07
 
-ADR-07 prohíbe la inferencia de IA en el Anillo 1. `service-input` mantiene esta restricción en todo momento: la detección de formato utiliza coincidencia por extensión seguida de inspección de bytes mágicos; el análisis utiliza bibliotecas específicas que aplican algoritmos deterministas. `service-input` no intenta extraer significado del texto analizado. La interpretación semántica es responsabilidad de los servicios del Anillo 2 más abajo en la cadena.
+[[architecture-decisions|ADR-07]] prohíbe la inferencia de IA en el Anillo 1. `service-input` mantiene esta restricción en todo momento: la detección de formato utiliza coincidencia por extensión seguida de inspección de bytes mágicos; el análisis utiliza bibliotecas específicas que aplican algoritmos deterministas. `service-input` no intenta extraer significado del texto analizado. La interpretación semántica es responsabilidad de los servicios del [[service-extraction|Anillo 2]] más abajo en la cadena.
 
 ## Relaciones con otros servicios del Anillo 1
 
-`service-input` es uno de cuatro servicios de ingesta en el perímetro del Anillo 1: `service-input` para documentos genéricos, `service-email` para buzones de Microsoft Exchange, `service-people` para registros de identidad, y `service-fs` que es el ledger WORM mismo.
+`service-input` es uno de cuatro servicios de ingesta en el perímetro del Anillo 1: `service-input` para documentos genéricos, [[service-email]] para buzones de Microsoft Exchange, [[service-people]] para registros de identidad, y `service-fs` que es el ledger WORM mismo.
 
 ## Véase también
 

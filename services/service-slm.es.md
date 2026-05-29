@@ -28,7 +28,7 @@ Una solicitud de IA que sale del edificio no puede auditarse ni revocarse. En el
 
 <!--claim id=small-by-design confidence=structural cites=[]-->`service-slm` es el servicio de modelo de lenguaje de la familia PointSav. Es deliberadamente un Modelo de Lenguaje Pequeño — cuantizado, estrecho, rápido — y su trabajo no es la conversación sino la traducción semántica: convertir la intención institucional en salidas deterministas.<!--/claim-->
 
-<!--claim id=doorman-transit confidence=structural cites=[]-->El servicio se ejecuta en tres niveles de cómputo. Cada llamada de inferencia — local, de ráfaga o externa — transita el límite de auditoría del Portero, donde cada prompt y cada respuesta se capturan en el libro mayor por inquilino antes de que la respuesta regrese.<!--/claim-->
+<!--claim id=doorman-transit confidence=structural cites=[]-->El servicio se ejecuta en tres niveles de cómputo. Cada llamada de inferencia — local, de ráfaga o externa — transita el límite de auditoría del [[doorman-protocol|Portero]], donde cada prompt y cada respuesta se capturan en el [[worm-ledger-design|libro mayor]] por inquilino antes de que la respuesta regrese.<!--/claim-->
 
 Para un comprador regulado la consecuencia es concreta. Ninguna decisión de IA queda sin registrar, y ninguna solicitud llega a una API de terceros sin cruzar un límite que el operador controla. Este artículo cubre las cuatro operaciones, los tres niveles de cómputo, el límite del Portero y por qué un modelo pequeño es una elección estructural y no un compromiso de costo.
 
@@ -39,8 +39,8 @@ El servicio es invisible — no hay ventana de chat, y el operador nunca escribe
 | Operación | Entradas | Salida |
 |---|---|---|
 | Análisis de comandos semánticos | Intención en inglés desde el Terminal F8 | Comando UDP binario para `service-udp` |
-| Verificación de gravedad | Vector de Gravedad de 50 palabras de `service-content` | Token único `VALID` o `REJECT` |
-| Asignación de enchufe | Paquete de entidades de `service-extraction` + Plan de Cuentas | Sovereign-ID con enchufe del Plan de Cuentas |
+| Verificación de gravedad | Vector de Gravedad de 50 palabras de [[service-content]] | Token único `VALID` o `REJECT` |
+| Asignación de enchufe | Paquete de entidades de [[service-extraction]] + [[archetypes-and-chart-of-accounts|Plan de Cuentas]] | Sovereign-ID con enchufe del Plan de Cuentas |
 | Sugerencia de temas | Patrones recurrentes que señala el Motor de Gravedad | Entradas propuestas a la Bóveda de Semillas de Temas, para aprobación del operador |
 
 <!--claim id=no-autonomous-publish confidence=structural cites=[]-->El modelo nunca publica datos estructurados de forma autónoma. Cada salida transita un paso de verificación con intervención humana antes de poder escribirse en un libro mayor verificado.<!--/claim-->
@@ -51,7 +51,7 @@ La misma interfaz de `service-slm` se adapta al hardware del anfitrión a travé
 
 | Nivel | Dónde se ejecuta | Tamaño del modelo | Caso de uso |
 |---|---|---|---|
-| Local | Estación de trabajo del operador u `os-totebox` con al menos 16 GB de RAM | Modelo cuantizado de 1B–7B parámetros cargado localmente | Bóveda de Hierro Soberano — clientes institucionales; sin egreso a la nube |
+| Local | Estación de trabajo del operador u [[totebox-os|`os-totebox`]] con al menos 16 GB de RAM | Modelo cuantizado de 1B–7B parámetros cargado localmente | Bóveda de Hierro Soberano — clientes institucionales; sin egreso a la nube |
 | Ráfaga elástica | Nodo GPU efímero aprovisionado por el operador | Modelo más grande en hardware arrendado; datos tunelizados por un enlace cifrado | Procesamiento por lotes pesado optimizado en costo; el nodo se desmonta tras la ejecución |
 | API externa | Endpoint de API de terceros con licencia | Modelo de frontera | Enrutamiento de último recurso para tareas donde la capacidad local es insuficiente |
 

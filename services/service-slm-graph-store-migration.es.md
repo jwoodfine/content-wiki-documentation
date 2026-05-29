@@ -16,7 +16,7 @@ short_description: "service-slm migró su almacén de grafos de LadybugDB a SQLi
 cites: []
 ---
 
-El almacén de grafos de `service-slm` es un grafo de propiedades activo de entidades de negocio nombradas, extraídas nocturnamente del corpus de datos del operador — la capa de entidades que `service-content` utiliza para inyectar contexto de negocio estructurado en cada solicitud de inferencia sin enviar datos propietarios a un modelo externo. El grafo se almacena en LadybugDB y se reconstruye en un ciclo nocturno mediante el script de reconstrucción del DataGraph, que se ejecuta como Fase 1 de la ventana nocturna de Elastic Compute antes de que la fase de entrenamiento reclame la GPU.
+El almacén de grafos de [[service-slm]] es un grafo de propiedades activo de entidades de negocio nombradas, extraídas nocturnamente del corpus de datos del operador — la capa de entidades que [[service-content]] utiliza para inyectar contexto de negocio estructurado en cada solicitud de inferencia sin enviar datos propietarios a un modelo externo. El grafo se almacena en LadybugDB y se reconstruye en un ciclo nocturno mediante el script de reconstrucción del DataGraph, que se ejecuta como Fase 1 de la ventana nocturna de Elastic Compute antes de que la fase de entrenamiento reclame la GPU.
 
 Cada noche, el script de reconstrucción del DataGraph procesa el corpus de datos
 del operador y escribe las entidades nombradas extraídas en un grafo
@@ -38,12 +38,12 @@ operativas). Estas entidades se extraen de tres flujos de documentos: archivos
 markdown de transcripciones de reuniones del directorio de activos del
 minutebook, archivos YAML y markdown de investigación del directorio de
 service-agents, y registros JSON de fuentes de contactos del directorio de
-service-people.
+[[service-people]].
 
 ## Qué hace la reconstrucción nocturna
 
 Para cada documento no procesado, el script de reconstrucción llama a
-`POST :9080/v1/chat/completions` a través del endpoint Doorman, pasando el
+`POST :9080/v1/chat/completions` a través del endpoint [[doorman-protocol|Doorman]], pasando el
 texto del documento con una restricción de gramática JSON Schema. El modelo de
 lenguaje — OLMo 3 32B Think ejecutándose en Elastic Compute #1 mediante vLLM — devuelve
 un arreglo JSON estructurado de objetos de entidades. Cada objeto incluye el
@@ -81,7 +81,7 @@ interna que los usuarios reales nunca ejercerían.
 
 ## Idempotencia
 
-El script rastrea los documentos procesados mediante un registro local en
+El script rastrea los documentos procesados mediante un [[worm-ledger-design|registro]] local en
 `$DEPLOYMENT_ROOT/data/datagraph-processed.txt`. Cada documento se identifica
 mediante un hash de su contenido de archivo, prefijado con una etiqueta de
 origen (`mk-` para minutebook, `ag-` para service-agents, `sp-` para

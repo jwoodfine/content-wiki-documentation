@@ -28,7 +28,7 @@ An AI request that leaves the building cannot be audited and cannot be recalled.
 
 <!--claim id=small-by-design confidence=structural cites=[]-->`service-slm` is the language-model service of the PointSav family. It is deliberately a Small Language Model — quantised, narrow, fast — and its job is not conversation but semantic translation: turning institutional intent into deterministic outputs.<!--/claim-->
 
-<!--claim id=doorman-transit confidence=structural cites=[]-->The service runs in three compute tiers, and every inference call — local, burst, or external — transits the Doorman audit boundary, where each prompt and completion is captured to the per-tenant ledger before the response returns.<!--/claim-->
+<!--claim id=doorman-transit confidence=structural cites=[]-->The service runs in three compute tiers, and every inference call — local, burst, or external — transits the [[doorman-protocol|Doorman]] audit boundary, where each prompt and completion is captured to the per-tenant [[worm-ledger-design|ledger]] before the response returns.<!--/claim-->
 
 For a regulated buyer the consequence is concrete. No AI decision is unlogged, and no request reaches a third-party API without crossing a boundary the operator controls. This article covers the four operations, the three compute tiers, the Doorman boundary, and why a small model is a structural choice rather than a cost compromise.
 
@@ -39,8 +39,8 @@ The service is invisible — there is no chat window, and the operator never typ
 | Operation | Inputs | Output |
 |---|---|---|
 | Semantic command parsing | English intent from the F8 Terminal | Binary UDP command for `service-udp` |
-| Gravity verification | 50-word Gravity Vector from `service-content` | `VALID` or `REJECT` single token |
-| Socket assignment | Entity bundle from `service-extraction` + Chart of Accounts | Sovereign-ID with Chart-of-Accounts socket |
+| Gravity verification | 50-word Gravity Vector from [[service-content]] | `VALID` or `REJECT` single token |
+| Socket assignment | Entity bundle from [[service-extraction]] + [[archetypes-and-chart-of-accounts|Chart of Accounts]] | Sovereign-ID with Chart-of-Accounts socket |
 | Theme suggestion | Recurring patterns the Gravity Engine flags | Proposed new entries to the Themes Seed Vault, for operator approval |
 
 <!--claim id=no-autonomous-publish confidence=structural cites=[]-->The model never publishes structured data autonomously. Every output transits a human-in-the-loop verification step before it can be written to a verified ledger.<!--/claim-->
@@ -51,7 +51,7 @@ The same `service-slm` interface adapts to the host hardware through three execu
 
 | Tier | Where it runs | Model size | Use case |
 |---|---|---|---|
-| Local | Operator workstation or `os-totebox` with at least 16 GB RAM | 1B–7B-parameter quantised model loaded locally | Sovereign Iron Vault — institutional customers; no cloud egress |
+| Local | Operator workstation or [[totebox-os|`os-totebox`]] with at least 16 GB RAM | 1B–7B-parameter quantised model loaded locally | Sovereign Iron Vault — institutional customers; no cloud egress |
 | Elastic burst | Operator-provisioned ephemeral GPU node | Larger model on rented hardware; data tunnelled over an encrypted link | Cost-optimised heavy batch processing; the node is torn down after the run |
 | External API | Licensed third-party API endpoint | Frontier model | Last-resort routing for tasks where local capacity is insufficient |
 

@@ -16,7 +16,7 @@ short_description: "service-slm migrated its graph store from LadybugDB to SQLit
 cites: []
 ---
 
-The `service-slm` graph store is a live property graph of named business entities extracted nightly from an operator's data corpus — the entity layer that `service-content` uses to inject structured business context into every inference request without sending proprietary data to an external model. The graph is stored in LadybugDB and rebuilt on a nightly schedule by the DataGraph rebuild script, which runs as Phase 1 of the Elastic Compute nightly window before the model-training phase claims the GPU.
+The [[service-slm]] graph store is a live property graph of named business entities extracted nightly from an operator's data corpus — the entity layer that [[service-content]] uses to inject structured business context into every inference request without sending proprietary data to an external model. The graph is stored in LadybugDB and rebuilt on a nightly schedule by the DataGraph rebuild script, which runs as Phase 1 of the Elastic Compute nightly window before the model-training phase claims the GPU.
 
 Each night, the DataGraph rebuild script processes the operator data
 corpus and writes extracted named entities to a property graph stored in
@@ -37,12 +37,12 @@ Location (offices, sites, and operational addresses). These entities are
 extracted from three document streams: meeting transcript markdown files
 from the minutebook asset directory, research and background YAML and markdown
 files from the service-agents directory, and contact source JSON records from
-the service-people directory.
+the [[service-people]] directory.
 
 ## What the nightly rebuild does
 
 For each unprocessed document, the rebuild script calls
-`POST :9080/v1/chat/completions` through the Doorman endpoint, passing the
+`POST :9080/v1/chat/completions` through the [[doorman-protocol|Doorman]] endpoint, passing the
 document text with a JSON Schema grammar constraint. The language model —
 OLMo 3 32B Think running on Elastic Compute #1 via vLLM — returns a structured JSON
 array of entity objects. Each object carries the entity name, classification,
@@ -78,7 +78,7 @@ that real callers would never exercise.
 
 ## Idempotency
 
-The script tracks processed documents using a local ledger at
+The script tracks processed documents using a local [[worm-ledger-design|ledger]] at
 `$DEPLOYMENT_ROOT/data/datagraph-processed.txt`. Each document is identified by
 a hash of its file content, prefixed with a source tag (`mk-` for minutebook,
 `ag-` for service-agents, `sp-` for service-people). Before processing any
