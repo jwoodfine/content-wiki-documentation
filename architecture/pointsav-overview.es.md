@@ -40,13 +40,13 @@ Tres ventajas estructurales emergen de la separación:
 
 ## Modelo de licenciamiento
 
-La estrategia de productos sigue un patrón de núcleo abierto. Los sistemas operativos principales (`os-totebox`, `os-console`, `os-workplace`) están previstos para su lanzamiento bajo Apache 2.0 con un Addendum Soberano previsto que garantice que las instancias en ejecución permanezcan libremente transferibles por el operador independientemente de dónde estén alojadas. El producto agregador de flota (`os-orchestration`) está previsto para permanecer como propietario en calidad de impulsor de ingresos comerciales.
+La estrategia de productos sigue un patrón de núcleo abierto. Los sistemas operativos principales ([[totebox-os|`os-totebox`]], [[console-os|`os-console`]], [[os-workplace|`os-workplace`]]) están previstos para su lanzamiento bajo Apache 2.0 con un Addendum Soberano previsto que garantice que las instancias en ejecución permanezcan libremente transferibles por el operador independientemente de dónde estén alojadas. El producto agregador de flota ([[os-orchestration|`os-orchestration`]]) está previsto para permanecer como propietario en calidad de impulsor de ingresos comerciales.
 
 PointSav tiene previsto asociarse con la Sovereign Data Foundation para supervisar la integridad de los componentes de código abierto. Los términos y la estructura de cualquier acuerdo de este tipo están previstos y sujetos a finalización.
 
 ## Modelo de contribuidores
 
-El trabajo de ingeniería fluye a través de identidades de contribuidores de nivel de staging — contribuidores establecidos que son empleados de Woodfine Management Corp. y envían cambios a sus propias bifurcaciones de GitHub. La función de administración del proveedor acepta contribuciones mediante fusión-aplastada — el momento en que la propiedad intelectual se transfiere formalmente del contribuidor al proveedor. La organización cliente extrae etiquetas de versión del proveedor. Se aplica una compartimentación de doble cara: los contribuidores nunca envían directamente a los repositorios del cliente; la organización cliente nunca tiene visibilidad de las bifurcaciones de los contribuidores.
+El trabajo de ingeniería fluye a través de identidades de contribuidores de nivel de staging — contribuidores establecidos que son empleados de Woodfine Management Corp. y envían cambios a sus propias bifurcaciones de GitHub. La función de administración del proveedor acepta contribuciones mediante fusión-aplastada — el momento en que la propiedad intelectual se transfiere formalmente del contribuidor al proveedor. La organización cliente extrae etiquetas de versión del proveedor. Se aplica una compartimentación de doble cara: los contribuidores nunca envían directamente a los repositorios del cliente; la organización cliente nunca tiene visibilidad de las bifurcaciones de los contribuidores. Véase [[five-stage-supply-chain|la cadena de suministro de cinco etapas]].
 
 ## Véase también
 

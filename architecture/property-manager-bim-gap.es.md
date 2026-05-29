@@ -14,7 +14,7 @@ cites: [ifc-4-3, iso-19650]
 paired_with: property-manager-bim-gap.md
 ---
 
-Los Modelos de Información para la Construcción son elaborados por arquitectos e ingenieros estructurales, entregados a los contratistas para la construcción, y luego transferidos a los administradores de propiedades en la finalización práctica. En esa transferencia, la utilidad del modelo para las personas que operan el edificio durante los próximos 30 años depende enteramente de si el administrador de propiedades tiene acceso a un visor BIM, sabe cómo usarlo y puede permitirse mantener la licencia de la herramienta de autoría que produjo el archivo.
+Los Modelos de Información para la Construcción son elaborados por arquitectos e ingenieros estructurales, entregados a los contratistas para la construcción, y luego transferidos a los administradores de propiedades en la finalización práctica. En esa transferencia, la utilidad del modelo para las personas que operan el edificio durante los próximos 30 años depende enteramente de si el administrador de propiedades tiene acceso a un visor BIM, sabe cómo usarlo y puede permitirse mantener la licencia de la herramienta de autoría que produjo el archivo. Véase también [[asset-anchored-bim-vault|la bóveda BIM anclada al activo]] y [[building-design-system-bim|el Sistema de Diseño de la Construcción]].
 
 En la práctica, la mayoría no puede.
 
@@ -38,7 +38,7 @@ Este enfoque resuelve los problemas de costo del visor y costo de capacitación 
 
 ## La Brecha que Esta Plataforma Está Prevista para Cubrir
 
-Los componentes de interfaz específicos para FM del Sistema de Diseño de la Construcción — `GuidSearch` y `AuditLog` — están diseñados para el gestor de instalaciones que necesita acceso de solo lectura a los datos del modelo BIM.
+Los [[aec-interface-conventions|componentes de interfaz]] específicos para FM del [[building-design-system-bim|Sistema de Diseño de la Construcción]] — `GuidSearch` y `AuditLog` — están diseñados para el gestor de instalaciones que necesita acceso de solo lectura a los datos del modelo BIM.
 
 `GuidSearch` es una interfaz de búsqueda que toma un GUID IFC — el identificador alfanumérico estampado en cada puerta, cada muro, cada componente HVAC en un modelo BIM — y devuelve los valores Pset del elemento, el historial de mantenimiento y los problemas BCF abiertos. Un gestor de instalaciones que escanea un código QR adjunto a un equipo recupera los datos del modelo para ese elemento específico sin navegar por un viewport 3D.
 

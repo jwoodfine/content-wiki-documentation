@@ -13,7 +13,7 @@ cites: [ifc-4-3, iso-19650]
 paired_with: property-manager-bim-gap.es.md
 ---
 
-Building Information Models are authored by architects and structural engineers, delivered to contractors for construction, and then handed to property managers at practical completion. At that handover, the model's usefulness to the people who operate the building for the next 30 years depends entirely on whether the property manager has access to a BIM viewer, knows how to use it, and can afford to maintain the authoring-tool licence that produced the file.
+Building Information Models are authored by architects and structural engineers, delivered to contractors for construction, and then handed to property managers at practical completion. At that handover, the model's usefulness to the people who operate the building for the next 30 years depends entirely on whether the property manager has access to a BIM viewer, knows how to use it, and can afford to maintain the authoring-tool licence that produced the file. See also [[asset-anchored-bim-vault|the asset-anchored BIM vault]] and [[building-design-system-bim|the Building Design System]].
 
 In practice, most do not.
 
@@ -39,7 +39,7 @@ When the building is renovated — walls moved, systems upgraded — the CAFM da
 
 ## The Gap This Platform Is Intended to Fill
 
-The Building Design System's FM-specific interface components — `GuidSearch` and `AuditLog` — are designed for the facilities manager who needs read-only access to BIM model data without the cost or complexity of an authoring-tool licence.
+The [[building-design-system-bim|Building Design System]]'s FM-specific [[aec-interface-conventions|interface components]] — `GuidSearch` and `AuditLog` — are designed for the facilities manager who needs read-only access to BIM model data without the cost or complexity of an authoring-tool licence.
 
 `GuidSearch` is a search interface that takes an IFC GUID — the alphanumeric identifier stamped on every door, every wall, every HVAC component in a BIM model — and returns the element's Pset values, maintenance history, and open BCF issues. A facilities manager scanning a QR code attached to a piece of equipment, or reading a GUID from a work-order form, retrieves the building model data for that specific element without navigating a 3D viewport.
 

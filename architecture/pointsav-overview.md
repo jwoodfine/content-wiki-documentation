@@ -40,13 +40,13 @@ Three structural advantages emerge from the separation:
 
 ## Licensing model
 
-The product strategy follows an open-core pattern. The core operating systems (`os-totebox`, `os-console`, `os-workplace`) are intended for release under Apache 2.0 with a planned Sovereign Addendum ensuring that running instances remain freely transferable by the operator regardless of where they are hosted. The fleet-aggregator product (`os-orchestration`) is intended to remain proprietary as the commercial revenue driver.
+The product strategy follows an open-core pattern. The core operating systems ([[totebox-os|`os-totebox`]], [[console-os|`os-console`]], [[os-workplace|`os-workplace`]]) are intended for release under Apache 2.0 with a planned Sovereign Addendum ensuring that running instances remain freely transferable by the operator regardless of where they are hosted. The fleet-aggregator product ([[os-orchestration|`os-orchestration`]]) is intended to remain proprietary as the commercial revenue driver.
 
 PointSav intends to partner with the Sovereign Data Foundation to oversee the integrity of the open-source components. Terms and structure of any such arrangement are planned and subject to finalisation.
 
 ## Contributor model
 
-Engineering work flows through staging-tier contributor identities — established contributors who are Woodfine Management Corp. employees pushing to their own GitHub forks. The vendor administration function accepts contributions via squash-merge — the moment the intellectual property formally transfers from contributor to vendor. The customer organisation pulls release tags from the vendor. A double-blind air-gap applies: contributors never push directly to customer repositories; the customer organisation never has visibility into contributor forks.
+Engineering work flows through staging-tier contributor identities — established contributors who are Woodfine Management Corp. employees pushing to their own GitHub forks. The vendor administration function accepts contributions via squash-merge — the moment the intellectual property formally transfers from contributor to vendor. The customer organisation pulls release tags from the vendor. A double-blind air-gap applies: contributors never push directly to customer repositories; the customer organisation never has visibility into contributor forks. See [[five-stage-supply-chain|the five-stage supply chain]].
 
 ## See also
 
