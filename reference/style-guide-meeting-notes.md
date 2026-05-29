@@ -16,7 +16,7 @@ paired_with: style-guide-meeting-notes.es.md
 
 > Meeting notes exist for the action items and the decisions. Everything else is archive material.
 
-**Meeting notes** (COMMS genre) record what was decided and what happens next in a meeting. They are not a transcript. A reader who was absent reads the notes to learn the outcome and their obligations — not to reconstruct the conversation. This article is the human-facing standard; the machine-readable counterpart lives in `service-disclosure/templates/meeting-notes.toml`.
+**Meeting notes** (COMMS genre) record what was decided and what happens next in a meeting. They are not a transcript. A reader who was absent reads the notes to learn the outcome and their obligations — not to reconstruct the conversation. For decisions that carry architectural weight, a [[architecture-decisions|formal ADR]] is the right artifact, not meeting notes. This article is the human-facing standard; the machine-readable counterpart lives in `service-disclosure/templates/meeting-notes.toml`.
 
 ## When to use this template
 

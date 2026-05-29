@@ -14,7 +14,7 @@ cites: []
 paired_with: style-guide-changelog.md
 ---
 
-Un changelog responde una pregunta para cada versión: qué cambió, expresado en una línea, desde el punto de vista del lector.
+Un changelog responde una pregunta para cada versión: qué cambió, expresado en una línea, desde el punto de vista del lector. La [[root-files-discipline|disciplina de archivos en la raíz]] rige cuándo es obligatorio un `CHANGELOG.md`.
 
 ## Cuándo usar esta plantilla
 

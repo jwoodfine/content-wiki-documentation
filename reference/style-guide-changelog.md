@@ -16,7 +16,7 @@ paired_with: style-guide-changelog.es.md
 
 > A changelog answers one question for every version: what changed, stated in one line, from the reader's point of view.
 
-A **CHANGELOG.md** records meaningful changes to a repository at each version boundary. It is addressed to a reader who wants to know what a new version contains without reading a diff. A changelog is not a commit log — it selects, compresses, and reframes the commit history for a consumer who cares about impact, not implementation. This article is the human-facing standard; the machine-readable counterpart lives in `service-disclosure/templates/changelog.toml`.
+A **CHANGELOG.md** records meaningful changes to a repository at each version boundary. It is addressed to a reader who wants to know what a new version contains without reading a diff. A changelog is not a commit log — it selects, compresses, and reframes the commit history for a consumer who cares about impact, not implementation. The [[root-files-discipline|root files discipline]] governs when a CHANGELOG.md is required. This article is the human-facing standard; the machine-readable counterpart lives in `service-disclosure/templates/changelog.toml`.
 
 ## When to use this template
 

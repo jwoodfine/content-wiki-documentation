@@ -14,7 +14,7 @@ cites: []
 paired_with: style-guide-inventory.md
 ---
 
-Un inventario es un conteo fechado de lo que existe, en qué estado se encuentra y de qué tipo es. No es un plan ni un registro de cambios.
+Un inventario es un conteo fechado de lo que existe, en qué estado se encuentra y de qué tipo es. No es un plan ni un registro de cambios. Para la disciplina de [[citation-substrate|citas]] que rige cómo los inventarios referencian otros documentos, consulte el sustrato de citas.
 
 ## Cuándo usar esta plantilla
 

@@ -14,7 +14,7 @@ cites: []
 paired_with: style-guide-policy.md
 ---
 
-Una política establece qué se requiere, quién está obligado y qué ocurre cuando se viola la regla. Cada oración de una política es una regla o el soporte de una regla.
+Una política establece qué se requiere, quién está obligado y qué ocurre cuando se viola la regla. Cada oración de una política es una regla o el soporte de una regla. Se diferencia de un ADR (que registra una decisión arquitectónica puntual) — véase [[architecture-decisions|Decisiones de Arquitectura]].
 
 ## Cuándo usar esta plantilla
 

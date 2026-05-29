@@ -16,7 +16,7 @@ paired_with: style-guide-chat.es.md
 
 > A chat message carries one point. If a second point is needed, send a second message.
 
-A **chat message** (COMMS genre) is a short synchronous or near-synchronous communication sent to a team channel or direct recipient. It is addressed to people who are present or will be present soon. Chat is not a substitute for a memo, an email, or a ticket comment — each serves a different archival purpose. This article is the human-facing standard; the machine-readable counterpart lives in `service-disclosure/templates/chat.toml`.
+A **chat message** (COMMS genre) is a short synchronous or near-synchronous communication sent to a team channel or direct recipient. It is addressed to people who are present or will be present soon. Chat is not a substitute for a memo, an [[style-guide-email|email]], or a [[style-guide-ticket-comment|ticket comment]] — each serves a different archival purpose. This article is the human-facing standard; the machine-readable counterpart lives in `service-disclosure/templates/chat.toml`.
 
 ## When to use this template
 

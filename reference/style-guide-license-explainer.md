@@ -16,7 +16,7 @@ paired_with: style-guide-license-explainer.es.md
 
 > A license explainer translates a legal instrument into plain terms. It is not the license. If the explainer and the license conflict, the license wins.
 
-A **license explainer** (PROSE genre) is a plain-language companion to a formal license document. It helps a reader understand what the license permits, requires, and forbids without having to parse legal text. An explainer is not legally binding — it is a reading aid. The binding text is always the formal license document linked from the explainer. This article is the human-facing standard; the machine-readable counterpart lives in `service-disclosure/templates/license-explainer.toml`.
+A **license explainer** (PROSE genre) is a plain-language companion to a formal license document. It helps a reader understand what the license permits, requires, and forbids without having to parse legal text. An explainer is not legally binding — it is a reading aid. The binding text is always the formal license document linked from the explainer. For the governance layer that controls license propagation across repositories, see [[disclosure-substrate]]. This article is the human-facing standard; the machine-readable counterpart lives in `service-disclosure/templates/license-explainer.toml`.
 
 ## When to use this template
 

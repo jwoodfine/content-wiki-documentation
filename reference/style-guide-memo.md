@@ -16,7 +16,7 @@ paired_with: style-guide-memo.es.md
 
 > A memo records a decision, analysis, or recommendation addressed to a named audience. It is complete when the reader knows what was decided and what happens next — without reading anything else.
 
-A **memo** (PROSE-MEMO genre) is an internal document addressed to a specific recipient for a specific decision or recommendation. It is not a status update, not a design document, and not a policy. A memo closes open questions; it does not catalogue them. This article describes the human-facing standard; the machine-readable counterpart lives in `service-disclosure/templates/memo.toml`.
+A **memo** (PROSE-MEMO genre) is an internal document addressed to a specific recipient for a specific decision or recommendation. It is not a status update, not a design document, and not a policy. A memo closes open questions; it does not catalogue them. For register and tone discipline applied to all prose artifacts, see [[editorial-language-registers]]. This article describes the human-facing standard; the machine-readable counterpart lives in `service-disclosure/templates/memo.toml`.
 
 ## When to use this template
 

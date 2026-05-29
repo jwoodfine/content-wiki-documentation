@@ -16,7 +16,7 @@ paired_with: style-guide-ticket-comment.es.md
 
 > A ticket comment records a state change or a decision — not a thought. Every comment advances the ticket.
 
-A **ticket comment** (COMMS genre) is a structured update on an issue, task, or work item. It is addressed to anyone who reads the ticket's history after the comment is posted. Unlike a chat message (which is synchronous and ephemeral), a ticket comment is a permanent record and may be read months later by someone with no context from the thread. This article is the human-facing standard; the machine-readable counterpart lives in `service-disclosure/templates/ticket-comment.toml`.
+A **ticket comment** (COMMS genre) is a structured update on an issue, task, or work item. It is addressed to anyone who reads the ticket's history after the comment is posted. Unlike a [[style-guide-chat|chat message]] (which is synchronous and ephemeral), a ticket comment is a permanent record and may be read months later by someone with no context from the thread. This article is the human-facing standard; the machine-readable counterpart lives in `service-disclosure/templates/ticket-comment.toml`.
 
 ## When to use this template
 

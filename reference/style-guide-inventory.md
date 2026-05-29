@@ -16,7 +16,7 @@ paired_with: style-guide-inventory.es.md
 
 > An inventory is a timestamped count of what exists, what state it is in, and what type it is. It is not a plan and not a log.
 
-An **inventory** (PROSE genre) is a point-in-time enumeration of items in a defined scope, organised to support classification and action. It differs from a registry (which is authoritative and updated continuously) and from a brief (which carries analysis and recommendation). An inventory is read; a registry is queried. This article is the human-facing standard; the machine-readable counterpart lives in `service-disclosure/templates/inventory.toml`.
+An **inventory** (PROSE genre) is a point-in-time enumeration of items in a defined scope, organised to support classification and action. It differs from a registry (which is authoritative and updated continuously) and from a brief (which carries analysis and recommendation). An inventory is read; a registry is queried. For the [[citation-substrate|citation discipline]] that governs how inventories reference other documents, see the citation substrate. This article is the human-facing standard; the machine-readable counterpart lives in `service-disclosure/templates/inventory.toml`.
 
 ## When to use this template
 

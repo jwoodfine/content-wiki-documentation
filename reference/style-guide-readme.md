@@ -16,7 +16,7 @@ paired_with: style-guide-readme.es.md
 
 > A `README.md` is the first thing a collaborator or automated system reads when it enters a repository. It answers three questions in order: what is this, what do I need to know to use it, and where do I look next.
 
-A **README** is the entry point for a repository or project directory. It is addressed to a reader who has no prior context — a new contributor, a review system, or an external collaborator encountering the repo for the first time. This article covers the human-facing standard; the machine-readable counterpart lives in `service-disclosure/templates/readme.toml`.
+A **README** is the entry point for a repository or project directory. It is addressed to a reader who has no prior context — a new contributor, a review system, or an external collaborator encountering the repo for the first time. This article covers the human-facing standard; the machine-readable counterpart lives in `service-disclosure/templates/readme.toml`. The [[root-files-discipline|root files discipline]] governs which companion files may appear alongside the README at a repository root.
 
 ## When to use this template
 
@@ -57,3 +57,4 @@ Bilingual pairs (`README.md` + `README.es.md`) are strategic adaptations, not tr
 - [[style-guide-topic|Style Guide — TOPIC]]
 - [[style-guide-guide|Style Guide — GUIDE]]
 - [[language-protocol-substrate|Language Protocol Substrate]]
+- [[root-files-discipline]] — allowed companion files at a repository root

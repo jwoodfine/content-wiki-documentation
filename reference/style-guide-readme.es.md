@@ -14,7 +14,7 @@ cites: []
 paired_with: style-guide-readme.md
 ---
 
-Un archivo `README.md` es lo primero que lee un colaborador o sistema automatizado al ingresar a un repositorio. Responde tres preguntas en orden: qué es esto, qué necesito saber para usarlo y dónde busco más información.
+Un archivo `README.md` es lo primero que lee un colaborador o sistema automatizado al ingresar a un repositorio. Responde tres preguntas en orden: qué es esto, qué necesito saber para usarlo y dónde busco más información. La [[root-files-discipline|disciplina de archivos en la raíz]] rige qué archivos compañeros pueden aparecer junto al README en la raíz de un repositorio.
 
 ## Cuándo usar esta plantilla
 

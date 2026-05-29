@@ -16,7 +16,7 @@ paired_with: style-guide-policy.es.md
 
 > A policy states what is required, who is bound, and what happens when the rule is violated. Every sentence in a policy is either a rule or support for a rule.
 
-A **policy** (LEGAL genre) is a binding statement of required behaviour within a defined scope. It differs from an ADR (which records a one-time architectural decision and its rationale) and from a convention (which describes an agreed pattern). A policy names its rules, its enforcement mechanism, and its review cadence. This article is the human-facing standard; the machine-readable counterpart lives in `service-disclosure/templates/policy.toml`.
+A **policy** (LEGAL genre) is a binding statement of required behaviour within a defined scope. It differs from an ADR (which records a one-time architectural decision and its rationale — see [[architecture-decisions|Architecture Decision Records]]) and from a convention (which describes an agreed pattern). A policy names its rules, its enforcement mechanism, and its review cadence. This article is the human-facing standard; the machine-readable counterpart lives in `service-disclosure/templates/policy.toml`.
 
 ## When to use this template
 

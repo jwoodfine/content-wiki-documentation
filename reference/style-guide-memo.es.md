@@ -14,7 +14,7 @@ cites: []
 paired_with: style-guide-memo.md
 ---
 
-Un memo registra una decisión, análisis o recomendación dirigida a una audiencia nombrada. Es completo cuando el lector sabe qué se decidió y qué ocurre a continuación, sin necesidad de consultar ningún otro documento.
+Un memo registra una decisión, análisis o recomendación dirigida a una audiencia nombrada. Es completo cuando el lector sabe qué se decidió y qué ocurre a continuación, sin necesidad de consultar ningún otro documento. Para la disciplina de registro y tono aplicada a todos los artefactos en prosa, véase [[editorial-language-registers|registros de lenguaje editorial]].
 
 ## Cuándo usar esta plantilla
 
