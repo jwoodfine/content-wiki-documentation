@@ -42,7 +42,7 @@ Code moves from a contributor's local environment to a production deployment thr
 
 **Stage 2 — Offer.** The contributor opens a pull request from their fork into the vendor organisation (`pointsav/...`). The work becomes visible to the administrator. Automated checks may run; code review begins.
 
-**Stage 3 — Audit.** The administrator (`ps-administrator`) performs a squash-and-merge. This is the legally significant moment: the contributor's commit history is collapsed into a single corporate commit signed by the administrator's SSH key. Ownership transfers to PointSav Digital Systems. Earlier experimental commits, prototype attempts, and abandoned approaches do not survive into the corporate ledger.
+**Stage 3 — Audit.** The administrator (`ps-administrator`) performs a squash-and-merge. This is the legally significant moment: the contributor's commit history is collapsed into a single corporate commit signed by the administrator's SSH key. Ownership transfers to [[pointsav-overview|PointSav Digital Systems]]. Earlier experimental commits, prototype attempts, and abandoned approaches do not survive into the corporate ledger.
 
 **Stage 4 — Transfer.** Vendor administration mirrors the verified release tag from `pointsav/<repo>` to `woodfine/<repo>`. The customer receives only signed tags and never sees in-flight contributor commits. This is the release propagation step that firewalls the customer from upstream risk.
 
@@ -70,7 +70,7 @@ The canonical repositories as of mid-2026 include:
 
 | Repository | Role |
 |---|---|
-| `pointsav/pointsav-monorepo` | All `os-*`, `app-*`, `service-*`, `system-*` code |
+| `pointsav/pointsav-monorepo` | All `os-*`, `app-*`, `service-*`, `system-*` code (see [[os-family-overview|OS family overview]]) |
 | `pointsav/content-wiki-documentation` | Public documentation wiki |
 | `woodfine/woodfine-fleet-deployment` | Customer deployment catalogue and GUIDE articles |
 

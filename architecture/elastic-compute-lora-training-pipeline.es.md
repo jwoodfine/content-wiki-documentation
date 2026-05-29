@@ -16,7 +16,7 @@ short_description: "Elastic Compute #1 ejecuta un pipeline nocturno de dos fases
 cites: []
 ---
 
-El sustrato acumulativo de PointSav requiere reentrenamiento periódico para incorporar las interacciones del operador y las decisiones editoriales acumuladas desde el ciclo anterior. Elastic Compute #1 es el nodo de cómputo que ejecuta este reentrenamiento cada noche — una instancia spot en la nube con GPU que reconstruye el grafo de conocimiento y produce pesos adaptadores LoRA (Adaptación de Bajo Rango, del inglés Low-Rank Adaptation) actualizados para el modelo de lenguaje local de la plataforma. El pipeline operacionaliza la afirmación estructural de que cada sesión productiva mejora la plataforma para la siguiente: convierte datos de interacción en bruto en pesos de modelo que hereda la próxima sesión.
+El [[compounding-substrate|sustrato acumulativo]] de [[pointsav-overview|PointSav]] requiere reentrenamiento periódico para incorporar las interacciones del operador y las decisiones editoriales acumuladas desde el ciclo anterior. Elastic Compute #1 es el nodo de cómputo que ejecuta este reentrenamiento cada noche — una instancia spot en la nube con GPU ([[yoyo-compute-substrate|cómputo Yo-Yo]]) que reconstruye el grafo de conocimiento y produce pesos adaptadores LoRA (Adaptación de Bajo Rango, del inglés Low-Rank Adaptation) actualizados para el modelo de lenguaje local de la plataforma. El pipeline operacionaliza la afirmación estructural de que cada sesión productiva mejora la plataforma para la siguiente: convierte datos de interacción en bruto en pesos de modelo que hereda la próxima sesión.
 
 Elastic Compute #1 es una instancia spot g2-standard-4 de Google Cloud equipada con
 una GPU NVIDIA L4 de 24 GB de VRAM. Cada noche ejecuta un pipeline de dos
@@ -52,12 +52,12 @@ el servidor de inferencia está activo, `jennifer-datagraph-rebuild.sh` procesa
 tres flujos de documentos del despliegue del operador: archivos markdown de
 transcripciones de reuniones, archivos YAML y markdown de investigación de
 agentes, y registros JSON de fuentes de contactos. Para cada documento, el
-script llama a `POST :9080/v1/chat/completions` a través de Doorman, que
+script llama a `POST :9080/v1/chat/completions` a través de [[doorman-protocol|Doorman]], que
 enruta la carga útil al modelo 32B Think en la VM de Elastic Compute. El modelo devuelve
 un arreglo JSON estructurado de entidades nombradas — personas, empresas,
 proyectos, cuentas y ubicaciones — restringido por una gramática JSON Schema
 para que la salida sea procesable por máquina sin postprocesamiento. El script
-luego llama a `POST :9081/v1/graph/mutate` en service-content para escribir
+luego llama a `POST :9081/v1/graph/mutate` en [[service-content]] para escribir
 esas entidades en LadybugDB. Un registro local de hashes de documentos
 procesados garantiza que cada documento se procese exactamente una vez en
 múltiples ejecuciones nocturnas.
@@ -111,7 +111,7 @@ ingeniería: cómo se describen los diffs, cómo se formulan los comentarios de
 revisión y cómo se documentan las decisiones de implementación.
 
 **Pares de aprendizaje** son pares DPO (optimización de preferencias directas)
-producidos por el sustrato de enrutamiento de aprendizaje. Cada par consiste
+producidos por el [[apprenticeship-substrate|sustrato de enrutamiento de aprendizaje]]. Cada par consiste
 en una respuesta en sombra (la salida sin guía del modelo) y una respuesta
 veredicto (la formulación preferida confirmada por el operador). El
 entrenamiento DPO sobre estos pares mueve el modelo hacia la distribución de
@@ -125,8 +125,8 @@ del adaptador contiene los archivos de pesos LoRA y la configuración del
 tokenizador — el tamaño total es típicamente de 1 a 3 GB. Luego,
 `lora-training.sh` indica a `adapter-publish.service` que cargue el directorio
 del adaptador al bucket de GCS configurado. El adaptador queda disponible
-para que Doorman del espacio de trabajo lo cargue como una superposición de
-pesos en tiempo de inferencia sobre el modelo base. El archivo marcador se
+para que [[doorman-protocol|Doorman]] del espacio de trabajo lo cargue como una superposición de
+pesos en tiempo de inferencia sobre el modelo base mediante [[adapter-composition|composición de adaptadores]]. El archivo marcador se
 renombra a `.completed` cuando todos los pasos se completan correctamente.
 
 ## Entrenamiento de adaptadores versus preentrenamiento continuo

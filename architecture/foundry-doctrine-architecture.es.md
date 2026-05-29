@@ -14,7 +14,7 @@ paired_with: foundry-doctrine-architecture.md
 ---
 
 
-La carta constitucional de la plataforma PointSav codifica los principios, compromisos y afirmaciones estructurales que rigen cada decisión de ingeniería, operaciones y editorial. La versión actual es v0.1.0 ALPHA, ratificada el 30 de abril de 2026.
+La carta constitucional de la plataforma [[pointsav-overview|PointSav]] codifica los principios, compromisos y afirmaciones estructurales que rigen cada decisión de ingeniería, operaciones y editorial. La versión actual es v0.1.0 ALPHA, ratificada el 30 de abril de 2026. Véase [[foundry-doctrine-overview|la visión general de la doctrina]] para el encuadre introductorio.
 
 ## Los Seis Pilares
 
@@ -38,17 +38,17 @@ La doctrina enumera 54 afirmaciones estructurales numeradas que juntas constituy
 
 Grupos representativos del conjunto completo de afirmaciones:
 
-**Soberanía y propiedad de datos (afirmaciones #1–#11, #48, #54).** El grafo de conocimiento del cliente es propiedad intelectual del cliente. El libro de contabilidad WORM por inquilino está enraizado en el cliente. Los formatos de exportación son abiertos desde el primer día.
+**Soberanía y propiedad de datos (afirmaciones #1–#11, #48, #54).** El grafo de conocimiento del cliente es [[customer-owned-graph-ip|propiedad intelectual del cliente]]. El [[worm-ledger-architecture|libro de contabilidad WORM]] por inquilino está enraizado en el cliente. Los formatos de exportación son abiertos desde el primer día.
 
-**Sustrato de Compuesto (afirmación #18).** Cada unidad de trabajo — un commit, una sesión, un paso editorial, una ejecución de entrenamiento — aumenta la capacidad de la siguiente unidad. La curva de capacidad aumenta de forma monótona con el volumen de trabajo.
+**Sustrato de Compuesto (afirmación #18).** [[compounding-substrate|Cada unidad de trabajo]] — un commit, una sesión, un paso editorial, una ejecución de entrenamiento — aumenta la capacidad de la siguiente unidad. La curva de capacidad aumenta de forma monótona con el volumen de trabajo.
 
-**Álgebra de composición de adaptadores (afirmación #22).** En el momento de inferencia, el Portero compone hasta tres adaptadores: `base ⊕ inquilino ⊕ protocolo`. La inferencia resultante está sintonizada simultáneamente para la capacidad general del modelo base, el vocabulario de dominio del inquilino y los requisitos de género de la solicitud actual.
+**Álgebra de composición de adaptadores (afirmación #22).** En el momento de inferencia, el [[doorman-protocol|Portero]] compone hasta tres [[adapter-composition|adaptadores]]: `base ⊕ inquilino ⊕ protocolo`. La inferencia resultante está sintonizada simultáneamente para la capacidad general del modelo base, el vocabulario de dominio del inquilino y los requisitos de género de la solicitud actual.
 
-**Sustrato de Aprendizaje (afirmación #32).** El trabajo con forma de código y prosa se enruta a través del Portero como un resumen estructurado. El aprendiz (SLM local) produce un diff candidato con razonamiento citado. Una identidad sénior emite un veredicto firmado. La tupla aterriza en el corpus de aprendizaje.
+**Sustrato de Aprendizaje (afirmación #32).** El trabajo con forma de código y prosa se enruta a través del [[doorman-protocol|Portero]] como un resumen estructurado. El aprendiz (SLM local) produce un diff candidato con razonamiento citado. Una identidad sénior emite un veredicto firmado. La tupla aterriza en el [[apprenticeship-substrate|corpus de aprendizaje]].
 
-**Sustrato de Libro de Capacidades (afirmación #33).** Cada invocación de capacidad mediada por el núcleo emite una entrada firmada a un registro de Merkle enraizado en el cliente. La transferencia de propiedad es una ceremonia de co-firma de ápice — sin migración de estado, sin interrupción del servicio.
+**Sustrato de Libro de Capacidades (afirmación #33).** Cada invocación de capacidad mediada por el núcleo emite una entrada firmada a un [[merkle-proofs-as-substrate-primitive|registro de Merkle]] enraizado en el cliente. La transferencia de propiedad es una ceremonia de co-firma de ápice — sin migración de estado, sin interrupción del servicio. Véase [[capability-ledger-substrate|sustrato del libro de capacidades]].
 
-**Sustrato Soberano de Dos Fondos (afirmación #34).** La plataforma funciona en dos fondos de núcleo: seL4 (nativo, verificado formalmente) y NetBSD (compatibilidad, arranca en cualquier lugar). Los mismos binarios `os-*` se ejecutan en cualquiera de los dos fondos.
+**Sustrato Soberano de Dos Fondos (afirmación #34).** La plataforma funciona en dos fondos de núcleo: [[sel4-microkernel-substrate|seL4]] (nativo, verificado formalmente) y NetBSD (compatibilidad, arranca en cualquier lugar). Los mismos binarios `os-*` se ejecutan en cualquiera de los dos fondos.
 
 ## Las Ocho Invenciones Transectoriales
 

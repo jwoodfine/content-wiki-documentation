@@ -16,7 +16,7 @@ short_description: "Elastic Compute #1 runs a nightly two-phase pipeline that re
 cites: []
 ---
 
-The PointSav compounding substrate requires periodic retraining to incorporate the operator interactions and editorial decisions accumulated since the previous cycle. Elastic Compute #1 is the compute node that runs this retraining nightly — a GPU-equipped cloud spot instance that rebuilds the knowledge graph and produces updated LoRA (Low-Rank Adaptation) adapter weights for the platform's local language model. The pipeline operationalises the theoretical claim that every productive session improves the platform for the next one: it converts raw interaction data into model weights the next session inherits.
+The [[pointsav-overview|PointSav]] [[compounding-substrate|compounding substrate]] requires periodic retraining to incorporate the operator interactions and editorial decisions accumulated since the previous cycle. Elastic Compute #1 is the compute node that runs this retraining nightly — a GPU-equipped cloud spot instance ([[yoyo-compute-substrate|Yo-Yo compute]]) that rebuilds the knowledge graph and produces updated LoRA (Low-Rank Adaptation) adapter weights for the platform's local language model. The pipeline operationalises the theoretical claim that every productive session improves the platform for the next one: it converts raw interaction data into model weights the next session inherits.
 
 Elastic Compute #1 is a g2-standard-4 Google Cloud spot instance equipped with a single NVIDIA L4 GPU (24 GB VRAM). Each night it runs a two-phase, four-hour pipeline that produces fine-tuned adapter weights for the workspace language model. Phase 1 extracts structured business entities from the operator data corpus and writes them to a property graph. Phase 2 reads accumulated engineering and apprenticeship training tuples, checks whether the corpus has crossed a minimum threshold, and runs a parameter-efficient training pass against the base model. The two phases are mandatory and sequential — they cannot overlap because both require exclusive access to the L4 GPU.
 
@@ -41,11 +41,11 @@ server is live, `jennifer-datagraph-rebuild.sh` processes three document
 streams from the operator deployment: meeting transcript markdown files,
 agent research YAML and markdown files, and contact source JSON records.
 For each document, the script calls `POST :9080/v1/chat/completions` through
-the Doorman, which routes the payload to the 32B Think model on the Elastic Compute VM.
+the [[doorman-protocol|Doorman]], which routes the payload to the 32B Think model on the Elastic Compute VM.
 The model returns a structured JSON array of named entities — people,
 companies, projects, accounts, and locations — constrained by a JSON Schema
 grammar so the output is machine-parseable without post-processing. The
-script then calls `POST :9081/v1/graph/mutate` on service-content to write
+script then calls `POST :9081/v1/graph/mutate` on [[service-content]] to write
 those entities into LadybugDB. A local ledger of processed document hashes
 ensures each document is processed exactly once across multiple nightly runs.
 
@@ -96,7 +96,7 @@ how review comments are phrased, and how implementation decisions are
 documented.
 
 **Apprenticeship tuples** are DPO (direct preference optimisation) pairs
-produced by the apprenticeship routing substrate. Each pair consists of a
+produced by the [[apprenticeship-substrate|apprenticeship routing substrate]]. Each pair consists of a
 shadow response (the model's unguided output) and a verdict response (the
 preferred formulation confirmed by the operator). DPO training on these pairs
 moves the model toward the preferred response distribution without requiring
@@ -110,7 +110,7 @@ directory contains the LoRA weight files and tokenizer configuration — total
 size is typically 1 to 3 GB. `lora-training.sh` then signals
 `adapter-publish.service`, which uploads the adapter directory to the
 configured GCS bucket. The adapter is subsequently available to the workspace
-Doorman for loading as an inference-time weight overlay on the base model.
+[[doorman-protocol|Doorman]] for loading as an inference-time weight overlay on the base model via [[adapter-composition|adapter composition]].
 The marker file is renamed to `.completed` when all steps succeed.
 
 ## Adapter training versus continued pre-training

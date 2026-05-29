@@ -42,7 +42,7 @@ El código se mueve desde el entorno local de un contribuyente hasta una impleme
 
 **Etapa 2 — Oferta.** El contribuyente abre un pull request desde su bifurcación hacia la organización del proveedor (`pointsav/...`). El trabajo se vuelve visible para el administrador. Pueden ejecutarse verificaciones automatizadas; comienza la revisión de código.
 
-**Etapa 3 — Auditoría.** El administrador (`ps-administrator`) realiza un squash-and-merge. Este es el momento legalmente significativo: el historial de commits del contribuyente se colapsa en un único commit corporativo firmado con la clave SSH del administrador. La propiedad se transfiere a PointSav Digital Systems. Los commits experimentales anteriores, los intentos de prototipo y los enfoques abandonados no sobreviven en el libro mayor corporativo.
+**Etapa 3 — Auditoría.** El administrador (`ps-administrator`) realiza un squash-and-merge. Este es el momento legalmente significativo: el historial de commits del contribuyente se colapsa en un único commit corporativo firmado con la clave SSH del administrador. La propiedad se transfiere a [[pointsav-overview|PointSav Digital Systems]]. Los commits experimentales anteriores, los intentos de prototipo y los enfoques abandonados no sobreviven en el libro mayor corporativo.
 
 **Etapa 4 — Transferencia.** La administración del proveedor refleja el tag de lanzamiento verificado desde `pointsav/<repo>` a `woodfine/<repo>`. El cliente recibe solo tags firmados y nunca ve commits de contribuyentes en vuelo. Este es el paso de propagación de lanzamiento que aísla al cliente del riesgo ascendente.
 
@@ -70,7 +70,7 @@ Los repositorios canónicos a mediados de 2026 incluyen:
 
 | Repositorio | Rol |
 |---|---|
-| `pointsav/pointsav-monorepo` | Todo el código `os-*`, `app-*`, `service-*`, `system-*` |
+| `pointsav/pointsav-monorepo` | Todo el código `os-*`, `app-*`, `service-*`, `system-*` (véase [[os-family-overview|familia de SO]]) |
 | `pointsav/content-wiki-documentation` | Wiki de documentación pública |
 | `woodfine/woodfine-fleet-deployment` | Catálogo de implementación del cliente y artículos GUIDE |
 

@@ -24,7 +24,7 @@ references:
  text: "Overture Maps Foundation. overturemaps.org"
 ---
 
-The PointSav constitutional charter encodes the principles, commitments, and structural claims that govern every engineering, operational, and editorial decision across the platform. The current release is v0.1.0 ALPHA, ratified 2026-04-30 under the `ps-administrator` signing identity.
+The [[pointsav-overview|PointSav]] constitutional charter encodes the principles, commitments, and structural claims that govern every engineering, operational, and editorial decision across the platform. The current release is v0.1.0 ALPHA, ratified 2026-04-30 under the `ps-administrator` signing identity. See [[foundry-doctrine-overview|the doctrine overview]] for the introductory framing.
 
 ## The Six Pillars
 
@@ -34,11 +34,11 @@ The platform is built on six foundational commitments that take precedence over 
 
 **Sovereignty is structural, not procedural.** Customer data and compute stay inside the customer's boundary by construction. Firewall rules, bearer-token confinement, and WORM append-only ledgers enforce sovereignty at the infrastructure level; no policy document is load-bearing.
 
-**Ring 3 is optional.** The AI inference ring (`service-slm` and the Yo-Yo compute substrate) is structurally optional. The deterministic substrate — knowledge graph, search, ingest, egress — functions completely when AI is disabled or unavailable. Optional Intelligence is a design constraint, not a marketing framing.
+**Ring 3 is optional.** The AI inference ring ([[service-slm]] and the [[yoyo-compute-substrate|Yo-Yo compute substrate]]) is structurally optional. The deterministic substrate — knowledge graph, search, ingest, egress — functions completely when AI is disabled or unavailable. Optional Intelligence is a design constraint, not a marketing framing.
 
 **Vendor → Customer → Deployments is the only flow.** Engineering source lives in `pointsav/*` canonical repos. Customer runbooks live in `woodfine/*`. Runtime instances are numbered and local-only. No reverse writes. No shortcuts through the layer boundary.
 
-**Every session trains the model.** Every contributor session that produces output — diffs, briefs, editorial refinements, sysadmin interactions — generates a training tuple that accumulates in the apprenticeship corpus. The substrate sharpens monotonically with use.
+**Every session trains the model.** Every contributor session that produces output — diffs, briefs, editorial refinements, sysadmin interactions — generates a training tuple that accumulates in the [[apprenticeship-substrate|apprenticeship corpus]]. The substrate sharpens monotonically with use.
 
 **Human checkpoint at F12 is mandatory.** [[architecture-decisions|SYS-ADR-10]] — the final human checkpoint before any state is committed to a verified ledger — is never bypassed. Automation serves the human; no automated path exists around F12.
 
@@ -48,21 +48,21 @@ The doctrine enumerates 54 numbered structural claims that together constitute t
 
 Representative clusters from the full claim set:
 
-**Sovereignty and data ownership (claims #1–#11, #48, #54).** The customer's knowledge graph is the customer's intellectual property. The per-tenant WORM ledger is customer-rooted. Export formats are open at day zero. The substrate runs fully — queries, audit, search, transfer of ownership — with no platform-side dependency. No hyperscaler SaaS can offer this without abandoning per-tenant hosting economics.
+**Sovereignty and data ownership (claims #1–#11, #48, #54).** The customer's knowledge graph is the customer's [[customer-owned-graph-ip|intellectual property]]. The per-tenant [[worm-ledger-architecture|WORM ledger]] is customer-rooted. Export formats are open at day zero. The substrate runs fully — queries, audit, search, transfer of ownership — with no platform-side dependency. No hyperscaler SaaS can offer this without abandoning per-tenant hosting economics.
 
-**Compounding substrate (claim #18).** Each unit of work — a commit, a session, an editorial pass, a training run — increases the capability of the next unit. Engineering work trains the engineering adapter; editorial work trains the language-protocol adapter; sysadmin interactions train the sysadmin adapter. The capability curve is monotonically increasing with work volume; the marginal cost of capability declines over time.
+**Compounding substrate (claim #18).** [[compounding-substrate|Each unit of work]] — a commit, a session, an editorial pass, a training run — increases the capability of the next unit. Engineering work trains the engineering adapter; editorial work trains the [[language-protocol-substrate|language-protocol adapter]]; sysadmin interactions train the sysadmin adapter. The capability curve is monotonically increasing with work volume; the marginal cost of capability declines over time.
 
-**Adapter composition algebra (claim #22).** At inference time the Doorman composes up to three adapters: `base ⊕ tenant ⊕ protocol`. The resulting inference is tuned simultaneously to the base model's general capability, the tenant's domain vocabulary and operational patterns, and the current request's genre requirements. Per-tenant continued pretraining (claim #15) deepens the tenant adapter monotonically as the corpus accumulates.
+**Adapter composition algebra (claim #22).** At inference time the [[doorman-protocol|Doorman]] composes up to three [[adapter-composition|adapters]]: `base ⊕ tenant ⊕ protocol`. The resulting inference is tuned simultaneously to the base model's general capability, the tenant's domain vocabulary and operational patterns, and the current request's genre requirements. Per-tenant continued pretraining (claim #15) deepens the tenant adapter monotonically as the corpus accumulates.
 
-**Apprenticeship substrate (claim #32).** Code-shaped and prose-shaped work routes through the Doorman as a structured brief. The apprentice (local SLM) produces a candidate diff with cited reasoning. A senior identity issues a signed verdict. The (brief, attempt, verdict, final-diff) tuple lands in the apprenticeship corpus and feeds the next training cycle. Shadow routing on every commit exercises the apprentice continuously.
+**Apprenticeship substrate (claim #32).** Code-shaped and prose-shaped work routes through the [[doorman-protocol|Doorman]] as a structured brief. The apprentice (local SLM) produces a candidate diff with cited reasoning. A senior identity issues a signed verdict. The (brief, attempt, verdict, final-diff) tuple lands in the [[apprenticeship-substrate|apprenticeship corpus]] and feeds the next training cycle. Shadow routing on every commit exercises the apprentice continuously.
 
-**Capability ledger substrate (claim #33).** Every kernel-mediated capability invocation emits a signed entry to a customer-rooted Merkle log. Revocation is a log entry. Ownership transfer is an apex-cosigning ceremony — no state migration, no service interruption. The deployment IS the ledger; the running system is the materialization of the ledger state.
+**Capability ledger substrate (claim #33).** Every kernel-mediated capability invocation emits a signed entry to a customer-rooted [[merkle-proofs-as-substrate-primitive|Merkle log]]. Revocation is a log entry. Ownership transfer is an apex-cosigning ceremony — no state migration, no service interruption. The deployment IS the [[capability-ledger-substrate|ledger]]; the running system is the materialization of the ledger state.
 
-**Two-bottoms sovereign substrate (claim #34).** The platform runs on two kernel bottoms: seL4 (native, formally verified, AArch64-first) and NetBSD (compatibility, BSD 2-clause, boot-anywhere). The same `os-*` binaries run on either bottom via a thin shim. The customer boots the same substrate on a leased laptop today and on a verified production appliance for regulated records tomorrow, without re-provisioning.
+**Two-bottoms sovereign substrate (claim #34).** The platform runs on two kernel bottoms: [[sel4-microkernel-substrate|seL4]] (native, formally verified, AArch64-first) and NetBSD (compatibility, BSD 2-clause, boot-anywhere). The same `os-*` binaries run on either bottom via a thin shim. The customer boots the same substrate on a leased laptop today and on a verified production appliance for regulated records tomorrow, without re-provisioning.
 
-**Four-tier SLM ladder (claim #40).** Customers move through four product positions — Community (pure API gateway), Tier 1 (local 7B specialist), Tier 2 (vendor-hosted Yo-Yo 32B), Tier 3 (PointSav-LLM continued-pretrained specialist) — as their corpus accumulates and their compute appetite grows. The ladder is designed for breakout: every tier is customer-portable; no lock-in accrues at any rung.
+**Four-tier SLM ladder (claim #40).** Customers move through [[four-tier-slm-substrate|four product positions]] — Community (pure API gateway), Tier 1 (local 7B specialist), Tier 2 (vendor-hosted [[yoyo-compute-substrate|Yo-Yo]] 32B), Tier 3 (PointSav-LLM continued-pretrained specialist) — as their corpus accumulates and their compute appetite grows. The ladder is designed for breakout: every tier is customer-portable; no lock-in accrues at any rung.
 
-**Reverse-flow substrate (claim #52).** The same Doorman gateway and audit ledger that enforce inbound discipline also enforce outbound commercial flows — data marketplace and ad exchange — as tenant-selectable, opt-in configurations. Monetization configuration is a contract decision, not an architectural rebuild.
+**Reverse-flow substrate (claim #52).** The same [[doorman-protocol|Doorman]] gateway and audit ledger that enforce inbound discipline also enforce outbound commercial flows — [[reverse-flow-substrate|data marketplace and ad exchange]] — as tenant-selectable, opt-in configurations. Monetization configuration is a contract decision, not an architectural rebuild.
 
 ## The Eight Cross-Industry Inventions
 
