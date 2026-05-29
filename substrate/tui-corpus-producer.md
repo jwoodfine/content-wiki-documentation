@@ -21,7 +21,7 @@ references:
 paired_with: tui-corpus-producer.es.md
 ---
 
-The **TUI-as-Corpus-Producer** pattern designates the operator terminal interface (`slm-cli`) as a primary source of high-quality training data for the per-tenant model adapter. Every interaction with the Doorman through this interface is a curated corpus contribution.
+The **TUI-as-Corpus-Producer** pattern designates the operator terminal interface (`slm-cli`) as a primary source of high-quality training data for the per-tenant model [[adapter-composition|adapter]]. Every interaction with the [[compounding-doorman|Doorman]] through this interface is a curated corpus contribution.
 
 ## Why terminal interactions are high-quality training data
 
@@ -47,7 +47,7 @@ If the operator dismisses without providing a verdict, the tuple is captured as 
 
 ## Adapter quality budget
 
-Published fine-tuning literature suggests 200 to 500 high-quality verdict-signed interactions are sufficient for a first adapter training cycle in a narrow domain. [^2] The platform's intended sequence for each tenant is: accumulate signed interactions from dogfood operations, train the first per-tenant adapter, apply a validation quality gate, and promote the adapter to the deployment. Each subsequent training cycle incorporates additional interactions, progressively tuning the adapter to the customer's specific environment — their systemd units, their seed taxonomy, their workflow vocabulary.
+Published fine-tuning literature suggests 200 to 500 high-quality verdict-signed interactions are sufficient for a first adapter training cycle in a narrow domain. [^2] The platform's intended sequence for each tenant is: accumulate signed interactions from dogfood operations, train the first per-tenant adapter via the [[yo-yo-lora-training-pipeline|LoRA training pipeline]], apply a validation quality gate, and promote the adapter to the deployment. Each subsequent training cycle incorporates additional interactions, progressively tuning the adapter to the customer's specific environment — their systemd units, their [[seed-taxonomy-as-smb-bootstrap|seed taxonomy]], their workflow vocabulary.
 
 ## Per-tenant adapter ownership
 
@@ -55,7 +55,7 @@ The corpus produced by a customer's operators trains that customer's adapter, no
 
 ## Verdict capture discipline
 
-Some terminal sessions should not contribute to the training corpus: test sessions initiated with a no-corpus flag, sessions interrupted by unavailable tiers before completion, and sessions using forced-tier debug mode are audit-logged but excluded from normal training data. The boundary between operational corpus and test corpus is enforced at the Doorman's verdict intake endpoint.
+Some terminal sessions should not contribute to the training corpus: test sessions initiated with a no-corpus flag, sessions interrupted by unavailable tiers before completion, and sessions using forced-tier debug mode are [[worm-ledger-architecture|audit-logged]] but excluded from normal training data. The boundary between operational corpus and test corpus is enforced at the [[compounding-doorman|Doorman's]] verdict intake endpoint.
 
 ## See also
 

@@ -21,9 +21,9 @@ cites:
 paired_with: trajectory-substrate.es.md
 ---
 
-Every commit to the platform's code repositories, every editorial session, every operator correction that marks a suggestion wrong — these interactions are not discarded. They are captured as structured JSONL tuples, tagged with provenance metadata, and routed into a training corpus whose accumulated signal improves the OLMo base model each time a continued-pretraining run closes.
+Every commit to the platform's code repositories, every editorial session, every operator correction that marks a suggestion wrong — these interactions are not discarded. They are captured as structured JSONL tuples, tagged with provenance metadata, and routed into a training corpus whose accumulated signal improves the OLMo base model each time a continued-pretraining run closes — the mechanism behind the [[compounding-substrate|compounding substrate]].
 
-Three orthogonal corpus types determine the architecture. The constitutional corpus captures what the platform's governance charter says a session of each role may and may not do — universal, loaded by every platform deployment. The engineering corpus captures contributor session trajectories and is vendor-scoped. The tenant-runtime corpus captures what flows through Ring 1 inside each customer deployment and never leaves that deployment unless the customer explicitly opts into the federated adapter marketplace (a planned forward-looking feature).
+Three orthogonal corpus types determine the architecture. The constitutional corpus captures what the platform's governance charter says a session of each role may and may not do — universal, loaded by every platform deployment. The engineering corpus captures contributor session trajectories and is vendor-scoped. The tenant-runtime corpus captures what flows through Ring 1 inside each customer deployment and never leaves that deployment unless the customer explicitly opts into the [[sovereign-ai-commons|federated adapter marketplace]] (a planned forward-looking feature).
 
 Capture is automatic — no operator decision is required to generate a training tuple. Every JSONL record carries provenance fields (`tuple_type`, `doctrine_version`, `tenant`, `role`, `scope`, `redaction_class`) that let the training pipeline assemble each corpus without trusting prose. Vendor data never co-mingles with customer data at training time; tenant data never crosses tenants — the separation is directory-level and pipeline-level, not policy-level.
 
@@ -41,7 +41,7 @@ Three properties distinguish a trajectory substrate from a generic fine-tuning p
 
 ## Ring and Role
 
-The Trajectory Substrate does not map to a single ring. Capture happens at every layer — Ring 1 runtime events, Ring 2 processing events, Ring 3 inference interactions, and deployment-level commit hooks. The substrate is the infrastructure that runs beneath all three rings, converting their operational outputs into training material. `service-slm` (Ring 3) is the primary consumer of the resulting adapters at inference time.
+The Trajectory Substrate does not map to a single ring. Capture happens at every layer — Ring 1 runtime events, Ring 2 processing events, Ring 3 inference interactions, and deployment-level commit hooks. The substrate is the infrastructure that runs beneath all three rings per the [[three-ring-architecture]], converting their operational outputs into training material. [[service-slm]] (Ring 3) is the primary consumer of the resulting adapters at inference time.
 
 ## Architecture
 
@@ -83,7 +83,7 @@ Every JSONL record carries a provenance header with fields `tuple_type`, `doctri
 
 ### Adapter composition at request time
 
-At inference time the Doorman (`service-slm`) composes adapters per request:
+At inference time the [[compounding-doorman|Doorman]] (`service-slm`) composes adapters per request:
 
 ```
 composed_weights =
@@ -95,7 +95,7 @@ composed_weights =
   ⊕ cluster[<cluster>_vJ]? ← if cluster scope applies
 ```
 
-Multi-LoRA serving infrastructure — `[s-lora-2024]`, `[lorax-predibase]` — serves thousands of concurrent adapters with hot-swap per request. The composition algebra is specified in [[adapter-composition]].
+Multi-LoRA serving infrastructure — `[s-lora-2024]`, `[lorax-predibase]` — serves thousands of concurrent adapters with hot-swap per request via the [[yoyo-compute-substrate|Yo-Yo GPU tier]]. The composition algebra is specified in [[adapter-composition]].
 
 Each cluster manifest declares `adapter_routing.trains:` (which adapters this cluster's commits and sessions feed) and `adapter_routing.consumes:` (which adapters the Doorman composes when this cluster's sessions query the SLM). Every cluster defaults to training the engineering-pointsav adapter — the substrate is always improving from every cluster's work.
 

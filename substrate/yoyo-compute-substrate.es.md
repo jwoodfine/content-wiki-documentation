@@ -18,7 +18,7 @@ references:
 paired_with: yoyo-compute-substrate.md
 ---
 
-El Substrato de Cómputo Yo-Yo es la arquitectura mediante la cual `service-slm` gestiona la inferencia GPU a lo largo de ciclos de encendido y apagado. Un nodo GPU inactivo es costoso. Pero un nodo que descarta todo el estado al apagarse obliga a una recomputación completa en cada nuevo arranque — lenta, costosa e inviable a escala comercial. El substrato Yo-Yo resuelve esta tensión descomponiendo el estado de cómputo en tres anillos, cada uno con una estrategia de persistencia diferente.
+El Substrato de Cómputo Yo-Yo es la arquitectura mediante la cual [[service-slm]] gestiona la inferencia GPU a lo largo de ciclos de encendido y apagado. Un nodo GPU inactivo es costoso. Pero un nodo que descarta todo el estado al apagarse obliga a una recomputación completa en cada nuevo arranque — lenta, costosa e inviable a escala comercial. El substrato Yo-Yo resuelve esta tensión descomponiendo el estado de cómputo en tres anillos, cada uno con una estrategia de persistencia diferente.
 
 El nombre es literal: el nivel de cómputo baja y vuelve a subir, repetidamente, sin perder lo que importa.
 
@@ -32,9 +32,9 @@ El resultado es un arranque en caliente con peor caso de aproximadamente quince 
 
 Para cargas de trabajo con estructura de prefijo repetido — cada documento procesado contra el mismo grafo de conocimiento comparte miles de tokens de contexto — las tasas de acierto de caché por encima del sesenta por ciento son alcanzables desde el segundo run completo del corpus. Esto se traduce directamente en reducción del coste de GPU.
 
-**Anillo 3a — Memoria semántica a largo plazo**: el grafo de conocimiento en LadybugDB, dentro de `service-content`. `service-slm` lo lee en tiempo de ensamblado de contexto. Nunca escribe directamente en él; todas las escrituras fluyen a través de la ruta validada de aplicación de deltas. Este anillo es el registro autoritativo de cada proyecto; su alcance está delimitado por `moduleId`.
+**Anillo 3a — Memoria semántica a largo plazo**: el grafo de conocimiento en LadybugDB, dentro de [[service-content]]. `service-slm` lo lee en tiempo de ensamblado de contexto. Nunca escribe directamente en él; todas las escrituras fluyen a través de la ruta validada de aplicación de deltas. Este anillo es el registro autoritativo de cada proyecto; su alcance está delimitado por `moduleId`.
 
-**Anillo 3b — Habilidad a largo plazo (adaptadores LoRA)**: la capa que hace compoundar el substrato. Cada proyecto nuevo deja tras de sí un adaptador LoRA afinado — un módulo pequeño y versionado que codifica comportamiento específico de la tarea (clasificación, resolución de entidades, detección de arquetipos, síntesis terminológica). Los adaptadores se almacenan como OCI Artifacts firmados con Sigstore y se activan en el arranque del motor de inferencia. [^1]
+**Anillo 3b — Habilidad a largo plazo (adaptadores LoRA)**: la capa que hace compoundar el substrato. Cada proyecto nuevo deja tras de sí un [[adapter-composition|adaptador LoRA]] afinado — un módulo pequeño y versionado que codifica comportamiento específico de la tarea (clasificación, resolución de entidades, detección de arquetipos, síntesis terminológica). Los adaptadores se almacenan como OCI Artifacts firmados con Sigstore y se activan en el arranque del motor de inferencia. [^1]
 
 La arquitectura distingue entre **adaptadores compartidos** (prefijo `dka-*`) que acumulan habilidad general entre proyectos, y **adaptadores por proyecto** (`{cliente}-*`) que retienen conocimiento específico del cliente. Los primeros mejoran con cada proyecto; los segundos permanecen con su propietario.
 
@@ -44,7 +44,7 @@ La arquitectura distingue entre **adaptadores compartidos** (prefijo `dka-*`) qu
 
 Cada evento Yo-Yo — arranque, trabajo, apagado, precarga de adaptador, sincronización de caché — se registra en un CSV de solo-apendizaje. El esquema incluye identificador de evento, `moduleId`, versiones de adaptadores activos, tasa de acierto de caché KV, tokens procesados, segundos GPU consumidos, coste estimado, estado de finalización e identidad del operador.
 
-Este ledger vincula cada output — cada página generada, cada registro exportado, cada análisis producido — con el evento de cómputo exacto, las versiones exactas de adaptadores y el material fuente exacto que lo produjo. Es un artefacto de integridad de procesamiento que los servicios de inferencia gestionados no pueden producir, porque operan en una capa por encima de los eventos que el ledger Yo-Yo captura.
+Este [[worm-ledger-architecture|ledger]] vincula cada output — cada página generada, cada registro exportado, cada análisis producido — con el evento de cómputo exacto, las versiones exactas de adaptadores y el material fuente exacto que lo produjo. Es un artefacto de integridad de procesamiento que los servicios de inferencia gestionados no pueden producir, porque operan en una capa por encima de los eventos que el ledger Yo-Yo captura.
 
 ## Hoja de ruta (planificada)
 

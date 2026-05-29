@@ -18,13 +18,13 @@ references:
 paired_with: substrate-without-inference-base-case.es.md
 ---
 
-The **Substrate-Without-Inference Base Case** establishes that the Totebox Archive must remain fully operational and freely transferable even when `service-slm` cannot run any inference. AI inference is value-add. The deterministic substrate — the file ledger, the knowledge graph, the extraction pipeline, and the editorial services — is load-bearing. This distinction is.
+The **Substrate-Without-Inference Base Case** establishes that the [[totebox-archive|Totebox Archive]] must remain fully operational and freely transferable even when [[service-slm]] cannot run any inference. AI inference is value-add. The deterministic substrate — the file ledger, the [[knowledge-graph-grounded-apprenticeship|knowledge graph]], the [[service-extraction|extraction pipeline]], and the editorial services — is load-bearing.
 
 ## What the base case requires
 
-When all three compute tiers (local specialist, GPU burst, and external API) are simultaneously unavailable, the following must hold:
+When all three compute tiers (local specialist, [[yoyo-compute-substrate|GPU burst]], and external API) are simultaneously unavailable, the following must hold:
 
-The WORM file ledger (`service-fs`) is operational: ingest, query, and checkpoint all work. The knowledge runtime (`service-content`) is operational: graph queries, vector search, and temporal queries work, with mutations from non-AI paths only. The input service, extraction service (at the deterministic parsing layer), egress service, people service, and email service are all operational. The Doorman is bound and listening, returning 503 to inference endpoints while keeping health and contract endpoints always responsive. The operator TUI operates in deterministic-only mode.
+The WORM file ledger ([[service-fs|`service-fs`]]) is operational: ingest, query, and checkpoint all work. The knowledge runtime ([[service-content|`service-content`]]) is operational: graph queries, vector search, and temporal queries work, with mutations from non-AI paths only. The input service, extraction service (at the deterministic parsing layer), egress service, people service, and email service are all operational. The [[compounding-doorman|Doorman]] is bound and listening, returning 503 to inference endpoints while keeping health and contract endpoints always responsive. The operator [[tui-corpus-producer|TUI]] operates in deterministic-only mode.
 
 When marketplace and settlement services are enabled, those are also operational in the base case. Transactions may proceed without AI-assisted grounding; audit and consent records are still enforced.
 
@@ -40,7 +40,7 @@ Deterministic slash commands remain fully operational: status and health queries
 
 ## Transfer of ownership
 
-The "freely transferable" property is more than a philosophical statement. It is implemented through a structured transfer flow. The operator runs a transfer preparation command to produce a self-contained, cryptographically signed bundle: the per-tenant graph snapshot, the audit ledger, the trained adapter weights, the seed taxonomy, the pack manifest, and the tenant configuration. The bundle is signed by the operator's identity key and the integrity is anchored to a public transparency log. [^1]
+The "freely transferable" property is more than a philosophical statement. It is implemented through a structured transfer flow. The operator runs a transfer preparation command to produce a self-contained, cryptographically signed bundle: the per-tenant graph snapshot, the [[worm-ledger-architecture|audit ledger]], the trained [[adapter-composition|adapter weights]], the [[seed-taxonomy-as-smb-bootstrap|seed taxonomy]], the pack manifest, and the tenant configuration. The bundle is signed by the operator's identity key and the integrity is anchored to a public transparency log. [^1]
 
 The receiving party imports the bundle into a fresh Totebox. Deterministic operations work immediately on the imported state. AI-assisted operations become available once the new operator configures the compute tier.
 

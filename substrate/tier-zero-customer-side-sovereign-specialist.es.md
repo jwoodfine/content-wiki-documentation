@@ -15,19 +15,19 @@ paired_with: tier-zero-customer-side-sovereign-specialist.md
 ---
 
 
-El **Especialista Soberano en el Lado del Cliente — Nivel 0** es el modelo de despliegue de referencia para la plataforma: la pila de plataforma completa funcionando en el propio hardware del cliente, sin dependencia de nube requerida, sin conectividad a internet requerida, y con una huella de disco total de aproximadamente un gigabyte.
+El **Especialista Soberano en el Lado del Cliente — Nivel 0** es el modelo de despliegue de referencia para la plataforma: la pila de plataforma completa funcionando en el propio hardware del cliente — la forma operativa de [[customer-hostability]] — sin dependencia de nube requerida, sin conectividad a internet requerida, y con una huella de disco total de aproximadamente un gigabyte.
 
 ## La unidad de referencia
 
 El despliegue de referencia del Nivel 0 es un Totebox — un dispositivo compacto de factor de forma pequeño (x86 o ARM). La pila completa ocupa aproximadamente un gigabyte de disco y un conjunto de trabajo de dos a cuatro gigabytes de memoria en dos a cuatro núcleos de CPU. No se requiere GPU.
 
-La pila incluye el registro de archivos WORM (`service-fs`), el motor de conocimiento (`service-content`), la frontera del Portero (`service-slm`), el modelo especialista local (OLMo 2 1B a aproximadamente 600 MB en disco), la TUI del operador (`slm-cli`), y los servicios de entrada, extracción y salida. Todos los componentes son binarios autónomos sin dependencias de tiempo de ejecución más allá del sistema operativo.
+La pila incluye el [[worm-ledger-architecture|registro de archivos WORM]] (`service-fs`), el motor de conocimiento ([[service-content|`service-content`]]), la [[compounding-doorman|frontera del Portero]] (`service-slm`), el modelo especialista local (OLMo 2 1B a aproximadamente 600 MB en disco), la [[tui-corpus-producer|TUI del operador]] (`slm-cli`), y los servicios de entrada, extracción y salida. Todos los componentes son binarios autónomos sin dependencias de tiempo de ejecución más allá del sistema operativo.
 
 ## Por qué un especialista en lugar de un generalista
 
 El modelo local en el Totebox es un especialista en administración de sistemas con enrutamiento de propósito específico. Gestiona preguntas de administración de sistemas e infraestructura, ediciones mecánicas como mensajes de confirmación de Git y validación de esquemas, consultas de rutina contra el registro de auditoría y el grafo de conocimiento del cliente, y tareas de salida corta.
 
-No está previsto para trabajo editorial, generación bilingüe o razonamiento de formato largo. Esas tareas se enrutan al Nivel B de GPU en ráfaga cuando está disponible, o devuelven una respuesta elegante de "nivel no disponible" cuando no lo está.
+No está previsto para trabajo editorial, generación bilingüe o razonamiento de formato largo. Esas tareas se enrutan al Nivel B de [[yoyo-compute-substrate|GPU en ráfaga]] cuando está disponible, o devuelven una respuesta elegante de "nivel no disponible" cuando no lo está.
 
 ## Base empírica para la inferencia solo con CPU
 

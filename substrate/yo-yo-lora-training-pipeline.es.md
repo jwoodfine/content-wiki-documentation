@@ -26,13 +26,13 @@ paired_with: yo-yo-lora-training-pipeline.md
 
 ## Adaptación estratégica — Pipeline de Entrenamiento LoRA Nocturno en Yo-Yo #1
 
-Yo-Yo #1 es una instancia spot g2-standard-4 de Google Cloud equipada con
+[[yoyo-compute-substrate|Yo-Yo #1]] es una instancia spot g2-standard-4 de Google Cloud equipada con
 una GPU NVIDIA L4 de 24 GB de VRAM. En cada ejecución nocturna, ejecuta un
-pipeline de dos fases y cuatro horas de duración que produce pesos
-adaptadores ajustados para el modelo de lenguaje del espacio de trabajo.
+pipeline de dos fases y cuatro horas de duración que produce [[adapter-composition|pesos
+adaptadores]] ajustados para el modelo de lenguaje del espacio de trabajo.
 La Fase 1 extrae entidades de negocio estructuradas del corpus de datos del
 despliegue y las escribe en un grafo de propiedades. La Fase 2 lee los pares
-de entrenamiento de ingeniería y aprendizaje acumulados, verifica si el
+de entrenamiento de ingeniería y [[apprenticeship-substrate|aprendizaje]] acumulados, verifica si el
 corpus ha superado un umbral mínimo, y ejecuta un ciclo de entrenamiento
 eficiente en parámetros sobre el modelo base. Las dos fases son obligatorias
 y secuenciales — no pueden superponerse porque ambas requieren acceso
@@ -62,12 +62,12 @@ procesa tres flujos de documentos del despliegue: archivos
 markdown de transcripciones de reuniones, archivos YAML y markdown de
 investigación de agentes, y registros JSON de fuentes de contactos. Para
 cada documento, el script llama a `POST :9080/v1/chat/completions` a través
-de Doorman, que enruta la carga útil al modelo 32B Think en la VM de Yo-Yo.
+del [[compounding-doorman|Doorman]], que enruta la carga útil al modelo 32B Think en la VM de Yo-Yo.
 El modelo devuelve un arreglo JSON estructurado de entidades nombradas —
 personas, empresas, proyectos, cuentas y ubicaciones — restringido por una
 gramática JSON Schema para que la salida sea procesable por máquina sin
 postprocesamiento. El script luego llama a `POST :9081/v1/graph/mutate` en
-service-content para escribir esas entidades en LadybugDB. Un registro local
+[[service-content]] para escribir esas entidades en LadybugDB. Un [[worm-ledger-architecture|registro local]]
 de hashes de documentos procesados garantiza que cada documento se procese
 exactamente una vez en múltiples ejecuciones nocturnas.
 

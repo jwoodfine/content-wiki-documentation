@@ -20,13 +20,13 @@ cites:
 paired_with: system-substrate-doctrine.es.md
 ---
 
-Every PointSav operating system, service, and application rests on a common substrate layer: the kernel, the capability model, the audit ledger, and an ownership-transfer ceremony that together constitute a cryptographically sovereign deployment. The customer's apex signing key is held by the customer alone — no platform service, no provider, no chip vendor sits between the customer and the ledger root.
+Every PointSav operating system, service, and application rests on a common substrate layer: the kernel, the capability model, the [[worm-ledger-architecture|audit ledger]], and an ownership-transfer ceremony that together constitute a cryptographically sovereign deployment. The customer's apex signing key is held by the customer alone — no platform service, no provider, no chip vendor sits between the customer and the ledger root.
 
-Two structural properties drive the architecture. **The Capability Ledger Substrate**: the running system's capability state IS the append-only WORM ledger; the kernel consults the ledger before honouring any invocation; the deployment is derived from the ledger. **The Two-Bottoms Sovereign Substrate**: the same binaries run on either a formally verified kernel (seL4 today, with a future no-std Rust moonshot-kernel) or a sovereignty-grade compatibility kernel (NetBSD with Veriexec and offline-reproducible builds), depending on hardware constraints and required assurance level.
+Two structural properties drive the architecture. **The [[capability-ledger-substrate|Capability Ledger Substrate]]**: the running system's capability state IS the append-only WORM ledger; the kernel consults the ledger before honouring any invocation; the deployment is derived from the ledger. **The Two-Bottoms Sovereign Substrate**: the same binaries run on either a formally verified kernel ([[sel4-microkernel-substrate|seL4]] today, with a future no-std Rust moonshot-kernel) or a sovereignty-grade compatibility kernel (NetBSD with Veriexec and offline-reproducible builds), depending on hardware constraints and required assurance level.
 
 No production system in 2026 bundles source, formal verification proofs, capability graph, audit ledger, and signing keys under a single transparency-log root with an ownership-transfer ceremony. The cryptographic primitives are mature individually — C2SP `signed-note` supports witness cosigning, C2SP `tlog-tiles` provides the WORM substrate, seL4 delivers kernel-mediated capability invocation, CHERIoT 1.0 silicon shipped commercially in March 2026. What is new is their composition into a single deployable artefact with an apex signing key the customer holds.
 
-For regulated buyers, the consequence is concrete: an auditor with the ledger and the source can reconstruct any historical deployment state. The deployment IS the ledger — to boot is to replay from genesis; to upgrade is to append a version entry; to rotate keys is to append a rotation entry. The historical record is deterministic and customer-controlled.
+For regulated buyers, the consequence is concrete: an auditor with the ledger and the source can reconstruct any historical deployment state — meeting [[compliance-and-continuous-disclosure|continuous-disclosure]] requirements. The deployment IS the ledger — to boot is to replay from genesis; to upgrade is to append a version entry; to rotate keys is to append a rotation entry. The historical record is deterministic and customer-controlled.
 
 ## Cryptographic State Composition
 
@@ -42,7 +42,7 @@ The customer's apex signing key is held by the customer — in their TPM, in an 
 
 ## Apex Cosigning and Ownership Transfer
 
-Ownership transfer is a single signed ledger entry. The previous apex appends a revocation entry releasing the deployment to a new apex. The new apex cosigns the next checkpoint root via the C2SP `signed-note` multi-signature primitive. From that checkpoint forward, only the new apex's signature is required. The deployment continues running without state migration, downtime, or vendor involvement.
+Ownership transfer is a single signed ledger entry. The previous apex appends a revocation entry releasing the deployment to a new apex. The new apex cosigns the next checkpoint root via the C2SP `signed-note` multi-signature primitive — the same [[merkle-proofs-as-substrate-primitive|Merkle proof]] mechanism used throughout the ledger. From that checkpoint forward, only the new apex's signature is required. The deployment continues running without state migration, downtime, or vendor involvement.
 
 The new apex inherits the entire ledger history, all capability state, all audit records, and all formal verification proofs. The previous apex retains only the immutable historical record that they were the apex from genesis to the rotation entry.
 

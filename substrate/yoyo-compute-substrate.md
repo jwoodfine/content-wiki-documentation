@@ -18,7 +18,7 @@ references:
 paired_with: yoyo-compute-substrate.es.md
 ---
 
-The Yo-Yo Compute Substrate is the specification for how `service-slm` manages GPU inference across teardowns. A GPU inference node is expensive at idle. But a node that discards all state on shutdown forces a full re-computation on the next spin-up — slow, wasteful, and commercially corrosive at scale. The Yo-Yo substrate resolves this by decomposing compute state into three rings, each with a different persistence strategy, so that spin-up is fast, state is retained where it is worth retaining, and every event is recorded in a SOC 3-grade audit ledger.
+The Yo-Yo Compute Substrate is the specification for how [[service-slm]] manages GPU inference across teardowns. A GPU inference node is expensive at idle. But a node that discards all state on shutdown forces a full re-computation on the next spin-up — slow, wasteful, and commercially corrosive at scale. The Yo-Yo substrate resolves this by decomposing compute state into three rings, each with a different persistence strategy, so that spin-up is fast, state is retained where it is worth retaining, and every event is recorded in a SOC 3-grade [[worm-ledger-architecture|audit ledger]].
 
 The name is literal: the compute tier comes down and goes back up, repeatedly, without losing what matters.
 
@@ -28,8 +28,8 @@ The name is literal: the compute tier comes down and goes back up, repeatedly, w
 |---|---|---|---|
 | 1 | Bootstrap | Container image + GCS-cached model weights | Yes (as artefacts in cold storage) |
 | 2 | Working memory (KV cache) | LMCache + Mooncake Store | Yes (pooled, `moduleId`-isolated) |
-| 3a | Long-term graph memory | LadybugDB in `service-content` | Yes (authoritative) |
-| 3b | Long-term skill (adapters) | LoRA adapter stack as OCI Artefacts | Yes (portable, signed) |
+| 3a | Long-term graph memory | LadybugDB in [[service-content]] | Yes (authoritative) |
+| 3b | Long-term skill (adapters) | [[adapter-composition|LoRA adapter]] stack as OCI Artefacts | Yes (portable, signed) |
 
 Everything outside these rings is ephemeral and intentionally discarded.
 
@@ -66,7 +66,7 @@ Ring 3a is project-scoped by design. One tenant's graph partition is inaccessibl
 
 ## Ring 3b — Long-term skill: the LoRA adapter library
 
-This is the compounding layer. Each new project leaves behind a fine-tuned LoRA adapter — a small, versioned, frozen-weight module that encodes task-specific behaviour. A adapter trained on classification patterns, entity resolution, or domain terminology runs on top of the base model weights at near-base inference speed.
+This is the compounding layer. Each new project leaves behind a fine-tuned LoRA adapter — a small, versioned, frozen-weight module that encodes task-specific behaviour. A adapter trained on classification patterns, entity resolution, or domain terminology runs on top of the base model weights at near-base inference speed. The dual-adapter pattern feeds the [[apprenticeship-substrate]] training loop over time.
 
 Adapters are stored as OCI Artefacts, Sigstore-signed and SLSA-attested. [^1] They are loaded at inference engine boot:
 
@@ -96,7 +96,7 @@ The RF2 envelope already carries a `moduleId` field on every message. The Yo-Yo 
 - **Ring 1**: selects the container variant to boot (rarely varies per project)
 - **Ring 2**: namespaces Mooncake block hashes (Project A and Project B share a pool; they never share cache blocks)
 - **Ring 3a**: scopes the LadybugDB graph traversal to the correct partition
-- **Ring 3b**: selects the LoRA adapter stack to activate
+- **Ring 3b**: selects the LoRA adapter stack to activate — the [[four-tier-slm-substrate|tier selection]] propagates `moduleId` into every adapter load
 - **Ledger**: tags every entry for per-project cost accounting
 
 One field, five jobs. The multi-tenant isolation property was not an afterthought; it is a structural consequence of `moduleId` propagating through every ring.

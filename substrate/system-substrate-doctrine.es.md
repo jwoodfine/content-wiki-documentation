@@ -18,19 +18,19 @@ cites:
 paired_with: system-substrate-doctrine.md
 ---
 
-La **Doctrina del Sustrato del Sistema** define la capa debajo de cada sistema operativo, servicio y aplicación de PointSav: el kernel, el modelo de capacidades, el registro de auditoría y la ceremonia de transferencia de propiedad que juntos constituyen un despliegue criptográficamente soberano.
+La **Doctrina del Sustrato del Sistema** define la capa debajo de cada sistema operativo, servicio y aplicación de PointSav: el kernel, el modelo de capacidades, el [[worm-ledger-architecture|registro de auditoría]] y la ceremonia de transferencia de propiedad que juntos constituyen un despliegue criptográficamente soberano.
 
-Dos afirmaciones principales impulsan la arquitectura. El **Sustrato del Registro de Capacidades**: el estado de capacidades del sistema en ejecución ES el registro WORM de solo anexado; el kernel consulta el registro antes de honrar cualquier invocación; el despliegue se deriva del registro. El **Sustrato Soberano de Dos Bases**: los mismos binarios se ejecutan ya sea en un kernel formalmente verificado (seL4 hoy, con un futuro moonshot-kernel en Rust sin estándar) o en un kernel de compatibilidad de grado soberano (NetBSD con Veriexec y construcciones reproducibles sin conexión).
+Dos afirmaciones principales impulsan la arquitectura. El **[[capability-ledger-substrate|Sustrato del Registro de Capacidades]]**: el estado de capacidades del sistema en ejecución ES el registro WORM de solo anexado; el kernel consulta el registro antes de honrar cualquier invocación; el despliegue se deriva del registro. El **Sustrato Soberano de Dos Bases**: los mismos binarios se ejecutan ya sea en un kernel formalmente verificado ([[sel4-microkernel-substrate|seL4]] hoy, con un futuro moonshot-kernel en Rust sin estándar) o en un kernel de compatibilidad de grado soberano (NetBSD con Veriexec y construcciones reproducibles sin conexión).
 
 ## La inversión del modelo de atestación
 
 Los sistemas existentes anclan la atestación en las claves del proveedor: los proveedores de nube en sus propias raíces de confianza, los stacks nacionales de identidad digital en claves del estado, los enclaves seguros en claves del fabricante del chip. En cada caso, la prueba atestada es prueba de los controles del proveedor, no de los controles del cliente.
 
-La arquitectura de la plataforma invierte esto: cada cadena de atestación termina en la clave de firma apex propia del cliente. La clave apex es sostenida por el cliente: en su TPM, en un HSM que él posee y opera, o como una semilla impresa en papel para recuperación con espacio de aire. Ningún servicio de la plataforma, ningún proveedor, ningún fabricante de chips se interpone entre el cliente y la raíz del registro.
+La arquitectura de la plataforma invierte esto: cada cadena de atestación termina en la clave de firma apex propia del [[customer-owned-graph-ip|cliente]]. La clave apex es sostenida por el cliente: en su TPM, en un HSM que él posee y opera, o como una semilla impresa en papel para recuperación con espacio de aire. Ningún servicio de la plataforma, ningún proveedor, ningún fabricante de chips se interpone entre el cliente y la raíz del registro.
 
 ## El Registro de Capacidades
 
-Cada invocación de capacidad mediada por el kernel emite una entrada firmada a un registro Merkle con raíz en el cliente. El despliegue ES el registro: arrancar es reproducir el registro desde el génesis; apagar es añadir una entrada de apagado; actualizar es añadir una entrada de actualización de versión; rotar claves es añadir una entrada de rotación. El estado del despliegue en cualquier momento es la aplicación determinista de todas las entradas del registro hasta ese momento.
+Cada invocación de capacidad mediada por el kernel emite una entrada firmada a un registro [[merkle-proofs-as-substrate-primitive|Merkle]] con raíz en el cliente. El despliegue ES el registro: arrancar es reproducir el registro desde el génesis; apagar es añadir una entrada de apagado; actualizar es añadir una entrada de actualización de versión; rotar claves es añadir una entrada de rotación. El estado del despliegue en cualquier momento es la aplicación determinista de todas las entradas del registro hasta ese momento.
 
 ## Tres mecanismos
 

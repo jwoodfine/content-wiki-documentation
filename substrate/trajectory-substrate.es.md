@@ -26,7 +26,7 @@ sugerencia incorrecta — todas estas interacciones se convierten en
 señal de entrenamiento. El Sustrato de Trayectoria es el mecanismo
 que convierte el trabajo operacional ordinario en tuples de
 entrenamiento estructuradas, que se acumulan y mejoran el modelo
-base de forma continua.
+base de forma continua — el motor del [[compounding-substrate|sustrato compuesto]].
 
 ## Qué es
 
@@ -68,12 +68,12 @@ como "personalidad del constructor de plataforma."
 
 **Corpus de tiempo de ejecución del inquilino (por cliente)** — datos
 que fluyen a través del Anillo 1 dentro de cada despliegue del cliente.
-Vive dentro del Totebox del cliente; nunca en el espacio de trabajo del
-proveedor. Produce el adaptador del inquilino, que permanece en la
+Vive dentro del Totebox del [[totebox-archive|cliente]]; nunca en el espacio de trabajo del
+proveedor. Produce el [[adapter-composition|adaptador del inquilino]], que permanece en la
 infraestructura del cliente.
 
 Los adaptadores de los inquilinos no salen del despliegue del cliente
-a menos que éste opte explícitamente por el mercado federado (función
+a menos que éste opte explícitamente por el [[sovereign-ai-commons|mercado federado]] (función
 planificada; ver sección sobre perspectivas futuras).
 
 ## Mecanismo de captura
@@ -85,7 +85,7 @@ claves privadas, datos personales y detalles de identificación del
 cliente se redactan en el script de captura, no en el consumidor
 posterior.
 
-La composición de adaptadores en tiempo de inferencia sigue el
+La composición de adaptadores en tiempo de inferencia — a través del [[compounding-doorman|Portero]] — sigue el
 álgebra de composición:
 
 ```

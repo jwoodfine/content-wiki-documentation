@@ -22,7 +22,7 @@ paired_with: tui-corpus-producer.md
 ---
 
 
-El patrón **TUI como Productora de Corpus** designa la interfaz de terminal del operador (`slm-cli`) como fuente primaria de datos de entrenamiento de alta calidad para el adaptador del modelo por inquilino. Cada interacción con el Portero a través de esta interfaz es una contribución curada al corpus.
+El patrón **TUI como Productora de Corpus** designa la interfaz de terminal del operador (`slm-cli`) como fuente primaria de datos de entrenamiento de alta calidad para el [[adapter-composition|adaptador del modelo]] por inquilino. Cada interacción con el [[compounding-doorman|Portero]] a través de esta interfaz es una contribución curada al corpus.
 
 ## Por qué las interacciones de terminal producen datos de alta calidad
 
@@ -44,7 +44,7 @@ El corpus producido por los operadores de un cliente entrena el adaptador de ese
 
 ## Disciplina de captura de veredicto
 
-Ciertas sesiones de terminal no deben contribuir al corpus de entrenamiento: las sesiones de prueba iniciadas con una bandera de no-corpus, las sesiones interrumpidas por niveles no disponibles antes de completarse, y las sesiones en modo de depuración de nivel forzado se registran en el registro de auditoría pero se excluyen de los datos de entrenamiento normales.
+Ciertas sesiones de terminal no deben contribuir al corpus de entrenamiento: las sesiones de prueba iniciadas con una bandera de no-corpus, las sesiones interrumpidas por niveles no disponibles antes de completarse, y las sesiones en modo de depuración de nivel forzado se registran en el [[worm-ledger-architecture|registro de auditoría]] pero se excluyen de los datos de entrenamiento normales.
 
 ## Véase También
 

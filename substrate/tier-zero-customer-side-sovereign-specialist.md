@@ -14,13 +14,13 @@ cites: []
 paired_with: tier-zero-customer-side-sovereign-specialist.es.md
 ---
 
-The **Tier 0 Customer-Side Sovereign Specialist** is the reference deployment model for the platform: the complete platform stack running on the customer's own hardware, with no required cloud dependency, no required internet connectivity, and a total disk footprint of approximately one gigabyte.
+The **Tier 0 Customer-Side Sovereign Specialist** is the reference deployment model for the platform: the complete platform stack running on the customer's own hardware, with no required cloud dependency, no required internet connectivity, and a total disk footprint of approximately one gigabyte. It is the operational form of [[customer-hostability]].
 
 ## The reference unit
 
 The reference Tier 0 deployment is a Totebox — a small-form-factor x86 or ARM appliance. The full stack occupies approximately one gigabyte of disk and a two-to-four gigabyte working memory set on two to four CPU cores. No GPU is required.
 
-The stack includes the WORM file ledger (`service-fs`), the knowledge runtime (`service-content`), the Doorman boundary (`service-slm`), the local specialist model (OLMo 2 1B at roughly 600 MB on disk), the operator TUI (`slm-cli`), and the input, extraction, and egress services. All components are self-contained binaries with no runtime dependencies beyond the operating system.
+The stack includes the [[worm-ledger-architecture|WORM file ledger]] (`service-fs`), the knowledge runtime ([[service-content|`service-content`]]), the [[compounding-doorman|Doorman boundary]] (`service-slm`), the local specialist model (OLMo 2 1B at roughly 600 MB on disk), the operator [[tui-corpus-producer|TUI]] (`slm-cli`), and the input, extraction, and egress services. All components are self-contained binaries with no runtime dependencies beyond the operating system.
 
 Hardware at this scale costs in the range of three hundred to fifteen hundred dollars depending on the customer's size and requirements. The intended monthly operating cost is zero — there is no subscription, no recurring cloud fee, and no per-seat charge.
 
@@ -48,7 +48,7 @@ For a five-person business, a mini-PC class appliance is sufficient. For a thirt
 
 ## Optional tiers
 
-Tier B (GPU burst capacity) is opt-in per tenant. The customer chooses between arranged GPU cloud capacity or a customer-owned GPU box. Tier B routes through the customer's local Doorman, preserving audit and boundary discipline. It is used for tasks the local specialist cannot handle efficiently — editorial, bilingual, and long-form reasoning work.
+Tier B ([[yoyo-compute-substrate|GPU burst capacity]]) is opt-in per tenant. The customer chooses between arranged GPU cloud capacity or a customer-owned GPU box. Tier B routes through the customer's local [[compounding-doorman|Doorman]], preserving audit and boundary discipline. It is used for tasks the local specialist cannot handle efficiently — editorial, bilingual, and long-form reasoning work.
 
 Tier C (external API) is opt-in per tenant and off by default. When configured, external API calls are limited to an explicit allowlist of purposes, are audit-logged at the customer's ledger rather than the vendor's, and are disclosed to the operator. Most customers are intended to operate without Tier C entirely.
 

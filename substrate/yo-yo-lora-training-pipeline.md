@@ -24,12 +24,12 @@ references:
 paired_with: yo-yo-lora-training-pipeline.es.md
 ---
 
-Yo-Yo #1 is a g2-standard-4 Google Cloud spot instance equipped with a
+Yo-Yo #1 is a [[yoyo-compute-substrate|g2-standard-4 Google Cloud spot instance]] equipped with a
 single NVIDIA L4 GPU (24 GB VRAM). On each nightly run, it executes a
-two-phase, four-hour pipeline that produces fine-tuned adapter weights for
+two-phase, four-hour pipeline that produces fine-tuned [[adapter-composition|adapter weights]] for
 the workspace language model. Phase 1 extracts structured business entities
 from the deployment data corpus and writes them to a property graph. Phase 2
-reads accumulated engineering and apprenticeship training tuples, checks
+reads accumulated engineering and [[apprenticeship-substrate|apprenticeship]] training tuples, checks
 whether the corpus has crossed a minimum threshold, and runs a
 parameter-efficient training pass against the base model. The two phases
 are mandatory and sequential — they cannot overlap because both require
@@ -55,13 +55,13 @@ VM and waits up to 90 minutes for vLLM to signal readiness. Once the
 inference server is live, `nightly-datagraph-rebuild.sh` processes three
 document streams from the deployment: meeting transcript markdown files,
 agent research YAML and markdown files, and contact source JSON records. For each document, the script calls
-`POST :9080/v1/chat/completions` through the Doorman, which routes the
+`POST :9080/v1/chat/completions` through the [[compounding-doorman|Doorman]], which routes the
 payload to the 32B Think model on the Yo-Yo VM. The model returns a
 structured JSON array of named entities — people, companies, projects,
 accounts, and locations — constrained by a JSON Schema grammar so the
 output is machine-parseable without post-processing. The script then calls
-`POST :9081/v1/graph/mutate` on service-content to write those entities
-into LadybugDB. A local ledger of processed document hashes ensures each
+`POST :9081/v1/graph/mutate` on [[service-content]] to write those entities
+into LadybugDB. A local [[worm-ledger-architecture|ledger]] of processed document hashes ensures each
 document is processed exactly once across multiple nightly runs.
 
 At the end of Phase 1, vLLM stops and the GPU is released.
