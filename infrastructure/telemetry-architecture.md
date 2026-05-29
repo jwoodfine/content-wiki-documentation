@@ -13,7 +13,7 @@ editor: pointsav-engineering
 paired_with: telemetry-architecture.es.md
 ---
 
-The platform's telemetry system collects web traffic analytics from production edge nodes and routes them to a local processing environment without passing through a third-party cloud aggregation service. All analysis runs on hardware the operator controls.
+The platform's telemetry system collects web traffic analytics from production [[edge-deployment|edge nodes]] and routes them to a local processing environment over the [[sovereign-mesh|WireGuard mesh]] without passing through a third-party cloud aggregation service. All analysis runs on hardware the operator controls, consistent with [[customer-hostability|customer-rooted data custody]].
 
 This article describes the architecture as of the initial deployment. The routing topology and processing stack are planned to evolve as the fleet expands.
 

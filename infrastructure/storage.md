@@ -13,7 +13,7 @@ editor: pointsav-engineering
 paired_with: storage.es.md
 ---
 
-The platform is designed to provide auditors and investors with a tamper-evident record: once data is written, it cannot be secretly overwritten or deleted. This property is enforced at the hardware level, not solely by software policy.
+The platform is designed to provide auditors and investors with a tamper-evident record: once data is written, it cannot be secretly overwritten or deleted. This property is enforced at the hardware level as part of the [[worm-ledger-design|WORM ledger substrate]], not solely by software policy.
 
 ## Hardware-enforced append-only writes
 
@@ -39,6 +39,6 @@ The pairing is established at provisioning time and is specific to the primary s
 
 ## See also
 
-- [[worm-ledger-architecture]] — the full WORM ledger specification
-- [[architecture]] — archive portability and sovereign bootability
-- [[edge-deployment]] — how data enters the system before reaching storage
+- [[worm-ledger-architecture]] — the full WORM ledger four-layer specification
+- [[worm-ledger-design]] — the regulatory compliance mapping and customer key sovereignty rationale
+- [[edge-deployment]] — how data is sanitized at the boundary before it reaches storage

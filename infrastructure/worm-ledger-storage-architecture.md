@@ -15,7 +15,7 @@ last_edited: 2026-05-25
 editor: pointsav-engineering
 ---
 
-The WORM ledger storage architecture describes how the platform’s immutable ledger persists data to disk — and why the specific format and write discipline matter for long-term regulatory compliance. The storage layer adopts the C2SP tlog-tiles specification as its fundamental primitive, producing a tile-based, append-only store that remains verifiable and human-readable with standard Unix utilities for at least a century.
+The WORM ledger storage architecture describes how the [[worm-ledger-design|platform’s immutable ledger]] persists data to disk — and why the specific format and write discipline matter for long-term regulatory compliance. The storage layer adopts the C2SP tlog-tiles specification as its fundamental primitive per the [[worm-ledger-architecture|four-layer ledger architecture]], producing a tile-based, append-only store that remains verifiable and human-readable with standard Unix utilities for at least a century.
 
 ## 1. The tile-based storage engine
 
@@ -48,7 +48,7 @@ The tile-based logs are portable, open-standard, and self-verifying across any h
 
 ## See also
 
-- [[worm-ledger-architecture]]
-- [[worm-ledger-design]]
-- [[service-fs-architecture]]
-- [[cryptographic-ledgers]]
+- [[worm-ledger-architecture]] — the four-layer architectural overview: tile storage, WORM API, wire protocol, anchoring
+- [[worm-ledger-design]] — regulatory compliance mapping and customer key sovereignty rationale
+- [[service-fs-architecture]] — the `service-fs` implementation that applies this storage architecture in production
+- [[cryptographic-ledgers]] — the broader cryptographic ledger context for the C2SP tlog-tiles format

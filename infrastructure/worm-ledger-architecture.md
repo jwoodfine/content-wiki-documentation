@@ -17,7 +17,7 @@ editor: pointsav-engineering
 
 
 
-`service-fs` provides the per-tenant Write-Once-Read-Many (WORM) immutable ledger that serves as the durable backbone for all Ring 1 boundary-ingest services. By enforcing a strict append-only invariant through cryptographic hash-chaining and structural isolation, the platform ensures that identity, communications, and document records remain tamper-evident and permanently accessible.
+[[service-fs-architecture|`service-fs`]] provides the per-tenant Write-Once-Read-Many (WORM) immutable ledger that serves as the durable backbone for all [[three-ring-architecture|Ring 1]] boundary-ingest services, including [[service-people]] and [[service-email]]. By enforcing a strict append-only invariant through cryptographic hash-chaining and structural isolation per the [[worm-ledger-design|WORM ledger design]], the platform ensures that identity, communications, and document records remain tamper-evident and permanently accessible.
 
 ## Architectural integration
 
@@ -54,7 +54,7 @@ The platform’s implementation is unique in its dual-target Rust strategy, allo
 
 ## See also
 
-- [[worm-ledger-design]]
-- [[worm-ledger-storage-architecture]]
-- [[cryptographic-ledgers]]
-- [[sel4-microkernel-substrate]]
+- [[worm-ledger-design]] — regulatory compliance mapping and the structural immutability argument
+- [[worm-ledger-storage-architecture]] — storage-layer detail: tile format, atomic durability, and dual-target envelopes
+- [[cryptographic-ledgers]] — the broader cryptographic ledger context
+- [[sel4-microkernel-substrate]] — the intended seL4 capability-enforcement trajectory for tenant isolation

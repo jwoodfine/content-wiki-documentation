@@ -13,7 +13,7 @@ editor: pointsav-engineering
 paired_with: storage.md
 ---
 
-La plataforma está diseñada para ofrecer a auditores e inversores un registro resistente a manipulaciones: una vez que los datos se escriben, no pueden sobrescribirse ni eliminarse en secreto. Esta propiedad se aplica a nivel de hardware, no solo mediante políticas de software.
+La plataforma está diseñada para ofrecer a auditores e inversores un registro resistente a manipulaciones: una vez que los datos se escriben, no pueden sobrescribirse ni eliminarse en secreto. Esta propiedad se aplica a nivel de hardware a través del [[worm-ledger-design|sustrato del libro mayor WORM]], no solo mediante políticas de software.
 
 ## Escritura exclusivamente de adición, aplicada por hardware
 
@@ -29,6 +29,6 @@ Cuando el disco principal alcanza su capacidad, se realizan copias de seguridad 
 
 ## Véase también
 
-- [[worm-ledger-architecture]] — especificación completa del registro WORM
-- [[architecture]] — portabilidad del archivo y arranque soberano
+- [[worm-ledger-architecture]] — especificación completa del registro WORM de cuatro capas
+- [[worm-ledger-design]] — diseño del sustrato de escritura única y lectura múltiple
 - [[edge-deployment]] — cómo entran los datos al sistema antes de llegar al almacenamiento

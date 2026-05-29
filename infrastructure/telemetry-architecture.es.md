@@ -13,7 +13,7 @@ editor: pointsav-engineering
 paired_with: telemetry-architecture.md
 ---
 
-El sistema de telemetría de la plataforma recopila analítica de tráfico web desde los nodos de borde en producción y la enruta hacia un entorno de procesamiento local, sin pasar por ningún servicio de agregación en la nube de terceros. Todo el análisis se ejecuta en hardware bajo control del operador.
+El sistema de telemetría de la plataforma recopila analítica de tráfico web desde los [[edge-deployment|nodos de borde]] en producción y la enruta a través de la [[sovereign-mesh|malla WireGuard]] hacia un entorno de procesamiento local, coherente con los principios de [[customer-hostability|custodia de datos del cliente]], sin pasar por ningún servicio de agregación en la nube de terceros.
 
 ## Ruta de enrutamiento en cuatro niveles
 
@@ -31,6 +31,7 @@ Enrutar la telemetría hacia un nodo bajo control local significa que el operado
 
 ## Véase también
 
+- [[sovereign-telemetry]] — la arquitectura de telemetría de estado cero que opera sobre esta ruta de enrutamiento
 - [[worm-ledger-architecture]] — el diseño del registro WORM que comparte el modelo de escritura de solo adición
 - [[edge-deployment]] — la arquitectura de ingesta en el perímetro
 - [[compounding-substrate]] — el contexto más amplio del sustrato para la custodia de datos local

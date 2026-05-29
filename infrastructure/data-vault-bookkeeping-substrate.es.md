@@ -18,7 +18,7 @@ paired_with: data-vault-bookkeeping-substrate.md
 
 ## Resumen estratégico
 
-El sustrato de bóveda de datos para contabilidad aborda el bloqueo estructural en el software de contabilidad para PYMEs separando el registro canónico de cada herramienta que lo consume. La bóveda almacena hechos; los consumidores calculan vistas derivadas. La migración desde cualquier herramienta de contabilidad es estructuralmente sin costo: la bóveda permanece intacta, la nueva herramienta reproduce el diario, y las vistas derivadas se reconstruyen desde la misma fuente canónica.
+El sustrato de bóveda de datos para contabilidad aborda el bloqueo estructural en el software de contabilidad para PYMEs separando el registro canónico de cada herramienta que lo consume. Construido sobre la disciplina del [[worm-ledger-design|libro mayor WORM]] de los [[three-ring-architecture|servicios del Anillo 1]], la bóveda almacena hechos; los consumidores calculan vistas derivadas. La bóveda almacena hechos; los consumidores calculan vistas derivadas. La migración desde cualquier herramienta de contabilidad es estructuralmente sin costo: la bóveda permanece intacta, la nueva herramienta reproduce el diario, y las vistas derivadas se reconstruyen desde la misma fuente canónica.
 
 ## Tres inversiones estructurales
 
@@ -38,5 +38,7 @@ La estructura del sustrato satisface los requisitos de cadena de custodia de ISA
 
 ## Véase también
 
-- [[compounding-substrate]]
-- [[design-system-substrate]]
+- [[worm-ledger-design]] — el diseño del libro mayor WORM que proporciona la disciplina de inmutabilidad estructural
+- [[three-ring-architecture]] — el límite del Anillo 1 donde opera el sustrato de la bóveda
+- [[compounding-substrate]] — el contexto arquitectónico más amplio del sustrato
+- [[service-fs-architecture]] — la implementación `service-fs` del libro mayor WORM en producción

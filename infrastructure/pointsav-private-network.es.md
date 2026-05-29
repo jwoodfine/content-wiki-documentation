@@ -13,7 +13,7 @@ paired_with: pointsav-private-network.md
 language: es
 ---
 
-La Red Privada de PointSav (PPN) es la malla WireGuard privada que conecta los nodos de la flota de Woodfine. Es una capa de infraestructura: aprovisiona las máquinas virtuales que ejecutan los servicios `os-*`, enruta el tráfico cifrado entre ellas y proporciona una topología estática sobre la que funciona Totebox Orchestration.
+La Red Privada de PointSav (PPN) es la malla WireGuard privada que conecta los nodos de la flota de Woodfine, sobre la que opera la [[sovereign-mesh|malla soberana]]. Es una capa de infraestructura: aprovisiona las máquinas virtuales que ejecutan los servicios `os-*`, enruta el tráfico cifrado entre ellas y proporciona una topología estática sobre la que funciona [[totebox-orchestration|Totebox Orchestration]].
 
 La PPN no es un sistema de autorización. No otorga acceso a los datos de la aplicación. Estar en la PPN significa que una máquina puede alcanzar la red; no significa que pueda abrir ninguna puerta. La autorización se gestiona en la capa de aplicación mediante la autorización basada en máquinas, que opera de forma independiente y por encima de la PPN.
 

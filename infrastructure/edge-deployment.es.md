@@ -13,7 +13,7 @@ editor: pointsav-engineering
 paired_with: edge-deployment.md
 ---
 
-La plataforma traslada todas las conexiones de red externas al perímetro más externo del sistema antes de que cualquier dato llegue a los anillos de procesamiento central. Esta arquitectura impide que los ataques de red habituales alcancen los registros financieros y los datos estructurados almacenados en el Anillo 2.
+La plataforma traslada todas las conexiones de red externas al perímetro más externo del sistema antes de que cualquier dato llegue a los anillos de procesamiento central, siguiendo la [[three-ring-architecture|arquitectura de tres anillos]]. Esta arquitectura impide que los ataques de red habituales alcancen los registros financieros y los datos estructurados almacenados en el Anillo 2, que son protegidos por el [[worm-ledger-design|registro WORM]].
 
 ## El problema de la ingesta profunda
 
@@ -31,6 +31,7 @@ Dado que los payloads en bruto se sanean en el perímetro y son los registros li
 
 ## Véase también
 
+- [[three-ring-architecture]] — la arquitectura de tres anillos que define los límites del Anillo 1 y el Anillo 2
 - [[worm-ledger-architecture]] — el registro WORM que almacena los datos saneados
 - [[service-email]] — ingesta del Anillo 1 para correo electrónico
 - [[compounding-substrate]] — la arquitectura de tres anillos en contexto

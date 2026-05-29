@@ -35,7 +35,7 @@ paired_with: worm-ledger-design.es.md
 
 A regulated firm's records are only as trustworthy as the weakest hand that can reach them. An administrator flag, a software upgrade, a backup restore — any of these can silently alter a historical record. A policy that promises they will not is not the same as a structure that does not let them.
 
-PointSav's Ring 1 services persist every boundary record — filesystem, people data, email, structured input — to a Write-Once-Read-Many ledger. <!--claim id=tile-format-c2sp cites=[c2sp-tlog-tiles] valid_at=2024 confidence=established-->The on-disk format follows the C2SP tlog-tiles transparency-log specification verbatim; every record is hash-chained, so any modification to a written record breaks the chain.<!--/claim-->
+PointSav's [[three-ring-architecture|Ring 1 services]] persist every boundary record — filesystem, people data, email, structured input — to a Write-Once-Read-Many ledger via [[service-fs-architecture|the service-fs substrate]]. <!--claim id=tile-format-c2sp cites=[c2sp-tlog-tiles] valid_at=2024 confidence=established-->The on-disk format follows the C2SP tlog-tiles transparency-log specification verbatim; every record is hash-chained, so any modification to a written record breaks the chain.<!--/claim-->
 
 <!--claim id=immutability-structural confidence=structural cites=[]-->The ledger is built in four layers — tile storage, a WORM API, a wire protocol, and monthly anchoring of signed checkpoints to a public transparency log. Immutability is a property of the storage substrate, not of operational policy.<!--/claim-->
 
@@ -86,5 +86,8 @@ The `service-fs` Ring 1 service implements the WORM ledger substrate in producti
 ## See also
 
 - [[three-ring-architecture]] — the Ring 1 boundary where the WORM ledger operates
+- [[worm-ledger-architecture]] — the four-layer architectural integration: tile storage, WORM API, wire protocol, anchoring
+- [[worm-ledger-storage-architecture]] — storage-layer detail: C2SP tlog-tiles format, atomic write discipline, dual-target runtime
+- [[service-fs-architecture]] — the `service-fs` implementation that runs this substrate in production
 - [[compounding-doorman]] — the Ring 3 service whose audit ledger uses the same primitive
 - [[trajectory-substrate]] — the training-corpus capture that will use the same ledger format when its archival shape stabilises

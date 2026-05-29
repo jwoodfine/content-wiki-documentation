@@ -14,7 +14,7 @@ cites: []
 paired_with: sovereign-telemetry.es.md
 ---
 
-The zero-state telemetry architecture is the platform's approach to understanding user behaviour without accumulating persistent client state. It collects behavioural and hardware signals from edge clients using only native browser APIs — no cookies, no session identifiers, no third-party analytics aggregators — and transmits the compiled payload asynchronously at tab-close. The current implementation, the V4 Intent Beacon, is operationally independent of external analytics platforms by structure, not by policy.
+The zero-state telemetry architecture is the platform's approach to understanding user behaviour without accumulating persistent client state. It collects behavioural and hardware signals from edge clients using only native browser APIs — no cookies, no session identifiers, no third-party analytics aggregators — and transmits the compiled payload asynchronously at tab-close via the [[telemetry-architecture|four-tier routing path]]. The current implementation, the V4 Intent Beacon, is operationally independent of external analytics platforms by structure, not by policy, consistent with [[customer-hostability|customer-rooted data custody]].
 
 The V4 Intent Beacon enforces a strict no-cookie, no-session-ID posture. Data is compiled entirely on the client side using native browser APIs and transmitted asynchronously via `navigator.sendBeacon` on the `visibilitychange` event. No tracking pixels, session identifiers, or third-party analytics providers are involved.
 
@@ -58,7 +58,7 @@ year-to-date, and inception-to-date.
 
 ## See also
 
-- [[ontological-governance|Ontological Governance]]
-- [[verification-surveyor|Verification Surveyor]]
-- [[message-courier|Message Courier Service]]
-- [[customer-hostability|Customer Hostability]]
+- [[telemetry-architecture]] — the four-tier routing path that delivers V4 Intent Beacon payloads to local processing
+- [[ontological-governance|Ontological Governance]] — the governance layer that this telemetry substrate serves
+- [[verification-surveyor|Verification Surveyor]] — the verification pattern that this telemetry architecture supports
+- [[customer-hostability|Customer Hostability]] — the customer-rooted data custody principle this architecture implements

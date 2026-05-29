@@ -12,7 +12,7 @@ editor: pointsav-engineering
 paired_with: pointsav-private-network.es.md
 ---
 
-The PointSav Private Network (PPN) is the private WireGuard mesh that connects Woodfine's fleet nodes. It is an infrastructure layer: it provisions the virtual machines that run `os-*` services, routes encrypted traffic between them, and provides a static topology that Totebox Orchestration runs on top of.
+The PointSav Private Network (PPN) is the private WireGuard mesh that connects Woodfine's fleet nodes. It is an infrastructure layer: it provisions the virtual machines that run `os-*` services, routes encrypted traffic between them via the [[sovereign-mesh|sovereign mesh overlay]], and provides a static topology that [[totebox-orchestration|Totebox Orchestration]] runs on top of.
 
 The PPN is not an authorization system. It grants no access to application data. Being on the PPN means a machine can reach the network; it does not mean a machine can open any door. Authorization is handled at the application layer by machine-based authorization, which operates independently of and above the PPN.
 

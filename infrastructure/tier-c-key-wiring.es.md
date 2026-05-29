@@ -15,7 +15,7 @@ paired_with: tier-c-key-wiring.md
 ---
 
 
-El Nivel C de la arquitectura de enrutamiento de cómputo de PointSav enruta las solicitudes asistidas por inteligencia artificial a proveedores externos de modelos de lenguaje a través de HTTPS. El servicio Doorman es el único componente del marco que conserva las claves de API de los proveedores. Este artículo describe el procedimiento operativo para gestionar las claves del Nivel C: dónde se almacenan, cómo se aprovisionan y rotan, cómo se auditan el costo y el uso, y cómo se contiene un compromiso sospechado.
+El Nivel C de la [[service-slm-operationalization-plan|arquitectura de enrutamiento de cómputo de PointSav]] enruta las solicitudes asistidas por inteligencia artificial a proveedores externos de modelos de lenguaje a través de HTTPS. El servicio [[doorman-protocol|Doorman]] es el único componente del marco que conserva las claves de API de los proveedores. Este artículo describe el procedimiento operativo para gestionar las claves del Nivel C: dónde se almacenan, cómo se aprovisionan y rotan, cómo se auditan el costo y el uso, y cómo se contiene un compromiso sospechado.
 
 ## Principio rector
 
@@ -37,4 +37,6 @@ Cada llamada al Nivel C produce una entrada en el registro de auditoría por inq
 
 ## Véase también
 
-- [[service-slm-operationalization-plan]]
+- [[service-slm-operationalization-plan]] — la arquitectura de enrutamiento de cómputo del Nivel C en su contexto completo
+- [[doorman-protocol]] — el servicio que gestiona las claves de API externas del Nivel C
+- [[machine-based-auth]] — la capa de autorización basada en máquinas que protege el acceso al Doorman

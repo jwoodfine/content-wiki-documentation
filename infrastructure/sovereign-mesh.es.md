@@ -12,7 +12,7 @@ last_edited: 2026-05-25
 editor: pointsav-engineering
 ---
 
-La malla soberana es la superposición de red a nivel de aplicación que conecta cada nodo de la flota de la Red Privada de PointSav (PPN). Funciona sobre túneles criptográficos WireGuard en una interfaz dedicada `ppn0` y transporta comandos binarios firmados sin depender de un intermediario de mensajes centralizado. Cada nodo se comunica directamente con sus pares autorizados; la capa de malla aplica la misma jerarquía de autoridad que el [[diode-standard|Estándar Diodo]] como una propiedad estructural, no una opción de configuración.
+La malla soberana es la superposición de red a nivel de aplicación que conecta cada nodo de la flota de la [[pointsav-private-network|Red Privada de PointSav]] (PPN). Funciona sobre túneles criptográficos WireGuard en una interfaz dedicada `ppn0` y transporta comandos binarios firmados sin depender de un intermediario de mensajes centralizado. Cada nodo se comunica directamente con sus pares autorizados; la capa de malla aplica la misma jerarquía de autoridad que el [[diode-standard|Estándar Diodo]] como una propiedad estructural, no una opción de configuración.
 
 ## Topología en estrella
 
@@ -38,8 +38,10 @@ El [[diode-standard|Estándar Diodo]] define tres categorías de tráfico de mal
 
 ## Véase también
 
+- [[pointsav-private-network]] — la red privada WireGuard sobre la que opera esta malla soberana
 - [[genesis-protocol]] — cómo los nodos se unen a la malla en el primer arranque
 - [[ppn-command-protocol]] — el formato de cable binario de 16 bytes para comandos de flota
 - [[service-pointsav-link]] — el adaptador que aplica la dirección del flujo de comandos
 - [[diode-standard]] — jerarquía de autoridad y definiciones de categorías de tráfico
+- [[machine-based-auth]] — autorización basada en máquinas que opera sobre la malla
 - [[sovereign-telemetry]] — la arquitectura de telemetría de estado cero que opera sobre la malla

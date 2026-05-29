@@ -35,7 +35,7 @@ paired_with: worm-ledger-design.md
 
 Un registro regulado es tan confiable como la mano más débil que puede alcanzarlo. Una bandera de administrador, una actualización de software, una restauración de respaldo — cualquiera de ellas puede alterar silenciosamente un registro histórico. Una política que promete que no lo harán no es lo mismo que una estructura que no se lo permite.
 
-Los servicios del anillo 1 de PointSav conservan cada registro de límite — sistema de archivos, datos de personas, correo electrónico, entrada estructurada — en un libro de registros de escritura única y lectura múltiple (WORM). <!--claim id=tile-format-c2sp cites=[c2sp-tlog-tiles] valid_at=2024 confidence=established-->El formato en disco sigue de forma literal la especificación de registro de transparencia C2SP tlog-tiles; cada registro está encadenado por hash, de modo que cualquier modificación de un registro escrito rompe la cadena.<!--/claim-->
+Los [[three-ring-architecture|servicios del anillo 1]] de PointSav conservan cada registro de límite — sistema de archivos, datos de personas, correo electrónico, entrada estructurada — en un libro de registros de escritura única y lectura múltiple (WORM), a través del [[service-fs-architecture|sustrato service-fs]]. <!--claim id=tile-format-c2sp cites=[c2sp-tlog-tiles] valid_at=2024 confidence=established-->El formato en disco sigue de forma literal la especificación de registro de transparencia C2SP tlog-tiles; cada registro está encadenado por hash, de modo que cualquier modificación de un registro escrito rompe la cadena.<!--/claim-->
 
 <!--claim id=immutability-structural confidence=structural cites=[]-->El libro de registros se construye en cuatro capas — almacenamiento por bloques, una API WORM, un protocolo de red y el anclaje mensual de puntos de control firmados en un registro público de transparencia. La inmutabilidad es una propiedad del sustrato de almacenamiento, no de la política operativa.<!--/claim-->
 
@@ -80,5 +80,8 @@ El servicio Ring 1 `service-fs` implementa el sustrato del libro de registros WO
 ## Véase también
 
 - [[three-ring-architecture]] — el límite del anillo 1 donde opera el libro de registros WORM
+- [[worm-ledger-architecture]] — la integración arquitectónica de cuatro capas: almacenamiento por bloques, API WORM, protocolo de red, anclaje
+- [[worm-ledger-storage-architecture]] — detalle de la capa de almacenamiento: formato C2SP tlog-tiles, disciplina de escritura atómica
+- [[service-fs-architecture]] — la implementación `service-fs` que ejecuta este sustrato en producción
 - [[compounding-doorman]] — el servicio del anillo 3 cuyo libro de auditoría usa el mismo primitivo
 - [[trajectory-substrate]] — el registro de señal de entrenamiento que usa el mismo formato de libro

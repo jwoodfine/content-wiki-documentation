@@ -14,7 +14,7 @@ cites: []
 paired_with: tier-c-key-wiring.es.md
 ---
 
-Tier C of the PointSav compute routing architecture routes AI-assisted requests to external language model providers via HTTPS. The Doorman service is the only component in the framework that holds provider API keys. This document describes the operational form of Tier C key management: where keys are stored, how they are provisioned and rotated, how cost and usage are audited, and how a suspected compromise is contained.
+Tier C of the [[service-slm-operationalization-plan|PointSav compute routing architecture]] routes AI-assisted requests to external language model providers via HTTPS. The [[doorman-protocol|Doorman service]] is the only component in the framework that holds provider API keys. This document describes the operational form of Tier C key management: where keys are stored, how they are provisioned and rotated, how cost and usage are audited, and how a suspected compromise is contained.
 
 The universal principle is that API keys live at the gateway only — never in application code, never in version-controlled files, and never in logs or audit records. This document is the operational counterpart to that principle.
 
@@ -58,4 +58,6 @@ The incident log entry in the workspace cleanup log carries the leak source, the
 
 ## See also
 
-- [[service-slm-operationalization-plan]] — The broader compute routing architecture that defines the Tier A, B, and C structure.
+- [[service-slm-operationalization-plan]] — the broader compute routing architecture that defines the Tier A, B, and C structure
+- [[doorman-protocol]] — the Doorman service architecture: routing, authentication, and audit posture
+- [[machine-based-auth]] — the machine-based authorization layer that operates alongside key-based Tier C access

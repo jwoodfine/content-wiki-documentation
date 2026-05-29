@@ -13,7 +13,7 @@ editor: pointsav-engineering
 paired_with: edge-deployment.es.md
 ---
 
-The platform moves all external network connections to the outermost boundary of the system before any data reaches the core processing rings. This architecture prevents common network-based attacks from reaching the financial ledgers and structured records held in Ring 2.
+The platform moves all external network connections to the outermost boundary of the [[three-ring-architecture|three-ring architecture]] before any data reaches the core processing rings. This architecture prevents common network-based attacks from reaching the financial ledgers and structured records held in Ring 2, with sanitized records written to the [[worm-ledger-design|WORM ledger]].
 
 ## The problem with deep ingest
 
@@ -37,6 +37,7 @@ Because raw payloads are sanitized at the boundary and the cleaned records are w
 
 ## See also
 
-- [[worm-ledger-architecture]] — the WORM ledger that stores the sanitized records
-- [[service-email]] — Ring 1 ingest for email
-- [[compounding-substrate]] — the three-ring architecture in context
+- [[worm-ledger-architecture]] — the WORM ledger that stores the sanitized records produced at the boundary
+- [[three-ring-architecture]] — the three-ring architecture that defines the Ring 1 boundary placement
+- [[service-email]] — Ring 1 ingest for email traffic
+- [[compounding-substrate]] — the substrate-sovereignty context for boundary-first ingest design

@@ -15,7 +15,7 @@ cites:
 paired_with: data-vault-bookkeeping-substrate.es.md
 ---
 
-The dominant pattern in SMB accounting software places the general ledger, chart of accounts, and transaction history inside a proprietary database operated by the software vendor. Migration between platforms requires re-importing journal entries, reconciling every period, and re-linking source documents manually — a process that routinely costs thousands of dollars in accountant time. The data vault bookkeeping substrate addresses this structural lock-in by separating the canonical record from every tool that consumes it.
+The dominant pattern in SMB accounting software places the general ledger, chart of accounts, and transaction history inside a proprietary database operated by the software vendor. Migration between platforms requires re-importing journal entries, reconciling every period, and re-linking source documents manually — a process that routinely costs thousands of dollars in accountant time. The data vault bookkeeping substrate addresses this structural lock-in by separating the canonical record from every tool that consumes it, applying the same [[worm-ledger-design|WORM ledger discipline]] used across [[three-ring-architecture|Ring 1 boundary services]].
 
 ## Three structural inversions
 
@@ -63,4 +63,5 @@ The behavioral specification for the bookkeeping substrate is intended to emerge
 ## See also
 
 - [[compounding-substrate]] — the substrate sovereignty pattern this architecture extends
+- [[worm-ledger-design]] — the WORM ledger substrate this bookkeeping layer depends on for immutable audit trails
 - [[design-system-substrate]] — a parallel substrate with the same vault-as-canonical, consumer-as-interchangeable pattern

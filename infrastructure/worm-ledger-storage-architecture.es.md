@@ -17,7 +17,7 @@ editor: pointsav-engineering
 
 
 
-La arquitectura de la plataforma se basa en la inmutabilidad estructural, garantizando que los archivos de datos sean permanentes y legibles a largo plazo.
+La arquitectura de almacenamiento del [[worm-ledger-design|libro de registros WORM]] describe cómo el ledger inmutable de la plataforma persiste datos en disco siguiendo la [[worm-ledger-architecture|arquitectura de cuatro capas]]. La capa de almacenamiento adopta la especificación C2SP tlog-tiles, basándose en la inmutabilidad estructural y garantizando que los archivos de datos sean permanentes y legibles a largo plazo.
 
 ## El Motor de Almacenamiento por Teselas (Tiles)
 
@@ -37,7 +37,7 @@ Este diseño cumple con las normativas SEC (EE. UU.) y eIDAS (UE), devolviendo l
 
 ## Véase también
 
-- [[worm-ledger-architecture]]
-- [[worm-ledger-design]]
-- [[service-fs-architecture]]
-- [[cryptographic-ledgers]]
+- [[worm-ledger-architecture]] — visión arquitectónica de cuatro capas: almacenamiento por bloques, API WORM, protocolo de red, anclaje
+- [[worm-ledger-design]] — mapeo de cumplimiento regulatorio y soberanía de claves del cliente
+- [[service-fs-architecture]] — la implementación `service-fs` que aplica esta arquitectura de almacenamiento en producción
+- [[cryptographic-ledgers]] — el contexto más amplio del libro de registros criptográfico

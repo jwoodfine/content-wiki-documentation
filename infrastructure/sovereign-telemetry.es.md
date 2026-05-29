@@ -17,7 +17,7 @@ cites: []
 ---
 
 
-La arquitectura de telemetría de estado cero recopila señales de comportamiento y hardware de los clientes perimetrales sin cookies, identificadores de sesión ni agregadores de análisis de terceros. Utiliza la compilación del lado del cliente y la transmisión de balizas asíncrona en el cierre de la pestaña.
+La arquitectura de telemetría de estado cero recopila señales de comportamiento y hardware de los clientes perimetrales sin cookies, identificadores de sesión ni agregadores de análisis de terceros, mediante la [[telemetry-architecture|ruta de enrutamiento de cuatro niveles]] de la plataforma. Utiliza la compilación del lado del cliente y la transmisión de balizas asíncrona en el cierre de la pestaña, coherente con los principios de [[customer-hostability|custodia de datos del cliente]].
 
 ## Principio de diseño
 
@@ -44,7 +44,8 @@ La arquitectura es operacionalmente independiente de plataformas de análisis ex
 
 ## Véase también
 
-- [[ontological-governance]]
-- [[verification-surveyor]]
-- [[message-courier]]
-- [[customer-hostability]]
+- [[telemetry-architecture]] — la ruta de enrutamiento de cuatro niveles que transporta las señales de balizas
+- [[ontological-governance]] — gobernanza que rige el uso de señales de comportamiento
+- [[verification-surveyor]] — el servicio que consume las señales del Intent Beacon
+- [[message-courier]] — enrutamiento de mensajes dentro de la plataforma
+- [[customer-hostability]] — principios de custodia de datos del cliente que informan este diseño

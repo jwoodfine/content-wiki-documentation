@@ -17,7 +17,7 @@ editor: pointsav-engineering
 
 
 
-`service-fs` proporciona el sustrato de almacenamiento inmutable de "escritura única y lectura múltiple" (WORM) para cada cliente. Esta arquitectura garantiza que todos los registros —desde identidades hasta comunicaciones— sean permanentes, imposibles de borrar y verificables criptográficamente.
+[[service-fs-architecture|`service-fs`]] proporciona el sustrato de almacenamiento inmutable de "escritura única y lectura múltiple" (WORM) para cada cliente en los [[three-ring-architecture|servicios Ring 1]], incluyendo [[service-people]] y [[service-email]]. Esta arquitectura, descrita en el [[worm-ledger-design|diseño del libro de registros WORM]], garantiza que todos los registros —desde identidades hasta comunicaciones— sean permanentes, imposibles de borrar y verificables criptográficamente.
 
 ## Arquitectura de Cuatro Capas
 
@@ -32,7 +32,7 @@ Este diseño permite que la plataforma funcione hoy como un demonio en Linux y, 
 
 ## Véase también
 
-- [[worm-ledger-design]]
-- [[worm-ledger-storage-architecture]]
-- [[cryptographic-ledgers]]
-- [[sel4-microkernel-substrate]]
+- [[worm-ledger-design]] — mapeo de cumplimiento regulatorio y argumento de inmutabilidad estructural
+- [[worm-ledger-storage-architecture]] — detalle de la capa de almacenamiento: formato de bloques, durabilidad atómica, entornos dual-target
+- [[cryptographic-ledgers]] — el contexto más amplio del libro de registros criptográfico
+- [[sel4-microkernel-substrate]] — la trayectoria de aislamiento por capacidades seL4 prevista para inquilinos
