@@ -14,7 +14,7 @@ paired_with: gis-as-bim-substrate.md
 
 # GIS como sustrato BIM
 
-La Modelización de Información de Construcción (BIM, por sus siglas en inglés) opera a escala de edificio: geometría estructural, ensamblajes de materiales, sistemas mecánicos, ocupación. Un modelo tiene sentido por sí solo, pero su valor comercial emerge cuando se emplaza — cuando se posiciona en una geografía real con vecinos reales, áreas de influencia reales y contexto regulatorio real. El dataset de co-ubicación GIS de PointSav está diseñado para proporcionar ese contexto de emplazamiento a los canales de composición BIM.
+La Modelización de Información de Construcción (BIM, por sus siglas en inglés) opera a escala de edificio: geometría estructural, ensamblajes de materiales, sistemas mecánicos, ocupación. Un modelo tiene sentido por sí solo, pero su valor comercial emerge cuando se emplaza — cuando se posiciona en una geografía real con vecinos reales, áreas de influencia reales y contexto regulatorio real. El dataset de [[co-location-methodology|co-ubicación]] GIS de [[pointsav-overview|PointSav]] está diseñado para proporcionar ese contexto de emplazamiento a los canales de composición BIM.
 
 Este artículo documenta lo que el dataset GIS ofrece a un consumidor BIM, qué campos son estables y qué extensiones están previstas.
 

@@ -13,7 +13,7 @@ category: architecture
 
 
 
-The Identity Ledger provides a JSONL-based, append-only record of canonical person identities within the platform. Following the Three-Ring Architecture’s boundary-ingest pattern, `service-people` publishes this schema to enable deterministic identity resolution across all Ring 2 and Ring 3 knowledge-extraction services.
+The Identity Ledger provides a JSONL-based, append-only record of canonical person identities within the platform. Following the [[three-ring-architecture|Three-Ring Architecture]]’s boundary-ingest pattern, [[service-people]] publishes this schema to enable deterministic identity resolution across all Ring 2 and Ring 3 knowledge-extraction services. See also [[worm-ledger-design|the WORM ledger design]] and [[machine-based-auth|machine-based authorization]].
 
 ## Core Design Principles
 
@@ -21,7 +21,7 @@ The Identity Ledger provides a JSONL-based, append-only record of canonical pers
 The primary identifier (`identity_id`) is derived deterministically from the user’s primary email address using a UUIDv5 namespace. This ensures that the same email always produces the identical UUID across any node without requiring AI or probabilistic matching, satisfying the strict requirements of ADR-07.
 
 ### 2. Append-Only Integrity
-The platform uses a WORM (Write-Once-Read-Many) discipline for identity records. To update an identity—such as a role change or a new communication endpoint—a new record is appended to the ledger. Readers always fetch the latest record per `identity_id`, preserving a full, immutable audit trail of the identity’s history.
+The platform uses a [[worm-ledger-architecture|WORM (Write-Once-Read-Many) discipline]] for identity records. To update an identity—such as a role change or a new communication endpoint—a new record is appended to the ledger. Readers always fetch the latest record per `identity_id`, preserving a full, immutable audit trail of the identity’s history.
 
 ### 3. Multi-Channel Communication
 Identity records serve as a unified source for all communication endpoints, including:
@@ -46,7 +46,7 @@ Per ADR-07, identity resolution must be deterministic and bypass AI inference at
 
 ## MCP Integration
 
-`service-people` exposes identity data through the Model Context Protocol (MCP), providing resources for looking up records by ID or email, and tools for appending new identity claims from Ring 1 inbound services. This architecture ensures that identity remains a stable, verifiable sustrato for all downstream automated processing.
+[[service-people]] exposes identity data through the [[mcp-substrate-protocol|Model Context Protocol (MCP)]], providing resources for looking up records by ID or email, and tools for appending new identity claims from Ring 1 inbound services. This architecture ensures that identity remains a stable, verifiable substrate for all downstream automated processing.
 
 ## See also
 

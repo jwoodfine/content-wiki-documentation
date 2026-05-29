@@ -25,7 +25,7 @@ references:
  url: "https://modelcontextprotocol.io/"
 ---
 
-Three market forces converging in 2026 — viable small language models on commodity hardware, the Model Context Protocol as the standard for AI-native service composition, and on-premises as the fastest-growing SMB deployment type — open a structural gap that hyperscaler vendors cannot close without dismantling their own business model. The Leapfrog 2030 architecture is PointSav's commitment to that gap: sovereign platform code, composable services, and transactional revenue rather than recurring license fees. The customer owns their hardware, their data, and their adapter weights; PointSav takes a transaction percentage when value flows. This article covers the five structural shifts the thesis describes, the substrate that realizes them, and the compounding loop that makes the commitment durable over time.
+Three market forces converging in 2026 — viable small language models on commodity hardware, the [[mcp-substrate-protocol|Model Context Protocol]] as the standard for AI-native service composition, and on-premises as the fastest-growing SMB deployment type — open a structural gap that hyperscaler vendors cannot close without dismantling their own business model. The Leapfrog 2030 architecture is [[pointsav-overview|PointSav]]'s commitment to that gap: sovereign platform code, composable services, and transactional revenue rather than recurring license fees. The customer owns their hardware, their data, and their adapter weights; PointSav takes a transaction percentage when value flows via [[direct-payment-settlement|direct-payment settlement]]. This article covers the five structural shifts the thesis describes, the substrate that realizes them, and the [[compounding-substrate|compounding loop]] that makes the commitment durable over time.
 
 ## The five structural shifts
 
@@ -59,11 +59,11 @@ The opening is for a different commitment: sovereign substrate plus composable s
 
 Three structural distinctions from the hyperscaler stack:
 
-**Sovereignty over service.** The customer's [[totebox-os|Totebox]] — the customer data vault, a compact on-premises appliance — is designed to boot, run, query, audit, and export without any PointSav-side dependency. If PointSav Digital Systems ceases operations, the customer's substrate is intended to continue functioning. This is not a backup feature; it is the designed default operational mode.
+**Sovereignty over service.** The customer's [[totebox-os|Totebox]] — the customer data vault, a compact on-premises appliance — is designed to boot, run, query, audit, and export without any [[pointsav-overview|PointSav]]-side dependency. If PointSav Digital Systems ceases operations, the customer's substrate is intended to continue functioning. This is not a backup feature; it is the designed default operational mode. See [[customer-hostability|customer hostability]].
 
 **Specialisation over generalisation.** The Tier A inference tier — always-on, customer-side — is a 1-billion-parameter sysadmin specialist, not a 32-billion-parameter generalist. It runs on commodity CPU. It trains on the customer's own engineering and IT-support corpus. Over time it becomes specifically useful for that customer's environment. The generalist tier (Tier B, 32B class on GPU) is opt-in and on-demand; the precision tier (Tier C, external API) is rare and sovereignty-disclosed.
 
-**Compounding over capture.** PointSav Digital Systems's intended revenue compounds with the customer's revenue, not against it. The Direct-Payment Settlement substrate is designed to route data marketplace and ad-exchange transactions directly from buyer to customer; PointSav takes a transaction percentage at settlement, not a subscription fee on access. The customer is intended to be a revenue partner, not a license-payer.
+**Compounding over capture.** [[pointsav-overview|PointSav]] Digital Systems's intended revenue compounds with the customer's revenue, not against it. The [[direct-payment-settlement|Direct-Payment Settlement]] substrate is designed to route data marketplace and ad-exchange transactions directly from buyer to customer; PointSav takes a transaction percentage at settlement, not a subscription fee on access. The customer is intended to be a revenue partner, not a license-payer. See [[economic-model|the economic model]].
 
 ## The substrate at a glance
 
@@ -73,9 +73,9 @@ A deployment composes three rings:
 
 **Ring 2 — Knowledge and Processing.** Multi-tenant via module identifier: [[service-content]] (the per-tenant graph and vector store), [[service-egress]] (outbound formatting), service-marketplace (data marketplace gateway), service-ad-exchange (IAB OpenRTB 2.6+ gateway), service-settlement (Stripe Connect and crypto rail).
 
-**Ring 3 — Optional Intelligence.** [[service-slm]] Doorman as MCP gateway; Tier A 1B sysadmin specialist (always-on); Tier B 32B generalist (on-demand GPU pool or customer GPU, on-demand); Tier C external API (rare; allowlist-gated).
+**Ring 3 — Optional Intelligence.** [[service-slm]] [[doorman-protocol|Doorman]] as [[mcp-substrate-protocol|MCP]] gateway; Tier A 1B sysadmin specialist (always-on); Tier B 32B generalist (on-demand GPU pool or customer GPU, on-demand); Tier C external API (rare; allowlist-gated).
 
-The Single-Boundary Compute Discipline makes the Doorman the only path to inference compute. Bearer tokens, API keys, and endpoint URLs live exclusively in the Doorman's configuration. Bypass is structurally prevented — by firewall, UID-owner iptables, and bearer-only-in-Doorman — not by policy alone.
+The [[single-boundary-compute-discipline|Single-Boundary Compute Discipline]] makes the [[doorman-protocol|Doorman]] the only path to inference compute. Bearer tokens, API keys, and endpoint URLs live exclusively in the Doorman's configuration. Bypass is structurally prevented — by firewall, UID-owner iptables, and bearer-only-in-Doorman — not by policy alone.
 
 ## How it works for the small business
 
@@ -103,9 +103,9 @@ In each case the form is the same: substrate, graph, specialist, optional genera
 
 Centralised platform vendors are committed to integrated recurring revenue. Their model assumes compute concentrates in their cloud, data flows to their cloud, subscription fees are charged regardless of customer usage, and lock-in increases as data accumulates.
 
-PointSav's intended model assumes compute distributes to customer hardware, data stays at the customer, transaction fees are charged when value flows, and transfer is a single-command operation.
+[[pointsav-overview|PointSav]]'s intended model assumes compute distributes to customer hardware, data stays at the customer, transaction fees are charged when value flows, and transfer is a single-command operation.
 
-These are not minor configuration differences. They are structural inversions. A centralised platform vendor cannot adopt PointSav's commercial model without dismantling its existing revenue base. This is the structural window in which PointSav may be the only realistic answer for the institution that wants AI-native operations without lock-in.
+These are not minor configuration differences. They are structural inversions. A centralised platform vendor cannot adopt PointSav's commercial model without dismantling its existing revenue base. This is the structural window in which [[pointsav-overview|PointSav]] may be the only realistic answer for the institution that wants AI-native operations without lock-in.
 
 ## The compounding loop
 
@@ -123,9 +123,9 @@ Every loop iteration is a marginal improvement. The compounding runs in customer
 
 ## The first reference deployment
 
-The PointSav development environment is the first reference deployment of the substrate. PointSav Digital Systems operates this instance as their own production environment; Woodfine Management Corp. is the first customer. The platform composes the same shape for both.
+The [[pointsav-overview|PointSav]] development environment is the first reference deployment of the substrate. PointSav Digital Systems operates this instance as their own production environment; Woodfine Management Corp. is the first customer. The platform composes the same shape for both.
 
-This is the structural realization of the customer-first-ordering principle: PointSav builds what Woodfine will install, on the same substrate Woodfine will use, in the same order Woodfine will install it.
+This is the structural realization of the [[customer-first-ordering|customer-first-ordering]] principle: [[pointsav-overview|PointSav]] builds what Woodfine will install, on the same substrate Woodfine will use, in the same order Woodfine will install it.
 
 ## What ships when (planned)
 
