@@ -10,7 +10,7 @@ editor: pointsav-engineering
 paired_with: guide-catalog.md
 ---
 
-El Catálogo de Guías Operacionales enumera todas las guías operacionales del despliegue de flota Woodfine, organizadas por propósito. Cada guía cubre una tarea operacional específica en un nodo de despliegue designado. Utilice este catálogo para localizar la guía correcta cuando sepa lo que necesita hacer, pero no cuál sistema es el responsable de la tarea.
+El Catálogo de Guías Operacionales enumera todas las guías operacionales del despliegue de flota Woodfine, organizadas por propósito. Cada guía cubre una tarea operacional específica en un nodo de despliegue designado. Utilice este catálogo para localizar la guía correcta cuando sepa lo que necesita hacer, pero no cuál sistema es el responsable de la tarea. Para la arquitectura de despliegue que sustenta cada tipo de nodo, véase [[totebox-archive|Archivo Totebox]] y [[totebox-orchestration-development]].
 
 ## Aprovisionamiento y Despliegue
 
@@ -129,7 +129,7 @@ Esta sección reúne las guías para operar la bóveda git privada. Consulte est
 
 ## Inteligencia Artificial y Aprendizaje Automático
 
-Esta sección reúne las guías para operar el clúster de inteligencia y el servicio de inferencia del modelo de lenguaje reducido. Consulte estas guías cuando ejecute el proceso de cómputo elástico nocturno o despliegue el servicio de inferencia dentro del clúster de personal.
+Esta sección reúne las guías para operar el clúster de inteligencia y el [[service-slm|servicio de inferencia del modelo de lenguaje reducido]]. Consulte estas guías cuando ejecute el proceso de [[yoyo-compute-substrate|cómputo elástico]] nocturno o despliegue el servicio de inferencia dentro del clúster de personal.
 
 - **guide-elastic-compute-nightly-pipeline** (cluster-intelligence) — ejecuta el proceso nocturno de cómputo elástico (ajuste fino LoRA)
 - **guide-01-deployment** (cluster-totebox-personnel/service-slm) — despliega el servicio de inferencia del modelo de lenguaje reducido dentro del clúster de personal
@@ -145,5 +145,5 @@ Esta sección reúne las guías para operar el propio entorno de trabajo Foundry
 
 ## Véase También
 
-- architecture/totebox-orchestration-development — el modelo de desarrollo de orquestación Totebox que sustenta el aprovisionamiento y la operación de los nodos de despliegue de flota
-- systems/totebox-archive — el patrón de Archivo Totebox que organiza el trabajo en sesiones a través de todos los clústeres de despliegue de flota
+- [[totebox-orchestration-development]] — el modelo de desarrollo de orquestación Totebox que sustenta el aprovisionamiento y la operación de los nodos de despliegue de flota
+- [[totebox-archive]] — el patrón de Archivo Totebox que organiza el trabajo en sesiones a través de todos los clústeres de despliegue de flota

@@ -13,7 +13,7 @@ category: reference
 
 
 
-El Sistema de Diseño de Edificios es la contraparte AEC del sustrato de diseño de la plataforma. Se basa en una postura estructural: los compromisos de PointSav —almacenamiento en archivos planos, estándares abiertos, ejecución fuera de línea y seguridad seL4— no son preferencias estéticas, sino las ventajas que permiten superar las debilidades del software en la nube tradicional.
+El Sistema de Diseño de Edificios es la contraparte AEC del sustrato de diseño de la plataforma. Se basa en una postura estructural: los compromisos de PointSav — almacenamiento en archivos planos, estándares abiertos, ejecución fuera de línea y [[sel4-microkernel-substrate|seguridad seL4]] — no son preferencias estéticas, sino las ventajas que permiten superar las debilidades del software en la nube tradicional.
 
 ## Diferenciadores Estratégicos
 
@@ -22,7 +22,7 @@ La filosofía de la plataforma se centra en cinco capacidades únicas:
 2. **Capacidad fuera de línea:** Funcionalidad total en entornos sin internet o de alta seguridad.
 3. **Supervivencia a la Obsolescencia:** Datos legibles durante 50 años mediante el uso de estándares ISO abiertos.
 4. **Integración IoT Local:** Datos de sensores procesados localmente sin cargos por uso de nube.
-5. **Convergencia de Datos:** Unificación de la identidad espacial, legal y financiera en un único archivo portátil.
+5. **Convergencia de Datos:** Unificación de la identidad espacial, legal y financiera en un único [[totebox-archive|archivo portátil]].
 
 ## El Salto del Código Componible
 

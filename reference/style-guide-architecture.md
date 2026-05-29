@@ -21,8 +21,7 @@ project in `pointsav-monorepo`. It is written for an audience
 that already knows the platform's vocabulary and wants to
 understand one project's place in the system, its outward-facing
 interface, and the internal organisation of its code. It is not
-a tutorial and not a runbook. This article is the
-human-facing operational form; the machine-readable counterpart
+a tutorial and not a runbook. Companion files at the project root are governed by the [[root-files-discipline|root files discipline]]; this article covers one of them. The human-facing operational form; the machine-readable counterpart
 lives in
 `service-disclosure/templates/architecture.toml`.
 
@@ -126,3 +125,4 @@ service-disclosure/
 - [[style-guide-topic|Style Guide — TOPIC]]
 - [[style-guide-guide|Style Guide — GUIDE]]
 - [[language-protocol-substrate|Language Protocol Substrate]]
+- [[root-files-discipline]] — companion-file discipline that governs what belongs at a project root alongside ARCHITECTURE.md

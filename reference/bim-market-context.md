@@ -14,7 +14,7 @@ editor: pointsav-engineering
 cites: [ifc-4-3, uniclass-2015, bsdd-v1, ids-1-0, iso-19650]
 ---
 
-The architecture of the building industry's digital transformation is settled. The standards are ISO. The formats are open. The regulatory mandates are published. What remains unsettled is who will build the infrastructure layer that connects geometry, records, sensors, and legal title into a single portable archive — one that survives every software vendor that touches it.
+The architecture of the building industry's digital transformation is settled. The standards are ISO. The formats are open. The regulatory mandates are published. What remains unsettled is who will build the infrastructure layer that connects geometry, records, sensors, and legal title into a single portable archive — one that survives every software vendor that touches it. The [[totebox-archive|Totebox Archive]] is that infrastructure layer: a portable, [[worm-ledger-architecture|append-only ledger]] of every building record, transferable at sale and independently verifiable.
 
 ## The Global BIM Mandate
 
@@ -50,7 +50,7 @@ The convergence is clear: ISO 19650 as the process standard and IFC as the data 
 
 ISO 19650 defines how information is managed throughout the lifecycle of a built asset using BIM. Part 6, focused on health and safety data, was released in 2025. The standard is currently under revision — proposed changes include clearer terminology, removal of repetitive content, a more logical workflow, and expanded focus on whole-lifecycle information covering operations, maintenance, and decommissioning.
 
-**What this means for PointSav:** Every government-funded project in Europe and most major markets outside the US now legally requires IFC-format deliverables and ISO 19650-aligned information management. PointSav's flat-file archive, canonicalised on IFC-SPF, is the infrastructure that makes those mandates survivable beyond the construction phase.
+**What this means for PointSav:** Every government-funded project in Europe and most major markets outside the US now legally requires IFC-format deliverables and ISO 19650-aligned information management. PointSav's flat-file archive, canonicalised on IFC-SPF, is the infrastructure that makes those mandates survivable beyond the construction phase. The [[sel4-microkernel-substrate|seL4 microkernel]] addresses the data-sovereignty requirement that cloud BIM platforms cannot meet structurally.
 
 ---
 
@@ -212,9 +212,9 @@ Five capabilities are absent from every currently shipping commercial BIM platfo
 
 3. **Vendor-obsolescence-survivable BIM.** A building lives 50–100 years. A software subscription lives until the vendor changes its pricing model. The PointSav archive, written in IFC-SPF + YAML + SVG + glTF, will be readable in 2076 by tools that do not yet exist.
 
-4. **IoT integration without cloud intermediary.** A PointSav ToteboxOS node ingests BACnet / KNX / MQTT sensor data directly into the archive via a local broker — the data never leaves the owner's premises unless the owner chooses to send it.
+4. **IoT integration without cloud intermediary.** A PointSav [[os-totebox|ToteboxOS]] node ingests BACnet / KNX / MQTT sensor data directly into the archive via a local broker — the data never leaves the owner's premises unless the owner chooses to send it.
 
-5. **BIM + lease + financial ledger in one portable archive.** A PropertyArchive holding a building's geometry, lease register, financial ledger, and maintenance history in a single owner-controlled archive is architecturally impossible for any multi-tenant shared platform. For a property owner, these are not four datasets — they are one record about one asset.
+5. **BIM + lease + financial ledger in one portable archive.** A PropertyArchive holding a building's geometry, lease register, financial ledger, and maintenance history in a single owner-controlled archive is architecturally impossible for any multi-tenant shared platform. For a property owner, these are not four datasets — they are one record about one asset. The [[customer-owned-graph-ip|customer-owned graph]] principle means the record belongs to the property owner, not to any platform vendor.
 
 ### The 2030 Horizon
 

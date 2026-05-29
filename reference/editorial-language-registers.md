@@ -10,7 +10,7 @@ last_edited: 2026-05-21
 editor: pointsav-engineering
 ---
 
-The three PointSav wikis address three distinct primary audiences. Each audience has different financial and technical literacy, different reasons for reading, and different vocabulary expectations. Writing in the wrong register produces content that fails to communicate — not because it is inaccurate, but because it addresses the wrong reader. This article defines the three registers, explains who each audience is, and provides the vocabulary rules that govern all three wikis.
+The three PointSav wikis address three distinct primary audiences. Each audience has different financial and technical literacy, different reasons for reading, and different vocabulary expectations. Writing in the wrong register produces content that fails to communicate — not because it is inaccurate, but because it addresses the wrong reader. This article defines the three registers, explains who each audience is, and provides the vocabulary rules that govern all three wikis. The underlying [[language-protocol-substrate|language protocol substrate]] enforces these rules structurally at capture time.
 
 ## The editorial standard
 

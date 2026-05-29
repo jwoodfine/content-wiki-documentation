@@ -13,7 +13,7 @@ category: reference
 
 
 
-El Sistema de Diseño de Edificios adopta el vocabulario de interfaz universal de la industria (Revit, ArchiCAD, BricsCAD y Bonsai) para garantizar que los profesionales del sector AEC (Arquitectura, Ingeniería y Construcción) no tengan curva de aprendizaje. Al respetar las convenciones establecidas, la plataforma permite que los usuarios se concentren en las innovaciones estratégicas de la plataforma.
+El Sistema de Diseño de Edificios adopta el vocabulario de interfaz universal de la industria (Revit, ArchiCAD, BricsCAD y Bonsai) para garantizar que los profesionales del sector AEC (Arquitectura, Ingeniería y Construcción) no tengan curva de aprendizaje. Al respetar las convenciones establecidas, la plataforma permite que los usuarios se concentren en las innovaciones estratégicas — como el [[totebox-archive|almacén de archivos planos]] — en lugar de en la interacción básica con herramientas.
 
 ## Convenciones Universales de Diseño
 
@@ -27,7 +27,7 @@ La plataforma implementa los patrones de diseño estándar que todo profesional 
 
 A diferencia de las herramientas tradicionales enfocadas solo en el diseño, la plataforma está diseñada para el operador de instalaciones:
 - **Vínculos de Órdenes de Trabajo:** Conexión de estados de mantenimiento directamente con los elementos BIM.
-- **Integración de Arrendamientos:** Vinculación de espacios (`IfcSpace`) con registros financieros.
+- **Integración de Arrendamientos:** Vinculación de espacios (`IfcSpace`) con registros financieros en el [[service-content|sistema de contenido]].
 - **Superposición de Sensores:** Visualización de datos IoT en tiempo real sobre el modelo 3D.
 
 Estas capacidades, previstas para la versión v0.0.2, transforman el BIM de una herramienta de dibujo en un sustrato operativo para la gestión de inmuebles.

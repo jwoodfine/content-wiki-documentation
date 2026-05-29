@@ -15,11 +15,11 @@ paired_with: service-slm-operationalization-plan.md
 ---
 
 
-El plan de operacionalización de service-slm describe el camino previsto desde un estado inicial — en el que las llamadas a modelos de lenguaje externos grandes gestionan sustancialmente todo el trabajo asistido por inteligencia artificial — hacia un estado objetivo en el que un sustrato de modelo de lenguaje pequeño por inquilino contribuye en paralelo con las llamadas externas, acumula un corpus de entrenamiento a partir de sus propios resultados y correcciones, y desplaza progresivamente el nivel externo de mayor costo en los tipos de tareas que el sustrato ha dominado.
+El plan de operacionalización de [[service-slm]] describe el camino previsto desde un estado inicial — en el que las llamadas a modelos de lenguaje externos grandes gestionan sustancialmente todo el trabajo asistido por inteligencia artificial — hacia un estado objetivo en el que un [[compounding-substrate|sustrato de modelo de lenguaje pequeño]] por inquilino contribuye en paralelo con las llamadas externas, acumula un corpus de entrenamiento a partir de sus propios resultados y correcciones, y desplaza progresivamente el nivel externo de mayor costo en los tipos de tareas que el sustrato ha dominado.
 
 ## El estado objetivo
 
-El objetivo estratégico es un sustrato editorial y de aprendizaje por inquilino donde cada commit se convierte en material para el corpus de entrenamiento, los pesos de adaptadores por inquilino se componen con el modelo base abierto en el momento de la inferencia, y el sustrato mejora monótonamente porque dos bucles de retroalimentación se cierran simultáneamente. El primer bucle captura la señal de corrección estructural. El segundo bucle captura la señal de oficio — si un colaborador creativo editó el resultado publicado — y la incorpora como una capa de entrenamiento de preferencia sobre la capa estructural.
+El objetivo estratégico es un sustrato editorial y de [[apprenticeship-substrate|aprendizaje]] por inquilino donde cada commit se convierte en material para el corpus de entrenamiento, los [[adapter-composition|pesos de adaptadores]] por inquilino se componen con el modelo base abierto en el momento de la inferencia, y el sustrato mejora monótonamente porque dos bucles de retroalimentación se cierran simultáneamente. El primer bucle captura la señal de corrección estructural. El segundo bucle captura la señal de oficio — si un colaborador creativo editó el resultado publicado — y la incorpora como una capa de entrenamiento de preferencia sobre la capa estructural.
 
 ## Los tres niveles de cómputo
 
@@ -35,4 +35,7 @@ El entrenamiento de adaptadores usa el marco Axolotl con el modelo OLMo 3.1 32B 
 
 ## Véase también
 
-- [[tier-c-key-wiring]]
+- [[tier-c-key-wiring]] — La forma operativa de gestión de claves API del Nivel C externo
+- [[apprenticeship-substrate]] — el pipeline de aprendizaje que acumula el corpus de entrenamiento
+- [[compounding-doorman]] — el Portero que enruta entre los tres niveles de cómputo
+- [[yo-yo-lora-training-pipeline]] — el pipeline nocturno de entrenamiento LoRA en la GPU de ráfaga

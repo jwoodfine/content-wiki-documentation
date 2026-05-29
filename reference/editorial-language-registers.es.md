@@ -12,7 +12,7 @@ language: es
 paired_with: editorial-language-registers.md
 ---
 
-Los tres wikis de PointSav se dirigen a tres audiencias primarias distintas. Cada audiencia tiene diferente nivel de alfabetización financiera y técnica, diferentes razones para leer y diferentes expectativas de vocabulario. Este artículo define los tres registros, explica quién es cada audiencia y establece las reglas de vocabulario que rigen los tres wikis.
+Los tres wikis de PointSav se dirigen a tres audiencias primarias distintas. Cada audiencia tiene diferente nivel de alfabetización financiera y técnica, diferentes razones para leer y diferentes expectativas de vocabulario. Este artículo define los tres registros, explica quién es cada audiencia y establece las reglas de vocabulario que rigen los tres wikis. El [[language-protocol-substrate|sustrato de protocolo de lenguaje]] hace cumplir estas reglas estructuralmente en el momento de la captura.
 
 ## El estándar editorial
 
@@ -88,4 +88,5 @@ El lenguaje de especificación prescriptiva (deberá / no deberá para requisito
 
 - [[editorial-philosophy]] — el modelo Wikipedia y el propósito de aprendizaje que comparten todos los registros
 - [[style-guide-topic]] — estructura de artículos y convenciones del patrón Wikipedia
+- [[style-guide-guide]] — estructura de guías operativas y convenciones de bloques de código
 - [[glossary-documentation]] — definiciones canónicas de términos

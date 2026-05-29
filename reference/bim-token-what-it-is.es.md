@@ -15,7 +15,7 @@ cites: [ifc-4-3, uniclass-2015, bsdd-v1, ids-1-0, dtcg-w3c, ashrae-90-1, cobiev3
 paired_with: bim-token-what-it-is.md
 ---
 
-El modelado de información de construcción (BIM, por sus siglas en inglés) produce representaciones digitales detalladas de estructuras, pero no previene violaciones normativas. Un modelo puede ser geométricamente completo y estar correctamente clasificado según el esquema IFC y seguir conteniendo elementos que incumplen la normativa de construcción, no alcanzan los umbrales de rendimiento climático o entran en conflicto con la regulación jurisdiccional — fallas que solo se descubren cuando un verificador posterior al diseño las detecta. Un BIM Token aborda este problema antes de que ocurra: codifica la decisión sobre un elemento constructivo como una unidad de especificación composable y reutilizable que pre-limita el espacio de diseño en lugar de auditar un modelo terminado.
+El modelado de información de construcción (BIM, por sus siglas en inglés) produce representaciones digitales detalladas de estructuras, pero no previene violaciones normativas. Un modelo puede ser geométricamente completo y estar correctamente clasificado según el esquema [[bim-token-taxonomy|IFC]] y seguir conteniendo elementos que incumplen la normativa de construcción, no alcanzan los umbrales de rendimiento climático o entran en conflicto con la regulación jurisdiccional — fallas que solo se descubren cuando un verificador posterior al diseño las detecta. Un BIM Token aborda este problema antes de que ocurra: codifica la decisión sobre un elemento constructivo como una unidad de especificación composable y reutilizable que pre-limita el espacio de diseño en lugar de auditar un modelo terminado.
 
 ## Definición
 
@@ -31,7 +31,7 @@ Colocar un BIM Token en un modelo significa colocar simultáneamente el elemento
 
 Dos décadas de herramientas BIM se han construido sobre un supuesto de validación posterior: diseñar libremente y luego comprobar. Las plataformas de validación comerciales ejecutan reglas sobre modelos terminados y generan informes de incumplimiento. El sistema CORENET X de Singapur — el sistema gubernamental de validación BIM más avanzado en producción — opera bajo este mismo principio.
 
-El enfoque de pre-condicionamiento invierte esta lógica. Si los únicos elementos disponibles para un diseñador son BIM Tokens, y cada token ya codifica las restricciones normativas y de rendimiento aplicables a su tipo en una jurisdicción y zona climática determinadas, el informe de conformidad es estructuralmente innecesario. El modelo no puede ser no conforme porque las configuraciones no conformes no pueden colocarse.
+El enfoque de pre-condicionamiento invierte esta lógica. Si los únicos elementos disponibles para un diseñador son BIM Tokens, y cada token ya codifica las restricciones normativas y de rendimiento aplicables a su tipo en una jurisdicción y zona climática determinadas, el informe de conformidad es estructuralmente innecesario. El modelo no puede ser no conforme porque las configuraciones no conformes no pueden colocarse. Esta es la tesis central del [[city-code-as-composable-geometry|código urbano como geometría composable]].
 
 Esta es una afirmación composicional, no de validación. La distinción importa porque los validadores generan informes que requieren corrección humana. Un sistema de composición que aplica restricciones en el momento de colocación no tiene infracciones que reportar.
 
@@ -47,7 +47,7 @@ La regla de composición es: `valor_efectivo = max(requisito_normativo, requisit
 
 ## Forma de implementación
 
-Los BIM Tokens se almacenan en formato JSON del Grupo de Comunidad de Tokens de Diseño del W3C (DTCG), extendido con tipos de tokens específicos para el sector AEC. El mecanismo estándar de alias DTCG permite la composición entre tokens: un token de conjunto de muro cortina puede referenciar sus tokens de unidad de acristalamiento, perfil de parteluz y rotura de puente térmico.
+Los BIM Tokens se almacenan en formato JSON del Grupo de Comunidad de Tokens de Diseño del W3C (DTCG), extendido con tipos de tokens específicos para el sector AEC. El mecanismo estándar de alias DTCG permite la composición entre tokens: un token de conjunto de [[building-design-system-bim|muro cortina]] puede referenciar sus tokens de unidad de acristalamiento, perfil de parteluz y rotura de puente térmico.
 
 El formato legible por máquina permite la integración con cualquier herramienta BIM compatible con DTCG, el versionado independiente de las superposiciones normativas, y la operación sin conexión — requisito indispensable para proyectos con restricciones ITAR, soberanía GDPR y obras en sitios remotos.
 

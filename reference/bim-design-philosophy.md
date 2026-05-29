@@ -14,7 +14,7 @@ category: reference
 
 
 
-The Building Design System serves as the AEC-specific extension of the platform’s design substrate, analogous to the relationship between IBM Carbon and specialized industry modules. It is anchored to the IFC 4.3 entity hierarchy and prioritized for high-fidelity operational environments. The system translates the platform’s core commitments—flat-file storage, open standards, and offline-first execution—into a professional toolset that addresses the structural weaknesses of legacy cloud-only BIM.
+The Building Design System serves as the AEC-specific extension of the platform’s design substrate, analogous to the relationship between IBM Carbon and specialized industry modules. It is anchored to the IFC 4.3 entity hierarchy and prioritized for high-fidelity operational environments. The system translates the platform’s core commitments — flat-file storage, open standards, and offline-first execution — into a professional toolset that addresses the structural weaknesses of legacy cloud-only BIM. The [[sel4-microkernel-substrate|seL4 security foundation]] provides the hardware-attested isolation that defence and healthcare clients require.
 
 ## Structural Differentiators
 
@@ -24,7 +24,7 @@ The platform’s design philosophy is predicated on five capabilities that are s
 2. **Offline-Capable Operations:** Full BIM functionality is maintained in basements, air-gapped facilities, and remote sites where internet access is unavailable.
 3. **Vendor-Obsolescence Survival:** By utilizing a text-based open-standard stack (IFC-SPF, BCF 3.0, IDS 1.0, COBie), data remains accessible for 50+ years, outlasting specific software vendors.
 4. **Local IoT Integration:** Sensor data is ingested via local brokers into YAML sidecars, ensuring data residency and eliminating usage-based token charges.
-5. **Legal-Financial Convergence:** The Totebox Archive unifies the building’s spatial, operational, and financial identities into a single portable artifact.
+5. **Legal-Financial Convergence:** The [[totebox-archive|Totebox Archive]] unifies the building’s spatial, operational, and financial identities into a single portable artifact.
 
 ## Compositional-First Regulatory Compliance
 

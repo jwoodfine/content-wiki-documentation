@@ -10,7 +10,7 @@ editor: pointsav-engineering
 paired_with: guide-catalog.es.md
 ---
 
-The Operational Guide Catalog lists every operational guide in the Woodfine fleet deployment, organized by purpose. Each guide covers a specific operational task on a named deployment node. Use this catalog to locate the right guide when you know what you need to do but not which system owns the task.
+The Operational Guide Catalog lists every operational guide in the Woodfine fleet deployment, organized by purpose. Each guide covers a specific operational task on a named deployment node. Use this catalog to locate the right guide when you know what you need to do but not which system owns the task. For the deployment architecture that underpins each node type, see [[totebox-archive|Totebox Archive]] and [[totebox-orchestration-development]].
 
 ## Provisioning & Deployment
 
@@ -37,7 +37,7 @@ This section covers guides for provisioning new nodes and deploying services acr
 
 ## BIM & Property
 
-This section covers guides for operating the BIM orchestration gateway and the property archive. Use these guides when authoring or managing BIM objects, publishing regulatory overlays, or performing day-to-day operations on the property archive.
+This section covers guides for operating the BIM orchestration gateway and the property archive. Use these guides when authoring or managing BIM objects, publishing [[bim-token-taxonomy|regulatory overlays]], or performing day-to-day operations on the property archive.
 
 - **guide-bim-object-authoring** (gateway-orchestration-bim) — creates and modifies BIM objects within the IFC archive
 - **guide-bim-token-authoring** (gateway-orchestration-bim) — authors BIM tokens for the Woodfine BIM token registry
@@ -129,7 +129,7 @@ This section covers guides for operating the private git vault. Use these guides
 
 ## AI & Intelligence
 
-This section covers guides for operating the intelligence cluster and the SLM inference service. Use these guides when running the nightly elastic compute pipeline or deploying the SLM inference service within the personnel cluster.
+This section covers guides for operating the intelligence cluster and the [[service-slm|SLM inference service]]. Use these guides when running the nightly [[yoyo-compute-substrate|elastic compute]] pipeline or deploying the SLM inference service within the personnel cluster.
 
 - **guide-elastic-compute-nightly-pipeline** (cluster-intelligence) — runs the nightly elastic compute (LoRA fine-tuning) pipeline
 - **guide-01-deployment** (cluster-totebox-personnel/service-slm) — deploys the SLM inference service within the personnel cluster
@@ -145,5 +145,5 @@ This section covers guides for operating the Foundry workspace itself. Use these
 
 ## See Also
 
-- architecture/totebox-orchestration-development — the Totebox orchestration development model that underpins how deployment nodes are provisioned and operated
-- systems/totebox-archive — the Totebox Archive pattern that organises session-scoped work across all fleet deployment clusters
+- [[totebox-orchestration-development]] — the Totebox orchestration development model that underpins how deployment nodes are provisioned and operated
+- [[totebox-archive]] — the Totebox Archive pattern that organises session-scoped work across all fleet deployment clusters

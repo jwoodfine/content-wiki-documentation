@@ -16,7 +16,7 @@ Cada artículo de los wikis de PointSav es un recurso de aprendizaje, no una con
 
 ## El modelo Wikipedia
 
-Wikipedia logra algo que la mayoría de la documentación no consigue: enseña. Un lector que llega buscando "estructura de propiedad de tenencia directa" o "service-slm" o "mandato de co-ubicación" se va con un modelo mental, no solo con una definición. Esto ocurre porque los artículos de Wikipedia se construyen en torno a la comprensión, no a la recuperación.
+Wikipedia logra algo que la mayoría de la documentación no consigue: enseña. Un lector que llega buscando "estructura de propiedad de tenencia directa" o "[[service-slm]]" o "mandato de co-ubicación" se va con un modelo mental, no solo con una definición. Esto ocurre porque los artículos de Wikipedia se construyen en torno a la comprensión, no a la recuperación.
 
 Tres decisiones estructurales producen este resultado:
 
@@ -51,7 +51,7 @@ Los tokens de lenguaje rigen el registro. El DataGraph rige el contenido. Un art
 
 Los wikis de PointSav mejoran continuamente mediante una revisión mensual del contenido. Cada revisión se ejecuta contra un DataGraph actualizado — refinado por pasadas de inferencia de GPU bajo demanda que se ejecutan diariamente y pasadas de API externa que se ejecutan semanal o mensualmente a medida que se acumulan nuevos datos fuente.
 
-El objetivo de cada artículo en cualquier revisión es "borrador 2 de 10" — suficientemente bueno para que la siguiente pasada automática produzca un borrador 3 claramente mejor. La perfección en un único pase desperdicia esfuerzo que sería mejor dedicar a establecer el marco que hace que cada pase posterior sea mejor.
+El objetivo de cada artículo en cualquier revisión es "borrador 2 de 10" — suficientemente bueno para que la siguiente [[compounding-substrate|pasada automática]] produzca un borrador 3 claramente mejor. La perfección en un único pase desperdicia esfuerzo que sería mejor dedicar a establecer el marco que hace que cada pase posterior sea mejor.
 
 ## Véase también
 

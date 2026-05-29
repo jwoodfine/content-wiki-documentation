@@ -14,7 +14,7 @@ category: reference
 
 
 
-The Building Design System adopts established interface vocabularies from industry-standard tools (Revit, ArchiCAD, BricsCAD, and Bonsai) to ensure a zero-learning curve for AEC practitioners. By mirroring universal navigation and layout conventions, the platform allows users to focus on strategic innovations—such as the flat-file vault and code-as-composable-geometry—rather than basic tool interaction.
+The Building Design System adopts established interface vocabularies from industry-standard tools (Revit, ArchiCAD, BricsCAD, and Bonsai) to ensure a zero-learning curve for AEC practitioners. By mirroring universal navigation and layout conventions, the platform allows users to focus on strategic innovations — such as the [[totebox-archive|flat-file vault]] and code-as-composable-geometry — rather than basic tool interaction.
 
 ## Universal AEC Interface Conventions
 
@@ -46,7 +46,7 @@ While the platform respects professional conventions, it deliberately avoids art
 Existing BIM tools predominantly target designers. The Building Design System is engineered to address the Facility Management (FM) and Property Manager personas through three intended unique workflows:
 
 * **Work-Order Linking:** Attaching maintenance status directly to IFC elements via YAML sidecars.
-* **Lease Integration:** Linking `IfcSpace` entities to lease records in the bookkeeping vault.
+* **Lease Integration:** Linking `IfcSpace` entities to lease records in the [[service-content|bookkeeping vault]].
 * **Sensor Overlays:** Displaying real-time MQTT-backed sensor readings directly in the `Viewport3D`.
 
 These capabilities are planned for the v0.0.2 release and represent the convergence of spatial and operational data.

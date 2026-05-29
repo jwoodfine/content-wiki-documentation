@@ -15,7 +15,7 @@ cites: [ifc-4-3, uniclass-2015, bsdd-v1, ids-1-0, dtcg-w3c, ashrae-90-1]
 paired_with: bim-token-three-layers.md
 ---
 
-Un BIM Token tiene tres capas: Especificación, Normativa y Zona climática. Las tres son datos incorporados en el token — ninguna es una opción seleccionable en tiempo de ejecución. Un diseñador no "cambia" entre zonas climáticas, así como tampoco cambia el código de construcción aplicable. Las tres capas se presentan simultáneamente como tablas de referencia estáticas, mostrando todas las superposiciones registradas para el tipo de elemento del token. Esta estructura refleja una realidad física: un elemento constructivo tiene un tipo fijo (Especificación), existe en una jurisdicción fija (Normativa) y opera en un clima fijo (Zona climática).
+Un [[bim-token-what-it-is|BIM Token]] tiene tres capas: Especificación, Normativa y Zona climática. Las tres son datos incorporados en el token — ninguna es una opción seleccionable en tiempo de ejecución. Un diseñador no "cambia" entre zonas climáticas, así como tampoco cambia el código de construcción aplicable. Las tres capas se presentan simultáneamente como tablas de referencia estáticas, mostrando todas las superposiciones registradas para el tipo de elemento del token. Esta estructura refleja una realidad física: un elemento constructivo tiene un tipo fijo (Especificación), existe en una jurisdicción fija (Normativa) y opera en un clima fijo (Zona climática).
 
 ## Por qué tres capas
 
@@ -31,7 +31,7 @@ Una especificación de elemento del entorno construido debe responder simultáne
 
 La capa de Especificación es la identidad permanente del token. No varía según la jurisdicción ni el clima. Cada instancia desplegada del token lee la misma capa de Especificación, independientemente de dónde se ubique el proyecto.
 
-Los campos incluyen: clase de entidad IFC (por ejemplo, `IfcWall`), tipo predefinido IFC donde corresponda, código Uniclass 2015, URI de concepto bSDD, descripción en lenguaje natural (máximo 280 caracteres), conjuntos de propiedades IFC aplicables y tipo de token DTCG extendido.
+Los campos incluyen: clase de entidad IFC (por ejemplo, `IfcWall`), tipo predefinido IFC donde corresponda, código Uniclass 2015, URI de concepto [[bim-token-taxonomy|bSDD]], descripción en lenguaje natural (máximo 280 caracteres), conjuntos de propiedades IFC aplicables y tipo de token DTCG extendido.
 
 Cada registro de Especificación incluye la ruta completa de herencia IFC desde `IfcRoot` hasta la clase específica, lo que permite a las herramientas presentar la posición del elemento en la jerarquía IFC sin requerir un documento de esquema separado.
 
@@ -41,7 +41,7 @@ La capa de Normativa contiene los requisitos específicos de la jurisdicción. E
 
 Cada fila de superposición incluye: código ISO 3166-1/2 de jurisdicción, referencia al documento normativo, tipo de restricción (numérica, geométrica, clasificación o aprobación), parámetro, valor requerido, unidad, archivo IDS 1.0 y, si corresponde, fragmento geométrico IFC de exclusión.
 
-A v0.0.1, la mayoría de los tokens no tienen superposiciones normativas registradas — la estructura está definida pero no poblada. El hito v0.0.3 tiene previsto entregar el primer conjunto de superposiciones: requisitos de zonificación residencial RS-1 de Columbia Británica para muros exteriores, losas y ventanas.
+A v0.0.1, la mayoría de los tokens no tienen superposiciones normativas registradas — la estructura está definida pero no poblada. El hito v0.0.3 tiene previsto entregar el primer conjunto de superposiciones: requisitos de [[open-bim-regulatory-acceptance|zonificación residencial RS-1 de Columbia Británica]] para muros exteriores, losas y ventanas.
 
 ## Capa 3 — Zona climática
 

@@ -14,13 +14,13 @@ cites: []
 paired_with: service-slm-operationalization-plan.es.md
 ---
 
-The service-slm operationalization plan describes the intended path from an initial state — in which external large language model calls handle substantially all AI-assisted work — to a target state in which a per-tenant small language model substrate contributes in parallel with external calls, accumulates a training corpus from its own outputs and corrections, and progressively displaces the higher-cost external tier across task types that the substrate has mastered.
+The [[service-slm]] operationalization plan describes the intended path from an initial state — in which external large language model calls handle substantially all AI-assisted work — to a target state in which a per-tenant [[compounding-substrate|small language model substrate]] contributes in parallel with external calls, accumulates a training corpus from its own outputs and corrections, and progressively displaces the higher-cost external tier across task types that the substrate has mastered.
 
 This is a multi-year trajectory, not a single deployment event. The plan is ratified as operational guidance directing cross-cluster work across multiple engineering milestones.
 
 ## The target state
 
-The strategic goal is a per-tenant editorial and apprenticeship substrate where every commit becomes training corpus material, per-tenant adapter weights compose with the open base model at inference time, and the substrate sharpens monotonically because two feedback loops both close simultaneously. The first loop captures the structural correctness signal — did the substrate produce output that the editorial gateway accepted — and feeds it into continued training. The second loop captures the craft signal — did a creative contributor edit the published output, and how — and feeds that into a preference training layer on top of the structural layer.
+The strategic goal is a per-tenant editorial and [[apprenticeship-substrate|apprenticeship substrate]] where every commit becomes training corpus material, per-tenant [[adapter-composition|adapter weights]] compose with the open base model at inference time, and the substrate sharpens monotonically because two feedback loops both close simultaneously. The first loop captures the structural correctness signal — did the substrate produce output that the editorial gateway accepted — and feeds it into continued training. The second loop captures the craft signal — did a creative contributor edit the published output, and how — and feeds that into a preference training layer on top of the structural layer.
 
 When both loops are operating, each task type the substrate handles with high enough acceptance rate is a candidate for promotion: from requiring senior review on every output, to requiring only spot-checks, to operating autonomously within its task boundary. Each promotion step reduces the per-task cost in external model calls. The per-week external model cost trends toward a floor comprising only the coordination and ratification work that irreducibly requires the highest-capability model.
 
@@ -34,7 +34,7 @@ The substrate routes AI-assisted work across three compute tiers based on task s
 
 **Tier B — Burst.** A larger open-weight model, specifically OLMo 3.1 32B Think, on preemptible GPU compute provisioned on demand. This tier is cost-efficient for workloads that tolerate sixty-to-one-hundred-twenty-second cold-start times, which is acceptable for asynchronous editorial pipelines but not for synchronous interactive workflows. The preemptible pricing model reduces cost by approximately sixty percent compared to on-demand compute for the same hardware.
 
-**Tier C — External API.** External language model providers reached via HTTPS. This tier is reserved for narrow precision tasks — citation grounding, initial knowledge graph construction from a corpus, structured output generation when the local model cannot meet the schema conformance bar, and entity disambiguation in high-ambiguity cases. The Doorman service is the only component that holds external API keys; all Tier C calls route through it and are logged to the per-tenant audit ledger.
+**Tier C — External API.** External language model providers reached via HTTPS. This tier is reserved for narrow precision tasks — citation grounding, initial knowledge graph construction from a corpus, structured output generation when the local model cannot meet the schema conformance bar, and entity disambiguation in high-ambiguity cases. The [[compounding-doorman|Doorman]] service is the only component that holds external API keys; all Tier C calls route through it and are logged to the per-tenant [[worm-ledger-architecture|audit ledger]].
 
 The routing decision is made by the Doorman based on request shape and per-tenant budget caps. Callers do not select a tier; they describe what they need, and the Doorman routes accordingly.
 
@@ -46,7 +46,7 @@ This property has a practical implication for quality management: a somewhat low
 
 ## LoRA training framework
 
-Adapter training uses the Axolotl framework, which supports the OLMo 3.1 32B Think model via the standard Hugging Face `AutoModel` interface. A per-tenant adapter trains with low-rank adaptation at rank 16, using the full-precision training path on an A100 GPU with 80 gigabytes of memory. The Axolotl configuration is parameterised by tenant-specific corpus path and output adapter path, so the same training driver handles all tenants by providing different input and output paths.
+[[yo-yo-lora-training-pipeline|Adapter training]] uses the Axolotl framework, which supports the OLMo 3.1 32B Think model via the standard Hugging Face `AutoModel` interface. A per-tenant adapter trains with low-rank adaptation at rank 16, using the full-precision training path on an A100 GPU with 80 gigabytes of memory. The Axolotl configuration is parameterised by tenant-specific corpus path and output adapter path, so the same training driver handles all tenants by providing different input and output paths.
 
 The intended training cadence is quarterly, timed to when each tenant's corpus has accumulated sufficient volume to produce a meaningful signal. An initial training run costs approximately ten to twenty USD in GPU compute at the planned instance class and window length.
 
@@ -57,3 +57,7 @@ Per-tenant training data lives in deployment instances rather than at workspace 
 ## See also
 
 - [[tier-c-key-wiring]] — The operational form of Tier C external API key management.
+- [[apprenticeship-substrate]] — the learning pipeline that accumulates the training corpus described here
+- [[compounding-doorman]] — the Doorman service that routes across all three compute tiers
+- [[yo-yo-lora-training-pipeline]] — the nightly LoRA adapter training pipeline on the burst GPU
+- [[trajectory-substrate]] — the mechanism that converts operational work into training tuples

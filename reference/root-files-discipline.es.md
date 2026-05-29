@@ -15,7 +15,7 @@ paired_with: root-files-discipline.md
 ---
 
 
-La Disciplina de Archivos en la Raíz establece que todo repositorio del marco de ingeniería de PointSav mantiene un directorio raíz limpio. Limpio significa que una lista pequeña y explícitamente enumerada de archivos es permitida en la raíz, y cualquier otro archivo es un defecto que requiere reubicación. La convención organiza los archivos en seis niveles según el momento del ciclo de vida del repositorio en que se vuelven obligatorios.
+La Disciplina de Archivos en la Raíz establece que todo repositorio del marco de ingeniería de PointSav mantiene un directorio raíz limpio. Limpio significa que una lista pequeña y explícitamente enumerada de archivos es permitida en la raíz, y cualquier otro archivo es un defecto que requiere reubicación. La convención organiza los archivos en seis niveles según el momento del ciclo de vida del repositorio en que se vuelven obligatorios. La disciplina interactúa directamente con el [[citation-substrate|sustrato de citas]] — todo repositorio esperando citas externas lleva un archivo `CITATION.cff` en la raíz.
 
 ## Los seis niveles
 
@@ -36,4 +36,8 @@ El **nivel 6** está prohibido en la raíz: scripts (van dentro del proyecto que
 El archivo `LICENSE` en cada repositorio se obtiene de un directorio centralizado de licencias en el repositorio de ingeniería de lanzamiento. Un mapa de asignaciones declara qué licencia aplica a qué repositorio; un script de propagación copia los textos apropiados. La postura bilingüe distingue entre material público — que lleva par en español — y documentación operativa interna — que es solo en inglés.
 
 ## Véase también
+
+- [[citation-substrate]] — el sustrato de citas de la plataforma que alimenta `CITATION.cff`
+- [[disclosure-substrate]] — la capa de gobernanza que controla la propagación de licencias
+- [[language-protocol-substrate]] — la especificación de postura bilingüe que gobierna los pares README
 

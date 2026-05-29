@@ -14,7 +14,7 @@ Every article in the PointSav wikis is a learning resource, not a reference look
 
 ## The Wikipedia model
 
-Wikipedia succeeds at something that most documentation does not: it teaches. A reader who arrives looking up "direct-hold property structure" or "service-slm" or "co-location mandate" leaves with a mental model, not just a definition. That happens because Wikipedia articles are built around understanding, not retrieval.
+Wikipedia succeeds at something that most documentation does not: it teaches. A reader who arrives looking up "direct-hold property structure" or "[[service-slm]]" or "co-location mandate" leaves with a mental model, not just a definition. That happens because Wikipedia articles are built around understanding, not retrieval.
 
 Three structural choices produce this outcome:
 
@@ -67,7 +67,7 @@ The PointSav wikis improve continuously through a monthly content sweep. Each sw
 
 The mechanism: the inference system generates a new draft of each article against the current DataGraph. Editorial review produces a verdict — accept, refine, or reject. Each verdict is a training example that makes the next month's generated draft better. The language tokens score each generated draft for register correctness, so register drift is caught automatically.
 
-The result is compounding improvement. Each monthly pass produces better training signal than the last because the DataGraph is richer, the system has been trained on prior editorial verdicts, and the articles being refined are themselves already better. The work required per article per month decreases as the system matures.
+The result is [[compounding-substrate|compounding]] improvement. Each monthly pass produces better training signal than the last because the DataGraph is richer, the system has been trained on prior editorial verdicts, and the articles being refined are themselves already better. The work required per article per month decreases as the system matures.
 
 **The calibration rule:** The goal for each article in any given sweep is "draft 2 of 10" — good enough that the inference system produces a clearly better draft 3. Perfection in a single pass wastes effort better spent establishing the framework that makes every subsequent pass better.
 
