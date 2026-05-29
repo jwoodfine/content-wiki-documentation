@@ -13,7 +13,7 @@ editor: pointsav-engineering
 paired_with: totebox-session.md
 ---
 
-Una sesión Totebox es una sesión de colaborador asistida por IA abierta dentro de un único archivo Totebox. Tiene alcance a los repositorios declarados del archivo y no puede escribir fuera de ellos. Desde la perspectiva del colaborador, abrir una sesión Totebox es como comienza cada tarea de desarrollo en la orquestación Totebox. El protocolo de la sesión refleja la experiencia del cliente: el punto de entrada del colaborador en el espacio de trabajo y el punto de entrada del cliente a través de `os-console` realizan la misma función.
+Una sesión Totebox es una sesión de colaborador asistida por IA abierta dentro de un único [[totebox-archive|archivo Totebox]]. Tiene alcance a los repositorios declarados del archivo y no puede escribir fuera de ellos. Desde la perspectiva del colaborador, abrir una sesión Totebox es como comienza cada tarea de desarrollo en la [[totebox-orchestration|orquestación Totebox]]. El protocolo de la sesión refleja la experiencia del cliente: el punto de entrada del colaborador en el espacio de trabajo y el punto de entrada del cliente a través de [[console-os|`os-console`]] realizan la misma función.
 
 Este artículo describe cómo se abre una sesión, qué puede y no puede hacer, los cuatro niveles de permiso, y el protocolo de buzones de entrada y salida que coordina el trabajo entre archivos.
 
@@ -27,7 +27,7 @@ El punto de entrada previsto es el comando de consola `open-archive`, planificad
 4. Establezca las variables de entorno del archivo
 5. Abra una sesión de IA en el directorio raíz del archivo
 
-Esto refleja la experiencia del cliente: un miembro de la comunidad o un cliente abre un archivo Totebox a través de `os-console`. El flujo de trabajo de desarrollo utiliza el mismo punto de entrada, adaptado al espacio de trabajo.
+Esto refleja la experiencia del cliente: un miembro de la comunidad o un cliente abre un [[totebox-archive|archivo Totebox]] a través de [[console-os|`os-console`]]. El flujo de trabajo de desarrollo utiliza el mismo punto de entrada, adaptado al espacio de trabajo.
 
 ## Alcance de la sesión
 
@@ -35,7 +35,7 @@ Una sesión Totebox:
 
 - Escribe en cualquier repositorio declarado en el manifiesto del archivo
 - Confirma en la rama de staging del archivo (nunca directamente en `main` canónica)
-- Enruta la inferencia a través de la pasarela compartida de control de acceso `service-slm` usando el identificador de módulo del archivo
+- Enruta la inferencia a través de la pasarela compartida de control de acceso [[service-slm|`service-slm`]] ([[doorman-protocol|Doorman]]) usando el identificador de módulo del archivo
 - Envía solicitudes entre archivos como mensajes a la sesión concentradora (nunca escribe en otros archivos)
 - Almacena borradores del wiki en `.agent/drafts-outbound/` para la canalización editorial
 
@@ -85,7 +85,7 @@ Los niveles se aplican mediante emparejamientos, no comparaciones de cadenas. El
 
 ## Relación con os-console
 
-`os-console` es el punto de entrada orientado al cliente para abrir un archivo Totebox. En el espacio de trabajo de desarrollo, el comando `open-archive` es el equivalente. Ambos están previstos para realizar la misma función: leer el manifiesto del archivo, validar el alcance del permiso del colaborador, establecer el contexto de la sesión y abrir una sesión de trabajo dentro del archivo. El entorno de desarrollo utiliza el mismo patrón que el cliente está previsto a utilizar.
+[[console-os|`os-console`]] es el punto de entrada orientado al cliente para abrir un [[totebox-archive|archivo Totebox]]. En el espacio de trabajo de desarrollo, el comando `open-archive` es el equivalente. Ambos están previstos para realizar la misma función: leer el manifiesto del archivo, validar el alcance del permiso del colaborador, establecer el contexto de la sesión y abrir una sesión de trabajo dentro del archivo. El entorno de desarrollo utiliza el mismo patrón que el cliente está previsto a utilizar.
 
 ## Véase también
 

@@ -16,22 +16,22 @@ cites:
 paired_with: totebox-orchestration-development.es.md
 ---
 
-PointSav's development environment is deployed as a Totebox Orchestration instance — the same architecture the platform delivers to customers. The development workspace, where the platform is written and shipped, runs as a hub coordinating thirteen Totebox Archives over a single shared `service-slm` access-control gateway. The development workflow is the customer workflow. There is no test environment that diverges from production architecture; the environment that produces the code is the architecture the code describes.
+[[pointsav-overview|PointSav]]'s development environment is deployed as a [[totebox-orchestration|Totebox Orchestration]] instance — the same architecture the platform delivers to customers. The development workspace, where the platform is written and shipped, runs as a hub coordinating thirteen [[totebox-archive|Totebox Archives]] over a single shared [[service-slm|`service-slm`]] access-control gateway. The development workflow is the customer workflow. There is no test environment that diverges from production architecture; the environment that produces the code is the architecture the code describes.
 
 This article documents how the workspace maps onto Totebox Orchestration, what the Command Session and Totebox Sessions own, and which components are operationally live versus planned.
 
 ## What Totebox Orchestration is
 
-Totebox Orchestration organises work into Totebox Archives — self-contained units, each holding source code, operational guides, a live deployment, and a wiki contribution. A Command Session acts as the hub: it holds pairings to every archive and coordinates cross-archive work. A Totebox Session opens within a single archive and operates only within that archive's declared scope.
+[[totebox-orchestration|Totebox Orchestration]] organises work into [[totebox-archive|Totebox Archives]] — self-contained units, each holding source code, operational guides, a live deployment, and a wiki contribution. A Command Session acts as the hub: it holds pairings to every archive and coordinates cross-archive work. A [[totebox-session|Totebox Session]] opens within a single archive and operates only within that archive's declared scope.
 
 The development workspace maps directly onto this topology:
 
 | Development workspace | Totebox Orchestration equivalent |
 |---|---|
 | The workspace | Command Session — hub, identity store, cross-archive coordination |
-| Each `clones/project-*/` directory | A Totebox Archive |
-| A session opened in a cluster clone | A Totebox Session |
-| `service-slm` access-control gateway | The shared Orchestration AI routing layer |
+| Each `clones/project-*/` directory | A [[totebox-archive|Totebox Archive]] |
+| A session opened in a cluster clone | A [[totebox-session|Totebox Session]] |
+| [[service-slm|`service-slm`]] access-control gateway | The shared [[totebox-orchestration|Orchestration]] AI routing layer |
 | `vault-privategit-source-1` (declared in `MANIFEST.md`) | The Command instance identity |
 
 Thirteen Totebox Archives are currently active in the workspace, covering the building-information, geographic-information, editorial, design, knowledge, marketing, bookkeeping, proofreading, and platform-infrastructure concerns. Two additional development archives are planned to complete the topology — `project-source` for PointSav canonical-tier work and `project-woodfine` for Woodfine customer-tier work.
@@ -53,13 +53,13 @@ The Command Session is the only session that can write workspace-level files. In
 
 A Totebox Session opens within a specific archive. It works inside that archive — writing code, committing to staging branches, drafting wiki content, updating the deployment. It does not write to other archives, does not modify workspace files, and does not have direct access to the identity store.
 
-The intended entry point is the `open-archive` console command, planned to read the archive manifest, surface the archive's tetrad status and pending messages, set archive-scoped environment variables, and open a session at the archive's root directory. This is intended to mirror how a customer or community member opens a Totebox Archive via `os-console`: the development workflow is the same as the customer workflow.
+The intended entry point is the `open-archive` console command, planned to read the archive manifest, surface the archive's tetrad status and pending messages, set archive-scoped environment variables, and open a session at the archive's root directory. This is intended to mirror how a customer or community member opens a [[totebox-archive|Totebox Archive]] via [[console-os|`os-console`]]: the development workflow is the same as the customer workflow.
 
 ## The retired Root session
 
 Earlier versions of the workflow included a Root session that opened directly inside engineering repositories (`vendor/content-wiki-*`, `vendor/pointsav-design-system`). Customers never had an equivalent — there is no Root mode in the Totebox model — so the role had no architectural justification.
 
-The replacement uses two dedicated development Totebox Archives: `project-source` for PointSav canonical-tier work and `project-woodfine` for Woodfine customer-tier work, both planned. All repository work is intended to flow through these archives, then promote to the canonical ledger via the Stage 6 promotion pipeline. The canonical ledger directories are promotion destinations — work is pushed to them, never opened in them for AI sessions.
+The replacement uses two dedicated development [[totebox-archive|Totebox Archives]]: `project-source` for [[pointsav-overview|PointSav]] canonical-tier work and `project-woodfine` for Woodfine customer-tier work, both planned. All repository work is intended to flow through these archives, then promote to the canonical ledger via the [[five-stage-supply-chain|Stage 6 promotion pipeline]]. The canonical ledger directories are promotion destinations — work is pushed to them, never opened in them for AI sessions.
 
 ## The Project Tetrad
 
@@ -84,9 +84,9 @@ A single `service-slm` instance currently serves all thirteen active archives. E
 
 The workspace is intended to run on two separate compute nodes:
 
-**os-orchestration node** — the development environment. Hosts the Command Session, all Totebox Archives, the `service-slm` access-control gateway, source code, and workspace tooling. Intelligence work, code development, and staging are intended to happen here. Not accessible from the public internet.
+**[[os-orchestration|os-orchestration]] node** — the development environment. Hosts the Command Session, all [[totebox-archive|Totebox Archives]], the [[service-slm|`service-slm`]] access-control gateway, source code, and workspace tooling. Intelligence work, code development, and staging are intended to happen here. Not accessible from the public internet.
 
-**os-mediakit node** — the delivery layer. Hosts the live public websites, nginx, and production service instances. Receives deployments from the os-orchestration node via a deliberate human-gated rsync bridge. No source code, no development work, no direct connection to the os-orchestration node.
+**[[mediakit-os|os-mediakit]] node** — the delivery layer. Hosts the live public websites, nginx, and production service instances. Receives deployments from the [[os-orchestration|os-orchestration]] node via a deliberate human-gated rsync bridge. No source code, no development work, no direct connection to the os-orchestration node.
 
 The separation is designed so that a development incident — a failing test, a disk-full event, an unfinished feature — cannot affect the live public websites. The rsync bridge is intended as the deliberate human gate between development and production, consistent with the [[architecture-decisions|SYS-ADR-19]] discipline of no automated publishing to live environments.
 

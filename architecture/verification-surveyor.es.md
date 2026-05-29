@@ -17,7 +17,7 @@ cites: []
 ---
 
 
-El Verificador de Identidad es el punto de control arquitectónico en `service-people` que impide que los errores de extracción automatizada se acumulen. Requiere que un operador humano confirme cada fragmento de identidad contra una fuente externa antes de que se comprometa permanentemente en el libro contable verificado.
+El Verificador de Identidad es el punto de control arquitectónico en [[service-people|`service-people`]] que impide que los errores de extracción automatizada se acumulen. Requiere que un operador humano confirme cada fragmento de identidad contra una fuente externa antes de que se comprometa permanentemente en el libro contable verificado.
 
 ## Filosofía del humano en el bucle
 

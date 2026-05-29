@@ -13,7 +13,7 @@ editor: pointsav-engineering
 paired_with: totebox-session.es.md
 ---
 
-A Totebox Session is an AI-assisted contributor session opened within a single Totebox Archive. It is scoped to the archive's declared repositories and cannot write outside them. From the contributor's perspective, opening a Totebox Session is how every development task in Totebox Orchestration begins. The session protocol mirrors the customer experience: the contributor's entry point in the workspace and the customer's entry point through `os-console` perform the same function.
+A Totebox Session is an AI-assisted contributor session opened within a single [[totebox-archive|Totebox Archive]]. It is scoped to the archive's declared repositories and cannot write outside them. From the contributor's perspective, opening a Totebox Session is how every development task in [[totebox-orchestration|Totebox Orchestration]] begins. The session protocol mirrors the customer experience: the contributor's entry point in the workspace and the customer's entry point through [[console-os|`os-console`]] perform the same function.
 
 This article describes how a session is opened, what it can and cannot do, the four permission tiers, and the inbox-and-outbox protocol that coordinates work across archives.
 
@@ -27,7 +27,7 @@ The intended entry point is the `open-archive` console command, planned for invo
 4. Set the `FOUNDRY_ARCHIVE` and `FOUNDRY_MODULE_ID` environment variables
 5. Open an AI session at the archive's root directory
 
-This mirrors the customer experience: a community member or customer opens a Totebox Archive through `os-console`. The development workflow uses the same entry point, adapted for the workspace.
+This mirrors the customer experience: a community member or customer opens a [[totebox-archive|Totebox Archive]] through [[console-os|`os-console`]]. The development workflow uses the same entry point, adapted for the workspace.
 
 ## Session scope
 
@@ -35,7 +35,7 @@ A Totebox Session:
 
 - Writes to any repository declared in the archive's manifest
 - Commits to the archive's staging branch (never directly to the canonical `main`)
-- Routes inference through the shared `service-slm` access-control gateway using the archive's module identifier
+- Routes inference through the shared [[service-slm|`service-slm`]] access-control gateway ([[doorman-protocol|Doorman]]) using the archive's module identifier
 - Sends cross-archive requests as messages to the hub session (never writes to other archives)
 - Stages wiki drafts in `.agent/drafts-outbound/` for the editorial pipeline
 
@@ -85,7 +85,7 @@ Tiers are enforced by pairings, not string comparisons. A P3 contributor's `os-c
 
 ## Relationship to os-console
 
-`os-console` is the customer-facing entry point for opening a Totebox Archive. In the development workspace, the `open-archive` command is the equivalent. Both are intended to perform the same function: read the archive manifest, validate the contributor's permission scope, set the session context, and open a working session inside the archive. The development environment uses the same pattern the customer is intended to use.
+[[console-os|`os-console`]] is the customer-facing entry point for opening a [[totebox-archive|Totebox Archive]]. In the development workspace, the `open-archive` command is the equivalent. Both are intended to perform the same function: read the archive manifest, validate the contributor's permission scope, set the session context, and open a working session inside the archive. The development environment uses the same pattern the customer is intended to use.
 
 ## See also
 

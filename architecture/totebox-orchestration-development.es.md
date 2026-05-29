@@ -13,13 +13,13 @@ editor: pointsav-engineering
 paired_with: totebox-orchestration-development.md
 ---
 
-El entorno de desarrollo de PointSav está desplegado como una instancia de orquestación Totebox — la misma arquitectura que la plataforma entrega a los clientes. El espacio de trabajo de desarrollo, donde se escribe y publica la plataforma, opera como un concentrador que coordina trece archivos Totebox a través de una única pasarela compartida de control de acceso `service-slm`. El flujo de trabajo de desarrollo es el flujo de trabajo del cliente. No existe un entorno de pruebas que se aparte de la arquitectura de producción; el entorno que produce el código es la arquitectura que el código describe.
+El entorno de desarrollo de [[pointsav-overview|PointSav]] está desplegado como una instancia de [[totebox-orchestration|orquestación Totebox]] — la misma arquitectura que la plataforma entrega a los clientes. El espacio de trabajo de desarrollo, donde se escribe y publica la plataforma, opera como un concentrador que coordina trece [[totebox-archive|archivos Totebox]] a través de una única pasarela compartida de control de acceso [[service-slm|`service-slm`]]. El flujo de trabajo de desarrollo es el flujo de trabajo del cliente. No existe un entorno de pruebas que se aparte de la arquitectura de producción; el entorno que produce el código es la arquitectura que el código describe.
 
 Este artículo documenta cómo el espacio de trabajo se asigna a la orquestación Totebox, qué responsabilidades tienen la sesión de Comando y las sesiones Totebox, y qué componentes están operativos frente a los planificados.
 
 ## Qué es la orquestación Totebox
 
-La orquestación Totebox organiza el trabajo en archivos Totebox — unidades autocontenidas, cada una con código fuente, guías operativas, un despliegue activo y una contribución al wiki. Una sesión de Comando actúa como concentrador: mantiene los emparejamientos con cada archivo y coordina el trabajo entre archivos. Una sesión Totebox se abre dentro de un único archivo y opera solo dentro del alcance declarado de ese archivo.
+La [[totebox-orchestration|orquestación Totebox]] organiza el trabajo en [[totebox-archive|archivos Totebox]] — unidades autocontenidas, cada una con código fuente, guías operativas, un despliegue activo y una contribución al wiki. Una sesión de Comando actúa como concentrador: mantiene los emparejamientos con cada archivo y coordina el trabajo entre archivos. Una [[totebox-session|sesión Totebox]] se abre dentro de un único archivo y opera solo dentro del alcance declarado de ese archivo.
 
 El espacio de trabajo de desarrollo se asigna directamente a esta topología:
 
@@ -50,13 +50,13 @@ La sesión de Comando es la única sesión que puede escribir archivos a nivel d
 
 Una sesión Totebox se abre dentro de un archivo específico. Opera dentro de ese archivo — escribiendo código, confirmando en ramas de staging, redactando contenido del wiki, actualizando el despliegue. No escribe en otros archivos, no modifica archivos del espacio de trabajo y no tiene acceso directo al almacén de identidades.
 
-El punto de entrada planificado es el comando de consola `open-archive`, previsto para leer el manifiesto del archivo, mostrar el estado de la tétrada y los mensajes pendientes, establecer las variables de entorno con alcance al archivo y abrir una sesión en el directorio raíz del archivo. Esto está pensado para reflejar cómo un cliente o miembro de la comunidad abre un archivo Totebox a través de `os-console`: el flujo de trabajo de desarrollo es idéntico al flujo del cliente.
+El punto de entrada planificado es el comando de consola `open-archive`, previsto para leer el manifiesto del archivo, mostrar el estado de la tétrada y los mensajes pendientes, establecer las variables de entorno con alcance al archivo y abrir una sesión en el directorio raíz del archivo. Esto está pensado para reflejar cómo un cliente o miembro de la comunidad abre un [[totebox-archive|archivo Totebox]] a través de [[console-os|`os-console`]]: el flujo de trabajo de desarrollo es idéntico al flujo del cliente.
 
 ## La sesión raíz retirada
 
 Las versiones anteriores del flujo incluían una sesión raíz que se abría directamente dentro de los repositorios de ingeniería (`vendor/content-wiki-*`, `vendor/pointsav-design-system`). Los clientes nunca tuvieron un equivalente — no existe modo raíz en el modelo Totebox — por lo que el rol carecía de justificación arquitectónica.
 
-El reemplazo utiliza dos archivos Totebox de desarrollo dedicados: `project-source` para el trabajo del nivel canónico de PointSav y `project-woodfine` para el trabajo del nivel de cliente de Woodfine, ambos planificados. Todo el trabajo del repositorio se prevé que fluya a través de estos archivos y luego se promueva al libro mayor canónico mediante la canalización de la etapa 6. Los directorios de destino canónico son destinos del libro mayor — el trabajo se envía hacia ellos, nunca se abre en ellos para sesiones de IA.
+El reemplazo utiliza dos [[totebox-archive|archivos Totebox]] de desarrollo dedicados: `project-source` para el trabajo del nivel canónico de [[pointsav-overview|PointSav]] y `project-woodfine` para el trabajo del nivel de cliente de Woodfine, ambos planificados. Todo el trabajo del repositorio se prevé que fluya a través de estos archivos y luego se promueva al libro mayor canónico mediante la [[five-stage-supply-chain|canalización de la etapa 6]]. Los directorios de destino canónico son destinos del libro mayor — el trabajo se envía hacia ellos, nunca se abre en ellos para sesiones de IA.
 
 ## La tétrada del proyecto
 
@@ -81,9 +81,9 @@ Una sola instancia de `service-slm` actualmente sirve a los trece archivos activ
 
 El espacio de trabajo está previsto para ejecutarse en dos nodos de cómputo separados:
 
-**Nodo os-orchestration** — el entorno de desarrollo. Aloja la sesión de Comando, todos los archivos Totebox, la pasarela `service-slm`, el código fuente y las herramientas del espacio de trabajo. El trabajo de inteligencia, el desarrollo de código y el staging están previstos para suceder aquí. No accesible desde la internet pública.
+**Nodo [[os-orchestration|os-orchestration]]** — el entorno de desarrollo. Aloja la sesión de Comando, todos los [[totebox-archive|archivos Totebox]], la pasarela [[service-slm|`service-slm`]], el código fuente y las herramientas del espacio de trabajo. El trabajo de inteligencia, el desarrollo de código y el staging están previstos para suceder aquí. No accesible desde la internet pública.
 
-**Nodo os-mediakit** — la capa de entrega. Aloja los sitios web públicos activos, nginx y las instancias de servicio en producción. Recibe despliegues desde el nodo os-orchestration a través de un puente rsync deliberadamente con compuerta humana. Sin código fuente, sin trabajo de desarrollo, sin conexión directa con el nodo os-orchestration.
+**Nodo [[mediakit-os|os-mediakit]]** — la capa de entrega. Aloja los sitios web públicos activos, nginx y las instancias de servicio en producción. Recibe despliegues desde el nodo [[os-orchestration|os-orchestration]] a través de un puente rsync deliberadamente con compuerta humana. Sin código fuente, sin trabajo de desarrollo, sin conexión directa con el nodo os-orchestration.
 
 La separación está diseñada para que un incidente de desarrollo — una prueba fallida, un evento de disco lleno, una característica inacabada — no pueda afectar a los sitios web públicos activos. El puente rsync está concebido como la compuerta humana deliberada entre desarrollo y producción, coherente con la disciplina SYS-ADR-19 de no publicación automatizada a entornos activos.
 

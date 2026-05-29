@@ -30,7 +30,7 @@ institutional data.
 
 ## Human-in-the-loop philosophy
 
-Every identity fragment extracted by `service-people` is held as
+Every identity fragment extracted by [[service-people|`service-people`]] is held as
 unverified until an operator confirms it. The Surveyor presents the
 fragment — the extracted text, the inferred entity type, the source
 context — to the operator. The operator then looks up the individual
