@@ -14,11 +14,11 @@ cites: []
 paired_with: customer-owned-graph-ip.es.md
 ---
 
-**Customer-Owned Graph IP** is the principle that the per-tenant knowledge graph held in `service-content` is the customer's intellectual property, not a by-product of using the platform. The trained model adapters produced from that customer's corpus are also the customer's property.
+**Customer-Owned Graph IP** is the principle that the per-tenant knowledge graph held in [[service-content]] is the customer's intellectual property, not a by-product of using the platform. The trained model adapters produced from that customer's corpus are also the customer's property.
 
 ## What ownership means
 
-Every node, edge, mutation, and audit-ledger entry scoped to a tenant's module identifier is owned by that tenant. The platform has no claim to aggregate, resell, or use tenant graph data outside the specific per-tenant opt-ins defined in the platform's architecture.
+Every node, edge, mutation, and [[worm-ledger-architecture|audit-ledger entry]] scoped to a tenant's module identifier is owned by that tenant. The platform has no claim to aggregate, resell, or use tenant graph data outside the specific per-tenant opt-ins defined in the platform's architecture.
 
 Ownership carries four operational properties:
 
@@ -34,7 +34,7 @@ Ownership carries four operational properties:
 
 Most enterprise software platforms shape customer data to the vendor's ontology. When a customer attempts to leave, the data must be re-shaped to fit whatever system they are moving to — a migration project that typically requires vendor cooperation and specialist staff.
 
-The platform's approach inverts this. The customer's data is shaped by their own seed taxonomy (see [[seed-taxonomy-as-smb-bootstrap]]). Export is a single-command operation producing an open-format bundle. The customer's access to their data does not depend on the platform's servers remaining operational.
+The platform's approach inverts this. The customer's data is shaped by their own seed taxonomy (see [[seed-taxonomy-as-smb-bootstrap]]). Export is a single-command operation producing an open-format bundle. The customer's access to their data does not depend on the platform's servers remaining operational — a core property of [[customer-hostability]].
 
 The economic complement is the transaction-fee pricing model (see [[direct-payment-settlement]]): the customer pays a platform fee only when they earn from their data, not a recurring subscription for access to their own records.
 

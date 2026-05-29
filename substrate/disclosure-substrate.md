@@ -38,7 +38,7 @@ paired_with: disclosure-substrate.es.md
 ---
 
 
-A documentation wiki can be designed so that it is not a description of a company's disclosures — it is the disclosure record. Every committed article carries a signed authorship chain, a cryptographic hash, and a timestamp anchored to an external ledger. Regulators and analysts read the same corpus that internal contributors write. The filing and the working document are the same artefact.
+A documentation wiki can be designed so that it is not a description of a company's disclosures — it is the disclosure record. Every committed article carries a signed authorship chain, a cryptographic hash, and a timestamp anchored to an external [[worm-ledger-architecture|ledger]]. Regulators and analysts read the same corpus that internal contributors write. The filing and the working document are the same artefact.
 
 The practical consequence for regulated buyers: a reporting issuer that serves its disclosure wiki from infrastructure it owns and signs can satisfy a regulator's records request without coordinating with a third-party platform, without a vendor's continued operation, and without risk that the disclosure record and the internal documentation have drifted apart — because they are the same file.
 
@@ -62,7 +62,7 @@ The Disclosure Substrate spans all three rings and the documentation layer. Ring
 
 ### How the substrate operates
 
-Every article (called a TOPIC) in the wiki carries YAML frontmatter declaring its title, slug, category, status, and — where the content is grounded in external material — its citation dependencies. Citations are resolved against a workspace-level registry; inline references use stable IDs (`[ni-51-102]`); the registry maps each ID to a title, URL, and optional clause reference. This is the [[citation-substrate]] layer.
+Every article (called a TOPIC) in the wiki carries YAML frontmatter declaring its title, slug, category, status, and — where the content is grounded in external material — its citation dependencies. Citations are resolved against a workspace-level registry; inline references use stable IDs (`[ni-51-102]`); the registry maps each ID to a title, URL, and optional clause reference. This is the [[citation-substrate]] layer. The substrate is served by [[substrate-native-compatibility|the wiki engine]] as the reader-facing surface.
 
 Every committed TOPIC acquires a stable cryptographic identity: a Git commit SHA plus file path, and a content hash. Both are exposed in the rendered HTML so that an external indexer or regulator fetcher can pin a specific content state.
 
@@ -100,7 +100,7 @@ Conventional investor relations practice positions a separate IR platform betwee
 
 Under the substrate-substitution model, the positioning is different: the wiki is the disclosure record, served directly under the issuer's own domain, signed under the issuer's own key, and anchored to external ledgers the issuer controls. There is no separate disclosure-distribution platform between the Markdown source and the reader.
 
-What IR-platform services provide that the substrate does not — investor targeting, sell-side consensus aggregation, surveillance analytics — are composable via Ring 1 MCP adapters `[computerweekly-sovereign-2026]` as the substrate matures. The substrate replaces the substrate-of-record function; it composes with adjacent services that depend on multi-issuer panel data the substrate cannot replicate from a single deployment.
+What IR-platform services provide that the substrate does not — investor targeting, sell-side consensus aggregation, surveillance analytics — are composable via Ring 1 [[mcp-substrate-protocol|MCP adapters]] `[computerweekly-sovereign-2026]` as the substrate matures. The substrate replaces the substrate-of-record function; it composes with adjacent services that depend on multi-issuer panel data the substrate cannot replicate from a single deployment.
 
 Vendor SaaS disclosure platforms running on US-headquartered infrastructure face a structural property worth naming: the CLOUD Act `[cloud-act-us]` extends US extraterritorial data-access authority over US-headquartered providers regardless of where customer data is stored. For an issuer in a jurisdiction where vendor jurisdiction matters — EU GDPR under the Schrems II posture, Health Canada residency mandates, Saudi Arabia's PDPL — the disclosure substrate's value is that the record lives under the issuer's own infrastructure, in the issuer's own jurisdiction, with the issuer holding the signing key. This is jurisdiction-portability by construction, not by policy agreement with a vendor.
 

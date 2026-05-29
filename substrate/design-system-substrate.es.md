@@ -29,13 +29,13 @@ El mercado de herramientas de sistemas de diseño se ha concentrado históricame
 
 **Primera inversión — propiedad del cliente.** Los tokens, los componentes y el historial de decisiones de diseño viven en el repositorio del cliente. El coste de migración cae hacia cero porque el estado canónico es siempre accesible para el cliente.
 
-**Segunda inversión — razonamiento legible por máquina.** El directorio `research/` del substrato almacena la justificación de cada decisión de diseño como un archivo Markdown estructurado, con metadatos que los agentes de inteligencia artificial pueden consumir a través del protocolo MCP `[mcp-spec]`. Los sistemas de diseño convencionales publican únicamente los valores de los tokens; el substrato publica también el porqué, en el mismo nivel de accesibilidad para las herramientas.
+**Segunda inversión — razonamiento legible por máquina.** El directorio `research/` del substrato almacena la justificación de cada decisión de diseño como un archivo Markdown estructurado, con metadatos que los agentes de inteligencia artificial pueden consumir a través del [[mcp-substrate-protocol|protocolo MCP]] `[mcp-spec]`. Los sistemas de diseño convencionales publican únicamente los valores de los tokens; el substrato publica también el porqué, en el mismo nivel de accesibilidad para las herramientas.
 
 **Tercera inversión — agnóstico respecto al editor.** Los tokens siguen el formato del W3C Design Tokens Community Group (DTCG), que es el estándar de interoperabilidad convergente para la industria en el horizonte 2026–2030. Figma, Penpot, Sketch y la autoría directa en JSON son todos caminos válidos. El substrato no favorece ningún editor en particular porque no tiene incentivo comercial para hacerlo.
 
 ## La capa de atestación
 
-El historial del substrato se ancla mensualmente a Sigstore Rekor, produciendo un registro Merkle con raíz en el cliente. Cada trimestre, el operador del substrato emite un informe firmado —la Trustworthy System Attestation (TSA)— que cita los puntos de control del vault, la cadena `allowed_signers` del cliente y el registro WORM. Esta atestación cubre los artefactos de diseño del cliente: un alcance diferente e independiente de cualquier auditoría SOC 2 de terceros.
+El historial del substrato se ancla mensualmente a Sigstore Rekor, produciendo un [[capability-ledger-substrate|registro Merkle con raíz en el cliente]]. Cada trimestre, el operador del substrato emite un informe firmado —la Trustworthy System Attestation (TSA)— que cita los puntos de control del vault, la cadena `allowed_signers` del cliente y el [[worm-ledger-architecture|registro WORM]]. Esta atestación cubre los artefactos de diseño del cliente: un alcance diferente e independiente de cualquier auditoría SOC 2 de terceros.
 
 ## El vocabulario de Carbon como base
 

@@ -21,7 +21,7 @@ references:
 paired_with: knowledge-commons.es.md
 ---
 
-The **Knowledge Commons / Service Commerce** model is PointSav's economic architecture. Knowledge artifacts — architecture definitions, published specifications, training recipes, adapter weights, and sanitised training corpus — are published under open licenses and freely reusable. [^1] The commercial threshold is crossed precisely when two or more Totebox Archives must be operated as a single coordinated system. Solo Totebox operation is sovereign infrastructure; multi-Totebox aggregation is paid service.
+The **Knowledge Commons / Service Commerce** model is PointSav's [[economic-model|economic architecture]]. Knowledge artifacts — architecture definitions, published specifications, training recipes, [[adapter-composition|adapter weights]], and sanitised training corpus — are published under open licenses and freely reusable. [^1] The commercial threshold is crossed precisely when two or more [[totebox-archive|Totebox Archives]] must be operated as a single coordinated system. Solo Totebox operation is sovereign infrastructure; multi-Totebox aggregation is paid service.
 
 The line between them is bright and structural. It is not a pricing decision — it follows directly from the architecture.
 
@@ -40,18 +40,18 @@ The following artifacts are published at every MINOR version bump under open lic
 | Engineering adapter weights | Apache 2.0 |
 | Design-system tokens, components, guidelines | Apache 2.0 |
 
-Each MINOR bump produces a signed, versioned bundle pushed to `pointsav/factory-release-engineering` with a stable ID. The bundle is itself a citable artifact. Downstream deployments and Customers can pin against a specific bundle version and know what they are running.
+Each MINOR bump produces a signed, versioned bundle pushed to `pointsav/factory-release-engineering` with a stable ID. The bundle is itself a [[citation-substrate|citable artifact]]. Downstream deployments and Customers can pin against a specific bundle version and know what they are running.
 
 ## The Commercial Aggregation Boundary
 
 A single Totebox running its own platform deployment is sovereign infrastructure. The Customer owns the substrate, the data, the adapter, and the runtime. Nothing about a single Totebox crosses the commercial threshold.
 
-The threshold is crossed when two or more Totebox Archives — or a Totebox Archive plus an external system in coordination — must be operated as one. Examples include:
+The threshold is crossed when two or more [[totebox-archive|Totebox Archives]] — or a Totebox Archive plus an external system in coordination — must be operated as one. Examples include:
 
 - Querying across two regional Toteboxes for a consolidated report
 - Federating a Customer's Totebox with a partner's Totebox for joint research
-- Routing Tier B requests to PointSav's hosted LLM capacity
-- Participating in the adapter marketplace for adapter sharing
+- Routing Tier B requests to PointSav's hosted LLM capacity (see [[four-tier-slm-substrate]])
+- Participating in the [[sovereign-ai-commons|adapter marketplace]] for adapter sharing
 
 The line is structural because aggregation requires crossing trust boundaries, identity boundaries, and operational boundaries that a single sovereign Totebox does not have. Customers pay for the substrate that crosses those boundaries, not for access to knowledge that has no boundary.
 
@@ -75,7 +75,7 @@ The Knowledge Commons model operationally produces three contributor tiers:
 
 **Paid contributors (50–100 people, PointSav-funded)** — project-tier engineering work paid by PointSav and executed via GitHub pull requests against the public substrate repositories. Per-jurisdiction export adapters, LoRA adapter authoring, customer-specific deployment provisioning, multi-Totebox aggregation services. Outcome-based contracts tied to Customer service revenue.
 
-**Open contributors (10,000+, CC/Apache-licensed)** — contributions to the public substrate via pull requests to `pointsav/factory-release-engineering`, the design system, the wiki engine, MCP server adapters, and TOPIC content in the content wikis. No CLA required for open-core contributions. [^2] Reputation accrues via the Trajectory Substrate's per-contributor attribution. A path to the paid tier exists for contributors whose work demonstrates recurring quality and operational fluency.
+**Open contributors (10,000+, CC/Apache-licensed)** — contributions to the public substrate via pull requests to `pointsav/factory-release-engineering`, the design system, the wiki engine, [[mcp-substrate-protocol|MCP server adapters]], and TOPIC content in the content wikis. No CLA required for open-core contributions. [^2] Reputation accrues via the [[trajectory-substrate|Trajectory Substrate's]] per-contributor attribution. A path to the paid tier exists for contributors whose work demonstrates recurring quality and operational fluency.
 
 The structural value of this design is that the Open tier sustains features and coverage that a Core of 4–7 people could not maintain alone. Most substrate features are intended to ship via Open contribution; Core reviews and accepts; Paid implements commercial-tier extensions.
 

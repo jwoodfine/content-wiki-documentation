@@ -43,11 +43,11 @@ divulgaciones de la empresa: es la divulgación misma.
 
 Cada artículo del corpus Markdown (denominado TOPIC) lleva una cadena
 criptográfica de autoría, un hash de contenido estable y, en fases
-planificadas de implementación del motor wiki, marcas de tiempo ancladas
+planificadas de implementación del [[substrate-native-compatibility|motor wiki]], marcas de tiempo ancladas
 a registros externos (OpenTimestamps `[opentimestamps]` hacia la cadena
 de bloques de Bitcoin; RFC 3161 `[rfc-3161]` con reconocimiento legal en
 la UE y la mayoría de jurisdicciones de derecho consuetudinario). Cada
-confirmación (*commit*) está firmada. Reguladores y analistas pueden leer
+confirmación (*commit*) está firmada y trazada en el [[worm-ledger-architecture|libro WORM]]. Reguladores y analistas pueden leer
 exactamente el mismo corpus que alimenta la presentación regulatoria.
 
 Las afirmaciones sobre capacidades futuras en este artículo son
@@ -88,7 +88,7 @@ con su propia clave.
 Los servicios que plataformas de relaciones con inversionistas
 convencionales proveen y que el sustrato no replica —segmentación de
 inversionistas, agregación de consenso del lado de la venta, analítica de
-vigilancia— son componibles mediante adaptadores MCP del Anillo 1 a medida
+vigilancia— son componibles mediante [[mcp-substrate-protocol|adaptadores MCP]] del Anillo 1 a medida
 que el sustrato madura. El sustrato reemplaza donde la sustitución es
 limpia; compone donde no lo es.
 

@@ -19,17 +19,17 @@ paired_with: knowledge-graph-grounded-apprenticeship.md
 ---
 
 
-El **Aprendizaje Fundamentado en Grafos de Conocimiento** es el patrón por el cual el Portero (`service-slm`) consulta el grafo de conocimiento por inquilino en `service-content` antes de despachar cualquier solicitud de inferencia sustantiva. El contexto de fundamentación — un subgrafo de entidades y relaciones relevantes para la consulta — se suministra al modelo junto con la solicitud. La tupla de entrenamiento resultante contiene tanto el contexto del grafo como la respuesta del modelo, lo que significa que el grafo de conocimiento y el adaptador por inquilino mejoran juntos con el tiempo.
+El **Aprendizaje Fundamentado en Grafos de Conocimiento** es el patrón por el cual el [[compounding-doorman|Portero]] ([[service-slm]]) consulta el grafo de conocimiento por inquilino en [[service-content]] antes de despachar cualquier solicitud de inferencia sustantiva. El contexto de fundamentación — un subgrafo de entidades y relaciones relevantes para la consulta — se suministra al modelo junto con la solicitud. La tupla de entrenamiento resultante contiene tanto el contexto del grafo como la respuesta del modelo, lo que significa que el grafo de conocimiento y el [[adapter-composition|adaptador]] por inquilino mejoran juntos con el tiempo.
 
 ## Fundamentación previa a la inferencia
 
-Antes de despachar una solicitud a cualquier nivel de cómputo, el Portero llama a la herramienta de consulta de grafo de `service-content` para ensamblar un subgrafo de dos saltos alrededor de los términos de la consulta. Este subgrafo se presenta como un prefijo estructurado en el prompt del sistema del modelo, incluyendo entidades relevantes, sus relaciones y sus clasificaciones de dominio y tema.
+Antes de despachar una solicitud a cualquier nivel de cómputo, el [[compounding-doorman|Portero]] llama a la herramienta de consulta de grafo de [[service-content]] para ensamblar un subgrafo de dos saltos alrededor de los términos de la consulta. Este subgrafo se presenta como un prefijo estructurado en el prompt del sistema del modelo, incluyendo entidades relevantes, sus relaciones y sus clasificaciones de dominio y tema.
 
 Cuando una consulta no tiene contexto de grafo relevante — por ejemplo, una pregunta genérica de administración del sistema — el Portero procede sin fundamentación y la tupla de entrenamiento se marca como no fundamentada. El modelo aprende así que algunas preguntas no requieren contexto de grafo.
 
 ## Mutación del grafo post-inferencia
 
-Cuando la respuesta del modelo incluye salidas estructuradas y el veredicto del operador acepta la respuesta, el Portero puede proponer mutaciones del grafo derivadas de la respuesta — nuevas entidades, nuevas relaciones o propiedades actualizadas. `service-content` aplica los cambios atómicamente, por inquilino, y el registro de auditoría registra el evento de mutación.
+Cuando la respuesta del modelo incluye salidas estructuradas y el veredicto del operador acepta la respuesta, el [[compounding-doorman|Portero]] puede proponer mutaciones del grafo derivadas de la respuesta — nuevas entidades, nuevas relaciones o propiedades actualizadas. [[service-content]] aplica los cambios atómicamente, por inquilino, y el [[worm-ledger-architecture|registro de auditoría]] registra el evento de mutación.
 
 El bucle se cierra: las entidades descubiertas durante una interacción de inferencia se convierten en contexto de fundamentación para la siguiente. El grafo de conocimiento crece a través del uso.
 

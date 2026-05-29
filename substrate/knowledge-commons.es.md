@@ -21,7 +21,7 @@ references:
 paired_with: knowledge-commons.md
 ---
 
-El modelo de **Conocimiento Común / Comercio de Servicios** es la arquitectura económica de PointSav. Los artefactos de conocimiento — doctrina, convenciones, recetas de entrenamiento, pesos de adaptadores y corpus de trayectoria depurado — se publican bajo licencias abiertas y son reutilizables libremente. [^1] El umbral comercial se supera precisamente cuando dos o más Archivos Totebox deben operar como un sistema coordinado único. La operación de un solo Totebox es infraestructura soberana; la agregación de múltiples Totebox es un servicio de pago.
+El modelo de **Conocimiento Común / Comercio de Servicios** es la [[economic-model|arquitectura económica]] de PointSav. Los artefactos de conocimiento — doctrina, convenciones, recetas de entrenamiento, [[adapter-composition|pesos de adaptadores]] y corpus de trayectoria depurado — se publican bajo licencias abiertas y son reutilizables libremente. [^1] El umbral comercial se supera precisamente cuando dos o más [[totebox-archive|Archivos Totebox]] deben operar como un sistema coordinado único. La operación de un solo Totebox es infraestructura soberana; la agregación de múltiples Totebox es un servicio de pago.
 
 La línea entre ambos es clara y estructural. No es una decisión de precio — se deriva directamente de la arquitectura.
 
@@ -33,7 +33,7 @@ Cada versión MINOR produce un paquete firmado y versionado publicado en `points
 
 ## El umbral comercial
 
-Un solo Totebox con su propio despliegue de la plataforma es infraestructura soberana. El Cliente posee el sustrato, los datos, el adaptador y el entorno de ejecución. Nada de un solo Totebox supera el umbral comercial. El umbral se supera cuando dos o más Archivos Totebox deben operar como uno: consultas consolidadas entre instancias regionales, federación con sistemas de socios, enrutamiento a capacidad LLM alojada, o participación en el mercado de adaptadores.
+Un solo Totebox con su propio despliegue de la plataforma es infraestructura soberana. El Cliente posee el sustrato, los datos, el adaptador y el entorno de ejecución. Nada de un solo Totebox supera el umbral comercial. El umbral se supera cuando dos o más [[totebox-archive|Archivos Totebox]] deben operar como uno: consultas consolidadas entre instancias regionales, federación con sistemas de socios, enrutamiento a capacidad LLM alojada (véase [[four-tier-slm-substrate]]), o participación en el [[sovereign-ai-commons|mercado de adaptadores]].
 
 La línea es estructural porque la agregación requiere cruzar límites de confianza, identidad y operación que un único Totebox soberano no tiene. Los clientes pagan por el sustrato que cruza esos límites, no por el acceso al conocimiento que no tiene límites.
 
@@ -45,7 +45,7 @@ El modelo de Conocimiento Común produce operativamente tres niveles de contribu
 
 **Contribuidores de pago (50–100 personas, financiados por PointSav)** — trabajo de ingeniería por proyecto ejecutado mediante pull requests contra los repositorios públicos del sustrato: adaptadores de exportación por jurisdicción, autoría de adaptadores LoRA, aprovisionamiento de despliegues específicos del cliente, servicios de agregación multi-Totebox.
 
-**Contribuidores abiertos (más de 10,000, licencias CC/Apache)** — contribuciones al sustrato público mediante pull requests. Sin CLA requerido para contribuciones al núcleo abierto. [^2] La reputación se acumula mediante la atribución por contribuidor del Sustrato de Trayectoria. Existe un camino hacia el nivel de pago para contribuidores cuyo trabajo demuestra calidad recurrente.
+**Contribuidores abiertos (más de 10,000, licencias CC/Apache)** — contribuciones al sustrato público mediante pull requests. Sin CLA requerido para contribuciones al núcleo abierto. [^2] La reputación se acumula mediante la atribución por contribuidor del [[trajectory-substrate|Sustrato de Trayectoria]]. Existe un camino hacia el nivel de pago para contribuidores cuyo trabajo demuestra calidad recurrente.
 
 La ventaja de esta estructura es que el nivel abierto mantiene características y cobertura que un Núcleo de 4–7 personas no podría sostener solo. La mayoría de las características del sustrato están previstas para llegar mediante contribuciones abiertas; el Núcleo revisa y acepta; los de pago implementan las extensiones del nivel comercial.
 

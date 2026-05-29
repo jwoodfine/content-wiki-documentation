@@ -18,29 +18,29 @@ references:
 paired_with: knowledge-graph-grounded-apprenticeship.es.md
 ---
 
-**Knowledge-Graph-Grounded Apprenticeship** is the pattern by which the Doorman (`service-slm`) consults the per-tenant knowledge graph in `service-content` before routing every substantive inference request. The grounding context — a subgraph of entities and relationships relevant to the query — is supplied to the model alongside the request. The resulting training tuple carries both the graph context and the model's response, which means the knowledge graph and the per-tenant adapter improve together over time.
+**Knowledge-Graph-Grounded Apprenticeship** is the pattern by which the [[compounding-doorman|Doorman]] ([[service-slm]]) consults the per-tenant knowledge graph in [[service-content]] before routing every substantive inference request. The grounding context — a subgraph of entities and relationships relevant to the query — is supplied to the model alongside the request. The resulting training tuple carries both the graph context and the model's response, which means the knowledge graph and the per-tenant adapter improve together over time.
 
-This pattern extends the apprenticeship substrate with a graph-grounding layer.
+This pattern extends the [[apprenticeship-substrate]] with a graph-grounding layer.
 
 ## Pre-inference grounding
 
-Before the Doorman dispatches a request to any compute tier, it calls `service-content`'s graph query tool to assemble a two-hop subgraph around the query terms. The subgraph is rendered as a structured prefix to the model's system prompt, presenting the relevant entities, their relationships, and their domain and theme classifications.
+Before the [[compounding-doorman|Doorman]] dispatches a request to any compute tier, it calls [[service-content]]'s graph query tool to assemble a two-hop subgraph around the query terms. The subgraph is rendered as a structured prefix to the model's system prompt, presenting the relevant entities, their relationships, and their domain and theme classifications.
 
-The model therefore receives not only the user's query but also the factual context that the knowledge graph already holds about the parties and topics involved. The grounded entity identifiers are recorded in the audit ledger for subsequent citation verification.
+The model therefore receives not only the user's query but also the factual context that the knowledge graph already holds about the parties and topics involved. The grounded entity identifiers are recorded in the [[worm-ledger-architecture|audit ledger]] for subsequent citation verification.
 
 When a query has no relevant graph context — for example, a generic system administration question — the graph query returns an empty subgraph and the request proceeds without grounding. These ungrounded tuples are valid training data; the model learns that some questions do not require graph context.
 
 ## Post-inference graph mutation
 
-When the model's response includes structured outputs and the senior verdict accepts the response, the Doorman may propose graph mutations derived from the response — new entities, new relationships, or updated properties. It calls `service-content`'s graph mutation tool; `service-content` applies the changes atomically, per tenant, and the audit ledger records the mutation event.
+When the model's response includes structured outputs and the senior verdict accepts the response, the [[compounding-doorman|Doorman]] may propose graph mutations derived from the response — new entities, new relationships, or updated properties. It calls [[service-content]]'s graph mutation tool; `service-content` applies the changes atomically, per tenant, and the [[worm-ledger-architecture|audit ledger]] records the mutation event.
 
 The loop closes: entities discovered during one inference interaction become grounding context for the next. The knowledge graph grows through use.
 
 ## Training tuple shape
 
-The apprenticeship corpus tuple gains a graph context field alongside the brief, the model's attempt, and the verdict. Direct preference optimisation training treats verdict-signed tuples with populated graph context as higher-weight examples than ungrounded tuples. Supervised fine-tuning over unsigned tuples uses graph context as additional input signal.
+The [[apprenticeship-substrate|apprenticeship corpus]] tuple gains a graph context field alongside the brief, the model's attempt, and the verdict. Direct preference optimisation training treats verdict-signed tuples with populated graph context as higher-weight examples than ungrounded tuples. Supervised fine-tuning over unsigned tuples uses graph context as additional input signal.
 
-Because graph context is per-tenant — isolated by module identifier — the Woodfine adapter trains on Woodfine graph context and the PointSav adapter trains on PointSav graph context. There is no cross-tenant leakage at training time.
+Because graph context is per-tenant — isolated by module identifier — the Woodfine [[adapter-composition|adapter]] trains on Woodfine graph context and the PointSav adapter trains on PointSav graph context. There is no cross-tenant leakage at training time.
 
 ## Graph-coherence quality metrics
 
