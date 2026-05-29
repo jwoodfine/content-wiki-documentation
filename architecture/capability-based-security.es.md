@@ -24,7 +24,7 @@ references:
 ---
 
 
-La seguridad basada en capacidades es el modelo de control de acceso utilizado en las capas de hardware y sistema operativo de la plataforma PointSav. A diferencia de los sistemas operativos convencionales, que otorgan amplios permisos a través de cuentas administrativas, la seguridad basada en capacidades exige que cada componente de software aislado posea un token criptográfico verificado matemáticamente — denominado capacidad — antes de poder comunicarse con cualquier otro componente.
+La seguridad basada en capacidades es el modelo de control de acceso utilizado en las capas de hardware y sistema operativo de la plataforma [[pointsav-overview|PointSav]]. A diferencia de los sistemas operativos convencionales, que otorgan amplios permisos a través de cuentas administrativas, la seguridad basada en capacidades exige que cada componente de software aislado posea un [[crypto-attestation|token criptográfico]] verificado matemáticamente — denominado capacidad — antes de poder comunicarse con cualquier otro componente. Véase también [[capability-ledger-substrate|el sustrato del registro de capacidades]] y [[pairing-as-permission|emparejamiento como permiso]].
 
 ## Cómo funciona
 
@@ -36,7 +36,7 @@ Los sistemas operativos estándar son vulnerables a la escalada de privilegios. 
 
 ## Propiedades clave
 
-- **Verificación formal.** El microkernel seL4 subyacente está verificado formalmente en Isabelle/HOL [^1]: las propiedades de aislamiento son matemáticamente probadas, no afirmadas.
+- **Verificación formal.** El [[sel4-microkernel-substrate|microkernel seL4]] subyacente está verificado formalmente en Isabelle/HOL [^1]: las propiedades de aislamiento son matemáticamente probadas, no afirmadas.
 - **Mínimo privilegio por defecto.** Los componentes comienzan sin capacidades; el sistema concede el conjunto mínimo requerido para su función declarada.
 - **Contención del radio de explosión.** El compromiso de un componente no puede propagarse a componentes para los que no posee concesiones de capacidad.
 - **Auditabilidad.** Las concesiones de capacidades se registran; el conjunto de concesiones en vigor en cualquier momento es inspeccionable.

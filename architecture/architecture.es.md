@@ -13,11 +13,11 @@ editor: pointsav-engineering
 paired_with: architecture.md
 ---
 
-La plataforma PointSav está diseñada en torno a dos propiedades estructurales: consistencia criptográfica distribuida y capacidad de arranque soberano. Ambas propiedades se mantienen de forma simultánea en entornos en la nube y en bóvedas físicas desconectadas.
+La plataforma [[pointsav-overview|PointSav]] está diseñada en torno a dos propiedades estructurales: [[cryptographic-ledgers|consistencia criptográfica]] distribuida y capacidad de arranque soberano. Ambas propiedades se mantienen de forma simultánea en entornos en la nube y en bóvedas físicas desconectadas.
 
 ## Estado criptográfico distribuido
 
-Un único archivo puede existir en múltiples entornos físicos —un nodo activo en la nube y una bóveda sin conexión— mientras mantiene un estado criptográfico unificado. Ambos entornos comparten en todo momento el mismo hash Merkle raíz. Esto permite que un auditor verifique la integridad de cualquiera de las copias sin necesidad de que ambas estén en línea simultáneamente.
+Un único archivo puede existir en múltiples entornos físicos —un nodo activo en la nube y una bóveda sin conexión— mientras mantiene un estado criptográfico unificado. Ambos entornos comparten en todo momento el mismo [[merkle-proofs-as-substrate-primitive|hash Merkle]] raíz. Esto permite que un auditor verifique la integridad de cualquiera de las copias sin necesidad de que ambas estén en línea simultáneamente.
 
 ## Colapso y portabilidad del archivo
 

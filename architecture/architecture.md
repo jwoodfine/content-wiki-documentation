@@ -13,11 +13,11 @@ editor: pointsav-engineering
 paired_with: architecture.es.md
 ---
 
-The PointSav platform is designed around two structural properties: distributed cryptographic consistency and sovereign bootability. Both properties are preserved across cloud and offline-vault environments simultaneously.
+The [[pointsav-overview|PointSav]] platform is designed around two structural properties: distributed [[cryptographic-ledgers|cryptographic consistency]] and sovereign bootability. Both properties are preserved across cloud and offline-vault environments simultaneously.
 
 ## Distributed cryptographic state
 
-A single archive can exist across multiple physical environments — an active cloud node and an offline vault — while maintaining a single, unified cryptographic state. The two environments share an identical root Merkle hash at all times.
+A single archive can exist across multiple physical environments — an active cloud node and an offline vault — while maintaining a single, unified cryptographic state. The two environments share an identical root [[merkle-proofs-as-substrate-primitive|Merkle hash]] at all times.
 
 - **Active cloud node** — the live, networked copy of the archive.
 - **Offline vault** — a physically isolated copy that mirrors the cloud node's Merkle root without a persistent network connection.

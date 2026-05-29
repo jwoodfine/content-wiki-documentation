@@ -13,13 +13,13 @@ cites: [ifc-4-3]
 paired_with: aec-interface-conventions.es.md
 ---
 
-Every major BIM authoring platform ships with four interface conventions that an architect or engineer learns once and carries across products: a hierarchy tree for the spatial structure, a properties panel for element attributes, a 3D viewport, and a saved-view navigator. These conventions exist because the underlying data model (the IFC entity hierarchy) is the same regardless of which tool authors it. The Building Design System's universal interface components are built on this shared vocabulary.
+Every major BIM authoring platform ships with four interface conventions that an architect or engineer learns once and carries across products: a hierarchy tree for the spatial structure, a properties panel for element attributes, a 3D viewport, and a saved-view navigator. These conventions exist because the underlying data model (the IFC entity hierarchy) is the same regardless of which tool authors it. The [[building-design-system-bim|Building Design System]]'s universal interface components are built on this shared vocabulary.
 
 ## The Four Universal Conventions
 
 ### Spatial tree
 
-Every BIM authoring tool displays the spatial structure of a building as a hierarchical tree: Site contains Building, Building contains Storey, Storey contains Space, Space contains Elements. This corresponds directly to the `IfcSpatialStructureElement` hierarchy in IFC 4.3. The Building Design System `SpatialTree` component renders this hierarchy with consistent expand/collapse behaviour, selection propagation to the Viewport3D, and IFC GUID display on hover. An operator who has used any of the major authoring tools can navigate a `SpatialTree` without reading documentation.
+Every BIM authoring tool displays the spatial structure of a building as a hierarchical tree: Site contains Building, Building contains Storey, Storey contains Space, Space contains Elements. This corresponds directly to the `IfcSpatialStructureElement` hierarchy in IFC 4.3. The Building Design System `SpatialTree` component renders this hierarchy with consistent expand/collapse behaviour, selection propagation to the Viewport3D, and IFC GUID display on hover. An operator who has used any of the major authoring tools can navigate a `SpatialTree` without reading [[glossary-documentation|documentation]].
 
 ### Properties panel
 
@@ -35,7 +35,7 @@ Named saved views — floor-plan views, section cuts, elevation views, 3D perspe
 
 ## Ten Universal Interface Components
 
-The Building Design System defines ten interface components that appear on every surface — whether the field client, the facility management console, or any future surface that consumes the Building Design System.
+The [[building-design-system-bim|Building Design System]] defines ten interface components that appear on every surface — whether the field client, the facility management console, or any future surface that consumes the Building Design System.
 
 | Component | Role |
 |---|---|
@@ -60,6 +60,6 @@ A shared interface vocabulary means that the coordination viewer does not introd
 
 ## Relationship to the Design System Substrate
 
-The Building Design System is a BIM-semantic extension of the Carbon Design System baseline. Carbon provides the foundational UI primitives — buttons, inputs, data tables, colour tokens, typography scale. The Building Design System adds the AEC-semantic layer on top: the ten universal interface components and the eight BIM Object primitive categories.
+The [[building-design-system-bim|Building Design System]] is a BIM-semantic extension of the [[design-system-substrate|Carbon Design System baseline]]. Carbon provides the foundational UI primitives — buttons, inputs, data tables, [[design-color|colour tokens]], [[design-typography|typography]] scale. The Building Design System adds the AEC-semantic layer on top: the ten universal interface components and the eight [[bim-objects-what-they-are|BIM Object]] primitive categories.
 
-A designer who contributes to the Carbon-based platform design surface uses the same token and component authoring workflow to contribute a new BIM component to the BIM Object catalog. The substrate is the same; the semantic domain is different.
+A designer who contributes to the Carbon-based platform design surface uses the same token and component authoring workflow to contribute a new BIM component to the [[bim-objects-substrate|BIM Object catalog]]. The substrate is the same; the semantic domain is different.

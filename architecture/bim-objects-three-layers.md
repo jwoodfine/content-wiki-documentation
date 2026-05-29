@@ -13,11 +13,11 @@ cites: [ifc-4-3, uniclass-2015, bsdd-v1, ids-1-0, dtcg-w3c, ashrae-90-1, nbc-202
 paired_with: bim-objects-three-layers.es.md
 ---
 
-A BIM Object has three layers: Specification, Regulation, and Climate Zone. All three are embedded data in the object. None of the three layers is a runtime user-selectable option — a designer does not "switch" between climate zones any more than they switch building codes. The three layers are displayed simultaneously as static reference tables, each showing all registered overlays for the BIM Object's element type. This structure reflects a physical reality: a built element has a fixed type (Specification), exists in a fixed jurisdiction (Regulation), and performs in a fixed climate (Climate Zone). All three are facts about the element's physical context, not user preferences.
+A [[bim-objects-what-they-are|BIM Object]] has three layers: Specification, Regulation, and Climate Zone. All three are embedded data in the object. None of the three layers is a runtime user-selectable option — a designer does not "switch" between climate zones any more than they switch building codes. The three layers are displayed simultaneously as static reference tables, each showing all registered overlays for the BIM Object's element type. This structure reflects a physical reality: a built element has a fixed type (Specification), exists in a fixed jurisdiction (Regulation), and performs in a fixed climate (Climate Zone). All three are facts about the element's physical context, not user preferences.
 
 ## Why Three Layers
 
-Software design system tokens typically have two concerns: what a value IS (its semantic role — primary colour, heading size) and what value it resolves to (its computed output — `#164679`, `24px`). BIM Objects address a fundamentally different problem space that requires three concerns.
+Software [[design-system-substrate|design system tokens]] typically have two concerns: what a value IS (its semantic role — primary [[design-color|colour]], heading size) and what value it resolves to (its computed output — `#164679`, `24px`). BIM Objects address a fundamentally different problem space that requires three concerns.
 
 A built-environment element specification must simultaneously answer:
 - **What is this element?** — its type in a neutral, tool-independent schema (IFC), its classification in a neutral reference system (Uniclass), and its semantic identity in a jurisdiction-spanning dictionary (bSDD). This is stable across all deployments.
@@ -43,7 +43,7 @@ The Specification layer is the object's permanent identity. It does not vary by 
 | `applicable_psets` | Applicable IFC Property Sets | Array of Pset names |
 | `dtcg_type` | DTCG type extension | `bim-element`, `bim-material`, etc. |
 
-The Specification layer is authored once per BIM Object and promoted through the standard design-system pipeline (vendor → customer → deployment). Changes to the Specification layer require a version bump and changelog entry.
+The Specification layer is authored once per BIM Object and promoted through the [[five-stage-supply-chain|standard design-system pipeline]] (vendor → customer → deployment). Changes to the Specification layer require a version bump and changelog entry.
 
 **IFC entity hierarchy breadcrumb.** Every Specification record includes the full IFC inheritance path from `IfcRoot` to the specific class. For `IfcWall`:
 
@@ -146,7 +146,7 @@ When a new BIM Object is authored, the authoring interface follows a four-zone m
 
 **Zone 4 — Publishing.** Validation summary, preview of BIM Object JSON output, approval workflow, commit message field, publish action (git commit to object vault).
 
-The CMS authoring model is the intended interface for `app-console-bim` (planned, v0.1.x). At v0.0.1, BIM Objects are authored directly as DTCG JSON files and committed via git.
+The CMS authoring model is the intended interface for `app-console-bim` (planned, v0.1.x). At v0.0.1, [[bim-objects-what-they-are|BIM Objects]] are authored directly as DTCG JSON files and committed via git.
 
 ## How This Differs from IFC Property Sets
 

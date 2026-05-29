@@ -14,11 +14,11 @@ cites: [ifc-4-3, uniclass-2015, bsdd-v1, ids-1-0, dtcg-w3c]
 paired_with: bim-objects-what-they-are.md
 ---
 
-El Modelado de Información para la Construcción produce representaciones digitales detalladas de estructuras. En su forma estándar, no previene infracciones. Un modelo puede estar geométricamente completo, con materiales especificados y clasificado por tipo de entidad IFC, y aún así contener elementos que no cumplen con el código, violan los requisitos de desempeño climático o entran en conflicto con regulaciones jurisdiccionales — descubrimientos que sólo se hacen cuando un verificador posterior al diseño se ejecuta. Un Objeto BIM aborda esto desde el principio. Codifica una decisión sobre un elemento del entorno construido como una unidad de especificación composable y reasignable que pre-restringe el espacio de diseño en lugar de auditar un modelo completado.
+El Modelado de Información para la Construcción produce representaciones digitales detalladas de estructuras. En su forma estándar, no previene infracciones. Un modelo puede estar geométricamente completo, con materiales especificados y clasificado por tipo de entidad IFC, y aún así contener elementos que no cumplen con el código, violan los requisitos de desempeño climático o entran en conflicto con regulaciones jurisdiccionales — descubrimientos que sólo se hacen cuando un verificador posterior al diseño se ejecuta. Un Objeto BIM aborda esto desde el principio. Codifica una decisión sobre un elemento del entorno construido como una unidad de especificación composable y reasignable que pre-restringe el espacio de diseño en lugar de auditar un modelo completado. Véase también [[bim-objects-substrate|categorías de Objetos BIM]] y [[building-design-system-bim|el Sistema de Diseño de la Construcción]].
 
 ## Definición
 
-Un Objeto BIM es una unidad de especificación composable para el entorno construido — el equivalente estructural de un Token del Sistema de Diseño. Donde un Token del Sistema de Diseño codifica una decisión de diseño (un color, una unidad de espaciado, una receta de componente) como un valor reutilizable y reasignable que todas las superficies conformes deben respetar, un Objeto BIM codifica una decisión sobre un elemento del entorno construido en tres ejes simultáneos:
+Un Objeto BIM es una unidad de especificación composable para el entorno construido — el equivalente estructural de un [[design-system-substrate|Token del Sistema de Diseño]]. Donde un Token del Sistema de Diseño codifica una decisión de diseño (un [[design-color|color]], una [[design-spacing|unidad de espaciado]], una receta de componente) como un valor reutilizable y reasignable que todas las superficies conformes deben respetar, un Objeto BIM codifica una decisión sobre un elemento del entorno construido en tres ejes simultáneos:
 
 1. **Lo que el elemento ES** — su clase de entidad IFC, clasificación Uniclass 2015, URI de identidad bSDD, y plantillas de conjuntos de propiedades aplicables.
 2. **Lo que DEBE satisfacer** — los requisitos regulatorios impuestos por su jurisdicción, expresados como superposiciones jurisdiccionales (archivos de restricción IDS 1.0 y fragmentos geométricos de exclusión IFC).
@@ -50,7 +50,7 @@ Esta es una afirmación composicional, no una afirmación de validación. La dis
 
 ## Tres Capas
 
-Un Objeto BIM tiene tres capas. Las tres son datos integrados en el objeto. Ni Regulación ni Zona Climática son opciones seleccionables por el usuario en tiempo de ejecución — son datos de referencia mostrados como tablas de consulta estáticas, exactamente como una hoja de datos de estándar técnico muestra múltiples filas de jurisdicción simultáneamente.
+Un Objeto BIM tiene [[bim-objects-three-layers|tres capas]]. Las tres son datos integrados en el objeto. Ni Regulación ni Zona Climática son opciones seleccionables por el usuario en tiempo de ejecución — son datos de referencia mostrados como tablas de consulta estáticas, exactamente como una hoja de datos de estándar técnico muestra múltiples filas de jurisdicción simultáneamente.
 
 **Capa 1 — Especificación.** La clase de entidad IFC (por ejemplo, `IfcWall`), referencia de clasificación Uniclass 2015 (por ejemplo, `Ss_20_05_30_75`), URI de concepto bSDD, descripción en lenguaje llano y plantillas de conjuntos de propiedades aplicables. Esta capa es la identidad permanente del Objeto BIM.
 
@@ -71,7 +71,7 @@ El formato legible por máquinas permite:
 
 ## Relación con el Sistema de Diseño
 
-El sistema de Objetos BIM es paralelo a la estructura de un sistema de diseño de software. Donde IBM Carbon o un sistema similar proporciona una capa primitiva de tokens, una capa de recetas de componentes y una capa de extensiones específicas por superficie, la plataforma de Objetos BIM proporciona una capa primitiva de objetos (las 8 categorías de objetos DTCG ancladas a IFC 4.3), una capa de componentes AEC universal y extensiones específicas por superficie por tipo de programa del entorno construido.
+El sistema de Objetos BIM es paralelo a la estructura de un [[design-system-substrate|sistema de diseño]] de software. Donde IBM Carbon o un sistema similar proporciona una capa primitiva de tokens, una capa de recetas de componentes y una capa de extensiones específicas por superficie, la plataforma de Objetos BIM proporciona una capa primitiva de objetos (las 8 categorías de objetos DTCG ancladas a IFC 4.3), una capa de [[aec-interface-conventions|componentes AEC universal]] y extensiones específicas por superficie por tipo de programa del entorno construido.
 
 La analogía es estructural, no metafórica. Ambos sistemas abordan el mismo problema: aplicar coherencia entre superficies de autoría independientes codificando decisiones como unidades reutilizables, reasignables y versionables con especificaciones de restricciones legibles por máquinas.
 

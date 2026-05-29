@@ -13,7 +13,7 @@ cites: [ifc-4-3, iso-19650, ids-1-0]
 paired_with: asset-anchored-bim-vault.es.md
 ---
 
-A building's authoritative digital record is a directory of plain-text and standardised-binary files that live on the owner's storage, travel with the property deed when ownership changes hands, and remain readable without a proprietary software licence for as long as the underlying open standards are maintained. This article describes the vault layout, the versioning layer that gives the archive git-grade traceability, and the ISO 19650 qualification that makes a flat-file git repository a conforming Common Data Environment.
+A building's authoritative digital record is a directory of plain-text and standardised-binary files that live on the owner's storage, travel with the property deed when ownership changes hands, and remain readable without a proprietary software licence for as long as the underlying open standards are maintained. This article describes the vault layout, the versioning layer that gives the archive git-grade traceability, and the [[open-bim-regulatory-acceptance|ISO 19650]] qualification that makes a [[flat-file-bim-leapfrog|flat-file git repository]] a conforming Common Data Environment.
 
 ## The Vault Layout
 
@@ -59,7 +59,7 @@ Because the sidecar is a plain YAML file in the same git repository as the IFC f
 
 The `vault/objects/` directory implements a hash-addressed object store. Each object is a JSON file whose filename is the SHA-256 hash of its content. `vault/refs/` holds named pointers — branches, tags, and HEAD — that resolve to specific object hashes.
 
-This architecture gives the vault git-like content-addressable semantics independently of the git repository that wraps it. The result is a Merkle DAG: the root hash of a model state is cryptographically bound to every element it contains.
+This architecture gives the vault git-like content-addressable semantics independently of the git repository that wraps it. The result is a [[merkle-proofs-as-substrate-primitive|Merkle DAG]]: the root hash of a model state is cryptographically bound to every element it contains.
 
 The Merkle structure provides two structural benefits:
 
@@ -68,7 +68,7 @@ The Merkle structure provides two structural benefits:
 
 ## ISO 19650 Qualification
 
-ISO 19650 defines a Common Data Environment (CDE) as a system for collecting, managing, and disseminating information in structured containers. The standard is technology-neutral.
+[[open-bim-regulatory-acceptance|ISO 19650]] defines a Common Data Environment (CDE) as a system for collecting, managing, and disseminating information in structured containers. The standard is technology-neutral.
 
 A git repository hosting a vault directory qualifies as a CDE under ISO 19650 with the following mapping:
 
@@ -88,7 +88,7 @@ A local git repository on an air-gapped workstation satisfies ISO 19650 as fully
 
 Buildings are typically designed to stand for 50 to 100 years. The software tools used to author BIM models typically change format with every major release and become unreadable by competing tools within a decade.
 
-The vault architecture addresses this asymmetry in two ways. First, the canonical formats — IFC-SPF, BCF 3.0, IDS 1.0, YAML — are ISO-governed open standards or widely adopted plain-text formats. Any competent engineer can write a reader for IFC-SPF from the ISO specification without access to proprietary SDKs. Second, the regenerable derivatives — glTF visualisation caches, SVG 2D drawings — are explicitly marked as non-canonical. If the tool that generated them disappears, the canonical IFC file remains and any IFC-to-glTF or IFC-to-SVG converter can regenerate them.
+The vault architecture addresses this asymmetry in two ways. First, the canonical formats — IFC-SPF, BCF 3.0, IDS 1.0, YAML — are ISO-governed open standards or widely adopted plain-text formats. Any competent engineer can write a reader for IFC-SPF from the ISO specification without access to proprietary SDKs. Second, the regenerable derivatives — glTF visualisation caches, SVG 2D drawings — are explicitly marked as non-canonical. If the tool that generated them disappears, the canonical IFC file remains and any IFC-to-glTF or IFC-to-SVG converter can regenerate them. The architecture is consistent with the [[flat-file-bim-leapfrog|flat-file BIM leapfrog]] design.
 
 ## The Archive Travels with the Land
 

@@ -14,7 +14,7 @@ cites: [ifc-4-3, uniclass-2015, bsdd-v1, ids-1-0, dtcg-w3c]
 paired_with: building-design-system-bim.es.md
 ---
 
-Major software design systems solve a coordination problem at scale: when independent teams author UI surfaces in parallel, consistency breaks down unless design decisions are encoded in a shared layer of tokens, component recipes, and interaction patterns. No equivalent system exists for the built environment. Building Information Modelling production is coordinated through shared standards (IFC, Uniclass, bSDD) and shared authoring tools, but there is no common object layer — no canonical, machine-readable library of built-environment element specifications that authoring surfaces consume by reference. Research commissioned in April 2026 surveyed the available prior art and found the space empty. The Building Design System for the built environment is intended to fill that space.
+Major software [[design-system-substrate|design systems]] solve a coordination problem at scale: when independent teams author UI surfaces in parallel, consistency breaks down unless design decisions are encoded in a shared layer of tokens, component recipes, and interaction patterns. No equivalent system exists for the built environment. Building Information Modelling production is coordinated through shared standards (IFC, Uniclass, bSDD) and shared authoring tools, but there is no common object layer — no canonical, machine-readable library of built-environment element specifications that authoring surfaces consume by reference. Research commissioned in April 2026 surveyed the available prior art and found the space empty. The Building Design System for the built environment is intended to fill that space. It is composed of eight [[bim-objects-substrate|BIM Object primitive categories]] and ten [[aec-interface-conventions|universal AEC interface components]].
 
 ## Why the Space Is Empty
 
@@ -30,7 +30,7 @@ The Building Design System uses each of these standards in its proper role: IFC 
 
 ## The Eight BIM Object Primitive Categories
 
-The BIM Object layer of the Building Design System is organised into eight primitive categories, each corresponding to a cluster of IFC 4.3 entity types. This structure mirrors the organisation of software design system token primitives but is anchored to the IFC entity hierarchy rather than to visual design properties.
+The [[bim-objects-what-they-are|BIM Object]] layer of the Building Design System is organised into eight primitive categories, each corresponding to a cluster of IFC 4.3 entity types. This structure mirrors the organisation of software [[design-system-substrate|design system]] token primitives but is anchored to the IFC entity hierarchy rather than to visual design properties.
 
 **1. Spatial** — `IfcSpatialElement` hierarchy: site, building, building storey (level), space, zone. Spatial BIM Objects define the organisational units that contain elements.
 
@@ -50,7 +50,7 @@ The BIM Object layer of the Building Design System is organised into eight primi
 
 ## The AEC Interface Component Layer
 
-Above the BIM Object primitive layer, the Building Design System defines a set of universal AEC interface components — UI patterns common to any BIM-capable authoring surface regardless of the specific programme type.
+Above the [[bim-objects-substrate|BIM Object primitive layer]], the Building Design System defines a set of [[aec-interface-conventions|universal AEC interface components]] — UI patterns common to any BIM-capable authoring surface regardless of the specific programme type.
 
 Research identified ten universal components that appear in every BIM authoring context:
 
@@ -87,9 +87,9 @@ The BIM Object vault includes the full Uniclass 2015 table as a separate DTCG fi
 
 ## The Sovereign Vault Model
 
-The Building Design System is not a hosted service. It is a set of JSON files in a git repository — the BIM Object vault. Organisations operating the platform clone the vault repository, extend it with their own regulatory overlays and climate zone data, and configure their deployed `app-orchestration-bim` instance to read from their local copy.
+The Building Design System is not a hosted service. It is a set of JSON files in a git repository — the [[asset-anchored-bim-vault|BIM Object vault]]. Organisations operating the platform clone the vault repository, extend it with their own regulatory overlays and climate zone data, and configure their deployed `app-orchestration-bim` instance to read from their local copy.
 
-The vendor-tier `pointsav-design-system` maintains the universal BIM Object primitives, component recipes, and research files. Customer-tier vaults extend the vendor layer with jurisdiction-specific and programme-specific additions. Deployment instances read from the customer vault. No data flows upward: vendor → customer → deployment only.
+The vendor-tier `pointsav-design-system` maintains the universal BIM Object primitives, component recipes, and research files. Customer-tier vaults extend the vendor layer with jurisdiction-specific and programme-specific additions. Deployment instances read from the customer vault. No data flows upward: [[five-stage-supply-chain|vendor → customer → deployment]] only.
 
 ## See also
 

@@ -17,15 +17,15 @@ cites: []
 ---
 
 
-La Pila de Tres Capas es el patrón de descomposición de infraestructura utilizado en los despliegues de PointSav. El patrón separa la capacidad de cómputo bruto, la ejecución de la plataforma aislada y el acceso seguro del operador en tres capas distintas.
+La Pila de Tres Capas es el patrón de descomposición de infraestructura utilizado en los despliegues de [[pointsav-overview|PointSav]]. El patrón separa la capacidad de cómputo bruto, la ejecución de la plataforma aislada y el acceso seguro del operador en tres capas distintas.
 
 ## Las tres capas
 
 **Capa de infraestructura** — el sustrato de cómputo físico o virtual: servidores bare-metal, instancias en la nube, hardware del cliente o cualquier combinación. Esta capa suministra tiempo de CPU y memoria. No realiza garantías de seguridad más allá de las que ofrece el hardware.
 
-**Capa de plataforma** — el entorno de ejecución del sistema operativo y los servicios: ToteboxOS, gestores de capacidades y los procesos de servicio de los Anillos 1 y 2. El aislamiento entre componentes se aplica en esta capa. Ningún componente de la capa de plataforma puede superar las capacidades que se le han concedido explícitamente.
+**Capa de plataforma** — el entorno de ejecución del sistema operativo y los servicios: [[totebox-os|ToteboxOS]], gestores de [[capability-based-security|capacidades]] y los procesos de servicio de los [[three-ring-architecture|Anillos 1 y 2]]. El aislamiento entre componentes se aplica en esta capa. Ningún componente de la capa de plataforma puede superar las capacidades que se le han concedido explícitamente.
 
-**Capa de entrega** — las interfaces de terminal y consola que utilizan los operadores: terminales ConsoleOS, la interfaz del corrector y cualquier superficie de acceso basada en navegador. La capa de entrega es la única capa con la que los operadores interactúan directamente; reenvía las solicitudes hacia la plataforma y devuelve los resultados hacia arriba.
+**Capa de entrega** — las interfaces de terminal y consola que utilizan los operadores: terminales [[console-os|ConsoleOS]], la interfaz del corrector y cualquier superficie de acceso basada en navegador. La capa de entrega es la única capa con la que los operadores interactúan directamente; reenvía las solicitudes hacia la plataforma y devuelve los resultados hacia arriba.
 
 ## Por qué importa la separación
 

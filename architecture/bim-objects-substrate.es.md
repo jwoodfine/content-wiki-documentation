@@ -14,7 +14,7 @@ cites: [ifc-4-3, uniclass-2015, bsdd-v1, ids-1-0, dtcg-w3c]
 paired_with: bim-objects-substrate.md
 ---
 
-La biblioteca de Objetos BIM del Sistema de Diseño de la Construcción ancla cada objeto a un nodo en la jerarquía de entidades IFC 4.3, clasificado por Uniclass 2015 y publicado como un URI bSDD dereferenceable. Este artículo describe cómo funciona el sistema de referencia de tres capas, qué codifican las ocho categorías de objetos BIM primitivos y cómo un operador BIM los lee y aplica al crear un archivo IFC.
+La biblioteca de [[bim-objects-what-they-are|Objetos BIM]] del [[building-design-system-bim|Sistema de Diseño de la Construcción]] ancla cada objeto a un nodo en la jerarquía de entidades IFC 4.3, clasificado por Uniclass 2015 y publicado como un URI bSDD dereferenceable. Este artículo describe cómo funciona el [[bim-objects-three-layers|sistema de referencia de tres capas]], qué codifican las ocho categorías de objetos BIM primitivos y cómo un operador BIM los lee y aplica al crear un archivo IFC.
 
 ## Tres Capas de Referencia
 
@@ -22,7 +22,7 @@ La biblioteca de Objetos BIM del Sistema de Diseño de la Construcción ancla ca
 
 IFC 4.3 fue publicado como ISO 16739-1:2024 en abril de 2024. El estándar define una jerarquía de clases de entidad con nombre — `IfcSite`, `IfcBuilding`, `IfcBuildingStorey`, `IfcSpace`, `IfcWall`, `IfcSlab`, `IfcDoor` y cientos más — cada una con Conjuntos de Propiedades (Psets) tipados que especifican qué atributos debe soportar una implementación conforme.
 
-Cada Objeto BIM del Sistema de Diseño de la Construcción se mapea a una clase de entidad IFC específica o a un Pset.
+Cada Objeto BIM del [[building-design-system-bim|Sistema de Diseño de la Construcción]] se mapea a una clase de entidad IFC específica o a un Pset.
 
 ### Capa 2 — Nivel de clasificación Uniclass 2015
 
@@ -34,7 +34,7 @@ El Diccionario de Datos de buildingSMART (bSDD) publica definiciones JSON-LD leg
 
 ## Ocho Categorías de Objetos BIM Primitivos
 
-El Sistema de Diseño de la Construcción agrupa los Objetos BIM en ocho categorías, cada una mapeada a una capa distinta del modelo de entidades IFC.
+El [[building-design-system-bim|Sistema de Diseño de la Construcción]] agrupa los Objetos BIM en ocho categorías, cada una mapeada a una capa distinta del modelo de entidades IFC.
 
 ### 1. Espaciales (`bim.spatial.*`)
 

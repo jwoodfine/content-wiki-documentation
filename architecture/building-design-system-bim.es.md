@@ -15,7 +15,7 @@ cites: [ifc-4-3, uniclass-2015, bsdd-v1, ids-1-0, dtcg-w3c]
 paired_with: building-design-system-bim.md
 ---
 
-Los grandes sistemas de diseño de software resuelven un problema de coordinación a escala: cuando equipos independientes crean superficies de interfaz de forma paralela, la consistencia se rompe a menos que las decisiones de diseño estén codificadas en una capa compartida de tokens, recetas de componentes y patrones de interacción que todas las superficies deben consumir. No existe un sistema equivalente para el entorno construido. La producción BIM se coordina a través de normas compartidas (IFC, Uniclass, bSDD) y herramientas de autoría compartidas, pero no existe una capa de Objetos BIM común — ninguna biblioteca canónica y legible por máquina de especificaciones de elementos del entorno construido que las superficies de autoría consuman por referencia. Una investigación encargada en abril de 2026 analizó el estado del arte disponible y encontró ese espacio vacío. El Sistema de Diseño de la Construcción está concebido para llenarlo.
+Los grandes [[design-system-substrate|sistemas de diseño]] de software resuelven un problema de coordinación a escala: cuando equipos independientes crean superficies de interfaz de forma paralela, la consistencia se rompe a menos que las decisiones de diseño estén codificadas en una capa compartida de tokens, recetas de componentes y patrones de interacción que todas las superficies deben consumir. No existe un sistema equivalente para el entorno construido. La producción BIM se coordina a través de normas compartidas (IFC, Uniclass, bSDD) y herramientas de autoría compartidas, pero no existe una capa de Objetos BIM común — ninguna biblioteca canónica y legible por máquina de especificaciones de elementos del entorno construido que las superficies de autoría consuman por referencia. Una investigación encargada en abril de 2026 analizó el estado del arte disponible y encontró ese espacio vacío. El Sistema de Diseño de la Construcción está concebido para llenarlo. Se compone de ocho [[bim-objects-substrate|categorías primitivas de Objetos BIM]] y diez [[aec-interface-conventions|componentes universales de interfaz AEC]].
 
 ## Por qué el espacio está vacío
 
@@ -44,9 +44,9 @@ La capa de Objetos BIM está organizada en ocho categorías de primitivos, cada 
 
 ## El modelo de bóveda soberana
 
-El Sistema de Diseño de la Construcción no es un servicio alojado externamente. Es un conjunto de archivos JSON en un repositorio git — la bóveda de Objetos BIM. Las organizaciones que operan la plataforma clonan el repositorio de la bóveda, lo extienden con sus propias superposiciones normativas y datos de zona climática, y configuran su instancia local de `app-orchestration-bim` para leer desde su copia local.
+El Sistema de Diseño de la Construcción no es un servicio alojado externamente. Es un conjunto de archivos JSON en un repositorio git — la [[asset-anchored-bim-vault|bóveda de Objetos BIM]]. Las organizaciones que operan la plataforma clonan el repositorio de la bóveda, lo extienden con sus propias superposiciones normativas y datos de zona climática, y configuran su instancia local de `app-orchestration-bim` para leer desde su copia local.
 
-La capa de proveedor (`pointsav-design-system`) mantiene los Objetos BIM primitivos universales, las recetas de componentes y los archivos de investigación. Las bóvedas de capa de cliente extienden la capa del proveedor con adiciones jurisdiccionales y específicas de programa. Las instancias de despliegue leen desde la bóveda del cliente. Ningún dato fluye hacia arriba: proveedor → cliente → despliegue únicamente.
+La capa de proveedor (`pointsav-design-system`) mantiene los Objetos BIM primitivos universales, las recetas de componentes y los archivos de investigación. Las bóvedas de capa de cliente extienden la capa del proveedor con adiciones jurisdiccionales y específicas de programa. Las instancias de despliegue leen desde la bóveda del cliente. Ningún dato fluye hacia arriba: [[five-stage-supply-chain|proveedor → cliente → despliegue]] únicamente.
 
 ## Véase también
 

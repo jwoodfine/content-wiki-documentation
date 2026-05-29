@@ -13,11 +13,11 @@ cites: [ifc-4-3, uniclass-2015, bsdd-v1, ids-1-0, dtcg-w3c]
 paired_with: bim-objects-what-they-are.es.md
 ---
 
-Building Information Modelling produces detailed digital representations of structures. It does not, in its standard form, prevent violations. A model can be geometrically complete, materially specified, and classified by IFC entity type while still containing elements that fail code compliance, violate climate performance floors, or conflict with jurisdictional regulation — discoveries made only when a post-design checker runs. A BIM Object addresses this upstream. It encodes a built-environment element decision as a composable, aliasable specification unit that pre-constrains the design space rather than auditing a completed model.
+Building Information Modelling produces detailed digital representations of structures. It does not, in its standard form, prevent violations. A model can be geometrically complete, materially specified, and classified by IFC entity type while still containing elements that fail code compliance, violate climate performance floors, or conflict with jurisdictional regulation — discoveries made only when a post-design checker runs. A BIM Object addresses this upstream. It encodes a built-environment element decision as a composable, aliasable specification unit that pre-constrains the design space rather than auditing a completed model. See also [[bim-objects-substrate|BIM object categories]] and [[building-design-system-bim|the Building Design System]].
 
 ## Definition
 
-A BIM Object is a composable built-environment specification unit — the structural counterpart of a Design System Token. Where a Design System Token encodes a design decision (a colour, a spacing unit, a component recipe) as a reusable, aliasable value that all conforming surfaces must honour, a BIM Object encodes a built-environment element decision across three simultaneous axes:
+A BIM Object is a composable built-environment specification unit — the structural counterpart of a [[design-system-substrate|Design System Token]]. Where a Design System Token encodes a design decision (a [[design-color|colour]], a [[design-spacing|spacing unit]], a component recipe) as a reusable, aliasable value that all conforming surfaces must honour, a BIM Object encodes a built-environment element decision across three simultaneous axes:
 
 1. **What the element IS** — its IFC entity class, Uniclass 2015 classification, bSDD identity URI, and applicable property set templates.
 2. **What it MUST satisfy** — the regulatory requirements imposed by its jurisdiction, expressed as jurisdictional overlays (IDS 1.0 constraint files and IFC geometric exclusion fragments).
@@ -49,7 +49,7 @@ This is a compositional claim, not a validation claim. The distinction matters b
 
 ## Three Layers
 
-A BIM Object has three layers. All three are data embedded in the object. Neither Regulation nor Climate Zone is a runtime user-selectable option — they are reference data displayed as static lookup tables, exactly as a technical standard datasheet shows multiple jurisdiction rows simultaneously.
+A BIM Object has [[bim-objects-three-layers|three layers]]. All three are data embedded in the object. Neither Regulation nor Climate Zone is a runtime user-selectable option — they are reference data displayed as static lookup tables, exactly as a technical standard datasheet shows multiple jurisdiction rows simultaneously.
 
 **Layer 1 — Specification.** The IFC entity class (e.g., `IfcWall`), Uniclass 2015 classification reference (e.g., `Ss_20_05_30_75`), bSDD concept URI, plain-language description, and applicable property set templates. This layer is the BIM Object's permanent identity.
 
@@ -70,7 +70,7 @@ The machine-readable format enables:
 
 ## Relationship to the Design System
 
-The BIM Object system parallels the structure of a software design system. Where IBM Carbon or a similar system provides a token primitive layer (colours, spacing, typography), a component recipe layer (button, card, navigation), and a surface-specific extension layer (mobile, web, print), the BIM Object platform provides an object primitive layer (the 8 DTCG object categories anchored to IFC 4.3), a universal AEC component layer (spatial tree, properties panel, viewport renderer), and surface-specific extensions per built-environment programme type.
+The BIM Object system parallels the structure of a software [[design-system-substrate|design system]]. Where IBM Carbon or a similar system provides a token primitive layer ([[design-color|colours]], [[design-spacing|spacing]], [[design-typography|typography]]), a component recipe layer (button, card, navigation), and a surface-specific extension layer (mobile, web, print), the BIM Object platform provides an object primitive layer (the 8 DTCG object categories anchored to IFC 4.3), a universal [[aec-interface-conventions|AEC component layer]] (spatial tree, properties panel, viewport renderer), and surface-specific extensions per built-environment programme type.
 
 The analogy is structural, not metaphorical. Both systems address the same problem: enforcing consistency across independent authoring surfaces by encoding decisions as reusable, aliasable, versionable units with machine-readable constraint specifications. The BIM platform extends the model into a physical constraint domain that software design systems do not address.
 

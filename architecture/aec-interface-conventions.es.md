@@ -14,7 +14,7 @@ cites: [ifc-4-3]
 paired_with: aec-interface-conventions.md
 ---
 
-Cada plataforma importante de autoría BIM incluye cuatro convenciones de interfaz que un arquitecto o ingeniero aprende una vez y aplica en todos los productos: un árbol de jerarquía para la estructura espacial, un panel de propiedades para los atributos de los elementos, un viewport 3D y un navegador de vistas guardadas. Estas convenciones existen porque el modelo de datos subyacente (la jerarquía de entidades IFC) es el mismo independientemente de la herramienta que lo autorice. Los componentes de interfaz universal del Sistema de Diseño de la Construcción están construidos sobre este vocabulario compartido.
+Cada plataforma importante de autoría BIM incluye cuatro convenciones de interfaz que un arquitecto o ingeniero aprende una vez y aplica en todos los productos: un árbol de jerarquía para la estructura espacial, un panel de propiedades para los atributos de los elementos, un viewport 3D y un navegador de vistas guardadas. Estas convenciones existen porque el modelo de datos subyacente (la jerarquía de entidades IFC) es el mismo independientemente de la herramienta que lo autorice. Los componentes de interfaz universal del [[building-design-system-bim|Sistema de Diseño de la Construcción]] están construidos sobre este vocabulario compartido.
 
 ## Las Cuatro Convenciones Universales
 
@@ -36,7 +36,7 @@ El componente `ViewNavigator` del Sistema de Diseño de la Construcción renderi
 
 ## Diez Componentes de Interfaz Universal
 
-El Sistema de Diseño de la Construcción define diez componentes de interfaz que aparecen en cada superficie — ya sea el cliente de campo, la consola de gestión de instalaciones o cualquier superficie futura que consuma el Sistema de Diseño de la Construcción.
+El [[building-design-system-bim|Sistema de Diseño de la Construcción]] define diez componentes de interfaz que aparecen en cada superficie — ya sea el cliente de campo, la consola de gestión de instalaciones o cualquier superficie futura que consuma el Sistema de Diseño de la Construcción.
 
 | Componente | Función |
 |---|---|
@@ -59,4 +59,4 @@ Un vocabulario de interfaz compartido significa que el visor de coordinación no
 
 ## Relación con el Sustrato del Sistema de Diseño
 
-El Sistema de Diseño de la Construcción es una extensión semántica AEC de la línea base del Sistema de Diseño Carbon. Carbon proporciona los primitivos de interfaz de usuario fundamentales. El Sistema de Diseño de la Construcción agrega la capa semántica AEC encima: los diez componentes de interfaz universal y las ocho categorías de Objetos BIM primitivos.
+El [[building-design-system-bim|Sistema de Diseño de la Construcción]] es una extensión semántica AEC de la línea base del [[design-system-substrate|Sistema de Diseño Carbon]]. Carbon proporciona los primitivos de interfaz de usuario fundamentales. El Sistema de Diseño de la Construcción agrega la capa semántica AEC encima: los diez componentes de interfaz universal y las ocho categorías de [[bim-objects-what-they-are|Objetos BIM]] primitivos.

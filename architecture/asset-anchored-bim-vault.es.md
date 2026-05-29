@@ -14,7 +14,7 @@ cites: [ifc-4-3, iso-19650, ids-1-0]
 paired_with: asset-anchored-bim-vault.md
 ---
 
-El registro digital autorizado de un edificio es un directorio de archivos de texto simple y binarios estandarizados que viven en el almacenamiento del propietario, viajan con la escritura de propiedad cuando cambia la titularidad y permanecen legibles sin una licencia de software propietario mientras se mantengan los estándares abiertos subyacentes. Este artículo describe el diseño de la bóveda, la capa de versiones que proporciona trazabilidad de grado git, y la calificación ISO 19650 que hace de un repositorio git de archivos planos un Entorno de Datos Común conforme.
+El registro digital autorizado de un edificio es un directorio de archivos de texto simple y binarios estandarizados que viven en el almacenamiento del propietario, viajan con la escritura de propiedad cuando cambia la titularidad y permanecen legibles sin una licencia de software propietario mientras se mantengan los estándares abiertos subyacentes. Este artículo describe el diseño de la bóveda, la capa de versiones que proporciona trazabilidad de grado git, y la calificación [[open-bim-regulatory-acceptance|ISO 19650]] que hace de un [[flat-file-bim-leapfrog|repositorio git de archivos planos]] un Entorno de Datos Común conforme.
 
 ## El Diseño de la Bóveda
 
@@ -53,11 +53,11 @@ El sidecar puede llevar:
 
 ## El Almacén de Objetos Direccionados por Hash
 
-El directorio `vault/objects/` implementa un almacén de objetos direccionados por hash. Cada objeto es un archivo JSON cuyo nombre de archivo es el hash SHA-256 de su contenido. El resultado es un DAG de Merkle: el hash raíz de un estado del modelo está criptográficamente vinculado a cada elemento que contiene.
+El directorio `vault/objects/` implementa un almacén de objetos direccionados por hash. Cada objeto es un archivo JSON cuyo nombre de archivo es el hash SHA-256 de su contenido. El resultado es un [[merkle-proofs-as-substrate-primitive|DAG de Merkle]]: el hash raíz de un estado del modelo está criptográficamente vinculado a cada elemento que contiene.
 
 ## Calificación ISO 19650
 
-Un repositorio git satisface los requisitos del EDC de ISO 19650:
+Un repositorio git satisface los requisitos del EDC de [[open-bim-regulatory-acceptance|ISO 19650]]:
 
 | Concepto ISO 19650 | Implementación Git + bóveda |
 |---|---|

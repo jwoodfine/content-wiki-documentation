@@ -14,11 +14,11 @@ cites: [ifc-4-3, uniclass-2015, bsdd-v1, ids-1-0, dtcg-w3c, ashrae-90-1, nbc-202
 paired_with: bim-objects-three-layers.md
 ---
 
-Un Objeto BIM tiene tres capas: Especificación, Regulación y Zona Climática. Las tres son datos integrados en el objeto. Ninguna de las tres capas es una opción seleccionable por el usuario en tiempo de ejecución — un diseñador no "cambia" entre zonas climáticas del mismo modo que no cambia de códigos de construcción. Las tres capas se muestran simultáneamente como tablas de referencia estáticas, cada una mostrando todas las superposiciones registradas para el tipo de elemento del Objeto BIM. Esta estructura refleja una realidad física: un elemento construido tiene un tipo fijo (Especificación), existe en una jurisdicción fija (Regulación) y se desempeña en un clima fijo (Zona Climática).
+Un [[bim-objects-what-they-are|Objeto BIM]] tiene tres capas: Especificación, Regulación y Zona Climática. Las tres son datos integrados en el objeto. Ninguna de las tres capas es una opción seleccionable por el usuario en tiempo de ejecución — un diseñador no "cambia" entre zonas climáticas del mismo modo que no cambia de códigos de construcción. Las tres capas se muestran simultáneamente como tablas de referencia estáticas, cada una mostrando todas las superposiciones registradas para el tipo de elemento del Objeto BIM. Esta estructura refleja una realidad física: un elemento construido tiene un tipo fijo (Especificación), existe en una jurisdicción fija (Regulación) y se desempeña en un clima fijo (Zona Climática).
 
 ## Por qué Tres Capas
 
-Los tokens de los sistemas de diseño de software típicamente tienen dos preocupaciones: qué ES un valor (su rol semántico) y a qué valor se resuelve (su resultado calculado). Los Objetos BIM abordan un espacio de problemas fundamentalmente diferente que requiere tres preocupaciones.
+Los tokens de los [[design-system-substrate|sistemas de diseño]] de software típicamente tienen dos preocupaciones: qué ES un valor (su rol semántico) y a qué valor se resuelve (su resultado calculado). Los Objetos BIM abordan un espacio de problemas fundamentalmente diferente que requiere tres preocupaciones.
 
 Una especificación de elemento del entorno construido debe responder simultáneamente:
 - **¿Qué es este elemento?** — su tipo en un esquema neutral e independiente de herramientas (IFC), su clasificación en un sistema de referencia neutral (Uniclass), y su identidad semántica en un diccionario que abarca jurisdicciones (bSDD).
@@ -86,7 +86,7 @@ Esta es una composición de límite inferior: ambas capas expresan mínimos de d
 
 Cuando se crea un nuevo Objeto BIM, la interfaz de autoría sigue un modelo de cuatro zonas que se corresponde directamente con las tres capas del objeto más una zona de flujo de trabajo de publicación.
 
-La interfaz CMS es la interfaz prevista para `app-console-bim` (planificado, v0.1.x). En v0.0.1, los Objetos BIM se crean directamente como archivos JSON DTCG y se confirman mediante git.
+La interfaz CMS es la interfaz prevista para `app-console-bim` (planificado, v0.1.x). En v0.0.1, los [[bim-objects-what-they-are|Objetos BIM]] se crean directamente como archivos JSON DTCG y se confirman mediante git.
 
 ## Véase también
 
