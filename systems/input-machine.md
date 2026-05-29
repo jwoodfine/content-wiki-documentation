@@ -12,13 +12,13 @@ editor: pointsav-engineering
 paired_with: input-machine.es.md
 ---
 
-The Input Machine is the mandatory ingest gate through which all documents and text enter os-console workflows. It occupies the F12 key slot permanently across all keyboard configurations. Every cartridge in os-console depends on the Input Machine for its source material. No workflow bypasses it.
+The Input Machine is the mandatory ingest gate through which all documents and text enter [[console-os|os-console]] workflows. It occupies the F12 key slot permanently across all keyboard configurations. Every [[os-console-platform|cartridge]] in os-console depends on the Input Machine for its source material. No workflow bypasses it.
 
 ## Why the position is permanent
 
 F12 occupies the boundary position on the function-key row, physically separated from F1–F11 by a wider gap on most keyboards. This positioning is deliberate. The Input Machine is not a workflow feature; it is a boundary control. It must be immediately and unambiguously locatable regardless of which cartridge is currently active.
 
-System architecture decision SYS-ADR-10 establishes F12 as the mandatory human checkpoint for all ingest operations. The assignment cannot be bypassed by another pane and cannot be remapped. These constraints are enforced in the `app-console-keys` event dispatcher rather than by convention.
+System architecture decision SYS-ADR-10 establishes F12 as the mandatory human checkpoint for all ingest operations. The assignment cannot be bypassed by another pane and cannot be remapped. These constraints are enforced in the [[app-console-input|`app-console-keys`]] event dispatcher rather than by convention.
 
 ## What happens when F12 is pressed
 
@@ -37,9 +37,9 @@ The ingest workflow runs as follows:
 
 ## service-input: the Ring 1 boundary service
 
-`service-input` is a Ring 1 service in the Three-Ring Architecture — a per-tenant boundary ingest service that handles generic document ingestion. It is the server-side counterpart of the Input Machine cartridge.
+`service-input` is a Ring 1 service in the [[three-ring-architecture|Three-Ring Architecture]] — a per-tenant boundary ingest service that handles generic document ingestion. It is the server-side counterpart of the Input Machine cartridge.
 
-Ring 1 placement means `service-input` is per-tenant, a data-ingest boundary through which data flows in but never out, and an MCP server implementing the Model Context Protocol boundary.
+Ring 1 placement means `service-input` is per-tenant, a data-ingest boundary through which data flows in but never out, and an [[mcp-substrate-protocol|MCP server]] implementing the Model Context Protocol boundary.
 
 `service-input` performs three functions: classify the document type and appropriate processing pipeline; route the document to the correct Ring 2 or Ring 1 service; and write an immutable record of the ingest event to the ledger.
 
@@ -49,9 +49,9 @@ Ring 1 placement means `service-input` is per-tenant, a data-ingest boundary thr
 
 Every document that passes through the Input Machine generates two audit trail entries.
 
-A local SQLite log on the os-console machine records the timestamp, file path, classification, and routing target. This local record persists even if the Totebox Archive is unreachable.
+A local SQLite log on the os-console machine records the timestamp, file path, classification, and routing target. This local record persists even if the [[totebox-archive|Totebox Archive]] is unreachable.
 
-A canonical record in the `service-input` ledger on the Totebox Archive is written as an immutable append. Together these entries ensure that every document that entered a workflow is logged with when it arrived, how it was classified, where it was sent, and who submitted it.
+A canonical record in the `service-input` ledger on the Totebox Archive is written as an immutable append. Together these entries ensure that every document that entered a workflow is logged with when it arrived, how it was classified, where it was sent, and who submitted it. This dual-entry approach mirrors the [[worm-ledger-design|WORM ledger discipline]] used across the platform.
 
 ## The app-console-input cartridge
 
@@ -83,3 +83,5 @@ Each cartridge uses the Input Machine for its source material. The routing decis
 - [[console-os]] — the platform context for the Input Machine
 - [[machine-based-auth]] — the authorization mechanism os-console uses
 - [[three-ring-architecture]] — service-input Ring 1 placement
+- [[os-console-platform]] — the cartridge architecture and F-key map
+- [[worm-ledger-design]] — the append-only ledger discipline for audit records

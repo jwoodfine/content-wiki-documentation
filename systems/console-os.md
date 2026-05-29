@@ -23,11 +23,11 @@ references:
  url: "https://www.iso.org/standard/68078.html"
 ---
 
-`os-console` is the human-facing surface of the PointSav platform — a Command Ledger that connects to one [[totebox-os|Totebox]] and renders its state to the operator. It does not store data and does not run services; it is a high-fidelity terminal purpose-built around keyboard-driven operator flow. The reference point is the Bloomberg Terminal: a single keyboard, a small set of function keys, and a relentless focus on the operator's context. The binary is written from scratch in Rust for sub-50-millisecond cold start and a 15-megabyte footprint. This article covers how os-console runs, the F-key surface, the rendering stack, and the two operating modes.
+`os-console` is the human-facing surface of the PointSav platform — a Command Ledger that connects to one [[totebox-os|Totebox]] and renders its state to the operator. It does not store data and does not run services; it is a high-fidelity terminal purpose-built around keyboard-driven operator flow. The reference point is the Bloomberg Terminal: a single keyboard, a small set of [[os-console-platform|function keys]], and a relentless focus on the operator's context. The binary is written from scratch in Rust for sub-50-millisecond cold start and a 15-megabyte footprint. This article covers how os-console runs, the F-key surface, the [[three-ring-architecture|rendering stack]], and the two operating modes.
 
 ## How it runs
 
-`os-console` ships as a single executable. On the host operating system — Windows, macOS, or Linux — it acts as a Virtual Machine Monitor: it uses the host's native virtualisation API to create a small, isolated VM in RAM and boots an seL4 environment inside it.
+`os-console` ships as a single executable. On the host operating system — Windows, macOS, or Linux — it acts as a Virtual Machine Monitor: it uses the host's native virtualisation API to create a small, isolated VM in RAM and boots an [[sel4-microkernel-substrate|seL4]] environment inside it.
 
 | Host | Native VMM API |
 |---|---|
@@ -35,7 +35,7 @@ references:
 | macOS | `Hypervisor.framework` |
 | Linux | KVM |
 
-The operator thinks they opened an application. What they have done is spun up a hardware-isolated secure environment in roughly 50 milliseconds. When the application closes, the secure memory is wiped. Nothing touches the host hard drive.
+The operator thinks they opened an application. What they have done is spun up a hardware-isolated secure environment in roughly 50 milliseconds. When the application closes, the secure memory is wiped. Nothing touches the host hard drive. The security model relies on [[machine-based-auth|hardware-bound pairings]] rather than usernames or passwords.
 
 ## The F-key surface
 
@@ -55,7 +55,7 @@ F12 is mandatory per [[architecture-decisions|SYS-ADR-10]]. The [[app-console-in
 
 ## The rendering stack
 
-`os-console` is not a TUI inside a host terminal. It is a standalone graphics application that happens to display text. The stack is owned end-to-end:
+`os-console` is not a TUI inside a host terminal. It is a standalone graphics application that happens to display text. The stack is owned end-to-end and shares its design philosophy with [[design-philosophy|the broader PointSav design system]]:
 
 | Layer | Component | Notes |
 |---|---|---|
@@ -80,7 +80,7 @@ Both modes use the same `os-console` binary. The aggregator does not require a d
 
 ## Single, unified, universal
 
-`os-console` is one product. There is no "Home" edition and no "Pro" edition. An individual hosting one Totebox uses the same Command Ledger as the administrator of a Reporting Issuer aggregating hundreds. Commercial differentiation is determined by the presence or absence of `os-orchestration`, never by a tiered Console.
+`os-console` is one product. There is no "Home" edition and no "Pro" edition. An individual hosting one Totebox uses the same Command Ledger as the administrator of a [[compliance-and-continuous-disclosure|Reporting Issuer]] aggregating hundreds. Commercial differentiation is determined by the presence or absence of `os-orchestration`, never by a tiered Console. The [[six-tier-sovereignty-matrix|six-tier sovereignty model]] governs how commercial tiers are structured across the platform.
 
 ## See also
 

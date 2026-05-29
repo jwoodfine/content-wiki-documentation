@@ -23,7 +23,7 @@ references:
  url: "https://www.w3.org/TR/webrtc/"
 ---
 
-`os-workplace` es el sistema operativo de escritorio gratuito de la familia PointSav. Proporciona un entorno de escritorio limpio, seguro y nativo en Rust que se empareja naturalmente con un archivo Totebox y lleva la disciplina de teclas de función y el modelo de seguridad de la plataforma a un usuario comunitario que lo instala por primera vez. La estrategia es deliberada: `os-workplace` es la puerta de entrada a la adopción. Un nuevo usuario lo instala porque es gratuito y rápido; una vez que su trabajo diario ocurre dentro del ecosistema PointSav, el agregador comercial `os-orchestration` se convierte en el siguiente paso lógico. Este artículo cubre el hardware de referencia, la suite de aplicaciones, el modelo de emparejamiento y la justificación estratégica de un escritorio gratuito.
+`os-workplace` es el sistema operativo de escritorio gratuito de la familia PointSav. Proporciona un entorno de escritorio limpio, seguro y nativo en Rust que se empareja naturalmente con un [[totebox-archive|archivo Totebox]] y lleva la disciplina de teclas de función y el [[machine-based-auth|modelo de seguridad]] de la plataforma a un usuario comunitario que lo instala por primera vez. La estrategia es deliberada: `os-workplace` es la puerta de entrada a la adopción. Un nuevo usuario lo instala porque es gratuito y rápido; una vez que su trabajo diario ocurre dentro del ecosistema PointSav, el agregador comercial [[os-orchestration|`os-orchestration`]] se convierte en el siguiente paso lógico. Este artículo cubre el hardware de referencia, la suite de aplicaciones, el modelo de emparejamiento y la justificación estratégica de un escritorio gratuito.
 
 ## Hardware de referencia
 
@@ -34,7 +34,7 @@ references:
 | Insignia | Dell XPS 13 / 14 (Developer Edition) |
 | Flota | HP ProBook serie 400 (445/450) |
 
-La evolución del núcleo refleja al resto de la familia: la Fase 1 funciona con un perfil de escritorio FreeBSD reforzado; la Fase 2 (prevista) migra a una compilación nativa del micronúcleo seL4.
+La evolución del núcleo refleja al resto de la familia: la Fase 1 funciona con un perfil de escritorio FreeBSD reforzado; la Fase 2 (prevista) migra a una compilación nativa del [[sel4-microkernel-substrate|micronúcleo seL4]].
 
 ## La suite de aplicaciones
 
@@ -64,9 +64,9 @@ Un usuario puede llevar `os-workplace` en una memoria USB, arrancarlo en una má
 
 Tres razones hacen de `os-workplace` un compromiso estructural en lugar de un gesto de marketing:
 
-1. **Embudo de adopción.** Un escritorio gratuito y rápido introduce al operador en la disciplina de teclas de función de `os-console` y el modelo de seguridad del Diodo. Los productos comerciales se sienten familiares desde el primer día.
-2. **Implementación de referencia.** Cada línea de código escrita para `os-workplace` es revisable en el monorepo público. Los clientes pueden auditar el sustrato antes de adquirir la agregación comercial.
-3. **Gravedad del ecosistema.** Una comunidad creciente de usuarios de `os-workplace` crea una circunscripción independiente de contribuidores, empaquetadores y traductores que ningún producto exclusivamente comercial puede replicar.
+1. **Embudo de adopción.** Un escritorio gratuito y rápido introduce al operador en la disciplina de teclas de función de [[console-os|`os-console`]] y el modelo de seguridad del [[diode-standard|Diodo]]. Los productos comerciales se sienten familiares desde el primer día.
+2. **Implementación de referencia.** Cada línea de código escrita para `os-workplace` es revisable en el monorepo público. Los clientes pueden auditar el [[compounding-substrate|sustrato]] antes de adquirir la agregación comercial.
+3. **Gravedad del ecosistema.** Una comunidad creciente de usuarios de `os-workplace` crea una circunscripción independiente de contribuidores, empaquetadores y traductores que ningún producto exclusivamente comercial puede replicar. El [[contributor-model|modelo de contribuidores]] describe los roles y derechos para la participación comunitaria.
 
 ## Véase también
 

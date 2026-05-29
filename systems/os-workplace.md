@@ -23,7 +23,7 @@ references:
  url: "https://www.w3.org/TR/webrtc/"
 ---
 
-`os-workplace` is the free desktop operating system in the PointSav family. It provides a clean, secure, native-Rust desktop environment that pairs naturally with a Totebox archive and brings the F-key discipline and security model of the platform to a community user installing it for the first time. The strategy is deliberate: `os-workplace` is the adoption gateway. A new user installs it because it is free and fast; once their daily work happens inside the PointSav ecosystem, the commercial `os-orchestration` aggregator becomes a logical next step. This article covers the reference hardware, the application suite, the pairing model, and the strategic rationale for a free desktop.
+`os-workplace` is the free desktop operating system in the PointSav family. It provides a clean, secure, native-Rust desktop environment that pairs naturally with a [[totebox-archive|Totebox archive]] and brings the F-key discipline and [[machine-based-auth|security model]] of the platform to a community user installing it for the first time. The strategy is deliberate: `os-workplace` is the adoption gateway. A new user installs it because it is free and fast; once their daily work happens inside the PointSav ecosystem, the commercial [[os-orchestration|`os-orchestration`]] aggregator becomes a logical next step. This article covers the reference hardware, the application suite, the pairing model, and the strategic rationale for a free desktop.
 
 ## Reference hardware
 
@@ -34,7 +34,7 @@ references:
 | Flagship | Dell XPS 13 / 14 (Developer Edition) |
 | Fleet | HP ProBook 400 series (445/450) |
 
-The kernel evolution mirrors the rest of the family: Phase 1 runs on a hardened FreeBSD desktop profile; Phase 2 (planned) migrates to a native seL4 microkernel build.
+The kernel evolution mirrors the rest of the family: Phase 1 runs on a hardened FreeBSD desktop profile; Phase 2 (planned) migrates to a native [[sel4-microkernel-substrate|seL4]] microkernel build.
 
 ## The application suite
 
@@ -64,9 +64,9 @@ A user can carry `os-workplace` on a USB drive, boot it on a borrowed machine, a
 
 Three reasons make `os-workplace` a structural commitment rather than a marketing gesture:
 
-1. **Adoption funnel.** A free, fast desktop introduces the operator to the F-key discipline of `os-console` and the security model of the Diode. The commercial products feel familiar from day one.
-2. **Reference implementation.** Every line of code written for `os-workplace` is reviewable in the public monorepo. Customers can audit the substrate before they buy commercial aggregation against it.
-3. **Ecosystem gravity.** A growing community of `os-workplace` users creates an independent constituency of contributors, packagers, and translators that no commercial-only product can replicate.
+1. **Adoption funnel.** A free, fast desktop introduces the operator to the F-key discipline of [[console-os|`os-console`]] and the security model of the [[diode-standard|Diode]]. The commercial products feel familiar from day one.
+2. **Reference implementation.** Every line of code written for `os-workplace` is reviewable in the public monorepo. Customers can audit the [[compounding-substrate|substrate]] before they buy commercial aggregation against it.
+3. **Ecosystem gravity.** A growing community of `os-workplace` users creates an independent constituency of contributors, packagers, and translators that no commercial-only product can replicate. The [[contributor-model|contributor model]] describes the roles and rights for community participation.
 
 ## See also
 

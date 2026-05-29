@@ -13,7 +13,7 @@ paired_with: input-machine.md
 language: es
 ---
 
-La Máquina de Entrada es la puerta obligatoria de incorporación a través de la cual todos los documentos y textos ingresan a los flujos de trabajo de os-console. Ocupa permanentemente la tecla F12 en todas las configuraciones de teclado. Cada cartucho en os-console depende de la Máquina de Entrada para su material de origen. Ningún flujo de trabajo la evita.
+La Máquina de Entrada es la puerta obligatoria de incorporación a través de la cual todos los documentos y textos ingresan a los flujos de trabajo de [[console-os|os-console]]. Ocupa permanentemente la tecla F12 en todas las configuraciones de teclado. Cada [[os-console-platform|cartucho]] en os-console depende de la Máquina de Entrada para su material de origen. Ningún flujo de trabajo la evita.
 
 ## Por qué la posición es permanente
 
@@ -29,15 +29,15 @@ El flujo de ingesta opera de la siguiente manera: un modal presenta el campo de 
 
 ## service-input: el servicio frontera del Anillo 1
 
-`service-input` es un servicio del Anillo 1 en la Arquitectura de Tres Anillos — un servicio frontera de ingesta de documentos por arrendatario que maneja la incorporación genérica de documentos. Es la contraparte del lado servidor del cartucho de la Máquina de Entrada.
+`service-input` es un servicio del Anillo 1 en la [[three-ring-architecture|Arquitectura de Tres Anillos]] — un servicio frontera de ingesta de documentos por arrendatario que maneja la incorporación genérica de documentos. Es la contraparte del lado servidor del cartucho de la [[app-console-input|Máquina de Entrada]].
 
-`service-input` realiza tres funciones: clasifica el tipo de documento y la canalización de procesamiento apropiada; enruta el documento al servicio correcto del Anillo 2 o Anillo 1; y escribe un registro inmutable del evento de ingesta en el ledger.
+`service-input` realiza tres funciones: clasifica el tipo de documento y la canalización de procesamiento apropiada; enruta el documento al servicio correcto del Anillo 2 o Anillo 1; y escribe un registro inmutable del evento de ingesta en el [[worm-ledger-design|ledger]].
 
 `service-input` no realiza inferencia de inteligencia artificial. La clasificación utiliza reglas deterministas conforme a SYS-ADR-07, lo que garantiza que el rastro de auditoría sea reproducible y no dependa de la disponibilidad del modelo.
 
 ## La pista de auditoría
 
-Cada documento que pasa por la Máquina de Entrada genera dos entradas de auditoría: un registro local en SQLite en la máquina de os-console, y un registro canónico e inmutable en el ledger de `service-input` en el Archivo Totebox.
+Cada documento que pasa por la Máquina de Entrada genera dos entradas de auditoría: un registro local en SQLite en la máquina de os-console, y un registro canónico e inmutable en el ledger de `service-input` en el [[totebox-archive|Archivo Totebox]].
 
 ## La arquitectura sin formularios
 
@@ -48,3 +48,5 @@ La Máquina de Entrada es el fundamento de lo que la documentación operativa de
 - [[console-os]] — la plataforma de os-console
 - [[machine-based-auth]] — el mecanismo de autorización de os-console
 - [[three-ring-architecture]] — la arquitectura de tres anillos
+- [[os-console-platform]] — la arquitectura de cartuchos y el mapa de teclas de función
+- [[worm-ledger-design]] — la disciplina del ledger de solo adición para los registros de auditoría

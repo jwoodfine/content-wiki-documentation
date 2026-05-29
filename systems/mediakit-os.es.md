@@ -16,7 +16,7 @@ short_description: "os-mediakit es el sistema operativo de cara al público en l
 cites: []
 ---
 
-`os-mediakit` es el sistema operativo de cara al público en la familia PointSav. Aloja el sitio web de marketing de una empresa, su wiki interna y su sala de prensa de cumplimiento — tres cargas de trabajo que habitualmente viven en plataformas de terceros arrendadas y que desaparecen en el momento en que vence una suscripción. El operador objetivo es un Emisor Informante: una empresa con obligaciones de divulgación estatutaria que necesita prueba matemática de qué divulgó y exactamente cuándo. `os-mediakit` está construido sobre una base FreeBSD reforzada y distribuye tres superficies de aplicación como cargas de trabajo aisladas. Este artículo cubre las tres superficies, la justificación del licenciamiento FreeBSD, el Libro Mayor de Cumplimiento, el adaptador Diodo y los dos modos de despliegue.
+`os-mediakit` es el sistema operativo de cara al público en la familia PointSav. Aloja el sitio web de marketing de una empresa, su wiki interna y su sala de prensa de cumplimiento — tres cargas de trabajo que habitualmente viven en plataformas de terceros arrendadas y que desaparecen en el momento en que vence una suscripción. El operador objetivo es un [[compliance-and-continuous-disclosure|Emisor Informante]]: una empresa con obligaciones de divulgación estatutaria que necesita prueba matemática de qué divulgó y exactamente cuándo. `os-mediakit` está construido sobre una base FreeBSD reforzada y distribuye tres superficies de aplicación como cargas de trabajo aisladas. Este artículo cubre las tres superficies, la justificación del licenciamiento FreeBSD, el [[worm-ledger-design|Libro Mayor de Cumplimiento]], el adaptador [[diode-standard|Diodo]] y los dos modos de despliegue.
 
 ## Las tres superficies de aplicación
 
@@ -24,8 +24,8 @@ cites: []
 
 | Superficie | Motor | Rol |
 |---|---|---|
-| `app-mediakit-marketing` | Motor de sitio estático con capa de caché en Rust | Páginas públicas y páginas de relaciones con inversores |
-| `app-mediakit-knowledge` | Motor de wiki Markdown con almacenamiento conforme al contrato de contenido | Wiki corporativa, wiki de proyectos, wiki de documentación |
+| [[app-mediakit-marketing\|`app-mediakit-marketing`]] | Motor de sitio estático con capa de caché en Rust | Páginas públicas y páginas de relaciones con inversores |
+| [[app-mediakit-knowledge\|`app-mediakit-knowledge`]] | Motor de wiki Markdown con almacenamiento conforme al contrato de contenido | Wiki corporativa, wiki de proyectos, wiki de documentación |
 | `app-mediakit-distribution` | Motor de feeds de cumplimiento basado en envío | Comunicados de prensa, presentaciones regulatorias, comentarios ejecutivos |
 
 ## Por qué FreeBSD
@@ -67,7 +67,7 @@ El adaptador es un paquete instalado por separado. Los operadores que no necesit
 | Autónomo | Un trabajador independiente o PYME que aloja uno o dos sitios públicos | TUI local accesible por SSH |
 | Federado | Un operador comercial que gestiona muchos sitios desde una flota centralizada | El TUI local se convierte en monitor de estado; el control pasa a `os-orchestration` |
 
-Ambas configuraciones utilizan el mismo binario de `os-mediakit`. La transición es un único comando: instalar el paquete adaptador, realizar un apretón de manos de emparejamiento único y la instancia MediaKit se une a la flota.
+Ambas configuraciones utilizan el mismo binario de `os-mediakit`. La transición es un único comando: instalar el paquete adaptador, realizar un [[machine-based-auth|apretón de manos de emparejamiento]] único y la instancia MediaKit se une a la [[sovereign-mesh|malla de flota]].
 
 ## Véase también
 

@@ -17,11 +17,11 @@ cites: []
 ---
 
 
-La Orquestación Totebox es la capa de coordinación que aprovisiona, supervisa y gestiona múltiples instancias de archivo Totebox en un único despliegue de PointSav. Cuando un operador mantiene archivos separados para contratos, registros financieros y correspondencia, la capa de orquestación garantiza que cada contenedor conserve su propio libro contable aislado, ejecute su propia verificación de integridad y reporte el estado de salud a través de una superficie de monitoreo unificada — sin permitir que ningún contenedor comparta estado mutable con otro. Para un operador regulado, esto significa que un incidente en un dominio no puede propagarse a los registros de otro.
+La Orquestación Totebox es la capa de coordinación que aprovisiona, supervisa y gestiona múltiples instancias de [[totebox-archive|archivo Totebox]] en un único despliegue de PointSav. Cuando un operador mantiene archivos separados para contratos, registros financieros y correspondencia, la capa de orquestación garantiza que cada contenedor conserve su propio [[worm-ledger-design|libro contable]] aislado, ejecute su propia verificación de integridad y reporte el estado de salud a través de una superficie de monitoreo unificada — sin permitir que ningún contenedor comparta estado mutable con otro. Para un operador regulado, esto significa que un incidente en un dominio no puede propagarse a los registros de otro.
 
 ## Aislamiento de contenedores
 
-Cada Totebox se ejecuta como una unidad independiente. Ningún contenedor comparte un directorio de libro contable con ningún otro contenedor. Un compromiso en el directorio de activos de un contenedor no se propaga a los contenedores hermanos, porque no hay estado mutable compartido en la capa del libro contable.
+Cada Totebox se ejecuta como una unidad independiente respaldada por las garantías de aislamiento de hardware del [[sel4-microkernel-substrate|micronúcleo seL4]]. Ningún contenedor comparte un directorio de libro contable con ningún otro contenedor. Un compromiso en el directorio de activos de un contenedor no se propaga a los contenedores hermanos, porque no hay estado mutable compartido en la capa del libro contable.
 
 ## Verificación de integridad
 
@@ -40,6 +40,8 @@ La capa de orquestación también gestiona el retiro seguro de contenedores — 
 
 ## Véase también
 
-- [[totebox-os]]
-- [[infrastructure-os]]
-- [[console-os]]
+- [[totebox-os]] — el sistema operativo que se ejecuta dentro de cada Totebox gestionado
+- [[totebox-archive]] — la unidad fundamental de almacenamiento de datos que se orquesta
+- [[infrastructure-os]] — el sustrato de cómputo que aloja las instancias Totebox
+- [[console-os]] — el Libro Mayor de Comandos que los operadores usan para interactuar con los archivos orquestados
+- [[os-orchestration]] — el agregador de SO a nivel de flota para despliegues comerciales multi-entidad

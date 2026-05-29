@@ -12,7 +12,7 @@ editor: pointsav-engineering
 paired_with: os-console-platform.es.md
 ---
 
-`os-console` is Woodfine's keyboard-native console interface — a single Rust binary that provides direct access to the Totebox Archive, editorial workflows, governance records, and infrastructure management from a terminal. It connects to backend `os-*` services through machine-based authorization and operates fully offline when backend services are unavailable.
+`os-console` is Woodfine's keyboard-native console interface — a single Rust binary that provides direct access to the [[totebox-archive|Totebox Archive]], editorial workflows, governance records, and infrastructure management from a terminal. It connects to backend `os-*` services through [[machine-based-auth|machine-based authorization]] and operates fully offline when backend services are unavailable.
 
 The design principle is end-to-end ownership: every component is compiled into a single binary, with no dynamic plugin loading, no subprocess launching, and no nesting. The console starts in milliseconds and responds at keyboard speed.
 
@@ -24,9 +24,9 @@ An optional SSH server mode, compiled with the `--features ssh-server` flag, ena
 
 ## The base chassis: app-console-keys
 
-`app-console-keys` is the always-installed base chassis inside `os-console`. Its relationship to `os-console` is analogous to `service-fs`'s relationship to `os-totebox`: it is the minimum required component that must be present; everything else is optional.
+`app-console-keys` is the always-installed base chassis inside `os-console`. Its relationship to `os-console` is analogous to [[service-fs-architecture|`service-fs`]]'s relationship to `os-totebox`: it is the minimum required component that must be present; everything else is optional.
 
-`app-console-keys` provides the `Cartridge` trait (the interface all cartridges implement), the F-key navigation framework (the horizontal tab strip, F-key input dispatch, and active-cartridge routing), the status bar showing machine-based authorization connection state and session identity, the authorization client that manages connections to paired `os-*` services, and profile-based configuration stored at `~/.config/os-console/config.toml`.
+`app-console-keys` provides the `Cartridge` trait (the interface all cartridges implement), the F-key navigation framework (the horizontal tab strip, F-key input dispatch, and active-cartridge routing), the status bar showing [[machine-based-auth|machine-based authorization]] connection state and session identity, the authorization client that manages connections to paired `os-*` services, and profile-based configuration stored at `~/.config/os-console/config.toml`.
 
 **Naming note:** "keys" in `app-console-keys` refers to F-keys — keyboard function keys. It does not refer to cryptographic keys. Machine-based authorization is implemented by `system-gateway-mba`, a separate crate.
 
@@ -38,7 +38,7 @@ Cartridges are optional except for `app-console-keys` and `app-console-input` (F
 
 ## F-key map
 
-The console presents twelve addressable slots via F-keys. F12 is fixed as The Anchor — the [[input-machine]] — and is never moved.
+The console presents twelve addressable slots via F-keys. F12 is fixed as The Anchor — the [[input-machine]] — and is never moved. The complete [[console-os|os-console]] article describes the broader product design and deployment context.
 
 | F-key | Cartridge | Domain |
 |---|---|---|
@@ -77,7 +77,7 @@ When the authorization link is inactive, os-console operates in local-only mode.
 
 ## Three-Ring Architecture placement
 
-`os-console` is a client of the Three-Ring Architecture, not a ring itself. It connects to Ring 1 services through the authorization layer — `service-input` via F12, `service-people` via F2, `service-email` via F3, and `service-fs`; to Ring 2 services including `service-content` and `service-search`; and to the Ring 3 service `service-slm` via Doorman at `http://localhost:8011`. `os-console` is the human interface through which an operator instructs the rings.
+`os-console` is a client of the [[three-ring-architecture|Three-Ring Architecture]], not a ring itself. It connects to Ring 1 services through the authorization layer — `service-input` via F12, [[service-people|`service-people`]] via F2, [[service-email|`service-email`]] via F3, and `service-fs`; to Ring 2 services including [[service-content|`service-content`]] and [[service-search|`service-search`]]; and to the Ring 3 service [[service-slm|`service-slm`]] via [[compounding-doorman|Doorman]] at `http://localhost:8011`. `os-console` is the human interface through which an operator instructs the rings.
 
 ## See also
 
@@ -85,3 +85,5 @@ When the authorization link is inactive, os-console operates in local-only mode.
 - [[machine-based-auth]] — the authorization mechanism os-console uses
 - [[input-machine]] — The Anchor; mandatory ingest gate at F12
 - [[three-ring-architecture]] — the Ring 1/2/3 architecture os-console connects to
+- [[os-family-overview]] — the eight-OS family and how os-console fits
+- [[compounding-doorman]] — the Doorman audit boundary for service-slm access

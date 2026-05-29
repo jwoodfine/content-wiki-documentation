@@ -16,20 +16,20 @@ short_description: "PointSav builds eight purpose-built operating systems that s
 cites: []
 ---
 
-PointSav builds eight purpose-built operating systems that share a common seL4 microkernel substrate, a common Rust language discipline, and a common Diode-based communication protocol. Each OS does one job and contains no feature it does not need. The family ranges from a human-facing terminal to a sovereign cloud appliance, yet every member compiles from the same kernel and speaks the same protocol. This article covers the eight members of the OS family, the substrate they share, how they compose into deployments, and the Diode discipline that governs command flow across all of them.
+PointSav builds eight purpose-built operating systems that share a common [[sel4-microkernel-substrate|seL4 microkernel]] substrate, a common Rust language discipline, and a common [[diode-standard|Diode]]-based communication protocol. Each OS does one job and contains no feature it does not need. The family ranges from a human-facing terminal to a sovereign cloud appliance, yet every member compiles from the same kernel and speaks the same protocol. This article covers the eight members of the OS family, the substrate they share, how they compose into [[deployment-patterns|deployments]], and the Diode discipline that governs command flow across all of them.
 
 ## The eight operating systems
 
 | OS | Role | Operated by |
 |---|---|---|
-| `os-console` | Universal human terminal — the Command Ledger | The operator at the keyboard |
-| `os-totebox` | Sovereign vault and service host — the data archive | An entity (person, corporation, property) |
-| `os-orchestration` | Fleet aggregator — multi-archive view for commercial operators | Enterprise administrator |
-| `os-infrastructure` | Compute substrate that hosts the others | Fleet administrator |
-| `os-network-admin` | Network control plane — routing, pairing registry, mesh policy | Network architect |
-| `os-mediakit` | Public web appliance — marketing, wiki, compliance newsroom | Reporting Issuer or SMB |
-| `os-privategit` | Sovereign source and design hosting | PointSav internal and customer |
-| `os-workplace` | Sovereign desktop with native Rust apps | Community and SMB customer |
+| [[console-os\|`os-console`]] | Universal human terminal — the Command Ledger | The operator at the keyboard |
+| [[totebox-os\|`os-totebox`]] | Sovereign vault and service host — the data archive | An entity (person, corporation, property) |
+| [[os-orchestration\|`os-orchestration`]] | Fleet aggregator — multi-archive view for commercial operators | Enterprise administrator |
+| [[infrastructure-os\|`os-infrastructure`]] | Compute substrate that hosts the others | Fleet administrator |
+| [[os-network-admin\|`os-network-admin`]] | Network control plane — routing, pairing registry, mesh policy | Network architect |
+| [[mediakit-os\|`os-mediakit`]] | Public web appliance — marketing, wiki, compliance newsroom | Reporting Issuer or SMB |
+| [[os-privategit\|`os-privategit`]] | Sovereign source and design hosting | PointSav internal and customer |
+| [[os-workplace\|`os-workplace`]] | Sovereign desktop with native Rust apps | Community and SMB customer |
 
 ## Why eight, not one
 
@@ -59,7 +59,7 @@ The six canonical compositions are covered in detail in [[deployment-patterns]].
 
 ## The Diode discipline
 
-Across all eight, command flow is unidirectional. `os-console` and `os-orchestration` can issue commands to the others. The others emit telemetry upward — never commands in the reverse direction. This constraint is enforced at the [[diode-standard|Diode]] protocol level, not by policy. A compromised public-facing `os-mediakit` instance cannot reach back into a corporate `os-totebox` because the code to do so is absent from the binary.
+Across all eight, command flow is unidirectional. `os-console` and `os-orchestration` can issue commands to the others. The others emit [[sovereign-telemetry|telemetry]] upward — never commands in the reverse direction. This constraint is enforced at the [[diode-standard|Diode]] protocol level, not by policy. A compromised public-facing `os-mediakit` instance cannot reach back into a corporate `os-totebox` because the code to do so is absent from the binary. The [[sovereign-airlock-doctrine|sovereign airlock]] principle describes why absent code is the only reliable enforcement mechanism.
 
 ## See also
 

@@ -16,7 +16,7 @@ short_description: "os-infrastructure es el sustrato de cómputo que aloja los s
 cites: []
 ---
 
-`os-infrastructure` es el sustrato de cómputo que aloja los demás sistemas operativos de PointSav. Una instancia se ejecuta en una pieza de hardware — un servidor bare-metal en una oficina, un rack colocado o una máquina virtual en la nube. Tomado en conjunto, una flota de nodos `os-infrastructure` forma la Red Privada PointSav (PPN): una malla cifrada WireGuard que conecta Toteboxes, Consolas, MediaKits e instancias PrivateGit sin exponer ningún nodo a internet público. Este artículo cubre los tres modos de despliegue, el Protocolo Génesis que arranca una flota y la brecha estructural en las ofertas convencionales de nube que el diseño explota.
+`os-infrastructure` es el sustrato de cómputo que aloja los demás sistemas operativos de PointSav. Una instancia se ejecuta en una pieza de hardware — un servidor bare-metal en una oficina, un rack colocado o una máquina virtual en la nube. Tomado en conjunto, una flota de nodos `os-infrastructure` forma la [[pointsav-private-network|Red Privada PointSav]] (PPN): una malla cifrada WireGuard que conecta [[totebox-os|Toteboxes]], [[console-os|Consolas]], [[mediakit-os|MediaKits]] e instancias [[os-privategit|PrivateGit]] sin exponer ningún nodo a internet público. Este artículo cubre los tres modos de despliegue, el Protocolo Génesis que arranca una flota y la brecha estructural en las ofertas convencionales de nube que el diseño explota.
 
 ## Los tres modos de despliegue
 
@@ -34,7 +34,7 @@ La misma malla WireGuard se ejecuta en las tres configuraciones. Un operador pue
 
 La gestión de flotas convencional requiere que exista un plano de control antes de que cualquier nodo de cómputo pueda unirse. `os-infrastructure` invierte esto. Cuando un nodo arranca y no encuentra un beacon de PPN, no falla — se declara a sí mismo una Red Privada de uno.
 
-1. **Arranque ciego.** El nodo ignora las convenciones de DHCP y DNS. El núcleo seL4 genera un par de claves fiduciarias de Nivel 1 en el primer arranque.
+1. **Arranque ciego.** El nodo ignora las convenciones de DHCP y DNS. El núcleo [[sel4-microkernel-substrate|seL4]] genera un par de claves fiduciarias de Nivel 1 en el primer arranque.
 2. **Exploración.** El nodo busca un beacon de `os-network-admin` en la malla local.
 3. **Bifurcación génesis.** Si nada responde, el nodo crea su propia PPN de un nodo y sella todos los puertos externos excepto uno.
 4. **Patrón de espera.** Un único endpoint WebSocket reforzado espera una solicitud de reclamación administrativa.
@@ -46,8 +46,8 @@ Un cliente puede enviar cincuenta servidores a cincuenta ubicaciones remotas. Ca
 
 Cada nodo `os-infrastructure` es miembro de la PPN — la superposición WireGuard que conecta todos los dispositivos PointSav en una flota:
 
-- Transferencia de datos cifrada: Las imágenes de archivo Totebox se mueven entre ubicaciones sin tocar internet público.
-- Señalización lingüística: `os-network-admin` transmite comandos binarios de 16 bytes a través de la malla; cada nodo recibe simultáneamente, solo el nodo destinatario actúa.
+- Transferencia de datos cifrada: Las imágenes de [[totebox-archive|archivo Totebox]] se mueven entre ubicaciones sin tocar internet público.
+- Señalización lingüística: `os-network-admin` transmite comandos binarios de 16 bytes a través de la [[sovereign-mesh|malla]]; cada nodo recibe simultáneamente, solo el nodo destinatario actúa.
 - Administración remota: `os-console` se empareja con instancias de `os-totebox` a través de la PPN sin requerir un cliente VPN en la máquina anfitriona del operador.
 
 ## La Brecha del Hiperscaler
@@ -61,7 +61,7 @@ La arquitectura explota deliberadamente una brecha estructural en las ofertas co
 | Requiere ingeniería de red antes de agregar cómputo | Los nodos se auto-arrancan mediante el Protocolo Génesis |
 | Plano de control de un único proveedor como punto único de fallo | Cada nodo `os-infrastructure` puede iniciar una flota de forma independiente |
 
-Un operador con `os-infrastructure` en un servidor en su oficina, un nodo de retransmisión en la nube para conectividad pública y `os-network-admin` en una estación de trabajo administrativa ha construido una flota que no está bloqueada a ningún hiperscaler y es inaccesible para atacantes externos sin una clave fiduciaria válida.
+Un operador con `os-infrastructure` en un servidor en su oficina, un nodo de retransmisión en la nube para conectividad pública y `os-network-admin` en una estación de trabajo administrativa ha construido una flota que no está bloqueada a ningún hiperscaler y es inaccesible para atacantes externos sin una [[machine-based-auth|clave fiduciaria]] válida. La [[storage|arquitectura de almacenamiento]] de cada nodo sigue la [[worm-ledger-design|disciplina WORM]] que rige toda la persistencia de datos de PointSav.
 
 ## Véase también
 

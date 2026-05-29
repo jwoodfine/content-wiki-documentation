@@ -16,7 +16,7 @@ short_description: "os-orchestration is the commercial-tier operating system tha
 cites: []
 ---
 
-`os-orchestration` is the commercial-tier operating system that lets a single operator see, query, and command many Totebox archives at once. Where `os-console` connects to one `os-totebox`, `os-orchestration` is the hub between an operator's Console and a fleet of Toteboxes. It is what an executive views when they want the position of every property in a portfolio, every entity in a holding company, or every project in a development pipeline — a single unified answer to "what is the state of the entire estate, right now?" This article covers what `os-orchestration` does, what it deliberately does not do, how aggregation works, the commercial features it adds, and when to deploy it.
+`os-orchestration` is the commercial-tier operating system that lets a single operator see, query, and command many [[totebox-archive|Totebox archives]] at once. Where [[console-os|`os-console`]] connects to one [[totebox-os|`os-totebox`]], `os-orchestration` is the hub between an operator's Console and a fleet of Toteboxes. It is what an executive views when they want the position of every property in a portfolio, every entity in a holding company, or every project in a development pipeline — a single unified answer to "what is the state of the entire estate, right now?" This article covers what `os-orchestration` does, what it deliberately does not do, how aggregation works, the commercial features it adds, and when to deploy it.
 
 ## What it does not do
 
@@ -36,7 +36,7 @@ The commercial line is drawn at the aggregator. The Console and the Totebox are 
 
 ## How aggregation works
 
-`os-orchestration` connects to Toteboxes through the PointSav Protocol (PSP) — a capability-based binary protocol that tunnels through standard TLS at the edge. Inside the tunnel:
+`os-orchestration` connects to Toteboxes through the PointSav Protocol (PSP) — a [[capability-based-security|capability-based]] binary protocol that tunnels through standard TLS at the edge. Inside the tunnel:
 
 1. The aggregator sends a signed capability object granting permission to read a specific row of a specific Totebox for a fixed time window.
 2. The Totebox verifies the capability, runs the query internally, and emits only the result — never the raw record.
@@ -58,7 +58,7 @@ These features are intentionally absent from the open `os-console` codebase. The
 
 ## The Diode discipline
 
-`os-orchestration` can issue commands downstream to the Toteboxes it manages. The Toteboxes cannot issue commands back up. The aggregator is itself a Diode subject: it receives commands only from `os-console`, never from a Totebox. This makes lateral movement structurally impossible — a compromised Totebox cannot use the aggregator as a bridge to the operator's Console.
+`os-orchestration` can issue commands downstream to the Toteboxes it manages. The Toteboxes cannot issue commands back up. The aggregator is itself a [[diode-standard|Diode]] subject: it receives commands only from `os-console`, never from a Totebox. This makes lateral movement structurally impossible — a compromised Totebox cannot use the aggregator as a bridge to the operator's Console. The [[totebox-orchestration|Totebox Orchestration]] article covers the coordination layer's provisioning and lifecycle management.
 
 ## When to deploy
 

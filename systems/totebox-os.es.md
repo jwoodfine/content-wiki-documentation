@@ -44,9 +44,9 @@ Cada `os-totebox` aloja un conjunto fijo de servicios:
 
 ## La disciplina WORM
 
-`os-totebox` escribe cargas útiles sin procesar directamente en almacenamiento de bloque de solo adición. No existe operación de borrado en el flujo de código. [^1] Un servicio comprometido no puede sobrescribir el historial porque el verbo no existe en la interfaz de almacenamiento. Esta es la capa de aplicación arquitectónica para la integridad de procesamiento y la disciplina de segregación de activos.
+`os-totebox` escribe cargas útiles sin procesar directamente en almacenamiento de bloque de solo adición. No existe operación de borrado en el flujo de código. [^1] Un servicio comprometido no puede sobrescribir el historial porque el verbo no existe en la interfaz de almacenamiento. Esta es la capa de aplicación arquitectónica para la integridad de procesamiento y la [[worm-ledger-design|disciplina WORM]].
 
-Cada registro institucional vive como un archivo plano inerte — Markdown, YAML o CSV — que no requiere ningún tiempo de ejecución propietario para leer décadas después. Un libro mayor `.yaml` o registro `.csv` puede ser leído por cualquier editor de texto, en cualquier hardware, en cualquier década. El costo de migración de datos tiende a cero: el operador siempre tiene la fuente en un formato que ningún software propietario puede bloquear.
+Cada registro institucional vive como un archivo plano inerte — Markdown, YAML o CSV — que no requiere ningún tiempo de ejecución propietario para leer décadas después. Un libro mayor `.yaml` o registro `.csv` puede ser leído por cualquier editor de texto, en cualquier hardware, en cualquier década. El costo de migración de datos tiende a cero: el operador siempre tiene la fuente en un formato que ningún software propietario puede bloquear. La [[worm-ledger-storage-architecture|arquitectura de almacenamiento WORM]] y la [[worm-ledger-architecture|arquitectura del ledger]] describen la implementación técnica.
 
 ## La forma del host
 
@@ -68,8 +68,8 @@ El objetivo unikernel es la meta de diseño. [^2] El estado final no tiene SSH, 
 | Nivel | Perfil | Capacidad |
 |---|---|---|
 | Bóveda de Cero Cómputo | Nodo en la nube ~$7/mes, ≤1 GB RAM | Solo libro mayor WORM y enrutador criptográfico; delega el procesamiento pesado al Relé Yo-Yo |
-| Relé Yo-Yo | Nodo en la nube elástico aprovisionado por el operador | Puente con estado hacia un nodo de cómputo temporal; ejecuta extracción en lote, luego se desmonta |
-| Hierro Soberano | Estación de trabajo con ≥16 GB RAM o servidor bare-metal | Carga el modelo de lenguaje pequeño local completo en RAM; sin egreso a la nube |
+| Relé Yo-Yo | Nodo en la nube elástico aprovisionado por el operador | Puente con estado hacia un nodo de cómputo temporal; ejecuta [[service-extraction|extracción]] en lote, luego se desmonta |
+| Hierro Soberano | Estación de trabajo con ≥16 GB RAM o servidor bare-metal | Carga el [[service-slm|modelo de lenguaje pequeño]] local completo en RAM; sin egreso a la nube |
 
 ## Libremente transferible
 

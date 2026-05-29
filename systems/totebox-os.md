@@ -44,9 +44,9 @@ Each `os-totebox` hosts a fixed set of services:
 
 ## The WORM discipline
 
-`os-totebox` writes raw payloads directly to append-only block storage. There is no delete operation in the code path. [^1] A compromised service cannot overwrite history because the verb does not exist at the storage interface. This is the architectural enforcement layer for processing integrity and the asset-segregation discipline.
+`os-totebox` writes raw payloads directly to append-only block storage. There is no delete operation in the code path. [^1] A compromised service cannot overwrite history because the verb does not exist at the storage interface. This is the architectural enforcement layer for processing integrity and the [[worm-ledger-design|WORM ledger discipline]].
 
-Every institutional record lives as an inert flat file — Markdown, YAML, or CSV — that requires no proprietary runtime to read decades later. A `.yaml` ledger or `.csv` register is universally readable by any text editor, on any hardware, in any decade. Data migration cost falls toward zero: the operator always holds the source in a form no proprietary software can lock.
+Every institutional record lives as an inert flat file — Markdown, YAML, or CSV — that requires no proprietary runtime to read decades later. A `.yaml` ledger or `.csv` register is universally readable by any text editor, on any hardware, in any decade. Data migration cost falls toward zero: the operator always holds the source in a form no proprietary software can lock. The [[worm-ledger-storage-architecture|WORM storage architecture]] and [[worm-ledger-architecture|ledger architecture]] articles describe the technical implementation.
 
 ## The host shape
 
@@ -63,13 +63,13 @@ The unikernel target is the design goal. [^2] The end-state has no SSH, no shell
 
 ## Compute tiers
 
-`os-totebox` adjusts its behaviour to available hardware:
+`os-totebox` adjusts its behaviour to available hardware, following the [[model-tier-discipline|model-tier discipline]] that governs SLM usage:
 
 | Tier | Profile | Capability |
 |---|---|---|
 | Zero-Compute Vault | ~$7/month cloud node, ≤1 GB RAM | WORM ledger and cryptographic router only; defers heavy processing to the Yo-Yo Relay |
-| Yo-Yo Relay | Operator-provisioned elastic cloud node | Stateful bridge to a temporary compute node; runs batch extraction, then tears down |
-| Sovereign Iron | 16 GB+ RAM workstation or bare-metal server | Loads the full local small language model in RAM; no cloud egress |
+| Yo-Yo Relay | Operator-provisioned elastic cloud node | Stateful bridge to a temporary compute node; runs batch [[service-extraction|extraction]], then tears down |
+| Sovereign Iron | 16 GB+ RAM workstation or bare-metal server | Loads the full local [[service-slm|small language model]] in RAM; no cloud egress |
 
 ## Freely transferable
 

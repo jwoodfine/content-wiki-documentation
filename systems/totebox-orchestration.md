@@ -15,11 +15,11 @@ paired_with: totebox-orchestration.es.md
 ---
 
 
-Totebox Orchestration is the coordination layer that provisions, monitors, and manages multiple Totebox archive instances within a single PointSav deployment. When an operator maintains separate archives for contracts, financial records, and correspondence, the orchestration layer ensures each container keeps its own isolated ledger, runs its own integrity verification pass, and reports health status through a unified monitoring surface — without allowing any container to share mutable state with another. For a regulated operator, this means a compromise in one domain cannot propagate to records held in another.
+Totebox Orchestration is the coordination layer that provisions, monitors, and manages multiple [[totebox-archive|Totebox archive]] instances within a single PointSav deployment. When an operator maintains separate archives for contracts, financial records, and correspondence, the orchestration layer ensures each container keeps its own isolated [[worm-ledger-design|ledger]], runs its own integrity verification pass, and reports health status through a unified monitoring surface — without allowing any container to share mutable state with another. For a regulated operator, this means a compromise in one domain cannot propagate to records held in another.
 
 ## Container isolation
 
-Each Totebox runs as an independent unit. No container shares a ledger directory with any other container. A compromise in one container's asset directory does not propagate to sibling containers, because there is no shared mutable state at the ledger layer.
+Each Totebox runs as an independent unit backed by the [[sel4-microkernel-substrate|seL4 microkernel's]] hardware isolation guarantees. No container shares a ledger directory with any other container. A compromise in one container's asset directory does not propagate to sibling containers, because there is no shared mutable state at the ledger layer.
 
 ## Integrity verification
 
@@ -27,10 +27,12 @@ The orchestration layer schedules periodic checksum audits across all managed co
 
 ## Provisioning and lifecycle
 
-A new Totebox container is provisioned with a three-directory skeleton — `app-console-input/`, `assets/`, and `ledger/` — and registered with the orchestration layer at creation time. The orchestration layer tracks container state across its operational lifecycle: active, suspended, or archived.
+A new Totebox container is provisioned with a three-directory skeleton — `app-console-input/`, `assets/`, and `ledger/` — and registered with the orchestration layer at creation time. The orchestration layer tracks container state across its operational lifecycle: active, suspended, or archived. The [[deployment-patterns|deployment patterns]] article describes how Totebox Orchestration appears in each canonical fleet configuration.
 
 ## See also
 
-- [[totebox-os]]
-- [[infrastructure-os]]
-- [[console-os]]
+- [[totebox-os]] — the operating system running inside each managed Totebox
+- [[totebox-archive]] — the fundamental unit of data storage being orchestrated
+- [[infrastructure-os]] — the compute substrate hosting the Totebox instances
+- [[console-os]] — the Command Ledger that operators use to interact with orchestrated archives
+- [[os-orchestration]] — the fleet-level OS aggregator for multi-entity commercial deployments

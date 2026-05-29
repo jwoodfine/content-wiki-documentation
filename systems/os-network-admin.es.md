@@ -16,7 +16,7 @@ short_description: "os-network-admin es el plano de control de una flota PointSa
 cites: []
 ---
 
-`os-network-admin` es el plano de control de una flota PointSav — una instancia por despliegue, gestionando el registro de emparejamientos, las reglas de cumplimiento del Diodo y la política de enrutamiento WireGuard para todos los nodos `os-infrastructure` de la flota. Los administradores componen comandos en un terminal semántico F8, donde la intención en lenguaje natural es traducida localmente por `service-slm` a comandos binarios de 16 bytes que se transmiten simultáneamente a todos los nodos de la malla. No hay ningún agente de mensajes central ni servicio externo en este flujo. Este artículo cubre el rol del plano de control, la arquitectura de despacho de comandos y la relación entre `os-network-admin` y los nodos `os-infrastructure` que gobierna.
+`os-network-admin` es el plano de control de una flota PointSav — una instancia por despliegue, gestionando el registro de emparejamientos, las reglas de cumplimiento del [[diode-standard|Diodo]] y la política de enrutamiento WireGuard para todos los nodos [[infrastructure-os|`os-infrastructure`]] de la flota. Los administradores componen comandos en un terminal semántico F8, donde la intención en lenguaje natural es traducida localmente por [[service-slm|`service-slm`]] a comandos binarios de 16 bytes que se transmiten simultáneamente a todos los nodos de la [[sovereign-mesh|malla]]. No hay ningún agente de mensajes central ni servicio externo en este flujo. Este artículo cubre el rol del plano de control, la arquitectura de despacho de comandos y la relación entre `os-network-admin` y los nodos `os-infrastructure` que gobierna.
 
 ## El rol del plano de control
 
@@ -24,10 +24,10 @@ cites: []
 
 | Función | Descripción |
 |---|---|
-| Registro de emparejamientos | Mantiene la lista autoritativa de entradas válidas de `service-pairing` en toda la flota; emite y revoca tokens fiduciarios vinculados al hardware |
+| Registro de emparejamientos | Mantiene la lista autoritativa de entradas válidas de `service-pairing` en toda la flota; emite y revoca [[machine-based-auth|tokens fiduciarios]] vinculados al hardware |
 | Cumplimiento de reglas Diodo | Define qué flujos de comandos están permitidos entre los miembros de la flota según el [[diode-standard|Estándar Diodo]]; los cambios se propagan a todos los nodos mediante transmisión en malla |
 | Política de enrutamiento en malla | Gestiona la topología de superposición WireGuard — listas de pares, rangos de IP permitidos, calendarios de intercambio de claves |
-| Reclamaciones de flota | Acepta solicitudes de reclamación del Protocolo Génesis de nuevos nodos `os-infrastructure` que se unen a la flota |
+| Reclamaciones de flota | Acepta solicitudes de reclamación del [[genesis-protocol|Protocolo Génesis]] de nuevos nodos `os-infrastructure` que se unen a la flota |
 
 ## El terminal F8 y el despacho de comandos
 

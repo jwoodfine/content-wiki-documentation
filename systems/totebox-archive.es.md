@@ -17,11 +17,11 @@ cites: []
 ---
 
 
-Un Totebox Archive es la unidad fundamental de almacenamiento y soberanía de datos dentro de la plataforma PointSav — una micro máquina virtual autocontenida que persiste registros institucionales como archivos planos inmutables y puede trasladarse físicamente entre proveedores de nube, servidores privados o hardware bare-metal sin perder su integridad criptográfica. Cada archivo está anclado a un libro contable de escritura única y lectura múltiple (WORM, por sus siglas en inglés), creando una pista de auditoría permanente y verificable para cada transacción y cambio de estado.
+Un Totebox Archive es la unidad fundamental de almacenamiento y soberanía de datos dentro de la plataforma PointSav — una micro máquina virtual autocontenida que persiste registros institucionales como archivos planos inmutables y puede trasladarse físicamente entre proveedores de nube, servidores privados o hardware bare-metal sin perder su integridad criptográfica. Cada archivo está anclado a un [[worm-ledger-design|libro contable de escritura única y lectura múltiple (WORM)]], creando una pista de auditoría permanente y verificable para cada transacción y cambio de estado. El sistema operativo [[totebox-os|`os-totebox`]] es el entorno de ejecución de un Totebox Archive.
 
 ## Capa de datos inmutable
 
-A diferencia de las bases de datos tradicionales que requieren procesos activos para acceder a los datos, un Totebox Archive persiste la información como archivos planos inmutables — JSONL, GeoParquet y Markdown — de modo que los datos permanecen accesibles y legibles incluso si el motor de software original ya no está en ejecución. No se requiere ningún entorno de ejecución propietario para leer los registros décadas después.
+A diferencia de las bases de datos tradicionales que requieren procesos activos para acceder a los datos, un Totebox Archive persiste la información como archivos planos inmutables — JSONL, GeoParquet y Markdown — de modo que los datos permanecen accesibles y legibles incluso si el motor de software original ya no está en ejecución. No se requiere ningún entorno de ejecución propietario para leer los registros décadas después. Esta disciplina de archivos planos es el fundamento de la [[worm-ledger-storage-architecture|arquitectura de almacenamiento WORM]].
 
 ## Diseño libremente transferible
 
@@ -29,7 +29,7 @@ Un Totebox Archive está empaquetado como una imagen de disco arrancable que pue
 
 ## Especialización de activos
 
-Los Totebox Archives se despliegan habitualmente como contenedores específicos por dominio para activos institucionales diferenciados.
+Los Totebox Archives se despliegan habitualmente como contenedores específicos por dominio para activos institucionales diferenciados, cada uno gestionado por la capa de [[totebox-orchestration|Orquestación Totebox]].
 
 | Tipo de archivo | Contenido |
 |---|---|
@@ -39,7 +39,8 @@ Los Totebox Archives se despliegan habitualmente como contenedores específicos 
 
 ## Véase también
 
-- [[totebox-os]]
-- [[totebox-orchestration]]
-- [[infrastructure-os]]
-- site-ledger-integration
+- [[totebox-os]] — el sistema operativo que se ejecuta dentro de un Totebox Archive
+- [[totebox-orchestration]] — la capa de coordinación que gestiona múltiples instancias de archivo
+- [[infrastructure-os]] — el sustrato de cómputo que aloja los nodos Totebox Archive
+- [[worm-ledger-design]] — la disciplina del ledger de solo adición que ancla cada archivo
+- [[customer-hostability]] — por qué el diseño libremente transferible es un compromiso cliente-primero

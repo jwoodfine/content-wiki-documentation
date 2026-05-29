@@ -13,7 +13,7 @@ paired_with: os-console-platform.md
 language: es
 ---
 
-`os-console` es la interfaz de consola nativa de teclado de Woodfine — un único binario en Rust que proporciona acceso directo al Archivo Totebox, flujos de trabajo editoriales, registros de gobernanza y gestión de infraestructura desde una terminal. Se conecta a los servicios `os-*` de backend mediante autorización basada en máquinas y opera completamente sin conexión cuando los servicios de backend no están disponibles.
+`os-console` es la interfaz de consola nativa de teclado de Woodfine — un único binario en Rust que proporciona acceso directo al [[totebox-archive|Archivo Totebox]], flujos de trabajo editoriales, registros de gobernanza y gestión de infraestructura desde una terminal. Se conecta a los servicios `os-*` de backend mediante [[machine-based-auth|autorización basada en máquinas]] y opera completamente sin conexión cuando los servicios de backend no están disponibles.
 
 ## El binario
 
@@ -21,9 +21,9 @@ language: es
 
 ## El chasis base: app-console-keys
 
-`app-console-keys` es el chasis base siempre instalado dentro de `os-console`. Su relación con `os-console` es análoga a la que `service-fs` tiene con `os-totebox`: es el componente mínimo requerido que debe estar presente; todo lo demás es opcional.
+`app-console-keys` es el chasis base siempre instalado dentro de `os-console`. Su relación con `os-console` es análoga a la que [[service-fs-architecture|`service-fs`]] tiene con `os-totebox`: es el componente mínimo requerido que debe estar presente; todo lo demás es opcional.
 
-`app-console-keys` proporciona el rasgo `Cartridge` (la interfaz que todos los cartuchos implementan), el marco de navegación por teclas de función, la barra de estado que muestra el estado de la conexión de autorización basada en máquinas y la identidad de sesión, el cliente de autorización y la configuración basada en perfiles.
+`app-console-keys` proporciona el rasgo `Cartridge` (la interfaz que todos los cartuchos implementan), el marco de navegación por teclas de función, la barra de estado que muestra el estado de la conexión de [[machine-based-auth|autorización basada en máquinas]] y la identidad de sesión, el cliente de autorización y la configuración basada en perfiles.
 
 **Nota de nomenclatura:** "keys" en `app-console-keys` se refiere a teclas de función — F-keys. No se refiere a claves criptográficas. La autorización basada en máquinas es implementada por `system-gateway-mba`, un crate separado.
 
@@ -33,7 +33,7 @@ Cada crate `app-console-*` es un crate de biblioteca que implementa el rasgo `Ca
 
 ## Mapa de teclas de función
 
-La consola presenta doce ranuras direccionables mediante teclas de función. F12 está fijada como El Ancla — la [[input-machine|Máquina de Entrada]] — y nunca se mueve.
+La consola presenta doce ranuras direccionables mediante teclas de función. F12 está fijada como El Ancla — la [[input-machine|Máquina de Entrada]] — y nunca se mueve. El artículo [[console-os|os-console]] describe el diseño y contexto de despliegue del producto más amplio.
 
 ## La barra de estado
 
@@ -51,3 +51,5 @@ Cuando el enlace de autorización está inactivo, os-console opera en modo solo 
 - [[machine-based-auth]] — el mecanismo de autorización que utiliza os-console
 - [[input-machine]] — El Ancla; puerta de ingesta obligatoria en F12
 - [[three-ring-architecture]] — la arquitectura de anillos a la que se conecta os-console
+- [[os-family-overview]] — la familia de ocho SO y cómo encaja os-console
+- [[compounding-doorman]] — el límite de auditoría Doorman para el acceso a service-slm

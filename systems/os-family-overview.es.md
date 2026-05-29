@@ -16,20 +16,20 @@ short_description: "PointSav construye ocho sistemas operativos de propósito es
 cites: []
 ---
 
-PointSav construye ocho sistemas operativos de propósito específico que comparten un sustrato de micronúcleo seL4 común, una disciplina de lenguaje Rust común y un protocolo de comunicación basado en Diodo común. Cada SO hace un único trabajo y no contiene ninguna función que no necesita. La familia abarca desde un terminal de cara al operador hasta un dispositivo soberano en la nube, pero cada miembro compila desde el mismo núcleo y habla el mismo protocolo. Este artículo cubre los ocho miembros de la familia de SO, el sustrato que comparten, cómo se componen en despliegues y la disciplina Diodo que rige el flujo de comandos en todos ellos.
+PointSav construye ocho sistemas operativos de propósito específico que comparten un sustrato de [[sel4-microkernel-substrate|micronúcleo seL4]] común, una disciplina de lenguaje Rust común y un protocolo de comunicación basado en [[diode-standard|Diodo]] común. Cada SO hace un único trabajo y no contiene ninguna función que no necesita. La familia abarca desde un terminal de cara al operador hasta un dispositivo soberano en la nube, pero cada miembro compila desde el mismo núcleo y habla el mismo protocolo. Este artículo cubre los ocho miembros de la familia de SO, el sustrato que comparten, cómo se componen en [[deployment-patterns|despliegues]] y la disciplina Diodo que rige el flujo de comandos en todos ellos.
 
 ## Los ocho sistemas operativos
 
 | SO | Rol | Operado por |
 |---|---|---|
-| `os-console` | Terminal humano universal — el Libro Mayor de Comandos | El operador en el teclado |
-| `os-totebox` | Bóveda soberana y host de servicios — el archivo de datos | Una entidad (persona, corporación, propiedad) |
-| `os-orchestration` | Agregador de flota — vista multi-archivo para operadores comerciales | Administrador empresarial |
-| `os-infrastructure` | Sustrato de cómputo que aloja los demás | Administrador de flota |
-| `os-network-admin` | Plano de control de red — enrutamiento, registro de emparejamientos, política de malla | Arquitecto de red |
-| `os-mediakit` | Dispositivo web público — marketing, wiki, sala de prensa de cumplimiento | Emisor Informante o PYME |
-| `os-privategit` | Hosting soberano de código fuente y diseño | PointSav interno y cliente |
-| `os-workplace` | Escritorio soberano con aplicaciones nativas en Rust | Comunidad y cliente PYME |
+| [[console-os\|`os-console`]] | Terminal humano universal — el Libro Mayor de Comandos | El operador en el teclado |
+| [[totebox-os\|`os-totebox`]] | Bóveda soberana y host de servicios — el archivo de datos | Una entidad (persona, corporación, propiedad) |
+| [[os-orchestration\|`os-orchestration`]] | Agregador de flota — vista multi-archivo para operadores comerciales | Administrador empresarial |
+| [[infrastructure-os\|`os-infrastructure`]] | Sustrato de cómputo que aloja los demás | Administrador de flota |
+| [[os-network-admin\|`os-network-admin`]] | Plano de control de red — enrutamiento, registro de emparejamientos, política de malla | Arquitecto de red |
+| [[mediakit-os\|`os-mediakit`]] | Dispositivo web público — marketing, wiki, sala de prensa de cumplimiento | Emisor Informante o PYME |
+| [[os-privategit\|`os-privategit`]] | Hosting soberano de código fuente y diseño | PointSav interno y cliente |
+| [[os-workplace\|`os-workplace`]] | Escritorio soberano con aplicaciones nativas en Rust | Comunidad y cliente PYME |
 
 ## Por qué ocho, y no uno
 
@@ -59,7 +59,7 @@ Las seis composiciones canónicas se cubren en detalle en [[deployment-patterns]
 
 ## La disciplina Diodo
 
-En los ocho, el flujo de comandos es unidireccional. `os-console` y `os-orchestration` pueden emitir comandos a los demás. Los demás emiten telemetría hacia arriba — nunca comandos en dirección inversa. Esta restricción se aplica a nivel del protocolo [[diode-standard|Diodo]], no por política. Una instancia comprometida de `os-mediakit` orientada al público no puede alcanzar un `os-totebox` corporativo porque el código para hacerlo está ausente del binario.
+En los ocho, el flujo de comandos es unidireccional. `os-console` y `os-orchestration` pueden emitir comandos a los demás. Los demás emiten [[sovereign-telemetry|telemetría]] hacia arriba — nunca comandos en dirección inversa. Esta restricción se aplica a nivel del protocolo [[diode-standard|Diodo]], no por política. Una instancia comprometida de `os-mediakit` orientada al público no puede alcanzar un `os-totebox` corporativo porque el código para hacerlo está ausente del binario. El principio de la [[sovereign-airlock-doctrine|exclusa soberana]] describe por qué el código ausente es el único mecanismo de cumplimiento fiable.
 
 ## Véase también
 

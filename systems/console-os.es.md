@@ -23,7 +23,7 @@ references:
  url: "https://www.iso.org/standard/68078.html"
 ---
 
-`os-console` es la superficie de cara al operador de la plataforma PointSav — un Libro Mayor de Comandos que se conecta a un [[totebox-os|Totebox]] y le presenta su estado al operador. No almacena datos ni ejecuta servicios; es un terminal de alta fidelidad diseñado específicamente para el flujo de trabajo del operador mediante teclado. El punto de referencia es el Bloomberg Terminal: un único teclado, un pequeño conjunto de teclas de función y un enfoque implacable en el contexto del operador. El binario está escrito desde cero en Rust para un arranque en frío por debajo de los 50 milisegundos y un tamaño de 15 megabytes. Este artículo cubre el funcionamiento de os-console, la superficie de teclas de función, la pila de renderizado y los dos modos de operación.
+`os-console` es la superficie de cara al operador de la plataforma PointSav — un Libro Mayor de Comandos que se conecta a un [[totebox-os|Totebox]] y le presenta su estado al operador. No almacena datos ni ejecuta servicios; es un terminal de alta fidelidad diseñado específicamente para el flujo de trabajo del operador mediante teclado. El punto de referencia es el Bloomberg Terminal: un único teclado, un pequeño conjunto de [[os-console-platform|teclas de función]], y un enfoque implacable en el contexto del operador. El binario está escrito desde cero en Rust para un arranque en frío por debajo de los 50 milisegundos y un tamaño de 15 megabytes. Este artículo cubre el funcionamiento de os-console, la superficie de teclas de función, la pila de renderizado y los dos modos de operación.
 
 ## Cómo funciona
 
@@ -35,7 +35,7 @@ references:
 | macOS | `Hypervisor.framework` |
 | Linux | KVM |
 
-El operador cree que abrió una aplicación. Lo que hizo fue iniciar un entorno seguro con aislamiento de hardware en aproximadamente 50 milisegundos. Cuando la aplicación se cierra, la memoria segura se borra. Nada toca el disco duro del anfitrión.
+El operador cree que abrió una aplicación. Lo que hizo fue iniciar un entorno seguro con aislamiento de hardware en aproximadamente 50 milisegundos. Cuando la aplicación se cierra, la memoria segura se borra. Nada toca el disco duro del anfitrión. El modelo de seguridad depende de [[machine-based-auth|emparejamientos vinculados al hardware]] en lugar de nombres de usuario o contraseñas.
 
 ## La superficie de teclas de función
 
@@ -80,7 +80,7 @@ Ambos modos utilizan el mismo binario de `os-console`. El agregador no requiere 
 
 ## Único, unificado, universal
 
-`os-console` es un único producto. No existe edición "Doméstica" ni edición "Pro". Un individuo que aloja un Totebox utiliza el mismo Libro Mayor de Comandos que el administrador de un Emisor Informante que agrega cientos. La diferenciación comercial la determina la presencia o ausencia de `os-orchestration`, nunca una Consola escalonada.
+`os-console` es un único producto. No existe edición "Doméstica" ni edición "Pro". Un individuo que aloja un Totebox utiliza el mismo Libro Mayor de Comandos que el administrador de un [[compliance-and-continuous-disclosure|Emisor Informante]] que agrega cientos. La diferenciación comercial la determina la presencia o ausencia de `os-orchestration`, nunca una Consola escalonada. La [[six-tier-sovereignty-matrix|matriz de soberanía de seis niveles]] rige cómo se estructuran los niveles comerciales en toda la plataforma.
 
 ## Véase también
 

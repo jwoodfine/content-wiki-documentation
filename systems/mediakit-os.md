@@ -16,7 +16,7 @@ short_description: "os-mediakit is the public-facing operating system in the Poi
 cites: []
 ---
 
-`os-mediakit` is the public-facing operating system in the PointSav family. It hosts a company's marketing website, its internal wiki, and its compliance newsroom — three workloads that typically live on rented third-party platforms and that disappear the moment a subscription ends. The target operator is a Reporting Issuer: a company with statutory disclosure obligations that needs mathematical proof of what it disclosed and exactly when. `os-mediakit` is built on a hardened FreeBSD base and ships three application surfaces as isolated workloads. This article covers the three surfaces, the FreeBSD licensing rationale, the Compliance Ledger, the Diode adapter, and the two deployment postures.
+`os-mediakit` is the public-facing operating system in the PointSav family. It hosts a company's marketing website, its internal wiki, and its compliance newsroom — three workloads that typically live on rented third-party platforms and that disappear the moment a subscription ends. The target operator is a [[compliance-and-continuous-disclosure|Reporting Issuer]]: a company with statutory disclosure obligations that needs mathematical proof of what it disclosed and exactly when. `os-mediakit` is built on a hardened FreeBSD base and ships three application surfaces as isolated workloads. This article covers the three surfaces, the FreeBSD licensing rationale, the [[worm-ledger-design|Compliance Ledger]], the [[diode-standard|Diode]] adapter, and the two deployment postures.
 
 ## The three application surfaces
 
@@ -24,8 +24,8 @@ cites: []
 
 | Surface | Engine | Role |
 |---|---|---|
-| `app-mediakit-marketing` | Stripped static site engine with a Rust cache layer | Public landing pages and investor-relations pages |
-| `app-mediakit-knowledge` | Markdown wiki engine with content-contract-conforming storage | Corporate wiki, project wiki, documentation wiki |
+| [[app-mediakit-marketing\|`app-mediakit-marketing`]] | Stripped static site engine with a Rust cache layer | Public landing pages and investor-relations pages |
+| [[app-mediakit-knowledge\|`app-mediakit-knowledge`]] | Markdown wiki engine with content-contract-conforming storage | Corporate wiki, project wiki, documentation wiki |
 | `app-mediakit-distribution` | Push-based compliance feed engine | Press releases, regulatory filings, executive commentary |
 
 ## Why FreeBSD
@@ -67,7 +67,7 @@ The adapter is a separately installed package. Operators who do not need fleet m
 | Standalone | A freelancer or SMB hosting one or two public sites | Local TUI accessed by SSH |
 | Federated | A commercial operator managing many sites from a central fleet | The local TUI becomes a status monitor; control passes to `os-orchestration` |
 
-Both postures use the same `os-mediakit` binary. The transition is one command: install the adapter package, perform a one-time pairing handshake, and the MediaKit instance joins the fleet.
+Both postures use the same `os-mediakit` binary. The transition is one command: install the adapter package, perform a one-time [[machine-based-auth|pairing handshake]], and the MediaKit instance joins the [[sovereign-mesh|fleet mesh]].
 
 ## See also
 

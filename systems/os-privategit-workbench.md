@@ -12,9 +12,9 @@ editor: pointsav-engineering
 paired_with: os-privategit-workbench.es.md
 ---
 
-`app-privategit-workbench` is a browser-based file editor included in the `os-privategit` host operating system. It presents a local HTTP endpoint that serves a single-page application with a three-column layout: a file tree sidebar, a content viewer, and a plain-text editor.
+`app-privategit-workbench` is a browser-based file editor included in the [[os-privategit|`os-privategit`]] host operating system. It presents a local HTTP endpoint that serves a single-page application with a three-column layout: a file tree sidebar, a content viewer, and a plain-text editor.
 
-The workbench is the primary authoring and review surface for Totebox Orchestration operators and Community Members who want direct browser-based access to their archive tree without a terminal session. It is not a publication surface — it writes to the local filesystem and relies on the existing commit and promote pipeline for version control.
+The workbench is the primary authoring and review surface for [[totebox-orchestration|Totebox Orchestration]] operators and Community Members who want direct browser-based access to their [[totebox-archive|archive tree]] without a terminal session. It is not a publication surface — it writes to the local filesystem and relies on the existing commit and promote pipeline for version control.
 
 ## Architecture
 
@@ -44,7 +44,7 @@ The editor panel appears when the open file is in a writable root. It provides l
 
 ## Security model
 
-The write-service enforces four layers of containment:
+The write-service enforces four layers of containment aligned with the [[pre-commit-defense-in-depth|defence-in-depth]] approach used throughout the platform:
 
 **Root containment:** Every path is canonicalized with `std::fs::canonicalize` and verified to remain within the declared root's filesystem path. Paths that resolve outside the root are rejected with HTTP 400.
 
@@ -68,3 +68,5 @@ Phase 4 is planned to integrate CodeMirror 6 for syntax highlighting and to intr
 
 - [[os-privategit]] — the host operating system that includes the workbench
 - [[totebox-archive]] — the Totebox Archive that operators work with through the workbench
+- [[machine-based-auth]] — the authorization model for authenticated workbench roots
+- [[os-family-overview]] — the eight-OS family and how os-privategit fits

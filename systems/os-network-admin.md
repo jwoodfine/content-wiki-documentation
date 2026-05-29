@@ -16,7 +16,7 @@ short_description: "os-network-admin is the control plane for a PointSav fleet �
 cites: []
 ---
 
-`os-network-admin` is the control plane for a PointSav fleet — one instance per deployment, managing the pairing registry, Diode enforcement rules, and WireGuard mesh routing policy for all `os-infrastructure` nodes in the fleet. Administrators compose commands on an F8 semantic terminal, where plain-language intent is translated locally by `service-slm` into 16-byte binary commands that broadcast across the mesh simultaneously to every node. There is no central message broker and no third-party service involved in this path. This article covers the control plane's role, the command dispatch architecture, and the relationship between `os-network-admin` and the `os-infrastructure` nodes it governs.
+`os-network-admin` is the control plane for a PointSav fleet — one instance per deployment, managing the pairing registry, [[diode-standard|Diode]] enforcement rules, and WireGuard mesh routing policy for all [[infrastructure-os|`os-infrastructure`]] nodes in the fleet. Administrators compose commands on an F8 semantic terminal, where plain-language intent is translated locally by [[service-slm|`service-slm`]] into 16-byte binary commands that broadcast across the [[sovereign-mesh|mesh]] simultaneously to every node. There is no central message broker and no third-party service involved in this path. This article covers the control plane's role, the command dispatch architecture, and the relationship between `os-network-admin` and the `os-infrastructure` nodes it governs.
 
 ## The control plane role
 
@@ -24,10 +24,10 @@ cites: []
 
 | Function | Description |
 |---|---|
-| Pairing registry | Maintains the authoritative list of valid `service-pairing` entries across the fleet; issues and revokes hardware-bound fiduciary tokens |
+| Pairing registry | Maintains the authoritative list of valid `service-pairing` entries across the fleet; issues and revokes hardware-bound [[machine-based-auth|fiduciary tokens]] |
 | Diode rule enforcement | Defines which command flows are permitted between fleet members per the [[diode-standard|Diode Standard]]; changes propagate to all nodes via mesh broadcast |
 | Mesh routing policy | Manages the WireGuard overlay topology — peer lists, allowed IP ranges, handshake schedules |
-| Fleet claims | Accepts incoming Genesis Protocol claim requests from new `os-infrastructure` nodes joining the fleet |
+| Fleet claims | Accepts incoming [[genesis-protocol|Genesis Protocol]] claim requests from new `os-infrastructure` nodes joining the fleet |
 
 ## The F8 terminal and command dispatch
 
@@ -51,7 +51,7 @@ The translation layer is invisible at the protocol boundary — the mesh sees on
 | `os-infrastructure` | Compute substrate — boots on hardware, runs the WireGuard peer, hosts Totebox and other OS instances |
 | `os-network-admin` | Control plane — governs the fleet, owns the pairing registry, broadcasts commands |
 
-A minimal fleet is one `os-network-admin` instance and one or more `os-infrastructure` nodes. The control plane does not run on the same node as the compute substrate in production deployments, though a single-machine development configuration is possible.
+A minimal fleet is one `os-network-admin` instance and one or more `os-infrastructure` nodes. The control plane does not run on the same node as the compute substrate in production deployments, though a single-machine development configuration is possible. The [[pointsav-private-network|PointSav Private Network]] article describes the WireGuard mesh topology in full.
 
 ## See also
 
