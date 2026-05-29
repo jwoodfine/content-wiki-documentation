@@ -14,7 +14,7 @@ cites: []
 paired_with: code-for-machines-first.es.md
 ---
 
-**Code-for-Machines First** is the design discipline that every inter-service contract, audit record, configuration file, and ontology must be machine-readable as its primary surface. Human-facing interfaces — the operator TUI, web interfaces, mobile clients — are skins over machine-first APIs.
+**Code-for-Machines First** is the design discipline that every inter-service contract, audit record, configuration file, and ontology must be machine-readable as its primary surface. Human-facing interfaces — the operator TUI, web interfaces, mobile clients — are skins over machine-first APIs. The discipline is a structural property of the [[compounding-substrate]], not a convention enforced by tooling alone.
 
 ## The data formats
 
@@ -30,9 +30,9 @@ Every artefact is machine-mutable and machine-introspectable. The MCP `describe`
 
 **Customer extension without forking.** Customers add vertical-specific data sources by writing MCP servers. They use the same protocol all built-in services use. There is no bespoke adapter required to connect a customer-built tool to the platform.
 
-**AI-native composition.** The substrate is consumable by AI agents — task sessions, customer-built agents, partner integrations — without a retrofit step. This is what makes the [[knowledge-graph-grounded-apprenticeship]] pattern possible: the graph is already machine-readable; the Doorman can query it programmatically at inference time.
+**AI-native composition.** The substrate is consumable by AI agents — task sessions, customer-built agents, partner integrations — without a retrofit step. This is what makes the [[knowledge-graph-grounded-apprenticeship]] pattern possible: the graph is already machine-readable; the [[compounding-doorman|Doorman]] can query it programmatically at inference time.
 
-**Migration ease.** Data export is a routine machine operation producing an open-format bundle (see [[substrate-without-inference-base-case]]). There is no migration project involving vendor cooperation, because the data was never locked in a vendor-specific format.
+**Migration ease.** Data export is a routine machine operation producing an open-format bundle (see [[substrate-without-inference-base-case]]). There is no migration project involving vendor cooperation, because the data was never locked in a vendor-specific format — a direct consequence of [[customer-hostability|customer-hostability design]].
 
 ## The two narrow exceptions
 

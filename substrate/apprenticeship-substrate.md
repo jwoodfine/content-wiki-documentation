@@ -18,11 +18,11 @@ paired_with: apprenticeship-substrate.es.md
 
 When a senior engineer reviews a junior's work, the correction is the most valuable artifact in the room — and almost every organization discards it. The reasoning behind a fix is spoken once, applied once, and never captured. The next junior, and the next model, start from zero.
 
-The apprenticeship substrate captures it. <!--claim id=route-and-capture confidence=structural cites=[]-->Every code-shaped and editorial task is routed first through a local Small Language Model; a senior reviewer then signs a verdict on the attempt. The signed disagreement between apprentice attempt and senior verdict becomes preference-pair training data.<!--/claim-->
+The apprenticeship substrate captures it. <!--claim id=route-and-capture confidence=structural cites=[]-->Every code-shaped and editorial task is routed first through a local [[service-slm|Small Language Model]]; a senior reviewer then signs a verdict on the attempt. The signed disagreement between apprentice attempt and senior verdict becomes preference-pair training data.<!--/claim-->
 
 <!--claim id=three-stage-routing confidence=structural cites=[]-->Routing runs in three stages per task type — `review`, `spot-check`, and `autonomous` — with quantified promotion thresholds. A graduated task type eliminates senior-author tokens on that class of work, and shadow routing harvests training data from every other code-shaped commit across the fleet.<!--/claim-->
 
-For a regulated buyer the consequence is concrete. The AI improves on the organization's own work, and that work never leaves the deployment. Per `[ni-51-102]` continuous-disclosure language, the trajectory toward token elimination across graduated task types is forward-looking; the routing structure is operational today.
+For a regulated buyer the consequence is concrete. The AI improves on the organization's own work, and that work never leaves the deployment. Per `[ni-51-102]` [[disclosure-substrate|continuous-disclosure]] language, the trajectory toward token elimination across graduated task types is forward-looking; the routing structure is operational today.
 
 ## Overview
 
@@ -32,7 +32,7 @@ This routing pattern produces those interaction tuples on real production work, 
 
 ## Ring and role
 
-The apprenticeship substrate spans Ring 3 — Optional Intelligence — and the training-corpus infrastructure. `service-slm`, the Doorman, is the Ring 3 service that executes apprentice routing. The promotion ledger and the corpus-capture scripts live inside the customer's own deployment. The substrate is active whenever a session issues a brief rather than authoring directly.
+The apprenticeship substrate spans Ring 3 — Optional Intelligence — and the training-corpus infrastructure. [[service-slm]], the [[compounding-doorman|Doorman]], is the Ring 3 service that executes apprentice routing. The promotion ledger and the corpus-capture scripts live inside the customer's own deployment. The substrate is active whenever a session issues a brief rather than authoring directly.
 
 ## The three stages
 
@@ -72,7 +72,7 @@ Production routing eliminates senior tokens on graduated types. Shadow routing g
 
 ## Capture pipeline
 
-The apprenticeship corpus is a fourth corpus alongside the constitutional, engineering, and tenant-runtime corpora. Per-tenant partitioning lives at the directory level:
+The apprenticeship corpus is a fourth corpus alongside the constitutional, engineering, and tenant-runtime corpora. Per-tenant partitioning lives at the directory level (see [[totebox-archive|Totebox]] storage layout):
 
 ```
 data/training-corpus/apprenticeship/<task-type>/<tenant>/<ulid>.jsonl
@@ -84,9 +84,9 @@ One file holds one (brief, attempt, verdict) triple. <!--claim id=tenant-private
 
 The first registered task type is `version-bump-manifest`. Every platform MINOR and PATCH bump touches `MANIFEST.md` and `CHANGELOG.md`: well-shaped work, no architectural judgment, easily verifiable. The apprentice graduates this type first; senior tokens drop on this class of work; the next task type registers.
 
-<!--claim id=four-conditions confidence=structural cites=[]-->Four conditions make the substrate work, and all four are structural properties of a customer-owned deployment: a per-customer governance charter, per-customer signing identities, per-customer task-type granularity in the promotion ledger, and per-customer continued pretraining.<!--/claim--> A cloud-managed AI platform lacks all four — training on customer interaction data requires pooling it, which eliminates the per-customer isolation guarantee.
+<!--claim id=four-conditions confidence=structural cites=[]-->Four conditions make the substrate work, and all four are structural properties of a [[customer-hostability|customer-owned deployment]]: a per-customer governance charter, per-customer signing identities, per-customer task-type granularity in the promotion ledger, and per-customer continued pretraining.<!--/claim--> A cloud-managed AI platform lacks all four — training on customer interaction data requires pooling it, which eliminates the per-customer isolation guarantee.
 
-The end state is a continuum: code-shaped work the apprentice handles autonomously, work it handles under spot-check, and work that still requires senior review. The continuum shifts as the corpus matures. Per `[ni-51-102]`, the trajectory toward token elimination is forward-looking; the routing shape is in place today.
+The end state is a continuum: code-shaped work the apprentice handles autonomously, work it handles under spot-check, and work that still requires senior review. The continuum shifts as the corpus matures. Per `[ni-51-102]`, the trajectory toward token elimination is forward-looking; the [[adapter-composition|routing shape]] is in place today.
 
 ## See also
 

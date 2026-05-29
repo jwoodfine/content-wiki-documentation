@@ -17,11 +17,11 @@ paired_with: brief-queue-substrate.md
 ---
 
 
-El **Sustrato de Cola de Briefs** es una cola persistente respaldada en archivos que conecta el flujo editorial de la plataforma PointSav con el sistema de captura del corpus de aprendizaje. Su propósito central es recibir registros de ejecución de briefs — eventos en formato JSON Lines que describen una operación editorial — y conservarlos de forma confiable hasta que el proceso de vaciado pueda escribirlos en el corpus a largo plazo.
+El **Sustrato de Cola de Briefs** es una cola persistente respaldada en archivos que conecta el flujo editorial de la plataforma PointSav con el sistema de captura del [[apprenticeship-substrate|corpus de aprendizaje]]. Su propósito central es recibir registros de ejecución de briefs — eventos en formato JSON Lines que describen una operación editorial — y conservarlos de forma confiable hasta que el proceso de vaciado pueda escribirlos en el corpus a largo plazo.
 
 ## El problema que resuelve
 
-El nivel de cómputo Yo-Yo (OLMo 3.1 32B Think en GPU en ráfaga) se apaga automáticamente tras un período de inactividad para evitar costos innecesarios. Sin la cola, cualquier evento generado durante una sesión Yo-Yo tendría que escribirse sincrónicamente en el corpus antes del apagado, acoplando el bucle de inferencia del modelo de lenguaje a operaciones de disco. Con la cola, el bucle de inferencia escribe un archivo ligero en el directorio `queue/` y continúa; el proceso de vaciado gestiona la persistencia del corpus de forma independiente. El apagado puede ocurrir en cuanto termina la inferencia, sin eventos pendientes.
+El [[yoyo-compute-substrate|nivel de cómputo Yo-Yo]] (OLMo 3.1 32B Think en GPU en ráfaga) se apaga automáticamente tras un período de inactividad para evitar costos innecesarios. Sin la cola, cualquier evento generado durante una sesión Yo-Yo tendría que escribirse sincrónicamente en el corpus antes del apagado, acoplando el bucle de inferencia del modelo de lenguaje a operaciones de disco. Con la cola, el bucle de inferencia escribe un archivo ligero en el directorio `queue/` y continúa; el proceso de vaciado gestiona la persistencia del corpus de forma independiente. El apagado puede ocurrir en cuanto termina la inferencia, sin eventos pendientes.
 
 El mismo mecanismo absorbe los eventos de apropiación de instancias spot en proveedores de nube: los archivos en `queue/` y `queue-in-flight/` sobreviven a la apropiación porque residen en almacenamiento persistente, no en el almacenamiento efímero de la instancia.
 
@@ -38,11 +38,11 @@ El patrón de arrendamiento por renombre atómico garantiza que exactamente un p
 
 ## Por qué archivos JSONL y no un broker de mensajes
 
-La elección de archivos JSONL locales en lugar de un broker como NATS JetStream o Redis Streams responde al principio de soberanía de la plataforma: el productor de la cola, el consumidor y el almacenamiento del corpus residen en la misma máquina o volumen persistente en la nube. Un broker de red añadiría latencia y un modo de fallo sin aportar una capacidad que la plataforma requiera a esta escala. Los archivos JSONL son directamente inspeccionables con cualquier editor de texto, alineados con el principio de diseño de solo-texto-plano de la plataforma.
+La elección de archivos JSONL locales en lugar de un broker como NATS JetStream o Redis Streams responde al principio de [[compounding-substrate|soberanía de la plataforma]]: el productor de la cola, el consumidor y el almacenamiento del corpus residen en la misma máquina o volumen persistente en la nube. Un broker de red añadiría latencia y un modo de fallo sin aportar una capacidad que la plataforma requiera a esta escala. Los archivos JSONL son directamente inspeccionables con cualquier editor de texto, alineados con el principio de diseño de solo-texto-plano de la plataforma.
 
 ## Estado de implementación
 
-La convención del Sustrato de Cola de Briefs fue ratificada en la versión v0.1.78 del workspace. La implementación — API de cola, proceso de vaciado en el Doorman, y graduación del hook post-commit — está en curso dentro del ámbito de ingeniería del servicio SLM. El formato del corpus JSONL no cambia; solo el camino de escritura.
+La convención del Sustrato de Cola de Briefs fue ratificada en la versión v0.1.78 del workspace. La implementación — API de cola, proceso de vaciado en el [[compounding-doorman|Doorman]], y graduación del hook post-commit — está en curso dentro del ámbito de ingeniería del [[service-slm|servicio SLM]]. El formato del corpus JSONL no cambia; solo el camino de escritura.
 
 ## Véase también
 

@@ -17,7 +17,7 @@ cites: []
 
 > El Sustrato del Libro de Capacidades es el mecanismo por el cual cada decisión de control de acceso en un despliegue de plataforma se convierte en un evento criptográficamente auditable, anclado en un registro que controla el cliente.
 
-Extiende el modelo de capacidades nativo del microkernel seL4 — verificado formalmente — con una capa de transparencia que hace que el registro de auditoría sea portátil, de raíz del cliente y verificable por terceros sin ninguna relación de confianza con el operador.
+Extiende el modelo de capacidades nativo del [[sel4-microkernel-substrate|microkernel seL4]] — verificado formalmente — con una capa de transparencia que hace que el registro de auditoría sea portátil, de raíz del cliente y verificable por terceros sin ninguna relación de confianza con el operador.
 
 
 ## Resumen
@@ -38,7 +38,7 @@ checkpoints publicados sin acceder al registro completo.
 
 El resultado es un sustrato de seguridad con dos capas verificables
 independientemente: la capa del kernel (prueba formal de seL4) y la capa del
-libro (registro de auditoría Merkle, que no puede ser reescrito sin las claves
+libro ([[worm-ledger-design|registro de auditoría Merkle]], que no puede ser reescrito sin las claves
 apex del cliente). La combinación es lo que el Sustrato del Libro de
 Capacidades nombra como el salto adelante.
 
@@ -118,13 +118,13 @@ de extremo a extremo de la ceremonia de traspaso completa.
 
 ### §8 — Relación con el libro WORM
 
-Describe la relación arquitectónica: el sustrato WORM es la capa de
+Describe la relación arquitectónica: el [[worm-ledger-architecture|sustrato WORM]] es la capa de
 almacenamiento de registros fundamental. `service-fs` (Ring 1) es el
 consumidor a nivel de aplicación. `system-ledger` es el consumidor a nivel de
 sustrato. Ambos usan el mismo formato de nota firmada C2SP; ambos verifican
 firmas ed25519 del apex; la diferencia es la posición de despliegue
 (kernel-adyacente vs. espacio de usuario) y el presupuesto de latencia. El
-`system-core` compartido evita la duplicación de la mecánica de pruebas entre
+`system-core` compartido evita la duplicación de la mecánica de [[merkle-proofs-as-substrate-primitive|pruebas]] entre
 consumidores.
 
 ### §9 — Referencias cruzadas

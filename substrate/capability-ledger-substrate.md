@@ -24,7 +24,7 @@ paired_with: capability-ledger-substrate.es.md
 
 > The Capability Ledger Substrate is the mechanism by which every access-control decision in a platform deployment becomes a cryptographically auditable event anchored to a log the customer controls.
 
-The Capability Ledger Substrate extends the seL4 microkernel's native capability model — which is correct by formal proof — with a transparency layer that makes the audit record portable, customer-rooted, and verifiable by third parties without any trust relationship with the operator.
+The Capability Ledger Substrate extends the [[sel4-microkernel-substrate|seL4 microkernel's]] native capability model — which is correct by formal proof — with a transparency layer that makes the audit record portable, customer-rooted, and verifiable by third parties without any trust relationship with the operator.
 
 
 ## 1. What the Capability Ledger Substrate is
@@ -34,7 +34,7 @@ process wants to write to a memory region, open a file, or send a network
 packet, the kernel decides whether the process is permitted. This decision is
 what "access control" means at the system layer.
 
-The seL4 microkernel makes access-control decisions using *capabilities* —
+The [[sel4-microkernel-substrate|seL4 microkernel]] makes access-control decisions using *capabilities* —
 unforgeable tokens that encode exactly what resource a process holds and what
 operations it may perform on that resource. A process that does not hold a
 valid capability for a resource cannot access it; there is no override, no
@@ -51,8 +51,7 @@ without access to the full log.
 
 The result is a security substrate with two independently verifiable layers:
 the kernel layer (seL4 formal proof — the kernel cannot be misled into
-honoring a capability it should refuse) and the ledger layer (Merkle audit
-trail — the history of capability state changes cannot be rewritten without
+honoring a capability it should refuse) and the ledger layer ([[worm-ledger-design|Merkle audit trail]] — the history of capability state changes cannot be rewritten without
 the customer's apex keys). The combination is what the Capability Ledger
 Substrate names as the leapfrog: neither layer alone provides both properties.
 
@@ -310,11 +309,10 @@ in the `full_handover_ceremony_end_to_end` integration test.
 
 ## 8. Relationship to the WORM ledger
 
-The WORM (Write-Once Read-Many) ledger substrate is the foundational
+The [[worm-ledger-architecture|WORM]] (Write-Once Read-Many) ledger substrate is the foundational
 record-storage layer of the Foundry architecture. It implements a C2SP
 tlog-tiles compatible transparency log: append-only, content-addressed,
-cryptographically signed by an apex. Service-level consumers (notably
-`service-fs`, the Ring 1 WORM backend) interact with it at the application
+cryptographically signed by an apex. Service-level consumers interact with it at the application
 tier.
 
 The Capability Ledger Substrate is the substrate-tier consumer of the same
@@ -351,7 +349,7 @@ its own tier.
   customer-rooted Merkle-log binding in platform deployments. Every
   capability authorization is anchored to a customer-held transparency log.
 
-- **The Two-Bottoms Sovereign Substrate** — the Two-Bottoms composition
+- **The Two-Bottoms Sovereign Substrate** — the [[system-substrate-doctrine|Two-Bottoms composition]]
   (seL4 native-bottom + NetBSD compat-bottom) shares the same capability
   ledger substrate. The audit trail travels with the capability regardless
   of which bottom it runs on.
@@ -361,12 +359,12 @@ its own tier.
   (N+3+ apex handover ceremony), §5.1 (WitnessRecord schema and Mechanism A),
   §6.1 (reproducible-verification artefact format), §8 (scoresheet).
 
-- **WORM ledger design**
+- **[[worm-ledger-design|WORM ledger design]]**
   The foundational record-storage layer. §3 D1 (C2SP tlog-tiles wire format),
   §3 D3 (SHA-256 baseline). The Capability Ledger is a substrate-tier
   consumer of the same design.
 
-- **`topic-merkle-proofs-as-substrate-primitive.md`**
+- **[[merkle-proofs-as-substrate-primitive]]**
   Companion technical article covering RFC 9162 inclusion and consistency
   proofs, the `InclusionProof` and `ConsistencyProof` structs, verification
   algorithms, and performance benchmarks. Read alongside this article for the

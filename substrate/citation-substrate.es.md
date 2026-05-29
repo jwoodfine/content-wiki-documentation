@@ -24,7 +24,7 @@ Al 27 de abril de 2026, el registro contiene 62 entradas que cubren instrumentos
 
 Tres componentes trabajan en conjunto: un registro central con una entrada por identificador de cita; campos `cites:` en el encabezado por documento que hacen las dependencias legibles por máquina; y sintaxis `[id]` en línea en el cuerpo del texto que marca cada referencia con su identificador resoluble en el registro. Un proceso nocturno automatizado descarga cada URL registrada, verifica el hash del contenido y presenta cambios materiales o enlaces rotos para revisión humana antes de que se propaguen al contenido publicado.
 
-Para compradores regulados, esto significa que cada afirmación sobre propiedades de cumplimiento — inmutabilidad de registros, pistas de auditoría de IA, residencia de datos — lleva una base declarada rastreable. Un responsable de cumplimiento que audite documentación sobre la Regla SEC 17a-4(f) puede seguir la cita hasta el instrumento regulatorio primario sin acceder a sistemas internos. Esto satisface el requisito de "base declarada" bajo `[ni-51-102]` y `[osc-sn-51-721]` para información prospectiva en contenido público.
+Para compradores regulados, esto significa que cada afirmación sobre propiedades de cumplimiento — inmutabilidad de registros, pistas de auditoría de IA, residencia de datos — lleva una base declarada rastreable. Un responsable de cumplimiento que audite documentación sobre la Regla SEC 17a-4(f) puede seguir la cita hasta el instrumento regulatorio primario sin acceder a sistemas internos. Esto satisface el requisito de "base declarada" bajo `[ni-51-102]` y `[osc-sn-51-721]` para información prospectiva en [[disclosure-substrate|contenido público]].
 
 ## Componentes
 
@@ -40,7 +40,7 @@ Para compradores regulados, esto significa que cada afirmación sobre propiedade
 
 **Prevención de divergencia.** Un corpus que crece a lo largo de sesiones, colaboradores y años puede producir documentos que citan la misma autoridad pero hacen afirmaciones contradictorias. El proceso de detección de divergencias del ciclo nocturno de higiene identifica exactamente estos pares y los presenta para revisión antes de que se propaguen al contenido publicado o a los datos de entrenamiento.
 
-**Compuesto de conocimiento público.** Los repositorios de contenido wiki son la parte pública del [[compounding-substrate|Sustrato Compuesto]]. Las citas viajan con el contenido hacia cualquier exportación, espejo o corpus derivado. Un lector o un consumidor de máquina puede seguir la cita hasta la fuente primaria sin necesidad de confiar en las afirmaciones propias de la plataforma.
+**Compuesto de conocimiento público.** Los repositorios de contenido wiki son la parte pública del [[compounding-substrate|Sustrato Compuesto]]. Las citas viajan con el contenido hacia cualquier exportación, espejo o corpus derivado, de acuerdo con el [[knowledge-commons|modelo de publicación en los comunes]]. Un lector o un consumidor de máquina puede seguir la cita hasta la fuente primaria sin necesidad de confiar en las afirmaciones propias de la plataforma.
 
 ## Estado y planificación
 
@@ -49,7 +49,7 @@ El sistema de citas actualmente requiere disciplina manual: la entrada del regis
 - Un gancho post-commit que valida que cada nueva referencia `[id]` se resuelva en el registro.
 - Generación automática de una sección de referencias al final de cada artículo, conectada a `app-mediakit-knowledge` como etapa del renderizador.
 - Un índice inverso `cited_by:` reconstruido bajo demanda por el servicio [[service-slm]].
-- Ciclos nocturnos de higiene cubriendo verificación de citas, detección de deriva, indexación inversa y sugerencias de citas — todo como sugerencias al mantenedor, no como correcciones automatizadas.
+- Ciclos nocturnos de higiene cubriendo verificación de citas, detección de deriva, indexación inversa y sugerencias de citas — todo como sugerencias al mantenedor, no como correcciones automatizadas (ver [[nightly-datagraph-rebuild]]).
 
 ## Véase también
 

@@ -17,11 +17,11 @@ cites:
 paired_with: adapter-composition.es.md
 ---
 
-The **Adapter Composition Algebra** is the model that governs how AI intelligence is assembled at request time in a PointSav deployment. Its central metaphor maps precisely to an operating system: the Doorman (`service-slm`) is the kernel; LoRA adapters are processes; `service-content` is the filesystem; the base model is firmware. The analogy is not illustrative — it is operational.
+The **Adapter Composition Algebra** is the model that governs how AI intelligence is assembled at request time in a PointSav deployment. Its central metaphor maps precisely to an operating system: the Doorman ([[service-slm]]) is the kernel; LoRA adapters are processes; [[service-content]] is the filesystem; the base model is firmware. The analogy is not illustrative — it is operational.
 
 ## The algebra
 
-At request time, the Doorman composes adapters by stacking onto the base model:
+At request time, the [[compounding-doorman|Doorman]] composes adapters by stacking onto the base model:
 
 ```
 composed_weights =
@@ -47,7 +47,7 @@ The composition is deterministic given the request context. There is no runtime 
 | `role` | Request originates from a Master/Root/Task session | Universal across deployments; learned from doctrine and role-tagged trajectories |
 | `cluster` | Request scope is a specific project cluster | Per-cluster; declared in the cluster manifest |
 
-The constitutional adapter is universal and is loaded by every platform deployment. The tenant adapter is strictly per-tenant and is produced and held inside the Customer Totebox. The engineering adapter ships with the knowledge commons and is not treated as private vendor IP.
+The constitutional adapter is universal and is loaded by every platform deployment. The tenant adapter is strictly per-tenant and is produced and held inside the Customer [[totebox-archive|Totebox]]. The engineering adapter ships with the [[knowledge-commons]] and is not treated as private vendor IP.
 
 ## Implementation
 
@@ -57,13 +57,13 @@ The algebra runs on production 2026 multi-LoRA serving infrastructure:
 - **S-LoRA** — adapter isolation per dynamic computation; shared static backbone via secure IPC; significant time-to-first-token reduction
 - **vLLM Multi-LoRA** — hot-swap at request time without reloading the base model
 
-PointSav's contribution is the composition pattern — which adapters compose, in what order, under what doctrinal constraint — not the serving layer itself.
+PointSav's contribution is the composition pattern — which adapters compose, in what order, under what doctrinal constraint — not the [[yoyo-compute-substrate|serving layer]] itself.
 
 ## Adapter versioning
 
 Each adapter carries a name, a semver version, the doctrine version it was trained against, a provenance field naming the corpus shards it was distilled from, and a signature signed by the trainer's identity. A composed request must reconcile adapter versions. The default policy loads adapters whose `doctrine_version` matches the deployment's current `doctrine_version`. Version mismatch surfaces as an operational signal — the deployment's MANIFEST records the active doctrine version and the discrepancy becomes visible.
 
-This solves AI drift at the substrate level: the model is verifiably aligned to a specific doctrine version, and any mismatch is a first-class observable rather than a silent degradation.
+This solves AI drift at the [[compounding-substrate|substrate]] level: the model is verifiably aligned to a specific doctrine version, and any mismatch is a first-class observable rather than a silent degradation.
 
 ## The OS-of-AI metaphor
 
@@ -84,17 +84,17 @@ The analogy maps precisely:
 
 Customers install and uninstall adapters as packages. Adapter signatures are verified before composition. Per-tenant isolation is enforced at the serving layer the way virtual memory isolation is enforced at the kernel layer.
 
-This frames the substrate for small and medium businesses as **the operating system of AI** — composable intelligence with a flat architecture rather than a single closed product. Any adapter can be swapped without touching the others. The customer owns the adapters trained on their own corpus. The doctrine is the soul; the corpus is the mind; the adapters are the personality.
+This frames the [[compounding-substrate|substrate]] for small and medium businesses as **the operating system of AI** — composable intelligence with a flat architecture rather than a single closed product. Any adapter can be swapped without touching the others. The customer owns the adapters trained on their own corpus. The doctrine is the soul; the corpus is the mind; the adapters are the personality.
 
 ## Practical composition ceiling
 
-Production multi-LoRA research demonstrates that composing 2–3 adapters per request works cleanly. Composing 5 or more adapters per request crosses into multi-task interference. The algebra stays at a maximum of three runtime adapters per request by design. Register, brand voice, document sub-type, and target audience parameters live in prompt scaffolding (the genre template layer), not as additional adapters.
+Production multi-LoRA research demonstrates that composing 2–3 adapters per request works cleanly. Composing 5 or more adapters per request crosses into multi-task interference. The algebra stays at a maximum of three runtime adapters per request by design. Register, brand voice, document sub-type, and target audience parameters live in prompt scaffolding (the [[language-protocol-substrate|genre template layer]]), not as additional adapters.
 
 ## The Vendor LLM tier
 
-When the Vendor's engineering corpus accumulates sufficient scale — planned for Year 2 or later, at version 0.5.0 onward — continued pretraining may produce a model whose capability crosses an inflection from SLM to a larger model. This larger model may be offered as a Doorman tier in Customer deployments alongside Tier C external APIs, under service contract. Customer Doormans would then be able to route to the Vendor LLM for queries that exceed local Tier A capacity and where Tier C is undesirable.
+When the Vendor's engineering corpus accumulates sufficient scale — planned for Year 2 or later, at version 0.5.0 onward — continued pretraining may produce a model whose capability crosses an inflection from SLM to a larger model. This larger model may be offered as a [[compounding-doorman|Doorman]] tier in Customer deployments alongside Tier C external APIs, under service contract. Customer Doormans would then be able to route to the Vendor LLM for queries that exceed local [[four-tier-slm-substrate|Tier A capacity]] and where Tier C is undesirable.
 
-This tier is intended to be a byproduct of the substrate work as the corpus matures, not a separately developed product.
+This tier is intended to be a byproduct of the [[trajectory-substrate|substrate work]] as the corpus matures, not a separately developed product.
 
 ## See also
 

@@ -58,13 +58,13 @@ A rented-intelligence vendor couples AI compute to its data services. Decoupling
 
 ### Dynamic compute routing
 
-<!--claim id=doorman-routing confidence=structural cites=[]-->`service-slm` is the platform's sole access-control gateway — the Doorman. It routes each request among three compute tiers: a local model on the customer's own machine, a multi-cloud burst tier, and an external frontier API. The customer does not choose the tier; the request's shape and the budget caps choose it.<!--/claim-->
+<!--claim id=doorman-routing confidence=structural cites=[]-->[[service-slm]] is the platform's sole access-control gateway — the [[compounding-doorman|Doorman]]. It routes each request among three compute tiers: a local model on the customer's own machine, a multi-cloud burst tier, and an external frontier API. The customer does not choose the tier; the request's shape and the budget caps choose it.<!--/claim-->
 
 A rented-intelligence vendor bills each tier as a separate relationship and cannot span a competitor's frontier model. It cannot abstract this routing away.
 
 ### Privacy-preserving federation
 
-<!--claim id=federation confidence=structural cites=[]-->Customers opt in to a federated adapter marketplace that aggregates improvements without moving source data. Each customer's own data stays in place; only adapter weights and key-value cache blocks, without source data, flow into the federation.<!--/claim--> The aggregation method follows the privacy-preserving federated-adapter research lineage.
+<!--claim id=federation confidence=structural cites=[]-->Customers opt in to a [[sovereign-ai-commons|federated adapter marketplace]] that aggregates improvements without moving source data. Each customer's own data stays in place; only adapter weights and key-value cache blocks, without source data, flow into the federation.<!--/claim--> The aggregation method follows the privacy-preserving federated-adapter research lineage.
 
 A rented-intelligence vendor's per-tenant billing and compliance posture make cross-tenant pooling structurally impermissible. It cannot operate a true federation.
 
@@ -128,14 +128,14 @@ operator + assistant in next session ← loop closes, compounded
 
 ## Operational trajectory
 
-The trajectory below is `planned` and `intended`, framed per `[ni-51-102]` continuous-disclosure language and the forward-looking discipline of `[osc-sn-51-721]`. The architectural shape is in place; operational throughput matures over time.
+The trajectory below is `planned` and `intended`, framed per `[ni-51-102]` [[disclosure-substrate|continuous-disclosure language]] and the forward-looking discipline of `[osc-sn-51-721]`. The architectural shape is in place; operational throughput matures over time.
 
 By 2030, the Compounding Substrate is intended to produce:
 
 - a base model competitive with frontier models on regulated small-business tasks;
 - a federation of more than one hundred customers, each owning their full stack;
 - a protocol stack versioned twice through the convention process and validated in production;
-- a market position in which regulated small-business sectors — clinics, mid-sized law firms, regional financial advisors, real-estate operators — have standardised on the pattern because their compliance posture requires it.
+- a market position in which regulated small-business sectors — clinics, mid-sized law firms, regional financial advisors, real-estate operators — have standardised on the pattern because their [[customer-hostability|compliance posture]] requires it.
 
 The pattern is not intended to displace large cloud-AI providers by volume. It targets the regulated small-business market that metered cloud AI cannot economically reach.
 

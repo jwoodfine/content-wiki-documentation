@@ -16,11 +16,11 @@ cites:
 paired_with: adapter-composition.md
 ---
 
-El **Álgebra de Composición de Adaptadores** es el modelo que rige cómo se ensambla la inteligencia de IA en tiempo de solicitud en un despliegue de PointSav. Su metáfora central se asigna con precisión a un sistema operativo: el Doorman (`service-slm`) es el kernel; los adaptadores LoRA son procesos; `service-content` es el sistema de archivos; el modelo base es el firmware. La analogía no es ilustrativa — es operativa.
+El **Álgebra de Composición de Adaptadores** es el modelo que rige cómo se ensambla la inteligencia de IA en tiempo de solicitud en un despliegue de PointSav. Su metáfora central se asigna con precisión a un sistema operativo: el Doorman ([[service-slm]]) es el kernel; los adaptadores LoRA son procesos; [[service-content]] es el sistema de archivos; el modelo base es el firmware. La analogía no es ilustrativa — es operativa.
 
 ## El álgebra
 
-En tiempo de solicitud, el Doorman compone adaptadores apilándolos sobre el modelo base:
+En tiempo de solicitud, el [[compounding-doorman|Doorman]] compone adaptadores apilándolos sobre el modelo base:
 
 ```
 pesos_compuestos =
@@ -36,7 +36,7 @@ Donde `?` denota un adaptador opcional cargado solo cuando aplica el contexto de
 
 ## Tipología de adaptadores
 
-El adaptador constitucional es universal y lo carga cada despliegue de la plataforma. El adaptador de inquilino es estrictamente por inquilino, se produce y se mantiene dentro del Totebox del Cliente, y nunca sale del almacenamiento del cliente. El adaptador de ingeniería se publica con el conocimiento común (Apache 2.0) y no es propiedad intelectual privada del proveedor.
+El adaptador constitucional es universal y lo carga cada despliegue de la plataforma. El adaptador de inquilino es estrictamente por inquilino, se produce y se mantiene dentro del [[totebox-archive|Totebox]] del Cliente, y nunca sale del almacenamiento del cliente. El adaptador de ingeniería se publica con el [[knowledge-commons|conocimiento común]] (Apache 2.0) y no es propiedad intelectual privada del proveedor.
 
 ## La metáfora del SO de la IA
 
@@ -51,11 +51,11 @@ El adaptador constitucional es universal y lo carga cada despliegue de la plataf
 | Módulo del kernel | Capacidad con alcance de clúster | Adaptador de clúster |
 | Perfil de usuario | Límite de rol | Adaptador de rol |
 
-Esto enmarca el sustrato para pequeñas y medianas empresas como **el sistema operativo de la IA** — inteligencia componible con una arquitectura plana en lugar de un único producto cerrado. Los adaptadores entrenados en el corpus del cliente son propiedad del cliente. La doctrina es el alma; el corpus es la mente; los adaptadores son la personalidad.
+Esto enmarca el [[compounding-substrate|sustrato]] para pequeñas y medianas empresas como **el sistema operativo de la IA** — inteligencia componible con una arquitectura plana en lugar de un único producto cerrado. Los adaptadores entrenados en el corpus del cliente son propiedad del cliente. La doctrina es el alma; el corpus es la mente; los adaptadores son la personalidad.
 
 ## Techo de composición práctico
 
-La investigación de producción de multi-LoRA demuestra que componer 2–3 adaptadores por solicitud funciona limpiamente. Componer 5 o más adaptadores cruza hacia la interferencia de múltiples tareas. El álgebra se mantiene en un máximo de tres adaptadores en tiempo de ejecución por solicitud por diseño.
+La investigación de producción de multi-LoRA demuestra que componer 2–3 adaptadores por solicitud funciona limpiamente. Componer 5 o más adaptadores cruza hacia la interferencia de múltiples tareas. El álgebra se mantiene en un máximo de tres adaptadores en tiempo de ejecución por solicitud por diseño. Los parámetros de registro, voz de marca y tipo de documento viven en el andamiaje de instrucciones (la [[language-protocol-substrate|capa de plantilla de género]]), no como adaptadores adicionales.
 
 ## Véase también
 

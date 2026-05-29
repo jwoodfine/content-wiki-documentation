@@ -22,9 +22,9 @@ In the PointSav platform, `service-slm` is the Compounding Doorman. It is the so
 
 The Doorman enforces four disciplines simultaneously on every call:
 
-**Sanitise outbound, rehydrate inbound.** [[architecture-decisions|SYS-ADR-07]] prohibits structured data from routing through AI. Before any request leaves the Doorman boundary, identifiers, foreign keys, and structured fields are replaced with opaque tokens. After the response returns, the tokens are resolved back to their original values. The AI model sees only prose and opaque tokens; it never receives or returns structured records. This is what makes the audit-routing path reversible and auditable.
+**Sanitise outbound, rehydrate inbound.** [[architecture-decisions|SYS-ADR-07]] prohibits structured data from routing through AI. Before any request leaves the Doorman boundary, identifiers, foreign keys, and structured fields are replaced with opaque tokens. After the response returns, the tokens are resolved back to their original values. The AI model sees only prose and opaque tokens; it never receives or returns structured records. This is what makes the audit-routing path reversible and auditable (see [[disclosure-substrate]]).
 
-**Three-tier compute routing.** The Doorman selects among three compute tiers per request shape and budget policy:
+**Three-tier compute routing.** The Doorman selects among three compute tiers per request shape and budget policy (see [[four-tier-slm-substrate]]):
 - **Tier A — local**: OLMo 3 7B on the customer's own hardware. Zero marginal cost, full data locality. Default for most operations.
 - **Tier B — GPU burst**: OLMo 3.1 32B Think on a short-lived GPU instance. Used for requests the local tier cannot handle efficiently. The customer controls start and stop; idle-shutdown is the default.
 - **Tier C — external API**: external vendor APIs, used only with an explicit per-request allowlist. Audit-logged at the customer's ledger, not at the vendor's.
@@ -37,12 +37,12 @@ The customer's routing configuration — request shape thresholds and per-tier b
 
 ## Why it compounds
 
-A Compounding Doorman deployment improves over time through the apprenticeship substrate:
+A Compounding Doorman deployment improves over time through the [[apprenticeship-substrate]]:
 
 - **At deployment**: the Doorman serves with the current OLMo 3 base plus any LoRA adapters already trained for this tenant.
 - **After the first training cycle**: the first per-tenant LoRA adapter is trained on accumulated corpus signal. Tasks the local model previously deferred to Tier B can now be handled at Tier A. Tier B calls become less frequent; the per-request cost falls.
 - **Over multiple cycles**: additional adapters accumulate in the library, hot-swapped per request based on the task type the Doorman identifies. The model becomes progressively more accurate on the customer's specific operational patterns — the actual error states they encounter, the actual command shapes they prefer, the actual terminology they use.
-- **Through federation** (planned): customers who opt into federated compounding contribute distilled training signal to the curator. The curator rolls accumulated signal across many deployments into an improved base model. The improved base returns to every deployment. No customer's raw data leaves customer-controlled storage.
+- **Through federation** (planned): customers who opt into [[sovereign-ai-commons|federated compounding]] contribute distilled training signal to the curator. The curator rolls accumulated signal across many deployments into an improved base model. The improved base returns to every deployment. No customer's raw data leaves [[totebox-archive|customer-controlled storage]].
 
 The compounding loop closes because the audit ledger that records what the Doorman did is the same substrate that feeds training data. Every interaction is simultaneously an operational event and a training signal.
 
@@ -71,7 +71,7 @@ The Doorman (`service-slm`) is operational on the workspace VM. It binds at `127
 
 Tier B integration (Yo-Yo GPU burst) is in progress. Tier C external API routing is available for narrow precision tasks where the operator has explicitly configured an allowlist.
 
-LoRA adapter training — the mechanism that makes the Doorman compound — depends on the Brief Queue Substrate for corpus capture and the apprenticeship substrate for the training pipeline. Both are operational or in active development.
+LoRA adapter training — the mechanism that makes the Doorman compound — depends on the [[brief-queue-substrate]] for corpus capture and the [[apprenticeship-substrate]] for the training pipeline. Both are operational or in active development.
 
 ## See also
 

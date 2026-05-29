@@ -55,13 +55,13 @@ Un proveedor de inteligencia alquilada acopla el cómputo de IA a sus servicios 
 
 ### Enrutamiento dinámico de cómputo
 
-<!--claim id=doorman-routing confidence=structural cites=[]-->`service-slm` es la única puerta de control de acceso de la plataforma — el Doorman. Enruta cada solicitud entre tres niveles de cómputo: un modelo local en la máquina del propio cliente, un nivel de ráfaga multi-nube y una API frontera externa. El cliente no elige el nivel; la forma de la solicitud y los topes presupuestarios lo eligen.<!--/claim-->
+<!--claim id=doorman-routing confidence=structural cites=[]-->[[service-slm]] es la única puerta de control de acceso de la plataforma — el [[compounding-doorman|Doorman]]. Enruta cada solicitud entre tres niveles de cómputo: un modelo local en la máquina del propio cliente, un nivel de ráfaga multi-nube y una API frontera externa. El cliente no elige el nivel; la forma de la solicitud y los topes presupuestarios lo eligen.<!--/claim-->
 
 Un proveedor de inteligencia alquilada factura cada nivel como una relación separada y no puede abarcar el modelo frontera de un competidor. No puede abstraer este enrutamiento.
 
 ### Federación que preserva la privacidad
 
-<!--claim id=federation confidence=structural cites=[]-->Los clientes optan por un mercado federado de adaptadores que agrega mejoras sin mover los datos de origen. Los datos propios de cada cliente permanecen en su lugar; solo los pesos de los adaptadores y los bloques de caché clave-valor, sin datos de origen, fluyen hacia la federación.<!--/claim--> El método de agregación sigue el linaje de investigación de adaptadores federados que preservan la privacidad.
+<!--claim id=federation confidence=structural cites=[]-->Los clientes optan por un [[sovereign-ai-commons|mercado federado de adaptadores]] que agrega mejoras sin mover los datos de origen. Los datos propios de cada cliente permanecen en su lugar; solo los pesos de los adaptadores y los bloques de caché clave-valor, sin datos de origen, fluyen hacia la federación.<!--/claim--> El método de agregación sigue el linaje de investigación de adaptadores federados que preservan la privacidad.
 
 La facturación por inquilino y la postura de cumplimiento de un proveedor de inteligencia alquilada hacen que el agrupamiento cruzado entre inquilinos sea estructuralmente inadmisible. No puede operar una verdadera federación.
 
@@ -125,7 +125,7 @@ operador + asistente en la siguiente sesión ← el bucle se cierra, compuesto
 
 ## Trayectoria operativa
 
-La trayectoria descrita a continuación es `planeada` e `intencionada`, enmarcada según el lenguaje de divulgación continua de `[ni-51-102]` y la disciplina prospectiva de `[osc-sn-51-721]`. La forma arquitectónica está establecida; la capacidad operativa madura con el tiempo.
+La trayectoria descrita a continuación es `planeada` e `intencionada`, enmarcada según el [[disclosure-substrate|lenguaje de divulgación continua]] de `[ni-51-102]` y la disciplina prospectiva de `[osc-sn-51-721]`. La forma arquitectónica está establecida; la capacidad operativa madura con el tiempo.
 
 Para 2030, el sustrato compuesto pretende producir:
 

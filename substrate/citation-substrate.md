@@ -27,7 +27,7 @@ As of 2026-04-27, the registry holds 62 entries covering regulatory instruments 
 
 Three components work together: a central registry holding one entry per citation ID; per-document `cites:` front-matter that makes dependencies machine-readable; and inline `[id]` syntax in body prose that marks each reference with its registry-resolvable ID. A nightly automated pass fetches each registered URL, verifies the content hash, and surfaces material changes or link rot for human review before they propagate into published content or training data.
 
-For regulated buyers, this means every claim about compliance properties — record immutability, AI audit trails, data residency — carries a traceable stated basis. A compliance officer auditing documentation about SEC Rule 17a-4(f) can follow the citation to the primary regulatory instrument without accessing internal systems. This satisfies the "stated basis" requirement under `[ni-51-102]` and `[osc-sn-51-721]` for forward-looking information in public-facing content.
+For regulated buyers, this means every claim about compliance properties — record immutability, AI audit trails, data residency — carries a traceable stated basis. A compliance officer auditing documentation about SEC Rule 17a-4(f) can follow the citation to the primary regulatory instrument without accessing internal systems. This satisfies the "stated basis" requirement under `[ni-51-102]` and `[osc-sn-51-721]` for forward-looking information in [[disclosure-substrate|public-facing content]].
 
 ## Overview
 
@@ -61,7 +61,7 @@ The Citation Substrate has no ring-layer assignment — it operates at the docum
 
 The registry entry schema makes provenance explicit at each step. A regulatory citation for `[ni-51-102]` carries `evidence_class: regulatory-primary` — a machine-filterable signal that this entry is primary authority, not secondary commentary. A research paper carries `evidence_class: technical-primary` or `research-derived` depending on whether it is an original contribution or a synthesis. A vendor document carries `evidence_class: cited-secondary`.
 
-The `content_hash` field is the self-healing mechanism. When service-slm runs its nightly hygiene pass, it fetches each URL, computes a SHA-256 of the page content, and compares against the stored hash. A match updates the `last_verified` date. A mismatch is flagged as a material change candidate and surfaced for human review with the diff. A 404 is flagged as link rot alongside candidate-replacement search results.
+The `content_hash` field is the self-healing mechanism. When [[service-slm]] runs its nightly hygiene pass, it fetches each URL, computes a SHA-256 of the page content, and compares against the stored hash. A match updates the `last_verified` date. A mismatch is flagged as a material change candidate and surfaced for human review with the diff. A 404 is flagged as link rot alongside candidate-replacement search results.
 
 Until [[service-slm]] is operational, the platform maintainer performs a manual review of the registry monthly.
 
@@ -75,7 +75,7 @@ Three reasons drive the discipline, not one.
 
 **Drift prevention.** The corpus grows across sessions, contributors, and years. Two documents citing the same authority can make divergent claims about what it says — divergent-claim pairs on primary sources are the primary failure mode of large knowledge corpora. The nightly hygiene pass's drift-detection step finds exactly these pairs and surfaces them as review items before they propagate into training data or public publication.
 
-**Public-knowledge compounding.** Per `[knowledge-commons-wiki]`, the content-wiki repos are the public leg of the [[compounding-substrate]]. Cited content carries its provenance into any export, mirror, or derivative corpus. A reader or machine consumer does not need to trust the platform's own claims — they can follow the citation to the primary source.
+**Public-knowledge compounding.** Per `[knowledge-commons-wiki]`, the content-wiki repos are the public leg of the [[compounding-substrate]]. Cited content carries its provenance into any export, mirror, or derivative corpus. A reader or machine consumer does not need to trust the platform's own claims — they can follow the citation to the primary source, consistent with the [[knowledge-commons|commons publication model]].
 
 ## Configuration
 
@@ -84,7 +84,7 @@ The Citation Substrate currently requires manual discipline — registry entry a
 - A post-commit hook that validates every new `[id]` inline reference resolves in the registry. Implementation targeted at `v0.1.0`.
 - Auto-generation of a References section at the bottom of each article from the `cites:` frontmatter plus the registry — to be wired into `app-mediakit-knowledge` as a renderer stage.
 - A `cited_by:` reverse index persisted as a local data file (rebuilt on demand by the SLM hygiene pass).
-- Nightly hygiene passes by [[service-slm]] covering citation verification, forward-citation validation, reverse index build, drift detection, stale-topic surfacing, and citation suggestions — all as suggestions to the platform maintainer, not automated fixes.
+- Nightly hygiene passes by [[service-slm]] covering citation verification, forward-citation validation, reverse index build, drift detection, stale-topic surfacing, and citation suggestions — all as suggestions to the platform maintainer, not automated fixes (see [[nightly-datagraph-rebuild]]).
 - Export of citation graph data as part of the `[knowledge-commons-wiki]` public-knowledge publication pattern.
 
 Until each lands, the manual discipline is the operational form.

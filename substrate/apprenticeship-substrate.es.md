@@ -19,11 +19,11 @@ cites:
 
 Cuando un ingeniero sénior revisa el trabajo de un júnior, la corrección es el artefacto más valioso de la sala — y casi toda organización lo descarta. El razonamiento detrás de un arreglo se dice una vez, se aplica una vez y nunca se captura. El siguiente júnior, y el siguiente modelo, empiezan desde cero.
 
-El sustrato de aprendizaje lo captura. <!--claim id=route-and-capture confidence=structural cites=[]-->Cada tarea de código y editorial se enruta primero a través de un modelo de lenguaje pequeño local; un revisor sénior firma luego un veredicto sobre el intento. El desacuerdo firmado entre el intento del aprendiz y el veredicto del sénior se convierte en datos de pares de preferencia.<!--/claim-->
+El sustrato de aprendizaje lo captura. <!--claim id=route-and-capture confidence=structural cites=[]-->Cada tarea de código y editorial se enruta primero a través de un [[service-slm|modelo de lenguaje pequeño local]]; un revisor sénior firma luego un veredicto sobre el intento. El desacuerdo firmado entre el intento del aprendiz y el veredicto del sénior se convierte en datos de pares de preferencia.<!--/claim-->
 
 <!--claim id=three-stage-routing confidence=structural cites=[]-->El enrutamiento opera en tres etapas por tipo de tarea — `review`, `spot-check` y `autonomous` — con umbrales de promoción precisos. Un tipo de tarea graduado elimina los tokens de autoría sénior en esa clase de trabajo, y el enrutamiento en sombra recoge datos de entrenamiento de cada otro commit de código en la flota.<!--/claim-->
 
-Para un comprador regulado la consecuencia es concreta. La IA mejora sobre el trabajo de la propia organización, y ese trabajo nunca sale del despliegue. Por el lenguaje de divulgación continua de `[ni-51-102]`, la trayectoria hacia la eliminación de tokens en tipos de tarea graduados es prospectiva; la estructura de enrutamiento está operativa hoy.
+Para un comprador regulado la consecuencia es concreta. La IA mejora sobre el trabajo de la propia organización, y ese trabajo nunca sale del despliegue. Por el lenguaje de [[disclosure-substrate|divulgación continua]] de `[ni-51-102]`, la trayectoria hacia la eliminación de tokens en tipos de tarea graduados es prospectiva; la estructura de enrutamiento está operativa hoy.
 
 ## Descripción general
 
@@ -33,7 +33,7 @@ Este patrón de enrutamiento produce esas tuplas de interacción sobre trabajo d
 
 ## Anillo y función
 
-El sustrato de aprendizaje abarca el Anillo 3 — Inteligencia Opcional — y la infraestructura del corpus de entrenamiento. `service-slm`, el Doorman, es el servicio del Anillo 3 que ejecuta el enrutamiento del aprendiz. El libro de promoción y los scripts de captura del corpus viven dentro del propio despliegue del cliente.
+El sustrato de aprendizaje abarca el Anillo 3 — Inteligencia Opcional — y la infraestructura del corpus de entrenamiento. [[service-slm]], el [[compounding-doorman|Doorman]], es el servicio del Anillo 3 que ejecuta el enrutamiento del aprendiz. El libro de promoción y los scripts de captura del corpus viven dentro del propio despliegue del [[totebox-archive|cliente]].
 
 ## Las tres etapas
 
@@ -79,7 +79,7 @@ Un archivo contiene una triple (brief, intento, veredicto). <!--claim id=tenant-
 
 El primer tipo de tarea registrado es `version-bump-manifest`. Cada incremento MINOR y PATCH de la plataforma toca `MANIFEST.md` y `CHANGELOG.md`: trabajo bien formado, sin juicio arquitectónico, fácilmente verificable. El aprendiz gradúa este tipo primero; los tokens sénior bajan en esa clase de trabajo; el siguiente tipo se registra.
 
-<!--claim id=four-conditions confidence=structural cites=[]-->Cuatro condiciones hacen funcionar el sustrato, y las cuatro son propiedades estructurales de un despliegue propiedad del cliente: una carta de gobernanza por cliente, identidades de firma por cliente, granularidad por tipo de tarea en el libro de promoción, y preentrenamiento continuo por cliente.<!--/claim--> Una plataforma de IA gestionada en la nube carece de las cuatro — entrenar sobre datos de interacción del cliente exige agruparlos, lo que elimina la garantía de aislamiento por cliente.
+<!--claim id=four-conditions confidence=structural cites=[]-->Cuatro condiciones hacen funcionar el sustrato, y las cuatro son propiedades estructurales de un [[customer-hostability|despliegue propiedad del cliente]]: una carta de gobernanza por cliente, identidades de firma por cliente, granularidad por tipo de tarea en el libro de promoción, y preentrenamiento continuo por cliente.<!--/claim--> Una plataforma de IA gestionada en la nube carece de las cuatro — entrenar sobre datos de interacción del cliente exige agruparlos, lo que elimina la garantía de aislamiento por cliente.
 
 Por `[ni-51-102]`, la trayectoria hacia la eliminación de tokens es prospectiva; la forma del enrutamiento está establecida hoy.
 

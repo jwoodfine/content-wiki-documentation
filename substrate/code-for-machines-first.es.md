@@ -15,7 +15,7 @@ paired_with: code-for-machines-first.md
 ---
 
 
-**Código para Máquinas Primero** es la disciplina de diseño por la cual cada contrato entre servicios, registro de auditoría, archivo de configuración y ontología debe ser legible por máquinas como su superficie primaria. Las interfaces para el operador — la TUI de terminal, las interfaces web, los clientes móviles — son capas sobre APIs primero-para-máquinas.
+**Código para Máquinas Primero** es la disciplina de diseño por la cual cada contrato entre servicios, registro de auditoría, archivo de configuración y ontología debe ser legible por máquinas como su superficie primaria. Las interfaces para el operador — la TUI de terminal, las interfaces web, los clientes móviles — son capas sobre APIs primero-para-máquinas. La disciplina es una propiedad estructural del [[compounding-substrate|sustrato compuesto]].
 
 ## Los formatos de datos
 
@@ -29,9 +29,9 @@ Cada artefacto es mutable e introspectable por máquinas. El endpoint `describe`
 
 **Extensión del cliente sin bifurcar.** Los clientes añaden fuentes de datos específicas de su vertical escribiendo servidores MCP que usan el mismo protocolo que todos los servicios integrados. No se requiere ningún adaptador personalizado para conectar una herramienta construida por el cliente a la plataforma.
 
-**Composición nativa de IA.** El substrato es consumible por agentes de IA — sesiones de tarea, agentes construidos por el cliente, integraciones de socios — sin un paso de retrofit. Esto es lo que hace posible el patrón [[knowledge-graph-grounded-apprenticeship]]: el grafo ya es legible por máquinas; el Portero puede consultarlo programáticamente en tiempo de inferencia.
+**Composición nativa de IA.** El substrato es consumible por agentes de IA — sesiones de tarea, agentes construidos por el cliente, integraciones de socios — sin un paso de retrofit. Esto es lo que hace posible el patrón [[knowledge-graph-grounded-apprenticeship]]: el grafo ya es legible por máquinas; el [[compounding-doorman|Portero]] puede consultarlo programáticamente en tiempo de inferencia.
 
-**Facilidad de migración.** La exportación de datos es una operación rutinaria de máquinas que produce un paquete en formato abierto. No existe ningún proyecto de migración que involucre cooperación del proveedor, porque los datos nunca estuvieron bloqueados en un formato específico del proveedor.
+**Facilidad de migración.** La exportación de datos es una operación rutinaria de máquinas que produce un paquete en formato abierto (ver [[substrate-without-inference-base-case]]). No existe ningún proyecto de migración que involucre cooperación del proveedor, porque los datos nunca estuvieron bloqueados en un formato específico del proveedor.
 
 ## Las dos excepciones limitadas
 
