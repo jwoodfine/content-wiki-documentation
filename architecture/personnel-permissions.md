@@ -13,7 +13,7 @@ editor: pointsav-engineering
 paired_with: personnel-permissions.es.md
 ---
 
-In Totebox Orchestration, contributor identity and permissions are expressed through cryptographic pairings — not through roles stored in a database or checked at request time. The permission model is PairingAsPermission: a contributor can reach a resource only if their `os-console` instance is paired with the orchestration node that manages that resource. The four permission tiers (P1 through P4) describe what a contributor's pairing set looks like; enforcement is always through the pairing topology.
+In [[totebox-orchestration|Totebox Orchestration]], contributor identity and permissions are expressed through cryptographic pairings — not through roles stored in a database or checked at request time. The permission model is [[pairing-as-permission|PairingAsPermission]]: a contributor can reach a resource only if their [[console-os|`os-console`]] instance is paired with the orchestration node that manages that resource. The four permission tiers (P1 through P4) describe what a contributor's pairing set looks like; enforcement is always through the pairing topology.
 
 This article describes contributor identity, the four tiers, how permissions are granted, and the relationship to the planned `app-orchestration-command` aggregator.
 
@@ -21,11 +21,11 @@ This article describes contributor identity, the four tiers, how permissions are
 
 Each contributor has:
 
-- A **machine identity** — an `os-console` instance with a cryptographic certificate tied to that specific hardware. The certificate is the identity; there is no username-and-password authentication.
+- A **machine identity** — an [[console-os|`os-console`]] instance with a cryptographic certificate tied to that specific hardware. The certificate is the identity; there is no username-and-password authentication.
 - A **personnel record** — an entry in the data tier holding the contributor's display name, role, SSH public key, and permission tier.
-- A **pairing set** — the list of nodes their `os-console` is paired with, establishing which archives, `os-mediakit` nodes, and `os-privategit` instances they can reach.
+- A **pairing set** — the list of nodes their [[console-os|`os-console`]] is paired with, establishing which archives, [[mediakit-os|`os-mediakit`]] nodes, and [[os-privategit|`os-privategit`]] instances they can reach.
 
-The personnel store is itself a Totebox Archive — it does not use a separate identity service.
+The personnel store is itself a [[totebox-archive|Totebox Archive]] — it does not use a separate identity service.
 
 ## Permission tiers
 

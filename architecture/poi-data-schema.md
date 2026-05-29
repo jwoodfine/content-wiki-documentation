@@ -17,15 +17,15 @@ cites:
 paired_with: poi-data-schema.es.md
 ---
 
-The POI data schema defines the record structure for the two location data classes used by the co-location intelligence platform: retail chain locations ingested from OpenStreetMap, and institutional anchor locations ingested from the Overture Maps Foundation. Both classes are normalised into a unified flat-file JSONL schema before cluster analysis. No proprietary data purchase is required; all records are derived from publicly licensed sources and are version-controllable in the same ledger as the rest of the platform. The schema has been in production since the initial platform build in 2026.
+The POI data schema defines the record structure for the two location data classes used by the [[location-intelligence-platform|co-location intelligence platform]]: retail chain locations ingested from OpenStreetMap, and institutional anchor locations ingested from the Overture Maps Foundation. Both classes are normalised into a unified flat-file JSONL schema before [[co-location-methodology|cluster analysis]]. No proprietary data purchase is required; all records are derived from publicly licensed sources and are version-controllable in the same ledger as the rest of the platform. The schema has been in production since the initial platform build in 2026.
 
 ## Record types
 
 The platform operates two record classes within its location data layer.
 
-**Service-business records** represent individual retail chain locations: hardware stores, warehouse clubs, hypermarkets, and food anchors. Each record is identified by a `chain_id` key that links it to a chain configuration file, and by a `brand_wikidata` field holding the Wikidata QID for the retail brand. The Wikidata QID is the most reliable cross-source chain identifier because it is brand-level rather than name-level — two stores spelled differently but sharing the same QID belong to the same chain.
+**[[service-business-clustering|Service-business records]]** represent individual retail chain locations: hardware stores, warehouse clubs, hypermarkets, and food anchors. Each record is identified by a `chain_id` key that links it to a chain configuration file, and by a `brand_wikidata` field holding the Wikidata QID for the retail brand. The Wikidata QID is the most reliable cross-source chain identifier because it is brand-level rather than name-level — two stores spelled differently but sharing the same QID belong to the same chain.
 
-**Service-places records** represent institutional anchors: hospitals, universities, and airports. These are ingested from Overture Maps using the `taxonomy.primary` category field, which replaced the deprecated `categories.primary` field in the Overture 2025-11 release. Service-places records use a `category_id` key (`hospital`, `university`, `airport`) in place of `chain_id`.
+**[[service-places-filtering|Service-places records]]** represent institutional anchors: hospitals, universities, and airports. These are ingested from Overture Maps using the `taxonomy.primary` category field, which replaced the deprecated `categories.primary` field in the Overture 2025-11 release. Service-places records use a `category_id` key (`hospital`, `university`, `airport`) in place of `chain_id`.
 
 ## Core fields
 

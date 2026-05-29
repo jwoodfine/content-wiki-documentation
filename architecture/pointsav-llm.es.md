@@ -16,7 +16,7 @@ cites:
 paired_with: pointsav-llm.md
 ---
 
-**PointSav-LLM** es el modelo de IA especialista planificado para el Nivel 3 del escalón SLM de cuatro niveles de PointSav. No es un producto activo en la fecha de este artículo. Se trata de una trayectoria planificada: el primer ciclo de entrenamiento continuo (CPT, por sus siglas en inglés) está actualmente previsto para v0.5.0 en el primer trimestre de 2027, con un despliegue productivo actualmente previsto para v1.0.0 en el cuarto trimestre de 2027.
+**PointSav-LLM** es el modelo de IA especialista planificado para el Nivel 3 del [[four-tier-slm-substrate|escalón SLM de cuatro niveles]] de [[pointsav-overview|PointSav]]. No es un producto activo en la fecha de este artículo. Se trata de una trayectoria planificada: el primer ciclo de entrenamiento continuo (CPT, por sus siglas en inglés) está actualmente previsto para v0.5.0 en el primer trimestre de 2027, con un despliegue productivo actualmente previsto para v1.0.0 en el cuarto trimestre de 2027.
 
 *Todas las descripciones de capacidades, calendarios, estructuras de precios y objetivos de rendimiento de este artículo son de carácter prospectivo. Son planes o intenciones, no hechos operativos actuales. Los resultados reales dependen de la tasa de crecimiento del corpus, el rendimiento del modelo, la capacidad de ingeniería y las condiciones del mercado. [ni-51-102] [osc-sn-51-721]*
 
@@ -24,17 +24,17 @@ paired_with: pointsav-llm.md
 
 ## Lo que es y lo que no es
 
-PointSav-LLM está planificado como especialista en un dominio concreto, no como modelo de propósito general. Su corpus de entrenamiento previsto proviene del sustrato de aprendizaje de la plataforma: los registros de trayectoria, los pares de decisiones editoriales y los historiales de commits alineados con el código que producen las sesiones de agente contribuyentes en toda la plataforma.
+PointSav-LLM está planificado como especialista en un dominio concreto, no como modelo de propósito general. Su corpus de entrenamiento previsto proviene del [[apprenticeship-substrate|sustrato de aprendizaje]] de la plataforma: los registros de trayectoria, los pares de decisiones editoriales y los historiales de commits alineados con el código que producen las sesiones de agente contribuyentes en toda la plataforma.
 
-Sus áreas de especialización previstas incluyen la operación del Archivo Totebox, las convenciones de PointSav, los patrones editoriales multiusuario, la generación de código alineada con las convenciones de la plataforma y los flujos de contribución de entrenamiento federado.
+Sus áreas de especialización previstas incluyen la operación del [[totebox-archive|Archivo Totebox]], las convenciones de [[pointsav-overview|PointSav]], los patrones editoriales multiusuario, la generación de código alineada con las convenciones de la plataforma y los flujos de contribución de entrenamiento federado.
 
-PointSav-LLM no está planificado para competir con modelos de frontera de amplio alcance en conocimiento general, profundidad creativa o razonamiento multidisciplinar. Las consultas que requieran esa amplitud continuarán siendo enrutadas por el Doorman del cliente hacia las APIs externas del Nivel C (Nivel C externo). La base OLMo 3 (Apache 2.0; Open Data Commons) es abierta, y los adaptadores portátiles por cliente están planificados para preservar la soberanía del tenant conforme a la claim #28 de la Doctrina (Tenancy Diseñada para la Desvinculación).
+PointSav-LLM no está planificado para competir con modelos de frontera de amplio alcance en conocimiento general, profundidad creativa o razonamiento multidisciplinar. Las consultas que requieran esa amplitud continuarán siendo enrutadas por el [[doorman-protocol|Doorman]] del cliente hacia las APIs externas del Nivel C (Nivel C externo). La base OLMo 3 (Apache 2.0; Open Data Commons) es abierta, y los adaptadores portátiles por cliente están planificados para preservar la soberanía del tenant conforme a la claim #28 de la Doctrina (Tenancy Diseñada para la Desvinculación).
 
 ---
 
 ## Cómo se prevé el acceso
 
-El acceso de los clientes está previsto que se realice íntegramente a través del Doorman local de cada cliente. No se realizan llamadas directas al endpoint de PointSav-LLM desde el código de la aplicación del cliente.
+El acceso de los clientes está previsto que se realice íntegramente a través del [[doorman-protocol|Doorman]] local de cada cliente. No se realizan llamadas directas al endpoint de PointSav-LLM desde el código de la aplicación del cliente.
 
 La secuencia planificada es la siguiente: el Doorman recibe la consulta, clasifica su complejidad mediante el modelo local del Nivel A (OLMo 3 7B Q4), y enruta hacia el Nivel A para consultas sencillas o hacia el endpoint de PointSav-LLM para consultas que requieran profundidad especialista. La respuesta retorna a través del Doorman, se escribe una fila de auditoría tanto en el Doorman del cliente como en la pasarela de PointSav-LLM, y la facturación por token se computa en la pasarela. El código de la aplicación del cliente no cambia entre el enrutamiento local del Nivel A y el enrutamiento al Nivel C de PointSav-LLM.
 

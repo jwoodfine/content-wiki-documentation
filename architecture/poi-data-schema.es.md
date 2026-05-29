@@ -20,13 +20,13 @@ paired_with: poi-data-schema.md
 
 ## Resumen estratégico
 
-El esquema de datos POI define la estructura de registro utilizada por la plataforma de inteligencia de co-ubicación para sus dos clases de datos de ubicación: ubicaciones de cadenas minoristas ingestadas desde OpenStreetMap, y ubicaciones de anclas institucionales ingestadas desde la Fundación Overture Maps. Ambas clases se normalizan en un esquema JSONL de archivo plano unificado antes del análisis de agrupaciones. No se requiere ninguna compra de datos propietarios: todos los registros se derivan de fuentes con licencias públicas y son versionables en el mismo registro que el resto de la plataforma.
+El esquema de datos POI define la estructura de registro utilizada por la [[location-intelligence-platform|plataforma de inteligencia de co-ubicación]] para sus dos clases de datos de ubicación: ubicaciones de cadenas minoristas ingestadas desde OpenStreetMap, y ubicaciones de anclas institucionales ingestadas desde la Fundación Overture Maps. Ambas clases se normalizan en un esquema JSONL de archivo plano unificado antes del [[co-location-methodology|análisis de agrupaciones]]. No se requiere ninguna compra de datos propietarios: todos los registros se derivan de fuentes con licencias públicas y son versionables en el mismo registro que el resto de la plataforma.
 
 ## Dos clases de registros
 
-**Registros service-business** — ubicaciones individuales de cadenas minoristas: ferreterías de gran formato, clubes de almacén, hipermercados y anclas alimentarias. Cada registro se identifica por un `chain_id` vinculado al archivo de configuración de la cadena, y por un campo `brand_wikidata` con el QID de Wikidata de la marca. Los QID de Wikidata son persistentes e independientes del idioma: dos tiendas con distinta ortografía del nombre pero con el mismo QID pertenecen a la misma cadena.
+**[[service-business-clustering|Registros service-business]]** — ubicaciones individuales de cadenas minoristas: ferreterías de gran formato, clubes de almacén, hipermercados y anclas alimentarias. Cada registro se identifica por un `chain_id` vinculado al archivo de configuración de la cadena, y por un campo `brand_wikidata` con el QID de Wikidata de la marca. Los QID de Wikidata son persistentes e independientes del idioma: dos tiendas con distinta ortografía del nombre pero con el mismo QID pertenecen a la misma cadena.
 
-**Registros service-places** — anclas institucionales: hospitales, universidades y aeropuertos, ingestados desde Overture Maps usando el campo `taxonomy.primary`. Este campo reemplazó al `categories.primary` deprecado en la versión 2025-11 de Overture. Los identificadores de categoría no cambiaron: las consultas que antes leían `categories.primary = 'hospital'` pasan a `taxonomy.primary = 'hospital'` sin modificar los valores de filtro.
+**[[service-places-filtering|Registros service-places]]** — anclas institucionales: hospitales, universidades y aeropuertos, ingestados desde Overture Maps usando el campo `taxonomy.primary`. Este campo reemplazó al `categories.primary` deprecado en la versión 2025-11 de Overture. Los identificadores de categoría no cambiaron: las consultas que antes leían `categories.primary = 'hospital'` pasan a `taxonomy.primary = 'hospital'` sin modificar los valores de filtro.
 
 ## Campos principales
 

@@ -13,7 +13,7 @@ editor: pointsav-engineering
 paired_with: personnel-permissions.md
 ---
 
-En la orquestación Totebox, la identidad y los permisos de los colaboradores se expresan mediante emparejamientos criptográficos — no mediante roles almacenados en una base de datos ni verificados en tiempo de solicitud. El modelo de permisos es PairingAsPermission: un colaborador puede alcanzar un recurso únicamente si su instancia `os-console` está emparejada con el nodo de orquestación que gestiona ese recurso. Los cuatro niveles de permiso (P1 a P4) describen cómo es el conjunto de emparejamientos de un colaborador; la aplicación se realiza siempre a través de la topología de emparejamientos.
+En la [[totebox-orchestration|orquestación Totebox]], la identidad y los permisos de los colaboradores se expresan mediante emparejamientos criptográficos — no mediante roles almacenados en una base de datos ni verificados en tiempo de solicitud. El modelo de permisos es [[pairing-as-permission|PairingAsPermission]]: un colaborador puede alcanzar un recurso únicamente si su instancia [[console-os|`os-console`]] está emparejada con el nodo de orquestación que gestiona ese recurso. Los cuatro niveles de permiso (P1 a P4) describen cómo es el conjunto de emparejamientos de un colaborador; la aplicación se realiza siempre a través de la topología de emparejamientos.
 
 Este artículo describe la identidad del colaborador, los cuatro niveles, cómo se otorgan los permisos y la relación con el agregador planificado `app-orchestration-command`.
 
@@ -21,11 +21,11 @@ Este artículo describe la identidad del colaborador, los cuatro niveles, cómo 
 
 Cada colaborador tiene:
 
-- Una **identidad de máquina** — una instancia `os-console` con un certificado criptográfico vinculado a ese hardware específico. El certificado es la identidad; no hay autenticación de nombre de usuario y contraseña.
+- Una **identidad de máquina** — una instancia [[console-os|`os-console`]] con un certificado criptográfico vinculado a ese hardware específico. El certificado es la identidad; no hay autenticación de nombre de usuario y contraseña.
 - Un **registro de personal** — una entrada en la capa de datos que contiene el nombre visible del colaborador, su rol, la clave pública SSH y el nivel de permiso.
-- Un **conjunto de emparejamientos** — la lista de nodos con los que su `os-console` está emparejado, estableciendo qué archivos, nodos `os-mediakit` e instancias `os-privategit` puede alcanzar.
+- Un **conjunto de emparejamientos** — la lista de nodos con los que su [[console-os|`os-console`]] está emparejado, estableciendo qué archivos, nodos [[mediakit-os|`os-mediakit`]] e instancias [[os-privategit|`os-privategit`]] puede alcanzar.
 
-El almacén de personal es en sí mismo un archivo Totebox — no utiliza un servicio de identidad separado.
+El almacén de personal es en sí mismo un [[totebox-archive|archivo Totebox]] — no utiliza un servicio de identidad separado.
 
 ## Niveles de permiso
 

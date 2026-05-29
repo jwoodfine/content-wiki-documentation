@@ -16,7 +16,7 @@ cites:
 paired_with: pointsav-llm.es.md
 ---
 
-**PointSav-LLM** is the planned Tier 3 specialist AI model in PointSav's Four-Tier SLM Substrate Ladder — the vendor-trained layer that is intended to emerge from continued pretraining of OLMo 3 32B Think (Apache 2.0) on the platform's federated, multi-tenant apprenticeship corpus. It is not an active product. It is a planned trajectory: a first continued-pretraining (CPT) cycle is currently targeted for v0.5.0, Q1 2027, with a productized deployment currently targeted for v1.0.0, Q4 2027. When operational, PointSav-LLM is intended to serve small and medium-sized businesses that require a specialist model trained on PointSav conventions, Totebox Archive operations, and multi-tenant editorial patterns — without requiring the infrastructure investment or minimum-spend commitments that closed-source enterprise AI products impose.
+**PointSav-LLM** is the planned Tier 3 specialist AI model in [[pointsav-overview|PointSav]]'s [[four-tier-slm-substrate|Four-Tier SLM Substrate Ladder]] — the vendor-trained layer that is intended to emerge from continued pretraining of OLMo 3 32B Think (Apache 2.0) on the platform's federated, multi-tenant [[apprenticeship-substrate|apprenticeship corpus]]. It is not an active product. It is a planned trajectory: a first continued-pretraining (CPT) cycle is currently targeted for v0.5.0, Q1 2027, with a productized deployment currently targeted for v1.0.0, Q4 2027. When operational, PointSav-LLM is intended to serve small and medium-sized businesses that require a specialist model trained on PointSav conventions, [[totebox-archive|Totebox Archive]] operations, and multi-tenant editorial patterns — without requiring the infrastructure investment or minimum-spend commitments that closed-source enterprise AI products impose.
 
 *All capability descriptions, timelines, pricing structures, and performance targets in this article are forward-looking. They are planned or intended, not current operational facts. Actual outcomes depend on corpus growth rate, model performance, engineering capacity, and market conditions. [ni-51-102] [osc-sn-51-721]*
 
@@ -34,7 +34,7 @@ When the first CPT cycle completes, the model is intended to demonstrate depth i
 - **Code generation aligned to the platform** — Rust workspace conventions, Ring 1/2/3 service boundaries, and the three-tier compute routing interface.
 - **Federated training contribution** — the mechanics by which a customer's contributing-tier subscription routes anonymized trajectory data back into the corpus, compounding the model's value over each CPT cycle.
 
-What PointSav-LLM is not intended to be is equally important. It is not planned to compete with broad-capability frontier models on general knowledge, creative breadth, or multi-domain reasoning. Customers whose queries require that breadth will continue routing those requests through Tier C external API calls (Anthropic Claude, Google Gemini) via the Doorman's classification logic. PointSav-LLM is intended to serve the narrow slice of queries where specialist depth and per-token economics matter more than frontier-model breadth.
+What PointSav-LLM is not intended to be is equally important. It is not planned to compete with broad-capability frontier models on general knowledge, creative breadth, or multi-domain reasoning. Customers whose queries require that breadth will continue routing those requests through Tier C external API calls (Anthropic Claude, Google Gemini) via the [[doorman-protocol|Doorman]]'s classification logic. PointSav-LLM is intended to serve the narrow slice of queries where specialist depth and per-token economics matter more than frontier-model breadth.
 
 The OLMo 3 base (Apache 2.0; Open Data Commons for training data) means the base weights are open. Customer-portable adapters are planned to preserve tenancy sovereignty — a customer who leaves the platform is intended to retain the right to carry their contributed data and any tenant-specific fine-tune they funded. This is a structural property of the planned architecture, not a contractual carve-out.
 
@@ -42,12 +42,12 @@ The OLMo 3 base (Apache 2.0; Open Data Commons for training data) means the base
 
 ## How customers are intended to access it
 
-The planned access path routes entirely through each customer's local Doorman. No customer sends queries directly to a PointSav-LLM API endpoint. The sequence, as currently designed:
+The planned access path routes entirely through each customer's local [[doorman-protocol|Doorman]]. No customer sends queries directly to a PointSav-LLM API endpoint. The sequence, as currently designed:
 
-1. Customer application sends a query to the local Doorman (127.0.0.1:9080 by default).
+1. Customer application sends a query to the local [[doorman-protocol|Doorman]] (127.0.0.1:9080 by default).
 2. Doorman classifies query complexity using the current Tier A local model (OLMo 3 7B Q4).
 3. For queries classified as simple or routine, the Doorman routes to Tier A and returns a local response — no external call.
-4. For queries classified as requiring specialist depth (domain-specific platform conventions, Totebox Archive operations, multi-tenant editorial structure), the Doorman is intended to route to the PointSav-LLM Tier C endpoint, authenticating via the customer's provisioned API key.
+4. For queries classified as requiring specialist depth (domain-specific platform conventions, [[totebox-archive|Totebox Archive]] operations, multi-tenant editorial structure), the Doorman is intended to route to the PointSav-LLM Tier C endpoint, authenticating via the customer's provisioned API key.
 5. The response returns through the Doorman. An audit row is written simultaneously at the customer's local Doorman and at the PointSav-LLM gateway — two-ledger, per-call audit trail.
 6. Per-token billing is computed at the gateway and reported to the customer's subscription account.
 
