@@ -13,7 +13,7 @@ cites: [ifc-4-3, iso-19650, ids-1-0]
 paired_with: open-bim-regulatory-acceptance.es.md
 ---
 
-Building Information Modelling is no longer elective in public procurement for most G7 economies. The United States federal government has required IFC-formatted BIM deliverables for major infrastructure and building projects since 2007. The European Union has embedded BIM requirements into public procurement directives enforced across member states. The United Kingdom, Singapore, Norway, Denmark, the Netherlands, and Australia have each issued national mandates or equivalent policy requirements. The regulatory landscape for Open BIM is settled. The open question is which platforms can meet the sovereign data requirements attached to these mandates.
+Building Information Modelling is no longer elective in public procurement for most G7 economies. The United States federal government has required IFC-formatted BIM deliverables for major infrastructure and building projects since 2007. The European Union has embedded BIM requirements into public procurement directives enforced across member states. The United Kingdom, Singapore, Norway, Denmark, the Netherlands, and Australia have each issued national mandates or equivalent policy requirements. The regulatory landscape for Open BIM is settled. The open question is which platforms can meet the sovereign data requirements attached to these mandates. See [[flat-file-bim-leapfrog|the flat-file BIM leapfrog]] and [[asset-anchored-bim-vault|the asset-anchored BIM vault]].
 
 ## Defining Open BIM
 

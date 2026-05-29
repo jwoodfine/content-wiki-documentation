@@ -18,7 +18,7 @@ paired_with: location-intelligence-strategy.md
 
 ## Adaptación estratégica — Inteligencia de Localización
 
-El sustrato de Inteligencia de Localización proporciona a los clientes un conjunto de datos de lugares — negocios, puntos de interés, geometrías de aparcamiento — almacenados como archivos planos que el cliente posee, versionados en el mismo libro mayor que cualquier otro registro de Totebox, y presentados a través de una pila de cartografía de código abierto sin costes recurrentes por solicitud o por asiento.
+El sustrato de Inteligencia de Localización proporciona a los clientes un conjunto de datos de lugares — negocios, puntos de interés, geometrías de aparcamiento — almacenados como archivos planos que el cliente posee, versionados en el mismo libro mayor que cualquier otro registro de [[totebox-archive|Totebox]], y presentados a través de una pila de cartografía de código abierto sin costes recurrentes por solicitud o por asiento. Véase [[location-intelligence-platform|la plataforma de Inteligencia de Localización]] y [[location-intelligence-substrate|el sustrato de composición]].
 
 La primera aplicación es un mapa de co-localización: cada localización de la familia Walmart, la familia Home Depot y Costco en Estados Unidos, Canadá, México y España, con los grupos de tiendas que caen dentro de rangos de proximidad definidos como la analítica visible.
 

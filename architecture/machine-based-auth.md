@@ -78,12 +78,12 @@ The combination — pairing as access, Diode as direction, audit as record — m
 Machine-based authorization connects to three other architectural layers.
 
 - **[[sel4-microkernel-substrate|seL4 microkernel]]** — the kernel enforces that capability tokens cannot be forged by software running at user privilege.
-- **Capability-based security** — the capability manager issues and revokes hardware-bound tokens; the access-control model depends on hardware binding for its security guarantees.
+- **[[capability-based-security|Capability-based security]]** — the capability manager issues and revokes hardware-bound tokens; the access-control model depends on hardware binding for its security guarantees.
 - **[[worm-ledger-design|WORM ledger]]** — every authorization event is logged to the append-only ledger, an externally verifiable record of which hardware reached which resource, and when.
 
 ## Why service-auth was rejected
 
-<!--claim id=service-auth-rejected confidence=structural cites=[]-->Early designs considered `service-auth`, modelled on a traditional directory service, as the identity provider. The decision was reversed: a directory service is structured around users, passwords, and group hierarchies — the exact model PointSav is replacing.<!--/claim--> `service-pairing` was created as the deliberate alternative, and `service-auth` was removed from the architecture before any code was written.
+<!--claim id=service-auth-rejected confidence=structural cites=[]-->Early designs considered `service-auth`, modelled on a traditional directory service, as the identity provider. The decision was reversed: a directory service is structured around users, passwords, and group hierarchies — the exact model [[pointsav-overview|PointSav]] is replacing.<!--/claim--> `service-pairing` was created as the deliberate alternative, and `service-auth` was removed from the architecture before any code was written. See [[pairing-as-permission|pairing as permission]].
 
 ## See also
 

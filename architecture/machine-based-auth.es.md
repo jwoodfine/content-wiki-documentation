@@ -78,12 +78,12 @@ La combinación — emparejamiento como acceso, Diodo como dirección, auditorí
 La autorización basada en hardware se conecta a otras tres capas arquitectónicas.
 
 - **[[sel4-microkernel-substrate|Micronúcleo seL4]]** — el núcleo aplica que los tokens de capacidad no pueden ser falsificados por software que se ejecuta en privilegio de usuario.
-- **Seguridad basada en capacidades** — el gestor de capacidades emite y revoca tokens vinculados al hardware; el modelo de control de acceso depende de la vinculación al hardware para sus garantías.
+- **[[capability-based-security|Seguridad basada en capacidades]]** — el gestor de capacidades emite y revoca tokens vinculados al hardware; el modelo de control de acceso depende de la vinculación al hardware para sus garantías.
 - **[[worm-ledger-design|Libro mayor WORM]]** — cada evento de autorización se registra en el libro de solo adición, un registro verificable externamente de qué hardware accedió a qué recurso y cuándo.
 
 ## Por qué se rechazó service-auth
 
-<!--claim id=service-auth-rejected confidence=structural cites=[]-->Los primeros diseños consideraron `service-auth`, modelado en un servicio de directorio tradicional, como proveedor de identidad. La decisión se revirtió: un servicio de directorio se estructura en torno a usuarios, contraseñas y jerarquías de grupos — exactamente el modelo que PointSav está reemplazando.<!--/claim--> `service-pairing` se creó como la alternativa deliberada, y `service-auth` se eliminó de la arquitectura antes de escribir código.
+<!--claim id=service-auth-rejected confidence=structural cites=[]-->Los primeros diseños consideraron `service-auth`, modelado en un servicio de directorio tradicional, como proveedor de identidad. La decisión se revirtió: un servicio de directorio se estructura en torno a usuarios, contraseñas y jerarquías de grupos — exactamente el modelo que [[pointsav-overview|PointSav]] está reemplazando.<!--/claim--> `service-pairing` se creó como la alternativa deliberada, y `service-auth` se eliminó de la arquitectura antes de escribir código. Véase [[pairing-as-permission|emparejamiento como permiso]].
 
 ## Véase también
 

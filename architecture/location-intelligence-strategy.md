@@ -42,7 +42,7 @@ cites:
 paired_with: location-intelligence-strategy.es.md
 ---
 
-The Location Intelligence substrate gives customers a dataset of place records — businesses, points of interest, parking geometries — stored as flat files the customer owns, versioned in the same ledger as every other Totebox record, and rendered through an open-source mapping stack with no per-request or per-seat costs. The first application is a co-location map: every Walmart-family, Home-Depot-family, and Costco location across the United States, Canada, Mexico, and Spain, with retail clusters that fall within defined proximity ranges surfaced as the visible analytic.
+The Location Intelligence substrate gives customers a dataset of place records — businesses, points of interest, parking geometries — stored as flat files the customer owns, versioned in the same ledger as every other [[totebox-archive|Totebox]] record, and rendered through an open-source mapping stack with no per-request or per-seat costs. The first application is a co-location map: every Walmart-family, Home-Depot-family, and Costco location across the United States, Canada, Mexico, and Spain, with retail clusters that fall within defined proximity ranges surfaced as the visible analytic. See [[location-intelligence-platform|the Location Intelligence platform]] and [[location-intelligence-substrate|the substrate composition]].
 
 This article describes the market context, the architectural decisions, the technical stack, and the planned implementation path.
 
@@ -66,11 +66,11 @@ Each platform family ties revenue to something the customer's data passes throug
 
 Three commitments carried forward from the rest of the platform define what the Location Intelligence substrate can show that no service in the market above can:
 
-**The customer's location dataset is a customer-owned directory.** `service-business`, `service-places`, and `service-parking` are not databases living in a vendor cloud — they are GeoParquet files (with JSONL siblings for git-diff readability) inside a Totebox Archive the customer signs and stores. A customer who adds 200 retail locations of their own owns those records the same way they own their documents.
+**The customer's location dataset is a customer-owned directory.** [[service-business-clustering|`service-business`]], [[service-places-filtering|`service-places`]], and `service-parking` are not databases living in a vendor cloud — they are GeoParquet files (with JSONL siblings for git-diff readability) inside a [[totebox-archive|Totebox Archive]] the customer signs and stores. A customer who adds 200 retail locations of their own owns those records the same way they own their documents.
 
-**Intelligence is optional.** The map renders, the co-location query runs, and the layers compose without any AI compute. `service-slm` becomes available for annotation work — suggesting categories for newly-ingested POIs, summarising dataset deltas, flagging anomalies — but the platform operates fully with the Doorman shut down.
+**Intelligence is optional.** The map renders, the co-location query runs, and the layers compose without any AI compute. [[service-slm|`service-slm`]] becomes available for annotation work — suggesting categories for newly-ingested POIs, summarising dataset deltas, flagging anomalies — but the platform operates fully with the [[doorman-protocol|Doorman]] shut down.
 
-**The substrate composes with the rest of the platform.** Co-location triples produced in `service-business` today can compose with building envelopes from `service-bim` tomorrow. Two clusters, one coordinate system, one WORM ledger, one identity model.
+**The substrate composes with the rest of the platform.** Co-location triples produced in [[service-business-clustering|`service-business`]] today can compose with building envelopes from `service-bim` tomorrow. Two clusters, one coordinate system, one [[worm-ledger-architecture|WORM ledger]], one identity model.
 
 ## Data architecture — flat-file canonical for service-business
 

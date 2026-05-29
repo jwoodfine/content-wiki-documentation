@@ -14,7 +14,7 @@ cites: [ifc-4-3, iso-19650, ids-1-0]
 paired_with: open-bim-regulatory-acceptance.md
 ---
 
-El Modelado de Información para la Construcción ya no es opcional en la contratación pública para la mayoría de las economías del G7. El gobierno federal de los Estados Unidos ha requerido entregables BIM en formato IFC para proyectos importantes de infraestructura y edificación desde 2007. La Unión Europea ha incorporado requisitos BIM en las directivas de contratación pública aplicadas en los estados miembros. El Reino Unido, Singapur, Noruega, Dinamarca, los Países Bajos y Australia han emitido mandatos nacionales o requisitos de política equivalentes. El panorama regulatorio para el BIM Abierto está definido. La pregunta abierta es qué plataformas pueden cumplir los requisitos de soberanía de datos adjuntos a estos mandatos.
+El Modelado de Información para la Construcción ya no es opcional en la contratación pública para la mayoría de las economías del G7. El gobierno federal de los Estados Unidos ha requerido entregables BIM en formato IFC para proyectos importantes de infraestructura y edificación desde 2007. La Unión Europea ha incorporado requisitos BIM en las directivas de contratación pública aplicadas en los estados miembros. El Reino Unido, Singapur, Noruega, Dinamarca, los Países Bajos y Australia han emitido mandatos nacionales o requisitos de política equivalentes. El panorama regulatorio para el BIM Abierto está definido. La pregunta abierta es qué plataformas pueden cumplir los requisitos de soberanía de datos adjuntos a estos mandatos. Véase [[flat-file-bim-leapfrog|el salto del BIM de archivo plano]] y [[asset-anchored-bim-vault|la bóveda BIM anclada al activo]].
 
 ## Definición de BIM Abierto
 
