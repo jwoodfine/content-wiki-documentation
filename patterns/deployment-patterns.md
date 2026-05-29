@@ -22,7 +22,7 @@ references:
  url: "https://www.opengroup.org/togaf"
 ---
 
-Deployment patterns describes the six canonical configurations in which the PointSav substrate is deployed across different institutional contexts. Each configuration rests on the same five primitives — People, Communications, Drafts, Records, Money — and the same [[console-os|Command Ledger]] surface; what changes per configuration is the [[archetypes-and-chart-of-accounts|Chart of Accounts]] and the compliance surface. The substrate does not fork across segments; it adapts. By the end of this article, a reader will understand the Companion positioning, the six canonical patterns, and the micro-frontend isolation model that makes independent-versioning practical across all six.
+Deployment patterns describes the six canonical configurations in which the PointSav substrate is deployed across different institutional contexts, each built on the [[three-ring-architecture|three-ring architecture]]. Each configuration rests on the same five primitives — People, Communications, Drafts, Records, Money — and the same [[console-os|Command Ledger]] surface; what changes per configuration is the [[archetypes-and-chart-of-accounts|Chart of Accounts]] and the compliance surface. The substrate does not fork across segments; it adapts. By the end of this article, a reader will understand the Companion positioning, the six canonical patterns, and the micro-frontend isolation model that makes independent-versioning practical across all six.
 
 ## Five primitives that span every institutional context [^2]
 
@@ -100,8 +100,8 @@ This cadence prevents two common failure modes: designs that are specced but nev
 
 ## See also
 
+- [[three-ring-architecture]] — the ring architecture that each configuration deploys
 - [[three-layer-architecture]] — the Software / Showcase / Instance three-layer model underlying the template catalogue
 - [[archetypes-and-chart-of-accounts]] — the Chart of Accounts taxonomy that adapts per configuration
 - [[console-os|os-console]] — the Command Ledger surface common to all six configurations
 - [[totebox-os]] — the Totebox operating system that hosts each configuration's archives
-- [[structural-positioning]] — the structural commitments that apply uniformly across all six configurations

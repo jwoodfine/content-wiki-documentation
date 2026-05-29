@@ -20,7 +20,7 @@ cites:
 
 ## Pattern statement
 
-Source-of-truth inversion is a named platform design pattern. In each PointSav application, one storage layer is declared canonical — the authoritative record that is committed, signed, replicated, and disclosed. A second layer is a derived view: the running process's in-memory index, rendered output, or computed summary — rebuilt deterministically from the canonical record on demand and discardable without loss. A third layer, when collaborative editing is enabled, is session-ephemeral: it exists for the duration of a shared editing session and does not write back to canonical until a human author makes a deliberate commit.
+Source-of-truth inversion is a named platform design pattern. In each PointSav application, one storage layer is declared canonical — the authoritative record that is committed, signed, replicated, and disclosed. A second layer is a derived view: the running process's in-memory index, rendered output, or computed summary — rebuilt deterministically from the canonical record on demand and discardable without loss. A third layer, when collaborative editing is enabled, is session-ephemeral: it exists for the duration of a shared editing session and does not write back to canonical until a human author makes a deliberate commit. The canonical layer is typically the [[worm-ledger-design|WORM ledger]] or a signed git tree, depending on the application.
 
 The pattern recurs across the wiki engine, the Ring 2 extraction pipeline, and the planned `app-workplace-presentation` and `app-workplace-proforma` applications. In each case, the choice of what is canonical follows the same structural logic: the layer with the longest durability requirement, the strongest audit obligation, and the cleanest replication story is canonical. Everything else is derived.
 
@@ -72,7 +72,8 @@ The pattern is not application-specific. It recurs because the same structural l
 
 ## See also
 
-- [[app-mediakit-knowledge]] — Anchor instance of the pattern (git as canonical).
-- [[collab-via-passthrough-relay]] — The session-ephemeral layer in detail.
-- [[substrate-native-compatibility]] — Kernel-agnostic canonical storage in the context of Two-Bottoms Sovereign Substrate.
-- [[disclosure-substrate]] — The broader disclosure-posture convention this pattern satisfies.
+- [[app-mediakit-knowledge]] — anchor instance of the pattern (git as canonical)
+- [[collab-via-passthrough-relay]] — the session-ephemeral layer in detail
+- [[worm-ledger-design]] — the WORM ledger substrate used as canonical storage in the Ring 2 extraction pipeline
+- [[substrate-native-compatibility]] — kernel-agnostic canonical storage in the Two-Bottoms Sovereign Substrate context
+- [[disclosure-substrate]] — the broader disclosure-posture convention this pattern satisfies

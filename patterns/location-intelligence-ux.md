@@ -15,7 +15,7 @@ editor: pointsav-engineering
 paired_with: location-intelligence-ux.es.md
 ---
 
-The PointSav Location Intelligence interface uses a Conclusion-First design philosophy — rendering ranked tier conclusions rather than individual data points — so a user comparing markets at a national zoom level sees the most defensible commercial nodes immediately, and only drills into individual operators when a node has earned the attention. The interface draws inspiration from professional-grade spatial platforms where complex multi-parameter models are rendered as intuitive layered navigation surfaces rather than legend-driven dot maps.
+The PointSav [[location-intelligence-platform|Location Intelligence]] interface uses a Conclusion-First design philosophy — rendering ranked tier conclusions rather than individual data points — so a user comparing markets at a national zoom level sees the most defensible commercial nodes immediately, and only drills into individual operators when a node has earned the attention. The interface draws inspiration from professional-grade spatial platforms where complex multi-parameter models are rendered as intuitive layered navigation surfaces rather than legend-driven dot maps. The [[app-orchestration-gis|GIS orchestration surface]] delivers this design at production scale.
 
 ## Quality Benchmark: The Professional Map
 
@@ -39,3 +39,9 @@ The GIS surface uses a standardized component set designed for rapid re-provisio
 - **cluster-grade-marker:** A five-state vector symbol with built-in accessibility labeling (D1-D5).
 - **location-index-card:** A responsive, data-dense drawer for cluster-level metadata.
 - **map-layer-controls:** A consistent UI panel for managing the three-layer architecture.
+
+## See also
+
+- [[location-intelligence-platform]] — the location intelligence platform these UX patterns serve
+- [[app-orchestration-gis]] — the GIS orchestration surface that implements this design
+- [[co-location-methodology]] — the co-location scoring methodology that produces the tier conclusions displayed

@@ -74,10 +74,11 @@ The passthrough relay is a substrate pattern, not a wiki-specific feature. Any s
 
 ## See also
 
-- [[source-of-truth-inversion]] — The canonical / view / ephemeral three-layer storage taxonomy that this pattern instantiates.
-- [[app-mediakit-knowledge]] — Architecture of the wiki engine that ships this pattern.
-- [[substrate-native-compatibility]] — Why the wiki engine declines interface mimicry in favour of substrate-native surfaces.
-- [[disclosure-substrate]] — The broader disclosure-posture convention this design satisfies.
+- [[source-of-truth-inversion]] — the canonical / view / ephemeral three-layer storage taxonomy that this pattern instantiates
+- [[app-mediakit-knowledge]] — architecture of the wiki engine that ships this pattern
+- [[worm-ledger-design]] — the WORM ledger substrate that closes the disclosure record at save time
+- [[substrate-native-compatibility]] — why the wiki engine declines interface mimicry in favour of substrate-native surfaces
+- [[disclosure-substrate]] — the broader disclosure-posture convention this design satisfies
 
 ## References
 

@@ -14,7 +14,7 @@ cites: []
 paired_with: model-tier-discipline.es.md
 ---
 
-A platform that routes all inference work through the highest-capability model available regardless of work shape spends significantly more per output than necessary. A platform with no guidance on model selection leaves each contributor to make independent choices that may be inconsistent, cost-inefficient, or both. Model tier discipline is the structured approach that matches work shape to model capability, routes appropriate work to lower-cost tiers, and makes the routing decision explicit and reviewable.
+A platform that routes all inference work through the highest-capability model available regardless of work shape spends significantly more per output than necessary. Model tier discipline is the routing discipline implemented by the [[service-slm-operationalization-plan|compute routing architecture]] through the [[doorman-protocol|Doorman service]]. A platform with no guidance on model selection leaves each contributor to make independent choices that may be inconsistent, cost-inefficient, or both. Model tier discipline is the structured approach that matches work shape to model capability, routes appropriate work to lower-cost tiers, and makes the routing decision explicit and reviewable.
 
 ## Three abstract tiers
 
@@ -59,3 +59,5 @@ Tier discipline and model version progression are orthogonal axes. A new model v
 ## See also
 
 - [[compounding-substrate]] — the contributor model this discipline makes economically viable
+- [[service-slm-operationalization-plan]] — the compute routing architecture that applies the tier structure
+- [[doorman-protocol]] — the Doorman service that enforces routing at the inference gateway

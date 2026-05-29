@@ -21,7 +21,7 @@ cites:
 
 ## Descripción del patrón
 
-La inversión de la fuente de verdad es un patrón de diseño nombrado de la plataforma. En cada aplicación de PointSav, una capa de almacenamiento se declara canónica — el registro autoritativo que se confirma en git, se firma, se replica y se divulga. Una segunda capa es una vista derivada: el índice en memoria del proceso en ejecución, la salida renderizada o el resumen computado — reconstruido de forma determinista desde el registro canónico bajo demanda y descartable sin pérdida de información. Una tercera capa, cuando la edición colaborativa está activa, es efímera de sesión: existe durante la duración de una sesión de edición compartida y no escribe de vuelta al canónico hasta que un autor humano realiza un commit deliberado.
+La inversión de la fuente de verdad es un patrón de diseño nombrado de la plataforma. En cada aplicación de PointSav, una capa de almacenamiento se declara canónica — el registro autoritativo que se confirma en git o en el [[worm-ledger-design|libro mayor WORM]], se firma, se replica y se divulga. Una segunda capa es una vista derivada: el índice en memoria del proceso en ejecución, la salida renderizada o el resumen computado — reconstruido de forma determinista desde el registro canónico bajo demanda y descartable sin pérdida de información. Una tercera capa, cuando la edición colaborativa está activa, es efímera de sesión: existe durante la duración de una sesión de edición compartida y no escribe de vuelta al canónico hasta que un autor humano realiza un commit deliberado.
 
 El patrón se repite en el motor wiki, en la canalización de extracción de Ring 2, y en las aplicaciones planificadas `app-workplace-presentation` y `app-workplace-proforma`. En cada caso, la elección de qué es canónico sigue la misma lógica estructural: la capa con el mayor requisito de durabilidad, la obligación de auditoría más fuerte y la historia de replicación más limpia es la canónica. Todo lo demás es derivado.
 
@@ -43,8 +43,9 @@ Para las aplicaciones planificadas `app-workplace-presentation` (autoría colabo
 
 ## Véase también
 
-- [[app-mediakit-knowledge]] — Instancia base del patrón (git como canónico).
-- [[collab-via-passthrough-relay]] — La capa efímera de sesión en detalle.
-- [[substrate-native-compatibility]] — Almacenamiento canónico agnóstico al kernel en el contexto de Sustrato Soberano de Dos Fondos.
-- [[disclosure-substrate]] — La convención de postura de divulgación que este patrón satisface.
+- [[app-mediakit-knowledge]] — instancia base del patrón (git como canónico)
+- [[collab-via-passthrough-relay]] — la capa efímera de sesión en detalle
+- [[worm-ledger-design]] — el sustrato del libro mayor WORM utilizado como almacenamiento canónico en la canalización de Ring 2
+- [[substrate-native-compatibility]] — almacenamiento canónico agnóstico al kernel en el contexto del sustrato soberano
+- [[disclosure-substrate]] — la convención de postura de divulgación que este patrón satisface
 

@@ -20,7 +20,7 @@ cites:
 
 ## El patrón en un párrafo
 
-El patrón de relé de paso invierte la suposición habitual sobre dónde reside la autoridad en un sistema de edición colaborativa: el servidor de relé no conserva ningún estado de documento, por lo que el árbol git canónico sigue siendo el único registro autoritativo del contenido de cada tema en todo momento. Los editores concurrentes se conectan mediante WebSocket a un canal `tokio::sync::broadcast` identificado por slug — una sala de difusión por documento — y la única responsabilidad del servidor es reenviar mensajes de actualización del protocolo CRDT de Yjs entre esos clientes. El servidor nunca decodifica ni almacena el estado del documento que esos mensajes codifican. El único límite de persistencia en todo el sistema es la ruta de escritura atómica `POST /edit/{slug}`: cuando un editor guarda, el cliente serializa su documento Yjs local a Markdown, lo envía por HTTP, y el servidor mueve atómicamente el nuevo archivo a su lugar en disco — la misma operación que un guardado de un solo autor.
+El patrón de relé de paso invierte la suposición habitual sobre dónde reside la autoridad en un sistema de edición colaborativa con respecto al [[worm-ledger-design|libro mayor WORM]] canónico: el servidor de relé no conserva ningún estado de documento, por lo que el árbol git canónico sigue siendo el único registro autoritativo del contenido de cada tema en todo momento. Los editores concurrentes se conectan mediante WebSocket a un canal `tokio::sync::broadcast` identificado por slug — una sala de difusión por documento — y la única responsabilidad del servidor es reenviar mensajes de actualización del protocolo CRDT de Yjs entre esos clientes. El servidor nunca decodifica ni almacena el estado del documento que esos mensajes codifican. El único límite de persistencia en todo el sistema es la ruta de escritura atómica `POST /edit/{slug}`: cuando un editor guarda, el cliente serializa su documento Yjs local a Markdown, lo envía por HTTP, y el servidor mueve atómicamente el nuevo archivo a su lugar en disco — la misma operación que un guardado de un solo autor.
 
 ## Por qué un relé de paso, no un servidor CRDT
 
@@ -52,10 +52,11 @@ El patrón aplica directamente cuando el tipo de documento CRDT se mapea con cla
 
 ## Véase también
 
-- [[source-of-truth-inversion]] — La taxonomía de tres capas (canónica / vista / efímera) que este patrón instancia.
-- [[app-mediakit-knowledge]] — Arquitectura del motor wiki que implementa este patrón.
-- [[substrate-native-compatibility]] — Por qué el motor wiki no imita interfaces existentes.
-- [[disclosure-substrate]] — La convención de postura de divulgación que este diseño satisface.
+- [[source-of-truth-inversion]] — la taxonomía de tres capas (canónica / vista / efímera) que este patrón instancia
+- [[app-mediakit-knowledge]] — arquitectura del motor wiki que implementa este patrón
+- [[worm-ledger-design]] — el sustrato del libro mayor WORM que cierra el registro de divulgación en el momento de guardar
+- [[substrate-native-compatibility]] — por qué el motor wiki no imita interfaces existentes
+- [[disclosure-substrate]] — la convención de postura de divulgación que este diseño satisface
 
 ## Procedencia
 

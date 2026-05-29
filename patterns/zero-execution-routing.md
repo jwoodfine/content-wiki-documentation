@@ -15,7 +15,7 @@ editor: pointsav-engineering
 
 
 
-Platform presentation layers adhere to a zero-execution mandate, eliminating client-side JavaScript for core DOM manipulation, language routing, and file serving. This architectural constraint minimizes the attack surface and supports SOC 3 (Service Organization Control 3) compliance by relying entirely on deterministic files and native CSS state management.
+Platform presentation layers adhere to a zero-execution mandate, eliminating client-side JavaScript for core DOM manipulation, language routing, and file serving. This architectural constraint minimizes the attack surface and supports SOC 3 (Service Organization Control 3) compliance by relying entirely on deterministic files and native CSS state management. The pattern complements the [[machine-based-auth|machine-based authentication]] layer and the [[sovereign-ai-routing|sovereign AI routing]] architecture.
 
 ## 1. Deterministic Bilingual Routing
 
@@ -34,7 +34,7 @@ This approach ensures that platform interfaces are accessible, secure, and insta
 
 ## See also
 
-- [[sovereign-ai-routing]]
-- [[machine-based-auth]]
-- [[decode-time-constraints]]
-- [[sel4-microkernel-substrate]]
+- [[sovereign-ai-routing]] — the sovereign AI routing architecture that pairs with this zero-execution discipline
+- [[machine-based-auth]] — machine-based authentication layer operating in the same zero-trust presentation context
+- [[decode-time-constraints]] — decode-time constraints that enforce deterministic execution boundaries
+- [[sel4-microkernel-substrate]] — the microkernel substrate that grounds the execution isolation model

@@ -24,7 +24,7 @@ references:
 paired_with: pairing-as-permission.md
 ---
 
-PairingAsPermission es el modelo de control de acceso utilizado en la orquestación Totebox: un emparejamiento criptográfico entre dos nodos es el permiso, y la ausencia de emparejamiento hace estructuralmente imposible la conexión — no es acceso denegado, sino la inexistencia de un camino. No hay lista central de control de acceso, ni búsqueda de permisos en tiempo de solicitud, ni tabla de roles. El modelo es el patrón formalmente probado de Capacidades de Objeto, desplegado en producción en Fuchsia OS, seL4 y WireGuard. PairingAsPermission es canónico en el espacio de trabajo; los sinónimos RBAC, ACL y PermissionSystem se rechazan explícitamente.
+PairingAsPermission es el modelo de control de acceso utilizado en la [[totebox-orchestration|orquestación Totebox]]: un emparejamiento criptográfico entre dos nodos es el permiso, y la ausencia de emparejamiento hace estructuralmente imposible la conexión — no es acceso denegado, sino la inexistencia de un camino. No hay lista central de control de acceso, ni búsqueda de permisos en tiempo de solicitud, ni tabla de roles. El modelo es el patrón formalmente probado de Capacidades de Objeto, desplegado en producción en Fuchsia OS, seL4 y WireGuard. PairingAsPermission es canónico en el espacio de trabajo; los sinónimos RBAC, ACL y PermissionSystem se rechazan explícitamente.
 
 Este artículo describe el principio, la topología en la orquestación Totebox, los riesgos de ingeniería y las implementaciones de referencia en producción.
 
@@ -103,8 +103,9 @@ El emparejamiento es el permiso. La topología es la auditoría.
 
 ## Véase también
 
-- [[totebox-orchestration-development]]
-- [[doorman-protocol]]
-- [[compounding-substrate]]
-- [[three-ring-architecture]]
+- [[totebox-orchestration-development]] — arquitectura de desarrollo de la orquestación Totebox que aplica este modelo
+- [[doorman-protocol]] — el servicio Doorman que opera como pasarela en la topología de capacidades
+- [[machine-based-auth]] — capa de autenticación basada en máquinas que opera junto al modelo de emparejamiento
+- [[compounding-substrate]] — la arquitectura más amplia dentro de la cual este modelo de acceso se compone
+- [[three-ring-architecture]] — el modelo de límite de anillos que PairingAsPermission aplica estructuralmente
 

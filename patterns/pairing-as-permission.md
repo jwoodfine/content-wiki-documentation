@@ -24,7 +24,7 @@ references:
 paired_with: pairing-as-permission.es.md
 ---
 
-PairingAsPermission is the access-control model used in Totebox Orchestration: a cryptographic pairing between two nodes is the permission, and the absence of a pairing makes the connection structurally impossible — not access-denied, but no pathway. There is no central access-control list, no permission lookup at request time, and no role table. The model is the formally proven Object Capability pattern, deployed in production at Fuchsia OS, seL4, and WireGuard. PairingAsPermission is canonical in the workspace; synonyms RBAC, ACL, and PermissionSystem are explicitly rejected.
+PairingAsPermission is the access-control model used in [[totebox-orchestration|Totebox Orchestration]]: a cryptographic pairing between two nodes is the permission, and the absence of a pairing makes the connection structurally impossible — not access-denied, but no pathway. There is no central access-control list, no permission lookup at request time, and no role table. The model is the formally proven Object Capability pattern, deployed in production at Fuchsia OS, seL4, and WireGuard. PairingAsPermission is canonical in the workspace; synonyms RBAC, ACL, and PermissionSystem are explicitly rejected.
 
 This article describes the principle, the topology in Totebox Orchestration, the engineering risks, and the production reference implementations.
 
@@ -103,8 +103,9 @@ Pairing is the permission. Topology is the audit.
 
 ## See also
 
-- [[totebox-orchestration-development]]
-- [[doorman-protocol]]
-- [[compounding-substrate]]
-- [[three-ring-architecture]]
+- [[totebox-orchestration-development]] — Totebox Orchestration development architecture that applies this model
+- [[doorman-protocol]] — the Doorman service that operates as the gateway in the capability topology
+- [[machine-based-auth]] — machine-based authentication layer that operates alongside the pairing model
+- [[compounding-substrate]] — the broader architecture within which this access model compounds
+- [[three-ring-architecture]] — the ring boundary model that PairingAsPermission enforces structurally
 

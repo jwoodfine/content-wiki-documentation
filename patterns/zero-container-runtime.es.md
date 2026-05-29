@@ -15,7 +15,7 @@ paired_with: zero-container-runtime.md
 ---
 
 
-Todo despliegue de PointSav — en todos los anillos de servicio, todos los niveles de cómputo y todos los contextos de despliegue desde la implementación de referencia hasta un futuro despliegue en appliance — se ejecuta como un binario ELF de Linux supervisado por systemd en una máquina virtual simple o un host bare-metal. Sin tiempo de ejecución de contenedores. Sin orquestador. Sin plataforma de tiempo de ejecución gestionada.
+Todo despliegue de PointSav — en todos los [[three-ring-architecture|anillos de servicio]], todos los niveles de cómputo y todos los contextos de despliegue desde la implementación de referencia hasta un futuro despliegue en appliance — se ejecuta como un binario ELF de Linux supervisado por systemd en una máquina virtual simple o un host bare-metal. Sin tiempo de ejecución de contenedores. Sin orquestador. Sin plataforma de tiempo de ejecución gestionada.
 
 Este es un compromiso estructural, no una elección pragmática de primera fase.
 
@@ -39,4 +39,6 @@ El compromiso acepta un tiempo de inicio en frío más largo para el cómputo de
 
 ## Véase también
 
-- [[service-slm-operationalization-plan]]
+- [[service-slm-operationalization-plan]] — la arquitectura de enrutamiento de cómputo que aplica este principio en los niveles A, B y C
+- [[three-ring-architecture]] — el modelo de anillos cuyos procesos siguen esta disciplina de despliegue
+- [[doorman-protocol]] — el servicio Doorman que opera como binario gestionado por systemd siguiendo este patrón

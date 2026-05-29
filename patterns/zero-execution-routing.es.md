@@ -15,7 +15,7 @@ editor: pointsav-engineering
 
 
 
-Las capas de presentación de la plataforma siguen un mandato de "Ejecución Cero", eliminando el uso de JavaScript en el cliente para la manipulación de la interfaz y el enrutamiento de idiomas. Esta arquitectura minimiza la superficie de ataque y garantiza un rendimiento instantáneo.
+Las capas de presentación de la plataforma siguen un mandato de "Ejecución Cero", eliminando el uso de JavaScript en el cliente para la manipulación de la interfaz y el enrutamiento de idiomas. Esta arquitectura minimiza la superficie de ataque y garantiza un rendimiento instantáneo. El patrón complementa la capa de [[machine-based-auth|autenticación basada en máquinas]] y la arquitectura de [[sovereign-ai-routing|enrutamiento de IA soberana]].
 
 ## Enrutamiento Bilingüe Determinista
 
@@ -32,7 +32,7 @@ Los elementos interactivos (como el cambio de idioma o botones dinámicos) funci
 
 ## Véase también
 
-- [[sovereign-ai-routing]]
-- [[machine-based-auth]]
-- [[decode-time-constraints]]
-- [[sel4-microkernel-substrate]]
+- [[sovereign-ai-routing]] — la arquitectura de enrutamiento de IA soberana que se combina con esta disciplina de ejecución cero
+- [[machine-based-auth]] — capa de autenticación basada en máquinas que opera en el mismo contexto de presentación de confianza cero
+- [[decode-time-constraints]] — restricciones en tiempo de decodificación que aplican los límites de ejecución deterministas
+- [[sel4-microkernel-substrate]] — el sustrato de microkernel que fundamenta el modelo de aislamiento de ejecución

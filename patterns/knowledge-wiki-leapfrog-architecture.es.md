@@ -20,7 +20,7 @@ paired_with: knowledge-wiki-leapfrog-architecture.md
 
 ## Adaptación estratégica
 
-`app-mediakit-knowledge` es el motor del wiki de conocimiento de PointSav: un binario Rust que sirve tres instancias wiki — `documentation.pointsav.com`, `projects.woodfinegroup.com` y `corporate.woodfinegroup.com` — desde archivos Markdown almacenados en repositorios git. El motor renderiza contenido con la interfaz visual de Wikipedia: tabla de contenidos adherente, resolución de wikilinks con señalización de enlaces rojos, páginas de categoría, historial de edición y búsqueda de texto completo.
+[[app-mediakit-knowledge|`app-mediakit-knowledge`]] es el motor del wiki de conocimiento de PointSav: un binario Rust que sirve tres instancias wiki — `documentation.pointsav.com`, `projects.woodfinegroup.com` y `corporate.woodfinegroup.com` — desde archivos Markdown almacenados en repositorios git. El motor renderiza contenido con la interfaz visual de Wikipedia: tabla de contenidos adherente, resolución de wikilinks con señalización de enlaces rojos, páginas de categoría, historial de edición y búsqueda de texto completo.
 
 En mayo de 2026, el motor implementa aproximadamente el 78 % de la experiencia visual y funcional de Wikipedia. Una hoja de ruta de varios sprints prevé llevar esa cifra a aproximadamente el 95 %, tras lo cual se añade una capa diferenciadora de Leapfrog 2030 que va más allá de lo que ofrece Wikipedia.
 
@@ -54,4 +54,5 @@ Una vez alcanzada la paridad con Wikipedia, se prevé añadir tres primitivas de
 
 - [[app-mediakit-knowledge]] — descripción de la aplicación, configuración de despliegue y hoja de ruta por fases
 - [[leapfrog-2030-architecture]] — doctrina Leapfrog 2030 y ocho inventos del marco
+- [[source-of-truth-inversion]] — el patrón de almacenamiento (git canónico, vista derivada) que implementa el motor wiki
 - [[compounding-substrate]] — el patrón de compounding que implementa el pilar wiki

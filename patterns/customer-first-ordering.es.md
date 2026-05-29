@@ -17,7 +17,7 @@ paired_with: customer-first-ordering.md
 
 ## Resumen estratégico
 
-El ordenamiento cliente-primero es la disciplina que previene que el desarrollo interno de un proveedor de software diverge de la experiencia operativa del cliente, haciendo que la secuencia de instalación del cliente sea la secuencia de construcción del proveedor.
+El ordenamiento cliente-primero es la disciplina que previene que el desarrollo interno de un proveedor de software diverge de la experiencia operativa del cliente, haciendo que la secuencia de instalación del cliente sea la secuencia de construcción del proveedor. La disciplina ancla el [[compounding-substrate|sustrato compuesto]] en la realidad operativa verificada.
 
 ## El principio
 
@@ -37,5 +37,7 @@ Algunos pasos no pueden ser utilizados internamente porque son estructuralmente 
 
 ## Véase también
 
-- [[compounding-substrate]]
-- [[data-vault-bookkeeping-substrate]]
+- [[compounding-substrate]] — la arquitectura de sustrato que este principio sirve
+- [[data-vault-bookkeeping-substrate]] — un ejemplo de producto construido en orden de instalación del cliente
+- [[deployment-patterns]] — las seis configuraciones canónicas desplegadas siguiendo este principio
+- [[three-ring-architecture]] — el modelo de anillos que el cliente instala en secuencia

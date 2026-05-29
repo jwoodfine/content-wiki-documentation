@@ -14,7 +14,7 @@ cites: []
 paired_with: zero-container-runtime.es.md
 ---
 
-Every PointSav deployment — across all service rings, all compute tiers, and all deployment contexts from the reference implementation to a future appliance deployment — runs as a Linux ELF binary supervised by systemd on a plain virtual machine or bare-metal host. No container runtime. No orchestrator. No managed-runtime platform.
+Every PointSav deployment — across all [[three-ring-architecture|service rings]], all compute tiers, and all deployment contexts from the reference implementation to a future appliance deployment — runs as a Linux ELF binary supervised by systemd on a plain virtual machine or bare-metal host. No container runtime. No orchestrator. No managed-runtime platform.
 
 This is a structural commitment, not a phase-one pragmatic choice. It does not relax in later versions, and the burden of proof for revisiting it falls on a proposal demonstrating that the principle has produced a material disadvantage that cannot be addressed within the principle.
 
@@ -52,4 +52,6 @@ The principle applies without time limit. If a future technical review under the
 
 ## See also
 
-- [[service-slm-operationalization-plan]] — The compute routing architecture that applies this principle across Tier A, B, and C.
+- [[service-slm-operationalization-plan]] — the compute routing architecture that applies this principle across Tier A, B, and C
+- [[three-ring-architecture]] — the ring boundary model whose processes all follow this deployment discipline
+- [[doorman-protocol]] — the Doorman service that operates as a systemd-managed binary per this pattern

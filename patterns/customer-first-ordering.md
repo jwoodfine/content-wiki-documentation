@@ -14,7 +14,7 @@ cites: []
 paired_with: customer-first-ordering.es.md
 ---
 
-A software vendor that builds its own tools out of order — shipping the API before the client, the runbook after the deployment, the configuration documentation months after the first user — delivers a product that reflects the vendor's development convenience rather than the customer's operational reality. Customer-first ordering is the discipline that prevents this by making the customer's installation sequence the vendor's build sequence.
+A software vendor that builds its own tools out of order — shipping the API before the client, the runbook after the deployment, the configuration documentation months after the first user — delivers a product that reflects the vendor's development convenience rather than the customer's operational reality. Customer-first ordering is the discipline that prevents this by making the customer's installation sequence the vendor's build sequence, grounding the [[compounding-substrate|compounding substrate]] in verified operational reality.
 
 ## The principle
 
@@ -56,3 +56,5 @@ The customer-first ordering principle is the operational form of the three-tier 
 
 - [[compounding-substrate]] — the substrate architecture this principle serves
 - [[data-vault-bookkeeping-substrate]] — an example of a product built in customer-installation order
+- [[deployment-patterns]] — the six canonical configurations deployed following this principle
+- [[three-ring-architecture]] — the ring boundary model the customer installs in sequence

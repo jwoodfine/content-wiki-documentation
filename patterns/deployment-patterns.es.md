@@ -22,7 +22,7 @@ references:
  url: "https://www.opengroup.org/togaf"
 ---
 
-Los patrones de despliegue describen las seis configuraciones canónicas en las que se despliega el sustrato PointSav en diferentes contextos institucionales. Cada configuración se basa en los mismos cinco primitivos — Personas, Comunicaciones, Borradores, Registros, Dinero — y la misma superficie de [[console-os|Libro Mayor de Comandos]]; lo que cambia por configuración es el [[archetypes-and-chart-of-accounts|Plan de Cuentas]] y la superficie de cumplimiento. El sustrato no se bifurca entre segmentos; se adapta. Al finalizar este artículo, el lector comprenderá el posicionamiento de Compañero, las seis configuraciones canónicas y el modelo de aislamiento de micro-frontend que hace práctica la versión independiente en los seis.
+Los patrones de despliegue describen las seis configuraciones canónicas en las que se despliega el sustrato PointSav en diferentes contextos institucionales, cada una construida sobre la [[three-ring-architecture|arquitectura de tres anillos]]. Cada configuración se basa en los mismos cinco primitivos — Personas, Comunicaciones, Borradores, Registros, Dinero — y la misma superficie de [[console-os|Libro Mayor de Comandos]]; lo que cambia por configuración es el [[archetypes-and-chart-of-accounts|Plan de Cuentas]] y la superficie de cumplimiento. El sustrato no se bifurca entre segmentos; se adapta. Al finalizar este artículo, el lector comprenderá el posicionamiento de Compañero, las seis configuraciones canónicas y el modelo de aislamiento de micro-frontend que hace práctica la versión independiente en los seis.
 
 ## Cinco primitivos que abarcan todos los contextos institucionales [^2]
 
@@ -94,8 +94,8 @@ Los patrones de despliegue se lanzan con una cadencia de visible-primero: la URL
 
 ## Véase también
 
+- [[three-ring-architecture]] — la arquitectura de anillos que cada configuración despliega
 - [[three-layer-architecture]] — el modelo de tres capas Software / Exhibición / Instancias
 - [[archetypes-and-chart-of-accounts]] — la taxonomía del Plan de Cuentas que se adapta por configuración
 - [[console-os|os-console]] — la superficie del Libro Mayor de Comandos común a las seis configuraciones
 - [[totebox-os]] — el sistema operativo Totebox que aloja los archivos de cada configuración
-- [[structural-positioning]] — los compromisos estructurales que se aplican uniformemente en las seis configuraciones

@@ -33,7 +33,7 @@ references:
  url: "https://docs.rs/comrak/latest/comrak/struct.ExtensionOptions.html"
 ---
 
-`app-mediakit-knowledge` is the PointSav knowledge platform engine, a Rust binary that serves three wiki instances — `documentation.pointsav.com`, `projects.woodfinegroup.com`, and `corporate.woodfinegroup.com` — from flat Markdown files stored in git repositories. The engine renders content with Wikipedia-shaped chrome: sticky table of contents, wikilink resolution with red-link signalling, category pages, edit history, and full-text search. As of May 2026, it implements approximately 78 percent of the full Wikipedia muscle-memory surface. A planned multi-sprint roadmap is intended to bring that figure to approximately 95 percent before adding a Leapfrog 2030 differentiation layer that goes beyond what Wikipedia offers.
+[[app-mediakit-knowledge|`app-mediakit-knowledge`]] is the PointSav knowledge platform engine, a Rust binary that serves three wiki instances — `documentation.pointsav.com`, `projects.woodfinegroup.com`, and `corporate.woodfinegroup.com` — from flat Markdown files stored in git repositories. The engine renders content with Wikipedia-shaped chrome: sticky table of contents, wikilink resolution with red-link signalling, category pages, edit history, and full-text search. As of May 2026, it implements approximately 78 percent of the full Wikipedia muscle-memory surface. A planned multi-sprint roadmap is intended to bring that figure to approximately 95 percent before adding a Leapfrog 2030 differentiation layer that goes beyond what Wikipedia offers.
 
 ## Why not port MediaWiki
 
@@ -143,4 +143,5 @@ Platforms that impose hierarchical organisation typically lack redlinks (the sig
 
 - [[app-mediakit-knowledge]] — application overview, deployment configuration, and phase roadmap
 - [[leapfrog-2030-architecture]] — Leapfrog 2030 doctrine and eight-invention framework
+- [[source-of-truth-inversion]] — the storage pattern (git canonical, view derived) that the wiki engine implements
 - [[compounding-substrate]] — the broader compounding pattern that the wiki leg implements

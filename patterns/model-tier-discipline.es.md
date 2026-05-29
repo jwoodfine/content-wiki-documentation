@@ -17,7 +17,7 @@ paired_with: model-tier-discipline.md
 
 ## Resumen estratégico
 
-La disciplina de niveles de modelo es el enfoque estructurado que adapta la forma del trabajo a la capacidad del modelo, enruta el trabajo apropiado a niveles de menor costo y hace que la decisión de enrutamiento sea explícita y revisable.
+La disciplina de niveles de modelo es el enfoque estructurado que adapta la forma del trabajo a la capacidad del modelo, enruta el trabajo apropiado a niveles de menor costo y hace que la decisión de enrutamiento sea explícita y revisable. La disciplina se aplica a través de la [[service-slm-operationalization-plan|arquitectura de enrutamiento de cómputo]] mediante el servicio [[doorman-protocol|Doorman]].
 
 ## Tres niveles abstractos
 
@@ -39,4 +39,6 @@ La estructura de tres niveles produce un multiplicador efectivo significativo co
 
 ## Véase también
 
-- [[compounding-substrate]]
+- [[compounding-substrate]] — el modelo de contribuidores que esta disciplina hace económicamente viable
+- [[service-slm-operationalization-plan]] — la arquitectura de enrutamiento de cómputo que aplica la estructura de niveles
+- [[doorman-protocol]] — el servicio Doorman que aplica el enrutamiento en la pasarela de inferencia
