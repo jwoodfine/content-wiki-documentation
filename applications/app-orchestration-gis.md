@@ -18,7 +18,7 @@ cites:
  - maplibre-gl-js
 ---
 
-`app-orchestration-gis` is the stateless spatial analytics engine that performs linear-geometry calculations and coordinate mapping to produce the Woodfine co-location rankings and the interactive map at [gis.woodfinegroup.com](https://gis.woodfinegroup.com). The application holds no canonical data — it operates as a pure function from cleansed cluster files to ranked geo-tiles, so a lost instance can be re-provisioned by pointing a fresh process at the immutable data layer with no state migration.
+`app-orchestration-gis` is the stateless spatial analytics engine that performs linear-geometry calculations and coordinate mapping to produce the Woodfine co-location rankings and the interactive map at [gis.woodfinegroup.com](https://gis.woodfinegroup.com). The application holds no canonical data — it operates as a pure function from cleansed cluster files to ranked geo-tiles, so a lost instance can be re-provisioned by pointing a fresh process at the immutable [[totebox-archive|Totebox data layer]] with no state migration. It runs on [[os-orchestration|`os-orchestration`]] and composes with [[service-business-clustering]] and [[service-places-filtering]] to produce its input datasets.
 
 ## Scoring Algorithm
 
@@ -35,7 +35,7 @@ The engine compiles scored output into vector tile assets for delivery to the in
 
 - **Vector tiles:** PMTiles format for client-side rendering without a dedicated tile server [pmtiles-spec]
 - **Rendering:** MapLibre GL JS processes the tiles client-side at high performance [maplibre-gl-js]
-- **Visual tiers:** Spatial convergence across anchor categories (primary, hardware, warehouse, civic) maps to a four-tier visual classification on the map surface
+- **Visual tiers:** Spatial convergence across anchor categories (primary, hardware, warehouse, civic) maps to a four-tier visual classification on the map surface, expressed through the [[co-location-methodology|co-location scoring methodology]]
 
 ## Stateless Architecture
 
@@ -43,6 +43,8 @@ The application holds no canonical data. It operates as a pure function: cleanse
 
 ## See also
 
-- [[pointsav-gis-engine]]
-- [[service-business-clustering]]
-- [[service-places-filtering]]
+- [[pointsav-gis-engine]] — the rendering layer that serves tiles produced by this engine
+- [[service-business-clustering]] — the clustering service that groups POI data into co-location clusters
+- [[service-places-filtering]] — the places filtering service that prepares cleansed input data
+- [[co-location-methodology]] — the scoring and ranking methodology implemented by the engine
+- [[location-intelligence-platform]] — the platform article covering the full GIS deployment

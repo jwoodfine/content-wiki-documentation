@@ -20,7 +20,7 @@ cites:
  - osc-sn-51-721
 ---
 
-La plataforma de Inteligencia de Ubicación de PointSav es una aplicación GIS de archivos planos propiedad del cliente diseñada para análisis de clústeres minoristas y selección estratégica de sitios — compuesta por [[app-orchestration-gis]] (el motor analítico) y [[pointsav-gis-engine]] (la capa de renderizado), con cada conjunto de datos, algoritmo y decisión de renderizado bajo el control directo del cliente. La plataforma responde a una pregunta comercial fundamental — *¿qué nodos geográficos poseen la densidad validada por capital requerida para soportar desarrollo adyacente?* — transformando ubicaciones de tiendas en bruto en nodos comerciales accionables a través de la [[co-location-methodology]].
+La plataforma de Inteligencia de Ubicación de PointSav es una aplicación GIS de archivos planos propiedad del cliente diseñada para análisis de clústeres minoristas y selección estratégica de sitios — compuesta por [[app-orchestration-gis]] (el motor analítico) y [[pointsav-gis-engine]] (la capa de renderizado), con cada conjunto de datos, algoritmo y decisión de renderizado bajo el control directo del cliente. La plataforma responde a una pregunta comercial fundamental — *¿qué nodos geográficos poseen la densidad validada por capital requerida para soportar desarrollo adyacente?* — transformando ubicaciones de tiendas en bruto en nodos comerciales accionables a través de la [[co-location-methodology]]. Todos los conjuntos de datos canónicos residen en un [[totebox-archive|Archivo Totebox]] como archivos planos JSONL y GeoParquet, aplicando la [[worm-ledger-design|disciplina del libro mayor WORM]] a los registros geoespaciales.
 
 ## Capacidades Operativas
 
@@ -37,11 +37,14 @@ El mapa interactivo en [gis.woodfinegroup.com](https://gis.woodfinegroup.com) ut
 
 ## Arquitectura Soberana
 
-La plataforma se adhiere a los principios de soberanía de datos del [Motor GIS de PointSav](pointsav-gis-engine):
-- **Operación basada en Archivos Planos:** Los datos persisten como archivos JSONL y GeoParquet versionados en un Totebox Archive.
+La plataforma se adhiere a los principios de [[customer-hostability|soberanía de datos centrada en el cliente]] del [[pointsav-gis-engine|Motor GIS de PointSav]]:
+- **Operación basada en Archivos Planos:** Los datos persisten como archivos JSONL y GeoParquet versionados en un [[totebox-archive|Archivo Totebox]].
 - **Visualización con Estándares Abiertos:** Utiliza PMTiles y MapLibre GL JS para servir mapas vectoriales sin dependencias de APIs de terceros.
 
----
-## Procedencia
-- **Adaptación Estratégica:** Basada en el documento inglés `location-intelligence-platform.md`.
-- **Refinement:** 2026-05-02 por project-language Task.
+## Véase también
+
+- [[app-orchestration-gis]] — el motor analítico sin estado que produce las clasificaciones de co-ubicación
+- [[pointsav-gis-engine]] — la capa de renderizado que sirve los mosaicos vectoriales a la interfaz del mapa
+- [[co-location-methodology]] — el algoritmo de puntuación y clasificación que sustenta el análisis de clústeres
+- [[location-intelligence-ux]] — la filosofía de diseño UX para la superficie del mapa interactivo
+- [[totebox-archive]] — el archivo de archivos planos que contiene todos los datos geoespaciales canónicos

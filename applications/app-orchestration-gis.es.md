@@ -18,7 +18,7 @@ cites:
  - maplibre-gl-js
 ---
 
-`app-orchestration-gis` es el motor de análisis espacial sin estado que realiza cálculos de geometría lineal y mapeo de coordenadas para producir las clasificaciones de co-ubicación de Woodfine y el mapa interactivo en [gis.woodfinegroup.com](https://gis.woodfinegroup.com). La aplicación no contiene datos canónicos — opera como una función pura desde archivos de clúster depurados hacia mosaicos geográficos clasificados, de modo que una instancia perdida puede reprovisionarse apuntando un nuevo proceso a la capa de datos inmutable sin migración de estado.
+`app-orchestration-gis` es el motor de análisis espacial sin estado que realiza cálculos de geometría lineal y mapeo de coordenadas para producir las clasificaciones de co-ubicación de Woodfine y el mapa interactivo en [gis.woodfinegroup.com](https://gis.woodfinegroup.com). La aplicación no contiene datos canónicos — opera como una función pura desde archivos de clúster depurados hacia mosaicos geográficos clasificados, de modo que una instancia perdida puede reprovisionarse apuntando un nuevo proceso a la capa de datos inmutable [[totebox-archive|del Archivo Totebox]] sin migración de estado. Se ejecuta sobre [[os-orchestration|`os-orchestration`]] y se compone con [[service-business-clustering]] y [[service-places-filtering]] para producir sus conjuntos de datos de entrada.
 
 ## Posición estructural
 
@@ -34,10 +34,12 @@ La salida se entrega como archivos PMTiles — un formato de archivo plano que e
 
 ## Diseño sin estado
 
-La arquitectura de la aplicación es completamente sin estado: no persiste datos entre ejecuciones. Todo el estado reside en el archivo PMTiles de salida, versionado en el Totebox Archive. Esto permite re-provisionar el entorno GIS completo de forma instantánea desde la capa de datos inmutable.
+La arquitectura de la aplicación es completamente sin estado: no persiste datos entre ejecuciones. Todo el estado reside en el archivo PMTiles de salida, versionado en el [[totebox-archive|Archivo Totebox]]. Esto permite re-provisionar el entorno GIS completo de forma instantánea desde la capa de datos inmutable, aplicando la [[co-location-methodology|metodología de co-ubicación]] de forma reproducible.
 
 ## Véase también
 
-- [[pointsav-gis-engine]]
-- [[service-business-clustering]]
-- [[service-places-filtering]]
+- [[pointsav-gis-engine]] — la capa de renderizado que sirve los mosaicos producidos por este motor
+- [[service-business-clustering]] — el servicio de agrupamiento que forma los clústeres de co-ubicación
+- [[service-places-filtering]] — el servicio de filtrado que prepara los datos de entrada depurados
+- [[co-location-methodology]] — la metodología de puntuación y clasificación implementada por el motor
+- [[location-intelligence-platform]] — el artículo de plataforma que cubre el despliegue GIS completo

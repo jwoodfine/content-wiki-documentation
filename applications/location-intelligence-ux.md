@@ -15,7 +15,7 @@ short_description: "The PointSav Location Intelligence interface is engineered f
 paired_with: location-intelligence-ux.es.md
 ---
 
-The [[location-intelligence-platform]] interface is engineered to prioritize decision-maker clarity over raw data volume. By using a Conclusion-First design philosophy, the platform communicates site-selection confidence through visual hierarchy and structural grading.
+The [[location-intelligence-platform]] interface is engineered to prioritize decision-maker clarity over raw data volume. By using a Conclusion-First design philosophy, the platform communicates site-selection confidence through visual hierarchy and structural grading, applying the [[co-location-methodology|co-location scoring methodology]] as the primary analytical unit.
 
 ## Quality benchmark: the professional map
 
@@ -39,6 +39,7 @@ The GIS surface uses a standardized component set built on [[app-orchestration-g
 
 ## See also
 
-* [[location-intelligence-platform]]
-* [[app-orchestration-gis]]
-* [[pointsav-gis-engine]]
+- [[location-intelligence-platform]] — the full platform article covering data foundations and sovereign architecture
+- [[app-orchestration-gis]] — the analytics engine that produces the cluster grades displayed in the interface
+- [[pointsav-gis-engine]] — the rendering layer that serves vector tiles to the map surface
+- [[co-location-methodology]] — the scoring and ranking methodology visualised by the interface

@@ -196,3 +196,5 @@ Phases 4–8 are *planned*; cautionary language applies per [ni-51-102] and [osc
 - [[source-of-truth-inversion]] — the canonical / view / ephemeral pattern generalised across the substrate
 - [[substrate-native-compatibility]] — the Action API drop rationale and the substrate-native surface set
 - [[collab-via-passthrough-relay]] — the WebSocket relay implementation in depth
+- [[wikipedia-leapfrog-design]] — the 95%/5% muscle-memory and leapfrog headroom design philosophy
+- [[knowledge-wiki-home-page-design]] — the home page design intent and slot structure

@@ -15,7 +15,7 @@ cites: [ni-51-102, osc-sn-51-721]
 
 # Wikipedia leapfrog design — muscle memory and 5% headroom
 
-The `app-mediakit-knowledge` wiki engine inherits 95% of its chrome from Wikipedia's established layout conventions. The remaining 5% is leapfrog headroom: additions that no Wikipedia reader has encountered, shipped as additive features so the baseline reading experience is undisturbed. This article explains why each design choice was made and what the structural contract with two different audiences looks like.
+The [[app-mediakit-knowledge]] wiki engine inherits 95% of its chrome from Wikipedia's established layout conventions. The remaining 5% is leapfrog headroom: additions that no Wikipedia reader has encountered, shipped as additive features so the baseline reading experience is undisturbed. This article explains why each design choice was made and what the structural contract with two different audiences looks like.
 
 ---
 
@@ -53,7 +53,7 @@ This addition does not interfere with footnote conventions. The badge appears at
 
 ### Forward-looking information banner
 
-Articles whose frontmatter sets `forward_looking: true` render a cautionary banner in reading view. The banner is the reading-surface expression of continuous-disclosure requirements under [ni-51-102] and [osc-sn-51-721]: forward-looking information must be labelled, carry a stated reasonable basis, and include material assumptions and cautionary language. The banner appears below the article title in reading view, distinct in colour from the body, and does not interfere with the hatnote or lead sentence.
+Articles whose frontmatter sets `forward_looking: true` render a cautionary banner in reading view. The banner is the reading-surface expression of [[compliance-and-continuous-disclosure|continuous-disclosure requirements]] under [ni-51-102] and [osc-sn-51-721]: forward-looking information must be labelled, carry a stated reasonable basis, and include material assumptions and cautionary language. The banner appears below the article title in reading view, distinct in colour from the body, and does not interfere with the hatnote or lead sentence.
 
 ### Disclosure class field
 
@@ -107,9 +107,9 @@ The following items are intended or planned for later phases. No specific delive
 
 ---
 
-## See Also
+## See also
 
-- [[app-mediakit-knowledge]]
-- [[knowledge-wiki-home-page-design]]
-- [[source-of-truth-inversion]]
-- [[substrate-native-compatibility]]
+- [[app-mediakit-knowledge]] — the wiki engine that implements this leapfrog design
+- [[knowledge-wiki-home-page-design]] — the home page design intent and Wikipedia conventions applied
+- [[source-of-truth-inversion]] — the canonical/view/ephemeral pattern that underpins the engine's editorial posture
+- [[substrate-native-compatibility]] — the rationale for the substrate-native API surface over a MediaWiki shim

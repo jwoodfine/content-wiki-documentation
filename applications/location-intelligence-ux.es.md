@@ -15,7 +15,7 @@ short_description: "La interfaz de Inteligencia de Ubicación de PointSav está 
 paired_with: location-intelligence-ux.md
 ---
 
-La interfaz de la [[location-intelligence-platform]] de PointSav está diseñada para priorizar la claridad en la toma de decisiones por encima del volumen de datos brutos. Utilizando una filosofía de conclusión primero, la plataforma comunica la confianza en la selección de sitios mediante jerarquía visual y clasificación estructural.
+La interfaz de la [[location-intelligence-platform]] de PointSav está diseñada para priorizar la claridad en la toma de decisiones por encima del volumen de datos brutos. Utilizando una filosofía de conclusión primero, la plataforma comunica la confianza en la selección de sitios mediante jerarquía visual y clasificación estructural, aplicando la [[co-location-methodology|metodología de co-ubicación]] como unidad analítica principal.
 
 ## Diferenciación: el grado de clúster como unidad primaria
 
@@ -31,6 +31,7 @@ La superficie GIS utiliza un conjunto de componentes estandarizado construido so
 
 ## Véase también
 
-* [[location-intelligence-platform]]
-* [[app-orchestration-gis]]
-* [[pointsav-gis-engine]]
+- [[location-intelligence-platform]] — el artículo de plataforma completo que cubre los fundamentos de datos y la arquitectura soberana
+- [[app-orchestration-gis]] — el motor analítico que produce los grados de clúster visualizados en la interfaz
+- [[pointsav-gis-engine]] — la capa de renderizado que sirve los mosaicos vectoriales a la superficie del mapa
+- [[co-location-methodology]] — la metodología de puntuación y clasificación visualizada por la interfaz

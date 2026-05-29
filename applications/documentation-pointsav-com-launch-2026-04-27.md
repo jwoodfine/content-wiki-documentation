@@ -21,7 +21,7 @@ cites: [ni-51-102, osc-sn-51-721]
 
 ## What serves today
 
-Four placeholder TOPIC pages render at the public URL. `/wiki/welcome` is the landing topic, explaining the public-preview status. `/wiki/sample-article` exercises the rendering chrome — table of contents, per-section edit pencils, footer block with categories, masthead band, collapsible left-rail table of contents, language switcher, and the Wikipedia layout conventions. `/wiki/sample-forward-looking` exercises the forward-looking-information cautionary banner and cites both [ni-51-102] and [osc-sn-51-721]. `/wiki/sample-citations` exercises inline citation references including the clause-reference form.
+Four placeholder TOPIC pages render at the public URL. `/wiki/welcome` is the landing topic, explaining the public-preview status. `/wiki/sample-article` exercises the rendering chrome — table of contents, per-section edit pencils, footer block with categories, masthead band, collapsible left-rail table of contents, language switcher, and the [[wikipedia-leapfrog-design|Wikipedia layout conventions]]. `/wiki/sample-forward-looking` exercises the forward-looking-information cautionary banner and cites both [ni-51-102] and [osc-sn-51-721]. `/wiki/sample-citations` exercises inline citation references including the clause-reference form.
 
 Beyond article-rendering paths, the wiki serves: `/healthz` (liveness check); `/` (index page listing all articles); `/search?q=` (full-text search over the on-disk Tantivy index); `/feed.atom` (RFC 4287 syndication feed); `/feed.json` (JSON Feed 1.1); `/sitemap.xml`; `/robots.txt`; `/llms.txt`; and `/git/{slug}` (raw Markdown source).
 
@@ -31,7 +31,7 @@ The editor surface is present in the binary — the `POST /edit/{slug}` route, C
 
 ## Serving stack
 
-**Binary.** A single binary installed at `/usr/local/bin/app-mediakit-knowledge`, built on the cluster feature branch. Build duration was 1 minute 54 seconds.
+**Binary.** A single [[app-mediakit-knowledge]] binary installed at `/usr/local/bin/app-mediakit-knowledge`, built on the cluster feature branch. Build duration was 1 minute 54 seconds.
 
 **systemd unit.** The unit runs the binary as a dedicated unprivileged system user (`local-knowledge:local-knowledge`), bound to the loopback interface on port 9090. Hardening flags include `NoNewPrivileges=true`, `ProtectSystem=strict`, `ProtectHome=true`, and `PrivateTmp=true`.
 
@@ -47,11 +47,11 @@ The editor surface is present in the binary — the `POST /edit/{slug}` route, C
 
 ## Placeholder posture — disclosure rationale
 
-The four-file placeholder subtree was authored specifically to enable the public TLS launch without exposing the legacy TOPIC corpus. The legacy corpus carries known editorial debt: forward-looking framings without cautionary-banner discipline per [ni-51-102], and vocabulary items not compliant with the workspace language policy. Cleaning these in place would have produced numerous unambiguous edits plus a material-change disclosure event under the continuous-disclosure posture for each substantive edit.
+The four-file placeholder subtree was authored specifically to enable the public TLS launch without exposing the legacy TOPIC corpus. The legacy corpus carries known editorial debt: forward-looking framings without cautionary-banner discipline per [ni-51-102], and vocabulary items not compliant with the [[compliance-and-continuous-disclosure|continuous-disclosure posture]] for each substantive edit.
 
 The placeholder posture collapses that surface. Four files, written to be clean from the first line, expose only structural prose (no business-outcome claims), only verified facts, and forward-looking framings only inside the explicit demonstration topic where the cautionary-banner pattern is the point of the page. The eventual publication of the refined corpus becomes one material-change event rather than many.
 
-This pattern is generalizable. Any deployment that depends on a corpus being editorially ready can launch with a placeholder content tree, swap `--content-dir` once the corpus is ratified, and avoid an all-or-nothing flip. The source-of-truth inversion — the Markdown tree is canonical; the running binary is a view — makes this swap a single service reload.
+This pattern is generalizable. Any deployment that depends on a corpus being editorially ready can launch with a placeholder content tree, swap `--content-dir` once the corpus is ratified, and avoid an all-or-nothing flip. The [[source-of-truth-inversion|source-of-truth inversion]] — the Markdown tree is canonical; the running binary is a view — makes this swap a single service reload.
 
 ---
 

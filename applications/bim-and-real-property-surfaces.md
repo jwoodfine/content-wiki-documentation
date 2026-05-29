@@ -30,10 +30,10 @@ The single most important structural clarification: PointSav operates two distin
 
 | Design system | Repository | Audience | Domain |
 |---|---|---|---|
-| `pointsav-design-system` | `github.com/pointsav` (vendor) | PointSav contributors and fleet operators | UI and UX substrate for [[console-os|os-console]], [[os-workplace]], and the full vendor OS family |
+| `pointsav-design-system` | `github.com/pointsav` (vendor) | PointSav contributors and fleet operators | UI and UX substrate for [[console-os|os-console]], [[os-workplace]], and the full vendor OS family as described in the [[design-philosophy|design philosophy]] |
 | `woodfine-design-bim` | `github.com/woodfine` (customer) | Architects, engineers, real-property operators | BIM tokens, IFC components[^2], geospatial visual primitives, real-property design system |
 
-The two systems share authoring methodology — a common structured-metadata schema, the six-tier sovereignty structure, strict lowercase-hyphenated naming — but they do not share content. The separation is structural: BIM concerns real property; the vendor design system concerns operating-system surfaces. Content or tokens that are specific to BIM workflows belong in `woodfine-design-bim`, never in `pointsav-design-system`.
+The two systems share authoring methodology — a common structured-metadata schema, the [[six-tier-sovereignty-matrix|six-tier sovereignty structure]], strict lowercase-hyphenated naming — but they do not share content. The separation is structural: BIM concerns real property; the vendor design system concerns operating-system surfaces. Content or tokens that are specific to BIM workflows belong in `woodfine-design-bim`, never in `pointsav-design-system`.
 
 The intended public deployment for `woodfine-design-bim` is `bim.woodfinegroup.com`. Full BIM component specifications, token definitions, and geospatial primitives are maintained there.
 
@@ -49,7 +49,7 @@ BIM document management operates under ISO 19650[^1], which defines explicit doc
 | `_EXE` | CR | Executed or signed — record or as-constructed state |
 | `_MCH` / `_DAT` | (matches parent) | Machine-readable version of the parent document |
 
-Audit tooling reads the suffix and routes accordingly. A `_PUB` file is signed and treated as immutable; a `_JW` file is in flight and does not carry verified status. A `_EXE` file has passed operator confirmation and enters the [[totebox-os|Totebox]] archive as a sealed record.
+Audit tooling reads the suffix and routes accordingly. A `_PUB` file is signed and treated as immutable; a `_JW` file is in flight and does not carry verified status. A `_EXE` file has passed [[app-console-input|F12 operator confirmation]] and enters the [[totebox-os|Totebox]] archive as a sealed record under the [[worm-ledger-design|WORM ledger discipline]].
 
 The suffix discipline applies to every BIM artefact that enters the [[service-content|Gravity Engine]] — whether a drawing, a coordination model, a permit, or a lease record. This makes the record-keeping posture consistent with the broader [[worm-ledger-design|WORM ledger]] discipline across the platform.
 

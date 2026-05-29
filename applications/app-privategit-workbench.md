@@ -17,14 +17,14 @@ cites: []
 ---
 
 `app-privategit-workbench` is a browser-based file editor included
-in the `os-privategit` host operating system. It presents a local
+in the [[os-privategit|`os-privategit`]] host operating system. It presents a local
 HTTP endpoint that serves a single-page application with a
 three-column layout: a file tree sidebar, a content viewer, and a
 plain-text editor.
 
 The workbench is the primary authoring and review surface for
-Totebox Orchestration operators and Community Members who want
-direct browser-based access to their archive tree without a terminal
+[[totebox-orchestration|Totebox Orchestration]] operators and Community Members who want
+direct browser-based access to their [[totebox-archive|archive tree]] without a terminal
 session. It is not a publication surface — it writes to the local
 filesystem and relies on the git-based version-control pipeline
 for history and promotion.
@@ -114,7 +114,7 @@ editor is a `<textarea>` with the following features:
 
 ## Security model
 
-The write-service enforces four layers of containment:
+The write-service enforces four layers of containment aligned with the [[pre-commit-defense-in-depth|pre-commit defence-in-depth]] approach used across the platform:
 
 **Root containment:** Every path is canonicalized with `std::fs::canonicalize`
 and verified to remain within the declared root's filesystem path. Paths
@@ -141,11 +141,11 @@ service file update causes silent write failures at the filesystem layer.
 
 ## Relationship to os-privategit
 
-`app-privategit-workbench` is included in the `os-privategit` host
+`app-privategit-workbench` is included in the [[os-privategit|`os-privategit`]] host
 operating system alongside `app-privategit-design-system` and
 `service-privategit`. It is the authoring surface for operators who
 use the privategit tier — a locally-hosted, network-isolated development
-environment for Totebox Orchestration instances.
+environment for [[totebox-orchestration|Totebox Orchestration]] instances. Access to writable roots is governed by the [[machine-based-auth|machine-based authorization]] model.
 
 The crate is licensed under the Apache License, Version 2.0 and intended
 for downstream deployment in customer-tier instances of `os-privategit`.
@@ -158,3 +158,10 @@ catalog.
 
 - **Phase 4 (planned/intended):** CodeMirror 6 integration for syntax
   highlighting; authenticated roots with per-user writable scope.
+
+## See also
+
+- [[os-privategit]] — the host operating system that includes this workbench
+- [[totebox-archive]] — the archive tree that operators work with through the workbench
+- [[machine-based-auth]] — the authorization model governing writable root access
+- [[pre-commit-defense-in-depth]] — the defence-in-depth discipline applied by the write-service

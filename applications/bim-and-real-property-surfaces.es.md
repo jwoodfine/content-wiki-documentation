@@ -33,7 +33,7 @@ La aclaración estructural más importante: PointSav opera dos sistemas de dise�
 | `pointsav-design-system` | `github.com/pointsav` (vendor) | Colaboradores de PointSav y operadores de flota | Sustrato de UI y UX para [[console-os|os-console]], [[os-workplace]] y toda la familia de SO vendor |
 | `woodfine-design-bim` | `github.com/woodfine` (cliente) | Arquitectos, ingenieros, operadores inmobiliarios | Tokens BIM, componentes IFC[^2], primitivas visuales geoespaciales, sistema de diseño inmobiliario |
 
-Los dos sistemas comparten metodología de autoría — un esquema común de metadatos estructurados, estructura de soberanía de seis niveles, nomenclatura estricta en minúsculas con guiones — pero no comparten contenido. La separación es estructural: BIM concierne a los bienes raíces; el sistema de diseño del vendor concierne a las superficies del sistema operativo. El contenido o los tokens específicos de los flujos de trabajo BIM pertenecen a `woodfine-design-bim`, nunca a `pointsav-design-system`.
+Los dos sistemas comparten metodología de autoría — un esquema común de metadatos estructurados, [[six-tier-sovereignty-matrix|estructura de soberanía de seis niveles]], nomenclatura estricta en minúsculas con guiones — pero no comparten contenido. La separación es estructural: BIM concierne a los bienes raíces; el sistema de diseño del vendor concierne a las superficies del sistema operativo. El contenido o los tokens específicos de los flujos de trabajo BIM pertenecen a `woodfine-design-bim`, nunca a `pointsav-design-system`.
 
 El despliegue público previsto para `woodfine-design-bim` es `bim.woodfinegroup.com`. Las especificaciones completas de componentes BIM, definiciones de tokens y primitivas geoespaciales se mantienen allí.
 
@@ -49,7 +49,7 @@ La gestión de documentos BIM opera bajo ISO 19650[^1], que define códigos expl
 | `_EXE` | CR | Ejecutado o firmado — estado de registro o como construido |
 | `_MCH` / `_DAT` | (coincide con el padre) | Versión legible por máquina del documento padre |
 
-Las herramientas de auditoría leen el sufijo y enrutan en consecuencia. Un archivo `_PUB` está firmado y se trata como inmutable; un archivo `_JW` está en vuelo y no lleva estado verificado. Un archivo `_EXE` ha pasado la confirmación del operador e ingresa al archivo [[totebox-os|Totebox]] como un registro sellado.
+Las herramientas de auditoría leen el sufijo y enrutan en consecuencia. Un archivo `_PUB` está firmado y se trata como inmutable; un archivo `_JW` está en vuelo y no lleva estado verificado. Un archivo `_EXE` ha pasado la [[app-console-input|confirmación del operador F12]] e ingresa al archivo [[totebox-os|Totebox]] como un registro sellado bajo la [[worm-ledger-design|disciplina del libro mayor WORM]].
 
 La disciplina de sufijos se aplica a cada artefacto BIM que ingresa al [[service-content|Motor de Gravedad]] — ya sea un dibujo, un modelo de coordinación, un permiso o un registro de arrendamiento. Esto hace que la postura de mantenimiento de registros sea coherente con la disciplina más amplia del [[worm-ledger-design|libro mayor WORM]] en toda la plataforma.
 

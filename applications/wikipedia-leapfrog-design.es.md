@@ -15,7 +15,7 @@ cites: [ni-51-102, osc-sn-51-721]
 
 # Diseño leapfrog de Wikipedia — memoria muscular y 5% de margen
 
-El motor wiki `app-mediakit-knowledge` hereda el 95% de su interfaz de las convenciones de disposición establecidas por Wikipedia. El 5% restante es el margen leapfrog: añadidos que ningún lector de Wikipedia ha encontrado antes, implementados de forma aditiva para no perturbar la experiencia de lectura base. Este artículo explica por qué se tomó cada decisión de diseño y cómo se construye el contrato estructural con dos tipos de audiencia distintos.
+El motor wiki [[app-mediakit-knowledge]] hereda el 95% de su interfaz de las convenciones de disposición establecidas por Wikipedia. El 5% restante es el margen leapfrog: añadidos que ningún lector de Wikipedia ha encontrado antes, implementados de forma aditiva para no perturbar la experiencia de lectura base. Este artículo explica por qué se tomó cada decisión de diseño y cómo se construye el contrato estructural con dos tipos de audiencia distintos.
 
 ---
 
@@ -39,7 +39,7 @@ Cinco añadidos se incorporan más allá del inventario de Wikipedia. Cada uno e
 
 **Insignias de citas.** Junto a cada referencia de cita en línea, la interfaz renderiza una pequeña insignia en la convención de pin CR de las C2PA Content Credentials. La insignia es gris neutro por defecto. En modo predeterminado, el estado positivo (verificado verde) sólo aparece cuando el lector activa explícitamente la configuración de densidad "mostrar todas las marcas verificadas". Las marcas de excepción (ámbar, rojo, azul) se muestran de forma prominente sin necesidad de activación.
 
-**Banner de información prospectiva.** Los artículos cuyo frontmatter establece `forward_looking: true` muestran un banner de advertencia en la vista de lectura. El banner es la expresión en la superficie de lectura de los requisitos de divulgación continua bajo [ni-51-102] y [osc-sn-51-721].
+**Banner de información prospectiva.** Los artículos cuyo frontmatter establece `forward_looking: true` muestran un banner de advertencia en la vista de lectura. El banner es la expresión en la superficie de lectura de los [[compliance-and-continuous-disclosure|requisitos de divulgación continua]] bajo [ni-51-102] y [osc-sn-51-721].
 
 **Campo de clase de divulgación.** Los artículos llevan un campo `disclosure_class` en el frontmatter con tres valores: `narrative`, `financial`, `governance`. En la fase actual este campo es invisible para los lectores — aparece en los datos estructurados JSON-LD en el bloque `<head>` del artículo renderizado.
 
@@ -69,7 +69,7 @@ Un lector de ingeniería tiene la misma experiencia de navegación y también no
 
 ## Véase también
 
-- [[app-mediakit-knowledge]]
-- [[knowledge-wiki-home-page-design]]
-- [[source-of-truth-inversion]]
-- [[substrate-native-compatibility]]
+- [[app-mediakit-knowledge]] — el motor wiki que implementa este diseño leapfrog
+- [[knowledge-wiki-home-page-design]] — la intención de diseño de la página de inicio y las convenciones de Wikipedia aplicadas
+- [[source-of-truth-inversion]] — el patrón canónico/vista/efímero que sustenta la postura editorial del motor
+- [[substrate-native-compatibility]] — la justificación de la superficie API nativa del sustrato frente a un adaptador de MediaWiki

@@ -15,7 +15,7 @@ cites: [ni-51-102, osc-sn-51-721]
 
 # Knowledge wiki home page — design intent
 
-The PointSav documentation wiki at documentation.pointsav.com is the canonical reading surface for the platform's architecture, services, operating systems, governance, infrastructure, applications, and reference vocabulary. Its home page inherits Wikipedia's Main Page structural conventions — the gold standard for general-knowledge home pages — and extends that inheritance with capabilities Wikipedia's governance model has been structurally unable to ship.
+The PointSav documentation wiki at documentation.pointsav.com is the canonical reading surface for the platform's architecture, services, operating systems, governance, infrastructure, applications, and reference vocabulary, served by the [[app-mediakit-knowledge]] engine. Its home page inherits Wikipedia's Main Page structural conventions — the gold standard for general-knowledge home pages — and extends that inheritance with capabilities Wikipedia's governance model has been structurally unable to ship, following the [[wikipedia-leapfrog-design|leapfrog design philosophy]].
 
 This article explains the design intent: what is preserved from Wikipedia, what is added beyond it, and what engineering and financial-community readers each encounter when they arrive.
 
@@ -25,7 +25,7 @@ This article explains the design intent: what is preserved from Wikipedia, what 
 
 The home page serves two audiences simultaneously.
 
-An engineering reader — an architect, a developer, a technical writer — wants depth, source authority, and machine-readable structure. A financial-community reader — an analyst, an auditor, an investor, a regulator — wants the substrate posture, the disclosure history, and the company structure in the same authoritative register as a regulatory filing.
+An engineering reader — an architect, a developer, a technical writer — wants depth, source authority, and machine-readable structure. A financial-community reader — an analyst, an auditor, an investor, a regulator — wants the substrate posture, the [[compliance-and-continuous-disclosure|disclosure history]], and the company structure in the same authoritative register as a regulatory filing.
 
 Both audiences arrive at the same URL (`/`), see the same composition, and follow the same links into the corpus. The home page does not branch by audience. It serves both by inheriting Wikipedia's most load-bearing editorial commitment: the absence of marketing copy and the presence of editorial labour. Statements about the platform are structural ("9 categories", "N articles", "last updated YYYY-MM-DD"), not promotional.
 
@@ -59,7 +59,7 @@ Wikipedia's home page has no structured data describing its slots. The PointSav 
 
 ### Editorial-labour cadence as visible signal
 
-The home page surfaces editorial labour cadence through the "last updated" timestamp in the welcome banner (derived from the maximum `last_edited` across the corpus), the rotating featured article, and the recent-additions feed. A future iteration is intended to rank the recent-additions feed by `content_reviewed_on` — a separate frontmatter field denoting last editorial review — rather than by recency of edit. Substantive content review, not cosmetic edits, would signal freshness.
+The home page surfaces editorial labour cadence through the "last updated" timestamp in the welcome banner (derived from the maximum `last_edited` across the corpus), the rotating featured article, and the recent-additions feed. The [[language-protocol-substrate|language protocol substrate]] governs the editorial discipline that determines when articles are considered ready for the featured-article slot. A future iteration is intended to rank the recent-additions feed by `content_reviewed_on` — a separate frontmatter field denoting last editorial review — rather than by recency of edit. Substantive content review, not cosmetic edits, would signal freshness.
 
 ### Editor-as-onramp signal
 
@@ -91,9 +91,10 @@ The platform is intended to reach the structural standard required by major desi
 
 ---
 
-## See Also
+## See also
 
-- [[app-mediakit-knowledge]]
-- [[wikipedia-leapfrog-design]]
-- [[wiki-component-library]]
-- [[language-protocol-substrate]]
+- [[app-mediakit-knowledge]] — the wiki engine that serves this home page
+- [[wikipedia-leapfrog-design]] — the 95%/5% muscle-memory and leapfrog headroom design specification
+- [[wiki-component-library]] — the component library underlying the home-page layout
+- [[language-protocol-substrate]] — the editorial discipline governing corpus quality and featured-article readiness
+- [[source-of-truth-inversion]] — the canonical/view/ephemeral pattern that underpins the home page's structural freshness signals

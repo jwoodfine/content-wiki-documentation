@@ -14,7 +14,7 @@ cites: []
 paired_with: app-mediakit-marketing.es.md
 ---
 
-`app-mediakit-marketing` serves multi-tenant marketing landing pages from a single statically-compiled Rust binary — no PHP, no MySQL, no plugin infrastructure — while preserving WordPress.org muscle memory at the operator-facing URL and navigation surface. The application shipped at v0.0.1 in May 2026 and runs two simultaneous production tenants — Woodfine at `home.woodfinegroup.com` and PointSav at `home.pointsav.com` — from the same binary on a single low-cost virtual machine, separated only by environment-variable configuration.
+`app-mediakit-marketing` serves multi-tenant marketing landing pages from a single statically-compiled Rust binary — no PHP, no MySQL, no plugin infrastructure — while preserving WordPress.org muscle memory at the operator-facing URL and navigation surface. The application shipped at v0.0.1 in May 2026 and runs two simultaneous production tenants — Woodfine at `home.woodfinegroup.com` and PointSav at `home.pointsav.com` — from the same binary on a single low-cost virtual machine, separated only by environment-variable configuration. It is part of the [[os-orchestration|`os-orchestration`]] surface family and follows the [[leapfrog-2030-architecture|leapfrog-2030 pattern]] of flat-file content with no database dependency.
 
 ## Function
 
@@ -27,6 +27,7 @@ infrastructure.
 Each tenant instance reads content from a configurable flat-file content directory and
 serves pages, media assets, and structured metadata over HTTP. A single compiled binary
 serves both the Woodfine and PointSav tenants through environment variable configuration.
+Content stored in the tenant's [[totebox-archive|Totebox Archive]] is the canonical source; the running binary is a derived view over that flat-file tree.
 
 ## Architecture
 
@@ -68,6 +69,7 @@ deployments run concurrently on the same VM instance (2 vCPU, 4 GB RAM).
 
 ## See also
 
-- [[app-mediakit-knowledge]]
-- app-orchestration-bim
-- [[leapfrog-2030-architecture]]
+- [[app-mediakit-knowledge]] — the companion knowledge-wiki engine in the MediaKit family
+- [[leapfrog-2030-architecture]] — the architectural pattern that governs the flat-file, no-database substrate
+- [[totebox-archive]] — the Totebox Archive that holds canonical content for each tenant
+- [[os-orchestration]] — the orchestration OS that hosts the MediaKit family

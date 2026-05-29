@@ -20,7 +20,7 @@ cites:
  - osc-sn-51-721
 ---
 
-The PointSav Location Intelligence platform is a customer-owned flat-file GIS application designed for retail cluster analysis and strategic site selection — composed of [[app-orchestration-gis]] (the analytics engine) and [[pointsav-gis-engine]] (the rendering layer), with every dataset, algorithm, and rendering decision under the customer's direct control. The platform answers a fundamental commercial question — *which geographic nodes possess the capital-validated density required to support adjacent development?* — by transforming raw store locations into actionable commercial nodes through the [[co-location-methodology]].
+The PointSav Location Intelligence platform is a customer-owned flat-file GIS application designed for retail cluster analysis and strategic site selection — composed of [[app-orchestration-gis]] (the analytics engine) and [[pointsav-gis-engine]] (the rendering layer), with every dataset, algorithm, and rendering decision under the customer's direct control. The platform answers a fundamental commercial question — *which geographic nodes possess the capital-validated density required to support adjacent development?* — by transforming raw store locations into actionable commercial nodes through the [[co-location-methodology]]. All canonical datasets reside in a [[totebox-archive|Totebox Archive]] as flat JSONL and GeoParquet files, applying the [[worm-ledger-design|WORM ledger discipline]] to geospatial records.
 
 ## Operational Capabilities
 
@@ -37,8 +37,8 @@ The interactive map at [gis.woodfinegroup.com](https://gis.woodfinegroup.com) us
 
 ## Sovereign Architecture
 
-The platform adheres to the [PointSav GIS Engine](pointsav-gis-engine) principles of data sovereignty:
-- **Flat-File Operation:** All data persists as versioned JSONL and GeoParquet files within a Totebox Archive, rather than a running database daemon.
+The platform adheres to the [[pointsav-gis-engine]] principles of [[customer-hostability|customer-rooted data sovereignty]]:
+- **Flat-File Operation:** All data persists as versioned JSONL and GeoParquet files within a [[totebox-archive|Totebox Archive]], rather than a running database daemon.
 - **Open Standards Rendering:** Uses PMTiles and MapLibre GL JS to serve vector maps directly from standard web servers, eliminating proprietary tile-API dependencies.
 - **Reproducible Build:** If a gateway node is destroyed, the application surface can be re-provisioned instantly by pointing a fresh instance at the immutable data layer.
 
@@ -54,3 +54,11 @@ The platform integrates high-fidelity open data sources to ensure transparency a
 ## Future Roadmap
 
 Planned enhancements to the platform surface include the integration of origin-destination (OD) mobility data for trade-area flow analysis and the expansion of the European institutional dataset. [ni-51-102] [osc-sn-51-721]
+
+## See also
+
+- [[app-orchestration-gis]] — the stateless analytics engine that produces co-location rankings
+- [[pointsav-gis-engine]] — the rendering layer that serves vector tiles to the map interface
+- [[co-location-methodology]] — the scoring algorithm underlying cluster analysis
+- [[location-intelligence-ux]] — the UX design philosophy for the interactive map surface
+- [[totebox-archive]] — the flat-file archive that holds all canonical geospatial data

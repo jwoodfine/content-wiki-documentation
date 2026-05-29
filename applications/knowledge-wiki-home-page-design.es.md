@@ -15,7 +15,7 @@ cites: [ni-51-102, osc-sn-51-721]
 
 # Página de inicio del wiki de conocimiento — intención de diseño
 
-El wiki de documentación de PointSav en documentation.pointsav.com es la superficie de lectura canónica para la arquitectura, los servicios, los sistemas operativos, la gobernanza, la infraestructura, las aplicaciones y el vocabulario de referencia de la plataforma. Su página de inicio hereda las convenciones estructurales de la Portada de Wikipedia — el estándar de referencia para páginas de inicio de conocimiento general — y extiende esa herencia con capacidades que el modelo de gobernanza de Wikipedia no ha podido incorporar.
+El wiki de documentación de PointSav en documentation.pointsav.com es la superficie de lectura canónica para la arquitectura, los servicios, los sistemas operativos, la gobernanza, la infraestructura, las aplicaciones y el vocabulario de referencia de la plataforma, servido por el motor [[app-mediakit-knowledge]]. Su página de inicio hereda las convenciones estructurales de la Portada de Wikipedia — el estándar de referencia para páginas de inicio de conocimiento general — y extiende esa herencia con capacidades que el modelo de gobernanza de Wikipedia no ha podido incorporar, siguiendo la [[wikipedia-leapfrog-design|filosofía de diseño leapfrog]].
 
 Este artículo explica la intención de diseño: qué se preserva de Wikipedia, qué se añade más allá de ella, y qué encuentran los lectores técnicos y del ámbito financiero cuando llegan.
 
@@ -25,7 +25,7 @@ Este artículo explica la intención de diseño: qué se preserva de Wikipedia, 
 
 La página de inicio sirve simultáneamente a dos tipos de audiencia.
 
-Un lector técnico — un arquitecto, un desarrollador, un redactor técnico — busca profundidad, autoridad de fuente y estructura legible por máquinas. Un lector del ámbito financiero — un analista, un auditor, un inversor, un regulador — busca la postura de la plataforma, el historial de divulgación y la estructura corporativa, en el mismo registro autoritativo que un expediente regulatorio.
+Un lector técnico — un arquitecto, un desarrollador, un redactor técnico — busca profundidad, autoridad de fuente y estructura legible por máquinas. Un lector del ámbito financiero — un analista, un auditor, un inversor, un regulador — busca la postura de la plataforma, el [[compliance-and-continuous-disclosure|historial de divulgación]] y la estructura corporativa, en el mismo registro autoritativo que un expediente regulatorio.
 
 Ambas audiencias llegan a la misma URL (`/`), ven la misma composición y siguen los mismos enlaces hacia el corpus. La página de inicio no se bifurca por audiencia. Sirve a ambas al heredar el compromiso editorial más fundamental de Wikipedia: la ausencia de texto de marketing y la presencia de trabajo editorial. Las declaraciones sobre la plataforma son estructurales ("9 categorías", "N artículos", "actualizado por última vez AAAA-MM-DD"), no promocionales.
 
@@ -71,7 +71,8 @@ La página de inicio no muestra publicidad, no recoge suscripciones, no usa leng
 
 ## Véase también
 
-- [[app-mediakit-knowledge]]
-- [[wikipedia-leapfrog-design]]
-- [[wiki-component-library]]
-- [[language-protocol-substrate]]
+- [[app-mediakit-knowledge]] — el motor wiki que sirve esta página de inicio
+- [[wikipedia-leapfrog-design]] — la especificación de diseño de memoria muscular y margen leapfrog del 95%/5%
+- [[wiki-component-library]] — la biblioteca de componentes que sustenta el diseño de la página de inicio
+- [[language-protocol-substrate]] — la disciplina editorial que rige la calidad del corpus y la disposición de artículos destacados
+- [[source-of-truth-inversion]] — el patrón canónico/vista/efímero que sustenta las señales de actualidad estructural de la página de inicio

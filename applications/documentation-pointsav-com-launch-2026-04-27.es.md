@@ -21,7 +21,7 @@ cites: [ni-51-102, osc-sn-51-721]
 
 ## Lo que se sirve hoy
 
-Cuatro páginas TOPIC de marcador de posición se renderizan en la URL pública. `/wiki/welcome` es el artículo de bienvenida que explica el estado de vista previa pública. `/wiki/sample-article` ejercita la interfaz de renderizado: tabla de contenidos, lápices de edición por sección, bloque de pie de página con categorías, banda de encabezado, tabla de contenidos colapsable en el rail izquierdo, selector de idioma y las convenciones de disposición de Wikipedia. `/wiki/sample-forward-looking` ejercita el banner de advertencia de información prospectiva y cita tanto [ni-51-102] como [osc-sn-51-721]. `/wiki/sample-citations` ejercita las referencias de citas en línea.
+Cuatro páginas TOPIC de marcador de posición se renderizan en la URL pública. `/wiki/welcome` es el artículo de bienvenida que explica el estado de vista previa pública. `/wiki/sample-article` ejercita la interfaz de renderizado: tabla de contenidos, lápices de edición por sección, bloque de pie de página con categorías, banda de encabezado, tabla de contenidos colapsable en el rail izquierdo, selector de idioma y las [[wikipedia-leapfrog-design|convenciones de disposición de Wikipedia]]. `/wiki/sample-forward-looking` ejercita el banner de advertencia de información prospectiva y cita tanto [ni-51-102] como [osc-sn-51-721]. `/wiki/sample-citations` ejercita las referencias de citas en línea.
 
 Más allá de las rutas de renderizado de artículos, el wiki sirve: `/healthz` (verificación de disponibilidad); `/` (página de índice con todos los artículos); `/search?q=` (búsqueda de texto completo sobre el índice Tantivy en disco); `/feed.atom` (feed de sindicación RFC 4287); `/feed.json` (JSON Feed 1.1); `/sitemap.xml`; `/robots.txt`; `/llms.txt`; y `/git/{slug}` (fuente Markdown sin procesar).
 
@@ -29,7 +29,7 @@ Más allá de las rutas de renderizado de artículos, el wiki sirve: `/healthz` 
 
 ## Pila de servicio
 
-**Binario.** Un único binario instalado en `/usr/local/bin/app-mediakit-knowledge`, construido en la rama de características del cluster. El tiempo de construcción fue de 1 minuto 54 segundos.
+**Binario.** Un único binario [[app-mediakit-knowledge]] instalado en `/usr/local/bin/app-mediakit-knowledge`, construido en la rama de características del cluster. El tiempo de construcción fue de 1 minuto 54 segundos.
 
 **Unidad systemd.** La unidad ejecuta el binario como un usuario de sistema sin privilegios dedicado (`local-knowledge:local-knowledge`), enlazado a la interfaz loopback en el puerto 9090. Las opciones de seguridad incluyen `NoNewPrivileges=true`, `ProtectSystem=strict`, `ProtectHome=true` y `PrivateTmp=true`.
 
@@ -49,7 +49,7 @@ El subárbol de marcador de posición de cuatro archivos fue creado específicam
 
 La postura de marcador de posición colapsa esa superficie. Cuatro archivos escritos para ser correctos desde la primera línea exponen sólo prosa estructural (sin afirmaciones sobre resultados de negocio), sólo hechos verificados, y formulaciones prospectivas únicamente dentro del artículo de demostración explícita donde el patrón del banner de advertencia es precisamente el punto de la página. La eventual publicación del corpus refinado se convierte en un único evento de cambio material en lugar de muchos.
 
-Este patrón es generalizable. Cualquier despliegue que dependa de que un corpus esté editorialmente listo puede lanzarse con un árbol de contenido de marcador de posición, intercambiar `--content-dir` una vez que el corpus sea ratificado y evitar el cambio todo-o-nada. La inversión de la fuente de verdad — el árbol de Markdown es canónico; el binario en ejecución es una vista — hace que este intercambio sea una única recarga del servicio.
+Este patrón es generalizable. Cualquier despliegue que dependa de que un corpus esté editorialmente listo puede lanzarse con un árbol de contenido de marcador de posición, intercambiar `--content-dir` una vez que el corpus sea ratificado y evitar el cambio todo-o-nada. La [[source-of-truth-inversion|inversión de la fuente de verdad]] — el árbol de Markdown es canónico; el binario en ejecución es una vista — hace que este intercambio sea una única recarga del servicio.
 
 ---
 
