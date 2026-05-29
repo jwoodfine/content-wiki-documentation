@@ -23,7 +23,7 @@ cites:
 paired_with: foundry-doctrine-overview.es.md
 ---
 
-**PointSav Architecture 2030** is the constitutional charter for the PointSav software development environment. It defines the six pillars of the platform's architecture, fifty-two structural claims that constitute its operational commitments, eight cross-industry operational inventions, and the economic model that sustains it across a small core team, paid contributors, and a large open-contributor population. The text is itself a public artifact — versioned, signed, and published under CC BY 4.0 at every MINOR version bump.
+**PointSav Architecture 2030** is the constitutional charter for the [[pointsav-overview|PointSav]] software development environment. It defines the six pillars of the platform's architecture, fifty-two structural claims that constitute its operational commitments, eight cross-industry operational inventions, and the [[economic-model|economic model]] that sustains it across a small core team, paid contributors, and a large open-contributor population. The text is itself a public artifact — versioned, signed, and published under CC BY 4.0 at every MINOR version bump. See [[foundry-doctrine-architecture|the architecture overview]] for the detailed claim set.
 
 This article is a public summary of v0.1.0 ALPHA (ratified 2026-04-30). The authoritative text is available via the `pointsav/factory-release-engineering` repository.
 
@@ -49,29 +49,29 @@ The central thesis: a platform whose model fits entirely in plain text on one VM
 
 Fifty-two claims constitute this structural commitment. The sovereign-SMB architectural commitment includes:
 
-**Single-Boundary Compute Discipline.** Every AI inference call in every platform deployment passes through a single service boundary — the Doorman. Bearer tokens and compute endpoints for all inference tiers live exclusively in the Doorman's configuration. The audit ledger is complete and cryptographic because the boundary is exclusive, not preferred.
+**[[single-boundary-compute-discipline|Single-Boundary Compute Discipline]].** Every AI inference call in every platform deployment passes through a single service boundary — the [[doorman-protocol|Doorman]]. Bearer tokens and compute endpoints for all inference tiers live exclusively in the Doorman's configuration. The audit ledger is complete and cryptographic because the boundary is exclusive, not preferred.
 
-**Knowledge-Graph-Grounded Apprenticeship.** The inference service consults the per-tenant knowledge graph before every substantive request. Training tuples include the graph context alongside the query and response. Adapters trained on graph-grounded tuples generate graph-coherent responses, and accepted responses update the graph — a co-evolution loop.
+**[[knowledge-graph-grounded-apprenticeship|Knowledge-Graph-Grounded Apprenticeship]].** The inference service consults the per-tenant knowledge graph before every substantive request. Training tuples include the graph context alongside the query and response. Adapters trained on graph-grounded tuples generate graph-coherent responses, and accepted responses update the graph — a co-evolution loop.
 
-**TUI-as-Corpus-Producer.** Every terminal interaction with the inference service through the system administrator TUI is a curated training contribution. Operator feedback in the form of `/feedback [good|bad]` produces DPO triples. The IT-support adapter is intended to reach production quality with 200–500 high-quality interaction triples because the domain is narrow and ground truth is unambiguous.
+**[[tui-corpus-producer|TUI-as-Corpus-Producer]].** Every terminal interaction with the inference service through the system administrator TUI is a curated training contribution. Operator feedback in the form of `/feedback [good|bad]` produces DPO triples. The IT-support adapter is intended to reach production quality with 200–500 high-quality interaction triples because the domain is narrow and ground truth is unambiguous.
 
-**MCP-as-Substrate-Protocol.** Every Ring 1 and Ring 2 service exposes a Model Context Protocol server interface as its primary external contract. The Doorman is the MCP gateway. Customer-specific extensions plug in as additional MCP servers without modifying core services. MCP is the substrate-level wire contract for service composition.
+**[[mcp-substrate-protocol|MCP-as-Substrate-Protocol]].** Every Ring 1 and Ring 2 service exposes a Model Context Protocol server interface as its primary external contract. The [[doorman-protocol|Doorman]] is the MCP gateway. Customer-specific extensions plug in as additional MCP servers without modifying core services. MCP is the substrate-level wire contract for service composition.
 
-**Seed Taxonomy as SMB Bootstrap.** Every tenant deployment is provisioned with a four-part seed taxonomy as the bootstrap of its knowledge graph: Archetypes (institutional role personas), Chart of Accounts, Domains, and Themes. The taxonomy is compact, explainable, and customer-tunable from day one. Industry-specific seed packs provide starter taxonomies for first-day operation.
+**[[seed-taxonomy-as-smb-bootstrap|Seed Taxonomy as SMB Bootstrap]].** Every tenant deployment is provisioned with a four-part seed taxonomy as the bootstrap of its knowledge graph: [[archetypes-and-chart-of-accounts|Archetypes (institutional role personas), Chart of Accounts]], Domains, and Themes. The taxonomy is compact, explainable, and customer-tunable from day one. Industry-specific seed packs provide starter taxonomies for first-day operation.
 
-**Customer-Owned Graph IP.** The per-tenant knowledge graph is the customer's intellectual property. PointSav has no claim to aggregate or resell tenant graph data without explicit per-tenant opt-in. The graph exports in open format. Per-tenant LoRA weights are also the customer's property.
+**[[customer-owned-graph-ip|Customer-Owned Graph IP]].** The per-tenant knowledge graph is the customer's intellectual property. [[pointsav-overview|PointSav]] has no claim to aggregate or resell tenant graph data without explicit per-tenant opt-in. The graph exports in open format. Per-tenant LoRA weights are also the customer's property.
 
-**Tier 0 Customer-Side Sovereign Specialist.** The reference Tier 0 deployment is a small-form-factor appliance running the full deterministic substrate plus a 1B sysadmin specialist model — no GPU required. A $7/month shared-core VM demonstrates the full substrate running at this size before dedicated hardware is procured.
+**[[tier-zero-customer-side-sovereign-specialist|Tier 0 Customer-Side Sovereign Specialist]].** The reference Tier 0 deployment is a small-form-factor appliance running the full deterministic substrate plus a 1B sysadmin specialist model — no GPU required. A $7/month shared-core VM demonstrates the full substrate running at this size before dedicated hardware is procured.
 
-**Vertical Seed Packs Marketplace.** Industry-specific seed packs are distributed as starter taxonomies for new tenant deployments: restaurant SMB shape, law firm shape, regional hospital shape, real estate shape, and others. Customers customize from the pack and may contribute refinements back to the marketplace.
+**[[vertical-seed-packs-marketplace|Vertical Seed Packs Marketplace]].** Industry-specific seed packs are distributed as starter taxonomies for new tenant deployments: restaurant SMB shape, law firm shape, regional hospital shape, real estate shape, and others. Customers customize from the pack and may contribute refinements back to the marketplace.
 
-**Code-for-Machines First.** Every inter-service contract, audit record, configuration, and ontology is machine-readable as a primary surface. Human-facing surfaces are skins on machine-first APIs — they consume the same MCP servers any other client would.
+**[[code-for-machines-first|Code-for-Machines First]].** Every inter-service contract, audit record, configuration, and ontology is machine-readable as a primary surface. Human-facing surfaces are skins on machine-first APIs — they consume the same MCP servers any other client would.
 
-**Reverse-Flow Substrate.** The same Doorman gateway and audit ledger that enforce inbound discipline also enforce outbound commercial flows: a data marketplace for customer data assets and an ad exchange for first-party audience inventory. Both flows are opt-in per tenant, disabled by default, and require per-record cryptographic provenance.
+**[[reverse-flow-substrate|Reverse-Flow Substrate]].** The same [[doorman-protocol|Doorman]] gateway and audit ledger that enforce inbound discipline also enforce outbound commercial flows: a data marketplace for customer data assets and an ad exchange for first-party audience inventory. Both flows are opt-in per tenant, disabled by default, and require per-record cryptographic provenance.
 
-**Service-Wallet Settlement.** Marketplace and ad-exchange revenue accrues to a per-tenant internal accounting ledger. PointSav's transaction fee is an accounting deduction at the time of incoming credit. The customer withdraws to their bank or cryptocurrency address on their own schedule. PointSav is never a custodial intermediary.
+**[[service-wallet-settlement|Service-Wallet Settlement]].** Marketplace and ad-exchange revenue accrues to a per-tenant internal accounting ledger. [[pointsav-overview|PointSav]]'s transaction fee is an accounting deduction at the time of incoming credit. The customer withdraws to their bank or cryptocurrency address on their own schedule. PointSav is never a custodial intermediary.
 
-**Substrate-Without-Inference Base Case.** The Totebox Archive remains fully operational and freely transferable even when no inference tier is available. The deterministic substrate — WORM ledger, knowledge graph, ingest pipeline, TUI in deterministic-only mode — provides complete data sovereignty operations without any AI dependency.
+**[[substrate-without-inference-base-case|Substrate-Without-Inference Base Case]].** The [[totebox-archive|Totebox Archive]] remains fully operational and freely transferable even when no inference tier is available. The deterministic substrate — [[worm-ledger-architecture|WORM ledger]], knowledge graph, ingest pipeline, TUI in deterministic-only mode — provides complete data sovereignty operations without any AI dependency.
 
 Selected earlier claims of structural significance:
 
@@ -92,7 +92,7 @@ The platform organises services into three rings. Rings 1 and 2 are deterministi
 
 **Ring 2 — Knowledge and Processing (multi-tenant via moduleId).** Services handle extraction, content graph, search, and egress. The deterministic core of the platform. Functionally complete without AI.
 
-**Ring 3 — Optional Intelligence (single instance, multi-tenant).** The Doorman (`service-slm`) is the entirety of Ring 3. It routes among three compute tiers: Tier A local (OLMo 1B on customer hardware, zero marginal cost), Tier B GPU burst (OLMo 32B Think on a short-lived GPU instance, customer-controlled), and Tier C external API (external vendor API with explicit per-request allowlist, audit-logged at the customer's ledger). Ring 3 is structurally optional — the platform's sovereign posture is the default, not an opt-in.
+**Ring 3 — Optional Intelligence (single instance, multi-tenant).** The [[doorman-protocol|Doorman]] ([[service-slm]]) is the entirety of Ring 3. It routes among three compute tiers: Tier A local (OLMo 1B on customer hardware, zero marginal cost), Tier B GPU burst ([[yoyo-compute-substrate|Yo-Yo]] OLMo 32B Think on a short-lived GPU instance, customer-controlled), and Tier C external API (external vendor API with explicit per-request allowlist, audit-logged at the customer's ledger). Ring 3 is structurally optional — the platform's sovereign posture is the default, not an opt-in.
 
 ## Cross-Domain Operational Patterns
 

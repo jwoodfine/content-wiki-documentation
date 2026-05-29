@@ -18,7 +18,7 @@ cites:
 paired_with: foundry-doctrine-overview.md
 ---
 
-La **arquitectura PointSav 2030** es la carta constitucional del entorno de desarrollo de software de PointSav. Define los seis pilares de la arquitectura de la plataforma, cincuenta y dos afirmaciones de salto adelante que constituyen sus compromisos estructurales, ocho invenciones operativas entre industrias, y el modelo económico que la sostiene. La propia doctrina es un artefacto público — versionada, firmada y publicada bajo CC BY 4.0 en cada versión MINOR.
+La **arquitectura [[pointsav-overview|PointSav]] 2030** es la carta constitucional del entorno de desarrollo de software de PointSav. Define los seis pilares de la arquitectura de la plataforma, cincuenta y dos afirmaciones de salto adelante que constituyen sus compromisos estructurales, ocho invenciones operativas entre industrias, y el [[economic-model|modelo económico]] que la sostiene. La propia doctrina es un artefacto público — versionada, firmada y publicada bajo CC BY 4.0 en cada versión MINOR. Véase [[foundry-doctrine-architecture|la visión arquitectónica]] para el conjunto detallado de afirmaciones.
 
 Este artículo es un resumen público de la carta constitucional v0.1.0 ALPHA (ratificada el 30 de abril de 2026). El texto autorizado está disponible a través del repositorio `pointsav/factory-release-engineering`.
 
@@ -44,18 +44,18 @@ La tesis central de la doctrina: una plataforma cuyo modelo cabe completamente e
 
 Cincuenta y dos afirmaciones constituyen este compromiso estructural. Las afirmaciones añadidas en v0.1.0 (#43–#54) constituyen el compromiso arquitectónico soberano para PYMEs:
 
-- **Disciplina de Cómputo de Límite Único (#43)** — cada llamada de inferencia de IA pasa por un único límite de servicio, el Doorman.
-- **Aprendizaje Fundamentado en Grafo de Conocimiento (#44)** — el servicio de inferencia consulta el grafo de conocimiento por inquilino antes de cada solicitud sustantiva.
-- **TUI como Productor de Corpus (#45)** — cada interacción terminal con el servicio de inferencia es una contribución de corpus de entrenamiento curada.
-- **MCP como Protocolo del Sustrato (#46)** — cada servicio de Ring 1 y Ring 2 expone una interfaz de servidor MCP como su contrato externo principal.
-- **Taxonomía Semilla como Bootstrap para PYMEs (#47)** — cada despliegue de inquilino se aprovisiona con una taxonomía semilla de cuatro partes como el bootstrap de su grafo de conocimiento.
-- **IP del Grafo de Propiedad del Cliente (#48)** — el grafo de conocimiento por inquilino es propiedad intelectual del cliente.
-- **Especialista Soberano del Lado del Cliente Nivel 0 (#49)** — el despliegue de referencia Nivel 0 es un dispositivo de pequeño factor de forma que ejecuta el sustrato determinista completo más un modelo especialista de 1B, sin GPU requerida.
-- **Mercado de Paquetes Semilla Verticales (#50)** — paquetes semilla específicos de la industria distribuidos como taxonomías iniciales para nuevos despliegues de inquilinos.
-- **Código para Máquinas Primero (#51)** — cada contrato entre servicios, registro de auditoría, configuración y ontología es legible por máquinas como superficie primaria.
-- **Sustrato de Flujo Inverso (#52)** — la misma puerta de enlace Doorman y el mismo registro de auditoría que aplican la disciplina entrante también aplican los flujos comerciales salientes: un mercado de datos y un intercambio de publicidad.
-- **Liquidación de Cartera de Servicios (#53)** — los ingresos del mercado y el intercambio de publicidad se acumulan en un libro de contabilidad interno por inquilino; PointSav nunca es un intermediario de custodia.
-- **Caso Base del Sustrato Sin Inferencia (#54)** — el Archivo Totebox permanece completamente operativo y libremente transferible incluso cuando ningún nivel de inferencia está disponible.
+- **[[single-boundary-compute-discipline|Disciplina de Cómputo de Límite Único]] (#43)** — cada llamada de inferencia de IA pasa por un único límite de servicio, el [[doorman-protocol|Doorman]].
+- **[[knowledge-graph-grounded-apprenticeship|Aprendizaje Fundamentado en Grafo de Conocimiento]] (#44)** — el servicio de inferencia consulta el grafo de conocimiento por inquilino antes de cada solicitud sustantiva.
+- **[[tui-corpus-producer|TUI como Productor de Corpus]] (#45)** — cada interacción terminal con el servicio de inferencia es una contribución de corpus de entrenamiento curada.
+- **[[mcp-substrate-protocol|MCP como Protocolo del Sustrato]] (#46)** — cada servicio de Ring 1 y Ring 2 expone una interfaz de servidor MCP como su contrato externo principal.
+- **[[seed-taxonomy-as-smb-bootstrap|Taxonomía Semilla como Bootstrap para PYMEs]] (#47)** — cada despliegue de inquilino se aprovisiona con una taxonomía semilla de cuatro partes como el bootstrap de su grafo de conocimiento.
+- **[[customer-owned-graph-ip|IP del Grafo de Propiedad del Cliente]] (#48)** — el grafo de conocimiento por inquilino es propiedad intelectual del cliente.
+- **[[tier-zero-customer-side-sovereign-specialist|Especialista Soberano del Lado del Cliente Nivel 0]] (#49)** — el despliegue de referencia Nivel 0 es un dispositivo de pequeño factor de forma que ejecuta el sustrato determinista completo más un modelo especialista de 1B, sin GPU requerida.
+- **[[vertical-seed-packs-marketplace|Mercado de Paquetes Semilla Verticales]] (#50)** — paquetes semilla específicos de la industria distribuidos como taxonomías iniciales para nuevos despliegues de inquilinos.
+- **[[code-for-machines-first|Código para Máquinas Primero]] (#51)** — cada contrato entre servicios, registro de auditoría, configuración y ontología es legible por máquinas como superficie primaria.
+- **[[reverse-flow-substrate|Sustrato de Flujo Inverso]] (#52)** — la misma puerta de enlace [[doorman-protocol|Doorman]] y el mismo registro de auditoría que aplican la disciplina entrante también aplican los flujos comerciales salientes: un mercado de datos y un intercambio de publicidad.
+- **[[service-wallet-settlement|Liquidación de Cartera de Servicios]] (#53)** — los ingresos del mercado y el intercambio de publicidad se acumulan en un libro de contabilidad interno por inquilino; [[pointsav-overview|PointSav]] nunca es un intermediario de custodia.
+- **[[substrate-without-inference-base-case|Caso Base del Sustrato Sin Inferencia]] (#54)** — el [[totebox-archive|Archivo Totebox]] permanece completamente operativo y libremente transferible incluso cuando ningún nivel de inferencia está disponible.
 
 ## La Arquitectura de Tres Anillos
 
@@ -65,7 +65,7 @@ La plataforma organiza los servicios en tres anillos. Los Anillos 1 y 2 son dete
 
 **Anillo 2 — Conocimiento y Procesamiento (multi-inquilino mediante moduleId).** Servicios de extracción, grafo de contenido, búsqueda y egreso. El núcleo determinista de la plataforma, funcional sin IA.
 
-**Anillo 3 — Inteligencia Opcional (instancia única, multi-inquilino).** El Doorman (`service-slm`) es la totalidad del Anillo 3. Enruta entre tres niveles de cómputo: Nivel A local (OLMo 1B en hardware del cliente, costo marginal cero), Nivel B de ráfaga de GPU (OLMo 32B Think en una instancia de GPU de corta duración, controlada por el cliente), y Nivel C de API externa (API de proveedor externo con lista de permitidos explícita por solicitud). El Anillo 3 es estructuralmente opcional.
+**Anillo 3 — Inteligencia Opcional (instancia única, multi-inquilino).** El [[doorman-protocol|Doorman]] ([[service-slm]]) es la totalidad del Anillo 3. Enruta entre tres niveles de cómputo: Nivel A local (OLMo 1B en hardware del cliente, costo marginal cero), Nivel B de ráfaga de GPU ([[yoyo-compute-substrate|Yo-Yo]] OLMo 32B Think en una instancia de GPU de corta duración, controlada por el cliente), y Nivel C de API externa (API de proveedor externo con lista de permitidos explícita por solicitud). El Anillo 3 es estructuralmente opcional.
 
 ## Las Ocho Invenciones Entre Industrias
 

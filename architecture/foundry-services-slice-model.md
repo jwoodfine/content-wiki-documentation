@@ -13,7 +13,7 @@ cites: []
 paired_with: foundry-services-slice-model.es.md
 ---
 
-The PointSav development environment runs production services and interactive engineering sessions on the same Linux host. Platform services (the local SLM, Doorman, content graph, ledger writer, and proofreader) share CPU and memory with multi-operator build sessions. Without resource isolation, a heavy `cargo build` in one operator's session can starve the inference service that another operator is relying on.
+The [[pointsav-overview|PointSav]] development environment runs production services and interactive engineering sessions on the same Linux host. Platform services (the local SLM, [[doorman-protocol|Doorman]], [[service-content|content graph]], ledger writer, and proofreader) share CPU and memory with multi-operator build sessions. Without resource isolation, a heavy `cargo build` in one operator's session can starve the inference service that another operator is relying on.
 
 An initial hardening pass introduced `foundry-services.slice` — a systemd cgroup partition with `CPUWeight=200` and `MemoryHigh=11G` that holds every `local-*.service`. Default systemd user slices (`user-1001.slice`, `user-1002.slice`) sit at `CPUWeight=100`, so under CPU contention the service group receives 2× the scheduler weight relative to a single interactive shell. Memory ceilings prevent any one service from pinning more than approximately 11 GiB on a 16 GiB VM; with `OOMScoreAdjust` ordering (sshd −1000, local-fs −500, local-doorman −300, local-slm +500), the kernel's last-resort kill prefers cheap-to-restart services over the WORM ledger writer or the operator's SSH connection.
 

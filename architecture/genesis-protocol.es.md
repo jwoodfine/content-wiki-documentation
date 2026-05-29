@@ -13,7 +13,7 @@ paired_with: genesis-protocol.md
 language: es
 ---
 
-El Protocolo Génesis es la secuencia de arranque de flota utilizada por cada nodo `os-infrastructure` en el primer arranque. Permite que un nodo se vuelva operacional en hardware aislado — sin configuración previa, sin conexión a ningún plano de control y sin conocimiento de la flota a la que eventualmente se unirá — y permanezca en un estado seguro y reclamable hasta que un administrador esté listo para ponerlo bajo gestión.
+El Protocolo Génesis es la secuencia de arranque de flota utilizada por cada nodo [[infrastructure-os|`os-infrastructure`]] en el primer arranque. Permite que un nodo se vuelva operacional en hardware aislado — sin configuración previa, sin conexión a ningún plano de control y sin conocimiento de la flota a la que eventualmente se unirá — y permanezca en un estado seguro y reclamable hasta que un administrador esté listo para ponerlo bajo gestión.
 
 ## El problema que resuelve
 
@@ -21,15 +21,15 @@ La gestión convencional de flotas requiere una dependencia de secuenciación: e
 
 ## Los cinco pasos
 
-**1 — Arranque ciego.** En el primer arranque, el kernel seL4 genera un par de claves fiduciarias de Nivel 1 a partir de entropía de hardware. El nodo entra en modo de arranque ciego: ignora deliberadamente DHCP y DNS.
+**1 — Arranque ciego.** En el primer arranque, el [[sel4-microkernel-substrate|kernel seL4]] genera un par de claves fiduciarias de Nivel 1 a partir de entropía de hardware. El nodo entra en modo de arranque ciego: ignora deliberadamente DHCP y DNS.
 
-**2 — Exploración.** El nodo explora la red local en busca de una baliza de `os-network-admin` en el puerto de malla.
+**2 — Exploración.** El nodo explora la red local en busca de una baliza de [[os-network-admin|`os-network-admin`]] en el puerto de malla.
 
-**3 — Bifurcación Génesis.** Si la exploración no encuentra ninguna baliza de `os-network-admin` dentro del período de exploración, el nodo forma una Red Privada de Uno. Sella todos los puertos externos excepto un único punto de acceso reforzado.
+**3 — Bifurcación Génesis.** Si la exploración no encuentra ninguna baliza de `os-network-admin` dentro del período de exploración, el nodo forma una [[pointsav-private-network|Red Privada]] de Uno. Sella todos los puertos externos excepto un único punto de acceso reforzado.
 
 **4 — Patrón de espera.** El único punto de acceso abierto es una interfaz WebSocket reforzada que acepta únicamente solicitudes de reclamación administrativa que presenten un par de claves fiduciarias válido.
 
-**5 — Reclamación.** Cuando un administrador arranca `os-network-admin` y presenta la clave fiduciaria administrativa, el punto de acceso en patrón de espera verifica la clave. Si el par se verifica: el nodo se une a la flota; recibe su configuración de malla WireGuard y se une a la [[sovereign-mesh|malla soberana]]; su par de claves fiduciarias se registra en el registro de emparejamiento de `os-network-admin` como emparejamiento ADMIN.
+**5 — Reclamación.** Cuando un administrador arranca [[os-network-admin|`os-network-admin`]] y presenta la clave fiduciaria administrativa, el punto de acceso en patrón de espera verifica la clave. Si el par se verifica: el nodo se une a la flota; recibe su configuración de malla WireGuard y se une a la [[sovereign-mesh|malla soberana]]; su par de claves fiduciarias se registra en el [[pairing-as-permission|registro de emparejamiento]] de `os-network-admin` como emparejamiento ADMIN.
 
 ## Ensamblaje de flota diferido
 
