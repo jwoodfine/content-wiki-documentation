@@ -14,7 +14,7 @@ paired_with: location-intelligence-substrate.md
 ---
 
 
-El Sustrato de Inteligencia de Localización es una arquitectura SIG de archivos planos y código abierto que permite a los clientes poseer sus conjuntos de datos geográficos de extremo a extremo — sin facturación de API de tiles, sin licencias de almacén de datos, sin bloqueo a ningún proveedor de nube. El sustrato se construye sobre fundamentos de datos abiertos con licencia Apache (Overture Maps Foundation, Foursquare Open Source Places) y se renderiza mediante una pila de código abierto alineada con Rust (MapLibre GL JS, servidor de tiles Martin, PMTiles).
+El Sustrato de Inteligencia de Localización es una arquitectura SIG de archivos planos y código abierto que permite a los clientes [[customer-hostability|poseer sus conjuntos de datos geográficos de extremo a extremo]] — sin facturación de API de tiles, sin licencias de almacén de datos, sin bloqueo a ningún proveedor de nube. El sustrato se construye sobre fundamentos de datos abiertos con licencia Apache (Overture Maps Foundation, Foursquare Open Source Places) y se renderiza mediante una pila de código abierto alineada con Rust (MapLibre GL JS, servidor de tiles Martin, PMTiles).
 
 La primera superficie desplegada es `gis.woodfinegroup.com` — un mapa de co-localización que muestra la co-presencia de anclas minoristas en Estados Unidos, Canadá, México y España.
 
@@ -38,9 +38,9 @@ El sustrato emite una FeatureCollection GeoJSON: centroide de la tupla, polilín
 
 ## Composición con el resto de la plataforma
 
-Los triples de co-localización producidos por el sustrato de inteligencia de localización se componen con el resto del sustrato de la plataforma: un polígono de área de captación minorista de la capa GIS y una envolvente de edificio de la capa BIM pueden compartir el mismo marco de coordenadas, los mismos archivos YAML laterales por elemento y el mismo anclaje de libro mayor WORM. Dos clústeres; un sustrato.
+Los triples de co-localización producidos por el sustrato de inteligencia de localización se componen con el resto del sustrato de la plataforma: un polígono de área de captación minorista de la capa GIS y una envolvente de edificio de la capa BIM pueden compartir el mismo marco de coordenadas, los mismos archivos YAML laterales por elemento y el mismo anclaje de [[worm-ledger-architecture|libro mayor WORM]]. Dos clústeres; un sustrato.
 
-`service-slm` está disponible para trabajo de anotación rutinaria (sugerir categorías para POIs recién ingeridos, resumir deltas de conjuntos de datos, etiquetar anomalías) pero la plataforma es completamente funcional con el Portero apagado — el principio de Inteligencia Opcional aplicado a los datos geográficos.
+[[service-slm]] está disponible para trabajo de anotación rutinaria (sugerir categorías para POIs recién ingeridos, resumir deltas de conjuntos de datos, etiquetar anomalías) pero la plataforma es completamente funcional con el [[compounding-doorman|Portero]] apagado — el principio de [[substrate-without-inference-base-case|Inteligencia Opcional]] aplicado a los datos geográficos.
 
 ## Fuentes de datos
 

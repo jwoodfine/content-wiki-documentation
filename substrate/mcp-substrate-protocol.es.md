@@ -19,7 +19,7 @@ paired_with: mcp-substrate-protocol.md
 ---
 
 
-**MCP como Protocolo Substrato** designa el Protocolo de Contexto de Modelo (MCP) como el contrato de cable para toda la composición de servicios en la plataforma. Cada servicio del Anillo 1 y Anillo 2 expone una interfaz de servidor MCP como su contrato externo primario. El Portero (`service-slm`) es la puerta de enlace MCP. Las extensiones del cliente se conectan como servidores MCP adicionales. Esta decisión es estructural.
+**MCP como Protocolo Substrato** designa el Protocolo de Contexto de Modelo (MCP) como el contrato de cable para toda la composición de servicios en la plataforma. Cada servicio del Anillo 1 y Anillo 2 expone una interfaz de servidor MCP como su contrato externo primario. El [[compounding-doorman|Portero]] ([[service-slm]]) es la puerta de enlace MCP. Las extensiones del cliente se conectan como servidores MCP adicionales. Esta decisión es estructural.
 
 ## Por qué MCP es a nivel de substrato
 
@@ -31,7 +31,7 @@ El resultado práctico: un agente construido por el cliente, una extensión de I
 
 MCP define tres roles. La arquitectura de la plataforma se mapea directamente sobre ellos: **Servidor MCP** — cada servicio del Anillo 1 y Anillo 2; **Cliente MCP** — el Portero (consumiendo servicios de los Anillos 1 y 2 como herramientas), la TUI del operador, agentes construidos por el cliente, extensiones de IDE; **Anfitrión MCP** — el Portero para flujos de inferencia, la TUI para flujos del operador.
 
-El Portero es tanto Cliente MCP (llamando a `service-content` para la fundamentación del grafo) como Anfitrión MCP (presentando la interfaz de inferencia unificada a los llamadores externos). Esta dualidad es deliberada: el mismo proceso que custodia las credenciales de inferencia también media la composición de herramientas.
+El [[compounding-doorman|Portero]] es tanto Cliente MCP (llamando a [[service-content]] para la [[knowledge-graph-grounded-apprenticeship|fundamentación del grafo]]) como Anfitrión MCP (presentando la interfaz de inferencia unificada a los llamadores externos). Esta dualidad es deliberada: el mismo proceso que custodia las credenciales de inferencia también media la composición de herramientas.
 
 ## Extensiones del cliente
 

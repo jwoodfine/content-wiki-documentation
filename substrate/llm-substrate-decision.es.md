@@ -22,7 +22,7 @@ paired_with: llm-substrate-decision.md
 ---
 
 
-La plataforma PointSav utiliza la familia de modelos OLMo 3 como sustrato de inferencia de lenguaje. OLMo 3 7B se ejecuta localmente en el hardware del cliente. OLMo 3.1 32B Think se ejecuta en instancias de GPU bajo demanda para tareas de inferencia más exigentes. La selección no responde principalmente al desempeño en benchmarks, sino a la profundidad de propiedad que cada modelo permite.
+La plataforma PointSav utiliza la familia de modelos OLMo 3 como sustrato de inferencia de lenguaje. OLMo 3 7B se ejecuta localmente en el [[customer-hostability|hardware del cliente]]. OLMo 3.1 32B Think se ejecuta en [[yoyo-compute-substrate|instancias de GPU bajo demanda]] para tareas de inferencia más exigentes. La selección no responde principalmente al desempeño en benchmarks, sino a la profundidad de propiedad que cada modelo permite.
 
 ## Los tres niveles de apertura
 
@@ -44,15 +44,15 @@ Los modelos Phi-4, Granite 4 y otros con licencias permisivas fueron descartados
 
 ## Las tres capas de cómputo
 
-El Doorman enruta las solicitudes entre tres capas:
+El [[compounding-doorman|Doorman]] enruta las solicitudes entre tres capas:
 
 - **Capa A — local:** OLMo 3 7B en el hardware del cliente. Costo marginal aproximadamente cero.
-- **Capa B — ráfaga GPU:** OLMo 3.1 32B Think en instancias de GPU de corta duración. Utilizado para razonamiento extendido. Disciplina de apagado inactivo por defecto.
-- **Capa C — API externa:** servicios de terceros bajo lista de permitidos explícita, registrados en el libro de auditoría del cliente.
+- **Capa B — ráfaga GPU:** OLMo 3.1 32B Think en [[yoyo-compute-substrate|instancias de GPU de corta duración]]. Utilizado para razonamiento extendido. Disciplina de apagado inactivo por defecto.
+- **Capa C — API externa:** servicios de terceros bajo lista de permitidos explícita, registrados en el [[worm-ledger-architecture|libro de auditoría]] del cliente.
 
 ## Trayectoria de preentrenamiento continuo (planificada)
 
-La trayectoria prevista para la plataforma contempla, a partir del segundo año, el inicio del preentrenamiento continuo del modelo base OLMo 3 7B sobre el corpus acumulado de la plataforma, con el objetivo de producir PointSav-OLMo-N — un modelo derivado que incorpora los patrones de uso reales de los clientes. Esta trayectoria es una intención declarada y está sujeta a las condiciones técnicas y económicas del momento.
+La trayectoria prevista para la plataforma contempla, a partir del segundo año, el inicio del preentrenamiento continuo del modelo base OLMo 3 7B sobre el [[trajectory-substrate|corpus acumulado]] de la plataforma, con el objetivo de producir PointSav-OLMo-N — un modelo derivado que incorpora los patrones de uso reales de los clientes. Esta trayectoria es una intención declarada y está sujeta a las condiciones técnicas y económicas del momento.
 
 ## Véase también
 

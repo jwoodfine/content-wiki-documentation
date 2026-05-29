@@ -24,7 +24,7 @@ paired_with: merkle-proofs-as-substrate-primitive.es.md
 
 > Merkle proofs are the cryptographic mechanism that lets the platform substrate guarantee — to any third party, without trust — that a specific record is part of an append-only log, and that the log has not been rewritten between two observed points in time.
 
-These two guarantees together form the read-side and the replication-safety side of the Capability Ledger Substrate. This article explains what Merkle proofs are, why two distinct flavours exist, how the `system-core` crate implements both per RFC 9162 Certificate Transparency 2.0, and how the `system-ledger` crate uses them to gate write-side validity without degrading the read-side hot path.
+These two guarantees together form the read-side and the replication-safety side of the [[capability-ledger-substrate|Capability Ledger Substrate]]. This article explains what Merkle proofs are, why two distinct flavours exist, how the `system-core` crate implements both per RFC 9162 Certificate Transparency 2.0, and how the `system-ledger` crate uses them to gate write-side validity without degrading the read-side hot path.
 
 
 ## 1. What Merkle proofs are
@@ -412,7 +412,7 @@ crate carries `std` for `Vec` and JSON serialization in v0.2.x; neither
 `inclusion_proof.rs` nor `consistency_proof.rs` uses any `std`-only
 primitive. A future MINOR version will carve the `no_std` path, enabling
 direct kernel consumption from `moonshot-kernel` (the intended Rust no_std
-replacement for seL4's capability machinery) without a foreign-function
+replacement for [[sel4-microkernel-substrate|seL4's capability machinery]]) without a foreign-function
 boundary. The substrate primitive that gates every capability invocation in
 userspace can gate it at the kernel level using the same code.
 
@@ -440,7 +440,7 @@ isolation.
   The wire format for `Checkpoint` and `NoteSignature`. The 4-byte key-hash
   prefix in each signature line is `SHA-256("<name>\nED25519\n<32-byte-pubkey>")[..4]`.
 
-- **WORM ledger design**
+- **[[worm-ledger-design|WORM ledger design]]**
   The foundational log-storage pattern the Capability Ledger Substrate extends.
   C2SP tlog-tiles compatibility and SHA-256 as the baseline hash function.
   `system-core` is the L0 schema layer; `system-ledger` is the

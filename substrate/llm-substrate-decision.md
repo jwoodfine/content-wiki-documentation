@@ -21,7 +21,7 @@ references:
 paired_with: llm-substrate-decision.es.md
 ---
 
-The PointSav platform uses the OLMo 3 model family as its language model substrate. OLMo 3 7B runs locally on customer hardware. OLMo 3.1 32B Think runs on a short-lived GPU burst instance for heavier inference tasks. The selection is not primarily about benchmark performance — it is about ownership depth.
+The PointSav platform uses the OLMo 3 model family as its language model substrate. OLMo 3 7B runs locally on [[customer-hostability|customer hardware]]. OLMo 3.1 32B Think runs on a short-lived [[yoyo-compute-substrate|GPU burst instance]] for heavier inference tasks. The selection is not primarily about benchmark performance — it is about ownership depth.
 
 ## Three levels of openness
 
@@ -35,7 +35,7 @@ The language model market in 2026 offers three distinct depths of openness, and 
 
 OLMo 3 is the only model in the 2026 non-Chinese open model landscape that operates at Level 3. [^1] Its training data is the Dolma 3 corpus (9.3 trillion tokens, published under the Open Data Commons license). [^2] Its training code is published under Apache 2.0. Checkpoints at intermediate stages are available for download.
 
-For a platform designed to compound over a five-year horizon — where the intended outcome is a customer-owned, specialised base model trained on accumulated customer data — Level 3 is the only depth that makes that outcome possible. Level 1 and Level 2 produce fine-tuning capability but not ownership of the base.
+For a platform designed to compound over a five-year horizon — where the intended outcome is a [[customer-hostability|customer-owned]], specialised base model trained on accumulated customer data — Level 3 is the only depth that makes that outcome possible. Level 1 and Level 2 produce fine-tuning capability but not ownership of the base.
 
 ## Why each alternative was set aside
 
@@ -55,7 +55,7 @@ Models considered and rejected:
 
 OLMo 3 32B Think, in the updated OLMo 3.1 December 2025 release, reaches 91.4% on HumanEvalPlus — the measure of practical code generation accuracy — and sits within two percentage points of the leading open-weight model on the standard mathematical reasoning and instruction-following benchmarks. The 7B variant is strong on programming, reading comprehension, and mathematics with a 65,000-token context window.
 
-These numbers do not place OLMo 3 at the absolute frontier of open-weight performance. They do place it firmly in the range where the Doorman — the service that mediates all AI inference calls in the PointSav architecture — produces useful results on the daily tasks it handles. The 7B local variant handles routine work; the 32B burst variant handles tasks requiring extended reasoning. The same vocabulary, tokenizer, and prompt format apply to both, which means the adapter library trained on one is compatible with the other.
+These numbers do not place OLMo 3 at the absolute frontier of open-weight performance. They do place it firmly in the range where the [[compounding-doorman|Doorman]] — the service that mediates all AI inference calls in the PointSav architecture — produces useful results on the daily tasks it handles. The 7B local variant handles routine work; the 32B burst variant handles tasks requiring extended reasoning. The same vocabulary, tokenizer, and prompt format apply to both, which means the [[adapter-composition|adapter library]] trained on one is compatible with the other.
 
 ## The three compute tiers
 
@@ -65,13 +65,13 @@ The Doorman routes requests among three tiers:
 
 **Tier B — GPU burst.** OLMo 3.1 32B Think on a short-lived GPU instance. Approximately $0.84 per hour at list pricing on major cloud providers, significantly less on spot/preemptible instances. Used for requests the local tier cannot handle efficiently. Idle-shutdown discipline means the instance runs only when a request requires it.
 
-**Tier C — external API.** Third-party language model services via a per-request allowlist. Used only for narrow precision tasks — citation grounding, initial knowledge graph construction, entity disambiguation — where the precision requirement justifies the cost. Every Tier C call is logged at the customer's audit ledger.
+**Tier C — external API.** Third-party language model services via a per-request allowlist. Used only for narrow precision tasks — [[citation-substrate|citation grounding]], initial [[knowledge-graph-grounded-apprenticeship|knowledge graph]] construction, entity disambiguation — where the precision requirement justifies the cost. Every Tier C call is logged at the customer's [[worm-ledger-architecture|audit ledger]].
 
 The customer's routing configuration determines which tier handles which request. No per-request manual selection is required.
 
 ## The intended continued-pretraining path
 
-The platform's intended multi-year trajectory, as currently planned, is to move from using OLMo 3 as a base through a process of continued pretraining that produces PointSav-OLMo-N — a derivative model trained on accumulated platform corpus data, customer LoRA adapter distillation, and curated public material. Year two onwards is the intended start window for the first continued-pretraining run, targeting the 7B variant at an estimated cost of $30,000 to $100,000 on cloud GPU infrastructure. This trajectory is planned but not yet initiated; the current platform operates on the published OLMo 3 base.
+The platform's intended multi-year trajectory, as currently planned, is to move from using OLMo 3 as a base through a process of continued pretraining that produces PointSav-OLMo-N — a derivative model trained on accumulated [[trajectory-substrate|platform corpus data]], customer [[adapter-composition|LoRA adapter]] distillation, and curated public material. Year two onwards is the intended start window for the first continued-pretraining run, targeting the 7B variant at an estimated cost of $30,000 to $100,000 on cloud GPU infrastructure. This trajectory is planned but not yet initiated; the current platform operates on the published OLMo 3 base.
 
 The material assumption underlying this trajectory is that the Open Data Commons license on Dolma 3 and the Apache 2.0 license on OLMo 3's training code remain in effect and permit commercial continued pretraining. That assumption holds as of May 2026; it would require re-evaluation if the license terms changed.
 

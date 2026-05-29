@@ -18,7 +18,7 @@ references:
 paired_with: mcp-substrate-protocol.es.md
 ---
 
-**MCP-as-Substrate-Protocol** designates the Model Context Protocol (MCP) as the wire contract for all inter-service composition in the platform. Every Ring 1 and Ring 2 service exposes an MCP server interface as its primary external contract. The Doorman (`service-slm`) is the MCP gateway. Customer extensions plug in as additional MCP servers. This is not a preference or an implementation convenience — it is a structural decision.
+**MCP-as-Substrate-Protocol** designates the Model Context Protocol (MCP) as the wire contract for all inter-service composition in the platform. Every Ring 1 and Ring 2 service exposes an MCP server interface as its primary external contract. The [[compounding-doorman|Doorman]] ([[service-slm]]) is the MCP gateway. [[customer-hostability|Customer extensions]] plug in as additional MCP servers. This is not a preference or an implementation convenience — it is a structural decision.
 
 ## Why MCP is substrate-level
 
@@ -30,9 +30,9 @@ The practical result: a customer-built agent, an IDE extension, and the platform
 
 MCP defines three roles. The platform's architecture maps onto them directly:
 
-**MCP Server** — each Ring 1 and Ring 2 service: the file system ledger, the knowledge runtime, the extraction service, the input service, the people service, the email service, and the egress service. When Phase 5 delivers the marketplace and settlement services, those are MCP servers too.
+**MCP Server** — each Ring 1 and Ring 2 service: the [[worm-ledger-architecture|file system ledger]], the knowledge runtime, [[service-extraction|the extraction service]], the input service, [[service-people|the people service]], [[service-email|the email service]], and the egress service. When Phase 5 delivers the marketplace and settlement services, those are MCP servers too.
 
-**MCP Client** — the Doorman (consuming Ring 1 and Ring 2 services as tools during inference); the operator TUI; customer-built agents; IDE extensions.
+**MCP Client** — the [[compounding-doorman|Doorman]] (consuming Ring 1 and Ring 2 services as tools during inference); the operator TUI; customer-built agents; IDE extensions.
 
 **MCP Host** — the Doorman for inference-traffic flows; the operator TUI for operator-traffic flows.
 
@@ -42,7 +42,7 @@ The Doorman is both MCP Client (calling `service-content` for graph grounding) a
 
 Each service exposes a small set of named MCP tools. `service-content` exposes graph query, graph mutation, vector search, and temporal query. The file ledger service exposes ledger append, ledger query, and checkpoint. The extraction service exposes entity extraction and classification. The people service exposes person lookup, upsert, and relationship query.
 
-The marketplace service (planned Phase 5) is intended to expose listing creation, listing query, and transaction initiation as MCP tools. Customers extending the platform add new MCP servers that expose their own vertical-specific tools. The Doorman discovers new tools at session start via MCP's describe mechanism; no core code changes are required to accommodate a new extension.
+The marketplace service (planned Phase 5) is intended to expose listing creation, listing query, and transaction initiation as MCP tools. Customers extending the platform add new MCP servers that expose their own vertical-specific tools. The [[compounding-doorman|Doorman]] discovers new tools at session start via MCP's describe mechanism; no core code changes are required to accommodate a new extension.
 
 ## The Doorman as MCP gateway
 

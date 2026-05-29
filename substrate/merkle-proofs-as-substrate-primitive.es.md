@@ -24,7 +24,7 @@ references:
 
 > Las pruebas de Merkle son el mecanismo criptográfico que permite al sustrato de la plataforma garantizar — a cualquier tercero, sin necesidad de confianza previa — que un registro específico forma parte de un registro (log) de sólo-adición, y que ese log no ha sido reescrito entre dos puntos de observación.
 
-Estas dos garantías fundamentan el Sustrato del Libro de Capacidades y el Sustrato Soberano de Dos Bases.
+Estas dos garantías fundamentan el [[capability-ledger-substrate|Sustrato del Libro de Capacidades]] y el [[system-substrate-doctrine|Sustrato Soberano de Dos Bases]].
 
 
 ## Resumen
@@ -124,8 +124,8 @@ FFI, y que la novedad es la composición, no los algoritmos individuales.
 ### §8 — Referencias cruzadas
 
 Enumera las referencias normativas: RFC 9162 [^1], especificación C2SP
-signed-note [^2], diseño del libro WORM, el Sustrato del Libro de Capacidades,
-el Sustrato Soberano de Dos Bases, y los commits de implementación del
+signed-note [^2], [[worm-ledger-design|diseño del libro WORM]], el [[capability-ledger-substrate|Sustrato del Libro de Capacidades]],
+el [[system-substrate-doctrine|Sustrato Soberano de Dos Bases]], y los commits de implementación del
 Phase 1A.4 y 1A.5.
 
 

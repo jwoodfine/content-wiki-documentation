@@ -18,11 +18,11 @@ paired_with: language-protocol-substrate.es.md
 
 Every editorial action that passes through the PointSav platform — document generation, schema validation, training-tuple capture — is shaped by a substrate that encodes register, brand voice, document sub-type, and target audience as reusable prompt scaffolding rather than ad-hoc instruction. The result is editorial work that is audited, per-tenant, and replaceable at any layer without rebuilding the rest.
 
-The substrate provides four artefact families, eighteen genre templates, a frontmatter validator that returns all schema violations in a single pass, and a banned-vocabulary list of eight cross-genre prohibited terms. These ship as a Rust crate (`service-disclosure`) split across four services — `service-content` (knowledge graph), `service-slm` (Doorman and inference), `service-disclosure` (schema and templates), `service-proofreader` (HTTP write-assistant) — where any single service can be replaced by a customer-owned equivalent while the rest hold.
+The substrate provides four artefact families, eighteen genre templates, a frontmatter validator that returns all schema violations in a single pass, and a banned-vocabulary list of eight cross-genre prohibited terms. These ship as a Rust crate (`service-disclosure`) split across four services — [[service-content]] (knowledge graph), [[service-slm]] ([[compounding-doorman|Doorman]] and inference), `service-disclosure` (schema and templates), `service-proofreader` (HTTP write-assistant) — where any single service can be replaced by a [[customer-hostability|customer-owned equivalent]] while the rest hold.
 
 Three adapters compose at request time: base model, tenant adapter (brand voice), and protocol adapter (PROSE | COMMS | LEGAL | TRANSLATE). Register, brand voice, and target audience live as prompt scaffolding rather than additional adapters — five or more adapters per request crosses into multi-task interference per the 2025 LoRA literature; the platform stays at three. Every editorial action produces a verdict-signed training tuple through the [[apprenticeship-substrate]] pipeline, feeding continued pretraining on the customer's adapter without the customer's text leaving their infrastructure.
 
-For regulated buyers, the four-service split matters because every editorial action is audited in the per-tenant ledger before it exits the customer's network. The customer can fork any adapter, inspect the prompt scaffolding, and verify that their brand voice is not pooled with another tenant's training data. Per `[ni-51-102]` and `[osc-sn-51-721]`, the training pipeline is described in planned terms; the substrate architecture is operational today.
+For regulated buyers, the four-service split matters because every editorial action is audited in the per-tenant [[worm-ledger-architecture|ledger]] before it exits the customer's network. The customer can fork any [[adapter-composition|adapter]], inspect the prompt scaffolding, and verify that their brand voice is not pooled with another tenant's training data. Per `[ni-51-102]` and `[osc-sn-51-721]`, the training pipeline is described in planned terms; the substrate architecture is operational today.
 
 ## Overview
 
@@ -37,7 +37,7 @@ These four artefacts ship as a Rust crate (`service-disclosure`) that any platfo
 
 ## Ring and Role
 
-The Language-Protocol Substrate spans Ring 3 — Optional Intelligence (inference via the Doorman) and Ring 2 — Knowledge and Processing (schema validation and template management via `service-content` and `service-disclosure`). It has no Ring 1 component: editorial work begins after boundary ingest completes. The substrate is activated on every editorial action that passes through the Doorman, whether that action is a document generation request, a validation pass, or a training-tuple capture.
+The Language-Protocol Substrate spans Ring 3 — Optional Intelligence (inference via the [[compounding-doorman|Doorman]]) and Ring 2 — Knowledge and Processing (schema validation and template management via [[service-content]] and `service-disclosure`). It has no Ring 1 component: editorial work begins after boundary ingest completes. The substrate is activated on every editorial action that passes through the Doorman, whether that action is a document generation request, a validation pass, or a training-tuple capture.
 
 ## Architecture
 
@@ -76,7 +76,7 @@ The editorial-write path runs through four services. Each owns one shape:
 
 A customer can replace any one without touching the rest. Replace `service-slm` with a customer-owned GPU host while keeping `service-content` and `service-disclosure`. Replace `service-content` with a customer's existing knowledge graph while keeping `service-slm`. The contract between services is the only thing that needs to hold.
 
-The platform's contribution to this pattern is the per-tenant audit ledger that makes each substitution composable across regulatory contexts — a replacement service produces the same audit trail the original produced.
+The platform's contribution to this pattern is the per-tenant [[worm-ledger-architecture|audit ledger]] that makes each substitution composable across regulatory contexts — a replacement service produces the same audit trail the original produced.
 
 ### Multi-tenant via moduleId namespacing
 

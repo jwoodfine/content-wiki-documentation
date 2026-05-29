@@ -32,7 +32,7 @@ references:
  text: "OSC Staff Notice 51-721 Forward-Looking Information Disclosure"
 ---
 
-The Location Intelligence Substrate is a flat-file, open-GIS architecture that lets customers own their geographic datasets end-to-end — no tile API billing, no warehouse licensing, no cloud-vendor lock-in. The substrate is built on Apache-licensed open-data foundations (Overture Maps Foundation, Foursquare Open Source Places) and rendered via a Rust-aligned open-source stack (MapLibre GL JS, Martin tile server, PMTiles).[^1][^2]
+The Location Intelligence Substrate is a flat-file, open-GIS architecture that lets [[customer-hostability|customers own their geographic datasets end-to-end]] — no tile API billing, no warehouse licensing, no cloud-vendor lock-in. The substrate is built on Apache-licensed open-data foundations (Overture Maps Foundation, Foursquare Open Source Places) and rendered via a Rust-aligned open-source stack (MapLibre GL JS, Martin tile server, PMTiles).[^1][^2]
 
 The first deployed surface is `gis.woodfinegroup.com` — a co-location map showing retail anchor co-presence across the United States, Canada, Mexico, and Spain.
 
@@ -101,9 +101,9 @@ Retail co-location clustering is a documented phenomenon with academic precedent
 
 ## Composition with the rest of the platform
 
-The co-location triples produced by the location intelligence substrate compose with the rest of the platform substrate: a retail catchment polygon from the GIS layer and a building envelope from the BIM layer can share the same coordinate frame, the same per-element YAML sidecars, and the same WORM ledger anchoring. Two clusters; one substrate.
+The co-location triples produced by the location intelligence substrate compose with the rest of the platform substrate: a retail catchment polygon from the GIS layer and a building envelope from the BIM layer can share the same coordinate frame, the same per-element YAML sidecars, and the same [[worm-ledger-architecture|WORM ledger]] anchoring. Two clusters; one substrate.
 
-`service-slm` is available for routine annotation work (suggesting categories for newly-ingested POIs, summarising dataset deltas, labelling anomalies) but the platform is fully functional with the Doorman shut down — the Optional Intelligence principle applied to geographic data. This is by design: GIS analysis does not require AI; AI is additive.
+[[service-slm]] is available for routine annotation work (suggesting categories for newly-ingested POIs, summarising dataset deltas, labelling anomalies) but the platform is fully functional with the [[compounding-doorman|Doorman]] shut down — the [[substrate-without-inference-base-case|Optional Intelligence]] principle applied to geographic data. This is by design: GIS analysis does not require AI; AI is additive.
 
 ## Data sourcing
 
