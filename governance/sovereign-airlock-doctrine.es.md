@@ -52,14 +52,16 @@ Las herramientas de commit de la plataforma alternan la autoría entre `jwoodfin
 
 La garantía de la exclusa no es "es poco probable que los usuarios hagan push directo" sino "el push directo desde una sesión de staging es estructuralmente imposible." Una sesión de staging que emite un comando de push apunta al remoto de staging, no al repositorio canónico. Alcanzar el repositorio canónico requiere el alias SSH administrador, que requiere la clave administradora, que requiere que el operador inicie explícitamente el paso de promoción Stage 6.
 
-Esta separación cumple dos funciones para los operadores regulados. Primero, convierte el nivel de staging en un límite de revisión genuino: los commits promovidos llevan implícita la aprobación de que el operador revisó el trabajo antes de autorizar el push canónico. Segundo, mantiene el historial de commits limpio — cada commit en el repositorio canónico fue creado por una identidad de staging conocida, revisado en un momento conocido, y promovido mediante una acción deliberada del operador.
+Esta separación cumple dos funciones para los operadores regulados. Primero, convierte el nivel de staging en un límite de revisión genuino: los commits promovidos llevan implícita la aprobación de que el operador revisó el trabajo antes de autorizar el push canónico. Segundo, mantiene el historial de commits limpio — cada commit en el repositorio canónico fue creado por una identidad de staging conocida, revisado en un momento conocido, y promovido mediante una acción deliberada del operador, conforme al [[legal-and-ip-structure|mecanismo de transferencia de PI mediante squash-and-merge]].
 
 ## Custodia de claves
 
-Las cuatro claves residen en el directorio de identidades controlado por el operador con permisos `0600`, accesibles únicamente al usuario del sistema propietario del espacio de trabajo. Las herramientas de sesión leen las claves desde este directorio; ninguna clave se copia en un repositorio ni se exporta al entorno de la sesión. Un hook pre-commit bloquea los commits que contengan material de clave, aplicando la regla de custodia en la capa técnica en lugar de la capa de política.
+Las cuatro claves residen en el directorio de identidades controlado por el operador con permisos `0600`, accesibles únicamente al usuario del sistema propietario del espacio de trabajo. Las herramientas de sesión leen las claves desde este directorio; ninguna clave se copia en un repositorio ni se exporta al entorno de la sesión. Un hook pre-commit bloquea los commits que contengan material de clave, aplicando la regla de custodia en la capa técnica en lugar de la capa de política. La misma disciplina de límite se extiende a las [[api-key-boundary-discipline|credenciales de inferencia de IA]], que se conservan exclusivamente en la pasarela y nunca en los motores de inferencia.
 
 ## Véase también
 
 - [[pairing-as-permission]] — el patrón de emparejamiento criptográfico que gobierna qué nodos pueden conectarse
 - [[machine-based-auth]] — el protocolo de autenticación basado en máquina de la plataforma
+- [[api-key-boundary-discipline]] — la misma disciplina de separación de claves aplicada a las credenciales de inferencia de IA
+- [[legal-and-ip-structure]] — el mecanismo de transferencia de PI que depende de esta separación del flujo de commits
 - [[single-boundary-compute-discipline]] — el límite de inferencia de IA que aplica la misma disciplina de separación de claves en la capa de modelo

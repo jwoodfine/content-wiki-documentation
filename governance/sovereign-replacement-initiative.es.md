@@ -45,7 +45,8 @@ La [[architecture-decisions|Decisión de Arquitectura 8]] registra formalmente e
 
 ## Véase también
 
-- [[moonshot-initiatives]]
-- [[ontological-governance]]
-- [[verification-surveyor]]
-- [[customer-hostability]]
+- [[moonshot-initiatives]] — cada programa de ingeniería activo que esta iniciativa coordina
+- [[sel4-microkernel-substrate]] — el micronúcleo formalmente verificado que es el objetivo final para los reemplazos en la capa de kernel
+- [[ontological-governance]] — la gobernanza de clasificación que opera junto con la gobernanza de dependencias
+- [[verification-surveyor]] — el agente de auditoría que confirma la finalización del reemplazo contra el libro mayor
+- [[customer-hostability]] — la propiedad de separación que permite la eliminación de dependencias foráneas

@@ -20,7 +20,7 @@ PointSav delivers a data platform on hardware the customer owns outright. There 
 
 Every artefact ships with a bootstrap script that brings the full stack up on a machine the customer provides — no SaaS dependency, no provider login, no metered cloud API. A customer who terminates the relationship retains every record they ever wrote, every trained adapter they funded, and the complete audit ledger of every action taken on their data. The vendor does not hold what the customer built.
 
-The platform's three-ring architecture separates boundary ingest (Ring 1), deterministic processing (Ring 2), and optional AI inference (Ring 3). AI inference never writes to the authoritative record; that path belongs exclusively to deterministic Ring 2 services. A deployment that excludes Ring 3 entirely still delivers the full compliance-grade record-keeping stack — and exposes less attack surface in the process.
+The platform's [[three-ring-architecture|three-ring architecture]] separates boundary ingest (Ring 1), deterministic processing (Ring 2), and optional AI inference (Ring 3). AI inference never writes to the authoritative record; that path belongs exclusively to deterministic Ring 2 services. A deployment that excludes Ring 3 entirely still delivers the full compliance-grade record-keeping stack — and exposes less attack surface in the process.
 
 For a regulated buyer under continuous-disclosure obligations, this architecture has a concrete audit consequence: the authoritative record sits on hardware the buyer controls, the ledger is cryptographically append-only, and the buyer can satisfy a regulator's request for records without depending on the vendor's continued operation or cooperation. `[ni-51-102]`
 
@@ -55,7 +55,7 @@ The base model weights (OLMo 3, Apache 2.0) are open source. The commercial line
 The platform's compliance posture is structural rather than procedural. Compliance is not achieved by policy controls that a misconfigured administrator can override — it is achieved by the architecture of the storage engine and the service boundaries.
 
 - **Record immutability.** The WORM ledger satisfies SEC Rule 17a-4(f) for US broker-dealer record-keeping, eIDAS qualified electronic records preservation, and SOC 2. Modification is not denied at the policy layer; it is denied by the storage engine, which has no delete or overwrite operation.
-- **AI audit trail.** Every AI inference call — local, GPU burst, or external API — passes through the Doorman and generates an audit row in the customer's local ledger. The vendor's gateway generates a second audit row simultaneously. Two-ledger, per-call coverage.
+- **AI audit trail.** Every AI inference call — local, GPU burst, or external API — passes through the [[doorman-protocol|Doorman]] and generates an audit row in the customer's local ledger. The vendor's gateway generates a second audit row simultaneously. Two-ledger, per-call coverage.
 - **BCSC continuous disclosure.** The platform produces continuous-disclosure-grade records as a structural output of Ring 2 processing. A reporting issuer under NI 51-102 who deploys the platform inside their own substrate can satisfy continuous-disclosure obligations against records they own and control.
 - **Data residency.** Customer data never leaves the customer's designated hardware except through an explicit egress call audited in the ledger. Data residency is a property of the deployment topology, not a contractual commitment subject to interpretation.
 

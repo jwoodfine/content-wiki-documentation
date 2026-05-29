@@ -30,7 +30,7 @@ The platform enforces tenant isolation at three layers:
 
 **Namespace isolation at Ring 2.** Ring 2 services are multi-tenant via `moduleId`. One process handles requests for all tenants, but each tenant's knowledge graph and search index are isolated behind their `moduleId` namespace at every read and write path. A query for tenant A cannot return records for tenant B.
 
-**Single-boundary AI isolation at Ring 3.** `service-slm` is the sole Ring 3 service. Every AI request passes through the Doorman, which sanitises outbound data, routes among three compute tiers, and writes an audit row at the customer's local ledger before any external call is made. No other service in the platform makes external AI calls.
+**Single-boundary AI isolation at Ring 3.** [[service-slm]] is the sole Ring 3 service. Every AI request passes through the Doorman, which sanitises outbound data, routes among three compute tiers, and writes an audit row at the customer's local ledger before any external call is made. No other service in the platform makes external AI calls.
 
 ## The Doorman boundary
 
@@ -84,7 +84,7 @@ A security audit of the platform can verify the following directly from the ledg
 | Which AI calls were made and when? | Per-tenant audit ledger: every Doorman call logged |
 | Has any ledger record been modified? | Hash chain: break is detectable without trusting the platform |
 | What entered Ring 1 and when? | Ring 1 WORM ledger: every ingest event recorded |
-| What left the platform and when? | service-egress audit entries in the ledger |
+| What left the platform and when? | [[service-egress|service-egress]] audit entries in the ledger |
 
 What the audit cannot find — because it does not exist — is an AI write path to Ring 1 or Ring 2 storage. The architecture has no such path.
 

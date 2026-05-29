@@ -24,7 +24,7 @@ Sin gobernanza activa, los sistemas de clasificación automática derivan con el
 
 ## Los cuatro libros contables de control
 
-La gobernanza ontológica opera a través de cuatro libros contables CSV limitados en velocidad que definen el vocabulario de clasificación de `service-content`. Cada libro contable:
+La gobernanza ontológica opera a través de cuatro libros contables CSV limitados en velocidad que definen el vocabulario de clasificación de [[service-content]]. Cada libro contable:
 
 - Define las categorías y términos válidos para un dominio particular.
 - Está limitado en velocidad para prevenir cambios de vocabulario masivos que invalidarían clasificaciones históricas.
@@ -32,7 +32,7 @@ La gobernanza ontológica opera a través de cuatro libros contables CSV limitad
 
 ## El bucle de verificación humana
 
-La gobernanza ontológica también abarca el Verificador de Identidad, que fuerza los fragmentos de identidad extraídos a través de la revisión humana antes de que se escriban permanentemente en el libro contable verificado. Los dos mecanismos sirven al mismo objetivo: prevenir que los errores de clasificación acumulados socaven la integridad de los datos institucionales a largo plazo.
+La gobernanza ontológica también abarca el [[verification-surveyor|Verificador de Identidad]], que fuerza los fragmentos de identidad extraídos a través de la revisión humana antes de que se escriban permanentemente en el [[worm-ledger-design|libro contable verificado]]. Los dos mecanismos sirven al mismo objetivo: prevenir que los errores de clasificación acumulados socaven la integridad de los datos institucionales a largo plazo.
 
 ## Por qué importan las velocidades de actualización asimétricas para los operadores regulados
 
@@ -42,7 +42,8 @@ Para los propósitos de divulgación financiera, esto significa que el grafo de 
 
 ## Véase también
 
-- [[verification-surveyor]]
-- [[message-courier]]
-- [[moonshot-initiatives]]
-- [[sovereign-replacement-initiative]]
+- [[verification-surveyor]] — el agente con humano en el bucle que verifica fragmentos de identidad antes de que entren al libro mayor
+- [[archetypes-and-chart-of-accounts]] — los dos libros contables de actualización más lenta que definen la identidad de la empresa
+- [[message-courier]] — el sustrato de enrutamiento que entrega comunicaciones entrantes al libro mayor
+- [[moonshot-initiatives]] — programa de ingeniería para reemplazar dependencias en cuarentena de las que depende la gobernanza ontológica
+- [[worm-ledger-design]] — el sustrato de almacenamiento de solo adición que hace autoritativo el libro mayor verificado

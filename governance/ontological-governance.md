@@ -22,13 +22,13 @@ Automated classification systems drift over time — categories multiply, vocabu
 Data extraction across the platform is mechanically isolated into
 three services:
 
-1. **`service-email` (ingestion).** Processes MIME payloads and
+1. **[[service-email]] (ingestion).** Processes MIME payloads and
  deposits raw text and CSV files into the spool. No
  classification is applied at this stage.
-2. **`service-people` (identity resolution).** Scans the spool
+2. **[[service-people]] (identity resolution).** Scans the spool
  for human identity clusters and routes them to the verification
  surveyor before committing to the verified ledger.
-3. **`service-content` (linguistic classification).** Scans the
+3. **[[service-content]] (linguistic classification).** Scans the
  spool for narrative knowledge and cross-references text against
  the four control ledgers.
 
@@ -39,8 +39,8 @@ heavily throttled rates to preserve longitudinal data stability:
 
 | Ledger | Minimum update interval | Governs |
 |---|---|---|
-| Archetypes | More than 24 months | The psychological and functional identity of the firm (for example, "The Fiduciary") |
-| Chart of Accounts | 18–24 months; requires executive override | The structural and financial geometry of the operation (for example, "Compliance", "IT Support") |
+| [[archetypes-and-chart-of-accounts|Archetypes]] | More than 24 months | The psychological and functional identity of the firm (for example, "The Fiduciary") |
+| [[archetypes-and-chart-of-accounts|Chart of Accounts]] | 18–24 months; requires executive override | The structural and financial geometry of the operation (for example, "Compliance", "IT Support") |
 | Domains | More than 12 months | Bilingual glossaries defining the macro-categories: Corporate (Finance), Projects (Real Estate), Documentation (Technology) |
 | Themes | 3–8 months | The active frontline narratives (for example, "Co-Location Expansion") |
 
@@ -62,7 +62,8 @@ For financial disclosure purposes, this means that the platform's knowledge grap
 
 ## See also
 
-- [[verification-surveyor|Verification Surveyor]]
-- [[message-courier|Message Courier Service]]
-- [[moonshot-initiatives|Moonshot Initiatives]]
-- [[sovereign-replacement-initiative|Sovereign Replacement Initiative]]
+- [[verification-surveyor|Verification Surveyor]] — the human-in-the-loop agent that verifies identity fragments before they enter the ledger
+- [[archetypes-and-chart-of-accounts]] — the two slowest-updating control ledgers that define firm identity and financial geometry
+- [[message-courier|Message Courier Service]] — the routing substrate that delivers inbound communications to service-email
+- [[moonshot-initiatives|Moonshot Initiatives]] — engineering program to replace quarantined dependencies that ontological governance depends on
+- [[worm-ledger-design]] — the append-only storage substrate that makes the verified ledger authoritative

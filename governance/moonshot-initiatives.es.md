@@ -39,7 +39,7 @@ Cada moonshot apunta a una clase de dependencia distinta. Las siguientes clases 
 | `moonshot-gpu` | Servicios de inferencia GPU en la nube | Soberanía de inferencia; la capacidad GPU local elimina la dependencia de APIs de inferencia en la nube |
 | `moonshot-hypervisor` | Capa de hipervisor externa | Soberanía de sustrato; un hipervisor verificado cierra la brecha entre el micronúcleo seL4 y el hardware de consumo |
 | `moonshot-index` | Backends externos de búsqueda e indexación | Soberanía de búsqueda; un índice nativo de la plataforma elimina la dependencia de infraestructura de búsqueda de terceros |
-| `moonshot-kernel` | Kernel Linux de consumo | Soberanía de kernel; el micronúcleo formalmente verificado seL4 reemplaza la dependencia de systemd/Linux en cuarentena registrada en ADR-08 |
+| `moonshot-kernel` | Kernel Linux de consumo | Soberanía de kernel; el [[sel4-microkernel-substrate|micronúcleo formalmente verificado seL4]] reemplaza la dependencia de systemd/Linux en cuarentena registrada en [[architecture-decisions|ADR-08]] |
 | `moonshot-network` | Plano de control de red externo | Soberanía de red; una malla nativa de WireGuard elimina la dependencia de servicios de red gestionados |
 | `moonshot-protocol` | Protocolos de comunicación propietarios | Soberanía de protocolo; reemplazar protocolos propietarios por equivalentes abiertos y formalmente especificados |
 | `moonshot-sel4-vmm` | Monitor de máquina virtual de consumo | Capa de verificación; un VMM nativo seL4 cierra el límite verificado bajo todos los sistemas operativos invitados |
@@ -53,6 +53,8 @@ La Iniciativa de Reemplazo Soberano es el programa de gobernanza que coordina es
 
 ## Véase también
 
-- [[sovereign-replacement-initiative]]
-- [[ontological-governance]]
-- [[verification-surveyor]]
+- [[sovereign-replacement-initiative]] — programa de gobernanza que coordina estos esfuerzos de ingeniería
+- [[sel4-microkernel-substrate]] — el micronúcleo formalmente verificado al que apuntan moonshot-kernel y moonshot-sel4-vmm
+- [[architecture-decisions]] — ADR-08 registra la cuarentena de systemd que moonshot-kernel está diseñado para cerrar
+- [[ontological-governance]] — gobernanza de taxonomía que proporciona la nomenclatura para los componentes en cuarentena
+- [[verification-surveyor]] — el agente de auditoría que rastrea el estado de finalización de cada iniciativa

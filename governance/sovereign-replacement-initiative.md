@@ -65,7 +65,7 @@ A ledger entry closes when the associated moonshot initiative achieves **structu
 
 1. **Functional coverage.** The native implementation covers all platform use-cases currently served by the quarantined component.
 2. **Physical supersession.** The quarantined `vendor-*` directory is deleted from the repository. No source references to the replaced component remain.
-3. **Formal verification target.** For kernel-layer components, the native implementation satisfies the platform's formal verification requirement (seL4-compatible, memory-safe, no buffer overflow). For application-layer components, the platform's standard test coverage and audit-ledger integration requirements are met.
+3. **Formal verification target.** For kernel-layer components, the native implementation satisfies the platform's formal verification requirement ([[sel4-microkernel-substrate|seL4]]-compatible, memory-safe, no buffer overflow). For application-layer components, the platform's standard test coverage and audit-ledger integration requirements are met.
 
 Until all three conditions are satisfied, the quarantine remains active and the ledger entry stays open.
 
@@ -82,7 +82,8 @@ The initiative operates across the vendor-customer structure:
 
 ## See also
 
-- [[moonshot-initiatives|Moonshot Initiatives]]
-- [[ontological-governance|Ontological Governance]]
-- [[verification-surveyor|Verification Surveyor]]
-- [[customer-hostability|Customer Hostability]]
+- [[moonshot-initiatives|Moonshot Initiatives]] — each active engineering program that this initiative coordinates
+- [[sel4-microkernel-substrate]] — the formally verified microkernel that is the ultimate target for kernel-layer replacements
+- [[ontological-governance|Ontological Governance]] — the classification governance that operates alongside dependency governance
+- [[verification-surveyor|Verification Surveyor]] — the audit agent that confirms replacement completion against the ledger
+- [[customer-hostability|Customer Hostability]] — the breakout property that the elimination of foreign dependencies enables

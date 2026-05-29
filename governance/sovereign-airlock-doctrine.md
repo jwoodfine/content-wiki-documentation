@@ -51,14 +51,16 @@ The commit tooling alternates authorship between `jwoodfine` and `pwoodfine` on 
 
 The airlock's guarantee is not "users are unlikely to push directly" but rather "direct pushing is structurally impossible from a staging session." A staging session that issues a push command targets the staging remote, not the canonical repository. Reaching the canonical repository requires the admin SSH alias, which requires the admin key, which requires the operator to explicitly initiate the Stage 6 promotion step.
 
-This separation serves two functions for regulated operators. First, it makes the staging tier a genuine review boundary: promoted commits carry implicit sign-off that the operator reviewed the work before authorising the canonical push. Second, it keeps the commit history clean — every commit in the canonical repository was authored by a known staging identity, reviewed at a known point in time, and promoted by a deliberate operator action.
+This separation serves two functions for regulated operators. First, it makes the staging tier a genuine review boundary: promoted commits carry implicit sign-off that the operator reviewed the work before authorising the canonical push. Second, it keeps the commit history clean — every commit in the canonical repository was authored by a known staging identity, reviewed at a known point in time, and promoted by a deliberate operator action, consistent with the [[legal-and-ip-structure|squash-and-merge IP-transfer mechanic]].
 
 ## Key custody discipline
 
-All four keys reside in the operator-controlled identity directory at permissions `0600`, accessible only to the system user that owns the workspace. Session tooling reads keys from this directory; no key is copied into a repository or exported to a session environment. A pre-commit hook blocks commits containing key material, enforcing the custody rule at the technical layer rather than the policy layer.
+All four keys reside in the operator-controlled identity directory at permissions `0600`, accessible only to the system user that owns the workspace. Session tooling reads keys from this directory; no key is copied into a repository or exported to a session environment. A pre-commit hook blocks commits containing key material, enforcing the custody rule at the technical layer rather than the policy layer. The same boundary discipline extends to [[api-key-boundary-discipline|AI inference credentials]], which are held exclusively at the gateway and never at inference engines.
 
 ## See also
 
 - [[pairing-as-permission]] — the cryptographic pairing pattern that governs which nodes can connect
 - [[machine-based-auth]] — the platform's machine-based authentication protocol
+- [[api-key-boundary-discipline]] — the same key-separation discipline applied to AI inference credentials
+- [[legal-and-ip-structure]] — the IP-transfer mechanic that depends on this commit-flow separation
 - [[single-boundary-compute-discipline]] — the AI inference boundary that the same key-separation discipline enforces at the model layer

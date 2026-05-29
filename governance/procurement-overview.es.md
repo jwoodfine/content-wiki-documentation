@@ -21,7 +21,7 @@ PointSav entrega una plataforma de datos sobre hardware que el cliente posee por
 
 Cada artefacto incluye un script de arranque que levanta toda la pila en una máquina que el cliente proporciona — sin dependencia SaaS, sin inicio de sesión con el proveedor, sin API en la nube con medición. Un cliente que rescinde la relación conserva todos los registros que escribió, todos los adaptadores de IA que financió y el libro de auditoría completo de cada acción tomada sobre sus datos.
 
-La arquitectura de tres anillos de la plataforma separa la ingesta en el límite (Anillo 1), el procesamiento determinista (Anillo 2) y la inferencia de IA opcional (Anillo 3). La IA nunca escribe en el registro autoritativo; esa ruta pertenece exclusivamente a los servicios deterministas del Anillo 2. Un despliegue que excluye el Anillo 3 por completo sigue entregando toda la pila de gestión de registros de grado regulatorio.
+La [[three-ring-architecture|arquitectura de tres anillos]] de la plataforma separa la ingesta en el límite (Anillo 1), el procesamiento determinista (Anillo 2) y la inferencia de IA opcional (Anillo 3). La IA nunca escribe en el registro autoritativo; esa ruta pertenece exclusivamente a los servicios deterministas del Anillo 2. Un despliegue que excluye el Anillo 3 por completo sigue entregando toda la pila de gestión de registros de grado regulatorio.
 
 Para un comprador regulado bajo obligaciones de divulgación continua, esta arquitectura tiene una consecuencia concreta en términos de auditoría: el registro autoritativo está en hardware que el comprador controla, el libro es criptográficamente de solo anexado, y el comprador puede satisfacer la solicitud de registros de un regulador sin depender de la operación continuada del proveedor. `[ni-51-102]`
 
@@ -50,7 +50,7 @@ Por `[osc-sn-51-721]`, lo siguiente describe la trayectoria comercial planificad
 La postura de cumplimiento de la plataforma es estructural, no procedimental. El cumplimiento no se logra mediante controles de política que un administrador con errores de configuración pueda anular — se logra mediante la arquitectura del motor de almacenamiento y los límites del servicio.
 
 - **Inmutabilidad de registros.** El libro WORM satisface la Regla SEC 17a-4(f), la preservación de registros electrónicos cualificados de eIDAS y SOC 2. La modificación no está prohibida a nivel de política; está prohibida por el motor de almacenamiento, que no tiene operación de eliminación ni sobreescritura.
-- **Pista de auditoría de IA.** Cada llamada de inferencia de IA pasa por el Portero y genera una fila de auditoría en el libro local del cliente. La puerta de enlace del proveedor genera una segunda fila de auditoría simultáneamente.
+- **Pista de auditoría de IA.** Cada llamada de inferencia de IA pasa por el [[doorman-protocol|Portero]] y genera una fila de auditoría en el libro local del cliente. La puerta de enlace del proveedor genera una segunda fila de auditoría simultáneamente.
 - **Divulgación continua BCSC.** La plataforma produce registros de grado de divulgación continua como salida estructural del procesamiento del Anillo 2. Un emisor informante bajo NI 51-102 que despliega la plataforma dentro de su propio sustrato puede satisfacer las obligaciones de divulgación continua contra registros que posee y controla.
 - **Residencia de datos.** Los datos del cliente nunca salen del hardware designado del cliente excepto a través de una llamada de egreso explícita auditada en el libro.
 

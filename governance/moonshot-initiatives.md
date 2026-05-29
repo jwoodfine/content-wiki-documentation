@@ -65,7 +65,7 @@ Each moonshot targets a distinct dependency class. The following classes have op
 | `moonshot-gpu` | Cloud GPU inference services | Inference sovereignty; platform-local GPU capacity removes reliance on cloud inference APIs |
 | `moonshot-hypervisor` | External hypervisor layer | Substrate sovereignty; a verified hypervisor closes the gap between the seL4 microkernel and commodity hardware |
 | `moonshot-index` | External search and index backends | Search sovereignty; a platform-native index eliminates dependency on third-party search infrastructure |
-| `moonshot-kernel` | Commodity Linux kernel | Kernel sovereignty; the seL4 formally verified microkernel replaces the quarantined systemd/Linux dependency recorded in ADR-08 |
+| `moonshot-kernel` | Commodity Linux kernel | Kernel sovereignty; the [[sel4-microkernel-substrate|seL4 formally verified microkernel]] replaces the quarantined systemd/Linux dependency recorded in [[architecture-decisions|ADR-08]] |
 | `moonshot-network` | External network control plane | Network sovereignty; a native WireGuard-native mesh eliminates reliance on managed network services |
 | `moonshot-protocol` | Proprietary communication protocols | Protocol sovereignty; replace proprietary wire protocols with open, formally specified equivalents |
 | `moonshot-sel4-vmm` | Commodity virtual machine monitor | Verification layer; a seL4-native VMM closes the verified boundary below all guest operating systems |
@@ -80,6 +80,8 @@ Completion status of each initiative is tracked in the [[sovereign-replacement-i
 
 ## See also
 
-- [[sovereign-replacement-initiative|Sovereign Replacement Initiative]]
-- [[ontological-governance|Ontological Governance]]
-- [[verification-surveyor|Verification Surveyor]]
+- [[sovereign-replacement-initiative|Sovereign Replacement Initiative]] — governance program that coordinates these engineering efforts
+- [[sel4-microkernel-substrate]] — the formally verified microkernel that `moonshot-kernel` and `moonshot-sel4-vmm` target
+- [[architecture-decisions]] — ADR-08 records the systemd quarantine that moonshot-kernel is designed to close
+- [[ontological-governance|Ontological Governance]] — the taxonomy governance that provides nomenclature for quarantined components
+- [[verification-surveyor|Verification Surveyor]] — the audit agent that tracks completion status of each initiative

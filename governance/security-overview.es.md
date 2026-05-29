@@ -31,7 +31,7 @@ La plataforma aplica el aislamiento de inquilinos en tres capas:
 
 **Aislamiento de espacio de nombres en el Anillo 2.** Los servicios del Anillo 2 son multiinquilino mediante `moduleId`. El grafo de conocimiento y el índice de búsqueda de cada inquilino están aislados detrás de su espacio de nombres `moduleId` en cada ruta de lectura y escritura. Una consulta para el inquilino A no puede devolver registros del inquilino B.
 
-**Aislamiento de IA de límite único en el Anillo 3.** `service-slm` es el único servicio del Anillo 3. Cada solicitud de IA pasa por el Portero, que sanea los datos de salida, enruta entre tres niveles de cómputo y escribe una fila de auditoría en el libro local del cliente antes de que se realice cualquier llamada externa.
+**Aislamiento de IA de límite único en el Anillo 3.** [[service-slm]] es el único servicio del Anillo 3. Cada solicitud de IA pasa por el Portero, que sanea los datos de salida, enruta entre tres niveles de cómputo y escribe una fila de auditoría en el libro local del cliente antes de que se realice cualquier llamada externa.
 
 ## El límite del Portero
 
