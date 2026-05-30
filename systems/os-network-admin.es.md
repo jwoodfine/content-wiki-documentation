@@ -1,63 +1,88 @@
 ---
 schema: foundry-doc-v1
-title: "os-network-admin — El plano de control de flota"
+title: "OS Network Admin"
 slug: os-network-admin
+short_description: "os-network-admin es el plano de control de una Red Privada PointSav — proporciona enrutamiento de malla WireGuard, la superficie de ceremonia de unión de nodos y la aplicación del Diode Standard, sin poseer ninguna autoridad criptográfica del nivel de archivo."
 category: systems
-type: concept
-quality: complete
+type: topic
 status: active
-audience: vendor-public
 bcsc_class: public-disclosure-safe
-language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
-editor: pointsav-engineering
+language: es
+language_protocol: TRANSLATE-ES
 paired_with: os-network-admin.md
-short_description: "os-network-admin es el plano de control de una flota PointSav — una instancia por flota, gestionando el registro de emparejamientos, las reglas Diodo y la política de enrutamiento de malla. Los comandos se componen en un terminal semántico F8 y se transmiten como paquetes binarios de 16 bytes a través de la malla WireGuard."
-cites: []
+last_edited: 2026-05-30
+editor: editorial
 ---
 
-`os-network-admin` es el plano de control de una flota PointSav — una instancia por despliegue, gestionando el registro de emparejamientos, las reglas de cumplimiento del [[diode-standard|Diodo]] y la política de enrutamiento WireGuard para todos los nodos [[infrastructure-os|`os-infrastructure`]] de la flota. Los administradores componen comandos en un terminal semántico F8, donde la intención en lenguaje natural es traducida localmente por [[service-slm|`service-slm`]] a comandos binarios de 16 bytes que se transmiten simultáneamente a todos los nodos de la [[sovereign-mesh|malla]]. No hay ningún agente de mensajes central ni servicio externo en este flujo. Este artículo cubre el rol del plano de control, la arquitectura de despacho de comandos y la relación entre `os-network-admin` y los nodos `os-infrastructure` que gobierna.
+`os-network-admin` es el plano de control de una Red Privada PointSav (PPN). Se ejecuta en la máquina del administrador de red — típicamente en hardware físico en el sitio principal del operador, o dentro de un contenedor LXC en el nodo de flota local — y proporciona dos funciones: un sustrato de enrutamiento e integridad de túnel para la malla WireGuard, y una superficie de aprobación del operador para la ceremonia de unión de nodos.
 
-## El rol del plano de control
+## Posición en la pila
 
-`os-network-admin` ejecuta una instancia por flota. Sus responsabilidades son:
+`os-network-admin` lleva el prefijo `os-`, que lo marca como un componente de la capa Foundation — por debajo de la capa de aplicación, proporcionando servicios a nivel de sistema sin lógica orientada al usuario. Es un complemento de Capa 1 para `os-console`, no uno de los tres sistemas operativos de nivel de archivo (`os-totebox`, `os-console`, `os-orchestration`).
 
-| Función | Descripción |
-|---|---|
-| Registro de emparejamientos | Mantiene la lista autoritativa de entradas válidas de `service-pairing` en toda la flota; emite y revoca [[machine-based-auth|tokens fiduciarios]] vinculados al hardware |
-| Cumplimiento de reglas Diodo | Define qué flujos de comandos están permitidos entre los miembros de la flota según el [[diode-standard|Estándar Diodo]]; los cambios se propagan a todos los nodos mediante transmisión en malla |
-| Política de enrutamiento en malla | Gestiona la topología de superposición WireGuard — listas de pares, rangos de IP permitidos, calendarios de intercambio de claves |
-| Reclamaciones de flota | Acepta solicitudes de reclamación del [[genesis-protocol|Protocolo Génesis]] de nuevos nodos `os-infrastructure` que se unen a la flota |
+| Componente | Capa | Rol |
+|---|---|---|
+| `os-totebox` | Nivel de archivo | Bóveda soberana de datos por entidad |
+| `os-console` | Nivel de archivo | Terminal del operador orientada al teclado |
+| `os-orchestration` | Nivel de archivo | Agregador de datos de múltiples archivos |
+| `os-network-admin` | **Foundation** | Plano de control PPN + superficie de ceremonia |
 
-## El terminal F8 y el despacho de comandos
+Esta distinción es importante: `os-network-admin` no almacena ni procesa datos de negocio. No contiene claves de archivo, credenciales MBA ni cartuchos F-key. Es una capa de transporte segura y ciega para la infraestructura PPN — la entidad que gestiona qué nodos físicos están autorizados en la malla, no lo que se ejecuta en ellos.
 
-`os-network-admin` opera un terminal F8 — una superficie de entrada semántica controlada por teclado. Un administrador escribe la intención en lenguaje natural; `service-slm` ejecutándose localmente en el mismo nodo la traduce a un comando binario sin contactar ningún servicio externo.
+## Qué hace
 
-La secuencia de despacho:
+### Enrutamiento e integridad de túnel
 
-1. El administrador escribe la intención en el terminal F8 — por ejemplo, instruyendo al sistema que aísle un nodo perimetral específico.
-2. `service-slm` (ejecutándose en el mismo nodo `os-network-admin`) analiza la oración y produce un comando binario de dos bytes que identifica la operación y el nodo objetivo.
-3. `service-udp` transmite el paquete de comando de 16 bytes a través de la malla WireGuard en el puerto 8090.
-4. Cada nodo de la flota recibe el paquete simultáneamente. Solo el nodo destinatario actúa; los demás lo descartan.
+`os-network-admin` establece y mantiene la malla WireGuard en la interfaz `ppn0`. Gestiona la distribución del mapa de pares, supervisa la actividad del túnel y aplica las reglas del Diodo que restringen qué nodos pueden enviar comandos a qué destinos. No inspecciona el contenido del tráfico que fluye a través de los túneles.
 
-La capa de traducción es invisible en el límite del protocolo — la malla solo ve el comando binario, no la oración en lenguaje natural. El administrador solo ve el terminal F8, no una interfaz de chat.
+### Ceremonia de unión de nodos
 
-## Relación con os-infrastructure
+Cuando un nuevo nodo físico quiere unirse a la malla PPN, genera un código corto en base32 de Crockford (ocho caracteres, aproximadamente 40 bits de entropía). El operador ingresa este código en `os-network-admin`. Un intercambio CPace PAKE establece una clave de sesión compartida a través del canal de código corto; una comparación de Cadena Corta Autenticada (SAS) cierra la brecha de intermediario. Bajo esta clave, el nodo que se une envía su clave pública WireGuard, recibe un certificado firmado por la CA del clúster y el mapa de pares se distribuye automáticamente.
 
-`os-network-admin` y `os-infrastructure` están diseñados como pareja:
+La implementación mínima actual consulta el backend `service-ppn-pairing` en busca de solicitudes pendientes y las imprime en la salida estándar. La aprobación del operador se emite mediante curl:
 
-| Capa | Rol |
-|---|---|
-| `os-infrastructure` | Sustrato de cómputo — arranca en hardware, ejecuta el par WireGuard, aloja instancias de Totebox y otros SO |
-| `os-network-admin` | Plano de control — gobierna la flota, posee el registro de emparejamientos, transmite comandos |
+```bash
+PAIRING_SERVER=http://10.8.0.9:9202 ./os-network-admin
 
-Una flota mínima es una instancia de `os-network-admin` y uno o más nodos `os-infrastructure`. El plano de control no se ejecuta en el mismo nodo que el sustrato de cómputo en despliegues de producción, aunque una configuración de desarrollo en una sola máquina es posible.
+# Aprobar una unión pendiente desde otra terminal:
+curl -s -X POST http://10.8.0.9:9202/v1/node-join/approve \
+     -H 'Content-Type: application/json' \
+     -d '{"code":"XXXX-XXXX"}'
+```
+
+Se planea una TUI completa controlada por teclado — con teclas de aprobación/denegación (`a`/`d`), visualización de código QR mediante `system-pairing-codes::qr_unicode` y cuenta regresiva de vencimiento — como superficie del operador de producción.
+
+## Relación con app-network-admin
+
+`app-network-admin` es la interfaz del Terminal F8 que se ejecuta sobre `os-network-admin`. Proporciona dos superficies:
+
+- **Superficie de comandos HTTP** en el puerto 8085 — acepta la intención del operador en lenguaje natural, la enruta a través de `service-slm` para producir un comando autorizado y lo despacha a la malla
+- **Transmisión UDP a la malla** en el puerto 8090 — envía cargas útiles binarias firmadas de 16 bytes a las direcciones de pares PPN
+
+La división `os-` / `app-` sigue la convención de nomenclatura estándar Foundation/Aplicación: `os-network-admin` es el sustrato del SO; `app-network-admin` es la aplicación orientada al operador que se ejecuta sobre él.
+
+## Relación con route-network-admin
+
+`route-network-admin` es el nombre de instancia de despliegue para el nodo de administración de red en la flota del cliente. No es una base de código separada. Una entrada `route-network-admin-1` en un manifiesto de flota significa que un nodo físico en esa ubicación está ejecutando `os-network-admin` como su carga de trabajo principal.
+
+## Hardware de destino
+
+El hardware de referencia canónico es un iMac 12,1 (mediados de 2011) con un Intel Sandy Bridge i5-2400S y una NIC Broadcom 14e4:16b4. Esta máquina es especialmente adecuada como nodo de autoridad de comando: tiene VT-x de hardware real (para ejecutar VMs en la misma máquina si es necesario), una NIC Broadcom para la que `system-substrate-broadcom` proporciona el sustrato de detección de silicio, y una ubicación física estable en el sitio del operador.
+
+Para despliegues donde dedicar hardware físico no es práctico, `os-network-admin` puede ejecutarse dentro de un contenedor LXC en el nodo de flota local, con la interfaz WireGuard puenteada desde el host.
+
+## Autoridad criptográfica nula
+
+`os-network-admin` no contiene F-keys, credenciales MBA ni capacidades de carga útil. No puede leer el contenido del estado interno de las VMs. No puede aprobar el acceso a archivos. Su función es conocer qué nodos físicos están en la malla y hacer cumplir esa membresía — nada más. Esta restricción arquitectónica es intencional: mantener el plano de control de red separado del plano de datos significa que una brecha en la capa de enrutamiento no otorga acceso a los contenidos del archivo.
+
+## Disciplina del Diodo
+
+Los comandos fluyen hacia abajo: `os-network-admin` → `os-infrastructure` (capa hipervisor) → VMs. Ninguna VM puede emitir comandos de regreso a `os-network-admin`. Ningún archivo puede instruir a la malla para agregar o eliminar un nodo. Esta disciplina unidireccional es el mismo Diode standard que rige el nivel de archivo (`os-console` → `os-orchestration` → `os-totebox`).
 
 ## Véase también
 
-- [[infrastructure-os]] — los nodos de sustrato de cómputo que `os-network-admin` gobierna
-- [[os-family-overview]] — la familia de ocho SO y cómo encaja cada miembro
-- [[diode-standard]] — el protocolo que rige el flujo de comandos unidireccional a través de la flota
-- [[service-slm]] — el modelo de lenguaje semántico local que traduce los comandos
-- [[machine-based-auth]] — los pares de claves fiduciarias y el registro de emparejamientos que gestiona `os-network-admin`
-- [[deployment-patterns]] — las seis configuraciones de flota canónicas
+- [[sovereign-mesh]] — la superposición WireGuard y el protocolo de comando binario de 16 bytes
+- [[genesis-protocol]] — la secuencia de arranque autónomo que ejecuta `os-network-admin` en un nodo nuevo
+- [[machine-based-auth]] — el modelo de emparejamiento MBA que gobierna el acceso al nivel de archivo
+- [[infrastructure-os]] — la capa de hipervisor Tipo I que gestiona `os-network-admin`
+- [[diode-standard]] — la jerarquía de autoridad y las reglas de tráfico que aplica el plano de control
