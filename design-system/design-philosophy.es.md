@@ -33,6 +33,12 @@ El sustrato responde con tres inversiones estructurales:
 
 En la era de la IA 2026–2030, el sustrato de sistema de diseño de una pyme es un medio: su forma — legibilidad por máquinas, interoperabilidad sin dependencia de editor, auto-alojamiento, investigación consumible por IA — determina cómo la marca de la pyme llega a cada superficie orientada al cliente.
 
+## Diseño móvil primero y fundación Inter
+
+Cada superficie de operador que renderiza el sistema de diseño está especificada con enfoque móvil primero. La maquetación, la navegación y los componentes interactivos se definen a 375 px antes de la mejora progresiva para ventanas más amplias. Los objetivos táctiles cumplen el SC 2.5.8 de las WCAG 2.2 — mínimo 44 px × 44 px — y las interacciones no dependen de estados hover. Se aplica relleno de zona segura (`env(safe-area-inset-*)`) al cromo de la interfaz para pantallas con muesca y dynamic island.
+
+La fundación tipográfica de interfaz es **Inter** (SIL OFL 1.1) — una neo-grotesca mantenida por la comunidad, diseñada específicamente para legibilidad en pantalla, sin asociación de marca corporativa. Inter es el resultado práctico de elegir neutralidad de editor en tipografía: es la tipografía más interoperable, ampliamente disponible y optimizada para pantalla que ninguna plataforma posee. Véase [[wiki-typography-system]] para la pila tipográfica completa de la superficie wiki (Inter + Source Serif 4 + mono del sistema).
+
 ## Véase también
 
 - [[design-primitive-vocabulary]] — la capa de vocabulario de tokens: escalas de color numéricas, alias semántico y justificación de nomenclatura original de PointSav

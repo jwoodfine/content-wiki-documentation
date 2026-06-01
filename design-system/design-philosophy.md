@@ -57,6 +57,12 @@ In the AI era of 2026–2030, an SMB's design-system substrate is a medium — i
 
 The well-structured substrate IS the message the SMB sends to its implementation partners — human or AI. That is the McLuhan position the substrate operationalises.
 
+## Mobile-first and Inter foundation
+
+Every operator surface the design system renders is designed mobile-first. Layout, navigation, and interactive components are specified at 375 px before progressive enhancement for wider viewports. Touch targets meet WCAG 2.2 SC 2.5.8 — 44 px × 44 px minimum — and interactions do not rely on hover states. Safe-area padding (`env(safe-area-inset-*)`) is applied to shell chrome for notched and dynamic-island displays.
+
+The UI typography foundation is **Inter** (SIL OFL 1.1) — a community-maintained neo-grotesque designed specifically for screen readability, with no corporate brand association. Inter is the practical output of choosing editor-agnosticism in typography: it is the single most interoperable, widely-available, screen-optimised typeface that no platform owns. See [[wiki-typography-system]] for the full wiki-surface type stack (Inter + Source Serif 4 + system mono).
+
 ## Anti-patterns the substrate refuses
 
 - Storybook integration (parallel renderer; substrate owns rendering).

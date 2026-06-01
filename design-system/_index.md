@@ -17,7 +17,7 @@ paired_with: _index.es.md
 
 The design-system category covers the PointSav design system as a platform component — its foundational vocabulary, design philosophy, brand surface context, and the foundation-layer token families that the operator-facing surfaces inherit. It addresses the design system as a concept within the platform: why it exists, how it is structured, what brand identity it carries, and where the foundational token vocabulary aligns with field convention. Component implementation guides, accessibility specifications, and the working surface live in the design system repository at `design.pointsav.com`; this category supplies the architectural framing.
 
-The design system is itself one of the platform's load-bearing substrates — see [[design-system-substrate]] for the substrate framing — and inherits the same customer-ownership, machine-readability, and editor-agnostic interoperability disciplines that the rest of the platform applies to its data layers.
+The design system is itself one of the platform's load-bearing substrates — see [[design-system-substrate]] for the substrate framing — and inherits the same customer-ownership, machine-readability, and editor-agnostic interoperability disciplines that the rest of the platform applies to its data layers. Every surface the design system renders is designed mobile-first; **Inter** is the UI and heading typeface, chosen for screen legibility and the absence of corporate ownership.
 
 ## Philosophy and primitive vocabulary
 
