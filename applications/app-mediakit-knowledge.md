@@ -160,6 +160,18 @@ The trade-off is a narrower compatibility surface against a substrate-coherent p
 
 A separate sibling article ([[substrate-native-compatibility]]) covers the rationale in full.
 
+## Content federation
+
+The engine is intended to serve content from multiple git repositories through a single rendered surface, using a declarative mount manifest (`knowledge.toml`) that the operator places at the content directory root. Each mount entry names a source repository, a local mount path, and a blueprint — the schema that determines how files in that mount are validated, routed, and linked. This capability is planned; the architecture described here is the intended design, and the single-repository model is the current deployed form.
+
+*Mounts and blueprints.* A content mount is a directory subtree derived from a named git repository. Blueprints are named schemas that constrain the content a mount may contain and determine the URL pattern it occupies. Two blueprints are built in: `topic` (the standard wiki article, consuming files in the standard content-contract format) and `guide` (operational documents, rendered with a distinct chrome and excluded from the primary article index). Operators may register additional blueprints — `regional-market`, `adr`, `changelog`, and similar domain-specific schemas — as plugins when Phase 6 ships.
+
+*Per-instance isolation.* Each wiki instance reads only the mounts declared in its own `knowledge.toml`. A `documentation.pointsav.com` deployment and a `projects.woodfinegroup.com` deployment may source overlapping repositories but present entirely independent article surfaces — mount definitions are per-instance configuration, not global registry state.
+
+*Provenance and edit-routing.* Every article rendered from a declarative mount carries provenance frontmatter identifying the source repository and path. The engine's `/edit/{slug}` surface is intended to route editors back to the source repository's canonical editing path (via the `edit_url` field in the mount manifest) rather than accepting writes locally. This keeps the source-of-truth inversion intact across a federated surface: no wiki instance writes to a repository it did not originate from.
+
+Phase 6 is planned to deliver the `knowledge.toml` schema specification, blueprint plugin API, and provenance frontmatter handling. Phase 7 is planned to deliver content-addressed retrieval, `blake3`-anchored federation, and the verification machinery that connects federated content to the IVC masthead band. See [[federation-via-content-mounts]] for the pattern in depth.
+
 ## Inventions catalogue
 
 `INVENTIONS.md` at the crate root catalogues eight engine-specific inventions (count as of v0.1.29):
