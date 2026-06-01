@@ -131,6 +131,14 @@ Wikipedia muscle memory is the floor, not the ceiling. Once `app-mediakit-knowle
 
 **BCSC squiggle linting** — the editor currently enforces seven deterministic SAA rules via coloured underlines. The planned complete set includes forward-looking statement detection, Do-Not-Use vocabulary flagging, Sovereign Data Foundation current-tense detection, competitive comparison flagging, and citation-required prompts. This is built into the editing surface rather than applied as a post-publication compliance check.
 
+## Mobile-first and progressive enhancement
+
+The wiki is designed mobile-first: the layout, navigation, and table of contents render correctly and usably at a 375 px viewport before any progressive enhancement for wider screens. Desktop users receive the full sidebar-plus-content layout as an enhancement; mobile users receive the complete reading and editing experience without a stripped-down alternative.
+
+Touch target discipline follows WCAG 2.2 Success Criterion 2.5.8: all interactive elements — TOC entries, edit pencils, navigation links, toggle buttons — carry a minimum 44 px × 44 px touch target. Interactions do not rely on hover states; every feature accessible by hovering is equally accessible by tapping. Safe-area padding (`env(safe-area-inset-*)`) is applied to the shell chrome to accommodate notched and dynamic-island displays.
+
+The muscle-memory goal extends to mobile. The Wikipedia app's navigation patterns inform the mobile layout — back-to-top, swipe-between-categories, bottom-rail search — not a stripped-down "mobile version" that reads like a fallback. This is the same leapfrog principle applied to form factor: reach full Wikipedia mobile parity first, then add the differentiation layer.
+
 ## Structural positioning
 
 Incumbent wiki platforms built on hierarchical organisation models — books, chapters, spaces, folders — break the flat hyperlink graph that makes Wikipedia useful. A hierarchical wiki creates knowledge silos; a flat wiki with a category DAG creates a knowledge commons.
