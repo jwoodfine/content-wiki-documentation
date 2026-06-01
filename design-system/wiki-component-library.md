@@ -125,6 +125,6 @@ All nine components draw exclusively from the PointSav token system defined in `
 ## See also
 
 - [[wiki-dark-mode]] — light and dark colour schemes with WCAG-verified palettes and theme persistence
-- [[wiki-typography-system]] — IBM Plex Sans and IBM Plex Mono type stack used across these components
+- [[wiki-typography-system]] — Inter and Source Serif 4 type stack used across these components
 - [[design-system-substrate]] — the token and component vault these nine components draw from
 - [[app-mediakit-knowledge]] — the wiki engine that composes these components into rendered article pages

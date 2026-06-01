@@ -119,6 +119,6 @@ Los nueve componentes usan exclusivamente el sistema de tokens de PointSav defin
 ## Véase también
 
 - [[wiki-dark-mode]] — esquemas de color claro y oscuro con paletas verificadas según WCAG y persistencia de tema
-- [[wiki-typography-system]] — la pila tipográfica IBM Plex Sans e IBM Plex Mono utilizada en estos componentes
+- [[wiki-typography-system]] — la pila tipográfica Inter y Source Serif 4 utilizada en estos componentes
 - [[design-system-substrate]] — la bóveda de tokens y componentes de la que se nutren estos nueve componentes
 - [[app-mediakit-knowledge]] — el motor wiki que compone estos componentes en páginas de artículos renderizadas

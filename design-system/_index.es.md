@@ -49,7 +49,7 @@ Cómo se codifica la identidad de marca como familias de color y pilas tipográf
 El vocabulario de componentes, sistema tipográfico y paleta de modo oscuro que componen la superficie de lectura de `documentation.pointsav.com`.
 
 - [[wiki-component-library|Biblioteca de componentes wiki]] — Nueve componentes de interfaz reutilizables que componen una página completa de artículo wiki; convenciones de diseño de Wikipedia, estándares de accesibilidad actuales, sistema de tokens PointSav.
-- [[wiki-typography-system|Sistema tipográfico wiki]] — Pila tipográfica IBM Plex Sans e IBM Plex Mono, escala de encabezados y tokens de espaciado para el wiki; cobertura lingüística amplia para contenido bilingüe.
+- [[wiki-typography-system|Sistema tipográfico wiki]] — Pila tipográfica Inter y Source Serif 4, escala de encabezados y tokens de espaciado para el wiki; cobertura lingüística amplia para contenido bilingüe.
 - [[wiki-dark-mode|Modo oscuro wiki]] — Esquemas de color claro y oscuro para el wiki: paletas verificadas por WCAG y persistencia del tema mediante localStorage.
 
 ## Fundaciones relacionadas

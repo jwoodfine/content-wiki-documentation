@@ -2,41 +2,44 @@
 schema: foundry-doc-v1
 title: "Wiki typography system"
 slug: wiki-typography-system
-short_description: "IBM Plex Sans and IBM Plex Mono type stack, heading scale, and spacing tokens for the PointSav wiki."
+short_description: "Inter and Source Serif 4 type stack, heading scale, and spacing tokens for the PointSav wiki."
 category: design-system
 type: topic
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-06-01
 editor: pointsav-engineering
 paired_with: wiki-typography-system.es.md
 ---
 
 # Wiki typography system
 
-The [[app-mediakit-knowledge|PointSav wiki]]'s typographic system uses IBM Plex Sans for body prose and IBM Plex Mono for code and technical notation, built on [[design-system-substrate|the platform token system]] following the [[design-primitive-vocabulary|primitive vocabulary conventions]]. This article explains the font choice, the heading scale, the spacing tokens, and how the system achieves broad linguistic coverage for bilingual (English/Spanish) content.
+The [[app-mediakit-knowledge|PointSav wiki]]'s typographic system uses Inter for user interface elements and navigation, Source Serif 4 for body reading prose, and a system-provided monospace stack for code and technical notation, built on [[design-system-substrate|the platform token system]] following the [[design-primitive-vocabulary|primitive vocabulary conventions]]. This article explains the font choices, the heading scale, the spacing tokens, and how the system achieves broad linguistic coverage for bilingual (English/Spanish) content.
 
 ---
 
 ## Font stack
 
-**Body prose:** IBM Plex Sans (weights 400, 500, 600, 700). IBM Plex Sans is IBM's open-source typeface released under the SIL Open Font License 1.1 (SIL OFL 1.1), which permits use, modification, and redistribution without restriction. The typeface is a humanist sans-serif with high legibility at reading sizes and clear differentiation between commonly confused glyphs (l, 1, I; O, 0).
+**User interface and headings:** Inter (variable font, weight axis 100–900). Inter is a community open-source typeface designed by Rasmus Andersson, published under the SIL Open Font License 1.1 (SIL OFL 1.1), which permits use, modification, and redistribution without restriction. Inter is a neo-grotesque designed specifically for screen readability, with high legibility at small sizes and clear differentiation between commonly confused glyphs (l, 1, I; O, 0). It carries no corporate brand association and is the modern UI workhorse across the design-system field.
 
-**Code and technical notation:** IBM Plex Mono (weights 400, 500). A proportionally designed monospaced companion to IBM Plex Sans. Used for inline `code`, code blocks, command-line examples, and metadata fields (dates, identifiers).
+**Body reading prose:** Source Serif 4 (variable font, weight axis 200–900). Source Serif 4 is Adobe's open-source text typeface, published under the SIL Open Font License 1.1. It provides comfortable reading at a 68-character measure with slightly higher stroke contrast than Inter, which aids eye-tracking across long prose lines.
 
-**Fallback stack:** -apple-system, BlinkMacSystemFont, Segoe UI, Roboto (system UI sans-serif chain) for body; SFMono-Regular, Consolas, Liberation Mono for code.
+**Code and technical notation:** System-provided monospace stack — `ui-monospace`, `SFMono-Regular`, `Cascadia Code`, `Consolas`, `Liberation Mono`. No custom font file is loaded for code. The system stack covers all major platforms with zero additional network round-trip. Used for inline `code`, code blocks, command-line examples, and metadata fields (dates, identifiers).
+
+**Fallback chains:** -apple-system, BlinkMacSystemFont, Segoe UI, Roboto (system UI sans-serif) for UI contexts before Inter loads; Georgia, Times New Roman (system serif) for prose contexts before Source Serif 4 loads.
 
 ---
 
 ## Delivery
 
-IBM Plex Sans and IBM Plex Mono are available through Google Fonts, the npm package `@ibm/plex`, and direct download from the IBM Plex GitHub repository.
+Inter and Source Serif 4 are available through Google Fonts and direct download from their respective repositories. Both ship variable font files covering the full weight axis — a single variable file replaces multiple static-weight files, reducing total payload.
 
-IBM Plex Sans ships a variable font file (`IBM-Plex-Sans-Variable.woff2`) covering the full weight axis (100–700). A single variable font file replaces four separate static-weight WOFF2 files and runs approximately 60–80 KB for the Latin subset — smaller than four separate files combined.
+- **Inter variable** (`inter-var.woff2`) — Latin subset approximately 100–130 KB; the latin-ext subset, required for Spanish bilingual content, adds approximately 15–20%.
+- **Source Serif 4 variable** (`SourceSerif4Variable-Roman.woff2`) — Latin subset approximately 80–100 KB; latin-ext adds approximately 10–20%.
 
-**Self-hosting** from the deployment's `/static/fonts/` directory is the preferred delivery method. No requests reach external font CDNs, which protects reader privacy. The Latin subset is the minimum; the latin-ext subset, which adds accented characters required for Spanish bilingual content, adds approximately 10–20% to file size.
+**Self-hosting** from the deployment's `/static/fonts/` directory is the preferred delivery method. No requests reach external font CDNs, which protects reader privacy.
 
-**`font-display: swap`** prevents invisible-text flash during font load. The fallback system font renders immediately; IBM Plex swaps in when the download completes. For a text-heavy wiki, immediate readability takes precedence over font-swap layout shift.
+**`font-display: swap`** prevents invisible-text flash during font load. The fallback system font renders immediately; Inter and Source Serif 4 swap in when their downloads complete. For a text-heavy wiki, immediate readability takes precedence over font-swap layout shift.
 
 ---
 
@@ -50,7 +53,7 @@ IBM Plex Sans ships a variable font file (`IBM-Plex-Sans-Variable.woff2`) coveri
 | H4 | `--ps-wiki-text-h4` | 1.125 rem | 19.125 px | Minor heading |
 | Body | `--ps-wiki-font-size-base` | 1.0625 rem | 17 px | Running prose |
 
-**Base:** 106.25% root font size (17 px) — slightly larger than the 16 px browser default for improved readability at a 65-character measure on desktop.
+**Base:** 106.25% root font size (17 px) — slightly larger than the 16 px browser default for improved readability at a 68-character measure on desktop. Headings and navigation labels render in Inter; body prose renders in Source Serif 4.
 
 ---
 
@@ -58,10 +61,10 @@ IBM Plex Sans ships a variable font file (`IBM-Plex-Sans-Variable.woff2`) coveri
 
 | Property | Value | Token |
 |---|---|---|
-| Measure (max-width) | 65 ch | `--ps-wiki-measure` |
+| Measure (max-width) | 68 ch | `--ps-wiki-measure` |
 | Body line-height | 1.6 | `--ps-wiki-line-height-body` |
 
-65 characters per line is the typographic optimum for sustained reading. A 1.6 line-height at 17 px base gives 27.2 px leading, matching the spacing rhythm of Wikipedia's body text.
+68 characters per line is the typographic optimum for sustained reading with a text-weight serifed face. A 1.6 line-height at 17 px base gives 27.2 px leading, matching the spacing rhythm of Wikipedia's body text.
 
 ---
 
@@ -70,21 +73,24 @@ IBM Plex Sans ships a variable font file (`IBM-Plex-Sans-Variable.woff2`) coveri
 All values are CSS custom properties defined on `:root` in `dist/tokens.css`:
 
 ```css
---ps-wiki-font-body: 'IBM Plex Sans', -apple-system, …;
---ps-wiki-font-mono: 'IBM Plex Mono', 'SFMono-Regular', …;
+--ps-wiki-font-ui:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+--ps-wiki-font-prose: 'Source Serif 4', 'Georgia', 'Times New Roman', serif;
+--ps-wiki-font-mono:  ui-monospace, 'SFMono-Regular', 'Cascadia Code', 'Consolas',
+                      'Liberation Mono', monospace;
 --ps-wiki-font-size-base:   1.0625rem;
 --ps-wiki-line-height-body: 1.6;
---ps-wiki-measure:          65ch;
+--ps-wiki-measure:          68ch;
 --ps-wiki-text-h1: 2.25rem;
 --ps-wiki-text-h2: 1.75rem;
 --ps-wiki-text-h3: 1.375rem;
 --ps-wiki-text-h4: 1.125rem;
 
 /* Short-form aliases used by wiki templates */
---font-sans:    var(--ps-wiki-font-body);
+--font-ui:      var(--ps-wiki-font-ui);
+--font-prose:   var(--ps-wiki-font-prose);
 --font-mono:    var(--ps-wiki-font-mono);
 --leading-body: 1.6;
---measure:      65ch;
+--measure:      68ch;
 --text-h1:      var(--ps-wiki-text-h1);
 --text-h2:      var(--ps-wiki-text-h2);
 --text-h3:      var(--ps-wiki-text-h3);
