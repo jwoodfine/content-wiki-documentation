@@ -24,8 +24,8 @@ cites: []
 
 | Superficie | Motor | Rol |
 |---|---|---|
-| [[app-mediakit-marketing\|`app-mediakit-marketing`]] | Motor de sitio estático con capa de caché en Rust | Páginas públicas y páginas de relaciones con inversores |
-| [[app-mediakit-knowledge\|`app-mediakit-knowledge`]] | Motor de wiki Markdown con almacenamiento conforme al contrato de contenido | Wiki corporativa, wiki de proyectos, wiki de documentación |
+| `app-mediakit-marketing` | Motor de sitio estático con capa de caché en Rust | Páginas públicas y páginas de relaciones con inversores |
+| `app-mediakit-knowledge` | Motor de wiki Markdown con almacenamiento conforme al contrato de contenido | Wiki corporativa, wiki de proyectos, wiki de documentación |
 | `app-mediakit-distribution` | Motor de feeds de cumplimiento basado en envío | Comunicados de prensa, presentaciones regulatorias, comentarios ejecutivos |
 
 ## Por qué FreeBSD

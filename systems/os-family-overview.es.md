@@ -22,14 +22,14 @@ PointSav construye ocho sistemas operativos de propósito específico que compar
 
 | SO | Rol | Operado por |
 |---|---|---|
-| [[console-os\|`os-console`]] | Terminal humano universal — el Libro Mayor de Comandos | El operador en el teclado |
-| [[totebox-os\|`os-totebox`]] | Bóveda soberana y host de servicios — el archivo de datos | Una entidad (persona, corporación, propiedad) |
-| [[os-orchestration\|`os-orchestration`]] | Agregador de flota — vista multi-archivo para operadores comerciales | Administrador empresarial |
-| [[infrastructure-os\|`os-infrastructure`]] | Sustrato de cómputo que aloja los demás | Administrador de flota |
-| [[os-network-admin\|`os-network-admin`]] | Plano de control de red — enrutamiento, registro de emparejamientos, política de malla | Arquitecto de red |
-| [[mediakit-os\|`os-mediakit`]] | Dispositivo web público — marketing, wiki, sala de prensa de cumplimiento | Emisor Informante o PYME |
-| [[os-privategit\|`os-privategit`]] | Hosting soberano de código fuente y diseño | PointSav interno y cliente |
-| [[os-workplace\|`os-workplace`]] | Escritorio soberano con aplicaciones nativas en Rust | Comunidad y cliente PYME |
+| `os-console` | Terminal humano universal — el Libro Mayor de Comandos | El operador en el teclado |
+| `os-totebox` | Bóveda soberana y host de servicios — el archivo de datos | Una entidad (persona, corporación, propiedad) |
+| `os-orchestration` | Agregador de flota — vista multi-archivo para operadores comerciales | Administrador empresarial |
+| `os-infrastructure` | Sustrato de cómputo que aloja los demás | Administrador de flota |
+| `os-network-admin` | Plano de control de red — enrutamiento, registro de emparejamientos, política de malla | Arquitecto de red |
+| `os-mediakit` | Dispositivo web público — marketing, wiki, sala de prensa de cumplimiento | Emisor Informante o PYME |
+| `os-privategit` | Hosting soberano de código fuente y diseño | PointSav interno y cliente |
+| `os-workplace` | Escritorio soberano con aplicaciones nativas en Rust | Comunidad y cliente PYME |
 
 ## Por qué ocho, y no uno
 
