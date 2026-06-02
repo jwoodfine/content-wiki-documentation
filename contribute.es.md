@@ -28,11 +28,11 @@ Principios clave:
 
 ## Qué contribuir
 
-**Nuevos artículos** deben cubrir una de las diez categorías documentadas en este wiki — arquitectura, sustrato, patrones, sistemas, servicios, aplicaciones, gobierno, infraestructura, referencia o sistema de diseño. Consulte el [[all-pages|índice de todas las páginas]] y la página de [[wanted|artículos solicitados]] antes de proponer un tema que pueda existir ya.
+**Nuevos artículos** deben cubrir una de las diez categorías documentadas en este wiki — arquitectura, sustrato, patrones, sistemas, servicios, aplicaciones, gobierno, infraestructura, referencia o sistema de diseño. Utilice la búsqueda del sitio para verificar si el tema ya existe antes de proponer un artículo nuevo.
 
 **Correcciones** a artículos existentes son las contribuciones de mayor valor. Si una afirmación técnica es inexacta, está desactualizada o está insuficientemente especificada, envíe una corrección con el texto corregido y el fundamento del cambio.
 
-**Traducciones** (español) de artículos existentes en inglés se rastrean en el [[all-pages|índice de todas las páginas]]. Cada artículo en inglés debería tener un fichero hermano `.es.md` emparejado.
+**Traducciones** (español) de artículos existentes en inglés siguen la convención de emparejamiento bilingüe. Cada artículo en inglés debería tener un fichero hermano `.es.md` emparejado.
 
 ## Cómo enviar
 

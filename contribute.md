@@ -27,11 +27,11 @@ Key principles:
 
 ## What to contribute
 
-**New articles** should cover one of the ten categories documented in this wiki — architecture, substrate, patterns, systems, services, applications, governance, infrastructure, reference, or design-system. Check the [[all-pages|all-pages index]] and the [[wanted|wanted articles]] page before proposing a topic that may already exist.
+**New articles** should cover one of the ten categories documented in this wiki — architecture, substrate, patterns, systems, services, applications, governance, infrastructure, reference, or design-system. Use the site search to check whether a topic already exists before proposing a new article.
 
 **Corrections** to existing articles are the highest-value contributions. If a technical claim is inaccurate, out of date, or underspecified, submit a correction with the corrected text and the basis for the change.
 
-**Translations** (Spanish) of existing English articles are tracked under the [[all-pages|all-pages index]]. Each English article should have a paired `.es.md` sibling.
+**Translations** (Spanish) of existing English articles follow the bilingual pairing convention. Each English article should have a paired `.es.md` sibling.
 
 ## Slug discipline
 
