@@ -24,8 +24,8 @@ cites: []
 
 | Surface | Engine | Role |
 |---|---|---|
-| [[app-mediakit-marketing\|`app-mediakit-marketing`]] | Stripped static site engine with a Rust cache layer | Public landing pages and investor-relations pages |
-| [[app-mediakit-knowledge\|`app-mediakit-knowledge`]] | Markdown wiki engine with content-contract-conforming storage | Corporate wiki, project wiki, documentation wiki |
+| [[app-mediakit-marketing|`app-mediakit-marketing`]] | Stripped static site engine with a Rust cache layer | Public landing pages and investor-relations pages |
+| [[app-mediakit-knowledge|`app-mediakit-knowledge`]] | Markdown wiki engine with content-contract-conforming storage | Corporate wiki, project wiki, documentation wiki |
 | `app-mediakit-distribution` | Push-based compliance feed engine | Press releases, regulatory filings, executive commentary |
 
 ## Why FreeBSD
