@@ -212,7 +212,7 @@ Five capabilities are absent from every currently shipping commercial BIM platfo
 
 3. **Vendor-obsolescence-survivable BIM.** A building lives 50–100 years. A software subscription lives until the vendor changes its pricing model. The PointSav archive, written in IFC-SPF + YAML + SVG + glTF, will be readable in 2076 by tools that do not yet exist.
 
-4. **IoT integration without cloud intermediary.** A PointSav [[os-totebox|ToteboxOS]] node ingests BACnet / KNX / MQTT sensor data directly into the archive via a local broker — the data never leaves the owner's premises unless the owner chooses to send it.
+4. **IoT integration without cloud intermediary.** A PointSav [[totebox-os|ToteboxOS]] node ingests BACnet / KNX / MQTT sensor data directly into the archive via a local broker — the data never leaves the owner's premises unless the owner chooses to send it.
 
 5. **BIM + lease + financial ledger in one portable archive.** A PropertyArchive holding a building's geometry, lease register, financial ledger, and maintenance history in a single owner-controlled archive is architecturally impossible for any multi-tenant shared platform. For a property owner, these are not four datasets — they are one record about one asset. The [[customer-owned-graph-ip|customer-owned graph]] principle means the record belongs to the property owner, not to any platform vendor.
 

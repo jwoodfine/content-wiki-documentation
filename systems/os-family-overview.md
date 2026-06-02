@@ -22,14 +22,14 @@ PointSav builds eight purpose-built operating systems that share a common [[sel4
 
 | OS | Role | Operated by |
 |---|---|---|
-| [[console-os|`os-console`]] | Universal human terminal — the Command Ledger | The operator at the keyboard |
-| [[totebox-os|`os-totebox`]] | Sovereign vault and service host — the data archive | An entity (person, corporation, property) |
-| [[os-orchestration|`os-orchestration`]] | Fleet aggregator — multi-archive view for commercial operators | Enterprise administrator |
-| [[infrastructure-os|`os-infrastructure`]] | Compute substrate that hosts the others | Fleet administrator |
-| [[os-network-admin|`os-network-admin`]] | Network control plane — routing, pairing registry, mesh policy | Network architect |
-| [[mediakit-os|`os-mediakit`]] | Public web appliance — marketing, wiki, compliance newsroom | Reporting Issuer or SMB |
-| [[os-privategit|`os-privategit`]] | Sovereign source and design hosting | PointSav internal and customer |
-| [[os-workplace|`os-workplace`]] | Sovereign desktop with native Rust apps | Community and SMB customer |
+| `os-console` | Universal human terminal — the Command Ledger | The operator at the keyboard |
+| `os-totebox` | Sovereign vault and service host — the data archive | An entity (person, corporation, property) |
+| `os-orchestration` | Fleet aggregator — multi-archive view for commercial operators | Enterprise administrator |
+| `os-infrastructure` | Compute substrate that hosts the others | Fleet administrator |
+| `os-network-admin` | Network control plane — routing, pairing registry, mesh policy | Network architect |
+| `os-mediakit` | Public web appliance — marketing, wiki, compliance newsroom | Reporting Issuer or SMB |
+| `os-privategit` | Sovereign source and design hosting | PointSav internal and customer |
+| `os-workplace` | Sovereign desktop with native Rust apps | Community and SMB customer |
 
 ## Why eight, not one
 
