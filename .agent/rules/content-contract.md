@@ -95,6 +95,10 @@ render, but metadata is empty.
 | `last_edited` | YYYY-MM-DD | Date of last meaningful edit. |
 | `editor` | string | Identity of last editor (e.g. `pointsav-engineering`). |
 | `status` | enum | `stable` (default), `pre-build`, `draft`. Kebab-case. |
+| `aliases` | list | Old slugs that redirect to this article. Once published, never remove an alias. See `naming-convention.md` §8. |
+| `source_repo` | string | Declarative-mount only (Phase 6 planned). Remote URL of the source git repository the engine fetched this article from. Editorially authored articles do not carry this field. |
+| `source_path` | string | Declarative-mount only (Phase 6 planned). File path within the source repository. |
+| `edit_url` | string | Declarative-mount only (Phase 6 planned). URL the engine renders as the "edit this page" link for mounted articles — routes editors to the source repository rather than accepting local writes. |
 | `references` | list | See §6. Only cited entries render into the bibliography. |
 
 ### Examples

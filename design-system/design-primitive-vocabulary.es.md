@@ -40,5 +40,5 @@ Un token nombrado por familia cromática con los valores exactos de un proveedor
 ## Véase también
 
 - [[design-philosophy]] — las tres inversiones estructurales que motivan las decisiones de diseño del sustrato
-- [[wiki-typography-system]] — la pila tipográfica IBM Plex construida sobre estas convenciones de tokens
+- [[wiki-typography-system]] — la pila tipográfica Inter y Source Serif 4 construida sobre estas convenciones de tokens
 - [[wiki-component-library]] — nueve componentes del wiki que consumen las capas de tokens descritas aquí

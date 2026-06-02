@@ -79,7 +79,7 @@ The structural patterns are field-shared; the literal tokens are not.
 ## See also
 
 - [[design-philosophy]] — the three structural inversions that motivate the substrate's design choices
-- [[wiki-typography-system]] — the IBM Plex type stack built on these token conventions
+- [[wiki-typography-system]] — the Inter and Source Serif 4 type stack built on these token conventions
 - [[wiki-component-library]] — nine wiki components that consume the token layers described here
 
 ## References

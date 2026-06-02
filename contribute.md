@@ -33,6 +33,15 @@ Key principles:
 
 **Translations** (Spanish) of existing English articles are tracked under the [[all-pages|all-pages index]]. Each English article should have a paired `.es.md` sibling.
 
+## Slug discipline
+
+Article filenames are slugs — they are permanent once published. Two rules govern naming:
+
+- **No legacy prefixes.** Do not name new articles `topic-foo.md`, `guide-foo.md`, or `research-foo.md`. Free-standing concept articles use plain kebab slugs (`foo-bar.md`). Nomenclature Matrix entity-type prefixes (`os-*`, `service-*`, `app-*`, `sys-adr-*`) remain required for their entity types.
+- **Zero dead links.** Every `[[wikilink]]` in a committed article must resolve to a published article or a `status: stub` placeholder. If a target article does not yet exist, create a one-sentence stub, or remove the link. See `naming-convention.md` §5.1 for the full rule.
+
+Full naming rules: [`.agent/rules/naming-convention.md`](.agent/rules/naming-convention.md).
+
 ## How to submit
 
 Submit contributions as pull requests to the `pointsav/media-knowledge-documentation` repository on GitHub.

@@ -42,6 +42,16 @@ El motor incluye un cromo deliberadamente reconocible para los lectores de Wikip
 
 Los añadidos más allá de Wikipedia incluyen insignias de citas junto a referencias `[citation-id]`, un banner de información prospectiva cuando el frontmatter del artículo establece `forward_looking: true`, y una banda de encabezado IVC de verificación (Phase 7 está planificada para añadir la maquinaria de verificación real).
 
+## Federación de contenido
+
+El motor está planificado para servir contenido desde múltiples repositorios git a través de una única superficie renderizada, mediante un manifiesto declarativo de montaje (`knowledge.toml`) que el operador coloca en la raíz del directorio de contenido. Cada entrada de montaje nombra un repositorio fuente, una ruta de montaje local y un plano — el esquema que determina cómo se validan, enrutan y enlazan los archivos en ese montaje. Esta capacidad está planificada; la arquitectura descrita aquí es el diseño previsto, y el modelo de repositorio único es la forma actualmente desplegada.
+
+Los montajes son subárboles de directorio derivados de repositorios git nombrados. Los planos son esquemas nombrados que restringen el contenido que puede contener un montaje y determinan el patrón de URL que ocupa. Dos planos son integrados: `topic` (el artículo wiki estándar) y `guide` (documentos operacionales, renderizados con un cromo diferenciado y excluidos del índice de artículos principal). Los operadores podrán registrar planos adicionales — `regional-market`, `adr`, `changelog` y esquemas especializados similares — como complementos cuando la Fase 6 esté disponible.
+
+Cada instancia wiki lee sólo los montajes que declara su propio `knowledge.toml`. La configuración de montaje es por instancia, no estado de registro global. Cada artículo renderizado desde un montaje declarativo lleva metadatos de procedencia que identifican el repositorio fuente y la ruta, con enrutamiento de edición de vuelta al repositorio fuente canónico — manteniendo intacta la inversión de la fuente de verdad en toda la superficie federada.
+
+La Fase 6 está planificada para entregar la especificación del esquema `knowledge.toml` y la API de plugin de planos. La Fase 7 está planificada para la recuperación con direccionamiento por contenido y la federación anclada en `blake3`. Véase [[federation-via-content-mounts]] para el patrón en profundidad.
+
 ## Inventario de inventos
 
 `INVENTIONS.md` en la raíz del crate cataloga ocho inventos específicos del motor (conteo a la fecha de v0.1.29): inversión de la fuente de verdad, compatibilidad nativa del sustrato, Autor Constitucionalmente Restringido (CCA), Cita de Verificabilidad de Información (IVC, planificado Fase 7), Prestaciones Autorizadas por el Sustrato (SAA), esquema de URL `verify://` (planificado Fase 7), el relé WebSocket de paso, y el conjunto de superficie API nativa del sustrato.

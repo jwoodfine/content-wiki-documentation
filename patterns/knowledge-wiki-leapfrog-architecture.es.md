@@ -50,6 +50,14 @@ Una vez alcanzada la paridad con Wikipedia, se prevé añadir tres primitivas de
 
 **Editor con integración de IA** — el editor CodeMirror 6 incluye un acceso directo de tres teclas planificado para llamar a `app-orchestration-command` vía el proxy Doorman. Actualmente son endpoints 501 en espera de la operacionalización de service-slm.
 
+## Diseño móvil primero y mejora progresiva
+
+El wiki está diseñado con enfoque móvil primero: la maquetación, la navegación y la tabla de contenidos se renderizan de forma correcta y usable en una ventana de 375 px antes de cualquier mejora progresiva para pantallas más amplias. Los usuarios de escritorio reciben la maquetación completa de barra lateral más contenido como mejora; los usuarios de móvil reciben la experiencia completa de lectura y edición sin una alternativa reducida.
+
+La disciplina de área táctil sigue el Criterio de Éxito 2.5.8 de las WCAG 2.2: todos los elementos interactivos — entradas del índice, lápices de edición, enlaces de navegación, botones de alternancia — llevan un área táctil mínima de 44 px × 44 px. Las interacciones no dependen de estados hover; toda funcionalidad accesible por hover es igualmente accesible por toque. Se aplica relleno de zona segura (`env(safe-area-inset-*)`) al cromo del contorno para acomodar pantallas con muesca y dynamic island.
+
+El objetivo de memoria muscular se extiende al móvil. Los patrones de navegación de la aplicación Wikipedia informan la maquetación móvil — volver arriba, deslizar entre categorías, búsqueda en barra inferior — no una "versión móvil" reducida que parezca un recurso de emergencia. Es el mismo principio leapfrog aplicado al factor de forma: alcanzar primero la paridad completa con Wikipedia móvil y luego añadir la capa diferenciadora.
+
 ## Véase también
 
 - [[app-mediakit-knowledge]] — descripción de la aplicación, configuración de despliegue y hoja de ruta por fases

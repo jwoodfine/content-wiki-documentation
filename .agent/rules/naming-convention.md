@@ -176,6 +176,7 @@ Extends `content-contract.md` §3.
 | Plain slug | For concepts not covered by a Nomenclature prefix: `three-layer-stack`, `capability-based-security`, `glossary`, `style-guide` |
 | Uniqueness | Globally unique across all categories (the wikilink resolver is flat) |
 | Immortality | A published slug is never changed. Renames happen via redirects (see §8), not mutation. |
+| Legacy prefix prohibition | Do not use `topic-`, `guide-`, or `research-` as a standalone prefix in new wiki article slugs. These patterns are a legacy era artifact. Entity-type prefixes from the Nomenclature Matrix (`os-*`, `service-*`, `app-*`, `sys-adr-*`, `fleet-*`) remain correct and required. |
 
 **Why entity prefixes are kept.** The workspace Nomenclature
 Matrix assigns prefixes to Matrix-listed entity types. Preserving
@@ -184,6 +185,26 @@ documenting and the slug self-disambiguating (no `email.md` that
 could mean the service, the app feature, or the protocol). Stripe-
 style docs do not prefix because their platform has a broader
 public taxonomy; PointSav's is closed and Matrix-defined.
+
+## 5.1 Zero-dead-links discipline
+
+Every wikilink `[[slug]]` in a committed article must resolve to a published article or a `status: stub` placeholder. Red links in editorial drafts are acceptable; red links in committed `status: active` articles are defects.
+
+Fix options: (a) create the target as a `status: stub` article with a one-sentence body, or (b) remove the link if the target article is not planned. The `/wanted` route (Phase 4 planned) will surface all unresolved wikilinks automatically, sorted by inbound-link count.
+
+Legacy `topic-*` slugs that exist as files but lack `aliases:` frontmatter are not dead links — they resolve. The legacy prefix prohibition applies to new articles; existing files are covered by the alias pass (see §13 Decision #8).
+
+## 5.2 TOPIC↔GUIDE cross-link rails
+
+TOPICs (wiki articles in category directories) and GUIDEs (operational documents in `woodfine-fleet-deployment`) are distinct surfaces and use different link conventions.
+
+| Direction | Correct form | Incorrect form |
+|---|---|---|
+| TOPIC → TOPIC | `[[slug]]` or `[[slug\|Display text]]` | Do not use full URLs for wiki-internal links |
+| TOPIC → GUIDE | Reference by name in prose only: *"see the guide-foo operational guide"* | Do not use `[[slug]]` — GUIDEs are not in the wiki slug namespace |
+| GUIDE → TOPIC | Full URL: `https://documentation.pointsav.com/category/slug` | Do not use wikilink syntax; GUIDEs are plain Markdown |
+
+The rule exists because the wiki's wikilink resolver is flat across all category directories. GUIDEs live in a separate repository; they do not exist as slugs the resolver can find. A `[[guide-foo]]` wikilink in a TOPIC would always render as a red link.
 
 ## 6. Proposed front-matter schema (extends `content-contract.md` §4)
 

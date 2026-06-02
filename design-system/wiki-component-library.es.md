@@ -110,6 +110,14 @@ Panel de navegación lateral que se desliza hacia dentro en dispositivos compact
 
 ---
 
+## Disciplina móvil
+
+Los nueve componentes están diseñados con enfoque móvil primero frente a una ventana de referencia de 375 px. Las tipografías Inter (interfaz y encabezados) y Source Serif 4 (prosa de cuerpo) se cargan como fuentes variables mediante `font-display: swap`; las fuentes del sistema de respaldo se renderizan inmediatamente en conexiones lentas — véase [[wiki-typography-system]].
+
+La disciplina de área táctil se aplica a todos los elementos interactivos: botones de activación, entradas del índice, lápices de edición, enlaces de paginación, controles de alternancia y destinos de cierre de modal tienen cada uno un área táctil mínima de 44 px × 44 px (WCAG 2.2 SC 2.5.8). Ninguna interacción depende del estado hover — cada funcionalidad accesible por hover (vista previa de página, tooltip de cita, popover de insignia de calidad) se degrada a un equivalente activado por toque.
+
+El relleno de zona segura (`env(safe-area-inset-*)`) se aplica al cromo del contorno del componente `wiki-drawer-mobile-nav` (botón de activación y región de pie de página) para acomodar pantallas con muesca y dynamic island. Las columnas de contenido no aplican insets de zona segura; sólo los elementos de cromo que se sitúan en el borde de la pantalla lo hacen.
+
 ## Dependencia de tokens
 
 Los nueve componentes usan exclusivamente el sistema de tokens de PointSav definido en `dist/tokens.css`. Ningún componente introduce valores brutos de color o dimensión. Las nuevas páginas y plantillas wiki incorporan componentes sin añadir nuevas variables CSS.
@@ -119,6 +127,6 @@ Los nueve componentes usan exclusivamente el sistema de tokens de PointSav defin
 ## Véase también
 
 - [[wiki-dark-mode]] — esquemas de color claro y oscuro con paletas verificadas según WCAG y persistencia de tema
-- [[wiki-typography-system]] — la pila tipográfica IBM Plex Sans e IBM Plex Mono utilizada en estos componentes
+- [[wiki-typography-system]] — la pila tipográfica Inter y Source Serif 4 utilizada en estos componentes
 - [[design-system-substrate]] — la bóveda de tokens y componentes de la que se nutren estos nueve componentes
 - [[app-mediakit-knowledge]] — el motor wiki que compone estos componentes en páginas de artículos renderizadas

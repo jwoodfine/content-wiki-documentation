@@ -18,7 +18,7 @@ short_description: "El sistema de diseño de PointSav como componente de la plat
 
 La categoría de sistema de diseño abarca el sistema de diseño de PointSav como componente de la plataforma — su vocabulario fundamental, filosofía de diseño, contexto de superficie de marca y las familias de tokens de la capa de fundación que heredan las superficies orientadas al operador. Trata el sistema de diseño como concepto dentro de la plataforma: por qué existe, cómo está estructurado, qué identidad de marca porta y dónde se alinea el vocabulario de tokens fundacionales con la convención del campo. Las guías de implementación de componentes, las especificaciones de accesibilidad y la superficie de trabajo se encuentran en el repositorio del sistema de diseño en `design.pointsav.com`; esta categoría aporta el marco arquitectónico.
 
-El sistema de diseño es en sí mismo uno de los sustratos portantes de la plataforma — véase [[design-system-substrate|sustrato del sistema de diseño]] para el marco de sustrato — y hereda las mismas disciplinas de propiedad del cliente, legibilidad por máquina e interoperabilidad agnóstica al editor que el resto de la plataforma aplica a sus capas de datos.
+El sistema de diseño es en sí mismo uno de los sustratos portantes de la plataforma — véase [[design-system-substrate|sustrato del sistema de diseño]] para el marco de sustrato — y hereda las mismas disciplinas de propiedad del cliente, legibilidad por máquina e interoperabilidad agnóstica al editor que el resto de la plataforma aplica a sus capas de datos. Cada superficie que renderiza el sistema de diseño está especificada con enfoque móvil primero; **Inter** es la tipografía de interfaz de usuario y encabezados, elegida por su legibilidad en pantalla y la ausencia de propiedad corporativa.
 
 ## Filosofía y vocabulario primitivo
 
@@ -49,7 +49,7 @@ Cómo se codifica la identidad de marca como familias de color y pilas tipográf
 El vocabulario de componentes, sistema tipográfico y paleta de modo oscuro que componen la superficie de lectura de `documentation.pointsav.com`.
 
 - [[wiki-component-library|Biblioteca de componentes wiki]] — Nueve componentes de interfaz reutilizables que componen una página completa de artículo wiki; convenciones de diseño de Wikipedia, estándares de accesibilidad actuales, sistema de tokens PointSav.
-- [[wiki-typography-system|Sistema tipográfico wiki]] — Pila tipográfica IBM Plex Sans e IBM Plex Mono, escala de encabezados y tokens de espaciado para el wiki; cobertura lingüística amplia para contenido bilingüe.
+- [[wiki-typography-system|Sistema tipográfico wiki]] — Pila tipográfica Inter y Source Serif 4, escala de encabezados y tokens de espaciado para el wiki; cobertura lingüística amplia para contenido bilingüe.
 - [[wiki-dark-mode|Modo oscuro wiki]] — Esquemas de color claro y oscuro para el wiki: paletas verificadas por WCAG y persistencia del tema mediante localStorage.
 
 ## Fundaciones relacionadas

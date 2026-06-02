@@ -63,6 +63,8 @@ Theme preference is stored in `localStorage` under the key `ps-theme`. On each p
 
 An explicit user choice stored in `localStorage` overrides the operating-system preference (`prefers-color-scheme`). If no choice has been stored, the OS preference is honoured.
 
+On mobile, `prefers-color-scheme` is the primary trigger — most mobile readers rely on their OS setting and never encounter the manual toggle. The toggle component is the progressive-enhancement layer for readers who want to override. The `<meta name="color-scheme" content="light dark">` declaration in the `<head>` prevents the browser from drawing a white flash before the inline script reads `localStorage`.
+
 ---
 
 ## Toggle component

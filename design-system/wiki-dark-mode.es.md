@@ -48,6 +48,8 @@ La preferencia de tema se almacena en `localStorage` bajo la clave `ps-theme`. E
 
 La preferencia explícita del usuario almacenada en `localStorage` prevalece sobre la preferencia del sistema operativo (`prefers-color-scheme`). Si no se ha almacenado ninguna preferencia, se respeta la configuración del sistema.
 
+En móvil, `prefers-color-scheme` es el disparador principal — la mayoría de lectores en móvil depende de la configuración del sistema operativo y nunca accede al botón de alternancia manual. El componente de alternancia es la capa de mejora progresiva para los lectores que desean anular esa configuración. La declaración `<meta name="color-scheme" content="light dark">` en el `<head>` evita que el navegador muestre un destello blanco antes de que el script en línea lea `localStorage`.
+
 ---
 
 ## Componente de alternancia

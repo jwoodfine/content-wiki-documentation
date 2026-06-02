@@ -116,6 +116,14 @@ The `inert` attribute is natively supported in Chrome 102+, Firefox 112+, and Sa
 
 ---
 
+## Mobile discipline
+
+All nine components are designed mobile-first against a 375 px reference viewport. The Inter typeface (UI and headings) and Source Serif 4 (body prose) are loaded as variable fonts via `font-display: swap`; fallback system fonts render immediately on slow connections — see [[wiki-typography-system]].
+
+Touch-target discipline applies across all interactive elements: trigger buttons, TOC entries, edit pencils, pagination links, toggle controls, and modal close targets each carry a 44 px × 44 px minimum touch target (WCAG 2.2 SC 2.5.8). No interaction depends on hover state — every hover affordance (page preview, citation tooltip, quality-badge popover) degrades to a tap-triggered equivalent.
+
+Safe-area padding (`env(safe-area-inset-*)`) is applied to the shell chrome (`wiki-drawer-mobile-nav` trigger and footer region) to accommodate notched and dynamic-island displays. Content columns do not apply safe-area insets; only chrome elements that sit at the screen edge do.
+
 ## Token dependency
 
 All nine components draw exclusively from the PointSav token system defined in `dist/tokens.css`. No component introduces raw colour or dimension values. New wiki pages and templates add components without introducing new CSS variables.
@@ -125,6 +133,6 @@ All nine components draw exclusively from the PointSav token system defined in `
 ## See also
 
 - [[wiki-dark-mode]] — light and dark colour schemes with WCAG-verified palettes and theme persistence
-- [[wiki-typography-system]] — IBM Plex Sans and IBM Plex Mono type stack used across these components
+- [[wiki-typography-system]] — Inter and Source Serif 4 type stack used across these components
 - [[design-system-substrate]] — the token and component vault these nine components draw from
 - [[app-mediakit-knowledge]] — the wiki engine that composes these components into rendered article pages
