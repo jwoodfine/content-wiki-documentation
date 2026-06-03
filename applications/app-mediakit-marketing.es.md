@@ -1,16 +1,18 @@
 ---
 schema: foundry-doc-v1
 title: "Aplicación de marketing MediaKit"
-slug: app-mediakit-marketing.es
+slug: app-mediakit-marketing
 category: applications
-type: topic
-quality: complete
-short_description: "app-mediakit-marketing sirve páginas de inicio de marketing multi-inquilino desde un único binario Rust compilado estáticamente — sin PHP, sin MySQL, sin infraestructura de plugins — preservando al mismo tiempo la memoria muscular de WordPress.org en la superficie de URL y navegación orientada al operador."
+type: concept
+quality: needs-update
+short_description: "app-mediakit-marketing es un servidor web en Rust que entrega sitios de marketing usando el vocabulario de WordPress sobre una arquitectura soberana de archivos planos. Dos despliegues activos sirven home.woodfinegroup.com y home.pointsav.com."
 status: active
-bcsc_class: vendor-public
+bcsc_class: no-disclosure-implication
+language_protocol: PROSE-TOPIC
 last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: app-mediakit-marketing.md
+update_note: "EN sibling updated 2026-06-01 with expanded content (Background, WORM-ledger, Roadmap, Deployment pattern). ES adaptation refresh pending."
 ---
 
 `app-mediakit-marketing` sirve páginas de inicio de marketing multi-inquilino desde un único binario Rust compilado estáticamente — sin PHP, sin MySQL, sin infraestructura de plugins — preservando al mismo tiempo la memoria muscular de WordPress.org en la superficie de URL y navegación orientada al operador. La aplicación entró en servicio en la versión v0.0.1 en mayo de 2026 y ejecuta dos inquilinos simultáneos en producción — Woodfine en `home.woodfinegroup.com` y PointSav en `home.pointsav.com` — desde el mismo binario en una única máquina virtual de bajo coste, separados únicamente por configuración de variables de entorno. Forma parte de la familia de superficies [[os-orchestration|`os-orchestration`]] y sigue el patrón [[leapfrog-2030-architecture|leapfrog-2030]] de contenido en archivos planos sin dependencia de base de datos.

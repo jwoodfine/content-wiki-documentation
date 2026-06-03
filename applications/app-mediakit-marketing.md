@@ -1,75 +1,130 @@
 ---
 schema: foundry-doc-v1
-title: "MediaKit marketing application"
+title: "app-mediakit-marketing — WordPress-leapfrog marketing landing server"
 slug: app-mediakit-marketing
 category: applications
-type: topic
+type: concept
 quality: complete
-short_description: "app-mediakit-marketing serves multi-tenant marketing landing pages from a single statically-compiled Rust binary — no PHP, no MySQL, no plugin infrastructure — while preserving WordPress.org muscle memory at the operator-facing URL and navigation surface."
 status: active
-bcsc_class: vendor-public
-last_edited: 2026-05-25
+audience: vendor-public
+bcsc_class: no-disclosure-implication
+language_protocol: PROSE-TOPIC
+last_edited: 2026-06-01
 editor: pointsav-engineering
-cites: []
 paired_with: app-mediakit-marketing.es.md
+short_description: "app-mediakit-marketing is a Rust web server that delivers marketing landing sites using the WordPress vocabulary over a sovereign, flat-file architecture. Two live deployments serve home.woodfinegroup.com and home.pointsav.com."
+cites: []
 ---
 
-`app-mediakit-marketing` serves multi-tenant marketing landing pages from a single statically-compiled Rust binary — no PHP, no MySQL, no plugin infrastructure — while preserving WordPress.org muscle memory at the operator-facing URL and navigation surface. The application shipped at v0.0.1 in May 2026 and runs two simultaneous production tenants — Woodfine at `home.woodfinegroup.com` and PointSav at `home.pointsav.com` — from the same binary on a single low-cost virtual machine, separated only by environment-variable configuration. It is part of the [[os-orchestration|`os-orchestration`]] surface family and follows the [[leapfrog-2030-architecture|leapfrog-2030 pattern]] of flat-file content with no database dependency.
+`app-mediakit-marketing` is a Rust web server that delivers marketing landing sites. It presents the same vocabulary — Dashboard, Pages, Posts, Media, Themes, Plugins, Settings — that WordPress users already know, but replaces the PHP + MySQL stack beneath with a sovereign, Tier 0-compatible architecture: a single compiled binary, flat-file content storage, and a graph-entity integration layer that costs nothing to run on a $7/month node.
 
-## Function
+The name "WordPress leapfrog" describes the goal: preserve the user-facing interface that tens of millions of operators have internalized, and leapfrog the technical substrate to remove the constraints that make WordPress difficult to operate and extend.
 
-The server presents each tenant's public marketing presence at a configurable domain.
-WordPress muscle-memory is preserved at the UX layer: the admin interface exposes
-Dashboard, Pages, Media, and Themes vocabulary familiar to anyone who has operated a
-WordPress site. Internally the application uses no PHP, no MySQL, and no plugin
-infrastructure.
+## Background
 
-Each tenant instance reads content from a configurable flat-file content directory and
-serves pages, media assets, and structured metadata over HTTP. A single compiled binary
-serves both the Woodfine and PointSav tenants through environment variable configuration.
-Content stored in the tenant's [[totebox-archive|Totebox Archive]] is the canonical source; the running binary is a derived view over that flat-file tree.
+WordPress powers roughly 40 percent of websites tracked by web crawlers. Its prevalence reflects a genuine product achievement: the admin interface standardized content management for an entire generation of operators. An operator who learned WordPress in 2010 can navigate a new WordPress install in 2026 without retraining.
+
+The liability is the substrate. PHP execution environments, MySQL administration, plugin sprawl, and database-level content storage create operational overhead that is disproportionate for small and medium operators. Upgrade paths break plugins. Database corruption requires specialist recovery. Hosting costs scale with server capacity, not content volume. Multi-tenancy requires database-per-tenant isolation or complex shared-table schemas.
+
+`app-mediakit-marketing` addresses this by keeping the interface contract while discarding the substrate.
 
 ## Architecture
 
-`app-mediakit-marketing` follows the PointSav leapfrog-2030 pattern:
+### Binary
 
-- **Substrate:** Rust + Axum web framework; statically linked binary
-- **Content layer:** Flat-file content directories; no database dependency
-- **DataGraph references:** Entity references resolved against the PointSav DataGraph at
- runtime
-- **Multi-tenant routing:** Tenant identity (`TENANT_ID`) configured via environment
- variable; a single binary instance serves one tenant
-- **WordPress UX surface:** Route vocabulary (`/wp-admin/`, `/wp-admin/post.php`,
- `/wp-admin/upload.php`) and navigation labels match WordPress.org conventions at the
- HTTP layer
+A single statically linked Rust binary (`app-mediakit-marketing`) runs the server. Built with the Axum web framework. No runtime dependencies beyond the OS kernel and a libc.
 
-## Deployments
+The binary:
+- Serves static-rendered content from a flat-file content directory
+- Exposes the WordPress-vocabulary admin UI at `/admin/`
+- Reads tenant configuration from environment variables at startup
+- Optionally queries the service-content DataGraph via Doorman for entity-grounded content references
 
-Two simultaneous production deployments operate on a single low-cost virtual machine:
+### Flat-file content
 
-| Deployment | Tenant | Domain |
-|---|---|---|
-| `media-marketing-landing-1` | Woodfine | home.woodfinegroup.com |
-| `media-marketing-landing-2` | PointSav | home.pointsav.com |
+Content lives in a directory on the host filesystem (`SERVICE_MARKETING_CONTENT_DIR`). Files are Markdown and HTML; there is no database. The binary reads content files on each request (with in-memory caching planned for v0.0.2). Edits to content files take effect on the next request with no service restart.
 
-Both instances serve from the same binary, separated by environment variable sets in
-each systemd unit.
+This eliminates the database administration surface: no schema migrations, no backup/restore complexity, no connection-pool management.
 
-## Version State
+### Multi-tenant via environment variables
 
-v0.0.1 delivers the core multi-tenant server, WordPress-compatible navigation, and basic
-flat-file content serving. DataGraph entity integration, media upload handling, and the
-full WordPress-equivalent admin dashboard are planned for subsequent milestones.
+A single binary supports multiple tenants. Tenant identity is set at startup via `SERVICE_MARKETING_MODULE_ID` (e.g., `woodfine`, `pointsav`). Content directory, bind port, site title, and DataGraph module target all resolve from this value.
 
-## Tier Compatibility
+Two instances running the same binary on the same host demonstrate this:
 
-The server is Tier 0 compatible: it runs on a single low-cost VM alongside other
-PointSav substrate services without requiring dedicated compute. Both production
-deployments run concurrently on the same VM instance (2 vCPU, 4 GB RAM).
+| Instance | Tenant | Domain | Port |
+|---|---|---|---|
+| media-marketing-landing-1 | woodfine | home.woodfinegroup.com | 9102 |
+| media-marketing-landing-2 | pointsav | home.pointsav.com | 9101 |
+
+Each instance is a systemd service with its own unit file and environment block. Neither instance knows about the other.
+
+### DataGraph integration (optional)
+
+Landing pages can reference graph entities — people, companies, products — by ID. When `SERVICE_MARKETING_GRAPH_URL` is configured (pointing to a running Doorman instance), the binary resolves entity references at render time and embeds structured data. When the DataGraph is unavailable, the binary falls back to static content without error.
+
+This integration is Tier 0 optional: a site running without DataGraph access is fully functional; DataGraph enriches it when present.
+
+## Sovereignty and Tier 0 alignment
+
+The [[compounding-substrate|Compounding Substrate]] discipline defines Tier 0 as an operator-owned system that functions without any vendor cloud dependency. `app-mediakit-marketing` meets this bar:
+
+- Single binary with no external runtime dependencies
+- Flat-file content storage (no cloud database, no object storage required)
+- nginx reverse proxy handles TLS; no managed load balancer required
+- Runs on the smallest commercially available VPS ($7/month)
+- DataGraph integration is optional — the site is not degraded in its absence
+
+An SMB operator can run their own marketing landing site on hardware they own, with software built from auditable source, without any ongoing vendor relationship.
+
+## WORM-ledger content history
+
+Planned for v0.0.3: every content edit captured via the audit endpoint (`/v1/audit/capture` through Doorman) is intended to form an append-only version history. This aligns with the [[worm-ledger-design|WORM-ledger-design]] convention: content history is never deleted, only appended. The audit log serves two purposes — operator rollback, and training corpus for the AI tier.
+
+## Deployment pattern
+
+`app-mediakit-marketing` is deployed behind nginx. nginx handles:
+- TLS termination (Let's Encrypt via certbot)
+- Static file serving for `robots.txt` and `sitemap.xml`
+- HTTP→HTTPS redirect
+- Reverse proxy to the binary's loopback port
+
+The binary never listens on a public port. All public traffic passes through nginx.
+
+```
+Internet → nginx :443 (TLS) → 127.0.0.1:PORT → app-mediakit-marketing
+                              │
+                              └→ CONTENT_DIR/ (flat-file reads)
+                              └→ Doorman :9081 (DataGraph, optional)
+```
+
+## Live reference deployments
+
+Two deployments are active as of 2026-05-07 on `foundry-workspace`:
+
+- **home.woodfinegroup.com** — Woodfine Management Corp. customer-tier marketing site. Demonstrates the customer pattern: operator-branded, operated under the customer's identity.
+- **home.pointsav.com** — PointSav vendor-tier open reference deployment. Demonstrates the vendor pattern: a public reference that prospective customers can inspect before deploying their own instance.
+
+Both sites run the same `app-mediakit-marketing` binary. The difference is content and theme tokens.
+
+## Roadmap
+
+| Version | Key additions |
+|---|---|
+| v0.0.1 | Rust binary, WordPress vocab nav, multi-tenant env, DataGraph optional, Tier 0 |
+| v0.0.2 | Theme system (CSS tokens from pointsav-design-system), per-tenant branding, audit-logged edits (planned) |
+| v0.0.3 | WORM-ledger page-edit version history, SEO basics (meta, sitemap, RSS) (planned) |
+| v0.1.0 | Plugin surface (app-orchestration-* composed via iframe/API mount), contact/lead forms feeding DataGraph (planned) |
+
+## Source
+
+`pointsav-monorepo/app-mediakit-marketing/`. Available at [github.com/pointsav](https://github.com/pointsav).
 
 ## See also
 
-- [[app-mediakit-knowledge]] — the companion knowledge-wiki engine in the MediaKit family
-- [[leapfrog-2030-architecture]] — the architectural pattern that governs the flat-file, no-database substrate
+- [[app-mediakit-knowledge]] — sibling Rust server for knowledge-base content (same architectural pattern)
+- [[compounding-substrate]] — sovereign architecture discipline
+- [[leapfrog-2030-architecture]] — the leapfrog-2030 pattern that governs the flat-file, no-database substrate
+- [[worm-ledger-design]] — append-only content version history pattern
 - [[totebox-archive]] — the Totebox Archive that holds canonical content for each tenant
 - [[os-orchestration]] — the orchestration OS that hosts the MediaKit family
