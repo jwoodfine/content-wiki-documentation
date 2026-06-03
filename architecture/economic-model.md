@@ -24,9 +24,9 @@ For a buyer in that segment, the platform's economics are aligned with theirs. T
 
 ## The two tiers
 
-<!--claim id=community-tier confidence=structural cites=[]-->**Community** is the free tier, under an AGPL-3.0-or-later licence. A Community deployment is one [[totebox-os|ToteboxOS]] archive and one [[console-os|ConsoleOS]] terminal, with local model inference as an optional component. Community is the adoption funnel — it generates contributors and surfaces edge cases — and [[pointsav-overview|PointSav]] earns no revenue from it.<!--/claim-->
+<!--claim id=community-tier confidence=structural cites=[]--><strong>Community</strong> is the free tier, under an AGPL-3.0-or-later licence. A Community deployment is one [[totebox-os|ToteboxOS]] archive and one [[console-os|ConsoleOS]] terminal, with local model inference as an optional component. Community is the adoption funnel — it generates contributors and surfaces edge cases — and [[pointsav-overview|PointSav]] earns no revenue from it.<!--/claim-->
 
-<!--claim id=smb-tier confidence=structural cites=[]-->**SMB Customer** is the revenue tier, under a Functional Source License with an Apache-2.0 fallback after the delay period, plus a commercial licence where required. An SMB Customer deployment adds multi-archive aggregation, GPU burst capability, federated adapter-marketplace participation, and priority access to updated base models. The relationship is an Order Form per customer.<!--/claim-->
+<!--claim id=smb-tier confidence=structural cites=[]--><strong>SMB Customer</strong> is the revenue tier, under a Functional Source License with an Apache-2.0 fallback after the delay period, plus a commercial licence where required. An SMB Customer deployment adds multi-archive aggregation, GPU burst capability, federated adapter-marketplace participation, and priority access to updated base models. The relationship is an Order Form per customer.<!--/claim-->
 
 ## Why no Enterprise tier
 
