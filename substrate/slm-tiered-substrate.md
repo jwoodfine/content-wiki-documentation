@@ -34,7 +34,7 @@ One routing rule is absolute: entity extraction goes only to the burst tier. The
 
 ## The structured-data boundary
 
-A hard architectural rule ([[sys-adr-07|SYS-ADR-07]]) governs what may cross the AI boundary: prose may go out as a prompt; structured business records may not. Entity extraction illustrates the discipline. The text to be analysed is prose. The *schema* that describes the desired output is sent as a constraint, not as data. The model returns a structured array that the gateway parses and writes to the graph — but no existing structured record was ever exposed to the model. The boundary is one-directional by design.
+A hard architectural rule ([[architecture-decisions|SYS-ADR-07]]) governs what may cross the AI boundary: prose may go out as a prompt; structured business records may not. Entity extraction illustrates the discipline. The text to be analysed is prose. The *schema* that describes the desired output is sent as a constraint, not as data. The model returns a structured array that the gateway parses and writes to the graph — but no existing structured record was ever exposed to the model. The boundary is one-directional by design.
 
 ## Constraining output to a required shape
 
@@ -60,6 +60,6 @@ The tiered substrate is what lets a customer-controlled deployment behave like a
 
 ## See also
 
-- [[sys-adr-07]] — the architectural decision record that encodes the structured-data boundary
+- [[architecture-decisions|SYS-ADR-07]] — the architectural decision record that encodes the structured-data boundary
 - [[service-slm]] — the service that implements the gateway and circuit-breaker logic
 - [[service-content]] — the extraction client that feeds documents through the gateway

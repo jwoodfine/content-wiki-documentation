@@ -34,7 +34,7 @@ Una regla de enrutamiento es absoluta: la extracción de entidades va sólo al n
 
 ## El perímetro de datos estructurados
 
-Una regla arquitectónica estricta ([[sys-adr-07|SYS-ADR-07]]) rige lo que puede cruzar el perímetro de la IA: la prosa puede salir como indicación; los registros estructurados del negocio no pueden. La extracción de entidades ilustra la disciplina. El texto a analizar es prosa. El *esquema* que describe la salida deseada se envía como restricción, no como dato. El modelo devuelve un array estructurado que la puerta de enlace analiza y escribe en el grafo — pero ningún registro estructurado existente fue expuesto al modelo. El perímetro es unidireccional por diseño.
+Una regla arquitectónica estricta ([[architecture-decisions|SYS-ADR-07]]) rige lo que puede cruzar el perímetro de la IA: la prosa puede salir como indicación; los registros estructurados del negocio no pueden. La extracción de entidades ilustra la disciplina. El texto a analizar es prosa. El *esquema* que describe la salida deseada se envía como restricción, no como dato. El modelo devuelve un array estructurado que la puerta de enlace analiza y escribe en el grafo — pero ningún registro estructurado existente fue expuesto al modelo. El perímetro es unidireccional por diseño.
 
 ## Restricción de la salida a una forma requerida
 
@@ -60,6 +60,6 @@ El sustrato por niveles es lo que permite a un despliegue bajo control del opera
 
 ## Véase también
 
-- [[sys-adr-07]] — el registro de decisión arquitectónica que codifica el perímetro de datos estructurados
+- [[architecture-decisions|SYS-ADR-07]] — el registro de decisión arquitectónica que codifica el perímetro de datos estructurados
 - [[service-slm]] — el servicio que implementa la puerta de enlace y la lógica del disyuntor de circuito
 - [[service-content]] — el cliente de extracción que alimenta documentos a través de la puerta de enlace
