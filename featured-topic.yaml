@@ -14,4 +14,4 @@ candidates:
   - architecture/doorman-protocol
   - architecture/three-ring-architecture
   - architecture/leapfrog-2030-architecture
-  - architecture/worm-ledger-design
+  - infrastructure/worm-ledger-design
