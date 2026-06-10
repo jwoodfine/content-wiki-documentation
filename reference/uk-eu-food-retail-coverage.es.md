@@ -147,6 +147,4 @@ de cadenas canónicas son CC0.
 
 ---
 
-*Procedencia de los datos:* archivos JSONL de cadenas en `service-business/`
-(registros por cadena); commits de ingestión Fases 12–18 (17 de mayo de 2026 al
-22 de mayo de 2026). OSM ODbL; Wikidata CC0.
+*Procedencia de los datos:* registros de ubicaciones de cadenas, ejecuciones de ingestión Fases 12–18 (17 de mayo de 2026 al 22 de mayo de 2026). OSM ODbL; Wikidata CC0.

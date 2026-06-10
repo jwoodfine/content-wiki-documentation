@@ -37,7 +37,7 @@ community. An algorithm that resolves cluster names solely from administrative
 boundaries would label this cluster "Strathcona County," a name that conveys
 almost nothing to a researcher studying suburban retail patterns in the Edmonton
 metropolitan area. The name "Sherwood Park" is what the community, its retailers,
-and its residents use. It is what a Regional Market TOPIC article should be titled.
+and its residents use. It is what a Regional Market article should be titled.
 
 This disconnect between legal administrative geography and colloquial place names
 is not an edge case. It appears wherever unincorporated communities, census
@@ -113,7 +113,7 @@ market. An incorrect resolution — labelling Sherwood Park as Strathcona County
 for instance — would cause the cluster to receive the wrong metro-distance
 calculation and potentially be misclassified.
 
-The resolved name also becomes the title of any Regional Market TOPIC article
+The resolved name also becomes the title of any Regional Market article
 written for that cluster. Correctness here is a matter of editorial integrity:
 an article titled "Strathcona County" about a retail cluster in Sherwood Park
 would be factually misleading.
@@ -135,4 +135,4 @@ may exist in areas not yet covered by the platform.
 
 *Data provenance:* TIGER 2023 (US Census Bureau, public domain); GISCO LAU 2021
 (Eurostat/EC, CC BY 4.0); GADM GBR (GADM v4.1, non-commercial research licence);
-Nominatim overrides (original, project-gis). OSM data CC0.
+Nominatim overrides (original). OSM data CC0.

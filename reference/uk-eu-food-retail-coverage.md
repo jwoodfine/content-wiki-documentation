@@ -149,5 +149,4 @@ vary as OSM contributors add or update entries.
 
 ---
 
-*Data provenance:* JSONL chain files in `service-business/` (per-chain records);
-Phase 12–18 ingest commits (2026-05-17 through 2026-05-22). OSM ODbL; Wikidata CC0.
+*Data provenance:* chain location records, Phase 12–18 ingest runs (2026-05-17 through 2026-05-22). OSM ODbL; Wikidata CC0.

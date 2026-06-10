@@ -39,7 +39,7 @@ partir de límites administrativos etiquetaría este clúster como "Strathcona
 County", un nombre que aporta escasa información a un investigador que estudia
 patrones comerciales suburbanos en el área metropolitana de Edmonton. El nombre
 "Sherwood Park" es el que usan la comunidad, sus comercios y sus residentes. Es
-el que debe aparecer en el título de un artículo TOPIC de Mercado Regional.
+el que debe aparecer en el título de un artículo de Mercado Regional.
 
 Esta desconexión entre la geografía administrativa formal y los nombres
 coloquiales de los lugares no es un caso excepcional. Aparece en todo contexto
@@ -112,7 +112,7 @@ Regionales. El nombre resuelto de un clúster determina qué cálculo de distanc
 metropolitana se le aplica. Una resolución incorrecta causaría una clasificación
 errónea del mercado y afectaría a la puntuación de esa ubicación.
 
-El nombre resuelto también se convierte en el título de cualquier artículo TOPIC
+El nombre resuelto también se convierte en el título de cualquier artículo
 de Mercado Regional escrito para ese clúster. La exactitud aquí es una cuestión
 de integridad editorial.
 
@@ -133,5 +133,5 @@ discordancias entre nombres CSD y comunitarios en áreas aún no cubiertas.
 
 *Procedencia de los datos:* TIGER 2023 (Oficina del Censo de EE. UU., dominio público);
 GISCO LAU 2021 (Eurostat/CE, CC BY 4.0); GADM GBR (GADM v4.1, licencia de
-investigación no comercial); reemplazos Nominatim (originales, project-gis).
+investigación no comercial); reemplazos Nominatim (originales).
 Datos OSM CC0.
