@@ -107,3 +107,7 @@ redirects:
 
   - from: /design-system/viewport-3d-accessibility
     to: https://design.pointsav.com/accessibility/viewport-3d-accessibility
+
+  # Substrate supersession — slm-tiered-substrate superseded by soft-slm-tiered-gateway (2026-06-09)
+  - from: /substrate/slm-tiered-substrate
+    to: /substrate/soft-slm-tiered-gateway
