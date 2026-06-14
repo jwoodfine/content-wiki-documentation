@@ -111,3 +111,8 @@ Metro distance distribution: peak at 10–19 km (96 sites), remainder 5–9 km (
 ### Taxonomy categories needed
 
 `flooring`, `tool_rental`, `mro_industrial`, `lumber`, `plumbing`, `electrical` — these enrich VWH cluster member arrays but do not gate T1/T2/T3 tier logic.
+
+## References
+
+- [Warehouse](https://en.wikipedia.org/wiki/Warehouse) — Wikipedia, accessed 2026-06-14
+- [Retail park](https://en.wikipedia.org/wiki/Retail_park) — Wikipedia, accessed 2026-06-14

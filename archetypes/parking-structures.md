@@ -146,3 +146,7 @@ Two ingest scripts are planned for the transit infrastructure layer:
 - `ingest-osm-railway.py` → `service-places/cleansed-civic-railway.jsonl` (`railway=station`, exclude subway/light_rail/tram, intercity operators only)
 
 Car rental chains are the primary commercial signal. Priority additions: Enterprise Rent-A-Car (~8,500 NA), Hertz (~3,500 NA), Avis (~2,500 NA), Sixt (~700 EU), Europcar (~2,000 EU).
+
+## References
+
+- [Park and ride](https://en.wikipedia.org/wiki/Park_and_ride) — Wikipedia, accessed 2026-06-14
