@@ -82,3 +82,4 @@ An attacker who fully compromises the PPN gains encrypted WireGuard traffic betw
 - [[sovereign-mesh]] — the mesh architecture detail
 - [[ppn-command-protocol]] — the 16-byte binary wire format for fleet commands
 - [[genesis-protocol]] — how new nodes join the fleet securely
+- [[ppn-architecture-overview|PPN Architecture Overview]] — four-layer PPN architecture detail

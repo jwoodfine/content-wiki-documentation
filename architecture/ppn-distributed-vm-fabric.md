@@ -109,3 +109,4 @@ The per-node layer is the foundation. The distributed fabric is intended to buil
 - [[genesis-protocol]] — the first-boot ceremony; the intended attestation root for the distributed fabric
 - [[infrastructure-os]] — the Type I hypervisor; home of the balloon controller and intended virtio-mem lending daemon
 - [[os-orchestration]] — the intended home for the cross-node VM scheduler
+- [[pointsav-private-network|PointSav Private Network]] — infrastructure overview; the distributed VM fabric extends this substrate

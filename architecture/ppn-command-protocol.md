@@ -70,3 +70,4 @@ Upstream telemetry — logs, heartbeats, status — travels over a separate, str
 - [[sovereign-mesh]] — the WireGuard overlay the protocol runs over
 - [[service-slm]] — the local semantic router that translates intent into the two-byte operation code
 - [[machine-based-auth]] — the fiduciary keypairs that secure the mesh peers
+- [[pointsav-private-network|PointSav Private Network]] — infrastructure overview; the command protocol runs over this mesh

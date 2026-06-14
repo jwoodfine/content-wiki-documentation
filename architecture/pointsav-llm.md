@@ -142,6 +142,8 @@ Tiers 0, A, and B are operational today. Tier C (PointSav-LLM) is planned, with 
 - [[apprenticeship-substrate]] — the DPO loop that feeds the CPT corpus
 - [[brief-queue-substrate]] — durable queue for brief accumulation
 - [[contributor-model]] — the Three-Tier Contributor Model aligned with pricing tiers
+- [[service-slm|SLM Service]] — the local model service that PointSav-LLM is intended to extend at Tier C
+- [[slm-stack-architecture|SLM Stack Architecture]] — the Four-Tier SLM Substrate Ladder this article describes Tier 3 of
 
 ---
 

@@ -49,3 +49,4 @@ This architecture ensures that `service-fs` remains portable, verifiable, and re
 - [[service-fs-security-compliance]]
 - [[worm-ledger-architecture]]
 - [[sel4-microkernel-substrate]]
+- [[service-pointsav-link|PointSav Link Service]] — hot-pluggable adapter connecting os-* nodes to the fleet fabric

@@ -86,3 +86,4 @@ Commands flow downward: `os-network-admin` → `os-infrastructure` (hypervisor l
 - [[machine-based-auth]] — the MBA pairing model that governs archive-tier access
 - [[infrastructure-os]] — the Type I hypervisor layer that `os-network-admin` manages
 - [[diode-standard]] — the authority hierarchy and traffic rules the control plane enforces
+- [[os-family-overview|OS Family Overview]] — the full PointSav OS family

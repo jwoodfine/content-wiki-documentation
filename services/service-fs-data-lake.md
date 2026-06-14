@@ -39,3 +39,4 @@ In production, `service-fs` is deployed as a low-overhead unikernel. It provides
 - [[service-business-clustering]]
 - [[service-places-filtering]]
 - [[app-orchestration-gis]]
+- [[service-pointsav-link|PointSav Link Service]] — fleet adapter that makes os-* storage accessible across node boundaries

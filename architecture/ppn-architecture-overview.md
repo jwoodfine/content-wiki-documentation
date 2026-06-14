@@ -103,3 +103,4 @@ This separation is intentional: the network control plane and the data access pl
 - [[totebox-archive]] — sovereign WORM data vault, freely transferable disk image
 - [[os-orchestration]] — stateless PSP aggregator, multi-archive queries, paid tier
 - [[ppn-distributed-vm-fabric]] — planned cross-node VM fabric: virtio-mem lending, distributed capability ledger, sovereign attestation
+- [[pointsav-private-network|PointSav Private Network]] — infrastructure overview and WireGuard mesh provisioning context

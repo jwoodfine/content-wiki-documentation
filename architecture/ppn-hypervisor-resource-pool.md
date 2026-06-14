@@ -102,3 +102,4 @@ The automated balloon controller — the component inside `os-infrastructure` th
 - [[totebox-archive]] — the sovereign data vault running inside each VM
 - [[ppn-distributed-vm-fabric]] — the planned cross-node extension: virtio-mem lending, distributed capability ledger, cross-node scheduler
 - [[sovereign-mesh]] — the WireGuard transport layer connecting PPN nodes
+- [[pointsav-private-network|PointSav Private Network]] — infrastructure overview; the resource pool is one component in the PPN stack

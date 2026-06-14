@@ -111,3 +111,4 @@ Phase 3 targets are intended to make any operator's spare hardware outperform cl
 - [[ppn-architecture-overview]] — four-layer PPN overview; os-infrastructure is the hypervisor layer
 - [[genesis-protocol]] — full description of the node-join ceremony
 - [[ppn-hypervisor-resource-pool]] — per-node virtio_balloon + vCPU resource pool management
+- [[os-family-overview|OS Family Overview]] — the full PointSav OS family and how os-infrastructure fits within it

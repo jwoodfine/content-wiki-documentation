@@ -154,3 +154,4 @@ via the MBA pairing ceremony after the host node is already a PPN member.
 - [[ppn-hypervisor-resource-pool]] — how virtio-balloon manages RAM for vm-mediakit
 - [[totebox-archive]] — what the Totebox Archive tier does above the guest OS
 - [[os-network-admin]] — the PPN control plane; vm-mediakit joins the mesh through it
+- [[os-family-overview|OS Family Overview]] — the full PointSav OS family

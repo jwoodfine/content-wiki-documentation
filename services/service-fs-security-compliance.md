@@ -51,3 +51,4 @@ The platform’s posture is intended to defend against high-level institutional 
 - [[capability-based-security]]
 - [[machine-based-auth]]
 - [[sel4-microkernel-substrate]]
+- [[service-pointsav-link|PointSav Link Service]] — fleet adapter whose reads are subject to the audit layer this article describes
