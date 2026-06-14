@@ -4,6 +4,7 @@ title: "Migración del almacén de grafos de service-slm"
 slug: service-slm-graph-store-migration
 category: services
 type: concept
+content_type: topic
 quality: pre-build
 status: pre-build
 audience: vendor-public

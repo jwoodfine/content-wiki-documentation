@@ -5,6 +5,7 @@ slug: wiki-typography-system
 short_description: "Pila tipográfica Inter y Source Serif 4, escala de encabezados y tokens de espaciado para el wiki de PointSav."
 category: design-system
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-06-01

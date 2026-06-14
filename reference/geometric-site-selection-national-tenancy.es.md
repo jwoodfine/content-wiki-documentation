@@ -4,6 +4,7 @@ title: "Composición de Co-localización de Anclas Minoristas como Indicador Ade
 slug: geometric-site-selection-national-tenancy
 category: reference
 type: research
+content_type: research
 quality: stub
 status: draft
 language: es

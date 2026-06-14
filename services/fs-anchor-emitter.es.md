@@ -4,6 +4,7 @@ title: "Emisor de anclaje FS"
 slug: fs-anchor-emitter.es
 category: services
 type: topic
+content_type: topic
 quality: complete
 short_description: "fs-anchor-emitter genera puntos de control firmados del libro mayor inmutable Write-Once-Read-Many a cadencia horaria y los prepara para el anclaje externo al registro público de transparencia Sigstore Rekor con cadencia mensual — el mecanismo que hace que el estado del libro mayor de la plataforma sea criptográficamente auditable desde fuera de la plataforma misma."
 status: active

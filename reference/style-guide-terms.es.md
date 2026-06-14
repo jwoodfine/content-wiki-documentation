@@ -5,6 +5,7 @@ slug: style-guide-terms.es
 short_description: "Estándares editoriales para documentos de términos de uso (género LEGAL): cláusula de apertura, secciones requeridas, disciplina de términos definidos, convenciones de exención de responsabilidad y requisito de revisión de gobernanza."
 category: reference
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

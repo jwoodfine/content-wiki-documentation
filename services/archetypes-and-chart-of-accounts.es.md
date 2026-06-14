@@ -4,6 +4,7 @@ title: "Arquetipos y plan de cuentas"
 slug: archetypes-and-chart-of-accounts
 category: services
 type: concept
+content_type: topic
 quality: complete
 short_description: "El Plan de Cuentas y los once arquetipos son la taxonomía institucional de dos partes en el núcleo de service-people y service-content, que clasifica al personal y los documentos por posición estructural y función, sin depender de texto de título de trabajo variable."
 status: active

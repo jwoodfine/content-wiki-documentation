@@ -4,6 +4,7 @@ title: "os-console Internal Architecture"
 slug: os-console-architecture
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

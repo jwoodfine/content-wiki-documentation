@@ -4,6 +4,7 @@ title: "FS data lake"
 slug: service-fs-data-lake
 category: services
 type: topic
+content_type: topic
 quality: complete
 status: active
 audience: public

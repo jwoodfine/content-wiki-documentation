@@ -4,6 +4,7 @@ title: "Browser developer workbench"
 slug: app-privategit-workbench
 category: applications
 type: topic
+content_type: topic
 quality: pre-build
 status: active
 bcsc_class: no-disclosure-implication

@@ -4,6 +4,7 @@ title: "Yo-yo compute substrate"
 slug: yoyo-compute-substrate
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "The three-ring compute substrate that lets service-slm spin GPU inference capacity up and down while retaining state, accumulating skill, and producing an audit ledger of every compute event."
 status: active

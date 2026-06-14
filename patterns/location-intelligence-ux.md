@@ -4,6 +4,7 @@ title: "Location intelligence UX design philosophy"
 slug: location-intelligence-ux
 category: patterns
 type: topic
+content_type: topic
 quality: complete
 short_description: "The Location Intelligence interface uses a Conclusion-First design philosophy — rendering ranked tier conclusions rather than individual data points — so a user comparing markets at a national zoom level sees the most defensible commercial nodes immediately, and only drills into individual operators when a node has earned the attention."
 status: active

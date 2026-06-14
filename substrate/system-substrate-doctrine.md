@@ -4,6 +4,7 @@ title: "The system substrate architecture"
 slug: system-substrate-doctrine
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: The kernel-level architecture beneath every PointSav service — a customer-rooted capability ledger that is the audit log, a two-bottoms sovereign OS strategy, and three mechanisms for time-bound capabilities, reproducible verification, and boot-anywhere recovery.
 status: active

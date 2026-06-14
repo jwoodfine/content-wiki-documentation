@@ -4,6 +4,7 @@ title: "Yo-yo #1 nightly LoRA training pipeline"
 slug: yo-yo-lora-training-pipeline
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "The nightly two-phase pipeline on Yo-Yo #1: Phase 1 runs entity extraction for the business DataGraph; Phase 2 trains a LoRA adapter against engineering and apprenticeship corpora using QLoRA on a single L4 GPU."
 status: active

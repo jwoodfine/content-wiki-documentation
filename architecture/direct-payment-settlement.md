@@ -4,6 +4,7 @@ title: "Direct-payment settlement"
 slug: direct-payment-settlement
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 short_description: "Payment for marketplace transactions is planned to flow directly from buyer to the customer-tenant; PointSav's share is a transaction fee at settlement, not a recurring subscription."
 status: active

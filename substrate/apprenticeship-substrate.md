@@ -4,6 +4,7 @@ title: "The apprenticeship substrate"
 slug: apprenticeship-substrate
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "The platform mechanism that routes code-shaped and editorial work first through a local Small Language Model, captures a signed senior verdict on every attempt, and uses the resulting preference pairs as continued-pretraining signal — compounding toward task types that need no senior authoring."
 status: active

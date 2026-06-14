@@ -4,6 +4,7 @@ title: "The four-tier SLM substrate ladder"
 slug: four-tier-slm-substrate
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "A graduated sovereignty path for AI deployment: four customer tiers from a lightweight API gateway with no local model up through a domain-specialist AI service trained on the vendor's aggregated corpus, each tier adding capability without breaking the lower-tier guarantee."
 status: active

@@ -4,6 +4,7 @@ title: "app-console-input"
 slug: app-console-input
 category: applications
 type: app
+content_type: topic
 quality: complete
 short_description: "app-console-input es la superficie F12 en os-console — la puerta de entrada estructurada a través de la cual los archivos externos sin procesar ingresan a un Totebox antes de sellarse en el libro mayor verificado."
 status: active

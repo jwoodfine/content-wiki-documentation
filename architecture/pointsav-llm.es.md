@@ -4,6 +4,7 @@ title: "PointSav-LLM"
 slug: pointsav-llm.es
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 short_description: "El modelo de IA especialista planificado para el Nivel 3 del sistema de cuatro niveles SLM de PointSav, construido mediante entrenamiento continuo de OLMo 3 32B sobre el corpus federado de aprendizaje de la plataforma."
 status: active

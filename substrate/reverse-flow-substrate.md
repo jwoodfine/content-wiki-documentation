@@ -4,6 +4,7 @@ title: "Reverse-flow substrate"
 slug: reverse-flow-substrate
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "The Doorman gateway and audit ledger that enforce inbound data discipline are planned to also enforce outbound commercial flows — data marketplace and ad exchange — both opt-in per tenant."
 status: active

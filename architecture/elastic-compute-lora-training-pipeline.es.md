@@ -4,6 +4,7 @@ title: "Pipeline de entrenamiento LoRA nocturno en Elastic Compute #1"
 slug: elastic-compute-lora-training-pipeline
 category: architecture
 type: concept
+content_type: topic
 quality: pre-build
 status: pre-build
 audience: vendor-public

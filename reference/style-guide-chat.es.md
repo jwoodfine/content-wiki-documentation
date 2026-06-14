@@ -5,6 +5,7 @@ slug: style-guide-chat.es
 short_description: "Estándares editoriales para mensajes de chat en la plataforma (género COMMS): disciplina de un solo punto, encabezado de canal, máximo tres oraciones y distinción entre chat y correo electrónico."
 category: reference
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

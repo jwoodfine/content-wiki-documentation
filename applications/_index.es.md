@@ -6,6 +6,7 @@ short_description: "Aplicaciones internas y orientadas al usuario construidas so
 lang: es
 category: applications
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

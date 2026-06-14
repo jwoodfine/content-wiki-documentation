@@ -4,6 +4,7 @@ title: "Style guide — chat"
 slug: style-guide-chat
 category: reference
 type: topic
+content_type: topic
 quality: complete
 short_description: "Editorial standards for chat messages in the platform (COMMS genre): one-point discipline, channel header, maximum three sentences, and the distinction between chat and email."
 status: active

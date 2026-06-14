@@ -5,6 +5,7 @@ slug: style-guide-memo.es
 short_description: "Estándares editoriales para memoranda internos (género PROSE-MEMO): disciplina de encabezado, orden de secciones, convención de recomendación primero y cuándo un memo es el artefacto adecuado."
 category: reference
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

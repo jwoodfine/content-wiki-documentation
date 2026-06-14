@@ -4,6 +4,7 @@ title: "PointSav — Visión general de la empresa y estructura de tres organiza
 slug: pointsav-overview
 category: architecture
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

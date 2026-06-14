@@ -4,6 +4,7 @@ title: "Style guide — CLA"
 slug: style-guide-cla
 category: reference
 type: topic
+content_type: topic
 quality: complete
 short_description: "Editorial standards for Contributor License Agreements (LEGAL-CLA genre) in the platform: canonical CLA authority, required sections, the patent-license discipline, and the factory-release-engineering review requirement."
 status: active

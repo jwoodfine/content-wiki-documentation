@@ -1,6 +1,7 @@
 ---
 schema: foundry-doc-v1
 type: topic
+content_type: topic
 slug: worm-ledger-storage-architecture
 short_description: "The storage architecture adopts C2SP tlog-tiles as its fundamental primitive, supporting dual-target deployment from Linux daemons to seL4 microkernels while ensuring structural immutability and long-term readability through plain-text transparency and atomic durability."
 title: "WORM ledger storage architecture"

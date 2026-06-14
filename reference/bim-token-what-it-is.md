@@ -5,6 +5,7 @@ slug: bim-token-what-it-is
 short_description: "A BIM Token is a composable built-environment specification unit that pre-constrains design space across three axes — element identity, jurisdictional requirements, and climate performance — making code violations geometrically impossible by construction rather than discovered in post-design review."
 category: reference
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

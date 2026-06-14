@@ -4,6 +4,7 @@ title: "Retail anchor co-location composition as a spatial leading indicator of 
 slug: geometric-site-selection-national-tenancy
 category: research
 type: research
+content_type: research
 quality: pre-build
 short_description: "A continental-scale cluster analysis framework identifying retail anchor co-location clusters and their tier classification across thirteen countries."
 status: active

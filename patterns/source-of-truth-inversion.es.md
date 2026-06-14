@@ -6,6 +6,7 @@ short_description: "La inversión de origen de verdad designa una capa de almace
 status: active
 category: patterns
 type: topic
+content_type: topic
 quality: complete
 language: es
 last_edited: 2026-05-14

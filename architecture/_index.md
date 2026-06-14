@@ -4,6 +4,7 @@ title: "Architecture"
 slug: _index
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 short_description: "Cross-cutting platform architecture: the three-ring composition model, AI routing and inference boundary, security and identity substrate, customer ownership principles, and the location intelligence domain."
 status: active

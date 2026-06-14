@@ -4,6 +4,7 @@ title: "El sustrato de cola de briefs"
 slug: brief-queue-substrate.es
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "Una cola persistente respaldada en archivos que hace viable el apagado inactivo de Yo-Yo sin perder datos del corpus de aprendizaje — la capa de durabilidad del sustrato SLM de tres niveles."
 status: active

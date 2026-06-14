@@ -4,6 +4,7 @@ title: "TUI as corpus producer"
 slug: tui-corpus-producer
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "Every terminal interaction with service-slm through the operator TUI is a curated training corpus contribution for the per-tenant adapter."
 status: active

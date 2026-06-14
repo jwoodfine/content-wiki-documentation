@@ -4,6 +4,7 @@ title: "MCP as substrate protocol"
 slug: mcp-substrate-protocol
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "Every Ring 1 and Ring 2 service exposes a Model Context Protocol server interface as its primary external contract, with the Doorman as the MCP gateway."
 status: active

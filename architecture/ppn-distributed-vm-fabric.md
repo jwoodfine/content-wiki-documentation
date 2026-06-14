@@ -5,6 +5,7 @@ slug: ppn-distributed-vm-fabric
 short_description: "The PPN Distributed VM Fabric is the planned extension of the per-node PPN hypervisor layer to a multi-node resource pool, intended to allow VMs to borrow compute from other mesh nodes and migrate across the fleet without per-move operator involvement."
 category: architecture
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 language: en

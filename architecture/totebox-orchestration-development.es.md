@@ -4,6 +4,7 @@ title: "La orquestación Totebox como entorno de desarrollo"
 slug: totebox-orchestration-development.es
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 short_description: "El entorno de desarrollo de PointSav está desplegado como una instancia de orquestación Totebox — el espacio de trabajo que construye la plataforma se ejecuta sobre la misma arquitectura que la plataforma entrega a los clientes."
 status: active

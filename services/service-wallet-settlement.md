@@ -5,6 +5,7 @@ slug: service-wallet-settlement
 short_description: "A per-tenant internal accounting ledger that records and settles reverse-flow revenue from the data marketplace as signed JSONL entries, with non-custodial withdrawal options to blockchain or fiat and platform-fee deductions applied at credit time."
 category: services
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

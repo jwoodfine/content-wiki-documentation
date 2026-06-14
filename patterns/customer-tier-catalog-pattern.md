@@ -4,6 +4,7 @@ title: "The Customer-Tier Catalog Pattern"
 slug: customer-tier-catalog-pattern
 category: patterns
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-06-10

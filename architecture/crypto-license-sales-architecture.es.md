@@ -4,6 +4,7 @@ title: "Arquitectura de pagos con criptomonedas y emisión de licencias"
 slug: crypto-license-sales-architecture
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

@@ -6,6 +6,7 @@ short_description: "An audit of 25 wiki platforms across four groups documents s
 status: active
 category: reference
 type: topic
+content_type: topic
 quality: complete
 last_edited: 2026-05-14
 editor: pointsav-engineering

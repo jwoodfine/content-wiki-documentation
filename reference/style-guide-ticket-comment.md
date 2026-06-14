@@ -4,6 +4,7 @@ title: "Style guide — ticket comment"
 slug: style-guide-ticket-comment
 category: reference
 type: topic
+content_type: topic
 quality: complete
 short_description: "Editorial standards for ticket comments in the platform (COMMS genre): header discipline, what-changed-and-next structure, status field conventions, and when to comment versus when to update the ticket description."
 status: active

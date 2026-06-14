@@ -6,6 +6,7 @@ short_description: "Arquitectura de plataforma transversal: el modelo de composi
 lang: es
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

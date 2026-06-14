@@ -4,6 +4,7 @@ title: "Archetypes and chart of accounts"
 slug: archetypes-and-chart-of-accounts
 category: services
 type: concept
+content_type: topic
 quality: complete
 short_description: "The Chart of Accounts and eleven archetypes are the two-part institutional taxonomy at the core of service-people and service-content, classifying personnel and documents by structural position and functional role rather than by volatile job-title strings."
 status: active

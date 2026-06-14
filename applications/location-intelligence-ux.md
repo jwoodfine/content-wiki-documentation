@@ -4,6 +4,7 @@ title: "Location intelligence UX design philosophy"
 slug: location-intelligence-ux
 category: applications
 type: topic
+content_type: topic
 quality: complete
 status: active
 audience: public

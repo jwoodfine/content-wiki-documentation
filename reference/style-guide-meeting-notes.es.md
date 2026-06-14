@@ -5,6 +5,7 @@ slug: style-guide-meeting-notes.es
 short_description: "Estándares editoriales para notas de reunión en la plataforma (género COMMS): campos de encabezado, disciplina de agenda, distinción entre decisiones y notas, y formato de tabla de elementos de acción."
 category: reference
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

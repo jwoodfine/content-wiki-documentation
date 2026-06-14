@@ -4,6 +4,7 @@ title: "Nomenclatura de Niveles de Colocalización"
 slug: colocation-tier-nomenclature
 category: architecture
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

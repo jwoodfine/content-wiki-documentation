@@ -5,6 +5,7 @@ slug: location-intelligence-strategy.es
 short_description: "El marco estratégico y arquitectónico para el sustrato Location Intelligence de la plataforma: un enfoque de SIG abierto de archivos planos que permite a los clientes poseer sus datos de ubicación de extremo a extremo, ejecutándose sin conexión, sin costos recurrentes de proveedor por asiento o por solicitud."
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

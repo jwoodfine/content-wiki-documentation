@@ -4,6 +4,7 @@ title: "Favicon matrix and tab identity"
 slug: favicon-matrix
 category: governance
 type: topic
+content_type: topic
 quality: complete
 short_description: "The platform uses inline SVG data URIs for browser-tab favicons — eliminating a network call, scaling without pixelation on every display, and assigning two distinct vendor and customer marks to make the entity behind every tab unambiguous at a glance."
 status: active

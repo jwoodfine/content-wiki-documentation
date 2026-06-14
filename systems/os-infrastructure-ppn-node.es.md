@@ -5,6 +5,7 @@ slug: os-infrastructure-ppn-node
 short_description: "os-infrastructure es la capa del sistema operativo para los nodos de la Red Privada PointSav — su único propósito es configurar, operar y mantener un nodo PPN: gestionar túneles WireGuard, alojar máquinas virtuales y exponer el plano de control del operador."
 category: systems
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 language: es

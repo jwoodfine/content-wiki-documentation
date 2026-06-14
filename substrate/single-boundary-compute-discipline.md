@@ -4,6 +4,7 @@ title: "Single-boundary compute discipline"
 slug: single-boundary-compute-discipline
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "Every AI inference request in a platform deployment routes exclusively through the Doorman, with bypass structurally prevented at the kernel level."
 status: active

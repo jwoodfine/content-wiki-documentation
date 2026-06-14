@@ -6,6 +6,7 @@ short_description: "Cómo escribir un archivo GUIDE: el formato de runbook opera
 lang: es
 category: reference
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

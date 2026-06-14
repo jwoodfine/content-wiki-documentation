@@ -4,6 +4,7 @@ title: "Avisos legales"
 slug: disclaimers.es
 category: governance
 type: governance
+content_type: topic
 quality: complete
 short_description: "Aviso legal y condiciones de uso de PointSav Knowledge, el wiki de documentación de ingeniería de la plataforma PointSav."
 status: active

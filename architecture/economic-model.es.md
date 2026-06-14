@@ -4,6 +4,7 @@ title: "Modelo económico — niveles community y cliente PYME"
 slug: economic-model.es
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 short_description: "La estructura comercial de dos niveles de PointSav: un nivel Community gratuito como embudo de adopción, y un nivel de Cliente PYME de pago orientado a pequeñas y medianas empresas reguladas que los modelos de facturación a hiperescala no pueden atender económicamente."
 status: active

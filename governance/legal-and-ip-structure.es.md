@@ -5,6 +5,7 @@ slug: legal-and-ip-structure
 short_description: "La topología de tres corporaciones que rige la transferencia de propiedad intelectual de contribuidores a proveedor a cliente, con squash-and-merge como el evento de transferencia de propiedad intelectual atómico y separación estricta que impide exposición de código no auditado o registros operacionales."
 category: governance
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

@@ -4,6 +4,7 @@ title: "The capability ledger substrate"
 slug: capability-ledger-substrate
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "The Capability Ledger Substrate is the mechanism by which every access-control decision in a platform deployment becomes a cryptographically auditable event anchored to a log the customer controls."
 status: active

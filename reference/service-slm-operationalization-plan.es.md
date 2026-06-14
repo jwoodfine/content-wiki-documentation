@@ -4,6 +4,7 @@ title: "Plan de operacionalización de service-slm"
 slug: service-slm-operationalization-plan.es
 category: reference
 type: topic
+content_type: topic
 quality: complete
 short_description: El plan estratégico y operativo para hacer la transición desde llamadas a modelos de lenguaje externos hacia un sustrato de modelo de lenguaje pequeño por inquilino que se mejora mediante un bucle de retroalimentación compuesto.
 status: active

@@ -4,6 +4,7 @@ title: "Location intelligence platform — strategy and architecture"
 slug: location-intelligence-strategy
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 short_description: "The strategic and architectural frame for the platform's Location Intelligence substrate: a flat-file open-GIS approach that lets customers own their location data end-to-end, running offline, without ongoing per-seat or per-request vendor costs."
 status: active

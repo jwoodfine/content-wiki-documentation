@@ -6,6 +6,7 @@ short_description: "La postura de seguridad de la plataforma: aislamiento de har
 lang: es
 category: governance
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

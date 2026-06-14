@@ -1,6 +1,7 @@
 ---
 schema: foundry-doc-v1
 type: topic
+content_type: topic
 slug: data-sovereignty-telemetry
 short_description: "The platform collects only anonymized, IP-masked geospatial telemetry with no personally identifiable information retained, appending mandatory regulatory disclosure to public-facing interfaces."
 title: "Data sovereignty and zero-state telemetry"

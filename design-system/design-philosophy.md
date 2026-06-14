@@ -5,6 +5,7 @@ slug: design-philosophy
 short_description: "The PointSav design system is a self-hosted, customer-owned substrate running at design.pointsav.com that publishes design decision research alongside token values in DTCG format, prioritizing editor-agnostic interoperability and structured rationale."
 category: design-system
 type: reference
+content_type: topic
 quality: complete
 status: active
 audience: public

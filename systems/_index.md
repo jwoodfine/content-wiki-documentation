@@ -4,6 +4,7 @@ title: "Systems"
 slug: _index
 category: systems
 type: topic
+content_type: topic
 quality: complete
 short_description: "The purpose-built operating systems that share a common seL4 and Rust substrate — Totebox, Console, Workplace, Orchestration, Infrastructure, Network Admin, MediaKit, and PrivateGit — each doing one job, holding no features it does not need, and communicating through a common Diode-based protocol discipline."
 status: active

@@ -5,6 +5,7 @@ slug: message-courier
 short_description: "El servicio de mensajería es un motor de automatización web sin interfaz que vincula registros de identidad internos con portales web externos usando adaptadores inyectados en tiempo de ejecución, manteniendo lógica operativa propietaria fuera del monorepo de código abierto."
 category: services
 type: topic
+content_type: topic
 quality: stub
 status: active
 audience: public

@@ -4,6 +4,7 @@ title: "La arquitectura de tres capas — Software, escaparate, instancias"
 slug: three-layer-architecture
 category: architecture
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

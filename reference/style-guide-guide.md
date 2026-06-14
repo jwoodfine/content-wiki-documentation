@@ -4,6 +4,7 @@ title: "Style guide — guide"
 slug: style-guide-guide
 category: reference
 type: topic
+content_type: topic
 quality: complete
 short_description: "How to write a GUIDE file: the operational runbook format for platform deployment subfolders, covering required six-section structure, terse imperative voice, named actors, command formatting, concrete verification, and the distinction from TOPIC files."
 status: active

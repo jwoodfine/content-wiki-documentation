@@ -4,6 +4,7 @@ title: "Disciplina de cómputo de límite único"
 slug: single-boundary-compute-discipline.es
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "Todo el tráfico de inferencia de IA en un despliegue de la plataforma pasa exclusivamente por el Portero, con la omisión estructuralmente impedida a nivel de kernel."
 status: active

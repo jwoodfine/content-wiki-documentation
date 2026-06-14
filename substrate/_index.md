@@ -4,6 +4,7 @@ title: "Substrate"
 slug: substrate-index
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "The substrate category collects the platform's foundational mechanism concepts — the Compounding Substrate, Apprenticeship Substrate, Citation Substrate, Disclosure Substrate, Trajectory Substrate, Language Protocol Substrate, and the disciplines and primitives that compose them — each describing a structural property the platform relies on rather than a specific service or system."
 status: active

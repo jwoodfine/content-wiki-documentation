@@ -4,6 +4,7 @@ title: "Aplicación de marketing MediaKit"
 slug: app-mediakit-marketing
 category: applications
 type: concept
+content_type: topic
 quality: needs-update
 short_description: "app-mediakit-marketing es un servidor web en Rust que entrega sitios de marketing usando el vocabulario de WordPress sobre una arquitectura soberana de archivos planos. Dos despliegues activos sirven home.woodfinegroup.com y home.pointsav.com."
 status: active

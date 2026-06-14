@@ -6,6 +6,7 @@ short_description: "La Modelización de Información de Construcción es un requ
 language: es
 category: reference
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

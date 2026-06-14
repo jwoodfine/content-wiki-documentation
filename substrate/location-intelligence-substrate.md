@@ -5,6 +5,7 @@ slug: location-intelligence-substrate
 short_description: "A flat-file, open-GIS architecture enabling customers to own geographic datasets end-to-end using Apache-licensed open data and a Rust-aligned open-source rendering stack, with retail co-location analysis as the first deployed surface."
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

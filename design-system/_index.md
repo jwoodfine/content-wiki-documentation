@@ -4,6 +4,7 @@ title: "Design system"
 slug: _index
 category: design-system
 type: reference
+content_type: topic
 quality: complete
 short_description: "The PointSav design system as a platform component — its foundational vocabulary, design philosophy, brand surface context, and the typographic, colour, spacing, and motion foundations that compose the visual identity carried across every operator surface."
 status: active

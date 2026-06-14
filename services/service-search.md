@@ -4,6 +4,7 @@ title: "Inverted index"
 slug: service-search
 category: services
 type: topic
+content_type: topic
 quality: complete
 short_description: "service-search is the Ring 2 full-text search service built on the Tantivy Rust library, providing microsecond retrieval across millions of files through a static binary inverted index that requires no active database process."
 status: active

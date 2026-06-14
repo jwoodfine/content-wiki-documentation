@@ -4,6 +4,7 @@ title: "Disclaimers"
 slug: disclaimers
 category: governance
 type: governance
+content_type: topic
 quality: complete
 short_description: "Disclaimer and terms of use for PointSav Knowledge, the engineering documentation wiki for the PointSav platform."
 status: active

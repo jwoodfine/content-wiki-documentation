@@ -4,6 +4,7 @@ title: "Architecture decisions"
 slug: architecture-decisions
 category: governance
 type: governance
+content_type: topic
 quality: complete
 short_description: "Twelve binding architecture decisions — recorded commitments that govern how the PointSav platform is built and constrain all future engineering work on data handling, human oversight, system separation, and deployment custody."
 status: active

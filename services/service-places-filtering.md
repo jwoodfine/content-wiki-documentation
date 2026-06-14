@@ -4,6 +4,7 @@ title: "Places filtering service"
 slug: service-places-filtering
 category: services
 type: topic
+content_type: topic
 quality: complete
 status: active
 audience: public

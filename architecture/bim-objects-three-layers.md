@@ -5,6 +5,7 @@ slug: bim-objects-three-layers
 short_description: "BIM Objects embed three simultaneous constraint layers — Specification (permanent element identity), Regulation (jurisdiction-specific requirements), and Climate Zone (performance requirements) — as static reference data with a composition rule that applies the more restrictive value."
 category: architecture
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-17

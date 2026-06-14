@@ -4,6 +4,7 @@ title: "PointSav GIS engine"
 slug: pointsav-gis-engine
 category: services
 type: topic
+content_type: topic
 quality: complete
 status: active
 audience: public

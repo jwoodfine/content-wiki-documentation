@@ -5,6 +5,7 @@ slug: style-guide-ticket-comment.es
 short_description: "Estándares editoriales para comentarios de ticket en la plataforma (género COMMS): disciplina de encabezado, estructura qué-cambió-y-qué-sigue, convenciones de campo de estado y cuándo comentar frente a cuándo actualizar la descripción del ticket."
 category: reference
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

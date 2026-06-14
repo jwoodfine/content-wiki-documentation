@@ -4,6 +4,7 @@ title: "La cadena de suministro soberana de cinco etapas"
 slug: five-stage-supply-chain
 category: architecture
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

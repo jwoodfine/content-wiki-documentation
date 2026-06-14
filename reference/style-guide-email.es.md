@@ -5,6 +5,7 @@ slug: style-guide-email.es
 short_description: "Estándares editoriales para correo electrónico externo y formal (género COMMS-EMAIL): disciplina de solicitud primero, requisitos de encabezado, estructura del cuerpo y registro profesional."
 category: reference
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

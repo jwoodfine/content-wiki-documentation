@@ -4,6 +4,7 @@ title: "UK and EU Food Retail Coverage"
 slug: uk-eu-food-retail-coverage
 category: reference
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

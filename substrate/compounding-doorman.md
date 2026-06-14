@@ -4,6 +4,7 @@ title: "The compounding Doorman"
 slug: compounding-doorman
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "The operational pattern at the heart of sovereign AI substrates: a single service that mediates every external compute call, enforces sanitise-and-rehydrate discipline, logs every event to an audit ledger, and accumulates training signal that compounds the substrate over time."
 status: active

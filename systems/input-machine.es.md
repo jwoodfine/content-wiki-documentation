@@ -5,6 +5,7 @@ slug: input-machine
 short_description: "La Máquina de Entrada es la puerta obligatoria de incorporación de documentos en os-console, asignada permanentemente a F12 y respaldada por service-input en el Archivo Totebox."
 category: systems
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

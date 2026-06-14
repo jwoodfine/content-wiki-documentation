@@ -4,6 +4,7 @@ title: "The diode standard"
 slug: diode-standard
 category: architecture
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

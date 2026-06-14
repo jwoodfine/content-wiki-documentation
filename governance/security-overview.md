@@ -4,6 +4,7 @@ title: "Security overview"
 slug: security-overview
 category: governance
 type: topic
+content_type: topic
 quality: complete
 short_description: "The platform's security posture: capability-based hardware isolation, the Diode unidirectional command-flow standard, the Doorman AI boundary, the WORM audit ledger, and how each property is enforced by architecture rather than by policy controls that can be misconfigured."
 status: active

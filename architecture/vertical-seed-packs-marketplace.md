@@ -4,6 +4,7 @@ title: "Vertical seed packs marketplace"
 slug: vertical-seed-packs-marketplace
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 short_description: "PointSav intends to distribute curated industry-specific seed packs as starter taxonomies, enabling tenants to contribute refinements back through a planned marketplace."
 status: active

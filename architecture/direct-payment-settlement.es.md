@@ -4,6 +4,7 @@ title: "Acuerdo de pago directo"
 slug: direct-payment-settlement.es
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 short_description: "El pago por transacciones del mercado está planificado para fluir directamente del comprador al inquilino-cliente; la participación de PointSav es una comisión por transacción en el momento de la liquidación, no una suscripción recurrente."
 status: active

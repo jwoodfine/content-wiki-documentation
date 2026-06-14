@@ -5,6 +5,7 @@ slug: wiki-component-library
 short_description: "Nine reusable interface components that compose a complete wiki article page on the PointSav knowledge platform."
 category: design-system
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

@@ -4,6 +4,7 @@ title: "Sovereign vault and service host"
 slug: totebox-os
 category: systems
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

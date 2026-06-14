@@ -4,6 +4,7 @@ title: "Knowledge commons and service commerce"
 slug: knowledge-commons
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: The economic model that separates what PointSav publishes freely from what it sells — public knowledge artifacts under open licenses, paid service at the point of multi-Totebox aggregation.
 status: active

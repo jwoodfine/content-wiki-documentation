@@ -5,6 +5,7 @@ slug: design-philosophy
 short_description: "El sistema de diseño PointSav es un sustrato auto-alojado propiedad del cliente que se ejecuta en design.pointsav.com y publica investigación de decisiones de diseño junto con valores de tokens en formato DTCG, priorizando interoperabilidad agnóstica respecto a editores y rationale estructurado."
 category: design-system
 type: reference
+content_type: topic
 quality: complete
 status: active
 audience: public

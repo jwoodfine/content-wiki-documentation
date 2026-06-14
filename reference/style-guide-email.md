@@ -4,6 +4,7 @@ title: "Style guide — email"
 slug: style-guide-email
 category: reference
 type: topic
+content_type: topic
 quality: complete
 short_description: "Editorial standards for external and formal email in the platform (COMMS-EMAIL genre): lead-with-ask discipline, header requirements, body structure, and the professional register."
 status: active

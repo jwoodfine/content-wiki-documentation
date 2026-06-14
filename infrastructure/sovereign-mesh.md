@@ -5,6 +5,7 @@ slug: sovereign-mesh
 short_description: "The sovereign mesh is the application-level WireGuard overlay that connects every PointSav Private Network fleet node, carrying signed binary commands without relying on a centralised message broker."
 category: infrastructure
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 language: en

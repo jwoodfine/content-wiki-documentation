@@ -4,6 +4,7 @@ title: "Patrones de diseño"
 slug: patterns-index.es
 category: patterns
 type: topic
+content_type: topic
 quality: complete
 short_description: "La categoría de patrones recoge patrones de diseño nombrados realizados a través de la plataforma — inversión de la fuente de verdad, emparejamiento-como-permiso, runtime sin contenedores, enrutamiento sin ejecución, orden cliente-primero, disciplina de niveles de modelo, patrones de despliegue, el relevo de paso directo, la arquitectura de salto del wiki de conocimiento y la experiencia de inteligencia de ubicación — cada uno una forma recurrente aplicada en la capa editorial, de interfaz o de coordinación."
 status: active

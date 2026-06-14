@@ -4,6 +4,7 @@ title: "os-infrastructure — El sustrato de cómputo"
 slug: infrastructure-os
 category: systems
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

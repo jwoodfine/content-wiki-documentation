@@ -4,6 +4,7 @@ title: "Cobertura de Comercio Minorista de Alimentación en el Reino Unido y la 
 slug: uk-eu-food-retail-coverage
 category: reference
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

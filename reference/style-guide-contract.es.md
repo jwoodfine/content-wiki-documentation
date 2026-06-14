@@ -5,6 +5,7 @@ slug: style-guide-contract.es
 short_description: "Estándares editoriales para documentos de contrato (género LEGAL): disciplina de partes, formato de antecedentes, vocabulario de definiciones, cláusula de vigencia y terminación, y la regla de revisión antes de obligarse."
 category: reference
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

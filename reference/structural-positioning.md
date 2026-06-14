@@ -4,6 +4,7 @@ title: "Structural positioning"
 slug: structural-positioning
 category: reference
 type: concept
+content_type: topic
 quality: complete
 short_description: "Structural positioning is the PointSav approach to market differentiation: articulating architectural commitments that are visible in the code and topology, rather than making named-competitor comparisons or performance benchmarks."
 status: active

@@ -4,6 +4,7 @@ title: "PointSav — company overview and three-organisation structure"
 slug: pointsav-overview
 category: architecture
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

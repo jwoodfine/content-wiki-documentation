@@ -1,6 +1,7 @@
 ---
 schema: foundry-doc-v1
 type: topic
+content_type: topic
 slug: identity-ledger-schema-design
 short_description: "El Identity Ledger proporciona un registro de solo anexión basado en JSONL de identidades de personas canónicas utilizando derivación UUIDv5 determinista de direcciones de correo electrónico y disciplina WORM. Sirve como la fuente unificada para todos los puntos finales de comunicación y copias instantáneas de roles temporales, permitiendo resolución de entidades determinista sin inferencia probabilística."
 title: Diseño del esquema del ledger de identidad

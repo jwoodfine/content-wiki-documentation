@@ -4,6 +4,7 @@ title: "FS security and compliance posture"
 slug: service-fs-security-compliance
 category: services
 type: topic
+content_type: topic
 quality: complete
 short_description: "service-fs is engineered for structural Write-Once-Read-Many storage that satisfies SEC Rule 17a-4(f), eIDAS, and SOC 2 — record modification is not denied at the policy layer; it is denied by the storage engine itself, and external Sigstore Rekor anchoring provides proof-of-state independent of the platform's own systems."
 status: active

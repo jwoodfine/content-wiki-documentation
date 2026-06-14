@@ -4,6 +4,7 @@ title: "Especialista soberano en el lado del cliente — Nivel 0"
 slug: tier-zero-customer-side-sovereign-specialist.es
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "El Nivel 0 Totebox es un despliegue especialista soberano que funciona en el propio hardware del cliente sin ninguna dependencia de nube requerida y con una huella total de 1 GB."
 status: active

@@ -4,6 +4,7 @@ title: "Investigación"
 slug: research.es
 category: research
 type: landing
+content_type: topic
 quality: complete
 short_description: "Documentos de trabajo y marcos analíticos producidos por el programa de investigación de Woodfine Management Corp."
 status: active

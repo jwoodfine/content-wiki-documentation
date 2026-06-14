@@ -4,6 +4,7 @@ title: "Motor GIS de PointSav"
 slug: pointsav-gis-engine.es
 category: services
 type: topic
+content_type: topic
 quality: complete
 status: active
 audience: public

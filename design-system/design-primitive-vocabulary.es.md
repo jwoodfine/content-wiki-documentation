@@ -5,6 +5,7 @@ slug: design-primitive-vocabulary
 short_description: "Documenta los patrones estructurales preservados en la capa de tokens primitivos del sistema de diseño — escalas de color numéricas, aliasing semántico en capas, separación de tipo productivo versus expresivo, y escalas de espaciado numéricas — alineadas con convenciones de campo de 2018 a 2026 utilizando nomenclatura y valores específicos de PointSav."
 category: design-system
 type: reference
+content_type: topic
 quality: complete
 status: active
 audience: public

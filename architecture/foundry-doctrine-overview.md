@@ -4,6 +4,7 @@ title: "PointSav architecture 2030 — an overview"
 slug: foundry-doctrine-overview
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 short_description: A faithful public summary of the PointSav constitutional charter — six pillars, fifty-two structural claims, eight cross-industry inventions, a three-tier compute model, three-ring service architecture, and the economic model that sustains it.
 status: active

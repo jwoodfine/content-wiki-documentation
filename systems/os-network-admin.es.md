@@ -5,6 +5,7 @@ slug: os-network-admin
 short_description: "os-network-admin es el plano de control de una Red Privada PointSav — proporciona enrutamiento de malla WireGuard, la superficie de ceremonia de unión de nodos y la aplicación del Diode Standard, sin poseer ninguna autoridad criptográfica del nivel de archivo."
 category: systems
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 language: es

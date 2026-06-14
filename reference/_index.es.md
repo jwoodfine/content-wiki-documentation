@@ -6,6 +6,7 @@ short_description: "Materiales definitorios para colaboradores en todas las audi
 lang: es
 category: reference
 type: reference
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

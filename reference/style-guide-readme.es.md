@@ -5,6 +5,7 @@ slug: style-guide-readme.es
 short_description: "Estándares editoriales para archivos README.md en raíces de repositorio y proyecto en la plataforma, cubriendo secciones requeridas, orientación del lector y la disciplina de pares bilingües."
 category: reference
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

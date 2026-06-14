@@ -4,6 +4,7 @@ title: "service-slm graph store migration"
 slug: service-slm-graph-store-migration
 category: services
 type: concept
+content_type: topic
 quality: pre-build
 status: pre-build
 audience: vendor-public

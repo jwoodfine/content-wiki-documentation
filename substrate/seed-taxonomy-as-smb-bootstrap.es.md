@@ -4,6 +4,7 @@ title: "Taxonomía semilla como Bootstrap para PYMEs"
 slug: seed-taxonomy-as-smb-bootstrap.es
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "Cada despliegue de inquilino provisiona una taxonomía semilla de cuatro partes — Arquetipos, Plan de Cuentas, Dominios, Temas — como el arranque del grafo de conocimiento."
 status: active

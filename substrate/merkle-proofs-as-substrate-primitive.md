@@ -4,6 +4,7 @@ title: "Merkle proofs as a substrate primitive"
 slug: merkle-proofs-as-substrate-primitive
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "Merkle proofs are the cryptographic mechanism that lets the platform substrate guarantee — to any third party, without trust — that a specific record is part of an append-only log and that the log has not been rewritten between two observed points in time."
 status: active

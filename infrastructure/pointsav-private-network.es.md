@@ -5,6 +5,7 @@ slug: pointsav-private-network
 short_description: "La Red Privada de PointSav es la malla WireGuard privada que conecta los nodos de la flota de Woodfine, proporcionando transporte cifrado sin otorgar acceso a la capa de aplicación de los servicios que se ejecutan en esos nodos."
 category: infrastructure
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

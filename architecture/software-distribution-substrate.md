@@ -4,6 +4,7 @@ title: "PointSav Software Distribution Substrate"
 slug: software-distribution-substrate
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

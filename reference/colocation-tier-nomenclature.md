@@ -5,6 +5,7 @@ slug: colocation-tier-nomenclature
 short_description: "Definition and criteria for the T1 Regional, T2 District, and T3 Local classification tiers applied to every co-location cluster, including the two-pass DBSCAN algorithm and the Change B span gate."
 category: reference
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-06-10

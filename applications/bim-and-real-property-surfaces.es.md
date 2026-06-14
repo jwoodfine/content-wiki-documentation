@@ -4,6 +4,7 @@ title: "bim-and-real-property-surfaces"
 slug: bim-and-real-property-surfaces
 category: applications
 type: concept
+content_type: topic
 quality: complete
 short_description: "BIM y superficies de bienes raíces describe cómo PointSav trata el Modelado de Información de Construcción como un dominio operativo de primera clase, con herramientas de sistema de diseño dedicadas, disciplina de registro ISO 19650 y patrones de archivo Totebox."
 status: active

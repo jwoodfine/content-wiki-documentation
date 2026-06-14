@@ -4,6 +4,7 @@ title: "Style guide — README"
 slug: style-guide-readme
 category: reference
 type: topic
+content_type: topic
 quality: complete
 short_description: "Editorial standards for README.md files at repo roots and project roots in the platform, covering required sections, reader orientation, and the bilingual pair discipline."
 status: active

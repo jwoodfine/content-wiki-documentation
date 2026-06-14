@@ -4,6 +4,7 @@ title: "Knowledge-graph-grounded apprenticeship"
 slug: knowledge-graph-grounded-apprenticeship
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "The Doorman consults the per-tenant knowledge graph before every inference request, producing training tuples where the graph and the model adapter co-evolve."
 status: active

@@ -4,6 +4,7 @@ title: "Style guide — memo"
 slug: style-guide-memo
 category: reference
 type: topic
+content_type: topic
 quality: complete
 short_description: "Editorial standards for internal memoranda (PROSE-MEMO genre) in the platform: header discipline, section order, the recommendation-first convention, and when a memo is the right artifact."
 status: active

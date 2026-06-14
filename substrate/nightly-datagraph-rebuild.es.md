@@ -4,6 +4,7 @@ title: "Reconstrucción nocturna del grafo de datos"
 slug: nightly-datagraph-rebuild.es
 category: substrate
 type: concept
+content_type: topic
 status: stub
 short_description: "El proceso programado que reconstruye el grafo de conocimiento de la plataforma a partir de fuentes canónicas de archivos planos cada noche, produciendo un substrato consultable desde entradas deterministas sin intervención de inteligencia artificial."
 bcsc_class: public-disclosure-safe

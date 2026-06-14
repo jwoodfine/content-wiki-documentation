@@ -4,6 +4,7 @@ title: "Console input application"
 slug: app-console-input
 category: applications
 type: app
+content_type: topic
 quality: complete
 short_description: "app-console-input is the F12 surface in os-console — the structured input gate through which raw external files enter a Totebox before being sealed into the verified ledger."
 status: active

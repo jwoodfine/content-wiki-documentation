@@ -5,6 +5,7 @@ slug: decode-time-constraints.es
 short_description: "Las restricciones de tiempo de decodificación son reglas estructurales aplicadas a la salida de un modelo de lenguaje en cada paso de emisión de token, haciendo que el vocabulario prohibido o las respuestas estructuralmente inválidas sean matemáticamente imposibles de producir en lugar de detectarlas después del hecho."
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

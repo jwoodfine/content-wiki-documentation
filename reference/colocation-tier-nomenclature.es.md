@@ -5,6 +5,7 @@ slug: colocation-tier-nomenclature
 short_description: "Definición y criterios para los niveles de clasificación T1 Regional, T2 Distrito y T3 Local aplicados a cada clúster de colocalización, incluyendo el algoritmo DBSCAN de dos pasadas y la barrera de extensión del Cambio B."
 category: reference
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-06-10

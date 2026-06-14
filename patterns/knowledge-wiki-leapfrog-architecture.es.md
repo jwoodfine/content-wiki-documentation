@@ -5,6 +5,7 @@ slug: knowledge-wiki-leapfrog-architecture.es
 short_description: "El motor app-mediakit-knowledge sirve instancias de wiki desde archivos Markdown planos en repositorios git con elementos de interfaz con forma de Wikipedia, diseñado para alcanzar paridad completa de memoria muscular de Wikipedia antes de agregar una capa de diferenciación que cubra verificación de citas, provenance de rastro de investigación y edición integrada con IA."
 category: patterns
 type: topic
+content_type: topic
 quality: complete
 status: active
 language: es

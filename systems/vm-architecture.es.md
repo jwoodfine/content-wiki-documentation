@@ -5,6 +5,7 @@ slug: vm-architecture
 short_description: "La plataforma PointSav organiza sus despliegues en tiempo de ejecución en cinco tipos de máquinas virtuales — VM-Totebox, VM-MediaKit, VM-Orchestration, VM-PrivateGit y VM-Infrastructure — cada uno correspondiendo exactamente a un binario fuente os-*."
 category: systems
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 language: es

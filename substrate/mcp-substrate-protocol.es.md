@@ -4,6 +4,7 @@ title: "MCP como protocolo substrato"
 slug: mcp-substrate-protocol.es
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "Cada servicio del Anillo 1 y Anillo 2 expone una interfaz de servidor MCP como su contrato externo primario, con el Portero actuando como la puerta de enlace MCP."
 status: active

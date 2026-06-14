@@ -4,6 +4,7 @@ title: "La pasarela de inferencia por niveles — enrutamiento de IA local-prime
 slug: soft-slm-tiered-gateway
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "Una pasarela de inferencia por niveles que enruta las solicitudes de IA primero al modelo local, escalando a nodos GPU remotos y APIs externas solo cuando el nivel local no puede responder — minimizando la latencia, el coste y la exposición de datos mientras se mantiene la capacidad completa bajo demanda."
 status: active

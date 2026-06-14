@@ -4,6 +4,7 @@ title: "Location intelligence platform"
 slug: location-intelligence-platform
 category: applications
 type: topic
+content_type: topic
 quality: complete
 short_description: "The PointSav Location Intelligence platform is a customer-owned flat-file GIS application designed for retail cluster analysis and strategic site selection — composed of app-orchestration-gis (the analytics engine) and pointsav-gis-engine (the rendering layer), with every dataset, algorithm, and rendering decision under the customer's direct control."
 status: active

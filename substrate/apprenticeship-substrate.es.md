@@ -6,6 +6,7 @@ lang: es
 paired_with: apprenticeship-substrate.md
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "El mecanismo de plataforma que enruta el trabajo de código y editorial primero a través de un modelo de lenguaje pequeño local, captura un veredicto sénior firmado para cada intento, y usa los pares de preferencia resultantes como señal de preentrenamiento continuo."
 status: active

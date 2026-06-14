@@ -6,6 +6,7 @@ short_description: "Los sistemas operativos de propósito específico que compar
 lang: es
 category: systems
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

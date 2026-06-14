@@ -4,6 +4,7 @@ title: "app-mediakit-marketing — WordPress-leapfrog marketing landing server"
 slug: app-mediakit-marketing
 category: applications
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

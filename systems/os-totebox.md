@@ -4,6 +4,7 @@ title: "ToteboxOS"
 slug: os-totebox
 category: systems
 type: concept
+content_type: topic
 quality: stub
 status: pre-build
 audience: vendor-public

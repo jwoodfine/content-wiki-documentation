@@ -4,6 +4,7 @@ title: "Spot VM Lifecycle — Single Controller and Kill Switch Pattern"
 slug: spot-vm-lifecycle-kill-switch
 category: architecture
 type: topic
+content_type: topic
 status: stable
 bcsc_class: no-disclosure-implication
 last_edited: 2026-06-11

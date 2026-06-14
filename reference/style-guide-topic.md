@@ -4,6 +4,7 @@ title: "Style guide — topic"
 slug: style-guide-topic
 category: reference
 type: topic
+content_type: topic
 quality: complete
 short_description: "Editorial standards for TOPIC files in content wikis: the Bloomberg four-paragraph lede, 75/25 institutional register, CFO sentence test, named actors rule, voice, forward-looking language, citation discipline, and the distinction from GUIDE files."
 status: active

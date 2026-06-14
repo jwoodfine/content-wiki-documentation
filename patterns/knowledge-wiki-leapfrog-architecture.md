@@ -5,6 +5,7 @@ slug: knowledge-wiki-leapfrog-architecture
 short_description: "The app-mediakit-knowledge engine serves wiki instances from flat Markdown files in git repositories with Wikipedia-shaped interface elements, designed to reach full Wikipedia muscle-memory parity before adding a differentiation layer covering citation verification, research trail provenance, and AI-integrated editing."
 category: patterns
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: no-disclosure-implication

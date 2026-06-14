@@ -4,6 +4,7 @@ title: "The adapter composition algebra"
 slug: adapter-composition
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: The operating-system metaphor for AI in PointSav — the Doorman as kernel, adapters as processes, service-content as filesystem — and the composition algebra that assembles per-request intelligence from versioned, customer-owned LoRA adapter layers.
 status: active

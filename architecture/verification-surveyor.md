@@ -4,6 +4,7 @@ title: "Verification surveyor"
 slug: verification-surveyor
 category: architecture
 type: topic
+content_type: topic
 quality: stub
 short_description: "The Verification Surveyor is the human-in-the-loop component of service-people that presents extracted identity fragments to an operator for manual verification before they are permanently committed to the verified ledger."
 status: active

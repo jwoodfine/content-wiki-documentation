@@ -1,6 +1,7 @@
 ---
 schema: foundry-doc-v1
 type: topic
+content_type: topic
 slug: flat-file-bim-leapfrog
 short_description: "The Building Design System is constructed on five architectural constraints — flat-file storage, open standards, Rust and Tauri, offline-first operation, and Apache 2.0 licensing — enabling vendor-obsolescence-survivable building information models. Asset-anchored ownership, offline capability, IoT integration, and convergence of BIM with lease and financial ledgers follow from the architecture itself."
 title: "The flat-file BIM leapfrog"

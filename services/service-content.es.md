@@ -4,6 +4,7 @@ title: "Motor de gravedad"
 slug: service-content
 category: services
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

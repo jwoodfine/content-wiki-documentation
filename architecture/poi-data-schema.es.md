@@ -5,6 +5,7 @@ slug: poi-data-schema.es
 short_description: "El esquema de datos POI define estructuras de registro para datos de ubicación ingeridos de OpenStreetMap y Overture Maps Foundation, normalizados en un formato JSONL unificado antes del análisis de cluster. Los QIDs de Wikidata sirven como identificador de cadena principal y los modelos de sublocalización padre-hijo manejan servicios complementarios de marca compartida."
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 status: active
 language: es

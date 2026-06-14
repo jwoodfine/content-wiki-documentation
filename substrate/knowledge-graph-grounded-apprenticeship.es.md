@@ -4,6 +4,7 @@ title: "Aprendizaje fundamentado en grafos de conocimiento"
 slug: knowledge-graph-grounded-apprenticeship.es
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "El Portero consulta el grafo de conocimiento por inquilino antes de cada solicitud de inferencia, produciendo tuplas de entrenamiento donde el grafo y el adaptador del modelo co-evolucionan."
 status: active

@@ -4,6 +4,7 @@ title: "La familia de SO — Ocho sistemas operativos, un sustrato"
 slug: os-family-overview
 category: systems
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

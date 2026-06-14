@@ -4,6 +4,7 @@ title: "Código para máquinas primero"
 slug: code-for-machines-first.es
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "Cada contrato entre servicios, registro de auditoría, configuración y ontología es legible por máquinas como superficie primaria; las interfaces para humanos son capas sobre APIs primero-para-máquinas."
 status: active

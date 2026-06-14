@@ -4,6 +4,7 @@ title: "Crypto Payment and License Issuance Architecture"
 slug: crypto-license-sales-architecture
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

@@ -4,6 +4,7 @@ title: "Infrastructure"
 slug: _index
 category: infrastructure
 type: topic
+content_type: topic
 quality: complete
 short_description: "Fleet deployment topology, cloud operational runtime, and physical infrastructure — the WORM ledger storage substrate, edge deployment patterns, the private WireGuard mesh, sovereign telemetry, key-wiring operations, and the bookkeeping vault that anchors the SMB accounting surface."
 status: active

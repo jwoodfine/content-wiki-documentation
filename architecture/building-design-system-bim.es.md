@@ -6,6 +6,7 @@ short_description: "Una plataforma de sistema de diseño para el entorno constru
 language: es
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

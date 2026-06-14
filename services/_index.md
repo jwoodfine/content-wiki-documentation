@@ -4,6 +4,7 @@ title: "Services"
 slug: _index
 category: services
 type: topic
+content_type: topic
 quality: complete
 short_description: "The autonomous services that implement Ring 1 boundary ingest and Ring 2 deterministic knowledge processing in the PointSav three-ring architecture — grouped by ring layer and function."
 status: active

@@ -5,6 +5,7 @@ slug: poi-data-schema
 short_description: "The POI data schema defines record structures for location data ingested from OpenStreetMap and Overture Maps Foundation, normalized into a unified JSONL format before cluster analysis. Wikidata QIDs serve as the primary chain identifier, and parent-child sub-location models handle co-branded ancillary services."
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

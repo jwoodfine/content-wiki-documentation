@@ -5,6 +5,7 @@ slug: ppn-architecture-overview
 short_description: "The PointSav Private Network (PPN) is the physical infrastructure plane of the PointSav stack — responsible for enrolling physical nodes into a cryptographically authenticated mesh, managing the compute resources those nodes provide, and hosting the virtual machines that run Totebox Archives and orchestration gateways."
 category: architecture
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 language: en

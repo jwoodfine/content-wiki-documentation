@@ -5,6 +5,7 @@ slug: design-motion
 short_description: "Motion token foundations for the PointSav design system — duration scale, easing curves, and reduced-motion variants in DTCG format."
 category: design-system
 type: reference
+content_type: topic
 status: stub
 audience: public
 bcsc_class: public-disclosure-safe

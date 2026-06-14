@@ -5,6 +5,7 @@ slug: sovereign-replacement-initiative
 short_description: "La Iniciativa de Reemplazo Soberano es el programa de gobernanza de ingeniería que rastrea dependencias de terceros, las aísla en directorios de componentes en cuarentena, y coordina los programas moonshot activos que construyen reemplazos nativos."
 category: governance
 type: topic
+content_type: topic
 quality: complete
 status: active
 audience: public

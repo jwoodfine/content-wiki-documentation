@@ -5,6 +5,7 @@ slug: totebox-orchestration
 short_description: "Totebox Orchestration describe la capa de coordinación que administra múltiples contenedores de archivo de datos Totebox, manteniendo motores de ejecución de software aislados de libros mayores corporativos pasivos en implementaciones."
 category: systems
 type: topic
+content_type: topic
 quality: complete
 status: active
 audience: public

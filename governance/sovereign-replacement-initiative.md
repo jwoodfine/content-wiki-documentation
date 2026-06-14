@@ -4,6 +4,7 @@ title: "Sovereign replacement initiative"
 slug: sovereign-replacement-initiative
 category: governance
 type: topic
+content_type: topic
 quality: complete
 short_description: "The Sovereign Replacement Initiative is the engineering governance program that tracks third-party dependencies, isolates them in quarantined component directories, and coordinates the active moonshot programs that build native replacements."
 status: active

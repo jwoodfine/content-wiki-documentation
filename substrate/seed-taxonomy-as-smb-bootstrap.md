@@ -4,6 +4,7 @@ title: "Seed taxonomy as SMB bootstrap"
 slug: seed-taxonomy-as-smb-bootstrap
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "Every tenant deployment provisions a four-part seed taxonomy — Archetypes, Chart of Accounts, Domains, Themes — as the knowledge graph bootstrap."
 status: active

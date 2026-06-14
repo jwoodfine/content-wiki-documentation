@@ -5,6 +5,7 @@ slug: building-design-system-bim
 short_description: "A design-system platform for the built environment organized into eight BIM Object primitive categories and ten universal AEC interface components, providing shared specification vocabulary for independent authoring surfaces to coordinate without introducing new learning surfaces."
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

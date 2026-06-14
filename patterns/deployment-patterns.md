@@ -4,6 +4,7 @@ title: "Deployment patterns"
 slug: deployment-patterns
 category: patterns
 type: concept
+content_type: topic
 quality: complete
 short_description: "Deployment patterns describes the six canonical configurations in which the PointSav substrate is deployed — each built on the same five primitives and OS surface, with the Chart of Accounts and compliance surface adapted per segment."
 status: active

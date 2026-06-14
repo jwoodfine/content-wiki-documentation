@@ -4,6 +4,7 @@ title: "Zero-container runtime"
 slug: zero-container-runtime
 category: patterns
 type: topic
+content_type: topic
 quality: complete
 short_description: The structural commitment that every PointSav deployment runs as a Linux binary under systemd on a plain virtual machine or bare-metal host, with no container runtime, container orchestrator, or managed-runtime platform.
 status: active

@@ -4,6 +4,7 @@ title: "The five-stage sovereign supply chain"
 slug: five-stage-supply-chain
 category: architecture
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

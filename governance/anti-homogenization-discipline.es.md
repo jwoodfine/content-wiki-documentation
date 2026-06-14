@@ -4,6 +4,7 @@ title: "Anti-homogenization discipline"
 slug: anti-homogenization-discipline.es
 category: governance
 type: topic
+content_type: topic
 quality: stub
 short_description: "Anti-homogenization discipline is the architectural posture that resists AI writing assistants pulling contributors toward a single voice, by defaulting to flagging potential issues rather than silently rewriting text."
 status: active

@@ -4,6 +4,7 @@ title: "Style guide — meeting notes"
 slug: style-guide-meeting-notes
 category: reference
 type: topic
+content_type: topic
 quality: complete
 short_description: "Editorial standards for meeting notes in the platform (COMMS genre): header fields, agenda discipline, decisions-versus-notes distinction, and the action-items table format."
 status: active

@@ -4,6 +4,7 @@ title: "Catálogo de Guías Operacionales"
 slug: guide-catalog
 category: reference
 type: topic
+content_type: topic
 status: stable
 last_edited: 2026-05-25
 editor: pointsav-engineering

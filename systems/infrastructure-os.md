@@ -4,6 +4,7 @@ title: "Compute substrate"
 slug: infrastructure-os
 category: systems
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

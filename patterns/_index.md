@@ -4,6 +4,7 @@ title: "Design patterns"
 slug: patterns-index
 category: patterns
 type: topic
+content_type: topic
 quality: complete
 short_description: "The patterns category collects named design patterns realised across the platform — source-of-truth inversion, pairing-as-permission, zero-container runtime, zero-execution routing, customer-first ordering, model-tier discipline, deployment patterns, the passthrough relay, the knowledge-wiki leapfrog architecture, and the location-intelligence UX — each a recurring shape applied at the editorial, interface, or coordination layer."
 status: active

@@ -4,6 +4,7 @@ title: "Arquitectura de Resolución de Nombres Regionales"
 slug: regional-name-resolution
 category: architecture
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

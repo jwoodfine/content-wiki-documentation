@@ -5,6 +5,7 @@ slug: design-motion
 short_description: "Fundamentos de tokens de movimiento para el sistema de diseño PointSav: escala de duraciones, curvas de aceleración y variantes de movimiento reducido en formato DTCG."
 category: design-system
 type: reference
+content_type: topic
 status: stub
 audience: public
 bcsc_class: public-disclosure-safe

@@ -5,6 +5,7 @@ slug: city-code-as-composable-geometry
 short_description: "An architectural model that encodes regulatory requirements directly into element specifications as geometric and numeric constraints rather than applying them post-design, making non-compliant configurations structurally impossible by construction."
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

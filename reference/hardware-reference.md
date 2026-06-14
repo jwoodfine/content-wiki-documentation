@@ -5,6 +5,7 @@ slug: hardware-reference
 short_description: "Reference hardware profiles for developer workstations and fleet devices, specifying CPU architectural requirements including Haswell-generation x86_64 and fsgsbase support, and defining three infrastructure deployment patterns from on-premise to cloud."
 category: reference
 type: reference
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

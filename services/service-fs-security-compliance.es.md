@@ -4,6 +4,7 @@ title: "Postura de seguridad y cumplimiento de service-fs"
 slug: service-fs-security-compliance.es
 category: services
 type: topic
+content_type: topic
 quality: complete
 short_description: "service-fs está diseñado para almacenamiento estructural Write-Once-Read-Many que satisface SEC Rule 17a-4(f), eIDAS y SOC 2 — la modificación de registros no se deniega en la capa de políticas; se deniega por el motor de almacenamiento mismo, y el anclaje externo a Sigstore Rekor proporciona una prueba de estado independiente de los propios sistemas de la plataforma."
 status: active

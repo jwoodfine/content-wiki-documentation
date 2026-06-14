@@ -6,6 +6,7 @@ short_description: "El patrón de retransmisión de paso no mantiene estado de d
 status: active
 category: patterns
 type: topic
+content_type: topic
 quality: complete
 last_edited: 2026-05-09
 editor: pointsav-engineering

@@ -4,6 +4,7 @@ title: "SLM and Yo-Yo operational state"
 slug: service-slm-yoyo-operational
 category: services
 type: topic
+content_type: topic
 quality: complete
 short_description: "How service-SLM's three-tier inference router and the Yo-Yo GPU burst VM operate, including the Doorman boundary, Tier A/B configuration, apprenticeship brief queue, and idle-shutdown cost ceiling."
 status: active

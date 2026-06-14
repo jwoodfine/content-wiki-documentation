@@ -4,6 +4,7 @@ title: "The trajectory substrate"
 slug: trajectory-substrate
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "The platform mechanism that converts operational work — commits, sessions, operator feedback — into structured JSONL training tuples, routing them into a continued-pretraining corpus that improves the OLMo base model over time."
 status: active

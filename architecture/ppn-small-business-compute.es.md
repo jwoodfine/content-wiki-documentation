@@ -4,6 +4,7 @@ title: "La Red de Plataforma Privada: cómputo agrupado a partir del hardware qu
 slug: ppn-small-business-compute
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

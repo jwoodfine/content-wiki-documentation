@@ -6,6 +6,7 @@ short_description: "Los servicios autónomos que implementan ingestión de lími
 lang: es
 category: services
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

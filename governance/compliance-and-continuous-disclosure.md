@@ -4,6 +4,7 @@ title: "Compliance and continuous disclosure"
 slug: compliance-and-continuous-disclosure
 category: governance
 type: concept
+content_type: topic
 quality: complete
 short_description: "Compliance and continuous disclosure describes the regulatory frameworks the PointSav architecture addresses and the structural approach it takes to expose audit evidence continuously rather than through annual point-in-time certification cycles."
 status: active

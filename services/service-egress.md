@@ -1,6 +1,7 @@
 ---
 schema: foundry-doc-v1
 type: topic
+content_type: topic
 slug: service-egress
 short_description: "The data sovereignty service that physically transfers cloud-stored payloads to local cold storage, executing flow-through protocols that eliminate vendor-side data retention and cloud storage dependency."
 title: "Egress service"

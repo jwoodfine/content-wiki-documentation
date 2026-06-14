@@ -4,6 +4,7 @@ title: "The disclosure substrate"
 slug: disclosure-substrate
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "The mechanism that makes a version-controlled Markdown wiki the primary continuous-disclosure record — signed authorship chains, cryptographic content hashes, and planned per-jurisdiction export adapters producing regulator-compliant outputs from a single source held under the issuer's own infrastructure."
 status: active

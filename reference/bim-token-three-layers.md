@@ -5,6 +5,7 @@ slug: bim-token-three-layers
 short_description: "A BIM Token embeds three simultaneous constraint layers — Specification, Regulation, and Climate Zone — as static reference data without runtime selection, allowing regulatory requirements and climate performance to compose into effective design constraints."
 category: reference
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

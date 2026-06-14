@@ -4,6 +4,7 @@ title: "Three-layer stack"
 slug: 3-layer-stack
 category: architecture
 type: topic
+content_type: topic
 quality: stub
 short_description: "The Three-Layer Stack is the infrastructure decomposition pattern used across PointSav deployments, separating raw computing capability, isolated platform execution, and secure operator access into three distinct layers."
 status: active

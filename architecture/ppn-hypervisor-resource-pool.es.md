@@ -5,6 +5,7 @@ slug: ppn-hypervisor-resource-pool
 short_description: "La capa de hipervisor PPN gestiona un pool de CPU y RAM por nodo, asignando dinámicamente esos recursos entre VMs mediante virtio_balloon para la recuperación de memoria y pesos de planificación cgroups v2 para CPU."
 category: architecture
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 language: es

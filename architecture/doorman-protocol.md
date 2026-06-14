@@ -5,6 +5,7 @@ slug: doorman-protocol
 short_description: "The Doorman is the sole AI request boundary through which every inference call routes — enforcing sanitise-and-rehydrate discipline once, logging every call to an immutable audit ledger, and capturing the training signal that compounds the platform over time."
 category: architecture
 type: concept
+content_type: topic
 status: active
 bcsc_class: current-fact
 forward_looking: true

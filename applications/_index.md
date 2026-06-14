@@ -4,6 +4,7 @@ title: "Applications"
 slug: _index
 category: applications
 type: topic
+content_type: topic
 quality: complete
 short_description: "User-facing and internal applications built on the PointSav platform substrate — the wiki engine, marketing surface, GIS analytics engine, the browser developer workbench, the structured-input gate, and the design-intent articles that frame how those surfaces are composed."
 status: active

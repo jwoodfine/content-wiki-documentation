@@ -4,6 +4,7 @@ title: "The language-protocol substrate"
 slug: language-protocol-substrate
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "The editorial infrastructure that encodes register, brand voice, document sub-type, and target audience as reusable prompt scaffolding — four adapter families, eighteen genre templates, a frontmatter validator, and a four-service split that lets a customer replace any single component without touching the rest."
 status: active

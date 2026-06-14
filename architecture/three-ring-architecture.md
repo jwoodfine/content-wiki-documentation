@@ -4,6 +4,7 @@ title: "Three-ring architecture"
 slug: three-ring-architecture
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 short_description: "The durable composition pattern for the PointSav platform: three concentric rings with strict one-way dependencies, where the AI ring is structurally optional and the deterministic data pipeline operates fully without it."
 status: active

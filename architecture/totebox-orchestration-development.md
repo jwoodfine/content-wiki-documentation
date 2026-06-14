@@ -4,6 +4,7 @@ title: "Totebox orchestration as the development environment"
 slug: totebox-orchestration-development
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 short_description: "PointSav's development environment is itself deployed as a Totebox Orchestration instance — the workspace that builds the platform runs on the same architecture the platform delivers to customers."
 status: active

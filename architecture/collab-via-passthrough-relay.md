@@ -4,6 +4,7 @@ title: "Real-time collaboration via passthrough relay"
 slug: collab-via-passthrough-relay
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 short_description: "The passthrough relay pattern for real-time collaborative editing: the server holds no document state, git remains the sole canonical record, and CRDT state is session-ephemeral by construction — as implemented in app-mediakit-knowledge's collab feature."
 status: active

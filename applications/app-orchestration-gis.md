@@ -4,6 +4,7 @@ title: "GIS orchestration application"
 slug: app-orchestration-gis
 category: applications
 type: topic
+content_type: topic
 quality: complete
 status: active
 audience: public

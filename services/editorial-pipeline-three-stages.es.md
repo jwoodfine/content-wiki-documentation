@@ -4,6 +4,7 @@ title: "El Proceso Editorial en Tres Etapas"
 slug: editorial-pipeline-three-stages
 category: services
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-06-10

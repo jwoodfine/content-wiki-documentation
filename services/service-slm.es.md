@@ -4,6 +4,7 @@ title: "Modelo de lenguaje pequeño institucional"
 slug: service-slm
 category: services
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

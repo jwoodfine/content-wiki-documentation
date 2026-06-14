@@ -6,6 +6,7 @@ short_description: "Las cuatro convenciones universales de interfaz — árbol e
 language: es
 category: architecture
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-17

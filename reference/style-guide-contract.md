@@ -4,6 +4,7 @@ title: "Style guide — contract"
 slug: style-guide-contract
 category: reference
 type: topic
+content_type: topic
 quality: complete
 short_description: "Editorial standards for contract documents (LEGAL genre) in the platform: parties discipline, recitals format, definitions vocabulary, term and termination clause, and the review-before-binding rule."
 status: active

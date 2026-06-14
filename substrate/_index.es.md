@@ -4,6 +4,7 @@ title: "Sustrato"
 slug: substrate-index.es
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "La categoría de sustrato recoge los conceptos fundacionales de mecanismo de la plataforma — el Sustrato Compuesto, el Sustrato de Aprendizaje, el Sustrato de Citación, el Sustrato de Divulgación, el Sustrato de Trayectoria, el Sustrato de Protocolo Lingüístico, y las disciplinas y primitivas que los componen — cada uno describiendo una propiedad estructural en la que la plataforma se apoya en lugar de un servicio o sistema específico."
 status: active

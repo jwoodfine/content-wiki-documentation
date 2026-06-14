@@ -4,6 +4,7 @@ title: "Ciclo Diario de Enriquecimiento Yo-Yo"
 slug: yoyo-daily-enrichment-cycle
 category: services
 type: topic
+content_type: topic
 status: stable
 bcsc_class: no-disclosure-implication
 last_edited: 2026-06-11

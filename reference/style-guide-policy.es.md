@@ -5,6 +5,7 @@ slug: style-guide-policy.es
 short_description: "Estándares editoriales para documentos de política (género LEGAL): disciplina de alcance, formato de reglas numeradas, cláusula de aplicación, cadencia de revisión y distinción entre política y ADR."
 category: reference
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

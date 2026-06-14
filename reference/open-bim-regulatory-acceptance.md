@@ -5,6 +5,7 @@ slug: open-bim-regulatory-acceptance
 short_description: "Building Information Modelling is a baseline procurement requirement across US federal agencies and European jurisdictions, with buildingSMART certification validating Open BIM compliance. Sovereign data architecture addresses ITAR, GDPR, and HIPAA requirements that cloud-hosted BIM platforms cannot satisfy structurally."
 category: reference
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

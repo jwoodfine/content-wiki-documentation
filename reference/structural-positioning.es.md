@@ -4,6 +4,7 @@ title: "structural-positioning"
 slug: structural-positioning
 category: reference
 type: concept
+content_type: topic
 quality: complete
 short_description: "El posicionamiento estructural es el enfoque de PointSav para la diferenciación de mercado: articular compromisos arquitectónicos visibles en el código y la topología, en lugar de hacer comparaciones con competidores nombrados o referencias de rendimiento."
 status: active

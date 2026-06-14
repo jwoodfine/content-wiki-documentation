@@ -5,6 +5,7 @@ slug: gis-as-bim-substrate
 short_description: "What the PointSav GIS co-location dataset offers a BIM composition pipeline: cluster manifold fields, civic context layers, and stability guarantees."
 category: architecture
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

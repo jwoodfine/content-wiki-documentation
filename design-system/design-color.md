@@ -5,6 +5,7 @@ slug: design-color
 short_description: "Color token foundations for the PointSav design system — primitive palette, semantic aliases, and dark-mode pairings in DTCG format."
 category: design-system
 type: reference
+content_type: topic
 status: stub
 audience: public
 bcsc_class: public-disclosure-safe

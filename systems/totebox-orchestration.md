@@ -4,6 +4,7 @@ title: "Totebox orchestration"
 slug: totebox-orchestration
 category: systems
 type: topic
+content_type: topic
 quality: complete
 short_description: "Totebox Orchestration describes the coordination layer that manages multiple Totebox data-archive containers, keeping software execution engines isolated from passive corporate ledgers across deployments."
 status: active

@@ -5,6 +5,7 @@ slug: knowledge-wiki-home-page-design
 short_description: "Cómo la página de inicio de documentation.pointsav.com hereda las convenciones estructurales de Wikipedia y las extiende para lectores técnicos y del ámbito financiero."
 category: applications
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

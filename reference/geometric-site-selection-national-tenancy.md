@@ -4,6 +4,7 @@ title: "Retail Anchor Co-location Composition as a Spatial Leading Indicator of 
 slug: geometric-site-selection-national-tenancy
 category: reference
 type: research
+content_type: research
 quality: in-progress
 status: draft
 audience: researcher

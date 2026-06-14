@@ -4,6 +4,7 @@ title: "os-mediakit — El dispositivo de cumplimiento soberano"
 slug: mediakit-os
 category: systems
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

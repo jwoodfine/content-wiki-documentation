@@ -5,6 +5,7 @@ slug: wiki-typography-system
 short_description: "Inter and Source Serif 4 type stack, heading scale, and spacing tokens for the PointSav wiki."
 category: design-system
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-06-01

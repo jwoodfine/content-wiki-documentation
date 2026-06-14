@@ -4,6 +4,7 @@ title: "Contribuir a PointSav Knowledge"
 slug: contribute.es
 category: governance
 type: governance
+content_type: topic
 quality: complete
 short_description: "Cómo proponer adiciones, correcciones y nuevos artículos para PointSav Knowledge."
 status: active

@@ -5,6 +5,7 @@ slug: os-infrastructure-ppn-node
 short_description: "os-infrastructure is the operating system layer for PointSav Private Network nodes — its sole purpose is to set up, operate, and maintain a PPN node: managing WireGuard tunnels, hosting guest virtual machines, and exposing the operator control plane."
 category: systems
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 language: en

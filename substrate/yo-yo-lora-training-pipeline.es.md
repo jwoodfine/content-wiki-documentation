@@ -5,6 +5,7 @@ slug: yo-yo-lora-training-pipeline.es
 short_description: "La tubería nocturna de dos fases en Yo-Yo #1: Fase 1 ejecuta extracción de entidad para el DataGraph empresarial; Fase 2 entrena un adaptador LoRA contra corpus de ingeniería y aprendizaje usando QLoRA en una única GPU L4."
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

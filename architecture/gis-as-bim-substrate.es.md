@@ -5,6 +5,7 @@ slug: gis-as-bim-substrate
 short_description: "Lo que el dataset de co-ubicación GIS de PointSav ofrece a un canal de composición BIM: campos del manifold de clusters, capas de contexto cívico y garantías de estabilidad."
 category: architecture
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

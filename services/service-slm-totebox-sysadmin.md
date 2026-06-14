@@ -4,6 +4,7 @@ title: "SLM as Totebox sysadmin and support centre"
 slug: service-slm-totebox-sysadmin
 category: services
 type: topic
+content_type: topic
 quality: complete
 short_description: "How service-slm becomes the operational assistant and support centre for Totebox Archive and Totebox Orchestration deployments — the training strategy, the ten operational task families, and the four-stage pipeline from corpus capture to per-tenant LoRA adapters."
 status: active

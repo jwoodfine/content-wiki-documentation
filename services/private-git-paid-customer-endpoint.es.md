@@ -4,6 +4,7 @@ title: "Punto de acceso privado para descarga binaria de clientes con licencia"
 slug: private-git-paid-customer-endpoint
 category: services
 type: topic
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

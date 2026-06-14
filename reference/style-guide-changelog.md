@@ -4,6 +4,7 @@ title: "Style guide — changelog"
 slug: style-guide-changelog
 category: reference
 type: topic
+content_type: topic
 quality: complete
 short_description: "Editorial standards for CHANGELOG.md files in platform repositories: versioning discipline, entry format, newest-first ordering, and the distinction between a changelog and a commit log."
 status: active

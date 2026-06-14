@@ -4,6 +4,7 @@ title: "Acerca de PointSav Knowledge"
 slug: about.es
 category: governance
 type: governance
+content_type: topic
 quality: complete
 short_description: "PointSav Knowledge es el wiki de documentación de ingeniería de la plataforma PointSav, al servicio de ingenieros, arquitectos y lectores institucionales."
 status: active

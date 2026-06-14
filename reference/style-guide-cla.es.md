@@ -5,6 +5,7 @@ slug: style-guide-cla.es
 short_description: "Estándares editoriales para Acuerdos de Licencia de Contribuidor (género LEGAL-CLA): autoridad canónica del CLA, secciones requeridas, disciplina de licencia de patente y requisito de revisión de factory-release-engineering."
 category: reference
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

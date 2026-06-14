@@ -4,6 +4,7 @@ title: "WORM ingest"
 slug: service-email
 category: services
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

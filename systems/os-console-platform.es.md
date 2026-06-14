@@ -5,6 +5,7 @@ slug: os-console-platform
 short_description: "os-console es un único binario en Rust con arquitectura de cartuchos que proporciona acceso nativo por teclado a los flujos de trabajo del Archivo Totebox mediante módulos navegados con teclas de función."
 category: systems
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

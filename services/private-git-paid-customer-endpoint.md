@@ -4,6 +4,7 @@ title: "Private Binary Download Endpoint for Paying Customers"
 slug: private-git-paid-customer-endpoint
 category: services
 type: topic
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

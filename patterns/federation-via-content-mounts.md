@@ -5,6 +5,7 @@ slug: federation-via-content-mounts
 short_description: "The pattern for combining curated editorial content with declarative mounts from domain-specific repositories into a single wiki surface — intended for Phase 6 of the knowledge engine."
 category: patterns
 type: topic
+content_type: topic
 status: pre-build
 bcsc_class: public-disclosure-safe
 last_edited: 2026-06-01

@@ -5,6 +5,7 @@ slug: wikipedia-leapfrog-design
 short_description: "Qué hereda el motor wiki app-mediakit-knowledge de Wikipedia, qué añade más allá de él, y qué significa el 5% de margen leapfrog para lectores e ingenieros."
 category: applications
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

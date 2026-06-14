@@ -5,6 +5,7 @@ slug: ppn-hypervisor-resource-pool
 short_description: "The PPN hypervisor layer manages a per-node pool of CPU and RAM, dynamically allocating those resources across VMs using virtio_balloon for memory reclaim and cgroups v2 for CPU scheduling weights."
 category: architecture
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 language: en

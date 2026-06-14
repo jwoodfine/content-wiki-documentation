@@ -4,6 +4,7 @@ title: "The six-tier sovereignty matrix"
 slug: six-tier-sovereignty-matrix
 category: architecture
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

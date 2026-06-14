@@ -4,6 +4,7 @@ title: "Autorización basada en hardware"
 slug: machine-based-auth
 category: architecture
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

@@ -5,6 +5,7 @@ slug: bim-objects-what-they-are
 short_description: "BIM Objects are composable built-environment specification units that encode element type, regulatory requirements by jurisdiction, and climate zone performance requirements, pre-constraining the design space so non-compliant configurations cannot be placed."
 category: architecture
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-17

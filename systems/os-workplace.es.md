@@ -4,6 +4,7 @@ title: "os-workplace — El escritorio soberano"
 slug: os-workplace
 category: systems
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

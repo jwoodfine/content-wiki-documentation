@@ -5,6 +5,7 @@ slug: design-typography
 short_description: "Typography token foundations for the PointSav design system — type scale, font stacks, fluid type variables, and reading rhythm tokens in DTCG format."
 category: design-system
 type: reference
+content_type: topic
 status: stub
 audience: public
 bcsc_class: public-disclosure-safe

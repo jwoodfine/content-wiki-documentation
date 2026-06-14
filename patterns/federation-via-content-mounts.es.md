@@ -5,6 +5,7 @@ slug: federation-via-content-mounts
 short_description: "El patrón para combinar contenido editorial curado con montajes declarativos de repositorios especializados en una única superficie wiki — previsto para la Fase 6 del motor de conocimiento."
 category: patterns
 type: topic
+content_type: topic
 status: pre-build
 bcsc_class: public-disclosure-safe
 last_edited: 2026-06-01

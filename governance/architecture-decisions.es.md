@@ -6,6 +6,7 @@ lang: es
 paired_with: architecture-decisions.md
 category: governance
 type: governance
+content_type: topic
 quality: complete
 short_description: "Doce decisiones de arquitectura vinculantes — compromisos registrados que gobiernan la construcción de la plataforma PointSav y restringen toda la ingeniería futura en el manejo de datos, la supervisión humana, la separación de sistemas y la custodia del despliegue."
 status: active

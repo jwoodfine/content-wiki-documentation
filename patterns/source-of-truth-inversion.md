@@ -6,6 +6,7 @@ short_description: "Source-of-truth inversion designates one storage layer as ca
 status: active
 category: patterns
 type: topic
+content_type: topic
 quality: complete
 last_edited: 2026-05-14
 editor: pointsav-engineering

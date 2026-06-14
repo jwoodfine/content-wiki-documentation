@@ -4,6 +4,7 @@ title: "Code for machines first"
 slug: code-for-machines-first
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "Every inter-service contract, audit record, configuration, and ontology is machine-readable as a primary surface; human-facing interfaces are skins on machine-first APIs."
 status: active

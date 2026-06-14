@@ -4,6 +4,7 @@ title: "Arquitectura del stack Rust de service-slm"
 slug: slm-stack-architecture.es
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 short_description: "Visión estratégica del stack Rust de service-slm: un binario único, licencias permisivas de extremo a extremo, y la disciplina de construcción que mantiene la soberanía técnica sobre cada dependencia."
 status: active

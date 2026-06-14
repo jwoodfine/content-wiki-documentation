@@ -4,6 +4,7 @@ title: "Emparejamiento como permiso"
 slug: pairing-as-permission.es
 category: patterns
 type: topic
+content_type: topic
 quality: complete
 short_description: "PairingAsPermission es el modelo de control de acceso por capacidades de objeto utilizado en la orquestación Totebox: un emparejamiento criptográfico entre dos nodos es el permiso, y la ausencia de emparejamiento hace estructuralmente imposible la conexión — no es acceso denegado, sino la inexistencia de un camino."
 status: active

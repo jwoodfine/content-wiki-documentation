@@ -5,6 +5,7 @@ slug: style-guide-license-explainer.es
 short_description: "Estándares editoriales para documentos explicadores de licencia (género PROSE): disciplina de lede, estructura permite/requiere/prohíbe, dónde vive el texto vinculante y distinción entre el explicador y la licencia en sí."
 category: reference
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

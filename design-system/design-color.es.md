@@ -5,6 +5,7 @@ slug: design-color
 short_description: "Fundamentos de tokens de color para el sistema de diseño PointSav: paleta primitiva, alias semánticos y pares de modo oscuro en formato DTCG."
 category: design-system
 type: reference
+content_type: topic
 status: stub
 audience: public
 bcsc_class: public-disclosure-safe

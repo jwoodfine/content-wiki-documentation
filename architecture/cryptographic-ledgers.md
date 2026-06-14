@@ -4,6 +4,7 @@ title: "Cryptographic ledgers"
 slug: cryptographic-ledgers
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 short_description: "Cryptographic ledgers are the immutable-state storage pattern used in the PointSav platform, enforcing mathematical immutability so that any alteration to a recorded fact breaks a verifiable cryptographic hash chain rather than requiring trust in administrative access controls."
 status: active

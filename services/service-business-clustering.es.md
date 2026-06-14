@@ -5,6 +5,7 @@ slug: service-business-clustering
 short_description: "service-business convierte puntos de datos de venta minorista sin procesar en clústeres comerciales accionables aplicando un esquema espacial padre-hijo — así cuando múltiples operadores distintos comparten un único sitio físico, el motor GIS recibe una entidad comercial por sitio en lugar de varios puntos superpuestos."
 category: services
 type: topic
+content_type: topic
 quality: complete
 status: active
 audience: public

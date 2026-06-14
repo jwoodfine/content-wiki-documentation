@@ -5,6 +5,7 @@ slug: documentation-pointsav-com-launch-2026-04-27
 short_description: "El lanzamiento con TLS de documentation.pointsav.com en abril de 2026: pila de servicio, postura de marcador de posición, fundamento de divulgación y comandos de verificación."
 category: applications
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

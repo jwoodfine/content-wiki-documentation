@@ -4,6 +4,7 @@ title: "Command ledger"
 slug: console-os
 category: systems
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

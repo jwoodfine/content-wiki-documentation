@@ -4,6 +4,7 @@ title: "Customer-owned graph IP"
 slug: customer-owned-graph-ip
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "The per-tenant knowledge graph and trained adapter weights are the customer's intellectual property, portable and exportable without vendor approval."
 status: active

@@ -5,6 +5,7 @@ slug: genesis-protocol
 short_description: "El Genesis Protocol es la secuencia de arranque de flota ejecutada por cada nodo os-infrastructure en el primer arranque, permitiendo que los nodos alcancen un estado seguro y reclamable sin ninguna configuración previa ni dependencia del plano de control."
 category: architecture
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 language: es

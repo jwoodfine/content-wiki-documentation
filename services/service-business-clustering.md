@@ -4,6 +4,7 @@ title: "Business clustering service"
 slug: service-business-clustering
 category: services
 type: topic
+content_type: topic
 quality: complete
 status: active
 audience: public

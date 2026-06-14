@@ -6,6 +6,7 @@ short_description: "Establece compatibilidad estructural con convenciones de lec
 status: active
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 last_edited: 2026-05-25
 editor: pointsav-engineering

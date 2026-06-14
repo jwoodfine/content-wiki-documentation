@@ -4,6 +4,7 @@ title: "Style guide — architecture"
 slug: style-guide-architecture
 category: reference
 type: topic
+content_type: topic
 quality: complete
 short_description: "Editorial standards for ARCHITECTURE.md files at project roots in the platform monorepo, covering required sections, technical register, module-layout conventions, and the non-goals discipline."
 status: active

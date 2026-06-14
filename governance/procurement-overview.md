@@ -4,6 +4,7 @@ title: "Procurement overview"
 slug: procurement-overview
 category: governance
 type: topic
+content_type: topic
 quality: complete
 short_description: "What a regulated buyer acquires when deploying PointSav: hardware the customer owns outright, data the vendor never holds, no minimum-spend commitment, and compliance properties enforced by architecture rather than contractual promise."
 status: active

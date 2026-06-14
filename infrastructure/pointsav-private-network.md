@@ -5,6 +5,7 @@ slug: pointsav-private-network
 short_description: "The PointSav Private Network is the private WireGuard mesh that connects Woodfine's fleet nodes, providing encrypted transport without granting application-layer access to the services running on those nodes."
 category: infrastructure
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

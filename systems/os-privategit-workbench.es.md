@@ -5,6 +5,7 @@ slug: os-privategit-workbench
 short_description: "app-privategit-workbench es un editor de archivos basado en navegador incluido en os-privategit que proporciona una interfaz de tres columnas para trabajar con archivos de archivo sin una sesión de terminal."
 category: systems
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

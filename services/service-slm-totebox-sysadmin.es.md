@@ -5,6 +5,7 @@ slug: service-slm-totebox-sysadmin.es
 short_description: "Cómo service-slm se convierte en el asistente operativo y centro de soporte para implementaciones de Totebox Archive y Totebox Orchestration — la estrategia de capacitación, las diez familias de tareas operativas y la tubería de cuatro etapas desde captura de corpus hasta adaptadores LoRA por tenant."
 category: services
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

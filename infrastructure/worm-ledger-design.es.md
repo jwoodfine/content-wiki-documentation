@@ -4,6 +4,7 @@ title: "Diseño del libro de registros WORM"
 slug: worm-ledger-design.es
 category: infrastructure
 type: topic
+content_type: topic
 quality: complete
 short_description: "El sustrato de persistencia de escritura única y lectura múltiple (WORM) de los servicios Ring 1 de PointSav: un formato por bloques, encadenado por hash y firmado criptográficamente que satisface la conservación de registros estadounidense, europea y SOC 2 por estructura, no por política."
 status: active

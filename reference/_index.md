@@ -4,6 +4,7 @@ title: "Reference"
 slug: _index
 category: reference
 type: reference
+content_type: topic
 quality: complete
 short_description: "Definitional materials for contributors across all audiences: style guides for each document genre, editorial philosophy, BIM and real-property reference corpus, glossary, and platform-specific terminology."
 status: active

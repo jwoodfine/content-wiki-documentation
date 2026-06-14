@@ -6,6 +6,7 @@ short_description: "Topología de implementación de flota, runtime operacional 
 lang: es
 category: infrastructure
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

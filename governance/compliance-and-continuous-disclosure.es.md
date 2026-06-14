@@ -4,6 +4,7 @@ title: "compliance-and-continuous-disclosure"
 slug: compliance-and-continuous-disclosure
 category: governance
 type: concept
+content_type: topic
 quality: complete
 short_description: "Cumplimiento y divulgación continua describe los marcos regulatorios que aborda la arquitectura PointSav y el enfoque estructural que adopta para exponer evidencia de auditoría de forma continua, en lugar de mediante ciclos anuales de certificación puntual."
 status: active

@@ -4,6 +4,7 @@ title: "Estación de trabajo para desarrolladores (navegador)"
 slug: app-privategit-workbench.es
 category: applications
 type: topic
+content_type: topic
 quality: stub
 status: active
 bcsc_class: no-disclosure-implication

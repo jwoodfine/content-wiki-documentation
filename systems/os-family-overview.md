@@ -4,6 +4,7 @@ title: "The OS family — eight operating systems, one substrate"
 slug: os-family-overview
 category: systems
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

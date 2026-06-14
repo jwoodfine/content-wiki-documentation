@@ -4,6 +4,7 @@ title: "Style guide — license explainer"
 slug: style-guide-license-explainer
 category: reference
 type: topic
+content_type: topic
 quality: complete
 short_description: "Editorial standards for license explainer documents (PROSE genre) in the platform: lede discipline, permits/requires/forbids structure, where binding text lives, and the distinction between an explainer and the license itself."
 status: active

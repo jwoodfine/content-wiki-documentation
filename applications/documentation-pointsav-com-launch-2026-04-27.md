@@ -5,6 +5,7 @@ slug: documentation-pointsav-com-launch-2026-04-27
 short_description: "The April 2026 TLS launch of documentation.pointsav.com: serving stack, placeholder posture, BCSC disclosure rationale, and verification commands."
 category: applications
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

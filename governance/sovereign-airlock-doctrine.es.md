@@ -4,6 +4,7 @@ title: "La exclusa soberana"
 slug: sovereign-airlock-doctrine.es
 category: governance
 type: topic
+content_type: topic
 quality: complete
 short_description: "La exclusa soberana es el protocolo de commits por etapas que impone una separación estricta entre las identidades de staging que escriben trabajo y las identidades de repositorio canónico que lo publican — dos autores de staging para todos los commits, dos identidades de administrador para los pushes canónicos, sin ruta directa entre ellos."
 status: active

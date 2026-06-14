@@ -4,6 +4,7 @@ title: "service-people — El libro mayor de identidades"
 slug: service-people
 category: services
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

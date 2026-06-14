@@ -4,6 +4,7 @@ title: "Mercado de paquetes de semilla vertical"
 slug: vertical-seed-packs-marketplace.es
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 short_description: "PointSav tiene previsto distribuir paquetes de semilla curados específicos de la industria como taxonomías de inicio, con un mercado planificado que permite a los inquilinos contribuir mejoras."
 status: active

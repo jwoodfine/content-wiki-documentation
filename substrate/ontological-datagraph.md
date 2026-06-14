@@ -4,6 +4,7 @@ title: "The organizational knowledge graph — ontological memory for business o
 slug: ontological-datagraph
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "An organizational knowledge graph that stores structured representations of people, companies, projects, and relationships — providing the persistent semantic memory layer that enables AI inference engines to answer queries about business state without re-reading source documents."
 status: active

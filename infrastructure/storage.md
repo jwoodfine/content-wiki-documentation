@@ -5,6 +5,7 @@ slug: storage
 short_description: "The platform enforces hardware-level append-only writes to provide an unalterable, tamper-evident record while supporting legal deletion through cryptographic key destruction and backup protection via cryptographically paired secondary drives."
 category: infrastructure
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

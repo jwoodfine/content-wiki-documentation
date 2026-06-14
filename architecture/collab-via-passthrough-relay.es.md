@@ -4,6 +4,7 @@ title: "Colaboración en tiempo real mediante relé de paso"
 slug: collab-via-passthrough-relay.es
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 short_description: "El patrón de relé de paso para la edición colaborativa en tiempo real: el servidor no conserva ningún estado de documento, git permanece como único registro canónico, y el estado CRDT es efímero de sesión por construcción."
 status: active

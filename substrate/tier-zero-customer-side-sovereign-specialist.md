@@ -4,6 +4,7 @@ title: "Tier 0 customer-side sovereign specialist"
 slug: tier-zero-customer-side-sovereign-specialist
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "The Tier 0 Totebox is a sovereign specialist deployment running on the customer's own hardware with no required cloud dependency and a 1 GB total footprint."
 status: active

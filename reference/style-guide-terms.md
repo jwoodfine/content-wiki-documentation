@@ -4,6 +4,7 @@ title: "Style guide — terms of use"
 slug: style-guide-terms
 category: reference
 type: topic
+content_type: topic
 quality: complete
 short_description: "Editorial standards for terms-of-use documents (LEGAL genre) in the platform: opening clause, required sections, defined-term discipline, liability-disclaimer conventions, and the governance review requirement."
 status: active

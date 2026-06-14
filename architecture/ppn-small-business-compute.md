@@ -4,6 +4,7 @@ title: "The Private Platform Network: Pooled Compute from Hardware You Already O
 slug: ppn-small-business-compute
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

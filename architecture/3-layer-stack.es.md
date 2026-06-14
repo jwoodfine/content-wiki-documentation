@@ -5,6 +5,7 @@ slug: 3-layer-stack
 short_description: "El Three-Layer Stack es el patrón de descomposición de infraestructura utilizado en todas las implementaciones de PointSav, separando la capacidad de cómputo puro, la ejecución de plataforma aislada y el acceso seguro del operador en tres capas distintas."
 category: architecture
 type: topic
+content_type: topic
 quality: stub
 status: active
 audience: public

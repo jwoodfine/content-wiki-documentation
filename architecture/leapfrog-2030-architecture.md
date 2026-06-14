@@ -5,6 +5,7 @@ slug: leapfrog-2030-architecture
 short_description: "The Leapfrog 2030 architecture describes the platform's structural positioning in response to three converging forces: viable small language models on commodity hardware, the Model Context Protocol as the standard for AI-native service composition, and on-premises as the fastest-growing SMB deployment type. Customers own their hardware, data, and adapter weights; PointSav takes transaction fees when value flows rather than recurring subscription revenue."
 category: architecture
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

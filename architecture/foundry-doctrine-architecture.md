@@ -5,6 +5,7 @@ slug: foundry-doctrine-architecture
 short_description: "The PointSav platform constitutional charter encodes six foundational commitments governing engineering decisions: plain text and open source, structural sovereignty, optional AI, vendor-to-customer-to-deployments flow, continuous model training, and mandatory human checkpoint. Fifty-four numbered structural claims define the competitive position through properties that hyperscaler economics structurally forecloses."
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

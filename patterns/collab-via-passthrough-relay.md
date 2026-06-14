@@ -6,6 +6,7 @@ short_description: "The passthrough relay pattern holds no document state on the
 status: active
 category: patterns
 type: topic
+content_type: topic
 quality: complete
 last_edited: 2026-05-09
 editor: pointsav-engineering

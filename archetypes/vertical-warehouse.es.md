@@ -4,6 +4,7 @@ title: "Almacén Vertical (VWH)"
 slug: vertical-warehouse
 category: archetypes
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

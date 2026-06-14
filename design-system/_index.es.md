@@ -5,6 +5,7 @@ slug: _index
 short_description: "El sistema de diseño PointSav como componente de plataforma — su vocabulario fundacional, filosofía de diseño y contexto de superficie de marca. Las guías de implementación de componentes, especificaciones de tokens y documentación de accesibilidad se encuentran en design.pointsav.com."
 category: design-system
 type: reference
+content_type: topic
 quality: complete
 status: active
 audience: public

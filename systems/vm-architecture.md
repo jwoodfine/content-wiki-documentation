@@ -5,6 +5,7 @@ slug: vm-architecture
 short_description: "The PointSav platform organises its runtime deployments under five named VM types — VM-Totebox, VM-MediaKit, VM-Orchestration, VM-PrivateGit, and VM-Infrastructure — each corresponding exactly to one os-* source binary."
 category: systems
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 language: en

@@ -1,6 +1,7 @@
 ---
 schema: foundry-doc-v1
 type: topic
+content_type: topic
 slug: zero-execution-routing
 short_description: "Presentation layers in the platform adhere to a zero-execution mandate, eliminating client-side JavaScript for core DOM manipulation by using structural determinism for bilingual routing and native CSS state machines for interactive elements."
 title: "Zero-execution routing and presentation"

@@ -5,6 +5,7 @@ slug: property-manager-bim-gap
 short_description: "Fewer than 40 percent of facilities managers actively use the BIM models delivered at project handover, due to software cost, training requirements, and file format opacity. The Building Design System's FM-specific interface components provide read-only access to full-fidelity BIM data through searchable GUID lookups without requiring proprietary authoring tool licences."
 category: architecture
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-17

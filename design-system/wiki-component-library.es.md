@@ -5,6 +5,7 @@ slug: wiki-component-library
 short_description: "Nueve componentes reutilizables que componen una página completa de artículo wiki en la plataforma de conocimiento de PointSav."
 category: design-system
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

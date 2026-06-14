@@ -4,6 +4,7 @@ title: "La matriz de seis niveles de soberanía"
 slug: six-tier-sovereignty-matrix
 category: architecture
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

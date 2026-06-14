@@ -4,6 +4,7 @@ title: "Aplicación de orquestación GIS"
 slug: app-orchestration-gis.es
 category: applications
 type: topic
+content_type: topic
 quality: complete
 status: active
 audience: public

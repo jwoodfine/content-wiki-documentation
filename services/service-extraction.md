@@ -4,6 +4,7 @@ title: "Deterministic parser"
 slug: service-extraction
 category: services
 type: topic
+content_type: topic
 quality: complete
 short_description: "service-extraction is the Ring 2 central traffic controller that strips proprietary formatting from raw payloads, constructs structured Entity Bundles, assigns transaction IDs, and routes data to deterministic services or to service-slm for AI-assisted extraction."
 status: active

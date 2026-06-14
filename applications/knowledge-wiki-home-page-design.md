@@ -5,6 +5,7 @@ slug: knowledge-wiki-home-page-design
 short_description: "How the documentation.pointsav.com home page inherits Wikipedia's structural conventions and extends them for engineering and financial-community readers."
 category: applications
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

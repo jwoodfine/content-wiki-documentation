@@ -5,6 +5,7 @@ slug: style-guide-inventory.es
 short_description: "Estándares editoriales para documentos de inventario (familia PROSE): disciplina de tabla, vocabulario de clasificación, enumeración de estados y cuándo un inventario es el artefacto correcto frente a un registro o un brief."
 category: reference
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

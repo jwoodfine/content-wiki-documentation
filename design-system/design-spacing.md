@@ -5,6 +5,7 @@ slug: design-spacing
 short_description: "Spacing token foundations for the PointSav design system — base unit, geometric scale, component gap tokens, and layout margin tokens in DTCG format."
 category: design-system
 type: reference
+content_type: topic
 status: stub
 audience: public
 bcsc_class: public-disclosure-safe

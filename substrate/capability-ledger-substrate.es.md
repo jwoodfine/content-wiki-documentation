@@ -4,6 +4,7 @@ title: "El sustrato del libro de capacidades"
 slug: capability-ledger-substrate
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "El Sustrato del Libro de Capacidades es el mecanismo por el cual cada decisión de control de acceso en un despliegue de plataforma se convierte en un evento criptográficamente auditable, anclado en un registro que controla el cliente."
 status: active

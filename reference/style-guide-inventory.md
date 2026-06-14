@@ -4,6 +4,7 @@ title: "Style guide — inventory"
 slug: style-guide-inventory
 category: reference
 type: topic
+content_type: topic
 quality: complete
 short_description: "Editorial standards for inventory documents (PROSE genre) in the platform: table discipline, classification vocabulary, state enumeration, and when an inventory is the right artifact over a registry or brief."
 status: active

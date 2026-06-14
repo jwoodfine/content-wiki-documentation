@@ -1,6 +1,7 @@
 ---
 schema: foundry-doc-v1
 type: topic
+content_type: topic
 slug: service-egress
 short_description: "El servicio de soberanía de datos que transfiere físicamente cargas útiles almacenadas en la nube al almacenamiento en frío local, ejecutando protocolos de flujo que eliminan retención de datos del lado del proveedor y dependencia de almacenamiento en la nube."
 title: "Servicio de egreso"

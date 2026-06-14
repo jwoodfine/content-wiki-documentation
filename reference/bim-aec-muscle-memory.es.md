@@ -1,6 +1,7 @@
 ---
 schema: foundry-doc-v1
 type: topic
+content_type: topic
 slug: bim-aec-muscle-memory
 short_description: "El Building Design System adopta patrones de interfaz establecidos de herramientas estándar de la industria AEC para garantizar curva de aprendizaje cero para profesionales de AEC, mientras habilita flujos de gestión de instalaciones a través de vinculación de órdenes de trabajo, integración de arrendamientos y superposiciones de sensores."
 title: Memoria muscular AEC y patrones de interfaz

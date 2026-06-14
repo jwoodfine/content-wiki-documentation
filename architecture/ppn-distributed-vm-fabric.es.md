@@ -5,6 +5,7 @@ slug: ppn-distributed-vm-fabric
 short_description: "El Tejido VM Distribuido PPN es la extensión planificada de la capa de hipervisor PPN por nodo hacia un pool de recursos multinodo, previsto para permitir que las VMs tomen prestado cómputo de otros nodos de la malla y migren a través de la flota sin intervención del operador en cada movimiento."
 category: architecture
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 language: es

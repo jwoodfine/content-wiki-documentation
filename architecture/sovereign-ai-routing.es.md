@@ -5,6 +5,7 @@ slug: sovereign-ai-routing
 short_description: "El enrutamiento de IA en la plataforma PointSav procesa solicitudes de modelo de lenguaje a través de un paso de sanitización local antes de que cualquier dato llegue a modelos externos, asegurando que los datos estructurados internos nunca viajen a servidores de terceros en forma identificable."
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 status: active
 audience: public

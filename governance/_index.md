@@ -4,6 +4,7 @@ title: "Governance"
 slug: _index
 category: governance
 type: topic
+content_type: topic
 quality: complete
 short_description: "Formal decision records, licensing posture, contributor model, and compliance requirements that govern how the PointSav platform is built, licensed, and changed — including the twelve binding architecture decisions, the BCSC continuous-disclosure posture, and the licence matrix."
 status: active

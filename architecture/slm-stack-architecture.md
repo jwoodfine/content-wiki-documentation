@@ -4,6 +4,7 @@ title: "SLM Rust stack architecture"
 slug: slm-stack-architecture
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 short_description: "The full Rust dependency graph and binary architecture for service-slm, the Doorman service that mediates every inference call in the PointSav platform."
 status: active

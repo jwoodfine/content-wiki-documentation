@@ -5,6 +5,7 @@ slug: compounding-doorman.es
 short_description: "El patrón operativo en el corazón de sustratos de IA soberana: un único servicio que media cada llamada de cómputo externa, aplica disciplina de desinfectar-e-rehidratar, registra cada evento en un libro mayor de auditoría y acumula señal de capacitación que compone el sustrato a lo largo del tiempo."
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

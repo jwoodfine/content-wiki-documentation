@@ -4,6 +4,7 @@ title: "La composición de la co-localización de anclas minoristas como indicad
 slug: geometric-site-selection-national-tenancy.es
 category: research
 type: research
+content_type: research
 quality: pre-build
 short_description: "Un marco de análisis de clústeres a escala continental que identifica clústeres de co-localización de anclas minoristas y su clasificación por niveles en trece países."
 status: active

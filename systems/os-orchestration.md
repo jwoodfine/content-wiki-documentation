@@ -4,6 +4,7 @@ title: "Fleet aggregator"
 slug: os-orchestration
 category: systems
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

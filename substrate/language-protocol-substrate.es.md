@@ -6,6 +6,7 @@ lang: es
 paired_with: language-protocol-substrate.md
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "La infraestructura editorial que codifica el registro, la voz de marca, el subtipo de documento y el público objetivo como andamiaje de indicaciones reutilizable — cuatro familias de adaptadores, dieciocho plantillas de género, un validador de portada, y una división en cuatro servicios que permite al cliente sustituir cualquier componente sin tocar los demás."
 status: active

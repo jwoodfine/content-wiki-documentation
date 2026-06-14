@@ -4,6 +4,7 @@ title: "Moonshot initiatives"
 slug: moonshot-initiatives
 category: governance
 type: topic
+content_type: topic
 quality: complete
 short_description: "Moonshot initiatives are active engineering programs that build native replacements for quarantined third-party dependencies, with the goal of eliminating vendor lock-in and reducing the platform's external attack surface over time."
 status: active

@@ -5,6 +5,7 @@ slug: doorman-protocol
 short_description: "Doorman es el único límite de solicitud de IA a través del cual se enruta toda llamada de inferencia — imponiendo la disciplina de sanitizar-y-rehidratar una sola vez, registrando cada llamada en un libro mayor de auditoría inmutable y capturando la señal de entrenamiento que compone la plataforma con el tiempo."
 category: architecture
 type: concept
+content_type: topic
 status: active
 bcsc_class: current-fact
 forward_looking: true

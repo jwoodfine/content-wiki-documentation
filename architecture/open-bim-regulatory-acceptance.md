@@ -5,6 +5,7 @@ slug: open-bim-regulatory-acceptance
 short_description: "Building Information Modelling is mandated across most G7 economies for public procurement, with open standards — IFC 4.3, IDS 1.0, COBie — as the delivery requirement rather than proprietary formats. Offline-first, self-hosted BIM platforms are the only architecture type that natively satisfies sovereign data requirements imposed by ITAR, GDPR, HIPAA, and equivalent regulatory frameworks."
 category: architecture
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-17

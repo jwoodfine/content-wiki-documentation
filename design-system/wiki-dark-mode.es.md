@@ -5,6 +5,7 @@ slug: wiki-dark-mode
 short_description: "Esquemas de color claro y oscuro para el wiki de PointSav, con paletas verificadas según WCAG y persistencia de tema mediante localStorage."
 category: design-system
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

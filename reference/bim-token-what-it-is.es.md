@@ -6,6 +6,7 @@ short_description: "Un BIM Token es una unidad de especificación del entorno co
 language: es
 category: reference
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

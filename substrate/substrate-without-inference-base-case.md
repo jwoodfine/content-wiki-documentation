@@ -4,6 +4,7 @@ title: "Substrate without inference — The base case"
 slug: substrate-without-inference-base-case
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "The Totebox Archive remains fully operational and freely transferable even when no AI inference tier is available; the deterministic substrate is the load-bearing foundation."
 status: active

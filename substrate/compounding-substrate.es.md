@@ -4,6 +4,7 @@ title: "El sustrato compuesto"
 slug: compounding-substrate.es
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "El sustrato compuesto es el patrón arquitectónico que PointSav construye y administra: código de plataforma abierto, una capa de datos determinista que funciona sin IA, y una capa de inteligencia opcional cuya cada interacción genera señal de entrenamiento que se compone a través de todos los despliegues."
 status: active

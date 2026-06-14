@@ -4,6 +4,7 @@ title: "PointSav arquitectura 2030 — Resumen"
 slug: foundry-doctrine-overview.es
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 short_description: Resumen público fiel de la carta constitucional de PointSav — seis pilares, cincuenta y dos afirmaciones de salto adelante, ocho invenciones operativas entre industrias, y el modelo económico que las sostiene.
 status: active

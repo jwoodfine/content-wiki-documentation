@@ -6,6 +6,7 @@ short_description: "Una auditoría de 25 plataformas wiki en cuatro grupos docum
 status: active
 category: reference
 type: topic
+content_type: topic
 quality: complete
 last_edited: 2026-05-09
 editor: pointsav-engineering

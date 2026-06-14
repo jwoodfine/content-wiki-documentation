@@ -5,6 +5,7 @@ slug: style-guide-changelog.es
 short_description: "Estándares editoriales para archivos CHANGELOG.md en repositorios de la plataforma: disciplina de versiones, formato de entradas, orden de más reciente a más antiguo y distinción entre changelog y registro de commits."
 category: reference
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

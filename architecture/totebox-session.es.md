@@ -4,6 +4,7 @@ title: "Sesión Totebox"
 slug: totebox-session.es
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 short_description: "Una sesión Totebox es una sesión de colaborador asistida por IA abierta dentro de un único archivo Totebox — con alcance a los repositorios declarados del archivo, sin capacidad de escribir fuera de ellos, y es el punto de entrada estándar para todo trabajo de desarrollo en la orquestación Totebox."
 status: active

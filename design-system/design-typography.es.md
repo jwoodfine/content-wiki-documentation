@@ -5,6 +5,7 @@ slug: design-typography
 short_description: "Fundamentos de tokens tipográficos para el sistema de diseño PointSav: escala tipográfica, pilas de fuentes, variables de tipo fluido y tokens de ritmo de lectura en formato DTCG."
 category: design-system
 type: reference
+content_type: topic
 status: stub
 audience: public
 bcsc_class: public-disclosure-safe

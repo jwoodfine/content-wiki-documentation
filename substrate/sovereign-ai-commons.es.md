@@ -4,6 +4,7 @@ title: "El bien común de IA soberana"
 slug: sovereign-ai-commons.es
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "El posicionamiento de PointSav como administrador de infraestructura de IA abierta y compartida para pequeñas y medianas empresas reguladas: cinco propiedades estructurales que los grandes proveedores de servicios en la nube no pueden ofrecer sin desmantelar sus propios modelos de facturación."
 status: active

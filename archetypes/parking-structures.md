@@ -4,6 +4,7 @@ title: "Parking Structures (PKS)"
 slug: parking-structures
 category: archetypes
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

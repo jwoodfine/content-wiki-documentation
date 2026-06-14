@@ -4,6 +4,7 @@ title: "os-totebox — La bóveda soberana y host de servicios"
 slug: totebox-os
 category: systems
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

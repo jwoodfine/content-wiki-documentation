@@ -5,6 +5,7 @@ slug: os-network-admin
 short_description: "os-network-admin is the control plane for a PointSav Private Network — providing WireGuard mesh routing, the node-join ceremony surface, and Diode-standard enforcement, without holding any archive-tier cryptographic authority."
 category: systems
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 language: en

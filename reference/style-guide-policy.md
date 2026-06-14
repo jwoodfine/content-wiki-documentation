@@ -4,6 +4,7 @@ title: "Style guide — policy"
 slug: style-guide-policy
 category: reference
 type: topic
+content_type: topic
 quality: complete
 short_description: "Editorial standards for policy documents (LEGAL genre) in the platform: scope discipline, numbered rule format, enforcement clause, review cadence, and the distinction between a policy and an ADR."
 status: active

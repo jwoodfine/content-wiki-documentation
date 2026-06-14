@@ -4,6 +4,7 @@ title: "Research"
 slug: research
 category: research
 type: landing
+content_type: topic
 quality: complete
 short_description: "Working papers and research frameworks produced by the Woodfine Management Corp. research programme."
 status: active

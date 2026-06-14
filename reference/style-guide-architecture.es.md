@@ -5,6 +5,7 @@ slug: style-guide-architecture.es
 short_description: "Estándares editoriales para archivos ARCHITECTURE.md en raíces de proyecto en el monorepo de plataforma, cubriendo secciones requeridas, registro técnico, convenciones de diseño de módulo y la disciplina de no-objetivos."
 category: reference
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

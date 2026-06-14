@@ -4,6 +4,7 @@ title: "The sovereign AI commons"
 slug: sovereign-ai-commons
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "PointSav's market positioning as a steward of shared, open AI infrastructure for regulated small-to-medium businesses: five structural properties that large-scale cloud providers cannot offer without dismantling their own billing models."
 status: active

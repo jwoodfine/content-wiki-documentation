@@ -5,6 +5,7 @@ slug: service-input
 short_description: "service-input es el servicio de ingesta de documentos del Anillo 1 que acepta archivos en el perímetro por arrendatario, los enruta a través de analizadores específicos de formato y escribe la salida normalizada en el ledger WORM a través de service-fs."
 category: services
 type: topic
+content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

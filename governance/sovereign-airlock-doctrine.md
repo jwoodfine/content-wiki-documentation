@@ -4,6 +4,7 @@ title: "The sovereign airlock"
 slug: sovereign-airlock-doctrine
 category: governance
 type: topic
+content_type: topic
 quality: complete
 short_description: "The sovereign airlock is the staged-commit protocol that enforces a hard separation between work-in-progress staging identities and canonical repository identities — two staging authors for all commits, two admin identities for canonical pushes, with no direct path between them."
 status: active

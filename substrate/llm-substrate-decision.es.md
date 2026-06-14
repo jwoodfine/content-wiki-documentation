@@ -4,6 +4,7 @@ title: "Decisión de sustrato LLM — Familia OLMo 3"
 slug: llm-substrate-decision.es
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "La justificación para seleccionar OLMo 3 como sustrato de inferencia local y en GPU: la única familia de modelos completamente abierta — datos, código de entrenamiento y puntos de control incluidos — que permite el preentrenamiento continuo y satisface la postura de adquisición de una empresa pública canadiense."
 status: active

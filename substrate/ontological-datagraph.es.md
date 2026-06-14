@@ -4,6 +4,7 @@ title: "El grafo de conocimiento organizativo — memoria ontológica para opera
 slug: ontological-datagraph
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 short_description: "Un grafo de conocimiento organizativo que almacena representaciones estructuradas de personas, empresas, proyectos y relaciones — proporcionando la capa de memoria semántica persistente que permite a los motores de inferencia de IA responder consultas sobre el estado empresarial sin releer documentos fuente."
 status: active

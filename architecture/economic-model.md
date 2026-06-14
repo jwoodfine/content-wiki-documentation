@@ -4,6 +4,7 @@ title: "Economic model — community and SMB customer tiers"
 slug: economic-model
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 short_description: "PointSav's two-tier commercial structure: a free Community tier that serves as an adoption funnel, and a paid SMB Customer tier targeting regulated small-to-medium businesses that hyperscale billing models cannot serve economically."
 status: active

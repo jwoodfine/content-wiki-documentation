@@ -4,6 +4,7 @@ title: "Three-layer architecture"
 slug: three-layer-architecture
 category: architecture
 type: concept
+content_type: topic
 quality: complete
 status: active
 audience: vendor-public

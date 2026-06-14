@@ -5,6 +5,7 @@ slug: capability-based-security
 short_description: "La seguridad basada en capacidades es el modelo de control de acceso que PointSav utiliza en las capas de hardware y sistema operativo, donde cada componente de software debe mantener un token criptográfico verificado matemáticamente para comunicarse con cualquier otro componente."
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 status: active
 audience: public

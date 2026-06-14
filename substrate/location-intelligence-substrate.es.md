@@ -5,6 +5,7 @@ slug: location-intelligence-substrate.es
 short_description: "Una arquitectura de SIG plano y abierto que permite a los clientes poseer conjuntos de datos geográficos de extremo a extremo usando datos abiertos con licencia Apache y una pila de renderización alineada con Rust de código abierto, con análisis de coubicación de venta minorista como la primera superficie implementada."
 category: substrate
 type: topic
+content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe

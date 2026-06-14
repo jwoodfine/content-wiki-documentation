@@ -4,6 +4,7 @@ title: "PointSav-LLM"
 slug: pointsav-llm
 category: architecture
 type: topic
+content_type: topic
 quality: complete
 short_description: "The planned vendor-tier specialist AI model for substrate-sovereign SMBs — Tier 3 of the Four-Tier SLM Substrate Ladder, built by continued pretraining of OLMo 3 32B on the platform's federated apprenticeship corpus."
 status: active
