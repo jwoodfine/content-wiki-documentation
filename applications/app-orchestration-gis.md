@@ -49,3 +49,7 @@ The application holds no canonical data. It operates as a pure function: cleanse
 - [[service-places-filtering]] — the places filtering service that prepares cleansed input data
 - [[co-location-methodology]] — the scoring and ranking methodology implemented by the engine
 - [[location-intelligence-platform]] — the platform article covering the full GIS deployment
+
+## References
+
+- [Haversine formula](https://en.wikipedia.org/wiki/Haversine_formula) — Wikipedia, accessed 2026-06-14

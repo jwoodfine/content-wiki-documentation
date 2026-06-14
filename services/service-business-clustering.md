@@ -41,3 +41,7 @@ The output is a refined `cleansed-clusters.jsonl` file. This processed dataset i
 - [[app-orchestration-gis]]
 - [[service-fs-data-lake]]
 - [[service-places-filtering]]
+
+## References
+
+- [DBSCAN](https://en.wikipedia.org/wiki/DBSCAN) — Wikipedia, accessed 2026-06-14

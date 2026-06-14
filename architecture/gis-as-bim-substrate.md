@@ -13,8 +13,6 @@ editor: pointsav-engineering
 paired_with: gis-as-bim-substrate.es.md
 ---
 
-# GIS as a BIM substrate
-
 Building Information Modelling (BIM) occupies the building scale: structural geometry, material assemblies, mechanical systems, occupancy. A model is meaningful in isolation, but its commercial value emerges when it is sited — positioned in a real geography with real neighbours, real catchments, and real regulatory context. The [[pointsav-overview|PointSav]] GIS [[co-location-methodology|co-location]] dataset is designed to provide that siting context to BIM composition pipelines.
 
 This article documents what the GIS dataset offers a BIM consumer, which fields are stable, and what extensions are anticipated.
@@ -94,3 +92,8 @@ A BIM composition that joins on `cluster_id` sees growth but no deletion of exis
 - [[co-location-methodology]]
 - [[regional-name-resolution]]
 - [[city-code-as-composable-geometry]]
+
+## References
+
+- [Geographic information system](https://en.wikipedia.org/wiki/Geographic_information_system) — Wikipedia, accessed 2026-06-14
+- [Building information modeling](https://en.wikipedia.org/wiki/Building_information_modeling) — Wikipedia, accessed 2026-06-14

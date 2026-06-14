@@ -6,11 +6,15 @@ short_description: "Definition and criteria for the T1 Regional, T2 District, an
 category: reference
 type: topic
 content_type: topic
+quality: complete
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
-last_edited: 2026-06-10
+language_protocol: PROSE-TOPIC
+last_edited: 2026-06-14
 editor: pointsav-engineering
 paired_with: colocation-tier-nomenclature.es.md
+cites: []
 ---
 
 The co-location platform classifies every identified retail cluster into one of
@@ -106,6 +110,10 @@ The platform covers 6,493 clusters across 18 countries. T1 clusters are most
 common in the United States (889), Germany (227), and France (247). T2 clusters
 are most common in the United States (1,779), Germany (338), and Great Britain
 (400). The full per-country breakdown appears in the [co-location summary](https://gis.woodfinegroup.com/research-summary.html).
+
+## References
+
+- [DBSCAN](https://en.wikipedia.org/wiki/DBSCAN) — Wikipedia, accessed 2026-06-14
 
 ---
 

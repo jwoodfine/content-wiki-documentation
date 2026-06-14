@@ -41,3 +41,7 @@ The resulting `cleansed-places.jsonl` provides the regional anchor dataset that 
 - [[service-business-clustering]] — retail clustering service that consumes the filtered place data
 - [[app-orchestration-gis]] — orchestration layer that assembles tier rankings from both services
 - [[co-location-methodology]] — the ranking methodology driving tier assignments
+
+## References
+
+- [Point of interest](https://en.wikipedia.org/wiki/Point_of_interest) — Wikipedia, accessed 2026-06-14

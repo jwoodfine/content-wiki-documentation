@@ -132,6 +132,11 @@ The twelve Canadian override entries represent the cases identified during
 the Phase 14 and Phase 15 build cycles. Other CSD/community name mismatches
 may exist in areas not yet covered by the platform.
 
+## References
+
+- [Address geocoding](https://en.wikipedia.org/wiki/Geocoding) — Wikipedia, accessed 2026-06-14
+- [OpenStreetMap](https://en.wikipedia.org/wiki/OpenStreetMap) — Wikipedia, accessed 2026-06-14
+
 ---
 
 *Data provenance:* TIGER 2023 (US Census Bureau, public domain); GISCO LAU 2021

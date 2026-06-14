@@ -148,6 +148,11 @@ used to match OSM records to canonical chain identities are CC0. Chain record
 counts reflect OSM completeness at the time of each phase's ingest run and will
 vary as OSM contributors add or update entries.
 
+## References
+
+- [OpenStreetMap](https://en.wikipedia.org/wiki/OpenStreetMap) — Wikipedia, accessed 2026-06-14
+- [Wikidata](https://en.wikipedia.org/wiki/Wikidata) — Wikipedia, accessed 2026-06-14
+
 ---
 
 *Data provenance:* chain location records, Phase 12–18 ingest runs (2026-05-17 through 2026-05-22). OSM ODbL; Wikidata CC0.
