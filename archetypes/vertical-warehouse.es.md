@@ -9,7 +9,7 @@ quality: complete
 status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
-language_protocol: PROSE-TOPIC
+language_protocol: TRANSLATE-ES
 last_edited: 2026-06-02
 editor: pointsav-engineering
 paired_with: vertical-warehouse.md
