@@ -16,6 +16,13 @@ paired_with: multi-engine-session-coordination.es.md
 
 Totebox Orchestration supports multiple AI engines and human operators working concurrently on the same host. The coordination problem is not theoretical — when two sessions touch the same `.git/index`, the working tree corrupts in ways that are expensive to diagnose.
 
+## Key Takeaways
+
+- Each engine writes `.agent/engines/<engine-id>/session.lock` at startup, carrying engine-id, role, PID, ISO-8601 start-time, and the `boot_id` from `/proc/sys/kernel/random/boot_id`. A mismatched `boot_id` in a lock file means the host rebooted between sessions — the lock is definitively dead and may be removed automatically.
+- The hub session writes `role.lock` at the workspace root; a second startup attempt errors out rather than racing. Archive sessions scope their locks to their own `.agent/` directory, not the workspace root.
+- The protocol warns on same-archive conflicts but does not physically prevent a second write to `.git/index`. A planned PreToolUse hook adds write-time enforcement. Until then, the only structural guard on index corruption is the OS-level `flock` on `.git/index`.
+- Hub sessions should run the workspace health-check tool early to detect and clear stale locks before opening any archive — stale locks from prior boots or dead PIDs in the current boot require either automatic or manual removal.
+
 The protocol is intentionally minimal: each engine writes `.agent/engines/<engine-id>/session.lock` at startup. The lock carries the engine identifier, session role, parent PID, ISO-8601 start time, and the boot ID from `/proc/sys/kernel/random/boot_id`. The boot ID is the key — it lets a future session decide whether a lock is stale (a different boot ID means the host rebooted between sessions, making the lock definitively dead) or potentially live (same boot ID, check `kill -0 <pid>` for process liveness).
 
 The [[totebox-session]] model assigns exactly one hub session to the workspace root. That session writes `role.lock` at `.agent/role.lock`; a second attempt errors out unless the operator manually clears the lock. Archive sessions are scoped to individual archives and write their locks under that archive's `.agent/engines/<engine-id>/session.lock`.

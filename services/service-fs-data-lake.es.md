@@ -19,6 +19,13 @@ cites: []
 
 **`service-fs`** es la capa de almacenamiento fundacional para la [[pointsav-gis-engine|canalización GIS]] de la plataforma — un lago de datos en archivos planos que almacena puntos geoespaciales en bruto ingeridos desde fuentes abiertas (OpenStreetMap, Overture Maps Foundation) en zonas de aterrizaje separadas para datos minoristas y cívicos, disponibles inmediatamente para cada servicio descendente sin una etapa ETL. Los registros minoristas — operadores comerciales, tiendas ancla, estaciones de combustible — y los registros cívicos — hospitales, universidades, centros de transporte — se mantienen en subárboles distintos para que los servicios de [[service-places-filtering|filtrado]] y [[service-business-clustering|agrupación]] puedan trabajar en cada dominio de forma independiente.
 
+## Puntos clave
+
+- Dos zonas de aterrizaje separadas — minorista y cívica — almacenan puntos en bruto de OpenStreetMap y Overture Maps Foundation. Los servicios descendentes leen directamente desde las zonas de aterrizaje; no hay etapa de transformación ETL entre la ingestión y el consumo.
+- La persistencia de datos está desacoplada de la lógica analítica. Si `[[app-orchestration-gis]]` se re-aprovisiona, los activos de datos en bruto de `service-fs` permanecen intactos e inmediatamente disponibles para cualquier capa analítica de reemplazo.
+- En producción, `service-fs` se despliega como un unikernel de baja sobrecarga que expone una API restringida. Solo las capas de inteligencia (`service-business` y `service-places`) pueden leer datos en bruto y escribir resultados procesados — sin acceso de shell de propósito general a la capa de almacenamiento.
+- El diseño en archivos planos y formato abierto evita la dependencia de formatos propietarios. Los registros geoespaciales en bruto son archivos de texto legibles por cualquier herramienta en cualquier década.
+
 ## Ingestión y almacenamiento de datos
 
 El servicio mantiene una estructura de sistema de archivos unificada con zonas de aterrizaje separadas para datos minoristas e infraestructura cívica.

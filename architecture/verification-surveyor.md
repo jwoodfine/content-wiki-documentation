@@ -18,6 +18,13 @@ paired_with: verification-surveyor.es.md
 
 > The Verification Surveyor is the architectural checkpoint in [[service-people]] that prevents automated extraction errors from compounding by requiring a human operator to confirm each identity fragment against an off-network source before it is committed to the verified ledger.
 
+## Key Takeaways
+
+- Every identity fragment extracted by `[[service-people]]` is held as unverified until a human operator confirms it against an external directory source using their own personal browser and personal account. The platform never initiates the external lookup itself.
+- Hard limit of 10 verifications per operator per day — a deliberate quality-control constraint, not a capacity ceiling. High-volume mechanical approval at speed produces habitual confirmation; the limit forces deliberate attention on each record.
+- The air-gapped external-lookup design avoids three operational risks: no persistent foreign API tokens required, no per-query costs, and no exposure to rate-limiting or IP-ban from external directory services.
+- At 10 verifications per day, roughly 3,650 confirmed institutional relationships accumulate per operator per year with negligible error rate — the throughput constraint is part of the data-quality guarantee.
+
 Unsupervised extraction algorithms accumulate errors. A fully
 automated ingestion pipeline processing large volumes of email
 will inevitably produce false positives — an "Unsubscribe" link

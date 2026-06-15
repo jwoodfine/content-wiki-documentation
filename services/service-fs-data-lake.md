@@ -19,6 +19,13 @@ cites: []
 
 **`service-fs`** is the foundational storage layer for the platform's [[pointsav-gis-engine|GIS pipeline]] — a flat-file data lake that stores raw geospatial points ingested from open sources (OpenStreetMap, Overture Maps Foundation) in separate retail and civic landing zones, available immediately to every downstream service without an ETL step. Retail records — commercial operators, anchor stores, fuel outlets — and civic records — hospitals, universities, transport hubs — are kept in distinct subtrees so the [[service-places-filtering|filtering]] and [[service-business-clustering|clustering]] services can work on each domain independently.
 
+## Key Takeaways
+
+- Two separate landing zones — retail and civic — hold raw points from OpenStreetMap and Overture Maps Foundation. Downstream services read directly from the landing zones; no ETL transformation step sits between ingestion and consumption.
+- Data persistence is decoupled from analytical logic. If `[[app-orchestration-gis]]` is reprovisioned, the raw data assets in `service-fs` remain intact and are immediately available to any replacement analytical layer.
+- In production, `service-fs` deploys as a low-overhead unikernel exposing a restricted API. Only the intelligence layers (`service-business` and `service-places`) can read raw data and write back processed results — no general-purpose shell access to the storage layer.
+- The flat-file, open-format design avoids proprietary format lock-in. Raw geospatial records are stored as plain files readable by any toolchain in any decade.
+
 ## Data Ingestion and Storage
 
 The service maintains a unified filesystem structure with separate landing zones for retail and civic infrastructure data.

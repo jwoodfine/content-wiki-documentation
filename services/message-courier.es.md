@@ -19,6 +19,13 @@ cites: []
 
 `service-message-courier` es el motor de automatización web sin cabeza que conecta el [[service-people|libro contable de identidades]] interno de la plataforma con portales web externos — sin incrustar ninguna lógica específica del cliente en la base de código abierta. El motor central lee registros de despacho pendientes del [[worm-ledger-design|libro mayor WORM]], ejecuta interacciones con portales a través de adaptadores en tiempo de ejecución distribuidos de forma privada, y escribe marcas de tiempo de finalización; el motor en sí permanece libre de selectores codificados, credenciales o lógica específica del portal.
 
+## Puntos clave
+
+- El motor central no tiene conocimiento de ningún portal específico. Toda la lógica operativa — selectores CSS, formas de URL, flujos de autenticación — reside en `private-adapters/`, excluido del control de versiones. El monorepo de código abierto permanece agnóstico al inquilino; cada despliegue lleva su propio conjunto de adaptadores privados.
+- Ciclo de tres pasos por despacho: Consulta (sondear el libro mayor WORM para registros pendientes) → Ejecución (ejecutar navegador sin cabeza via adaptador) → Registro (escribir marca de tiempo de finalización). Un fallo en la ejecución deja el despacho pendiente en el libro mayor; el registro nunca se corrompe.
+- Mantener la lógica propietaria del cliente en `private-adapters/` garantiza que nunca entre en el historial de Git público. Los operadores pueden actualizar los scripts de adaptador sin modificar ni bifurcar el motor central.
+- Los registros completados son consumidos por la [[sovereign-telemetry|telemetría de estado cero]] con fines de auditoría. El servicio produce un rastro de despacho auditable sin que ningún dato identificable salga del entorno del operador.
+
 ## Patrón de adaptadores
 
 El motor central no contiene conocimiento de ningún portal o sitio específico. La lógica operativa — selectores CSS, formas de URL, flujos de autenticación — se inyecta en tiempo de ejecución a través de scripts colocados en `private-adapters/`. Este directorio está explícitamente excluido por `.gitignore`. La separación significa que el monorepo de código abierto permanece agnóstico al inquilino mientras cada instancia de despliegue lleva su propio conjunto de adaptadores privados. Esta arquitectura de inyección en tiempo de ejecución es coherente con el principio de [[sovereign-airlock-doctrine|exclusa soberana]] — la lógica propietaria del cliente nunca cruza hacia el código base abierto.

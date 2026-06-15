@@ -20,6 +20,13 @@ cites: []
 
 El Verificador de Identidad es el punto de control arquitectónico en [[service-people|`service-people`]] que impide que los errores de extracción automatizada se acumulen. Requiere que un operador humano confirme cada fragmento de identidad contra una fuente externa antes de que se comprometa permanentemente en el libro contable verificado.
 
+## Puntos clave
+
+- Cada fragmento de identidad extraído por `[[service-people]]` se retiene como no verificado hasta que un operador humano lo confirme contra una fuente de directorio externa usando su propio navegador y cuenta personal. La plataforma nunca inicia la búsqueda externa por sí misma.
+- Límite estricto de 10 verificaciones por operador por día — una restricción deliberada de control de calidad, no un techo de capacidad. La aprobación mecánica a alta velocidad produce confirmaciones habituales; el límite impone atención deliberada en cada registro.
+- El diseño de búsqueda externa con separación de redes evita tres riesgos operativos: no se requieren tokens API foráneos persistentes, sin costos por consulta y sin exposición a limitación de velocidad o bloqueo de IP por parte de servicios de directorio externos.
+- A 10 verificaciones por día, se acumulan aproximadamente 3.650 relaciones institucionales confirmadas por operador por año con tasa de error insignificante — la restricción de rendimiento es parte de la garantía de calidad de datos.
+
 ## Filosofía del humano en el bucle
 
 Los algoritmos de extracción sin supervisión acumulan errores. Un pipeline de ingestión totalmente automatizado que procese grandes volúmenes de correo electrónico inevitablemente producirá falsos positivos. El Verificador de Identidad es el cuello de botella arquitectónico deliberado que fuerza todos los fragmentos de identidad extraídos a través de un filtro cognitivo humano antes de que se escriban permanentemente en el libro contable verificado.
