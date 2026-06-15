@@ -16,6 +16,13 @@ paired_with: edge-deployment.md
 
 La plataforma traslada todas las conexiones de red externas al perímetro más externo del sistema antes de que cualquier dato llegue a los anillos de procesamiento central, siguiendo la [[three-ring-architecture|arquitectura de tres anillos]]. Esta arquitectura impide que los ataques de red habituales alcancen los registros financieros y los datos estructurados almacenados en el Anillo 2, que son protegidos por el [[worm-ledger-design|registro WORM]].
 
+## Puntos clave
+
+- Todo el tráfico de internet entrante se procesa exclusivamente en el Anillo 1 — la capa de perímetro. Ningún payload externo llega al Anillo 2 sin antes haber sido saneado, validado y despojado de metadatos de transporte por el servicio de ingesta del Anillo 1 correspondiente. El internet público nunca está en contacto directo con el Anillo 2 ni con el Anillo 3.
+- El Anillo 1 se implementa como un conjunto de procesos servidores MCP por canal (uno por tipo de ingesta: correo electrónico, sistema de archivos, registros de personas, input externo). Cada uno acepta, sanea y entrega únicamente registros limpios y estructurados hacia el interior — un canal de ingesta comprometido no puede escalar al nivel del libro mayor.
+- El registro de auditoría del Anillo 2 registra lo que el sistema procesó, no lo que llegó al perímetro de red. Esta separación es una condición previa del [[worm-ledger-architecture|diseño del registro WORM]]: eventos limpios y validados — no tráfico en bruto — son lo que se escribe en el registro inmutable.
+- El Anillo 2 no tiene ruta de salida a internet salvo a través de [[service-egress]]. El perímetro se aplica en ambas direcciones: entrada a través de la ingesta del Anillo 1, salida a través del servicio de egreso.
+
 ## El problema de la ingesta profunda
 
 Las configuraciones de servidor estándar procesan el tráfico de internet entrante dentro del mismo entorno de ejecución que contiene los datos centrales. Una vulnerabilidad en cualquier ruta de ingesta otorga acceso al mismo espacio de memoria que los registros principales. El aislamiento no puede añadirse retroactivamente una vez que un proceso comparte memoria con otro.

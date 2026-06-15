@@ -16,6 +16,13 @@ paired_with: architecture.md
 
 La plataforma [[pointsav-overview|PointSav]] está diseñada en torno a dos propiedades estructurales: [[cryptographic-ledgers|consistencia criptográfica]] distribuida y capacidad de arranque soberano. Ambas propiedades se mantienen de forma simultánea en entornos en la nube y en bóvedas físicas desconectadas.
 
+## Puntos clave
+
+- La plataforma mantiene un estado criptográfico unificado en múltiples entornos físicos de forma simultánea. Un nodo activo en la nube y una bóveda sin conexión comparten en todo momento el mismo [[merkle-proofs-as-substrate-primitive|hash Merkle]] raíz — un auditor puede verificar cualquiera de las copias sin necesidad de que ambas estén en línea.
+- La capacidad de arranque soberano significa que cualquier despliegue puede colapsar en una imagen de arranque autocontenida (`.ISO` o `.IMG`) y reconstituirse en hardware nuevo sin necesidad de recuperar datos desde una fuente remota. El sistema lleva consigo su propio estado.
+- La operación de colapso del archivo es explícita e iniciada por el operador. No se ejecuta según un calendario ni se activa automáticamente. Esta es una restricción de diseño deliberada: la portabilidad es una capacidad que el operador invoca, no un proceso en segundo plano.
+- Estas dos propiedades — consistencia criptográfica y capacidad de arranque soberano — son estructurales, no complementos añadidos. Se mantienen de forma simultánea, sin que una se sacrifique en favor de la otra al moverse entre entornos en la nube y bóvedas sin conexión.
+
 ## Estado criptográfico distribuido
 
 Un único archivo puede existir en múltiples entornos físicos —un nodo activo en la nube y una bóveda sin conexión— mientras mantiene un estado criptográfico unificado. Ambos entornos comparten en todo momento el mismo [[merkle-proofs-as-substrate-primitive|hash Merkle]] raíz. Esto permite que un auditor verifique la integridad de cualquiera de las copias sin necesidad de que ambas estén en línea simultáneamente.

@@ -16,6 +16,13 @@ paired_with: architecture.es.md
 
 The [[pointsav-overview|PointSav]] platform is designed around two structural properties: distributed [[cryptographic-ledgers|cryptographic consistency]] and sovereign bootability. Both properties are preserved across cloud and offline-vault environments simultaneously.
 
+## Key Takeaways
+
+- The platform maintains a single, unified cryptographic state across multiple physical environments simultaneously. An active cloud node and an offline vault share an identical [[merkle-proofs-as-substrate-primitive|Merkle root]] at all times — an auditor can verify either copy without requiring both to be online.
+- Sovereign bootability means any deployment can collapse into a self-contained bootable image (`.ISO` or `.IMG`) and reconstitute on new hardware without fetching data from a remote source. The system carries its own state.
+- The archive collapse operation is explicit and operator-initiated. It does not run on a schedule or trigger automatically. This is a deliberate design constraint: portability is a capability an operator invokes, not a background process.
+- These two properties — cryptographic consistency and sovereign bootability — are structural, not add-ons. They are preserved simultaneously, not traded against each other when moving between cloud and offline-vault environments.
+
 ## Distributed cryptographic state
 
 A single archive can exist across multiple physical environments — an active cloud node and an offline vault — while maintaining a single, unified cryptographic state. The two environments share an identical root [[merkle-proofs-as-substrate-primitive|Merkle hash]] at all times.

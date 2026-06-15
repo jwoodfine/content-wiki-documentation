@@ -16,6 +16,13 @@ paired_with: storage.es.md
 
 The platform is designed to provide auditors and investors with a tamper-evident record: once data is written, it cannot be secretly overwritten or deleted. This property is enforced at the hardware level as part of the [[worm-ledger-design|WORM ledger substrate]], not solely by software policy.
 
+## Key Takeaways
+
+- Append-only enforcement operates at the drive controller level, not software policy. A system administrator with full credentials cannot overwrite or delete existing blocks — the hardware controller rejects the write. This makes the tamper-evident guarantee non-circumventable by internal actors with elevated privileges.
+- Legal deletion works through cryptographic key destruction, not ledger modification. The encrypted record's ciphertext remains on disk after the key is destroyed, proving the record existed at the time of writing while making it permanently unreadable. Access-revocation obligations are met without breaking the append-only ledger's structural integrity.
+- Backup drives are cryptographically paired with the primary system's identity keys at provisioning time. A drive physically removed from the system produces unreadable ciphertext — protecting against physical theft of backup media without requiring an additional encryption layer.
+- Storage immutability is the physical foundation of the [[worm-ledger-architecture|WORM ledger design]]. The ledger specification formalises the four-layer guarantee built on top of this hardware substrate.
+
 ## Hardware-enforced append-only writes
 
 Standard storage hardware allows an administrator with sufficient privileges to overwrite or delete any file. The platform's storage subsystem uses drives configured in an append-only mode enforced by the hardware controller. The drive accepts new writes but rejects modification of existing blocks. This produces an unalterable history of every record added to the system — no administrative action can retroactively change what was written.

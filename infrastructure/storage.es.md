@@ -16,6 +16,13 @@ paired_with: storage.md
 
 La plataforma está diseñada para ofrecer a auditores e inversores un registro resistente a manipulaciones: una vez que los datos se escriben, no pueden sobrescribirse ni eliminarse en secreto. Esta propiedad se aplica a nivel de hardware a través del [[worm-ledger-design|sustrato del libro mayor WORM]], no solo mediante políticas de software.
 
+## Puntos clave
+
+- La aplicación de solo adición opera a nivel del controlador de la unidad, no de política de software. Un administrador del sistema con credenciales completas no puede sobrescribir ni eliminar bloques existentes — el controlador de hardware rechaza la escritura. Esto hace que la garantía de resistencia a manipulaciones no pueda ser eludida por actores internos con privilegios elevados.
+- La eliminación legal funciona mediante la destrucción criptográfica de la clave, no la modificación del registro. El texto cifrado del registro permanece en el disco tras destruir la clave, lo que prueba que el registro existió en el momento de la escritura, mientras que queda permanentemente ilegible. Las obligaciones de revocación de acceso se cumplen sin comprometer la integridad estructural del registro de adición única.
+- Las unidades de respaldo se emparejan criptográficamente con las claves de identidad del sistema principal en el momento de aprovisionamiento. Una unidad extraída físicamente del sistema produce texto cifrado ilegible — protegiendo contra el robo físico de soportes de respaldo sin necesidad de una capa de cifrado adicional.
+- La inmutabilidad del almacenamiento es la base física del [[worm-ledger-architecture|diseño del registro WORM]]. La especificación del libro mayor formaliza la garantía de cuatro capas construida sobre este sustrato de hardware.
+
 ## Escritura exclusivamente de adición, aplicada por hardware
 
 El hardware de almacenamiento estándar permite a un administrador con privilegios suficientes sobrescribir o eliminar cualquier archivo. El subsistema de almacenamiento de la plataforma utiliza unidades configuradas en modo de solo adición, aplicado por el controlador de hardware. La unidad acepta nuevas escrituras, pero rechaza la modificación de bloques existentes. Esto produce un historial inalterable de cada registro añadido al sistema.

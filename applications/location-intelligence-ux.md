@@ -18,6 +18,13 @@ paired_with: location-intelligence-ux.es.md
 
 The [[location-intelligence-platform]] interface is engineered to prioritize decision-maker clarity over raw data volume. By using a Conclusion-First design philosophy, the platform communicates site-selection confidence through visual hierarchy and structural grading, applying the [[co-location-methodology|co-location scoring methodology]] as the primary analytical unit.
 
+## Key Takeaways
+
+- The Conclusion-First design principle means the interface communicates site-selection confidence — not raw data volume. Tier grades and color-ramp encoding tell a decision-maker what to act on before they read any data labels.
+- Cluster Grade is the primary visual and analytical unit. Unlike commercial GIS products that default to individual POI points, the platform renders co-location tier grades as the base map layer. This structural choice encodes confidence (capital-validated convergence) rather than presence.
+- Clicking a cluster opens a side drawer, not a modal. This preserves map context while delivering municipal ranking, operator chips, and institutional support counts. The distinction is deliberate: decision-makers compare clusters across a map; a modal breaks that workflow by hiding the spatial context.
+- The interface is built on [[app-orchestration-gis]] (analytics engine) and [[pointsav-gis-engine]] (rendering layer). These components are designed for re-provisioning across deployments rather than a single-instance front end.
+
 ## Quality benchmark: the professional map
 
 The interface draws inspiration from professional-grade spatial platforms, where complex multi-parameter models are rendered as intuitive, layered navigation surfaces. Key design patterns adopted from this benchmark include:

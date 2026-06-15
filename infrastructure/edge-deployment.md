@@ -16,6 +16,13 @@ paired_with: edge-deployment.es.md
 
 The platform moves all external network connections to the outermost boundary of the [[three-ring-architecture|three-ring architecture]] before any data reaches the core processing rings. This architecture prevents common network-based attacks from reaching the financial ledgers and structured records held in Ring 2, with sanitized records written to the [[worm-ledger-design|WORM ledger]].
 
+## Key Takeaways
+
+- All inbound internet traffic is processed exclusively in Ring 1 — the boundary layer. No external payload reaches Ring 2 until it has been sanitized, validated, and stripped of transport metadata by the appropriate Ring 1 ingest service. The public internet is never in direct contact with Ring 2 or Ring 3.
+- Ring 1 is implemented as a set of per-channel MCP server processes (one per ingest type: email, filesystem, people records, external input). Each accepts, sanitizes, and passes only clean structured records inward — a compromised ingest channel cannot escalate to the ledger layer.
+- The audit ledger in Ring 2 records what the system acted on, not what arrived at the network boundary. This is a precondition of the [[worm-ledger-architecture|WORM ledger design]]: clean, validated events — not raw traffic — are what get written to the immutable record.
+- Ring 2 has no outbound internet path except through [[service-egress]]. The boundary is enforced in both directions: inbound via Ring 1 ingest, outbound via the egress service.
+
 ## The problem with deep ingest
 
 Standard server configurations process incoming internet traffic — email, HTTP, external API calls — inside the same execution environment that holds core data. A vulnerability in any ingest pathway grants an attacker access to the same memory space as the core records. Isolation cannot be added retroactively once a process has shared-memory access to another.
