@@ -83,10 +83,19 @@ The Gravity Engine is self-healing in a specific, narrow sense: its own outputs 
 
 The boundary is what makes the engine usable in a regulated setting. The engine accelerates synthesis; a human, not the engine, commits the result to a ledger of record.
 
+## Key takeaways
+
+- `service-content` is the Gravity Engine — a synthesis engine that transforms an organisation's raw document payload into structured, human-verified intelligence.
+- Its institutional grammar is the Four-Pillar Seed Vault: Entities, Archetypes, Chart of Accounts, and Domains — built once by operators and never mutated by AI.
+- The pipeline is deterministic: Ingest → Extract → Gravity calculation → Verification → Routing. Every step produces auditable outputs.
+- The Stratified Ontology has five layers. Only L5 — operator-verified content — feeds final published artefacts.
+- The human-in-the-loop boundary is architectural, not optional: no content reaches a verified ledger without an explicit operator decision at the F12 gate.
+
 ## See also
 
 - [[service-slm]] — the local small language model that produces `VALID`/`REJECT` decisions
 - [[service-people]] — the identity ledger that receives socketed entities from the Gravity Engine
 - [[archetypes-and-chart-of-accounts]] — the institutional taxonomy that forms the Seed Vault's structure
 - [[app-console-input]] — the F12 Input Machine; the human-gated ingest surface
+- [[service-fs-architecture]] — the WORM ledger that stores the L0 base geometry layer
 - [[totebox-os]] — the Totebox that hosts service-content and its WORM storage

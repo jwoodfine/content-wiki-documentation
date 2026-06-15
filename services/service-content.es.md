@@ -83,10 +83,19 @@ El Motor de Gravedad es auto-reparable en un sentido específico y limitado: sus
 
 El límite es lo que hace al motor utilizable en un entorno regulado. El motor acelera la síntesis; un humano, no el motor, confirma el resultado en un libro mayor de registro.
 
+## Puntos clave
+
+- `service-content` es el Motor de Gravedad — un motor de síntesis que transforma la carga útil documental en bruto de una organización en inteligencia estructurada y verificada por humanos.
+- Su gramática institucional es la Bóveda de Semillas de Cuatro Pilares: Entidades, Arquetipos, Plan de Cuentas y Dominios — construida una vez por operadores y nunca mutada por IA.
+- El pipeline es determinista: Ingesta → Extracción → Cálculo de gravedad → Verificación → Enrutamiento. Cada paso produce salidas auditables.
+- La Ontología Estratificada tiene cinco capas. Solo L5 — contenido verificado por el operador — alimenta los artefactos publicados finales.
+- El límite de intervención humana es arquitectónico, no opcional: ningún contenido llega a un libro mayor verificado sin una decisión explícita del operador en la compuerta F12.
+
 ## Véase también
 
 - [[service-slm]] — el modelo de lenguaje pequeño local que produce las decisiones `VALID`/`REJECT`
 - [[service-people]] — el libro mayor de identidades que recibe entidades conectadas del Motor de Gravedad
 - [[archetypes-and-chart-of-accounts]] — la taxonomía institucional que forma la estructura de la Bóveda de Semillas
 - [[app-console-input]] — la Máquina de Entrada F12; la superficie de ingesta con compuerta humana
+- [[service-fs-architecture]] — el libro mayor WORM que almacena la capa de geometría base L0
 - [[totebox-os]] — el Totebox que aloja service-content y su almacenamiento WORM
