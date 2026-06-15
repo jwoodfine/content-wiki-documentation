@@ -115,3 +115,5 @@ authenticated Git access to private repositories.
 
 - [[crypto-license-sales-architecture]] — how payments are processed and tokens are issued upstream of this server
 - [[software-distribution-substrate]] — overview of the three-component system this server belongs to
+- [[authenticate-binary-downloads]] — step-by-step guide: verify Ed25519-signed binary releases from the private distribution endpoint
+- [[issue-capability-token]] — step-by-step guide: generate a scoped Ed25519 capability token for a device or service

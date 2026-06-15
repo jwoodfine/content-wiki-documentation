@@ -57,3 +57,5 @@ The Doorman's routing logic and the apprenticeship substrate's promotion ledger 
 - [[apprenticeship-substrate]] — the routing inversion and verdict-signing protocol that compounds the substrate
 - [[three-ring-architecture]] — Ring 3 framing; the Doorman is the sole Ring 3 service
 - [[service-slm]] — the service-slm crate that implements the Doorman
+- [[configure-doorman]] — step-by-step guide: set Tier A/B/C addresses, circuit-breaker thresholds, and verify the health endpoint
+- [[run-first-slm-query]] — step-by-step guide: submit an inference prompt and read the Doorman health dashboard

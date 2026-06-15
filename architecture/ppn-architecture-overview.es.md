@@ -104,3 +104,5 @@ Esta separación es intencional: el plano de control de red y el plano de acceso
 - [[totebox-archive]] — bóveda de datos WORM soberana, imagen de disco libremente transferible
 - [[os-orchestration]] — agregador PSP sin estado, consultas de múltiples archivos, nivel de pago
 - [[ppn-distributed-vm-fabric]] — tejido VM entre nodos planificado: préstamo virtio-mem, ledger de capacidades distribuido, atestación soberana
+- [[enroll-ppn-node]] — guía paso a paso: registrar un nodo de cómputo con el controlador de flota y verificar el primer latido
+- [[add-a-fleet-node]] — guía paso a paso: inscribir un segundo nodo en una flota en funcionamiento sin interrumpir las operaciones existentes

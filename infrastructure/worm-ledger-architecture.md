@@ -83,3 +83,5 @@ Understanding the ledger's integrity properties requires clarity on what the app
 - [[service-fs-architecture]] — the service that implements this architecture as a per-tenant deployed ledger
 - [[app-console-input]] — the F12 human-in-the-loop gate that is the quality control upstream of the ledger
 - [[sel4-microkernel-substrate]] — the intended seL4 capability-enforcement trajectory for tenant isolation
+- [[verify-worm-ledger]] — step-by-step guide: export a tile, verify the hash chain, and validate the signed checkpoint
+- [[read-the-command-ledger]] — step-by-step guide: read WORM ledger entries from the F12 LEDGER tab

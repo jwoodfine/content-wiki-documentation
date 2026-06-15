@@ -90,3 +90,5 @@ Specialisation, not scale, is the design principle.
 - [[totebox-os]] — the Totebox that hosts service-slm in Sovereign Iron mode
 - [[architecture-decisions|SYS-ADR-07]] — structured data never routes through AI; service-slm implements this boundary
 - [[doorman-protocol]] — the Doorman audit-routing protocol in detail
+- [[run-local-slm-inference]] — step-by-step guide: start the SLM service and submit inference requests from the console or API
+- [[run-first-slm-query]] — step-by-step guide: read the Doorman health dashboard and submit your first prompt

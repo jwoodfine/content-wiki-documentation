@@ -90,3 +90,5 @@ La especialización, no la escala, es el principio de diseño.
 - [[totebox-os]] — el Totebox que aloja service-slm en modo Hierro Soberano
 - [[architecture-decisions|SYS-ADR-07]] — los datos estructurados nunca se enrutan a través de IA; service-slm implementa este límite
 - [[doorman-protocol]] — el protocolo de auditoría y enrutamiento del Portero en detalle
+- [[run-local-slm-inference]] — guía paso a paso: iniciar el servicio SLM y enviar solicitudes de inferencia desde la consola o la API
+- [[run-first-slm-query]] — guía paso a paso: leer el panel de salud del Doorman y enviar el primer prompt

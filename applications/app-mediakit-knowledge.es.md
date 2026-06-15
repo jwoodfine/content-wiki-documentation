@@ -68,3 +68,5 @@ A fecha de 2026-04-27, el motor está al final de la Fase 3. Las Fases 1, 1.1, 2
 - [[collab-via-passthrough-relay]] — la implementación del relé WebSocket
 - [[wikipedia-leapfrog-design]] — la filosofía de diseño de memoria muscular y margen leapfrog del 95%/5%
 - [[knowledge-wiki-home-page-design]] — la intención de diseño de la página de inicio y la estructura de espacios
+- [[deploy-knowledge-instance]] — guía paso a paso: compilar e iniciar app-mediakit-knowledge apuntando a un repositorio de contenido local
+- [[use-knowledge-mounts]] — guía paso a paso: añadir un repositorio de contenido secundario mediante montajes declarativos en knowledge.toml

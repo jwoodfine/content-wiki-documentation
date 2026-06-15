@@ -211,3 +211,5 @@ Phases 4–8 are *planned*; cautionary language applies per [ni-51-102] and [osc
 - [[collab-via-passthrough-relay]] — the WebSocket relay implementation in depth
 - [[wikipedia-leapfrog-design]] — the 95%/5% muscle-memory and leapfrog headroom design philosophy
 - [[knowledge-wiki-home-page-design]] — the home page design intent and slot structure
+- [[deploy-knowledge-instance]] — step-by-step guide: build and start app-mediakit-knowledge pointed at a local content repository
+- [[use-knowledge-mounts]] — step-by-step guide: add a secondary content repository via declarative knowledge.toml mounts

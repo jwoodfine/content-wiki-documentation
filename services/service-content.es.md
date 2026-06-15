@@ -99,3 +99,5 @@ El límite es lo que hace al motor utilizable en un entorno regulado. El motor a
 - [[app-console-input]] — la Máquina de Entrada F12; la superficie de ingesta con compuerta humana
 - [[service-fs-architecture]] — el libro mayor WORM que almacena la capa de geometría base L0
 - [[totebox-os]] — el Totebox que aloja service-content y su almacenamiento WORM
+- [[query-the-datagraph]] — guía paso a paso: buscar entidades nombradas, navegar relaciones y gestionar interrupciones del Nivel A
+- [[export-structured-data]] — guía paso a paso: cuatro rutas de exportación incluyendo consultas DataGraph y Markdown wiki

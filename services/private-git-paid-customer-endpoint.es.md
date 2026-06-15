@@ -124,3 +124,5 @@ futura que pueda ofrecer acceso Git autenticado a repositorios privados.
 
 - [[crypto-license-sales-architecture]] — cómo se procesan los pagos y se emiten los tokens antes de llegar a este servidor
 - [[software-distribution-substrate]] — descripción general del sistema de tres componentes al que pertenece este servidor
+- [[authenticate-binary-downloads]] — guía paso a paso: verificar versiones de binarios firmados con Ed25519 desde el punto de distribución privado
+- [[issue-capability-token]] — guía paso a paso: generar un token de capacidad Ed25519 con alcance para un dispositivo o servicio

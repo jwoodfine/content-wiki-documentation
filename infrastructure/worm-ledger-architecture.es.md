@@ -61,3 +61,5 @@ Comprender las propiedades de integridad del libro mayor requiere claridad sobre
 - [[service-fs-architecture]] — el servicio que implementa esta arquitectura como libro mayor desplegado por inquilino
 - [[app-console-input]] — la compuerta de intervención humana F12 que es el control de calidad aguas arriba del libro mayor
 - [[sel4-microkernel-substrate]] — la trayectoria de aislamiento por capacidades seL4 prevista para inquilinos
+- [[verify-worm-ledger]] — guía paso a paso: exportar un bloque, verificar la cadena de hashes y validar el punto de control firmado
+- [[read-the-command-ledger]] — guía paso a paso: leer entradas del libro mayor WORM desde la pestaña LEDGER de F12

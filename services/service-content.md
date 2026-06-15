@@ -99,3 +99,5 @@ The boundary is what makes the engine usable in a regulated setting. The engine 
 - [[app-console-input]] — the F12 Input Machine; the human-gated ingest surface
 - [[service-fs-architecture]] — the WORM ledger that stores the L0 base geometry layer
 - [[totebox-os]] — the Totebox that hosts service-content and its WORM storage
+- [[query-the-datagraph]] — step-by-step guide: search named entities, navigate relationships, and handle Tier A outages
+- [[export-structured-data]] — step-by-step guide: four export paths including DataGraph queries and wiki Markdown

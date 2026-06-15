@@ -104,3 +104,5 @@ This separation is intentional: the network control plane and the data access pl
 - [[os-orchestration]] — stateless PSP aggregator, multi-archive queries, paid tier
 - [[ppn-distributed-vm-fabric]] — planned cross-node VM fabric: virtio-mem lending, distributed capability ledger, sovereign attestation
 - [[pointsav-private-network|PointSav Private Network]] — infrastructure overview and WireGuard mesh provisioning context
+- [[enroll-ppn-node]] — step-by-step guide: register a compute node with the fleet controller and verify the first heartbeat
+- [[add-a-fleet-node]] — step-by-step guide: enroll a second node into a running fleet without interrupting existing operations

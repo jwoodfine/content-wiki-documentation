@@ -58,3 +58,5 @@ La lógica de enrutamiento del Doorman y el libro de promoción del sustrato de 
 - [[apprenticeship-substrate]] — la inversión de enrutamiento y el protocolo de firma de veredictos
 - [[three-ring-architecture]] — el Doorman es el único servicio del Anillo 3
 - [[service-slm]] — el crate service-slm que implementa el Doorman
+- [[configure-doorman]] — guía paso a paso: configurar las direcciones de nivel, los umbrales del interruptor de circuito y verificar el punto de conexión de salud
+- [[run-first-slm-query]] — guía paso a paso: enviar un prompt de inferencia y leer el panel de salud del Doorman
