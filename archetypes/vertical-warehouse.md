@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-02
+last_edited: 2026-06-15
 editor: pointsav-engineering
 paired_with: vertical-warehouse.es.md
 short_description: "A Vertical Warehouse is a 3–6 story multi-storey building used for light manufacturing, just-in-time logistics, and last-mile delivery in urban or near-urban locations — one of three Location Intelligence archetypes."
@@ -73,7 +73,7 @@ The vertical form factor is driven by urban land cost. Where a horizontal wareho
 
 ## Production dataset
 
-The VWH production pipeline uses DBSCAN-based clustering of hardware, trade-supply, and light-industrial retail chains. Calibration uses existing hardware store locations as proxy anchors: a calibrated build must place hardware anchors within 3 km of at least 73% of T1 and T2 clusters. The June 2026 build met this threshold.
+The VWH production pipeline uses DBSCAN-based clustering of hardware, trade-supply, and light-industrial retail chains. Calibration uses existing hardware store locations as proxy anchors: a calibrated build must place hardware anchors within 3 km of at least 73% of T1 and T2 clusters.
 
 **6,368 clusters** across 17 display countries as of the June 2026 calibration:
 
@@ -96,6 +96,8 @@ VWH tiers use a **group-collapse model**: tier assignment is based on the number
 **T2 Established Trade:** Hardware anchor with at least one secondary trade-supply category (auto parts, building materials, or flooring).
 
 **T3 Emerging:** Hardware anchor present without additional trade-supply co-location. Single-category thin VWH sites.
+
+The T1/T2/T3 tier labels used here are shared with the other Location Intelligence archetypes. For the general tier vocabulary, see [[colocation-tier-nomenclature]].
 
 ## The retail contamination flag
 
@@ -135,4 +137,6 @@ A companion academic study, *Industrial Co-location in the Metropolitan Ring: Sp
 - [Warehouse](https://en.wikipedia.org/wiki/Warehouse) — Wikipedia, accessed 2026-06-14
 - [Retail park](https://en.wikipedia.org/wiki/Retail_park) — Wikipedia, accessed 2026-06-14
 
-*Chain location data used to derive VWH cluster centroids is sourced from OpenStreetMap contributors and licensed under the Open Database Licence (ODbL). OpenStreetMap data © OpenStreetMap contributors.*
+## Data Sources
+
+Map and location data © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright) / [ODbL](https://opendatacommons.org/licenses/odbl/).

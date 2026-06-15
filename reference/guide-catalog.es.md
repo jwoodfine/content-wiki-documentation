@@ -7,12 +7,14 @@ type: topic
 content_type: topic
 status: stable
 language_protocol: TRANSLATE-ES
-last_edited: 2026-06-14
+last_edited: 2026-06-15
 editor: pointsav-engineering
 paired_with: guide-catalog.md
 aliases:
   - developer-guide-index
 ---
+
+> **Las guías operativas** para despliegues de plataforma se mantienen por separado en el catálogo de despliegue de flota Woodfine. Son documentos operativos para operadores del sistema y no se enumeran aquí.
 
 El Índice de Guías para Desarrolladores enumera las guías prácticas de la plataforma PointSav, organizadas por área de interés del desarrollador. Cada guía cubre una tarea específica que un desarrollador realiza al construir con la plataforma o desplegarla. Para la arquitectura subyacente en la que se basa cada guía, siga los enlaces a los artículos dentro de cada guía.
 

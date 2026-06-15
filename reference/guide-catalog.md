@@ -6,12 +6,14 @@ category: reference
 type: topic
 content_type: topic
 status: stable
-last_edited: 2026-06-14
+last_edited: 2026-06-15
 editor: pointsav-engineering
 paired_with: guide-catalog.es.md
 aliases:
   - developer-guide-index
 ---
+
+> **Operator guides** for platform deployments are maintained separately in the Woodfine fleet deployment catalog. Those are operational documents for system operators and are not listed here.
 
 The Developer Guide Index lists the task-oriented how-to guides for the PointSav platform, organised by developer concern. Each guide covers a specific task a developer performs when building with or deploying the platform. For the underlying architecture that each guide draws on, follow the article wikilinks within each guide.
 

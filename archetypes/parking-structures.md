@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-02
+last_edited: 2026-06-15
 editor: pointsav-engineering
 paired_with: parking-structures.es.md
 short_description: "A Parking Structure is a 3–9 story multi-level car park at a regional airport or intercity train station — one of three Location Intelligence archetypes. Its defining relationship: a Regional Market feeds a Metro Market by plane or train, and the parking structure is the infrastructure that makes this journey possible at scale."
@@ -146,6 +146,8 @@ Not all transit clusters qualify as Parking Structures. Walk-up urban stops with
 
 **T3 Functional Transit Stop:** Single modal group with one enrichment signal that qualifies the site as drive-to rather than walk-up. Transit infrastructure is present; the full commercial ecosystem of higher tiers is not yet established.
 
+The T1/T2/T3 tier labels used here are shared with the other Location Intelligence archetypes. For the general tier vocabulary, see [[colocation-tier-nomenclature]].
+
 ## Related Research
 
 A companion academic study, *The Commuter Archetype: Car-Rental Clustering as a Proxy for Transit-Adjacent Commercial Co-location*, is in preparation for intended submission to the Journal of Transport Geography (Elsevier). The study identifies 14,332 Commuter candidates across eighteen countries using OpenStreetMap data and documents a rail-to-airport ratio of approximately 88% to 12%, with a 27% integration rate with adjacent commercial co-location clusters.
@@ -154,4 +156,6 @@ A companion academic study, *The Commuter Archetype: Car-Rental Clustering as a 
 
 - [Park and ride](https://en.wikipedia.org/wiki/Park_and_ride) — Wikipedia, accessed 2026-06-14
 
-*Transit infrastructure and car rental location data used to derive PKS cluster centroids is sourced from OpenStreetMap contributors and licensed under the Open Database Licence (ODbL). OpenStreetMap data © OpenStreetMap contributors.*
+## Data Sources
+
+Map and location data © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright) / [ODbL](https://opendatacommons.org/licenses/odbl/).

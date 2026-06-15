@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: TRANSLATE-ES
-last_edited: 2026-06-02
+last_edited: 2026-06-15
 editor: pointsav-engineering
 paired_with: parking-structures.md
 short_description: "Una Estructura de Aparcamiento es un aparcamiento multinivel de 3–9 plantas en un aeropuerto regional o estación de tren interurbano — uno de los tres arquetipos de Inteligencia de Localización. Su relación definitoria: un Mercado Regional alimenta un Mercado Metropolitano en avión o tren."
@@ -124,6 +124,6 @@ Un estudio académico complementario, *El arquetipo del Viajero Habitual: La con
 
 - [Aparcamiento de disuasión](https://en.wikipedia.org/wiki/Park_and_ride) — Wikipedia, acceso 2026-06-14
 
-*Contenido de Wikipedia reproducido bajo [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).*
+## Fuentes de datos
 
-*Los datos de infraestructura de tránsito y de ubicación de alquiler de vehículos usados para derivar los centroides de clústeres PKS provienen de colaboradores de OpenStreetMap y están licenciados bajo la Licencia de Base de Datos Abierta (ODbL). Datos de OpenStreetMap © colaboradores de OpenStreetMap.*
+Datos de mapa y localización © [colaboradores de OpenStreetMap](https://www.openstreetmap.org/copyright) / [ODbL](https://opendatacommons.org/licenses/odbl/).

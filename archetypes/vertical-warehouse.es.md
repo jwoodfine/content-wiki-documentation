@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: TRANSLATE-ES
-last_edited: 2026-06-02
+last_edited: 2026-06-15
 editor: pointsav-engineering
 paired_with: vertical-warehouse.md
 short_description: "Un Almacén Vertical es un edificio de 3–6 plantas usado para manufactura ligera, logística justo-a-tiempo y entrega de última milla en ubicaciones urbanas o periurbanas — uno de los tres arquetipos de Inteligencia de Localización."
@@ -67,7 +67,7 @@ El factor de forma vertical está impulsado por el costo del suelo urbano. Donde
 
 ## Conjunto de datos de producción
 
-El sistema de producción VWH utiliza clústeres DBSCAN de cadenas de ferretería, suministro para el sector de la construcción y comercio minorista industrial-ligero. La calibración usa ubicaciones de ferreterías existentes como anclas indicadoras: un sistema calibrado debe situar anclas de ferretería a menos de 3 km de al menos el 73% de los clústeres T1 y T2. La versión de junio de 2026 cumplió este umbral.
+El sistema de producción VWH utiliza clústeres DBSCAN de cadenas de ferretería, suministro para el sector de la construcción y comercio minorista industrial-ligero. La calibración usa ubicaciones de ferreterías existentes como anclas indicadoras: un sistema calibrado debe situar anclas de ferretería a menos de 3 km de al menos el 73% de los clústeres T1 y T2.
 
 **6.368 clústeres** en 17 países de visualización según la calibración de junio de 2026:
 
@@ -129,6 +129,6 @@ Un estudio académico complementario, *Coubicación industrial en el anillo metr
 - [Almacén](https://en.wikipedia.org/wiki/Warehouse) — Wikipedia, acceso 2026-06-14
 - [Parque comercial](https://en.wikipedia.org/wiki/Retail_park) — Wikipedia, acceso 2026-06-14
 
-*Contenido de Wikipedia reproducido bajo [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).*
+## Fuentes de datos
 
-*Los datos de ubicación de cadenas usados para derivar los centroides de clústeres VWH provienen de colaboradores de OpenStreetMap y están licenciados bajo la Licencia de Base de Datos Abierta (ODbL). Datos de OpenStreetMap © colaboradores de OpenStreetMap.*
+Datos de mapa y localización © [colaboradores de OpenStreetMap](https://www.openstreetmap.org/copyright) / [ODbL](https://opendatacommons.org/licenses/odbl/).
