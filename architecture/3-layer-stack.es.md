@@ -20,6 +20,13 @@ cites: []
 
 La Pila de Tres Capas es el patrón de descomposición de infraestructura utilizado en los despliegues de [[pointsav-overview|PointSav]]. El patrón separa la capacidad de cómputo bruto, la ejecución de la plataforma aislada y el acceso seguro del operador en tres capas distintas.
 
+## Puntos clave
+
+- Tres capas distintas: Infraestructura (cómputo bruto — bare-metal, nube o hardware del cliente), Plataforma (microkernel aislado y ejecución de servicios con límites de seguridad basada en capacidades), Entrega (interfaces de terminal y consola con las que interactúan directamente los operadores).
+- Reemplazabilidad independiente en cada capa. Migrar de una infraestructura en la nube a hardware local no requiere cambios en la capa de plataforma. Las capas están desacopladas por diseño, no por convención.
+- Ningún componente en la capa de plataforma puede superar las capacidades explícitamente otorgadas. El aislamiento se aplica en la capa del [[sel4-microkernel-substrate|microkernel]], no por política — un servicio comprometido no puede elevar su propio acceso.
+- La capa de entrega es la única capa con la que los operadores interactúan directamente. Reenvía solicitudes hacia la plataforma y devuelve resultados hacia arriba; los operadores nunca tienen acceso directo a las primitivas de la capa de infraestructura como disco en bruto o interfaces de red.
+
 ## Las tres capas
 
 **Capa de infraestructura** — el sustrato de cómputo físico o virtual: servidores bare-metal, instancias en la nube, hardware del cliente o cualquier combinación. Esta capa suministra tiempo de CPU y memoria. No realiza garantías de seguridad más allá de las que ofrece el hardware.

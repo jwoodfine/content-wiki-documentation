@@ -20,7 +20,12 @@ paired_with: 3-layer-stack.es.md
 
 **The Three-Layer Stack** is the foundational infrastructure pattern that decouples operational logic from physical hardware across [[pointsav-overview|PointSav]] deployments. The infrastructure layer provides raw computing capability — bare metal, cloud instances, or customer hardware. The platform layer runs isolated [[sel4-microkernel-substrate|micro-kernels]] and services, applying [[capability-based-security|capability-based security]] boundaries between components. The delivery layer provides secure terminal access so operators interact with the system without touching the underlying infrastructure directly. Each layer is independently replaceable, which means a customer can migrate from a cloud infrastructure layer to on-premises hardware without changing how the platform layer operates.
 
-<!-- EXPAND: lead needs 200+ words -->
+## Key Takeaways
+
+- Three distinct layers: Infrastructure (raw compute — bare metal, cloud, or customer hardware), Platform (isolated microkernel and service execution with capability-based security boundaries), Delivery (terminal and console interfaces operators interact with directly).
+- Independent replaceability at each layer. Migrating from a cloud infrastructure to on-premises hardware does not require changes to the platform layer. The layers are decoupled by design, not by convention.
+- No component at the platform layer can exceed explicitly granted capabilities. Isolation is enforced at the [[sel4-microkernel-substrate|microkernel level]], not by policy — a compromised service cannot elevate its own access.
+- The delivery layer is the only layer operators touch directly. It forwards requests into the platform and returns results upward; operators never have direct access to infrastructure-layer primitives such as raw disk or network interfaces.
 
 ## Overview
 

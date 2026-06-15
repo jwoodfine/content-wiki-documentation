@@ -20,6 +20,13 @@ cites: []
 
 La Orquestación Totebox es la capa de coordinación que aprovisiona, supervisa y gestiona múltiples instancias de [[totebox-archive|archivo Totebox]] en un único despliegue de PointSav. Cuando un operador mantiene archivos separados para contratos, registros financieros y correspondencia, la capa de orquestación garantiza que cada contenedor conserve su propio [[worm-ledger-design|libro contable]] aislado, ejecute su propia verificación de integridad y reporte el estado de salud a través de una superficie de monitoreo unificada — sin permitir que ningún contenedor comparta estado mutable con otro. Para un operador regulado, esto significa que un incidente en un dominio no puede propagarse a los registros de otro.
 
+## Puntos clave
+
+- Cada Totebox se ejecuta como una unidad independiente. Ningún contenedor comparte un directorio de libro contable con ningún otro — un incidente en un contenedor no puede propagarse a los hermanos porque no hay estado mutable compartido en la capa del libro contable.
+- La verificación de integridad se ejecuta como auditorías periódicas de checksum en todos los contenedores gestionados. Los resultados se registran en un único registro de auditoría consolidado; cualquier discrepancia en el checksum se presenta a nivel de orquestación antes de llegar al operador.
+- Un nuevo contenedor se aprovisiona con un esqueleto de tres directorios (`app-console-input/`, `assets/`, `ledger/`) y se registra en la capa de orquestación en el momento de creación, habilitando el seguimiento del ciclo de vida desde el primer día.
+- La Orquestación Totebox permite a un operador regulado mantener archivos separados e independientemente aislados para diferentes tipos de registros — contratos, registros financieros, correspondencia — gestionados a través de una única superficie de salud unificada.
+
 ## Aislamiento de contenedores
 
 Cada Totebox se ejecuta como una unidad independiente respaldada por las garantías de aislamiento de hardware del [[sel4-microkernel-substrate|micronúcleo seL4]]. Ningún contenedor comparte un directorio de libro contable con ningún otro contenedor. Un compromiso en el directorio de activos de un contenedor no se propaga a los contenedores hermanos, porque no hay estado mutable compartido en la capa del libro contable.
