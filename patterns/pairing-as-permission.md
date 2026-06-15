@@ -109,4 +109,5 @@ Pairing is the permission. Topology is the audit.
 - [[machine-based-auth]] — machine-based authentication layer that operates alongside the pairing model
 - [[compounding-substrate]] — the broader architecture within which this access model compounds
 - [[three-ring-architecture]] — the ring boundary model that PairingAsPermission enforces structurally
+- [[pair-a-new-device]] — step-by-step guide: register a device and assign a pairing tier
 

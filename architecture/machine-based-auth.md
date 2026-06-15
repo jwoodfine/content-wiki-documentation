@@ -93,3 +93,4 @@ Machine-based authorization connects to three other architectural layers.
 - [[sel4-microkernel-substrate]] — the seL4 microkernel that enforces capability-token integrity
 - [[compliance-and-continuous-disclosure]] — how hardware-bound authorization supports continuous-proof compliance
 - [[deployment-patterns]] — how MBA pairing applies across the six canonical deployment configurations
+- [[pair-a-new-device]] — step-by-step guide: register a device and assign a pairing tier

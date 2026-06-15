@@ -94,3 +94,4 @@ Tiers are enforced by pairings, not string comparisons. A P3 contributor's `os-c
 - [[pairing-as-permission]]
 - [[personnel-permissions]]
 - [[doorman-protocol]]
+- [[open-first-totebox-session]] — step-by-step guide: open and navigate a Totebox session
