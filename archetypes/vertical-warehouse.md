@@ -126,6 +126,10 @@ A flagged site is not disqualified as a VWH location, but site selection analysi
 
 `flooring`, `tool_rental`, `mro_industrial`, `lumber`, `plumbing`, `electrical` — these enrich VWH cluster member arrays but do not gate T1/T2/T3 tier logic.
 
+## Related Research
+
+A companion academic study, *Industrial Co-location in the Metropolitan Ring: Spatial Signatures of the Urban Fringe Archetype Across Eighteen Countries*, is in preparation for intended submission to Regional Science and Urban Economics (Elsevier). The study applies the Vertical Warehouse archetype proxy criterion across eighteen countries using OpenStreetMap point-of-interest data and formalises the grocery-absence and hardware-presence co-location signal at continental scale.
+
 ## References
 
 - [Warehouse](https://en.wikipedia.org/wiki/Warehouse) — Wikipedia, accessed 2026-06-14

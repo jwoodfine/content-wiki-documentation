@@ -116,6 +116,10 @@ No todos los clústeres de tránsito califican como Estructuras de Aparcamiento.
 
 **T3 Parada de Tránsito Funcional:** Grupo modal único con una señal de enriquecimiento que califica el sitio como drive-to en lugar de acceso a pie. La infraestructura de tránsito está presente; el ecosistema comercial completo de los niveles superiores aún no está consolidado.
 
+## Investigación relacionada
+
+Un estudio académico complementario, *El arquetipo del Viajero Habitual: La concentración de alquiler de vehículos como indicador de co-localización comercial adyacente al tránsito*, está en preparación para su presentación prevista en el Journal of Transport Geography (Elsevier). El estudio identifica 14.332 candidatos del arquetipo Viajero Habitual en dieciocho países utilizando datos de OpenStreetMap y documenta una proporción ferroviario-aeroportuaria de aproximadamente 88% a 12%, con una tasa de integración del 27% con clústeres de co-localización comercial adyacentes.
+
 ## Referencias
 
 - [Aparcamiento de disuasión](https://en.wikipedia.org/wiki/Park_and_ride) — Wikipedia, acceso 2026-06-14

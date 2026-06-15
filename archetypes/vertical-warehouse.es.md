@@ -120,6 +120,10 @@ Un sitio marcado no queda descalificado como ubicación VWH, pero el análisis d
 
 `flooring` (pavimentos), `tool_rental` (alquiler de herramientas), `mro_industrial`, `lumber` (madera) — estas enriquecen los arrays de miembros del clúster VWH pero no determinan la lógica de niveles T1/T2/T3.
 
+## Investigación relacionada
+
+Un estudio académico complementario, *Coubicación industrial en el anillo metropolitano: Firmas espaciales del arquetipo de la Periferia Urbana en dieciocho países*, está en preparación para su presentación prevista en Regional Science and Urban Economics (Elsevier). El estudio aplica el criterio indicador del arquetipo Almacén Vertical a dieciocho países utilizando datos de puntos de interés de OpenStreetMap y formaliza la señal de co-localización de ausencia de alimentación y presencia de ferretería a escala continental.
+
 ## Referencias
 
 - [Almacén](https://en.wikipedia.org/wiki/Warehouse) — Wikipedia, acceso 2026-06-14
