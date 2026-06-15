@@ -149,3 +149,5 @@ Not all transit clusters qualify as Parking Structures. Walk-up urban stops with
 ## References
 
 - [Park and ride](https://en.wikipedia.org/wiki/Park_and_ride) — Wikipedia, accessed 2026-06-14
+
+*Transit infrastructure and car rental location data used to derive PKS cluster centroids is sourced from OpenStreetMap contributors and licensed under the Open Database Licence (ODbL). OpenStreetMap data © OpenStreetMap contributors.*

@@ -126,3 +126,5 @@ Un sitio marcado no queda descalificado como ubicación VWH, pero el análisis d
 - [Parque comercial](https://en.wikipedia.org/wiki/Retail_park) — Wikipedia, acceso 2026-06-14
 
 *Contenido de Wikipedia reproducido bajo [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).*
+
+*Los datos de ubicación de cadenas usados para derivar los centroides de clústeres VWH provienen de colaboradores de OpenStreetMap y están licenciados bajo la Licencia de Base de Datos Abierta (ODbL). Datos de OpenStreetMap © colaboradores de OpenStreetMap.*

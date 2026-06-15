@@ -130,3 +130,5 @@ A flagged site is not disqualified as a VWH location, but site selection analysi
 
 - [Warehouse](https://en.wikipedia.org/wiki/Warehouse) — Wikipedia, accessed 2026-06-14
 - [Retail park](https://en.wikipedia.org/wiki/Retail_park) — Wikipedia, accessed 2026-06-14
+
+*Chain location data used to derive VWH cluster centroids is sourced from OpenStreetMap contributors and licensed under the Open Database Licence (ODbL). OpenStreetMap data © OpenStreetMap contributors.*

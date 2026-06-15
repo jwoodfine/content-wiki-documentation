@@ -121,3 +121,5 @@ No todos los clústeres de tránsito califican como Estructuras de Aparcamiento.
 - [Aparcamiento de disuasión](https://en.wikipedia.org/wiki/Park_and_ride) — Wikipedia, acceso 2026-06-14
 
 *Contenido de Wikipedia reproducido bajo [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).*
+
+*Los datos de infraestructura de tránsito y de ubicación de alquiler de vehículos usados para derivar los centroides de clústeres PKS provienen de colaboradores de OpenStreetMap y están licenciados bajo la Licencia de Base de Datos Abierta (ODbL). Datos de OpenStreetMap © colaboradores de OpenStreetMap.*
