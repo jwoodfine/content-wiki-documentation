@@ -17,6 +17,13 @@ category: reference
 
 The Building Design System serves as the AEC-specific extension of the platform’s design substrate, analogous to the relationship between IBM Carbon and specialized industry modules. It is anchored to the IFC 4.3 entity hierarchy and prioritized for high-fidelity operational environments. The system translates the platform’s core commitments — flat-file storage, open standards, and offline-first execution — into a professional toolset that addresses the structural weaknesses of legacy cloud-only BIM. The [[sel4-microkernel-substrate|seL4 security foundation]] provides the hardware-attested isolation that defence and healthcare clients require.
 
+## Key Takeaways
+
+- The design system is anchored to the IFC 4.3 entity hierarchy and uses a text-based open-standard stack (IFC-SPF, BCF 3.0, IDS 1.0, COBie). Data structured to these standards remains accessible for 50+ years and outlasts the specific software vendors that generate it.
+- Asset-Anchored BIM is the structural differentiator: the digital twin is a legal artifact signed with the land title. It moves with the property deed rather than being held in a vendor’s tenant model — the data survives platform changes or vendor failure without requiring a migration.
+- Compositional-first regulatory compliance shifts from "check-after-design" to "compliant-by-construction". Cities publish codes as composable design tokens (bSDD dictionaries + IDS 1.0 constraints), and designers assemble models within pre-constrained envelopes where violations become geometrically impossible before they occur.
+- Offline capability is structural, not a feature flag. Full BIM functionality is maintained in basements, air-gapped facilities, and remote sites. This structural property separates the platform from cloud-only BIM tools that require a persistent connection to function.
+
 ## Structural Differentiators
 
 The platform’s design philosophy is predicated on five capabilities that are structurally incompatible with multi-tenant SaaS models:

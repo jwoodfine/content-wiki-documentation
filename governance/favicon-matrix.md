@@ -18,6 +18,13 @@ The platform uses inline SVG data URIs for browser-tab favicons — eliminating 
 
 This article describes the engineering rationale and the entity-mark assignment.
 
+## Key Takeaways
+
+- Embedding the SVG as a data URI in the `<link rel="icon">` element eliminates the network call for the icon file. Tab identity is established before any other resource loads — no separate favicon HTTP request is issued.
+- Vector geometry scales without pixelation across display densities. The same few-hundred-byte inline mark is sharp on a low-density laptop and a high-density external monitor. No retina-suffixed asset variants are required.
+- Two marks are in use: steel-blue (`#869FB9`) square for PointSav-served properties (documentation, design system, vendor wikis) and Woodfine blue (`#164679`) circle for Woodfine-served properties (project portfolios, corporate disclosures, customer wikis). The assignment is unambiguous — square = vendor, circle = customer.
+- The geometric distinction between square and circle is preserved independently of colour. A reader with reduced colour vision can still identify which entity's property is open in each browser tab without relying on the colour difference alone.
+
 ## Engineering rationale
 
 Embedding the SVG inline in the `<link rel="icon">` element as a URL-encoded data URI delivers two practical properties:

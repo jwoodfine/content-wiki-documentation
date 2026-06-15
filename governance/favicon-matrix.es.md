@@ -18,6 +18,13 @@ La plataforma utiliza URIs de datos SVG insertados para los favicons de pestaña
 
 Este artículo describe la justificación de ingeniería y la asignación de marcas por entidad.
 
+## Puntos clave
+
+- Incluir el SVG como URI de datos en el elemento `<link rel="icon">` elimina la llamada de red para el archivo del icono. La identidad de la pestaña se establece antes de que se cargue cualquier otro recurso — no se emite ninguna solicitud HTTP adicional para el favicon.
+- La geometría vectorial escala sin pixelación entre densidades de pantalla. La misma marca de unos pocos cientos de bytes es nítida en una pantalla de baja densidad y en un monitor externo de alta densidad. No se requieren variantes de activo con sufijo retina.
+- Dos marcas están en uso: cuadrado azul acero (`#869FB9`) para propiedades servidas por PointSav (documentación, sistema de diseño, wikis del proveedor) y círculo azul Woodfine (`#164679`) para propiedades servidas por Woodfine (carteras de proyectos, divulgaciones corporativas, wikis del cliente). La asignación es inequívoca: cuadrado = proveedor, círculo = cliente.
+- La distinción geométrica entre cuadrado y círculo se preserva independientemente del color. Un lector con visión cromática reducida puede identificar qué propiedad tiene abierta en cada pestaña sin depender exclusivamente de la diferencia de color.
+
 ## Justificación de ingeniería
 
 Incluir el SVG insertado en el elemento `<link rel="icon">` como URI de datos codificado en URL ofrece dos propiedades prácticas:
