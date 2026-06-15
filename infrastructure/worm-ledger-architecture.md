@@ -53,9 +53,33 @@ The design is engineered to align with SEC Rule 17a-4(f) WORM requirements and E
 
 The platform’s implementation is unique in its dual-target Rust strategy, allowing the same binary to serve as a Linux daemon today and an seL4 unikernel tomorrow. This ensures that the storage substrate is portable from a virtual machine to a future ToteboxOS hardware appliance without a core rewrite.
 
+## What WORM guarantees — and what it does not
+
+Understanding the ledger's integrity properties requires clarity on what the append-only invariant covers and where it stops.
+
+**The WORM guarantee covers:**
+- **Immutability after write.** A record written to the ledger cannot be modified or deleted by any actor — including the platform itself. This is structural, not policy.
+- **Tamper evidence.** Any post-write alteration is detectable by computing the hash chain. An auditor with the C2SP tile files and a SHA-256 implementation can verify integrity without a live service.
+- **External verifiability.** Monthly Sigstore Rekor anchoring creates a public timestamp chain that persists independently of the platform instance.
+- **Readability across decades.** The plain-text C2SP tlog-tiles format requires only basic Unix utilities to decode. No proprietary tooling is needed.
+
+**The WORM guarantee does not cover:**
+- **Correctness of what was written.** WORM cannot detect or prevent an incorrect record from entering the ledger. Correctness is the responsibility of the [[app-console-input|human-in-the-loop verification gate]] at F12, not the storage layer.
+- **Availability.** WORM guarantees durability; it does not guarantee that the ledger is always reachable. Uptime is an infrastructure concern.
+- **Search or query access.** The ledger stores records; it does not index them. Full-text search and entity queries are provided by [[service-search|`service-search`]] and [[service-content|`service-content`]].
+- **Cross-tenant isolation above the storage layer.** The WORM invariant is per-tenant. Cross-tenant access control is enforced by the wire protocol (`X-Module-ID` boundaries) and intended to be enforced by seL4 capability mediation in Envelope B.
+
+## Key takeaways
+
+- The WORM ledger is a structural guarantee: append-only is enforced at the API layer (`append`, `read_since`, `checkpoint` only), not by convention.
+- Immutability protects the audit trail after a record lands; the [[app-console-input|F12 Input Machine]] is the quality gate before it lands.
+- The C2SP tlog-tiles format and Sigstore anchoring make the ledger verifiable by a third party without access to the live service.
+- The four-layer architecture allows the storage engine (Envelope A: POSIX; Envelope B: seL4 capability) to change without altering the API contract or the wire protocol.
+
 ## See also
 
 - [[worm-ledger-design]] — regulatory compliance mapping and the structural immutability argument
 - [[worm-ledger-storage-architecture]] — storage-layer detail: tile format, atomic durability, and dual-target envelopes
-- [[cryptographic-ledgers]] — the broader cryptographic ledger context
+- [[service-fs-architecture]] — the service that implements this architecture as a per-tenant deployed ledger
+- [[app-console-input]] — the F12 human-in-the-loop gate that is the quality control upstream of the ledger
 - [[sel4-microkernel-substrate]] — the intended seL4 capability-enforcement trajectory for tenant isolation
