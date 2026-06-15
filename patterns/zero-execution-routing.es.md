@@ -18,6 +18,13 @@ editor: pointsav-engineering
 
 Las capas de presentación de la plataforma siguen un mandato de "Ejecución Cero", eliminando el uso de JavaScript en el cliente para la manipulación de la interfaz y el enrutamiento de idiomas. Esta arquitectura minimiza la superficie de ataque y garantiza un rendimiento instantáneo. El patrón complementa la capa de [[machine-based-auth|autenticación basada en máquinas]] y la arquitectura de [[sovereign-ai-routing|enrutamiento de IA soberana]].
 
+## Puntos clave
+
+- Sin JavaScript del lado del cliente para manipulación central del DOM, enrutamiento de idiomas ni servicio de archivos. El mandato de ejecución cero reduce la superficie de ataque de la capa de presentación y apoya el cumplimiento SOC 3 al depender exclusivamente de archivos estáticos deterministas y CSS nativo.
+- El enrutamiento bilingüe es estructural, no condicional. El `index.html` en inglés reside en la raíz; el `index.html` en español reside en `/es/` con la casilla de verificación de estado de idioma `checked` en el HTML estático — sin detección de IP, sin lógica de redirección del lado del servidor.
+- Los elementos interactivos (selectores de idioma, botones de descarga) usan máquinas de estado CSS nativas: todos los bloques de idioma se cargan simultáneamente, y `display: block/none` en CSS cambia entre ellos según el estado `:checked`. Resultado: latencia de ejecución cero, superficie de inyección de scripts cero en la capa de presentación.
+- El patrón se combina con [[machine-based-auth]]. Las superficies de presentación que no ejecutan JavaScript no pueden ser explotadas mediante inyección de scripts — la autenticación ocurre en la capa de máquina, no en la capa del navegador.
+
 ## Enrutamiento Bilingüe Determinista
 
 La plataforma no utiliza scripts de detección de IP. El cambio de idioma es estructural:

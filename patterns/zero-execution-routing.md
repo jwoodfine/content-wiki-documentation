@@ -18,6 +18,13 @@ editor: pointsav-engineering
 
 Platform presentation layers adhere to a zero-execution mandate, eliminating client-side JavaScript for core DOM manipulation, language routing, and file serving. This architectural constraint minimizes the attack surface and supports SOC 3 (Service Organization Control 3) compliance by relying entirely on deterministic files and native CSS state management. The pattern complements the [[machine-based-auth|machine-based authentication]] layer and the [[sovereign-ai-routing|sovereign AI routing]] architecture.
 
+## Key Takeaways
+
+- No client-side JavaScript for core DOM manipulation, language routing, or file serving. The zero-execution mandate reduces the presentation-layer attack surface and supports SOC 3 compliance by relying entirely on deterministic static files and native CSS.
+- Bilingual routing is structural, not conditional. The English `index.html` sits at the root; the Spanish `index.html` sits at `/es/` with the language-state checkbox `checked` in static HTML — no IP sniffing, no server-side redirect logic.
+- Interactive elements (language toggles, download buttons) use native CSS checkbox state machines: all language blocks load simultaneously, and CSS `display: block/none` switches between them on `:checked` state. Result: zero execution latency, zero script injection surface at the presentation layer.
+- The pattern pairs with [[machine-based-auth]]. Presentation surfaces that execute no JavaScript cannot be exploited via script injection — authentication occurs at the machine layer, not the browser layer.
+
 ## 1. Deterministic Bilingual Routing
 
 The platform avoids the security risks and latency of IP-sniffing scripts or conditional server-side redirects. Language routing is achieved through structural determinism:
