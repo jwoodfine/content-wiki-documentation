@@ -19,6 +19,13 @@ cites: []
 
 Las [[co-location-methodology|clasificaciones de nivel GIS]] dependen de saber dónde se ubican las instituciones regionales, no dónde se ubica cada clínica y colegio comunitario. **`service-places`** filtra los datos cívicos en bruto para retener únicamente instalaciones de escala regional — hospitales con al menos 50 camas dotadas, universidades con al menos 1.000 estudiantes equivalentes a tiempo completo, centros de transporte principales validados — y aplica un búfer espacial de 200 m para consolidar grandes campus institucionales en anclas regionales únicas. La densidad de servicios locales se filtra en esta etapa; las clasificaciones descendentes reflejan la concentración institucional en lugar del recuento de instalaciones.
 
+## Puntos clave
+
+- Los umbrales de nivel regional son estructurales en el servicio: hospitales con ≥50 camas dotadas, universidades con ≥1.000 estudiantes equivalentes a tiempo completo, y aeropuertos de aviación general excluidos de la puntuación. Estos filtros no son parámetros configurables.
+- Un búfer espacial de 200 m consolida registros de campus multipunto — un hospital grande puede aparecer en OSM como decenas de nodos — en un único ancla regional con un centroide unificado. Esto previene el doble conteo en grandes huellas institucionales.
+- La salida es `cleansed-places.jsonl`, consumida por `[[app-orchestration-gis]]` junto al conjunto de datos de clústeres minoristas de `[[service-business-clustering]]` al asignar los niveles de co-ubicación finales.
+- La etapa de filtrado es deliberadamente anterior a la puntuación de nivel. Una vez que la densidad de servicios locales se elimina aquí, toda la puntuación posterior opera sobre una señal limpia de instituciones regionales.
+
 ## Umbrales de filtrado
 
 El servicio aplica filtros de ponderación de atributos a los datos cívicos en bruto proporcionados por [[service-fs-data-lake|`service-fs`]]:

@@ -19,6 +19,13 @@ cites: []
 
 Retail data is inherently messy — a single commercial site often contains multiple distinct points, such as a big-box anchor, a nested pharmacy, and a fuel outlet sharing the same parking area. **`service-business`** turns those raw points into actionable commercial clusters using a parent-child spatial schema, so the GIS engine receives one unified commercial entity per physical site rather than several overlapping records. The service iterates the `service-fs` raw data lake, groups entities that share a footprint within a 100 m proximity threshold, and assigns the highest-weight named anchor as the parent.
 
+## Key Takeaways
+
+- `service-business` uses a grid-based spatial index at roughly 1 km cell resolution to group raw retail points. Points within 100 m of each other are collapsed into one commercial cluster before any tier score is computed.
+- The parent-child schema assigns the highest-weight named anchor as the parent. Every other operator at the same site becomes a child record. Without this step, co-located fuel outlets and pharmacies would each count as independent tier signals.
+- Output is `cleansed-clusters.jsonl`, consumed directly by `[[app-orchestration-gis]]` when building the regional co-location index. The clustering step is the boundary between raw POI data and ranked commercial intelligence.
+- The 100 m proximity threshold is calibrated for large-format retail parks — close enough to capture genuine co-location, far enough to separate adjacent but structurally distinct shopping destinations.
+
 ## The Clustering Logic
 
 `service-business` processes raw commercial nodes so that the GIS engine produces a single, unified commercial entity per physical site.

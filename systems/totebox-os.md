@@ -13,6 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: totebox-os.es.md
+aliases: [os-totebox]
 short_description: "os-totebox is the archive layer of the PointSav family — one isolated, kernel-level vault per entity, storing records as inert flat files with no delete operation and exposing them only through the Diode on command from os-console or os-orchestration."
 cites: []
 references:

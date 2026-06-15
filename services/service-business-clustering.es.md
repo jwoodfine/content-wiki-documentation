@@ -19,6 +19,13 @@ cites: []
 
 Los datos minoristas son inherentemente ruidosos — un único sitio comercial frecuentemente contiene múltiples puntos distintos, como una tienda ancla de gran formato, una farmacia integrada y una estación de combustible que comparten la misma zona de estacionamiento. **`service-business`** convierte esos puntos crudos en clústeres comerciales accionables utilizando un esquema espacial padre-hijo, de modo que el motor GIS recibe una entidad comercial unificada por sitio físico en lugar de varios registros superpuestos. El servicio itera el lago de datos crudos de `service-fs`, agrupa entidades que comparten una huella dentro de un umbral de proximidad de 100 m y asigna el ancla nombrada de mayor peso como el padre.
 
+## Puntos clave
+
+- `service-business` utiliza un índice espacial basado en cuadrícula con celdas de aproximadamente 1 km para agrupar puntos minoristas crudos. Los puntos dentro de 100 m entre sí se consolidan en un único clúster comercial antes de que se calcule cualquier puntuación de nivel.
+- El esquema padre-hijo asigna el ancla nombrada de mayor peso como padre. Cada otro operador en el mismo sitio se convierte en un registro hijo. Sin este paso, estaciones de combustible y farmacias co-ubicadas contarían como señales de nivel independientes.
+- La salida es `cleansed-clusters.jsonl`, consumida directamente por `[[app-orchestration-gis]]` al construir el índice de co-ubicación regional. El paso de agrupación es el límite entre datos de PDI crudos e inteligencia comercial clasificada.
+- El umbral de proximidad de 100 m está calibrado para parques comerciales de gran formato — suficientemente cercano para capturar co-ubicación genuina, suficientemente lejano para separar destinos de compras adyacentes pero estructuralmente distintos.
+
 ## Lógica de agrupación
 
 `service-business` procesa nodos comerciales crudos de modo que el motor GIS produzca una única entidad comercial unificada por sitio físico.

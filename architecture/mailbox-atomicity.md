@@ -16,6 +16,13 @@ paired_with: mailbox-atomicity.es.md
 
 Sessions communicate by prepending messages to flat-file mailboxes at `.agent/inbox.md` and `.agent/outbox.md`. Messages carry a YAML envelope (from, to, re, created, status, optional msg-id) followed by a free-text body. Newest messages live at the top so the hub session reading an outbox sees the most recent activity first.
 
+## Key Takeaways
+
+- `mailbox-prepend` acquires an exclusive `flock` lock before any read-modify-write. Two concurrent prepends serialize rather than race — the slower caller blocks up to 30 seconds, then proceeds after the first releases the lock.
+- `msg-id` idempotency: if the message carries a `msg-id:` field, the script scans the first 200 lines of the target for an existing entry with that id and skips the prepend if found. A timer firing twice or an operator retrying a script will not double-send.
+- The failure mode without this discipline is silent. A lost message simply never arrives — no error is surfaced to either the sender or the recipient. The helper script exists precisely because silent data loss is worse than a brief serialization delay.
+- The script is the enforcement point. Atomicity holds only when all sessions and automation call `mailbox-prepend` rather than writing to the mailbox file directly.
+
 The atomicity problem: two sessions prepending to the same mailbox without coordination produce the classic read-modify-write race. Session A reads the current file, prepends its message, and writes back. Session B does the same simultaneously. Whichever write lands last wins; the other message is lost. This is reproducible with parallel AI-coding sub-agents; cross-user concurrency makes it inevitable.
 
 The `mailbox-prepend` helper script solves this with `flock`. It takes the target mailbox path, derives a lock path for archive-scoped mailboxes, and acquires an exclusive lock with a 30-second timeout before performing the read-modify-write. Two simultaneous calls serialise rather than collide.

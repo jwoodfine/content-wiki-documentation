@@ -16,6 +16,13 @@ paired_with: mailbox-atomicity.md
 
 Las sesiones se comunican añadiendo mensajes al principio de buzones en archivos planos situados en `.agent/inbox.md` y `.agent/outbox.md`. Los mensajes llevan un sobre YAML (from, to, re, created, status, msg-id opcional) seguido de un cuerpo de texto libre. Los mensajes más recientes aparecen al inicio, de modo que la sesión concentradora que lee una bandeja de salida ve la actividad más reciente primero.
 
+## Puntos clave
+
+- `mailbox-prepend` adquiere un bloqueo exclusivo de `flock` antes de cualquier lectura-modificación-escritura. Dos prepends concurrentes se serializan en lugar de competir — el llamador más lento espera hasta 30 segundos y luego procede cuando el primero libera el bloqueo.
+- Idempotencia por `msg-id`: si el mensaje lleva un campo `msg-id:`, el script analiza las primeras 200 líneas del destino en busca de una entrada existente con ese id y omite el prepend si la encuentra. Un temporizador que se activa dos veces o un operador que reintenta un script no enviará el mensaje dos veces.
+- El modo de fallo sin esta disciplina es silencioso. Un mensaje perdido simplemente nunca llega — no se muestra ningún error ni al remitente ni al destinatario. El script auxiliar existe precisamente porque la pérdida silenciosa de datos es peor que un breve retraso de serialización.
+- El script es el punto de cumplimiento. La atomicidad solo se mantiene cuando todas las sesiones y la automatización llaman a `mailbox-prepend` en lugar de escribir directamente en el archivo de buzón.
+
 El problema de atomicidad: dos sesiones que añaden al mismo buzón sin coordinación producen la condición de carrera clásica de leer-modificar-escribir. La sesión A lee el archivo actual, añade su mensaje y escribe de vuelta. La sesión B hace lo mismo simultáneamente. El que escribe último gana; el otro mensaje se pierde. Esto es reproducible con sub-agentes de IA en paralelo; la concurrencia entre usuarios lo hace inevitable.
 
 El script auxiliar `mailbox-prepend` resuelve esto con `flock`. Toma la ruta del buzón de destino, deriva una ruta de bloqueo para buzones de alcance de archivo, y adquiere un bloqueo exclusivo con un tiempo de espera de 30 segundos antes de realizar la lectura-modificación-escritura. Dos llamadas simultáneas se serializan en lugar de colisionar.
