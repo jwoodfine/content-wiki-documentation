@@ -88,20 +88,36 @@ Una estación de tren interurbano sirve trenes que viajan 30–150 km hasta un g
 | Acceso por vía multicarril | ≤1 km | El flujo de entrada/salida requiere capacidad arterial |
 | Población regional | ≥150.000 | Demanda mínima para la viabilidad de la estructura |
 
-## Resultados de pruebas actuales — al 2026-06-01
+## Conjunto de datos de producción
 
-**6.640 candidatos PKS** en 17 países. "Integrados" = candidato PKS con un clúster PRO T1/T2 en un radio de 10 km — los sitios de mayor valor:
+El sistema de producción PKS utiliza clústeres DBSCAN de infraestructura de tránsito — aeropuertos comerciales, estaciones de tren interurbano, ferrocarril de cercanías, estaciones de metro/suburbano y terminales de autobús interurbano — enriquecidos con señales comerciales: alquiler de vehículos, aparcamientos de disuasión y hoteles.
 
-| País | Total | Integrados | % Integración |
-|---|---|---|---|
-| EE.UU. | 3.678 | 1.071 | 29% |
-| DE | 547 | 216 | 39% |
-| CA | 421 | 133 | 32% |
-| FR | 405 | 97 | 24% |
-| GB | 338 | 129 | 38% |
-| IT | 245 | 41 | 17% |
-| MX | 214 | 28 | 13% |
-| ES | 189 | 27 | 14% |
-| PL | 143 | 24 | 17% |
+**7.045 clústeres** en 17 países de visualización según la versión de producción de junio de 2026:
 
-Estos recuentos se espera que se reduzcan sustancialmente una vez que `ingest-osm-airports.py` aplique el filtro IATA/aerodrome:type, eliminando aeródromos privados y de aviación general. Los datos de estaciones ferroviarias añadirán entonces un conjunto complementario de candidatos PKS de estaciones interurbanas.
+| Nivel | Recuento | Proporción |
+|---|---|---|
+| T1 Centro Comercial Confirmado | 692 | 9,8% |
+| T2 Centro Drive-to | 2.665 | 37,8% |
+| T3 Parada de Tránsito Funcional | 3.688 | 52,4% |
+
+Las estaciones ferroviarias dominan el conjunto de datos en todos los países. El patrón europeo de aparcamiento y tren (*park-and-train*) implica que los sitios de ferrocarril interurbano superan con creces a los aeroportuarios en la UE; las estaciones ferroviarias son candidatos PKS fiables allí donde el servicio interurbano alcanza ciudades regionales.
+
+## Clasificación por niveles
+
+Los niveles PKS utilizan un **modelo de colapso por grupo de modos** que evita la doble contabilización de la infraestructura de tránsito en el mismo nodo físico. Una estación que ofrece tanto servicio ferroviario interurbano como de cercanías en el mismo andén cuenta como un grupo de modo de tránsito (FERROCARRIL), no dos. Un verdadero intercambiador multimodal debe tener tipos modales distintos — aeropuerto más ferrocarril, por ejemplo — para contar como multimodal.
+
+Se reconocen cuatro grupos de modos de tránsito: AÉREO (aeropuertos), FERROVIARIO (ferrocarril interurbano y de cercanías combinados), URBANO (metro y suburbano) y BUS (terminales de autobús interurbano).
+
+No todos los clústeres de tránsito califican como Estructuras de Aparcamiento. Las paradas urbanas de acceso a pie sin infraestructura comercial de acceso en vehículo quedan excluidas por un criterio de calificación: un clúster califica cuando tiene un ancla aeroportuaria (inherentemente drive-to), múltiples grupos modales distintos, o señales de enriquecimiento comerciales que indican comportamiento drive-to (alquiler de vehículos o aparcamiento de disuasión).
+
+**T1 Centro Comercial Confirmado:** Aeropuerto con alquiler de vehículos u hotel presentes, tres o más grupos modales distintos, o un aeropuerto con al menos una señal de enriquecimiento. Son los sitios de aparcamiento y viaje con mayor nivel de confianza.
+
+**T2 Centro Drive-to:** Ancla aeroportuaria sin el pleno enriquecimiento comercial de T1, o sitio multimodal con al menos una señal de enriquecimiento. Fuertes candidatos PKS con evidencia directa de comportamiento drive-to.
+
+**T3 Parada de Tránsito Funcional:** Grupo modal único con una señal de enriquecimiento que califica el sitio como drive-to en lugar de acceso a pie. La infraestructura de tránsito está presente; el ecosistema comercial completo de los niveles superiores aún no está consolidado.
+
+## Referencias
+
+- [Aparcamiento de disuasión](https://en.wikipedia.org/wiki/Park_and_ride) — Wikipedia, acceso 2026-06-14
+
+*Contenido de Wikipedia reproducido bajo [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).*

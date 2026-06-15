@@ -118,34 +118,33 @@ From Overpass API queries against four confirmed PKS test sites (Toluca MX, Deli
 | Convenience retail | Strong | Perimeter concessions |
 | Quick-service food | Moderate | 8–24 outlets per site |
 
-## Current test results — as of 2026-06-01
+## Production dataset
 
-The production PKS detection pipeline uses Overture airport data (unfiltered) as a proxy. After 5 km deduplication and 15–150 km metro distance filter, with T1-within-5 km hub exclusion:
+The PKS production pipeline uses DBSCAN-based clustering of transit infrastructure — commercial airports, intercity rail stations, commuter rail, metro/subway stations, and intercity bus terminals — enriched with commercial signals: car rental, park-and-ride facilities, and hotels.
 
-**6,640 PKS candidates** across 17 display countries. "Integrated" = PKS candidate with a T1/T2 PRO cluster within 10 km — the highest-value development sites:
+**7,045 clusters** across 17 display countries as of the June 2026 production build:
 
-| Country | Total | Integrated | Integration % |
-|---|---|---|---|
-| US | 3,678 | 1,071 | 29% |
-| DE | 547 | 216 | 39% |
-| CA | 421 | 133 | 32% |
-| FR | 405 | 97 | 24% |
-| GB | 338 | 129 | 38% |
-| IT | 245 | 41 | 17% |
-| MX | 214 | 28 | 13% |
-| ES | 189 | 27 | 14% |
-| PL | 143 | 24 | 17% |
+| Tier | Count | Share |
+|---|---|---|
+| T1 Confirmed Commercial Hub | 692 | 9.8% |
+| T2 Drive-to Hub | 2,665 | 37.8% |
+| T3 Functional Transit Stop | 3,688 | 52.4% |
 
-These counts are intended and expected to reduce substantially once `ingest-osm-airports.py` applies the IATA/aerodrome:type filter, removing private airstrips and general aviation fields. Railway station data will then add a complementary set of intercity station PKS candidates.
+Rail stations dominate the dataset across all countries. The European park-and-train pattern means intercity rail sites substantially outnumber airport sites in the EU; railway stations are reliable PKS candidates wherever intercity service reaches a regional city.
 
-## Data collection plan
+## Tier classification
 
-Two ingest scripts are planned for the transit infrastructure layer:
+PKS tiers use a **mode-group collapse model** that avoids double-counting transit infrastructure at the same physical node. A station that offers both intercity and commuter rail service at the same platform counts as one transit mode group (RAIL), not two. A genuine multi-modal hub must have distinct modal types — airport plus rail, for example — to qualify as multimodal.
 
-- `ingest-osm-airports.py` → `service-places/cleansed-civic-airports.jsonl` (IATA tag or `aerodrome:type=public/regional/domestic/international`)
-- `ingest-osm-railway.py` → `service-places/cleansed-civic-railway.jsonl` (`railway=station`, exclude subway/light_rail/tram, intercity operators only)
+Four transit mode groups are recognised: AIR (airports), RAIL (intercity and commuter rail combined), URBAN (metro and subway), and BUS (intercity bus terminals).
 
-Car rental chains are the primary commercial signal. Priority additions: Enterprise Rent-A-Car (~8,500 NA), Hertz (~3,500 NA), Avis (~2,500 NA), Sixt (~700 EU), Europcar (~2,000 EU).
+Not all transit clusters qualify as Parking Structures. Walk-up urban stops without commercial drive-to infrastructure are excluded by a qualification gate: a cluster qualifies when it has an airport anchor (inherently drive-to), multiple distinct modal groups, or commercial enrichment evidence (car rental or park-and-ride) indicating that visitors arrive by car and leave it at the site.
+
+**T1 Confirmed Commercial Hub:** Airport with car rental or hotel present, or three or more distinct modal groups, or an airport with at least one enrichment signal. These are the highest-confidence park-and-travel sites — transit infrastructure plus demonstrated traveller commerce.
+
+**T2 Drive-to Hub:** Airport anchor without full T1 commercial enrichment, or multi-modal site with at least one enrichment signal. Strong PKS candidates with direct evidence of drive-to behaviour.
+
+**T3 Functional Transit Stop:** Single modal group with one enrichment signal that qualifies the site as drive-to rather than walk-up. Transit infrastructure is present; the full commercial ecosystem of higher tiers is not yet established.
 
 ## References
 

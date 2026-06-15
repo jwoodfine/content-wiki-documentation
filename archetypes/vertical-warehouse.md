@@ -71,23 +71,37 @@ The vertical form factor is driven by urban land cost. Where a horizontal wareho
 - Heritage or environmentally protected area (height and access restrictions)
 - Inside an existing [[professional-centres|Professional Centres (PRO)]] cluster (wrong land use; grocery retail adjacent)
 
-## Current proxy data — test results as of 2026-06-01
+## Production dataset
 
-The production VWH detection pipeline is planned. The current test uses a proxy: clusters where hardware chains are present but no grocery hypermarket is present, located 5–80 km from a major metro centre.
+The VWH production pipeline uses DBSCAN-based clustering of hardware, trade-supply, and light-industrial retail chains. Calibration uses existing hardware store locations as proxy anchors: a calibrated build must place hardware anchors within 3 km of at least 73% of T1 and T2 clusters. The June 2026 build met this threshold.
 
-**360 proxy candidates** identified globally across 17 display countries:
+**6,368 clusters** across 17 display countries as of the June 2026 calibration:
 
-| Country | Candidates | Representative examples |
+| Tier | Count | Share |
 |---|---|---|
-| US | 99 | Colorado Springs (Lowe's, no grocery, 7.5 km from metro centre) |
-| DE | 77 | Munich suburbs (Hagebaumarkt + MediaMarkt clusters, 5–6 km from centre) |
-| MX | 56 | Monterrey fringe (Home Depot + Sam's Club, no grocery) |
-| FR | 44 | Rennes fringe (Leroy Merlin + Decathlon, no grocery) |
-| IT | 28 | Turin fringe (Leroy Merlin + Decathlon) |
-| NL | 28 | Eindhoven (Praxis + Gamma + IKEA retail park, no grocery) |
-| CA | 13 | Hamilton ON (Home Depot, no grocery, 6.6 km from Hamilton) |
+| T1 Full Trade Hub | 852 | 13.4% |
+| T2 Established Trade | 1,327 | 20.8% |
+| T3 Emerging | 4,189 | 65.8% |
 
-Metro distance distribution: peak at 10–19 km (96 sites), remainder 5–9 km (76) and 20–79 km (188).
+Country distribution (top eight by cluster count): US · DE · GB · CA · FR · NL · IT · PL.
+
+T3 represents the majority because single-category hardware clusters qualify as thin VWH sites. Full trade hubs combining hardware, MRO industrial, tool rental, and auto parts are genuinely rare — this T3-heavy distribution reflects real-world site rarity at the T1 level.
+
+## Tier classification
+
+VWH tiers use a **group-collapse model**: tier assignment is based on the number of distinct trade-supply category groups present in a cluster, not the total member count. A cluster with many hardware stores but no other trade categories does not qualify for T1; diversity across distinct trade categories is what matters.
+
+**T1 Full Trade Hub:** At least two distinct trade-supply groups present — for example, hardware plus MRO industrial supply, or hardware plus tool rental. This indicates a genuine contractor and logistics ecosystem, not a single-category commercial strip.
+
+**T2 Established Trade:** Hardware anchor with at least one secondary trade-supply category (auto parts, building materials, or flooring).
+
+**T3 Emerging:** Hardware anchor present without additional trade-supply co-location. Single-category thin VWH sites.
+
+## The retail contamination flag
+
+Nearly half of VWH clusters have a grocery hypermarket within 1 km. Hypermarkets do appear near industrial and warehouse districts at the urban fringe, particularly in Europe where industrial parks and retail parks often share access roads. Rather than excluding these mixed-use sites, the production dataset flags them with a `retail_contamination` indicator, noting that the site has grocery-anchor proximity.
+
+A flagged site is not disqualified as a VWH location, but site selection analysis should account for the retail traffic and zoning dynamics that come with grocery-anchor proximity — these are mixed-use zones, not pure industrial precincts.
 
 ## Data collection plan
 

@@ -65,18 +65,64 @@ El factor de forma vertical está impulsado por el costo del suelo urbano. Donde
 | Corredor de transporte público | ≤500 m | Los trabajadores sin vehículo necesitan acceso en autobús/tren |
 | Subestación eléctrica | ≤2 km | Manufactura de robótica y electrónica: carga eléctrica pesada |
 
-## Datos de prueba actuales — resultados al 2026-06-01
+## Conjunto de datos de producción
 
-La detección de VWH está prevista. La prueba actual usa un indicador sustituto: clústeres donde hay cadenas de ferretería pero ningún hipermercado de alimentación, ubicados a 5–80 km de un centro metropolitano.
+El sistema de producción VWH utiliza clústeres DBSCAN de cadenas de ferretería, suministro para el sector de la construcción y comercio minorista industrial-ligero. La calibración usa ubicaciones de ferreterías existentes como anclas indicadoras: un sistema calibrado debe situar anclas de ferretería a menos de 3 km de al menos el 73% de los clústeres T1 y T2. La versión de junio de 2026 cumplió este umbral.
 
-**360 candidatos indicadores** identificados globalmente en 17 países:
+**6.368 clústeres** en 17 países de visualización según la calibración de junio de 2026:
 
-| País | Candidatos | Ejemplos representativos |
+| Nivel | Recuento | Proporción |
 |---|---|---|
-| EE.UU. | 99 | Colorado Springs (Lowe's, sin alimentación, 7,5 km del centro) |
-| DE | 77 | Suburbios de Múnich (clústeres Hagebaumarkt + MediaMarkt) |
-| MX | 56 | Periferia de Monterrey (Home Depot + Sam's Club, sin alimentación) |
-| FR | 44 | Periferia de Rennes (Leroy Merlin + Decathlon, sin alimentación) |
-| IT | 28 | Periferia de Turín (Leroy Merlin + Decathlon) |
-| NL | 28 | Eindhoven (Praxis + Gamma + parque comercial IKEA, sin alimentación) |
-| CA | 13 | Hamilton ON (Home Depot, sin alimentación, 6,6 km de Hamilton) |
+| T1 Centro de Comercio Completo | 852 | 13,4% |
+| T2 Comercio Consolidado | 1.327 | 20,8% |
+| T3 Emergente | 4.189 | 65,8% |
+
+Distribución por país (los ocho principales): EE.UU. · DE · GB · CA · FR · NL · IT · PL.
+
+El T3 representa la mayoría porque los clústeres con una sola categoría de ferretería califican como sitios VWH básicos. Los centros de comercio completo que combinan ferretería, distribución MRO industrial, alquiler de herramientas y repuestos de automóviles son genuinamente escasos — esta distribución con predominio T3 refleja la rareza real de los sitios en el nivel T1.
+
+## Clasificación por niveles
+
+Los niveles VWH utilizan un **modelo de colapso por grupo**: la asignación de nivel se basa en el número de grupos de categorías de suministro para el sector distintos presentes en un clúster, no en el recuento total de miembros. Un clúster con muchas ferreterías pero sin otras categorías comerciales no califica para T1; la diversidad entre categorías de comercio distintas es lo que importa.
+
+**T1 Centro de Comercio Completo:** Al menos dos grupos de suministro para el sector distintos presentes — por ejemplo, ferretería más distribución MRO industrial, o ferretería más alquiler de herramientas. Esto indica un ecosistema genuino de contratistas y logística.
+
+**T2 Comercio Consolidado:** Ancla de ferretería con al menos una categoría secundaria de suministro para el sector (repuestos de automóviles, materiales de construcción o pavimentos).
+
+**T3 Emergente:** Ancla de ferretería presente sin co-ubicación adicional de suministro para el sector. Sitios VWH básicos de una sola categoría.
+
+## El indicador de contaminación minorista
+
+Casi la mitad de los clústeres VWH tienen un hipermercado de alimentación a menos de 1 km. Los hipermercados sí aparecen cerca de zonas industriales y de almacenamiento en la periferia urbana, especialmente en Europa donde los parques industriales y los parques comerciales comparten frecuentemente vías de acceso. En lugar de excluir estos sitios de uso mixto, el conjunto de datos de producción los marca con un indicador de *contaminación minorista*, señalando que el sitio tiene proximidad a un ancla de alimentación.
+
+Un sitio marcado no queda descalificado como ubicación VWH, pero el análisis de selección de sitio debe tener en cuenta el tráfico minorista y la dinámica de zonificación que conlleva la proximidad al ancla de alimentación — estas son zonas de uso mixto, no recintos industriales puros.
+
+## Plan de recopilación de datos
+
+### Adiciones prioritarias — cadenas de Nivel A (señal definitiva de VWH)
+
+| Cadena | Mercado | Notas |
+|---|---|---|
+| Floor & Decor | EE.UU. | Pavimentos de formato almacén para contratistas |
+| Topps Tiles | Reino Unido | Venta de azulejos para contratistas en polígonos industriales |
+| United Rentals | NA | Se ubica deliberadamente junto a anclas de ferretería |
+| Sunbelt Rentals | NA | Misma estrategia; nunca en parques comerciales de alimentación |
+| Loxam | UE | Alquiler de herramientas; polígonos industriales |
+| Kiloutou | FR | Alquiler de herramientas |
+| Würth | UE | Distribuidor MRO; presente en todos los polígonos industriales de la UE |
+| Fastenal | NA | MRO industrial; siempre en zona industrial |
+| Grainger | NA | MRO industrial |
+| Hilti | UE | Herramientas de precisión; Centros Hilti en polígonos industriales |
+| 84 Lumber | EE.UU. | Los almacenes de madera son definitivamente periferia industrial |
+| Builders FirstSource | EE.UU. | Materiales de construcción B2B |
+
+### Categorías taxonómicas necesarias
+
+`flooring` (pavimentos), `tool_rental` (alquiler de herramientas), `mro_industrial`, `lumber` (madera) — estas enriquecen los arrays de miembros del clúster VWH pero no determinan la lógica de niveles T1/T2/T3.
+
+## Referencias
+
+- [Almacén](https://en.wikipedia.org/wiki/Warehouse) — Wikipedia, acceso 2026-06-14
+- [Parque comercial](https://en.wikipedia.org/wiki/Retail_park) — Wikipedia, acceso 2026-06-14
+
+*Contenido de Wikipedia reproducido bajo [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).*
