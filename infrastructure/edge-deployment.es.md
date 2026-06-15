@@ -43,3 +43,4 @@ Dado que los payloads en bruto se sanean en el perímetro y son los registros li
 - [[worm-ledger-architecture]] — el registro WORM que almacena los datos saneados
 - [[service-email]] — ingesta del Anillo 1 para correo electrónico
 - [[compounding-substrate]] — la arquitectura de tres anillos en contexto
+- [[self-host-a-deployment]] — guía paso a paso: desplegar la plataforma en infraestructura propia con ingesta del Anillo 1 configurada

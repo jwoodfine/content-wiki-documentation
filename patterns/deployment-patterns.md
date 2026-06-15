@@ -106,3 +106,4 @@ This cadence prevents two common failure modes: designs that are specced but nev
 - [[archetypes-and-chart-of-accounts]] — the Chart of Accounts taxonomy that adapts per configuration
 - [[console-os|os-console]] — the Command Ledger surface common to all six configurations
 - [[totebox-os]] — the Totebox operating system that hosts each configuration's archives
+- [[self-host-a-deployment]] — step-by-step guide: deploy a configuration from this catalogue on customer-owned infrastructure

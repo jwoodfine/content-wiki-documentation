@@ -100,3 +100,4 @@ Los patrones de despliegue se lanzan con una cadencia de visible-primero: la URL
 - [[archetypes-and-chart-of-accounts]] — la taxonomía del Plan de Cuentas que se adapta por configuración
 - [[console-os|os-console]] — la superficie del Libro Mayor de Comandos común a las seis configuraciones
 - [[totebox-os]] — el sistema operativo Totebox que aloja los archivos de cada configuración
+- [[self-host-a-deployment]] — guía paso a paso: desplegar una configuración de este catálogo en infraestructura propia

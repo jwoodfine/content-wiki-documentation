@@ -74,3 +74,4 @@ Este patrón está previsto para extender [[source-of-truth-inversion]] de una t
 - [[app-mediakit-knowledge]] — el motor que implementa este patrón
 - [[source-of-truth-inversion]] — la decisión de diseño fundamental que este patrón extiende
 - [[knowledge-wiki-leapfrog-architecture]] — la filosofía de arquitectura de IA y navegación más amplia
+- [[federate-archives-via-content-mounts]] — guía paso a paso: configurar montajes de contenido declarativos en una instancia wiki

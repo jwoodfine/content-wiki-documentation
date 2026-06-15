@@ -45,3 +45,4 @@ La lógica central del motor reside en el servicio [[app-orchestration-gis]], qu
 - [[service-business-clustering]] — servicio de agrupación minorista que alimenta el cálculo de nivel GIS
 - [[service-places-filtering]] — servicio de filtrado de infraestructura cívica que alimenta el cálculo de nivel GIS
 - [[service-fs-data-lake]] — el lago de datos de archivos planos que respalda todos los datos de origen GIS
+- [[build-a-colocation-map]] — guía paso a paso: ejecutar un análisis de co-ubicación y renderizar los resultados en un mapa

@@ -85,3 +85,4 @@ The federation model is not intended to introduce a central coordination layer. 
 - [[app-mediakit-knowledge]] — the engine that implements this pattern
 - [[source-of-truth-inversion]] — the foundational design choice this pattern extends
 - [[knowledge-wiki-leapfrog-architecture]] — the broader IA and navigation philosophy
+- [[federate-archives-via-content-mounts]] — step-by-step guide: configure declarative content mounts in a wiki instance

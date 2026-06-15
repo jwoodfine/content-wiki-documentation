@@ -49,3 +49,4 @@ Because raw payloads are sanitized at the boundary and the cleaned records are w
 - [[three-ring-architecture]] — the three-ring architecture that defines the Ring 1 boundary placement
 - [[service-email]] — Ring 1 ingest for email traffic
 - [[compounding-substrate]] — the substrate-sovereignty context for boundary-first ingest design
+- [[self-host-a-deployment]] — step-by-step guide: deploy the platform on customer-owned infrastructure with Ring 1 ingest configured

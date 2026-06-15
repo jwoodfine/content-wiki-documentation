@@ -55,6 +55,7 @@ This stateless approach ensures that the entire GIS environment can be re-provis
 - [[service-places-filtering]] — civic infrastructure filtering service feeding the GIS tier computation
 - [[service-fs-data-lake]] — the flat-file data lake that backs all GIS source data
 - [[gis-as-bim-substrate|GIS as BIM Substrate]] — how the GIS engine functions as a BIM data layer
+- [[build-a-colocation-map]] — step-by-step guide: run a co-location cluster analysis and render the results on a map
 
 ## References
 
