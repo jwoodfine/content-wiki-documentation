@@ -17,6 +17,13 @@ category: architecture
 
 [[pointsav-overview|PointSav]] platform interfaces operate on a zero-state telemetry architecture: no personally identifiable information (PII) is collected, no tracking cookies are deployed, and no session state is retained. Operational metrics are limited to anonymized, IP-masked geospatial signals used for infrastructure auditing. Operators in regulated industries gain a public-facing posture consistent with GDPR, PIPEDA, and equivalent data-minimisation requirements, without requiring cookie-consent frameworks. See also [[sovereign-telemetry|sovereign telemetry]] and [[telemetry-architecture|the telemetry architecture]].
 
+## Key Takeaways
+
+- Zero-state means no PII, no cookies, no session retention. A user visiting a public interface leaves no individual record — only a masked geospatial signal.
+- IP masking is applied at receipt, not post-storage. The final octet is dropped before the record is written; the platform never holds the full address.
+- No cookie-consent banner is required because no tracking cookies are deployed. There is nothing to consent to.
+- All public-facing interfaces append a machine-readable privacy disclosure to their legal blocks. This is a current-state architectural fact, not a planned feature.
+
 ## No-cookie infrastructure
 
 The platform prohibits tracking cookies, persistent local-storage tracking, and third-party analytics integrations. Public-facing interfaces carry no third-party analytics scripts, eliminating the legal obligation to present cookie-consent banners under ePrivacy and equivalent regimes.
