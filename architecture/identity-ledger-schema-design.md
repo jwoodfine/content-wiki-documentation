@@ -16,6 +16,13 @@ category: architecture
 
 The Identity Ledger provides a JSONL-based, append-only record of canonical person identities within the platform. Following the [[three-ring-architecture|Three-Ring Architecture]]’s boundary-ingest pattern, [[service-people]] publishes this schema to enable deterministic identity resolution across all Ring 2 and Ring 3 knowledge-extraction services. See also [[worm-ledger-design|the WORM ledger design]] and [[machine-based-auth|machine-based authorization]].
 
+## Key Takeaways
+
+- Identity resolution is fully deterministic. The primary identifier (`identity_id`) is a UUIDv5 derived from the user’s primary email address — the same email always produces the same UUID across any node, with no AI or probabilistic matching. This satisfies ADR-07’s requirement that Ring 1 extraction bypass inference.
+- Identity records follow [[worm-ledger-architecture|WORM discipline]]. Role changes, new endpoints, and other updates are appended as new records; readers fetch the latest record per `identity_id`. The full append history is preserved as an immutable audit trail of the identity’s progression over time.
+- A single identity record is the authoritative source for all communication endpoints: email (RFC 5322), phone (E.164), and typed platform handles (Slack, Teams, Signal). Downstream services resolve endpoints from this record — they do not derive or cache their own.
+- Ambiguous or conflicting identities are surfaced to a human operator rather than silently merged. Deterministic extraction at Ring 1; human resolution for exceptions. No probabilistic model makes silent merges at ingest.
+
 ## Core Design Principles
 
 ### 1. Deterministic Identity via UUIDv5

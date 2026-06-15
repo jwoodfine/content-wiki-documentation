@@ -16,6 +16,13 @@ paired_with: telemetry-architecture.md
 
 El sistema de telemetría de la plataforma recopila analítica de tráfico web desde los [[edge-deployment|nodos de borde]] en producción y la enruta a través de la [[sovereign-mesh|malla WireGuard]] hacia un entorno de procesamiento local, coherente con los principios de [[customer-hostability|custodia de datos del cliente]], sin pasar por ningún servicio de agregación en la nube de terceros.
 
+## Puntos clave
+
+- La telemetría sigue una ruta de cuatro niveles: captura en el borde → tránsito cifrado WireGuard → nodo de procesamiento local → extracción al nodo de control. Ningún payload pasa por un servicio de agregación en la nube de terceros en ningún paso.
+- El aislamiento por inquilino se aplica a nivel del ledger. La analítica de cada inquilino se escribe en registros CSV separados en el nodo de procesamiento local y nunca se mezcla en una tabla compartida en la nube.
+- El nodo de control extrae únicamente informes Markdown compilados — no los datos CSV en bruto. Los datos en bruto permanecen en el nodo de procesamiento local; lo que se mueve al analista es el resumen extraído. Este diseño limita el alcance de un posible compromiso del nodo de control a los datos de resumen, no al registro de tráfico completo.
+- La telemetría local es una condición previa del modelo de aislamiento por inquilino y de la propiedad de [[customer-hostability|custodia de datos del cliente]]. El operador conserva la custodia completa de la analítica de tráfico; ningún tercero almacena ni procesa los datos en bruto.
+
 ## Ruta de enrutamiento en cuatro niveles
 
 **Nivel 1 — Captura en el borde.** Los relays Nginx en los nodos de borde capturan payloads JSON del tráfico web orgánico y los enrutan a la red local a través de puertos designados: `10.50.0.2:8081` para el inquilino PointSav y `10.50.0.2:8082` para el inquilino Woodfine.

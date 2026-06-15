@@ -18,6 +18,13 @@ The platform's telemetry system collects web traffic analytics from production [
 
 This article describes the architecture as of the initial deployment. The routing topology and processing stack are planned to evolve as the fleet expands.
 
+## Key Takeaways
+
+- Telemetry routes through four tiers: edge capture → WireGuard encrypted transit → local processing node → control workstation pull. No payload passes through a third-party cloud aggregation service at any step.
+- Per-tenant isolation is enforced at the ledger level. Each tenant's analytics are written to separate CSV ledgers on the local processing node and are never commingled in a shared cloud table.
+- The control workstation pulls only compiled Markdown reports — not the raw CSV ledger. Raw data stays on the local processing node; what moves to the analyst is the extracted summary. This design limits the blast radius of a workstation compromise to summary data, not the full traffic record.
+- Local-first telemetry is a precondition of the tenancy isolation model and the [[customer-hostability|customer-rooted data custody]] property. The operator holds full custody of traffic analytics; no third party holds or processes the raw data.
+
 ## Four-tier routing path
 
 ### Tier 1 — Edge capture

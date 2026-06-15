@@ -16,6 +16,13 @@ paired_with: learning-datagraph-architecture.md
 
 La plataforma construye un [[compounding-substrate|sustrato acumulativo]]: cada interacción del operador con una sesión de IA se convierte en una tupla de entrenamiento estructurada, enrutada a través de un único límite auditable ([[doorman-protocol|Doorman]]), capturada en un [[worm-ledger-architecture|ledger de solo adición]] y reincorporada al SLM local mediante ajuste fino periódico. El resultado es un entorno de desarrollo que aprende de cómo se usa — las sugerencias de código se acercan a los patrones que escribe este operador, las propuestas de borrador se alinean más con la voz editorial de esta casa, las extracciones de entidades se afinan a medida que el grafo se enriquece.
 
+## Puntos clave
+
+- El sustrato acumula señal de entrenamiento a través de cuatro patas distintas: captura de trayectorias al cierre de sesión, una cola de aprendizaje que se activa en cada confirmación, pares DPO editoriales del flujo editorial de embudo inverso y destilación de trayectorias negativas a partir de correcciones del operador. Cada pata captura una dimensión diferente de la intención del operador.
+- Toda la señal de entrenamiento pasa por el mismo límite auditable — [[doorman-protocol|Doorman]] — y aterriza en el ledger de solo adición. Nada evita el ledger; nada sale del entorno local. El bucle de aprendizaje está aislado del exterior y es autónomo.
+- El corpus se acumula con cada sesión. A mediados de 2026 el corpus de aprendizaje contaba con 502 tuplas y el corpus de DPO editorial con 34 pares. Estos números crecen sin curación manual — el nivel base del modelo sube a medida que el operador utiliza el entorno.
+- La única pata aún no conectada es el bucle de entidades estructuradas: un endpoint `POST /v1/draft/generate` en [[service-content]] que fundamentaría la generación en entidades del grafo. La infraestructura de soporte (cola, ledger, hooks, enrutamiento de auditoría) ya está implementada; lo que resta es un esfuerzo de ingeniería Rust de varias semanas.
+
 El sustrato tiene cuatro patas.
 
 **Captura de trayectorias.** Un hook de cierre de sesión se activa al final de cada sesión, escribiendo una entrada JSONL estructurada en el ledger de auditoría: estado de la rama, recuento de archivos sin confirmar, SHA de la cabeza y un indicador de promoción pendiente. Una cosecha nocturna de transcripciones copia las transcripciones del día en el mismo ledger, etiquetadas por operador y archivo.

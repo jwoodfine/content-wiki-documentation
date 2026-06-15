@@ -16,6 +16,13 @@ paired_with: learning-datagraph-architecture.es.md
 
 The platform builds a [[compounding-substrate|compounding substrate]]: every operator interaction with an AI session becomes a structured training tuple, routed through a single auditable boundary ([[doorman-protocol|Doorman]]), captured to an [[worm-ledger-architecture|append-only ledger]], and folded back into the local SLM via periodic fine-tuning. The result is a development environment that learns from how it gets used — code completions improve toward the patterns this operator writes, draft suggestions align closer to the editorial voice this house produces, entity extractions tighten as the graph thickens.
 
+## Key Takeaways
+
+- The substrate accumulates training signal through four distinct legs: trajectory capture at session end, an apprenticeship queue that fires on every commit, editorial DPO pairs from the reverse-funnel editorial pipeline, and negative-trajectory distillation from operator corrections. Each leg captures a different dimension of operator intent.
+- All training signal passes through the same auditable boundary — [[doorman-protocol|Doorman]] — and lands in the append-only audit ledger. Nothing bypasses the ledger; nothing leaves the local environment. The learning loop is air-gapped and self-contained.
+- The corpus accumulates with every session. As of mid-2026 the apprenticeship corpus held 502 tuples and the editorial DPO corpus held 34 pairs. These numbers grow without manual curation — the model floor rises as the operator uses the environment.
+- The one leg not yet wired is the structured-entity loop: a `POST /v1/draft/generate` endpoint in [[service-content]] that would ground generation in graph entities. The supporting infrastructure (queue, ledger, hooks, audit routing) is already in place; what remains is a multi-week Rust engineering effort.
+
 The substrate has four legs.
 
 **Trajectory capture.** A session-end hook fires at session close, writing a structured JSONL entry to the audit ledger: branch state, uncommitted-file count, head SHA, and a promotion-pending flag. A nightly harvest copies the day's session transcripts into the same ledger, tagged by operator and archive.
