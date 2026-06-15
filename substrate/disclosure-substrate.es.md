@@ -1,5 +1,6 @@
 ---
 schema: foundry-doc-v1
+content_type: topic
 document_version: 0.1.0
 title: "El sustrato de divulgación"
 slug: disclosure-substrate.es

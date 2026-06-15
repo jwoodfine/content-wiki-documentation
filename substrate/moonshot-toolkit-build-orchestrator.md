@@ -1,5 +1,6 @@
 ---
 schema: foundry-doc-v1
+content_type: topic
 title: "The moonshot-toolkit Build Orchestrator"
 slug: moonshot-toolkit-build-orchestrator
 category: substrate

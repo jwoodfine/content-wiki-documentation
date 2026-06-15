@@ -1,5 +1,6 @@
 ---
 schema: foundry-doc-v1
+content_type: topic
 title: "The seL4 AArch64 QEMU Substrate Target"
 slug: sel4-aarch64-qemu-substrate-target
 category: substrate

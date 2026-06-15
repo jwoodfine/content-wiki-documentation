@@ -1,5 +1,6 @@
 ---
 schema: foundry-doc-v1
+content_type: topic
 title: "Centros Profesionales"
 slug: professional-centres
 category: archetypes

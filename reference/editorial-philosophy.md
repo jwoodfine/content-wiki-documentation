@@ -1,5 +1,6 @@
 ---
 schema: foundry-doc-v1
+content_type: topic
 title: "Editorial philosophy"
 slug: editorial-philosophy
 short_description: "Every article is a learning resource that teaches understanding rather than retrieving facts, structured with encyclopedic lead paragraphs, internal linking, and consistent heading hierarchy suited to both human and machine readers."

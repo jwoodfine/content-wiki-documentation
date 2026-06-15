@@ -1,5 +1,6 @@
 ---
 schema: foundry-doc-v1
+content_type: topic
 title: "Gobernanza — Página de categoría"
 slug: _index.es
 short_description: "Registros formales de decisiones, postura de licenciamiento, modelo de contribuidor y requisitos de cumplimiento que rigen cómo se construye, licencia y modifica la plataforma PointSav — incluyendo las doce decisiones arquitectónicas vinculantes, la postura de divulgación continua BCSC y la matriz de licencias."

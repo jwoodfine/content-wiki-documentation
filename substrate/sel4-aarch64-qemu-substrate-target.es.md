@@ -1,5 +1,6 @@
 ---
 schema: foundry-doc-v1
+content_type: topic
 title: "El Objetivo de Sustrato seL4 AArch64 en QEMU"
 slug: sel4-aarch64-qemu-substrate-target
 category: substrate

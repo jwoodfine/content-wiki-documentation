@@ -1,5 +1,6 @@
 ---
 schema: foundry-doc-v1
+content_type: topic
 title: "Editorial language registers"
 slug: editorial-language-registers
 short_description: "The three PointSav wikis address distinct audiences in distinct language registers: Bloomberg and FT institutional tone for corporate and projects readers, Stripe and Cloudflare technical tone for documentation engineers, and RIBA specification prose for specialist deployment sites. Vocabulary retirement rules govern consistent translation across registers."
