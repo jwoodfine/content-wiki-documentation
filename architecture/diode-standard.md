@@ -26,9 +26,9 @@ references:
 
 An attacker who breaches one machine rarely wants that machine. They want the next one. Lateral movement — pivoting from a first compromised node to more valuable nodes — is the dominant pattern in modern breach reports [^2].
 
-The Diode Standard removes the pivot. <!--claim id=diode-principle confidence=structural cites=[]-->In electrical engineering a diode conducts current one way and blocks the other; the Diode Standard applies the same rule to commands across the [[pointsav-overview|PointSav]] [[os-family-overview|operating-system family]] — traffic flows from authority to subject, and never the reverse [^1].<!--/claim-->
+The Diode Standard removes the pivot. In electrical engineering a diode conducts current one way and blocks the other; the Diode Standard applies the same rule to commands across the [[pointsav-overview|PointSav]] [[os-family-overview|operating-system family]] — traffic flows from authority to subject, and never the reverse [^1].
 
-<!--claim id=upstream-absent confidence=structural cites=[]-->A Subject operating system has no code to initiate an authority relationship: no shell client, no peer-to-peer routing table. Upstream control is not blocked by a firewall rule — the code to express it does not exist on the Subject.<!--/claim-->
+A Subject operating system has no code to initiate an authority relationship: no shell client, no peer-to-peer routing table. Upstream control is not blocked by a firewall rule — the code to express it does not exist on the Subject.
 
 For a regulated buyer the consequence is concrete. An entire breach category is removed by structure, and a complex fleet stays auditable because every connection obeys one uniform rule. This article covers the authority hierarchy, the three traffic categories, the structural removal of lateral movement, and the adapter that enforces the standard.
 
@@ -41,7 +41,7 @@ The Diode is the foundational topology of the whole operating-system family — 
 | Authority | [[console-os|`os-console`]] and [[os-orchestration|`os-orchestration`]] | Issues commands; receives telemetry |
 | Subject | [[totebox-os|`os-totebox`]], [[mediakit-os|`os-mediakit`]], [[os-privategit|`os-privategit`]], [[infrastructure-os|`os-infrastructure`]], [[os-network-admin|`os-network-admin`]] | Executes commands; emits telemetry; never originates a command |
 
-<!--claim id=no-lateral-route confidence=structural cites=[]-->A Totebox cannot command a MediaKit; a MediaKit cannot reach into a Totebox. A compromised Subject cannot move laterally to another Subject, because the protocol stack contains no routing logic to do so.<!--/claim-->
+A Totebox cannot command a MediaKit; a MediaKit cannot reach into a Totebox. A compromised Subject cannot move laterally to another Subject, because the protocol stack contains no routing logic to do so.
 
 ## The three traffic categories
 
@@ -65,7 +65,7 @@ Lateral movement — an attacker compromising one node and using it to reach mor
 
 ## The adapter
 
-<!--claim id=hot-pluggable-adapter confidence=structural cites=[]-->The Diode is enforced by a small, hot-pluggable service, [[service-pointsav-link|`service-pointsav-link`]] (the `pointsav-protocol` package). It is the only code that translates authority commands into Subject-executable operations.<!--/claim-->
+The Diode is enforced by a small, hot-pluggable service, [[service-pointsav-link|`service-pointsav-link`]] (the `pointsav-protocol` package). It is the only code that translates authority commands into Subject-executable operations.
 
 | Property | Behaviour |
 |---|---|
@@ -76,7 +76,7 @@ Lateral movement — an attacker compromising one node and using it to reach mor
 
 ## The universal standard
 
-<!--claim id=universal-standard confidence=structural cites=[]-->The Diode is not a [[mediakit-os|MediaKit]] feature or a [[totebox-os|Totebox]] feature; it applies identically to every `os-*` operating system. The same [[service-pointsav-link|`service-pointsav-link`]] package, with different policy bindings, sits between any pair of nodes that communicate.<!--/claim-->
+The Diode is not a [[mediakit-os|MediaKit]] feature or a [[totebox-os|Totebox]] feature; it applies identically to every `os-*` operating system. The same [[service-pointsav-link|`service-pointsav-link`]] package, with different policy bindings, sits between any pair of nodes that communicate.
 
 This single uniform standard is why a complex fleet stays auditable: every connection looks the same and obeys the same rules.
 

@@ -26,15 +26,15 @@ references:
 
 An organization's files hold its knowledge but do not surface it. An email archive, a folder of contracts, a store of PDFs — each is searchable, and none of it knows who relates to whom, which concerns recur, or what the organization's own terms mean.
 
-<!--claim id=gravity-engine confidence=structural cites=[]-->`service-content` — the Gravity Engine — is the synthesis engine of the PointSav family. It reads raw payloads from inside a [[totebox-os|Totebox]], runs them against an institutional taxonomy, produces dense Gravity Vectors, and generates the documents an organisation publishes: wikis, news releases, due-diligence ledgers, internal memos.<!--/claim-->
+`service-content` — the Gravity Engine — is the synthesis engine of the PointSav family. It reads raw payloads from inside a [[totebox-os|Totebox]], runs them against an institutional taxonomy, produces dense Gravity Vectors, and generates the documents an organisation publishes: wikis, news releases, due-diligence ledgers, internal memos.
 
 The engine is built on a Four-Pillar Seed Vault — the institutional grammar — a deterministic ingest-to-routing pipeline, and a five-layer Stratified Ontology. It is the difference between a file store and an active intelligence engine. The [[archetypes-and-chart-of-accounts|Chart of Accounts and eleven archetypes]] form two of the four Seed Vault pillars.
 
-For a regulated buyer, one boundary governs all of it. <!--claim id=human-loop-boundary confidence=structural cites=[]-->`service-content` does not publish to a verified ledger autonomously; every verified entry transits a human-in-the-loop verification step first.<!--/claim--> This article covers the Seed Vault, the Gravity Engine pipeline, the Stratified Ontology, and that boundary.
+For a regulated buyer, one boundary governs all of it. `service-content` does not publish to a verified ledger autonomously; every verified entry transits a human-in-the-loop verification step first. This article covers the Seed Vault, the Gravity Engine pipeline, the Stratified Ontology, and that boundary.
 
 ## The Four-Pillar Seed Vault
 
-<!--claim id=seed-vault confidence=structural cites=[]-->Every [[totebox-os|Totebox]] is provisioned with four JSON ledgers that form the institutional grammar of the system — the Seed Vault. The Seed Vault is built once, locked, and adjusted only by operators, never by AI.<!--/claim-->
+Every [[totebox-os|Totebox]] is provisioned with four JSON ledgers that form the institutional grammar of the system — the Seed Vault. The Seed Vault is built once, locked, and adjusted only by operators, never by AI.
 
 | Pillar | What it captures | Example |
 |---|---|---|
@@ -51,7 +51,7 @@ When a payload arrives — an email, a PDF, a DOCX — the engine runs a tight, 
 
 1. **Ingest.** `service-email`, or the [[app-console-input|Input Machine]], writes the raw payload to the Totebox's WORM vault. Nothing is mutated yet.
 2. **Entity extraction.** `service-extraction` runs Aho-Corasick string matching [^1] over the raw text and pulls out every name, email, phone number, and organisation. Each receives a deterministic Sovereign-ID and begins in `Discovery` status.
-3. **Gravity calculation.** `service-content` loads the four pillars, fuses them into a single search automaton, and extracts only the sentences containing structural keywords. <!--claim id=gravity-vector confidence=structural cites=[]-->A 5 MB payload becomes a 50-word Gravity Vector.<!--/claim-->
+3. **Gravity calculation.** `service-content` loads the four pillars, fuses them into a single search automaton, and extracts only the sentences containing structural keywords. A 5 MB payload becomes a 50-word Gravity Vector.
 4. **Verification.** The vector and the entity bundle pass to `service-slm`, which evaluates whether the payload aligns with the institution's taxonomy. The output is a single token — `VALID` or `REJECT`.
 5. **Routing.** Verified payloads go to deep storage; rejected payloads go to quarantine. Verified entities have their `Discovery` status upgraded and are socketed to the Chart of Accounts.
 
@@ -79,7 +79,7 @@ The Gravity Engine is self-healing in a specific, narrow sense: its own outputs 
 
 ## The human-in-the-loop boundary
 
-<!--claim id=adr-compliance confidence=structural cites=[]-->Every L5 entry must transit a human-in-the-loop verification step — through the [[app-console-input|Input Machine]] (F12) or the content review surface — before it can be written to a verified ledger. This satisfies SYS-ADR-07 (no structured data through AI) and SYS-ADR-19 (no automated AI publishing to verified ledgers).<!--/claim-->
+Every L5 entry must transit a human-in-the-loop verification step — through the [[app-console-input|Input Machine]] (F12) or the content review surface — before it can be written to a verified ledger. This satisfies SYS-ADR-07 (no structured data through AI) and SYS-ADR-19 (no automated AI publishing to verified ledgers).
 
 The boundary is what makes the engine usable in a regulated setting. The engine accelerates synthesis; a human, not the engine, commits the result to a ledger of record.
 

@@ -26,15 +26,15 @@ references:
 
 Los archivos de una organización contienen su conocimiento pero no lo hacen aflorar. Un archivo de correo, una carpeta de contratos, un almacén de PDF — cada uno es consultable, y ninguno sabe quién se relaciona con quién, qué preocupaciones se repiten ni qué significan los términos propios de la organización.
 
-<!--claim id=gravity-engine confidence=structural cites=[]-->`service-content` — el Motor de Gravedad — es el motor de síntesis de la familia PointSav. Lee cargas útiles en bruto desde el interior de un Totebox, las procesa contra una taxonomía institucional, produce densos Vectores de Gravedad y genera los documentos que publica una organización: wikis, comunicados de prensa, libros mayores de debida diligencia, memorandos internos.<!--/claim-->
+`service-content` — el Motor de Gravedad — es el motor de síntesis de la familia PointSav. Lee cargas útiles en bruto desde el interior de un Totebox, las procesa contra una taxonomía institucional, produce densos Vectores de Gravedad y genera los documentos que publica una organización: wikis, comunicados de prensa, libros mayores de debida diligencia, memorandos internos.
 
 El motor se construye sobre una Bóveda de Semillas de Cuatro Pilares — la gramática institucional — un pipeline determinista de ingesta a enrutamiento, y una Ontología Estratificada de cinco capas. Es la diferencia entre un almacén de archivos y un motor de inteligencia activo. El [[archetypes-and-chart-of-accounts|Plan de Cuentas y los once arquetipos]] forman dos de los cuatro pilares de la Bóveda de Semillas.
 
-Para un comprador regulado, un solo límite gobierna todo. <!--claim id=human-loop-boundary confidence=structural cites=[]-->`service-content` no publica en un libro mayor verificado de forma autónoma; cada entrada verificada transita primero un paso de verificación con intervención humana.<!--/claim--> Este artículo cubre la Bóveda de Semillas, el pipeline del Motor de Gravedad, la Ontología Estratificada y ese límite.
+Para un comprador regulado, un solo límite gobierna todo. `service-content` no publica en un libro mayor verificado de forma autónoma; cada entrada verificada transita primero un paso de verificación con intervención humana. Este artículo cubre la Bóveda de Semillas, el pipeline del Motor de Gravedad, la Ontología Estratificada y ese límite.
 
 ## La Bóveda de Semillas de Cuatro Pilares
 
-<!--claim id=seed-vault confidence=structural cites=[]-->Cada Totebox se aprovisiona con cuatro libros mayores JSON que forman la gramática institucional del sistema — la Bóveda de Semillas. La Bóveda de Semillas se construye una vez, se bloquea y solo la ajustan los operadores, nunca la IA.<!--/claim-->
+Cada Totebox se aprovisiona con cuatro libros mayores JSON que forman la gramática institucional del sistema — la Bóveda de Semillas. La Bóveda de Semillas se construye una vez, se bloquea y solo la ajustan los operadores, nunca la IA.
 
 | Pilar | Qué captura | Ejemplo |
 |---|---|---|
@@ -51,7 +51,7 @@ Cuando llega una carga útil — un correo, un PDF, un DOCX — el motor ejecuta
 
 1. **Ingesta.** `service-email`, o la [[app-console-input|Máquina de Entrada]], escribe la carga útil en bruto en la bóveda WORM del Totebox. Nada se muta todavía.
 2. **Extracción de entidades.** `service-extraction` ejecuta la concordancia de cadenas Aho-Corasick [^1] sobre el texto en bruto y extrae cada nombre, correo, teléfono y organización. Cada uno recibe un Sovereign-ID determinista y comienza en estado `Discovery`.
-3. **Cálculo de gravedad.** `service-content` carga los cuatro pilares, los fusiona en un único autómata de búsqueda y extrae solo las oraciones con palabras clave estructurales. <!--claim id=gravity-vector confidence=structural cites=[]-->Una carga útil de 5 MB se convierte en un Vector de Gravedad de 50 palabras.<!--/claim-->
+3. **Cálculo de gravedad.** `service-content` carga los cuatro pilares, los fusiona en un único autómata de búsqueda y extrae solo las oraciones con palabras clave estructurales. Una carga útil de 5 MB se convierte en un Vector de Gravedad de 50 palabras.
 4. **Verificación.** El vector y el paquete de entidades pasan a `service-slm`, que evalúa si la carga útil se alinea con la taxonomía de la institución. La salida es un único token — `VALID` o `REJECT`.
 5. **Enrutamiento.** Las cargas verificadas van al almacenamiento profundo; las rechazadas van a cuarentena. Las entidades verificadas tienen su estado `Discovery` actualizado y se conectan al Plan de Cuentas.
 
@@ -79,7 +79,7 @@ El Motor de Gravedad es auto-reparable en un sentido específico y limitado: sus
 
 ## El límite de intervención humana
 
-<!--claim id=adr-compliance confidence=structural cites=[]-->Cada entrada L5 debe transitar un paso de verificación con intervención humana — a través de la [[app-console-input|Máquina de Entrada]] (F12) o la superficie de revisión de contenido — antes de poder escribirse en un libro mayor verificado. Esto satisface SYS-ADR-07 (sin datos estructurados a través de IA) y SYS-ADR-19 (sin publicación automatizada de IA en libros mayores verificados).<!--/claim-->
+Cada entrada L5 debe transitar un paso de verificación con intervención humana — a través de la [[app-console-input|Máquina de Entrada]] (F12) o la superficie de revisión de contenido — antes de poder escribirse en un libro mayor verificado. Esto satisface SYS-ADR-07 (sin datos estructurados a través de IA) y SYS-ADR-19 (sin publicación automatizada de IA en libros mayores verificados).
 
 El límite es lo que hace al motor utilizable en un entorno regulado. El motor acelera la síntesis; un humano, no el motor, confirma el resultado en un libro mayor de registro.
 

@@ -26,9 +26,9 @@ references:
 
 Un atacante que vulnera una máquina rara vez quiere esa máquina. Quiere la siguiente. El movimiento lateral — pivotar desde un primer nodo comprometido hacia nodos más valiosos — es el patrón dominante en los informes modernos de brechas de seguridad [^2].
 
-El Estándar del Diodo elimina el pivote. <!--claim id=diode-principle confidence=structural cites=[]-->En ingeniería eléctrica un diodo conduce corriente en una dirección y la bloquea en la otra. El Estándar del Diodo aplica la misma regla a los comandos en toda la [[os-family-overview|familia de sistemas operativos]] de [[pointsav-overview|PointSav]]: el tráfico fluye de la autoridad al sujeto, y nunca al revés [^1].<!--/claim-->
+El Estándar del Diodo elimina el pivote. En ingeniería eléctrica un diodo conduce corriente en una dirección y la bloquea en la otra. El Estándar del Diodo aplica la misma regla a los comandos en toda la [[os-family-overview|familia de sistemas operativos]] de [[pointsav-overview|PointSav]]: el tráfico fluye de la autoridad al sujeto, y nunca al revés [^1].
 
-<!--claim id=upstream-absent confidence=structural cites=[]-->Un sistema operativo Sujeto no tiene código para iniciar una relación de autoridad: ni cliente shell, ni tabla de enrutamiento entre pares. El control ascendente no lo bloquea una regla de firewall — el código para expresarlo no existe en el Sujeto.<!--/claim-->
+Un sistema operativo Sujeto no tiene código para iniciar una relación de autoridad: ni cliente shell, ni tabla de enrutamiento entre pares. El control ascendente no lo bloquea una regla de firewall — el código para expresarlo no existe en el Sujeto.
 
 Para un comprador regulado la consecuencia es concreta. Una categoría entera de brechas se elimina por estructura, y una flota compleja sigue siendo auditable porque cada conexión obedece una sola regla uniforme. Este artículo cubre la jerarquía de autoridad, las tres categorías de tráfico, la eliminación estructural del movimiento lateral y el adaptador que hace cumplir el estándar.
 
@@ -41,7 +41,7 @@ El Diodo es la topología fundacional de toda la familia de sistemas operativos 
 | Autoridad | [[console-os|`os-console`]] y [[os-orchestration|`os-orchestration`]] | Emite comandos; recibe telemetría |
 | Sujeto | [[totebox-os|`os-totebox`]], [[mediakit-os|`os-mediakit`]], [[os-privategit|`os-privategit`]], [[infrastructure-os|`os-infrastructure`]], [[os-network-admin|`os-network-admin`]] | Ejecuta comandos; emite telemetría; nunca origina un comando |
 
-<!--claim id=no-lateral-route confidence=structural cites=[]-->Un Totebox no puede comandar a un MediaKit; un MediaKit no puede acceder a un Totebox. Un Sujeto comprometido no puede moverse lateralmente a otro Sujeto, porque la pila de protocolos no contiene lógica de enrutamiento para hacerlo.<!--/claim-->
+Un Totebox no puede comandar a un MediaKit; un MediaKit no puede acceder a un Totebox. Un Sujeto comprometido no puede moverse lateralmente a otro Sujeto, porque la pila de protocolos no contiene lógica de enrutamiento para hacerlo.
 
 ## Las tres categorías de tráfico
 
@@ -65,7 +65,7 @@ El movimiento lateral — un atacante que compromete un nodo y lo usa para alcan
 
 ## El adaptador
 
-<!--claim id=hot-pluggable-adapter confidence=structural cites=[]-->El Diodo lo aplica un pequeño servicio conectable en caliente, [[service-pointsav-link|`service-pointsav-link`]] (el paquete `pointsav-protocol`). Es el único código que traduce comandos de autoridad en operaciones ejecutables por el Sujeto.<!--/claim-->
+El Diodo lo aplica un pequeño servicio conectable en caliente, [[service-pointsav-link|`service-pointsav-link`]] (el paquete `pointsav-protocol`). Es el único código que traduce comandos de autoridad en operaciones ejecutables por el Sujeto.
 
 | Propiedad | Comportamiento |
 |---|---|
@@ -76,7 +76,7 @@ El movimiento lateral — un atacante que compromete un nodo y lo usa para alcan
 
 ## El estándar universal
 
-<!--claim id=universal-standard confidence=structural cites=[]-->El Diodo no es una característica del [[mediakit-os|MediaKit]] ni del [[totebox-os|Totebox]]; se aplica de forma idéntica a cada sistema operativo `os-*`. El mismo paquete [[service-pointsav-link|`service-pointsav-link`]], con diferentes enlaces de política, se sitúa entre cualquier par de nodos que se comuniquen.<!--/claim-->
+El Diodo no es una característica del [[mediakit-os|MediaKit]] ni del [[totebox-os|Totebox]]; se aplica de forma idéntica a cada sistema operativo `os-*`. El mismo paquete [[service-pointsav-link|`service-pointsav-link`]], con diferentes enlaces de política, se sitúa entre cualquier par de nodos que se comuniquen.
 
 Este único estándar uniforme es la razón por la que una flota compleja sigue siendo auditable: cada conexión tiene el mismo aspecto y obedece las mismas reglas.
 

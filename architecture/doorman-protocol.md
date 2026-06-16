@@ -17,37 +17,37 @@ paired_with: doorman-protocol.es.md
 
 Every service that can call an external AI model is its own hole in the wall. Ten services with ten egress paths means ten audit surfaces, and ten places the sanitise discipline can be forgotten.
 
-The Doorman closes the wall to a single door. <!--claim id=sole-boundary confidence=structural cites=[]-->[[service-slm|`service-slm`]] is the platform's sole AI request boundary; every inference call routes through one access-control gateway, and no inference call leaves the customer data vault without passing through it.<!--/claim-->
+The Doorman closes the wall to a single door. [[service-slm|`service-slm`]] is the platform's sole AI request boundary; every inference call routes through one access-control gateway, and no inference call leaves the customer data vault without passing through it.
 
-<!--claim id=doorman-functions confidence=structural cites=[]-->At that one boundary the Doorman enforces sanitise-and-rehydrate discipline, routes the call to the appropriate compute tier, logs every event to an immutable audit ledger, and captures the training signal that compounds the platform over time.<!--/claim-->
+At that one boundary the Doorman enforces sanitise-and-rehydrate discipline, routes the call to the appropriate compute tier, logs every event to an immutable audit ledger, and captures the training signal that compounds the platform over time.
 
 For a regulated buyer the consequence is concrete. No inference call leaves the data vault unlogged or unsanitised, because the discipline is a structural guarantee rather than a per-service configuration. This article defines the routing rules, the audit schema, the `moduleId` discipline, and the training-signal capture.
 
 ## Why a Doorman
 
-A customer data vault holds the customer's authoritative structured data, and external compute — large language models — cannot be trusted with raw structured facts. <!--claim id=centralised-discipline confidence=structural cites=[]-->Without a single boundary, every service in the [[totebox-os|Totebox]] grows its own egress path, every egress path needs its own audit, and the sanitise-and-rehydrate discipline (SYS-ADR-07) becomes per-service discipline rather than substrate discipline.<!--/claim--> The Doorman centralises the boundary so the discipline is enforced once.
+A customer data vault holds the customer's authoritative structured data, and external compute — large language models — cannot be trusted with raw structured facts. Without a single boundary, every service in the [[totebox-os|Totebox]] grows its own egress path, every egress path needs its own audit, and the sanitise-and-rehydrate discipline (SYS-ADR-07) becomes per-service discipline rather than substrate discipline. The Doorman centralises the boundary so the discipline is enforced once.
 
 ## Three-tier compute routing
 
 The Doorman routes inference calls across three compute tiers.
 
-**Tier A — local.** Executes on the host VM using CPU and RAM, for fast, low-latency, low-cost inference on a locally hosted model. <!--claim id=tier-a-verified confidence=structural cites=[]-->Tier A handles the majority of routing volume with no cloud spend, and is operationally verified.<!--/claim-->
+**Tier A — local.** Executes on the host VM using CPU and RAM, for fast, low-latency, low-cost inference on a locally hosted model. Tier A handles the majority of routing volume with no cloud spend, and is operationally verified.
 
-**Tier B — on-demand GPU pool.** <!--claim id=tier-b-planned confidence=projected cites=[] valid_at=2026-->Tier B is planned to route workloads to ephemeral GPU instances ([[yoyo-compute-substrate|the Yo-Yo compute substrate]]), spun up on demand and shut down on idle, with two profiles: a trainer instance for continued training cycles on accumulated tuples, and an extractor instance for large-scale corpus ingestion.<!--/claim--> Both profiles use idle-shutdown timers so billing stops when the queue is empty.
+**Tier B — on-demand GPU pool.** Tier B is planned to route workloads to ephemeral GPU instances ([[yoyo-compute-substrate|the Yo-Yo compute substrate]]), spun up on demand and shut down on idle, with two profiles: a trainer instance for continued training cycles on accumulated tuples, and an extractor instance for large-scale corpus ingestion. Both profiles use idle-shutdown timers so billing stops when the queue is empty.
 
 **Tier C — external API proxy.** Tier C is planned to route specialised linguistic refinement and formatting tasks to external frontier models. The Doorman enforces cost guardrails and injects predefined [[service-content|`service-content`]] ontologies to constrain output to canonical platform vocabulary.
 
 ## The audit ledger
 
-<!--claim id=audit-ledger confidence=structural cites=[]-->Every inference call produces a JSONL audit-ledger entry appended to a daily file. The required fields are timestamp, request ID, module ID, tier, model, inference duration, cost estimate, sanitised-outbound flag, and completion status. The ledger is append-only; no entry is modified or deleted after write.<!--/claim-->
+Every inference call produces a JSONL audit-ledger entry appended to a daily file. The required fields are timestamp, request ID, module ID, tier, model, inference duration, cost estimate, sanitised-outbound flag, and completion status. The ledger is append-only; no entry is modified or deleted after write.
 
 ## The moduleId discipline
 
-<!--claim id=moduleid-five-roles confidence=structural cites=[]-->A single `moduleId` field serves five roles at once: it selects the systemd unit that handles the request, namespaces the key-value cache blocks, scopes the property-graph database traversals to the correct tenant, selects the adapter stack, and tags audit-ledger entries for per-project cost accounting. A request without a valid `moduleId` is rejected at the Doorman boundary.<!--/claim-->
+A single `moduleId` field serves five roles at once: it selects the systemd unit that handles the request, namespaces the key-value cache blocks, scopes the property-graph database traversals to the correct tenant, selects the adapter stack, and tags audit-ledger entries for per-project cost accounting. A request without a valid `moduleId` is rejected at the Doorman boundary.
 
 ## Learning-pipeline routing
 
-<!--claim id=learning-routing confidence=structural cites=[]-->The Doorman implements the [[apprenticeship-substrate]] routing inversion for code-shaped and editorial work: `service-slm` attempts first, and the senior session reviews. Every signed verdict — `Accept`, `Refine`, `Reject`, `DeferTierC` — is captured to the apprenticeship corpus as a training tuple.<!--/claim-->
+The Doorman implements the [[apprenticeship-substrate]] routing inversion for code-shaped and editorial work: `service-slm` attempts first, and the senior session reviews. Every signed verdict — `Accept`, `Refine`, `Reject`, `DeferTierC` — is captured to the apprenticeship corpus as a training tuple.
 
 The Doorman's routing logic and the apprenticeship substrate's promotion ledger are two surfaces of the same mechanism.
 

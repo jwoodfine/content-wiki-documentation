@@ -17,9 +17,9 @@ paired_with: three-ring-architecture.es.md
 
 Before a regulated organization buys an AI platform, it has to answer one question: can AI silently touch the authoritative record? On most platforms the answer is procedural — a policy, a configuration flag. A flag can be flipped, and a policy is only as strong as its enforcement.
 
-[[pointsav-overview|PointSav]] answers the question architecturally. <!--claim id=three-rings confidence=structural cites=[]-->The Three-Ring Architecture organises every service into one of three concentric rings with strict one-way dependencies; the two inner rings — boundary ingest and deterministic processing — function fully without the outer AI ring.<!--/claim-->
+[[pointsav-overview|PointSav]] answers the question architecturally. The Three-Ring Architecture organises every service into one of three concentric rings with strict one-way dependencies; the two inner rings — boundary ingest and deterministic processing — function fully without the outer AI ring.
 
-<!--claim id=ai-optional-by-construction confidence=structural cites=[]-->Rings 1 and 2 contain no import, no dependency, and no runtime call that reaches Ring 3. A deployment can exclude Ring 3 entirely; where Ring 3 is included, it is a read-only consumer that produces proposals, never record writes.<!--/claim-->
+Rings 1 and 2 contain no import, no dependency, and no runtime call that reaches Ring 3. A deployment can exclude Ring 3 entirely; where Ring 3 is included, it is a read-only consumer that produces proposals, never record writes.
 
 For a regulated buyer the verification is structural rather than procedural. A deployment without Ring 3 has no AI to audit; a deployment with it keeps the deterministic core as the sole authoritative record. This article covers the ring layout, the service taxonomy, the multi-tenant isolation model, and why AI is optional by construction.
 
@@ -40,7 +40,7 @@ For a regulated buyer the verification is structural rather than procedural. A d
  (data flows in; per-tenant; MCP servers)
 ```
 
-<!--claim id=directional-invariants confidence=structural cites=[]-->Ring 1 produces raw data and depends on nothing else. Ring 2 reads from Ring 1, writes structured records, and depends only on Ring 1. Ring 3 reads from Ring 2 and never writes to it.<!--/claim-->
+Ring 1 produces raw data and depends on nothing else. Ring 2 reads from Ring 1, writes structured records, and depends only on Ring 1. Ring 3 reads from Ring 2 and never writes to it.
 
 ## Service taxonomy
 
@@ -61,19 +61,19 @@ For a regulated buyer the verification is structural rather than procedural. A d
 
 Ring 1 is the per-tenant data boundary. Each service accepts raw data from one external source — the filesystem, an email inbox, a document upload, an identity provider — and writes it to a durable ledger. No Ring 1 data is transformed or classified; it is only stored.
 
-<!--claim id=ring1-mcp confidence=structural cites=[]-->Every Ring 1 service implements a [[mcp-substrate-protocol|Model Context Protocol]] server interface, and Ring 2 talks to Ring 1 as an MCP client. A customer who needs a new data source adds another MCP server without modifying any existing service.<!--/claim-->
+Every Ring 1 service implements a [[mcp-substrate-protocol|Model Context Protocol]] server interface, and Ring 2 talks to Ring 1 as an MCP client. A customer who needs a new data source adds another MCP server without modifying any existing service.
 
 Because Ring 1 is per-tenant, each tenant's data lives in a separate service instance with its own storage root. There is no shared state between tenants at this ring.
 
 ## Ring 2 — Knowledge and Processing
 
-Ring 2 reads from Ring 1 and produces structured knowledge: parsed records, knowledge graphs, classified entities, search indexes. <!--claim id=ring2-deterministic confidence=structural cites=[]-->All Ring 2 processing is deterministic, and a binding architecture decision prohibits AI from writing to the knowledge graph or the structured record stores. Ring 2 output is reproducible: the same Ring 1 input replays to the same result.<!--/claim-->
+Ring 2 reads from Ring 1 and produces structured knowledge: parsed records, knowledge graphs, classified entities, search indexes. All Ring 2 processing is deterministic, and a binding architecture decision prohibits AI from writing to the knowledge graph or the structured record stores. Ring 2 output is reproducible: the same Ring 1 input replays to the same result.
 
 An audit that questions a classification can replay the deterministic parse against the unchanged Ring 1 ledger and get the same answer. No AI variance enters the authoritative record. Ring 2 services are multi-tenant by `moduleId`: one process serves all tenants, and each tenant's knowledge graph and search index are isolated behind a `moduleId` namespace.
 
 ## Ring 3 — Optional Intelligence
 
-<!--claim id=ring3-read-only confidence=structural cites=[]-->Ring 3 is a single read-only consumer of Ring 2. It never writes to the knowledge graph, the ledger, or the structured record stores; its only outputs are proposals — text the operator reviews, drafts the operator approves. Every accepted output enters the record through a Ring 2 write path with a human at the checkpoint.<!--/claim-->
+Ring 3 is a single read-only consumer of Ring 2. It never writes to the knowledge graph, the ledger, or the structured record stores; its only outputs are proposals — text the operator reviews, drafts the operator approves. Every accepted output enters the record through a Ring 2 write path with a human at the checkpoint.
 
 [[service-slm|`service-slm`]] is the single Ring 3 service. It implements the [[doorman-protocol|Doorman]] pattern: every request enters through one boundary, which sanitises outbound data, routes among the three compute tiers, and logs every call to the per-tenant audit ledger. No API key lives outside the Doorman boundary.
 

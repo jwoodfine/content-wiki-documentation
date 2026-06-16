@@ -26,9 +26,9 @@ references:
 
 Cada contraseña es un secreto que una persona debe recordar y, por tanto, un secreto que un atacante puede tomar. Phishing, adivinación de contraseñas, relleno de credenciales, ingeniería social — toda la clase del robo remoto de credenciales existe porque la credencial es algo que un humano sabe.
 
-La autorización basada en hardware elimina el secreto memorizable. <!--claim id=pair-is-permission confidence=structural cites=[]-->El acceso es un emparejamiento criptográfico de dos piezas de hardware físico — el par es el permiso. Cuando un dispositivo solicita acceso, ambos extremos demuestran posesión de material clave complementario; si el par se verifica, la conexión se forma; si no, las máquinas son mutuamente invisibles.<!--/claim-->
+La autorización basada en hardware elimina el secreto memorizable. El acceso es un emparejamiento criptográfico de dos piezas de hardware físico — el par es el permiso. Cuando un dispositivo solicita acceso, ambos extremos demuestran posesión de material clave complementario; si el par se verifica, la conexión se forma; si no, las máquinas son mutuamente invisibles.
 
-Como la autorización se vincula al hardware y no a un secreto memorizado, no hay tabla de usuarios que vulnerar, no hay formulario de inicio de sesión que suplantar y no hay contraseña que restablecer. <!--claim id=attack-class-eliminated confidence=structural cites=[]-->La revocación es física: el emparejamiento se corta en la máquina, y toda la clase de ataques de robo remoto de credenciales queda eliminada por estructura, no por política.<!--/claim-->
+Como la autorización se vincula al hardware y no a un secreto memorizado, no hay tabla de usuarios que vulnerar, no hay formulario de inicio de sesión que suplantar y no hay contraseña que restablecer. La revocación es física: el emparejamiento se corta en la máquina, y toda la clase de ataques de robo remoto de credenciales queda eliminada por estructura, no por política.
 
 Para un comprador regulado la consecuencia es concreta. Una clase de ataque desaparece, y cada evento de acceso es atribuible a un hardware específico en el libro de auditoría. Este artículo cubre cómo funcionan los emparejamientos, los cuatro tipos, las ventajas estructurales sobre las contraseñas y la relación con las capas [[diode-standard|Diodo]] y de auditoría.
 
@@ -56,17 +56,17 @@ Un [[totebox-os|Totebox]] reconoce cuatro tipos de emparejamiento, distinguidos 
 | USER | Máquina de acceso restringido ↔ Totebox | Solo lectura | Consultar los datos sin modificarlos — auditores, asesores |
 | INTERFACE | Agregador de orquestación ↔ Totebox | Solo metadatos | Visibilidad de la flota sin acceso a registros individuales |
 
-<!--claim id=input-default confidence=structural cites=[]-->El emparejamiento INPUT es el predeterminado y el más potente: el propietario de un Totebox tiene plena agencia por defecto, y las restricciones son degradaciones deliberadas, no configuraciones predeterminadas.<!--/claim-->
+El emparejamiento INPUT es el predeterminado y el más potente: el propietario de un Totebox tiene plena agencia por defecto, y las restricciones son degradaciones deliberadas, no configuraciones predeterminadas.
 
 ## Por qué supera a las contraseñas
 
 Tres ventajas estructurales se siguen de reemplazar las contraseñas con emparejamientos.
 
-<!--claim id=no-central-db confidence=structural cites=[]-->**Sin base de datos central que vulnerar.** No existe ninguna tabla de usuarios en ninguna parte de la arquitectura. Una vulneración exitosa de cualquier componente no produce material de credenciales útil en otro lugar.<!--/claim-->
+**Sin base de datos central que vulnerar.** No existe ninguna tabla de usuarios en ninguna parte de la arquitectura. Una vulneración exitosa de cualquier componente no produce material de credenciales útil en otro lugar.
 
-<!--claim id=no-phishing confidence=structural cites=[]-->**Sin superficie de phishing.** No se puede engañar a un operador para que escriba un emparejamiento en un formulario de inicio de sesión falso, porque un emparejamiento nunca se escribe. Lo demuestra criptográficamente el propio hardware.<!--/claim-->
+**Sin superficie de phishing.** No se puede engañar a un operador para que escriba un emparejamiento en un formulario de inicio de sesión falso, porque un emparejamiento nunca se escribe. Lo demuestra criptográficamente el propio hardware.
 
-<!--claim id=physical-revocation confidence=structural cites=[]-->**Revocación física.** Cuando el acceso de un operador debe terminar, el emparejamiento se corta a nivel de máquina. Una copia conservada del binario es inerte sin el material clave; no hay contraseña que restablecer.<!--/claim-->
+**Revocación física.** Cuando el acceso de un operador debe terminar, el emparejamiento se corta a nivel de máquina. Una copia conservada del binario es inerte sin el material clave; no hay contraseña que restablecer.
 
 ## La disciplina de límite
 
@@ -84,7 +84,7 @@ La autorización basada en hardware se conecta a otras tres capas arquitectónic
 
 ## Por qué se rechazó service-auth
 
-<!--claim id=service-auth-rejected confidence=structural cites=[]-->Los primeros diseños consideraron `service-auth`, modelado en un servicio de directorio tradicional, como proveedor de identidad. La decisión se revirtió: un servicio de directorio se estructura en torno a usuarios, contraseñas y jerarquías de grupos — exactamente el modelo que [[pointsav-overview|PointSav]] está reemplazando.<!--/claim--> `service-pairing` se creó como la alternativa deliberada, y `service-auth` se eliminó de la arquitectura antes de escribir código. Véase [[pairing-as-permission|emparejamiento como permiso]].
+Los primeros diseños consideraron `service-auth`, modelado en un servicio de directorio tradicional, como proveedor de identidad. La decisión se revirtió: un servicio de directorio se estructura en torno a usuarios, contraseñas y jerarquías de grupos — exactamente el modelo que [[pointsav-overview|PointSav]] está reemplazando. `service-pairing` se creó como la alternativa deliberada, y `service-auth` se eliminó de la arquitectura antes de escribir código. Véase [[pairing-as-permission|emparejamiento como permiso]].
 
 ## Véase también
 

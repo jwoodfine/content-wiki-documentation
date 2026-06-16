@@ -8,15 +8,12 @@ type: topic
 content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-06-10
-editor: pointsav-engineering
+last_edited: 2026-06-16
+editor: editorial
 paired_with: colocation-tier-nomenclature.md
 ---
 
-La plataforma de colocalización clasifica cada clúster comercial identificado en
-uno de tres niveles: T1 Regional, T2 Distrito y T3 Local. Este artículo define
-qué significa cada nivel, explica cómo se determina la clasificación y documenta
-la evolución de la convención de nomenclatura.
+La plataforma de colocalización asigna cada clúster comercial identificado a uno de tres niveles — T1 Regional, T2 Distrito y T3 Local — en función de la composición de anclas y la extensión geométrica. Los clústeres T1 tienen como ancla un club de membresía mayorista o una combinación de hipermercado más ferretería, y no superan los 2,5 km de extensión; los clústeres T2 tienen ancla de hipermercado pero no alcanzan T1 por composición o extensión; los clústeres T3 contienen co-localización significativa en ausencia de formatos de hipermercado. Según la Fase 23+Cambio B, el conjunto de datos comprende 1.746 clústeres T1, 2.726 T2 y 2.021 T3 en 18 países.
 
 ## Los Tres Niveles
 

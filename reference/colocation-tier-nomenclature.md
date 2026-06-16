@@ -11,16 +11,13 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-14
-editor: pointsav-engineering
+last_edited: 2026-06-16
+editor: editorial
 paired_with: colocation-tier-nomenclature.es.md
 cites: []
 ---
 
-The co-location platform classifies every identified retail cluster into one of
-three tiers: T1 Regional, T2 District, and T3 Local. This article defines what
-each tier means, explains how the classification is determined, and documents
-the evolution of the naming convention.
+The co-location platform assigns every identified retail cluster to one of three tiers — T1 Regional, T2 District, and T3 Local — based on anchor composition and geometric span. T1 clusters anchor on a warehouse club or a hypermarket-plus-hardware combination and span no more than 2.5 km; T2 clusters carry a hypermarket anchor but fall short of T1 on composition or span; T3 clusters contain significant co-location in the absence of hypermarket formats. As of Phase 23+Change B, the dataset carries 1,746 T1, 2,726 T2, and 2,021 T3 clusters across 18 countries.
 
 ## The Three Tiers
 

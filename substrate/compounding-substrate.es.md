@@ -16,9 +16,9 @@ paired_with: compounding-substrate.md
 
 Una organización que adopta una plataforma de IA hoy alquila la inteligencia. El modelo mejora según el calendario del proveedor. La señal de entrenamiento que genera el trabajo de la propia organización se acumula para el proveedor, y abandonar la plataforma significa empezar de nuevo.
 
-PointSav se construye sobre un patrón distinto — el **sustrato compuesto**. <!--claim id=substrate-properties confidence=structural cites=[]-->El código de la plataforma es abierto y bifurcable, la capa de datos determinista funciona con cero cómputo de IA, y cada interacción operativa genera señal de entrenamiento que se compone a través de cada despliegue de inquilino.<!--/claim-->
+PointSav se construye sobre un patrón distinto — el **sustrato compuesto**. El código de la plataforma es abierto y bifurcable, la capa de datos determinista funciona con cero cómputo de IA, y cada interacción operativa genera señal de entrenamiento que se compone a través de cada despliegue de inquilino.
 
-Un curador — PointSav — incorpora periódicamente la señal acumulada en un modelo base mejorado que regresa a cada despliegue. <!--claim id=data-stays confidence=structural cites=[]-->Los datos del cliente nunca salen de su infraestructura; solo los pesos de los adaptadores y los bloques de caché clave-valor, despojados de los datos de origen, entran en la federación compartida.<!--/claim-->
+Un curador — PointSav — incorpora periódicamente la señal acumulada en un modelo base mejorado que regresa a cada despliegue. Los datos del cliente nunca salen de su infraestructura; solo los pesos de los adaptadores y los bloques de caché clave-valor, despojados de los datos de origen, entran en la federación compartida.
 
 Para un comprador regulado la consecuencia es concreta. La capa de IA mejora con cada mes de uso en producción, y no se cede ningún dato más allá de lo que el comprador eligió al incorporarse. El patrón es duradero por una razón estructural: un proveedor de inteligencia alquilada no puede copiarlo sin desmantelar su propio modelo de facturación.
 
@@ -28,13 +28,13 @@ Este artículo nombra las cinco propiedades estructurales del patrón y explica 
 
 Un sustrato compuesto es una arquitectura de sustrato de IA con cinco propiedades definitorias.
 
-<!--claim id=five-properties confidence=structural cites=[]-->
+
 1. El código del sustrato es abierto y bifurcable.
 2. La capa de datos determinista funciona independientemente de cualquier cómputo de IA.
 3. La IA se agrega como una capa de inteligencia opcional que cualquier inquilino puede componer dentro o fuera.
 4. Cada interacción operativa genera señal de entrenamiento que se compone a través de los despliegues del sustrato.
 5. Un curador incorpora periódicamente la señal acumulada en modelos base mejorados que regresan a todos los despliegues sin interrumpir la propiedad de los datos del cliente.
-<!--/claim-->
+
 
 El patrón aplica un modelo ya probado en la infraestructura de código abierto: el código de la plataforma se convierte en un bien común abierto, y el valor económico migra hacia las operaciones, la integración y un mercado federado construido sobre él.
 
@@ -44,31 +44,31 @@ Cada propiedad es un reclamo estructural sobre la plataforma. Cada una nombra ta
 
 ### Custodia de la pila del cliente
 
-<!--claim id=stack-custody confidence=structural cites=[]-->Cada cliente posee su pila completa: datos, cómputo, adaptadores y composición de despliegue. El sustrato — código de plataforma más modelo base — es abierto bajo una licencia permisiva; los datos y los adaptadores entrenados son propiedad intelectual del cliente.<!--/claim-->
+Cada cliente posee su pila completa: datos, cómputo, adaptadores y composición de despliegue. El sustrato — código de plataforma más modelo base — es abierto bajo una licencia permisiva; los datos y los adaptadores entrenados son propiedad intelectual del cliente.
 
 Un proveedor de inteligencia alquilada monetiza el sustrato mismo como un servicio medido. La propiedad del sustrato erosiona el bloqueo sobre el que descansa ese modelo de facturación.
 
 ### Capa de inteligencia desacoplada
 
-<!--claim id=decoupled-tier confidence=structural cites=[]-->El anillo de datos y el anillo de procesamiento determinista funcionan por completo sin el anillo de IA. Un cliente, un miembro de la comunidad, un comprador regulado o un sitio aislado puede ejecutar una plataforma de datos PointSav completa con cero cómputo de IA.<!--/claim--> La IA es valor agregado, no lo básico.
+El anillo de datos y el anillo de procesamiento determinista funcionan por completo sin el anillo de IA. Un cliente, un miembro de la comunidad, un comprador regulado o un sitio aislado puede ejecutar una plataforma de datos PointSav completa con cero cómputo de IA. La IA es valor agregado, no lo básico.
 
 Un proveedor de inteligencia alquilada acopla el cómputo de IA a sus servicios de datos. Desacoplarlos elimina los ingresos por cómputo de IA de cada despliegue que opta por no participar.
 
 ### Enrutamiento dinámico de cómputo
 
-<!--claim id=doorman-routing confidence=structural cites=[]-->[[service-slm]] es la única puerta de control de acceso de la plataforma — el [[compounding-doorman|Doorman]]. Enruta cada solicitud entre tres niveles de cómputo: un modelo local en la máquina del propio cliente, un nivel de ráfaga multi-nube y una API frontera externa. El cliente no elige el nivel; la forma de la solicitud y los topes presupuestarios lo eligen.<!--/claim-->
+[[service-slm]] es la única puerta de control de acceso de la plataforma — el [[compounding-doorman|Doorman]]. Enruta cada solicitud entre tres niveles de cómputo: un modelo local en la máquina del propio cliente, un nivel de ráfaga multi-nube y una API frontera externa. El cliente no elige el nivel; la forma de la solicitud y los topes presupuestarios lo eligen.
 
 Un proveedor de inteligencia alquilada factura cada nivel como una relación separada y no puede abarcar el modelo frontera de un competidor. No puede abstraer este enrutamiento.
 
 ### Federación que preserva la privacidad
 
-<!--claim id=federation confidence=structural cites=[]-->Los clientes optan por un [[sovereign-ai-commons|mercado federado de adaptadores]] que agrega mejoras sin mover los datos de origen. Los datos propios de cada cliente permanecen en su lugar; solo los pesos de los adaptadores y los bloques de caché clave-valor, sin datos de origen, fluyen hacia la federación.<!--/claim--> El método de agregación sigue el linaje de investigación de adaptadores federados que preservan la privacidad.
+Los clientes optan por un [[sovereign-ai-commons|mercado federado de adaptadores]] que agrega mejoras sin mover los datos de origen. Los datos propios de cada cliente permanecen en su lugar; solo los pesos de los adaptadores y los bloques de caché clave-valor, sin datos de origen, fluyen hacia la federación. El método de agregación sigue el linaje de investigación de adaptadores federados que preservan la privacidad.
 
 La facturación por inquilino y la postura de cumplimiento de un proveedor de inteligencia alquilada hacen que el agrupamiento cruzado entre inquilinos sea estructuralmente inadmisible. No puede operar una verdadera federación.
 
 ### Avance curado del sustrato
 
-<!--claim id=curated-base confidence=structural cites=[]-->Un modelo base abierto fluye hacia una variante de preentrenamiento continuo de PointSav, lanzada como el sustrato para despliegues posteriores. El bien común curado de cada año alimenta el modelo base del año siguiente.<!--/claim--> Para 2030 se pretende que el modelo base entrenado por la federación sea competitivo con los modelos propietarios de frontera en los dominios de la federación.
+Un modelo base abierto fluye hacia una variante de preentrenamiento continuo de PointSav, lanzada como el sustrato para despliegues posteriores. El bien común curado de cada año alimenta el modelo base del año siguiente. Para 2030 se pretende que el modelo base entrenado por la federación sea competitivo con los modelos propietarios de frontera en los dominios de la federación.
 
 Un proveedor de inteligencia alquilada no puede permitir que los datos del cliente entrenen un modelo base que el cliente luego posea. Eso destruye el bloqueo del que dependen sus márgenes.
 
@@ -76,7 +76,7 @@ Un proveedor de inteligencia alquilada no puede permitir que los datos del clien
 
 La cadena de valor de la inteligencia alquilada depende de que el cliente permanezca en el sustrato del proveedor. La cadena de valor del sustrato compuesto depende de que el cliente componga su propia pila. Los dos modelos son opuestos; uno no puede adoptar el otro sin desmantelarse.
 
-<!--claim id=inversion confidence=structural cites=[]-->Un proveedor que copiara la propiedad de propiedad del sustrato erosionaría su propio bloqueo. Un proveedor que copiara la propiedad de inteligencia opcional perdería ingresos por cómputo de IA en cada despliegue que optara por no participar. Un proveedor que copiara la propiedad de composición federada violaría sus propios contratos de cumplimiento por inquilino.<!--/claim-->
+Un proveedor que copiara la propiedad de propiedad del sustrato erosionaría su propio bloqueo. Un proveedor que copiara la propiedad de inteligencia opcional perdería ingresos por cómputo de IA en cada despliegue que optara por no participar. Un proveedor que copiara la propiedad de composición federada violaría sus propios contratos de cumplimiento por inquilino.
 
 Esta asimetría es lo que hace duradero al patrón.
 
@@ -96,7 +96,7 @@ El sustrato es un bien común abierto; el valor migra hacia las operaciones, la 
 
 Cada acción produce datos; los datos producen conocimiento estructurado; el conocimiento mejora las acciones futuras. El bucle se ejecuta continuamente, en cada despliegue de inquilino, federado a través de los bienes comunes.
 
-<!--claim id=compounding-loop confidence=structural cites=[]-->Para un operador que evalúa la plataforma, la consecuencia es medible: cada mes de uso en producción hace que la capa de IA sea materialmente mejor, sin inversión ni intercambio de datos más allá de lo que el operador eligió al incorporarse.<!--/claim-->
+Para un operador que evalúa la plataforma, la consecuencia es medible: cada mes de uso en producción hace que la capa de IA sea materialmente mejor, sin inversión ni intercambio de datos más allá de lo que el operador eligió al incorporarse.
 
 ```
 operador + asistente hace el trabajo

@@ -17,9 +17,9 @@ paired_with: economic-model.md
 
 Una pequeña empresa regulada se sitúa en una brecha. Es demasiado pequeña para un contrato de IA empresarial — esos empiezan en cientos de miles de dólares al año — y está demasiado regulada para pasar sus datos por un producto de IA de consumo. Ningún ciclo de venta la alcanza.
 
-La estructura comercial de [[pointsav-overview|PointSav]] se construye enteramente en torno a esa brecha. <!--claim id=two-tiers-no-enterprise confidence=structural cites=[]-->Hay dos niveles y ningún nivel Enterprise: un nivel Community gratuito que es el embudo de adopción, y un nivel de Cliente PYME de pago para pequeñas y medianas empresas reguladas.<!--/claim-->
+La estructura comercial de [[pointsav-overview|PointSav]] se construye enteramente en torno a esa brecha. Hay dos niveles y ningún nivel Enterprise: un nivel Community gratuito que es el embudo de adopción, y un nivel de Cliente PYME de pago para pequeñas y medianas empresas reguladas.
 
-<!--claim id=structural-not-positional confidence=structural cites=[]-->La decisión es estructural, no de posicionamiento. El segmento objetivo maneja contratos de herramientas de IA de entre 5.000 y 50.000 dólares al año: demasiado pequeño para un ciclo de venta empresarial, demasiado regulado para un producto de consumo. La estructura de costos de la plataforma está diseñada para atenderlo de forma rentable.<!--/claim-->
+La decisión es estructural, no de posicionamiento. El segmento objetivo maneja contratos de herramientas de IA de entre 5.000 y 50.000 dólares al año: demasiado pequeño para un ciclo de venta empresarial, demasiado regulado para un producto de consumo. La estructura de costos de la plataforma está diseñada para atenderlo de forma rentable.
 
 Para un comprador de ese segmento, la economía de la plataforma está alineada con la suya. Este artículo cubre los dos niveles, por qué no hay nivel Enterprise, el segmento objetivo, la federación y la asimetría de costos que protege la posición.
 
@@ -35,29 +35,29 @@ Clínicas pequeñas bajo legislación de privacidad sanitaria, despachos jurídi
 
 ## Los dos niveles
 
-<!--claim id=community-tier confidence=structural cites=[]-->**Community** es el nivel gratuito, bajo licencia AGPL-3.0-or-later. Un despliegue Community es un archivo [[totebox-os|ToteboxOS]] y una terminal [[console-os|ConsoleOS]], con inferencia local de modelos como componente opcional. Community es el embudo de adopción — genera contribuidores y expone casos límite — y [[pointsav-overview|PointSav]] no obtiene ingresos de él.<!--/claim-->
+**Community** es el nivel gratuito, bajo licencia AGPL-3.0-or-later. Un despliegue Community es un archivo [[totebox-os|ToteboxOS]] y una terminal [[console-os|ConsoleOS]], con inferencia local de modelos como componente opcional. Community es el embudo de adopción — genera contribuidores y expone casos límite — y [[pointsav-overview|PointSav]] no obtiene ingresos de él.
 
-<!--claim id=smb-tier confidence=structural cites=[]-->**Cliente PYME** es el nivel de ingresos, con un contrato de Orden de Servicio por cliente. Incorpora agregación de múltiples archivos, capacidad de cómputo en GPU bajo demanda, participación en el mercado federado de adaptadores y acceso prioritario a las actualizaciones del modelo base.<!--/claim-->
+**Cliente PYME** es el nivel de ingresos, con un contrato de Orden de Servicio por cliente. Incorpora agregación de múltiples archivos, capacidad de cómputo en GPU bajo demanda, participación en el mercado federado de adaptadores y acceso prioritario a las actualizaciones del modelo base.
 
 ## Por qué no hay nivel Enterprise
 
 El cliente direccionable de una plataforma de IA de nivel Enterprise suele manejar valores de contrato anuales superiores a 500.000 dólares. Los proveedores de hiperescala están estructurados para ese segmento. [[pointsav-overview|PointSav]] no está equipado para competir allí y no lo intenta.
 
-<!--claim id=the-gap confidence=structural cites=[]-->El segmento que [[pointsav-overview|PointSav]] atiende maneja valores de contrato anuales de herramientas de IA de 5.000 a 50.000 dólares. Esa brecha — demasiado pequeña para un ciclo empresarial, demasiado regulada para un producto de consumo — es estructuralmente inaccesible para una plataforma construida en torno a un modelo de facturación a hiperescala.<!--/claim-->
+El segmento que [[pointsav-overview|PointSav]] atiende maneja valores de contrato anuales de herramientas de IA de 5.000 a 50.000 dólares. Esa brecha — demasiado pequeña para un ciclo empresarial, demasiado regulada para un producto de consumo — es estructuralmente inaccesible para una plataforma construida en torno a un modelo de facturación a hiperescala.
 
 ## La asimetría de costos
 
 El ajuste fino de adaptadores de un modelo de siete mil millones de parámetros cuesta entre 30 y 100 dólares por adaptador. El preentrenamiento continuo del mismo modelo cuesta entre 30.000 y 100.000 dólares. El preentrenamiento desde cero a esa escala cuesta entre 500.000 y 2.000.000 de dólares.
 
-<!--claim id=cost-asymmetry confidence=structural cites=[]-->Una pequeña empresa puede ajustar adaptadores con sus propios datos; no puede costear el preentrenamiento continuo. [[pointsav-overview|PointSav]] financia el preentrenamiento continuo, y la federación agrupa el aprendizaje de adaptadores por cliente en un bien común que mejora el modelo base para todos. La asimetría no depende de ningún resultado competitivo particular — depende de la economía del cómputo a escala.<!--/claim-->
+Una pequeña empresa puede ajustar adaptadores con sus propios datos; no puede costear el preentrenamiento continuo. [[pointsav-overview|PointSav]] financia el preentrenamiento continuo, y la federación agrupa el aprendizaje de adaptadores por cliente en un bien común que mejora el modelo base para todos. La asimetría no depende de ningún resultado competitivo particular — depende de la economía del cómputo a escala.
 
 ## Federación
 
-<!--claim id=federation-included confidence=structural cites=[]-->Las capacidades de federación — el mercado federado de adaptadores, el pool compartido de caché clave-valor y las actualizaciones del modelo base — están incluidas en la licencia de Cliente PYME. No hay un nivel de federación separado; todo cliente de pago puede participar.<!--/claim-->
+Las capacidades de federación — el mercado federado de adaptadores, el pool compartido de caché clave-valor y las actualizaciones del modelo base — están incluidas en la licencia de Cliente PYME. No hay un nivel de federación separado; todo cliente de pago puede participar.
 
 ## El preentrenamiento continuo como inversión curatorial
 
-<!--claim id=linux-distro-model confidence=structural cites=[]-->La inversión de [[pointsav-overview|PointSav]] en el preentrenamiento continuo del modelo base se financia con los ingresos por licencias de Cliente PYME, y el modelo base mejorado beneficia a cada cliente cuando se distribuye en la siguiente versión de la plataforma. La estructura económica se asemeja a una distribución de Linux: la curación se financia con el negocio de suscripción, los clientes ejecutan sus propias instalaciones, y el modelo base mejorado regresa a toda la base de suscriptores.<!--/claim-->
+La inversión de [[pointsav-overview|PointSav]] en el preentrenamiento continuo del modelo base se financia con los ingresos por licencias de Cliente PYME, y el modelo base mejorado beneficia a cada cliente cuando se distribuye en la siguiente versión de la plataforma. La estructura económica se asemeja a una distribución de Linux: la curación se financia con el negocio de suscripción, los clientes ejecutan sus propias instalaciones, y el modelo base mejorado regresa a toda la base de suscriptores.
 
 ## Véase también
 
