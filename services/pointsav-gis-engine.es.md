@@ -8,7 +8,7 @@ content_type: topic
 quality: complete
 status: active
 audience: public
-short_description: "El Motor GIS de PointSav es una plataforma de inteligencia de ubicación de alto rendimiento y propiedad del cliente construida en Rust para operación offline-first sobre archivos planos — una desviación estructural de los sistemas de información geográfica tradicionales que dependen de instancias de bases de datos centralizadas y conectividad de red continua."
+short_description: "El Motor GIS de PointSav es una plataforma de inteligencia de ubicación de propiedad del cliente construida en Rust para operación offline-first sobre archivos planos — una desviación estructural de los sistemas de información geográfica que dependen de instancias de bases de datos centralizadas y conectividad de red continua."
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
 last_edited: 2026-05-08
@@ -20,7 +20,7 @@ cites:
  - tippecanoe-tool
 ---
 
-El Motor GIS de PointSav es una plataforma de inteligencia de ubicación de alto rendimiento y propiedad del cliente construida en Rust para operación offline-first sobre archivos planos — una desviación estructural de los sistemas de información geográfica tradicionales que dependen de instancias de bases de datos centralizadas y conectividad de red continua. El motor lee desde un archivo PMTiles estático en el [[service-fs-data-lake|sistema de archivos del propio cliente]], renderiza interactivamente a través de MapLibre GL JS en el navegador y sirve cada consulta sin una dependencia externa. Los datos del mapa viven en el archivo del cliente; nada sale del despliegue a menos que el operador elija explícitamente publicar.
+Una plataforma de inteligencia de ubicación que depende de una base de datos central y una red activa es una plataforma que el cliente arrienda, no posee — las interrupciones, el coste por usuario en la nube y la inelegibilidad para entornos sin conexión son consecuencias inevitables. El Motor GIS de PointSav opera offline-first desde archivos planos: lee desde un archivo PMTiles estático en el [[service-fs-data-lake|sistema de archivos del propio cliente]], renderiza interactivamente a través de MapLibre GL JS en el navegador y sirve cada consulta sin dependencia externa. Para un comprador regulado, el registro espacial es auditable, portable y nunca abandona el entorno controlado.
 
 ## Sustrato de archivos planos
 
@@ -28,10 +28,10 @@ A diferencia de los sistemas GIS tradicionales que requieren gestión persistent
 
 ## Pila de renderizado soberana
 
-La plataforma evita dependencias de SaaS de mapas comerciales utilizando una pila de renderizado de alto rendimiento y código abierto:
+La plataforma evita dependencias de SaaS de mapas comerciales utilizando una pila de renderizado de código abierto:
 
 - **PMTiles** — un formato de archivo único para datos en teselas que permite servir mapas directamente desde servidores web estándar sin un servidor de teselas dedicado.
-- **MapLibre GL JS** — una biblioteca basada en WebGL para renderizar mapas vectoriales interactivos con alto rendimiento del lado del cliente.
+- **MapLibre GL JS** — una biblioteca basada en WebGL para renderizar mapas vectoriales interactivos en el navegador.
 - **Tippecanoe** — una herramienta utilizada para compilar conjuntos de datos masivos de archivos planos en teselas vectoriales optimizadas.
 
 ## Procesamiento espacial

@@ -12,7 +12,7 @@ bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
 last_edited: 2026-05-08
 editor: pointsav-engineering
-short_description: "The PointSav GIS Engine is a high-performance, customer-owned location intelligence platform built in Rust for offline-first, flat-file operation — a structural departure from traditional geographic information systems that rely on centralised database instances and continuous network connectivity."
+short_description: "The PointSav GIS Engine is a customer-owned location intelligence platform built in Rust for offline-first, flat-file operation — a structural departure from geographic information systems that rely on centralised database instances and continuous network connectivity."
 paired_with: pointsav-gis-engine.es.md
 cites:
  - maplibre-gl-js
@@ -20,20 +20,20 @@ cites:
  - tippecanoe-tool
 ---
 
-The PointSav GIS Engine is a high-performance, customer-owned location intelligence platform built in Rust for offline-first, flat-file operation — a structural departure from traditional geographic information systems that rely on centralised database instances and continuous network connectivity. The engine reads from a static PMTiles archive on the customer's own [[service-fs-data-lake|filesystem]], renders interactively through MapLibre GL JS in the browser, and serves every query without an external dependency. The map data lives in the customer's archive; nothing leaves the deployment unless the operator explicitly chooses to publish.
+A location-intelligence platform that depends on a central database and a live network is a platform a customer rents, not owns — outages, per-seat cloud cost, and air-gap ineligibility follow. The PointSav GIS Engine runs offline-first from flat files: it reads from a static PMTiles archive on the customer's own [[service-fs-data-lake|filesystem]], renders interactively through MapLibre GL JS in the browser, and serves every query without an external dependency. For a regulated buyer, the spatial record is auditable, portable, and never leaves the building.
 
 ## Architectural Principles
 
-The engine is engineered to operate as a stateless application surface, adhering to the PointSav principle of complete data sovereignty.
+The engine operates as a stateless application surface, decoupling the data layer from the runtime so either can be updated or replaced independently.
 
 ### Flat-File Substrate
-Unlike traditional GIS stacks (e.g., PostGIS, Esri) which require persistent database management, the PointSav engine uses a flat-file substrate. It consumes geographic data directly from `JSONL`, `GeoParquet`, and `YAML` formats versioned within a Totebox Archive. This architecture ensures the data layer remains entirely decoupled from the application logic, eliminating database maintenance overhead and preventing vendor lock-in.
+Unlike centralised GIS stacks that require persistent database management, the PointSav engine uses a flat-file substrate. It consumes geographic data directly from `JSONL`, `GeoParquet`, and `YAML` formats versioned within a Totebox Archive. This architecture ensures the data layer remains entirely decoupled from the application logic, eliminating database maintenance overhead and preventing vendor lock-in.
 
 ### Sovereign Rendering Stack
-The platform avoids commercial SaaS mapping dependencies by using a high-performance, open-source rendering stack:
+The platform avoids commercial SaaS mapping dependencies by using an open-source rendering stack:
 
 - **PMTiles:** A single-file archive format for tiled data that enables maps to be served directly from standard web servers (Nginx) or blob storage without a dedicated tile server. [pmtiles-spec]
-- **MapLibre GL JS:** A WebGL-based library for rendering interactive vector maps with high client-side performance. [maplibre-gl-js]
+- **MapLibre GL JS:** A WebGL-based library for rendering interactive vector maps in the browser. [maplibre-gl-js]
 - **Tippecanoe:** A tool used to compile massive flat-file datasets into optimized vector tiles, ensuring rapid delivery of complex co-location clusters. [tippecanoe-tool]
 
 ## Spatial Processing and Orchestration
