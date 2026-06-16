@@ -9,7 +9,7 @@
 > This document is this repo's local reference and is kept in sync
 > whenever the crate's render pipeline changes.
 
-Last updated: 2026-04-23.
+Last updated: 2026-06-15.
 
 ---
 
@@ -28,13 +28,16 @@ Two classes of file exist at repo root:
 
 **Wiki content** — consumed by the app:
 `index.md` at root (wiki home), plus category subdirectories
-containing articles and `_index.md` landing pages.
+containing articles and `_index.md` landing pages. Image assets
+served via the engine live in `images/` (see §2 and §7).
 
 ## 2. Directory layout
 
 ```
 content-wiki-documentation/
 ├── index.md                          # wiki home
+├── images/                           # static images (png, jpg, svg, webp)
+│   └── example-cluster-map.png
 ├── architecture/
 │   ├── _index.md                     # category landing
 │   ├── os-totebox.md                 # article
@@ -47,6 +50,11 @@ content-wiki-documentation/
     ├── _index.md
     └── sys-adr-07.md
 ```
+
+The `images/` directory is flat — no subdirectories. Files are
+referenced in article Markdown as `/images/<filename>` (not as
+wikilinks). Filenames follow the same lowercase-ASCII-kebab rule
+as article slugs (§3), with the original extension preserved.
 
 Depth is strictly two. Subcategories exist only as a front-matter
 field (`subcategory:`), not as nested directories. The URL router
@@ -204,6 +212,7 @@ authors do not configure URLs.
 | `/` | `index.md` | Wiki home |
 | `/:category` | `<category>/_index.md` | Category landing; article list auto-built from `*.md` in directory, excluding `_index.md` |
 | `/:category/:slug` | `<category>/<slug>.md` | Article |
+| `/images/{*path}` | `images/<path>` | Static image asset; served from filesystem; 1-year immutable cache |
 | `/search?q=…` | — | Full-text search results (Tantivy) |
 | `/edit/:category/:slug` | — | Browser editor; requires MBA auth and `EDITOR_ENABLED=true` |
 
