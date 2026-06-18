@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-15
+last_edited: 2026-06-18
 editor: pointsav-engineering
 paired_with: parking-structures.es.md
 short_description: "A Parking Structure is a 3–9 story multi-level car park at a regional airport or intercity train station — one of three Location Intelligence archetypes. Its defining relationship: a Regional Market feeds a Metro Market by plane or train, and the parking structure is the infrastructure that makes this journey possible at scale."
@@ -63,22 +63,24 @@ OSM identification: `railway=station` with `station NOT IN (subway, light_rail, 
 
 **National intercity operators by country:**
 
-| Country | Operator |
-|---|---|
-| US | Amtrak |
-| CA | VIA Rail Canada |
-| FR | SNCF (TGV, Intercités, TER) |
-| DE | Deutsche Bahn (ICE, IC, EC, RE, RB) |
-| ES | Renfe (AVE, Alvia, Regional) |
-| IT | Trenitalia, Italo |
-| AT | ÖBB (Railjet, Intercity) |
-| NL | NS |
-| SE | SJ |
-| DK | DSB |
-| NO | Vy (formerly NSB) |
-| FI | VR Group |
-| PT | CP (Comboios de Portugal) |
-| PL | PKP Intercity, RegioJet |
+| Country | Operator | Notes |
+|---|---|---|
+| US | Amtrak | Only intercity passenger rail in NA |
+| CA | VIA Rail Canada | |
+| FR | SNCF | TGV, Intercités, TER regional |
+| DE | Deutsche Bahn (DB) | ICE, IC, EC, RE, RB |
+| ES | Renfe | AVE, Alvia, Regional |
+| IT | Trenitalia, Italo | Frecciarossa, Intercity |
+| AT | ÖBB | Railjet, Intercity |
+| NL | NS | All intercity service |
+| SE | SJ | Long-distance; regional operators |
+| DK | DSB | |
+| NO | Vy (formerly NSB) | |
+| FI | VR Group | |
+| PT | CP (Comboios de Portugal) | |
+| PL | PKP Intercity, RegioJet | |
+
+Mixed-service stations (serving both intercity and commuter trains, such as Reading UK or Tarrytown NY) are retained — they generate equivalent parking demand regardless of the mixed service pattern.
 
 ## Co-location signals for site selection
 
@@ -112,25 +114,85 @@ From Overpass API queries against four confirmed PKS test sites (Toluca MX, Deli
 
 | Commercial use | Signal strength | Notes |
 |---|---|---|
-| Car rental | Defining | Found at every well-mapped airport zone |
-| Auto parts | Strong | Present at manufacturing-belt sites (VWH/PKS spatial overlap) |
-| Fuel / petrol | Strong | Pre-departure fill-up |
-| Convenience retail | Strong | Perimeter concessions |
-| Quick-service food | Moderate | 8–24 outlets per site |
+| Car rental | Defining | Found at every well-mapped airport zone; Hertz at Toluca |
+| Auto parts | Strong | AutoZone at Delicias; Valeo OEM at Toluca (manufacturing-belt overlap with VWH) |
+| Fuel / petrol | Strong | Pre-departure fill-up; 6 stations at Delicias |
+| Convenience retail | Strong | OXXO × 3 at Delicias; perimeter concessions at Toluca |
+| Quick-service food | Moderate | 24 at Delicias, 8 at Largo FL |
+| Car wash | Moderate | 7 at Delicias |
+| Multi-storey parking | Not in OSM | Building type is unmapped universally — exists in reality |
+| Hotels | Not in OSM for MX | Exist in reality; data gap in OSM coverage |
 
 ## Production dataset
 
-The PKS production pipeline uses DBSCAN-based clustering of transit infrastructure — commercial airports, intercity rail stations, commuter rail, metro/subway stations, and intercity bus terminals — enriched with commercial signals: car rental, park-and-ride facilities, and hotels.
+The PKS detection pipeline is production-grade as of 2026-06-11. Parking structures (114,835 built + 25,366 park-and-ride = 140,201 total) were profiled as proxy anchors; DBSCAN was run on transit and commercial enrichment categories; tier rules were calibrated using mode-group collapse logic (collapsing intercity rail + commuter rail into the RAIL group to prevent artificial bimodality inflation). Park-and-ride records (23,117) serve as the discrete geographic anchor — actual car-to-transit transition points, not interpolated from rail network geometry.
 
-**7,045 clusters** across 17 display countries as of the June 2026 production build:
+**6,953 clusters** across 17 display countries:
 
-| Tier | Count | Share |
-|---|---|---|
-| T1 Confirmed Commercial Hub | 692 | 9.8% |
-| T2 Drive-to Hub | 2,665 | 37.8% |
-| T3 Functional Transit Stop | 3,688 | 52.4% |
+| Tier | Count | Share | Definition |
+|---|---|---|---|
+| T1 Confirmed Commercial Hub | 691 | 9.9% | Multi-modal + full commercial ecosystem (rental + hotel) |
+| T2 Drive-to Hub | 2,658 | 38.2% | Transit anchor + at least one commercial enrichment signal |
+| T3 Functional Transit Stop | 3,604 | 51.9% | Transit present; commercial development opportunity |
 
 Rail stations dominate the dataset across all countries. The European park-and-train pattern means intercity rail sites substantially outnumber airport sites in the EU; railway stations are reliable PKS candidates wherever intercity service reaches a regional city.
+
+**Commercial enrichment signals (production):**
+
+| Signal | Chains (examples) | Coverage |
+|---|---|---|
+| Car rental | Hertz EU (687), Avis EU (741), Europcar EU (1,021), Sixt EU (246), Budget EU (130), Enterprise/Hertz/Avis US | All 17 countries |
+| Hotel | Ibis EU (708), Premier Inn UK (817), Travelodge UK (580), Holiday Inn Express US (2,021), Courtyard US (1,020), Hampton US (240), B&B Hotels EU (797), Motel One DE (24) | All 17 countries |
+
+## Chain taxonomy
+
+All chains below are ingested and active in the production pipeline as of 2026-06-11.
+
+### Transit infrastructure (ingested)
+
+| Script | Output | Records |
+|---|---|---|
+| `ingest-osm-airports.py` | `cleansed-civic-airports.jsonl` | Commercial airports; IATA/aerodrome:type filter applied |
+| `ingest-osm-railway.py` | `cleansed-civic-railway.jsonl` | Intercity rail stations |
+| `ingest-osm-railway-commuter.py` | `cleansed-civic-railway-commuter.jsonl` | Commuter rail + metro/subway |
+| `ingest-osm-bus-terminal.py` | `cleansed-civic-bus-terminal.jsonl` | Intercity bus terminals |
+| Park-and-ride | `cleansed-civic-parking.jsonl` (park_ride filter) | 23,117 records — primary geographic anchor |
+
+### Car rental chains (ingested)
+
+| chain_id | Chain | Records |
+|---|---|---|
+| `hertz-eu` | Hertz EU | 687 |
+| `avis-eu` | Avis EU | 741 |
+| `budget-eu` | Budget EU | 130 |
+| `europcar-eu` | Europcar EU | 1,021 |
+| `sixt-eu` | Sixt EU | 246 |
+| `budget-us` | Budget US | 278 |
+| `alamo-us` | Alamo US | 110 |
+| `enterprise-us`, `hertz-us`, `avis-us` | Enterprise / Hertz / Avis US | Existing |
+
+### Hotel chains (ingested)
+
+| chain_id | Chain | Records |
+|---|---|---|
+| `ibis-eu` | Ibis EU | 708 |
+| `b-and-b-hotels-eu` | B&B Hotels EU | 797 |
+| `premier-inn-gb` | Premier Inn UK | 817 |
+| `travelodge-gb` | Travelodge UK | 580 |
+| `motel-one-de` | Motel One DE | 24 |
+| `holiday-inn-express-us` | Holiday Inn Express US | 2,021 |
+| `hampton-us` | Hampton Inn US | 240 |
+| `courtyard-us` | Courtyard US | 1,020 |
+
+### Parking operators (future — low OSM coverage)
+
+| Operator | Countries | Notes |
+|---|---|---|
+| Q-Park | NL/DE/BE/FR/UK/IE/DK | OSM coverage insufficient for production ingest |
+| APCOA Parking | 13 EU countries | Same |
+| NCP (National Car Parks) | UK | Same |
+| Indigo (Vinci Park) | FR/EU | Same |
+| SP+ | US | Same |
 
 ## Tier classification
 

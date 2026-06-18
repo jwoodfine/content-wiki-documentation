@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-15
+last_edited: 2026-06-18
 editor: pointsav-engineering
 paired_with: vertical-warehouse.es.md
 short_description: "A Vertical Warehouse is a 3–6 story multi-storey building used for light manufacturing, just-in-time logistics, and last-mile delivery in urban or near-urban locations — one of three Location Intelligence archetypes."
@@ -73,19 +73,22 @@ The vertical form factor is driven by urban land cost. Where a horizontal wareho
 
 ## Production dataset
 
-The VWH production pipeline uses DBSCAN-based clustering of hardware, trade-supply, and light-industrial retail chains. Calibration uses existing hardware store locations as proxy anchors: a calibrated build must place hardware anchors within 3 km of at least 73% of T1 and T2 clusters.
+The VWH detection pipeline is production-grade as of 2026-06-11. Hardware stores (10,338 locations across 45 chains) were profiled as proxy anchors; DBSCAN was run on trade-supply POIs without the hardware anchor (held-out validation); tier rules were calibrated using group-collapse logic and validated against hardware co-location (73.4% of T1+T2 clusters have a hardware store within 3 km — above the 55% acceptance threshold).
 
-**6,368 clusters** across 17 display countries as of the June 2026 calibration:
+**6,368 clusters** identified globally across 17 display countries:
 
-| Tier | Count | Share |
+| Country | Clusters | Notes |
 |---|---|---|
-| T1 Full Trade Hub | 852 | 13.4% |
-| T2 Established Trade | 1,327 | 20.8% |
-| T3 Emerging | 4,189 | 65.8% |
+| US | 3,167 | Home Depot / Lowe's / Menards + MRO + auto parts |
+| DE | 648 | OBI / Hornbach / Hagebaumarkt + Würth + Bauking |
+| GB | 543 | B&Q / Wickes + Screwfix / Toolstation + Travis Perkins |
+| CA | 506 | Home Depot / Home Hardware + Fastenal + Princess Auto |
+| FR | 420 | Castorama / Leroy Merlin + Loxam / Kiloutou + Point-P |
+| NL | 240 | Praxis / Gamma + Boels Rental |
+| IT | 226 | Leroy Merlin + Rexel |
+| PL | 171 | Leroy Merlin / Castorama + Fastenal |
 
-Country distribution (top eight by cluster count): US · DE · GB · CA · FR · NL · IT · PL.
-
-T3 represents the majority because single-category hardware clusters qualify as thin VWH sites. Full trade hubs combining hardware, MRO industrial, tool rental, and auto parts are genuinely rare — this T3-heavy distribution reflects real-world site rarity at the T1 level.
+Tier distribution: T1 (Full Trade Hub) = 852 (13.4%), T2 (Established) = 1,327 (20.8%), T3 (Emerging / Thin) = 4,189 (65.8%). T3-heavy is expected: most hardware store locations are thin VWH sites; full trade hubs (MRO + tool rental + builders merchant + auto parts) are legitimately rare.
 
 ## Tier classification
 
@@ -105,28 +108,60 @@ Nearly half of VWH clusters have a grocery hypermarket within 1 km. Hypermarkets
 
 A flagged site is not disqualified as a VWH location, but site selection analysis should account for the retail traffic and zoning dynamics that come with grocery-anchor proximity — these are mixed-use zones, not pure industrial precincts.
 
-## Data collection plan
+## Chain taxonomy
 
-### Priority additions — Tier A chains (definitive VWH signal)
+All chains below are ingested and active in the production pipeline as of 2026-06-11.
 
-| Chain | Market | Notes |
+### TRADE chains (gate T1/T2 tier logic via group-collapse rules)
+
+| chain_id | Chain | Category | Market |
+|---|---|---|---|
+| `wurth-de` | Würth | `mro_industrial` | EU-wide |
+| `fastenal-us`, `fastenal-ca` | Fastenal | `mro_industrial` | NA |
+| `grainger-us` | Grainger | `mro_industrial` | NA |
+| `hilti-ch` | Hilti | `mro_industrial` | EU |
+| `princess-auto-ca` | Princess Auto | `mro_industrial` | CA |
+| `floor-decor-us` | Floor & Decor | `flooring` | US |
+| `topps-tiles-uk` | Topps Tiles | `flooring` | UK |
+| `united-rentals-us` | United Rentals | `tool_rental` | NA |
+| `sunbelt-rentals-us` | Sunbelt Rentals | `tool_rental` | NA |
+| `loxam-fr` | Loxam | `tool_rental` | EU |
+| `kiloutou-fr` | Kiloutou | `tool_rental` | FR |
+| `boels-rental-nl` | Boels Rental | `tool_rental` | NL/EU |
+| `hss-hire-uk`, `speedy-hire-uk` | HSS Hire / Speedy | `tool_rental` | UK |
+| `travis-perkins-uk`, `jewson-uk`, `selco-uk` | Travis Perkins / Jewson / Selco | `builders_merchant` | UK |
+| `point-p-fr`, `bigmat-fr` | Point-P / BigMat | `builders_merchant` | FR |
+| `bauking-de`, `raab-karcher-de` | Bauking / Raab Karcher | `builders_merchant` | DE |
+| `screwfix-uk`, `toolstation-uk` | Screwfix / Toolstation | `trade_counter` | UK |
+| `cef-uk` | City Electrical Factors | `electrical` | UK |
+| `rexel-fr` | Rexel | `electrical` | EU |
+| `ahlsell-se` | Ahlsell | `electrical` | SE |
+| `ferguson-us` | Ferguson | `plumbing` | NA |
+| `wolseley-uk` | Wolseley | `plumbing` | UK |
+
+### AUTO chains (combine with TRADE for T2; alone = T3)
+
+| chain_id | Chain | Category | Market |
+|---|---|---|---|
+| `autozone-us`, `oreilley-auto-us`, `napa-us` | AutoZone / O'Reilly / NAPA | `auto_parts` | NA |
+| `atu-de` | ATU | `auto_parts` | DE |
+| `norauto-fr` | Norauto | `auto_parts` | FR |
+| `halfords-uk` | Halfords | `auto_parts` | UK |
+
+### SUPPORT chains (informational — never gate tier)
+
+| chain_id | Chain | Category | Market |
+|---|---|---|---|
+| `sherwin-williams-us` | Sherwin-Williams | `paint` | NA |
+| `comex-mx` | Comex | `paint` | MX |
+| Various self-storage | U-Haul, Public Storage, Shurgard, Big Yellow, etc. | `self_storage` | NA/EU |
+
+### Not ingested (low OSM coverage; excluded from calibration)
+
+| Chain | Category | Reason |
 |---|---|---|
-| Floor & Decor | US | Warehouse-format contractor flooring |
-| Topps Tiles | UK | Contractor tile retail in industrial estates |
-| United Rentals | NA | Deliberately co-locates next to hardware anchors |
-| Sunbelt Rentals | NA | Same strategy; never in grocery parks |
-| Loxam | EU | Tool rental; industrial estates |
-| Kiloutou | FR | Tool rental |
-| Würth | EU | MRO distributor; present in every EU industrial park |
-| Fastenal | NA | Industrial MRO; always industrial-zoned |
-| Grainger | NA | Industrial MRO |
-| Hilti | EU | Precision tools; Hilti Centers in industrial parks |
-| 84 Lumber | US | Lumber yards are definitionally industrial fringe |
-| Builders FirstSource | US | Lumber/building materials B2B |
-
-### Taxonomy categories needed
-
-`flooring`, `tool_rental`, `mro_industrial`, `lumber`, `plumbing`, `electrical` — these enrich VWH cluster member arrays but do not gate T1/T2/T3 tier logic.
+| 84 Lumber, Builders FirstSource, Kent Building Supplies | `lumber` | 0.9% co-occurrence with hardware anchors — below structural signal threshold |
+| BOC UK | `welding` | 0.3% co-occurrence — 12 POIs only; insufficient signal |
 
 ## Related Research
 
