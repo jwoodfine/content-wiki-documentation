@@ -70,9 +70,9 @@ The principles and mechanisms by which customers own their deployment outright.
 Architectural decisions for the location intelligence and real-property domain.
 
 - [[co-location-methodology]] — The spatial analysis methodology for co-location ranking: how retail and institutional concentrations are measured and scored.
-- [[location-intelligence-strategy]] — The strategic and architectural frame for the location intelligence substrate: flat-file open-GIS, offline-first, no per-seat vendor costs.
-- [[flat-file-bim-leapfrog]] — How Building Information Modelling is handled as flat-file ISO 19650 records rather than hosted database instances.
-- [[building-design-system-bim]] — Design system tooling adapted for BIM and real-property workflows.
+- Location intelligence strategy — The strategic and architectural frame for the location intelligence substrate: flat-file open-GIS, offline-first, no per-seat vendor costs.
+- Flat-file BIM leapfrog — How Building Information Modelling is handled as flat-file ISO 19650 records rather than hosted database instances.
+- Building design system for BIM — Design system tooling adapted for BIM and real-property workflows.
 - [[development-regions]] — Regional taxonomy for development and planning analysis across PointSav deployments.
 
 ## See also

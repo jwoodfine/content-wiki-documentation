@@ -172,7 +172,7 @@ This is the same relationship as between a CSS property specification (declaring
 ## See also
 
 - [[bim-token-what-it-is]]
-- [[building-design-system-bim]]
-- [[city-code-as-composable-geometry]]
-- [[flat-file-bim-leapfrog]]
+- Building design system for BIM
+- City code as composable geometry
+- Flat-file BIM leapfrog
 - [[open-bim-regulatory-acceptance]]

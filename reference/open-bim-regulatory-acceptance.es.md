@@ -58,8 +58,8 @@ La plataforma BIM de PointSav se publica bajo la Licencia Pública de la Unión 
 
 ## Véase también
 
-- [[flat-file-bim-leapfrog]]
-- [[city-code-as-composable-geometry]]
+- Salto BIM en archivos planos
+- Código urbano como geometría composable
 - [[bim-token-what-it-is]]
 - [[bcsc-disclosure-posture]]
 - [[leapfrog-2030-architecture]]

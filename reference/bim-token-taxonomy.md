@@ -59,6 +59,6 @@ Host frameworks (e.g., Yew, Leptos, or vanilla TypeScript) integrate by mounting
 
 - [[bim-design-philosophy]]
 - [[bim-aec-muscle-memory]]
-- [[flat-file-bim-leapfrog]]
+- Flat-file BIM leapfrog
 - [[bim-token-what-it-is]] — what a BIM token is and the pre-constraining thesis
 - [[bim-token-three-layers]] — the three-layer structure each token carries

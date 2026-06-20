@@ -56,8 +56,8 @@ The component vocabulary, typographic system, and dark-mode palette that compose
 
 The architectural and substrate articles that frame the design system within the wider platform.
 
-- [[building-design-system-bim]] — Design-system tooling adapted for BIM and real-property workflows, paired with ISO 19650 record-keeping discipline.
-- [[aec-interface-conventions]] — Interface conventions for AEC surfaces that the design system inherits and extends.
+- Building design system for BIM — Design-system tooling adapted for BIM and real-property workflows, paired with ISO 19650 record-keeping discipline.
+- AEC interface conventions — Interface conventions for AEC surfaces that the design system inherits and extends.
 - [[knowledge-wiki-leapfrog-architecture]] — How the wiki engine consumes the design system's tokens and components to render Wikipedia-shaped chrome over flat Markdown.
 
 ## See also

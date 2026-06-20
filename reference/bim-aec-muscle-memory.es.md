@@ -37,4 +37,4 @@ Estas capacidades, previstas para la versión v0.0.2, transforman el BIM de una 
 
 - [[bim-design-philosophy]]
 - [[bim-token-taxonomy]]
-- [[flat-file-bim-leapfrog]]
+- Salto BIM en archivos planos

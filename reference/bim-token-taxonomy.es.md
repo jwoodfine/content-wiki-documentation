@@ -14,7 +14,7 @@ category: reference
 
 
 
-La taxonomía de tokens BIM de la plataforma organiza el [[building-design-system-bim|Sistema de Diseño de Edificios]] en ocho categorías primitivas ancladas a la jerarquía de entidades de IFC 4.3 (ISO 16739-1:2024). Esta alineación garantiza que los tokens del sistema de diseño correspondan directamente a las convenciones de clasificación AEC universales. Cada token lleva la [[bim-token-three-layers|estructura de tres capas]]: Especificación, Normativa y Zona climática.
+La taxonomía de tokens BIM de la plataforma organiza el Sistema de Diseño de Edificios en ocho categorías primitivas ancladas a la jerarquía de entidades de IFC 4.3 (ISO 16739-1:2024). Esta alineación garantiza que los tokens del sistema de diseño correspondan directamente a las convenciones de clasificación AEC universales. Cada token lleva la [[bim-token-three-layers|estructura de tres capas]]: Especificación, Normativa y Zona climática.
 
 ## Categorías Primitivas
 
@@ -45,6 +45,6 @@ Este enfoque permite que cualquier tecnología (Yew, Leptos o TS) pueda implemen
 
 - [[bim-design-philosophy]]
 - [[bim-aec-muscle-memory]]
-- [[flat-file-bim-leapfrog]]
+- Salto BIM en archivos planos
 - [[bim-token-what-it-is]] — qué es un token BIM y la tesis de pre-condicionamiento
 - [[bim-token-three-layers]] — la estructura de tres capas de cada token

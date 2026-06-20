@@ -105,8 +105,8 @@ The PointSav BIM platform is published under the European Union Public Licence v
 
 ## See also
 
-- [[flat-file-bim-leapfrog]]
-- [[city-code-as-composable-geometry]]
+- Flat-file BIM leapfrog
+- City code as composable geometry
 - [[bim-token-what-it-is]]
 - [[bcsc-disclosure-posture]]
 - [[leapfrog-2030-architecture]]

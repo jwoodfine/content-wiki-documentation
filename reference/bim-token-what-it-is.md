@@ -81,7 +81,7 @@ The analogy is structural, not metaphorical. Both systems address the same probl
 ## See also
 
 - [[bim-token-three-layers]]
-- [[building-design-system-bim]]
-- [[city-code-as-composable-geometry]]
-- [[flat-file-bim-leapfrog]]
+- Building design system for BIM
+- City code as composable geometry
+- Flat-file BIM leapfrog
 - [[bim-token-taxonomy]]

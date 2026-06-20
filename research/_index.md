@@ -17,4 +17,4 @@ Research working papers and analytical frameworks produced by the MCorp research
 
 ## Articles in this category
 
-- [[geometric-site-selection-national-tenancy]] — Retail anchor co-location composition as a spatial leading indicator of commercial activity (v0.4.1, May 2026)
+- Geometric site selection and national tenancy — Retail anchor co-location composition as a spatial leading indicator of commercial activity (v0.4.1, May 2026)

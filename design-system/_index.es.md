@@ -57,8 +57,8 @@ El vocabulario de componentes, sistema tipográfico y paleta de modo oscuro que 
 
 Los artículos arquitectónicos y de sustrato que enmarcan el sistema de diseño dentro de la plataforma más amplia.
 
-- [[building-design-system-bim|Sistema de diseño para BIM]] — Herramientas del sistema de diseño adaptadas para flujos de trabajo de BIM y propiedad inmobiliaria, emparejadas con la disciplina de mantenimiento de registros ISO 19650.
-- [[aec-interface-conventions|Convenciones de interfaz AEC]] — Convenciones de interfaz para superficies AEC que el sistema de diseño hereda y extiende.
+- Sistema de diseño para BIM — Herramientas del sistema de diseño adaptadas para flujos de trabajo de BIM y propiedad inmobiliaria, emparejadas con la disciplina de mantenimiento de registros ISO 19650.
+- Convenciones de interfaz AEC — Convenciones de interfaz para superficies AEC que el sistema de diseño hereda y extiende.
 - [[knowledge-wiki-leapfrog-architecture|Arquitectura de salto del wiki de conocimiento]] — Cómo el motor wiki consume los tokens y componentes del sistema de diseño para renderizar cromo con forma de Wikipedia sobre Markdown plano.
 
 ## Véase también

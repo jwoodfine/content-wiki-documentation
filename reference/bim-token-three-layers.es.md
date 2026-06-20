@@ -69,7 +69,7 @@ Esta es la misma relación que existe entre una especificación de propiedad CSS
 ## Véase también
 
 - [[bim-token-what-it-is]]
-- [[building-design-system-bim]]
-- [[city-code-as-composable-geometry]]
-- [[flat-file-bim-leapfrog]]
+- Sistema de diseño de edificios para BIM
+- Código urbano como geometría composable
+- Salto BIM en archivos planos
 - [[open-bim-regulatory-acceptance]]

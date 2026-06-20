@@ -381,7 +381,7 @@ the production baseline (VWH ≥ 6,368 features; PKS ≥ 6,953 features).
 
 ## See also
 
-- [[vertical-warehouse]] — the VWH archetype model and chain taxonomy
-- [[parking-structures]] — the PKS archetype model and chain taxonomy
+- Urban Fringe — the VWH archetype model and chain taxonomy
+- Commuter — the PKS archetype model and chain taxonomy
 - [[location-intelligence-archetypes]] — PRO/VWH/PKS overview and map integration
 - [[connect-osm-data-pipeline]] — generic single-chain ingest for new retail categories

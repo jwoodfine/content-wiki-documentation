@@ -18,4 +18,4 @@ Documentos de trabajo y marcos analíticos producidos por el programa de investi
 
 ## Artículos en esta categoría
 
-- [[geometric-site-selection-national-tenancy]] — Composición de co-localización de anclas de venta al por menor como indicador adelantado espacial de la actividad comercial (v0.4.1, mayo de 2026)
+- Selección geométrica de emplazamientos y tenencia nacional — Composición de co-localización de anclas de venta al por menor como indicador adelantado espacial de la actividad comercial (v0.4.1, mayo de 2026)

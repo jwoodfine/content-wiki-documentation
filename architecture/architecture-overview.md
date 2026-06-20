@@ -37,9 +37,9 @@ Commercial software built on the platform is distributed through a signed binary
 
 The GIS orchestration platform produces commercial co-location cluster data covering the PRO, VWH, and PKS archetypes.
 
-- [[data-overview|Data Overview]] — data layers and GIS tile pipeline
+- Data Overview — data layers and GIS tile pipeline
 - [[ppn-small-business-compute|Location Intelligence Co-location Archetypes]] — PRO/VWH/PKS overview
-- [[colocation-tier-nomenclature|Co-location Tier Nomenclature]] — T1/T2/T3 vocabulary
+- Co-location Tier Nomenclature — T1/T2/T3 vocabulary
 
 ## OS Console and desktop surfaces
 

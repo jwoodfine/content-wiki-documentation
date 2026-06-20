@@ -48,10 +48,10 @@ The structured-input gate that admits external files to a Totebox, and the brows
 Surfaces dedicated to a specific operational domain — Building Information Modelling and real-property workflows.
 
 - [[bim-and-real-property-surfaces]] — How PointSav treats Building Information Modelling as a first-class operational domain, with dedicated design-system tooling and ISO 19650 record-keeping discipline.
-- [[building-design-system-bim]] — Design-system tooling adapted for BIM and real-property workflows.
-- [[flat-file-bim-leapfrog]] — How Building Information Modelling is handled as flat-file ISO 19650 records rather than hosted database instances.
-- [[aec-interface-conventions]] — Interface conventions for AEC surfaces that BIM applications inherit and extend.
-- [[property-manager-bim-gap]] — The gap between BIM authoring tools and property-manager workflows, and how the application surfaces close it.
+- Building design system for BIM — Design-system tooling adapted for BIM and real-property workflows.
+- Flat-file BIM leapfrog — How Building Information Modelling is handled as flat-file ISO 19650 records rather than hosted database instances.
+- AEC interface conventions — Interface conventions for AEC surfaces that BIM applications inherit and extend.
+- Property manager BIM gap — The gap between BIM authoring tools and property-manager workflows, and how the application surfaces close it.
 
 ## See also
 

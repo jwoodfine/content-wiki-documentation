@@ -40,4 +40,4 @@ La plataforma propone un modelo donde las normativas urbanísticas se publican c
 
 - [[bim-aec-muscle-memory]]
 - [[bim-token-taxonomy]]
-- [[flat-file-bim-leapfrog]]
+- Salto BIM en archivos planos

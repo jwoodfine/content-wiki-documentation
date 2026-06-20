@@ -49,10 +49,10 @@ La puerta de entrada estructurada que admite archivos externos a un Totebox, y e
 Superficies dedicadas a un dominio operativo específico — Modelado de Información de Edificios y flujos de trabajo de propiedad inmobiliaria.
 
 - [[bim-and-real-property-surfaces|Superficies BIM y propiedad inmobiliaria]] — Cómo PointSav trata el Modelado de Información de Edificios como un dominio operativo de primera clase, con herramientas de sistema de diseño dedicadas y disciplina de mantenimiento de registros ISO 19650.
-- [[building-design-system-bim|Sistema de diseño para BIM]] — Herramientas del sistema de diseño adaptadas para flujos de trabajo de BIM y propiedad inmobiliaria.
-- [[flat-file-bim-leapfrog|Salto BIM en archivos planos]] — Cómo se gestiona el Modelado de Información de Edificios como registros ISO 19650 en archivos planos en lugar de instancias alojadas en base de datos.
-- [[aec-interface-conventions|Convenciones de interfaz AEC]] — Convenciones de interfaz para superficies AEC que las aplicaciones BIM heredan y extienden.
-- [[property-manager-bim-gap|Brecha BIM del gestor inmobiliario]] — La brecha entre las herramientas de autoría BIM y los flujos de trabajo del gestor inmobiliario, y cómo las superficies de aplicación la cierran.
+- Sistema de diseño para BIM — Herramientas del sistema de diseño adaptadas para flujos de trabajo de BIM y propiedad inmobiliaria.
+- Salto BIM en archivos planos — Cómo se gestiona el Modelado de Información de Edificios como registros ISO 19650 en archivos planos en lugar de instancias alojadas en base de datos.
+- Convenciones de interfaz AEC — Convenciones de interfaz para superficies AEC que las aplicaciones BIM heredan y extienden.
+- Brecha BIM del gestor inmobiliario — La brecha entre las herramientas de autoría BIM y los flujos de trabajo del gestor inmobiliario, y cómo las superficies de aplicación la cierran.
 
 ## Véase también
 
