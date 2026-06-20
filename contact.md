@@ -4,7 +4,7 @@ title: "Contact"
 slug: contact
 category: governance
 type: governance
-content_type: topic
+content_type: page
 quality: complete
 short_description: "Contact information for PointSav Digital Systems and Woodfine Capital Projects Inc."
 status: active
