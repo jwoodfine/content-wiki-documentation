@@ -31,7 +31,7 @@ The wiki documents the PointSav platform as it is designed and built:
 
 PointSav Knowledge runs on `app-mediakit-knowledge`, a sovereign wiki engine written in Rust. Content is stored as flat Markdown files in a Git repository. The engine provides BM25 full-text search, bilingual routing (English and Spanish), claim-layer citation verification, and a Git-native revision history.
 
-The engine runs on customer hardware under Woodfine Management Corp. It has no dependency on third-party cloud infrastructure for content storage or retrieval.
+The engine runs on customer hardware under MCorp. It has no dependency on third-party cloud infrastructure for content storage or retrieval.
 
 ## Licence
 

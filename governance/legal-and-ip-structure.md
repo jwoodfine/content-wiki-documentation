@@ -29,7 +29,7 @@ PointSav exists inside a deliberate three-corporation topology:
 |---|---|---|
 | Woodfine Capital Projects Inc. | Parent | 100% owner of both subsidiaries; real-property operating company |
 | PointSav Digital Systems | Subsidiary (vendor) | IP holder; designs and builds the technology |
-| Woodfine Management Corp. | Subsidiary (customer) | Operates real-property assets; PointSav's first and reference customer |
+| MCorp | Subsidiary (customer) | Operates real-property assets; PointSav's first and reference customer |
 
 The intercompany flow is unidirectional: vendor builds → customer adopts → customer deploys. PointSav never receives the customer's operational records; the customer never edits vendor source.
 
@@ -42,7 +42,7 @@ The most distinctive legal mechanic is how intellectual property moves from a co
 | Bid | Contributor (`jwoodfine` or `pwoodfine`) | Push and open pull request | Submission of work product; not yet approved or paid |
 | Acquisition | Vendor (PointSav) | Squash-and-merge | The contributor's commit history is stripped; a single corporate commit is minted; ownership transfers to PointSav |
 | Distribution | Vendor (PointSav) | Tag a release | The audited code becomes a packaged Product Release |
-| Procurement | Customer (Woodfine Management Corp.) | Upstream sync | The customer pulls only signed release tags from the vendor; never touches the contributor |
+| Procurement | Customer (MCorp) | Upstream sync | The customer pulls only signed release tags from the vendor; never touches the contributor |
 | Execution | Production host | Deploy | The customer's licensed copy runs in production |
 | Reset | Contributor | Trunk-based rebase | The contributor's local environment is wiped to match the vendor's verified standard, ready for the next cycle |
 

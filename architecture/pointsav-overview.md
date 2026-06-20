@@ -25,7 +25,7 @@ PointSav Digital Systems is a technology vendor that builds and licenses soverei
 |---|---|---|
 | **Woodfine Capital Projects Inc.** | 100% parent | Real-estate firm; owns both subsidiaries outright |
 | **PointSav Digital Systems** | Vendor | IP holder; designs and builds the technology platform |
-| **Woodfine Management Corp.** | Customer | First and reference customer; operates real-property assets |
+| **MCorp** | Customer | First and reference customer; operates real-property assets |
 
 The relationship flow is strictly one-directional: the vendor builds, the customer adopts, deployments run. There are no reverse writes — the customer never edits vendor source, and the vendor never manages customer records.
 
@@ -33,11 +33,11 @@ The relationship flow is strictly one-directional: the vendor builds, the custom
 
 Three structural advantages emerge from the separation:
 
-**Clean IP custody.** PointSav holds the intellectual property. Woodfine Management Corp. licenses the product like any other customer. There is no commingling of corporate records and source code.
+**Clean IP custody.** PointSav holds the intellectual property. MCorp licenses the product like any other customer. There is no commingling of corporate records and source code.
 
-**Reference deployment.** Because Woodfine Management Corp. is a real operator — not a test environment — every product feature must survive contact with actual business operations before it can be sold elsewhere. The reference customer is the quality gate.
+**Reference deployment.** Because MCorp is a real operator — not a test environment — every product feature must survive contact with actual business operations before it can be sold elsewhere. The reference customer is the quality gate.
 
-**Investor clarity.** The vendor (PointSav) is the asset that scales. The customer (Woodfine Management Corp.) is the asset that operates. Each can be measured, audited, and valued on its own terms.
+**Investor clarity.** The vendor (PointSav) is the asset that scales. The customer (MCorp) is the asset that operates. Each can be measured, audited, and valued on its own terms.
 
 ## Licensing model
 
@@ -47,7 +47,7 @@ PointSav intends to partner with the Sovereign Data Foundation to oversee the in
 
 ## Contributor model
 
-Engineering work flows through staging-tier contributor identities — established contributors who are Woodfine Management Corp. employees pushing to their own GitHub forks. The vendor administration function accepts contributions via squash-merge — the moment the intellectual property formally transfers from contributor to vendor. The customer organisation pulls release tags from the vendor. A double-blind air-gap applies: contributors never push directly to customer repositories; the customer organisation never has visibility into contributor forks. See [[five-stage-supply-chain|the five-stage supply chain]].
+Engineering work flows through staging-tier contributor identities — established contributors who are MCorp employees pushing to their own GitHub forks. The vendor administration function accepts contributions via squash-merge — the moment the intellectual property formally transfers from contributor to vendor. The customer organisation pulls release tags from the vendor. A double-blind air-gap applies: contributors never push directly to customer repositories; the customer organisation never has visibility into contributor forks. See [[five-stage-supply-chain|the five-stage supply chain]].
 
 ## See also
 

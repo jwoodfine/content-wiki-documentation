@@ -91,7 +91,7 @@ PointSav is not a vendor of the substrate and not a gatekeeper to it. It is the 
 - **Steward of the base model** — it publishes the continued-pretraining variant and contributes upstream where relevant.
 - **Steward of the marketplace** — it operates the federated adapter pool.
 - **Operator of record** — it sells appliances, integration, and support.
-- **Reference customer** — the PointSav development environment and Woodfine Management Corp. are proof the pattern works.
+- **Reference customer** — the PointSav development environment and MCorp are proof the pattern works.
 
 The substrate is an open commons; value migrates to operations, integration, and the adapter marketplace.
 

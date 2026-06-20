@@ -88,7 +88,7 @@ PointSav no es un proveedor del sustrato ni un portero hacia él. Es el administ
 - **Administrador del modelo base** — publica la variante de preentrenamiento continuo y contribuye aguas arriba cuando es relevante.
 - **Administrador del mercado** — opera el grupo federado de adaptadores.
 - **Operador de registro** — vende dispositivos, integración y soporte.
-- **Cliente de referencia** — el entorno de desarrollo de PointSav y Woodfine Management Corp. son prueba de que el patrón funciona.
+- **Cliente de referencia** — el entorno de desarrollo de PointSav y MCorp son prueba de que el patrón funciona.
 
 El sustrato es un bien común abierto; el valor migra hacia las operaciones, la integración y el mercado de adaptadores.
 

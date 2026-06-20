@@ -79,7 +79,7 @@ Until all three conditions are satisfied, the quarantine remains active and the 
 The initiative operates across the vendor-customer structure:
 
 - **Vendor (PointSav Digital Systems).** Maintains the ledger, engineers the native replacements, and owns the moonshot directories.
-- **Customer (Woodfine Management Corp.).** Audits the pipeline to verify progress toward operational independence from legacy external providers.
+- **Customer (MCorp).** Audits the pipeline to verify progress toward operational independence from legacy external providers.
 
 ## See also
 

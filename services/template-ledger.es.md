@@ -19,7 +19,7 @@ El Registro de Plantillas es el mecanismo de distribución dentro de [[service-e
 
 ## Intención de diseño
 
-Los operadores de Woodfine Management Corp. no redactan correos corporativos de rutina desde cero. Cada tipo de plantilla —avisos de cumplimiento, divulgaciones financieras, correspondencia con clientes— existe como un registro versionado en el Registro de Plantillas. Los operadores recuperan la versión actual mediante una clave y la envían directamente. La distinción entre redactar y desplegar es estructural, no meramente procedimental.
+Los operadores de MCorp no redactan correos corporativos de rutina desde cero. Cada tipo de plantilla —avisos de cumplimiento, divulgaciones financieras, correspondencia con clientes— existe como un registro versionado en el Registro de Plantillas. Los operadores recuperan la versión actual mediante una clave y la envían directamente. La distinción entre redactar y desplegar es estructural, no meramente procedimental.
 
 ## Flujo de trabajo del operador
 

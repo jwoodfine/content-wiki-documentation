@@ -32,7 +32,7 @@ El wiki documenta la plataforma PointSav tal como está diseñada y construida:
 
 PointSav Knowledge funciona sobre `app-mediakit-knowledge`, un motor wiki soberano escrito en Rust. El contenido se almacena como archivos Markdown planos en un repositorio Git. El motor ofrece búsqueda de texto completo BM25, enrutamiento bilingüe (inglés y español), verificación de citas por capa de afirmación e historial de revisiones nativo de Git.
 
-El motor se ejecuta en hardware del cliente bajo Woodfine Management Corp. No tiene dependencia de infraestructura de nube de terceros para el almacenamiento o la recuperación de contenido.
+El motor se ejecuta en hardware del cliente bajo MCorp. No tiene dependencia de infraestructura de nube de terceros para el almacenamiento o la recuperación de contenido.
 
 ## Licencia
 

@@ -31,7 +31,7 @@ All traffic initiates from the spokes. The hub never dials in to nodes. The publ
 
 ## NODE-IMAC-12 and master key custody
 
-The on-premises spoke — the iMac 12.1 running Linux Mint — holds the master cryptographic keys for the entire network. This is a deliberate physical custody decision: the machine that holds the WireGuard master keys sits under physical custody of Woodfine Management Corp.
+The on-premises spoke — the iMac 12.1 running Linux Mint — holds the master cryptographic keys for the entire network. This is a deliberate physical custody decision: the machine that holds the WireGuard master keys sits under physical custody of MCorp
 
 If the cloud relay is destroyed, the on-premises node retains the master keys and can immediately provision a new relay by dialing into a new cloud IP. The WireGuard key material that defines the network topology is in physical possession of the customer, not the vendor.
 

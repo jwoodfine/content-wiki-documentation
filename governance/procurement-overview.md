@@ -75,7 +75,7 @@ Customers in other regulated environments should evaluate the platform's structu
 
 ## Vendor structure
 
-PointSav Digital Systems is the software vendor and is wholly owned by Woodfine Capital Projects Inc. The customer-facing deployment catalog is maintained by Woodfine Management Corp., also wholly owned by Woodfine Capital Projects Inc.
+PointSav Digital Systems is the software vendor and is wholly owned by Woodfine Capital Projects Inc. The customer-facing deployment catalog is maintained by MCorp, also wholly owned by Woodfine Capital Projects Inc.
 
 The vendor runs `documentation.pointsav.com` because PointSav is the canonical-tier customer of every package it ships. Customer-hosted deployment is the canonical pattern; vendor hosting is a convenience option.
 

@@ -24,7 +24,7 @@ Los entregables de [[pointsav-overview|PointSav]] se mueven a través de tres ca
 | Capa | Nombre | Vive en | Visibilidad | Propietario |
 |---|---|---|---|---|
 | 1 | SOFTWARE | `pointsav/pointsav-monorepo` | Público | [[pointsav-overview|PointSav Digital Systems]] (proveedor) |
-| 2 | ESCAPARATE | `woodfine/woodfine-fleet-deployment` | Público | Woodfine Management Corp. (catálogo de referencia del cliente) |
+| 2 | ESCAPARATE | `woodfine/woodfine-fleet-deployment` | Público | MCorp (catálogo de referencia del cliente) |
 | 3 | INSTANCIAS | Almacenamiento local en hardware del operador | Privado — no rastreado en ningún repositorio compartido | Cada operador individual |
 
 La direccionalidad es estricta: el proveedor construye → el cliente adopta → los operadores implementan. No hay camino inverso. Los ajustes del lado del cliente no fluyen de vuelta al monorepo del proveedor. Las configuraciones específicas del operador no fluyen de vuelta al catálogo del cliente.

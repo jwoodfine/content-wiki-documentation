@@ -80,7 +80,7 @@ Research identified three structural reasons why centralised cloud approaches ca
 
 The City Code as Composable Geometry model is implemented progressively.
 
-**Stage 1 (current, planned for v0.0.3):** [[asset-anchored-bim-vault|BIM Object vault]] with Specification layer complete. Regulation layer skeleton present with first overlay set: British Columbia residential (RS-1 zoning) — selected because Woodfine Management Corp. operates in BC and is the reference customer. Climate Zone layer populated with BC temperate-coastal zone (ASHRAE 5C equivalent) performance parameters.
+**Stage 1 (current, planned for v0.0.3):** [[asset-anchored-bim-vault|BIM Object vault]] with Specification layer complete. Regulation layer skeleton present with first overlay set: British Columbia residential (RS-1 zoning) — selected because MCorp operates in BC and is the reference customer. Climate Zone layer populated with BC temperate-coastal zone (ASHRAE 5C equivalent) performance parameters.
 
 **Stage 2 (intended, v0.1.x):** IDS 1.0 constraint file generation. For each registered Regulation overlay, a conformant IDS 1.0 file is generated from the BIM Object data and published alongside the DTCG JSON. This enables existing IDS-aware validators to consume [[pointsav-overview|PointSav]]-authored constraint specifications.
 

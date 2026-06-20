@@ -25,7 +25,7 @@ Some articles describe planned or intended features, capabilities, and milestone
 
 ## Trademarks
 
-Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc. used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.
+Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orchestration™, Totebox Archive™, and Capability Geometry™ are trademarks of Woodfine Capital Projects Inc. used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.
 
 ## Third-party references
 

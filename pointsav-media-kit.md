@@ -46,6 +46,6 @@ repository's LICENSE file.
 
 ## Trademarks
 
-Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™,
-Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital
+Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™,
+Totebox Orchestration™, Totebox Archive™, and Capability Geometry™ are trademarks of Woodfine Capital
 Projects Inc. All other trademarks are the property of their respective owners.

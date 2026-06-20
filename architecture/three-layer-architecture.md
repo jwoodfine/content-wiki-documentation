@@ -24,7 +24,7 @@ cites: []
 | Layer | Name | Lives at | Visibility | Owner |
 |---|---|---|---|---|
 | 1 | SOFTWARE | `pointsav/pointsav-monorepo` | Public | [[pointsav-overview|PointSav Digital Systems]] (vendor) |
-| 2 | SHOWCASE | `woodfine/woodfine-fleet-deployment` | Public | Woodfine Management Corp. (customer reference catalogue) |
+| 2 | SHOWCASE | `woodfine/woodfine-fleet-deployment` | Public | MCorp (customer reference catalogue) |
 | 3 | INSTANCES | Local storage on operator hardware | Private — not tracked in any shared repository | Each individual operator |
 
 The directionality is strict: vendor builds → customer adopts → operators deploy. There is no reverse path. Customer-side adjustments do not flow back into the vendor monorepo. Operator-specific configurations do not flow back into the customer catalogue.

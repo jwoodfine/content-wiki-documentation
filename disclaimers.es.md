@@ -26,7 +26,7 @@ Algunos artículos describen características, capacidades e hitos planificados 
 
 ## Marcas registradas
 
-Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas registradas de Woodfine Capital Projects Inc. utilizadas en Canadá, Estados Unidos, Latinoamérica y Europa. Las demás marcas registradas son propiedad de sus respectivos titulares.
+Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orchestration™, Totebox Archive™ y Capability Geometry™ son marcas registradas de Woodfine Capital Projects Inc. utilizadas en Canadá, Estados Unidos, Latinoamérica y Europa. Las demás marcas registradas son propiedad de sus respectivos titulares.
 
 ## Referencias de terceros
 

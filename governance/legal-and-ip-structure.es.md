@@ -29,7 +29,7 @@ PointSav existe dentro de una topología deliberada de tres corporaciones:
 |---|---|---|
 | Woodfine Capital Projects Inc. | Matriz | Propietaria al 100% de ambas subsidiarias; empresa operadora de activos inmobiliarios |
 | PointSav Digital Systems | Subsidiaria (proveedor) | Titular de la propiedad intelectual; diseña y construye la tecnología |
-| Woodfine Management Corp. | Subsidiaria (cliente) | Opera activos inmobiliarios; primer cliente de referencia de PointSav |
+| MCorp | Subsidiaria (cliente) | Opera activos inmobiliarios; primer cliente de referencia de PointSav |
 
 El flujo interempresarial es unidireccional: el proveedor construye → el cliente adopta → el cliente despliega. PointSav nunca recibe los registros operativos del cliente; el cliente nunca edita el código fuente del proveedor.
 
@@ -42,7 +42,7 @@ El mecanismo legal más distintivo es cómo la propiedad intelectual se transfie
 | Oferta | Contribuyente (`jwoodfine` o `pwoodfine`) | Enviar y abrir una solicitud de extracción | Presentación del trabajo; aún no aprobado ni pagado |
 | Adquisición | Proveedor (PointSav) | Squash-and-merge | Se elimina el historial de commits del contribuyente; se acuña un único commit corporativo; la propiedad se transfiere a PointSav |
 | Distribución | Proveedor (PointSav) | Etiquetar una versión | El código auditado se convierte en una Versión de Producto empaquetada |
-| Adquisición por el cliente | Cliente (Woodfine Management Corp.) | Sincronización upstream | El cliente extrae solo las etiquetas de versión firmadas del proveedor; nunca toca al contribuyente |
+| Adquisición por el cliente | Cliente (MCorp) | Sincronización upstream | El cliente extrae solo las etiquetas de versión firmadas del proveedor; nunca toca al contribuyente |
 | Ejecución | Host de producción | Despliegue | La copia con licencia del cliente se ejecuta en producción |
 | Reinicio | Contribuyente | Rebase basado en trunk | El entorno local del contribuyente se limpia para coincidir con el estándar verificado del proveedor, listo para el siguiente ciclo |
 

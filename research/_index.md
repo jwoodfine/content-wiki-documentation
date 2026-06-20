@@ -6,14 +6,14 @@ category: research
 type: landing
 content_type: topic
 quality: complete
-short_description: "Working papers and research frameworks produced by the Woodfine Management Corp. research programme."
+short_description: "Working papers and research frameworks produced by the MCorp research programme."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-29
 editor: pointsav-engineering
 ---
 
-Research working papers and analytical frameworks produced by the Woodfine Management Corp. research programme. Papers in this category are pre-peer-review working drafts unless otherwise noted. Each is accompanied by the mandatory preprint notice required by this wiki's public-posting policy.
+Research working papers and analytical frameworks produced by the MCorp research programme. Papers in this category are pre-peer-review working drafts unless otherwise noted. Each is accompanied by the mandatory preprint notice required by this wiki's public-posting policy.
 
 ## Articles in this category
 

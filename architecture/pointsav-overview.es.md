@@ -25,7 +25,7 @@ PointSav Digital Systems es un proveedor de tecnología que construye y licencia
 |---|---|---|
 | **Woodfine Capital Projects Inc.** | Matriz al 100% | Firma inmobiliaria; posee ambas subsidiarias íntegramente |
 | **PointSav Digital Systems** | Proveedor | Titular de PI; diseña y construye la plataforma tecnológica |
-| **Woodfine Management Corp.** | Cliente | Primer cliente y cliente de referencia; opera activos inmobiliarios |
+| **MCorp** | Cliente | Primer cliente y cliente de referencia; opera activos inmobiliarios |
 
 El flujo de relaciones es estrictamente unidireccional: el proveedor construye, el cliente adopta, los despliegues funcionan. No hay escrituras inversas — el cliente nunca edita el código fuente del proveedor, y el proveedor nunca gestiona los registros del cliente.
 
@@ -33,11 +33,11 @@ El flujo de relaciones es estrictamente unidireccional: el proveedor construye, 
 
 Tres ventajas estructurales emergen de la separación:
 
-**Custodia limpia de PI.** PointSav posee la propiedad intelectual. Woodfine Management Corp. licencia el producto como cualquier otro cliente. No hay mezcla de registros corporativos y código fuente.
+**Custodia limpia de PI.** PointSav posee la propiedad intelectual. MCorp licencia el producto como cualquier otro cliente. No hay mezcla de registros corporativos y código fuente.
 
-**Despliegue de referencia.** Dado que Woodfine Management Corp. es un operador real — no un entorno de prueba — cada función del producto debe sobrevivir el contacto con operaciones empresariales reales antes de poder venderse en otro lugar. El cliente de referencia es la puerta de calidad.
+**Despliegue de referencia.** Dado que MCorp es un operador real — no un entorno de prueba — cada función del producto debe sobrevivir el contacto con operaciones empresariales reales antes de poder venderse en otro lugar. El cliente de referencia es la puerta de calidad.
 
-**Claridad para inversores.** El proveedor (PointSav) es el activo que escala. El cliente (Woodfine Management Corp.) es el activo que opera. Cada uno puede medirse, auditarse y valorarse en sus propios términos.
+**Claridad para inversores.** El proveedor (PointSav) es el activo que escala. El cliente (MCorp) es el activo que opera. Cada uno puede medirse, auditarse y valorarse en sus propios términos.
 
 ## Modelo de licenciamiento
 
@@ -47,7 +47,7 @@ PointSav tiene previsto asociarse con la Sovereign Data Foundation para supervis
 
 ## Modelo de contribuidores
 
-El trabajo de ingeniería fluye a través de identidades de contribuidores de nivel de staging — contribuidores establecidos que son empleados de Woodfine Management Corp. y envían cambios a sus propias bifurcaciones de GitHub. La función de administración del proveedor acepta contribuciones mediante fusión-aplastada — el momento en que la propiedad intelectual se transfiere formalmente del contribuidor al proveedor. La organización cliente extrae etiquetas de versión del proveedor. Se aplica una compartimentación de doble cara: los contribuidores nunca envían directamente a los repositorios del cliente; la organización cliente nunca tiene visibilidad de las bifurcaciones de los contribuidores. Véase [[five-stage-supply-chain|la cadena de suministro de cinco etapas]].
+El trabajo de ingeniería fluye a través de identidades de contribuidores de nivel de staging — contribuidores establecidos que son empleados de MCorp y envían cambios a sus propias bifurcaciones de GitHub. La función de administración del proveedor acepta contribuciones mediante fusión-aplastada — el momento en que la propiedad intelectual se transfiere formalmente del contribuidor al proveedor. La organización cliente extrae etiquetas de versión del proveedor. Se aplica una compartimentación de doble cara: los contribuidores nunca envían directamente a los repositorios del cliente; la organización cliente nunca tiene visibilidad de las bifurcaciones de los contribuidores. Véase [[five-stage-supply-chain|la cadena de suministro de cinco etapas]].
 
 ## Véase también
 

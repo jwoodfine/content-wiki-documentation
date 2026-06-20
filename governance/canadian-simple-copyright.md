@@ -57,7 +57,7 @@ Three entities of differing status are operative:
 | Entity | Status | Role |
 |---|---|---|
 | Woodfine Capital Projects Inc. | Incorporated (BC); parent holding | Copyright + trademark holder for all software, documentation, content, and brand IP |
-| Woodfine Management Corp. | Incorporated (BC); operating sub | Operations / shield-blocker; does not generate IP-derived revenue using WCP IP |
+| MCorp | Incorporated (BC); operating sub | Operations / shield-blocker; does not generate IP-derived revenue using WCP IP |
 | PointSav Digital Systems | Yet to be incorporated | Operated as a trade name of WCP Inc. pre-incorporation; eventual BC operating subsidiary |
 
 ## Why this works without inter-company IP agreements
@@ -67,7 +67,7 @@ this way:
 
 - WCP holds IP and, through its employees, creates and uses it
  directly.
-- Woodfine Management Corp. is genuinely non-operating with
+- MCorp is genuinely non-operating with
  respect to WCP IP.
 - "PointSav Digital Systems" is a trade name of WCP, not a
  separate legal person.
@@ -89,8 +89,8 @@ The posture depends on the following disciplines being kept:
  counsel-drafted contractor IP-assignment templates are in
  place, the posture admits no contractor contributions to
  in-scope work.
-- **Woodfine Management Corp. stays non-operating** with
- respect to WCP IP. If Woodfine Management Corp. begins using
+- **MCorp stays non-operating** with
+ respect to WCP IP. If MCorp begins using
  WCP IP to generate revenue, an inter-company licence with
  arm's-length pricing documentation becomes expected.
 - **"PointSav Digital Systems" is a trade name of WCP** under

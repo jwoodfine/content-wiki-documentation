@@ -124,7 +124,7 @@ Every loop iteration is a marginal improvement. The compounding runs in customer
 
 ## The first reference deployment
 
-The [[pointsav-overview|PointSav]] development environment is the first reference deployment of the substrate. PointSav Digital Systems operates this instance as their own production environment; Woodfine Management Corp. is the first customer. The platform composes the same shape for both.
+The [[pointsav-overview|PointSav]] development environment is the first reference deployment of the substrate. PointSav Digital Systems operates this instance as their own production environment; MCorp is the first customer. The platform composes the same shape for both.
 
 This is the structural realization of the [[customer-first-ordering|customer-first-ordering]] principle: [[pointsav-overview|PointSav]] builds what Woodfine will install, on the same substrate Woodfine will use, in the same order Woodfine will install it.
 

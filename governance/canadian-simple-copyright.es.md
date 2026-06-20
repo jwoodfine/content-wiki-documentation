@@ -48,7 +48,7 @@ del § 13(4).
 | Entidad | Estado | Rol |
 |---|---|---|
 | Woodfine Capital Projects Inc. | Incorporada (BC); matriz holding | Titular de derechos de autor y marca para todo el software, documentación, contenido y marca |
-| Woodfine Management Corp. | Incorporada (BC); operativa | Operaciones; no genera ingresos derivados de PI usando PI de WCP |
+| MCorp | Incorporada (BC); operativa | Operaciones; no genera ingresos derivados de PI usando PI de WCP |
 | PointSav Digital Systems | Aún no incorporada | Nombre comercial de WCP Inc. pre-incorporación |
 
 ## Por qué funciona sin acuerdos inter-empresa de PI
@@ -68,7 +68,7 @@ La postura depende de:
  contratistas independientes retienen los derechos de autor
  por defecto bajo la ley canadiense y requerirían cesión
  escrita bajo § 13(4).
-- **Woodfine Management Corp. permanece no-operativa** respecto
+- **MCorp permanece no-operativa** respecto
  a la PI de WCP.
 - **"PointSav Digital Systems" es nombre comercial de WCP**
  bajo la Partnership Act de BC hasta su incorporación.

@@ -19,7 +19,7 @@ The Template Ledger is the distribution mechanism within [[service-email|`servic
 
 ## Design intent
 
-Operators at Woodfine Management Corp. do not draft routine corporate emails from scratch. Each template type — compliance notices, financial disclosures, client correspondence — exists as a versioned record in the Template Ledger. Operators retrieve the current version by key and send it directly. The distinction between drafting and deploying is structural, not procedural.
+Operators at MCorp do not draft routine corporate emails from scratch. Each template type — compliance notices, financial disclosures, client correspondence — exists as a versioned record in the Template Ledger. Operators retrieve the current version by key and send it directly. The distinction between drafting and deploying is structural, not procedural.
 
 ## Operator workflow
 

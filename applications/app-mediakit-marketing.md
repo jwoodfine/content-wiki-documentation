@@ -103,7 +103,7 @@ Internet → nginx :443 (TLS) → 127.0.0.1:PORT → app-mediakit-marketing
 
 Two deployments are active as of 2026-05-07 on `foundry-workspace`:
 
-- **home.woodfinegroup.com** — Woodfine Management Corp. customer-tier marketing site. Demonstrates the customer pattern: operator-branded, operated under the customer's identity.
+- **home.woodfinegroup.com** — MCorp customer-tier marketing site. Demonstrates the customer pattern: operator-branded, operated under the customer's identity.
 - **home.pointsav.com** — PointSav vendor-tier open reference deployment. Demonstrates the vendor pattern: a public reference that prospective customers can inspect before deploying their own instance.
 
 Both sites run the same `app-mediakit-marketing` binary. The difference is content and theme tokens.

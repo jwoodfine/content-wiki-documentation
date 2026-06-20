@@ -38,7 +38,7 @@ Tres secciones del cuerpo:
 
 ## Registro
 
-Profesional y llano. El asunto debe ser específico: "Solicitud de NDA — Woodfine Management Corp." en lugar de "Conversación de asociación". Promedio de veinte palabras por oración; máximo treinta y cinco. Voz activa. Se aplica la [[editorial-language-registers|lista de vocabulario prohibido]]. Cuando el destinatario puede ser un inversor actual o potencial, las declaraciones prospectivas sobre la plataforma, los productos o la hoja de ruta llevan lenguaje de "planificado / previsto / puede / objetivo".
+Profesional y llano. El asunto debe ser específico: "Solicitud de NDA — MCorp" en lugar de "Conversación de asociación". Promedio de veinte palabras por oración; máximo treinta y cinco. Voz activa. Se aplica la [[editorial-language-registers|lista de vocabulario prohibido]]. Cuando el destinatario puede ser un inversor actual o potencial, las declaraciones prospectivas sobre la plataforma, los productos o la hoja de ruta llevan lenguaje de "planificado / previsto / puede / objetivo".
 
 ## Véase también
 

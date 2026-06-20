@@ -26,7 +26,7 @@ Todo el tráfico se inicia desde los radios. El concentrador nunca marca a los n
 
 ## Custodia de claves maestras
 
-El nodo en las instalaciones — el iMac ejecutando Linux Mint — conserva las claves criptográficas maestras de toda la red. Esta es una decisión deliberada de custodia física: la máquina que mantiene las claves maestras de WireGuard está bajo la custodia física de Woodfine Management Corp. El material de claves WireGuard que define la topología de red está en posesión física del cliente, no del proveedor.
+El nodo en las instalaciones — el iMac ejecutando Linux Mint — conserva las claves criptográficas maestras de toda la red. Esta es una decisión deliberada de custodia física: la máquina que mantiene las claves maestras de WireGuard está bajo la custodia física de MCorp. El material de claves WireGuard que define la topología de red está en posesión física del cliente, no del proveedor.
 
 ## Aislamiento deliberado de la capa de aplicación
 

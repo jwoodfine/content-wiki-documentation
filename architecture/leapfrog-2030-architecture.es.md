@@ -124,7 +124,7 @@ Cada iteración del ciclo es una mejora marginal. La composición corre en tiemp
 
 ## El primer despliegue de referencia
 
-El entorno de desarrollo de PointSav es el primer despliegue de referencia del sustrato. PointSav Digital Systems opera esta instancia como su propio entorno de producción; Woodfine Management Corp. es el primer cliente. La plataforma compone la misma forma para ambos.
+El entorno de desarrollo de PointSav es el primer despliegue de referencia del sustrato. PointSav Digital Systems opera esta instancia como su propio entorno de producción; MCorp es el primer cliente. La plataforma compone la misma forma para ambos.
 
 Esta es la realización estructural del principio de ordenación-cliente-primero: PointSav construye lo que Woodfine instalará, sobre el mismo sustrato que Woodfine usará, en el mismo orden en que Woodfine lo instalará.
 
