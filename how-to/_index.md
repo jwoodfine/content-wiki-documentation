@@ -13,7 +13,7 @@ paired_with: _index.es.md
 
 Step-by-step developer guides for building with and on the PointSav platform. Each guide addresses a specific task — follow it start to finish, then refer back to the related architecture articles when you need the underlying theory.
 
-For the concepts behind each guide, start in [[architecture]] or [[patterns]]. For platform architecture overview, see [[totebox-orchestration-development]].
+For the concepts behind each guide, start in [[architecture]] or [[patterns-index|Patterns]]. For platform architecture overview, see [[totebox-orchestration-development]].
 
 ## Getting started
 

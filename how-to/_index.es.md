@@ -14,7 +14,7 @@ paired_with: _index.md
 
 Guías paso a paso para construir con y sobre la plataforma PointSav. Cada guía aborda una tarea específica; síguelas de principio a fin y consulta los artículos de arquitectura relacionados cuando necesites la teoría subyacente.
 
-Para los conceptos detrás de cada guía, comienza en [[architecture|Arquitectura]] o [[patterns|Patrones]]. Para una visión general de la arquitectura de la plataforma, consulta [[totebox-orchestration-development]].
+Para los conceptos detrás de cada guía, comienza en [[architecture|Arquitectura]] o [[patterns-index|Patrones]]. Para una visión general de la arquitectura de la plataforma, consulta [[totebox-orchestration-development]].
 
 ## Primeros pasos
 

@@ -31,8 +31,8 @@ Cluster data is compiled into PMTiles and served at `gis.woodfinegroup.com`. The
 
 ## Methodology articles
 
-- [[od-catchment-methodology|O-D Catchment Methodology]] — crow-flies origin-destination model and catchment ring rationale
-- [[catchment-ranking-methodology|Catchment Ranking Methodology]] — combined primary and secondary rank dimensions
+- O-D Catchment Methodology — crow-flies origin-destination model and catchment ring rationale
+- Catchment Ranking Methodology — combined primary and secondary rank dimensions
 - [[colocation-tier-nomenclature|Co-location Tier Nomenclature]] — T1/T2/T3 vocabulary
 
 *This article is a stub. Full content is planned for a future session.*
