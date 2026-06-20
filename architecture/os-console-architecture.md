@@ -67,10 +67,7 @@ The default build registers six cartridges:
 | F11 | `app-console-system` | pairing server |
 | F12 | `app-console-input` | ingest service |
 
-The F12 cartridge (`app-console-input`) is mandatory in every deployment per
-[[sys-adr-10]]. It is the ingest gate through which all operator-sourced text must
-pass before entering the platform's data layer. Omitting it is a build constraint
-violation.
+The F12 cartridge (`app-console-input`) is mandatory in every deployment. It is the ingest gate through which all operator-sourced text must pass before entering the platform's data layer. Omitting it is a build constraint violation.
 
 ## Terminal capability negotiation
 
@@ -127,5 +124,5 @@ running on the same node or within the same PPN mesh.
 
 ## See also
 
-- [[sys-adr-10]] — the architectural decision establishing F12 as the mandatory ingest gate
 - [[ppn-small-business-compute]] — the network substrate os-console connects into
+- [[architecture-decisions]] — architectural decisions governing the platform data layer

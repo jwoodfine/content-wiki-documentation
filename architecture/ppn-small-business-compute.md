@@ -148,6 +148,5 @@ sovereignty layer is the target the project is building toward.
 
 ## See also
 
-- [[sys-adr-07]] — the architectural decision governing data handling inside PPN workloads
 - [[os-totebox]] — the operating system that runs workloads inside the PPN
 - [[pointsav-private-network|PointSav Private Network]] — infrastructure overview; small-business compute is a PPN workload class
