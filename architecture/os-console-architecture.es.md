@@ -69,10 +69,7 @@ La compilación predeterminada registra seis cartuchos:
 | F11 | `app-console-system` | servidor de emparejamiento |
 | F12 | `app-console-input` | servicio de ingesta |
 
-El cartucho F12 (`app-console-input`) es obligatorio en todo despliegue según
-[[sys-adr-10]]. Es la puerta de ingesta a través de la cual debe pasar todo texto
-originado por el operador antes de entrar a la capa de datos de la plataforma. Omitirlo
-es una violación de las restricciones de compilación.
+El cartucho F12 (`app-console-input`) es obligatorio en todo despliegue. Es la puerta de ingesta a través de la cual debe pasar todo texto originado por el operador antes de entrar a la capa de datos de la plataforma. Omitirlo es una violación de las restricciones de compilación.
 
 ## Negociación de capacidades del terminal
 
@@ -132,5 +129,5 @@ malla de PPN.
 
 ## Véase también
 
-- [[sys-adr-10]] — la decisión arquitectónica que establece F12 como puerta de ingesta obligatoria
 - [[ppn-small-business-compute]] — el sustrato de red al que se conecta os-console
+- [[architecture-decisions]] — decisiones arquitectónicas que rigen la capa de datos de la plataforma

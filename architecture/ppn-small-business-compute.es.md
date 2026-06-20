@@ -161,5 +161,4 @@ proyecto avanza.
 
 ## Véase también
 
-- [[sys-adr-07]] — la decisión arquitectónica que rige el manejo de datos dentro de las cargas de trabajo de la PPN
 - [[os-totebox]] — el sistema operativo que ejecuta cargas de trabajo dentro de la PPN
