@@ -14,3 +14,14 @@ editor: pointsav-engineering
 ---
 
 A three-dimensional asset token is the Totebox Archive's unit of stored data, combining an immutable binary payload, a machine-readable metadata skeleton, and a live taxonomic graph connection that encodes provenance and context.
+
+## Structure
+
+Each token has three components: a binary payload that is content-addressable and write-once; a metadata skeleton carrying schema-validated fields describing the content's type, provenance, and ownership; and a graph connection linking the token to its position in the taxonomic hierarchy maintained by the knowledge graph service.
+
+The three dimensions — payload, metadata, and graph position — are written together as a single atomic record. No component exists in isolation within the archive.
+
+## See also
+
+- [[totebox-archive|Totebox Archive]] — the WORM ledger that holds three-dimensional asset tokens
+- [[worm-ledger-architecture|WORM Ledger Architecture]] — the append-only storage model underlying the archive
