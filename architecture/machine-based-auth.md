@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-22
+last_edited: 2026-06-23
 editor: pointsav-engineering
 paired_with: machine-based-auth.es.md
 short_description: "Machine-based authorization replaces username and password structures with the cryptographic pairing of physical hardware — the pair is the permission, and an entire class of remote credential theft is eliminated by structure."
@@ -31,6 +31,8 @@ Machine-based authorization removes the knowable secret. Access is a cryptograph
 Because authorization binds to hardware rather than to a memorized secret, there is no users table to breach, no login form to phish, and no password to reset. Revocation is physical: the pairing is severed at the machine, and the entire class of remote credential-theft attacks is eliminated by structure rather than by policy.
 
 For a regulated buyer the consequence is concrete. An attack class disappears, and every access event is attributable to specific hardware in the audit ledger. This article covers how pairings work, the four pairing types, the structural advantages over passwords, and the relationship to the [[diode-standard|Diode]] and audit layers.
+
+> **Planned direction — over-the-internet host-native access.** os-console is intended to run host-native on the operator's own machine and pair to a remote Totebox Archive over the public internet. The intended transport is mutual TLS to a verified Totebox endpoint, with machine-based authorization unchanged as the access boundary — the pairing remains the permission, a model aligned with device-identity standards including OAuth 2.0 Device Authorization Grant, Tailscale's control and data-plane separation, and SPIFFE workload identity. Planned hardening includes pairing revocation and short-lived device certificates. *Honesty note:* the current over-the-internet path uses an SSH port-forward tunnel that does not yet verify the remote server's identity, so the end-to-end property — the vendor cannot read operator data in transit — is **intended but not yet delivered** over that hop; it holds once verified mutual TLS lands. See `BRIEF-os-console-rebuild-2030.md` Layer 1.
 
 ## How a pairing works
 
