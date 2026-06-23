@@ -8,7 +8,7 @@ type: topic
 content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-06-23
 editor: pointsav-engineering
 paired_with: os-console-platform.es.md
 ---
@@ -17,11 +17,13 @@ paired_with: os-console-platform.es.md
 
 The design principle is end-to-end ownership: every component is compiled into a single binary, with no dynamic plugin loading, no subprocess launching, and no nesting. The console starts in milliseconds and responds at keyboard speed.
 
+> **Planned direction.** A rebuild is planned to evolve os-console into a host-native, dual-input desktop: multiple cartridges visible at once, full mouse support with guaranteed keyboard parity, a cinematic motion and graphics layer, and a live capability-visibility surface. The canonical architecture and engineering programme are in `BRIEF-os-console-rebuild-2030.md`. The descriptions below reflect the current (as-built) console; forward-looking capabilities are marked planned or intended.
+
 ## The binary
 
 `os-console` is the deployable artifact: one binary, one process, all cartridges compiled in. It runs as a native application on the host operating system. Platform targets include Linux Mint on the on-premises iMac workstation and macOS 13 or later on executive workstations.
 
-An optional SSH server mode, compiled with the `--features ssh-server` flag, enables remote access over port 2222 for use on a GCE VM, providing the same TUI experience over an SSH session.
+An optional SSH server mode, compiled with the `--features ssh-server` flag, enables remote access over port 2222 for use on a GCE VM. In this remote-PTY configuration the process emitting pixels and the terminal decoding them are on different machines, so the Kitty and Sixel graphics pipeline is disabled. The planned direction is host-native deployment — the binary runs on the operator's own machine in a local graphics-capable terminal, connecting to a remote Totebox Archive over the internet via [[machine-based-auth|machine-based authorization]], where the network carries data rather than the display. See `BRIEF-os-console-rebuild-2030.md` Layer 1 (planned).
 
 ## The base chassis: app-console-keys
 
@@ -61,7 +63,7 @@ The console presents twelve addressable slots via F-keys. F12 is fixed as The An
 The `app-console-keys` status bar is always visible at the bottom of the console and provides the operator with a live situational picture:
 
 ```
-jennifer@woodfine | MBA LINK ACTIVE | F4: Content | Tier A | 00:04:23
+operator@woodfine | MBA LINK ACTIVE | F4: Content | Tier A | 00:04:23
 ```
 
 The identity component shows the username and tenant set during the pairing ceremony. The authorization state shows `MBA LINK ACTIVE`, `MBA LINK INACTIVE <reason>`, or `MBA LINK PENDING`. The active cartridge slot name, the SLM tier in use (A for local, B for cloud burst, C for frontier API), and session duration complete the bar.

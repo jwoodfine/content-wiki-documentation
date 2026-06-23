@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-22
+last_edited: 2026-06-23
 editor: pointsav-engineering
 paired_with: machine-based-auth.md
 short_description: "La autorización basada en hardware reemplaza las estructuras de usuario y contraseña con el emparejamiento criptográfico del hardware físico — el par es el permiso, y toda una clase de robo remoto de credenciales queda eliminada por estructura."
@@ -31,6 +31,8 @@ La autorización basada en hardware elimina el secreto memorizable. El acceso es
 Como la autorización se vincula al hardware y no a un secreto memorizado, no hay tabla de usuarios que vulnerar, no hay formulario de inicio de sesión que suplantar y no hay contraseña que restablecer. La revocación es física: el emparejamiento se corta en la máquina, y toda la clase de ataques de robo remoto de credenciales queda eliminada por estructura, no por política.
 
 Para un comprador regulado la consecuencia es concreta. Una clase de ataque desaparece, y cada evento de acceso es atribuible a un hardware específico en el libro de auditoría. Este artículo cubre cómo funcionan los emparejamientos, los cuatro tipos, las ventajas estructurales sobre las contraseñas y la relación con las capas [[diode-standard|Diodo]] y de auditoría.
+
+> **Dirección planificada — acceso nativo anfitrión a través de internet.** Está previsto que os-console se ejecute de forma nativa en el equipo del operador y se empareje con un Archivo Totebox remoto a través de internet público. El transporte previsto es TLS mutuo hacia un endpoint Totebox verificado, con la autorización basada en máquinas sin cambios como límite de acceso. La dirección de refuerzo planificada incluye la revocación de emparejamientos y certificados de dispositivo de corta duración. *Nota de honestidad:* la ruta actual a través de internet utiliza un túnel de reenvío SSH que aún no verifica la identidad del servidor remoto, por lo que la propiedad de extremo a extremo — el proveedor no puede leer los datos del operador en tránsito — es **prevista pero aún no entregada** en ese salto; se confirma una vez que el TLS mutuo verificado esté disponible. Véase `BRIEF-os-console-rebuild-2030.md` Capa 1.
 
 ## Cómo funciona un emparejamiento
 
