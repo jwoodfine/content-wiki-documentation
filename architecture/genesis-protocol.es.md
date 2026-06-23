@@ -6,13 +6,13 @@ short_description: "El Genesis Protocol es la secuencia de arranque de flota eje
 category: architecture
 type: topic
 content_type: topic
-status: active
+status: stable
 bcsc_class: public-disclosure-safe
 language: es
 language_protocol: TRANSLATE-ES
 paired_with: genesis-protocol.md
-last_edited: 2026-05-30
-editor: editorial
+last_edited: 2026-06-23
+editor: pointsav-engineering
 ---
 
 El Genesis Protocol es la secuencia de arranque inicial de flota que utiliza cada nodo `os-infrastructure` en su primer arranque. Permite que un nodo se vuelva operativo en hardware aislado — sin configuración previa, sin conexión a ningún plano de control y sin conocimiento de la flota a la que eventualmente se unirá — y que permanezca en un estado seguro y reclamable hasta que un administrador esté listo para incorporarlo a la gestión. El protocolo invierte el supuesto convencional de que el plano de control debe existir antes de que se pueda añadir cómputo a él.

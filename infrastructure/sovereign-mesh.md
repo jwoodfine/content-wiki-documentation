@@ -6,12 +6,12 @@ short_description: "The sovereign mesh is the application-level WireGuard overla
 category: infrastructure
 type: topic
 content_type: topic
-status: active
+status: stable
 bcsc_class: public-disclosure-safe
 language: en
 paired_with: sovereign-mesh.es.md
-last_edited: 2026-05-30
-editor: editorial
+last_edited: 2026-06-23
+editor: pointsav-engineering
 ---
 
 The **sovereign mesh** is the application-level network overlay that connects every PointSav Private Network (PPN) fleet node. It runs over WireGuard cryptographic tunnels on a dedicated `ppn0` interface and carries signed binary commands without relying on a centralised message broker. Each node communicates directly with its authorised peers; the mesh layer enforces the same authority hierarchy as the [[diode-standard|Diode Standard]] as a structural property, not a configuration option.

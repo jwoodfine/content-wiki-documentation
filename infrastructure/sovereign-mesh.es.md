@@ -6,13 +6,13 @@ short_description: "La malla soberana es la superposición WireGuard a nivel de 
 category: infrastructure
 type: topic
 content_type: topic
-status: active
+status: stable
 bcsc_class: public-disclosure-safe
 language: es
 language_protocol: TRANSLATE-ES
 paired_with: sovereign-mesh.md
-last_edited: 2026-05-30
-editor: editorial
+last_edited: 2026-06-23
+editor: pointsav-engineering
 ---
 
 La **malla soberana** es la capa de red a nivel de aplicación que conecta todos los nodos de la flota de la Red Privada PointSav (PPN). Funciona sobre túneles criptográficos WireGuard a través de una interfaz `ppn0` dedicada y entrega comandos binarios firmados sin depender de un intermediario de mensajes centralizado. Cada nodo se comunica directamente con sus pares autorizados; la capa de malla aplica la misma jerarquía de autoridad que el [[diode-standard|Diode Standard]] como propiedad estructural, no como opción de configuración.

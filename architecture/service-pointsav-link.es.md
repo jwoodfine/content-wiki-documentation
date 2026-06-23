@@ -6,13 +6,13 @@ short_description: "service-pointsav-link es el adaptador hot-pluggable que cone
 category: architecture
 type: topic
 content_type: topic
-status: active
+status: stable
 bcsc_class: public-disclosure-safe
 language: es
 language_protocol: TRANSLATE-ES
 paired_with: service-pointsav-link.md
-last_edited: 2026-05-30
-editor: editorial
+last_edited: 2026-06-23
+editor: pointsav-engineering
 ---
 
 `service-pointsav-link` es el adaptador de conexión en caliente que conecta un nodo Sujeto `os-*` a una flota PointSav. Es el único código responsable de traducir los comandos de autoridad — emitidos por `os-network-admin` y entregados a través del [[ppn-command-protocol|PPN Command Protocol]] — en operaciones ejecutables por el Sujeto. El adaptador se distribuye como el paquete `pointsav-protocol`. Su propiedad más importante es su estado predeterminado: no está instalado. Un Sujeto sin `service-pointsav-link` no tiene ningún concepto de llamar a casa, recibir comandos o participar en la gestión de flota.

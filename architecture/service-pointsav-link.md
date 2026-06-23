@@ -6,12 +6,12 @@ short_description: "service-pointsav-link is the hot-pluggable adapter that conn
 category: architecture
 type: topic
 content_type: topic
-status: active
+status: stable
 bcsc_class: public-disclosure-safe
 language: en
 paired_with: service-pointsav-link.es.md
-last_edited: 2026-05-30
-editor: editorial
+last_edited: 2026-06-23
+editor: pointsav-engineering
 ---
 
 `service-pointsav-link` is the hot-pluggable adapter that connects an `os-*` Subject node to a PointSav fleet. It is the sole code responsible for translating authority commands — issued by `os-network-admin` and delivered via the [[ppn-command-protocol|PPN Command Protocol]] — into Subject-executable operations. The adapter ships as the `pointsav-protocol` package. Its most important property is its default state: it is not installed. A Subject with no `service-pointsav-link` has no concept of phoning home, receiving commands, or participating in fleet management.

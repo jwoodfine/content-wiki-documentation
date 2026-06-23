@@ -9,7 +9,7 @@ content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-06-23
 editor: pointsav-engineering
 paired_with: foundry-doctrine-architecture.es.md
 references:
@@ -59,7 +59,7 @@ Representative clusters from the full claim set:
 
 **Capability ledger substrate (claim #33).** Every kernel-mediated capability invocation emits a signed entry to a customer-rooted [[merkle-proofs-as-substrate-primitive|Merkle log]]. Revocation is a log entry. Ownership transfer is an apex-cosigning ceremony — no state migration, no service interruption. The deployment IS the [[capability-ledger-substrate|ledger]]; the running system is the materialization of the ledger state.
 
-**Two-bottoms sovereign substrate (claim #34).** The platform runs on two kernel bottoms: [[sel4-microkernel-substrate|seL4]] (native, formally verified, AArch64-first) and NetBSD (compatibility, BSD 2-clause, boot-anywhere). The same `os-*` binaries run on either bottom via a thin shim. The customer boots the same substrate on a leased laptop today and on a verified production appliance for regulated records tomorrow, without re-provisioning.
+**Two-bottoms sovereign substrate (claim #34).** The design **intends** that `os-*` binaries run on two kernel bottoms — [[sel4-microkernel-substrate|seL4]] (native, formally verified, AArch64-first) and NetBSD (compatibility, BSD 2-clause, boot-anywhere) — via a thin compatibility shim, so a customer could boot the same substrate on a leased laptop today and on a verified production appliance for regulated records tomorrow, without re-provisioning. The NetBSD compatibility bottom and the WireGuard mesh layer operate today; the seL4 native bottom and the shared-binary shim are planned (Phase 3). No service currently ships a single binary that runs unmodified on both bottoms.
 
 **Four-tier SLM ladder (claim #40).** Customers move through [[four-tier-slm-substrate|four product positions]] — Community (pure API gateway), Tier 1 (local 7B specialist), Tier 2 (vendor-hosted [[yoyo-compute-substrate|Yo-Yo]] 32B), Tier 3 (PointSav-LLM continued-pretrained specialist) — as their corpus accumulates and their compute appetite grows. The ladder is designed for breakout: every tier is customer-portable; no lock-in accrues at any rung.
 

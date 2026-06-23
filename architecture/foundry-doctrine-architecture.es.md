@@ -9,7 +9,7 @@ content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-06-23
 editor: pointsav-engineering
 paired_with: foundry-doctrine-architecture.md
 ---
@@ -49,7 +49,7 @@ Grupos representativos del conjunto completo de afirmaciones:
 
 **Sustrato de Libro de Capacidades (afirmación #33).** Cada invocación de capacidad mediada por el núcleo emite una entrada firmada a un [[merkle-proofs-as-substrate-primitive|registro de Merkle]] enraizado en el cliente. La transferencia de propiedad es una ceremonia de co-firma de ápice — sin migración de estado, sin interrupción del servicio. Véase [[capability-ledger-substrate|sustrato del libro de capacidades]].
 
-**Sustrato Soberano de Dos Fondos (afirmación #34).** La plataforma funciona en dos fondos de núcleo: [[sel4-microkernel-substrate|seL4]] (nativo, verificado formalmente) y NetBSD (compatibilidad, arranca en cualquier lugar). Los mismos binarios `os-*` se ejecutan en cualquiera de los dos fondos.
+**Sustrato Soberano de Dos Fondos (afirmación #34).** El diseño **prevé** que los binarios `os-*` se ejecuten en dos fondos de núcleo — [[sel4-microkernel-substrate|seL4]] (nativo, verificado formalmente) y NetBSD (compatibilidad, arranca en cualquier lugar) — mediante un shim de compatibilidad. El fondo de compatibilidad NetBSD y la capa de malla WireGuard operan hoy; el fondo nativo seL4 y el shim de binario compartido están planificados (Fase 3). Actualmente ningún servicio distribuye un único binario que se ejecute sin modificaciones en ambos fondos.
 
 ## Las Ocho Invenciones Transectoriales
 

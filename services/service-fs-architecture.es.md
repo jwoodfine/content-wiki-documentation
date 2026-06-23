@@ -3,14 +3,14 @@ schema: foundry-doc-v1
 type: topic
 content_type: topic
 slug: service-fs-architecture
-short_description: "Un libro mayor inmutable Write-Once-Read-Many por tenant que sirve como la columna vertebral resistente a manipulación para todos los registros de plataforma, implementado como pila desacoplada de cuatro capas con envolventes de tiempo de ejecución de núcleo de microkernels duales Linux y seL4."
+short_description: "Un libro mayor inmutable Write-Once-Read-Many por tenant que sirve como la columna vertebral resistente a manipulación para todos los registros de plataforma, diseñado como pila desacoplada de cuatro capas con un entorno de ejecución Linux hoy y un entorno seL4 planificado."
 title: "Arquitectura de Service-FS: el núcleo WORM"
 category: services
 audience: vendor-public
 bcsc_class: current-fact
 status: active
 language: es
-last_edited: 2026-05-08
+last_edited: 2026-06-23
 editor: pointsav-engineering
 paired_with: service-fs-architecture.md
 ---
@@ -30,9 +30,9 @@ El artículo sobre [[worm-ledger-storage-architecture|arquitectura de almacenami
 
 ## Entornos de Ejecución
 
-El sistema es dual por diseño:
-- **Actualidad:** Funciona como un servicio estándar en Linux (daemon), ideal para servidores actuales.
-- **Futuro previsto:** Está preparado para ejecutarse como un dominio de protección [[sel4-microkernel-substrate|seL4]] verificado en dispositivos físicos, proporcionando la máxima seguridad matemáticamente verificable.
+`service-fs` está **diseñado** para operar en dos entornos de ejecución desde una sola base de código:
+- **Envolvente A (actual):** Funciona como un servicio estándar en Linux (daemon). Este es el único entorno implementado; expone `POST /v1/append` y `GET /healthz`.
+- **Envolvente B (seL4 — diferido):** Un dominio de protección [[sel4-microkernel-substrate|seL4]] Microkit verificado es el objetivo futuro planificado. Existe solo como un punto de entrada de referencia (`main_sel4_stub.rs`) que no está compilado en la compilación actual.
 
 ## Durabilidad y Cumplimiento
 
@@ -40,11 +40,11 @@ La plataforma logra el cumplimiento estructural WORM al denegar estructuralmente
 
 ## Puntos clave
 
-- `service-fs` es un libro mayor WORM, no un sistema de archivos. Su superficie de API tiene tres operaciones: `append`, `read_since`, `checkpoint`.
+- `service-fs` es un libro mayor WORM, no un sistema de archivos. La superficie de API implementada tiene dos operaciones: `append` y salud. Las operaciones `read_since` y `checkpoint` están planificadas.
 - El libro mayor es por inquilino — cada Totebox tiene su propio libro mayor aislado; no son posibles lecturas cruzadas entre inquilinos en la capa de almacenamiento.
-- La arquitectura de cuatro capas desacopla el protocolo de comunicación, el contrato de API y el motor de almacenamiento, de modo que el intercambio al Envolvente B de seL4 no requiere reescribir el servicio.
-- La durabilidad usa estándares abiertos: C2SP tlog-tiles (legibilidad de 100 años) y puntos de control C2SP signed-note (demostrabilidad compacta).
-- El anclaje mensual a Sigstore Rekor por parte de [[fs-anchor-emitter]] crea una cadena de marca temporal externa y públicamente verificable para todo el libro mayor.
+- La arquitectura de cuatro capas está diseñada para desacoplar el protocolo de comunicación, el contrato de API y el motor de almacenamiento, de modo que el intercambio al Envolvente B de seL4 no requiera reescribir el servicio.
+- El formato de durabilidad objetivo usa estándares abiertos: C2SP tlog-tiles (legibilidad de 100 años) y puntos de control C2SP signed-note. El backend de bloques está planificado; la compilación actual usa un registro JSON de solo adición con resúmenes SHA-256 por carga.
+- El anclaje recurrente a Sigstore Rekor por parte de [[fs-anchor-emitter]] está **previsto** para crear una cadena de marca temporal externa y públicamente verificable. La operación de anclaje está planificada y aún no está en funcionamiento.
 
 ## Véase también
 

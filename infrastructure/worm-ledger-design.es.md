@@ -6,10 +6,10 @@ category: infrastructure
 type: topic
 content_type: topic
 quality: complete
-short_description: "El sustrato de persistencia de escritura única y lectura múltiple (WORM) de los servicios Ring 1 de PointSav: un formato por bloques, encadenado por hash y firmado criptográficamente que satisface la conservación de registros estadounidense, europea y SOC 2 por estructura, no por política."
+short_description: "El sustrato de persistencia WORM de los servicios Ring 1 de PointSav: un registro de solo adición por inquilino con resúmenes SHA-256 por carga hoy, diseñado hacia un formato por bloques, encadenado por hash y firmado criptográficamente que satisface la conservación de registros por estructura."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-22
+last_edited: 2026-06-23
 editor: pointsav-engineering
 forward_looking: true
 cites:
@@ -36,21 +36,21 @@ paired_with: worm-ledger-design.md
 
 Un registro regulado es tan confiable como la mano más débil que puede alcanzarlo. Una bandera de administrador, una actualización de software, una restauración de respaldo — cualquiera de ellas puede alterar silenciosamente un registro histórico. Una política que promete que no lo harán no es lo mismo que una estructura que no se lo permite.
 
-Los [[three-ring-architecture|servicios del anillo 1]] de PointSav conservan cada registro de límite — sistema de archivos, datos de personas, correo electrónico, entrada estructurada — en un libro de registros de escritura única y lectura múltiple (WORM), a través del [[service-fs-architecture|sustrato service-fs]]. El formato en disco sigue de forma literal la especificación de registro de transparencia C2SP tlog-tiles; cada registro está encadenado por hash, de modo que cualquier modificación de un registro escrito rompe la cadena.
+Los [[three-ring-architecture|servicios del anillo 1]] de PointSav conservan cada registro de límite — sistema de archivos, datos de personas, correo electrónico, entrada estructurada — en un libro de registros de escritura única y lectura múltiple (WORM), a través del [[service-fs-architecture|sustrato service-fs]]. El formato en disco es un registro de solo adición por inquilino; cada registro lleva un resumen SHA-256 de su carga. El libro de registros está **diseñado para adoptar** el formato de registro de transparencia C2SP tlog-tiles y el encadenamiento de hash por registro; la implementación actual de `service-fs` conserva los registros como un registro JSON delimitado por saltos de línea (`log.jsonl`) con un resumen por carga, y el formato de bloques/encadenamiento de hash está planificado.
 
-El libro de registros se construye en cuatro capas — almacenamiento por bloques, una API WORM, un protocolo de red y el anclaje mensual de puntos de control firmados en un registro público de transparencia. La inmutabilidad es una propiedad del sustrato de almacenamiento, no de la política operativa.
+El libro de registros está **diseñado como cuatro capas** — almacenamiento por bloques, una API WORM, un protocolo de red y anclaje recurrente de puntos de control firmados en un registro público de transparencia. La inmutabilidad es una propiedad del sustrato de almacenamiento, no de la política operativa.
 
 Para un comprador regulado la consecuencia es concreta. Una sola arquitectura satisface tres regímenes de conservación a la vez: las normas estadounidenses para agentes bursátiles bajo la Norma SEC 17a-4(f), la conservación cualificada de la UE bajo eIDAS y los Criterios de Servicios de Confianza SOC 2. Y un auditor externo puede verificar cualquier registro sin la cooperación del operador de la plataforma.
 
 ## La pila de cuatro capas
 
-**Capa 1 — almacenamiento por bloques.** El formato en disco es la especificación C2SP tlog-tiles [^1] — el mismo formato de bloques que usan internamente Trillian-Tessera y externamente Sigstore Rekor v2 [^2]. La alineación es deliberada: cualquier herramienta del ecosistema de registros de transparencia puede verificar los bloques de la plataforma, sin conversión de formato.
+**Capa 1 — almacenamiento por bloques.** La arquitectura de almacenamiento **especifica** la especificación C2SP tlog-tiles [^1] — el mismo formato de bloques que usan internamente Trillian-Tessera y externamente Sigstore Rekor v2 [^2] — como primitivo de almacenamiento objetivo. La implementación actual de `service-fs` conserva un registro de solo adición JSON por inquilino pendiente del backend de bloques.
 
-**Capa 2 — API del libro de registros WORM.** Un trait de Rust expone cinco operaciones: abrir un libro para un inquilino, añadir una carga y recibir un cursor, leer entradas desde un cursor, producir un punto de control firmado [^3] y verificar pruebas de inclusión y consistencia. El trait tiene una implementación en memoria para pruebas y una implementación POSIX para producción.
+**Capa 2 — API del libro de registros WORM.** El diseño especifica un trait de cinco operaciones: abrir un libro para un inquilino, añadir una carga y recibir un cursor, leer entradas desde un cursor, producir un punto de control firmado [^3] y verificar pruebas de inclusión y consistencia. El `service-fs` actual implementa solo la adición (`POST /v1/append`) y un endpoint de salud; las operaciones de punto de control, lectura desde cursor, y pruebas, así como el backend de producción `PosixTileLedger`, están planificados y aún no implementados.
 
 **Capa 3 — protocolo de red.** Una capa de servicio HTTP expone la API del libro de registros en red, con el protocolo MCP — el estándar de 2026 para servicios de herramientas de IA — superpuesto.
 
-**Capa 4 — anclaje externo.** Los puntos de control de bloques se publican mensualmente en el registro de transparencia Sigstore Rekor v2, un registro externo y verificable públicamente del estado del libro en un momento dado. Un auditor externo puede confirmar la integridad de un registro sin involucrar al operador de la plataforma.
+**Capa 4 — anclaje externo.** Los puntos de control firmados están **previstos para publicarse** de forma recurrente (objetivo: mensual) en un registro de transparencia público como Sigstore Rekor v2 [^2], proporcionando un registro externo y verificable del estado del libro en un momento dado. No hay anclaje hoy; la propia operación de punto de control aún no está implementada. Cuando el anclaje esté en funcionamiento, un auditor externo podrá confirmar la integridad de un registro sin involucrar al operador.
 
 ## Inmutabilidad estructural
 
@@ -76,7 +76,7 @@ Esta propiedad — soberanía de claves del cliente con redundancia opcional del
 
 ## Estado de implementación
 
-El servicio Ring 1 `service-fs` implementa el sustrato del libro de registros WORM en producción, con separación por `moduleId` y escritura de bloques bajo la disciplina de inmutabilidad estructural anterior. El anclaje mensual en Rekor de los puntos de control de producción está planificado como una operación recurrente formal; el formato del punto de control ya es compatible.
+El servicio Ring 1 `service-fs` implementa las operaciones de adición y salud del sustrato del libro de registros WORM en producción: `POST /v1/append` y `GET /healthz`. Cada registro añadido lleva un resumen SHA-256 por carga. El backend de almacenamiento en formato de bloques (`PosixTileLedger`), el endpoint `/v1/checkpoint`, la operación de cursor `read_since`, y los endpoints de pruebas de inclusión y consistencia están planificados y aún no implementados. El anclaje mensual en Rekor de los puntos de control de producción está planificado como una operación recurrente formal; el formato del punto de control ya está diseñado para ser compatible.
 
 ## Véase también
 

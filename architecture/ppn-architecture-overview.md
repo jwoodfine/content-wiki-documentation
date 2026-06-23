@@ -10,7 +10,7 @@ status: active
 bcsc_class: public-disclosure-safe
 language: en
 paired_with: ppn-architecture-overview.es.md
-last_edited: 2026-05-30
+last_edited: 2026-06-23
 editor: editorial
 ---
 
@@ -36,7 +36,7 @@ The PPN layer is the physical transport and ceremony substrate.
 
 The **[[sovereign-mesh]]** is a WireGuard cryptographic overlay on a dedicated `ppn0` interface. Every node in the fleet holds a long-term keypair; every packet is encrypted before leaving the node. Commands travel as 16-byte binary packets broadcast simultaneously to all mesh peers; only the addressed node acts.
 
-**`service-ppn-pairing`** is the ceremony backend that manages node-join requests. When a new physical node wants to join the mesh, it generates a Crockford base32 short code (~40 bits of entropy). The operator enters this code; a CPace PAKE exchange establishes a shared session key; a Short Authenticated String (SAS) comparison closes the man-in-the-middle gap. The approved node is written to the `nodes.jsonl` append-only registry.
+**`service-ppn-pairing`** is the ceremony backend that manages node-join requests. When a new physical node wants to join the mesh, it generates a Crockford base32 short code; the operator enters this code and approves the join request. The protocol is **designed** to upgrade this exchange to a CPace PAKE (RFC 9382) with Short Authenticated String (SAS) comparison to close the man-in-the-middle gap; the PAKE/SAS layer is specified but not yet implemented — the current `service-ppn-pairing` server performs short-code lookup plus operator approval. The approved node is written to the `nodes.jsonl` append-only registry.
 
 The **[[genesis-protocol]]** governs first boot: a node generates its keypair from hardware entropy, enters a sealed holding pattern, and awaits an administrative claim — without any pre-provisioning or control-plane dependency.
 
@@ -44,7 +44,7 @@ The **[[genesis-protocol]]** governs first boot: a node generates its keypair fr
 
 The hypervisor layer is the compute substrate.
 
-**`os-infrastructure`** is the Type I hypervisor that hosts the virtual machines running Totebox Archives and orchestration gateways. It manages a **per-node resource pool**: memory via `virtio_balloon` (inflation reclaims guest RAM into the node pool; deflation returns it) and CPU via cgroups v2 `cpu.weight` per QEMU process.
+**`os-infrastructure`** is the hypervisor layer that hosts the virtual machines running Totebox Archives and orchestration gateways (QEMU/KVM-hosted today; **intended** to become a bare-metal Type-I hypervisor under NetBSD/NVMM in Phase 2 and seL4/Microkit in Phase 3). It manages a **per-node resource pool**: memory via `virtio_balloon` (inflation reclaims guest RAM into the node pool; deflation returns it) and CPU via cgroups v2 `cpu.weight` per QEMU process.
 
 The pool is bounded to the physical node. Cross-node workload placement is the Totebox Orchestration layer's responsibility; once a VM is placed on a node, the hypervisor manages its local resource allocation.
 
