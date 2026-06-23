@@ -11,8 +11,8 @@ bcsc_class: public-disclosure-safe
 language: es
 language_protocol: TRANSLATE-ES
 paired_with: ppn-architecture-overview.md
-last_edited: 2026-05-30
-editor: editorial
+last_edited: 2026-06-23
+editor: pointsav-engineering
 ---
 
 La **Red Privada PointSav (PPN)** es el plano de infraestructura física del stack de PointSav. Es la capa responsable de: incorporar nodos físicos a una malla autenticada criptográficamente, gestionar los recursos de cómputo que esos nodos proporcionan, y alojar las máquinas virtuales que ejecutan Totebox Archives y pasarelas de orquestación. La PPN no es una capa de acceso a datos. No almacena datos. No toma decisiones de autenticación sobre quién puede leer un archivo. Gestiona la infraestructura física para que la capa de datos pueda ejecutarse sobre ella.
@@ -37,7 +37,7 @@ La capa PPN es el sustrato de transporte físico y de ceremonia.
 
 La **[[sovereign-mesh|malla soberana]]** es una superposición criptográfica WireGuard en una interfaz `ppn0` dedicada. Cada nodo de la flota posee un par de claves a largo plazo; cada paquete se encripta antes de salir del nodo. Los comandos viajan como paquetes binarios de 16 bytes transmitidos simultáneamente a todos los pares de la malla; solo el nodo al que se dirige actúa.
 
-**`service-ppn-pairing`** es el backend de ceremonia que gestiona las solicitudes de unión de nodos. Cuando un nuevo nodo físico quiere unirse a la malla, genera un código corto en base32 de Crockford (~40 bits de entropía). El operador ingresa este código; un intercambio CPace PAKE establece una clave de sesión compartida; una comparación de Cadena Corta Autenticada (SAS) cierra la brecha de intermediario. El nodo aprobado se escribe en el registro de solo adición `nodes.jsonl`.
+**`service-ppn-pairing`** es el backend de ceremonia que gestiona las solicitudes de unión de nodos. Cuando un nuevo nodo físico quiere unirse a la malla, genera un código corto en base32 de Crockford; el operador ingresa este código y aprueba la solicitud de unión. El protocolo está **diseñado** para actualizar este intercambio a un CPace PAKE (RFC 9382) con comparación de Cadena Corta Autenticada (SAS) para cerrar la brecha de intermediario; la capa PAKE/SAS está especificada pero aún no implementada — el servidor `service-ppn-pairing` actual realiza búsqueda de código corto más aprobación del operador. El nodo aprobado se escribe en el registro de solo adición `nodes.jsonl`.
 
 El **[[genesis-protocol|Protocolo Génesis]]** gobierna el primer arranque: un nodo genera su par de claves a partir de entropía de hardware, entra en un patrón de espera sellado, y aguarda una reclamación administrativa — sin ninguna preconfiguración ni dependencia del plano de control.
 
@@ -45,7 +45,7 @@ El **[[genesis-protocol|Protocolo Génesis]]** gobierna el primer arranque: un n
 
 La capa de hipervisor es el sustrato de cómputo.
 
-**`os-infrastructure`** es el hipervisor Tipo I que aloja las máquinas virtuales que ejecutan Totebox Archives y pasarelas de orquestación. Gestiona un **pool de recursos por nodo**: memoria mediante `virtio_balloon` (la inflación recupera la RAM del invitado en el pool del nodo; la deflación la devuelve) y CPU mediante `cpu.weight` de cgroups v2 por proceso QEMU.
+**`os-infrastructure`** es la capa de hipervisor que aloja las máquinas virtuales que ejecutan Totebox Archives y pasarelas de orquestación (QEMU/KVM hoy; **previsto** para convertirse en un hipervisor de metal desnudo de Tipo I bajo NetBSD/NVMM en la Fase 2 y seL4/Microkit en la Fase 3). Gestiona un **pool de recursos por nodo**: memoria mediante `virtio_balloon` (la inflación recupera la RAM del invitado en el pool del nodo; la deflación la devuelve) y CPU mediante `cpu.weight` de cgroups v2 por proceso QEMU.
 
 El pool está acotado al nodo físico. La colocación de cargas de trabajo entre nodos es responsabilidad de la capa de Orquestación de Totebox; una vez que una VM se coloca en un nodo, el hipervisor gestiona su asignación de recursos local.
 

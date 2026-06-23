@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 type: topic
 content_type: topic
 slug: worm-ledger-storage-architecture
-short_description: "The storage architecture adopts C2SP tlog-tiles as its fundamental primitive, supporting dual-target deployment from Linux daemons to seL4 microkernels while ensuring structural immutability and long-term readability through plain-text transparency and atomic durability."
+short_description: "The storage architecture specifies C2SP tlog-tiles as the target storage primitive; the current service-fs build persists a per-tenant JSON append log pending the tile backend, with structural immutability and long-term readability as the intended design."
 title: "WORM ledger storage architecture"
 audience: vendor-public
 bcsc_class: current-fact
@@ -12,19 +12,19 @@ paired_with: worm-ledger-storage-architecture.es.md
 category: infrastructure
 status: active
 quality: complete
-last_edited: 2026-05-25
+last_edited: 2026-06-23
 editor: pointsav-engineering
 ---
 
-The WORM ledger storage architecture describes how the [[worm-ledger-design|platform’s immutable ledger]] persists data to disk — and why the specific format and write discipline matter for long-term regulatory compliance. The storage layer adopts the C2SP tlog-tiles specification as its fundamental primitive per the [[worm-ledger-architecture|four-layer ledger architecture]], producing a tile-based, append-only store that remains verifiable and human-readable with standard Unix utilities for at least a century.
+The WORM ledger storage architecture describes how the [[worm-ledger-design|platform’s immutable ledger]] persists data to disk — and why the specific format and write discipline matter for long-term regulatory compliance. The storage layer **specifies** the C2SP tlog-tiles specification as its target primitive per the [[worm-ledger-architecture|four-layer ledger architecture]]. The current `service-fs` implementation persists records as a newline-delimited JSON append log (`log.jsonl`) with per-payload SHA-256 digests, pending the tile backend.
 
 ## 1. The tile-based storage engine
 
-The platform adopts the **C2SP tlog-tiles** specification as its fundamental storage primitive. This format, used by Sigstore Rekor and Google’s Certificate Transparency, breaks a Merkle tree into static, append-only files (tiles).
+The storage architecture **specifies** the **C2SP tlog-tiles** format as its target storage primitive. This format, used by Sigstore Rekor and Google’s Certificate Transparency, breaks a Merkle tree into static, append-only files (tiles). The tile backend is planned and not yet implemented; the current deployment uses a per-tenant JSON append log.
 
-* **Atomic Durability:** Finalized tiles are written using a write-then-rename discipline followed by a mandatory `fsync`. This ensures that partial writes never corrupt the ledger state.
-* **Plain-Text Transparency:** Following the DARP principle, tiles are stored as newline-delimited base64 text. This ensures that the storage remains inspectable using standard Unix utilities (`cat`, `base64`, `sha256sum`).
-* **MERKLE-Based Integrity:** Every entry is chained into a Merkle DAG, allowing for efficient inclusion proofs and consistency checks without re-reading the entire ledger.
+* **Atomic Durability (current):** Records are written to a temporary file, synchronised with `fsync`, and renamed atomically to the canonical path. This ensures that partial writes never corrupt the ledger state.
+* **Plain-Text Transparency (planned):** Under the target tile format, tiles are stored as newline-delimited base64 text, inspectable using standard Unix utilities (`cat`, `base64`, `sha256sum`).
+* **Merkle-Based Integrity (planned):** The design chains every entry into a Merkle structure to allow inclusion proofs and consistency checks. **This is the intended model — the current `service-fs` build records per-payload digests and does not yet construct a Merkle tree or serve proofs.**
 
 ## 2. Dual-target runtime envelopes
 

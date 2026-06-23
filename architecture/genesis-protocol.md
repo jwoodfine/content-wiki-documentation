@@ -6,12 +6,12 @@ short_description: "The Genesis Protocol is the fleet-bootstrapping sequence run
 category: architecture
 type: topic
 content_type: topic
-status: active
+status: stable
 bcsc_class: public-disclosure-safe
 language: en
 paired_with: genesis-protocol.es.md
-last_edited: 2026-05-30
-editor: editorial
+last_edited: 2026-06-23
+editor: pointsav-engineering
 ---
 
 The Genesis Protocol is the fleet-bootstrapping sequence used by every `os-infrastructure` node at first boot. It allows a node to become operational on isolated hardware — with no prior configuration, no connection to any control plane, and no knowledge of the eventual fleet it will join — and to remain in a secure, claimable state until an administrator is ready to bring it under management. The protocol inverts the conventional assumption that a control plane must exist before compute can be added to it.

@@ -12,7 +12,7 @@ paired_with: worm-ledger-architecture.es.md
 category: infrastructure
 status: active
 quality: complete
-last_edited: 2026-05-25
+last_edited: 2026-06-23
 editor: pointsav-engineering
 ---
 
@@ -41,9 +41,9 @@ Today, services communicate via axum-based HTTP with mandatory `X-Module-ID` hea
 The stable core contract defining methods for `append`, `read_since`, and `checkpoint`. This target-independent layer ensures consistency regardless of the underlying storage engine.
 
 ### Layer 1: Storage Primitives
-* **Linux/BSD (Current):** POSIX files using atomic write-then-rename discipline.
+* **Linux/BSD (Current):** POSIX files using atomic write-then-rename discipline. The current implementation persists a per-tenant newline-delimited JSON log (`log.jsonl`) with a per-payload SHA-256 digest.
 * **seL4 (Intended):** Capability-addressed objects mediated by `moonshot-database`.
-* **Format:** Standardized **C2SP tlog-tiles** (matching RFC 9162 v2 / Rekor v2) ensure 100-year readability.
+* **Format:** **C2SP tlog-tiles** (matching RFC 9162 v2 / Rekor v2) is the **target format** for 100-year readability; the tile backend is planned and not yet implemented.
 
 ## Regulatory compliance and durability
 
@@ -55,13 +55,16 @@ The platform’s implementation is unique in its dual-target Rust strategy, allo
 
 ## What WORM guarantees — and what it does not
 
-Understanding the ledger's integrity properties requires clarity on what the append-only invariant covers and where it stops.
+The following describes the integrity model the ledger is designed to provide. Tile-format storage, hash-chaining, and third-party anchoring are planned; today the service records a per-payload SHA-256 digest per entry. The guarantees below distinguish current behaviour from the intended model.
 
-**The WORM guarantee covers:**
+**The WORM guarantee covers (current):**
 - **Immutability after write.** A record written to the ledger cannot be modified or deleted by any actor — including the platform itself. This is structural, not policy.
-- **Tamper evidence.** Any post-write alteration is detectable by computing the hash chain. An auditor with the C2SP tile files and a SHA-256 implementation can verify integrity without a live service.
-- **External verifiability.** Monthly Sigstore Rekor anchoring creates a public timestamp chain that persists independently of the platform instance.
-- **Readability across decades.** The plain-text C2SP tlog-tiles format requires only basic Unix utilities to decode. No proprietary tooling is needed.
+- **Tamper evidence at the record level.** Each appended record carries a per-payload SHA-256 digest. Modification of any stored record is detectable by recomputing the digest.
+
+**The WORM guarantee is designed to cover (planned):**
+- **Chain-level tamper evidence.** An auditor with the C2SP tile files and a SHA-256 implementation will be able to verify the full hash chain without a live service once the tile backend is implemented.
+- **External verifiability.** Recurring Sigstore Rekor anchoring is intended to create a public timestamp chain that persists independently of the platform instance. No anchoring runs today.
+- **Readability across decades.** The plain-text C2SP tlog-tiles format (planned) will require only basic Unix utilities to decode. No proprietary tooling is needed.
 
 **The WORM guarantee does not cover:**
 - **Correctness of what was written.** WORM cannot detect or prevent an incorrect record from entering the ledger. Correctness is the responsibility of the [[app-console-input|human-in-the-loop verification gate]] at F12, not the storage layer.
@@ -71,10 +74,10 @@ Understanding the ledger's integrity properties requires clarity on what the app
 
 ## Key takeaways
 
-- The WORM ledger is a structural guarantee: append-only is enforced at the API layer (`append`, `read_since`, `checkpoint` only), not by convention.
+- The WORM ledger is a structural guarantee: the append operation is enforced at the API layer, not by convention. The `read_since` and `checkpoint` operations are planned.
 - Immutability protects the audit trail after a record lands; the [[app-console-input|F12 Input Machine]] is the quality gate before it lands.
-- The C2SP tlog-tiles format and Sigstore anchoring make the ledger verifiable by a third party without access to the live service.
-- The four-layer architecture allows the storage engine (Envelope A: POSIX; Envelope B: seL4 capability) to change without altering the API contract or the wire protocol.
+- The C2SP tlog-tiles format and Sigstore anchoring are the **intended** model for third-party verifiability without access to the live service; the tile backend and anchoring operation are planned.
+- The four-layer architecture is designed to allow the storage engine (Envelope A: POSIX; Envelope B: seL4 capability) to change without altering the API contract or the wire protocol.
 
 ## See also
 

@@ -12,7 +12,7 @@ paired_with: worm-ledger-architecture.md
 category: infrastructure
 status: active
 quality: complete
-last_edited: 2026-05-25
+last_edited: 2026-06-23
 editor: pointsav-engineering
 ---
 
@@ -25,7 +25,7 @@ editor: pointsav-engineering
 1. **Capa 4 - Anclaje (Anchoring):** Se prevé el anclaje mensual de estados a la red pública Sigstore Rekor, proporcionando una prueba externa de integridad sin exponer datos privados.
 2. **Capa 3 - Protocolo de Red:** Comunicación actual mediante HTTP/JSON, con una transición planificada al protocolo MCP (Model Context Protocol).
 3. **Capa 2 - API del Ledger:** Un contrato en Rust que define las operaciones de escritura y lectura, independiente del sistema operativo subyacente.
-4. **Capa 1 - Almacenamiento de Teselas (Tiles):** Uso del estándar internacional **C2SP tlog-tiles** (RFC 9162 v2), asegurando que los datos sean legibles durante los próximos 100 años mediante herramientas estándar.
+4. **Capa 1 - Almacenamiento de Teselas (Tiles):** El estándar **C2SP tlog-tiles** (RFC 9162 v2) es el formato objetivo para una legibilidad de 100 años; el backend de bloques está planificado y aún no implementado. La implementación actual conserva un registro JSON de solo adición por inquilino con resúmenes SHA-256 por carga.
 
 ## Soberanía y Cumplimiento
 
@@ -35,11 +35,16 @@ Este diseño permite que la plataforma funcione hoy como un demonio en Linux y, 
 
 Comprender las propiedades de integridad del libro mayor requiere claridad sobre qué cubre el invariante de solo anexar y dónde se detiene.
 
-**La garantía WORM cubre:**
+Lo siguiente describe el modelo de integridad que el libro mayor está **diseñado para proporcionar**. El almacenamiento en formato de bloques, el encadenamiento de hash y el anclaje externo están planificados; hoy el servicio registra un resumen SHA-256 por carga por entrada.
+
+**La garantía WORM cubre (actual):**
 - **Inmutabilidad tras la escritura.** Un registro escrito en el libro mayor no puede ser modificado ni eliminado por ningún actor — incluida la propia plataforma. Esto es estructural, no una política.
-- **Evidencia de manipulación.** Cualquier alteración posterior a la escritura es detectable calculando la cadena de hash. Un auditor con los archivos de bloques C2SP y una implementación SHA-256 puede verificar la integridad sin un servicio activo.
-- **Verificabilidad externa.** El anclaje mensual a Sigstore Rekor crea una cadena de marca temporal pública que persiste independientemente de la instancia de la plataforma.
-- **Legibilidad durante décadas.** El formato de texto plano C2SP tlog-tiles requiere solo utilidades Unix básicas para decodificarse. No se necesitan herramientas propietarias.
+- **Evidencia de manipulación a nivel de registro.** Cada registro añadido lleva un resumen SHA-256 por carga. La modificación de cualquier registro almacenado es detectable recalculando el resumen.
+
+**La garantía WORM está diseñada para cubrir (planificado):**
+- **Evidencia de manipulación a nivel de cadena.** Un auditor con los archivos de bloques C2SP y una implementación SHA-256 podrá verificar la cadena de hash completa sin un servicio activo una vez implementado el backend de bloques.
+- **Verificabilidad externa.** El anclaje recurrente a Sigstore Rekor está **previsto** para crear una cadena de marca temporal pública que persiste independientemente de la instancia de la plataforma. No hay anclaje hoy.
+- **Legibilidad durante décadas.** El formato de texto plano C2SP tlog-tiles (planificado) requerirá solo utilidades Unix básicas para decodificarse. No se necesitan herramientas propietarias.
 
 **La garantía WORM no cubre:**
 - **Corrección de lo que fue escrito.** WORM no puede detectar ni prevenir que un registro incorrecto entre en el libro mayor. La corrección es responsabilidad de la [[app-console-input|compuerta de verificación con intervención humana]] en F12, no de la capa de almacenamiento.
@@ -49,10 +54,10 @@ Comprender las propiedades de integridad del libro mayor requiere claridad sobre
 
 ## Puntos clave
 
-- El libro mayor WORM es una garantía estructural: la política de solo anexar se aplica en la capa API (`append`, `read_since`, `checkpoint` únicamente), no por convención.
+- El libro mayor WORM es una garantía estructural: la operación de adición se aplica en la capa API, no por convención. Las operaciones `read_since` y `checkpoint` están planificadas.
 - La inmutabilidad protege el rastro de auditoría después de que un registro se asienta; la [[app-console-input|Máquina de Entrada F12]] es la compuerta de calidad antes de que se asiente.
-- El formato C2SP tlog-tiles y el anclaje a Sigstore hacen el libro mayor verificable por un tercero sin acceso al servicio activo.
-- La arquitectura de cuatro capas permite que el motor de almacenamiento (Envolvente A: POSIX; Envolvente B: capacidades seL4) cambie sin alterar el contrato API ni el protocolo de red.
+- El formato C2SP tlog-tiles y el anclaje a Sigstore son el **modelo previsto** para la verificabilidad por terceros; el backend de bloques y la operación de anclaje están planificados.
+- La arquitectura de cuatro capas está diseñada para permitir que el motor de almacenamiento (Envolvente A: POSIX; Envolvente B: capacidades seL4) cambie sin alterar el contrato API ni el protocolo de red.
 
 ## Véase también
 

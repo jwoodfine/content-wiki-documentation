@@ -6,13 +6,13 @@ short_description: "El PPN Command Protocol es el formato de cable binario de 16
 category: architecture
 type: topic
 content_type: topic
-status: active
+status: stable
 bcsc_class: public-disclosure-safe
 language: es
 language_protocol: TRANSLATE-ES
 paired_with: ppn-command-protocol.md
-last_edited: 2026-05-30
-editor: editorial
+last_edited: 2026-06-23
+editor: pointsav-engineering
 ---
 
 El PPN Command Protocol es el formato de cable utilizado por cada plano de control `os-network-admin` para emitir comandos hacia los nodos `os-infrastructure` a través de la PointSav Private Network. Transmite comandos de flota como paquetes binarios de 16 bytes difundidos por UDP en el puerto 8090 sobre la malla WireGuard — sin intermediario central, sin cola y sin ningún servicio de terceros en el camino. Cada nodo de la flota recibe cada paquete simultáneamente; solo el nodo destinatario actúa.

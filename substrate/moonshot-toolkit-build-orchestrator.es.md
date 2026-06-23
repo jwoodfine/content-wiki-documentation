@@ -4,7 +4,7 @@ content_type: topic
 title: "El Orquestador de Construcción moonshot-toolkit"
 slug: moonshot-toolkit-build-orchestrator
 category: substrate
-last_edited: 2026-05-29
+last_edited: 2026-06-23
 editor: pointsav-engineering
 status: stable
 bcsc_class: no-disclosure-implication

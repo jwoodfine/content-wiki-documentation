@@ -4,7 +4,7 @@ content_type: topic
 title: "El Objetivo de Sustrato seL4 AArch64 en QEMU"
 slug: sel4-aarch64-qemu-substrate-target
 category: substrate
-last_edited: 2026-05-29
+last_edited: 2026-06-23
 editor: pointsav-engineering
 status: stable
 bcsc_class: no-disclosure-implication

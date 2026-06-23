@@ -3,14 +3,14 @@ schema: foundry-doc-v1
 type: topic
 content_type: topic
 slug: service-fs-architecture
-short_description: "A per-tenant Write-Once-Read-Many immutable ledger serving as the tamper-evident backbone for all platform records, implemented as a four-layer decoupled stack with dual Linux and seL4 microkernel runtime envelopes."
+short_description: "A per-tenant Write-Once-Read-Many immutable ledger serving as the tamper-evident backbone for all platform records, designed as a four-layer decoupled stack with a Linux runtime envelope today and a planned seL4 microkernel envelope."
 title: "FS architecture and the WORM backbone"
 category: services
 audience: vendor-public
 bcsc_class: current-fact
 status: active
 language: en
-last_edited: 2026-05-08
+last_edited: 2026-06-23
 editor: pointsav-engineering
 paired_with: service-fs-architecture.es.md
 ---
@@ -30,10 +30,10 @@ To ensure modularity and survivability, `service-fs` is implemented as a decoupl
 
 ## Dual Boot Envelopes
 
-A core design property of `service-fs` is its ability to operate across two distinct runtime envelopes using the same codebase. The [[worm-ledger-storage-architecture|WORM storage architecture]] article describes how each envelope satisfies the append-only constraint.
+`service-fs` is **designed** to operate across two runtime envelopes from one codebase. The [[worm-ledger-storage-architecture|WORM storage architecture]] article describes the intended storage model for each envelope.
 
-1. **Envelope A (Current):** A Linux/BSD daemon under systemd. It uses standard POSIX file I/O and process isolation.
-2. **Envelope B (Intended):** A verified [[sel4-microkernel-substrate|seL4]] Microkit Protection Domain. It is intended to use `moonshot-database` (PSDB) for capability-addressed storage, providing formally verified tenant isolation.
+1. **Envelope A (Current):** A Linux/BSD daemon under systemd. It uses standard POSIX file I/O and process isolation. This is the only implemented envelope; it exposes `POST /v1/append` and `GET /healthz`.
+2. **Envelope B (seL4 — deferred):** A verified [[sel4-microkernel-substrate|seL4]] Microkit Protection Domain is the planned future target. It is intended to use `moonshot-database` (PSDB) for capability-addressed storage, providing formally verified tenant isolation. Envelope B exists only as a reference entry point (`main_sel4_stub.rs`) that is not compiled into the current build.
 
 ## Durability and Compliance
 
@@ -47,11 +47,11 @@ This architecture ensures that `service-fs` remains portable, verifiable, and re
 
 ## Key takeaways
 
-- `service-fs` is a WORM ledger, not a filesystem. Its API surface is three operations: `append`, `read_since`, `checkpoint`.
+- `service-fs` is a WORM ledger, not a filesystem. The implemented API surface is two operations: `append` and health. The `read_since`, `checkpoint`, and proof operations are planned.
 - The ledger is per-tenant — each Totebox holds its own isolated ledger; no cross-tenant reads are possible at the storage layer.
-- The four-layer architecture decouples wire protocol, API contract, and storage engine, so the seL4 Envelope B swap does not require rewriting the service.
-- Durability uses open standards: C2SP tlog-tiles (100-year readability) and C2SP signed-note Checkpoints (compact provability).
-- Monthly Sigstore Rekor anchoring by [[fs-anchor-emitter]] creates an external, publicly verifiable timestamp chain for the entire ledger.
+- The four-layer architecture is designed to decouple wire protocol, API contract, and storage engine, so the seL4 Envelope B swap does not require rewriting the service.
+- The target durability format is open standards: C2SP tlog-tiles (100-year readability) and C2SP signed-note Checkpoints (compact provability). The tile backend is planned; the current build uses a per-tenant JSON append log with per-payload SHA-256 digests.
+- Recurring Sigstore Rekor anchoring by [[fs-anchor-emitter]] is **intended** to create an external, publicly verifiable timestamp chain for the entire ledger. The anchoring operation is planned and not yet running.
 
 ## See also
 
