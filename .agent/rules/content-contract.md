@@ -9,7 +9,7 @@
 > This document is this repo's local reference and is kept in sync
 > whenever the crate's render pipeline changes.
 
-Last updated: 2026-06-15.
+Last updated: 2026-06-24.
 
 ---
 
@@ -30,6 +30,9 @@ Two classes of file exist at repo root:
 `index.md` at root (wiki home), plus category subdirectories
 containing articles and `_index.md` landing pages. Image assets
 served via the engine live in `images/` (see §2 and §7).
+`page-*.md` files at root are special static pages served at
+`/page/:slug` by the engine's page handler (distinct from category
+articles). Currently: `page-privacy.md` + `page-privacy.es.md`.
 
 ## 2. Directory layout
 
@@ -210,6 +213,7 @@ authors do not configure URLs.
 | URL | File | Notes |
 |---|---|---|
 | `/` | `index.md` | Wiki home |
+| `/page/:slug` | `page-<slug>.md` | Special static page; page handler; bilingual pair at `page-<slug>.es.md` |
 | `/:category` | `<category>/_index.md` | Category landing; article list auto-built from `*.md` in directory, excluding `_index.md` |
 | `/:category/:slug` | `<category>/<slug>.md` | Article |
 | `/images/{*path}` | `images/<path>` | Static image asset; served from filesystem; 1-year immutable cache |

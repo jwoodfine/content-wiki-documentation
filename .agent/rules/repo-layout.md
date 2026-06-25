@@ -5,7 +5,7 @@
 > Companion to `content-contract.md` (which governs file *contents*);
 > this file governs file *placement*.
 
-Last updated: 2026-05-23.
+Last updated: 2026-06-24.
 
 ---
 
@@ -36,6 +36,8 @@ Only the following may appear at repo root:
 | `TRADEMARK.md` | Trademark and copyright notice for PointSav and Woodfine marks |
 | `CLAUDE.md` | Claude Code session guide (imports `AGENT.md`; required for Root sessions) |
 | `glossary-documentation.csv` | Master terminology glossary — canonical term source pending service-content migration |
+| `page-privacy.md` | English privacy notice (served at `/page/privacy` by engine page handler) |
+| `page-privacy.es.md` | Spanish privacy notice (bilingual pair for `page-privacy.md`) |
 
 Anything else at repo root is a layout defect until closed.
 
