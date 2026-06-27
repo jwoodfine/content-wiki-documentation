@@ -32,7 +32,8 @@ containing articles and `_index.md` landing pages. Image assets
 served via the engine live in `images/` (see §2 and §7).
 `page-*.md` files at root are special static pages served at
 `/page/:slug` by the engine's page handler (distinct from category
-articles). Currently: `page-privacy.md` + `page-privacy.es.md`.
+articles). Currently: `page-privacy.md` + `page-privacy.es.md`,
+`page-disclaimer.md` + `page-disclaimer.es.md`.
 
 ## 2. Directory layout
 

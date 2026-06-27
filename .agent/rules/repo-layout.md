@@ -38,6 +38,8 @@ Only the following may appear at repo root:
 | `glossary-documentation.csv` | Master terminology glossary — canonical term source pending service-content migration |
 | `page-privacy.md` | English privacy notice (served at `/page/privacy` by engine page handler) |
 | `page-privacy.es.md` | Spanish privacy notice (bilingual pair for `page-privacy.md`) |
+| `page-disclaimer.md` | English disclaimer + trademark notice (served at `/page/disclaimer`) |
+| `page-disclaimer.es.md` | Spanish disclaimer + trademark notice (bilingual pair for `page-disclaimer.md`) |
 
 Anything else at repo root is a layout defect until closed.
 
