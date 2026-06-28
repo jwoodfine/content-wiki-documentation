@@ -27,7 +27,7 @@ El Nivel 0 envía los documentos a `service-gliner`, un microservicio de reconoc
 
 La latencia típica en CPU es de 130 a 208 milisegundos por documento, dos o tres órdenes de magnitud más rápido que la inferencia generativa.
 
-Los documentos se truncan en un límite de oración cercano a los 2.000 caracteres antes de su envío. El codificador BERT opera con un contexto fijo de 512 tokens; el texto en el límite de 2.000 caracteres ocupa aproximadamente 480 tokens, dejando margen para las cadenas de descripción de etiquetas sin truncación. El contenido más allá de este límite no se envía al Nivel 0. La segmentación de artículos (planificada) abordará la recuperación de entidades en la segunda mitad de documentos largos.
+Los documentos se dividen en fragmentos con límite de oración de hasta 2.000 caracteres cada uno antes del envío. El codificador BERT opera con un contexto fijo de 512 tokens; el texto en el límite de 2.000 caracteres ocupa aproximadamente 480 tokens, dejando margen para las cadenas de descripción de etiquetas sin truncación. Todos los fragmentos se envían en secuencia; los tramos de entidades de todos los fragmentos se fusionan y deduplican por clave (lower(entity_name), classification) antes de escribirlos en el almacén de grafo. Los artículos largos y los documentos de varias páginas quedan, por tanto, completamente cubiertos.
 
 Las etiquetas se expresan como descripciones en lenguaje natural. El identificador de dominio del documento selecciona el conjunto de etiquetas:
 
@@ -35,11 +35,11 @@ Las etiquetas se expresan como descripciones en lenguaje natural. El identificad
 - `corporate` — contenido organizacional general. Reconoce Persona, Empresa, Proyecto, Ubicación y Cuenta.
 - `documentation` — contenido técnico y de ingeniería. Reconoce Persona, Empresa, Proyecto (proyectos de software), Ubicación y Cuenta.
 
-Cuando el Nivel 0 devuelve una lista de entidades vacía, el flujo pasa al Nivel A. Una respuesta vacía de un servicio Nivel 0 bien funcionando es esperada y normal para archivos de datos estructurados, código fuente y otras entradas que no son prosa.
+El Nivel 0 produce uno de tres resultados. Cuando se encuentran entidades, el resultado se acepta y se reenvía al Nivel B para el enriquecimiento. Cuando el servicio es alcanzable pero no devuelve tramos de entidades — el resultado esperado para archivos de datos estructurados, código fuente y otras entradas que no son prosa — el documento se marca como procesado con éxito con cero entidades y no se llama a ningún nivel adicional. Cuando el servicio es inalcanzable o devuelve una respuesta inesperada, el flujo pasa al Nivel A con control de contrapresión.
 
 ## Nivel A — Alternativa Generativa (OLMo)
 
-El Nivel A envía los documentos a OLMo 7B ejecutándose en CPU a través del endpoint `/v1/chat/completions` del Doorman. El Nivel A se activa cuando el Nivel 0 es inalcanzable o devuelve una lista vacía de entidades.
+El Nivel A envía los documentos a OLMo 7B ejecutándose en CPU a través del endpoint `/v1/chat/completions` del Doorman. El Nivel A se activa únicamente cuando el Nivel 0 es inalcanzable — un error de conexión, servicio inactivo o respuesta no 2xx. Una lista de entidades vacía de un servicio Nivel 0 operativo no activa el Nivel A; esos documentos se marcan como finalizados de inmediato.
 
 La extracción utiliza un prompt estructurado que restringe el modelo a las mismas cinco clasificaciones de entidades que usa el Nivel 0. Cuando las restricciones gramaticales están habilitadas, el modelo se ve obligado a emitir JSON válido conforme al esquema de extracción, eliminando los rechazos por violación de esquema. La llamada de inferencia utiliza `temperature: 0.0` para producir resultados deterministas y `cache_prompt: true` para permitir la reutilización del caché KV entre llamadas consecutivas de extracción con el mismo prompt de sistema.
 
@@ -70,5 +70,5 @@ Los documentos para los que el Nivel 0 devuelve una lista de entidades no vacía
 | Nivel | Servicio | Método | Latencia típica | Se activa cuando |
 |---|---|---|---|---|
 | 0 | service-gliner (GLiNER) | Detección extractiva | 130–208 ms | Por defecto — primera vía |
-| A | service-slm (OLMo 7B CPU) | Completado generativo | 30–137 s | Nivel 0 no disponible o vacío |
+| A | service-slm (OLMo 7B CPU) | Completado generativo | 30–137 s | Nivel 0 inalcanzable (error de conexión o no 2xx) |
 | B | service-slm (nodo GPU) | Enriquecimiento generativo | 10–30 s | Circuito cerrado + nodo saludable |

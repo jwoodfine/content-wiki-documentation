@@ -27,7 +27,7 @@ Tier 0 routes document payloads to `service-gliner`, a GLiNER named entity recog
 
 Typical latency on CPU is 130–208 milliseconds per document. This is two to three orders of magnitude faster than generative inference.
 
-Documents sent to Tier 0 are truncated at a sentence boundary near 2,000 characters before dispatch. The BERT encoder operates on a fixed context of 512 tokens; prose at the 2,000-character limit occupies approximately 480 tokens, leaving room for the label description strings without truncation. Content beyond the 2,000-character limit is not sent to Tier 0. Article chunking (planned) will address entity recall in the second half of long documents.
+Documents are split into sentence-boundary chunks of at most 2,000 characters each before dispatch. The BERT encoder operates on a fixed context of 512 tokens; prose at the 2,000-character limit occupies approximately 480 tokens, leaving room for the label description strings without truncation. All chunks are dispatched in sequence; entity spans from all chunks are merged and deduplicated by (lower(entity_name), classification) key before the result is written to the graph store. Long articles and multi-page documents are therefore fully covered.
 
 Labels are expressed as plain-English descriptions rather than bare category names. The domain identifier in the document payload selects a label set:
 
@@ -35,11 +35,11 @@ Labels are expressed as plain-English descriptions rather than bare category nam
 - `corporate` — covers general organisational content. Recognises Person, Company, Project, Location, and Account.
 - `documentation` — covers engineering and technical content. Recognises Person, Company, Project (software projects), Location, and Account.
 
-When Tier 0 returns an empty entity list for a document, the pipeline falls through to Tier A. An empty response from a well-functioning Tier 0 service is expected and normal for structured data files, source code, and other non-prose inputs.
+Tier 0 produces one of three outcomes. When entities are found, the result is accepted and forwarded to Tier B for enrichment. When the service is reachable but returns no entity spans — the expected result for structured data files, source code, and other non-prose inputs — the document is marked as successfully processed with zero entities and no further tier is called. When the service is unreachable or returns an unexpected response, the pipeline falls through to Tier A with backpressure gating.
 
 ## Tier A — Generative Fallback (OLMo)
 
-Tier A routes document payloads to OLMo 7B running on the workspace VM's CPU via the Doorman's `/v1/chat/completions` endpoint. Tier A activates when Tier 0 is unreachable (network error, service down) or returns an empty entity list for a document that the pipeline determines should produce entities.
+Tier A routes document payloads to OLMo 7B running on the workspace VM's CPU via the Doorman's `/v1/chat/completions` endpoint. Tier A activates only when Tier 0 is unreachable — a connection error, service down, or non-2xx response. An empty entity list from a healthy Tier 0 service does not trigger Tier A; those documents are marked done immediately.
 
 Extraction uses a structured prompt that constrains the model to the same five entity classifications used by Tier 0. When grammar constraints are enabled, the model is forced to emit valid JSON conforming to the extraction schema, eliminating schema-violation rejections. The inference call uses `temperature: 0.0` to produce deterministic output and `cache_prompt: true` to allow KV-cache reuse across consecutive extraction calls on the same system prompt.
 
@@ -70,5 +70,5 @@ Documents for which Tier 0 returns a non-empty entity list always proceed to Tie
 | Tier | Service | Method | Typical latency | Activates when |
 |---|---|---|---|---|
 | 0 | service-gliner (GLiNER) | Extractive span detection | 130–208 ms | Default — first path |
-| A | service-slm (OLMo 7B CPU) | Generative completion | 30–137 s | Tier 0 down or returns empty |
+| A | service-slm (OLMo 7B CPU) | Generative completion | 30–137 s | Tier 0 unreachable (connection error or non-2xx) |
 | B | service-slm (GPU node) | Generative enrichment | 10–30 s | Circuit closed + node healthy |
