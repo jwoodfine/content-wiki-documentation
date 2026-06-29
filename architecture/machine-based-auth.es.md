@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-23
+last_edited: 2026-06-29
 editor: pointsav-engineering
 paired_with: machine-based-auth.md
 short_description: "La autorización basada en hardware reemplaza las estructuras de usuario y contraseña con el emparejamiento criptográfico del hardware físico — el par es el permiso, y toda una clase de robo remoto de credenciales queda eliminada por estructura."
@@ -26,13 +26,27 @@ references:
 
 Cada contraseña es un secreto que una persona debe recordar y, por tanto, un secreto que un atacante puede tomar. Phishing, adivinación de contraseñas, relleno de credenciales, ingeniería social — toda la clase del robo remoto de credenciales existe porque la credencial es algo que un humano sabe.
 
-La autorización basada en hardware elimina el secreto memorizable. El acceso es un emparejamiento criptográfico de dos piezas de hardware físico — el par es el permiso. Cuando un dispositivo solicita acceso, ambos extremos demuestran posesión de material clave complementario; si el par se verifica, la conexión se forma; si no, las máquinas son mutuamente invisibles.
+La autorización basada en hardware elimina el secreto memorizable. El acceso es un emparejamiento criptográfico de dos piezas de hardware físico — el par es el permiso. Cuando un dispositivo solicita acceso, ambos extremos demuestran posesión de material clave complementario; si el par se verifica, la conexión se forma; si no, las máquinas son mutuamente invisibles. Este modelo se denomina **Seguridad Geométrica**: el acceso está definido por la topología de los emparejamientos activos, no por la transmisión de secretos compartidos. Una máquina que no está emparejada no puede conectarse, independientemente de lo que sepa o presente.
 
 Como la autorización se vincula al hardware y no a un secreto memorizado, no hay tabla de usuarios que vulnerar, no hay formulario de inicio de sesión que suplantar y no hay contraseña que restablecer. La revocación es física: el emparejamiento se corta en la máquina, y toda la clase de ataques de robo remoto de credenciales queda eliminada por estructura, no por política.
 
 Para un comprador regulado la consecuencia es concreta. Una clase de ataque desaparece, y cada evento de acceso es atribuible a un hardware específico en el libro de auditoría. Este artículo cubre cómo funcionan los emparejamientos, los cuatro tipos, las ventajas estructurales sobre las contraseñas y la relación con las capas [[diode-standard|Diodo]] y de auditoría.
 
 > **Dirección planificada — acceso nativo anfitrión a través de internet.** Está previsto que os-console se ejecute de forma nativa en el equipo del operador y se empareje con un Archivo Totebox remoto a través de internet público. El transporte previsto es TLS mutuo hacia un endpoint Totebox verificado, con la autorización basada en máquinas sin cambios como límite de acceso. La dirección de refuerzo planificada incluye la revocación de emparejamientos y certificados de dispositivo de corta duración. *Nota de honestidad:* la ruta actual a través de internet utiliza un túnel de reenvío SSH que aún no verifica la identidad del servidor remoto, por lo que la propiedad de extremo a extremo — el proveedor no puede leer los datos del operador en tránsito — es **prevista pero aún no entregada** en ese salto; se confirma una vez que el TLS mutuo verificado esté disponible. Véase `BRIEF-os-console-rebuild-2030.md` Capa 1.
+
+## Infraestructura y aplicación: dos capas independientes
+
+La MBA opera en la capa de aplicación, por encima e independientemente de cualquier infraestructura de red. Esta separación es central en la arquitectura.
+
+La [[ppn-mesh-architecture|Red Privada de PointSav]] — la malla WireGuard que conecta los nodos de flota — proporciona el transporte en el que se ejecutan los servicios `os-*`. La pertenencia a la red significa que una máquina puede alcanzar otras máquinas en la malla. No otorga acceso a lo que esas máquinas alojan. Un nodo en la PPN sin emparejamientos MBA puede alcanzar la red; no puede abrir ningún archivo.
+
+Dos capas de seguridad independientes protegen una conexión completa `os-console` → `os-totebox`:
+
+**Capa 1 — Pertenencia a la red (PPN):** La máquina que se conecta debe ser un par WireGuard registrado. El tráfico de red de pares no registrados se descarta en la capa de red.
+
+**Capa 2 — Emparejamiento de aplicación (MBA):** El servicio `os-*` que se conecta debe presentar una huella de clave pública registrada a `system-gateway-mba`, el componente de pasarela a nivel de aplicación que se ejecuta en el servicio de destino. Si no existe ningún registro de emparejamiento para esa huella, la conexión se rechaza — incluso si la capa de red permitió el tráfico.
+
+Una máquina puede estar en la PPN sin ningún emparejamiento MBA. Puede alcanzar la red; no puede abrir ninguna puerta. Esta es la frontera de soberanía: la parte que posee la infraestructura de red no obtiene acceso a nivel de aplicación a los datos que se ejecutan en ella.
 
 ## Cómo funciona un emparejamiento
 
@@ -83,6 +97,7 @@ La autorización basada en hardware se conecta a otras tres capas arquitectónic
 - **[[sel4-microkernel-substrate|Micronúcleo seL4]]** — el núcleo aplica que los tokens de capacidad no pueden ser falsificados por software que se ejecuta en privilegio de usuario.
 - **[[capability-based-security|Seguridad basada en capacidades]]** — el gestor de capacidades emite y revoca tokens vinculados al hardware; el modelo de control de acceso depende de la vinculación al hardware para sus garantías.
 - **[[worm-ledger-design|Libro mayor WORM]]** — cada evento de autorización se registra en el libro de solo adición, un registro verificable externamente de qué hardware accedió a qué recurso y cuándo.
+- **`system-gateway-mba`** — el crate de pasarela a nivel de aplicación que aplica los registros de emparejamiento en cada frontera de servicio `os-*`; el componente que comprueba las huellas de claves entrantes contra el registro de emparejamientos y rechaza las conexiones sin un registro coincidente.
 
 ## Por qué se rechazó service-auth
 
@@ -95,3 +110,4 @@ Los primeros diseños consideraron `service-auth`, modelado en un servicio de di
 - [[sel4-microkernel-substrate]] — el micronúcleo seL4 que aplica la integridad de los tokens de capacidad
 - [[compliance-and-continuous-disclosure]] — cómo la autorización vinculada al hardware apoya el cumplimiento de prueba continua
 - [[deployment-patterns]] — cómo el emparejamiento MBA se aplica en las seis configuraciones de despliegue canónicas
+- [[ppn-mesh-architecture]] — la capa de infraestructura de malla WireGuard en la que se ejecutan los servicios `os-*`; la MBA opera por encima e independientemente de la PPN
