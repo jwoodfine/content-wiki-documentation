@@ -22,7 +22,7 @@ The Totebox knowledge flow turns prose into two durable assets: an ontological D
 ```
 prose ─▶ service-extraction ─▶ CORPUS_*.json
       ─▶ service-content ──▶ GLiNER Tier 0 (~150ms) ─▶ entity spans
-                         └──▶ OLMo Tier A (30–137s)  ─▶ fallback if Tier 0 empty
+                         └──▶ OLMo Tier A (30–137s)  ─▶ extraction fallback (Tier 0 unreachable) + async DPO queue
                          └──▶ GPU Tier B (enrichment) ─▶ role/location vectors
                          └──▶ LadybugDB graph
       ◀── Doorman queries the graph for context before each inference ◀──

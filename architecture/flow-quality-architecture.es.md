@@ -22,7 +22,7 @@ El flujo de conocimiento del Totebox convierte prosa en dos activos duraderos: u
 ```
 prosa ─▶ service-extraction ─▶ CORPUS_*.json
       ─▶ service-content ──▶ GLiNER Nivel 0 (~150ms) ─▶ tramos de entidades
-                         └──▶ OLMo Nivel A  (30–137s) ─▶ alternativa si Nivel 0 vacío
+                         └──▶ OLMo Nivel A  (30–137s) ─▶ alternativa de extracción (Nivel 0 inalcanzable) + cola DPO asíncrona
                          └──▶ GPU Nivel B   (enriquecimiento) ─▶ vectores rol/ubicación
                          └──▶ grafo LadybugDB
       ◀── el Doorman consulta el grafo por contexto antes de cada inferencia ◀──

@@ -37,9 +37,13 @@ Labels are expressed as plain-English descriptions rather than bare category nam
 
 Tier 0 produces one of three outcomes. When entities are found, the result is accepted and forwarded to Tier B for enrichment. When the service is reachable but returns no entity spans — the expected result for structured data files, source code, and other non-prose inputs — the document is marked as successfully processed with zero entities and no further tier is called. When the service is unreachable or returns an unexpected response, the pipeline falls through to Tier A with backpressure gating.
 
-## Tier A — Generative Fallback (OLMo)
+## Tier A — Generative Fallback and Training Queue (OLMo)
 
-Tier A routes document payloads to OLMo 7B running on the workspace VM's CPU via the Doorman's `/v1/chat/completions` endpoint. Tier A activates only when Tier 0 is unreachable — a connection error, service down, or non-2xx response. An empty entity list from a healthy Tier 0 service does not trigger Tier A; those documents are marked done immediately.
+Tier A routes document payloads to OLMo 7B running on the workspace VM's CPU via the Doorman's `/v1/chat/completions` endpoint. Tier A serves two distinct roles.
+
+**Extraction fallback:** Tier A activates as an extraction path only when Tier 0 is unreachable — a connection error, service down, or non-2xx response. An empty entity list from a healthy Tier 0 service does not trigger Tier A extraction; those documents are marked done immediately.
+
+**Asynchronous training queue:** Every document processed through Tier 0 — regardless of extraction outcome — is also placed in an asynchronous OLMo comparison queue. The comparison generates a DPO (Direct Preference Optimisation) training pair: the GLiNER result is the chosen teacher signal and the OLMo result is the rejected student signal. This queue runs independently of the extraction path and accumulates preference pairs for future model fine-tuning under the Yo-Yo training cycle.
 
 Extraction uses a structured prompt that constrains the model to the same five entity classifications used by Tier 0. When grammar constraints are enabled, the model is forced to emit valid JSON conforming to the extraction schema, eliminating schema-violation rejections. The inference call uses `temperature: 0.0` to produce deterministic output and `cache_prompt: true` to allow KV-cache reuse across consecutive extraction calls on the same system prompt.
 
@@ -70,5 +74,5 @@ Documents for which Tier 0 returns a non-empty entity list always proceed to Tie
 | Tier | Service | Method | Typical latency | Activates when |
 |---|---|---|---|---|
 | 0 | service-gliner (GLiNER) | Extractive span detection | 130–208 ms | Default — first path |
-| A | service-slm (OLMo 7B CPU) | Generative completion | 30–137 s | Tier 0 unreachable (connection error or non-2xx) |
+| A | service-slm (OLMo 7B CPU) | Generative completion | 30–137 s | Extraction: Tier 0 unreachable; Training: every document (async) |
 | B | service-slm (GPU node) | Generative enrichment | 10–30 s | Circuit closed + node healthy |
