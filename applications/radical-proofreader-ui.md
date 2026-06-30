@@ -1,10 +1,19 @@
 ---
+schema: foundry-doc-v1
 title: "The Proofreader Console"
 slug: radical-proofreader-ui
 category: applications
-last_edited: 2026-06-29
+type: app
+content_type: topic
+quality: complete
+short_description: "The operator-facing web interface for the service-proofreader editorial pipeline, implementing a two-tier design token architecture for tenant brand adaptation and a pure-Rust distillation tool that converts apprenticeship corpus event-pairs into training datasets for service-slm."
+status: active
+bcsc_class: public-disclosure-safe
+last_edited: 2026-06-30
 editor: pointsav-engineering
-status: stable
+cites: []
+references: []
+paired_with: radical-proofreader-ui.es.md
 ---
 
 The **proofreader console** is the operator-facing web interface for the `service-proofreader`
