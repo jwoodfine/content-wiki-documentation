@@ -3,9 +3,12 @@ schema: foundry-doc-v1
 title: "Guías para Desarrolladores"
 slug: how-to
 category: how-to
-content_type: how-to
 type: topic
+content_type: topic
+quality: complete
+short_description: "Guías paso a paso para desarrolladores: emparejamiento de dispositivos, configuración del entorno, navegación de la TUI de consola, operaciones del ledger WORM y despliegue autohospedado de la plataforma PointSav."
 status: active
+bcsc_class: public-disclosure-safe
 language_protocol: TRANSLATE-ES
 last_edited: 2026-06-14
 editor: pointsav-engineering

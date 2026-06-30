@@ -3,9 +3,13 @@ schema: foundry-doc-v1
 title: "Developer Guides"
 slug: how-to
 category: how-to
-content_type: how-to
 type: topic
+content_type: topic
+quality: complete
+short_description: "Step-by-step developer guides covering device pairing, toolchain setup, console TUI navigation, WORM ledger operations, and self-hosted deployment of the PointSav platform."
 status: active
+bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
 last_edited: 2026-06-14
 editor: pointsav-engineering
 paired_with: _index.es.md
