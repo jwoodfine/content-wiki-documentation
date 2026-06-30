@@ -16,12 +16,12 @@ paired_with: machine-based-auth.es.md
 short_description: "Machine-based authorization replaces username and password structures with the cryptographic pairing of physical hardware — the pair is the permission, and an entire class of remote credential theft is eliminated by structure."
 cites: []
 references:
- - id: 1
- text: "Perrin, T. 'The Noise Protocol Framework.' noiseprotocol.org, 2016."
- url: "https://noiseprotocol.org/noise.html"
- - id: 2
- text: "Donenfeld, J. A. 'WireGuard: Next Generation Kernel Network Tunnel.' NDSS Symposium, 2017."
- url: "https://www.ndss-symposium.org/ndss2017/ndss-2017-programme/wireguard-next-generation-kernel-network-tunnel/"
+  - id: 1
+    text: "Perrin, T. 'The Noise Protocol Framework.' noiseprotocol.org, 2016."
+    url: "https://noiseprotocol.org/noise.html"
+  - id: 2
+    text: "Donenfeld, J. A. 'WireGuard: Next Generation Kernel Network Tunnel.' NDSS Symposium, 2017."
+    url: "https://www.ndss-symposium.org/ndss2017/ndss-2017-programme/wireguard-next-generation-kernel-network-tunnel/"
 ---
 
 Every password is a secret a person must remember, and therefore a secret an attacker can take. Phishing, password guessing, credential stuffing, social engineering — the entire class of remote credential theft exists because the credential is something a human knows.

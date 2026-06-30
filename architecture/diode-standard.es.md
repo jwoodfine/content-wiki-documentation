@@ -16,12 +16,12 @@ paired_with: diode-standard.md
 short_description: "El Estándar del Diodo es la topología de seguridad fundacional de la familia de sistemas operativos PointSav — un flujo de comandos unidireccional donde el tráfico se mueve de la autoridad al sujeto y nunca al revés, suprimiendo los ataques de movimiento lateral al eliminar la lógica de enrutamiento que los haría posibles."
 cites: []
 references:
- - id: 1
- text: "Rose, S. et al. 'Arquitectura de Confianza Cero.' NIST SP 800-207, 2020."
- url: "https://doi.org/10.6028/NIST.SP.800-207"
- - id: 2
- text: "MITRE. 'ATT&CK Tactic: Movimiento Lateral (TA0008).' MITRE Corporation, 2023."
- url: "https://attack.mitre.org/tactics/TA0008/"
+  - id: 1
+    text: "Rose, S. et al. 'Arquitectura de Confianza Cero.' NIST SP 800-207, 2020."
+    url: "https://doi.org/10.6028/NIST.SP.800-207"
+  - id: 2
+    text: "MITRE. 'ATT&CK Tactic: Movimiento Lateral (TA0008).' MITRE Corporation, 2023."
+    url: "https://attack.mitre.org/tactics/TA0008/"
 ---
 
 Un atacante que vulnera una máquina rara vez quiere esa máquina. Quiere la siguiente. El movimiento lateral — pivotar desde un primer nodo comprometido hacia nodos más valiosos — es el patrón dominante en los informes modernos de brechas de seguridad [^2].

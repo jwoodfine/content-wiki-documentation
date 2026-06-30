@@ -17,12 +17,12 @@ short_description: "service-slm is the language-model service of the PointSav fa
 cites:
  - olmo3-allenai
 references:
- - id: 1
- text: "ISO/IEC 42001:2023 — Information technology — Artificial intelligence — Management system."
- url: "https://www.iso.org/standard/81230.html"
- - id: 2
- text: "Groeneveld, D. et al. 'OLMo: Accelerating the Science of Language Models.' arXiv:2402.00838, 2024."
- url: "https://arxiv.org/abs/2402.00838"
+  - id: 1
+    text: "ISO/IEC 42001:2023 — Information technology — Artificial intelligence — Management system."
+    url: "https://www.iso.org/standard/81230.html"
+  - id: 2
+    text: "Groeneveld, D. et al. 'OLMo: Accelerating the Science of Language Models.' arXiv:2402.00838, 2024."
+    url: "https://arxiv.org/abs/2402.00838"
 ---
 
 An AI request that leaves the building cannot be audited and cannot be recalled. The moment institutional intent reaches a frontier model in another company's cloud, the organization has surrendered both the record of the decision and control over it.

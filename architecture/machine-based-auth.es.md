@@ -16,12 +16,12 @@ paired_with: machine-based-auth.md
 short_description: "La autorización basada en hardware reemplaza las estructuras de usuario y contraseña con el emparejamiento criptográfico del hardware físico — el par es el permiso, y toda una clase de robo remoto de credenciales queda eliminada por estructura."
 cites: []
 references:
- - id: 1
- text: "Perrin, T. 'The Noise Protocol Framework.' noiseprotocol.org, 2016."
- url: "https://noiseprotocol.org/noise.html"
- - id: 2
- text: "Donenfeld, J. A. 'WireGuard: Next Generation Kernel Network Tunnel.' NDSS Symposium, 2017."
- url: "https://www.ndss-symposium.org/ndss2017/ndss-2017-programme/wireguard-next-generation-kernel-network-tunnel/"
+  - id: 1
+    text: "Perrin, T. 'The Noise Protocol Framework.' noiseprotocol.org, 2016."
+    url: "https://noiseprotocol.org/noise.html"
+  - id: 2
+    text: "Donenfeld, J. A. 'WireGuard: Next Generation Kernel Network Tunnel.' NDSS Symposium, 2017."
+    url: "https://www.ndss-symposium.org/ndss2017/ndss-2017-programme/wireguard-next-generation-kernel-network-tunnel/"
 ---
 
 Cada contraseña es un secreto que una persona debe recordar y, por tanto, un secreto que un atacante puede tomar. Phishing, adivinación de contraseñas, relleno de credenciales, ingeniería social — toda la clase del robo remoto de credenciales existe porque la credencial es algo que un humano sabe.

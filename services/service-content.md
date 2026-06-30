@@ -16,12 +16,12 @@ paired_with: service-content.es.md
 short_description: "service-content is the synthesis engine of the PointSav family — the Gravity Engine that reads raw payloads from a Totebox, runs them against an institutional taxonomy, and generates the structured documents an organisation publishes, with a human-in-the-loop boundary on every verified ledger."
 cites: []
 references:
- - id: 1
- text: "Aho, A. V. & Corasick, M. J. 'Efficient String Matching: An Aid to Bibliographic Search.' Communications of the ACM, 18(6):333–340, 1975."
- url: "https://dl.acm.org/doi/10.1145/360825.360855"
- - id: 2
- text: "ILO. 'ISCO-08: International Standard Classification of Occupations.' International Labour Organization, 2012."
- url: "https://www.ilo.org/public/english/bureau/stat/isco/isco08/"
+  - id: 1
+    text: "Aho, A. V. & Corasick, M. J. 'Efficient String Matching: An Aid to Bibliographic Search.' Communications of the ACM, 18(6):333–340, 1975."
+    url: "https://dl.acm.org/doi/10.1145/360825.360855"
+  - id: 2
+    text: "ILO. 'ISCO-08: International Standard Classification of Occupations.' International Labour Organization, 2012."
+    url: "https://www.ilo.org/public/english/bureau/stat/isco/isco08/"
 ---
 
 An organization's files hold its knowledge but do not surface it. An email archive, a folder of contracts, a store of PDFs — each is searchable, and none of it knows who relates to whom, which concerns recur, or what the organization's own terms mean.

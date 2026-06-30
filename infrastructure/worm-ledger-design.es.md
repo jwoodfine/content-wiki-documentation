@@ -19,18 +19,18 @@ cites:
  - rfc-9162
  - sec-17a-4-f
 references:
- - id: 1
- text: "C2SP. 'tlog-tiles: Tile-based logs specification.' C2SP.org, 2024."
- url: "https://c2sp.org/tlog-tiles"
- - id: 2
- text: "Sigstore Project. 'Rekor — Software Supply Chain Transparency Log.' Sigstore.dev, 2024."
- url: "https://rekor.sigstore.dev/"
- - id: 3
- text: "C2SP. 'signed-note: Signed checkpoint note format.' C2SP.org, 2024."
- url: "https://c2sp.org/signed-note"
- - id: 4
- text: "Laurie, B. et al. 'RFC 9162: Certificate Transparency Version 2.0.' IETF, 2021."
- url: "https://www.rfc-editor.org/rfc/rfc9162"
+  - id: 1
+    text: "C2SP. 'tlog-tiles: Tile-based logs specification.' C2SP.org, 2024."
+    url: "https://c2sp.org/tlog-tiles"
+  - id: 2
+    text: "Sigstore Project. 'Rekor — Software Supply Chain Transparency Log.' Sigstore.dev, 2024."
+    url: "https://rekor.sigstore.dev/"
+  - id: 3
+    text: "C2SP. 'signed-note: Signed checkpoint note format.' C2SP.org, 2024."
+    url: "https://c2sp.org/signed-note"
+  - id: 4
+    text: "Laurie, B. et al. 'RFC 9162: Certificate Transparency Version 2.0.' IETF, 2021."
+    url: "https://www.rfc-editor.org/rfc/rfc9162"
 paired_with: worm-ledger-design.md
 ---
 

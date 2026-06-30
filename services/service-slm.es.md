@@ -17,12 +17,12 @@ short_description: "service-slm es el servicio de modelo de lenguaje de la famil
 cites:
  - olmo3-allenai
 references:
- - id: 1
- text: "ISO/IEC 42001:2023 — Tecnología de la información — Inteligencia artificial — Sistema de gestión."
- url: "https://www.iso.org/standard/81230.html"
- - id: 2
- text: "Groeneveld, D. et al. 'OLMo: Accelerating the Science of Language Models.' arXiv:2402.00838, 2024."
- url: "https://arxiv.org/abs/2402.00838"
+  - id: 1
+    text: "ISO/IEC 42001:2023 — Tecnología de la información — Inteligencia artificial — Sistema de gestión."
+    url: "https://www.iso.org/standard/81230.html"
+  - id: 2
+    text: "Groeneveld, D. et al. 'OLMo: Accelerating the Science of Language Models.' arXiv:2402.00838, 2024."
+    url: "https://arxiv.org/abs/2402.00838"
 ---
 
 Una solicitud de IA que sale del edificio no puede auditarse ni revocarse. En el momento en que la intención institucional llega a un modelo de frontera en la nube de otra empresa, la organización ha cedido tanto el registro de la decisión como el control sobre ella.

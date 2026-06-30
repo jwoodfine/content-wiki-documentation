@@ -16,12 +16,12 @@ paired_with: service-people.es.md
 short_description: "service-people maintains the Totebox's deterministic identity ledger — the F2 surface in os-console and the source of truth for who appears in any payload across the Totebox, using an Anchor-Claim-Socket data model that never overwrites state."
 cites: []
 references:
- - id: 1
- text: "Fowler, M. 'Event Sourcing.' martinfowler.com, 2005."
- url: "https://martinfowler.com/eaaDev/EventSourcing.html"
- - id: 2
- text: "Aho, A. V. & Corasick, M. J. 'Efficient String Matching: An Aid to Bibliographic Search.' Communications of the ACM, 18(6):333–340, 1975."
- url: "https://dl.acm.org/doi/10.1145/360825.360855"
+  - id: 1
+    text: "Fowler, M. 'Event Sourcing.' martinfowler.com, 2005."
+    url: "https://martinfowler.com/eaaDev/EventSourcing.html"
+  - id: 2
+    text: "Aho, A. V. & Corasick, M. J. 'Efficient String Matching: An Aid to Bibliographic Search.' Communications of the ACM, 18(6):333–340, 1975."
+    url: "https://dl.acm.org/doi/10.1145/360825.360855"
 ---
 
 `service-people` maintains the [[totebox-os|Totebox]]'s deterministic identity ledger. It is the F2 surface in `os-console` and the source of truth for "who" appears in any payload across the Totebox. The data model is built around the Anchor-Claim-Socket (ACS) pattern: identity never overwrites state, claims accumulate over time, and the current picture of any person can always be recomputed from the history. This article covers the three-entity data model, the ACS pattern, and the Infinite Net — the mechanism through which identities enter the [[worm-ledger-design|WORM ledger]] from raw payloads without operator input.

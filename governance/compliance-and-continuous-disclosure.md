@@ -18,12 +18,12 @@ cites:
  - ni-51-102
  - osc-sn-51-721
 references:
- - id: 1
- text: "NIST, Open Security Controls Assessment Language (OSCAL) — machine-readable formats for representing security control catalogs, baselines, system security plans, and assessment results."
- url: "https://pages.nist.gov/OSCAL/"
- - id: 2
- text: "International Organization for Standardization, ISO/IEC 42001:2023 — Artificial Intelligence Management System (AIMS): requirements for organisations managing AI systems responsibly."
- url: "https://www.iso.org/standard/81230.html"
+  - id: 1
+    text: "NIST, Open Security Controls Assessment Language (OSCAL) — machine-readable formats for representing security control catalogs, baselines, system security plans, and assessment results."
+    url: "https://pages.nist.gov/OSCAL/"
+  - id: 2
+    text: "International Organization for Standardization, ISO/IEC 42001:2023 — Artificial Intelligence Management System (AIMS): requirements for organisations managing AI systems responsibly."
+    url: "https://www.iso.org/standard/81230.html"
 ---
 
 Compliance and continuous disclosure describes the regulatory frameworks the PointSav architecture addresses and the structural approach it takes to evidence those controls. Conventional enterprise compliance relies on annual point-in-time audits: an auditor examines a sample, produces a written report, and the customer holds a certificate that may be stale within weeks of issue. The PointSav substrate is designed for a continuous model: machine-readable controls that update in real time and expose a queryable attestation surface. All compliance certifications and framework targets described here are planned or intended; forward-looking language applies throughout per Canadian securities continuous-disclosure requirements [ni-51-102] [osc-sn-51-721]. By the end of this article, a reader will understand the compliance framework targets, the structural controls approach, and the document-state discipline the architecture enforces.

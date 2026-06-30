@@ -15,12 +15,12 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: deployment-patterns.es.md
 references:
- - id: 1
- text: "Jackson, Cam. 'Micro Frontends.' martinfowler.com, 2019. The foundational technical article describing the micro-frontend architectural pattern applied in modern web engineering."
- url: "https://martinfowler.com/articles/micro-frontends.html"
- - id: 2
- text: "The Open Group, TOGAF Standard, 10th Edition, 2022. Chapter 20: Architecture Patterns. Canonical treatment of reusable deployment configurations in enterprise architecture."
- url: "https://www.opengroup.org/togaf"
+  - id: 1
+    text: "Jackson, Cam. 'Micro Frontends.' martinfowler.com, 2019. The foundational technical article describing the micro-frontend architectural pattern applied in modern web engineering."
+    url: "https://martinfowler.com/articles/micro-frontends.html"
+  - id: 2
+    text: "The Open Group, TOGAF Standard, 10th Edition, 2022. Chapter 20: Architecture Patterns. Canonical treatment of reusable deployment configurations in enterprise architecture."
+    url: "https://www.opengroup.org/togaf"
 ---
 
 Deployment patterns describes the six canonical configurations in which the PointSav substrate is deployed across different institutional contexts, each built on the [[three-ring-architecture|three-ring architecture]]. Each configuration rests on the same five primitives — People, Communications, Drafts, Records, Money — and the same [[console-os|Command Ledger]] surface; what changes per configuration is the [[archetypes-and-chart-of-accounts|Chart of Accounts]] and the compliance surface. The substrate does not fork across segments; it adapts. By the end of this article, a reader will understand the Companion positioning, the six canonical patterns, and the micro-frontend isolation model that makes independent-versioning practical across all six.

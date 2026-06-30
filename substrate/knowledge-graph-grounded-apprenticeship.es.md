@@ -13,9 +13,9 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
 references:
- - id: 1
- text: "Edge, D. et al. 'From Local to Global: A Graph RAG Approach to Query-Focused Summarization.' arXiv:2404.16130, 2024."
- url: "https://arxiv.org/abs/2404.16130"
+  - id: 1
+    text: "Edge, D. et al. 'From Local to Global: A Graph RAG Approach to Query-Focused Summarization.' arXiv:2404.16130, 2024."
+    url: "https://arxiv.org/abs/2404.16130"
 paired_with: knowledge-graph-grounded-apprenticeship.md
 ---
 

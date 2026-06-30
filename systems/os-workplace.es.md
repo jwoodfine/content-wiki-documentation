@@ -16,12 +16,12 @@ paired_with: os-workplace.md
 short_description: "os-workplace es el sistema operativo de escritorio gratuito de la familia PointSav — un escritorio soberano nativo en Rust que se empareja con un archivo Totebox, funciona en hardware de referencia deliberado y sirve como puerta de entrada a la línea de productos comerciales de PointSav."
 cites: []
 references:
- - id: 1
- text: "ISO 19005-1:2005 — Gestión de documentos — Formato de archivo de documento electrónico para preservación a largo plazo — Parte 1: Uso de PDF 1.4 (PDF/A-1)."
- url: "https://www.iso.org/standard/38920.html"
- - id: 2
- text: "W3C. 'WebRTC 1.0: Comunicación en Tiempo Real entre Navegadores.' Recomendación W3C, 2021."
- url: "https://www.w3.org/TR/webrtc/"
+  - id: 1
+    text: "ISO 19005-1:2005 — Gestión de documentos — Formato de archivo de documento electrónico para preservación a largo plazo — Parte 1: Uso de PDF 1.4 (PDF/A-1)."
+    url: "https://www.iso.org/standard/38920.html"
+  - id: 2
+    text: "W3C. 'WebRTC 1.0: Comunicación en Tiempo Real entre Navegadores.' Recomendación W3C, 2021."
+    url: "https://www.w3.org/TR/webrtc/"
 ---
 
 `os-workplace` es el sistema operativo de escritorio gratuito de la familia PointSav. Proporciona un entorno de escritorio limpio, seguro y nativo en Rust que se empareja naturalmente con un [[totebox-archive|archivo Totebox]] y lleva la disciplina de teclas de función y el [[machine-based-auth|modelo de seguridad]] de la plataforma a un usuario comunitario que lo instala por primera vez. La estrategia es deliberada: `os-workplace` es la puerta de entrada a la adopción. Un nuevo usuario lo instala porque es gratuito y rápido; una vez que su trabajo diario ocurre dentro del ecosistema PointSav, el agregador comercial [[os-orchestration|`os-orchestration`]] se convierte en el siguiente paso lógico. Este artículo cubre el hardware de referencia, la suite de aplicaciones, el modelo de emparejamiento y la justificación estratégica de un escritorio gratuito.

@@ -16,12 +16,12 @@ paired_with: totebox-os.md
 short_description: "os-totebox es la capa de archivo de la familia PointSav — una bóveda aislada a nivel de núcleo por entidad, que almacena registros como archivos planos inertes sin operación de borrado y los expone únicamente a través del Diodo bajo comando de os-console u os-orchestration."
 cites: []
 references:
- - id: 1
- text: "NIST. 'Directrices de Seguridad para Infraestructura de Almacenamiento.' SP 800-209, 2020."
- url: "https://doi.org/10.6028/NIST.SP.800-209"
- - id: 2
- text: "Madhavapeddy, A. et al. 'Unikernels: Library Operating Systems for the Cloud.' ACM ASPLOS, 2013."
- url: "https://dl.acm.org/doi/10.1145/2451116.2451167"
+  - id: 1
+    text: "NIST. 'Directrices de Seguridad para Infraestructura de Almacenamiento.' SP 800-209, 2020."
+    url: "https://doi.org/10.6028/NIST.SP.800-209"
+  - id: 2
+    text: "Madhavapeddy, A. et al. 'Unikernels: Library Operating Systems for the Cloud.' ACM ASPLOS, 2013."
+    url: "https://dl.acm.org/doi/10.1145/2451116.2451167"
 ---
 
 `os-totebox` es la capa de archivo de la familia PointSav: una bóveda aislada a nivel de núcleo por entidad. Almacena los registros, ejecuta los servicios que los procesan y no expone nada más. Una entidad es cualquier cosa que necesita su propio conjunto de libros — una persona, una corporación, una propiedad inmobiliaria, un proyecto, un hogar. Cada entidad tiene su propio `os-totebox`. Los Toteboxes no comparten archivos, no comparten usuarios y no pueden verse entre sí. Se comunican únicamente a través del [[diode-standard|Diodo]], y solo bajo comando de [[console-os|os-console]] u [[os-orchestration]]. Este artículo cubre los servicios internos, la disciplina WORM, la evolución de la forma del host, los niveles de cómputo y el diseño libremente transferible.

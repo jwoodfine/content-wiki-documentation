@@ -13,9 +13,9 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
 references:
- - id: 1
- text: "Sigstore. 'Rekor: Software Supply Chain Transparency Log.' Sigstore.dev, 2024."
- url: "https://docs.sigstore.dev/logging/overview/"
+  - id: 1
+    text: "Sigstore. 'Rekor: Software Supply Chain Transparency Log.' Sigstore.dev, 2024."
+    url: "https://docs.sigstore.dev/logging/overview/"
 paired_with: substrate-without-inference-base-case.es.md
 ---
 

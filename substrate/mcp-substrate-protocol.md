@@ -13,9 +13,9 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
 references:
- - id: 1
- text: "Anthropic. 'Model Context Protocol Specification.' modelcontextprotocol.io, 2025."
- url: "https://modelcontextprotocol.io/specification/2025-11-25"
+  - id: 1
+    text: "Anthropic. 'Model Context Protocol Specification.' modelcontextprotocol.io, 2025."
+    url: "https://modelcontextprotocol.io/specification/2025-11-25"
 paired_with: mcp-substrate-protocol.es.md
 ---
 

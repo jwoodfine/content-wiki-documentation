@@ -18,12 +18,12 @@ cites:
  - ni-51-102
  - osc-sn-51-721
 references:
- - id: 1
- text: "NIST, Open Security Controls Assessment Language (OSCAL) — formatos legibles por máquina para representar catálogos de controles de seguridad, líneas base, planes de seguridad del sistema y resultados de evaluaciones."
- url: "https://pages.nist.gov/OSCAL/"
- - id: 2
- text: "Organización Internacional de Normalización, ISO/IEC 42001:2023 — Sistema de Gestión de Inteligencia Artificial (AIMS): requisitos para organizaciones que gestionan sistemas de IA de manera responsable."
- url: "https://www.iso.org/standard/81230.html"
+  - id: 1
+    text: "NIST, Open Security Controls Assessment Language (OSCAL) — formatos legibles por máquina para representar catálogos de controles de seguridad, líneas base, planes de seguridad del sistema y resultados de evaluaciones."
+    url: "https://pages.nist.gov/OSCAL/"
+  - id: 2
+    text: "Organización Internacional de Normalización, ISO/IEC 42001:2023 — Sistema de Gestión de Inteligencia Artificial (AIMS): requisitos para organizaciones que gestionan sistemas de IA de manera responsable."
+    url: "https://www.iso.org/standard/81230.html"
 ---
 
 Cumplimiento y divulgación continua describe los marcos regulatorios que aborda la arquitectura PointSav y el enfoque estructural que adopta para evidenciar esos controles. El cumplimiento empresarial convencional se basa en auditorías anuales en un momento puntual: un auditor examina una muestra, produce un informe escrito y el cliente posee un certificado que puede quedar desactualizado semanas después de su emisión. El sustrato PointSav está diseñado para un modelo continuo: controles legibles por máquina que se actualizan en tiempo real y exponen una superficie de atestación consultable. Todas las certificaciones de cumplimiento y objetivos de marcos descritos aquí son planificados o previstos; se aplica lenguaje prospectivo en todo momento según los requisitos de divulgación continua de valores canadienses [ni-51-102] [osc-sn-51-721]. Al finalizar este artículo, el lector comprenderá los objetivos del marco de cumplimiento, el enfoque de controles estructurales y la disciplina de estado de documentos que aplica la arquitectura.

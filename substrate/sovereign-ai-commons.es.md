@@ -13,9 +13,9 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
 references:
- - id: 1
- text: "McMahan, B. et al. 'Communication-Efficient Learning of Deep Networks from Decentralized Data.' AISTATS, 2017."
- url: "https://arxiv.org/abs/1602.05629"
+  - id: 1
+    text: "McMahan, B. et al. 'Communication-Efficient Learning of Deep Networks from Decentralized Data.' AISTATS, 2017."
+    url: "https://arxiv.org/abs/1602.05629"
 paired_with: sovereign-ai-commons.md
 ---
 

@@ -18,12 +18,12 @@ cites:
  - ni-51-102
  - osc-sn-51-721
 references:
- - id: 1
- text: "NIST, Open Security Controls Assessment Language (OSCAL) — un conjunto de formatos en XML, JSON y YAML que proporcionan representaciones legibles por máquina de catálogos de controles, líneas base de controles, planes de seguridad del sistema y planes y resultados de evaluaciones."
- url: "https://pages.nist.gov/OSCAL/"
- - id: 2
- text: "Committee of Sponsoring Organizations of the Treadway Commission (COSO), Control Interno — Marco Integrado, 2013. Parte II: Marco — Principios y Puntos de Enfoque."
- url: "https://www.coso.org/guidance-on-ic"
+  - id: 1
+    text: "NIST, Open Security Controls Assessment Language (OSCAL) — un conjunto de formatos en XML, JSON y YAML que proporcionan representaciones legibles por máquina de catálogos de controles, líneas base de controles, planes de seguridad del sistema y planes y resultados de evaluaciones."
+    url: "https://pages.nist.gov/OSCAL/"
+  - id: 2
+    text: "Committee of Sponsoring Organizations of the Treadway Commission (COSO), Control Interno — Marco Integrado, 2013. Parte II: Marco — Principios y Puntos de Enfoque."
+    url: "https://www.coso.org/guidance-on-ic"
 ---
 
 El posicionamiento estructural es el enfoque que PointSav utiliza para describir la arquitectura al mercado: articular compromisos visibles a nivel del sistema de archivos, el protocolo o el kernel, en lugar de hacer comparaciones con competidores nombrados o afirmaciones de rendimiento relativo. La arquitectura está construida para fiduciarios institucionales — Consejeros Generales de empresas públicas, gestores de activos regulados, profesionales médicos y legales — que evalúan el software por su defensibilidad arquitectónica bajo auditoría, no por material de marketing. Los ocho compromisos descritos en este artículo son verificables por un auditor directamente en el sustrato desplegado. Al finalizar este artículo, el lector comprenderá los ocho compromisos estructurales, los patrones heredados que reemplazan y los segmentos de clientes a los que se dirigen.

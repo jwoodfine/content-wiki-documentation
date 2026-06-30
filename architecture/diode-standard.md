@@ -16,12 +16,12 @@ paired_with: diode-standard.es.md
 short_description: "The Diode Standard is the foundational security topology of the PointSav operating-system family — a unidirectional command flow where traffic moves from authority to subject and never the reverse, removing lateral-movement attacks by eliminating the routing logic that would allow them."
 cites: []
 references:
- - id: 1
- text: "Rose, S. et al. 'Zero Trust Architecture.' NIST SP 800-207, 2020."
- url: "https://doi.org/10.6028/NIST.SP.800-207"
- - id: 2
- text: "MITRE. 'ATT&CK Tactic: Lateral Movement (TA0008).' MITRE Corporation, 2023."
- url: "https://attack.mitre.org/tactics/TA0008/"
+  - id: 1
+    text: "Rose, S. et al. 'Zero Trust Architecture.' NIST SP 800-207, 2020."
+    url: "https://doi.org/10.6028/NIST.SP.800-207"
+  - id: 2
+    text: "MITRE. 'ATT&CK Tactic: Lateral Movement (TA0008).' MITRE Corporation, 2023."
+    url: "https://attack.mitre.org/tactics/TA0008/"
 ---
 
 An attacker who breaches one machine rarely wants that machine. They want the next one. Lateral movement — pivoting from a first compromised node to more valuable nodes — is the dominant pattern in modern breach reports [^2].

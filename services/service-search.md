@@ -13,9 +13,9 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
 references:
- - id: 1
- text: "Tantivy. 'Tantivy — A Full-Text Search Engine Library in Rust.' docs.rs, 2024."
- url: "https://docs.rs/tantivy/"
+  - id: 1
+    text: "Tantivy. 'Tantivy — A Full-Text Search Engine Library in Rust.' docs.rs, 2024."
+    url: "https://docs.rs/tantivy/"
 paired_with: service-search.es.md
 ---
 

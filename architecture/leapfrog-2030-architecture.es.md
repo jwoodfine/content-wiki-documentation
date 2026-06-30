@@ -18,12 +18,12 @@ cites:
  - ni-51-102
  - osc-sn-51-721
 references:
- - id: 1
- text: "IDC. 'The SMB 2026 Digital Landscape: How AI is Redefining Growth.' IDC Research, 2026."
- url: "https://www.idc.com/resource-center/blog/the-smb-2026-digital-landscape-how-ai-is-redefining-growth/"
- - id: 2
- text: "Anthropic, Google y colaboradores. 'Model Context Protocol Specification.' modelcontextprotocol.io, 2024."
- url: "https://modelcontextprotocol.io/"
+  - id: 1
+    text: "IDC. 'The SMB 2026 Digital Landscape: How AI is Redefining Growth.' IDC Research, 2026."
+    url: "https://www.idc.com/resource-center/blog/the-smb-2026-digital-landscape-how-ai-is-redefining-growth/"
+  - id: 2
+    text: "Anthropic, Google y colaboradores. 'Model Context Protocol Specification.' modelcontextprotocol.io, 2024."
+    url: "https://modelcontextprotocol.io/"
 ---
 
 Tres fuerzas de mercado que convergen en 2026 — modelos de lenguaje ligeros viables en hardware de consumo, el [[mcp-substrate-protocol|Protocolo de Contexto de Modelos]] como estándar de composición de servicios de inteligencia artificial, y el despliegue en instalaciones propias como el segmento de mayor crecimiento en el mercado de software para pymes — abren un espacio estructural que los grandes proveedores de nube no pueden ocupar sin desmantelar su propio modelo de negocio. La Arquitectura Leapfrog 2030 es el compromiso de [[pointsav-overview|PointSav]] con ese espacio: código de plataforma soberano, servicios componibles e ingresos por transacción en lugar de cuotas de licencia recurrentes. El cliente posee su hardware, sus datos y sus pesos de adaptador; [[pointsav-overview|PointSav]] toma un porcentaje por transacción cuando el valor fluye mediante [[direct-payment-settlement|liquidación de pago directo]]. Este artículo cubre los cinco cambios estructurales que describe la tesis, el sustrato que los realiza y el [[compounding-substrate|ciclo de composición]] que hace durable el compromiso.

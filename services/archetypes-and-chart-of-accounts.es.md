@@ -15,12 +15,12 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: archetypes-and-chart-of-accounts.md
 references:
- - id: 1
- text: "Fundación IFRS, NIC 1 — Presentación de Estados Financieros, §54–76: Estado de Situación Financiera — requisitos de clasificación de partidas y subcuentas."
- url: "https://www.ifrs.org/issued-standards/list-of-standards/ias-1-presentation-of-financial-statements/"
- - id: 2
- text: "Organización Internacional del Trabajo, Clasificación Internacional Uniforme de Ocupaciones 2008 (CIUO-08): Marco Conceptual y Metodología. OIT, Ginebra, 2012."
- url: "https://www.ilo.org/public/english/bureau/stat/isco/docs/publication08.pdf"
+  - id: 1
+    text: "Fundación IFRS, NIC 1 — Presentación de Estados Financieros, §54–76: Estado de Situación Financiera — requisitos de clasificación de partidas y subcuentas."
+    url: "https://www.ifrs.org/issued-standards/list-of-standards/ias-1-presentation-of-financial-statements/"
+  - id: 2
+    text: "Organización Internacional del Trabajo, Clasificación Internacional Uniforme de Ocupaciones 2008 (CIUO-08): Marco Conceptual y Metodología. OIT, Ginebra, 2012."
+    url: "https://www.ilo.org/public/english/bureau/stat/isco/docs/publication08.pdf"
 ---
 
 El Plan de Cuentas y los once arquetipos son la taxonomía institucional de dos partes en el núcleo de [[service-people]] y [[service-content]]. Juntos permiten que la plataforma clasifique al personal y los documentos por posición estructural y función, sin depender de texto de título de trabajo variable. A diferencia de un registro de personal en texto libre, la taxonomía se basa en conectores: cada persona ocupa una posición fija en el Plan y hereda propiedades de una de las once clases de arquetipos inmutables. El Plan es un componente de la capa de inteligencia institucional del [[totebox-os|Totebox]], junto con el [[service-slm|modelo de lenguaje pequeño]] y el [[service-extraction|analizador determinista]]. Al finalizar este artículo, el lector comprenderá la taxonomía de arquetipos, la jerarquía del Plan de Cuentas y el mecanismo de autocorrección que produce su intersección.

@@ -15,12 +15,12 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: sel4-microkernel-substrate.md
 references:
- - id: 1
- text: "Klein, G., et al. 'seL4: Formal Verification of an OS Kernel.' ACM SOSP, 2009."
- url: "https://dl.acm.org/doi/10.1145/1629575.1629596"
- - id: 2
- text: "seL4 Foundation. 'Manual de Referencia seL4.' seL4 Foundation, 2023."
- url: "https://sel4.systems/Info/Docs/seL4-manual-latest.pdf"
+  - id: 1
+    text: "Klein, G., et al. 'seL4: Formal Verification of an OS Kernel.' ACM SOSP, 2009."
+    url: "https://dl.acm.org/doi/10.1145/1629575.1629596"
+  - id: 2
+    text: "seL4 Foundation. 'Manual de Referencia seL4.' seL4 Foundation, 2023."
+    url: "https://sel4.systems/Info/Docs/seL4-manual-latest.pdf"
 ---
 
 El micronúcleo seL4 es el núcleo de L1, verificado formalmente por demostración matemática, sobre el que se ejecutan todos los sistemas operativos PointSav — sus propiedades de seguridad están demostradas, no aseveradas mediante pruebas. [^1] PointSav adopta seL4 como materia prima en lugar de construir un núcleo propio, y construye su capa Rust propietaria por encima de él. El aislamiento de memoria, los desbordamientos de búfer nulos, los [[capability-ledger-substrate|permisos basados en capacidades]] y la ejecución determinista están garantizados estructuralmente — la base para afirmaciones de seguridad que pueden razonarse formalmente y presentarse a reguladores. Este artículo cubre la justificación arquitectónica, la pila de capas, las restricciones de la cadena de herramientas y la [[system-substrate-doctrine|disciplina de lenguaje]] aplicada por encima del núcleo.

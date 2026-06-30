@@ -17,21 +17,21 @@ cites:
  - osc-sn-51-721
 paired_with: knowledge-wiki-leapfrog-architecture.es.md
 references:
- - id: 1
- text: "MediaWiki architecture documentation."
- url: "https://www.mediawiki.org/wiki/Manual:MediaWiki_architecture"
- - id: 2
- text: "Parsoid — MediaWiki."
- url: "https://www.mediawiki.org/wiki/Parsoid/About"
- - id: 3
- text: "Skin:Vector/2022 design documentation."
- url: "https://www.mediawiki.org/wiki/Skin:Vector/2022/Design_documentation"
- - id: 4
- text: "Extension:Cite — MediaWiki."
- url: "https://www.mediawiki.org/wiki/Extension:Cite"
- - id: 5
- text: "comrak — ExtensionOptions."
- url: "https://docs.rs/comrak/latest/comrak/struct.ExtensionOptions.html"
+  - id: 1
+    text: "MediaWiki architecture documentation."
+    url: "https://www.mediawiki.org/wiki/Manual:MediaWiki_architecture"
+  - id: 2
+    text: "Parsoid — MediaWiki."
+    url: "https://www.mediawiki.org/wiki/Parsoid/About"
+  - id: 3
+    text: "Skin:Vector/2022 design documentation."
+    url: "https://www.mediawiki.org/wiki/Skin:Vector/2022/Design_documentation"
+  - id: 4
+    text: "Extension:Cite — MediaWiki."
+    url: "https://www.mediawiki.org/wiki/Extension:Cite"
+  - id: 5
+    text: "comrak — ExtensionOptions."
+    url: "https://docs.rs/comrak/latest/comrak/struct.ExtensionOptions.html"
 ---
 
 [[app-mediakit-knowledge|`app-mediakit-knowledge`]] is the PointSav knowledge platform engine, a Rust binary that serves three wiki instances — `documentation.pointsav.com`, `projects.woodfinegroup.com`, and `corporate.woodfinegroup.com` — from flat Markdown files stored in git repositories. The engine renders content with Wikipedia-shaped chrome: sticky table of contents, wikilink resolution with red-link signalling, category pages, edit history, and full-text search. As of May 2026, it implements approximately 78 percent of the full Wikipedia muscle-memory surface. A planned multi-sprint roadmap is intended to bring that figure to approximately 95 percent before adding a Leapfrog 2030 differentiation layer that goes beyond what Wikipedia offers.

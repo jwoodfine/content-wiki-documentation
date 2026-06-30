@@ -15,12 +15,12 @@ last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: bim-and-real-property-surfaces.es.md
 references:
- - id: 1
- text: "International Organization for Standardization, ISO 19650-1:2018 — Organization and digitization of information about buildings and civil engineering works, including building information modelling (BIM). Part 1: Concepts and principles."
- url: "https://www.iso.org/standard/68078.html"
- - id: 2
- text: "buildingSMART International, Industry Foundation Classes (IFC) — the open BIM standard for building data exchange."
- url: "https://www.buildingsmart.org/standards/bsi-standards/industry-foundation-classes/"
+  - id: 1
+    text: "International Organization for Standardization, ISO 19650-1:2018 — Organization and digitization of information about buildings and civil engineering works, including building information modelling (BIM). Part 1: Concepts and principles."
+    url: "https://www.iso.org/standard/68078.html"
+  - id: 2
+    text: "buildingSMART International, Industry Foundation Classes (IFC) — the open BIM standard for building data exchange."
+    url: "https://www.buildingsmart.org/standards/bsi-standards/industry-foundation-classes/"
 ---
 
 BIM and real-property surfaces describes how the PointSav platform treats Building Information Modelling as a first-class operational domain within a real-estate customer deployment. The platform provides dedicated design-system tooling, ISO 19650 record-keeping conventions[^1], and [[totebox-os|Totebox]] archive patterns for real-property data. BIM components, tokens, and geospatial primitives live in a separate customer-tier design system (`woodfine-design-bim`) distinct from the vendor `pointsav-design-system` — this article summarises the integration points; the detailed BIM content is in `woodfine-design-bim`. By the end of this article, a reader will understand the two-design-system boundary, the ISO 19650 suffix discipline, and the [[archetypes-and-chart-of-accounts|Chart of Accounts]] placement for BIM contributors.

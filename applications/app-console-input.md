@@ -18,12 +18,12 @@ cites:
  - ni-51-102
  - osc-sn-51-721
 references:
- - id: 1
- text: "NIST, Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1, January 2023. Section 5: Human oversight and accountability in AI deployments."
- url: "https://doi.org/10.6028/NIST.AI.100-1"
- - id: 2
- text: "International Organization for Standardization, ISO/IEC 27001:2022 — Information security management systems, Annex A.8.15: Logging."
- url: "https://www.iso.org/standard/82875.html"
+  - id: 1
+    text: "NIST, Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1, January 2023. Section 5: Human oversight and accountability in AI deployments."
+    url: "https://doi.org/10.6028/NIST.AI.100-1"
+  - id: 2
+    text: "International Organization for Standardization, ISO/IEC 27001:2022 — Information security management systems, Annex A.8.15: Logging."
+    url: "https://www.iso.org/standard/82875.html"
 ---
 
 `app-console-input` is the F12 surface in [[console-os|os-console]] — the only path through which raw external files enter a [[totebox-os|Totebox]] before being sealed into the [[worm-ledger-design|WORM ledger]]. The surface routes every incoming document through a structured human verification step, holding the operator accountable for each [[service-extraction|extracted]] claim before it advances to verified status. Unlike a [[service-slm|language model]] interface or autosave pipeline, it presents binary choices — the system proposes, the operator confirms or rejects — so every fiduciary decision carries an operator signature in the [[worm-ledger-design|audit trail]]. By the end of this article, a reader will understand the F12 workflow, the Verification Surveyor pattern, and the audit properties the gate enforces.

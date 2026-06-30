@@ -13,12 +13,12 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
 references:
- - id: 1
- text: "Rafailov, R. et al. 'Direct Preference Optimization: Your Language Model is Secretly a Reward Model.' NeurIPS, 2023."
- url: "https://arxiv.org/abs/2305.18290"
- - id: 2
- text: "Zhou, C. et al. 'LIMA: Less Is More for Alignment.' NeurIPS, 2023."
- url: "https://arxiv.org/abs/2305.11206"
+  - id: 1
+    text: "Rafailov, R. et al. 'Direct Preference Optimization: Your Language Model is Secretly a Reward Model.' NeurIPS, 2023."
+    url: "https://arxiv.org/abs/2305.18290"
+  - id: 2
+    text: "Zhou, C. et al. 'LIMA: Less Is More for Alignment.' NeurIPS, 2023."
+    url: "https://arxiv.org/abs/2305.11206"
 paired_with: tui-corpus-producer.md
 ---
 

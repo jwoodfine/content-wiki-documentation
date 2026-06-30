@@ -13,15 +13,15 @@ last_edited: 2026-05-25
 editor: pointsav-engineering
 cites: []
 references:
- - id: 1
- text: "Miller, M. S. et al. 'Capability Myths Demolished.' SRL2003-02, Johns Hopkins University, 2003."
- url: "https://srl.cs.jhu.edu/pubs/SRL2003-02.pdf"
- - id: 2
- text: "Google. 'Fuchsia Component Framework: Capabilities overview.' Fuchsia.dev, 2024."
- url: "https://fuchsia.dev/fuchsia-src/concepts/components/v2/capabilities"
- - id: 3
- text: "seL4 Project. 'seL4: Formally Verified Microkernel.' The seL4 Foundation, 2024."
- url: "https://sel4.systems/"
+  - id: 1
+    text: "Miller, M. S. et al. 'Capability Myths Demolished.' SRL2003-02, Johns Hopkins University, 2003."
+    url: "https://srl.cs.jhu.edu/pubs/SRL2003-02.pdf"
+  - id: 2
+    text: "Google. 'Fuchsia Component Framework: Capabilities overview.' Fuchsia.dev, 2024."
+    url: "https://fuchsia.dev/fuchsia-src/concepts/components/v2/capabilities"
+  - id: 3
+    text: "seL4 Project. 'seL4: Formally Verified Microkernel.' The seL4 Foundation, 2024."
+    url: "https://sel4.systems/"
 paired_with: pairing-as-permission.es.md
 ---
 

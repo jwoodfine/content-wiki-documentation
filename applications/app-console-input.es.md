@@ -18,12 +18,12 @@ cites:
  - ni-51-102
  - osc-sn-51-721
 references:
- - id: 1
- text: "NIST, Marco de Gestión de Riesgos de Inteligencia Artificial (AI RMF 1.0), NIST AI 100-1, enero de 2023. Sección 5: Supervisión humana y responsabilidad en implementaciones de IA."
- url: "https://doi.org/10.6028/NIST.AI.100-1"
- - id: 2
- text: "Organización Internacional de Normalización, ISO/IEC 27001:2022 — Sistemas de gestión de la seguridad de la información, Anexo A.8.15: Registro."
- url: "https://www.iso.org/standard/82875.html"
+  - id: 1
+    text: "NIST, Marco de Gestión de Riesgos de Inteligencia Artificial (AI RMF 1.0), NIST AI 100-1, enero de 2023. Sección 5: Supervisión humana y responsabilidad en implementaciones de IA."
+    url: "https://doi.org/10.6028/NIST.AI.100-1"
+  - id: 2
+    text: "Organización Internacional de Normalización, ISO/IEC 27001:2022 — Sistemas de gestión de la seguridad de la información, Anexo A.8.15: Registro."
+    url: "https://www.iso.org/standard/82875.html"
 ---
 
 `app-console-input` es la superficie F12 en [[console-os|os-console]] — el único camino a través del cual los archivos externos sin procesar ingresan a un [[totebox-os|Totebox]] antes de sellarse en el [[worm-ledger-design|libro mayor WORM]]. La superficie conduce cada documento entrante a través de un paso de verificación humana estructurado, responsabilizando al operador por cada afirmación [[service-extraction|extraída]] antes de que avance al estado verificado. A diferencia de una interfaz de [[service-slm|modelo de lenguaje]] o una canalización de autoguardado, presenta opciones binarias — el sistema propone, el operador confirma o rechaza — de modo que cada decisión fiduciaria lleva la firma del operador en el [[worm-ledger-design|registro de auditoría]]. Al finalizar este artículo, el lector comprenderá el flujo de trabajo F12, el patrón Agrimensor de Verificación y las propiedades de auditoría que protege esta puerta.

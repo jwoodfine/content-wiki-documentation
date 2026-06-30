@@ -13,9 +13,9 @@ last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
 references:
- - id: 1
- text: "Open Source Security Foundation. 'SLSA: Supply chain Levels for Software Artifacts v1.0.' SLSA.dev, 2023."
- url: "https://slsa.dev/spec/v1.0/"
+  - id: 1
+    text: "Open Source Security Foundation. 'SLSA: Supply chain Levels for Software Artifacts v1.0.' SLSA.dev, 2023."
+    url: "https://slsa.dev/spec/v1.0/"
 paired_with: yoyo-compute-substrate.md
 ---
 

@@ -13,16 +13,16 @@ last_edited: 2026-06-23
 editor: pointsav-engineering
 paired_with: foundry-doctrine-architecture.es.md
 references:
- - id: 1
- text: "NI 51-102 Continuous Disclosure Obligations — BCSC"
- - id: 2
- text: "OSC Staff Notice 51-721 Forward-Looking Information Disclosure"
- - id: 3
- text: "OLMo 3 — Allen Institute for AI. allenai.org/blog/olmo3"
- - id: 4
- text: "seL4 Microkernel — Data61/CSIRO. sel4.systems"
- - id: 5
- text: "Overture Maps Foundation. overturemaps.org"
+  - id: 1
+    text: "NI 51-102 Continuous Disclosure Obligations — BCSC"
+  - id: 2
+    text: "OSC Staff Notice 51-721 Forward-Looking Information Disclosure"
+  - id: 3
+    text: "OLMo 3 — Allen Institute for AI. allenai.org/blog/olmo3"
+  - id: 4
+    text: "seL4 Microkernel — Data61/CSIRO. sel4.systems"
+  - id: 5
+    text: "Overture Maps Foundation. overturemaps.org"
 ---
 
 The [[pointsav-overview|PointSav]] constitutional charter encodes the principles, commitments, and structural claims that govern every engineering, operational, and editorial decision across the platform. The current release is v0.1.0 ALPHA, ratified 2026-04-30 under the `ps-administrator` signing identity. See [[foundry-doctrine-overview|the doctrine overview]] for the introductory framing.

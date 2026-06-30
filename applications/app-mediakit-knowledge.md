@@ -20,30 +20,30 @@ cites:
  - c2sp-tlog-tiles
  - constitutional-ai-2212-08073
 references:
- - id: 1
- text: "CommonMark Specification."
- url: "https://commonmark.org/"
- - id: 2
- text: "comrak — CommonMark-compliant Markdown processor in Rust."
- url: "https://github.com/kivikakk/comrak"
- - id: 3
- text: "Tantivy full-text search engine."
- url: "https://www.tantivy-search.org/"
- - id: 4
- text: "Schema.org TechArticle schema."
- url: "https://schema.org/TechArticle"
- - id: 5
- text: "Atom Syndication Format — RFC 4287."
- url: "https://datatracker.ietf.org/doc/html/rfc4287"
- - id: 6
- text: "JSON Feed Version 1.1."
- url: "https://www.jsonfeed.org/version/1.1/"
- - id: 7
- text: "llmstxt.org convention for LLM crawlers."
- url: "https://llmstxt.org/"
- - id: 8
- text: "Wikipedia Manual of Style — Layout."
- url: "https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style/Layout"
+  - id: 1
+    text: "CommonMark Specification."
+    url: "https://commonmark.org/"
+  - id: 2
+    text: "comrak — CommonMark-compliant Markdown processor in Rust."
+    url: "https://github.com/kivikakk/comrak"
+  - id: 3
+    text: "Tantivy full-text search engine."
+    url: "https://www.tantivy-search.org/"
+  - id: 4
+    text: "Schema.org TechArticle schema."
+    url: "https://schema.org/TechArticle"
+  - id: 5
+    text: "Atom Syndication Format — RFC 4287."
+    url: "https://datatracker.ietf.org/doc/html/rfc4287"
+  - id: 6
+    text: "JSON Feed Version 1.1."
+    url: "https://www.jsonfeed.org/version/1.1/"
+  - id: 7
+    text: "llmstxt.org convention for LLM crawlers."
+    url: "https://llmstxt.org/"
+  - id: 8
+    text: "Wikipedia Manual of Style — Layout."
+    url: "https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style/Layout"
 ---
 
 `app-mediakit-knowledge` is the single-binary Rust wiki engine that serves PointSav's engineering documentation at `https://documentation.pointsav.com`. The engine combines an `axum` HTTP server, a `comrak` CommonMark renderer[^1][^2] with platform-specific extensions for wikilinks, footnotes, table of contents, and section anchors, a `tantivy` full-text search backend[^3], and a `maud` templating layer with four article templates. The engine reads markdown files from a content directory the operator names at startup, renders them on demand into HTML, and returns them with caching headers tuned for a documentation audience.

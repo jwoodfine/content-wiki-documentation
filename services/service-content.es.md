@@ -16,12 +16,12 @@ paired_with: service-content.md
 short_description: "service-content es el motor de síntesis de la familia PointSav — el Motor de Gravedad que lee cargas útiles en bruto de un Totebox, las procesa contra una taxonomía institucional y genera los documentos estructurados que publica una organización, con un límite de intervención humana en cada libro mayor verificado."
 cites: []
 references:
- - id: 1
- text: "Aho, A. V. & Corasick, M. J. 'Efficient String Matching: An Aid to Bibliographic Search.' Communications of the ACM, 18(6):333–340, 1975."
- url: "https://dl.acm.org/doi/10.1145/360825.360855"
- - id: 2
- text: "OIT. 'CIUO-08: Clasificación Internacional Uniforme de Ocupaciones.' Organización Internacional del Trabajo, 2012."
- url: "https://www.ilo.org/public/english/bureau/stat/isco/isco08/"
+  - id: 1
+    text: "Aho, A. V. & Corasick, M. J. 'Efficient String Matching: An Aid to Bibliographic Search.' Communications of the ACM, 18(6):333–340, 1975."
+    url: "https://dl.acm.org/doi/10.1145/360825.360855"
+  - id: 2
+    text: "OIT. 'CIUO-08: Clasificación Internacional Uniforme de Ocupaciones.' Organización Internacional del Trabajo, 2012."
+    url: "https://www.ilo.org/public/english/bureau/stat/isco/isco08/"
 ---
 
 Los archivos de una organización contienen su conocimiento pero no lo hacen aflorar. Un archivo de correo, una carpeta de contratos, un almacén de PDF — cada uno es consultable, y ninguno sabe quién se relaciona con quién, qué preocupaciones se repiten ni qué significan los términos propios de la organización.
