@@ -23,8 +23,8 @@ The platform's identity store defines four named identities, each backed by a de
 
 | Identity | Key | Role | Scope |
 |---|---|---|---|
-| `jwoodfine` | `id_jwoodfine` | Staging — Jennifer | All commits across engineering repos |
-| `pwoodfine` | `id_pwoodfine` | Staging — Peter | All commits across engineering repos |
+| `jwoodfine` | `id_jwoodfine` | Staging — J | All commits across engineering repos |
+| `pwoodfine` | `id_pwoodfine` | Staging — P | All commits across engineering repos |
 | `ps-administrator` | `id_pointsav-administrator` | Push-only | Canonical `pointsav` org on GitHub |
 | `mcorp-administrator` | `id_woodfine-administrator` | Push-only | Canonical `woodfine` org on GitHub |
 

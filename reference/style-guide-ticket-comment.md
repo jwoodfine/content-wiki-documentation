@@ -46,7 +46,7 @@ Status: <new status — Open | In progress | Blocked | Review | Done>
 
 ## Register and tone
 
-Factual and brief. Past tense for what changed ("Committed X at hash Y"); present or future for next steps ("Owner: Jennifer; due 2026-06-01"). No hedges — either the state changed or it did not.
+Factual and brief. Past tense for what changed ("Committed X at hash Y"); present or future for next steps ("Owner: jw; due 2026-06-01"). No hedges — either the state changed or it did not.
 
 Status field values are a closed set: `Open`, `In progress`, `Blocked`, `Review`, `Done`. No custom values.
 
