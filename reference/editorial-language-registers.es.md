@@ -13,7 +13,7 @@ language: es
 paired_with: editorial-language-registers.md
 ---
 
-Los tres wikis de PointSav se dirigen a tres audiencias primarias distintas. Cada audiencia tiene diferente nivel de alfabetización financiera y técnica, diferentes razones para leer y diferentes expectativas de vocabulario. Este artículo define los tres registros, explica quién es cada audiencia y establece las reglas de vocabulario que rigen los tres wikis. El [[language-protocol-substrate|sustrato de protocolo de lenguaje]] hace cumplir estas reglas estructuralmente en el momento de la captura.
+Los tres wikis de PointSav se dirigen a tres audiencias primarias distintas. Cada audiencia tiene diferente nivel de alfabetización financiera y técnica, diferentes razones para leer y diferentes expectativas de vocabulario. Este artículo es una visión general, orientada al lector, de los tres registros; las normas de redacción detalladas y autoritativas que los sustentan se mantienen como el conjunto de guías de estilo editorial de la organización, la única fuente de verdad a la que remite cualquier otra nota sobre voz o registro. El [[language-protocol-substrate|sustrato de protocolo de lenguaje]] hace cumplir estas reglas estructuralmente en el momento de la captura.
 
 ## El estándar editorial
 
