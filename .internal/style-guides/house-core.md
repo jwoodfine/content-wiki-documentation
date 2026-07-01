@@ -89,6 +89,31 @@ Write headings in sentence case, with the most important word first, so a reader
 left margin lands on the keyword. "Rollback procedure" beats "How to roll back the change."
 The document title comes from frontmatter; the body never carries a top-level `#` heading.
 
+## Capitalization
+
+Casing is authored into the artifact, never left to rendering. The wiki engine prints a title and
+a heading exactly as written — it applies no title-case or sentence-case transform, and no
+automatic transform could, because it cannot know that `WORM`, `BIM`, `seL4`, `os-console`, or
+`service-email` carry canonical casing a title-caser would corrupt. The author owns the casing.
+
+One rule for every title and every heading: **sentence case, keyword first.** Capitalize the first
+word and nothing after it except proper nouns, acronyms, and code identifiers, which keep their
+canonical form. "Debt service and financing structure," not "Debt Service and Financing Structure."
+"WORM ingest," not "Worm ingest." "seL4 capability topology," never "Sel4 Capability Topology." The
+slug stays lowercase-kebab regardless (`debt-service-and-financing-structure`).
+
+This applies to the frontmatter `title:` and to every `##` / `###` heading, in every artifact type.
+It is the same rule the headings section already assumes, now stated once for titles as well —
+because the engine passes both through verbatim, and consistency has to live in the source.
+
+**File names are cased differently — lowercase, always.** The file name is not display text; it is
+an identifier, and it is the slug. Use lowercase ASCII, kebab-case: words joined by single hyphens,
+no spaces, no underscores, no capitals — `debt-service-and-financing-structure.md`, never
+`Debt-Service.md` or `debt_service.md`. The filename stem equals the `slug:` field exactly. A
+bilingual pair adds `.es.md` (`debt-service-and-financing-structure.es.md`). Once published a slug
+is immortal — rename through an alias, never by re-casing the file. So three casings, one per layer:
+**lowercase-kebab for the file/slug, sentence case for the title, sentence case for the headings.**
+
 ## Voice and tone
 
 Write in the active voice by default. Active voice names the actor and the consequence: "the
