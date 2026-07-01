@@ -102,6 +102,18 @@ canonical form. "Debt service and financing structure," not "Debt Service and Fi
 "WORM ingest," not "Worm ingest." "seL4 capability topology," never "Sel4 Capability Topology." The
 slug stays lowercase-kebab regardless (`debt-service-and-financing-structure`).
 
+**Keyword first means no leading article.** No `title:`, no heading, and no slug begins with *the*,
+*a*, or *an* — drop it, so the first word a reader scans and the first character the wiki files on is
+the meaningful one. Write `title: "Citation substrate"` / `slug: citation-substrate`, never
+`title: "The citation substrate"` or `slug: the-citation-substrate`. This is keyword-first applied to
+the first word: a category page sorts its list by slug and *displays* the title, so a column of
+entries all opening with *The* is unscannable, and on any title-sorted surface it mis-files every one
+under T. The article returns naturally in body prose ("The citation substrate records every claim…");
+only the title and the slug — the display's first word and the index key — shed it. The Spanish pair
+follows: no title opens with *el/la/los/las/un/una*. The one exception is a proper name whose article
+is genuinely part of the name; even then the slug drops the article (`ledger`, not `the-ledger`) so
+the filing key stays clean.
+
 This applies to the frontmatter `title:` and to every `##` / `###` heading, in every artifact type.
 It is the same rule the headings section already assumes, now stated once for titles as well —
 because the engine passes both through verbatim, and consistency has to live in the source.

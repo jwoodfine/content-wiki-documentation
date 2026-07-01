@@ -150,3 +150,4 @@ re-live.*
 - Is every quote attributed and carrying a fact rather than enthusiasm?
 - Do meeting notes record decisions and owners rather than the discussion?
 - Is the message as short as the point allows, and no shorter?
+- Does the subject/title lead with its keyword, not a leading article (*the/a/an*)? (see [[house-core]] §Capitalization)

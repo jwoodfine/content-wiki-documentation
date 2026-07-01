@@ -178,6 +178,16 @@ Extends `content-contract.md` §3.
 | Uniqueness | Globally unique across all categories (the wikilink resolver is flat) |
 | Immortality | A published slug is never changed. Renames happen via redirects (see §8), not mutation. |
 | Legacy prefix prohibition | Do not use `topic-`, `guide-`, or `research-` as a standalone prefix in new wiki article slugs. These patterns are a legacy era artifact. Entity-type prefixes from the Nomenclature Matrix (`os-*`, `service-*`, `app-*`, `sys-adr-*`, `fleet-*`) remain correct and required. |
+| Leading article | A slug never begins with `the-`, `a-`, or `an-`. Drop the leading article so the slug files by its meaningful word (`worm-ledger`, never `the-worm-ledger`; `citation-substrate`, never `the-citation-substrate`). The category page (`/:category`) sorts its article list by **slug**, so a clean slug is what makes an article findable when a reader clicks a category. Mirrors the title rule in [[house-core]] §Capitalization. |
+
+**Why the leading-article rule is load-bearing.** `app-mediakit-knowledge` builds each category
+listing by sorting the directory's articles on their slug (`bucket_topics_by_category`, sort key
+`a.slug.cmp(&b.slug)`) and rendering the `title:` as the visible label. The slug is therefore the
+filing key and the title is display-only — the same display/sort split libraries use with nonfiling
+indicators. A slug that opens with *the/a/an* would file the article under T/A instead of its subject,
+collapsing scannability exactly as an operator would notice. Titles carry the companion rule in
+[[house-core]] §Capitalization; the engine applies no DEFAULTSORT-style article stripping of its own,
+so the discipline lives in the source.
 
 **Why entity prefixes are kept.** The workspace Nomenclature
 Matrix assigns prefixes to Matrix-listed entity types. Preserving

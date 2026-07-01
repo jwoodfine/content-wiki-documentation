@@ -161,6 +161,7 @@ discipline convention, which this section points to; do not restate them here.
 - Does every paragraph carry one idea, and every fact of record stay under twenty-five words?
 - Are the title and every heading in sentence case (first word + proper nouns/acronyms/code
   identifiers only), and is the file name lowercase-kebab matching the slug? (see [[house-core]] §Capitalization)
+- Do the title and slug both avoid a leading article (*the/a/an*), so the entry files and scans by its keyword? (see [[house-core]] §Capitalization)
 - Are headings sentence case, keyword first, roughly one every 90 to 150 words?
 - Is every claim active-voice, naming the actor and the consequence, with no unearned adjective?
 - Does every term of art link to its article instead of being re-defined?

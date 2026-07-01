@@ -155,3 +155,4 @@ instead of guessing.*
 - Does Rollback name the failure mode and its fix, or state idempotent/irreversible?
 - Does every architectural "why" link to a reference article rather than explain inline?
 - Do conditional steps fork explicitly where the real world forks?
+- Are the title and slug free of a leading article (*the/a/an*), sentence-case / lowercase-kebab, and matched to each other? (see [[house-core]] §Capitalization)

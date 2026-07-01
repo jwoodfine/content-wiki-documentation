@@ -120,3 +120,4 @@ links to the authority rather than copying it.*
 - Does every forward-looking statement carry *planned* / *intended* / *may* / *target* with a
   reasonable basis and cautionary framing — and defer to any regulated context's own requirements?
 - Does the license-explainer link to the canonical text rather than reproducing it?
+- Do the title and slug lead with the keyword, not a leading article (*the/a/an*)? (see [[house-core]] §Capitalization)
