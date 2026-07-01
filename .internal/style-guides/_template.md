@@ -7,8 +7,8 @@ type: reference
 content_type: reference
 quality: complete
 status: active
-audience: contributor-internal
-bcsc_class: internal-only
+audience: contributor
+bcsc_class: public-disclosure-safe
 last_edited: 2026-07-01
 editor: pointsav-engineering
 ---
@@ -87,8 +87,8 @@ type: reference
 content_type: reference
 quality: complete
 status: active
-audience: contributor-internal
-bcsc_class: internal-only
+audience: contributor
+bcsc_class: public-disclosure-safe
 governs: [<ARTIFACT-TYPE>, <ARTIFACT-TYPE>]   # the artifact types this guide covers
 last_edited: <YYYY-MM-DD>
 editor: pointsav-engineering

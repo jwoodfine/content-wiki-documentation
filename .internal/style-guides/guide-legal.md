@@ -7,8 +7,8 @@ type: reference
 content_type: reference
 quality: complete
 status: active
-audience: contributor-internal
-bcsc_class: internal-only
+audience: contributor
+bcsc_class: public-disclosure-safe
 governs: [LEGAL-MANIFEST, LEGAL-DISCLAIMER, LEGAL-CORRECTIONS, contract, CLA, terms, policy, license-explainer]
 last_edited: 2026-07-01
 editor: pointsav-engineering
