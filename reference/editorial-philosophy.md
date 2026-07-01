@@ -75,6 +75,4 @@ The result is [[compounding-substrate|compounding]] improvement. Each monthly pa
 ## See also
 
 - [[editorial-language-registers]] — the three registers and vocabulary rules that govern how each wiki is written
-- [[style-guide-topic]] — article structure and Wikipedia-pattern conventions
-- [[style-guide-guide]] — operational guide structure
 - [[glossary-documentation]] — canonical term definitions

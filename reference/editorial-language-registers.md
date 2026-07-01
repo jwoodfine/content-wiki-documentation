@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 content_type: topic
 title: "Editorial language registers"
 slug: editorial-language-registers
-short_description: "The three PointSav wikis address distinct audiences in distinct language registers: Bloomberg and FT institutional tone for corporate and projects readers, Stripe and Cloudflare technical tone for documentation engineers, and RIBA specification prose for specialist deployment sites. Vocabulary retirement rules govern consistent translation across registers."
+short_description: "The three PointSav wikis address distinct audiences in distinct language registers: institutional financial-press tone for corporate and projects readers, developer-platform technical tone for documentation engineers, and regulatory specification prose for specialist deployment sites. Vocabulary retirement rules govern consistent translation across registers."
 category: reference
 status: stable
 bcsc_class: no-disclosure-implication
@@ -20,12 +20,12 @@ Five rules, reconciled and operator-ratified on 2026-05-21, are the editorial st
 1. **Sentence length is budgeted by sentence role.** An expansion sentence — one that develops a mechanism or an argument inside a body section — runs to about 45 words at most. A disclosure sentence — the lede, a compliance claim, a regulatory statement — runs to 25 words at most. Vary the rhythm: every paragraph carries at least one short declarative sentence, so the prose reads as an accordion rather than a monotone.
 2. **Active verbs describe present-fact mechanism.** Use the active voice to describe how something works now. Do not use it to assert a forward-looking claim as accomplished fact — capability, timeline, or outcome that is not yet true keeps `planned`, `intended`, `may`, or `target`. Do not give a system human intent or feeling. There is no ban on `is`, `are`, or `was`: a plain copula is correct when the sentence states a fact.
 3. **Analogy is a ceiling, not a quota.** An analogy is optional. Where one is used, hold to at most one per 300 words. Prose with no analogy is fully compliant; prose that reaches for an analogy in every paragraph is not.
-4. **The lede is the nut graf; the Franklin arc orders the body.** The Bloomberg four-paragraph lede carries the news in roughly the first 10% of the article. The Franklin arc — Crisis, then Quest, then Breakthrough — governs the order of body sections only. It never displaces the lede or delays the news.
+4. **The lede is the nut graf; the Franklin arc orders the body.** The front-loaded four-paragraph lede carries the news in roughly the first 10% of the article. The Franklin arc — Crisis, then Quest, then Breakthrough — governs the order of body sections only. It never displaces the lede or delays the news.
 5. **The SaaS-marketing register is rejected.** Public content does not adopt the promotional voice of a software-product landing page. Internal codenames — "Liquid Glass" among them — stay internal; they do not appear in public content.
 
 ## What a register is
 
-A language register is the combination of sentence structure, vocabulary, depth, and tone appropriate for a specific audience in a specific context. A financial brief uses a different register than a technical specification. Bloomberg and the Financial Times use a different register than a building code. Stripe's developer documentation uses a different register than either. The PointSav wikis are written in three distinct registers — one per audience — applied consistently across every article.
+A language register is the combination of sentence structure, vocabulary, depth, and tone appropriate for a specific audience in a specific context. A financial brief uses a different register than a technical specification. Institutional financial journalism uses a different register than a building code. Developer-platform documentation uses a different register than either. The PointSav wikis are written in three distinct registers — one per audience — applied consistently across every article.
 
 Register is not style preference. It is the difference between a reader who understands what they came to learn and a reader who gives up and closes the tab.
 
@@ -33,16 +33,16 @@ Register is not style preference. It is the difference between a reader who unde
 
 | Wiki | Primary audience | Secondary audience | Register |
 |---|---|---|---|
-| `content-wiki-corporate` | Bankers, family offices, institutional investors | C-suite principals, corporate advisors | Bloomberg / FT / Economist |
-| `content-wiki-projects` | Top-400 development firms, commercial architects, construction programme managers | Same institutional investors reading project subject matter | Bloomberg / FT / Economist |
-| `content-wiki-documentation` | Software engineers, graphic designers, platform developers | Emerging institutional readers evaluating technical credibility | Stripe / Cloudflare primary + Corporate accessibility layer |
-| `bim.woodfinegroup.com` | Architects, engineers, building code officials | — | RIBA / IFC specification |
+| `content-wiki-corporate` | Bankers, family offices, institutional investors | C-suite principals, corporate advisors | Institutional financial-press register |
+| `content-wiki-projects` | Top-400 development firms, commercial architects, construction programme managers | Same institutional investors reading project subject matter | Institutional financial-press register |
+| `content-wiki-documentation` | Software engineers, graphic designers, platform developers | Emerging institutional readers evaluating technical credibility | Developer-platform register primary + Corporate accessibility layer |
+| `bim.woodfinegroup.com` | Architects, engineers, building code officials | — | Regulatory specification register |
 | `gis.woodfinegroup.com` | GIS analysts, co-location programme managers | — | Technical specification |
 | `design.pointsav.com` | Design system contributors, component authors | — | Design specification (DTCG, component API) |
 
 The corporate and projects wikis share a register because they share a primary audience. The subject matter shifts — corporate governance and capital structure versus real estate development programmes and co-location markets — but the reader's financial literacy and capital-allocation frame does not. A family office principal reading about direct-hold tax structures and then reading about co-location development sites is the same person applying the same evaluative frame to different subject matter.
 
-## Register 1 — Bloomberg / FT / Economist
+## Register 1 — Institutional financial-press register
 
 **Applies to:** `content-wiki-corporate` and `content-wiki-projects`
 
@@ -66,7 +66,7 @@ The reader is an institutional decision-maker. They have financial literacy and 
 
 Same reader, same register, different subject matter.
 
-## Register 2 — Stripe / Cloudflare + Corporate accessibility layer
+## Register 2 — Developer-platform register + Corporate accessibility layer
 
 **Applies to:** `content-wiki-documentation`
 
@@ -87,11 +87,11 @@ The primary reader is a software engineer, designer, or developer. They have tec
 
 The last sentence is the Corporate accessibility layer. An institutional reader scanning section headers gets: "it can run locally, and you pay nothing when it does."
 
-## Register 3 — RIBA / IFC specification
+## Register 3 — Regulatory specification register
 
 **Applies to:** specialist deployment sites only — `bim.woodfinegroup.com`, `gis.woodfinegroup.com`, `design.pointsav.com`
 
-Prescriptive specification language (shall / shall not for requirements, measurements with units, normative vs informative distinction, standards citations) is the correct register for the specialist sites. It does not appear in the three main wikis because the main wiki audience is the institutional decision-maker, not the compliance engineer. "Shall" language reads as aggressive to a capital allocator. Specification language signals "compliance document," not "credible platform."
+Prescriptive specification language (shall / shall not for requirements, measurements with units, normative vs informative distinction, standards citations, in the tradition of building-code and interoperability standards bodies) is the correct register for the specialist sites. It does not appear in the three main wikis because the main wiki audience is the institutional decision-maker, not the compliance engineer. "Shall" language reads as aggressive to a capital allocator. Specification language signals "compliance document," not "credible platform."
 
 **Specialist sites as cross-reference destinations:**
 
@@ -127,6 +127,4 @@ These terms appear in current wiki articles written for an internal engineering 
 ## See also
 
 - [[editorial-philosophy]] — the Wikipedia learning environment model that defines the purpose all three registers serve
-- [[style-guide-topic]] — article structure and Wikipedia-pattern conventions
-- [[style-guide-guide]] — operational guide structure and code block conventions
 - [[glossary-documentation]] — canonical term definitions

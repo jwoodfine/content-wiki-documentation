@@ -10,11 +10,31 @@
 > layout-rule enforcement, defect resolution, surfaced open
 > questions — does.
 
-Last updated: 2026-05-26.
+Last updated: 2026-07-01.
 
 ---
 
 ## Open
+
+### 2026-07-01 — Slug collision: `language-protocol-substrate` exists in both `architecture/` and `substrate/`
+
+Surfaced while fixing named-company references (see closed entry below). `architecture/language-protocol-substrate.md` (last_edited 2026-06-29, about the workspace-level metadata classification/routing layer) and `substrate/language-protocol-substrate.md` (last_edited 2026-05-15, about the editorial adapter-family/genre-template infrastructure) are two different articles sharing the same `slug: language-protocol-substrate` — a violation of naming-convention.md §5 (slugs must be globally unique; the wikilink resolver is flat). Not resolved this session — deciding which article keeps the slug (and what the other one renames to) needs an editorial call on which article is canonical, not a mechanical fix. Flagged, not fixed.
+
+---
+
+### 2026-07-01 — Named-company benchmarking removed from public wiki content: COMPLETE
+
+`Closed: 2026-07-01.`
+
+**Scope:** Operator flagged that TOPIC/GUIDE content should not name specific real companies (Goldman Sachs, Bloomberg, etc.) as writing-quality benchmarks, and that the style-guide articles in particular shouldn't be on the public wiki. Full audit + fix this session:
+
+- **Consolidated + relocated:** 16 `reference/style-guide-*.md` articles (32 files w/ `.es.md`) — previously rendered live (`bcsc_class: public-disclosure-safe`, `status: active`) despite being contributor/editorial-process documentation, not reader content — merged into `.internal/style-guide.md` + `.internal/style-guide.es.md`. `.internal/` is a new, permanent, non-wiki-category directory: `app-mediakit-knowledge`'s content loader already skips dotted directories, so nothing here is rendered, with no engine change required. See `naming-convention.md` §13 Decision #9 and `repo-layout.md` for the ratified convention.
+- **Genericized in place** (stayed public, removed only the named-company benchmark phrasing): `reference/editorial-language-registers.md`+`.es.md`, `reference/_index.md`+`.es.md`, `reference/editorial-philosophy.md`+`.es.md`, `applications/app-mediakit-knowledge.md`, `architecture/language-protocol-substrate.md`+`.es.md`, `governance/anti-homogenization-discipline.md`, `systems/console-os.md`+`.es.md`, plus `media-knowledge-corporate/about.md`+`.es.md` in the corporate wiki.
+- **Left unchanged** (factual integration references, not tone benchmarks): `leapfrog-2030-architecture.md`, `service-wallet-settlement.md` (Stripe Connect as an actual payment rail).
+- **Backlinks fixed** so no public page links to the now-unpublished `.internal/` slugs: `index.md`, `substrate/language-protocol-substrate.md`+`.es.md`, `services/template-ledger.md`, `reference/glossary-documentation.md`+`.es.md`, `reference/editorial-philosophy.md`+`.es.md`, `reference/editorial-language-registers.md`+`.es.md`, `reference/_index.md`+`.es.md`.
+- **New enforcement:** `.agent/scripts/editorial-lint.py` + `.agent/editorial-qa/banned-vocabulary.txt` + new `.agent/editorial-qa/banned-company-names.txt` created in this archive (were referenced by other archives' copies but did not exist here — see NEXT.md). Added a WARN-level (not ERROR — see file header for rationale) named-company check to the linter, scoped to a curated list that deliberately excludes real integration/standards partners (Stripe, Cloudflare, RIBA) to avoid false-positiving on legitimate factual references. Verified against `media-knowledge-projects` and `media-knowledge-corporate`: the linter correctly flagged (WARN) 3 files with Morgan Stanley/Bank of America/JPMorgan mentions, all of which on inspection are legitimate factual references (market research citations, real historical employers in city economic profiles) — no changes needed there, confirming the WARN-not-ERROR design choice.
+
+**Verification:** `grep -rliE "goldman sachs|bloomberg|stripe|cloudflare|riba|financial times|the economist"` across all three wikis (excluding `.internal/` and `.agent/`) returns only the two intentionally-left Stripe Connect references and two CLAUDE.md files (not wiki-rendered).
 
 ### 2026-05-26 — Guide section taxonomy + Operational Guide Catalog: COMPLETE
 

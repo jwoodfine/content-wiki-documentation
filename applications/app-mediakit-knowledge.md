@@ -119,7 +119,7 @@ The wiki's editor is a CodeMirror 6 instance vendored into the binary's static-a
 
 Three substrate-aware features distinguish the implementation:
 
-**Squiggle linting (Phase 2 Step 4).** Seven deterministic rules flag editorial issues at typing time, each with a cited authority in a hover-card. The rules cover banned vocabulary, forward-looking framings without the cautionary-banner pattern, BCSC-discipline checks, and Bloomberg-article-standard register checks. The rules are deterministic at edit time; structured constrained decoding at inference time is intended to harden these into compile-time-equivalent guarantees once the service-slm Doorman ships the grammar-constraint integration.
+**Squiggle linting (Phase 2 Step 4).** Seven deterministic rules flag editorial issues at typing time, each with a cited authority in a hover-card. The rules cover banned vocabulary, forward-looking framings without the cautionary-banner pattern, BCSC-discipline checks, and institutional-register checks. The rules are deterministic at edit time; structured constrained decoding at inference time is intended to harden these into compile-time-equivalent guarantees once the service-slm Doorman ships the grammar-constraint integration.
 
 **Citation autocomplete (Phase 2 Step 5).** Pressing `[` triggers a typeahead populated from the workspace citation registry. The contributor types `[ni-51` and the list narrows to `ni-51-102` (BCSC continuous disclosure) plus any other matches. Selecting an entry inserts the canonical `[citation-id]` form and adds the citation to the article's frontmatter `cites:` list automatically. The pattern keeps citation discipline cheap to follow and expensive to skip.
 

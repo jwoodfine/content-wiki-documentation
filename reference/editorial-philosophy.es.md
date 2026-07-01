@@ -57,6 +57,4 @@ El objetivo de cada artículo en cualquier revisión es "borrador 2 de 10" — s
 ## Véase también
 
 - [[editorial-language-registers]] — los tres registros y las reglas de vocabulario que rigen cómo se escribe cada wiki
-- [[style-guide-topic]] — estructura de artículos y convenciones del patrón Wikipedia
-- [[style-guide-guide]] — estructura de guías operacionales
 - [[glossary-documentation]] — definiciones canónicas de términos

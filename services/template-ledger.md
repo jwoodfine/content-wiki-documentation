@@ -43,5 +43,4 @@ No push notification is sent to the operator. The current template is always pre
 ## See also
 
 - [[service-email]] — the Ring 1 email ingest service that handles inbound messages
-- [[style-guide-guide]] — operational register conventions for deployment runbooks
 - [[disclosure-substrate]] — the disclosure architecture that governs outbound communications

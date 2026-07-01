@@ -24,7 +24,7 @@ references:
     url: "https://www.iso.org/standard/68078.html"
 ---
 
-`os-console` es la superficie de cara al operador de la plataforma PointSav — un Libro Mayor de Comandos que se conecta a un [[totebox-os|Totebox]] y le presenta su estado al operador. No almacena datos ni ejecuta servicios; es un terminal de alta fidelidad diseñado específicamente para el flujo de trabajo del operador mediante teclado. El punto de referencia es el Bloomberg Terminal: un único teclado, un pequeño conjunto de [[os-console-platform|teclas de función]], y un enfoque implacable en el contexto del operador. El binario está escrito desde cero en Rust para un arranque en frío por debajo de los 50 milisegundos y un tamaño de 15 megabytes. Este artículo cubre el funcionamiento de os-console, la superficie de teclas de función, la pila de renderizado y los dos modos de operación.
+`os-console` es la superficie de cara al operador de la plataforma PointSav — un Libro Mayor de Comandos que se conecta a un [[totebox-os|Totebox]] y le presenta su estado al operador. No almacena datos ni ejecuta servicios; es un terminal de alta fidelidad diseñado específicamente para el flujo de trabajo del operador mediante teclado. El punto de referencia es el terminal financiero profesional: un único teclado, un pequeño conjunto de [[os-console-platform|teclas de función]], y un enfoque implacable en el contexto del operador. El binario está escrito desde cero en Rust para un arranque en frío por debajo de los 50 milisegundos y un tamaño de 15 megabytes. Este artículo cubre el funcionamiento de os-console, la superficie de teclas de función, la pila de renderizado y los dos modos de operación.
 
 ## Cómo funciona
 

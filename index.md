@@ -23,7 +23,7 @@ records]] by structure, and operates fully without AI for buyers that require
 an air-gap.
 
 This wiki is the engineering library for that platform, maintained against
-the published [[style-guide-topic|editorial standard]]. It documents the
+an internal editorial standard. It documents the
 [[three-ring-architecture|architecture]], the services, the operating systems, the governance commitments,
 and the design rationale that binds future development. It is written for
 institutional readers — auditors, technical due-diligence reviewers, and
@@ -32,4 +32,4 @@ platform. Where the engineering monorepo holds the code, this wiki holds
 the reasoning.
 
 Forward-looking statements in this wiki carry planned, intended, or target
-language per the [[style-guide-topic|editorial standard]].
+language per the internal editorial standard.

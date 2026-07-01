@@ -24,7 +24,7 @@ references:
     url: "https://www.iso.org/standard/68078.html"
 ---
 
-`os-console` is the human-facing surface of the PointSav platform — a Command Ledger that connects to one [[totebox-os|Totebox]] and renders its state to the operator. It does not store data and does not run services; it is a high-fidelity terminal purpose-built around keyboard-driven operator flow. The reference point is the Bloomberg Terminal: a single keyboard, a small set of [[os-console-platform|function keys]], and a relentless focus on the operator's context. The binary is written from scratch in Rust for sub-50-millisecond cold start and a 15-megabyte footprint. This article covers how os-console runs, the F-key surface, the [[three-ring-architecture|rendering stack]], and the two operating modes.
+`os-console` is the human-facing surface of the PointSav platform — a Command Ledger that connects to one [[totebox-os|Totebox]] and renders its state to the operator. It does not store data and does not run services; it is a high-fidelity terminal purpose-built around keyboard-driven operator flow. The reference point is the professional financial terminal: a single keyboard, a small set of [[os-console-platform|function keys]], and a relentless focus on the operator's context. The binary is written from scratch in Rust for sub-50-millisecond cold start and a 15-megabyte footprint. This article covers how os-console runs, the F-key surface, the [[three-ring-architecture|rendering stack]], and the two operating modes.
 
 ## How it runs
 

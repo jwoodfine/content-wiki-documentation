@@ -646,5 +646,4 @@ Zero-party data is information that users intentionally and proactively share wi
 
 ## See also
 
-- [[style-guide-topic]]
-- [[style-guide-guide]]
+- [[editorial-language-registers]]

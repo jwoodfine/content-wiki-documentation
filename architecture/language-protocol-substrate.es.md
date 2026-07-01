@@ -52,7 +52,7 @@ Se definen cuatro familias de género, cada una con su propia lista de vocabular
 objetivos de ajuste de registro y reglas de análisis de la Etapa 1:
 
 - **PROSE** — editorial general: artículos, documentación técnica, TOPICs de arquitectura.
-  Apunta al registro de artículo Bloomberg; prohíbe el vocabulario de marketing de productos
+  Apunta al registro institucional de artículo; prohíbe el vocabulario de marketing de productos
   de IA y las frases de cobertura vagas.
 - **COMMS** — comunicaciones externas: cartas a inversores, comunicados de prensa, declaraciones
   públicas. Restricciones adicionales de formalidad; la postura de divulgación continua aplica

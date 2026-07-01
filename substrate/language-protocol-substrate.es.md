@@ -60,7 +60,6 @@ Un cliente puede sustituir cualquiera sin tocar los demás. La contribución de 
 
 ## Véase también
 
-- [[style-guide-topic]]
 - [[customer-hostability]]
 - [[anti-homogenization-discipline]]
 - [[apprenticeship-substrate]]

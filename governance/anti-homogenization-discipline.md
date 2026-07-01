@@ -40,7 +40,7 @@ This default applies across every editorial task-type:
 - `frontmatter-normalize` — fill in missing fields; never silently overwrite a present-but-unconventional value.
 - `citation-insert` — propose `[citation-id]` references; surface the candidate citation source for verification.
 
-A user who explicitly requests "rewrite this in Bloomberg register" gets a rewrite. The flag-don't-rewrite default does not block delegation; it requires the delegation to be explicit.
+A user who explicitly requests "rewrite this in institutional register" gets a rewrite. The flag-don't-rewrite default does not block delegation; it requires the delegation to be explicit.
 
 ## Per-tenant adapters preserve voice
 

@@ -65,7 +65,7 @@ Four genre families are defined, each with its own banned-vocabulary list, regis
 targets, and Stage-1 scan rules:
 
 - **PROSE** — general editorial: articles, technical documentation, architecture TOPICs.
-  Targets Bloomberg-article register; bans AI-product marketing vocabulary and vague hedge
+  Targets institutional-article register; bans AI-product marketing vocabulary and vague hedge
   phrases.
 - **COMMS** — external communications: investor letters, press releases, public statements.
   Additional formality constraints; continuous disclosure posture applies where applicable.

@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 content_type: topic
 title: "Registros de lenguaje editorial"
 slug: editorial-language-registers
-short_description: "Las tres wikis de PointSav atienden audiencias distintas en registros de lenguaje distintos: tono institucional Bloomberg y FT para lectores corporativos y de proyectos, tono técnico Stripe y Cloudflare para ingenieros de documentación, y prosa de especificación RIBA para sitios de implementación especializada. Las reglas de retiro de vocabulario rigen traducción consistente entre registros."
+short_description: "Las tres wikis de PointSav atienden audiencias distintas en registros de lenguaje distintos: tono institucional de prensa financiera para lectores corporativos y de proyectos, tono técnico de plataforma de desarrolladores para ingenieros de documentación, y prosa de especificación regulatoria para sitios de implementación especializada. Las reglas de retiro de vocabulario rigen traducción consistente entre registros."
 category: reference
 status: stable
 bcsc_class: no-disclosure-implication
@@ -22,23 +22,23 @@ Cinco reglas, reconciliadas y ratificadas por el operador el 2026-05-21, son el 
 1. **La longitud de la oración se presupuesta según su función.** Una oración de desarrollo — la que desarrolla un mecanismo o un argumento dentro de una sección del cuerpo — llega a unas 45 palabras como máximo. Una oración de divulgación — el encabezado, una afirmación de cumplimiento, una declaración regulatoria — llega a 25 palabras como máximo. Varíe el ritmo: cada párrafo incluye al menos una oración corta y declarativa.
 2. **Los verbos activos describen el mecanismo como hecho presente.** Use la voz activa para describir cómo funciona algo ahora. No la use para afirmar como hecho consumado una afirmación prospectiva — la capacidad, el cronograma o el resultado aún no real conserva `planificado`, `previsto`, `puede` u `objetivo`. No atribuya intención ni emoción humana a un sistema. No hay prohibición de `es`, `son` o `era`.
 3. **La analogía es un techo, no una cuota.** Una analogía es opcional. Donde se use, manténgase en una como máximo por cada 300 palabras.
-4. **El encabezado es el núcleo informativo; el arco Franklin ordena el cuerpo.** El encabezado Bloomberg de cuatro párrafos lleva la noticia en aproximadamente el primer 10% del artículo. El arco Franklin — Crisis, luego Búsqueda, luego Avance — rige solo el orden de las secciones del cuerpo.
+4. **El encabezado es el núcleo informativo; el arco Franklin ordena el cuerpo.** El encabezado de cuatro párrafos lleva la noticia en aproximadamente el primer 10% del artículo. El arco Franklin — Crisis, luego Búsqueda, luego Avance — rige solo el orden de las secciones del cuerpo.
 5. **Se rechaza el registro de marketing SaaS.** El contenido público no adopta la voz promocional de una página de producto de software. Los nombres en clave internos se mantienen internos.
 
 ## Mapa de audiencias
 
 | Wiki | Audiencia primaria | Registro |
 |---|---|---|
-| `content-wiki-corporate` | Banqueros, family offices, inversores institucionales | Bloomberg / FT / Economist |
-| `content-wiki-projects` | Top-400 firmas promotoras, arquitectos comerciales, gestores de programas de construcción | Bloomberg / FT / Economist |
-| `content-wiki-documentation` | Ingenieros de software, diseñadores, desarrolladores de plataforma | Stripe / Cloudflare + capa de accesibilidad corporativa |
-| `bim.woodfinegroup.com` | Arquitectos, ingenieros, funcionarios de código de construcción | Especificación RIBA / IFC |
+| `content-wiki-corporate` | Banqueros, family offices, inversores institucionales | Registro institucional de prensa financiera |
+| `content-wiki-projects` | Top-400 firmas promotoras, arquitectos comerciales, gestores de programas de construcción | Registro institucional de prensa financiera |
+| `content-wiki-documentation` | Ingenieros de software, diseñadores, desarrolladores de plataforma | Registro de plataforma de desarrolladores + capa de accesibilidad corporativa |
+| `bim.woodfinegroup.com` | Arquitectos, ingenieros, funcionarios de código de construcción | Registro de especificación regulatoria |
 | `gis.woodfinegroup.com` | Analistas GIS, gestores de programas de co-ubicación | Especificación técnica |
 | `design.pointsav.com` | Contribuidores al sistema de diseño | Especificación de diseño (DTCG) |
 
 Los wikis corporativo y de proyectos comparten registro porque comparten audiencia primaria. La materia cambia —gobierno corporativo y estructura de capital versus programas de desarrollo inmobiliario y mercados de co-ubicación—, pero el marco de evaluación financiera del lector no cambia.
 
-## Registro 1 — Bloomberg / FT / Economist
+## Registro 1 — Registro institucional de prensa financiera
 
 **Aplica a:** `content-wiki-corporate` y `content-wiki-projects`
 
@@ -52,7 +52,7 @@ El lector es un tomador de decisiones institucional con alfabetización financie
 - Jerga: traducir todo en el primer uso. Los términos internos de la plataforma no aparecen sin un equivalente en lenguaje llano inmediatamente antes.
 - Bloques de código: nunca.
 
-## Registro 2 — Stripe / Cloudflare + capa de accesibilidad corporativa
+## Registro 2 — Registro de plataforma de desarrolladores + capa de accesibilidad corporativa
 
 **Aplica a:** `content-wiki-documentation`
 
@@ -64,7 +64,7 @@ El lector primario es un ingeniero o diseñador. El lector secundario —cada ve
 - Bloques de código: reales y ejecutables.
 - Términos de plataforma: definir una vez en lenguaje llano, luego usar el término.
 
-## Registro 3 — Especificación RIBA / IFC
+## Registro 3 — Registro de especificación regulatoria
 
 **Aplica a:** sitios especializados únicamente — `bim.woodfinegroup.com`, `gis.woodfinegroup.com`, `design.pointsav.com`
 
@@ -88,6 +88,4 @@ El lenguaje de especificación prescriptiva (deberá / no deberá para requisito
 ## Véase también
 
 - [[editorial-philosophy]] — el modelo Wikipedia y el propósito de aprendizaje que comparten todos los registros
-- [[style-guide-topic]] — estructura de artículos y convenciones del patrón Wikipedia
-- [[style-guide-guide]] — estructura de guías operativas y convenciones de bloques de código
 - [[glossary-documentation]] — definiciones canónicas de términos

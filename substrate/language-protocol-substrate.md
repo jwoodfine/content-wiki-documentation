@@ -93,7 +93,6 @@ Per `[ni-51-102]` continuous-disclosure language and in accordance with the forw
 
 ## See also
 
-- [[style-guide-topic]]
 - [[customer-hostability]]
 - [[anti-homogenization-discipline]]
 - [[apprenticeship-substrate]]

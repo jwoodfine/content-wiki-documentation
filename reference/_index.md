@@ -16,19 +16,11 @@ paired_with: _index.es.md
 
 Reference articles are looked up, not read front to back. Each article defines a bounded domain — what a term means, how a document genre is structured, what industry standards apply to a specific workflow. When an article in another category introduces a term or cites a standard, the canonical definition or context is in this category.
 
-## Style guides
-
-How each document genre is structured, what register is appropriate, and how English and Spanish pairs relate.
-
-- [[style-guide-topic]] — How to write a TOPIC article: frontmatter schema, body structure, wikilink syntax, and the bilingual pairing convention.
-- [[style-guide-guide]] — How to write a GUIDE runbook: the operational register, command blocks, recovery procedures, and the catalog vs instance distinction.
-- [[style-guide-architecture]] — How architecture articles are structured and what distinguishes them from TOPIC articles.
-
 ## Editorial philosophy and standards
 
-The principles and voice guidelines that govern all content on this wiki.
+The principles and voice guidelines that govern all content on this wiki. The full contributor style guide covering TOPIC, GUIDE, and every other document genre is maintained as internal editorial reference alongside this wiki's source and is not itself a wiki article.
 
-- [[editorial-philosophy]] — The editorial principles behind PointSav's documentation: institutional register, the Bloomberg four-paragraph lede, and the CFO sentence test.
+- [[editorial-philosophy]] — The editorial principles behind PointSav's documentation: institutional register, the front-loaded four-paragraph lede, and the CFO sentence test.
 - [[editorial-language-registers]] — The four language-register families (PROSE, COMMS, LEGAL, TRANSLATE) and how they route editorial work through the platform's adapter taxonomy.
 - [[structural-positioning]] — How the platform positions itself without naming competitors; the rules that govern comparative statements.
 - [[news-release-standards]] — Standards for news releases and BCSC-compliant continuous-disclosure communications.

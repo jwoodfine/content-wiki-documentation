@@ -12,7 +12,7 @@
 > `content-contract.md` (which governs what the rendering app
 > structurally enforces).
 
-Last updated: 2026-05-07.
+Last updated: 2026-07-01.
 
 ---
 
@@ -130,6 +130,7 @@ MOC landing.
 | `infrastructure/` | Fleet deployment, cloud topology, storage, network, telemetry | Engineers, financial community | `fleet-infrastructure-cloud`, `worm-ledger-architecture`, `sovereign-mesh`, `sovereign-telemetry` |
 | `reference/` | Glossary, nomenclature, style guide, templates | Writers, engineers | `glossary`, `nomenclature-matrix`, `style-guide`, `article-template` |
 | `design-system/` | Design system as a platform component — architectural framing and brand surface context. Component guides, token specs, and accessibility documentation live in `pointsav-design-system/` (see naming-convention.md §13 Decision #7). | Engineers, designers, financial community | `design-philosophy`, `design-primitive-vocabulary`, `brand-family-swatch`, `brand-typography` |
+| `.internal/` | **Not a wiki category — not rendered.** Contributor/editorial-process reference that must stay git-tracked but must never appear on the public wiki (e.g. the consolidated style guide, which uses named real companies as internal writing-calibration benchmarks). The dotted directory name is load-bearing: `app-mediakit-knowledge`'s content loader already skips any dotted directory, so nothing here reaches a route without an engine change. See naming-convention.md §13 Decision #9. | Contributors only | `style-guide.md` |
 
 Rationale:
 
@@ -417,3 +418,33 @@ value. Operator decision: retire from §4 taxonomy now; re-add if and
 when their first TOPICs are authored. The retirement reduces taxonomy
 from 11 categories (after the architecture split would have been 12) to
 10 active.
+
+---
+
+Ratified 2026-07-01 by operator.
+
+**9. `.internal/` — non-wiki-published contributor reference established.**
+The 16 `style-guide-*.md` articles in `reference/` used named real companies
+(e.g. "Goldman Sachs analyst," "Bloomberg four-paragraph lede") as internal
+writing-calibration benchmarks, but were being rendered live on the public
+wiki (`bcsc_class: public-disclosure-safe`, `status: active`) — contributor
+process documentation presented as if it were reader content. Two problems:
+content that should never have been public-facing was public, and named-company
+benchmarking is inconsistent with this workspace's structural-positioning
+discipline (no competitive comparisons by name).
+
+Decision: consolidate the 16 files into a single `style-guide.md` (+
+`style-guide.es.md`) and relocate them to a new `.internal/` directory at
+repo root. `.internal/` is not one of the ten wiki categories in §4 and is
+never rendered — `app-mediakit-knowledge`'s content loader already skips
+any dotted directory (confirmed against the crate source), so this requires
+no engine change. Content in `.internal/` stays git-tracked (visible to
+anyone browsing the repository directly) but does not appear on
+`documentation.pointsav.com`.
+
+This is a directory-convention addition, not a new artifact-type prefix —
+per `nomenclature-taxonomy.md` a new prefix requires a DOCTRINE.md
+amendment; a new directory within an existing repo's own IA only requires
+this decision log, consistent with the Decision #7 design-system/ split
+precedent. Any future contributor-only material that should stay in git
+but off the public wiki goes in `.internal/`, not a new top-level category.

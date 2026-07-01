@@ -5,7 +5,7 @@
 > Companion to `content-contract.md` (which governs file *contents*);
 > this file governs file *placement*.
 
-Last updated: 2026-06-24.
+Last updated: 2026-07-01.
 
 ---
 
@@ -28,6 +28,7 @@ Only the following may appear at repo root:
 | `.git/` | Git metadata |
 | `.github/` | Issue templates, workflows, profile material |
 | `.agent/` | Local rule files (see §4 of `AGENT.md`) |
+| `.internal/` | Contributor/editorial-process reference that must never be rendered on the public wiki (e.g. the consolidated style guide). Dotted name is load-bearing — `app-mediakit-knowledge` skips dotted directories. See `naming-convention.md` §4 + §13 Decision #9. |
 | `index.md` | Wiki home (served at `/` by app-mediakit-knowledge) |
 | `index.es.md` | Spanish wiki home (bilingual pair for `index.md`) |
 | `featured-topic.yaml` | Homepage featured article selection (YAML pointer to a slug) |

@@ -17,19 +17,11 @@ paired_with: _index.md
 
 Los artículos de referencia se consultan, no se leen de principio a fin. Cada artículo define un dominio acotado: qué significa un término, cómo se estructura un género de documento, qué normas del sector se aplican a un flujo de trabajo específico. Cuando un artículo de otra categoría introduce un término o cita una norma, la definición canónica o el contexto se encuentran en esta categoría.
 
-## Guías de estilo
-
-Cómo se estructura cada género de documento, qué registro es adecuado y cómo se relacionan los pares en inglés y español.
-
-- [[style-guide-topic]] — Cómo escribir un artículo TOPIC: esquema de metadatos, estructura del cuerpo, sintaxis de wikienlaces y la convención de emparejamiento bilingüe.
-- [[style-guide-guide]] — Cómo escribir un runbook GUIDE: el registro operativo, bloques de comandos, procedimientos de recuperación y la distinción entre catálogo e instancia.
-- [[style-guide-architecture]] — Cómo se estructuran los artículos de arquitectura y qué los distingue de los artículos TOPIC.
-
 ## Filosofía y estándares editoriales
 
-Los principios y las pautas de voz que rigen todo el contenido de este wiki.
+Los principios y las pautas de voz que rigen todo el contenido de este wiki. La guía de estilo completa para colaboradores, que cubre TOPIC, GUIDE y todos los demás géneros de documento, se mantiene como referencia editorial interna junto al código fuente de este wiki y no es en sí misma un artículo del wiki.
 
-- [[editorial-philosophy]] — Los principios editoriales detrás de la documentación de PointSav: registro institucional, el encabezado Bloomberg de cuatro párrafos y la prueba de la frase del director financiero.
+- [[editorial-philosophy]] — Los principios editoriales detrás de la documentación de PointSav: registro institucional, el encabezado de cuatro párrafos y la prueba de la frase del director financiero.
 - [[editorial-language-registers]] — Las cuatro familias de registro lingüístico (PROSE, COMMS, LEGAL, TRANSLATE) y cómo enrutan el trabajo editorial a través de la taxonomía de adaptadores de la plataforma.
 - [[structural-positioning]] — Cómo la plataforma se posiciona sin nombrar a los competidores; las reglas que rigen las declaraciones comparativas.
 - [[news-release-standards]] — Normas para comunicados de prensa y comunicaciones de divulgación continua conformes con las regulaciones de valores canadienses.

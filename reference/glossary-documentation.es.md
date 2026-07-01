@@ -691,5 +691,4 @@ Los datos de parte cero son información que los usuarios comparten de forma int
 
 ## Véase también
 
-- [[style-guide-topic]]
-- [[style-guide-guide]]
+- [[editorial-language-registers]]
