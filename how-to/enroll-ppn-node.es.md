@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo registrar un nodo PPN"
 slug: enroll-ppn-node
+short_description: "Inscribe una máquina en una flota de cómputo PPN verificando el controlador, iniciando el agente de latido y confirmando el nodo en el inventario de la flota y el registro WORM."
 category: how-to
 content_type: how-to
 type: how-to

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo vincular un nuevo dispositivo"
 slug: pair-a-new-device
+short_description: "Vincula un nuevo dispositivo mediante autorización basada en máquina — generando un código de emparejamiento, verificando la huella de hardware en un dispositivo de confianza y asignando su nivel de acceso."
 category: how-to
 content_type: how-to
 type: how-to

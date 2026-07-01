@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo federar archivos mediante montajes de contenido"
 slug: federate-archives-via-content-mounts
+short_description: "Federa los artículos de una instancia de conocimiento en otra declarando un montaje de contenido en knowledge.toml, reiniciando el motor y verificando que los artículos montados se resuelvan sin copiar archivos."
 category: how-to
 content_type: how-to
 type: how-to

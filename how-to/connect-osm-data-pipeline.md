@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to connect to the OSM data pipeline"
 slug: connect-osm-data-pipeline
+short_description: "Ingesting a new retail or service chain from OpenStreetMap: write the ingest YAML, run the Overpass query, register the chain in the taxonomy, and rebuild the cluster layer."
 category: how-to
 content_type: how-to
 type: how-to

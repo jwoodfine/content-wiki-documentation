@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo ejecutar inferencia SLM local"
 slug: run-local-slm-inference
+short_description: "Inicia el servicio SLM local, verifica el estado de Doorman y envía solicitudes de inferencia desde la consola o la API, manteniendo todos los datos del prompt en el despliegue."
 category: how-to
 content_type: how-to
 type: how-to

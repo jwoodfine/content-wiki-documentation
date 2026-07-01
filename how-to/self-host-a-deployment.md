@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to self-host a deployment"
 slug: self-host-a-deployment
+short_description: "Provisions a self-hosted deployment instance — installing the verified gateway binary, writing the manifest, starting the gateway, and confirming it reports healthy."
 category: how-to
 content_type: how-to
 type: how-to

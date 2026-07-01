@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo escalar los niveles de acceso de usuario"
 slug: scale-user-tiers
+short_description: "Promueve usuarios entre los niveles de acceso READ, USER e INPUT emitiendo nuevos tokens de capacidad y revocando los anteriores, con un paso masivo para todo un equipo."
 category: how-to
 content_type: how-to
 type: how-to

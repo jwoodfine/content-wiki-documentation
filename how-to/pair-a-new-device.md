@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to pair a new device"
 slug: pair-a-new-device
+short_description: "Pairs a new device through machine-based authorization — generating a pairing code, cross-checking the hardware fingerprint on a trusted device, and assigning its access tier."
 category: how-to
 content_type: how-to
 type: how-to

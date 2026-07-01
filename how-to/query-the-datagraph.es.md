@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo consultar el DataGraph"
 slug: query-the-datagraph
+short_description: "Consulta el DataGraph para conocer el estado actual de las entidades con query_datagraph y get_entity_context, navegando relaciones, filtrando por tipo y gestionando una interrupción del circuito de Nivel A."
 category: how-to
 content_type: how-to
 type: how-to

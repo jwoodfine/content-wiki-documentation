@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to run local SLM inference"
 slug: run-local-slm-inference
+short_description: "Starts the local SLM service, verifies Doorman health, and submits inference requests from the console or the API, with all prompt data staying on the deployment."
 category: how-to
 content_type: how-to
 type: how-to

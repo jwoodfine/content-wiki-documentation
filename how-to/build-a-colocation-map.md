@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to build a co-location map"
 slug: build-a-colocation-map
+short_description: "Renders tier-coloured co-location cluster markers on a MapLibre GL map by authenticating against the GIS API and fetching the cluster GeoJSON layer."
 category: how-to
 content_type: how-to
 type: how-to

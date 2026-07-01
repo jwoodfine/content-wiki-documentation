@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to federate archives via content mounts"
 slug: federate-archives-via-content-mounts
+short_description: "Federates one knowledge instance's articles into another by declaring a mount in knowledge.toml, restarting the engine, and confirming they resolve without copying files."
 category: how-to
 content_type: how-to
 type: how-to

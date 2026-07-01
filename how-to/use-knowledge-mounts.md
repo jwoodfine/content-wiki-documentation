@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to use declarative knowledge mounts"
 slug: use-knowledge-mounts
+short_description: "Adds a secondary content repository to a running knowledge instance through a knowledge.toml mount, serving its articles under a URL prefix after a restart."
 category: how-to
 content_type: how-to
 type: how-to

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to authenticate binary downloads"
 slug: authenticate-binary-downloads
+short_description: "Verifies an Ed25519-signed release from the PointSav distribution endpoint using a licence token, the detached signature, and the pinned publisher key before the binary runs."
 category: how-to
 content_type: how-to
 type: how-to

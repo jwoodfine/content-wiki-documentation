@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to rotate keys and capability tokens"
 slug: rotate-keys
+short_description: "Replaces an Ed25519 keypair and its capability token — generating a new keypair, issuing and verifying the new token, then revoking the old one after the transition window."
 category: how-to
 content_type: how-to
 type: how-to

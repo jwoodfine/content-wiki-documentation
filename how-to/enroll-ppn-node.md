@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to enroll a PPN node"
 slug: enroll-ppn-node
+short_description: "Enrolls a machine into a PPN compute fleet by verifying the controller, starting the heartbeat agent, and confirming the node in the fleet inventory and WORM ledger."
 category: how-to
 content_type: how-to
 type: how-to

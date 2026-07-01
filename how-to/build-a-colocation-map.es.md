@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo construir un mapa de co-ubicación"
 slug: build-a-colocation-map
+short_description: "Representa marcadores de clústeres de co-ubicación coloreados por nivel en un mapa MapLibre GL, autenticándose contra la API de GIS y obteniendo la capa GeoJSON de clústeres."
 category: how-to
 content_type: how-to
 type: how-to

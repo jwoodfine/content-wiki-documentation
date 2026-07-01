@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo leer el libro mayor de comandos"
 slug: read-the-command-ledger
+short_description: "Lee el libro mayor de comandos de solo anexión en la Máquina de Entrada F12 — interpretando los tipos de entrada, verificando una entrada contra su hash de punto de control y exportando entradas como tlog-tiles C2SP."
 category: how-to
 content_type: how-to
 type: how-to

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to scale user access tiers"
 slug: scale-user-tiers
+short_description: "Promotes users across the READ, USER, and INPUT access tiers by issuing new capability tokens and revoking the old ones, including a bulk pass for a whole team."
 category: how-to
 content_type: how-to
 type: how-to

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo navegar la TUI de la consola"
 slug: navigate-console-tui
+short_description: "Navega la interfaz de terminal de os-console con el teclado — cambiando entre ranuras de teclas F, leyendo la barra de estado de identidad y nivel SLM, y siguiendo qué ranura está activa."
 category: how-to
 content_type: how-to
 type: how-to

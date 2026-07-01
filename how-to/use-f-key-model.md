@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to use the F-key cartridge model"
 slug: use-f-key-model
+short_description: "Navigates the os-console F-key cartridge model — F3 email, F9 SLM inference, F12 Input Machine — where each compiled-in cartridge owns its slot's rendering and input."
 category: how-to
 content_type: how-to
 type: how-to

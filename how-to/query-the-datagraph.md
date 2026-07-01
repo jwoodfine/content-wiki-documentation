@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to query the DataGraph"
 slug: query-the-datagraph
+short_description: "Queries the DataGraph for current entity state with query_datagraph and get_entity_context, navigating relationships, filtering by type, and handling a Tier A circuit outage."
 category: how-to
 content_type: how-to
 type: how-to

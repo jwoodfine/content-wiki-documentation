@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to issue a capability token"
 slug: issue-capability-token
+short_description: "Issues an Ed25519-signed, time-bounded capability token for a device or service, from selecting the access scope to delivering and verifying the signed credential."
 category: how-to
 content_type: how-to
 type: how-to

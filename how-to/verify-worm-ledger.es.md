@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo verificar una entrada del libro mayor WORM"
 slug: verify-worm-ledger
+short_description: "Verifica una entrada del ledger WORM comprobando su cadena de hash contra los archivos de tile y, cuando existe, un checkpoint firmado — usando solo herramientas SHA-256 estándar."
 category: how-to
 content_type: how-to
 type: how-to

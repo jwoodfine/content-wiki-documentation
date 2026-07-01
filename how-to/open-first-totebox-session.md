@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to open your first Totebox session"
 slug: open-first-totebox-session
+short_description: "Opens a first Totebox session from a paired device — selecting an archive, reviewing the inbox, starting a BRIEF task, and completing the shutdown sweep before closing."
 category: how-to
 content_type: how-to
 type: how-to

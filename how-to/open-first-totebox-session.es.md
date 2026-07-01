@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo abrir tu primera sesión Totebox"
 slug: open-first-totebox-session
+short_description: "Abre una primera sesión Totebox desde un dispositivo vinculado — seleccionando un archivo, revisando la bandeja de entrada, iniciando una tarea BRIEF y completando el barrido de cierre antes de terminar."
 category: how-to
 content_type: how-to
 type: how-to

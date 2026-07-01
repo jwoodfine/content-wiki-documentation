@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to explore the console for the first time"
 slug: explore-the-console
+short_description: "Orients a first-time operator to the console — the three-zone layout, status bar fields, Doorman health at F9, and the mandatory F12 input checkpoint."
 category: how-to
 content_type: how-to
 type: how-to

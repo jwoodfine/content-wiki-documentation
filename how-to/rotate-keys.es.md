@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo rotar claves y tokens de capacidad"
 slug: rotate-keys
+short_description: "Reemplaza un par de claves Ed25519 y su token de capacidad — generando un nuevo par, emitiendo y verificando el nuevo token, y revocando el anterior tras la ventana de transición."
 category: how-to
 content_type: how-to
 type: how-to

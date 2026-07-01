@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to run your first SLM query"
 slug: run-first-slm-query
+short_description: "Opens the F9 SLM cartridge, confirms a live Doorman circuit, and submits a first prompt to the on-premises language model without sending data off the host."
 category: how-to
 content_type: how-to
 type: how-to

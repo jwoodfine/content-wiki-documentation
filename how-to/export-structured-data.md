@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to export structured data from the platform"
 slug: export-structured-data
+short_description: "Exports platform data through four paths — DataGraph entity records, wiki Markdown, GeoJSON datasets, and tamper-evident ledger tiles — matched to the right layer and format."
 category: how-to
 content_type: how-to
 type: how-to

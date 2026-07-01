@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to deploy a knowledge instance"
 slug: deploy-knowledge-instance
+short_description: "Deploys an instance of the app-mediakit-knowledge wiki server from a local content path: build the binary, write knowledge.toml, start the service, and verify it serves pages."
 category: how-to
 content_type: how-to
 type: how-to

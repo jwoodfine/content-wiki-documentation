@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to read the command ledger"
 slug: read-the-command-ledger
+short_description: "Reads the append-only command ledger in the F12 Input Machine — interpreting entry types, verifying an entry against its checkpoint hash, and exporting entries as C2SP tlog-tiles."
 category: how-to
 content_type: how-to
 type: how-to

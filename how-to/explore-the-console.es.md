@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo explorar la consola por primera vez"
 slug: explore-the-console
+short_description: "Orienta a un operador que usa la consola por primera vez: el diseño de tres zonas, los campos de la barra de estado, el estado de Doorman en F9 y el punto de control de entrada obligatorio F12."
 category: how-to
 content_type: how-to
 type: how-to

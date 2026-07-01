@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo usar los montajes de conocimiento declarativos"
 slug: use-knowledge-mounts
+short_description: "Añade un repositorio de contenido secundario a una instancia de knowledge en ejecución mediante un montaje en knowledge.toml, sirviendo sus artículos bajo un prefijo de URL tras reiniciar."
 category: how-to
 content_type: how-to
 type: how-to

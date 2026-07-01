@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to configure a tenant namespace"
 slug: configure-tenant-namespace
+short_description: "Configures an isolated tenant namespace: registers the tenant, sets quota limits, issues the root capability token, and verifies isolation and quota enforcement."
 category: how-to
 content_type: how-to
 type: how-to

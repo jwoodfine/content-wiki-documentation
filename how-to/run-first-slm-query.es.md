@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo ejecutar su primera consulta SLM"
 slug: run-first-slm-query
+short_description: "Abre el cartucho SLM en F9, confirma un circuito Doorman activo y envía un primer prompt al modelo de lenguaje local sin enviar datos fuera del host."
 category: how-to
 content_type: how-to
 type: how-to

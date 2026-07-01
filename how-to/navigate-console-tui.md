@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to navigate the console TUI"
 slug: navigate-console-tui
+short_description: "Navigates the os-console terminal interface by keyboard — switching between F-key slots, reading the status bar for identity and SLM tier, and tracking which slot is active."
 category: how-to
 content_type: how-to
 type: how-to

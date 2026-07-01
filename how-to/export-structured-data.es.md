@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo exportar datos estructurados de la plataforma"
 slug: export-structured-data
+short_description: "Exporta datos de la plataforma por cuatro vías — registros de entidad del DataGraph, Markdown del wiki, conjuntos GeoJSON y mosaicos de registro verificables — según la capa y el formato adecuados."
 category: how-to
 content_type: how-to
 type: how-to

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo configurar el gateway Doorman"
 slug: configure-doorman
+short_description: "Configura una puerta de enlace Doorman de instancia única — direcciones ascendentes por nivel, umbrales del disyuntor y verificación del estado de cada nivel mediante el endpoint de salud y el panel F9 de la consola."
 category: how-to
 content_type: how-to
 type: how-to

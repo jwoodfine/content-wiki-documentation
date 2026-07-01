@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo usar el modelo de cartuchos de tecla de función"
 slug: use-f-key-model
+short_description: "Recorre el modelo de cartuchos de teclas F de os-console — F3 correo, F9 inferencia SLM, F12 Máquina de Entrada — donde cada cartucho compilado gobierna el render y la entrada de su ranura."
 category: how-to
 content_type: how-to
 type: how-to

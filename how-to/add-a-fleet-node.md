@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to add a node to a running fleet"
 slug: add-a-fleet-node
+short_description: "Adds a node to a running PPN fleet without restarting existing nodes, covering controller health checks, choosing a non-conflicting node ID, and starting its heartbeat agent."
 category: how-to
 content_type: how-to
 type: how-to

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to configure the Doorman gateway"
 slug: configure-doorman
+short_description: "Configures a single-instance Doorman gateway — tier upstream addresses, circuit-breaker thresholds, and verifying tier state through the health endpoint and console F9 dashboard."
 category: how-to
 content_type: how-to
 type: how-to

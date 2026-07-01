@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo emitir un token de capacidad"
 slug: issue-capability-token
+short_description: "Emite un token de capacidad firmado con Ed25519 y de vigencia limitada para un dispositivo o servicio, desde la elección del alcance de acceso hasta la entrega y verificación de la credencial firmada."
 category: how-to
 content_type: how-to
 type: how-to

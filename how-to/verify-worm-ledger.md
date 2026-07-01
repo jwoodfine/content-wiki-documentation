@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "How to verify a WORM ledger entry"
 slug: verify-worm-ledger
+short_description: "Verifies a WORM ledger entry by checking its hash chain against the tile files and, where present, a signed checkpoint — using only a standard SHA-256 toolchain."
 category: how-to
 content_type: how-to
 type: how-to

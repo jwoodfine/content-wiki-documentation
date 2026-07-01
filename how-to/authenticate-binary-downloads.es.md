@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo autenticar descargas de binarios"
 slug: authenticate-binary-downloads
+short_description: "Verifica una versión firmada con Ed25519 del endpoint de distribución de PointSav mediante un token de licencia, la firma independiente y la clave pública fijada antes de ejecutar el binario."
 category: how-to
 content_type: how-to
 type: how-to

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo añadir un nodo a una flota en funcionamiento"
 slug: add-a-fleet-node
+short_description: "Añade un nodo a una flota PPN en ejecución sin reiniciar los nodos existentes: verifica el estado del controlador, elige un ID de nodo sin conflictos e inicia su agente de latido."
 category: how-to
 content_type: how-to
 type: how-to

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo conectarse al pipeline de datos OSM"
 slug: connect-osm-data-pipeline
+short_description: "Incorpora una nueva cadena minorista o de servicios desde OpenStreetMap: escribe el YAML de ingesta, ejecuta la consulta Overpass, registra la cadena en la taxonomía y reconstruye la capa de clústeres."
 category: how-to
 content_type: how-to
 type: how-to

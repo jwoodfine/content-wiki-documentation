@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo autoalojar un despliegue"
 slug: self-host-a-deployment
+short_description: "Aprovisiona una instancia de despliegue autoalojada — instalando el binario de gateway verificado, escribiendo el manifiesto, arrancando el gateway y confirmando que reporta estado saludable."
 category: how-to
 content_type: how-to
 type: how-to

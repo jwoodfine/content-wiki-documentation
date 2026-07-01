@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo configurar un espacio de nombres de tenant"
 slug: configure-tenant-namespace
+short_description: "Configura un espacio de nombres de inquilino aislado: registra al inquilino, define los límites de cuota, emite el token de capacidad raíz y verifica el aislamiento y la aplicación de cuotas."
 category: how-to
 content_type: how-to
 type: how-to
