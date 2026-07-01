@@ -42,6 +42,17 @@ The operational skeleton, in order:
 - **Rollback** — the failure mode, its diagnostic, and the corrective steps; or a stated
   guarantee that the procedure is idempotent or the change irreversible.
 
+**Orientation and first-run variant.** Some guides are learning-oriented rather than
+task-oriented — a first-run walk-through that shows a reader around a system they have not used
+yet. These are Diátaxis tutorials; they live here because the covering set has no separate
+tutorial register. An orientation guide keeps Prerequisites and numbered steps, but where a task
+how-to carries formal Expected outcome / Verification / Rollback, an orientation guide folds
+confirmation inline ("you should now see the status bar at the top of the screen") and may omit
+Rollback, because a read-only walk-through changes no state to reverse. Only that outcome/
+verification/rollback formality relaxes; every other rule below still holds. (Added 2026-07-01
+after a first-run guide scored as non-compliant against the task skeleton — see the calibration
+report.)
+
 ## 3. Opening
 
 A how-to leads with Purpose, then Prerequisites — the reader must know in the first two lines

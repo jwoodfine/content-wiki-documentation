@@ -46,9 +46,13 @@ out, and a principal who sees nothing else must know what changes for their capi
 
 ## 4. Paragraph and sentence rhythm
 
-The financial-press delta on the reference guide: sentence length targets 14–18 words, with a
-25-word hard limit — tighter than the reference default. Numbers are always specific: "$7 per
-month," not "low cost"; "top-400 development markets," not "major markets."
+The financial-press delta on the reference guide: consequence and disclosure sentences target
+14–18 words and stay under 25 — tighter than the reference default. An analytical sentence that
+carries a single multi-condition test — a covenant, a debt-sizing constraint, a rate mechanism —
+may run longer when splitting it would fragment one logical unit; prefer the split wherever it
+does not fragment the logic. Numbers are always specific: "$7 per month," not "low cost";
+"top-400 development markets," not "major markets." (The ≤25 target is a target, not a hard gate —
+calibrated 2026-07-01 against strong analytical articles; see the calibration report.)
 
 ## 5. Headings and scannability
 
@@ -99,6 +103,7 @@ publish.*
 - Would a senior finance reader who does not read source code follow every sentence?
 - Is the article prose-only, with zero code blocks?
 - Is every platform-internal term preceded by a plain-language equivalent on first use?
-- Are all numbers specific, and all sentences within the 25-word limit?
+- Are all numbers specific, and are consequence and disclosure sentences within the 25-word
+  target (with only genuine single-test analytical sentences running longer)?
 - Does every forward-looking claim carry planned/intended/may/target, and is the Sovereign Data
   Foundation referenced only in those terms?

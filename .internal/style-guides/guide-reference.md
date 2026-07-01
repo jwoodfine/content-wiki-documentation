@@ -78,9 +78,10 @@ is developing a single mechanism — but the moment the idea changes, the paragr
 
 ## 5. Headings and scannability
 
-Aim for a heading roughly every 75 to 100 words; sections run one to four paragraphs, and a
-longer one wants a subheading for navigation. Headings are sentence case, keyword first, so a
-reader scanning the left margin lands on the term. The body carries no top-level heading — the
+Aim for a heading roughly every 90 to 150 words; sections run one to four paragraphs, and a
+longer one wants a subheading for navigation. Treat anything over about 200 words per heading as
+too sparse. Headings are sentence case, keyword first, so a reader scanning the left margin lands
+on the term. The body carries no top-level heading — the
 title comes from frontmatter.
 
 Tables and lists earn their place only where the content is genuinely structured: an INVENTORY's
@@ -145,7 +146,12 @@ A JOURNAL article is reference prose with three added disciplines. Its literatur
 establishes the gap the work addresses by describing the state of the field in structural terms —
 what is unsolved — never by naming a competing product or organization as the foil. Authorship is
 attributed to natural persons, not the platform or an engine. Everything else — front-loaded
-claim, neutral voice, linked terms — is the base reference form. The extra requirements
+claim, neutral voice — is the base reference form.
+
+Wiki-only rules do not bind a JOURNAL: it carries no wikilinks (it is a standalone external
+submission), follows its target venue's citation format and section lengths rather than the
+heading-density band above, and needs no bilingual pair. Score a JOURNAL against its venue's
+conventions and these three disciplines, not against the wiki checklist. The extra requirements
 (external submission, citation format, contribution statements) live in the journal-artifact
 discipline convention, which this section points to; do not restate them here.
 

@@ -77,10 +77,13 @@ accordion rather than a monotone. Avoid chaining more than two clauses with *and
 Headings are navigation, not decoration. They let a reader find the section they need without
 reading the ones they do not.
 
-Aim for a heading roughly every 75 to 100 words of body — denser than a report, closer to an
-encyclopedia. A 600-word article carries six to eight headings, not three. Sections run one to
-four paragraphs; a section longer than that wants a subheading. Do not over-section either: a
-heading above a single short paragraph adds clutter, not navigation.
+Aim for a heading roughly every 90 to 150 words of body — denser than a report, closer to an
+encyclopedia. A 600-word article carries four to seven headings. Treat anything above about 200
+words per heading as too sparse: the section has become a wall the reader cannot navigate.
+Sections run one to four paragraphs; a section longer than that wants a subheading. Do not
+over-section either: a heading above a single short paragraph adds clutter, not navigation.
+(Band calibrated 2026-07-01 against mature articles that read well at ~120–140 words/heading; the
+earlier 75–100 target flagged good prose as thin — see the calibration report.)
 
 Write headings in sentence case, with the most important word first, so a reader scanning the
 left margin lands on the keyword. "Rollback procedure" beats "How to roll back the change."
