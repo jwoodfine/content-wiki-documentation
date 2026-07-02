@@ -22,7 +22,7 @@ cites: []
 # Arquitectura de Ventas de Licencias Cripto
 
 La arquitectura de ventas de licencias cripto describe cómo un cliente avanza desde la
-expresión de intención de compra, a través del pago en cadena, hasta la recepción de un
+expresión de intención de compra, a través del [[direct-payment-settlement|pago en cadena]], hasta la recepción de un
 token de licencia que otorga acceso binario, sin que un procesador de pago tradicional
 ni un proveedor de identidad intervengan en la ruta crítica.
 

@@ -28,7 +28,7 @@ El diseño de interfaz de usuario, también llamado ingeniería de interfaz de u
 
 ## Relación con el diseño de experiencia de usuario
 
-El diseño de interfaz de usuario se discute a menudo junto con el diseño de experiencia de usuario, pero las dos disciplinas son distintas. La distinción fue articulada por Don Norman y Jakob Nielsen: el diseño de IU se refiere a la superficie y el aspecto general de un diseño — los elementos visuales e interactivos que un usuario encuentra al usar un producto. El diseño de UX se refiere al proceso completo de creación de la experiencia del usuario — el rango completo de factores que afectan cómo un usuario percibe e interactúa con un producto.
+El diseño de interfaz de usuario se discute a menudo junto con el [[user-experience-design|diseño de experiencia de usuario]], pero las dos disciplinas son distintas. La distinción fue articulada por Don Norman y Jakob Nielsen: el diseño de IU se refiere a la superficie y el aspecto general de un diseño — los elementos visuales e interactivos que un usuario encuentra al usar un producto. El diseño de UX se refiere al proceso completo de creación de la experiencia del usuario — el rango completo de factores que afectan cómo un usuario percibe e interactúa con un producto.
 
 ## Tipos de interfaz de usuario
 

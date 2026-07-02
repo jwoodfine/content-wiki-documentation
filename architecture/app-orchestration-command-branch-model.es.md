@@ -17,7 +17,7 @@ paired_with: app-orchestration-command-branch-model.md
 cites: []
 ---
 
-Cada Totebox Archive en la topología de `app-orchestration-command` opera en su propia rama aislada, separada del `main` canónico que gestiona el coordinador. Este artículo explica por qué existe ese aislamiento, qué protege y cómo el coordinador hace cumplir el límite durante la publicación.
+Cada [[totebox-archive|Totebox Archive]] en la topología de `app-orchestration-command` opera en su propia rama aislada, separada del `main` canónico que gestiona el coordinador. Este artículo explica por qué existe ese aislamiento, qué protege y cómo el coordinador hace cumplir el límite durante la publicación.
 
 ## Por qué existen ramas aisladas
 

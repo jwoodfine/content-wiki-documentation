@@ -21,7 +21,7 @@ cites: []
 
 # La Arquitectura de Tres Binarios: os-console, os-totebox, os-orchestration
 
-Totebox Orchestration se entrega mediante tres entornos operativos binarios distintos.
+[[totebox-orchestration|Totebox Orchestration]] se entrega mediante tres entornos operativos binarios distintos.
 Cada uno tiene un rol distinto, un objetivo de despliegue distinto y un conjunto distinto
 de aplicaciones alojadas. Juntos forman un sistema completo para la gestión soberana de datos.
 
@@ -71,13 +71,13 @@ de aplicaciones alojadas. Juntos forman un sistema completo para la gestión sob
 
 ## os-totebox: Almacén de Datos WORM Soberano
 
-os-totebox es el despliegue del lado del cliente. Se ejecuta en hardware bajo el control
+[[os-totebox]] es el despliegue del lado del cliente. Se ejecuta en hardware bajo el control
 físico del cliente — una máquina tipo NUC, una VM de GCP o un servidor privado. Su función
-es alojar los servicios de los Anillos 1 y 2:
+es alojar los servicios de los [[three-ring-architecture|Anillos 1 y 2]]:
 
 **Anillo 1 — Ingesta en el Límite:**
-- `service-fs` — sistema de archivos de solo adición WORM; cada escritura es una entrada de registro
-- `service-input` — ingesta de entrada estructurada de operadores os-console
+- `service-fs` — [[worm-ledger-architecture|sistema de archivos de solo adición WORM]]; cada escritura es una entrada de registro
+- `service-input` — ingesta de entrada estructurada de operadores [[os-console-architecture|os-console]]
 - `service-extraction` — pipeline de extracción de entidades de emails y documentos
 - `service-egress` — flujo de datos de salida controlado
 
@@ -87,12 +87,12 @@ es alojar los servicios de los Anillos 1 y 2:
 - `service-email` — puente de archivo de email (Microsoft Exchange → Maildir)
 - `service-slm` — pasarela de inferencia de IA local (Nivel A)
 
-El Anillo 3 (IA opcional, inferencia Nivel B+) está alojado en os-orchestration, no en
+El Anillo 3 (IA opcional, inferencia Nivel B+) está alojado en [[os-orchestration]], no en
 os-totebox. Un Totebox se entrega con los Anillos 1 y 2. El Anillo 3 es un nivel de pago
 opcional.
 
 **Forma final prevista (Fase H2, planificada):** os-totebox arranca en metal desnudo o
-como VM en una imagen seL4 Microkit. Cada servicio se ejecuta como un Dominio de
+como VM en una imagen [[sel4-microkernel-substrate|seL4 Microkit]]. Cada servicio se ejecuta como un Dominio de
 Protección seL4. Sin shell de Linux. Sin gestor de paquetes. Sin sistema de inicio.
 
 ---
@@ -130,7 +130,7 @@ capacidades.
 | app-orchestration-slm | Intermediario de GPU Yo-Yo (Nivel B) | :9180 |
 | app-orchestration-market | IU del mercado de datos (previsto) | — |
 | app-orchestration-exchange | Pasarela de intercambio de anuncios (previsto) | — |
-| app-orchestration-gis | Procesamiento GIS a escala continental | desplegado |
+| [[app-orchestration-gis]] | Procesamiento GIS a escala continental | desplegado |
 | app-orchestration-bim | Federación de BIM multi-archivo | — |
 
 **Modelo comercial:** Un único Totebox ejecuta los Anillos 1–2 sin costo de licencia.
@@ -141,7 +141,7 @@ de BIM es el nivel de pago.
 
 ## Geometría de Capacidades en los Tres Niveles
 
-El modelo de Geometría de Capacidades se aplica en cada capa con el mismo mecanismo pero
+El modelo de [[capability-geometry|Geometría de Capacidades]] se aplica en cada capa con el mismo mecanismo pero
 un alcance diferente:
 
 | Capa | Límite de PD | Qué acota |
@@ -156,7 +156,7 @@ moonshot-sel4-vmm proporciona el runtime de PD que hace que el código Rust se e
 dentro de cada Dominio de Protección.
 
 La arquitectura de tres binarios es un único sistema — una prueba seL4, un sustrato de
-capacidades, un pipeline de compilación moonshot-toolkit — desplegado en tres niveles
+capacidades, un pipeline de compilación [[moonshot-toolkit-build-orchestrator|moonshot-toolkit]] — desplegado en tres niveles
 distintos.
 
 ---

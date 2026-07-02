@@ -39,15 +39,15 @@ El Nivel 0 produce uno de tres resultados. Cuando se encuentran entidades, el re
 
 ## Nivel A — Alternativa Generativa y Cola de Entrenamiento (OLMo)
 
-El Nivel A envía los documentos a OLMo 7B ejecutándose en CPU a través del endpoint `/v1/chat/completions` del Doorman. El Nivel A desempeña dos funciones distintas.
+El Nivel A envía los documentos a OLMo 7B ejecutándose en CPU a través del endpoint `/v1/chat/completions` del [[doorman-protocol|Doorman]]. El Nivel A desempeña dos funciones distintas.
 
 **Alternativa de extracción:** El Nivel A se activa como ruta de extracción únicamente cuando el Nivel 0 es inalcanzable — un error de conexión, servicio inactivo o respuesta no 2xx. Una lista de entidades vacía de un servicio Nivel 0 operativo no activa la extracción del Nivel A; esos documentos se marcan como finalizados de inmediato.
 
-**Cola de entrenamiento asíncrona:** Cada documento procesado por el Nivel 0 — independientemente del resultado de la extracción — se añade también a una cola de comparación OLMo asíncrona. La comparación genera un par de entrenamiento DPO (Optimización por Preferencia Directa): el resultado de GLiNER es la señal maestra elegida y el resultado de OLMo es la señal de estudiante rechazado. Esta cola opera de forma independiente a la ruta de extracción y acumula pares de preferencias para el ajuste fino futuro del modelo bajo el ciclo de entrenamiento Yo-Yo.
+**Cola de entrenamiento asíncrona:** Cada documento procesado por el Nivel 0 — independientemente del resultado de la extracción — se añade también a una cola de comparación OLMo asíncrona. La comparación genera un par de entrenamiento DPO (Optimización por Preferencia Directa): el resultado de GLiNER es la señal maestra elegida y el resultado de OLMo es la señal de estudiante rechazado. Esta cola opera de forma independiente a la ruta de extracción y acumula pares de preferencias para el ajuste fino futuro del modelo bajo el [[yo-yo-lora-training-pipeline|ciclo de entrenamiento Yo-Yo]].
 
 La extracción utiliza un prompt estructurado que restringe el modelo a las mismas cinco clasificaciones de entidades que usa el Nivel 0. Cuando las restricciones gramaticales están habilitadas, el modelo se ve obligado a emitir JSON válido conforme al esquema de extracción, eliminando los rechazos por violación de esquema. La llamada de inferencia utiliza `temperature: 0.0` para producir resultados deterministas y `cache_prompt: true` para permitir la reutilización del caché KV entre llamadas consecutivas de extracción con el mismo prompt de sistema.
 
-La latencia del Nivel A en CPU oscila entre 30 y 137 segundos por documento según la longitud del documento y la carga concurrente. Cuando la cola de aprendiz del Doorman está activa, los slots del Nivel A pueden estar ocupados y las llamadas de extracción interactivas se pondrán en cola.
+La latencia del Nivel A en CPU oscila entre 30 y 137 segundos por documento según la longitud del documento y la carga concurrente. Cuando la cola de [[apprenticeship-substrate|aprendiz]] del Doorman está activa, los slots del Nivel A pueden estar ocupados y las llamadas de extracción interactivas se pondrán en cola.
 
 ## Nivel B — Enriquecimiento en GPU
 
@@ -61,7 +61,7 @@ Los resultados del Nivel B y su referencia del Nivel A se registran como un par 
 
 Las entidades producidas por el nivel que genera el resultado aceptado se escriben en LadybugDB. Las entidades se identifican por módulo y nombre; los duplicados dentro de un módulo se actualizan mediante upsert. Se emite un punto de control después de cada lote de escritura para garantizar que las entidades escritas por el hilo de drenaje sean inmediatamente visibles para las consultas HTTP de lectura, que se ejecutan en un contexto de tiempo de ejecución separado.
 
-El servicio de extracción registra los documentos procesados en un libro de contabilidad JSONL para evitar la re-extracción al reiniciar el servicio.
+El [[service-extraction|servicio de extracción]] registra los documentos procesados en un libro de contabilidad JSONL para evitar la re-extracción al reiniciar el servicio.
 
 ## Contrapresión
 
@@ -74,5 +74,5 @@ Los documentos para los que el Nivel 0 devuelve una lista de entidades no vacía
 | Nivel | Servicio | Método | Latencia típica | Se activa cuando |
 |---|---|---|---|---|
 | 0 | service-gliner (GLiNER) | Detección extractiva | 130–208 ms | Por defecto — primera vía |
-| A | service-slm (OLMo 7B CPU) | Completado generativo | 30–137 s | Extracción: Nivel 0 inalcanzable; Entrenamiento: cada documento (asíncrono) |
+| A | [[service-slm]] (OLMo 7B CPU) | Completado generativo | 30–137 s | Extracción: Nivel 0 inalcanzable; Entrenamiento: cada documento (asíncrono) |
 | B | service-slm (nodo GPU) | Enriquecimiento generativo | 10–30 s | Circuito cerrado + nodo saludable |

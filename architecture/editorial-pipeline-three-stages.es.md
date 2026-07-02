@@ -22,7 +22,7 @@ El orden refleja tres perfiles distintos de coste y fiabilidad. La Etapa 1 es de
 no tiene dependencia externa; se completa en tiempo de submilisegundo y no puede fallar por
 infraestructura. La Etapa 2 llama a una instancia de LanguageTool desplegada localmente y
 puede degradarse sin error si ese servicio no está disponible. La Etapa 3 enruta a través del
-Doorman hacia uno de tres niveles de cómputo y es la única etapa sujeta a variación de latencia
+[[doorman-protocol|Doorman]] hacia uno de tres niveles de cómputo y es la única etapa sujeta a variación de latencia
 y coste.
 
 Cada etapa produce un conjunto de hallazgos verificable de forma independiente. Un operador que
@@ -51,7 +51,7 @@ hallazgos de la Etapa 2 se serializa a JSON para el consumo de la Etapa 3.
 
 ## Etapa 3 — Paso generativo del Doorman (service-SLM via Niveles A/B/C)
 
-La Etapa 3 enruta a través del Doorman (service-slm) hacia uno de tres niveles de cómputo:
+La Etapa 3 enruta a través del Doorman ([[service-slm]]) hacia uno de tres niveles de cómputo:
 Nivel A (OLMo 3 7B Q4 ejecutándose localmente), Nivel B (OLMo 3.1 32B en ráfaga de GPU en la
 nube) o Nivel C (punto de conexión de API externo). El Doorman selecciona el nivel según la
 forma de la solicitud, la profundidad de la cola y el límite de presupuesto configurado. La
@@ -79,7 +79,7 @@ pero son contraíbles.
 Después de revisar la reescritura de la Etapa 3, el operador registra una de tres disposiciones
 mediante `/v1/verdict`: `accepted`, `rejected` o `edited` (con el texto final de su elección).
 El veredicto y los textos asociados forman una tupla de par de eventos —
-`draft-created` → `draft-refined` → `creative-edited` — que alimenta el corpus de aprendizaje
+`draft-created` → `draft-refined` → `creative-edited` — que alimenta el [[apprenticeship-substrate|corpus de aprendizaje]]
 para el refinamiento continuo del modelo.
 
 ## Cuando las etapas se degradan de forma controlada

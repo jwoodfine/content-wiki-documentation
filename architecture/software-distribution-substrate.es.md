@@ -20,7 +20,7 @@ cites: []
 
 El sustrato de distribución de software de PointSav es un sistema de tres componentes
 que gestiona el alojamiento de versiones binarias, la tienda virtual con emisión de
-licencias y la verificación de pagos en cadena. Los tres componentes — un servidor de
+licencias y la verificación de [[direct-payment-settlement|pagos en cadena]]. Los tres componentes — un servidor de
 versiones, una tienda virtual de mercado y un observador de pagos — se ejecutan como
 servicios separados accesibles en `software.pointsav.com`. Cada componente tiene una
 responsabilidad única y delimitada, y juntos forman una ruta de distribución sin

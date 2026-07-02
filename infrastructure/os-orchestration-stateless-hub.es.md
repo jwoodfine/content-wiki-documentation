@@ -17,7 +17,7 @@ last_edited: 2026-06-23
 
 # os-orchestration: La Capa de Agregación Sin Estado
 
-La plataforma PointSav está construida alrededor de un límite arquitectónico deliberado: la capa de agregación que coordina el trabajo entre los Archivos Totebox no retiene datos de clientes, no almacena claves y no escribe nada en ningún libro de registro WORM. Esta capa es `os-orchestration`.
+La plataforma PointSav está construida alrededor de un límite arquitectónico deliberado: la capa de agregación que coordina el trabajo entre los [[totebox-archive|Archivos Totebox]] no retiene datos de clientes, no almacena claves y no escribe nada en ningún [[worm-ledger-architecture|libro de registro WORM]]. Esta capa es `os-orchestration`.
 
 Comprender qué es `os-orchestration` requiere primero entender qué no es. No es una base de datos, no es un almacén de credenciales y no es un custodio. Cada archivo en la red PointSav mantiene su propio estado aislado: su propio registro de auditoría WORM, su propio material de claves, su propio segmento de DataGraph. `os-orchestration` se sitúa por encima de esa capa como coordinador: enruta solicitudes, aplica límites de capacidad y gestiona el trabajo entre archivos sin acceder nunca a los datos subyacentes.
 
@@ -27,7 +27,7 @@ El acceso entre Archivos Totebox está gobernado por Dominios de Protección (PD
 
 `os-orchestration` opera en la capa de federación, por encima de los PDs por archivo. Puede observar que existe una solicitud y enrutarla al intermediario de capacidades apropiado, pero no puede autorizar la solicitud por sí mismo. La autorización reside donde residen los datos: en el archivo.
 
-Este diseño refleja la Geometría de Capacidades en la capa de federación. Los datos de cada organización están encerrados dentro de un límite de capacidad que `os-orchestration` no puede cruzar en nombre de otra organización. Una solicitud de una organización no puede enrutarse al archivo de otra organización explotando la capa de agregación. La geometría del sistema hace esto imposible por construcción, no por política.
+Este diseño refleja la [[capability-geometry|Geometría de Capacidades]] en la capa de federación. Los datos de cada organización están encerrados dentro de un límite de capacidad que `os-orchestration` no puede cruzar en nombre de otra organización. Una solicitud de una organización no puede enrutarse al archivo de otra organización explotando la capa de agregación. La geometría del sistema hace esto imposible por construcción, no por política.
 
 ## Lo Que Significa Sin Estado para la Confianza
 
@@ -47,9 +47,9 @@ Los ingresos se acumulan en la capa de agregación para las transacciones de Niv
 
 ## El Intermediario de GPU Yo-Yo
 
-`app-orchestration-slm` es el intermediario comercial de GPU Yo-Yo, que implementa el mecanismo de asignación de GPU bajo demanda. Cuando un Archivo Totebox envía una solicitud de inferencia que supera la capacidad local de Nivel A — ya sea porque el modelo es demasiado grande para el hardware local o porque la carga concurrente ha agotado el cómputo disponible — la solicitud se enruta a `app-orchestration-slm`.
+`app-orchestration-slm` es el [[yoyo-compute-substrate|intermediario comercial de GPU Yo-Yo]], que implementa el mecanismo de asignación de GPU bajo demanda. Cuando un Archivo Totebox envía una solicitud de inferencia que supera la capacidad local de Nivel A — ya sea porque el modelo es demasiado grande para el hardware local o porque la carga concurrente ha agotado el cómputo disponible — la solicitud se enruta a `app-orchestration-slm`.
 
-El intermediario mantiene un grupo de capacidad de GPU extraído de la Red Privada PointSav y de proveedores externos contratados. Asigna capacidad bajo demanda, enruta la solicitud de inferencia y devuelve el resultado al archivo de origen. El archivo nunca requiere su propio hardware de GPU para cargas de trabajo de Nivel B; el intermediario proporciona elasticidad.
+El intermediario mantiene un grupo de capacidad de GPU extraído de la [[pointsav-private-network|Red Privada PointSav]] y de proveedores externos contratados. Asigna capacidad bajo demanda, enruta la solicitud de inferencia y devuelve el resultado al archivo de origen. El archivo nunca requiere su propio hardware de GPU para cargas de trabajo de Nivel B; el intermediario proporciona elasticidad.
 
 El nombre refleja la metáfora de diseño: la capacidad de cómputo se extiende hacia afuera desde el archivo bajo demanda y se retrae cuando la solicitud se completa. El archivo no mantiene ninguna asignación de GPU persistente entre solicitudes.
 

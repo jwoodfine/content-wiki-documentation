@@ -13,8 +13,8 @@ paired_with: yoyo-daily-enrichment-cycle.md
 ---
 
 El ciclo diario de enriquecimiento Yo-Yo es la ventana de procesamiento por lotes que
-arranca una máquina virtual con GPU una vez al día para enriquecer el DataGraph y
-acumular datos de entrenamiento para el modelo de lenguaje local. El ciclo se ejecuta
+arranca una máquina virtual con GPU una vez al día para enriquecer el [[ontological-datagraph|DataGraph]] y
+acumular datos de entrenamiento para el [[pointsav-llm|modelo de lenguaje local]]. El ciclo se ejecuta
 a una hora fija, aplica un límite de costo máximo y termina la VM tanto si el trabajo
 concluye antes como si alcanza el límite.
 
@@ -51,14 +51,14 @@ arranque tarda sistemáticamente unos 170 segundos desde el encendido hasta la p
 respuesta positiva. Si el servidor no responde en diez minutos, el ciclo se interrumpe
 y la VM se detiene.
 
-**Fase 3 — Circuito Tier B.** La pasarela de inferencia local mantiene un interruptor
+**Fase 3 — Circuito Tier B.** La [[soft-slm-tiered-gateway|pasarela de inferencia local]] mantiene un interruptor
 de circuito para el nodo Yo-Yo. El script espera hasta dos minutos a que el circuito se
 cierre, confirmando que la pasarela ha registrado la VM como accesible. Si el circuito
 no se cierra, el ciclo continúa con una advertencia de respaldo a Tier A.
 
 **Fase 4 — Drenaje de enriquecimiento.** Durante el 40 por ciento del presupuesto del
 ciclo (18 minutos con el límite de 45 minutos), el script espera mientras la pasarela
-procesa la cola de enriquecimiento pendiente. En este período, el servicio de contenido
+procesa la cola de enriquecimiento pendiente. En este período, el [[service-content|servicio de contenido]]
 envía fragmentos de documentos al nodo Yo-Yo para la extracción de entidades y escribe
 los pares DPO en el corpus de enriquecimiento. El progreso se registra cada 60 segundos
 con conteos de entidades, pares DPO, utilización de la GPU y uso de VRAM.
@@ -69,7 +69,7 @@ conteos superan el umbral configurado, el script escribe archivos marcadores de
 entrenamiento con fecha en `data/training-pending/`. Estos marcadores son la entrada
 de la Fase 6.
 
-**Fase 6 — Activación del entrenamiento LoRA.** Se deben cumplir tres condiciones para
+**Fase 6 — Activación del [[yo-yo-lora-training-pipeline|entrenamiento LoRA]].** Se deben cumplir tres condiciones para
 que se ejecute el entrenamiento: los marcadores de entrenamiento deben estar presentes,
 las bibliotecas de aprendizaje automático deben estar instaladas en el entorno virtual de
 entrenamiento de la VM de lotes, y debe existir una etiqueta de aprobación del operador
@@ -105,7 +105,7 @@ completaron con normalidad.
 | Costo en estado TERMINATED | $0.00 |
 | Costo mensual (ciclos diarios) | aproximadamente $16 por mes |
 
-Un archivo de interruptor de emergencia (`/srv/foundry/data/yoyo-disabled`) suprime todas
+Un archivo de [[spot-vm-lifecycle-kill-switch|interruptor de emergencia]] (`/srv/foundry/data/yoyo-disabled`) suprime todas
 las operaciones de ciclo de vida de la VM de forma inmediata. Crear el archivo impide que
 la Fase 1 emita un comando de arranque. Eliminarlo reanuda el funcionamiento normal en el
 siguiente ciclo programado.

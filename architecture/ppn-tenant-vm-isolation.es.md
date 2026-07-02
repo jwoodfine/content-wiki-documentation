@@ -17,14 +17,14 @@ short_description: "El pool de recursos PPN separa las cargas de trabajo por inq
 cites: []
 ---
 
-El pool de recursos de la Red Privada de PointSav (PPN) permite que múltiples inquilinos ejecuten máquinas virtuales en un conjunto compartido de nodos físicos y en la nube. Este artículo describe el modelo de aislamiento: qué separación se proporciona, qué no, y el camino planificado hacia un aislamiento más sólido a nivel de red.
+El pool de recursos de la [[pointsav-private-network|Red Privada de PointSav]] (PPN) permite que múltiples inquilinos ejecuten máquinas virtuales en un conjunto compartido de nodos físicos y en la nube. Este artículo describe el modelo de aislamiento: qué separación se proporciona, qué no, y el camino planificado hacia un aislamiento más sólido a nivel de red.
 
 ## La pila
 
 Cada solicitud de máquina virtual atraviesa tres capas antes de que un proceso QEMU se inicie en un nodo físico:
 
-- **Proxy de inquilino** — autentica al llamante, aplica el espacio de nombres y la cuota, y es el único punto de entrada externo
-- **Controlador de flota** — gestiona la colocación y delega en el agente de host; acepta conexiones únicamente del proxy de inquilino y de los participantes internos de la malla
+- **[[service-vm-tenant|Proxy de inquilino]]** — autentica al llamante, aplica el espacio de nombres y la cuota, y es el único punto de entrada externo
+- **[[service-vm-fleet|Controlador de flota]]** — gestiona la colocación y delega en el agente de host; acepta conexiones únicamente del proxy de inquilino y de los participantes internos de la malla
 - **Agente de host** — inicia el proceso QEMU en el nodo seleccionado; no es accesible por llamantes externos
 
 Un llamante que disponga de la dirección del controlador de flota pero no de una credencial de inquilino válida no puede alcanzar el controlador de flota directamente — la capa de autenticación no puede eludirse.
@@ -51,7 +51,7 @@ Las credenciales de inquilino son tokens portadores opacos que se asignan a una 
 
 ### Registro de auditoría
 
-Cada operación del ciclo de vida de un inquilino — crear VM, destruir VM — queda registrada en dos lugares: un archivo de solo adición local en el proxy de inquilino, y el libro WORM. El registro WORM incluye la identidad del inquilino, el tipo de operación, el identificador de la VM, la marca de tiempo y el resultado. Las entradas WORM no pueden sobrescribirse ni eliminarse.
+Cada operación del ciclo de vida de un inquilino — crear VM, destruir VM — queda registrada en dos lugares: un archivo de solo adición local en el proxy de inquilino, y el [[worm-ledger-architecture|libro WORM]]. El registro WORM incluye la identidad del inquilino, el tipo de operación, el identificador de la VM, la marca de tiempo y el resultado. Las entradas WORM no pueden sobrescribirse ni eliminarse.
 
 ## Qué no proporciona el aislamiento de inquilinos
 
@@ -63,7 +63,7 @@ Todas las máquinas virtuales en un nodo físico dado salen a través de la mism
 
 Cualquier persona con acceso administrativo a la máquina física que aloja una VM puede leer la imagen de disco y la memoria del invitado. Esto es una propiedad del modelo de virtualización basado en QEMU actual, no una limitación del plano de control de la PPN.
 
-La respuesta prevista a ambas limitaciones es la capa de aislamiento seL4, descrita a continuación.
+La respuesta prevista a ambas limitaciones es la capa de aislamiento [[sel4-microkernel-substrate|seL4]], descrita a continuación.
 
 ## Aplicación de cuota
 

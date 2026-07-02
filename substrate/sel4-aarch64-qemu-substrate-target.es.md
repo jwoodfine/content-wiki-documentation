@@ -10,11 +10,11 @@ status: stable
 bcsc_class: no-disclosure-implication
 ---
 
-Las imágenes de unikernel del stack de substrato se ejecutan sobre el microkernel seL4
+Las [[topic-sel4-unikernel-substrate|imágenes de unikernel]] del stack de substrato se ejecutan sobre el [[sel4-microkernel-substrate|microkernel seL4]]
 dirigido a la arquitectura de conjunto de instrucciones AArch64, con el modelo
 de máquina `virt` de QEMU como entorno de emulación principal para el desarrollo,
 las pruebas y la integración continua. Este objetivo fue seleccionado mediante
-las decisiones de arquitectura del Grupo 3A y el Grupo 3D en mayo de 2026, y es
+las [[architecture-decisions|decisiones de arquitectura]] del Grupo 3A y el Grupo 3D en mayo de 2026, y es
 el sustrato de hardware para todo el trabajo de la Phase 1C y la Phase 2.
 
 
@@ -24,10 +24,10 @@ seL4 es un microkernel de la familia L4 verificado formalmente, desarrollado por
 CSIRO's Data61 y mantenido por la Fundación seL4. Su propiedad definitoria es
 una prueba verificada mecánicamente de corrección funcional: la implementación en
 C del kernel está demostrada contra una especificación formal en Isabelle/HOL. seL4
-usa un modelo de control de acceso basado en capacidades: cada recurso del kernel —
+usa un [[capability-based-security|modelo de control de acceso basado en capacidades]]: cada recurso del kernel —
 memoria, hilos, endpoints de IPC, manejadores de interrupciones — es accesible
 únicamente a través de una capacidad, un token tipado inforjable. Este modelo es
-la base sobre la cual se construye el Sustrato del Libro de Capacidades: el libro
+la base sobre la cual se construye el [[capability-ledger-substrate|Sustrato del Libro de Capacidades]]: el libro
 extiende el control de acceso aplicado por el kernel con un registro criptográficamente
 auditable de cada decisión de capacidad.
 
@@ -99,7 +99,7 @@ espacio de direcciones físico de la máquina `virt`. Documenta el rol del elflo
 `0x40400000`, desempaqueta el kernel y el servidor raíz desde un archivo CPIO
 embebido, configura las tablas de páginas de la MMU AArch64 para mapear el espacio
 de direcciones virtuales del kernel, y salta al punto de entrada del kernel. Aclara
-que, desde Phase 1C.d, el paso AssembleImage de moonshot-toolkit compila y enlaza
+que, desde Phase 1C.d, el paso AssembleImage de [[moonshot-toolkit-build-orchestrator|moonshot-toolkit]] compila y enlaza
 el elfloader automáticamente en Rust puro, sin Python, CMake ni scripts de shell.
 
 ### §6 — Cadena de arranque de Phase 1C — verificada

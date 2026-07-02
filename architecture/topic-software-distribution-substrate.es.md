@@ -31,7 +31,7 @@ servidor de versiones binarias con verificación de tokens.
 
 ### Monitor de Pagos (`tool-wallet`)
 
-`tool-wallet` supervisa una dirección en cadena en busca de transferencias entrantes de
+`tool-wallet` supervisa una dirección [[direct-payment-settlement|en cadena]] en busca de transferencias entrantes de
 USDC en la red Polygon. Para cada transferencia confirmada:
 
 1. Deriva una dirección HD por cliente a partir de un mnemónico BIP-39 mediante BIP-32

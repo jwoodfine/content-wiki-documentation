@@ -36,7 +36,7 @@ Un paquete OVF (típicamente distribuido como un único archivo `.ova`, un archi
 
 **Estado preconfigurado.** Un appliance virtual llega con toda la configuración requerida aplicada: cadenas de conexión de bases de datos, cuentas de usuario de servicio, certificados SSL y configuración a nivel de aplicación se establecen durante la construcción del appliance y no requieren configuración por implementación. La organización que lo implementa proporciona solo los parámetros específicos del entorno: dirección de red, proveedor de identidad externo, rutas de almacenamiento.
 
-**Huella mínima del SO.** Los appliances virtuales incorporan típicamente una capa de Sistema Operativo Mínimo Suficiente (JeOS) en lugar de una distribución completa de propósito general. El SO mínimo reduce el tamaño de la imagen, el consumo de memoria, la superficie de ataque y la sobrecarga de parcheo requerida para mantener el appliance durante su vida operativa.
+**Huella mínima del SO.** Los appliances virtuales incorporan típicamente una capa de [[just-enough-operating-system|Sistema Operativo Mínimo Suficiente]] (JeOS) en lugar de una distribución completa de propósito general. El SO mínimo reduce el tamaño de la imagen, el consumo de memoria, la superficie de ataque y la sobrecarga de parcheo requerida para mantener el appliance durante su vida operativa.
 
 **Modelo de inmutabilidad.** En un appliance virtual bien construido, las capas del sistema operativo y la aplicación se tratan como inmutables: las actualizaciones se aplican reemplazando toda la imagen del appliance en lugar de parchear el sistema en ejecución. Este enfoque elimina la deriva de configuración y hace que el appliance implementado sea idéntico al appliance probado.
 

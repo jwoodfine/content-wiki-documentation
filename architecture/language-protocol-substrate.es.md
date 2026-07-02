@@ -72,7 +72,7 @@ objetivos de ajuste de registro y reglas de análisis de la Etapa 1:
 2. **Paso mecánico de LanguageTool 6.6** — ortografía, gramática y estilo; se ejecuta como
    compañero Docker; hallazgos serializados a JSON para la Etapa 3
 3. **Paso generativo del Doorman** — reescritura completa de texto de ajuste de registro a
-   través del Doorman (service-slm)
+   través del [[doorman-protocol|Doorman]] ([[service-slm]])
 
 Véase [[editorial-pipeline-three-stages]] para la especificación completa de la canalización.
 
@@ -86,7 +86,7 @@ aplicar-todo es opcional por solicitud, no predeterminada.
 
 Después de revisar la reescritura de la Etapa 3, el operador registra una de tres
 disposiciones: `accepted`, `rejected` o `edited`. El veredicto alimenta el par de eventos del
-corpus de aprendizaje — `draft-created` → `draft-refined` → `creative-edited`. El sustrato es
+[[apprenticeship-substrate|corpus de aprendizaje]] — `draft-created` → `draft-refined` → `creative-edited`. El sustrato es
 tanto la herramienta editorial como la capa de recopilación de datos para el entrenamiento
 continuo del modelo; estas dos funciones son inseparables por diseño.
 
@@ -102,7 +102,7 @@ el límite.
 
 - No detecta automáticamente el protocolo — el operador lo declara en el límite de la solicitud
 - No reescribe silenciosamente — el operador elige qué hallazgos aplicar
-- No incorpora claves de API de Nivel C en el binario del corrector — las claves viven con el
+- No incorpora [[api-key-boundary-discipline|claves de API]] de Nivel C en el binario del corrector — las claves viven con el
   Doorman
 - No entrena con texto de inquilinos por defecto — el contrato de no-entrenamiento se impone
   en la capa de escritura del corpus

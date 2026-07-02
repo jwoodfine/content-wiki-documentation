@@ -39,7 +39,7 @@ cada dominio aislados dentro de la misma base de datos física.
 
 Este diseño permite el razonamiento entre dominios sin duplicación. Cuando un servicio
 de contabilidad escribe "ACME Corp es un proveedor con condiciones de pago net-30" y
-un servicio de extracción de documentos escribe "ACME Corp tiene sede en Toronto",
+un [[service-extraction|servicio de extracción de documentos]] escribe "ACME Corp tiene sede en Toronto",
 ambos hechos existen en el mismo grafo, adjuntos a la misma entidad.
 
 ## Qué pertenece al grafo
@@ -92,7 +92,7 @@ estructurada.
 
 ## Inyección de contexto en tiempo de inferencia
 
-Antes de despachar cualquier solicitud, el enrutador de inferencia consulta el grafo
+Antes de despachar cualquier solicitud, el [[soft-slm-tiered-gateway|enrutador de inferencia]] consulta el grafo
 organizativo para obtener entidades relevantes para la solicitud actual. Las entidades
 coincidentes se formatean como un bloque de contexto estructurado y se anteponen al
 prompt del sistema. El modelo recibe este contexto de forma transparente.

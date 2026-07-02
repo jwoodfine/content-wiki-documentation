@@ -49,7 +49,7 @@ estructura lógica de la superficie de ataque.
 
 ## El Modelo de Capacidades de seL4: Autorización como un DAG Formal
 
-El microkernel seL4 implementa un modelo diferente. El acceso a cualquier recurso
+El [[sel4-microkernel-substrate|microkernel seL4]] implementa un modelo diferente. El acceso a cualquier recurso
 —una región de memoria, un endpoint de red, un dispositivo de almacenamiento— requiere
 poseer un token de capacidad infalsificable para ese recurso. No una credencial. No un
 token de sesión. Un objeto matemático emitido por el propio kernel.
@@ -101,7 +101,7 @@ subversión.
 
 ## Implementación en PointSav: system-core y system-ledger
 
-El sustrato de capacidades en Totebox Orchestration está implementado en dos crates de Rust:
+El sustrato de capacidades en [[totebox-orchestration|Totebox Orchestration]] está implementado en dos crates de Rust:
 
 **system-core v1.0.0** define el sistema de tipos de capacidades:
 
@@ -116,7 +116,7 @@ pub struct Capability {
 ```
 
 Una `Capability` no es un token de sesión. Es un objeto tipado, acotado por derechos
-y opcionalmente limitado en el tiempo, anclado al registro de auditoría WORM.
+y opcionalmente limitado en el tiempo, anclado al [[worm-ledger-architecture|registro de auditoría WORM]].
 
 **system-ledger v1.0.0** proporciona la función de veredicto:
 
@@ -130,13 +130,13 @@ pub enum Verdict {
 
 `consult_capability()` sobre `InMemoryLedger` evalúa una invocación de capacidad contra
 el estado actual del registro y devuelve un `Verdict`. El registro es de solo adición
-(WORM) y está anclado mediante cadenas de prueba Merkle conforme a RFC 9162.
+(WORM) y está anclado mediante cadenas de [[merkle-proofs-as-substrate-primitive|prueba Merkle]] conforme a RFC 9162.
 
 ---
 
 ## Emparejamiento de Máquinas como Ceremonia de Acuñación de Capacidades
 
-El emparejamiento de máquinas F11 en os-console es la ceremonia de acuñación de
+El [[pairing-as-permission|emparejamiento de máquinas F11]] en os-console es la ceremonia de acuñación de
 capacidades prevista para el acceso a Totebox (planificado; Fase H3 de la hoja de ruta
 del sustrato os-console):
 
@@ -170,10 +170,10 @@ La máquina host está autorizada. No la cuenta de usuario — la máquina.
 ## Alineación con Leapfrog 2030
 
 Geometría de Capacidades es el modelo de seguridad de Totebox previsto para estar en
-producción en el hito Leapfrog 2030. El sustrato seL4 Microkit (Doctrina, cláusula #34,
+producción en el hito [[leapfrog-2030-architecture|Leapfrog 2030]]. El sustrato seL4 Microkit (Doctrina, cláusula #34,
 Sustrato Soberano de Dos Fondos) proporciona la capa del kernel. system-core y
-system-ledger proporcionan el sustrato de capacidades en Rust. La arquitectura de tres
-binarios (os-console, os-totebox, os-orchestration) implementa Geometría de Capacidades en
+system-ledger proporcionan el sustrato de capacidades en Rust. La [[topic-three-binary-architecture|arquitectura de tres
+binarios]] (os-console, [[os-totebox]], [[os-orchestration]]) implementa Geometría de Capacidades en
 cada capa: por cartridge en os-console, por servicio en os-totebox, y mediante un PD
 intermediario de capacidades en os-orchestration que posee las capacidades de endpoints
 entre Toteboxes.

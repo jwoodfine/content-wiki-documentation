@@ -21,12 +21,12 @@ paired_with: app-console-slm.md
 app-console-slm es un cartucho de interfaz de usuario de terminal (TUI) para la
 consola del operador que muestra el estado en tiempo real de la infraestructura de
 inferencia de IA. Muestra el estado del modelo de inferencia local, el estado de los
-nodos GPU remotos, la profundidad de la cola de prioridad, el recuento de entidades
+[[yoyo-compute-substrate|nodos GPU remotos]], la profundidad de la cola de prioridad, el recuento de entidades
 del grafo organizativo y el gasto del día en curso. Proporciona controles de teclado
-para ajustar la política de enrutamiento y activar interruptores de emergencia por nivel.
+para ajustar la política de enrutamiento y activar [[spot-vm-lifecycle-kill-switch|interruptores de emergencia]] por nivel.
 
-La consola se ejecuta en una ventana de terminal en el mismo nodo que la pasarela de
-inferencia. No requiere navegador, conexión de red a un servicio externo ni autenticación
+La consola se ejecuta en una ventana de terminal en el mismo nodo que la [[service-slm|pasarela de
+inferencia]]. No requiere navegador, conexión de red a un servicio externo ni autenticación
 más allá del acceso local al shell. Es el panel de control principal del operador para
 comprender y controlar la capa de inferencia.
 
@@ -85,7 +85,7 @@ desglosa el gasto por etiqueta de nodo: el nodo batch, el nodo express y la API 
 ## Características técnicas
 
 La consola es un crate de biblioteca que implementa el trait Cartridge para el chasis
-de la consola del operador. Se carga en el slot F9. La comunicación con la pasarela
+de la consola del operador. Se carga en el [[use-f-key-model|slot F9]]. La comunicación con la pasarela
 de inferencia utiliza HTTP estándar contra los endpoints de monitorización de la
 pasarela. El modo de texto plano está disponible mediante la bandera `--plain` para
 entornos de terminal sin soporte unicode.

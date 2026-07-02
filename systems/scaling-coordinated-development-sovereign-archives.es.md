@@ -15,7 +15,7 @@ research_trail:
 
 # Escalar el desarrollo coordinado en múltiples archivos soberanos
 
-La topología de `app-orchestration-command` está diseñada para crecer. Este artículo describe los desafíos de coordinación que aparecen a medida que aumenta el número de Totebox Archives, los mecanismos introducidos para abordarlos y la trayectoria prevista hacia el aislamiento de procesos por archivo.
+La topología de `app-orchestration-command` está diseñada para crecer. Este artículo describe los desafíos de coordinación que aparecen a medida que aumenta el número de [[totebox-archive|Totebox Archives]], los mecanismos introducidos para abordarlos y la trayectoria prevista hacia el aislamiento de procesos por archivo.
 
 ## El desafío de coordinación
 
@@ -29,7 +29,7 @@ Cuando un número reducido de archivos comparte un coordinador central, la carga
 
 La primera mitigación es un modelo de elegibilidad por niveles. Los archivos que han demostrado madurez operativa —superando de forma consistente sus suites de compilación y pruebas, manteniendo historiales limpios y operando sin intervenciones frecuentes— pueden obtener un nivel de autoservicio más alto.
 
-En el nivel de autoservicio más alto *(previsto/en desarrollo)*, un archivo puede iniciar la publicación canónica directamente, sin esperar a que actúe el operador del coordinador. El requisito previo es que la clave de administrador sea accesible desde el entorno del archivo. El coordinador valida el resultado a posteriori y registra el evento de publicación en el libro mayor de auditoría.
+En el nivel de autoservicio más alto *(previsto/en desarrollo)*, un archivo puede iniciar la publicación canónica directamente, sin esperar a que actúe el operador del coordinador. El requisito previo es que la clave de administrador sea accesible desde el entorno del archivo. El coordinador valida el resultado a posteriori y registra el evento de publicación en el [[worm-ledger-architecture|libro mayor de auditoría]].
 
 Esto no elimina el papel del coordinador; delega la publicación rutinaria de bajo riesgo a los archivos que se han ganado esa confianza, reservando la atención del coordinador para decisiones de mayor importancia.
 

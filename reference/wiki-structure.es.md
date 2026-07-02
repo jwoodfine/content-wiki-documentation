@@ -17,7 +17,7 @@ language_protocol: PROSE-TOPIC
 paired_with: wiki-structure.md
 ---
 
-PointSav construye sistemas operativos y servicios para empresas
+[[pointsav-overview|PointSav]] construye sistemas operativos y servicios para empresas
 reguladas que necesitan ser dueñas por completo de sus datos, de su IA
 y de su registro documental. La plataforma se ejecuta sobre el hardware
 del cliente, está construida para producir registros con calidad de

@@ -20,7 +20,7 @@ Un [[bim-token-what-it-is|BIM Token]] tiene tres capas: Especificación, Normati
 
 ## Por qué tres capas
 
-Los tokens de sistemas de diseño de software tienen dos preocupaciones: qué ES un valor (su función semántica) y qué valor resuelve (su resultado calculado). Los BIM Tokens abordan un espacio de problema fundamentalmente diferente que requiere tres preocupaciones.
+Los tokens de [[design-system-substrate|sistemas de diseño de software]] tienen dos preocupaciones: qué ES un valor (su función semántica) y qué valor resuelve (su resultado calculado). Los BIM Tokens abordan un espacio de problema fundamentalmente diferente que requiere tres preocupaciones.
 
 Una especificación de elemento del entorno construido debe responder simultáneamente:
 

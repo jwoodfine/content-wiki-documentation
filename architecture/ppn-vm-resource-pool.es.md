@@ -17,9 +17,9 @@ short_description: "El pool de recursos VM de la PPN es una pila de tres servici
 cites: []
 ---
 
-El pool de recursos de máquinas virtuales de la Red Privada de PointSav (PPN) es una pila de tres servicios que aprovisiona, coloca y contabiliza máquinas virtuales en una malla WireGuard heterogénea. El pool combina nodos en la nube con hardware físico, formando un sustrato de cómputo distribuido que abarca distintos perfiles de capacidad.
+El pool de recursos de máquinas virtuales de la [[pointsav-private-network|Red Privada de PointSav]] (PPN) es una pila de tres servicios que aprovisiona, coloca y contabiliza máquinas virtuales en una malla WireGuard heterogénea. El pool combina nodos en la nube con hardware físico, formando un sustrato de cómputo distribuido que abarca distintos perfiles de capacidad.
 
-Tres servicios dividen la superficie de responsabilidad. El controlador de flota mantiene una visión global de la capacidad de los nodos y gestiona las decisiones de colocación. El agente de host se ejecuta por nodo como la autoridad de creación de VMs, comunicándose con el hipervisor y conservando el estado local de cada máquina virtual. El proxy de inquilino se sitúa en el límite del cliente, aplicando autenticación, aislamiento del espacio de nombres del inquilino, límites de cuota y un registro de auditoría inmutable. Por encima de esta pila, un broker de inferencia comercial gestiona cargas de trabajo medidas para el nivel SLM local.
+Tres servicios dividen la superficie de responsabilidad. El [[service-vm-fleet|controlador de flota]] mantiene una visión global de la capacidad de los nodos y gestiona las decisiones de colocación. El agente de host se ejecuta por nodo como la autoridad de creación de VMs, comunicándose con el hipervisor y conservando el estado local de cada máquina virtual. El [[service-vm-tenant|proxy de inquilino]] se sitúa en el límite del cliente, aplicando autenticación, aislamiento del espacio de nombres del inquilino, límites de cuota y un registro de auditoría inmutable. Por encima de esta pila, un broker de inferencia comercial gestiona cargas de trabajo medidas para el nivel [[service-slm|SLM]] local.
 
 Todos los procesos de servicio se comunican a través de la capa subyacente WireGuard de la PPN. Ningún servicio expone una interfaz pública; todo el tráfico dirigido al cliente entra a través del proxy de inquilino.
 
@@ -69,7 +69,7 @@ La heterogeneidad de nodos es una propiedad deliberada del pool. Cada tipo de no
 
 Tres extensiones al sustrato de cómputo están previstas para despliegue futuro; ninguna está operativa en la actualidad.
 
-**Aislamiento por microkernel (planificado/previsto):** La ruta de creación de VMs en hardware AArch64 está prevista para utilizar un modelo de componente de microkernel formalmente verificado. El diseño previsto reemplazaría el kernel del host como límite de confianza para el aislamiento de VMs, proporcionando verificación formal del planificador y los canales de comunicación entre procesos entre VMs.
+**Aislamiento por [[sel4-microkernel-substrate|microkernel]] (planificado/previsto):** La ruta de creación de VMs en hardware AArch64 está prevista para utilizar un modelo de componente de microkernel formalmente verificado. El diseño previsto reemplazaría el kernel del host como límite de confianza para el aislamiento de VMs, proporcionando verificación formal del planificador y los canales de comunicación entre procesos entre VMs.
 
 **MicroVM ligero (planificado/previsto):** Se está evaluando un backend de hipervisor alternativo para cargas de trabajo donde el tiempo de arranque inferior a un segundo y la reducción de la sobrecarga de memoria son prioritarios. El punto de integración previsto es el agente de host, que seleccionaría el backend del hipervisor en función del tipo de carga de trabajo especificado en la solicitud de creación.
 

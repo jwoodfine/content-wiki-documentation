@@ -101,7 +101,7 @@ Proceso de gestión de una empresa u organización sin ánimo de lucro para mant
 Lenguaje de hojas de estilo utilizado para describir la presentación de un documento escrito en un lenguaje de marcado como HTML. CSS es una tecnología fundamental de la World Wide Web, junto con HTML y JavaScript.
 
 ### Recopilación de datos CCTV
-La recopilación de datos CCTV se refiere a la ingesta de flujos de videovigilancia; en un despliegue de PointSav, dichos flujos entran a través de la frontera de ingesta segura de os-totebox bajo la matriz de seis niveles de soberanía, y nunca se enrutan por la internet pública.
+La recopilación de datos CCTV se refiere a la ingesta de flujos de videovigilancia; en un despliegue de PointSav, dichos flujos entran a través de la frontera de ingesta segura de os-totebox bajo la [[six-tier-sovereignty-matrix|matriz de seis niveles de soberanía]], y nunca se enrutan por la internet pública.
 
 - **Plan de cuentas**
 
@@ -159,13 +159,13 @@ Un CMS gestiona la creación y publicación de contenido digital; en PointSav, e
 <hr>
 
 ### Entrada de datos
-La entrada de datos es el ingreso manual de información estructurada en un sistema; en PointSav, todas las escrituras de componentes de IA están prohibidas — solo las escrituras deterministas verificadas por humanos alcanzan el grafo de conocimiento, conforme a SYS-ADR-07.
+La entrada de datos es el ingreso manual de información estructurada en un sistema; en PointSav, todas las escrituras de componentes de IA están prohibidas — solo las escrituras deterministas verificadas por humanos alcanzan el grafo de conocimiento, conforme a [[adr-07-zero-ai-in-ring-1|SYS-ADR-07]].
 
 ### Migración de datos
-La migración de datos es la transferencia de datos entre sistemas de almacenamiento o formatos; en PointSav, las migraciones las gestiona el pipeline de ingesta determinista de service-content y están sujetas a la garantía de solo adición del worm-ledger-design.
+La migración de datos es la transferencia de datos entre sistemas de almacenamiento o formatos; en PointSav, las migraciones las gestiona el pipeline de ingesta determinista de service-content y están sujetas a la garantía de solo adición del [[worm-ledger-design]].
 
 ### Red descentralizada
-Una red descentralizada distribuye funciones y datos en múltiples nodos sin una autoridad de control única; PointSav lo implementa como una topología de malla soberana con enrutamiento determinista y anclaje criptográfico en os-infrastructure.
+Una red descentralizada distribuye funciones y datos en múltiples nodos sin una autoridad de control única; PointSav lo implementa como una topología de [[sovereign-mesh|malla soberana]] con enrutamiento determinista y anclaje criptográfico en os-infrastructure.
 
 ### Sistema de diseño
 Un sistema de diseño es una colección de componentes reutilizables, tokens y patrones documentados que estandarizan el lenguaje visual e interactivo de un producto; la implementación de PointSav es pointsav-design-system, una bóveda en formato DTCG entregada como repositorio Git.
@@ -193,7 +193,7 @@ Modelo virtual diseñado para reflejar con precisión un objeto físico. En el c
 - **Aviso legal**
 
 ### Red distribuida
-Una red distribuida distribuye el cómputo y el almacenamiento entre muchos nodos, cada uno capaz de operar de forma independiente; la flota de PointSav lo implementa a través de os-orchestration coordinando múltiples archivos ToteboxOS.
+Una red distribuida distribuye el cómputo y el almacenamiento entre muchos nodos, cada uno capaz de operar de forma independiente; la flota de PointSav lo implementa a través de [[os-orchestration]] coordinando múltiples archivos ToteboxOS.
 
 ### Docker
 *Docker*
@@ -517,7 +517,7 @@ Edificio que utiliza tecnología para controlar automáticamente sus operaciones
 Monitorización de la actividad del usuario o del comportamiento del sistema con fines de seguridad o analíticos. PointSav reemplaza las dependencias de vigilancia de terceros con pipelines de telemetría de primera parte sin cookies.
 
 ### Diseño de sistemas
-El diseño de sistemas es el proceso de definir la arquitectura, los componentes y las interfaces de un sistema para satisfacer requisitos especificados; el diseño de la plataforma de PointSav está gobernado por la three-ring-architecture y la matriz de seis niveles de soberanía.
+El diseño de sistemas es el proceso de definir la arquitectura, los componentes y las interfaces de un sistema para satisfacer requisitos especificados; el diseño de la plataforma de PointSav está gobernado por la [[three-ring-architecture]] y la matriz de seis niveles de soberanía.
 
 ## T
 <hr>

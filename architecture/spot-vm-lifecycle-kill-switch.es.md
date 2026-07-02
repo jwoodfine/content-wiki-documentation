@@ -17,7 +17,7 @@ de esa VM debe estar controlado por un único responsable. Dos temporizadores in
 que tienen autoridad para arrancar la VM terminarán disparándose al mismo tiempo,
 dejando la VM en ejecución entre ciclos con el costo completo y sin ninguna ruta
 automatizada para detenerla. Este documento describe la arquitectura de controlador único
-utilizada para el nodo de lotes Yo-Yo y el interruptor de emergencia basado en archivo
+utilizada para el [[yoyo-compute-substrate|nodo de lotes Yo-Yo]] y el interruptor de emergencia basado en archivo
 centinela que proporciona control inmediato al operador.
 
 ## El problema de los dos temporizadores
@@ -25,7 +25,7 @@ centinela que proporciona control inmediato al operador.
 El pipeline de lotes Yo-Yo tenía inicialmente dos temporizadores funcionando de forma
 independiente:
 
-- `local-yoyo-daily.timer` — ejecutaba el ciclo de enriquecimiento diario, que arrancaba y detenía la VM
+- `local-yoyo-daily.timer` — ejecutaba el [[yoyo-daily-enrichment-cycle|ciclo de enriquecimiento diario]], que arrancaba y detenía la VM
 - `local-corpus-threshold.timer` — comprobaba el corpus de entrenamiento y arrancaba la VM si se superaba el umbral
 
 Ambos temporizadores llamaban a `gcloud instances start`. Solo el temporizador del ciclo

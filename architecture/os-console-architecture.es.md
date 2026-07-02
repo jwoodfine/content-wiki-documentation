@@ -55,7 +55,7 @@ que los cartuchos que no usan gráficos ni hipervínculos no incurren en código
 
 Los cartuchos se registran al inicio mediante `chassis.register(Box<dyn Cartridge>)`.
 El registro es independiente del orden con respecto al renderizado, pero el orden
-determina la presentación en la barra de pestañas cuando las ranuras de teclas de función
+determina la presentación en la barra de pestañas cuando las [[use-f-key-model|ranuras de teclas de función]]
 no son únicas. Cada cartucho registrado debe reclamar una ranura `FKey` distinta.
 
 La compilación predeterminada registra seis cartuchos:
@@ -125,7 +125,7 @@ se resuelven a direcciones localhost. El binario es operable sin archivo de conf
 y no tiene dependencia fija de ninguna red externa. La intención es que `os-console`
 arranque y se renderice completamente en una máquina sin acceso saliente a internet,
 conectándose solo a servicios que se ejecutan en el mismo nodo o dentro de la misma
-malla de PPN.
+[[ppn-mesh-architecture|malla de PPN]].
 
 ## Véase también
 

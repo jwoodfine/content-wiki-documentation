@@ -19,7 +19,7 @@ paired_with: radical-proofreader-ui.md
 La **consola del corrector** es la interfaz web orientada al operador para la canalización
 editorial `service-proofreader`. Los operadores utilizan la consola para enviar texto para
 análisis por etapas, revisar hallazgos estructurados, aplicar o rechazar reescrituras
-sugeridas y registrar disposiciones de veredicto que alimentan el corpus de aprendizaje de
+sugeridas y registrar disposiciones de veredicto que alimentan el [[apprenticeship-substrate|corpus de aprendizaje]] de
 la plataforma. La consola está implementada como una aplicación HTML renderizada en el servidor
 sin dependencia de marcos de trabajo JavaScript del lado del cliente.
 

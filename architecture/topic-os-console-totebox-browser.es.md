@@ -21,7 +21,7 @@ cites: []
 
 # os-console: El Navegador de Totebox Orchestration
 
-os-console es la superficie de terminal del operador para Totebox Orchestration. Se
+os-console es la superficie de terminal del operador para [[totebox-orchestration|Totebox Orchestration]]. Se
 ejecuta en la máquina host del operador —un ordenador personal, una estación de trabajo
 o un cliente ligero— y presenta una interfaz orientada al teclado para los servicios
 que se ejecutan en el Totebox del operador.
@@ -36,8 +36,8 @@ os-console y un navegador resuelven el mismo problema arquitectónico por los mi
 | Navegador Web | os-console |
 |---|---|
 | Renderiza HTML de servidores web | Renderiza vistas TUI de cartridges desde servicios Totebox |
-| Pestañas del navegador — procesos de renderizado aislados | Cartridges de teclas F — Dominios de Protección seL4 (previsto Fase H2) |
-| Almacén de certificados — identidades de servidor confiables | Emparejamiento de máquina (F11) — máquina host como ancla de confianza |
+| Pestañas del navegador — procesos de renderizado aislados | Cartridges de teclas F — [[sel4-microkernel-substrate|Dominios de Protección seL4]] (previsto Fase H2) |
+| Almacén de certificados — identidades de servidor confiables | [[pairing-as-permission|Emparejamiento de máquina]] (F11) — máquina host como ancla de confianza |
 | HTTP + DNS — protocolo de transporte universal | Protocolo de servicio Totebox — contrato cartridge-servicio |
 | Service Workers — caché sin conexión | Caché de cartridge sin conexión (previsto Fase H3) |
 | Política de mismo origen — aislamiento de pestañas | Límite de capacidades seL4 entre PDs de cartridge (previsto) |
@@ -60,13 +60,13 @@ En os-console, cada cartridge de tecla F es una aplicación distinta:
 
 | Tecla | Cartridge | Servicio |
 |---|---|---|
-| F2 | Personas | service-people |
-| F3 | Email | service-email |
-| F4 | Contenido | service-content |
+| F2 | Personas | [[service-people]] |
+| F3 | Email | [[service-email]] |
+| F4 | Contenido | [[service-content]] |
 | F6 | Contabilidad | service-bookkeeper |
-| F9 | SLM | service-slm |
+| F9 | SLM | [[service-slm]] |
 | F11 | Sistema / Emparejamiento | pairing-server |
-| F12 | Entrada / Auditoría | service-input |
+| F12 | Entrada / Auditoría | [[service-input]] |
 
 En el sustrato seL4 Microkit previsto (Fase H2), cada cartridge se ejecuta como un
 Dominio de Protección seL4. Un PD no puede leer la memoria de otro PD. El kernel seL4
@@ -117,7 +117,7 @@ estructurada prevista es VirtIO-fs:
 ## Un Totebox o Varios: os-orchestration como Múltiples Sitios Web
 
 Un navegador puede mostrar contenido de múltiples sitios web simultáneamente.
-os-orchestration es el equivalente Totebox de un agregador multisitio.
+[[os-orchestration]] es el equivalente Totebox de un agregador multisitio.
 
 Cuando la organización de un operador gestiona múltiples Toteboxes —uno por oficina, o
 uno por entidad jurídica— os-orchestration los federa. La sesión os-console del operador
@@ -131,7 +131,7 @@ capacidades. os-orchestration posee tokens de capacidad derivados de cada uno.
 
 La forma final prevista de os-console (previsto Fase H2) es una imagen de VM arrancable.
 El operador la arranca — en una máquina dedicada, dentro de su sistema operativo
-existente como VM, o como un dispositivo virtual. La imagen contiene el kernel seL4
+existente como VM, o como un [[virtual-appliance|dispositivo virtual]]. La imagen contiene el kernel seL4
 Microkit, los PDs de cartridge de os-console, los controladores VirtIO y nada más. No
 hay sistema operativo de propósito general por debajo. Sin shell. Sin gestor de
 paquetes. Sin superficie de ataque que el operador no haya aprobado.

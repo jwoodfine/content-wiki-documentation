@@ -40,7 +40,7 @@ El concepto de appliance informático es el análogo en hardware del appliance d
 
 **Appliances de seguridad** — hardware para funciones de seguridad: sistemas de detección y prevención de intrusiones (IDS/IPS), pasarelas de seguridad de correo electrónico, pasarelas de seguridad web y dispositivos de gestión unificada de amenazas (UTM).
 
-**Appliances gateway IoT industriales y MES** — dispositivos informáticos robustizados para entornos industriales: pasarelas de sistemas de ejecución de fabricación (MES), dispositivos de comunicación SCADA y nodos de computación en el borde para sistemas de control industrial. Estos dispositivos conectan las redes de tecnología operativa (OT) — los sistemas de control que gestionan el equipo industrial — con las redes de tecnología de la información (TI).
+**Appliances gateway IoT industriales y MES** — dispositivos informáticos robustizados para entornos industriales: pasarelas de sistemas de ejecución de fabricación (MES), dispositivos de comunicación SCADA y nodos de [[edge-computing|computación en el borde]] para sistemas de control industrial. Estos dispositivos conectan las redes de tecnología operativa (OT) — los sistemas de control que gestionan el equipo industrial — con las redes de tecnología de la información (TI).
 
 **Appliances de consumo** — dispositivos informáticos de consumo de propósito específico: grabadores de vídeo en red, decodificadores, equipos de red doméstica y reproductores de medios digitales.
 

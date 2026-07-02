@@ -17,7 +17,7 @@ paired_with: flow-quality-architecture.md
 cites: []
 ---
 
-El flujo de conocimiento del Totebox convierte prosa en dos activos duraderos: un **DataGraph ontológico** de entidades y **adaptadores LoRA** que especializan un modelo de lenguaje local. Ambos los sirven `service-slm` (el Doorman) y `service-content` (el DataGraph).
+El flujo de conocimiento del Totebox convierte prosa en dos activos duraderos: un **[[ontological-datagraph|DataGraph ontológico]]** de entidades y **adaptadores LoRA** que especializan un modelo de lenguaje local. Ambos los sirven `service-slm` (el [[doorman-protocol|Doorman]]) y `service-content` (el DataGraph).
 
 ```
 prosa ─▶ service-extraction ─▶ CORPUS_*.json

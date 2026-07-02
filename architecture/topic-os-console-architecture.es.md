@@ -21,8 +21,8 @@ cites: []
 
 # Arquitectura del OS Console
 
-El OS Console es una interfaz de operador nativa de terminal para sesiones Totebox.
-Presenta un sistema de paneles múltiples controlado por teclas de función, donde cada
+El OS Console es una interfaz de operador nativa de terminal para [[totebox-session|sesiones Totebox]].
+Presenta un sistema de paneles múltiples controlado por [[use-f-key-model|teclas de función]], donde cada
 panel se implementa como un `Cartridge` independiente que se conecta al chasis de la
 consola en una ranura de tecla de función designada.
 
@@ -61,7 +61,7 @@ de protocolo gráfico.
 
 ### F9 — SLM (`app-console-slm`)
 
-`SlmCartridge` renderiza un panel de estado en vivo para la pasarela de inferencia local.
+`SlmCartridge` renderiza un panel de estado en vivo para la [[doorman-protocol|pasarela de inferencia local]].
 Consulta el endpoint de estado de la pasarela cada 10 segundos y muestra:
 
 - Disponibilidad de los niveles A/B/C y estado del disyuntor de circuito

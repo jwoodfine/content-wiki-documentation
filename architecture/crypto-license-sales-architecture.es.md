@@ -20,7 +20,7 @@ cites: []
 
 Una compra de licencia de software en `software.pointsav.com` fluye desde una transferencia
 de USDC en Polygon en cadena hasta un token firmado con Ed25519 que autoriza las descargas
-de binarios. El diseño no requiere custodia: el cliente nunca crea una cuenta, el proveedor
+de binarios. El diseño [[direct-payment-settlement|no requiere custodia]]: el cliente nunca crea una cuenta, el proveedor
 nunca retiene fondos del cliente más allá del momento de liquidación, y no se necesita ningún
 intermediario para enrutar el pago. La arquitectura tiene tres componentes principales —
 un observador de pagos, una tienda virtual y un servidor de versiones — descritos aquí
@@ -117,7 +117,7 @@ el disco sin latencia adicional más allá de la E/S local.
 
 Un punto de acceso de reclamación separado registra una asociación fuera de cadena entre
 un hash SHA-256 de binario y la dirección de billetera del comprador. Esto constituye la
-base para una futura atestación de propiedad en cadena. La capacidad de acuñación en
+base para una futura [[crypto-attestation|atestación]] de propiedad en cadena. La capacidad de acuñación en
 cadena está prevista para una versión futura del sistema; el registro de reclamación se
 escribe ahora para que los datos estén disponibles cuando se añada esa capacidad.
 

@@ -11,7 +11,7 @@ bcsc_class: no-disclosure-implication
 ---
 
 moonshot-toolkit es la herramienta de compilación escrita íntegramente en Rust
-que produce las imágenes de arranque de los sistemas seL4. Lee una
+que produce las [[topic-sel4-unikernel-substrate|imágenes de arranque de los sistemas seL4]]. Lee una
 especificación de sistema en formato TOML, genera un manifiesto de construcción
 con contenido direccionado, y orquesta todo el proceso — desde la compilación de
 los dominios de protección hasta el ensamblaje del binario de arranque — sin
@@ -97,7 +97,7 @@ el TOML entregado; ejecutar `moonshot-toolkit plan` para derivar el BuildPlan;
 comparar el `plan_hash` calculado contra el valor en el manifiesto cofirmado del
 proveedor; opcionalmente reejecutar `moonshot-toolkit build` en la propia
 infraestructura del cliente para verificar el binario byte-a-byte. Enlaza con
-la propiedad del Sustrato del Libro de Capacidades: decisiones de control de
+la propiedad del [[capability-ledger-substrate|Sustrato del Libro de Capacidades]]: decisiones de control de
 acceso criptográficamente auditables, ancladas en registros que controla el
 cliente.
 
@@ -105,7 +105,7 @@ cliente.
 
 Documenta los cuatro hitos completados. Phase 1C.a (v0.2.0, 2026-05-27): CompilePd
 invoca el compilador cruzado real y produce un ELF verificado (`build/hello.elf`,
-punto de entrada `0x40010c`). Phase 1C.b (2026-05-27): kernel seL4 AArch64
+punto de entrada `0x40010c`). Phase 1C.b (2026-05-27): [[sel4-aarch64-qemu-substrate-target|kernel seL4 AArch64]]
 compilado desde fuente con `KernelPlatform=qemu-arm-virt`. Phase 1C.c
 (2026-05-28): arranque completo en QEMU confirmado con salida del kernel visible.
 Phase 1C.d (v0.3.0, 2026-05-29): AssembleImage completamente implementado en Rust;

@@ -20,7 +20,7 @@ El modelado de información de construcción (BIM, por sus siglas en inglés) pr
 
 ## Definición
 
-Un BIM Token es una unidad de especificación del entorno construido — el equivalente estructural de un token de sistema de diseño de software. Donde un token de sistema de diseño codifica una decisión de diseño (un color, una unidad de espaciado, una receta de componente) como un valor reutilizable y referenciable que todas las superficies deben respetar, un BIM Token codifica una decisión sobre un elemento constructivo en tres ejes simultáneos:
+Un BIM Token es una unidad de especificación del entorno construido — el equivalente estructural de un token de [[design-system-substrate|sistema de diseño de software]]. Donde un token de sistema de diseño codifica una decisión de diseño (un color, una unidad de espaciado, una receta de componente) como un valor reutilizable y referenciable que todas las superficies deben respetar, un BIM Token codifica una decisión sobre un elemento constructivo en tres ejes simultáneos:
 
 1. **Qué ES el elemento** — su clase de entidad IFC, su referencia de clasificación Uniclass 2015, su URI de identidad en bSDD y las plantillas de conjuntos de propiedades aplicables.
 2. **Qué DEBE cumplir** — los requisitos normativos impuestos por su jurisdicción, expresados como superposiciones jurisdiccionales (archivos de restricción IDS 1.0 y fragmentos de exclusión geométrica IFC).

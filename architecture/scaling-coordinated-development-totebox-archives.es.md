@@ -17,7 +17,7 @@ paired_with: scaling-coordinated-development-totebox-archives.md
 cites: []
 ---
 
-La topología de `app-orchestration-command` está diseñada para crecer. Este artículo describe los desafíos de coordinación que aparecen a medida que aumenta el número de Totebox Archives, los mecanismos introducidos para abordarlos y la trayectoria prevista hacia el aislamiento de procesos por archivo.
+La topología de `app-orchestration-command` está diseñada para crecer. Este artículo describe los desafíos de coordinación que aparecen a medida que aumenta el número de [[totebox-archive|Totebox Archives]], los mecanismos introducidos para abordarlos y la trayectoria prevista hacia el aislamiento de procesos por archivo.
 
 ## El desafío de coordinación
 

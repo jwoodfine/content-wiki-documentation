@@ -87,7 +87,7 @@ API explícita para activarse.
 Cada solicitud lleva una indicación de complejidad y, opcionalmente, una etiqueta de
 nivel. La pasarela selecciona el nivel usando esta secuencia de decisión:
 
-1. Si hay un interruptor de emergencia cerrado para el nivel solicitado, la solicitud
+1. Si hay un [[spot-vm-lifecycle-kill-switch|interruptor de emergencia]] cerrado para el nivel solicitado, la solicitud
    se rechaza o cae al siguiente nivel.
 2. Si hay una etiqueta de nivel explícita, la solicitud se enruta a ese nivel.
 3. Si no hay etiqueta, se aplica la política de enrutamiento:
@@ -111,15 +111,15 @@ interruptor del nodo express detiene el arranque de la GPU A100; el coste cae a 
 
 ## La memoria organizativa
 
-Antes de despachar cualquier solicitud, la pasarela consulta el grafo de conocimiento
-organizativo para obtener entidades relevantes. Las entidades coincidentes se inyectan
+Antes de despachar cualquier solicitud, la pasarela consulta el [[ontological-datagraph|grafo de conocimiento
+organizativo]] para obtener entidades relevantes. Las entidades coincidentes se inyectan
 en el prompt del sistema como contexto estructurado. El modelo ve las relaciones,
 decisiones y políticas conocidas de la organización sin necesidad de derivarlas de
 nuevo mediante inferencia.
 
 ## El servidor MCP
 
-La pasarela expone una interfaz de memoria organizativa mediante el Protocolo de
-Contexto de Modelo en un segundo puerto. Cualquier cliente de IA compatible con MCP
+La pasarela expone una interfaz de memoria organizativa mediante el [[mcp-substrate-protocol|Protocolo de
+Contexto de Modelo]] en un segundo puerto. Cualquier cliente de IA compatible con MCP
 puede conectarse a esta interfaz usando su suscripción integrada, sin necesidad de una
 clave API adicional.

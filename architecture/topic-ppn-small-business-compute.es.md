@@ -21,11 +21,11 @@ cites: []
 
 # Cómputo PPN para Pequeñas Empresas
 
-La capa de cómputo de la Red Privada PointSav (PPN) proporciona capacidad de máquinas
+La capa de cómputo de la [[pointsav-private-network|Red Privada PointSav]] (PPN) proporciona capacidad de máquinas
 virtuales agrupadas a clientes de pequeñas empresas. La capacidad se ejecuta en
 instancias cloud e2 bajo el hipervisor QEMU TCG y se gestiona mediante tres servicios
-cooperativos: un controlador de flota, un agente de latidos por nodo y un proxy de
-inquilino orientado al cliente.
+cooperativos: un [[service-vm-fleet|controlador de flota]], un agente de latidos por nodo y un [[service-vm-tenant|proxy de
+inquilino]] orientado al cliente.
 
 ## Arquitectura
 
@@ -35,9 +35,9 @@ Cada instancia de VM arranca desde una imagen de disco QCOW2 de NetBSD 10.1 cons
 por `os-totebox/scripts/build-image.sh`. La imagen lleva un conjunto curado de servicios
 en su capa superpuesta:
 
-- `system-ledger-server` — registro de capacidades de solo escritura (socket Unix en
+- `system-ledger-server` — [[capability-ledger-substrate|registro de capacidades]] de solo escritura (socket Unix en
   `/run/system-ledger/ledger.sock`)
-- `slm-doorman-server` — pasarela de inferencia de modelos de lenguaje pequeños
+- `slm-doorman-server` — [[doorman-protocol|pasarela de inferencia]] de modelos de lenguaje pequeños
 - `sshd` — acceso de operador; `UseDNS no` para evitar timeout de banner bajo TCG
 
 Veriexec se ejecuta en modo estricto (`kern.veriexec.strict=1`). Un manifiesto generado

@@ -17,7 +17,7 @@ paired_with: app-orchestration-command-publication-flow.md
 cites: []
 ---
 
-`app-orchestration-command` es el servicio coordinador que transfiere código validado desde los Totebox Archives individuales hacia los repositorios canónicos `pointsav/*` y `woodfine/*`. Este artículo explica qué significa la publicación, quién puede iniciarla y cómo se comporta el sistema cuando el coordinador no está disponible.
+`app-orchestration-command` es el servicio coordinador que transfiere código validado desde los [[totebox-archive|Totebox Archives]] individuales hacia los repositorios canónicos `pointsav/*` y `woodfine/*`. Este artículo explica qué significa la publicación, quién puede iniciarla y cómo se comporta el sistema cuando el coordinador no está disponible.
 
 ## Qué significa publicar
 

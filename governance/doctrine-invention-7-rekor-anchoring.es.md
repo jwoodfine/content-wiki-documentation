@@ -19,7 +19,7 @@ last_edited: 2026-06-23
 
 La Doctrina §III.7 define el patrón Ancla de Integridad: una operación mensual que agrupa el hash del estado del espacio de trabajo, los hashes de manifiestos y el hash del registro, y publica el resultado en Sigstore Rekor — un registro de transparencia público y de solo anexado. El resultado es verificable de forma independiente: cualquier parte puede confirmar que este estado existió en este momento, bajo esta identidad, sin confiar en la infraestructura de Foundry.
 
-El patrón se modela sobre la notarización combinada con el sellado de tiempo público. La notarización prueba que un documento existió; el sellado de tiempo público prueba que existió en un momento determinado o antes. El registro de transparencia de Rekor proporciona ambas garantías: la prueba de inclusión en el registro constituye evidencia independiente de terceros.
+El patrón se modela sobre la notarización combinada con el sellado de tiempo público. La notarización prueba que un documento existió; el sellado de tiempo público prueba que existió en un momento determinado o antes. El registro de transparencia de Rekor proporciona ambas garantías: la [[merkle-proofs-as-substrate-primitive|prueba de inclusión]] en el registro constituye evidencia independiente de terceros.
 
 ---
 
@@ -64,7 +64,7 @@ El par de claves efímeras se descarta después de cada ejecución. Su propósit
 
 ## 3. El Ciclo de Escritura de Vuelta al Registro de Transparencia
 
-Después de que Rekor acepta la entrada, el emisor-de-ancla publica la respuesta completa de Rekor de vuelta en `service-fs/v1/append`, con un identificador de carga útil `anchor-rekor-<unix-timestamp>`.
+Después de que Rekor acepta la entrada, el [[fs-anchor-emitter|emisor-de-ancla]] publica la respuesta completa de Rekor de vuelta en `service-fs/v1/append`, con un identificador de carga útil `anchor-rekor-<unix-timestamp>`.
 
 Esto significa que el registro contiene un historial de su propio anclaje externo. Un auditor que lea el registro puede encontrar la entrada del registro de transparencia de Rekor directamente en el historial del propio registro — no necesita consultar Rekor por separado para confirmar que ocurrió el anclaje. El `tree_size` en el punto de control anclado proporciona el cursor con el que buscar el registro de anclaje: dicho registro aparece en un cursor mayor que `tree_size`, dado que el anclaje ocurre después de que se calcula el punto de control.
 
@@ -92,7 +92,7 @@ Las entradas de fragmentos antiguos siguen siendo legibles durante un período p
 
 El binario emisor-de-ancla (`fs-anchor-emitter`) ejecuta cuatro pasos en secuencia:
 
-1. **Obtención del punto de control** — `GET /v1/checkpoint` a service-fs, con la cabecera `X-Foundry-Module-ID` configurada con el valor de `FS_MODULE_ID`. Devuelve el JSON del punto de control firmado. Salida con código 2 en caso de fallo.
+1. **Obtención del punto de control** — `GET /v1/checkpoint` a [[service-fs-architecture|service-fs]], con la cabecera `X-Foundry-Module-ID` configurada con el valor de `FS_MODULE_ID`. Devuelve el JSON del punto de control firmado. Salida con código 2 en caso de fallo.
 
 2. **Construcción del hashedrekord** — se calcula el resumen SHA-256 del JSON del punto de control en el propio proceso; se genera un par de claves Ed25519 efímeras mediante el generador de números aleatorios del sistema operativo; se firman los bytes del punto de control; se codifica el DER SPKI de la clave de verificación. Se ensambla el cuerpo JSON `hashedRekordRequestV002`.
 

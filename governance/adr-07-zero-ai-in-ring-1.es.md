@@ -35,7 +35,7 @@ compuesto por cuatro servicios:
 
 | Servicio | Función |
 |---|---|
-| `service-fs` | Libro mayor inmutable WORM — todas las escrituras del Ring 1 llegan aquí |
+| `service-fs` | [[worm-ledger-architecture|Libro mayor inmutable WORM]] — todas las escrituras del Ring 1 llegan aquí |
 | `service-people` | Ingestión de identidades — registros de Person, Anchor y Claim |
 | `service-email` | Ingestión de correo electrónico vía EWS (Exchange Web Services SOAP) |
 | `service-input` | Ingestión de documentos — PDF, Markdown, DOCX, XLSX |
@@ -116,8 +116,8 @@ de ficheros:
   hash de entrada SHA-256 encadenado desde el anterior
 - **Checkpoint** — hash raíz SHA-256 sobre la cadena; firma Ed25519 con clave
   suministrada por el operador; formato de cable C2SP signed-note
-- **Anchor-emitter** — par de claves Ed25519 efímero por ejecución; POST
-  `hashedRekordRequestV002` de Sigstore; hash determinista del payload del punto
+- **[[fs-anchor-emitter|Anchor-emitter]]** — par de claves Ed25519 efímero por ejecución; POST
+  `hashedRekordRequestV002` de [[doctrine-invention-7-rekor-anchoring|Sigstore]]; hash determinista del payload del punto
   de control
 
 Sin modelo, sin inferencia, sin probabilidad. Cada operación produce un único resultado
@@ -180,7 +180,7 @@ sin procesar es lo que llega a `service-fs`.
 ## 5. La frontera del Ring 2
 
 La inteligencia entra al sistema en el Ring 2. `service-extraction` lee desde el Ring 1
-vía MCP y aplica combinadores de análisis deterministas más, opcionalmente, llamadas de
+vía [[mcp-substrate-protocol|MCP]] y aplica combinadores de análisis deterministas más, opcionalmente, llamadas de
 inferencia del Ring 3. Sus resultados son artefactos del Ring 2 — no vuelven a escribir
 en las entradas del libro mayor WORM del Ring 1; crean nuevas entradas etiquetadas con
 procedencia del Ring 2.
@@ -214,7 +214,7 @@ por el operador.
 
 ## 7. Ring 3: IA Compositiva
 
-El Ring 3 (`service-slm`, el Doorman) es donde está previsto que se ejecute la
+El Ring 3 (`service-slm`, el [[doorman-protocol|Doorman]]) es donde está previsto que se ejecute la
 inferencia de IA. El Ring 3 es arquitectónicamente opcional — los Rings 1 y 2
 funcionan completamente sin él. El diseño previsto es que el Ring 3 consulte al Ring 2,
 que a su vez lee del Ring 1, formando una composición en capas.

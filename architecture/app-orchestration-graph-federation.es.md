@@ -17,27 +17,27 @@ last_edited: 2026-06-23
 
 # Federación de DataGraph: de app-orchestration-slm a app-orchestration-graph
 
-Cada archivo Totebox en la plataforma PointSav mantiene un DataGraph soberano: un
+Cada [[totebox-archive|archivo Totebox]] en la plataforma PointSav mantiene un DataGraph soberano: un
 grafo de entidades, relaciones y metadatos del corpus específicos a su dominio
 operacional. El archivo GIS alberga entidades geográficas y relaciones espaciales.
 El archivo editorial alberga entidades de contenido y grafos de autoría. Estos
 DataGraphs no se fusionan. No se replican. Cada uno es autoritativo en su propio
 dominio e inaccesible para cualquier otro archivo por defecto.
 
-Esta soberanía es un invariante de diseño, no una limitación. La geometría de
-capacidades de la plataforma hace imposible el acceso al DataGraph entre archivos
+Esta soberanía es un invariante de diseño, no una limitación. La [[capability-geometry|geometría de
+capacidades]] de la plataforma hace imposible el acceso al DataGraph entre archivos
 salvo a través de un único camino auditable: la puerta de enlace de federación de
 DataGraph.
 
 ## Cómo funciona la federación hoy
 
-En la plataforma actual (desde la Fase 2 de os-orchestration), la federación de
+En la plataforma actual (desde la Fase 2 de [[os-orchestration]]), la federación de
 DataGraph es gestionada por `app-orchestration-slm` mediante `POST /v1/graph/federated`.
 Cuando un proceso descendente requiere una consulta de entidades entre archivos,
 la solicitud llega al intermediario. El intermediario llama a
 `FleetRegistry.list_full()` — que devuelve todos los miembros de la flota Totebox
 registrados con su `doorman_endpoint` completo — y distribuye la consulta a cada
-miembro de forma concurrente. Cada Doorman Totebox consulta su propio DataGraph de
+miembro de forma concurrente. Cada [[doorman-protocol|Doorman]] Totebox consulta su propio DataGraph de
 `service-content` y devuelve el resultado. El intermediario agrega las respuestas
 `FederatedGraphEntry` y devuelve un `FederatedGraphResponse`.
 

@@ -22,7 +22,7 @@ Una Red de Plataforma Privada de PointSav (PPN, por sus siglas en inglés) es un
 cómputo privada y cifrada, ensamblada a partir de máquinas que una empresa posee o
 arrienda. Cada máquina — una computadora portátil antigua en una oficina, un servidor
 arrendado en un centro de datos, una máquina virtual en un proveedor de nube — ejecuta
-la misma capa operativa, os-infrastructure, y se une a la misma malla cifrada. Una vez
+la misma capa operativa, [[infrastructure-os|os-infrastructure]], y se une a la misma [[ppn-mesh-architecture|malla cifrada]]. Una vez
 unidas, las máquinas dejan de ser computadoras individuales y se convierten en nodos de
 un único conjunto de capacidad de cómputo.
 
@@ -55,7 +55,7 @@ un enrutador doméstico no lo es, y en cambio aporta capacidad.
 ## Qué significa recursos agrupados
 
 Una empresa que utiliza una PPN no asigna trabajo a máquinas específicas. Solicita una
-máquina virtual a la red, y un controlador de flota decide dónde se ejecuta. La lógica
+máquina virtual a la red, y un [[service-vm-fleet|controlador de flota]] decide dónde se ejecuta. La lógica
 de colocación del controlador es consultiva: examina el estado actual de cada nodo —
 memoria reportada, disponibilidad de virtualización por hardware (KVM) — y selecciona el
 nodo mejor capacitado para asumir el trabajo. La solicitud se delega entonces a ese nodo,
@@ -84,7 +84,7 @@ tráfico entre nodos, observar qué cargas de trabajo existen, ni insertarse en 
 **Aislamiento del anfitrión — planificado.** El cifrado protege los datos en tránsito,
 pero el operador de la máquina física puede, en principio, inspeccionar lo que se ejecuta
 en ella: un proveedor de nube controla su hipervisor, y una persona con acceso físico
-controla una computadora portátil. La respuesta prevista es el micronúcleo seL4, un
+controla una computadora portátil. La respuesta prevista es el [[sel4-microkernel-substrate|micronúcleo seL4]], un
 núcleo verificado formalmente y diseñado para imponer particiones estrictas entre las
 cargas de trabajo y el entorno anfitrión. El estado objetivo es que os-infrastructure
 arranque seL4 como su capa de aislamiento, de modo que el propietario del hardware —
@@ -96,7 +96,7 @@ controla la máquina física puede acceder a las cargas de trabajo en esa máqui
 
 ## Quién controla la admisión: el papel de os-network-admin
 
-Una malla cifrada es tan confiable como su membresía. os-network-admin es la autoridad
+Una malla cifrada es tan confiable como su membresía. [[os-network-admin]] es la autoridad
 de enrutamiento de la PPN: decide qué máquinas pueden unirse a la malla, aprueba o
 deniega solicitudes de incorporación, y está previsto que administre automáticamente la
 configuración de pares de WireGuard en todos los nodos. El control de admisión de pares

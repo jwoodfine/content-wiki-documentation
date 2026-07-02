@@ -15,7 +15,7 @@ research_trail:
 
 # El modelo de ramas por archivo en app-orchestration-command
 
-Cada Totebox Archive en la topología de `app-orchestration-command` opera en su propia rama aislada, separada del `main` canónico que gestiona el coordinador. Este artículo explica por qué existe ese aislamiento, qué protege y cómo el coordinador hace cumplir el límite durante la publicación.
+Cada [[totebox-archive|Totebox Archive]] en la topología de `app-orchestration-command` opera en su propia rama aislada, separada del `main` canónico que gestiona el coordinador. Este artículo explica por qué existe ese aislamiento, qué protege y cómo el coordinador hace cumplir el límite durante la publicación.
 
 ## Por qué existen ramas aisladas
 
@@ -60,7 +60,7 @@ El filtro se ejecuta de forma idéntica independientemente de si el archivo inic
 
 ## Relación con el historial WORM
 
-El `origin/main` canónico se comporta como un registro de escritura única y lectura múltiple (*WORM*): cada commit publicado está firmado criptográficamente por la identidad administradora y es permanente. La rama del archivo, en cambio, es mutable —los archivos realizan un rebasado contra `origin/main` antes de publicar para resolver cualquier divergencia, lo que reescribe el historial de su rama local. Esta reescritura nunca toca el registro canónico.
+El `origin/main` canónico se comporta como un [[worm-ledger-architecture|registro de escritura única y lectura múltiple (*WORM*)]]: cada commit publicado está firmado criptográficamente por la identidad administradora y es permanente. La rama del archivo, en cambio, es mutable —los archivos realizan un rebasado contra `origin/main` antes de publicar para resolver cualquier divergencia, lo que reescribe el historial de su rama local. Esta reescritura nunca toca el registro canónico.
 
 ## Velocidad en paralelo
 
