@@ -11,7 +11,7 @@ bcsc_class: no-disclosure-implication
 last_edited: 2026-06-20
 editor: pointsav-engineering
 language_protocol: TRANSLATE-ES
-short_description: "app-privategit-workbench es un editor de archivos basado en navegador incluido en el sistema operativo host os-privategit, que presenta una interfaz de tres columnas — árbol de archivos, visor y editor — para trabajar con archivos de texto plano y código fuente a través del árbol de archivos del clúster sin necesidad de sesión de terminal."
+short_description: "Editor de archivos en navegador incluido en os-privategit, con interfaz de tres columnas — árbol, visor y editor — para trabajar en el árbol del clúster sin terminal."
 paired_with: app-privategit-workbench.md
 cites: []
 ---

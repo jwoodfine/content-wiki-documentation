@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Arquitectura Leapfrog del wiki de conocimiento"
 slug: knowledge-wiki-leapfrog-architecture.es
-short_description: "El motor app-mediakit-knowledge sirve instancias de wiki desde archivos Markdown planos en repositorios git con elementos de interfaz con forma de Wikipedia, diseñado para alcanzar paridad completa de memoria muscular de Wikipedia antes de agregar una capa de diferenciación que cubra verificación de citas, provenance de rastro de investigación y edición integrada con IA."
+short_description: "Estrategia de motor wiki que sirve Markdown plano desde git con interfaz al estilo Wikipedia, alcanzando paridad de memoria muscular antes de la capa de diferenciación."
 category: patterns
 type: topic
 content_type: topic

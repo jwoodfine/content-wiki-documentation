@@ -12,7 +12,7 @@ bcsc_class: current-fact
 language_protocol: TRANSLATE-ES
 last_edited: 2026-06-30
 editor: woodfine-editorial
-short_description: "La disciplina de diseñar interfaces entre humanos y máquinas o software — orientada principalmente a maximizar la usabilidad y la experiencia del usuario mediante la arquitectura de la información, la presentación visual y el flujo de interacción — que abarca interfaces gráficas, de voz y basadas en gestos, regida por los principios de diálogo y atributos de presentación de la norma ISO 9241."
+short_description: "Disciplina de diseño de interfaces entre humanos y máquinas orientada a maximizar usabilidad y experiencia de usuario, regida por los principios de la norma ISO 9241."
 paired_with: user-interface-design.md
 tags:
   - domain:documentation

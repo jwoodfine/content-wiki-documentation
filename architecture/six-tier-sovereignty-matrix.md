@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: six-tier-sovereignty-matrix.es.md
-short_description: "The six-tier sovereignty matrix organises every directory in the PointSav monorepo by purpose, not by language or compile format — six fixed prefixes (app-, asset-, moonshot-, os-, service-, system-) that make the repository self-documenting and enforce dependency hygiene by convention."
+short_description: "Six fixed directory prefixes organising the PointSav monorepo by purpose, making the repository self-documenting and enforcing dependency hygiene by convention."
 cites: []
 ---
 

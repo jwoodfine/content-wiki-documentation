@@ -6,7 +6,7 @@ category: services
 type: topic
 content_type: topic
 quality: complete
-short_description: "fs-anchor-emitter genera puntos de control firmados del libro mayor inmutable Write-Once-Read-Many a cadencia horaria y los prepara para el anclaje externo al registro público de transparencia Sigstore Rekor con cadencia mensual — el mecanismo que hace que el estado del libro mayor de la plataforma sea criptográficamente auditable desde fuera de la plataforma misma."
+short_description: "Puntos de control firmados por hora del libro mayor Write-Once-Read-Many, preparados para anclaje mensual en Sigstore Rekor y auditables desde fuera de la plataforma."
 status: active
 audience: vendor-public
 bcsc_class: current-fact

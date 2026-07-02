@@ -6,7 +6,7 @@ category: infrastructure
 type: topic
 content_type: topic
 quality: complete
-short_description: "The Write-Once-Read-Many ledger substrate used across PointSav Ring 1 services: a per-tenant append log with per-payload SHA-256 digests today, designed toward a tile-based, hash-chained, cryptographically signed persistence format that satisfies US broker-dealer recordkeeping, EU qualified preservation, and SOC 2 requirements by structure rather than by policy."
+short_description: "Write-Once-Read-Many ledger substrate for PointSav Ring 1 services, designed toward a hash-chained, signed format that satisfies recordkeeping rules by structure."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-06-23

@@ -6,7 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
-short_description: "The Compounding Substrate is the architectural pattern PointSav builds and stewards: open platform code, a deterministic data layer that runs without AI, and an optional intelligence layer whose every interaction generates training signal that compounds across all tenant deployments."
+short_description: "Architectural pattern pairing open platform code and a deterministic AI-free data layer with an optional intelligence layer whose interactions compound as training signal."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-21

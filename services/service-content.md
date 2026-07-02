@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-22
 editor: pointsav-engineering
 paired_with: service-content.es.md
-short_description: "service-content is the synthesis engine of the PointSav family — the Gravity Engine that reads raw payloads from a Totebox, runs them against an institutional taxonomy, and generates the structured documents an organisation publishes, with a human-in-the-loop boundary on every verified ledger."
+short_description: "Synthesis engine reading raw Totebox payloads against an institutional taxonomy to generate structured documents, with human review on every verified ledger."
 cites: []
 references:
   - id: 1

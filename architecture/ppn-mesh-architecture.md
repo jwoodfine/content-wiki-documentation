@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-06-29
 editor: pointsav-engineering
 paired_with: ppn-mesh-architecture.es.md
-short_description: "The PointSav Private Network uses a hub-and-spoke WireGuard mesh to connect fleet nodes, with physical key custody on the operator's premises; this article covers mesh topology, node joining (Mesh Fusion), the F8 Terminal human-in-the-loop protocol, and the deliberate isolation between the network layer and the application authorization layer."
+short_description: "Hub-and-spoke WireGuard mesh connecting fleet nodes, with physical key custody on the operator's premises and Mesh Fusion node joining."
 cites: []
 references:
   - id: 1

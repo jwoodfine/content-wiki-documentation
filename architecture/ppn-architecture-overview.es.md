@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Descripción General de la Arquitectura PPN"
 slug: ppn-architecture-overview
-short_description: "La Red Privada PointSav (PPN) es el plano de infraestructura física del stack de PointSav — responsable de incorporar nodos físicos a una malla autenticada criptográficamente, gestionar los recursos de cómputo que esos nodos proporcionan, y alojar las máquinas virtuales que ejecutan Totebox Archives y pasarelas de orquestación."
+short_description: "Plano de infraestructura física del stack PointSav, que incorpora nodos a una malla autenticada criptográficamente y aloja las máquinas virtuales de la flota."
 category: architecture
 type: topic
 content_type: topic

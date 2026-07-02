@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Open BIM and regulatory acceptance"
 slug: open-bim-regulatory-acceptance
-short_description: "Building Information Modelling is a baseline procurement requirement across US federal agencies and European jurisdictions, with buildingSMART certification validating Open BIM compliance. Sovereign data architecture addresses ITAR, GDPR, and HIPAA requirements that cloud-hosted BIM platforms cannot satisfy structurally."
+short_description: "Baseline procurement status of Building Information Modelling across US federal and European jurisdictions, and the sovereignty requirements cloud BIM cannot satisfy."
 category: reference
 type: topic
 content_type: topic

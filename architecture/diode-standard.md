@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-22
 editor: pointsav-engineering
 paired_with: diode-standard.es.md
-short_description: "The Diode Standard is the foundational security topology of the PointSav operating-system family — a unidirectional command flow where traffic moves from authority to subject and never the reverse, removing lateral-movement attacks by eliminating the routing logic that would allow them."
+short_description: "Foundational security topology of the PointSav OS family — unidirectional command flow from authority to subject that removes lateral-movement attacks by design."
 cites: []
 references:
   - id: 1

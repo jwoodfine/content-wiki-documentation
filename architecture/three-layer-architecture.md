@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: three-layer-architecture.es.md
-short_description: "PointSav deliverables move through three architectural layers — SOFTWARE (vendor monorepo), SHOWCASE (customer deployment catalogue), and INSTANCES (private running deployments) — with a strict one-way flow from vendor to customer to operator that separates public demonstration from operational reality."
+short_description: "Strict one-way flow of PointSav deliverables through three layers — vendor monorepo, customer showcase catalogue, and private running instances."
 cites: []
 ---
 

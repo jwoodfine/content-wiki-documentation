@@ -12,7 +12,7 @@ bcsc_class: current-fact
 language_protocol: TRANSLATE-ES
 last_edited: 2026-06-30
 editor: woodfine-editorial
-short_description: "Imagen de máquina virtual preconfigurada que combina un sistema operativo mínimo con una aplicación específica, distribuida como una unidad de implementación autónoma en formato OVF o similar — que permite a los proveedores de software distribuir configuraciones de software completamente funcionales que se ejecutan de forma consistente en plataformas de hipervisor sin esfuerzo de instalación y configuración por host."
+short_description: "Imagen de máquina virtual preconfigurada que combina un sistema operativo mínimo con una aplicación específica, distribuida como unidad autónoma para hipervisores compatibles."
 paired_with: virtual-appliance.md
 tags:
   - domain:documentation

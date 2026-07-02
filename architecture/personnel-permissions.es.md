@@ -6,7 +6,7 @@ category: architecture
 type: topic
 content_type: topic
 quality: complete
-short_description: "La identidad y los permisos de los colaboradores en la orquestación Totebox se expresan mediante emparejamientos criptográficos — no mediante roles almacenados en una base de datos ni verificados en tiempo de solicitud — y un colaborador puede alcanzar un recurso únicamente si su os-console está emparejado con el nodo de orquestación que lo gestiona."
+short_description: "Identidad y permisos de colaboradores expresados mediante emparejamientos criptográficos, no roles en base de datos — el acceso exige un os-console emparejado con el nodo gestor."
 status: active
 bcsc_class: forward-looking
 last_edited: 2026-05-25

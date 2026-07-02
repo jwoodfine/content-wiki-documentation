@@ -12,7 +12,7 @@ bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
 last_edited: 2026-06-30
 editor: woodfine-editorial
-short_description: "A pre-configured virtual machine image that combines a minimal operating system with a specific application, distributed as a self-contained deployment unit in OVF or similar format — enabling software vendors to distribute fully functional software configurations that run consistently across hypervisor platforms without per-host installation and configuration effort."
+short_description: "Pre-configured virtual machine image combining a minimal operating system with a specific application, distributed as a self-contained unit for compatible hypervisors."
 paired_with: virtual-appliance.es.md
 tags:
   - domain:documentation

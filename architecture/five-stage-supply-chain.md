@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: five-stage-supply-chain.es.md
-short_description: "The five-stage sovereign supply chain describes how code moves from a contributor's local environment to a production deployment through five distinct stages, with a double-blind air-gap that lets contributors work on production systems without ever touching production credentials or seeing production data."
+short_description: "Code path from contributor environment to production in five stages, with a double-blind air-gap keeping production credentials and data out of contributors' reach."
 cites: []
 references:
   - id: 1

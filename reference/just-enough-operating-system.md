@@ -12,7 +12,7 @@ bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
 last_edited: 2026-06-30
 editor: woodfine-editorial
-short_description: "An operating system configuration philosophy that reduces the OS to the minimum set of components required to run a specific application — eliminating unused services, libraries, and system tools to reduce attack surface, memory footprint, and maintenance overhead — used as the foundation for software appliances, virtual machines, and containerized service deployments."
+short_description: "Operating system philosophy that reduces the OS to the minimum components a specific application needs, shrinking attack surface, memory footprint, and maintenance."
 paired_with: just-enough-operating-system.es.md
 tags:
   - domain:documentation

@@ -12,7 +12,7 @@ bcsc_class: current-fact
 language_protocol: TRANSLATE-ES
 last_edited: 2026-06-30
 editor: woodfine-editorial
-short_description: "Paradigma de computación distribuida que acerca la computación y el almacenamiento de datos a las fuentes de datos — reduciendo los tiempos de respuesta y ahorrando ancho de banda al realizar el procesamiento en nodos de borde de red próximos a los dispositivos que generan datos en lugar de en centros de datos en la nube centralizados — con orígenes en las redes de distribución de contenidos de finales de los años 1990 y aplicaciones que van desde IoT hasta vehículos autónomos e inteligencia artificial en el borde."
+short_description: "Paradigma de computación distribuida que acerca cómputo y almacenamiento a las fuentes de datos, reduciendo latencia y ancho de banda frente a la nube centralizada."
 paired_with: edge-computing.md
 tags:
   - domain:documentation

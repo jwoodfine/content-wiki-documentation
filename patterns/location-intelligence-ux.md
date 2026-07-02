@@ -6,7 +6,7 @@ category: patterns
 type: topic
 content_type: topic
 quality: complete
-short_description: "The Location Intelligence interface uses a Conclusion-First design philosophy — rendering ranked tier conclusions rather than individual data points — so a user comparing markets at a national zoom level sees the most defensible commercial nodes immediately, and only drills into individual operators when a node has earned the attention."
+short_description: "Conclusion-First interface philosophy rendering ranked tier conclusions rather than individual data points, so defensible commercial nodes surface immediately."
 status: active
 audience: public
 bcsc_class: no-disclosure-implication

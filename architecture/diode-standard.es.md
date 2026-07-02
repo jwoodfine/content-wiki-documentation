@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-22
 editor: pointsav-engineering
 paired_with: diode-standard.md
-short_description: "El Estándar del Diodo es la topología de seguridad fundacional de la familia de sistemas operativos PointSav — un flujo de comandos unidireccional donde el tráfico se mueve de la autoridad al sujeto y nunca al revés, suprimiendo los ataques de movimiento lateral al eliminar la lógica de enrutamiento que los haría posibles."
+short_description: "Topología de seguridad fundacional de los sistemas operativos PointSav — flujo de comandos unidireccional de autoridad a sujeto que elimina el movimiento lateral por diseño."
 cites: []
 references:
   - id: 1

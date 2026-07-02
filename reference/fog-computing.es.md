@@ -12,7 +12,7 @@ bcsc_class: current-fact
 language_protocol: TRANSLATE-ES
 last_edited: 2026-06-30
 editor: woodfine-editorial
-short_description: "Arquitectura de computación distribuida que sitúa la computación, el almacenamiento y los servicios de red en una capa intermedia entre los dispositivos de borde y los centros de datos en la nube centralizados — reduciendo la latencia y los requisitos de ancho de banda del backbone para aplicaciones IoT y en tiempo real, definida por Cisco en 2012 y estandarizada mediante IEEE 1934-2018 a través del OpenFog Consortium."
+short_description: "Arquitectura distribuida que sitúa cómputo, almacenamiento y servicios de red entre dispositivos de borde y la nube, definida por Cisco en 2012 y estandarizada en IEEE 1934-2018."
 paired_with: fog-computing.md
 tags:
   - domain:documentation

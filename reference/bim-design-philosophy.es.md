@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 type: topic
 content_type: topic
 slug: bim-design-philosophy
-short_description: "El Building Design System funciona como la extensión específica de AEC anclada a IFC 4.3, traduciendo compromisos de plataforma de almacenamiento de archivos planos, estándares abiertos y ejecución offline-first en un conjunto de herramientas profesionales que aborda debilidades estructurales de plataformas BIM heredadas solo en la nube."
+short_description: "Extensión AEC anclada a IFC 4.3 que traduce almacenamiento en archivos planos, estándares abiertos y ejecución offline-first en herramientas BIM profesionales."
 title: Filosofía de diseño BIM
 audience: vendor-public
 bcsc_class: current-fact

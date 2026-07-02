@@ -12,7 +12,7 @@ bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
 last_edited: 2026-06-30
 editor: woodfine-editorial
-short_description: "A distributed computing paradigm that brings computation and data storage closer to the sources of data — reducing response times and saving bandwidth by performing processing at network edge nodes near the data-generating devices rather than in centralized cloud data centers — with origins in late-1990s content distribution networks and applications ranging from IoT to autonomous vehicles to edge artificial intelligence."
+short_description: "Distributed computing paradigm that places computation and storage near data sources, cutting latency and bandwidth versus centralized cloud data centers."
 paired_with: edge-computing.es.md
 tags:
   - domain:documentation

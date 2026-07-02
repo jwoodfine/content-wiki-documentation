@@ -6,7 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
-short_description: "The citation system connects every published article to the external authorities it depends on — regulatory instruments, research papers, technical specifications — through a platform-wide YAML registry with drift detection and per-document frontmatter declarations that make provenance machine-auditable from regulatory instrument to published claim."
+short_description: "Platform-wide YAML citation registry with drift detection that makes provenance machine-auditable from regulatory instrument to published claim."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-15

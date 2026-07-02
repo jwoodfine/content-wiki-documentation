@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 type: topic
 content_type: topic
 slug: bim-market-context
-short_description: "Building Information Modelling is now a government mandate across the jurisdictions that matter most to institutional real estate, with ISO 19650 and IFC as global defaults, and the UK Golden Thread creating legal market demand for portable, continuously maintained digital building records."
+short_description: "Government BIM mandates across key jurisdictions, ISO 19650 and IFC as global defaults, and the UK Golden Thread's demand for portable digital building records."
 title: "BIM market context and regulatory landscape"
 category: reference
 language: en

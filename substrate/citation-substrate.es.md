@@ -8,7 +8,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
-short_description: "El sistema de citas conecta cada artículo publicado con las autoridades externas de las que depende — instrumentos regulatorios, artículos académicos, especificaciones técnicas — mediante un registro YAML de ámbito de plataforma con detección de deriva y declaraciones por documento que hacen la procedencia auditable por máquina desde el instrumento fuente hasta la afirmación publicada."
+short_description: "Registro YAML de citas de ámbito de plataforma con detección de deriva que hace la procedencia auditable por máquina, del instrumento regulatorio a la afirmación publicada."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-15

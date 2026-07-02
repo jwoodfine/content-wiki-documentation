@@ -12,7 +12,7 @@ bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
 last_edited: 2026-06-30
 editor: woodfine-editorial
-short_description: "A computing device that combines hardware and software engineered to perform a specific, well-defined function — deployed as a closed, sealed unit that does not require per-installation configuration and cannot be repurposed for general computing — including network appliances, storage appliances, backup appliances, security appliances, and industrial IoT gateway devices."
+short_description: "Computing device pairing hardware and software engineered for one well-defined function, deployed as a sealed unit that cannot be repurposed for general computing."
 paired_with: computer-appliance.es.md
 tags:
   - domain:documentation

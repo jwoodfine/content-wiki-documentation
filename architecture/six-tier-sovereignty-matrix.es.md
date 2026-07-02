@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: six-tier-sovereignty-matrix.md
-short_description: "La matriz de seis niveles de soberanía organiza cada directorio del monorepo de PointSav por propósito, no por lenguaje o formato de compilación — seis prefijos fijos (app-, asset-, moonshot-, os-, service-, system-) que hacen que el repositorio sea autodocumentado y refuerzan la higiene de dependencias por convención."
+short_description: "Seis prefijos fijos de directorio que organizan el monorepo de PointSav por propósito, haciendo el repositorio autodocumentado y reforzando la higiene de dependencias."
 cites: []
 ---
 

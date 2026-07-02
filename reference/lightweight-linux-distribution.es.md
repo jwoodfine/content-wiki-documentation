@@ -12,7 +12,7 @@ bcsc_class: current-fact
 language_protocol: TRANSLATE-ES
 last_edited: 2026-06-30
 editor: woodfine-editorial
-short_description: "Distribución Linux diseñada para utilizar significativamente menos RAM y capacidad de procesador que las distribuciones completas — optimizada mediante entornos de escritorio mínimos, conjuntos de paquetes reducidos y servicios de sistema recortados para su implementación en hardware con recursos limitados, sistemas embebidos y máquinas heredadas."
+short_description: "Distribución Linux diseñada para usar mucha menos RAM y capacidad de procesador que las distribuciones completas, apta para hardware limitado, embebido o heredado."
 paired_with: lightweight-linux-distribution.md
 tags:
   - domain:documentation

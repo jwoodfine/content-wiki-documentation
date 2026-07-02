@@ -8,7 +8,7 @@ content_type: topic
 quality: complete
 status: active
 audience: public
-short_description: "app-orchestration-gis es el motor de análisis espacial sin estado que realiza cálculos de geometría lineal y mapeo de coordenadas para producir las clasificaciones de co-ubicación de Woodfine y el mapa interactivo en gis.woodfinegroup.com — una función pura que no contiene datos canónicos y puede ser reprovisionada apuntando una nueva instancia a la capa de datos inmutable."
+short_description: "Motor de análisis espacial sin estado que produce las clasificaciones de coubicación de Woodfine y el mapa interactivo — una función pura sin datos canónicos."
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
 last_edited: 2026-05-08

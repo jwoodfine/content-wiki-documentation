@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: five-stage-supply-chain.md
-short_description: "La cadena de suministro soberana de cinco etapas describe cómo el código se mueve desde el entorno local de un contribuyente hasta una implementación de producción a través de cinco etapas distintas, con una brecha de aire de doble ciego que permite a los contribuyentes trabajar en sistemas de producción sin tocar credenciales de producción ni ver datos de producción."
+short_description: "Recorrido del código del entorno del contribuyente a producción en cinco etapas, con brecha de aire de doble ciego que aparta credenciales y datos de producción del contribuyente."
 cites: []
 references:
   - id: 1

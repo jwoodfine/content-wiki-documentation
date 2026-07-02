@@ -6,7 +6,7 @@ category: applications
 type: topic
 content_type: topic
 quality: complete
-short_description: "app-mediakit-knowledge is the single-binary Rust wiki engine that serves PointSav's engineering documentation at documentation.pointsav.com — a view over a markdown tree, not a content repository, where the markdown commits are canonical and every running binary is a throwaway derived state."
+short_description: "Single-binary Rust wiki engine serving documentation.pointsav.com — a view over a markdown tree where git commits are canonical and the running binary is disposable."
 status: active
 audience: vendor-public
 bcsc_class: no-disclosure-implication

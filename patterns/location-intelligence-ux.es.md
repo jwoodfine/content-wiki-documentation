@@ -6,7 +6,7 @@ category: patterns
 type: topic
 content_type: topic
 quality: complete
-short_description: "La interfaz de Inteligencia de Ubicación utiliza una filosofía de diseño Conclusion-First — renderizando conclusiones de nivel clasificadas en lugar de puntos de datos individuales — de modo que un usuario que compara mercados a nivel de zoom nacional ve los nodos comerciales más defendibles de inmediato, y solo profundiza en operadores individuales cuando un nodo ha ganado la atención."
+short_description: "Filosofía de interfaz Conclusion-First que renderiza conclusiones clasificadas en lugar de puntos de datos, destacando de inmediato los nodos comerciales defendibles."
 status: active
 audience: public
 bcsc_class: no-disclosure-implication

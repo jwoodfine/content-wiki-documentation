@@ -6,7 +6,7 @@ category: services
 type: topic
 content_type: topic
 quality: complete
-short_description: "The Template Ledger is the distribution mechanism within service-email-template that synchronises a single authoritative copy of every approved template to the operator's mail environment — eliminating version drift between template design and operator execution and removing every drafting step from routine corporate correspondence."
+short_description: "Distribution mechanism in service-email-template that syncs one authoritative copy of every approved template to the operator's mail environment, eliminating version drift."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-08

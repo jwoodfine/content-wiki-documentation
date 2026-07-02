@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 type: topic
 content_type: topic
 slug: bim-market-context
-short_description: "La Modelización de Información de Construcción es ahora un mandato gubernamental en las jurisdicciones más relevantes para bienes raíces institucionales, con ISO 19650 e IFC como estándares globales, y el Golden Thread del Reino Unido creando demanda de mercado legal para registros digitales de edificios portátiles y continuamente mantenidos."
+short_description: "Mandatos gubernamentales de BIM en jurisdicciones clave, ISO 19650 e IFC como estándares globales, y la demanda del Golden Thread británico de registros digitales portátiles."
 title: "Contexto del mercado BIM y marco regulatorio"
 category: reference
 language: es

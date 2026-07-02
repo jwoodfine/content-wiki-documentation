@@ -12,7 +12,7 @@ bcsc_class: current-fact
 language_protocol: TRANSLATE-ES
 last_edited: 2026-06-30
 editor: woodfine-editorial
-short_description: "Dispositivo informático que combina hardware y software diseñados para realizar una función específica y bien definida — implementado como una unidad cerrada y sellada que no requiere configuración por instalación y no puede reutilizarse para computación general — incluyendo appliances de red, de almacenamiento, de copia de seguridad, de seguridad y dispositivos gateway IoT industriales."
+short_description: "Dispositivo informático que combina hardware y software para una única función bien definida, implementado como unidad sellada no reutilizable para computación general."
 paired_with: computer-appliance.md
 tags:
   - domain:documentation

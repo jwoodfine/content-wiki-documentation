@@ -6,7 +6,7 @@ category: architecture
 type: topic
 content_type: topic
 quality: complete
-short_description: "Cryptographic payload attestation is the mechanism by which PointSav edge nodes dynamically prove the integrity of their published text content to any viewer, using client-side SHA-256 hashing so that any auditor can independently verify a disclosure has not been altered in transit."
+short_description: "Mechanism by which PointSav edge nodes prove published text integrity to any viewer via client-side SHA-256 hashing, independently verifiable by any auditor."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30

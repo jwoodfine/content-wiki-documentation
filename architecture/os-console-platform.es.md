@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-06-29
 editor: pointsav-engineering
 paired_with: os-console-platform.md
-short_description: "os-console es un único binario de Rust que aloja espacios de trabajo TUI independientes — cartuchos — dentro de un chasis de navegación por teclado construido sobre app-console-keys; este artículo cubre la estructura de la plataforma, el mapa de cartuchos por tecla de función, la conectividad MBA y la ubicación en la Arquitectura de Tres Anillos."
+short_description: "Binario Rust único que aloja cartuchos TUI independientes en un chasis unificado de navegación por teclado, con mapa de cartuchos por tecla de función y conectividad MBA."
 cites: []
 references: []
 ---

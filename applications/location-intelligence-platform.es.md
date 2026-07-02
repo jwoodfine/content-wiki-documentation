@@ -6,7 +6,7 @@ category: applications
 type: topic
 content_type: topic
 quality: complete
-short_description: "La plataforma de Inteligencia de Ubicación de PointSav es una aplicación GIS de archivos planos propiedad del cliente diseñada para análisis de clústeres minoristas y selección estratégica de sitios — compuesta por app-orchestration-gis (el motor analítico) y pointsav-gis-engine (la capa de renderizado), con cada conjunto de datos, algoritmo y decisión de renderizado bajo el control directo del cliente."
+short_description: "Aplicación GIS de archivos planos propiedad del cliente para análisis de clústeres minoristas y selección de sitios, que une motor analítico y capa de renderizado."
 status: active
 audience: public
 bcsc_class: public-disclosure-safe

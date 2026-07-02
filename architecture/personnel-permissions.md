@@ -6,7 +6,7 @@ category: architecture
 type: topic
 content_type: topic
 quality: complete
-short_description: "Contributor identity and permissions in Totebox Orchestration are expressed through cryptographic pairings — not roles stored in a database or checked at request time — and a contributor can reach a resource only if their os-console is paired with the orchestration node that manages it."
+short_description: "Contributor identity and permissions expressed through cryptographic pairings rather than database roles — reachability requires a paired os-console."
 status: active
 bcsc_class: forward-looking
 last_edited: 2026-05-25

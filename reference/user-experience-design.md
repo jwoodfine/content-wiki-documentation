@@ -12,7 +12,7 @@ bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
 last_edited: 2026-06-30
 editor: woodfine-editorial
-short_description: "A multidisciplinary design practice that encompasses all aspects of a user's interaction with a company, its products, and its services — incorporating user research, visual design, information architecture, interaction design, usability, and accessibility — coined by Donald Norman at Apple in the early 1990s and now a central discipline in the design of software, products, and service systems."
+short_description: "Multidisciplinary design practice covering every aspect of a user's interaction with a company and its products, coined by Donald Norman at Apple in the early 1990s."
 paired_with: user-experience-design.es.md
 tags:
   - domain:documentation

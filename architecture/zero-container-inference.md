@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 content_type: topic
 title: "Zero-container inference"
 slug: zero-container-inference
-short_description: "Zero-container inference is the planned deployment pattern for Tier B GPU compute using native Linux binaries under systemd on cloud virtual machines with no container runtime, achieving viable SMB economics through idle-shutdown timers that halt GPU billing when inference queues are empty."
+short_description: "Planned Tier B GPU deployment pattern using native Linux binaries under systemd, with idle-shutdown timers halting GPU billing when inference queues are empty."
 category: architecture
 status: stub
 bcsc_class: forward-looking

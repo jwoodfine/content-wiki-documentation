@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Sustrato del micronúcleo seL4"
 slug: sel4-microkernel-substrate
-short_description: "La plataforma adopta el microkernel seL4 formalmente verificado matemáticamente como el kernel L1 para todos los sistemas operativos PointSav, proporcionando aislamiento de memoria garantizado estructuralmente, cero desbordamientos de búfer, permisos basados en capacidad y ejecución determinista sin construir un kernel personalizado."
+short_description: "Micronúcleo seL4 formalmente verificado adoptado como kernel L1 de los sistemas operativos PointSav, con aislamiento de memoria y permisos por capacidades garantizados."
 category: substrate
 type: concept
 content_type: topic

@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: elastic-compute-lora-training-pipeline.es.md
-short_description: "Elastic Compute #1 runs a nightly two-phase pipeline that rebuilds the deployment DataGraph and produces LoRA adapter weights for the workspace language model. Phase 1 uses a 32B inference model for entity extraction; Phase 2 trains a 7B parameter-efficient adapter from engineering and apprenticeship corpora."
+short_description: "Nightly two-phase pipeline on Elastic Compute #1 that rebuilds the deployment DataGraph and trains LoRA adapter weights for the workspace language model."
 cites: []
 ---
 

@@ -6,7 +6,7 @@ category: applications
 type: app
 content_type: topic
 quality: complete
-short_description: "The operator-facing web interface for the service-proofreader editorial pipeline, implementing a two-tier design token architecture for tenant brand adaptation and a pure-Rust distillation tool that converts apprenticeship corpus event-pairs into training datasets for service-slm."
+short_description: "Operator-facing web interface for the service-proofreader pipeline, with two-tier design tokens for tenant branding and a pure-Rust apprenticeship distillation tool."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-06-30

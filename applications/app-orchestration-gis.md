@@ -8,7 +8,7 @@ content_type: topic
 quality: complete
 status: active
 audience: public
-short_description: "app-orchestration-gis is the stateless spatial analytics engine that performs linear-geometry calculations and coordinate mapping to produce the Woodfine co-location rankings and the interactive map at gis.woodfinegroup.com — a pure function that holds no canonical data and can be re-provisioned by pointing a fresh instance at the immutable data layer."
+short_description: "Stateless spatial analytics engine producing the Woodfine co-location rankings and interactive map — a pure function holding no canonical data."
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
 last_edited: 2026-05-08

@@ -10,7 +10,7 @@ status: active
 bcsc_class: no-disclosure-implication
 last_edited: 2026-05-29
 editor: project-editorial
-short_description: "app-privategit-workbench is a browser-based file editor included in the os-privategit host operating system, presenting a three-column interface — file tree, viewer, and editor — for working with plain-text and source files across the cluster archive tree without a terminal session."
+short_description: "Browser-based file editor in os-privategit presenting a three-column file tree, viewer, and editor for working across the cluster archive tree without a terminal."
 paired_with: app-privategit-workbench.es.md
 ---
 

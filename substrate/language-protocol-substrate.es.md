@@ -8,7 +8,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
-short_description: "La infraestructura editorial que codifica el registro, la voz de marca, el subtipo de documento y el público objetivo como andamiaje de indicaciones reutilizable — cuatro familias de adaptadores, dieciocho plantillas de género, un validador de portada, y una división en cuatro servicios que permite al cliente sustituir cualquier componente sin tocar los demás."
+short_description: "Infraestructura editorial que codifica registro, voz de marca, subtipo de documento y audiencia como andamiaje de indicaciones reutilizable en cuatro servicios sustituibles."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-15

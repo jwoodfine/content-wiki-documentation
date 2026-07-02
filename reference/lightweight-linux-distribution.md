@@ -12,7 +12,7 @@ bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
 last_edited: 2026-06-30
 editor: woodfine-editorial
-short_description: "A Linux distribution designed to use significantly less RAM and processor capacity than full-featured distributions — optimized through minimal desktop environments, reduced package sets, and trimmed system services for deployment on resource-constrained hardware, embedded systems, and legacy machines."
+short_description: "Linux distribution engineered to use far less RAM and processor capacity than full-featured distributions, suited to constrained, embedded, and legacy hardware."
 paired_with: lightweight-linux-distribution.es.md
 tags:
   - domain:documentation

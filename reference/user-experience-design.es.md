@@ -12,7 +12,7 @@ bcsc_class: current-fact
 language_protocol: TRANSLATE-ES
 last_edited: 2026-06-30
 editor: woodfine-editorial
-short_description: "Práctica de diseño multidisciplinar que abarca todos los aspectos de la interacción de un usuario con una empresa, sus productos y sus servicios — incorporando investigación de usuarios, diseño visual, arquitectura de la información, diseño de interacción, usabilidad y accesibilidad — acuñada por Donald Norman en Apple a principios de los años 1990 y actualmente una disciplina central en el diseño de software, productos y sistemas de servicios."
+short_description: "Práctica de diseño multidisciplinar que abarca toda la interacción del usuario con una empresa y sus productos, acuñada por Donald Norman en Apple a inicios de los años 1990."
 paired_with: user-experience-design.md
 tags:
   - domain:documentation

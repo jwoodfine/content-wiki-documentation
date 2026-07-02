@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 type: concept
 content_type: topic
 slug: development-regions
-short_description: "Las regiones de desarrollo son zonas geográficas y jurisdiccionales que segmentan los datos de mercado, contexto regulatorio y topología de implementación de la plataforma. Cada región define un envolvente jurisdiccional, límite geográfico y alcance de datos de mercado que rige la evaluación de coubicación y la aplicación de reglas de cumplimiento."
+short_description: "Zonas geográficas y jurisdiccionales que segmentan datos de mercado, contexto regulatorio y topología de implementación para evaluación de coubicación y cumplimiento."
 title: "Regiones de desarrollo"
 category: architecture
 language: es

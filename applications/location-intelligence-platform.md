@@ -6,7 +6,7 @@ category: applications
 type: topic
 content_type: topic
 quality: complete
-short_description: "The PointSav Location Intelligence platform is a customer-owned flat-file GIS application designed for retail cluster analysis and strategic site selection — composed of app-orchestration-gis (the analytics engine) and pointsav-gis-engine (the rendering layer), with every dataset, algorithm, and rendering decision under the customer's direct control."
+short_description: "Customer-owned flat-file GIS application for retail cluster analysis and strategic site selection, pairing an analytics engine with a rendering layer."
 status: active
 audience: public
 bcsc_class: public-disclosure-safe

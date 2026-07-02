@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Attestación criptográfica de cargas"
 slug: crypto-attestation
-short_description: "La atestación de carga útil criptográfica es el mecanismo mediante el cual los nodos edge de PointSav demuestran dinámicamente la integridad de su contenido de texto publicado a cualquier observador, utilizando hash SHA-256 del lado del cliente para que cualquier auditor pueda verificar de forma independiente que una divulgación no ha sido alterada en tránsito."
+short_description: "Mecanismo por el cual los nodos edge de PointSav demuestran la integridad del texto publicado mediante hash SHA-256 del lado del cliente, verificable por cualquier auditor."
 category: architecture
 type: topic
 content_type: topic

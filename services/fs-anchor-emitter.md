@@ -6,7 +6,7 @@ category: services
 type: topic
 content_type: topic
 quality: complete
-short_description: "fs-anchor-emitter generates signed checkpoints of the immutable Write-Once-Read-Many ledger at hourly cadence and prepares them for external anchoring to the Sigstore Rekor transparency log on a monthly schedule — the mechanism that makes the platform's ledger state cryptographically auditable from outside the platform."
+short_description: "Signed hourly checkpoints of the Write-Once-Read-Many ledger prepared for monthly anchoring to Sigstore Rekor, making ledger state auditable from outside the platform."
 status: active
 audience: vendor-public
 bcsc_class: current-fact

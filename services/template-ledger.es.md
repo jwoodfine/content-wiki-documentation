@@ -6,7 +6,7 @@ category: services
 type: topic
 content_type: topic
 quality: complete
-short_description: "El Registro de Plantillas es el mecanismo de distribución dentro de service-email-template que sincroniza una única copia autoritativa de cada plantilla aprobada con el entorno de correo del operador — eliminando la deriva de versiones entre el diseño de la plantilla y la ejecución del operador, y eliminando cada paso de redacción de la correspondencia corporativa rutinaria."
+short_description: "Mecanismo de distribución en service-email-template que sincroniza una copia autoritativa de cada plantilla aprobada con el correo del operador, eliminando la deriva de versiones."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-08

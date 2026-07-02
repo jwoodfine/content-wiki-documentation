@@ -12,7 +12,7 @@ bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
 last_edited: 2026-06-30
 editor: woodfine-editorial
-short_description: "A distributed computing architecture that places computation, storage, and network services at an intermediate layer between edge devices and centralized cloud data centers — reducing latency and backbone bandwidth requirements for IoT and real-time applications, defined by Cisco in 2012 and standardized through IEEE 1934-2018 via the OpenFog Consortium."
+short_description: "Distributed architecture placing compute, storage, and network services between edge devices and the cloud, defined by Cisco in 2012 and standardized as IEEE 1934-2018."
 paired_with: fog-computing.es.md
 tags:
   - domain:documentation

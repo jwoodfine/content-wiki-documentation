@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Arquitectura Leapfrog 2030"
 slug: leapfrog-2030-architecture
-short_description: "La arquitectura Leapfrog 2030 describe el posicionamiento estructural de la plataforma en respuesta a tres fuerzas convergentes: modelos de lenguaje pequeño viables en hardware de commodities, el Model Context Protocol como el estándar para composición de servicios nativa de IA y locales como el tipo de implementación SMB de más rápido crecimiento. Los clientes poseen su hardware, datos y pesos de adaptador; PointSav toma tarifas de transacción cuando el valor fluye en lugar de ingresos de suscripción recurrente."
+short_description: "Tesis de posicionamiento estructural que combina hardware, datos y pesos de adaptador propiedad del cliente con ingresos por transacción en lugar de suscripción."
 category: architecture
 type: concept
 content_type: topic

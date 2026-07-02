@@ -6,7 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
-short_description: "El sustrato compuesto es el patrón arquitectónico que PointSav construye y administra: código de plataforma abierto, una capa de datos determinista que funciona sin IA, y una capa de inteligencia opcional cuya cada interacción genera señal de entrenamiento que se compone a través de todos los despliegues."
+short_description: "Patrón arquitectónico que une código de plataforma abierto, una capa de datos determinista sin IA y una capa de inteligencia opcional que genera señal de entrenamiento compuesta."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-21

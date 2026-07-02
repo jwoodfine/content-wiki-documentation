@@ -6,7 +6,7 @@ category: applications
 type: app
 content_type: topic
 quality: complete
-short_description: "A terminal user interface cartridge for the operator console that displays the live state of the AI inference infrastructure — model health, remote GPU node status, priority queue depth, organizational graph entity count, and daily spend — with keyboard controls for routing policy and per-tier kill switches."
+short_description: "Terminal console cartridge showing live AI inference infrastructure state — model health, GPU nodes, queue depth, and daily spend — with per-tier kill switches."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-06-09

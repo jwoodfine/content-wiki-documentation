@@ -8,7 +8,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
-short_description: "El mecanismo de plataforma que enruta el trabajo de código y editorial primero a través de un modelo de lenguaje pequeño local, captura un veredicto sénior firmado para cada intento, y usa los pares de preferencia resultantes como señal de preentrenamiento continuo."
+short_description: "Mecanismo de plataforma que enruta el trabajo primero por un modelo de lenguaje pequeño local y captura veredictos sénior firmados como pares de preferencia de entrenamiento."
 status: active
 bcsc_class: public-disclosure-safe
 forward_looking: true

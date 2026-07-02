@@ -12,7 +12,7 @@ bcsc_class: current-fact
 language_protocol: TRANSLATE-ES
 last_edited: 2026-06-30
 editor: woodfine-editorial
-short_description: "Filosofía y práctica de configuración de sistemas operativos que reduce el SO al conjunto mínimo de componentes necesarios para ejecutar una aplicación específica — eliminando servicios, bibliotecas y herramientas del sistema no utilizados para reducir la superficie de ataque, el uso de memoria y la carga de mantenimiento — utilizada como base para appliances de software, máquinas virtuales e implementaciones de servicios en contenedores."
+short_description: "Filosofía de sistemas operativos que reduce el SO a los componentes mínimos que necesita una aplicación, recortando superficie de ataque, memoria y mantenimiento."
 paired_with: just-enough-operating-system.md
 tags:
   - domain:documentation

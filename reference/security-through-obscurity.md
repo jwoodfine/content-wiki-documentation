@@ -12,7 +12,7 @@ bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
 last_edited: 2026-06-30
 editor: woodfine-editorial
-short_description: "The practice of using secrecy of design, implementation, or configuration as a primary security mechanism — widely rejected in professional security practice since Kerckhoffs' principle (1883) and Claude Shannon's maxim that 'the enemy knows the system' — though accepted as one layer in a defense-in-depth strategy when not relied upon as the sole or primary control."
+short_description: "Reliance on secrecy of design or implementation as a primary security mechanism, rejected in professional practice since Kerckhoffs' principle of 1883."
 paired_with: security-through-obscurity.es.md
 tags:
   - domain:documentation

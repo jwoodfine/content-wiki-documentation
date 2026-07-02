@@ -6,7 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
-short_description: "An organizational knowledge graph that stores structured representations of people, companies, projects, and relationships — providing the persistent semantic memory layer that enables AI inference engines to answer queries about business state without re-reading source documents."
+short_description: "Organizational knowledge graph of people, companies, projects, and relationships — persistent semantic memory for answering business-state queries without re-reading sources."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-06-09

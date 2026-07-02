@@ -6,7 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
-short_description: "Un grafo de conocimiento organizativo que almacena representaciones estructuradas de personas, empresas, proyectos y relaciones — proporcionando la capa de memoria semántica persistente que permite a los motores de inferencia de IA responder consultas sobre el estado empresarial sin releer documentos fuente."
+short_description: "Grafo de conocimiento organizativo de personas, empresas, proyectos y relaciones — memoria semántica persistente para responder consultas de negocio sin releer documentos fuente."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-06-09

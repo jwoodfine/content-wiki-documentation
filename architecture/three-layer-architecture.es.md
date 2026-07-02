@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: three-layer-architecture.md
-short_description: "Los entregables de PointSav se mueven a través de tres capas arquitectónicas — SOFTWARE (monorepo del proveedor), ESCAPARATE (catálogo de implementación del cliente) e INSTANCIAS (implementaciones en ejecución privadas) — con un flujo estrictamente unidireccional del proveedor al cliente al operador que separa la demostración pública de la realidad operacional."
+short_description: "Flujo estrictamente unidireccional de los entregables de PointSav por tres capas: monorepo del proveedor, catálogo escaparate del cliente e instancias privadas en ejecución."
 cites: []
 ---
 

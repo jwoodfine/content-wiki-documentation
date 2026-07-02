@@ -12,7 +12,7 @@ bcsc_class: current-fact
 language_protocol: TRANSLATE-ES
 last_edited: 2026-06-30
 editor: woodfine-editorial
-short_description: "Una interfaz definida que permite la comunicación entre dos o más sistemas de software — especificando las llamadas o solicitudes que pueden realizarse, cómo realizarlas y los formatos de datos utilizados — con orígenes en la informática británica de los años 1940, definición formal en un artículo de la AFIPS de 1968 y dominio contemporáneo a través de las API web basadas en REST que constituyen el mecanismo de integración principal de la internet moderna."
+short_description: "Interfaz definida que permite la comunicación entre sistemas de software especificando las llamadas disponibles, cómo realizarlas y los formatos de datos intercambiados."
 paired_with: application-programming-interface.md
 tags:
   - domain:documentation

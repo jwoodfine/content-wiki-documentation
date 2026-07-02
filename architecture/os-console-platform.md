@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-06-29
 editor: pointsav-engineering
 paired_with: os-console-platform.es.md
-short_description: "os-console is a single Rust binary that hosts independent TUI workspaces — cartridges — within a unified keyboard-navigation chassis built on app-console-keys; this article covers the platform structure, the F-key cartridge map, MBA connectivity, and Three-Ring Architecture placement."
+short_description: "Single Rust binary hosting independent TUI cartridges within a unified keyboard-navigation chassis, with an F-key cartridge map and MBA connectivity."
 cites: []
 references: []
 ---

@@ -12,7 +12,7 @@ bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
 last_edited: 2026-06-30
 editor: woodfine-editorial
-short_description: "The discipline of designing interfaces between humans and machines or software — concerned primarily with maximizing usability and user experience through information architecture, visual presentation, and interaction flow — encompassing graphical, voice, and gesture-based interfaces, governed by the ISO 9241 standard's dialogue principles and presentation attributes."
+short_description: "Discipline of designing human-machine interfaces to maximize usability and user experience, governed by the dialogue principles of the ISO 9241 standard."
 paired_with: user-interface-design.es.md
 tags:
   - domain:documentation

@@ -6,7 +6,7 @@ category: applications
 type: app
 content_type: topic
 quality: complete
-short_description: "Componente de interfaz de usuario en terminal para la consola de operador que muestra el estado en vivo de la infraestructura de inferencia de IA — salud del modelo, estado de nodos GPU remotos, profundidad de la cola prioritaria, recuento de entidades del grafo organizativo y gasto diario — con controles de teclado para política de enrutamiento y conmutadores de parada por nivel."
+short_description: "Cartucho de consola en terminal que muestra el estado en vivo de la infraestructura de inferencia — salud del modelo, nodos GPU, colas y gasto diario — con conmutadores por nivel."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-06-09

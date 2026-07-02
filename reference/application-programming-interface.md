@@ -12,7 +12,7 @@ bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
 last_edited: 2026-06-30
 editor: woodfine-editorial
-short_description: "A defined interface that enables two or more software systems to communicate — specifying the calls or requests that can be made, how to make them, and the data formats used — with origins in 1940s British computer science, formal definition in a 1968 AFIPS paper, and contemporary dominance through REST-based web APIs that form the primary integration mechanism of the modern internet."
+short_description: "Defined interface that lets software systems communicate by specifying the available calls, how to make them, and the data formats exchanged."
 paired_with: application-programming-interface.es.md
 tags:
   - domain:documentation

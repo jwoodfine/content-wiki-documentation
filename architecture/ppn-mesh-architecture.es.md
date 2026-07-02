@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-06-29
 editor: pointsav-engineering
 paired_with: ppn-mesh-architecture.md
-short_description: "La Red Privada de PointSav utiliza una malla WireGuard de concentrador y radios para conectar nodos de flota, con custodia física de claves en las instalaciones del operador; este artículo cubre la topología de malla, la incorporación de nodos (Mesh Fusion), el protocolo de supervisión humana del Terminal F8 y el aislamiento deliberado entre la capa de red y la capa de autorización de aplicaciones."
+short_description: "Malla WireGuard de concentrador y radios que conecta nodos de flota, con custodia física de claves en las instalaciones del operador e incorporación de nodos Mesh Fusion."
 cites: []
 references:
   - id: 1

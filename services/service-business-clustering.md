@@ -8,7 +8,7 @@ content_type: topic
 quality: complete
 status: active
 audience: public
-short_description: "service-business turns raw retail data points into actionable commercial clusters by applying a parent-child spatial schema — so when multiple distinct operators share a single physical site, the GIS engine receives one commercial entity per site rather than several overlapping points."
+short_description: "Parent-child spatial schema turning raw retail points into commercial clusters, so the GIS engine receives one entity per physical site instead of overlapping points."
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
 last_edited: 2026-05-25

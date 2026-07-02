@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 content_type: topic
 title: "Editorial language registers"
 slug: editorial-language-registers
-short_description: "The three PointSav wikis address distinct audiences in distinct language registers: institutional financial-press tone for corporate and projects readers, developer-platform technical tone for documentation engineers, and regulatory specification prose for specialist deployment sites. Vocabulary retirement rules govern consistent translation across registers."
+short_description: "Three distinct language registers matching the PointSav wikis to their audiences: financial-press, developer-platform, and regulatory-specification prose."
 category: reference
 status: stable
 bcsc_class: no-disclosure-implication

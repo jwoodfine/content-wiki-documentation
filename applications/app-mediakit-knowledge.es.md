@@ -6,7 +6,7 @@ category: applications
 type: topic
 content_type: topic
 quality: complete
-short_description: "app-mediakit-knowledge es el motor wiki Rust de binario único que sirve la documentación de ingeniería de PointSav en documentation.pointsav.com — una vista sobre un árbol de Markdown, no un repositorio de contenido, donde los commits de Markdown son canónicos y cada binario en ejecución es un estado derivado descartable."
+short_description: "Motor wiki Rust de binario único que sirve documentation.pointsav.com — una vista sobre un árbol Markdown donde los commits son canónicos y el binario es descartable."
 status: active
 audience: vendor-public
 bcsc_class: no-disclosure-implication

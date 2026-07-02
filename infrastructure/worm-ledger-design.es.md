@@ -6,7 +6,7 @@ category: infrastructure
 type: topic
 content_type: topic
 quality: complete
-short_description: "El sustrato de persistencia WORM de los servicios Ring 1 de PointSav: un registro de solo adición por inquilino con resúmenes SHA-256 por carga hoy, diseñado hacia un formato por bloques, encadenado por hash y firmado criptográficamente que satisface la conservación de registros por estructura."
+short_description: "Sustrato de libro mayor Write-Once-Read-Many de los servicios Ring 1 de PointSav, diseñado hacia un formato encadenado por hash y firmado que cumple la normativa por estructura."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-06-23

@@ -12,7 +12,7 @@ bcsc_class: planned
 language_protocol: PROSE-TOPIC
 last_edited: 2026-06-28
 editor: editorial
-short_description: "The Totebox knowledge flow turns prose into two durable assets — an ontological DataGraph of entities and LoRA adapters that specialise a local language model. Two quality questions determine whether the flow is worth its cost: is the training loop producing adapters that measurably improve the model, and is the DataGraph an accurate, well-resolved ontology?"
+short_description: "Quality framework for the Totebox knowledge flow, asking whether LoRA adapters measurably improve the model and whether the DataGraph is an accurate ontology."
 paired_with: flow-quality-architecture.es.md
 cites: []
 ---

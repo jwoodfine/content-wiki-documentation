@@ -6,7 +6,7 @@ category: applications
 type: app
 content_type: topic
 quality: complete
-short_description: "La interfaz web orientada al operador para la canalización editorial service-proofreader, que implementa una arquitectura de tokens de diseño de dos niveles para la adaptación de marca del inquilino y una herramienta de destilación en Rust puro que convierte pares de eventos del corpus de aprendizaje en conjuntos de datos de entrenamiento para service-slm."
+short_description: "Interfaz web para el operador de la canalización service-proofreader, con tokens de diseño de dos niveles para marca del inquilino y herramienta de destilación en Rust puro."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-06-30

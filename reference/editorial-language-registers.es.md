@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 content_type: topic
 title: "Registros de lenguaje editorial"
 slug: editorial-language-registers
-short_description: "Las tres wikis de PointSav atienden audiencias distintas en registros de lenguaje distintos: tono institucional de prensa financiera para lectores corporativos y de proyectos, tono técnico de plataforma de desarrolladores para ingenieros de documentación, y prosa de especificación regulatoria para sitios de implementación especializada. Las reglas de retiro de vocabulario rigen traducción consistente entre registros."
+short_description: "Tres registros de lenguaje que ajustan las wikis de PointSav a sus audiencias: prensa financiera, plataforma de desarrolladores y especificación regulatoria."
 category: reference
 status: stable
 bcsc_class: no-disclosure-implication

@@ -12,7 +12,7 @@ bcsc_class: current-fact
 language_protocol: TRANSLATE-ES
 last_edited: 2026-06-30
 editor: woodfine-editorial
-short_description: "La práctica de utilizar el secreto del diseño, la implementación o la configuración como mecanismo de seguridad principal — ampliamente rechazada en la práctica de seguridad profesional desde el principio de Kerckhoffs (1883) y la máxima de Claude Shannon de que 'el enemigo conoce el sistema' — aunque aceptada como una capa en una estrategia de defensa en profundidad cuando no se depende de ella como control único o principal."
+short_description: "Dependencia del secreto del diseño o la implementación como mecanismo principal de seguridad, rechazada en la práctica profesional desde el principio de Kerckhoffs de 1883."
 paired_with: security-through-obscurity.md
 tags:
   - domain:documentation

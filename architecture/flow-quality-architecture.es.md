@@ -12,7 +12,7 @@ bcsc_class: planned
 language_protocol: TRANSLATE-ES
 last_edited: 2026-06-28
 editor: editorial
-short_description: "El flujo de conocimiento del Totebox convierte prosa en dos activos duraderos: un DataGraph ontológico de entidades y adaptadores LoRA que especializan un modelo de lenguaje local. Dos preguntas de calidad determinan si el flujo vale su costo: ¿produce el ciclo de entrenamiento adaptadores que mejoran el modelo de forma medible, y es el DataGraph una ontología precisa y bien resuelta?"
+short_description: "Marco de calidad del flujo de conocimiento Totebox: si los adaptadores LoRA mejoran el modelo de forma medible y si el DataGraph es una ontología precisa y bien resuelta."
 paired_with: flow-quality-architecture.md
 cites: []
 ---

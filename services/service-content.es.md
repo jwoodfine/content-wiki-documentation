@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-22
 editor: pointsav-engineering
 paired_with: service-content.md
-short_description: "service-content es el motor de síntesis de la familia PointSav — el Motor de Gravedad que lee cargas útiles en bruto de un Totebox, las procesa contra una taxonomía institucional y genera los documentos estructurados que publica una organización, con un límite de intervención humana en cada libro mayor verificado."
+short_description: "Motor de síntesis que procesa cargas del Totebox contra una taxonomía institucional y genera documentos estructurados, con supervisión humana en los libros verificados."
 cites: []
 references:
   - id: 1
