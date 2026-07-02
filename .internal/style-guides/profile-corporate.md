@@ -37,6 +37,14 @@ code?* If a sentence only lands for an engineer, it fails here.
 Inherits the reference TOPIC shape — lead, context, mechanism section by section, limits and
 relations. No structured-record variants; corporate articles are continuous prose.
 
+### Bilingual pair — adaptation, not translation
+
+The Spanish pair (`.es.md`) is a strategic adaptation for the Spanish-speaking allocator, not a
+sentence-for-sentence rendering. Emphasis, examples, and even the H2 order may reorganise where
+that reader enters the subject differently. What survives unchanged is every figure, every
+disclosure sentence, and the forward-looking posture — the facts and their regulatory framing
+are identical in both languages.
+
 ## 3. Opening — consequence first
 
 Inherits the reference lead, sharpened to one rule: the most important fact for a capital
@@ -64,7 +72,14 @@ structure here is prose punctuated by named figures, not records.
 No code. Ever. The corporate reader does not need a terminal command, and a code block signals
 the wrong register to a capital allocator. Every platform-internal term is translated to a
 plain-language equivalent on first use — the plain equivalent precedes the term, never the
-reverse. Passive voice reads as evasion to this reader; name the actor and the consequence.
+reverse — and the term wikilinks at that first mention and only there ([[house-core]]
+§Cross-references governs). Passive voice reads as evasion to this reader; name the actor and
+the consequence.
+
+The accessibility cue for the finance reader mirrors the documentation wiki's "why it matters"
+sentence, inverted: wherever a technical mechanism must appear, its consequence stands alone in
+plain financial terms *before* the mechanism is named, so the reader who skips the mechanism
+still keeps the fact that moves their decision.
 
 The move this profile turns on is the consequence-first factual clause:
 
@@ -102,8 +117,12 @@ publish.*
 - Does sentence one carry the consequence for a capital allocator, not the history or mechanism?
 - Would a senior finance reader who does not read source code follow every sentence?
 - Is the article prose-only, with zero code blocks?
-- Is every platform-internal term preceded by a plain-language equivalent on first use?
+- Is every platform-internal term preceded by a plain-language equivalent on first use, and
+  wikilinked at that first mention only?
+- Where a mechanism appears, does its plain-financial consequence stand alone before it?
 - Are all numbers specific, and are consequence and disclosure sentences within the 25-word
   target (with only genuine single-test analytical sentences running longer)?
 - Does every forward-looking claim carry planned/intended/may/target, and is the Sovereign Data
   Foundation referenced only in those terms?
+- Does the Spanish pair adapt for its reader while keeping every figure, disclosure sentence,
+  and forward-looking frame identical?

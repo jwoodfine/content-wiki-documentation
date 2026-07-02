@@ -42,6 +42,14 @@ one addition is the per-section internal order this wiki uses inside a body sect
 
 The "Why it matters" line is the delta — see §6.
 
+### Bilingual pair — adaptation, not translation
+
+The Spanish pair (`.es.md`) is a strategic adaptation, not a sentence-for-sentence rendering.
+It serves the same two readers in their own language, so examples, emphasis, and even the H2
+order may reorganise where the Spanish-language reader enters the subject differently. What
+survives unchanged is every factual claim, each section's "why it matters" sentence, and the
+forward-looking posture. Adapt the structure; never the facts.
+
 ## 3. Opening
 
 Inherits the reference lead (TOPIC/ARCHITECTURE) or the Purpose-then-Prerequisites lead (GUIDE).
@@ -69,6 +77,11 @@ mechanism and the code. Write it so it survives being lifted out of its section.
 
 The last sentence is the accessibility layer: the non-engineer gets "it can run locally, and you
 pay nothing when it does" without touching the mechanism.
+
+Linking carries the same first-mention discipline as the definition. Wikilink every term of art
+at its first mention and only there ([[house-core]] §Cross-references governs); on this wiki
+the first mention is also where the plain-language definition lands, so one sentence hands the
+engineer the link and the institutional reader the meaning.
 
 ## 7. Code and examples — code as reference, not tutorial
 
@@ -104,4 +117,7 @@ long blocks a reader is expected to execute in order — are a defect in a TOPIC
 - Can a non-engineer reconstruct the subject from headings and those sentences alone?
 - Is inline code an illustrative fragment, not a runnable procedure a GUIDE should own?
 - Are platform-internal terms defined in plain language on first use?
+- Is every term of art wikilinked at its first mention — and only there?
 - Is the voice peer-level — no over-explaining HTTP, SSH, or git to an engineer?
+- Does the Spanish pair adapt for its reader while preserving every factual claim and each
+  "why it matters" sentence?

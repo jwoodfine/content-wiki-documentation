@@ -64,8 +64,8 @@ the steps.
 ## 8. Worked examples
 
 Two or three short pairs — a weaker version and a stronger one — each with a single line of
-annotation naming what changed and why. This is the part that teaches the AI and the copy
-editor the linguistic type by demonstration. Keep each example a few sentences at most.
+annotation naming what changed and why. This is the part that teaches the drafting machine and
+the copy editor the register by demonstration. Keep each example a few sentences at most.
 
 ## 9. Pre-publish checklist
 
@@ -97,4 +97,7 @@ editor: pointsav-engineering
 
 The `governs:` list is what the coverage matrix reads to prove every prose artifact type maps
 to exactly one guide. A white-label register guide names artifact types generically; a house
-profile names the wikis it specializes and points to the register guide it layers on.
+profile names the wikis it specializes and points to the register guide it layers on. House
+profiles differ in two frontmatter values only: `audience: contributor-internal` and
+`bcsc_class: internal-only`, because a profile describes the writing machine, not the wiki's
+readers.

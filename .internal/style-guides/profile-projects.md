@@ -40,6 +40,13 @@ same person applying the same evaluative frame to different subject matter.
 Inherits the reference TOPIC shape. Continuous prose, no code, no command tables — the same
 constraints as [[profile-corporate]] §2.
 
+### Bilingual pair — adaptation, not translation
+
+The Spanish pair (`.es.md`) is a strategic adaptation, not a sentence-for-sentence rendering.
+Market examples, emphasis, and even the H2 order may reorganise for the Spanish-speaking
+practitioner or allocator — a reader whose reference markets may differ. What survives unchanged
+is every figure, every scoring claim, and the forward-looking posture.
+
 ## 3. Opening
 
 Inherits the corporate consequence-first lead. The delta is only the reader's second hat: the
@@ -59,10 +66,11 @@ records.
 ## 6. Voice and tone — link every term of art
 
 The register is corporate's; the subject brings its own vocabulary. Every industry term of art —
-floor plate, BOMA measurement, cap rate, gateway city, anchor taxonomy — links on first use to
-its definition (a glossary or reference article), so the investor reader who does not carry the
-development lexicon is never stranded, and the practitioner reader is never slowed. The move is
-the same consequence-first factual clause as corporate:
+floor plate, BOMA measurement, cap rate, gateway city, anchor taxonomy — links on its first
+mention, and only there, to its definition (a glossary or reference article; [[house-core]]
+§Cross-references governs the once-only discipline). The investor reader who does not carry the
+development lexicon is never stranded, and the practitioner reader is never slowed by a page of
+repeated blue. The move is the same consequence-first factual clause as corporate:
 
 > Each co-location development site is underwritten as an independent capital event. Site
 > performance is not pooled; convergence at a node is validated before capital is committed.
@@ -99,6 +107,8 @@ through.*
 
 - Does the lead land for both a capital allocator and a development practitioner?
 - Is the article prose-only, within the 25-word sentence limit, with specific numbers?
-- Does every industry term of art link to its definition on first use?
+- Does every industry term of art link to its definition at first mention — and only there?
 - Is deep BIM/GIS specification routed to the specialist site rather than pasted in?
 - Does every forward-looking claim carry planned/intended/may/target?
+- Does the Spanish pair adapt markets and structure for its reader while keeping every figure
+  and scoring claim unchanged?
