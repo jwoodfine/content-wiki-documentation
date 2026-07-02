@@ -40,7 +40,7 @@ Todo el contenido de este wiki está licenciado bajo [Creative Commons Attributi
 
 ## Contribuir
 
-Las contribuciones a este wiki son bienvenidas. Véase [[contribute.es]] para saber cómo proponer adiciones o correcciones.
+Las contribuciones a este wiki son bienvenidas. Véase [[contribute]] para saber cómo proponer adiciones o correcciones.
 
 ## Contacto
 

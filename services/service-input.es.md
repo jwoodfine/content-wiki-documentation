@@ -22,7 +22,7 @@ editor: pointsav-engineering
 
 El límite del Anillo 1 es el perímetro de confianza del sistema. Todo artefacto que cruce este límite debe pasar por un paso de procesamiento determinista y auditable antes de ser confirmado en el registro WORM. `service-input` ocupa esa posición para los documentos estructurados.
 
-[[sys-adr-10|SYS-ADR-10]] designa esta posición como **el Ancla** (función F12): el único punto de entrada obligatorio donde los bytes del documento ingresan al Anillo 1, se someten a análisis determinista y se transfieren a `service-fs` para su almacenamiento permanente de solo adición. Ningún aspecto del análisis se delega a un modelo de inteligencia artificial; ningún aspecto del esquema de salida varía de forma no determinista. Los mismos bytes de entrada, con la misma versión del analizador, producen siempre el mismo `ParsedDocument`.
+SYS-ADR-10 designa esta posición como **el Ancla** (función F12): el único punto de entrada obligatorio donde los bytes del documento ingresan al Anillo 1, se someten a análisis determinista y se transfieren a `service-fs` para su almacenamiento permanente de solo adición. Ningún aspecto del análisis se delega a un modelo de inteligencia artificial; ningún aspecto del esquema de salida varía de forma no determinista. Los mismos bytes de entrada, con la misma versión del analizador, producen siempre el mismo `ParsedDocument`.
 
 Esta es la propiedad Ancla: la presencia del documento en el registro WORM queda anclada a una transformación determinista reproducible, no a una inferencia probabilística de un modelo de IA.
 
@@ -62,7 +62,7 @@ La detección de formato se ejecuta antes del despacho al analizador. La funció
 
 **Bytes mágicos como alternativa**: cuando la extensión está ausente o no se reconoce, se inspeccionan los primeros cuatro bytes del documento en busca de secuencias mágicas conocidas. Los documentos PDF comienzan con `%PDF` (hex `25 50 44 46`). Los archivos DOCX y XLSX son archivos ZIP y comparten la cabecera `PK` (`50 4B 03 04`); en este nivel alternativo, ambos formatos son ambiguos, por lo que la detección de formato se remite a la comparación de extensión. Un archivo cuya extensión no sea ni `.docx` ni `.xlsx`, pero cuyo contenido sea un archivo ZIP, se reporta como `FormatUndetected`.
 
-La detección de formato devuelve un `Option<Format>`. Un resultado `None` provoca que el manejador MCP devuelva un error `-32602 Invalid params` al llamador; el archivo no se escribe en el registro. Este algoritmo de detección es completamente determinista, sin inferencia de IA, conforme a [[sys-adr-07|SYS-ADR-07]].
+La detección de formato devuelve un `Option<Format>`. Un resultado `None` provoca que el manejador MCP devuelva un error `-32602 Invalid params` al llamador; el archivo no se escribe en el registro. Este algoritmo de detección es completamente determinista, sin inferencia de IA, conforme a [[adr-07-zero-ai-in-ring-1|SYS-ADR-07]].
 
 ## Analizadores
 
@@ -200,7 +200,7 @@ Todas las solicitudes MCP requieren la cabecera `X-Foundry-Module-ID`. El valor 
 
 ## Cumplimiento de ADR-07
 
-[[sys-adr-07|SYS-ADR-07]] prohíbe la inferencia de IA en el Anillo 1. `service-input` mantiene esta restricción en todo momento:
+[[adr-07-zero-ai-in-ring-1|SYS-ADR-07]] prohíbe la inferencia de IA en el Anillo 1. `service-input` mantiene esta restricción en todo momento:
 
 - **La detección de formato** es determinista: comparación de extensión seguida de inspección de bytes mágicos. No se utiliza ningún clasificador entrenado.
 - **El análisis** lo realizan bibliotecas de propósito específico (oxidize-pdf, pulldown-cmark, docx-rust, calamine) que aplican algoritmos deterministas a secuencias de bytes estructurados. No interviene ningún modelo generativo en ninguna etapa.

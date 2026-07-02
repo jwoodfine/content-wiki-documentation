@@ -26,7 +26,7 @@ La Máquina de Ingesta invierte este diseño. Una única puerta de entrada fija 
 
 F12 está asignada permanentemente a la Máquina de Ingesta en os-console. Esta asignación es arquitectónica, no de configuración — no puede ser modificada por el operador ni anulada por otro cartucho. F12 ocupa la posición límite en la fila de teclas de función del teclado, físicamente separada de F1 a F11 por un espacio más amplio en la mayoría de los teclados. La posición es intencional: la puerta de ingesta debe ser localizable de forma inmediata e inequívoca en cualquier estado del flujo de trabajo, por cualquier operador, en cualquier momento.
 
-La restricción de que F12 es inamovible queda registrada en [[sys-adr-10]]. Ningún flujo de trabajo puede eludir la Máquina de Ingesta para enviar un documento a un servicio de backend por otra ruta. Esta restricción se aplica en el despachador de eventos de `app-console-keys` a nivel del chasis, no por convención en cartuchos individuales.
+La restricción de que F12 es inamovible queda registrada en sys-adr-10. Ningún flujo de trabajo puede eludir la Máquina de Ingesta para enviar un documento a un servicio de backend por otra ruta. Esta restricción se aplica en el despachador de eventos de `app-console-keys` a nivel del chasis, no por convención en cartuchos individuales.
 
 ## El flujo de ingesta
 
@@ -41,7 +41,7 @@ Presionar F12 en cualquier contexto de os-console — independientemente del car
 7. Se escribe una entrada de auditoría inmutable: marca de tiempo, ruta de archivo, resultado de clasificación, destino de enrutamiento, identidad del operador.
 8. El cartucho anteriormente activo se reanuda, con el documento ingestado disponible en su contexto.
 
-El paso 5 aplica la restricción de [[sys-adr-07]]: ningún dato estructurado pasa por inferencia de IA en la frontera de ingesta. La clasificación es determinista — la extensión del archivo, el tipo MIME y las firmas estructurales determinan el tipo de documento. El resultado de clasificación en el registro de auditoría es reproducible: dado el mismo archivo, `service-input` produce la misma clasificación independientemente de la disponibilidad del modelo.
+El paso 5 aplica la restricción de [[adr-07-zero-ai-in-ring-1|sys-adr-07]]: ningún dato estructurado pasa por inferencia de IA en la frontera de ingesta. La clasificación es determinista — la extensión del archivo, el tipo MIME y las firmas estructurales determinan el tipo de documento. El resultado de clasificación en el registro de auditoría es reproducible: dado el mismo archivo, `service-input` produce la misma clasificación independientemente de la disponibilidad del modelo.
 
 ## La arquitectura Cero-Formulario
 
@@ -75,5 +75,5 @@ Cada cartucho utiliza la Máquina de Ingesta para su material fuente, pero la de
 
 - [[os-console-platform]] — el contexto de plataforma y la arquitectura de cartuchos en los que opera la Máquina de Ingesta
 - [[machine-based-auth]] — el mecanismo de autorización que conecta os-console con service-input en el Totebox Archive
-- [[sys-adr-10]] — el registro de decisión arquitectónica que establece F12 como el punto de control de ingesta obligatorio
-- [[sys-adr-07]] — el registro de decisión arquitectónica que prohíbe la inferencia de IA en datos estructurados en la frontera de ingesta
+- sys-adr-10 — el registro de decisión arquitectónica que establece F12 como el punto de control de ingesta obligatorio
+- [[adr-07-zero-ai-in-ring-1|sys-adr-07]] — el registro de decisión arquitectónica que prohíbe la inferencia de IA en datos estructurados en la frontera de ingesta

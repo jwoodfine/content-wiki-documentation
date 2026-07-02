@@ -83,9 +83,9 @@ La consola presenta doce slots direccionables mediante teclas de función. F12 e
 | F9 | `app-console-slm` | Gestión de IA y mercado de adaptadores |
 | F10 | `app-console-mesh` | Gestión de malla PPN |
 | F11 | `app-console-system` | Estado en tiempo real de servicios `os-*` y estado MBA |
-| F12 | `app-console-input` | **El Ancla** — Máquina de Ingesta ([[sys-adr-10]]) |
+| F12 | `app-console-input` | **El Ancla** — Máquina de Ingesta (sys-adr-10) |
 
-La asignación permanente de F12 a la ingesta de documentos es la restricción registrada en [[sys-adr-10]]. La tecla de función que ancla la frontera de cumplimiento normativo no se mueve independientemente de cómo evolucionen los demás slots.
+La asignación permanente de F12 a la ingesta de documentos es la restricción registrada en sys-adr-10. La tecla de función que ancla la frontera de cumplimiento normativo no se mueve independientemente de cómo evolucionen los demás slots.
 
 ## Conectividad MBA
 
@@ -112,4 +112,4 @@ La asignación permanente de F12 a la ingesta de documentos es la restricción r
 - [[machine-based-auth]] — el mecanismo de autorización que usa os-console para conectarse a los servicios os-*
 - [[ppn-mesh-architecture]] — la capa de infraestructura en la que se ejecutan los servicios os-*
 - [[three-ring-architecture]] — la arquitectura de servicios dentro de la cual os-console opera como cliente
-- [[sys-adr-10]] — el registro de decisión arquitectónica que establece F12 como el punto de control de ingesta obligatorio
+- sys-adr-10 — el registro de decisión arquitectónica que establece F12 como el punto de control de ingesta obligatorio
