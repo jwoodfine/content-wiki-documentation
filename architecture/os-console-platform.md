@@ -83,9 +83,9 @@ The console presents twelve addressable slots via F-keys. F12 is permanently ass
 | F9 | `app-console-slm` | AI management and adapter marketplace |
 | F10 | `app-console-mesh` | PPN mesh management |
 | F11 | `app-console-system` | Live `os-*` service health and MBA status |
-| F12 | `app-console-input` | **The Anchor** — Input Machine ([[sys-adr-10]]) |
+| F12 | `app-console-input` | **The Anchor** — Input Machine (sys-adr-10) |
 
-F12's permanent assignment to document ingest is the constraint recorded in [[sys-adr-10]]. The F-key that anchors the compliance boundary does not move regardless of how other slots evolve.
+F12's permanent assignment to document ingest is the constraint recorded in sys-adr-10. The F-key that anchors the compliance boundary does not move regardless of how other slots evolve.
 
 ## MBA connectivity
 
@@ -112,4 +112,4 @@ F12's permanent assignment to document ingest is the constraint recorded in [[sy
 - [[machine-based-auth]] — the authorization mechanism os-console uses to connect to os-* services
 - [[ppn-mesh-architecture]] — the infrastructure layer the os-* services run on
 - [[three-ring-architecture]] — the service architecture within which os-console operates as a client
-- [[sys-adr-10]] — the architectural decision record establishing F12 as the mandatory ingest checkpoint
+- sys-adr-10 — the architectural decision record establishing F12 as the mandatory ingest checkpoint

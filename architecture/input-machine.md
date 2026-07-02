@@ -26,7 +26,7 @@ The Input Machine inverts this design. A single, permanently-fixed gateway handl
 
 F12 is permanently assigned to the Input Machine in os-console. This assignment is architectural, not configurational — it cannot be changed by the operator or overridden by another cartridge. F12 occupies the boundary position on the keyboard's function-key row, physically separated from F1–F11 by a wider gap on most keyboard layouts. The position is intentional: the ingest gate must be immediately and unambiguously findable in any workflow state, by any operator, at any moment.
 
-The constraint that F12 is immovable is recorded in [[sys-adr-10]]. No workflow may bypass the Input Machine to submit a document to a backend service through another path. This constraint is enforced in the `app-console-keys` event dispatcher at the chassis level, not by convention in individual cartridges.
+The constraint that F12 is immovable is recorded in sys-adr-10. No workflow may bypass the Input Machine to submit a document to a backend service through another path. This constraint is enforced in the `app-console-keys` event dispatcher at the chassis level, not by convention in individual cartridges.
 
 ## The ingest workflow
 
@@ -41,7 +41,7 @@ Pressing F12 in any os-console context — regardless of which cartridge is curr
 7. An immutable audit entry is written: timestamp, file path, classification result, routing target, operator identity.
 8. The previously-active cartridge resumes, with the ingested document available in its context.
 
-Step 5 applies the constraint from [[sys-adr-07]]: no structured data passes through AI inference at the ingest boundary. Classification is deterministic — file extension, MIME type, and structural signatures determine document type. The classification result in the audit log is reproducible: given the same file, `service-input` produces the same classification regardless of model availability.
+Step 5 applies the constraint from [[adr-07-zero-ai-in-ring-1|sys-adr-07]]: no structured data passes through AI inference at the ingest boundary. Classification is deterministic — file extension, MIME type, and structural signatures determine document type. The classification result in the audit log is reproducible: given the same file, `service-input` produces the same classification regardless of model availability.
 
 ## The Zero-Form architecture
 
@@ -75,5 +75,5 @@ Each cartridge uses the Input Machine for its source material, but the routing d
 
 - [[os-console-platform]] — the platform context and cartridge architecture within which the Input Machine operates
 - [[machine-based-auth]] — the authorization mechanism connecting os-console to service-input on the Totebox Archive
-- [[sys-adr-10]] — the architectural decision record establishing F12 as the mandatory ingest checkpoint
-- [[sys-adr-07]] — the architectural decision record prohibiting AI inference on structured data at the ingest boundary
+- sys-adr-10 — the architectural decision record establishing F12 as the mandatory ingest checkpoint
+- [[adr-07-zero-ai-in-ring-1|sys-adr-07]] — the architectural decision record prohibiting AI inference on structured data at the ingest boundary

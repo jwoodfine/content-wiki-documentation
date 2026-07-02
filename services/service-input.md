@@ -22,7 +22,7 @@ editor: pointsav-engineering
 
 The Ring 1 boundary is the trust perimeter of the system. Every artifact that crosses this boundary must pass through a deterministic, auditable processing step before it is committed to the WORM ledger. `service-input` occupies that position for structured documents.
 
-[[sys-adr-10|SYS-ADR-10]] designates this position **The Anchor** (function F12): the single, mandatory intake point where document bytes enter Ring 1, undergo deterministic parsing, and are handed off to `service-fs` for permanent append-only storage. Nothing about parsing is delegated to an AI model; nothing about the output schema varies non-deterministically. The same input bytes, on the same parser version, always produce the same `ParsedDocument`.
+SYS-ADR-10 designates this position **The Anchor** (function F12): the single, mandatory intake point where document bytes enter Ring 1, undergo deterministic parsing, and are handed off to `service-fs` for permanent append-only storage. Nothing about parsing is delegated to an AI model; nothing about the output schema varies non-deterministically. The same input bytes, on the same parser version, always produce the same `ParsedDocument`.
 
 This is the Anchor property: the document's presence in the WORM ledger is anchored to a reproducible deterministic transformation, not to a probabilistic AI inference.
 
@@ -62,7 +62,7 @@ Format detection runs before parser dispatch. The `detect_format` function (in `
 
 **Magic-byte fallback**: when the extension is absent or unrecognized, the first four bytes of the document are inspected for known magic sequences. PDF documents begin with `%PDF` (hex `25 50 44 46`). DOCX and XLSX documents are ZIP files and share the `PK` header (`50 4B 03 04`); at this fallback level the two formats are ambiguous, so format detection defers to the extension match. A file whose extension is neither `.docx` nor `.xlsx` but whose content is a ZIP archive is reported as `FormatUndetected`.
 
-Format detection returns an `Option<Format>`. A `None` result causes the MCP handler to return a `-32602 Invalid params` error to the caller; the file is not written to the ledger. This detection algorithm is entirely deterministic — no AI inference — per [[sys-adr-07|SYS-ADR-07]].
+Format detection returns an `Option<Format>`. A `None` result causes the MCP handler to return a `-32602 Invalid params` error to the caller; the file is not written to the ledger. This detection algorithm is entirely deterministic — no AI inference — per [[adr-07-zero-ai-in-ring-1|SYS-ADR-07]].
 
 ## Parsers
 
@@ -200,7 +200,7 @@ All MCP requests require the `X-Foundry-Module-ID` header. The header value must
 
 ## ADR-07 compliance
 
-[[sys-adr-07|SYS-ADR-07]] prohibits AI inference in Ring 1. `service-input` maintains this constraint throughout:
+[[adr-07-zero-ai-in-ring-1|SYS-ADR-07]] prohibits AI inference in Ring 1. `service-input` maintains this constraint throughout:
 
 - **Format detection** is deterministic: extension matching followed by magic-byte inspection. No trained classifier.
 - **Parsing** is done by purpose-built libraries (oxidize-pdf, pulldown-cmark, docx-rust, calamine) that apply deterministic algorithms to structured byte sequences. No generative model is involved at any stage.
