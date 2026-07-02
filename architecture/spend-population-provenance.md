@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Spend and population estimation: provenance and assumptions"
 slug: spend-population-provenance
+short_description: "Provenance chain behind catchment population and spend estimates — WorldPop rasters, H3 aggregation, and per-capita multipliers, with their stated weaknesses."
 category: architecture
 type: concept
 content_type: topic

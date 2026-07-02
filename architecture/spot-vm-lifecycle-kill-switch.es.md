@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Ciclo de Vida de VM Spot — Controlador Único e Interruptor de Emergencia"
 slug: spot-vm-lifecycle-kill-switch
+short_description: "Ciclo de vida de controlador único para la VM spot Yo-Yo — un solo temporizador posee arranque y parada, con interruptor centinela de archivo para control inmediato."
 category: architecture
 type: topic
 content_type: topic

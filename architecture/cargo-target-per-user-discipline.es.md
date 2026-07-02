@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Caché de compilación por usuario — prevención de condiciones de carrera en Cargo"
 slug: cargo-target-per-user-discipline
+short_description: "Particionado por usuario de la caché compartida de Cargo — CARGO_TARGET_DIR por desarrollador elimina carreras de bloqueo y errores de permisos entre usuarios."
 language: es
 category: architecture
 type: topic

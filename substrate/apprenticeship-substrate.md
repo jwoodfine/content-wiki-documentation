@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The apprenticeship substrate"
+title: "Apprenticeship substrate"
 slug: apprenticeship-substrate
 category: substrate
 type: topic

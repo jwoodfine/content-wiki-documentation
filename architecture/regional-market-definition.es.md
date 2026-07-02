@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Definición de mercado regional"
 slug: regional-market-definition
+short_description: "Contenedores espaciales del mapa de inteligencia de ubicaciones — en qué difieren los asentamientos con co-localización de los Regional Markets; cobertura no es demanda."
 category: architecture
 type: concept
 content_type: topic

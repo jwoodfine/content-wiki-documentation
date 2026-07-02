@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Trade-area methodology"
 slug: trade-area-methodology
+short_description: "Honest labelling of demand geography — why straight-line distance bands are never called catchments, and the planned move to isochrones and observed origins."
 category: architecture
 type: concept
 content_type: topic

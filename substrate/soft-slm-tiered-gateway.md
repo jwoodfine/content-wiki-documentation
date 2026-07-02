@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The tiered inference gateway — local-first AI routing"
+title: "Tiered inference gateway — local-first AI routing"
 slug: soft-slm-tiered-gateway
 category: substrate
 type: topic

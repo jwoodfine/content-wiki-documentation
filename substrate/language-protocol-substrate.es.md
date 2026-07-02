@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "El sustrato de protocolo de lenguaje"
+title: "Sustrato de protocolo de lenguaje"
 slug: language-protocol-substrate.es
 lang: es
 paired_with: language-protocol-substrate.md

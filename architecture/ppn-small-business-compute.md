@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The Private Platform Network: Pooled Compute from Hardware You Already Own"
+title: "Private Platform Network: pooled compute from hardware you already own"
 slug: ppn-small-business-compute
 category: architecture
 type: topic

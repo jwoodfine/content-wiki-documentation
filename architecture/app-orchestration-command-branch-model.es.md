@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 content_type: topic
-title: "El modelo de ramas por archivo en app-orchestration-command"
+title: "Modelo de ramas por archivo en app-orchestration-command"
 slug: app-orchestration-command-branch-model
 short_description: "Cada Totebox Archive opera en su propia rama aislada, separada del main canónico que gestiona el coordinador. El filtro de publicación del coordinador decide qué cruza desde la rama del archivo hacia el historial canónico."
 category: architecture

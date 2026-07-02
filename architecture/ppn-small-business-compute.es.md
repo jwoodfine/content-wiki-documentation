@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "La Red de Plataforma Privada: cómputo agrupado a partir del hardware que ya posee"
+title: "Red de Plataforma Privada: cómputo agrupado a partir del hardware que ya posee"
 slug: ppn-small-business-compute
 category: architecture
 type: topic

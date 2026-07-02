@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "El bien común de IA soberana"
+title: "Bien común de IA soberana"
 slug: sovereign-ai-commons.es
 category: substrate
 type: topic

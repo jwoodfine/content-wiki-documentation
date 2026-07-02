@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "El sustrato de aprendizaje"
+title: "Sustrato de aprendizaje"
 slug: apprenticeship-substrate.es
 lang: es
 paired_with: apprenticeship-substrate.md

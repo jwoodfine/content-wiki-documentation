@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The citation substrate"
+title: "Citation substrate"
 slug: citation-substrate
 category: substrate
 type: topic

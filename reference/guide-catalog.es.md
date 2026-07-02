@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Índice de Guías para Desarrolladores"
 slug: guide-catalog
+short_description: "Índice de guías para desarrolladores de la plataforma PointSav — guías prácticas organizadas por tarea, desde la instalación de herramientas hasta el ciclo de sesión."
 category: reference
 type: topic
 content_type: topic

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Partición cgroup para entornos de múltiples desarrolladores — la capa de servicios"
 slug: foundry-services-slice-model
+short_description: "Particionado de cgroups de systemd que da a los servicios de producción el doble de peso de CPU frente a sesiones interactivas — aislamiento de un solo nodo sin Kubernetes."
 language: es
 category: architecture
 type: topic

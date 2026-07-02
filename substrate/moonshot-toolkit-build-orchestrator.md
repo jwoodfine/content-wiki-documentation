@@ -1,8 +1,9 @@
 ---
 schema: foundry-doc-v1
 content_type: topic
-title: "The moonshot-toolkit Build Orchestrator"
+title: "moonshot-toolkit build orchestrator"
 slug: moonshot-toolkit-build-orchestrator
+short_description: "Rust-only build orchestrator for seL4 unikernel images — TOML spec to content-addressed manifest to bootable AArch64 elfloader, replacing Python and CMake."
 category: substrate
 last_edited: 2026-06-23
 editor: pointsav-engineering

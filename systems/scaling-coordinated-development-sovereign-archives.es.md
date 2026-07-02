@@ -1,6 +1,7 @@
 ---
 artifact: topic
 schema: foundry-draft-v1
+short_description: "Cuellos de botella de coordinación más allá de veinte archivos — serialización de publicaciones, latencia de mensajes, carga del operador y aislamiento por proceso."
 status: draft
 language_protocol: TOPIC
 route: project-editorial

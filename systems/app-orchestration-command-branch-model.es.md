@@ -1,6 +1,7 @@
 ---
 artifact: topic
 schema: foundry-draft-v1
+short_description: "Ramas aisladas por archivo bajo el coordinador app-orchestration-command — prevención de contaminación y ritmo independiente antes de publicar al canónico."
 status: draft
 language_protocol: TOPIC
 route: project-editorial

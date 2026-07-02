@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Regional market definition"
 slug: regional-market-definition
+short_description: "Spatial containers on the location intelligence map — how settlements with co-location presence differ from Regional Markets, and why coverage is not market strength."
 category: architecture
 type: concept
 content_type: topic

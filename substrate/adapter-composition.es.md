@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "El álgebra de composición de adaptadores"
+title: "Álgebra de composición de adaptadores"
 slug: adapter-composition.es
 category: substrate
 type: topic

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Mailbox atomicity — flock-based prepend and msg-id idempotency"
 slug: mailbox-atomicity
+short_description: "flock-guarded prepend and msg-id idempotency for flat-file mailboxes — how concurrent sessions serialize writes instead of silently losing messages."
 language: en
 category: architecture
 type: topic

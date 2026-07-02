@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "El Flujo de Conocimiento: Ciclo de Entrenamiento y DataGraph Ontológico"
+title: "Flujo de conocimiento: ciclo de entrenamiento y DataGraph ontológico"
 slug: flow-quality-architecture
 category: architecture
 type: concept

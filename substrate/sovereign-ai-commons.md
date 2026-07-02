@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The sovereign AI commons"
+title: "Sovereign AI commons"
 slug: sovereign-ai-commons
 category: substrate
 type: topic

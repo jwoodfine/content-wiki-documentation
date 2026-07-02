@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 content_type: topic
-title: "The Three-Binary Architecture: os-console, os-totebox, os-orchestration"
+title: "Three-binary architecture: os-console, os-totebox, os-orchestration"
 slug: topic-three-binary-architecture
 aliases:
   - topic-three-binary-architecture

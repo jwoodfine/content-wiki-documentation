@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Co-location tiering and scoring"
 slug: co-location-tiering-scoring
+short_description: "Tier scoring for co-location clusters — what the T1–T3 composition tiers measure, the DBSCAN parameters that form clusters, and what the tiers do not claim."
 category: architecture
 type: concept
 content_type: topic

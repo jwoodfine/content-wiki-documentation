@@ -1,6 +1,7 @@
 ---
 artifact: topic
 schema: foundry-draft-v1
+short_description: "Publication mechanics under app-orchestration-command — how tested code crosses from archive branches into signed canonical history, with code-only filtering."
 status: draft
 language_protocol: TOPIC
 route: project-editorial

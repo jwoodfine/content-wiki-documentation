@@ -1,7 +1,8 @@
 ---
 schema: foundry-doc-v1
-title: "El Proceso Editorial en Tres Etapas"
+title: "Proceso editorial en tres etapas"
 slug: editorial-pipeline-three-stages
+short_description: "Vista de servicio del proceso de corrección — etapas ordenadas por costo, rutas de degradación ante fallos de dependencias y hallazgos verificables por etapa."
 category: services
 type: topic
 content_type: topic

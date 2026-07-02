@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 content_type: topic
-title: "The Per-Archive Branch Model in app-orchestration-command"
+title: "Per-archive branch model in app-orchestration-command"
 slug: app-orchestration-command-branch-model
 short_description: "Each Totebox Archive operates on its own isolated branch, separate from the canonical main that the coordinator manages. The coordinator's publication filter decides what crosses from the archive branch into canonical history."
 category: architecture

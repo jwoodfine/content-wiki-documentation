@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "El grafo de conocimiento organizativo — memoria ontológica para operaciones empresariales"
+title: "Grafo de conocimiento organizativo — memoria ontológica para operaciones empresariales"
 slug: ontological-datagraph
 category: substrate
 type: topic

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The five-stage sovereign supply chain"
+title: "Five-stage sovereign supply chain"
 slug: five-stage-supply-chain
 category: architecture
 type: concept

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The three layers of a BIM token"
+title: "Three layers of a BIM token"
 slug: bim-token-three-layers
 short_description: "A BIM Token embeds three simultaneous constraint layers — Specification, Regulation, and Climate Zone — as static reference data without runtime selection, allowing regulatory requirements and climate performance to compose into effective design constraints."
 category: reference

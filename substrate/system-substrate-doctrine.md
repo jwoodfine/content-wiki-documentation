@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The system substrate architecture"
+title: "System substrate architecture"
 slug: system-substrate-doctrine
 category: substrate
 type: topic

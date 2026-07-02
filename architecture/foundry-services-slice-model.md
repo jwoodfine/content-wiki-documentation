@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Workspace services slice — cgroup partitioning for multi-developer environments"
 slug: foundry-services-slice-model
+short_description: "systemd cgroup partitioning that gives production services twice the CPU weight of interactive build sessions — single-node isolation without Kubernetes."
 language: en
 category: architecture
 type: topic

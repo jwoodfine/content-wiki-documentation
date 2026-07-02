@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "El sustrato de citas"
+title: "Sustrato de citas"
 slug: citation-substrate.es
 lang: es
 paired_with: citation-substrate.md

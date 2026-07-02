@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The Genesis Protocol"
+title: "Genesis protocol"
 slug: genesis-protocol
 short_description: "The Genesis Protocol is the fleet-bootstrapping sequence run by every os-infrastructure node at first boot, allowing nodes to reach a secure claimable state without any prior configuration or control plane dependency."
 category: architecture

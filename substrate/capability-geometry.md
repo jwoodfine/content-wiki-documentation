@@ -2,6 +2,7 @@
 artifact: topic
 schema: foundry-draft-v1
 title: "Capability Geometry: seL4 Capability Authorization in Totebox Orchestration"
+short_description: "seL4 capability model applied to Totebox authorization — access control changed in structure rather than strengthened on an ambient-authority model."
 lang: en
 route: project-editorial
 status: draft

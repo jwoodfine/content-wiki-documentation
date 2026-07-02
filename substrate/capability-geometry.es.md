@@ -2,6 +2,7 @@
 artifact: topic
 schema: foundry-draft-v1
 title: "Geometría de Capacidades: Autorización por Capacidades seL4 en Totebox Orchestration"
+short_description: "Modelo de capacidades de seL4 aplicado a la autorización de Totebox — control de acceso cambiado en estructura, no reforzado sobre un modelo de autoridad ambiental."
 lang: es
 route: project-editorial
 status: draft

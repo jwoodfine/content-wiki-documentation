@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 content_type: topic
 title: "OS Mediakit"
 slug: os-mediakit
+short_description: "Imagen de SO invitado para el nivel vm-mediakit — aísla wikis de conocimiento, sitios de marketing, corrector y orquestación BIM de los niveles de bóveda y orquestación."
 category: systems
 last_edited: 2026-05-29
 editor: pointsav-engineering

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Estimación de gasto y población: procedencia y supuestos"
 slug: spend-population-provenance
+short_description: "Cadena de procedencia de las estimaciones de población y gasto — rásteres WorldPop, agregación H3 y multiplicadores per cápita, con sus debilidades declaradas."
 category: architecture
 type: concept
 content_type: topic

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Multi-engine session coordination — session locks, boot_id, and role guards"
 slug: multi-engine-session-coordination
+short_description: "Session-lock protocol for concurrent AI engines on one host — boot_id staleness detection and role locks that keep two sessions off the same .git/index."
 language: en
 category: architecture
 type: topic

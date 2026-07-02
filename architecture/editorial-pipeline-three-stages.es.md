@@ -1,6 +1,7 @@
 ---
-title: "La canalización editorial de tres etapas"
+title: "Canalización editorial de tres etapas"
 slug: editorial-pipeline-three-stages
+short_description: "Secuencia de corrección ordenada por costo en service-proofreader — reglas deterministas, análisis gramatical mecánico y reescritura generativa con hallazgos estructurados."
 category: architecture
 last_edited: 2026-06-29
 editor: pointsav-engineering

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Atomicidad del buzón — Escritura exclusiva con flock e idempotencia por msg-id"
 slug: mailbox-atomicity
+short_description: "Escritura exclusiva con flock e idempotencia por msg-id en buzones de archivo plano — cómo las sesiones concurrentes serializan escrituras sin perder mensajes en silencio."
 language: es
 category: architecture
 type: topic

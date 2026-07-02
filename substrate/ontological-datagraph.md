@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The organizational knowledge graph — ontological memory for business operations"
+title: "Organizational knowledge graph — ontological memory for business operations"
 slug: ontological-datagraph
 category: substrate
 type: topic

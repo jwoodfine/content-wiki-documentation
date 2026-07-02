@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "La pasarela de inferencia por niveles — enrutamiento de IA local-primero"
+title: "Pasarela de inferencia por niveles — enrutamiento de IA local-primero"
 slug: soft-slm-tiered-gateway
 category: substrate
 type: topic

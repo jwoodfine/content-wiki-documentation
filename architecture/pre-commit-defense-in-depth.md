@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Pre-commit defense in depth — secret scan, size guard, helper-only gate"
 slug: pre-commit-defense-in-depth
+short_description: "Three-check pre-commit gate — helper-only commits, a 17-pattern secret scan, and a 2 MiB size guard — closing the incident classes behind leaked and mis-attributed commits."
 language: en
 category: architecture
 type: topic

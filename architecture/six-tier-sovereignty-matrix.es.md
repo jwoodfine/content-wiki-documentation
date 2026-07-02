@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "La matriz de seis niveles de soberanía"
+title: "Matriz de seis niveles de soberanía"
 slug: six-tier-sovereignty-matrix
 category: architecture
 type: concept

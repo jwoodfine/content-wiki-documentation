@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The compounding substrate"
+title: "Compounding substrate"
 slug: compounding-substrate
 category: substrate
 type: topic

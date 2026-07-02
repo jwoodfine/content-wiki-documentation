@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "La familia de SO — Ocho sistemas operativos, un sustrato"
+title: "Familia de SO — ocho sistemas operativos, un sustrato"
 slug: os-family-overview
 category: systems
 type: concept

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The Knowledge Flow: Training Loop and Ontological DataGraph"
+title: "Knowledge flow: training loop and ontological DataGraph"
 slug: flow-quality-architecture
 category: architecture
 type: concept

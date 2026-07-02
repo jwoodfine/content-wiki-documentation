@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "La Máquina de Ingesta"
+title: "Máquina de ingesta"
 slug: input-machine
 category: architecture
 type: concept

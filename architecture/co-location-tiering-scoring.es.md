@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Niveles y puntuación de co-ubicación"
 slug: co-location-tiering-scoring
+short_description: "Puntuación por niveles de clústeres de co-localización — qué miden los niveles T1–T3 de composición, los parámetros DBSCAN que forman clústeres y qué no afirman."
 category: architecture
 type: concept
 content_type: topic

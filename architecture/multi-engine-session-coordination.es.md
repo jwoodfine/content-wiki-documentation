@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Coordinación de sesiones multi-motor — bloqueos de sesión, boot_id y guardias de rol"
 slug: multi-engine-session-coordination
+short_description: "Protocolo de bloqueos de sesión para motores de IA concurrentes en un mismo host — detección de bloqueos obsoletos por boot_id y protección del índice git compartido."
 language: es
 category: architecture
 type: topic

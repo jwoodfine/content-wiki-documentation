@@ -1,6 +1,7 @@
 ---
-title: "The Three-Stage Editorial Pipeline"
+title: "Three-stage editorial pipeline"
 slug: editorial-pipeline-three-stages
+short_description: "Cost-ordered proofreading sequence in service-proofreader — deterministic rules first, mechanical grammar analysis, then generative rewriting with structured findings."
 category: architecture
 last_edited: 2026-06-29
 editor: pointsav-engineering

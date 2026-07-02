@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The disclosure substrate"
+title: "Disclosure substrate"
 slug: disclosure-substrate
 category: substrate
 type: topic

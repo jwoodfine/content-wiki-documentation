@@ -1,7 +1,8 @@
 ---
 schema: foundry-doc-v1
-title: "The Three-Stage Editorial Pipeline"
+title: "Three-stage editorial pipeline"
 slug: editorial-pipeline-three-stages
+short_description: "Service-level view of the proofreading pipeline — stage ordering by cost, degradation paths when dependencies fail, and independently verifiable finding sets."
 category: services
 type: topic
 content_type: topic

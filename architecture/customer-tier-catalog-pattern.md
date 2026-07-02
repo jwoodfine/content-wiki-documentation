@@ -1,6 +1,7 @@
 ---
-title: "The Customer-Tier Catalog Pattern"
+title: "Customer-tier catalog pattern"
 slug: customer-tier-catalog-pattern
+short_description: "Structural separation of deployment catalog entries from numbered instances — tenancy-agnostic definitions tracked apart from live runtime state."
 category: architecture
 last_edited: 2026-06-29
 editor: pointsav-engineering

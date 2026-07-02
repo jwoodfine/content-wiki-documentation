@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "La escalera de cuatro niveles del sustrato SLM"
+title: "Escalera de cuatro niveles del sustrato SLM"
 slug: four-tier-slm-substrate.es
 category: substrate
 type: topic

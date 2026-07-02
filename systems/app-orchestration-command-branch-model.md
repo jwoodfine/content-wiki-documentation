@@ -1,6 +1,7 @@
 ---
 artifact: topic
 schema: foundry-draft-v1
+short_description: "Isolated per-archive branches under the app-orchestration-command coordinator — contamination prevention and independent pace ahead of publication to canonical."
 status: draft
 language_protocol: TOPIC
 route: project-editorial

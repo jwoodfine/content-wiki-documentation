@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The OS family — eight operating systems, one substrate"
+title: "OS family — eight operating systems, one substrate"
 slug: os-family-overview
 category: systems
 type: concept

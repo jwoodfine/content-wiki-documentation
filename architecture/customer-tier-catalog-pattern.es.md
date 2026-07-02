@@ -1,6 +1,7 @@
 ---
-title: "El patrón de catálogo de nivel cliente"
+title: "Patrón de catálogo de nivel cliente"
 slug: customer-tier-catalog-pattern
+short_description: "Separación estructural entre entradas de catálogo de despliegue e instancias numeradas — definiciones sin datos de inquilino registradas aparte del estado en vivo."
 category: architecture
 last_edited: 2026-06-29
 editor: pointsav-engineering

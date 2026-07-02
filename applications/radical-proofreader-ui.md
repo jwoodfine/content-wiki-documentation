@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The Proofreader Console"
+title: "Proofreader console"
 slug: radical-proofreader-ui
 category: applications
 type: app

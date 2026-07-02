@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "El sustrato compuesto"
+title: "Sustrato compuesto"
 slug: compounding-substrate.es
 category: substrate
 type: topic

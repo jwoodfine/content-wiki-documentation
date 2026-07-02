@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Defensa en profundidad pre-commit — Análisis de secretos, límite de tamaño y puerta de ayudante"
 slug: pre-commit-defense-in-depth
+short_description: "Puerta pre-commit de tres verificaciones — commits solo vía asistente, escaneo de 17 patrones de secretos y guarda de tamaño de 2 MiB contra fugas y mala atribución."
 language: es
 category: architecture
 type: topic

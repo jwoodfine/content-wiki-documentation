@@ -1,6 +1,7 @@
 ---
-title: "The Language-Protocol Substrate"
+title: "Language-protocol substrate"
 slug: language-protocol-substrate
+short_description: "Metadata classification layer that routes editorial drafts by their language_protocol declaration — which gateway processes an artifact and which vocabulary rules apply."
 category: architecture
 last_edited: 2026-06-29
 editor: pointsav-engineering

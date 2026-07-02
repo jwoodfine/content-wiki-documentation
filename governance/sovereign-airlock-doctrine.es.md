@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "La exclusa soberana"
+title: "Exclusa soberana"
 slug: sovereign-airlock-doctrine.es
 category: governance
 type: topic

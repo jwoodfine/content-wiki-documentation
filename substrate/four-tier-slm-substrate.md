@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The four-tier SLM substrate ladder"
+title: "Four-tier SLM substrate ladder"
 slug: four-tier-slm-substrate
 category: substrate
 type: topic

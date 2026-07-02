@@ -1,6 +1,7 @@
 ---
 artifact: topic
 schema: foundry-draft-v1
+short_description: "Mecánica de publicación bajo app-orchestration-command — cómo el código probado cruza de las ramas de archivo a la historia canónica firmada, filtrando solo código."
 status: draft
 language_protocol: TOPIC
 route: project-editorial

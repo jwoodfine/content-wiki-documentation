@@ -1,6 +1,7 @@
 ---
-title: "El sustrato del protocolo de lenguaje"
+title: "Sustrato del protocolo de lenguaje"
 slug: language-protocol-substrate
+short_description: "Capa de clasificación de metadatos que enruta borradores editoriales según language_protocol — qué pasarela procesa cada artefacto y qué reglas de vocabulario aplican."
 category: architecture
 last_edited: 2026-06-29
 editor: pointsav-engineering

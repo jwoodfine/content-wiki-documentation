@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Learning Datagraph — SLM trajectory loop and apprenticeship queue"
 slug: learning-datagraph-architecture
+short_description: "Four-leg training loop turning operator interactions into training tuples — trajectory capture, apprenticeship queue, editorial DPO pairs, and correction distillation."
 language: en
 category: architecture
 type: topic

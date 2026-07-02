@@ -1,6 +1,7 @@
 ---
 artifact: topic
 schema: foundry-draft-v1
+short_description: "Coordination bottlenecks past twenty archives — publication serialization, message relay latency, operator load, and the path to per-archive process isolation."
 status: draft
 language_protocol: TOPIC
 route: project-editorial

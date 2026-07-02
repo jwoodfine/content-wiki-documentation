@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "La consola del corrector"
+title: "Consola del corrector"
 slug: radical-proofreader-ui
 category: applications
 type: app

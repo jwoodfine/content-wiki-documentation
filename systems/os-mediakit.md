@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 content_type: topic
 title: "OS Mediakit"
 slug: os-mediakit
+short_description: "Guest OS image for the vm-mediakit tier — isolates knowledge wikis, marketing sites, proofreader, and BIM orchestration from the vault and orchestration tiers."
 category: systems
 last_edited: 2026-05-29
 editor: pointsav-engineering

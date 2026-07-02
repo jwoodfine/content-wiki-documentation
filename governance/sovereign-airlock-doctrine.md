@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The sovereign airlock"
+title: "Sovereign airlock"
 slug: sovereign-airlock-doctrine
 category: governance
 type: topic

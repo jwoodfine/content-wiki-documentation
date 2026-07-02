@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The Input Machine"
+title: "Input machine"
 slug: input-machine
 category: architecture
 type: concept

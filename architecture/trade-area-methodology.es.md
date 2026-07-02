@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Metodología de área de atracción"
 slug: trade-area-methodology
+short_description: "Etiquetado honesto de la geografía de demanda — por qué las bandas de distancia rectilínea nunca se llaman áreas de captación, y el paso previsto a isócronas."
 category: architecture
 type: concept
 content_type: topic

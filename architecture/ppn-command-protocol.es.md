@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "El PPN Command Protocol"
+title: "PPN command protocol"
 slug: ppn-command-protocol
 short_description: "El PPN Command Protocol es el formato de cable binario de 16 bytes utilizado por os-network-admin para emitir comandos a los nodos os-infrastructure a través de la malla WireGuard, sin intermediario central ni sobrecarga de sesión."
 category: architecture

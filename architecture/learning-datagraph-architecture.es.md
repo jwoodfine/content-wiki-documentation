@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Grafo de aprendizaje — Cola de aprendizaje, pares DPO y captura de trayectorias"
 slug: learning-datagraph-architecture
+short_description: "Ciclo de entrenamiento de cuatro vías que convierte interacciones del operador en tuplas — trayectorias, cola de aprendizaje, pares DPO editoriales y correcciones destiladas."
 language: es
 category: architecture
 type: topic

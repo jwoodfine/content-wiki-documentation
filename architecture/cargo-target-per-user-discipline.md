@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Per-user build cache discipline — preventing cross-user Cargo races"
 slug: cargo-target-per-user-discipline
+short_description: "Per-user partitioning of the shared Cargo build cache — why a per-developer CARGO_TARGET_DIR eliminates cross-user lock races and permission errors."
 language: en
 category: architecture
 type: topic

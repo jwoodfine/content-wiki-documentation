@@ -1,7 +1,8 @@
 ---
 schema: foundry-doc-v1
-title: "The Customer-Tier Catalog Pattern"
+title: "Customer-tier catalog pattern"
 slug: customer-tier-catalog-pattern
+short_description: "Catalog-versus-instance discipline at the customer tier — reusable deployment definitions tracked in git, tenant-specific instances kept out of shared repositories."
 category: patterns
 type: topic
 content_type: topic
