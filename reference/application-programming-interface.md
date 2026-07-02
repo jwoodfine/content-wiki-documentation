@@ -26,13 +26,19 @@ keynote: false
 
 An application programming interface (API) is a way for two or more computer programs to communicate with each other. It is a type of software interface that offers services to other pieces of software. A document or standard that describes how to build or use such a connection is called an API specification; a computer system that meets the standard is said to implement or expose an API. The term may refer either to the specification or to the implementation.
 
+## Distinction from user interfaces
+
 An API is distinguished from a user interface by its intended consumer: a user interface connects the human user to the system; an API connects software programs to each other. An API is not intended to be used directly by a person but by a programmer who is incorporating it into a larger piece of software. The calls that make up an API are known as subroutines, methods, requests, or endpoints, depending on the architectural style; an API specification defines these calls — it explains how to use or implement them. One purpose of APIs is to hide the internal details of how a system works while exposing only those parts that a programmer will find useful, keeping them consistent even if the internal details change later.
 
 ## History
 
+### Origins in subroutine libraries
+
 **1940s–1950s.** The conceptual foundation of the API was established by British computer scientists Maurice Wilkes and David Wheeler in their work developing a modular software library for EDSAC, an early computer, in the 1940s. The subroutines in this library were stored on punched paper tape organized in a filing cabinet, accompanied by what Wilkes and Wheeler called a "library catalog" of notes about each subroutine and how to incorporate it into a program — which would today be called an API or API documentation. Their 1951 book *The Preparation of Programs for an Electronic Digital Computer* contains the first published API specification. Joshua Bloch has argued that Wilkes and Wheeler "latently invented" the API because it is more a concept that is discovered than invented.
 
 **1960s–1970s.** The term "application program interface" (without the *-ing* suffix) first appeared in a 1968 paper titled *Data structures and techniques for remote computer graphics*, presented at an Association for Information Processing Societies (AFIPS) conference. The authors used the term to describe a set of Fortran subroutine calls intended to free programmers from dealing with the idiosyncrasies of graphics display devices and to provide hardware independence if the computer or display were replaced. The term was introduced to the field of databases by C.J. Date in a 1974 paper; it became part of the ANSI/SPARC framework for database management systems. Database professionals in the 1970s observed that different database interfaces could be combined: a sufficiently rich application interface could support query interfaces, report interfaces, and other interfaces as well.
+
+### Rise of remote and web APIs
 
 **1990s.** By 1990, the API was defined by technologist Carl Malamud simply as "a set of services available to a programmer for performing certain tasks." The concept was expanded by the rise of remote procedure calls and web APIs. As computer networks became common, programmers wanted to call libraries not only on local computers but on computers elsewhere. In the 1990s, with the spread of the internet, standards including CORBA, COM, and DCOM competed to become the dominant mechanism for exposing API services across networks.
 
@@ -40,9 +46,13 @@ An API is distinguished from a user interface by its intended consumer: a user i
 
 ## Types
 
+### Local interfaces — libraries and operating systems
+
 **Library APIs.** The interface to a software library is one type of API. The API describes and prescribes the "expected behavior" (specification) while the library is an "actual implementation" of this set of rules. A single API can have multiple implementations — different libraries that share the same programming interface. The separation of the API from its implementation can allow programs written in one language to use a library written in another; Scala and Java, for example, both compile to compatible bytecode, enabling Scala programs to use Java APIs.
 
 **Operating system APIs.** An API can specify the interface between an application and the operating system. POSIX, for example, provides a set of common API specifications designed to enable applications written for one POSIX-conformant OS to be compiled for another. Linux and the Berkeley Software Distribution (BSD) both implement the POSIX APIs. An API differs from an application binary interface (ABI) in that an API is source-code-based while an ABI is binary-based.
+
+### Networked interfaces — remote and web APIs
 
 **Remote APIs.** Remote APIs allow developers to manipulate remote resources through protocols — specific standards for communication that allow different technologies to work together regardless of language or platform. The Java Database Connectivity API, for example, allows developers to query many types of databases using the same set of functions. Remote APIs are useful for maintaining object abstraction in object-oriented programming: a method call executed locally on a proxy object invokes the corresponding method on the remote object and returns the result.
 

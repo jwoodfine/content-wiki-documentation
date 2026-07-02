@@ -35,6 +35,8 @@ process wants to write to a memory region, open a file, or send a network
 packet, the kernel decides whether the process is permitted. This decision is
 what "access control" means at the system layer.
 
+### seL4 capabilities as the foundation
+
 The [[sel4-microkernel-substrate|seL4 microkernel]] makes access-control decisions using *capabilities* —
 unforgeable tokens that encode exactly what resource a process holds and what
 operations it may perform on that resource. A process that does not hold a
@@ -42,6 +44,8 @@ valid capability for a resource cannot access it; there is no override, no
 ambient authority, no root user that bypasses the check. The seL4 capability
 model has been formally verified: the kernel's C implementation is proven
 correct against a mathematical specification. This is the foundation.
+
+### Ledger layer on top of the kernel proof
 
 The Capability Ledger Substrate does not replace this foundation. It adds one
 new property: every capability invocation decision can be linked, via a Merkle
@@ -79,6 +83,8 @@ A `Memory` capability with `[Read, Write]` is an IPC-shared memory region.
 These are the kernel's native vocabulary; the Capability Ledger Substrate
 adopts them without modification.
 
+### Ledger anchor binding
+
 The `ledger_anchor` field is the new binding. It identifies the C2SP
 signed-note checkpoint in the customer transparency log at which this
 capability was committed:
@@ -98,6 +104,8 @@ proof against the signed checkpoint at tree_size = 1,247. If the proof
 verifies, the capability's existence in the log is established. If the log
 has a published checkpoint history, the anchor ties the capability to a
 specific point in that auditable history.
+
+### Deterministic capability hashing
 
 The `Capability::hash()` method computes the SHA-256 of the JSON-serialized
 struct. This is the value used as the leaf in the Merkle tree and as the key
@@ -130,6 +138,8 @@ or an apprenticeship verdict cannot be replayed as a capability witness
 extension, because the namespace tags differ. The `system-ledger`
 `witness.rs` module verifies signatures by shelling out to `ssh-keygen -Y verify`
 with the correct namespace.
+
+### Kernel decision flow at expiry
 
 The kernel decision flow for a time-bound capability is:
 1. If `now < expiry_t`: honor the invocation (no witness needed)
@@ -175,6 +185,8 @@ signed only by P-old at height N+3 or later is refused with
 effective lifetime of each apex (`effective_from` and `effective_until`
 heights) and enforces this invariant at consult time.
 
+### Atomicity, auditability, finality
+
 The ceremony has three properties that matter to a customer:
 1. **Atomicity**: the handover is a single, self-contained event in the log.
    There is no out-of-band state migration. The log records the full ceremony.
@@ -216,12 +228,16 @@ pub trait LedgerConsumer {
 | `Refuse(reason)` | Capability invalid; reason provided | Deny the invocation |
 | `ExtendThenAllow { new_expiry_t }` | Witness extension accepted | Extend + honor |
 
+### Consultation order of checks
+
 The consultation decision flow:
 1. **Apex validity check**: is the current_root signed by the recognized apex? If the checkpoint is not apex-signed, all bets are off — `Refuse(ApexInvalid)`.
 2. **Post-handover invariant check**: if an apex handover has occurred, is this checkpoint from a refused (stale) apex? If so, `Refuse(StaleApex)`.
 3. **Revocation check**: is the capability's hash in the revocation set? If so, `Refuse(Revoked)`.
 4. **Expiry check**: is `now < expiry_t` (or is `expiry_t` None)? If so, `Allow`.
 5. **Witness path**: if expired, attempt the witness extension flow (§3 above).
+
+### Write-side methods and their cadence
 
 The three write-side methods (`apply_revocation`, `apply_apex_handover`,
 `apply_witness_record`) update ledger state that subsequent consultations
@@ -240,6 +256,8 @@ approximately 4 milliseconds on the Intel Xeon 2.20 GHz hardware where
 the substrate is developed. Any workload calling `consult_capability` hundreds
 of times per second would spend most of its time doing signature verification
 — an unacceptable overhead for kernel-mediated access control.
+
+### CheckpointCache hit path
 
 The `CheckpointCache` in `system-ledger` resolves this. It holds the most
 recent N (default 64) verified checkpoints, keyed by tree_size. A cache hit
@@ -261,6 +279,8 @@ checkpoint publications, every capability invocation hits the cache. The
 cache hit rate approaches 100% for any sustained workload. The ed25519
 verifier runs only when a new checkpoint is published — which happens on the
 write path, not the read path.
+
+### Cache bound and the read/write split
 
 The 64-entry bound covers: the apex-handover window (during which P-old and
 P-new checkpoints coexist at heights N+1 and N+2), the overlap period when
@@ -290,6 +310,8 @@ examining the log sees the full sequence: capability committed at height N₁,
 revoked at height N₂, and no subsequent witness extension is valid after N₂
 because any such extension would need to reference a checkpoint at N₂ or
 later, where the revocation entry is visible.
+
+### Post-handover apex cutoff
 
 The **post-handover invariant** is a different property: it governs which
 apex signing key is authoritative on a given checkpoint, independent of
@@ -321,6 +343,8 @@ log format. The data-primitive types (`Capability`, `WitnessRecord`,
 `LedgerAnchor`, `SignedCheckpoint`, `InclusionProof`, `ConsistencyProof`)
 defined in `system-core` are the L0 schema layer. The state machine in
 `system-ledger` is the L1+L2 consumer.
+
+### Substrate-tier and application-tier consumers
 
 The parallel with `service-fs` is structural and deliberate:
 - `service-fs` is the application-tier WORM consumer: Ring 1, userspace,

@@ -53,7 +53,11 @@ The startup sequence enforces a strict dependency chain. watchdog-pd starts firs
 
 After service-fs PD reaches a healthy state, network-pd starts. It holds the VirtIO-net device cap and routes all HTTP traffic for Ring 2 services. Ring 2 services cannot expose an HTTP surface until network-pd is up, so the ordering is again structural, not advisory.
 
+### Ring 2 service start order
+
 The four Ring 2 services — service-content, service-people, service-slm, and service-extraction — start in descending priority order. service-content (DataGraph, :9081) starts before service-people because service-people relies on the DataGraph for entity resolution. service-slm (Doorman, :9080) starts after service-content because Doorman uses the DataGraph to route inference requests. service-extraction (the CORPUS pipeline) starts last because it is a background process that feeds the DataGraph over time; it has no latency-critical upstream dependency waiting on it.
+
+### Enforcement on the development and native paths
 
 The `os-totebox/scripts/start-stack.sh` shell script implements this ordering for the development path (std/Linux, Phase H0 compat bottom). On the seL4 native path, the PD scheduler enforces the same ordering at the capability level — a PD cannot receive a start notification from moonshot-sel4-vmm until its declared dependencies have sent a ready signal.
 
@@ -61,7 +65,11 @@ The `os-totebox/scripts/start-stack.sh` shell script implements this ordering fo
 
 The critical security property of the design is geometric: a compromised service-slm PD cannot reach service-fs PD, regardless of what code runs inside service-slm. This is not a runtime policy assertion. The seL4 kernel enforces capability type-safety on every invocation, and the Isabelle/HOL proofs in vendor-sel4-kernel (BSD-2-Clause, seL4 Foundation, covering AArch64 and RISC-V 64 as of Microkit 2.2.0, March 2026) formally verify that no invocation path bypasses this enforcement.
 
+### Block device capability derivation
+
 The derivation path matters. service-slm PD holds no capability whose derivation chain leads to the block device endpoint. network-pd routes HTTP for service-slm but holds no block device cap itself. service-extraction holds a write capability scoped to service-fs PD's drop directory channel — it cannot address the block device directly. The only entity in the system that holds a block device cap is service-fs PD, and that cap is granted in `os-totebox.toml` and verified by moonshot-toolkit before the image is assembled.
+
+### Side-channel residual risk
 
 One limitation applies: the seL4 proof covers invocation-path confinement but does not cover side-channel attacks through shared physical DRAM or shared cache lines. A deployment on hardware with separate physical DMA zones per PD would eliminate that residual risk. That hardware configuration is a planned Phase H2 target; it is not part of the Phase H1 QEMU development boot milestone.
 
@@ -78,6 +86,8 @@ os-totebox is one surface in a three-binary deployment:
 - **os-console** is the operator terminal surface (TUI, app-console-* cartridges). It relays inference requests to Doorman but cannot bypass os-totebox's capability boundaries.
 - **os-totebox** is the data persistence tier. It is the only surface that holds WORM block device capabilities and signs ledger checkpoints.
 - **os-orchestration** is the stateless aggregation layer. It coordinates Tier B GPU inference across the Yo-Yo broker (:9180) but never touches the WORM ledger directly.
+
+### Inference and ledger boundaries
 
 Inference on os-totebox is Tier A only — local OLMo 7B via Doorman (:9080). Tier B (GPU broker) and Tier C (external API) are routed through [[os-orchestration]]'s app-orchestration-slm crate. This boundary is enforced by the PD capability graph: service-slm PD on os-totebox holds an IPC cap to the local OLMo engine only. It holds no capability that reaches an external network endpoint.
 

@@ -29,6 +29,8 @@ PointSav-LLM está planificado como especialista en un dominio concreto, no como
 
 Sus áreas de especialización previstas incluyen la operación del [[totebox-archive|Archivo Totebox]], las convenciones de [[pointsav-overview|PointSav]], los patrones editoriales multiusuario, la generación de código alineada con las convenciones de la plataforma y los flujos de contribución de entrenamiento federado.
 
+### Qué no está previsto que sea
+
 PointSav-LLM no está planificado para competir con modelos de frontera de amplio alcance en conocimiento general, profundidad creativa o razonamiento multidisciplinar. Las consultas que requieran esa amplitud continuarán siendo enrutadas por el [[doorman-protocol|Doorman]] del cliente hacia las APIs externas del Nivel C (Nivel C externo). La base OLMo 3 (Apache 2.0; Open Data Commons) es abierta, y los adaptadores portátiles por cliente están planificados para preservar la soberanía del tenant conforme a la claim #28 de la Doctrina (Tenancy Diseñada para la Desvinculación).
 
 ---

@@ -24,13 +24,19 @@ Cargo's incremental build cache lives under `target/`. By default that is a per-
 - `CARGO_TARGET_DIR` takes precedence over `~/.cargo/config.toml`'s `target-dir` setting. The change takes effect on any new shell without per-user dotfile edits — a system-level profile script is the enforcement point.
 - The lesson generalises beyond Cargo: any group-writable shared path needs explicit design around which operations are safe to share (reads, content appends) and which require per-user partitioning (build state, lock files, temporary directories).
 
+## Cross-user race in the shared cache
+
 This works for a single developer. With two developers in the workspace group it becomes a race. Cargo's `target/.cargo-lock` serialises full-tree builds, so two `cargo build` invocations on different crates block one another. Worse, mixed file ownership — build artefacts written by one user interleaved with another user's — causes sporadic `Permission denied` errors during incremental rebuild, even when the crates appear to be unrelated.
+
+## Per-user CARGO_TARGET_DIR partitioning
 
 The fix: a system profile script exports `CARGO_TARGET_DIR` pointing at a per-user subdirectory (`<shared-root>/$USER/`). Each user gets a private subdirectory. The build cache stays shared within a user — the original optimisation is preserved — but no longer crosses users. The environment variable takes precedence over `~/.cargo/config.toml`'s `target-dir` setting, so the change takes effect on any new shell without per-user dotfile edits.
 
 The migration involved moving the existing 3.3 GiB cache into one user's subdirectory. That user's incremental state is preserved; the other developer starts with an empty cache that fills on first build.
 
 Service accounts in the workspace group (local-doorman, local-design, and similar) do not run Cargo and do not receive a per-user cache directory. The profile script only exports when the shared cache root exists, so non-workspace contexts are unaffected.
+
+## Generalising beyond Cargo
 
 The lesson generalises: any group-writable shared workspace path needs explicit design around which operations are safe to share (reads, content appends) and which require per-user partition (build state, lock files, temp). Cargo is the prominent example; the same logic applies to anything with mutable state under a shared root.
 

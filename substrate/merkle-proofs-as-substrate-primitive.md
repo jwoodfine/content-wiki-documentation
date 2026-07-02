@@ -43,6 +43,8 @@ internal node holds the hash of the concatenation of its two children. The root
 to any record changes every hash on the path from that leaf to the root, and
 therefore changes the root.
 
+### Domain separation per RFC 9162
+
 RFC 9162 §2.1 specifies one additional requirement: domain separation. Leaf
 hashes are computed as SHA-256 of the byte `0x00` followed by the record data.
 Internal node hashes are computed as SHA-256 of the byte `0x01` followed by
@@ -58,6 +60,8 @@ pub fn rfc9162_leaf_hash(leaf_data: &[u8]) -> Hash256 { ... }
 // Internal hash: SHA-256(0x01 || left || right)
 pub fn rfc9162_internal_hash(left: &Hash256, right: &Hash256) -> Hash256 { ... }
 ```
+
+### Sibling paths and logarithmic proof size
 
 A Merkle inclusion proof for a specific leaf is a list of sibling hashes along
 the path from that leaf to the root. A verifier who holds the leaf hash and the
@@ -122,6 +126,8 @@ pub struct InclusionProof {
 }
 ```
 
+### RFC 9162 verification algorithm
+
 Verification follows RFC 9162 §2.1.3 verbatim. The algorithm tracks two
 counters named `fn_` (the current node's position, shifting right as it
 ascends the tree) and `sn` (the size of the current layer, also shifting
@@ -140,12 +146,16 @@ accumulated hash matches `expected_root`. The error taxonomy distinguishes four
 structural conditions: `LeafIndexOutOfBounds`, `PathTooLong`, `PathTooShort`,
 and `RootMismatch`.
 
+### Test coverage across tree shapes
+
 The test suite covers 11 cases: domain-separation prefix sanity for leaf and
 internal hashes; single-leaf tree (proof is empty, root equals the leaf hash);
 two-leaf, four-leaf, and eight-leaf trees with every leaf index verified;
 odd-sized trees (5 leaves, exercising the right-edge promotion path); tampered
 sibling hash; wrong leaf hash; wrong root; leaf index out of bounds; path too
 long; path too short; and proof-for-wrong-leaf rejection.
+
+### Benchmarked verification times
 
 Performance from the clean Phase 1A.4 benchmark run on an Intel Xeon 2.20 GHz:
 
@@ -192,6 +202,8 @@ After all hashes are consumed, both `last_node` must be zero (the algorithm
 reached the root of both trees), and the two accumulators must equal
 `old_root` and `new_root` respectively.
 
+### Nine-variant error taxonomy
+
 The nine error variants distinguish:
 
 | Error | Condition |
@@ -211,6 +223,8 @@ old checkpoint is being misrepresented; `NewRootMismatch` means the new
 checkpoint is being misrepresented; `PathTooLong` or `PathTooShort` means the
 proof itself was constructed incorrectly or has been tampered with. Each class
 of failure has a different operational response.
+
+### Full-grid conformance testing
 
 The test suite includes 11 cases covering the identity case, `OldSizeIsZero`,
 `OldSizeExceedsNewSize`, equal sizes with non-empty proof, single-leaf
@@ -250,6 +264,8 @@ handover checkpoint, both the outgoing apex (P-old) and the incoming apex
 confirms the transfer is complete by requiring both signatures at the handover
 height.
 
+### Kernel-facing verification API
+
 The composed kernel-facing API sits on `SignedCheckpoint`:
 
 ```rust
@@ -281,6 +297,8 @@ checkpoint. Second, the checkpoint's body must bear a valid ed25519 signature
 from the named signer using the provided public key. Third, the raw
 `InclusionProof::verify` must confirm the leaf hash reconstructs the root.
 All three must pass.
+
+### Why raw proof verification is not exposed
 
 The composition serves a specific purpose: consumers should not call raw
 `InclusionProof::verify` directly. A raw proof verify against a root hash the
@@ -324,6 +342,8 @@ pub trait LedgerConsumer {
 }
 ```
 
+### Write-side gating via inclusion proofs
+
 Before Phase 1A.4, `apply_witness_record` accepted a `WitnessRecord` without
 any cryptographic verification of its placement in the log. The caller was
 trusted to supply only records that belonged to the current checkpoint. This
@@ -336,6 +356,8 @@ Phase 1A.4 closed this gap by promoting `apply_witness_record` to require an
 only if the Merkle proof confirms the record's hash is in the tree covered by
 the current apex-signed checkpoint. This is the v0.1.x → v0.2.0 breaking
 change: trait signature changed, not just implementation.
+
+### Read-side cost and the checkpoint cache
 
 The read side operates on a different cost curve. `consult_capability` must
 respond quickly — it sits on the kernel-mediated invocation path. Signature
@@ -361,6 +383,8 @@ lookup. LRU eviction keeps memory bounded. The 64-entry bound was chosen to
 cover the apex-handover window (during which P-old and P-new checkpoints
 coexist) plus reasonable checkpoint publishing rates without exceeding kernel
 working-set constraints.
+
+### Apex-handover interaction
 
 One design interaction deserves explicit attention: at the handover height N+2,
 the apex-handover checkpoint bears both P-old and P-new signatures. The
@@ -408,6 +432,8 @@ compat-bottom must be able to verify its own capability state against the same
 transparency log as the seL4 native-bottom instance, using no runtime trust
 relationship between the two.
 
+### Path to no_std kernel consumption
+
 The `system-core` implementation is eligible for `no_std` compilation. The
 crate carries `std` for `Vec` and JSON serialization in v0.2.x; neither
 `inclusion_proof.rs` nor `consistency_proof.rs` uses any `std`-only
@@ -416,6 +442,8 @@ direct kernel consumption from `moonshot-kernel` (the intended Rust no_std
 replacement for [[sel4-microkernel-substrate|seL4's capability machinery]]) without a foreign-function
 boundary. The substrate primitive that gates every capability invocation in
 userspace can gate it at the kernel level using the same code.
+
+### Composition of mature standards
 
 The cryptographic primitives in `system-core` are not novel inventions. RFC 9162
 Certificate Transparency 2.0 is a mature IETF standard with multiple

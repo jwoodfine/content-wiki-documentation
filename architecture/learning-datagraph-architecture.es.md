@@ -24,6 +24,8 @@ La plataforma construye un [[compounding-substrate|sustrato acumulativo]]: cada 
 - El corpus se acumula con cada sesión. A mediados de 2026 el corpus de aprendizaje contaba con 502 tuplas y el corpus de DPO editorial con 34 pares. Estos números crecen sin curación manual — el nivel base del modelo sube a medida que el operador utiliza el entorno.
 - La única pata aún no conectada es el bucle de entidades estructuradas: un endpoint `POST /v1/draft/generate` en [[service-content]] que fundamentaría la generación en entidades del grafo. La infraestructura de soporte (cola, ledger, hooks, enrutamiento de auditoría) ya está implementada; lo que resta es un esfuerzo de ingeniería Rust de varias semanas.
 
+## Cuatro patas de señal de entrenamiento
+
 El sustrato tiene cuatro patas.
 
 **Captura de trayectorias.** Un hook de cierre de sesión se activa al final de cada sesión, escribiendo una entrada JSONL estructurada en el ledger de auditoría: estado de la rama, recuento de archivos sin confirmar, SHA de la cabeza y un indicador de promoción pendiente. Una cosecha nocturna de transcripciones copia las transcripciones del día en el mismo ledger, etiquetadas por operador y archivo.
@@ -33,6 +35,8 @@ El sustrato tiene cuatro patas.
 **Pares DPO editoriales.** Cada borrador que pasa por el patrón editorial de embudo inverso — de crudo a refinado a editado creativamente — emite dos pares de preferencia directa (DPO, del inglés direct preference optimisation) en el corpus de edición de prosa. El par captura los deltas de mejora editorial. A esa fecha se habían acumulado 34 pares.
 
 **Destilación de trayectorias negativas.** Un script de análisis de buzones lee las correcciones del operador de los mensajes archivados y emite señales de trayectoria negativa en el corpus de retroalimentación. Esta cuarta pata captura lo que el modelo no debe hacer.
+
+## Bucle de entidades estructuradas — la pata pendiente
 
 Lo que queda por conectar — trabajo de ingeniería en Rust de varias semanas: el bucle de entidades estructuradas. [[service-content]] (grafo respaldado por LadybugDB) necesita un endpoint `POST /v1/draft/generate` que consulte el grafo para obtener entidades relevantes, ensamble un prompt fundamentado de 2K tokens, llame al [[doorman-protocol|Doorman]] y escriba la respuesta como tupla de corpus fundamentado en el grafo. Un planificador LoRA deberá activar el [[yoyo-compute-substrate|cómputo GPU de nivel B]] para el [[elastic-compute-lora-training-pipeline|entrenamiento nocturno de adaptadores]].
 

@@ -26,6 +26,8 @@ keynote: false
 
 Un appliance informático es un dispositivo informático en el que el hardware y el software han sido diseñados e ingenieriados conjuntamente para realizar una función informática específica y bien definida. A diferencia de un ordenador de propósito general — que puede configurarse, reconfigurarse y reutilizarse para muchas funciones — un appliance informático está diseñado para una tarea, se entrega con el software para esa tarea preinstalado, y normalmente no puede reutilizarse para otras funciones sin reemplazarlo por completo.
 
+## Diseño cerrado y sellado
+
 El appliance informático se describe como "cerrado y sellado": el software no es instalable ni modificable por el usuario de la manera en que lo son los sistemas operativos de propósito general. El usuario de un appliance informático interactúa con él a través de la interfaz específica que proporciona su fabricante — una interfaz de gestión basada en web, un panel de hardware dedicado o un protocolo de red definido — en lugar de hacerlo a través de una línea de comandos o un entorno gráfico de propósito general.
 
 El concepto de appliance informático es el análogo en hardware del appliance de software o virtual — la misma filosofía de diseño aplicada a infraestructura física en lugar de virtualizada.
@@ -39,6 +41,8 @@ El concepto de appliance informático es el análogo en hardware del appliance d
 **Appliances de copia de seguridad** — hardware dedicado para copia de seguridad, deduplicación y recuperación de datos. Los appliances de copia de seguridad combinan alta capacidad de almacenamiento con motores de deduplicación y software de replicación.
 
 **Appliances de seguridad** — hardware para funciones de seguridad: sistemas de detección y prevención de intrusiones (IDS/IPS), pasarelas de seguridad de correo electrónico, pasarelas de seguridad web y dispositivos de gestión unificada de amenazas (UTM).
+
+### Appliances industriales y de consumo
 
 **Appliances gateway IoT industriales y MES** — dispositivos informáticos robustizados para entornos industriales: pasarelas de sistemas de ejecución de fabricación (MES), dispositivos de comunicación SCADA y nodos de [[edge-computing|computación en el borde]] para sistemas de control industrial. Estos dispositivos conectan las redes de tecnología operativa (OT) — los sistemas de control que gestionan el equipo industrial — con las redes de tecnología de la información (TI).
 

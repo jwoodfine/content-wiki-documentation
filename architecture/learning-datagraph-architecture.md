@@ -24,6 +24,8 @@ The platform builds a [[compounding-substrate|compounding substrate]]: every ope
 - The corpus accumulates with every session. As of mid-2026 the apprenticeship corpus held 502 tuples and the editorial DPO corpus held 34 pairs. These numbers grow without manual curation — the model floor rises as the operator uses the environment.
 - The one leg not yet wired is the structured-entity loop: a `POST /v1/draft/generate` endpoint in [[service-content]] that would ground generation in graph entities. The supporting infrastructure (queue, ledger, hooks, audit routing) is already in place; what remains is a multi-week Rust engineering effort.
 
+## Four legs of training signal
+
 The substrate has four legs.
 
 **Trajectory capture.** A session-end hook fires at session close, writing a structured JSONL entry to the audit ledger: branch state, uncommitted-file count, head SHA, and a promotion-pending flag. A nightly harvest copies the day's session transcripts into the same ledger, tagged by operator and archive.
@@ -33,6 +35,8 @@ The substrate has four legs.
 **Editorial DPO pairs.** Every draft that passes through the reverse-funnel editorial pattern — raw to refined to creative-edited — emits two DPO (direct preference optimisation) pairs to the prose-edit corpus. The pair captures the editorial improvement deltas. 34 pairs had accumulated to that date.
 
 **Negative-trajectory distillation.** An inbox-scanner script reads operator corrections from archived messages and emits negative-trajectory signals to the feedback corpus. This fourth leg captures what the model should not do.
+
+## Structured-entity loop — the remaining leg
 
 What remains to wire — multi-week Rust engineering effort: the structured-entity loop. [[service-content]] (LadybugDB-backed graph) needs a `POST /v1/draft/generate` endpoint that queries the graph for relevant entities, assembles a 2K-token grounded prompt, calls the [[doorman-protocol|Doorman]], and writes the response as a graph-grounded corpus tuple. A LoRA scheduler then wakes Tier B [[yoyo-compute-substrate|GPU compute]] for nightly [[elastic-compute-lora-training-pipeline|adapter training]]. The supporting infrastructure — queue, ledger, hooks, audit-routing — is already in place.
 

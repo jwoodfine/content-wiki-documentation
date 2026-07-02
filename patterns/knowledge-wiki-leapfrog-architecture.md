@@ -44,6 +44,8 @@ MediaWiki was designed in 2003 for a PHP-and-MySQL stack. Its parser — the com
 
 The wikitext template system is the core of MediaWiki's content richness — infoboxes, navboxes, citation templates, and geographic coordinate templates are all implemented as wiki pages in the `Template:` namespace, processed by a recursive macro expansion interpreter that calls back into the database during parsing. This design couples the parser to the database, complicates caching, and makes the system difficult to run without MySQL.
 
+### Same reader experience, different stack
+
 The architectural goal of `app-mediakit-knowledge` is not to replicate this design but to achieve the same reader experience through a fundamentally different stack. The content format is Markdown with YAML frontmatter, not wikitext. Version control is git, not a MySQL revision table. The search backend is Tantivy — embedded, zero operational overhead — not an Elasticsearch-backed cluster. Template transclusion is replaced by six native block types that cover approximately 95 percent of what templates are actually used for on Wikipedia.[^3]
 
 ## MediaWiki architecture, understood
@@ -51,6 +53,8 @@ The architectural goal of `app-mediakit-knowledge` is not to replicate this desi
 MediaWiki's namespace system defines 30 namespaces in two axes: subject pages (Article, User, File, Template, Category, Help, Module, Draft) paired with Talk pages. Special pages form a separate class of software-generated pages with no talk equivalent.
 
 The Vector 2022 skin divides every page into: a sticky header (logo, search, language switcher, personal tools), a left sidebar (navigation menu and table of contents), an article header (namespace tabs, view tabs, title, short description, hatnotes), the article body (infobox floated right, body text, tables, images, footnote superscripts), an appendix (See also, References, External links), navboxes, category strip, and a footer (last-edited timestamp, licence, legal links).[^3]
+
+### Cite extension and reader muscle memory
 
 The Cite extension handles footnotes: `<ref>citation text</ref>` in the article body inserts a numbered superscript; `<references/>` at the section bottom renders the numbered list. Reference Tooltips — a JavaScript gadget — shows citation text on hover without requiring the reader to scroll.[^4]
 
@@ -78,6 +82,8 @@ As of May 2026, `app-mediakit-knowledge` implements approximately 78 percent of 
 - MCP server (JSON-RPC 2.0) for agent integration
 - Notify-based incremental search reindex (no restart required on file changes)
 - Mobile hamburger navigation
+
+### Missing elements ranked by impact
 
 The following elements are stubbed or absent, ranked by muscle-memory impact:
 
@@ -118,6 +124,8 @@ The engine walks the comrak AST, matches `CodeBlock` nodes with `info = "infobox
 
 **Cite block** — inline citation syntax (`[^id]` with `[^id]: text` at article bottom) that the comrak footnotes extension already parses. The remaining work is CSS styling matching `[1][2][3]` superscript form and a JavaScript hover tooltip.[^4] The `citations.yaml` registry used by the editor's autocomplete system extends naturally into citation rendering.
 
+### comrak upgrade path
+
 Implementing the infobox and navbox block types requires upgrading comrak from version 0.29 to 0.52 as a planned step.[^5] The newer version adds the `block_directive` extension (`:::infobox`, `:::navbox` syntax), which is cleaner than fenced code blocks for multi-line Markdown content inside the block body. The API is stable across these versions; existing code compiles without change.
 
 ## The Leapfrog 2030 layer
@@ -135,6 +143,8 @@ Wikipedia muscle memory is the floor, not the ceiling. Once `app-mediakit-knowle
 ## Mobile-first and progressive enhancement
 
 The wiki is designed mobile-first: the layout, navigation, and table of contents render correctly and usably at a 375 px viewport before any progressive enhancement for wider screens. Desktop users receive the full sidebar-plus-content layout as an enhancement; mobile users receive the complete reading and editing experience without a stripped-down alternative.
+
+### Touch targets and mobile parity
 
 Touch target discipline follows WCAG 2.2 Success Criterion 2.5.8: all interactive elements — TOC entries, edit pencils, navigation links, toggle buttons — carry a minimum 44 px × 44 px touch target. Interactions do not rely on hover states; every feature accessible by hovering is equally accessible by tapping. Safe-area padding (`env(safe-area-inset-*)`) is applied to the shell chrome to accommodate notched and dynamic-island displays.
 

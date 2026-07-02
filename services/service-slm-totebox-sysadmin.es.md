@@ -35,6 +35,8 @@ Cuatro propiedades estructurales hacen que estas cargas de trabajo sean idóneas
 
 **Latencia.** El trabajo de administración es de alta frecuencia y baja latencia. El Nivel B (OLMo 3.1 32B Think en GPU A100) entrega aproximadamente 100–150 tokens por segundo. Una llamada de API externa añade 5–15 segundos por llamada incluyendo red y cola del proveedor. En una secuencia de aprovisionamiento de varios pasos, esa diferencia de latencia es material.
 
+### Coste y personalización a escala de flota
+
 **Coste a escala.** El coste amortizado planificado del Nivel B en una instancia preemptible con apagado por inactividad es muy inferior a los equivalentes de API del Nivel C al coste de contexto completo del prompt. A volúmenes operativos sostenidos — miles de consultas de administración por día en una flota activa — el diferencial se compone. *Las proyecciones de coste son objetivos planificados; los costes reales pueden diferir según el modelo, los precios del proveedor y el tamaño del prompt.* [ni-51-102] [osc-sn-51-721]
 
 **Personalización.** Los adaptadores LoRA por tenant, entrenados en los patrones operativos específicos de cada cliente, hacen que service-slm sea un asistente más preciso para ese cliente que cualquier servicio de inferencia genérico.

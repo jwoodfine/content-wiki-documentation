@@ -54,6 +54,8 @@ A systematic UI design process follows several phases:
 
 **Prototyping** — creating low-fidelity wireframes and interactive prototypes that represent the interface structure without the visual design detail. Prototypes are tested with users before significant development investment is made.
 
+### Inspection, testing, and visual design
+
 **Usability inspection** — structured expert review of the interface against established criteria. Common inspection methods include cognitive walkthrough (following the user's thought process step by step), heuristic evaluation (assessing the interface against a set of established usability principles), and pluralistic walkthrough (a structured group review involving developers, users, and usability specialists together).
 
 **Usability testing** — observation of real users attempting to complete defined tasks with the interface. The think-aloud protocol, in which participants narrate their thoughts while using the interface, is the most widely used method.
@@ -73,6 +75,8 @@ ISO 9241, the international standard for ergonomics of human-system interaction,
 5. **Error tolerance** — despite erroneous inputs or actions, the interface allows the user to recover with minimal corrective effort.
 6. **Suitability for individualization** — the interface can be adapted to the skills, abilities, and preferences of individual users.
 7. **Suitability for learning** — the interface supports users in learning how to use it.
+
+### Usability, presentation, and guidance parts
 
 **Usability (ISO 9241 Part 11)** defines usability as a product of three components: effectiveness (users can achieve their goals), efficiency (users can achieve their goals with appropriate expenditure of resources), and satisfaction (users find the interaction acceptable).
 

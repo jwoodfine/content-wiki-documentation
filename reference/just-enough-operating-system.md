@@ -26,6 +26,8 @@ keynote: false
 
 Just Enough Operating System (JeOS, commonly pronounced "juice") is a philosophy and practice of customizing an operating system to include only those components required to support a specific application or service. Rather than installing a general-purpose Linux distribution and subsequently removing unused components, a JeOS image is built from the minimum set of packages required for the target workload — a kernel, essential runtime libraries, and the application itself — with all other components absent.
 
+## Unused components as attack surface
+
 The JeOS approach emerged from the recognition that general-purpose operating systems carry a substantial overhead of components that serve a wide range of users and use cases, but any given production workload requires only a fraction of this capability. Unused components are not merely wasteful in terms of memory and storage; they represent an attack surface: services that are not running cannot be exploited; libraries that are not installed cannot harbor vulnerabilities. The JeOS philosophy treats every installed package not required by the target application as a security liability and a maintenance obligation with no benefit.
 
 ## Relationship to virtual appliances and software appliances
@@ -46,6 +48,8 @@ A JeOS image for a network service application might include:
 - **Audit and logging** — syslog or journald as required by operational policy
 - **SSH server** — for remote administration (often the only administrative interface)
 
+### Components absent from a JeOS image
+
 Components that would be present in a general-purpose distribution but absent from a JeOS image include: graphical desktop environment and all GUI libraries; compilers, debuggers, and development tools; package managers (in immutable appliance configurations); documentation; localization data beyond the required locale; and all services not required by the target application (print spoolers, audio services, Bluetooth stack, mail transfer agents).
 
 ## Security advantages
@@ -53,6 +57,8 @@ Components that would be present in a general-purpose distribution but absent fr
 The primary security benefit of the JeOS approach is attack surface reduction. In security architecture, attack surface refers to the sum of different points where an unauthorized user can try to enter data to or extract data from an environment. Every installed service that is not required by the target application represents a potential attack vector that provides no benefit — it can only increase risk. By removing these components, the JeOS approach eliminates entire classes of vulnerabilities.
 
 A JeOS image for a web application server requires no SMTP mail transfer agent, no FTP server, no Samba file-sharing stack, and no remote procedure call daemon — all services that have historically been sources of major vulnerabilities. Removing them does not degrade the web application's functionality and permanently closes the corresponding attack paths.
+
+### Patching and maintenance overhead
 
 The smaller package set also reduces the maintenance overhead of security patching: fewer installed packages means fewer CVEs to track and fewer packages to update in response to security disclosures. This property is particularly valuable in environments where patching requires coordination across multiple systems or where appliance images must be certified before deployment.
 

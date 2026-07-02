@@ -58,6 +58,8 @@ The reader is an institutional decision-maker. They have financial literacy and 
 - Citations: financial research, regulatory filings, industry reports, market data
 - Avoid: academic hedging, abstract nouns, dramatic marketing claims, platform-internal metaphors
 
+### Consequence-first examples
+
 **Consequence-first pattern:**
 
 *"The Direct-Hold framework removes the pool. Each property is its own legal and financial unit."*
@@ -81,6 +83,8 @@ The primary reader is a software engineer, designer, or developer. They have tec
 - Tone: peer-level, confident, direct — engineer to engineer
 - Avoid: over-explaining basics (HTTP, SSH, git), vague architecture descriptions, incomplete examples
 
+### Accessibility layer in practice
+
 **Accessibility layer pattern:**
 
 *"**[[service-slm|service-slm]]** routes every AI request to the cheapest compute tier that meets the deadline, without the caller specifying which tier. Local inference first (5 s), cloud burst second (10 s), external API last (30 s). A request that resolves locally never leaves the customer's infrastructure — and never appears on a cloud billing statement."*
@@ -92,6 +96,8 @@ The last sentence is the Corporate accessibility layer. An institutional reader 
 **Applies to:** specialist deployment sites only — `bim.woodfinegroup.com`, `gis.woodfinegroup.com`, `design.pointsav.com`
 
 Prescriptive specification language (shall / shall not for requirements, measurements with units, normative vs informative distinction, standards citations, in the tradition of building-code and interoperability standards bodies) is the correct register for the specialist sites. It does not appear in the three main wikis because the main wiki audience is the institutional decision-maker, not the compliance engineer. "Shall" language reads as aggressive to a capital allocator. Specification language signals "compliance document," not "credible platform."
+
+### Cross-referencing the specialist sites
 
 **Specialist sites as cross-reference destinations:**
 

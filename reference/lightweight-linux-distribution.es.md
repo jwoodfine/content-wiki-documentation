@@ -26,6 +26,8 @@ keynote: false
 
 Una distribución Linux ligera es un sistema operativo basado en Linux diseñado para utilizar significativamente menos RAM y capacidad de procesador que las distribuciones Linux completas. La característica definitoria es la eficiencia de recursos: la distribución es capaz de ejecutarse en hardware con memoria limitada, velocidad de CPU restringida, o ambas.
 
+## Ligereza como medida relativa
+
 El concepto de distribución ligera no es absoluto sino relativo. Lo que constituye "ligero" depende de la generación de hardware considerada y de la carga de trabajo servida. Las distribuciones completas contemporáneas como Ubuntu con el entorno de escritorio Unity requieren aproximadamente 2 GB de RAM para funcionar cómodamente; las distribuciones ligeras pueden operar con tan solo 46 MB (Tiny Core Linux) o 24 MB (SliTaz) de RAM para uso interactivo de escritorio, y las distribuciones embebidas como OpenWrt requieren solo 32 MB de RAM para operación sin interfaz gráfica.
 
 ## El entorno de escritorio como factor principal de peso

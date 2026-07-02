@@ -31,6 +31,8 @@ La decisión de diseño central del sustrato: **git es canónico; el binario en 
 
 Todo artefacto concreto con que un lector interactúa — la página HTML, la entrada del feed Atom, el bloque JSON-LD, el resultado de búsqueda — se deriva en tiempo de solicitud del árbol de Markdown en disco. El estado del disco es lo que se confirma, revisa, replica y divulga. El índice Tantivy se reconstruye desde el árbol de contenido al arrancar. El CRDT de colaboración es efímero entre sesiones.
 
+### Inversión del modelo MediaWiki
+
 Esta inversión revierte el modelo tradicional de MediaWiki, donde la base de datos es canónica y el sistema de archivos es una copia de trabajo derivada. El motor elige el sistema de archivos como canónico y la base de datos como copia derivada. La motivación es la simplicidad operacional — una copia de seguridad del árbol de contenido es un `git clone`; una replicación es un `git pull`; una auditoría es un `git log` — y también una invariante a nivel de sustrato: cada afirmación publicada es un commit git firmado; el registro de divulgación es el historial de git; la postura de divulgación continua BCSC queda impuesta por la estructura del sustrato, no sólo por política.
 
 ## Superficie de rutas
@@ -47,7 +49,11 @@ Los añadidos más allá de Wikipedia incluyen insignias de citas junto a refere
 
 El motor está planificado para servir contenido desde múltiples repositorios git a través de una única superficie renderizada, mediante un manifiesto declarativo de montaje (`knowledge.toml`) que el operador coloca en la raíz del directorio de contenido. Cada entrada de montaje nombra un repositorio fuente, una ruta de montaje local y un plano — el esquema que determina cómo se validan, enrutan y enlazan los archivos en ese montaje. Esta capacidad está planificada; la arquitectura descrita aquí es el diseño previsto, y el modelo de repositorio único es la forma actualmente desplegada.
 
+### Montajes y esquemas de plano
+
 Los montajes son subárboles de directorio derivados de repositorios git nombrados. Los planos son esquemas nombrados que restringen el contenido que puede contener un montaje y determinan el patrón de URL que ocupa. Dos planos son integrados: `topic` (el artículo wiki estándar) y `guide` (documentos operacionales, renderizados con un cromo diferenciado y excluidos del índice de artículos principal). Los operadores podrán registrar planos adicionales — `regional-market`, `adr`, `changelog` y esquemas especializados similares — como complementos cuando la Fase 6 esté disponible.
+
+### Aislamiento por instancia y procedencia
 
 Cada instancia wiki lee sólo los montajes que declara su propio `knowledge.toml`. La configuración de montaje es por instancia, no estado de registro global. Cada artículo renderizado desde un montaje declarativo lleva metadatos de procedencia que identifican el repositorio fuente y la ruta, con enrutamiento de edición de vuelta al repositorio fuente canónico — manteniendo intacta la inversión de la fuente de verdad en toda la superficie federada.
 

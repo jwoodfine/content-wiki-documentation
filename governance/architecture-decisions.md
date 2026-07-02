@@ -28,6 +28,8 @@ Every file that enters the platform is classified by type before any processing 
 **ADR-10 — Every base-asset ledger entry requires a human checkpoint.**
 The platform's [[service-input|F12 input interface]] is the mandatory human-in-the-loop checkpoint for all base-asset ledger commits. No automated process can write a verified record to long-term storage without a human confirming the routing decision at the F12 gate. The design mirrors the control structure of a regulated clearing house: the platform can process, classify, and propose — but the commit belongs to an authorised human.
 
+### ADR-19 closes the commit loop
+
 **ADR-19 — No automated publishing to verified ledgers.**
 Automated processes are prohibited from publishing to the long-term storage ledgers. All verified records are committed only through a human-authenticated action at the F12 interface. The decision closes the loop between ADR-07 (classify first) and ADR-10 (human checkpoint): the classification proposes, the checkpoint confirms, and the commit to the permanent record requires the operator's intentional action. There is no back-channel path through which the system can record a fact without a human in the sequence.
 
@@ -40,6 +42,8 @@ The platform's data is modelled in three tiers. The first tier is raw base asset
 
 **ADR-06 — Compliance ledger separated from the intelligence pool.**
 The immutable compliance ledger — the [[service-email|service that handles inbound communications]] and regulated correspondence — is physically separated from the [[service-slm|self-healing intelligence pool]] that the platform uses to classify and link documents. The separation prevents a common failure mode in retrieval pipelines: when the compliance record and the search index share a data layer, an index update can silently alter what the compliance record appears to contain. Physical separation eliminates that risk by construction.
+
+### Console and proxy-path separation
 
 **ADR-11 — Console chassis separated from execution cartridges.**
 The operator console is divided into a presentation chassis — the UI shell that handles layout, navigation, and keyboard bindings — and a set of execution cartridges, each of which implements a specific console function. The chassis and cartridges can be deployed and updated independently. A change to the compliance-review cartridge does not require redeploying the presentation shell, and vice versa. This separation makes the console's individual functions auditable and replaceable without risk to the shell's stability.

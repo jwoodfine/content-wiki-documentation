@@ -24,9 +24,15 @@ El entorno de desarrollo de [[pointsav-overview|PointSav]] ejecuta servicios de 
 - Este esquema no es Kubernetes. No hay planificador, ni controlador de réplicas, ni malla de servicios — solo partición cgroup de systemd. Apropiado para un despliegue de nodo único con hasta aproximadamente 12 servicios.
 - La disciplina cgroup se mantiene cuando aumenta la escala. El patrón de drop-in `Slice=` por servicio es compatible con una orquestación multinodo más compleja.
 
+## Contención de recursos en un servidor compartido
+
 El entorno de desarrollo de [[pointsav-overview|PointSav]] ejecuta servicios de producción y sesiones de ingeniería interactivas en el mismo servidor Linux. Los servicios de la plataforma (el SLM local, [[doorman-protocol|Doorman]], el [[service-content|grafo de contenido]], el escritor del ledger y el corrector) comparten CPU y memoria con sesiones de compilación de múltiples operadores. Sin aislamiento de recursos, una compilación `cargo build` pesada en la sesión de un operador puede privar al servicio de inferencia justo cuando otro operador depende de él.
 
+## Pesos de CPU, techos de memoria y ordenación OOM
+
 Una pasada inicial de endurecimiento introdujo `foundry-services.slice` — una partición cgroup de systemd con `CPUWeight=200` y `MemoryHigh=11G` que contiene todos los `local-*.service`. Los slices de usuario predeterminados de systemd se sitúan en `CPUWeight=100`, por lo que bajo contención de CPU el grupo de servicios recibe el doble de peso del planificador en comparación con una shell interactiva. Los techos de memoria impiden que cualquier servicio fije más de aproximadamente 11 GiB en una VM de 16 GiB; con la ordenación `OOMScoreAdjust` (sshd −1000, local-fs −500, local-doorman −300, local-slm +500), el último recurso del kernel para liberar memoria prefiere matar servicios fáciles de reiniciar antes que el escritor del ledger WORM o la conexión SSH del operador.
+
+## Alcance de nodo único sin Kubernetes
 
 Este esquema no es orquestación en el sentido de Kubernetes — no hay planificador, ni controlador de réplicas, ni malla de servicios. systemd es suficiente. El patrón escala a aproximadamente una docena de servicios en una sola VM de GCE, la configuración de nodo único compacta que caracteriza un despliegue soberano mínimo. Más allá de esa escala, la arquitectura cambia — pero la disciplina cgroup se mantiene.
 

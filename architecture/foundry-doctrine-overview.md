@@ -38,6 +38,8 @@ The six pillars are the invariants of the architecture. They are not aspirationa
 
 **3. Unidirectional flow.** Software development always proceeds vendor → customer → deployments. No reverse direct writes. All cross-layer requests travel via a file-based mailbox.
 
+### Coordination and assurance invariants
+
 **4. Mailbox at every boundary.** Each role has an inbox and an outbox — plain text Markdown files, version-controlled, durable. The 2026 answer to multi-agent coordination is plain-text mailbox files, not a coordination daemon. Files travel with Git history; messages are auditable.
 
 **5. Self-describing artifacts.** Every directory worth talking to carries a `MANIFEST.md` that declares its origin, owner, lineage, and current state. A deployment instance is readable on its own, without reference to the session that created it.
@@ -58,6 +60,8 @@ Fifty-two claims constitute this structural commitment. The sovereign-SMB archit
 
 **[[mcp-substrate-protocol|MCP-as-Substrate-Protocol]].** Every Ring 1 and Ring 2 service exposes a Model Context Protocol server interface as its primary external contract. The [[doorman-protocol|Doorman]] is the MCP gateway. Customer-specific extensions plug in as additional MCP servers without modifying core services. MCP is the substrate-level wire contract for service composition.
 
+### Tenant bootstrap and customer ownership
+
 **[[seed-taxonomy-as-smb-bootstrap|Seed Taxonomy as SMB Bootstrap]].** Every tenant deployment is provisioned with a four-part seed taxonomy as the bootstrap of its knowledge graph: [[archetypes-and-chart-of-accounts|Archetypes (institutional role personas), Chart of Accounts]], Domains, and Themes. The taxonomy is compact, explainable, and customer-tunable from day one. Industry-specific seed packs provide starter taxonomies for first-day operation.
 
 **[[customer-owned-graph-ip|Customer-Owned Graph IP]].** The per-tenant knowledge graph is the customer's intellectual property. [[pointsav-overview|PointSav]] has no claim to aggregate or resell tenant graph data without explicit per-tenant opt-in. The graph exports in open format. Per-tenant LoRA weights are also the customer's property.
@@ -66,6 +70,8 @@ Fifty-two claims constitute this structural commitment. The sovereign-SMB archit
 
 **[[vertical-seed-packs-marketplace|Vertical Seed Packs Marketplace]].** Industry-specific seed packs are distributed as starter taxonomies for new tenant deployments: restaurant SMB shape, law firm shape, regional hospital shape, real estate shape, and others. Customers customize from the pack and may contribute refinements back to the marketplace.
 
+### Machine-first contracts and commercial flows
+
 **[[code-for-machines-first|Code-for-Machines First]].** Every inter-service contract, audit record, configuration, and ontology is machine-readable as a primary surface. Human-facing surfaces are skins on machine-first APIs — they consume the same MCP servers any other client would.
 
 **[[reverse-flow-substrate|Reverse-Flow Substrate]].** The same [[doorman-protocol|Doorman]] gateway and audit ledger that enforce inbound discipline also enforce outbound commercial flows: a data marketplace for customer data assets and an ad exchange for first-party audience inventory. Both flows are opt-in per tenant, disabled by default, and require per-record cryptographic provenance.
@@ -73,6 +79,8 @@ Fifty-two claims constitute this structural commitment. The sovereign-SMB archit
 **[[service-wallet-settlement|Service-Wallet Settlement]].** Marketplace and ad-exchange revenue accrues to a per-tenant internal accounting ledger. [[pointsav-overview|PointSav]]'s transaction fee is an accounting deduction at the time of incoming credit. The customer withdraws to their bank or cryptocurrency address on their own schedule. PointSav is never a custodial intermediary.
 
 **[[substrate-without-inference-base-case|Substrate-Without-Inference Base Case]].** The [[totebox-archive|Totebox Archive]] remains fully operational and freely transferable even when no inference tier is available. The deterministic substrate — [[worm-ledger-architecture|WORM ledger]], knowledge graph, ingest pipeline, TUI in deterministic-only mode — provides complete data sovereignty operations without any AI dependency.
+
+### Foundational claims from earlier versions
 
 Selected earlier claims of structural significance:
 

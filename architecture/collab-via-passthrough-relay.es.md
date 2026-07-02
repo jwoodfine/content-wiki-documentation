@@ -37,15 +37,23 @@ Herramientas como Etherpad y HackMD operan bajo un modelo de documento autoritat
 
 El diseño de relé de paso elimina ese segundo registro por completo. El servidor es un conducto de mensajes, no un almacén. Cuando un cliente Yjs envía un mensaje de actualización binario a `GET /ws/collab/{slug}`, el manejador Rust recibe los bytes en bruto y los difunde a todos los demás clientes de la misma sala de slug mediante `tokio::sync::broadcast`.[^3] El servidor nunca deserializa el protocolo Yjs; nunca construye un Y.Doc; nunca escribe nada en disco como efecto secundario de una operación de relé.
 
+### Registro de divulgación permanece en git
+
 Esto importa para la postura de divulgación. El registro de divulgación canónico en este sistema es el árbol git. Bajo el diseño de relé de paso, no existe ningún registro paralelo: el estado CRDT en curso no es parte del registro de divulgación por construcción, porque nunca se escribe en ningún lugar. El registro se cierra en el momento de `POST /edit`, no antes.
 
 ## Implementación en app-mediakit-knowledge
 
 El relé de colaboración se implementó en el commit `05f1dab` como `src/collab.rs`, completamente restringido por el indicador CLI `--enable-collab`. Cuando el indicador está ausente — configuración predeterminada y postura de producción actual en v0.1.29 — la ruta WebSocket no se registra en el enrutador axum, la variable de plantilla `window.WIKI_COLLAB_ENABLED` se establece en `false`, y el paquete JavaScript del lado del cliente nunca se carga.
 
+### Salas de difusión identificadas por slug
+
 El relé del lado del servidor se implementa mediante `tokio::sync::broadcast`. Cada slug obtiene su propio canal de difusión con una capacidad de búfer de 256 mensajes, creado en la primera conexión y almacenado en un `DashMap<String, broadcast::Sender<Bytes>>` en `AppState`.[^3] Cuando un cliente WebSocket envía un mensaje de actualización de Yjs, el manejador lee los bytes en bruto y llama a `sender.send(bytes)` — una sola línea que distribuye el mensaje a todos los demás receptores de ese canal. No hay dependencia del crate `yrs`: el servidor reenvía mensajes binarios del protocolo Yjs sin deserializarlos, por lo que el servidor no porta ningún estado de documento en ningún momento.
 
+### Paquete cliente y carga condicionada por indicador
+
 El paquete cliente `cm-collab.bundle.js` (aproximadamente 302 KB tal como fue entregado) está construido a partir de tres paquetes npm: `yjs`, `y-codemirror.next`[^2] e `y-websocket`, todos incluidos como artefacto precompilado en `static/vendor/`. El script de inicialización `static/saa-init.js` verifica `window.WIKI_COLLAB_ENABLED` en tiempo de carga; si el indicador es `false`, la importación del paquete de colaboración nunca se ejecuta. El editor CodeMirror se carga completamente en cualquier caso — la colaboración es aditiva a la superficie de edición, no un requisito previo.
+
+### Cobertura de pruebas del relé
 
 La cobertura de pruebas en el commit `05f1dab` agregó 7 pruebas (3 unitarias, 4 de integración) para elevar el total de 90 a 97. Las pruebas unitarias cubren la aceptación de conexiones WebSocket cuando se establece `--enable-collab`, la multiplexación correcta entre dos clientes en el mismo slug, el vaciado del búfer de 256 mensajes sin pánico, y la carga del paquete cliente solo cuando se establece el indicador. La cobertura no incluye la propiedad visual de presencia del cursor, que requiere un proceso de verificación manual con dos navegadores.
 
@@ -67,11 +75,15 @@ El estado CRDT en curso — la secuencia de mensajes de actualización de Yjs in
 
 Las ediciones guardadas ingresan al registro de divulgación a través de la misma ruta que todas las demás ediciones: `POST /edit/{slug}` envía el texto Markdown completo del documento, el servidor realiza un renombrado atómico del archivo, y el siguiente commit git captura esa instantánea. Desde la perspectiva de git, un guardado editado en colaboración es idéntico a un guardado de un solo autor. La unidad de divulgación es el estado del documento confirmado, no la descomposición de autoría de cómo se alcanzó ese estado.
 
+### Reversión no destructiva
+
 La ruta de reversión del indicador `--enable-collab` no es destructiva en ninguna capa, precisamente debido a este diseño. La superposición CRDT de colaboración es efímera por construcción; su eliminación al reiniciar el servicio no es un evento de pérdida de datos. Cualquier contenido guardado antes del reinicio existe en el árbol git y es completamente recuperable.
 
 ## Generalización más allá del wiki
 
 El relé de paso es un patrón de sustrato, no una característica específica del wiki. Cualquier servicio que desee semánticas de edición concurrente enfrenta la misma pregunta arquitectónica: ¿necesita la infraestructura de colaboración mantener el estado del documento en el servidor, o puede ese estado residir completamente en los clientes y en el almacenamiento canónico?
+
+### Aplicaciones candidatas en el sustrato de la plataforma
 
 **Revisión multiautor en la canalización de extracción.** El almacenamiento canónico para los resultados de extracción producidos por [[service-extraction]] son los registros estructurados producidos por combinadores de análisis deterministas. Si el servidor CRDT materializa correcciones parciales no confirmadas de vuelta al almacén estructurado, el patrón de relé de paso no aplicaría directamente sin una capa adaptadora. El patrón aplica en su forma más simple solo cuando el tipo de documento CRDT se corresponde limpiamente con el tipo de almacenamiento canónico.
 

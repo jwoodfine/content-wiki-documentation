@@ -26,6 +26,8 @@ keynote: false
 
 A lightweight Linux distribution is a Linux-based operating system designed to use significantly less RAM and processor capacity than full-featured Linux distributions. The defining characteristic is resource efficiency: the distribution is capable of running on hardware with constrained memory, limited CPU speed, or both — hardware that would be unable to run larger distributions without performance degradation.
 
+## Lightweight as a relative measure
+
 The concept of a lightweight distribution is not absolute but relative. What constitutes "lightweight" depends on the hardware generation under consideration and the workload being served. A distribution adequate for a 2005-era desktop might be considered heavy relative to the constrained environments of embedded computing. For practical reference, full-featured contemporary distributions such as Ubuntu with the Unity desktop environment require approximately 2 GB of RAM to run comfortably; lightweight distributions can operate with as little as 46 MB (Tiny Core Linux) or 24 MB (SliTaz) of RAM for interactive desktop use, and embedded distributions such as OpenWrt require only 32 MB of RAM for headless operation.
 
 ## Desktop environment as the primary weight factor
@@ -47,6 +49,8 @@ This observation has two practical consequences. First, a distribution that is "
 **OpenWrt** (2004) — A Linux distribution for embedded network devices, particularly home routers and SOHO network equipment. Requires 32 MB of RAM and fits within a 6 MB flash image. Headless (no GUI), managed via a web interface or SSH. Used as the foundation for custom router firmware.
 
 **Alpine Linux, antiX, CRUX, Damn Small Linux, Gentoo** (32 MB, lightest functional installation), GoboLinux, LXLE, Nanolinux (64 MB RAM, 19 MB image, 2015), Porteus (36 MB RAM, 260 MB, portable), Salix OS, Slax, TurnKey Linux, VectorLinux Light, Void Linux, and Zenwalk are among the distributions spanning the full spectrum of lightweight deployment scenarios.
+
+### Ubuntu-based and special-purpose variants
 
 **Lubuntu** (LXQt, Ubuntu-based) and **Xubuntu** (Xfce, Ubuntu-based) are lightweight variants of the mainstream Ubuntu distribution that maintain APT package management and Ubuntu software repositories while reducing hardware requirements to approximately 916 MB (Lubuntu) and 1 GB (Xubuntu) of RAM respectively.
 

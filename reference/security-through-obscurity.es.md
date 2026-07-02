@@ -32,6 +32,8 @@ El consenso de la comunidad de seguridad, codificado en el principio de Kerckhof
 
 **La controversia de la cerradura de Hobbs (1851).** En la Gran Exposición de 1851 en Londres, el cerrajero estadounidense Alfred Charles Hobbs abrió públicamente lo que entonces se consideraban las cerraduras más seguras disponibles — la cerradura Bramah y la cerradura detectora Chubb — demostrando que su seguridad descansaba en parte en la oscuridad de sus mecanismos más que en la resistencia inherente a la apertura no autorizada.
 
+### Principio de Kerckhoffs y máxima de Shannon
+
 **El principio de Kerckhoffs (1883).** Auguste Kerckhoffs, criptógrafo holandés, publicó un artículo en el *Journal des sciences militaires* en el que declaró que "un criptosistema debe ser seguro incluso si todo lo relacionado con el sistema, excepto la clave, es de conocimiento público". Este principio establece la premisa fundamental del diseño criptográfico moderno: la seguridad de un sistema criptográfico debe derivarse enteramente del secreto de la clave, no del secreto del algoritmo.
 
 **La máxima de Shannon (1949).** Claude Shannon reformuló el principio de Kerckhoffs como "el enemigo conoce el sistema" en su artículo de 1949 "Communication Theory of Secrecy Systems". La formulación de Shannon captura la realidad operativa del diseño de seguridad: un diseñador de sistemas debe asumir que los adversarios eventualmente aprenderán el diseño del sistema que se está protegiendo.

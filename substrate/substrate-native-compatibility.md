@@ -21,6 +21,8 @@ cites:
 
 The PointSav wiki at `documentation.pointsav.com` provides structural compatibility with MediaWiki's reader-facing conventions — URL patterns, wikilink syntax, footnote syntax — while deliberately declining to replicate MediaWiki's internal API surface. Every interface the substrate does not replicate is a [[compliance-and-continuous-disclosure|compliance obligation]] it does not assume.
 
+## Cost and benefit of declining the shim
+
 That decision has a concrete cost and a concrete benefit. The cost: contributors migrating automation workflows from MediaWiki-compatible tools re-implement against new interfaces. The benefit: every Action API endpoint MediaWiki ships, deprecates, or modifies would have generated a maintenance event; the platform has no control over that velocity, and every public interface the platform exposes is a continuous-disclosure surface under Canadian securities law (National Instrument 51-102 and OSC Staff Notice 51-721). Declining the shim means the wiki's disclosure commitments are bounded to what the substrate actually provides.
 
 The result is a wiki with the reader and integrator ecosystem reach of a MediaWiki-replacement — resolving wikilinks, serving `sitemap.xml`, accepting Wikipedia-style markup — and a maintenance surface that scales with the [[app-mediakit-knowledge|platform's own velocity]], not MediaWiki's.
@@ -28,6 +30,8 @@ The result is a wiki with the reader and integrator ecosystem reach of a MediaWi
 ## The choice
 
 The PointSav engineering wiki at `documentation.pointsav.com` is a substrate-native wiki. It accepts a one-shot MediaWiki XML import, serves URLs in MediaWiki's familiar `/wiki/{slug}` shape, accepts Wikipedia-style `[[wikilink]]` and `[^footnote]` syntax, and stops there. It does not implement MediaWiki's Action API, does not support MediaWiki templates, does not run a bot framework compatible with pywikibot, and does not provide a write surface that mimics MediaWiki's REST endpoints.
+
+## Structural compatibility versus interface mimicry
 
 The core architectural distinction: when an existing platform's role is substituted by the substrate, the substrate replicates *structural compatibility* — the surfaces a reader or external integrator encounters — without replicating *interface mimicry* — the API shape an internal-system integration would consume. The distinction is load-bearing.
 
@@ -39,9 +43,15 @@ The MediaWiki ecosystem is real. Approximately 1,500 extensions, hundreds of tho
 
 But the moat has two parts, and the parts have different costs to participate in.
 
+### Reader and integrator conventions
+
 The first part is **reader and external-integrator structural compatibility**: a reader who knows Wikipedia's URL pattern and markup can navigate and edit the wiki without retraining; an external system that ingests `sitemap.xml` or follows wikilinks discovers the corpus without bespoke adapters. This part is low-cost to provide — `/wiki/{slug}`, `[[wikilink]]`, and `[^1]` are conventions the substrate adopts because they are useful, not mimicry.
 
+### Interface mimicry and its costs
+
 The second part is **internal-system interface mimicry**: extensions that read and write through the Action API, bots that authenticate against MediaWiki's login flow, templates that expand server-side using the MediaWiki parser. This part is high-cost to provide — every API endpoint mimicked is an interface that must be maintained against MediaWiki's evolution, hardened against MediaWiki's known attack surfaces, and audited under whatever compliance posture the substrate has committed to.
+
+### Cost calculus for declining the shim
 
 The substrate's choice is to participate in the first part fully and decline the second part deliberately. The cost calculus favours [[citation-substrate|decline]]:
 
@@ -108,6 +118,8 @@ The motivation: a `[citation-id]` in an article is a structured reference that t
 The deeper reason the substrate-native posture wins is that the wiki engine's compatibility-surface choices are continuous-disclosure choices in disguise. Every interface the substrate exposes to the public commits the substrate to a disclosure obligation under applicable continuous-disclosure requirements. What the substrate does not expose, it does not need to disclose about.
 
 A few concrete cases:
+
+### Revision, render, and edit-path examples
 
 An Action API shim returning `?action=query&prop=revisions` would have committed the substrate to a continuous-disclosure representation of every article's revision history. The substrate already commits to this through its git history (every edit is a signed commit, every commit is a published claim). But a parallel Action API representation would have introduced a second canonical record that needs to stay in sync with the git history; any drift is a disclosure failure. The substrate declines the shim and keeps git canonical.
 

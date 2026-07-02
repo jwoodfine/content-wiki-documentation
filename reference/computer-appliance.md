@@ -26,6 +26,8 @@ keynote: false
 
 A computer appliance is a computing device in which hardware and software have been designed and engineered together to perform a specific, well-defined computing function. Unlike a general-purpose computer — which can be configured, reconfigured, and repurposed across many functions — a computer appliance is designed for one task, delivered with the software for that task pre-installed, and typically cannot be repurposed for other functions without replacing it entirely.
 
+## Closed and sealed design
+
 The computer appliance is described as "closed and sealed": the software is not user-installable or user-modifiable in the manner of general-purpose operating systems. The user of a computer appliance interacts with it through the specific interface its manufacturer provides — a web-based management interface, a dedicated hardware panel, or a defined network protocol — rather than through a general-purpose command line or graphical environment. This constraint is a design feature: it reduces operational complexity, prevents misconfiguration, and allows the manufacturer to guarantee specific behavior and performance characteristics.
 
 The computer appliance concept is the hardware analogue of the software appliance or virtual appliance — the same design philosophy applied to physical rather than virtualized infrastructure. A hardware firewall, a purpose-built network-attached storage device, and an industrial IoT gateway are all computer appliances in the broad sense: hardware and software co-designed for a function, delivered as a unit, managed through a constrained interface.
@@ -39,6 +41,8 @@ The computer appliance concept is the hardware analogue of the software applianc
 **Backup appliances** — dedicated hardware for backup, deduplication, and data recovery. Backup appliances combine large storage capacity with deduplication engines and replication software, managed through proprietary interfaces.
 
 **Security appliances** — hardware for security functions: intrusion detection and prevention systems (IDS/IPS), email security gateways, web security gateways, and unified threat management (UTM) devices. Security appliances are designed for high-throughput inspection of network traffic and require purpose-built hardware to achieve the performance levels required for production use.
+
+### Industrial and consumer appliances
 
 **Industrial IoT and MES gateway appliances** — ruggedized computing devices for industrial environments: manufacturing execution system (MES) gateways, SCADA communication devices, and [[edge-computing|edge computing]] nodes for industrial control systems. These devices bridge operational technology (OT) networks — the control systems running industrial equipment — with information technology (IT) networks. They are designed for extended temperature ranges, vibration tolerance, and the long operational lifetimes characteristic of industrial deployments.
 

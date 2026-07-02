@@ -52,6 +52,8 @@ Four structural properties make these workloads suited to service-slm over third
 
 **Latency.** Sysadmin work is high-frequency and low-latency in character. Diagnosing a stalled spool-daemon, reconciling an audit-row mismatch, or walking through a 9-step provisioning sequence requires a responsive assistant. Tier B (OLMo 3.1 32B Think on A100 80GB) delivers approximately 100–150 tokens per second at modest batch sizes [olmo3-allenai]. A Tier C external-API round-trip adds 5–15 seconds per call including network and provider queuing. On a multi-step provisioning walkthrough, that latency difference is material.
 
+### Cost and personalisation at fleet scale
+
 **Cost at volume.** The planned amortised cost of Tier B on a preemptible A100 with idle-shutdown lands near $0.0001 per typical sysadmin request once the instance is shared across multiple customer deployments. Tier C equivalents at full prompt context exceed $0.05 per request. At sustained operational volumes — thousands of sysadmin queries per day across an active fleet — the differential compounds. [ni-51-102] [osc-sn-51-721] *Forward-looking cost figures reflect planned substrate economics; actual costs may differ based on model, provider pricing, and prompt size.*
 
 **Personalisation.** Per-tenant LoRA adapters trained on each customer's specific operational patterns — the actual error states they encounter, the command shapes they prefer, the glossary terms they use — make service-slm a more accurate assistant for that customer than a generic inference service can be at any scale. The structural basis for this is that the customer's data and interaction history stay within the customer's substrate, available for training, without any sharing or external transmission.
@@ -78,13 +80,19 @@ Each new task-type starts at `review` stage. Promotion to `spot-check` requires 
 
 ## The four-stage training pipeline
 
+### Capture and verdict signing
+
 **Stage 1 — Capture.** Every shadow brief lands a corpus tuple at `stage_at_capture: review`, `verdict: null`. Capture is automatic on every commit's post-commit hook via the [[apprenticeship-substrate|Brief Queue Substrate]]. No operator action; no additional compute. This stage is operational.
 
 **Stage 2 — Promote via signed verdict.** A senior identity — Master, Root, or operator at the chat surface — reviews captured tuples and signs verdicts using `ssh-keygen -Y sign -n apprenticeship-verdict-v1`. Verdict outcomes: Approve, Refine (producing a DPO pair), Reject, or Defer to Tier C. A weekly batch at session end is the sustainable cadence; per-commit signing does not scale. Signing is local cryptographic operation: zero compute cost. Verification uses the `identity/allowed_signers` file.
 
+### Training and adapter composition
+
 **Stage 3 — Per-cluster LoRA training cycle.** When a task-type's corpus crosses 50 verdict-signed tuples, the trainer is triggered. Initial cycle runs CPU-only on the workspace VM (zero cost; informs Phase 1 scope). Production cycles move to Tier B once the Yo-Yo GPU instance is provisioned (planned cost: $1–3 per training run, hours of wall time) [olmo3-allenai]. LoRA rank 16–32, targeting attention and feed-forward layers. The trained adapter lands at `data/adapters/<task-type>-<cluster>-<tenant>-v0.1.lora` and is SSH-signed before deployment. *Training timeline and cost projections are planned targets, subject to corpus accumulation rate, hardware availability, and operator review. [ni-51-102] [osc-sn-51-721]*
 
 **Stage 4 — Multi-adapter composition at request time.** The Doorman composes up to three adapters per request: `base ⊕ engineering-pointsav ⊕ cluster-<name>` or `base ⊕ apprenticeship-pointsav ⊕ tenant-<name>`. Tier B vLLM Multi-LoRA serves the composition [vllm-multi-lora] [s-lora-2024] [lorax-predibase]. Every request's audit-ledger entry records the composed adapter set, making the influence of each adapter traceable.
+
+### Beyond stage 4 — continued pretraining
 
 Stage 5 — continued pretraining into a PointSav-OLMo base — is a long-horizon trajectory planned for a future platform milestone, contingent on corpus accumulation crossing 50–100B tokens across all tenants. This is an intended capability; actual timeline depends on corpus growth rate and operational conditions [olmo3-allenai]. [ni-51-102] [osc-sn-51-721]
 

@@ -28,15 +28,21 @@ La cola es cuatro directorios organizados como una máquina de estados para arch
 - **`queue-done/`** — después de que el proceso de vaciado añade exitosamente el evento al archivo JSONL del corpus, mueve el archivo aquí. Los archivos en `queue-done/` son seguros para archivar o eliminar periódicamente.
 - **`queue-poison/`** — los archivos que no pueden parsearse, fallan en la validación del esquema o agotan un límite de reintentos configurable se mueven aquí para inspección manual. Los archivos venenosos no bloquean el resto de la cola.
 
+### Nombres de archivo de eventos y visibilidad en disco
+
 Cada archivo en la cola es un único evento JSONL serializado en disco. Los nombres de archivo se construyen a partir de una marca de tiempo más un sufijo aleatorio para garantizar unicidad entre escritores concurrentes sin requerir coordinación. La estructura de cuatro directorios hace visible el estado de la cola de un vistazo usando herramientas estándar del sistema de archivos — no se requiere ningún daemon para inspeccionarla.
 
 ## Qué habilita la cola
 
 El Sustrato de Cola de Briefs ofrece cinco propiedades operativas de las que depende la plataforma:
 
+### Tolerancia a apagados y apropiaciones
+
 **Tolerancia al apagado inactivo de Yo-Yo.** El [[yoyo-compute-substrate|nivel de cómputo Yo-Yo]] (OLMo 3.1 32B Think en GPU en ráfaga) se apaga tras un período de inactividad configurable para evitar facturación innecesaria. Sin la cola, cualquier evento generado durante una sesión Yo-Yo tendría que escribirse sincrónicamente en el corpus antes del apagado — acoplando el bucle de inferencia del SLM a la E/S de disco y añadiendo latencia a cada llamada de inferencia. Con la cola, el bucle de inferencia escribe en `queue/` (una escritura local rápida) y el proceso de vaciado maneja la persistencia del corpus de forma independiente. El apagado puede proceder en cuanto se complete la inferencia; no hay escrituras del corpus en progreso.
 
 **Tolerancia a la apropiación de instancias spot.** Las instancias spot y apropiables en la nube pueden ser recuperadas con aviso mínimo. Los eventos que residen en `queue/` o `queue-in-flight/` sobreviven a la apropiación porque el directorio de la cola está en almacenamiento persistente, no en el almacenamiento efímero local de la instancia. Cuando una instancia de reemplazo arranca, el proceso de vaciado retoma desde la última posición comprometida.
+
+### Simplificación del pipeline y continuidad del corpus
 
 **Simplificación del pipeline de captura-edición.** El patrón anterior requería que el pipeline de captura escribiera directamente en los archivos JSONL del corpus durante la sesión editorial, lo que creaba dependencias de ordenación entre la lógica de enrutamiento de auditoría del Doorman y la posición de adición del archivo del corpus. La cola elimina esa dependencia: el Doorman escribe un registro de evento en `queue/` y retorna inmediatamente; el proceso de vaciado serializa las adiciones al corpus en orden de llegada sin bloquear la ruta de inferencia.
 
@@ -54,6 +60,8 @@ La cola preserva la corrección bajo procesos de vaciado concurrentes y fallos d
 4. En caso de éxito, renombra de `queue-in-flight/<archivo>` a `queue-done/<archivo>`.
 5. En caso de fallo (error de parseo, fallo de validación del esquema o agotamiento de reintentos), renombra a `queue-poison/<archivo>`.
 
+### Recuperación tras fallos y entrega al menos una vez
+
 Al arrancar, el proceso de vaciado escanea `queue-in-flight/` en busca de archivos dejados por una instancia anterior que haya fallado. Reprocesa esos archivos antes de recoger nuevos de `queue/`. Esto garantiza la entrega al menos una vez: un evento puede añadirse al corpus más de una vez si el proceso de vaciado falla entre la adición al corpus y el renombrado a `queue-done/`. Los consumidores del corpus deduplickan por ID de evento cuando la idempotencia importa.
 
 El patrón de arrendamiento no requiere un viaje de ida y vuelta por la red, un daemon de bloqueo ni un broker de mensajes. Solo requiere que los cuatro directorios compartan un sistema de archivos donde `rename()` sea atómico — una propiedad garantizada por todo sistema de archivos local conforme a POSIX y por la mayoría de los sistemas de archivos de red cuando el origen y el destino están en el mismo montaje.
@@ -64,9 +72,13 @@ El Sustrato de Cola de Briefs almacena eventos como archivos JSONL en un sistema
 
 Los brokers de mensajes como NATS JetStream o Redis Streams ofrecen sólidas garantías de durabilidad y una semántica rica de grupos de consumidores. También introducen una dependencia de red persistente: el productor no puede escribir si el broker no es alcanzable, y el consumidor no puede leer si el broker ha perdido su estado. Para un espacio de trabajo de un solo inquilino donde el productor de la cola, el consumidor de la cola y el almacenamiento del corpus están todos en la misma máquina o en el mismo volumen persistente en la nube, el viaje de ida y vuelta por la red añade latencia y un modo de fallo sin añadir una capacidad que la plataforma necesite a esta escala.
 
+### Inspeccionabilidad en texto plano
+
 Los archivos JSONL tienen además una ventaja para este caso de uso: son directamente inspeccionables. Un operador que investigue una anomalía en el corpus puede leer un archivo en `queue-poison/` con cualquier editor de texto. Una entrada de un broker de mensajes requiere la propia interfaz de consulta del broker. La distribución de cuatro directorios hace observable la profundidad de la cola, el recuento en vuelo y el recuento de archivos venenosos con una única invocación de `find` o `ls -l` — no se requiere ningún panel de control del broker.
 
 La elección de archivos JSONL también se alinea con el principio de diseño de solo-texto-plano de la plataforma. El corpus en sí mismo es JSONL; el formato de carga útil de la cola coincide con el formato del corpus; el único trabajo del proceso de vaciado es mover eventos de un contexto JSONL (archivo de cola) a otro (archivo de corpus). Toda la ruta es auditable como texto plano sin estado binario.
+
+### Camino de escalado más allá de un nodo
 
 Cuando la plataforma escale a productores de corpus de múltiples nodos — un estado futuro planificado — el directorio de la cola puede colocarse en un sistema de archivos de red compartido (NFS, Cloud Filestore o equivalente) y la mecánica de arrendamiento sigue siendo válida en montajes conformes a POSIX. Alternativamente, ese estado futuro puede introducir un broker de mensajes como una capa de velocidad mientras se retiene el formato de corpus JSONL. La elección permanece abierta y no está descartada por el diseño actual.
 

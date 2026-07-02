@@ -53,7 +53,11 @@ La secuencia de arranque impone una cadena de dependencias estricta. watchdog-pd
 
 Tras alcanzar un estado saludable el PD service-fs, arranca network-pd. Este posee la capacidad del dispositivo VirtIO-net y enruta todo el tráfico HTTP para los servicios del Anillo 2. Los servicios del Anillo 2 no pueden exponer una superficie HTTP hasta que network-pd esté activo, por lo que el orden es, de nuevo, estructural y no meramente orientativo.
 
+### Orden de arranque de los servicios del Anillo 2
+
 Los cuatro servicios del Anillo 2 — service-content, service-people, service-slm y service-extraction — arrancan en orden de prioridad descendente. service-content (DataGraph, :9081) arranca antes que service-people porque este último depende del DataGraph para la resolución de entidades. service-slm (Doorman, :9080) arranca después de service-content porque Doorman utiliza el DataGraph para enrutar las solicitudes de inferencia. service-extraction (la canalización CORPUS) arranca en último lugar porque es un proceso en segundo plano que alimenta el DataGraph a lo largo del tiempo; no tiene ninguna dependencia crítica en cuanto a latencia que espere su señal de inicio.
+
+### Cumplimiento en las vías de desarrollo y nativa
 
 El script de shell `os-totebox/scripts/start-stack.sh` implementa este orden para la vía de desarrollo (std/Linux, fondo de compatibilidad de la Fase H0). En la vía nativa seL4, el planificador de PD impone el mismo orden a nivel de capacidades — un PD no puede recibir una notificación de inicio de moonshot-sel4-vmm hasta que sus dependencias declaradas hayan enviado una señal de disponibilidad.
 
@@ -61,7 +65,11 @@ El script de shell `os-totebox/scripts/start-stack.sh` implementa este orden par
 
 La propiedad de seguridad crítica del diseño es geométrica: un PD service-slm comprometido no puede alcanzar el PD service-fs, independientemente del código que se ejecute dentro de service-slm. Esto no es una afirmación de política en tiempo de ejecución. El núcleo seL4 impone la seguridad de tipos de capacidades en cada invocación, y las pruebas Isabelle/HOL en vendor-sel4-kernel (BSD-2-Clause, seL4 Foundation, para AArch64 y RISC-V 64 a partir de Microkit 2.2.0, marzo de 2026) verifican formalmente que ninguna ruta de invocación elude este mecanismo.
 
+### Derivación de la capacidad del dispositivo de bloque
+
 La ruta de derivación es lo que importa. El PD service-slm no posee ninguna capacidad cuya cadena de derivación conduzca al extremo del dispositivo de bloque. network-pd enruta HTTP para service-slm pero no posee capacidad de dispositivo de bloque. service-extraction posee una capacidad de escritura circunscrita al canal del directorio de descarga del PD service-fs — no puede direccionar el dispositivo de bloque directamente. La única entidad del sistema que posee una capacidad de dispositivo de bloque es el PD service-fs, y esa capacidad se concede en `os-totebox.toml` y es verificada por moonshot-toolkit antes de ensamblar la imagen.
+
+### Riesgo residual de canal lateral
 
 Una limitación es aplicable: la prueba de seL4 cubre el confinamiento de la ruta de invocación, pero no cubre los ataques por canal lateral a través de DRAM física compartida o líneas de caché compartidas. Un despliegue en hardware con zonas DMA físicas separadas por PD eliminaría ese riesgo residual. Esa configuración de hardware es un objetivo planificado para la Fase H2 y no forma parte del hito de arranque de desarrollo QEMU de la Fase H1.
 
@@ -78,6 +86,8 @@ os-totebox es una de las superficies de un despliegue de tres binarios:
 - **os-console** es la superficie de terminal de operador (TUI, cartuchos app-console-*). Transmite las solicitudes de inferencia a Doorman, pero no puede eludir los límites de capacidad de os-totebox.
 - **os-totebox** es el nivel de persistencia de datos. Es la única superficie que posee capacidades de dispositivo de bloque WORM y firma los puntos de control del registro.
 - **os-orchestration** es el nivel de agregación sin estado. Coordina la inferencia de GPU de Nivel B a través del agente Yo-Yo (:9180), pero nunca accede directamente al registro WORM.
+
+### Límites de inferencia y del registro
 
 La inferencia en os-totebox es exclusivamente de Nivel A — OLMo 7B local a través de Doorman (:9080). Los Niveles B (agente GPU) y C (API externa) se enrutan a través del crate app-orchestration-slm de [[os-orchestration]]. Este límite queda impuesto por el grafo de capacidades de PD: el PD service-slm en os-totebox posee una capacidad IPC únicamente hacia el motor OLMo local. No posee ninguna capacidad que alcance un extremo de red externo.
 

@@ -34,7 +34,11 @@ Tools such as Etherpad and HackMD operate on a server-authoritative document mod
 
 The passthrough design eliminates that second record entirely. The server is a message conduit, not a store. When a Yjs client sends a binary update message to `GET /ws/collab/{slug}`, the Rust handler receives the raw bytes from the WebSocket and broadcasts them to all other clients in the same slug room via `tokio::sync::broadcast`.[^3] The server never deserialises the Yjs protocol; it never constructs a Y.Doc; it never writes anything to disk as a side effect of a relay operation. The only state of the document the server knows is whatever the client sends through `POST /edit` — the HTTP save path.
 
+### Disclosure record stays in git
+
 This matters for the disclosure posture. The canonical disclosure record in this system is the git tree: every article's content history is a sequence of signed commits, and that sequence is what a regulatory audit produces. A server-authoritative CRDT store would exist in parallel with that sequence, would not be signed, and would represent content states that never appeared in git. Under the passthrough design, no such parallel record exists: in-flight CRDT state is definitionally not part of the disclosure record because it is never written anywhere. The record closes at `POST /edit` time.
+
+### Late joiners and the 256-message buffer
 
 The 256-message lag buffer configured on each `tokio::sync::broadcast` channel addresses the one race this design must handle: a client that joins a collab session after other editors have already made changes will not have received those earlier Yjs update messages. Because Yjs CRDTs are convergent, a client that receives all prior update messages in any order will arrive at the same document state. The 256-message buffer ensures a late joiner can catch up on recent activity without the server needing to materialise or store the full document state. If the buffer fills before a late joiner connects, Yjs's sync protocol handles the gap through its awareness and state-vector exchange mechanism on connection open — the server's job remains forwarding, not resolving.
 
@@ -42,13 +46,19 @@ The 256-message lag buffer configured on each `tokio::sync::broadcast` channel a
 
 The collab relay shipped in commit `05f1dab` as `src/collab.rs`, gated entirely behind the `--enable-collab` CLI flag. When the flag is absent — which is the default and the current production posture as of v0.1.29 — the WebSocket route `GET /ws/collab/{slug}` is not registered in the axum router, the `window.WIKI_COLLAB_ENABLED` template variable is set to `false`, and the client-side JavaScript bundle never loads. Zero collab code paths execute in the default-off configuration.
 
+### Broadcast rooms keyed by slug
+
 The server-side relay is implemented using `tokio::sync::broadcast`, the standard Tokio multi-producer multi-consumer channel. Each slug gets its own broadcast channel with a buffer capacity of 256 messages, created on first connection and stored in a `DashMap<String, broadcast::Sender<Bytes>>` held in `AppState`. When a WebSocket client sends a Yjs update message, the handler reads the raw bytes and calls `sender.send(bytes)` — a single line that fans the message out to all other receivers on that channel. There is no `yrs` crate dependency: the `yrs` Rust port of Yjs was specified in the original Step 7 brief but was not used in the as-shipped implementation. The server relays raw Yjs binary protocol messages without deserialising them, which means the server carries no document state at any point.
 
 The WebSocket upgrade uses axum's built-in WS support (`axum::extract::ws`). The route handler upgrades the HTTP connection, spawns a task per client that loops on incoming WebSocket frames and rebroadcasts each, and removes the client from the room's receiver set on disconnect. If the last client disconnects, the broadcast channel's receiver count drops to zero; the `DashMap` entry persists but holds an empty channel, ready for the next connection. No disk write occurs on last-client-disconnect — a deliberate departure from the original Phase 2 plan, which called for snapshotting the Y.Doc to disk on last disconnect. The passthrough design makes that snapshot impossible because the server never holds the Y.Doc.
 
+### Client bundle and flag-gated loading
+
 The client bundle `cm-collab.bundle.js` (approximately 302 KB as shipped) is built from three npm packages vendored in `vendor-js/`: `yjs`, `y-codemirror.next`[^2], and `y-websocket`. The bundle is committed to `static/vendor/` as a pre-built artefact, so no npm toolchain is required at runtime or in the Rust build path. The `static/saa-init.js` initialisation script checks `window.WIKI_COLLAB_ENABLED` at load time; if the flag is `false`, the import of `cm-collab.bundle.js` is never executed. The CodeMirror editor loads fully in either case — collab is additive to the editing surface, not a prerequisite.
 
 The `src/server.rs` template layer injects the flag: when `--enable-collab` is set, the HTML template for `/edit/{slug}` includes `<script>window.WIKI_COLLAB_ENABLED = true;</script>` immediately before the editor initialisation script tag. When the flag is absent, that script tag is omitted entirely rather than set to `false` — preventing the JavaScript engine from evaluating the collab code path during bundle parse.
+
+### Relay test coverage
 
 Test coverage at commit `05f1dab` added 7 tests (3 unit, 4 integration) to bring the total from 90 to 97. The unit tests cover: the WebSocket route accepts a connection when `--enable-collab` is set; broadcast rooms multiplex correctly across two clients on the same slug; the 256-message buffer drains to completion without panic; and the client bundle loads (HTTP 200 for `cm-collab.bundle.js`) only when the flag is set. The integration tests cover flag-gated script-injection behaviour in rendered HTML. The suite does not cover the visual cursor-presence property — that requires a two-client browser smoke with DOM inspection, documented separately as a manual verification step.
 
@@ -72,11 +82,15 @@ In-flight CRDT state — the sequence of Yjs update messages exchanged between c
 
 Saved edits enter the disclosure record through the same path as all other edits: `POST /edit/{slug}` sends the full Markdown text of the document, the server performs an atomic file rename, and the next git commit in the sequence captures that snapshot. From git's perspective, a collab-edited save is identical to a single-author save. The commit records what the document contained at save time; it does not record who typed which characters during the collab session. The disclosure unit is the committed document state, not the authorship decomposition of how that state was reached.
 
+### Non-destructive rollback
+
 The `--enable-collab` flag's rollback path is non-destructive at every layer. Removing the flag from the systemd unit's `ExecStart` line, running `systemctl daemon-reload` and `systemctl restart`, returns the service to default-off posture without losing any data — because no data was ever held on the server side. The collab CRDT overlay is ephemeral by construction; its removal on service restart is not a data loss event. Any content that was saved before the restart exists in the git tree and is fully recoverable; any content that was in-flight and not saved before the restart is lost in exactly the same way as unsaved content in a single-author editor session.
 
 ## Generalising beyond the wiki
 
 The passthrough relay is a substrate pattern, not a wiki-specific feature. Any service that wants concurrent editing semantics faces the same architectural question: does the collab infrastructure need to hold document state on the server, or can that state live entirely on the clients and in canonical storage? The answer depends on what the canonical storage is and whether a CRDT server sitting between the clients and that storage would compete with it for authority. Three concrete candidates inside the platform substrate illustrate the generalisation:
+
+### Candidate applications in the platform substrate
 
 **Multi-author review in the extraction pipeline.** The canonical storage for extraction results is the deterministic parser-combinator output produced by [[service-extraction]] written to structured records, not a live editable document. Multi-author review — multiple people annotating or correcting an extraction result — would naturally benefit from presence awareness and live conflict resolution. The framing question: would a stateful CRDT server compete with the structured record store for authority? If the CRDT server materialises partial corrections not yet committed back to the structured store, the answer is yes — and the passthrough design would not directly apply without an adapter layer that serialises CRDT state to the canonical structure format on save. The passthrough pattern applies in its simplest form only when the CRDT document type maps cleanly to the canonical storage type.
 

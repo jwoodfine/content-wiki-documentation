@@ -35,6 +35,8 @@ When the first CPT cycle completes, the model is intended to demonstrate depth i
 - **Code generation aligned to the platform** — Rust workspace conventions, Ring 1/2/3 service boundaries, and the three-tier compute routing interface.
 - **Federated training contribution** — the mechanics by which a customer's contributing-tier subscription routes anonymized trajectory data back into the corpus, compounding the model's value over each CPT cycle.
 
+### What it is not intended to be
+
 What PointSav-LLM is not intended to be is equally important. It is not planned to compete with broad-capability frontier models on general knowledge, creative breadth, or multi-domain reasoning. Customers whose queries require that breadth will continue routing those requests through Tier C external API calls (Anthropic Claude, Google Gemini) via the [[doorman-protocol|Doorman]]'s classification logic. PointSav-LLM is intended to serve the narrow slice of queries where specialist depth and per-token economics matter more than frontier-model breadth.
 
 The OLMo 3 base (Apache 2.0; Open Data Commons for training data) means the base weights are open. Customer-portable adapters are planned to preserve tenancy sovereignty — a customer who leaves the platform is intended to retain the right to carry their contributed data and any tenant-specific fine-tune they funded. This is a structural property of the planned architecture, not a contractual carve-out.
@@ -70,6 +72,8 @@ PointSav-LLM is intended to carry explicit confidence signalling. When the model
 
 The customer's Doorman, on receiving this envelope, is intended to surface an escalation prompt to the end user — for example, "Ask a PointSav engineer." The customer does not see the raw confidence score; they see a product-level prompt tuned to their configured language and escalation SLA.
 
+### Escalation events as training data
+
 Escalation events are planned to become training data. A resolved escalation — where a human engineer provides the correct answer — is intended to generate a Direct Preference Optimization (DPO) pair that feeds back into the next CPT cycle via the apprenticeship-substrate pipeline. The intended tiering:
 
 | Tier | Planned handling | Target query share (planned) |
@@ -87,6 +91,8 @@ All percentages are planned targets, not current operational data.
 The customer-service and enterprise-knowledge AI market in 2026 is served primarily by fully-managed, closed-source products structured for large enterprise buyers. Minimum contract commitments, per-seat pricing floors, and data-residency terms designed for multi-thousand-person organizations make these products structurally inaccessible to most small and medium-sized businesses.
 
 SMBs with 10–200 employees that require AI assistance across their archive operations, editorial workflows, or customer-service function face two options under the current market structure: absorb pricing aimed at organizations an order of magnitude larger, or operate without AI assistance. A third option — self-hosting open-source general-purpose models — requires ML infrastructure expertise that most SMBs do not have.
+
+### Serving the SMB gap
 
 PointSav-LLM is intended to serve this gap. The planned architecture routes specialist queries through a vendor-maintained model without requiring customers to provision GPU infrastructure, manage model updates, or negotiate enterprise-tier contracts. The per-token pricing model, when published, is intended to be accessible at SMB contract sizes. The open OLMo 3 base and the Designed-for-Breakout Tenancy principle mean customers are not structurally locked in.
 

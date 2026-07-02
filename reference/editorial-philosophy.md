@@ -35,6 +35,8 @@ Every article should pass one test:
 
 A fact-retrieval article answers "what is X." An encyclopedic article answers "what is X, why does it matter, how does it work, and how does it connect to Y and Z." The second article is a learning resource. The first is a glossary entry.
 
+### Worked examples across the three wikis
+
 This test applies to all three wikis:
 
 - **Corporate:** After reading `direct-hold-structures`, a banker understands why Woodfine uses this structure, what it means for capital allocation, and how it differs from pooled structures — not just what the term means.
@@ -53,6 +55,8 @@ The wiki articles were authored before the DataGraph was fully populated. The Da
 - **Why the institutional reader should care.** The consequence framing — the sentence that connects the technical mechanism to the business outcome — is often the piece that articles written for an engineering audience omit. "The routing logic is operator-controlled" is a fact. "A request that resolves locally never leaves the customer's infrastructure — and never appears on a cloud billing statement" is a consequence that builds understanding.
 - **Domain and theme context.** An article that explains what a service does without explaining where it sits in the platform architecture leaves the reader with a fact and no map. Domain and theme connections are how the reader builds the map.
 
+### Register and substance as the two inputs
+
 **The two inputs to every article:**
 
 | Input | Source | What it provides |
@@ -67,6 +71,8 @@ The language tokens govern register. The DataGraph governs substance. An article
 The PointSav wikis improve continuously through a monthly content sweep. Each sweep runs against an updated DataGraph — refined by on-demand GPU inference passes that run daily and external API passes that run weekly or monthly as new source data accumulates. Each sweep takes every article one level higher in quality.
 
 The mechanism: the inference system generates a new draft of each article against the current DataGraph. Editorial review produces a verdict — accept, refine, or reject. Each verdict is a training example that makes the next month's generated draft better. The language tokens score each generated draft for register correctness, so register drift is caught automatically.
+
+### Compounding returns and the calibration rule
 
 The result is [[compounding-substrate|compounding]] improvement. Each monthly pass produces better training signal than the last because the DataGraph is richer, the system has been trained on prior editorial verdicts, and the articles being refined are themselves already better. The work required per article per month decreases as the system matures.
 

@@ -30,6 +30,8 @@ Cada archivo que ingresa a la plataforma se clasifica por tipo antes de que ocur
 **ADR-10 — Cada entrada del libro mayor de activos base requiere un punto de control humano.**
 La [[service-input|interfaz de entrada F12]] de la plataforma es el punto de control obligatorio con un humano en el bucle para todos los compromisos del libro mayor de activos base. Ningún proceso automatizado puede escribir un registro verificado en el almacenamiento a largo plazo sin que un humano confirme la decisión de enrutamiento en la puerta F12. El diseño refleja la estructura de control de una cámara de compensación regulada: la plataforma puede procesar, clasificar y proponer — pero el compromiso pertenece a un humano autorizado.
 
+### ADR-19 cierra el circuito de compromiso
+
 **ADR-19 — Sin publicación automatizada en libros mayores verificados.**
 Los procesos automatizados tienen prohibido publicar en los libros mayores de almacenamiento a largo plazo. Todos los registros verificados se comprometen únicamente mediante una acción autenticada por humanos en la interfaz F12. La decisión cierra el círculo entre ADR-07 (clasificar primero) y ADR-10 (punto de control humano): la clasificación propone, el punto de control confirma, y el compromiso con el registro permanente requiere la acción intencional del operador. No existe ningún canal secundario a través del cual el sistema pueda registrar un hecho sin un humano en la secuencia.
 
@@ -42,6 +44,8 @@ Los datos de la plataforma se modelan en tres niveles. El primer nivel son los a
 
 **ADR-06 — Libro mayor de cumplimiento separado del grupo de inteligencia.**
 El libro mayor de cumplimiento inmutable — el [[service-email|servicio que maneja las comunicaciones entrantes]] y la correspondencia regulada — está físicamente separado del [[service-slm|grupo de inteligencia autocorrectivo]] que la plataforma utiliza para clasificar y vincular documentos. La separación previene un modo de fallo común en los sistemas de recuperación: cuando el registro de cumplimiento y el índice de búsqueda comparten una capa de datos, una actualización del índice puede alterar silenciosamente lo que parece contener el registro de cumplimiento. La separación física elimina ese riesgo por construcción.
+
+### Separación de consola y rutas de proxy
 
 **ADR-11 — Chasis de consola separado de los cartuchos de ejecución.**
 La consola del operador se divide en un chasis de presentación — el shell de interfaz de usuario que maneja el diseño, la navegación y los atajos de teclado — y un conjunto de cartuchos de ejecución, cada uno de los cuales implementa una función específica de la consola. El chasis y los cartuchos pueden desplegarse y actualizarse de forma independiente. Un cambio en el cartucho de revisión de cumplimiento no requiere redeplegar el shell de presentación, y viceversa. Esta separación hace que las funciones individuales de la consola sean auditables y reemplazables sin riesgo para la estabilidad del shell.

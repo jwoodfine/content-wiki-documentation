@@ -26,13 +26,19 @@ keynote: false
 
 Una interfaz de programación de aplicaciones (API, por sus siglas en inglés) es una forma en que dos o más programas informáticos se comunican entre sí. Es un tipo de interfaz de software que ofrece servicios a otras piezas de software. Un documento o estándar que describe cómo construir o usar dicha conexión se denomina especificación de API; se dice que un sistema informático que cumple el estándar implementa o expone una API.
 
+## Distinción de las interfaces de usuario
+
 Una API se distingue de una interfaz de usuario por su consumidor previsto: una interfaz de usuario conecta al usuario humano con el sistema; una API conecta programas de software entre sí. Una API no está destinada a ser utilizada directamente por una persona sino por un programador que la incorpora en un software más grande. Las llamadas que componen una API se conocen como subrutinas, métodos, solicitudes o puntos de conexión, dependiendo del estilo arquitectónico.
 
 ## Historia
 
+### Orígenes en bibliotecas de subrutinas
+
 **Años 1940–1950.** La base conceptual de la API fue establecida por los científicos informáticos británicos Maurice Wilkes y David Wheeler en su trabajo desarrollando una biblioteca de software modular para EDSAC, un ordenador primitivo, en la década de 1940. Su libro de 1951 *The Preparation of Programs for an Electronic Digital Computer* contiene la primera especificación de API publicada.
 
 **Años 1960–1970.** El término "application program interface" (interfaz de programa de aplicación) apareció por primera vez en un artículo de 1968 titulado *Data structures and techniques for remote computer graphics*, presentado en una conferencia de la Association for Information Processing Societies (AFIPS). El término fue introducido en el campo de las bases de datos por C.J. Date en un artículo de 1974; se convirtió en parte del marco ANSI/SPARC para sistemas de gestión de bases de datos.
+
+### Auge de las API remotas y web
 
 **Años 1990.** Para 1990, la API era definida por el tecnólogo Carl Malamud simplemente como "un conjunto de servicios disponibles para un programador para realizar ciertas tareas". El concepto se amplió con el surgimiento de las llamadas a procedimientos remotos y las API web. En la década de 1990, con la difusión de internet, estándares como CORBA, COM y DCOM compitieron para convertirse en el mecanismo dominante para exponer servicios API a través de redes.
 
@@ -40,9 +46,13 @@ Una API se distingue de una interfaz de usuario por su consumidor previsto: una 
 
 ## Tipos
 
+### Interfaces locales — bibliotecas y sistemas operativos
+
 **API de bibliotecas.** La interfaz de una biblioteca de software es un tipo de API. La API describe y prescribe el "comportamiento esperado" (especificación) mientras que la biblioteca es una "implementación real" de ese conjunto de reglas. Una única API puede tener múltiples implementaciones.
 
 **API de sistemas operativos.** POSIX, por ejemplo, proporciona un conjunto de especificaciones de API comunes diseñadas para permitir que las aplicaciones escritas para un SO compatible con POSIX se compilen para otro. Linux y la Berkeley Software Distribution (BSD) implementan ambos las API POSIX.
+
+### Interfaces en red — API remotas y web
 
 **API remotas.** Las API remotas permiten a los desarrolladores manipular recursos remotos a través de protocolos — estándares específicos para la comunicación que permiten que diferentes tecnologías funcionen juntas independientemente del lenguaje o plataforma.
 

@@ -28,15 +28,21 @@ The queue is four directories arranged as a state machine for JSONL event files:
 - **`queue-done/`** — after the drain worker successfully appends the event to the corpus JSONL file, it moves the file here. Files in `queue-done/` are safe to archive or delete on a scheduled basis.
 - **`queue-poison/`** — files that cannot be parsed, fail schema validation, or exhaust a configurable retry limit are moved here for human inspection. Poison files do not block the rest of the queue.
 
+### Event file naming and on-disk visibility
+
 Each file in the queue is a single JSONL event serialized to disk. File names are constructed from a timestamp plus a random suffix to ensure uniqueness across concurrent writers without requiring coordination. The four-directory structure makes queue state visible at a glance using standard filesystem tools — no daemon is required to inspect it.
 
 ## What the queue enables
 
 The Brief Queue Substrate delivers five operational properties that the platform depends on:
 
+### Shutdown and preemption tolerance
+
 **Yo-Yo idle-shutdown tolerance.** The [[yoyo-compute-substrate|Yo-Yo compute tier]] (OLMo 3.1 32B Think on GPU burst) shuts down after a configurable idle period to avoid unnecessary billing. Without the queue, any brief-execution event generated during a Yo-Yo session would need to be written to the corpus synchronously before shutdown — coupling the SLM's inference loop to disk I/O and adding latency to every inference call. With the queue, the inference loop writes to `queue/` (a fast local write) and the drain worker handles corpus persistence independently. Shutdown can proceed as soon as the inference completes; no corpus writes are in progress.
 
 **Spot preemption tolerance.** Cloud spot and preemptible instances can be reclaimed with minimal notice. Events sitting in `queue/` or `queue-in-flight/` survive preemption because the queue directory is on persistent storage, not instance-local ephemeral storage. When a replacement instance starts, the drain worker resumes from the last committed position.
+
+### Pipeline simplification and corpus continuity
 
 **Capture-edit pipeline simplification.** The previous pattern required the capture pipeline to write directly to corpus JSONL files during the editorial session, which created ordering dependencies between the Doorman's audit-routing logic and the corpus file's append position. The queue removes that dependency: the Doorman writes an event record to `queue/` and returns immediately; the drain worker serializes corpus appends in arrival order without blocking the inference path.
 
@@ -54,6 +60,8 @@ The queue preserves correctness under concurrent drain workers and process crash
 4. On success, it renames from `queue-in-flight/<file>` to `queue-done/<file>`.
 5. On failure (parse error, schema validation failure, or retry exhaustion), it renames to `queue-poison/<file>`.
 
+### Crash recovery and at-least-once delivery
+
 At startup, the drain worker scans `queue-in-flight/` for files left by a previous crashed instance. It reprocesses those files before picking up new ones from `queue/`. This guarantees at-least-once delivery: an event may be appended to the corpus more than once if the drain worker crashes between the corpus append and the rename to `queue-done/`. Consumers of the corpus deduplicate by event ID where idempotency matters.
 
 The lease pattern does not require a network round-trip, a lock daemon, or a message broker. It requires only that the four directories share a filesystem where `rename()` is atomic — a property guaranteed by every POSIX-compliant local filesystem and by most network filesystems when source and destination are on the same mount.
@@ -64,9 +72,13 @@ The Brief Queue Substrate stores events as JSONL files on a local filesystem rat
 
 Message brokers such as NATS JetStream or Redis Streams offer strong durability guarantees and rich consumer-group semantics. They also introduce a persistent network dependency: the producer cannot write if the broker is unreachable, and the consumer cannot read if the broker has lost its state. For a single-tenant workspace where the queue producer, queue consumer, and corpus storage are all on the same machine or the same cloud-persistent volume, the network round-trip adds latency and a failure mode without adding a capability the platform needs at this scale.
 
+### Plain-text inspectability
+
 JSONL files have a further advantage for this use case: they are directly inspectable. An operator investigating a corpus anomaly can read a file in `queue-poison/` with any text editor. A message broker entry requires the broker's own query interface. The four-directory layout makes queue depth, in-flight count, and poison-file count observable with a single `find` or `ls -l` invocation — no broker dashboard required.
 
 The file-JSONL choice also aligns with the platform's plain-text-only design principle. The corpus itself is JSONL; the queue payload format matches the corpus format; the drain worker's only job is to move events from one JSONL context (queue file) to another (corpus file). The entire path is auditable as plain text with no binary state.
+
+### Scaling path beyond one node
 
 When the platform scales to multi-node corpus producers — a planned future state — the queue directory can be placed on a shared network filesystem (NFS, Cloud Filestore, or an equivalent) and the lease mechanics continue to hold on POSIX-compliant mounts. Alternatively, that future state may introduce a message broker as a speed layer while retaining the JSONL corpus format. The choice remains open and is not foreclosed by the current design.
 

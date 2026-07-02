@@ -24,9 +24,13 @@ Sessions communicate by prepending messages to flat-file mailboxes at `.agent/in
 - The failure mode without this discipline is silent. A lost message simply never arrives — no error is surfaced to either the sender or the recipient. The helper script exists precisely because silent data loss is worse than a brief serialization delay.
 - The script is the enforcement point. Atomicity holds only when all sessions and automation call `mailbox-prepend` rather than writing to the mailbox file directly.
 
+## flock-serialized prepend
+
 The atomicity problem: two sessions prepending to the same mailbox without coordination produce the classic read-modify-write race. Session A reads the current file, prepends its message, and writes back. Session B does the same simultaneously. Whichever write lands last wins; the other message is lost. This is reproducible with parallel AI-coding sub-agents; cross-user concurrency makes it inevitable.
 
 The `mailbox-prepend` helper script solves this with `flock`. It takes the target mailbox path, derives a lock path for archive-scoped mailboxes, and acquires an exclusive lock with a 30-second timeout before performing the read-modify-write. Two simultaneous calls serialise rather than collide.
+
+## msg-id idempotency and the silent-loss rationale
 
 A second safety: msg-id idempotency. If the message body contains a `msg-id:` field, the script scans the first 200 lines of the target for an existing entry with the same id and skips the prepend if found. This means a script that gets retried — a timer firing twice, an operator re-running, a hook misfiring — will not double-send. The 200-line window is generous enough to catch same-day duplicates without making the scan expensive on large archives.
 

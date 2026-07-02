@@ -34,6 +34,8 @@ La taxonomía está construida sobre dos libros mayores interrelacionados. Uno d
 | Plan de Cuentas | Dónde residen la autoridad, el riesgo y la producción en la organización — una jerarquía de tres niveles: Perfil → Dominio → Subdominio [^1] | Ajustado deliberadamente por operadores; estable entre ajustes |
 | Once Arquetipos | Cómo opera una persona y qué produce, independientemente de su título [^2] | Fijo permanentemente; las once categorías son exhaustivas |
 
+### Plan como libro mayor general y espacio de nombres
+
 El Plan de Cuentas es simultáneamente el libro mayor general y el espacio de nombres de la institución. Para un lector financiero, cada fila es un centro de costo o ingreso. Para un lector de ingeniería, cada fila es una ruta de espacio de nombres estable que previene documentos huérfanos. [[service-content]] consume la jerarquía del Plan cuando clasifica documentos entrantes en la [[input-machine|puerta F12]]; [[service-people]] consume la capa de arquetipos cuando evalúa la alineación del personal.
 
 Ningún libro mayor sustituye al otro. El Plan captura *dónde* en la organización pertenece un documento o decisión; el arquetipo captura *cómo* opera la persona que lo produce. Su intersección es el modelo operativo de comportamiento institucional de la plataforma.
@@ -56,6 +58,8 @@ Cada uno de los once arquetipos se corresponde con una función organizativa pri
 | El Administrador | Logística y soporte | `system_stability` |
 | El Sabio | Teoría y conocimiento | `knowledge_depth` |
 
+### Arquetipos como clases de objetos
+
 Los arquetipos funcionan como clases de objetos en el sentido del software: cada entidad en [[service-people]] hereda propiedades de una de las once clases base, y esa herencia determina qué funciones de la plataforma puede aplicar el sistema al registro de esa persona. Dos personas con títulos diferentes que comparten un arquetipo reciben el mismo tratamiento computacional; dos personas con el mismo título pero arquetipos diferentes, no. El [[verification-surveyor|Supervisor de Verificación]] utiliza las claves de arquetipo como una señal al calcular las puntuaciones de alineación.
 
 Las claves de evaluación no son puntuaciones. Son etiquetas de dimensión — la plataforma rastrea la varianza de cada clave a lo largo del tiempo en lugar de su valor absoluto, lo que hace que el sistema sea estable ante diferentes niveles base entre individuos.
@@ -76,6 +80,8 @@ Cada fila del Plan de Cuentas lleva un ancla de arquetipo principal: el rol func
 | Soporte de TI | Colaboradores | BIM | El Ingeniero |
 | Soporte de TI | Colaboradores | Ciencia de datos | El Sabio |
 | Personal | Junta directiva | — | El Ejecutivo |
+
+### Despliegue de referencia de siete Perfiles
 
 El Plan abarca siete Perfiles de nivel superior en un despliegue típico: Cumplimiento, Bienes raíces, Construcción, Soporte de TI, Relaciones con inversores, Personal y Administración local. Los Perfiles específicos son configurables por el operador; el ejemplo de siete Perfiles representa un despliegue de referencia, no una restricción fija.
 

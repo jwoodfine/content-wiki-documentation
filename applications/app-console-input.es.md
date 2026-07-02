@@ -40,6 +40,8 @@ Una sesión F12 típica tiene una forma determinista de cinco pasos. Cada paso t
 | 4 | Aprobar o rechazar cada afirmación con teclas individuales | Las afirmaciones aprobadas avanzan al estado L5 verificado; las rechazadas quedan en cuarentena |
 | 5 | Confirmar el destino de enrutamiento | El archivo se sella en service-minutebook o service-bookkeeper; se escribe una entrada en el libro mayor; el [[worm-ledger-design|registro de auditoría]] captura la identidad del operador, la marca de tiempo y la decisión de enrutamiento |
 
+### Disciplina secuencial y granularidad de auditoría por afirmación
+
 La interacción es solo con teclado y deliberadamente rápida. El operador no escribe nombres de archivo, completa formularios de metadatos ni compone consultas de base de datos. [[service-extraction]] y [[service-content]] ya realizaron el trabajo computacional; el papel del operador es verificar o rechazar cada afirmación en secuencia y luego confirmar el destino.
 
 Esta estructura secuencial es deliberada. Agrupar varios pasos en una única confirmación reduciría la resolución del [[worm-ledger-design|registro de auditoría]] — cada afirmación heredaría la misma marca de tiempo en lugar de llevar su propio registro de decisión. La puerta de cinco pasos preserva la granularidad de auditoría por afirmación.
@@ -56,6 +58,8 @@ El patrón tiene tres propiedades:
 | Claridad fiduciaria | Cada afirmación que ingresa al libro mayor verificado lleva una decisión explícita del operador, no un valor predeterminado del sistema |
 | Integridad del registro de auditoría | El [[worm-ledger-design|registro de auditoría]] captura la decisión exacta sobre cada afirmación, no solo el destino final de enrutamiento |
 
+### Límite entre plataforma y operador
+
 Este modelo refleja un límite deliberado entre la plataforma y el operador. [[service-extraction]] y [[service-content]] gestionan la detección de entidades, la clasificación temática y la sugerencia de enrutamiento. El operador gestiona la puerta binaria. Las instituciones sujetas a obligaciones de divulgación continua [ni-51-102] [osc-sn-51-721] y estándares de registros electrónicos [^2] pueden señalar una decisión específica del operador con marca de tiempo para cada documento que ingresa al libro mayor verificado.
 
 El patrón difiere del autocompletado asistido por IA, donde un modelo completa los campos y el operador acepta por omisión. En F12, el silencio nunca es aceptación. Cada afirmación que avanza al estado verificado requiere una pulsación de tecla afirmativa explícita del operador.
@@ -63,6 +67,8 @@ El patrón difiere del autocompletado asistido por IA, donde un modelo completa 
 ## Por qué el paso de verificación es arquitectónicamente obligatorio
 
 Si [[service-extraction]] o [[service-content]] enrutaran un documento fuente a la cuenta incorrecta sin confirmación humana, el libro mayor verificado llevaría una entrada matemáticamente comprometida desde ese punto en adelante. Reclasificar el documento más tarde no repara el registro de auditoría — la entrada original ya lleva una marca de tiempo de verificación que registra una decisión que ningún ser humano tomó.
+
+### Decisiones arquitectónicas que refuerzan la puerta
 
 [[architecture-decisions|SYS-ADR-10]] hace que F12 sea obligatorio precisamente porque este modo de fallo es estructural, no probabilístico: cualquier arquitectura que delegue la decisión final de enrutamiento a un sistema automatizado crea una entrada en el libro mayor sin un autor humano responsable. [[architecture-decisions|SYS-ADR-07]] extiende el principio a los datos estructurados de manera más amplia — ningún registro producido por IA ingresa a un libro mayor verificado sin un paso de confirmación humana. [[architecture-decisions|SYS-ADR-19]] cierra el camino restante — sin publicación automatizada en libros mayores verificados, independientemente de la puntuación de confianza.
 

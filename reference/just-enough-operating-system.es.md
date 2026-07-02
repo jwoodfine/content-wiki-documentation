@@ -26,6 +26,8 @@ keynote: false
 
 Just Enough Operating System (JeOS, comúnmente pronunciado "juice" o "jugo") es una filosofía y práctica de personalización de un sistema operativo para incluir únicamente aquellos componentes necesarios para soportar una aplicación o servicio específico. En lugar de instalar una distribución Linux de propósito general y posteriormente eliminar los componentes no utilizados, una imagen JeOS se construye desde el conjunto mínimo de paquetes requeridos para la carga de trabajo objetivo — un kernel, las bibliotecas de tiempo de ejecución esenciales y la propia aplicación — con todos los demás componentes ausentes.
 
+## Componentes no utilizados como superficie de ataque
+
 El enfoque JeOS surgió del reconocimiento de que los sistemas operativos de propósito general llevan una sobrecarga sustancial de componentes que sirven a una amplia gama de usuarios y casos de uso, pero cualquier carga de trabajo de producción dada requiere solo una fracción de esta capacidad. Los componentes no utilizados no son simplemente un desperdicio en términos de memoria y almacenamiento; representan una superficie de ataque: los servicios que no están en ejecución no pueden ser explotados; las bibliotecas que no están instaladas no pueden albergar vulnerabilidades.
 
 ## Relación con los appliances de software y virtuales

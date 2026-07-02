@@ -58,7 +58,11 @@ The substrate's load-bearing design choice: **git is canonical; the running bina
 
 Every concrete artefact a reader encounters — the HTML page, the Atom feed entry, the JSON-LD block, the search-result hit, the wikilink graph — is derived at request time from the markdown tree on disk. The disk state is what gets committed, reviewed, replicated, and disclosed. The HTML is throwaway. The Tantivy index is throwaway, rebuilt from the markdown tree on startup. The redb wikilink graph (Phase 4) is throwaway. The collab CRDT (Phase 2 Step 7, default-off) is throwaway between sessions.
 
+### Inversion of the MediaWiki model
+
 This inversion reverses the traditional MediaWiki model, where the database is canonical and the file system is a derived working copy. Here, the file system is canonical and the database (search index, link graph) is a derived working copy. The motivation is operational simplicity — a content-tree backup is a `git clone`; a content-tree replication is a `git pull`; a content-tree audit is a `git log` — and a substrate-level invariant: every published claim is a signed git commit; the disclosure record is the git history; the BCSC continuous-disclosure posture is enforced by structure rather than by policy alone.
+
+### Workflows the inversion removes
 
 Other patterns follow from the inversion. The wiki has no preview-then-publish workflow because the canonical state is what got committed; an edit committed is a publication. The wiki has no scheduled-publish workflow because the same property holds. The wiki has no server-side draft state because drafts live in the contributor's git working copy or in the editorial pipeline, not in a database the wiki engine owns.
 
@@ -85,11 +89,15 @@ The engine exposes a tight set of HTTP routes. Each is independent; no route dep
 
 Phase 4 is planned to add `/history/{slug}`, `/blame/{slug}`, `/diff/{a}/{b}`, `/backlinks/{slug}`, an MCP server route, and a read-only Git remote over smart-HTTP — letting any git client clone the served content tree as a regular git repository, riding the existing TLS termination. Phases 5 through 8 are planned; cautionary language applies per [ni-51-102] and [osc-sn-51-721].
 
+### JSON-LD article schema
+
 The engine emits JSON-LD `TechArticle`[^4] and `DefinedTerm` schema in every rendered article's `<head>` block for search-engine and crawler comprehension. The structured data is generated from the article's frontmatter, not hand-authored per page; the schema is the same shape across the corpus.
 
 ## Wikipedia muscle-memory chrome
 
 The engine ships with a deliberately Wikipedia-recognisable chrome. A reader of any Wikipedia article will navigate the engine without prompting, and a reader unfamiliar with Wikipedia will pick up the patterns quickly because they are well-documented conventions.[^8]
+
+### Conventions kept from Wikipedia
 
 What was kept (per `UX-DESIGN.md` §1):
 
@@ -103,6 +111,8 @@ What was kept (per `UX-DESIGN.md` §1):
 - Collapsible left-rail table of contents (built from H2 and H3 headings; deeper headings render normally but do not enter the TOC)
 - Language switcher (currently English / Spanish; structurally ready for additional languages without re-templating)
 
+### Additions beyond Wikipedia
+
 What was added beyond Wikipedia:
 
 - Citation badges next to inline `[citation-id]` references, with hover-card showing the registry entry
@@ -111,11 +121,15 @@ What was added beyond Wikipedia:
 - Information Verifiability Citation (IVC) masthead band placeholder (Phase 7 is intended to provide the verification machinery)
 - Reader density toggle (compact / comfortable; settings persist client-side)
 
+### Template and CSS implementation
+
 The chrome is implemented in four `maud` HTML templates (`article.html`, `category.html`, `search.html`, `editor.html`) and a CSS bundle that tracks Vector 2022's spacing and typography rather than its colour palette. The aim is muscle memory, not literal mimicry — a reader who knows Wikipedia recognises the layout, but the visual identity is distinct.
 
 ## Editor surface
 
 The wiki's editor is a CodeMirror 6 instance vendored into the binary's static-asset bundle, served at `/edit/{slug}`. It supports markdown highlighting with line numbers, configurable line wrap, and undo/redo history, with atomic disk write via `POST /edit/{slug}`.
+
+### Substrate-aware editing features
 
 Three substrate-aware features distinguish the implementation:
 
@@ -125,11 +139,15 @@ Three substrate-aware features distinguish the implementation:
 
 **Three-keystroke ladder for Doorman (Phase 2 Step 6 stubs).** Tab opens a ladder of "ask Doorman" affordances at the cursor position — find a citation, suggest a hatnote target, generate a disambiguation link, propose a section heading. These return 501 stubs in the v0.1.29 binary; Phase 4 is planned to wire them to the service-slm Doorman.
 
+### Atomic-write semantics
+
 The editor's atomic-write semantics are conservative: the engine writes new file content to a temporary path in the same directory, fsyncs, and renames over the destination. A failed write is visible to the contributor and leaves the canonical content untouched. Concurrent edits from two non-collab sessions race at the rename step; the last-writer-wins convention is documented.
 
 ## Search, feeds, and ingestion
 
 The engine indexes the content tree on startup and incrementally on edit. The index is on-disk Tantivy (BM25 by default) at `<state-dir>/search/`, rebuilt from the content tree if it is missing. The Tantivy `IndexWriter` is held in an `Arc<Mutex<>>` per the crate's typical pattern and released before reader reload to avoid the asynchronous-reload race.
+
+### Syndication and crawler discovery
 
 Three syndication formats render the corpus to crawlers:
 
@@ -143,9 +161,13 @@ Two crawler-discovery files round out the surface: **`/robots.txt`** and **`/llm
 
 The engine optionally supports real-time collaborative editing via the Yjs CRDT. The feature is default-off behind the `--enable-collab` CLI flag; the production deployment at v0.1.29 does not enable it.
 
+### Passthrough relay, not a Yjs server
+
 The implementation follows the source-of-truth inversion: **the server is a passthrough WebSocket relay, not a Yjs server**. Yjs document state never lives on the server. The relay is a thin `tokio::sync::broadcast` per-slug room with a 256-message lag buffer; clients send Yjs update packets, the server forwards them to other clients in the room, and persistence flows through the existing `POST /edit/{slug}` save path on deliberate save. When all clients leave the room, the room closes and any unsaved CRDT state is discarded.
 
 A long-lived Yjs document on the server would create a parallel canonical record that drifts from git, complicates audit, and conflicts with the BCSC disclosure posture. The passthrough relay keeps git canonical and the CRDT session-ephemeral.
+
+### Lazy-loaded client bundle
 
 The client lazy-loads `cm-collab.bundle.js` (302 KB) only when the template's `window.WIKI_COLLAB_ENABLED` flag is set by the server, so production deployments without `--enable-collab` never load any Yjs JavaScript. A manual two-client smoke test (two browsers editing the same article, seeing each other's cursors) is the current ratification path for cursor-rendering UX, which is a visual property that is awkward to assert programmatically.
 
@@ -153,9 +175,13 @@ The client lazy-loads `cm-collab.bundle.js` (302 KB) only when the template's `w
 
 The engine is a substrate-native wiki, not a MediaWiki shim. This reflects architectural decisions made during early platform development.
 
+### Kept and dropped MediaWiki surfaces
+
 What was kept: the **`xml-dump` import path** for one-time corpus migration; **URL conventions** (`/wiki/{slug}`); **wikilink syntax** (`[[slug]]` and `[[slug|display text]]`); **footnote syntax** (`[^1]`).
 
 What was dropped: the **MediaWiki Action API shim** — the shim was scoped at v0.1.10 and dropped at v0.1.14 because maintenance scales with MediaWiki's velocity and compliance audit scales with the API surface. The substrate-native API surface (article HTML, JSON-LD, Atom, JSON Feed, sitemap, llms.txt, raw markdown via `/git/{slug}`, search via `/search?q=`, edit via `POST /edit/{slug}`) covers the same use cases without a parallel authoritative interface requiring separate maintenance. **MediaWiki templates and parser functions** were dropped because the engine's rendering path is CommonMark with PointSav-specific extensions, not a MediaWiki parser. **The pywikibot ecosystem** was dropped because the substrate's automation path is the existing workspace tooling, not the pywikibot framework.
+
+### Narrower surface, coherent posture
 
 The trade-off is a narrower compatibility surface against a substrate-coherent posture. A reader migrating from a MediaWiki deployment loses templates and the Action API; gains source-of-truth inversion, deterministic rendering, BCSC-grounded disclosure posture, and a smaller attack surface.
 
@@ -165,9 +191,13 @@ A separate sibling article ([[substrate-native-compatibility]]) covers the ratio
 
 The engine is intended to serve content from multiple git repositories through a single rendered surface, using a declarative mount manifest (`knowledge.toml`) that the operator places at the content directory root. Each mount entry names a source repository, a local mount path, and a blueprint — the schema that determines how files in that mount are validated, routed, and linked. This capability is planned; the architecture described here is the intended design, and the single-repository model is the current deployed form.
 
+### Mounts and blueprint schemas
+
 *Mounts and blueprints.* A content mount is a directory subtree derived from a named git repository. Blueprints are named schemas that constrain the content a mount may contain and determine the URL pattern it occupies. Two blueprints are built in: `topic` (the standard wiki article, consuming files in the standard content-contract format) and `guide` (operational documents, rendered with a distinct chrome and excluded from the primary article index). Operators may register additional blueprints — `regional-market`, `adr`, `changelog`, and similar domain-specific schemas — as plugins when Phase 6 ships.
 
 *Per-instance isolation.* Each wiki instance reads only the mounts declared in its own `knowledge.toml`. A `documentation.pointsav.com` deployment and a `projects.woodfinegroup.com` deployment may source overlapping repositories but present entirely independent article surfaces — mount definitions are per-instance configuration, not global registry state.
+
+### Provenance and edit-routing across instances
 
 *Provenance and edit-routing.* Every article rendered from a declarative mount carries provenance frontmatter identifying the source repository and path. The engine's `/edit/{slug}` surface is intended to route editors back to the source repository's canonical editing path (via the `edit_url` field in the mount manifest) rather than accepting writes locally. This keeps the source-of-truth inversion intact across a federated surface: no wiki instance writes to a repository it did not originate from.
 

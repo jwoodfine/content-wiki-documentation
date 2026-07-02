@@ -40,6 +40,8 @@ A typical F12 session has a deterministic five-step shape. Each step has a clear
 | 4 | Approve or reject each claim with single keystrokes | Approved claims advance to L5 verified status; rejected claims are quarantined |
 | 5 | Confirm the routing destination | The file is sealed into service-minutebook or service-bookkeeper; a ledger entry is written; the [[worm-ledger-design|audit log]] captures the operator identity, timestamp, and routing decision |
 
+### Sequential discipline and per-claim audit granularity
+
 The interaction is keyboard-only and intentionally fast. The operator does not type filenames, fill out metadata forms, or compose database queries. [[service-extraction]] and [[service-content]] have already done the computational work; the operator's role is to verify or reject each claim in sequence, then confirm the destination.
 
 This sequential structure is deliberate. Bundling multiple steps into a single confirmation would reduce the resolution of the [[worm-ledger-design|audit trail]] — each claim would inherit the same timestamp rather than carrying its own decision record. The five-step gate preserves per-claim audit granularity.
@@ -56,6 +58,8 @@ The pattern has three properties:
 | Fiduciary clarity | Every claim that enters the verified ledger carries an explicit operator decision, not a system default |
 | Audit completeness | The [[worm-ledger-design|audit record]] captures the exact decision on each claim, not only the final routing destination |
 
+### Boundary between platform and operator
+
 This model reflects a deliberate boundary between platform and operator. [[service-extraction]] and [[service-content]] handle entity detection, theme classification, and routing suggestion. The operator handles the binary gate. Institutions subject to continuous-disclosure obligations [ni-51-102] [osc-sn-51-721] and electronic-record standards [^2] can point to a specific, timestamped operator decision for every document that enters the verified ledger.
 
 The pattern differs from AI-assisted autofill, where a model populates fields and the operator accepts by omission. In F12, silence is never acceptance. Every claim that advances to verified status requires an explicit affirmative keystroke from the operator.
@@ -63,6 +67,8 @@ The pattern differs from AI-assisted autofill, where a model populates fields an
 ## Why the verification step is architecturally mandatory
 
 If [[service-extraction]] or [[service-content]] were to route a source document into the wrong account without human confirmation, the downstream verified ledger would carry a mathematically compromised entry from that point forward. Re-sorting the document later does not repair the audit trail — the original entry already carries a verification timestamp that records a decision no human made.
+
+### Architectural decisions enforcing the gate
 
 [[architecture-decisions|SYS-ADR-10]] makes F12 mandatory precisely because this failure mode is structural, not probabilistic: any architecture that delegates the final routing decision to an automated system creates a ledger entry without an accountable human author. [[architecture-decisions|SYS-ADR-07]] extends the principle to structured data more broadly — no AI-produced record enters a verified ledger without a human confirmation step. [[architecture-decisions|SYS-ADR-19]] closes the remaining path — no automated publishing to verified ledgers, regardless of confidence score.
 

@@ -34,6 +34,8 @@ The origins of edge computing lie in content distribution networks (CDNs) create
 
 Internet of Things (IoT) systems are a major contemporary driver of edge computing. A common misconception is that edge computing and IoT are synonymous; edge computing is the broader paradigm and IoT is one application of it.
 
+### Definition and physical constraints
+
 One widely cited definition, proposed by Karim Arabi at an IEEE DAC 2014 Keynote and developed further at an MIT MTL Seminar in 2015, defines edge computing broadly as "all computing outside the cloud happening at the edge of the network, and more specifically in applications where real-time processing of data is required." Because edge computing nodes do not have the climate-controlled advantages of data centers despite requiring substantial processing power, edge computing system design must account for thermal management, physical security, and power reliability constraints not present in centralized facilities.
 
 ## Concept and data volumes
@@ -49,6 +51,8 @@ The aim of edge computing is to move computation away from data centers toward t
 **Scalability.** Distributed edge systems must accommodate heterogeneous devices with different performance and energy constraints, highly dynamic conditions, and variable connection reliability compared to the more robust infrastructure of cloud data centers.
 
 **Reliability.** Management of failovers is crucial to maintaining service continuity. Edge computing devices must maintain awareness of the network topology of the overall distributed system, enabling detection and recovery from node failures.
+
+### Speed and efficiency gains
 
 **Speed.** Edge computing brings analytical resources close to end users, increasing responsiveness and throughput. Applications relying on short response times — IoT systems, autonomous driving, health and public safety applications, facial recognition (which takes a human 370–620 ms to perform) — benefit substantially from edge processing. Edge AI implements artificial intelligence at the edge, close to where data is collected, enabling human-perception-speed responses in applications such as augmented reality.
 

@@ -26,6 +26,8 @@ keynote: false
 
 User experience design (UXD, UED, or XD) is the process of defining the experience a user would have when interacting with a company, its services, and its products. UX design is characterized by a user-centered approach in which research data, user testing results, and observed behavior drive decisions rather than aesthetic preferences or feature assumptions. The discipline encompasses all aspects of a user's perceived experience — usability, usefulness, desirability, brand perception, and overall performance — and extends to the full scope of customer experience (CX) beyond the immediate product interaction.
 
+## Distinction from user interface design
+
 The breadth of UX design sets it apart from [[user-interface-design|user interface design]]. UI design is concerned with the visual and interactive surface — what an interface looks like and how it physically responds. UX design is concerned with the total experience a person has: the cognitive model they form of the system, the emotional response they have to using it, the ease with which they accomplish their goals, the error recovery they experience when things go wrong, and the satisfaction or frustration they feel after completing a task. A well-designed UI can be embedded within a poor UX (a beautiful interface for a product that doesn't solve the user's actual problem); conversely, a high-quality UX can be delivered through an interface that is visually undistinguished.
 
 ## History
@@ -38,17 +40,25 @@ The proliferation of personal computers in workplace environments through the 19
 
 ## Elements
 
+### User research and personas
+
 **User research.** UX design begins with research: understanding who the users are, what goals they have, what tasks they need to accomplish, and what context they work in. Research methods include ethnographic field observation, contextual inquiry, interviews, surveys, and analytics analysis. User research seeks to discover users' actual behaviors and motivations — which often differ substantially from what users report in surveys or what product teams assume.
 
 **User modeling and personas.** Research findings are synthesized into persona documents — composite archetypes based on observed behavior patterns across a user research sample. Personas are not real people but representative profiles: a persona document describes a user type's goals, frustrations, technical sophistication, and context of use. Personas help design teams maintain focus on user needs when making design decisions.
+
+### Visual design and information architecture
 
 **Visual design.** The visual layer of UX design draws on graphic design, communication design, and the principles of Gestalt psychology (the study of how humans perceive visual information as organized patterns rather than collections of individual elements). Visual design establishes the aesthetic qualities that make an interface attractive, trustworthy, and coherent.
 
 **Information architecture.** Information architecture is the art and science of organizing and labeling information to support usability and findability. It encompasses the navigation model, the hierarchy of content, the labeling system, and the search functionality that enable users to locate what they need within a system. Information architecture sits between knowledge management and data management — it is concerned with how information is structured for human retrieval, not merely machine processing.
 
+### Interaction design and usability
+
 **Interaction design (IxD).** Interaction design is concerned with creating products that produce efficient and satisfying end-user experiences. Interaction designers specify the behavior of the system — how it responds to user input, what feedback it provides, how it handles errors, and how it guides users through sequences of actions. Interaction design overlaps with visual design in the design of controls and feedback indicators, and with industrial design in the design of physical interfaces.
 
 **Usability.** Usability is the extent to which a product can be used by specified users to achieve specified goals with effectiveness, efficiency, and satisfaction in a specified context of use. Usability is a component of UX but not wholly contained within it — a product can be usable (users can accomplish their goals) while still delivering a poor experience (the process is frustrating, the feedback is confusing, or the outcome fails to satisfy). Usability testing is the most common formal method of assessing usability: users are given tasks to complete while a researcher observes and records their process, paying attention to where they hesitate, err, or abandon the task.
+
+### Accessibility and HCI foundations
 
 **Accessibility.** Accessibility addresses the ease with which products can be used by people with disabilities — visual, auditory, motor, or cognitive. The Web Content Accessibility Guidelines (WCAG) 2.0, published by the World Wide Web Consortium, define accessibility requirements through four principles: Perceivable (information is presentable to users in ways they can perceive), Operable (interface components and navigation are operable), Understandable (information and operation of the interface is understandable), and Robust (content can be interpreted by a wide variety of user agents, including assistive technologies). These principles are known by the acronym POUR.
 

@@ -58,6 +58,8 @@ La ISO 9241, la norma internacional para la ergonomía de la interacción person
 6. **Adecuación a la individualización** — la interfaz puede adaptarse a las habilidades, capacidades y preferencias de usuarios individuales.
 7. **Adecuación para el aprendizaje** — la interfaz apoya a los usuarios en aprender a usarla.
 
+### Partes de usabilidad, presentación y orientación
+
 **Usabilidad (ISO 9241, Parte 11):** efectividad (los usuarios pueden lograr sus objetivos), eficiencia (los usuarios pueden lograr sus objetivos con el gasto apropiado de recursos) y satisfacción (los usuarios encuentran la interacción aceptable).
 
 **Siete atributos de presentación (ISO 9241, Parte 12):** claridad, discriminabilidad, concisión, consistencia, detectabilidad, legibilidad y comprensibilidad.

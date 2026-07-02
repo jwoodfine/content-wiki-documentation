@@ -34,11 +34,15 @@ The fog computing paradigm emerged from a specific problem: the proliferation of
 
 An additional advantage is that processed data is most likely needed by the same devices that generated it: by processing locally rather than remotely, the latency between input and response is minimized without requiring any change in the cloud architecture. The idea itself is not new — in non-cloud scenarios, special-purpose hardware (signal-processing chips performing Fast Fourier Transforms) has long been used to reduce latency and CPU burden. Fog computing extends this principle to programmable, networked computing infrastructure.
 
+### Defining properties of fog nodes
+
 Fog computing is characterized by: proximity to end users; dense geographical distribution; context-awareness regarding computational and IoT resources; latency reduction and backbone bandwidth savings; and redundancy in case of failure. It also enables edge analytics and stream mining, which cloud-based analytics cannot perform at the required latency. Fog nodes can provide security for resource-constrained IoT devices by performing cryptographic computations that the devices themselves cannot execute.
 
 ## Architecture
 
 A fog computing architecture consists of a control plane and a data plane. On the data plane, fog computing enables computing services to reside at the edge of the network as opposed to servers in a data center. Fog nodes — intermediate computing units between edge devices and the cloud — receive data from edge devices, process it locally, and forward only the relevant results or aggregated summaries to the cloud.
+
+### NIST definition and the boundary with edge computing
 
 The NIST Special Publication 500-325 (March 2018) formally defines fog computing as "a horizontal, physical or virtual resource paradigm that resides between smart end-devices and traditional cloud computing or data center" and states that this paradigm "supports vertically-isolated, latency-sensitive applications by providing ubiquitous, scalable, layered, federated, distributed computing, storage, and network connectivity."
 

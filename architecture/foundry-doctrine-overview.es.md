@@ -33,6 +33,8 @@ Los seis pilares son los invariantes de la arquitectura. No son principios aspir
 
 **3. Flujo unidireccional.** El desarrollo de software siempre procede proveedor → cliente → despliegues. Sin escrituras directas inversas. Todas las solicitudes entre capas viajan a través de un buzón de archivos.
 
+### Invariantes de coordinación y garantía
+
 **4. Buzón en cada límite.** Cada rol tiene una bandeja de entrada y una bandeja de salida — archivos Markdown de texto plano, con control de versiones, duraderos.
 
 **5. Artefactos autodescriptivos.** Cada directorio con el que vale la pena interactuar lleva un `MANIFEST.md` que declara su origen, propietario, linaje y estado actual.
@@ -49,10 +51,14 @@ Cincuenta y dos afirmaciones constituyen este compromiso estructural. Las afirma
 - **[[knowledge-graph-grounded-apprenticeship|Aprendizaje Fundamentado en Grafo de Conocimiento]] (#44)** — el servicio de inferencia consulta el grafo de conocimiento por inquilino antes de cada solicitud sustantiva.
 - **[[tui-corpus-producer|TUI como Productor de Corpus]] (#45)** — cada interacción terminal con el servicio de inferencia es una contribución de corpus de entrenamiento curada.
 - **[[mcp-substrate-protocol|MCP como Protocolo del Sustrato]] (#46)** — cada servicio de Ring 1 y Ring 2 expone una interfaz de servidor MCP como su contrato externo principal.
+### Bootstrap del inquilino y propiedad del cliente
+
 - **[[seed-taxonomy-as-smb-bootstrap|Taxonomía Semilla como Bootstrap para PYMEs]] (#47)** — cada despliegue de inquilino se aprovisiona con una taxonomía semilla de cuatro partes como el bootstrap de su grafo de conocimiento.
 - **[[customer-owned-graph-ip|IP del Grafo de Propiedad del Cliente]] (#48)** — el grafo de conocimiento por inquilino es propiedad intelectual del cliente.
 - **[[tier-zero-customer-side-sovereign-specialist|Especialista Soberano del Lado del Cliente Nivel 0]] (#49)** — el despliegue de referencia Nivel 0 es un dispositivo de pequeño factor de forma que ejecuta el sustrato determinista completo más un modelo especialista de 1B, sin GPU requerida.
 - **[[vertical-seed-packs-marketplace|Mercado de Paquetes Semilla Verticales]] (#50)** — paquetes semilla específicos de la industria distribuidos como taxonomías iniciales para nuevos despliegues de inquilinos.
+### Contratos máquina-primero y flujos comerciales
+
 - **[[code-for-machines-first|Código para Máquinas Primero]] (#51)** — cada contrato entre servicios, registro de auditoría, configuración y ontología es legible por máquinas como superficie primaria.
 - **[[reverse-flow-substrate|Sustrato de Flujo Inverso]] (#52)** — la misma puerta de enlace [[doorman-protocol|Doorman]] y el mismo registro de auditoría que aplican la disciplina entrante también aplican los flujos comerciales salientes: un mercado de datos y un intercambio de publicidad.
 - **[[service-wallet-settlement|Liquidación de Cartera de Servicios]] (#53)** — los ingresos del mercado y el intercambio de publicidad se acumulan en un libro de contabilidad interno por inquilino; [[pointsav-overview|PointSav]] nunca es un intermediario de custodia.

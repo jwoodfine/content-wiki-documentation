@@ -34,6 +34,8 @@ The taxonomy is built from two interlocking ledgers. One defines the structural 
 | Chart of Accounts | Where authority, risk, and production reside in the organisation — a three-level hierarchy of Profile → Domain → Sub-Domain [^1] | Adjusted deliberately by operators; stable between adjustments |
 | Eleven Archetypes | How a person operates and what they produce, regardless of their job title [^2] | Fixed permanently; the eleven categories are exhaustive |
 
+### Chart as general ledger and namespace
+
 The Chart of Accounts is the institution's general ledger and namespace simultaneously. To a financial reader, every row is a cost or revenue centre. To an engineering reader, every row is a stable namespace path that prevents orphaned documents. [[service-content]] consumes the Chart hierarchy when classifying incoming documents at the [[input-machine|F12 gate]]; [[service-people]] consumes the archetype layer when evaluating personnel alignment.
 
 Neither ledger is a substitute for the other. The Chart captures *where* in the organisation a document or decision belongs; the archetype captures *how* the person producing it operates. Their intersection is the platform's working model of institutional behaviour.
@@ -56,6 +58,8 @@ Each of the eleven archetypes maps to a primary organisational function and a ma
 | The Steward | Logistics and support | `system_stability` |
 | The Sage | Theory and knowledge | `knowledge_depth` |
 
+### Archetypes as object classes
+
 The archetypes function as object classes in the software sense: every entity in [[service-people]] inherits properties from one of the eleven base classes, and that inheritance determines which platform functions the system can apply to that person's record. Two people with different job titles who share an archetype share the same computational treatment; two people with the same title but different archetypes do not. The [[verification-surveyor|Verification Surveyor]] uses archetype keys as one signal when calculating alignment scores.
 
 The evaluator keys are not scores. They are dimension labels — the platform tracks the variance of each key over time rather than its absolute value, which makes the system stable across different baseline levels among individuals.
@@ -76,6 +80,8 @@ Each row in the Chart of Accounts carries a primary archetype anchor. The anchor
 | IT Support | Contributors | BIM | The Engineer |
 | IT Support | Contributors | Data Science | The Sage |
 | Personnel | Supervisory Board | — | The Executive |
+
+### Seven-Profile reference deployment
 
 The Chart spans seven top-level Profiles in a typical deployment: Compliance, Real Estate, Construction, IT Support, Investor Relations, Personnel, and Local Administration. Together they cover the institutional surface of a real-property enterprise. The specific Profiles are operator-configurable; the seven-Profile example represents a reference deployment, not a fixed constraint.
 

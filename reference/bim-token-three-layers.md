@@ -62,6 +62,8 @@ The Regulation layer holds jurisdiction-specific requirements. It is a table of 
 
 **Why a table, not a dropdown.** A regulatory requirement is a fact about the jurisdiction where a building is located, not a choice a designer makes. The token does not ask "which jurisdiction are you in?" and display a single jurisdiction's requirements. It displays all registered jurisdictions' requirements as reference data, the same way a technical standards datasheet shows multiple national standards rows side by side. If the project location is known, the authoring tool may highlight the applicable row — but the table always shows the full picture.
 
+### Overlay table format
+
 **Overlay structure:**
 
 | Column | Content |
@@ -86,6 +88,8 @@ The Regulation layer holds jurisdiction-specific requirements. It is a table of 
 | SG | SGBC BCA Green Mark | Thermal transmittance (OTTV) | ≤ 45 | W/m² |
 | US-VA | ASHRAE 90.1-2022 | Assembly U-factor (climate zone 4A) | ≤ 0.124 | Btu/h·ft²·°F |
 
+### Unpopulated overlays and geometric fragments
+
 **Empty state.** At v0.0.1, most tokens have no registered overlays — the overlay structure is defined but unpopulated. The v0.0.3 milestone is planned to deliver the first overlay set: BC RS-1 residential zoning requirements for exterior walls, slabs, and windows. The empty state is displayed explicitly: "No regulatory overlays registered. BC RS-1 in development (v0.0.3)."
 
 **Geometric exclusion fragments.** Where a regulatory requirement has geometric expression — fire compartment boundaries, accessibility clearances, setback envelopes — the overlay row includes an IFC fragment: a solid geometry encoded in IFC that defines the spatial constraint. Geometric exclusion takes unconditional precedence over numeric constraints in the composition rule.
@@ -95,6 +99,8 @@ The Regulation layer holds jurisdiction-specific requirements. It is a table of 
 The Climate Zone layer holds climate-based performance requirements. Like the Regulation layer, it is a table of registered climate zone rows — all zones shown simultaneously, not selected by dropdown.
 
 **Why Climate Zone is distinct from Regulation.** Climate zone classifications are physical geography — determined by latitude, altitude, precipitation, and temperature range. Building energy codes frequently reference climate zones as performance multipliers, but the climate zone itself is not a building code. It is a geographic classification that energy codes reference.
+
+### Zone systems and performance parameters
 
 **Climate zone classification systems used:**
 
@@ -142,6 +148,8 @@ This is a lower-bound composition: both layers express performance minima (highe
 4. Accessibility — ADA, EN 301 549, equivalent national accessibility standards.
 
 Where two Regulation overlays at different priority levels conflict on the same parameter, the higher-priority (more local) overlay takes precedence for land-use constraints; the more restrictive value applies for performance parameters.
+
+### Precedence and fail-open behavior
 
 **Geometric exclusion unconditional precedence.** An IFC geometric exclusion fragment in any overlay cannot be overridden by any numeric constraint. If a fire compartment boundary requires a wall to span a specific spatial volume, that geometric requirement applies regardless of whether a numeric thermal performance constraint is more or less restrictive.
 

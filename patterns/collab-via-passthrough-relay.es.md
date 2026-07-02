@@ -27,6 +27,8 @@ El patrón de relé de paso invierte la suposición habitual sobre dónde reside
 
 Herramientas como Etherpad y HackMD operan bajo un modelo de documento autoritativo en el servidor: el servidor de edición colaborativa mantiene un objeto de documento vivo y mutable, y ese objeto es el registro principal del contenido actual. Una exportación a git es una instantánea tomada de ese registro del servidor, no al revés. La consecuencia es un segundo estado autoritativo permanente: dos lugares en el sistema contienen la respuesta a la pregunta "¿cuál es el texto actual de este documento?", y pueden divergir si el mecanismo de exportación falla o el registro CRDT del servidor difiere del historial de git.
 
+### Conducto de mensajes, no un almacén
+
 El diseño de relé de paso elimina ese segundo registro por completo. El servidor es un conducto de mensajes, no un almacén. Cuando un cliente Yjs envía un mensaje de actualización binario, el manejador Rust recibe los bytes en bruto del WebSocket y los difunde a todos los demás clientes de la misma sala mediante `tokio::sync::broadcast`. El servidor nunca deserializa el protocolo Yjs; nunca construye un Y.Doc; nunca escribe nada en disco como efecto secundario de una operación de relé.
 
 El registro de divulgación canónico es el árbol git. Bajo el diseño de relé de paso, no existe ningún registro paralelo: el estado CRDT en curso no forma parte del registro de divulgación por construcción, porque nunca se escribe en ningún lugar. El registro se cierra en el momento de `POST /edit`, no antes.
@@ -34,6 +36,8 @@ El registro de divulgación canónico es el árbol git. Bajo el diseño de relé
 ## Implementación en `app-mediakit-knowledge`
 
 El relé de colaboración se implementó como `src/collab.rs`, restringido por el indicador CLI `--enable-collab`. Cuando el indicador está ausente — la configuración predeterminada y la postura de producción actual en v0.1.29 — la ruta WebSocket `GET /ws/collab/{slug}` no se registra en el enrutador axum, y el paquete JavaScript del lado del cliente nunca se carga. Ninguna ruta de código de colaboración se ejecuta en la configuración desactivada por defecto.
+
+### Salas de difusión por slug
 
 El relé del lado del servidor usa `tokio::sync::broadcast`. Cada slug obtiene su propio canal de difusión con capacidad de 256 mensajes. Cuando un cliente WebSocket envía un mensaje de actualización de Yjs, el manejador lee los bytes en bruto y llama a `sender.send(bytes)` — una sola línea que distribuye el mensaje a todos los demás receptores del canal. No hay dependencia del crate `yrs`: el servidor reenvía mensajes binarios sin deserializarlos, por lo que no porta ningún estado de documento en ningún momento.
 

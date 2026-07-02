@@ -32,13 +32,19 @@ El diseño de experiencia de usuario tiene sus raíces en los factores humanos y
 
 ## Elementos
 
+### Investigación de usuarios y personas
+
 **Investigación de usuarios.** El diseño UX comienza con la investigación: comprender quiénes son los usuarios, qué objetivos tienen, qué tareas necesitan realizar y en qué contexto trabajan.
 
 **Modelado de usuarios y personas.** Los hallazgos de la investigación se sintetizan en documentos de persona — arquetipos compuestos basados en patrones de comportamiento observados. Las personas ayudan a los equipos de diseño a mantener el enfoque en las necesidades del usuario al tomar decisiones de diseño.
 
+### Diseño visual y arquitectura de la información
+
 **Diseño visual.** La capa visual del diseño UX se apoya en el diseño gráfico, el diseño de comunicación y los principios de la psicología de la Gestalt — el estudio de cómo los seres humanos perciben la información visual como patrones organizados.
 
 **Arquitectura de la información.** La arquitectura de la información es el arte y la ciencia de organizar y etiquetar la información para apoyar la usabilidad y la encontrabilidad. Abarca el modelo de navegación, la jerarquía del contenido, el sistema de etiquetado y la funcionalidad de búsqueda.
+
+### Interacción, usabilidad y accesibilidad
 
 **Diseño de interacción (IxD).** El diseño de interacción se ocupa de crear productos que producen experiencias de usuario final eficientes y satisfactorias. Los diseñadores de interacción especifican el comportamiento del sistema — cómo responde a la entrada del usuario, qué retroalimentación proporciona, cómo maneja los errores.
 
