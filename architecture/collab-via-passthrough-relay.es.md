@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Colaboración en tiempo real mediante relé de paso"
-slug: collab-via-passthrough-relay.es
+slug: collab-via-passthrough-relay
 category: architecture
 type: topic
 content_type: topic

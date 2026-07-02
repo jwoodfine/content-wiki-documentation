@@ -1,8 +1,13 @@
 ---
 artifact: topic
-schema: foundry-draft-v1
+schema: foundry-doc-v1
+type: topic
+content_type: topic
+slug: scaling-coordinated-development-sovereign-archives
+title: "Scaling coordinated development across many sovereign archives"
+category: systems
 short_description: "Coordination bottlenecks past twenty archives — publication serialization, message relay latency, operator load, and the path to per-archive process isolation."
-status: draft
+status: active
 language_protocol: TOPIC
 route: project-editorial
 target_wiki: documentation.pointsav.com
@@ -13,8 +18,6 @@ research_trail:
   cross_checks: [BRIEF-10x-dev-environment.md, pairings.yaml, AGENT.md]
   forbidden_terms_cleared: false
 ---
-
-# Scaling Coordinated Development Across Many Sovereign Archives
 
 The `app-orchestration-command` topology is designed to accommodate growth. This article describes the coordination challenges that appear as the number of [[totebox-archive|Totebox Archives]] increases, the mechanisms introduced to address them, and the planned trajectory toward per-archive process isolation.
 

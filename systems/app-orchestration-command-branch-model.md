@@ -1,8 +1,13 @@
 ---
 artifact: topic
-schema: foundry-draft-v1
+schema: foundry-doc-v1
+type: topic
+content_type: topic
+slug: app-orchestration-command-branch-model
+title: "Per-archive branch model in app-orchestration-command"
+category: systems
 short_description: "Isolated per-archive branches under the app-orchestration-command coordinator — contamination prevention and independent pace ahead of publication to canonical."
-status: draft
+status: active
 language_protocol: TOPIC
 route: project-editorial
 target_wiki: documentation.pointsav.com
@@ -13,8 +18,6 @@ research_trail:
   cross_checks: [BRIEF-10x-dev-environment.md, pairings.yaml, AGENT.md]
   forbidden_terms_cleared: false
 ---
-
-# The Per-Archive Branch Model in app-orchestration-command
 
 Each [[totebox-archive|Totebox Archive]] in the `app-orchestration-command` topology operates on its own isolated branch — separate from the canonical `main` that the coordinator manages. This article explains why that isolation exists, what it protects, and how the coordinator enforces the boundary during publication.
 

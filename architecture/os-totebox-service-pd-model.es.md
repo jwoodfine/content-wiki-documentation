@@ -15,8 +15,6 @@ quality: complete
 last_edited: 2026-06-23
 ---
 
-# Cómo los servicios service-* se convierten en dominios de protección seL4 en os-totebox
-
 [[os-totebox]] es el nivel de Bóveda de Datos WORM Soberana en la [[topic-three-binary-architecture|arquitectura de tres binarios]]. Se ejecuta como un sistema operativo de metal desnudo Tipo I sobre el [[sel4-microkernel-substrate|micronúcleo seL4]] — sin shell, sin proceso root, sin sistema init, sin gestor de paquetes. Cada servicio que maneja datos duraderos es un Dominio de Protección (PD) seL4: una unidad de aislamiento reforzada por hardware cuyo conjunto de capacidades queda fijo en el momento de la compilación y no puede ampliarse en tiempo de ejecución. Este artículo explica qué significa eso, por qué el diseño toma la forma que tiene y cómo dos herramientas planificadas — moonshot-sel4-vmm y [[moonshot-toolkit-build-orchestrator|moonshot-toolkit]] — convierten binarios de servicio Rust convencionales en un grafo de PD formalmente verificado.
 
 ## La cadena de herramientas que lo hace posible

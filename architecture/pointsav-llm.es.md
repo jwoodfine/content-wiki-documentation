@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "PointSav-LLM"
-slug: pointsav-llm.es
+slug: pointsav-llm
 category: architecture
 type: topic
 content_type: topic

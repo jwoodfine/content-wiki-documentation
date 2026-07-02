@@ -1,8 +1,13 @@
 ---
 artifact: topic
-schema: foundry-draft-v1
+schema: foundry-doc-v1
+type: topic
+content_type: topic
+slug: app-orchestration-command-publication-flow
+title: "Cómo app-orchestration-command publica los cambios de un archivo"
+category: systems
 short_description: "Mecánica de publicación bajo app-orchestration-command — cómo el código probado cruza de las ramas de archivo a la historia canónica firmada, filtrando solo código."
-status: draft
+status: active
 language_protocol: TOPIC
 route: project-editorial
 target_wiki: documentation.pointsav.com
@@ -13,8 +18,6 @@ research_trail:
   cross_checks: [BRIEF-10x-dev-environment.md, pairings.yaml, AGENT.md]
   forbidden_terms_cleared: false
 ---
-
-# Cómo app-orchestration-command publica los cambios de un archivo
 
 `app-orchestration-command` es el servicio coordinador que transfiere código validado desde los [[totebox-archive|Totebox Archives]] individuales hacia los repositorios canónicos `pointsav/*` y `woodfine/*`. Este artículo explica qué significa la publicación, quién puede iniciarla y cómo se comporta el sistema cuando el coordinador no está disponible.
 

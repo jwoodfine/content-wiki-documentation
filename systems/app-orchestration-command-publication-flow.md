@@ -1,8 +1,13 @@
 ---
 artifact: topic
-schema: foundry-draft-v1
+schema: foundry-doc-v1
+type: topic
+content_type: topic
+slug: app-orchestration-command-publication-flow
+title: "How app-orchestration-command publishes archive changes"
+category: systems
 short_description: "Publication mechanics under app-orchestration-command — how tested code crosses from archive branches into signed canonical history, with code-only filtering."
-status: draft
+status: active
 language_protocol: TOPIC
 route: project-editorial
 target_wiki: documentation.pointsav.com
@@ -13,8 +18,6 @@ research_trail:
   cross_checks: [BRIEF-10x-dev-environment.md, pairings.yaml, AGENT.md]
   forbidden_terms_cleared: false
 ---
-
-# How app-orchestration-command Publishes Archive Changes
 
 `app-orchestration-command` is the coordinator service that moves tested code from individual [[totebox-archive|Totebox Archives]] into the canonical `pointsav/*` and `woodfine/*` repositories. This article explains what publication means, who may initiate it, and how the system behaves when the coordinator is unavailable.
 

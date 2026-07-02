@@ -1,8 +1,13 @@
 ---
 artifact: topic
-schema: foundry-draft-v1
+schema: foundry-doc-v1
+type: topic
+content_type: topic
+slug: app-orchestration-command-branch-model
+title: "Modelo de ramas por archivo en app-orchestration-command"
+category: systems
 short_description: "Ramas aisladas por archivo bajo el coordinador app-orchestration-command — prevención de contaminación y ritmo independiente antes de publicar al canónico."
-status: draft
+status: active
 language_protocol: TOPIC
 route: project-editorial
 target_wiki: documentation.pointsav.com
@@ -13,8 +18,6 @@ research_trail:
   cross_checks: [BRIEF-10x-dev-environment.md, pairings.yaml, AGENT.md]
   forbidden_terms_cleared: false
 ---
-
-# El modelo de ramas por archivo en app-orchestration-command
 
 Cada [[totebox-archive|Totebox Archive]] en la topología de `app-orchestration-command` opera en su propia rama aislada, separada del `main` canónico que gestiona el coordinador. Este artículo explica por qué existe ese aislamiento, qué protege y cómo el coordinador hace cumplir el límite durante la publicación.
 

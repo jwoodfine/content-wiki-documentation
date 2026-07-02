@@ -1,8 +1,13 @@
 ---
 artifact: topic
-schema: foundry-draft-v1
+schema: foundry-doc-v1
+type: topic
+content_type: topic
+slug: scaling-coordinated-development-sovereign-archives
+title: "Escalar el desarrollo coordinado en múltiples archivos soberanos"
+category: systems
 short_description: "Cuellos de botella de coordinación más allá de veinte archivos — serialización de publicaciones, latencia de mensajes, carga del operador y aislamiento por proceso."
-status: draft
+status: active
 language_protocol: TOPIC
 route: project-editorial
 target_wiki: documentation.pointsav.com
@@ -13,8 +18,6 @@ research_trail:
   cross_checks: [BRIEF-10x-dev-environment.md, pairings.yaml, AGENT.md]
   forbidden_terms_cleared: false
 ---
-
-# Escalar el desarrollo coordinado en múltiples archivos soberanos
 
 La topología de `app-orchestration-command` está diseñada para crecer. Este artículo describe los desafíos de coordinación que aparecen a medida que aumenta el número de [[totebox-archive|Totebox Archives]], los mecanismos introducidos para abordarlos y la trayectoria prevista hacia el aislamiento de procesos por archivo.
 
