@@ -17,13 +17,13 @@ last_edited: 2026-06-23
 
 # os-totebox: The Sovereign WORM Data Vault
 
-Every organisation that relies on a third-party platform to store its records is making an implicit wager: that the platform provider will remain solvent, accessible, and free of security failures for as long as those records matter. os-totebox is designed for operators who have decided that wager is unacceptable.
+Every organisation that relies on a third-party platform to store its records is making an implicit wager: that the platform provider will remain solvent, accessible, and free of security failures for as long as those records matter. [[os-totebox]] is designed for operators who have decided that wager is unacceptable.
 
 ## What os-totebox Is
 
-os-totebox is a Type I bare-metal operating system — meaning it runs directly on physical hardware with no general-purpose operating system underneath it. There is no Linux shell, no package manager, no root process, and no init system. The software that runs on os-totebox hardware is a seL4 Microkit image: a formally verified microkernel with a statically compiled set of services and no runtime modification path.
+os-totebox is a Type I bare-metal operating system — meaning it runs directly on physical hardware with no general-purpose operating system underneath it. There is no Linux shell, no package manager, no root process, and no init system. The software that runs on os-totebox hardware is a seL4 Microkit image: a formally verified [[sel4-microkernel-substrate|microkernel]] with a statically compiled set of services and no runtime modification path.
 
-The defining characteristic of the platform is its storage model. os-totebox operates as a WORM vault — Write Once, Read Many. Records written to the system cannot be altered or deleted through any software pathway. This is not a policy enforced by an access-control list or a permission flag that an administrator could override; it is a property of the capability graph that governs every service on the machine.
+The defining characteristic of the platform is its storage model. os-totebox operates as a [[worm-ledger-architecture|WORM vault]] — Write Once, Read Many. Records written to the system cannot be altered or deleted through any software pathway. This is not a policy enforced by an access-control list or a permission flag that an administrator could override; it is a property of the capability graph that governs every service on the machine.
 
 ## Capability Geometry on Server Hardware
 
@@ -31,13 +31,13 @@ seL4 is a microkernel developed and formally verified by CSIRO's Data61. The ver
 
 Each service on os-totebox runs inside a seL4 Protection Domain — an isolated execution environment that holds only the capabilities the system design explicitly grants it. The capability DAG (directed acyclic graph) that defines these grants has been formally proved. There is no path in the graph from a service that processes external input to the service that holds the storage capability.
 
-This matters in a concrete failure scenario. If service-slm — the component that handles language model inference, and therefore the component most directly exposed to adversarial inputs — were to be fully compromised, the compromised code would find itself bounded by its Protection Domain. It holds no capability to reach service-fs. It cannot read the WORM block device. It cannot write to it. The attacker's foothold is geometrically isolated from the data store. This is the property the platform calls Capability Geometry.
+This matters in a concrete failure scenario. If [[service-slm]] — the component that handles language model inference, and therefore the component most directly exposed to adversarial inputs — were to be fully compromised, the compromised code would find itself bounded by its Protection Domain. It holds no capability to reach service-fs. It cannot read the WORM block device. It cannot write to it. The attacker's foothold is geometrically isolated from the data store. This is the property the platform calls [[capability-geometry|Capability Geometry]].
 
 ## The Ring Architecture
 
-os-totebox organises its services into two concentric rings based on their proximity to storage.
+os-totebox organises its services into two [[three-ring-architecture|concentric rings]] based on their proximity to storage.
 
-**Ring 1** comprises the services that interact directly with durable data and external I/O: service-fs, service-input, service-extraction, and service-egress. service-fs holds the WORM block device capability exclusively — it is the only Protection Domain on the machine that can perform storage operations. No other service can reach the block device directly, regardless of its execution state.
+**Ring 1** comprises the services that interact directly with durable data and external I/O: [[service-fs-architecture|service-fs]], service-input, service-extraction, and service-egress. service-fs holds the WORM block device capability exclusively — it is the only Protection Domain on the machine that can perform storage operations. No other service can reach the block device directly, regardless of its execution state.
 
 **Ring 2** comprises the services that process, classify, and reason about data: service-content, service-people, service-email, and service-slm. These services communicate with Ring 1 through a defined and bounded inter-domain communication protocol. They can request that service-fs write a record; they cannot hold the capability to do so themselves.
 
@@ -61,7 +61,7 @@ An organisation deploying os-totebox is not relying on an administrator's dilige
 
 ## Relationship to the Broader Platform
 
-os-totebox is one of three purpose-specific bare-metal operating systems in the platform architecture. It operates alongside os-console, which provides the keyboard-native operator interface, and os-orchestration, which manages the Totebox Archive execution environment. The three systems share no kernel code paths and communicate only through defined network channels.
+os-totebox is one of three purpose-specific bare-metal operating systems in the platform architecture. It operates alongside os-console, which provides the keyboard-native operator interface, and [[os-orchestration]], which manages the [[totebox-archive|Totebox Archive]] execution environment. The three systems share no kernel code paths and communicate only through defined network channels.
 
 The intended deployment pattern is operator-owned hardware with a single physical network interface. The WORM vault is not a service accessible from the public internet; it is a node in a private network segment whose ingress paths are controlled by the same capability discipline that governs its storage.
 

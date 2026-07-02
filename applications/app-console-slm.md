@@ -20,12 +20,12 @@ paired_with: app-console-slm.es.md
 
 app-console-slm is a terminal user interface (TUI) cartridge for the operator console
 that displays the live state of the AI inference infrastructure. It shows the health
-of the local inference model, the status of remote GPU nodes, the depth of the
+of the local inference model, the status of [[yoyo-compute-substrate|remote GPU nodes]], the depth of the
 priority queue, the organizational graph entity count, and the current day's spending.
 It provides keyboard controls for adjusting the routing policy and toggling per-tier
-kill switches.
+[[spot-vm-lifecycle-kill-switch|kill switches]].
 
-The console runs in a terminal window on the same node as the inference gateway. It
+The console runs in a terminal window on the same node as the [[service-slm|inference gateway]]. It
 requires no browser, no network connection to an external service, and no
 authentication beyond local shell access. It is the operator's primary dashboard for
 understanding and controlling the inference layer.
@@ -95,7 +95,7 @@ what cost.
 ## Technical characteristics
 
 The console is a library crate that implements the Cartridge trait for the operator
-console chassis. It loads at slot F9. Communication with the inference gateway uses
+console chassis. It loads at [[use-f-key-model|slot F9]]. Communication with the inference gateway uses
 standard HTTP against the gateway's monitoring endpoints; no special protocol is
 required. The console performs only read operations by default; write operations
 (kill switch toggles, policy changes) require explicit keyboard confirmation.

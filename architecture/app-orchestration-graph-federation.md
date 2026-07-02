@@ -17,25 +17,25 @@ last_edited: 2026-06-23
 
 # DataGraph Federation: From app-orchestration-slm to app-orchestration-graph
 
-Every Totebox Archive in the PointSav platform maintains a sovereign DataGraph — a
+Every [[totebox-archive|Totebox Archive]] in the PointSav platform maintains a sovereign DataGraph — a
 graph of entities, relationships, and corpus metadata specific to its operational
 domain. The GIS archive holds geographic entities and spatial relationships. The
 editorial archive holds content entities and authorship graphs. These DataGraphs do
 not merge. They do not replicate. Each is authoritative for its own domain and
 inaccessible to any other archive by default.
 
-This sovereignty is a design invariant, not a limitation. The capability geometry of
+This sovereignty is a design invariant, not a limitation. The [[capability-geometry|capability geometry]] of
 the platform makes cross-archive DataGraph access impossible except through a single,
 auditable path: the DataGraph federation gateway.
 
 ## How Federation Works Today
 
-In the current platform (as of os-orchestration Phase 2), DataGraph federation is
+In the current platform (as of [[os-orchestration]] Phase 2), DataGraph federation is
 handled by `app-orchestration-slm` via `POST /v1/graph/federated`. When a downstream
 process requires a cross-archive entity query, the request arrives at the chassis. The
 chassis calls `FleetRegistry.list_full()` — which returns all registered Totebox fleet
 members with their full `doorman_endpoint` — and fans out the query to each member
-concurrently. Each Totebox Doorman queries its own `service-content` DataGraph and
+concurrently. Each Totebox [[doorman-protocol|Doorman]] queries its own `service-content` DataGraph and
 returns the result. The chassis aggregates the `FederatedGraphEntry` responses and
 returns a `FederatedGraphResponse`.
 

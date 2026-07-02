@@ -10,7 +10,7 @@ status: stable
 bcsc_class: no-disclosure-implication
 ---
 
-moonshot-toolkit is a Rust-only build orchestrator for seL4 unikernel images,
+moonshot-toolkit is a Rust-only build orchestrator for [[topic-sel4-unikernel-substrate|seL4 unikernel images]],
 replacing the Python and CMake toolchain provided by the seL4 Microkit framework. It
 reads a TOML system specification, derives a deterministic content-addressed build
 manifest, and orchestrates the cross-compilation and image assembly pipeline through to

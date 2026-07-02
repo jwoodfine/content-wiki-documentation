@@ -19,7 +19,7 @@ last_edited: 2026-06-23
 
 Doctrine §III.7 defines the Integrity Anchor pattern: a monthly operation that bundles the workspace state hash, manifest hashes, and ledger hash, then posts the result to Sigstore Rekor — a public, append-only transparency log. The result is independently verifiable: anyone can confirm that this state existed at this time, under this identity, without trusting Foundry's own infrastructure.
 
-The pattern is modelled on notarization combined with public timestamping. Notarization proves that a document existed; public timestamping proves it existed at or before a specific moment. The Rekor transparency log provides both: the inclusion proof in the log constitutes independent, third-party evidence.
+The pattern is modelled on notarization combined with public timestamping. Notarization proves that a document existed; public timestamping proves it existed at or before a specific moment. The Rekor transparency log provides both: the [[merkle-proofs-as-substrate-primitive|inclusion proof]] in the log constitutes independent, third-party evidence.
 
 ---
 
@@ -64,7 +64,7 @@ The ephemeral keypair is discarded after each run. Its purpose is to satisfy the
 
 ## 3. The Tlog Writeback Loop
 
-After Rekor accepts the entry, the anchor-emitter posts the full Rekor response back to `service-fs/v1/append` with a payload ID of `anchor-rekor-<unix-timestamp>`.
+After Rekor accepts the entry, the [[fs-anchor-emitter|anchor-emitter]] posts the full Rekor response back to `service-fs/v1/append` with a payload ID of `anchor-rekor-<unix-timestamp>`.
 
 This means the ledger contains a record of its own external anchoring. An auditor reading the ledger can find the Rekor tlog entry directly in the ledger's own history — they do not need to query Rekor separately to confirm that anchoring occurred. The `tree_size` in the anchored checkpoint provides the cursor at which to look for the anchor record (the anchor record appears at a cursor greater than `tree_size`, because the anchoring happens after the checkpoint is computed).
 
@@ -92,7 +92,7 @@ Old shard entries remain readable for an extended period after rotation. Histori
 
 The anchor-emitter binary (`fs-anchor-emitter`) executes four steps in sequence:
 
-1. **Checkpoint fetch** — `GET /v1/checkpoint` from service-fs, with `X-Foundry-Module-ID` header set to `FS_MODULE_ID`. Returns the signed checkpoint JSON. Exit 2 on failure.
+1. **Checkpoint fetch** — `GET /v1/checkpoint` from [[service-fs-architecture|service-fs]], with `X-Foundry-Module-ID` header set to `FS_MODULE_ID`. Returns the signed checkpoint JSON. Exit 2 on failure.
 
 2. **Hashedrekord construction** — SHA-256 digest of the checkpoint JSON computed in-process; ephemeral Ed25519 keypair generated via OS RNG; checkpoint bytes signed; SPKI DER of the verifying key encoded. The `hashedRekordRequestV002` JSON body is assembled.
 

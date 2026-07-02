@@ -30,7 +30,7 @@ User interface design is involved in a wide range of projects, from computer sys
 
 ## Relationship to user experience design
 
-User interface design is often discussed alongside user experience design, but the two disciplines are distinct. The distinction was articulated by Don Norman and Jakob Nielsen: UI design refers to the surface and overall look of a design — the visual and interactive elements a user encounters when using a product. UX design refers to the entire process of creating the user experience — the full range of factors that affect how a user perceives and interacts with a product, including but not limited to the visual interface. UI design is one component of UX design; UX design encompasses UI design plus user research, information architecture, content strategy, and post-deployment analysis.
+User interface design is often discussed alongside [[user-experience-design|user experience design]], but the two disciplines are distinct. The distinction was articulated by Don Norman and Jakob Nielsen: UI design refers to the surface and overall look of a design — the visual and interactive elements a user encounters when using a product. UX design refers to the entire process of creating the user experience — the full range of factors that affect how a user perceives and interacts with a product, including but not limited to the visual interface. UI design is one component of UX design; UX design encompasses UI design plus user research, information architecture, content strategy, and post-deployment analysis.
 
 ## Types of user interface
 

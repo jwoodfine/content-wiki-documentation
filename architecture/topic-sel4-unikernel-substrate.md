@@ -21,7 +21,7 @@ cites: []
 
 # seL4 Unikernel Substrate for os-console
 
-os-console is intended to run as a seL4 Microkit unikernel image in its final
+[[os-console-architecture|os-console]] is intended to run as a [[sel4-microkernel-substrate|seL4 Microkit]] unikernel image in its final
 production form (planned Phase H2). This article explains what that means, what
 already works, and what remains to be built.
 
@@ -77,8 +77,8 @@ that has the notification capability can receive.
 
 ## What Already Works
 
-moonshot-toolkit v0.3.1 (PointSav's build orchestrator, 35 tests passing) already produces
-bootable seL4 AArch64 images:
+[[moonshot-toolkit-build-orchestrator|moonshot-toolkit]] v0.3.1 (PointSav's build orchestrator, 35 tests passing) already produces
+bootable [[sel4-aarch64-qemu-substrate-target|seL4 AArch64]] images:
 
 ```toml
 # examples/hello-world.toml — working today
@@ -155,8 +155,8 @@ moonshot-sel4-vmm is intended to provide:
 - `notified(ch: u64)` and `protected(ch: u64, msginfo)` callbacks per the Microkit protocol
 - `DebugPutChar` for development-time output
 
-This crate is shared across all three OS-family binaries: os-console PDs, os-totebox
-service PDs, and os-orchestration app PDs all use the same runtime.
+This crate is shared across all three OS-family binaries: os-console PDs, [[os-totebox|os-totebox]]
+service PDs, and [[os-orchestration|os-orchestration]] app PDs all use the same runtime.
 
 ---
 

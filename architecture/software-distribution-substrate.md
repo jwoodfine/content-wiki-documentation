@@ -18,7 +18,7 @@ cites: []
 ---
 
 The PointSav software distribution substrate is a three-component system that handles
-binary release hosting, storefront and license issuance, and on-chain payment
+binary release hosting, storefront and license issuance, and [[direct-payment-settlement|on-chain payment]]
 verification. The three components — a release server, a marketplace storefront, and a
 payment watcher — run as separate services accessible at `software.pointsav.com`. Each
 component has a single, bounded responsibility, and together they form a custodian-free

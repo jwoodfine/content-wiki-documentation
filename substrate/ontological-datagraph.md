@@ -43,7 +43,7 @@ extraction service writes "ACME Corp is headquartered in Toronto," both facts ex
 in the same graph, attached to the same entity. A query about ACME Corp retrieves
 both facts in a single traversal.
 
-A separate graph per service would require the inference router to query multiple
+A separate graph per service would require the [[soft-slm-tiered-gateway|inference router]] to query multiple
 sources, merge results, and resolve conflicts — complexity that produces worse
 answers at higher operational cost. Industry-scale knowledge graph systems converge
 on a unified semantic layer regardless of how many services produce the underlying data.
@@ -60,7 +60,7 @@ is true about them at a given point in time. It does not store transactional rec
 - A property is owned by a company with a specific classification (entities with a property edge).
 
 **Not in the graph:**
-- Individual invoice line items (these are transactional records; they belong in an immutable append-only ledger).
+- Individual invoice line items (these are transactional records; they belong in an [[worm-ledger-architecture|immutable append-only ledger]]).
 - Journal entries (double-entry accounting records; belong in the bookkeeping ledger).
 - Raw document text (belongs in the document store; only the extracted entities from that text belong in the graph).
 
@@ -130,7 +130,7 @@ encodes that structure explicitly and makes it available at inference time.
 
 ## How entities enter the graph
 
-Entities enter the graph through an extraction pipeline. Documents, emails, meeting
+Entities enter the graph through an [[service-extraction|extraction pipeline]]. Documents, emails, meeting
 notes, and other prose sources arrive in a watched input directory. The extraction
 service reads each source, sends the text to the inference router for structured
 entity extraction using a grammar-constrained schema, and writes the resulting
@@ -171,7 +171,7 @@ data should not leave the organization's control.
 The graph runs embedded within the deployment node. Its contents are never sent to
 an external inference provider as training data. Context injected into prompts for
 external Tier C requests is subject to the organization's data classification policy;
-the gateway enforces this through the structured-data boundary rule, which prevents
+the gateway enforces this through the [[adr-07-zero-ai-in-ring-1|structured-data boundary rule]], which prevents
 raw business records from crossing the external inference boundary.
 
 The organization owns the graph database file, the ontology definitions, the entity

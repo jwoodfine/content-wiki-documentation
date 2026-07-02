@@ -16,14 +16,14 @@ When an automated pipeline depends on a preemptible or spot VM, the lifecycle of
 must be owned by a single controller. Two independent timers that each hold the authority
 to start the VM will eventually fire at the same time, leaving the VM running between
 cycles at full cost with no automated stop path. This document describes the single-controller
-architecture used for the Yo-Yo batch node and the sentinel file kill switch that provides
+architecture used for the [[yoyo-compute-substrate|Yo-Yo batch node]] and the sentinel file kill switch that provides
 immediate operator control.
 
 ## The two-timer problem
 
 The Yo-Yo batch pipeline initially had two timers operating independently:
 
-- `local-yoyo-daily.timer` — ran the daily enrichment cycle, which started and stopped the VM
+- `local-yoyo-daily.timer` — ran the [[yoyo-daily-enrichment-cycle|daily enrichment cycle]], which started and stopped the VM
 - `local-corpus-threshold.timer` — checked the training corpus and started the VM if the threshold was exceeded
 
 Both timers called `gcloud instances start`. Only the daily cycle timer called `gcloud instances stop`.

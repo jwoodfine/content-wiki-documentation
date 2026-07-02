@@ -17,7 +17,7 @@ paired_with: app-orchestration-command-publication-flow.es.md
 cites: []
 ---
 
-`app-orchestration-command` is the coordinator service that moves tested code from individual Totebox Archives into the canonical `pointsav/*` and `woodfine/*` repositories. This article explains what publication means, who may initiate it, and how the system behaves when the coordinator is unavailable.
+`app-orchestration-command` is the coordinator service that moves tested code from individual [[totebox-archive|Totebox Archives]] into the canonical `pointsav/*` and `woodfine/*` repositories. This article explains what publication means, who may initiate it, and how the system behaves when the coordinator is unavailable.
 
 ## What Publication Means
 

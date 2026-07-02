@@ -93,7 +93,7 @@ The process of managing a business or non-profit organization, so that it remain
 A style sheet language used for describing the presentation of a document written in a markup language such as HTML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.
 
 ### CCTV Data Collection
-CCTV data collection refers to the ingestion of video surveillance feeds; in a PointSav deployment, such streams enter through the os-totebox secure ingestion boundary under the six-tier sovereignty matrix and are never routed through the public internet.
+CCTV data collection refers to the ingestion of video surveillance feeds; in a PointSav deployment, such streams enter through the os-totebox secure ingestion boundary under the [[six-tier-sovereignty-matrix|six-tier sovereignty matrix]] and are never routed through the public internet.
 
 - **Chart of Accounts**
 ### Cloud Computing
@@ -146,13 +146,13 @@ A CMS manages creation and publication of digital content; in PointSav, this fun
 <hr>
 
 ### Data Entry
-Data entry is the manual input of structured information into a system; in PointSav, all data writes by AI components are prohibited — only deterministic, human-verified writes reach the knowledge graph per SYS-ADR-07.
+Data entry is the manual input of structured information into a system; in PointSav, all data writes by AI components are prohibited — only deterministic, human-verified writes reach the knowledge graph per [[adr-07-zero-ai-in-ring-1|SYS-ADR-07]].
 
 ### Data Migration
-Data migration is the transfer of data between storage systems or formats; in PointSav, migrations are handled by service-content's deterministic ingestion pipeline and subject to the worm-ledger-design append-only guarantee.
+Data migration is the transfer of data between storage systems or formats; in PointSav, migrations are handled by service-content's deterministic ingestion pipeline and subject to the [[worm-ledger-design|worm-ledger-design]] append-only guarantee.
 
 ### Decentralized Network
-A decentralized network distributes functions and data across multiple nodes without a single controlling authority; PointSav implements this as a sovereign mesh topology with deterministic routing and cryptographic anchoring in os-infrastructure.
+A decentralized network distributes functions and data across multiple nodes without a single controlling authority; PointSav implements this as a [[sovereign-mesh|sovereign mesh]] topology with deterministic routing and cryptographic anchoring in os-infrastructure.
 
 ### Design System
 A design system is a collection of reusable components, tokens, and documented patterns that standardize a product's visual and interactive language; PointSav's implementation is pointsav-design-system, a DTCG-format vault delivered as a Git repository.
@@ -178,7 +178,7 @@ A virtual model designed to accurately reflect a physical object. In the context
 
 - **Disclaimer**
 ### Distributed Network
-A distributed network spreads computation and storage across many nodes, each capable of independent operation; PointSav's fleet implements this through os-orchestration coordinating multiple ToteboxOS archives.
+A distributed network spreads computation and storage across many nodes, each capable of independent operation; PointSav's fleet implements this through [[os-orchestration|os-orchestration]] coordinating multiple ToteboxOS archives.
 
 ### Docker
 *Docker*
@@ -485,7 +485,7 @@ A building that uses technology to automatically control its operations, includi
 Monitoring of user activity or system behaviour for security or analytical purposes. PointSav replaces third-party surveillance dependencies with zero-cookie first-party telemetry pipelines.
 
 ### System Design
-System design is the process of defining the architecture, components, and interfaces of a system to satisfy specified requirements; PointSav's platform design is governed by the three-ring-architecture and the six-tier sovereignty matrix.
+System design is the process of defining the architecture, components, and interfaces of a system to satisfy specified requirements; PointSav's platform design is governed by the [[three-ring-architecture|three-ring-architecture]] and the six-tier sovereignty matrix.
 
 
 ## T

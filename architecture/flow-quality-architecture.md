@@ -17,7 +17,7 @@ paired_with: flow-quality-architecture.es.md
 cites: []
 ---
 
-The Totebox knowledge flow turns prose into two durable assets: an ontological DataGraph of entities, and LoRA adapters that specialise a local language model. Both are served by `service-slm` (the Doorman) and `service-content` (the DataGraph).
+The Totebox knowledge flow turns prose into two durable assets: an [[ontological-datagraph|ontological DataGraph]] of entities, and LoRA adapters that specialise a local language model. Both are served by `service-slm` (the [[doorman-protocol|Doorman]]) and `service-content` (the DataGraph).
 
 ```
 prose ─▶ service-extraction ─▶ CORPUS_*.json

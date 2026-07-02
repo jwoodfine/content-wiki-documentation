@@ -83,7 +83,7 @@ The primary reader is a software engineer, designer, or developer. They have tec
 
 **Accessibility layer pattern:**
 
-*"**service-slm** routes every AI request to the cheapest compute tier that meets the deadline, without the caller specifying which tier. Local inference first (5 s), cloud burst second (10 s), external API last (30 s). A request that resolves locally never leaves the customer's infrastructure — and never appears on a cloud billing statement."*
+*"**[[service-slm|service-slm]]** routes every AI request to the cheapest compute tier that meets the deadline, without the caller specifying which tier. Local inference first (5 s), cloud burst second (10 s), external API last (30 s). A request that resolves locally never leaves the customer's infrastructure — and never appears on a cloud billing statement."*
 
 The last sentence is the Corporate accessibility layer. An institutional reader scanning section headers gets: "it can run locally, and you pay nothing when it does."
 

@@ -21,7 +21,7 @@ cites: []
 
 # The Three-Binary Architecture: os-console, os-totebox, os-orchestration
 
-Totebox Orchestration is delivered through three distinct binary operating environments.
+[[totebox-orchestration|Totebox Orchestration]] is delivered through three distinct binary operating environments.
 Each has a distinct role, a distinct deployment target, and a distinct set of hosted
 applications. Together they form a complete system for sovereign data management.
 
@@ -71,12 +71,12 @@ applications. Together they form a complete system for sovereign data management
 
 ## os-totebox: Sovereign WORM Data Vault
 
-os-totebox is the customer-side deployment. It runs on hardware under the customer's
+[[os-totebox|os-totebox]] is the customer-side deployment. It runs on hardware under the customer's
 physical control — a NUC-class machine, a GCP VM, or a private server. Its function is
-to host the Ring 1 and Ring 2 services:
+to host the [[three-ring-architecture|Ring 1 and Ring 2]] services:
 
 **Ring 1 — Boundary Ingest:**
-- `service-fs` — WORM append-only filesystem; every write is a ledger entry
+- `service-fs` — [[worm-ledger-architecture|WORM append-only filesystem]]; every write is a ledger entry
 - `service-input` — structured input ingestion from os-console operators
 - `service-extraction` — entity extraction pipeline from email and document payloads
 - `service-egress` — controlled outbound data flow
@@ -87,11 +87,11 @@ to host the Ring 1 and Ring 2 services:
 - `service-email` — email archive bridge (Microsoft Exchange → Maildir)
 - `service-slm` — local AI inference gateway (Tier A)
 
-Ring 3 (optional AI, Tier B+ inference) is hosted by os-orchestration, not os-totebox.
+Ring 3 (optional AI, Tier B+ inference) is hosted by [[os-orchestration|os-orchestration]], not os-totebox.
 A Totebox ships with Rings 1 and 2. Ring 3 is an opt-in paid tier.
 
 **Intended final form (Phase H2, planned):** os-totebox boots bare metal or as a VM
-into a seL4 Microkit image. Each service runs as a seL4 Protection Domain. No Linux
+into a [[sel4-microkernel-substrate|seL4 Microkit]] image. Each service runs as a seL4 Protection Domain. No Linux
 shell. No package manager. No init system. The service-fs PD holds the WORM storage
 device capability; no other PD can reach the physical storage directly.
 
@@ -99,13 +99,13 @@ device capability; no other PD can reach the physical storage directly.
 
 ## os-console: Operator Terminal Surface
 
-os-console runs on the operator's personal machine. It is the interface through which
+[[os-console-architecture|os-console]] runs on the operator's personal machine. It is the interface through which
 the operator interacts with Totebox services. It does not store data — it renders views
 of data that lives in os-totebox.
 
 os-console is deployed as a node instance (naming prefix: `node-console-*`). The
 operator boots it or runs it as an application. It connects outbound to the Totebox,
-authenticates via machine pairing (F11), and presents the authorized cartridge set.
+authenticates via [[pairing-as-permission|machine pairing]] (F11), and presents the authorized cartridge set.
 
 **Cartridges (app-console-*) are the rendering unit:**
 
@@ -141,7 +141,7 @@ ledger. It computes over capability-granted views of Totebox data.
 | app-orchestration-slm | Yo-Yo GPU broker (Tier B); multi-Totebox SLM federation | :9180 |
 | app-orchestration-market | Data marketplace UI (planned) | — |
 | app-orchestration-exchange | Ad exchange gateway (planned) | — |
-| app-orchestration-gis | Continental-scale GIS processing | deployed |
+| [[app-orchestration-gis|app-orchestration-gis]] | Continental-scale GIS processing | deployed |
 | app-orchestration-bim | Multi-archive BIM federation | — |
 
 **Commercial model:** A single Totebox runs Rings 1–2 at no licensing
@@ -157,7 +157,7 @@ routing through the capability-broker PD.
 
 ## Capability Geometry Across All Three
 
-The Capability Geometry model applies at each layer with the same mechanism but a
+The [[capability-geometry|Capability Geometry]] model applies at each layer with the same mechanism but a
 different scope:
 
 | Layer | PD boundary | What it bounds |
@@ -172,7 +172,7 @@ moonshot-sel4-vmm provides the PD runtime that makes Rust code run inside each
 Protection Domain.
 
 The three-binary architecture is one system — one seL4 proof, one capability substrate,
-one moonshot-toolkit build pipeline — deployed at three distinct tiers.
+one [[moonshot-toolkit-build-orchestrator|moonshot-toolkit]] build pipeline — deployed at three distinct tiers.
 
 ---
 

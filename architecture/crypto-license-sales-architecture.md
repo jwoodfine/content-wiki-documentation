@@ -19,7 +19,7 @@ cites: []
 
 A software license purchase on `software.pointsav.com` flows from a Polygon USDC
 transfer on-chain to an Ed25519-signed token that authorises binary downloads. The
-design is custodian-free: the customer never creates an account, the vendor never holds
+design is [[direct-payment-settlement|custodian-free]]: the customer never creates an account, the vendor never holds
 customer funds beyond the moment of settlement, and no intermediary is required to route
 the payment. The architecture has three moving parts — a payment watcher, a storefront,
 and a release server — described here at the level of their interactions.
@@ -105,7 +105,7 @@ subsequent call is served from disk with no latency beyond local I/O.
 
 A separate claim endpoint records an off-chain association between a binary SHA-256 hash
 and the buyer's wallet address. This forms the basis for a future on-chain ownership
-attestation. On-chain minting capability is planned for a future version of the system;
+[[crypto-attestation|attestation]]. On-chain minting capability is planned for a future version of the system;
 the claim record is written now so the data is available when that capability is added.
 
 ## See also

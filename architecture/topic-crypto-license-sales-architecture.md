@@ -22,7 +22,7 @@ cites: []
 # Crypto License Sales Architecture
 
 The crypto license sales architecture describes how a customer moves from expressing
-intent to purchase through on-chain payment to receiving a license token that grants
+intent to purchase through [[direct-payment-settlement|on-chain payment]] to receiving a license token that grants
 binary access — all without a traditional payment processor or identity provider in
 the critical path.
 

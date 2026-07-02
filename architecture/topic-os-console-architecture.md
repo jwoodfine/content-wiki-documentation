@@ -21,8 +21,8 @@ cites: []
 
 # OS Console Architecture
 
-The OS Console is a terminal-native operator interface for Totebox sessions. It presents
-a multi-surface panel system driven by function keys, where each panel is implemented as
+The OS Console is a terminal-native operator interface for [[totebox-session|Totebox sessions]]. It presents
+a multi-surface panel system driven by [[use-f-key-model|function keys]], where each panel is implemented as
 an independent `Cartridge` that attaches to the console chassis at a designated F-key
 slot.
 
@@ -60,7 +60,7 @@ support.
 
 ### F9 — SLM (`app-console-slm`)
 
-`SlmCartridge` renders a live health dashboard for the local inference gateway. It polls
+`SlmCartridge` renders a live health dashboard for the [[doorman-protocol|local inference gateway]]. It polls
 the gateway health endpoint every 10 seconds and displays:
 
 - Tier A/B/C availability and circuit-breaker state

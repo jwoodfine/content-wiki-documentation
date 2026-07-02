@@ -44,7 +44,7 @@ The OVF format allows the software vendor to specify minimum hardware requiremen
 
 **Pre-configured state.** A virtual appliance arrives with all required configuration applied: database connection strings, service user accounts, SSL certificates (or certificate request procedures), and application-level configuration are set during appliance construction and do not require per-deployment configuration. The deploying organization provides only environment-specific parameters: network address, external identity provider, storage paths.
 
-**Minimal OS footprint.** Virtual appliances typically incorporate a Just Enough Operating System (JeOS) layer rather than a full general-purpose distribution. The minimal OS reduces image size, memory consumption, attack surface, and the patching overhead required to maintain the appliance over its operational life.
+**Minimal OS footprint.** Virtual appliances typically incorporate a [[just-enough-operating-system|Just Enough Operating System]] (JeOS) layer rather than a full general-purpose distribution. The minimal OS reduces image size, memory consumption, attack surface, and the patching overhead required to maintain the appliance over its operational life.
 
 **Immutability model.** In a well-constructed virtual appliance, the operating system and application layers are treated as immutable: updates are applied by replacing the entire appliance image rather than patching the running system. This approach eliminates configuration drift and makes the deployed appliance identical to the tested appliance.
 

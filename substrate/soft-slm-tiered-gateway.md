@@ -92,7 +92,7 @@ reach Tier C fall back to Tier A.
 Every request carries a complexity hint and, optionally, a tier label. The gateway
 selects the tier using this decision sequence:
 
-1. If a kill switch is closed for the requested tier, the request is rejected or
+1. If a [[spot-vm-lifecycle-kill-switch|kill switch]] is closed for the requested tier, the request is rejected or
    falls to the next tier depending on configuration.
 2. If an explicit tier label is present, the request is routed to that tier.
 3. If no label is present, the routing policy applies:
@@ -151,10 +151,10 @@ slow graph service from blocking inference.
 
 ## The MCP server
 
-The gateway exposes an organizational memory interface via the Model Context Protocol
+The gateway exposes an organizational memory interface via the [[mcp-substrate-protocol|Model Context Protocol]]
 at a second port. Any MCP-capable AI client can connect to this interface using its
 built-in subscription — no separate API key is required. The client's reasoning
-capability combines with the gateway's organizational knowledge graph to produce
+capability combines with the gateway's [[ontological-datagraph|organizational knowledge graph]] to produce
 responses that are grounded in the organization's actual data.
 
 This is the primary path for interactive use by operators who already have a

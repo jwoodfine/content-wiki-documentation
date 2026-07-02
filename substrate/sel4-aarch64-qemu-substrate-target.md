@@ -10,10 +10,10 @@ status: stable
 bcsc_class: no-disclosure-implication
 ---
 
-The unikernel images in this platform run on the seL4 microkernel targeting the AArch64
+The [[topic-sel4-unikernel-substrate|unikernel images]] in this platform run on the [[sel4-microkernel-substrate|seL4 microkernel]] targeting the AArch64
 instruction set architecture, with QEMU's `virt` machine model as the primary
 emulation environment for development, testing, and CI. This target was selected
-through a set of architecture decisions (Group 3A and Group 3D) made in May 2026
+through a set of [[architecture-decisions|architecture decisions]] (Group 3A and Group 3D) made in May 2026
 and is the hardware foundation for all Phase 1C and Phase 2 work.
 
 ## 1. seL4 as the Microkernel Foundation
@@ -23,7 +23,7 @@ maintained by the seL4 Foundation. Its defining property is a machine-checked pr
 of functional correctness: the kernel implementation is proven to match a formal
 specification at the Isabelle/HOL level. This proof covers the AArch64 target.
 
-seL4 uses a capability-based access control model. Every kernel resource — memory,
+seL4 uses a [[capability-based-security|capability-based access control model]]. Every kernel resource — memory,
 threads, IPC endpoints, interrupt handlers — is accessible only through a capability,
 a typed unforgeable token held in a kernel-managed capability space. Sharing a
 resource means delegating a capability; revocation removes it. This model is the

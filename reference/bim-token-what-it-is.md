@@ -19,7 +19,7 @@ Building Information Modelling (BIM) produces detailed digital representations o
 
 ## Definition
 
-A BIM Token is a composable built-environment specification unit — the structural counterpart of a Design System Token. Where a Design System Token encodes a design decision (a colour, a spacing unit, a component recipe) as a reusable, aliasable value that all conforming surfaces must honour, a BIM Token encodes a built-environment element decision across three simultaneous axes:
+A BIM Token is a composable built-environment specification unit — the structural counterpart of a [[design-system-substrate|Design System]] Token. Where a Design System Token encodes a design decision (a colour, a spacing unit, a component recipe) as a reusable, aliasable value that all conforming surfaces must honour, a BIM Token encodes a built-environment element decision across three simultaneous axes:
 
 1. **What the element IS** — its IFC entity class, Uniclass 2015 classification, bSDD identity URI, and applicable property set templates.
 2. **What it MUST satisfy** — the regulatory requirements imposed by its jurisdiction, expressed as jurisdictional overlays (IDS 1.0 constraint files and IFC geometric exclusion fragments).

@@ -17,7 +17,7 @@ last_edited: 2026-06-23
 
 # os-orchestration: The Stateless Aggregation Layer
 
-The PointSav platform is built around a deliberate architectural boundary: the aggregation layer that coordinates work across Totebox Archives holds no customer data, stores no keys, and writes nothing to any WORM ledger. This layer is `os-orchestration`.
+The PointSav platform is built around a deliberate architectural boundary: the aggregation layer that coordinates work across [[totebox-archive|Totebox Archives]] holds no customer data, stores no keys, and writes nothing to any [[worm-ledger-architecture|WORM ledger]]. This layer is `os-orchestration`.
 
 Understanding what `os-orchestration` is requires first understanding what it is not. It is not a database, not a credential store, and not a custodian. Every archive in the PointSav network maintains its own isolated state — its own WORM audit trail, its own key material, its own DataGraph segment. `os-orchestration` sits above that layer as a coordinator: it routes requests, enforces capability boundaries, and brokers cross-archive work without ever touching the underlying data.
 
@@ -27,7 +27,7 @@ Access between Totebox Archives is governed by Protection Domains (PDs). Each ar
 
 `os-orchestration` operates on the federation tier, above the per-archive PDs. It can observe that a request exists and route it to the appropriate capability broker, but it cannot authorize the request itself. Authorization lives where the data lives — in the archive.
 
-This design reflects Capability Geometry at the federation layer. Each organization's data is enclosed within a capability boundary that `os-orchestration` cannot cross on behalf of another organization. A request from one organization cannot be routed to another organization's archive by exploiting the aggregation layer. The geometry of the system makes this impossible by construction, not by policy.
+This design reflects [[capability-geometry|Capability Geometry]] at the federation layer. Each organization's data is enclosed within a capability boundary that `os-orchestration` cannot cross on behalf of another organization. A request from one organization cannot be routed to another organization's archive by exploiting the aggregation layer. The geometry of the system makes this impossible by construction, not by policy.
 
 ## What Stateless Means for Trust
 
@@ -47,9 +47,9 @@ Revenue accrues at the aggregation layer for Tier B and marketplace transactions
 
 ## The Yo-Yo GPU Broker
 
-`app-orchestration-slm` is the commercial Yo-Yo GPU broker, implementing the on-demand GPU allocation mechanism. When a Totebox Archive submits an inference request that exceeds local Tier A capacity — either because the model is too large for the local hardware or because concurrent load has exhausted available compute — the request is routed to `app-orchestration-slm`.
+`app-orchestration-slm` is the commercial [[yoyo-compute-substrate|Yo-Yo GPU broker]], implementing the on-demand GPU allocation mechanism. When a Totebox Archive submits an inference request that exceeds local Tier A capacity — either because the model is too large for the local hardware or because concurrent load has exhausted available compute — the request is routed to `app-orchestration-slm`.
 
-The broker holds a pool of GPU capacity drawn from the PointSav Private Network and from contracted external providers. It allocates capacity on demand, routes the inference request, and returns the result to the originating archive. The archive never requires its own GPU hardware for Tier B workloads; the broker provides elasticity.
+The broker holds a pool of GPU capacity drawn from the [[pointsav-private-network|PointSav Private Network]] and from contracted external providers. It allocates capacity on demand, routes the inference request, and returns the result to the originating archive. The archive never requires its own GPU hardware for Tier B workloads; the broker provides elasticity.
 
 The name reflects the design metaphor: compute capacity extends outward from the archive on demand and retracts when the request completes. No persistent GPU allocation is held by the archive between requests.
 

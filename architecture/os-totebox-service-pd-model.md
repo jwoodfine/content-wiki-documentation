@@ -17,7 +17,7 @@ last_edited: 2026-06-23
 
 # How service-* Become seL4 Protection Domains on os-totebox
 
-os-totebox is the Sovereign WORM Data Vault tier of the three-binary architecture. It runs as a Type I bare-metal OS on top of the seL4 microkernel — no shell, no root process, no init system, no package manager. Every service that handles durable data is a seL4 Protection Domain (PD): a hardware-enforced isolation unit whose capability set is fixed at build time and cannot be extended at runtime. This article explains what that means, why the design takes the shape it does, and how two planned tools — moonshot-sel4-vmm and moonshot-toolkit — turn ordinary Rust service binaries into a formally verified PD graph.
+[[os-totebox]] is the Sovereign WORM Data Vault tier of the [[topic-three-binary-architecture|three-binary architecture]]. It runs as a Type I bare-metal OS on top of the [[sel4-microkernel-substrate|seL4 microkernel]] — no shell, no root process, no init system, no package manager. Every service that handles durable data is a seL4 Protection Domain (PD): a hardware-enforced isolation unit whose capability set is fixed at build time and cannot be extended at runtime. This article explains what that means, why the design takes the shape it does, and how two planned tools — moonshot-sel4-vmm and [[moonshot-toolkit-build-orchestrator|moonshot-toolkit]] — turn ordinary Rust service binaries into a formally verified PD graph.
 
 ## The toolchain that makes it work
 
@@ -25,7 +25,7 @@ Two components are intended to assemble the os-totebox system image (Phase H1, p
 
 **moonshot-sel4-vmm** is a ~300-line Rust crate that acts as the PD runtime. It provides the `sel4_main!` entry point macro that each service binary uses in place of `fn main()`, initialises the IPC channels between PDs at boot, and registers each PD's heartbeat with the watchdog. The crate targets the seL4 Microkit ABI — it does not use the external rust-sel4 crate. That external dependency was evaluated and rejected; the sovereign runtime is the only seL4 Rust binding in use.
 
-**moonshot-toolkit** is the system image builder (v0.3.1, 35 tests, Phase 1C complete). It reads a TOML system specification — `examples/os-totebox.toml` — and emits a `.system` file describing the full PD graph: which PDs exist, what capabilities each one holds, how IPC endpoints are wired, and what memory regions are assigned. The toolkit's image verifier asserts, at build time, that the block device capability appears exactly once in the grant table — held by service-fs PD and by no other PD. If that assertion fails, the build fails.
+**moonshot-toolkit** is the system image builder (v0.3.1, 35 tests, Phase 1C complete). It reads a TOML system specification — `examples/os-totebox.toml` — and emits a `.system` file describing the full PD graph: which PDs exist, what capabilities each one holds, how IPC endpoints are wired, and what memory regions are assigned. The toolkit's image verifier asserts, at build time, that the block device capability appears exactly once in the grant table — held by [[service-fs-architecture|service-fs]] PD and by no other PD. If that assertion fails, the build fails.
 
 The TOML spec is the single authoritative declaration of the PD graph. A developer who wants to understand which service can reach which resource reads `os-totebox.toml`, not a runtime configuration file or a policy document.
 
@@ -49,7 +49,7 @@ The architecture does not use a general-purpose microservice mesh. Each PD has a
 
 ## Startup sequence — why this order
 
-The startup sequence enforces a strict dependency chain. watchdog-pd starts first because it must be able to preempt any other PD at any time; if it started after the services it monitors, there would be a window during which a failing service could go undetected. service-fs PD starts second because it holds the block device capability — no Ring 2 service may begin until the WORM ledger enforcer is healthy. Any attempt by a Ring 2 service to write to durable storage before service-fs PD is ready would be refused at the IPC boundary, not merely rejected by a configuration check.
+The startup sequence enforces a strict dependency chain. watchdog-pd starts first because it must be able to preempt any other PD at any time; if it started after the services it monitors, there would be a window during which a failing service could go undetected. service-fs PD starts second because it holds the block device capability — no [[three-ring-architecture|Ring 2]] service may begin until the [[worm-ledger-architecture|WORM ledger]] enforcer is healthy. Any attempt by a Ring 2 service to write to durable storage before service-fs PD is ready would be refused at the IPC boundary, not merely rejected by a configuration check.
 
 After service-fs PD reaches a healthy state, network-pd starts. It holds the VirtIO-net device cap and routes all HTTP traffic for Ring 2 services. Ring 2 services cannot expose an HTTP surface until network-pd is up, so the ordering is again structural, not advisory.
 
@@ -79,7 +79,7 @@ os-totebox is one surface in a three-binary deployment:
 - **os-totebox** is the data persistence tier. It is the only surface that holds WORM block device capabilities and signs ledger checkpoints.
 - **os-orchestration** is the stateless aggregation layer. It coordinates Tier B GPU inference across the Yo-Yo broker (:9180) but never touches the WORM ledger directly.
 
-Inference on os-totebox is Tier A only — local OLMo 7B via Doorman (:9080). Tier B (GPU broker) and Tier C (external API) are routed through os-orchestration's app-orchestration-slm crate. This boundary is enforced by the PD capability graph: service-slm PD on os-totebox holds an IPC cap to the local OLMo engine only. It holds no capability that reaches an external network endpoint.
+Inference on os-totebox is Tier A only — local OLMo 7B via Doorman (:9080). Tier B (GPU broker) and Tier C (external API) are routed through [[os-orchestration]]'s app-orchestration-slm crate. This boundary is enforced by the PD capability graph: service-slm PD on os-totebox holds an IPC cap to the local OLMo engine only. It holds no capability that reaches an external network endpoint.
 
 The WORM ledger is the authoritative audit record for the system. Every write that passes through service-fs PD is append-only and checksummed. No PD can modify an existing ledger entry; the seL4 capability model makes that structurally impossible.
 

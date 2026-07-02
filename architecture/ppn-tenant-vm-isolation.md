@@ -18,14 +18,14 @@ forbidden_terms_cleared: true
 cites: []
 ---
 
-The PointSav Private Network (PPN) resource pool allows multiple tenants to run virtual machines on a shared set of physical and cloud nodes. This article describes the isolation model: what separation is provided, what is not, and the planned path to stronger network-level isolation.
+The [[pointsav-private-network|PointSav Private Network]] (PPN) resource pool allows multiple tenants to run virtual machines on a shared set of physical and cloud nodes. This article describes the isolation model: what separation is provided, what is not, and the planned path to stronger network-level isolation.
 
 ## The stack
 
 Every virtual machine request passes through three layers before a QEMU process starts on a physical node:
 
-- **Tenant proxy** — authenticates the caller, enforces namespace and quota, and is the sole external entry point
-- **Fleet controller** — manages placement and delegates to the host agent; accepts connections only from the tenant proxy and internal mesh participants
+- **[[service-vm-tenant|Tenant proxy]]** — authenticates the caller, enforces namespace and quota, and is the sole external entry point
+- **[[service-vm-fleet|Fleet controller]]** — manages placement and delegates to the host agent; accepts connections only from the tenant proxy and internal mesh participants
 - **Host agent** — spawns the QEMU process on the selected node; not reachable by external callers
 
 A caller who has the fleet controller's address but not a valid tenant credential cannot reach the fleet controller directly — the authentication layer cannot be bypassed.
@@ -52,7 +52,7 @@ Tenant credentials are opaque bearer tokens that map to a tenant identity in the
 
 ### Audit trail
 
-Every tenant lifecycle operation — create VM, destroy VM — is recorded in two places: a local append-only file on the tenant proxy, and the WORM ledger. The WORM record includes the tenant identity, operation type, VM identifier, timestamp, and outcome. WORM entries cannot be overwritten or deleted.
+Every tenant lifecycle operation — create VM, destroy VM — is recorded in two places: a local append-only file on the tenant proxy, and the [[worm-ledger-architecture|WORM ledger]]. The WORM record includes the tenant identity, operation type, VM identifier, timestamp, and outcome. WORM entries cannot be overwritten or deleted.
 
 ## What tenant isolation does not provide
 
@@ -64,7 +64,7 @@ All virtual machines on a given physical node egress through the same host netwo
 
 Anyone with administrative access to the physical machine that hosts a VM can read the guest's disk image and memory. This is a property of the current QEMU-based virtualization model, not a limitation of the PPN control plane.
 
-The intended response to both limitations is the seL4 isolation layer, described below.
+The intended response to both limitations is the [[sel4-microkernel-substrate|seL4]] isolation layer, described below.
 
 ## Quota enforcement
 

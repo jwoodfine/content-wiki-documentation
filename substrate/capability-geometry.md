@@ -48,7 +48,7 @@ surface's logical structure.
 
 ## The seL4 Capability Model: Authorization as a Formal DAG
 
-The seL4 microkernel implements a different model. Access to any resource — a memory
+The [[sel4-microkernel-substrate|seL4 microkernel]] implements a different model. Access to any resource — a memory
 region, a network endpoint, a storage device — requires holding an unforgeable capability
 token for that resource. Not a credential. Not a session token. A mathematical object
 issued by the kernel itself.
@@ -98,7 +98,7 @@ a policy enforced by software that can be subverted.
 
 ## PointSav Implementation: system-core and system-ledger
 
-The capability substrate in Totebox Orchestration is implemented in two Rust crates:
+The capability substrate in [[totebox-orchestration|Totebox Orchestration]] is implemented in two Rust crates:
 
 **system-core v1.0.0** defines the capability type system:
 
@@ -113,7 +113,7 @@ pub struct Capability {
 ```
 
 A `Capability` is not a session token. It is a typed, rights-bounded, optionally time-limited
-object anchored to the WORM audit ledger.
+object anchored to the [[worm-ledger-architecture|WORM audit ledger]].
 
 **system-ledger v1.0.0** provides the verdict function:
 
@@ -127,14 +127,14 @@ pub enum Verdict {
 
 `consult_capability()` on `InMemoryLedger` evaluates a capability invocation against the
 current ledger state and returns a `Verdict`. The ledger is append-only (WORM) and anchored
-via RFC 9162 Merkle proof chains. The audit trail for F12 (SYS-ADR-10) routes through
+via RFC 9162 [[merkle-proofs-as-substrate-primitive|Merkle proof]] chains. The audit trail for F12 (SYS-ADR-10) routes through
 this verdict function.
 
 ---
 
 ## Machine Pairing as Capability Minting
 
-F11 machine pairing in os-console is the intended capability minting ceremony for Totebox
+[[pairing-as-permission|F11 machine pairing]] in os-console is the intended capability minting ceremony for Totebox
 access (planned; Phase H3 of the os-console substrate roadmap):
 
 1. The Totebox pairing authority holds a `CapabilityType::CNode` — the root of its
@@ -169,10 +169,10 @@ machine-level identity anchor for Totebox Orchestration.
 ## Leapfrog 2030 Alignment
 
 Capability Geometry is the Totebox security model intended to be in place by the
-Leapfrog 2030 milestone. The seL4 Microkit substrate (Doctrine claim #34, Two-Bottoms
+[[leapfrog-2030-architecture|Leapfrog 2030]] milestone. The seL4 Microkit substrate (Doctrine claim #34, Two-Bottoms
 Sovereign Substrate) provides the kernel layer. system-core and system-ledger provide
-the Rust-language capability substrate above it. The three-binary architecture
-(os-console, os-totebox, os-orchestration) implements Capability Geometry at each
+the Rust-language capability substrate above it. The [[topic-three-binary-architecture|three-binary architecture]]
+(os-console, [[os-totebox]], [[os-orchestration]]) implements Capability Geometry at each
 layer: per-cartridge PD on os-console, per-service PD on os-totebox, and a
 capability-broker PD on os-orchestration that holds cross-Totebox endpoint capabilities.
 

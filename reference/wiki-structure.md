@@ -16,7 +16,7 @@ language_protocol: PROSE-TOPIC
 paired_with: wiki-structure.es.md
 ---
 
-PointSav builds operating systems and services for regulated businesses
+[[pointsav-overview|PointSav]] builds operating systems and services for regulated businesses
 that need to own their data, their AI, and their record-keeping
 outright. The platform runs on customer hardware, is built to produce
 continuous-disclosure-grade records by structure, and operates fully

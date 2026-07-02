@@ -17,7 +17,7 @@ paired_with: app-orchestration-command-branch-model.es.md
 cites: []
 ---
 
-Each Totebox Archive in the `app-orchestration-command` topology operates on its own isolated branch — separate from the canonical `main` that the coordinator manages. This article explains why that isolation exists, what it protects, and how the coordinator enforces the boundary during publication.
+Each [[totebox-archive|Totebox Archive]] in the `app-orchestration-command` topology operates on its own isolated branch — separate from the canonical `main` that the coordinator manages. This article explains why that isolation exists, what it protects, and how the coordinator enforces the boundary during publication.
 
 ## Why Isolated Branches
 

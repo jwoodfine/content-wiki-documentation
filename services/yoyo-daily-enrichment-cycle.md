@@ -13,8 +13,8 @@ paired_with: yoyo-daily-enrichment-cycle.es.md
 ---
 
 The Yo-Yo daily enrichment cycle is the automated batch window that runs a GPU-accelerated
-inference VM once per day to enrich the DataGraph and accumulate training data for the
-local language model. The cycle runs at a fixed time, enforces a hard cost cap, and
+inference VM once per day to enrich the [[ontological-datagraph|DataGraph]] and accumulate training data for the
+[[pointsav-llm|local language model]]. The cycle runs at a fixed time, enforces a hard cost cap, and
 terminates the VM whether the work finishes early or reaches the cap.
 
 ## Purpose
@@ -48,14 +48,14 @@ the inference server configuration from the previous cycle.
 takes approximately 170 seconds from power-on to first healthy response. If the server
 does not respond within ten minutes, the cycle aborts and stops the VM.
 
-**Phase 3 — Tier B circuit.** The local inference gateway maintains a circuit breaker for
+**Phase 3 — Tier B circuit.** The [[soft-slm-tiered-gateway|local inference gateway]] maintains a circuit breaker for
 the Yo-Yo node. The script waits up to two minutes for the circuit to close, confirming
 the gateway has registered the VM as reachable. If the circuit does not close, the cycle
 continues with a Tier A fallback warning logged.
 
 **Phase 4 — Enrichment drain.** For 40 percent of the cycle budget (18 minutes at the
 45-minute cap), the script waits while the gateway processes the pending enrichment queue.
-During this window, the content service sends document chunks to the Yo-Yo node for
+During this window, the [[service-content|content service]] sends document chunks to the Yo-Yo node for
 entity extraction and writes DPO pairs to the enrichment corpus. Progress is logged every
 60 seconds with entity counts, enrichment pair counts, GPU utilisation, and VRAM usage.
 
@@ -64,7 +64,7 @@ count accumulated training-ready data. If counts exceed the configured threshold
 script writes dated training marker files to `data/training-pending/`. These markers
 are the input to Phase 6.
 
-**Phase 6 — LoRA training trigger.** Three gates must all pass for training to run:
+**Phase 6 — [[yo-yo-lora-training-pipeline|LoRA training]] trigger.** Three gates must all pass for training to run:
 training markers must be present, the ML libraries must be installed in the training
 virtual environment on the batch VM, and an operator-authored approval tag must exist
 for the current date. If all three pass, the script stops the inference server to free
@@ -97,7 +97,7 @@ at the end of Phase 8 regardless of whether phases completed normally.
 | TERMINATED cost | $0.00 |
 | Monthly cost (daily cycles) | approximately $16 per month |
 
-A kill switch file (`/srv/foundry/data/yoyo-disabled`) suppresses all VM lifecycle
+A [[spot-vm-lifecycle-kill-switch|kill switch]] file (`/srv/foundry/data/yoyo-disabled`) suppresses all VM lifecycle
 operations immediately. Creating the file prevents Phase 1 from issuing a start command.
 Removing the file resumes normal operation on the next scheduled cycle.
 

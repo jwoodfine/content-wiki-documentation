@@ -21,10 +21,10 @@ cites: []
 
 # PPN Small-Business Compute
 
-The PointSav Private Network (PPN) compute layer provides pooled virtual machine
+The [[pointsav-private-network|PointSav Private Network]] (PPN) compute layer provides pooled virtual machine
 capacity to small-business customers. Capacity runs on cloud e2 instances under the
-QEMU TCG hypervisor and is managed through three cooperating services: a fleet
-controller, a per-node heartbeat agent, and a customer-facing tenant proxy.
+QEMU TCG hypervisor and is managed through three cooperating services: a [[service-vm-fleet|fleet
+controller]], a per-node heartbeat agent, and a customer-facing [[service-vm-tenant|tenant proxy]].
 
 ## Architecture
 
@@ -34,9 +34,9 @@ Each VM instance boots from a NetBSD 10.1 QCOW2 disk image built by
 `os-totebox/scripts/build-image.sh`. The image carries a curated set of services
 in its overlay:
 
-- `system-ledger-server` — append-only capability ledger (Unix socket at
+- `system-ledger-server` — append-only [[capability-ledger-substrate|capability ledger]] (Unix socket at
   `/run/system-ledger/ledger.sock`)
-- `slm-doorman-server` — small-language-model inference gateway
+- `slm-doorman-server` — small-language-model [[doorman-protocol|inference gateway]]
 - `sshd` — operator access; `UseDNS no` to avoid banner timeout under TCG
 
 Veriexec runs in strict mode (`kern.veriexec.strict=1`). A manifest generated at

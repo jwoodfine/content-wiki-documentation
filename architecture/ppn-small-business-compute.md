@@ -20,7 +20,7 @@ cites: []
 A PointSav Private Platform Network (PPN) is a private, encrypted compute network
 assembled from machines a business owns or leases. Each machine — an old laptop in a back
 office, a rented server in a data centre, a virtual machine at a cloud provider — runs
-the same operating layer, os-infrastructure, and joins the same encrypted mesh. Once
+the same operating layer, [[infrastructure-os|os-infrastructure]], and joins the same [[ppn-mesh-architecture|encrypted mesh]]. Once
 joined, the machines stop being individual computers and become nodes in a single pool of
 compute capacity.
 
@@ -50,7 +50,7 @@ not, and contributes capacity instead.
 ## What pooled resources means
 
 A business using a PPN does not assign work to specific machines. It requests a virtual
-machine from the network, and a fleet controller decides where that VM runs. The
+machine from the network, and a [[service-vm-fleet|fleet controller]] decides where that VM runs. The
 controller's placement logic is advisory: it examines the current state of every node —
 reported memory, whether hardware virtualisation (KVM) is available — and selects the node
 best able to take the work. The request is then delegated to that node, which creates the
@@ -78,7 +78,7 @@ which workloads exist, or inject itself into the mesh.
 **Host isolation — planned.** Encryption protects data in transit, but the operator of
 the physical machine can in principle inspect what runs on it: a cloud provider controls
 its hypervisor, and a person with physical access controls a laptop. The intended answer
-is the seL4 microkernel, a formally verified kernel designed to enforce strict partitions
+is the [[sel4-microkernel-substrate|seL4 microkernel]], a formally verified kernel designed to enforce strict partitions
 between workloads and the host environment. The target state is that os-infrastructure
 boots seL4 as its isolation layer, so that the owner of the hardware — including a cloud
 or hosting provider — cannot inspect the memory of guest workloads. This capability is
@@ -88,7 +88,7 @@ machine should be assumed able to access workloads on that machine.
 
 ## Who controls admission: the role of os-network-admin
 
-An encrypted mesh is only as trustworthy as its membership. os-network-admin is the
+An encrypted mesh is only as trustworthy as its membership. [[os-network-admin]] is the
 PPN's routing authority: it decides which machines may join the mesh, approves or denies
 join requests, and is intended to manage the WireGuard peer configuration across all nodes
 automatically. Peer admission control matters because the threat to a private network is

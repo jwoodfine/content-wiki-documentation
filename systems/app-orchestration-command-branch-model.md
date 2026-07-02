@@ -15,7 +15,7 @@ research_trail:
 
 # The Per-Archive Branch Model in app-orchestration-command
 
-Each Totebox Archive in the `app-orchestration-command` topology operates on its own isolated branch — separate from the canonical `main` that the coordinator manages. This article explains why that isolation exists, what it protects, and how the coordinator enforces the boundary during publication.
+Each [[totebox-archive|Totebox Archive]] in the `app-orchestration-command` topology operates on its own isolated branch — separate from the canonical `main` that the coordinator manages. This article explains why that isolation exists, what it protects, and how the coordinator enforces the boundary during publication.
 
 ## Why Isolated Branches
 
@@ -60,7 +60,7 @@ The filter runs identically regardless of whether the archive initiated publicat
 
 ## WORM History Relationship
 
-Canonical `origin/main` behaves like a write-once, read-many (WORM) record: each published commit is cryptographically signed by the administrator identity and is permanent. The archive branch, in contrast, is mutable — archives rebase against `origin/main` before publication to resolve any divergence, which rewrites their local branch history. This rewrite never touches the canonical record.
+Canonical `origin/main` behaves like a [[worm-ledger-architecture|write-once, read-many (WORM) record]]: each published commit is cryptographically signed by the administrator identity and is permanent. The archive branch, in contrast, is mutable — archives rebase against `origin/main` before publication to resolve any divergence, which rewrites their local branch history. This rewrite never touches the canonical record.
 
 ## Parallel Velocity
 

@@ -82,8 +82,8 @@ targets, and Stage-1 scan rules:
    never rewrites
 2. **LanguageTool 6.6 mechanical pass** — spelling, grammar, and style; runs as a Docker
    companion; findings serialised to JSON for Stage 3
-3. **Doorman generative pass** — register-tightening whole-text rewrite via the Doorman
-   (service-slm); reads Stage-2 findings as inline JSON context; produces a complete rewrite
+3. **Doorman generative pass** — register-tightening whole-text rewrite via the [[doorman-protocol|Doorman]]
+   ([[service-slm]]); reads Stage-2 findings as inline JSON context; produces a complete rewrite
 
 See [[editorial-pipeline-three-stages]] for the full pipeline specification, including
 inline JSON flow, severity discriminants, and degradation paths.
@@ -99,7 +99,7 @@ refines, flags, and suggests — the operator retains the final text.
 
 After reviewing the Stage-3 rewrite, the operator records one of three dispositions:
 `accepted`, `rejected`, or `edited` (with the final text of their choice). The verdict feeds
-the apprenticeship corpus event-pair — `draft-created` → `draft-refined` → `creative-edited`
+the [[apprenticeship-substrate|apprenticeship corpus]] event-pair — `draft-created` → `draft-refined` → `creative-edited`
 — per the reverse-funnel editorial pattern. Stage-1 DPO pairs derive directly from the
 `(input, chosen-rewrite, operator-disposition)` tuple. The substrate is both the editorial
 tool and the data-collection layer for continued model training; these two functions are
@@ -117,7 +117,7 @@ property of the directory layout.
 
 - Does not auto-detect protocol — the operator declares at the request boundary
 - Does not silently rewrite — the operator chooses which findings to apply
-- Does not embed Tier-C API keys in the proofreader binary — keys live with the Doorman
+- Does not embed Tier-C [[api-key-boundary-discipline|API keys]] in the proofreader binary — keys live with the Doorman
 - Does not train on tenant text by default — the no-train contract is enforced at the corpus
   write layer, not at the request layer
 

@@ -15,7 +15,7 @@ research_trail:
 
 # Scaling Coordinated Development Across Many Sovereign Archives
 
-The `app-orchestration-command` topology is designed to accommodate growth. This article describes the coordination challenges that appear as the number of Totebox Archives increases, the mechanisms introduced to address them, and the planned trajectory toward per-archive process isolation.
+The `app-orchestration-command` topology is designed to accommodate growth. This article describes the coordination challenges that appear as the number of [[totebox-archive|Totebox Archives]] increases, the mechanisms introduced to address them, and the planned trajectory toward per-archive process isolation.
 
 ## The Coordination Challenge
 
@@ -29,7 +29,7 @@ When a small number of archives share a central coordinator, the coordinator's o
 
 The first mitigation is a tiered eligibility model. Archives that have demonstrated operational maturity — consistently passing their build and test suites, maintaining clean histories, and operating without frequent interventions — may be granted a higher self-service level.
 
-At the highest self-service level *(planned/intended)*, an archive may initiate canonical publication directly, without waiting for the coordinator operator to act. The prerequisite is that the administrator key is accessible from the archive's environment. The coordinator validates the result after the fact and records the publication event in the audit ledger.
+At the highest self-service level *(planned/intended)*, an archive may initiate canonical publication directly, without waiting for the coordinator operator to act. The prerequisite is that the administrator key is accessible from the archive's environment. The coordinator validates the result after the fact and records the publication event in the [[worm-ledger-architecture|audit ledger]].
 
 This does not eliminate the coordinator's role; it offloads routine, low-risk publication to the archives that have earned that trust, reserving coordinator attention for higher-stakes decisions.
 

@@ -18,9 +18,9 @@ forbidden_terms_cleared: true
 cites: []
 ---
 
-The PointSav Private Network (PPN) VM resource pool is a three-service stack that provisions, places, and accounts for virtual machines across a heterogeneous WireGuard mesh. The pool combines cloud nodes with physical hardware, forming a distributed compute substrate that spans different capability profiles.
+The [[pointsav-private-network|PointSav Private Network]] (PPN) VM resource pool is a three-service stack that provisions, places, and accounts for virtual machines across a heterogeneous WireGuard mesh. The pool combines cloud nodes with physical hardware, forming a distributed compute substrate that spans different capability profiles.
 
-Three services partition the responsibility surface. The fleet controller maintains a global view of node capacity and handles placement decisions. The host agent runs per-node as the spawn authority, communicating with the hypervisor and holding the local state for each VM. The tenant proxy sits at the customer boundary, enforcing authentication, tenant namespace isolation, quota limits, and an immutable audit trail. Above this stack, a commercial inference broker manages metered workloads for the local SLM tier.
+Three services partition the responsibility surface. The [[service-vm-fleet|fleet controller]] maintains a global view of node capacity and handles placement decisions. The host agent runs per-node as the spawn authority, communicating with the hypervisor and holding the local state for each VM. The [[service-vm-tenant|tenant proxy]] sits at the customer boundary, enforcing authentication, tenant namespace isolation, quota limits, and an immutable audit trail. Above this stack, a commercial inference broker manages metered workloads for the local [[service-slm|SLM]] tier.
 
 All service processes communicate across the PPN WireGuard underlay. No service exposes a public interface; all customer-facing traffic enters through the tenant proxy.
 
@@ -70,7 +70,7 @@ Node heterogeneity is a deliberate property of the pool. Each node type contribu
 
 Three extensions to the compute substrate are intended for future deployment; none is operational today.
 
-**Microkernel isolation (planned/intended):** The VM spawn path on AArch64 hardware is intended to use a formally-verified microkernel component model. The intended design would replace the host kernel as the trust boundary for VM isolation, providing formal verification of the scheduler and inter-process communication paths between VMs.
+**[[sel4-microkernel-substrate|Microkernel]] isolation (planned/intended):** The VM spawn path on AArch64 hardware is intended to use a formally-verified microkernel component model. The intended design would replace the host kernel as the trust boundary for VM isolation, providing formal verification of the scheduler and inter-process communication paths between VMs.
 
 **Lightweight microVM (planned/intended):** An alternative hypervisor backend is under evaluation for workloads where sub-second boot time and reduced memory overhead are priorities. The intended integration point is the host agent, which would select the hypervisor backend based on the workload type specified in the spawn request.
 

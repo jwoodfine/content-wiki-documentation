@@ -53,7 +53,7 @@ trait, so cartridges that do not use graphics or hyperlinks incur no additional 
 
 Cartridges are registered at startup via `chassis.register(Box<dyn Cartridge>)`.
 Registration is order-independent with respect to rendering, but the order determines
-tab-strip presentation when F-key slots are not unique. Each registered cartridge must
+tab-strip presentation when [[use-f-key-model|F-key slots]] are not unique. Each registered cartridge must
 claim a distinct `FKey` slot.
 
 The default build registers six cartridges:
@@ -120,7 +120,7 @@ All default service endpoints in the console's configuration resolve to localhos
 addresses. The binary is operable without a configuration file, and it has no hard
 dependency on any external network. The intent is that `os-console` starts and renders
 fully on a machine that has no outbound internet access, connecting only to services
-running on the same node or within the same PPN mesh.
+running on the same node or within the same [[ppn-mesh-architecture|PPN mesh]].
 
 ## See also
 

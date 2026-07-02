@@ -19,7 +19,7 @@ paired_with: radical-proofreader-ui.es.md
 The **proofreader console** is the operator-facing web interface for the `service-proofreader`
 editorial pipeline. Operators use the console to submit text for staged analysis, review
 structured findings, apply or reject suggested rewrites, and record verdict dispositions that
-feed the platform's apprenticeship learning corpus. The console is implemented as a
+feed the platform's [[apprenticeship-substrate|apprenticeship learning corpus]]. The console is implemented as a
 server-rendered HTML application with no client-side JavaScript framework dependency; all
 state transitions are handled at the server layer.
 

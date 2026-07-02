@@ -19,7 +19,7 @@ A BIM Token has three layers: Specification, Regulation, and Climate Zone. All t
 
 ## Why Three Layers
 
-Software design system tokens typically have two concerns: what a value IS (its semantic role) and what value it resolves to (its computed output). BIM tokens address a fundamentally different problem space that requires three concerns.
+Software [[design-system-substrate|design system]] tokens typically have two concerns: what a value IS (its semantic role) and what value it resolves to (its computed output). BIM tokens address a fundamentally different problem space that requires three concerns.
 
 A built-environment element specification must simultaneously answer:
 

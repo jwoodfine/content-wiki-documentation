@@ -34,7 +34,7 @@ storage. In the current implementation, Ring 1 consists of four services:
 
 | Service | Role |
 |---|---|
-| `service-fs` | WORM immutable ledger — all Ring 1 writes land here |
+| `service-fs` | [[worm-ledger-architecture|WORM immutable ledger]] — all Ring 1 writes land here |
 | `service-people` | Identity ingest — Person, Anchor, and Claim records |
 | `service-email` | Email ingest via EWS (Exchange Web Services SOAP) |
 | `service-input` | Document ingest — PDF, Markdown, DOCX, XLSX |
@@ -111,7 +111,7 @@ All operations in `service-fs` are pure cryptography and file I/O:
   SHA-256 entry hash chained from previous
 - **Checkpoint** — SHA-256 root hash over the chain; Ed25519 signature
   using operator-supplied key; C2SP signed-note wire format
-- **Anchor-emitter** — ephemeral Ed25519 keypair per run; Sigstore
+- **[[fs-anchor-emitter|Anchor-emitter]]** — ephemeral Ed25519 keypair per run; [[doctrine-invention-7-rekor-anchoring|Sigstore]]
   `hashedRekordRequestV002` POST; deterministic hash of the checkpoint payload
 
 No model, no inference, no probability. Every operation has a single
@@ -170,7 +170,7 @@ extracted text is what lands in `service-fs`.
 ## 5. The Ring 2 Boundary
 
 Intelligence enters the system at Ring 2. `service-extraction` reads from Ring 1
-via MCP and applies deterministic parser combinators plus, optionally, Ring 3
+via [[mcp-substrate-protocol|MCP]] and applies deterministic parser combinators plus, optionally, Ring 3
 inference calls. Its outputs are Ring 2 artifacts — they do not write back to
 Ring 1's WORM ledger entries; they create new entries tagged as Ring 2 provenance.
 
@@ -203,7 +203,7 @@ through the operator.
 
 ## 7. Ring 3: Compositional AI
 
-Ring 3 (`service-slm`, the Doorman) is where AI inference is intended to run.
+Ring 3 (`service-slm`, the [[doorman-protocol|Doorman]]) is where AI inference is intended to run.
 Ring 3 is architecturally optional — Rings 1 and 2 function fully without it.
 The intended design is that Ring 3 queries Ring 2, which reads Ring 1, forming a
 layered composition.

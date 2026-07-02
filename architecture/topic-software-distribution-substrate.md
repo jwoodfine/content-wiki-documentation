@@ -30,7 +30,7 @@ catalog and license issuance, and a binary release server with token verificatio
 
 ### Payment Watcher (`tool-wallet`)
 
-`tool-wallet` monitors an on-chain address for incoming USDC transfers on the Polygon
+`tool-wallet` monitors an [[direct-payment-settlement|on-chain]] address for incoming USDC transfers on the Polygon
 network. For each confirmed transfer it:
 
 1. Derives a per-customer HD address from a BIP-39 mnemonic via BIP-32

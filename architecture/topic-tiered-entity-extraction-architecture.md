@@ -19,7 +19,7 @@ aliases:
 cites: []
 ---
 
-The PointSav entity extraction pipeline runs three tiers in sequence on each document. Tier 0 provides fast extractive detection on CPU. Tier A provides a generative fallback when Tier 0 is unavailable. Tier B provides a higher-capacity GPU enrichment pass and records improvements as training signal.
+The PointSav [[service-extraction|entity extraction pipeline]] runs three tiers in sequence on each document. Tier 0 provides fast extractive detection on CPU. Tier A provides a generative fallback when Tier 0 is unavailable. Tier B provides a higher-capacity GPU enrichment pass and records improvements as training signal.
 
 ## Tier 0 — Extractive Detection (GLiNER)
 
@@ -39,15 +39,15 @@ Tier 0 produces one of three outcomes. When entities are found, the result is ac
 
 ## Tier A — Generative Fallback and Training Queue (OLMo)
 
-Tier A routes document payloads to OLMo 7B running on the workspace VM's CPU via the Doorman's `/v1/chat/completions` endpoint. Tier A serves two distinct roles.
+Tier A routes document payloads to OLMo 7B running on the workspace VM's CPU via the [[doorman-protocol|Doorman]]'s `/v1/chat/completions` endpoint. Tier A serves two distinct roles.
 
 **Extraction fallback:** Tier A activates as an extraction path only when Tier 0 is unreachable — a connection error, service down, or non-2xx response. An empty entity list from a healthy Tier 0 service does not trigger Tier A extraction; those documents are marked done immediately.
 
-**Asynchronous training queue:** Every document processed through Tier 0 — regardless of extraction outcome — is also placed in an asynchronous OLMo comparison queue. The comparison generates a DPO (Direct Preference Optimisation) training pair: the GLiNER result is the chosen teacher signal and the OLMo result is the rejected student signal. This queue runs independently of the extraction path and accumulates preference pairs for future model fine-tuning under the Yo-Yo training cycle.
+**Asynchronous training queue:** Every document processed through Tier 0 — regardless of extraction outcome — is also placed in an asynchronous OLMo comparison queue. The comparison generates a DPO (Direct Preference Optimisation) training pair: the GLiNER result is the chosen teacher signal and the OLMo result is the rejected student signal. This queue runs independently of the extraction path and accumulates preference pairs for future model fine-tuning under the [[yo-yo-lora-training-pipeline|Yo-Yo training cycle]].
 
 Extraction uses a structured prompt that constrains the model to the same five entity classifications used by Tier 0. When grammar constraints are enabled, the model is forced to emit valid JSON conforming to the extraction schema, eliminating schema-violation rejections. The inference call uses `temperature: 0.0` to produce deterministic output and `cache_prompt: true` to allow KV-cache reuse across consecutive extraction calls on the same system prompt.
 
-Tier A latency on CPU ranges from 30 to 137 seconds per document depending on document length and concurrent load. When the Doorman's apprenticeship drain queue is active, Tier A slots may be occupied and interactive extraction calls will queue.
+Tier A latency on CPU ranges from 30 to 137 seconds per document depending on document length and concurrent load. When the Doorman's [[apprenticeship-substrate|apprenticeship]] drain queue is active, Tier A slots may be occupied and interactive extraction calls will queue.
 
 ## Tier B — GPU Enrichment
 
@@ -74,5 +74,5 @@ Documents for which Tier 0 returns a non-empty entity list always proceed to Tie
 | Tier | Service | Method | Typical latency | Activates when |
 |---|---|---|---|---|
 | 0 | service-gliner (GLiNER) | Extractive span detection | 130–208 ms | Default — first path |
-| A | service-slm (OLMo 7B CPU) | Generative completion | 30–137 s | Extraction: Tier 0 unreachable; Training: every document (async) |
+| A | [[service-slm|service-slm]] (OLMo 7B CPU) | Generative completion | 30–137 s | Extraction: Tier 0 unreachable; Training: every document (async) |
 | B | service-slm (GPU node) | Generative enrichment | 10–30 s | Circuit closed + node healthy |
