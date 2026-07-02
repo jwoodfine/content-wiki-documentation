@@ -114,23 +114,43 @@ Compressed findings that drove the proposal below:
 
 ## 4. Top-level category set
 
-Ten categories. Placed at repo root as sibling directories. Each
-maps to the URL `/<category>` route and carries a `_index.md`
-MOC landing.
+**Machine-readable single source of truth: root `categories.yaml`.**
+As of the 2026-07-02 ratification (§13), the canonical category
+taxonomy — id, display name, scope, audience, and reader-funnel order —
+lives in `categories.yaml` at repo root. The engine will consume that
+file (following the established root-YAML pattern used by
+`featured-topic.yaml`, `leapfrog-facts.yaml`, and
+`reference-invariants.yaml`), superseding the hardcoded
+`RATIFIED_CATEGORIES`; until it does, `_index.md` titles carry the
+display names. The table below is the human-facing mirror of that file;
+`categories.yaml` wins on any drift.
 
-| Category | Purpose | Primary audience | Example articles |
-|---|---|---|---|
-| `architecture/` | Cross-cutting platform architecture, doctrine, concrete systems composition | Engineers | `three-ring-architecture`, `foundry-doctrine-architecture`, `doorman-protocol`, `totebox-orchestration-development` |
-| `substrate/` | Foundational mechanism concepts — substrates, primitives, disciplines | Engineers, financial community | `compounding-substrate`, `apprenticeship-substrate`, `citation-substrate`, `disclosure-substrate`, `language-protocol-substrate` |
-| `patterns/` | Named design patterns recurring across the platform | Engineers, designers | `source-of-truth-inversion`, `pairing-as-permission`, `reverse-funnel-editorial-pattern`, `wikipedia-leapfrog-design` |
-| `systems/` | Operating systems (`os-*`) — one article per OS | Engineers | `os-totebox`, `os-workplace`, `os-mediakit`, `os-orchestration` |
-| `services/` | Autonomous services (`service-*`) — one article per service | Engineers | `service-email`, `service-people`, `service-slm`, `service-content`, `service-egress` |
-| `applications/` | User-facing and internal apps (`app-*`) | Engineers, designers | `app-mediakit-knowledge`, `app-workplace-presentation` |
-| `governance/` | ADRs, licensing, release engineering, compliance | Engineers, financial community | `sys-adr-07`, `sys-adr-19`, `licensing-matrix`, `release-engineering-process` |
-| `infrastructure/` | Fleet deployment, cloud topology, storage, network, telemetry | Engineers, financial community | `fleet-infrastructure-cloud`, `worm-ledger-architecture`, `sovereign-mesh`, `sovereign-telemetry` |
-| `reference/` | Glossary, nomenclature, style guide, templates | Writers, engineers | `glossary`, `nomenclature-matrix`, `style-guide`, `article-template` |
-| `design-system/` | Design system as a platform component — architectural framing and brand surface context. Component guides, token specs, and accessibility documentation live in `pointsav-design-system/` (see naming-convention.md §13 Decision #7). | Engineers, designers, financial community | `design-philosophy`, `design-primitive-vocabulary`, `brand-family-swatch`, `brand-typography` |
-| `.internal/` | **Not a wiki category — not rendered.** Contributor/editorial-process reference that must stay git-tracked but must never appear on the public wiki (e.g. the consolidated style guide, which uses named real companies as internal writing-calibration benchmarks). The dotted directory name is load-bearing: `app-mediakit-knowledge`'s content loader already skips any dotted directory, so nothing here reaches a route without an engine change. See naming-convention.md §13 Decision #9. | Contributors only | `style-guide.md` |
+**Fourteen wiki categories** (plus the non-rendered `.internal/`).
+Placed at repo root as sibling directories. Each maps to the URL
+`/<category>` route and carries a `_index.md` MOC landing. Category
+`id`s are stable and engineering-accurate (zero changed in the
+2026-07-02 pass — zero category-level URL impact); display names are
+PointSav's plain company voice, written so a finance reader arriving
+from the corporate wiki can read every shelf cold. Order is the reader
+funnel (understand → trust → the inventory → run → look up).
+
+| Order | `id` (directory) | Display name | One-line scope | Primary audience |
+|---|---|---|---|---|
+| 1 | `architecture/` | **How It's Built** | How the platform is put together: the three-ring build that keeps AI optional, customer ownership of the running instance, and the business and publication model built on that shape. | Everyone — first visit; engineers and finance readers |
+| 2 | `substrate/` | **Building Blocks** | The reusable pieces the platform is built from — the concepts, disciplines, and mechanisms that recur in every product. If another article names a mechanism, its definition lives here. | Engineers; finance readers |
+| 3 | `patterns/` | **Design Patterns** | The named, repeatable shapes the platform reuses to solve coordination, ownership, and interface problems — written up once, referenced everywhere. | Engineers, designers |
+| 4 | `security/` | **Security and Trust** | How the platform is protected and how its records are verified: identity and permissions, cryptographic verification, isolation boundaries, data handling and privacy, and the supply-chain controls designed to keep code honest. **New 2026-07-02** — split from `architecture/`. | Engineers; auditors and diligence readers |
+| 5 | `ai/` | **How AI Is Used and Contained** | Where AI sits and where it is not allowed: the boundary that keeps AI away from the authoritative record, the routing between models, and the small, customer-side models designed to learn a customer's own environment. The core runs fully without it. **New 2026-07-02** — split from `architecture/`. | Engineers; finance readers assessing the AI posture |
+| 6 | `systems/` | **Operating Systems** | The operating systems PointSav ships (`os-*`) — one article per system, plus how they are composed and developed. | Engineers |
+| 7 | `services/` | **Platform Services** | The always-on background services (`service-*`) — one article per service: what it does, what data it owns, and how it connects to the rest. | Engineers |
+| 8 | `applications/` | **Applications** | The applications people actually use (`app-*`) — one article per application, from the public knowledge sites to the internal consoles. | Engineers, designers |
+| 9 | `infrastructure/` | **Where It Runs** | Where the platform physically runs: customer hardware, deployment, storage, telemetry, and the shared compute network (PPN) that pools hardware across sites. | Engineers; finance readers |
+| 10 | `design-system/` | **Design and Brand** | Design system as a platform component — design philosophy, visual vocabulary, and brand surfaces. Component guides, token specs, and accessibility documentation live in `pointsav-design-system/` (see §13 Decision #7). | Engineers, designers, finance readers |
+| 11 | `governance/` | **Governance and Standards** | How engineering decisions are made and recorded: decision records (ADRs), licensing and legal structure, disclosure posture, and compliance discipline — written for auditors and due-diligence reviewers as much as for engineers. | Engineers; finance readers, auditors |
+| 12 | `how-to/` | **How You Run It** | Step-by-step instructions for the hands-on work: installing, configuring, deploying, and operating the platform, written for the customer's keyboard, not just PointSav's. | Engineers (hands on keyboard); customer operators |
+| 13 | `reference/` | **Glossary and Reference** | Every term defined in plain words, plus the catalogues, nomenclature, and standard definitions used across the knowledge base. | All readers — consulted, not browsed |
+| 14 | `research/` | **Research** | The flagship long-form research (JOURNAL) papers — complete arguments, argued end to end, published as working drafts under a standing preprint notice. A small curated set. | All readers |
+| — | `.internal/` | **Not a wiki category — not rendered.** | Contributor/editorial-process reference that must stay git-tracked but must never appear on the public wiki (e.g. the consolidated style guide, which uses named real companies as internal writing-calibration benchmarks). The dotted directory name is load-bearing: `app-mediakit-knowledge`'s content loader already skips any dotted directory, so nothing here reaches a route without an engine change. See §13 Decision #9. | Contributors only |
 
 Rationale:
 
@@ -458,3 +478,92 @@ amendment; a new directory within an existing repo's own IA only requires
 this decision log, consistent with the Decision #7 design-system/ split
 precedent. Any future contributor-only material that should stay in git
 but off the public wiki goes in `.internal/`, not a new top-level category.
+
+---
+
+Ratified 2026-07-02 by operator (category redesign — company-voice
+reframe + second architecture split). Full design, migration map, and
+rationale: `.agent/audit/2026-07-02-category-redesign/proposal-documentation.md`
+(rev. 3 + conservative cross-check). This is an evolution of the
+2026-05-07 / 2026-05-09 taxonomy, not a replacement: every existing
+directory id is retained; the deltas below are additive.
+
+**10. Company-voice display-name refresh (ids unchanged; zero URL impact).**
+Ten of the fourteen category display names are rewritten in PointSav's
+plain company voice — the register of the wiki home's own pitch (own
+their data, their AI, their record-keeping outright; runs on customer
+hardware; operates fully without AI). The rename is `_index.md` title
+edits plus `categories.yaml`; no `id`, slug, or directory changes, so it
+creates zero category-level redirects. Old → new: `architecture` Platform
+architecture → **How It's Built**; `substrate` Core concepts and
+mechanisms → **Building Blocks**; `infrastructure` Infrastructure and
+networks → **Where It Runs**; `design-system` Design system → **Design and
+Brand**; `how-to` How-to guides → **How You Run It**; `reference`
+Reference and glossary → **Glossary and Reference**; plus the two new
+categories (Decision #11) and the two-word case polish on `patterns`,
+`services`, `systems`, `governance`, `applications`, `research`. **One
+deliberate reversal on record:** the `ai` display name **"How AI Is Used
+and Contained"** supersedes rev. 2's "Artificial intelligence" — the name
+now states PointSav's distinctive claim (AI used *and* contained;
+structurally optional; read-only against the record). "AI" remains the
+leading keyword; nothing is lost to search. Names use only plain,
+brand-load-bearing vocabulary (own, run, build, contain, trust, records)
+— no internal terms of art (Totebox, Doorman, rings, substrate, WORM) on
+any shelf label; those stay in article bodies and slugs.
+
+**11. Second split of `architecture/` → new `security/` + `ai/` categories.**
+Same instrument as the 2026-05-09 `substrate/` + `patterns/` split: an
+oversized category divided along seams its own curated `_index.md` MOC had
+already drawn. `architecture/` carried ~87 EN articles (~7× the wiki mean)
+and had regrown into the wiki's dumping ground. Two coherent sub-themes
+are promoted to categories, both launching full, not as empty scaffolding:
+
+- `security/` ("Security and Trust", ~13 at launch) — *how protection
+  works*: capability security, machine-based auth, attestation,
+  cryptographic ledgers, the diode standard, supply-chain stages,
+  personnel permissions. `data-sovereignty-telemetry` lands here (privacy
+  and data-handling posture, not telemetry plumbing) and `genesis-protocol`
+  stays here (trust-establishment bootstrap). Boundary: `governance/`
+  keeps *what was decided and why it is compliant* (ADRs, disclosure,
+  legal); the append-only ledger articles stay in `infrastructure/` as
+  deployed storage, cross-linked from `security/_index.md`.
+- `ai/` ("How AI Is Used and Contained", ~10 at launch) — the AI
+  *architecture*: inference boundary, sovereign routing, zero-container
+  inference, decode-time constraints, the vendor-tier model programme,
+  training pipelines, the training-loop quality framework. Boundary:
+  `services/` keeps per-service pages (`service-slm` stays a service
+  page); `substrate/` keeps AI-adjacent mechanism concepts in the first
+  pass (flagged as an optional second-pass move and the `substrate/`
+  relief valve).
+
+Associated rebalancing moves out of `architecture/` (proposal §4a): the
+shared-compute-network (PPN) family (~10) → `infrastructure/` per the
+ratified deployed-runtime rule; OS-internal articles (4) → `systems/`; one
+mechanism concept → `substrate/`; one service-page misfile →
+`services/`. `architecture/` lands at ~31 EN articles (~1.5× the new
+mean), inside the "no category >2× mean" tolerance the 2026-05-09 audit
+established; `substrate/` becomes the largest at ~39 (~1.9–2.0× mean) — a
+named watch item whose relief valve is the flagged AI-adjacent move. All
+moves are alias-based (`aliases:` + `redirects.yaml`); no published slug
+mutates. Full migration map, cross-wiki moves (15 → projects), `topic-*`
+merge/rename set, and collision resolutions are in the proposal §§4a–4h;
+their execution is a separate migration change-set, tracked in
+`cleanup-log.md`.
+
+**12. Regularization of `how-to/` and `research/` into the §4 table; and
+adoption of `categories.yaml`.** `how-to/` (28 EN articles) and `research/`
+existed on disk but were absent from the ratified §4 table; both are now
+formally in the taxonomy (fourteen wiki categories). `research/` is
+**seeded, not retired**: it takes the documentation-surface JOURNAL paper
+`knowledge-flow-audit-swarm` (per the JOURNAL registry) plus a
+preprint-notice convention article, so the category is never an empty
+public listing (sequenced against the JOURNAL render-readiness gate). The
+canonical taxonomy is now root `categories.yaml` (`version: 2026-07-02`;
+`{id, name, scope, audience, order}` schema, matching the sibling
+`media-knowledge-corporate` and `media-knowledge-projects` files) — the
+machine-readable single source of truth that the engine will consume in
+place of the hardcoded `RATIFIED_CATEGORIES`. Until the engine reads it,
+`_index.md` titles are the display-name rendering source, so all of the
+above ships as content edits with no engine change. A reader-facing map
+of the fourteen areas is published at `reference/wiki-structure.md`
+(+ `.es.md`).

@@ -1,0 +1,144 @@
+# Canonical category taxonomy for the documentation wiki. Single source of truth. Supersedes the hardcoded RATIFIED_CATEGORIES; see .agent/rules/naming-convention.md §4 and .agent/audit/2026-07-02-category-redesign/proposal-documentation.md.
+wiki: media-knowledge-documentation
+audience: >-
+  Primary: developers and PointSav engineers. Secondary: the financial
+  community — bankers, asset managers, auditors — arriving from the
+  corporate knowledge base, who must be able to read every category name
+  and scope cold. Article bodies are technical; category names and scopes
+  are PointSav speaking plainly.
+version: 2026-07-02
+companion: >-
+  media-knowledge-corporate and media-knowledge-projects carry the
+  customer's story — the company and the money; the buildings and the
+  places. This knowledge base documents the platform PointSav builds:
+  what it is, how it is built, why it can be trusted, and how customers
+  run it on their own hardware.
+
+categories:
+  - id: architecture
+    name: "How It's Built"
+    scope: >-
+      How the platform is put together: the three-ring build that keeps
+      AI optional, the principle that customers own their running
+      instance outright, and the business and publication model built on
+      that shape.
+    audience: "Everyone — first visit; engineers and finance readers"
+    order: 1
+
+  - id: substrate
+    name: "Building Blocks"
+    scope: >-
+      The reusable pieces the platform is built from — the concepts,
+      disciplines, and mechanisms that recur in every product. If
+      another article names a mechanism, its definition lives here.
+    audience: "Engineers; finance readers"
+    order: 2
+
+  - id: patterns
+    name: "Design Patterns"
+    scope: >-
+      The named, repeatable shapes the platform reuses to solve
+      coordination, ownership, and interface problems — written up once,
+      referenced everywhere.
+    audience: "Engineers, designers"
+    order: 3
+
+  - id: security
+    name: "Security and Trust"
+    scope: >-
+      How the platform is protected and how its records are verified:
+      identity and permissions, cryptographic verification, isolation
+      boundaries, how data is handled and kept private, and the
+      supply-chain controls designed to keep code honest.
+    audience: "Engineers; auditors and diligence readers"
+    order: 4
+
+  - id: ai
+    name: "How AI Is Used and Contained"
+    scope: >-
+      Where AI sits and where it is not allowed: the boundary that keeps
+      AI away from the authoritative record, the routing between models,
+      and the small, customer-side models designed to learn a customer's
+      own environment. The core runs fully without it.
+    audience: "Engineers; finance readers assessing the AI posture"
+    order: 5
+
+  - id: systems
+    name: "Operating Systems"
+    scope: >-
+      The operating systems PointSav ships — one article per system,
+      plus how they are composed and developed.
+    audience: "Engineers"
+    order: 6
+
+  - id: services
+    name: "Platform Services"
+    scope: >-
+      The always-on background services — one article per service: what
+      it does, what data it owns, and how it connects to the rest.
+    audience: "Engineers"
+    order: 7
+
+  - id: applications
+    name: "Applications"
+    scope: >-
+      The applications people actually use — one article per
+      application, from the public knowledge sites to the internal
+      consoles.
+    audience: "Engineers, designers"
+    order: 8
+
+  - id: infrastructure
+    name: "Where It Runs"
+    scope: >-
+      Where the platform physically runs: customer hardware, deployment,
+      storage, telemetry, and the shared compute network that pools
+      hardware across sites.
+    audience: "Engineers; finance readers"
+    order: 9
+
+  - id: design-system
+    name: "Design and Brand"
+    scope: >-
+      How the platform looks and speaks: design philosophy, visual
+      vocabulary, and brand surfaces. Component specifications live in
+      the design-system repository.
+    audience: "Engineers, designers, finance readers"
+    order: 10
+
+  - id: governance
+    name: "Governance and Standards"
+    scope: >-
+      How engineering decisions are made and recorded: decision records,
+      licensing and legal structure, disclosure posture, and compliance
+      discipline — written for auditors and due-diligence reviewers as
+      much as for engineers.
+    audience: "Engineers; finance readers, auditors"
+    order: 11
+
+  - id: how-to
+    name: "How You Run It"
+    scope: >-
+      Step-by-step instructions for the hands-on work: installing,
+      configuring, deploying, and operating the platform. Customers run
+      their own instance, so these are written for the customer's
+      keyboard, not just PointSav's.
+    audience: "Engineers (hands on keyboard); customer operators"
+    order: 12
+
+  - id: reference
+    name: "Glossary and Reference"
+    scope: >-
+      Every term defined in plain words, plus the catalogues and
+      standard definitions used across the knowledge base.
+    audience: "All readers — consulted, not browsed"
+    order: 13
+
+  - id: research
+    name: "Research"
+    scope: >-
+      The flagship long-form research papers — complete arguments,
+      argued end to end, published as working drafts under a standing
+      preprint notice. A small curated set.
+    audience: "All readers"
+    order: 14
