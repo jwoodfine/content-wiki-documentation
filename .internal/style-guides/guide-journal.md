@@ -208,7 +208,8 @@ them outside the wiki, which is why a JOURNAL body carries no `[[wikilink]]` any
 paper needs to cite one of the platform's own wiki articles, it does so as a formal reference
 with a full URL in the references section, exactly as it would cite any external web source.
 Placeholder citations (`[external: url]`) are drafting scaffolding; promotion to a stable ID
-is a pre-submission gate, not an option.
+is a pre-submission gate, not an option. The exact in-text syntax, the forbidden forms, and
+the resolution invariant the render engine enforces are pinned in §9.
 
 ### Two surfaces, one artifact
 
@@ -216,7 +217,8 @@ A JOURNAL lives on two surfaces, and different rules bind on each.
 
 - **Wiki / self-published render** — public from the moment it posts. The public-posting
   notice blocks (working-paper notice and forward-looking-statements advisory, per
-  [[journal-artifact-discipline]] §Public posting) survive into every render; the internal
+  [[journal-artifact-discipline]] §Public posting) survive into every render — the engine
+  generates them from frontmatter; the author never writes them into the body (§9); the internal
   and forbidden vocabulary is fully scrubbed; the complete apparatus — hypotheses,
   falsification programme, disclosures, data availability — shows. The paper is presented
   exactly as the honest working draft it is.
@@ -293,7 +295,138 @@ work. The JOURNAL states the claim precisely, cites the format it depends on wit
 ID, and points at the evidence that could falsify it. Same mechanism, two registers; the
 boundary is arc and evidence, not subject matter.
 
-## 9. Pre-publish checklist
+## 9. Wiki render contract
+
+Everything above is craft; this section is contract. A JOURNAL renders as a **landing page**
+on the `/research/` namespace — a generated masthead, the abstract, the generated references,
+the notice banners, and read/download links — with the full ~22-section body as a **separate
+full-text rendition** one click away. It is never interleaved into the ordinary `/wiki/{slug}`
+article route. The documentation wiki and the gis `/research` surface share the source file,
+`~/Foundry/citations.yaml`, the canonical notice text, this contract, and a golden-fixture
+suite — but each has its own renderer. The rules below are what an author must do so the same
+source renders deterministically, and identically in the parts that matter, on every surface.
+
+### The six habits
+
+1. Mint `slug:` + `category: research` in the first commit (the stub, not the publish pass).
+2. Write the abstract in frontmatter (`abstract: |`), never as a body section.
+3. Cite by registry ID from the first draft (`[id]`, one per bracket; add the registry entry
+   in the same commit — never park an author-year bracket "to fix later").
+4. Never write a References section, a title h1, or a notice blockquote — the engine owns all
+   three.
+5. Keep every non-citation bracket inside code formatting.
+6. Bump `version:` in frontmatter, never in the filename. One file per paper, forever.
+
+### Citation convention — one system, engine-resolved
+
+Exactly one citation mechanism: the registry-resolved bracket ID, resolved against
+`~/Foundry/citations.yaml`. Any second convention in one paper produces silent corruption.
+
+| Form | Syntax | Example |
+|---|---|---|
+| Single | `[citation-id]` | `[rfc-9162]` |
+| Multiple | Adjacent brackets, one ID each, no space | `[rfc-9162][c2sp-signed-note]` |
+| Pinpoint | ID, space, locator, same bracket | `[ni-51-102 §4A.2]` |
+
+Forbidden in a publishable body: author-year brackets (`[Rose et al. 2020]`); narrative
+author-year ("Lipp et al. [2019]…"); a hand-typed `## References` section; `[[wikilinks]]`;
+`[CITATION NEEDED]` / `[external: url]` scaffolding; bare URLs in prose; trailing changelog
+footers.
+
+The resolution invariant, checked at the publish gate:
+
+```
+in-text IDs  ⊆  frontmatter cites:  ⊆  citations.yaml keys
+```
+
+Bracket hygiene: in a JOURNAL body, a square-bracket token in prose **is** a citation. Code
+brackets (`[u8; 32]`, `[Peer]`) sit inside backticks or fences, where the renderer does not
+look; a prose bracket that is not a resolvable ID is a gate failure. A registry entry lands
+in the same commit as the prose that first cites it — `citations.yaml` is workspace-root
+scope, so from an archive the entry routes via Command.
+
+### Mandatory frontmatter — the render fields
+
+| Field | Requirement | Rule |
+|---|---|---|
+| `schema` | REQUIRED | `foundry-journal-v1` |
+| `title` | REQUIRED | Masthead; no body h1 |
+| `slug` | REQUIRED | Kebab, keyword-first; no `journal-`/version/state residue |
+| `category` | REQUIRED | Literally `research` |
+| `abstract` | REQUIRED | `abstract: \|`, 150–250 words; replaces the body `## Abstract` |
+| `state` | REQUIRED | `draft\|under-review\|accepted\|published\|archived`; drives banners |
+| `version` | REQUIRED | SemVer; feeds the working-paper banner |
+| `authors` | REQUIRED | Existing schema; feeds the masthead |
+| `license` | REQUIRED to publish | `CC BY 4.0`; feeds the banner |
+| `cite_as` | REQUIRED to publish | Must agree with `version` + `preprint_posted_date` |
+| `preprint_posted_date` | REQUIRED to publish | Banner date |
+| `cites` | REQUIRED | Exactly the in-text ID set |
+| `forbidden_terms_cleared` | REQUIRED `true` to publish | Vocabulary gate |
+| `keywords`, `subject_codes` | REQUIRED | Landing apparatus summary |
+| `paper_class` | OPTIONAL | `standard` (default) \| `geospatial` |
+
+The abstract moves to frontmatter and the body `## Abstract` is removed — one source, two
+renditions, zero drift. A body `## Abstract` at publish is a gate failure.
+
+### Filename and slug — version-free, stable
+
+Version lives in `version:`; lifecycle in `state:`; neither ever appears in the filename or
+the slug. `slug:` is the permanent public name, keyword-first kebab (`customer-rooted-mesh`).
+Working file: `JOURNAL-<slug>.md` — no `vN`, no `.draft`/`.stub` suffix. Content repo:
+`research/<slug>.md`. One file per paper, forever.
+
+### Notice blocks — generated, never authored
+
+The working-paper notice and the forward-looking-statements advisory are engine-generated
+banners, built from frontmatter fields plus the shared canonical notice text. The body
+contains neither; a notice blockquote in the body is a gate failure. The author's whole
+obligation is the fields: `state`, `version`, `preprint_posted_date`, `license`, `cite_as`,
+`corresponding_author` — populated and mutually consistent.
+
+### Headings and the TOC
+
+The TOC is built from h2/h3 only.
+
+- No body h1 — title, authors, and correspondence are the generated masthead.
+- Nothing before the first `##` — no abstract section, no notices, no epigraphs.
+- Numbered argument sections, exact style `## 1. Introduction`, `### 2.1 …`.
+- Unnumbered back matter after the body, **exact heading strings, exact order**:
+  `## AI Use Disclosure`, `## CRediT Contributor Roles`, `## Conflict of Interest`,
+  `## Funding`, `## Data Availability`. These strings are load-bearing — the landing page
+  derives its apparatus summary by detecting them, and a paraphrase silently drops that item.
+- Appendices after Data Availability as `## Appendix A: …`.
+
+### Geospatial papers
+
+Map- and figure-heavy papers declare `paper_class: geospatial`. The static-PNG baseline is
+mandatory: every map figure is a committed export at `figures/<id>.png`; an interactive map
+embed is a gis-surface-only enhancement, never the only form. Every figure carries a numbered
+caption and a data-source line — dataset and build provenance plus basemap attribution (a
+licensing requirement, not a courtesy). SYS-ADR-07 applies: figures depict structured data
+computed by the deterministic pipeline, never a generative-model rendering of geography.
+
+### Publish gate — what the author can check
+
+- [ ] The YAML frontmatter parses (malformed YAML renders silently blank).
+- [ ] `slug:` present, kebab, no version/state/`journal-` residue.
+- [ ] `category: research`; `abstract:` present at 150–250 words; no body `## Abstract`.
+- [ ] Citations clean: no author-year, no wikilinks, no placeholders, no bare URLs, no
+      hand-typed References, no changelog footer; every prose bracket resolves; code
+      brackets fenced.
+- [ ] The resolution invariant holds; no unused `cites:` IDs; new registry entries carry
+      authors, year, venue, and DOI where available.
+- [ ] Notice fields present and mutually consistent; no hand-authored notice blockquotes.
+- [ ] Heading contract: no h1, nothing before the first `##`, numbered sections, back-matter
+      headings verbatim and in order.
+- [ ] `forbidden_terms_cleared: true`.
+- [ ] If `paper_class: geospatial`: every figure has a stable `#fig-*` ID, a numbered
+      caption, a data-source line, and a committed `figures/<id>.png`.
+
+The full contract — renderer conformance, golden fixtures, the per-surface gate, and the gis
+`/research` surface — lives in `SPEC-journal-wiki-render-contract.md` (project-knowledge).
+Structure and schema remain governed by [[journal-artifact-discipline]].
+
+## 10. Pre-publish checklist
 
 - Does every abstract sentence resolve to exactly one part of the paper, and does every
   major section redeem an abstract sentence?
@@ -313,3 +446,6 @@ boundary is arc and evidence, not subject matter.
   structurally with named systems appearing only as cited subjects?
 - For the public surface: do the notice blocks, the vocabulary scrub, and the full apparatus
   all pass the checks in [[journal-artifact-discipline]]?
+- Does the paper pass the §9 render-contract gate — frontmatter render fields, the citation
+  resolution invariant, the heading contract, and nothing hand-authored that the engine
+  generates?
