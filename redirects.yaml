@@ -111,3 +111,74 @@ redirects:
   # Substrate supersession — slm-tiered-substrate superseded by soft-slm-tiered-gateway (2026-06-09)
   - from: /substrate/slm-tiered-substrate
     to: /substrate/soft-slm-tiered-gateway
+
+  # Batch A1a — Phase C category redesign, 2026-07-03: architecture/ split into
+  # security/ + ai/ (proposal-documentation.md §4a). Slugs unchanged; path only.
+  - from: /architecture/capability-based-security
+    to: /security/capability-based-security
+
+  - from: /architecture/machine-based-auth
+    to: /security/machine-based-auth
+
+  - from: /architecture/crypto-attestation
+    to: /security/crypto-attestation
+
+  - from: /architecture/cryptographic-ledgers
+    to: /security/cryptographic-ledgers
+
+  - from: /architecture/personnel-permissions
+    to: /security/personnel-permissions
+
+  - from: /architecture/diode-standard
+    to: /security/diode-standard
+
+  - from: /architecture/five-stage-supply-chain
+    to: /security/five-stage-supply-chain
+
+  - from: /architecture/verification-surveyor
+    to: /security/verification-surveyor
+
+  - from: /architecture/sel4-capability-topology
+    to: /security/sel4-capability-topology
+
+  - from: /architecture/pre-commit-defense-in-depth
+    to: /security/pre-commit-defense-in-depth
+
+  - from: /architecture/data-sovereignty-telemetry
+    to: /security/data-sovereignty-telemetry
+
+  - from: /architecture/identity-ledger-schema-design
+    to: /security/identity-ledger-schema-design
+
+  - from: /architecture/genesis-protocol
+    to: /security/genesis-protocol
+
+  - from: /architecture/doorman-protocol
+    to: /ai/doorman-protocol
+
+  - from: /architecture/sovereign-ai-routing
+    to: /ai/sovereign-ai-routing
+
+  - from: /architecture/zero-container-inference
+    to: /ai/zero-container-inference
+
+  - from: /architecture/decode-time-constraints
+    to: /ai/decode-time-constraints
+
+  - from: /architecture/pointsav-llm
+    to: /ai/pointsav-llm
+
+  - from: /architecture/slm-stack-architecture
+    to: /ai/slm-stack-architecture
+
+  - from: /architecture/learning-datagraph-architecture
+    to: /ai/learning-datagraph-architecture
+
+  - from: /architecture/elastic-compute-lora-training-pipeline
+    to: /ai/elastic-compute-lora-training-pipeline
+
+  - from: /architecture/flow-quality-architecture
+    to: /ai/flow-quality-architecture
+
+  - from: /architecture/topic-tiered-entity-extraction-architecture
+    to: /ai/topic-tiered-entity-extraction-architecture

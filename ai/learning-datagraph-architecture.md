@@ -1,0 +1,50 @@
+---
+schema: foundry-doc-v1
+title: "Learning Datagraph — SLM trajectory loop and apprenticeship queue"
+slug: learning-datagraph-architecture
+short_description: "Four-leg training loop turning operator interactions into training tuples — trajectory capture, apprenticeship queue, editorial DPO pairs, and correction distillation."
+language: en
+category: ai
+type: topic
+content_type: topic
+status: active
+bcsc_class: public-disclosure-safe
+last_edited: 2026-05-25
+editor: pointsav-engineering
+cites: []
+paired_with: learning-datagraph-architecture.es.md
+---
+
+The platform builds a [[compounding-substrate|compounding substrate]]: every operator interaction with an AI session becomes a structured training tuple, routed through a single auditable boundary ([[doorman-protocol|Doorman]]), captured to an [[worm-ledger-architecture|append-only ledger]], and folded back into the local SLM via periodic fine-tuning. The result is a development environment that learns from how it gets used — code completions improve toward the patterns this operator writes, draft suggestions align closer to the editorial voice this house produces, entity extractions tighten as the graph thickens.
+
+## Key Takeaways
+
+- The substrate accumulates training signal through four distinct legs: trajectory capture at session end, an apprenticeship queue that fires on every commit, editorial DPO pairs from the reverse-funnel editorial pipeline, and negative-trajectory distillation from operator corrections. Each leg captures a different dimension of operator intent.
+- All training signal passes through the same auditable boundary — [[doorman-protocol|Doorman]] — and lands in the append-only audit ledger. Nothing bypasses the ledger; nothing leaves the local environment. The learning loop is air-gapped and self-contained.
+- The corpus accumulates with every session. As of mid-2026 the apprenticeship corpus held 502 tuples and the editorial DPO corpus held 34 pairs. These numbers grow without manual curation — the model floor rises as the operator uses the environment.
+- The one leg not yet wired is the structured-entity loop: a `POST /v1/draft/generate` endpoint in [[service-content]] that would ground generation in graph entities. The supporting infrastructure (queue, ledger, hooks, audit routing) is already in place; what remains is a multi-week Rust engineering effort.
+
+## Four legs of training signal
+
+The substrate has four legs.
+
+**Trajectory capture.** A session-end hook fires at session close, writing a structured JSONL entry to the audit ledger: branch state, uncommitted-file count, head SHA, and a promotion-pending flag. A nightly harvest copies the day's session transcripts into the same ledger, tagged by operator and archive.
+
+**Apprenticeship queue.** A post-commit hook emits a brief for every workspace commit. A 15-minute queue drainer calls the local SLM (OLMo-2 7B Q4) against each brief, captures the model's attempt, and writes the `(brief, attempt, actual_diff)` tuple to the [[apprenticeship-substrate|apprenticeship corpus]]. 502 tuples had accumulated as of 2026-05-18.
+
+**Editorial DPO pairs.** Every draft that passes through the reverse-funnel editorial pattern — raw to refined to creative-edited — emits two DPO (direct preference optimisation) pairs to the prose-edit corpus. The pair captures the editorial improvement deltas. 34 pairs had accumulated to that date.
+
+**Negative-trajectory distillation.** An inbox-scanner script reads operator corrections from archived messages and emits negative-trajectory signals to the feedback corpus. This fourth leg captures what the model should not do.
+
+## Structured-entity loop — the remaining leg
+
+What remains to wire — multi-week Rust engineering effort: the structured-entity loop. [[service-content]] (LadybugDB-backed graph) needs a `POST /v1/draft/generate` endpoint that queries the graph for relevant entities, assembles a 2K-token grounded prompt, calls the [[doorman-protocol|Doorman]], and writes the response as a graph-grounded corpus tuple. A LoRA scheduler then wakes Tier B [[yoyo-compute-substrate|GPU compute]] for nightly [[elastic-compute-lora-training-pipeline|adapter training]]. The supporting infrastructure — queue, ledger, hooks, audit-routing — is already in place.
+
+The substrate compounds in two directions: structurally (citation density and supersedence chains thicken with each draft) and generatively (each adapter raises the floor of "raw" so each refinement cycle starts closer to publish-ready).
+
+## See also
+
+- [[compounding-substrate]] — the substrate discipline this architecture instantiates
+- [[service-slm]] — the local SLM service that executes model inference in the loop
+- [[totebox-session]] — the session model that trajectory capture instruments at session end
+- [[mailbox-atomicity]] — the atomic prepend discipline that protects the audit ledger from concurrent write races
