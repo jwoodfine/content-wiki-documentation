@@ -74,7 +74,7 @@ Decisiones arquitectónicas para el dominio de inteligencia de ubicación e inmu
 - Estrategia de inteligencia de ubicación — El marco estratégico y arquitectónico para el sustrato de inteligencia de ubicación: SIG abierto de archivos planos, primero sin conexión, sin costes por usuario.
 - Salto BIM en archivos planos — Cómo el Modelado de Información de Edificios se gestiona como registros ISO 19650 de archivos planos en lugar de instancias de bases de datos alojadas.
 - Sistema de diseño de edificios para BIM — Herramientas del sistema de diseño adaptadas para flujos de trabajo BIM e inmuebles.
-- [[development-regions]] — Taxonomía regional para análisis de desarrollo y planificación en despliegues PointSav.
+- Regiones de desarrollo — Taxonomía regional para análisis de desarrollo y planificación en despliegues PointSav.
 
 ## Véase también
 

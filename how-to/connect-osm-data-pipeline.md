@@ -97,5 +97,5 @@ python3 -c "import json; d=json.load(open('gateway/www/data/clusters-meta.json')
 
 - [[pointsav-gis-engine]] — the GIS engine architecture and the DBSCAN clustering pipeline
 - [[build-a-colocation-map]] — how to surface cluster data in a MapLibre web application
-- [[location-intelligence-archetypes]] — the PRO/VWH/PKS archetype model that the taxonomy feeds
+- Location intelligence archetypes (projects.woodfinegroup.com/site-selection) — the PRO/VWH/PKS archetype model that the taxonomy feeds
 - [[export-structured-data]] — exporting the resulting GeoJSON for external use

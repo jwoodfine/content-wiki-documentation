@@ -30,13 +30,7 @@ Los principios y las pautas de voz que rigen todo el contenido de este wiki. La 
 
 Materiales de referencia para flujos de trabajo de Modelado de Información de Edificios e inmuebles.
 
-- [[bim-aec-muscle-memory]] — Memoria muscular de la industria AEC: las ubicaciones estándar, las convenciones y los patrones de interfaz que un despliegue PointSav mapea.
-- [[bim-design-philosophy]] — Filosofía de diseño para las herramientas BIM: por qué registros ISO 19650 de archivos planos en lugar de bases de datos alojadas.
-- [[bim-market-context]] — Contexto de mercado para el software BIM: panorama regulatorio, patrones de adopción y posicionamiento estructural de PointSav.
-- [[bim-token-taxonomy]] — La taxonomía de tokens para primitivos del sistema de diseño BIM.
-- [[bim-token-three-layers]] — El modelo de token de tres capas aplicado a BIM: capas primitiva, semántica y de componente.
-- [[bim-token-what-it-is]] — Qué es un token de diseño BIM y por qué el sector los utiliza.
-- [[open-bim-regulatory-acceptance]] — El panorama regulatorio para los estándares BIM abiertos: IFC, ISO 19650 y su adopción por las autoridades nacionales de construcción.
+Los artículos de referencia BIM e inmuebles (memoria muscular AEC, filosofía de diseño BIM, contexto de mercado BIM, taxonomía de tokens BIM, el modelo de tres capas del token BIM, qué es un token BIM, y aceptación regulatoria de BIM abierto) ahora residen en el wiki de proyectos en projects.woodfinegroup.com/building-design.
 
 ## Glosario y terminología
 

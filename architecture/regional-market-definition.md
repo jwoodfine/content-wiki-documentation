@@ -32,7 +32,7 @@ Two failure modes follow from conflating coverage with market:
 
 **Single-anchor settlements dominate the population.** A town with one qualifying co-location is, under the current rule, the same object class as a metro holding many. The label "Regional Market" implies concentrated retail demand; the rule admits the single-anchor case. The headline count is therefore inflated by exactly the cases that carry the least decision value for site selection or investment.
 
-**The count reads as an artefact of the floor, not the geography.** A reviewer can move the count up or down simply by arguing the floor, which is the classic sign that the threshold — not the data — is doing the work. This is the same failure class as the DBSCAN parameter sensitivity documented in [[co-location-tiering-scoring]], where parameter sweeps move the North American cluster count across a wide range without any change to the underlying retailer data.
+**The count reads as an artefact of the floor, not the geography.** A reviewer can move the count up or down simply by arguing the floor, which is the classic sign that the threshold — not the data — is doing the work. This is the same failure class as the DBSCAN parameter sensitivity documented in the co-location tiering and scoring methodology, where parameter sweeps move the North American cluster count across a wide range without any change to the underlying retailer data.
 
 `mkt_conf` does not resolve this. It is geocoding precision — specifically the quality of the boundary assignment — not market quality, and must not be presented as a ranking or a quality signal.
 
@@ -52,7 +52,7 @@ A settlement is promoted to Regional Market only when it clears a stated floor. 
 
 **Floor option 1 — composition.** A Regional Market contains a minimum number of co-locations within its polygon. A floor of two immediately excludes every single-anchor settlement; a floor of three aligns the term with the intuition that a market is a place where multiple retail nodes cluster. This floor is the cheapest to compute — the co-location counts already exist per polygon — and the easiest to defend.
 
-**Floor option 2 — demand threshold.** A Regional Market clears a stated catchment population or estimated annual spend threshold. This is more defensible analytically — it ties the term to demand rather than supply density — but it depends on the catchment and spend surfaces being trustworthy first. Adoption of this floor is appropriate once those surfaces carry their uncertainty framing (see [[spend-population-provenance]] and [[trade-area-methodology]]).
+**Floor option 2 — demand threshold.** A Regional Market clears a stated catchment population or estimated annual spend threshold. This is more defensible analytically — it ties the term to demand rather than supply density — but it depends on the catchment and spend surfaces being trustworthy first. Adoption of this floor is appropriate once those surfaces carry their uncertainty framing (see the spend and population provenance and trade-area methodology write-ups).
 
 The recommended sequencing is to adopt a composition floor now, because it is computable from current outputs and immediately defensible, and to state the intention to migrate to a demand threshold once the catchment and spend surfaces clear their own revisions. Whichever floor is chosen, **the resulting Regional Market count must be re-derived and published alongside the floor** — for example, "under a floor of two co-locations, NA and EU/UK contain X Regional Markets out of 3,011 settlements with co-location presence." The count is not meaningful without the floor printed next to it.
 
@@ -102,7 +102,7 @@ Two honesty notes belong in the Method modal alongside this table:
 
 ## See also
 
-- [[co-location-tiering-scoring]] — how tiers and the planned strength score are computed for each co-location inside a Regional Market
-- [[trade-area-methodology]] — how the trade area for each co-location is defined
-- [[spend-population-provenance]] — the estimation chain for population and spend figures attributed to each co-location
+- co-location tiering and scoring — how tiers and the planned strength score are computed for each co-location inside a Regional Market
+- trade-area methodology — how the trade area for each co-location is defined
+- spend and population provenance — the estimation chain for population and spend figures attributed to each co-location
 - [[app-orchestration-gis]] — the orchestration layer that resolves co-locations to Regional Markets

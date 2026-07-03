@@ -313,3 +313,57 @@ redirects:
   # fact (token-introspection endpoint) merged into the incumbent; topic- copy retired.
   - from: /architecture/topic-private-git-paid-customer-endpoint
     to: /services/private-git-paid-customer-endpoint
+
+  # Batch — Phase C re-categorization, CROSS-REPO move, batch D2 (2026-07-03).
+  # 11 articles moved to media-knowledge-projects; 2 thin-stub duplicates retired in
+  # favour of the pre-existing, more complete projects.woodfinegroup.com canonical copy.
+  # NOTE: 2 further items from the original 13-item move list were NOT moved — flagged
+  # as unresolved collisions/content-mismatches and left in place in this repo. See the
+  # cleanup-log.md entry dated 2026-07-03 for the comparison write-up:
+  #   - architecture/co-location-methodology.md (homonym collision — documentation's
+  #     article is about hardware/data-centre co-location, not retail co-location; the
+  #     existing projects site-selection/co-location-methodology.md is a different,
+  #     unrelated subject with the same slug)
+  #   - architecture/regional-market-definition.md (substantial subject overlap with
+  #     projects markets/about-regional-markets-system.md and about-regional-markets.md)
+
+  - from: /architecture/co-location-tiering-scoring
+    to: https://projects.woodfinegroup.com/site-selection/co-location-tiering-scoring
+
+  - from: /architecture/trade-area-methodology
+    to: https://projects.woodfinegroup.com/site-selection/trade-area-methodology
+
+  - from: /architecture/development-regions
+    to: https://projects.woodfinegroup.com/rollout/development-regions
+
+  - from: /architecture/spend-population-provenance
+    to: https://projects.woodfinegroup.com/gis/spend-population-provenance
+
+  - from: /architecture/3d-asset-tokens
+    to: https://projects.woodfinegroup.com/building-design/3d-asset-tokens
+
+  - from: /reference/bim-aec-muscle-memory
+    to: https://projects.woodfinegroup.com/building-design/bim-aec-muscle-memory
+
+  - from: /reference/bim-design-philosophy
+    to: https://projects.woodfinegroup.com/building-design/bim-design-philosophy
+
+  - from: /reference/bim-market-context
+    to: https://projects.woodfinegroup.com/building-design/bim-market-context
+
+  - from: /reference/bim-token-taxonomy
+    to: https://projects.woodfinegroup.com/building-design/bim-token-taxonomy
+
+  - from: /reference/bim-token-three-layers
+    to: https://projects.woodfinegroup.com/building-design/bim-token-three-layers
+
+  - from: /reference/bim-token-what-it-is
+    to: https://projects.woodfinegroup.com/building-design/bim-token-what-it-is
+
+  # Retirements — documentation's copy was a thin stub; projects' pre-existing article
+  # is canonical and more complete. Redirect to the projects article, not a new copy.
+  - from: /architecture/location-intelligence-archetypes
+    to: https://projects.woodfinegroup.com/site-selection/location-intelligence-archetypes
+
+  - from: /reference/open-bim-regulatory-acceptance
+    to: https://projects.woodfinegroup.com/building-design/open-bim-regulatory-acceptance

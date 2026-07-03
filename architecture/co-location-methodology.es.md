@@ -22,7 +22,7 @@ La metodología de co-ubicación es el enfoque estructurado que utiliza [[points
 
 La co-ubicación, en el modelo de despliegue de PointSav, se refiere a colocar hardware propiedad del cliente en las instalaciones de un centro de datos de terceros. El cliente conserva la propiedad del hardware, la pila de software y los datos; las instalaciones proporcionan energía, refrigeración, seguridad física y tránsito de red.
 
-La metodología aborda el paso de selección de sitio: dado un requisito de despliegue, ¿qué instalaciones en qué [[development-regions]] satisfacen mejor la combinación de restricciones de latencia, jurisdicción, postura de cumplimiento y costo?
+La metodología aborda el paso de selección de sitio: dado un requisito de despliegue, ¿qué instalaciones en qué regiones de desarrollo satisfacen mejor la combinación de restricciones de latencia, jurisdicción, postura de cumplimiento y costo?
 
 ## Dimensiones de evaluación
 
@@ -36,11 +36,11 @@ La metodología aborda el paso de selección de sitio: dado un requisito de desp
 
 ## Integración con regiones de desarrollo
 
-La puntuación de co-ubicación opera dentro de la taxonomía de [[development-regions]]. Una región de desarrollo define el alcance geográfico y jurisdiccional dentro del cual se consideran los candidatos de co-ubicación. El operador revisa la lista clasificada producida por el canal de inteligencia y toma la decisión final de selección de sitio.
+La puntuación de co-ubicación opera dentro de la taxonomía de regiones de desarrollo. Una región de desarrollo define el alcance geográfico y jurisdiccional dentro del cual se consideran los candidatos de co-ubicación. El operador revisa la lista clasificada producida por el canal de inteligencia y toma la decisión final de selección de sitio.
 
 ## Véase también
 
-- [[development-regions]] — taxonomía de zonas geográficas y jurisdiccionales
+- Regiones de desarrollo — taxonomía de zonas geográficas y jurisdiccionales
 - [[three-ring-architecture]] — modelo de sustrato de datos y cómputo de la plataforma
 - [[compounding-substrate]] — mecanismo de sustrato que acumula inteligencia de mercado
 - [[leapfrog-2030-architecture]] — arquitectura estratégica en la que se toman las decisiones de co-ubicación

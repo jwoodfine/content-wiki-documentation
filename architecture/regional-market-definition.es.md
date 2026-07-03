@@ -78,7 +78,7 @@ El Mercado Metro es un contenedor contextual más grueso: un área metropolitana
 
 ## Véase también
 
-- [[co-location-tiering-scoring]] — cómo se calculan los niveles y el puntaje de fortaleza planeado para cada co-ubicación dentro de un Mercado Regional
-- [[trade-area-methodology]] — cómo se define el área de atracción para cada co-ubicación
-- [[spend-population-provenance]] — la cadena de estimación para las cifras de población y gasto
+- niveles y puntuación de co-ubicación — cómo se calculan los niveles y el puntaje de fortaleza planeado para cada co-ubicación dentro de un Mercado Regional
+- metodología de área de atracción — cómo se define el área de atracción para cada co-ubicación
+- procedencia de gasto y población — la cadena de estimación para las cifras de población y gasto
 - [[app-orchestration-gis]] — la capa de orquestación que resuelve las co-ubicaciones en Mercados Regionales

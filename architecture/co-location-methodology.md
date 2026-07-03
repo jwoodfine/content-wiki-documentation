@@ -22,7 +22,7 @@ The co-location methodology is the structured approach [[pointsav-overview|Point
 
 Co-location, in the PointSav deployment model, refers to placing customer-owned hardware in a third-party data centre facility rather than on a customer's own premises. The customer retains ownership of the hardware, the software stack, and the data; the facility provides power, cooling, physical security, and network transit.
 
-The methodology addresses the site-selection step: given a deployment requirement — a [[totebox-os|ToteboxOS]] node, a [[mediakit-os|MediaKit-class]] workload, or a GPU-capable inference tier — which facilities across which [[development-regions]] best satisfy the combination of latency, jurisdiction, compliance posture, and cost constraints?
+The methodology addresses the site-selection step: given a deployment requirement — a [[totebox-os|ToteboxOS]] node, a [[mediakit-os|MediaKit-class]] workload, or a GPU-capable inference tier — which facilities across which development regions best satisfy the combination of latency, jurisdiction, compliance posture, and cost constraints?
 
 ## Scoring dimensions
 
@@ -36,7 +36,7 @@ The methodology addresses the site-selection step: given a deployment requiremen
 
 ## Integration with development regions
 
-Co-location scoring operates within the [[development-regions]] taxonomy. A development region defines the geographic and jurisdictional envelope within which co-location candidates are considered. The methodology does not search globally; it searches within the region declared by the deployment requirement, then scores candidates within that region against the four dimensions above.
+Co-location scoring operates within the development-regions taxonomy. A development region defines the geographic and jurisdictional envelope within which co-location candidates are considered. The methodology does not search globally; it searches within the region declared by the deployment requirement, then scores candidates within that region against the four dimensions above.
 
 This scoped approach reflects the platform's deployment philosophy: sovereignty and regulatory compliance are architectural constraints, not post-selection considerations. Candidate sets are bounded before scoring begins.
 
@@ -48,7 +48,7 @@ Operator review is the final step. The intelligence pipeline produces a ranked c
 
 ## See also
 
-- [[development-regions]] — geographic and jurisdictional zone taxonomy
+- Development regions — geographic and jurisdictional zone taxonomy
 - [[three-ring-architecture]] — platform data and compute substrate model
 - [[compounding-substrate]] — substrate mechanism that accumulates market intelligence over time
 - [[leapfrog-2030-architecture]] — strategic architecture within which co-location decisions are made

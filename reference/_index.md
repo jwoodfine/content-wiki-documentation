@@ -29,13 +29,7 @@ The principles and voice guidelines that govern all content on this wiki. The fu
 
 Reference materials for Building Information Modelling and real-property workflows.
 
-- [[bim-aec-muscle-memory]] — AEC industry muscle memory: the standard locations, conventions, and interface patterns a PointSav deployment maps onto.
-- [[bim-design-philosophy]] — Design philosophy for BIM tooling: why flat-file ISO 19650 records rather than hosted databases.
-- [[bim-market-context]] — Market context for the BIM software industry: regulatory landscape, adoption patterns, and structural positioning.
-- [[bim-token-taxonomy]] — The token taxonomy for BIM design-system primitives.
-- [[bim-token-three-layers]] — The three-layer token model applied to BIM: primitive, semantic, and component layers.
-- [[bim-token-what-it-is]] — What a BIM design token is and why the field uses them.
-- [[open-bim-regulatory-acceptance]] — The regulatory landscape for open BIM standards: IFC, ISO 19650, and their adoption by national building authorities.
+BIM and real-property reference articles (AEC muscle memory, BIM design philosophy, BIM market context, BIM token taxonomy, the BIM token three-layer model, what a BIM token is, and open-BIM regulatory acceptance) now live on the projects wiki at projects.woodfinegroup.com/building-design.
 
 ## Glossary and terminology
 

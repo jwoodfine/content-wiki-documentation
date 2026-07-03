@@ -384,5 +384,5 @@ the production baseline (VWH ≥ 6,368 features; PKS ≥ 6,953 features).
 
 - Urban Fringe — the VWH archetype model and chain taxonomy
 - Commuter — the PKS archetype model and chain taxonomy
-- [[location-intelligence-archetypes]] — PRO/VWH/PKS overview and map integration
+- Location intelligence archetypes (projects.woodfinegroup.com/site-selection) — PRO/VWH/PKS overview and map integration
 - [[connect-osm-data-pipeline]] — generic single-chain ingest for new retail categories
