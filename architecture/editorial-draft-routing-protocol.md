@@ -1,6 +1,6 @@
 ---
-title: "Language-protocol substrate"
-slug: language-protocol-substrate
+title: "Editorial draft routing protocol"
+slug: editorial-draft-routing-protocol
 short_description: "Metadata classification layer that routes editorial drafts by their language_protocol declaration — which gateway processes an artifact and which vocabulary rules apply."
 category: architecture
 last_edited: 2026-06-29

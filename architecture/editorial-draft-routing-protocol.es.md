@@ -1,6 +1,6 @@
 ---
-title: "Sustrato del protocolo de lenguaje"
-slug: language-protocol-substrate
+title: "Protocolo de enrutamiento de borradores editoriales"
+slug: editorial-draft-routing-protocol
 short_description: "Capa de clasificación de metadatos que enruta borradores editoriales según language_protocol — qué pasarela procesa cada artefacto y qué reglas de vocabulario aplican."
 category: architecture
 last_edited: 2026-06-29

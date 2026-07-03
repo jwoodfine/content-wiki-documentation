@@ -16,10 +16,6 @@ Last updated: 2026-07-01.
 
 ## Open
 
-### 2026-07-01 — Slug collision: `language-protocol-substrate` exists in both `architecture/` and `substrate/`
-
-Surfaced while fixing named-company references (see closed entry below). `architecture/language-protocol-substrate.md` (last_edited 2026-06-29, about the workspace-level metadata classification/routing layer) and `substrate/language-protocol-substrate.md` (last_edited 2026-05-15, about the editorial adapter-family/genre-template infrastructure) are two different articles sharing the same `slug: language-protocol-substrate` — a violation of naming-convention.md §5 (slugs must be globally unique; the wikilink resolver is flat). Not resolved this session — deciding which article keeps the slug (and what the other one renames to) needs an editorial call on which article is canonical, not a mechanical fix. Flagged, not fixed.
-
 ---
 
 ### 2026-07-01 — Named-company benchmarking removed from public wiki content: COMPLETE
@@ -278,6 +274,7 @@ scaffold-batch + operational-starter dispatched.
 
 > Detailed session-note text archived in `cleanup-log-archive.md`.
 
+- **2026-07-01/03 — Slug collision `language-protocol-substrate` (architecture/ vs substrate/): RESOLVED.** Editorial call (Phase C re-categorization judgment call, [[project-editorial-category-redesign-phase-c]]): read both articles in full. `substrate/language-protocol-substrate.md` is the platform editorial-infrastructure article (service-disclosure crate, four adapter families, 18 genre templates, BCSC-cited, `quality: complete`) — confirmed as the intended target of **every one of the ~35 corpus-wide `[[language-protocol-substrate]]` wikilinks** (adapter composition, proofreader pipeline, decode-time constraints, etc. — all cite substrate/'s content). `architecture/language-protocol-substrate.md` is a genuinely different article about Foundry's own internal editorial-draft classification/routing mechanism (`.agent/drafts-outbound/`, operator verdicts, archive-to-gateway routing) with **zero wikilinks citing it under this slug**. Resolution: `substrate/` keeps the slug unchanged (no aliases or link-fixes needed — already correct). `architecture/` renamed (EN+ES) to `editorial-draft-routing-protocol`, a slug describing its actual subject; `redirects.yaml` entry added for the URL move. Flagged for a later session: the renamed article's body leans on Foundry-internal vocabulary (`.agent/`, "operator", "archive session") that may warrant the same editorial stripping already applied to other architectural TOPICs (see `feedback-architectural-topic-editorial-stripping` memory) — not actioned here, out of scope for a categorization pass.
 - **2026-05-08 — competitor-name violation in zero-container-inference.md:** fixed 2026-05-08 — "What this rules out" section now uses generic categories (managed container orchestration platforms, container runtime systems, etc.) per workspace §6.
 - **2026-05-08 — Category migration verification:** verified complete 2026-05-08 — `find content-wiki-documentation -maxdepth 1 -name 'topic-*.md'` returns no tracked root-level legacy files; migration to category subdirectories complete from earlier sessions.
 - **2026-05-07 — Root layout defects (guide-proofreader-distillation, topic-radical-proofreader-ui):** untracked drafts removed `rm`; source drafts remain in project-proofreader cluster.

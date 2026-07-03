@@ -260,3 +260,11 @@ redirects:
 
   - from: /applications/location-intelligence-ux
     to: /patterns/location-intelligence-ux
+
+  # language-protocol-substrate slug-collision resolution, 2026-07-03 (editorial call,
+  # see cleanup-log.md): two DIFFERENT articles shared this slug. substrate/ (platform
+  # editorial-infrastructure article, cited by ~35 wikilinks corpus-wide) keeps the slug
+  # unchanged. architecture/ (Foundry-internal draft-routing mechanism, zero inbound
+  # wikilinks under this slug) renamed to editorial-draft-routing-protocol.
+  - from: /architecture/language-protocol-substrate
+    to: /architecture/editorial-draft-routing-protocol
