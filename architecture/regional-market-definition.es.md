@@ -10,7 +10,7 @@ quality: complete
 status: stable
 bcsc_class: public-disclosure-safe
 language: es
-last_edited: 2026-06-23
+last_edited: 2026-07-03
 editor: pointsav-engineering
 paired_with: regional-market-definition.md
 cites: []
@@ -36,9 +36,11 @@ Dos modos de falla se derivan de confundir cobertura con mercado:
 
 `mkt_conf` es precisión de geocodificación — específicamente la calidad de la asignación de límites — no calidad del mercado, y no debe presentarse como una clasificación o señal de calidad.
 
-## Recomendación: separar los objetos
+## Recomendación, corregida: los umbrales de composición significan composición de anclas, no conteo
 
-Se recomienda mantener ambos objetos pero distinguirlos claramente por nombre:
+**Esta sección proponía originalmente un umbral basado en conteo — un "número mínimo" de co-ubicaciones por polígono — como la solución barata y defendible. Esa recomendación era errónea y queda retractada aquí en lugar de dejarse en pie.** El error: un asentamiento puede superar un umbral de conteo de uno y seguir siendo un mercado genuinamente fuerte, si su única co-ubicación es en sí misma una convergencia de varias categorías de anclas independientes — un hipermercado, un minorista de ferretería y un club de almacén dentro de un mismo clúster ya es un T1 según la propia definición del sistema de niveles (véase "Regional Markets Intelligence System" en el wiki de proyectos), y un T1 es exactamente la señal de demanda concentrada que el término "mercado" debería representar. Por el contrario, un asentamiento que supera un umbral de conteo de dos por tener dos clústeres separados de ancla única (T3) no es evidentemente más fuerte que el caso de un solo clúster T1 que un umbral de conteo excluiría. Contar *cuántos* eventos de co-ubicación tiene un asentamiento y contar *cuán fuerte* es cada uno son preguntas distintas, y solo la segunda es lo que "Mercado Regional" debería significar. La composición — la mezcla de categorías de anclas *dentro* de un clúster — ya está correctamente capturada por la clasificación de niveles T1/T2/T3; un umbral basado en el conteo de clústeres en lugar del nivel del clúster repite exactamente la confusión entre cobertura y mercado que este artículo buscaba corregir.
+
+La separación de objetos que sigue se mantiene — un catálogo de cobertura permisivo es algo legítimo y honestamente etiquetado para publicar, separado de una afirmación sobre la fortaleza del mercado — pero el umbral del objeto más estricto debería basarse en niveles, no en conteo.
 
 ### Asentamiento con presencia de co-ubicación
 
@@ -48,19 +50,17 @@ Se recomienda mantener ambos objetos pero distinguirlos claramente por nombre:
 
 ### Mercado Regional
 
-Un asentamiento se promueve a Mercado Regional solo cuando supera un umbral declarado. Dos umbrales candidatos están sobre la mesa:
+Un asentamiento se promueve a Mercado Regional cuando sus co-ubicaciones superan un umbral declarado **basado en niveles**, no en conteo — por ejemplo, "contiene al menos un clúster T1" o "el puntaje de nivel agregado (T1×4 + T2×2 + T3×1) alcanza un mínimo declarado". Esto vincula el término a la *fortaleza* del clúster en lugar de al *conteo* de clústeres, admitiendo correctamente el caso de un solo clúster fuerte y excluyendo correctamente el caso de muchos clústeres débiles que un umbral de conteo confundiría.
 
-**Opción de umbral 1 — composición.** Un Mercado Regional contiene un número mínimo de co-ubicaciones dentro de su polígono. Un umbral de dos excluye inmediatamente a todos los asentamientos de ancla única. Este umbral es el más barato de calcular y el más fácil de defender.
+Una alternativa, y analíticamente más sólida, es un **umbral de demanda**: un Mercado Regional supera un umbral declarado de población de cuenca o gasto anual estimado, vinculando el término a la demanda en lugar de la densidad de oferta. Esto depende de que las superficies de cuenca y gasto sean confiables primero; su adopción es apropiada una vez que esas superficies incorporen su propio marco de incertidumbre.
 
-**Opción de umbral 2 — umbral de demanda.** Un Mercado Regional supera un umbral declarado de población de cuenca o gasto anual estimado. Esto es más defendible analíticamente — vincula el término a la demanda en lugar de la densidad de oferta — pero depende de que las superficies de cuenca y gasto sean confiables primero.
+Cualquiera que sea el umbral elegido, **el conteo resultante del Mercado Regional debe re-derivarse y publicarse junto al umbral y la regla que lo produjo**.
 
-La secuencia recomendada es adoptar un umbral de composición ahora y declarar la intención de migrar a un umbral de demanda una vez que las superficies de cuenca y gasto completen sus propias revisiones. Cualquiera que sea el umbral elegido, **el conteo resultante del Mercado Regional debe re-derivarse y publicarse junto al umbral**.
+## Las Top-400 co-ubicaciones — recomendación de variable de clasificación: adoptada
 
-## Las Top-400 co-ubicaciones
+El Top-400 es una lista de co-ubicaciones (no Mercados Regionales) producida por región, cortada en 400.
 
-El Top-400 es una lista de co-ubicaciones (no Mercados Regionales) producida por región, cortada en 400. La lista se publica, clasifica y corta en 400, pero la **variable de clasificación actualmente no se declara** en ningún lugar de la cara del mapa ni en la documentación.
-
-La recomendación es publicar una variable de clasificación y un criterio de desempate, en lenguaje sencillo, en el modal de Metodología y en este artículo. La secuencia recomendada es declarar la variable de clasificación actual honestamente hoy y declarar la migración prevista a una puntuación basada en la demanda o compuesta a medida que las revisiones de cuenca, gasto y puntuación se implementen.
+**Este artículo originalmente señaló que la variable de clasificación del Top-400 no estaba declarada en ningún lugar, y recomendó publicar una puntuación compuesta explicable como la solución más defendible a largo plazo.** Esa recomendación ya se ha adoptado: la clasificación ahora se basa en una puntuación compuesta publicada, `tier_score × civic_multiplier × confidence_factor` — con cada factor visible, no una caja negra. Véase "Regional Markets Intelligence System" en el wiki de proyectos para la fórmula completa. No se necesita ninguna acción adicional en este punto; se registra aquí solo para que la historia de la recomendación quede legible.
 
 ## Mercado Metro
 
@@ -70,10 +70,10 @@ El Mercado Metro es un contenedor contextual más grueso: un área metropolitana
 
 | Objeto | Regla | Conteo | Qué mide |
 |---|---|---|---|
-| Asentamientos con presencia de co-ubicación | ≥1 co-ubicación en polígono | ~3.011 (NA + UE/RU) | Cobertura y huella |
-| Mercados Regionales (propuesto, umbral de 2) | ≥2 co-ubicaciones en polígono | Por re-derivar en la adopción | Co-ubicación concentrada |
-| Objetos RM publicados (gateway) | Regla permisiva actual | 2.986 (2.942 alta confianza) | Cobertura; calidad de geocodificación |
-| Top-400 co-ubicaciones (por región) | Top 400 por una variable declarada | 400 NA + 400 UE | Sitios candidatos clasificados |
+| Asentamientos con presencia de co-ubicación | ≥1 co-ubicación en polígono | ~3.011 (NA + UE/RU, compilación 2026-05-22) | Cobertura y huella |
+| Mercados Regionales (umbral basado en niveles, recomendación corregida) | ≥1 clúster T1, o puntaje de nivel agregado declarado | Por re-derivar en la adopción | Co-ubicación concentrada, admitiendo correctamente los mercados de un solo clúster fuerte |
+| Objetos RM publicados (gateway, compilación posterior) | Regla permisiva (≥1 co-ubicación), sin cambios | 4.436 (compilación 2026-05-30, 18 países — véase "Regional Markets Intelligence System" en el wiki de proyectos) | Cobertura; crecida por expansión de datos, no por un cambio de umbral |
+| Top-400 co-ubicaciones (por región) | Puntuación compuesta — nivel × cívico × confianza, publicada | 400 NA + 400 UE | Sitios candidatos clasificados; adoptada según la recomendación anterior |
 | Co-ubicaciones NA (DBSCAN) | eps/minPts/IoU — sensible | 226–476 en el barrido de parámetros | Conteo de clústeres (descriptivo) |
 
 ## Véase también

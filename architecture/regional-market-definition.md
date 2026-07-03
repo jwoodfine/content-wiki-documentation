@@ -10,7 +10,7 @@ quality: complete
 status: stable
 bcsc_class: public-disclosure-safe
 language: en
-last_edited: 2026-06-23
+last_edited: 2026-07-03
 editor: pointsav-engineering
 paired_with: regional-market-definition.es.md
 cites: []
@@ -36,9 +36,11 @@ Two failure modes follow from conflating coverage with market:
 
 `mkt_conf` does not resolve this. It is geocoding precision — specifically the quality of the boundary assignment — not market quality, and must not be presented as a ranking or a quality signal.
 
-## Recommendation: split the objects
+## Recommendation, corrected: composition floors mean anchor composition, not count
 
-The recommended response is to maintain both objects but distinguish them clearly by name:
+**This section originally proposed a count-based floor — "a minimum *number* of co-locations within a polygon" — as the cheap, defensible fix. That recommendation was wrong, and is retracted here rather than left standing.** The error: a settlement can clear a count floor of one and still be a genuinely strong market, if its single co-location cluster is itself a convergence of multiple independent anchor categories — a hypermarket, a hardware retailer, and a warehouse club within one tight cluster is a T1 by the tier system's own definition (see "Regional Markets Intelligence System" on the projects wiki), and a T1 is exactly the concentrated-demand signal the term "market" is supposed to carry. Conversely, a settlement that clears a count floor of two by holding two separate, single-anchor (T3) clusters is not obviously stronger than the single-T1 case a count floor would exclude. Counting *how many* co-location events a settlement has and counting *how strong* each one is are different questions, and only the second one is what "Regional Market" should mean. Composition — the anchor-category mix *within* a cluster — is already captured correctly by the T1/T2/T3 tier classification; a floor built on cluster count instead of cluster tier repeats the exact coverage-versus-market conflation this article set out to fix.
+
+The object split below still holds — a permissive coverage catalog is a legitimate, honestly-labelled thing to publish, separate from a claim about market strength — but the tighter object's floor should be tier-based (e.g., "contains at least one T1 cluster, or clears a stated aggregate tier score"), not count-based.
 
 ### Settlement with co-location presence
 
@@ -48,30 +50,19 @@ The recommended response is to maintain both objects but distinguish them clearl
 
 ### Regional Market
 
-A settlement is promoted to Regional Market only when it clears a stated floor. Two candidate floors are on the table:
+A settlement is promoted to Regional Market when its co-location clusters clear a stated **tier-based** floor, not a count floor — for example, "contains at least one T1 cluster" or "the aggregate tier score (T1×4 + T2×2 + T3×1) meets a stated minimum." This ties the term to cluster *strength* rather than cluster *count*, correctly admitting the single-strong-cluster case and correctly excluding the many-weak-clusters case that a count floor would get backwards.
 
-**Floor option 1 — composition.** A Regional Market contains a minimum number of co-locations within its polygon. A floor of two immediately excludes every single-anchor settlement; a floor of three aligns the term with the intuition that a market is a place where multiple retail nodes cluster. This floor is the cheapest to compute — the co-location counts already exist per polygon — and the easiest to defend.
+An alternative, and analytically stronger, floor is a **demand threshold**: a Regional Market clears a stated catchment population or estimated annual spend threshold, tying the term to demand rather than supply density. This depends on the catchment and spend surfaces being trustworthy first (see the spend and population provenance and trade-area methodology write-ups); adoption is appropriate once those surfaces carry their uncertainty framing.
 
-**Floor option 2 — demand threshold.** A Regional Market clears a stated catchment population or estimated annual spend threshold. This is more defensible analytically — it ties the term to demand rather than supply density — but it depends on the catchment and spend surfaces being trustworthy first. Adoption of this floor is appropriate once those surfaces carry their uncertainty framing (see the spend and population provenance and trade-area methodology write-ups).
+Whichever floor is chosen, **the resulting Regional Market count must be re-derived and published alongside the floor and the rule that produced it** — the count is not meaningful without both printed next to it.
 
-The recommended sequencing is to adopt a composition floor now, because it is computable from current outputs and immediately defensible, and to state the intention to migrate to a demand threshold once the catchment and spend surfaces clear their own revisions. Whichever floor is chosen, **the resulting Regional Market count must be re-derived and published alongside the floor** — for example, "under a floor of two co-locations, NA and EU/UK contain X Regional Markets out of 3,011 settlements with co-location presence." The count is not meaningful without the floor printed next to it.
+If no floor is adopted, the minimum acceptable change is renaming: dropping "Regional Market" for the permissive object and calling it "settlements with co-location presence" on the map face, in the Method modal, and in this TOPIC. The term "market" carries an implied claim of concentrated demand that the one-co-location rule does not support on its own — though, per the correction above, a single co-location *can* support that claim if its tier is high enough.
 
-If the floor is not raised, the minimum acceptable change is renaming: dropping "Regional Market" for the permissive object and calling it "settlements with co-location presence" on the map face, in the Method modal, and in this TOPIC. The term "market" carries an implied claim of concentrated demand that the one-co-location rule does not support.
-
-## The Top-400 co-locations
+## The Top-400 co-locations — ranking-variable recommendation: adopted
 
 The Top-400 is a list of co-locations (not Regional Markets) produced per region — North America as one region, Europe (UK, Nordics, Continental) as another — cut at 400. Each row carries a Regional Market column for context. It is the spine of the BentoBox detail view, where the rank shown is a continental-cutoff position.
 
-The list is published and ranked, but the **ranking variable is not currently stated** anywhere on the map face or in the documentation. A reader cannot tell whether position 1 means most co-located chains, largest catchment population, highest estimated spend, or tightest cluster. A ranked list with an unstated sort key is not defensible for a site-selection or investment audience.
-
-The recommendation is to publish one ranking variable and one tie-break, in plain language, in the Method modal and in this article. Candidate options in increasing order of defensibility:
-
-- **Co-location depth (anchor count).** Honest, computationally inexpensive, already available, but weak as a "best markets" claim — it ranks supply density, not demand. If used, the list is labelled accordingly: *"ranked by number of co-located anchor chains,"* never "top markets."
-- **Modelled catchment population** (WorldPop 2026, H3 resolution 7). A demand quantity, but inherits the catchment-model caveats until those are resolved.
-- **Estimated annual catchment spend** (population × per-capita multiplier). The strongest "market" framing, but chains three layers of estimation and must ship with the per-capita assumption and error framing stated.
-- **A composite explainable score** (population, spend, and accessibility, with the top drivers shown per site). This is the direction the scorecard work is heading and is the most defensible long-term, but it must be published as an explainable score — drivers visible — not a black box.
-
-The recommended sequencing is to state the current ranking variable honestly today and declare the intended migration to a demand-based or composite score as the catchment, spend, and scoring revisions land. A cutoff of exactly 400 is a presentation choice and is labelled as one rather than implied to be a natural break in the data.
+**This article originally flagged that the Top-400 ranking variable was not stated anywhere, and recommended publishing a composite explainable score as the most defensible long-term fix.** That recommendation has since been adopted: the ranking now runs on a published composite score, `tier_score × civic_multiplier × confidence_factor` — tier_score weighting T1/T2/T3 cluster strength (4/2/1), a civic multiplier for medical or higher-education anchor presence, and a confidence factor for chain-data quality — with every driver visible, not a black box. See "Regional Markets Intelligence System" on the projects wiki for the full formula and its rationale. No further action is needed on this point; it is recorded here only so the history of the recommendation is legible.
 
 ## Metro Market
 
@@ -89,15 +80,15 @@ Every count below is reported with the rule that produced it. Figures are as of 
 
 | Object | Rule | Count | What it measures |
 |---|---|---|---|
-| Settlements with co-location presence | ≥1 co-location in polygon | ~3,011 (NA + EU/UK) | Coverage and footprint |
-| Regional Markets (proposed, floor of 2) | ≥2 co-locations in polygon | To be re-derived on adoption | Concentrated co-location |
-| Published RM objects (gateway) | Current permissive rule | 2,986 (2,942 high-confidence) | Coverage; geocoding quality |
-| Top-400 co-locations (per region) | Top 400 by a stated variable | 400 NA + 400 EU | Ranked candidate sites |
+| Settlements with co-location presence | ≥1 co-location in polygon | ~3,011 (NA + EU/UK, 2026-05-22 build) | Coverage and footprint |
+| Regional Markets (tier-based floor, corrected recommendation) | ≥1 T1 cluster, or a stated aggregate tier score | To be re-derived on adoption | Concentrated co-location, correctly admitting single-strong-cluster markets |
+| Published RM objects (gateway, later build) | Permissive rule (≥1 co-location), unchanged | 4,436 (2026-05-30 build, 18 countries — see "Regional Markets Intelligence System" on the projects wiki) | Coverage; grown by dataset expansion, not by a floor change |
+| Top-400 co-locations (per region) | Composite score — tier × civic × confidence, published | 400 NA + 400 EU | Ranked candidate sites; adopted per the recommendation above |
 | NA co-locations (DBSCAN) | eps/minPts/IoU — sensitive | 226–476 across parameter sweep | Cluster count (descriptive) |
 
 Two honesty notes belong in the Method modal alongside this table:
 
-- The Regional Market count under any raised floor will be lower than 3,011, and that is the point — the lower, tighter number is the more defensible market count, not a regression.
+- The Regional Market count under a tier-based floor will differ from the raw settlement count in both directions — it drops many weak, low-tier settlements but keeps every single-cluster T1 settlement a naive count floor would have excluded. Neither direction is a regression; a tier-based count is simply a different, more defensible measurement than either the raw coverage count or a count-based floor.
 - `mkt_conf` is geocoding precision, not market quality, and is not a ranking variable.
 
 ## See also
