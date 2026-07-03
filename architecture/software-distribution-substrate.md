@@ -2,6 +2,8 @@
 schema: foundry-doc-v1
 title: "PointSav Software Distribution Substrate"
 slug: software-distribution-substrate
+aliases:
+  - topic-software-distribution-substrate
 category: architecture
 type: topic
 content_type: topic
@@ -57,7 +59,17 @@ opaque string. The payload records the product identifier, an expiry date, and a
 entitlements that encode the license tier. The release server holds only the public half
 of the signing keypair. Verification requires no network call and no shared state — the
 server decodes the token, verifies the signature, and checks the product and expiry
-entirely from the token itself.
+entirely from the token itself. The signed fields also carry a version constraint and an
+opaque customer identifier, so a single token can be scoped to a specific release range
+and traced back to the purchasing account without any lookup at verification time. Token
+revocation via a deny-list at the release server is intended for a future phase; tokens
+are not revocable after issuance today.
+
+The substrate makes no assumption that the storefront and the release server share a
+network trust boundary. The license token is the sole trust carrier — a token issued by
+the storefront is sufficient for binary access without further storefront involvement —
+which allows the release server to move to a different host or network segment without
+changes to the storefront.
 
 ## Payment and license flow
 

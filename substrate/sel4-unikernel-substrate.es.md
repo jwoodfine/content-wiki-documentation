@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 content_type: topic
 title: "Sustrato Unikernel seL4 para os-console"
-slug: topic-sel4-unikernel-substrate
+slug: sel4-unikernel-substrate
 aliases:
   - topic-sel4-unikernel-substrate
 short_description: "os-console está previsto para ejecutarse como imagen unikernel seL4 Microkit en su forma de producción final, compilando el código de la aplicación directamente con un kernel formalmente verificado para eliminar la superficie de ataque de un SO de propósito general."
@@ -15,7 +15,7 @@ bcsc_class: public-disclosure-safe
 language_protocol: TRANSLATE-ES
 last_edited: 2026-06-20
 editor: pointsav-engineering
-paired_with: topic-sel4-unikernel-substrate.md
+paired_with: sel4-unikernel-substrate.md
 cites: []
 ---
 

@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 content_type: topic
 title: "os-console: The Totebox Orchestration Browser"
-slug: topic-os-console-totebox-browser
+slug: os-console-totebox-browser
 aliases:
   - topic-os-console-totebox-browser
 short_description: "os-console is the keyboard-native operator terminal for Totebox Orchestration, structurally analogous to a browser: it renders views from Totebox services without storing data on the operator's machine."
@@ -15,7 +15,7 @@ bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
 last_edited: 2026-06-20
 editor: pointsav-engineering
-paired_with: topic-os-console-totebox-browser.es.md
+paired_with: os-console-totebox-browser.es.md
 cites: []
 ---
 

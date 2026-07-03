@@ -2,6 +2,8 @@
 schema: foundry-doc-v1
 title: "Crypto Payment and License Issuance Architecture"
 slug: crypto-license-sales-architecture
+aliases:
+  - topic-crypto-license-sales-architecture
 category: architecture
 type: topic
 content_type: topic
@@ -107,6 +109,15 @@ A separate claim endpoint records an off-chain association between a binary SHA-
 and the buyer's wallet address. This forms the basis for a future on-chain ownership
 [[crypto-attestation|attestation]]. On-chain minting capability is planned for a future version of the system;
 the claim record is written now so the data is available when that capability is added.
+
+## Failure modes
+
+| Failure | Behavior |
+|---|---|
+| Polygon RPC unavailable | Watcher queues payment checks; no impact on existing tokens |
+| Storefront unavailable | New orders blocked; existing license tokens continue to work |
+| Release server unavailable | Downloads blocked; license tokens remain valid |
+| Token expired | Release server returns 403; customer must renew via the storefront |
 
 ## See also
 

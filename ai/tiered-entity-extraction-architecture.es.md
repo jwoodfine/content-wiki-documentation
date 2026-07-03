@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Arquitectura de Extracción de Entidades por Niveles"
-slug: topic-tiered-entity-extraction-architecture
+slug: tiered-entity-extraction-architecture
 category: ai
 type: concept
 content_type: topic
@@ -13,9 +13,10 @@ language_protocol: TRANSLATE-ES
 last_edited: 2026-06-28
 editor: editorial
 short_description: "La plataforma PointSav ejecuta tres niveles de extracción en secuencia sobre cada documento: el Nivel 0 proporciona detección extractiva rápida vía GLiNER; el Nivel A ofrece una alternativa generativa vía OLMo en CPU; el Nivel B aplica enriquecimiento en GPU y registra las mejoras como señal de entrenamiento."
-paired_with: topic-tiered-entity-extraction-architecture.md
+paired_with: tiered-entity-extraction-architecture.md
 aliases:
   - topic-dual-tier-extraction-architecture
+  - topic-tiered-entity-extraction-architecture
 cites: []
 ---
 

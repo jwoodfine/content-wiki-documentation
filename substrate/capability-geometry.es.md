@@ -1,27 +1,28 @@
 ---
-artifact: topic
-schema: foundry-draft-v1
+schema: foundry-doc-v1
+content_type: topic
 title: "Geometría de Capacidades: Autorización por Capacidades seL4 en Totebox Orchestration"
-short_description: "Modelo de capacidades de seL4 aplicado a la autorización de Totebox — control de acceso cambiado en estructura, no reforzado sobre un modelo de autoridad ambiental."
-lang: es
-route: project-editorial
-status: draft
-created: 2026-06-19
-updated: 2026-06-19
-brief-id: project-console-os-console-hypervisor
-doctrine_anchors: [claim-34, claim-43, claim-49, SYS-ADR-10]
-research_trail:
-  sources: [BRIEF-os-console-hypervisor.md, BRIEF-OS-FAMILY.md, system-core-v1.0.0, system-ledger-v1.0.0]
-  reviewed_by: totebox@project-console
-  research_date: 2026-06-19
-  session_context: sesión de investigación de sustrato radical can-we-make-a-bubbly-quasar
-  verification_method: investigación por agentes + revisión de código fuente system-core/system-ledger
+slug: capability-geometry
+aliases:
+  - topic-capability-geometry
+short_description: "Geometría de Capacidades es el término de PointSav para la autorización basada en seL4, que reemplaza la política de control de acceso mutable por un DAG de capacidades aplicado formalmente por el kernel."
+category: substrate
+type: reference
+quality: complete
+status: active
+audience: public
+bcsc_class: public-disclosure-safe
+language_protocol: TRANSLATE-ES
+last_edited: 2026-06-20
+editor: pointsav-engineering
+paired_with: capability-geometry.md
+cites: []
 ---
 
 # Geometría de Capacidades: Autorización por Capacidades seL4 en Totebox Orchestration
 
-**Geometría de Capacidades™** es un término de PointSav para la aplicación del modelo de
-capacidades de seL4 a la autorización de Totebox. No es el nombre de una funcionalidad
+**Geometría de Capacidades™** es un término de PointSav para la aplicación del [[sel4-capability-topology|modelo de
+capacidades de seL4]] a la autorización de Totebox. No es el nombre de una funcionalidad
 de producto ni una afirmación de marketing. Describe un enfoque matemáticamente distinto
 al control de acceso que cambia la estructura de la autorización en lugar de añadir
 capas de seguridad a un modelo existente.
@@ -131,13 +132,14 @@ pub enum Verdict {
 
 `consult_capability()` sobre `InMemoryLedger` evalúa una invocación de capacidad contra
 el estado actual del registro y devuelve un `Verdict`. El registro es de solo adición
-(WORM) y está anclado mediante cadenas de [[merkle-proofs-as-substrate-primitive|prueba Merkle]] conforme a RFC 9162.
+(WORM) y está anclado mediante [[merkle-proofs-as-substrate-primitive|cadenas de prueba Merkle]] conforme a RFC 9162. El
+rastro de auditoría F12 se enruta a través de esta función de veredicto.
 
 ---
 
 ## Emparejamiento de Máquinas como Ceremonia de Acuñación de Capacidades
 
-El [[pairing-as-permission|emparejamiento de máquinas F11]] en os-console es la ceremonia de acuñación de
+El emparejamiento de máquinas F11 [[pairing-as-permission|(machine pairing)]] en [[os-console-architecture|os-console]] es la ceremonia de acuñación de
 capacidades prevista para el acceso a Totebox (planificado; Fase H3 de la hoja de ruta
 del sustrato os-console):
 
@@ -146,12 +148,14 @@ del sustrato os-console):
 2. Cuando una máquina host se empareja mediante F11, la autoridad de emparejamiento
    deriva y otorga tokens `CapabilityType::Endpoint` para cada servicio de cartridge
    autorizado.
-3. La instancia os-console de la máquina host posee estos tokens.
+3. La instancia os-console de la máquina host posee estos tokens. Se almacenan en el
+   CNode de la máquina virtual invitada seL4 — no en el sistema de archivos del host.
 4. En cualquier momento, el operador del Totebox revoca un token. La llamada a
    `apply_revocation()` en `system-ledger` propaga la revocación. El siguiente intento
    de IPC desde esa instancia os-console devuelve `Verdict::Refuse`.
 
-La máquina host está autorizada. No la cuenta de usuario — la máquina.
+La máquina host está autorizada. No la cuenta de usuario — la máquina. Este es el
+ancla de identidad a nivel de máquina para Totebox Orchestration.
 
 ---
 
@@ -165,16 +169,25 @@ La máquina host está autorizada. No la cuenta de usuario — la máquina.
 | Escalada posible si el estado de política está corrupto | Sin ruta de escalada sin una arista de capacidad |
 | La revocación requiere propagación de política (puede haber retraso) | La revocación elimina la arista a nivel de kernel; la prueba garantiza la propagación |
 | Añadir seguridad = añadir capas de política | Añadir seguridad = eliminar aristas de capacidades |
+| La seguridad es una propiedad del software de aplicación | La seguridad es una propiedad probada del modelo de aplicación |
 
 ---
 
 ## Alineación con Leapfrog 2030
 
 Geometría de Capacidades es el modelo de seguridad de Totebox previsto para estar en
-producción en el hito [[leapfrog-2030-architecture|Leapfrog 2030]]. El sustrato seL4 Microkit (Doctrina, cláusula #34,
-Sustrato Soberano de Dos Fondos) proporciona la capa del kernel. system-core y
-system-ledger proporcionan el sustrato de capacidades en Rust. La [[topic-three-binary-architecture|arquitectura de tres
-binarios]] (os-console, [[os-totebox]], [[os-orchestration]]) implementa Geometría de Capacidades en
+producción en el hito Leapfrog 2030. El sustrato seL4 Microkit (Sustrato Soberano de
+Dos Fondos) proporciona la capa del kernel. system-core y system-ledger proporcionan
+el sustrato de capacidades en Rust. La [[three-binary-architecture|arquitectura de tres binarios]]
+(os-console, os-totebox, os-orchestration) implementa Geometría de Capacidades en
 cada capa: por cartridge en os-console, por servicio en os-totebox, y mediante un PD
 intermediario de capacidades en os-orchestration que posee las capacidades de endpoints
 entre Toteboxes.
+
+El modelo está previsto para estar en producción en hardware Totebox antes de que
+cualquier proveedor de nube a hiperescala pueda replicar el aislamiento basado en
+capacidades formalmente verificado al precio de una pequeña empresa.
+
+---
+
+*Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orchestration™, Totebox Archive™ y Capability Geometry™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos propietarios.*

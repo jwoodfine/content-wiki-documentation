@@ -2,6 +2,8 @@
 schema: foundry-doc-v1
 title: "Arquitectura de pagos con criptomonedas y emisión de licencias"
 slug: crypto-license-sales-architecture
+aliases:
+  - topic-crypto-license-sales-architecture
 category: architecture
 type: topic
 content_type: topic
@@ -120,6 +122,15 @@ un hash SHA-256 de binario y la dirección de billetera del comprador. Esto cons
 base para una futura [[crypto-attestation|atestación]] de propiedad en cadena. La capacidad de acuñación en
 cadena está prevista para una versión futura del sistema; el registro de reclamación se
 escribe ahora para que los datos estén disponibles cuando se añada esa capacidad.
+
+## Modos de fallo
+
+| Fallo | Comportamiento |
+|---|---|
+| RPC de Polygon no disponible | El observador acumula verificaciones pendientes; sin impacto en tokens existentes |
+| Tienda virtual no disponible | Nuevos pedidos bloqueados; los tokens de licencia existentes siguen funcionando |
+| Servidor de versiones no disponible | Descargas bloqueadas; los tokens de licencia permanecen válidos |
+| Token expirado | El servidor de versiones devuelve 403; el cliente debe renovar a través de la tienda virtual |
 
 ## Véase también
 

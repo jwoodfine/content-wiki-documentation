@@ -2,6 +2,8 @@
 schema: foundry-doc-v1
 title: "Arquitectura interna de os-console"
 slug: os-console-architecture
+aliases:
+  - topic-os-console-architecture
 category: systems
 type: topic
 content_type: topic
@@ -70,6 +72,41 @@ La compilación predeterminada registra seis cartuchos:
 | F12 | `app-console-input` | servicio de ingesta |
 
 El cartucho F12 (`app-console-input`) es obligatorio en todo despliegue. Es la puerta de ingesta a través de la cual debe pasar todo texto originado por el operador antes de entrar a la capa de datos de la plataforma. Omitirlo es una violación de las restricciones de compilación.
+
+## Paneles activos (despliegue actual)
+
+De los seis cartuchos de la compilación predeterminada, cuatro son miembros activos del
+espacio de trabajo hoy. Su alcance funcional actual:
+
+- **F3 — Correo (`app-console-email`).** `EmailCartridge` se conecta a Exchange Web
+  Services (EWS) a través del backend `service-email` y presenta tres vistas: una lista
+  de bandeja de entrada (resúmenes de mensajes en hilo con recuentos de no leídos), una
+  vista de lectura (cuerpo completo del mensaje con indicadores de adjuntos) y
+  redactar/enviar (composición en texto plano con campos `Para:` y `Asunto:`). Se admite
+  el modo sin gráficos (sin Kitty/Sixel) para terminales que carecen de soporte de
+  protocolo gráfico.
+- **F9 — SLM (`app-console-slm`).** `SlmCartridge` renderiza un panel de estado en vivo
+  para la [[doorman-protocol|pasarela de inferencia local]], consultando el endpoint de
+  estado de la pasarela cada 10 segundos y mostrando la disponibilidad de los niveles
+  A/B/C y el estado del disyuntor de circuito, el número de entidades en el almacén de
+  datos local, y la profundidad de la cola de corpus con el resumen de coste diario. El
+  operador puede forzar una actualización manual con `R`.
+- **F11 — Sistema (`app-console-system`).** `SystemCartridge` proporciona el panel de
+  operador para la gestión de sesiones Totebox. Su función principal en la fase actual es
+  mostrar las aprobaciones de pairing pendientes — sesiones de preparación que esperan la
+  firma del Command Session antes de que un commit sea promovido.
+
+| Crate | Estado | Notas |
+|---|---|---|
+| `app-console-keys` | Activo | Chasis |
+| `app-console-email` | Activo | EmailCartridge |
+| `app-console-slm` | Activo | SlmCartridge |
+| `app-console-system` | Activo | SystemCartridge |
+
+Las superficies de consola adicionales (`app-console-bim`, `app-console-bookkeeper`,
+`app-console-content`, `app-console-input`, `app-console-mesh`,
+`app-console-minutebook`, `app-console-people`, `app-console-vault`) se encuentran en
+estado Reserved-folder o Scaffold-coded y no son miembros del espacio de trabajo.
 
 ## Negociación de capacidades del terminal
 

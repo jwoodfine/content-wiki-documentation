@@ -2,6 +2,8 @@
 schema: foundry-doc-v1
 title: "Sustrato de distribución de software de PointSav"
 slug: software-distribution-substrate
+aliases:
+  - topic-software-distribution-substrate
 category: architecture
 type: topic
 content_type: topic
@@ -64,7 +66,18 @@ identificador de producto, una fecha de vencimiento y una lista de autorizacione
 codifican el nivel de licencia. El servidor de versiones solo tiene la mitad pública
 del par de claves de firma. La verificación no requiere ninguna llamada de red ni estado
 compartido — el servidor decodifica el token, verifica la firma y comprueba el producto
-y el vencimiento íntegramente a partir del propio token.
+y el vencimiento íntegramente a partir del propio token. Los campos firmados también
+llevan una restricción de versión y un identificador de cliente opaco, de modo que un
+solo token puede acotarse a un rango de versiones específico y rastrearse hasta la cuenta
+compradora sin ninguna consulta adicional en el momento de la verificación. La revocación
+de tokens mediante una lista de denegación en el servidor de versiones está prevista para
+una fase futura; los tokens no son revocables tras la emisión hoy en día.
+
+El sustrato no asume que la tienda virtual y el servidor de versiones comparten un
+límite de confianza de red. El token de licencia es el único portador de confianza — un
+token emitido por la tienda virtual es suficiente para el acceso binario sin más
+intervención de la tienda virtual — lo que permite que el servidor de versiones se
+traslade a otro host o segmento de red sin cambios en la tienda virtual.
 
 ## Flujo de pago y licencia
 

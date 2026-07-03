@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Tiered Entity Extraction Architecture"
-slug: topic-tiered-entity-extraction-architecture
+slug: tiered-entity-extraction-architecture
 category: ai
 type: concept
 content_type: topic
@@ -13,9 +13,10 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-06-28
 editor: editorial
 short_description: "The PointSav entity extraction pipeline runs three tiers in sequence on each document: Tier 0 provides fast extractive detection via GLiNER; Tier A provides a generative fallback via OLMo on CPU; Tier B provides GPU enrichment and records improvements as training signal."
-paired_with: topic-tiered-entity-extraction-architecture.es.md
+paired_with: tiered-entity-extraction-architecture.es.md
 aliases:
   - topic-dual-tier-extraction-architecture
+  - topic-tiered-entity-extraction-architecture
 cites: []
 ---
 

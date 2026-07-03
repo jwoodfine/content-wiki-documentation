@@ -2,6 +2,8 @@
 schema: foundry-doc-v1
 title: "os-console Internal Architecture"
 slug: os-console-architecture
+aliases:
+  - topic-os-console-architecture
 category: systems
 type: topic
 content_type: topic
@@ -68,6 +70,39 @@ The default build registers six cartridges:
 | F12 | `app-console-input` | ingest service |
 
 The F12 cartridge (`app-console-input`) is mandatory in every deployment. It is the ingest gate through which all operator-sourced text must pass before entering the platform's data layer. Omitting it is a build constraint violation.
+
+## Active panels (current deployment)
+
+Of the six default-build cartridges, four are active workspace members today. Their
+current functional scope:
+
+- **F3 — Email (`app-console-email`).** `EmailCartridge` connects to Exchange Web
+  Services (EWS) via the `service-email` backend and presents three views: an inbox
+  list (threaded message summaries with unread counts), a read view (full message
+  body with attachment indicators), and compose/send (plain-text composition with
+  `To:` and `Subject:` fields). Plain mode (no Kitty/Sixel) is supported for terminals
+  that lack graphics protocol support.
+- **F9 — SLM (`app-console-slm`).** `SlmCartridge` renders a live health dashboard for
+  the [[doorman-protocol|local inference gateway]], polling the gateway health endpoint
+  every 10 seconds and displaying Tier A/B/C availability and circuit-breaker state,
+  entity count from the local data store, and corpus queue depth with daily cost
+  summary. The operator can force a manual refresh with `R`.
+- **F11 — System (`app-console-system`).** `SystemCartridge` provides the operator
+  panel for Totebox session management. Its primary function in the current phase is
+  displaying pending-pair approvals — staging sessions awaiting Command Session
+  sign-off before a commit is promoted.
+
+| Crate | State | Notes |
+|---|---|---|
+| `app-console-keys` | Active | Chassis |
+| `app-console-email` | Active | EmailCartridge |
+| `app-console-slm` | Active | SlmCartridge |
+| `app-console-system` | Active | SystemCartridge |
+
+Additional console surfaces (`app-console-bim`, `app-console-bookkeeper`,
+`app-console-content`, `app-console-input`, `app-console-mesh`,
+`app-console-minutebook`, `app-console-people`, `app-console-vault`) are at
+Reserved-folder or Scaffold-coded state and are not workspace members.
 
 ## Terminal capability negotiation
 

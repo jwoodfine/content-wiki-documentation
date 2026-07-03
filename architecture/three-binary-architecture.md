@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 content_type: topic
 title: "Three-binary architecture: os-console, os-totebox, os-orchestration"
-slug: topic-three-binary-architecture
+slug: three-binary-architecture
 aliases:
   - topic-three-binary-architecture
 short_description: "Totebox Orchestration is delivered through three distinct binary operating environments — os-console, os-totebox, and os-orchestration — each with a distinct role, deployment target, and hosted application set."
@@ -15,7 +15,7 @@ bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
 last_edited: 2026-06-20
 editor: pointsav-engineering
-paired_with: topic-three-binary-architecture.es.md
+paired_with: three-binary-architecture.es.md
 cites: []
 ---
 

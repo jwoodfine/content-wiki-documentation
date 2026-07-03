@@ -2,6 +2,8 @@
 schema: foundry-doc-v1
 title: "Red de Plataforma Privada: cómputo agrupado a partir del hardware que ya posee"
 slug: ppn-small-business-compute
+aliases:
+  - topic-ppn-small-business-compute
 category: infrastructure
 type: topic
 content_type: topic
@@ -93,6 +95,33 @@ cargas de trabajo huéspedes. Esta capacidad está planificada y no se ejecuta h
 hardware físico. Hasta que esté disponible, el aislamiento a nivel de anfitrión descansa
 en las fronteras convencionales de Linux y QEMU/KVM, y debe asumirse que una parte que
 controla la máquina física puede acceder a las cargas de trabajo en esa máquina.
+
+## Arquitectura de implementación
+
+La capa de cómputo agrupado descrita anteriormente se construye a partir de tres servicios
+que cooperan entre sí, más una imagen de máquina virtual compartida. Cada instancia de
+máquina virtual arranca desde una imagen de disco curada que incluye un libro mayor de
+capacidades de solo anexado, la [[doorman-protocol|pasarela de inferencia]] de modelo de
+lenguaje pequeño, y SSH para acceso del operador; el manifiesto de ejecutables de la
+imagen se verifica en el arranque, y los binarios no firmados tienen denegada la ejecución.
+
+Un [[service-vm-fleet|controlador de flota]] es el coordinador central: registra nuevas
+máquinas virtuales, devuelve colocación consultiva y lista el estado actual de las
+máquinas virtuales. Su lógica de colocación es únicamente consultiva — el controlador no
+tiene autoridad de programación sobre el hipervisor en sí. Un agente por nodo se ejecuta
+en cada host físico, reportando la disponibilidad de memoria actual al controlador de
+flota en cada intervalo de señal de actividad.
+
+El [[service-vm-tenant|proxy de inquilino]] es el único punto de acceso expuesto a los
+clientes. Valida un token portador, verifica la cuota (máximo de máquinas virtuales por
+inquilino, aplicada con un bloqueo por inquilino seguro ante concurrencia) antes de
+reenviar las solicitudes de creación al controlador de flota, y escribe una entrada de
+auditoría en el libro mayor de capacidades para cada intento de creación, aprobación,
+denegación y destrucción — tratado como consultivo si el libro mayor no está disponible.
+Los tipos de datos compartidos utilizados por los tres servicios se definen en un crate
+dedicado compatible con `no_std`: un registro de máquina virtual (con un identificador de
+inquilino opcional), una carga útil de solicitud de creación del cliente, y una carga útil
+de señal de actividad por nodo.
 
 ## Quién controla la admisión: el papel de os-network-admin
 

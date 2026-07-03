@@ -268,3 +268,48 @@ redirects:
   # wikilinks under this slug) renamed to editorial-draft-routing-protocol.
   - from: /architecture/language-protocol-substrate
     to: /architecture/editorial-draft-routing-protocol
+
+  # Batch A1d — Phase C category redesign, 2026-07-03: topic-* prefix batch merges
+  # and renames (proposal-documentation.md §4c). Four 2026-06-20 duplicates merged
+  # into their 2026-06-13 unprefixed counterparts; six sole articles renamed to drop
+  # the legacy topic- prefix (two of the six were prefix-drops only, already in their
+  # final category from batches A1a/A1b/A1c; two were collision merge-checks against
+  # an incumbent unprefixed slug).
+  - from: /architecture/topic-crypto-license-sales-architecture
+    to: /architecture/crypto-license-sales-architecture
+
+  - from: /architecture/topic-os-console-architecture
+    to: /systems/os-console-architecture
+
+  - from: /architecture/topic-ppn-small-business-compute
+    to: /infrastructure/ppn-small-business-compute
+
+  - from: /architecture/topic-software-distribution-substrate
+    to: /architecture/software-distribution-substrate
+
+  - from: /systems/topic-os-console-totebox-browser
+    to: /systems/os-console-totebox-browser
+
+  - from: /architecture/topic-three-binary-architecture
+    to: /architecture/three-binary-architecture
+
+  - from: /substrate/topic-sel4-unikernel-substrate
+    to: /substrate/sel4-unikernel-substrate
+
+  - from: /ai/topic-tiered-entity-extraction-architecture
+    to: /ai/tiered-entity-extraction-architecture
+
+  # Merge-check: topic-capability-geometry (architecture/) was the same subject as the
+  # pre-existing substrate/capability-geometry (already the target of ~8 corpus-wide
+  # wikilinks, though its frontmatter still carried a stale foundry-draft-v1 schema from
+  # an earlier drafting pass). The properly-schemaed, better-edited topic- body replaces
+  # the stale draft content at substrate/capability-geometry; schema corrected to
+  # foundry-doc-v1 in the same change.
+  - from: /architecture/topic-capability-geometry
+    to: /substrate/capability-geometry
+
+  # Merge-check: topic-private-git-paid-customer-endpoint (architecture/) was the same
+  # subject as the pre-existing services/private-git-paid-customer-endpoint. One unique
+  # fact (token-introspection endpoint) merged into the incumbent; topic- copy retired.
+  - from: /architecture/topic-private-git-paid-customer-endpoint
+    to: /services/private-git-paid-customer-endpoint

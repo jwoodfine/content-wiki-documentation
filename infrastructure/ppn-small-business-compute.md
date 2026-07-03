@@ -2,6 +2,8 @@
 schema: foundry-doc-v1
 title: "Private Platform Network: pooled compute from hardware you already own"
 slug: ppn-small-business-compute
+aliases:
+  - topic-ppn-small-business-compute
 category: infrastructure
 type: topic
 content_type: topic
@@ -85,6 +87,29 @@ or hosting provider — cannot inspect the memory of guest workloads. This capab
 planned and is not running on bare metal today. Until it ships, host-level isolation rests
 on conventional Linux and QEMU/KVM boundaries, and a party who controls the physical
 machine should be assumed able to access workloads on that machine.
+
+## Implementation architecture
+
+The pooled-compute layer described above is built from three cooperating services plus a
+shared VM image. Each VM instance boots from a curated disk image carrying an append-only
+capability ledger, the small-language-model [[doorman-protocol|inference gateway]], and
+SSH for operator access; the image's executable manifest is verified at boot, and unsigned
+binaries are denied execution.
+
+A [[service-vm-fleet|fleet controller]] is the central coordinator: it registers new VMs,
+returns advisory placement, and lists current VM state. Its placement logic is advisory
+only — the controller holds no scheduling authority over the hypervisor itself. A per-node
+agent runs on every physical host, reporting current memory availability to the fleet
+controller at each heartbeat interval.
+
+The [[service-vm-tenant|tenant proxy]] is the only endpoint exposed to customers. It
+validates a bearer token, checks quota (maximum VMs per tenant, enforced with a
+concurrency-safe per-tenant lock) before forwarding create requests to the fleet
+controller, and writes an audit entry to the capability ledger for each create attempt,
+approval, denial, and destroy — treated as advisory if the ledger is unavailable. Shared
+wire types used by all three services are defined in a dedicated `no_std`-compatible
+crate: a VM record (with an optional tenant identifier), a customer create-request
+payload, and a per-node heartbeat payload.
 
 ## Who controls admission: the role of os-network-admin
 

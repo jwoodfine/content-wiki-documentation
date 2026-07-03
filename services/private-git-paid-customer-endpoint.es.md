@@ -2,6 +2,8 @@
 schema: foundry-doc-v1
 title: "Punto de acceso privado para descarga binaria de clientes con licencia"
 slug: private-git-paid-customer-endpoint
+aliases:
+  - topic-private-git-paid-customer-endpoint
 category: services
 type: topic
 content_type: topic
@@ -54,6 +56,11 @@ para la plataforma solicitada.
 estructurado que describe el contenido de una versión. No se requiere autenticación. Este
 punto de acceso es útil para herramientas que necesitan inspeccionar el contenido de una
 versión antes de iniciar una descarga.
+
+**Introspección de tokens.** Un punto de acceso autenticado devuelve metadatos sobre el
+token presentado en sí — su producto asociado y su vencimiento — sin iniciar una
+descarga. Un punto de acceso de verificación de estado separado y sin autenticación
+respalda la supervisión de disponibilidad.
 
 ## Autenticación
 

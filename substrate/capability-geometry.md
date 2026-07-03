@@ -1,27 +1,28 @@
 ---
-artifact: topic
-schema: foundry-draft-v1
+schema: foundry-doc-v1
+content_type: topic
 title: "Capability Geometry: seL4 Capability Authorization in Totebox Orchestration"
-short_description: "seL4 capability model applied to Totebox authorization — access control changed in structure rather than strengthened on an ambient-authority model."
-lang: en
-route: project-editorial
-status: draft
-created: 2026-06-19
-updated: 2026-06-19
-brief-id: project-console-os-console-hypervisor
-doctrine_anchors: [claim-34, claim-43, claim-49, SYS-ADR-10]
-research_trail:
-  sources: [BRIEF-os-console-hypervisor.md, BRIEF-OS-FAMILY.md, seL4-reference-manual-v1.4, system-core-v1.0.0, system-ledger-v1.0.0]
-  reviewed_by: totebox@project-console
-  research_date: 2026-06-19
-  session_context: can-we-make-a-bubbly-quasar radical substrate research session
-  verification_method: agent-research + system-core/system-ledger source review
+slug: capability-geometry
+aliases:
+  - topic-capability-geometry
+short_description: "Capability Geometry is PointSav's term for seL4-based authorization that replaces mutable access-control policy with a formally proven, kernel-enforced capability DAG."
+category: substrate
+type: reference
+quality: complete
+status: active
+audience: public
+bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
+last_edited: 2026-06-20
+editor: pointsav-engineering
+paired_with: capability-geometry.es.md
+cites: []
 ---
 
 # Capability Geometry: seL4 Capability Authorization in Totebox Orchestration
 
-**Capability Geometry™** is a PointSav term for the application of the seL4 capability
-model to Totebox authorization. It is not a product feature name or marketing claim. It
+**Capability Geometry™** is a PointSav term for the application of the [[sel4-capability-topology|seL4 capability
+model]] to Totebox authorization. It is not a product feature name or marketing claim. It
 describes a mathematically distinct approach to access control that changes the structure
 of authorization rather than adding strength to an existing model.
 
@@ -128,14 +129,13 @@ pub enum Verdict {
 
 `consult_capability()` on `InMemoryLedger` evaluates a capability invocation against the
 current ledger state and returns a `Verdict`. The ledger is append-only (WORM) and anchored
-via RFC 9162 [[merkle-proofs-as-substrate-primitive|Merkle proof]] chains. The audit trail for F12 (SYS-ADR-10) routes through
-this verdict function.
+via RFC 9162 [[merkle-proofs-as-substrate-primitive|Merkle proof chains]]. The F12 audit trail routes through this verdict function.
 
 ---
 
 ## Machine Pairing as Capability Minting
 
-[[pairing-as-permission|F11 machine pairing]] in os-console is the intended capability minting ceremony for Totebox
+F11 [[pairing-as-permission|machine pairing]] in [[os-console-architecture|os-console]] is the intended capability minting ceremony for Totebox
 access (planned; Phase H3 of the os-console substrate roadmap):
 
 1. The Totebox pairing authority holds a `CapabilityType::CNode` — the root of its
@@ -170,12 +170,16 @@ machine-level identity anchor for Totebox Orchestration.
 ## Leapfrog 2030 Alignment
 
 Capability Geometry is the Totebox security model intended to be in place by the
-[[leapfrog-2030-architecture|Leapfrog 2030]] milestone. The seL4 Microkit substrate (Doctrine claim #34, Two-Bottoms
-Sovereign Substrate) provides the kernel layer. system-core and system-ledger provide
-the Rust-language capability substrate above it. The [[topic-three-binary-architecture|three-binary architecture]]
-(os-console, [[os-totebox]], [[os-orchestration]]) implements Capability Geometry at each
+Leapfrog 2030 milestone. The seL4 Microkit substrate (Two-Bottoms Sovereign Substrate)
+provides the kernel layer. system-core and system-ledger provide the Rust-language
+capability substrate above it. The [[three-binary-architecture|three-binary architecture]]
+(os-console, os-totebox, os-orchestration) implements Capability Geometry at each
 layer: per-cartridge PD on os-console, per-service PD on os-totebox, and a
 capability-broker PD on os-orchestration that holds cross-Totebox endpoint capabilities.
 
 The model is intended to be in production on Totebox hardware before any hyperscaler
 can replicate formally verified capability-based isolation at the SMB price point.
+
+---
+
+*Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orchestration™, Totebox Archive™, and Capability Geometry™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

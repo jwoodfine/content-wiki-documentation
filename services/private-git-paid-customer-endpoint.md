@@ -2,6 +2,8 @@
 schema: foundry-doc-v1
 title: "Private Binary Download Endpoint for Paying Customers"
 slug: private-git-paid-customer-endpoint
+aliases:
+  - topic-private-git-paid-customer-endpoint
 category: services
 type: topic
 content_type: topic
@@ -50,6 +52,10 @@ that lacks a binary for the requested platform.
 describing the contents of a release. No authentication is required. This endpoint is
 useful for tooling that needs to inspect what a release contains before initiating a
 download.
+
+**Token introspection.** An authenticated endpoint returns metadata about the presented
+token itself — its associated product and expiry — without initiating a download. A
+separate, unauthenticated health-probe endpoint supports uptime monitoring.
 
 ## Authentication
 
