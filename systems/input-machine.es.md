@@ -2,6 +2,8 @@
 schema: foundry-doc-v1
 title: "Máquina de entrada"
 slug: input-machine
+aliases:
+  - input-machine
 short_description: "La Máquina de Entrada es la puerta obligatoria de incorporación de documentos en os-console, asignada permanentemente a F12 y respaldada por service-input en el Archivo Totebox."
 category: systems
 type: topic

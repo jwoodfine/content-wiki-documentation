@@ -4,6 +4,8 @@ schema: foundry-doc-v1
 type: topic
 content_type: topic
 slug: app-orchestration-command-branch-model
+aliases:
+  - app-orchestration-command-branch-model
 title: "Per-archive branch model in app-orchestration-command"
 category: systems
 short_description: "Isolated per-archive branches under the app-orchestration-command coordinator — contamination prevention and independent pace ahead of publication to canonical."

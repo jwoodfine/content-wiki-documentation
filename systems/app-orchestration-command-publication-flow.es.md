@@ -4,6 +4,8 @@ schema: foundry-doc-v1
 type: topic
 content_type: topic
 slug: app-orchestration-command-publication-flow
+aliases:
+  - app-orchestration-command-publication-flow
 title: "Cómo app-orchestration-command publica los cambios de un archivo"
 category: systems
 short_description: "Mecánica de publicación bajo app-orchestration-command — cómo el código probado cruza de las ramas de archivo a la historia canónica firmada, filtrando solo código."

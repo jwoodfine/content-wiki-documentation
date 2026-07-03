@@ -2,6 +2,8 @@
 schema: foundry-doc-v1
 title: "os-console platform and cartridge architecture"
 slug: os-console-platform
+aliases:
+  - os-console-platform
 short_description: "os-console is a single Rust binary with a cartridge architecture that provides keyboard-native access to Totebox Archive workflows through F-key-navigated modules."
 category: systems
 type: topic

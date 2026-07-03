@@ -182,3 +182,81 @@ redirects:
 
   - from: /architecture/topic-tiered-entity-extraction-architecture
     to: /ai/topic-tiered-entity-extraction-architecture
+
+  # Batch A1b — Phase C category redesign, 2026-07-03: architecture/ rebalancing
+  # into infrastructure/ + systems/ + substrate/ + services/ (proposal-documentation.md
+  # §4a). Slugs unchanged; path only.
+  - from: /architecture/ppn-architecture-overview
+    to: /infrastructure/ppn-architecture-overview
+
+  - from: /architecture/ppn-command-protocol
+    to: /infrastructure/ppn-command-protocol
+
+  - from: /architecture/ppn-distributed-vm-fabric
+    to: /infrastructure/ppn-distributed-vm-fabric
+
+  - from: /architecture/ppn-hypervisor-resource-pool
+    to: /infrastructure/ppn-hypervisor-resource-pool
+
+  - from: /architecture/ppn-mesh-architecture
+    to: /infrastructure/ppn-mesh-architecture
+
+  - from: /architecture/ppn-small-business-compute
+    to: /infrastructure/ppn-small-business-compute
+
+  - from: /architecture/ppn-tenant-vm-isolation
+    to: /infrastructure/ppn-tenant-vm-isolation
+
+  - from: /architecture/ppn-three-path-architecture
+    to: /infrastructure/ppn-three-path-architecture
+
+  - from: /architecture/ppn-vm-resource-pool
+    to: /infrastructure/ppn-vm-resource-pool
+
+  - from: /architecture/spot-vm-lifecycle-kill-switch
+    to: /infrastructure/spot-vm-lifecycle-kill-switch
+
+  - from: /architecture/os-console-architecture
+    to: /systems/os-console-architecture
+
+  - from: /architecture/topic-os-console-totebox-browser
+    to: /systems/topic-os-console-totebox-browser
+
+  - from: /architecture/os-totebox-service-pd-model
+    to: /systems/os-totebox-service-pd-model
+
+  - from: /architecture/os-totebox-sovereign-archive
+    to: /systems/os-totebox-sovereign-archive
+
+  - from: /architecture/topic-sel4-unikernel-substrate
+    to: /substrate/topic-sel4-unikernel-substrate
+
+  - from: /architecture/service-pointsav-link
+    to: /services/service-pointsav-link
+
+  # Batch A1b collision resolutions — Phase C category redesign, 2026-07-03:
+  # duplicate copies retired in favor of the specialist-category copy
+  # (proposal-documentation.md §4d). Same slug in both locations; path only.
+  - from: /architecture/app-orchestration-command-branch-model
+    to: /systems/app-orchestration-command-branch-model
+
+  - from: /architecture/app-orchestration-command-publication-flow
+    to: /systems/app-orchestration-command-publication-flow
+
+  - from: /architecture/os-console-platform
+    to: /systems/os-console-platform
+
+  - from: /architecture/input-machine
+    to: /systems/input-machine
+
+  - from: /architecture/collab-via-passthrough-relay
+    to: /patterns/collab-via-passthrough-relay
+
+  - from: /architecture/customer-tier-catalog-pattern
+    to: /patterns/customer-tier-catalog-pattern
+
+  - from: /architecture/editorial-pipeline-three-stages
+    to: /services/editorial-pipeline-three-stages
+
+  - from: /applications/location-intelligence-ux
+    to: /patterns/location-intelligence-ux

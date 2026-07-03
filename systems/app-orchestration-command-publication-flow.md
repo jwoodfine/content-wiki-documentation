@@ -4,6 +4,8 @@ schema: foundry-doc-v1
 type: topic
 content_type: topic
 slug: app-orchestration-command-publication-flow
+aliases:
+  - app-orchestration-command-publication-flow
 title: "How app-orchestration-command publishes archive changes"
 category: systems
 short_description: "Publication mechanics under app-orchestration-command — how tested code crosses from archive branches into signed canonical history, with code-only filtering."

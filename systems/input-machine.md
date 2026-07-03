@@ -2,6 +2,8 @@
 schema: foundry-doc-v1
 title: "Input machine"
 slug: input-machine
+aliases:
+  - input-machine
 short_description: "The Input Machine is the mandatory document ingest gate in os-console, bound permanently to F12 and backed by service-input on the Totebox Archive."
 category: systems
 type: topic

@@ -2,6 +2,8 @@
 schema: foundry-doc-v1
 title: "Filosofía de diseño UX de inteligencia de ubicación"
 slug: location-intelligence-ux.es
+aliases:
+  - location-intelligence-ux
 category: patterns
 type: topic
 content_type: topic

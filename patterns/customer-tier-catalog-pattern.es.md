@@ -2,6 +2,8 @@
 schema: foundry-doc-v1
 title: "Patrón de catálogo en el nivel cliente"
 slug: customer-tier-catalog-pattern
+aliases:
+  - customer-tier-catalog-pattern
 short_description: "Disciplina catálogo-instancia en el nivel cliente — definiciones de despliegue reutilizables en git; instancias con datos de inquilino fuera de los repositorios compartidos."
 category: patterns
 type: topic

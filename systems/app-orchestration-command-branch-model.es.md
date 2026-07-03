@@ -4,6 +4,8 @@ schema: foundry-doc-v1
 type: topic
 content_type: topic
 slug: app-orchestration-command-branch-model
+aliases:
+  - app-orchestration-command-branch-model
 title: "Modelo de ramas por archivo en app-orchestration-command"
 category: systems
 short_description: "Ramas aisladas por archivo bajo el coordinador app-orchestration-command — prevención de contaminación y ritmo independiente antes de publicar al canónico."
