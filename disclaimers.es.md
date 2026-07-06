@@ -9,12 +9,12 @@ quality: complete
 short_description: "Aviso legal y condiciones de uso de PointSav Knowledge, el wiki de documentación de ingeniería de la plataforma PointSav."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-29
+last_edited: 2026-07-06
 editor: pointsav-engineering
 paired_with: disclaimers.md
 ---
 
-El contenido de este wiki se ofrece con fines informativos. Describe la plataforma PointSav tal como está diseñada, construida y operada. Los lectores que utilicen este contenido para decisiones de adquisición, cumplimiento normativo o inversión deben verificar las afirmaciones materiales de forma independiente.
+El contenido de este wiki se ofrece con fines informativos. Describe la plataforma PointSav tal como está diseñada, construida y operada. Los lectores que utilicen este contenido para decisiones de adquisición, cumplimiento normativo o inversión deben verificar las afirmaciones materiales de forma independiente. Esta es la versión completa del aviso; en cada página se muestra un resumen más breve de Información Importante.
 
 ## Sin garantías
 
@@ -31,6 +31,10 @@ Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orc
 ## Referencias de terceros
 
 Las referencias a estándares, herramientas u organizaciones de terceros se proporcionan únicamente a modo de contexto. No implican afiliación, respaldo ni certificación.
+
+## Jurisdicción
+
+Woodfine Capital Projects Inc. está constituida en Columbia Británica, Canadá. Las referencias a la Sovereign Data Foundation en este wiki describen una iniciativa planificada o prevista únicamente, no una titular de capital actual ni un órgano de gobierno activo.
 
 ## Licencia
 

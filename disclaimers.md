@@ -9,11 +9,11 @@ quality: complete
 short_description: "Disclaimer and terms of use for PointSav Knowledge, the engineering documentation wiki for the PointSav platform."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-27
+last_edited: 2026-07-06
 editor: pointsav-engineering
 ---
 
-The content of this wiki is provided for informational purposes. It describes the PointSav platform as it is designed, built, and operated. Readers who rely on this content for procurement, compliance, or investment decisions should verify material claims independently.
+The content of this wiki is provided for informational purposes. It describes the PointSav platform as it is designed, built, and operated. Readers who rely on this content for procurement, compliance, or investment decisions should verify material claims independently. This is the full-length version of the notice; a shorter Important Information summary is shown on every page.
 
 ## No warranty
 
@@ -30,6 +30,10 @@ Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orc
 ## Third-party references
 
 References to third-party standards, tools, or organisations are provided for context only. They do not imply affiliation, endorsement, or certification.
+
+## Jurisdiction
+
+Woodfine Capital Projects Inc. is organised in British Columbia, Canada. References to the Sovereign Data Foundation on this wiki describe a planned or intended initiative only, not a current equity holder or active governance body.
 
 ## Licence
 

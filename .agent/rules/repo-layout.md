@@ -41,6 +41,8 @@ Only the following may appear at repo root:
 | `page-privacy.es.md` | Spanish privacy notice (bilingual pair for `page-privacy.md`) |
 | `page-disclaimer.md` | English disclaimer + trademark notice (served at `/page/disclaimer`) |
 | `page-disclaimer.es.md` | Spanish disclaimer + trademark notice (bilingual pair for `page-disclaimer.md`) |
+| `important-information.md` | English Important Information band content — read by the engine and rendered above the footer on every page; chrome content, excluded from the article index. Long-form version is the `disclaimers` article. |
+| `important-information.es.md` | Spanish Important Information band content (bilingual pair for `important-information.md`) |
 
 Anything else at repo root is a layout defect until closed.
 
