@@ -42,6 +42,12 @@ activo.
 **Cambios a este aviso.** PointSav podrá actualizar este aviso periódicamente; rige la
 versión publicada en esta página.
 
+**No es un sistema de presentación de documentos.** Este wiki no es un sistema de
+presentación de valores, un repositorio de divulgación electrónica ni un sustituto de
+SEDAR+ ni de ningún otro sistema de presentación regulatorio. Las presentaciones formales
+de valores se realizan a través del sistema de presentación regulatorio correspondiente,
+no a través de este wiki.
+
 **Descargo completo.** Este aviso complementa, y no sustituye, el artículo completo de
 [[disclaimers|Avisos Legales]]. En caso de cualquier conflicto, prevalece el artículo de
 Avisos Legales.

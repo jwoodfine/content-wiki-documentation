@@ -40,6 +40,11 @@ initiative only, not a current equity holder or active governance body.
 **Changes to this notice.** PointSav may update this notice from time to time; the version
 posted on this page governs.
 
+**Not a filing system.** This wiki is not a securities filing system, an electronic
+disclosure repository, or a substitute for SEDAR+ or any other regulatory filing system.
+Formal securities filings are made through the applicable regulatory filing system, not
+through this wiki.
+
 **Full disclaimer.** This notice supplements, and does not replace, the full
 [[disclaimers|Disclaimers]] article. In the event of any conflict, the full Disclaimers
 article governs.
