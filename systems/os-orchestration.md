@@ -29,8 +29,8 @@ This boundary is structurally important: even if `os-orchestration` is compromis
 
 | Component | Role | Licence model (planned) |
 |---|---|---|
-| `os-console` | Operator-facing terminal | Apache 2.0 (intended to be free) |
-| `os-totebox` | Data archive per entity | Apache 2.0 (intended to be free) |
+| `os-console` | Operator-facing terminal | AGPL-3.0-or-later source; free BETA today |
+| `os-totebox` | Data archive per entity | FSL-1.1-ALv2 source-available now; converts to Apache-2.0 after 2 years; free BETA today |
 | `os-orchestration` | Fleet aggregator | Proprietary (intended as a commercial product) |
 
 The commercial line is drawn at the aggregator. The Console and the Totebox are intended to be free and freely transferable. The Orchestration aggregator is the paid product — an individual operator managing one entity never needs it.

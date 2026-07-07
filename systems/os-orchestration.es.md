@@ -29,8 +29,8 @@ Este límite es estructuralmente importante: incluso si `os-orchestration` se ve
 
 | Componente | Rol | Modelo de licencia (previsto) |
 |---|---|---|
-| `os-console` | Terminal de cara al operador | Apache 2.0 (previsto como gratuito) |
-| `os-totebox` | Archivo de datos por entidad | Apache 2.0 (previsto como gratuito) |
+| `os-console` | Terminal de cara al operador | Código fuente AGPL-3.0-or-later; BETA gratuita actualmente |
+| `os-totebox` | Archivo de datos por entidad | FSL-1.1-ALv2, código disponible desde ya; se convierte a Apache-2.0 tras 2 años; BETA gratuita actualmente |
 | `os-orchestration` | Agregador de flota | Propietario (previsto como producto comercial) |
 
 La línea comercial se traza en el agregador. La Consola y el Totebox están previstos como libres y libremente transferibles. El agregador de Orquestación es el producto de pago — un operador individual que gestiona una sola entidad nunca lo necesita.
