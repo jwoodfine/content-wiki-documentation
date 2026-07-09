@@ -13,7 +13,7 @@ audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
 language: es
-last_edited: 2026-06-13
+last_edited: 2026-07-09
 editor: pointsav-engineering
 paired_with: ppn-small-business-compute.md
 short_description: "Una Red de Plataforma Privada ensambla máquinas que una empresa ya posee en un único conjunto de cómputo cifrado. El aislamiento de red mediante WireGuard está operativo hoy; el aislamiento de anfitrión mediante seL4 está planificado."
@@ -185,8 +185,8 @@ En junio de 2026, se ensambló y ejercitó en vivo una PPN de tres nodos:
 Lo que la prueba no demostró es igualmente importante de enunciar: el aislamiento a
 nivel de anfitrión mediante seL4 sigue planificado, y la admisión automatizada de pares
 mediante os-network-admin aún no está en servicio. La prueba de junio de 2026 estableció
-el sustrato de cómputo agrupado; la capa de soberanía es el objetivo hacia el que el
-proyecto avanza.
+el sustrato de cómputo agrupado; la capa de aislamiento verificado es el objetivo hacia el
+que el proyecto avanza.
 
 ## Véase también
 

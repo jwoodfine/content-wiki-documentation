@@ -12,7 +12,7 @@ status: active
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-13
+last_edited: 2026-07-09
 editor: pointsav-engineering
 paired_with: ppn-small-business-compute.es.md
 short_description: "A Private Platform Network assembles machines a business already owns into a single encrypted compute pool. WireGuard network isolation is operating today; host-level isolation via seL4 is planned."
@@ -169,7 +169,7 @@ In June 2026, a three-node PPN was assembled and exercised live:
 What the test did not demonstrate is equally important to state: host-level isolation
 through seL4 remains planned, and automated peer admission through os-network-admin is
 not yet in service. The June 2026 test established the pooled-compute substrate; the
-sovereignty layer is the target the project is building toward.
+verified isolation layer is the target the project is building toward.
 
 ## See also
 
