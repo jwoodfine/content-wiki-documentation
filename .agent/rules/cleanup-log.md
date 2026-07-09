@@ -10,11 +10,56 @@
 > layout-rule enforcement, defect resolution, surfaced open
 > questions — does.
 
-Last updated: 2026-07-01.
+Last updated: 2026-07-09.
 
 ---
 
 ## Open
+
+---
+
+### 2026-07-09 — project-console drafts-outbound sweep: 3 TOPIC drafts already consolidated (2026-06 Phase C); 1 live banned-vocab defect fixed: COMPLETE
+
+`Closed: 2026-07-09.`
+
+**Scope:** project-editorial swept 6 drafts staged by project-console in
+`.agent/drafts-outbound/` (all `route_to: project-editorial`, never
+previously actioned per the routing audit that surfaced them). Consolidation
+check against this repo before authoring found that 3 of the 6 — the TOPIC
+drafts — were **already published**, merged into canonical articles during
+the 2026-06-20 "Phase C A1d" batch (commit `9ad6df5`, which explicitly lists
+`capability-geometry` as one of "2 merge-checks resolved") and the earlier
+Phase C A1b rebalance (`aeec5eb`) for `os-console-architecture`:
+
+| Draft | Already-published canonical | Verdict |
+|---|---|---|
+| `TOPIC-capability-geometry.draft.md` | `substrate/capability-geometry.md` | CONSOLIDATED — published version is the draft + wikilinks + trademark footer + Doctrine-citation strip. No new content to merge. |
+| `TOPIC-capability-geometry.es.draft.md` | `substrate/capability-geometry.es.md` | CONSOLIDATED — same. |
+| `TOPIC-os-console-architecture.draft.md` | `systems/os-console-architecture.md` + `.es.md` (bilingual pair already exists — draft's `bilingual_pair_required: true` / bare ES gap was stale) | CONSOLIDATED — published version is a strict superset (accurate `Cartridge` trait matching source, full six-cartridge registration table, terminal-negotiation detail, OSC 8 section) of the thinner draft. No new content to merge. |
+
+No new wiki commits were needed for these three articles' bodies. Verification
+pass over the two live articles while confirming the consolidation surfaced one
+real defect, fixed this session: `systems/os-console-architecture.md` +
+`.es.md` carried a descriptive (non-proper-noun) use of "Sovereign" —
+`## Sovereign deployment intent` / `## Intención de despliegue soberano` —
+which is on the workspace Do-Not-Use list (`POINTSAV-Project-Instructions.md`
+§5). Retitled to `## Customer-rooted deployment intent` /
+`## Intención de despliegue centrada en el cliente`; body text needed no
+further change. `last_edited` bumped to 2026-07-09 on both files. (`Two-Bottoms
+Sovereign Substrate` in `capability-geometry.md`/`.es.md` was checked and left
+unchanged — it is an established proper noun used consistently across the
+substrate corpus, e.g. `substrate/system-substrate-doctrine.md`,
+`substrate/capability-ledger-substrate.md`.)
+
+The 3 stale draft copies were removed from `project-editorial`'s
+`.agent/drafts-outbound/` in the same session (cluster-branch commit, not
+this repo) since their content is superseded by the live articles.
+
+The remaining 3 drafts from the same batch (`GUIDE-jennifer-2-migration-stack`,
+`GUIDE-machine-pairing-f11`, `GUIDE-os-console-getting-started`) are GUIDEs
+destined for `woodfine-fleet-deployment`, outside this repo's and this
+session's write access — refined in place in drafts-outbound and routed to
+Command Session via mailbox for customer/ commit.
 
 ---
 

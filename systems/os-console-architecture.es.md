@@ -13,7 +13,7 @@ audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
 language: es
-last_edited: 2026-06-13
+last_edited: 2026-07-09
 editor: pointsav-engineering
 paired_with: os-console-architecture.md
 short_description: "os-console aloja múltiples espacios de trabajo TUI independientes — cartuchos — dentro de un chasis unificado de navegación por teclado. Este artículo cubre el rasgo Cartridge, la negociación de capacidades y el protocolo de hipervínculos OSC 8."
@@ -155,7 +155,7 @@ que admiten gráficos Kitty también admiten OSC 8 de forma fiable. El no-op pre
 de `flush_hyperlinks()` en el rasgo significa que los cartuchos que no participan no
 incurren en sobrecarga.
 
-## Intención de despliegue soberano
+## Intención de despliegue centrada en el cliente
 
 Todos los puntos de acceso de servicio predeterminados en la configuración de la consola
 se resuelven a direcciones localhost. El binario es operable sin archivo de configuración

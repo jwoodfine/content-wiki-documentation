@@ -12,7 +12,7 @@ status: active
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-13
+last_edited: 2026-07-09
 editor: pointsav-engineering
 paired_with: os-console-architecture.es.md
 short_description: "os-console hosts multiple independent TUI workspaces — cartridges — within a unified keyboard-navigation chassis. This article covers the Cartridge trait, capability negotiation, and the OSC 8 hyperlink protocol."
@@ -149,7 +149,7 @@ Links are only emitted when the Kitty graphics protocol is active — terminals 
 Kitty graphics also support OSC 8 reliably. The default `flush_hyperlinks()` no-op in
 the trait means non-participating cartridges incur no overhead.
 
-## Sovereign deployment intent
+## Customer-rooted deployment intent
 
 All default service endpoints in the console's configuration resolve to localhost
 addresses. The binary is operable without a configuration file, and it has no hard
