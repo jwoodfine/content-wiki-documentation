@@ -19,7 +19,7 @@ The workbench is the primary authoring and review surface for [[totebox-orchestr
 
 ## Architecture
 
-The workbench is a single Rust crate (`app-privategit-workbench`, Apache 2.0) in `pointsav-monorepo`. It has two components.
+The workbench is a single Rust crate (`app-privategit-workbench`, AGPL-3.0-or-later) in `pointsav-monorepo`. It has two components.
 
 **Write-service (Rust/axum):** An HTTP server that handles file reads and writes. It binds to a loopback address and is never exposed directly to external networks. The service enforces root containment, an extension allowlist, and mtime-based conflict detection.
 
@@ -61,7 +61,7 @@ The systemd unit runs with `ProtectSystem=strict` and `ReadWritePaths=` scoped t
 
 `app-privategit-workbench` is included in the `os-privategit` host operating system alongside `app-privategit-design-system` and `service-privategit`. It is the authoring surface for operators who use the privategit tier — a locally-hosted development environment for Totebox Orchestration instances.
 
-The crate is licensed under the Apache License, Version 2.0 and is intended for downstream deployment in customer-tier instances of `os-privategit`. Operational setup documentation is available in the customer fleet deployment guide.
+The crate is licensed under AGPL-3.0-or-later and is intended for downstream deployment in customer-tier instances of `os-privategit`. Operational setup documentation is available in the customer fleet deployment guide.
 
 Phase 4 is planned to integrate CodeMirror 6 for syntax highlighting and to introduce authenticated roots with per-user writable scope.
 

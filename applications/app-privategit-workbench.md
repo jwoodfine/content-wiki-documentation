@@ -32,7 +32,7 @@ for history and promotion.
 ## Architecture
 
 The workbench is a single Rust crate (`app-privategit-workbench`,
-Apache 2.0) in the `pointsav-monorepo`. It has two components:
+AGPL-3.0-or-later) in the `pointsav-monorepo`. It has two components:
 
 **Write-service (Rust/axum):** An HTTP server that handles file reads
 and writes. It binds to a loopback address and is never exposed
@@ -145,7 +145,7 @@ operating system alongside `app-privategit-design-system` and
 use the privategit tier — a locally-hosted, network-isolated development
 environment for [[totebox-orchestration|Totebox Orchestration]] instances. Access to writable roots is governed by the [[machine-based-auth|machine-based authorization]] model.
 
-The crate is licensed under the Apache License, Version 2.0 and intended
+The crate is licensed under AGPL-3.0-or-later and intended
 for downstream deployment in customer-tier instances of `os-privategit`.
 An operational setup guide is available in the customer fleet deployment
 catalog.

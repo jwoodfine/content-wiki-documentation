@@ -20,7 +20,7 @@ El banco de trabajo es la superficie principal de autoría y revisión para los 
 
 ## Arquitectura
 
-El banco de trabajo es un único crate de Rust (`app-privategit-workbench`, Apache 2.0) en `pointsav-monorepo`. Tiene dos componentes: un servicio de escritura (Rust/axum) que gestiona lecturas y escrituras de archivos, vinculado a una dirección de bucle invertido y nunca expuesto directamente a redes externas; y una aplicación de página única autocontenida incrustada en el binario en tiempo de compilación.
+El banco de trabajo es un único crate de Rust (`app-privategit-workbench`, AGPL-3.0-or-later) en `pointsav-monorepo`. Tiene dos componentes: un servicio de escritura (Rust/axum) que gestiona lecturas y escrituras de archivos, vinculado a una dirección de bucle invertido y nunca expuesto directamente a redes externas; y una aplicación de página única autocontenida incrustada en el binario en tiempo de compilación.
 
 ## Modelo de seguridad
 
@@ -28,7 +28,7 @@ El servicio de escritura aplica cuatro capas de contención alineadas con el enf
 
 ## Relación con os-privategit
 
-`app-privategit-workbench` está incluido en el sistema operativo anfitrión `os-privategit` junto a `app-privategit-design-system` y `service-privategit`. El crate está licenciado bajo la Licencia Apache, Versión 2.0.
+`app-privategit-workbench` está incluido en el sistema operativo anfitrión `os-privategit` junto a `app-privategit-design-system` y `service-privategit`. El crate está licenciado bajo AGPL-3.0-or-later.
 
 La Fase 4 tiene previsto integrar CodeMirror 6 para el resaltado de sintaxis e introducir raíces autenticadas con alcance de escritura por usuario.
 

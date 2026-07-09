@@ -34,7 +34,7 @@ versiones basado en git para el historial y la promoción.
 ## Arquitectura
 
 La estación de trabajo es un único crate de Rust (`app-privategit-workbench`,
-Apache 2.0) en el `pointsav-monorepo`. Tiene dos componentes:
+AGPL-3.0-or-later) en el `pointsav-monorepo`. Tiene dos componentes:
 
 **Servicio de escritura (Rust/axum):** Un servidor HTTP que gestiona lecturas y
 escrituras de archivos. Se vincula a una dirección de loopback y nunca se expone
@@ -158,7 +158,7 @@ aislado en red para instancias de [[totebox-orchestration|Totebox Orchestration]
 raíces con permiso de escritura está gobernado por el modelo de
 [[machine-based-auth|autorización basada en máquinas]].
 
-El crate tiene licencia Apache, Versión 2.0, y está destinado a la
+El crate tiene licencia AGPL-3.0-or-later, y está destinado a la
 implementación en instancias de nivel cliente de `os-privategit`. Una guía de
 configuración operativa está disponible en el catálogo de despliegue de flota
 para clientes.
