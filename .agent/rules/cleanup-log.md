@@ -18,6 +18,73 @@ Last updated: 2026-07-09.
 
 ---
 
+### 2026-07-09 — project-infrastructure (PPN) drafts-outbound sweep: 2 GUIDEs already published, 1 live banned-vocab defect fixed, TEXT + JOURNAL out of this repo's scope: COMPLETE
+
+`Closed: 2026-07-09.`
+
+**Scope:** project-editorial swept 4 drafts staged by project-infrastructure in
+`.agent/drafts-outbound/` (all `route_to: project-editorial`): two GUIDEs
+(`GUIDE-ppn-fleet-operations.draft.md`, `GUIDE-ppn-node-setup.draft.md`), one
+TEXT (`TEXT-ppn-any-hardware-sovereign-compute.draft.md`), one JOURNAL
+(`JOURNAL-ppn-pooled-compute-v0.1.draft.md`).
+
+**Consolidation check found both GUIDEs already live**, not new content:
+
+| Draft | Already-published | Verdict |
+|---|---|---|
+| `GUIDE-ppn-fleet-operations.draft.md` | `customer/woodfine-fleet-deployment/fleet-infrastructure-cloud/guide-ppn-fleet-operations.md` | CONSOLIDATED — byte-identical body except one word ("response"→"summary") and the draft's missing body H1. No new content. |
+| `GUIDE-ppn-node-setup.draft.md` | `customer/woodfine-fleet-deployment/fleet-infrastructure-onprem/guide-ppn-node-setup.md` | CONSOLIDATED — byte-identical body. No new content. |
+
+No customer/ commit request was sent to Command for either — sending one would
+duplicate live content. Two real defects on the *already-published* customer
+files were flagged to Command by mailbox instead (out of this repo's write
+scope): `guide-ppn-fleet-operations.md` has **no frontmatter at all** (its
+sibling `guide-ppn-node-setup.md` has a complete `foundry-doc-v1`-style
+block); and neither guide follows the ratified `guide-how-to.md` skeleton
+(Prerequisites/Purpose/Procedure/Expected outcome/Verification/Rollback/Next
+steps) — both use an ad-hoc `§N` structure instead. Both stale drafts moved to
+`.agent/drafts-outbound/archived/` this session.
+
+**Live banned-vocab defect found and fixed** while reading the closest wiki
+sibling to the TEXT/JOURNAL drafts, `infrastructure/ppn-small-business-compute.md`
++ `.es.md` (already covers the same pooled-compute pitch at wiki register —
+confirmed no consolidation gap, the TEXT draft is legitimately distinct
+product-marketing copy, not a duplicate TOPIC): closing paragraph carried a
+descriptive (non-proper-noun) "the sovereignty layer is the target the
+project is building toward" / "la capa de soberanía es el objetivo...". Per
+`POINTSAV-Project-Instructions.md` §5 the replacement direction for
+descriptive "sovereign" is trustworthy-systems language anchored in seL4
+formal verification — this sentence is specifically about the seL4
+host-isolation target, so retitled to "the verified isolation layer" /
+"la capa de aislamiento verificado" (not "customer-rooted", which fits an
+ownership claim, not a verification claim). `last_edited` bumped to
+2026-07-09 on both files. Commit `5c5dbb8`.
+
+**Flagged, not fixed — out of scope for this session:** a corpus-wide sweep
+across `infrastructure/` turned up "sovereign"/"sovereignty" in descriptive
+use across a large number of already-published files, including an
+established published article **title and slug**, `sovereign-mesh` (+
+`sovereign-telemetry`, `data-sovereignty-telemetry`), linked from dozens of
+sibling articles. This is materially different from a single-sentence fix —
+`sovereign-mesh` is a slug-immortal published article name, not a stray
+adjective, and any rename needs an alias + `redirects.yaml` ceremony and an
+operator/Command decision, not a unilateral edit inside a 4-draft language
+pass. Left untouched; flagged here and in the outbound mailbox to Command for
+a dedicated future sweep.
+
+**TEXT and JOURNAL are out of this repo's scope, not committed here:**
+`TEXT-ppn-any-hardware-sovereign-compute.draft.md` carries
+`destination: pointsav.com product page (planned)` in its own frontmatter —
+marketing copy, not a wiki TOPIC; refined in place in drafts-outbound
+(banned-vocab title fix, file renamed to drop "sovereign") and its
+destination-ownership question routed by mailbox rather than guessed.
+`JOURNAL-ppn-pooled-compute-v0.1.draft.md` is withheld from any `research/`
+commit per `journal-registry.md` (JOURNAL admission is a capped, deliberate
+act, not a routine commit) — language-pass verified clean, left unchanged,
+routed to the cap-decision process instead.
+
+---
+
 ### 2026-07-09 — project-console drafts-outbound sweep: 3 TOPIC drafts already consolidated (2026-06 Phase C); 1 live banned-vocab defect fixed: COMPLETE
 
 `Closed: 2026-07-09.`
