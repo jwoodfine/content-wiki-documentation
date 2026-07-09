@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-25
+last_edited: 2026-07-09
 editor: pointsav-engineering
 paired_with: bim-and-real-property-surfaces.md
 references:
@@ -23,7 +23,7 @@ references:
     url: "https://www.buildingsmart.org/standards/bsi-standards/industry-foundation-classes/"
 ---
 
-BIM y superficies de bienes raíces describe cómo la plataforma PointSav trata el Modelado de Información de Construcción (BIM) como un dominio operativo de primera clase en los despliegues de clientes del sector inmobiliario. La plataforma proporciona herramientas de sistema de diseño dedicadas, convenciones de registro ISO 19650[^1] y patrones de archivo [[totebox-os|Totebox]] para datos inmobiliarios. Los componentes, tokens y primitivas geoespaciales de BIM residen en un sistema de diseño de nivel cliente separado (`woodfine-design-bim`), distinto del vendor `pointsav-design-system` — este artículo resume los puntos de integración; el contenido detallado de BIM está en `woodfine-design-bim`. Al finalizar este artículo, el lector comprenderá la separación de los dos sistemas de diseño, la disciplina de sufijos ISO 19650 y la ubicación de los colaboradores BIM en el [[archetypes-and-chart-of-accounts|Plan de Cuentas]].
+BIM y superficies de bienes raíces describe cómo la plataforma PointSav trata el Modelado de Información de Construcción (BIM) como un dominio operativo de primera clase en los despliegues de clientes del sector inmobiliario. La plataforma proporciona herramientas de sistema de diseño dedicadas, convenciones de registro ISO 19650[^1] y patrones de archivo [[totebox-os|Totebox]] para datos inmobiliarios. Los componentes, tokens y primitivas geoespaciales de BIM residen en un sistema de diseño de nivel cliente separado (`woodfine-bim-library`), distinto del vendor `pointsav-design-system` — este artículo resume los puntos de integración; el contenido detallado de BIM está en `woodfine-bim-library`. Al finalizar este artículo, el lector comprenderá la separación de los dos sistemas de diseño, la disciplina de sufijos ISO 19650 y la ubicación de los colaboradores BIM en el [[archetypes-and-chart-of-accounts|Plan de Cuentas]].
 
 ## Dos sistemas de diseño, deliberadamente separados
 
@@ -32,11 +32,11 @@ La aclaración estructural más importante: PointSav opera dos sistemas de dise�
 | Sistema de diseño | Repositorio | Audiencia | Dominio |
 |---|---|---|---|
 | `pointsav-design-system` | `github.com/pointsav` (vendor) | Colaboradores de PointSav y operadores de flota | Sustrato de UI y UX para [[console-os|os-console]], [[os-workplace]] y toda la familia de SO vendor |
-| `woodfine-design-bim` | `github.com/woodfine` (cliente) | Arquitectos, ingenieros, operadores inmobiliarios | Tokens BIM, componentes IFC[^2], primitivas visuales geoespaciales, sistema de diseño inmobiliario |
+| `woodfine-bim-library` | `github.com/woodfine` (cliente) | Arquitectos, ingenieros, operadores inmobiliarios | Tokens BIM, componentes IFC[^2], primitivas visuales geoespaciales, sistema de diseño inmobiliario |
 
-Los dos sistemas comparten metodología de autoría — un esquema común de metadatos estructurados, [[six-tier-sovereignty-matrix|estructura de soberanía de seis niveles]], nomenclatura estricta en minúsculas con guiones — pero no comparten contenido. La separación es estructural: BIM concierne a los bienes raíces; el sistema de diseño del vendor concierne a las superficies del sistema operativo. El contenido o los tokens específicos de los flujos de trabajo BIM pertenecen a `woodfine-design-bim`, nunca a `pointsav-design-system`.
+Los dos sistemas comparten metodología de autoría — un esquema común de metadatos estructurados, [[six-tier-sovereignty-matrix|estructura de soberanía de seis niveles]], nomenclatura estricta en minúsculas con guiones — pero no comparten contenido. La separación es estructural: BIM concierne a los bienes raíces; el sistema de diseño del vendor concierne a las superficies del sistema operativo. El contenido o los tokens específicos de los flujos de trabajo BIM pertenecen a `woodfine-bim-library`, nunca a `pointsav-design-system`.
 
-El despliegue público previsto para `woodfine-design-bim` es `bim.woodfinegroup.com`. Las especificaciones completas de componentes BIM, definiciones de tokens y primitivas geoespaciales se mantienen allí.
+El despliegue público previsto para `woodfine-bim-library` es `bim.woodfinegroup.com`. Las especificaciones completas de componentes BIM, definiciones de tokens y primitivas geoespaciales se mantienen allí.
 
 ## Disciplina de sufijos de registro ISO 19650
 
@@ -80,7 +80,7 @@ La [[app-console-input|puerta de entrada F12]] gestiona la ingesta de documentos
 
 ## Véase también
 
-- `woodfine-design-bim` — el sistema de diseño BIM de nivel cliente (mantenido por separado en `github.com/woodfine`)
+- `woodfine-bim-library` — el sistema de diseño BIM de nivel cliente (mantenido por separado en `github.com/woodfine`)
 - [[archetypes-and-chart-of-accounts]] — la taxonomía del Plan de Cuentas y los once arquetipos
 - [[totebox-os]] — el sistema operativo Totebox que aloja los archivos de bienes raíces
 - [[app-console-input]] — la puerta de entrada F12 a través de la cual los documentos BIM ingresan a la plataforma

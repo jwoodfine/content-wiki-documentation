@@ -18,6 +18,60 @@ Last updated: 2026-07-09.
 
 ---
 
+### 2026-07-09 — project-bim editorial sweep (26-draft batch): stale repo-path defect fixed in applications/bim-and-real-property-surfaces; Academic Small area resolution ported from media-knowledge-projects
+
+`Closed: 2026-07-09.`
+
+**Scope:** project-editorial actioned two inbox messages from project-bim requesting an
+editorial sweep of 26 PROSE drafts (10+5 "original 15" batch + 11 "supplement" TOPIC
+batch). All 26 target files were already absent from
+`clones/project-editorial/.agent/drafts-outbound/` except the 11 supplement
+`topic-bim-*.draft.md` files — investigation confirmed the 10 original TOPICs and 5
+GUIDEs had already been fully processed in a prior session: the 10 TOPICs are live in
+`media-knowledge-projects/building-design/` (migrated there from this repo's
+`applications/`/other categories per the 2026-06 Phase C cross-repo receive, not still
+here), including a "bim-token" → "bim-object" corpus-canonical consolidation
+(`c3e5d24` in that repo); the 5 GUIDEs are live in `customer/woodfine-fleet-deployment/`.
+No new commits were needed in this repo for those 15.
+
+**One live defect found and fixed in this repo** while verifying project-bim's "Repo
+path correction" finding (`woodfine-design-bim` → `woodfine-bim-library`, renamed at
+admin-tier): `applications/bim-and-real-property-surfaces.md` + `.es.md` (a
+`status: active`, `bcsc_class: public-disclosure-safe` article, not part of the 26-draft
+batch but the closest live sibling on the same subject) still named the customer-tier
+BIM design system `woodfine-design-bim` in 5 places (EN) / 5 places (ES) — the table
+row, two body-prose mentions, the "planned public deployment" line, and the See Also
+entry. Fixed via global replace in both files; `last_edited` bumped to 2026-07-09.
+
+**Also ported to `media-knowledge-projects/building-design/`** (separate repo, logged
+here for cross-reference since the defect was found via this repo's drafts-outbound
+task): `bim-zone-depths-per-use-type.md` + `.es.md` still framed the Academic Small key
+plan area (105 m² vs. 87.7 m²) as an unresolved "operator decision needed" — stale
+relative to `bim-key-plans-index.md`'s already-ratified resolution ("105 m² / V3 Master
+Summary — authoritative") and relative to project-bim's 2026-07-07 message stating the
+same resolution. Updated the inconsistency note, the "Future research" checklist item,
+and the "Source-document inconsistencies" table row in both language files to state the
+resolution and flag the still-outstanding `professional-office-subtypes.dtcg.json`
+token-file update (code-side fix, out of either wiki repo's scope).
+
+**Flagged to Command, not fixed here (customer/ is out of Totebox write scope):** the
+customer-tier GUIDE set has two more instances of both defect classes project-bim
+flagged — `guide-bim-token-authoring.md` and its apparent duplicate-in-progress
+`guide-bim-object-authoring.md` (both in `gateway-orchestration-bim/`) still carry
+descriptive "sovereign object/BIM Object vault" phrasing (Do-Not-Use §5) and stale
+`woodfine-design-bim` path references; `guide-deploy-bim-substrate.md` has the
+"sovereign" phrasing with an otherwise-correct repo path;
+`guide-regulation-overlay-publishing.md` has one stale path reference inside an IDS XML
+example. `guide-climate-zone-tokens.md` / `guide-climate-zone-objects.md` present the
+same apparent duplicate-in-progress pattern as the token/object authoring pair
+(138-line diff, not yet reconciled). Full detail routed to Command by mailbox.
+
+Full verification detail (banned-vocabulary sweep, personal-name sweep, tile-naming
+disambiguation check, zone-depth value cross-check) in the mailbox message to
+`totebox@project-bim`.
+
+---
+
 ### 2026-07-09 — project-infrastructure (PPN) drafts-outbound sweep: 2 GUIDEs already published, 1 live banned-vocab defect fixed, TEXT + JOURNAL out of this repo's scope: COMPLETE
 
 `Closed: 2026-07-09.`
