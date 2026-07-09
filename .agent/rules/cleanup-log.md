@@ -18,6 +18,76 @@ Last updated: 2026-07-09.
 
 ---
 
+### 2026-07-09 — Consolidation-candidates audit (2026-07-01) groups #2–#7: all six already resolved by a later commit; audit document is stale on these items
+
+`Opened: 2026-07-09.`
+
+**Scope:** project-editorial was dispatched to work the six remaining same-slug-in-two-categories
+groups from `.agent/audit/2026-07-01-style-guide-calibration/consolidation-candidates.md` (group #1,
+`language-protocol-substrate`, was already closed 2026-07-01/03 per the entry above and was
+explicitly out of this session's scope). Per the session's git-history-first discipline (a prior
+session this same day reversed a deliberate decision by skipping this check — see the entries above),
+`git log --all -- "*<slug>*"` was run for every slug before touching anything.
+
+**Finding: all six were already resolved.** Commit `aeec5eb` ("Phase C A1b: rebalance PPN/OS/substrate/
+services out of architecture/ ... resolve 8 of 9 slug collisions (aliases + redirects); language-
+protocol-substrate left for editorial call", 2026-07-03) — two days **after** the audit document was
+written (2026-07-01) — deleted one copy of each pair, kept the other, added a (self-referential, see
+note below) `aliases:` field, and added a `redirects.yaml` path-redirect entry for every one. The
+keep-side chosen in every case matches the audit's own recommendation:
+
+| # | Slug | Deleted | Kept | Audit recommendation | Match |
+|---|---|---|---|---|---|
+| 2 | `location-intelligence-ux` | `applications/` | `patterns/` | merge, no side specified | consistent — `patterns/` is the correct category per naming-convention.md §4 |
+| 3 | `os-console-platform` | `architecture/` | `systems/` | investigate | resolved — `systems/` is the correct category (per-OS articles) |
+| 4 | `input-machine` | `architecture/` | `systems/` | investigate | resolved — same reasoning as #3 |
+| 5 | `editorial-pipeline-three-stages` | `architecture/` | `services/` | investigate | resolved — `services/` is the correct category (per-service articles) |
+| 6 | `customer-tier-catalog-pattern` | `architecture/` | `patterns/` | keep `patterns/` | exact match |
+| 7 | `collab-via-passthrough-relay` | `architecture/` | `patterns/` | keep `patterns/` | exact match |
+
+Verified for all six: exactly one file per slug now exists corpus-wide (EN+ES); `redirects.yaml`
+carries a `/architecture/<slug>` (or `/applications/<slug>`) → `/<new-category>/<slug>` entry for
+each; no stray hardcoded path references to the old category paths remain anywhere in the corpus
+(`grep -rn` clean — all inbound references already use `[[slug]]` wikilinks, which resolve via the
+flat slug index regardless of category, per content-contract.md §3). **No new merge, rename, or
+commit was needed or performed for the structural slug-collision issue** — closing this list item
+against a decision already made, not making a new one.
+
+**Two things flagged, not fixed this session (out of scope for a duplicate-resolution pass):**
+
+1. **The resolution discarded content, it did not merge it.** In every one of the six pairs, the
+   commit's diff shows the kept file gained only the `aliases:` field (+2 lines) — no prose, links,
+   or metadata from the deleted file were carried over, even where the deleted copy had genuinely
+   different or arguably better content. Spot-checked in full: `applications/location-intelligence-ux.md`
+   (deleted) had a "Key Takeaways" section not present in the surviving `patterns/` copy, used
+   sentence-case headings where the surviving copy still uses Title Case (a `house-core.md` §Capitalization
+   defect), and did not name a real company as a quality benchmark where the surviving copy still reads
+   "(e.g., meteoblue.com)" — a `house-core.md` §"Establishing credibility without names" defect. The
+   `os-console-platform`, `input-machine`, `editorial-pipeline-three-stages`, and
+   `customer-tier-catalog-pattern` pairs show the same shape: both sides were substantial, non-trivial
+   articles on the same subject, and the losing side's unique material is now recoverable only via
+   `git show aeec5eb^:<path>`. This was a legitimate editorial call (both audit-confirmed near-duplicates
+   in #2, and structurally mandated to a single copy per slug everywhere else) — flagging the *shape* of
+   the resolution (pick-one-and-discard, not merge-and-preserve) as a known limitation in case a future
+   session wants to do a genuine content merge rather than treat this as closed.
+2. **`aliases: [<same-slug>]` is a self-referential no-op**, added identically to all six kept files.
+   Both original files already shared the same `slug:` value — that was the collision — so there was
+   no "old slug" to alias per `naming-convention.md` §8; the field as written does not do anything the
+   `slug:` field does not already do. Harmless (does not break resolution), not corrected here — a
+   mechanical artifact of a large batch commit, not worth a dedicated commit on its own.
+3. **One live style defect found while reading `systems/os-console-platform.md` (not caused by this
+   consolidation — present before and after `aeec5eb`):** the "Three-Ring Architecture placement"
+   section names `http://localhost:8011` and the binary section names SSH `port 2222`, both of which
+   `house-core.md` §"Outside voice" requires stripped from public wiki content ("SSH ports and localhost
+   endpoints"). Left unfixed — out of scope for this pass; flagged here for a future editorial-language
+   sweep of `systems/`.
+
+**Audit document itself is now stale on these six rows** — `.agent/audit/2026-07-01-style-guide-calibration/consolidation-candidates.md`
+lives in this archive's own `.agent/` (cluster-branch scope, a different repository from this wiki),
+so it is not corrected from this session; flagged in the mailbox message to Command instead.
+
+---
+
 ### 2026-07-09 — Command-authored drafts-outbound sweep (8 files): duplicate-publish "Sovereign Archives" defect found + partially fixed; 2 GUIDEs flagged as likely internal-only
 
 `Opened: 2026-07-09.`
