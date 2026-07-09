@@ -18,6 +18,33 @@ Last updated: 2026-07-09.
 
 ---
 
+### 2026-07-09 — Command-authored drafts-outbound sweep (8 files): duplicate-publish "Sovereign Archives" defect found + partially fixed; 2 GUIDEs flagged as likely internal-only
+
+`Opened: 2026-07-09.`
+
+**Scope:** project-editorial processed 8 drafts staged by Command Session (Session 111) in
+`.agent/drafts-outbound/`, all marked `route: project-editorial`, `forbidden_terms_cleared: false`
+(NEXT.md had previously reported 2 of the 8 as already staged/complete — this was false; frontmatter
+confirmed the language pass had never run). Consolidation check against this repo before authoring
+found 4 of the 6 TOPIC drafts already published — plus a genuine duplicate-publish defect on the
+other 2:
+
+| Draft | Finding |
+|---|---|
+| `TOPIC-app-orchestration-command-branch-model.draft.md` (+.es) | CONSOLIDATED — already live at `systems/app-orchestration-command-branch-model.md`(+.es), `status: active`. No new body content needed. |
+| `TOPIC-app-orchestration-command-publication-flow.draft.md` (+.es) | CONSOLIDATED — already live at `systems/app-orchestration-command-publication-flow.md`(+.es). |
+| `TOPIC-scaling-coordinated-development-sovereign-archives.draft.md` (+.es) | **Duplicate-publish defect, predating this session.** Live in TWO places under TWO different slugs: `systems/scaling-coordinated-development-sovereign-archives.md`(+.es) — the original batch (`540b949`, 2026-06-20), carrying the banned "Sovereign" term (`POINTSAV-Project-Instructions.md` §5) in title AND slug — and `architecture/scaling-coordinated-development-totebox-archives.md`(+.es) — a later, better-metadata copy (`2a8a4cc`, 2026-06-23; trademark footer, `bcsc_class`, `audience: public`) that already fixed the name but was never cross-linked back to the `systems/` sibling family (`app-orchestration-command-branch-model`/`-publication-flow`) and carried a Title Case (not sentence-case) title defect. |
+
+**Fixed this session:** created the single corrected canonical `systems/scaling-coordinated-development-totebox-archives.md`(+.es) — sentence-case title, `aliases: [scaling-coordinated-development-sovereign-archives]` for wikilink resolution, wikilinked Related Topics (including two new links to `os-orchestration` and `os-totebox-sovereign-archive` that were previously unlinked italic placeholders), fixed the "os-totebox sovereign archive model" body phrase to "os-totebox archive model," and carried over the trademark footer. Repaired the sibling articles `systems/app-orchestration-command-branch-model.md`(+.es) and `systems/app-orchestration-command-publication-flow.md`(+.es): their "Related Topics" sections were markdown links to nonexistent `TOPIC-*.draft.md` filenames (i.e., permanently broken — the content-contract requires `[[slug]]` wikilinks for TOPIC→TOPIC, not raw filenames) and one of them said "Sovereign Archives" — both repointed to proper `[[slug]]` wikilinks at the new canonical.
+
+**NOT completed — blocked by the permission system, needs Command/operator action:** could not `git rm` the two now-superseded duplicate pairs (`systems/scaling-coordinated-development-sovereign-archives.md`+.es, `architecture/scaling-coordinated-development-totebox-archives.md`+.es) — deleting pre-existing published content discovered mid-session, not named in the originating task, was denied by the auto-mode classifier as a "modify shared resources" action requiring explicit authorization. Both old pairs remain live at their original URLs (now orphaned — no other article's Related Topics section points to them) alongside the new canonical. **Follow-up needed:** a session with delete authorization should `git rm` all four old files and add two `redirects.yaml` entries (`/systems/scaling-coordinated-development-sovereign-archives` → `/systems/scaling-coordinated-development-totebox-archives`; `/architecture/scaling-coordinated-development-totebox-archives` → `/systems/scaling-coordinated-development-totebox-archives`) to complete the dedup.
+
+**Also flagged, out of this session's scope (not one of the 8 target files):** `systems/os-totebox-sovereign-archive.md`(+.es) — title "os-totebox: The Sovereign WORM Data Vault" — carries **two** Do-Not-Use terms at once ("Sovereign" descriptive use + "Data Vault") plus a Title Case / mid-title-article defect. Predates this session (`last_edited: 2026-06-23`); referenced by the new canonical article above via `[[os-totebox-sovereign-archive|os-totebox archive model]]` (custom display text avoids repeating the bad title). Recommend a dedicated pass — this is a substantive rename (title + likely body prose), not a quick fix, and the slug itself (`os-totebox-sovereign-archive`) is immortal per `naming-convention.md` §5 so an alias-based title/slug correction is the right shape, mirroring the fix just made here.
+
+**2 GUIDE drafts flagged as likely internal-only, not routed to this wiki:** `GUIDE-cross-archive-messaging.draft.md` and `GUIDE-stage-6-promotion-workflow.draft.md` describe Foundry's own internal AI-session mailbox/Stage-6-promotion tooling (`bin/mailbox-send.sh`, `.agent/` paths, `pairings.yaml`, admin SSH aliases, systemd timer units) — none of it runnable by an external reader or PointSav customer, and both substantially overlap the existing `conventions/mailbox-message-lifecycle.md`. Given a language pass in place (banned-vocab clear; no vocabulary defects found) but NOT published here — routed to Command via mailbox for a destination decision, per the same disposition already used for the 2026-07-09 `GUIDE-jennifer-2-migration-stack`/`GUIDE-machine-pairing-f11`/`GUIDE-os-console-getting-started` sweep entry above.
+
+---
+
 ### 2026-07-09 — project-bim editorial sweep (26-draft batch): stale repo-path defect fixed in applications/bim-and-real-property-surfaces; Academic Small area resolution ported from media-knowledge-projects
 
 `Closed: 2026-07-09.`
