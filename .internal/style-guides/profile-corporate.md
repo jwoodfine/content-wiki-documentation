@@ -7,8 +7,8 @@ type: reference
 content_type: reference
 quality: complete
 status: active
-audience: contributor
-bcsc_class: public-disclosure-safe
+audience: contributor-internal
+bcsc_class: internal-only
 governs: [corporate-wiki-TOPIC]
 last_edited: 2026-07-01
 editor: pointsav-engineering
