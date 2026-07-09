@@ -74,5 +74,5 @@ Dado que cada archivo dispone de su propia rama aislada, el desarrollo en 21 arc
 
 ## Temas relacionados
 
-- [Cómo app-orchestration-command publica los cambios de un archivo](TOPIC-app-orchestration-command-publication-flow.es.draft.md) — criterios, modelo de elegibilidad y comportamiento sin conexión
-- [Escalar el desarrollo coordinado en múltiples archivos soberanos](TOPIC-scaling-coordinated-development-sovereign-archives.es.draft.md) — el desafío de coordinación a escala
+- [[app-orchestration-command-publication-flow]] — criterios, modelo de elegibilidad y comportamiento sin conexión
+- [[scaling-coordinated-development-totebox-archives]] — el desafío de coordinación a escala

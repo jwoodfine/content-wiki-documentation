@@ -68,5 +68,5 @@ Archives in self-service mode *(planned/intended)* may also write to this queue 
 
 ## Related Topics
 
-- [The Per-Archive Branch Model in app-orchestration-command](TOPIC-app-orchestration-command-branch-model.draft.md) — how archive isolation prevents working-state contamination of canonical history
-- [Scaling Coordinated Development Across Many Sovereign Archives](TOPIC-scaling-coordinated-development-sovereign-archives.draft.md) — the coordination challenge as archive count grows
+- [[app-orchestration-command-branch-model]] — how archive isolation prevents working-state contamination of canonical history
+- [[scaling-coordinated-development-totebox-archives]] — the coordination challenge as archive count grows

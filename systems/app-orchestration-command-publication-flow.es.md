@@ -68,5 +68,5 @@ Los archivos en modo de autoservicio *(previsto/en desarrollo)* también pueden 
 
 ## Temas relacionados
 
-- [El modelo de ramas por archivo en app-orchestration-command](TOPIC-app-orchestration-command-branch-model.es.draft.md) — cómo el aislamiento de archivos evita la contaminación del historial canónico con estado operativo
-- [Escalar el desarrollo coordinado en múltiples archivos soberanos](TOPIC-scaling-coordinated-development-sovereign-archives.es.draft.md) — el desafío de coordinación a medida que crece el número de archivos
+- [[app-orchestration-command-branch-model]] — cómo el aislamiento de archivos evita la contaminación del historial canónico con estado operativo
+- [[scaling-coordinated-development-totebox-archives]] — el desafío de coordinación a medida que crece el número de archivos

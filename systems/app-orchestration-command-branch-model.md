@@ -74,5 +74,5 @@ Because each archive has its own isolated branch, development across 21 archives
 
 ## Related Topics
 
-- [How app-orchestration-command Publishes Archive Changes](TOPIC-app-orchestration-command-publication-flow.draft.md) — criteria, eligibility model, and offline behavior
-- [Scaling Coordinated Development Across Many Sovereign Archives](TOPIC-scaling-coordinated-development-sovereign-archives.draft.md) — the coordination challenge at scale
+- [[app-orchestration-command-publication-flow]] — criteria, eligibility model, and offline behavior
+- [[scaling-coordinated-development-totebox-archives]] — the coordination challenge at scale
