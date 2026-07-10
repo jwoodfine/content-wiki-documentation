@@ -18,6 +18,16 @@ Last updated: 2026-07-10.
 
 ---
 
+### 2026-07-10 — Bilingual parity gap closed: collect-location-intelligence-data.es.md
+
+`Closed: 2026-07-10.` The only GUIDE of 28 in `how-to/` missing its ES pair entirely
+(flagged 2026-07-06). Full translation, not just frontmatter — prose/headings/prerequisites/
+step descriptions translated; code blocks, YAML, bash commands, chain IDs, and wikidata IDs
+kept verbatim (matching this wiki's existing bilingual-technical-content convention, e.g.
+`language-protocol-substrate.es.md` keeps `Doorman`/`service-content` untranslated).
+
+---
+
 ### 2026-07-10 — project-console re-submission (3 topics): 2 already covered by an independently-authored later version; 1 genuine content gap closed
 
 `Closed: 2026-07-10.`
