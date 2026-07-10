@@ -10,13 +10,47 @@
 > layout-rule enforcement, defect resolution, surfaced open
 > questions — does.
 
-Last updated: 2026-07-09.
+Last updated: 2026-07-10.
 
 ---
 
 ## Open
 
 ---
+
+### 2026-07-10 — project-console re-submission (3 topics): 2 already covered by an independently-authored later version; 1 genuine content gap closed
+
+`Closed: 2026-07-10.`
+
+**Scope:** project-console re-submitted 3 "revised" TOPIC drafts (`topic-customer-tier-catalog-
+pattern.md`, `topic-editorial-pipeline-three-stages.md`, `topic-language-protocol-substrate.md`)
+claiming they were expanded from earlier SKELETON/ROUGH stubs but never re-routed. Checked each
+against the actual published article before acting (this repo's standing "check, don't assume"
+discipline).
+
+**Finding:** all 3 slugs are already published (`patterns/customer-tier-catalog-pattern.md`,
+`services/editorial-pipeline-three-stages.md`, `substrate/language-protocol-substrate.md`), but
+via a different pipeline (`schema: foundry-doc-v1`, `editor: pointsav-engineering`) that reached
+its own independent, differently-structured treatment — not derived from project-console's
+draft track at all. 2 of 3 (`customer-tier-catalog-pattern`, `editorial-pipeline-three-stages`)
+already substantively cover the same ground the draft claims to add (worked example, provisioning/
+decommission lifecycle, per-stage detail — verified by direct grep, not assumed) — no merge
+needed, the re-submission is stale relative to a parallel resolution.
+
+**`language-protocol-substrate.md` had a genuine gap**, confirmed by section-heading diff:
+missing the "Architectural grounding" (foundry-draft-v1 schema, artifact-classification routing
+table, mailbox relay convention) and "Why explicit protocol selection" (the case for declared-
+not-detected register) content project-console's draft added. Merged both sections into the
+published EN article (generalized: dropped the specific arXiv citation ID for the auto-detection-
+homogenization finding since it couldn't be independently verified this session; kept the
+substantive claim, attributed generically to "a 2023 Cornell University study"). ES pair
+(`language-protocol-substrate.es.md`) intentionally left unchanged — it is already a condensed
+strategic adaptation missing several EN sections (Ring and Role, full Architecture subsections,
+Configuration), so omitting these 2 new sections is consistent with the existing pattern, not a
+new bilingual gap.
+
+Replied to project-console with the finding; their draft copies (superseded) are theirs to
+retire on their own branch.
 
 ### 2026-07-09 — Consolidation-candidates audit (2026-07-01) groups #2–#7: all six already resolved by a later commit; audit document is stale on these items
 

@@ -9,7 +9,7 @@ quality: complete
 short_description: "Editorial infrastructure encoding register, brand voice, document sub-type, and audience as reusable prompt scaffolding across four replaceable services."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-07-10
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -84,6 +84,40 @@ The platform's contribution to this pattern is the per-tenant [[worm-ledger-arch
 One `service-content` instance per platform deployment, with `moduleId` partitioning tenants inside. Per-tenant isolated deployment is the escalation path — when a customer needs key-management-per-tenant or stronger isolation, they spin up their own platform instance in their own infrastructure and get their own `service-content` there.
 
 This is the meaning of "tenant escalation happens at the deployment boundary, not the service-naming boundary." The service stays multi-tenant; the deployment topology grows isolation when warranted.
+
+## Architectural grounding
+
+The substrate sits on three interconnected mechanisms.
+
+The `foundry-draft-v1` schema is the frontmatter envelope every draft artifact carries. It
+requires a language-protocol field, a destination field, and a routing field — the
+machine-readable instructions the schema enforces at staging time. A workspace-level routing
+table maps each protocol value to a gateway project and destination; the table is the single
+source of truth for that mapping, so no archive hard-codes routing logic for another archive's
+artifacts. A mailbox message-prefix convention then carries the routing intent between
+archives: a staged draft generates an outbound message that a relay picks up automatically,
+with no manual hand-off step required.
+
+The substrate differs from a content management system in two ways. It does not store content
+— content lives in git, in the receiving archive's tracked directories. It does not own
+routing logic — each gateway project implements its own pipeline against the incoming draft
+shape. The substrate makes content machine-routable across archives without requiring
+archives to know each other's internals. It also differs from a language-server protocol:
+a language-server protocol defines a real-time bidirectional session, while the substrate has
+no session state — the protocol declaration on a draft is a per-artifact stamp, made once at
+staging time, that travels with the artifact through every hand-off.
+
+## Why explicit protocol selection
+
+The substrate's foundational design choice is to require the caller to declare a language
+protocol on every editorial request rather than auto-detecting one from the input. A 2023
+Cornell University study on writing-style auto-detection found that automatically inferring
+style from input text narrows the range of voices a model produces — the detection step
+homogenizes output toward the model's expectation of the genre rather than the author's own
+register. Explicit selection sidesteps this: the operator declares the intended register at
+the request boundary, and the pipeline applies genre-specific rules from that declared
+position. The operator already knows what register they are writing in; the substrate
+reflects that knowledge structurally rather than inferring it.
 
 ## Configuration
 
