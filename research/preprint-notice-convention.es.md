@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "El aviso de preimpresión"
+title: "Aviso de preimpresión"
 slug: preprint-notice-convention
 category: research
 type: reference

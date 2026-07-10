@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "The Preprint Notice"
+title: "Preprint Notice"
 slug: preprint-notice-convention
 category: research
 type: reference
