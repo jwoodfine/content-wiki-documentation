@@ -6,7 +6,7 @@ category: patterns
 type: topic
 content_type: topic
 quality: complete
-short_description: "PairingAsPermission is the Object Capability access-control model used in Totebox Orchestration: a cryptographic pairing between two nodes is the permission, and the absence of a pairing makes the connection structurally impossible — not access-denied, but no pathway."
+short_description: "PairingAsPermission is the Object Capability access-control model in Totebox Orchestration: a cryptographic pairing is the permission; its absence means no pathway."
 status: active
 bcsc_class: no-disclosure-implication
 last_edited: 2026-05-25

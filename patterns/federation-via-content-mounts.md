@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Federation via content mounts"
 slug: federation-via-content-mounts
-short_description: "The pattern for combining curated editorial content with declarative mounts from domain-specific repositories into a single wiki surface — intended for Phase 6 of the knowledge engine."
+short_description: "The pattern combining curated editorial content with declarative mounts from domain-specific repositories into a single wiki surface, planned for Phase 6."
 category: patterns
 type: topic
 content_type: topic
