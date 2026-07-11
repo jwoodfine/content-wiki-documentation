@@ -6,7 +6,7 @@ category: applications
 type: concept
 content_type: topic
 quality: complete
-short_description: "BIM and real-property surfaces describes how PointSav treats Building Information Modelling as a first-class operational domain, with dedicated design-system tooling, ISO 19650 record-keeping discipline, and Totebox archive patterns."
+short_description: "How PointSav treats Building Information Modelling as a first-class operational domain, with dedicated design-system tooling and ISO 19650 record-keeping discipline."
 status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe

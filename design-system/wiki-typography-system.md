@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Wiki typography system"
 slug: wiki-typography-system
-short_description: "Inter and Source Serif 4 type stack, heading scale, and spacing tokens for the PointSav wiki."
+short_description: "The Inter and Source Serif 4 type stack, heading scale, and spacing tokens governing every wiki article page across the PointSav knowledge platform."
 category: design-system
 type: topic
 content_type: topic

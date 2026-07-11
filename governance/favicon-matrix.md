@@ -6,7 +6,7 @@ category: governance
 type: topic
 content_type: topic
 quality: complete
-short_description: "The platform uses inline SVG data URIs for browser-tab favicons — eliminating a network call, scaling without pixelation on every display, and assigning two distinct vendor and customer marks to make the entity behind every tab unambiguous at a glance."
+short_description: "The platform uses inline SVG data URIs for browser-tab favicons, avoiding a network call and pixelation, with distinct vendor and customer marks per tab."
 status: active
 bcsc_class: no-disclosure-implication
 last_edited: 2026-05-08

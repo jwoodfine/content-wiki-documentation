@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Wiki component library"
 slug: wiki-component-library
-short_description: "Nine reusable interface components that compose a complete wiki article page on the PointSav knowledge platform."
+short_description: "Nine reusable interface components that compose a complete wiki article page on the PointSav knowledge platform, from masthead to footer, in a shared design vocabulary."
 category: design-system
 type: topic
 content_type: topic

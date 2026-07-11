@@ -6,7 +6,7 @@ category: ai
 type: topic
 content_type: topic
 quality: complete
-short_description: "Decode-time constraints are structural rules applied to a language model's output at each token-emission step, making banned vocabulary or structurally invalid responses mathematically impossible to produce rather than catching them after the fact."
+short_description: "Structural rules applied to a language model's output at each token step, making banned vocabulary or invalid responses mathematically impossible to produce, not filtered after."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30

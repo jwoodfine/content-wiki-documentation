@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-06-14
 editor: pointsav-engineering
 paired_with: app-console-email.es.md
-short_description: "app-console-email is the F3 communications cartridge for os-console. It provides inbox listing, message reading, and compose-and-send, operating through service-email as the Comm Diode between the operator and external correspondents."
+short_description: "app-console-email is the F3 communications cartridge for os-console, providing inbox listing, message reading, and compose-and-send via service-email."
 cites: []
 ---
 

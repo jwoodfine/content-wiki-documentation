@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-06-14
 editor: pointsav-engineering
 paired_with: app-console-keys.es.md
-short_description: "app-console-keys is the always-installed base chassis of os-console. It provides the Cartridge trait that all console modules implement, the F-key navigation strip, the status bar, and the machine-based authorization client."
+short_description: "app-console-keys is the always-installed base chassis of os-console, providing the Cartridge trait, F-key navigation strip, status bar, and auth client."
 cites: []
 ---
 

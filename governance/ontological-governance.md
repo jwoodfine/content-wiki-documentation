@@ -6,7 +6,7 @@ category: governance
 type: topic
 content_type: topic
 quality: complete
-short_description: "Ontological governance describes the four self-healing control ledgers that govern how service-content classifies and accumulates knowledge, and the human-verification loop that keeps extracted identity data accurate before it is permanently committed."
+short_description: "The four self-healing control ledgers governing how service-content classifies and accumulates knowledge, and the human-verification loop that keeps it accurate."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-19

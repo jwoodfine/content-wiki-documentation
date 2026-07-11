@@ -6,7 +6,7 @@ category: governance
 type: topic
 content_type: topic
 quality: complete
-short_description: "The Three-Tier Contributor Model organises PointSav substrate contributors into Core (4–7 salaried engineers), Paid (50–100 contracted project contributors), and Open (10,000-plus public participants), with explicit mobility paths between tiers."
+short_description: "The Three-Tier Contributor Model organises substrate contributors into Core (4-7 engineers), Paid (50-100 contractors), and Open (10,000+ public), with mobility paths."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30

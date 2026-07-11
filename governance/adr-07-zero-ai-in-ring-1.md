@@ -4,7 +4,7 @@ type: topic
 content_type: topic
 slug: adr-07-zero-ai-in-ring-1
 title: "SYS-ADR-07: Zero AI in Ring 1"
-short_description: "SYS-ADR-07 prohibits AI inference from all Ring 1 boundary-ingest services, enforcing deterministic-only operations at the WORM write path to guarantee auditability and composability."
+short_description: "SYS-ADR-07 prohibits AI inference from all Ring 1 boundary-ingest services, enforcing deterministic-only operations at the WORM write path."
 audience: vendor-public
 bcsc_class: current-fact
 language: en

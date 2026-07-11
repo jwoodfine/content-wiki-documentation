@@ -6,7 +6,7 @@ category: governance
 type: topic
 content_type: topic
 quality: complete
-short_description: "Anti-homogenization discipline is the architectural posture that resists AI writing assistants pulling contributors toward a single voice, by defaulting to flagging potential issues rather than silently rewriting text."
+short_description: "Anti-homogenization discipline resists AI writing assistants pulling contributors toward a single voice, by flagging potential issues rather than silently rewriting text."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30

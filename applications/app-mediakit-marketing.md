@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-06-01
 editor: pointsav-engineering
 paired_with: app-mediakit-marketing.es.md
-short_description: "app-mediakit-marketing is a Rust web server that delivers marketing landing sites using the WordPress vocabulary over a sovereign, flat-file architecture. Two live deployments serve home.woodfinegroup.com and home.pointsav.com."
+short_description: "app-mediakit-marketing is a Rust web server delivering marketing landing sites over a flat-file architecture, serving home.woodfinegroup.com and home.pointsav.com."
 cites: []
 ---
 

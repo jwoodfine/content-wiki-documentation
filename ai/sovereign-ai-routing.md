@@ -6,7 +6,7 @@ category: ai
 type: topic
 content_type: topic
 quality: complete
-short_description: "AI routing in the PointSav platform processes language model requests through a local sanitization step before any data reaches external models, ensuring that internal structured data never travels to third-party servers in identifiable form."
+short_description: "AI routing processes language model requests through a local sanitization step before any data reaches external models, keeping internal structured data off third-party servers."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30
@@ -16,7 +16,7 @@ paired_with: sovereign-ai-routing.es.md
 ---
 
 
-> AI routing in the PointSav platform processes language model requests through a local sanitization step before any data reaches external models, ensuring that internal structured data never travels to third-party servers in identifiable form.
+> AI routing processes language model requests through a local sanitization step before any data reaches external models, keeping internal structured data off third-party servers.
 
 **AI routing** in the [[pointsav-overview|PointSav]] platform is the mechanism by which [[service-slm|`service-slm`]] — the [[doorman-protocol|Doorman]] — mediates every request that involves a language model, whether the model runs locally on the customer's hardware, on a burst compute provider, or on an external API. The routing design treats the boundary between customer-controlled infrastructure and external compute as a one-directional filter: before any text leaves the customer's private network, the payload passes through a local Small Language Model that sanitizes sensitive information, strips location identifiers, and masks Personally Identifiable Information (PII). Only the sanitized prompt — containing the mathematical structure of the request but not the customer's private data — routes to external compute. When the external model returns a result, the router re-hydrates the response with the correct internal context before delivering it to the operator. The external model never holds the actual structured records from the customer's ledger.
 

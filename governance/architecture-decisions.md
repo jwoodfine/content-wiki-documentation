@@ -6,7 +6,7 @@ category: governance
 type: governance
 content_type: topic
 quality: complete
-short_description: "Twelve binding architecture decisions — recorded commitments that govern how the PointSav platform is built and constrain all future engineering work on data handling, human oversight, system separation, and deployment custody."
+short_description: "Twelve binding architecture decisions governing how the PointSav platform is built, constraining engineering work on data handling, oversight, and deployment custody."
 status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe

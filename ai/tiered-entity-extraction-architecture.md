@@ -12,7 +12,7 @@ bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
 last_edited: 2026-06-28
 editor: editorial
-short_description: "The PointSav entity extraction pipeline runs three tiers in sequence on each document: Tier 0 provides fast extractive detection via GLiNER; Tier A provides a generative fallback via OLMo on CPU; Tier B provides GPU enrichment and records improvements as training signal."
+short_description: "The entity extraction pipeline runs three tiers per document: Tier 0 fast extractive detection via GLiNER, Tier A generative fallback via OLMo, Tier B GPU enrichment."
 paired_with: tiered-entity-extraction-architecture.es.md
 aliases:
   - topic-dual-tier-extraction-architecture

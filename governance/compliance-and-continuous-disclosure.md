@@ -6,7 +6,7 @@ category: governance
 type: concept
 content_type: topic
 quality: complete
-short_description: "Compliance and continuous disclosure describes the regulatory frameworks the PointSav architecture addresses and the structural approach it takes to expose audit evidence continuously rather than through annual point-in-time certification cycles."
+short_description: "The regulatory frameworks the PointSav architecture addresses, and its structural approach to exposing audit evidence continuously, not via annual certification."
 status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe

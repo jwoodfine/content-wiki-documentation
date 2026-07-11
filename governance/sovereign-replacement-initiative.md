@@ -6,7 +6,7 @@ category: governance
 type: topic
 content_type: topic
 quality: complete
-short_description: "The Sovereign Replacement Initiative is the engineering governance program that tracks third-party dependencies, isolates them in quarantined component directories, and coordinates the active moonshot programs that build native replacements."
+short_description: "The engineering governance program tracking third-party dependencies, isolating them in quarantine, and coordinating the moonshot programs replacing them."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-19

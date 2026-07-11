@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Design system philosophy"
 slug: design-philosophy
-short_description: "The PointSav design system is a self-hosted, customer-owned substrate running at design.pointsav.com that publishes design decision research alongside token values in DTCG format, prioritizing editor-agnostic interoperability and structured rationale."
+short_description: "The PointSav design system is a self-hosted, customer-owned substrate at design.pointsav.com publishing design decision research alongside DTCG-format token values."
 category: design-system
 type: reference
 content_type: topic

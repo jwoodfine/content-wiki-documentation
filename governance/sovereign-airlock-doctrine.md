@@ -6,7 +6,7 @@ category: governance
 type: topic
 content_type: topic
 quality: complete
-short_description: "The sovereign airlock is the staged-commit protocol that enforces a hard separation between work-in-progress staging identities and canonical repository identities — two staging authors for all commits, two admin identities for canonical pushes, with no direct path between them."
+short_description: "The staged-commit protocol enforcing separation between staging identities and canonical repository identities — two staging authors, two admin push identities."
 status: active
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC

@@ -6,7 +6,7 @@ category: governance
 type: topic
 content_type: topic
 quality: complete
-short_description: "What a regulated buyer acquires when deploying PointSav: hardware the customer owns outright, data the vendor never holds, no minimum-spend commitment, and compliance properties enforced by architecture rather than contractual promise."
+short_description: "What a regulated buyer acquires deploying PointSav: hardware the customer owns outright, data the vendor never holds, and compliance enforced by architecture."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-15

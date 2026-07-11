@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Doorman protocol"
 slug: doorman-protocol
-short_description: "The Doorman is the sole AI request boundary through which every inference call routes — enforcing sanitise-and-rehydrate discipline once, logging every call to an immutable audit ledger, and capturing the training signal that compounds the platform over time."
+short_description: "The Doorman is the sole AI request boundary through which every inference call routes, enforcing sanitise-and-rehydrate once and logging every call to an immutable audit ledger."
 category: ai
 type: concept
 content_type: topic

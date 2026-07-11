@@ -6,7 +6,7 @@ category: governance
 type: topic
 content_type: topic
 quality: complete
-short_description: "The platform's security posture: capability-based hardware isolation, the Diode unidirectional command-flow standard, the Doorman AI boundary, the WORM audit ledger, and how each property is enforced by architecture rather than by policy controls that can be misconfigured."
+short_description: "The platform's security posture: capability-based hardware isolation, the Diode command-flow standard, the Doorman AI boundary, and the WORM audit ledger."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-15
