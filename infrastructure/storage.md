@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Immutable storage and secure backup"
 slug: storage
-short_description: "The platform enforces hardware-level append-only writes to provide an unalterable, tamper-evident record while supporting legal deletion through cryptographic key destruction and backup protection via cryptographically paired secondary drives."
+short_description: "The platform enforces hardware-level append-only writes for a tamper-evident record, supporting legal deletion via key destruction and backup via paired secondary drives."
 category: infrastructure
 type: topic
 content_type: topic

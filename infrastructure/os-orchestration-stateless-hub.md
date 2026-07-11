@@ -4,7 +4,7 @@ type: topic
 content_type: topic
 slug: os-orchestration-stateless-hub
 title: "os-orchestration: The Stateless Aggregation Layer"
-short_description: "os-orchestration coordinates work across Totebox Archives without storing customer data, keys, or audit records, acting as a stateless routing and brokering surface above the per-archive capability layer."
+short_description: "os-orchestration coordinates work across Totebox Archives without storing customer data, keys, or audit records — a stateless routing surface above the capability layer."
 audience: vendor-public
 bcsc_class: current-fact
 language: en

@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Sovereign Mesh"
 slug: sovereign-mesh
-short_description: "The sovereign mesh is the application-level WireGuard overlay that connects every PointSav Private Network fleet node, carrying signed binary commands without relying on a centralised message broker."
+short_description: "The sovereign mesh is the application-level WireGuard overlay connecting every PPN fleet node, carrying signed binary commands without a centralised message broker."
 category: infrastructure
 type: topic
 content_type: topic

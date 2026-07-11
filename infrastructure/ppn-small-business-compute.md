@@ -15,7 +15,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-07-09
 editor: pointsav-engineering
 paired_with: ppn-small-business-compute.es.md
-short_description: "A Private Platform Network assembles machines a business already owns into a single encrypted compute pool. WireGuard network isolation is operating today; host-level isolation via seL4 is planned."
+short_description: "A Private Platform Network assembles machines a business already owns into an encrypted compute pool. WireGuard isolation runs today; seL4 host isolation is planned."
 cites: []
 ---
 

@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "PPN Distributed VM Fabric"
 slug: ppn-distributed-vm-fabric
-short_description: "The PPN Distributed VM Fabric is the planned extension of the per-node PPN hypervisor layer to a multi-node resource pool, intended to allow VMs to borrow compute from other mesh nodes and migrate across the fleet without per-move operator involvement."
+short_description: "The planned extension of the per-node PPN hypervisor layer to a multi-node resource pool, letting VMs borrow compute and migrate across the fleet automatically."
 category: infrastructure
 type: topic
 content_type: topic

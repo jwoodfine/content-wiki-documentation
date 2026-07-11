@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-06-15
 editor: pointsav-engineering
 paired_with: ppn-tenant-vm-isolation.es.md
-short_description: "The PPN resource pool separates tenant workloads through namespace isolation, per-VM process isolation, and user-mode networking. Network-level subnet isolation is a planned milestone."
+short_description: "The PPN resource pool separates tenant workloads through namespace isolation, per-VM process isolation, and user-mode networking; subnet isolation is a planned milestone."
 forbidden_terms_cleared: true
 cites: []
 ---

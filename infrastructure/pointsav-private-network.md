@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "PointSav Private Network"
 slug: pointsav-private-network
-short_description: "The PointSav Private Network is the private WireGuard mesh that connects Woodfine's fleet nodes, providing encrypted transport without granting application-layer access to the services running on those nodes."
+short_description: "The PointSav Private Network is the private WireGuard mesh connecting Woodfine's fleet nodes, providing encrypted transport without application-layer service access."
 category: infrastructure
 type: topic
 content_type: topic

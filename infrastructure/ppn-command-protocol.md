@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "PPN command protocol"
 slug: ppn-command-protocol
-short_description: "The PPN Command Protocol is the 16-byte binary wire format used by os-network-admin to issue commands to os-infrastructure nodes across the WireGuard mesh, with no central broker and no session overhead."
+short_description: "The PPN Command Protocol is the 16-byte binary wire format os-network-admin uses to issue commands to os-infrastructure nodes over WireGuard, with no central broker."
 category: infrastructure
 type: topic
 content_type: topic

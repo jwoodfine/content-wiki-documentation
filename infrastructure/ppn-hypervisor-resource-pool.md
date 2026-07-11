@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "PPN Hypervisor Resource Pool"
 slug: ppn-hypervisor-resource-pool
-short_description: "The PPN hypervisor layer manages a per-node pool of CPU and RAM, dynamically allocating those resources across VMs using virtio_balloon for memory reclaim and cgroups v2 for CPU scheduling weights."
+short_description: "The PPN hypervisor layer manages a per-node pool of CPU and RAM, allocating it across VMs using virtio_balloon for memory and cgroups v2 for CPU scheduling."
 category: infrastructure
 type: topic
 content_type: topic

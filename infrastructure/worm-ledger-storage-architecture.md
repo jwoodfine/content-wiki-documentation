@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 type: topic
 content_type: topic
 slug: worm-ledger-storage-architecture
-short_description: "The storage architecture specifies C2SP tlog-tiles as the target storage primitive; the current service-fs build persists a per-tenant JSON append log pending the tile backend, with structural immutability and long-term readability as the intended design."
+short_description: "C2SP tlog-tiles is the target storage primitive; the current service-fs build persists a per-tenant JSON append log pending the tile backend, immutable by design."
 title: "WORM ledger storage architecture"
 audience: vendor-public
 bcsc_class: current-fact

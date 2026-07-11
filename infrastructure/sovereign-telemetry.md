@@ -6,7 +6,7 @@ category: infrastructure
 type: topic
 content_type: topic
 quality: stub
-short_description: "The zero-state telemetry architecture describes how the platform's V4 Intent Beacon collects behavioural and hardware signals from edge clients without cookies, session identifiers, or third-party analytics, using client-side compilation and asynchronous beacon transmission."
+short_description: "The zero-state telemetry architecture: the V4 Intent Beacon collects behavioural and hardware signals without cookies or third-party analytics, via client-side compilation."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

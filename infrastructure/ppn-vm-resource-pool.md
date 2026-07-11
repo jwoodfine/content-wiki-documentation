@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-06-15
 editor: pointsav-engineering
 paired_with: ppn-vm-resource-pool.es.md
-short_description: "The PPN VM resource pool is a three-service stack that provisions, places, and accounts for virtual machines across a heterogeneous WireGuard mesh spanning cloud and physical nodes."
+short_description: "The PPN VM resource pool is a three-service stack that provisions, places, and accounts for VMs across a heterogeneous WireGuard mesh spanning cloud and physical nodes."
 forbidden_terms_cleared: true
 cites: []
 ---

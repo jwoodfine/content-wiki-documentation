@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-06-29
 editor: pointsav-engineering
 paired_with: ppn-three-path-architecture.es.md
-short_description: "Three sequential seL4 architecture options for PPN infrastructure nodes: Option B ships first (seL4 hypervisor + Linux guest), Option C adds WireGuard as a seL4 protection domain, and Option A targets a pure seL4 environment with no virtual machines."
+short_description: "Three sequential seL4 options for PPN infrastructure nodes: Option B ships first (hypervisor + Linux guest), Option C adds WireGuard as a protection domain."
 cites: []
 ---
 

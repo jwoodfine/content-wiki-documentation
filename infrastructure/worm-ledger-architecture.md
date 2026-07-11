@@ -4,7 +4,7 @@ type: topic
 content_type: topic
 slug: worm-ledger-architecture
 title: "WORM ledger substrate: four-layer architecture and two boot envelopes"
-short_description: "The per-tenant WORM immutable ledger that all Ring 1 boundary-ingest services write through, built on C2SP tlog-tiles with cryptographic hash-chaining, monthly Sigstore Rekor anchoring, and a dual-envelope design spanning Linux daemon and seL4 unikernel targets."
+short_description: "The per-tenant WORM immutable ledger every Ring 1 service writes through, built on C2SP tlog-tiles with hash-chaining and monthly Sigstore Rekor anchoring."
 audience: vendor-public
 bcsc_class: current-fact
 language: en

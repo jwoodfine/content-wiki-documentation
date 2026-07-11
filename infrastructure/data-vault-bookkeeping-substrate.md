@@ -6,7 +6,7 @@ category: infrastructure
 type: topic
 content_type: topic
 quality: complete
-short_description: An SMB bookkeeping and accounting architecture built on an immutable source vault, append-only journal, and structural separation between the bookkeeping record and any accounting tool.
+short_description: "An SMB bookkeeping and accounting architecture built on an immutable source vault and append-only journal, structurally separate from any accounting tool."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-06
