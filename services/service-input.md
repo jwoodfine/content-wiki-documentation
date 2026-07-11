@@ -4,7 +4,7 @@ type: topic
 content_type: topic
 slug: service-input
 title: "service-input — Document Ingest"
-short_description: "service-input is the Ring 1 document-intake service that accepts files at the per-tenant boundary, routes them through format-specific parsers, and writes normalized output to the per-tenant WORM ledger via service-fs."
+short_description: "service-input is the Ring 1 document-intake service that accepts files at the tenant boundary, routes them through parsers, and writes output to the WORM ledger."
 audience: vendor-public
 bcsc_class: current-fact
 language: en

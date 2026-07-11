@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-22
 editor: pointsav-engineering
 paired_with: service-slm.es.md
-short_description: "service-slm is the language-model service of the PointSav family — a quantised, narrow Small Language Model that translates institutional intent into deterministic outputs and routes every AI inference call through the Doorman audit boundary."
+short_description: "service-slm is the language-model service of the PointSav family, translating institutional intent into deterministic outputs via the Doorman audit boundary."
 cites:
  - olmo3-allenai
 references:

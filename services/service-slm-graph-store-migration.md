@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: service-slm-graph-store-migration.es.md
-short_description: "service-slm migrated its graph store from LadybugDB to SQLite for fleet nodes and integrates a nightly DataGraph rebuild that processes the operator data corpus through the Doorman into the property graph used for inference context injection."
+short_description: "service-slm migrated its graph store from LadybugDB to SQLite for fleet nodes and runs a nightly DataGraph rebuild feeding inference context injection."
 cites: []
 ---
 

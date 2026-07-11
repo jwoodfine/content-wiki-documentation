@@ -8,7 +8,7 @@ content_type: topic
 quality: complete
 status: active
 audience: public
-short_description: "service-fs is the foundational storage layer for the platform's GIS pipeline — a flat-file data lake that stores raw geospatial points ingested from open sources in separate retail and civic landing zones, available immediately to every downstream service without an ETL step."
+short_description: "service-fs is the foundational storage layer for the GIS pipeline — a flat-file data lake storing raw geospatial points, available to every downstream service."
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
 last_edited: 2026-05-08

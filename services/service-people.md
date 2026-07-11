@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: service-people.es.md
-short_description: "service-people maintains the Totebox's deterministic identity ledger — the F2 surface in os-console and the source of truth for who appears in any payload across the Totebox, using an Anchor-Claim-Socket data model that never overwrites state."
+short_description: "service-people maintains the Totebox's deterministic identity ledger — the F2 surface in os-console, using an Anchor-Claim-Socket data model that never overwrites."
 cites: []
 references:
   - id: 1

@@ -6,7 +6,7 @@ category: services
 type: topic
 content_type: topic
 quality: complete
-short_description: "How service-SLM's three-tier inference router and the Yo-Yo GPU burst VM operate, including the Doorman boundary, Tier A/B configuration, apprenticeship brief queue, and idle-shutdown cost ceiling."
+short_description: "How service-SLM's three-tier inference router and the Yo-Yo GPU burst VM operate: the Doorman boundary, Tier A/B config, apprenticeship queue, cost ceiling."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

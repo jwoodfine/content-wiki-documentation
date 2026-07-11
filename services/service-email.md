@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: service-email.es.md
-short_description: "service-email is the Totebox's email server — it ingests SMTP and IMAP traffic, sanitises every payload, and writes raw text to an append-only Maildir on local block storage. Content interpretation is handled upstream by service-content."
+short_description: "service-email is the Totebox's email server — it ingests SMTP and IMAP traffic, sanitises payloads, and writes text to an append-only Maildir on local storage."
 cites: []
 references:
   - id: 1

@@ -8,7 +8,7 @@ content_type: topic
 quality: complete
 status: active
 audience: public
-short_description: "service-places filters raw civic and institutional infrastructure data to retain only regional-grade facilities — hospitals, universities, and major transport hubs — so GIS tier rankings reflect institutional-level concentration rather than local-service density."
+short_description: "service-places filters raw civic and institutional data to retain only regional-grade facilities, so GIS tier rankings reflect institutional concentration."
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
 last_edited: 2026-05-08

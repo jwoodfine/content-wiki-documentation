@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Wallet settlement"
 slug: service-wallet-settlement
-short_description: "A per-tenant internal accounting ledger that records and settles reverse-flow revenue from the data marketplace as signed JSONL entries, with non-custodial withdrawal options to blockchain or fiat and platform-fee deductions applied at credit time."
+short_description: "A per-tenant accounting ledger recording and settling reverse-flow marketplace revenue as signed JSONL entries, with non-custodial withdrawal and fee deductions."
 category: services
 type: topic
 content_type: topic

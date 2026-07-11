@@ -12,7 +12,7 @@ bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
 last_edited: 2026-05-08
 editor: pointsav-engineering
-short_description: "The PointSav GIS Engine is a customer-owned location intelligence platform built in Rust for offline-first, flat-file operation — a structural departure from geographic information systems that rely on centralised database instances and continuous network connectivity."
+short_description: "The PointSav GIS Engine is a customer-owned location intelligence platform in Rust for offline-first, flat-file operation — a departure from centralised GIS databases."
 paired_with: pointsav-gis-engine.es.md
 cites:
  - maplibre-gl-js

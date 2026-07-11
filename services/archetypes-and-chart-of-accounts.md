@@ -6,7 +6,7 @@ category: services
 type: concept
 content_type: topic
 quality: complete
-short_description: "The Chart of Accounts and eleven archetypes are the two-part institutional taxonomy at the core of service-people and service-content, classifying personnel and documents by structural position and functional role rather than by volatile job-title strings."
+short_description: "The Chart of Accounts and eleven archetypes are the two-part taxonomy at the core of service-people and service-content, classifying by structural position, not job title."
 status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe

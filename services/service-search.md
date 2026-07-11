@@ -6,7 +6,7 @@ category: services
 type: topic
 content_type: topic
 quality: complete
-short_description: "service-search is the Ring 2 full-text search service built on the Tantivy Rust library, providing microsecond retrieval across millions of files through a static binary inverted index that requires no active database process."
+short_description: "service-search is the Ring 2 full-text search service built on Tantivy, providing microsecond retrieval across millions of files with no active database process."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-15

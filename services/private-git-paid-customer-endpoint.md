@@ -15,7 +15,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-06-13
 editor: pointsav-engineering
 paired_with: private-git-paid-customer-endpoint.es.md
-short_description: "The binary release server behind software.pointsav.com verifies Ed25519 license tokens and streams compiled binaries. Stateless by design — it holds no payment records, no customer data, and no signing keys."
+short_description: "The binary release server behind software.pointsav.com verifies Ed25519 license tokens and streams compiled binaries — stateless, holding no payment records or keys."
 cites: []
 ---
 
