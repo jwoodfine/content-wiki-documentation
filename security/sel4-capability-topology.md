@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-06-29
 editor: pointsav-engineering
 paired_with: sel4-capability-topology.es.md
-short_description: "In an seL4 system, security is determined by the shape of the capability graph — the topology. If component A has no capability path to component B, A cannot reach B by any means, a property proved by machine-checked formal verification."
+short_description: "In an seL4 system, security is the shape of the capability graph: if component A has no path to B, A cannot reach B by any means, proved by formal verification."
 cites: []
 references:
   - id: 1

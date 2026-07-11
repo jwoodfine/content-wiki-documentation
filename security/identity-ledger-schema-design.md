@@ -4,7 +4,7 @@ type: topic
 content_type: topic
 slug: identity-ledger-schema-design
 title: "Identity ledger schema design"
-short_description: "The identity ledger defines three record types — Person, Anchor, and Claim — that together represent who is known to the system, how that identity was observed, and what attributes have been recorded, all persisted through WORM discipline with no AI involvement at any stage."
+short_description: "The identity ledger defines three record types — Person, Anchor, Claim — representing who is known, how identity was observed, and what was recorded, via WORM."
 audience: vendor-public
 bcsc_class: current-fact
 language: en

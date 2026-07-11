@@ -6,7 +6,7 @@ category: security
 type: topic
 content_type: topic
 quality: complete
-short_description: "Cryptographic ledgers are the immutable-state storage pattern used in the PointSav platform, enforcing mathematical immutability so that any alteration to a recorded fact breaks a verifiable cryptographic hash chain rather than requiring trust in administrative access controls."
+short_description: "Cryptographic ledgers are the immutable-state storage pattern in the PointSav platform, where any alteration breaks a verifiable hash chain, not just an access-control rule."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30

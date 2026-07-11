@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-06-29
 editor: pointsav-engineering
 paired_with: machine-based-auth.es.md
-short_description: "Machine-based authorization replaces username and password structures with the cryptographic pairing of physical hardware — the pair is the permission, and an entire class of remote credential theft is eliminated by structure."
+short_description: "Machine-based authorization replaces username and password with cryptographic pairing of physical hardware — the pair is the permission, eliminating remote credential theft."
 cites: []
 references:
   - id: 1
