@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-06-02
 editor: pointsav-engineering
 paired_with: os-totebox.es.md
-short_description: "os-totebox is the sovereign vault and service host in the PointSav OS family — the operating system that runs on a Totebox archive node and manages an entity's data, services, and identity."
+short_description: "os-totebox runs on a Totebox archive node as the sovereign vault and service host in the PointSav OS family, managing an entity's data, services, and identity."
 cites: []
 ---
 
