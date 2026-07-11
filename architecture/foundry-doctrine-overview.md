@@ -6,7 +6,7 @@ category: architecture
 type: topic
 content_type: topic
 quality: complete
-short_description: A faithful public summary of the PointSav constitutional charter — six pillars, fifty-two structural claims, eight cross-industry inventions, a three-tier compute model, three-ring service architecture, and the economic model that sustains it.
+short_description: "A faithful public summary of the PointSav constitutional charter — six pillars, fifty-two structural claims, eight cross-industry inventions, and the economic model."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

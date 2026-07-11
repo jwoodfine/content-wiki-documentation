@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Platform architecture overview"
 slug: architecture
-short_description: "The platform is designed around distributed cryptographic consistency and sovereign bootability, with the capability to collapse a federated archive into a self-contained bootable image transferable across environments."
+short_description: "The platform is designed around distributed cryptographic consistency and sovereign bootability — collapsing a federated archive into a bootable image transferable anywhere."
 category: architecture
 type: topic
 content_type: topic

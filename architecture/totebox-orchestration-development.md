@@ -6,7 +6,7 @@ category: architecture
 type: topic
 content_type: topic
 quality: complete
-short_description: "PointSav's development environment is itself deployed as a Totebox Orchestration instance — the workspace that builds the platform runs on the same architecture the platform delivers to customers."
+short_description: "PointSav's development environment is itself a Totebox Orchestration instance — the workspace that builds the platform runs on the same architecture it delivers."
 status: active
 bcsc_class: forward-looking
 last_edited: 2026-05-25

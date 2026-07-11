@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: pointsav-overview.es.md
-short_description: "PointSav Digital Systems is a technology vendor that builds sovereign, on-premise-capable operating systems for record-keeping and business administration. It sits within a three-organisation structure established by Woodfine Capital Projects Inc."
+short_description: "PointSav Digital Systems is a technology vendor building sovereign, on-premise-capable operating systems for record-keeping, within a three-organisation structure."
 cites: []
 ---
 

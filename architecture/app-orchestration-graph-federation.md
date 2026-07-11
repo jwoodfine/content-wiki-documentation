@@ -4,7 +4,7 @@ type: topic
 content_type: topic
 slug: app-orchestration-graph-federation
 title: "DataGraph Federation: From app-orchestration-slm to app-orchestration-graph"
-short_description: "How the PointSav platform federates sovereign per-archive DataGraphs through a single auditable gateway, and the conditions under which that gateway transitions to a dedicated service."
+short_description: "How PointSav federates sovereign per-archive DataGraphs through a single auditable gateway, and the conditions under which that gateway becomes a dedicated service."
 audience: vendor-public
 bcsc_class: current-fact
 language: en

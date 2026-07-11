@@ -6,7 +6,7 @@ category: architecture
 type: topic
 content_type: topic
 quality: complete
-short_description: "Customer hostability is the architectural commitment that every PointSav artefact can run on the customer's own hardware, against the customer's own keys, with the customer's own audit ledger — making self-hosted deployment the canonical pattern, not a tier."
+short_description: "Customer hostability is the architectural commitment that every artefact runs on the customer's own hardware and keys, making self-hosted deployment the canonical pattern."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-15

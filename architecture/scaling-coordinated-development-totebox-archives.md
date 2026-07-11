@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 content_type: topic
 title: "Scaling Coordinated Development Across Many Totebox Archives"
 slug: scaling-coordinated-development-totebox-archives
-short_description: "The app-orchestration-command topology is designed to grow. This article describes the coordination challenges that appear as the number of Totebox Archives increases, the mechanisms introduced to address them, and the planned trajectory toward per-archive process isolation."
+short_description: "The coordination challenges that appear as the number of Totebox Archives grows, the mechanisms addressing them, and the planned per-archive process isolation."
 category: architecture
 type: reference
 quality: complete

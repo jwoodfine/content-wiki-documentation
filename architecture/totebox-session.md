@@ -6,7 +6,7 @@ category: architecture
 type: topic
 content_type: topic
 quality: complete
-short_description: "A Totebox Session is an AI-assisted contributor session opened within a single Totebox Archive — scoped to the archive's declared repositories, unable to write outside them, and the standard entry point for all development work in Totebox Orchestration."
+short_description: "A Totebox Session is an AI-assisted contributor session within a single Totebox Archive — scoped to declared repositories, the standard entry point for development."
 status: active
 bcsc_class: forward-looking
 last_edited: 2026-05-25

@@ -6,7 +6,7 @@ category: architecture
 type: topic
 content_type: topic
 quality: complete
-short_description: "Payment for marketplace transactions is planned to flow directly from buyer to the customer-tenant; PointSav's share is a transaction fee at settlement, not a recurring subscription."
+short_description: "Payment for marketplace transactions is planned to flow directly from buyer to customer-tenant; PointSav's share is a settlement fee, not a recurring subscription."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01

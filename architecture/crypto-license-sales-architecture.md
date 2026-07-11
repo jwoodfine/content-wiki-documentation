@@ -15,7 +15,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-06-13
 editor: pointsav-engineering
 paired_with: crypto-license-sales-architecture.es.md
-short_description: "The payment and license architecture behind software.pointsav.com — a custodian-free flow from on-chain USDC transfer to Ed25519-signed download token, with no customer accounts and no payment intermediary."
+short_description: "The payment and license architecture behind software.pointsav.com — custodian-free, from on-chain USDC transfer to Ed25519-signed download token, no accounts."
 cites: []
 ---
 

@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-06-29
 editor: pointsav-engineering
 paired_with: os-products-distribution-model.es.md
-short_description: "Two products are planned/intended for software.pointsav.com: os-infrastructure ($19 USDC, bare metal or cloud VM) and os-network-admin ($1 USDC, mesh control plane including Linux daemon mode). Each ships as three signed artifacts per version."
+short_description: "Two products are planned for software.pointsav.com: os-infrastructure ($19 USDC) and os-network-admin ($1 USDC); each ships as three signed artifacts per version."
 cites: []
 ---
 

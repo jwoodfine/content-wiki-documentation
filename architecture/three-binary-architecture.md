@@ -5,7 +5,7 @@ title: "Three-binary architecture: os-console, os-totebox, os-orchestration"
 slug: three-binary-architecture
 aliases:
   - topic-three-binary-architecture
-short_description: "Totebox Orchestration is delivered through three distinct binary operating environments — os-console, os-totebox, and os-orchestration — each with a distinct role, deployment target, and hosted application set."
+short_description: "Totebox Orchestration is delivered through three binary operating environments — os-console, os-totebox, os-orchestration — each with a distinct role and target."
 category: architecture
 type: reference
 quality: complete

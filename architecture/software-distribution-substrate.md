@@ -15,7 +15,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-06-13
 editor: pointsav-engineering
 paired_with: software-distribution-substrate.es.md
-short_description: "A three-component system — release server, storefront, and payment watcher — that delivers compiled binaries against on-chain USDC payments, with no customer accounts and no subscription billing."
+short_description: "A three-component system — release server, storefront, payment watcher — delivering compiled binaries against on-chain USDC payments, no accounts or subscriptions."
 cites: []
 ---
 
