@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Sovereign Mesh"
+title: "Sovereign mesh"
 slug: sovereign-mesh
 short_description: "The sovereign mesh is the application-level WireGuard overlay connecting every PPN fleet node, carrying signed binary commands without a centralised message broker."
 category: infrastructure
@@ -10,7 +10,7 @@ status: stable
 bcsc_class: public-disclosure-safe
 language: en
 paired_with: sovereign-mesh.es.md
-last_edited: 2026-06-23
+last_edited: 2026-07-11
 editor: pointsav-engineering
 ---
 

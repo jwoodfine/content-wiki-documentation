@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Location Intelligence: Data Collection"
+title: "Location intelligence: data collection"
 slug: collect-location-intelligence-data
 short_description: "Ingesting VWH and PKS chain and infrastructure data into the location-intelligence pipeline from OpenStreetMap — runbook for re-ingesting or extending to new chains and countries."
 category: how-to
@@ -10,7 +10,7 @@ status: active
 audience: vendor-internal
 bcsc_class: no-disclosure-implication
 language_protocol: GUIDE-OPERATIONS
-last_edited: 2026-06-18
+last_edited: 2026-07-11
 editor: editorial
 paired_with: collect-location-intelligence-data.es.md
 ---

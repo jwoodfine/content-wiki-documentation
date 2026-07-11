@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Architecture Overview — PointSav Platform"
+title: "Architecture overview — PointSav platform"
 slug: architecture-overview
 category: architecture
 type: concept
@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-15
+last_edited: 2026-07-11
 editor: pointsav-engineering
 paired_with: architecture-overview.es.md
 short_description: "A map of the PointSav platform's major architectural surfaces: compute substrate, software distribution, GIS intelligence, and the editorial pipeline."

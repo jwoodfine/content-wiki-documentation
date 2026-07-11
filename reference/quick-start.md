@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Quick Start — First Session on the PointSav Platform"
+title: "Quick start — first session on the PointSav platform"
 slug: quick-start
 category: reference
 type: concept
@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-15
+last_edited: 2026-07-11
 editor: pointsav-engineering
 paired_with: quick-start.es.md
 short_description: "A concise first-session guide for engineers and contributors evaluating the PointSav platform, from first clone to first successful local build."

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "OS Network Admin"
+title: "OS network admin"
 slug: os-network-admin
 short_description: "os-network-admin is the control plane for a PPN: WireGuard mesh routing, the node-join ceremony surface, and Diode-standard enforcement, without archive-tier authority."
 category: systems
@@ -10,7 +10,7 @@ status: active
 bcsc_class: public-disclosure-safe
 language: en
 paired_with: os-network-admin.es.md
-last_edited: 2026-05-30
+last_edited: 2026-07-11
 editor: editorial
 ---
 

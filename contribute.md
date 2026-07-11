@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Contributing to PointSav Knowledge"
+title: "Contributing to PointSav knowledge"
 slug: contribute
 category: governance
 type: governance
@@ -9,7 +9,7 @@ quality: complete
 short_description: "How to propose additions, corrections, and new articles for PointSav Knowledge."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-27
+last_edited: 2026-07-11
 editor: pointsav-engineering
 ---
 

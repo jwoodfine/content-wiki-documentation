@@ -1,10 +1,10 @@
 ---
 schema: foundry-doc-v1
-title: "PointSav Media Kit"
+title: "PointSav media kit"
 slug: pointsav-media-kit
 category: governance
 status: active
-last_edited: 2026-05-25
+last_edited: 2026-07-11
 editor: pointsav-engineering
 ---
 

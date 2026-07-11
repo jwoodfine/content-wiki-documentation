@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "VM-* Architecture and OS Family"
+title: "VM-* architecture and OS family"
 slug: vm-architecture
 short_description: "The PointSav platform organises runtime deployments under five named VM types — Totebox, MediaKit, Orchestration, PrivateGit, Infrastructure — each mapping to one os-* binary."
 category: systems
@@ -10,7 +10,7 @@ status: active
 bcsc_class: public-disclosure-safe
 language: en
 paired_with: vm-architecture.es.md
-last_edited: 2026-05-30
+last_edited: 2026-07-11
 editor: editorial
 ---
 

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "PPN VM Resource Pool Architecture"
+title: "PPN VM resource pool architecture"
 slug: ppn-vm-resource-pool
 category: infrastructure
 type: concept
@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-15
+last_edited: 2026-07-11
 editor: pointsav-engineering
 paired_with: ppn-vm-resource-pool.es.md
 short_description: "The PPN VM resource pool is a three-service stack that provisions, places, and accounts for VMs across a heterogeneous WireGuard mesh spanning cloud and physical nodes."

@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 type: topic
 content_type: topic
 slug: adr-07-zero-ai-in-ring-1
-title: "SYS-ADR-07: Zero AI in Ring 1"
+title: "SYS-ADR-07: zero AI in Ring 1"
 short_description: "SYS-ADR-07 prohibits AI inference from all Ring 1 boundary-ingest services, enforcing deterministic-only operations at the WORM write path."
 audience: vendor-public
 bcsc_class: current-fact
@@ -12,7 +12,7 @@ paired_with: adr-07-zero-ai-in-ring-1.es.md
 category: governance
 status: active
 quality: complete
-last_edited: 2026-06-23
+last_edited: 2026-07-11
 cites: []
 ---
 

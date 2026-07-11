@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "os-infrastructure — PPN Node Operating System"
+title: "os-infrastructure — PPN node operating system"
 slug: os-infrastructure-ppn-node
 short_description: "os-infrastructure is the OS layer for PPN nodes — its sole purpose is to set up and maintain a node: WireGuard tunnels, guest VMs, and the operator control plane."
 category: systems
@@ -10,7 +10,7 @@ status: active
 bcsc_class: public-disclosure-safe
 language: en
 paired_with: os-infrastructure-ppn-node.es.md
-last_edited: 2026-05-30
+last_edited: 2026-07-11
 editor: editorial
 ---
 

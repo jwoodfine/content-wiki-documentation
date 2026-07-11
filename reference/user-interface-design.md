@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "User Interface Design"
+title: "User interface design"
 slug: user-interface-design
 category: reference
 type: topic
@@ -10,7 +10,7 @@ status: active
 audience: customer-woodfine
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-30
+last_edited: 2026-07-11
 editor: woodfine-editorial
 short_description: "Discipline of designing human-machine interfaces to maximize usability and user experience, governed by the dialogue principles of the ISO 9241 standard."
 paired_with: user-interface-design.es.md

@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 content_type: topic
-title: "Capability Geometry: seL4 Capability Authorization in Totebox Orchestration"
+title: "Capability geometry: seL4 capability authorization in Totebox orchestration"
 slug: capability-geometry
 aliases:
   - topic-capability-geometry
@@ -13,7 +13,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-20
+last_edited: 2026-07-11
 editor: pointsav-engineering
 paired_with: capability-geometry.es.md
 cites: []

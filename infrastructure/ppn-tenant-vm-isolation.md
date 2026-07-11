@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "PPN Tenant VM Isolation"
+title: "PPN tenant VM isolation"
 slug: ppn-tenant-vm-isolation
 category: infrastructure
 type: concept
@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-15
+last_edited: 2026-07-11
 editor: pointsav-engineering
 paired_with: ppn-tenant-vm-isolation.es.md
 short_description: "The PPN resource pool separates tenant workloads through namespace isolation, per-VM process isolation, and user-mode networking; subnet isolation is a planned milestone."

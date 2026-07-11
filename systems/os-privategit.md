@@ -4,12 +4,12 @@ type: topic
 content_type: topic
 slug: os-privategit
 short_description: "The OS layer hosting the private Git infrastructure underpinning the development workspace, staging-tier commit flow, and canonical repos for PointSav engineering."
-title: "Private Git OS"
+title: "Private git OS"
 category: systems
 language: en
 paired_with: os-privategit.es.md
 status: stub
-last_edited: 2026-05-25
+last_edited: 2026-07-11
 editor: pointsav-engineering
 ---
 

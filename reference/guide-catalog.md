@@ -1,13 +1,13 @@
 ---
 schema: foundry-doc-v1
-title: "Developer Guide Index"
+title: "Developer guide index"
 slug: guide-catalog
 short_description: "Developer guide index for the PointSav platform — task-oriented how-to guides organised by concern, from toolchain setup to session lifecycle."
 category: reference
 type: topic
 content_type: topic
 status: stable
-last_edited: 2026-06-15
+last_edited: 2026-07-11
 editor: pointsav-engineering
 paired_with: guide-catalog.es.md
 aliases:

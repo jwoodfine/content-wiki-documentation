@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 type: topic
 content_type: topic
 slug: os-totebox-sovereign-archive
-title: "os-totebox: The Sovereign WORM Data Vault"
+title: "os-totebox: the sovereign WORM data vault"
 short_description: "os-totebox is a Type I bare-metal OS built on a formally verified seL4 microkernel, providing a WORM data vault enforced by a compiled capability graph, not policy."
 audience: vendor-public
 bcsc_class: current-fact
@@ -12,7 +12,7 @@ paired_with: os-totebox-sovereign-archive.es.md
 category: systems
 status: active
 quality: complete
-last_edited: 2026-06-23
+last_edited: 2026-07-11
 ---
 
 # os-totebox: The Sovereign WORM Data Vault

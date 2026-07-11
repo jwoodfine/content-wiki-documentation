@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Yo-Yo Daily Enrichment Cycle"
+title: "Yo-yo daily enrichment cycle"
 slug: yoyo-daily-enrichment-cycle
 short_description: "Daily GPU batch window that enriches the DataGraph and accumulates training data — fixed schedule, hard cost cap, and guaranteed VM termination."
 category: services
@@ -8,7 +8,7 @@ type: topic
 content_type: topic
 status: stable
 bcsc_class: no-disclosure-implication
-last_edited: 2026-06-11
+last_edited: 2026-07-11
 editor: pointsav-engineering
 paired_with: yoyo-daily-enrichment-cycle.es.md
 ---

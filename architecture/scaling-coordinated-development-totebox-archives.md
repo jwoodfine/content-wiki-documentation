@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 content_type: topic
-title: "Scaling Coordinated Development Across Many Totebox Archives"
+title: "Scaling coordinated development across many Totebox archives"
 slug: scaling-coordinated-development-totebox-archives
 short_description: "The coordination challenges that appear as the number of Totebox Archives grows, the mechanisms addressing them, and the planned per-archive process isolation."
 category: architecture
@@ -11,7 +11,7 @@ status: stable
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-23
+last_edited: 2026-07-11
 editor: pointsav-engineering
 paired_with: scaling-coordinated-development-totebox-archives.es.md
 cites: []

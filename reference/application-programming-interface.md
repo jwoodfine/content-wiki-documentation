@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Application Programming Interface"
+title: "Application programming interface"
 slug: application-programming-interface
 category: reference
 type: topic
@@ -10,7 +10,7 @@ status: active
 audience: customer-woodfine
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-30
+last_edited: 2026-07-11
 editor: woodfine-editorial
 short_description: "Defined interface that lets software systems communicate by specifying the available calls, how to make them, and the data formats exchanged."
 paired_with: application-programming-interface.es.md

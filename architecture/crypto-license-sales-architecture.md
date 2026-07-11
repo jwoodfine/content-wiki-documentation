@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Crypto Payment and License Issuance Architecture"
+title: "Crypto payment and license issuance architecture"
 slug: crypto-license-sales-architecture
 aliases:
   - topic-crypto-license-sales-architecture
@@ -12,7 +12,7 @@ status: active
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-13
+last_edited: 2026-07-11
 editor: pointsav-engineering
 paired_with: crypto-license-sales-architecture.es.md
 short_description: "The payment and license architecture behind software.pointsav.com — custodian-free, from on-chain USDC transfer to Ed25519-signed download token, no accounts."

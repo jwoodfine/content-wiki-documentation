@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Security Through Obscurity"
+title: "Security through obscurity"
 slug: security-through-obscurity
 category: reference
 type: topic
@@ -10,7 +10,7 @@ status: active
 audience: customer-woodfine
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-30
+last_edited: 2026-07-11
 editor: woodfine-editorial
 short_description: "Reliance on secrecy of design or implementation as a primary security mechanism, rejected in professional practice since Kerckhoffs' principle of 1883."
 paired_with: security-through-obscurity.es.md

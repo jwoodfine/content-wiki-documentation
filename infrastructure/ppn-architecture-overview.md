@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "PPN Architecture Overview"
+title: "PPN architecture overview"
 slug: ppn-architecture-overview
 short_description: "Physical infrastructure plane of the PointSav stack, enrolling nodes into a cryptographically authenticated mesh and hosting the fleet's virtual machines."
 category: infrastructure
@@ -10,7 +10,7 @@ status: active
 bcsc_class: public-disclosure-safe
 language: en
 paired_with: ppn-architecture-overview.es.md
-last_edited: 2026-06-23
+last_edited: 2026-07-11
 editor: editorial
 ---
 

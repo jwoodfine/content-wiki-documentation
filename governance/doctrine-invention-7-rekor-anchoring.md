@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 type: topic
 content_type: topic
 slug: doctrine-invention-7-rekor-anchoring
-title: "Doctrine Invention #7 — The Integrity Anchor"
+title: "Doctrine invention #7 — the integrity anchor"
 short_description: "How Foundry's anchor-emitter binary posts a signed ledger checkpoint to Sigstore Rekor each month, providing independently verifiable, third-party evidence of workspace state."
 audience: vendor-public
 bcsc_class: current-fact
@@ -12,7 +12,7 @@ paired_with: doctrine-invention-7-rekor-anchoring.es.md
 category: governance
 status: active
 quality: complete
-last_edited: 2026-06-23
+last_edited: 2026-07-11
 ---
 
 # Doctrine Invention #7 — The Integrity Anchor

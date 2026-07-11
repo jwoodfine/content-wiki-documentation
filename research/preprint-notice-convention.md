@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Preprint Notice"
+title: "Preprint notice"
 slug: preprint-notice-convention
 category: research
 type: reference
@@ -9,7 +9,7 @@ quality: complete
 short_description: "What the mandatory preprint notice on every research paper means: a working draft, not yet peer-reviewed, subject to revision, and not a final or authoritative account."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-07-03
+last_edited: 2026-07-11
 editor: pointsav-engineering
 paired_with: preprint-notice-convention.es.md
 cites: []

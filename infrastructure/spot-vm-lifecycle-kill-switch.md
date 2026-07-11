@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Spot VM Lifecycle — Single Controller and Kill Switch Pattern"
+title: "Spot VM lifecycle — single controller and kill switch pattern"
 slug: spot-vm-lifecycle-kill-switch
 short_description: "Single-controller lifecycle for the Yo-Yo spot VM — why one timer owns both start and stop, plus the sentinel-file kill switch for immediate operator override."
 category: infrastructure
@@ -8,7 +8,7 @@ type: topic
 content_type: topic
 status: stable
 bcsc_class: no-disclosure-implication
-last_edited: 2026-06-11
+last_edited: 2026-07-11
 editor: pointsav-engineering
 paired_with: spot-vm-lifecycle-kill-switch.es.md
 ---

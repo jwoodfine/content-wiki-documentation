@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "PointSav Software Distribution Substrate"
+title: "PointSav software distribution substrate"
 slug: software-distribution-substrate
 aliases:
   - topic-software-distribution-substrate
@@ -12,7 +12,7 @@ status: active
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-13
+last_edited: 2026-07-11
 editor: pointsav-engineering
 paired_with: software-distribution-substrate.es.md
 short_description: "A three-component system — release server, storefront, payment watcher — delivering compiled binaries against on-chain USDC payments, no accounts or subscriptions."

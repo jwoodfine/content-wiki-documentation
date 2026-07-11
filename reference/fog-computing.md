@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Fog Computing"
+title: "Fog computing"
 slug: fog-computing
 category: reference
 type: topic
@@ -10,7 +10,7 @@ status: active
 audience: customer-woodfine
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-30
+last_edited: 2026-07-11
 editor: woodfine-editorial
 short_description: "Distributed architecture placing compute, storage, and network services between edge devices and the cloud, defined by Cisco in 2012 and standardized as IEEE 1934-2018."
 paired_with: fog-computing.es.md

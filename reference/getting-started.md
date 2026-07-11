@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Getting Started with the PointSav Platform"
+title: "Getting started with the PointSav platform"
 slug: getting-started
 category: reference
 type: concept
@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-15
+last_edited: 2026-07-11
 editor: pointsav-engineering
 paired_with: getting-started.es.md
 short_description: "An orientation to the PointSav developer platform: what it is, who it is for, where to start, and how the pieces fit together before the first task."

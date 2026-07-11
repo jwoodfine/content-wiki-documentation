@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Tiered Entity Extraction Architecture"
+title: "Tiered entity extraction architecture"
 slug: tiered-entity-extraction-architecture
 category: ai
 type: concept
@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-28
+last_edited: 2026-07-11
 editor: editorial
 short_description: "The entity extraction pipeline runs three tiers per document: Tier 0 fast extractive detection via GLiNER, Tier A generative fallback via OLMo, Tier B GPU enrichment."
 paired_with: tiered-entity-extraction-architecture.es.md

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Lightweight Linux Distribution"
+title: "Lightweight linux distribution"
 slug: lightweight-linux-distribution
 category: reference
 type: topic
@@ -10,7 +10,7 @@ status: active
 audience: customer-woodfine
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-30
+last_edited: 2026-07-11
 editor: woodfine-editorial
 short_description: "Linux distribution engineered to use far less RAM and processor capacity than full-featured distributions, suited to constrained, embedded, and legacy hardware."
 paired_with: lightweight-linux-distribution.es.md

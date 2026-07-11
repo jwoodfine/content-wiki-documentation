@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "About PointSav Knowledge"
+title: "About PointSav knowledge"
 slug: about
 category: governance
 type: governance
@@ -9,7 +9,7 @@ quality: complete
 short_description: "PointSav Knowledge is the engineering documentation wiki for the PointSav platform, serving engineers, architects, and institutional readers."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-27
+last_edited: 2026-07-11
 editor: pointsav-engineering
 ---
 
