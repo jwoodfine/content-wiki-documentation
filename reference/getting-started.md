@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-06-15
 editor: pointsav-engineering
 paired_with: getting-started.es.md
-short_description: "An orientation to the PointSav developer platform: what it is, who it is for, and where to start."
+short_description: "An orientation to the PointSav developer platform: what it is, who it is for, where to start, and how the pieces fit together before the first task."
 cites: []
 ---
 

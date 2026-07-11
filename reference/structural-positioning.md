@@ -6,7 +6,7 @@ category: reference
 type: concept
 content_type: topic
 quality: complete
-short_description: "Structural positioning is the PointSav approach to market differentiation: articulating architectural commitments that are visible in the code and topology, rather than making named-competitor comparisons or performance benchmarks."
+short_description: "Structural positioning is PointSav's approach to market differentiation: architectural commitments visible in code and topology, not named-competitor comparisons."
 status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe

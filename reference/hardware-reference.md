@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Hardware reference"
 slug: hardware-reference
-short_description: "Reference hardware profiles for developer workstations and fleet devices, specifying CPU architectural requirements including Haswell-generation x86_64 and fsgsbase support, and defining three infrastructure deployment patterns from on-premise to cloud."
+short_description: "Reference hardware profiles for developer workstations and fleet devices, specifying CPU requirements including Haswell-generation x86_64 and fsgsbase support."
 category: reference
 type: reference
 content_type: topic

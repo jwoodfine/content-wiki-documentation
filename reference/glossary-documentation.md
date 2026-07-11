@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 content_type: topic
 title: "PointSav encyclopedia — glossary and lexicon"
 slug: glossary-documentation
-short_description: "A canonical A-to-Z lexicon bridging standard industry terminology with PointSav platform concepts, providing authoritative definitions across technical, operational, and financial domains."
+short_description: "A canonical A-to-Z lexicon bridging standard industry terminology with PointSav platform concepts, with authoritative definitions across technical and financial domains."
 category: reference
 status: complete
 bcsc_class: public-disclosure-safe

@@ -6,10 +6,7 @@ category: reference
 type: topic
 content_type: topic
 quality: complete
-short_description: "A reader's map of the platform knowledge base:
-  fourteen areas covering what PointSav builds, how it is built, why it
-  can be trusted, and how customers run it — written so both engineers
-  and financial readers can navigate it."
+short_description: "A reader's map of the platform knowledge base: fourteen areas covering what PointSav builds, how it's built, and why it can be trusted, for every reader."
 status: active
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC

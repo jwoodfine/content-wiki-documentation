@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-06-15
 editor: pointsav-engineering
 paired_with: quick-start.es.md
-short_description: "A concise first-session guide for engineers and contributors evaluating the PointSav platform."
+short_description: "A concise first-session guide for engineers and contributors evaluating the PointSav platform, from first clone to first successful local build."
 cites: []
 ---
 

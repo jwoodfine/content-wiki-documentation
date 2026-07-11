@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 type: topic
 content_type: topic
 slug: news-release-standards
-short_description: "Enforces strict formatting rules for corporate news syndication: left alignment, title case discipline, geographic precision, and standardized header and dateline structures ensuring institutional authority across physical and digital mediums."
+short_description: "Strict formatting rules for corporate news syndication: left alignment, title case discipline, geographic precision, and standardized header and dateline structures."
 title: "News release typography and layout standards"
 audience: vendor-public
 bcsc_class: current-fact
