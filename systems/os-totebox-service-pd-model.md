@@ -4,7 +4,7 @@ type: topic
 content_type: topic
 slug: os-totebox-service-pd-model
 title: "How service-* Become seL4 Protection Domains on os-totebox"
-short_description: "Explains how os-totebox maps Rust service binaries to seL4 Protection Domains, covering the seven-PD stack, capability confinement model, startup ordering, and the two-bottom development path."
+short_description: "How os-totebox maps Rust service binaries to seL4 Protection Domains: the seven-PD stack, capability confinement, startup ordering, and the two-bottom development path."
 audience: vendor-public
 bcsc_class: current-fact
 language: en

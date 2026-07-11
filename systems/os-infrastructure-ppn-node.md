@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "os-infrastructure — PPN Node Operating System"
 slug: os-infrastructure-ppn-node
-short_description: "os-infrastructure is the operating system layer for PointSav Private Network nodes — its sole purpose is to set up, operate, and maintain a PPN node: managing WireGuard tunnels, hosting guest virtual machines, and exposing the operator control plane."
+short_description: "os-infrastructure is the OS layer for PPN nodes — its sole purpose is to set up and maintain a node: WireGuard tunnels, guest VMs, and the operator control plane."
 category: systems
 type: topic
 content_type: topic

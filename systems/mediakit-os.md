@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-25
 editor: pointsav-engineering
 paired_with: mediakit-os.es.md
-short_description: "os-mediakit is the public-facing operating system in the PointSav family, hosting a company's marketing website, internal wiki, and compliance newsroom on a single sovereign appliance the company owns outright."
+short_description: "os-mediakit is the public-facing operating system in the PointSav family, hosting a company's marketing site, wiki, and newsroom on one sovereign appliance it owns."
 cites: []
 ---
 

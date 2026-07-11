@@ -5,7 +5,7 @@ title: "os-console: The Totebox Orchestration Browser"
 slug: os-console-totebox-browser
 aliases:
   - topic-os-console-totebox-browser
-short_description: "os-console is the keyboard-native operator terminal for Totebox Orchestration, structurally analogous to a browser: it renders views from Totebox services without storing data on the operator's machine."
+short_description: "os-console is the keyboard-native operator terminal for Totebox Orchestration, structurally like a browser: it renders service views without storing data locally."
 category: systems
 type: reference
 quality: complete

@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "OS Network Admin"
 slug: os-network-admin
-short_description: "os-network-admin is the control plane for a PointSav Private Network — providing WireGuard mesh routing, the node-join ceremony surface, and Diode-standard enforcement, without holding any archive-tier cryptographic authority."
+short_description: "os-network-admin is the control plane for a PPN: WireGuard mesh routing, the node-join ceremony surface, and Diode-standard enforcement, without archive-tier authority."
 category: systems
 type: topic
 content_type: topic

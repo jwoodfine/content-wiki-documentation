@@ -4,7 +4,7 @@ type: topic
 content_type: topic
 slug: os-totebox-sovereign-archive
 title: "os-totebox: The Sovereign WORM Data Vault"
-short_description: "os-totebox is a Type I bare-metal operating system built on a formally verified seL4 microkernel, providing a WORM data vault whose storage immutability is enforced by a compiled capability graph rather than administrative policy."
+short_description: "os-totebox is a Type I bare-metal OS built on a formally verified seL4 microkernel, providing a WORM data vault enforced by a compiled capability graph, not policy."
 audience: vendor-public
 bcsc_class: current-fact
 language: en

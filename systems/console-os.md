@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: console-os.es.md
-short_description: "os-console is the human-facing surface of the PointSav platform — a Command Ledger that connects to a Totebox and renders its state to the operator via a keyboard-driven, F-key-structured interface."
+short_description: "os-console is the human-facing surface of the PointSav platform — a Command Ledger connecting to a Totebox and rendering its state via a keyboard-driven interface."
 cites: []
 references:
   - id: 1

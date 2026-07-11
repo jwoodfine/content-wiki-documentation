@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: os-workplace.es.md
-short_description: "os-workplace is the free desktop operating system in the PointSav family — a native-Rust sovereign desktop that pairs with a Totebox archive, runs on deliberate reference hardware, and serves as the adoption gateway to the commercial PointSav product line."
+short_description: "os-workplace is the free desktop OS in the PointSav family — a native-Rust sovereign desktop pairing with a Totebox archive, the adoption gateway to the commercial line."
 cites: []
 references:
   - id: 1

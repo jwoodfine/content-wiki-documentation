@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: os-orchestration.es.md
-short_description: "os-orchestration is the commercial-tier operating system that lets a single operator see, query, and command many Totebox archives at once — the Fleet Aggregator for multi-entity portfolios and enterprise deployments."
+short_description: "os-orchestration is the commercial-tier OS letting a single operator see, query, and command many Totebox archives at once — the Fleet Aggregator for enterprise deployments."
 cites: []
 ---
 

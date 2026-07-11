@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: os-family-overview.es.md
-short_description: "PointSav builds eight purpose-built operating systems that share a common seL4 + Rust substrate. Each does one job, contains no features it does not need, and communicates through a common Diode-based protocol discipline."
+short_description: "PointSav builds eight purpose-built operating systems sharing a common seL4 + Rust substrate. Each does one job and communicates via a Diode-based protocol."
 cites: []
 ---
 

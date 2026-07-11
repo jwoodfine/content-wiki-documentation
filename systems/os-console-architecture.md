@@ -15,7 +15,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-07-09
 editor: pointsav-engineering
 paired_with: os-console-architecture.es.md
-short_description: "os-console hosts multiple independent TUI workspaces — cartridges — within a unified keyboard-navigation chassis. This article covers the Cartridge trait, capability negotiation, and the OSC 8 hyperlink protocol."
+short_description: "os-console hosts multiple independent TUI workspaces — cartridges — in a unified keyboard-navigation chassis: the Cartridge trait, capability negotiation, OSC 8 hyperlinks."
 cites: []
 ---
 

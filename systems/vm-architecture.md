@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "VM-* Architecture and OS Family"
 slug: vm-architecture
-short_description: "The PointSav platform organises its runtime deployments under five named VM types — VM-Totebox, VM-MediaKit, VM-Orchestration, VM-PrivateGit, and VM-Infrastructure — each corresponding exactly to one os-* source binary."
+short_description: "The PointSav platform organises runtime deployments under five named VM types — Totebox, MediaKit, Orchestration, PrivateGit, Infrastructure — each mapping to one os-* binary."
 category: systems
 type: topic
 content_type: topic

@@ -6,7 +6,7 @@ category: systems
 type: topic
 content_type: topic
 quality: complete
-short_description: "Totebox Orchestration describes the coordination layer that manages multiple Totebox data-archive containers, keeping software execution engines isolated from passive corporate ledgers across deployments."
+short_description: "Totebox Orchestration is the coordination layer managing multiple Totebox data-archive containers, keeping execution engines isolated from passive corporate ledgers."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

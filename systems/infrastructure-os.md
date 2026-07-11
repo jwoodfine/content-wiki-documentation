@@ -13,7 +13,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-05-15
 editor: pointsav-engineering
 paired_with: infrastructure-os.es.md
-short_description: "os-infrastructure is the compute substrate that hosts PointSav operating systems across on-premises, leased, and cloud hardware. It creates the PointSav Private Network and bootstraps isolated fleets through the Genesis Protocol."
+short_description: "os-infrastructure is the compute substrate hosting PointSav operating systems across on-premises, leased, and cloud hardware, bootstrapping fleets via the Genesis Protocol."
 cites: []
 ---
 
