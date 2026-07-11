@@ -6,7 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
-short_description: The economic model that separates what PointSav publishes freely from what it sells — public knowledge artifacts under open licenses, paid service at the point of multi-Totebox aggregation.
+short_description: "The economic model separating what PointSav publishes freely from what it sells — public knowledge under open licenses, paid service at multi-Totebox aggregation."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-15

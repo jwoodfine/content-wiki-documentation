@@ -6,7 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
-short_description: "A tiered inference gateway that routes AI requests through a local model first, escalating to remote GPU nodes and external APIs only when the local tier cannot serve — minimizing latency, cost, and data exposure while preserving full capability on demand."
+short_description: "A tiered inference gateway routing AI requests through a local model first, escalating to remote GPU nodes and external APIs only when needed, minimizing cost and exposure."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-06-09

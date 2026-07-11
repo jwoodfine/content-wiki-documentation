@@ -6,7 +6,7 @@ category: substrate
 type: concept
 content_type: topic
 status: stub
-short_description: "The scheduled process that reconstructs the platform's knowledge graph from canonical flat-file sources each night, producing a fresh queryable substrate from deterministic inputs without AI involvement."
+short_description: "The scheduled process that reconstructs the platform's knowledge graph from canonical flat-file sources each night, producing a fresh substrate with no AI involvement."
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-18
 editor: pointsav-engineering

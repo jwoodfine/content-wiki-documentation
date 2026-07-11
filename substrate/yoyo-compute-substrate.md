@@ -6,7 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
-short_description: "The three-ring compute substrate that lets service-slm spin GPU inference capacity up and down while retaining state, accumulating skill, and producing an audit ledger of every compute event."
+short_description: "The three-ring compute substrate letting service-slm spin GPU inference capacity up and down while retaining state and producing an audit ledger of every compute event."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-15

@@ -6,7 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
-short_description: "The Doorman gateway and audit ledger that enforce inbound data discipline are planned to also enforce outbound commercial flows — data marketplace and ad exchange — both opt-in per tenant."
+short_description: "The Doorman gateway and audit ledger enforcing inbound data discipline are planned to also enforce outbound commercial flows — marketplace and ad exchange, opt-in per tenant."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-15

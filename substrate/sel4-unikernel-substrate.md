@@ -5,7 +5,7 @@ title: "seL4 Unikernel Substrate for os-console"
 slug: sel4-unikernel-substrate
 aliases:
   - topic-sel4-unikernel-substrate
-short_description: "os-console is intended to run as a seL4 Microkit unikernel image in its final production form, compiling application code directly with a formally verified kernel to eliminate general-purpose OS attack surface."
+short_description: "os-console is intended to run as a seL4 Microkit unikernel image in production, compiling application code with a formally verified kernel to eliminate OS attack surface."
 category: substrate
 type: reference
 quality: complete

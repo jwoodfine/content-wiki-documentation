@@ -6,7 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
-short_description: "A graduated sovereignty path for AI deployment: four customer tiers from a lightweight API gateway with no local model up through a domain-specialist AI service trained on the vendor's aggregated corpus, each tier adding capability without breaking the lower-tier guarantee."
+short_description: "A graduated sovereignty path for AI deployment: four customer tiers from a lightweight API gateway up to a domain-specialist service, each adding capability without regressions."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-15

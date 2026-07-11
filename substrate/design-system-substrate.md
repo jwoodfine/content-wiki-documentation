@@ -6,7 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
-short_description: "The design-system substrate is a self-hosted, customer-owned design-system engine that stores tokens and components in the customer's own Git repository, serves them through a machine-readable MCP endpoint, and uses the W3C DTCG token format to remain editor-agnostic."
+short_description: "The design-system substrate is a self-hosted, customer-owned engine storing tokens and components in the customer's own Git repo, served via a machine-readable MCP endpoint."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-15
