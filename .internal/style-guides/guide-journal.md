@@ -94,6 +94,34 @@ a re-run; the pre-production runtime layer is declared and its claims re-classif
 forward-looking. A limitation stated precisely converts a reviewer's objection into evidence
 of rigor; a limitation omitted converts it into a rejection.
 
+### Plain narrative, technical apparatus appended
+
+A JOURNAL argues its thesis in narrative prose any informed reader — not only a specialist
+peer reviewer — can follow start to finish. Operator benchmark (2026-07-14): a
+Bessembinder-style finance working paper states its claim, method, and result in plain
+sentences a generalist reader follows without special training, while the actual
+mathematical derivation (the wealth-creation formula, its assumptions, the double-counting
+caveat) lives in a single labeled Appendix the main text cites but never interrupts itself
+with. This is not a relaxation of rigor — the appendix carries the same falsifiable
+precision this guide requires elsewhere — it is a relocation: derivations, proofs, extended
+formula manipulation, and dense statistical apparatus belong in an Appendix; the body stays
+narrative.
+
+**The test:** could a competent generalist reader — the institutional finance audience this
+platform's own wikis are written for (see [[house-core]]) — read the body start to finish
+and state the thesis, the method, and the result, without needing to parse an equation
+inline? If a paragraph requires stopping to work through notation to continue reading the
+argument, that paragraph's derivation belongs in an Appendix, referenced from the body by a
+single sentence ("see Appendix A for the derivation"), not embedded in it. Length discipline
+follows from the same test: rigor is carried by precision and appendiced evidence, not by
+main-body length — a paper that can make its case in fewer narrative pages should.
+
+**Applies retroactively.** Existing JOURNAL papers written before this was made explicit
+should be reviewed against this test as part of their own publish-blocker resolution
+(`.agent/rules/journal-registry.md` tracks per-paper status) — not rewritten wholesale, but
+audited for passages where technical apparatus crowds out the narrative and could move to an
+appendix without losing anything the main argument needs.
+
 ## 3. Opening
 
 The abstract is this register's lead, and the isolation test is exact: a program-committee
