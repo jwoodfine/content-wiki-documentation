@@ -18,6 +18,12 @@ editor: pointsav-engineering
 > so a writer who knows one knows them all. Keep the whole document scannable — it must itself
 > obey the craft it teaches. Do not restate [[house-core]]; reference it and add only the
 > specialization.
+>
+> **Exception on record:** `guide-journal.md` carries a tenth numbered section ("Wiki render
+> contract") between "Worked examples" and "Pre-publish checklist" — a JOURNAL-specific
+> addition (the register's publish-gate mechanics have no equivalent in the other four
+> register guides), not a drift from this skeleton. Added 2026-07-15 during the linguistic-
+> tokens/style-guide consolidation audit that found this note was missing.
 
 ## 1. Purpose and audience
 
