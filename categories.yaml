@@ -6,7 +6,7 @@ audience: >-
   corporate knowledge base, who must be able to read every category name
   and scope cold. Article bodies are technical; category names and scopes
   are PointSav speaking plainly.
-version: 2026-07-02
+version: 2026-07-15
 companion: >-
   media-knowledge-corporate and media-knowledge-projects carry the
   customer's story — the company and the money; the buildings and the
@@ -133,12 +133,3 @@ categories:
       standard definitions used across the knowledge base.
     audience: "All readers — consulted, not browsed"
     order: 13
-
-  - id: research
-    name: "Research"
-    scope: >-
-      The flagship long-form research papers — complete arguments,
-      argued end to end, published as working drafts under a standing
-      preprint notice. A small curated set.
-    audience: "All readers"
-    order: 14

@@ -18,6 +18,21 @@ Last updated: 2026-07-10.
 
 ---
 
+### 2026-07-15 — `research/` category retired; `preprint-notice-convention` relocated to `reference/`
+
+`Closed: 2026-07-15.` Command-ratified reversal of `naming-convention.md` §13
+Decision #12 (2026-07-02) and `BRIEF-category-redesign-phase-c.md`'s locked
+decision — full rationale in `naming-convention.md` §13 Decision #13. The
+category's one real article, `preprint-notice-convention.md`(+`.es.md`), moved to
+`reference/` (slug unchanged; `redirects.yaml` entry added for the old
+`/research/preprint-notice-convention` path) and its body generalized from a
+single-wiki "research programme" framing to the cross-site JOURNAL preprint
+convention it actually now describes, per the sovereign-per-surface JOURNAL model.
+`research/_index.md`(+`.es.md`) — the empty landing page — removed.
+`categories.yaml` and the §4 table both drop the `research` row.
+
+---
+
 ### 2026-07-10 — Bilingual parity gap closed: collect-location-intelligence-data.es.md
 
 `Closed: 2026-07-10.` The only GUIDE of 28 in `how-to/` missing its ES pair entirely

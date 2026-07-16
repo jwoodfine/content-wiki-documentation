@@ -24,6 +24,7 @@ The principles and voice guidelines that govern all content on this wiki. The fu
 - [[editorial-language-registers]] — The four language-register families (PROSE, COMMS, LEGAL, TRANSLATE) and how they route editorial work through the platform's adapter taxonomy.
 - [[structural-positioning]] — How the platform positions itself without naming competitors; the rules that govern comparative statements.
 - [[news-release-standards]] — Standards for news releases and BCSC-compliant continuous-disclosure communications.
+- [[preprint-notice-convention]] — What the mandatory preprint notice on every JOURNAL research paper means: a working draft, not yet peer-reviewed, subject to revision.
 
 ## BIM and real-property reference
 

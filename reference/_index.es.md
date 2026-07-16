@@ -25,6 +25,7 @@ Los principios y las pautas de voz que rigen todo el contenido de este wiki. La 
 - [[editorial-language-registers]] — Las cuatro familias de registro lingüístico (PROSE, COMMS, LEGAL, TRANSLATE) y cómo enrutan el trabajo editorial a través de la taxonomía de adaptadores de la plataforma.
 - [[structural-positioning]] — Cómo la plataforma se posiciona sin nombrar a los competidores; las reglas que rigen las declaraciones comparativas.
 - [[news-release-standards]] — Normas para comunicados de prensa y comunicaciones de divulgación continua conformes con las regulaciones de valores canadienses.
+- [[preprint-notice-convention]] — Qué significa el aviso de preimpresión obligatorio en cada documento de investigación JOURNAL: un borrador de trabajo, aún sin revisión por pares, sujeto a revisión.
 
 ## Referencia BIM e inmuebles
 

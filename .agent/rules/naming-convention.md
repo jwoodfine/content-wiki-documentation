@@ -125,7 +125,7 @@ file (following the established root-YAML pattern used by
 display names. The table below is the human-facing mirror of that file;
 `categories.yaml` wins on any drift.
 
-**Fourteen wiki categories** (plus the non-rendered `.internal/`).
+**Thirteen wiki categories** (plus the non-rendered `.internal/`).
 Placed at repo root as sibling directories. Each maps to the URL
 `/<category>` route and carries a `_index.md` MOC landing. Category
 `id`s are stable and engineering-accurate (zero changed in the
@@ -149,7 +149,6 @@ funnel (understand → trust → the inventory → run → look up).
 | 11 | `governance/` | **Governance and Standards** | How engineering decisions are made and recorded: decision records (ADRs), licensing and legal structure, disclosure posture, and compliance discipline — written for auditors and due-diligence reviewers as much as for engineers. | Engineers; finance readers, auditors |
 | 12 | `how-to/` | **How You Run It** | Step-by-step instructions for the hands-on work: installing, configuring, deploying, and operating the platform, written for the customer's keyboard, not just PointSav's. | Engineers (hands on keyboard); customer operators |
 | 13 | `reference/` | **Glossary and Reference** | Every term defined in plain words, plus the catalogues, nomenclature, and standard definitions used across the knowledge base. | All readers — consulted, not browsed |
-| 14 | `research/` | **Research** | The flagship long-form research (JOURNAL) papers — complete arguments, argued end to end, published as working drafts under a standing preprint notice. A small curated set. | All readers |
 | — | `.internal/` | **Not a wiki category — not rendered.** | Contributor/editorial-process reference that must stay git-tracked but must never appear on the public wiki (e.g. the consolidated style guide, which uses named real companies as internal writing-calibration benchmarks). The dotted directory name is load-bearing: `app-mediakit-knowledge`'s content loader already skips any dotted directory, so nothing here reaches a route without an engine change. See §13 Decision #9. | Contributors only |
 
 Rationale:
@@ -567,3 +566,29 @@ place of the hardcoded `RATIFIED_CATEGORIES`. Until the engine reads it,
 above ships as content edits with no engine change. A reader-facing map
 of the fourteen areas is published at `reference/wiki-structure.md`
 (+ `.es.md`).
+
+---
+
+Ratified 2026-07-15 by operator (via Command mailbox reply).
+
+**13. `research/` category retired — reverses Decision #12 above.** Decision #12
+(2026-07-02) seeded `research/` on the premise that the documentation-surface
+JOURNAL paper `knowledge-flow-audit-swarm` plus this article would keep the shelf
+non-empty. That premise no longer holds: `knowledge-flow-audit-swarm` was
+separately reclassified `category: internal`/`bcsc_class: internal` and will never
+publish to any public wiki, and the wider JOURNAL programme has since adopted a
+sovereign-per-surface model (`BRIEF-journal-research-programme.md`, project-editorial)
+under which JOURNAL papers publish to each product site's own `/research` page,
+never to the three media-knowledge wikis. This reverses both Decision #12 and the
+identical `research/` seeding assumption locked in
+`BRIEF-category-redesign-phase-c.md` — citing both explicitly per the operator's
+instruction, since this undoes a previously-ratified decision rather than silently
+overwriting it.
+
+`research/_index.md`(+`.es.md`) — the empty landing page — is removed.
+`reference/preprint-notice-convention.md`(+`.es.md`) — the one real article the
+category held — is relocated to `reference/` (a `redirects.yaml` entry preserves
+the old URL) and generalized from "this wiki's research programme" framing to the
+cross-site JOURNAL convention it actually now describes. `categories.yaml` drops
+the `research` entry; thirteen categories remain. Zero other content existed in
+this category — no further migration needed.

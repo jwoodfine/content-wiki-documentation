@@ -7,6 +7,11 @@
 
 redirects:
 
+  # research/ category retired 2026-07-15 (naming-convention.md §13 Decision #13) —
+  # its one real article relocated to reference/; slug unchanged, path only.
+  - from: /research/preprint-notice-convention
+    to: /reference/preprint-notice-convention
+
   # Batch 1 — Foundation token docs → pointsav-design-system/docs/foundations/
   - from: /design-system/design-color
     to: https://design.pointsav.com/foundations/design-color
