@@ -9,7 +9,7 @@ quality: complete
 short_description: "The operational pattern at the heart of sovereign AI substrates: a single service mediating every external compute call, logging events, accumulating training signal."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-07-18
 editor: pointsav-engineering
 cites: []
 paired_with: compounding-doorman.es.md
@@ -69,6 +69,16 @@ This is what allows a deployment to operate Ring 3 at any trust level — from f
 ## Implementation state
 
 The Doorman (`service-slm`) is operational on the workspace VM. It binds at `127.0.0.1:9080`, routes Tier A to the local model service, and enforces sanitise-outbound and rehydrate-inbound discipline on every call. The audit ledger writes to `data/audit-ledger/<tenant>/<YYYY-MM>.jsonl`.
+
+**Correction (2026-07-18):** the bind address checks out (`127.0.0.1:9080`, confirmed
+against `SLM_BIND_ADDR` in the live deploy config), but the audit ledger path does not.
+The real env var is `SLM_AUDIT_DIR` (`slm-doorman-server/src/main.rs`), with the
+workspace dogfood deployment explicitly setting it to `/var/lib/local-doorman/audit/`
+(default when unset: `$HOME/.service-slm/audit/`) — not `data/audit-ledger/<tenant>/
+<YYYY-MM>.jsonl` as this article states. Whether the per-tenant/per-month filename
+structure inside that directory matches this article's `<tenant>/<YYYY-MM>.jsonl` shape
+was not independently re-verified here. **Flagged, not silently rewritten** — needs
+project-totebox confirmation of the real internal layout before this line is corrected.
 
 Tier B integration (Yo-Yo GPU burst) is in progress. Tier C external API routing is available for narrow precision tasks where the operator has explicitly configured an allowlist.
 
