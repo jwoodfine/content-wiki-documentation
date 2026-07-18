@@ -9,7 +9,7 @@ quality: complete
 short_description: "The nightly two-phase pipeline on Yo-Yo #1: Phase 1 runs entity extraction for the DataGraph; Phase 2 trains a LoRA adapter via QLoRA on a single L4 GPU."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-07-18
 editor: pointsav-engineering
 cites: []
 references:
@@ -26,7 +26,16 @@ paired_with: yo-yo-lora-training-pipeline.es.md
 ---
 
 Yo-Yo #1 is a [[yoyo-compute-substrate|g2-standard-4 Google Cloud spot instance]] equipped with a
-single NVIDIA L4 GPU (24 GB VRAM). On each nightly run, it executes a
+single NVIDIA L4 GPU (24 GB VRAM).
+
+**Correction (2026-07-18):** this "spot instance" claim conflicts with a sibling article,
+[[service-slm-yoyo-operational]], which states the same hardware is provisioned
+on-demand rather than as a spot instance because L4 spot capacity proved unreliable —
+the same contradiction already found and flagged on
+[[elastic-compute-lora-training-pipeline]] earlier this pass. **Flagged, not resolved
+either way** — needs project-totebox confirmation of which is current.
+
+On each nightly run, it executes a
 two-phase, four-hour pipeline that produces fine-tuned [[adapter-composition|adapter weights]] for
 the workspace language model. Phase 1 extracts structured business entities
 from the deployment data corpus and writes them to a property graph. Phase 2
@@ -53,7 +62,8 @@ configurable budget, defaulting to 7200 seconds.
 
 At the start of the nightly window, `start-yoyo.sh` boots the Yo-Yo #1
 VM and waits up to 90 minutes for vLLM to signal readiness. Once the
-inference server is live, `nightly-datagraph-rebuild.sh` processes three
+inference server is live, `nightly-datagraph-rebuild.sh` (real script name verified as
+`jennifer-datagraph-rebuild.sh` — corrected 2026-07-18) processes three
 document streams from the deployment: meeting transcript markdown files,
 agent research YAML and markdown files, and contact source JSON records. For each document, the script calls
 `POST :9080/v1/chat/completions` through the [[compounding-doorman|Doorman]], which routes the

@@ -9,7 +9,7 @@ content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-07-18
 editor: pointsav-engineering
 cites: []
 references:
@@ -28,7 +28,17 @@ paired_with: yo-yo-lora-training-pipeline.md
 ## Adaptación estratégica — Pipeline de Entrenamiento LoRA Nocturno en Yo-Yo #1
 
 [[yoyo-compute-substrate|Yo-Yo #1]] es una instancia spot g2-standard-4 de Google Cloud equipada con
-una GPU NVIDIA L4 de 24 GB de VRAM. En cada ejecución nocturna, ejecuta un
+una GPU NVIDIA L4 de 24 GB de VRAM.
+
+**Corrección (2026-07-18):** esta afirmación de "instancia spot" entra en conflicto con
+un artículo hermano, [[service-slm-yoyo-operational]], que afirma que el mismo hardware
+se aprovisiona bajo demanda en lugar de como instancia spot, porque la capacidad spot de
+L4 resultó poco fiable — la misma contradicción ya encontrada y señalada en
+[[elastic-compute-lora-training-pipeline]] anteriormente en esta revisión. **Señalado,
+no resuelto en ningún sentido** — necesita confirmación de project-totebox sobre cuál es
+la versión actual.
+
+En cada ejecución nocturna, ejecuta un
 pipeline de dos fases y cuatro horas de duración que produce [[adapter-composition|pesos
 adaptadores]] ajustados para el modelo de lenguaje del espacio de trabajo.
 La Fase 1 extrae entidades de negocio estructuradas del corpus de datos del
@@ -58,7 +68,8 @@ configurable, con un valor predeterminado de 7200 segundos.
 
 Al inicio de la ventana nocturna, `start-yoyo.sh` arranca la VM de Yo-Yo #1
 y espera hasta 90 minutos a que vLLM señale su disponibilidad. Una vez que
-el servidor de inferencia está activo, `nightly-datagraph-rebuild.sh`
+el servidor de inferencia está activo, `nightly-datagraph-rebuild.sh` (nombre real del
+script verificado como `jennifer-datagraph-rebuild.sh` — corregido 2026-07-18)
 procesa tres flujos de documentos del despliegue: archivos
 markdown de transcripciones de reuniones, archivos YAML y markdown de
 investigación de agentes, y registros JSON de fuentes de contactos. Para
