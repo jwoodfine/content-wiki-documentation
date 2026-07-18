@@ -9,7 +9,7 @@ type: topic
 content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-07-18
 editor: pointsav-engineering
 cites: []
 paired_with: foundry-services-slice-model.md
@@ -32,11 +32,34 @@ El entorno de desarrollo de [[pointsav-overview|PointSav]] ejecuta servicios de 
 
 Una pasada inicial de endurecimiento introdujo `foundry-services.slice` — una partición cgroup de systemd con `CPUWeight=200` y `MemoryHigh=11G` que contiene todos los `local-*.service`. Los slices de usuario predeterminados de systemd se sitúan en `CPUWeight=100`, por lo que bajo contención de CPU el grupo de servicios recibe el doble de peso del planificador en comparación con una shell interactiva. Los techos de memoria impiden que cualquier servicio fije más de aproximadamente 11 GiB en una VM de 16 GiB; con la ordenación `OOMScoreAdjust` (sshd −1000, local-fs −500, local-doorman −300, local-slm +500), el último recurso del kernel para liberar memoria prefiere matar servicios fáciles de reiniciar antes que el escritor del ledger WORM o la conexión SSH del operador.
 
+**Corrección (2026-07-18):** el `foundry-services.slice` real en el monorepo
+(`infrastructure/systemd/foundry-services.slice`) no coincide con esta descripción.
+Establece `MemoryMin=12G` (una garantía de reserva de memoria contra desalojo bajo presión
+del host, dimensionada para un host de 31G, no un techo de 11G en una VM de 16G) — no
+aparece ningún ajuste `CPUWeight` en el archivo del slice, y una búsqueda en todo el
+monorepo no encuentra `CPUWeight` en ningún lugar. El mecanismo descrito en los propios
+comentarios del archivo es de otra naturaleza: presupuesto por servicio vía `MemoryMin`
+(local-content/LadybugDB recibe una garantía de 2G; local-slm y local-doorman no tienen
+ninguna establecida), no un esquema de peso de CPU/OOMScoreAdjust. El único ajuste
+`OOMScoreAdjust` encontrado en todo el monorepo está en `local-content` (`-200`,
+"moderadamente protegido") — no la ordenación de cuatro servicios sshd/local-fs/
+local-doorman/local-slm que describe este artículo. **Señalado, no reescrito
+silenciosamente** — esto se lee como un diseño anterior sustituido por un mecanismo más
+simple basado solo en reserva de memoria, pero necesita confirmación de project-totebox
+antes de corregir o eliminar las afirmaciones sobre peso de CPU y ordenación OOM.
+
 ## Alcance de nodo único sin Kubernetes
 
 Este esquema no es orquestación en el sentido de Kubernetes — no hay planificador, ni controlador de réplicas, ni malla de servicios. systemd es suficiente. El patrón escala a aproximadamente una docena de servicios en una sola VM de GCE, la configuración de nodo único compacta que caracteriza un despliegue soberano mínimo. Más allá de esa escala, la arquitectura cambia — pero la disciplina cgroup se mantiene.
 
 Ubicación en disco: `/etc/systemd/system/services.slice`, más drop-ins `Slice=` bajo `/etc/systemd/system/local-*.service.d/slice.conf`. Los espejos del código fuente bajo control de versiones viven en el directorio `infrastructure/` del monorepo.
+
+**Corrección (2026-07-18):** los nombres del código fuente bajo control de versiones no
+coinciden con esas rutas. El archivo del slice es
+`infrastructure/systemd/foundry-services.slice` (no `services.slice`), y los únicos
+drop-ins encontrados son `local-content-memory.conf` y `local-content-oom.conf` (no un
+`slice.conf` genérico por servicio). Señalado junto con la corrección de peso de CPU/
+ordenación OOM anterior — la misma desactualización subyacente.
 
 ## Véase también
 
