@@ -8,7 +8,7 @@ type: topic
 content_type: topic
 status: stable
 bcsc_class: no-disclosure-implication
-last_edited: 2026-06-11
+last_edited: 2026-07-18
 editor: pointsav-engineering
 paired_with: yoyo-daily-enrichment-cycle.md
 ---
@@ -37,6 +37,30 @@ extrajo el modelo de 7B como referencia, permitiendo afinar el modelo de 7B haci
 calidad de extracción del modelo mayor en sucesivas ejecuciones de entrenamiento.
 
 ## Las ocho fases
+
+**Corrección mayor (2026-07-18):** la estructura de fases de esta sección, el nombre del
+script y el límite máximo de 45 minutos en el que se basa no coinciden con el
+orquestador real en producción. El script real es `nightly-run.sh` (no
+`yoyo-daily-cycle.sh` — la misma desactualización de nombre ya señalada en
+[[spot-vm-lifecycle-kill-switch]]), y ejecuta un ciclo de **dos fases**, no ocho: Fase 1
+(reconstrucción del DataGraph) y Fase 2 (Entrenamiento), cada una con un presupuesto
+configurable de forma independiente cuyo valor por defecto es
+`DATAGRAPH_SECONDS=7200` y `TRAINING_SECONDS=7200` — **2 horas cada una, aproximadamente
+4 horas en total**, no el límite de 45 minutos en el que se basa la sección de
+Presupuesto y costo de este artículo. Esto coincide con la estructura de dos fases ya
+verificada en [[elastic-compute-lora-training-pipeline]] (verificada por tarea
+anteriormente en esta revisión) — el planteamiento Fase 1/Fase 2 de ese artículo es el
+correcto; el planteamiento de ocho fases y 45 minutos de este artículo parece describir
+un diseño anterior o distinto. La zona (`us-central1-a`, confirmada mediante el valor
+por defecto de `SLM_YOYO_GCP_ZONE` en el script real) y el tipo de VM/ruta del
+interruptor de emergencia son correctos de forma independiente y no están en disputa.
+**Las cifras de costo más abajo ($0.53/ciclo, ~$16/mes) dependen de la suposición
+incorrecta de 45 minutos** — con la duración real de ~4 horas por ciclo y la misma tarifa
+de $0.71/hora, el costo real sería aproximadamente 6 veces mayor. **Señalado, no
+reescrito silenciosamente** — las ocho fases nombradas más abajo pueden corresponder
+parcialmente a subpasos dentro del script real de dos fases, pero esa correspondencia no
+se ha verificado; necesita confirmación de project-totebox antes de corregir esta
+sección y la tabla de costos.
 
 El ciclo es un script Bash (`yoyo-daily-cycle.sh`) que ejecuta ocho fases secuenciales.
 El script escribe un archivo de registro con marca de tiempo para cada ejecución.

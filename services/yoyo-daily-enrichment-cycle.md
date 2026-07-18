@@ -8,7 +8,7 @@ type: topic
 content_type: topic
 status: stable
 bcsc_class: no-disclosure-implication
-last_edited: 2026-07-11
+last_edited: 2026-07-18
 editor: pointsav-engineering
 paired_with: yoyo-daily-enrichment-cycle.es.md
 ---
@@ -36,6 +36,26 @@ Each DPO pair records what the 32B model extracted as the preferred output and w
 larger model's extraction quality over successive training runs.
 
 ## The eight phases
+
+**Major correction (2026-07-18):** this section's phase structure, script name, and the
+45-minute hard cap it depends on do not match the live orchestrator. The real script is
+`nightly-run.sh` (not `yoyo-daily-cycle.sh` — the same naming drift already flagged on
+[[spot-vm-lifecycle-kill-switch]]), and it runs a **two-phase** cycle, not eight: Phase 1
+(DataGraph rebuild) and Phase 2 (Training), each with an independently configurable
+budget defaulting to `DATAGRAPH_SECONDS=7200` and `TRAINING_SECONDS=7200` — **2 hours
+each, roughly 4 hours total**, not the 45-minute cap this article's Budget and cost
+section is built around. This matches the already-verified 2-phase structure described
+in [[elastic-compute-lora-training-pipeline]] (task-verified earlier this pass) — that
+article's Phase 1/Phase 2 framing is the accurate one; this article's eight-phase,
+45-minute framing appears to describe an earlier or different design. Zone
+(`us-central1-a`, confirmed via `SLM_YOYO_GCP_ZONE` default in the real script) and VM
+type/kill-switch path are independently accurate and not in dispute. **The cost figures
+below ($0.53/cycle, ~$16/month) are downstream of the wrong 45-minute assumption** — at
+the real ~4-hour cycle length and the same $0.71/hour rate, the actual cost would be
+roughly 6x higher. **Flagged, not silently rewritten** — the eight named phases below
+may map loosely onto sub-steps within the real two-phase script, but that mapping has not
+been verified; needs project-totebox confirmation before this section and the cost table
+are corrected.
 
 The cycle is a single Bash script (`yoyo-daily-cycle.sh`) that executes eight sequential
 phases. The script writes a timestamped log file for each run.
