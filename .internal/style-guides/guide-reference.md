@@ -10,7 +10,7 @@ status: active
 audience: contributor
 bcsc_class: public-disclosure-safe
 governs: [PROSE-TOPIC, PROSE-ARCHITECTURE, PROSE-RESEARCH, PROSE-TEXT, PROSE-README, PROSE-INVENTORY, changelog, DESIGN-RESEARCH]
-last_edited: 2026-07-01
+last_edited: 2026-07-18
 editor: pointsav-engineering
 ---
 
@@ -18,6 +18,13 @@ editor: pointsav-engineering
 > prose a reader consults to look something up or reads to understand how a thing works.
 > Builds on [[house-core]] and states only the reference specialization. Where this guide is
 > silent, the house core governs.
+
+**Machine-checkable rules:** `pointsav-design-system/tokens/content-schema/schema-topic.yaml`
+is the machine-checkable projection of this guide's structural rules (required sections,
+frontmatter contract, density targets, the "what this is not" requirement). This guide owns
+craft (register, rhythm, judgment calls); the schema token owns everything countable. A rule
+lives in exactly one place — if this guide and the schema token ever disagree, that's a defect
+to flag, not a choice between them.
 
 ## 1. Purpose and audience
 

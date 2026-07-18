@@ -10,13 +10,18 @@ status: active
 audience: contributor
 bcsc_class: public-disclosure-safe
 governs: [PROSE-GUIDE, RUNBOOK, PROSE-DIRECTIVE]
-last_edited: 2026-07-01
+last_edited: 2026-07-18
 editor: pointsav-engineering
 ---
 
 > The register guide for operational writing — guides, runbooks, and directives that take a
 > competent reader from a starting state to a finished task. Builds on [[house-core]]; restates
 > nothing there. If a point is not covered here, house-core governs.
+
+**Machine-checkable rules:** `pointsav-design-system/tokens/content-schema/schema-guide.yaml`
+is the machine-checkable projection of this guide's structural rules (required section order,
+one-action-per-step, verification-after-every-state-change, rollback requirement). This guide
+owns craft; the schema token owns everything countable. A rule lives in exactly one place.
 
 ## 1. Purpose and audience
 

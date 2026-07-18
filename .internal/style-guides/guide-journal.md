@@ -10,7 +10,7 @@ status: active
 audience: contributor
 bcsc_class: public-disclosure-safe
 governs: [JOURNAL]
-last_edited: 2026-07-14
+last_edited: 2026-07-18
 editor: pointsav-engineering
 ---
 
@@ -20,6 +20,14 @@ editor: pointsav-engineering
 > forbidden-vocabulary list, promotion criteria, and public-posting blocks — are governed by
 > [[journal-artifact-discipline]] and are not restated here. This guide teaches the craft:
 > how a complete idea is argued from abstract to conclusion.
+
+**Machine-checkable rules:** `pointsav-design-system/tokens/content-schema/schema-journal.yaml`
+is the machine-checkable projection of this guide's structural rules (required section order,
+the limitations-section requirement, back-matter fields, the `house_profile` parameter that
+carries per-product-site register variation instead of a separate JOURNAL voice token per
+site) — complementary to, not a replacement for, `[[journal-artifact-discipline]]`'s own
+schema/promotion-criteria authority. This guide owns craft; the schema token owns everything
+countable.
 
 ## 1. Purpose and audience
 
