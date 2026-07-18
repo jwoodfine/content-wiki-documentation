@@ -12,11 +12,35 @@ paired_with: service-input.es.md
 category: services
 status: active
 quality: complete
-last_edited: 2026-06-23
+last_edited: 2026-07-18
 editor: pointsav-engineering
 ---
 
 `service-input` is the [[three-ring-architecture|Ring 1]] document-intake service in the PointSav system architecture. It accepts files at the per-tenant boundary, routes them through format-specific parsers, and writes the normalized output into the per-tenant [[worm-ledger-design|WORM Immutable Ledger]] via [[service-fs-architecture|`service-fs`]].
+
+**Major correction (2026-07-18):** most of this article's architecture does not match the
+live `service-input` crate. Its own `Cargo.toml` describes the service as "Input Machine
+backend — file ingest, batch migration, and calibration evaluation for jennifer-2" — a
+markdown/YAML batch-migration and calibration-scoring tool, not a generic multi-format
+document parser. Concretely: the crate's `src/` contains exactly two files, `main.rs` and
+`eval.rs` — **there is no `src/mcp.rs`, `src/pdf.rs`, `src/markdown.rs`, `src/docx.rs`,
+`src/xlsx.rs`, or `src/fs_client.rs`**, and the `Cargo.toml` dependency list has no
+`oxidize-pdf`, `pulldown-cmark`, `docx-rust`, or `calamine` — none of the parser libraries
+this article describes are dependencies of this crate at all. The service's real `Config`
+struct carries fields like `dest_archive`, `reference_root`, `jennifer2_root`,
+`rate_per_min`, `batch_size`, `csv_batch_rows`, `content_endpoint`, and
+`doorman_endpoint` — none of which this article mentions. The module-ID env var is also
+different: the real source reads `SERVICE_INPUT_MODULE_ID` (default `"jennifer"`), not
+`INPUT_MODULE_ID` as this article states throughout, including in the Deployment
+configuration table below. **Flagged as a whole-article architectural mismatch, not
+line-edited** — everything below this point (Architecture, Format detection, all four
+Parsers sections, Dispatcher, ParsedDocument, FsClient, MCP interface, Deployment
+configuration) describes a design that does not appear to be what was actually built.
+This may be an early design document that predates the crate's real implementation
+direction, or the two have simply diverged. Needs project-totebox confirmation of what
+`service-input` is actually for today before this article is corrected or rewritten —
+this is squarely a REWRITE-class finding per the disposition rubric, not a targeted
+correction.
 
 ## The Anchor position (F12 / SYS-ADR-10)
 

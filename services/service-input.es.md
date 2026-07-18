@@ -12,11 +12,37 @@ paired_with: service-input.md
 category: services
 status: active
 quality: complete
-last_edited: 2026-06-23
+last_edited: 2026-07-18
 editor: pointsav-engineering
 ---
 
 `service-input` es el servicio de ingesta de documentos del [[three-ring-architecture|Anillo 1]] en la arquitectura del sistema PointSav. Acepta archivos en el límite por inquilino, los enruta a través de analizadores específicos por formato y escribe la salida normalizada en el [[worm-ledger-design|registro inmutable WORM]] por inquilino mediante [[service-fs-architecture|`service-fs`]].
+
+**Corrección mayor (2026-07-18):** la mayor parte de la arquitectura de este artículo no
+coincide con el crate real de `service-input`. Su propio `Cargo.toml` describe el
+servicio como "Input Machine backend — file ingest, batch migration, and calibration
+evaluation for jennifer-2" — una herramienta de migración por lotes de markdown/YAML y
+puntuación de calibración, no un analizador de documentos multi-formato genérico.
+Concretamente: el `src/` del crate contiene exactamente dos archivos, `main.rs` y
+`eval.rs` — **no existe ningún `src/mcp.rs`, `src/pdf.rs`, `src/markdown.rs`,
+`src/docx.rs`, `src/xlsx.rs` ni `src/fs_client.rs`**, y la lista de dependencias de
+`Cargo.toml` no incluye `oxidize-pdf`, `pulldown-cmark`, `docx-rust` ni `calamine` —
+ninguna de las bibliotecas de análisis que describe este artículo son dependencias de
+este crate en absoluto. La estructura `Config` real del servicio tiene campos como
+`dest_archive`, `reference_root`, `jennifer2_root`, `rate_per_min`, `batch_size`,
+`csv_batch_rows`, `content_endpoint` y `doorman_endpoint` — ninguno de los cuales
+menciona este artículo. La variable de entorno del ID de módulo también es distinta: la
+fuente real lee `SERVICE_INPUT_MODULE_ID` (por defecto `"jennifer"`), no `INPUT_MODULE_ID`
+como afirma este artículo en todo su contenido, incluida la tabla de configuración de
+despliegue más abajo. **Señalado como una discrepancia arquitectónica de todo el
+artículo, no editado línea por línea** — todo lo que sigue a partir de aquí (Arquitectura,
+Detección de formato, las cuatro secciones de Analizadores, Dispatcher, ParsedDocument,
+FsClient, interfaz MCP, configuración de despliegue) describe un diseño que no parece ser
+lo que realmente se construyó. Esto puede ser un documento de diseño temprano anterior a
+la dirección real de implementación del crate, o simplemente ambos han divergido.
+Necesita confirmación de project-totebox sobre para qué sirve realmente
+`service-input` hoy antes de corregir o reescribir este artículo — esto es claramente un
+hallazgo de clase REWRITE según la rúbrica de disposición, no una corrección puntual.
 
 ## La posición Ancla (F12 / SYS-ADR-10)
 
