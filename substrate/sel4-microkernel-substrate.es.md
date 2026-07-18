@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Sustrato del micronúcleo seL4"
 slug: sel4-microkernel-substrate
-short_description: "Micronúcleo seL4 formalmente verificado adoptado como kernel L1 de los sistemas operativos PointSav, con aislamiento de memoria y permisos por capacidades garantizados."
+short_description: "Micronúcleo seL4 formalmente verificado, sustrato L1 compartido y planificado de PointSav — aún no es el núcleo en ejecución de cada miembro de la familia de SO tal como se distribuye hoy."
 category: substrate
 type: concept
 content_type: topic
@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-07-18
 editor: pointsav-engineering
 paired_with: sel4-microkernel-substrate.md
 references:
@@ -23,7 +23,7 @@ references:
     url: "https://sel4.systems/Info/Docs/seL4-manual-latest.pdf"
 ---
 
-El micronúcleo seL4 es el núcleo de L1, verificado formalmente por demostración matemática, sobre el que se ejecutan todos los sistemas operativos PointSav — sus propiedades de seguridad están demostradas, no aseveradas mediante pruebas. [^1] PointSav adopta seL4 como materia prima en lugar de construir un núcleo propio, y construye su capa Rust propietaria por encima de él. El aislamiento de memoria, los desbordamientos de búfer nulos, los [[capability-ledger-substrate|permisos basados en capacidades]] y la ejecución determinista están garantizados estructuralmente — la base para afirmaciones de seguridad que pueden razonarse formalmente y presentarse a reguladores. Este artículo cubre la justificación arquitectónica, la pila de capas, las restricciones de la cadena de herramientas y la [[system-substrate-doctrine|disciplina de lenguaje]] aplicada por encima del núcleo.
+El micronúcleo seL4 es el núcleo de L1, verificado formalmente por demostración matemática, que PointSav ha adoptado como sustrato compartido planificado para sus sistemas operativos — sus propiedades de seguridad están demostradas, no aseveradas mediante pruebas. [^1] **Este es el sustrato objetivo de la plataforma, no una descripción de cada SO distribuido hoy**: `os-console`, por ejemplo, se distribuye hoy como una aplicación de terminal estándar sin dependencia actual de seL4. PointSav adopta seL4 como materia prima en lugar de construir un núcleo propio, y construye su capa Rust propietaria por encima de él. Donde seL4 es el sustrato en ejecución real, el aislamiento de memoria, los desbordamientos de búfer nulos, los [[capability-ledger-substrate|permisos basados en capacidades]] y la ejecución determinista están garantizados estructuralmente — la base para afirmaciones de seguridad que pueden razonarse formalmente y presentarse a reguladores. Este artículo cubre la justificación arquitectónica, la pila de capas, las restricciones de la cadena de herramientas y la [[system-substrate-doctrine|disciplina de lenguaje]] aplicada por encima del núcleo.
 
 ## Por qué adoptar en lugar de construir
 

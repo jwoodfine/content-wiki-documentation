@@ -10,14 +10,14 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-07-18
 editor: pointsav-engineering
 paired_with: os-family-overview.md
-short_description: "PointSav construye ocho sistemas operativos de propósito específico que comparten un sustrato común de seL4 y Rust. Cada uno hace un único trabajo, no contiene funciones que no necesita, y se comunica mediante una disciplina de protocolo Diodo común."
+short_description: "PointSav construye ocho sistemas operativos de propósito específico, diseñados en torno a una disciplina Rust y un protocolo Diodo compartidos; un sustrato común de micronúcleo seL4 es un objetivo de hoja de ruta, no el estado actual de todos los miembros."
 cites: []
 ---
 
-PointSav construye ocho sistemas operativos de propósito específico que comparten un sustrato de [[sel4-microkernel-substrate|micronúcleo seL4]] común, una disciplina de lenguaje Rust común y un protocolo de comunicación basado en [[diode-standard|Diodo]] común. Cada SO hace un único trabajo y no contiene ninguna función que no necesita. La familia abarca desde un terminal de cara al operador hasta un dispositivo soberano en la nube, pero cada miembro compila desde el mismo núcleo y habla el mismo protocolo. Este artículo cubre los ocho miembros de la familia de SO, el sustrato que comparten, cómo se componen en [[deployment-patterns|despliegues]] y la disciplina Diodo que rige el flujo de comandos en todos ellos.
+PointSav construye ocho sistemas operativos de propósito específico, diseñados en torno a una disciplina de lenguaje Rust común y un protocolo de comunicación basado en [[diode-standard|Diodo]] común. Cada SO hace un único trabajo y no contiene ninguna función que no necesita. **Un sustrato común de [[sel4-microkernel-substrate|micronúcleo seL4]] es un objetivo de hoja de ruta para la familia de SO, no una descripción de cada miembro tal como se distribuye hoy** — `os-console`, por ejemplo, funciona hoy como una aplicación de terminal estándar (`ratatui`/`crossterm`), sin dependencia actual de seL4; el estado actual (construido frente a planificado) de los demás miembros de la familia frente a este sustrato no se ha verificado artículo por artículo y no debe asumirse uniforme sin comprobarlo. Este artículo cubre los ocho miembros de la familia de SO, el sustrato que están diseñados para compartir, cómo se componen en [[deployment-patterns|despliegues]] y la disciplina Diodo que rige el flujo de comandos en todos ellos.
 
 ## Los ocho sistemas operativos
 
@@ -42,7 +42,7 @@ Los ocho sistemas operativos comparten la misma capa fundacional:
 
 | Capa | Componente | Propósito |
 |---|---|---|
-| Núcleo | [[sel4-microkernel-substrate|Micronúcleo seL4]] | Aislamiento de hardware verificado matemáticamente |
+| Núcleo | [[sel4-microkernel-substrate|Micronúcleo seL4]] (sustrato planificado — aún no es el núcleo distribuido en cada miembro de la familia de SO; confirmado que aún no está integrado en `os-console`) | Aislamiento de hardware verificado matemáticamente |
 | Lenguaje | Rust (seguro en memoria; sin recolector de basura) | Todo el código `system-*`, `service-*` y `os-*`; C/C++ prohibido en L3 y superior |
 | Controladores | sDDF (Marco de Controladores de Dispositivos seL4) | Acceso directo al hardware sin sobrecarga de tiempo de ejecución |
 | Protocolo | Protocolo PointSav (PSP) | Protocolo binario basado en capacidades; tuneliza a través de TLS y VirtIO en el borde |

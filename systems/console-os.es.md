@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-07-18
 editor: pointsav-engineering
 paired_with: console-os.md
 short_description: "os-console es la superficie de cara al operador de la plataforma PointSav — un Libro Mayor de Comandos que se conecta a un Totebox y le presenta su estado al operador a través de una interfaz estructurada por teclas de función."
@@ -28,15 +28,18 @@ references:
 
 ## Cómo funciona
 
-`os-console` se distribuye como un único ejecutable. En el sistema operativo anfitrión — Windows, macOS o Linux — actúa como Monitor de Máquina Virtual: utiliza la API de virtualización nativa del anfitrión para crear una pequeña VM aislada en RAM y arranca un entorno seL4 dentro de ella.
+`os-console` se distribuye como un único ejecutable y hoy funciona como una aplicación de
+terminal estándar, construida sobre `ratatui` y `crossterm`. **Planificado, no actual**:
+un entorno de ejecución con aislamiento de hardware en el que la API de virtualización
+nativa del sistema operativo anfitrión (Windows Hypervisor Platform, `Hypervisor.
+framework` o KVM) arranca un pequeño entorno [[sel4-microkernel-substrate|seL4]] aislado
+alrededor de la aplicación. Esto es trabajo de hoja de ruta, no una descripción del binario
+tal como se distribuye hoy — reservar afirmaciones como "reforzado por el kernel" para ese
+estado futuro, no para el presente.
 
-| Anfitrión | API VMM nativa |
-|---|---|
-| Windows | Windows Hypervisor Platform (WHPX) |
-| macOS | `Hypervisor.framework` |
-| Linux | KVM |
-
-El operador cree que abrió una aplicación. Lo que hizo fue iniciar un entorno seguro con aislamiento de hardware en aproximadamente 50 milisegundos. Cuando la aplicación se cierra, la memoria segura se borra. Nada toca el disco duro del anfitrión. El modelo de seguridad depende de [[machine-based-auth|emparejamientos vinculados al hardware]] en lugar de nombres de usuario o contraseñas.
+El modelo de seguridad depende de [[machine-based-auth|emparejamientos vinculados al
+hardware]] en lugar de nombres de usuario o contraseñas, independientemente del elemento
+de hoja de ruta de aislamiento por VM mencionado arriba.
 
 ## La superficie de teclas de función
 
@@ -44,7 +47,7 @@ La interfaz organiza la realidad de cada entidad en un conjunto fijo de pilares.
 
 | Tecla | Pilar | Servicio |
 |---|---|---|
-| F1 | AYUDA | [[app-console-input|content-wiki-documentation]] (procedimientos operativos de solo lectura) |
+| F1 | AYUDA | Procedimientos operativos de solo lectura |
 | F2 | PERSONAS | [[service-people|service-people]] — el libro mayor de identidades |
 | F3 | CORREO | [[service-email|service-email]] — el Diodo de Comunicación |
 | F4 | CONTENIDO | [[service-content|service-content]] — el motor de redacción y síntesis |
@@ -56,17 +59,15 @@ F12 es obligatorio según [[architecture-decisions|SYS-ADR-10]]. La [[app-consol
 
 ## La pila de renderizado
 
-`os-console` no es un TUI dentro de un terminal del anfitrión. Es una aplicación gráfica independiente que, por casualidad, muestra texto. La pila es de propiedad integral:
-
-| Capa | Componente | Notas |
-|---|---|---|
-| Ventana | `pointsav-window` | Envoltorio personalizado Win32 / Cocoa / X11/Wayland |
-| GPU | `pointsav-gpu` | WGPU (abstracción Vulkan / Metal / DX12); licencia embebida en el binario |
-| Texto | `pointsav-text` | Renderizador de glifos por Campo de Distancia con Signo (SDF) [^1]; fidelidad de zoom infinito |
-| Disposición | `pointsav-layout` | Cuadrícula recursiva de filas/columnas en aproximadamente 500 líneas de Rust |
-| Lógica de widgets | Bifurcación del núcleo de ratatui | Solo lógica; el renderizador de ratatui reemplazado por la cadena WGPU |
-
-El resultado es una interfaz de terminal con encabezados de peso variable, efectos de brillo y desplazamiento suave — manteniéndose puramente controlada por teclado y renderizando con la fidelidad requerida por los sufijos de estado de documentos ISO 19650 [^2].
+`os-console` hoy es una interfaz de terminal: la lógica de widgets y el renderizado se
+construyen sobre `ratatui`, con `crossterm` gestionando el backend de terminal.
+**Planificado, no actual**: una canalización de renderizado independiente y nativa de GPU
+(una abstracción basada en WGPU para Vulkan/Metal/DX12 con un renderizador de glifos por
+Campo de Distancia con Signo [^1] para fidelidad de zoom infinito, encabezados de peso
+variable y efectos de brillo) que reemplazaría por completo al renderizador alojado en
+terminal. La intención de diseño para esa futura canalización comparte su filosofía con
+[[design-philosophy|el sistema de diseño más amplio de PointSav]], pero no es la pila que
+funciona hoy.
 
 ## Modo directo y modo agregado
 

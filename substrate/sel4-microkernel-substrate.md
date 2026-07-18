@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "seL4 microkernel substrate"
 slug: sel4-microkernel-substrate
-short_description: "Formally verified seL4 microkernel adopted as the L1 kernel for all PointSav operating systems, guaranteeing memory isolation and capability-based permissions structurally."
+short_description: "Formally verified seL4 microkernel, PointSav's planned shared L1 kernel substrate — not yet the running kernel for every OS family member as shipped today."
 category: substrate
 type: concept
 content_type: topic
@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-07-18
 editor: pointsav-engineering
 paired_with: sel4-microkernel-substrate.es.md
 references:
@@ -23,7 +23,20 @@ references:
     url: "https://sel4.systems/Info/Docs/seL4-manual-latest.pdf"
 ---
 
-The seL4 microkernel is the mathematically formally-verified L1 kernel on which all PointSav operating systems run — its security properties are proved by formal mathematical proof, not asserted by testing. [^1] PointSav adopts seL4 as raw material rather than building a custom kernel, and constructs its proprietary Rust layer above it. Memory isolation, zero buffer overflows, [[capability-ledger-substrate|capability-based permissions]], and deterministic execution are guaranteed structurally — the foundation for security claims that can be reasoned about formally and presented to regulators rather than merely asserted through penetration testing. This article covers the architectural rationale, the layered stack, the toolchain constraints, and the [[system-substrate-doctrine|language discipline]] enforced above the kernel.
+The seL4 microkernel is the mathematically formally-verified L1 kernel PointSav has
+adopted as the planned shared substrate for its operating systems — its security
+properties are proved by formal mathematical proof, not asserted by testing. [^1] **This
+is the platform's target substrate, not a description of every shipped OS today**:
+`os-console`, for example, ships today as a standard terminal application with no current
+seL4 dependency. PointSav adopts seL4 as raw material rather than building a custom
+kernel, and constructs its proprietary Rust layer above it. Where seL4 is the actual
+running substrate, memory isolation, zero buffer overflows,
+[[capability-ledger-substrate|capability-based permissions]], and deterministic execution
+are guaranteed structurally — the foundation for security claims that can be reasoned
+about formally and presented to regulators rather than merely asserted through
+penetration testing. This article covers the architectural rationale, the layered stack,
+the toolchain constraints, and the [[system-substrate-doctrine|language discipline]]
+enforced above the kernel.
 
 ## Why adopt rather than build
 

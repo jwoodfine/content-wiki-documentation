@@ -13,7 +13,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: TRANSLATE-ES
-last_edited: 2026-06-20
+last_edited: 2026-07-18
 editor: pointsav-engineering
 paired_with: os-console-totebox-browser.md
 cites: []
@@ -26,8 +26,13 @@ ejecuta en la máquina host del operador —un ordenador personal, una estación
 o un cliente ligero— y presenta una interfaz orientada al teclado para los servicios
 que se ejecutan en el Totebox del operador.
 
-La analogía más cercana es un navegador web. La analogía es estructural, no metafórica:
-os-console y un navegador resuelven el mismo problema arquitectónico por los mismos medios.
+La analogía más cercana es un navegador web. La intención es que la analogía sea
+estructural, no meramente metafórica, una vez que el diseño esté completamente construido
+— os-console y un navegador están diseñados para resolver el mismo problema arquitectónico
+por los mismos medios. Como muestra la tabla siguiente, varias filas de esa
+correspondencia estructural (el límite de Dominio de Protección seL4 entre cartuchos, el
+empaquetado como imagen de VM arrancable) siguen planificadas, no vigentes — la analogía
+se cumple hoy para las piezas ya construidas, y es el objetivo de diseño para el resto.
 
 ---
 

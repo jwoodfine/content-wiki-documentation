@@ -10,14 +10,24 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-07-18
 editor: pointsav-engineering
 paired_with: os-family-overview.es.md
-short_description: "PointSav builds eight purpose-built operating systems sharing a common seL4 + Rust substrate. Each does one job and communicates via a Diode-based protocol."
+short_description: "PointSav builds eight purpose-built operating systems, designed around a shared Rust discipline and a Diode-based protocol; a common seL4 microkernel substrate is a roadmap target, not the current state of every member."
 cites: []
 ---
 
-PointSav builds eight purpose-built operating systems that share a common [[sel4-microkernel-substrate|seL4 microkernel]] substrate, a common Rust language discipline, and a common [[diode-standard|Diode]]-based communication protocol. Each OS does one job and contains no feature it does not need. The family ranges from a human-facing terminal to a sovereign cloud appliance, yet every member compiles from the same kernel and speaks the same protocol. This article covers the eight members of the OS family, the substrate they share, how they compose into [[deployment-patterns|deployments]], and the Diode discipline that governs command flow across all of them.
+PointSav builds eight purpose-built operating systems, designed around a common Rust
+language discipline and a common [[diode-standard|Diode]]-based communication protocol.
+Each OS does one job and contains no feature it does not need. **A shared
+[[sel4-microkernel-substrate|seL4 microkernel]] substrate is a roadmap target for the OS
+family, not a description of every member as it ships today** — `os-console`, for
+example, runs today as a standard terminal application (`ratatui`/`crossterm`), with no
+current seL4 dependency; other family members' current build-vs-planned status against
+this substrate has not been verified article-by-article and should not be assumed uniform
+without checking. This article covers the eight members of the OS family, the substrate
+they are designed to share, how they compose into [[deployment-patterns|deployments]], and
+the Diode discipline that governs command flow across all of them.
 
 ## The eight operating systems
 
@@ -42,7 +52,7 @@ All eight operating systems share the same foundational layer:
 
 | Layer | Component | Purpose |
 |---|---|---|
-| Kernel | [[sel4-microkernel-substrate|seL4 microkernel]] | Mathematically verified hardware isolation |
+| Kernel | [[sel4-microkernel-substrate|seL4 microkernel]] (planned substrate — not yet the shipped kernel for every OS family member; confirmed not yet integrated into `os-console`) | Mathematically verified hardware isolation |
 | Language | Rust (memory-safe; no garbage collector) | All `system-*`, `service-*`, and `os-*` code; C/C++ banned at L3 and above |
 | Drivers | sDDF (seL4 Device Driver Framework) | Direct hardware access without runtime bloat |
 | Protocol | PointSav Protocol (PSP) | Capability-based binary protocol; tunnels through TLS and VirtIO at the edge |

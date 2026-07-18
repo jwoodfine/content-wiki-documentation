@@ -13,7 +13,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-20
+last_edited: 2026-07-18
 editor: pointsav-engineering
 paired_with: os-console-totebox-browser.es.md
 cites: []
@@ -25,8 +25,13 @@ os-console is the operator terminal surface for [[totebox-orchestration|Totebox 
 operator's host machine — a personal computer, workstation, or thin client — and presents
 a keyboard-native interface to the services running on the operator's Totebox.
 
-The closest analogy is a web browser. The analogy is structural, not metaphorical:
-os-console and a browser solve the same architectural problem by the same means.
+The closest analogy is a web browser. The analogy is intended to be structural, not
+merely metaphorical, once the design is fully built out — os-console and a browser are
+designed to solve the same architectural problem by the same means. As the table below
+shows, several rows of that structural correspondence (the seL4 Protection Domain
+boundary between cartridges, the bootable-VM-image packaging) are still planned, not
+current — the analogy holds today for the pieces already built, and is the design target
+for the rest.
 
 ---
 

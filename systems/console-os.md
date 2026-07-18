@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-07-18
 editor: pointsav-engineering
 paired_with: console-os.es.md
 short_description: "os-console is the human-facing surface of the PointSav platform — a Command Ledger connecting to a Totebox and rendering its state via a keyboard-driven interface."
@@ -28,15 +28,16 @@ references:
 
 ## How it runs
 
-`os-console` ships as a single executable. On the host operating system — Windows, macOS, or Linux — it acts as a Virtual Machine Monitor: it uses the host's native virtualisation API to create a small, isolated VM in RAM and boots an [[sel4-microkernel-substrate|seL4]] environment inside it.
+`os-console` ships as a single executable and runs today as a standard terminal
+application, built on `ratatui` and `crossterm`. **Planned, not current**: a
+hardware-isolated runtime where the host operating system's native virtualisation API
+(Windows Hypervisor Platform, `Hypervisor.framework`, or KVM) boots a small, isolated
+[[sel4-microkernel-substrate|seL4]] environment around the application. This is roadmap
+work, not a description of the binary as it ships today — reserve "kernel-enforced" and
+similar claims for that future state, not the present one.
 
-| Host | Native VMM API |
-|---|---|
-| Windows | Windows Hypervisor Platform (WHPX) |
-| macOS | `Hypervisor.framework` |
-| Linux | KVM |
-
-The operator thinks they opened an application. What they have done is spun up a hardware-isolated secure environment in roughly 50 milliseconds. When the application closes, the secure memory is wiped. Nothing touches the host hard drive. The security model relies on [[machine-based-auth|hardware-bound pairings]] rather than usernames or passwords.
+The security model relies on [[machine-based-auth|hardware-bound pairings]] rather than
+usernames or passwords, independent of the VM-isolation roadmap item above.
 
 ## The F-key surface
 
@@ -44,7 +45,7 @@ The interface organises every entity's reality into a fixed set of pillars. Each
 
 | Key | Pillar | Service |
 |---|---|---|
-| F1 | HELP | [[app-console-input|content-wiki-documentation]] (read-only operating procedures) |
+| F1 | HELP | Read-only operating procedures |
 | F2 | PEOPLE | [[service-people|service-people]] — the identity ledger |
 | F3 | EMAIL | [[service-email|service-email]] — the Comm Diode |
 | F4 | CONTENT | [[service-content|service-content]] — the drafting and synthesis engine |
@@ -56,17 +57,14 @@ F12 is mandatory per [[architecture-decisions|SYS-ADR-10]]. The [[app-console-in
 
 ## The rendering stack
 
-`os-console` is not a TUI inside a host terminal. It is a standalone graphics application that happens to display text. The stack is owned end-to-end and shares its design philosophy with [[design-philosophy|the broader PointSav design system]]:
-
-| Layer | Component | Notes |
-|---|---|---|
-| Window | `pointsav-window` | Custom Win32 / Cocoa / X11/Wayland wrapper |
-| GPU | `pointsav-gpu` | WGPU (Vulkan / Metal / DX12 abstraction); licence embedded in binary |
-| Text | `pointsav-text` | Signed Distance Field (SDF) glyph renderer [^1]; infinite-zoom fidelity |
-| Layout | `pointsav-layout` | Recursive row/column grid in roughly 500 lines of Rust |
-| Widget logic | Forked from ratatui core | Logic only; ratatui's renderer replaced by the WGPU pipeline |
-
-The result is a terminal interface with variable-weight headers, bloom effects, and smooth scrolling — while remaining purely keyboard-driven and rendering at the fidelity required by ISO 19650 [^2] document-state suffixes.
+`os-console` today is a terminal interface: widget logic and rendering are built on
+`ratatui`, with `crossterm` handling the terminal backend. **Planned, not current**: a
+standalone, GPU-native rendering pipeline (a WGPU-based Vulkan/Metal/DX12 abstraction with
+a Signed Distance Field [^1] glyph renderer for infinite-zoom fidelity, variable-weight
+headers, and bloom effects) that would replace the terminal-hosted renderer entirely. The
+design intent for that future pipeline shares its philosophy with
+[[design-philosophy|the broader PointSav design system]], but it is not the stack running
+today.
 
 ## Direct mode and aggregate mode
 
