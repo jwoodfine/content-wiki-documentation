@@ -9,7 +9,7 @@ quality: complete
 short_description: "The platform mechanism converting operational work — commits, sessions, feedback — into structured JSONL training tuples feeding a continued-pretraining corpus."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-07-18
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -68,6 +68,19 @@ Tenant adapters do not leave the customer's deployment unless that customer expl
 
 ### Capture mechanics
 
+**Correction (2026-07-18):** of the five scripts below, only one exists in the live
+monorepo — `capture-edit.sh` (`service-slm/scripts/`), and even that has the wrong
+extension here (this article says `capture-edit.py`; the real file is a `.sh`). A
+repo-wide search finds no `capture-trajectory.sh`, `capture-doctrine.sh`,
+`capture-feedback.sh`, or `capture-tenant-runtime.sh` anywhere. This is consistent with
+(not contradicted by) the Configuration section below, which states only L1
+("edit-corpus capture") is live and L2–L4 are planned/intended — but this table presents
+all five scripts in the present tense with no such hedge, which reads as already-built.
+**Flagged, not silently rewritten** — the L2–L4 script names may be provisional/aspirational
+naming for not-yet-built capture points rather than a factual claim of existing files;
+needs project-totebox confirmation of intended vs. actual naming before this table is
+corrected.
+
 Five scripts handle capture:
 
 | Script | Trigger | Writes |
@@ -85,6 +98,10 @@ Every JSONL record carries a provenance header with fields `tuple_type`, `doctri
 ### Adapter composition at request time
 
 At inference time the [[compounding-doorman|Doorman]] (`service-slm`) composes adapters per request:
+
+(Same base-model naming note as [[adapter-composition]] and [[pointsav-llm]] — the exact
+Tier A model name is inconsistent across this wiki and the underlying engineering docs;
+not re-litigated here.)
 
 ```
 composed_weights =
