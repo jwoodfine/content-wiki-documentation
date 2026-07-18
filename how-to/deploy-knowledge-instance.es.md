@@ -7,7 +7,7 @@ category: how-to
 content_type: how-to
 type: how-to
 status: active
-last_edited: 2026-06-14
+last_edited: 2026-07-18
 editor: pointsav-engineering
 language: es
 language_protocol: TRANSLATE-ES
@@ -17,6 +17,28 @@ paired_with: deploy-knowledge-instance.md
 Una instancia de conocimiento es un despliegue en ejecución de `app-mediakit-knowledge` — el servidor wiki que renderiza la documentación y los wikis de proyectos de la plataforma. Desplegar una instancia significa compilar el binario, escribir un archivo de configuración `knowledge.toml` que apunte a los repositorios de contenido e iniciar el servicio. Esta guía cubre el despliegue de un wiki de instancia única desde una ruta de contenido local.
 
 Para el modelo de tres instancias (documentación, proyectos, corporativo), véase [[app-mediakit-knowledge]]. Para los montajes de contenido declarativos, véase [[use-knowledge-mounts]].
+
+**Corrección mayor (2026-07-18):** el esquema de `knowledge.toml` del Paso 2 y la
+invocación de CLI del Paso 4 no coinciden con la fuente real de `app-mediakit-knowledge`.
+La verificación directa de `app-mediakit-knowledge/src/config.rs` (cuyo propio comentario
+de documentación afirma que el esquema "is the contract the three live instances depend
+on") encuentra una configuración estructuralmente distinta: una tabla `[site]` (`title`,
+`brand`, `bind` — una única cadena combinada `host:puerto` con valor por defecto
+`127.0.0.1:9090`, `state_dir`, `instance`, `canonical_url`, `categories`), un arreglo
+repetible `[[mount]]` (`path`, `role`, `blueprint_set` — este es el mecanismo real detrás
+de [[use-knowledge-mounts]]) en lugar de una única tabla `[content] primary_path`, más las
+tablas opcionales `[citations]`, `[[peer]]`, `[[start_here]]` y `[federation]`. **No existe
+ninguna tabla `[server]` con campos `port`/`bind` separados, ninguna tabla `[content]`,
+ninguna tabla `[search]` ni ninguna tabla `[auth]` en la estructura `Config` real** — los
+campos `search.enabled`/`index_path` y `auth.enabled` del ejemplo más abajo no existen en
+este esquema. Por separado, la invocación del Paso 4
+(`app-mediakit-knowledge --config knowledge.toml`) también es incorrecta: la CLI real se
+basa en subcomandos, `app-mediakit-knowledge serve --knowledge-toml <ruta>` (o la variable
+de entorno `WIKI_KNOWLEDGE_TOML`), con un subcomando hermano `check` para validación en CI
+no mencionado en esta guía. **Señalado, no reescrito silenciosamente** — una reescritura
+completa necesita un ejemplo real anotado contra las estructuras reales `Config`/`Site`/
+`Mount`, no una reconstrucción adivinada; necesita confirmación de project-totebox o
+project-knowledge antes de corregir los Pasos 2 y 4.
 
 ## Requisitos previos
 

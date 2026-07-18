@@ -7,7 +7,7 @@ category: how-to
 content_type: how-to
 type: how-to
 status: active
-last_edited: 2026-06-14
+last_edited: 2026-07-18
 editor: pointsav-engineering
 paired_with: deploy-knowledge-instance.es.md
 ---
@@ -15,6 +15,27 @@ paired_with: deploy-knowledge-instance.es.md
 A knowledge instance is a running deployment of `app-mediakit-knowledge` — the wiki server that renders the platform's documentation and project wikis. Deploying an instance means building the binary, writing a `knowledge.toml` configuration file pointing at the content repositories, and starting the service. This guide covers deploying a single-instance wiki from a local content path.
 
 For the three-instance model (documentation, projects, corporate), see [[app-mediakit-knowledge]]. For declarative content mounts, see [[use-knowledge-mounts]].
+
+**Major correction (2026-07-18):** the `knowledge.toml` schema in Step 2 and the CLI
+invocation in Step 4 do not match the live `app-mediakit-knowledge` source. Direct
+verification of `app-mediakit-knowledge/src/config.rs` (whose own doc comment states the
+schema "is the contract the three live instances depend on") finds a structurally
+different config: a `[site]` table (`title`, `brand`, `bind` — a single combined
+`host:port` string defaulting to `127.0.0.1:9090`, `state_dir`, `instance`,
+`canonical_url`, `categories`), a repeatable `[[mount]]` array (`path`, `role`,
+`blueprint_set` — this is the real mechanism behind [[use-knowledge-mounts]]) in place of
+a single `[content] primary_path`, plus optional `[citations]`, `[[peer]]`,
+`[[start_here]]`, and `[federation]` tables. **There is no `[server]` table with separate
+`port`/`bind` fields, no `[content]` table, no `[search]` table, and no `[auth]` table
+anywhere in the parsed `Config` struct** — the `search.enabled`/`index_path` and
+`auth.enabled` fields in the example below do not exist in this schema. Separately, Step
+4's `app-mediakit-knowledge --config knowledge.toml` invocation is also wrong: the real
+CLI is subcommand-based, `app-mediakit-knowledge serve --knowledge-toml <path>` (or the
+`WIKI_KNOWLEDGE_TOML` env var), with a sibling `check` subcommand for CI validation not
+mentioned in this guide at all. **Flagged, not silently rewritten** — a full rewrite needs
+a real annotated example against the actual `Config`/`Site`/`Mount` structs, not a
+guessed reconstruction; needs project-totebox or project-knowledge confirmation before
+Steps 2 and 4 are corrected.
 
 ## Prerequisites
 
