@@ -9,7 +9,7 @@ quality: complete
 short_description: "The operating-system metaphor for AI in PointSav — the Doorman as kernel, adapters as processes — and the algebra assembling intelligence from LoRA layers."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-07-18
 editor: pointsav-engineering
 cites:
  - lorax-predibase
@@ -23,6 +23,12 @@ The **Adapter Composition Algebra** is the model that governs how AI intelligenc
 ## The algebra
 
 At request time, the [[compounding-doorman|Doorman]] composes adapters by stacking onto the base model:
+
+**Correction (2026-07-18):** the base model name here (`OLMo-3-1125-7B-Q4`) is the third
+distinct naming of the local/Tier A model found in this wiki this pass — see the
+already-flagged inconsistency on [[pointsav-llm]] (which cites "OLMo 3 7B Q4" and a
+sibling article's "OLMo-2-7B Q4_K_M" as conflicting). Not re-litigated in full here;
+same underlying engineering-doc version drift, not a new discrepancy.
 
 ```
 composed_weights =

@@ -9,7 +9,7 @@ quality: complete
 short_description: La metáfora del sistema operativo para la IA en PointSav — el Doorman como kernel, los adaptadores como procesos, service-content como sistema de archivos — y el álgebra que ensambla inteligencia por solicitud a partir de capas de adaptadores LoRA.
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-07-18
 editor: pointsav-engineering
 cites:
  - lorax-predibase
@@ -22,6 +22,13 @@ El **Álgebra de Composición de Adaptadores** es el modelo que rige cómo se en
 ## El álgebra
 
 En tiempo de solicitud, el [[compounding-doorman|Doorman]] compone adaptadores apilándolos sobre el modelo base:
+
+**Corrección (2026-07-18):** el nombre del modelo base aquí (`OLMo-3-1125-7B-Q4`) es la
+tercera nomenclatura distinta del modelo local/Nivel A encontrada en este wiki durante
+esta revisión — véase la inconsistencia ya señalada en [[pointsav-llm]] (que cita
+"OLMo 3 7B Q4" y un artículo hermano con "OLMo-2-7B Q4_K_M" en conflicto). No se
+relitiga en su totalidad aquí — es la misma desactualización de versión subyacente en la
+documentación de ingeniería, no una discrepancia nueva.
 
 ```
 pesos_compuestos =
