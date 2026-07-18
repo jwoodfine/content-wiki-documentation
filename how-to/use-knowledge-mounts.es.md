@@ -7,7 +7,7 @@ category: how-to
 content_type: how-to
 type: how-to
 status: active
-last_edited: 2026-06-14
+last_edited: 2026-07-18
 editor: pointsav-engineering
 language: es
 language_protocol: TRANSLATE-ES
@@ -17,6 +17,28 @@ paired_with: use-knowledge-mounts.md
 Los montajes de conocimiento permiten que una sola instancia wiki sirva contenido de múltiples repositorios fuente bajo un espacio de URL unificado. Un montaje se declara en `knowledge.toml` — la instancia lee la ruta fuente al inicio y hace que sus artículos estén disponibles en el prefijo de categoría configurado. Esta guía cubre la adición de un montaje de contenido secundario a una instancia existente.
 
 Para la arquitectura de federación que los montajes habilitan, véase [[federate-archives-via-content-mounts]]. Para desplegar el servidor wiki en primer lugar, véase [[deploy-knowledge-instance]].
+
+**Corrección mayor (2026-07-18):** el esquema de montaje y el comportamiento de prefijo
+de URL que describe esta guía no coinciden con la fuente real de
+`app-mediakit-knowledge` (la misma fuente verificada para la corrección de
+[[deploy-knowledge-instance]]). La clave real del arreglo de tablas TOML es `[[mount]]`
+(singular — `#[serde(rename = "mount")]`), no `[[mounts]]` usado en toda esta guía. La
+estructura real `Mount` tiene exactamente tres campos: `path`, `role` (por defecto
+`"primary"`; el comentario de documentación afirma "First primary mount is editable;
+guide mounts are read-only" — un indicador de editabilidad de dos valores, no un espacio
+de nombres de URL), y `blueprint_set` (una lista de tipos de artículo permitidos, p. ej.
+`["TOPIC", "GUIDE"]`). **No existe ningún campo `prefix` ni ningún campo `label` en
+ninguna parte del esquema real** — el ejemplo del Paso 2 (`prefix = "projects"` /
+`label = "Projects"`) y la verificación de URL con prefijo `/projects/<slug>` del Paso 4
+describen un mecanismo (espacio de nombres de URL por montaje) que este código no parece
+implementar; el campo `role` real gobierna la editabilidad, no el enrutamiento. Tampoco
+existe ningún bloque `[content]` después del cual añadir el montaje (véase la corrección
+enlazada en [[deploy-knowledge-instance]] para la forma real de ese esquema). **Señalado,
+no reescrito silenciosamente** — el modelo real de montaje puede enrutar mediante un
+mecanismo distinto no verificado (o puede que aún no soporte el servicio multi-fuente con
+prefijo de URL en absoluto); necesita confirmación de project-totebox o
+project-knowledge sobre cómo las entradas `[[mount]]` se reflejan realmente en el
+enrutamiento antes de corregir los pasos de esta guía.
 
 ## Requisitos previos
 

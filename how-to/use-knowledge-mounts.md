@@ -7,7 +7,7 @@ category: how-to
 content_type: how-to
 type: how-to
 status: active
-last_edited: 2026-06-14
+last_edited: 2026-07-18
 editor: pointsav-engineering
 paired_with: use-knowledge-mounts.es.md
 ---
@@ -15,6 +15,25 @@ paired_with: use-knowledge-mounts.es.md
 Knowledge mounts allow a single wiki instance to serve content from multiple source repositories under a unified URL space. A mount is declared in `knowledge.toml` — the instance reads the source path at startup and makes its articles available at the configured category prefix. This guide covers adding a secondary content mount to an existing instance.
 
 For the federation architecture that mounts enable, see [[federate-archives-via-content-mounts]]. For deploying the wiki server in the first place, see [[deploy-knowledge-instance]].
+
+**Major correction (2026-07-18):** the mount schema and URL-prefix behavior this guide
+describes do not match the live `app-mediakit-knowledge` source (same source verified for
+[[deploy-knowledge-instance]]'s correction). The real TOML array-of-tables key is
+`[[mount]]` (singular — `#[serde(rename = "mount")]`), not `[[mounts]]` used throughout
+this guide. The real `Mount` struct has exactly three fields: `path`, `role` (default
+`"primary"`; the doc comment states "First primary mount is editable; guide mounts are
+read-only" — a two-value editability flag, not a URL namespace), and `blueprint_set` (a
+list of allowed article types, e.g. `["TOPIC", "GUIDE"]`). **There is no `prefix` field
+and no `label` field anywhere in the real schema** — Step 2's `prefix = "projects"` /
+`label = "Projects"` example and Step 4's `/projects/<slug>` URL-prefix verification
+describe a mechanism (per-mount URL namespacing) this code does not appear to implement;
+the real `role` field governs editability, not routing. There is also no `[content]`
+block to add the mount "after" (see the linked correction on [[deploy-knowledge-instance]]
+for that schema's real shape). **Flagged, not silently rewritten** — the real mount
+model may route by a different, unverified mechanism (or may not yet support multi-source
+URL-prefixed serving at all); needs project-totebox or project-knowledge confirmation of
+how `[[mount]]` entries actually surface in routing before this guide's steps are
+corrected.
 
 ## Prerequisites
 
