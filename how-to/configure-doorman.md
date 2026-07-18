@@ -7,7 +7,7 @@ category: how-to
 content_type: how-to
 type: how-to
 status: active
-last_edited: 2026-06-14
+last_edited: 2026-07-18
 editor: pointsav-engineering
 paired_with: configure-doorman.es.md
 ---
@@ -15,6 +15,33 @@ paired_with: configure-doorman.es.md
 The Doorman gateway routes all inference and entity-lookup requests to the appropriate tier: Tier A (DataGraph), Tier B (local SLM), or Tier C (local fallback). Configuring Doorman means setting the upstream addresses for each tier, defining circuit-breaker thresholds, and verifying the health endpoint after startup. This guide covers a single-instance Doorman deployment.
 
 For the Doorman protocol and circuit-breaker model, see [[doorman-protocol]]. For starting the SLM model that Tier B depends on, see [[run-local-slm-inference]].
+
+**Major correction (2026-07-18):** this guide's tier mapping and configuration mechanism
+are inverted against the live source. Direct verification against
+`service-slm/docs/deploy/local-doorman.env.example` (which documents itself as generated
+against `slm-doorman-server::main.rs`) shows:
+
+- **Doorman is configured via environment variables (`SLM_*`), not a `doorman.toml` file
+  with `[tier_a]`/`[tier_b]`/`[tier_c]` sections.** The entire Step 1 configuration example
+  below describes a mechanism that does not exist in the live source.
+- **Tier A is the local small model**, not DataGraph — `SLM_LOCAL_ENDPOINT` (default
+  `http://127.0.0.1:8080`), `SLM_LOCAL_MODEL` (e.g. `Olmo-3-1125-7B-Think-Q4_K_M.gguf`).
+- **Tier B is Yo-Yo burst GCE compute**, not "local SLM" — `SLM_YOYO_ENDPOINT`,
+  `SLM_YOYO_MODEL` (e.g. `Olmo-3-1125-32B-Think`), optional and disabled by default
+  (community-tier mode when unset).
+- **Tier C is external vendor API providers** (Anthropic/Gemini/OpenAI), not "local
+  fallback" — `SLM_TIER_C_ANTHROPIC_*` etc., all commented out/unconfigured by default.
+- The Doorman bind address (`SLM_BIND_ADDR`, default `127.0.0.1:9080`) does match this
+  guide's port claim — that detail is not in dispute.
+- This matches the tier model already confirmed elsewhere in this wiki and via live
+  `get_doorman_status()` checks this session (`has_local`/`has_yoyo`/`has_external`,
+  `tier_b.{default,trainer,graph}` sub-labels for Yo-Yo nodes specifically).
+
+**Flagged, not silently rewritten below** — the Steps 1–5 walkthrough, TOML example, and
+`circuit_breaker_threshold`/`fallback_message` fields have not been individually verified
+against real env-var equivalents; a full rewrite needs the actual `slm-doorman-server`
+CLI/env-var reference, not just this correction note. Treat the JSON `/health` response
+shape and the F9 console step as unverified pending the same review.
 
 ## Prerequisites
 

@@ -7,7 +7,7 @@ category: how-to
 content_type: how-to
 type: how-to
 status: active
-last_edited: 2026-06-14
+last_edited: 2026-07-18
 editor: pointsav-engineering
 language: es
 language_protocol: TRANSLATE-ES
@@ -17,6 +17,35 @@ paired_with: configure-doorman.md
 El gateway Doorman enruta todas las solicitudes de inferencia y búsqueda de entidades al nivel apropiado: Nivel A (DataGraph), Nivel B (SLM local) o Nivel C (respaldo local). Configurar Doorman significa establecer las direcciones de nivel superior para cada nivel, definir los umbrales del interruptor de circuito y verificar el endpoint de salud después del inicio. Esta guía cubre un despliegue de Doorman en una sola instancia.
 
 Para el protocolo de Doorman y el modelo de interruptor de circuito, véase [[doorman-protocol]]. Para iniciar el modelo SLM del que depende el Nivel B, véase [[run-local-slm-inference]].
+
+**Corrección mayor (2026-07-18):** el mapeo de niveles y el mecanismo de configuración de
+esta guía están invertidos respecto a la fuente real. La verificación directa contra
+`service-slm/docs/deploy/local-doorman.env.example` (que se documenta a sí mismo como
+generado contra `slm-doorman-server::main.rs`) muestra:
+
+- **Doorman se configura mediante variables de entorno (`SLM_*`), no un archivo
+  `doorman.toml`** con secciones `[tier_a]`/`[tier_b]`/`[tier_c]`. Todo el ejemplo de
+  configuración del Paso 1 más abajo describe un mecanismo que no existe en la fuente real.
+- **El Nivel A es el modelo local pequeño**, no el DataGraph — `SLM_LOCAL_ENDPOINT`
+  (por defecto `http://127.0.0.1:8080`), `SLM_LOCAL_MODEL` (p. ej.
+  `Olmo-3-1125-7B-Think-Q4_K_M.gguf`).
+- **El Nivel B es el cómputo GCE Yo-Yo bajo demanda**, no "SLM local" — `SLM_YOYO_ENDPOINT`,
+  `SLM_YOYO_MODEL` (p. ej. `Olmo-3-1125-32B-Think`), opcional y deshabilitado por defecto
+  (modo comunitario cuando no está configurado).
+- **El Nivel C son proveedores de API externos** (Anthropic/Gemini/OpenAI), no "respaldo
+  local" — `SLM_TIER_C_ANTHROPIC_*`, etc., todos comentados/sin configurar por defecto.
+- La dirección de enlace de Doorman (`SLM_BIND_ADDR`, por defecto `127.0.0.1:9080`) sí
+  coincide con la afirmación de puerto de esta guía — ese detalle no está en disputa.
+- Esto coincide con el modelo de niveles ya confirmado en otras partes de este wiki y
+  mediante verificaciones directas de `get_doorman_status()` en esta sesión.
+
+**Señalado, no reescrito silenciosamente más abajo** — el recorrido de los Pasos 1–5, el
+ejemplo TOML y los campos `circuit_breaker_threshold`/`fallback_message` no se han
+verificado individualmente contra sus equivalentes reales en variables de entorno; una
+reescritura completa necesita la referencia real de CLI/variables de entorno de
+`slm-doorman-server`, no solo esta nota de corrección. Tratar la forma de la respuesta
+JSON de `/health` y el paso de la consola F9 como no verificados en espera de la misma
+revisión.
 
 ## Requisitos previos
 
