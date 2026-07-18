@@ -10,7 +10,7 @@ status: pre-build
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-25
+last_edited: 2026-07-18
 editor: pointsav-engineering
 paired_with: elastic-compute-lora-training-pipeline.es.md
 short_description: "Nightly two-phase pipeline on Elastic Compute #1 that rebuilds the deployment DataGraph and trains LoRA adapter weights for the workspace language model."
@@ -19,7 +19,20 @@ cites: []
 
 The [[pointsav-overview|PointSav]] [[compounding-substrate|compounding substrate]] requires periodic retraining to incorporate the operator interactions and editorial decisions accumulated since the previous cycle. Elastic Compute #1 is the compute node that runs this retraining nightly — a GPU-equipped cloud spot instance ([[yoyo-compute-substrate|Yo-Yo compute]]) that rebuilds the knowledge graph and produces updated LoRA (Low-Rank Adaptation) adapter weights for the platform's local language model. The pipeline operationalises the theoretical claim that every productive session improves the platform for the next one: it converts raw interaction data into model weights the next session inherits.
 
-Elastic Compute #1 is a g2-standard-4 Google Cloud spot instance equipped with a single NVIDIA L4 GPU (24 GB VRAM). Each night it runs a two-phase, four-hour pipeline that produces fine-tuned adapter weights for the workspace language model. Phase 1 extracts structured business entities from the operator data corpus and writes them to a property graph. Phase 2 reads accumulated engineering and apprenticeship training tuples, checks whether the corpus has crossed a minimum threshold, and runs a parameter-efficient training pass against the base model. The two phases are mandatory and sequential — they cannot overlap because both require exclusive access to the L4 GPU.
+**Correction (2026-07-18):** this article calls Elastic Compute #1 a "spot instance."
+A sibling article (`service-slm-yoyo-operational.md`) on the same Yo-Yo hardware states
+the opposite directly, with a stated rationale: "provisioned on-demand rather than as a
+spot instance — L4 spot capacity proved unreliable across multiple US zones during
+initial bootstrapping." Both articles describe identical hardware (g2-standard-4, single
+L4 GPU, 24 GB VRAM) and this article's own wikilink identifies Elastic Compute #1 as the
+same [[yoyo-compute-substrate|Yo-Yo compute]] concept — these read as the same physical
+instance, not two different ones. This looks like the same staleness pattern found
+elsewhere in this pass: an early design decision (spot) documented here, later revised
+(to on-demand) and reflected in the sibling article, with this one never updated.
+**Flagged, not silently resolved either way** — needs project-totebox confirmation of
+which is current before either wording is treated as authoritative.
+
+Elastic Compute #1 is a g2-standard-4 Google Cloud instance (provisioning model — spot vs. on-demand — flagged above, not asserted here) equipped with a single NVIDIA L4 GPU (24 GB VRAM). Each night it runs a two-phase, four-hour pipeline that produces fine-tuned adapter weights for the workspace language model. Phase 1 extracts structured business entities from the operator data corpus and writes them to a property graph. Phase 2 reads accumulated engineering and apprenticeship training tuples, checks whether the corpus has crossed a minimum threshold, and runs a parameter-efficient training pass against the base model. The two phases are mandatory and sequential — they cannot overlap because both require exclusive access to the L4 GPU.
 
 ## Why the phases are separate
 

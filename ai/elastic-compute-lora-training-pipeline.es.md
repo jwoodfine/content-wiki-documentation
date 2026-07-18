@@ -10,7 +10,7 @@ status: pre-build
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-25
+last_edited: 2026-07-18
 editor: pointsav-engineering
 paired_with: elastic-compute-lora-training-pipeline.md
 short_description: "Pipeline nocturno de dos fases en Elastic Compute #1 que reconstruye el DataGraph del despliegue y entrena pesos adaptadores LoRA para el modelo de lenguaje local."
@@ -19,7 +19,19 @@ cites: []
 
 El [[compounding-substrate|sustrato acumulativo]] de [[pointsav-overview|PointSav]] requiere reentrenamiento periódico para incorporar las interacciones del operador y las decisiones editoriales acumuladas desde el ciclo anterior. Elastic Compute #1 es el nodo de cómputo que ejecuta este reentrenamiento cada noche — una instancia spot en la nube con GPU ([[yoyo-compute-substrate|cómputo Yo-Yo]]) que reconstruye el grafo de conocimiento y produce pesos adaptadores LoRA (Adaptación de Bajo Rango, del inglés Low-Rank Adaptation) actualizados para el modelo de lenguaje local de la plataforma. El pipeline operacionaliza la afirmación estructural de que cada sesión productiva mejora la plataforma para la siguiente: convierte datos de interacción en bruto en pesos de modelo que hereda la próxima sesión.
 
-Elastic Compute #1 es una instancia spot g2-standard-4 de Google Cloud equipada con
+**Corrección (2026-07-18):** este artículo llama a Elastic Compute #1 una "instancia
+spot". Un artículo hermano (`service-slm-yoyo-operational.md`) sobre el mismo hardware
+Yo-Yo afirma lo contrario directamente, con una razón indicada: se aprovisiona bajo
+demanda en lugar de como instancia spot, porque la capacidad spot de L4 resultó poco
+fiable en múltiples zonas de EE. UU. Ambos artículos describen el mismo hardware exacto
+y este artículo enlaza a Elastic Compute #1 como el mismo concepto de
+[[yoyo-compute-substrate|cómputo Yo-Yo]] — parecen ser la misma instancia física, no dos
+distintas. Esto se lee como el mismo patrón de desactualización encontrado en otras
+partes de esta revisión. **Señalado, no resuelto silenciosamente en ningún sentido** —
+necesita confirmación de project-totebox antes de tratar cualquiera de las dos
+afirmaciones como autoritativa.
+
+Elastic Compute #1 es una instancia g2-standard-4 de Google Cloud (modelo de aprovisionamiento — spot vs. bajo demanda — señalado arriba, no afirmado aquí) equipada con
 una GPU NVIDIA L4 de 24 GB de VRAM. Cada noche ejecuta un pipeline de dos
 fases y cuatro horas de duración que produce pesos adaptadores ajustados para
 el modelo de lenguaje de la plataforma. La Fase 1 extrae entidades de
