@@ -4,18 +4,25 @@ type: topic
 content_type: topic
 slug: os-totebox-service-pd-model
 title: "How service-* Become seL4 Protection Domains on os-totebox"
-short_description: "How os-totebox maps Rust service binaries to seL4 Protection Domains: the seven-PD stack, capability confinement, startup ordering, and the two-bottom development path."
+short_description: "How os-totebox is designed to map Rust service binaries to seL4 Protection Domains: the planned seven-PD stack, capability confinement, startup ordering, and the two-bottom development path — Phase H1 roadmap work, not the binary running today."
 audience: vendor-public
-bcsc_class: current-fact
+bcsc_class: forward-looking
 language: en
 paired_with: os-totebox-service-pd-model.es.md
 category: systems
 status: active
 quality: complete
-last_edited: 2026-06-23
+last_edited: 2026-07-18
 ---
 
-[[os-totebox]] is the Sovereign WORM Data Vault tier of the [[topic-three-binary-architecture|three-binary architecture]]. It runs as a Type I bare-metal OS on top of the [[sel4-microkernel-substrate|seL4 microkernel]] — no shell, no root process, no init system, no package manager. Every service that handles durable data is a seL4 Protection Domain (PD): a hardware-enforced isolation unit whose capability set is fixed at build time and cannot be extended at runtime. This article explains what that means, why the design takes the shape it does, and how two planned tools — moonshot-sel4-vmm and [[moonshot-toolkit-build-orchestrator|moonshot-toolkit]] — turn ordinary Rust service binaries into a formally verified PD graph.
+**Correction (2026-07-18):** the `os-totebox` binary deployed today is a conventional
+Rust/tokio process (`service-content` + `service-slm`/Doorman running as one process) —
+not yet the seL4 bare-metal OS this article describes. Confirmed the rest of this article
+was already properly hedged throughout ("Phase H1, planned," "the planned production
+stack") — only this opening paragraph needed the same treatment, applied below.
+`bcsc_class` corrected to `forward-looking` to match the article's own actual content.
+
+[[os-totebox]] is designed to be the Sovereign WORM Data Vault tier of the [[topic-three-binary-architecture|three-binary architecture]], intended to run as a Type I bare-metal OS on top of the [[sel4-microkernel-substrate|seL4 microkernel]] — no shell, no root process, no init system, no package manager — once the Phase H1 seL4 image ships. In that end-state design, every service that handles durable data becomes a seL4 Protection Domain (PD): a hardware-enforced isolation unit whose capability set is fixed at build time and cannot be extended at runtime. This article explains what that design means, why it takes the shape it does, and how two planned tools — moonshot-sel4-vmm and [[moonshot-toolkit-build-orchestrator|moonshot-toolkit]] — are intended to turn ordinary Rust service binaries into a formally verified PD graph.
 
 ## The toolchain that makes it work
 

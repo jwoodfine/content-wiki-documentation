@@ -4,24 +4,38 @@ type: topic
 content_type: topic
 slug: os-totebox-sovereign-archive
 title: "os-totebox: La Bóveda Soberana de Datos WORM"
-short_description: "os-totebox es un sistema operativo de Tipo I sobre hardware físico construido sobre el micronúcleo seL4 formalmente verificado, que proporciona una bóveda de datos WORM cuya inmutabilidad de almacenamiento está impuesta por un grafo de capacidades compilado, no por política administrativa."
+short_description: "os-totebox está diseñado para convertirse en un sistema operativo de Tipo I sobre hardware físico, construido sobre el micronúcleo seL4 formalmente verificado — el estado final previsto, no el software que se ejecuta hoy."
 audience: vendor-public
-bcsc_class: current-fact
+bcsc_class: forward-looking
 language: es
 paired_with: os-totebox-sovereign-archive.md
 category: systems
 status: active
 quality: complete
-last_edited: 2026-06-23
+last_edited: 2026-07-18
 ---
 
-# os-totebox: La Bóveda Soberana de Datos WORM
+# os-totebox: La Bóveda Soberana de Datos WORM (Diseño Previsto)
+
+**Corrección (2026-07-18):** este artículo describe la arquitectura final prevista de
+os-totebox — la imagen seL4 Microkit sobre hardware físico está planificada para la Fase
+H1 de la hoja de ruta de la plataforma y aún no se ha distribuido. El binario `os-totebox`
+que se ejecuta hoy es un proceso convencional de Rust/tokio (`service-content` +
+`service-slm`/Doorman ejecutándose como un único proceso desplegable, según la propia
+descripción del crate) — no un sistema operativo seL4 sobre hardware físico. El diseño de
+grafo de capacidades y Dominios de Protección descrito a continuación es trabajo de
+ingeniería real y previsto, no una invención, pero es enteramente en tiempo futuro — cada
+afirmación en tiempo presente de este artículo debe leerse como "está diseñado para" o
+"se prevé que", no como una descripción del software tal como se distribuye hoy.
+`bcsc_class` corregido a `forward-looking` en consecuencia. **Nota**: el resto del cuerpo
+de este artículo en español aún no ha recibido el mismo ajuste de tiempo verbal sección
+por sección que la versión en inglés — pendiente, no silenciosamente omitido.
 
 Toda organización que depende de una plataforma de terceros para almacenar sus registros está asumiendo una apuesta implícita: que el proveedor de esa plataforma seguirá siendo solvente, accesible y libre de fallas de seguridad durante todo el tiempo que esos registros tengan relevancia. [[os-totebox]] está diseñado para los operadores que han decidido que esa apuesta es inaceptable.
 
-## Qué es os-totebox
+## Qué está diseñado para ser os-totebox
 
-os-totebox es un sistema operativo de Tipo I sobre hardware físico, lo que significa que se ejecuta directamente sobre el hardware sin ningún sistema operativo de propósito general por debajo. No existe una terminal Linux, ni un gestor de paquetes, ni un proceso raíz, ni un sistema de inicialización. El software que corre en el hardware de os-totebox es una imagen seL4 Microkit: un [[sel4-microkernel-substrate|micronúcleo]] formalmente verificado con un conjunto de servicios compilados de forma estática y sin ninguna vía de modificación en tiempo de ejecución.
+El estado final previsto de os-totebox es un sistema operativo de Tipo I sobre hardware físico, lo que significa que se ejecutaría directamente sobre el hardware sin ningún sistema operativo de propósito general por debajo, sin terminal Linux, sin gestor de paquetes, sin proceso raíz y sin sistema de inicialización. El software previsto para ese hardware es una imagen seL4 Microkit: un [[sel4-microkernel-substrate|micronúcleo]] formalmente verificado con un conjunto de servicios compilados de forma estática y sin ninguna vía de modificación en tiempo de ejecución.
 
 La característica definitoria de la plataforma es su modelo de almacenamiento. os-totebox opera como una [[worm-ledger-architecture|bóveda WORM]] — escritura única, lectura múltiple (Write Once, Read Many). Los registros escritos en el sistema no pueden ser alterados ni eliminados a través de ninguna vía de software. Esto no es una política aplicada por una lista de control de acceso ni por un indicador de permiso que un administrador pudiera anular; es una propiedad del grafo de capacidades que rige cada servicio de la máquina.
 

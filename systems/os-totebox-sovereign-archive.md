@@ -4,44 +4,54 @@ type: topic
 content_type: topic
 slug: os-totebox-sovereign-archive
 title: "os-totebox: the sovereign WORM data vault"
-short_description: "os-totebox is a Type I bare-metal OS built on a formally verified seL4 microkernel, providing a WORM data vault enforced by a compiled capability graph, not policy."
+short_description: "os-totebox is designed to become a Type I bare-metal OS built on a formally verified seL4 microkernel, with a WORM data vault enforced by a compiled capability graph — the intended end state, not the software running today."
 audience: vendor-public
-bcsc_class: current-fact
+bcsc_class: forward-looking
 language: en
 paired_with: os-totebox-sovereign-archive.es.md
 category: systems
 status: active
 quality: complete
-last_edited: 2026-07-11
+last_edited: 2026-07-18
 ---
 
-# os-totebox: The Sovereign WORM Data Vault
+# os-totebox: The Sovereign WORM Data Vault (Intended Design)
+
+**Correction (2026-07-18):** this article describes os-totebox's intended end-state
+architecture — the seL4 Microkit bare-metal image is planned for Phase H1 of the
+platform roadmap and has not shipped. The `os-totebox` binary running today is a
+conventional Rust/tokio process (`service-content` + `service-slm`/Doorman run as one
+deployable process, per the crate's own description) — not a seL4 bare-metal OS. The
+capability-graph/Protection-Domain design below is real, intended engineering work, not
+fabrication, but it is future-tense throughout — read every present-tense claim in this
+article as "designed to" or "intended to," not as a description of the software as
+deployed today. `bcsc_class` corrected to `forward-looking` to match.
 
 Every organisation that relies on a third-party platform to store its records is making an implicit wager: that the platform provider will remain solvent, accessible, and free of security failures for as long as those records matter. [[os-totebox]] is designed for operators who have decided that wager is unacceptable.
 
-## What os-totebox Is
+## What os-totebox Is Designed To Be
 
-os-totebox is a Type I bare-metal operating system — meaning it runs directly on physical hardware with no general-purpose operating system underneath it. There is no Linux shell, no package manager, no root process, and no init system. The software that runs on os-totebox hardware is a seL4 Microkit image: a formally verified [[sel4-microkernel-substrate|microkernel]] with a statically compiled set of services and no runtime modification path.
+os-totebox's intended end state is a Type I bare-metal operating system — meaning it would run directly on physical hardware with no general-purpose operating system underneath it, with no Linux shell, no package manager, no root process, and no init system. The planned software for that hardware is a seL4 Microkit image: a formally verified [[sel4-microkernel-substrate|microkernel]] with a statically compiled set of services and no runtime modification path.
 
-The defining characteristic of the platform is its storage model. os-totebox operates as a [[worm-ledger-architecture|WORM vault]] — Write Once, Read Many. Records written to the system cannot be altered or deleted through any software pathway. This is not a policy enforced by an access-control list or a permission flag that an administrator could override; it is a property of the capability graph that governs every service on the machine.
+The defining characteristic of the design is its storage model. os-totebox is designed to operate as a [[worm-ledger-architecture|WORM vault]] — Write Once, Read Many — where records written to the system cannot be altered or deleted through any software pathway. The intent is for this to be a property of the capability graph that governs every service on the machine, not a policy enforced by an access-control list or a permission flag an administrator could override.
 
-## Capability Geometry on Server Hardware
+## Capability Geometry on Server Hardware (Planned)
 
-seL4 is a microkernel developed and formally verified by CSIRO's Data61. The verification proves, mathematically, that the kernel's access-control model is enforced without exception. On os-totebox, this property extends to the inter-service architecture.
+seL4 is a microkernel developed and formally verified by CSIRO's Data61. The verification proves, mathematically, that the kernel's access-control model is enforced without exception. The design intent is for os-totebox to extend this property to its inter-service architecture once the seL4 image ships.
 
-Each service on os-totebox runs inside a seL4 Protection Domain — an isolated execution environment that holds only the capabilities the system design explicitly grants it. The capability DAG (directed acyclic graph) that defines these grants has been formally proved. There is no path in the graph from a service that processes external input to the service that holds the storage capability.
+The plan is for each service on os-totebox to run inside its own seL4 Protection Domain — an isolated execution environment holding only the capabilities the system design explicitly grants it — with a capability DAG (directed acyclic graph) formally proved to contain no path from a service that processes external input to the service that holds the storage capability.
 
-This matters in a concrete failure scenario. If [[service-slm]] — the component that handles language model inference, and therefore the component most directly exposed to adversarial inputs — were to be fully compromised, the compromised code would find itself bounded by its Protection Domain. It holds no capability to reach service-fs. It cannot read the WORM block device. It cannot write to it. The attacker's foothold is geometrically isolated from the data store. This is the property the platform calls [[capability-geometry|Capability Geometry]].
+The concrete failure scenario this is designed to defend against: if [[service-slm]] — the component that handles language model inference, and therefore the component most directly exposed to adversarial inputs — were to be fully compromised in the end-state design, the compromised code would be bounded by its Protection Domain, with no capability to reach service-fs, read the WORM block device, or write to it. The attacker's foothold would be geometrically isolated from the data store. This is the property the platform calls [[capability-geometry|Capability Geometry]] — today it describes the target architecture, not the deployed one.
 
-## The Ring Architecture
+## The Ring Architecture (Planned)
 
-os-totebox organises its services into two [[three-ring-architecture|concentric rings]] based on their proximity to storage.
+os-totebox is designed to organise its services into two [[three-ring-architecture|concentric rings]] based on their proximity to storage, once the seL4 image lands.
 
-**Ring 1** comprises the services that interact directly with durable data and external I/O: [[service-fs-architecture|service-fs]], service-input, service-extraction, and service-egress. service-fs holds the WORM block device capability exclusively — it is the only Protection Domain on the machine that can perform storage operations. No other service can reach the block device directly, regardless of its execution state.
+**Ring 1** is planned to comprise the services that interact directly with durable data and external I/O: [[service-fs-architecture|service-fs]], service-input, service-extraction, and service-egress, with service-fs holding the WORM block device capability exclusively — the only Protection Domain on the machine able to perform storage operations, with no other service able to reach the block device directly regardless of execution state.
 
-**Ring 2** comprises the services that process, classify, and reason about data: service-content, service-people, service-email, and service-slm. These services communicate with Ring 1 through a defined and bounded inter-domain communication protocol. They can request that service-fs write a record; they cannot hold the capability to do so themselves.
+**Ring 2** is planned to comprise the services that process, classify, and reason about data: service-content, service-people, service-email, and service-slm, communicating with Ring 1 through a defined and bounded inter-domain communication protocol — able to request that service-fs write a record, without holding the capability to do so themselves.
 
-This separation is not an architectural preference that future developers might relax. The capability graph is compiled into the seL4 image at build time. Modifying the capability structure requires rebuilding and re-deploying the image — a step that produces a new, auditable artifact rather than a silent runtime change.
+The intent is for this separation to not be an architectural preference future developers could relax: the capability graph would be compiled into the seL4 image at build time, so modifying the capability structure would require rebuilding and re-deploying the image — a step producing a new, auditable artifact rather than a silent runtime change.
 
 ## The Sovereign Data Archive
 
@@ -51,18 +61,18 @@ This has practical implications beyond security. An organisation whose records e
 
 For sectors where records carry legal weight — corporate minute books, real property files, financial ledgers, regulated correspondence — the immutability of a WORM vault is not merely a technical feature. It is the evidence that a record existed in a given state at a given time and has not been altered since.
 
-## Operational Surface for Small and Mid-Size Organisations
+## Operational Surface for Small and Mid-Size Organisations (Design Goal)
 
 Enterprise-grade formal verification and hardware-rooted immutability have historically required dedicated security infrastructure teams to deploy and operate. os-totebox is designed to deliver those properties on commodity hardware with an operational surface that does not assume a specialist security organisation.
 
-The absence of a shell is not an inconvenience — it is a feature. A system with no shell has no interactive attack surface. A system with no root process has no privilege escalation path. A system with no package manager cannot be updated in ways that introduce unaudited code. The seL4 image that runs on the hardware is the complete and auditable software inventory of the machine.
+In the end-state design, the absence of a shell is treated as a feature, not an inconvenience: a system with no shell has no interactive attack surface, a system with no root process has no privilege escalation path, and a system with no package manager cannot be updated in ways that introduce unaudited code. The intent is for the seL4 image running on the hardware to be the complete and auditable software inventory of the machine — once that image ships.
 
-An organisation deploying os-totebox is not relying on an administrator's diligence to enforce data protection policies. It is relying on a formally proved capability graph. The distinction is the difference between a policy and a proof.
+The design goal is for an organisation deploying os-totebox to rely on a formally proved capability graph rather than an administrator's diligence to enforce data protection policies — the distinction between a policy and a proof. Today's deployed binary (a Rust/tokio process, not yet a seL4 image) does not yet carry this proof; the goal is stated here as the target, not the current guarantee.
 
 ## Relationship to the Broader Platform
 
-os-totebox is one of three purpose-specific bare-metal operating systems in the platform architecture. It operates alongside os-console, which provides the keyboard-native operator interface, and [[os-orchestration]], which manages the [[totebox-archive|Totebox Archive]] execution environment. The three systems share no kernel code paths and communicate only through defined network channels.
+os-totebox is designed as one of three purpose-specific operating systems in the platform architecture, alongside os-console (the keyboard-native operator interface) and [[os-orchestration]] (which manages the [[totebox-archive|Totebox Archive]] execution environment) — with the intent that, once all three reach their planned bare-metal/seL4 end states, they share no kernel code paths and communicate only through defined network channels. Today, os-console and os-totebox both run as conventional application processes, not bare-metal seL4 images.
 
-The intended deployment pattern is operator-owned hardware with a single physical network interface. The WORM vault is not a service accessible from the public internet; it is a node in a private network segment whose ingress paths are controlled by the same capability discipline that governs its storage.
+The intended deployment pattern is operator-owned hardware with a single physical network interface, with the WORM vault as a node in a private network segment rather than a service accessible from the public internet, once that deployment model ships.
 
-The seL4 Microkit image for os-totebox is planned for Phase H1 of the platform roadmap. The capability DAG and ring architecture described here represent the intended design; implementation status is tracked in the platform's engineering registry.
+**The seL4 Microkit image for os-totebox is planned for Phase H1 of the platform roadmap and has not shipped as of this writing.** Everything above describes the intended design; implementation status is tracked in the platform's engineering registry — see `os-totebox`'s own crate description for the currently-deployed reality (service-content + service-slm running as one conventional process).

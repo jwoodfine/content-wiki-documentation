@@ -4,18 +4,25 @@ type: topic
 content_type: topic
 slug: os-totebox-service-pd-model
 title: "Cómo los servicios service-* se convierten en dominios de protección seL4 en os-totebox"
-short_description: "Explica cómo os-totebox asigna binarios de servicio Rust a dominios de protección seL4, cubriendo la pila de siete PDs, el modelo de confinamiento de capacidades, el orden de arranque y la vía de desarrollo de doble fondo."
+short_description: "Explica cómo os-totebox está diseñado para asignar binarios de servicio Rust a dominios de protección seL4 — la pila planificada de siete PDs, trabajo de la Fase H1 de la hoja de ruta, no el binario que se ejecuta hoy."
 audience: vendor-public
-bcsc_class: current-fact
+bcsc_class: forward-looking
 language: es
 paired_with: os-totebox-service-pd-model.md
 category: systems
 status: active
 quality: complete
-last_edited: 2026-06-23
+last_edited: 2026-07-18
 ---
 
-[[os-totebox]] es el nivel de Bóveda de Datos WORM Soberana en la [[topic-three-binary-architecture|arquitectura de tres binarios]]. Se ejecuta como un sistema operativo de metal desnudo Tipo I sobre el [[sel4-microkernel-substrate|micronúcleo seL4]] — sin shell, sin proceso root, sin sistema init, sin gestor de paquetes. Cada servicio que maneja datos duraderos es un Dominio de Protección (PD) seL4: una unidad de aislamiento reforzada por hardware cuyo conjunto de capacidades queda fijo en el momento de la compilación y no puede ampliarse en tiempo de ejecución. Este artículo explica qué significa eso, por qué el diseño toma la forma que tiene y cómo dos herramientas planificadas — moonshot-sel4-vmm y [[moonshot-toolkit-build-orchestrator|moonshot-toolkit]] — convierten binarios de servicio Rust convencionales en un grafo de PD formalmente verificado.
+**Corrección (2026-07-18):** el binario `os-totebox` distribuido hoy es un proceso
+convencional de Rust/tokio (`service-content` + `service-slm`/Doorman ejecutándose como
+un único proceso) — todavía no el sistema operativo seL4 sobre hardware físico que
+describe este artículo. El resto del artículo ya estaba correctamente matizado
+("Fase H1, planificado") — solo este párrafo inicial necesitaba el mismo tratamiento.
+`bcsc_class` corregido a `forward-looking`.
+
+[[os-totebox]] está diseñado para ser el nivel de Bóveda de Datos WORM Soberana en la [[topic-three-binary-architecture|arquitectura de tres binarios]], con la intención de ejecutarse como un sistema operativo de metal desnudo Tipo I sobre el [[sel4-microkernel-substrate|micronúcleo seL4]] — sin shell, sin proceso root, sin sistema init, sin gestor de paquetes — una vez que se distribuya la imagen seL4 de la Fase H1. En ese diseño de estado final, cada servicio que maneja datos duraderos se convertiría en un Dominio de Protección (PD) seL4: una unidad de aislamiento reforzada por hardware cuyo conjunto de capacidades queda fijo en el momento de la compilación y no puede ampliarse en tiempo de ejecución. Este artículo explica qué significa ese diseño, por qué toma la forma que tiene y cómo dos herramientas planificadas — moonshot-sel4-vmm y [[moonshot-toolkit-build-orchestrator|moonshot-toolkit]] — están pensadas para convertir binarios de servicio Rust convencionales en un grafo de PD formalmente verificado.
 
 ## La cadena de herramientas que lo hace posible
 

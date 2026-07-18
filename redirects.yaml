@@ -12,6 +12,15 @@ redirects:
   - from: /research/preprint-notice-convention
     to: /reference/preprint-notice-convention
 
+  # os-totebox.md stub retired 2026-07-18 — redundant with totebox-os.md, which already
+  # claims `os-totebox` as an alias and is the complete, correctly-hedged canonical
+  # article. 12 real inbound [[os-totebox]] wikilinks were resolving to the 4-sentence
+  # stub instead of the complete article before this fix; retiring the stub file lets
+  # the alias resolve correctly. Path redirect kept in case any external link hit the
+  # stub's URL directly.
+  - from: /systems/os-totebox
+    to: /systems/totebox-os
+
   # Batch 1 — Foundation token docs → pointsav-design-system/docs/foundations/
   - from: /design-system/design-color
     to: https://design.pointsav.com/foundations/design-color
