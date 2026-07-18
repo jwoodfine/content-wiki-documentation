@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-22
+last_edited: 2026-07-18
 editor: pointsav-engineering
 paired_with: service-slm.es.md
 short_description: "service-slm is the language-model service of the PointSav family, translating institutional intent into deterministic outputs via the Doorman audit boundary."
@@ -40,6 +40,24 @@ The service is invisible — there is no chat window, and the operator never typ
 | Operation | Inputs | Output |
 |---|---|---|
 | Semantic command parsing | English intent from the F8 Terminal | Binary UDP command for `service-udp` |
+
+**Correction (2026-07-18):** this row does not match the live `app-network-admin`
+source (the real F8 Terminal Gateway binary; `app-network-admin/README.md`). Three
+specific mismatches: (1) **there is no `service-udp` service** — UDP mesh broadcast is
+sent directly by `app-network-admin` itself on port 8090 to three fixed peer addresses,
+not routed to a separate destination service; (2) the command format is currently
+**JSON strings, not binary** — the README states "the intended protocol is a 16-byte
+binary packet format," meaning binary is the target, not the current reality; (3) most
+significantly, the README's own "Known gaps" section admits `handle_translation`
+currently shells out to a hardcoded binary path
+(`/opt/pointsav/f8-gateway/system-slm`) rather than routing through `service-slm`'s
+Doorman HTTP API — "the intended architecture routes through the `service-slm` Doorman
+HTTP API instead. This is tracked as a pending alignment item." That directly qualifies
+this article's own claim two sections below that "all three tiers transit the Doorman
+audit boundary. No tier bypasses it" — for this specific operation, as currently
+implemented, it does. **Flagged, not silently rewritten** — needs project-totebox
+confirmation of current status before this row and the "no tier bypasses it" claim are
+corrected.
 | Gravity verification | 50-word Gravity Vector from [[service-content]] | `VALID` or `REJECT` single token |
 | Socket assignment | Entity bundle from [[service-extraction]] + [[archetypes-and-chart-of-accounts|Chart of Accounts]] | Sovereign-ID with Chart-of-Accounts socket |
 | Theme suggestion | Recurring patterns the Gravity Engine flags | Proposed new entries to the Themes Seed Vault, for operator approval |

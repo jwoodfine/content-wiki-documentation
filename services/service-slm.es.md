@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-22
+last_edited: 2026-07-18
 editor: pointsav-engineering
 paired_with: service-slm.md
 short_description: "service-slm es el servicio de modelo de lenguaje de la familia PointSav — un Modelo de Lenguaje Pequeño cuantizado y estrecho que traduce la intención institucional en salidas deterministas y enruta cada llamada de inferencia de IA a través del límite de auditoría del Portero."
@@ -40,6 +40,27 @@ El servicio es invisible — no hay ventana de chat, y el operador nunca escribe
 | Operación | Entradas | Salida |
 |---|---|---|
 | Análisis de comandos semánticos | Intención en inglés desde el Terminal F8 | Comando UDP binario para `service-udp` |
+
+**Corrección (2026-07-18):** esta fila no coincide con la fuente real de
+`app-network-admin` (el binario real del F8 Terminal Gateway;
+`app-network-admin/README.md`). Tres discrepancias específicas: (1) **no existe ningún
+servicio `service-udp`** — la difusión de malla UDP la envía directamente
+`app-network-admin` en el puerto 8090 a tres direcciones fijas de pares, no se enruta a
+un servicio de destino separado; (2) el formato del comando actualmente es **cadenas
+JSON, no binario** — el README afirma "the intended protocol is a 16-byte binary packet
+format," es decir, el binario es el objetivo, no la realidad actual; (3) lo más
+significativo: la propia sección "Known gaps" del README admite que `handle_translation`
+actualmente ejecuta una ruta de binario codificada de forma fija
+(`/opt/pointsav/f8-gateway/system-slm`) en lugar de enrutar a través de la API HTTP de
+Doorman de `service-slm` — "the intended architecture routes through the `service-slm`
+Doorman HTTP API instead. This is tracked as a pending alignment item." Eso califica
+directamente la propia afirmación de este artículo dos secciones más abajo de que "los
+tres niveles transitan la frontera de auditoría de Doorman. Ningún nivel la evita" — para
+esta operación específica, tal como está implementada actualmente, sí la evita.
+**Señalado, no reescrito silenciosamente** — necesita confirmación de project-totebox
+sobre el estado actual antes de corregir esta fila y la afirmación de "ningún nivel la
+evita".
+
 | Verificación de gravedad | Vector de Gravedad de 50 palabras de [[service-content]] | Token único `VALID` o `REJECT` |
 | Asignación de enchufe | Paquete de entidades de [[service-extraction]] + [[archetypes-and-chart-of-accounts|Plan de Cuentas]] | Sovereign-ID con enchufe del Plan de Cuentas |
 | Sugerencia de temas | Patrones recurrentes que señala el Motor de Gravedad | Entradas propuestas a la Bóveda de Semillas de Temas, para aprobación del operador |
