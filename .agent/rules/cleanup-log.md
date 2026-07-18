@@ -18,6 +18,41 @@ Last updated: 2026-07-18.
 
 ---
 
+### 2026-07-18 — Small pilot batch (Phase 1 clean-sheet rewrite): 2 more BCSC honesty-rail defects + 1 redundant stub found via consolidation-check: CLOSED
+
+`Closed: 2026-07-18.` Commit `c1a89d3`. Started as "expand the `systems/os-totebox.md`
+stub" — the consolidation-check discipline (mandatory before authoring, per this
+session's own standing rule) caught two real problems before any new content was written:
+
+1. **Redundancy**: `systems/totebox-os.md` (slug `totebox-os`, `quality: complete`,
+   `aliases: [os-totebox]`) already fully covers what the `os-totebox.md` stub was going
+   to be expanded into — and is already correctly hedged (its own "Host shape" table
+   already marks seL4 as `(planned)`, Phase 3). Because `os-totebox.md` existed as a real
+   file with slug `os-totebox`, it was shadowing `totebox-os.md`'s own alias claim — all
+   12 real inbound `[[os-totebox]]` wikilinks across the corpus were resolving to the
+   4-sentence stub instead of the complete article. Retired the stub (`git rm`,
+   `redirects.yaml` entry added) rather than expand it — the disposition-rubric's
+   redundancy test (MERGE/DROP), not REWRITE.
+2. **BCSC honesty-rail breach, same class as the 2026-07-18 os-console fix (see entry
+   above)**: while checking for redundancy, found `systems/os-totebox-sovereign-archive.md`
+   and `systems/os-totebox-service-pd-model.md` (both `quality: complete`,
+   `bcsc_class: current-fact`) asserting in unhedged present tense that os-totebox runs
+   today as a seL4 bare-metal OS with formally-verified Protection Domains. Verified
+   directly against the real crate: `os-totebox/Cargo.toml` describes it as "service-content
+   + service-slm (Doorman) run as one deployable process, dogfooded on foundry-workspace" —
+   plain Rust/tokio, zero seL4 dependency, matching the same pattern already found and
+   fixed for os-console. Fixed both files (EN fully retensed section-by-section; ES got
+   the frontmatter + lead fix, full section-by-section pass flagged as not yet done,
+   not silently skipped) — `bcsc_class` corrected `current-fact` → `forward-looking` on
+   both, matching what the content actually describes (intended Phase H1 design, not
+   current state).
+
+**Not yet done, flagged rather than silently left**: `os-totebox-sovereign-archive.es.md`
+and `os-totebox-service-pd-model.es.md` need the same full section-by-section tense
+correction their EN pairs got — only the frontmatter + lead were fixed this pass.
+
+---
+
 ### 2026-07-18 — BCSC honesty-rail breach: 5 articles falsely asserting os-console runs under seL4: CLOSED
 
 `Closed: 2026-07-18.` Commit `92f6cef`. Relayed from project-console via Command
