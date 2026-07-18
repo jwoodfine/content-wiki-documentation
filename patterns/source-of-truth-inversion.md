@@ -8,7 +8,7 @@ category: patterns
 type: topic
 content_type: topic
 quality: complete
-last_edited: 2026-05-14
+last_edited: 2026-07-18
 editor: pointsav-engineering
 audience: vendor-public
 bcsc_class: no-disclosure-implication
@@ -38,6 +38,16 @@ This case grounds the pattern with a live deployment: `https://documentation.poi
 `service-extraction` is the Ring 2 service that runs the multi-author document review pipeline. The source-of-truth mapping:
 
 **Canonical**: the extraction event log committed to the WORM immutable ledger managed by `service-fs` (live on the workspace VM since v0.1.23, binding `127.0.0.1:9100`, ledger root at `/var/lib/local-fs/ledger/`). An extraction event is durably sequenced the moment it is appended to the ledger; the ledger enforces total order over all events. Ledger entries are not modifiable after the fact — that is what WORM (Write Once Read Many) means structurally, not just operationally. The WORM ledger as canonical storage follows the substrate's general preference for append-only signed records: instead of a mutable relational database as the authority for review state, the substrate is an append-only signed log.
+
+**Correction (2026-07-18):** the port checks out (9100), but the bind address and ledger
+root path do not match the live systemd unit
+(`infrastructure/systemd/mediakit/local-fs.service`, verified in the
+[[worm-ledger-architecture]] correction). The real unit sets `FS_BIND_ADDR=0.0.0.0:9100`
+(not `127.0.0.1:9100`) and `FS_LEDGER_ROOT=/opt/mediakit/data/service-fs/ledger` (not
+`/var/lib/local-fs/ledger/`). The `v0.1.23` version claim was not independently
+re-verified. **Flagged, not silently rewritten** — the bind-address and path details may
+simply be stale relative to a later deployment change; needs project-totebox confirmation
+before correcting.
 
 **View**: the review queue shown to each reviewer is derived from the set of ledger entries that have not yet received a verdict commit. The per-reviewer verdict summary is derived similarly. Neither the queue nor the summary is stored separately — both re-derive on each query from the ledger. The derivation is deterministic: the same ledger produces the same queue and summary every time it is queried, because the ledger is immutable and total-ordered.
 
