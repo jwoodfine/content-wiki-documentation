@@ -8,7 +8,7 @@ type: topic
 content_type: topic
 status: stable
 bcsc_class: no-disclosure-implication
-last_edited: 2026-06-11
+last_edited: 2026-07-18
 editor: pointsav-engineering
 paired_with: spot-vm-lifecycle-kill-switch.md
 ---
@@ -20,6 +20,42 @@ dejando la VM en ejecución entre ciclos con el costo completo y sin ninguna rut
 automatizada para detenerla. Este documento describe la arquitectura de controlador único
 utilizada para el [[yoyo-compute-substrate|nodo de lotes Yo-Yo]] y el interruptor de emergencia basado en archivo
 centinela que proporciona control inmediato al operador.
+
+**Corrección (2026-07-18):** varios nombres específicos de este artículo no coinciden con
+la fuente real de `service-slm`, aunque el mecanismo del interruptor de emergencia en sí
+se verifica correctamente. Hechos verificados:
+
+- **El script orquestador es `nightly-run.sh`** (`service-slm/scripts/nightly-run.sh`, con
+  las banderas `--no-yoyo` y `--test-mode`), disparado por un `nightly-run.timer` real
+  (`OnCalendar=*-*-* 00:00:00 UTC`) — no `yoyo-daily-cycle.sh` / `local-yoyo-daily.timer`
+  como los nombra este artículo. Un dato que corrobora la desactualización: un comentario
+  de documentación en Rust en `slm-doorman-server/src/idle_monitor.rs` todavía dice "see
+  `yoyo-daily-cycle.sh`" — ese nombre es real, solo que aparentemente fue reemplazado por
+  una renombración a `nightly-run.sh` que ni este artículo del wiki ni ese comentario en
+  Rust han seguido.
+- **El interruptor de emergencia en sí es correcto tal como se describe** —
+  `/srv/foundry/data/yoyo-disabled`, verificado por `corpus-threshold.py` antes de
+  cualquier llamada a `gcloud instances start`, coincide estrechamente con la fuente real
+  (el texto del mensaje difiere ligeramente pero el mecanismo es idéntico).
+- **El monitor de inactividad no es un temporizador systemd.** Es una tarea tokio en
+  segundo plano dentro del proceso de `slm-doorman-server` (`idle_monitor.rs`), no una
+  unidad llamada `yoyo-idle-monitor.timer` que se dispara externamente cada 5 minutos. Su
+  intervalo de sondeo (5 min) y su umbral de inactividad (30 min por defecto) sí coinciden
+  con los números de este artículo. Otra diferencia de comportamiento: emite un
+  `instances.delete` de GCP (no un `instances.stop`) — el disco de arranque sobrevive
+  porque la eliminación automática está deshabilitada en él, coincidiendo con un patrón
+  nocturno de eliminar+crear, no de detener/arrancar.
+- **Discrepancia abierta, no resuelta silenciosamente en ningún sentido**: un archivo
+  `training-trigger.timer` separado (`service-slm/docs/deploy/training-trigger.timer`,
+  "Phase 3 corpus threshold check," domingo 02:00 UTC) todavía existe en el repositorio
+  con instrucciones de instalación activas orientadas al operador ("`sudo systemctl
+  enable --now training-trigger.timer`") — esto se lee como un temporizador actualmente
+  recomendado, en tensión con la afirmación de este artículo de que el temporizador de
+  umbral de corpus "fue enmascarado." Esto puede ser un documento obsoleto para una unidad
+  ya deshabilitada, o puede significar que la corrección de controlador único descrita
+  aquí no es (o ya no es) la realidad desplegada. Necesita confirmación de
+  project-totebox antes de corregir la afirmación central de este artículo en cualquier
+  sentido.
 
 ## El problema de los dos temporizadores
 
