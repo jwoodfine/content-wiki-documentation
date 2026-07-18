@@ -9,7 +9,7 @@ quality: complete
 short_description: "Customer hostability is the architectural commitment that every artefact runs on the customer's own hardware and keys, making self-hosted deployment the canonical pattern."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-07-18
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -55,6 +55,19 @@ Three already in production:
 - `infrastructure/local-slm/` — local OLMo-3 inference
 - `infrastructure/local-doorman/` — Tier-A routing on the workspace VM
 - `infrastructure/local-knowledge/` — wiki-engine bootstrap
+
+**Correction (2026-07-18):** none of these three directory paths exist in the live
+monorepo as named. Direct verification of `pointsav-monorepo/infrastructure/` finds
+`local-orchestration-command/`, `local-vm-mediakit/`, and a `systemd/` directory holding
+`local-orchestration-slm.service` and three separate `local-knowledge-{projects,
+corporate,documentation}.service` units — a different naming shape (per-property
+systemd units, not per-service bootstrap directories) than the single `local-knowledge/`
+this article describes. No `bootstrap.es.sh` or `MANIFEST.md` was found anywhere under
+`infrastructure/` for any service, contrary to the "Bootstrap pattern" table above.
+**Flagged, not silently rewritten** — this may reflect a real restructuring since this
+article was last verified, or the three-directory pattern described may never have
+shipped as designed; needs project-totebox confirmation before the specific paths and
+the MANIFEST.md/bootstrap.es.sh claims are corrected.
 
 Each was built to the same shape so a platform-shaped customer substrate is predictable: the customer reads one bootstrap runbook and applies it across services.
 
