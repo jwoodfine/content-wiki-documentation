@@ -9,7 +9,7 @@ quality: complete
 short_description: "The planned vendor-tier specialist AI model for substrate-sovereign SMBs — Tier 3 of the Four-Tier SLM Substrate Ladder, built by continued pretraining of OLMo 3 32B."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-07-18
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -49,6 +49,17 @@ The planned access path routes entirely through each customer's local [[doorman-
 
 1. Customer application sends a query to the local [[doorman-protocol|Doorman]] (127.0.0.1:9080 by default).
 2. Doorman classifies query complexity using the current Tier A local model (OLMo 3 7B Q4).
+
+**Correction (2026-07-18):** the exact Tier A model name is inconsistent across this
+wiki's own sibling articles and across the engineering source itself. This article says
+"OLMo 3 7B Q4" (here and in the Four-Tier table below); [[learning-datagraph-architecture]]
+says "the local SLM (OLMo-2 7B Q4)" for the same Tier A role, matching one internal
+engineering doc (`service-slm/NEXT.md`: "OLMo-2-7B Q4_K_M; Tier A primary"); a third
+internal doc describes Tier A as "OLMo 2 1B." These do not read as three names for one
+model — they look like an unresolved version-drift in the underlying engineering docs
+themselves, not just a wiki staleness issue. **Flagged, not resolved** — needs
+project-totebox confirmation of the actual current Tier A model before either name is
+corrected here.
 3. For queries classified as simple or routine, the Doorman routes to Tier A and returns a local response — no external call.
 4. For queries classified as requiring specialist depth (domain-specific platform conventions, [[totebox-archive|Totebox Archive]] operations, multi-tenant editorial structure), the Doorman is intended to route to the PointSav-LLM Tier C endpoint, authenticating via the customer's provisioned API key.
 5. The response returns through the Doorman. An audit row is written simultaneously at the customer's local Doorman and at the PointSav-LLM gateway — two-ledger, per-call audit trail.
@@ -133,7 +144,7 @@ PointSav-LLM occupies Tier 3 of the planned Four-Tier SLM Substrate Ladder. The 
 | Tier | Name | Base | Status |
 |------|------|------|--------|
 | 0 | Deterministic core | Rules, regex, structured lookup | Operational |
-| A | Local small model | OLMo 3 7B Q4 (CPU) | Operational (Yo-Yo substrate) |
+| A | Local small model | OLMo 3 7B Q4 (CPU) | Operational (local llama-server) |
 | B | Burst compute | OLMo 3.1 32B Think (GPU via Yo-Yo) | Operational |
 | C | Vendor specialist | PointSav-LLM (planned CPT of OLMo 3 32B) | Planned — Q1 2027 |
 

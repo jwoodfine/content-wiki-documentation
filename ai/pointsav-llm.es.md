@@ -9,7 +9,7 @@ quality: complete
 short_description: "El modelo de IA especialista planificado para el Nivel 3 del sistema de cuatro niveles SLM de PointSav, construido mediante entrenamiento continuo de OLMo 3 32B sobre el corpus federado de aprendizaje de la plataforma."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-07-18
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -40,6 +40,17 @@ PointSav-LLM no está planificado para competir con modelos de frontera de ampli
 El acceso de los clientes está previsto que se realice íntegramente a través del [[doorman-protocol|Doorman]] local de cada cliente. No se realizan llamadas directas al endpoint de PointSav-LLM desde el código de la aplicación del cliente.
 
 La secuencia planificada es la siguiente: el Doorman recibe la consulta, clasifica su complejidad mediante el modelo local del Nivel A (OLMo 3 7B Q4), y enruta hacia el Nivel A para consultas sencillas o hacia el endpoint de PointSav-LLM para consultas que requieran profundidad especialista. La respuesta retorna a través del Doorman, se escribe una fila de auditoría tanto en el Doorman del cliente como en la pasarela de PointSav-LLM, y la facturación por token se computa en la pasarela. El código de la aplicación del cliente no cambia entre el enrutamiento local del Nivel A y el enrutamiento al Nivel C de PointSav-LLM.
+
+**Corrección (2026-07-18):** el nombre exacto del modelo del Nivel A es inconsistente
+entre los artículos hermanos de este wiki y en la propia documentación de ingeniería.
+Este artículo dice "OLMo 3 7B Q4"; [[learning-datagraph-architecture]] dice "el SLM
+local (OLMo-2 7B Q4)" para el mismo rol de Nivel A, coincidiendo con un documento interno
+de ingeniería (`service-slm/NEXT.md`: "OLMo-2-7B Q4_K_M; Tier A primary"); un tercer
+documento interno describe el Nivel A como "OLMo 2 1B." Esto no se lee como tres nombres
+para un mismo modelo — parece una desactualización de versión sin resolver en la propia
+documentación de ingeniería, no solo un problema de desactualización del wiki.
+**Señalado, no resuelto** — necesita confirmación de project-totebox sobre el modelo
+actual real del Nivel A antes de corregir cualquiera de los dos nombres aquí.
 
 ---
 
