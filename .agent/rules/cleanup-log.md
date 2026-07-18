@@ -10,11 +10,47 @@
 > layout-rule enforcement, defect resolution, surfaced open
 > questions — does.
 
-Last updated: 2026-07-10.
+Last updated: 2026-07-18.
 
 ---
 
 ## Open
+
+---
+
+### 2026-07-18 — BCSC honesty-rail breach: 5 articles falsely asserting os-console runs under seL4: CLOSED
+
+`Closed: 2026-07-18.` Commit `92f6cef`. Relayed from project-console via Command
+(`command-20260718-correction-needed-5-public-wiki-articles`): `systems/console-os.md`,
+`systems/os-family-overview.md`, `substrate/sel4-microkernel-substrate.md` stated
+unhedged, present-tense that os-console boots an seL4 environment and runs a custom
+WGPU/SDF-glyph rendering stack — project-console verified directly this is false
+(os-console is `ratatui`/`crossterm`, zero seL4 dependency; `moonshot-hypervisor` is a
+4-file stub). `substrate/sel4-unikernel-substrate.md` and
+`systems/os-console-totebox-browser.md` were already hedged ("planned Phase H2/H3") but
+`os-console-totebox-browser.md`'s framing sentence still called the cartridge/PD
+relationship "structural, not metaphorical" despite several rows of its own comparison
+table being marked planned.
+
+Fixed all 4 affected files (EN+ES, 8 files total — `sel4-unikernel-substrate.md` needed
+no change, already correctly hedged throughout): rewrote unhedged present-tense claims to
+state current reality (`os-console` ships today as a `ratatui`/`crossterm` terminal
+application) with the seL4/custom-GPU-stack architecture clearly marked as a roadmap
+target, not current state — matching project-console's own `BRIEF-os-console-rebuild-2030.md`
+honesty rail ("reserve 'kernel-enforced' for a roadmap caption"). Softened
+`os-console-totebox-browser.md`'s framing sentence to acknowledge the analogy holds today
+only for the pieces already built. Also found and fixed, while editing `console-os.md`
+(not part of the original 5-file report): a corrupted self-referential wikilink at the F1
+HELP row (`[[app-console-input|content-wiki-documentation]]` — repo name leaking into
+display text) — replaced with plain prose since it wasn't a live wikilink target.
+
+**Separately flagged to Command, not this repo's own scope to fix**: while investigating
+this correction, found `content-wiki-documentation` (Command's routing target for this
+correction) is a different, stale repo at `vendor/content-wiki-documentation` —
+`role: canonical-mirror`, `consumed_by: []` per `conventions/local-sync-paths.yaml`,
+diverged from this repo (`media-knowledge-documentation`, the actual `role:
+live-service-source`) since Phase C. Flagged by mailbox
+(`command-20260718-repo-name-drift-found-content-wiki-docum`).
 
 ---
 
