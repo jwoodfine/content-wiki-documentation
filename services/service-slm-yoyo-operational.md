@@ -9,7 +9,7 @@ quality: complete
 short_description: "How service-SLM's three-tier inference router and the Yo-Yo GPU burst VM operate: the Doorman boundary, Tier A/B config, apprenticeship queue, cost ceiling."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-07-18
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -54,7 +54,24 @@ Throughput on the workspace VM (an `e2-standard-4` GCE instance, CPU only) is ap
 
 ## Tier B — Yo-Yo on L4 GPU
 
-Tier B runs `llama-server` with CUDA support on a separate GCE instance (`yoyo-tier-b-1`) in `us-west1-a`. The hardware is `g2-standard-4`: 4 vCPU, 16 GB RAM, and one NVIDIA L4 GPU with 24 GB VRAM. The model is AllenAI's published `OLMo-2-0325-32B-Instruct-Q4_K_S.gguf` (Apache 2.0). The instance is provisioned on-demand rather than as a spot instance — L4 spot capacity proved unreliable across multiple US zones during initial bootstrapping.
+**Correction (2026-07-18), partially verified, not fully re-confirmed:** two details below
+no longer match live system state and are flagged rather than silently rewritten, since
+this article's operational specifics belong to project-totebox and a full re-verification
+needs their direct confirmation, not inference from this archive alone. (1) **Zone**: this
+article states `us-west1-a`; the live Doorman's `/readyz` response (checked 2026-07-18)
+reports `us-central1-a` for all three Tier B labels (`default`, `trainer`, `graph`) — either
+the deployment moved zones since this article was written (2026-05-25) or a different
+instance now serves this role. (2) **Model**: this article states
+`OLMo-2-0325-32B-Instruct-Q4_K_S.gguf`, with the "What is next" section below framing an
+OLMo 3 swap as a future plan — project-totebox directly confirmed today (2026-07-18, in an
+unrelated DataGraph-governance exchange) that the real Yo-Yo `"trainer"` label currently
+runs **OLMo 3 32B-Think**, meaning the swap this article describes as planned has already
+happened and this article's "current" description and its own "what is next" framing are
+both now stale. The hardware specifics below (`g2-standard-4`, L4 GPU, 24 GB VRAM,
+on-demand-not-spot rationale) are NOT flagged — they matched independent research earlier
+this session and are treated as still accurate.
+
+Tier B runs `llama-server` with CUDA support on a separate GCE instance (`yoyo-tier-b-1`, zone unconfirmed — see correction above) . The hardware is `g2-standard-4`: 4 vCPU, 16 GB RAM, and one NVIDIA L4 GPU with 24 GB VRAM. The model was AllenAI's `OLMo-2-0325-32B-Instruct-Q4_K_S.gguf` (Apache 2.0) as of this article's last edit; project-totebox confirms the live model is now OLMo 3 32B-Think (see correction above — exact current GGUF filename not independently re-verified). The instance is provisioned on-demand rather than as a spot instance — L4 spot capacity proved unreliable across multiple US zones during initial bootstrapping.
 
 Port 8080 on the Yo-Yo VM is restricted by GCE firewall rule `yoyo-tier-b-from-workspace` to the workspace VM's internal IP (`10.138.0.4/32`) only. The Doorman holds the bearer token (`SLM_YOYO_BEARER`, configured in `/etc/local-doorman/local-doorman.env`) and authenticates every request.
 
