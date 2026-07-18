@@ -12,7 +12,7 @@ paired_with: worm-ledger-architecture.es.md
 category: infrastructure
 status: active
 quality: complete
-last_edited: 2026-06-23
+last_edited: 2026-07-18
 editor: pointsav-engineering
 ---
 
@@ -88,13 +88,28 @@ Doctrine Invention #7 specifies Sigstore Rekor v2 anchoring of per-tenant checkp
 
 The implementation (`service-fs/anchor-emitter/`) is a standalone Rust binary (own `[workspace]` to avoid openssl-sys conflicts in the parent monorepo). It uses `reqwest` blocking with rustls-tls (no tokio in this binary), generates an ephemeral Ed25519 keypair per anchor, and exits with structured codes (0 success / 1 config / 2 fetch / 3 Rekor / 4 append). The systemd unit (`local-fs-anchor.{service,timer}`) is configured with `OnCalendar=*-*-01 02:30:00`, `Persistent=true`, `RandomizedDelaySec=900`.
 
+**Correction (2026-07-18):** the `anchor-emitter` binary itself checks out directly — its
+own `Cargo.toml` confirms the standalone `[workspace]` and the `reqwest` blocking/
+rustls-tls dependency exactly as described. **No `local-fs-anchor.service` or
+`local-fs-anchor.timer` file was found anywhere in the monorepo**, though — a repo-wide
+search finds only `infrastructure/systemd/mediakit/local-fs.service` (the daemon unit
+itself, confirming the `FS_LEDGER_ROOT`/`FS_MODULE_ID` env vars used elsewhere in this
+article) at a different path than the `infrastructure/local-fs/local-fs.service` this
+article cites in the next section. Either the anchoring timer is deployed directly on the
+live host without a version-controlled unit file (unlike the daemon unit, which is
+checked in), or the specific schedule (`OnCalendar=*-*-01 02:30:00`) is aspirational
+rather than deployed. **Flagged, not silently rewritten** — needs project-totebox
+confirmation of whether the monthly anchoring cron actually runs today before this is
+corrected.
+
 ## The two boot envelopes
 
 `service-fs` is intended to ship in two envelopes that share the same wire protocol and the same storage format.
 
 ### Envelope A — Linux/BSD daemon under systemd (current)
 
-Tokio async runtime, axum 0.7 HTTP server, std Rust. POSIX storage in `FS_LEDGER_ROOT/<moduleId>/`. Per-tenant boundary via separate process address spaces, filesystem permissions, and the wire-layer header check. Deploys as a systemd unit (`infrastructure/local-fs/local-fs.service`). Runs on any Linux or BSD kernel — the Foundry workspace VM, customer on-premises hardware, cloud compute, or inside a Linux/BSD guest VM hosted by seL4 on hardware where seL4 cannot boot natively.
+Tokio async runtime, axum 0.7 HTTP server, std Rust. POSIX storage in `FS_LEDGER_ROOT/<moduleId>/`. Per-tenant boundary via separate process address spaces, filesystem permissions, and the wire-layer header check. Deploys as a systemd unit (`infrastructure/local-fs/local-fs.service` — real path verified
+as `infrastructure/systemd/mediakit/local-fs.service`, see the correction above). Runs on any Linux or BSD kernel — the Foundry workspace VM, customer on-premises hardware, cloud compute, or inside a Linux/BSD guest VM hosted by seL4 on hardware where seL4 cannot boot natively.
 
 ### Envelope B — seL4 Microkit Protection Domain unikernel (intended)
 

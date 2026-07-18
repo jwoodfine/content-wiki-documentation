@@ -12,7 +12,7 @@ paired_with: worm-ledger-architecture.md
 category: infrastructure
 status: active
 quality: complete
-last_edited: 2026-06-23
+last_edited: 2026-07-18
 editor: pointsav-engineering
 ---
 
@@ -88,13 +88,30 @@ La Invención de Doctrina #7 especifica el anclaje a Sigstore Rekor v2 de los ch
 
 La implementación (`service-fs/anchor-emitter/`) es un binario Rust autónomo (su propio `[workspace]` para evitar conflictos de openssl-sys en el monorepo principal). Usa `reqwest` bloqueante con rustls-tls (sin tokio en este binario), genera un par de claves Ed25519 efímero por anclaje y finaliza con códigos estructurados (0 éxito / 1 configuración / 2 obtención / 3 Rekor / 4 adición). La unidad systemd (`local-fs-anchor.{service,timer}`) está configurada con `OnCalendar=*-*-01 02:30:00`, `Persistent=true`, `RandomizedDelaySec=900`.
 
+**Corrección (2026-07-18):** el binario `anchor-emitter` en sí se verifica directamente —
+su propio `Cargo.toml` confirma el `[workspace]` autónomo y la dependencia `reqwest`
+bloqueante/rustls-tls exactamente como se describe. **No se encontró ningún archivo
+`local-fs-anchor.service` ni `local-fs-anchor.timer` en ninguna parte del monorepo**, sin
+embargo — una búsqueda en todo el repositorio solo encuentra
+`infrastructure/systemd/mediakit/local-fs.service` (la unidad del daemon en sí, que
+confirma las variables de entorno `FS_LEDGER_ROOT`/`FS_MODULE_ID` usadas en otras partes
+de este artículo) en una ruta distinta a `infrastructure/local-fs/local-fs.service` que
+este artículo cita en la siguiente sección. O bien el temporizador de anclaje se despliega
+directamente en el host en producción sin un archivo de unidad bajo control de versiones
+(a diferencia de la unidad del daemon, que sí está registrada), o el horario específico
+(`OnCalendar=*-*-01 02:30:00`) es aspiracional en lugar de estar desplegado. **Señalado,
+no reescrito silenciosamente** — necesita confirmación de project-totebox sobre si el
+cron de anclaje mensual realmente se ejecuta hoy antes de corregir esto.
+
 ## Los dos sobres de arranque
 
 `service-fs` está previsto para distribuirse en dos sobres que comparten el mismo protocolo de cable y el mismo formato de almacenamiento.
 
 ### Sobre A — daemon Linux/BSD bajo systemd (actual)
 
-Runtime asíncrono Tokio, servidor HTTP axum 0.7, Rust std. Almacenamiento POSIX en `FS_LEDGER_ROOT/<moduleId>/`. Frontera por tenant mediante espacios de direcciones de proceso separados, permisos de sistema de archivos y la comprobación de encabezado en la capa de cable. Se despliega como unidad systemd (`infrastructure/local-fs/local-fs.service`). Funciona en cualquier kernel Linux o BSD — la VM del workspace de Foundry, hardware local del cliente, cómputo en la nube, o dentro de una VM Linux/BSD alojada por seL4 en hardware donde seL4 no puede arrancar de forma nativa.
+Runtime asíncrono Tokio, servidor HTTP axum 0.7, Rust std. Almacenamiento POSIX en `FS_LEDGER_ROOT/<moduleId>/`. Frontera por tenant mediante espacios de direcciones de proceso separados, permisos de sistema de archivos y la comprobación de encabezado en la capa de cable. Se despliega como unidad systemd (`infrastructure/local-fs/local-fs.service` — ruta real
+verificada como `infrastructure/systemd/mediakit/local-fs.service`, véase la corrección
+anterior). Funciona en cualquier kernel Linux o BSD — la VM del workspace de Foundry, hardware local del cliente, cómputo en la nube, o dentro de una VM Linux/BSD alojada por seL4 en hardware donde seL4 no puede arrancar de forma nativa.
 
 ### Sobre B — unikernel seL4 Microkit Protection Domain (previsto)
 
