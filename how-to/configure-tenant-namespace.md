@@ -7,7 +7,7 @@ category: how-to
 content_type: how-to
 type: how-to
 status: active
-last_edited: 2026-06-14
+last_edited: 2026-07-18
 editor: pointsav-engineering
 paired_with: configure-tenant-namespace.es.md
 ---
@@ -15,6 +15,23 @@ paired_with: configure-tenant-namespace.es.md
 A tenant namespace is the isolated partition within the platform that holds a single customer's resources — fleet nodes, sessions, audit records, and capability tokens. Configuring a tenant namespace means registering the tenant with the service layer, defining quota limits, and verifying that isolation is enforced. This guide covers initial namespace configuration for a single tenant.
 
 For the service that enforces tenant isolation, see [[service-vm-tenant]]. For the fleet architecture that namespaces span, see [[ppn-small-business-compute]].
+
+**Major correction (2026-07-18):** the API surface this guide describes does not exist in
+the live `service-vm-tenant` source. Direct verification of the route table
+(`service-vm-tenant/src/main.rs`) finds exactly four routes: `GET /healthz`, `POST /v1/vms`
+(create), `GET /v1/vms` (list), `DELETE /v1/vms/:vm_id`, and `GET /v1/status` — **no
+`/v1/tenants` endpoint of any kind.** Steps 1 and 2 below (`POST /v1/tenants` to register a
+tenant, `POST /v1/tenants/acme-corp/tokens` to issue a root capability token) describe
+routes that are not in the service. Tenant registration is not an API call at all in the
+live source — it is **config-driven at service startup** via a `TENANT_IDS` environment
+variable (the service logs "`TENANT_IDS not set — no tenants registered; all requests will
+401`" when it is absent), not a runtime "register a tenant" operation an administrator
+performs after the service is already up. Step 3's `GET /v1/vms` isolation check and Step
+4's quota-exceeded check are plausible against the real `/v1/vms` route, but have not been
+individually re-verified here. **Flagged, not silently rewritten** — this reads as either
+an early design that was replaced by simpler env-var-driven tenant provisioning, or a
+guide written ahead of the service it describes; needs project-totebox confirmation of the
+actual tenant-provisioning mechanism before Steps 1–2 are corrected or removed.
 
 ## Prerequisites
 

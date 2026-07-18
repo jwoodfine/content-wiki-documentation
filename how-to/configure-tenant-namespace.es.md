@@ -7,7 +7,7 @@ category: how-to
 content_type: how-to
 type: how-to
 status: active
-last_edited: 2026-06-14
+last_edited: 2026-07-18
 editor: pointsav-engineering
 language: es
 language_protocol: TRANSLATE-ES
@@ -17,6 +17,26 @@ paired_with: configure-tenant-namespace.md
 Un espacio de nombres de tenant es la partición aislada dentro de la plataforma que contiene los recursos de un solo cliente — nodos de flota, sesiones, registros de auditoría y tokens de capacidad. Configurar un espacio de nombres de tenant significa registrar el tenant con la capa de servicios, definir límites de cuota y verificar que el aislamiento esté aplicado. Esta guía cubre la configuración inicial del espacio de nombres para un solo tenant.
 
 Para el servicio que aplica el aislamiento de tenant, véase [[service-vm-tenant]]. Para la arquitectura de flota que abarcan los espacios de nombres, véase [[ppn-small-business-compute]].
+
+**Corrección mayor (2026-07-18):** la superficie de API que describe esta guía no existe
+en la fuente real de `service-vm-tenant`. La verificación directa de la tabla de rutas
+(`service-vm-tenant/src/main.rs`) encuentra exactamente cuatro rutas: `GET /healthz`,
+`POST /v1/vms` (crear), `GET /v1/vms` (listar), `DELETE /v1/vms/:vm_id`, y
+`GET /v1/status` — **ningún endpoint `/v1/tenants` de ningún tipo.** Los Pasos 1 y 2 más
+abajo (`POST /v1/tenants` para registrar un tenant, `POST /v1/tenants/acme-corp/tokens`
+para emitir un token de capacidad raíz) describen rutas que no están en el servicio. El
+registro de tenants no es una llamada API en absoluto en la fuente real — se controla
+**mediante configuración al iniciar el servicio** vía una variable de entorno
+`TENANT_IDS` (el servicio registra "`TENANT_IDS not set — no tenants registered; all
+requests will 401`" cuando está ausente), no una operación de "registrar un tenant" en
+tiempo de ejecución que un administrador realiza después de que el servicio ya está
+activo. La verificación de aislamiento del Paso 3 (`GET /v1/vms`) y la verificación de
+cuota excedida del Paso 4 son plausibles contra la ruta real `/v1/vms`, pero no se han
+reverificado individualmente aquí. **Señalado, no reescrito silenciosamente** — esto se
+lee como un diseño anterior sustituido por un aprovisionamiento de tenant más simple
+basado en variables de entorno, o una guía escrita antes que el servicio que describe;
+necesita confirmación de project-totebox sobre el mecanismo real de aprovisionamiento de
+tenants antes de corregir o eliminar los Pasos 1–2.
 
 ## Requisitos previos
 
