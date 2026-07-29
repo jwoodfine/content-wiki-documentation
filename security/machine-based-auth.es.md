@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-29
+last_edited: 2026-07-28
 editor: pointsav-engineering
 paired_with: machine-based-auth.md
 short_description: "La autorización basada en hardware reemplaza las estructuras de usuario y contraseña con el emparejamiento criptográfico del hardware físico — el par es el permiso, y toda una clase de robo remoto de credenciales queda eliminada por estructura."
@@ -53,6 +53,25 @@ Una máquina puede estar en la PPN sin ningún emparejamiento MBA. Puede alcanza
 Un emparejamiento es un protocolo criptográfico entre dos máquinas. Los dos extremos poseen material de clave pública y privada complementario. Cuando un [[console-os|Libro Mayor de Comandos]] se conecta a un [[totebox-os|Totebox]], ambos lados demuestran posesión de la clave correspondiente. Si el par se verifica, la conexión se establece. Si no, las máquinas son invisibles entre sí.
 
 `service-pairing` gestiona estos emparejamientos con el Noise Protocol [^1] y claves de estilo WireGuard [^2], derivadas de la atestación de hardware donde la plataforma subyacente lo admite.
+
+**Corrección (2026-07-28):** el crate real que implementa esto es `system-gateway-mba`
+(674 líneas en total), no un `service-pairing` — ese nombre de crate no se encontró en
+ninguna parte del monorepo. Su mecanismo real, según el esquema de `pairing_db.rs`
+(`request_id, code, username, tenant, fingerprint, public_key, state`) y
+`pairing_http.rs`, es un flujo de solicitud/aprobación mediante un `code` corto y un par
+`public_key`/`fingerprint` que pasa por los estados `pending`→`approved`/`denied` —
+genuinamente sin contraseña y genuinamente vinculado a una clave de hardware, lo que
+coincide con la afirmación central de este artículo, pero no es un intercambio Noise
+Protocol en vivo; no se encontró ninguna referencia a "Noise" ni a "intercambio de claves
+estilo WireGuard" en el código fuente del crate. El campo de rol en `user.rs` es un
+simple `role: String`, no una enumeración tipada que coincida con los cuatro niveles
+nombrados abajo — `auth.rs` es casi un stub de 10 líneas. **No es una discrepancia de
+todo el artículo** — el principio de diseño sin contraseña y vinculado a hardware se
+mantiene y el crate es real — pero el protocolo de intercambio específico y la taxonomía
+de cuatro niveles como construcciones de código no se encuentran en lo que está
+construido hoy. Marcado, no resuelto; se necesita confirmación de project-totebox sobre
+si los niveles existen como intención de diseño aún no codificada, o si `role: String` es
+el mecanismo actual real (más laxo).
 
 | Propiedad | Comportamiento |
 |---|---|

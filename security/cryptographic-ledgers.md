@@ -9,7 +9,7 @@ quality: complete
 short_description: "Cryptographic ledgers are the immutable-state storage pattern in the PointSav platform, where any alteration breaks a verifiable hash chain, not just an access-control rule."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-07-28
 editor: pointsav-engineering
 cites: []
 paired_with: cryptographic-ledgers.es.md
@@ -45,7 +45,25 @@ If the hashes match and the inclusion proof verifies, the record is intact. If e
 
 The [[pointsav-overview|PointSav]] cryptographic ledger uses C2SP tlog-tiles format — the same on-disk structure used by Certificate Transparency logs and Sigstore Rekor. Tiles are static, base64-encoded text files containing 256 entries each at the leaf level, with intermediate [[merkle-proofs-as-substrate-primitive|Merkle-level]] tiles above them. This format is human-readable, independently verifiable, and compatible with standard Certificate Transparency tooling.
 
+**Correction (2026-07-28):** the on-disk format is currently a single flat
+newline-delimited JSON log file per tenant (`<root>/<moduleId>/log.jsonl`), not a
+C2SP tlog-tiles multi-file structure — verified against `service-fs/src/posix_tile.rs`,
+whose own doc comments describe "segment-batched tile files (256 entries per sealed
+segment)" as "the natural performance upgrade and a follow-up commit," not yet
+implemented; the file's `PosixTileLedger` struct holds one `log_path`, not a tile-file
+set. The cryptographic properties this article describes — hash-chained entries,
+Ed25519-signed checkpoints, inclusion and consistency proofs — are real and implemented
+in that same file, just not in the specific tile-file on-disk layout named here. The
+Monthly Rekor anchoring claim below, by contrast, **is verified accurate** — see the note
+after that paragraph.
+
 Monthly, each tenant's signed checkpoint is submitted to the Sigstore Rekor v2 public transparency log. Once anchored, the checkpoint is public and the tenant cannot retroactively alter any prior record without the tampered state being detectable against the anchored checkpoint.
+
+**Verified accurate (2026-07-28):** confirmed against `service-fs/anchor-emitter` (580
+lines, a real Sigstore Rekor v2 `hashedRekordRequestV002` submission client) and its
+systemd timer `infrastructure/local-fs-anchoring/local-fs-anchor.timer`, which fires
+monthly on the 1st at 02:30 UTC. This part of the article matches the live
+implementation; only the tile-format paragraph above needed correcting.
 
 ## Applications
 

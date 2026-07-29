@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-29
+last_edited: 2026-07-28
 editor: pointsav-engineering
 paired_with: machine-based-auth.es.md
 short_description: "Machine-based authorization replaces username and password with cryptographic pairing of physical hardware — the pair is the permission, eliminating remote credential theft."
@@ -53,6 +53,22 @@ A machine can be on the PPN without any MBA pairings. It can reach the network; 
 A pairing is a cryptographic handshake between two machines. The two ends hold complementary public and private key material. When a [[console-os|Command Ledger]] connects to a [[totebox-os|Totebox]], both sides demonstrate possession of the corresponding key. If the pair verifies, the connection is established. If it does not, the machines are invisible to each other.
 
 `service-pairing` manages these pairings using the Noise Protocol [^1] and WireGuard-style keys [^2], derived from hardware attestation where the underlying platform supports it.
+
+**Correction (2026-07-28):** the live crate that implements this is `system-gateway-mba`
+(674 lines total), not a `service-pairing` — that crate name was not found anywhere in
+the monorepo. Its actual mechanism, per `pairing_db.rs`'s schema (`request_id, code,
+username, tenant, fingerprint, public_key, state`) and `pairing_http.rs`, is a
+request/approval workflow keyed by a short `code` and a `public_key`/`fingerprint` pair
+moving through `pending`→`approved`/`denied` states — genuinely password-free and
+genuinely hardware-key-bound, matching this article's core claim, but not a live Noise
+Protocol handshake; no "Noise" or "WireGuard-style key exchange" reference was found
+anywhere in the crate's source. `user.rs`'s role field is a plain `role: String`, not a
+typed enum matching the four named tiers below — `auth.rs` is a 10-line near-stub. **Not
+a whole-article mismatch** — the password-free, hardware-bound design principle holds and
+the crate is real — but the specific handshake protocol and the four-tier taxonomy as
+named code constructs are not found in what's built today. Flagged, not resolved; needs
+project-totebox confirmation of whether the tiers exist as a design intent not yet coded,
+or whether `role: String` is the actual (looser) current mechanism.
 
 | Property | Behaviour |
 |---|---|
