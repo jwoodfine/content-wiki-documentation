@@ -10,12 +10,17 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-07-28
 editor: pointsav-engineering
 paired_with: three-layer-architecture.es.md
 short_description: "Strict one-way flow of PointSav deliverables through three layers — vendor monorepo, customer showcase catalogue, and private running instances."
 cites: []
 ---
+
+> Not to be confused with [[3-layer-stack|the three-layer stack]], a different
+> three-layer model describing the runtime decomposition of a single deployment
+> (infrastructure/platform/delivery). This article is about the software supply chain;
+> that one is about a running deployment's own architecture.
 
 [[pointsav-overview|PointSav]] deliverables move through three architectural layers, each with a distinct purpose, a distinct audience, and a distinct ownership posture. The first layer is the vendor monorepo — the canonical home of every line of code in the family. The second is the customer's public catalogue of deployment patterns — operational runbooks and manifests showing how the vendor substrate is used in practice. The third is the private layer of actual running deployments, local to the operator and never committed to any shared repository.
 
@@ -90,6 +95,7 @@ Every [[pointsav-overview|PointSav]] project archive declares four legs — vend
 
 ## See also
 
+- [[3-layer-stack]] — a different three-layer model: a single deployment's own runtime decomposition, not this article's software supply chain
 - [[five-stage-supply-chain]] — how code moves between the three layers
 - [[six-tier-sovereignty-matrix]] — the directory taxonomy that organises the SOFTWARE layer
 - [[deployment-patterns]] — the named deployment patterns that populate the SHOWCASE layer

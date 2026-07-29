@@ -16,6 +16,21 @@ Last updated: 2026-07-28.
 
 ## Open
 
+### 2026-07-28 — `three-layer-architecture` / `3-layer-stack`: not a duplicate, resolved as a disambiguation defect
+
+`Opened and closed: 2026-07-28.` Flagged as a DUPLICATE_CANDIDATE on 2026-05-25 and
+re-surfaced by the 2026-07-28 content-matrix simulation; direct read of both articles in
+full found they are **not duplicates at all** — two genuinely different "three-layer"
+models that happen to share near-identical titles: `3-layer-stack` is a single
+deployment's runtime decomposition (infrastructure/platform/delivery); `three-layer-
+architecture` is the vendor→customer→operator software supply chain (SOFTWARE/SHOWCASE/
+INSTANCES). Neither article cross-referenced the other anywhere — a reader landing on
+either had no path to the one they actually meant. Fixed as a Wikipedia-style
+disambiguation, not a merge: added a "not to be confused with" hatnote to the lead of
+each (EN+ES) and a cross-link in each "See also." No content deleted, no slug changed,
+no `redirects.yaml` entry needed. Closes the 2026-05-25 flag — correcting it, not
+executing it, since a merge would have been the wrong fix.
+
 ### 2026-07-28 — design-system/ Decision #7 stub-vs-redirect: 3 stale redirects removed (real content); 4 remain, need an operator/Command call
 
 `Opened: 2026-07-28.` A content-matrix simulation (project-editorial,

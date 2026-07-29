@@ -9,12 +9,17 @@ quality: stub
 short_description: "The Three-Layer Stack is the infrastructure decomposition pattern across PointSav deployments, separating raw compute, isolated platform execution, and secure operator access."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-07-28
 editor: pointsav-engineering
 cites: []
 paired_with: 3-layer-stack.es.md
 ---
 
+
+> Not to be confused with [[three-layer-architecture|three-layer architecture]], a
+> different three-layer model describing how PointSav deliverables move from vendor to
+> customer to operator. This article is about the runtime decomposition of a single
+> deployment; that one is about the software supply chain.
 
 > The Three-Layer Stack is the infrastructure decomposition pattern used across PointSav deployments, separating raw computing capability, isolated platform execution, and secure operator access into three distinct layers.
 
@@ -37,6 +42,7 @@ The three layers map directly to the operational concerns of a regulated SMB dep
 
 ## See also
 
+- [[three-layer-architecture]] — a different three-layer model: the vendor/customer/operator software supply chain, not this article's runtime decomposition
 - [[compounding-substrate]]
 - [[capability-based-security]]
 - [[sel4-microkernel-substrate]]

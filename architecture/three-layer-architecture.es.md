@@ -10,12 +10,18 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-07-28
 editor: pointsav-engineering
 paired_with: three-layer-architecture.md
 short_description: "Flujo estrictamente unidireccional de los entregables de PointSav por tres capas: monorepo del proveedor, catálogo escaparate del cliente e instancias privadas en ejecución."
 cites: []
 ---
+
+> No confundir con [[3-layer-stack|la pila de tres capas]], un modelo distinto de tres
+> capas que describe la descomposición en tiempo de ejecución de una implementación
+> individual (infraestructura/plataforma/entrega). Este artículo trata sobre la cadena
+> de suministro de software; aquel trata sobre la arquitectura de una implementación en
+> ejecución.
 
 Los entregables de [[pointsav-overview|PointSav]] se mueven a través de tres capas arquitectónicas, cada una con un propósito distinto, una audiencia distinta y una postura de propiedad distinta. La primera capa es el monorepo del proveedor — el hogar canónico de cada línea de código de la familia. La segunda es el catálogo público del cliente de patrones de implementación — guías operacionales y manifiestos que muestran cómo se usa el sustrato del proveedor en la práctica. La tercera es la capa privada de implementaciones en ejecución reales, local al operador y nunca comprometida en ningún repositorio compartido.
 
@@ -90,6 +96,7 @@ Cada archivo de proyecto de [[pointsav-overview|PointSav]] declara cuatro elemen
 
 ## Véase también
 
+- [[3-layer-stack]] — un modelo distinto de tres capas: la arquitectura en tiempo de ejecución de una implementación individual, no la cadena de suministro de software de este artículo
 - [[five-stage-supply-chain]] — cómo el código se mueve entre las tres capas
 - [[six-tier-sovereignty-matrix]] — la taxonomía de directorios que organiza la capa SOFTWARE
 - [[deployment-patterns]] — los patrones de implementación nombrados que pueblan la capa ESCAPARATE

@@ -11,12 +11,17 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-07-28
 editor: pointsav-engineering
 paired_with: 3-layer-stack.md
 cites: []
 ---
 
+> No confundir con [[three-layer-architecture|la arquitectura de tres capas]], un modelo
+> distinto de tres capas que describe cómo los entregables de PointSav se mueven del
+> proveedor al cliente y al operador. Este artículo trata sobre la descomposición en
+> tiempo de ejecución de una implementación individual; aquel trata sobre la cadena de
+> suministro de software.
 
 La Pila de Tres Capas es el patrón de descomposición de infraestructura utilizado en los despliegues de [[pointsav-overview|PointSav]]. El patrón separa la capacidad de cómputo bruto, la ejecución de la plataforma aislada y el acceso seguro del operador en tres capas distintas.
 
@@ -41,6 +46,7 @@ Cada capa es reemplazable de forma independiente. Un cliente puede migrar de una
 
 ## Véase también
 
+- [[three-layer-architecture]] — un modelo distinto de tres capas: la cadena de suministro de software proveedor/cliente/operador, no la descomposición en tiempo de ejecución de este artículo
 - [[compounding-substrate]]
 - [[capability-based-security]]
 - [[sel4-microkernel-substrate]]
