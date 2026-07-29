@@ -16,6 +16,32 @@ Last updated: 2026-07-28.
 
 ## Open
 
+### 2026-07-28 — `security/_index.md` MOC written (EN+ES): was 0-link prose, confirmed worst landing page in the wiki by both content-matrix design agents
+
+`Opened and closed: 2026-07-28.` Both the structural and reader-journey content-matrix
+agents independently verified `security/_index.md` had zero article wikilinks — three
+paragraphs of prose plus cross-category "See also" links only, no path into any of the
+13 articles the category actually holds (the only other category with this defect is
+`ai/`, not yet fixed — see the open item this leaves below). Rewrote as a curated MOC,
+grouped by the category's own five declared scope clauses (identity/permissions,
+cryptographic verification, isolation boundaries, data handling/privacy, supply-chain
+controls) rather than alphabetically, matching this wiki's established MOC pattern.
+Deliberately left the thinness of "isolation boundaries" (3 articles) and "data handling
+and privacy" (1 article) visible in the MOC's own prose rather than padding it — these
+are real, already-flagged gaps (content-matrix synthesis,
+`.agent/audit/phase1c-documentation-sweep/content-matrix-simulation-2026-07-28.md` in
+project-editorial), not something a landing-page rewrite should paper over. Added 2
+cross-links to `infrastructure/ppn-tenant-vm-isolation` and `services/service-vm-tenant`
+(the commercially load-bearing isolation case, previously uncross-referenced from this
+category at all) — both verified to resolve before committing. Also fixed
+`_index.es.md`'s slug typo (`security-index.es` → `security-index`, same bug class as
+`telemetry-architecture.es.md` fixed earlier this session).
+
+**Still open: `ai/_index.md` has the identical zero-link defect**, per the same
+content-matrix finding — not fixed this pass; needs the 10 `ai/` articles read first
+(not yet done this session, unlike `security/`'s 13 which were already read in full
+during the Phase 1c sweep).
+
 ### 2026-07-28 — `scaling-coordinated-development-*` three-way duplicate: CLOSED (execution of the 2026-07-09 blocked follow-up)
 
 `Opened: 2026-07-09 (diagnosed, blocked). Closed: 2026-07-28.` Re-surfaced by the
