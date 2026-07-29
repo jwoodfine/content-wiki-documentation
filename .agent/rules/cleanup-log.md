@@ -16,6 +16,31 @@ Last updated: 2026-07-28.
 
 ## Open
 
+### 2026-07-28 — `sovereign-telemetry` / `telemetry-architecture`: not a duplicate, resolved as a one-directional missing cross-link + a slug typo
+
+`Opened and closed (cross-link/slug); one item left open below.` Flagged as a
+DUPLICATE_CANDIDATE on 2026-05-25, re-surfaced by the 2026-07-28 content-matrix
+simulation; direct read of both found they are **complementary, not duplicates** —
+`sovereign-telemetry` describes the client-side V4 Intent Beacon payload (what's
+collected, how it's compiled), `telemetry-architecture` describes the server-side
+four-tier routing/processing path. No overlapping facts found. Two real, smaller defects
+fixed instead: (1) `sovereign-telemetry` already linked to `telemetry-architecture` in
+both EN and ES, but `telemetry-architecture.md` (EN) was missing the back-link —
+`telemetry-architecture.es.md` already had it, so this was a bilingual-parity gap, not a
+symmetric one; added the EN back-link. (2) `telemetry-architecture.es.md`'s frontmatter
+had `slug: telemetry-architecture.es` — inconsistent with every other `.es.md` file in
+this repo (which all use the same slug as their EN pair, no `.es` suffix) — corrected to
+`slug: telemetry-architecture`.
+
+**Not fixed, flagged instead:** `telemetry-architecture.md`'s "Four-tier routing path"
+section names specific internal infrastructure (`10.50.0.2:8081`/`8082` port/IP pairs,
+hostname `laptop-a`, script name `pull_sovereign_telemetry.sh`) — the same class of
+operational-not-architectural detail this repo's own editorial discipline strips before
+wiki commit (see `feedback-architectural-topic-editorial-stripping` precedent). This is
+already-live content, not a draft under review, and stripping it is a distinct editorial
+judgment call from the duplicate-resolution task at hand — flagging for a dedicated pass
+rather than folding it into this fix.
+
 ### 2026-07-28 — `three-layer-architecture` / `3-layer-stack`: not a duplicate, resolved as a disambiguation defect
 
 `Opened and closed: 2026-07-28.` Flagged as a DUPLICATE_CANDIDATE on 2026-05-25 and

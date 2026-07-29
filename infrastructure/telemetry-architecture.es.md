@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Arquitectura de telemetría"
-slug: telemetry-architecture.es
+slug: telemetry-architecture
 short_description: "La plataforma recopila análisis de tráfico web de nodos perimetrales de producción y los enruta a un entorno de procesamiento controlado localmente a través de una ruta cifrada sin pasar por servicios de análisis de terceros en la nube."
 category: infrastructure
 type: topic
@@ -9,7 +9,7 @@ content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-09
+last_edited: 2026-07-28
 editor: pointsav-engineering
 paired_with: telemetry-architecture.md
 ---

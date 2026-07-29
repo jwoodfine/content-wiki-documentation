@@ -9,7 +9,7 @@ content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-09
+last_edited: 2026-07-28
 editor: pointsav-engineering
 paired_with: telemetry-architecture.es.md
 ---
@@ -49,6 +49,7 @@ Routing telemetry to a locally controlled node rather than a cloud aggregation s
 
 ## See also
 
+- [[sovereign-telemetry]] — the zero-state telemetry architecture (V4 Intent Beacon) that operates over this routing path — the client-side payload counterpart to this article's server-side routing
 - [[worm-ledger-architecture]] — the WORM ledger design that shares the append-only write model
 - [[edge-deployment]] — the boundary ingest architecture for the Ring 1 services
 - [[compounding-substrate]] — the broader substrate context for local-first data custody
