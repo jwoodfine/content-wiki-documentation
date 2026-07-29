@@ -11,7 +11,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-29
+last_edited: 2026-07-28
 editor: pointsav-engineering
 paired_with: _index.md
 short_description: "El sistema de diseño de PointSav como componente de la plataforma — estructuración arquitectónica, primitivos de diseño y contexto de identidad de marca."
@@ -31,12 +31,12 @@ Las decisiones fundacionales: por qué existe el sustrato, qué preservó de la 
 
 ## Tokens de fundación
 
-Las cuatro familias de tokens de la capa de fundación: color, tipografía, espaciado y movimiento. Especificaciones completas mantenidas en `pointsav-design-system` y publicadas en `design.pointsav.com/foundations/`.
+Las cuatro familias de tokens de la capa de fundación: color, tipografía, espaciado y movimiento. Las especificaciones completas se mantienen en `pointsav-design-system` y se publican en el sitio propio del sistema de diseño — son enlaces externos, no artículos de la wiki.
 
-- [[design-color|Color]] — Fundaciones de tokens de color: paleta primitiva, alias semánticos y pares de modo oscuro en formato DTCG.
-- [[design-typography|Tipografía]] — Fundaciones de tokens tipográficos: escala tipográfica, pilas de fuentes, variables de tipografía fluida y tokens de ritmo de lectura.
-- [[design-spacing|Espaciado]] — Fundaciones de tokens de espaciado: unidad base, escala geométrica, tokens de separación de componentes y tokens de margen de diseño.
-- [[design-motion|Movimiento]] — Fundaciones de tokens de movimiento: escala de duración, curvas de aceleración y variantes de movimiento reducido.
+- [Tokens de color](https://design.pointsav.com/elements/color/overview) — paleta primitiva, alias semánticos y pares de modo oscuro en formato DTCG.
+- [Tokens de tipografía](https://design.pointsav.com/elements/typography/overview) — escala tipográfica, pilas de fuentes, variables de tipografía fluida y tokens de ritmo de lectura.
+- [Tokens de espaciado](https://design.pointsav.com/elements/spacing/overview) — unidad base, escala geométrica, tokens de separación de componentes y tokens de margen de diseño.
+- [Tokens de movimiento](https://design.pointsav.com/elements/motion/overview) — escala de duración, curvas de aceleración y variantes de movimiento reducido.
 
 ## Superficie de marca
 

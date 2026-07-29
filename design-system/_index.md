@@ -11,7 +11,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-29
+last_edited: 2026-07-28
 editor: pointsav-engineering
 paired_with: _index.es.md
 ---
@@ -30,12 +30,12 @@ The foundational decisions: why the substrate exists, what it preserved from con
 
 ## Foundation tokens
 
-The four foundation-layer token families: colour, typography, spacing, and motion. Full specifications maintained in `pointsav-design-system` and published at `design.pointsav.com/foundations/`.
+The four foundation-layer token families: colour, typography, spacing, and motion. Full specifications are maintained in `pointsav-design-system` and published on the design system's own site — these are external links, not wiki articles.
 
-- [[design-color]] — Colour token foundations: primitive palette, semantic aliases, and dark-mode pairings in DTCG format.
-- [[design-typography]] — Typography token foundations: type scale, font stacks, fluid type variables, and reading rhythm tokens.
-- [[design-spacing]] — Spacing token foundations: base unit, geometric scale, component gap tokens, and layout margin tokens.
-- [[design-motion]] — Motion token foundations: duration scale, easing curves, and reduced-motion variants.
+- [Colour tokens](https://design.pointsav.com/elements/color/overview) — primitive palette, semantic aliases, and dark-mode pairings in DTCG format.
+- [Typography tokens](https://design.pointsav.com/elements/typography/overview) — type scale, font stacks, fluid type variables, and reading rhythm tokens.
+- [Spacing tokens](https://design.pointsav.com/elements/spacing/overview) — base unit, geometric scale, component gap tokens, and layout margin tokens.
+- [Motion tokens](https://design.pointsav.com/elements/motion/overview) — duration scale, easing curves, and reduced-motion variants.
 
 ## Brand surface
 

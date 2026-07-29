@@ -35,18 +35,23 @@ redirects:
   - from: /systems/os-totebox
     to: /systems/totebox-os
 
-  # Batch 1 — Foundation token docs → pointsav-design-system/docs/foundations/
+  # Batch 1 — Foundation token docs → design.pointsav.com.
+  # Destination corrected 2026-07-28: the original /foundations/<slug> targets
+  # (set 2026-05-16, Decision #7) are dead — design.pointsav.com was rebuilt since
+  # (new site-wide IA, confirmed live: /tokens, /elements/<name>/overview, etc.) and
+  # never carried the old paths forward. All 4 corrected targets verified live via
+  # direct fetch before this change (real matching token content, not a 404).
   - from: /design-system/design-color
-    to: https://design.pointsav.com/foundations/design-color
+    to: https://design.pointsav.com/elements/color/overview
 
   - from: /design-system/design-typography
-    to: https://design.pointsav.com/foundations/design-typography
+    to: https://design.pointsav.com/elements/typography/overview
 
   - from: /design-system/design-spacing
-    to: https://design.pointsav.com/foundations/design-spacing
+    to: https://design.pointsav.com/elements/spacing/overview
 
   - from: /design-system/design-motion
-    to: https://design.pointsav.com/foundations/design-motion
+    to: https://design.pointsav.com/elements/motion/overview
 
   # Batch 2 — Component guides → pointsav-design-system/components/<name>/guide.md
   - from: /design-system/guide-component-badge
