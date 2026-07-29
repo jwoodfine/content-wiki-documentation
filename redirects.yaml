@@ -83,15 +83,15 @@ redirects:
   - from: /design-system/guide-component-tab
     to: https://design.pointsav.com/components/tab/guide
 
-  # Batch 2 — Wiki-surface docs → pointsav-design-system/docs/wiki-surface/
-  - from: /design-system/wiki-component-library
-    to: https://design.pointsav.com/wiki-surface/wiki-component-library
-
-  - from: /design-system/wiki-dark-mode
-    to: https://design.pointsav.com/wiki-surface/wiki-dark-mode
-
-  - from: /design-system/wiki-typography-system
-    to: https://design.pointsav.com/wiki-surface/wiki-typography-system
+  # Batch 2 wiki-surface docs — REMOVED 2026-07-28. These 3 redirects were dead code:
+  # the engine only consults redirects.yaml when no live article exists at that slug
+  # (app-mediakit-knowledge src/app.rs, alias-then-redirect fallback), and all 3 slugs
+  # have live, current, `status: active` articles — wiki-component-library.md,
+  # wiki-dark-mode.md, wiki-typography-system.md — that document THIS wiki's own
+  # rendering layer (page components, dark-mode implementation, type system), not
+  # generic design-system specs. Verified by reading all 3 bodies directly, not assumed
+  # from file size. These are not the Decision #7 "moved to pointsav-design-system"
+  # husks the redirects implied; they never should have been listed for that move.
 
   # Batch 3 — Spatial components → pointsav-design-system/components/<name>/guide.md
   - from: /design-system/country-filter-chips

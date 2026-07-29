@@ -10,7 +10,42 @@
 > layout-rule enforcement, defect resolution, surfaced open
 > questions — does.
 
-Last updated: 2026-07-18.
+Last updated: 2026-07-28.
+
+---
+
+## Open
+
+### 2026-07-28 — design-system/ Decision #7 stub-vs-redirect: 3 stale redirects removed (real content); 4 remain, need an operator/Command call
+
+`Opened: 2026-07-28.` A content-matrix simulation (project-editorial,
+`.agent/audit/phase1c-documentation-sweep/content-matrix-simulation-2026-07-28.md`)
+flagged that 7 of `design-system/`'s 11 articles were files ratified to leave under
+Decision #7 (2026-05-16) but never removed, each also carrying a `redirects.yaml` 301 to
+the same destination. Direct read of all 7 bodies (not assumed from file size, which
+misled the original flag) found this splits into two different situations:
+
+**Genuinely stale — fixed.** `wiki-component-library.md`, `wiki-dark-mode.md`,
+`wiki-typography-system.md` are NOT Decision #7 husks — they are substantial,
+`status: active`, current articles about *this wiki's own* rendering layer (the 9 page
+components, the dark-mode token implementation, the type system), not generic
+design-system component specs. Their `redirects.yaml` entries were dead code (confirmed
+against `app-mediakit-knowledge`'s routing: redirects.yaml is only consulted when no live
+article exists at that slug) and have been removed. No content changed; only the stale
+routing config.
+
+**Genuinely stub-shaped, not yet resolved.** `design-color.md`, `design-motion.md`,
+`design-spacing.md`, `design-typography.md` are real 3-sentence pointer stubs
+(`status: stub`) matching Decision #7's intent. But git history shows this isn't a
+forgotten `git rm` — commit `9fca6cd` ("add stub aliases for moved foundation token
+slugs") *deliberately* added these back after the original `git rm` (commit `9bbee55`),
+which reads as an intentional Wikipedia-style "this moved, here's a pointer" design
+choice, not an accident. Their `redirects.yaml` entries are also currently dead code for
+the same routing reason (a live stub file shadows the redirect). **Not resolved here** —
+whether the intended UX is (a) keep the stub pages and remove the now-pointless
+redirects, or (b) remove the stub pages and let the 301 actually fire, is a real
+editorial/routing decision, not a mechanical cleanup. Flagging for an operator/Command
+call rather than picking one unilaterally.
 
 ---
 
