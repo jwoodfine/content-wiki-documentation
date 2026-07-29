@@ -16,6 +16,71 @@ Last updated: 2026-07-28.
 
 ## Open
 
+### 2026-07-28 — CONFIRMED: `reference/wiki-provider-landscape.md` names ~25 real competitors by name, in tension with the workspace's structural-positioning-only rule
+
+`Opened: 2026-07-28. Confirmed, NOT resolved — needs an operator/Command decision, this
+is a policy question, not an editorial fix a session should make unilaterally.`
+
+The 2026-07-28 content-matrix simulation (Agent A, structural angle — see
+`.agent/audit/phase1c-documentation-sweep/` in project-editorial) flagged this article
+by its description alone ("an audit of 25 wiki platforms... documenting why no
+competitor has closed Wikipedia's encyclopedic gap") as a possible conflict with
+AGENT.md's "Structural positioning only. No competitive comparisons by name" rule, but
+had not read the body and could not confirm. Read in full this session while
+investigating an EN/ES parity gap on the same article (see entry above) — **confirmed**:
+the article names and directly quotes the marketing copy of ~25 real, identifiable
+products — Notion, Confluence, Coda, ClickUp, Wiki.js, BookStack, Outline, MediaWiki,
+Fandom, Wikidot, DokuWiki, TiddlyWiki, Docusaurus, MkDocs Material, VitePress, Nextra,
+Fumadocs, Astro Starlight, GitBook, Read the Docs, Obsidian Publish, Roam Research,
+Logseq, Capacities, Quartz v4 — with a per-provider comparison table ("What each
+provider does better than Wikipedia"). This is `status: active`, `audience:
+vendor-public`, live on `documentation.pointsav.com` today.
+
+**Not resolved here.** Whether this article is a sanctioned exception (research/audit
+content may be treated differently from marketing copy — not this session's call to
+assume), needs redaction of company names, or needs retiring entirely is a policy
+question for the operator or Command, not something to decide unilaterally mid-session.
+Flagging plainly rather than either fixing or ignoring it. Also affects the EN/ES parity
+question above — translating the missing sections would compound the naming issue rather
+than resolve it, so that fix should wait on this decision.
+
+### 2026-07-28 — M9 (EN/ES word-count parity) measured for the first time — 70 of 278 pairs below 70% ratio, but the pattern is heterogeneous, not one defect
+
+`Opened: 2026-07-28. Measured, characterized, NOT remediated — needs per-article
+editorial judgment, not a mechanical pass.` The mega-rewrite plan
+(`can-we-start-the-partitioned-pillow.md`, project-editorial) flagged M9 as "genuinely
+open... never confirmed fixed" from the original June audit. Measured directly this
+session: word-count ratio (ES/EN, frontmatter stripped) across all 278 article pairs in
+this repo. **70 pairs (25%) fall below 70%**, several as low as 27–32%
+(`reference/wiki-provider-landscape.md`, `substrate/merkle-proofs-as-substrate-primitive.md`,
+`substrate/substrate-native-compatibility.md`, `security/cryptographic-ledgers.md`,
+`reference/quick-start.md`).
+
+**Spot-checked 3 of the lowest-ratio pairs directly — found three different situations,
+not one pattern:**
+1. `security/cryptographic-ledgers.es.md` (found in an earlier pass this session) —
+   legitimately condensed, consistent with established "strategic adaptation, not
+   word-for-word" precedent.
+2. `substrate/merkle-proofs-as-substrate-primitive.es.md` — **deliberate and
+   self-declared**: explicitly formatted as a "panorama estratégico" with a per-section
+   summary format and an explicit disclaimer at the bottom stating it is not a
+   word-for-word translation. Clearly intentional, not a gap.
+3. `reference/wiki-provider-landscape.es.md` — **a genuine, undeclared content gap**.
+   The EN article's entire §2 ("Per-provider one-pagers," ~25 sub-sections) and §4
+   ("What each provider does better than Wikipedia," a 25-row table) are simply absent
+   from the ES version — not summarized, not flagged, just missing. See the separate
+   entry below for a second, more serious finding on this same article.
+
+**Conclusion: a raw word-count ratio cannot distinguish a real gap from a legitimate
+condensed adaptation** — each of the 70 flagged pairs needs an individual read before
+any content is added. This is a real, sizeable editorial undertaking (up to 70 articles
+needing Spanish expansion, where the gap is real), not a mechanical batch fix like the
+`.es` slug bug above. Full ratio list not yet saved to a durable file — re-run the
+measurement script (recorded in the BRIEF) rather than re-deriving from this entry if a
+future session picks this up.
+
+---
+
 ### 2026-07-28 — MAJOR: ~91 files in this repo (108 across documentation+projects) have a broken `slug:` — Spanish readers are silently served English content
 
 `Opened and closed: 2026-07-28.` **FIXED** — flagged to the operator given the scale
