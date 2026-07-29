@@ -11,11 +11,42 @@ bcsc_class: public-disclosure-safe
 language: es
 language_protocol: TRANSLATE-ES
 paired_with: genesis-protocol.md
-last_edited: 2026-06-23
+last_edited: 2026-07-28
 editor: pointsav-engineering
 ---
 
 El Genesis Protocol es la secuencia de arranque inicial de flota que utiliza cada nodo `os-infrastructure` en su primer arranque. Permite que un nodo se vuelva operativo en hardware aislado — sin configuración previa, sin conexión a ningún plano de control y sin conocimiento de la flota a la que eventualmente se unirá — y que permanezca en un estado seguro y reclamable hasta que un administrador esté listo para incorporarlo a la gestión. El protocolo invierte el supuesto convencional de que el plano de control debe existir antes de que se pueda añadir cómputo a él.
+
+**Corrección mayor (2026-07-28):** la secuencia de cinco pasos a continuación no
+coincide con lo que el crate `os-infrastructure` real hace o construye actualmente. Dos
+cosas son ciertas a la vez, y ninguna coincide con este artículo: (1)
+`os-infrastructure/src/main.rs`, `forge_iso.sh` y `build_iso/` están explícitamente
+etiquetados como "Existing scaffold" / "andamiaje original de construcción de ISO" en el
+propio `CLAUDE.md` del crate — se conservan solo hasta que `moonshot-toolkit build` los
+reemplace de extremo a extremo (tarea #14). Ese código Rust de bajo nivel no depende de
+seL4 y no genera ninguna clave a partir de entropía de hardware. (2) La ruta *actual* del
+crate (Opción B — GRUB2 → microkernel seL4 → dominio de protección CAmkES VMM → VM
+invitada Linux, según el mismo `CLAUDE.md`) aún no ha superado su propia prueba de
+compuerta D7 de malla de tres nodos, y su pila de red real —
+`system-network-interface/src/lib.rs` — tiene `scan_for_peers()`,
+`send_genesis_handshake()` y `conduct_pairing_ceremony()` implementados como
+stubs explícitos (`scan_for_peers` siempre devuelve `NotFound`;
+`send_genesis_handshake` siempre devuelve `false`; `system_status()` reporta literalmente
+`"skeleton (NIC driver pending)"`). No se encontró ningún concepto de "clave fiduciaria"/
+"entropía de hardware", ninguna "interfaz WebSocket reforzada" ni ningún protocolo de
+baliza de puerto de malla PPN con la forma descrita abajo en ninguna de las dependencias
+reales del crate. El mecanismo real diseñado (aún no construido) es materialmente
+distinto de la historia de cinco pasos de este artículo: un protocolo de saludo UDP
+`GenesisHandshakeFrame` seguido de un intercambio de claves CPace PAKE (RFC 9382), con un
+código SAS Crockford base32 de 8 caracteres mostrado en el framebuffer e introducido por
+el operador en el panel F12 de `app-console-keys` — no una clave que el kernel seL4
+verifica silenciosamente. **Marcado como una discrepancia arquitectónica de todo el
+artículo, no como una edición puntual** — esto puede ser un documento de diseño temprano
+anterior a la dirección de implementación real del crate, o ambos simplemente han
+divergido. Se necesita confirmación de project-totebox sobre el diseño actual/previsto
+real del Genesis Protocol antes de corregir o reescribir este artículo — este es
+claramente un hallazgo de clase REESCRITURA según la rúbrica de disposición, no una
+corrección puntual.
 
 ## El problema que resuelve
 

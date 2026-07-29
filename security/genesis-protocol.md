@@ -10,11 +10,37 @@ status: stable
 bcsc_class: public-disclosure-safe
 language: en
 paired_with: genesis-protocol.es.md
-last_edited: 2026-06-23
+last_edited: 2026-07-28
 editor: pointsav-engineering
 ---
 
 The Genesis Protocol is the fleet-bootstrapping sequence used by every `os-infrastructure` node at first boot. It allows a node to become operational on isolated hardware — with no prior configuration, no connection to any control plane, and no knowledge of the eventual fleet it will join — and to remain in a secure, claimable state until an administrator is ready to bring it under management. The protocol inverts the conventional assumption that a control plane must exist before compute can be added to it.
+
+**Major correction (2026-07-28):** the five-step sequence below does not match what the
+live `os-infrastructure` crate currently does or currently builds. Two things are true at
+once, and neither matches this article: (1) `os-infrastructure/src/main.rs`, `forge_iso.sh`,
+and `build_iso/` are explicitly labeled "Existing scaffold" / "original ISO build scaffold"
+in the crate's own `CLAUDE.md` — kept only until `moonshot-toolkit build` replaces them
+end-to-end (task #14). That scaffold's raw bare-metal Rust code has no seL4 dependency and
+generates no keypair from hardware entropy. (2) The crate's *current* path (Option B —
+GRUB2 → seL4 microkernel → CAmkES VMM → Linux guest, per the same `CLAUDE.md`) has not
+passed its own D7 three-node mesh test gate yet, and its real network stack —
+`system-network-interface/src/lib.rs` — has `scan_for_peers()`, `send_genesis_handshake()`,
+and `conduct_pairing_ceremony()` implemented as explicit stubs (`scan_for_peers` always
+returns `NotFound`; `send_genesis_handshake` always returns `false`; `system_status()`
+literally reports `"skeleton (NIC driver pending)"`). No "fiduciary keypair"/"hardware
+entropy" concept, no "hardened WebSocket interface," and no PPN-mesh-port beacon protocol
+of the shape described below were found anywhere in the crate's actual dependencies. The
+real designed (not yet built) mechanism is materially different from this article's
+five-step story: a UDP `GenesisHandshakeFrame` handshake followed by CPace PAKE (RFC 9382)
+key exchange, with an 8-character Crockford base32 SAS code displayed on the framebuffer
+and entered by the operator on `app-console-keys`' F12 panel — not a keypair the seL4
+kernel silently verifies. **Flagged as a whole-article architectural mismatch, not
+line-edited** — this may be an early design document that predates the crate's real
+implementation direction, or the two have simply diverged. Needs project-totebox
+confirmation of the actual current/intended Genesis Protocol design before this article is
+corrected or rewritten — this is squarely a REWRITE-class finding per the disposition
+rubric, not a targeted correction.
 
 ## The problem it solves
 
