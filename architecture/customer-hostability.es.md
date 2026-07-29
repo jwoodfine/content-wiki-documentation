@@ -71,6 +71,7 @@ de adaptador localmente.
 
 ## Véase también
 
-- [Documento canónico en inglés](topic-customer-hostability.md)
-- [El sustrato de protocolo de lenguaje](topic-language-protocol-substrate.md)
-- [Disciplina anti-homogenización](topic-anti-homogenization-discipline.md)
+- [[language-protocol-substrate|El sustrato de protocolo de lenguaje]] — la investigación de modelos de lenguaje que sustenta la ruta de pre-entrenamiento federado
+- [[anti-homogenization-discipline|Disciplina anti-homogenización]] — la disciplina complementaria que evita que el entrenamiento federado homogeneice a los inquilinos
+- [[compounding-substrate|El sustrato compuesto]] — las cinco propiedades estructurales que habilita el hospedaje por el cliente
+- [[contributor-model|El modelo de colaboradores]] — cómo interactúan los colaboradores con el ecosistema de artefactos de sustrato abierto
