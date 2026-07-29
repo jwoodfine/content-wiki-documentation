@@ -9,7 +9,7 @@ type: topic
 content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-07-28
 editor: pointsav-engineering
 cites: []
 paired_with: pre-commit-defense-in-depth.es.md
@@ -23,7 +23,15 @@ The Phase 1 hardening closes this with a single pre-commit hook symlinked into `
 
 **Helper-only commits.** The hook refuses unless a helper environment variable is set by the authorised commit helper script. Direct `git commit` invocations — by an operator, an agent, or automation — receive a clear error message pointing at the helper. Merge commits and rebases are allowed via `GIT_REFLOG_ACTION` detection; emergencies can bypass with `--no-verify`. The cost of the rule is one redirected commit; the benefit is the end of the entire "wrong author" class.
 
-**Secret-pattern scan.** The hook reads a pattern catalogue and scans staged content against 17 regex patterns: SSH/PGP private keys (OPENSSH, RSA, EC, DSA, PGP), cloud credentials (AWS, GCP, GitHub PAT, OAuth tokens), API keys (Anthropic, OpenAI, Slack), and generic password assignments. Critical and high-severity matches block the commit; medium and low produce a warning and proceed. A path allowlist exempts the pattern catalogue itself and public-key files.
+**Secret-pattern scan.** The hook reads a pattern catalogue and scans staged content against 18 regex patterns: SSH/PGP private keys (OPENSSH, RSA, EC, DSA, PGP, encrypted), cloud credentials (AWS, GCP, GitHub PAT/fine-grained/OAuth tokens), API keys (Anthropic, OpenAI, Slack), bearer tokens, hardcoded Foundry identity strings, and generic password assignments. Critical and high-severity matches block the commit; medium and low produce a warning and proceed. A path allowlist exempts the pattern catalogue itself and public-key files.
+
+**Correction (2026-07-28):** the pattern count was previously stated as 17; the live
+catalogue at `conventions/secret-patterns.yaml` carries 18 entries (verified by direct
+count). The category list above is now the accurate breakdown, including two entries
+missing from the original count (`encrypted-private-key`, `hardcoded-foundry-identity`).
+All other claims in this article — the helper-only gate via `FOUNDRY_COMMIT_HELPER`, the
+2 MB size cap, the `GIT_REFLOG_ACTION` merge/rebase/cherry-pick allowance, and the PyYAML
+dependency — were checked against `bin/pre-commit-foundry-gate.sh` and confirmed accurate.
 
 **Size guard.** Blobs over 2 MiB are refused unless the path is on the size allowlist (`data/binary-ledger/`, media-asset repos, fleet-deployment `www/`). This catches the accidental binary commit — large images, copied build artefacts, vendored databases — before history pollution.
 

@@ -2,14 +2,14 @@
 schema: foundry-doc-v1
 title: "Defensa en profundidad pre-commit — Análisis de secretos, límite de tamaño y puerta de ayudante"
 slug: pre-commit-defense-in-depth
-short_description: "Puerta pre-commit de tres verificaciones — commits solo vía asistente, escaneo de 17 patrones de secretos y guarda de tamaño de 2 MiB contra fugas y mala atribución."
+short_description: "Puerta pre-commit de tres verificaciones — commits solo vía asistente, escaneo de 18 patrones de secretos y guarda de tamaño de 2 MiB contra fugas y mala atribución."
 language: es
 category: security
 type: topic
 content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-07-28
 editor: pointsav-engineering
 cites: []
 paired_with: pre-commit-defense-in-depth.md
@@ -23,7 +23,16 @@ El endurecimiento de la Fase 1 cierra esta brecha con un único hook pre-commit 
 
 **Confirmaciones solo mediante ayudante.** El hook rechaza a menos que la variable de entorno del ayudante autorizado esté configurada. Las invocaciones directas de `git commit` — por un operador, un agente o automatización — reciben un mensaje de error claro que apunta al ayudante. Las confirmaciones de fusión y los rebases se permiten mediante la detección de `GIT_REFLOG_ACTION`; las emergencias pueden omitir con `--no-verify`. El costo de la regla es una confirmación redirigida; el beneficio es el fin de toda la clase de errores de "autor incorrecto".
 
-**Análisis de patrones de secretos.** El hook lee el catálogo de patrones y analiza el contenido preparado contra 17 patrones de expresión regular: claves privadas SSH/PGP (OPENSSH, RSA, EC, DSA, PGP), credenciales en la nube (AWS, GCP, GitHub PAT, tokens OAuth), claves API (Anthropic, OpenAI, Slack) y asignaciones genéricas de contraseñas. Las coincidencias de severidad crítica y alta bloquean la confirmación; las de severidad media y baja producen una advertencia y continúan. Una lista de rutas permitidas exime el catálogo de patrones en sí y los archivos de clave pública.
+**Análisis de patrones de secretos.** El hook lee el catálogo de patrones y analiza el contenido preparado contra 18 patrones de expresión regular: claves privadas SSH/PGP (OPENSSH, RSA, EC, DSA, PGP, cifradas), credenciales en la nube (AWS, GCP, GitHub PAT/de grano fino/tokens OAuth), claves API (Anthropic, OpenAI, Slack), tokens portador (bearer) e identidades Foundry codificadas de forma fija, y asignaciones genéricas de contraseñas. Las coincidencias de severidad crítica y alta bloquean la confirmación; las de severidad media y baja producen una advertencia y continúan. Una lista de rutas permitidas exime el catálogo de patrones en sí y los archivos de clave pública.
+
+**Corrección (2026-07-28):** el recuento de patrones se indicaba antes como 17; el
+catálogo real en `conventions/secret-patterns.yaml` contiene 18 entradas (verificado por
+recuento directo). El desglose anterior es ahora exacto, incluidas dos entradas que
+faltaban en el recuento original (`encrypted-private-key`, `hardcoded-foundry-identity`).
+El resto de afirmaciones de este artículo — la puerta de solo ayudante mediante
+`FOUNDRY_COMMIT_HELPER`, el límite de tamaño de 2 MB, la excepción de
+`GIT_REFLOG_ACTION` para fusiones/rebases/cherry-picks, y la dependencia de PyYAML — se
+verificaron contra `bin/pre-commit-foundry-gate.sh` y se confirmaron exactas.
 
 **Guardia de tamaño.** Los blobs de más de 2 MiB se rechazan a menos que la ruta esté en la lista de tamaños permitidos (`data/binary-ledger/`, repositorios de activos multimedia, `www/` de fleet-deployment). Esto detecta la confirmación accidental de binarios — imágenes grandes, artefactos de compilación copiados, bases de datos integradas — antes de la contaminación del historial.
 
