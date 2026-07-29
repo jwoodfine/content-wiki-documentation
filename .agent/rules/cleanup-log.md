@@ -37,10 +37,14 @@ category at all) — both verified to resolve before committing. Also fixed
 `_index.es.md`'s slug typo (`security-index.es` → `security-index`, same bug class as
 `telemetry-architecture.es.md` fixed earlier this session).
 
-**Still open: `ai/_index.md` has the identical zero-link defect**, per the same
-content-matrix finding — not fixed this pass; needs the 10 `ai/` articles read first
-(not yet done this session, unlike `security/`'s 13 which were already read in full
-during the Phase 1c sweep).
+**`ai/_index.md`'s identical defect — CLOSED same session.** Read all 10 `ai/` articles
+in full, then rewrote as a curated MOC (grouped: the Doorman boundary, compute tiers,
+entity extraction + training loop), same discipline as `security/` above. Explicitly
+cross-linked the category's own headline claim ("the core runs fully without it") to
+[[substrate-without-inference-base-case]] in `substrate/`, since that's where the
+article actually lives — flagged, not silently left as a dangling promise. Also fixed
+the same `_index.es.md` slug-typo pattern (`ai-index.es` → `ai-index`). Both categories
+either agent flagged with a zero-link landing page are now fixed.
 
 ### 2026-07-28 — `scaling-coordinated-development-*` three-way duplicate: CLOSED (execution of the 2026-07-09 blocked follow-up)
 
