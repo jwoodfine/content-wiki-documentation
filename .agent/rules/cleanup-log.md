@@ -18,7 +18,14 @@ Last updated: 2026-07-28.
 
 ### 2026-07-28 — MAJOR: ~91 files in this repo (108 across documentation+projects) have a broken `slug:` — Spanish readers are silently served English content
 
-`Opened: 2026-07-28. NOT YET FIXED — flagged to operator for a scale decision.`
+`Opened and closed: 2026-07-28.` **FIXED** — flagged to the operator given the scale
+(108 files across 2 repos), operator approved a full fix same session. All 91 files in
+this repo (+ 17 in `media-knowledge-projects`) had their `slug:` field's trailing `.es`
+stripped via a verified-safe scripted pass (checked for quoting/formatting edge cases
+first — none found; every match was a plain `slug: <name>.es` line). Verified 0 remaining
+matches for the broken pattern corpus-wide, and 0 mismatches between every ES file's new
+slug and its EN sibling's slug. Commit `440d2d4` (this repo), `f2205cd`
+(`media-knowledge-projects`). Frontmatter-only change, no prose touched.
 
 Found by chance while fixing the 3rd instance of what looked like an isolated typo. A
 corpus-wide grep (`grep -rln "^slug: .*\.es$" --include="*.es.md" .`) found **91 files in
@@ -42,16 +49,10 @@ silently falls through to serving the **English** article on the Spanish URL. No
 no visible sign anything is wrong — this defeats the bilingual promise for roughly a
 third of this repo's article count.
 
-**Not fixed this session.** The mechanical fix (strip the trailing `.es` from each
-file's `slug:` field) is low-risk and touches only frontmatter, not prose — but 91 files
-in this repo alone is a scale decision, not something to fold into an incremental
-session unprompted. `_index.es.md` files use a slightly different slug shape (e.g.
-`patterns-index.es`) and should be swept in the same pass. Full file list is the grep
-above, not yet independently re-verified exhaustive.
+See the FIXED note above — `_index.es.md` files (e.g. `patterns-index.es` →
+`patterns-index`) were included in the same pass, same fix logic.
 
 ---
-
-## Open
 
 ### 2026-07-28 — `security/_index.md` MOC written (EN+ES): was 0-link prose, confirmed worst landing page in the wiki by both content-matrix design agents
 
@@ -197,10 +198,6 @@ whether the intended UX is (a) keep the stub pages and remove the now-pointless
 redirects, or (b) remove the stub pages and let the 301 actually fire, is a real
 editorial/routing decision, not a mechanical cleanup. Flagging for an operator/Command
 call rather than picking one unilaterally.
-
----
-
-## Open
 
 ---
 
