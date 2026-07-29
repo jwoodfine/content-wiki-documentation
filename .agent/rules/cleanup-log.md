@@ -16,6 +16,43 @@ Last updated: 2026-07-28.
 
 ## Open
 
+### 2026-07-28 — MAJOR: ~91 files in this repo (108 across documentation+projects) have a broken `slug:` — Spanish readers are silently served English content
+
+`Opened: 2026-07-28. NOT YET FIXED — flagged to operator for a scale decision.`
+
+Found by chance while fixing the 3rd instance of what looked like an isolated typo. A
+corpus-wide grep (`grep -rln "^slug: .*\.es$" --include="*.es.md" .`) found **91 files in
+this repo** (plus 17 more in `media-knowledge-projects`; `media-knowledge-corporate` is
+clean, 0 hits) whose frontmatter `slug:` carries a trailing `.es` — e.g.
+`slug: doorman-protocol.es` instead of `slug: doorman-protocol`.
+
+**Confirmed against the live engine source**, not assumed:
+`app-mediakit-knowledge/src/content/walk.rs` — `ContentIndex::insert()` keys every
+document by `(doc.slug, doc.lang)`; `resolve(slug, lang)` looks up `(slug, lang)` and,
+on a miss, falls back to `(slug, Lang::En)`. The module doc comment states the intended
+contract directly: "Bilingual `.es.md` siblings share a slug and differ only by
+language." The path-derived fallback slug (used when frontmatter omits `slug:`)
+explicitly strips `.es` (own unit test: `path_slug("bar.es.md") == "bar"`). A live engine
+unit test (`builds_index_and_resolves_by_slug`) demonstrates the correct pattern: an EN
+and an ES file with the *identical* `slug: zero-container-inference` in both.
+
+**Practical effect**: for every affected article, `/es/wiki/<slug>` calls
+`resolve(slug, Es)`, misses (the ES doc is actually indexed under `slug + ".es"`), and
+silently falls through to serving the **English** article on the Spanish URL. No error,
+no visible sign anything is wrong — this defeats the bilingual promise for roughly a
+third of this repo's article count.
+
+**Not fixed this session.** The mechanical fix (strip the trailing `.es` from each
+file's `slug:` field) is low-risk and touches only frontmatter, not prose — but 91 files
+in this repo alone is a scale decision, not something to fold into an incremental
+session unprompted. `_index.es.md` files use a slightly different slug shape (e.g.
+`patterns-index.es`) and should be swept in the same pass. Full file list is the grep
+above, not yet independently re-verified exhaustive.
+
+---
+
+## Open
+
 ### 2026-07-28 — `security/_index.md` MOC written (EN+ES): was 0-link prose, confirmed worst landing page in the wiki by both content-matrix design agents
 
 `Opened and closed: 2026-07-28.` Both the structural and reader-journey content-matrix
