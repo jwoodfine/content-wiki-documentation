@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-22
+last_edited: 2026-07-28
 editor: pointsav-engineering
 paired_with: diode-standard.md
 short_description: "Topología de seguridad fundacional de los sistemas operativos PointSav — flujo de comandos unidireccional de autoridad a sujeto que elimina el movimiento lateral por diseño."
@@ -64,6 +64,19 @@ El movimiento lateral — un atacante que compromete un nodo y lo usa para alcan
 | `os-orchestration` es comprometido | El atacante tiene las claves de cada Totebox de la flota | `os-orchestration` no tiene claves de Totebox; solicita capacidades firmadas por consulta, así que un compromiso completo no proporciona material de descifrado |
 
 ## El adaptador
+
+**Corrección (2026-07-28):** no se encontró ni `service-pointsav-link` ni un paquete
+`pointsav-protocol` en ninguna parte de `pointsav-monorepo` — no existe ningún directorio
+de crate con ninguno de los dos nombres, y una búsqueda en todo el corpus de ambas
+cadenas no devuelve nada fuera de este artículo. El único crate del monorepo con un
+nombre similar, `moonshot-protocol`, es un marcador de posición de 7 líneas (`pub fn
+system_status() -> &'static str { "SYSTEM EVENT: moonshot-protocol scaffold verified."
+}`) sin dependencias y sin ninguna lógica relacionada con el Diodo. Una búsqueda en todo
+el corpus de "Diode"/"DiodeStandard" en código Rust tampoco devuelve nada. **Marcado, no
+resuelto** — esto puede describir un adaptador planificado que aún no se ha construido, o
+un diseño que fue renombrado o abandonado; se necesita confirmación de project-totebox
+sobre si algún código aplica actualmente el Estándar del Diodo antes de corregir esta
+sección.
 
 El Diodo lo aplica un pequeño servicio conectable en caliente, [[service-pointsav-link|`service-pointsav-link`]] (el paquete `pointsav-protocol`). Es el único código que traduce comandos de autoridad en operaciones ejecutables por el Sujeto.
 

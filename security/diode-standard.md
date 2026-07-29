@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-22
+last_edited: 2026-07-28
 editor: pointsav-engineering
 paired_with: diode-standard.es.md
 short_description: "Foundational security topology of the PointSav OS family — unidirectional command flow from authority to subject that removes lateral-movement attacks by design."
@@ -64,6 +64,17 @@ Lateral movement — an attacker compromising one node and using it to reach mor
 | `os-orchestration` is compromised | The attacker holds the keys to every Totebox in the fleet | `os-orchestration` holds no Totebox keys; it requests signed capabilities per query, so a full Orchestration compromise yields no Totebox decryption material |
 
 ## The adapter
+
+**Correction (2026-07-28):** neither `service-pointsav-link` nor a `pointsav-protocol`
+package was found anywhere in `pointsav-monorepo` — no crate directory of either name
+exists, and a corpus-wide search for both strings returns nothing outside this article.
+The one crate in the monorepo with a matching name, `moonshot-protocol`, is a 7-line
+placeholder (`pub fn system_status() -> &'static str { "SYSTEM EVENT: moonshot-protocol
+scaffold verified." }`) with no dependencies and no Diode-related logic. A corpus-wide
+search for "Diode"/"DiodeStandard" in Rust source also returns nothing. **Flagged, not
+resolved** — this may describe a planned adapter that hasn't been built yet, or a design
+that was renamed/abandoned; needs project-totebox confirmation of whether any code
+currently enforces the Diode Standard at all before this section is corrected.
 
 The Diode is enforced by a small, hot-pluggable service, [[service-pointsav-link|`service-pointsav-link`]] (the `pointsav-protocol` package). It is the only code that translates authority commands into Subject-executable operations.
 
