@@ -251,18 +251,34 @@ against `app-mediakit-knowledge`'s routing: redirects.yaml is only consulted whe
 article exists at that slug) and have been removed. No content changed; only the stale
 routing config.
 
-**Genuinely stub-shaped, not yet resolved.** `design-color.md`, `design-motion.md`,
-`design-spacing.md`, `design-typography.md` are real 3-sentence pointer stubs
-(`status: stub`) matching Decision #7's intent. But git history shows this isn't a
-forgotten `git rm` — commit `9fca6cd` ("add stub aliases for moved foundation token
-slugs") *deliberately* added these back after the original `git rm` (commit `9bbee55`),
-which reads as an intentional Wikipedia-style "this moved, here's a pointer" design
-choice, not an accident. Their `redirects.yaml` entries are also currently dead code for
-the same routing reason (a live stub file shadows the redirect). **Not resolved here** —
-whether the intended UX is (a) keep the stub pages and remove the now-pointless
-redirects, or (b) remove the stub pages and let the 301 actually fire, is a real
-editorial/routing decision, not a mechanical cleanup. Flagging for an operator/Command
-call rather than picking one unilaterally.
+**Genuinely stub-shaped — RESOLVED 2026-07-28 (operator-directed).** `design-color.md`,
+`design-motion.md`, `design-spacing.md`, `design-typography.md` were real 3-sentence
+pointer stubs (`status: stub`) matching Decision #7's intent. Git history showed this
+wasn't a forgotten `git rm` — commit `9fca6cd` ("add stub aliases for moved foundation
+token slugs") *deliberately* added these back after the original `git rm` (commit
+`9bbee55`). The open question was whether to (a) keep the stubs and remove the
+now-pointless redirects, or (b) remove the stubs and let the 301 fire.
+
+**Before deciding, checked whether option (b) was even safe** — it wasn't, as first
+found: the `redirects.yaml` destinations (`design.pointsav.com/foundations/<slug>`) all
+returned live **HTTP 404**. `design.pointsav.com` was rebuilt (new site-wide IA) sometime
+after the 2026-05-16 migration and never carried the old paths forward — the stub pages
+had accidentally been the only thing preventing a 404 for anyone who *did* get through
+to the redirect. Located the actual current destinations
+(`design.pointsav.com/elements/<name>/overview`) via the live site's own navigation and
+verified all 4 render real, matching token content before touching anything — confirmed
+against `pointsav-design-system`'s own repo too (`docs/foundations/*.md` files exist
+there, matching the content, just not at the URL the old redirect assumed).
+
+**Fixed properly, not just picked a side**: corrected the 4 `redirects.yaml` targets to
+the verified working URLs, then removed the 4 stub articles (EN+ES) now that the
+redirect they'd been silently protecting against actually works. Also converted
+`design-system/_index.md`'s "Foundation tokens" section (EN+ES) from internal-looking
+`[[wikilinks]]` to explicit external links, since a wiki-style link that silently leaves
+the site to a different domain is a worse reader experience than an honest external
+link — even though the wikilink form would have worked mechanically (the `[[slug]]`
+render is a pure syntactic transform to `/wiki/slug`, unconditional on whether a live
+article exists; it would have gone through the same redirect chain). Commit `1f22fd8`.
 
 ---
 
