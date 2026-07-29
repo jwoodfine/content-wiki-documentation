@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Orquestación Totebox como entorno de desarrollo"
-slug: totebox-orchestration-development.es
+slug: totebox-orchestration-development
 category: architecture
 type: topic
 content_type: topic

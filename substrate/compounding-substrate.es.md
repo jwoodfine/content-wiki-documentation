@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Sustrato compuesto"
-slug: compounding-substrate.es
+slug: compounding-substrate
 category: substrate
 type: topic
 content_type: topic

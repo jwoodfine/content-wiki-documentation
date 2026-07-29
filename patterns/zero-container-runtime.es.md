@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Tiempo de ejecución sin contenedores"
-slug: zero-container-runtime.es
+slug: zero-container-runtime
 category: patterns
 type: topic
 content_type: topic

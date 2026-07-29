@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Disciplina de niveles de modelo"
-slug: model-tier-discipline.es
+slug: model-tier-discipline
 category: patterns
 type: topic
 content_type: topic

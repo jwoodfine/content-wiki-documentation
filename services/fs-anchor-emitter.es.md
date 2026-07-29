@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Emisor de anclaje FS"
-slug: fs-anchor-emitter.es
+slug: fs-anchor-emitter
 category: services
 type: topic
 content_type: topic

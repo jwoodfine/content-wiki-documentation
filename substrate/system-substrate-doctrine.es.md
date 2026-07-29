@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Doctrina del sustrato del sistema"
-slug: system-substrate-doctrine.es
+slug: system-substrate-doctrine
 category: substrate
 type: topic
 content_type: topic

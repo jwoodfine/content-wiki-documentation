@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Postura de divulgación continua BCSC"
-slug: bcsc-disclosure-posture.es
+slug: bcsc-disclosure-posture
 category: governance
 type: topic
 content_type: topic

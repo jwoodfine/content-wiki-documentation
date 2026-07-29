@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Disciplina de cómputo de límite único"
-slug: single-boundary-compute-discipline.es
+slug: single-boundary-compute-discipline
 category: substrate
 type: topic
 content_type: topic

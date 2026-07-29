@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "TUI como productora de corpus"
-slug: tui-corpus-producer.es
+slug: tui-corpus-producer
 category: substrate
 type: topic
 content_type: topic

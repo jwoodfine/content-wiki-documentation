@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Sistemas"
-slug: _index.es
+slug: _index
 short_description: "Los sistemas operativos de propósito específico que comparten un sustrato seL4 y Rust común — Totebox, Console, Workplace, Orchestration, Infrastructure, Network Admin, MediaKit y PrivateGit — cada uno realizando un trabajo, sin características que no necesita, y comunicándose a través de una disciplina de protocolo común basada en Diode."
 lang: es
 category: systems

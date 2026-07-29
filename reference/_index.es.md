@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Referencia"
-slug: _index.es
+slug: _index
 short_description: "Materiales definitorios para colaboradores en todas las audiencias: guías de estilo para cada género de documento, filosofía editorial, corpus de referencia de BIM e inmuebles, glosario y terminología específica de la plataforma."
 lang: es
 category: reference

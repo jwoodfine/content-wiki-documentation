@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Escalera de cuatro niveles del sustrato SLM"
-slug: four-tier-slm-substrate.es
+slug: four-tier-slm-substrate
 category: substrate
 type: topic
 content_type: topic

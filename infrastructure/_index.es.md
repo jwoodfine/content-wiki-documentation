@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Infraestructura"
-slug: _index.es
+slug: _index
 short_description: "Topología de implementación de flota, runtime operacional en la nube e infraestructura física — el sustrato de almacenamiento del registro WORM, patrones de despliegue en el borde, la malla privada WireGuard, la telemetría soberana, las operaciones de cableado de claves y el vault contable que ancla la superficie contable PYME."
 lang: es
 category: infrastructure

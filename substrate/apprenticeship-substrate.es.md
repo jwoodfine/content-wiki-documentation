@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Sustrato de aprendizaje"
-slug: apprenticeship-substrate.es
+slug: apprenticeship-substrate
 lang: es
 paired_with: apprenticeship-substrate.md
 category: substrate

@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Patrones de diseño"
-slug: patterns-index.es
+slug: patterns-index
 category: patterns
 type: topic
 content_type: topic

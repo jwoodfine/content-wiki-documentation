@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Emparejamiento como permiso"
-slug: pairing-as-permission.es
+slug: pairing-as-permission
 category: patterns
 type: topic
 content_type: topic

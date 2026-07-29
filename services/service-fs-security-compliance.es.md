@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Postura de seguridad y cumplimiento de service-fs"
-slug: service-fs-security-compliance.es
+slug: service-fs-security-compliance
 category: services
 type: topic
 content_type: topic

@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Visión general de la arquitectura de la plataforma"
-slug: architecture.es
+slug: architecture
 short_description: "La plataforma está diseñada alrededor de la coherencia criptográfica distribuida y la capacidad de arranque soberana, con la capacidad de reducir un archivo federado a una imagen arrancable autónoma transferible entre entornos."
 category: architecture
 type: topic

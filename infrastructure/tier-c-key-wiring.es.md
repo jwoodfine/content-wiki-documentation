@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Conexión de claves del nivel C"
-slug: tier-c-key-wiring.es
+slug: tier-c-key-wiring
 category: infrastructure
 type: topic
 content_type: topic

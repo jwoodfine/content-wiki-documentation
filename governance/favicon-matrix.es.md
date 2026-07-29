@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Matriz de favicons e identidad de pestaña"
-slug: favicon-matrix.es
+slug: favicon-matrix
 category: governance
 type: topic
 content_type: topic

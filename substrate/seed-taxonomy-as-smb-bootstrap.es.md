@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Taxonomía semilla como Bootstrap para PYMEs"
-slug: seed-taxonomy-as-smb-bootstrap.es
+slug: seed-taxonomy-as-smb-bootstrap
 category: substrate
 type: topic
 content_type: topic

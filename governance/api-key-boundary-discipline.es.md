@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Disciplina de límite para claves de API"
-slug: api-key-boundary-discipline.es
+slug: api-key-boundary-discipline
 category: governance
 type: topic
 content_type: topic

@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Propiedad intelectual del grafo del cliente"
-slug: customer-owned-graph-ip.es
+slug: customer-owned-graph-ip
 category: substrate
 type: topic
 content_type: topic

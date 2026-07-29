@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Ordenamiento cliente-primero"
-slug: customer-first-ordering.es
+slug: customer-first-ordering
 category: patterns
 type: topic
 content_type: topic

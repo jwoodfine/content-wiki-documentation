@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Disciplina de archivos en la raíz"
-slug: root-files-discipline.es
+slug: root-files-discipline
 category: reference
 type: topic
 content_type: topic

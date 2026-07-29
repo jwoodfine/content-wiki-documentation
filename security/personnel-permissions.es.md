@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Personal y permisos"
-slug: personnel-permissions.es
+slug: personnel-permissions
 category: security
 type: topic
 content_type: topic

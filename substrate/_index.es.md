@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Sustrato"
-slug: substrate-index.es
+slug: substrate-index
 category: substrate
 type: topic
 content_type: topic

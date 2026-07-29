@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Registro de plantillas (service-email-template)"
-slug: template-ledger.es
+slug: template-ledger
 category: services
 type: topic
 content_type: topic

@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Substrato de flujo inverso"
-slug: reverse-flow-substrate.es
+slug: reverse-flow-substrate
 category: substrate
 type: topic
 content_type: topic

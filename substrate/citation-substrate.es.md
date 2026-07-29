@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Sustrato de citas"
-slug: citation-substrate.es
+slug: citation-substrate
 lang: es
 paired_with: citation-substrate.md
 category: substrate

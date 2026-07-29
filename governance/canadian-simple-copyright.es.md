@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Canadian-simple copyright posture"
-slug: canadian-simple-copyright.es
+slug: canadian-simple-copyright
 category: governance
 type: topic
 content_type: topic

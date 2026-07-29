@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Decisiones de arquitectura"
-slug: architecture-decisions.es
+slug: architecture-decisions
 lang: es
 paired_with: architecture-decisions.md
 category: governance

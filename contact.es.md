@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Contacto"
-slug: contact.es
+slug: contact
 category: governance
 type: governance
 content_type: page

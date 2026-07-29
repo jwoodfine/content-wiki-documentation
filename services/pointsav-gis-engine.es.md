@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Motor GIS de PointSav"
-slug: pointsav-gis-engine.es
+slug: pointsav-gis-engine
 category: services
 type: topic
 content_type: topic

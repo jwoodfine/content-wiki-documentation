@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Inteligencia de Ubicación: Recopilación de Datos"
-slug: collect-location-intelligence-data.es
+slug: collect-location-intelligence-data
 lang: es
 paired_with: collect-location-intelligence-data.md
 short_description: "Ingesta de datos de cadenas e infraestructura VWH y PKS al pipeline de inteligencia de ubicación desde OpenStreetMap — manual de referencia para reingestar o extender a nuevas cadenas y países."

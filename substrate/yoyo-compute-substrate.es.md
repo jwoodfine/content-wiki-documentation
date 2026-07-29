@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Substrato de Cómputo Yo-Yo"
-slug: yoyo-compute-substrate.es
+slug: yoyo-compute-substrate
 category: substrate
 type: topic
 content_type: topic

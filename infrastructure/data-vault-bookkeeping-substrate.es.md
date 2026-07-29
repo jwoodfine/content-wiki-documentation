@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Sustrato de bóveda de datos para contabilidad"
-slug: data-vault-bookkeeping-substrate.es
+slug: data-vault-bookkeeping-substrate
 category: infrastructure
 type: topic
 content_type: topic

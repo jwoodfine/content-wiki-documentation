@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Contribuir a PointSav Knowledge"
-slug: contribute.es
+slug: contribute
 category: governance
 type: governance
 content_type: topic

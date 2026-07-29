@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Almacenamiento inmutable y respaldo seguro"
-slug: storage.es
+slug: storage
 short_description: "La plataforma ejecuta escrituras de solo anexar a nivel de hardware para proporcionar un registro inalterable y a prueba de manipulaciones, respaldando la eliminación legal a través de destrucción de claves criptográficas y protección de copias de seguridad mediante unidades secundarias emparejadas criptográficamente."
 category: infrastructure
 type: topic

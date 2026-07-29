@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Aplicaciones"
-slug: _index.es
+slug: _index
 short_description: "Aplicaciones internas y orientadas al usuario construidas sobre el sustrato de plataforma PointSav — el motor wiki, la superficie de marketing, el motor de análisis GIS, el workbench de desarrollo en navegador, la puerta de entrada de datos estructurados y los artículos de intención de diseño que enmarcan cómo se componen esas superficies."
 lang: es
 category: applications

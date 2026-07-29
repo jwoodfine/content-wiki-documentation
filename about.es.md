@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Acerca de PointSav Knowledge"
-slug: about.es
+slug: about
 category: governance
 type: governance
 content_type: page

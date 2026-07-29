@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 title: "Arquitectura Leapfrog del wiki de conocimiento"
-slug: knowledge-wiki-leapfrog-architecture.es
+slug: knowledge-wiki-leapfrog-architecture
 short_description: "Estrategia de motor wiki que sirve Markdown plano desde git con interfaz al estilo Wikipedia, alcanzando paridad de memoria muscular antes de la capa de diferenciación."
 category: patterns
 type: topic
