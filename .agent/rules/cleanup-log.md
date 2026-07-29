@@ -75,9 +75,20 @@ not one pattern:**
 condensed adaptation** — each of the 70 flagged pairs needs an individual read before
 any content is added. This is a real, sizeable editorial undertaking (up to 70 articles
 needing Spanish expansion, where the gap is real), not a mechanical batch fix like the
-`.es` slug bug above. Full ratio list not yet saved to a durable file — re-run the
-measurement script (recorded in the BRIEF) rather than re-deriving from this entry if a
-future session picks this up.
+`.es` slug bug above.
+
+**Follow-up same session**: refined the classifier to also catch stub-to-stub pairs
+(both EN and ES marked `quality: stub`/`es_status: stub`, ES pointing back to EN as
+canonical — e.g. `reference/quick-start.es.md`, legitimate) alongside the declared-
+adaptation pattern. **17 of 70 now classified legitimate; 53 remain unclassified.**
+`architecture/customer-hostability.es.md` (0.46 ratio) directly confirmed as a real,
+undeclared gap — missing an entire "Forward-looking" section — and while checking it,
+found a second, separate defect: 4 dead pre-migration `topic-*.md` markdown links in its
+"See also" instead of `[[wikilinks]]`. The link defect is fixed (commit `8c89bac`,
+verified isolated to this one file, not systemic); the content gap itself is not. Full
+measurement script, the refined 53-item list, and this finding are saved durably at
+`project-editorial/.agent/audit/phase1c-documentation-sweep/m9-en-es-parity-2026-07-28.md`
+— read that file directly rather than re-deriving from this log entry.
 
 ---
 
