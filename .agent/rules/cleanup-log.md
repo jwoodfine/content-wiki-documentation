@@ -16,6 +16,50 @@ Last updated: 2026-07-28.
 
 ## Open
 
+### 2026-07-28 — `scaling-coordinated-development-*` three-way duplicate: CLOSED (execution of the 2026-07-09 blocked follow-up)
+
+`Opened: 2026-07-09 (diagnosed, blocked). Closed: 2026-07-28.` Re-surfaced by the
+2026-07-28 content-matrix simulation. Verified all three articles (EN+ES = 6 files) are
+word-for-word identical bodies, confirming the 2026-07-09 diagnosis still held. Found one
+more thing that entry didn't call out explicitly: `architecture/scaling-coordinated-
+development-totebox-archives.md` and `systems/scaling-coordinated-development-totebox-
+archives.md` carried the **identical slug** in two category directories — a genuine
+slug-uniqueness violation (`content-contract.md` §3: slugs resolved globally, not
+per-category), not just a content duplicate. `systems/scaling-coordinated-development-
+sovereign-archives.md` was additionally a leaked draft artifact
+(`forbidden_terms_cleared: false`, draft-schema frontmatter with `session:`/
+`research_trail:` fields) that should never have reached a live category directory.
+
+Verified before executing: all 4 inbound `[[scaling-coordinated-development-totebox-
+archives]]` wikilinks (in `app-orchestration-command-branch-model`/`-publication-flow`,
+EN+ES) reference the surviving slug, not either removed one — no link fixes needed.
+Neither `architecture/_index.md` nor `systems/_index.md` referenced any of the 3 in their
+MOC — no landing-page updates needed.
+
+**Executed 2026-07-28, with explicit operator permission** (the `git rm` was blocked by
+the auto-mode classifier on first attempt, same as it was 2026-07-09 — flagged to the
+operator directly rather than routed around, per standing practice; operator granted
+permission for this specific action): `git rm` on `architecture/scaling-coordinated-
+development-totebox-archives.md`+`.es.md` and `systems/scaling-coordinated-development-
+sovereign-archives.md`+`.es.md`. `systems/scaling-coordinated-development-totebox-
+archives.md`+`.es.md` is now sole canonical (already carried the correct
+`aliases: [scaling-coordinated-development-sovereign-archives]`). Two `redirects.yaml`
+entries added for the removed paths, per the 2026-07-09 plan exactly.
+
+### 2026-07-28 — `location-intelligence-ux` / `location-intelligence-platform`: verified NOT a defect, no action needed
+
+`Opened and closed: 2026-07-28.` Flagged as a DUPLICATE_CANDIDATE on 2026-05-25 (note:
+distinct from the same-slug `applications/location-intelligence-ux` vs `patterns/
+location-intelligence-ux` collision resolved 2026-07-03/09 — this is a different-slug
+pair) and re-surfaced by the 2026-07-28 content-matrix simulation on high slug-token
+similarity. Direct read of both found they are genuinely complementary, not duplicates:
+`location-intelligence-platform` (applications) covers the GIS product's data
+architecture, licensing, and roadmap; `location-intelligence-ux` (patterns) covers
+specifically the interface design philosophy (Conclusion-First rendering, cluster-grade
+visualization). No overlapping facts. **Already correctly cross-linked in both
+directions** in "See also" — no missing link, no merge candidate. Closing the flag as a
+false positive rather than executing a fix that isn't needed.
+
 ### 2026-07-28 — `sovereign-telemetry` / `telemetry-architecture`: not a duplicate, resolved as a one-directional missing cross-link + a slug typo
 
 `Opened and closed (cross-link/slug); one item left open below.` Flagged as a
@@ -295,7 +339,12 @@ so it is not corrected from this session; flagged in the mailbox message to Comm
 
 ### 2026-07-09 — Command-authored drafts-outbound sweep (8 files): duplicate-publish "Sovereign Archives" defect found + partially fixed; 2 GUIDEs flagged as likely internal-only
 
-`Opened: 2026-07-09.`
+`Opened: 2026-07-09.` **The duplicate-publish defect itself CLOSED 2026-07-28** — see the
+dated entry near the top of this file's Open section ("`scaling-coordinated-development-*`
+three-way duplicate: CLOSED") for the actual `git rm` + `redirects.yaml` execution this
+entry's own "NOT completed" note below was waiting on. Rest of this entry (the seL4
+sovereign-archive title/slug defect flagged as a separate follow-up, the 2 internal-only
+GUIDE drafts) is unaffected and still stands as originally written.
 
 **Scope:** project-editorial processed 8 drafts staged by Command Session (Session 111) in
 `.agent/drafts-outbound/`, all marked `route: project-editorial`, `forbidden_terms_cleared: false`

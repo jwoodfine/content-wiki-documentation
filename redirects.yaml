@@ -7,6 +7,20 @@
 
 redirects:
 
+  # scaling-coordinated-development three-way duplicate resolved 2026-07-28 (diagnosed
+  # 2026-07-09, execution blocked by the permission system until operator sign-off this
+  # session). architecture/...-totebox-archives.md and systems/...-totebox-archives.md
+  # had the identical slug in two categories (a real bug — slugs must be globally
+  # unique); systems/...-sovereign-archives.md was a leaked draft with
+  # forbidden_terms_cleared: false, never meant to publish live. Both removed;
+  # systems/scaling-coordinated-development-totebox-archives.md is sole canonical
+  # (already carries aliases: [scaling-coordinated-development-sovereign-archives]).
+  - from: /systems/scaling-coordinated-development-sovereign-archives
+    to: /systems/scaling-coordinated-development-totebox-archives
+
+  - from: /architecture/scaling-coordinated-development-totebox-archives
+    to: /systems/scaling-coordinated-development-totebox-archives
+
   # research/ category retired 2026-07-15 (naming-convention.md §13 Decision #13) —
   # its one real article relocated to reference/; slug unchanged, path only.
   - from: /research/preprint-notice-convention
