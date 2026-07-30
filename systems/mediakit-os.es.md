@@ -10,12 +10,31 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-25
+last_edited: 2026-07-30
 editor: pointsav-engineering
 paired_with: mediakit-os.md
 short_description: "os-mediakit es el sistema operativo de cara al público en la familia PointSav, que aloja el sitio web de marketing de una empresa, su wiki interna y su sala de prensa de cumplimiento en un único dispositivo soberano de propiedad completa."
 cites: []
 ---
+
+**Corrección — conflicto arquitectónico con el artículo canónico `os-mediakit`, no
+resuelto (2026-07-30):** el slug de este artículo (`mediakit-os`) está invertido
+respecto a la convención de la Matriz de Nomenclatura, y su propio texto lo llama
+"`os-mediakit`" en todo momento — ya existe un artículo canónico separado con el slug
+correcto (`systems/os-mediakit.md`, `last_edited: 2026-07-11`). Más allá del problema
+de nomenclatura, ambos artículos hacen afirmaciones técnicas **directamente
+contradictorias**: este artículo describe una "base FreeBSD reforzada" con una hoja de
+ruta de cuatro fases FreeBSD→NanoBSD→núcleo personalizado→unikernel; `os-mediakit.md`
+describe el sistema real actual como Ubuntu 24.04 (con puertos de servicio verificados
+de forma independiente en esta sesión) y una hoja de ruta planificada hacia seL4
+Microkit, **sin mención alguna de FreeBSD**. Por separado, la sección "conexión Diodo"
+de este artículo nombra `service-pointsav-link` como el crate adaptador — el mismo
+nombre de crate ya confirmado inexistente en todo el monorepo en la corrección de
+`diode-standard.md` de esta sesión. **No fusionado ni archivado en este pase** — si
+este artículo simplemente está obsoleto/superado o describe una narrativa de
+cumplimiento/producto aún prevista y distinta de la descripción de capa de
+infraestructura de `os-mediakit.md` es una decisión editorial señalada aquí, no
+resuelta unilateralmente.
 
 `os-mediakit` es el sistema operativo de cara al público en la familia PointSav. Aloja el sitio web de marketing de una empresa, su wiki interna y su sala de prensa de cumplimiento — tres cargas de trabajo que habitualmente viven en plataformas de terceros arrendadas y que desaparecen en el momento en que vence una suscripción. El operador objetivo es un [[compliance-and-continuous-disclosure|Emisor Informante]]: una empresa con obligaciones de divulgación estatutaria que necesita prueba matemática de qué divulgó y exactamente cuándo. `os-mediakit` está construido sobre una base FreeBSD reforzada y distribuye tres superficies de aplicación como cargas de trabajo aisladas. Este artículo cubre las tres superficies, la justificación del licenciamiento FreeBSD, el [[worm-ledger-design|Libro Mayor de Cumplimiento]], el adaptador [[diode-standard|Diodo]] y los dos modos de despliegue.
 

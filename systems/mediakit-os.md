@@ -10,12 +10,33 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-25
+last_edited: 2026-07-30
 editor: pointsav-engineering
 paired_with: mediakit-os.es.md
 short_description: "os-mediakit is the public-facing operating system in the PointSav family, hosting a company's marketing site, wiki, and newsroom on one sovereign appliance it owns."
 cites: []
 ---
+
+**Correction — architectural conflict with the canonical `os-mediakit` article, not
+resolved (2026-07-30):** this article's own slug (`mediakit-os`) is reversed relative
+to the Nomenclature Matrix convention, and its own body text calls the subject
+"`os-mediakit`" throughout — a separate, canonical article already exists at that
+correct slug (`systems/os-mediakit.md`, `last_edited: 2026-07-11`). Beyond the naming
+issue, the two articles make **directly contradictory technical claims**: this article
+describes a "hardened FreeBSD base" with a four-phase FreeBSD→NanoBSD→custom-kernel→
+unikernel roadmap; `os-mediakit.md` describes the real, current system as Ubuntu 24.04
+(with specific, independently-verified service ports matching this session's own
+direct reads of live CLAUDE.md files — 9090/9093/9095 for the three wikis) and a
+planned seL4 Microkit roadmap, with **no mention of FreeBSD anywhere**. Separately,
+this article's "Diode connection" section names `service-pointsav-link` as the
+enforcing adapter crate — the same crate name already confirmed nonexistent anywhere
+in the monorepo in this session's `diode-standard.md` correction. **Not merged or
+archived in this pass** — whether this article is simply stale/superseded (in which
+case it should archive per the newly-adopted `.archive/` convention, redirecting to
+`os-mediakit`) or describes a still-intended compliance/product narrative distinct
+from `os-mediakit.md`'s infrastructure-layer description (in which case only its
+false technical claims need fixing, not the whole article) is an editorial judgment
+call flagged here, not resolved unilaterally.
 
 `os-mediakit` is the public-facing operating system in the PointSav family. It hosts a company's marketing website, its internal wiki, and its compliance newsroom — three workloads that typically live on rented third-party platforms and that disappear the moment a subscription ends. The target operator is a [[compliance-and-continuous-disclosure|Reporting Issuer]]: a company with statutory disclosure obligations that needs mathematical proof of what it disclosed and exactly when. `os-mediakit` is built on a hardened FreeBSD base and ships three application surfaces as isolated workloads. This article covers the three surfaces, the FreeBSD licensing rationale, the [[worm-ledger-design|Compliance Ledger]], the [[diode-standard|Diode]] adapter, and the two deployment postures.
 
