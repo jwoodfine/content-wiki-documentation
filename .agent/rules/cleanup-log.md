@@ -16,6 +16,27 @@ Last updated: 2026-07-28.
 
 ## Open
 
+### 2026-07-30 — `os-privategit-workbench.md` (systems/) archived as a redundant duplicate of `app-privategit-workbench.md` (applications/) — CLOSED
+
+`Opened and closed: 2026-07-30.` Content-matrix merge-candidate work (round-1
+Decision #7): flagged as "same subject, two categories." Read both in full — genuinely
+the same crate (`app-privategit-workbench`), same architecture, near-identical text,
+not complementary. The `systems/` copy's own slug (`os-privategit-workbench`)
+incorrectly used an `os-` prefix for what its own body identifies as an `app-*` crate;
+`applications/app-privategit-workbench.md` is more complete (full keyboard-shortcut
+list, an explicit "Planned additions" section), more recently maintained
+(`last_edited: 2026-05-29` vs `2026-05-25`), and correctly categorized per
+`naming-convention.md` §4's `os-*`→`systems/`, `app-*`→`applications/` split.
+
+Fixed the 4 real inbound `[[os-privategit-workbench]]` wikilinks (`systems/_index.md`+
+`.es.md`, `systems/os-privategit.md`+`.es.md`) to point to `[[app-privategit-workbench]]`
+instead. Archived the `systems/` copy (EN+ES) to `systems/.archive/` — the **first real
+use of the archive-before-delete convention** adopted this session (per-category
+nested `.archive/`, dotted, mandatory frontmatter: `status: archived`, `archived:`,
+`archived_reason:`, `superseded_by:`). Added a `redirects.yaml` entry
+(`/systems/os-privategit-workbench` → `/applications/app-privategit-workbench`).
+Commit `3e2b54b`.
+
 ### 2026-07-30 — `mediakit-os.md` vs `os-mediakit.md`: NOT a simple slug duplicate — genuine architectural conflict, flagged not resolved
 
 `Opened: 2026-07-30.` Content-matrix merge-candidate work (round-1 Decision #7)
