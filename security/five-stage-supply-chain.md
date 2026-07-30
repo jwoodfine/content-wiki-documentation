@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-07-30
 editor: pointsav-engineering
 paired_with: five-stage-supply-chain.es.md
 short_description: "Code path from contributor environment to production in five stages, with a double-blind air-gap keeping production credentials and data out of contributors' reach."
@@ -23,6 +23,25 @@ references:
     text: "Hammant, P. 'Trunk Based Development.' trunkbaseddevelopment.com, 2017."
     url: "https://trunkbaseddevelopment.com/"
 ---
+
+**Major correction (2026-07-30):** this article describes a GitHub fork → pull-request →
+squash-and-merge model ("Stage 2 — Offer: Open pull request into `pointsav/<repo>`";
+"Stage 3 — Audit: the administrator performs a squash-and-merge... this is the legally
+significant moment"). The current, real commit/promotion mechanism works differently:
+`~/Foundry/bin/commit-as-next.sh` commits directly to the working branch with
+alternating `jwoodfine`/`pwoodfine` author identity (no PR, no review gate), and
+`~/Foundry/bin/promote.sh` cherry-picks commits directly onto the canonical branch and
+pushes — confirmed by reading both scripts: neither contains any "pull request",
+"squash", or GitHub-API code path; `promote.sh`'s core operation is a `git
+merge-base`/cherry-pick loop, not a GitHub PR merge. `AGENT.md`'s own "How to commit"
+section documents the same direct-commit-then-promote flow, with no PR step. The
+double-blind air-gap concept (contributor and customer mutually invisible; vendor is
+the only entity that sees both ends) and the three-organisation topology
+(`pointsav`/`woodfine`/personal forks) appear accurate as a structural description —
+only the specific "PR + squash-merge" mechanics of Stage 2/3 are unconfirmed against
+the current tooling. **Flagged as a partial architectural mismatch, not line-edited** —
+may describe an earlier or intended mechanism rather than the one actually running
+today; needs Command confirmation of which is authoritative before rewriting.
 
 Code moves from a contributor's local environment to a production deployment through five distinct stages — each with a defined actor, a specific action, and an industry-standard counterpart. The arrangement is deliberately circular: every working session begins by resetting to the freshly-verified vendor truth, eliminating the logic drift that accumulates when contributors build atop their own outdated branches. A single governance gate — the administrator's squash-and-merge — is where intellectual property transfers and experimental commits are collapsed into a single corporate record. [^1] This article covers the five stages, the double-blind air-gap, and the repository topology.
 

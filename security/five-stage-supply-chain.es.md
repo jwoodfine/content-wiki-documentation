@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-07-30
 editor: pointsav-engineering
 paired_with: five-stage-supply-chain.md
 short_description: "Recorrido del código del entorno del contribuyente a producción en cinco etapas, con brecha de aire de doble ciego que aparta credenciales y datos de producción del contribuyente."
@@ -23,6 +23,18 @@ references:
     text: "Hammant, P. 'Trunk Based Development.' trunkbaseddevelopment.com, 2017."
     url: "https://trunkbaseddevelopment.com/"
 ---
+
+**Corrección mayor (2026-07-30):** este artículo describe un modelo de bifurcación de
+GitHub → pull request → squash-and-merge. El mecanismo real actual de commit/promoción
+funciona de otra manera: `commit-as-next.sh` confirma directamente en la rama de
+trabajo con identidad de autor alternante (`jwoodfine`/`pwoodfine`, sin PR ni puerta de
+revisión), y `promote.sh` aplica cherry-pick de los commits directamente sobre la rama
+canónica y hace push — confirmado leyendo ambos scripts: ninguno contiene un flujo de
+"pull request" o "squash" ni llamadas a la API de GitHub. El concepto de brecha de aire
+de doble ciego y la topología de tres organizaciones parecen precisos como descripción
+estructural — solo la mecánica específica de "PR + squash-merge" de las Etapas 2/3 no
+está confirmada contra las herramientas actuales. **Marcado como un desajuste
+arquitectónico parcial, no editado línea por línea** — requiere confirmación de Command.
 
 El código se mueve desde el entorno local de un contribuyente hasta una implementación de producción a través de cinco etapas distintas — cada una con un actor definido, una acción específica y un equivalente estándar de la industria. El arreglo es deliberadamente circular: cada sesión de trabajo comienza restableciendo al estado del proveedor verificado más reciente, eliminando la deriva lógica que se acumula cuando los contribuyentes construyen sobre sus propias ramas desactualizadas. Una única puerta de gobernanza — el squash-and-merge del administrador — es donde se transfiere la propiedad intelectual y los commits experimentales se colapsan en un único registro corporativo. [^1] Este artículo cubre las cinco etapas, la brecha de aire de doble ciego y la topología del repositorio.
 
