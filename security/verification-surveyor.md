@@ -9,12 +9,26 @@ quality: stub
 short_description: "The Verification Surveyor is the human-in-the-loop component of service-people presenting extracted identity fragments for manual verification before permanent commit."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-07-30
 editor: pointsav-engineering
 cites: []
 paired_with: verification-surveyor.es.md
 ---
 
+**Major correction (2026-07-30):** this article describes a live "Verification
+Surveyor" human-in-the-loop workflow in `service-people` — a hard 10-verifications-
+per-day limit, a terminal UI presenting extracted fragments, and an operator
+pasting back a verified external-directory URL. No such mechanism exists in the real
+`service-people` crate: a corpus-wide grep for "surveyor," any daily-limit constant,
+or external-lookup/LinkedIn logic across every `.rs` file (`acs.rs`, `person.rs`,
+`mcp.rs`, `people_store.rs`, `fs_client.rs`, `http.rs`) returns zero hits. This is the
+same unbuilt-feature pattern already found and corrected this session in
+`capability-based-security.md`, `crypto-attestation.md`, `diode-standard.md`, and
+`genesis-protocol.md`. The article's own `quality: stub` field already signals
+incompleteness, but `status: active` and unhedged present tense throughout still
+present it as an operating mechanism. **Flagged as a whole-article architectural
+mismatch, not line-edited** — needs project-totebox confirmation of whether this is a
+planned design or was simply never built, before rewriting.
 
 > The Verification Surveyor is the architectural checkpoint in [[service-people]] that prevents automated extraction errors from compounding by requiring a human operator to confirm each identity fragment against an off-network source before it is committed to the verified ledger.
 
