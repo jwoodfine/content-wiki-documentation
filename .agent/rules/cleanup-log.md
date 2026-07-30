@@ -16,6 +16,33 @@ Last updated: 2026-07-28.
 
 ## Open
 
+### 2026-07-30 — `mediakit-os.md` vs `os-mediakit.md`: NOT a simple slug duplicate — genuine architectural conflict, flagged not resolved
+
+`Opened: 2026-07-30.` Content-matrix merge-candidate work (round-1 Decision #7)
+flagged `systems/mediakit-os.md` (slug reversed relative to Nomenclature Matrix
+convention) and `systems/os-mediakit.md` (correct slug) as the clearest same-article-
+twice case in the corpus. Reading both in full found something more serious than a
+naming duplicate: the two articles make **directly contradictory technical claims**.
+`mediakit-os.md` (`last_edited: 2026-05-25` prior to this pass) describes a "hardened
+FreeBSD base" with a four-phase FreeBSD→NanoBSD→custom-kernel→unikernel roadmap, a
+"Compliance Ledger" mechanism, and a "Diode" adapter naming `service-pointsav-link` as
+the enforcing crate. `os-mediakit.md` (`last_edited: 2026-07-11`, much more current and
+concrete) describes the real system as Ubuntu 24.04 today — with specific service ports
+(9090/9093/9095) independently verified elsewhere this session against live CLAUDE.md
+files — and a planned seL4 Microkit roadmap, with **zero mention of FreeBSD**.
+`service-pointsav-link` was **already confirmed nonexistent anywhere in the monorepo**
+this same session (`diode-standard.md` correction, commit `58a8821`).
+
+**Not merged or archived** — added a Correction callout to `mediakit-os.md`(+`.es.md`)
+flagging the conflict explicitly (commit `74ebc8f`), but did not resolve which
+disposition is correct: `mediakit-os.md` could be simply stale/superseded content that
+should archive per the newly-adopted `.archive/` convention (redirecting to
+`os-mediakit`), or its compliance-appliance/Diode narrative could be a still-intended
+product-level positioning distinct from `os-mediakit.md`'s infrastructure-layer
+description — matching this session's earlier finding that several apparent
+"duplicates" turned out to be complementary, not redundant. Flagged for an
+operator/Command disposition call, not decided here.
+
 ### 2026-07-28 — CONFIRMED: `reference/wiki-provider-landscape.md` names ~25 real competitors by name, in tension with the workspace's structural-positioning-only rule
 
 `Opened: 2026-07-28. Closed: 2026-07-30.` **Resolved via the 2026-07-30 planning round**
