@@ -18,8 +18,17 @@ Last updated: 2026-07-28.
 
 ### 2026-07-28 — CONFIRMED: `reference/wiki-provider-landscape.md` names ~25 real competitors by name, in tension with the workspace's structural-positioning-only rule
 
-`Opened: 2026-07-28. Confirmed, NOT resolved — needs an operator/Command decision, this
-is a policy question, not an editorial fix a session should make unilaterally.`
+`Opened: 2026-07-28. Closed: 2026-07-30.` **Resolved via the 2026-07-30 planning round**
+(decision #1, asked directly rather than decided unilaterally, per the note below):
+redact to generic categories. Rewrote the article (EN+ES, commit `23e04b9`) around 4
+structural archetypes (collaborative knowledge bases, public-facing wiki engines,
+developer-documentation site generators, personal/networked-thought tools) instead of
+25 named products — same pattern as `zero-container-inference.md`'s "What this rules
+out" section. Verified via grep that no named product survives in either language file
+(one false positive checked and cleared: "outline" as a common noun in "bullet-outline
+page", not the product Outline). The per-provider comparison table became a
+per-archetype advantages table; the 8 cross-cutting failure modes and 5
+gold-standard-gap causes kept their reasoning, generalized to archetype level.
 
 The 2026-07-28 content-matrix simulation (Agent A, structural angle — see
 `.agent/audit/phase1c-documentation-sweep/` in project-editorial) flagged this article
