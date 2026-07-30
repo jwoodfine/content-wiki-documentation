@@ -9,10 +9,30 @@ quality: complete
 short_description: "Contributor identity and permissions expressed through cryptographic pairings rather than database roles — reachability requires a paired os-console."
 status: active
 bcsc_class: forward-looking
-last_edited: 2026-05-25
+last_edited: 2026-07-30
 editor: pointsav-engineering
 paired_with: personnel-permissions.es.md
 ---
+
+**Major correction (2026-07-30):** this article describes a live four-tier (P1–P4)
+cryptographic-pairing permission model, with personnel records holding "display name,
+role, SSH public key, and permission tier." The real identity schema does not match:
+`service-people/src/person.rs`'s `Person` struct is a general identity-ledger record
+(`id` — a UUIDv5 derived from `primary_email`, `name`, `primary_email`,
+`email_aliases`, `organisation`, `created_at`, `updated_at`) — no `role`, no SSH key, no
+permission-tier field at all. A corpus-wide grep for the `P1`/`P2`/`P3`/`P4` tier
+vocabulary returns zero hits anywhere in `service-people`, and the real
+`~/Foundry/pairings.yaml` file carries no tier field either — its actual schema tracks
+`cluster_branch`, `self_service`, `owns_deployments`, `content_class`, and similar
+per-archive fields (see AGENT.md/CLAUDE.md for the fields actually in use), not a
+per-person P1–P4 grant. This is a related finding to the already-corrected
+`machine-based-auth.md` (also this session): that article's real `system-gateway-mba`
+mechanism likewise has a plain `String` role field, not a typed tier enum. **Flagged as
+a whole-article mismatch, not line-edited** — the `app-orchestration-command` section
+is already correctly hedged as planned/next-phase; the P1–P4 tier model and the
+personnel-record schema described here are asserted in present tense but don't match
+what's built. Needs project-totebox/Command confirmation of whether this describes an
+intended future design or is simply inaccurate against current schema.
 
 In [[totebox-orchestration|Totebox Orchestration]], contributor identity and permissions are expressed through cryptographic pairings — not through roles stored in a database or checked at request time. The permission model is [[pairing-as-permission|PairingAsPermission]]: a contributor can reach a resource only if their [[console-os|`os-console`]] instance is paired with the orchestration node that manages that resource. The four permission tiers (P1 through P4) describe what a contributor's pairing set looks like; enforcement is always through the pairing topology.
 

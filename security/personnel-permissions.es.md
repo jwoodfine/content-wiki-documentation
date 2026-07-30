@@ -9,10 +9,22 @@ quality: complete
 short_description: "Identidad y permisos de colaboradores expresados mediante emparejamientos criptográficos, no roles en base de datos — el acceso exige un os-console emparejado con el nodo gestor."
 status: active
 bcsc_class: forward-looking
-last_edited: 2026-05-25
+last_edited: 2026-07-30
 editor: pointsav-engineering
 paired_with: personnel-permissions.md
 ---
+
+**Corrección mayor (2026-07-30):** este artículo describe un modelo de permisos de
+cuatro niveles (P1–P4) basado en emparejamiento criptográfico, con registros de
+personal que contienen "rol, clave pública SSH y nivel de permiso." El esquema real de
+identidad no coincide: la estructura `Person` en `service-people/src/person.rs` es un
+registro genérico de identidad (`id`, `name`, `primary_email`, `email_aliases`,
+`organisation`, marcas de tiempo) — sin campo de rol, clave SSH ni nivel de permiso. Una
+búsqueda exhaustiva de la vocabulario P1–P4 no arroja resultados en `service-people`, y
+el archivo real `pairings.yaml` tampoco contiene ningún campo de nivel. Hallazgo
+relacionado con la corrección ya aplicada a `machine-based-auth.md` en esta misma
+sesión. **Marcado como un desajuste de todo el artículo, no editado línea por línea** —
+requiere confirmación de project-totebox/Command.
 
 En la [[totebox-orchestration|orquestación Totebox]], la identidad y los permisos de los colaboradores se expresan mediante emparejamientos criptográficos — no mediante roles almacenados en una base de datos ni verificados en tiempo de solicitud. El modelo de permisos es [[pairing-as-permission|PairingAsPermission]]: un colaborador puede alcanzar un recurso únicamente si su instancia [[console-os|`os-console`]] está emparejada con el nodo de orquestación que gestiona ese recurso. Los cuatro niveles de permiso (P1 a P4) describen cómo es el conjunto de emparejamientos de un colaborador; la aplicación se realiza siempre a través de la topología de emparejamientos.
 
