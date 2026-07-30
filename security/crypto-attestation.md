@@ -9,12 +9,25 @@ quality: complete
 short_description: "Mechanism by which PointSav edge nodes prove published text integrity to any viewer via client-side SHA-256 hashing, independently verifiable by any auditor."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-07-30
 editor: pointsav-engineering
 cites: []
 paired_with: crypto-attestation.es.md
 ---
 
+**Major correction (2026-07-30):** this article describes a live client-side
+attestation feature — a browser `crypto.subtle.digest('SHA-256')` call that hashes the
+visible article text and displays it "live into the sidebar's metadata block." No such
+code exists in the wiki engine (`app-mediakit-knowledge`): a corpus-wide grep for
+`crypto.subtle`/`SHA-256`/`digest`/`attest` across every `.rs` and `.js` file in the
+crate returns zero hits. `static/app.js` (358 lines) has no hashing logic at all. The
+engine's real sidebar (`src/ui/layout.rs:653`, `fn sidebar(...)`) renders site
+navigation, category links, and the table of contents — no metadata block, no hash
+display. This is the same unbuilt-feature pattern already found and corrected this
+session in `capability-based-security.md`, `diode-standard.md`, and `genesis-protocol.md`.
+**Flagged as a whole-article architectural mismatch, not line-edited** — needs
+project-totebox confirmation of whether client-side attestation is planned or was
+simply never built, before this article is corrected or rewritten.
 
 > Cryptographic payload attestation is the mechanism by which PointSav edge nodes dynamically prove the integrity of their published text content to any viewer, using client-side SHA-256 hashing so that any auditor can independently verify a disclosure has not been altered in transit.
 

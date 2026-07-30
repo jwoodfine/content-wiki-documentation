@@ -11,12 +11,23 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-07-30
 editor: pointsav-engineering
 paired_with: crypto-attestation.md
 cites: []
 ---
 
+**Corrección mayor (2026-07-30):** este artículo describe una función de attestación
+del lado del cliente en vivo — una llamada `crypto.subtle.digest('SHA-256')` del
+navegador. No existe tal código en el motor del wiki (`app-mediakit-knowledge`): una
+búsqueda exhaustiva de `crypto.subtle`/`SHA-256`/`digest`/`attest` en cada archivo `.rs`
+y `.js` del crate no arroja ningún resultado. El `sidebar` real del motor
+(`src/ui/layout.rs:653`) solo renderiza navegación del sitio, enlaces de categoría y la
+tabla de contenidos — no hay bloque de metadatos ni visualización de hash. Mismo patrón
+de función no construida ya encontrado y corregido esta sesión en
+`capability-based-security.md`, `diode-standard.md` y `genesis-protocol.md`. **Marcado
+como desajuste arquitectónico de todo el artículo, no editado línea por línea** —
+requiere confirmación de project-totebox.
 
 La attestación criptográfica de cargas es el mecanismo por el cual los nodos perimetrales de [[pointsav-overview|PointSav]] demuestran dinámicamente la integridad de su contenido textual publicado a cualquier espectador. Utiliza hashing SHA-256 del lado del cliente, de modo que cualquier auditor puede verificar independientemente que una divulgación no ha sido alterada en tránsito. Véase también [[cryptographic-ledgers|registros criptográficos]] y [[zero-execution-routing|enrutamiento de ejecución cero]].
 
