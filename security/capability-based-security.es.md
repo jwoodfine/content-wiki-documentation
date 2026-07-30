@@ -9,7 +9,7 @@ content_type: topic
 quality: complete
 status: active
 audience: public
-bcsc_class: public-disclosure-safe
+bcsc_class: forward-looking
 language_protocol: PROSE-TOPIC
 last_edited: 2026-07-30
 editor: pointsav-engineering
@@ -24,35 +24,28 @@ references:
     url: "https://dl.acm.org/doi/10.1145/775265.775268"
 ---
 
-**Corrección mayor (2026-07-30):** este artículo describe un sistema de capacidades en
-vivo y ejecutado — un "gestor de capacidades de PointSav" que ejecuta "envoltorios de
-aislamiento y puentes de hipervisor". No se encontró tal código en ningún lugar del
-monorepo: no existe `capability manager`/`CapabilityManager` en ningún archivo `.rs`, y
-el crate que alojaría esa capa, `moonshot-hypervisor`, es un scaffold de 4 archivos cuyo
-`src/lib.rs` completo es un marcador de posición. Consistente con el hallazgo, ya
-confirmado por separado, de que seL4 aún no se ejecuta en ninguna parte de la
-plataforma hoy (véase la corrección en `genesis-protocol.md`). **Marcado como un
-desajuste arquitectónico de todo el artículo, no editado línea por línea** — puede
-tratarse de un documento de diseño temprano, o el diseño simplemente aún no se ha
-implementado. Requiere confirmación de project-totebox antes de corregir o reescribir
-este artículo.
+**Corrección — reformulada como planificada/prevista (2026-07-30):** este artículo
+describía originalmente un sistema de capacidades en vivo. No existe tal código hoy,
+confirmado tanto en una revisión de un solo archivo como en una búsqueda posterior más
+amplia en ~25 archivos. El cuerpo a continuación se reformula para presentarlo como
+arquitectura planificada/prevista, no como estado actual.
 
-La seguridad basada en capacidades es el modelo de control de acceso utilizado en las capas de hardware y sistema operativo de la plataforma [[pointsav-overview|PointSav]]. A diferencia de los sistemas operativos convencionales, que otorgan amplios permisos a través de cuentas administrativas, la seguridad basada en capacidades exige que cada componente de software aislado posea un [[crypto-attestation|token criptográfico]] verificado matemáticamente — denominado capacidad — antes de poder comunicarse con cualquier otro componente. Véase también [[capability-ledger-substrate|el sustrato del registro de capacidades]] y [[pairing-as-permission|emparejamiento como permiso]].
+La seguridad basada en capacidades es el modelo de control de acceso que PointSav prevé utilizar en las capas de hardware y sistema operativo, una vez implementado. A diferencia de los sistemas operativos convencionales, que otorgan amplios permisos a través de cuentas administrativas, el diseño exige que cada componente de software aislado posea un [[crypto-attestation|token criptográfico]] verificado matemáticamente — denominado capacidad — antes de poder comunicarse con cualquier otro componente. Esta es una arquitectura planificada, aún no implementada. Véase también [[capability-ledger-substrate|el sustrato del registro de capacidades]] y [[pairing-as-permission|emparejamiento como permiso]].
 
-## Cómo funciona
+## Cómo se prevé que funcione
 
-Una capacidad no puede falsificarse ni copiarse. [^2] La concede el kernel al inicio del proceso y se revoca cuando se retira el privilegio. Esto hace que el radio de explosión de cualquier compromiso esté matemáticamente acotado a los componentes para los que el proceso comprometido poseía capacidades.
+Una capacidad, una vez implementada, no podría falsificarse ni copiarse. [^2] Sería concedida por el kernel al inicio del proceso y revocada al retirar el privilegio. El efecto previsto es que el radio de explosión de cualquier compromiso quedaría matemáticamente acotado a los componentes para los que el proceso comprometido poseía capacidades.
 
-## Por qué importa
+## Por qué importaría
 
-Los sistemas operativos estándar son vulnerables a la escalada de privilegios. Un único componente comprometido puede, en muchas arquitecturas, alcanzar la memoria central de la máquina anfitriona y acceder a otros componentes de la red. El modelo de capacidades elimina esta clase de vulnerabilidad a nivel de arquitectura.
+Los sistemas operativos estándar son vulnerables a la escalada de privilegios. El modelo de capacidades está diseñado para eliminar esta clase de vulnerabilidad a nivel de arquitectura. **A la fecha de esta revisión, no existe tal implementación** — no se encontró código de gestor de capacidades, envoltorio de aislamiento, ni puente de hipervisor en ningún archivo del monorepo, y seL4 mismo aún no se ejecuta en ningún componente enviado.
 
-## Propiedades clave
+## Propiedades previstas
 
-- **Verificación formal.** El [[sel4-microkernel-substrate|microkernel seL4]] subyacente está verificado formalmente en Isabelle/HOL [^1]: las propiedades de aislamiento son matemáticamente probadas, no afirmadas.
-- **Mínimo privilegio por defecto.** Los componentes comienzan sin capacidades; el sistema concede el conjunto mínimo requerido para su función declarada.
-- **Contención del radio de explosión.** El compromiso de un componente no puede propagarse a componentes para los que no posee concesiones de capacidad.
-- **Auditabilidad.** Las concesiones de capacidades se registran; el conjunto de concesiones en vigor en cualquier momento es inspeccionable.
+- **Verificación formal.** El [[sel4-microkernel-substrate|microkernel seL4]] que subyacería al gestor de capacidades está verificado formalmente en Isabelle/HOL [^1] como kernel en sí mismo — es decir, las propiedades de aislamiento *del propio seL4* están matemáticamente probadas, independientemente de si la capa de gestión de capacidades propia de PointSav ha sido construida sobre él.
+- **Mínimo privilegio por defecto (previsto).** Los componentes comenzarían sin capacidades; el sistema concedería solo el conjunto mínimo requerido.
+- **Contención del radio de explosión (prevista).** El compromiso de un componente no podría propagarse a componentes para los que no posee concesiones.
+- **Auditabilidad (prevista).** Las concesiones de capacidades quedarían registradas.
 
 ## Véase también
 

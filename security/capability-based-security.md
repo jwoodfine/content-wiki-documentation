@@ -8,7 +8,7 @@ content_type: topic
 quality: complete
 short_description: "Capability-based security is the access-control model PointSav uses at the hardware and OS layers, where each component must hold a verified cryptographic token."
 status: active
-bcsc_class: public-disclosure-safe
+bcsc_class: forward-looking
 last_edited: 2026-07-30
 editor: pointsav-engineering
 cites: []
@@ -22,60 +22,51 @@ references:
 paired_with: capability-based-security.es.md
 ---
 
-**Major correction (2026-07-30):** this article describes a live, enforced capability
-system — a "PointSav capability manager," "Rust-based capability managers" engineering
-"isolation wrappers and hypervisor bridges," a "system policy file" read at deployment
-time. No such code was found anywhere in the monorepo: `grep`-ing for "capability
-manager"/`CapabilityManager` across every `.rs` file returns zero hits, and the one
-crate that would house a hypervisor-mediation layer, `moonshot-hypervisor`, is a 4-file
-scaffold whose entire `src/lib.rs` is `pub fn system_status() -> &'static str {
-"SYSTEM EVENT: moonshot-hypervisor scaffold verified." }` — the same placeholder
-pattern as `moonshot-protocol` (see the `diode-standard.md` correction). This is
-consistent with the separately-confirmed finding that seL4 itself is not yet running
-anywhere in the platform today (`genesis-protocol.md`'s correction): `os-console` and
-`os-totebox` ship on `ratatui`/`crossterm`/plain Rust with zero seL4 dependency
-(2026-07-18 BCSC honesty-rail fixes), and `os-infrastructure`'s seL4 path has not
-passed its own D7 gate. **Flagged as a whole-article architectural mismatch, not
-line-edited** — this may be an early design document written before any of this was
-built, or the design may simply not have been implemented yet. Needs project-totebox
-confirmation of whether a capability-manager build is actually in progress before this
-article is corrected or rewritten — REWRITE-class per the disposition rubric, not a
-targeted fix.
+**Correction — rehedged to planned/intended (2026-07-30):** this article originally
+described a live, enforced capability system in unhedged present tense. No matching
+code exists today: neither a single-archive check nor a subsequent broader
+cross-archive sweep (grep for "capability manager"/`CapabilityManager` across every
+`.rs` file in all ~25 Totebox archives) found any implementation; `moonshot-hypervisor`
+— the crate that would house a hypervisor-mediation layer — is a 4-file scaffold with
+an empty dependency list. This is consistent with the separately-confirmed finding that
+seL4 itself is not yet running anywhere in the platform today. Per operator direction,
+this describes real, intended design rather than a fabrication — the body below is
+rewritten to present it as planned/intended architecture, not current state.
 
-> Capability-based security is the access-control model PointSav uses at the hardware and operating-system layers, where each software component must hold a mathematically verified cryptographic token to communicate with any other component.
+> Capability-based security is the access-control model PointSav is designed to use at the hardware and operating-system layers, where each software component will be required to hold a mathematically verified cryptographic token to communicate with any other component. This is a planned architecture, not yet implemented.
 
-**Capability-based security** is the access-control model that replaces traditional operating-system privilege hierarchies in the [[pointsav-overview|PointSav]] platform. Where conventional operating systems (Windows, macOS, Linux) grant broad permissions through administrative accounts and assume components at the same privilege level can be trusted, capability-based security requires each isolated component to hold an explicit, mathematically verified [[crypto-attestation|cryptographic token]] — called a capability — before it can communicate with any other component. A capability cannot be forged or copied; it is granted by the kernel at process start and revoked when the capability is withdrawn. [^2] This makes the blast radius of any compromise mathematically bounded to the components the compromised process held capabilities for. See also [[capability-ledger-substrate|the capability ledger substrate]] and [[pairing-as-permission|pairing as permission]].
+**Capability-based security** is the access-control model intended to replace traditional operating-system privilege hierarchies in the [[pointsav-overview|PointSav]] platform, once implemented. Where conventional operating systems (Windows, macOS, Linux) grant broad permissions through administrative accounts and assume components at the same privilege level can be trusted, the design calls for each isolated component to hold an explicit, mathematically verified [[crypto-attestation|cryptographic token]] — called a capability — before it can communicate with any other component. A capability would be unforgeable and uncopyable, granted by the kernel at process start and revoked when withdrawn. [^2] The intended effect is that the blast radius of any compromise is mathematically bounded to the components the compromised process held capabilities for. See also [[capability-ledger-substrate|the capability ledger substrate]] and [[pairing-as-permission|pairing as permission]].
 
 ## Overview
 
-Standard operating systems are vulnerable to privilege escalation: a single compromised application can, in many architectures, reach the core memory of the host machine and gain access to other components on the network. The capability model eliminates this class of vulnerability at the architecture level rather than through policy controls.
+Standard operating systems are vulnerable to privilege escalation: a single compromised application can, in many architectures, reach the core memory of the host machine and gain access to other components on the network. The capability model is designed to eliminate this class of vulnerability at the architecture level rather than through policy controls.
 
-The [[pointsav-overview|PointSav]] implementation builds on a [[sel4-microkernel-substrate|microkernel foundation]]. The microkernel handles only the most primitive routing of physical memory and CPU time. Every driver, network interface, and service process runs in isolated memory, and none holds general administrative rights. To communicate with another isolated component, a process presents a cryptographic capability token. The kernel validates the token and either permits or denies the operation.
+The [[pointsav-overview|PointSav]] implementation is planned to build on a [[sel4-microkernel-substrate|microkernel foundation]]. In the intended design, the microkernel would handle only the most primitive routing of physical memory and CPU time, with every driver, network interface, and service process running in isolated memory and none holding general administrative rights. To communicate with another isolated component, a process would present a cryptographic capability token, which the kernel would validate before permitting or denying the operation. **As of this writing, no such implementation exists** — no capability-manager code, isolation-wrapper, or hypervisor-bridge crate was found anywhere in the monorepo, and seL4 itself is not yet running in any shipped component.
 
-## Architecture
+## Architecture (planned)
 
-The capability layer sits between the [[sel4-microkernel-substrate|seL4 microkernel]] and the Rust service processes that make up the PointSav [[three-ring-architecture|Ring 1 and Ring 2]] services. The Rust-based capability managers engineer the isolation wrappers and hypervisor bridges that mediate communication between components.
+The intended capability layer would sit between the [[sel4-microkernel-substrate|seL4 microkernel]] and the Rust service processes that make up the PointSav [[three-ring-architecture|Ring 1 and Ring 2]] services, with Rust-based capability managers engineering the isolation wrappers and hypervisor bridges that mediate communication between components.
 
-The platform enforces a strict, one-way command flow between isolation domains. An isolated edge delivery process — for example, the [[mediakit-os|MediaKit OS]] — cannot issue commands back into the secure [[totebox-os|ToteboxOS]] vault. If the edge process is compromised, the attacker is contained within the memory sandbox of that process with no capability grants reaching the broader system. The boundary is enforced by the kernel, not by a policy document.
+The design calls for a strict, one-way command flow between isolation domains: an isolated edge delivery process — for example, the [[mediakit-os|MediaKit OS]] — would be unable to issue commands back into the secure [[totebox-os|ToteboxOS]] vault, so a compromised edge process would be contained within its own memory sandbox with no capability grants reaching the broader system, enforced by the kernel rather than a policy document.
 
-## Properties
+## Intended properties
 
-- **Formal verification.** The [[sel4-microkernel-substrate|seL4 microkernel]] underlying the capability manager is formally verified in Isabelle/HOL [^1], which means the isolation properties are mathematically proven for the verified configuration — not asserted.
-- **Least privilege by default.** Components start with no capabilities; the system grants the minimum set required for their declared function. Unused capabilities are never held.
-- **Blast-radius containment.** Compromise of one component cannot propagate to components it holds no capability grants for. The scope of a breach is bounded at grant time.
-- **Auditability.** Capability grants are recorded; the set of grants in force at any time is inspectable. There is no hidden administrative path.
+- **Formal verification.** The [[sel4-microkernel-substrate|seL4 microkernel]] that would underlie the capability manager is formally verified in Isabelle/HOL [^1] as a kernel in its own right — meaning the isolation properties *of seL4 itself* are mathematically proven, independent of whether PointSav's own capability-manager layer has been built on top of it.
+- **Least privilege by default.** Intended: components start with no capabilities; the system grants only the minimum set required for their declared function.
+- **Blast-radius containment.** Intended: compromise of one component could not propagate to components it holds no capability grants for.
+- **Auditability.** Intended: capability grants would be recorded, with the set of grants in force at any time inspectable.
 
-## How It Works
+## How it is intended to work
 
-At deployment time, the PointSav capability manager reads a system policy file that declares which processes communicate with which others and what operations each is permitted. The [[sel4-microkernel-substrate|microkernel]] enforces this policy at runtime: when process A attempts to send a message to process B, the kernel checks A's capability set and either delivers the message or returns a denial. The capability set cannot be modified by the processes themselves — only the capability manager, running with kernel authority, can issue or revoke grants.
+At deployment time, a PointSav capability manager would read a system policy file declaring which processes communicate with which others and what operations each is permitted. The [[sel4-microkernel-substrate|microkernel]] would enforce this policy at runtime. No such capability manager or policy-file mechanism exists today.
 
-## Applications
+## Intended applications
 
-The capability model applies across the full [[pointsav-overview|PointSav]] deployment stack:
+Once built, the capability model is intended to apply across the full [[pointsav-overview|PointSav]] deployment stack:
 
-- **[[totebox-os|ToteboxOS]]** — the primary secure vault OS; all data at rest is accessible only to processes holding the appropriate capability token.
-- **[[mediakit-os|MediaKit OS]]** — the edge delivery environment; deliberately holds no capability grants reaching ToteboxOS, so a compromised delivery node cannot reach stored data.
-- **[[service-fs-architecture|service-fs]]** — the [[worm-ledger-architecture|WORM ledger]]; append capability is granted to [[three-ring-architecture|Ring 1]] ingest services; no read-modify-write capability exists at the API surface.
+- **[[totebox-os|ToteboxOS]]** — the primary secure vault OS; data at rest would be accessible only to processes holding the appropriate capability token.
+- **[[mediakit-os|MediaKit OS]]** — the edge delivery environment; intended to hold no capability grants reaching ToteboxOS, so a compromised delivery node could not reach stored data.
+- **[[service-fs-architecture|service-fs]]** — the [[worm-ledger-architecture|WORM ledger]]; append capability would be granted to [[three-ring-architecture|Ring 1]] ingest services only.
 
 ## See also
 

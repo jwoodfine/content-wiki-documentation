@@ -24,17 +24,18 @@ references:
     url: "https://trunkbaseddevelopment.com/"
 ---
 
-**Corrección mayor (2026-07-30):** este artículo describe un modelo de bifurcación de
-GitHub → pull request → squash-and-merge. El mecanismo real actual de commit/promoción
-funciona de otra manera: `commit-as-next.sh` confirma directamente en la rama de
-trabajo con identidad de autor alternante (`jwoodfine`/`pwoodfine`, sin PR ni puerta de
-revisión), y `promote.sh` aplica cherry-pick de los commits directamente sobre la rama
-canónica y hace push — confirmado leyendo ambos scripts: ninguno contiene un flujo de
-"pull request" o "squash" ni llamadas a la API de GitHub. El concepto de brecha de aire
-de doble ciego y la topología de tres organizaciones parecen precisos como descripción
-estructural — solo la mecánica específica de "PR + squash-merge" de las Etapas 2/3 no
-está confirmada contra las herramientas actuales. **Marcado como un desajuste
-arquitectónico parcial, no editado línea por línea** — requiere confirmación de Command.
+**Corrección — Etapas 2/3 reformuladas como planificadas/previstas (2026-07-30):**
+este artículo describía un modelo de bifurcación de GitHub → pull request →
+squash-and-merge en tiempo presente sin matices. El mecanismo real actual de
+commit/promoción funciona de otra manera: `commit-as-next.sh` confirma directamente en
+la rama de trabajo con identidad de autor alternante, y `promote.sh` aplica cherry-pick
+de los commits directamente sobre la rama canónica — confirmado leyendo ambos scripts,
+y reconfirmado por una búsqueda más amplia en ~25 archivos (cero coincidencias de
+`octokit`/`gh pr create`/`gh pr merge` en ningún lugar). El concepto de brecha de aire
+de doble ciego y la topología de tres organizaciones siguen siendo descripciones
+estructurales precisas y se dejan en tiempo presente a continuación — solo la mecánica
+específica de PR/squash-merge de las Etapas 2/3 se reformula como planificada/prevista,
+ya que el mecanismo real logra un efecto similar mediante commit-directo-y-cherry-pick.
 
 El código se mueve desde el entorno local de un contribuyente hasta una implementación de producción a través de cinco etapas distintas — cada una con un actor definido, una acción específica y un equivalente estándar de la industria. El arreglo es deliberadamente circular: cada sesión de trabajo comienza restableciendo al estado del proveedor verificado más reciente, eliminando la deriva lógica que se acumula cuando los contribuyentes construyen sobre sus propias ramas desactualizadas. Una única puerta de gobernanza — el squash-and-merge del administrador — es donde se transfiere la propiedad intelectual y los commits experimentales se colapsan en un único registro corporativo. [^1] Este artículo cubre las cinco etapas, la brecha de aire de doble ciego y la topología del repositorio.
 
@@ -43,8 +44,8 @@ El código se mueve desde el entorno local de un contribuyente hasta una impleme
 | Etapa | Actor | Acción | Equivalente en la industria |
 |---|---|---|---|
 | 1 — Respaldo | Contribuyente | `git push` a su bifurcación personal de GitHub | Respaldo remoto / push de rama de características |
-| 2 — Oferta | Contribuyente → Proveedor | Abrir pull request en `pointsav/<repo>` | Envío de revisión de código |
-| 3 — Auditoría | Proveedor (`ps-administrator`) | Squash-and-merge en el libro mayor del proveedor | Commit atómico / creación del maestro dorado |
+| 2 — Oferta *(mecánica planificada)* | Contribuyente → Proveedor | Hoy: commit directo vía `commit-as-next.sh`. Diseño previsto: abrir pull request en `pointsav/<repo>` | Envío de revisión de código |
+| 3 — Auditoría | Proveedor (`ps-administrator`) | Hoy: `promote.sh` aplica cherry-pick del commit sobre la rama canónica. Diseño previsto: squash-and-merge en el libro mayor del proveedor | Commit atómico / creación del maestro dorado |
 | 4 — Transferencia | Proveedor → Cliente | Push espejo del tag de lanzamiento verificado | Propagación de lanzamiento |
 | 5 — Implementación | Cliente → Producción | `git pull --ff-only` en hosts de producción | Implementación de imagen dorada |
 | (Bucle) — Reinicio | Proveedor → Contribuyente | `git fetch upstream && git rebase` | Sincronización basada en trunk |
@@ -53,9 +54,9 @@ El código se mueve desde el entorno local de un contribuyente hasta una impleme
 
 **Etapa 1 — Respaldo.** El contribuyente envía el trabajo en progreso a su propia bifurcación de GitHub (`jwoodfine/...` o `pwoodfine/...`). La bifurcación es la red de seguridad privada del contribuyente. Nada en el libro mayor corporativo se ve aún afectado.
 
-**Etapa 2 — Oferta.** El contribuyente abre un pull request desde su bifurcación hacia la organización del proveedor (`pointsav/...`). El trabajo se vuelve visible para el administrador. Pueden ejecutarse verificaciones automatizadas; comienza la revisión de código.
+**Etapa 2 — Oferta.** Hoy, el trabajo confirmado del contribuyente se vuelve visible para el administrador directamente a través del commit de `commit-as-next.sh` — no hay paso de pull request ni puerta de revisión en las herramientas actuales. El diseño previsto exige que el contribuyente abra un pull request desde su bifurcación hacia la organización del proveedor; esto aún no es como funciona el mecanismo.
 
-**Etapa 3 — Auditoría.** El administrador (`ps-administrator`) realiza un squash-and-merge. Este es el momento legalmente significativo: el historial de commits del contribuyente se colapsa en un único commit corporativo firmado con la clave SSH del administrador. La propiedad se transfiere a [[pointsav-overview|PointSav Digital Systems]]. Los commits experimentales anteriores, los intentos de prototipo y los enfoques abandonados no sobreviven en el libro mayor corporativo.
+**Etapa 3 — Auditoría.** Hoy, `promote.sh` aplica cherry-pick del commit verificado directamente sobre la rama canónica y hace push — este es el mecanismo real que transfiere una contribución al libro mayor del proveedor. El diseño previsto describe esto en cambio como un squash-and-merge realizado por el administrador; esa mecánica específica no es la que se ejecuta hoy, aunque el efecto — la propiedad transfiriéndose a [[pointsav-overview|PointSav Digital Systems]] mediante un único commit canónico — se logra de cualquier manera.
 
 **Etapa 4 — Transferencia.** La administración del proveedor refleja el tag de lanzamiento verificado desde `pointsav/<repo>` a `woodfine/<repo>`. El cliente recibe solo tags firmados y nunca ve commits de contribuyentes en vuelo. Este es el paso de propagación de lanzamiento que aísla al cliente del riesgo ascendente.
 
@@ -75,7 +76,7 @@ La cadena de suministro opera en tres organizaciones de GitHub, cada una con un 
 
 | Organización | Propósito | Quién escribe |
 |---|---|---|
-| `github.com/pointsav` | Proveedor — fuente de verdad | Solo `ps-administrator` (acepta fusiones); `jwoodfine`/`pwoodfine` (bifurcación y PR) |
+| `github.com/pointsav` | Proveedor — fuente de verdad | Solo `ps-administrator` (promueve/hace push); `jwoodfine`/`pwoodfine` (commit a espejos de staging) |
 | `github.com/woodfine` | Cliente — libro mayor de producción | Solo `mcorp-administrator` |
 | Cuentas personales de contribuyentes | Forja — sandbox | El contribuyente posee su bifurcación por completo |
 
@@ -89,7 +90,7 @@ Los repositorios canónicos a mediados de 2026 incluyen:
 
 ## Por qué esta estructura escala
 
-Un nuevo contribuyente no necesita aprender un nuevo protocolo. Bifurca, envía, abre un pull request. Las puertas arquitectónicas — la transferencia de PI por squash-merge, el espejo del cliente, la implementación fast-forward, el reinicio basado en trunk — suceden por encima de ellos. La experiencia diaria del contribuyente es solo la Etapa 1.
+Un nuevo contribuyente no necesita aprender un nuevo protocolo. Hoy, eso significa: confirmar vía `commit-as-next.sh`, y las puertas de promoción — cherry-pick a canónico, el espejo del cliente, la implementación fast-forward, el reinicio basado en trunk — suceden por encima de ellos. La experiencia diaria del contribuyente es solo la Etapa 1.
 
 La estructura escala a muchos contribuyentes sin perder la brecha de aire, porque la brecha de aire es impuesta por la puerta del administrador, no por reglas sociales.
 

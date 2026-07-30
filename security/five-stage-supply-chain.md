@@ -24,24 +24,23 @@ references:
     url: "https://trunkbaseddevelopment.com/"
 ---
 
-**Major correction (2026-07-30):** this article describes a GitHub fork → pull-request →
-squash-and-merge model ("Stage 2 — Offer: Open pull request into `pointsav/<repo>`";
-"Stage 3 — Audit: the administrator performs a squash-and-merge... this is the legally
-significant moment"). The current, real commit/promotion mechanism works differently:
-`~/Foundry/bin/commit-as-next.sh` commits directly to the working branch with
-alternating `jwoodfine`/`pwoodfine` author identity (no PR, no review gate), and
+**Correction — Stages 2/3 rehedged to planned/intended (2026-07-30):** this article
+described a GitHub fork → pull-request → squash-and-merge model in unhedged present
+tense for Stages 2 and 3. The current, real commit/promotion mechanism works
+differently: `~/Foundry/bin/commit-as-next.sh` commits directly to the working branch
+with alternating `jwoodfine`/`pwoodfine` author identity (no PR, no review gate), and
 `~/Foundry/bin/promote.sh` cherry-picks commits directly onto the canonical branch and
-pushes — confirmed by reading both scripts: neither contains any "pull request",
-"squash", or GitHub-API code path; `promote.sh`'s core operation is a `git
-merge-base`/cherry-pick loop, not a GitHub PR merge. `AGENT.md`'s own "How to commit"
-section documents the same direct-commit-then-promote flow, with no PR step. The
-double-blind air-gap concept (contributor and customer mutually invisible; vendor is
-the only entity that sees both ends) and the three-organisation topology
-(`pointsav`/`woodfine`/personal forks) appear accurate as a structural description —
-only the specific "PR + squash-merge" mechanics of Stage 2/3 are unconfirmed against
-the current tooling. **Flagged as a partial architectural mismatch, not line-edited** —
-may describe an earlier or intended mechanism rather than the one actually running
-today; needs Command confirmation of which is authoritative before rewriting.
+pushes — confirmed by reading both scripts, and reconfirmed by a broader cross-archive
+sweep (grep for `octokit`/`api.github.com/repos`/`gh pr create`/`gh pr merge`/
+`create_pull` across every script and crate in all ~25 Totebox archives: zero matches
+anywhere). `AGENT.md`'s own "How to commit" section documents the same
+direct-commit-then-promote flow. The double-blind air-gap concept and the
+three-organisation topology (`pointsav`/`woodfine`/personal staging mirrors) remain
+accurate structural descriptions and are left as current-tense fact below — only
+Stages 2 and 3's specific PR/squash-merge mechanics are rehedged to planned/intended
+language per operator direction, since the real mechanism achieves a similar
+end-to-end effect (contributor commit → vendor-side audit/consolidation → canonical
+record) through direct-commit-and-cherry-pick rather than a GitHub PR review gate.
 
 Code moves from a contributor's local environment to a production deployment through five distinct stages — each with a defined actor, a specific action, and an industry-standard counterpart. The arrangement is deliberately circular: every working session begins by resetting to the freshly-verified vendor truth, eliminating the logic drift that accumulates when contributors build atop their own outdated branches. A single governance gate — the administrator's squash-and-merge — is where intellectual property transfers and experimental commits are collapsed into a single corporate record. [^1] This article covers the five stages, the double-blind air-gap, and the repository topology.
 
@@ -50,8 +49,8 @@ Code moves from a contributor's local environment to a production deployment thr
 | Stage | Actor | Action | Industry equivalent |
 |---|---|---|---|
 | 1 — Backup | Contributor | `git push` to their personal GitHub fork | Remote backup / feature branch push |
-| 2 — Offer | Contributor → Vendor | Open pull request into `pointsav/<repo>` | Code review submission |
-| 3 — Audit | Vendor (`ps-administrator`) | Squash-and-merge into the vendor ledger | Atomic commit / golden master creation |
+| 2 — Offer *(planned mechanics)* | Contributor → Vendor | Today: direct commit via `commit-as-next.sh`. Intended design: open pull request into `pointsav/<repo>` | Code review submission |
+| 3 — Audit | Vendor (`ps-administrator`) | Today: `promote.sh` cherry-picks the commit onto the canonical branch. Intended design: squash-and-merge into the vendor ledger | Atomic commit / golden master creation |
 | 4 — Transfer | Vendor → Customer | Mirror push of the verified release tag | Release propagation |
 | 5 — Deploy | Customer → Production | `git pull --ff-only` onto production hosts | Golden image deployment |
 | (Loop) — Reset | Vendor → Contributor | `git fetch upstream && git rebase` | Trunk-based synchronisation |
@@ -60,9 +59,9 @@ Code moves from a contributor's local environment to a production deployment thr
 
 **Stage 1 — Backup.** The contributor pushes work-in-progress to their own GitHub fork (`jwoodfine/...` or `pwoodfine/...`). The fork is the contributor's private safety net. Nothing in the corporate ledger is yet affected.
 
-**Stage 2 — Offer.** The contributor opens a pull request from their fork into the vendor organisation (`pointsav/...`). The work becomes visible to the administrator. Automated checks may run; code review begins.
+**Stage 2 — Offer.** Today, the contributor's committed work becomes visible to the administrator directly through `commit-as-next.sh`'s commit — there is no pull-request or review-gate step in the current tooling. The intended design calls for the contributor to open a pull request from their fork into the vendor organisation (`pointsav/...`), with automated checks and code review; this is not yet how the mechanism runs.
 
-**Stage 3 — Audit.** The administrator (`ps-administrator`) performs a squash-and-merge. This is the legally significant moment: the contributor's commit history is collapsed into a single corporate commit signed by the administrator's SSH key. Ownership transfers to [[pointsav-overview|PointSav Digital Systems]]. Earlier experimental commits, prototype attempts, and abandoned approaches do not survive into the corporate ledger.
+**Stage 3 — Audit.** Today, `promote.sh` cherry-picks the verified commit directly onto the canonical branch and pushes — this is the actual mechanism that transfers a contribution into the vendor ledger. The intended design describes this instead as a squash-and-merge performed by the administrator (`ps-administrator`), collapsing the contributor's commit history into a single corporate commit signed by the administrator's SSH key; that specific mechanic is not what runs today, though the effect — ownership transferring to [[pointsav-overview|PointSav Digital Systems]] via a single canonical commit — is accomplished either way.
 
 **Stage 4 — Transfer.** Vendor administration mirrors the verified release tag from `pointsav/<repo>` to `woodfine/<repo>`. The customer receives only signed tags and never sees in-flight contributor commits. This is the release propagation step that firewalls the customer from upstream risk.
 
@@ -82,7 +81,7 @@ The supply chain operates across three GitHub organisations, each with a specifi
 
 | Organisation | Purpose | Who writes |
 |---|---|---|
-| `github.com/pointsav` | Vendor — source of truth | `ps-administrator` only (accepts merges); `jwoodfine`/`pwoodfine` (fork and PR) |
+| `github.com/pointsav` | Vendor — source of truth | `ps-administrator` only (promotes/pushes); `jwoodfine`/`pwoodfine` (commit to staging mirrors) |
 | `github.com/woodfine` | Customer — production ledger | `mcorp-administrator` only |
 | Contributor personal accounts | Forge — sandbox | The contributor owns their fork outright |
 
@@ -96,7 +95,7 @@ The canonical repositories as of mid-2026 include:
 
 ## Why this structure scales
 
-A new contributor does not need to learn a new protocol. They fork, they push, they open a pull request. The architectural gates — the squash-merge IP transfer, the customer mirror, the fast-forward deploy, the trunk-based reset — happen above them. The contributor's daily experience is just Stage 1.
+A new contributor does not need to learn a new protocol. Today, that means: commit via `commit-as-next.sh`, and the promotion gates — cherry-pick to canonical, the customer mirror, the fast-forward deploy, the trunk-based reset — happen above them. The contributor's daily experience is just Stage 1.
 
 The structure scales to many contributors without losing the air-gap, because the air-gap is enforced by the administrator gate, not by social rules.
 

@@ -9,7 +9,7 @@ content_type: topic
 quality: complete
 status: active
 audience: public
-bcsc_class: public-disclosure-safe
+bcsc_class: forward-looking
 language_protocol: PROSE-TOPIC
 last_edited: 2026-07-30
 editor: pointsav-engineering
@@ -17,31 +17,25 @@ paired_with: crypto-attestation.md
 cites: []
 ---
 
-**Corrección mayor (2026-07-30):** este artículo describe una función de attestación
-del lado del cliente en vivo — una llamada `crypto.subtle.digest('SHA-256')` del
-navegador. No existe tal código en el motor del wiki (`app-mediakit-knowledge`): una
-búsqueda exhaustiva de `crypto.subtle`/`SHA-256`/`digest`/`attest` en cada archivo `.rs`
-y `.js` del crate no arroja ningún resultado. El `sidebar` real del motor
-(`src/ui/layout.rs:653`) solo renderiza navegación del sitio, enlaces de categoría y la
-tabla de contenidos — no hay bloque de metadatos ni visualización de hash. Mismo patrón
-de función no construida ya encontrado y corregido esta sesión en
-`capability-based-security.md`, `diode-standard.md` y `genesis-protocol.md`. **Marcado
-como desajuste arquitectónico de todo el artículo, no editado línea por línea** —
-requiere confirmación de project-totebox.
+**Corrección — reformulada como planificada/prevista (2026-07-30):** este artículo
+describía originalmente una función de attestación en vivo. No existe tal código,
+confirmado tanto en el motor del wiki como en una búsqueda posterior más amplia en la
+flota de archivos (la única coincidencia de `crypto.subtle.digest` en todo el
+monorepo es una función de integridad de guardado no relacionada, en una herramienta
+de hojas de cálculo). El cuerpo se reformula a continuación como diseño
+planificado/previsto, no como comportamiento actual.
 
-La attestación criptográfica de cargas es el mecanismo por el cual los nodos perimetrales de [[pointsav-overview|PointSav]] demuestran dinámicamente la integridad de su contenido textual publicado a cualquier espectador. Utiliza hashing SHA-256 del lado del cliente, de modo que cualquier auditor puede verificar independientemente que una divulgación no ha sido alterada en tránsito. Véase también [[cryptographic-ledgers|registros criptográficos]] y [[zero-execution-routing|enrutamiento de ejecución cero]].
+La attestación criptográfica de cargas, una vez implementada, sería el mecanismo por el cual los nodos perimetrales de [[pointsav-overview|PointSav]] demostrarían dinámicamente la integridad de su contenido textual publicado a cualquier espectador. **No existe tal mecanismo hoy, ni en el motor del wiki ni en ningún otro lugar del monorepo.** Véase también [[cryptographic-ledgers|registros criptográficos]] y [[zero-execution-routing|enrutamiento de ejecución cero]].
 
-## Cómo funciona
+## Cómo se prevé que funcione
 
-Todos los nodos perimetrales públicos calculan y muestran dinámicamente un hash SHA-256 de su contenido de idioma visible. Cualquier inversor institucional, auditor o contraparte puede copiar el texto de forma independiente, calcular el hash localmente con cualquier herramienta SHA-256, y confirmar que el hash mostrado coincide — lo que prueba que el contenido no ha sido alterado entre la publicación y la pantalla del espectador.
+El diseño prevé que los nodos perimetrales públicos calculen y muestren dinámicamente un hash SHA-256 de su contenido visible, de modo que cualquier auditor pudiera verificar independientemente que una divulgación no ha sido alterada. Nada de esto está implementado hoy.
 
-La operación se ejecuta completamente en el navegador, sin participación del servidor en el propio cálculo del hash. Esto significa que la attestación es independiente de si la infraestructura de servicio es confiable.
+## Postura de seguridad prevista
 
-## Postura de seguridad
+Una vez construida, la attestación sería de cero ejecución en el servidor para el cálculo del hash. El efecto previsto: un atacante intermediario que modificara el contenido en tránsito produciría una discrepancia de hash detectable.
 
-La attestación es de cero ejecución en el servidor para el cálculo del hash: el servidor entrega el JavaScript y el contenido, pero el hash lo calcula el navegador usando solo datos locales. Un atacante intermediario que modificara el contenido en tránsito produciría una discrepancia de hash que cualquier espectador podría detectar.
-
-## Aplicaciones
+## Aplicaciones previstas
 
 - Divulgaciones regulatorias públicas en nodos perimetrales operados por [[pointsav-overview|PointSav]].
 - Artículos del wiki de contenido donde la verificación de integridad importa a lectores institucionales.
