@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-29
+last_edited: 2026-07-30
 editor: pointsav-engineering
 paired_with: sel4-capability-topology.md
 short_description: "En un sistema seL4, la seguridad está determinada por la forma del grafo de capacidades — la topología. Si el componente A no tiene un camino de capacidades hacia B, A no puede alcanzar B por ningún medio; propiedad demostrada mediante verificación formal con asistencia mecánica."
@@ -65,9 +65,20 @@ El sistema operativo Fuchsia de Google utiliza el mismo modelo de capacidades y 
 
 ## Aplicación en PPN
 
-La Red Privada PointSav tiene previsto/la intención de utilizar seL4 como capa de hipervisor en nodos AArch64. En esa configuración, la topología de capacidades seL4 gobierna qué componentes pueden comunicarse a través de la malla. La interfaz de malla WireGuard, el servidor de ceremonia de emparejamiento y el servicio de gestión de flota ocupan cada uno dominios de protección seL4 distintos con canales de capacidades concedidos explícitamente. Un componente sin capacidad de acceder al dominio de protección WireGuard no puede modificar las tablas de pares — independientemente de si está comprometido.
+La Red Privada PointSav tiene previsto/la intención de utilizar seL4 como capa de hipervisor en nodos AArch64. En esa configuración, la topología de capacidades seL4 gobernaría qué componentes pueden comunicarse a través de la malla.
 
-Esta es la base formal del modelo de seguridad PPN en la capa del hipervisor.
+**Corrección de alcance limitado (2026-07-30):** el párrafo original aquí afirmaba, en
+tiempo presente, que los tres servicios "ocupan cada uno dominios de protección seL4
+distintos" — inconsistente con la propia advertencia de esta sección ("previsto/la
+intención"). Verificado contra los crates reales de VM de PPN: `service-vm-fleet`,
+`service-vm-host` y `service-vm-tenant` no tienen ninguna dependencia de seL4 en su
+código fuente — son servicios `axum`/Rust simples, no dominios de protección seL4.
+`moonshot-hypervisor` (el crate que alojaría cualquier capa de hipervisor seL4 real)
+tiene una lista de dependencias vacía. Reformulado en condicional para coincidir con la
+advertencia ya declarada en esta misma sección, en lugar de describir una asignación de
+dominios de protección que no existe en el sistema en ejecución hoy.
+
+Esta sería la base formal del modelo de seguridad PPN en la capa del hipervisor, una vez que esa capa esté construida.
 
 ## Véase también
 

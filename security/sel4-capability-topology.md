@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-29
+last_edited: 2026-07-30
 editor: pointsav-engineering
 paired_with: sel4-capability-topology.es.md
 short_description: "In an seL4 system, security is the shape of the capability graph: if component A has no path to B, A cannot reach B by any means, proved by formal verification."
@@ -65,9 +65,24 @@ Google's Fuchsia OS uses the same capability model and the same vocabulary. Fuch
 
 ## PPN application
 
-The PointSav Private Network is planned/intended to use seL4 as the hypervisor layer on AArch64 nodes. In that configuration, the seL4 capability topology governs what components can communicate across the mesh. The WireGuard mesh interface, the pairing ceremony server, and the fleet management service each occupy distinct seL4 protection domains with explicitly granted capability channels. A component without a capability to the WireGuard protection domain cannot modify peer tables — regardless of whether it is compromised.
+The PointSav Private Network is planned/intended to use seL4 as the hypervisor layer on AArch64 nodes. In that configuration, the seL4 capability topology would govern what components can communicate across the mesh.
 
-This is the formal basis for the PPN security model at the hypervisor layer.
+**Scoped correction (2026-07-30):** the paragraph originally here stated, in present
+tense, that "the WireGuard mesh interface, the pairing ceremony server, and the fleet
+management service each occupy distinct seL4 protection domains" — inconsistent with
+this section's own opening hedge ("planned/intended"). Verified against the real PPN
+VM crates: `service-vm-fleet`, `service-vm-host`, and `service-vm-tenant` (the actual
+fleet/host/tenant services running today, per `.agent/rules/project-registry.md`) carry
+zero seL4 dependency anywhere in source — plain Rust/`axum` services, not seL4
+protection domains. `moonshot-hypervisor` (the crate that would host any real seL4
+hypervisor layer) has an empty `Cargo.toml` dependency list. Rephrased to the
+conditional to match the section's own stated hedge, rather than describing a
+protection-domain assignment that does not exist in the running system today. This is
+a scoped, single-paragraph fix — the rest of this article (seL4's own external,
+published formal-verification properties) is unaffected and was not re-verified beyond
+this paragraph.
+
+This would be the formal basis for the PPN security model at the hypervisor layer, once that layer is built.
 
 ## See also
 
