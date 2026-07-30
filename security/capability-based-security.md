@@ -9,7 +9,7 @@ quality: complete
 short_description: "Capability-based security is the access-control model PointSav uses at the hardware and OS layers, where each component must hold a verified cryptographic token."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-07-30
 editor: pointsav-engineering
 cites: []
 references:
@@ -22,6 +22,25 @@ references:
 paired_with: capability-based-security.es.md
 ---
 
+**Major correction (2026-07-30):** this article describes a live, enforced capability
+system — a "PointSav capability manager," "Rust-based capability managers" engineering
+"isolation wrappers and hypervisor bridges," a "system policy file" read at deployment
+time. No such code was found anywhere in the monorepo: `grep`-ing for "capability
+manager"/`CapabilityManager` across every `.rs` file returns zero hits, and the one
+crate that would house a hypervisor-mediation layer, `moonshot-hypervisor`, is a 4-file
+scaffold whose entire `src/lib.rs` is `pub fn system_status() -> &'static str {
+"SYSTEM EVENT: moonshot-hypervisor scaffold verified." }` — the same placeholder
+pattern as `moonshot-protocol` (see the `diode-standard.md` correction). This is
+consistent with the separately-confirmed finding that seL4 itself is not yet running
+anywhere in the platform today (`genesis-protocol.md`'s correction): `os-console` and
+`os-totebox` ship on `ratatui`/`crossterm`/plain Rust with zero seL4 dependency
+(2026-07-18 BCSC honesty-rail fixes), and `os-infrastructure`'s seL4 path has not
+passed its own D7 gate. **Flagged as a whole-article architectural mismatch, not
+line-edited** — this may be an early design document written before any of this was
+built, or the design may simply not have been implemented yet. Needs project-totebox
+confirmation of whether a capability-manager build is actually in progress before this
+article is corrected or rewritten — REWRITE-class per the disposition rubric, not a
+targeted fix.
 
 > Capability-based security is the access-control model PointSav uses at the hardware and operating-system layers, where each software component must hold a mathematically verified cryptographic token to communicate with any other component.
 

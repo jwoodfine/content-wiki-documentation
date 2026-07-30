@@ -11,7 +11,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-07-30
 editor: pointsav-engineering
 paired_with: capability-based-security.md
 cites: []
@@ -24,6 +24,18 @@ references:
     url: "https://dl.acm.org/doi/10.1145/775265.775268"
 ---
 
+**Corrección mayor (2026-07-30):** este artículo describe un sistema de capacidades en
+vivo y ejecutado — un "gestor de capacidades de PointSav" que ejecuta "envoltorios de
+aislamiento y puentes de hipervisor". No se encontró tal código en ningún lugar del
+monorepo: no existe `capability manager`/`CapabilityManager` en ningún archivo `.rs`, y
+el crate que alojaría esa capa, `moonshot-hypervisor`, es un scaffold de 4 archivos cuyo
+`src/lib.rs` completo es un marcador de posición. Consistente con el hallazgo, ya
+confirmado por separado, de que seL4 aún no se ejecuta en ninguna parte de la
+plataforma hoy (véase la corrección en `genesis-protocol.md`). **Marcado como un
+desajuste arquitectónico de todo el artículo, no editado línea por línea** — puede
+tratarse de un documento de diseño temprano, o el diseño simplemente aún no se ha
+implementado. Requiere confirmación de project-totebox antes de corregir o reescribir
+este artículo.
 
 La seguridad basada en capacidades es el modelo de control de acceso utilizado en las capas de hardware y sistema operativo de la plataforma [[pointsav-overview|PointSav]]. A diferencia de los sistemas operativos convencionales, que otorgan amplios permisos a través de cuentas administrativas, la seguridad basada en capacidades exige que cada componente de software aislado posea un [[crypto-attestation|token criptográfico]] verificado matemáticamente — denominado capacidad — antes de poder comunicarse con cualquier otro componente. Véase también [[capability-ledger-substrate|el sustrato del registro de capacidades]] y [[pairing-as-permission|emparejamiento como permiso]].
 
