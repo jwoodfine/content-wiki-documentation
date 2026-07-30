@@ -9,9 +9,26 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: data-sovereignty-telemetry.md
-last_edited: 2026-05-25
+last_edited: 2026-07-30
 category: security
 ---
+
+**Corrección mayor (2026-07-30) — discrepancia activa de cumplimiento, no solo una
+brecha de descripción arquitectónica:** este artículo hace una declaración pública de
+cumplimiento RGPD/PIPEDA — que el enmascaramiento de IP se aplica al recibirla,
+eliminando el último octeto antes de escribir cualquier registro. El código de
+ingestión real contradice esto directamente: `app-mediakit-telemetry/src/bin/
+telemetry-daemon.rs` lee el encabezado `x-forwarded-for` literal y añade la dirección
+IP **completa y sin enmascarar** — junto con la marca de tiempo, el URI solicitado y el
+user-agent completo — a un archivo CSV en texto plano, sin ninguna lógica de
+enmascaramiento. El `omni-matrix-engine.rs` posterior realiza una búsqueda GeoIP de
+MaxMind directamente contra esa misma dirección IP completa y sin enmascarar — una
+dirección enmascarada no produciría una búsqueda útil, por lo que el diseño actual
+depende de conservar la dirección completa, lo opuesto a la afirmación del artículo.
+**Marcado como una discrepancia de cumplimiento/privacidad activa, no resuelta
+unilateralmente** — escalado a Command/project-totebox por correo además de esta nota,
+conforme a la práctica habitual de este archivo para contenido legal/de
+cumplimiento/anonimización.
 
 Las interfaces de la plataforma [[pointsav-overview|PointSav]] operan sobre una arquitectura de telemetría de estado cero: no se recopila información de identificación personal (PII), no se despliegan cookies de seguimiento y no se retiene ningún estado de sesión. Las métricas operativas se limitan a señales geoespaciales anónimas y enmascaradas por IP utilizadas para la auditoría de la infraestructura. Los operadores en sectores regulados obtienen una postura pública coherente con el RGPD, PIPEDA y requisitos equivalentes de minimización de datos, sin necesidad de marcos de consentimiento de cookies. Véase también [[sovereign-telemetry|telemetría soberana]] y [[telemetry-architecture|la arquitectura de telemetría]].
 
