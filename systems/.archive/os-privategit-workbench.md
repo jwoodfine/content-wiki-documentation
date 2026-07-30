@@ -6,7 +6,10 @@ short_description: "app-privategit-workbench is a browser-based file editor incl
 category: systems
 type: topic
 content_type: topic
-status: active
+status: archived
+archived: 2026-07-30
+archived_reason: "Redundant duplicate of applications/app-privategit-workbench.md — same crate, same architecture, near-identical text. This copy's own slug incorrectly used an os- prefix for what is, per its own body, an app-* crate; the applications/ copy is more complete, more recently maintained, and correctly categorized per naming-convention.md's os-*/app-* split."
+superseded_by: app-privategit-workbench
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25
 editor: pointsav-engineering

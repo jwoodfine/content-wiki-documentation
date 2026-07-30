@@ -6,7 +6,10 @@ short_description: "app-privategit-workbench es un editor de archivos basado en 
 category: systems
 type: topic
 content_type: topic
-status: active
+status: archived
+archived: 2026-07-30
+archived_reason: "Duplicado redundante de applications/app-privategit-workbench.md — mismo crate, misma arquitectura, texto casi idéntico. El propio slug de esta copia usaba incorrectamente un prefijo os- para lo que, según su propio cuerpo, es un crate app-*."
+superseded_by: app-privategit-workbench
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25
 editor: pointsav-engineering

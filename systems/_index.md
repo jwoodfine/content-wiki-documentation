@@ -43,7 +43,7 @@ The systems that manage the network fabric, the bootstrap path, and the underlyi
 - [[infrastructure-os]] — The compute substrate that hosts PointSav operating systems across on-premises, leased, and cloud hardware; bootstraps isolated fleets through the Genesis Protocol.
 - [[os-network-admin]] — The control plane for a fleet: manages the pairing registry, Diode rules, and mesh routing policy; commands broadcast as 16-byte binary packets across the WireGuard mesh.
 - [[os-privategit]] — Private Git hosting for sovereign version control within a fleet.
-- [[os-privategit-workbench]] — The browser-based file editor included in os-privategit: a three-column interface for working with archive files without a terminal session.
+- [[app-privategit-workbench|Browser workbench]] — The browser-based file editor included in os-privategit: a three-column interface for working with archive files without a terminal session.
 
 ## Publishing and media
 

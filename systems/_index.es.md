@@ -44,7 +44,7 @@ Los sistemas que gestionan el tejido de red, la ruta de arranque y el sustrato d
 - [[infrastructure-os]] — El sustrato de cómputo que aloja los sistemas operativos PointSav en hardware on-premises, arrendado y en la nube; arranca flotas aisladas a través del Protocolo Génesis.
 - [[os-network-admin]] — El plano de control de una flota: gestiona el registro de emparejamientos, las reglas Diode y la política de enrutamiento de malla; los comandos se transmiten como paquetes binarios de 16 bytes a través de la malla WireGuard.
 - [[os-privategit]] — Alojamiento Git privado para control de versiones soberano dentro de una flota.
-- [[os-privategit-workbench|Workbench de os-privategit]] — El editor de archivos basado en navegador incluido en os-privategit: una interfaz de tres columnas para trabajar con archivos sin una sesión de terminal.
+- [[app-privategit-workbench|Workbench de navegador]] — El editor de archivos basado en navegador incluido en os-privategit: una interfaz de tres columnas para trabajar con archivos sin una sesión de terminal.
 
 ## Publicación y medios
 

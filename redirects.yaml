@@ -35,6 +35,14 @@ redirects:
   - from: /systems/os-totebox
     to: /systems/totebox-os
 
+  # os-privategit-workbench.md retired 2026-07-30 — redundant duplicate of
+  # applications/app-privategit-workbench.md (same crate, same architecture, near-
+  # identical text). This copy's own slug incorrectly used an os- prefix for an app-*
+  # crate; archived to systems/.archive/ per the newly-adopted archive-before-delete
+  # convention rather than deleted outright.
+  - from: /systems/os-privategit-workbench
+    to: /applications/app-privategit-workbench
+
   # Batch 1 — Foundation token docs → design.pointsav.com.
   # Destination corrected 2026-07-28: the original /foundations/<slug> targets
   # (set 2026-05-16, Decision #7) are dead — design.pointsav.com was rebuilt since
