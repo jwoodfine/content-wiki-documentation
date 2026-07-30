@@ -15,20 +15,23 @@ cites: []
 paired_with: verification-surveyor.es.md
 ---
 
-**Major correction (2026-07-30):** this article describes a live "Verification
-Surveyor" human-in-the-loop workflow in `service-people` — a hard 10-verifications-
-per-day limit, a terminal UI presenting extracted fragments, and an operator
-pasting back a verified external-directory URL. No such mechanism exists in the real
-`service-people` crate: a corpus-wide grep for "surveyor," any daily-limit constant,
-or external-lookup/LinkedIn logic across every `.rs` file (`acs.rs`, `person.rs`,
-`mcp.rs`, `people_store.rs`, `fs_client.rs`, `http.rs`) returns zero hits. This is the
-same unbuilt-feature pattern already found and corrected this session in
-`capability-based-security.md`, `crypto-attestation.md`, `diode-standard.md`, and
-`genesis-protocol.md`. The article's own `quality: stub` field already signals
-incompleteness, but `status: active` and unhedged present tense throughout still
-present it as an operating mechanism. **Flagged as a whole-article architectural
-mismatch, not line-edited** — needs project-totebox confirmation of whether this is a
-planned design or was simply never built, before rewriting.
+**Correction retracted (2026-07-30):** an earlier pass this session flagged this
+article as describing an unbuilt mechanism, based on a grep scoped only to
+`service-people`'s own `.rs` files. A broader cross-archive search found the real
+implementation lives at `app-console-content/scripts/surveyor.py` — read in full and
+confirmed to match this article closely: `MAX_DAILY_VERIFICATIONS = 10` (exact),
+a daily throttle file gating further verification, a CLI prompt reading "Paste
+Verified LinkedIn URL (or type 'reject' / 'skip')," and a discovery-queue →
+verified-ledger JSON workflow with an archetype-selection step. The mechanism is real
+and substantially accurate as described. **The article's one remaining imprecision**:
+it names `service-people` as the owning component, while the actual script lives in
+`app-console-content` and references a `service-people/discovery-queue` and
+`service-people/verified-ledger` directory pair as its data source — i.e. the
+verification tool is a separate script that operates on service-people's queue
+directories, not code inside the `service-people` crate itself. Minor, not corrected
+in this pass. Apologies for the earlier false-negative finding — flagging the
+correction process itself as a lesson: a single-crate grep is not sufficient before
+asserting a described mechanism doesn't exist anywhere in the monorepo.
 
 > The Verification Surveyor is the architectural checkpoint in [[service-people]] that prevents automated extraction errors from compounding by requiring a human operator to confirm each identity fragment against an off-network source before it is committed to the verified ledger.
 

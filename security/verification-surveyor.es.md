@@ -17,16 +17,17 @@ paired_with: verification-surveyor.md
 cites: []
 ---
 
-**Corrección mayor (2026-07-30):** este artículo describe un flujo de trabajo humano
-en vivo — un límite estricto de 10 verificaciones diarias, una interfaz de terminal, y
-un operador que confirma contra un directorio externo. No existe tal mecanismo en el
-crate real `service-people`: una búsqueda exhaustiva de "surveyor", cualquier
-constante de límite diario, o lógica de búsqueda externa/LinkedIn en cada archivo
-`.rs` no arroja resultados. Mismo patrón de función no construida ya encontrado y
-corregido esta sesión en `capability-based-security.md`, `crypto-attestation.md`,
-`diode-standard.md` y `genesis-protocol.md`. **Marcado como un desajuste
-arquitectónico de todo el artículo, no editado línea por línea** — requiere
-confirmación de project-totebox.
+**Corrección retirada (2026-07-30):** un pase anterior en esta sesión marcó este
+artículo como un mecanismo no construido, basado en una búsqueda limitada solo a
+`service-people`. Una búsqueda más amplia encontró la implementación real en
+`app-console-content/scripts/surveyor.py` — confirmada que coincide estrechamente con
+este artículo: `MAX_DAILY_VERIFICATIONS = 10` (exacto), un archivo de limitación
+diaria, y un mensaje de terminal "Paste Verified LinkedIn URL (or type 'reject' /
+'skip')". El mecanismo es real y sustancialmente exacto según lo descrito. Única
+imprecisión restante: el artículo nombra a `service-people` como el componente
+propietario, mientras que el script real vive en `app-console-content` y opera sobre
+los directorios de cola de `service-people` — no editado en este pase. Disculpas por
+el hallazgo falso-negativo anterior.
 
 El Verificador de Identidad es el punto de control arquitectónico en [[service-people|`service-people`]] que impide que los errores de extracción automatizada se acumulen. Requiere que un operador humano confirme cada fragmento de identidad contra una fuente externa antes de que se comprometa permanentemente en el libro contable verificado.
 

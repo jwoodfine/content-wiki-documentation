@@ -14,17 +14,19 @@ editor: pointsav-engineering
 paired_with: personnel-permissions.md
 ---
 
-**Corrección mayor (2026-07-30):** este artículo describe un modelo de permisos de
-cuatro niveles (P1–P4) basado en emparejamiento criptográfico, con registros de
-personal que contienen "rol, clave pública SSH y nivel de permiso." El esquema real de
-identidad no coincide: la estructura `Person` en `service-people/src/person.rs` es un
-registro genérico de identidad (`id`, `name`, `primary_email`, `email_aliases`,
-`organisation`, marcas de tiempo) — sin campo de rol, clave SSH ni nivel de permiso. Una
-búsqueda exhaustiva de la vocabulario P1–P4 no arroja resultados en `service-people`, y
-el archivo real `pairings.yaml` tampoco contiene ningún campo de nivel. Hallazgo
-relacionado con la corrección ya aplicada a `machine-based-auth.md` en esta misma
-sesión. **Marcado como un desajuste de todo el artículo, no editado línea por línea** —
-requiere confirmación de project-totebox/Command.
+**Corrección retirada, y corregida en la otra dirección (2026-07-30):** un pase
+anterior marcó el modelo de niveles P1–P4 como inexistente, basado en una búsqueda
+limitada a `service-people` y `pairings.yaml` raíz. Una búsqueda más amplia encontró la
+implementación real: `app-orchestration-command` define `pub enum PermissionTier {
+P1, P2, P3, P4 }` con comentarios de documentación que coinciden casi palabra por
+palabra con este artículo, y un endpoint real `GET /v1/personnel/:user` que deriva
+los niveles desde `pairings.yaml`. **Este artículo en realidad subestima el estado
+real**: su propia sección sobre `app-orchestration-command` lo llama "planificado,"
+cuando el sistema de niveles que implementa ya está construido. Queda una discrepancia
+más estrecha, no corregida en este pase: las estructuras reales solo tienen
+`unix_user`, `tier` y `pairing_set` — sin campo explícito de clave SSH o rol en esa
+estructura específica. Disculpas por el hallazgo falso-negativo anterior sobre el
+sistema de niveles.
 
 En la [[totebox-orchestration|orquestación Totebox]], la identidad y los permisos de los colaboradores se expresan mediante emparejamientos criptográficos — no mediante roles almacenados en una base de datos ni verificados en tiempo de solicitud. El modelo de permisos es [[pairing-as-permission|PairingAsPermission]]: un colaborador puede alcanzar un recurso únicamente si su instancia [[console-os|`os-console`]] está emparejada con el nodo de orquestación que gestiona ese recurso. Los cuatro niveles de permiso (P1 a P4) describen cómo es el conjunto de emparejamientos de un colaborador; la aplicación se realiza siempre a través de la topología de emparejamientos.
 

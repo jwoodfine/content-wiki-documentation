@@ -14,25 +14,28 @@ editor: pointsav-engineering
 paired_with: personnel-permissions.es.md
 ---
 
-**Major correction (2026-07-30):** this article describes a live four-tier (P1–P4)
-cryptographic-pairing permission model, with personnel records holding "display name,
-role, SSH public key, and permission tier." The real identity schema does not match:
-`service-people/src/person.rs`'s `Person` struct is a general identity-ledger record
-(`id` — a UUIDv5 derived from `primary_email`, `name`, `primary_email`,
-`email_aliases`, `organisation`, `created_at`, `updated_at`) — no `role`, no SSH key, no
-permission-tier field at all. A corpus-wide grep for the `P1`/`P2`/`P3`/`P4` tier
-vocabulary returns zero hits anywhere in `service-people`, and the real
-`~/Foundry/pairings.yaml` file carries no tier field either — its actual schema tracks
-`cluster_branch`, `self_service`, `owns_deployments`, `content_class`, and similar
-per-archive fields (see AGENT.md/CLAUDE.md for the fields actually in use), not a
-per-person P1–P4 grant. This is a related finding to the already-corrected
-`machine-based-auth.md` (also this session): that article's real `system-gateway-mba`
-mechanism likewise has a plain `String` role field, not a typed tier enum. **Flagged as
-a whole-article mismatch, not line-edited** — the `app-orchestration-command` section
-is already correctly hedged as planned/next-phase; the P1–P4 tier model and the
-personnel-record schema described here are asserted in present tense but don't match
-what's built. Needs project-totebox/Command confirmation of whether this describes an
-intended future design or is simply inaccurate against current schema.
+**Correction retracted, and corrected in the other direction (2026-07-30):** an earlier
+pass this session flagged this article's P1–P4 tier model as describing a nonexistent
+system, based on a grep scoped only to `service-people` and the root `pairings.yaml`. A
+broader cross-archive search found the real implementation: `app-orchestration-command`
+(at `project-knowledge`'s monorepo checkout,
+`crates/orchestration-command-core/src/lib.rs`) defines `pub enum PermissionTier { P1,
+P2, P3, P4 }` with doc comments matching this article almost word-for-word — "P1:
+System Administrator — full workspace access," "P2: Package Manager — specific
+archives + Stage 6 promotion," "P3: User — specific archives only; no COMMAND
+pairing," "P4: Interface — read-only API surface only." A sibling module,
+`crates/orchestration-command/src/personnel.rs`, derives these tiers from
+`pairings.yaml` contributor entries and backs a real `GET /v1/personnel/:user`
+endpoint — closely matching the article's own description of a
+`GET /personnel/<unix-user>` endpoint. **This article actually undersells the real
+state**: its own §"Relationship to app-orchestration-command" calls the aggregator
+"planned," when the tier system it implements is already built. One real, narrower
+discrepancy remains, not corrected in this pass: the article's "personnel record...
+display name, role, SSH public key, and permission tier" implies a single unified
+record with those four fields; the actual `PersonnelEntry`/`ContributorEntry` structs
+carry only `unix_user`, `tier`, and `pairing_set` — no explicit SSH-key or role field
+in that specific struct (SSH keys are managed separately via the workspace `identity/`
+store). Apologies for the earlier false-negative finding on the tier system itself.
 
 In [[totebox-orchestration|Totebox Orchestration]], contributor identity and permissions are expressed through cryptographic pairings — not through roles stored in a database or checked at request time. The permission model is [[pairing-as-permission|PairingAsPermission]]: a contributor can reach a resource only if their [[console-os|`os-console`]] instance is paired with the orchestration node that manages that resource. The four permission tiers (P1 through P4) describe what a contributor's pairing set looks like; enforcement is always through the pairing topology.
 
