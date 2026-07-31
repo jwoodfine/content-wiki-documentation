@@ -9,7 +9,7 @@ quality: complete
 short_description: "Visión estratégica del stack Rust de service-slm: un binario único, licencias permisivas de extremo a extremo, y la disciplina de construcción que mantiene la soberanía técnica sobre cada dependencia."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-07-31
 editor: pointsav-engineering
 cites: []
 paired_with: slm-stack-architecture.md
@@ -40,6 +40,29 @@ El objetivo técnico es lo que la industria denomina "Rust de nivel L2": todo el
 El workspace Cargo produce un único binario: `slm-cli`. Los módulos lógicos se comunican mediante llamadas a funciones Rust, no mediante RPC. Las llamadas externas — a Cloud Run, al sidecar Mooncake, a las APIs externas permitidas, a LadybugDB — son los únicos límites de red.
 
 Este es el perfil que requiere un componente de ToteboxOS: un proceso, un flujo de logs, un conjunto de métricas, un binario para firmar con Sigstore, un archivo de configuración.
+
+## Integración con ToteboxOS
+
+La arquitectura de binario único está motivada en parte por las restricciones de despliegue de ToteboxOS. Un stack CPython más un marco de inferencia GPU no cabe en el presupuesto de memoria disponible en hardware de appliance restringido. Un binario Rust con un runtime de inferencia cuantizado operando en modo CPU sí cabe.
+
+Las restricciones relevantes según el perfil de hardware ToteboxOS Laptop-A (~550 MB de margen disponible tras los servicios centrales):
+
+- Binario estático, sin arranque de intérprete — segundos, no minutos, hasta la primera inferencia
+- Sin recolector de basura, sin heap de intérprete
+- Paralelismo real entre núcleos sin bloqueo global de intérprete
+- Compilación cruzada vía `cargo build --target aarch64-unknown-linux-gnu` para objetivos ARM de ToteboxOS
+
+## Tres servicios externos que no son Rust
+
+Tres servicios del sustrato de cómputo Yo-Yo se sitúan fuera del binario Rust, todos detrás de protocolos de red estables:
+
+**LMCache + Mooncake Store** (plano de control en Python + Mooncake Transfer Engine en C++): el nivel de caché KV que persiste el estado de prefill a través de los reinicios de nodos GPU. service-slm mantiene un cliente Rust que se comunica con Mooncake vía HTTP y TCP. Sin acoplamiento FFI. Ambos tienen licencia Apache-2.0.
+
+**vLLM** (Python): el motor de inferencia de prueba de la Fase 1. Reemplazado por mistral.rs en la Fase 2. Apache-2.0.
+
+**SkyPilot** (Python): orquestación de GPU multi-nube. Se usa cuando Cloud Run GPU por sí solo resulta insuficiente. Apache-2.0.
+
+Los tres están detrás de protocolos de red estables. service-slm depende del protocolo de comunicación, no de la implementación. Sustituir cualquiera de ellos requiere cambiar un único módulo cliente.
 
 ## Soberanía de licencias en producción
 

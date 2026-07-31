@@ -11,7 +11,7 @@ content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-06
+last_edited: 2026-07-31
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -85,6 +85,20 @@ Es la ventaja estructural. Tres primitivas la hacen real: la
 [[adapter-composition|álgebra de composición de adaptadores]] que permite enviar
 adaptadores sin poseer todo el sustrato, y la [[customer-hostability|propiedad
 *Designed-for-Breakout*]] que mantiene voluntaria la relación.
+
+## Mirando hacia adelante — la escala del nivel Abierto
+
+Según el lenguaje de divulgación continua de `[ni-51-102]`, la trayectoria
+hacia 10.000 o más contribuyentes Abiertos es planificada e intencionada,
+no declarada como estado actual. La forma ya está en su lugar; el
+rendimiento operativo madura a medida que crece la base de usuarios del
+sustrato.
+
+El camino: cada cliente que opera el sustrato de la plataforma se
+convierte en candidato a contribuyente Abierto; una fracción de ellos
+contribuye de vuelta; una fracción de esos se gradúa a Pagado; un número
+pequeño se gradúa a Núcleo a lo largo de décadas. El modelo es lento en
+el nivel superior y rápido en el inferior — por diseño.
 
 ## Qué no es este modelo
 

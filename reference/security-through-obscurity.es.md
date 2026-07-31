@@ -10,7 +10,7 @@ status: active
 audience: customer-woodfine
 bcsc_class: current-fact
 language_protocol: TRANSLATE-ES
-last_edited: 2026-06-30
+last_edited: 2026-07-31
 editor: woodfine-editorial
 short_description: "Dependencia del secreto del diseño o la implementación como mecanismo principal de seguridad, rechazada en la práctica profesional desde el principio de Kerckhoffs de 1883."
 paired_with: security-through-obscurity.md
@@ -37,6 +37,10 @@ El consenso de la comunidad de seguridad, codificado en el principio de Kerckhof
 **El principio de Kerckhoffs (1883).** Auguste Kerckhoffs, criptógrafo holandés, publicó un artículo en el *Journal des sciences militaires* en el que declaró que "un criptosistema debe ser seguro incluso si todo lo relacionado con el sistema, excepto la clave, es de conocimiento público". Este principio establece la premisa fundamental del diseño criptográfico moderno: la seguridad de un sistema criptográfico debe derivarse enteramente del secreto de la clave, no del secreto del algoritmo.
 
 **La máxima de Shannon (1949).** Claude Shannon reformuló el principio de Kerckhoffs como "el enemigo conoce el sistema" en su artículo de 1949 "Communication Theory of Secrecy Systems". La formulación de Shannon captura la realidad operativa del diseño de seguridad: un diseñador de sistemas debe asumir que los adversarios eventualmente aprenderán el diseño del sistema que se está protegiendo.
+
+### Fracasos de la oscuridad en la práctica
+
+**La seguridad por oscuridad en la práctica.** La historia de la ingeniería de seguridad ofrece numerosos ejemplos de sistemas cuyos diseñadores confiaron en la oscuridad y que fallaron posteriormente cuando esa oscuridad quedó comprometida: diseños de cifrado simétrico que se creían propietarios hasta que fueron descifrados mediante ingeniería inversa, protocolos propietarios cuyas fallas de seguridad se hicieron evidentes solo al ser analizados, y mecanismos de seguridad física cuyas vulnerabilidades eran desconocidas únicamente porque nunca habían sido estudiados públicamente.
 
 ## Posición del NIST
 

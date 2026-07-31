@@ -10,7 +10,7 @@ type: topic
 content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-06-23
+last_edited: 2026-07-31
 editor: pointsav-engineering
 paired_with: os-console-platform.md
 language: es
@@ -36,9 +36,26 @@ language: es
 
 Cada crate `app-console-*` es un crate de biblioteca que implementa el rasgo `Cartridge`. Los cartuchos se compilan directamente en `os-console` — no se cargan dinámicamente ni se lanzan como subprocesos. Un cartucho que no está instalado tiene su ranura de tecla de función atenuada en la tira de pestañas.
 
+Los cartuchos son opcionales excepto `app-console-keys` y `app-console-input` (F12). Una instalación que incluya únicamente `app-console-content` (F4) y `app-console-input` (F12) es un despliegue de os-console completo y válido para trabajo editorial.
+
 ## Mapa de teclas de función
 
 La consola presenta doce ranuras direccionables mediante teclas de función. F12 está fijada como El Ancla — la [[input-machine|Máquina de Entrada]] — y nunca se mueve. El artículo [[console-os|os-console]] describe el diseño y contexto de despliegue del producto más amplio.
+
+| Tecla F | Cartucho | Dominio |
+|---|---|---|
+| F1 | `app-console-help` | Panel de ayuda |
+| F2 | `app-console-people` | Identidad y contactos |
+| F3 | `app-console-email` | Comunicaciones |
+| F4 | `app-console-content` | Editorial — corrección, redacción, verificación |
+| F5 | `app-console-minutebook` | Gobernanza — actas, resoluciones |
+| F6 | `app-console-bookkeeper` | Libro mayor financiero |
+| F7 | `app-console-bim` | Gestión de información de construcción |
+| F8 | `app-console-gis` | Información geográfica |
+| F9 | `app-console-slm` | Gestión de IA y mercado de adaptadores |
+| F10 | `app-console-mesh` | Gestión de malla de red |
+| F11 | `app-console-system` | Estado de salud en vivo de los servicios `os-*` y estado de emparejamiento |
+| F12 | `app-console-input` | El Ancla — Máquina de Entrada (SYS-ADR-10) |
 
 ## La barra de estado
 
@@ -48,7 +65,21 @@ La barra de estado de `app-console-keys` siempre es visible en la parte inferior
 operador@woodfine | MBA LINK ACTIVE | F4: Content | Tier A | 00:04:23
 ```
 
-Cuando el enlace de autorización está inactivo, os-console opera en modo solo local. El contenido almacenado en caché local permanece accesible. Las solicitudes de servicios de backend fallan de manera controlada en lugar de bloquearse.
+El componente de identidad muestra el nombre de usuario y el inquilino establecidos durante la ceremonia de emparejamiento. El estado de autorización muestra `MBA LINK ACTIVE`, `MBA LINK INACTIVE <motivo>` o `MBA LINK PENDING`. El nombre de la ranura del cartucho activo, el nivel de SLM en uso (A para local, B para ráfaga en la nube, C para API de frontera) y la duración de la sesión completan la barra.
+
+## Conectividad de autorización
+
+`app-console-keys` mantiene conexiones salientes con los servicios `os-*` emparejados. Cada emparejamiento es independiente: la consola puede estar activa con `os-totebox` e inactiva con `os-privategit` simultáneamente.
+
+Cuando el enlace de autorización está inactivo, os-console opera en modo solo local. El contenido almacenado en caché local permanece accesible. Las solicitudes a los servicios de backend `service-proofreader`, `service-input` y `service-content` fallan de manera controlada en lugar de bloquearse.
+
+## Renderizado de PDF
+
+`os-console` admite el renderizado de PDF dentro de la terminal mediante la biblioteca `pdfium-render` — bindings de Rust sobre pdfium de Chromium. Las páginas del PDF se renderizan como mapas de bits RGB y se muestran usando el protocolo gráfico Kitty como ruta principal, con Sixel como alternativa y un error para las terminales que no admiten ninguno de los dos. Esto es renderizado de píxeles, no extracción de texto.
+
+## Ubicación en la Arquitectura de Tres Anillos
+
+`os-console` es un cliente de la [[three-ring-architecture|Arquitectura de Tres Anillos]], no un anillo en sí mismo. Se conecta a los servicios del Anillo 1 a través de la capa de autorización — `service-input` vía F12, [[service-people|`service-people`]] vía F2, [[service-email|`service-email`]] vía F3, y `service-fs`; a los servicios del Anillo 2, incluyendo [[service-content|`service-content`]] y [[service-search|`service-search`]]; y al servicio del Anillo 3 [[service-slm|`service-slm`]] vía [[compounding-doorman|Doorman]] en `http://localhost:8011`. `os-console` es la interfaz humana mediante la cual un operador instruye a los anillos.
 
 ## Véase también
 
