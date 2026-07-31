@@ -9,7 +9,7 @@ content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-09
+last_edited: 2026-07-31
 editor: pointsav-engineering
 paired_with: decode-time-constraints.md
 cites:
@@ -25,6 +25,12 @@ válido", el runtime hace que el token infractor sea matemáticamente
 imposible — el modelo elige del conjunto de tokens válidos restantes.
 Es la diferencia entre un humano calificando trabajo después de la
 entrega y una barandilla que evita la violación antes de que suceda. Véase también [[language-protocol-substrate|el sustrato de protocolo de lenguaje]] y [[sovereign-ai-routing|enrutamiento de IA soberano]].
+
+Esta técnica se conoce como decodificación restringida, generación estructurada o
+generación guiada por gramática. Entre las implementaciones existentes están la
+biblioteca `[llguidance]` de Microsoft Research, `[xgrammar]` de Carnegie Mellon, las
+salidas estructuradas de vLLM, y un cuerpo creciente de literatura sobre generación
+estructurada con modelos de lenguaje.
 
 ## Uso en la plataforma
 
@@ -42,6 +48,24 @@ plantilla de género (TOPIC, GUIDE, README, contrato, política,
 etcétera) envía un fragmento de gramática por género. En tiempo de
 inferencia, la gramática activa es
 `gramática-base ⊕ gramática-inquilino ⊕ gramática-género`.
+
+## Arquitectura
+
+El sistema de restricciones se organiza en capas:
+
+1. **Gramática base** — reglas de vocabulario prohibido universales, aplicables a
+   todo inquilino y todo género.
+2. **Gramática de inquilino** — extensiones específicas por cliente (palabras propias
+   de marca en la lista de No-Usar, reglas de densidad de citas, patrones de afirmación
+   prohibidos). El propio inquilino la redacta localmente y el [[doorman-protocol|Doorman]]
+   la carga.
+3. **Gramática de género** — reglas estructurales por género (un TOPIC debe tener un
+   párrafo introductorio; una GUIDE debe tener pasos numerados; una divulgación
+   regulatoria debe llevar campos de cita específicos).
+
+En el momento de la solicitud, el [[doorman-protocol|Doorman]] ([[service-slm]]) compone
+las tres capas de gramática, carga el resultado en el runtime de inferencia y ejecuta la
+decodificación con la restricción compuesta activa.
 
 ## Por qué los hiperescaladores no pueden replicarlo
 

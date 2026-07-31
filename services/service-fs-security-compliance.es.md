@@ -10,7 +10,7 @@ short_description: "Postura de almacenamiento Write-Once-Read-Many donde el prop
 status: active
 audience: vendor-public
 bcsc_class: current-fact
-last_edited: 2026-05-08
+last_edited: 2026-07-31
 editor: pointsav-engineering
 paired_with: service-fs-security-compliance.md
 ---
@@ -31,6 +31,10 @@ paired_with: service-fs-security-compliance.md
 4. **Lectura a 100 años:** Usamos formatos de texto abierto, permitiendo que cualquier arqueólogo digital del futuro pueda leer los datos sin necesidad de software propietario.
 
 Esta postura protege a la empresa contra el secuestro de datos (ransomware), el error humano y la obsolescencia del proveedor de software. El sistema de [[machine-based-auth|autenticación basada en máquina]] impide la firma no autorizada.
+
+**Agilidad criptográfica.** El sistema está diseñado para migrar a esquemas de firma
+poscuánticos (por ejemplo, Dilithium) sin necesidad de una migración completa del
+almacenamiento.
 
 ## Véase también
 

@@ -10,7 +10,7 @@ status: active
 audience: customer-woodfine
 bcsc_class: current-fact
 language_protocol: TRANSLATE-ES
-last_edited: 2026-06-30
+last_edited: 2026-07-31
 editor: woodfine-editorial
 short_description: "Distribución Linux diseñada para usar mucha menos RAM y capacidad de procesador que las distribuciones completas, apta para hardware limitado, embebido o heredado."
 paired_with: lightweight-linux-distribution.md
@@ -48,11 +48,27 @@ Esta observación tiene dos consecuencias prácticas. En primer lugar, una distr
 
 **OpenWrt** (2004) — Distribución Linux para dispositivos de red embebidos, particularmente enrutadores domésticos. Requiere 32 MB de RAM y cabe en una imagen flash de 6 MB. Sin interfaz gráfica, gestionado mediante interfaz web o SSH.
 
-**Lubuntu** (LXQt, basado en Ubuntu) y **Xubuntu** (Xfce, basado en Ubuntu) son variantes ligeras de la distribución Ubuntu principal que reducen los requisitos de hardware a aproximadamente 916 MB (Lubuntu) y 1 GB (Xubuntu) de RAM respectivamente.
+**Alpine Linux, antiX, CRUX, Damn Small Linux, Gentoo** (32 MB, la instalación funcional más ligera), GoboLinux, LXLE, Nanolinux (64 MB de RAM, imagen de 19 MB, 2015), Porteus (36 MB de RAM, 260 MB, portátil), Salix OS, Slax, TurnKey Linux, VectorLinux Light, Void Linux y Zenwalk se encuentran entre las distribuciones que cubren todo el espectro de escenarios de implementación ligera.
+
+### Variantes basadas en Ubuntu y de propósito especial
+
+**Lubuntu** (LXQt, basado en Ubuntu) y **Xubuntu** (Xfce, basado en Ubuntu) son variantes ligeras de la distribución Ubuntu principal que mantienen la gestión de paquetes APT y los repositorios de software de Ubuntu, reduciendo los requisitos de hardware a aproximadamente 916 MB (Lubuntu) y 1 GB (Xubuntu) de RAM respectivamente.
+
+**Lightweight Portable Security** (2011) — Distribución desarrollada por el Departamento de Defensa de EE. UU. para operaciones seguras en hardware no confiable. Basada en Arch Linux; imagen de aproximadamente 390 MB. Solo arranque en vivo; no almacena datos de sesión localmente.
+
+**TurnKey Linux** (2008) — Biblioteca de appliances Linux específicos por aplicación, basados en Debian, cada uno preconfigurado como servidor sin interfaz gráfica. Requiere 256 MB de RAM; la imagen base es de 212 MB. Utilizado para el despliegue rápido de servidores.
 
 ## Categorías de implementación
 
-Las distribuciones Linux ligeras se implementan en cuatro categorías principales: computación de escritorio en hardware heredado; sistemas operativos de arranque en vivo (live USB/CD); dispositivos de red y embebidos; e imágenes base para servidores y appliances de software.
+Las distribuciones Linux ligeras se implementan en cuatro categorías principales:
+
+**Computación de escritorio en hardware heredado.** Organizaciones e individuos con equipos más antiguos — laptops y escritorios fabricados antes de 2010 — usan distribuciones ligeras para extender la vida útil del hardware disponible.
+
+**Sistemas operativos en vivo.** Las distribuciones ligeras se usan como entornos de arranque en vivo en USB o CD para operaciones de rescate, navegación sensible a la privacidad y acceso seguro a sistemas no confiables.
+
+**Dispositivos embebidos y de red.** Distribuciones como OpenWrt se dirigen a enrutadores, conmutadores y otros dispositivos de red donde la RAM se mide en megabytes y el almacenamiento en kilobytes.
+
+**Imágenes base para servidores y appliances.** Las distribuciones mínimas — en particular Alpine Linux — se usan como imágenes base para despliegues de contenedores y appliances de software, donde el tamaño total de la imagen afecta directamente la velocidad de despliegue y los costos de almacenamiento.
 
 ---
 

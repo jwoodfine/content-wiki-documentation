@@ -10,7 +10,7 @@ status: active
 audience: customer-woodfine
 bcsc_class: current-fact
 language_protocol: TRANSLATE-ES
-last_edited: 2026-06-30
+last_edited: 2026-07-31
 editor: woodfine-editorial
 short_description: "Paradigma de computación distribuida que acerca cómputo y almacenamiento a las fuentes de datos, reduciendo latencia y ancho de banda frente a la nube centralizada."
 paired_with: edge-computing.md
@@ -34,7 +34,17 @@ Los orígenes de la computación en el borde se remontan a las redes de distribu
 
 Los sistemas del Internet de las Cosas (IoT) son un motor contemporáneo importante de la computación en el borde. Un concepto erróneo común es que la computación en el borde y el IoT son sinónimos; la computación en el borde es el paradigma más amplio y el IoT es una aplicación de él.
 
-Una definición ampliamente citada, propuesta por Karim Arabi en un discurso inaugural de la IEEE DAC de 2014, define la computación en el borde como "toda la computación fuera de la nube que ocurre en el borde de la red, y más específicamente en aplicaciones donde se requiere procesamiento de datos en tiempo real."
+### Definición y limitaciones físicas
+
+Una definición ampliamente citada, propuesta por Karim Arabi en un discurso inaugural del
+IEEE DAC de 2014 y desarrollada más adelante en un seminario del MIT MTL en 2015, define
+la computación en el borde de forma amplia como "toda la computación fuera de la nube que
+ocurre en el borde de la red, y más específicamente en aplicaciones donde se requiere
+procesamiento de datos en tiempo real." Dado que los nodos de computación en el borde no
+cuentan con las ventajas de climatización controlada de los centros de datos pese a
+requerir una capacidad de procesamiento sustancial, el diseño de sistemas de computación
+en el borde debe tener en cuenta restricciones de gestión térmica, seguridad física y
+fiabilidad energética que no existen en instalaciones centralizadas.
 
 ## Concepto y volúmenes de datos
 
@@ -46,6 +56,18 @@ El objetivo de la computación en el borde es trasladar la computación desde lo
 
 **Privacidad y seguridad.** La naturaleza distribuida de la computación en el borde introduce un cambio en los esquemas de seguridad. Los datos que viajan entre nodos distribuidos requieren mecanismos de cifrado independientes de los modelos de seguridad en la nube. La propiedad de los datos se transfiere de los proveedores de servicios a los usuarios finales.
 
+**Escalabilidad.** Los sistemas distribuidos de borde deben acomodar dispositivos
+heterogéneos con distintas restricciones de rendimiento y energía, condiciones
+altamente dinámicas y una fiabilidad de conexión variable, en comparación con la
+infraestructura más robusta de los centros de datos en la nube.
+
+**Fiabilidad.** La gestión de conmutaciones por error (failover) es crucial para
+mantener la continuidad del servicio. Los dispositivos de computación en el borde deben
+mantener conciencia de la topología de red del sistema distribuido general, lo que
+permite detectar y recuperarse de fallos de nodo.
+
+### Ganancias de velocidad y eficiencia
+
 **Velocidad.** La computación en el borde acerca los recursos analíticos a los usuarios finales, aumentando la capacidad de respuesta. Las aplicaciones que dependen de tiempos de respuesta cortos — sistemas IoT, conducción autónoma, reconocimiento facial (que tarda a un ser humano de 370 a 620 ms en realizar) — se benefician sustancialmente del procesamiento en el borde. La inteligencia artificial en el borde (Edge AI) implementa inteligencia artificial en el entorno de computación en el borde, cerca de donde se recopilan los datos.
 
 **Eficiencia.** Al usar servidores en una red de borde local para realizar el procesamiento computacionalmente intensivo, los datos solo necesitan transmitirse a través de la red local; evitar la transmisión por internet resulta en ahorros significativos de ancho de banda. El reconocimiento de voz es un ejemplo representativo: realizarlo localmente permite enviar el texto reconocido a la nube en lugar de grabaciones de audio bruto.
@@ -53,6 +75,14 @@ El objetivo de la computación en el borde es trasladar la computación desde lo
 ## Aplicaciones
 
 Las aplicaciones incluyen: gestión de dispositivos IoT; vehículos autónomos y conectados; ciudades inteligentes e Industria 4.0; juegos en la nube/transmisión de píxeles; automatización del hogar; e inteligencia artificial en el borde (Edge AI).
+
+La investigación con cloudlets — máquinas ricas en recursos cercanas a los usuarios
+móviles que ofrecen servicios típicamente asociados con la nube — demostró mejoras en el
+tiempo de ejecución cuando las tareas se descargan a nodos de borde. La viabilidad de
+esta descarga varía según la carga de trabajo: descargar cada tarea puede provocar una
+ralentización por los tiempos de transferencia entre el dispositivo y los nodos; las
+configuraciones óptimas equilibran el procesamiento local frente al costo de
+transmisión en red.
 
 ---
 

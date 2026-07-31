@@ -11,7 +11,7 @@ quality: complete
 short_description: "Registro YAML de citas de ámbito de plataforma con detección de deriva que hace la procedencia auditable por máquina, del instrumento regulatorio a la afirmación publicada."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-07-31
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -34,6 +34,38 @@ Para compradores regulados, esto significa que cada afirmación sobre propiedade
 **El encabezado por documento**. Un campo `cites:` en el YAML de cada artículo publicado y documento de especificación. Los identificadores declarados se resuelven contra el registro; las herramientas pueden validar que existan, generar automáticamente una sección de referencias, y construir un índice inverso de quién cita a quién.
 
 **La sintaxis de referencia en línea**. En el cuerpo del texto, una cita aparece entre corchetes: `[ni-51-102]`. Las referencias a secciones específicas añaden la referencia: `[ni-51-102 §4A.2]`.
+
+## Anillo y función
+
+El Sustrato de Citas no tiene asignación de anillo — opera en la capa de documentación,
+independiente de los tres anillos de servicio de la plataforma. Todo documento publicado
+que haga una afirmación basada en autoridades externas debe llevar el `cites:`
+correspondiente. El ciclo nocturno de higiene que vigila la salud del registro se
+ejecuta como un trabajo de [[service-slm]] (Anillo 3); el registro en sí es un archivo
+de la capa de documentación.
+
+## Cómo funciona el registro
+
+El esquema de cada entrada del registro hace explícita la procedencia en cada paso. Una
+cita regulatoria como `[ni-51-102]` lleva `evidence_class: regulatory-primary` — una
+señal filtrable por máquina que indica que esa entrada es autoridad primaria, no
+comentario secundario. Un artículo académico lleva `evidence_class: technical-primary`
+o `research-derived`, según sea una contribución original o una síntesis. Un documento
+de proveedor lleva `evidence_class: cited-secondary`.
+
+El campo `content_hash` es el mecanismo de autocuración. Cuando [[service-slm]] ejecuta
+su ciclo nocturno de higiene, descarga cada URL, calcula un SHA-256 del contenido de la
+página y lo compara con el hash almacenado. Una coincidencia actualiza la fecha
+`last_verified`. Una discrepancia se marca como candidata a cambio material y se
+presenta para revisión humana junto con el diff. Un error 404 se marca como enlace roto,
+junto con resultados de búsqueda de posibles reemplazos.
+
+Hasta que [[service-slm]] esté operativo, el mantenedor de la plataforma realiza una
+revisión manual mensual del registro.
+
+Agregar una nueva cita sigue el principio de siembra: la entrada del registro y la
+referencia en línea llegan en el mismo commit. Una referencia en línea huérfana — cuyo
+identificador no se resuelve en el registro — es un defecto.
 
 ## Por qué importa esta disciplina
 

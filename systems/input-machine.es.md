@@ -10,7 +10,7 @@ type: topic
 content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-07-31
 editor: pointsav-engineering
 paired_with: input-machine.md
 language: es
@@ -42,9 +42,44 @@ El flujo de ingesta opera de la siguiente manera: un modal presenta el campo de 
 
 Cada documento que pasa por la Máquina de Entrada genera dos entradas de auditoría: un registro local en SQLite en la máquina de os-console, y un registro canónico e inmutable en el ledger de `service-input` en el [[totebox-archive|Archivo Totebox]].
 
+## El cartucho app-console-input
+
+`app-console-input` es el crate del cartucho F12 en `pointsav-monorepo`. Implementa el
+flujo de trabajo de la Máquina de Entrada en el lado cliente de os-console: renderiza el
+modal de entrada de ruta de archivo, envía la solicitud POST a `service-input` en el
+Archivo Totebox con un tiempo de espera de 30 segundos, escribe la entrada de auditoría
+local en SQLite y devuelve el control al cartucho previamente activo cuando termina la
+ingesta.
+
+`app-console-input` siempre está instalado y el modal siempre es accesible mediante F12.
+Esto no es configurable.
+
+## Cumplimiento de ADR-07
+
+SYS-ADR-07 establece que ningún dato estructurado pasa por inferencia de IA. La Máquina
+de Entrada aplica esta regla en la frontera de ingesta. La clasificación de
+`service-input` es determinista — utiliza la extensión del archivo, el tipo MIME y
+firmas estructurales. Dado el mismo archivo, `service-input` siempre produce la misma
+clasificación. El registro de auditoría no depende de versiones del modelo ni de la
+disponibilidad de la inferencia.
+
 ## La arquitectura sin formularios
 
 La Máquina de Entrada es el fundamento de lo que la documentación operativa describe como la arquitectura sin formularios. Los flujos de trabajo tradicionales requieren que el operador rellene campos para contextualizar un documento antes de que ingrese al sistema. La Máquina de Entrada invierte esto: el operador proporciona un documento y el sistema lo clasifica, enruta y contextualiza automáticamente. La única entrada requerida es el documento en sí y una confirmación explícita de la intención de enviarlo.
+
+## Enrutamiento entre cartuchos
+
+Cada cartucho utiliza la Máquina de Entrada para su material de origen. La decisión de
+enrutamiento — qué cartucho recibe el documento tras la ingesta — la toma `service-input`
+según la clasificación, no según qué cartucho estaba activo cuando se presionó F12.
+
+- F4 (Contenido): los documentos enviados se convierten en el texto fuente para la
+  corrección editorial o la generación de borradores.
+- F5 (Libro de Actas): las notas de reunión y los documentos de resolución se procesan
+  mediante el flujo de gobernanza.
+- F6 (Contabilidad): los documentos financieros ingresan a la canalización del libro
+  mayor.
+- F7 (BIM): los archivos de modelo IFC se enrutan a `service-bim`.
 
 ## Véase también
 

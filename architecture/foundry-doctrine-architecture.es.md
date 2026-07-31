@@ -9,7 +9,7 @@ content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-06-23
+last_edited: 2026-07-31
 editor: pointsav-engineering
 paired_with: foundry-doctrine-architecture.md
 ---
@@ -51,9 +51,40 @@ Grupos representativos del conjunto completo de afirmaciones:
 
 **Sustrato Soberano de Dos Fondos (afirmación #34).** El diseño **prevé** que los binarios `os-*` se ejecuten en dos fondos de núcleo — [[sel4-microkernel-substrate|seL4]] (nativo, verificado formalmente) y NetBSD (compatibilidad, arranca en cualquier lugar) — mediante un shim de compatibilidad. El fondo de compatibilidad NetBSD y la capa de malla WireGuard operan hoy; el fondo nativo seL4 y el shim de binario compartido están planificados (Fase 3). Actualmente ningún servicio distribuye un único binario que se ejecute sin modificaciones en ambos fondos.
 
+**Escalera de cuatro niveles de SLM (afirmación #40).** Los clientes avanzan por
+[[four-tier-slm-substrate|cuatro posiciones de producto]] — Comunidad (puerta de enlace
+API pura), Nivel 1 (especialista local de 7B), Nivel 2 ([[yoyo-compute-substrate|Yo-Yo]]
+de 32B alojado por el proveedor), Nivel 3 (especialista PointSav-LLM con
+preentrenamiento continuado especializado) — a medida que su corpus se acumula y su
+apetito de cómputo crece. La escalera está diseñada para la ruptura: cada nivel es
+portátil para el cliente; ningún nivel genera dependencia del proveedor.
+
+**Sustrato de flujo inverso (afirmación #52).** La misma puerta de enlace
+[[doorman-protocol|Doorman]] y el mismo libro de auditoría que imponen la disciplina de
+entrada también imponen los flujos comerciales de salida —
+[[reverse-flow-substrate|mercado de datos e intercambio publicitario]] — como
+configuraciones opcionales, seleccionables por el inquilino. La configuración de
+monetización es una decisión contractual, no una reconstrucción arquitectónica.
+
 ## Las Ocho Invenciones Transectoriales
 
 Más allá de las afirmaciones estructurales, la doctrina se inspira en ocho invenciones de proceso tomadas de industrias establecidas: Pasaporte del Espacio de Trabajo (marítimo), NOTAM (aviación), Procedimiento de Retirada (farmacéutico), Conocimiento de Embarque (transporte marítimo), Operación con Período de Consolidación (banca), Modo Aprendiz (aviación/medicina), Ancla de Integridad (notarización), Convención Constitucional (IETF/enmienda constitucional).
+
+## Estructura del espacio de trabajo
+
+El espacio de trabajo es en sí mismo un despliegue del sustrato —
+`vault-privategit-source-1`. Tres niveles fluyen en una sola dirección:
+
+- `vendor/` — código fuente de ingeniería (`pointsav/*`) — rastreado en GitHub
+- `customer/` — catálogo de manuales (`woodfine/*`) — rastreado en GitHub
+- `deployments/` — instancias numeradas de tiempo de ejecución — solo locales,
+  excluidas de git
+
+Tres roles de sesión operan el espacio de trabajo: la sesión de mando (plano de
+control del espacio de trabajo, una sola a la vez), la sesión de archivo (un plano por
+repositorio de ingeniería, uno por repositorio) y la sesión de proyecto (por clúster de
+proyecto, varias concurrentes). La restricción `.git/index` — una sola sesión por
+índice — es la condición de carrera que determina esta estructura.
 
 ## Postura de Divulgación Continua
 
