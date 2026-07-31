@@ -9,7 +9,7 @@ quality: complete
 short_description: El procedimiento operativo para gestionar las claves de API externas en el servicio Doorman — dónde viven las claves, cómo se aprovisionan, cómo rotan y cómo se contiene una brecha.
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-07-31
 editor: pointsav-engineering
 cites: []
 paired_with: tier-c-key-wiring.md
@@ -31,6 +31,12 @@ Las claves se conservan en archivos de extensión de unidad systemd en la máqui
 Activar una nueva clave requiere la presencia del operador para los pasos que tocan el valor de la clave. La secuencia de ocho pasos comienza con la obtención de la clave desde la consola del proveedor, crea un archivo temporal con permisos restringidos para la clave, escribe la extensión systemd del Doorman, recarga el servicio, verifica el funcionamiento con una llamada de prueba de bajo costo, y finaliza con la eliminación segura del archivo temporal y una entrada en el registro de cambios.
 
 La rotación trimestral por proveedor es el ritmo predeterminado. La rotación acelerada es apropiada cuando se sospecha un compromiso, cuando el proveedor exige rotación en su propio calendario, o cuando el operador elige un ritmo más frecuente.
+
+## Especificidades operativas por proveedor
+
+El Doorman admite tres proveedores externos desde el despliegue inicial: Anthropic Claude, al que se accede mediante la API de Mensajes; Google Gemini, al que se accede mediante la API de Lenguaje Generativo; y OpenAI, al que se accede mediante la API de Chat Completions. Cada proveedor tiene una convención de autenticación distinta — basada en encabezados para Anthropic y OpenAI, basada en parámetros de URL para Gemini — y cada uno tiene una semántica de límite de tasa propia, que el Doorman gestiona con retroceso exponencial y un tope de reintentos.
+
+Cuando un proveedor devuelve un error de servidor, el Doorman recurre a la inferencia local de Nivel A en lugar de devolver un error al solicitante. El solicitante recibe una respuesta marcada como degradada, y la entrada del registro de auditoría deja constancia de la reversión. El agotamiento del presupuesto se gestiona de otra manera: una solicitud que excedería el presupuesto diario por inquilino se rechaza de inmediato en lugar de degradarse silenciosamente a la inferencia local, porque devolver un error de presupuesto excedido es preferible a entregar una respuesta degradada que el solicitante no pidió.
 
 ## Postura de auditoría y respuesta a brechas
 

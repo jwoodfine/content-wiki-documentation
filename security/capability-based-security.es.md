@@ -11,7 +11,7 @@ status: active
 audience: public
 bcsc_class: forward-looking
 language_protocol: PROSE-TOPIC
-last_edited: 2026-07-30
+last_edited: 2026-07-31
 editor: pointsav-engineering
 paired_with: capability-based-security.md
 cites: []
@@ -46,6 +46,20 @@ Los sistemas operativos estándar son vulnerables a la escalada de privilegios. 
 - **Mínimo privilegio por defecto (previsto).** Los componentes comenzarían sin capacidades; el sistema concedería solo el conjunto mínimo requerido.
 - **Contención del radio de explosión (prevista).** El compromiso de un componente no podría propagarse a componentes para los que no posee concesiones.
 - **Auditabilidad (prevista).** Las concesiones de capacidades quedarían registradas.
+
+## Arquitectura (planificada)
+
+La capa de capacidades prevista se ubicaría entre el [[sel4-microkernel-substrate|microkernel seL4]] y los procesos de servicio en Rust que componen los servicios del [[three-ring-architecture|Anillo 1 y Anillo 2]] de PointSav, con gestores de capacidades basados en Rust encargados de construir los envoltorios de aislamiento y los puentes de hipervisor que median la comunicación entre componentes.
+
+El diseño exige un flujo de comandos estricto y unidireccional entre dominios de aislamiento: un proceso aislado de entrega en el borde — por ejemplo, [[mediakit-os|MediaKit OS]] — no podría emitir comandos de vuelta hacia la bóveda segura de [[totebox-os|ToteboxOS]], de modo que un proceso de borde comprometido quedaría contenido dentro de su propia zona de memoria aislada, sin que ninguna concesión de capacidad alcance el resto del sistema — impuesto por el kernel, no por un documento de política.
+
+## Aplicaciones previstas
+
+Una vez construido, el modelo de capacidades está previsto para aplicarse en toda la pila de despliegue de [[pointsav-overview|PointSav]]:
+
+- **[[totebox-os|ToteboxOS]]** — el sistema operativo de bóveda segura principal; los datos en reposo solo serían accesibles para los procesos que posean el token de capacidad correspondiente.
+- **[[mediakit-os|MediaKit OS]]** — el entorno de entrega en el borde; previsto para no poseer ninguna concesión de capacidad que alcance ToteboxOS, de modo que un nodo de entrega comprometido no pudiera acceder a los datos almacenados.
+- **[[service-fs-architecture|service-fs]]** — el [[worm-ledger-architecture|libro contable WORM]]; la capacidad de anexado se concedería únicamente a los servicios de ingesta del [[three-ring-architecture|Anillo 1]].
 
 ## Véase también
 

@@ -11,7 +11,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-06
+last_edited: 2026-07-31
 editor: pointsav-engineering
 paired_with: sovereign-ai-routing.md
 cites: []
@@ -35,6 +35,22 @@ El flujo es el siguiente:
 4. El [[doorman-protocol|Doorman]] aplica la pasada de rehidratación antes de devolver la respuesta al solicitante.
 
 El modelo externo nunca posee los registros estructurados reales del libro contable del cliente.
+
+## Arquitectura
+
+[[service-slm|`service-slm`]] es la única frontera del [[doorman-protocol|Doorman]] a través de los tres niveles de cómputo:
+
+- **Nivel A — Local:** OLMo 3 7B Q4 en la máquina del cliente (CPU). Ningún dato sale del hardware del cliente.
+- **Nivel B — [[yoyo-compute-substrate|ráfaga Yo-Yo]]:** OLMo 3.1 32B Think en ráfaga de GPU multi-nube (GCP Cloud Run / RunPod / Modal / GPU del cliente). Solo el prompt sanitizado.
+- **Nivel C — API externa:** Anthropic Claude / Google Gemini / OpenAI para tareas de precisión acotada. Solo el prompt sanitizado; las claves de API las conserva exclusivamente el Doorman.
+
+El cliente no selecciona el nivel. La forma de la solicitud, la longitud del prompt y los límites de presupuesto configurados del inquilino determinan el enrutamiento. La decisión de enrutamiento del Doorman se registra en el libro contable de auditoría junto con el registro de la solicitud.
+
+## Aplicaciones
+
+- **Flujo editorial:** los borradores TOPIC y GUIDE enrutados a través de modelos externos llevan solo el prompt editorial sanitizado; los mapas de terminología específicos del cliente se aplican localmente.
+- **Firmas de asesoría financiera:** los resúmenes del libro contable enrutados para análisis eliminan números de cuenta, nombres de clientes e identificadores de jurisdicción antes de salir de la red de la oficina.
+- **Operaciones inmobiliarias:** los registros de propiedades enrutados para generación de descripciones reemplazan direcciones y nombres de propietarios con tokens seudónimos para la llamada externa.
 
 ## Véase también
 
