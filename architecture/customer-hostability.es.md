@@ -9,8 +9,11 @@ content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-09
+last_edited: 2026-07-31
 editor: pointsav-engineering
+cites:
+ - ni-51-102
+ - osc-sn-51-721
 paired_with: customer-hostability.md
 ---
 
@@ -59,6 +62,26 @@ regulatoria del cliente no dependa de la del proveedor.
 - No es exportación de datos. El hospedaje por el cliente es
  estructural — los datos ya están en el metal del cliente
  desde el momento en que se escribieron.
+
+## Mirando hacia adelante — pre-entrenamiento continuo federado
+
+Conforme a `[osc-sn-51-721]`, el lenguaje que describe la trayectoria de
+pre-entrenamiento continuo federado es prospectivo. La forma ya está
+establecida; el rendimiento operativo madura con el tiempo.
+
+La trayectoria: el adaptador de un cliente entrena sobre el corpus del
+cliente dentro del sustrato del cliente ([[yoyo-compute-substrate|el
+Tier B Yo-Yo]] o el propio servidor GPU del cliente). Las mejoras
+agregadas pueden retroalimentar a un modelo base compartido cuando el
+cliente elige contribuir, bajo consentimiento explícito. Los clientes
+que no contribuyen siguen beneficiándose de las mejoras al modelo base
+impulsadas por los clientes que sí lo hacen, sin fuga del contenido del
+corpus en ninguna dirección.
+
+Este es el patrón de LoRA federado adaptado a la propiedad de datos por
+cliente. Base razonable: la literatura de aprendizaje federado de
+2024–2026 y la investigación sobre agregación de LoRA reseñada en el
+artículo [[language-protocol-substrate]].
 
 ## Prueba operativa
 

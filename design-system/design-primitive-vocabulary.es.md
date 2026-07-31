@@ -11,7 +11,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-25
+last_edited: 2026-07-31
 editor: pointsav-engineering
 paired_with: design-primitive-vocabulary.md
 cites:
@@ -28,7 +28,31 @@ Estos patrones no son propiedad intelectual de ningún sistema de diseño en par
 
 ## Lo que el sustrato reemplazó
 
-El sustrato utiliza vocabulario, valores hexadecimales, elecciones tipográficas y contenido originales de PointSav. Los nombres de las familias de color describen el rol en lugar de la familia cromática — los clientes que cambian su marca de azul a verde azulado no tienen que renombrar los tokens. Los valores hexadecimales son propios de PointSav, evitando entrelazamiento de IP. La tipografía canónica es Inter (código abierto, SIL OFL 1.1) en lugar de una tipografía asociada a una empresa específica — sin asociación de marca corporativa.
+El sustrato utiliza vocabulario, valores hexadecimales, elecciones tipográficas y contenido originales de PointSav. Concretamente:
+
+| Superficie | Convención habitual del campo | Elección del sustrato | Por qué se reemplazó |
+|---|---|---|---|
+| Nombres de familias de color | `gray`, `blue`, `red`, `green`, `yellow` | `neutral`, `primary`, `positive`, `caution`, `critical` | Nombres por rol, según la investigación del Agente B §9. Los nombres de PointSav describen el rol, no la familia cromática — los inquilinos que cambian su marca de azul a verde azulado no tienen que renombrar tokens. |
+| Valores hexadecimales | Tonos propios del proveedor | Tonos elegidos por PointSav (p. ej., Primary 60 = `#234ed8`) | Evita el entrelazamiento de propiedad intelectual; el sustrato se sostiene con sus propios valores. |
+| Nombre del token de espaciado | `spacing-01` a `spacing-13` (con ceros a la izquierda) | `space-1` a `space-13` (sin ceros a la izquierda) | Ligeramente más limpio; misma escala numérica; misma estructura de base de 8px. |
+| Nombres de familia de escala tipográfica | `productive-01..N`, `expressive-01..N` | `utility-1..4`, `display-1..4` | Misma división conceptual; nombres originales de PointSav. |
+| Nombres de curvas de movimiento | `ease-productive`, `ease-expressive`, `ease-entrance`, `ease-exit` | `ease-utility`, `ease-display`, `ease-enter`, `ease-exit` | Mismo conjunto de cuatro curvas; alineado con el renombrado de la escala tipográfica. |
+| Nombres de duración | `fast-01`, `fast-02`, `moderate-01`, `moderate-02`, `slow-01`, `slow-02` | `speed-1` a `speed-6` | Misma escala de seis pasos; nomenclatura más limpia. |
+| Nombres de radio de borde | `radius-01`, `radius-02`, `radius-03` | `corner-1`, `corner-2`, `corner-3` | Misma escala de tres pasos; nomenclatura diferenciada. |
+| Tipografía por defecto | Una tipografía de código abierto patrocinada por una empresa | Inter (código abierto comunitario, SIL OFL 1.1) + pila de sistema como respaldo | Sin asociación de marca corporativa; Inter es el caballo de batalla moderno de la interfaz; la pila de sistema garantiza una degradación adecuada. |
+| Nombres de tema | Etiquetas claro/oscuro propias de una marca | `pointsav-brand` (canónico), variantes por inquilino | PointSav distribuye la marca canónica y los clientes PYME distribuyen la suya propia. |
+
+## Lo que el sustrato preservó literalmente de la convención más amplia
+
+Estos elementos son compartidos por el campo, no propios de un proveedor:
+
+- `$type: "color"`, `$value`, `$description` — sintaxis de la especificación DTCG 2025.10
+- Sintaxis de referencia `{path.to.token}` — aliasing DTCG
+- Piso de contraste WCAG 2.2 AAA — estándar de accesibilidad
+- Consulta `prefers-reduced-motion` — CSS Media Queries Level 5
+- Cuadrícula base de 8px para el espaciado — común en todo el campo
+
+Estos son los estándares abiertos que el sustrato hereda como consumidor de estándares abiertos.
 
 ## Por qué importa la memoria muscular
 
@@ -43,3 +67,8 @@ Un token nombrado por familia cromática con los valores exactos de un proveedor
 - [[design-philosophy]] — las tres inversiones estructurales que motivan las decisiones de diseño del sustrato
 - [[wiki-typography-system]] — la pila tipográfica Inter y Source Serif 4 construida sobre estas convenciones de tokens
 - [[wiki-component-library]] — nueve componentes del wiki que consumen las capas de tokens descritas aquí
+
+## Referencias
+
+- Formato del W3C Design Tokens Community Group — https://design-tokens.github.io/community-group/format/
+- WCAG 2.2 — https://www.w3.org/TR/WCAG22/

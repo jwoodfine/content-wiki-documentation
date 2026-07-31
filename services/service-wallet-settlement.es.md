@@ -9,7 +9,7 @@ content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-07-31
 editor: pointsav-engineering
 paired_with: service-wallet-settlement.md
 ---
@@ -28,6 +28,12 @@ El flujo va de: evento de ingresos → crédito registrado (con comisión de pla
 ## Rieles de pago para retiros en criptomoneda
 
 Polygon PoS (aproximadamente $0,002/tx; principal) y Solana (aproximadamente $0,0005/tx; secundario). No custodiado: la plataforma almacena solo las direcciones de destino (claves públicas); el retiro lo firma la cartera del inquilino, no la plataforma. Circle Paymaster maneja la abstracción del gas — los inquilinos pagan el gas en USDC; no se requiere token nativo de Polygon/Solana.
+
+## Mecanismo de deducción de comisión
+
+El porcentaje de comisión de la plataforma es una configuración del operador definida en el momento del despliegue, aplicada de manera uniforme a todas las transacciones de flujo inverso de ese inquilino. Es una deducción contable, no una transacción separada. El porcentaje específico queda como una decisión abierta del operador.
+
+Referencia de la industria: los modelos de pago directo al titular de derechos, ya validados a escala, demuestran que dejar que el cliente conserve la mayoría de los ingresos es una estructura comercial viable. El reparto de ingresos de la plataforma es una configuración del operador; el valor por defecto previsto es que "el cliente conserve la mayoría".
 
 ## Portabilidad
 

@@ -10,7 +10,7 @@ status: active
 audience: customer-woodfine
 bcsc_class: current-fact
 language_protocol: TRANSLATE-ES
-last_edited: 2026-06-30
+last_edited: 2026-07-31
 editor: woodfine-editorial
 short_description: "Práctica de diseño multidisciplinar que abarca toda la interacción del usuario con una empresa y sus productos, acuñada por Donald Norman en Apple a inicios de los años 1990."
 paired_with: user-experience-design.md
@@ -24,11 +24,17 @@ thesis_alignment: "El diseño de experiencia de usuario es la disciplina que rig
 keynote: false
 ---
 
-El diseño de experiencia de usuario (UXD, UED o XD) es el proceso de definir la experiencia que tendría un usuario al interactuar con una empresa, sus servicios y sus productos. El diseño UX se caracteriza por un enfoque centrado en el usuario en el que la investigación, los datos y los resultados de las pruebas de usuario orientan las decisiones en lugar de las preferencias estéticas o las suposiciones sobre características. La disciplina abarca todos los aspectos de la experiencia percibida de un usuario — usabilidad, utilidad, conveniencia, percepción de marca y rendimiento general.
+El diseño de experiencia de usuario (UXD, UED o XD) es el proceso de definir la experiencia que tendría un usuario al interactuar con una empresa, sus servicios y sus productos. El diseño UX se caracteriza por un enfoque centrado en el usuario en el que la investigación, los datos y los resultados de las pruebas de usuario orientan las decisiones en lugar de las preferencias estéticas o las suposiciones sobre características. La disciplina abarca todos los aspectos de la experiencia percibida de un usuario — usabilidad, utilidad, conveniencia, percepción de marca y rendimiento general — y se extiende al alcance completo de la experiencia de cliente (CX), más allá de la interacción inmediata con el producto.
+
+## Distinción respecto al diseño de interfaz de usuario
+
+La amplitud del diseño UX lo distingue del [[user-interface-design|diseño de interfaz de usuario]]. El diseño de interfaz (UI) se ocupa de la superficie visual e interactiva — el aspecto de una interfaz y cómo responde físicamente. El diseño UX se ocupa de la experiencia total que vive una persona: el modelo mental que se forma del sistema, la respuesta emocional que le genera usarlo, la facilidad con la que logra sus objetivos, la recuperación ante errores cuando algo sale mal, y la satisfacción o frustración que siente al completar una tarea. Una UI bien diseñada puede estar incrustada en una UX deficiente (una interfaz hermosa para un producto que no resuelve el problema real del usuario); a la inversa, una UX de alta calidad puede entregarse a través de una interfaz visualmente poco destacada.
 
 ## Historia
 
 El diseño de experiencia de usuario tiene sus raíces en los factores humanos y la ergonomía, un campo que ha centrado su atención en la relación entre los seres humanos y sus entornos de trabajo desde finales de los años 1940. El término "experiencia de usuario" fue acuñado por Donald Norman a principios de los años 1990, mientras trabajaba en Apple Computer como Vicepresidente de Tecnología Avanzada. Norman describió posteriormente su motivación: "Inventé el término porque pensé que la interfaz humana y la usabilidad eran demasiado limitadas. Quería cubrir todos los aspectos de la experiencia de la persona con el sistema, incluyendo el diseño industrial, los gráficos, la interfaz, la interacción física y el manual."
+
+La proliferación de las computadoras personales en los entornos laborales durante las décadas de 1980 y 1990 puso el desafío de hacer la informática accesible a usuarios no especializados en el centro del desarrollo de software comercial. El campo de la interacción humano-computadora (HCI) creció a partir de esa necesidad, desarrollando las metodologías de investigación y los marcos de diseño que el diseño UX hereda.
 
 ## Elementos
 
@@ -50,7 +56,9 @@ El diseño de experiencia de usuario tiene sus raíces en los factores humanos y
 
 **Usabilidad.** La usabilidad es la medida en que un producto puede ser utilizado por usuarios específicos para lograr objetivos específicos con efectividad, eficiencia y satisfacción en un contexto de uso especificado. Las pruebas de usabilidad son el método formal más común para evaluar la usabilidad: se dan a los usuarios tareas para completar mientras un investigador observa y registra su proceso.
 
-**Accesibilidad.** La accesibilidad aborda la facilidad con la que las personas con discapacidades pueden usar los productos. Las Pautas de Accesibilidad para el Contenido Web (WCAG) 2.0, publicadas por el Consorcio World Wide Web, definen los requisitos de accesibilidad a través de cuatro principios: Perceptible, Operable, Comprensible y Robusto (conocidos por el acrónimo POUR en inglés).
+**Accesibilidad.** La accesibilidad aborda la facilidad con la que las personas con discapacidades — visuales, auditivas, motrices o cognitivas — pueden usar los productos. Las Pautas de Accesibilidad para el Contenido Web (WCAG) 2.0, publicadas por el Consorcio World Wide Web, definen los requisitos de accesibilidad a través de cuatro principios: Perceptible, Operable, Comprensible y Robusto (conocidos por el acrónimo POUR en inglés).
+
+**Interacción humano-computadora (HCI).** La HCI es la disciplina que estudia el diseño, la evaluación y la implementación de sistemas informáticos interactivos para uso humano, y los principales fenómenos que los rodean. La HCI aporta la base de investigación de la que el diseño UX toma sus métodos: la psicología experimental, la ciencia cognitiva, las ciencias sociales y la informática contribuyen a la evidencia que sustenta las decisiones de diseño.
 
 ## Entregables de UX
 

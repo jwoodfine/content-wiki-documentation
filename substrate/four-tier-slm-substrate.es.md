@@ -9,7 +9,7 @@ quality: complete
 short_description: "Un camino gradual hacia la soberanía en IA: cuatro niveles de despliegue para el cliente, desde una pasarela de API sin modelo local hasta un servicio de IA especializado entrenado sobre el corpus agregado del proveedor, donde cada nivel añade capacidad sin romper la garantía del nivel inferior."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-07-31
 editor: pointsav-engineering
 cites: []
 references:
@@ -50,6 +50,37 @@ El resultado previsto es un modelo con profunda familiaridad operativa con la pl
 ## La regla de custodia de claves API
 
 Una única regla aplica en todos los niveles: las claves API residen exclusivamente en el límite del [[compounding-doorman|Doorman]]. Ningún motor de inferencia, ningún servicio descendente y ningún proceso del anillo 2 posee una clave de proveedor. Esto garantiza que el [[worm-ledger-architecture|registro de auditoría]] sea completo y que la lista de permisos se aplique en un único punto de control.
+
+## Transiciones de nivel no destructivas
+
+La graduación entre niveles es aditiva. Pasar del Nivel 0 al Nivel 1 añade hardware
+local y el primer ciclo de entrenamiento LoRA. Pasar del Nivel 1 al Nivel 2 añade la
+suscripción de cómputo bajo demanda. Pasar del Nivel 2 al Nivel 3 añade la suscripción
+al servicio especialista. En cada graduación, las capacidades del nivel inferior
+permanecen totalmente funcionales.
+
+Rebajar de nivel es igual de limpio. Un cliente que cancela la suscripción al Nivel 3
+conserva su sustrato local del Nivel 1. Sus adaptadores LoRA, su libro de auditoría y su
+[[knowledge-graph-grounded-apprenticeship|grafo de conocimiento]] permanecen en su
+propio hardware. Esta es la garantía estructural de que la relación comercial trata
+sobre capacidad, no sobre cautividad (véase [[customer-hostability]]).
+
+## Posiciones de mercado sin reclamar
+
+El [[sovereign-ai-commons|mercado federado de LoRA]] — donde los clientes aportan señal
+de adaptador con privacidad preservada a un patrimonio común que mejora la base para
+todos los participantes — no tiene un análogo comercial en producción en 2026. Todos
+los componentes técnicos (marcos de aprendizaje federado que preservan la privacidad,
+primitivas de privacidad diferencial, protocolos de intercambio de solo adaptadores)
+son maduros. El mercado con rieles de pago es una posición sin reclamar.
+
+El especialista de atención al cliente de sustrato abierto — una IA experta en el
+dominio, accesible a precios por token al alcance de los valores de contrato de las
+PYME, construida sobre una base de modelo totalmente abierta — también está sin
+reclamar en 2026. Los servicios de IA gestionados para el sector de atención al cliente
+operan en pisos de precio que excluyen estructuralmente el mercado objetivo de
+PointSav. El Nivel 3, tal como se describe, está pensado para ocupar este vacío, sujeto
+al cronograma de preentrenamiento continuo mencionado arriba.
 
 ## Ver también
 

@@ -9,7 +9,7 @@ quality: complete
 short_description: "Grafo de conocimiento organizativo de personas, empresas, proyectos y relaciones — memoria semántica persistente para responder consultas de negocio sin releer documentos fuente."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-06-09
+last_edited: 2026-07-31
 editor: pointsav-engineering
 cites: []
 references: []
@@ -89,6 +89,26 @@ sigue aristas desde una entidad hacia entidades conectadas.
 
 El resultado: la cadena de gobierno completa, recuperada en una sola consulta
 estructurada.
+
+## Cómo entran las entidades al grafo
+
+Las entidades entran al grafo a través de un [[service-extraction|pipeline de extracción]].
+Documentos, correos electrónicos, notas de reuniones y otras fuentes en prosa llegan a
+un directorio de entrada vigilado. El servicio de extracción lee cada fuente, envía el
+texto al enrutador de inferencia para la extracción estructurada de entidades mediante
+un esquema restringido por gramática, y escribe las entidades resultantes en el grafo a
+través del endpoint de mutación del enrutador.
+
+La calidad de la extracción depende del nivel de inferencia. El modelo compacto local
+(Tier A) extrae entidades con menor confianza. El nodo GPU de ráfaga (Tier B) extrae con
+mayor confianza, usando ventanas de contexto más amplias y restricciones de salida más
+estrictas. La extracción de Tier A es útil para cobertura rápida; la extracción de Tier B
+se usa para el registro organizativo canónico.
+
+Cada extracción se registra con una referencia de fuente y una puntuación de confianza.
+Las entidades extraídas de fuentes autoritativas (contratos ejecutados, documentos
+presentados, registros oficiales) llevan mayor confianza que las extraídas de
+correspondencia informal.
 
 ## Inyección de contexto en tiempo de inferencia
 
