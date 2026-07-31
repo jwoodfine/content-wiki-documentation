@@ -9,7 +9,7 @@ content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-09
+last_edited: 2026-07-31
 editor: pointsav-engineering
 paired_with: location-intelligence-substrate.md
 ---
@@ -31,11 +31,41 @@ El stack de renderización utiliza MapLibre GL JS en el navegador — un renderi
 
 La generación de tiles utiliza Tippecanoe para convertir GeoJSON en MBTiles o PMTiles, reduciendo el tamaño del archivo en un 85-95% frente al GeoJSON sin procesar. El servicio de tiles utiliza Martin, el servidor de tiles Rust de la Fundación MapLibre. El formato de archivo de tiles es PMTiles — un archivo de único archivo con soporte de solicitudes de rango HTTP, que permite servir tiles directamente desde nginx sin ejecutar Martin cuando los tiles están pre-cocinados.
 
+## Esquema de servicio — service-business, service-places, service-parking
+
+Una sola forma de registro cubre los tres servicios de localización del Anillo 1, con campos discriminadores:
+
+```jsonc
+{
+ "id": "01HZ...", // ULID
+ "service": "business" | "places" | "parking",
+ "operator": "walmart", // slug de marca
+ "operator_brand_family": "walmart", // unifica equivalentes regionales
+ "name": "Walmart Supercenter Burnaby",
+ "country_code": "US" | "CA" | "MX" | "ES",
+ "address": "...",
+ "lat": 49.2827,
+ "lng": -123.1207,
+ "geometry": { "type": "Point", ... },
+ "store_type": "supercenter" | "warehouse" | "diy" | "warehouse-club",
+ "data_source": "official-store-locator" | "openstreetmap" | "overture" | "foursquare-os" | "manual",
+ "captured_at": "2026-04-30T00:00:00Z"
+}
+```
+
+La normalización por familia de marca permite que las consultas de co-localización traten equivalentes regionales como un único operador lógico a través de países. `service-places` lleva un campo `place_type` (hospital, educación superior, aeropuerto). `service-parking` lleva una `geometry` de tipo Polígono (el perímetro del estacionamiento) en lugar de un Punto, además de un campo `associated_business_id` que vincula el estacionamiento con su negocio ancla cuando se conoce.
+
 ## Análisis de co-localización
 
 La consulta de co-localización identifica ubicaciones de la familia de marcas A dentro de 1 km, 2 km y 3 km de ubicaciones de la familia de marcas B (y opcionalmente una tercera familia). El algoritmo utiliza distancia haversiana frente a un índice R-tree en memoria; a decenas de miles de registros, cada búsqueda se ejecuta en microsegundos.
 
 El sustrato emite una FeatureCollection GeoJSON: centroide de la tupla, polilínea triangular que conecta las ubicaciones, círculos de radio y una propiedad `cluster_grade`. Las capas de visualización del navegador muestran POIs como círculos coloreados por familia de marca, tuplas de co-localización con sus halos de radio y fichas de filtro por país.
+
+A 15,000 registros POI (cobertura combinada en cuatro países y tres familias de marca), la renderización del lado del cliente en MapLibre está cómodamente dentro del rango operativo. La agrupación de clústeres del lado del cliente con Supercluster se vuelve relevante en torno a los 50,000 registros; la generación de mosaicos vectoriales en el servidor, a partir de los 500,000.
+
+## Base de investigación de la co-localización minorista
+
+La agrupación por co-localización minorista es un fenómeno documentado con precedente académico: las principales categorías de anclas minoristas exhiben tendencias marcadas hacia la proximidad mutua. Los efectos de entrada de Costco sobre los minoristas vecinos se han estudiado formalmente. El análisis de co-localización que produce el sustrato se corresponde directamente con la metodología establecida (distancia media al vecino más cercano, contrastada frente a una distribución nula de permutación).
 
 ## Composición con el resto de la plataforma
 
@@ -45,7 +75,13 @@ Los triples de co-localización producidos por el sustrato de inteligencia de lo
 
 ## Fuentes de datos
 
-Los conjuntos de datos abiertos con licencia Apache 2.0 son el sustrato primario: Foursquare Open Source Places (más de 100 millones de POIs, caídas mensuales de Parquet) y Overture Maps Foundation (lugares, edificios, transportes y direcciones como GeoParquet). OpenStreetMap es la fuente secundaria para las brechas de cobertura.
+Los conjuntos de datos abiertos con licencia Apache 2.0 son el sustrato primario: Foursquare Open Source Places (más de 100 millones de POIs, caídas mensuales de Parquet) y Overture Maps Foundation (lugares, edificios, transportes y direcciones como GeoParquet). OpenStreetMap (vía el geocodificador Nominatim o Photon) es la fuente secundaria para las brechas de cobertura.
+
+El scraping directo de sitios web de minoristas no se utiliza cuando los términos de servicio prohíben la minería de datos. Los fundamentos de datos abiertos ya han acumulado los registros POI que de otro modo requerirían scraping.
+
+## Información prospectiva
+
+Las declaraciones sobre el calendario de despliegue, los resultados para el cliente y la hoja de ruta de funcionalidades del Sustrato de Inteligencia de Localización son objetivos previstos sujetos a cambio. Los plazos reales dependen de la revisión del operador en cada etapa, de la precisión de la cobertura de datos abiertos y de la velocidad de desarrollo. Estas declaraciones llevan el matiz "planificado"/"previsto"/"puede" conforme a la postura de divulgación continua del espacio de trabajo, según el National Instrument 51-102 (Continuous Disclosure Obligations) de la BCSC y el OSC Staff Notice 51-721 (Forward-Looking Information Disclosure).
 
 ## Véase también
 

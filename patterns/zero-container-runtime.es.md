@@ -9,7 +9,7 @@ quality: complete
 short_description: El compromiso estructural de que todo despliegue de PointSav se ejecuta como un binario Linux bajo systemd en una máquina virtual simple o hardware bare-metal, sin tiempo de ejecución de contenedores ni orquestador.
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-07-31
 editor: pointsav-engineering
 cites: []
 paired_with: zero-container-runtime.md
@@ -28,15 +28,29 @@ Este es un compromiso estructural, no una elección pragmática de primera fase.
 
 **Legibilidad a largo plazo.** Los binarios ELF y los archivos de unidad systemd han sido el estándar en Linux desde los años 1990 y 2010 respectivamente. Los ecosistemas de tiempo de ejecución de contenedores dependen de especificaciones de formato de imagen e infraestructura de registro que han sufrido cambios sustanciales incluso en una década.
 
-**Economía para PYMEs.** Las pequeñas y medianas empresas — el cliente objetivo de los despliegues de PointSav — no pueden mantener razonablemente infraestructura de contenedores. Un operador puede ejecutar `systemctl status` y leer la respuesta en texto plano.
+**Economía para PYMEs.** Las pequeñas y medianas empresas — el cliente objetivo de los despliegues de PointSav — no pueden mantener razonablemente infraestructura de contenedores. Un operador puede ejecutar `systemctl status` y leer la respuesta en texto plano. Depurar una orquestación de contenedores exige un conocimiento especializado que la mayoría de los operadores de PYME no tiene y no debería necesitar.
+
+**Integridad del bucle de composición.** El sustrato que genera la señal de entrenamiento a partir de las interacciones del cliente debe recorrer la ruta completa desde el borde hasta el centro y de vuelta sin cruzar fronteras de plataforma que oscurezcan la procedencia. Las capas de contenedores introducen una opacidad de procedencia incompatible con la disciplina de auditoría que exige el sustrato.
+
+## Lo que esto excluye
+
+Ninguna ruta de despliegue de PointSav utiliza: Docker ni Docker Compose en ninguna forma, incluso para desarrollo local; Podman; Cloud Run en su variante estándar o con GPU; AWS ECS y Fargate; Kubernetes en cualquier variante, incluidas las gestionadas; Modal; registros de contenedores; ni formatos de imagen OCI, ya sean construidos o consumidos.
 
 ## Lo que se usa en su lugar
 
-La supervisión de procesos se maneja con unidades systemd. Los binarios Linux ELF se empaquetan para distribución como binarios nativos. La configuración vive en archivos de texto plano bajo `/etc/` o en archivos de entorno systemd. Los secretos se obtienen del gestor de secretos en la nube al arranque y se conservan en un sistema de archivos respaldado por memoria. El registro se enruta a través de journald.
+La supervisión de procesos se maneja con unidades systemd. Los binarios Linux ELF se empaquetan para distribución como binarios nativos, opcionalmente instalados mediante paquetes Debian o el gestor de paquetes nativo del lenguaje cuando corresponde. El descubrimiento de servicios utiliza DNS y direccionamiento estático con dependencias de destino systemd. La configuración vive en archivos de texto plano bajo `/etc/` o en archivos de entorno systemd. Los secretos se obtienen del gestor de secretos en la nube al arranque y se conservan en un sistema de archivos respaldado por memoria en lugar de escribirse en disco. El registro se enruta a través de journald y opcionalmente hacia la recolección de logs en la nube. La aceleración por GPU utiliza el controlador CUDA instalado mediante el gestor de paquetes del sistema; el binario de inferencia se comunica con el controlador directamente.
+
+Para el cómputo de ráfaga del Nivel B — las instancias GPU interrumpibles usadas para inferencia de modelos grandes —, el servicio Doorman inicia la máquina virtual antes de una carga de trabajo anticipada y la apaga tras una ventana de inactividad. La latencia entre el arranque y la primera inferencia en esta ruta es de sesenta a ciento veinte segundos, más larga que el tiempo de arranque en frío de una plataforma de contenedores gestionada. Esta latencia es aceptable para canalizaciones de ingesta asíncronas; para flujos de trabajo síncronos, un modo de máquina virtual "caliente" mantiene la instancia en ejecución entre solicitudes dentro de una ventana configurable.
 
 ## La compensación declarada
 
-El compromiso acepta un tiempo de inicio en frío más largo para el cómputo de ráfaga en comparación con las plataformas de contenedores gestionadas. A cambio: cada proceso en ejecución en cada despliegue es visible para el cliente con herramientas estándar de administración del sistema, y el mismo binario y archivo de unidad se ejecuta en cualquier host Linux sin modificación.
+El compromiso acepta un tiempo de inicio en frío más largo para el cómputo de ráfaga en comparación con las plataformas de contenedores gestionadas, y acepta que la orquestación declarativa de clústeres con actualizaciones progresivas requiera OpenTofu aplicado a unidades systemd en lugar de un plano de control de orquestación construido a medida.
+
+A cambio: cada proceso en ejecución en cada despliegue es visible para el cliente con herramientas estándar de administración del sistema, y el mismo binario y archivo de unidad se ejecuta en cualquier host Linux sin modificación. No hay una capa de contenedor que despegar al responder preguntas sobre qué se estaba ejecutando en un momento específico. La facturación es directa: el precio de la máquina virtual es por segundo, y la instancia no cuesta nada más allá del disco y la IP reservada cuando está detenida.
+
+## Preparación para el futuro
+
+El principio se aplica sin límite de tiempo. Si una revisión técnica futura, bajo el proceso de enmienda constitucional del marco, demuestra que el principio ha producido una desventaja material que no puede resolverse dentro de sus propias restricciones, puede presentarse una propuesta formal. Hasta que dicha propuesta se presente y ratifique, el principio es la regla vigente.
 
 ## Véase también
 

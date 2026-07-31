@@ -9,7 +9,7 @@ quality: complete
 short_description: "La justificación para seleccionar OLMo 3 como sustrato de inferencia local y en GPU: la única familia de modelos completamente abierta — datos, código de entrenamiento y puntos de control incluidos — que permite el preentrenamiento continuo y satisface la postura de adquisición de una empresa pública canadiense."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-07-31
 editor: pointsav-engineering
 cites: []
 references:
@@ -42,6 +42,16 @@ OLMo 3 es el único modelo en el panorama abierto no chino de 2026 que opera en 
 Los modelos de origen chino — independientemente de su calidad técnica y sus licencias permisivas — fueron descartados por las restricciones de adquisición aplicables a una empresa pública canadiense, derivadas del precedente legislativo estadounidense de 2026 sobre infraestructuras de IA de origen chino.
 
 Los modelos Phi-4, Granite 4 y otros con licencias permisivas fueron descartados porque sus datos de entrenamiento son cerrados y de propiedad del fabricante: permiten ajuste fino LoRA pero no preentrenamiento continuo, por lo que no habilitan el camino hacia un modelo base propio.
+
+**Llama 4 (Meta).** La Licencia Comunitaria de Llama no está aprobada por la OSI e incluye restricciones al uso comercial por encima de un umbral de usuarios. Esta restricción de licencia lo descalifica de forma independiente a la cuestión de los datos de entrenamiento.
+
+**Mistral 7B.** Licencia Apache 2.0; los datos de entrenamiento están documentados solo parcialmente, sin publicación abierta completa. Arquitectura más antigua; más débil en generación de código que las alternativas de 2026.
+
+## Capacidad
+
+OLMo 3 32B Think, en la versión actualizada OLMo 3.1 de diciembre de 2025, alcanza un 91.4% en HumanEvalPlus — la medida de precisión práctica en generación de código — y se sitúa a menos de dos puntos porcentuales del modelo de pesos abiertos líder en los benchmarks estándar de razonamiento matemático y seguimiento de instrucciones. La variante de 7B es sólida en programación, comprensión lectora y matemáticas, con una ventana de contexto de 65,000 tokens.
+
+Estas cifras no sitúan a OLMo 3 en la frontera absoluta del rendimiento en pesos abiertos. Sí lo sitúan firmemente en el rango donde el [[compounding-doorman|Doorman]] — el servicio que media todas las llamadas de inferencia de IA en la arquitectura de PointSav — produce resultados útiles en las tareas diarias que gestiona. La variante local de 7B maneja el trabajo rutinario; la variante de ráfaga de 32B maneja tareas que requieren razonamiento extendido. Ambas comparten el mismo vocabulario, tokenizador y formato de prompt, lo que significa que la [[adapter-composition|biblioteca de adaptadores]] entrenada sobre una es compatible con la otra.
 
 ## Las tres capas de cómputo
 

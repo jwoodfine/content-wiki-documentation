@@ -10,7 +10,7 @@ status: active
 audience: customer-woodfine
 bcsc_class: current-fact
 language_protocol: TRANSLATE-ES
-last_edited: 2026-06-30
+last_edited: 2026-07-31
 editor: woodfine-editorial
 short_description: "Interfaz definida que permite la comunicación entre sistemas de software especificando las llamadas disponibles, cómo realizarlas y los formatos de datos intercambiados."
 paired_with: application-programming-interface.md
@@ -58,9 +58,13 @@ Una API se distingue de una interfaz de usuario por su consumidor previsto: una 
 
 **API web.** Las API web son servicios a los que acceden los dispositivos cliente a un servidor web usando el Protocolo de Transferencia de Hipertexto (HTTP). Los dispositivos cliente envían una solicitud en forma de solicitud HTTP y reciben un mensaje de respuesta típicamente en formato JSON o XML.
 
-## Políticas de publicación
+## Consideraciones de diseño
 
-Las API se clasifican típicamente por su política de acceso: las API *privadas* son solo para uso interno de la empresa; las API de *socio* están disponibles solo para socios comerciales específicos bajo acuerdo contractual; las API *públicas* están disponibles para uso general del público, sujetas a autenticación y límites de velocidad.
+**Síncrona frente a asíncrona.** Una llamada a una API síncrona bloquea el punto de llamada mientras espera a que termine el código llamado. Una llamada a una API asíncrona no bloquea el punto de llamada; el hilo llamante recibe una notificación cuando llega la respuesta. La elección entre estos patrones tiene implicaciones significativas para la capacidad de respuesta de la aplicación y el uso de recursos.
+
+**Políticas de publicación.** Las API se clasifican típicamente por su política de acceso: las API *privadas* son solo para uso interno de la empresa; las API de *socio* están disponibles solo para socios comerciales específicos bajo acuerdo contractual; las API *públicas* están disponibles para uso general del público, sujetas a autenticación y límites de velocidad.
+
+**Seguridad.** Las amenazas comunes a las API de cara al público incluyen la inyección SQL, los ataques de denegación de servicio, la autenticación deficiente y la exposición de datos sensibles. Las prácticas de seguridad incluyen HTTPS para la seguridad de la conexión, seguridad de contenido para mitigar los ataques de inyección de datos, y claves de API para autenticar y autorizar solicitudes.
 
 ---
 

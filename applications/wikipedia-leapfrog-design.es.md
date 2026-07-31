@@ -8,7 +8,7 @@ type: topic
 content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-07-31
 editor: pointsav-engineering
 paired_with: wikipedia-leapfrog-design.md
 cites: [ni-51-102, osc-sn-51-721]
@@ -31,6 +31,12 @@ El sustrato adopta el segundo camino, con una condición: la adopción es razona
 ### La distribución 95% / 5%
 
 El 95% de la interfaz es el inventario de memoria muscular de Wikipedia, mantenido inviolable en todas las fases. El 5% es el margen leapfrog — añadidos que son aditivos, no sustitutivos, de modo que la experiencia de lectura base no se altera para los lectores que no prestan atención a los añadidos.
+
+La especificación de diseño UX del motor da como referencia el skin Vector 2022, el skin de producción actual de Wikipedia. Un estudio de 2025 encontró que el rediseño de Vector 2022 aumentó las páginas vistas un 1.25% y los clics en enlaces internos en 1.06 millones mensuales, sin ninguna disrupción significativa, siguiendo una disciplina aditiva: no se eliminó nada de la experiencia existente. El sustrato sigue la misma disciplina.
+
+### Lo que se mantuvo
+
+Los dieciocho patrones sagrados catalogados en la especificación de diseño UX del motor incluyen: el par de pestañas Artículo / Discusión en la parte superior izquierda de la fila del título; las pestañas Leer / Editar / Ver historial en la parte superior derecha; los lápices de edición por sección en cada encabezado; el orden de cierre del artículo (Véase también, Notas, Referencias, Lecturas adicionales, Enlaces externos, Categorías); las hatnotes para desambiguación; la oración inicial en negrita con la fórmula sujeto-más-cópula; una tabla de contenidos colapsable en el rail izquierdo que sigue al lector al desplazarse; el selector de idioma junto al título; las convenciones de notas al pie con superíndices entre corchetes y listas de referencia con flecha de retorno; la capacidad de infobox en el rail derecho; los colores de enlace azul (no visitado) / morado (visitado) / rojo (destino faltante); la tipografía del cuerpo a un mínimo de 17 px con una altura de línea de 1.5 o superior y una longitud de línea de 45 a 75 caracteres; el marcador de búsqueda centrado en la parte superior; y la interfaz móvil con botón de hamburguesa y secciones colapsadas por defecto.
 
 ---
 
@@ -65,6 +71,22 @@ Un lector que llega a documentation.pointsav.com y ha pasado años leyendo Wikip
 Un lector del ámbito financiero llega a través de un enlace a un artículo específico. Ve un título, pestañas de artículo y discusión en la parte superior izquierda, pestañas de leer, editar y ver historial en la parte superior derecha. Nunca ha visitado este sitio antes; navega sin fricción porque ha navegado esta estructura miles de veces en Wikipedia.
 
 Un lector de ingeniería tiene la misma experiencia de navegación y también nota el perfil JSON-LD `TechArticle` en el código fuente de la página, el slug de URL estable correspondiente a un archivo Markdown en un repositorio Git, y el endpoint `/feed.atom` anunciado en la cabecera de la página. Ambos lectores se sienten cómodos sin haber aprendido un nuevo paradigma.
+
+---
+
+## Referencia futura — el 5% de margen leapfrog
+
+Los siguientes elementos están previstos o planificados para fases posteriores. No se indican fechas de entrega específicas. Cualquier cambio material al plan de entrega se registraría en los documentos del plan de fases de ingeniería y en el registro de cambios del espacio de trabajo, conforme a las obligaciones de divulgación continua de [ni-51-102].
+
+**Insignias de verificación criptográfica por afirmación** (planificado): el sistema de insignias en línea descrito arriba, previsto para conectarse a una capa de federación direccionada por contenido en una fase futura. El marcador de posición de la banda del encabezado y el control de densidad para el lector se implementan ahora como ubicaciones estructurales; la maquinaria prevista para llenarlos está planificada para una fase posterior.
+
+**Edición colaborativa en tiempo real** (opcional): la implementación CRDT se distribuye tras un indicador `--enable-collab`. Prevista para despliegues multiusuario de confianza donde varios autores editan el mismo artículo simultáneamente con conciencia de cursor compartida. Git sigue siendo canónico; el CRDT está previsto como estado efímero de sesión que se serializa en un commit al guardar explícitamente.
+
+**Editor móvil**: una superficie de edición diseñada primero para móvil está prevista para una fase posterior. El editor actual está diseñado primero para escritorio.
+
+**Navegación por grafo de citas**: afinidades previstas para navegar "qué cita este artículo" y "qué cita a este artículo", planificadas para después de que se implemente el grafo de wikilinks redb.
+
+**Exploración semántica**: "artículos similares a este" y "conceptos adyacentes a este" obtenidos del grafo de citas, no de un modelo de inferencia en la ruta de lectura. Prevista como complemento a la exploración por categoría.
 
 ---
 

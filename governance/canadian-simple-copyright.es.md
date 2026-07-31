@@ -9,7 +9,7 @@ quality: complete
 short_description: "The platform's intellectual property vests in a single Canadian parent holding company by operation of Canadian Copyright Act § 13(3), without inter-company assignment, and is designed to be evolved incrementally as the corporate structure matures."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-07-31
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -98,9 +98,41 @@ consentimientos de cliente. Empujar PI hacia abajo a PointSav
 Digital Systems Inc. en la incorporación vía rollover § 85 es
 también una transacción de un solo evento.
 
+Las alternativas de venta de activos a nivel de subsidiaria requieren cronogramas de PI enumerados,
+cesiones individuales y consentimientos de cliente. La asimetría se mantiene también hacia adelante
+en el tiempo: empujar la PI hacia abajo, a PointSav Digital Systems Inc., en la incorporación mediante
+el rollover del § 85, es una transacción de un solo evento. Extraer la PI hacia arriba desde un
+tenedor subsidiario más adelante exigiría cesión bajo § 13(4), documentación § 247, posibles
+implicaciones de GST/HST y la cristalización del valor de mercado justo.
+
+La postura preserva tanto la opcionalidad de venta de acciones hoy como la ruta de rollover
+descendente más limpia en el momento de la incorporación.
+
+## Lo que esta postura no es
+
+No es un estado permanente. Es la estructura mínima viable elegida para el estado actual de la
+trayectoria de PointSav, diseñada para evolucionar a medida que el proyecto madura sin deshacer los
+acuerdos preexistentes.
+
+No es un sustituto de los acuerdos redactados por asesoría legal a escala. Cada uno de los eventos
+disparadores anteriores exige acuerdos redactados por asesoría legal que sustituyan el régimen
+estatutario por defecto. La estructura es deliberadamente mínima para que esa sustitución pueda
+escalonarse.
+
+No es divulgación continua al estilo BCSC. Las disciplinas descritas aquí rigen cómo se asigna el
+derecho de autor y cómo se ve la estructura corporativa; el [[bcsc-disclosure-posture|régimen de
+divulgación]] bajo `[ni-51-102]` opera en una superficie distinta y se aplica independientemente de
+si la entidad correspondiente es actualmente un emisor reportante.
+
 ## Véase también
 
 - [[customer-hostability|Hospedaje por el cliente]] — la postura de soberanía de datos del cliente que esta estructura de derechos de autor habilita
 - [[contributor-model|Modelo de contribución]] — quién puede contribuir trabajo creador de PI y bajo qué condiciones
 - [[bcsc-disclosure-posture|Postura de divulgación continua]] — la disciplina de divulgación paralela que aplica junto con la gobernanza de derechos de autor
 - [[sovereign-replacement-initiative|Iniciativa de reemplazo soberano]] — el programa de independencia de proveedores cuya PI se gobierna aquí
+
+## Referencias
+
+- Ley canadiense de derechos de autor — <https://laws-lois.justice.gc.ca/eng/acts/c-42/>
+- BC Business Corporations Act — <https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/02057_00>
+- Income Tax Act § 85 (rollover) — <https://laws-lois.justice.gc.ca/eng/acts/i-3.3/section-85.html>
