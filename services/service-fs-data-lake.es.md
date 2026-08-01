@@ -11,7 +11,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-08
+last_edited: 2026-07-31
 editor: pointsav-engineering
 paired_with: service-fs-data-lake.md
 cites: []
@@ -23,7 +23,7 @@ cites: []
 
 - Dos zonas de aterrizaje separadas — minorista y cívica — almacenan puntos en bruto de OpenStreetMap y Overture Maps Foundation. Los servicios descendentes leen directamente desde las zonas de aterrizaje; no hay etapa de transformación ETL entre la ingestión y el consumo.
 - La persistencia de datos está desacoplada de la lógica analítica. Si `[[app-orchestration-gis]]` se re-aprovisiona, los activos de datos en bruto de `service-fs` permanecen intactos e inmediatamente disponibles para cualquier capa analítica de reemplazo.
-- En producción, `service-fs` se despliega como un unikernel de baja sobrecarga que expone una API restringida. Solo las capas de inteligencia (`service-business` y `service-places`) pueden leer datos en bruto y escribir resultados procesados — sin acceso de shell de propósito general a la capa de almacenamiento.
+- El despliegue de producción previsto es un unikernel de baja sobrecarga que expone una API restringida, en el que solo las capas de inteligencia ([[service-business-clustering|`service-business`]] y [[service-places-filtering|`service-places`]]) pueden leer datos en bruto y escribir resultados procesados. **Aún no construido**: hoy las zonas de aterrizaje son directorios planos en el sistema de archivos del host, poblados y leídos directamente por los scripts de ingesta y análisis — sin unikernel, sin API restringida, sin crates dedicados `service-business`/`service-places` confirmados en el código todavía.
 - El diseño en archivos planos y formato abierto evita la dependencia de formatos propietarios. Los registros geoespaciales en bruto son archivos de texto legibles por cualquier herramienta en cualquier década.
 
 ## Ingestión y almacenamiento de datos
@@ -37,9 +37,9 @@ El servicio mantiene una estructura de sistema de archivos unificada con zonas d
 
 Como capa con estado de la plataforma, `service-fs` es responsable de la persistencia de datos. Está diseñado para ser independiente del software analítico: si la [[app-orchestration-gis|capa de orquestación GIS]] se re-aprovisiona, los activos de datos principales permanecen intactos dentro de esta capa. La separación limpia entre persistencia de datos y lógica analítica es un invariante de diseño fundamental. Este mismo principio de separación se extiende al libro mayor WORM utilizado para registros institucionales; véase [[service-fs-architecture|arquitectura FS]] para el diseño completo de cuatro capas.
 
-## Implementación como unikernel
+## Implementación como unikernel (planificada)
 
-En producción, `service-fs` se despliega como un unikernel de baja sobrecarga. Proporciona una API restringida para que las capas de inteligencia [[service-business-clustering|`service-business`]] y [[service-places-filtering|`service-places`]] lean datos en bruto y escriban resultados procesados, aplicando una separación limpia entre preocupaciones de almacenamiento y análisis. La [[co-location-methodology|metodología de co-localización]] describe cómo se usa la salida de agrupación para generar clasificaciones por nivel.
+El despliegue de producción previsto es un unikernel de baja sobrecarga que proporciona una API restringida para que las capas de inteligencia [[service-business-clustering|`service-business`]] y [[service-places-filtering|`service-places`]] lean datos en bruto y escriban resultados procesados, aplicando una separación limpia entre preocupaciones de almacenamiento y análisis. **Estado actual**: el entorno unikernel aún no existe — las zonas de aterrizaje descritas arriba son directorios planos del sistema de archivos del host, leídos y escritos directamente por los scripts de ingesta y análisis GIS (verificado contra los propios scripts de ingesta de `app-orchestration-gis`, que leen/escriben estas rutas mediante E/S de archivos ordinaria). La [[co-location-methodology|metodología de co-localización]] describe cómo se usará la salida de agrupación para generar clasificaciones por nivel, una vez que esa capa de análisis exista.
 
 ## Véase también
 
