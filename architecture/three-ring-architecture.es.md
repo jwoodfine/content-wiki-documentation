@@ -18,7 +18,7 @@ Antes de que una organización regulada compre una plataforma de IA, tiene que r
 
 [[pointsav-overview|PointSav]] responde la pregunta de forma arquitectónica. La Arquitectura de Tres Anillos organiza cada servicio en uno de tres anillos concéntricos con dependencias estrictas en una sola dirección; los dos anillos interiores — ingesta en el límite y procesamiento determinista — funcionan plenamente sin el anillo de IA exterior.
 
-Los anillos 1 y 2 no contienen ningún import, dependencia ni llamada en tiempo de ejecución que llegue al anillo 3. Un despliegue puede excluir el anillo 3 por completo; donde se incluye, es un consumidor de solo lectura que produce propuestas, nunca escrituras en el registro.
+Un despliegue puede excluir el anillo 3 por completo — los anillos 1 y 2 no contienen ningún import, dependencia ni requisito en tiempo de ejecución sobre el anillo 3 para funcionar. Donde se incluye el anillo 3, los servicios del anillo 2 pueden llamarlo para obtener propuestas de extracción o clasificación, pero el anillo 3 mismo nunca escribe: es un consumidor de solo lectura del anillo 2 que devuelve únicamente propuestas, nunca escrituras en el registro. Toda propuesta aceptada entra al registro a través de una vía de escritura del anillo 2 con un punto de control de aprobación humana — el anillo 3 no puede escribir unilateralmente, independientemente de si fue invocado.
 
 Para un comprador regulado la verificación es estructural, no procedimental. Un despliegue sin el anillo 3 no tiene IA que auditar; uno con él mantiene el núcleo determinista como el único registro autoritativo. Este artículo cubre la disposición de los anillos, la taxonomía de servicios, el modelo de aislamiento multi-tenant y por qué la IA es opcional por construcción.
 

@@ -6,10 +6,10 @@ category: substrate
 type: concept
 content_type: topic
 status: stub
-short_description: "El proceso programado que reconstruye el grafo de conocimiento de la plataforma a partir de fuentes canónicas de archivos planos cada noche, produciendo un substrato consultable desde entradas deterministas sin intervención de inteligencia artificial."
+short_description: "El proceso programado que reconstruye el grafo de conocimiento de la plataforma a partir de fuentes canónicas de archivos planos cada noche — la extracción de entidades asistida por IA produce solo propuestas; toda escritura al grafo pasa por una vía de escritura del Anillo 2 con un punto de control de aprobación humana."
 bcsc_class: public-disclosure-safe
 lang: es
-last_edited: 2026-05-18
+last_edited: 2026-08-01
 editor: pointsav-engineering
 paired_with: nightly-datagraph-rebuild.md
 ---
@@ -19,22 +19,22 @@ La reconstrucción nocturna del grafo de datos es el proceso programado que reco
 ## Puntos clave
 
 - El grafo se reconstruye a partir de fuentes de archivos planos cada noche, sin mantenimiento por mutación continua. Los consumidores leen una instantánea estable, no un grafo parcialmente construido en tiempo real.
-- Cada ciclo de reconstrucción puede replicarse a partir de archivos planos archivados. Las mismas entradas producen el mismo grafo — sin inferencia de IA, sin clasificación probabilística.
-- El patrón de reconstrucción aplica el cumplimiento de SYS-ADR-07: los datos de entidades estructurados son el producto de reglas deterministas, no de salidas de modelos de IA.
+- Cada ciclo de reconstrucción puede replicarse a partir de archivos planos archivados, ya que la instantánea del libro de registros WORM que cada ciclo lee es en sí misma inmutable.
+- La extracción de entidades usa inferencia restringida por gramática a través del [[doorman-protocol|Doorman]] — esto es el Anillo 2 invocando al Anillo 3 para obtener una propuesta, no un paso determinista interno del Anillo 2. El límite de [SYS-ADR-07](governance/architecture-decisions) se aplica aguas abajo de la extracción, no excluyendo la IA de la canalización: la salida de la extracción es solo una propuesta, y toda escritura al grafo pasa por una vía de escritura del Anillo 2 con un punto de control de aprobación humana antes de aterrizar. Véase [[architecture/three-ring-architecture|la Arquitectura de Tres Anillos]] para la regla general que sigue esta canalización.
 - Cada ciclo acumula el anterior. Los registros recién comprometidos extienden el grafo; ningún registro se elimina. El mecanismo [[compounding-substrate]] hace que el grafo crezca con precisión de forma monotónica con el tiempo.
 
 ## Propósito
 
 El patrón de reconstrucción garantiza que el substrato consultable refleje el estado comprometido del registro canónico, no la deriva acumulada en memoria. Cualquier ejecución individual puede replicarse a partir de los archivos planos archivados.
 
-El proceso se ejecuta sin inferencia de inteligencia artificial. Las relaciones se calculan mediante reglas de extracción deterministas y uniones basadas en esquemas, no mediante clasificación probabilística. Este es el límite de cumplimiento de SYS-ADR-07: los datos del grafo estructurado son un producto computado de reglas deterministas aplicadas a registros verificados.
+Las uniones basadas en esquemas contra la taxonomía canónica y los índices de inteligencia de ubicación son deterministas — sin coincidencia difusa. La extracción de entidades en sí no lo es: es inferencia restringida por gramática a través del Doorman, que produce una propuesta estructurada que un humano revisa antes de que se convierta en una escritura al grafo. Esto coincide con el límite de SYS-ADR-07 aplicado en toda la plataforma — la IA nunca escribe directamente en un almacén de registros estructurados, sin importar qué anillo la invocó — en lugar de excluir a la IA del paso de extracción por completo.
 
 ## Etapas del proceso
 
 El proceso de reconstrucción sigue una secuencia fija:
 
 1. **Instantánea del libro de registros** — lee el estado comprometido actual de todos los segmentos del [[worm-ledger-design|libro de registros WORM]]. El libro es de solo adición; la instantánea es el historial completo hasta el momento de inicio programado.
-2. **Paso de extracción** — [[service-extraction|service-extraction]] ejecuta sus reglas de reconocimiento de entidades deterministas contra la instantánea, produciendo registros de entidades para personas, organizaciones, activos y eventos.
+2. **Paso de extracción** — [[service-extraction|service-extraction]] entrega el texto del corpus a [[service-content|service-content]], que invoca al Doorman para la extracción de entidades restringida por gramática, produciendo registros de entidades propuestos para personas, organizaciones, activos y eventos. Esta es una llamada del Anillo 2 al Anillo 3 para obtener una propuesta, no un paso determinista — véase la nota de cumplimiento arriba.
 3. **Uniones por esquema** — los registros de entidades se unen con la taxonomía canónica y los índices de inteligencia de ubicación mediante relaciones de clave foránea explícitas. No hay coincidencia difusa en esta etapa.
 4. **Construcción del grafo** — los registros unidos se ensamblan en el substrato de grafo consultable consumido por [[service-content|service-content]] y la [[doorman-protocol|capa de inferencia Doorman]].
 5. **Intercambio** — el grafo completado reemplaza la instantánea anterior de forma atómica. Los consumidores de consultas pasan a la nueva versión en la siguiente solicitud tras el intercambio.

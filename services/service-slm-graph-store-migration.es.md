@@ -10,12 +10,22 @@ status: pre-build
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-25
+last_edited: 2026-08-01
 editor: pointsav-engineering
 paired_with: service-slm-graph-store-migration.md
-short_description: "service-slm migró su almacén de grafos de LadybugDB a SQLite para nodos de flota e integra una reconstrucción nocturna del DataGraph que procesa el corpus de datos del operador a través de Doorman hacia el grafo de propiedades utilizado para la inyección de contexto en inferencia."
+short_description: "El almacén de grafos de service-slm ejecuta una reconstrucción nocturna del DataGraph — extracción de entidades restringida por gramática vía Doorman, produciendo propuestas, condicionada a la aprobación humana antes de cualquier escritura — que alimenta la inyección de contexto en inferencia."
 cites: []
 ---
+
+**Corrección (2026-08-01):** el short_description de este artículo afirmaba anteriormente
+una "migración de LadybugDB a SQLite" que el cuerpo del artículo nunca describió ni
+respaldó — una discrepancia entre metadatos y cuerpo, ya corregida. El almacén de grafos
+descrito a lo largo de este artículo es LadybugDB; no se describe ninguna migración a
+SQLite aquí. Por separado, el flujo de escritura descrito abajo (el script de
+reconstrucción llamando directamente a `graph/mutate`) es anterior a un punto de control
+de aprobación humana añadido a la vía de escritura del DataGraph, probado de extremo a
+extremo el 2026-07-18 — véase la corrección en "Estado actual" cerca del final de este
+artículo.
 
 El almacén de grafos de [[service-slm]] es un grafo de propiedades activo de entidades de negocio nombradas, extraídas nocturnamente del corpus de datos del operador — la capa de entidades que [[service-content]] utiliza para inyectar contexto de negocio estructurado en cada solicitud de inferencia sin enviar datos propietarios a un modelo externo. El grafo se almacena en LadybugDB y se reconstruye en un ciclo nocturno mediante el script de reconstrucción del DataGraph, que se ejecuta como Fase 1 de la ventana nocturna de Elastic Compute antes de que la fase de entrenamiento reclame la GPU.
 
@@ -119,6 +129,23 @@ negativo y un ciclo exitoso de ida y vuelta en los endpoints de extracción y
 mutación — son el criterio previsto antes de que el patrón DataGraph se extienda
 a contextos operativos más amplios. Ese criterio aún no se ha alcanzado; el
 pipeline de reconstrucción se encuentra en su período operativo inicial.
+
+**Corrección (2026-08-01):** el paso de escritura `graph/mutate` descrito arriba
+es anterior a una corrección real de exactitud. Según la regla de la
+[[architecture/three-ring-architecture|Arquitectura de Tres Anillos]] de la
+plataforma, la salida del Anillo 3 (Doorman/IA) es siempre una propuesta, nunca
+una escritura directa — toda propuesta de extracción aceptada debe pasar un
+punto de control de aprobación humana antes de que una vía de escritura del
+Anillo 2 la confirme. Ese control se construyó y se probó de extremo a extremo
+con datos reales el 2026-07-18 (extracción → propuesta → validación →
+aprobación del operador → ejecución de prueba → confirmación de escritura). La
+descripción de paridad de enrutamiento anterior en este artículo (la
+reconstrucción invocando los mismos dos endpoints REST que cualquier operador
+podría invocar) sigue siendo precisa hasta donde llega, pero ahora debe leerse
+como terminando en una propuesta, no en una escritura incondicionada — el
+marco de "sin comandos fabricados"/"sin defectos ocultos" como prueba de
+integración se mantiene, con el punto de control humano como una etapa
+explícita adicional entre la extracción y la mutación.
 
 ## Véase también
 

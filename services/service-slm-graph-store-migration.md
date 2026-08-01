@@ -10,12 +10,20 @@ status: pre-build
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-25
+last_edited: 2026-08-01
 editor: pointsav-engineering
 paired_with: service-slm-graph-store-migration.es.md
-short_description: "service-slm migrated its graph store from LadybugDB to SQLite for fleet nodes and runs a nightly DataGraph rebuild feeding inference context injection."
+short_description: "service-slm's graph store runs a nightly DataGraph rebuild — grammar-constrained entity extraction via Doorman producing proposals, gated by human approval before any write — feeding inference context injection."
 cites: []
 ---
+
+**Correction (2026-08-01):** the short_description on this article previously claimed a
+"migration from LadybugDB to SQLite" that the body below never described or supported —
+a metadata/body mismatch, now corrected. The graph store described throughout this
+article is LadybugDB; no SQLite migration is described here. Separately, the write flow
+described below (the rebuild script calling `graph/mutate` directly) predates a human-
+approval gate added to the DataGraph write path and proven end-to-end 2026-07-18 — see
+the "Current status" correction near the end of this article.
 
 The [[service-slm]] graph store is a live property graph of named business entities extracted nightly from an operator's data corpus — the entity layer that [[service-content]] uses to inject structured business context into every inference request without sending proprietary data to an external model. The graph is stored in LadybugDB and rebuilt on a nightly schedule by the DataGraph rebuild script, which runs as Phase 1 of the Elastic Compute nightly window before the model-training phase claims the GPU.
 
@@ -114,6 +122,19 @@ round trip on both the extraction and mutation endpoints — are the intended
 criterion before the DataGraph pattern is extended to larger operational
 contexts. That gate has not yet been met; the rebuild pipeline is in its
 initial operational period.
+
+**Correction (2026-08-01):** the `graph/mutate` write step described above
+predates a real correctness fix. Per the platform's [[architecture/three-ring-architecture|Three-Ring
+Architecture]] rule, Ring 3 (Doorman/AI) output is always a proposal, never a
+direct write — every accepted extraction proposal must pass a human approval
+checkpoint before a Ring 2 write path commits it. That gate was built and
+proven end-to-end on real data 2026-07-18 (extract → proposal → validate →
+operator-approve → dry-run → confirmed commit). This article's routing-parity
+description above (the rebuild calling the same two REST endpoints any
+operator could call) is still accurate as far as it goes, but should now be
+read as ending at a proposal, not an unconditioned write — the "no fabricated
+commands"/"no defect hidden" integration-test framing holds, with the human
+checkpoint as an explicit additional stage between extraction and mutation.
 
 ## See also
 

@@ -19,7 +19,7 @@ Before a regulated organization buys an AI platform, it has to answer one questi
 
 [[pointsav-overview|PointSav]] answers the question architecturally. The Three-Ring Architecture organises every service into one of three concentric rings with strict one-way dependencies; the two inner rings — boundary ingest and deterministic processing — function fully without the outer AI ring.
 
-Rings 1 and 2 contain no import, no dependency, and no runtime call that reaches Ring 3. A deployment can exclude Ring 3 entirely; where Ring 3 is included, it is a read-only consumer that produces proposals, never record writes.
+A deployment can exclude Ring 3 entirely — Rings 1 and 2 contain no import, no dependency, and no runtime requirement on Ring 3 to function. Where Ring 3 is included, Ring 2 services may call it for extraction or classification proposals, but Ring 3 itself never writes: it is a read-only consumer of Ring 2 that returns proposals only, never record writes. Every accepted proposal enters the record through a Ring 2 write path with a human approval checkpoint — Ring 3 cannot write unilaterally, regardless of whether it was called.
 
 For a regulated buyer the verification is structural rather than procedural. A deployment without Ring 3 has no AI to audit; a deployment with it keeps the deterministic core as the sole authoritative record. This article covers the ring layout, the service taxonomy, the multi-tenant isolation model, and why AI is optional by construction.
 

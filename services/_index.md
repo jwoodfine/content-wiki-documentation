@@ -16,7 +16,7 @@ paired_with: _index.es.md
 
 PointSav's three-ring architecture assigns every service to a layer with defined authority and dependencies. Ring 1 services handle per-tenant boundary ingest — each accepts raw data from one external source and writes it to a durable ledger. Ring 2 services provide deterministic knowledge and processing: they read from Ring 1 and produce structured records, knowledge graphs, and search indexes. Ring 3 is a single service, service-slm, which reads from Ring 2 and never writes to it.
 
-The platform functions fully across Rings 1 and 2 without AI compute. Removing Ring 3 shrinks the attack surface, satisfies network-isolation requirements, and answers the compliance question of whether AI has touched the authoritative record. The answer is architectural: Rings 1 and 2 have no import, no dependency, and no runtime call that reaches Ring 3.
+The platform functions fully across Rings 1 and 2 without AI compute — a deployment can exclude Ring 3 entirely, shrinking the attack surface and satisfying network-isolation requirements. Where Ring 3 is included, the compliance question of whether AI has touched the authoritative record is answered architecturally, not procedurally: Ring 2 services may call Ring 3 for extraction or classification proposals (`service-extraction`'s corpus hand-off to `service-content`, which calls the Doorman for grammar-constrained entity extraction into the DataGraph, is one such path), but Ring 3 never writes to the knowledge graph, the ledger, or any structured record store. Every accepted proposal enters the record only through a Ring 2 write path with a human approval checkpoint.
 
 ## Ring 1 — Boundary ingest
 
