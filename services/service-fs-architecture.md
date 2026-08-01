@@ -10,7 +10,7 @@ audience: vendor-public
 bcsc_class: current-fact
 status: active
 language: en
-last_edited: 2026-06-23
+last_edited: 2026-07-31
 editor: pointsav-engineering
 paired_with: service-fs-architecture.es.md
 ---
@@ -51,7 +51,7 @@ This architecture ensures that `service-fs` remains portable, verifiable, and re
 - The ledger is per-tenant — each Totebox holds its own isolated ledger; no cross-tenant reads are possible at the storage layer.
 - The four-layer architecture is designed to decouple wire protocol, API contract, and storage engine, so the seL4 Envelope B swap does not require rewriting the service.
 - The target durability format is open standards: C2SP tlog-tiles (100-year readability) and C2SP signed-note Checkpoints (compact provability). The tile backend is planned; the current build uses a per-tenant JSON append log with per-payload SHA-256 digests.
-- Recurring Sigstore Rekor anchoring by [[fs-anchor-emitter]] is **intended** to create an external, publicly verifiable timestamp chain for the entire ledger. The anchoring operation is planned and not yet running.
+- Recurring Sigstore Rekor anchoring by [[fs-anchor-emitter]] creates an external, publicly verifiable timestamp chain for the entire ledger. **Verified live**: the `local-fs-anchor.timer` systemd unit is active and runs monthly (confirmed against the running system).
 
 ## See also
 

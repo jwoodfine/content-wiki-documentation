@@ -10,7 +10,7 @@ audience: vendor-public
 bcsc_class: current-fact
 status: active
 language: es
-last_edited: 2026-06-23
+last_edited: 2026-07-31
 editor: pointsav-engineering
 paired_with: service-fs-architecture.md
 ---
@@ -44,7 +44,7 @@ La plataforma logra el cumplimiento estructural WORM al denegar estructuralmente
 - El libro mayor es por inquilino — cada Totebox tiene su propio libro mayor aislado; no son posibles lecturas cruzadas entre inquilinos en la capa de almacenamiento.
 - La arquitectura de cuatro capas está diseñada para desacoplar el protocolo de comunicación, el contrato de API y el motor de almacenamiento, de modo que el intercambio al Envolvente B de seL4 no requiera reescribir el servicio.
 - El formato de durabilidad objetivo usa estándares abiertos: C2SP tlog-tiles (legibilidad de 100 años) y puntos de control C2SP signed-note. El backend de bloques está planificado; la compilación actual usa un registro JSON de solo adición con resúmenes SHA-256 por carga.
-- El anclaje recurrente a Sigstore Rekor por parte de [[fs-anchor-emitter]] está **previsto** para crear una cadena de marca temporal externa y públicamente verificable. La operación de anclaje está planificada y aún no está en funcionamiento.
+- El anclaje recurrente a Sigstore Rekor por parte de [[fs-anchor-emitter]] crea una cadena de marca temporal externa y públicamente verificable. **Verificado en vivo**: la unidad systemd `local-fs-anchor.timer` está activa y se ejecuta mensualmente (confirmado contra el sistema en ejecución).
 
 ## Véase también
 
