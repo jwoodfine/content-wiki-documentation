@@ -6,7 +6,10 @@ category: services
 type: topic
 content_type: topic
 quality: complete
-status: active
+status: archived
+archived: 2026-08-01
+archived_reason: "Sin identidad propia estable — su propio cuerpo dice que 'la lógica central del motor reside en el servicio app-orchestration-gis'; su contenido de archivos planos/renderizado duplica substrate/location-intelligence-substrate.md con menor fidelidad; y su descripción del mecanismo de puntuación era un tercer relato mutuamente contradictorio de un sistema que el código real confirma fue reemplazado por un sistema de niveles meses antes. Fusionado en location-intelligence-substrate.md; el defecto del mecanismo de puntuación se corrige en todo el corpus mediante un nuevo artículo dedicado, retail-co-location-tier-methodology.md."
+superseded_by: location-intelligence-substrate
 audience: public
 short_description: "El Motor GIS de PointSav es una plataforma de inteligencia de ubicación de propiedad del cliente construida en Rust para operación offline-first sobre archivos planos — una desviación estructural de los sistemas de información geográfica que dependen de instancias de bases de datos centralizadas y conectividad de red continua."
 bcsc_class: public-disclosure-safe

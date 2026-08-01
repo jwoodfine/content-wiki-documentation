@@ -123,7 +123,7 @@ application's visual language.
 
 ## See also
 
-- [[pointsav-gis-engine]] — GIS engine architecture and available API surfaces
-- co-location methodology — how cluster tiers are scored
+- [[location-intelligence-substrate]] — GIS engine architecture and available API surfaces
+- [[retail-co-location-tier-methodology]] — how cluster tiers are scored
 - O-D catchment methodology — how trade areas are defined
 - [[federate-archives-via-content-mounts]] — mount location-intelligence data into a second instance

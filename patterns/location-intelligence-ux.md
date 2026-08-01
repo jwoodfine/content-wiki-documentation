@@ -13,7 +13,7 @@ status: active
 audience: public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-08
+last_edited: 2026-08-01
 editor: pointsav-engineering
 paired_with: location-intelligence-ux.es.md
 ---
@@ -47,4 +47,4 @@ The GIS surface uses a standardized component set designed for rapid re-provisio
 
 - [[location-intelligence-platform]] — the location intelligence platform these UX patterns serve
 - [[app-orchestration-gis]] — the GIS orchestration surface that implements this design
-- [[co-location-methodology]] — the co-location scoring methodology that produces the tier conclusions displayed
+- [[retail-co-location-tier-methodology]] — the tier methodology that produces the tier conclusions displayed

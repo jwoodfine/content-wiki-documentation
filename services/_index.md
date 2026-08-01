@@ -50,7 +50,6 @@ Services built for specific platform capabilities.
 
 - [[service-business-clustering]] — Turns raw retail data into commercial clusters: parent-child spatial schema, one commercial entity per site.
 - [[service-places-filtering]] — Filters civic and institutional infrastructure to retain only regional-grade facilities for GIS tier rankings.
-- [[pointsav-gis-engine]] — High-performance location intelligence in Rust: offline-first, flat-file, no centralised database instances.
 - [[service-wallet-settlement]] — Wallet and direct payment settlement infrastructure.
 - [[message-courier]] — Headless web-automation engine bridging internal identity ledgers with external web portals.
 - [[fs-anchor-emitter]] — Signed WORM ledger checkpoints at hourly cadence, anchored to Sigstore Rekor on a monthly schedule for external auditability.

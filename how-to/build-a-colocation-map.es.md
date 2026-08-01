@@ -15,7 +15,7 @@ paired_with: build-a-colocation-map.md
 
 El motor GIS de PointSav expone una API de tiles y un punto de conexión de clústeres que puedes integrar en cualquier aplicación MapLibre GL. Esta guía cubre la autenticación con la API GIS, la obtención de la capa GeoJSON de clústeres y la renderización de marcadores de clústeres con color por nivel en un lienzo MapLibre.
 
-Para la arquitectura del motor GIS, consulta [[pointsav-gis-engine]]. Para el sistema de puntuación de co-ubicación que produce los datos de clústeres, consulta el sistema de clasificación de co-ubicación.
+Para la arquitectura del motor GIS, consulta [[location-intelligence-substrate]]. Para la metodología de niveles de co-ubicación que produce los datos de clústeres, consulta [[retail-co-location-tier-methodology]].
 
 ## Antes de empezar
 
@@ -127,7 +127,7 @@ de tu aplicación.
 
 ## Véase también
 
-- [[pointsav-gis-engine]] — arquitectura del motor GIS y superficies de API disponibles
-- metodología de co-ubicación — cómo se puntúan los niveles de los clústeres
+- [[location-intelligence-substrate]] — arquitectura del motor GIS y superficies de API disponibles
+- [[retail-co-location-tier-methodology]] — cómo se clasifican los niveles de los clústeres
 - metodología de captación O-D — cómo se definen las áreas comerciales
 - [[federate-archives-via-content-mounts]] — monta datos de inteligencia de ubicación en una segunda instancia

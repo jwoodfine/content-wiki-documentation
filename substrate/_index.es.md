@@ -34,6 +34,7 @@ Los nueve sustratos nombrados: cada uno designa una propiedad estructural de la 
 - [[language-protocol-substrate]] — Cuatro familias de adaptadores y dieciocho plantillas de género que codifican el registro, la voz de marca y el público objetivo como andamiaje de indicaciones reutilizables.
 - [[design-system-substrate]] — Motor de sistema de diseño auto-alojado que almacena tokens y componentes en el repositorio git propio del cliente; formato de token W3C DTCG; endpoint MCP legible por máquina.
 - [[location-intelligence-substrate]] — Arquitectura GIS abierta de archivos planos: datos abiertos con licencia Apache, stack de renderizado alineado con Rust, análisis de co-ubicación minorista como primera superficie desplegada.
+- [[retail-co-location-tier-methodology]] — El sistema de condiciones de cuatro niveles (Regional/Distrital/Local/Marginal) que clasifica los clústeres de co-ubicación minorista — composición, rango de captación, respaldo cívico, no solapamiento.
 - [[brief-queue-substrate]] — Cola duradera respaldada por archivos que hace viable la computación Yo-Yo de apagado inactivo sin perder datos de captura del corpus de aprendizaje.
 
 ## El Doorman compuesto y la frontera de IA

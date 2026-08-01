@@ -11,13 +11,13 @@ audience: public
 short_description: "service-places filters raw civic and institutional data to retain only regional-grade facilities, so GIS tier rankings reflect institutional concentration."
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-08
+last_edited: 2026-08-01
 editor: pointsav-engineering
 paired_with: service-places-filtering.es.md
 cites: []
 ---
 
-[[co-location-methodology|GIS tier rankings]] depend on knowing where regional institutions sit, not where every clinic and community college sits. **`service-places`** filters raw civic data to retain only regional-grade facilities — hospitals with at least 50 staffed beds, universities with at least 1,000 full-time-equivalent students, validated major regional transport hubs — and applies a 200 m spatial buffer to consolidate large institutional campuses into single regional anchors. Local-service density is filtered out at this stage; downstream rankings reflect institutional concentration rather than facility count.
+[[retail-co-location-tier-methodology|GIS tier rankings]] depend on knowing where regional institutions sit, not where every clinic and community college sits. **`service-places`** filters raw civic data to retain only regional-grade facilities — hospitals with at least 50 staffed beds, universities with at least 1,000 full-time-equivalent students, validated major regional transport hubs — and applies a 200 m spatial buffer to consolidate large institutional campuses into single regional anchors. Local-service density is filtered out at this stage; downstream rankings reflect institutional concentration rather than facility count.
 
 ## Key Takeaways
 
@@ -40,14 +40,14 @@ Large institutional campuses frequently appear in raw open geospatial data as mu
 
 ## Data Output
 
-The resulting `cleansed-places.jsonl` provides the regional anchor dataset that [[app-orchestration-gis]] uses when awarding final [[co-location-methodology|co-location tier rankings]].
+The resulting `cleansed-places.jsonl` provides the regional anchor dataset that [[app-orchestration-gis]] uses when awarding final [[retail-co-location-tier-methodology|co-location tier rankings]].
 
 ## See also
 
 - [[service-fs-data-lake]] — GIS data lake supplying the raw civic and retail data
 - [[service-business-clustering]] — retail clustering service that consumes the filtered place data
 - [[app-orchestration-gis]] — orchestration layer that assembles tier rankings from both services
-- [[co-location-methodology]] — the ranking methodology driving tier assignments
+- [[retail-co-location-tier-methodology]] — the tier methodology driving tier assignments
 
 ## References
 

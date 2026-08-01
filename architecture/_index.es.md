@@ -70,7 +70,7 @@ Los principios y mecanismos por los cuales los clientes son dueños plenos de su
 
 Decisiones arquitectónicas para el dominio de inteligencia de ubicación e inmuebles.
 
-- [[co-location-methodology]] — La metodología de análisis espacial para clasificación de co-localización: cómo se miden y puntúan las concentraciones minoristas e institucionales.
+- [[co-location-methodology]] — La metodología para clasificar candidatos de co-ubicación en instalaciones de centros de datos de terceros: idoneidad jurisdiccional, tránsito de red, compatibilidad de infraestructura y costo, con los requisitos regulatorios primero. (No debe confundirse con la [[retail-co-location-tier-methodology|metodología de niveles de co-ubicación minorista]], un tema distinto que comparte el mismo término.)
 - Estrategia de inteligencia de ubicación — El marco estratégico y arquitectónico para el sustrato de inteligencia de ubicación: SIG abierto de archivos planos, primero sin conexión, sin costes por usuario.
 - Salto BIM en archivos planos — Cómo el Modelado de Información de Edificios se gestiona como registros ISO 19650 de archivos planos en lugar de instancias de bases de datos alojadas.
 - Sistema de diseño de edificios para BIM — Herramientas del sistema de diseño adaptadas para flujos de trabajo BIM e inmuebles.

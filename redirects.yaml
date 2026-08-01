@@ -63,6 +63,31 @@ redirects:
   - from: /infrastructure/pointsav-private-network
     to: /infrastructure/ppn-mesh-architecture
 
+  # GIS/location-intelligence cluster consolidation 2026-08-01 (content-matrix
+  # merge-candidate work, final of 5 flagged clusters). Of 5 candidate articles, only
+  # services/pointsav-gis-engine.md was genuinely redundant — its own body said "the
+  # engine's core logic resides in app-orchestration-gis," and its remaining content
+  # duplicated substrate/location-intelligence-substrate.md at lower fidelity. Merged
+  # into location-intelligence-substrate.md (carries aliases: [pointsav-gis-engine]).
+  # The other 3 (location-intelligence-platform, location-intelligence-substrate,
+  # app-orchestration-gis) confirmed legitimately distinct facets — product overview,
+  # technical foundation, analytics engine — not merged.
+  # A more serious defect surfaced while verifying claims against real code: 4 of the
+  # 5 articles cited [[co-location-methodology]] as "the retail cluster tier scoring
+  # methodology," but that slug resolves to architecture/co-location-methodology.md —
+  # a real, unrelated article about data-center FACILITY co-location, not retail
+  # anchors. No article for the real retail-tier methodology existed under any slug.
+  # Worse, the one place a scoring mechanism WAS described in detail
+  # (app-orchestration-gis.md) described a Haversine linear-decay formula the real
+  # SCORING-METHODOLOGY.md (V3, verified) confirms was removed and replaced by a
+  # 4-tier predicate-gate system — and 2 more articles in the cluster each described
+  # the mechanism differently, with neither matching the real system. Fixed by
+  # creating substrate/retail-co-location-tier-methodology.md as the single source of
+  # truth (real facts only, from the verified V3 methodology doc) and repointing all
+  # citing articles to it instead of re-describing the mechanism themselves.
+  - from: /services/pointsav-gis-engine
+    to: /substrate/location-intelligence-substrate
+
   # scaling-coordinated-development three-way duplicate resolved 2026-07-28 (diagnosed
   # 2026-07-09, execution blocked by the permission system until operator sign-off this
   # session). architecture/...-totebox-archives.md and systems/...-totebox-archives.md

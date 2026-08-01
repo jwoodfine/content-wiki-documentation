@@ -11,7 +11,7 @@ audience: public
 short_description: "Motor de análisis espacial sin estado que produce las clasificaciones de coubicación de Woodfine y el mapa interactivo — una función pura sin datos canónicos."
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-08
+last_edited: 2026-08-01
 editor: pointsav-engineering
 paired_with: app-orchestration-gis.md
 cites:
@@ -25,9 +25,13 @@ cites:
 
 La aplicación opera como la capa de análisis determinista entre el lago de datos soberano y la interfaz visual. Cada ejecución produce un artefacto reproducible: dado el mismo conjunto de datos de entrada, el índice resultante es idéntico. Esta garantía de reproducibilidad sustituye la dependencia de servicios de análisis gestionados por terceros.
 
-## Metodología de análisis
+## Asignación de nivel
 
-El motor ejecuta tres pasadas de proximidad espacial — radios de 1,0 km, 3,0 km y 5,0 km — aplicando la matriz de 12 anclas nominadas para generar rangos de calidad de sitio. Los sitios se clasifican del Nivel 1 al Nivel 5 según la convergencia de capital validado en cada nodo comercial.
+El motor asigna a cada clúster uno de cuatro niveles evaluándolo frente a la
+[[retail-co-location-tier-methodology|metodología de niveles de co-localización minorista]]
+— composición, rango de población de captación, respaldo cívico y no solapamiento con
+vecinos más fuertes. La asignación de nivel es una clasificación de aprobación/rechazo
+frente a condiciones fijas, no una puntuación numérica compuesta.
 
 ## Pila de renderizado soberana
 
@@ -35,12 +39,12 @@ La salida se entrega como archivos PMTiles — un formato de archivo plano que e
 
 ## Diseño sin estado
 
-La arquitectura de la aplicación es completamente sin estado: no persiste datos entre ejecuciones. Todo el estado reside en el archivo PMTiles de salida, versionado en el [[totebox-archive|Archivo Totebox]]. Esto permite re-provisionar el entorno GIS completo de forma instantánea desde la capa de datos inmutable, aplicando la [[co-location-methodology|metodología de co-ubicación]] de forma reproducible.
+La arquitectura de la aplicación es completamente sin estado: no persiste datos entre ejecuciones. Todo el estado reside en el archivo PMTiles de salida, versionado en el [[totebox-archive|Archivo Totebox]]. Esto permite re-provisionar el entorno GIS completo de forma instantánea desde la capa de datos inmutable, aplicando la [[retail-co-location-tier-methodology|metodología de niveles]] de forma reproducible.
 
 ## Véase también
 
-- [[pointsav-gis-engine]] — la capa de renderizado que sirve los mosaicos producidos por este motor
+- [[location-intelligence-substrate]] — la capa de renderizado que sirve los mosaicos producidos por este motor
 - [[service-business-clustering]] — el servicio de agrupamiento que forma los clústeres de co-ubicación
 - [[service-places-filtering]] — el servicio de filtrado que prepara los datos de entrada depurados
-- [[co-location-methodology]] — la metodología de puntuación y clasificación implementada por el motor
+- [[retail-co-location-tier-methodology]] — la metodología de niveles implementada por el motor
 - [[location-intelligence-platform]] — el artículo de plataforma que cubre el despliegue GIS completo

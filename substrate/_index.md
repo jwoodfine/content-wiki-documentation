@@ -34,6 +34,7 @@ The nine named substrates: each names a structural property the platform depends
 - [[language-protocol-substrate]] — Four adapter families and eighteen genre templates encoding register, brand voice, and target audience as reusable prompt scaffolding.
 - [[design-system-substrate]] — Self-hosted design-system engine storing tokens and components in the customer's own git repository; W3C DTCG token format; machine-readable MCP endpoint.
 - [[location-intelligence-substrate]] — Flat-file open-GIS architecture: Apache-licensed open data, Rust-aligned rendering stack, retail co-location analysis as the first deployed surface.
+- [[retail-co-location-tier-methodology]] — The four-tier (Regional/District/Local/Fringe) gate system that scores retail co-location clusters — composition, catchment rank, civic support, non-overlap.
 - [[brief-queue-substrate]] — Durable file-backed queue that makes idle-shutdown Yo-Yo compute viable without losing apprenticeship corpus capture data.
 
 ## The compounding Doorman and AI boundary

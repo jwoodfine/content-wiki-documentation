@@ -9,9 +9,11 @@ content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-09
+last_edited: 2026-08-01
 editor: pointsav-engineering
 paired_with: location-intelligence-substrate.es.md
+aliases:
+  - pointsav-gis-engine
 references:
   - id: 1
     text: "Overture Maps Foundation — GeoParquet places schema. overturemaps.org"
@@ -33,7 +35,7 @@ references:
     text: "OSC Staff Notice 51-721 Forward-Looking Information Disclosure"
 ---
 
-The Location Intelligence Substrate is a flat-file, open-GIS architecture that lets [[customer-hostability|customers own their geographic datasets end-to-end]] — no tile API billing, no warehouse licensing, no cloud-vendor lock-in. The substrate is built on Apache-licensed open-data foundations (Overture Maps Foundation, Foursquare Open Source Places) and rendered via a Rust-aligned open-source stack (MapLibre GL JS, Martin tile server, PMTiles).[^1][^2]
+A platform that depends on a running database and a live network connection is a platform a customer rents, not owns — outages, per-seat cost, and air-gap ineligibility follow. The Location Intelligence Substrate avoids that dependency by construction: it is a flat-file, open-GIS architecture that lets [[customer-hostability|customers own their geographic datasets end-to-end]] — no tile API billing, no warehouse licensing, no cloud-vendor lock-in. The substrate is built on Apache-licensed open-data foundations (Overture Maps Foundation, Foursquare Open Source Places) and rendered via a Rust-aligned open-source stack (MapLibre GL JS, Martin tile server, PMTiles).[^1][^2]
 
 The first deployed surface is `gis.woodfinegroup.com` — a co-location map showing retail anchor co-presence across the United States, Canada, Mexico, and Spain.
 
@@ -83,18 +85,20 @@ A single record shape covers all three Ring 1 location services with discriminat
 
 Brand-family normalisation lets co-location queries treat regional equivalents as one logical operator across countries. `service-places` carries a `place_type` field (hospital, higher-education, airport). `service-parking` carries a Polygon `geometry` (the lot geofence) rather than a Point, plus an `associated_business_id` linking the lot to its anchor business when known.
 
-## Co-location analysis algorithm
+## Tier rendering
 
-The co-location query identifies locations from brand family A within 1 km, 2 km, and 3 km of locations from brand family B (and optionally a third family). Algorithm:
+Cluster records carry a `tier` property once [[app-orchestration-gis]] applies the
+[[retail-co-location-tier-methodology|tier methodology]] to the ingested data. The
+substrate's job past that point is presentation: emit a GeoJSON `FeatureCollection` per
+cluster (anchor points, a catchment-radius polygon, and the `tier` property), and let the
+browser layers render it — POIs as circles colored by brand family (Layer 1), tiered
+clusters with catchment haloes (Layer 2), and country boundaries with filter chips (Layer
+3). Hover popovers surface brand, format, year opened, and tier without a page navigation.
 
-1. Iterate every record in brand family A.
-2. For each, find the nearest record in each other brand family using a haversine distance against an in-memory R-tree index. At tens of thousands of records, each lookup runs in microseconds.
-3. Bucket each multi-brand tuple by the maximum pairwise distance: `<1 km`, `1–2 km`, `2–3 km`, `>3 km`.
-4. Emit a GeoJSON FeatureCollection: tuple centroid, triangle polyline connecting the locations, radius circles, and a `cluster_grade` property.
-
-Browser visualisation layers: POIs as circles coloured by brand family (Layer 1); co-location tuples with their radius haloes, toggled by grade (Layer 2); country boundaries and filter chips (Layer 3). Hover popovers show brand, format, year opened, distance to nearest co-located neighbours, and cluster grade.
-
-At 15,000 POI records (combined coverage across four countries and three brand families), client-side rendering in MapLibre is well within comfortable operating range. Supercluster client-side clustering becomes relevant at approximately 50,000 records; server-side vector tile generation at 500,000+.
+At 15,000 POI records (combined coverage across four countries and three brand
+families), client-side rendering in MapLibre is well within comfortable operating range.
+Supercluster client-side clustering becomes relevant at approximately 50,000 records;
+server-side vector tile generation at 500,000+.
 
 ## Retail co-location research basis
 
@@ -125,3 +129,5 @@ Statements regarding deployment schedule, customer outcomes, and feature roadmap
 - [[three-ring-architecture]] — `service-business`, `service-places`, and `service-parking` are Ring 1 services
 - [[substrate-without-inference-base-case]] — GIS substrate functions fully without the AI ring
 - [[customer-owned-graph-ip]] — geographic datasets owned by the customer, not the vendor
+- [[retail-co-location-tier-methodology]] — the tier gates applied to the `tier` property rendered here
+- [[app-orchestration-gis]] — the engine that computes tier assignment from ingested cluster data

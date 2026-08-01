@@ -9,13 +9,15 @@ content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-07-31
+last_edited: 2026-08-01
 editor: pointsav-engineering
 paired_with: location-intelligence-substrate.md
+aliases:
+  - pointsav-gis-engine
 ---
 
 
-El Sustrato de Inteligencia de Localización es una arquitectura SIG de archivos planos y código abierto que permite a los clientes [[customer-hostability|poseer sus conjuntos de datos geográficos de extremo a extremo]] — sin facturación de API de tiles, sin licencias de almacén de datos, sin bloqueo a ningún proveedor de nube. El sustrato se construye sobre fundamentos de datos abiertos con licencia Apache (Overture Maps Foundation, Foursquare Open Source Places) y se renderiza mediante una pila de código abierto alineada con Rust (MapLibre GL JS, servidor de tiles Martin, PMTiles).
+Una plataforma que depende de una base de datos en ejecución y una conexión de red activa es una plataforma que el cliente alquila, no posee — de ahí se derivan interrupciones, costos por usuario e inelegibilidad para entornos aislados de red. El Sustrato de Inteligencia de Localización evita esa dependencia por construcción: es una arquitectura SIG de archivos planos y código abierto que permite a los clientes [[customer-hostability|poseer sus conjuntos de datos geográficos de extremo a extremo]] — sin facturación de API de tiles, sin licencias de almacén de datos, sin bloqueo a ningún proveedor de nube. El sustrato se construye sobre fundamentos de datos abiertos con licencia Apache (Overture Maps Foundation, Foursquare Open Source Places) y se renderiza mediante una pila de código abierto alineada con Rust (MapLibre GL JS, servidor de tiles Martin, PMTiles).
 
 La primera superficie desplegada es `gis.woodfinegroup.com` — un mapa de co-localización que muestra la co-presencia de anclas minoristas en Estados Unidos, Canadá, México y España.
 
@@ -55,11 +57,9 @@ Una sola forma de registro cubre los tres servicios de localización del Anillo 
 
 La normalización por familia de marca permite que las consultas de co-localización traten equivalentes regionales como un único operador lógico a través de países. `service-places` lleva un campo `place_type` (hospital, educación superior, aeropuerto). `service-parking` lleva una `geometry` de tipo Polígono (el perímetro del estacionamiento) en lugar de un Punto, además de un campo `associated_business_id` que vincula el estacionamiento con su negocio ancla cuando se conoce.
 
-## Análisis de co-localización
+## Renderizado de nivel
 
-La consulta de co-localización identifica ubicaciones de la familia de marcas A dentro de 1 km, 2 km y 3 km de ubicaciones de la familia de marcas B (y opcionalmente una tercera familia). El algoritmo utiliza distancia haversiana frente a un índice R-tree en memoria; a decenas de miles de registros, cada búsqueda se ejecuta en microsegundos.
-
-El sustrato emite una FeatureCollection GeoJSON: centroide de la tupla, polilínea triangular que conecta las ubicaciones, círculos de radio y una propiedad `cluster_grade`. Las capas de visualización del navegador muestran POIs como círculos coloreados por familia de marca, tuplas de co-localización con sus halos de radio y fichas de filtro por país.
+Los registros de clúster llevan una propiedad `tier` una vez que [[app-orchestration-gis]] aplica la [[retail-co-location-tier-methodology|metodología de niveles]] a los datos ingeridos. La función del sustrato a partir de ese punto es la presentación: emitir una `FeatureCollection` GeoJSON por clúster (puntos de ancla, un polígono de radio de captación y la propiedad `tier`), y dejar que las capas del navegador la rendericen — POIs como círculos coloreados por familia de marca (Capa 1), clústeres con nivel y sus halos de captación (Capa 2), y límites de país con fichas de filtro (Capa 3). Los popovers al pasar el cursor muestran marca, formato, año de apertura y nivel sin navegación de página.
 
 A 15,000 registros POI (cobertura combinada en cuatro países y tres familias de marca), la renderización del lado del cliente en MapLibre está cómodamente dentro del rango operativo. La agrupación de clústeres del lado del cliente con Supercluster se vuelve relevante en torno a los 50,000 registros; la generación de mosaicos vectoriales en el servidor, a partir de los 500,000.
 
@@ -88,3 +88,5 @@ Las declaraciones sobre el calendario de despliegue, los resultados para el clie
 - [[three-ring-architecture]]
 - [[substrate-without-inference-base-case]]
 - [[customer-owned-graph-ip]]
+- [[retail-co-location-tier-methodology]] — las condiciones de nivel aplicadas a la propiedad `tier` renderizada aquí
+- [[app-orchestration-gis]] — el motor que calcula la asignación de nivel a partir de los datos de clúster ingeridos

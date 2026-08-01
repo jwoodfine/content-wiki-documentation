@@ -13,7 +13,7 @@ status: active
 audience: public
 bcsc_class: no-disclosure-implication
 language_protocol: TRANSLATE-ES
-last_edited: 2026-05-08
+last_edited: 2026-08-01
 editor: pointsav-engineering
 paired_with: location-intelligence-ux.md
 ---
@@ -32,7 +32,7 @@ A diferencia de los productos GIS comerciales que muestran puntos individuales p
 
 - [[location-intelligence-platform]] — la plataforma de inteligencia de ubicación que estos patrones UX sirven
 - [[app-orchestration-gis]] — la superficie de orquestación GIS que implementa este diseño
-- [[co-location-methodology]] — la metodología de co-ubicación que produce las conclusiones de nivel mostradas
+- [[retail-co-location-tier-methodology]] — la metodología de niveles que produce las conclusiones de nivel mostradas
 
 ---
 ## Procedencia

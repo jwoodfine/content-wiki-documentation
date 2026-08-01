@@ -6,7 +6,10 @@ category: services
 type: topic
 content_type: topic
 quality: complete
-status: active
+status: archived
+archived: 2026-08-01
+archived_reason: "No stable, non-overlapping identity — its own body says 'the engine's core logic resides in the app-orchestration-gis service,' its flat-file/rendering content duplicates substrate/location-intelligence-substrate.md at lower fidelity, and its scoring-mechanism description was a third, mutually-contradictory account (alongside app-orchestration-gis.md and location-intelligence-substrate.md) of a system the real code (SCORING-METHODOLOGY.md V3) confirms was replaced by a tier-gate system months earlier. Merged into location-intelligence-substrate.md (one non-duplicate framing sentence preserved); the scoring-mechanism defect is fixed corpus-wide via a new dedicated article, retail-co-location-tier-methodology.md."
+superseded_by: location-intelligence-substrate
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC

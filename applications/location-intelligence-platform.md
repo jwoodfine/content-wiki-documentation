@@ -11,7 +11,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-08
+last_edited: 2026-08-01
 editor: pointsav-engineering
 paired_with: location-intelligence-platform.es.md
 cites:
@@ -21,11 +21,11 @@ cites:
  - osc-sn-51-721
 ---
 
-The PointSav Location Intelligence platform is a customer-owned flat-file GIS application designed for retail cluster analysis and strategic site selection — composed of [[app-orchestration-gis]] (the analytics engine) and [[pointsav-gis-engine]] (the rendering layer), with every dataset, algorithm, and rendering decision under the customer's direct control. The platform answers a fundamental commercial question — *which geographic nodes possess the capital-validated density required to support adjacent development?* — by transforming raw store locations into actionable commercial nodes through the [[co-location-methodology]]. All canonical datasets reside in a [[totebox-archive|Totebox Archive]] as flat JSONL and GeoParquet files, applying the [[worm-ledger-design|WORM ledger discipline]] to geospatial records.
+The PointSav Location Intelligence platform is a customer-owned flat-file GIS application designed for retail cluster analysis and strategic site selection — composed of [[app-orchestration-gis]] (the analytics engine) and [[location-intelligence-substrate]] (the rendering layer), with every dataset, algorithm, and rendering decision under the customer's direct control. The platform answers a fundamental commercial question — *which geographic nodes possess the capital-validated density required to support adjacent development?* — by transforming raw store locations into actionable commercial nodes through the [[retail-co-location-tier-methodology]]. All canonical datasets reside in a [[totebox-archive|Totebox Archive]] as flat JSONL and GeoParquet files, applying the [[worm-ledger-design|WORM ledger discipline]] to geospatial records.
 
 ## Operational Capabilities
 
-The platform transforms raw store locations into actionable commercial nodes by executing the [Retail Co-location Methodology](co-location-methodology). It answers a fundamental commercial question: *which geographic nodes possess the capital-validated density required to support adjacent development?*
+The platform transforms raw store locations into actionable commercial nodes by executing the [[retail-co-location-tier-methodology|Retail Co-location Tier Methodology]]. It answers a fundamental commercial question: *which geographic nodes possess the capital-validated density required to support adjacent development?*
 
 ### 1. Five-Degree Cluster Identification
 The platform computes co-location clusters around Primary Target anchors (e.g., Walmart Supercentres) using a deterministic spatial algorithm. Each cluster is scored based on the convergence of independent, capital-intensive operators (Costco, Home Depot, etc.) and supporting civic infrastructure (hospitals, universities).
@@ -38,7 +38,7 @@ The interactive map at [gis.woodfinegroup.com](https://gis.woodfinegroup.com) us
 
 ## Sovereign Architecture
 
-The platform adheres to the [[pointsav-gis-engine]] principles of [[customer-hostability|customer-rooted data sovereignty]]:
+The platform adheres to [[location-intelligence-substrate|the substrate's]] principles of [[customer-hostability|customer-rooted data sovereignty]]:
 - **Flat-File Operation:** All data persists as versioned JSONL and GeoParquet files within a [[totebox-archive|Totebox Archive]], rather than a running database daemon.
 - **Open Standards Rendering:** Uses PMTiles and MapLibre GL JS to serve vector maps directly from standard web servers, eliminating proprietary tile-API dependencies.
 - **Reproducible Build:** If a gateway node is destroyed, the application surface can be re-provisioned instantly by pointing a fresh instance at the immutable data layer.
@@ -59,7 +59,7 @@ Planned enhancements to the platform surface include the integration of origin-d
 ## See also
 
 - [[app-orchestration-gis]] — the stateless analytics engine that produces co-location rankings
-- [[pointsav-gis-engine]] — the rendering layer that serves vector tiles to the map interface
-- [[co-location-methodology]] — the scoring algorithm underlying cluster analysis
+- [[location-intelligence-substrate]] — the rendering layer that serves vector tiles to the map interface
+- [[retail-co-location-tier-methodology]] — the tier methodology underlying cluster analysis
 - [[location-intelligence-ux]] — the UX design philosophy for the interactive map surface
 - [[totebox-archive]] — the flat-file archive that holds all canonical geospatial data

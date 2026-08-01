@@ -51,7 +51,6 @@ Servicios construidos para capacidades específicas de la plataforma.
 
 - [[service-business-clustering]] — Convierte datos minoristas brutos en clústeres comerciales: esquema espacial padre-hijo, una entidad comercial por sitio.
 - [[service-places-filtering]] — Filtra la infraestructura cívica e institucional para retener solo las instalaciones de grado regional en las clasificaciones GIS.
-- [[pointsav-gis-engine]] — Inteligencia de ubicación de alto rendimiento en Rust: primero sin conexión, archivos planos, sin instancias de bases de datos centralizadas.
 - [[service-wallet-settlement]] — Infraestructura de cartera y liquidación de pagos directos.
 - [[message-courier]] — Motor de automatización web sin interfaz que conecta libros de identidad internos con portales web externos.
 - [[fs-anchor-emitter]] — Puntos de control firmados del libro WORM a cadencia horaria, anclados a Sigstore Rekor mensualmente para auditabilidad externa.

@@ -11,13 +11,13 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-08
+last_edited: 2026-08-01
 editor: pointsav-engineering
 paired_with: service-places-filtering.md
 cites: []
 ---
 
-Las [[co-location-methodology|clasificaciones de nivel GIS]] dependen de saber dónde se ubican las instituciones regionales, no dónde se ubica cada clínica y colegio comunitario. **`service-places`** filtra los datos cívicos en bruto para retener únicamente instalaciones de escala regional — hospitales con al menos 50 camas dotadas, universidades con al menos 1.000 estudiantes equivalentes a tiempo completo, centros de transporte principales validados — y aplica un búfer espacial de 200 m para consolidar grandes campus institucionales en anclas regionales únicas. La densidad de servicios locales se filtra en esta etapa; las clasificaciones descendentes reflejan la concentración institucional en lugar del recuento de instalaciones.
+Las [[retail-co-location-tier-methodology|clasificaciones de nivel GIS]] dependen de saber dónde se ubican las instituciones regionales, no dónde se ubica cada clínica y colegio comunitario. **`service-places`** filtra los datos cívicos en bruto para retener únicamente instalaciones de escala regional — hospitales con al menos 50 camas dotadas, universidades con al menos 1.000 estudiantes equivalentes a tiempo completo, centros de transporte principales validados — y aplica un búfer espacial de 200 m para consolidar grandes campus institucionales en anclas regionales únicas. La densidad de servicios locales se filtra en esta etapa; las clasificaciones descendentes reflejan la concentración institucional en lugar del recuento de instalaciones.
 
 ## Puntos clave
 
@@ -40,11 +40,11 @@ Los grandes campus institucionales frecuentemente aparecen en datos geoespaciale
 
 ## Salida de datos
 
-El `cleansed-places.jsonl` resultante proporciona el conjunto de datos de anclas regionales que [[app-orchestration-gis]] utiliza al otorgar las [[co-location-methodology|clasificaciones de nivel de co-ubicación]] finales.
+El `cleansed-places.jsonl` resultante proporciona el conjunto de datos de anclas regionales que [[app-orchestration-gis]] utiliza al otorgar las [[retail-co-location-tier-methodology|clasificaciones de nivel de co-ubicación]] finales.
 
 ## Véase también
 
 - [[service-fs-data-lake]] — lago de datos GIS que suministra los datos cívicos y minoristas en bruto
 - [[service-business-clustering]] — servicio de agrupación minorista que consume los datos de lugares filtrados
 - [[app-orchestration-gis]] — capa de orquestación que ensambla las clasificaciones de nivel
-- [[co-location-methodology]] — la metodología de clasificación que impulsa las asignaciones de nivel
+- [[retail-co-location-tier-methodology]] — la metodología de niveles que impulsa las asignaciones de nivel
