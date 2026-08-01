@@ -24,7 +24,7 @@ The PointSav [[design-system-substrate|design system]] is a self-hosted, custome
 
 ## Why the substrate exists
 
-The substrate is a self-hosted, customer-owned design-system engine running at `design.pointsav.com` and at every SMB customer site that forks it. Its existence is a direct response to four structural gaps in the 2026 design-system landscape:
+The substrate is a self-hosted, customer-owned design-system engine running at `design.pointsav.com` and at every [[self-hosting-customer-controlled-design-systems|SMB customer site that forks it]]. Its existence is a direct response to four structural gaps in the 2026 design-system landscape:
 
 1. **Established design systems publish only the WHAT.** Major design system publications deliver token values and component shapes. None publish the design-decision research — the WHY — in a form an AI agent or a human at a new organisation can read at codegen time.
 
@@ -75,10 +75,13 @@ The UI typography foundation is **Inter** (SIL OFL 1.1) — a community-maintain
 
 ## See also
 
+- [[what-is-a-design-token]] — start here for a first-time definition of a design token before this architectural argument
 - [[design-primitive-vocabulary]] — the token vocabulary layer: numeric color scales, semantic aliasing, and PointSav-original naming rationale
 - [[design-system-substrate]] — the substrate architecture: Git-tracked vault, MCP endpoint, and multi-tenant override structure
 - [[wiki-component-library]] — nine wiki components built on this token system
 - [[app-mediakit-knowledge]] — the wiki engine that renders the design system's public showcase surface
+- [[design-tokens-and-accessibility]] — how accessibility requirements are enforced structurally as tokens rather than checked ad hoc
+- [[self-hosting-customer-controlled-design-systems]] — the separate offer for a different organization to self-host this substrate's serving engine for its own design system
 
 ## References
 

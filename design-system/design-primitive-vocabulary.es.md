@@ -64,9 +64,12 @@ Un token nombrado por familia cromática con los valores exactos de un proveedor
 
 ## Véase también
 
+- [[what-is-a-design-token|Qué es un token de diseño]] — comience aquí para una definición introductoria de un token de diseño antes de este artículo de justificación
 - [[design-philosophy]] — las tres inversiones estructurales que motivan las decisiones de diseño del sustrato
 - [[wiki-typography-system]] — la pila tipográfica Inter y Source Serif 4 construida sobre estas convenciones de tokens
 - [[wiki-component-library]] — nueve componentes del wiki que consumen las capas de tokens descritas aquí
+- [[component-recipes-vs-raw-tokens|Recetas de componentes frente a tokens en bruto]] — cómo el nivel de componentes consume el esquema de nomenclatura descrito aquí
+- [[design-tokens-and-accessibility|Tokens de diseño y conformidad de accesibilidad]] — cómo se aplica estructuralmente como tokens el límite de contraste WCAG 2.2 AAA mencionado arriba
 
 ## Referencias
 

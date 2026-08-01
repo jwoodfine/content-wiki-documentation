@@ -79,9 +79,12 @@ The structural patterns are field-shared; the literal tokens are not.
 
 ## See also
 
+- [[what-is-a-design-token]] — start here for a first-time definition of a design token before this rationale article
 - [[design-philosophy]] — the three structural inversions that motivate the substrate's design choices
 - [[wiki-typography-system]] — the Inter and Source Serif 4 type stack built on these token conventions
 - [[wiki-component-library]] — nine wiki components that consume the token layers described here
+- [[component-recipes-vs-raw-tokens]] — how the component tier consumes the naming scheme described here
+- [[design-tokens-and-accessibility]] — how the WCAG 2.2 AAA contrast floor named above is enforced structurally as tokens
 
 ## References
 

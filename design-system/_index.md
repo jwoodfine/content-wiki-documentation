@@ -37,6 +37,19 @@ The four foundation-layer token families: colour, typography, spacing, and motio
 - [Spacing tokens](https://design.pointsav.com/elements/spacing/overview) — base unit, geometric scale, component gap tokens, and layout margin tokens.
 - [Motion tokens](https://design.pointsav.com/elements/motion/overview) — duration scale, easing curves, and reduced-motion variants.
 
+## Token concepts and tooling
+
+Background articles on what tokens are, how they compose into components, how they theme, and how they reach designers, AI agents, and other organizations.
+
+- [[what-is-a-design-token]] — A design token as a design decision recorded as data; the W3C DTCG Format Module; the primitive/semantic/component tier model.
+- [[theming-via-semantic-tokens]] — Light/dark theming as semantic-token substitution, grounded in the published `theme.dark` group and the same pattern in Carbon, Material 3, and Radix.
+- [[component-recipes-vs-raw-tokens]] — What the component tier adds beyond a token value: the `recipe.json` format and the registry's two-tier documentation state.
+- [[design-tokens-and-accessibility]] — How accessibility requirements — touch targets, focus-ring colour, contrast — are expressed as tokens rather than checked ad hoc.
+- [[figma-tokens-studio-integration]] — Bringing the published token export into Figma via the Tokens Studio plugin's read-only URL sync.
+- [[mcp-ai-agent-consumable-design-systems]] — Why the design system exposes a machine-readable MCP endpoint and token search API for AI coding agents.
+- [[registry-driven-releases]] — The registry-driven architecture that keeps navigation, homepage statistics, and release packaging from drifting apart.
+- [[self-hosting-customer-controlled-design-systems]] — The two separate offers: using the published tokens directly, and self-hosting the serving engine for a different organization's own design system.
+
 ## Brand surface
 
 How the brand identity is encoded as colour families and typographic stacks across PointSav and Woodfine product surfaces.

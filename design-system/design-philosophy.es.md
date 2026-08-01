@@ -63,10 +63,13 @@ La fundación tipográfica de interfaz es **Inter** (SIL OFL 1.1) — una neo-gr
 
 ## Véase también
 
+- [[what-is-a-design-token|Qué es un token de diseño]] — comience aquí para una definición introductoria de un token de diseño antes de este argumento arquitectónico
 - [[design-primitive-vocabulary]] — la capa de vocabulario de tokens: escalas de color numéricas, alias semántico y justificación de nomenclatura original de PointSav
 - [[design-system-substrate]] — la arquitectura del sustrato: bóveda rastreada en Git, endpoint MCP y estructura de anulación multitenant
 - [[wiki-component-library]] — nueve componentes del wiki construidos sobre este sistema de tokens
 - [[app-mediakit-knowledge]] — el motor wiki que renderiza la superficie pública del sistema de diseño
+- [[design-tokens-and-accessibility|Tokens de diseño y conformidad de accesibilidad]] — cómo se aplican estructuralmente como tokens los requisitos de accesibilidad, en lugar de verificarse ad hoc
+- [[self-hosting-customer-controlled-design-systems|Autoalojar un sistema de diseño]] — la oferta separada para que otra organización autoaloje este motor de servicio para su propio sistema de diseño
 
 ## Referencias
 

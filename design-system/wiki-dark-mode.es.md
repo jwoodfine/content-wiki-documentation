@@ -96,6 +96,7 @@ Todos los pares de colores del modo oscuro superan el nivel AAA de WCAG 2.1, ver
 
 ## Véase también
 
+- [[theming-via-semantic-tokens|Tematización mediante tokens semánticos]] — el contexto conceptual de este artículo: por qué la tematización es sustitución de tokens semánticos y no una hoja de estilos paralela, y cómo aparece el mismo patrón en Carbon, Material 3 y Radix
 - [[wiki-component-library]] — los nueve componentes que consumen estas anulaciones de tokens del modo oscuro
 - [[wiki-typography-system]] — la pila tipográfica que se combina con estos ajustes de color
 - [[design-system-substrate]] — la bóveda de tokens donde se definen y versionan los valores de tokens semánticos

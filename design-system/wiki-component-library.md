@@ -137,3 +137,5 @@ All nine components draw exclusively from the PointSav token system defined in `
 - [[wiki-typography-system]] — Inter and Source Serif 4 type stack used across these components
 - [[design-system-substrate]] — the token and component vault these nine components draw from
 - [[app-mediakit-knowledge]] — the wiki engine that composes these components into rendered article pages
+- [[component-recipes-vs-raw-tokens]] — the `recipe.json` component-tier data format, for components in the design-system's own registry rather than the wiki surface
+- [[design-tokens-and-accessibility]] — how accessibility requirements are expressed as tokens rather than checked ad hoc

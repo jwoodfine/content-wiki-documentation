@@ -131,3 +131,5 @@ Los nueve componentes usan exclusivamente el sistema de tokens de PointSav defin
 - [[wiki-typography-system]] — la pila tipográfica Inter y Source Serif 4 utilizada en estos componentes
 - [[design-system-substrate]] — la bóveda de tokens y componentes de la que se nutren estos nueve componentes
 - [[app-mediakit-knowledge]] — el motor wiki que compone estos componentes en páginas de artículos renderizadas
+- [[component-recipes-vs-raw-tokens|Recetas de componentes frente a tokens en bruto]] — el formato de datos `recipe.json` del nivel de componentes, para componentes del propio registro del sistema de diseño y no de la superficie wiki
+- [[design-tokens-and-accessibility|Tokens de diseño y conformidad de accesibilidad]] — cómo se expresan los requisitos de accesibilidad como tokens en lugar de verificarse ad hoc

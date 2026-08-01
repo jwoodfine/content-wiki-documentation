@@ -128,6 +128,7 @@ The wiki CSS uses short-form aliases that map to the semantic tokens:
 
 ## See also
 
+- [[theming-via-semantic-tokens]] — the concept background for this article: why theming is semantic-token substitution, not a parallel stylesheet, and how the same pattern appears in Carbon, Material 3, and Radix
 - [[wiki-component-library]] — the nine components that consume these dark-mode token overrides
 - [[wiki-typography-system]] — the type stack that pairs with these colour settings
 - [[design-system-substrate]] — the token vault where semantic token values are defined and versioned

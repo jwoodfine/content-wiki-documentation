@@ -14,7 +14,6 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-07-28
 editor: pointsav-engineering
 paired_with: _index.md
-short_description: "El sistema de diseño de PointSav como componente de la plataforma — estructuración arquitectónica, primitivos de diseño y contexto de identidad de marca."
 ---
 
 La categoría de sistema de diseño abarca el sistema de diseño de PointSav como componente de la plataforma — su vocabulario fundamental, filosofía de diseño, contexto de superficie de marca y las familias de tokens de la capa de fundación que heredan las superficies orientadas al operador. Trata el sistema de diseño como concepto dentro de la plataforma: por qué existe, cómo está estructurado, qué identidad de marca porta y dónde se alinea el vocabulario de tokens fundacionales con la convención del campo. Las guías de implementación de componentes, las especificaciones de accesibilidad y la superficie de trabajo se encuentran en el repositorio del sistema de diseño en `design.pointsav.com`; esta categoría aporta el marco arquitectónico.
@@ -37,6 +36,19 @@ Las cuatro familias de tokens de la capa de fundación: color, tipografía, espa
 - [Tokens de tipografía](https://design.pointsav.com/elements/typography/overview) — escala tipográfica, pilas de fuentes, variables de tipografía fluida y tokens de ritmo de lectura.
 - [Tokens de espaciado](https://design.pointsav.com/elements/spacing/overview) — unidad base, escala geométrica, tokens de separación de componentes y tokens de margen de diseño.
 - [Tokens de movimiento](https://design.pointsav.com/elements/motion/overview) — escala de duración, curvas de aceleración y variantes de movimiento reducido.
+
+## Conceptos de tokens y herramientas
+
+Artículos de contexto sobre qué son los tokens, cómo componen los componentes, cómo tematizan y cómo llegan a diseñadores, agentes de IA y otras organizaciones.
+
+- [[what-is-a-design-token|Qué es un token de diseño]] — Un token de diseño como decisión de diseño registrada como datos; el Format Module DTCG del W3C; el modelo de niveles primitivo/semántico/componente.
+- [[theming-via-semantic-tokens|Tematización mediante tokens semánticos]] — Los temas claro/oscuro como sustitución de tokens semánticos, fundamentado en el grupo `theme.dark` publicado y el mismo patrón en Carbon, Material 3 y Radix.
+- [[component-recipes-vs-raw-tokens|Recetas de componentes frente a tokens en bruto]] — Qué añade el nivel de componentes más allá del valor de un token: el formato `recipe.json` y el estado documental de dos niveles del registro.
+- [[design-tokens-and-accessibility|Tokens de diseño y conformidad de accesibilidad]] — Cómo los requisitos de accesibilidad — objetivos táctiles, color del anillo de foco, contraste — se expresan como tokens en lugar de verificarse ad hoc.
+- [[figma-tokens-studio-integration|Figma y Tokens Studio]] — Cómo llevar la exportación de tokens publicada a Figma mediante la sincronización de solo lectura por URL del plugin Tokens Studio.
+- [[mcp-ai-agent-consumable-design-systems|MCP y sistemas de diseño consumibles por agentes de IA]] — Por qué el sistema de diseño expone un endpoint MCP legible por máquina y una API de búsqueda de tokens para agentes de codificación de IA.
+- [[registry-driven-releases|Versiones dirigidas por registro]] — La arquitectura dirigida por registro que evita que la navegación, las estadísticas de la página de inicio y el empaquetado de versiones se desalineen.
+- [[self-hosting-customer-controlled-design-systems|Autoalojar un sistema de diseño]] — Las dos ofertas diferenciadas: usar directamente los tokens publicados y autoalojar el motor de servicio para el propio sistema de diseño de otra organización.
 
 ## Superficie de marca
 
