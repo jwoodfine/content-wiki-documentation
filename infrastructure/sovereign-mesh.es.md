@@ -11,7 +11,7 @@ bcsc_class: public-disclosure-safe
 language: es
 language_protocol: TRANSLATE-ES
 paired_with: sovereign-mesh.md
-last_edited: 2026-06-23
+last_edited: 2026-08-01
 editor: pointsav-engineering
 ---
 
@@ -98,3 +98,4 @@ La restricción de unidireccionalidad del Diode Standard — los comandos de aut
 - [[os-network-admin]] — Terminal F8, integración con service-slm, propiedad de la política de malla
 - [[diode-standard]] — jerarquía de autoridad y definiciones de categorías de tráfico
 - [[machine-based-auth]] — gestión de pares de claves Noise Protocol y tipos de emparejamiento
+- [[ppn-command-protocol]] — el análisis detallado dedicado al formato de trama: restricciones de diseño, disposición del paquete, secuencia de despacho

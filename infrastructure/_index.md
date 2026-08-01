@@ -41,7 +41,7 @@ How a deployment is provisioned, updated, and maintained across on-premises and 
 How fleet nodes communicate and how observability signals are collected without centralising identifiable data.
 
 - [[sovereign-mesh]] — The WireGuard-based peer-to-peer mesh that connects PointSav fleet nodes without a central routing authority.
-- [[pointsav-private-network]] — The private WireGuard mesh that connects Woodfine's fleet nodes, providing encrypted transport without granting application-layer access to the services on those nodes.
+- [[ppn-mesh-architecture]] — The private WireGuard mesh that connects Woodfine's fleet nodes, providing encrypted transport without granting application-layer access to the services on those nodes.
 - [[ppn-command-protocol]] — The command protocol used over the private mesh: compact binary packets carried inside WireGuard tunnels.
 - [[sovereign-telemetry]] — Zero-state telemetry: the V4 Intent Beacon collects behavioural and hardware signals from edge clients without cookies, session identifiers, or third-party analytics.
 - [[telemetry-architecture]] — End-to-end telemetry pipeline: collection at production edge nodes, encrypted transport, locally controlled processing, no third-party cloud dependencies.

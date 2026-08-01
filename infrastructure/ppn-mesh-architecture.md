@@ -10,10 +10,12 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-29
+last_edited: 2026-08-01
 editor: pointsav-engineering
 paired_with: ppn-mesh-architecture.es.md
 short_description: "Hub-and-spoke WireGuard mesh connecting fleet nodes, with physical key custody on the operator's premises and Mesh Fusion node joining."
+aliases:
+  - pointsav-private-network
 cites: []
 references:
   - id: 1
@@ -43,17 +45,17 @@ The cloud relay performs packet relay only. It moves encrypted WireGuard frames 
 
 ## Physical key custody
 
-NODE-IMAC-12, the on-premises workstation, holds the master WireGuard configuration for the fleet: the authoritative peer registry, the subnet assignments, and the WireGuard private key for that node. Placing this custody on a physical machine under the operator's direct control is deliberate.
+The on-premises workstation holds the master WireGuard configuration for the fleet: the authoritative peer registry, the subnet assignments, and the WireGuard private key for that node. Placing this custody on a physical machine under the operator's direct control is deliberate.
 
-If the cloud relay is destroyed or deprovisioned, the master configuration survives at NODE-IMAC-12. A replacement relay requires only a new cloud instance with a new IP; the WireGuard keys that define the network remain with the customer, not with the vendor. The network can be rebuilt without vendor involvement.
+If the cloud relay is destroyed or deprovisioned, the master configuration survives at the on-premises workstation. A replacement relay requires only a new cloud instance with a new IP; the WireGuard keys that define the network remain with the customer, not with the vendor. The network can be rebuilt without vendor involvement.
 
-NODE-IMAC-12 is also the primary deployment target for `os-console`, the keyboard-native console interface for Totebox Archive operations (see [[os-console-platform]]).
+The on-premises workstation is also the primary deployment target for `os-console`, the keyboard-native console interface for Totebox Archive operations (see [[os-console-platform]]).
 
 ## The WireGuard cryptographic fabric
 
 WireGuard [^1] uses Curve25519 elliptic-curve key pairs: one private and one public key per node. The private key never leaves the node on which it was generated. Public keys are distributed to peers and recorded in the hub's WireGuard peer configuration.
 
-The key lifecycle follows minimum-exposure principles: private keys are stored on-device only, never transmitted to any other party. The peer registry — the record of which machines are members of the mesh — is maintained at `route-network-admin`, the administrative interface for the network. Subnet address assignments are managed alongside the peer registry.
+The key lifecycle follows minimum-exposure principles: private keys are stored on-device only, never transmitted to any other party. `os-network-admin` maintains the peer registry — the record of which machines are members of the mesh — and the associated subnet address assignments.
 
 The PPN uses a Zero-Broker UDP broadcast pattern for fleet health signalling: health commands are broadcast simultaneously to all active nodes across the mesh, without routing through a central broker. Every node that is online responds. The pattern eliminates the single point of failure that a central command broker would introduce.
 
@@ -63,7 +65,7 @@ Joining a new physical node to the PPN is called Mesh Fusion. The procedure is i
 
 1. Install the host operating system on the target hardware.
 2. Generate a WireGuard Curve25519 key pair on the new node.
-3. Register the public key with the peer registry at `route-network-admin`.
+3. Register the public key with `os-network-admin`'s peer registry.
 4. Configure the WireGuard interface on the new node: hub endpoint, assigned subnet IP, and allowed peers.
 5. Establish the encrypted tunnel: the new spoke dials the cloud relay.
 6. Verify connectivity: the hub observes the new spoke; the spoke can reach other mesh nodes.
@@ -82,7 +84,7 @@ No network change broadcasts from an ambiguous or unreviewed translation. The in
 
 The most significant architectural property of the PPN is what it deliberately does not do: grant access to the application data running on the nodes it connects.
 
-The network layer carries encrypted packets between virtual machines. A machine on the PPN that holds no MBA pairings can reach the mesh and cannot access any archive. This isolation produces a specific security boundary: the infrastructure vendor — the party that built and operates the PPN — has no application-layer access to customer Totebox Archives through the network infrastructure. The vendor holds the network. The customer holds the authorization.
+The network layer carries encrypted packets between virtual machines. A machine on the PPN that holds no MBA pairings can reach the mesh and cannot access any archive. This isolation produces a specific security boundary: PointSav Digital Systems, as vendor and PPN operator, has no application-layer access to customer Totebox Archives through the network infrastructure. The vendor holds the network. The customer holds the authorization.
 
 ## PPN and MBA: independent layers
 
@@ -109,3 +111,6 @@ Cold Storage Entanglement operates outside the PPN. It is a physical custody mec
 - [[machine-based-auth]] — the application-layer authorization mechanism that operates above the PPN
 - [[os-console-platform]] — the console interface for operators using archives connected through the PPN
 - [[three-ring-architecture]] — the service architecture that runs on the PPN infrastructure
+- [[sovereign-mesh]] — the protocol-level detail: cryptographic handshake, command wire format, node-role code architecture
+- [[ppn-command-protocol]] — the 16-byte binary wire format for fleet commands
+- [[genesis-protocol]] — how new nodes join the fleet securely

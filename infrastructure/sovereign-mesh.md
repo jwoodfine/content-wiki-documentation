@@ -10,7 +10,7 @@ status: stable
 bcsc_class: public-disclosure-safe
 language: en
 paired_with: sovereign-mesh.es.md
-last_edited: 2026-07-11
+last_edited: 2026-08-01
 editor: pointsav-engineering
 ---
 
@@ -97,3 +97,4 @@ The Diode Standard's unidirectionality constraint — authority commands flow fr
 - [[os-network-admin]] — F8 Terminal, service-slm integration, mesh policy ownership
 - [[diode-standard]] — authority hierarchy and traffic category definitions
 - [[machine-based-auth]] — Noise Protocol keypair management and pairing types
+- [[ppn-command-protocol]] — the dedicated wire-format deep dive: design constraints, packet layout, dispatch sequence

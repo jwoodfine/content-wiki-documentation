@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-07-11
+last_edited: 2026-08-01
 editor: pointsav-engineering
 paired_with: ppn-tenant-vm-isolation.es.md
 short_description: "The PPN resource pool separates tenant workloads through namespace isolation, per-VM process isolation, and user-mode networking; subnet isolation is a planned milestone."
@@ -18,17 +18,11 @@ forbidden_terms_cleared: true
 cites: []
 ---
 
-The [[pointsav-private-network|PointSav Private Network]] (PPN) resource pool allows multiple tenants to run virtual machines on a shared set of physical and cloud nodes. This article describes the isolation model: what separation is provided, what is not, and the planned path to stronger network-level isolation.
+The [[ppn-mesh-architecture|PointSav Private Network]] (PPN) resource pool allows multiple tenants to run virtual machines on a shared set of physical and cloud nodes. This article describes the isolation model: what separation is provided, what is not, and the planned path to stronger network-level isolation.
 
 ## The stack
 
-Every virtual machine request passes through three layers before a QEMU process starts on a physical node:
-
-- **[[service-vm-tenant|Tenant proxy]]** — authenticates the caller, enforces namespace and quota, and is the sole external entry point
-- **[[service-vm-fleet|Fleet controller]]** — manages placement and delegates to the host agent; accepts connections only from the tenant proxy and internal mesh participants
-- **Host agent** — spawns the QEMU process on the selected node; not reachable by external callers
-
-A caller who has the fleet controller's address but not a valid tenant credential cannot reach the fleet controller directly — the authentication layer cannot be bypassed.
+Every virtual machine request passes through the same three-service stack described in [[ppn-vm-resource-pool]] — [[service-vm-tenant|tenant proxy]], [[service-vm-fleet|fleet controller]], host agent — before a QEMU process starts on a physical node. This article covers what that stack does and does not guarantee about tenant isolation.
 
 ## What tenant isolation provides
 

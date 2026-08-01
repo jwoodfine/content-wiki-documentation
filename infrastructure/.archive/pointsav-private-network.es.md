@@ -6,7 +6,10 @@ short_description: "La Red Privada de PointSav es la malla WireGuard privada que
 category: infrastructure
 type: topic
 content_type: topic
-status: active
+status: archived
+archived: 2026-08-01
+archived_reason: "Duplicación de contenido genuina con infrastructure/ppn-mesh-architecture.md — mismo tema, misma estructura, mismo orden. También contenía un defecto factual (rango de direcciones indicado como 10.50.0.0/24, contradicho por el código real y por sovereign-mesh.md, que indica correctamente 10.8.0.0/24) y un nombre que no existe en el código (route-network-admin, debería ser os-network-admin). Fusionado en ppn-mesh-architecture.md."
+superseded_by: ppn-mesh-architecture
 bcsc_class: public-disclosure-safe
 last_edited: 2026-07-31
 editor: pointsav-engineering

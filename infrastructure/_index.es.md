@@ -42,7 +42,7 @@ Cómo se provisiona, actualiza y mantiene un despliegue en hardware on-premises 
 Cómo se comunican los nodos de la flota y cómo se recopilan las señales de observabilidad sin centralizar datos identificables.
 
 - [[sovereign-mesh|Malla soberana]] — La red de malla entre pares basada en WireGuard que conecta los nodos de flota PointSav sin una autoridad de enrutamiento central.
-- [[pointsav-private-network|Red privada PointSav]] — La malla privada WireGuard que conecta los nodos de flota de Woodfine, proporcionando transporte cifrado sin otorgar acceso de capa de aplicación a los servicios en esos nodos.
+- [[ppn-mesh-architecture|Red privada PointSav]] — La malla privada WireGuard que conecta los nodos de flota de Woodfine, proporcionando transporte cifrado sin otorgar acceso de capa de aplicación a los servicios en esos nodos.
 - [[ppn-command-protocol|Protocolo de comandos PPN]] — El protocolo de comandos utilizado sobre la malla privada: paquetes binarios compactos transportados dentro de túneles WireGuard.
 - [[sovereign-telemetry|Telemetría soberana]] — Telemetría de estado cero: el V4 Intent Beacon recopila señales de comportamiento y hardware de clientes en el borde sin cookies, identificadores de sesión ni análisis de terceros.
 - [[telemetry-architecture|Arquitectura de telemetría]] — Pipeline de telemetría de extremo a extremo: recopilación en los nodos de borde de producción, transporte cifrado, procesamiento controlado localmente, sin dependencias de nube de terceros.

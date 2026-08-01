@@ -6,7 +6,10 @@ short_description: "The PointSav Private Network is the private WireGuard mesh c
 category: infrastructure
 type: topic
 content_type: topic
-status: active
+status: archived
+archived: 2026-08-01
+archived_reason: "Genuine content duplication with infrastructure/ppn-mesh-architecture.md — same subject, same structure, same order (topology table, key-custody story, WireGuard fabric, Mesh Fusion procedure, F8 Terminal, PPN/MBA independence table), restated. Also carried a factual defect (address range stated as 10.50.0.0/24, contradicted by real code and by sovereign-mesh.md's correct 10.8.0.0/24) and a name that doesn't exist in the codebase (route-network-admin, should be os-network-admin). Merged into ppn-mesh-architecture.md, which kept its unique Cold Storage Entanglement section and citation."
+superseded_by: ppn-mesh-architecture
 bcsc_class: public-disclosure-safe
 last_edited: 2026-07-11
 editor: pointsav-engineering

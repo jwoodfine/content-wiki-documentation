@@ -41,6 +41,28 @@ redirects:
   - from: /systems/os-console-platform
     to: /systems/os-console
 
+  # PPN cluster consolidation 2026-08-01 (content-matrix merge-candidate work):
+  # Of 11 flagged PPN articles, only ONE genuine duplicate pair was found on full read —
+  # pointsav-private-network.md and ppn-mesh-architecture.md described the identical
+  # subject (topology, key custody, WireGuard fabric, Mesh Fusion, F8 Terminal, PPN/MBA
+  # independence) in the same structure. The other 9 articles turned out legitimately
+  # complementary (mesh deployment/custody vs. mesh protocol/technical, per-node
+  # hypervisor mechanism vs. planned cross-node fabric, VM control-plane stack vs. its
+  # isolation/security angle, wire-format deep dive, seL4 roadmap, product pitch) —
+  # the audit's "over-covered, heavily fragmented" framing overstated the problem for
+  # 9 of 11. Merged pointsav-private-network.md into ppn-mesh-architecture.md, which
+  # also fixes 2 real factual defects the retiring article carried: an address range
+  # (10.50.0.0/24) contradicted by real code and by sovereign-mesh.md's correct
+  # 10.8.0.0/24, and a peer-registry-holder name (route-network-admin) that does not
+  # exist anywhere in the codebase (real name: os-network-admin). Carries
+  # aliases: [pointsav-private-network] for wikilink resolution. Two real cross-article
+  # discrepancies (a UDP port number contradiction between 3 wiki articles and the
+  # more-built app-network-admin crate; a hypervisor-roadmap sequencing inconsistency)
+  # were found but NOT resolved — flagged for engineering clarification, not an
+  # editorial call.
+  - from: /infrastructure/pointsav-private-network
+    to: /infrastructure/ppn-mesh-architecture
+
   # scaling-coordinated-development three-way duplicate resolved 2026-07-28 (diagnosed
   # 2026-07-09, execution blocked by the permission system until operator sign-off this
   # session). architecture/...-totebox-archives.md and systems/...-totebox-archives.md

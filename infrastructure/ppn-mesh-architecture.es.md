@@ -10,10 +10,12 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-29
+last_edited: 2026-08-01
 editor: pointsav-engineering
 paired_with: ppn-mesh-architecture.md
 short_description: "Malla WireGuard de concentrador y radios que conecta nodos de flota, con custodia física de claves en las instalaciones del operador e incorporación de nodos Mesh Fusion."
+aliases:
+  - pointsav-private-network
 cites: []
 references:
   - id: 1
@@ -43,17 +45,17 @@ El retransmisor en la nube realiza únicamente retransmisión de paquetes. Mueve
 
 ## Custodia física de claves
 
-NODE-IMAC-12, la estación de trabajo local, almacena la configuración WireGuard maestra de la flota: el registro autorizado de pares, las asignaciones de subred y la clave privada WireGuard de ese nodo. Ubicar esta custodia en una máquina física bajo el control directo del operador es una decisión deliberada.
+La estación de trabajo local almacena la configuración WireGuard maestra de la flota: el registro autorizado de pares, las asignaciones de subred y la clave privada WireGuard de ese nodo. Ubicar esta custodia en una máquina física bajo el control directo del operador es una decisión deliberada.
 
-Si el retransmisor en la nube es destruido o desaprovisionado, la configuración maestra sobrevive en NODE-IMAC-12. Un retransmisor de reemplazo solo requiere una nueva instancia en la nube con una nueva IP; las claves WireGuard que definen la red permanecen con el cliente, no con el proveedor. La red puede reconstruirse sin intervención del proveedor.
+Si el retransmisor en la nube es destruido o desaprovisionado, la configuración maestra sobrevive en la estación de trabajo local. Un retransmisor de reemplazo solo requiere una nueva instancia en la nube con una nueva IP; las claves WireGuard que definen la red permanecen con el cliente, no con el proveedor. La red puede reconstruirse sin intervención del proveedor.
 
-NODE-IMAC-12 es también el objetivo de despliegue principal para `os-console`, la interfaz de consola nativa de teclado para las operaciones del Totebox Archive (véase [[os-console-platform]]).
+La estación de trabajo local es también el objetivo de despliegue principal para `os-console`, la interfaz de consola nativa de teclado para las operaciones del Totebox Archive (véase [[os-console-platform]]).
 
 ## El tejido criptográfico WireGuard
 
 WireGuard [^1] utiliza pares de claves de curva elíptica Curve25519: una clave privada y una pública por nodo. La clave privada nunca abandona el nodo en el que fue generada. Las claves públicas se distribuyen a los pares y se registran en la configuración de pares WireGuard del concentrador.
 
-El ciclo de vida de las claves sigue principios de mínima exposición: las claves privadas se almacenan únicamente en el dispositivo, nunca se transmiten a ninguna otra parte. El registro de pares — el registro de qué máquinas son miembros de la malla — se mantiene en `route-network-admin`, la interfaz administrativa de la red. Las asignaciones de direcciones de subred se gestionan junto con el registro de pares.
+El ciclo de vida de las claves sigue principios de mínima exposición: las claves privadas se almacenan únicamente en el dispositivo, nunca se transmiten a ninguna otra parte. `os-network-admin` mantiene el registro de pares — el registro de qué máquinas son miembros de la malla — y las asignaciones de direcciones de subred asociadas.
 
 La PPN utiliza un patrón de difusión UDP sin intermediario para las señales de estado de la flota: los comandos de estado se difunden simultáneamente a todos los nodos activos en la malla, sin enrutar a través de un intermediario central. Cada nodo que está en línea responde. El patrón elimina el punto único de fallo que introduciría un intermediario central de comandos.
 
@@ -63,7 +65,7 @@ La incorporación de un nuevo nodo físico a la PPN se denomina Mesh Fusion. El 
 
 1. Instalar el sistema operativo host en el hardware de destino.
 2. Generar un par de claves Curve25519 de WireGuard en el nuevo nodo.
-3. Registrar la clave pública en el registro de pares en `route-network-admin`.
+3. Registrar la clave pública en el registro de pares de `os-network-admin`.
 4. Configurar la interfaz WireGuard en el nuevo nodo: endpoint del concentrador, IP de subred asignada y pares permitidos.
 5. Establecer el túnel cifrado: el nuevo radio establece conexión hacia el retransmisor en la nube.
 6. Verificar la conectividad: el concentrador observa el nuevo radio; el radio puede alcanzar otros nodos de la malla.
@@ -82,7 +84,7 @@ Ningún cambio de red se difunde desde una traducción ambigua o sin revisar. El
 
 La propiedad arquitectónica más significativa de la PPN es lo que deliberadamente no hace: otorgar acceso a los datos de aplicación que se ejecutan en los nodos que conecta.
 
-La capa de red transporta paquetes cifrados entre máquinas virtuales. Una máquina en la PPN que no tiene emparejamientos MBA puede alcanzar la malla y no puede acceder a ningún archivo. Este aislamiento produce una frontera de seguridad específica: el proveedor de infraestructura — la parte que construyó y opera la PPN — no tiene acceso a nivel de aplicación a los Totebox Archives del cliente a través de la infraestructura de red. El proveedor controla la red. El cliente controla la autorización.
+La capa de red transporta paquetes cifrados entre máquinas virtuales. Una máquina en la PPN que no tiene emparejamientos MBA puede alcanzar la malla y no puede acceder a ningún archivo. Este aislamiento produce una frontera de seguridad específica: PointSav Digital Systems, como proveedor y operador de la PPN, no tiene acceso a nivel de aplicación a los Totebox Archives del cliente a través de la infraestructura de red. El proveedor controla la red. El cliente controla la autorización.
 
 ## PPN y MBA: capas independientes
 
@@ -109,3 +111,6 @@ El Entrelazamiento de Almacenamiento Frío opera fuera de la PPN. Es un mecanism
 - [[machine-based-auth]] — el mecanismo de autorización de capa de aplicación que opera sobre la PPN
 - [[os-console-platform]] — la interfaz de consola para operadores que utilizan archivos conectados a través de la PPN
 - [[three-ring-architecture]] — la arquitectura de servicios que se ejecuta en la infraestructura PPN
+- [[sovereign-mesh]] — el detalle a nivel de protocolo: negociación criptográfica, formato de comandos, arquitectura de código por rol de nodo
+- [[ppn-command-protocol]] — el formato binario de 16 bytes para comandos de flota
+- [[genesis-protocol]] — cómo los nuevos nodos se incorporan a la flota de forma segura

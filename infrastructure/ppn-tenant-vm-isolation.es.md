@@ -10,24 +10,18 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: TRANSLATE-ES
-last_edited: 2026-06-20
+last_edited: 2026-08-01
 editor: pointsav-engineering
 paired_with: ppn-tenant-vm-isolation.md
 short_description: "El pool de recursos PPN separa las cargas de trabajo por inquilino mediante aislamiento de espacio de nombres, aislamiento de proceso por VM y redes en modo usuario. El aislamiento a nivel de subred de red es un hito planificado."
 cites: []
 ---
 
-El pool de recursos de la [[pointsav-private-network|Red Privada de PointSav]] (PPN) permite que múltiples inquilinos ejecuten máquinas virtuales en un conjunto compartido de nodos físicos y en la nube. Este artículo describe el modelo de aislamiento: qué separación se proporciona, qué no, y el camino planificado hacia un aislamiento más sólido a nivel de red.
+El pool de recursos de la [[ppn-mesh-architecture|Red Privada de PointSav]] (PPN) permite que múltiples inquilinos ejecuten máquinas virtuales en un conjunto compartido de nodos físicos y en la nube. Este artículo describe el modelo de aislamiento: qué separación se proporciona, qué no, y el camino planificado hacia un aislamiento más sólido a nivel de red.
 
 ## La pila
 
-Cada solicitud de máquina virtual atraviesa tres capas antes de que un proceso QEMU se inicie en un nodo físico:
-
-- **[[service-vm-tenant|Proxy de inquilino]]** — autentica al llamante, aplica el espacio de nombres y la cuota, y es el único punto de entrada externo
-- **[[service-vm-fleet|Controlador de flota]]** — gestiona la colocación y delega en el agente de host; acepta conexiones únicamente del proxy de inquilino y de los participantes internos de la malla
-- **Agente de host** — inicia el proceso QEMU en el nodo seleccionado; no es accesible por llamantes externos
-
-Un llamante que disponga de la dirección del controlador de flota pero no de una credencial de inquilino válida no puede alcanzar el controlador de flota directamente — la capa de autenticación no puede eludirse.
+Cada solicitud de máquina virtual atraviesa la misma pila de tres servicios descrita en [[ppn-vm-resource-pool]] — [[service-vm-tenant|proxy de inquilino]], [[service-vm-fleet|controlador de flota]], agente de host — antes de que un proceso QEMU se inicie en un nodo físico. Este artículo cubre qué garantiza y qué no garantiza esa pila respecto al aislamiento de inquilinos.
 
 ## Qué proporciona el aislamiento de inquilinos
 
