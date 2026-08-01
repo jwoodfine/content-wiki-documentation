@@ -22,7 +22,7 @@ The platform functions fully across Rings 1 and 2 without AI compute. Removing R
 
 Per-tenant boundary services. Each runs as a separate process per tenant and exposes a Model Context Protocol server interface.
 
-- [[service-fs-architecture]] — The filesystem service: append-only WORM ledger, per-tenant storage root, the foundation every other Ring 1 service writes to.
+- [[service-fs]] — The filesystem service: append-only WORM ledger, per-tenant storage root, the foundation every other Ring 1 service writes to — architecture, durability, and the SEC 17a-4(f)/eIDAS/SOC 2 compliance posture it enables by construction.
 - [[service-email]] — Email ingest: SMTP and IMAP, sanitised payloads, append-only Maildir on local block storage.
 - [[service-people]] — Identity ledger: person records, role assignments, and the Anchor-Claim-Socket data model that never overwrites state.
 
@@ -54,7 +54,6 @@ Services built for specific platform capabilities.
 - [[service-wallet-settlement]] — Wallet and direct payment settlement infrastructure.
 - [[message-courier]] — Headless web-automation engine bridging internal identity ledgers with external web portals.
 - [[fs-anchor-emitter]] — Signed WORM ledger checkpoints at hourly cadence, anchored to Sigstore Rekor on a monthly schedule for external auditability.
-- [[service-fs-security-compliance]] — service-fs compliance posture for SEC 17a-4(f), eIDAS, and SOC 2 by structural guarantee.
 - [[service-fs-data-lake]] — Flat-file data lake for the GIS pipeline: raw geospatial points from open sources, no ETL step.
 - [[template-ledger]] — Distributes approved email templates to the operator's mail environment; eliminates version drift between template design and execution.
 

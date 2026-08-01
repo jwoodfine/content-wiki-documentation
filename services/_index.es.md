@@ -23,7 +23,7 @@ La plataforma funciona completamente a través de los Anillos 1 y 2 sin cómputo
 
 Servicios de límite por inquilino. Cada uno se ejecuta como un proceso separado por inquilino y expone una interfaz de servidor de Protocolo de Contexto de Modelo.
 
-- [[service-fs-architecture]] — El servicio de sistema de archivos: libro WORM de solo anexado, raíz de almacenamiento por inquilino, la base en la que escribe cada otro servicio del Anillo 1.
+- [[service-fs]] — El servicio de sistema de archivos: libro WORM de solo anexado, raíz de almacenamiento por inquilino, la base en la que escribe cada otro servicio del Anillo 1 — arquitectura, durabilidad y la postura de cumplimiento SEC 17a-4(f)/eIDAS/SOC 2 que habilita por construcción.
 - [[service-email]] — Ingesta de correo electrónico: SMTP e IMAP, cargas útiles saneadas, Maildir de solo anexado en almacenamiento local en bloque.
 - [[service-people]] — Libro de identidad: registros de personas, asignaciones de roles y el modelo de datos Anchor-Claim-Socket que nunca sobreescribe el estado.
 
@@ -55,7 +55,6 @@ Servicios construidos para capacidades específicas de la plataforma.
 - [[service-wallet-settlement]] — Infraestructura de cartera y liquidación de pagos directos.
 - [[message-courier]] — Motor de automatización web sin interfaz que conecta libros de identidad internos con portales web externos.
 - [[fs-anchor-emitter]] — Puntos de control firmados del libro WORM a cadencia horaria, anclados a Sigstore Rekor mensualmente para auditabilidad externa.
-- [[service-fs-security-compliance]] — Postura de cumplimiento de service-fs para SEC 17a-4(f), eIDAS y SOC 2 por garantía estructural.
 - [[service-fs-data-lake]] — Data lake de archivos planos para el pipeline GIS: puntos geoespaciales brutos de fuentes abiertas, sin paso ETL.
 - [[template-ledger]] — Distribuye plantillas de correo electrónico aprobadas al entorno de correo del operador; elimina la desviación de versiones entre el diseño de plantillas y la ejecución.
 

@@ -8,7 +8,10 @@ title: "Arquitectura de Service-FS: el núcleo WORM"
 category: services
 audience: vendor-public
 bcsc_class: current-fact
-status: active
+status: archived
+archived: 2026-07-31
+archived_reason: "Redundancia genuina de contenido con service-fs-security-compliance.md — ambos describían el mismo servicio desde ángulos de arquitectura y cumplimiento, con re-explicación duplicada real. Fusionado en un artículo canónico único, services/service-fs.md."
+superseded_by: service-fs
 language: es
 last_edited: 2026-07-31
 editor: pointsav-engineering

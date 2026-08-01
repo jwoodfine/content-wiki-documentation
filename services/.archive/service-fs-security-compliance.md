@@ -7,10 +7,13 @@ type: topic
 content_type: topic
 quality: complete
 short_description: "Structural Write-Once-Read-Many storage posture where the engine itself denies record modification, satisfying SEC Rule 17a-4(f), eIDAS, and SOC 2 by architecture."
-status: active
+status: archived
+archived: 2026-07-31
+archived_reason: "Genuine content redundancy with service-fs-architecture.md — both described the same service (WORM ledger architecture, Merkle chains, Rekor anchoring, seL4 target) from architecture vs. compliance angles, with real duplicate re-explanation. Merged into one canonical services/service-fs.md."
+superseded_by: service-fs
 audience: vendor-public
 bcsc_class: current-fact
-last_edited: 2026-05-08
+last_edited: 2026-07-31
 editor: pointsav-engineering
 paired_with: service-fs-security-compliance.es.md
 ---

@@ -7,7 +7,10 @@ type: topic
 content_type: topic
 quality: complete
 short_description: "Postura de almacenamiento Write-Once-Read-Many donde el propio motor deniega la modificación de registros, cumpliendo SEC Rule 17a-4(f), eIDAS y SOC 2 por arquitectura."
-status: active
+status: archived
+archived: 2026-07-31
+archived_reason: "Redundancia genuina de contenido con service-fs-architecture.md — ambos describían el mismo servicio desde ángulos de arquitectura y cumplimiento, con re-explicación duplicada real. Fusionado en un artículo canónico único, services/service-fs.md."
+superseded_by: service-fs
 audience: vendor-public
 bcsc_class: current-fact
 last_edited: 2026-07-31

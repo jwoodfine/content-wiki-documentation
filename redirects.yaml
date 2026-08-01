@@ -7,6 +7,21 @@
 
 redirects:
 
+  # service-fs cluster consolidation 2026-07-31 (content-matrix merge-candidate work):
+  # service-fs-architecture.md and service-fs-security-compliance.md were genuine
+  # redundancy (same subject — WORM ledger architecture, Merkle chains, Rekor anchoring,
+  # seL4 target — described twice from architecture vs. compliance angles). Merged into
+  # one canonical services/service-fs.md, which carries
+  # aliases: [service-fs-architecture, service-fs-security-compliance] for wikilink
+  # resolution. service-fs-data-lake.md was investigated and kept SEPARATE — it
+  # describes a genuinely different subject (the GIS flat-file landing-zone directory
+  # convention, not the WORM ledger service) and was independently corrected for its
+  # own unhedged-claim defect, not merged.
+  - from: /services/service-fs-architecture
+    to: /services/service-fs
+  - from: /services/service-fs-security-compliance
+    to: /services/service-fs
+
   # scaling-coordinated-development three-way duplicate resolved 2026-07-28 (diagnosed
   # 2026-07-09, execution blocked by the permission system until operator sign-off this
   # session). architecture/...-totebox-archives.md and systems/...-totebox-archives.md
