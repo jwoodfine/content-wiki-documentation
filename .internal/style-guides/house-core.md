@@ -19,6 +19,14 @@ editor: pointsav-engineering
 > document governs. This is the single source of truth for drafting language across the
 > workspace; every other voice, register, or vocabulary note defers to the style-guide set.
 
+**Machine-checkable rules:** `pointsav-design-system/tokens/content-schema/components-structural.yaml`
+is the machine-checkable projection of this guide's shared structural components (the infobox
+contract for concrete entities, the table-vs-prose rule for comparable named entities/values) —
+shared by TOPIC and JOURNAL per that token's own `shared_by` field. This guide owns craft
+(when a table or infobox is the right call, how to write around one); the schema token owns
+everything countable. A rule lives in exactly one place — if this guide and the schema token
+ever disagree, that's a defect to flag, not a choice between them.
+
 ## What this is
 
 A writing machine is not a list of forbidden words. It is four things working together: a
