@@ -8,7 +8,10 @@ short_description: "os-console is a single Rust binary with a cartridge architec
 category: systems
 type: topic
 content_type: topic
-status: active
+status: archived
+archived: 2026-07-31
+archived_reason: "Genuine content fragmentation with console-os.md and os-console-architecture.md — all three described the same product (os-console) at overlapping technical depths, with real inconsistencies (differing F-key/cartridge-state tables). Merged into one canonical systems/os-console.md."
+superseded_by: os-console
 bcsc_class: public-disclosure-safe
 last_edited: 2026-06-23
 editor: pointsav-engineering

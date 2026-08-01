@@ -6,7 +6,10 @@ category: systems
 type: concept
 content_type: topic
 quality: complete
-status: active
+status: archived
+archived: 2026-07-31
+archived_reason: "Fragmentación de contenido genuina con os-console-architecture.md y os-console-platform.md — los tres describían el mismo producto (os-console) en profundidades técnicas superpuestas, con inconsistencias reales. También tenía el slug invertido (console-os en lugar de os-console). Fusionado en un artículo canónico único, systems/os-console.md."
+superseded_by: os-console
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC

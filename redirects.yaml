@@ -22,6 +22,25 @@ redirects:
   - from: /services/service-fs-security-compliance
     to: /services/service-fs
 
+  # os-console cluster consolidation 2026-07-31 (content-matrix merge-candidate work):
+  # console-os.md, os-console-architecture.md, and os-console-platform.md were genuine
+  # fragmentation — all three described the same product at overlapping technical
+  # depths, with real inconsistencies (differing F-key/cartridge-state tables; the
+  # architecture article's own "four active" claim was incomplete against the
+  # platform's project registry, which shows 5 Active cartridges). Merged into one
+  # canonical systems/os-console.md, which also fixes console-os.md's reversed slug
+  # (the file was slugged "console-os" but its own body used "os-console" throughout).
+  # Carries aliases: [console-os, os-console-architecture, os-console-platform,
+  # topic-os-console-architecture] for wikilink resolution.
+  # os-console-totebox-browser.md was investigated and kept SEPARATE — a genuinely
+  # distinct browser-analogy explainer, not a duplicate.
+  - from: /systems/console-os
+    to: /systems/os-console
+  - from: /systems/os-console-architecture
+    to: /systems/os-console
+  - from: /systems/os-console-platform
+    to: /systems/os-console
+
   # scaling-coordinated-development three-way duplicate resolved 2026-07-28 (diagnosed
   # 2026-07-09, execution blocked by the permission system until operator sign-off this
   # session). architecture/...-totebox-archives.md and systems/...-totebox-archives.md

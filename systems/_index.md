@@ -30,8 +30,8 @@ The core record-keeping systems at the foundation of every deployment — where 
 
 The systems through which a human operator interacts with the platform — keyboard-driven, F-key-structured, and built around muscle memory rather than discoverability.
 
-- [[console-os]] — The human-facing surface: a Command Ledger that connects to a Totebox and renders its state through a keyboard-driven, F-key-structured interface.
-- [[os-console-platform]] — The Rust binary that implements os-console: cartridge architecture, F-key-navigated modules, keyboard-native access to Totebox Archive workflows.
+- [[os-console]] — The human-facing surface: a Command Ledger and single Rust binary that connects to a Totebox and renders its state through a keyboard-driven, cartridge-based, F-key-structured interface.
+- [[os-console-totebox-browser]] — The browser-analogy explainer for os-console's design philosophy: cartridges as tabs, machine pairing as the certificate store.
 - [[input-machine]] — The mandatory document ingest gate in os-console, bound permanently to F12 and backed by `service-input` on the Totebox Archive.
 - [[os-workplace]] — The free desktop operating system: a native-Rust sovereign desktop that pairs with a Totebox archive and serves as the adoption gateway to the commercial product line.
 - [[os-orchestration]] — The Fleet Aggregator for multi-entity portfolios: one operator sees, queries, and commands many Totebox archives at once.

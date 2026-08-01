@@ -8,7 +8,10 @@ category: systems
 type: topic
 content_type: topic
 quality: complete
-status: active
+status: archived
+archived: 2026-07-31
+archived_reason: "Genuine content fragmentation with console-os.md and os-console-platform.md — all three described the same product (os-console) at overlapping technical depths, with real inconsistencies (differing F-key/cartridge-state tables — this article's own 'four active' claim was incomplete against the platform's project registry). Merged into one canonical systems/os-console.md."
+superseded_by: os-console
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC

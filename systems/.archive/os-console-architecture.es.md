@@ -8,7 +8,10 @@ category: systems
 type: topic
 content_type: topic
 quality: complete
-status: active
+status: archived
+archived: 2026-07-31
+archived_reason: "Fragmentación de contenido genuina con console-os.md y os-console-platform.md — los tres describían el mismo producto (os-console) en profundidades técnicas superpuestas, con inconsistencias reales. Fusionado en un artículo canónico único, systems/os-console.md."
+superseded_by: os-console
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC

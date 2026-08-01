@@ -6,7 +6,10 @@ category: systems
 type: concept
 content_type: topic
 quality: complete
-status: active
+status: archived
+archived: 2026-07-31
+archived_reason: "Genuine content fragmentation with os-console-architecture.md and os-console-platform.md — all three described the same product (os-console) at overlapping technical depths, with real inconsistencies (differing F-key/cartridge-state tables). Also carried a reversed slug (console-os instead of os-console, the name used throughout its own body). Merged into one canonical systems/os-console.md."
+superseded_by: os-console
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC

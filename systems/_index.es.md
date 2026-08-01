@@ -31,8 +31,8 @@ Los sistemas centrales de mantenimiento de registros en la base de cada desplieg
 
 Los sistemas a través de los cuales un operador humano interactúa con la plataforma — controlados por teclado, estructurados por teclas F y construidos en torno a la memoria muscular en lugar de la descubribilidad.
 
-- [[console-os]] — La superficie orientada al ser humano: un Libro de Comandos que se conecta a un Totebox y renderiza su estado a través de una interfaz controlada por teclado y teclas F.
-- [[os-console-platform|Plataforma os-console]] — El binario Rust que implementa os-console: arquitectura de cartuchos, módulos navegados por teclas F, acceso nativo por teclado a los flujos de trabajo del Archivo Totebox.
+- [[os-console]] — La superficie orientada al ser humano: un Libro Mayor de Comandos y binario Rust único que se conecta a un Totebox y renderiza su estado a través de una interfaz controlada por teclado, basada en cartuchos y estructurada por teclas F.
+- [[os-console-totebox-browser]] — El explicador de la analogía del navegador para la filosofía de diseño de os-console: cartuchos como pestañas, emparejamiento de máquinas como el almacén de certificados.
 - [[input-machine|Máquina de entrada]] — La puerta de ingesta obligatoria de documentos en os-console, vinculada permanentemente a F12 y respaldada por `service-input` en el Archivo Totebox.
 - [[os-workplace]] — El sistema operativo de escritorio gratuito: un escritorio soberano nativo en Rust que se empareja con un archivo Totebox y sirve como puerta de entrada de adopción a la línea de producto comercial.
 - [[os-orchestration]] — El Agregador de Flota para carteras de múltiples entidades: un operador ve, consulta y comanda muchos archivos Totebox a la vez.
