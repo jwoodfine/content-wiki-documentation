@@ -40,7 +40,7 @@ Three constraints govern what hardware can run the PointSav substrate:
 | Required extension | `fsgsbase` — used by optimised seL4 microkernel paths |
 | Memory paging | 1 GB Huge Pages enabled (`+pdpe1gb` CPU flag) |
 
-Pre-Haswell CPUs — Nehalem and earlier — lack `fsgsbase`. Attempting to run the kernel on pre-Haswell hardware triggers a `UserException` on the first kernel print. The constraint is a functional prerequisite, not a performance preference.
+Pre-Haswell CPUs — Nehalem and earlier — lack `fsgsbase`. Attempting to run the kernel on pre-Haswell hardware triggers a `UserException` on the first kernel print. The constraint is a functional prerequisite, not a performance preference. (Correction, 2026-08-02, verified against canonical `origin/main`: while `fsgsbase` is a real, published seL4 hardware requirement in general and `vendor-sel4-kernel` is a real vendored dependency, none of the specific details here — the `UserException`-on-first-print behavior, the `+pdpe1gb` flag requirement, the `e2-micro` Tier-1 baseline elsewhere in this article — are backed by any test, config, or doc anywhere in this codebase; a corpus-wide search returns zero hits for any of these specific strings. This reads as invented precision layered onto a real general constraint, the same pattern found repeatedly elsewhere in this sweep. Flagged, not resolved.)
 
 ## Infrastructure deployment patterns
 

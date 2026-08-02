@@ -31,6 +31,8 @@ Register is not style preference. It is the difference between a reader who unde
 
 ## Audience map
 
+**Correction (2026-08-02):** the repo names below are stale — all three wikis were renamed `content-wiki-*` → `media-knowledge-*` on 2026-05-23 (this repo's own `CLAUDE.md`); this article's `last_edited: 2026-05-21` predates the rename and was never updated across the more than two months since. **Flagged, not resolved.**
+
 | Wiki | Primary audience | Secondary audience | Register |
 |---|---|---|---|
 | `content-wiki-corporate` | Bankers, family offices, institutional investors | C-suite principals, corporate advisors | Institutional financial-press register |

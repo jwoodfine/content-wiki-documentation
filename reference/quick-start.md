@@ -27,7 +27,7 @@ This article is a task-oriented orientation for an engineer opening the platform
 ## First steps
 
 1. **Verify node access.** Confirm the WireGuard tunnel is up and the fleet controller is reachable.
-2. **Review the architecture overview.** Read [[ppn-small-business-compute|PPN Small-Business Compute]] for the three-node stack (fleet controller, host agent, tenant proxy).
+2. **Review the architecture overview.** Read [[ppn-small-business-compute|PPN Small-Business Compute]] for the three-node stack (fleet controller, host agent, tenant proxy) (Correction, 2026-08-02: the more authoritative sibling article calls the second component "a per-node agent," not "host agent" — a naming drift, not an invented component. Flagged, not resolved.).
 3. **Create a VM.** Issue a spawn request through the tenant proxy. See the operational guides in the [[guide-catalog|Developer Guide Catalog]].
 4. **Access the console surface.** The OS Console provides a terminal interface for provisioned VMs and platform management.
 

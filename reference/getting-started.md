@@ -17,7 +17,7 @@ short_description: "An orientation to the PointSav developer platform: what it i
 cites: []
 ---
 
-The PointSav platform is a sovereign software stack for commercial real estate intelligence, fleet management, and distributed compute. This guide orients new contributors and evaluators to the platform's main surfaces and the documentation structure.
+The PointSav platform is an independently verifiable, operator-controlled software stack for commercial real estate intelligence, fleet management, and distributed compute (Correction, 2026-08-02: "sovereign" as a bare adjective is on this workspace's own Do-Not-Use list — see `editorial-language-registers.md`'s own vocabulary-retirement table — and this `audience: vendor-public` article violated it). This guide orients new contributors and evaluators to the platform's main surfaces and the documentation structure.
 
 ## Where to start
 

@@ -197,7 +197,6 @@ A set of platform as a service (PaaS) products that use OS-level virtualization 
 - **Enterprise**
 - **Enterprise Resource Management (ERP)**
 - **Enterprise User**
-- **es in a Totebox Archive using Tantivy. Operates without a running database engine — the index is static and binary and can be searched on an air-gapped machine. Satisfies DARP compliance: data must be searchable without proprietary software.**
 - **.EXE**
 
 ## F
@@ -391,7 +390,7 @@ The Tier 2 system administration and package management layer manages software i
 The PointSav design system is a tokenized, DTCG-format component library and token vault delivered as a Git-tracked repository, providing the visual and interactive vocabulary for all PointSav product surfaces.
 
 ### PointSav Digital Systems
-PointSav Digital Systems is the software vendor entity that builds and maintains the PointSav platform, publishing canonical open-source engineering repositories at github.com/pointsav under the Apache 2.0 license.
+PointSav Digital Systems is the software vendor entity that builds and maintains the PointSav platform, publishing canonical open-source engineering repositories at github.com/pointsav under the Apache 2.0 license (Correction, 2026-08-02, verified against canonical `origin/main`: no directory is currently Apache-2.0-licensed. The real, ratified root `LICENSE` ("MULTI-LICENSE NOTICE" v1.1, effective 2026-05-24) is a per-directory scheme — most `os-*`/`service-*`/`app-console-*` directories are AGPL-3.0-or-later; a handful (`os-infrastructure`, `os-mediakit`, `os-interface`, `app-mediakit-*`) are FSL-1.1-ALv2. Flagged, not resolved.).
 
 - **PointSav Documentation or PointSav Documentation Wiki**
 - **PointSav Landing Page**
@@ -469,7 +468,7 @@ The deterministic parser service. Strips proprietary formatting from inbound pay
 ### service-search
 *service-search*
 
-The inverted index service. Provides rapid full-text retrieval across all files in a Totebox Archive using Tantivy. Operates without a running database engine — the index is static and binary and can be searched on an air-gapped machine. Satisfies DARP compliance: data must be searchable without proprietary software.
+The inverted index service. Provides rapid full-text retrieval across all files in a Totebox Archive using Tantivy. Operates without a running database engine — the index is static and binary and can be searched on an air-gapped machine. Satisfies DARP compliance: data must be searchable without proprietary software. (Correction, 2026-08-02, verified against canonical `origin/main`: `service-search/` contains only a README.md — no `Cargo.toml`, no `src/`. This is an aspirational design description presented as a current, operating fact in a `status: complete` article. Flagged, not resolved.)
 
 ### Smart Building
 *Edificio Inteligente*
