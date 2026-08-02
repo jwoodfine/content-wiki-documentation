@@ -15,6 +15,8 @@ paired_with: wiki-typography-system.es.md
 
 # Wiki typography system
 
+**Correction (2026-08-02):** the two typefaces' roles below are swapped relative to the real CSS, and the specific token names cited don't exist. Real `static/style.css` sets `--font-body: "Inter"...` applied to body text (`font-family: var(--font-body)` on the article body), and `--font-display: "Source Serif 4"...` applied to headings and nav labels — the reverse of this article's claim that Inter is for UI/navigation and Source Serif 4 is for body prose. None of the cited `--ps-wiki-font-ui`/`--ps-wiki-text-h1..h4`/`--ps-wiki-measure` variables exist anywhere in the repo — real variables are `--text-base`, `--font-display`, `--font-body` (same fabricated `--ps-*` family found on [[wiki-component-library]] and [[wiki-dark-mode]]). Separately, an unused auto-generated `static/tokens.css` file declares yet a third font stack (Georgia/Charter/Nunito Sans/Roboto Slab) matching neither this article nor the real `style.css` — a genuine inconsistency in the real codebase, not something this article invented, but further evidence its specific claims weren't checked against the actual shipped CSS. **Flagged, not resolved.**
+
 The [[app-mediakit-knowledge|PointSav wiki]]'s typographic system uses Inter for user interface elements and navigation, Source Serif 4 for body reading prose, and a system-provided monospace stack for code and technical notation, built on [[design-system-substrate|the platform token system]] following the [[design-primitive-vocabulary|primitive vocabulary conventions]]. This article explains the font choices, the heading scale, the spacing tokens, and how the system achieves broad linguistic coverage for bilingual (English/Spanish) content.
 
 ---

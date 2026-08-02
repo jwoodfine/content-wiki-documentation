@@ -15,6 +15,8 @@ paired_with: wiki-dark-mode.es.md
 
 # Wiki dark mode
 
+**Correction (2026-08-02):** the specific implementation details below don't match the real engine, same fabricated `--ps-*` variable family found on [[wiki-component-library]]. Real dark-mode values (`static/style.css`) are `--bg:#0B1220`, `--fg-1:#F3F6FA`, `--link:#7AAEEA` — entirely different from this article's invented `--ps-surface-base:#1f2125`/`--ps-ink-primary:#f5f6f8`/`--ps-wiki-link:#6ab0f5`. The real toggle is a three-way Light/Dark/Auto "Appearance menu" (`initAppearanceMenu`), not the binary `aria-pressed` toggle with "Switch to dark mode" label described here — that exact string has zero hits anywhere in the codebase. The real persistence key is `wiki-theme`, not `ps-theme`. **Flagged, not resolved.**
+
 The [[app-mediakit-knowledge|PointSav wiki]] supports light and dark colour schemes using [[design-system-substrate|semantic tokens]] from the platform design system. Dark mode reduces eye strain in low-light environments and is preferred by a significant proportion of readers. This article describes the implementation: how the theme is set, persisted across sessions, and toggled, together with the full colour palette for each mode.
 
 ---

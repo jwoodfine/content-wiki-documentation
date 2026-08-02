@@ -36,6 +36,8 @@ answer, checked in one place.
 
 ## Accessibility values are tokens
 
+**Correction (2026-08-02):** several specific claims below don't exist or are wrong. Neither `a11y-target-min` nor `cds-focus`/`cds-positive-text`/`cds-positive-bg` exist anywhere in the real token files — the `cds-` string appears only as an unrelated, already-flagged-as-inconsistent prefix in two component style docs. The cited contrast triple (19.2:1/8.2:1/6.7:1) doesn't match the real published figures in `dtcg-vault/elements/color/overview.md` (`ink-primary`/`surface-base` 14.7:1, `ink-on-interactive`/`interactive-primary` 7.4:1, `ink-secondary`/`surface-base` 8.9:1). Most significant: this article claims the Button's shipped spec shows "text contrast at 7.4:1... passing SC 1.4.6 Contrast Enhanced, AAA" with a component-wide "conformance target of WCAG 2.2 AAA" — the real `dtcg-vault/components/button/accessibility.md` states plainly that the primary variant is **6.66:1** and **does not meet the 7:1 AAA floor** (AA only), and the real target is "WCAG 2.2 AA, AAA where achievable," not blanket AAA. That real file already carries its own dated correction (2026-07-15) fixing an earlier false blanket-AAA claim — this wiki article repeats the exact mistake the source has already corrected once. **Flagged, not resolved** — this is an accessibility-conformance claim and should be synced to the real (already-correct) source, not left standing.
+
 Two tokens anchor the pattern. `a11y-target-min` is a primitive token whose
 value is 44 pixels — the minimum target dimension defined by WCAG Success
 Criterion 2.5.5, Target Size (Enhanced), a Level AAA criterion requiring

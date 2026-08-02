@@ -99,6 +99,14 @@ Seventeen carry a recipe.json only. The components reference presents the
 split honestly, as two labeled groups, rather than presenting 37 uniformly
 finished entries.
 
+**Correction (2026-08-02):** 2 of these 3 numbers are stale. The real registry
+(`dtcg-vault/components/`) currently holds **49** components, not 37 — the
+"20 with the full five-file set" figure is still correct, but the recipe-only
+count is **29**, not 17. Notably, `pointsav-design-system`'s own commit
+history shows an earlier internal correction from "17 generic" down to "8" —
+this article's "17" doesn't match either that corrected figure or the current
+real count. **Flagged, not resolved.**
+
 The two-tier state is a fact about sequencing, and the recipe's role in it
 is the point: the recipe is the floor. A recipe-only component is already
 machine-consumable — its markup, tokens, CSS, and WCAG block exist — while

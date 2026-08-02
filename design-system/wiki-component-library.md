@@ -15,6 +15,8 @@ paired_with: wiki-component-library.es.md
 
 # Wiki component library
 
+**Correction (2026-08-02):** the specific CSS-variable/API vocabulary cited throughout this article doesn't exist in the real render engine. The entire `--ps-wiki-*`/`--ps-surface-*`/`--ps-ink-*` variable family has zero hits anywhere in `app-mediakit-knowledge` — real tokens (`static/style.css`) use `--link`, `--font-display`, `--text-base`, etc. The real theme-persistence key is `wiki-theme` (`static/wiki.js`), not `ps-theme`, and the real toggle is a three-way Light/Dark/Auto "Appearance menu," not the two-state `aria-pressed` toggle described. The `wiki-drawer-mobile-nav` slide-in panel described doesn't exist — the real mobile nav is a fixed bottom tab bar with three items (Home/Search/Categories), with zero `inert`-attribute usage anywhere in the crate. The MCP search response shape is also wrong: real `mcp_search` returns `{results: [{slug, title, lede, score}]}`, not `{query, count, hits: [...]}`. Token files are real but at different paths than claimed (`static/tokens.css`/`static/style.css`, not `dist/tokens.css`). **Flagged, not resolved** — this needs a rewrite against the real render engine, not a wording fix.
+
 The PointSav wiki component library defines nine reusable interface units that together render a complete wiki article page in the [[app-mediakit-knowledge]] wiki engine. Each component targets Wikipedia's established layout conventions — following the [[wikipedia-leapfrog-design|leapfrog design philosophy]] — while applying current accessibility standards and the [[design-system-substrate|PointSav token system]].
 
 ---

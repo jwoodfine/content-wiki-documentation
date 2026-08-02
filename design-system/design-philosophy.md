@@ -44,7 +44,7 @@ The substrate carries five elements per tenant, in a Git-tracked vault the custo
 - **`research/`** — AI-readable design-decision rationale, accessibility justifications, brand-voice rules, anti-patterns.
 - **`exports/`** — derived caches (Figma Variables JSON, Tailwind config, CSS variables, Style Dictionary builds). Recomputable from the canonical four directories above.
 
-The substrate engine (`app-privategit-design`) reads this vault and serves it as a public showcase, a DTCG bundle, an AI-readable research surface, and a Model Context Protocol (MCP) server. AI agents query the MCP endpoint at codegen time; design tools query `/tokens.json` for editor synchronisation; humans read the showcase.
+The substrate engine (`app-privategit-design`) reads this vault and serves it as a public showcase, a DTCG bundle, an AI-readable research surface, and a Model Context Protocol (MCP) server. AI agents query the MCP endpoint at codegen time; design tools query `/tokens.json` for editor synchronisation; humans read the showcase. (Correction, 2026-08-02: no `/mcp` route or MCP module exists in the current `app-privategit-design` build — `grep`/`find` for MCP code in the crate return nothing. Git history shows an MCP endpoint with 4 tools *was* added at one point but is absent from the current checked-out HEAD — a shipped-then-removed feature, same pattern as the deleted collab feature found repeatedly elsewhere in this corpus. This same claim recurs at "the same MCP endpoint" further down and in this article's own See Also section — all three references are affected. Flagged, not resolved.)
 
 ## Three structural inversions of the Enterprise-tier pattern
 

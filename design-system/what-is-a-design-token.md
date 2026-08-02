@@ -30,6 +30,16 @@ bundle, `tokens.full.json`, containing 146 leaf tokens across two top-level
 groups: a primitive layer of 82 tokens and a themed semantic layer of 64 (37
 light-theme roles plus 27 dark-mode entries). Every count, name, and value in
 this article comes from that published file, not from an idealized example.
+(Correction, 2026-08-02: this is stale — every count has moved. Real
+`primitive` = 100 leaves (includes 18 `orgchart.*` tokens this article never
+mentions), real `theme.semantic` = 53, real `theme.dark` = 28, plus an
+unmentioned `theme.accessibility` group (5). Two entire top-level pillars,
+`paper` (167 leaves) and `writing` (32 leaves), were folded into the same
+export file and aren't mentioned anywhere in this article. Git history shows
+146 was accurate three weeks before this article's own `last_edited` date and
+has moved twice since. The specific hex value and color-family count cited
+elsewhere in this article are independently confirmed accurate. Flagged, not
+resolved.)
 
 ## A decision with a name
 

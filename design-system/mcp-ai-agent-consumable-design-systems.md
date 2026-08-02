@@ -81,6 +81,8 @@ the site's pages are rendered from.
 
 ## The machine surface, concretely
 
+**Correction (2026-08-02):** the `/mcp` endpoint and its 4 tools described below don't exist on the current build — `app-privategit-design`'s real `src/routes/mod.rs` has no `/mcp` route and no MCP module anywhere in the crate; the real machine routes are `GET /tokens/search` and `GET /elements/:slug/download`, not `POST /mcp` or `GET /bundles/:name/download`. Git history shows an MCP endpoint with these exact 4 tool names *was* added at one point but is absent from current HEAD — the same shipped-then-removed pattern found repeatedly elsewhere in this corpus (the collab feature, Phase 4 wiki features). The license claim further down is also wrong: the repo root license is `FSL-1.1-Apache-2.0`, not AGPL-3.0-or-later — and `app-privategit-design`'s own README flags itself as "Architectural Scaffold (Pending Engineering Cycle)," not a shipped server. **Flagged, not resolved** — this article needs a substantial rewrite once the MCP endpoint either ships for real or the article is rescoped to planned/intended language.
+
 The design-system server exposes three machine entry points.
 
 - **`POST /mcp`** — the MCP endpoint. It speaks JSON-RPC 2.0 per the

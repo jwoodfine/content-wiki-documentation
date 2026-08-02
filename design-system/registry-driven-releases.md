@@ -97,7 +97,15 @@ site: the tokens design.pointsav.com serves resolve through one pipeline —
 the vault's source files compiled into a single resolved export
 (`dtcg-vault/exports/tokens.full.json`, 146 leaf tokens) — so the divergence
 was invisible in production while remaining a live hazard for any tool that
-picked the wrong file. Second, the resolution was registry-shaped: declare
+picked the wrong file. (Correction, 2026-08-02: the pipeline claim is backwards
+— the real commit's own message states design.pointsav.com's served tokens
+come exclusively from `primitive.json` + `pointsav-brand.json`, never from
+either `dtcg-bundle.json` copy nor the vault export named here. The 146-token
+count is also stale by this article's own `last_edited` date — the real file
+has grown to ~385 leaves since, after two more pillars (`paper`, `writing`)
+were folded in. The "107 shared paths, 5 new colors" resolution numbers
+earlier in this section are independently confirmed accurate. Flagged, not
+resolved.) Second, the resolution was registry-shaped: declare
 one copy canonical, fold the five genuinely-new values into it, and replace
 the other with a deprecation stub that points at the canonical file. Not a
 cleanup of two copies into two better copies — the elimination of the second

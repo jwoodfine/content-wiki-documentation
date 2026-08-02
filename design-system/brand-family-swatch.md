@@ -52,6 +52,8 @@ The component is engineered to meet WCAG 2.2 AA standards:
 
 ## Design tokens (DTCG)
 
+**Correction (2026-08-02):** the dot-size tokens below don't exist. The real recipe (`dtcg-vault/components/brand-family-swatch/recipe.json`) hardcodes dot size as inline CSS (`.ps-swatch__dot { width: 10px; height: 10px }`, not 12px), with no named `ps.swatch.dot.size` token — its actual token references are `{semantic.ink-primary}`, `{semantic.ink-secondary}`, `{primitive.space.05}`, `{primitive.radius.sm}`. The three brand-family color values below are independently confirmed accurate. **Flagged, not resolved.**
+
 | Token | Value | Description |
 | :--- | :--- | :--- |
 | `ps.swatch.dot.size` | 12px | Default inline dot size |

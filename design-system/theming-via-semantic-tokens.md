@@ -35,7 +35,7 @@ situate it against the systems that popularized the pattern.
 
 The published bundle, `tokens.full.json`, carries the entire dark theme as
 one group: `theme.dark`, 27 tokens sitting alongside the 37 light-theme roles
-in `theme.semantic`. The group's own description field states the switching
+in `theme.semantic` (Correction, 2026-08-02: both counts are stale — real `theme.dark` has **28** leaves and real `theme.semantic` has **53**, not 37; same stale-count issue found on `what-is-a-design-token.md` and `component-recipes-vs-raw-tokens.md` in this same category. Flagged, not resolved.). The group's own description field states the switching
 mechanism — "Dark mode semantic overrides — applied via `[data-theme='dark']`
 on the root element" — and its composition tells the architectural story:
 
