@@ -49,6 +49,8 @@ Each VM has a minimum balloon reservation below which the controller will not in
 
 ## CPU pool: vCPU scheduling weights
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** no cgroups v2/`cpu.weight` code exists anywhere in `os-infrastructure` or `service-vm-fleet` — this whole mechanism is unbuilt, contrary to `ppn-distributed-vm-fabric.md`'s separate "implemented and proven" claim about this exact section (also corrected). The memory/`virtio_balloon` sections above this one should be treated with the same caution — `vm-prove.sh` is a real but standalone manual demo script, not an integrated hypervisor mechanism. **Flagged, not resolved.**
+
 CPU pool management uses the Linux cgroups v2 `cpu.weight` interface. Each QEMU process (one per VM) is placed in a cgroup with a weight drawn from the capability ledger. Under CPU contention, the scheduler distributes vCPU time proportionally to those weights. When the node is not under contention, all VMs run at full speed regardless of weight.
 
 A cluster-totebox VM running an active inference workload (via `service-slm`) can be assigned a higher weight than an idle archive VM. The ledger entry is the authoritative weight; `os-infrastructure` applies it at VM launch and can adjust it live.

@@ -18,6 +18,8 @@ The **sovereign mesh** is the application-level network overlay that connects ev
 
 ## Hub-and-spoke topology
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** several specific claims below don't match the real implementation. (1) Crate name — real crate is `system-udp`, not `service-udp` (confirmed absent on canonical). (2) `service-pointsav-link` — confirmed nonexistent anywhere in the codebase, corroborating this repo's own 2026-07-18 `diode-standard.md` finding; there is no separate adapter enforcing one-way flow. (3) Packet format — the real `system-udp/src/main.rs` sends a plain `serde_json` `MeshPayload{sender_id, intent, target, timestamp}` over UDP 8090, not a 16-byte binary format with an intent token/nonce/truncated signature; its only guard is an IP-prefix check. (4) The UEFI Secure Variable / port 9443 genesis claim doesn't match real code — `system-network-interface`'s genesis handshake is a 32-byte `GNES`-magic frame with no UEFI or port 9443 involvement, and `os-infrastructure/CLAUDE.md` explicitly states "No UEFI officially... do not implement UEFI until explicitly approved." Port 8090 and the `10.8.0.0/24` addressing are independently confirmed accurate. **Flagged, not resolved.**
+
 The mesh uses a hub-and-spoke arrangement. The cloud relay node sits at the centre and relays packets between spoke nodes that may not have a direct path to each other.
 
 | Role | Node | Planned address | Crate |

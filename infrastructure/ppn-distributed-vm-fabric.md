@@ -16,7 +16,7 @@ editor: editorial
 
 The **PPN Distributed VM Fabric** is the planned extension of the per-node PPN hypervisor layer to a multi-node resource pool. Where the current hypervisor layer manages CPU and RAM within a single physical node, the distributed fabric is intended to allow VMs to borrow compute from other nodes in the mesh and to place and migrate VMs across the fleet without per-move operator involvement.
 
-This topic describes the planned architecture. The per-node layer — `virtio_balloon`, cgroups v2 weights, and the `vm-prove.sh` proof — is implemented and proven as of 2026-05-28. The four distributed components described below are planned milestones; none is built yet.
+This topic describes the planned architecture. The per-node layer — `virtio_balloon`, cgroups v2 weights, and the `vm-prove.sh` proof — is implemented and proven as of 2026-05-28. The four distributed components described below are planned milestones; none is built yet. (Correction, 2026-08-02, verified against canonical `origin/main`: this "implemented and proven" claim is itself wrong — no `virtio_balloon` or cgroups/`cpu.weight` code exists anywhere in `os-infrastructure` or `service-vm-fleet`, on either branch. `vm-prove.sh` is confirmed real, but it's a standalone manual QEMU-monitor demo script, not an integrated hypervisor mechanism — it doesn't prove what this article claims it proves. Flagged, not resolved — the "Complete" status in the table below and the linked [[ppn-hypervisor-resource-pool]] article need the same correction.)
 
 ## Current state: per-node only
 

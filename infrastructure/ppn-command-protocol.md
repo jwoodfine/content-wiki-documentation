@@ -14,6 +14,8 @@ last_edited: 2026-06-23
 editor: pointsav-engineering
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** several specific claims below don't match the real implementation. (1) UDP port — the real, functioning implementation (`app-network-admin/src/main.rs`, `MESH_LISTEN_PORT`) uses **9206**, not 8090; port 8090 belongs to a separate, more minimal `system-udp` crate that uses JSON payloads, not the binary format described here. This exact port discrepancy was already flagged to Command during Round 4's PPN cluster merge (`command-20260801-ppn-wiki-consolidation-found-2-real-engi`), still unresolved. (2) Packet layout — the real frame (`app-network-admin/src/main.rs`) is `op_code: u16` (2 bytes) + `target_node: u16` (2 bytes) + `timestamp: u32` + 8 reserved zeroed bytes; there is no "operation-specific payload" field, and only PING/ISOLATE/PONG/unknown op codes are defined. (3) Crate names — real crate is `system-udp`, not `service-udp`; the real translate→authorize→broadcast flow is implemented in `app-network-admin`, not `os-network-admin` (which is a 44-line pairing-approval CLI poller with zero mesh/crypto logic). **Flagged, not resolved.**
+
 The PPN Command Protocol is the wire format used by every `os-network-admin` control plane to issue commands to `os-infrastructure` nodes across the PointSav Private Network. It transmits fleet commands as 16-byte binary packets broadcast over UDP port 8090 on the WireGuard mesh — with no central broker, no queue, and no third-party service in the path. Every node in the fleet receives every packet simultaneously; only the addressed node acts.
 
 ## Design constraints
