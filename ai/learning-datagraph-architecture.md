@@ -22,13 +22,15 @@ The platform builds a [[compounding-substrate|compounding substrate]]: every ope
 - The substrate accumulates training signal through four distinct legs: trajectory capture at session end, an apprenticeship queue that fires on every commit, editorial DPO pairs from the reverse-funnel editorial pipeline, and negative-trajectory distillation from operator corrections. Each leg captures a different dimension of operator intent.
 - All training signal passes through the same auditable boundary — [[doorman-protocol|Doorman]] — and lands in the append-only audit ledger. Nothing bypasses the ledger; nothing leaves the local environment. The learning loop is air-gapped and self-contained.
 - The corpus accumulates with every session. As of mid-2026 the apprenticeship corpus held 502 tuples and the editorial DPO corpus held 34 pairs. These numbers grow without manual curation — the model floor rises as the operator uses the environment.
+- **Correction (2026-08-02):** this leg understates real progress. The `POST /v1/draft/generate` endpoint is already built and deployed — `service-content/src/http.rs:176-280` implements it in full (LadybugDB query, prompt packaging, Doorman proxy call), and a live probe returns HTTP 422 (validation error), not 404, confirming the route is live. Per `service-content/CLAUDE.md`'s own status table, the actual remaining gap is a Tier C provider-authentication configuration step, not a multi-week Rust engineering effort building the endpoint from scratch. **Flagged, not resolved** — needs updating to reflect the endpoint's real (built, not-yet-authenticated) status.
+
 - The one leg not yet wired is the structured-entity loop: a `POST /v1/draft/generate` endpoint in [[service-content]] that would ground generation in graph entities. The supporting infrastructure (queue, ledger, hooks, audit routing) is already in place; what remains is a multi-week Rust engineering effort.
 
 ## Four legs of training signal
 
 The substrate has four legs.
 
-**Trajectory capture.** A session-end hook fires at session close, writing a structured JSONL entry to the audit ledger: branch state, uncommitted-file count, head SHA, and a promotion-pending flag. A nightly harvest copies the day's session transcripts into the same ledger, tagged by operator and archive.
+**Trajectory capture.** A session-end hook fires at session close, writing a structured JSONL entry to the audit ledger: branch state, uncommitted-file count, head SHA, and a promotion-pending flag (Correction, 2026-08-02: the real `capture-trajectory.sh` posts a free-text session summary wrapped in an apprenticeship-brief JSON — `brief_id`/`senior_role`/`task_type`/`body` — not this specific field set; flagged, not resolved). A nightly harvest copies the day's session transcripts into the same ledger, tagged by operator and archive.
 
 **Apprenticeship queue.** A post-commit hook emits a brief for every workspace commit. A 15-minute queue drainer calls the local SLM (OLMo-2 7B Q4) against each brief, captures the model's attempt, and writes the `(brief, attempt, actual_diff)` tuple to the [[apprenticeship-substrate|apprenticeship corpus]]. 502 tuples had accumulated as of 2026-05-18.
 
@@ -37,6 +39,8 @@ The substrate has four legs.
 **Negative-trajectory distillation.** An inbox-scanner script reads operator corrections from archived messages and emits negative-trajectory signals to the feedback corpus. This fourth leg captures what the model should not do.
 
 ## Structured-entity loop — the remaining leg
+
+**Correction (2026-08-02):** see the Key Takeaways correction above — this endpoint is already built and live, not "remains to wire." The description of what it does is otherwise accurate.
 
 What remains to wire — multi-week Rust engineering effort: the structured-entity loop. [[service-content]] (LadybugDB-backed graph) needs a `POST /v1/draft/generate` endpoint that queries the graph for relevant entities, assembles a 2K-token grounded prompt, calls the [[doorman-protocol|Doorman]], and writes the response as a graph-grounded corpus tuple. A LoRA scheduler then wakes Tier B [[yoyo-compute-substrate|GPU compute]] for nightly [[elastic-compute-lora-training-pipeline|adapter training]]. The supporting infrastructure — queue, ledger, hooks, audit-routing — is already in place.
 

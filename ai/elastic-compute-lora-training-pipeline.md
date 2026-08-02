@@ -37,7 +37,7 @@ Elastic Compute #1 is a g2-standard-4 Google Cloud instance (provisioning model 
 ## Why the phases are separate
 
 The L4 GPU serves two incompatible workloads within the nightly window.
-During Phase 1, vLLM loads OLMo 3 32B Think (4-bit quantised) to run entity
+During Phase 1, vLLM loads OLMo 3 32B Think (Correction, 2026-08-02: real quantization is **Q3_K_M**, not 4-bit — `vllm-weights-prep.sh:159-166`, file `olmo-3-32b-think-q3.gguf`, chosen to fit the L4's 22 GiB VRAM) to run entity
 extraction inference. During Phase 2, the QLoRA training loop loads OLMo 3
 7B Think safetensors for gradient computation. A GPU cannot serve an active
 vLLM inference process and a PyTorch training loop simultaneously — memory
@@ -71,7 +71,7 @@ At the end of Phase 1, vLLM stops and the GPU is released.
 in two corpus buckets — `engineering-pointsav` (SFT tuples drawn from
 cross-cluster engineering commits) and `apprenticeship-pointsav` (DPO pairs
 drawn from the apprenticeship routing substrate). When either bucket reaches
-50 tuples, the script writes a training-pending marker file and, if the
+50 tuples (Correction, 2026-08-02: the raw 50-count is now vestigial — the live gate in `corpus-threshold.py` is a composition scorecard requiring `CLEAN_PAIR_FLOOR = 3000` clean pairs, adopted per an internal audit dated 2026-06-21, before this article's own last-edited date), the script writes a training-pending marker file and, if the
 `SLM_YOYO_WEIGHTS_GCS_BUCKET` environment variable is set, syncs the
 relevant corpus directory to the configured GCS bucket.
 

@@ -21,7 +21,7 @@ OCI container images imply a container registry: the registry becomes the durabl
 
 ## What is used instead
 
-A native binary in a `pointsav-public` GCE image family, versioned and promoted through the standard release process. A systemd unit with an `ExecStart` pointing to the binary. OpenTofu for VM provisioning and lifecycle management. An idle-shutdown timer that stops the instance when the inference queue is empty. GCS-cached model weights so the cold-start path fetches from Cloud Storage rather than downloading from the upstream registry on each boot. Secret Manager for API keys. nginx for TLS termination. CUDA drivers baked into the GCE image at build time.
+A native binary in the `slm-yoyo` GCE image family (Correction, 2026-08-02: real Packer config sets `image_family = "slm-yoyo"`; `pointsav-public` is actually the example GCP project id, not an image family — a minor category conflation in the prior wording), versioned and promoted through the standard release process. A systemd unit with an `ExecStart` pointing to the binary. OpenTofu for VM provisioning and lifecycle management. An idle-shutdown timer that stops the instance when the inference queue is empty. GCS-cached model weights so the cold-start path fetches from Cloud Storage rather than downloading from the upstream registry on each boot. Secret Manager for API keys. nginx for TLS termination. CUDA drivers baked into the GCE image at build time.
 
 ## SMB economics
 
