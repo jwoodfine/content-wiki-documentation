@@ -15,6 +15,8 @@ cites: []
 paired_with: model-tier-discipline.es.md
 ---
 
+**Correction (2026-08-02):** the Doorman does not implement this deep-think/implementation/mechanical taxonomy. The real Doorman tier enum (`service-slm/crates/slm-core/src/tier.rs`) is `Local` (Tier A, on-host inference)/`Yoyo` (Tier B, burst GPU)/`External` (Tier C, external API) — an AI-inference-*backend* routing scheme, confirmed by both `reference/service-slm-operationalization-plan.md` and `ai/doorman-protocol.md`, neither of which mentions "deep-think"/"mechanical." The concept this article actually describes is real, but it's this very Foundry *workspace's own internal* practice for routing AI-development-session work to different Claude model tiers by task shape — `conventions/model-tier-discipline.md` in the workspace root — not something the customer-facing Doorman implements. Same misattribution pattern already found in `systems/app-orchestration-command-branch-model.md` (Foundry-internal tooling described as a PointSav product). **Flagged, not resolved.**
+
 A platform that routes all inference work through the highest-capability model available regardless of work shape spends significantly more per output than necessary. Model tier discipline is the routing discipline implemented by the [[service-slm-operationalization-plan|compute routing architecture]] through the [[doorman-protocol|Doorman service]]. A platform with no guidance on model selection leaves each contributor to make independent choices that may be inconsistent, cost-inefficient, or both. Model tier discipline is the structured approach that matches work shape to model capability, routes appropriate work to lower-cost tiers, and makes the routing decision explicit and reviewable.
 
 ## Three abstract tiers

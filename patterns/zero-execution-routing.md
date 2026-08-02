@@ -16,6 +16,8 @@ editor: pointsav-engineering
 
 
 
+**Correction (2026-08-02) — compliance-relevant claim, does not match real code:** the real closest-matching implementation, `service-content/templates/pointsav-monolith.html` (and its sibling `woodfine-brutalist.html`), directly contradicts the "zero client-side JavaScript"/SOC 3 claim below — it contains a live `<script>` block that computes a SHA-256 hash on toggle and fires `navigator.sendBeacon` telemetry on page unload. There is also no root-vs-`/es/`-directory split anywhere in the repo for any presentation surface checked — the real template embeds both language blocks in one file, toggled by a single checkbox, not the structural two-file split this article describes. The CSS-checkbox toggle mechanism itself is real (confirmed in both templates), but "zero execution latency and no client-side script vulnerability" is false as a description of the real deployed page. **Flagged, not resolved** — this claim invokes SOC 3 compliance directly, so it needs correcting or re-scoping rather than left standing.
+
 Platform presentation layers adhere to a zero-execution mandate, eliminating client-side JavaScript for core DOM manipulation, language routing, and file serving. This architectural constraint minimizes the attack surface and supports SOC 3 (Service Organization Control 3) compliance by relying entirely on deterministic files and native CSS state management. The pattern complements the [[machine-based-auth|machine-based authentication]] layer and the [[sovereign-ai-routing|sovereign AI routing]] architecture.
 
 ## Key Takeaways

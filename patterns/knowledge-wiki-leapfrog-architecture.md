@@ -85,6 +85,8 @@ As of May 2026, `app-mediakit-knowledge` implements approximately 78 percent of 
 
 ### Missing elements ranked by impact
 
+**Correction (2026-08-02):** infobox and navbox are not absent — both shipped in `app-mediakit-knowledge` commit `4145cd33`, dated 2026-05-07, a week *before* this article's own `last_edited: 2026-05-14` date. `src/render.rs` implements `render_navbox()` (collapsible `.navbox` HTML) and both fenced-block and frontmatter-driven infobox rendering. The comrak-upgrade claim below is also stale: `Cargo.toml` already pins `comrak = "0.52"`, not 0.29 — the described upgrade already happened. This affects the article's own headline "78 percent" completeness metric, since these are the two highest-weighted rows in the impact table. **Flagged, not resolved** — needs re-scoring the completeness metric and rewriting both rows to reflect shipped status.
+
 The following elements are stubbed or absent, ranked by muscle-memory impact:
 
 | Missing feature | Impact | Notes |
@@ -126,7 +128,7 @@ The engine walks the comrak AST, matches `CodeBlock` nodes with `info = "infobox
 
 ### comrak upgrade path
 
-Implementing the infobox and navbox block types requires upgrading comrak from version 0.29 to 0.52 as a planned step.[^5] The newer version adds the `block_directive` extension (`:::infobox`, `:::navbox` syntax), which is cleaner than fenced code blocks for multi-line Markdown content inside the block body. The API is stable across these versions; existing code compiles without change.
+Implementing the infobox and navbox block types requires upgrading comrak from version 0.29 to 0.52 as a planned step.[^5] (Correction, 2026-08-02: `Cargo.toml` already pins `comrak = "0.52"` — this upgrade already happened, see the correction above.) The newer version adds the `block_directive` extension (`:::infobox`, `:::navbox` syntax), which is cleaner than fenced code blocks for multi-line Markdown content inside the block body. The API is stable across these versions; existing code compiles without change.
 
 ## The Leapfrog 2030 layer
 

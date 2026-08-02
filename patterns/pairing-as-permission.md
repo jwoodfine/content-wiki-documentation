@@ -29,6 +29,8 @@ PairingAsPermission is the access-control model used in [[totebox-orchestration|
 
 This article describes the principle, the topology in Totebox Orchestration, the engineering risks, and the production reference implementations.
 
+**Correction (2026-08-02):** the "Command"/"os-orchestration hub" topology described throughout this article (below, and at the `SYS-CONTRACTS-01` claim further down) is not a built PointSav product — no `os-orchestration` or `app-orchestration-command` crate exists anywhere in the monorepo, matching the finding on [[app-orchestration-command-branch-model]]. `pairings.yaml` is real, but it's `/srv/foundry/pairings.yaml`, the Foundry *workspace's own* cluster-manifest index maintained by the Command Session — not a PointSav customer-deployment mechanism. The general Object Capability / cryptographic-pairing principle this article argues for is a real, legitimate design pattern (well-cited, accurately describing Fuchsia/seL4/WireGuard precedent), but its "production reference implementation" claims for PointSav's own topology describe tooling that doesn't exist yet. **Flagged, not resolved.**
+
 ## The core principle
 
 In most access-control systems, a request arrives, the system looks up whether the requester has permission, and either allows or rejects the request. The lookup requires a central authority: a database, a role-policy store, a permission table.
@@ -94,7 +96,7 @@ Defence: capability attenuation via separate module identifiers. The Command hol
 
 The current implementation uses `system-mba-shim` — a transitional layer behind which conventional OAuth2 authentication sits. The `system-mba-shim` interface is the clean boundary: when the full PairingAsPermission cryptographic model (certificate-based peer-to-peer key exchange) replaces the OAuth2 layer, no calling code changes. The interface stays constant; the implementation behind it is upgraded in place.
 
-The Six Orchestration Contracts include `pairing_attestation` as `SYS-CONTRACTS-01`, hardcoded into the operating-system kernel. It is not configurable.
+The Six Orchestration Contracts include `pairing_attestation` as `SYS-CONTRACTS-01`, hardcoded into the operating-system kernel. It is not configurable. (Correction, 2026-08-02: this is not physically possible today — `os-totebox` is a plain Rust/tokio binary with zero seL4 dependency, confirmed via this repo's own `cleanup-log.md`; there is no kernel to hardcode a contract into. `SYS-CONTRACTS-01` appears in the real codebase only inside a planning artifact, `service-content/artifacts/FOUNDRY_MASTER_CONTEXT.md`, as a documentation-topic reference, not kernel code. Separately, `os-orchestration`/`app-orchestration-command` — this article's "Command hub" — is not a built crate at all, matching the finding already recorded on [[app-orchestration-command-branch-model|the branch-model article]]. Flagged, not resolved.)
 
 ## The Trustworthy System
 

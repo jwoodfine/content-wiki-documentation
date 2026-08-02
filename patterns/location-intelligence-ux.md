@@ -30,6 +30,8 @@ The interface draws inspiration from professional-grade spatial platforms (e.g.,
 
 ## Design Differentiation: Cluster-Grade-as-Primary-Unit
 
+**Correction (2026-08-02):** the specific color scheme, tier count, and component names below don't match the real live GIS surface. `app-orchestration-gis/www/index.html` uses a **multi-hue** scheme (blue/green/gold/maroon mapping to Regional/District/Local/Fringe), not a single-hue amber ramp; there are only **4 tiers**, not "Tier 5 and Tier 4"; the cluster inspector is a "BentoBox" drawer, not the `cluster-grade-marker`/`location-index-card`/`map-layer-controls` component names below — a repo-wide search for those three names and "D1-D5" returns zero hits anywhere in real frontend code. The general design principle (cluster-as-primary-unit, side-drawer over modal) is consistent with the real UI's actual behavior; only the specific color/tier/component-naming details are fabricated. **Flagged, not resolved** — needs rewriting against the real `TIER_COLORS` scheme and BentoBox component names.
+
 Unlike commercial GIS products that default to individual "dots on a map," the PointSav platform uses **Cluster Grade** as the primary visual and analytical unit. This differentiation represents a core Leapfrog 2030 design principle:
 
 1. **Confidence Ramp:** Sites are encoded using a single-hue color ramp (pale to deep amber). Darker, larger markers indicate higher levels of capital-validated convergence.

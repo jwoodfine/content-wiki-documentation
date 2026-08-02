@@ -70,6 +70,8 @@ Each row is a configuration, provisioned from a named template in the fleet-depl
 
 ## Micro-frontend isolation inside the Command Ledger [^1]
 
+**Correction (2026-08-02):** the web-style "chassis requests a view"/HTML-CSS-JS framing below doesn't match the real system. `os-console` (`Cargo.toml`: `ratatui`/`crossterm`, no `axum` or web dependency, no `.html`/`.css`/`.js` files) is a terminal application — the real chassis (`os-console/src/main.rs:45-269`) registers compiled Rust trait objects (`PeopleCartridge`, `EmailCartridge`, etc.) into an in-process registry via `chassis.register(Box::new(...))`; there is no HTTP request for a view and no HTML/CSS/JS bundle to load or unload. This matches this repo's own earlier-confirmed finding (`cleanup-log.md`, 2026-07-18) that `os-console` is a terminal application, not a web surface. The underlying isolation properties in the table below (separate state, independent versioning, single-binary shipping, no external dependency) are broadly accurate as a description of the real per-cartridge compile-time isolation — only the micro-frontend/HTTP-view metaphor is wrong. **Flagged, not resolved** — needs reframing from "web view requests" to "in-process trait-object cartridge registration."
+
 The [[console-os|Command Ledger]] is not a monolithic HTML application. It is an empty chassis that loads small, isolated plugins on demand. When the operator presses F2, the chassis requests the `/app-console-people/` view; when they press F3, it destroys that view and loads `/app-console-email/`.
 
 | Isolation property | Effect |
@@ -87,7 +89,7 @@ Each canonical configuration has a corresponding subdirectory under the fleet-de
 
 | Template | Function | Status |
 |---|---|---|
-| `vault-privategit-source-1` | Internal source-control deployment; the workspace is an instance of this template | Active |
+| `vault-privategit-source` | Internal source-control deployment; the workspace is an instance of this template (Correction, 2026-08-02: this row previously carried the `-1` instance suffix, but this is the catalog row — per this wiki's own [[customer-tier-catalog-pattern]] naming rule, catalog entries never carry the instance suffix; `-1` names the running instance, not the template) | Active |
 | Real-property asset-management | The reference operational deployment for a real-property firm | Planned |
 | Reporting Issuer | An [[mediakit-os]] and [[totebox-os]] pair for public-company disclosure | Planned |
 

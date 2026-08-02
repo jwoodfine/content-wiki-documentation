@@ -66,6 +66,8 @@ The prefix makes the deployment's role readable without consulting its MANIFEST.
 
 ## Worked Example: media-proofreader-woodfinegroup
 
+**Correction (2026-08-02):** this worked example names a deployment that doesn't exist. No `media-proofreader-woodfinegroup` or any `woodfinegroup`-tenant deployment exists anywhere in `woodfine-fleet-deployment/` or `pointsav-fleet-deployment/`. The real proofreader deployment is `gateway-orchestration-proofreader` (`gateway-` prefix, not `media-`) — a `pointsav`-tenant vendor deployment, not a Woodfine customer-tier one (confirmed against its real `MANIFEST.md`). The catalog-vs-instance path convention this example illustrates (`customer/woodfine-fleet-deployment/<name>/` for catalog, `~/Foundry/deployments/<name>-N/` for instance) is itself accurate — only this specific worked example is fabricated. **Flagged, not resolved** — needs a worked example using a real deployment name.
+
 The proofreader service for the `woodfinegroup` tenant demonstrates the catalog/instance pattern directly.
 
 The catalog entry at `customer/woodfine-fleet-deployment/media-proofreader-woodfinegroup/` carries the README pair describing the editorial pipeline service, the deployment MANIFEST, and the operational runbooks for initial setup and day-to-day operation. This catalog entry is version-controlled and visible to any contributor with access to the fleet-deployment repository.

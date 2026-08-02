@@ -49,6 +49,10 @@ re-verified. **Flagged, not silently rewritten** — the bind-address and path d
 simply be stale relative to a later deployment change; needs project-totebox confirmation
 before correcting.
 
+**Follow-up correction (2026-08-02):** the `v0.1.23` version claim above, left unverified
+in the 2026-07-18 pass, is now checked — the real crate (`service-fs/Cargo.toml`) is
+`version = "1.0.1"`, not `0.1.23`.
+
 **View**: the review queue shown to each reviewer is derived from the set of ledger entries that have not yet received a verdict commit. The per-reviewer verdict summary is derived similarly. Neither the queue nor the summary is stored separately — both re-derive on each query from the ledger. The derivation is deterministic: the same ledger produces the same queue and summary every time it is queried, because the ledger is immutable and total-ordered.
 
 **Ephemeral**: reviewer annotations made before a verdict commit are session-ephemeral. One reviewer's working annotations cannot see or corrupt another reviewer's working annotations, because those annotations have not yet been committed to the canonical ledger. Concurrent reviewers work against their own in-process state; the ledger reconciles when a verdict commit lands. The total-order enforcement of the ledger is the substrate mechanism that makes concurrent review safe without coordination locks.
