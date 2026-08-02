@@ -14,6 +14,8 @@ last_edited: 2026-07-11
 editor: editorial
 ---
 
+**Correction (2026-08-02):** three specific claims below don't match the real codebase. (1) `os-orchestration` — cited throughout this article (architecture diagram, commercial-tier table, "Not a file share" section) as a live, paid-tier multi-archive aggregator — is not a built crate; the real crate at this planned rename target, `os-interface`, is a 4-file scaffold with no aggregation or "PSP" protocol logic (zero code footprint for "PointSav Protocol"/"PSP" anywhere in the monorepo). (2) The GeoParquet claim for geospatial WORM storage has zero corresponding code — no parquet dependency or GeoParquet reference exists anywhere in the real source. (3) `pairings.yaml` is real, but this article misdescribes it: it's not a per-archive access-control file living inside the software layer — it's `/srv/foundry/pairings.yaml`, the Foundry *workspace's* own cluster-manifest index (archive pairing metadata, content-classification flags), maintained by the Command Session, not queried by any `os-orchestration`/`os-totebox` runtime code. **Flagged, not resolved** — needs re-hedging os-orchestration/PSP to planned/intended language, correcting or removing the GeoParquet row, and correcting what `pairings.yaml` actually is.
+
 A Totebox Archive is a sovereign data vault assigned to a single entity — a building, a company, a person, or any other unit the operator defines. It is the fundamental storage and identity unit of the PointSav stack. The archive is packaged as a bootable disk image and runs as a virtual machine on the PPN hypervisor layer. It is released under Apache 2.0 and available free of charge: one operator, one archive, is a free deployment.
 
 ## The disk image is the archive

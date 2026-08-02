@@ -39,6 +39,8 @@ The kernel evolution mirrors the rest of the family: Phase 1 runs on a hardened 
 
 ## The application suite
 
+**Correction (2026-08-02):** the table below does not match the real codebase. 8 of the 11 named apps do not exist in any form (`app-workplace-{wordprocessor,spreadsheet,email,browser,communications,chat,file-manager,wiki}`); the real `app-workplace-*` family instead includes six crates this table never mentions: `app-workplace-aibridge`, `app-workplace-http-prototype`, `app-workplace-memo`, `app-workplace-presentation`, `app-workplace-proforma`, `app-workplace-workbench`. Of the 3 named apps that do exist, all are misdescribed: `app-workplace-pdf` (not `-pdfs`) uses the `pdfium-render` crate, not a `pdf-rs` fork; `app-workplace-gis` is a Tauri app loading a MapLibre GL tile viewer, not a `Whitebox-tools` fork; `app-workplace-bim` has no `Cargo.toml`/`src` at all yet (planning docs only) despite this table's unhedged "(planned)" framing implying the others are current. The real apps are Tauri (Rust backend + HTML/JS/CSS WebView, targeting macOS 10.13+), not the "native Rust binaries" claimed in the paragraph below — `os-workplace` itself is an explicit "Architectural Scaffold (Pending Engineering Cycle)" with a one-line stub, not built infrastructure behind a FreeBSD/seL4 base. **Flagged, not resolved** — this table needs a full rewrite against the real 6-crate `app-workplace-*` family, not a rewording of the current one.
+
 All applications are native Rust binaries. The choice is principled: an SMB customer in 2030 values local-first performance and offline reliability over browser-based subscription tooling. Each app is small, single-purpose, and starts in under 100 milliseconds.
 
 | App | Source approach |

@@ -27,6 +27,8 @@ Totebox Orchestration is the coordination layer that provisions, monitors, and m
 
 ## Container isolation
 
+**Correction (2026-08-02):** `os-totebox`'s real `Cargo.toml` has zero dependencies — no seL4, nothing — and `os-totebox/src/lib.rs` is NetBSD 10.1 guest-image-builder metadata for a VM running OLMo 7B inference, unrelated to microkernel isolation. This matches this repo's own earlier-confirmed finding (`cleanup-log.md`, 2026-07-18) that `os-totebox` and `os-console` are plain Rust/tokio with no seL4 dependency. Separately, the "three-directory skeleton (`app-console-input/`, `assets/`, `ledger/`)" claim below doesn't match real provisioning either — `app-console-input` is an independent standalone crate, not a per-archive subdirectory template, and no provisioning script creates this exact skeleton. **Flagged, not resolved** — needs re-hedging to planned/intended language.
+
 Each Totebox runs as an independent unit backed by the [[sel4-microkernel-substrate|seL4 microkernel's]] hardware isolation guarantees. No container shares a ledger directory with any other container. A compromise in one container's asset directory does not propagate to sibling containers, because there is no shared mutable state at the ledger layer.
 
 ## Integrity verification

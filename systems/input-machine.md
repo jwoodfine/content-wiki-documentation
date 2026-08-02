@@ -40,6 +40,8 @@ The ingest workflow runs as follows:
 
 ## service-input: the Ring 1 boundary service
 
+**Correction (2026-08-02):** the MCP-server/classification/routing architecture described in this section is not what's actually built. Real `service-input/src/main.rs`'s `infer_target_service()` is a trivial substring match on the file path, with no MIME-type or structural-signature classification; there is no MCP code anywhere in `service-input/`; the real local audit table (`app-console-input/src/audit.rs` `IngestRecord`) has no `classification` or `routing_target` field, contradicting the audit-trail claim below. This is the identical architecture already flagged as wrong on the sibling article [[service-input]] (2026-07-18 correction) — that correction was never carried over here. `[[three-ring-architecture]]`'s own text states directly that "no Ring 1 data is transformed or classified; it is only stored," which this article's own claim contradicts. **Flagged, not resolved** — needs the same correction already applied to the sibling article.
+
 `service-input` is a Ring 1 service in the [[three-ring-architecture|Three-Ring Architecture]] — a per-tenant boundary ingest service that handles generic document ingestion. It is the server-side counterpart of the Input Machine cartridge.
 
 Ring 1 placement means `service-input` is per-tenant, a data-ingest boundary through which data flows in but never out, and an [[mcp-substrate-protocol|MCP server]] implementing the Model Context Protocol boundary.

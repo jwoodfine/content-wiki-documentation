@@ -87,7 +87,7 @@ Intended resource target: 8 MB disk, 12 MB RAM idle.
 
 The Genesis Protocol is the node-join ceremony that adds a new node to the mesh.
 
-An operator initiating a new node starts `service-ppn-pairing` on the node being added. The service performs a CPace PAKE handshake and presents a Crockford base32 short-code on the console — typically six to ten characters. The operator reads this code and enters it in the `app-network-admin` F11 approval panel on the administering machine.
+An operator initiating a new node starts `service-ppn-pairing` on the node being added. The service performs a CPace PAKE handshake and presents a Crockford base32 short-code on the console — a fixed 8 symbols, formatted `XXXX-XXXX` (Correction, 2026-08-02: the real generator at `system-pairing-codes/src/lib.rs` produces a fixed-length code, not a variable six-to-ten-character range). The operator reads this code and enters it in the `app-network-admin` F11 approval panel on the administering machine.
 
 Once the codes match, the pairing establishes mutual WireGuard peer records on both nodes, adds an entry to `nodes.jsonl` in the capability ledger, and terminates `service-ppn-pairing`. The ceremony window is 600 seconds; if the operator does not complete approval within that window, the code expires and the ceremony must restart from the beginning.
 

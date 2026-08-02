@@ -17,6 +17,8 @@ short_description: "os-orchestration is the commercial-tier OS letting a single 
 cites: []
 ---
 
+**Correction (2026-08-02):** no crate named `os-orchestration` exists in the monorepo today. The real crate at this planned rename target is `os-interface` — a 4-file scaffold (`Cargo.toml`, `README.md`/`.es.md`, `src/lib.rs`) with no aggregation logic, and the rename itself has not been executed (per this archive's own `.agent/rules/project-registry.md`). This article's "PSP" (PointSav Protocol) binary-protocol claim, described below in unhedged present tense, has zero code footprint anywhere in the codebase — no crate, module, or string match for "PointSav Protocol"/"PSP" outside this article. Everything below should be read as the intended design for a not-yet-built system, not current capability. **Flagged, not resolved** — needs re-hedging to planned/intended language throughout, matching the discipline already applied to the `security/` category's unbuilt-feature findings.
+
 `os-orchestration` is the commercial-tier operating system that lets a single operator see, query, and command many [[totebox-archive|Totebox archives]] at once. Where [[console-os|`os-console`]] connects to one [[totebox-os|`os-totebox`]], `os-orchestration` is the hub between an operator's Console and a fleet of Toteboxes. It is what an executive views when they want the position of every property in a portfolio, every entity in a holding company, or every project in a development pipeline — a single unified answer to "what is the state of the entire estate, right now?" This article covers what `os-orchestration` does, what it deliberately does not do, how aggregation works, the commercial features it adds, and when to deploy it.
 
 ## What it does not do

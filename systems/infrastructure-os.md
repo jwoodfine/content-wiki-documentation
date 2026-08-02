@@ -35,6 +35,8 @@ The same WireGuard mesh runs across all three. An operator can start with a sing
 
 Conventional fleet management requires a control plane to exist before any compute node can join. `os-infrastructure` inverts this. When a node boots and finds no PPN beacon, it does not fail — it declares itself a Private Network of One.
 
+**Correction (2026-08-02):** the 5-step sequence below is not built. Real `os-infrastructure/Cargo.toml` dependencies are `system-substrate-broadcom` + `system-network-interface` only — no seL4 dependency. `os-infrastructure/src/main.rs` is a bare-metal Multiboot2 stub drawing status codes to a framebuffer, with no keypair-generation code. `system_network_interface::scan_for_peers()`, `send_genesis_handshake()`, and `conduct_pairing_ceremony()` are explicit stubs returning `NotFound`/`false`/`TimedOut` — matching the already-corrected `genesis-protocol.md` finding. This also contradicts the sibling article [[os-infrastructure-ppn-node]] (same subject, more current), which correctly states the real current deployment is Ubuntu 24.04 + QEMU/KVM with seL4/Microkit marked as future-phase intent. **Flagged, not resolved** — needs re-hedging to planned/intended language, reconciled with the sibling article.
+
 1. **Blind boot.** The node ignores DHCP and DNS conventions. The [[sel4-microkernel-substrate|seL4]] kernel generates a Tier-1 fiduciary keypair at first boot.
 2. **Scan.** The node looks for an `os-network-admin` beacon on the local mesh.
 3. **Genesis fork.** If nothing answers, the node creates its own one-node PPN and seals all external ports except one.

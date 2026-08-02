@@ -67,6 +67,8 @@ The transition from shared-user to per-operator isolation is incremental. The fi
 
 ## Trajectory
 
+**Correction (2026-08-02):** neither `app-orchestration-command` nor `os-orchestration` exists as a built crate — see [[app-orchestration-command-branch-model]] for the full finding. This paragraph describes real, current Foundry-workspace coordination practice (the archive count and shared-user model are broadly accurate to this actual workspace) but misattributes it to a nonexistent PointSav product name. **Flagged, not resolved.**
+
 The current `app-orchestration-command` installation operates 21 archives in a shared-user environment on a single `os-orchestration` host. It is a working prototype of the target architecture.
 
 The planned production topology maps each archive to a dedicated `os-totebox` instance — a single-purpose compute node running the archive's services, with its own operator user, commit identity, and network boundary. `app-orchestration-command` on `os-orchestration` remains the publication coordinator and audit authority; it does not disappear, but its role becomes coordination rather than execution.

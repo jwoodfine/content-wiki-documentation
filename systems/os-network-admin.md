@@ -57,7 +57,7 @@ A full keyboard-driven TUI — with approve/deny keys (`a`/`d`), QR code display
 `app-network-admin` is the F8 Terminal interface that runs on top of `os-network-admin`. It provides two surfaces:
 
 - **HTTP command surface** at port 8085 — accepts plain-language operator intent, routes it through `service-slm` to produce an authorised command, and dispatches it to the mesh
-- **UDP mesh broadcast** at port 8090 — sends signed 16-byte binary payloads to PPN peer addresses
+- **UDP mesh broadcast** at port 8090 — sends signed 16-byte binary payloads to PPN peer addresses (Correction, 2026-08-02: the real `app-network-admin` binary this article describes defaults to port 9206 (`main.rs`, `MESH_LISTEN_PORT`), not 8090. Port 8090 does appear elsewhere in the real code — a different crate, `system-udp`, hardcodes 8090 as its own `MESH_PORT` — so this may be a genuine port-naming inconsistency between two real crates rather than a documentation-only error. Flagged, not resolved; needs confirmation of which port `app-network-admin` should use before correcting either side.)
 
 The `os-` / `app-` split follows the standard Foundation/Application naming convention: `os-network-admin` is the OS substrate; `app-network-admin` is the operator-facing application that runs on it.
 
