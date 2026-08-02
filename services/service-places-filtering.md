@@ -17,6 +17,8 @@ paired_with: service-places-filtering.es.md
 cites: []
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** `service-places-filtering` (and its companion `service-business-clustering`) don't exist as real crates anywhere in the monorepo — already flagged twice this session (the GIS cluster merge, 2026-08-01; and `applications/app-orchestration-gis.md`, this same sweep). The real implementation is a Python pipeline in the separate `project-gis` archive, not a Rust service in this monorepo. **Flagged, not resolved.**
+
 [[retail-co-location-tier-methodology|GIS tier rankings]] depend on knowing where regional institutions sit, not where every clinic and community college sits. **`service-places`** filters raw civic data to retain only regional-grade facilities — hospitals with at least 50 staffed beds, universities with at least 1,000 full-time-equivalent students, validated major regional transport hubs — and applies a 200 m spatial buffer to consolidate large institutional campuses into single regional anchors. Local-service density is filtered out at this stage; downstream rankings reflect institutional concentration rather than facility count.
 
 ## Key Takeaways

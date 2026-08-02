@@ -23,6 +23,8 @@ references:
     text: "PointSav platform specification: Write-Once-Read-Many (WORM) ledger design — the append-only storage substrate underpinning all platform accounting records."
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** `service-wallet` has no folder presence at all in the monorepo — not even a placeholder, unlike `service-market`/`service-exchange`, which exist as "Reserved-folder — implementation pending" directories. The only real mention of it anywhere is `tool-wallet/README.md`, which explicitly names it as a distinct, unbuilt sibling. This article presents a fully detailed implementation (signed JSONL ledger schema, five-step settlement flow, Circle Paymaster gas abstraction, Sigstore Rekor anchoring, specific Polygon/Solana fee figures) with no corresponding code anywhere. **Flagged, not resolved** — needs re-hedging to planned/intended language throughout, or reframing around the real `tool-wallet` crate if that's the intended subject.
+
 `service-wallet` is the per-tenant internal accounting ledger that records and settles all reverse-flow revenue from the platform's data marketplace and ad exchange. The service operates at [[three-ring-architecture|Ring 2]] — the knowledge-and-processing layer of the platform — and holds no funds: it tracks credits, debits, and fees as cryptographically signed entries, with withdrawal to the operator's own wallet or bank account handled outside the platform.
 
 The structural design properties are specified in the platform accounting ledger design.[^1]

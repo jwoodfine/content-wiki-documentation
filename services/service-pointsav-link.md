@@ -14,6 +14,8 @@ last_edited: 2026-06-23
 editor: pointsav-engineering
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** `service-pointsav-link` doesn't exist as a crate anywhere in the monorepo — confirmed on both branches, repeated finding from `security/diode-standard.md` (2026-07-30), `systems/totebox-archive.md`, and `infrastructure/sovereign-mesh.md` this session. No `pointsav-protocol` package exists either. This whole article describes an adapter with no corresponding code. **Flagged, not resolved.**
+
 `service-pointsav-link` is the hot-pluggable adapter that connects an `os-*` Subject node to a PointSav fleet. It is the sole code responsible for translating authority commands — issued by `os-network-admin` and delivered via the [[ppn-command-protocol|PPN Command Protocol]] — into Subject-executable operations. The adapter ships as the `pointsav-protocol` package. Its most important property is its default state: it is not installed. A Subject with no `service-pointsav-link` has no concept of phoning home, receiving commands, or participating in fleet management.
 
 ## The four properties

@@ -19,6 +19,8 @@ references:
 paired_with: service-search.es.md
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** `service-search/` contains only `README.md`/`README.es.md` — no `Cargo.toml`, no `src/`. This is an aspirational design description presented as a current, operating fact, matching the same finding already made this session on `reference/glossary-documentation.md`'s `service-search` entry. **Flagged, not resolved.**
+
 **service-search** answers full-text queries across millions of platform documents in microseconds, using a static binary inverted index built in Rust on the Tantivy library — and because the index is a file rather than a live database process, it can be copied to portable media and queried on any machine without additional dependencies. The service is a [[three-ring-architecture|Ring 2]] knowledge-and-processing component and conforms to the Data Archive and Retrieval Protocol (DARP) standard. It locates documents; it does not generate or classify them.
 
 ## Architectural Baseline

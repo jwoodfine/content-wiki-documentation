@@ -24,6 +24,8 @@ references:
     url: "https://dl.acm.org/doi/10.1145/360825.360855"
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** two specific claims below don't match the real crate. (1) The real data model, per `service-people/src/acs.rs`'s own doc comment, is "ACS (Anchor-Claim-**Source**)" — a two-entity model (immutable `Anchor` + append-only `Claim`), not the three-entity "Anchor-Claim-Socket" described below; a corpus-wide search for "socket" anywhere in `service-people` returns zero hits, so the "Semantic Socket" concept and its Chart-of-Accounts mapping have no basis in the real schema. (2) The Infinite Net section claims `service-extraction` "runs Aho-Corasick over every incoming payload" — the real `service-extraction/README.md` states its mandate is "Parser Combinators and Regex," and `aho-corasick` appears in `Cargo.lock` only as a transitive dependency of the `regex` crate, never called directly; real identity extraction in `acs.rs` is explicitly "regex-only" per its own comment. **Flagged, not resolved.**
+
 `service-people` maintains the [[totebox-os|Totebox]]'s deterministic identity ledger. It is the F2 surface in `os-console` and the source of truth for "who" appears in any payload across the Totebox. The data model is built around the Anchor-Claim-Socket (ACS) pattern: identity never overwrites state, claims accumulate over time, and the current picture of any person can always be recomputed from the history. This article covers the three-entity data model, the ACS pattern, and the Infinite Net — the mechanism through which identities enter the [[worm-ledger-design|WORM ledger]] from raw payloads without operator input.
 
 ## The three-entity data model
