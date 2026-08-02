@@ -2,8 +2,6 @@
 schema: foundry-doc-v1
 title: "Arquitectura interna de os-console"
 slug: os-console-architecture
-aliases:
-  - topic-os-console-architecture
 category: systems
 type: topic
 content_type: topic

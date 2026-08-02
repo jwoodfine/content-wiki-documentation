@@ -2,8 +2,6 @@
 schema: foundry-doc-v1
 title: "Plataforma os-console y arquitectura de cartuchos"
 slug: os-console-platform
-aliases:
-  - os-console-platform
 short_description: "os-console es un único binario en Rust con arquitectura de cartuchos que proporciona acceso nativo por teclado a los flujos de trabajo del Archivo Totebox mediante módulos navegados con teclas de función."
 category: systems
 type: topic
