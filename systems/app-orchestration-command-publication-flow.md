@@ -21,7 +21,7 @@ research_trail:
   forbidden_terms_cleared: false
 ---
 
-**Correction (2026-08-02):** `app-orchestration-command` is not a PointSav software product — no crate of that name exists anywhere in the monorepo. This article's own `research_trail` cites `AGENT.md`/`pairings.yaml`, the Foundry *workspace's own internal* multi-archive coordination tooling (the Command Session), not a shipping product. See the companion article [[app-orchestration-command-branch-model]] for the full finding. The publication mechanics described below broadly match Foundry's real internal `bin/promote.sh`/Stage-6 flow, but are presented here as a customer-facing PointSav product running on `os-orchestration`, which is also not built. **Flagged, not resolved.**
+**Correction retracted, 2026-08-02:** an earlier pass said `app-orchestration-command` "is not a PointSav software product" — checked against a stale local branch. It's real and substantial on canonical (`origin/main`): a "CommandCentre" HTTP server with fleet/pairing/routing/license modules. See the fully revised finding on [[app-orchestration-command-branch-model]] — the specific publication-flow mechanics described below have not yet been re-verified against that real implementation.
 
 `app-orchestration-command` is the coordinator service that moves tested code from individual [[totebox-archive|Totebox Archives]] into the canonical `pointsav/*` and `woodfine/*` repositories. This article explains what publication means, who may initiate it, and how the system behaves when the coordinator is unavailable.
 

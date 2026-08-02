@@ -67,7 +67,7 @@ The transition from shared-user to per-operator isolation is incremental. The fi
 
 ## Trajectory
 
-**Correction (2026-08-02):** neither `app-orchestration-command` nor `os-orchestration` exists as a built crate — see [[app-orchestration-command-branch-model]] for the full finding. This paragraph describes real, current Foundry-workspace coordination practice (the archive count and shared-user model are broadly accurate to this actual workspace) but misattributes it to a nonexistent PointSav product name. **Flagged, not resolved.**
+**Correction retracted, 2026-08-02:** an earlier pass said neither `app-orchestration-command` nor `os-orchestration` "exists as a built crate," and that this paragraph "misattributes" real Foundry coordination practice to "a nonexistent PointSav product name." That was checked against a stale local branch. On canonical, `app-orchestration-command` is real and substantial — a "CommandCentre" server whose own default config (`COMMAND_INSTANCE_ID` default `gateway-orchestration-command-1`, `COMMAND_CLONES_ROOT` default `/srv/foundry/clones`, `COMMAND_PAIRINGS_PATH` default `/srv/foundry/pairings.yaml`) is directly wired to manage exactly this kind of multi-archive fleet — so this paragraph's "21 archives... shared-user environment" description may be describing the real product's actual current deployment shape, not a misattribution. This has not been independently re-verified against the real server's code; see [[app-orchestration-command-branch-model]] for the fuller finding and its own caveat about what remains unverified.
 
 The current `app-orchestration-command` installation operates 21 archives in a shared-user environment on a single `os-orchestration` host. It is a working prototype of the target architecture.
 

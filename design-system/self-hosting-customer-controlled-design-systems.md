@@ -119,7 +119,7 @@ here matters:
   recipes, and research files in the design-system repository. This is the
   layer you consume directly, and the layer a fork replaces with its own
   content.
-- **Server source — AGPL-3.0-or-later** (Correction, 2026-08-02: `app-privategit-design/Cargo.toml` has no `license` field, there's no `LICENSE` file in the crate, and it has no entry at all in the canonical `factory-release-engineering/mapping/repo-license-map.yaml` — this claim is asserted with more certainty than the repo itself declares. Flagged, not resolved.). The serving engine
+- **Server source — AGPL-3.0-or-later** (Correction retracted, 2026-08-02: an earlier pass flagged this as unverifiable, checking a stale local checkout of `app-privategit-design`. The real, ratified root `LICENSE` ("MULTI-LICENSE NOTICE" v1.1, effective 2026-05-24) places every `app-privategit-*/` directory under AGPL-3.0-or-later — this article's claim is correct.). The serving engine
   (`app-privategit-design` in the PointSav monorepo). Running it unmodified
   for your own organization carries no unusual burden; an organization that
   modifies the server and offers it to users over a network takes on AGPL

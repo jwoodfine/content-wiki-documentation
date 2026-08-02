@@ -32,7 +32,15 @@ for history and promotion.
 ## Architecture
 
 The workbench is a single Rust crate (`app-privategit-workbench`,
-AGPL-3.0-or-later — Correction, 2026-08-02: the real `LICENSE`/`NOTICE`/`Cargo.toml` all say **Apache-2.0**, not AGPL; flagged, not resolved) in the `pointsav-monorepo`. It has two components:
+AGPL-3.0-or-later — **Correction retracted, 2026-08-02**: an earlier pass in this
+session flagged this as wrong, based on this archive's local `LICENSE`/`Cargo.toml`
+files, which are stale relative to canonical (`origin/main`). The real, ratified
+per-directory license policy (root `LICENSE`, "MULTI-LICENSE NOTICE" v1.1, effective
+2026-05-24, propagating `factory-release-engineering/mapping/repo-license-map.yaml`)
+places every `app-privategit-*/` directory under **AGPL-3.0-or-later** — this
+article's original claim was correct. See the `systems/app-orchestration-command-
+branch-model.md` correction for the broader local-checkout-staleness finding this
+session made.) in the `pointsav-monorepo`. It has two components:
 
 **Write-service (Rust/axum):** An HTTP server that handles file reads
 and writes. It binds to a loopback address and is never exposed
