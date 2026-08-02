@@ -17,6 +17,8 @@ paired_with: service-business-clustering.es.md
 cites: []
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** `service-business-clustering`/`service-business` doesn't exist as a real crate anywhere in the monorepo — already flagged twice this session. The real implementation is a Python pipeline in the separate `project-gis` archive. Unlike the sibling article `service-fs-data-lake.md`, which already hedges this correctly ("not yet built... no dedicated service-business/service-places crates confirmed"), this article presents it with unqualified present-tense claims. **Flagged, not resolved.**
+
 Retail data is inherently messy — a single commercial site often contains multiple distinct points, such as a big-box anchor, a nested pharmacy, and a fuel outlet sharing the same parking area. **`service-business`** turns those raw points into actionable commercial clusters using a parent-child spatial schema, so the GIS engine receives one unified commercial entity per physical site rather than several overlapping records. The service iterates the `service-fs` raw data lake, groups entities that share a footprint within a 100 m proximity threshold, and assigns the highest-weight named anchor as the parent.
 
 ## Key Takeaways

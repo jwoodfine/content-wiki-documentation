@@ -21,7 +21,7 @@ Every record written to the PointSav platform — identity anchors, email commun
 
 ## Key takeaways
 
-- `service-fs` is a WORM ledger, not a filesystem. The implemented API surface is two operations: `append` and health. The `read_since`, `checkpoint`, and proof operations are planned.
+- `service-fs` is a WORM ledger, not a filesystem. The implemented API surface is two operations: `append` and health. The `read_since`, `checkpoint`, and proof operations are planned. (Correction, 2026-08-02, verified against canonical `origin/main`: this understates real capability — `src/http.rs` also registers `/v1/checkpoint`, `/v1/entries`, `/v1/contract`, and `/mcp` as real, implemented routes, not planned. Flagged, not resolved.)
 - The ledger is per-tenant — each Totebox holds its own isolated ledger; no cross-tenant reads are possible at the storage layer.
 - Compliance with SEC Rule 17a-4(f), eIDAS, and SOC 2 follows from architectural properties, not configurable controls: the storage engine physically lacks the ability to delete or modify records.
 - Recurring Sigstore Rekor anchoring by [[fs-anchor-emitter]] creates an external, publicly verifiable timestamp chain for the entire ledger. **Verified live**: the `local-fs-anchor.timer` systemd unit is active and runs monthly (confirmed against the running system).

@@ -13,6 +13,8 @@ last_edited: 2026-05-07
 editor: pointsav-engineering
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** the data-flow direction below is reversed. The real `service-egress/src/main.rs` ("SOVEREIGN RELEASE VALVE") does the opposite: it reads **local** Maildir (`cur/`), zstd-compresses and chunks it for an **outbound** queue, and only wipes the local source after a cryptographic receipt from an external `tool-egress-pull` client — the direction is local-to-cloud, not cloud-to-local. There is no IMAP client, no object-store client, and no `service-fs` `/v1/append` call anywhere in this binary; the "Acquire (cloud) → Write (WORM) → Clear (cloud)" protocol described below has no matching implementation. **Flagged, not resolved** — needs a full rewrite around the real outbound-release architecture.
+
 [[service-fs-architecture|`service-egress`]] is the data sovereignty engine that physically transfers cloud-stored payloads to local cold storage, executing the flow-through protocol that removes vendor-side data retention and eliminates dependency on cloud storage continuity. Transferred payloads are written to the per-tenant [[worm-ledger-design|WORM ledger]] managed by [[service-fs-architecture]], where they become append-only records. The service works alongside [[service-email]] to ensure every message ingested from a cloud mailbox has a permanent local copy before the cloud source is cleared. See the [[sovereign-airlock-doctrine|sovereign airlock]] for the architectural principle that governs data flow direction.
 
 ## Key Takeaways

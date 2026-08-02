@@ -41,6 +41,8 @@ The service operates in six stages, each carrying a specific Sovereign property:
 
 ## Microsoft 365 integration
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** the real crate uses the Microsoft Graph API's predecessor, not Graph itself. `Cargo.toml` describes it as "EWS SOAP ingest from Microsoft Exchange," and `ingress-harvester/src/main.rs` posts to `outlook.office365.com/EWS/Exchange.asmx` — the specific Graph permission scopes below (`Mail.ReadWrite`, `Mail.Send`, `User.Read.All`) don't appear anywhere in the real source. **Flagged, not resolved.**
+
 The OAuth2 setup uses a Confidential Client registration in Microsoft Entra [^1]. Three Graph permissions are required: `Mail.ReadWrite` (to sync into Maildir), `Mail.Send` (to stage templates), and `User.Read.All` (to verify sender identities). Admin consent is granted once so the service runs as a daemon without per-message human interaction.
 
 This approach confines the cloud-trust boundary to a single, well-defined point in the pipeline. Each polling cycle is a discrete, authenticated HTTP exchange — rather than a persistent IMAP connection — making the ingest boundary auditable and stateless. The [[machine-based-auth|machine-based authentication]] system governs the credentials used for this exchange.

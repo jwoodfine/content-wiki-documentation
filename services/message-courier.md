@@ -15,6 +15,8 @@ cites: []
 paired_with: message-courier.es.md
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** the real `service-message-courier.py` (60 lines) is a thin CLI that dynamically loads a private adapter module and calls `execute_payload()` — the "Query (poll WORM ledger) → Execute → Write-back" three-step engine-level cycle described below is not present in the engine itself; no WORM-ledger or browser-automation code exists at the engine layer in the real codebase. **Flagged, not resolved.**
+
 **`service-message-courier`** is the headless web-automation engine that bridges the platform's internal [[service-people|identity ledger]] with external web portals — without embedding any client-specific logic in the open-source codebase. The core engine reads pending dispatch records from the [[worm-ledger-design|WORM ledger]], executes portal interactions through privately distributed runtime adapters, and writes completion timestamps back; the engine itself remains free of hard-coded selectors, credentials, or target URLs. The adapter directory (`private-adapters/`) is excluded from version control so proprietary client operational data never enters the public Git history.
 
 ## Key Takeaways

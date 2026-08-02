@@ -15,6 +15,8 @@ editor: pointsav-engineering
 paired_with: editorial-pipeline-three-stages.es.md
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** `service-proofreader` doesn't exist as a crate. The real proofreader is a TUI cartridge, `app-console-content` (`src/proofreader.rs`, a thin HTTP client to `/v1/proofread`/`/v1/verdict`), not a standalone service. `service-content`'s real `http.rs` has no proofread route at all — only `/v1/graph/verdict`. No LanguageTool integration, no "Banned/Mechanical/Generative" severity enum, and no Tier A/B/C routing logic for this pipeline exist anywhere in the real source. **Flagged, not resolved** — needs a rewrite around the real `app-console-content` TUI cartridge, matching the same finding already made on `applications/radical-proofreader-ui.md` this session.
+
 Every document processed by `service-proofreader` passes through three discrete stages executed in sequence. Each stage is independently verifiable. Each has a defined degradation path when its dependency is unavailable. The stages are ordered from cheapest to most expensive, so that inexpensive deterministic checks prevent costlier downstream operations from handling input that a rule-pass could resolve.
 
 ## Why Three Stages, in This Order
