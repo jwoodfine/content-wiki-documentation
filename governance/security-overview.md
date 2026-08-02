@@ -57,7 +57,7 @@ The WORM ledger structure satisfies SEC Rule 17a-4(f), eIDAS qualified electroni
 
 ## The Diode standard
 
-The Diode standard is the foundational network security topology of the PointSav fleet. Commands flow from authority (os-orchestration, os-console) to subject (Totebox archives, services) and never the reverse.
+The Diode standard is the foundational network security topology of the PointSav fleet. Commands flow from authority (os-orchestration, os-console) to subject (Totebox archives, services) and never the reverse. (Note, 2026-08-02, verified against canonical `origin/main` — not this archive's stale local checkout, which showed `os-orchestration` as entirely absent: the crate is real but its own `src/lib.rs` is currently a 4-line placeholder scaffold, so this article's "authority" framing is aspirational, not yet backed by real aggregation logic. The `[[fs-anchor-emitter]]` claim above this section and the WORM-ledger claims are both confirmed real and functional on canonical — an earlier draft of this correction, based on the stale local tree, would have wrongly called them fabricated. The "hourly cadence" checkpoint-generation detail specifically was not confirmed either way — no matching code or timer file found on a quick check; the monthly Rekor-anchoring schedule is independently confirmed accurate.)
 
 A Totebox archive that receives a command from os-console cannot initiate a command back to os-console. The routing logic that would allow this does not exist in the communication stack. This removes the lateral movement attack surface: an attacker who compromises a Totebox archive cannot use that position to issue commands to the orchestration layer or to peer archives.
 

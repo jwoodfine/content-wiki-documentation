@@ -14,6 +14,8 @@ editor: pointsav-engineering
 paired_with: favicon-matrix.es.md
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** no favicon or `<link rel="icon">` element exists anywhere in the real `app-mediakit-knowledge` renderer — `src/chrome/mod.rs`'s `head()` function contains charset, viewport, title, font preloads, stylesheets, and a dark-mode init script, but no icon element at all. The steel-blue (`#869FB9`)/Woodfine-blue (`#164679`) colors themselves are real design tokens, correctly cited, but this whole favicon mechanism doesn't exist in the shipped engine. **Flagged, not resolved.**
+
 The platform uses inline SVG data URIs for browser-tab favicons — eliminating a network call for the icon file, scaling without pixelation on every display, and assigning two distinct marks so the entity behind every browser tab is unambiguous at a glance. Vendor sites carry a steel-blue square; customer sites carry a Woodfine blue circle. The marks are encoded directly in the page `<head>`, so a tab identity is established before any other resource loads.
 
 This article describes the engineering rationale and the entity-mark assignment.

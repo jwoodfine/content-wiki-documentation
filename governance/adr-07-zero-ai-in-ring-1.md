@@ -154,6 +154,8 @@ from the WORM ledger — never inline during ingest.
 
 ### service-input
 
+**Correction (2026-08-02, verified against canonical `origin/main`, not just this archive's local checkout):** this whole section misattributes document parsing to the wrong Ring. The real `service-input` (Ring 1, per this article's own §1 table) has zero PDF/Markdown/DOCX/XLSX dependencies in its `Cargo.toml` — it's a batch-migration/calibration ingest tool. The four parsers below actually live in `service-extraction`, which this article's own §1 table names as a **Ring 2** service — architecturally significant for an article whose thesis is the Ring-1/Ring-2 AI boundary. The specific crate names are also wrong: real deps are `lopdf` (not `oxidize-pdf`) and `docx-rs` (not `docx-rust`); no `pulldown-cmark` dependency exists anywhere in the corpus. `calamine` is the one accurate match. **Flagged, not resolved.**
+
 `service-input` parses documents into text content:
 
 - **PDF** — structural parsing via `oxidize-pdf`; extracts text spans

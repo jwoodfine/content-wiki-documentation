@@ -25,7 +25,7 @@ The PointSav platform is too broad for any single team to maintain and too valua
 |---|---|---|---|
 | **Core** | 4–7 | PointSav-employed; salaried; equity in PointSav Digital Systems | Day-to-day stewardship of the substrate |
 | **Paid** | 50–100 | PointSav-funded contracts; outcome-based deliverables | Project-tier engineering work via GitHub pull requests |
-| **Open** | 10,000+ | None — Apache 2.0 / MIT / CC BY 4.0 contributions | Public substrate contributions; no CLA required |
+| **Open** | 10,000+ | None — Apache 2.0 / MIT / CC BY 4.0 contributions | Public substrate contributions; no CLA required (Correction, 2026-08-02: the real, ratified root `LICENSE` ("MULTI-LICENSE NOTICE" v1.1, effective 2026-05-24) places most `os-*`/`service-*`/`app-*` code — the "open core" this article describes — under **AGPL-3.0-or-later**, not Apache 2.0/MIT; only a handful of directories (`os-infrastructure/`, `os-mediakit/`, `app-mediakit-*/`, etc.) are the more permissive FSL-1.1-ALv2. AGPL is materially more restrictive on network-served modifications than the "unrestricted open-source" framing implied here. The CC BY 4.0 claim for documentation is independently confirmed accurate. Flagged, not resolved.) |
 
 ### Core
 

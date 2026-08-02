@@ -59,7 +59,7 @@ API keys for LLM providers are runtime credentials — they change on rotation, 
 
 ## Audit and compliance
 
-The [[doorman-protocol|gateway]] boundary, combined with a per-tenant [[worm-ledger-design|audit ledger]] and a purpose allowlist, produces a cryptographic audit trail over every external inference call. This structure satisfies SOC 2 Processing Integrity requirements and ISAE 3402 chain-of-custody principles by construction rather than by periodic attestation. The customer's own per-tenant ledger covers the customer's calls; the vendor's ledger covers the vendor's calls; the two never intermingle.
+The [[doorman-protocol|gateway]] boundary, combined with a per-tenant [[worm-ledger-design|audit ledger]] and a purpose allowlist, produces a cryptographic audit trail over every external inference call. This structure satisfies SOC 2 Processing Integrity requirements and ISAE 3402 chain-of-custody principles by construction rather than by periodic attestation. The customer's own per-tenant ledger covers the customer's calls; the vendor's ledger covers the vendor's calls; the two never intermingle. (Correction, 2026-08-02 — compliance-relevant: the underlying architectural claim (Doorman holds keys, inference processes hold none) is verified accurate against real code. But no SOC 2 or ISAE 3402 certification exists — the sibling article `governance/compliance-and-continuous-disclosure.md` in this same category explicitly lists SOC 3 as "Planned"/"Targeted," not current. This article's unhedged, present-tense "satisfies SOC 2... by construction" is internally inconsistent with that hedging discipline elsewhere in the same category. Flagged, not resolved.)
 
 ## See also
 

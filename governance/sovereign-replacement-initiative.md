@@ -48,7 +48,7 @@ physically isolated into a quarantined component silo (for example,
 are structural containers that restrict the foreign code to a
 controlled capability boundary. The isolation prevents coupling from
 spreading into adjacent platform layers while the replacement is
-under development.
+under development. (Correction, 2026-08-02: same finding as [[moonshot-initiatives]], which covers this identical subject — the quarantine README banners are real, but there is no actual foreign code physically isolated in a capability sandbox behind them yet; most `moonshot-*` directories are bare scaffolds, not active engineering. Flagged, not resolved.)
 
 ## Moonshot pipeline
 

@@ -44,7 +44,7 @@ into a quarantined component silo (for example, `vendor-azure-auth`
 or `vendor-microsoft-graph`). These directories act as structural
 boundaries. The foreign code may not execute outside a tightly
 controlled capability sandbox. Isolation prevents a dependency from
-spreading coupling into adjacent platform layers.
+spreading coupling into adjacent platform layers. (Correction, 2026-08-02: `vendor-azure-auth/README.md` and `vendor-microsoft-graph/README.md` are real "Quarantined Foreign Component" warning banners, matching the quarantine concept — but there is no actual foreign code physically isolated in a capability sandbox behind them yet; most named `moonshot-*` directories are bare 4-file Cargo scaffolds, not active engineering. The quarantine mechanism and ADR-08 relationship are real; the "isolation prevents coupling" claim describes a design intent ahead of what's actually running. Flagged, not resolved.)
 
 ## Replacement pipeline
 

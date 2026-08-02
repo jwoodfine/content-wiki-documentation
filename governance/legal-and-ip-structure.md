@@ -80,6 +80,8 @@ Strategic and fiduciary decisions are escalated outside the routine contributor 
 
 The intended licensing pattern follows an open-core model. All licensing targets are planned and subject to the [[bcsc-disclosure-posture|BCSC continuous-disclosure posture]] [ni-51-102] [osc-sn-51-721]:
 
+**Correction (2026-08-02):** this table is now stale, not fabricated — it predates (last-edited 2026-05-15) the real licensing policy that was ratified and propagated repo-wide on 2026-05-24 (root `LICENSE`, "MULTI-LICENSE NOTICE" v1.1). The "planned" outcome landed differently than predicted: `os-totebox`, `os-console`, and `os-workplace` are already **AGPL-3.0-or-later**, not "Apache 2.0 + Sovereign Addendum" — there is no separate "Sovereign Addendum" concept anywhere in the real license text. `os-orchestration`'s real license (per its own `Cargo.toml` on canonical) is `FSL-1.1-ALv2`, inherited from its `os-interface` rename-predecessor, not a standalone "Proprietary" tier. `service-pointsav-link` is confirmed absent from the codebase — checked on canonical too, not just this archive's local checkout. **Flagged, not resolved** — needs updating to the real, already-ratified per-directory scheme rather than a still-future "planned" framing.
+
 | Component | Planned licence |
 |---|---|
 | `os-totebox`, `os-console`, `os-workplace` (open core) | Apache 2.0 + Sovereign Addendum (planned) |
