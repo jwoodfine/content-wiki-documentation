@@ -30,6 +30,8 @@ references:
 
 ## How the F12 session unfolds
 
+**Correction (2026-08-02):** the 5-step table below does not match the real cartridge. Real `InputState` (`app-console-input/src/cartridge.rs`) is a simple `Entry → Confirm{path} → Submitting → Done/Error` flow — free-text file-path entry, confirm, single HTTP POST — with no Chart of Accounts routing step, no per-claim entity/theme Yes/No verification UI, and no drag-and-drop (the real widget is a text `PathInput`; a drag-drop mockup exists only in an unused static HTML file, never wired into the shipped TUI). The real POST (`ingest.rs`) sends only `{path, submitted_by, tenant, source}` — no entity-review payload. This is the same general shape of fabrication already found on `security/verification-surveyor.md` (2026-07-30) — a detailed human-in-the-loop workflow invented for a different real service — though the specific claims differ. **Flagged, not resolved.**
+
 A typical F12 session has a deterministic five-step shape. Each step has a clear boundary; the operator does not skip forward or batch decisions.
 
 | Step | Operator action | System response |

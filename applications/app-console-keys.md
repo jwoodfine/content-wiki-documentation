@@ -42,14 +42,14 @@ The `app-console-keys` status bar runs along the bottom of the console and is al
 | Identity | Username and tenant set during the pairing ceremony |
 | Authorization state | `MBA LINK ACTIVE`, `MBA LINK INACTIVE <reason>`, or `MBA LINK PENDING` |
 | Active slot | Name of the currently focused cartridge |
-| SLM tier | `Tier A` (local), `Tier B` (cloud burst), or `Tier C` (frontier API) |
+| SLM tier | `Tier A` (local), `Tier B` (cloud burst), or `Tier C` (frontier API) (Correction, 2026-08-02: the real `render()` signature takes only `username, tenant, mba, active, elapsed_secs, pending_pairs` — no tier field exists anywhere in the crate; flagged, not resolved) |
 | Session duration | Elapsed time since console start |
 
 The tier indicator reflects the last routing decision made by the inference gateway. It does not poll the gateway — it updates when a request is routed.
 
 ## Authorization client
 
-`app-console-keys` maintains the outbound [[machine-based-auth|machine-based authorization]] connections to paired `os-*` services. Each pairing is independent: the console can hold an active link to `os-totebox` while the link to `os-privategit` is inactive.
+`app-console-keys` maintains the outbound [[machine-based-auth|machine-based authorization]] connections to paired `os-*` services. Each pairing is independent: the console can hold an active link to `os-totebox` while the link to `os-privategit` is inactive. (Correction, 2026-08-02: real code has exactly one MBA link, to a single `totebox_host` — `mba_status` is one global field that blocks the entire chassis when inactive, not a per-service pairing set. Flagged, not resolved.)
 
 When an authorization link is inactive, the affected cartridge degrades gracefully. Locally cached content remains accessible; backend requests fail with an explicit status rather than silently. No cartridge crashes the chassis when its backend is unreachable.
 
@@ -59,7 +59,7 @@ Profile-based configuration is stored at `~/.config/os-console/config.toml`. The
 
 ## PDF rendering and graphics support
 
-`app-console-keys` provides the graphics infrastructure used by cartridges that render images or PDFs. PDF pages are rendered to RGB bitmaps using the `pdfium-render` library. The display path uses the Kitty graphics protocol as the primary path, with Sixel encoding as a fallback, and an error message for terminal environments that support neither.
+`app-console-keys` provides the graphics infrastructure used by cartridges that render images or PDFs. PDF pages are rendered to RGB bitmaps using the `pdfium-render` library (Correction, 2026-08-02: `pdfium-render` is a dependency of a different crate, `app-console-content` — `app-console-keys` has zero PDF code and doesn't depend on `app-console-content`. The Kitty/Sixel graphics infrastructure itself is genuinely in `app-console-keys`; only the PDF-rendering attribution is wrong. Flagged, not resolved.). The display path uses the Kitty graphics protocol as the primary path, with Sixel encoding as a fallback, and an error message for terminal environments that support neither.
 
 ## See also
 

@@ -34,7 +34,7 @@ The platform computes co-location clusters around Primary Target anchors (e.g., 
 The interactive map at [gis.woodfinegroup.com](https://gis.woodfinegroup.com) uses a three-layer architecture:
 - **Layer 1 — Global POIs:** Toggled view of 31,000+ individual retail locations, color-coded by brand family.
 - **Layer 2 — Co-location Clusters:** The primary analytical view, encoding cluster strength through visual saturation and size.
-- **Layer 3 — Catchment Radii:** Visualized proximity boundaries (default 3.0 km) that define the scope for trade-area analysis and mobility data procurement.
+- **Layer 3 — Catchment Radii:** Visualized proximity boundaries (default 3.0 km — Correction, 2026-08-02: the real value used by `build-radius.py` is `DEFAULT_CATCHMENT_KM = 150.0` (27.0 for dense urban corridors), roughly 50× the figure stated here; the 3.0 km figure appears to conflate an unrelated DBSCAN cluster-tightness parameter with the trade-area catchment radius. Flagged, not resolved.) that define the scope for trade-area analysis and mobility data procurement.
 
 ## Sovereign Architecture
 

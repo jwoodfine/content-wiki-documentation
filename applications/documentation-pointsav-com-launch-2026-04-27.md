@@ -26,6 +26,8 @@ Four placeholder TOPIC pages render at the public URL. `/wiki/welcome` is the la
 
 Beyond article-rendering paths, the wiki serves: `/healthz` (liveness check); `/` (index page listing all articles); `/search?q=` (full-text search over the on-disk Tantivy index); `/feed.atom` (RFC 4287 syndication feed); `/feed.json` (JSON Feed 1.1); `/sitemap.xml`; `/robots.txt`; `/llms.txt`; and `/git/{slug}` (raw Markdown source).
 
+**Correction (2026-08-02):** neither the edit route nor the collab feature exist as described. Real `src/server/wiki_handlers.rs` states directly: "form submission (`POST /edit/{slug}`) is Phase 2 Step 3 work"; another comment confirms "POST removed: git-only contribution workflow (Phase 5 superseded)." Zero hits for `--enable-collab`, CRDT, or WebSocket anywhere in the crate — matching the same fabrication already found on `patterns/collab-via-passthrough-relay.md` and `app-mediakit-knowledge.md`. **Flagged, not resolved.**
+
 The editor surface is present in the binary — the `POST /edit/{slug}` route, CodeMirror 6 in-browser editor, citation autocomplete, and the collaborative passthrough relay (default-off, behind `--enable-collab`). The production deployment does not expose the WebSocket route.
 
 ---
@@ -34,7 +36,7 @@ The editor surface is present in the binary — the `POST /edit/{slug}` route, C
 
 **Binary.** A single [[app-mediakit-knowledge]] binary installed at `/usr/local/bin/app-mediakit-knowledge`, built on the cluster feature branch. Build duration was 1 minute 54 seconds.
 
-**systemd unit.** The unit runs the binary as a dedicated unprivileged system user (`local-knowledge:local-knowledge`), bound to the loopback interface on port 9090. Hardening flags include `NoNewPrivileges=true`, `ProtectSystem=strict`, `ProtectHome=true`, and `PrivateTmp=true`.
+**systemd unit.** The unit runs the binary as a dedicated unprivileged system user (`local-knowledge:local-knowledge`), bound to the loopback interface on port 9090. Hardening flags include `NoNewPrivileges=true`, `ProtectSystem=strict`, `ProtectHome=true`, and `PrivateTmp=true`. (Correction, 2026-08-02: the real unit runs as `foundry:foundry`, not `local-knowledge:local-knowledge`; binds `0.0.0.0:9090` — all interfaces, not loopback; and only `NoNewPrivileges=true` is present — `ProtectSystem`, `ProtectHome`, and `PrivateTmp` don't appear in the real unit file at all. Flagged, not resolved — this overstates the service's real security posture.)
 
 **Content directory.** The production `--content-dir` flag points at a four-file placeholder subdirectory. The legacy 30+ TOPIC corpus is held in the parent directory pending editorial refinement.
 

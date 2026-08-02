@@ -40,7 +40,7 @@ Ten structural slots compose Wikipedia's English Main Page. The PointSav home pa
 
 **Featured article.** Wikipedia's Today's Featured Article enforces a 909–1,009 character blurb — character count, not word count. The PointSav home page preserves the format invariant: bolded linked title, body-register paraphrase of the article lead, "→ Read" closer. The featured article rotates as the editorial pipeline warrants; the current rotation cadence is weekly.
 
-**Browse by category.** Wikipedia surfaces topics through its category system. The PointSav home page surfaces all nine ratified categories — architecture, services, systems, applications, governance, infrastructure, company, reference, help — in a 3×3 grid. The grid renders all nine even when a category is empty, so the platform's intended scope is visible at launch.
+**Browse by category.** Wikipedia surfaces topics through its category system. The PointSav home page surfaces all nine ratified categories — architecture, services, systems, applications, governance, infrastructure, company, reference, help — in a 3×3 grid. The grid renders all nine even when a category is empty, so the platform's intended scope is visible at launch. (Correction, 2026-08-02: `company`/`help` were retired 16 days before this article's own last-edited date, commit `ff23832`/`2e843fb`, 2026-05-09 — the real category count is 10, not 9, and neither `company` nor `help` exist. The real home-page browse grid, `HOMEPAGE_CATEGORIES`, is a 7-tile marketing IA — "Developer Platform," "Operator Workspace," etc. — not a literal 3×3 grid of category names. Flagged, not resolved.)
 
 **Recent additions.** The top five articles by `last_edited` date, in descending order. The intent matches Wikipedia's Did You Know section: signal that the corpus is actively maintained and give returning readers a reason to return.
 
@@ -56,7 +56,7 @@ Five primitives extend Wikipedia's home-page composition. Three are available in
 
 ### Machine-readable slot structure
 
-Wikipedia's home page has no structured data describing its slots. The PointSav home page emits JSON-LD per slot — the featured-article slot as a typed `Article` reference, the recent-additions slot as an `ItemList`, the category grid as a typed `WebPageElement` collection. Downstream consumers — feed readers, voice interfaces, language models — receive structure rather than prose to infer.
+Wikipedia's home page has no structured data describing its slots. The PointSav home page emits JSON-LD per slot — the featured-article slot as a typed `Article` reference, the recent-additions slot as an `ItemList`, the category grid as a typed `WebPageElement` collection. Downstream consumers — feed readers, voice interfaces, language models — receive structure rather than prose to infer. (Correction, 2026-08-02: zero JSON-LD code exists in the real home-page handler — `src/jsonld.rs` implements JSON-LD only for individual TOPIC pages, not the home page. Flagged, not resolved.)
 
 ### Editorial-labour cadence as visible signal
 

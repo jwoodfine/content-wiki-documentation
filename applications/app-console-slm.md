@@ -18,6 +18,8 @@ paired_with: app-console-slm.es.md
 
 # app-console-slm — inference infrastructure monitoring console
 
+**Correction (2026-08-02):** the console does not provide keyboard controls for the kill switch or routing policy — those claims below (the K-key dialog, the P-key policy control, per-node toggle) don't match the real cartridge. `app-console-slm/src/cartridge.rs`'s actual `handle_event` only wires `r`/`R` (refresh) and `?` (help) — its own help text confirms this is the complete keybinding set. The kill-switch *concept* is real, but it lives server-side as an operator billing/cost-cap gate (`service-slm/crates/slm-doorman/src/flow_gate.rs`, `express_lane.rs`, `cost_ledger.rs` — "nothing bypasses the kill switch") with no TUI control surface exposing it; the four-policy routing scheme (balanced/drain-batch/drain-express/local-only) is likewise real and changeable via `POST /v1/flow/policy`, but not from this console. The panel names, poll interval, and read-only status display are accurate — only the write/control-surface claims (K/P/G keys) are fabricated. **Flagged, not resolved.**
+
 app-console-slm is a terminal user interface (TUI) cartridge for the operator console
 that displays the live state of the AI inference infrastructure. It shows the health
 of the local inference model, the status of [[yoyo-compute-substrate|remote GPU nodes]], the depth of the

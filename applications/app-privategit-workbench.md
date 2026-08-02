@@ -32,7 +32,7 @@ for history and promotion.
 ## Architecture
 
 The workbench is a single Rust crate (`app-privategit-workbench`,
-AGPL-3.0-or-later) in the `pointsav-monorepo`. It has two components:
+AGPL-3.0-or-later — Correction, 2026-08-02: the real `LICENSE`/`NOTICE`/`Cargo.toml` all say **Apache-2.0**, not AGPL; flagged, not resolved) in the `pointsav-monorepo`. It has two components:
 
 **Write-service (Rust/axum):** An HTTP server that handles file reads
 and writes. It binds to a loopback address and is never exposed
@@ -138,6 +138,8 @@ service file update causes silent write failures at the filesystem layer.
 ---
 
 ## Relationship to os-privategit
+
+**Correction (2026-08-02):** this relationship doesn't match real code. The real `os-privategit/src/main.rs` is a 31-line license-check placeholder with an empty `Cargo.toml` dependency list — it has no dependency on the workbench crate at all. Neither `app-privategit-design-system` nor `service-privategit` exist anywhere in the monorepo (the closest real name is `app-privategit-design`, no "-system" suffix). **Flagged, not resolved.**
 
 `app-privategit-workbench` is included in the [[os-privategit|`os-privategit`]] host
 operating system alongside `app-privategit-design-system` and

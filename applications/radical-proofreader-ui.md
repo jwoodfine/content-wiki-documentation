@@ -16,6 +16,8 @@ references: []
 paired_with: radical-proofreader-ui.es.md
 ---
 
+**Correction (2026-08-02):** the real implementation, `app-console-content`, is a **terminal UI** — `Cargo.toml` describes it as "os-console F4 Content Cartridge," depending on `ratatui`/`crossterm`, not a server-rendered HTML application. The "two-tier design token architecture" section below has no basis in this TUI. Separately, the training-pipeline claim further down (a Rust `cargo run` distillation tool producing `training_dataset.jsonl` from draft-created/draft-refined/creative-edited verdicts) is also wrong — the real distillation tool, `service-slm/router-trainer/scripts/distill_knowledge.py`, is Python, and processes an unrelated subject (Woodfine corporate email-classification skeletons), not proofreader verdicts; no such Rust binary or schema exists anywhere in the codebase. The real `/v1/verdict` POST call itself is accurate for Accept/Reject dispositions, but no "Edit" disposition call was found. **Flagged, not resolved** — needs a rewrite around the real TUI cartridge, not a wording fix.
+
 The **proofreader console** is the operator-facing web interface for the `service-proofreader`
 editorial pipeline. Operators use the console to submit text for staged analysis, review
 structured findings, apply or reject suggested rewrites, and record verdict dispositions that

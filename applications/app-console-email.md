@@ -35,7 +35,7 @@ Messages are sourced from `service-email`'s message store. The cartridge does no
 
 ## Message reading
 
-Selecting a message from the inbox opens the message reading view. The view displays the full message body, headers, and any attachments listed by name. Attachment content is available for download to a staging path; attachments do not open automatically.
+Selecting a message from the inbox opens the message reading view. The view displays the full message body, headers, and any attachments listed by name (Correction, 2026-08-02: the real `EmailSummary` struct carries only `subject`/`body` fields — no attachment field or download path exists anywhere in the crate; flagged, not resolved). Attachment content is available for download to a staging path; attachments do not open automatically.
 
 Plain-text mode is available via the `--plain` flag at console startup. In plain mode, HTML-only message bodies are rendered as their plaintext fallback. Terminals without unicode support receive ASCII approximations of any unicode symbols in subject lines and sender names.
 
@@ -47,7 +47,7 @@ Draft saving is not implemented. An abandoned compose session is discarded; no p
 
 ## Authorization dependency
 
-The cartridge's connection to `service-email` is brokered through the [[machine-based-auth|machine-based authorization]] client managed by [[app-console-keys|app-console-keys]]. If the authorization link to the email service is inactive, the inbox view shows a `MBA LINK INACTIVE` status and the compose view is disabled. The cartridge degrades gracefully rather than crashing the chassis.
+The cartridge's connection to `service-email` is brokered through the [[machine-based-auth|machine-based authorization]] client managed by [[app-console-keys|app-console-keys]]. If the authorization link to the email service is inactive, the inbox view shows a `MBA LINK INACTIVE` status and the compose view is disabled. The cartridge degrades gracefully rather than crashing the chassis. (Correction, 2026-08-02: real MBA-inactive behavior is chassis-wide, not per-cartridge graceful degradation — `app-console-keys/src/chassis.rs` replaces *all* cartridge content with a full-screen pairing UI when inactive; the email cartridge specifically is never rendered at all in that state. Flagged, not resolved.)
 
 ## See also
 
