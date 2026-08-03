@@ -46,6 +46,8 @@ Choose the access tier for the new device:
 
 ADMIN pairings require the approval of the system administrator and cannot be self-issued.
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** this 4-tier model inverts the real one. The real `PairingRole` enum (`app-orchestration-command/crates/orchestration-command-core/src/lib.rs`) has exactly 3 roles: `User` (full read/write, daily operator — matches what this article calls "INPUT"), `Admin` (full access), `Interface` (metadata-only, orchestration aggregator). There is no `INPUT` role and no "USER = read-only" — that's backwards from the real `User` role. The real token API is `POST /v1/invite` + `/v1/pair`, not the `/v1/tokens` CRUD API described elsewhere in this article. Same systemic defect found on [[rotate-keys]], [[scale-user-tiers]], and [[issue-capability-token]]. **Flagged, not resolved.**
+
 ### 4. Confirm and complete
 
 Approve the pairing from your trusted device. The new device's `os-console` refreshes automatically and the Totebox session becomes available. The pairing event is recorded to the audit ledger immediately.

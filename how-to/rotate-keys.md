@@ -12,6 +12,8 @@ editor: pointsav-engineering
 paired_with: rotate-keys.es.md
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** the specific CLI commands and `/v1/tokens` API described in the steps below don't exist. `os-console --generate-keypair`/`--load-token`/`--remove-keypair` and `service-vm-host --generate-keypair` are all fictional — neither binary parses CLI flags at all. The `/v1/tokens` POST/DELETE endpoints with `subject_pubkey`/`jti` don't exist anywhere; the real capability/pairing API is `POST /v1/invite` + `/v1/pair` (`service-content/src/pairing.rs`), a Rust library API with a different field shape (`role`/`archive_scope`), same systemic finding as [[pair-a-new-device]]. **Flagged, not resolved** — needs a rewrite around the real invite/pair mechanism.
+
 Key rotation replaces an Ed25519 keypair and its associated capability token before the old credentials expire or after a suspected compromise. Rotation is a planned operation with a brief transition window during which both the old and new tokens are valid. This guide covers the full rotation sequence: generating a new keypair, issuing a new token, transitioning the recipient, and revoking the old token.
 
 For the authorization model, see [[machine-based-auth]]. For issuing a token from scratch, see [[issue-capability-token]].

@@ -34,6 +34,8 @@ Press **F9**. The Doorman health dashboard fills the slot area. It shows three r
 | Tier B | SLM model availability |
 | Tier C | Local fallback availability |
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** this tier mapping is wrong. Real Tier A/B/C (`app-console-slm/src/health.rs`, the Doorman systemd unit) are local on-prem model / Yo-Yo GPU burst / external API fallback — DataGraph availability is a separate field, not a tier. Same systemic defect found across several `how-to/` articles this sweep. **Flagged, not resolved.**
+
 A green indicator means the tier is available; a red indicator or `OPEN` means the circuit breaker has tripped and that tier is temporarily bypassed.
 
 ### 2. Confirm inference is available

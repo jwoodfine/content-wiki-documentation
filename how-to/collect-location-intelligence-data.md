@@ -368,7 +368,7 @@ Expect high counts due to airport ubiquity: `enterprise-us` ~4,000–8,000 recor
 ## Step 7 — Production calibration and deployment (complete 2026-06-11)
 
 `test-cluster-archetypes.py` was superseded by dedicated DBSCAN build scripts:
-- `build-vwh-clusters.py` → `archetype-vwh.geojson` (6,368 features)
+- `build-vwh-clusters.py` → `archetype-vwh.geojson` (6,368 features) (Correction, 2026-08-02, verified against canonical `origin/main`: this script does not exist in the repo — confirmed via `git cat-file -e`. It's also referenced by the real `nightly-rebuild.sh`, so this is a pre-existing pipeline gap this guide faithfully reproduces rather than a wiki-invented claim. `test-cluster-archetypes.py` itself still exists despite being called "superseded" here. Flagged, not resolved.)
 - `build-pks-clusters.py` → `archetype-pks.geojson` (6,953 features)
 
 To re-run after adding new chains:

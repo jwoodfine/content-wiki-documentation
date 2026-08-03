@@ -12,6 +12,8 @@ editor: pointsav-engineering
 paired_with: export-structured-data.es.md
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** two of the four export paths described below don't exist. `GET /export/<category>/<slug>` has no matching route anywhere in `app-mediakit-knowledge`. `service-fs export --format tlog-tiles` and `service-fs verify` are fictional — `service-fs` is a pure HTTP daemon with no CLI at all. `query_datagraph`/`get_entity_context` (Path 1) are real MCP tools; `read_since` is a real internal Rust trait method on `service-fs`, not a documented public API as this guide implies. Also uses the "INPUT/USER" pairing-tier naming already found wrong elsewhere this sweep — see [[pair-a-new-device]]. **Flagged, not resolved.**
+
 The platform stores data at multiple layers — raw ledger tiles, entity records in the DataGraph, wiki content, and location intelligence datasets. Exporting that data means choosing the right layer for your use case and the appropriate export format. This guide covers the four main export paths and when to use each.
 
 For the layered data model, see [[service-content]]. For the underlying ledger storage, see [[service-fs-architecture]].

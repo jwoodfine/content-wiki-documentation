@@ -47,7 +47,7 @@ The status bar updates continuously. Left to right:
 - **Identity** — the paired device identity and its permission tier
 - **Auth state** — `LINKED` when machine-based authorization is active; `LINK INACTIVE` when unavailable
 - **Active slot** — the name of the currently displayed cartridge (e.g., `INPUT`, `EMAIL`, `SLM`)
-- **SLM tier** — the Doorman circuit state: `A` (DataGraph live), `B` (SLM only), or `C` (local fallback)
+- **SLM tier** — the Doorman circuit state: `A` (DataGraph live), `B` (SLM only), or `C` (local fallback) (Correction, 2026-08-02, verified against canonical `origin/main`: the real status bar, `app-console-keys/src/widgets/status_bar.rs`, has no SLM-tier field at all — it shows `username@tenant │ MBA LINK state │ active-slot │ elapsed time [pending pairs]`. Real Tier A/B/C semantics (confirmed in `app-console-slm/src/health.rs` and the Doorman systemd unit description) are Tier A = local on-prem model, Tier B = Yo-Yo GPU burst, Tier C = external API fallback — DataGraph availability (`entity_count`) is a separate, unrelated field, not a tier. Same systemic defect found across several `how-to/` articles this sweep. Flagged, not resolved.)
 - **Session duration** — elapsed time since the session was opened
 
 ## Key bindings that work in every slot

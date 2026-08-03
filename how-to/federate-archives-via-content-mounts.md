@@ -48,6 +48,8 @@ to be skipped with a warning in the log.
 
 ## Step 2: Declare the mount in `knowledge.toml`
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** the mount schema below is fictional. The real `app-mediakit-knowledge/src/config.rs` schema uses `[[mount]]` entries with `path`/`role`/`blueprint_set` fields, where `role` distinguishes editable-primary vs. read-only-guide mounts — not a `source`/`prefix` URL-namespace mechanism as described. This exact schema mistake is already correctly flagged in this article's own sibling, `use-knowledge-mounts.md` (dated 2026-07-18 self-correction, independently re-confirmed this session). **Flagged, not resolved** — needs the same correction applied here.
+
 Open the primary instance's `knowledge.toml` and add a `[[mount]]` entry:
 
 ```toml

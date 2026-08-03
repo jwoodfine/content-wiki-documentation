@@ -18,8 +18,10 @@ For the inference stack architecture, see [[slm-stack-architecture]] and [[doorm
 
 ## Prerequisites
 
+(Correction, 2026-08-02, verified against canonical `origin/main`: the real systemd unit name is `slm-doorman`, corrected throughout this article — the article previously said `slm-doorman-server`, the crate name rather than the unit name. Separately, "USER-level access" below repeats a pairing-role naming defect found elsewhere this sweep — see [[pair-a-new-device]] for the real 3-role model. Flagged, not resolved.)
+
 - A deployment with the OLMo model binary installed at the expected path (see [[self-host-a-deployment]])
-- The `slm-doorman-server` service running and healthy
+- The `slm-doorman` service running and healthy
 - A session with at least USER-level access (see [[pair-a-new-device]])
 
 ## Step 1: Start the SLM service
@@ -27,14 +29,14 @@ For the inference stack architecture, see [[slm-stack-architecture]] and [[doorm
 If the SLM service is not already running, start it:
 
 ```
-sudo systemctl start slm-doorman-server
+sudo systemctl start slm-doorman
 ```
 
 Verify it started cleanly:
 
 ```
-systemctl is-active slm-doorman-server
-journalctl -u slm-doorman-server --since "1 minute ago"
+systemctl is-active slm-doorman
+journalctl -u slm-doorman --since "1 minute ago"
 ```
 
 A healthy start produces a log line indicating the model loaded and the Doorman is listening on its configured port. If the service fails to start, check the model binary path in the service configuration — the OLMo binary must be present at the path the service expects.

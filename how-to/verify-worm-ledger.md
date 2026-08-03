@@ -12,6 +12,8 @@ editor: pointsav-engineering
 paired_with: verify-worm-ledger.es.md
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** the `service-fs verify --from/--to` CLI subcommand doesn't exist — `service-fs` has no CLI at all, it's a pure HTTP daemon. `read_since(...)` is not a directly-callable operation either — the real routes are `/v1/append`, `/v1/entries`, `/v1/checkpoint`. The general concepts (C2SP tlog-tiles, Sigstore Rekor anchoring) are real, confirmed in `service-fs/ARCHITECTURE.md` and `ledger.rs`, but the concrete tool commands below are fabricated. **Flagged, not resolved** — needs rewriting around the real HTTP routes.
+
 The WORM ledger guarantees that records cannot be modified or deleted after they are written. Verification confirms that guarantee holds for a specific entry: that the hash chain is intact and that no post-write alteration occurred. This guide covers verification using the service-fs API and the standard SHA-256 toolchain — no proprietary tooling is required.
 
 For what the WORM guarantee covers and does not cover, see [[worm-ledger-architecture]]. For the storage format, see [[worm-ledger-storage-architecture]].

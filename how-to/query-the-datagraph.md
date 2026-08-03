@@ -60,6 +60,8 @@ The DataGraph understands the platform's entity taxonomy: persons, organisations
 
 ## Handle a closed Tier A circuit
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** DataGraph availability is not a Doorman tier. Real Tier A/B/C (`app-console-slm/src/health.rs`, the Doorman systemd unit) are local model / Yo-Yo GPU burst / external API fallback — DataGraph availability is a separate, unrelated status field (`entity_count`). Same systemic defect found across several `how-to/` articles this sweep. **Flagged, not resolved** — needs rewriting around the real, separate DataGraph-availability signal.
+
 If Doorman's Tier A circuit is `OPEN`, the DataGraph is unavailable. The inference stack falls back to Tier B (SLM only) or Tier C (local fallback), but `query_datagraph` calls will fail.
 
 Proceed with the following caveat in any content you are drafting: *"DataGraph unavailable — verified from session memory; check current state before committing."* Do not commit entity-dependent content during a Tier A outage without the caveat.

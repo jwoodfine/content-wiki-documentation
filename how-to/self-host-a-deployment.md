@@ -12,6 +12,8 @@ editor: pointsav-engineering
 paired_with: self-host-a-deployment.es.md
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** the `pointsav-gateway` binary, its `manifest.toml` schema, and its `/healthz` JSON shape don't correspond to any real crate — a full listing of every crate in the monorepo confirms no `pointsav-gateway` exists. `software.pointsav.com` itself is real (referenced in `app-mediakit-marketing`, `app-privategit-marketplace-2`), but the specific "gateway" product this guide describes is fabricated. **Flagged, not resolved.**
+
 A PointSav deployment is a named, numbered instance of a gateway configuration provisioned on operator-controlled infrastructure. Each deployment runs the same software distribution substrate as the hosted service, with all data and keys held locally. This guide covers provisioning a new deployment instance, verifying the gateway starts correctly, and connecting it to the upstream platform.
 
 For the deployment architecture, see [[deployment-patterns]] and [[edge-deployment]]. For the software distribution model that supplies signed binaries to your instance, see [[software-distribution-substrate]].

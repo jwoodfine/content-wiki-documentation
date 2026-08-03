@@ -48,6 +48,8 @@ The status bar at the top of the screen shows the system's current state at a gl
 - **SLM tier** — the Doorman tier in use: `A` (DataGraph live), `B` (SLM only), or `C` (local fallback)
 - **Session duration** — time since the console was launched
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** two rows above don't match the real status bar (`app-console-keys/src/widgets/status_bar.rs`). (1) The real bar shows `username@tenant │ MBA LINK state │ active-slot │ elapsed [pending pairs]` — no `INPUT`/`USER`/`READ` auth-state field exists; the real pairing-role model is `User`/`Admin`/`Interface` (see [[pair-a-new-device]] for the full finding). (2) No SLM-tier field exists in the status bar at all, and real Tier A/B/C semantics are local model/Yo-Yo GPU burst/external API — DataGraph availability is a separate field. **Flagged, not resolved.**
+
 If the auth state reads `READ` and you expected `INPUT` or `USER`, the device has not completed the pairing sequence for the requested tier. See [[pair-a-new-device]] to resolve.
 
 ## Step 3: Navigate to the Doorman health slot

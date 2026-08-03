@@ -12,6 +12,8 @@ editor: pointsav-engineering
 paired_with: connect-osm-data-pipeline.es.md
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** several specific script/schema claims below are wrong. The real ingest script is `ingest-osm.py`, not `ingest-chain.py` (different CLI shape). The real taxonomy config uses `CATEGORIES`/`BRAND_FILL` dicts keyed by NAICS category (confirmed accurate in the sibling [[collect-location-intelligence-data]] guide), not a `TaxonomyEntry`/`ALPHA_HYPERMARKET` class structure, which doesn't exist. The described "rebuild" step, `build-geometric-ranking.py`, in reality only adds ranking percentiles to an *existing* `clusters.geojson` — the real full rebuild is `build-clusters.py`. The output path should be the absolute deployment path `/srv/foundry/deployments/gateway-orchestration-gis-1/www/data/clusters-meta.json`, not the relative `gateway/www/data/clusters-meta.json` given below. This guide also links to `[[pointsav-gis-engine]]`, archived earlier this session — see [[location-intelligence-substrate]] instead. **Flagged, not resolved.**
+
 The platform's location intelligence system ingests point-of-interest (POI) data from OpenStreetMap via JSONL ingest files. Connecting to the OSM data pipeline means writing or adapting an ingest script that queries the Overpass API, producing a JSONL file in the platform's schema, and registering the ingest with the taxonomy configuration. This guide covers a single-chain ingest for a new retail or service category.
 
 For the GIS engine architecture, see [[pointsav-gis-engine]]. For building a map from ingested cluster data, see [[build-a-colocation-map]].

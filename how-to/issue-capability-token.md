@@ -12,6 +12,8 @@ editor: pointsav-engineering
 paired_with: issue-capability-token.es.md
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** `/v1/tokens`, `/v1/tokens/verify`, `service-vm-host --print-pubkey`, and `os-console --load-token` all don't exist — same systemic finding as [[pair-a-new-device]], [[rotate-keys]], and [[scale-user-tiers]]. The real mechanism is `service-content/src/pairing.rs`'s `issue_token(role, archive_scope, node_label)` / `verify_capability` — a Rust library API with `role`/`archive_scope` fields, not the REST payload (`subject_pubkey`/`scope`/`expires_in_seconds`) described below, and the real role set is `User`/`Admin`/`Interface`, not `INPUT`/`USER`/`READ`. **Flagged, not resolved.**
+
 A capability token is a signed credential that grants a device, service, or session access to a specific platform capability. Tokens are Ed25519-signed, self-describing, and time-bounded. Issuing a token means generating a signed credential using the platform's key material and delivering it to the recipient. This guide covers single-token issuance for a device or service.
 
 For the authorization model that capability tokens operate within, see [[machine-based-auth]]. For the full pairing flow that culminates in a token, see [[pair-a-new-device]].

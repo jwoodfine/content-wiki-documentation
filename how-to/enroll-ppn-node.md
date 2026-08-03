@@ -12,6 +12,8 @@ editor: pointsav-engineering
 paired_with: enroll-ppn-node.es.md
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** the CLI/API commands in the steps below don't exist — same finding as [[add-a-fleet-node]]. `service-vm-host --controller <url> --tenant <id> --node-id <id>` is fictional (the real binary is env-var-only: `VM_FLEET_ENDPOINT`, `VM_NODE_ID`, `VM_WG_IP`); `curl .../health` doesn't exist — the real route table is `/v1/nodes/heartbeat`, `/v1/fleet`, `/v1/nodes`, `/v1/nodes/:id`, `/v1/vms`, `/v1/vms/:id`. **Flagged, not resolved.**
+
 A PPN (PointSav Private Network) node is a physical or virtual machine that joins the platform's compute fleet. Enrolling a node means registering it with the fleet controller, starting the heartbeat agent, and verifying the node appears in the fleet's active inventory. This guide covers the enrollment sequence for a single node.
 
 For the fleet architecture, see [[ppn-small-business-compute]]. For the service that manages fleet state, see [[service-vm-fleet]].

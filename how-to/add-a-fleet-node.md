@@ -12,6 +12,8 @@ editor: pointsav-engineering
 paired_with: add-a-fleet-node.es.md
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** the CLI/API commands in the steps below don't exist. `service-vm-host --controller <url> --tenant <id> --node-id <id>` is fictional — the real binary takes zero CLI args, configured entirely via env vars (`VM_FLEET_ENDPOINT`, `VM_NODE_ID`, `VM_WG_IP` — required and undocumented here — `VM_HEARTBEAT_INTERVAL_S`, default 10s not 30s as stated elsewhere in this guide). `curl .../health` and `/v1/placement` don't exist — the real `service-vm-fleet` route table is `/v1/nodes/heartbeat`, `/v1/fleet`, `/v1/nodes`, `/v1/nodes/:id`, `/v1/vms`, `/v1/vms/:id`. The `service-fs read --filter ... --limit N` CLI is also fictional — `service-fs` is a pure HTTP daemon with no CLI at all. Same systemic finding as [[enroll-ppn-node]]. **Flagged, not resolved.**
+
 A running fleet has one or more PPN nodes already enrolled and actively sending heartbeats. Adding a node to a running fleet means enrolling a new machine without interrupting the existing nodes' operation. This guide covers the steps specific to adding to an active fleet, as opposed to enrolling the very first node.
 
 For the initial node enrollment procedure, see [[enroll-ppn-node]]. For the fleet controller service, see [[service-vm-fleet]].

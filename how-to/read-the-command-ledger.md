@@ -12,6 +12,8 @@ editor: pointsav-engineering
 paired_with: read-the-command-ledger.es.md
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** the F12 LEDGER tab UI described below doesn't exist. `app-console-input/src/cartridge.rs` has no `LEDGER` tab, Page Up/Down navigation, `/` search, or `e`-export key — F12 only shows an inline ledger height/root indicator during ingest. `read_since` is also not CLI-callable from within the console — `service-fs` has no CLI parsing at all (pure env-var-configured HTTP daemon). **Flagged, not resolved.**
+
 The Command Ledger is the append-only audit record of everything a Totebox operator session has produced — commands executed, records verified, messages sent, and session boundaries. Reading the ledger is how you understand the history of a session, audit what changed during a window, and verify that a record was written in the sequence you expected.
 
 For the Command Ledger's place in the session architecture, see [[console-os]]. For how the underlying storage layer works, see [[service-fs-architecture]].

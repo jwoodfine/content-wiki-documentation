@@ -12,6 +12,8 @@ editor: pointsav-engineering
 paired_with: scale-user-tiers.es.md
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** this READ/USER/INPUT tier model and the `/v1/tokens` list/issue/revoke REST API below don't exist — same systemic finding as [[pair-a-new-device]] and [[rotate-keys]]. The real `PairingRole` enum has exactly 3 roles (`User`/`Admin`/`Interface`), and the real API is `POST /v1/invite` + `/v1/pair`, not a token-management REST surface. **Flagged, not resolved.**
+
 User access tiers determine what platform operations a session can perform. As a deployment grows, the administrator needs to promote users from read-only access (`READ`) to standard session access (`USER`) or full operator access (`INPUT`). This guide covers identifying current tier assignments, promoting individual users, and bulk-updating a set of users as a team scales.
 
 For the authorization model that defines tiers, see [[machine-based-auth]]. For issuing the tokens that encode tier assignments, see [[issue-capability-token]].

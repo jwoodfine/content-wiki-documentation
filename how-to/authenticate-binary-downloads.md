@@ -12,6 +12,8 @@ editor: pointsav-engineering
 paired_with: authenticate-binary-downloads.es.md
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** the `psv1_<product>_<ulid>.<signature>` licence-token format and "Licences" dashboard page below don't exist. The real system (`app-privategit-marketplace-2`, `app-privategit-source-2`) mints a fresh Ed25519-signed download-auth token dynamically per `/order/:tx_hash` visit, wire format `base64url(sig[64] || payload_json)`. The signing-key path is `/verify-key.pub`, not `/.well-known/pointsav-signing-key.pub`. The `ssh-keygen -Y verify`/`allowed_signers` flow described later is real elsewhere in the platform (DataGraph write governance) but is not used for binary-release verification as this guide claims. **Flagged, not resolved.**
+
 The PointSav private distribution endpoint at `software.pointsav.com` issues Ed25519-signed binary releases. Every download is verified against the publisher's public key before the binary executes. This guide covers requesting a licence token, downloading a release, and verifying the signature.
 
 For the architecture behind the distribution system, see [[private-git-paid-customer-endpoint]] and [[software-distribution-substrate]].

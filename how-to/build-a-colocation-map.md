@@ -12,6 +12,8 @@ editor: pointsav-engineering
 paired_with: build-a-colocation-map.es.md
 ---
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** the bearer-token REST API described below (`POST /api/auth/token`, `GET /api/v1/clusters?country=...`) doesn't exist — zero hits anywhere in the repo. The real, current architecture (see [[location-intelligence-substrate]]) is an offline flat-file/PMTiles + MapLibre + Martin tile-server stack, with no live REST cluster API and no API-key exchange. This guide also links to `[[pointsav-gis-engine]]`, which was archived earlier this session (2026-08-01, Round 4 GIS cluster merge) — see [[location-intelligence-substrate]] instead. **Flagged, not resolved** — needs a rewrite around the real flat-file/PMTiles architecture.
+
 The PointSav GIS engine exposes a tile API and a clusters endpoint that you can integrate into any MapLibre GL application. This guide covers authenticating against the GIS API, fetching the cluster GeoJSON layer, and rendering tier-coloured cluster markers on a MapLibre map canvas.
 
 For the GIS engine architecture, see [[pointsav-gis-engine]]. For the co-location scoring system that produces the cluster data, see co-location ranking system.
