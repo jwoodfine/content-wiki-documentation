@@ -1,130 +1,180 @@
 ---
-schema: foundry-doc-v1
 title: "Machine-based authorization"
 slug: machine-based-auth
 category: security
-type: concept
+type: topic
 content_type: topic
 quality: complete
 status: active
 audience: vendor-public
-bcsc_class: public-disclosure-safe
+bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-07-28
+last_edited: 2026-08-03
 editor: pointsav-engineering
+short_description: "Access is granted to a device's key rather than to a person's password. A short-code pairing ceremony binds an SSH key fingerprint to a user record after operator approval, with no password stored anywhere."
 paired_with: machine-based-auth.es.md
-short_description: "Machine-based authorization replaces username and password with cryptographic pairing of physical hardware — the pair is the permission, eliminating remote credential theft."
-cites: []
-references:
-  - id: 1
-    text: "Perrin, T. 'The Noise Protocol Framework.' noiseprotocol.org, 2016."
-    url: "https://noiseprotocol.org/noise.html"
-  - id: 2
-    text: "Donenfeld, J. A. 'WireGuard: Next Generation Kernel Network Tunnel.' NDSS Symposium, 2017."
-    url: "https://www.ndss-symposium.org/ndss2017/ndss-2017-programme/wireguard-next-generation-kernel-network-tunnel/"
 ---
 
-Every password is a secret a person must remember, and therefore a secret an attacker can take. Phishing, password guessing, credential stuffing, social engineering — the entire class of remote credential theft exists because the credential is something a human knows.
+**Machine-based authorization** (MBA) grants access to a specific device's cryptographic key
+rather than to a person's memorised secret. There is no password to store, transmit, guess, reuse,
+or phish; what a user holds is a private key that never leaves their machine, and what the system
+records is the fingerprint of the corresponding public key. Access is revoked by removing that
+fingerprint, not by forcing a credential reset.
 
-Machine-based authorization removes the knowable secret. Access is a cryptographic pairing of two pieces of physical hardware — the pair is the permission. When a device requests access, both ends demonstrate possession of complementary key material; if the pair verifies, the connection forms; if it does not, the machines are mutually invisible. This model is called **Geometric Security**: access is defined by the topology of active pairings rather than the transmission of shared secrets. A machine that is not paired cannot connect, regardless of what else it knows or presents.
+Every password is a secret a person must remember, and therefore a secret an attacker can phish,
+guess, stuff, or socially engineer out of them — the entire category of remote credential theft
+exists because the credential is something a human knows. Key-based authorisation moves the attack
+to physical or persistent access to a specific machine, which is harder to achieve at scale and
+much more visible when it happens.
 
-Because authorization binds to hardware rather than to a memorized secret, there is no users table to breach, no login form to phish, and no password to reset. Revocation is physical: the pairing is severed at the machine, and the entire class of remote credential-theft attacks is eliminated by structure rather than by policy.
+## The pairing ceremony
 
-For a regulated buyer the consequence is concrete. An attack class disappears, and every access event is attributable to specific hardware in the audit ledger. This article covers how pairings work, the four pairing types, the structural advantages over passwords, and the relationship to the [[diode-standard|Diode]] and audit layers.
+The live implementation is the `system-gateway-mba` component, and it works as a request,
+approval, and binding sequence rather than a login.
 
-> **Planned direction — over-the-internet host-native access.** os-console is intended to run host-native on the operator's own machine and pair to a remote Totebox Archive over the public internet. The intended transport is mutual TLS to a verified Totebox endpoint, with machine-based authorization unchanged as the access boundary — the pairing remains the permission, a model aligned with device-identity standards including OAuth 2.0 Device Authorization Grant, Tailscale's control and data-plane separation, and SPIFFE workload identity. Planned hardening includes pairing revocation and short-lived device certificates. *Honesty note:* the current over-the-internet path uses an SSH port-forward tunnel that does not yet verify the remote server's identity, so the end-to-end property — the vendor cannot read operator data in transit — is **intended but not yet delivered** over that hop; it holds once verified mutual TLS lands. See `BRIEF-os-console-rebuild-2030.md` Layer 1.
+A device submits a pairing request carrying a username, an organisation, its public key, and that
+key's fingerprint. The server records the request with a generated identifier, a short pairing
+code, an attempt counter, a creation time, and an expiry time, and places it in the `pending`
+state. An operator then approves or denies it out of band, having compared the short code shown on
+the device against the one shown in the approval interface — the step that prevents a request from
+an unknown machine being approved by mistake.
 
-## Infrastructure and application: two independent layers
+Approval moves the request to `approved` and creates the user record binding username,
+organisation, and key fingerprint. Denial moves it to `denied`. A sweep marks requests whose expiry
+has passed as `expired`. Five HTTP routes cover the ceremony: request, approve, deny, a listing of
+pending requests, and a per-request status lookup.
 
-MBA operates at the application layer, above and independent of any network infrastructure. This separation is central to the architecture.
+The record shape is deliberately small. The request table holds identifier, code, username,
+organisation, fingerprint, public key, role, state, attempt count, creation time, and expiry. The
+user table holds fingerprint, username, organisation, role, an active flag, and creation time, with
+the fingerprint unique and the organisation constrained to one of two permitted values. **No
+password field exists in either table** — verifiable by reading the schema.
 
-The [[ppn-mesh-architecture|PointSav Private Network]] — the WireGuard mesh that connects fleet nodes — provides the transport that `os-*` services run on. Network membership means a machine can reach other machines on the mesh. It does not confer access to what those machines host. A node on the PPN without MBA pairings can reach the network; it cannot open any archive.
+### What the fingerprint is
 
-Two independent security layers protect a complete `os-console` → `os-totebox` connection:
+The authorisation module is ten lines and does exactly one thing: it computes an OpenSSH-format
+SHA-256 fingerprint of a presented public key. The component's dependencies are an SSH library used
+for key parsing and fingerprinting, an embedded SQLite database, a random-number source, and
+ordinary serialisation and HTTP crates. The pairing code itself is generated from a
+non-cryptographic random source in a human-transcribable alphabet — appropriate for a code an
+operator reads aloud or retypes, and not a secret in its own right, since it is useless without
+operator approval.
 
-**Layer 1 — Network membership (PPN):** The connecting machine must be a registered WireGuard peer. Network traffic from unregistered peers is dropped at the network layer.
+## Two independent layers: network membership and application pairing
 
-**Layer 2 — Application pairing (MBA):** The connecting `os-*` service must present a registered public-key fingerprint to `system-gateway-mba`, the application-level gateway component running on the target service. If no pairing record exists for that fingerprint, the connection is refused — even if the network layer allowed the traffic through.
+MBA operates at the application layer, deliberately independent of network infrastructure. In
+deployments using the platform's [[ppn-mesh-architecture|private mesh network]], reaching a machine
+at all requires being a registered peer of the encrypted mesh — that is network membership, one
+layer. MBA is the other: even a machine that can reach the target over the network is refused at
+the application boundary unless its key fingerprint matches an approved pairing. A party that
+operates network infrastructure — even the vendor — does not thereby gain application-layer access
+to the data running on it: network reachability and data access are granted by different
+mechanisms, held by different parties.
 
-A machine can be on the PPN without any MBA pairings. It can reach the network; it cannot open any doors. This is the sovereignty boundary: the party that owns the network infrastructure does not gain application-layer access to the data that runs on it.
+A separate node-join service runs the same request-approve-deny-expire shape for admitting compute
+nodes to the private network itself. Its records carry a node identifier, a mesh public key, a
+declared lower layer, and an architecture; approved nodes are appended to a log file that mesh
+provisioning tooling reads. A small shared library provides the short-code generation,
+normalisation, and terminal-rendered scannable code used by both ceremonies. The mesh public key is
+worth a precise word: it is stored and passed through as an opaque string. Neither service performs
+a mesh key exchange; provisioning is carried out by external tooling invoked from shell scripts, and
+the placeholder directory nominally reserved for that tooling contains only a README.
 
-## How a pairing works
+## Roles, and what they are not
 
-A pairing is a cryptographic handshake between two machines. The two ends hold complementary public and private key material. When a [[console-os|Command Ledger]] connects to a [[totebox-os|Totebox]], both sides demonstrate possession of the corresponding key. If the pair verifies, the connection is established. If it does not, the machines are invisible to each other.
+The role attached to a pairing user record is a plain string, not a typed set of values, and the
+approval path writes a single hardcoded default into it. The database applies no constraint on its
+content. No handshake-protocol implementation of the kind sometimes associated with this design — a
+Noise-style or mesh-VPN-style key exchange — exists anywhere in the component's source; a
+whole-tree search found no Noise implementation and no corresponding library anywhere in canonical
+source.
 
-`service-pairing` manages these pairings using the Noise Protocol [^1] and WireGuard-style keys [^2], derived from hardware attestation where the underlying platform supports it.
+A typed pairing role does exist elsewhere in the platform: `PairingRole` in the orchestration
+command component (`app-orchestration-command`), an enum with three values — `User` (read/write,
+daily operator), `Admin` (full access), and `Interface` (metadata-only, for the orchestration
+aggregator). It is not the same field, does not live in this component, and does not carry a fourth
+value. Descriptions of four named authorisation tiers implemented as code constructs in this
+pairing system are not supported by the source; the separate four-tier `PermissionTier` model that
+does exist (`P1`–`P4`) is described in [[personnel-permissions]] and belongs to a different
+component and a different data path — the two enums live in the same crate but govern unrelated
+concerns and should not be conflated.
 
-**Correction (2026-07-28):** the live crate that implements this is `system-gateway-mba`
-(674 lines total), not a `service-pairing` — that crate name was not found anywhere in
-the monorepo. Its actual mechanism, per `pairing_db.rs`'s schema (`request_id, code,
-username, tenant, fingerprint, public_key, state`) and `pairing_http.rs`, is a
-request/approval workflow keyed by a short `code` and a `public_key`/`fingerprint` pair
-moving through `pending`→`approved`/`denied` states — genuinely password-free and
-genuinely hardware-key-bound, matching this article's core claim, but not a live Noise
-Protocol handshake; no "Noise" or "WireGuard-style key exchange" reference was found
-anywhere in the crate's source. `user.rs`'s role field is a plain `role: String`, not a
-typed enum matching the four named tiers below — `auth.rs` is a 10-line near-stub. **Not
-a whole-article mismatch** — the password-free, hardware-bound design principle holds and
-the crate is real — but the specific handshake protocol and the four-tier taxonomy as
-named code constructs are not found in what's built today. Flagged, not resolved; needs
-project-totebox confirmation of whether the tiers exist as a design intent not yet coded,
-or whether `role: String` is the actual (looser) current mechanism.
+The component itself has grown since it was last measured — it now runs to roughly 870 lines across
+its source files, not the smaller figure sometimes quoted for it — though its shape (request table,
+user table, five HTTP routes, ten-line fingerprint module) is unchanged.
 
-| Property | Behaviour |
-|---|---|
-| Authentication | The pairing key itself — no password is ever transmitted or stored |
-| Authorisation | The presence of the pairing; permission is the pair |
-| Revocation | The pairing is severed at one or both ends; the machines become mutually invisible |
-| Hardware binding | Where possible, the private key is sealed in the host's hardware enclave |
+## The transport gap
 
-## The four pairing types
+One honest limitation belongs in the body rather than a footnote. Host-native access over the
+public internet currently runs through an SSH port-forwarded tunnel that does **not** verify the
+remote server's identity. The intended property — that the vendor cannot read operator data in
+transit — is therefore not delivered over that hop today. It becomes true when verified mutual TLS
+lands on that path; until then, the pairing ceremony authenticates the device to the service, but
+the service is not cryptographically authenticated back to the device across that specific tunnel.
 
-A [[totebox-os|Totebox]] recognises four pairing types, distinguished by the relationship between the pair's endpoints and the data.
+## Why pairing rather than accounts
 
-| Pairing | Endpoint | Access | Function |
-|---|---|---|---|
-| ADMIN | Owner's primary machine ↔ Totebox | Absolute | Master key for VM and hardware control, migration, and key management |
-| INPUT | Operator's daily machine ↔ Totebox | Read / write | The default state — full agency over personal data, email, and files |
-| USER | Restricted-access machine ↔ Totebox | Read-only | Consulting the data without modifying it — auditors, advisors |
-| INTERFACE | Orchestration aggregator ↔ Totebox | Metadata only | Fleet visibility without record-level access |
+Three properties follow from binding authority to a device rather than a person.
 
-The INPUT pairing is the default and the most powerful type: a Totebox owner has full agency by default, and restrictions are deliberate downgrades rather than default settings.
+**Revocation is exact.** Removing a fingerprint removes one machine's access. A compromised laptop
+is dealt with without disturbing the same person's other devices or forcing an organisation-wide
+credential reset. A departed contractor's retained software copies are inert without approved key
+material, and the approval workflow's request records double as an audit trail of who was granted
+what, and when.
 
-## Why this beats passwords
+**Enrolment is observed.** A device becomes known through an approval decision made by a person who
+compared a code, not through a self-service form. There is no path by which a device enrols itself,
+and no phishing surface exists: a pairing is never typed, so an operator cannot be tricked into
+entering it into a counterfeit form.
 
-Three structural advantages follow from replacing passwords with pairings.
+**The stored value is not a secret.** A fingerprint discloses nothing usable. A breach of the
+pairing database yields a list of which keys were trusted — useful reconnaissance, but not
+credentials, which is a materially different exposure from a leaked password store. A quieter,
+compounding advantage follows: the model has no credential-hygiene liturgy — no rotation schedules,
+no complexity policies, no expiring passwords generating helpdesk resets. What remains is a short,
+inspectable list of approved machine keys per tenant, which is a security posture a reviewer can
+actually audit to completion.
 
-**No central database to breach.** There is no users table anywhere in the architecture. A successful breach of any one component yields no credential material useful elsewhere.
+## What this is not
 
-**No phishing surface.** An operator cannot be tricked into typing a pairing into a fake login form, because a pairing is never typed. It is demonstrated cryptographically by the hardware itself.
+**There is no Noise Protocol handshake and no key exchange in this component.** The cryptography
+present is SSH public-key fingerprinting; the mesh keys the pairing services handle are opaque
+strings passed to external tooling.
 
-**Physical revocation.** When an operator's access should end, the pairing is severed at the machine level. A retained copy of the software binary is inert without the key material; there is no password to reset.
+**The component is not named `service-pairing`.** No component of that name exists. The live
+implementation is `system-gateway-mba`, and the node-join ceremony is a separate service again.
 
-## The boundary discipline
+**The role field is not an enforced tier.** It is an unconstrained string with a hardcoded default
+at approval time, not a typed enumeration and not a checked authorisation level. A three-value typed
+role does exist, but in a different component for a different purpose, and it is not the four-tier
+taxonomy sometimes described for this one.
 
-Pairing alone does not grant data access. It grants the ability to attempt access. The [[diode-standard|Diode Standard]] governs what flows through an established pair; the audit ledger records every command and every response. The pair is the prerequisite; the Diode and the [[worm-ledger-design|WORM ledger]] are the gates.
+**MBA is not multi-factor authentication layered on passwords.** There is no password anywhere to
+add factors to; the model replaces the category. Nor is it biometric: nothing about a human body is
+measured or stored, and the bound entity is a machine, not a person — which also means MBA alone
+does not tell you *which human* was at the keyboard of an approved machine; personnel-level
+identity and tiering are the separate [[personnel-permissions|personnel and permissions]] layer.
 
-The combination — pairing as access, Diode as direction, audit as record — makes the system auditable end to end, with no password-rotation policy anywhere in it.
+**Pairing is not a login session.** It establishes that a device is known. What that device may
+then do is governed by the permission model described elsewhere, which draws on a different data
+source entirely, the [[diode-standard|Diode Standard]]'s directional rules, and the
+[[worm-ledger-design|append-only audit ledger]] every access event lands in. The pair is the
+prerequisite; the direction rules and the ledger are the gates.
 
-## Architecture connections
+**A pairing code is not a credential.** It is a short human-transcribable value from a
+non-cryptographic random source, meaningful only during the approval window and only alongside an
+operator decision.
 
-Machine-based authorization connects to three other architectural layers.
-
-- **[[sel4-microkernel-substrate|seL4 microkernel]]** — the kernel enforces that capability tokens cannot be forged by software running at user privilege.
-- **[[capability-based-security|Capability-based security]]** — the capability manager issues and revokes hardware-bound tokens; the access-control model depends on hardware binding for its security guarantees.
-- **[[worm-ledger-design|WORM ledger]]** — every authorization event is logged to the append-only ledger, an externally verifiable record of which hardware reached which resource, and when.
-- **`system-gateway-mba`** — the application-level gateway crate that enforces pairing records at each `os-*` service boundary; the component that checks incoming key fingerprints against the pairing registry and refuses connections without a matching record.
-
-## Why service-auth was rejected
-
-Early designs considered `service-auth`, modelled on a traditional directory service, as the identity provider. The decision was reversed: a directory service is structured around users, passwords, and group hierarchies — the exact model [[pointsav-overview|PointSav]] is replacing. `service-pairing` was created as the deliberate alternative, and `service-auth` was removed from the architecture before any code was written. See [[pairing-as-permission|pairing as permission]].
+**End-to-end transport confidentiality is not currently delivered over the remote-access tunnel.**
+See the transport gap above; this is stated as intended, not achieved.
 
 ## See also
 
-- [[diode-standard]] — the unidirectional command flow that governs what passes through an established pair
-- [[worm-ledger-design]] — the append-only audit ledger that records every authorization event
-- [[sel4-microkernel-substrate]] — the seL4 microkernel that enforces capability-token integrity
-- [[compliance-and-continuous-disclosure]] — how hardware-bound authorization supports continuous-proof compliance
-- [[deployment-patterns]] — how MBA pairing applies across the six canonical deployment configurations
-- [[pair-a-new-device]] — step-by-step guide: register a device and assign a pairing tier
-- [[ppn-mesh-architecture]] — the WireGuard mesh infrastructure layer the `os-*` services run on; MBA operates above and independently of the PPN
+- [[pairing-as-permission]] — the principle that the pairing record is itself the authorisation
+- [[pair-a-new-device]] — the operator procedure for running the ceremony
+- [[personnel-permissions]] — the four-tier permission model and where it actually lives
+- [[enroll-ppn-node]] — the node-join variant of the same ceremony
+- [[app-console-keys]] — the device-side interface presenting the pairing code
+- [[capability-based-security]] — the authority model above device authentication
+- [[diode-standard]]
+- [[ppn-mesh-architecture]]

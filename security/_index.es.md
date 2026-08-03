@@ -32,7 +32,7 @@ Quién es conocido por el sistema, cómo lo demuestra un dispositivo, y qué se 
 
 Cómo un lector comprueba de forma independiente que un registro no ha sido alterado.
 
-- [[crypto-attestation|Atestación criptográfica de carga útil]] — hash SHA-256 del lado del cliente para que cualquier visitante verifique que el contenido publicado no cambió en tránsito
+- [[crypto-attestation|Atestación criptográfica de carga útil]] — hash SHA-256 del lado del cliente que permitiría a cualquier visitante verificar que el contenido publicado no cambió en tránsito; hoy es un patrón cosmético y sin conectar presente en algunas plantillas, no una capacidad que ninguna superficie publicada ofrezca realmente
 - [[cryptographic-ledgers|Libros contables criptográficos]] — el patrón de almacenamiento de estado inmutable: entradas encadenadas por hash, checkpoints firmados, anclaje mensual en Sigstore Rekor
 
 ## Límites de aislamiento
@@ -51,7 +51,7 @@ Qué contiene un compromiso una vez que ocurre. Delgado en relación con el alca
 
 Mantener el código honesto desde la máquina de un colaborador hasta producción.
 
-- [[five-stage-supply-chain|Cadena de suministro soberana de cinco etapas]] — la ruta fork → PR → squash-merge → espejo → despliegue, y el air-gap doble ciego entre colaborador y cliente
+- [[five-stage-supply-chain|Cadena de suministro de cinco etapas]] — la ruta de promoción de colaborador a cliente, controlada por un script de promoción fuertemente resguardado y no por una solicitud de extracción (pull request), y el air-gap doble ciego entre colaborador y cliente
 - [[pre-commit-defense-in-depth|Defensa en profundidad pre-commit]] — la puerta de solo ayudante, el análisis de patrones de secretos y la guarda de tamaño que se ejecutan en cada confirmación
 
 ## Véase también

@@ -1,98 +1,170 @@
 ---
-schema: foundry-doc-v1
 title: "Diode standard"
 slug: diode-standard
 category: security
-type: concept
+type: topic
 content_type: topic
 quality: complete
 status: active
 audience: vendor-public
-bcsc_class: public-disclosure-safe
+bcsc_class: forward-looking
 language_protocol: PROSE-TOPIC
-last_edited: 2026-07-28
+last_edited: 2026-08-03
 editor: pointsav-engineering
+short_description: "The Diode Standard is the design rule that command and data flow in one direction only, from authority to subject. Several real mechanisms follow it; no component enforces it as a named standard."
 paired_with: diode-standard.es.md
-short_description: "Foundational security topology of the PointSav OS family — unidirectional command flow from authority to subject that removes lateral-movement attacks by design."
-cites: []
-references:
-  - id: 1
-    text: "Rose, S. et al. 'Zero Trust Architecture.' NIST SP 800-207, 2020."
-    url: "https://doi.org/10.6028/NIST.SP.800-207"
-  - id: 2
-    text: "MITRE. 'ATT&CK Tactic: Lateral Movement (TA0008).' MITRE Corporation, 2023."
-    url: "https://attack.mitre.org/tactics/TA0008/"
 ---
 
-An attacker who breaches one machine rarely wants that machine. They want the next one. Lateral movement — pivoting from a first compromised node to more valuable nodes — is the dominant pattern in modern breach reports [^2].
+**The Diode Standard** is this platform's design rule that command and data move in one direction
+only — from an authoritative side to a subordinate side — with no return path capable of carrying
+instructions. It borrows its name from the electrical component that conducts current one way and
+blocks it the other, and from the "data diode" appliances used in industrial and defence networks
+to let telemetry leave a protected segment while making it physically impossible for anything to
+enter. Under the standard, a subject system is not merely *forbidden* from commanding its peers or
+its authority — the design goal is that it holds no code capable of expressing such a command in
+the first place: no shell client toward the authority, no peer-to-peer routing table, no
+administrative request path.
 
-The Diode Standard removes the pivot. In electrical engineering a diode conducts current one way and blocks the other; the Diode Standard applies the same rule to commands across the [[pointsav-overview|PointSav]] [[os-family-overview|operating-system family]] — traffic flows from authority to subject, and never the reverse [^1].
+The security argument for the rule is about lateral movement rather than confidentiality. Most
+serious intrusions are not a single breach but a chain: an attacker reaches a low-value endpoint,
+then uses the connection that endpoint already has back toward a management server to reach
+something more valuable. A strictly one-directional link removes the second half of that chain
+structurally. There is no reverse channel to abuse, so a compromised subject cannot escalate toward
+the authority through the link that connects them, regardless of what credentials it holds. The
+audit economics matter as much as the breach economics: in a fleet where connections may run in any
+direction, reviewing the topology means reasoning about every pair of systems separately. Under a
+Diode-conformant fleet, every legitimate connection has the same shape — control down, sanitized
+telemetry up, nothing else — and a reviewer checks one rule everywhere.
 
-A Subject operating system has no code to initiate an authority relationship: no shell client, no peer-to-peer routing table. Upstream control is not blocked by a firewall rule — the code to express it does not exist on the Subject.
+## Where the rule is stated
 
-For a regulated buyer the consequence is concrete. An entire breach category is removed by structure, and a complex fleet stays auditable because every connection obeys one uniform rule. This article covers the authority hierarchy, the three traffic categories, the structural removal of lateral movement, and the adapter that enforces the standard.
+The standard is a documented design principle across this platform's internal engineering
+material — a user guide section, a corporate glossary entry defining it as "a universal one-way
+command flow from source to endpoint," internal architecture notes, and public positioning copy
+that names it among the platform's differentiating protocols. It also governs the topology of the
+[[os-family-overview|operating-system family]]: an authority side (the operator console and
+orchestration systems) issues commands and receives telemetry, while a subject side (the archive,
+media delivery, source-control, infrastructure, and network administration systems) executes
+commands and emits telemetry, never originating one.
 
-## The hierarchy
+It is important to be exact about what that means. The Diode Standard is real *as a stated design
+rule*. What has not been established is that any single named component enforces it as a standard,
+checks conformance to it, or refuses traffic on the grounds of violating it.
 
-The Diode is the foundational topology of the whole operating-system family — not a feature of one operating system, but the law governing how all of them communicate.
+## Mechanisms that follow the rule today
 
-| Position | Operating system | Privilege |
-|---|---|---|
-| Authority | [[console-os|`os-console`]] and [[os-orchestration|`os-orchestration`]] | Issues commands; receives telemetry |
-| Subject | [[totebox-os|`os-totebox`]], [[mediakit-os|`os-mediakit`]], [[os-privategit|`os-privategit`]], [[infrastructure-os|`os-infrastructure`]], [[os-network-admin|`os-network-admin`]] | Executes commands; emits telemetry; never originates a command |
+Several implemented mechanisms genuinely move data in one direction. They were built for their own
+purposes and each satisfies the rule in its own domain; none of them is a general-purpose diode
+enforcer.
 
-A Totebox cannot command a MediaKit; a MediaKit cannot reach into a Totebox. A compromised Subject cannot move laterally to another Subject, because the protocol stack contains no routing logic to do so.
+### Pull-and-wipe egress
 
-## The three traffic categories
+The clearest case is the egress pair. `tool-egress-pull` — which names itself "the asymmetric
+diode" in its own documentation — pulls data chunks from a relay host to local storage over SSH,
+reassembles and decompresses them, and only after computing a local SHA-256 checksum to verify
+fidelity sends a single authorisation back to the relay: a "WIPE" marker instructing it to delete
+its copy. A daemon on the relay side consumes those markers and removes the source files. Data
+therefore moves only outward-to-inward; the sole reverse signal is a delete authorisation, which
+carries no payload and cannot instruct the relay to do anything else.
 
-| Traffic | Direction | Status |
-|---|---|---|
-| Downstream control | Authority → Subject | Permitted: configuration, content, commands, updates |
-| Upstream telemetry | Subject → Authority | Permitted but strictly sanitised: logs, heartbeats, status |
-| Upstream control | Subject → Authority | Structurally blocked: no shell access, no RPC, no admin requests |
+### Telemetry pull rather than push
 
-Upstream control is blocked because the Subject is structurally incapable of initiating an authority relationship. The absence is the control.
+The measurement pipeline described in [[data-sovereignty-telemetry]] is retrieved by scheduled pull
+scripts rather than pushed from a central controller into deployments, which keeps the control
+direction consistent with the rule.
 
-## Why this matters
+### Ingestion described as a diode
 
-Lateral movement — an attacker compromising one node and using it to reach more valuable nodes — is the dominant pattern in modern breach reports [^2]. The Diode Standard removes it structurally.
+The email service's harvesting component (`service-email/master-harvester-rs`) names its own
+micro-batching logic "the ingress diode" directly in source comments and startup logging. Its role
+is consistent with the framing: it draws messages inward into the extraction pipeline and produces
+queued fragments for downstream processing, with no path by which the pipeline instructs the
+mailbox it read from. This is the one place in the tree where a component adopts the vocabulary of
+the standard for itself, though it does so descriptively — nothing in it checks or enforces
+directionality as a rule.
 
-| Scenario | Without the Diode | With the Diode |
-|---|---|---|
-| A plugin on `os-mediakit` is compromised | The attacker rides the management tunnel back to the corporate `os-totebox` | The adapter has no upstream route; the attacker is contained on the public-facing host |
-| A Totebox kiosk is physically compromised | The attacker scans the local network and pivots to the MediaKit | The kiosk Totebox cannot route to other Subjects; it is a dead end |
-| `os-orchestration` is compromised | The attacker holds the keys to every Totebox in the fleet | `os-orchestration` holds no Totebox keys; it requests signed capabilities per query, so a full Orchestration compromise yields no Totebox decryption material |
+### Directional code promotion
 
-## The adapter
+The strongest enforcement in the platform is over source code rather than runtime data. Promotion
+(`bin/promote.sh`) runs in one direction only — from staging mirrors, to the canonical repository,
+to local service mirrors — and the script actively refuses the reverse case: it permits only
+fast-forward pushes or explicit commit-by-commit replays onto the canonical branch, blocks true
+history divergence, blocks mass deletions above a threshold, blocks patterns that would silently
+revert canonical content, and enforces a strict path allowlist against unlisted top-level
+directories. This is a real, hardened, one-directional flow, and it is the platform's best evidence
+that the rule is operationally taken seriously — though it governs a build pipeline rather than the
+runtime command path the standard describes.
 
-**Correction (2026-07-28):** neither `service-pointsav-link` nor a `pointsav-protocol`
-package was found anywhere in `pointsav-monorepo` — no crate directory of either name
-exists, and a corpus-wide search for both strings returns nothing outside this article.
-The one crate in the monorepo with a matching name, `moonshot-protocol`, is a 7-line
-placeholder (`pub fn system_status() -> &'static str { "SYSTEM EVENT: moonshot-protocol
-scaffold verified." }`) with no dependencies and no Diode-related logic. A corpus-wide
-search for "Diode"/"DiodeStandard" in Rust source also returns nothing. **Flagged, not
-resolved** — this may describe a planned adapter that hasn't been built yet, or a design
-that was renamed/abandoned; needs project-totebox confirmation of whether any code
-currently enforces the Diode Standard at all before this section is corrected.
+## What was expected and is not present
 
-The Diode is enforced by a small, hot-pluggable service, [[service-pointsav-link|`service-pointsav-link`]] (the `pointsav-protocol` package). It is the only code that translates authority commands into Subject-executable operations.
+Earlier descriptions of this standard named a specific enforcing component — a small,
+hot-pluggable link service, absent by default and installable by the operator, that would be the
+only code translating authority commands into subject-executable operations. Direct search of the
+canonical source tree confirms that no package of that name, under either of the two names
+previously used, exists anywhere. A corpus-wide search for both strings, and for "Diode" or
+"DiodeStandard" in Rust source, returns nothing outside documentation about this article's own
+subject.
 
-| Property | Behaviour |
-|---|---|
-| Default state | Not installed; the Subject has no concept of phoning home |
-| Activated state | Hot-plugged by the operator with a single command; brings the Subject under fleet management |
-| Failure mode | If the adapter crashes, the link severs cleanly; the Subject keeps running standalone; the fleet-management surface goes dark |
-| Code path | Diode policy lives inside the adapter, not the OS kernel — the policy can be updated without touching the rest of the system |
+The one package with a similar-sounding name is a seven-line placeholder whose single function
+returns a scaffold-verification string and whose dependency list is empty. It contains no
+directional logic of any kind.
 
-## The universal standard
+**What this means is genuinely unresolved rather than resolved-negative.** The adapter may be a
+planned component not yet built, or a design that was renamed or superseded — prior internal
+planning material lists it with a status of "conceptual," consistent with a design that was scoped
+and named but not built. The question has been flagged for confirmation by the owning engineering
+group, and this article does not guess at an answer. Until that answer lands, the accurate
+statement is: the Diode Standard is a published design rule for the platform's topology, and no
+code currently in the monorepo can be identified as implementing it as a general enforcement
+mechanism.
 
-The Diode is not a [[mediakit-os|MediaKit]] feature or a [[totebox-os|Totebox]] feature; it applies identically to every `os-*` operating system. The same [[service-pointsav-link|`service-pointsav-link`]] package, with different policy bindings, sits between any pair of nodes that communicate.
+## Enforcement by absence versus enforcement by mechanism
 
-This single uniform standard is why a complex fleet stays auditable: every connection looks the same and obeys the same rules.
+The stronger claim sometimes made for this design — that a subject system is *structurally
+incapable* of issuing commands back to its authority because no client capability is compiled into
+it — is a different and much more demanding claim than one-directional data movement.
+
+That claim is not verifiable from source alone. What is observable is the absence of
+reverse-command code in the relevant daemons, which is consistent with the design but is weaker
+evidence than a positive mechanism would be. Absence of a capability in today's build is a property
+that any future commit can silently remove; a mechanism that refuses reverse traffic is a property
+that survives. A reader assessing this platform's isolation posture should treat the directional
+guarantee as an architectural intention supported by the current shape of the code, not as a
+checked invariant.
+
+## What this is not
+
+**This is not a hardware data diode.** Nothing described here involves an optical isolator, a
+one-way physical link, or any device that makes reverse transmission electrically impossible. The
+directionality is a property of software design and process, and it is defeated by a
+misconfiguration in a way that a physical diode is not.
+
+**No component enforces the Diode Standard by name.** No conformance check, policy file, or runtime
+gate refers to it. The mechanisms listed above follow the rule; none of them polices it.
+
+**The previously named enforcing adapter does not exist.** Neither of the package names used in
+earlier descriptions is present anywhere in canonical source — a confirmed absence, not merely an
+unsearched gap — and whether it was abandoned, renamed, or deferred remains an open question this
+article does not resolve.
+
+**The code-promotion controls are not the runtime diode.** They are the platform's most complete
+directional enforcement, but they govern how source code reaches production, not how commands flow
+between a running authority and a running subject. Conflating the two overstates the runtime
+guarantee.
+
+**One-directional flow is not confidentiality, and it is not an authentication scheme.** The rule
+limits what an attacker can do after reaching a subject system; it says nothing about whether the
+data crossing the link is encrypted, and it governs *direction* of control, not *identity* of the
+parties. Identity and access are the province of [[machine-based-auth|machine-based
+authorization]], which decides whether two machines may form a connection at all — the Diode then
+constrains what may flow across a connection that authorization has permitted.
 
 ## See also
 
-- [[os-family-overview]] — the eight operating systems the Diode topology governs
-- [[machine-based-auth]] — the machine-based authorization system the Diode works alongside
-- [[deployment-patterns]] — the fleet deployment patterns that apply the Diode discipline
+- [[os-family-overview]]
+- [[machine-based-auth]]
+- [[capability-based-security]]
+- [[sel4-capability-topology]]
+- [[five-stage-supply-chain]] — the promotion path whose directionality is enforced in script
+- [[data-sovereignty-telemetry]] — the pull-based measurement pipeline
+- [[reverse-flow-substrate]] — the wider treatment of directional data movement across the platform

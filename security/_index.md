@@ -32,7 +32,7 @@ Who is known to the system, how a device proves it, and what it's allowed to do.
 
 How a reader independently checks that a record hasn't been altered.
 
-- [[crypto-attestation|Cryptographic payload attestation]] — client-side SHA-256 hashing so any viewer can verify published content wasn't changed in transit
+- [[crypto-attestation|Cryptographic payload attestation]] — client-side SHA-256 hashing that would let any viewer verify published content wasn't changed in transit; today it's an unwired, cosmetic pattern in a few templates, not a capability any shipped surface actually offers
 - [[cryptographic-ledgers|Cryptographic ledgers]] — the immutable-state storage pattern: hash-chained entries, signed checkpoints, monthly Sigstore Rekor anchoring
 
 ## Isolation boundaries
@@ -51,7 +51,7 @@ What contains a compromise once one occurs. Thin relative to the category's own 
 
 Keeping code honest from a contributor's machine to production.
 
-- [[five-stage-supply-chain|Five-stage sovereign supply chain]] — the fork → PR → squash-merge → mirror → deploy path, and the double-blind air-gap between contributor and customer
+- [[five-stage-supply-chain|Five-stage supply chain]] — the contributor-to-customer promotion path, gated by a heavily guarded promotion script rather than a pull request, and the double-blind air-gap between contributor and customer
 - [[pre-commit-defense-in-depth|Pre-commit defense in depth]] — the helper-only gate, secret-pattern scan, and size guard that run on every commit
 
 ## See also
