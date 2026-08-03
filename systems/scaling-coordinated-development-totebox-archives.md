@@ -11,16 +11,8 @@ category: systems
 short_description: "Coordination bottlenecks past twenty archives — publication serialization, message relay latency, operator load, and the path to per-archive process isolation."
 status: active
 language_protocol: TOPIC
-route: project-editorial
-target_wiki: documentation.pointsav.com
-created: 2026-06-20
-last_edited: 2026-07-09
+last_edited: 2026-08-03
 editor: pointsav-engineering
-session: Session 111 (Command@claude-code)
-research_trail:
-  source_briefs: [command-10x-dev-environment]
-  cross_checks: [BRIEF-10x-dev-environment.md, pairings.yaml, AGENT.md]
-  forbidden_terms_cleared: true
 ---
 
 The `app-orchestration-command` topology is designed to accommodate growth. This article describes the coordination challenges that appear as the number of [[totebox-archive|Totebox Archives]] increases, the mechanisms introduced to address them, and the planned trajectory toward per-archive process isolation.

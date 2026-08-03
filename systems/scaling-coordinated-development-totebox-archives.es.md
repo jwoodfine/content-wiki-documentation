@@ -11,16 +11,8 @@ category: systems
 short_description: "Cuellos de botella de coordinación más allá de veinte archivos — serialización de publicaciones, latencia de mensajes, carga del operador y aislamiento por proceso."
 status: active
 language_protocol: TOPIC
-route: project-editorial
-target_wiki: documentation.pointsav.com
-created: 2026-06-20
-last_edited: 2026-07-09
+last_edited: 2026-08-03
 editor: pointsav-engineering
-session: Session 111 (Command@claude-code)
-research_trail:
-  source_briefs: [command-10x-dev-environment]
-  cross_checks: [BRIEF-10x-dev-environment.md, pairings.yaml, AGENT.md]
-  forbidden_terms_cleared: true
 ---
 
 La topología de `app-orchestration-command` está diseñada para crecer. Este artículo describe los desafíos de coordinación que aparecen a medida que aumenta el número de [[totebox-archive|Totebox Archives]], los mecanismos introducidos para abordarlos y la trayectoria prevista hacia el aislamiento de procesos por archivo.
