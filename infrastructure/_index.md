@@ -20,6 +20,7 @@ Infrastructure articles sit at the boundary between the abstract platform archit
 
 The foundational persistence layer — the Write-Once-Read-Many ledger and the bookkeeping vault built on top of it.
 
+- [[totebox-archive]] — A self-contained, freely transferable micro-virtual machine that persists institutional data as immutable flat files; the deployment and storage unit for the [[totebox-os|os-totebox]] archive layer.
 - [[worm-ledger-design]] — The four-layer Write-Once-Read-Many ledger: tile-based, hash-chained, cryptographically signed; satisfies SEC 17a-4(f), eIDAS, and SOC 2 by structure rather than policy.
 - [[worm-ledger-architecture]] — Architectural layout of the WORM ledger across Ring 1 services.
 - [[worm-ledger-storage-architecture]] — Physical storage organisation for WORM ledger deployments.

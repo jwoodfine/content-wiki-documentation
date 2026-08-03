@@ -23,7 +23,6 @@ PointSav builds a family of purpose-built operating systems that share a common 
 The core record-keeping systems at the foundation of every deployment — where the canonical record lives and how it is coordinated across a fleet.
 
 - [[totebox-os]] — The archive layer: one isolated, kernel-level vault per entity, storing records as inert flat files with no delete operation, exposed only through the Diode on command from os-console or os-orchestration.
-- [[totebox-archive]] — A self-contained, freely transferable micro-virtual machine that persists institutional data as immutable flat files.
 - [[totebox-orchestration]] — The coordination layer that manages multiple Totebox data-archive containers, keeping software execution engines isolated from passive corporate ledgers across deployments.
 
 ## Operator surfaces

@@ -7,18 +7,12 @@ slug: app-orchestration-command-branch-model
 aliases:
   - app-orchestration-command-branch-model
 title: "Per-archive branch model in app-orchestration-command"
-category: systems
+category: applications
 short_description: "Isolated per-archive branches under the app-orchestration-command coordinator — contamination prevention and independent pace ahead of publication to canonical."
 status: active
 language_protocol: TOPIC
-route: project-editorial
-target_wiki: documentation.pointsav.com
-created: 2026-06-20
-session: Session 111 (Command@claude-code)
-research_trail:
-  source_briefs: [command-10x-dev-environment]
-  cross_checks: [BRIEF-10x-dev-environment.md, pairings.yaml, AGENT.md]
-  forbidden_terms_cleared: false
+last_edited: 2026-08-03
+editor: pointsav-engineering
 ---
 
 **Correction substantially revised, 2026-08-02.** An earlier pass in this session concluded `app-orchestration-command` "is not a PointSav software product" and "no crate of that name exists anywhere in the monorepo." **That conclusion was wrong**, and the error is itself an important, corpus-wide finding: this archive's local working-tree checkout (`cluster/project-editorial` branch) is stale relative to canonical (`origin/main`) for multiple crates, including this one, `os-orchestration`, and `service-fs`. Checked directly against `origin/main`: `app-orchestration-command/` is real and substantial — a "CommandCentre" HTTP server (`crates/orchestration-command-server/src/main.rs`) with `pairing.rs`, `fleet.rs`, `routing.rs`, `personnel.rs`, `license.rs`, `invite.rs` modules, binding `127.0.0.1:8020` by default, explicitly configured against `COMMAND_PAIRINGS_PATH` (default `/srv/foundry/pairings.yaml`) and `COMMAND_CLONES_ROOT` (default `/srv/foundry/clones`) — real Foundry-workspace paths, consistent with (not a misattribution of) this article's subject. `os-orchestration/` is also real on `origin/main`, though its own `src/lib.rs` is a 4-line placeholder scaffold — the aggregator functionality itself isn't built there yet, so hedging that specific claim to planned/intended still likely applies, but "the crate doesn't exist" was the wrong framing.

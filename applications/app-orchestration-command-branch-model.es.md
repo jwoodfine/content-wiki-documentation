@@ -7,18 +7,12 @@ slug: app-orchestration-command-branch-model
 aliases:
   - app-orchestration-command-branch-model
 title: "Modelo de ramas por archivo en app-orchestration-command"
-category: systems
+category: applications
 short_description: "Ramas aisladas por archivo bajo el coordinador app-orchestration-command — prevención de contaminación y ritmo independiente antes de publicar al canónico."
 status: active
 language_protocol: TOPIC
-route: project-editorial
-target_wiki: documentation.pointsav.com
-created: 2026-06-20
-session: Session 111 (Command@claude-code)
-research_trail:
-  source_briefs: [command-10x-dev-environment]
-  cross_checks: [BRIEF-10x-dev-environment.md, pairings.yaml, AGENT.md]
-  forbidden_terms_cleared: false
+last_edited: 2026-08-03
+editor: pointsav-engineering
 ---
 
 Cada [[totebox-archive|Totebox Archive]] en la topología de `app-orchestration-command` opera en su propia rama aislada, separada del `main` canónico que gestiona el coordinador. Este artículo explica por qué existe ese aislamiento, qué protege y cómo el coordinador hace cumplir el límite durante la publicación.

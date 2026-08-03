@@ -7,18 +7,12 @@ slug: app-orchestration-command-publication-flow
 aliases:
   - app-orchestration-command-publication-flow
 title: "How app-orchestration-command publishes archive changes"
-category: systems
+category: applications
 short_description: "Publication mechanics under app-orchestration-command — how tested code crosses from archive branches into signed canonical history, with code-only filtering."
 status: active
 language_protocol: TOPIC
-route: project-editorial
-target_wiki: documentation.pointsav.com
-created: 2026-06-20
-session: Session 111 (Command@claude-code)
-research_trail:
-  source_briefs: [command-10x-dev-environment]
-  cross_checks: [BRIEF-10x-dev-environment.md, pairings.yaml, AGENT.md]
-  forbidden_terms_cleared: false
+last_edited: 2026-08-03
+editor: pointsav-engineering
 ---
 
 **Correction retracted, 2026-08-02:** an earlier pass said `app-orchestration-command` "is not a PointSav software product" — checked against a stale local branch. It's real and substantial on canonical (`origin/main`): a "CommandCentre" HTTP server with fleet/pairing/routing/license modules. See the fully revised finding on [[app-orchestration-command-branch-model]] — the specific publication-flow mechanics described below have not yet been re-verified against that real implementation.

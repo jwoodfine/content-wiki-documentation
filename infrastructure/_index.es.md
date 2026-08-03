@@ -21,6 +21,7 @@ Los artículos de infraestructura se sitúan en el límite entre la arquitectura
 
 La capa de persistencia fundacional — el libro de Solo Escritura y Múltiple Lectura y el vault contable construido sobre él.
 
+- [[totebox-archive|Archivo Totebox]] — Una máquina virtual micro-autónoma y libremente transferible que persiste datos institucionales como archivos planos inmutables; la unidad de despliegue y almacenamiento de la capa de archivo [[totebox-os|os-totebox]].
 - [[worm-ledger-design|Diseño del libro WORM]] — El libro de Solo Escritura y Múltiple Lectura de cuatro capas: basado en tiles, encadenado por hash, firmado criptográficamente; satisface SEC 17a-4(f), eIDAS y SOC 2 por estructura, no por política.
 - [[worm-ledger-architecture|Arquitectura del libro WORM]] — Disposición arquitectónica del libro WORM a través de los servicios del Anillo 1.
 - [[worm-ledger-storage-architecture|Arquitectura de almacenamiento WORM]] — Organización del almacenamiento físico para despliegues del libro WORM.

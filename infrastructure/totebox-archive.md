@@ -3,14 +3,14 @@ schema: foundry-doc-v1
 title: "Totebox archive"
 slug: totebox-archive
 short_description: "A Totebox Archive is a sovereign data vault for a single entity — a freely transferable bootable disk image storing WORM flat files, accessed only via the Diode Standard."
-category: systems
+category: infrastructure
 type: topic
 content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 language: en
 paired_with: totebox-archive.es.md
-last_edited: 2026-07-11
+last_edited: 2026-08-03
 editor: editorial
 ---
 

@@ -24,7 +24,6 @@ PointSav construye una familia de sistemas operativos de propósito específico 
 Los sistemas centrales de mantenimiento de registros en la base de cada despliegue — donde vive el registro canónico y cómo se coordina a través de una flota.
 
 - [[totebox-os]] — La capa de archivo: un vault aislado a nivel de kernel por entidad, que almacena registros como archivos planos inertes sin operación de eliminación, expuestos únicamente a través del Diode bajo comando de os-console u os-orchestration.
-- [[totebox-archive|Archivo Totebox]] — Una máquina virtual micro-autónoma y libremente transferible que persiste datos institucionales como archivos planos inmutables.
 - [[totebox-orchestration|Orquestación Totebox]] — La capa de coordinación que gestiona múltiples contenedores de archivo de datos Totebox, manteniendo los motores de ejecución de software aislados de los libros corporativos pasivos a través de los despliegues.
 
 ## Superficies del operador

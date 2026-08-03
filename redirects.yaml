@@ -7,6 +7,45 @@
 
 redirects:
 
+  # Category-fit design sweep 2026-08-03 (project-editorial re-derivation of a
+  # lost-transcript audit; durable record: .agent/audit/phase1c-documentation-sweep/
+  # category-fit-design-2026-08-03.md).
+  #
+  # totebox-archive: moved systems/ -> infrastructure/. Its content (disk-image/VM
+  # packaging, WORM flat-file storage model, Diode+PSP access model, hypervisor
+  # relationship) is deployment/storage-shaped per infrastructure/'s charter, not an
+  # operating-system description — os-family-overview.md already carries the
+  # systems/-composition role for the OS family, and totebox-os.md already carries the
+  # OS-itself description. Slug and category-field both updated; MOC entries moved from
+  # systems/_index.md to infrastructure/_index.md (EN+ES).
+  - from: /systems/totebox-archive
+    to: /infrastructure/totebox-archive
+
+  # app-orchestration-command-branch-model, app-orchestration-command-publication-flow:
+  # moved systems/ -> applications/. Both are app-* prefixed per the Nomenclature
+  # Matrix, and every other app-* article in the corpus (app-orchestration-gis,
+  # app-mediakit-knowledge, app-console-*, app-privategit-workbench) lives in
+  # applications/ per naming-convention.md §5 and §13's established os-*->systems/,
+  # app-*->applications/ split. Same pass also stripped leaked draft-pipeline
+  # frontmatter fields (route, target_wiki, session, research_trail) from these two
+  # files plus systems/scaling-coordinated-development-totebox-archives.md (a third,
+  # directly related file discovered to carry the identical leak; that one stays in
+  # systems/ — no category-move needed, only the frontmatter fix).
+  - from: /systems/app-orchestration-command-branch-model
+    to: /applications/app-orchestration-command-branch-model
+  - from: /systems/app-orchestration-command-publication-flow
+    to: /applications/app-orchestration-command-publication-flow
+
+  # quick-start retired into getting-started (both reference/, both orphaned
+  # quality:stub articles with no inbound wikilinks from any curated MOC and
+  # overlapping onboarding purpose/content — guide-catalog, ppn-small-business-compute,
+  # and machine-based-auth links present in both). getting-started kept as canonical
+  # (broader "Where to start" scope, incl. GIS/data); quick-start's Prerequisites +
+  # First steps sections merged in as new sections. aliases: [quick-start] added to
+  # getting-started.md + .es.md.
+  - from: /reference/quick-start
+    to: /reference/getting-started
+
   # service-fs cluster consolidation 2026-07-31 (content-matrix merge-candidate work):
   # service-fs-architecture.md and service-fs-security-compliance.md were genuine
   # redundancy (same subject — WORM ledger architecture, Merkle chains, Rekor anchoring,

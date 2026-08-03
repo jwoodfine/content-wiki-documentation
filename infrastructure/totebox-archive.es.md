@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 title: "Totebox Archive"
 slug: totebox-archive
 short_description: "Un Totebox Archive es una bóveda soberana de datos asignada a una única entidad — empaquetada como una imagen de disco de arranque libremente transferible, almacenando datos como archivos planos WORM, y aceptando consultas solo a través del Diode Standard y el PointSav Protocol."
-category: systems
+category: infrastructure
 type: topic
 content_type: topic
 status: active
@@ -11,7 +11,7 @@ bcsc_class: public-disclosure-safe
 language: es
 language_protocol: TRANSLATE-ES
 paired_with: totebox-archive.md
-last_edited: 2026-05-30
+last_edited: 2026-08-03
 editor: editorial
 ---
 
