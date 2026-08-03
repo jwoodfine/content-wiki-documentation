@@ -122,6 +122,7 @@ This wiki is maintained by PointSav Digital Systems contributors. All additions 
 
 *→ Versión en español: [README.es.md](./README.es.md)*
 
+
 <!-- BEGIN: factory-release-engineering license-section -->
 <!-- ================================================================== -->
 <!-- This section is generated from factory-release-engineering.         -->
@@ -136,7 +137,7 @@ which is authoritative.
 
 
 
-Copyright © 2026 Woodfine Capital Projects Inc. All rights not expressly
+Copyright © 2026 Woodfine Capital Projects Inc. — all rights not expressly
 granted by the license are reserved.
 
 <!-- ================================================================== -->
@@ -152,6 +153,6 @@ legal completo, el cual es la versión autoritativa.
 
 
 
-Copyright © 2026 Woodfine Capital Projects Inc. Se reservan todos los
+Copyright © 2026 Woodfine Capital Projects Inc. — se reservan todos los
 derechos no concedidos expresamente por la licencia.
 <!-- END: factory-release-engineering license-section -->
