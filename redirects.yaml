@@ -487,6 +487,11 @@ redirects:
   #     unrelated subject with the same slug)
   #   - architecture/regional-market-definition.md (substantial subject overlap with
   #     projects markets/about-regional-markets-system.md and about-regional-markets.md)
+  #     — RESOLVED 2026-08-03: confirmed zero inbound wikilinks anywhere in this wiki
+  #     and the article's own body deferred to the projects wiki three times already.
+  #     Moved intact as its own distinct article (not merged into the stale
+  #     about-regional-markets-system.md) to markets/regional-market-definition.md; see
+  #     the redirect entry near the end of this file.
 
   - from: /architecture/co-location-tiering-scoring
     to: https://projects.woodfinegroup.com/site-selection/co-location-tiering-scoring
@@ -537,3 +542,11 @@ redirects:
   # `[[co-location-methodology]]` wikilinks; this redirect covers direct path hits.
   - from: /architecture/co-location-methodology
     to: /architecture/hardware-co-location-methodology
+
+  # architecture/regional-market-definition.md moved 2026-08-03 to the projects wiki —
+  # cross-wiki content move (confirmed orphaned here: zero inbound wikilinks in this
+  # wiki, and its own body already deferred to the projects wiki three times). Landed
+  # as its own distinct article at markets/regional-market-definition.md, cross-linked
+  # with (not merged into) the pre-existing markets/about-regional-markets-system.md.
+  - from: /architecture/regional-market-definition
+    to: https://projects.woodfinegroup.com/markets/regional-market-definition

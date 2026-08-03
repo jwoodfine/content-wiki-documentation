@@ -10,11 +10,54 @@
 > layout-rule enforcement, defect resolution, surfaced open
 > questions — does.
 
-Last updated: 2026-07-28.
+Last updated: 2026-08-03.
 
 ---
 
 ## Open
+
+### 2026-08-03 — `architecture/regional-market-definition.md` cross-wiki move to media-knowledge-projects: CLOSED
+
+`Opened and closed: 2026-08-03.` Operator-confirmed cross-wiki content move (long flagged
+as unresolved in the 2026-07-03 D2 cross-repo batch — see the note in `redirects.yaml`).
+Confirmed before moving: zero inbound wikilinks to this slug anywhere in this wiki, and
+the article's own body already deferred to the projects wiki three times ("see 'Regional
+Markets Intelligence System' on the projects wiki"). Its natural sibling in the
+destination, `markets/about-regional-markets-system.md`, carries its own known-stale
+2026-08-02 correction (census figures don't match production data) — moved as its own
+distinct article rather than merged into that stale sibling, to avoid compounding the
+problem. Landed at `media-knowledge-projects/markets/regional-market-definition.md`
+(+`.es.md`); `category:` updated to `markets`; the dead `[[app-orchestration-gis]]`
+wikilink (no such article exists in the projects wiki) converted to a plain prose
+mention, matching how other projects-wiki articles already reference the same Rust
+binary by name; three other "on the projects wiki" prose asides converted to real
+`[[about-regional-markets-system]]` wikilinks now that the target is in-wiki; three
+previously-unlinked "See also" prose mentions (co-location tiering and scoring,
+trade-area methodology, spend and population provenance) converted to wikilinks since
+their targets already exist under those exact slugs in the destination wiki.
+Bidirectional cross-link added: `about-regional-markets-system.md`+`.es.md` now link
+back to the new article.
+
+Also fixed, in the same move: two "retracted recommendation" / "originally flagged...
+now recorded here only so the history is legible" passages reframed from internal
+editorial-memo voice to direct reader-facing statements (no factual/methodological
+content removed, only the self-referential drafting-history framing); the internal
+method-name reference `RegionEngine.resolve_market()` generalized to plain prose
+("via a point-in-polygon assignment..."). One further edit made with lower confidence,
+flagged rather than treated as certain: "The deleted Nominatim override for that
+settlement is not reinstated" softened to "A prior settlement-specific geocoding
+override... was removed and is not reinstated" (drops the specific tool name) — this
+reads as the same class of internal-implementation-detail stripping applied elsewhere,
+but is a closer call than the method-name fix; worth a second look if anyone revisits
+this article.
+
+Source removed from this repo (`git rm` on both language files); a cross-repo
+`redirects.yaml` entry added pointing `/architecture/regional-market-definition` to
+`https://projects.woodfinegroup.com/markets/regional-market-definition` — this repo's
+redirect format already supports full external-URL targets for cross-repo moves (used
+throughout the existing D1/D2 batches), so no format limitation applied here. No
+`architecture/_index.md` reference existed to clean up (verified via grep — the article
+was never linked from the category landing page, EN or ES).
 
 ### 2026-07-30 — `os-privategit-workbench.md` (systems/) archived as a redundant duplicate of `app-privategit-workbench.md` (applications/) — CLOSED
 
