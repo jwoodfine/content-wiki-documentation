@@ -7,7 +7,10 @@ type: topic
 content_type: topic
 quality: complete
 short_description: "Contributor identity and permissions expressed through cryptographic pairings rather than database roles — reachability requires a paired os-console."
-status: active
+status: archived
+archived: 2026-08-03
+archived_reason: "superseded by fresh-draft-first authoring pilot against new content-schema tokens (schema-topic.yaml)"
+superseded_by: personnel-permissions
 bcsc_class: forward-looking
 last_edited: 2026-07-30
 editor: pointsav-engineering

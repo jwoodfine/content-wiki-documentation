@@ -6,7 +6,10 @@ category: security
 type: topic
 content_type: topic
 quality: complete
-status: active
+status: archived
+archived: 2026-08-03
+archived_reason: "reemplazado por el piloto de autoría fresh-draft-first frente a los nuevos tokens de content-schema (schema-topic.yaml)"
+superseded_by: sel4-capability-topology
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
@@ -22,6 +25,7 @@ references:
     text: "Murray, T. et al. 'seL4: From General Purpose to a Proof of Information Flow Enforcement.' IEEE Symposium on Security and Privacy, 2013."
   - id: 3
     text: "Drossopoulou, S. et al. 'Holistic Specifications for Robust Programs.' ECOOP, 2016."
+language: es
 ---
 
 En el micronúcleo seL4, todo acceso a un objeto está mediado por una **capacidad** — un token infalsificable que otorga un derecho específico sobre un objeto específico. Un proceso que no posee una capacidad sobre un objeto no puede observarlo, modificarlo ni invocarlo. No existe autoridad ambiental. No existe privilegio de raíz a nivel del núcleo.

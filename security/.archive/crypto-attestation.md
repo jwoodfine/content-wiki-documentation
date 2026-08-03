@@ -7,7 +7,10 @@ type: topic
 content_type: topic
 quality: complete
 short_description: "Mechanism by which PointSav edge nodes prove published text integrity to any viewer via client-side SHA-256 hashing, independently verifiable by any auditor."
-status: active
+status: archived
+archived: 2026-08-03
+archived_reason: "superseded by fresh-draft-first authoring pilot against new content-schema tokens (schema-topic.yaml)"
+superseded_by: crypto-attestation
 bcsc_class: forward-looking
 last_edited: 2026-07-30
 editor: pointsav-engineering

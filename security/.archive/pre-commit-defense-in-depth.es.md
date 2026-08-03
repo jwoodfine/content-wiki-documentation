@@ -7,7 +7,10 @@ language: es
 category: security
 type: topic
 content_type: topic
-status: active
+status: archived
+archived: 2026-08-03
+archived_reason: "reemplazado por el piloto de autoría fresh-draft-first frente a los nuevos tokens de content-schema (schema-topic.yaml)"
+superseded_by: pre-commit-defense-in-depth
 bcsc_class: public-disclosure-safe
 last_edited: 2026-07-28
 editor: pointsav-engineering

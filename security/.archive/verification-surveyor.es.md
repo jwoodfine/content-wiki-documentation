@@ -7,7 +7,10 @@ category: security
 type: topic
 content_type: topic
 quality: stub
-status: active
+status: archived
+archived: 2026-08-03
+archived_reason: "reemplazado por el piloto de autoría fresh-draft-first frente a los nuevos tokens de content-schema (schema-topic.yaml)"
+superseded_by: verification-surveyor
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
@@ -15,6 +18,7 @@ last_edited: 2026-07-30
 editor: pointsav-engineering
 paired_with: verification-surveyor.md
 cites: []
+language: es
 ---
 
 **Corrección retirada (2026-07-30):** un pase anterior en esta sesión marcó este

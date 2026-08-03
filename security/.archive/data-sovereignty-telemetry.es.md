@@ -11,6 +11,10 @@ language: es
 paired_with: data-sovereignty-telemetry.md
 last_edited: 2026-07-30
 category: security
+status: archived
+archived: 2026-08-03
+archived_reason: "reemplazado por el piloto de autoría fresh-draft-first frente a los nuevos tokens de content-schema (schema-topic.yaml)"
+superseded_by: data-sovereignty-telemetry
 ---
 
 **Corrección mayor (2026-07-30):** este artículo describía anteriormente un

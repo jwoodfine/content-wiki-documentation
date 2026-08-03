@@ -7,11 +7,15 @@ type: topic
 content_type: topic
 quality: complete
 short_description: "Identidad y permisos de colaboradores expresados mediante emparejamientos criptográficos, no roles en base de datos — el acceso exige un os-console emparejado con el nodo gestor."
-status: active
+status: archived
+archived: 2026-08-03
+archived_reason: "reemplazado por el piloto de autoría fresh-draft-first frente a los nuevos tokens de content-schema (schema-topic.yaml)"
+superseded_by: personnel-permissions
 bcsc_class: forward-looking
 last_edited: 2026-07-30
 editor: pointsav-engineering
 paired_with: personnel-permissions.md
+language: es
 ---
 
 **Corrección retirada, y corregida en la otra dirección (2026-07-30):** un pase

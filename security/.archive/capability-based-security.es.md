@@ -7,7 +7,10 @@ category: security
 type: topic
 content_type: topic
 quality: complete
-status: active
+status: archived
+archived: 2026-08-03
+archived_reason: "reemplazado por el piloto de autoría fresh-draft-first frente a los nuevos tokens de content-schema (schema-topic.yaml)"
+superseded_by: capability-based-security
 audience: public
 bcsc_class: forward-looking
 language_protocol: PROSE-TOPIC
@@ -22,6 +25,7 @@ references:
   - id: 2
     text: "Lampson, B. W. 'Protection.' ACM SIGOPS Operating Systems Review, 8(1):18–24, 1974."
     url: "https://dl.acm.org/doi/10.1145/775265.775268"
+language: es
 ---
 
 **Corrección — reformulada como planificada/prevista (2026-07-30):** este artículo

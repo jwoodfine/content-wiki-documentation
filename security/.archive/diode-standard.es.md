@@ -6,7 +6,10 @@ category: security
 type: concept
 content_type: topic
 quality: complete
-status: active
+status: archived
+archived: 2026-08-03
+archived_reason: "reemplazado por el piloto de autoría fresh-draft-first frente a los nuevos tokens de content-schema (schema-topic.yaml)"
+superseded_by: diode-standard
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
@@ -22,6 +25,7 @@ references:
   - id: 2
     text: "MITRE. 'ATT&CK Tactic: Movimiento Lateral (TA0008).' MITRE Corporation, 2023."
     url: "https://attack.mitre.org/tactics/TA0008/"
+language: es
 ---
 
 Un atacante que vulnera una máquina rara vez quiere esa máquina. Quiere la siguiente. El movimiento lateral — pivotar desde un primer nodo comprometido hacia nodos más valiosos — es el patrón dominante en los informes modernos de brechas de seguridad [^2].

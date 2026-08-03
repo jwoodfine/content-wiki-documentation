@@ -6,7 +6,10 @@ category: security
 type: concept
 content_type: topic
 quality: complete
-status: active
+status: archived
+archived: 2026-08-03
+archived_reason: "reemplazado por el piloto de autoría fresh-draft-first frente a los nuevos tokens de content-schema (schema-topic.yaml)"
+superseded_by: machine-based-auth
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
@@ -22,6 +25,7 @@ references:
   - id: 2
     text: "Donenfeld, J. A. 'WireGuard: Next Generation Kernel Network Tunnel.' NDSS Symposium, 2017."
     url: "https://www.ndss-symposium.org/ndss2017/ndss-2017-programme/wireguard-next-generation-kernel-network-tunnel/"
+language: es
 ---
 
 Cada contraseña es un secreto que una persona debe recordar y, por tanto, un secreto que un atacante puede tomar. Phishing, adivinación de contraseñas, relleno de credenciales, ingeniería social — toda la clase del robo remoto de credenciales existe porque la credencial es algo que un humano sabe.

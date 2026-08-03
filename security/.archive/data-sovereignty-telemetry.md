@@ -11,6 +11,10 @@ language: en
 paired_with: data-sovereignty-telemetry.es.md
 last_edited: 2026-07-30
 category: security
+status: archived
+archived: 2026-08-03
+archived_reason: "superseded by fresh-draft-first authoring pilot against new content-schema tokens (schema-topic.yaml)"
+superseded_by: data-sovereignty-telemetry
 ---
 
 **Major correction (2026-07-30):** this article previously described a live, in-force

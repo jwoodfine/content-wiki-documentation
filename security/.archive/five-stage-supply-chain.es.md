@@ -6,7 +6,10 @@ category: security
 type: concept
 content_type: topic
 quality: complete
-status: active
+status: archived
+archived: 2026-08-03
+archived_reason: "reemplazado por el piloto de autoría fresh-draft-first frente a los nuevos tokens de content-schema (schema-topic.yaml)"
+superseded_by: five-stage-supply-chain
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
@@ -22,6 +25,7 @@ references:
   - id: 2
     text: "Hammant, P. 'Trunk Based Development.' trunkbaseddevelopment.com, 2017."
     url: "https://trunkbaseddevelopment.com/"
+language: es
 ---
 
 **Corrección — Etapas 2/3 reformuladas como planificadas/previstas (2026-07-30):**

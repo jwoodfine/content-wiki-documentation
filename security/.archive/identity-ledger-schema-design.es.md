@@ -10,7 +10,10 @@ bcsc_class: current-fact
 language: es
 paired_with: identity-ledger-schema-design.md
 category: security
-status: active
+status: archived
+archived: 2026-08-03
+archived_reason: "reemplazado por el piloto de autoría fresh-draft-first frente a los nuevos tokens de content-schema (schema-topic.yaml)"
+superseded_by: identity-ledger-schema-design
 quality: complete
 last_edited: 2026-06-23
 ---
