@@ -128,6 +128,17 @@ preferred formulation confirmed by the operator). DPO training on these
 pairs moves the model toward the preferred response distribution without
 requiring explicit labels for every token. [^3]
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** the real
+`corpus-threshold.py` (dated by its own audit-note comment 2026-06-24, before this
+article's `last_edited: 2026-07-18`) configures `apprenticeship-pointsav` as `"method":
+"sft"`, with an explicit audit note: "apprenticeship changed from DPO to SFT. DPO
+requires signed verdicts and ≥1-3K contrastive pairs; the current corpus has verdict=0
+across all 1619 pairs." DPO training on this corpus is not happening today — it was
+deliberately disabled pending prerequisites that aren't yet met. Every other technical
+claim in this article (GPU tier, ports, corpus threshold, QLoRA hyperparameters, base
+model paths) was independently verified accurate against canonical. **Flagged, not
+resolved.**
+
 ## Adapter Output and Publication
 
 When training completes, the adapter is saved to

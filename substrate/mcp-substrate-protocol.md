@@ -43,6 +43,16 @@ The Doorman is both MCP Client (calling `service-content` for graph grounding) a
 
 Each service exposes a small set of named MCP tools. `service-content` exposes graph query, graph mutation, vector search, and temporal query. The file ledger service exposes ledger append, ledger query, and checkpoint. The extraction service exposes entity extraction and classification. The people service exposes person lookup, upsert, and relationship query.
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** `graph_query`/
+`graph_mutate` are real (`service-content/src/http.rs`). `vector_search`/
+`temporal_query` are not implemented — `service-content/ARCHITECTURE.md` §2 lists
+"no vector search — keyword classification only" as a current gap. `service-fs/src/
+mcp.rs::handle_tools_list()` exposes exactly one MCP tool, `ledger.append` — there is
+no `ledger.query` or `checkpoint` tool (a read-only "Ledger Entries" MCP *resource*
+exists, a different primitive). This article correctly hedges its marketplace-tools
+section as "planned Phase 5" elsewhere but presents these equally-unbuilt tool names
+in unhedged present tense. **Flagged, not resolved.**
+
 The marketplace service (planned Phase 5) is intended to expose listing creation, listing query, and transaction initiation as MCP tools. Customers extending the platform add new MCP servers that expose their own vertical-specific tools. The [[compounding-doorman|Doorman]] discovers new tools at session start via MCP's describe mechanism; no core code changes are required to accommodate a new extension.
 
 ## The Doorman as MCP gateway

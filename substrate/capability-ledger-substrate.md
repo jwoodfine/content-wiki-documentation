@@ -113,6 +113,11 @@ in the revocation set. Determinism is tested: the same struct always produces
 the same hash; changing any field — including `expiry_t` or the anchor's
 `tree_size` — produces a different hash.
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** this was
+accurate at this article's original edit date but the crate has since moved on
+(commit `9d0a3b07`) — `system-core` now hashes via CBOR (`ciborium`), not the
+JSON-serialization framing described here. **Flagged, not resolved.**
+
 
 ## 3. Time-Bound Capabilities (Mechanism A)
 
@@ -396,6 +401,10 @@ its own tier.
   cryptographic grounding.
 
 - **Implementation state (Phase 1A)**
+
+  **Correction (2026-08-02, verified against canonical `origin/main`):** stale —
+  `origin/main` HEAD is `v1.0.0` on both crates, with 62 and 47 tests (+12 benchmarks)
+  respectively, not the v0.2.x/51/44 figures below. **Flagged, not resolved.**
   - `system-core` v0.2.0: `Capability`, `WitnessRecord`, `LedgerAnchor`,
     `Checkpoint`, `NoteSignature`, `SignedCheckpoint`, `InclusionProof`,
     `ConsistencyProof`. 51 tests.

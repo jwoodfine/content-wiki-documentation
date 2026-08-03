@@ -42,6 +42,14 @@ The substrate's content lives in a per-tenant vault directory:
 
 The vault is the only canonical layer. Rendered exports — Figma Variables JSON, Tailwind config, CSS variables, Style Dictionary builds — are derived caches recomputable from the canonical four directories above.
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** the real vault
+layout (`app-privategit-design/src/vault.rs`) is `elements/`, `components/`,
+`guidelines/`, `developing/`, `designing/`, `about/`, `research/`, plus a generated
+`exports/` output directory — there is no `themes/` section anywhere in the codebase,
+and `tokens/` is not a top-level vault directory name. This looks like an earlier
+design aspiration that diverged from what actually shipped, not a stale-but-once-true
+snapshot. **Flagged, not resolved.**
+
 The substrate engine is a stateless HTTP service that reads the vault from disk. Per-tenant isolation is achieved by running one engine process per tenant, each pointed at its own vault. Persistence above the vault filesystem is via the substrate's [[worm-ledger-architecture|WORM ledger]]. Token and component history is anchored monthly to Sigstore Rekor `[sigstore-rekor-v2]`, producing a customer-rooted Merkle log using the C2SP tlog-tiles format `[c2sp-tlog-tiles]`.
 
 ## Machine-Readable Context Backplane
@@ -65,6 +73,12 @@ ai_consumption_hint: "When generating a button for a primary
 ```
 
 The frontmatter is machine-readable; the body is prose-readable. AI agents consume the research through the substrate's [[mcp-substrate-protocol|MCP endpoint]] `[mcp-spec]` at decode time. Methods include `list_tokens`, `list_components`, `list_research`, and `describe`. An AI agent registers the substrate as an MCP server, then queries it during UI generation to align with the SMB's brand intent.
+
+**Correction (2026-08-02, verified against canonical `origin/main`):** the real MCP
+tool list (`app-privategit-design/src/mcp/tools.rs::list_tools()`) is
+`get_component_recipe`, `list_components`, `get_token`, `search_design_system`,
+`list_token_families` — only `list_components` matches; `list_tokens`,
+`list_research`, and `describe` do not exist. **Flagged, not resolved.**
 
 Design systems that publish only token values and component shapes omit the rationale behind those choices. The substrate publishes both, in the same machine-readable tier, served through the same endpoint.
 

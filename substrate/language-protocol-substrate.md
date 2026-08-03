@@ -19,6 +19,19 @@ paired_with: language-protocol-substrate.es.md
 
 Every editorial action that passes through the PointSav platform — document generation, schema validation, training-tuple capture — is shaped by a substrate that encodes register, brand voice, document sub-type, and target audience as reusable prompt scaffolding rather than ad-hoc instruction. The result is editorial work that is audited, per-tenant, and replaceable at any layer without rebuilding the rest.
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** this article
+names `service-disclosure` and `service-proofreader` as real, shipped Rust crates
+(here and at 5 further places below, including a table attributing them to owner
+clusters "project-language"/"project-proofreader"). Neither crate exists anywhere in
+the monorepo — a corpus-wide grep for both names returns zero hits, and neither
+"project-language" nor "project-proofreader" appears in the current archive list.
+Real editorial-assist code exists only as `app-console-content/src/proofreader.rs`
+(a module, not a crate) and a `local-proofreader.service` systemd unit. This is
+presented in unhedged present tense, not as planned/intended — unlike this article's
+own correctly-hedged treatment of its training pipeline elsewhere. **Flagged, not
+resolved — this article needs a structural rewrite around the real service
+boundaries, not a line-by-line fix.**
+
 The substrate provides four artefact families, eighteen genre templates, a frontmatter validator that returns all schema violations in a single pass, and a banned-vocabulary list of eight cross-genre prohibited terms. These ship as a Rust crate (`service-disclosure`) split across four services — [[service-content]] (knowledge graph), [[service-slm]] ([[compounding-doorman|Doorman]] and inference), `service-disclosure` (schema and templates), `service-proofreader` (HTTP write-assistant) — where any single service can be replaced by a [[customer-hostability|customer-owned equivalent]] while the rest hold.
 
 Three adapters compose at request time: base model, tenant adapter (brand voice), and protocol adapter (PROSE | COMMS | LEGAL | TRANSLATE). Register, brand voice, and target audience live as prompt scaffolding rather than additional adapters — five or more adapters per request crosses into multi-task interference per the 2025 LoRA literature; the platform stays at three. Every editorial action produces a verdict-signed training tuple through the [[apprenticeship-substrate]] pipeline, feeding continued pretraining on the customer's adapter without the customer's text leaving their infrastructure.

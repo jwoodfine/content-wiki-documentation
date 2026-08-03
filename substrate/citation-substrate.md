@@ -26,6 +26,12 @@ Every article in this documentation that makes an externally-grounded claim carr
 
 As of 2026-04-27, the registry holds 62 entries covering regulatory instruments (NI 51-102, SEC Rule 17a-4(f), eIDAS), research papers, technical specifications, vendor documents, and open standards. Every `[ni-51-102]` reference in a published article traces to the same canonical registry entry, with type, jurisdiction, stable URL, and a SHA-256 content hash for drift detection.
 
+**Correction (2026-08-02):** this entry count was accurate on 2026-04-27 but the
+registry has grown substantially since (it already held ~101 entries by this
+article's own `last_edited: 2026-05-15`, and more have been registered in
+subsequent sessions) — the "62" figure was never refreshed. **Flagged, not
+resolved.**
+
 Three components work together: a central registry holding one entry per citation ID; per-document `cites:` front-matter that makes dependencies machine-readable; and inline `[id]` syntax in body prose that marks each reference with its registry-resolvable ID. A nightly automated pass fetches each registered URL, verifies the content hash, and surfaces material changes or link rot for human review before they propagate into published content or training data.
 
 For regulated buyers, this means every claim about compliance properties — record immutability, AI audit trails, data residency — carries a traceable stated basis. A compliance officer auditing documentation about SEC Rule 17a-4(f) can follow the citation to the primary regulatory instrument without accessing internal systems. This satisfies the "stated basis" requirement under `[ni-51-102]` and `[osc-sn-51-721]` for forward-looking information in [[disclosure-substrate|public-facing content]].

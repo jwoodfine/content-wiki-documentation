@@ -79,6 +79,14 @@ The apprenticeship corpus is a fourth corpus alongside the constitutional, engin
 data/training-corpus/apprenticeship/<task-type>/<tenant>/<ulid>.jsonl
 ```
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** the real path
+(`service-slm/ARCHITECTURE.md` / `slm-doorman/src/verdict.rs`) has no `<tenant>` segment —
+`data/training-corpus/apprenticeship/<task-type>/<ulid>.jsonl`. Separately, this
+article's "the routing structure is operational today" claim above is also
+stale — `service-slm/NEXT.md` lists re-enabling apprenticeship routing
+(`SLM_APPRENTICESHIP_ENABLED=true`) as an open TODO, not a live default.
+**Flagged, not resolved.**
+
 One file holds one (brief, attempt, verdict) triple. Tenant-private records never leave the tenant's infrastructure. A `refine` or `reject` verdict additionally produces a Direct Preference Optimisation triple — rejected attempt, corrected diff, constraint-violation tag — which feeds adapter training on the apprentice's policy.
 
 ## Configuration

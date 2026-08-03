@@ -163,6 +163,14 @@ pipeline. The command:
 cargo run -p moonshot-toolkit -- build moonshot-toolkit/examples/hello-world.toml
 ```
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** this command
+would fail — `moonshot-toolkit` declares its own standalone `[workspace]` and is not
+a member of the monorepo root workspace (`grep moonshot-toolkit` against the root
+`Cargo.toml` returns no match), so `-p moonshot-toolkit` from the monorepo root
+errors with "package ID did not match." The real invocation is `cargo run
+--manifest-path moonshot-toolkit/Cargo.toml -- build <spec>`, per this archive's own
+`CLAUDE.md`. **Flagged, not resolved.**
+
 produces `build/system-image.bin` with entry point `0x40400000`. Booting with:
 
 ```

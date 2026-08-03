@@ -44,6 +44,12 @@ At Tier 1, the customer's per-tenant LoRA adapter training is available (see [[a
 
 At Tier 2 the vendor operates a 32B model on a GPU burst instance with idle-shutdown discipline. From the customer's perspective, this is a Tier C service accessed by their local Doorman — a hosted endpoint that handles requests the local 7B model is not well-suited to. From the vendor's perspective, it is the same infrastructure the vendor uses for its own heavyweight inference tasks, made available to customers as a subscription service.
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** letter mix-up —
+the real `tier.rs`/`service-slm/ARCHITECTURE.md` §9 define Tier C as external,
+non-vendor third-party APIs only (Anthropic/Google/OpenAI). The vendor-hosted
+32B GPU-burst scenario described here is structurally **Tier B** (Yo-Yo), not
+Tier C. **Flagged, not resolved.**
+
 The Tier 2 model is OLMo 3.1 32B Think. At runtime, a [[adapter-composition|composition of adapters]] is applied per request: a constitutional adapter reflecting current platform doctrine, an engineering adapter trained on accumulated platform corpus, and tenant-specific adapters where applicable. No external API keys are held by the inference engine itself; key custody remains exclusively at the Doorman boundary.
 
 The pricing structure is intended to sit structurally below that of fully-managed AI platforms requiring annual contracts in the six-figure range. This is a planned commercial position, not yet published rate-card pricing.

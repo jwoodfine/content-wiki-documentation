@@ -25,6 +25,14 @@ Inter-service communication uses MCP (see [[mcp-substrate-protocol]]). The audit
 
 Every artefact is machine-mutable and machine-introspectable. The MCP `describe` endpoint on any service returns the current tool catalog in a machine-readable form. There is no configuration surface that requires a human operator to interpret undocumented fields.
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** the real MCP
+method names (e.g. `service-fs/src/mcp.rs`) are `initialize`, `tools/list`,
+`tools/call`, `resources/list`, `resources/read` — there is no `describe` method.
+Same imprecise shorthand also appears in this article's own cross-reference,
+[[mcp-substrate-protocol]]. The underlying claim (every service exposes a
+machine-readable tool catalog) is directionally accurate; only the specific method
+name is wrong. **Flagged, not resolved.**
+
 ## Why this matters
 
 **Consistent observability.** Structured data at every layer means audit queries and metrics have a uniform shape across services and tenants. An operator query against the audit ledger and an automated compliance check query the same JSONL schema.

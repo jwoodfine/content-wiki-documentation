@@ -80,6 +80,11 @@ The substrate does not claim to own what it does not own. Silicon, microcode, an
 
 Phase 0 workspace hygiene for the `project-system` cluster is pending. Phase 1A — a capability-ledger primitive prototype binding C2SP signed-note multi-signature checkpoints to capability invocation — is planned work. Phase 1B — the `moonshot-toolkit` Rust CLI for orchestrating seL4 builds with a reproducible-build harness — is planned foundational work. NetBSD compat-bottom prototype, TOPIC and GUIDE drafting, and the minimal moonshot-kernel capability subset are subsequent phases.
 
+**Correction (2026-08-02):** stale — `moonshot-toolkit` was already live and producing
+real boot images by 2026-05-29 (Phase 1C.d), well before this "planned foundational
+work" framing, and is now `v0.3.1` with 35 passing tests, per this archive's own
+project registry (`Active`). **Flagged, not resolved.**
+
 ## See also
 
 - [[worm-ledger-architecture]] — the WORM substrate primitive (C2SP tlog-tiles + signed-note) that the Capability Ledger extends

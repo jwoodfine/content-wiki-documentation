@@ -23,6 +23,13 @@ PointSav builds on a different pattern — the **Compounding Substrate**. The pl
 
 A curator — PointSav — periodically rolls the accumulated signal into an improved base model that flows back to every deployment. The customer's data never leaves the customer's infrastructure; only adapter weights and key-value cache blocks, stripped of source data, enter the shared federation.
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** the KV-cache
+claim here is factually reversed. `service-slm/ARCHITECTURE.md` states the KV-cache
+tier "is not active in the current implementation," and its designed purpose is the
+opposite of federation — strict per-tenant isolation ("Project A never sees Project
+B's blocks"). No commit history suggests KV-cache blocks were ever designed to leave
+a tenant's deployment. **Flagged, not resolved.**
+
 For a regulated buyer the consequence is concrete. The AI layer improves with each month of production use, and no data is surrendered beyond what the buyer chose at onboarding. The pattern is durable for a structural reason: a rented-intelligence vendor cannot copy it without dismantling its own billing model.
 
 This article names the five structural properties of the pattern and explains the value-chain inversion that makes it durable.

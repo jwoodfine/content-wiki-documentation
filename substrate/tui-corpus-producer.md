@@ -24,6 +24,18 @@ paired_with: tui-corpus-producer.es.md
 
 The **TUI-as-Corpus-Producer** pattern designates the operator terminal interface (`slm-cli`) as a primary source of high-quality training data for the per-tenant model [[adapter-composition|adapter]]. Every interaction with the [[compounding-doorman|Doorman]] through this interface is a curated corpus contribution.
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** `slm-cli` is
+not a real component name — a corpus-wide grep for `slm-cli`/`slm_cli` across every
+`.rs`/`.toml` file in canonical returns zero hits. The real `service-slm/crates/` set
+is `adapter-hub`, `slm-core`, `slm-doorman-server`, `slm-doorman`, `slm-mcp-server` —
+no CLI/TUI crate. The real operator-facing SLM surface is `app-console-slm` (a real
+`Active` crate, "SlmCartridge (F9); Doorman health dashboard + entity count," per this
+archive's own project registry). This invented name is also used, with equal
+confidence, in [[tier-zero-customer-side-sovereign-specialist]] — a corpus-wide sweep
+for other `slm-cli` occurrences is worth doing in a future pass. The underlying
+corpus-production concept described in this article is plausible; only the component
+name is fabricated. **Flagged, not resolved.**
+
 ## Why terminal interactions are high-quality training data
 
 Three properties distinguish system administration and IT-support interactions from general training data:

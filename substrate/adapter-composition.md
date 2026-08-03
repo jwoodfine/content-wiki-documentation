@@ -44,6 +44,16 @@ Where `?` denotes an optional adapter loaded only when the request context appli
 
 The composition is deterministic given the request context. There is no runtime decision about which adapters to use; the context determines the composition.
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** this whole
+composition mechanism is described here as current, operational behavior, but the
+real `service-slm/ARCHITECTURE.md` states plainly: "Ring 3b is planned for the phase
+following the first commercial deployment beyond Woodfine." The real
+`adapter-hub/src/lib.rs::fuse_adapters()` is an explicit placeholder — it string-concatenates
+adapter IDs rather than merging weights, and its own test is named `fuse_adapters_stub`.
+Only one adapter is currently registered in `data/adapters/registry.yaml`, not the
+five-family taxonomy shown above. **Flagged, not resolved** — this article should be
+hedged to planned/intended language throughout, not corrected line-by-line here.
+
 ## Adapter typology and routing rules
 
 | Adapter | Loaded when | Ownership |

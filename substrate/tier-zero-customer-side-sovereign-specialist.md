@@ -23,6 +23,17 @@ The reference Tier 0 deployment is a Totebox — a small-form-factor x86 or ARM 
 
 The stack includes the [[worm-ledger-architecture|WORM file ledger]] (`service-fs`), the knowledge runtime ([[service-content|`service-content`]]), the [[compounding-doorman|Doorman boundary]] (`service-slm`), the local specialist model (OLMo 2 1B at roughly 600 MB on disk), the operator [[tui-corpus-producer|TUI]] (`slm-cli`), and the input, extraction, and egress services. All components are self-contained binaries with no runtime dependencies beyond the operating system.
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** two defects
+here. (1) The real configured Tier A model
+(`service-slm/docs/deploy/local-doorman.env.example`) is `Olmo-3-1125-7B-Think-Q4_K_M.gguf`
+— a 7B model, not 1B — so the ~600 MB footprint and the CPU-only performance figures
+below don't match. (2) `slm-cli` does not exist anywhere in canonical (a corpus-wide
+grep for `slm-cli`/`slm_cli` across all `.rs`/`.toml` files returns zero hits); the
+real operator-facing SLM surface is `app-console-slm` (a real `Active` crate per this
+archive's own project registry). This wiki's own [[trajectory-substrate]] article
+already flags that the Tier A model name is inconsistent across the corpus —
+this article states its own version unhedged. **Flagged, not resolved.**
+
 Hardware at this scale costs in the range of three hundred to fifteen hundred dollars depending on the customer's size and requirements. The intended monthly operating cost is zero — there is no subscription, no recurring cloud fee, and no per-seat charge.
 
 ## Why a specialist rather than a generalist

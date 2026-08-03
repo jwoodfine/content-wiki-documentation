@@ -63,6 +63,16 @@ For data-visualisation overlays (scatter, heatmap, arc, polygon-extrusion layers
 
 ## Service schema — service-business, service-places, service-parking
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** `service-parking`
+does not exist anywhere in the codebase — a corpus-wide grep returns zero hits (no
+directory, no code reference, no script reference). `service-business` and
+`service-places` are real, but only as Python data-pipeline directory-naming
+conventions consumed by `app-orchestration-gis`'s scripts, not formal Rust "Ring 1
+services" comparable to `service-content`/`service-people`. This article frames all
+three as architecturally equivalent platform services; only a data-directory
+convention for two of the three actually exists, and the third is invented outright.
+**Flagged, not resolved.**
+
 A single record shape covers all three Ring 1 location services with discriminator fields:
 
 ```jsonc

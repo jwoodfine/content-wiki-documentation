@@ -25,6 +25,16 @@ Ownership carries four operational properties:
 
 **Export at any time.** The operator may run a single export command to produce a complete bundle: the graph, the audit ledger, the per-tenant adapters, and the seed taxonomy. This is a routine operation, not a legal or contractual event requiring vendor involvement.
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** this
+export mechanism does not exist yet. `export_bundle` appears only as an
+unimplemented Phase-3d line item in `service-content/ARCHITECTURE.md`'s
+planning table — a corpus-wide grep for `export_bundle`/`fn export` returns
+zero implementation hits anywhere in the monorepo. This is a real,
+commercially consequential customer-trust claim presented as routine current
+fact when it is a planned capability. **Flagged, not resolved — this is the
+kind of claim that warrants hedging to planned/intended language, not a
+line-level fix.**
+
 **No format lock-in.** The export bundle uses open formats: a Cypher dump for the graph, JSONL for the audit ledger, and standard tensor formats for the adapter weights. The bundle is importable into any compatible system.
 
 **No aggregate license.** The platform does not retain rights to use the customer's data to train cross-tenant models without explicit per-tenant consent.

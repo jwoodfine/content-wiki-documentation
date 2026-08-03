@@ -21,6 +21,18 @@ cites:
 
 The PointSav wiki at `documentation.pointsav.com` provides structural compatibility with MediaWiki's reader-facing conventions — URL patterns, wikilink syntax, footnote syntax — while deliberately declining to replicate MediaWiki's internal API surface. Every interface the substrate does not replicate is a [[compliance-and-continuous-disclosure|compliance obligation]] it does not assume.
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** this article's
+whole v0.1.x route surface (`GET /git/{slug}`, `POST /edit/{slug}`, `GET
+/feed.json`, MBA-auth editing) describes an **earlier, retired** wiki engine, not the
+live one. `app-mediakit-knowledge`'s real `Cargo.toml` states explicitly: "ground-up
+rewrite... Renamed from app-mediakit-knowledge-2 at cutover (plan P8). 100% new
+code," now at `version = "0.0.1"`. The live router (`app.rs`) has no `/edit`, `/git`,
+or `/feed.json` route, and no `EDITOR_ENABLED`/MBA-auth machinery exists anywhere in
+the crate. Conversely, `GET /history/{*slug}` — which a companion passage in this
+article calls "(Phase 4)"/not-yet-built — is already live in the real router today.
+**Flagged, not resolved** — this article needs re-basing against the current engine,
+not a line-by-line fix.
+
 ## Cost and benefit of declining the shim
 
 That decision has a concrete cost and a concrete benefit. The cost: contributors migrating automation workflows from MediaWiki-compatible tools re-implement against new interfaces. The benefit: every Action API endpoint MediaWiki ships, deprecates, or modifies would have generated a maintenance event; the platform has no control over that velocity, and every public interface the platform exposes is a continuous-disclosure surface under Canadian securities law (National Instrument 51-102 and OSC Staff Notice 51-721). Declining the shim means the wiki's disclosure commitments are bounded to what the substrate actually provides.
