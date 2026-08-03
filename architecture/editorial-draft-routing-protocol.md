@@ -62,6 +62,8 @@ substrate reflects that knowledge structurally.
 
 ## The four genre families
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** the real `PROTOCOLS` constant defines only **three** genre families — `prose-*`, `comms-*`, `translate-en-es` (9 protocols total) — not four. No `LEGAL` family exists anywhere in the real code. **Flagged, not resolved.**
+
 Four genre families are defined, each with its own banned-vocabulary list, register-tightening
 targets, and Stage-1 scan rules:
 

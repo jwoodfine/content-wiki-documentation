@@ -79,7 +79,7 @@ Ring 3 is a single read-only consumer of Ring 2. It never writes to the knowledg
 
 The three compute tiers available to Ring 3:
 
-- **Tier A — local.** A 7B-class model on the customer's own hardware. Zero marginal cost, full data locality. The default for most requests.
+- **Tier A — local.** A 7B-class model on the customer's own hardware. Zero marginal cost, full data locality. The default for most requests. (Correction, 2026-08-02, verified against canonical `origin/main`: real Tier A is currently **OLMo 2 1B Q4**, live and tested ("177/177 tests" per `service-slm/CLAUDE.md`) — a 7B upgrade is explicitly documented as "pending," not current. This directly contradicts this article's own sibling, `leapfrog-2030-architecture.md`, which correctly states Tier A is a 1B model. Flagged, not resolved.)
 - **Tier B — GPU burst.** A larger model on a short-lived GPU instance ([[yoyo-compute-substrate|Yo-Yo]]), used when Tier A cannot handle the request shape efficiently. The customer controls when it starts and stops.
 - **Tier C — external API.** External vendor APIs, used only with an explicit per-request allowlist. Every call is logged at the customer's audit ledger.
 

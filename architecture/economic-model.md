@@ -25,6 +25,8 @@ For a buyer in that segment, the platform's economics are aligned with theirs. T
 
 ## The two tiers
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** this clean two-tier license split doesn't match the real, ratified `LICENSE-MATRIX.md`, which assigns licenses per-*module*, not per-*tier*: `os-console`/`os-workplace` are AGPL; most others (`os-privategit`, `os-totebox`, `os-mediakit`, `os-infrastructure`, the `app-privategit-*`/`app-totebox-*`/`app-mediakit-*`/`app-network-*` families) are FSL-1.1-ALv2; and — critically — `os-orchestration`/`os-interface`/`app-orchestration-*` (the core commercial product) is fully proprietary (`PointSav-ARR`), permanently excluded from both the AGPL and FSL paths. **Flagged, not resolved** — needs rewriting around the real, granular per-module license matrix rather than a two-tier story.
+
 <strong>Community</strong> is the free tier, under an AGPL-3.0-or-later licence. A Community deployment is one [[totebox-os|ToteboxOS]] archive and one [[console-os|ConsoleOS]] terminal, with local model inference as an optional component. Community is the adoption funnel — it generates contributors and surfaces edge cases — and [[pointsav-overview|PointSav]] earns no revenue from it.
 
 <strong>SMB Customer</strong> is the revenue tier, under a Functional Source License with an Apache-2.0 fallback after the delay period, plus a commercial licence where required. An SMB Customer deployment adds multi-archive aggregation, GPU burst capability, federated adapter-marketplace participation, and priority access to updated base models. The relationship is an Order Form per customer.

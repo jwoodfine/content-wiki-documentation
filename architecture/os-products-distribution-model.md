@@ -24,6 +24,8 @@ Two products are planned/intended for distribution at `software.pointsav.com`:
 | `os-infrastructure` | $19 USDC | Sovereign OS for PPN infrastructure nodes — runs on bare metal, cloud VMs, or QEMU |
 | `os-network-admin` | $1 USDC | Mesh control plane; also available as a Linux daemon for existing systems |
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** both prices are wrong. The real catalog (`app-privategit-marketplace/catalog/products.yaml`) prices `os-network-admin` at `$0` (BETA), and `os-infrastructure` doesn't appear as a catalogued product at all — only `os-console` and `os-network-admin` are listed. The ratified licensing BRIEF cited in the marketplace code states explicitly: "every catalogued product is priced at $0 USDC (BETA)... no non-zero future price has been ratified for any tier." **Flagged, not resolved.**
+
 Pricing is denominated in USDC on Polygon PoS. No subscription billing. No customer account required. The on-chain transaction is the receipt.
 
 ## Three artifacts per product

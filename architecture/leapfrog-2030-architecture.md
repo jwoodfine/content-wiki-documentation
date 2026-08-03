@@ -42,7 +42,7 @@ Each shift is a single architectural decision with downstream consequences. Each
 
 ## What the thesis is not
 
-The thesis is not anti-cloud. PointSav uses commercial cloud providers extensively. It is not anti-AI. PointSav embeds language models throughout the architecture. It is not a rejection of open source. PointSav's core operating systems are intended for release under Apache 2.0.
+The thesis is not anti-cloud. PointSav uses commercial cloud providers extensively. It is not anti-AI. PointSav embeds language models throughout the architecture. It is not a rejection of open source. PointSav's core operating systems are intended for release under Apache 2.0. (Correction, 2026-08-02, verified against canonical `origin/main`: this is wrong — the real, ratified `LICENSE-MATRIX.md` puts `os-console`/`os-totebox` under AGPL-3.0-or-later and `os-workplace` under FSL-1.1-ALv2; no `os-*` product is Apache 2.0. Same finding on the sibling article `pointsav-overview.md`. Flagged, not resolved.)
 
 The thesis is structural: the asset the customer owns is the running instance, not a subscription seat.
 

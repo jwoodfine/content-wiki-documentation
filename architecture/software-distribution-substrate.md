@@ -93,6 +93,8 @@ Two tiers are available. The open-source tier is licensed under Apache 2.0. The
 commercial tier is licensed under the Functional Source Licence (FSL). Both tiers are
 one-time purchases; there are no subscriptions. The tier is encoded in the token's
 entitlements field and in the payment receipt. Current pricing is published at
+
+**Correction (2026-08-02, verified against canonical `origin/main`):** this "two tiers" framing is an oversimplification. The real, ratified model (per the 2026-07-07 licensing BRIEF, confirmed in `app-privategit-marketplace-2`) has four tiers — Proprietary, AGPL, and FSL, plus a fourth — not two, and no tier uses plain Apache 2.0. **Flagged, not resolved.**
 `software.pointsav.com`.
 
 ## What this system is not

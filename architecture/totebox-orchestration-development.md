@@ -35,7 +35,7 @@ The development workspace maps directly onto this topology:
 | [[service-slm|`service-slm`]] access-control gateway | The shared [[totebox-orchestration|Orchestration]] AI routing layer |
 | `vault-privategit-source-1` (declared in `MANIFEST.md`) | The Command instance identity |
 
-Thirteen Totebox Archives are currently active in the workspace, covering the building-information, geographic-information, editorial, design, knowledge, marketing, bookkeeping, proofreading, and platform-infrastructure concerns. Two additional development archives are planned to complete the topology — `project-source` for PointSav canonical-tier work and `project-woodfine` for Woodfine customer-tier work.
+Thirteen Totebox Archives are currently active in the workspace, covering the building-information, geographic-information, editorial, design, knowledge, marketing, bookkeeping, proofreading, and platform-infrastructure concerns. Two additional development archives are planned to complete the topology — `project-source` for PointSav canonical-tier work and `project-woodfine` for Woodfine customer-tier work. (Correction, 2026-08-02, verified against the live workspace: `/srv/foundry/clones/` now holds 26 `project-*` archives, not thirteen — organic workspace growth since this article's `last_edited: 2026-05-25` date, not a fabrication. Flagged, not resolved.)
 
 ## The Command Session
 

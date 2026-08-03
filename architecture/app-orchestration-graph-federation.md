@@ -97,6 +97,8 @@ non-trivial DataGraphs, or the appearance of a second consumer.
 
 ## What app-orchestration-graph Is Intended to Own
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** `app-orchestration-graph` isn't a future extraction target — it already exists as a substantial scaffold (`src/main.rs`, `src/capability.rs`), and its real, already-built design differs from every prediction below. The real endpoint is `GET /v1/graph/context`, not `POST /v1/graph/federated`; real archive discovery is a static `ORCHESTRATION_GRAPH_TARGETS` env var of `archive_name|endpoint|module_id` triples, not automatic FleetRegistry-based fanout; the real response includes `warnings`/`archives_queried`/`archives_responding` fields, not a `partial: true` flag; and the real code implements Ed25519 capability-forwarding/pairing, unmentioned anywhere below. Port `:9181` is independently confirmed correct. **Flagged, not resolved** — this section needs a rewrite around the real, already-shipped design rather than a still-future intent.
+
 When extracted, `app-orchestration-graph` is intended to own:
 
 - The `POST /v1/graph/federated` endpoint and all fanout logic (moved from

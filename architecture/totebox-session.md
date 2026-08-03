@@ -73,6 +73,8 @@ In the planned next phase, `app-orchestration-command` (CommandCentre) is intend
 
 ## Permission tiers
 
+**Correction (2026-08-02, verified against canonical `origin/main`):** the real `PairingRole` enum (`app-orchestration-command/crates/orchestration-command-core/src/lib.rs`) has exactly **three** roles — `User`, `Admin`, `Interface` — not four. This table invents a fourth by splitting Admin into "System Administrator" + "Package Manager." Same systemic finding as several `how-to/` articles this session. **Flagged, not resolved.**
+
 Four tiers govern what a contributor — and the session they open — can do:
 
 | Tier | Label | Pairing set |
