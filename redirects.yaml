@@ -528,3 +528,12 @@ redirects:
 
   - from: /reference/open-bim-regulatory-acceptance
     to: https://projects.woodfinegroup.com/building-design/open-bim-regulatory-acceptance
+
+  # architecture/co-location-methodology.md renamed to
+  # architecture/hardware-co-location-methodology.md 2026-08-03 — disambiguates from
+  # substrate/retail-co-location-tier-methodology.md, a homonym-collision subject in
+  # this same wiki (see the 2026-08-01 GIS/location-intelligence consolidation note
+  # above). `aliases: [co-location-methodology]` on the EN article also resolves
+  # `[[co-location-methodology]]` wikilinks; this redirect covers direct path hits.
+  - from: /architecture/co-location-methodology
+    to: /architecture/hardware-co-location-methodology

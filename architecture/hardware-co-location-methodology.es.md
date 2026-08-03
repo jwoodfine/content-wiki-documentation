@@ -2,17 +2,17 @@
 schema: foundry-doc-v1
 type: concept
 content_type: topic
-slug: co-location-methodology
+slug: hardware-co-location-methodology
 short_description: "Un enfoque estructurado para clasificar candidatos de coubicación de hardware en dimensiones regulatorias, de red, de infraestructura y de costo, restringido primero por requisitos regulatorios antes de que ocurra cualquier otra optimización."
-title: "Metodología de co-ubicación"
+title: "Metodología de co-ubicación de hardware"
 category: architecture
 language: es
 quality: complete
 status: stable
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-13
+last_edited: 2026-08-03
 editor: pointsav-engineering
-paired_with: co-location-methodology.md
+paired_with: hardware-co-location-methodology.md
 cites: []
 ---
 

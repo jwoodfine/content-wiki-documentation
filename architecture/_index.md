@@ -69,7 +69,7 @@ The principles and mechanisms by which customers own their deployment outright.
 
 Architectural decisions for the location intelligence and real-property domain.
 
-- [[co-location-methodology]] — The methodology for ranking third-party data-center facility co-location candidates: jurisdictional fit, network transit, infrastructure compatibility, and cost, regulatory requirements first. (Not to be confused with [[retail-co-location-tier-methodology|the retail co-location tier methodology]], a different subject that shares the same term.)
+- [[hardware-co-location-methodology]] — The methodology for ranking third-party data-center facility co-location candidates: jurisdictional fit, network transit, infrastructure compatibility, and cost, regulatory requirements first. (Not to be confused with [[retail-co-location-tier-methodology|the retail co-location tier methodology]], a different subject that shares the same term.)
 - Location intelligence strategy — The strategic and architectural frame for the location intelligence substrate: flat-file open-GIS, offline-first, no per-seat vendor costs.
 - Flat-file BIM leapfrog — How Building Information Modelling is handled as flat-file ISO 19650 records rather than hosted database instances.
 - Building design system for BIM — Design system tooling adapted for BIM and real-property workflows.

@@ -2,17 +2,18 @@
 schema: foundry-doc-v1
 type: concept
 content_type: topic
-slug: co-location-methodology
+slug: hardware-co-location-methodology
+aliases: [co-location-methodology]
 short_description: "A structured approach for ranking hardware co-location candidates across jurisdictional, network, infrastructure, and cost dimensions, regulatory requirements first."
-title: "Co-location methodology"
+title: "Hardware co-location methodology"
 category: architecture
 language: en
 quality: complete
 status: stable
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-13
+last_edited: 2026-08-03
 editor: pointsav-engineering
-paired_with: co-location-methodology.es.md
+paired_with: hardware-co-location-methodology.es.md
 cites: []
 ---
 
