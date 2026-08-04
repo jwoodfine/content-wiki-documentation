@@ -10,6 +10,7 @@ bcsc_class: current-fact
 language: en
 paired_with: news-release-standards.es.md
 category: reference
+index_group: editorial-and-publishing-standards
 ---
 
 

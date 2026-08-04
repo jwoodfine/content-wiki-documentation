@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "SLM operationalization plan"
 slug: service-slm-operationalization-plan
 category: reference
+index_group: platform-orientation
 type: topic
 content_type: topic
 quality: complete

@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "Getting started with the PointSav platform"
 slug: getting-started
 category: reference
+index_group: platform-orientation
 type: concept
 content_type: topic
 quality: stub

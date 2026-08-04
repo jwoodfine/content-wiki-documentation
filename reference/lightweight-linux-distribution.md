@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "Lightweight linux distribution"
 slug: lightweight-linux-distribution
 category: reference
+index_group: general-computing-concepts
 type: topic
 content_type: topic
 quality: complete

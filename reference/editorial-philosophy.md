@@ -5,6 +5,7 @@ title: "Editorial philosophy"
 slug: editorial-philosophy
 short_description: "Every article is a learning resource that teaches understanding rather than retrieving facts, structured with encyclopedic leads and internal linking for readers."
 category: reference
+index_group: editorial-and-publishing-standards
 status: stable
 bcsc_class: no-disclosure-implication
 last_edited: 2026-05-08

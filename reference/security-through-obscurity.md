@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "Security through obscurity"
 slug: security-through-obscurity
 category: reference
+index_group: general-computing-concepts
 type: topic
 content_type: topic
 quality: complete

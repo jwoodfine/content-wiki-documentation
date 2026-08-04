@@ -5,6 +5,7 @@ slug: wiki-provider-landscape
 short_description: "A structural audit of the wiki-shaped knowledge-surface market by archetype, documenting why no category of provider has closed Wikipedia's encyclopedic gap, and what closing it would require."
 status: active
 category: reference
+index_group: editorial-and-publishing-standards
 type: topic
 content_type: topic
 quality: complete

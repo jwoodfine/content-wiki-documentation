@@ -6,6 +6,7 @@ title: "PointSav encyclopedia — glossary and lexicon"
 slug: glossary-documentation
 short_description: "A canonical A-to-Z lexicon bridging standard industry terminology with PointSav platform concepts, with authoritative definitions across technical and financial domains."
 category: reference
+index_group: platform-orientation
 status: complete
 bcsc_class: public-disclosure-safe
 last_edited: 2026-08-04

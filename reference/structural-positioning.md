@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "Structural positioning"
 slug: structural-positioning
 category: reference
+index_group: editorial-and-publishing-standards
 type: concept
 content_type: topic
 quality: complete

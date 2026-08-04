@@ -5,6 +5,7 @@ title: "Editorial language registers"
 slug: editorial-language-registers
 short_description: "Three distinct language registers matching the PointSav wikis to their audiences: financial-press, developer-platform, and regulatory-specification prose."
 category: reference
+index_group: editorial-and-publishing-standards
 status: stable
 bcsc_class: no-disclosure-implication
 last_edited: 2026-05-21

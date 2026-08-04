@@ -4,6 +4,7 @@ title: "Hardware reference"
 slug: hardware-reference
 short_description: "Reference hardware profiles for developer workstations and fleet devices, specifying CPU requirements including Haswell-generation x86_64 and fsgsbase support."
 category: reference
+index_group: platform-orientation
 type: reference
 content_type: topic
 quality: complete

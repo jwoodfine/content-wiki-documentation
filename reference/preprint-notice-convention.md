@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "Preprint notice"
 slug: preprint-notice-convention
 category: reference
+index_group: editorial-and-publishing-standards
 type: reference
 content_type: topic
 quality: complete

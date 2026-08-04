@@ -4,6 +4,7 @@ title: "Developer guide index"
 slug: guide-catalog
 short_description: "Developer guide index for the PointSav platform — task-oriented how-to guides organised by concern, from toolchain setup to session lifecycle."
 category: reference
+index_group: platform-orientation
 type: topic
 content_type: topic
 status: stable

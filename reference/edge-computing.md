@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "Edge computing"
 slug: edge-computing
 category: reference
+index_group: general-computing-concepts
 type: topic
 content_type: topic
 quality: complete

@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "Root files discipline"
 slug: root-files-discipline
 category: reference
+index_group: editorial-and-publishing-standards
 type: topic
 content_type: topic
 quality: complete

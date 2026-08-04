@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "User experience design"
 slug: user-experience-design
 category: reference
+index_group: general-computing-concepts
 type: topic
 content_type: topic
 quality: complete
