@@ -1,4 +1,15 @@
 # Canonical category taxonomy for the documentation wiki. Single source of truth. Supersedes the hardcoded RATIFIED_CATEGORIES; see .agent/rules/naming-convention.md §4 and .agent/audit/2026-07-02-category-redesign/proposal-documentation.md.
+#
+# `kind:` (added 2026-08-04) — sidebar section grouping. topic | guide. Every
+# category is `topic` except `how-to`, which is `guide`. This is the single
+# source of truth for the sidebar's two-section split (Topics / Guides) —
+# the engine must read this field, not hardcode an id check, so a category
+# never has to appear in two sections at once (see the how-to duplicate bug
+# this replaced) and so a future guide-category split (how-to → several
+# real categories) needs zero engine change, only new `kind: guide` entries
+# here. `reference` (Glossary and Reference) stays `kind: topic` deliberately
+# — it renders inside the Topics section, not its own section, because
+# unlike `how-to` it has no near-term plan to become a multi-category family.
 wiki: media-knowledge-documentation
 audience: >-
   Primary: developers and PointSav engineers. Secondary: the financial
@@ -6,7 +17,7 @@ audience: >-
   corporate knowledge base, who must be able to read every category name
   and scope cold. Article bodies are technical; category names and scopes
   are PointSav speaking plainly.
-version: 2026-07-15
+version: 2026-08-04
 companion: >-
   media-knowledge-corporate and media-knowledge-projects carry the
   customer's story — the company and the money; the buildings and the
@@ -17,6 +28,7 @@ companion: >-
 categories:
   - id: architecture
     name: "How It's Built"
+    kind: topic
     scope: >-
       How the platform is put together: the three-ring build that keeps
       AI optional, the principle that customers own their running
@@ -27,6 +39,7 @@ categories:
 
   - id: substrate
     name: "Building Blocks"
+    kind: topic
     scope: >-
       The reusable pieces the platform is built from — the concepts,
       disciplines, and mechanisms that recur in every product. If
@@ -36,6 +49,7 @@ categories:
 
   - id: patterns
     name: "Design Patterns"
+    kind: topic
     scope: >-
       The named, repeatable shapes the platform reuses to solve
       coordination, ownership, and interface problems — written up once,
@@ -45,6 +59,7 @@ categories:
 
   - id: security
     name: "Security and Trust"
+    kind: topic
     scope: >-
       How the platform is protected and how its records are verified:
       identity and permissions, cryptographic verification, isolation
@@ -55,6 +70,7 @@ categories:
 
   - id: ai
     name: "How AI Is Used and Contained"
+    kind: topic
     scope: >-
       Where AI sits and where it is not allowed: the boundary that keeps
       AI away from the authoritative record, the routing between models,
@@ -65,6 +81,7 @@ categories:
 
   - id: systems
     name: "Operating Systems"
+    kind: topic
     scope: >-
       The operating systems PointSav ships — one article per system,
       plus how they are composed and developed.
@@ -73,6 +90,7 @@ categories:
 
   - id: services
     name: "Platform Services"
+    kind: topic
     scope: >-
       The always-on background services — one article per service: what
       it does, what data it owns, and how it connects to the rest.
@@ -81,6 +99,7 @@ categories:
 
   - id: applications
     name: "Applications"
+    kind: topic
     scope: >-
       The applications people actually use — one article per
       application, from the public knowledge sites to the internal
@@ -90,6 +109,7 @@ categories:
 
   - id: infrastructure
     name: "Where It Runs"
+    kind: topic
     scope: >-
       Where the platform physically runs: customer hardware, deployment,
       storage, telemetry, and the shared compute network that pools
@@ -99,6 +119,7 @@ categories:
 
   - id: design-system
     name: "Design and Brand"
+    kind: topic
     scope: >-
       How the platform looks and speaks: design philosophy, visual
       vocabulary, and brand surfaces. Component specifications live in
@@ -108,6 +129,7 @@ categories:
 
   - id: governance
     name: "Governance and Standards"
+    kind: topic
     scope: >-
       How engineering decisions are made and recorded: decision records,
       licensing and legal structure, disclosure posture, and compliance
@@ -118,6 +140,7 @@ categories:
 
   - id: how-to
     name: "How You Run It"
+    kind: guide
     scope: >-
       Step-by-step instructions for the hands-on work: installing,
       configuring, deploying, and operating the platform. Customers run
@@ -128,6 +151,7 @@ categories:
 
   - id: reference
     name: "Glossary and Reference"
+    kind: topic
     scope: >-
       Every term defined in plain words, plus the catalogues and
       standard definitions used across the knowledge base.
