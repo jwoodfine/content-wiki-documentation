@@ -4,6 +4,7 @@ title: "Self-host a deployment"
 slug: self-host-a-deployment
 short_description: "Boots the published os-totebox and app-orchestration-slm seL4 appliance images under QEMU, with configuration baked in at build time via device-tree bootargs, and verifies both come up healthy."
 category: self-hosting
+index_group: getting-the-platform-running
 content_type: how-to
 type: how-to
 quality: complete

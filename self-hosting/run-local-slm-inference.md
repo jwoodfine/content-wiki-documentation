@@ -4,6 +4,7 @@ title: "Run local SLM inference"
 slug: run-local-slm-inference
 short_description: "Starts the local Tier A SLM service, verifies Doorman readiness, and submits an inference request from the console or the API, with all prompt data staying on the deployment."
 category: self-hosting
+index_group: wiring-up-inference
 content_type: how-to
 type: how-to
 quality: complete

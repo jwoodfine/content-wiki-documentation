@@ -4,6 +4,7 @@ title: "Configure the Doorman gateway"
 slug: configure-doorman
 short_description: "Configures a single-instance Doorman gateway via environment variables — Tier A local endpoint, optional Tier B Yo-Yo burst compute, optional Tier C external providers — and verifies tier state through /readyz."
 category: self-hosting
+index_group: wiring-up-inference
 content_type: how-to
 type: how-to
 quality: complete

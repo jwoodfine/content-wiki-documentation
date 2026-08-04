@@ -4,6 +4,7 @@ title: "Deploy a knowledge instance"
 slug: deploy-knowledge-instance
 short_description: "Deploys an instance of app-mediakit-knowledge from a local content path: write a knowledge.toml [site] + [[mount]] configuration, build the binary, and start it with the serve subcommand."
 category: self-hosting
+index_group: getting-the-platform-running
 content_type: how-to
 type: how-to
 quality: complete
