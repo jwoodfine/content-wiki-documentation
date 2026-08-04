@@ -16,15 +16,15 @@ editor: pointsav-engineering
 paired_with: _index.es.md
 ---
 
-**This page indexes the 13 articles in the security category.** It covers identity and
-permissions, cryptographic verification, isolation boundaries, how data is handled and kept
-private, and the supply-chain controls designed to keep code honest from contributor to
-production.
+**Security and trust** on this platform rests on one idea: every component holds a verified,
+scoped credential it must present to act — not an inherited grant of trust. That discipline
+shows up across five areas: who's known to the system and what they're allowed to do, how a
+reader independently verifies a record hasn't been altered, what contains a compromise once
+one occurs, how data is handled and kept private, and the controls that keep code honest from
+a contributor's machine to production.
 
-This is the platform's answer to the diligence reader's question — *can this be trusted?* — and
-the front door for engineers looking up a specific security mechanism: capability-based access
-control, machine-based authentication, attestation, cryptographic ledgers, and the
-trust-establishment bootstrap a device passes through before it joins a deployment.
+A diligence reader's real question is *can this be trusted?* An engineer's is usually
+narrower — *how does capability-based access control actually work?* Both start below.
 
 <!-- START-HERE-HIGHLIGHT: engine reads this block to render the single "start here" card
      (reuses the existing cluster-card--start-here component). Do not add more than one. -->

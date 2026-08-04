@@ -16,16 +16,17 @@ editor: pointsav-engineering
 paired_with: _index.md
 ---
 
-**Esta página indexa los 13 artículos de la categoría seguridad.** Abarca la identidad y los
-permisos, la verificación criptográfica, los límites de aislamiento, cómo se maneja y se mantiene
-privada la información, y los controles de la cadena de suministro diseñados para mantener el
-código honesto desde el colaborador hasta producción.
+**La seguridad y la confianza** en esta plataforma descansan en una idea: cada componente posee
+una credencial verificada y acotada que debe presentar para actuar — no una concesión heredada de
+confianza. Esa disciplina se manifiesta en cinco áreas: quién es conocido por el sistema y qué se
+le permite hacer, cómo un lector verifica de forma independiente que un registro no ha sido
+alterado, qué contiene un compromiso una vez que ocurre, cómo se maneja y se mantiene privada la
+información, y los controles que mantienen el código honesto desde la máquina de un colaborador
+hasta producción.
 
-Esta es la respuesta de la plataforma a la pregunta del lector de diligencia — *¿se puede confiar
-en esto?* — y la puerta de entrada para los ingenieros que buscan un mecanismo de seguridad
-específico: control de acceso basado en capacidades, autenticación basada en máquinas,
-atestación, registros criptográficos, y el arranque de establecimiento de confianza por el que
-pasa un dispositivo antes de unirse a un despliegue.
+La pregunta real de un lector de diligencia es *¿se puede confiar en esto?* La de un ingeniero
+suele ser más específica — *¿cómo funciona realmente el control de acceso basado en
+capacidades?* Ambas empiezan más abajo.
 
 <!-- START-HERE-HIGHLIGHT: el motor lee este bloque para la tarjeta "empezar aquí"
      (reutiliza el componente cluster-card--start-here existente). No añadir más de una. -->
