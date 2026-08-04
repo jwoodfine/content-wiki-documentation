@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 title: "Cómo desplegar una instancia de conocimiento"
 slug: deploy-knowledge-instance
 short_description: "Despliega una instancia del servidor wiki app-mediakit-knowledge desde una ruta de contenido local: compila el binario, escribe knowledge.toml, inicia el servicio y verifica que sirve páginas."
-category: how-to
+category: self-hosting
 content_type: how-to
 type: how-to
 status: active
