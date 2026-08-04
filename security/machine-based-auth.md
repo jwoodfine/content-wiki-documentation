@@ -2,6 +2,7 @@
 title: "Machine-based authorization"
 slug: machine-based-auth
 category: security
+index_group: identity-and-permissions
 type: topic
 content_type: topic
 quality: complete

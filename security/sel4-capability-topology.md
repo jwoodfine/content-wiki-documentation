@@ -2,6 +2,7 @@
 title: "seL4 capability topology"
 slug: sel4-capability-topology
 category: security
+index_group: isolation-boundaries
 type: topic
 content_type: topic
 quality: complete

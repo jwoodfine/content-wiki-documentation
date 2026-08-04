@@ -2,6 +2,7 @@
 title: "Pre-commit defense in depth"
 slug: pre-commit-defense-in-depth
 category: security
+index_group: supply-chain-controls
 type: topic
 content_type: topic
 quality: complete

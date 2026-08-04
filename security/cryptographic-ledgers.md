@@ -2,6 +2,7 @@
 title: "Cryptographic ledgers"
 slug: cryptographic-ledgers
 category: security
+index_group: cryptographic-verification
 type: topic
 content_type: topic
 quality: complete

@@ -2,6 +2,7 @@
 title: "Diode standard"
 slug: diode-standard
 category: security
+index_group: isolation-boundaries
 type: topic
 content_type: topic
 quality: complete

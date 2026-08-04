@@ -4,6 +4,7 @@ title: "Genesis protocol"
 slug: genesis-protocol
 short_description: "The Genesis Protocol is the fleet-bootstrapping sequence every os-infrastructure node runs at first boot, reaching a secure claimable state with no prior configuration."
 category: security
+index_group: isolation-boundaries
 type: topic
 content_type: topic
 status: stable

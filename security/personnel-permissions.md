@@ -2,6 +2,7 @@
 title: "Personnel and permissions"
 slug: personnel-permissions
 category: security
+index_group: identity-and-permissions
 type: topic
 content_type: topic
 quality: complete

@@ -2,6 +2,7 @@
 title: "Capability-based security"
 slug: capability-based-security
 category: security
+index_group: identity-and-permissions
 type: topic
 content_type: topic
 quality: complete

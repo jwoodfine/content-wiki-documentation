@@ -2,6 +2,7 @@
 title: "Verification surveyor"
 slug: verification-surveyor
 category: security
+index_group: identity-and-permissions
 type: topic
 content_type: topic
 quality: complete

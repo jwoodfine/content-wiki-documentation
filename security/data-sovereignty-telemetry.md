@@ -2,6 +2,7 @@
 title: "Data sovereignty and zero-state telemetry"
 slug: data-sovereignty-telemetry
 category: security
+index_group: data-handling-and-privacy
 type: topic
 content_type: topic
 quality: complete

@@ -2,6 +2,7 @@
 title: "Five-stage supply chain"
 slug: five-stage-supply-chain
 category: security
+index_group: supply-chain-controls
 type: topic
 content_type: topic
 quality: complete

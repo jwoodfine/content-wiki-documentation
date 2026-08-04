@@ -2,6 +2,7 @@
 title: "Cryptographic payload attestation"
 slug: crypto-attestation
 category: security
+index_group: cryptographic-verification
 type: topic
 content_type: topic
 quality: complete

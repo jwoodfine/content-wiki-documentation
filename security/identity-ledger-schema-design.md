@@ -2,6 +2,7 @@
 title: "Identity ledger schema design"
 slug: identity-ledger-schema-design
 category: security
+index_group: identity-and-permissions
 type: topic
 content_type: topic
 quality: complete
