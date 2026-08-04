@@ -2,131 +2,108 @@
 schema: foundry-doc-v1
 title: "Cómo desplegar una instancia de conocimiento"
 slug: deploy-knowledge-instance
-short_description: "Despliega una instancia del servidor wiki app-mediakit-knowledge desde una ruta de contenido local: compila el binario, escribe knowledge.toml, inicia el servicio y verifica que sirve páginas."
+short_description: "Despliega una instancia de app-mediakit-knowledge desde una ruta de contenido local: escribe una configuración knowledge.toml con [site] + [[mount]], compila el binario y arráncalo con el subcomando serve."
 category: self-hosting
+index_group: getting-the-platform-running
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-07-18
-editor: pointsav-engineering
+audience: "Ingenieros (con acceso directo al terminal); operadores de cliente"
 language: es
 language_protocol: TRANSLATE-ES
+last_edited: 2026-08-04
+editor: pointsav-engineering
 paired_with: deploy-knowledge-instance.md
 ---
-
-Una instancia de conocimiento es un despliegue en ejecución de `app-mediakit-knowledge` — el servidor wiki que renderiza la documentación y los wikis de proyectos de la plataforma. Desplegar una instancia significa compilar el binario, escribir un archivo de configuración `knowledge.toml` que apunte a los repositorios de contenido e iniciar el servicio. Esta guía cubre el despliegue de un wiki de instancia única desde una ruta de contenido local.
-
-Para el modelo de tres instancias (documentación, proyectos, corporativo), véase [[app-mediakit-knowledge]]. Para los montajes de contenido declarativos, véase [[use-knowledge-mounts]].
-
-**Corrección mayor (2026-07-18):** el esquema de `knowledge.toml` del Paso 2 y la
-invocación de CLI del Paso 4 no coinciden con la fuente real de `app-mediakit-knowledge`.
-La verificación directa de `app-mediakit-knowledge/src/config.rs` (cuyo propio comentario
-de documentación afirma que el esquema "is the contract the three live instances depend
-on") encuentra una configuración estructuralmente distinta: una tabla `[site]` (`title`,
-`brand`, `bind` — una única cadena combinada `host:puerto` con valor por defecto
-`127.0.0.1:9090`, `state_dir`, `instance`, `canonical_url`, `categories`), un arreglo
-repetible `[[mount]]` (`path`, `role`, `blueprint_set` — este es el mecanismo real detrás
-de [[use-knowledge-mounts]]) en lugar de una única tabla `[content] primary_path`, más las
-tablas opcionales `[citations]`, `[[peer]]`, `[[start_here]]` y `[federation]`. **No existe
-ninguna tabla `[server]` con campos `port`/`bind` separados, ninguna tabla `[content]`,
-ninguna tabla `[search]` ni ninguna tabla `[auth]` en la estructura `Config` real** — los
-campos `search.enabled`/`index_path` y `auth.enabled` del ejemplo más abajo no existen en
-este esquema. Por separado, la invocación del Paso 4
-(`app-mediakit-knowledge --config knowledge.toml`) también es incorrecta: la CLI real se
-basa en subcomandos, `app-mediakit-knowledge serve --knowledge-toml <ruta>` (o la variable
-de entorno `WIKI_KNOWLEDGE_TOML`), con un subcomando hermano `check` para validación en CI
-no mencionado en esta guía. **Señalado, no reescrito silenciosamente** — una reescritura
-completa necesita un ejemplo real anotado contra las estructuras reales `Config`/`Site`/
-`Mount`, no una reconstrucción adivinada; necesita confirmación de project-totebox o
-project-knowledge antes de corregir los Pasos 2 y 4.
 
 ## Requisitos previos
 
 - El binario `app-mediakit-knowledge` compilado desde el monorepo (véase [[install-toolchain]])
-- Uno o más clones del repositorio de contenido `media-knowledge-*` en el host de despliegue
-- Un puerto de despliegue (p.ej., 9090) que no esté ocupado por otro servicio
+- Uno o más clones de repositorios de contenido `media-knowledge-*` en el host de despliegue
+- Un puerto de despliegue que no esté ocupado por otro servicio (por defecto `127.0.0.1:9090`)
 - Una sesión de terminal en el host
 
-## Paso 1: Localizar el repositorio de contenido
+## Propósito
 
-El servidor wiki lee Markdown desde una ruta local. Identifique la ruta al repositorio de contenido que desea servir:
+Una instancia de conocimiento es un despliegue en ejecución de `app-mediakit-knowledge`, el motor que sirve las wikis de documentación y de proyectos de la plataforma. Desplegar una consiste en escribir un `knowledge.toml` que declare un `[site]` y al menos un `[[mount]]` de contenido, y después arrancar el binario contra ese archivo con el subcomando `serve`.
 
-```
-ls ~/Foundry/clones/project-editorial/media-knowledge-documentation/
-```
+## Procedimiento
 
-El repositorio debe contener un `index.md` en la raíz y subdirectorios de categorías con páginas de aterrizaje `_index.md`. Si el contenido aún no ha sido clonado, clónelo primero:
+1. Localice o clone el repositorio de contenido que quiere servir:
 
-```
-git clone git@github.com:pointsav/media-knowledge-documentation.git
-```
+   ```
+   ls ~/Foundry/clones/project-editorial/media-knowledge-documentation/
+   ```
 
-## Paso 2: Escribir el archivo de configuración
+   Si aún no está clonado:
 
-Cree `knowledge.toml` en el directorio de despliegue:
+   ```
+   git clone git@github.com:pointsav/media-knowledge-documentation.git
+   ```
 
-```toml
-[server]
-port = 9090
-bind = "0.0.0.0"
+2. Escriba el `knowledge.toml`:
 
-[content]
-primary_path = "/ruta/a/media-knowledge-documentation"
-instance_name = "documentation"
+   ```toml
+   [site]
+   title = "PointSav Documentation"
+   brand = "pointsav"            # "pointsav" o "woodfine" — selecciona el conjunto de tokens
+   bind = "127.0.0.1:9090"
+   instance = "documentation"    # "documentation" | "projects" | "corporate"
 
-[search]
-enabled = true
-index_path = "/var/lib/knowledge/search-index"
+   [[mount]]
+   path = "/ruta/a/media-knowledge-documentation"
+   role = "primary"              # el mount primario es editable; los demás son de solo lectura
+   ```
 
-[auth]
-enabled = false   # establezca true + configure MBA si se necesita la UI del editor
-```
+   Todos los campos de `[site]` salvo `title` tienen valores por defecto (`brand` → `"pointsav"`, `bind` → `"127.0.0.1:9090"`, `state_dir` → `/var/lib/local-knowledge/state`) — declárelos explícitamente solo cuando necesiten diferir. `[[mount]]` es repetible; un segundo mount de solo lectura es la forma en que una sola instancia federa contenido de otro archivo (véase [[use-knowledge-mounts]]).
 
-`primary_path` debe ser una ruta absoluta a un clon `media-knowledge-*`. `instance_name` aparece en el encabezado renderizado y en los mensajes de registro — use un valor corto y descriptivo.
+3. Compile el binario, si aún no dispone de uno:
 
-## Paso 3: Compilar o localizar el binario
+   ```
+   cd ~/Foundry/clones/<su-archivo>/pointsav-monorepo
+   cargo build -p app-mediakit-knowledge --release
+   ```
 
-Si aún no ha compilado el binario, compílelo desde el monorepo:
+   El binario queda en `target/release/app-mediakit-knowledge`. Cópielo al host de despliegue si se trata de una máquina distinta.
 
-```
-cd ~/Foundry/clones/<su-archivo>/pointsav-monorepo
-cargo build -p app-mediakit-knowledge --release
-```
+4. Arranque la instancia:
 
-El binario aparece en `target/release/app-mediakit-knowledge`. Cópielo al host de despliegue si son máquinas diferentes.
+   ```
+   app-mediakit-knowledge serve --knowledge-toml knowledge.toml
+   ```
 
-## Paso 4: Iniciar la instancia
+   `--knowledge-toml` también puede suministrarse mediante la variable de entorno `WIKI_KNOWLEDGE_TOML`, que es la forma que suele emplear una unidad systemd. El subcomando hermano `check` (`app-mediakit-knowledge check --knowledge-toml knowledge.toml`) valida la configuración y el contenido sin arrancar ningún servidor — útil como control de CI antes de desplegar un cambio de configuración.
 
-Ejecute el binario con el archivo de configuración:
+## Resultado esperado
 
-```
-app-mediakit-knowledge --config knowledge.toml
-```
+La instancia se enlaza a la dirección de `[site].bind`, lee Markdown directamente desde cada ruta montada y sirve el wiki. Las ediciones de contenido en el repositorio aparecen en la siguiente petición — no existe ningún paso de compilación ni de reindexado entre una edición y su publicación.
 
-O inícielo como un servicio systemd usando la plantilla de archivo de unidad proporcionada (si está disponible en el despliegue). El servicio registra mensajes de inicio: lee la ruta de contenido, construye el índice de búsqueda y comienza a escuchar en el puerto configurado.
+## Verificación
 
-## Paso 5: Verificar que la instancia está sirviendo
-
-Obtenga la página de inicio del wiki:
+Solicite la página de inicio:
 
 ```
 curl -s http://127.0.0.1:9090/ | head -20
 ```
 
-La respuesta debe contener HTML para la página de inicio del wiki renderizada desde `index.md`. Obtenga una página de categoría para confirmar el enrutamiento de artículos:
+La respuesta debe contener HTML renderizado a partir del `index.md` del mount. Solicite una página de categoría para confirmar el enrutamiento:
 
 ```
-curl -s http://127.0.0.1:9090/architecture/ | grep '<title>'
+curl -s http://127.0.0.1:9090/category/architecture | grep '<title>'
 ```
 
-Si alguna página devuelve un 404, verifique que `primary_path` en `knowledge.toml` apunte a un directorio que contenga la carpeta de categoría esperada.
+Si una página devuelve 404, confirme que el `path` de `[[mount]]` apunta a un directorio que contiene realmente la carpeta de categoría esperada, y que el subcomando `check` de `knowledge.toml` se ejecuta sin errores antes que nada.
 
-## Puntos clave
+## Reversión
 
-- El servidor wiki lee el contenido directamente desde la ruta de archivo local — los cambios en el repositorio de contenido aparecen inmediatamente sin reiniciar el servicio
-- `instance_name` en la configuración es la etiqueta usada en los registros y el encabezado renderizado
-- El índice de búsqueda se construye al inicio y vive en `index_path` — cambiar esta ruta requiere limpiar el directorio del índice antiguo
-- Tres instancias separadas con tres rutas de contenido sirven los wikis de documentación, proyectos y corporativo de forma independiente
+Detenga el proceso (o ejecute `systemctl stop` sobre la unidad, si corre como tal). No se escribe estado fuera de `state_dir`; eliminar o revertir `knowledge.toml` y reiniciar devuelve la instancia a su configuración anterior. El repositorio de contenido no resulta alterado por el hecho de servirlo — revertir una edición de contenido defectuosa es una operación `git` normal en ese repositorio, no una reversión de despliegue.
+
+## Próximos pasos
+
+- [[use-knowledge-mounts]] — monte un segundo repositorio de contenido, de solo lectura, en esta instancia
+- [[federate-archives-via-content-mounts]] — sirva contenido de múltiples archivos a través de una sola instancia
+- [[self-host-a-deployment]] — la vía de despliegue de appliance más amplia dentro de la cual esta instancia puede ejecutarse
 
 ## Véase también
 

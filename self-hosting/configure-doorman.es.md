@@ -2,150 +2,107 @@
 schema: foundry-doc-v1
 title: "Cómo configurar el gateway Doorman"
 slug: configure-doorman
-short_description: "Configura una puerta de enlace Doorman de instancia única — direcciones ascendentes por nivel, umbrales del disyuntor y verificación del estado de cada nivel mediante el endpoint de salud y el panel F9 de la consola."
+short_description: "Configura un gateway Doorman de instancia única mediante variables de entorno — endpoint local de Tier A, cómputo de ráfaga Yo-Yo opcional de Tier B, proveedores externos opcionales de Tier C — y verifica el estado de cada nivel a través de /readyz."
 category: self-hosting
+index_group: wiring-up-inference
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-07-18
-editor: pointsav-engineering
+audience: "Ingenieros (con acceso directo al terminal); operadores de cliente"
 language: es
 language_protocol: TRANSLATE-ES
+last_edited: 2026-08-04
+editor: pointsav-engineering
 paired_with: configure-doorman.md
 ---
 
-El gateway Doorman enruta todas las solicitudes de inferencia y búsqueda de entidades al nivel apropiado: Nivel A (DataGraph), Nivel B (SLM local) o Nivel C (respaldo local). Configurar Doorman significa establecer las direcciones de nivel superior para cada nivel, definir los umbrales del interruptor de circuito y verificar el endpoint de salud después del inicio. Esta guía cubre un despliegue de Doorman en una sola instancia.
-
-Para el protocolo de Doorman y el modelo de interruptor de circuito, véase [[doorman-protocol]]. Para iniciar el modelo SLM del que depende el Nivel B, véase [[run-local-slm-inference]].
-
-**Corrección mayor (2026-07-18):** el mapeo de niveles y el mecanismo de configuración de
-esta guía están invertidos respecto a la fuente real. La verificación directa contra
-`service-slm/docs/deploy/local-doorman.env.example` (que se documenta a sí mismo como
-generado contra `slm-doorman-server::main.rs`) muestra:
-
-- **Doorman se configura mediante variables de entorno (`SLM_*`), no un archivo
-  `doorman.toml`** con secciones `[tier_a]`/`[tier_b]`/`[tier_c]`. Todo el ejemplo de
-  configuración del Paso 1 más abajo describe un mecanismo que no existe en la fuente real.
-- **El Nivel A es el modelo local pequeño**, no el DataGraph — `SLM_LOCAL_ENDPOINT`
-  (por defecto `http://127.0.0.1:8080`), `SLM_LOCAL_MODEL` (p. ej.
-  `Olmo-3-1125-7B-Think-Q4_K_M.gguf`).
-- **El Nivel B es el cómputo GCE Yo-Yo bajo demanda**, no "SLM local" — `SLM_YOYO_ENDPOINT`,
-  `SLM_YOYO_MODEL` (p. ej. `Olmo-3-1125-32B-Think`), opcional y deshabilitado por defecto
-  (modo comunitario cuando no está configurado).
-- **El Nivel C son proveedores de API externos** (Anthropic/Gemini/OpenAI), no "respaldo
-  local" — `SLM_TIER_C_ANTHROPIC_*`, etc., todos comentados/sin configurar por defecto.
-- La dirección de enlace de Doorman (`SLM_BIND_ADDR`, por defecto `127.0.0.1:9080`) sí
-  coincide con la afirmación de puerto de esta guía — ese detalle no está en disputa.
-- Esto coincide con el modelo de niveles ya confirmado en otras partes de este wiki y
-  mediante verificaciones directas de `get_doorman_status()` en esta sesión.
-
-**Señalado, no reescrito silenciosamente más abajo** — el recorrido de los Pasos 1–5, el
-ejemplo TOML y los campos `circuit_breaker_threshold`/`fallback_message` no se han
-verificado individualmente contra sus equivalentes reales en variables de entorno; una
-reescritura completa necesita la referencia real de CLI/variables de entorno de
-`slm-doorman-server`, no solo esta nota de corrección. Tratar la forma de la respuesta
-JSON de `/health` y el paso de la consola F9 como no verificados en espera de la misma
-revisión.
-
 ## Requisitos previos
 
-- El binario `slm-doorman-server` disponible en el host de despliegue
-- Acceso de red al endpoint del DataGraph (`service-content`) si el Nivel A está previsto
-- El binario del modelo OLMo presente en la ruta configurada para el Nivel B
+- El binario `slm-doorman-server` (o la unidad systemd `slm-doorman`) disponible en el host de despliegue
+- El binario del modelo SLM local presente en la ruta que espera el Tier A (véase `local-slm.service`)
 - Una sesión de terminal en el host donde se ejecutará Doorman
+- Acceso de red a un endpoint Yo-Yo en GCE, si se desea cómputo de ráfaga de Tier B (opcional)
+- Claves de API de Anthropic, Gemini u OpenAI, si se desea el respaldo externo de Tier C (opcional)
 
-## Paso 1: Crear el archivo de configuración de Doorman
+## Propósito
 
-Doorman lee su configuración desde un archivo TOML. Cree `doorman.toml`:
+El gateway Doorman enruta las solicitudes de inferencia y de audit-proxy hacia uno de tres niveles: Tier A (un modelo pequeño local), Tier B (cómputo de ráfaga Yo-Yo en GCE, opcional) o Tier C (APIs de proveedores externos, opcional). Doorman se configura íntegramente mediante variables de entorno — no existe ningún archivo de configuración. Un Doorman con solo el Tier A configurado es un despliegue completo y válido (el "modo community-tier"); los Tiers B y C son aditivos, no obligatorios.
 
-```toml
-[server]
-port = 9080
-bind = "127.0.0.1"
+## Procedimiento
 
-[tier_a]
-enabled = true
-service_content_url = "http://127.0.0.1:9090"
-circuit_breaker_threshold = 5
-circuit_breaker_timeout_secs = 30
+1. Defina la dirección de escucha. Doorman escucha en `SLM_BIND_ADDR` (por defecto `127.0.0.1:9080` — solo loopback; coloque delante un proxy inverso con terminación TLS para cualquier tráfico que no sea del mismo host).
 
-[tier_b]
-enabled = true
-model_path = "/opt/pointsav/models/olmoe-1b-7b-instruct.gguf"
-context_window = 4096
-max_tokens = 512
+2. Defina el endpoint y el modelo del Tier A (local). `SLM_LOCAL_ENDPOINT` debe coincidir con la dirección a la que se vincula `local-slm.service` (por defecto `http://127.0.0.1:8080`). `SLM_LOCAL_MODEL` debe coincidir con el nombre de archivo del modelo que ese servicio cargó al arrancar (por ejemplo `Olmo-3-1125-7B-Think-Q4_K_M.gguf`). Estas dos variables son las únicas necesarias para que Doorman arranque y atienda solicitudes.
 
-[tier_c]
-enabled = true
-fallback_message = "Inferencia no disponible — solo respaldo local"
-```
+3. Opcional: defina las variables del Tier B (Yo-Yo). Deje todas las variables `SLM_YOYO_*` vacías o sin definir para permanecer en modo community-tier (solo Tier A) — Doorman arranca sin problemas en cualquiera de los dos casos. Para habilitar el Tier B, defina como mínimo `SLM_YOYO_ENDPOINT` (la URL de inferencia Yo-Yo en GCE) y `SLM_YOYO_BEARER` (un token bearer estático para la ruta de desarrollo/staging; un despliegue real con GCP Workload Identity lo sustituye por un token específico del proveedor). `SLM_YOYO_MODEL` nombra el modelo servido en ese endpoint.
 
-Ajuste `service_content_url` para que coincida con la dirección del servicio DataGraph en su despliegue. Si el DataGraph está en el mismo host, `127.0.0.1:9090` es típico. Si está en un nodo separado, use su dirección de red.
+4. Opcional: defina las variables del Tier C (externo). Cada proveedor (`SLM_TIER_C_ANTHROPIC_*`, `SLM_TIER_C_GEMINI_*`, `SLM_TIER_C_OPENAI_*`) necesita su propio endpoint, clave de API y tarifas de entrada/salida por millón de tokens. Todo proveedor sin definir permanece deshabilitado; la ruta de audit-proxy (`POST /v1/audit/proxy`) devuelve `503` con un mensaje explicativo de "unconfigured" hasta que al menos uno esté configurado — este es el comportamiento correcto y esperado, no un estado de error.
 
-## Paso 2: Iniciar el servicio Doorman
+5. Coloque las variables ya definidas en un `EnvironmentFile` (por ejemplo `/etc/local-doorman/local-doorman.env`) y apunte la directiva `EnvironmentFile=` de la unidad systemd hacia él, o añada los valores como líneas `Environment=` en línea dentro de un drop-in de la unidad. Los valores del `EnvironmentFile` tienen prioridad sobre cualquier línea `Environment=` en línea que ya exista en la unidad.
 
-Inicie el servicio con el archivo de configuración:
+6. Inicie el servicio:
 
-```
-slm-doorman-server --config doorman.toml
-```
+   ```
+   sudo systemctl start slm-doorman
+   ```
 
-O como un servicio systemd:
+## Resultado esperado
+
+Doorman arranca y comienza a aceptar solicitudes en `SLM_BIND_ADDR`, con independencia de si el Tier B o el Tier C están configurados. `GET /healthz` devuelve `200` de inmediato como comprobación de vida. `GET /readyz` devuelve el estado de preparación junto con el estado de los niveles una vez que Doorman ha terminado de construir su enrutador interno.
+
+## Verificación
+
+Compruebe la preparación y el estado de los niveles:
 
 ```
-sudo systemctl start slm-doorman-server
+curl http://127.0.0.1:9080/readyz
 ```
 
-Doorman registra su secuencia de inicio: intenta contactar el DataGraph (Nivel A), carga el modelo SLM (Nivel B) y confirma que el Nivel C siempre está disponible. Cualquier fallo al contactar el Nivel A en el inicio no impide que Doorman inicie — marca el circuito del Nivel A como `OPEN` y enruta al Nivel B en su lugar.
-
-## Paso 3: Verificar el endpoint de salud
-
-Doorman expone un endpoint de salud en `/health`:
-
-```
-curl http://127.0.0.1:9080/health
-```
-
-Una respuesta saludable:
+Una respuesta sana con solo el Tier A ("community-tier") incluye:
 
 ```json
 {
-  "tier_a_state": "CLOSED",
-  "tier_b_state": "CLOSED",
-  "tier_c_state": "AVAILABLE",
-  "active_tier": "A"
+  "tier_a": true,
+  "tier_b": false,
+  "tier_c": false,
+  "has_local": true,
+  "has_yoyo": false,
+  "has_external": false,
+  "ai_available": true
 }
 ```
 
-`CLOSED` significa que el circuito está saludable y enrutando solicitudes. `OPEN` significa que el circuito se ha activado y Doorman no está enrutando a ese nivel. `active_tier` muestra qué nivel está recibiendo solicitudes actualmente.
+`tier_a`/`tier_b`/`tier_c` (y sus equivalentes `has_local`/`has_yoyo`/`has_external`) son booleanos, no una cadena de estado de circuito — un nivel marca `true` cuando su dependencia es alcanzable, `false` en caso contrario. `ai_available` es `true` siempre que cualquiera de los niveles esté operativo. El Tier B expone además su propio detalle de circuit-breaker en `GET /v1/status/yoyo` (estados de circuito de los nodos Yo-Yo) — una solicitud de Tier B que encuentre un circuito Yo-Yo abierto recurre automáticamente al Tier A en lugar de fallar.
 
-## Paso 4: Verificar desde la consola
-
-Abra la consola y presione **F9** para ver el panel de salud de Doorman. El panel lee desde el mismo endpoint `/health`. Los Niveles A, B y C deben mostrar verde bajo operación normal.
-
-Si el Nivel A muestra `OPEN` pero el servicio DataGraph está en ejecución, verifique `service_content_url` en la configuración. Un fallo de resolución DNS o un puerto incorrecto es la causa más común.
-
-## Paso 5: Ajustar los umbrales del interruptor de circuito (opcional)
-
-El `circuit_breaker_threshold` en `[tier_a]` establece cuántos fallos consecutivos activan el circuito. Un umbral más bajo (p.ej., 3) hace que el circuito se active más rápido ante fallos transitorios; un umbral más alto (p.ej., 10) tolera más errores antes de hacer el respaldo. El valor predeterminado de 5 es apropiado para la mayoría de los despliegues.
-
-Después de cambiar el umbral, reinicie Doorman para que el cambio surta efecto:
+Confirme el enrutamiento, no solo la preparación, enviando una solicitud real:
 
 ```
-sudo systemctl restart slm-doorman-server
+curl -X POST http://127.0.0.1:9080/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{"messages":[{"role":"user","content":"Say hello in one word."}]}'
 ```
 
-## Puntos clave
+## Reversión
 
-- Doorman inicia independientemente de si el Nivel A (DataGraph) es accesible — marca los niveles no disponibles como `OPEN` y enruta al siguiente
-- El endpoint `/health` es la fuente autorizada del estado del circuito — léalo directamente o a través de F9 en la consola
-- Los ajustes del interruptor de circuito están en `doorman.toml` bajo `[tier_a]`; los cambios requieren un reinicio del servicio
-- El Nivel C siempre está disponible; nunca se activa
+Detenga el servicio y elimine o comente las variables que haya cambiado:
+
+```
+sudo systemctl stop slm-doorman
+```
+
+Los Tiers B y C son aditivos y pueden deshabilitarse de forma independiente — vaciar `SLM_YOYO_ENDPOINT` o la clave de un proveedor `SLM_TIER_C_*` devuelve Doorman al modo community-tier en el siguiente reinicio sin afectar al Tier A.
+
+## Próximos pasos
+
+- [[run-local-slm-inference]] — envíe solicitudes de inferencia una vez que Doorman esté en ejecución
+- [[doorman-protocol]] — el modelo completo de enrutamiento y circuit-breaker
+- [[navigate-console-tui]] — lea el estado de los niveles desde el panel F9 de la consola
 
 ## Véase también
 
-- [[doorman-protocol]] — el modelo de interruptor de circuito y la lógica de enrutamiento entre niveles
-- [[slm-stack-architecture]] — cómo está estructurado el modelo SLM del que depende el Nivel B
+- [[doorman-protocol]] — el modelo de circuit-breaker y la lógica de enrutamiento entre niveles
+- [[slm-stack-architecture]] — cómo está estructurado el modelo SLM del que depende el Tier A
 - [[run-local-slm-inference]] — verificar que el servicio SLM esté saludable antes de que inicie Doorman
-- [[navigate-console-tui]] — leer el estado del Nivel en la barra de estado de la consola
+- [[navigate-console-tui]] — leer el estado del nivel en la barra de estado de la consola
 - [[run-first-slm-query]] — enviar su primera solicitud de inferencia una vez que Doorman esté configurado

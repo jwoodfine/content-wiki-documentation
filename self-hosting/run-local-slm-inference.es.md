@@ -2,98 +2,95 @@
 schema: foundry-doc-v1
 title: "Cómo ejecutar inferencia SLM local"
 slug: run-local-slm-inference
-short_description: "Inicia el servicio SLM local, verifica el estado de Doorman y envía solicitudes de inferencia desde la consola o la API, manteniendo todos los datos del prompt en el despliegue."
+short_description: "Inicia el servicio local de Tier A, verifica que Doorman lo reconoce como listo y envía una solicitud de inferencia desde la consola o la API, manteniendo todos los datos del prompt en el despliegue."
 category: self-hosting
+index_group: wiring-up-inference
 content_type: how-to
 type: how-to
+quality: complete
 status: active
+audience: "Ingenieros (con acceso directo al terminal); operadores de cliente"
 language: es
 language_protocol: TRANSLATE-ES
-last_edited: 2026-06-14
+last_edited: 2026-08-04
 editor: pointsav-engineering
 paired_with: run-local-slm-inference.md
 ---
 
-La pila de inferencia de PointSav ejecuta un modelo de lenguaje pequeño localmente a través del gateway Doorman. Toda la inferencia permanece en el hardware del operador — ningún dato de solicitud sale del despliegue. Esta guía cubre el inicio del servicio SLM local, la verificación del endpoint de salud del Doorman y el envío de una solicitud de inferencia — tanto desde la TUI de la consola como directamente a través de la API.
-
-Para la arquitectura de la pila de inferencia, véase [[slm-stack-architecture]] y [[doorman-protocol]]. Para el cartucho de consola que expone la inferencia local en la TUI, véase [[app-console-slm]].
-
 ## Requisitos previos
 
-- Un despliegue con el binario del modelo OLMo instalado en la ruta esperada (véase [[self-host-a-deployment]])
-- El servicio `slm-doorman-server` en ejecución y saludable
-- Una sesión con acceso de nivel USER como mínimo (véase [[pair-a-new-device]])
+- Un despliegue con el binario del modelo SLM local instalado en la ruta que `local-slm.service` espera (véase [[self-host-a-deployment]])
+- El servicio `slm-doorman` en ejecución y en buen estado (véase [[configure-doorman]])
+- Una sesión con acceso de nivel User (véase [[pair-a-new-device]])
 
-## Paso 1: Iniciar el servicio SLM
+## Propósito
 
-Si el servicio SLM no está ya en ejecución, inícielo:
+La pila de inferencia de la plataforma ejecuta un modelo de lenguaje pequeño de forma local, en el Tier A, al que se accede a través del gateway Doorman. Toda la inferencia de Tier A permanece en el hardware del propio operador — ningún dato de prompt sale del despliegue. Esta guía inicia el modelo local, confirma que Doorman lo ve como listo y envía una solicitud, tanto desde la TUI de consola como directamente contra la API.
 
-```
-sudo systemctl start slm-doorman-server
-```
+## Procedimiento
 
-Verifique que se inició correctamente:
+1. Inicie el servicio SLM local, si no está ya en ejecución:
 
-```
-systemctl is-active slm-doorman-server
-journalctl -u slm-doorman-server --since "1 minute ago"
-```
+   ```
+   sudo systemctl start local-slm
+   ```
 
-Un inicio saludable produce una línea de registro indicando que el modelo se cargó y que el Doorman está escuchando en su puerto configurado. Si el servicio no se inicia, verifique la ruta del binario del modelo en la configuración del servicio — el binario OLMo debe estar presente en la ruta que el servicio espera.
+2. Confirme que arrancó correctamente:
 
-## Paso 2: Verificar la salud del Doorman desde la consola
+   ```
+   systemctl is-active local-slm
+   journalctl -u local-slm --since "1 minute ago"
+   ```
 
-Presione **F9** en la consola para abrir el Cartucho SLM. El panel de salud del Doorman muestra:
+   Un arranque saludable registra en el log la carga del modelo y el enlace del servicio a su puerto (por defecto `127.0.0.1:8080`). Si falla, verifique que el archivo del modelo indicado en la configuración de la unidad exista realmente en la ruta que el servicio espera.
 
-- `A — DataGraph`: disponibilidad del almacén de entidades (no requerida para inferencia pura)
-- `B — SLM`: debe mostrar verde una vez que el modelo esté cargado y el Doorman sea accesible
-- `C — Respaldo local`: siempre disponible; se usa cuando el Nivel B está degradado
+3. Confirme que Doorman ve el Tier A como listo. En la consola, pulse **F9** para abrir el panel de salud del SLM Cartridge, que lee el `/readyz` de Doorman. `tier_a` (mostrado también como `A — Local`) debe estar en `true`/verde antes de que una solicitud tenga éxito. Pulse **R** para actualizar.
 
-El Nivel B debe estar verde antes de que las solicitudes de inferencia tengan éxito. Presione **R** para actualizar el estado de salud.
+4. Envíe un prompt desde la consola. Con el Tier A activo, escriba un prompt en la línea de entrada de F9 y pulse Enter — la respuesta se transmite token a token en el área de salida, y la barra de estado muestra el nivel activo durante la generación.
 
-## Paso 3: Enviar una solicitud de inferencia desde la consola
+5. O envíe un prompt directamente vía la API:
 
-Con el Nivel B activo, envíe un prompt en la línea de entrada de F9. Escriba el texto de su prompt y presione Enter. La respuesta del modelo se transmite token por token al área de salida. La barra de estado muestra el nivel de inferencia activo (`B`) durante la generación.
+   ```
+   curl -X POST http://127.0.0.1:9080/v1/chat/completions \
+     -H "Content-Type: application/json" \
+     -d '{"messages":[{"role":"user","content":"Summarise the role of the Doorman gateway."}]}'
+   ```
 
-Las solicitudes de inferencia a través de la consola son seguras conforme a SYS-ADR-07 — ningún dato estructurado de la plataforma pasa por la capa del modelo. El modelo recibe solo texto de prompt plano.
+   La respuesta es un objeto JSON compatible con OpenAI con un arreglo `choices`; cada elección contiene el texto generado.
 
-## Paso 4: Enviar una solicitud de inferencia directamente a través de la API
+## Resultado esperado
 
-Para uso programático, llame al endpoint de inferencia del Doorman:
+Un prompt enviado mientras el Tier A está listo devuelve una respuesta generada sin que ningún dato salga del host — la línea F9 de la consola y la llamada a `/v1/chat/completions` recorren la misma ruta de solicitud subyacente, simplemente desde dos clientes distintos.
 
-```
-curl -X POST http://127.0.0.1:<puerto-doorman>/v1/completions \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer <token-de-sesión>" \
-  -d '{
-    "prompt": "Resumir el papel del gateway Doorman:",
-    "max_tokens": 200
-  }'
-```
+## Verificación
 
-La respuesta es un objeto JSON con una matriz `choices`. Cada elección contiene el texto generado. El campo `model` en la respuesta confirma qué nivel atendió la solicitud.
-
-## Paso 5: Verificar el estado del interruptor de circuito
-
-El interruptor de circuito del Doorman se abre automáticamente si el servicio SLM no responde. Cuando está abierto, todas las solicitudes de inferencia caen al Nivel C (respaldo local). Para verificar el estado del circuito:
+Las solicitudes de inferencia desde la consola son seguras conforme a SYS-ADR-07 por construcción: por la capa del modelo solo pasa texto plano de prompt, nunca datos estructurados de la plataforma (registros de entidades, entradas WORM). Confirme que el Tier A siguió siendo el nivel que sirvió la solicitud, en lugar de haber caído silenciosamente a otro, consultando `/readyz` de nuevo tras la solicitud:
 
 ```
-curl http://127.0.0.1:<puerto-doorman>/health
+curl http://127.0.0.1:9080/readyz
 ```
 
-La respuesta incluye `tier_b_state`: `CLOSED` (saludable) u `OPEN` (activado). Un circuito activado se restablece después del período de enfriamiento configurado, o inmediatamente después de que el servicio SLM se recupere.
+`tier_a: true` y `ai_available: true` confirman que el Tier A sirvió la solicitud. Si el Tier B (Yo-Yo) está configurado y el Tier A deja de estar disponible a mitad de sesión, Doorman enruta automáticamente al Tier B en lugar de fallar — véase [[doorman-protocol]] para el orden completo de fallback.
 
-## Puntos clave
+## Reversión
 
-- Toda la inferencia se ejecuta en las instalaciones; ningún dato de prompt sale del despliegue
-- El Nivel B (SLM) debe mostrar verde en el panel de salud F9 antes de que las solicitudes de inferencia tengan éxito
-- El interruptor de circuito del Doorman cae automáticamente al Nivel C cuando el modelo no responde
-- Se aplica SYS-ADR-07: no pase datos estructurados de la plataforma (registros de entidades, entradas WORM) por la capa del modelo
+Detenga el servicio del modelo local; Doorman sigue en ejecución e informa `tier_a: false` en su siguiente comprobación de `/readyz`, en lugar de fallar:
+
+```
+sudo systemctl stop local-slm
+```
+
+## Próximos pasos
+
+- [[run-first-slm-query]] — un primer recorrido guiado de consulta desde la consola
+- [[query-the-datagraph]] — otra capacidad enrutada por Doorman, búsqueda de entidades en vez de inferencia
+- [[doorman-protocol]] — el modelo completo de fallback entre niveles, para cuando el Tier A solo no basta
 
 ## Véase también
 
-- [[slm-stack-architecture]] — arquitectura de la pila SLM local y niveles de modelo compatibles
-- [[doorman-protocol]] — el protocolo del gateway Doorman; salud, enrutamiento y comportamiento del interruptor de circuito
+- [[slm-stack-architecture]] — arquitectura de la pila SLM local y los niveles de modelo compatibles
+- [[doorman-protocol]] — el protocolo del gateway Doorman; preparación, enrutamiento y comportamiento de fallback entre niveles
 - [[app-console-slm]] — el cartucho SLM de os-console y el panel de salud del Doorman
 - [[run-first-slm-query]] — enviar una consulta desde la consola una vez que el modelo esté en ejecución
 - [[self-host-a-deployment]] — provisionar la instancia que aloja la pila de inferencia
+- [[configure-doorman]] — configurar el Tier A/B/C antes de ejecutar una solicitud de inferencia
