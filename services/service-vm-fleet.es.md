@@ -31,5 +31,3 @@ Los agentes de host informan el estado del nodo al controlador de flota mediante
 
 - [[ppn-vm-resource-pool|Arquitectura del Pool de Recursos VM PPN]] — visión completa de la arquitectura
 - [[service-vm-tenant|service-vm-tenant]] — el proxy de inquilino que envía solicitudes de colocación
-
-*Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orchestration™, Totebox Archive™ y Capability Geometry™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos propietarios.*

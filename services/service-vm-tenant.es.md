@@ -36,5 +36,3 @@ Todas las operaciones de escritura se añaden a un registro de auditoría inmuta
 - [[ppn-vm-resource-pool|Arquitectura del Pool de Recursos VM PPN]] — visión completa de la arquitectura
 - [[ppn-tenant-vm-isolation|Aislamiento de VM por Inquilino en la PPN]] — el modelo de aislamiento aplicado por el proxy
 - [[service-vm-fleet|service-vm-fleet]] — el controlador de flota que recibe las solicitudes de creación
-
-*Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orchestration™, Totebox Archive™ y Capability Geometry™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos propietarios.*

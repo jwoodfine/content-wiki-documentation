@@ -172,7 +172,3 @@ El operador no gestiona servidores. No configura firewalls. Arranca el Totebox, 
 os-console, escanea un código QR y el sistema está en funcionamiento. Si cancela la
 suscripción opcional de Nivel B, su Totebox (y todos sus datos) continúa operando de
 forma independiente. No hay dependencia obligatoria de la nube.
-
----
-
-*Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orchestration™, Totebox Archive™ y Capability Geometry™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos propietarios.*

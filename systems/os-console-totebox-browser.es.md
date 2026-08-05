@@ -159,7 +159,3 @@ La intención de diseño para os-console es que no requiera conocimientos técni
    Carpeta de Seguimiento.
 6. **Sin configuración**: sin direcciones IP que escribir, sin puertos que recordar, sin
    claves SSH que gestionar.
-
----
-
-*Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orchestration™, Totebox Archive™ y Capability Geometry™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos propietarios.*

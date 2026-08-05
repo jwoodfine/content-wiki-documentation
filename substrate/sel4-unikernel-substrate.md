@@ -212,7 +212,3 @@ Boots in under 1 second. 100% sovereign stack; QEMU removed from product path.
 **Phase H3 (intended, Leapfrog 2030):** F11 pairing becomes capability minting.
 Machine-level seL4 capability tokens. system-core Capability types carried in the
 PD's CNode. Revocation via system-ledger propagates to kernel level.
-
----
-
-*Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orchestration™, Totebox Archive™, and Capability Geometry™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

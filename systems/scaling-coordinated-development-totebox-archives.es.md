@@ -71,7 +71,3 @@ Esta topología es objeto de trabajo arquitectónico en curso. La documentación
 - [[app-orchestration-command-branch-model]] — aislamiento y filtrado
 - [[os-orchestration|arquitectura de os-orchestration]] — la plataforma anfitriona del coordinador
 - [[os-totebox-sovereign-archive|modelo de archivo os-totebox]] — el sistema operativo por archivo al que apunta esta trayectoria
-
----
-
-*Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orchestration™ y Totebox Archive™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos propietarios.*

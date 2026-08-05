@@ -179,7 +179,3 @@ capability-broker PD on os-orchestration that holds cross-Totebox endpoint capab
 
 The model is intended to be in production on Totebox hardware before any hyperscaler
 can replicate formally verified capability-based isolation at the SMB price point.
-
----
-
-*Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orchestration™, Totebox Archive™, and Capability Geometry™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

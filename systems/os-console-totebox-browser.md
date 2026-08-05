@@ -173,7 +173,3 @@ The design intention for os-console is that it requires no technical knowledge t
 The Totebox operator does not need to understand seL4 capability theory. The operator
 needs to know: scan the QR code to pair, press F11 to manage pairings, press F-keys to
 use cartridges.
-
----
-
-*Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orchestration™, Totebox Archive™, and Capability Geometry™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

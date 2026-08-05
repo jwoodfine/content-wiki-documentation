@@ -36,5 +36,3 @@ All write operations are appended to an immutable audit log. Each entry records 
 - [[ppn-vm-resource-pool|PPN VM Resource Pool Architecture]] — full architecture overview including fleet controller, host agent, and tenant proxy
 - [[ppn-tenant-vm-isolation|PPN Tenant VM Isolation]] — the isolation model enforced by the tenant proxy
 - [[service-vm-fleet|service-vm-fleet]] — the fleet controller that receives forwarded spawn requests
-
-*Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orchestration™, Totebox Archive™, and Capability Geometry™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

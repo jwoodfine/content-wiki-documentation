@@ -204,7 +204,3 @@ The operator does not manage servers. They do not configure firewalls. They boot
 Totebox, boot os-console, scan a QR code, and the system is running. If they cancel the
 optional Tier B subscription, their Totebox (and all their data) continues operating
 independently. There is no mandatory cloud dependency.
-
----
-
-*Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orchestration™, Totebox Archive™, and Capability Geometry™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

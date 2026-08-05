@@ -188,7 +188,3 @@ reemplaza QEMU. Imagen arrancable en menos de 1 segundo. Pila 100% soberana.
 **Fase H3 (prevista, Leapfrog 2030):** El emparejamiento F11 se convierte en acuñación
 de capacidades. Tokens de capacidad seL4 a nivel de máquina. Revocación mediante
 system-ledger propagada al nivel del kernel.
-
----
-
-*Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orchestration™, Totebox Archive™ y Capability Geometry™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos propietarios.*

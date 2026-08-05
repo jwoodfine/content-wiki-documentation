@@ -73,7 +73,3 @@ This topology is the subject of ongoing architecture work. Current documentation
 - [[app-orchestration-command-branch-model]] — isolation and filtering
 - [[os-orchestration|os-orchestration architecture]] — the coordinator's host platform
 - [[os-totebox-sovereign-archive|os-totebox archive model]] — the per-archive operating system this trajectory targets
-
----
-
-*Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

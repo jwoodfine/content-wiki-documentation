@@ -36,5 +36,3 @@ The fleet controller exposes endpoints for global node state and per-tenant VM l
 - [[ppn-vm-resource-pool|PPN VM Resource Pool Architecture]] — full architecture overview including fleet controller, host agent, and tenant proxy
 - [[service-vm-tenant|service-vm-tenant]] — the customer-facing tenant proxy that submits placement requests
 - [[ppn-small-business-compute|PPN Small-Business Compute]] — the commercial product built on the PPN substrate
-
-*Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orchestration™, Totebox Archive™, and Capability Geometry™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

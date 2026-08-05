@@ -187,7 +187,3 @@ entre Toteboxes.
 El modelo está previsto para estar en producción en hardware Totebox antes de que
 cualquier proveedor de nube a hiperescala pueda replicar el aislamiento basado en
 capacidades formalmente verificado al precio de una pequeña empresa.
-
----
-
-*Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orchestration™, Totebox Archive™ y Capability Geometry™ son marcas comerciales de Woodfine Capital Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa. Todas las demás marcas comerciales son propiedad de sus respectivos propietarios.*
