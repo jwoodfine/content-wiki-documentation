@@ -21,46 +21,46 @@ paired_with: _index.md
 <!-- START-HERE-HIGHLIGHT: el motor lee este bloque para la tarjeta "empezar aquí"
      (reutiliza el componente cluster-card--start-here existente). No añadir más de una. -->
 
-**Empiece aquí:** [Enciclopedia PointSav — glosario y léxico](/es/wiki/glossary-documentation) — la definición canónica, de la A a la Z, de cada término específico de la plataforma; la página que más artículos enlazan en su primera mención.
+**Empiece aquí:** [[glossary-documentation|Enciclopedia PointSav — glosario y léxico]] — la definición canónica, de la A a la Z, de cada término específico de la plataforma; la página que más artículos enlazan en su primera mención.
 
 <!-- END-START-HERE-HIGHLIGHT -->
 
 ## Orientación en la plataforma
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: platform-orientation -->
-- [Primeros pasos con la plataforma PointSav](/es/wiki/getting-started) — qué es la plataforma, para quién es y por dónde empezar
-- [Enciclopedia PointSav — glosario y léxico](/es/wiki/glossary-documentation) — la fuente canónica de definiciones término por término
-- [Cómo está organizada esta base de conocimiento](/es/wiki/wiki-structure) — un mapa de las trece áreas del wiki de documentación
-- [Índice de guías para desarrolladores](/es/wiki/guide-catalog) — todas las guías prácticas, agrupadas por área de interés
-- [Referencia de hardware](/es/wiki/hardware-reference) — perfiles de hardware de referencia para estaciones de trabajo y dispositivos de flota
-- [Plan de operacionalización de SLM](/es/wiki/service-slm-operationalization-plan) — el plan para pasar de llamadas a modelos externos a un modelo local por inquilino
+- [[getting-started|Primeros pasos con la plataforma PointSav]] — qué es la plataforma, para quién es y por dónde empezar
+- [[glossary-documentation|Enciclopedia PointSav — glosario y léxico]] — la fuente canónica de definiciones término por término
+- [[wiki-structure|Cómo está organizada esta base de conocimiento]] — un mapa de las trece áreas del wiki de documentación
+- [[guide-catalog|Índice de guías para desarrolladores]] — todas las guías prácticas, agrupadas por área de interés
+- [[hardware-reference|Referencia de hardware]] — perfiles de hardware de referencia para estaciones de trabajo y dispositivos de flota
+- [[service-slm-operationalization-plan|Plan de operacionalización de SLM]] — el plan para pasar de llamadas a modelos externos a un modelo local por inquilino
 <!-- END AUTO-GENERATED -->
 
 ## Conceptos generales de computación
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: general-computing-concepts -->
-- [Interfaz de programación de aplicaciones](/es/wiki/application-programming-interface) — cómo se comunican los sistemas de software mediante un conjunto definido de llamadas
-- [Electrodoméstico informático](/es/wiki/computer-appliance) — hardware y software sellados juntos para una función bien definida
-- [Computación de borde](/es/wiki/edge-computing) — situar el cómputo cerca de los datos sobre los que opera, en lugar de en un centro de datos central
-- [Computación de niebla](/es/wiki/fog-computing) — la capa de cómputo y almacenamiento entre los dispositivos de borde y la nube
-- [Sistema operativo justo lo necesario](/es/wiki/just-enough-operating-system) — reducir el sistema operativo a solo lo que una aplicación específica necesita
-- [Distribución Linux ligera](/es/wiki/lightweight-linux-distribution) — compilaciones de Linux diseñadas para usar mucha menos RAM y CPU que una distribución completa
-- [Electrodoméstico virtual](/es/wiki/virtual-appliance) — una imagen de máquina virtual preconfigurada que combina un sistema operativo mínimo con una aplicación
-- [Seguridad por oscuridad](/es/wiki/security-through-obscurity) — por qué el secreto del diseño no se trata aquí como un mecanismo de seguridad
-- [Diseño de experiencia de usuario](/es/wiki/user-experience-design) — la disciplina que cubre cada aspecto de la interacción de un usuario con un producto
-- [Diseño de interfaz de usuario](/es/wiki/user-interface-design) — el diseño de la interfaz humano-máquina en sí, regido por ISO 9241
+- [[application-programming-interface|Interfaz de programación de aplicaciones]] — cómo se comunican los sistemas de software mediante un conjunto definido de llamadas
+- [[computer-appliance|Electrodoméstico informático]] — hardware y software sellados juntos para una función bien definida
+- [[edge-computing|Computación de borde]] — situar el cómputo cerca de los datos sobre los que opera, en lugar de en un centro de datos central
+- [[fog-computing|Computación de niebla]] — la capa de cómputo y almacenamiento entre los dispositivos de borde y la nube
+- [[just-enough-operating-system|Sistema operativo justo lo necesario]] — reducir el sistema operativo a solo lo que una aplicación específica necesita
+- [[lightweight-linux-distribution|Distribución Linux ligera]] — compilaciones de Linux diseñadas para usar mucha menos RAM y CPU que una distribución completa
+- [[virtual-appliance|Electrodoméstico virtual]] — una imagen de máquina virtual preconfigurada que combina un sistema operativo mínimo con una aplicación
+- [[security-through-obscurity|Seguridad por oscuridad]] — por qué el secreto del diseño no se trata aquí como un mecanismo de seguridad
+- [[user-experience-design|Diseño de experiencia de usuario]] — la disciplina que cubre cada aspecto de la interacción de un usuario con un producto
+- [[user-interface-design|Diseño de interfaz de usuario]] — el diseño de la interfaz humano-máquina en sí, regido por ISO 9241
 <!-- END AUTO-GENERATED -->
 
 ## Normas editoriales y de publicación
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: editorial-and-publishing-standards -->
-- [Registros de lenguaje editorial](/es/wiki/editorial-language-registers) — los tres registros de prosa en los que escribe este wiki, según la audiencia
-- [Filosofía editorial](/es/wiki/editorial-philosophy) — por qué cada artículo enseña comprensión en lugar de solo recuperar datos
-- [Normas de tipografía y maquetación de comunicados de prensa](/es/wiki/news-release-standards) — normas de formato para la difusión de noticias corporativas
-- [Aviso de preimpresión](/es/wiki/preprint-notice-convention) — qué significa realmente el aviso obligatorio en un documento de investigación en curso
-- [Disciplina de archivos raíz](/es/wiki/root-files-discipline) — el conjunto canónico y enumerado de archivos que mantiene la raíz de cada repositorio
-- [Posicionamiento estructural](/es/wiki/structural-positioning) — cómo se diferencia esta plataforma sin nombrar a la competencia
-- [Panorama de proveedores de wikis](/es/wiki/wiki-provider-landscape) — una auditoría estructural de por qué ningún proveedor existente ha cerrado la brecha de Wikipedia
+- [[editorial-language-registers|Registros de lenguaje editorial]] — los tres registros de prosa en los que escribe este wiki, según la audiencia
+- [[editorial-philosophy|Filosofía editorial]] — por qué cada artículo enseña comprensión en lugar de solo recuperar datos
+- [[news-release-standards|Normas de tipografía y maquetación de comunicados de prensa]] — normas de formato para la difusión de noticias corporativas
+- [[preprint-notice-convention|Aviso de preimpresión]] — qué significa realmente el aviso obligatorio en un documento de investigación en curso
+- [[root-files-discipline|Disciplina de archivos raíz]] — el conjunto canónico y enumerado de archivos que mantiene la raíz de cada repositorio
+- [[structural-positioning|Posicionamiento estructural]] — cómo se diferencia esta plataforma sin nombrar a la competencia
+- [[wiki-provider-landscape|Panorama de proveedores de wikis]] — una auditoría estructural de por qué ningún proveedor existente ha cerrado la brecha de Wikipedia
 <!-- END AUTO-GENERATED -->
 
 ## Lo que esto no es
