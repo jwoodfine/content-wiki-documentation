@@ -21,22 +21,22 @@ paired_with: _index.es.md
 <!-- START-HERE-HIGHLIGHT: engine reads this block to render the single "start here" card
      (reuses the existing cluster-card--start-here component). Do not add more than one. -->
 
-**Start here:** [Self-host a deployment](/wiki/self-host-a-deployment) — boots the two independent seL4 appliance images (`os-totebox`, `app-orchestration-slm`) that everything else in this category runs on top of.
+**Start here:** [[self-host-a-deployment|Self-host a deployment]] — boots the two independent seL4 appliance images (`os-totebox`, `app-orchestration-slm`) that everything else in this category runs on top of.
 
 <!-- END-START-HERE-HIGHLIGHT -->
 
 ## Getting the platform running
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: getting-running -->
-- [Self-host a deployment](/wiki/self-host-a-deployment) — boot the `os-totebox` and `app-orchestration-slm` appliance images under QEMU
-- [Deploy a knowledge instance](/wiki/deploy-knowledge-instance) — serve a documentation, projects, or corporate wiki from a local content path
+- [[self-host-a-deployment|Self-host a deployment]] — boot the `os-totebox` and `app-orchestration-slm` appliance images under QEMU
+- [[deploy-knowledge-instance|Deploy a knowledge instance]] — serve a documentation, projects, or corporate wiki from a local content path
 <!-- END AUTO-GENERATED -->
 
 ## Wiring up inference
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: wiring-inference -->
-- [Configure the Doorman gateway](/wiki/configure-doorman) — set Tier A/B/C endpoints through environment variables, no config file
-- [Run local SLM inference](/wiki/run-local-slm-inference) — start the local model and submit a request through Doorman
+- [[configure-doorman|Configure the Doorman gateway]] — set Tier A/B/C endpoints through environment variables, no config file
+- [[run-local-slm-inference|Run local SLM inference]] — start the local model and submit a request through Doorman
 <!-- END AUTO-GENERATED -->
 
 ## What this is not

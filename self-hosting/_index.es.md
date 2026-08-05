@@ -21,22 +21,22 @@ paired_with: _index.md
 <!-- START-HERE-HIGHLIGHT: el motor lee este bloque para la tarjeta "empezar aquí"
      (reutiliza el componente cluster-card--start-here existente). No añadir más de una. -->
 
-**Empiece aquí:** [Autoalojar un despliegue](/es/wiki/self-host-a-deployment) — inicia las dos imágenes de aparato seL4 independientes (`os-totebox`, `app-orchestration-slm`) sobre las que se ejecuta todo lo demás en esta categoría.
+**Empiece aquí:** [[self-host-a-deployment|Autoalojar un despliegue]] — inicia las dos imágenes de aparato seL4 independientes (`os-totebox`, `app-orchestration-slm`) sobre las que se ejecuta todo lo demás en esta categoría.
 
 <!-- END-START-HERE-HIGHLIGHT -->
 
 ## Poner la plataforma en marcha
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: getting-the-platform-running -->
-- [Autoalojar un despliegue](/es/wiki/self-host-a-deployment) — inicie las imágenes de aparato `os-totebox` y `app-orchestration-slm` bajo QEMU
-- [Desplegar una instancia de conocimiento](/es/wiki/deploy-knowledge-instance) — sirva una wiki de documentación, proyectos o corporativa desde una ruta de contenido local
+- [[self-host-a-deployment|Autoalojar un despliegue]] — inicie las imágenes de aparato `os-totebox` y `app-orchestration-slm` bajo QEMU
+- [[deploy-knowledge-instance|Desplegar una instancia de conocimiento]] — sirva una wiki de documentación, proyectos o corporativa desde una ruta de contenido local
 <!-- END AUTO-GENERATED -->
 
 ## Conectar la inferencia
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: wiring-up-inference -->
-- [Configurar la puerta de enlace Doorman](/es/wiki/configure-doorman) — defina los extremos de Nivel A/B/C mediante variables de entorno, sin archivo de configuración
-- [Ejecutar inferencia SLM local](/es/wiki/run-local-slm-inference) — inicie el modelo local y envíe una solicitud a través de Doorman
+- [[configure-doorman|Configurar la puerta de enlace Doorman]] — defina los extremos de Nivel A/B/C mediante variables de entorno, sin archivo de configuración
+- [[run-local-slm-inference|Ejecutar inferencia SLM local]] — inicie el modelo local y envíe una solicitud a través de Doorman
 <!-- END AUTO-GENERATED -->
 
 ## Lo que esto no es
