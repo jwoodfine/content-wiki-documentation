@@ -6,6 +6,7 @@ category: applications
 type: topic
 content_type: topic
 quality: complete
+index_group: knowledge-and-editorial-applications
 short_description: "Motor wiki Rust de binario único que sirve documentation.pointsav.com — una vista sobre un árbol Markdown donde los commits son canónicos y el binario es descartable."
 status: active
 audience: vendor-public

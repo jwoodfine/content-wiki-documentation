@@ -6,6 +6,7 @@ category: services
 type: topic
 content_type: topic
 quality: complete
+index_group: ring-3-ai-gateway
 short_description: "Visión general del enrutador de inferencia de tres niveles de service-SLM y la instancia GPU de explosión Yo-Yo, incluyendo el límite de costo y el techo de gastos mensuales."
 status: active
 bcsc_class: public-disclosure-safe

@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: cryptographic-and-microkernel-primitives
 short_description: "Merkle proofs are the cryptographic mechanism letting the platform prove to any third party that a record is part of an append-only log that has not been rewritten."
 status: active
 bcsc_class: no-disclosure-implication

@@ -4,6 +4,7 @@ title: "Arquitectura de tres anillos"
 slug: three-ring-architecture
 short_description: "El patrón de composición duradero para la plataforma PointSav: tres anillos concéntricos con dependencias estrictamente unidireccionales, donde el anillo de IA es estructuralmente opcional y la canalización de datos determinista funciona completamente sin él."
 category: architecture
+index_group: platform-structure
 type: topic
 content_type: topic
 quality: complete

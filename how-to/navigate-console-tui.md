@@ -4,6 +4,7 @@ title: "Navigate the console TUI"
 slug: navigate-console-tui
 short_description: "Navigates os-console by keyboard — the F-key strip at the top, the status bar's real fields at the bottom, and switching slots without losing state."
 category: how-to
+index_group: working-in-the-console
 content_type: how-to
 type: how-to
 quality: complete

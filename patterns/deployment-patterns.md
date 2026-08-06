@@ -6,6 +6,7 @@ category: patterns
 type: concept
 content_type: topic
 quality: complete
+index_group: deployment-and-configuration
 short_description: "The six canonical configurations the PointSav substrate is deployed in — each built on the same five primitives and OS surface, adapted per segment."
 status: active
 audience: vendor-public

@@ -8,6 +8,7 @@ category: patterns
 type: topic
 content_type: topic
 quality: complete
+index_group: sovereignty-and-infrastructure-patterns
 last_edited: 2026-07-18
 editor: pointsav-engineering
 audience: vendor-public

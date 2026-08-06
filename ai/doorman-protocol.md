@@ -6,6 +6,7 @@ short_description: "The Doorman is the sole AI request boundary through which ev
 category: ai
 type: concept
 content_type: topic
+index_group: the-doorman-boundary
 status: active
 bcsc_class: current-fact
 forward_looking: true
@@ -13,6 +14,7 @@ last_edited: 2026-05-22
 editor: pointsav-engineering
 cites: []
 paired_with: doorman-protocol.es.md
+
 ---
 
 Every service that can call an external AI model is its own hole in the wall. Ten services with ten egress paths means ten audit surfaces, and ten places the sanitise discipline can be forgotten.

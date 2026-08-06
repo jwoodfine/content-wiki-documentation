@@ -4,6 +4,7 @@ title: "Build a co-location map"
 slug: build-a-colocation-map
 short_description: "Renders tier-coloured co-location cluster markers in MapLibre GL by loading a PMTiles archive directly — the real flat-file architecture, since no bearer-token REST cluster API exists."
 category: how-to
+index_group: integration-data
 content_type: how-to
 type: how-to
 quality: complete

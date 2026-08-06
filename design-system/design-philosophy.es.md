@@ -7,6 +7,7 @@ category: design-system
 type: reference
 content_type: topic
 quality: complete
+index_group: philosophy-and-primitive-vocabulary
 status: active
 audience: public
 bcsc_class: public-disclosure-safe

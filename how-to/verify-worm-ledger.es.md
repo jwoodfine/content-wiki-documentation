@@ -4,6 +4,7 @@ title: "Verificar una entrada del libro mayor WORM"
 slug: verify-worm-ledger
 short_description: "Verifica entradas del libro mayor WORM contra un punto de control obtenido a través de la API HTTP real de service-fs, usando un conjunto de herramientas SHA-256 estándar — no existe ni se necesita ninguna CLI ni herramienta propietaria."
 category: how-to
+index_group: records-storage
 content_type: how-to
 type: how-to
 quality: complete

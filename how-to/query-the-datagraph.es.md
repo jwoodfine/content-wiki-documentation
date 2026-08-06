@@ -4,6 +4,7 @@ title: "Consultar el DataGraph"
 slug: query-the-datagraph
 short_description: "Consulta el DataGraph para obtener el estado actual de entidades con las herramientas MCP reales query_datagraph y get_entity_context, y maneja la indisponibilidad del DataGraph como su propia señal, separada de los niveles de inferencia de Doorman."
 category: how-to
+index_group: records-storage
 content_type: how-to
 type: how-to
 quality: complete

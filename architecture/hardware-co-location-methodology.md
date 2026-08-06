@@ -7,6 +7,7 @@ aliases: [co-location-methodology]
 short_description: "A structured approach for ranking hardware co-location candidates across jurisdictional, network, infrastructure, and cost dimensions, regulatory requirements first."
 title: "Hardware co-location methodology"
 category: architecture
+index_group: location-intelligence-and-domain
 language: en
 quality: complete
 status: stable

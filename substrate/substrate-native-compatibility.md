@@ -8,6 +8,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: sovereignty-and-customer-ownership
 last_edited: 2026-05-25
 editor: pointsav-engineering
 audience: vendor-public

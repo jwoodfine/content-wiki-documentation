@@ -4,6 +4,7 @@ title: "Federar archivos mediante montajes de contenido"
 slug: federate-archives-via-content-mounts
 short_description: "Federa los artículos de una segunda instancia de conocimiento en una instancia en ejecución mediante una entrada [[mount]] en knowledge.toml — un espacio de nombres plano y combinado sin aislamiento, no un esquema de federación con prefijo de URL."
 category: how-to
+index_group: integration-data
 content_type: how-to
 type: how-to
 quality: complete

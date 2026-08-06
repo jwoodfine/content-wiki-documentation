@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: small-language-model-stack
 short_description: "The rationale for selecting OLMo 3 as the local and GPU-burst substrate: the only fully open model family permitting continued pretraining and public-company procurement."
 status: active
 bcsc_class: public-disclosure-safe

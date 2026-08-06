@@ -4,6 +4,7 @@ title: "Exportar datos estructurados de la plataforma"
 slug: export-structured-data
 short_description: "Exporta datos de la plataforma por tres rutas reales — registros de entidades del DataGraph a través de herramientas MCP, Markdown wiki leído directamente de git, y entradas de libro mayor paginadas a través de la API HTTP de service-fs."
 category: how-to
+index_group: records-storage
 content_type: how-to
 type: how-to
 quality: complete

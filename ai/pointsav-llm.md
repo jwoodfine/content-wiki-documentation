@@ -6,6 +6,7 @@ category: ai
 type: topic
 content_type: topic
 quality: complete
+index_group: compute-tiers
 short_description: "The planned vendor-tier specialist AI model for substrate-sovereign SMBs — Tier 3 of the Four-Tier SLM Substrate Ladder, built by continued pretraining of OLMo 3 32B."
 status: active
 bcsc_class: public-disclosure-safe
@@ -15,6 +16,7 @@ cites:
  - ni-51-102
  - osc-sn-51-721
 paired_with: pointsav-llm.es.md
+
 ---
 
 **PointSav-LLM** is the planned Tier 3 specialist AI model in [[pointsav-overview|PointSav]]'s [[four-tier-slm-substrate|Four-Tier SLM Substrate Ladder]] — the vendor-trained layer that is intended to emerge from continued pretraining of OLMo 3 32B Think (Apache 2.0) on the platform's federated, multi-tenant [[apprenticeship-substrate|apprenticeship corpus]]. It is not an active product. It is a planned trajectory: a first continued-pretraining (CPT) cycle is currently targeted for v0.5.0, Q1 2027, with a productized deployment currently targeted for v1.0.0, Q4 2027. When operational, PointSav-LLM is intended to serve small and medium-sized businesses that require a specialist model trained on PointSav conventions, [[totebox-archive|Totebox Archive]] operations, and multi-tenant editorial patterns — without requiring the infrastructure investment or minimum-spend commitments that closed-source enterprise AI products impose.

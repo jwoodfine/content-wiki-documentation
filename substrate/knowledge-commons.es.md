@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: sovereignty-and-customer-ownership
 short_description: El modelo económico que separa lo que PointSav publica libremente de lo que vende — artefactos de conocimiento bajo licencias abiertas, servicio de pago en el punto de agregación multi-Totebox.
 status: active
 bcsc_class: public-disclosure-safe

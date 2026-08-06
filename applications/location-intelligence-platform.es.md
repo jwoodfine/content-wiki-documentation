@@ -6,6 +6,7 @@ category: applications
 type: topic
 content_type: topic
 quality: complete
+index_group: location-intelligence-applications
 short_description: "Aplicación GIS de archivos planos propiedad del cliente para análisis de clústeres minoristas y selección de sitios, que une motor analítico y capa de renderizado."
 status: active
 audience: public

@@ -6,6 +6,7 @@ category: ai
 type: topic
 content_type: topic
 quality: complete
+index_group: the-doorman-boundary
 short_description: "Visión estratégica del stack Rust de service-slm: un binario único, licencias permisivas de extremo a extremo, y la disciplina de construcción que mantiene la soberanía técnica sobre cada dependencia."
 status: active
 bcsc_class: public-disclosure-safe
@@ -13,6 +14,7 @@ last_edited: 2026-07-31
 editor: pointsav-engineering
 cites: []
 paired_with: slm-stack-architecture.md
+
 ---
 
 [[service-slm|`service-slm`]] — el [[doorman-protocol|Doorman]] de la plataforma [[pointsav-overview|PointSav]] — se construye como un único binario de Rust enlazado estáticamente. Cada dependencia directa en el stack es Rust puro o bindings Rust sobre una biblioteca nativa con licencia permisiva. No hay licencias copyleft en ningún punto del grafo de dependencias. Esta propiedad, denominada criterio "We Own It", garantiza que PointSav conserva el derecho irrestricto de bifurcar, modificar y redistribuir la totalidad del código base en cualquier momento.

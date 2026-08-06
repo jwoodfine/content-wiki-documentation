@@ -6,6 +6,7 @@ short_description: "Qué hereda el motor wiki app-mediakit-knowledge de Wikipedi
 category: applications
 type: topic
 content_type: topic
+index_group: knowledge-and-editorial-applications
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-07-31

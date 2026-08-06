@@ -6,6 +6,7 @@ category: applications
 type: topic
 content_type: topic
 quality: complete
+index_group: knowledge-and-editorial-applications
 short_description: "Single-binary Rust wiki engine serving documentation.pointsav.com — a view over a markdown tree where git commits are canonical and the running binary is disposable."
 status: active
 audience: vendor-public

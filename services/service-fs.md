@@ -6,6 +6,7 @@ slug: service-fs
 title: "service-fs — the WORM ledger backbone"
 short_description: "The per-tenant Write-Once-Read-Many immutable ledger that backs every record written to the platform — architecture, durability, and the regulatory posture it enables by construction."
 category: services
+index_group: ring-1-boundary-ingest
 audience: vendor-public
 bcsc_class: current-fact
 status: active

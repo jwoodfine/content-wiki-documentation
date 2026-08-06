@@ -6,6 +6,7 @@ short_description: "What the app-mediakit-knowledge wiki engine inherits from Wi
 category: applications
 type: topic
 content_type: topic
+index_group: knowledge-and-editorial-applications
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

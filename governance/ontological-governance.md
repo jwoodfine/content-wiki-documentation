@@ -6,6 +6,7 @@ category: governance
 type: topic
 content_type: topic
 quality: complete
+index_group: platform-disciplines
 short_description: "The four self-healing control ledgers governing how service-content classifies and accumulates knowledge, and the human-verification loop that keeps it accurate."
 status: active
 bcsc_class: public-disclosure-safe

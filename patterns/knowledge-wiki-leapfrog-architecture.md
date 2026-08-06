@@ -7,6 +7,7 @@ category: patterns
 type: topic
 content_type: topic
 quality: complete
+index_group: interface-and-user-experience
 status: active
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC

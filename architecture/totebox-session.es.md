@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "Sesión Totebox"
 slug: totebox-session
 category: architecture
+index_group: customer-ownership-and-deployment
 type: topic
 content_type: topic
 quality: complete

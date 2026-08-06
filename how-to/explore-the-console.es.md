@@ -4,6 +4,7 @@ title: "Explorar la consola por primera vez"
 slug: explore-the-console
 short_description: "Orienta a un operador de primera vez en os-console — la barra de estado, el panel F9 de la pasarela de inferencia y el punto de control obligatorio F12 que escribe en el libro mayor WORM."
 category: how-to
+index_group: getting-started
 content_type: how-to
 type: how-to
 quality: complete

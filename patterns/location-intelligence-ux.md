@@ -8,6 +8,7 @@ category: patterns
 type: topic
 content_type: topic
 quality: complete
+index_group: interface-and-user-experience
 short_description: "Conclusion-First interface philosophy rendering ranked tier conclusions rather than individual data points, so defensible commercial nodes surface immediately."
 status: active
 audience: public

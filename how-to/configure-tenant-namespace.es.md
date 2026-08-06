@@ -4,6 +4,7 @@ title: "Configurar un espacio de nombres de tenant"
 slug: configure-tenant-namespace
 short_description: "Configura un espacio de nombres de tenant en service-vm-tenant mediante variables de entorno y un reinicio — el mecanismo real basado en configuración, ya que no existe ninguna API de registro de tenants en tiempo de ejecución."
 category: how-to
+index_group: multi-entity-scale
 content_type: how-to
 type: how-to
 quality: complete

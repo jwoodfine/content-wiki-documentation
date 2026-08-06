@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: core-named-substrates
 short_description: "Architectural pattern pairing open platform code and a deterministic AI-free data layer with an optional intelligence layer whose interactions compound as training signal."
 status: active
 bcsc_class: public-disclosure-safe

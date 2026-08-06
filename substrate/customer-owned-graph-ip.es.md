@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: sovereignty-and-customer-ownership
 short_description: "El grafo de conocimiento por inquilino y los pesos del adaptador entrenado son propiedad intelectual del cliente, portátiles y exportables sin aprobación del proveedor."
 status: active
 bcsc_class: public-disclosure-safe

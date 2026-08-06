@@ -8,6 +8,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: core-named-substrates
 short_description: "Registro YAML de citas de ámbito de plataforma con detección de deriva que hace la procedencia auditable por máquina, del instrumento regulatorio a la afirmación publicada."
 status: active
 bcsc_class: public-disclosure-safe

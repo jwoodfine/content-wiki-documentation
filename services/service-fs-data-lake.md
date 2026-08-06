@@ -6,6 +6,7 @@ category: services
 type: topic
 content_type: topic
 quality: complete
+index_group: specialist-and-domain-services
 status: active
 audience: public
 short_description: "service-fs is the foundational storage layer for the GIS pipeline — a flat-file data lake storing raw geospatial points, available to every downstream service."

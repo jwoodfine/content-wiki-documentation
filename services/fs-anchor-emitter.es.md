@@ -6,6 +6,7 @@ category: services
 type: topic
 content_type: topic
 quality: complete
+index_group: specialist-and-domain-services
 short_description: "Puntos de control firmados por hora del libro mayor Write-Once-Read-Many, preparados para anclaje mensual en Sigstore Rekor y auditables desde fuera de la plataforma."
 status: active
 audience: vendor-public

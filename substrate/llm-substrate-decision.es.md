@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: small-language-model-stack
 short_description: "La justificación para seleccionar OLMo 3 como sustrato de inferencia local y en GPU: la única familia de modelos completamente abierta — datos, código de entrenamiento y puntos de control incluidos — que permite el preentrenamiento continuo y satisface la postura de adquisición de una empresa pública canadiense."
 status: active
 bcsc_class: public-disclosure-safe

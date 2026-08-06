@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: core-named-substrates
 short_description: "Patrón arquitectónico que une código de plataforma abierto, una capa de datos determinista sin IA y una capa de inteligencia opcional que genera señal de entrenamiento compuesta."
 status: active
 bcsc_class: public-disclosure-safe

@@ -4,6 +4,7 @@ title: "Leer el libro mayor de comandos"
 slug: read-the-command-ledger
 short_description: "Lee el libro mayor WORM de solo anexado a través de la API HTTP real de service-fs — paginando entradas con un cursor y obteniendo un punto de control firmado — ya que no existe ninguna interfaz de navegación del libro mayor en la consola."
 category: how-to
+index_group: working-in-the-console
 content_type: how-to
 type: how-to
 quality: complete

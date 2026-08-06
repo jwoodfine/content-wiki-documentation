@@ -6,6 +6,7 @@ slug: service-fs
 title: "service-fs — el núcleo del libro mayor WORM"
 short_description: "El libro mayor inmutable Write-Once-Read-Many por inquilino que respalda cada registro escrito en la plataforma — arquitectura, durabilidad y la postura regulatoria que habilita por construcción."
 category: services
+index_group: ring-1-boundary-ingest
 audience: vendor-public
 bcsc_class: current-fact
 status: active

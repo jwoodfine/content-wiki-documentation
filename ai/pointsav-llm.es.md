@@ -6,6 +6,7 @@ category: ai
 type: topic
 content_type: topic
 quality: complete
+index_group: compute-tiers
 short_description: "El modelo de IA especialista planificado para el Nivel 3 del sistema de cuatro niveles SLM de PointSav, construido mediante entrenamiento continuo de OLMo 3 32B sobre el corpus federado de aprendizaje de la plataforma."
 status: active
 bcsc_class: public-disclosure-safe
@@ -15,6 +16,7 @@ cites:
  - ni-51-102
  - osc-sn-51-721
 paired_with: pointsav-llm.md
+
 ---
 
 **PointSav-LLM** es el modelo de IA especialista planificado para el Nivel 3 del [[four-tier-slm-substrate|escalón SLM de cuatro niveles]] de [[pointsav-overview|PointSav]]. No es un producto activo en la fecha de este artículo. Se trata de una trayectoria planificada: el primer ciclo de entrenamiento continuo (CPT, por sus siglas en inglés) está actualmente previsto para v0.5.0 en el primer trimestre de 2027, con un despliegue productivo actualmente previsto para v1.0.0 en el cuarto trimestre de 2027.

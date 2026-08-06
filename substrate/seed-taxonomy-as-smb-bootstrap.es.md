@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: platform-mechanics
 short_description: "Cada despliegue de inquilino provisiona una taxonomía semilla de cuatro partes — Arquetipos, Plan de Cuentas, Dominios, Temas — como el arranque del grafo de conocimiento."
 status: active
 bcsc_class: public-disclosure-safe

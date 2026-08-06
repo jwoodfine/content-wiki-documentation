@@ -4,6 +4,7 @@ title: "Edge deployment and boundary ingest"
 slug: edge-deployment
 short_description: "The platform routes external network connections through Ring 1 boundary-ingest services at the edge, sanitizing payloads before core processing and recording clean events."
 category: infrastructure
+index_group: fleet-and-edge-deployment
 type: topic
 content_type: topic
 quality: complete

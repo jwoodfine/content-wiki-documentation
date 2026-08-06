@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 content_type: topic
+index_group: brand-surface
 slug: brand-typography
 short_description: "The PointSav typography system separates web interface system fonts from institutional print typography, reserving open-licence serifs for PDFs and formal disclosures."
 title: "Brand typography and print standards"

@@ -6,6 +6,7 @@ category: governance
 type: topic
 content_type: topic
 quality: complete
+index_group: engineering-sovereignty
 short_description: "Moonshot initiatives are active engineering programs building native replacements for quarantined third-party dependencies, reducing vendor lock-in."
 status: active
 bcsc_class: public-disclosure-safe

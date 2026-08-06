@@ -6,6 +6,7 @@ category: ai
 type: concept
 content_type: topic
 quality: complete
+index_group: entity-extraction-and-the-training-loop
 status: active
 audience: vendor-public
 bcsc_class: current-fact
@@ -18,6 +19,7 @@ aliases:
   - topic-dual-tier-extraction-architecture
   - topic-tiered-entity-extraction-architecture
 cites: []
+
 ---
 
 La plataforma PointSav ejecuta tres niveles de extracción en secuencia sobre cada documento. El Nivel 0 proporciona detección extractiva rápida en CPU. El Nivel A ofrece una alternativa generativa cuando el Nivel 0 no está disponible. El Nivel B aplica un pase de enriquecimiento de mayor capacidad en GPU y registra las mejoras como señal de entrenamiento.

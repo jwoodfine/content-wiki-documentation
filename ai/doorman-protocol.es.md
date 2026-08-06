@@ -6,6 +6,7 @@ short_description: "Doorman es el único límite de solicitud de IA a través de
 category: ai
 type: concept
 content_type: topic
+index_group: the-doorman-boundary
 status: active
 bcsc_class: current-fact
 forward_looking: true
@@ -14,6 +15,7 @@ editor: pointsav-engineering
 language: es
 paired_with: doorman-protocol.md
 cites: []
+
 ---
 
 Cada servicio que puede llamar a un modelo de IA externo es su propio agujero en el muro. Diez servicios con diez rutas de salida significan diez superficies de auditoría, y diez lugares donde la disciplina de saneamiento puede olvidarse.

@@ -6,6 +6,7 @@ category: applications
 type: topic
 content_type: topic
 quality: complete
+index_group: input-and-developer-surfaces
 status: active
 bcsc_class: no-disclosure-implication
 last_edited: 2026-06-20

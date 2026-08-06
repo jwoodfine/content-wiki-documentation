@@ -6,6 +6,7 @@ category: services
 type: concept
 content_type: topic
 quality: complete
+index_group: ring-2-knowledge-and-processing
 short_description: "The Chart of Accounts and eleven archetypes are the two-part taxonomy at the core of service-people and service-content, classifying by structural position, not job title."
 status: active
 audience: vendor-public

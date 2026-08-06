@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: the-compounding-doorman-and-ai-boundary
 short_description: "The operating-system metaphor for AI in PointSav — the Doorman as kernel, adapters as processes — and the algebra assembling intelligence from LoRA layers."
 status: active
 bcsc_class: public-disclosure-safe

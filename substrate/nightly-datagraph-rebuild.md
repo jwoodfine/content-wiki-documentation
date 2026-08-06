@@ -5,6 +5,7 @@ slug: nightly-datagraph-rebuild
 category: substrate
 type: concept
 content_type: topic
+index_group: small-language-model-stack
 status: stub
 short_description: "The scheduled process that reconstructs the platform's knowledge graph from canonical flat-file sources each night — AI-assisted entity extraction produces proposals only; every write to the graph passes through a Ring 2 write path with a human approval checkpoint."
 bcsc_class: public-disclosure-safe

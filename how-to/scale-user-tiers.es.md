@@ -4,6 +4,7 @@ title: "Escalar el acceso de usuarios"
 slug: scale-user-tiers
 short_description: "Otorga tokens de capacidad con alcance de rol a nuevos usuarios a medida que un equipo crece, usando la API real de emparejamiento de service-content — no existe una operación de promoción/degradación ni de revocación masiva, ya que no existe ningún mecanismo de revocación."
 category: how-to
+index_group: multi-entity-scale
 content_type: how-to
 type: how-to
 quality: complete

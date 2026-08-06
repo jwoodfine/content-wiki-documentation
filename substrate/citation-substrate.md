@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: core-named-substrates
 short_description: "Platform-wide YAML citation registry with drift detection that makes provenance machine-auditable from regulatory instrument to published claim."
 status: active
 bcsc_class: public-disclosure-safe

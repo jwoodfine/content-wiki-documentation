@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: sovereignty-and-customer-ownership
 short_description: "The economic model separating what PointSav publishes freely from what it sells — public knowledge under open licenses, paid service at multi-Totebox aggregation."
 status: active
 bcsc_class: public-disclosure-safe

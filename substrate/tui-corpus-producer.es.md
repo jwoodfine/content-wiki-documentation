@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: small-language-model-stack
 short_description: "Cada interacción del operador con service-slm a través de la interfaz de terminal es una contribución curada al corpus de entrenamiento del adaptador por inquilino."
 status: active
 bcsc_class: public-disclosure-safe

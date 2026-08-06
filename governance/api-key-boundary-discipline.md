@@ -6,6 +6,7 @@ category: governance
 type: topic
 content_type: topic
 quality: complete
+index_group: platform-disciplines
 short_description: "The rule that all external LLM API credentials belong exclusively at the gateway service and never at inference engines."
 status: active
 bcsc_class: public-disclosure-safe

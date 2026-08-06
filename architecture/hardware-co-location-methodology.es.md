@@ -6,6 +6,7 @@ slug: hardware-co-location-methodology
 short_description: "Un enfoque estructurado para clasificar candidatos de coubicación de hardware en dimensiones regulatorias, de red, de infraestructura y de costo, restringido primero por requisitos regulatorios antes de que ocurra cualquier otra optimización."
 title: "Metodología de co-ubicación de hardware"
 category: architecture
+index_group: location-intelligence-and-domain
 language: es
 quality: complete
 status: stable

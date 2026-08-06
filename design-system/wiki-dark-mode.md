@@ -6,6 +6,7 @@ short_description: "Light and dark colour schemes for the PointSav wiki, with WC
 category: design-system
 type: topic
 content_type: topic
+index_group: wiki-surface-design
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

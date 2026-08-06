@@ -6,6 +6,7 @@ category: governance
 type: topic
 content_type: topic
 quality: complete
+index_group: platform-disciplines
 short_description: "The platform uses inline SVG data URIs for browser-tab favicons, avoiding a network call and pixelation, with distinct vendor and customer marks per tab."
 status: active
 bcsc_class: no-disclosure-implication

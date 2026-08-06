@@ -6,6 +6,7 @@ category: applications
 type: topic
 content_type: topic
 quality: complete
+index_group: location-intelligence-applications
 status: active
 audience: public
 short_description: "Motor de análisis espacial sin estado que produce las clasificaciones de coubicación de Woodfine y el mapa interactivo — una función pura sin datos canónicos."

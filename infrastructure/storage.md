@@ -4,6 +4,7 @@ title: "Immutable storage and secure backup"
 slug: storage
 short_description: "The platform enforces hardware-level append-only writes for a tamper-evident record, supporting legal deletion via key destruction and backup via paired secondary drives."
 category: infrastructure
+index_group: storage-substrate
 type: topic
 content_type: topic
 quality: complete

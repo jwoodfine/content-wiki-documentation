@@ -7,12 +7,14 @@ language: es
 category: ai
 type: topic
 content_type: topic
+index_group: entity-extraction-and-the-training-loop
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25
 editor: pointsav-engineering
 cites: []
 paired_with: learning-datagraph-architecture.md
+
 ---
 
 La plataforma construye un [[compounding-substrate|sustrato acumulativo]]: cada interacción del operador con una sesión de IA se convierte en una tupla de entrenamiento estructurada, enrutada a través de un único límite auditable ([[doorman-protocol|Doorman]]), capturada en un [[worm-ledger-architecture|ledger de solo adición]] y reincorporada al SLM local mediante ajuste fino periódico. El resultado es un entorno de desarrollo que aprende de cómo se usa — las sugerencias de código se acercan a los patrones que escribe este operador, las propuestas de borrador se alinean más con la voz editorial de esta casa, las extracciones de entidades se afinan a medida que el grafo se enriquece.

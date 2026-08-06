@@ -7,6 +7,7 @@ category: design-system
 type: topic
 content_type: topic
 quality: complete
+index_group: token-concepts-and-tooling
 status: active
 audience: public
 bcsc_class: public-disclosure-safe

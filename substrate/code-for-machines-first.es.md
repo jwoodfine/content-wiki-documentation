@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: platform-mechanics
 short_description: "Cada contrato entre servicios, registro de auditoría, configuración y ontología es legible por máquinas como superficie primaria; las interfaces para humanos son capas sobre APIs primero-para-máquinas."
 status: active
 bcsc_class: public-disclosure-safe

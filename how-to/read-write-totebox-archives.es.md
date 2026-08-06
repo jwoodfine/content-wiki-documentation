@@ -4,6 +4,7 @@ title: "Cómo leer y escribir en archivos Totebox"
 slug: read-write-totebox-archives
 short_description: "Lee el estado de un archivo Totebox al inicio de sesión — bandeja de entrada, contexto de sesión, git status, NEXT.md — y registra cambios mediante el flujo de commit de nivel staging."
 category: how-to
+index_group: records-storage
 content_type: how-to
 type: how-to
 status: active

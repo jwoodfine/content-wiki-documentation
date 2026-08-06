@@ -4,6 +4,7 @@ title: "Cómo instalar el conjunto de herramientas de desarrollo"
 slug: install-toolchain
 short_description: "Instala el conjunto de herramientas Rust fijado con rustup, ejecuta una compilación y pruebas base, y verifica el asistente de commits y la clave SSH de firma necesarios antes de trabajar en un archivo del monorepo."
 category: how-to
+index_group: getting-started
 content_type: how-to
 type: how-to
 status: active

@@ -4,6 +4,7 @@ title: "Verify a WORM ledger entry"
 slug: verify-worm-ledger
 short_description: "Verifies WORM ledger entries against a fetched checkpoint over service-fs's real HTTP API, using a standard SHA-256 toolchain — no CLI or proprietary tooling exists or is required."
 category: how-to
+index_group: records-storage
 content_type: how-to
 type: how-to
 quality: complete

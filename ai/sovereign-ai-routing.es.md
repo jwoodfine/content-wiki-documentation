@@ -7,6 +7,7 @@ category: ai
 type: topic
 content_type: topic
 quality: complete
+index_group: the-doorman-boundary
 status: active
 audience: public
 bcsc_class: public-disclosure-safe
@@ -15,6 +16,7 @@ last_edited: 2026-07-31
 editor: pointsav-engineering
 paired_with: sovereign-ai-routing.md
 cites: []
+
 ---
 
 

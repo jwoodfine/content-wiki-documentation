@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: core-named-substrates
 short_description: "Platform mechanism routing work through a local Small Language Model first, capturing signed senior verdicts as preference pairs for continued pretraining."
 status: active
 bcsc_class: public-disclosure-safe

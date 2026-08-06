@@ -6,6 +6,7 @@ category: ai
 type: concept
 content_type: topic
 quality: complete
+index_group: entity-extraction-and-the-training-loop
 status: active
 audience: vendor-public
 bcsc_class: planned
@@ -15,6 +16,7 @@ editor: editorial
 short_description: "Marco de calidad del flujo de conocimiento Totebox: si los adaptadores LoRA mejoran el modelo de forma medible y si el DataGraph es una ontología precisa y bien resuelta."
 paired_with: flow-quality-architecture.md
 cites: []
+
 ---
 
 El flujo de conocimiento del Totebox convierte prosa en dos activos duraderos: un **[[ontological-datagraph|DataGraph ontológico]]** de entidades y **adaptadores LoRA** que especializan un modelo de lenguaje local. Ambos los sirven `service-slm` (el [[doorman-protocol|Doorman]]) y `service-content` (el DataGraph).

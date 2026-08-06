@@ -4,6 +4,7 @@ title: "Run your first SLM query"
 slug: run-first-slm-query
 short_description: "Submits a first inference request to Doorman directly over HTTP — the real path, since the console's F9 slot is a monitoring dashboard with no query interface at all."
 category: how-to
+index_group: working-in-the-console
 content_type: how-to
 type: how-to
 quality: complete

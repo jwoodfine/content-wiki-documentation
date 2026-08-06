@@ -4,6 +4,7 @@ title: "PPN command protocol"
 slug: ppn-command-protocol
 short_description: "The PPN Command Protocol is the 16-byte binary wire format os-network-admin uses to issue commands to os-infrastructure nodes over WireGuard, with no central broker."
 category: infrastructure
+index_group: network-and-telemetry
 type: topic
 content_type: topic
 status: stable

@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 content_type: topic
+index_group: brand-surface
 category: design-system
 slug: brand-family-swatch
 short_description: "The brand color families assigned to retail and institutional anchor categories in the co-location GIS surface, providing consistent color-coded map and table identifiers."

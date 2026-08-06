@@ -6,6 +6,7 @@ category: applications
 type: concept
 content_type: topic
 quality: complete
+index_group: domain-applications
 short_description: "BIM y superficies de bienes raíces describe cómo PointSav trata el Modelado de Información de Construcción como un dominio operativo de primera clase, con herramientas de sistema de diseño dedicadas, disciplina de registro ISO 19650 y patrones de archivo Totebox."
 status: active
 audience: vendor-public

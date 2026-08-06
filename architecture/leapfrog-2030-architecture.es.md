@@ -4,6 +4,7 @@ title: "Arquitectura Leapfrog 2030"
 slug: leapfrog-2030-architecture
 short_description: "Tesis de posicionamiento estructural que combina hardware, datos y pesos de adaptador propiedad del cliente con ingresos por transacción en lugar de suscripción."
 category: architecture
+index_group: platform-structure
 type: concept
 content_type: topic
 quality: complete

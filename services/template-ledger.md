@@ -6,6 +6,7 @@ category: services
 type: topic
 content_type: topic
 quality: complete
+index_group: specialist-and-domain-services
 short_description: "Distribution mechanism in service-email-template that syncs one authoritative copy of every approved template to the operator's mail environment, eliminating version drift."
 status: active
 bcsc_class: public-disclosure-safe

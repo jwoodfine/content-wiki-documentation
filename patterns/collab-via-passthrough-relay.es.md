@@ -10,6 +10,7 @@ category: patterns
 type: topic
 content_type: topic
 quality: complete
+index_group: collaboration-and-editorial-workflow
 last_edited: 2026-05-09
 editor: pointsav-engineering
 audience: vendor-public

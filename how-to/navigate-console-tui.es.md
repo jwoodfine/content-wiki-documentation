@@ -4,6 +4,7 @@ title: "Navegar la TUI de la consola"
 slug: navigate-console-tui
 short_description: "Navega os-console por teclado — la barra de teclas de función arriba, los campos reales de la barra de estado abajo, y el cambio de ranuras sin perder estado."
 category: how-to
+index_group: working-in-the-console
 content_type: how-to
 type: how-to
 quality: complete

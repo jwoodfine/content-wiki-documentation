@@ -6,6 +6,7 @@ category: governance
 type: topic
 content_type: topic
 quality: complete
+index_group: engineering-sovereignty
 short_description: "The staged-commit protocol enforcing separation between staging identities and canonical repository identities — two staging authors, two admin push identities."
 status: active
 bcsc_class: public-disclosure-safe

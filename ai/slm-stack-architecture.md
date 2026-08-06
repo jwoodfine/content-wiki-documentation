@@ -6,6 +6,7 @@ category: ai
 type: topic
 content_type: topic
 quality: complete
+index_group: the-doorman-boundary
 short_description: "The full Rust dependency graph and binary architecture for service-slm, the Doorman service that mediates every inference call in the PointSav platform."
 status: active
 bcsc_class: public-disclosure-safe
@@ -13,6 +14,7 @@ last_edited: 2026-05-01
 editor: pointsav-engineering
 cites: []
 paired_with: slm-stack-architecture.es.md
+
 ---
 
 **Correction (2026-08-02):** most of the specific stack described below does not match the real `service-slm` codebase. **Inference**: the real runtime is **llama-server (llama.cpp)** at Tier A and **vLLM** at Tier B — both external, non-Rust binaries called over HTTP (`service-slm/ARCHITECTURE.md:225-233`); `mistral.rs` and `candle` are not deployed anywhere (candle is listed only as a hypothetical future path). **Storage**: the real crate uses `rusqlite`, not `sqlx` (zero `sqlx` hits in `Cargo.lock`). **Document processing / orchestration / observability**: `oxidize-pdf`, `docx-rust`, `calamine`, `pulldown-cmark`, `apalis`, `object_store`, `opentelemetry-rust`, `sigstore-rs`, and `mupdf-rs` — none appear anywhere in the workspace's 286-crate `Cargo.lock`. **Binary/crate layout**: the "Flat binary architecture" section below invents `slm-ledger`, `slm-compute`, `slm-memory-kv`, `slm-memory-adapters`, `slm-inference-local`, `slm-inference-remote`, `slm-api`, `slm-cli` as a single-binary design; the real workspace has five crates (`slm-core`, `slm-doorman`, `slm-doorman-server`, `adapter-hub`, `slm-mcp-server`) with two actual `[[bin]]` targets, not one. What's confirmed accurate: the axum/tower/tokio/reqwest/tracing base, the `cargo-deny`/`deny.toml` license-policy mechanism, and LadybugDB as the knowledge-graph store. **Flagged, not resolved** — this needs a rewrite of the "canonical stack" and "flat binary architecture" sections against the real dependency graph, not a wording fix.

@@ -4,6 +4,7 @@ title: "Open your first Totebox session"
 slug: open-first-totebox-session
 short_description: "Opens a first Totebox session in a single archive: read the manifest, check your inbox, understand what the session can and can't write, and complete the shutdown sweep before closing."
 category: how-to
+index_group: getting-started
 content_type: how-to
 type: how-to
 quality: complete

@@ -4,6 +4,7 @@ title: "Read the command ledger"
 slug: read-the-command-ledger
 short_description: "Reads the append-only WORM ledger over service-fs's real HTTP API — paging entries with a cursor and fetching a signed checkpoint — since no ledger-browsing UI exists in the console."
 category: how-to
+index_group: working-in-the-console
 content_type: how-to
 type: how-to
 quality: complete

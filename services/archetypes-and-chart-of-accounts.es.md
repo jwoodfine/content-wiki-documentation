@@ -6,6 +6,7 @@ category: services
 type: concept
 content_type: topic
 quality: complete
+index_group: ring-2-knowledge-and-processing
 short_description: "El Plan de Cuentas y los once arquetipos son la taxonomía institucional de dos partes en el núcleo de service-people y service-content, que clasifica al personal y los documentos por posición estructural y función, sin depender de texto de título de trabajo variable."
 status: active
 audience: vendor-public

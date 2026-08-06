@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: sovereignty-and-customer-ownership
 short_description: "El Nivel 0 Totebox es un despliegue especialista soberano que funciona en el propio hardware del cliente sin ninguna dependencia de nube requerida y con una huella total de 1 GB."
 status: active
 bcsc_class: public-disclosure-safe

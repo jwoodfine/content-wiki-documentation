@@ -6,6 +6,7 @@ category: services
 type: topic
 content_type: topic
 quality: complete
+index_group: specialist-and-domain-services
 short_description: "Mecanismo de distribución en service-email-template que sincroniza una copia autoritativa de cada plantilla aprobada con el correo del operador, eliminando la deriva de versiones."
 status: active
 bcsc_class: public-disclosure-safe

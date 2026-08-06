@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "Data vault bookkeeping substrate"
 slug: data-vault-bookkeeping-substrate
 category: infrastructure
+index_group: storage-substrate
 type: topic
 content_type: topic
 quality: complete

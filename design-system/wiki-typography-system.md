@@ -6,6 +6,7 @@ short_description: "The Inter and Source Serif 4 type stack, heading scale, and 
 category: design-system
 type: topic
 content_type: topic
+index_group: wiki-surface-design
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-06-01

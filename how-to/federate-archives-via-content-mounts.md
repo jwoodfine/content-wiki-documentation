@@ -4,6 +4,7 @@ title: "Federate archives via content mounts"
 slug: federate-archives-via-content-mounts
 short_description: "Federates a second knowledge instance's articles into a running instance through a knowledge.toml [[mount]] entry — a flat, merged namespace with no isolation, not a URL-prefixed federation scheme."
 category: how-to
+index_group: integration-data
 content_type: how-to
 type: how-to
 quality: complete

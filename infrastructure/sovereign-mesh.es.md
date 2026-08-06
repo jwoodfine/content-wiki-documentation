@@ -4,6 +4,7 @@ title: "Malla Soberana"
 slug: sovereign-mesh
 short_description: "La malla soberana es la superposición WireGuard a nivel de aplicación que conecta todos los nodos de la flota PPN, transportando comandos binarios firmados sin depender de un intermediario de mensajes centralizado."
 category: infrastructure
+index_group: network-and-telemetry
 type: topic
 content_type: topic
 status: stable

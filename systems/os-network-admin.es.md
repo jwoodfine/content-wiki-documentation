@@ -6,6 +6,7 @@ short_description: "os-network-admin es el plano de control de una Red Privada P
 category: systems
 type: topic
 content_type: topic
+index_group: network-control-and-infrastructure
 status: active
 bcsc_class: public-disclosure-safe
 language: es

@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "Diseño del libro de registros WORM"
 slug: worm-ledger-design
 category: infrastructure
+index_group: storage-substrate
 type: topic
 content_type: topic
 quality: complete

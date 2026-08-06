@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: the-compounding-doorman-and-ai-boundary
 short_description: "The operational pattern at the heart of sovereign AI substrates: a single service mediating every external compute call, logging events, accumulating training signal."
 status: active
 bcsc_class: public-disclosure-safe

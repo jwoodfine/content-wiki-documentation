@@ -7,6 +7,7 @@ category: systems
 type: topic
 content_type: topic
 quality: complete
+index_group: the-archive-layer
 status: active
 audience: public
 bcsc_class: public-disclosure-safe

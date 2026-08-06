@@ -4,6 +4,7 @@ title: "How to read and write Totebox archives"
 slug: read-write-totebox-archives
 short_description: "Reads a Totebox archive's state at session start — inbox, session context, git status, NEXT.md — and writes changes through the staging-tier commit flow."
 category: how-to
+index_group: records-storage
 content_type: how-to
 type: how-to
 status: active

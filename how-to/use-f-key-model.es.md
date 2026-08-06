@@ -4,6 +4,7 @@ title: "Usar el modelo de cartuchos de tecla de función"
 slug: use-f-key-model
 short_description: "Trabaja con el modelo de cartuchos de tecla de función de os-console — correo en F3, el panel SLM de solo monitoreo en F9, la Máquina de Entrada basada en archivos en F12 — donde cada cartucho compilado posee el renderizado y la entrada de su ranura."
 category: how-to
+index_group: working-in-the-console
 content_type: how-to
 type: how-to
 quality: complete

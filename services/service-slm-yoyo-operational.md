@@ -6,6 +6,7 @@ category: services
 type: topic
 content_type: topic
 quality: complete
+index_group: ring-3-ai-gateway
 short_description: "How service-SLM's three-tier inference router and the Yo-Yo GPU burst VM operate: the Doorman boundary, Tier A/B config, apprenticeship queue, cost ceiling."
 status: active
 bcsc_class: public-disclosure-safe

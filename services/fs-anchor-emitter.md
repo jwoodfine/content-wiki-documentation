@@ -6,6 +6,7 @@ category: services
 type: topic
 content_type: topic
 quality: complete
+index_group: specialist-and-domain-services
 short_description: "Signed hourly checkpoints of the Write-Once-Read-Many ledger prepared for monthly anchoring to Sigstore Rekor, making ledger state auditable from outside the platform."
 status: active
 audience: vendor-public

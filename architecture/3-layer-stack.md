@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "Three-layer stack"
 slug: 3-layer-stack
 category: architecture
+index_group: platform-structure
 type: topic
 content_type: topic
 quality: stub

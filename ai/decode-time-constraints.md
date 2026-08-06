@@ -6,6 +6,7 @@ category: ai
 type: topic
 content_type: topic
 quality: complete
+index_group: the-doorman-boundary
 short_description: "Structural rules applied to a language model's output at each token step, making banned vocabulary or invalid responses mathematically impossible to produce, not filtered after."
 status: active
 bcsc_class: public-disclosure-safe
@@ -19,6 +20,7 @@ cites:
  - xgrammar
  - olmo3-allenai
 paired_with: decode-time-constraints.es.md
+
 ---
 
 

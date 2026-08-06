@@ -4,6 +4,7 @@ title: "Scale user access"
 slug: scale-user-tiers
 short_description: "Grants role-scoped capability tokens to new users as a team scales, using service-content's real pairing API — there is no promote/demote or bulk-revoke operation, since no revocation mechanism exists at all."
 category: how-to
+index_group: multi-entity-scale
 content_type: how-to
 type: how-to
 quality: complete

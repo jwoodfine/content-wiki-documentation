@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: small-language-model-stack
 short_description: "The three-ring compute substrate letting service-slm spin GPU inference capacity up and down while retaining state and producing an audit ledger of every compute event."
 status: active
 bcsc_class: public-disclosure-safe

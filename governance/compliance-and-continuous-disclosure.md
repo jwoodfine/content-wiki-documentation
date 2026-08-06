@@ -6,6 +6,7 @@ category: governance
 type: concept
 content_type: topic
 quality: complete
+index_group: institutional-due-diligence
 short_description: "The regulatory frameworks the PointSav architecture addresses, and its structural approach to exposing audit evidence continuously, not via annual certification."
 status: active
 audience: vendor-public

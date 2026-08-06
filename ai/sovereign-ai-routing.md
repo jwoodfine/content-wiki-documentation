@@ -6,6 +6,7 @@ category: ai
 type: topic
 content_type: topic
 quality: complete
+index_group: the-doorman-boundary
 short_description: "AI routing processes language model requests through a local sanitization step before any data reaches external models, keeping internal structured data off third-party servers."
 status: active
 bcsc_class: public-disclosure-safe
@@ -13,6 +14,7 @@ last_edited: 2026-04-30
 editor: pointsav-engineering
 cites: []
 paired_with: sovereign-ai-routing.es.md
+
 ---
 
 

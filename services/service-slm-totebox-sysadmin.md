@@ -6,6 +6,7 @@ category: services
 type: topic
 content_type: topic
 quality: complete
+index_group: ring-3-ai-gateway
 short_description: "How service-slm becomes the operational assistant for Totebox deployments — the training strategy, task families, and pipeline from corpus to per-tenant LoRA adapters."
 status: active
 bcsc_class: public-disclosure-safe

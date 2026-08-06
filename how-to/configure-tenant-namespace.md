@@ -4,6 +4,7 @@ title: "Configure a tenant namespace"
 slug: configure-tenant-namespace
 short_description: "Configures a tenant namespace on service-vm-tenant via environment variables and a restart — the real config-driven mechanism, since no runtime tenant-registration API exists."
 category: how-to
+index_group: multi-entity-scale
 content_type: how-to
 type: how-to
 quality: complete

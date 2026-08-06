@@ -6,6 +6,7 @@ category: applications
 type: topic
 content_type: topic
 quality: complete
+index_group: location-intelligence-applications
 status: active
 audience: public
 short_description: "Stateless spatial analytics engine producing the Woodfine co-location rankings and interactive map — a pure function holding no canonical data."

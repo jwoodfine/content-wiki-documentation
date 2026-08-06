@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: sovereignty-and-customer-ownership
 short_description: "PointSav's market positioning as steward of shared, open AI infrastructure for regulated SMBs: structural properties large cloud providers cannot offer without changing billing."
 status: active
 bcsc_class: public-disclosure-safe

@@ -6,6 +6,7 @@ category: governance
 type: topic
 content_type: topic
 quality: complete
+index_group: platform-disciplines
 short_description: La regla que establece que todas las credenciales externas de LLM pertenecen exclusivamente al servicio de pasarela y nunca a los motores de inferencia.
 status: active
 bcsc_class: public-disclosure-safe

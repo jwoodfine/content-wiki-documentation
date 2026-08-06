@@ -4,6 +4,7 @@ title: "Use declarative knowledge mounts"
 slug: use-knowledge-mounts
 short_description: "Adds a secondary content repository to a running knowledge instance via a knowledge.toml [[mount]] entry — into the same flat slug namespace as the primary, since no URL-prefix isolation exists."
 category: how-to
+index_group: integration-data
 content_type: how-to
 type: how-to
 quality: complete

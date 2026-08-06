@@ -7,6 +7,7 @@ category: services
 type: topic
 content_type: topic
 quality: complete
+index_group: ring-2-knowledge-and-processing
 status: active
 audience: public
 bcsc_class: public-disclosure-safe

@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "Six-tier sovereignty matrix"
 slug: six-tier-sovereignty-matrix
 category: architecture
+index_group: platform-structure
 type: concept
 content_type: topic
 quality: complete

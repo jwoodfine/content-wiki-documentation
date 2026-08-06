@@ -8,6 +8,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: core-named-substrates
 short_description: "Infraestructura editorial que codifica registro, voz de marca, subtipo de documento y audiencia como andamiaje de indicaciones reutilizable en cuatro servicios sustituibles."
 status: active
 bcsc_class: public-disclosure-safe

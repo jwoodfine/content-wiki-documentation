@@ -6,6 +6,7 @@ category: services
 type: topic
 content_type: topic
 quality: complete
+index_group: ring-2-knowledge-and-processing
 short_description: "service-search is the Ring 2 full-text search service built on Tantivy, providing microsecond retrieval across millions of files with no active database process."
 status: active
 bcsc_class: public-disclosure-safe

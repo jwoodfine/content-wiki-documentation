@@ -4,6 +4,7 @@ title: "Ejecutar su primera consulta SLM"
 slug: run-first-slm-query
 short_description: "Envía una primera solicitud de inferencia directamente a Doorman por HTTP — la ruta real, ya que la ranura F9 de la consola es un panel de monitoreo sin ninguna interfaz de consulta."
 category: how-to
+index_group: working-in-the-console
 content_type: how-to
 type: how-to
 quality: complete

@@ -6,6 +6,7 @@ category: patterns
 type: concept
 content_type: topic
 quality: complete
+index_group: deployment-and-configuration
 short_description: "Los patrones de despliegue describen las seis configuraciones canónicas en las que se despliega el sustrato PointSav — cada una basada en los mismos cinco primitivos y la misma superficie de SO, con el Plan de Cuentas y la superficie de cumplimiento adaptados por segmento."
 status: active
 audience: vendor-public

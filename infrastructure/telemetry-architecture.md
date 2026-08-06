@@ -4,6 +4,7 @@ title: "Telemetry architecture"
 slug: telemetry-architecture
 short_description: "The platform collects web traffic analytics from production edge nodes, routing them to a locally controlled environment via an encrypted path, no third-party cloud."
 category: infrastructure
+index_group: network-and-telemetry
 type: topic
 content_type: topic
 quality: complete

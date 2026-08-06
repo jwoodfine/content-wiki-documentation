@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "Tier c key wiring"
 slug: tier-c-key-wiring
 category: infrastructure
+index_group: fleet-and-edge-deployment
 type: topic
 content_type: topic
 quality: complete

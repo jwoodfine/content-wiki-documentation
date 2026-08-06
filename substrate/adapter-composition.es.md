@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: the-compounding-doorman-and-ai-boundary
 short_description: La metáfora del sistema operativo para la IA en PointSav — el Doorman como kernel, los adaptadores como procesos, service-content como sistema de archivos — y el álgebra que ensambla inteligencia por solicitud a partir de capas de adaptadores LoRA.
 status: active
 bcsc_class: public-disclosure-safe

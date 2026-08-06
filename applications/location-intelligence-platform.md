@@ -6,6 +6,7 @@ category: applications
 type: topic
 content_type: topic
 quality: complete
+index_group: location-intelligence-applications
 short_description: "Customer-owned flat-file GIS application for retail cluster analysis and strategic site selection, pairing an analytics engine with a rendering layer."
 status: active
 audience: public

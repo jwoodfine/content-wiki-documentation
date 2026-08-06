@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: small-language-model-stack
 short_description: "The nightly two-phase pipeline on Yo-Yo #1: Phase 1 runs entity extraction for the DataGraph; Phase 2 trains a LoRA adapter via QLoRA on a single L4 GPU."
 status: active
 bcsc_class: public-disclosure-safe

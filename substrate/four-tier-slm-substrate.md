@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: small-language-model-stack
 short_description: "A graduated sovereignty path for AI deployment: four customer tiers from a lightweight API gateway up to a domain-specialist service, each adding capability without regressions."
 status: active
 bcsc_class: public-disclosure-safe

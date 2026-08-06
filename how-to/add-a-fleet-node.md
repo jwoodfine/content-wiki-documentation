@@ -4,6 +4,7 @@ title: "Add a node to a running fleet"
 slug: add-a-fleet-node
 short_description: "Adds a second node to an already-running PPN fleet using service-vm-host's real env-var configuration — the same mechanism as the first node, since nothing about enrollment changes once a fleet exists."
 category: how-to
+index_group: multi-entity-scale
 content_type: how-to
 type: how-to
 quality: complete

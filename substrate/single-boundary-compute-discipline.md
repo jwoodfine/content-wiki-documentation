@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: the-compounding-doorman-and-ai-boundary
 short_description: "Every AI inference request in a platform deployment routes exclusively through the Doorman, with bypass structurally prevented at the kernel level."
 status: active
 bcsc_class: public-disclosure-safe

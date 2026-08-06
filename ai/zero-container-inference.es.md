@@ -1,6 +1,7 @@
 ---
 schema: foundry-doc-v1
 content_type: topic
+index_group: compute-tiers
 title: "Inferencia sin contenedores"
 slug: zero-container-inference
 short_description: "Patrón de implementación GPU de Tier B planeado con binarios Linux nativos bajo systemd y temporizadores de apagado que detienen la facturación cuando las colas están vacías."
@@ -13,6 +14,7 @@ language: es
 paired_with: zero-container-inference.md
 cites:
  - osc-sn-51-721
+
 ---
 
 La inferencia sin contenedores es el patrón de despliegue previsto para el [[yoyo-compute-substrate|cómputo GPU de Nivel B]] de la plataforma: binarios Linux nativos bajo systemd en instancias de máquina virtual de GCE, sin entorno de ejecución de contenedores ni orquestador. La economía funciona porque los temporizadores de apagado en reposo garantizan que la facturación de GPU se detiene exactamente cuando la inferencia no está en ejecución — una ventana diaria de 30 minutos en una A100 de renta interrumpible cuesta aproximadamente 7–8 USD al mes. El conjunto de inferencia de Nivel B que encarna este patrón está previsto; no está en producción actualmente.

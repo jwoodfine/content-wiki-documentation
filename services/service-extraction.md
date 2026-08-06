@@ -6,6 +6,7 @@ category: services
 type: topic
 content_type: topic
 quality: complete
+index_group: ring-2-knowledge-and-processing
 short_description: "service-extraction is the Ring 2 traffic controller that strips proprietary formatting from raw payloads, builds Entity Bundles, and routes data for extraction."
 status: active
 bcsc_class: public-disclosure-safe

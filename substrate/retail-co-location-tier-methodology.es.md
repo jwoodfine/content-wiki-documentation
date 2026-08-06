@@ -6,6 +6,7 @@ category: substrate
 type: concept
 content_type: topic
 quality: complete
+index_group: core-named-substrates
 status: active
 audience: public
 bcsc_class: public-disclosure-safe

@@ -8,6 +8,7 @@ category: patterns
 type: topic
 content_type: topic
 quality: complete
+index_group: interface-and-user-experience
 short_description: "Filosofía de interfaz Conclusion-First que renderiza conclusiones clasificadas en lugar de puntos de datos, destacando de inmediato los nodos comerciales defendibles."
 status: active
 audience: public

@@ -6,6 +6,7 @@ category: services
 type: topic
 content_type: topic
 quality: stub
+index_group: specialist-and-domain-services
 short_description: "The message courier service is a headless web-automation engine bridging internal identity ledgers with external web portals via runtime-injected adapters."
 status: active
 bcsc_class: public-disclosure-safe

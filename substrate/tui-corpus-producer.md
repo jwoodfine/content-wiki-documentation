@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: small-language-model-stack
 short_description: "Every terminal interaction with service-slm through the operator TUI is a curated training corpus contribution for the per-tenant adapter."
 status: active
 bcsc_class: public-disclosure-safe

@@ -6,6 +6,7 @@ category: governance
 type: topic
 content_type: topic
 quality: complete
+index_group: institutional-due-diligence
 short_description: La disciplina operacional que trata cada artefacto publicado como potencialmente revisable bajo las obligaciones canadienses de divulgación continua de valores.
 status: active
 bcsc_class: public-disclosure-safe

@@ -6,6 +6,7 @@ category: ai
 type: concept
 content_type: topic
 quality: pre-build
+index_group: entity-extraction-and-the-training-loop
 status: pre-build
 audience: vendor-public
 bcsc_class: current-fact
@@ -15,6 +16,7 @@ editor: pointsav-engineering
 paired_with: elastic-compute-lora-training-pipeline.md
 short_description: "Pipeline nocturno de dos fases en Elastic Compute #1 que reconstruye el DataGraph del despliegue y entrena pesos adaptadores LoRA para el modelo de lenguaje local."
 cites: []
+
 ---
 
 El [[compounding-substrate|sustrato acumulativo]] de [[pointsav-overview|PointSav]] requiere reentrenamiento periódico para incorporar las interacciones del operador y las decisiones editoriales acumuladas desde el ciclo anterior. Elastic Compute #1 es el nodo de cómputo que ejecuta este reentrenamiento cada noche — una instancia spot en la nube con GPU ([[yoyo-compute-substrate|cómputo Yo-Yo]]) que reconstruye el grafo de conocimiento y produce pesos adaptadores LoRA (Adaptación de Bajo Rango, del inglés Low-Rank Adaptation) actualizados para el modelo de lenguaje local de la plataforma. El pipeline operacionaliza la afirmación estructural de que cada sesión productiva mejora la plataforma para la siguiente: convierte datos de interacción en bruto en pesos de modelo que hereda la próxima sesión.

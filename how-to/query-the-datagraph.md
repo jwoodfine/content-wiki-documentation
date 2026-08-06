@@ -4,6 +4,7 @@ title: "Query the DataGraph"
 slug: query-the-datagraph
 short_description: "Queries the DataGraph for current entity state with the real query_datagraph and get_entity_context MCP tools, and handles DataGraph unavailability as its own signal, separate from Doorman's inference tiers."
 category: how-to
+index_group: records-storage
 content_type: how-to
 type: how-to
 quality: complete

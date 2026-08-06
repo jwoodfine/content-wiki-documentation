@@ -9,6 +9,7 @@ language_protocol: TRANSLATE-ES
 paired_with: disclosure-substrate.md
 category: substrate
 type: topic
+index_group: core-named-substrates
 status: active
 last_edited: 2026-06-20
 editor: pointsav-engineering

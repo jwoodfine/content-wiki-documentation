@@ -8,6 +8,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: core-named-substrates
 short_description: "Mecanismo de plataforma que enruta el trabajo primero por un modelo de lenguaje pequeño local y captura veredictos sénior firmados como pares de preferencia de entrenamiento."
 status: active
 bcsc_class: public-disclosure-safe

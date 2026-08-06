@@ -6,6 +6,7 @@ category: governance
 type: topic
 content_type: topic
 quality: complete
+index_group: platform-disciplines
 short_description: "La plataforma utiliza URIs de datos SVG insertados para los favicons de pestaña del navegador — eliminando una llamada de red, escalando sin pixelación en cualquier pantalla y asignando dos marcas distintas para que la entidad detrás de cada pestaña sea inequívoca a primera vista."
 status: active
 bcsc_class: no-disclosure-implication

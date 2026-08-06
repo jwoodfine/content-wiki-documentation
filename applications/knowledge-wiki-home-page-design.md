@@ -6,6 +6,7 @@ short_description: "How the documentation.pointsav.com home page inherits Wikipe
 category: applications
 type: topic
 content_type: topic
+index_group: knowledge-and-editorial-applications
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25

@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: the-compounding-doorman-and-ai-boundary
 short_description: "The Doorman consults the per-tenant knowledge graph before every inference request, producing training tuples where the graph and the model adapter co-evolve."
 status: active
 bcsc_class: public-disclosure-safe

@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: cryptographic-and-microkernel-primitives
 short_description: "The kernel-level architecture beneath every PointSav service — a customer-rooted capability ledger, a two-bottoms sovereign OS strategy, and boot-anywhere recovery."
 status: active
 bcsc_class: public-disclosure-safe

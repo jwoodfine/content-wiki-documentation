@@ -7,6 +7,7 @@ category: governance
 type: topic
 content_type: topic
 quality: complete
+index_group: platform-disciplines
 status: active
 audience: public
 bcsc_class: public-disclosure-safe

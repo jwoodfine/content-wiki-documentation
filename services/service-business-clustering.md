@@ -6,6 +6,7 @@ category: services
 type: topic
 content_type: topic
 quality: complete
+index_group: specialist-and-domain-services
 status: active
 audience: public
 short_description: "Parent-child spatial schema turning raw retail points into commercial clusters, so the GIS engine receives one entity per physical site instead of overlapping points."

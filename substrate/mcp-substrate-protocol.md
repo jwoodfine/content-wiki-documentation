@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: the-compounding-doorman-and-ai-boundary
 short_description: "Every Ring 1 and Ring 2 service exposes a Model Context Protocol server interface as its primary external contract, with the Doorman as the MCP gateway."
 status: active
 bcsc_class: public-disclosure-safe

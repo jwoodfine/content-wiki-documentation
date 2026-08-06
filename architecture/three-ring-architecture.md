@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "Three-ring architecture"
 slug: three-ring-architecture
 category: architecture
+index_group: platform-structure
 type: topic
 content_type: topic
 quality: complete

@@ -4,6 +4,7 @@ title: "How to install the development toolchain"
 slug: install-toolchain
 short_description: "Installs the pinned Rust toolchain with rustup, runs a baseline build and tests, and verifies the commit helper and SSH signing key needed before working in a monorepo archive."
 category: how-to
+index_group: getting-started
 content_type: how-to
 type: how-to
 status: active

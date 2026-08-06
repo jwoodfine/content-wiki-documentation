@@ -4,6 +4,7 @@ title: "Pila de tres capas"
 slug: 3-layer-stack
 short_description: "El Three-Layer Stack es el patrón de descomposición de infraestructura utilizado en todas las implementaciones de PointSav, separando la capacidad de cómputo puro, la ejecución de plataforma aislada y el acceso seguro del operador en tres capas distintas."
 category: architecture
+index_group: platform-structure
 type: topic
 content_type: topic
 quality: stub

@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: sovereignty-and-customer-ownership
 short_description: "The Totebox Archive remains fully operational and freely transferable even when no AI inference tier is available; the deterministic substrate is the load-bearing foundation."
 status: active
 bcsc_class: public-disclosure-safe

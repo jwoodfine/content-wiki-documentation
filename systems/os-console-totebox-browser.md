@@ -9,6 +9,7 @@ short_description: "os-console is the keyboard-native operator terminal for Tote
 category: systems
 type: reference
 quality: complete
+index_group: operator-surfaces
 status: active
 audience: public
 bcsc_class: public-disclosure-safe

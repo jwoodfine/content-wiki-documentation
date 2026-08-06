@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: the-compounding-doorman-and-ai-boundary
 short_description: "El Portero consulta el grafo de conocimiento por inquilino antes de cada solicitud de inferencia, produciendo tuplas de entrenamiento donde el grafo y el adaptador del modelo co-evolucionan."
 status: active
 bcsc_class: public-disclosure-safe

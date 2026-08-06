@@ -7,12 +7,14 @@ language: en
 category: ai
 type: topic
 content_type: topic
+index_group: entity-extraction-and-the-training-loop
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25
 editor: pointsav-engineering
 cites: []
 paired_with: learning-datagraph-architecture.es.md
+
 ---
 
 The platform builds a [[compounding-substrate|compounding substrate]]: every operator interaction with an AI session becomes a structured training tuple, routed through a single auditable boundary ([[doorman-protocol|Doorman]]), captured to an [[worm-ledger-architecture|append-only ledger]], and folded back into the local SLM via periodic fine-tuning. The result is a development environment that learns from how it gets used — code completions improve toward the patterns this operator writes, draft suggestions align closer to the editorial voice this house produces, entity extractions tighten as the graph thickens.

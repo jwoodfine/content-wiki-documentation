@@ -5,6 +5,7 @@ slug: nightly-datagraph-rebuild
 category: substrate
 type: concept
 content_type: topic
+index_group: small-language-model-stack
 status: stub
 short_description: "El proceso programado que reconstruye el grafo de conocimiento de la plataforma a partir de fuentes canónicas de archivos planos cada noche — la extracción de entidades asistida por IA produce solo propuestas; toda escritura al grafo pasa por una vía de escritura del Anillo 2 con un punto de control de aprobación humana."
 bcsc_class: public-disclosure-safe

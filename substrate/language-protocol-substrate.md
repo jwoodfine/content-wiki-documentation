@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: core-named-substrates
 short_description: "Editorial infrastructure encoding register, brand voice, document sub-type, and audience as reusable prompt scaffolding across four replaceable services."
 status: active
 bcsc_class: public-disclosure-safe

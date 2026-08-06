@@ -7,6 +7,7 @@ category: patterns
 type: topic
 content_type: topic
 quality: complete
+index_group: interface-and-user-experience
 status: active
 language: es
 bcsc_class: no-disclosure-implication

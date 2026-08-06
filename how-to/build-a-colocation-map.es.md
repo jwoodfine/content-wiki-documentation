@@ -4,6 +4,7 @@ title: "Construir un mapa de co-ubicación"
 slug: build-a-colocation-map
 short_description: "Renderiza marcadores de clúster de co-ubicación coloreados por nivel en MapLibre GL cargando un archivo PMTiles directamente — la arquitectura real de archivo plano, ya que no existe ninguna API REST de clústeres con token bearer."
 category: how-to
+index_group: integration-data
 content_type: how-to
 type: how-to
 quality: complete

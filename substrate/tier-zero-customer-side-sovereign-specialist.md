@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: sovereignty-and-customer-ownership
 short_description: "The Tier 0 Totebox is a sovereign specialist deployment running on the customer's own hardware with no required cloud dependency and a 1 GB total footprint."
 status: active
 bcsc_class: public-disclosure-safe

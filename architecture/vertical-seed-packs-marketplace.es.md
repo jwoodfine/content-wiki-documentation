@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "Mercado de paquetes de semilla vertical"
 slug: vertical-seed-packs-marketplace
 category: architecture
+index_group: customer-ownership-and-deployment
 type: topic
 content_type: topic
 quality: complete

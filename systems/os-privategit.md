@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 type: topic
 content_type: topic
+index_group: network-control-and-infrastructure
 slug: os-privategit
 short_description: "The OS layer hosting the private Git infrastructure underpinning the development workspace, staging-tier commit flow, and canonical repos for PointSav engineering."
 title: "Private git OS"

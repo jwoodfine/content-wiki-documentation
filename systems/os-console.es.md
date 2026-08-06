@@ -6,6 +6,7 @@ category: systems
 type: concept
 content_type: topic
 quality: complete
+index_group: operator-surfaces
 status: active
 audience: vendor-public
 bcsc_class: current-fact

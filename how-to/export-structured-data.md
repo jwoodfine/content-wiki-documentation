@@ -4,6 +4,7 @@ title: "Export structured data from the platform"
 slug: export-structured-data
 short_description: "Exports platform data through three real paths — DataGraph entity records via MCP tools, wiki Markdown read directly from git, and paginated ledger entries over service-fs's HTTP API."
 category: how-to
+index_group: records-storage
 content_type: how-to
 type: how-to
 quality: complete

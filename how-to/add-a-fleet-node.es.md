@@ -4,6 +4,7 @@ title: "Añadir un nodo a una flota en funcionamiento"
 slug: add-a-fleet-node
 short_description: "Añade un segundo nodo a una flota PPN ya en funcionamiento usando la configuración real por variables de entorno de service-vm-host — el mismo mecanismo que el primer nodo, ya que nada cambia en la inscripción una vez que existe una flota."
 category: how-to
+index_group: multi-entity-scale
 content_type: how-to
 type: how-to
 quality: complete

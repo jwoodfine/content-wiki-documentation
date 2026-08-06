@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: core-named-substrates
 short_description: "The platform mechanism converting operational work — commits, sessions, feedback — into structured JSONL training tuples feeding a continued-pretraining corpus."
 status: active
 bcsc_class: public-disclosure-safe

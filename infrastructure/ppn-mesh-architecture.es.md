@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "Arquitectura de malla PPN"
 slug: ppn-mesh-architecture
 category: infrastructure
+index_group: network-and-telemetry
 type: concept
 content_type: topic
 quality: complete

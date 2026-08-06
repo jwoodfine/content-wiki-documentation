@@ -4,6 +4,7 @@ title: "Leapfrog 2030 architecture"
 slug: leapfrog-2030-architecture
 short_description: "Structural positioning thesis pairing customer-owned hardware, data, and adapter weights with transactional rather than subscription revenue."
 category: architecture
+index_group: platform-structure
 type: concept
 content_type: topic
 quality: complete

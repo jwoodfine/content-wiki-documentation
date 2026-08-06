@@ -6,6 +6,7 @@ category: ai
 type: concept
 content_type: topic
 quality: pre-build
+index_group: entity-extraction-and-the-training-loop
 status: pre-build
 audience: vendor-public
 bcsc_class: current-fact
@@ -15,6 +16,7 @@ editor: pointsav-engineering
 paired_with: elastic-compute-lora-training-pipeline.es.md
 short_description: "Nightly two-phase pipeline on Elastic Compute #1 that rebuilds the deployment DataGraph and trains LoRA adapter weights for the workspace language model."
 cites: []
+
 ---
 
 The [[pointsav-overview|PointSav]] [[compounding-substrate|compounding substrate]] requires periodic retraining to incorporate the operator interactions and editorial decisions accumulated since the previous cycle. Elastic Compute #1 is the compute node that runs this retraining nightly — a GPU-equipped cloud spot instance ([[yoyo-compute-substrate|Yo-Yo compute]]) that rebuilds the knowledge graph and produces updated LoRA (Low-Rank Adaptation) adapter weights for the platform's local language model. The pipeline operationalises the theoretical claim that every productive session improves the platform for the next one: it converts raw interaction data into model weights the next session inherits.

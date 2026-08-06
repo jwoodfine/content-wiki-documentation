@@ -4,6 +4,7 @@ title: "Abrir su primera sesión Totebox"
 slug: open-first-totebox-session
 short_description: "Abre una primera sesión Totebox en un único archivo: lea el manifiesto, revise su bandeja de entrada, entienda qué puede y no puede escribir la sesión, y complete el barrido de cierre antes de cerrar."
 category: how-to
+index_group: getting-started
 content_type: how-to
 type: how-to
 quality: complete

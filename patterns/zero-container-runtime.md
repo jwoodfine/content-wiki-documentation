@@ -6,6 +6,7 @@ category: patterns
 type: topic
 content_type: topic
 quality: complete
+index_group: sovereignty-and-infrastructure-patterns
 short_description: "The structural commitment that every PointSav deployment runs as a Linux binary under systemd on a plain host, with no container runtime or orchestrator."
 status: active
 bcsc_class: public-disclosure-safe

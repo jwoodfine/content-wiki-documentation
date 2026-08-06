@@ -4,6 +4,7 @@ title: "Usar montajes de conocimiento declarativos"
 slug: use-knowledge-mounts
 short_description: "Añade un repositorio de contenido secundario a una instancia de conocimiento en ejecución mediante una entrada [[mount]] en knowledge.toml — al mismo espacio de nombres de slugs plano que el primario, ya que no existe ningún aislamiento por prefijo de URL."
 category: how-to
+index_group: integration-data
 content_type: how-to
 type: how-to
 quality: complete

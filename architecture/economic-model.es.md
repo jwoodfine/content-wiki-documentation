@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "Modelo económico — niveles community y cliente PYME"
 slug: economic-model
 category: architecture
+index_group: customer-ownership-and-deployment
 type: topic
 content_type: topic
 quality: complete

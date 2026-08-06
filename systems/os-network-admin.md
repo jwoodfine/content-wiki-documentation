@@ -6,6 +6,7 @@ short_description: "os-network-admin is the control plane for a PPN: WireGuard m
 category: systems
 type: topic
 content_type: topic
+index_group: network-control-and-infrastructure
 status: active
 bcsc_class: public-disclosure-safe
 language: en

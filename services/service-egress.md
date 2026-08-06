@@ -6,6 +6,7 @@ slug: service-egress
 short_description: "The data sovereignty service that physically transfers cloud-stored payloads to local cold storage, eliminating vendor-side data retention and cloud dependency."
 title: "Egress service"
 category: services
+index_group: ring-2-knowledge-and-processing
 language: en
 paired_with: service-egress.es.md
 status: stub

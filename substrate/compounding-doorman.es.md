@@ -7,6 +7,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: the-compounding-doorman-and-ai-boundary
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-04-30

@@ -6,6 +6,7 @@ category: services
 type: topic
 content_type: topic
 quality: complete
+index_group: specialist-and-domain-services
 status: active
 audience: public
 short_description: "service-places filters raw civic and institutional data to retain only regional-grade facilities, so GIS tier rankings reflect institutional concentration."

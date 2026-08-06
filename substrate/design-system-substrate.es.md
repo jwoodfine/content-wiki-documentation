@@ -7,6 +7,7 @@ short_description: "El sustrato del sistema de diseño es un motor de sistema de
 lang: es
 paired_with: design-system-substrate.md
 category: substrate
+index_group: core-named-substrates
 status: published
 last_edited: 2026-04-28
 editor: pointsav-engineering

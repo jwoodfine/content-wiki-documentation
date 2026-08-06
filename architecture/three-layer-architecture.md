@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "Three-layer architecture"
 slug: three-layer-architecture
 category: architecture
+index_group: platform-structure
 type: concept
 content_type: topic
 quality: complete

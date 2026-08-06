@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "Direct-payment settlement"
 slug: direct-payment-settlement
 category: architecture
+index_group: customer-ownership-and-deployment
 type: topic
 content_type: topic
 quality: complete

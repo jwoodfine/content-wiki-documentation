@@ -6,6 +6,7 @@ category: governance
 type: topic
 content_type: topic
 quality: complete
+index_group: institutional-due-diligence
 short_description: "The operating discipline that treats every published artifact as potentially reviewable under Canadian securities continuous-disclosure obligations."
 status: active
 bcsc_class: public-disclosure-safe

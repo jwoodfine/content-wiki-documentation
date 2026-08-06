@@ -4,6 +4,7 @@ title: "Use the F-key cartridge model"
 slug: use-f-key-model
 short_description: "Works the os-console F-key cartridge model — F3 email, F9's monitoring-only SLM dashboard, F12's file-based Input Machine — where each compiled-in cartridge owns its slot's rendering and input."
 category: how-to
+index_group: working-in-the-console
 content_type: how-to
 type: how-to
 quality: complete

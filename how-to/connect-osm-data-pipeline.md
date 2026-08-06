@@ -4,6 +4,7 @@ title: "Connect to the OSM data pipeline"
 slug: connect-osm-data-pipeline
 short_description: "Ingests a new retail or service chain from OpenStreetMap using the real ingest-osm.py script and taxonomy.py's CATEGORIES/BRAND_FILL dicts, then rebuilds the servable cluster tiles."
 category: how-to
+index_group: integration-data
 content_type: how-to
 type: how-to
 quality: complete

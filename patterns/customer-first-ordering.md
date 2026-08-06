@@ -6,6 +6,7 @@ category: patterns
 type: topic
 content_type: topic
 quality: complete
+index_group: sovereignty-and-infrastructure-patterns
 short_description: "The principle that a vendor building something a customer will install should build it in the same order the customer installs it, on the same substrate."
 status: active
 bcsc_class: public-disclosure-safe

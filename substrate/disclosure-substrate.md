@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: core-named-substrates
 short_description: "Mechanism making a version-controlled Markdown wiki the primary continuous-disclosure record, with signed authorship chains and cryptographic content hashes."
 status: active
 bcsc_class: public-disclosure-safe

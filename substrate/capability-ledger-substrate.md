@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: cryptographic-and-microkernel-primitives
 short_description: "The Capability Ledger Substrate is the mechanism by which every access-control decision becomes a cryptographically auditable event anchored to a customer-controlled log."
 status: active
 bcsc_class: no-disclosure-implication

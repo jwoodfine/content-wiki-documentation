@@ -9,6 +9,7 @@ category: governance
 type: topic
 content_type: topic
 quality: complete
+index_group: licensing-and-contribution
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-07-31

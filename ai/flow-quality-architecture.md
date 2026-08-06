@@ -6,6 +6,7 @@ category: ai
 type: concept
 content_type: topic
 quality: complete
+index_group: entity-extraction-and-the-training-loop
 status: active
 audience: vendor-public
 bcsc_class: planned
@@ -15,6 +16,7 @@ editor: editorial
 short_description: "Quality framework for the Totebox knowledge flow, asking whether LoRA adapters measurably improve the model and whether the DataGraph is an accurate ontology."
 paired_with: flow-quality-architecture.es.md
 cites: []
+
 ---
 
 The Totebox knowledge flow turns prose into two durable assets: an [[ontological-datagraph|ontological DataGraph]] of entities, and LoRA adapters that specialise a local language model. Both are served by `service-slm` (the [[doorman-protocol|Doorman]]) and `service-content` (the DataGraph).

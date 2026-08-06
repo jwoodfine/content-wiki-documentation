@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: sovereignty-and-customer-ownership
 short_description: "The per-tenant knowledge graph and trained adapter weights are the customer's intellectual property, portable and exportable without vendor approval."
 status: active
 bcsc_class: public-disclosure-safe

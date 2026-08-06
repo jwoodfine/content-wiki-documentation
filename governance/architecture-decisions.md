@@ -6,6 +6,7 @@ category: governance
 type: governance
 content_type: topic
 quality: complete
+index_group: formal-decision-records
 short_description: "Twelve binding architecture decisions governing how the PointSav platform is built, constraining engineering work on data handling, oversight, and deployment custody."
 status: active
 audience: vendor-public

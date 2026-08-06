@@ -6,6 +6,7 @@ category: ai
 type: concept
 content_type: topic
 quality: complete
+index_group: entity-extraction-and-the-training-loop
 status: active
 audience: vendor-public
 bcsc_class: current-fact
@@ -18,6 +19,7 @@ aliases:
   - topic-dual-tier-extraction-architecture
   - topic-tiered-entity-extraction-architecture
 cites: []
+
 ---
 
 The PointSav [[service-content|entity extraction pipeline]] runs three tiers in sequence on each document (Correction, 2026-08-02: this article's wikilink previously pointed at `service-extraction`, an unrelated single-pass CRM/email ingestion watcher with no GLiNER call, no tiers, and no DPO queue. The real implementing crate is `service-content` — its GLiNER→OLMo→GPU tiered pipeline matches every specific claim in this article almost line for line; corrected here). Tier 0 provides fast extractive detection on CPU. Tier A provides a generative fallback when Tier 0 is unavailable. Tier B provides a higher-capacity GPU enrichment pass and records improvements as training signal.

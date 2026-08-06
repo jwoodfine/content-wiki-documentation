@@ -4,6 +4,7 @@ title: "Totebox archive"
 slug: totebox-archive
 short_description: "A Totebox Archive is a sovereign data vault for a single entity — a freely transferable bootable disk image storing WORM flat files, accessed only via the Diode Standard."
 category: infrastructure
+index_group: storage-substrate
 type: topic
 content_type: topic
 status: active

@@ -10,6 +10,7 @@ bcsc_class: current-fact
 language: es
 paired_with: worm-ledger-storage-architecture.md
 category: infrastructure
+index_group: storage-substrate
 status: active
 quality: complete
 last_edited: 2026-06-23

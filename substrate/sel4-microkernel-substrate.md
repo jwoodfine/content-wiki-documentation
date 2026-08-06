@@ -7,6 +7,7 @@ category: substrate
 type: concept
 content_type: topic
 quality: complete
+index_group: cryptographic-and-microkernel-primitives
 status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe

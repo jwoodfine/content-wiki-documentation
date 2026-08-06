@@ -7,6 +7,7 @@ category: ai
 type: topic
 content_type: topic
 quality: complete
+index_group: the-doorman-boundary
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-07-31
@@ -16,6 +17,7 @@ cites:
  - ni-51-102
  - llguidance
  - llm-structured-output-2026
+
 ---
 
 El sustrato de [[pointsav-overview|PointSav]] impone reglas estructurales en el momento en que el modelo

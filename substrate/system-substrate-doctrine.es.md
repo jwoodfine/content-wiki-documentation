@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: cryptographic-and-microkernel-primitives
 short_description: La arquitectura de nivel de kernel bajo cada servicio de PointSav — un registro de capacidades con raíz en el cliente, una estrategia de SO soberana de dos bases, y mecanismos para capacidades de tiempo limitado, verificación reproducible y recuperación universal.
 status: active
 bcsc_class: public-disclosure-safe

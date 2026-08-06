@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: core-named-substrates
 short_description: "A durable file-backed queue that makes idle-shutdown Yo-Yo compute viable without losing apprenticeship corpus capture data — the durability layer of the three-tier SLM substrate."
 status: active
 bcsc_class: public-disclosure-safe

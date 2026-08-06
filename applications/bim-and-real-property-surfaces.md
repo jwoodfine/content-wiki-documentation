@@ -6,6 +6,7 @@ category: applications
 type: concept
 content_type: topic
 quality: complete
+index_group: domain-applications
 short_description: "How PointSav treats Building Information Modelling as a first-class operational domain, with dedicated design-system tooling and ISO 19650 record-keeping discipline."
 status: active
 audience: vendor-public

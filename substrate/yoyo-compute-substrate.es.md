@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: small-language-model-stack
 short_description: "El substrato de cómputo de tres anillos que permite a service-slm activar y desactivar cómputo GPU mientras retiene estado, acumula habilidad y produce un ledger de auditoría de cada evento de inferencia."
 status: active
 bcsc_class: public-disclosure-safe

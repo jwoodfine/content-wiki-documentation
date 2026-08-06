@@ -7,6 +7,7 @@ short_description: "El mecanismo de plataforma que convierte trabajo operativo â
 lang: es
 paired_with: trajectory-substrate.md
 category: substrate
+index_group: core-named-substrates
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-04-28

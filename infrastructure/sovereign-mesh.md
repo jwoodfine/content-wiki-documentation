@@ -4,6 +4,7 @@ title: "Sovereign mesh"
 slug: sovereign-mesh
 short_description: "The sovereign mesh is the application-level WireGuard overlay connecting every PPN fleet node, carrying signed binary commands without a centralised message broker."
 category: infrastructure
+index_group: network-and-telemetry
 type: topic
 content_type: topic
 status: stable

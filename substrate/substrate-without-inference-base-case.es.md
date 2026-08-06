@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: sovereignty-and-customer-ownership
 short_description: "El Archivo Totebox permanece completamente operativo y transferible libremente incluso cuando no hay ningún nivel de inferencia de IA disponible; el substrato determinístico es la base estructural."
 status: active
 bcsc_class: public-disclosure-safe

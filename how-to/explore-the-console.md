@@ -4,6 +4,7 @@ title: "Explore the console for the first time"
 slug: explore-the-console
 short_description: "Orients a first-time operator to os-console — the status bar, the F9 inference-gateway dashboard, and the mandatory F12 input checkpoint that writes to the WORM ledger."
 category: how-to
+index_group: getting-started
 content_type: how-to
 type: how-to
 quality: complete
