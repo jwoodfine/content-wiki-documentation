@@ -67,18 +67,18 @@ For the authorization model that underpins all these operations, see [[machine-b
 
 These guides cover operating the platform across multiple tenants, users, and fleet nodes.
 
-- [[configure-tenant-namespace]] — register a tenant namespace, set quota limits, verify isolation, and issue the root credential
-- [[scale-user-tiers]] — promote users between READ / USER / INPUT tiers; bulk-update a team at scale
+- [[configure-tenant-namespace]] — the real config-driven provisioning on service-vm-tenant, since no runtime registration API exists
+- [[scale-user-tiers]] — grant role-scoped tokens as a team grows; there's no promote/revoke, only fresh tokens
 - [[add-a-fleet-node]] — enroll a second PPN node into a running fleet without interrupting existing nodes
 
 ## Integration & data
 
 These guides cover consuming platform data and connecting external applications.
 
-- [[build-a-colocation-map]] — authenticate against the GIS tile API and render tier-coloured cluster markers in MapLibre
-- [[connect-osm-data-pipeline]] — write a chain ingest YAML, run the ingest script against the Overpass API, and rebuild the cluster layer
-- [[federate-archives-via-content-mounts]] — declare a secondary content mount in `knowledge.toml` and access federated articles across instances
-- [[use-knowledge-mounts]] — add a secondary content repository to a running wiki instance and verify slug isolation
+- [[build-a-colocation-map]] — load a PMTiles archive directly in MapLibre; there's no REST API or API key
+- [[connect-osm-data-pipeline]] — run the real ingest-osm.py script and register a chain in taxonomy.py
+- [[federate-archives-via-content-mounts]] — mount a second repository's content into a running instance
+- [[use-knowledge-mounts]] — the real [[mount]] schema, and the real risk (a flat shared namespace, not isolated per mount)
 
 ## Self-hosting
 

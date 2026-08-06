@@ -1,95 +1,74 @@
 ---
 schema: foundry-doc-v1
-title: "How to add a node to a running fleet"
+title: "Add a node to a running fleet"
 slug: add-a-fleet-node
-short_description: "Adds a node to a running PPN fleet without restarting existing nodes, covering controller health checks, choosing a non-conflicting node ID, and starting its heartbeat agent."
+short_description: "Adds a second node to an already-running PPN fleet using service-vm-host's real env-var configuration — the same mechanism as the first node, since nothing about enrollment changes once a fleet exists."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-06-14
+audience: "Engineers (hands on keyboard); fleet operators"
+last_edited: 2026-08-06
 editor: pointsav-engineering
 paired_with: add-a-fleet-node.es.md
+research_trail:
+  sources: [pointsav-monorepo service-vm-host and service-vm-fleet, already fully source-verified while rewriting enroll-ppn-node.md earlier this session]
+  verification_method: "reused the already-confirmed real service-vm-host/service-vm-fleet mechanism from this session's Machine authorization batch rather than re-deriving it; this guide's own prior Correction note had already flagged the same fictional CLI flags and routes found on enroll-ppn-node.md, and this guide contradicted that already-corrected sibling until now"
 ---
-
-**Correction (2026-08-02, verified against canonical `origin/main`):** the CLI/API commands in the steps below don't exist. `service-vm-host --controller <url> --tenant <id> --node-id <id>` is fictional — the real binary takes zero CLI args, configured entirely via env vars (`VM_FLEET_ENDPOINT`, `VM_NODE_ID`, `VM_WG_IP` — required and undocumented here — `VM_HEARTBEAT_INTERVAL_S`, default 10s not 30s as stated elsewhere in this guide). `curl .../health` and `/v1/placement` don't exist — the real `service-vm-fleet` route table is `/v1/nodes/heartbeat`, `/v1/fleet`, `/v1/nodes`, `/v1/nodes/:id`, `/v1/vms`, `/v1/vms/:id`. The `service-fs read --filter ... --limit N` CLI is also fictional — `service-fs` is a pure HTTP daemon with no CLI at all. Same systemic finding as [[enroll-ppn-node]]. **Flagged, not resolved.**
-
-A running fleet has one or more PPN nodes already enrolled and actively sending heartbeats. Adding a node to a running fleet means enrolling a new machine without interrupting the existing nodes' operation. This guide covers the steps specific to adding to an active fleet, as opposed to enrolling the very first node.
-
-For the initial node enrollment procedure, see [[enroll-ppn-node]]. For the fleet controller service, see [[service-vm-fleet]].
 
 ## Prerequisites
 
-- At least one node already enrolled and the fleet controller running (see [[enroll-ppn-node]])
-- A second machine prepared with `service-vm-host` installed
-- A new unique `NODE_ID` that does not conflict with any existing node in the tenant namespace
+- At least one node already enrolled and heartbeating (see [[enroll-ppn-node]])
+- A second machine with `service-vm-host` deployed
+- A `VM_NODE_ID` that doesn't collide with any node already in the fleet
 
-## Step 1: Verify the fleet controller's current state
+## Purpose
 
-Before adding a node, confirm the existing fleet is healthy:
+Enroll a second (or third, or Nth) node into a fleet that's already running — a few minutes, and it's exactly the same procedure as enrolling the first node. There is no separate "add to a running fleet" mechanism; the fleet controller accepts new nodes at any time without disturbing existing ones.
 
-```
-curl -s "http://<fleet-controller-host>:9203/v1/vms?tenant_id=<your-tenant-id>"
-```
+## Procedure
 
-All existing nodes should show a recent `last_heartbeat` timestamp (within the last 60 seconds under default settings). A node showing a stale heartbeat has a connectivity problem — resolve it before adding a new node to avoid confusing the advisory placement algorithm.
+1. Check the existing fleet's current node IDs so your new one doesn't collide:
 
-## Step 2: Choose a node ID that does not conflict
+   ```bash
+   curl -s http://<fleet-controller-host>:9203/v1/nodes
+   ```
 
-The fleet controller rejects duplicate `NODE_ID` values within a tenant namespace. List the current IDs:
+   The fleet controller rejects nothing at enrollment time based on naming — but reusing an ID would just mean the new node's heartbeats overwrite the existing node's record, not a clean rejection. Pick a genuinely distinct `VM_NODE_ID`.
 
-```
-curl -s "http://<fleet-controller-host>:9203/v1/vms?tenant_id=<your-tenant-id>" \
-  | jq '.[].node_id'
-```
+2. On the new machine, set the same three required environment variables as any node enrollment:
 
-Pick an ID for the new node that follows the naming pattern of existing nodes (e.g., if existing nodes are `compute-west-01` and `compute-west-02`, name the new one `compute-west-03`).
+   ```bash
+   VM_FLEET_ENDPOINT=http://<fleet-controller-host>:9203
+   VM_NODE_ID=<new-unique-node-id>
+   VM_WG_IP=<new-node-wireguard-ip>
+   ```
 
-## Step 3: Configure and start the heartbeat agent on the new machine
+3. Start `service-vm-host` under systemd, as with any node. It begins heartbeating immediately — no registration call, and no restart of the controller or any existing node is required.
 
-On the new machine, set the configuration and start `service-vm-host`:
+## Expected outcome
 
-```
-FLEET_CONTROLLER_URL=http://<fleet-controller-host>:9203
-TENANT_ID=<your-tenant-id>
-NODE_ID=<new-unique-id>
+The new node appears in the fleet controller's listing alongside every existing node, each heartbeating independently, within one heartbeat interval (10 seconds by default).
 
-service-vm-host --controller $FLEET_CONTROLLER_URL --tenant $TENANT_ID --node-id $NODE_ID
-```
+## Verification
 
-The agent registers on its first heartbeat. The fleet controller updates its advisory placement data automatically — no restart of the controller or other nodes is required.
-
-## Step 4: Verify the new node appears in the fleet
-
-Query the fleet again and confirm the new node appears alongside the existing ones:
-
-```
-curl -s "http://<fleet-controller-host>:9203/v1/vms?tenant_id=<your-tenant-id>"
+```bash
+curl -s http://<fleet-controller-host>:9203/v1/nodes
 ```
 
-The response should now include the new node with a `last_heartbeat` from within the last 60 seconds.
+Confirm your new `VM_NODE_ID` appears with a recent `last_heartbeat`, and confirm every previously-existing node is still present and heartbeating too — adding a node doesn't touch any other node's state.
 
-## Step 5: Confirm load distribution
+## Rollback
 
-The fleet controller's advisory placement algorithm balances new tenant VM placements across healthy nodes. After adding a node, submit a new VM placement request and verify the controller considers the new node as a candidate:
+Stop the new node's `service-vm-host` process. It drops out of the fleet listing on its own after roughly 30 seconds without a heartbeat — no separate removal step, and no effect on the rest of the fleet.
 
-```
-curl -s "http://<fleet-controller-host>:9203/v1/placement?tenant_id=<your-tenant-id>"
-```
+## Next steps
 
-The response suggests a target node based on current capacity. If the new node does not appear as a candidate, check that its reported capacity fields are populated (memory, CPU) in the heartbeat data.
-
-## Key takeaways
-
-- The fleet controller accepts new nodes without requiring existing nodes to restart
-- Duplicate `NODE_ID` values within a tenant namespace are rejected — verify current IDs before choosing one
-- Advisory placement updates automatically when a new node's first heartbeat arrives
-- A stale heartbeat from existing nodes should be resolved before adding new nodes to avoid placement skew
+- [[enroll-ppn-node]] — the same procedure in full, including every environment variable and its default
+- [[configure-tenant-namespace]] — set up quotas for tenants placing VMs on this expanded fleet
 
 ## See also
 
-- [[enroll-ppn-node]] — enrolling the first node in a fleet from scratch
-- [[service-vm-fleet]] — the fleet controller service that manages node inventory and advisory placement
-- [[configure-tenant-namespace]] — the namespace that contains the fleet's nodes
-- [[ppn-small-business-compute]] — the fleet architecture and the role of each node tier
-- [[verify-worm-ledger]] — confirming that node enrollment events are permanently recorded
+- [[service-vm-fleet]] — the fleet controller's real route table and state model
+- [[ppn-small-business-compute]] — the fleet architecture this node joins

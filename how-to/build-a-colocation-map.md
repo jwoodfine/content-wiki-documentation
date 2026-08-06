@@ -1,131 +1,110 @@
 ---
 schema: foundry-doc-v1
-title: "How to build a co-location map"
+title: "Build a co-location map"
 slug: build-a-colocation-map
-short_description: "Renders tier-coloured co-location cluster markers on a MapLibre GL map by authenticating against the GIS API and fetching the cluster GeoJSON layer."
+short_description: "Renders tier-coloured co-location cluster markers in MapLibre GL by loading a PMTiles archive directly — the real flat-file architecture, since no bearer-token REST cluster API exists."
 category: how-to
 content_type: how-to
 type: how-to
-status: stable
-last_edited: 2026-06-14
+quality: complete
+status: active
+audience: "Engineers (hands on keyboard); customer operators"
+last_edited: 2026-08-06
 editor: pointsav-engineering
 paired_with: build-a-colocation-map.es.md
+research_trail:
+  sources: [substrate/location-intelligence-substrate.md (the real flat-file/PMTiles/MapLibre/Martin architecture, already fact-checked 2026-08-01)]
+  verification_method: "this guide's own prior Correction note had already confirmed the bearer-token REST API was fictional and pointed to location-intelligence-substrate.md as the real architecture; this rewrite is grounded directly in that already-verified article rather than re-deriving the tile-serving mechanism from scratch, and stays deliberately generic on deployment-specific URLs/ports that aren't confirmed anywhere in source"
 ---
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** the bearer-token REST API described below (`POST /api/auth/token`, `GET /api/v1/clusters?country=...`) doesn't exist — zero hits anywhere in the repo. The real, current architecture (see [[location-intelligence-substrate]]) is an offline flat-file/PMTiles + MapLibre + Martin tile-server stack, with no live REST cluster API and no API-key exchange. This guide also links to `[[pointsav-gis-engine]]`, which was archived earlier this session (2026-08-01, Round 4 GIS cluster merge) — see [[location-intelligence-substrate]] instead. **Flagged, not resolved** — needs a rewrite around the real flat-file/PMTiles architecture.
+## Prerequisites
 
-The PointSav GIS engine exposes a tile API and a clusters endpoint that you can integrate into any MapLibre GL application. This guide covers authenticating against the GIS API, fetching the cluster GeoJSON layer, and rendering tier-coloured cluster markers on a MapLibre map canvas.
-
-For the GIS engine architecture, see [[pointsav-gis-engine]]. For the co-location scoring system that produces the cluster data, see co-location ranking system.
-
-## Before you begin
-
-You need:
-
-- A GIS API key from the platform administrator
 - A web project with MapLibre GL JS v3 or later loaded
-- The base URL of your GIS deployment (for example, `https://gis.example.com`)
+- The `pmtiles` JS library, for reading the PMTiles tile archive format
+- The URL of your deployment's PMTiles archive (or its Martin tile-server endpoint, if your deployment generates tiles dynamically)
 
-## Step 1: Exchange your API key for a session token
+## Purpose
 
-The clusters endpoint requires a short-lived bearer token. Exchange your API
-key at the authentication endpoint:
+Render tier-coloured co-location clusters on a MapLibre map — the real architecture is a flat-file tile archive read directly by the browser, not a live REST API you authenticate against. There's no API key, no token exchange, and no per-request billing to plan around.
 
-```shell
-curl -X POST https://<your-gis-host>/api/auth/token \
-  -H "Content-Type: application/json" \
-  -d '{"api_key": "<your-api-key>"}' \
-  -o token.json
+## Procedure
 
-TOKEN=$(jq -r .access_token token.json)
-```
+1. Register the PMTiles protocol handler with MapLibre before creating your map:
 
-Tokens expire after one hour. Refresh by repeating the exchange. If your
-application runs in a browser, perform this exchange server-side and proxy
-the clusters endpoint to avoid exposing the API key to clients.
+   ```javascript
+   import maplibregl from 'maplibre-gl';
+   import { Protocol } from 'pmtiles';
 
-## Step 2: Fetch the cluster GeoJSON
+   const protocol = new Protocol();
+   maplibregl.addProtocol('pmtiles', protocol.tile);
+   ```
 
-Download the cluster layer for the countries you want to display:
+2. Initialize the map, giving its container element an explicit CSS height — an unsized container renders at zero height:
 
-```shell
-curl -fsSL \
-  -H "Authorization: Bearer $TOKEN" \
-  "https://<your-gis-host>/api/v1/clusters?country=US" \
-  -o clusters.geojson
-```
+   ```javascript
+   const map = new maplibregl.Map({
+     container: 'map',
+     style: '<your-basemap-style-url>',
+     center: [-98.5, 39.5],
+     zoom: 4,
+   });
+   ```
 
-The response is a GeoJSON `FeatureCollection`. Each feature carries a `tier`
-property (`T1`, `T2`, or `T3`) and a `cluster_id`. Optional query parameters
-include `country` (ISO 3166-1 alpha-2), `min_tier` (`T1` or `T2`), and `bbox`
-(`west,south,east,north`).
+3. Add the cluster archive as a `pmtiles://` source once the map has loaded:
 
-## Step 3: Initialise the MapLibre map
+   ```javascript
+   map.on('load', () => {
+     map.addSource('clusters', {
+       type: 'vector',
+       url: 'pmtiles://<your-deployment-pmtiles-url>',
+     });
+   ```
 
-```javascript
-import maplibregl from 'maplibre-gl';
-import 'maplibre-gl/dist/maplibre-gl.css';
+   If your deployment generates tiles dynamically instead of serving a pre-baked archive, point a `type: 'vector'` source at your Martin tile-server endpoint's `tiles.json` URL instead — the rest of this guide is identical either way.
 
-const map = new maplibregl.Map({
-  container: 'map',          // id of the DOM element to mount into
-  style: '<your-basemap-style-url>',
-  center: [-98.5, 39.5],    // lon, lat
-  zoom: 4,
-});
-```
+4. Add the tier-coloured circle layer, referencing the source layer name your archive actually uses:
 
-Replace the `style` value with the basemap URL from your deployment. The map
-container element must have an explicit CSS height; an unsized container
-renders at zero height.
+   ```javascript
+     map.addLayer({
+       id: 'cluster-circles',
+       type: 'circle',
+       source: 'clusters',
+       'source-layer': '<your-source-layer-name>',
+       paint: {
+         'circle-color': [
+           'match', ['get', 'tier'],
+           'T1', '#2563eb',
+           'T2', '#7c3aed',
+           /* T3 */ '#6b7280',
+         ],
+         'circle-radius': [
+           'match', ['get', 'tier'],
+           'T1', 12,
+           'T2', 9,
+           /* T3 */ 6,
+         ],
+         'circle-opacity': 0.85,
+       },
+     });
+   });
+   ```
 
-## Step 4: Add the cluster GeoJSON source
+## Expected outcome
 
-```javascript
-map.on('load', () => {
-  map.addSource('clusters', {
-    type: 'geojson',
-    data: clusters,          // the parsed FeatureCollection object
-  });
-```
+Cluster markers render on the map, colour- and size-coded by tier — T1 largest and most prominent, T3 smallest — with no authentication step anywhere in the flow.
 
-If you are serving the GeoJSON directly from the API endpoint in a browser
-context, pass the endpoint URL as `data` and supply the bearer token using a
-`transformRequest` callback in the `Map` constructor options.
+## Verification
 
-## Step 5: Add the tier-coloured circle layer
+Confirm markers appear at the expected zoom level and that clicking or hovering one shows a `tier` value matching its rendered colour. If nothing renders, check the browser console for a PMTiles fetch error first — a wrong archive URL fails silently on the map canvas but not in the network tab.
 
-```javascript
-  map.addLayer({
-    id: 'cluster-circles',
-    type: 'circle',
-    source: 'clusters',
-    paint: {
-      'circle-color': [
-        'match', ['get', 'tier'],
-        'T1', '#2563eb',
-        'T2', '#7c3aed',
-        /* T3 */ '#6b7280',
-      ],
-      'circle-radius': [
-        'match', ['get', 'tier'],
-        'T1', 12,
-        'T2', 9,
-        /* T3 */ 6,
-      ],
-      'circle-opacity': 0.85,
-    },
-  });
-});
-```
+## Rollback
 
-T1 clusters (regional hubs, highest anchor composition) render largest in
-blue. T2 clusters (district hubs) render in purple. T3 clusters (local pairs)
-render smallest in grey. Adjust the colour and radius values to match your
-application's visual language.
+Remove the added source and layer, or simply don't mount the map component — nothing about this integration writes to any backend; it's a pure read of a static (or dynamically-tiled) archive.
+
+## Next steps
+
+- [[connect-osm-data-pipeline]] — add a new chain to the data this map renders
 
 ## See also
 
-- [[location-intelligence-substrate]] — GIS engine architecture and available API surfaces
-- [[retail-co-location-tier-methodology]] — how cluster tiers are scored
-- O-D catchment methodology — how trade areas are defined
-- [[federate-archives-via-content-mounts]] — mount location-intelligence data into a second instance
+- [[location-intelligence-substrate]] — the full flat-file/PMTiles/MapLibre/Martin architecture behind this integration

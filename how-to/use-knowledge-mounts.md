@@ -1,120 +1,82 @@
 ---
 schema: foundry-doc-v1
-title: "How to use declarative knowledge mounts"
+title: "Use declarative knowledge mounts"
 slug: use-knowledge-mounts
-short_description: "Adds a secondary content repository to a running knowledge instance through a knowledge.toml mount, serving its articles under a URL prefix after a restart."
+short_description: "Adds a secondary content repository to a running knowledge instance via a knowledge.toml [[mount]] entry — into the same flat slug namespace as the primary, since no URL-prefix isolation exists."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-07-18
+audience: "Engineers (hands on keyboard); customer operators"
+last_edited: 2026-08-06
 editor: pointsav-engineering
 paired_with: use-knowledge-mounts.es.md
+research_trail:
+  sources: [pointsav-monorepo app-mediakit-knowledge/src/config.rs (Mount struct), app.rs (router table, primary()/first() bug), content/walk.rs (index build, slug collision), content/render.rs (wikilink resolution)]
+  verification_method: "independently source-verified against pointsav-monorepo on 2026-08-06 by reading the Rust source directly, with file:line citations recorded per claim; both prior Correction notes on this guide had already confirmed the field names were wrong, but this pass goes further and confirms the entire URL-prefix/isolation premise is false — mounted content merges into one flat namespace with no isolation mechanism at all, a materially different and more consequential finding than a field-naming fix"
 ---
-
-Knowledge mounts allow a single wiki instance to serve content from multiple source repositories under a unified URL space. A mount is declared in `knowledge.toml` — the instance reads the source path at startup and makes its articles available at the configured category prefix. This guide covers adding a secondary content mount to an existing instance.
-
-For the federation architecture that mounts enable, see [[federate-archives-via-content-mounts]]. For deploying the wiki server in the first place, see [[deploy-knowledge-instance]].
-
-**Major correction (2026-07-18):** the mount schema and URL-prefix behavior this guide
-describes do not match the live `app-mediakit-knowledge` source (same source verified for
-[[deploy-knowledge-instance]]'s correction). The real TOML array-of-tables key is
-`[[mount]]` (singular — `#[serde(rename = "mount")]`), not `[[mounts]]` used throughout
-this guide. The real `Mount` struct has exactly three fields: `path`, `role` (default
-`"primary"`; the doc comment states "First primary mount is editable; guide mounts are
-read-only" — a two-value editability flag, not a URL namespace), and `blueprint_set` (a
-list of allowed article types, e.g. `["TOPIC", "GUIDE"]`). **There is no `prefix` field
-and no `label` field anywhere in the real schema** — Step 2's `prefix = "projects"` /
-`label = "Projects"` example and Step 4's `/projects/<slug>` URL-prefix verification
-describe a mechanism (per-mount URL namespacing) this code does not appear to implement;
-the real `role` field governs editability, not routing. There is also no `[content]`
-block to add the mount "after" (see the linked correction on [[deploy-knowledge-instance]]
-for that schema's real shape). **Flagged, not silently rewritten** — the real mount
-model may route by a different, unverified mechanism (or may not yet support multi-source
-URL-prefixed serving at all); needs project-totebox or project-knowledge confirmation of
-how `[[mount]]` entries actually surface in routing before this guide's steps are
-corrected.
 
 ## Prerequisites
 
 - A running knowledge instance with a `knowledge.toml` configuration (see [[deploy-knowledge-instance]])
-- A second `media-knowledge-*` content repository cloned on the same host
+- A second `media-knowledge-*` content repository cloned on the same filesystem
 - Terminal access to restart the knowledge service
 
-## Step 1: Identify the secondary content path
+## Purpose
 
-The secondary content repository must be a `media-knowledge-*` clone on the same filesystem as the running instance. Note its absolute path:
+Add a second content repository to a running instance so its articles are indexed alongside the primary's — a few minutes to configure. Read the whole guide before relying on this in production: the real mechanism has no isolation between mounts, and that's a genuine, currently-unmitigated risk if the two repositories share any slugs.
 
-```
-ls /path/to/media-knowledge-projects/
-```
+## Procedure
 
-Confirm it has a valid `index.md` and category subdirectories before adding the mount — the wiki server will warn at startup if the mount path is empty or malformed.
+1. Note the absolute path to the secondary repository:
 
-## Step 2: Add the mount to knowledge.toml
+   ```
+   ls /path/to/media-knowledge-projects/
+   ```
 
-Open `knowledge.toml` and add a `[[mounts]]` section after the `[content]` block:
+2. Add a `[[mount]]` entry to `knowledge.toml`. The real schema has exactly three fields — `path`, `role`, and `blueprint_set` — and there is no `prefix` or `label` field:
 
-```toml
-[content]
-primary_path = "/path/to/media-knowledge-documentation"
-instance_name = "documentation"
+   ```toml
+   [[mount]]
+   path = "/path/to/media-knowledge-projects"
+   role = "primary"
+   blueprint_set = ["TOPIC", "GUIDE"]
+   ```
 
-[[mounts]]
-path = "/path/to/media-knowledge-projects"
-prefix = "projects"
-label = "Projects"
-```
+   `role` defaults to `"primary"` if omitted. The first mount with `role = "primary"` supplies the instance's site chrome (its `important-information.md`, `categories.yaml`, and `redirects.yaml`) — that is the only thing `role` currently affects. `blueprint_set` is parsed but not currently enforced anywhere in the engine; don't rely on it to restrict which article types get served.
 
-`path` is the absolute filesystem path to the secondary repository. `prefix` is the URL prefix under which the mounted content will appear (e.g., mounted articles are served at `/projects/<slug>`). `label` appears in the navigation header to identify the mounted section.
+   > **Warning:** every mount's articles are indexed into one shared, flat slug namespace — there is no URL prefix, no per-mount routing, and no isolation of any kind. If both repositories contain an article with the same slug, whichever mount is listed later in `knowledge.toml` silently overwrites the earlier one in the index, with no warning at startup. Before adding a mount, check for slug collisions between the two repositories yourself; the engine will not catch them for you.
 
-Multiple mounts are supported — add additional `[[mounts]]` sections for each secondary repository.
+3. Restart the knowledge service. Configuration and content are both read once at startup — there is no hot-reload:
 
-## Step 3: Restart the knowledge instance
+   ```
+   sudo systemctl restart app-mediakit-knowledge
+   ```
 
-The mount configuration is read at startup. Restart the service for the new mount to take effect:
+## Expected outcome
 
-```
-sudo systemctl restart app-mediakit-knowledge
-```
+Articles from the secondary repository become reachable at the same `/wiki/<slug>` path pattern as the primary's own articles — not under a separate prefix.
 
-Or if running directly:
+## Verification
 
-```
-# stop the running process, then:
-app-mediakit-knowledge --config knowledge.toml
-```
-
-## Step 4: Verify the mount is serving
-
-Fetch an article from the mounted category:
+Fetch an article you know exists only in the secondary repository, using its plain slug:
 
 ```
-curl -s http://127.0.0.1:9090/projects/<slug-from-media-knowledge-projects>/
+curl -s http://127.0.0.1:9090/wiki/<slug-from-secondary-repo>/
 ```
 
-A successful response returns the rendered article HTML. If the response is 404, check:
+A successful response returns the rendered article. If you get the *wrong* article's content, or content that doesn't match what you expect, that's a slug collision — check both repositories for the same slug and rename one before proceeding.
 
-1. The `prefix` in `knowledge.toml` matches the URL path segment you used
-2. The `path` points to a directory with a `_index.md` in at least one subdirectory
-3. The service restarted cleanly (check `journalctl -u app-mediakit-knowledge`)
+## Rollback
 
-## Step 5: Confirm wikilink isolation
+Remove the `[[mount]]` block from `knowledge.toml` and restart the service. If a collision already occurred, confirm which article was actually served in the meantime before assuming the primary's version was untouched — a shadowed article's own content on disk is never modified by this, only which one the running instance served.
 
-Wikilinks inside mounted content resolve against the mounted repository's own slug namespace. A `[[slug]]` in a projects article will NOT resolve against a documentation article's slug — each mount is isolated. Cross-mount links must use full URLs.
+## Next steps
 
-This isolation is by design: the three live instances (documentation, projects, corporate) serve distinct editorial domains; mixing their slug namespaces would cause resolution conflicts.
-
-## Key takeaways
-
-- Mounts extend a running instance with content from a second repository, served under a URL prefix
-- Mount configuration lives in `knowledge.toml` under `[[mounts]]`; restart is required after changes
-- Wikilink resolution is per-mount — `[[slug]]` in a mounted section resolves against that section's slugs only
-- Multiple mounts are supported; add one `[[mounts]]` block per additional repository
+- [[federate-archives-via-content-mounts]] — the broader federation concept this mechanism implements
+- [[deploy-knowledge-instance]] — deploying the wiki server that mounts extend
 
 ## See also
 
-- [[federate-archives-via-content-mounts]] — the federation architecture that declarative mounts implement
-- [[deploy-knowledge-instance]] — deploying the wiki server that mounts extend
-- [[app-mediakit-knowledge]] — the wiki server architecture including the mount and render pipeline
-- [[export-structured-data]] — exporting article content from a mounted repository via the wiki API
+- [[app-mediakit-knowledge]] — the wiki server architecture, including the content index and render pipeline

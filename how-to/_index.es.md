@@ -50,18 +50,18 @@ Trabaja con el libro mayor de auditoría WORM y los datos de entidades.
 
 Gestiona múltiples tenants, usuarios y nodos de flota.
 
-- [[configure-tenant-namespace|Configurar un espacio de nombres de tenant]] — registrar un tenant, establecer cuotas, verificar el aislamiento, emitir la credencial raíz
-- [[scale-user-tiers|Escalar los niveles de acceso de usuario]] — promover usuarios entre los niveles READ / USER / INPUT y actualizar masivamente un equipo
+- [[configure-tenant-namespace|Configurar un espacio de nombres de tenant]] — el aprovisionamiento real basado en configuración, ya que no existe ninguna API de registro
+- [[scale-user-tiers|Escalar el acceso de usuarios]] — otorgue tokens con alcance de rol a medida que un equipo crece; no hay promoción/revocación
 - [[add-a-fleet-node|Añadir un nodo a una flota en funcionamiento]] — inscribir un segundo nodo sin interrumpir las operaciones de la flota existente
 
 ## Integración y datos
 
 Conecta tuberías de datos externas y crea aplicaciones de inteligencia de ubicación.
 
-- [[build-a-colocation-map|Construir un mapa de co-ubicación]] — consulta la API del motor GIS y renderiza una capa de clústeres con MapLibre
-- [[connect-osm-data-pipeline|Conectarse al pipeline de datos OSM]] — escribir un YAML de ingestión de cadena, ejecutar el script de ingestión y reconstruir la capa de clusters
-- [[federate-archives-via-content-mounts|Federar archivos mediante montajes de contenido]] — monta contenido wiki de un archivo en una segunda instancia usando montajes TOML declarativos
-- [[use-knowledge-mounts|Usar montajes de conocimiento declarativos]] — añadir un repositorio de contenido secundario a una instancia wiki en ejecución a través de knowledge.toml
+- [[build-a-colocation-map|Construir un mapa de co-ubicación]] — carga un archivo PMTiles directamente; no existe API REST ni clave de API
+- [[connect-osm-data-pipeline|Conectarse al pipeline de datos OSM]] — el script real ingest-osm.py y el registro en taxonomy.py
+- [[federate-archives-via-content-mounts|Federar archivos mediante montajes de contenido]] — monte el contenido de un segundo repositorio en una instancia en ejecución
+- [[use-knowledge-mounts|Usar montajes de conocimiento declarativos]] — el esquema real de [[mount]] y su riesgo real de colisión de slugs sin mitigar
 
 ## Autoalojamiento
 

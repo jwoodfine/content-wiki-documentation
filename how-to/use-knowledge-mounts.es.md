@@ -1,125 +1,81 @@
 ---
 schema: foundry-doc-v1
-title: "Cómo usar los montajes de conocimiento declarativos"
+title: "Usar montajes de conocimiento declarativos"
 slug: use-knowledge-mounts
-short_description: "Añade un repositorio de contenido secundario a una instancia de knowledge en ejecución mediante un montaje en knowledge.toml, sirviendo sus artículos bajo un prefijo de URL tras reiniciar."
+short_description: "Añade un repositorio de contenido secundario a una instancia de conocimiento en ejecución mediante una entrada [[mount]] en knowledge.toml — al mismo espacio de nombres de slugs plano que el primario, ya que no existe ningún aislamiento por prefijo de URL."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-07-18
-editor: pointsav-engineering
+audience: "Ingenieros (con acceso directo al terminal); operadores de cliente"
 language: es
 language_protocol: TRANSLATE-ES
+last_edited: 2026-08-06
+editor: pointsav-engineering
 paired_with: use-knowledge-mounts.md
 ---
-
-Los montajes de conocimiento permiten que una sola instancia wiki sirva contenido de múltiples repositorios fuente bajo un espacio de URL unificado. Un montaje se declara en `knowledge.toml` — la instancia lee la ruta fuente al inicio y hace que sus artículos estén disponibles en el prefijo de categoría configurado. Esta guía cubre la adición de un montaje de contenido secundario a una instancia existente.
-
-Para la arquitectura de federación que los montajes habilitan, véase [[federate-archives-via-content-mounts]]. Para desplegar el servidor wiki en primer lugar, véase [[deploy-knowledge-instance]].
-
-**Corrección mayor (2026-07-18):** el esquema de montaje y el comportamiento de prefijo
-de URL que describe esta guía no coinciden con la fuente real de
-`app-mediakit-knowledge` (la misma fuente verificada para la corrección de
-[[deploy-knowledge-instance]]). La clave real del arreglo de tablas TOML es `[[mount]]`
-(singular — `#[serde(rename = "mount")]`), no `[[mounts]]` usado en toda esta guía. La
-estructura real `Mount` tiene exactamente tres campos: `path`, `role` (por defecto
-`"primary"`; el comentario de documentación afirma "First primary mount is editable;
-guide mounts are read-only" — un indicador de editabilidad de dos valores, no un espacio
-de nombres de URL), y `blueprint_set` (una lista de tipos de artículo permitidos, p. ej.
-`["TOPIC", "GUIDE"]`). **No existe ningún campo `prefix` ni ningún campo `label` en
-ninguna parte del esquema real** — el ejemplo del Paso 2 (`prefix = "projects"` /
-`label = "Projects"`) y la verificación de URL con prefijo `/projects/<slug>` del Paso 4
-describen un mecanismo (espacio de nombres de URL por montaje) que este código no parece
-implementar; el campo `role` real gobierna la editabilidad, no el enrutamiento. Tampoco
-existe ningún bloque `[content]` después del cual añadir el montaje (véase la corrección
-enlazada en [[deploy-knowledge-instance]] para la forma real de ese esquema). **Señalado,
-no reescrito silenciosamente** — el modelo real de montaje puede enrutar mediante un
-mecanismo distinto no verificado (o puede que aún no soporte el servicio multi-fuente con
-prefijo de URL en absoluto); necesita confirmación de project-totebox o
-project-knowledge sobre cómo las entradas `[[mount]]` se reflejan realmente en el
-enrutamiento antes de corregir los pasos de esta guía.
 
 ## Requisitos previos
 
 - Una instancia de conocimiento en ejecución con una configuración `knowledge.toml` (véase [[deploy-knowledge-instance]])
-- Un segundo repositorio de contenido `media-knowledge-*` clonado en el mismo host
-- Acceso a terminal para reiniciar el servicio de conocimiento
+- Un segundo repositorio de contenido `media-knowledge-*` clonado en el mismo sistema de archivos
+- Acceso de terminal para reiniciar el servicio de conocimiento
 
-## Paso 1: Identificar la ruta de contenido secundario
+## Propósito
 
-El repositorio de contenido secundario debe ser un clon `media-knowledge-*` en el mismo sistema de archivos que la instancia en ejecución. Anote su ruta absoluta:
+Añada un segundo repositorio de contenido a una instancia en ejecución para que sus artículos se indexen junto a los del primario — unos minutos para configurarlo. Lea la guía completa antes de confiar en esto en producción: el mecanismo real no tiene ningún aislamiento entre montajes, y ese es un riesgo genuino y actualmente sin mitigar si los dos repositorios comparten algún slug.
 
-```
-ls /ruta/a/media-knowledge-projects/
-```
+## Procedimiento
 
-Confirme que tiene un `index.md` válido y subdirectorios de categorías antes de añadir el montaje — el servidor wiki advertirá al inicio si la ruta del montaje está vacía o mal formada.
+1. Anote la ruta absoluta al repositorio secundario:
 
-## Paso 2: Añadir el montaje a knowledge.toml
+   ```
+   ls /ruta/a/media-knowledge-projects/
+   ```
 
-Abra `knowledge.toml` y añada una sección `[[mounts]]` después del bloque `[content]`:
+2. Añada una entrada `[[mount]]` a `knowledge.toml`. El esquema real tiene exactamente tres campos — `path`, `role` y `blueprint_set` — y no existe ningún campo `prefix` ni `label`:
 
-```toml
-[content]
-primary_path = "/ruta/a/media-knowledge-documentation"
-instance_name = "documentation"
+   ```toml
+   [[mount]]
+   path = "/ruta/a/media-knowledge-projects"
+   role = "primary"
+   blueprint_set = ["TOPIC", "GUIDE"]
+   ```
 
-[[mounts]]
-path = "/ruta/a/media-knowledge-projects"
-prefix = "projects"
-label = "Projects"
-```
+   `role` toma por defecto `"primary"` si se omite. El primer montaje con `role = "primary"` provee el chrome del sitio de la instancia (su `important-information.md`, `categories.yaml` y `redirects.yaml`) — eso es lo único que `role` afecta actualmente. `blueprint_set` se analiza pero actualmente no se aplica en ningún lugar del motor; no confíe en él para restringir qué tipos de artículo se sirven.
 
-`path` es la ruta absoluta del sistema de archivos al repositorio secundario. `prefix` es el prefijo de URL bajo el cual aparecerá el contenido montado (p.ej., los artículos montados se sirven en `/projects/<slug>`). `label` aparece en el encabezado de navegación para identificar la sección montada.
+   > **Advertencia:** los artículos de cada montaje se indexan en un único espacio de nombres de slugs compartido y plano — no hay prefijo de URL, ni enrutamiento por montaje, ni ningún tipo de aislamiento. Si ambos repositorios contienen un artículo con el mismo slug, el que esté listado más tarde en `knowledge.toml` sobrescribe silenciosamente al anterior en el índice, sin ninguna advertencia al iniciar. Antes de añadir un montaje, revise usted mismo las colisiones de slugs entre los dos repositorios; el motor no las detectará por usted.
 
-Se admiten múltiples montajes — añada secciones `[[mounts]]` adicionales para cada repositorio secundario.
+3. Reinicie el servicio de conocimiento. La configuración y el contenido se leen una sola vez al iniciar — no hay recarga en caliente:
 
-## Paso 3: Reiniciar la instancia de conocimiento
+   ```
+   sudo systemctl restart app-mediakit-knowledge
+   ```
 
-La configuración de montaje se lee al inicio. Reinicie el servicio para que el nuevo montaje surta efecto:
+## Resultado esperado
 
-```
-sudo systemctl restart app-mediakit-knowledge
-```
+Los artículos del repositorio secundario se vuelven accesibles bajo el mismo patrón de ruta `/wiki/<slug>` que los propios artículos del primario — no bajo un prefijo separado.
 
-O si se ejecuta directamente:
+## Verificación
 
-```
-# detenga el proceso en ejecución, luego:
-app-mediakit-knowledge --config knowledge.toml
-```
-
-## Paso 4: Verificar que el montaje está sirviendo
-
-Obtenga un artículo de la categoría montada:
+Obtenga un artículo que sepa que existe solo en el repositorio secundario, usando su slug simple:
 
 ```
-curl -s http://127.0.0.1:9090/projects/<slug-de-media-knowledge-projects>/
+curl -s http://127.0.0.1:9090/wiki/<slug-del-repo-secundario>/
 ```
 
-Una respuesta exitosa devuelve el HTML del artículo renderizado. Si la respuesta es 404, verifique:
+Una respuesta exitosa devuelve el artículo renderizado. Si obtiene el contenido del artículo *equivocado*, o contenido que no coincide con lo esperado, eso es una colisión de slugs — revise ambos repositorios en busca del mismo slug y renombre uno antes de continuar.
 
-1. El `prefix` en `knowledge.toml` coincide con el segmento de ruta de URL que utilizó
-2. El `path` apunta a un directorio con un `_index.md` en al menos un subdirectorio
-3. El servicio se reinició correctamente (verifique `journalctl -u app-mediakit-knowledge`)
+## Reversión
 
-## Paso 5: Confirmar el aislamiento de wikilinks
+Elimine el bloque `[[mount]]` de `knowledge.toml` y reinicie el servicio. Si ya ocurrió una colisión, confirme qué artículo se sirvió realmente mientras tanto antes de asumir que la versión del primario quedó intacta — el propio contenido en disco de un artículo eclipsado nunca se modifica por esto, solo cuál sirvió la instancia en ejecución.
 
-Los wikilinks dentro del contenido montado se resuelven contra el espacio de nombres de slug propio del repositorio montado. Un `[[slug]]` en un artículo de projects NO se resolverá contra el slug de un artículo de documentation — cada montaje está aislado. Los enlaces entre montajes deben usar URLs completas.
+## Próximos pasos
 
-Este aislamiento es por diseño: las tres instancias en vivo (documentation, projects, corporate) sirven dominios editoriales distintos; mezclar sus espacios de nombres de slug causaría conflictos de resolución.
-
-## Puntos clave
-
-- Los montajes extienden una instancia en ejecución con contenido de un segundo repositorio, servido bajo un prefijo de URL
-- La configuración de montaje vive en `knowledge.toml` bajo `[[mounts]]`; se requiere un reinicio después de los cambios
-- La resolución de wikilinks es por montaje — `[[slug]]` en una sección montada se resuelve solo contra los slugs de esa sección
-- Se admiten múltiples montajes; añada un bloque `[[mounts]]` por repositorio adicional
+- [[federate-archives-via-content-mounts]] — el concepto de federación más amplio que este mecanismo implementa
+- [[deploy-knowledge-instance]] — desplegar el servidor wiki que los montajes extienden
 
 ## Véase también
 
-- [[federate-archives-via-content-mounts]] — la arquitectura de federación que implementan los montajes declarativos
-- [[deploy-knowledge-instance]] — desplegar el servidor wiki que los montajes extienden
-- [[app-mediakit-knowledge]] — la arquitectura del servidor wiki incluyendo el pipeline de montaje y renderizado
-- [[export-structured-data]] — exportar contenido de artículos de un repositorio montado a través de la API del wiki
+- [[app-mediakit-knowledge]] — la arquitectura del servidor wiki, incluyendo el índice de contenido y el pipeline de renderizado

@@ -1,103 +1,93 @@
 ---
 schema: foundry-doc-v1
-title: "Cómo conectarse al pipeline de datos OSM"
+title: "Conectarse al pipeline de datos OSM"
 slug: connect-osm-data-pipeline
-short_description: "Incorpora una nueva cadena minorista o de servicios desde OpenStreetMap: escribe el YAML de ingesta, ejecuta la consulta Overpass, registra la cadena en la taxonomía y reconstruye la capa de clústeres."
+short_description: "Ingiere una nueva cadena minorista o de servicios desde OpenStreetMap usando el script real ingest-osm.py y los diccionarios CATEGORIES/BRAND_FILL de taxonomy.py, y luego reconstruye los tiles de clúster servibles."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-06-14
-editor: pointsav-engineering
+audience: "Ingenieros (con acceso directo al terminal); operadores de cliente"
 language: es
 language_protocol: TRANSLATE-ES
+last_edited: 2026-08-06
+editor: pointsav-engineering
 paired_with: connect-osm-data-pipeline.md
 ---
 
-El sistema de inteligencia de ubicación de la plataforma ingesta datos de puntos de interés (POI) de OpenStreetMap a través de archivos de ingestión JSONL. Conectarse al pipeline de datos OSM significa escribir o adaptar un script de ingestión que consulte la API de Overpass, produciendo un archivo JSONL en el esquema de la plataforma y registrando la ingestión con la configuración de taxonomía. Esta guía cubre una ingestión de cadena única para una nueva categoría minorista o de servicios.
-
-Para la arquitectura del motor GIS, véase [[pointsav-gis-engine]]. Para construir un mapa a partir de datos de clusters ingeridos, véase [[build-a-colocation-map]].
-
 ## Requisitos previos
 
-- Acceso al directorio de trabajo `app-orchestration-gis` (los scripts de pipeline)
-- Python 3.9+ con `requests` disponible
-- Acceso de red a la API de Overpass (`overpass-api.de` o un espejo local)
-- Un Q-ID de Wikidata para la cadena o categoría que se está ingestando (búsquelo en `wikidata.org`)
+- Acceso al directorio de trabajo `app-orchestration-gis` (los scripts del pipeline)
+- Python 3.11+ con las dependencias del pipeline instaladas
+- Acceso de red a la API de Overpass
+- Un Q-ID de Wikidata para la cadena que está ingiriendo (búsquelo en wikidata.org)
 
-## Paso 1: Identificar el Q-ID de Wikidata
+## Propósito
 
-Cada cadena en la taxonomía está anclada a un Q-ID de Wikidata. Esto proporciona un identificador estable e independiente del idioma para la entidad. Busque la cadena en Wikidata y registre el Q-ID (p.ej., Walmart: Q483551, IKEA: Q54078).
+Añada una nueva cadena minorista o de servicios al pipeline de inteligencia de ubicación — desde datos crudos de OpenStreetMap hasta un tile de clúster servible. Un procedimiento genuinamente ya ejecutado antes, no hipotético.
 
-Si la categoría no tiene una entrada de Wikidata única, use una consulta basada en nombre (modo `name_query`) en lugar de una búsqueda por Q-ID.
+## Procedimiento
 
-## Paso 2: Escribir el YAML de ingestión
+1. Busque el Q-ID de Wikidata de la cadena. Este es el identificador estable y neutral en idioma al que se ancla la taxonomía (Walmart: Q483551, IKEA: Q54078). Si la cadena no tiene una entrada limpia en Wikidata, más adelante recurrirá a una consulta basada en nombre.
 
-Cree un archivo YAML de ingestión bajo `service-business/` con el nombre `<nombre-cadena>-<código-país>.yaml`:
+2. Ejecute el script de ingestión directamente contra el identificador de la cadena — no hay ningún archivo YAML descriptor separado que redactar para una ejecución sencilla:
 
-```yaml
-chain: walmart-us
-wikidata_id: Q483551
-query_mode: wikidata    # o: name_query
-name_query: null         # usado solo cuando query_mode: name_query
-country_code: US
-bbox: [-125.0, 24.4, -66.9, 49.4]   # cuadro delimitador para el país
-output: service-business/walmart-us.jsonl
-taxonomy_family: ALPHA_HYPERMARKET
-taxonomy_tier: 1
+   ```bash
+   python3 ingest-osm.py --chain <id-de-cadena>
+   ```
+
+   Esto consulta la API de Overpass y escribe registros JSONL en el directorio de datos de la plataforma. Si la cadena devuelve cero registros, la cobertura de etiquetas de Wikidata puede ser escasa en OpenStreetMap para esa cadena — revise si conviene una consulta de respaldo basada en nombre antes de asumir que la cadena no tiene datos.
+
+3. Registre la categoría de la cadena en `taxonomy.py`, en el diccionario `CATEGORIES`:
+
+   ```python
+   "su_categoria_slug": {
+       "label": "Nombre de Categoría Legible",
+       "naics": "<codigo-naics>",
+       "description": "Una línea describiendo qué señala esta categoría.",
+   },
+   ```
+
+4. Añada la cadena a `BRAND_FILL`, bajo su categoría, indexado por código de país:
+
+   ```python
+   "su_categoria_slug": {
+       "US": ["su-id-de-cadena"],
+       "CA": [],
+       # ... cada país mostrado necesita una entrada, incluso si está vacía
+   },
+   ```
+
+5. Reconstruya la capa de clústeres y sus tiles servibles:
+
+   ```bash
+   python3 build-clusters.py       # reconstruye work/clusters.geojson desde todas las cadenas registradas
+   python3 build-tiles.py --layer 2  # regenera el archivo PMTiles servido al mapa
+   ```
+
+## Resultado esperado
+
+Las ubicaciones de la nueva cadena están presentes en el GeoJSON de clúster reconstruido y reflejadas en el archivo PMTiles regenerado que realmente sirve el mapa.
+
+## Verificación
+
+Verifique que el recuento de registros de la nueva cadena llegó como se esperaba:
+
+```bash
+grep -c '"chain":"su-id-de-cadena"' ruta/a/su-id-de-cadena.jsonl
 ```
 
-Para el modo `name_query` (cuando la cobertura de Wikidata es escasa), establezca `query_mode: name_query` y proporcione `name_query: "Walmart"`. El script de ingestión realiza una búsqueda de nombre de texto libre en la API de Overpass.
+Luego confirme que aparece en la salida de clúster reconstruida antes de dar por completa la ingestión. Una cadena registrada en la taxonomía pero nunca realmente ingerida, o una ingestión que se ejecutó pero nunca se incluyó en una reconstrucción, ambas dejan el mapa mostrando datos obsoletos sin ningún error que lo advierta.
 
-## Paso 3: Ejecutar el script de ingestión
+## Reversión
 
-Ejecute el script de ingestión existente con el nuevo YAML:
+Elimine las entradas de la cadena de `CATEGORIES`/`BRAND_FILL` y borre su archivo JSONL, luego vuelva a ejecutar los pasos de reconstrucción para regenerar la salida de clústeres sin ella. No hay un "deshacer" en el lugar para una reconstrucción ya servida — el estado anterior solo es recuperable reconstruyendo de nuevo desde una taxonomía que la excluya.
 
-```
-python3 app-orchestration-gis/ingest-chain.py service-business/walmart-us.yaml
-```
+## Próximos pasos
 
-El script consulta la API de Overpass, filtra los resultados por el cuadro delimitador y el código de país, y escribe registros JSONL en `service-business/walmart-us.jsonl`. Cada registro contiene: `name`, `lat`, `lon`, `wikidata_id`, `chain`, `country`, `taxonomy_family`, `taxonomy_tier`.
-
-Recuentos de registros típicos: las cadenas urbanas densas producen 500–2.000 registros; las cadenas de hipermercados nacionales producen 100–500; los minoristas especializados producen 50–200.
-
-## Paso 4: Registrar la cadena en la taxonomía
-
-Añada la nueva cadena a la configuración de taxonomía en `app-orchestration-gis/taxonomy.py` bajo el grupo de familia apropiado:
-
-```python
-"walmart-us": TaxonomyEntry(
-    family="ALPHA_HYPERMARKET",
-    tier=1,
-    jsonl_path="service-business/walmart-us.jsonl",
-    wikidata_id="Q483551",
-),
-```
-
-## Paso 5: Reconstruir la capa de clusters
-
-Después del registro, reconstruya la capa de clusters para incorporar los nuevos datos POI:
-
-```
-python3 app-orchestration-gis/build-geometric-ranking.py
-```
-
-La reconstrucción lee todos los archivos JSONL registrados, ejecuta el paso de agrupamiento DBSCAN y regenera `clusters-meta.json`. Verifique que la nueva cadena aparezca en la salida del cluster:
-
-```
-python3 -c "import json; d=json.load(open('gateway/www/data/clusters-meta.json')); print(sum(1 for c in d['clusters'] if 'walmart' in str(c)))"
-```
-
-## Puntos clave
-
-- Cada cadena requiere un descriptor YAML de ingestión y un archivo de salida JSONL en `service-business/`
-- Los Q-IDs de Wikidata son preferibles a las consultas de nombre; recurra a consultas de nombre solo cuando la cobertura de Wikidata esté ausente
-- El paso de registro de taxonomía vincula el archivo JSONL con el pipeline de agrupamiento
-- Se requiere una reconstrucción completa del cluster después de añadir una nueva cadena — las actualizaciones incrementales no están soportadas en el pipeline actual
+- [[build-a-colocation-map]] — renderice los tiles de clúster reconstruidos en una aplicación MapLibre
 
 ## Véase también
 
-- [[pointsav-gis-engine]] — la arquitectura del motor GIS y el pipeline de agrupamiento DBSCAN
-- [[build-a-colocation-map]] — cómo mostrar los datos del cluster en una aplicación web MapLibre
-- Arquetipos de inteligencia de ubicación (projects.woodfinegroup.com/site-selection) — el modelo de arquetipos PRO/VWH/PKS que alimenta la taxonomía
-- [[export-structured-data]] — exportar el GeoJSON resultante para uso externo
+- [[location-intelligence-substrate]] — la arquitectura de archivo plano/PMTiles que alimenta este pipeline

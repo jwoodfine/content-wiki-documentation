@@ -1,107 +1,72 @@
 ---
 schema: foundry-doc-v1
-title: "How to scale user access tiers"
+title: "Scale user access"
 slug: scale-user-tiers
-short_description: "Promotes users across the READ, USER, and INPUT access tiers by issuing new capability tokens and revoking the old ones, including a bulk pass for a whole team."
+short_description: "Grants role-scoped capability tokens to new users as a team scales, using service-content's real pairing API — there is no promote/demote or bulk-revoke operation, since no revocation mechanism exists at all."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-06-14
+audience: "Engineers (hands on keyboard); customer operators"
+last_edited: 2026-08-06
 editor: pointsav-engineering
 paired_with: scale-user-tiers.es.md
+research_trail:
+  sources: [pointsav-monorepo service-content/src/pairing.rs and http.rs, already fully source-verified while rewriting issue-capability-token.md and rotate-keys.md earlier this session]
+  verification_method: "reused the already-confirmed real service-content capability-token mechanism from this session's Machine authorization batch rather than re-deriving it; this guide's own prior Correction note had already flagged the same READ/USER/INPUT tier fiction and fictional /v1/tokens REST surface found across that whole batch"
 ---
-
-**Correction (2026-08-02, verified against canonical `origin/main`):** this READ/USER/INPUT tier model and the `/v1/tokens` list/issue/revoke REST API below don't exist — same systemic finding as [[pair-a-new-device]] and [[rotate-keys]]. The real `PairingRole` enum has exactly 3 roles (`User`/`Admin`/`Interface`), and the real API is `POST /v1/invite` + `/v1/pair`, not a token-management REST surface. **Flagged, not resolved.**
-
-User access tiers determine what platform operations a session can perform. As a deployment grows, the administrator needs to promote users from read-only access (`READ`) to standard session access (`USER`) or full operator access (`INPUT`). This guide covers identifying current tier assignments, promoting individual users, and bulk-updating a set of users as a team scales.
-
-For the authorization model that defines tiers, see [[machine-based-auth]]. For issuing the tokens that encode tier assignments, see [[issue-capability-token]].
 
 ## Prerequisites
 
-- Administrator access to the token issuance service
-- A list of users to promote with their current public keys or device identifiers
-- A tenant namespace already configured (see [[configure-tenant-namespace]])
+- Access to the `service-content` instance issuing tokens for your team
+- A list of users to add, with their public keys or device identifiers
+- Familiarity with [[issue-capability-token]], which this guide builds directly on
 
-## The three access tiers
+## Purpose
 
-| Tier | Scope value | Typical use case |
-|---|---|---|
-| `READ` | read | External partners, audit reviewers, data consumers |
-| `USER` | user | Core team members; DataGraph queries, SLM inference, wiki reads |
-| `INPUT` | input | Platform operators; WORM ledger writes, F12 Input Machine, full console access |
+Grant new team members a role-scoped token as your deployment grows — a few minutes per person, or a short scripted loop for a whole team at once. This is not a tier-promotion system: there's no in-place upgrade and no revocation, so read this before treating it as an access-management console.
 
-Promote users to the minimum tier that their role requires. Over-privileged sessions create unnecessary audit surface.
+## Procedure
 
-## Step 1: List current tier assignments
+> **Note:** the real role set is `User`, `Admin`, and `Interface` — not a `READ`/`USER`/`INPUT` scale. Choose the role that matches what the person actually needs; there's no numeric tier to "promote" someone up later, only a fresh token with a different role.
 
-Query the tenant's active tokens to see current tier assignments:
+1. For each new user, issue a token scoped to the role and archives they need:
 
-```
-curl -s "http://<issuance-service-host>:<port>/v1/tenants/<tenant-id>/tokens" \
-  -H "Authorization: Bearer <admin-token>"
-```
+   ```bash
+   curl -s "http://<service-content-host>/v1/pair/token?role=<role>&node_label=<user-label>&archive_scope=<archive-a>,<archive-b>"
+   ```
 
-The response lists active tokens with their `scope`, `subject_pubkey`, and `expires_at` fields. Note which users are at `READ` or `USER` scope if they need promotion to `INPUT`.
+   See [[issue-capability-token]] for the full response shape and the registration step that follows.
 
-## Step 2: Promote an individual user
+2. For a whole team at once, loop over a list of labels and scopes rather than issuing one at a time by hand:
 
-To promote a user, issue a new token at the higher scope. The old token remains valid until it expires or is explicitly revoked — there is no in-place upgrade.
+   ```bash
+   while IFS= read -r label; do
+     curl -s "http://<service-content-host>/v1/pair/token?role=<role>&node_label=$label&archive_scope=<archive-a>"
+   done < team-labels.txt
+   ```
 
-Issue a new token:
+3. Deliver each token to its user. Record what you issued — since there's no listing endpoint for already-issued tokens, your own record is the only inventory that exists.
 
-```
-curl -X POST http://<issuance-service-host>:<port>/v1/tokens \
-  -H "Authorization: Bearer <admin-token>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "subject_pubkey": "<user-pubkey>",
-    "scope": "input",
-    "tenant_id": "<tenant-id>",
-    "expires_in_seconds": 86400
-  }'
-```
+## Expected outcome
 
-Deliver the new token to the user. Once they load it, their console session gains the new tier.
+Each new user holds a token scoped to exactly the role and archives they need, valid for 24 hours from issuance.
 
-## Step 3: Revoke the old lower-tier token
+## Verification
 
-After the user confirms the new token is working, revoke the old lower-tier token to close the transition window:
+Confirm a new user's access by having them make a request using their token against a capability-gated route, per [[issue-capability-token]]'s verification steps.
 
-```
-curl -X DELETE http://<issuance-service-host>:<port>/v1/tokens/<old-token-id> \
-  -H "Authorization: Bearer <admin-token>"
-```
+## Rollback
 
-Revoking the old token ensures there is no simultaneous READ and INPUT credential for the same device — a single session holds exactly one tier at any time.
+> **Warning:** there is no way to promote a user's existing token in place, and no way to revoke a token you issued in error. If you granted the wrong role or scope, the fix is to issue a corrected token and have the user switch to it — the original keeps working until its own 24-hour expiry regardless. Plan team onboarding around this: get the role and scope right at issuance, since correcting it later doesn't remove the original grant.
 
-## Step 4: Bulk-update a team
+## Next steps
 
-For team-scale promotions, prepare a list of public keys and issue tokens in sequence. A simple shell loop over a JSON file of public keys works:
-
-```
-while IFS= read -r pubkey; do
-  curl -X POST http://<issuance-service-host>:<port>/v1/tokens \
-    -H "Authorization: Bearer <admin-token>" \
-    -H "Content-Type: application/json" \
-    -d "{\"subject_pubkey\": \"$pubkey\", \"scope\": \"user\", \"tenant_id\": \"<tenant-id>\", \"expires_in_seconds\": 86400}"
-done < pubkeys.txt
-```
-
-Log each issued token ID. After the team confirms their new tokens work, run a corresponding revoke loop over the old token IDs.
-
-## Key takeaways
-
-- Tier promotions require issuing a new token; existing tokens cannot be upgraded in place
-- Keep the transition window short — revoke the old token after the user confirms the new one works
-- Over-privileged sessions inflate audit surface; issue the minimum tier for each role
-- WORM ledger entries are created for every token issuance and revocation — tier changes are permanently auditable
+- [[issue-capability-token]] — the full single-token issuance and registration procedure
+- [[rotate-keys]] — what "rotation" really means in this system, and its honest limits
 
 ## See also
 
-- [[machine-based-auth]] — the authorization model that defines what each tier permits
-- [[issue-capability-token]] — detailed steps for issuing a single capability token
-- [[rotate-keys]] — replacing a token at expiry or after a suspected compromise
-- [[configure-tenant-namespace]] — setting up the namespace before user tiers are assigned
-- [[verify-worm-ledger]] — confirming token issuance events in the audit ledger
+- [[machine-based-auth]] — the authorization model tokens operate within
+- [[configure-tenant-namespace]] — a separate, unrelated system for tenant-level VM quotas, not user roles

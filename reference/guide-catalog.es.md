@@ -67,18 +67,18 @@ Para el modelo de autorización que sustenta todas estas operaciones, consulta [
 
 Estas guías cubren la operación de la plataforma a través de múltiples tenants, usuarios y nodos de flota.
 
-- [[configure-tenant-namespace]] — registrar un espacio de nombres de tenant, establecer límites de cuota, verificar el aislamiento y emitir la credencial raíz
-- [[scale-user-tiers]] — promover usuarios entre los niveles READ / USER / INPUT y actualizar masivamente un equipo
+- [[configure-tenant-namespace]] — el aprovisionamiento real basado en configuración en service-vm-tenant, ya que no existe ninguna API de registro
+- [[scale-user-tiers]] — otorgue tokens con alcance de rol a medida que un equipo crece; no hay promoción/revocación, solo tokens nuevos
 - [[add-a-fleet-node]] — inscribir un segundo nodo PPN en una flota en funcionamiento sin interrumpir los nodos existentes
 
 ## Integración y datos
 
 Estas guías cubren el consumo de datos de la plataforma y la conexión de aplicaciones externas.
 
-- [[build-a-colocation-map]] — autentícate contra la API de tiles SIG y renderiza marcadores de clústeres con color por nivel en MapLibre
-- [[connect-osm-data-pipeline]] — escribir un YAML de ingestión de cadena, ejecutar el script de ingestión contra la API de Overpass y reconstruir la capa de clústeres
-- [[federate-archives-via-content-mounts]] — declara un montaje de contenido secundario en `knowledge.toml` y accede a artículos federados entre instancias
-- [[use-knowledge-mounts]] — añadir un repositorio de contenido secundario a una instancia wiki en ejecución y verificar el aislamiento de slugs
+- [[build-a-colocation-map]] — carga un archivo PMTiles directamente en MapLibre; no existe API REST ni clave de API
+- [[connect-osm-data-pipeline]] — ejecute el script real ingest-osm.py y registre una cadena en taxonomy.py
+- [[federate-archives-via-content-mounts]] — monte el contenido de un segundo repositorio en una instancia en ejecución
+- [[use-knowledge-mounts]] — el esquema real de [[mount]], y el riesgo real (un espacio de nombres compartido y plano, no aislado por montaje)
 
 ## Autoalojamiento
 

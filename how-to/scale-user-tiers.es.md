@@ -1,107 +1,71 @@
 ---
 schema: foundry-doc-v1
-title: "Cómo escalar los niveles de acceso de usuario"
+title: "Escalar el acceso de usuarios"
 slug: scale-user-tiers
-short_description: "Promueve usuarios entre los niveles de acceso READ, USER e INPUT emitiendo nuevos tokens de capacidad y revocando los anteriores, con un paso masivo para todo un equipo."
+short_description: "Otorga tokens de capacidad con alcance de rol a nuevos usuarios a medida que un equipo crece, usando la API real de emparejamiento de service-content — no existe una operación de promoción/degradación ni de revocación masiva, ya que no existe ningún mecanismo de revocación."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-06-14
-editor: pointsav-engineering
+audience: "Ingenieros (con acceso directo al terminal); operadores de cliente"
 language: es
 language_protocol: TRANSLATE-ES
+last_edited: 2026-08-06
+editor: pointsav-engineering
 paired_with: scale-user-tiers.md
 ---
 
-Los niveles de acceso de usuario determinan qué operaciones de la plataforma puede realizar una sesión. A medida que crece un despliegue, el administrador necesita promover a los usuarios desde el acceso de solo lectura (`READ`) al acceso de sesión estándar (`USER`) o al acceso completo de operador (`INPUT`). Esta guía cubre la identificación de las asignaciones de nivel actuales, la promoción de usuarios individuales y la actualización masiva de un conjunto de usuarios a medida que un equipo crece.
-
-Para el modelo de autorización que define los niveles, véase [[machine-based-auth]]. Para emitir los tokens que codifican las asignaciones de nivel, véase [[issue-capability-token]].
-
 ## Requisitos previos
 
-- Acceso de administrador al servicio de emisión de tokens
-- Una lista de usuarios a promover con sus claves públicas actuales o identificadores de dispositivo
-- Un espacio de nombres de tenant ya configurado (véase [[configure-tenant-namespace]])
+- Acceso a la instancia de `service-content` que emite tokens para su equipo
+- Una lista de usuarios a añadir, con sus claves públicas o identificadores de dispositivo
+- Familiaridad con [[issue-capability-token]], sobre el cual se basa esta guía directamente
 
-## Los tres niveles de acceso
+## Propósito
 
-| Nivel | Valor de alcance | Caso de uso típico |
-|---|---|---|
-| `READ` | read | Socios externos, revisores de auditoría, consumidores de datos |
-| `USER` | user | Miembros del equipo principal; consultas al DataGraph, inferencia SLM, lecturas wiki |
-| `INPUT` | input | Operadores de la plataforma; escrituras en el libro mayor WORM, Máquina de Entrada F12, acceso completo a la consola |
+Otorgue a los nuevos miembros del equipo un token con alcance de rol a medida que su despliegue crece — unos minutos por persona, o un bucle con script corto para todo un equipo a la vez. Esto no es un sistema de promoción de niveles: no hay actualización en el lugar y no hay revocación, así que lea esto antes de tratarlo como una consola de gestión de accesos.
 
-Promueva a los usuarios al nivel mínimo que requiere su rol. Las sesiones con privilegios excesivos crean una superficie de auditoría innecesaria.
+## Procedimiento
 
-## Paso 1: Listar las asignaciones de nivel actuales
+> **Nota:** el conjunto real de roles es `User`, `Admin` e `Interface` — no una escala READ/USER/INPUT. Elija el rol que coincida con lo que la persona realmente necesita; no hay un nivel numérico para "promocionar" a alguien después, solo un token nuevo con un rol distinto.
 
-Consulte los tokens activos del tenant para ver las asignaciones de nivel actuales:
+1. Para cada usuario nuevo, emita un token con alcance al rol y los archivos que necesita:
 
-```
-curl -s "http://<host-servicio-emisión>:<puerto>/v1/tenants/<tenant-id>/tokens" \
-  -H "Authorization: Bearer <token-admin>"
-```
+   ```bash
+   curl -s "http://<host-de-service-content>/v1/pair/token?role=<rol>&node_label=<etiqueta-de-usuario>&archive_scope=<archivo-a>,<archivo-b>"
+   ```
 
-La respuesta lista los tokens activos con sus campos `scope`, `subject_pubkey` y `expires_at`. Tome nota de qué usuarios están en el alcance `READ` o `USER` si necesitan promoción a `INPUT`.
+   Véase [[issue-capability-token]] para la forma completa de la respuesta y el paso de registro que le sigue.
 
-## Paso 2: Promover a un usuario individual
+2. Para todo un equipo a la vez, recorra en bucle una lista de etiquetas y alcances en lugar de emitir uno por uno a mano:
 
-Para promover a un usuario, emita un nuevo token con el alcance más alto. El token antiguo sigue siendo válido hasta que vence o es revocado explícitamente — no hay actualización en su lugar.
+   ```bash
+   while IFS= read -r etiqueta; do
+     curl -s "http://<host-de-service-content>/v1/pair/token?role=<rol>&node_label=$etiqueta&archive_scope=<archivo-a>"
+   done < etiquetas-equipo.txt
+   ```
 
-Emita un nuevo token:
+3. Entregue cada token a su usuario. Registre lo que emitió — ya que no hay ningún endpoint de listado para los tokens ya emitidos, su propio registro es el único inventario que existe.
 
-```
-curl -X POST http://<host-servicio-emisión>:<puerto>/v1/tokens \
-  -H "Authorization: Bearer <token-admin>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "subject_pubkey": "<clave-publica-usuario>",
-    "scope": "input",
-    "tenant_id": "<tenant-id>",
-    "expires_in_seconds": 86400
-  }'
-```
+## Resultado esperado
 
-Entregue el nuevo token al usuario. Una vez que lo cargue, su sesión de consola adquiere el nuevo nivel.
+Cada usuario nuevo tiene un token con alcance exacto al rol y los archivos que necesita, válido durante 24 horas desde su emisión.
 
-## Paso 3: Revocar el token de nivel inferior antiguo
+## Verificación
 
-Después de que el usuario confirme que el nuevo token funciona, revoque el token de nivel inferior antiguo para cerrar la ventana de transición:
+Confirme el acceso de un usuario nuevo haciendo que realice una solicitud usando su token contra una ruta protegida por capacidad, según los pasos de verificación de [[issue-capability-token]].
 
-```
-curl -X DELETE http://<host-servicio-emisión>:<puerto>/v1/tokens/<id-token-antiguo> \
-  -H "Authorization: Bearer <token-admin>"
-```
+## Reversión
 
-Revocar el token antiguo garantiza que no haya credenciales simultáneas READ e INPUT para el mismo dispositivo — una sola sesión tiene exactamente un nivel en cualquier momento.
+> **Advertencia:** no hay manera de promocionar el token existente de un usuario en el lugar, y no hay manera de revocar un token que emitió por error. Si otorgó el rol o alcance equivocado, la solución es emitir un token corregido y hacer que el usuario cambie a él — el original sigue funcionando hasta su propia expiración de 24 horas de todos modos. Planifique la incorporación del equipo teniendo esto en cuenta: acierte con el rol y el alcance en el momento de la emisión, ya que corregirlo después no elimina la concesión original.
 
-## Paso 4: Actualización masiva de un equipo
+## Próximos pasos
 
-Para promociones a escala de equipo, prepare una lista de claves públicas y emita tokens en secuencia. Un bucle de shell simple sobre un archivo JSON de claves públicas funciona:
-
-```
-while IFS= read -r pubkey; do
-  curl -X POST http://<host-servicio-emisión>:<puerto>/v1/tokens \
-    -H "Authorization: Bearer <token-admin>" \
-    -H "Content-Type: application/json" \
-    -d "{\"subject_pubkey\": \"$pubkey\", \"scope\": \"user\", \"tenant_id\": \"<tenant-id>\", \"expires_in_seconds\": 86400}"
-done < pubkeys.txt
-```
-
-Registre cada ID de token emitido. Después de que el equipo confirme que sus nuevos tokens funcionan, ejecute un bucle de revocación correspondiente sobre los IDs de token antiguos.
-
-## Puntos clave
-
-- Las promociones de nivel requieren emitir un nuevo token; los tokens existentes no pueden actualizarse en su lugar
-- Mantenga la ventana de transición corta — revoque el token antiguo después de que el usuario confirme que el nuevo funciona
-- Las sesiones con privilegios excesivos aumentan la superficie de auditoría; emita el nivel mínimo para cada rol
-- Se crean entradas en el libro mayor WORM para cada emisión y revocación de token — los cambios de nivel son permanentemente auditables
+- [[issue-capability-token]] — el procedimiento completo de emisión y registro de un solo token
+- [[rotate-keys]] — qué significa realmente la "rotación" en este sistema, y sus límites honestos
 
 ## Véase también
 
-- [[machine-based-auth]] — el modelo de autorización que define lo que permite cada nivel
-- [[issue-capability-token]] — pasos detallados para emitir un solo token de capacidad
-- [[rotate-keys]] — reemplazar un token al vencer o tras una posible compromisión
-- [[configure-tenant-namespace]] — configurar el espacio de nombres antes de que se asignen los niveles de usuario
-- [[verify-worm-ledger]] — confirmar los eventos de emisión de tokens en el libro mayor de auditoría
+- [[machine-based-auth]] — el modelo de autorización en el que operan los tokens
+- [[configure-tenant-namespace]] — un sistema separado y no relacionado para cuotas de VM a nivel de tenant, no roles de usuario

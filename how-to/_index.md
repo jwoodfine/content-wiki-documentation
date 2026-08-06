@@ -50,18 +50,18 @@ Work with the WORM audit ledger and entity data.
 
 Manage multiple tenants, users, and fleet nodes.
 
-- [[configure-tenant-namespace|Configure a tenant namespace]] — register a tenant, set quotas, verify isolation, issue the root credential
-- [[scale-user-tiers|Scale user access tiers]] — promote users between READ / USER / INPUT tiers and bulk-update a team
+- [[configure-tenant-namespace|Configure a tenant namespace]] — the real config-driven provisioning, since no registration API exists
+- [[scale-user-tiers|Scale user access]] — grant role-scoped tokens as a team grows; there's no promote/revoke
 - [[add-a-fleet-node|Add a node to a running fleet]] — enroll a second node without interrupting existing fleet operations
 
 ## Integration & data
 
 Connect external data pipelines and build location-intelligence applications.
 
-- [[build-a-colocation-map|Build a co-location map]] — query the GIS engine API and render a MapLibre cluster layer
-- [[connect-osm-data-pipeline|Connect to the OSM data pipeline]] — write a chain ingest YAML, run the ingest script, and rebuild the cluster layer
-- [[federate-archives-via-content-mounts|Federate archives via content mounts]] — mount wiki content from one archive into a second instance using declarative TOML mounts
-- [[use-knowledge-mounts|Use declarative knowledge mounts]] — add a secondary content repository to a running wiki instance via knowledge.toml
+- [[build-a-colocation-map|Build a co-location map]] — load a PMTiles archive directly; no REST API or API key exists
+- [[connect-osm-data-pipeline|Connect to the OSM data pipeline]] — the real ingest-osm.py script and taxonomy.py registration
+- [[federate-archives-via-content-mounts|Federate archives via content mounts]] — mount a second repository's content into a running instance
+- [[use-knowledge-mounts|Use declarative knowledge mounts]] — the real [[mount]] schema and its real, unmitigated slug-collision risk
 
 ## Self-hosting
 

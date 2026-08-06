@@ -1,118 +1,94 @@
 ---
 schema: foundry-doc-v1
-title: "How to configure a tenant namespace"
+title: "Configure a tenant namespace"
 slug: configure-tenant-namespace
-short_description: "Configures an isolated tenant namespace: registers the tenant, sets quota limits, issues the root capability token, and verifies isolation and quota enforcement."
+short_description: "Configures a tenant namespace on service-vm-tenant via environment variables and a restart — the real config-driven mechanism, since no runtime tenant-registration API exists."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-07-18
+audience: "Engineers (hands on keyboard); customer operators"
+last_edited: 2026-08-06
 editor: pointsav-engineering
 paired_with: configure-tenant-namespace.es.md
+research_trail:
+  sources: [pointsav-monorepo service-vm-tenant/src/main.rs, service-vm-tenant/src/tenant.rs, service-vm-tenant/src/quota.rs, infrastructure/virt/local-vm-tenant.service]
+  verification_method: "independently source-verified against pointsav-monorepo on 2026-08-06 by reading the Rust source directly, with file:line citations recorded per claim; this guide's own prior Major Correction note (2026-07-18) had already confirmed no /v1/tenants API exists, but flagged the actual provisioning mechanism as needing further investigation before rewriting — this pass completes that investigation"
 ---
-
-A tenant namespace is the isolated partition within the platform that holds a single customer's resources — fleet nodes, sessions, audit records, and capability tokens. Configuring a tenant namespace means registering the tenant with the service layer, defining quota limits, and verifying that isolation is enforced. This guide covers initial namespace configuration for a single tenant.
-
-For the service that enforces tenant isolation, see [[service-vm-tenant]]. For the fleet architecture that namespaces span, see [[ppn-small-business-compute]].
-
-**Major correction (2026-07-18):** the API surface this guide describes does not exist in
-the live `service-vm-tenant` source. Direct verification of the route table
-(`service-vm-tenant/src/main.rs`) finds exactly four routes: `GET /healthz`, `POST /v1/vms`
-(create), `GET /v1/vms` (list), `DELETE /v1/vms/:vm_id`, and `GET /v1/status` — **no
-`/v1/tenants` endpoint of any kind.** Steps 1 and 2 below (`POST /v1/tenants` to register a
-tenant, `POST /v1/tenants/acme-corp/tokens` to issue a root capability token) describe
-routes that are not in the service. Tenant registration is not an API call at all in the
-live source — it is **config-driven at service startup** via a `TENANT_IDS` environment
-variable (the service logs "`TENANT_IDS not set — no tenants registered; all requests will
-401`" when it is absent), not a runtime "register a tenant" operation an administrator
-performs after the service is already up. Step 3's `GET /v1/vms` isolation check and Step
-4's quota-exceeded check are plausible against the real `/v1/vms` route, but have not been
-individually re-verified here. **Flagged, not silently rewritten** — this reads as either
-an early design that was replaced by simpler env-var-driven tenant provisioning, or a
-guide written ahead of the service it describes; needs project-totebox confirmation of the
-actual tenant-provisioning mechanism before Steps 1–2 are corrected or removed.
 
 ## Prerequisites
 
-- Administrator access to `service-vm-tenant` (the tenant proxy service, port 9221)
-- A tenant ID: a stable, lowercase ASCII string that identifies the customer (e.g., `acme-corp`)
-- Quota values agreed with the tenant: maximum concurrent VMs, storage quota, API request rate
+- Administrator access to the machine running `service-vm-tenant` (default port 9221)
+- A tenant ID: a stable, lowercase ASCII string identifying the customer (e.g., `acme-corp`)
+- Quota values agreed with the tenant: maximum concurrent VMs, maximum RAM
 
-## Step 1: Register the tenant
+## Purpose
 
-Create the tenant record by posting to the tenant service:
+Add a tenant namespace to `service-vm-tenant` the way the service actually supports today — editing its environment configuration and restarting it. There is no runtime registration API; provisioning is config-driven.
 
-```
-curl -X POST http://127.0.0.1:9221/v1/tenants \
-  -H "Authorization: Bearer <admin-token>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "tenant_id": "acme-corp",
-    "display_name": "Acme Corporation",
-    "max_vms": 10,
-    "storage_quota_gb": 100,
-    "api_rate_limit_rpm": 600
-  }'
-```
+## Procedure
 
-A successful response returns the tenant record with a `created_at` timestamp. The tenant ID is immutable after creation — choose it carefully. The WORM ledger records the creation event automatically.
+1. Add the tenant to the allowlist. `TENANT_IDS` is a bare comma-separated list of tenant IDs — it carries no quota data itself:
 
-## Step 2: Issue the tenant's root capability token
+   ```
+   TENANT_IDS=acme-corp,existing-tenant
+   ```
 
-After the namespace exists, issue a root capability token for the tenant's first administrator session. This token uses scope `service:tenant-admin` and is scoped to the new `tenant_id`:
+2. Set the new tenant's quotas as separate, per-tenant environment variables, named by uppercasing the tenant ID:
 
-```
-curl -X POST http://127.0.0.1:9221/v1/tenants/acme-corp/tokens \
-  -H "Authorization: Bearer <admin-token>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "subject_pubkey": "<tenant-admin-pubkey>",
-    "scope": "service:tenant-admin",
-    "expires_in_seconds": 86400
-  }'
-```
+   ```
+   TENANT_ACME_CORP_MAX_VMS=10
+   TENANT_ACME_CORP_MAX_RAM_MB=16384
+   ```
 
-Deliver this token to the tenant's designated administrator. They use it to issue sub-tokens and enroll their own devices.
+   Both are optional — if omitted, they default to 5 VMs and 8192 MB.
 
-## Step 3: Verify namespace isolation
+3. Set an authentication token for the tenant. `service-vm-tenant` uses a plain Bearer token, not a signed capability token:
 
-Confirm the tenant namespace is isolated from other tenants by querying the fleet under the new tenant's credentials:
+   ```
+   TOKEN_MAP=<a-generated-token>:acme-corp
+   ```
 
-```
-curl -s "http://127.0.0.1:9221/v1/vms" \
-  -H "Authorization: Bearer <tenant-admin-token>"
-```
+   > **Warning:** if `TOKEN_MAP` is left unset entirely, the service falls back to an explicitly-logged **insecure mode** where the bearer token literally *is* the tenant ID (`Authorization: Bearer acme-corp` authenticates as that tenant, no secret required). Set `TOKEN_MAP` for anything beyond local testing.
 
-The response must contain only VMs belonging to `acme-corp`. If VMs from other tenants appear, namespace enforcement has a defect — do not proceed; review the `service-vm-tenant` configuration.
+4. Restart `service-vm-tenant` to load the new configuration. There is no hot-reload, no admin endpoint, and no signal-based config refresh — `TENANT_IDS` and the per-tenant variables are read exactly once, at process startup.
 
-## Step 4: Verify quota enforcement
+## Expected outcome
 
-Submit a request that would exceed the configured quota to confirm enforcement is active. For example, if `max_vms` is 10, attempt to register an 11th VM. The service must return a `429 Too Many Requests` response with a quota-exceeded error body.
+`service-vm-tenant` recognizes requests bearing the new tenant's token, scopes every response to that tenant's own VMs automatically, and enforces the quotas you set.
 
-Quota enforcement failure is a billing and fairness defect — resolve it before the tenant begins production use.
+## Verification
 
-## Step 5: Confirm the WORM ledger entry
+Confirm the tenant is recognized and see its current usage in one call:
 
-The tenant creation event is permanently recorded. Verify the entry exists:
-
-```
-service-fs read --filter tenant-id=acme-corp --event-type TENANT_CREATED --limit 1
+```bash
+curl -s http://127.0.0.1:9221/v1/status \
+  -H "Authorization: Bearer <acme-corp-token>"
 ```
 
-The entry confirms when the namespace was created and under which administrator token. This record cannot be altered.
+This returns `tenant_id`, `vms_running`, `ram_used_mb`, `max_vms`, and `max_ram_mb` — a real, working quota-usage endpoint.
 
-## Key takeaways
+Confirm isolation by listing VMs — there is no client-supplied tenant filter; the server scopes results to whichever tenant the Bearer token authenticates as:
 
-- Tenant IDs are immutable after creation — choose descriptive, stable identifiers
-- Every tenant namespace has independent quota limits; configure them before the tenant starts enrolling nodes
-- Namespace isolation must be verified before handing off credentials to the tenant
-- A WORM ledger entry is created for every namespace lifecycle event (creation, quota change, deletion)
+```bash
+curl -s http://127.0.0.1:9221/v1/vms \
+  -H "Authorization: Bearer <acme-corp-token>"
+```
+
+Confirm quota enforcement by attempting to exceed `max_vms` or `max_ram_mb` via `POST /v1/vms`. Both limits are enforced synchronously, before the request reaches the fleet controller, and return `429 Too Many Requests` with a plain-text body describing the limit.
+
+## Rollback
+
+Remove the tenant's ID from `TENANT_IDS` (and its `TOKEN_MAP` entry, if set) and restart the service. Existing VMs the tenant owns are not automatically destroyed — deallocate them explicitly first via `DELETE /v1/vms/:vm_id` if that's the intent, since a removed tenant simply loses the ability to authenticate, not its running resources.
+
+## Next steps
+
+- [[issue-capability-token]] — a related but distinct credential system, for service-to-service authentication rather than tenant-scoped VM access
+- [[add-a-fleet-node]] — add compute capacity for tenants to place VMs on
 
 ## See also
 
 - [[service-vm-tenant]] — the tenant proxy service that enforces namespace boundaries
 - [[ppn-small-business-compute]] — the compute fleet architecture that tenant namespaces partition
-- [[issue-capability-token]] — how to issue capability tokens once the namespace exists
-- [[scale-user-tiers]] — adjusting per-user access tiers within an established namespace
-- [[add-a-fleet-node]] — enrolling the tenant's first compute node after namespace setup
+- [[scale-user-tiers]] — a separate, unrelated access-tier system for individual users within an archive

@@ -1,95 +1,73 @@
 ---
 schema: foundry-doc-v1
-title: "Cómo añadir un nodo a una flota en funcionamiento"
+title: "Añadir un nodo a una flota en funcionamiento"
 slug: add-a-fleet-node
-short_description: "Añade un nodo a una flota PPN en ejecución sin reiniciar los nodos existentes: verifica el estado del controlador, elige un ID de nodo sin conflictos e inicia su agente de latido."
+short_description: "Añade un segundo nodo a una flota PPN ya en funcionamiento usando la configuración real por variables de entorno de service-vm-host — el mismo mecanismo que el primer nodo, ya que nada cambia en la inscripción una vez que existe una flota."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-06-14
-editor: pointsav-engineering
+audience: "Ingenieros (con acceso directo al terminal); operadores de flota"
 language: es
 language_protocol: TRANSLATE-ES
+last_edited: 2026-08-06
+editor: pointsav-engineering
 paired_with: add-a-fleet-node.md
 ---
 
-Una flota en funcionamiento tiene uno o más nodos PPN ya inscritos y enviando latidos activamente. Añadir un nodo a una flota en funcionamiento significa inscribir una nueva máquina sin interrumpir la operación de los nodos existentes. Esta guía cubre los pasos específicos para añadir a una flota activa, a diferencia de inscribir el primer nodo.
-
-Para el procedimiento inicial de inscripción de nodos, véase [[enroll-ppn-node]]. Para el servicio controlador de flota, véase [[service-vm-fleet]].
-
 ## Requisitos previos
 
-- Al menos un nodo ya inscrito y el controlador de flota en ejecución (véase [[enroll-ppn-node]])
-- Una segunda máquina preparada con `service-vm-host` instalado
-- Un nuevo `NODE_ID` único que no entre en conflicto con ningún nodo existente en el espacio de nombres del tenant
+- Al menos un nodo ya inscrito y emitiendo latidos (véase [[enroll-ppn-node]])
+- Una segunda máquina con `service-vm-host` desplegado
+- Un `VM_NODE_ID` que no coincida con ningún nodo ya en la flota
 
-## Paso 1: Verificar el estado actual del controlador de flota
+## Propósito
 
-Antes de añadir un nodo, confirme que la flota existente esté saludable:
+Inscriba un segundo nodo (o un tercero, o el enésimo) en una flota que ya está en funcionamiento — unos minutos, y es exactamente el mismo procedimiento que inscribir el primer nodo. No existe ningún mecanismo separado de "añadir a una flota en funcionamiento"; el controlador de la flota acepta nodos nuevos en cualquier momento sin perturbar los existentes.
 
-```
-curl -s "http://<host-controlador-flota>:9203/v1/vms?tenant_id=<su-tenant-id>"
-```
+## Procedimiento
 
-Todos los nodos existentes deben mostrar una marca de tiempo `last_heartbeat` reciente (dentro de los últimos 60 segundos con la configuración predeterminada). Un nodo que muestra un latido obsoleto tiene un problema de conectividad — resuélvalo antes de añadir un nuevo nodo para evitar confundir el algoritmo de colocación recomendada.
+1. Verifique los IDs de nodo actuales de la flota existente para que el suyo no colisione:
 
-## Paso 2: Elegir un ID de nodo que no entre en conflicto
+   ```bash
+   curl -s http://<host-del-controlador-de-flota>:9203/v1/nodes
+   ```
 
-El controlador de flota rechaza los valores de `NODE_ID` duplicados dentro de un espacio de nombres de tenant. Liste los IDs actuales:
+   El controlador de la flota no rechaza nada en el momento de la inscripción basándose en el nombre — pero reutilizar un ID simplemente significaría que los latidos del nodo nuevo sobrescriben el registro del nodo existente, no un rechazo limpio. Elija un `VM_NODE_ID` genuinamente distinto.
 
-```
-curl -s "http://<host-controlador-flota>:9203/v1/vms?tenant_id=<su-tenant-id>" \
-  | jq '.[].node_id'
-```
+2. En la máquina nueva, establezca las mismas tres variables de entorno requeridas que en cualquier inscripción de nodo:
 
-Elija un ID para el nuevo nodo que siga el patrón de nomenclatura de los nodos existentes (p.ej., si los nodos existentes son `compute-west-01` y `compute-west-02`, nombre el nuevo `compute-west-03`).
+   ```bash
+   VM_FLEET_ENDPOINT=http://<host-del-controlador-de-flota>:9203
+   VM_NODE_ID=<nuevo-id-de-nodo-unico>
+   VM_WG_IP=<ip-wireguard-del-nuevo-nodo>
+   ```
 
-## Paso 3: Configurar e iniciar el agente de latido en la nueva máquina
+3. Inicie `service-vm-host` bajo systemd, como con cualquier nodo. Comienza a emitir latidos de inmediato — sin llamada de registro, y sin necesidad de reiniciar el controlador ni ningún nodo existente.
 
-En la nueva máquina, establezca la configuración e inicie `service-vm-host`:
+## Resultado esperado
 
-```
-FLEET_CONTROLLER_URL=http://<host-controlador-flota>:9203
-TENANT_ID=<su-tenant-id>
-NODE_ID=<nuevo-id-único>
+El nodo nuevo aparece en el listado del controlador de la flota junto a cada nodo existente, cada uno emitiendo latidos de forma independiente, en el plazo de un intervalo de latido (10 segundos por defecto).
 
-service-vm-host --controller $FLEET_CONTROLLER_URL --tenant $TENANT_ID --node-id $NODE_ID
-```
+## Verificación
 
-El agente se registra en su primer latido. El controlador de flota actualiza sus datos de colocación recomendada automáticamente — no se requiere reiniciar el controlador ni otros nodos.
-
-## Paso 4: Verificar que el nuevo nodo aparece en la flota
-
-Consulte la flota nuevamente y confirme que el nuevo nodo aparece junto a los existentes:
-
-```
-curl -s "http://<host-controlador-flota>:9203/v1/vms?tenant_id=<su-tenant-id>"
+```bash
+curl -s http://<host-del-controlador-de-flota>:9203/v1/nodes
 ```
 
-La respuesta ahora debe incluir el nuevo nodo con un `last_heartbeat` de los últimos 60 segundos.
+Confirme que su nuevo `VM_NODE_ID` aparece con un `last_heartbeat` reciente, y confirme que cada nodo que existía previamente sigue presente y emitiendo latidos también — añadir un nodo no toca el estado de ningún otro nodo.
 
-## Paso 5: Confirmar la distribución de carga
+## Reversión
 
-El algoritmo de colocación recomendada del controlador de flota equilibra las nuevas colocaciones de VM de tenants entre los nodos saludables. Después de añadir un nodo, envíe una nueva solicitud de colocación de VM y verifique que el controlador considere el nuevo nodo como candidato:
+Detenga el proceso `service-vm-host` del nodo nuevo. Sale del listado de la flota por sí solo tras aproximadamente 30 segundos sin latido — sin paso de eliminación separado, y sin efecto sobre el resto de la flota.
 
-```
-curl -s "http://<host-controlador-flota>:9203/v1/placement?tenant_id=<su-tenant-id>"
-```
+## Próximos pasos
 
-La respuesta sugiere un nodo de destino basado en la capacidad actual. Si el nuevo nodo no aparece como candidato, verifique que sus campos de capacidad informados estén poblados (memoria, CPU) en los datos del latido.
-
-## Puntos clave
-
-- El controlador de flota acepta nuevos nodos sin requerir que los nodos existentes se reinicien
-- Los valores de `NODE_ID` duplicados dentro de un espacio de nombres de tenant son rechazados — verifique los IDs actuales antes de elegir uno
-- La colocación recomendada se actualiza automáticamente cuando llega el primer latido de un nuevo nodo
-- Un latido obsoleto de los nodos existentes debe resolverse antes de añadir nuevos nodos para evitar sesgos en la colocación
+- [[enroll-ppn-node]] — el mismo procedimiento en detalle, incluyendo cada variable de entorno y su valor predeterminado
+- [[configure-tenant-namespace]] — configure cuotas para los tenants que colocan VMs en esta flota ampliada
 
 ## Véase también
 
-- [[enroll-ppn-node]] — inscribir el primer nodo en una flota desde cero
-- [[service-vm-fleet]] — el servicio del controlador de flota que gestiona el inventario de nodos y la colocación recomendada
-- [[configure-tenant-namespace]] — el espacio de nombres que contiene los nodos de la flota
-- [[ppn-small-business-compute]] — la arquitectura de la flota y el papel de cada nivel de nodo
-- [[verify-worm-ledger]] — confirmar que los eventos de inscripción de nodos están registrados permanentemente
+- [[service-vm-fleet]] — la tabla de rutas real y el modelo de estado del controlador de la flota
+- [[ppn-small-business-compute]] — la arquitectura de flota a la que se une este nodo

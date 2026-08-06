@@ -1,120 +1,66 @@
 ---
 schema: foundry-doc-v1
-title: "Cómo federar archivos mediante montajes de contenido"
+title: "Federar archivos mediante montajes de contenido"
 slug: federate-archives-via-content-mounts
-short_description: "Federa los artículos de una instancia de conocimiento en otra declarando un montaje de contenido en knowledge.toml, reiniciando el motor y verificando que los artículos montados se resuelvan sin copiar archivos."
+short_description: "Federa los artículos de una segunda instancia de conocimiento en una instancia en ejecución mediante una entrada [[mount]] en knowledge.toml — un espacio de nombres plano y combinado sin aislamiento, no un esquema de federación con prefijo de URL."
 category: how-to
 content_type: how-to
 type: how-to
-status: stable
+quality: complete
+status: active
+audience: "Ingenieros (con acceso directo al terminal); operadores de cliente"
+language: es
 language_protocol: TRANSLATE-ES
-last_edited: 2026-06-14
+last_edited: 2026-08-06
 editor: pointsav-engineering
 paired_with: federate-archives-via-content-mounts.md
 ---
 
-Los montajes de contenido permiten que una instancia de conocimiento lea el contenido de artículos de la ruta local de una segunda instancia sin copiar archivos. La instancia lectora renderiza el contenido montado como si fuera nativo, con los wikilinks resolviéndose dentro de su gráfico de origen. Esta guía cubre la declaración de un montaje secundario en `knowledge.toml`, la verificación de que el montaje está activo y el acceso a artículos desde la fuente federada.
+## Requisitos previos
 
-Para la arquitectura de federación, consulta [[federation-via-content-mounts]]. Para el motor de conocimiento que procesa las declaraciones de montaje, consulta [[app-mediakit-knowledge]].
+- Dos repositorios de contenido `media-knowledge-*` en el mismo sistema de archivos (o un montaje compartido como NFS)
+- Acceso de lectura desde el usuario del proceso de la instancia primaria al directorio de contenido del repositorio secundario
+- Acceso de escritura a `knowledge.toml` en la instancia primaria
 
-## Antes de empezar
+## Propósito
 
-Necesitas:
+Lea los artículos de una segunda instancia desde una instancia en ejecución sin copiar archivos — el mecanismo que `app-mediakit-knowledge` llama montaje de contenido. Esto es más limitado que una "federación" en el sentido aislado y con espacio de nombres propio que el término suele implicar: el contenido montado se une al mismo espacio de slugs plano que todo lo demás que la instancia ya sirve.
 
-- Dos instancias de `app-mediakit-knowledge` en ejecución en el mismo servidor
-  o en servidores con un sistema de archivos compartido (NFS o equivalente)
-- Acceso de lectura desde el usuario del proceso de la instancia principal al
-  directorio de contenido de la instancia secundaria
-- Acceso de escritura a `knowledge.toml` en la instancia principal
+## Procedimiento
 
-## Paso 1: Confirma la ruta de contenido de la instancia secundaria
+1. En el host que ejecuta el contenido secundario, confirme que el usuario del proceso de la instancia primaria puede leerlo:
 
-En el servidor que ejecuta la instancia secundaria, localiza su directorio de
-contenido. La ruta es el valor `content_root` en el `knowledge.toml` de la
-instancia secundaria:
+   ```
+   sudo -u <usuario-del-proceso-wiki> ls /srv/wiki/media-knowledge-projects
+   ```
 
-```shell
-grep content_root /ruta/al/secundario/knowledge.toml
-# ejemplo de salida: content_root = "/srv/wiki/media-knowledge-projects"
-```
+   Si la ruta está en un host remoto, móntela localmente primero. Una ruta ausente al iniciar hace que el montaje se omita, no que falle.
 
-Confirma que el usuario del proceso de la instancia principal puede leer la
-ruta:
+2. Declare el montaje en el `knowledge.toml` de la instancia primaria. Véase [[use-knowledge-mounts]] para los pasos mecánicos completos y el esquema real de `Mount` (`path`, `role`, `blueprint_set` — no existe ningún campo de prefijo de URL).
 
-```shell
-sudo -u <usuario-del-proceso-wiki> ls /srv/wiki/media-knowledge-projects
-```
+3. Reinicie la instancia primaria. Tanto la configuración como el contenido montado se leen una sola vez, al iniciar — los cambios en cualquiera de los dos requieren un reinicio para surtir efecto.
 
-Si la ruta está en un servidor remoto, móntala antes de continuar. El motor
-lee las fuentes de montaje al iniciar; una ruta ausente en ese momento hace
-que el montaje se omita con una advertencia en el registro.
+4. Acceda a un artículo del repositorio montado en el mismo patrón de ruta `/wiki/<slug>` que usa el primario para sus propios artículos — no hay ningún espacio de nombres ni prefijo separado al que navegar.
 
-## Paso 2: Declara el montaje en `knowledge.toml`
+## Resultado esperado
 
-Abre el `knowledge.toml` de la instancia principal y agrega una entrada
-`[[mount]]`:
+La instancia primaria sirve tanto sus propios artículos como los del repositorio montado, indistinguiblemente, desde un único índice de contenido combinado.
 
-```toml
-[[mount]]
-source = "/srv/wiki/media-knowledge-projects"
-prefix = "projects"
-```
+## Verificación
 
-`source` es la ruta absoluta al directorio de contenido secundario. `prefix`
-es una cadena de espacio de nombres opcional que evita colisiones de slugs
-cuando ambas instancias definen artículos con el mismo slug. Con
-`prefix = "projects"`, un artículo con slug `topic-co-location-methodology`
-en el archivo secundario se resuelve como `projects/topic-co-location-methodology`
-en el primario.
+Confirme que un artículo que sabe que existe solo en el repositorio montado se resuelve correctamente, y — de forma crítica — confirme que ningún repositorio tiene un artículo con un slug que el otro también use. Véase los pasos de verificación de [[use-knowledge-mounts]] para saber exactamente cómo comprobarlo.
 
-Omite `prefix` solo cuando estés seguro de que ningún slug aparece en ambas
-instancias.
+> **Advertencia:** los wikilinks dentro de los artículos montados se resuelven en el mismo espacio de nombres combinado que todo lo demás, sin ninguna comprobación de existencia — un enlace `[[algun-slug]]` funciona si ese slug existe en cualquier lugar de todos los montajes, y produce un enlace muerto si no existe, sin importar qué repositorio lo contenía originalmente. No asuma que los enlaces internos de un artículo montado permanecen limitados a su propio repositorio de origen.
 
-## Paso 3: Reinicia el motor wiki
+## Reversión
 
-Aplica la configuración reiniciando el servicio:
+Elimine la entrada `[[mount]]` y reinicie. Véase [[use-knowledge-mounts]] para saber qué revisar si una colisión de slugs ya eclipsó un artículo antes de que lo notara.
 
-```shell
-sudo systemctl restart app-mediakit-knowledge
-```
+## Próximos pasos
 
-El motor lee `knowledge.toml` una vez al iniciar. Una entrada `[[mount]]`
-agregada después del inicio inicial no tiene efecto hasta que el servicio
-reinicie.
-
-## Paso 4: Verifica que el montaje está activo
-
-Comprueba el registro de inicio para la línea de confirmación del montaje:
-
-```shell
-journalctl -u app-mediakit-knowledge --since "1 minuto atrás" | grep -i mount
-# esperado: Mounted secondary archive at prefix=projects (N articles)
-```
-
-Si la salida muestra `0 articles`, confirma que la ruta `source` es legible y
-contiene archivos `.md` a la profundidad esperada. Si la ruta está ausente, el
-registro muestra `Mount source not found — skipping` en lugar de un error al
-iniciar.
-
-## Paso 5: Accede a los artículos montados
-
-Navega la instancia principal para confirmar que los artículos del archivo
-secundario están disponibles. Con `prefix = "projects"` y un artículo
-secundario con slug `topic-co-location-methodology`, la URL es:
-
-```
-https://<dominio-primario>/how-to/projects/topic-co-location-methodology
-```
-
-Los wikilinks dentro de los artículos montados se resuelven en el gráfico de
-enlaces del archivo secundario, no del primario. Un enlace
-`[[topic-regional-markets-system]]` dentro de un artículo montado se resuelve
-en el gráfico secundario — los enlaces entre gráficos se renderizan como
-enlaces rojos.
+- [[use-knowledge-mounts]] — la mecánica completa paso a paso y el esquema real
+- [[deploy-knowledge-instance]] — provisione la instancia que servirá el contenido federado
 
 ## Véase también
 
-- [[federation-via-content-mounts]] — la arquitectura de federación declarativa y el modelo de montaje
-- [[app-mediakit-knowledge]] — el motor wiki que procesa las declaraciones de montaje de `knowledge.toml`
-- [[build-a-colocation-map]] — consume datos de inteligencia de ubicación expuestos a través de un montaje
-- [[self-host-a-deployment]] — provisiona la instancia que servirá el contenido federado
+- [[app-mediakit-knowledge]] — el motor wiki que procesa las declaraciones de montaje

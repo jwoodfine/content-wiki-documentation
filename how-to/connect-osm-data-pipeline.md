@@ -1,103 +1,94 @@
 ---
 schema: foundry-doc-v1
-title: "How to connect to the OSM data pipeline"
+title: "Connect to the OSM data pipeline"
 slug: connect-osm-data-pipeline
-short_description: "Ingesting a new retail or service chain from OpenStreetMap: write the ingest YAML, run the Overpass query, register the chain in the taxonomy, and rebuild the cluster layer."
+short_description: "Ingests a new retail or service chain from OpenStreetMap using the real ingest-osm.py script and taxonomy.py's CATEGORIES/BRAND_FILL dicts, then rebuilds the servable cluster tiles."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-06-14
+audience: "Engineers (hands on keyboard); customer operators"
+last_edited: 2026-08-06
 editor: pointsav-engineering
 paired_with: connect-osm-data-pipeline.es.md
+research_trail:
+  sources: [pointsav-monorepo app-orchestration-gis/ingest-osm.py, taxonomy.py, nightly-rebuild.sh (real rebuild script chain), how-to/collect-location-intelligence-data.md (the vendor-internal runbook that already exercised this exact pipeline against real chains)]
+  verification_method: "grounded directly in collect-location-intelligence-data.md's own real, executed command history rather than re-deriving the pipeline from scratch, cross-checked against app-orchestration-gis's real directory listing and nightly-rebuild.sh's actual script chain on 2026-08-06; resolves a contradiction between this guide's own prior correction note and its sibling's by confirming build-clusters.py (not build-geometric-ranking.py, which only adds ranking to an existing file, and not the VWH/PKS-specific scripts) is the real generic rebuild step"
 ---
-
-**Correction (2026-08-02, verified against canonical `origin/main`):** several specific script/schema claims below are wrong. The real ingest script is `ingest-osm.py`, not `ingest-chain.py` (different CLI shape). The real taxonomy config uses `CATEGORIES`/`BRAND_FILL` dicts keyed by NAICS category (confirmed accurate in the sibling [[collect-location-intelligence-data]] guide), not a `TaxonomyEntry`/`ALPHA_HYPERMARKET` class structure, which doesn't exist. The described "rebuild" step, `build-geometric-ranking.py`, in reality only adds ranking percentiles to an *existing* `clusters.geojson` — the real full rebuild is `build-clusters.py`. The output path should be the absolute deployment path `/srv/foundry/deployments/gateway-orchestration-gis-1/www/data/clusters-meta.json`, not the relative `gateway/www/data/clusters-meta.json` given below. This guide also links to `[[pointsav-gis-engine]]`, archived earlier this session — see [[location-intelligence-substrate]] instead. **Flagged, not resolved.**
-
-The platform's location intelligence system ingests point-of-interest (POI) data from OpenStreetMap via JSONL ingest files. Connecting to the OSM data pipeline means writing or adapting an ingest script that queries the Overpass API, producing a JSONL file in the platform's schema, and registering the ingest with the taxonomy configuration. This guide covers a single-chain ingest for a new retail or service category.
-
-For the GIS engine architecture, see [[pointsav-gis-engine]]. For building a map from ingested cluster data, see [[build-a-colocation-map]].
 
 ## Prerequisites
 
 - Access to the `app-orchestration-gis` working directory (the pipeline scripts)
-- Python 3.9+ with `requests` available
-- Network access to the Overpass API (`overpass-api.de` or a local mirror)
-- A Wikidata Q-ID for the chain or category being ingested (look up at `wikidata.org`)
+- Python 3.11+ with the pipeline's dependencies installed
+- Network access to the Overpass API
+- A Wikidata Q-ID for the chain you're ingesting (look it up at wikidata.org)
 
-## Step 1: Identify the Wikidata Q-ID
+## Purpose
 
-Every chain in the taxonomy is anchored to a Wikidata Q-ID. This provides a stable, language-neutral identifier for the entity. Look up the chain on Wikidata and record the Q-ID (e.g., Walmart: Q483551, IKEA: Q54078).
+Add a new retail or service chain to the location-intelligence pipeline — from raw OpenStreetMap data to a servable cluster tile — a chain that's genuinely been run before, not a hypothetical procedure.
 
-If the category has no single Wikidata entry, use a name-based query (`name_query` mode) rather than a Q-ID lookup.
+## Procedure
 
-## Step 2: Write the ingest YAML
+1. Look up the chain's Wikidata Q-ID. This is the stable, language-neutral identifier the taxonomy anchors to (Walmart: Q483551, IKEA: Q54078). If the chain has no clean Wikidata entry, you'll fall back to a name-based query later.
 
-Create an ingest YAML file under `service-business/` named `<chain-name>-<country-code>.yaml`:
+2. Run the ingest script directly against the chain's identifier — there's no separate YAML descriptor file to author for a straightforward run:
 
-```yaml
-chain: walmart-us
-wikidata_id: Q483551
-query_mode: wikidata    # or: name_query
-name_query: null         # used only when query_mode: name_query
-country_code: US
-bbox: [-125.0, 24.4, -66.9, 49.4]   # bounding box for the country
-output: service-business/walmart-us.jsonl
-taxonomy_family: ALPHA_HYPERMARKET
-taxonomy_tier: 1
+   ```bash
+   python3 ingest-osm.py --chain <chain-id>
+   ```
+
+   This queries the Overpass API and writes JSONL records to the platform's data directory. If the chain returns zero records, Wikidata tag coverage may be sparse in OpenStreetMap for that chain — check whether a name-based fallback query is warranted before assuming the chain has no data.
+
+3. Register the chain's category in `taxonomy.py`, in the `CATEGORIES` dict:
+
+   ```python
+   "your_category_slug": {
+       "label": "Human-Readable Category Name",
+       "naics": "<naics-code>",
+       "description": "One line describing what this category signals.",
+   },
+   ```
+
+4. Add the chain to `BRAND_FILL`, under its category, keyed by country code:
+
+   ```python
+   "your_category_slug": {
+       "US": ["your-chain-id"],
+       "CA": [],
+       # ... every display country needs an entry, even if empty
+   },
+   ```
+
+5. Rebuild the cluster layer and its servable tiles:
+
+   ```bash
+   python3 build-clusters.py       # rebuilds work/clusters.geojson from all registered chains
+   python3 build-tiles.py --layer 2  # regenerates the PMTiles archive served to the map
+   ```
+
+## Expected outcome
+
+The new chain's locations are present in the rebuilt cluster GeoJSON and reflected in the regenerated PMTiles archive that the map actually serves.
+
+## Verification
+
+Check the new chain's record count landed as expected:
+
+```bash
+grep -c '"chain":"your-chain-id"' path/to/your-chain-id.jsonl
 ```
 
-For `name_query` mode (when Wikidata coverage is sparse), set `query_mode: name_query` and provide `name_query: "Walmart"`. The ingest script performs a free-text name search in the Overpass API.
+Then confirm it appears in the rebuilt cluster output before treating the ingest as complete. A chain registered in the taxonomy but never actually ingested, or an ingest that ran but was never included in a rebuild, both leave the map showing stale data with no error to warn you.
 
-## Step 3: Run the ingest script
+## Rollback
 
-Run the existing ingest script with the new YAML:
+Remove the chain's entries from `CATEGORIES`/`BRAND_FILL` and delete its JSONL file, then re-run the rebuild steps to regenerate cluster output without it. There's no in-place "undo" for a rebuild already served — the previous state is only recoverable by rebuilding again from a taxonomy that excludes the chain.
 
-```
-python3 app-orchestration-gis/ingest-chain.py service-business/walmart-us.yaml
-```
+## Next steps
 
-The script queries the Overpass API, filters results by the bounding box and country code, and writes JSONL records to `service-business/walmart-us.jsonl`. Each record contains: `name`, `lat`, `lon`, `wikidata_id`, `chain`, `country`, `taxonomy_family`, `taxonomy_tier`.
-
-Typical record counts: dense urban chains produce 500–2,000 records; national hypermarket chains produce 100–500; specialty retailers produce 50–200.
-
-## Step 4: Register the chain in the taxonomy
-
-Add the new chain to the taxonomy configuration in `app-orchestration-gis/taxonomy.py` under the appropriate family group:
-
-```python
-"walmart-us": TaxonomyEntry(
-    family="ALPHA_HYPERMARKET",
-    tier=1,
-    jsonl_path="service-business/walmart-us.jsonl",
-    wikidata_id="Q483551",
-),
-```
-
-## Step 5: Rebuild the cluster layer
-
-After registration, rebuild the cluster layer to incorporate the new POI data:
-
-```
-python3 app-orchestration-gis/build-geometric-ranking.py
-```
-
-The rebuild reads all registered JSONL files, runs the DBSCAN clustering pass, and regenerates `clusters-meta.json`. Verify the new chain appears in the cluster output:
-
-```
-python3 -c "import json; d=json.load(open('gateway/www/data/clusters-meta.json')); print(sum(1 for c in d['clusters'] if 'walmart' in str(c)))"
-```
-
-## Key takeaways
-
-- Every chain requires a YAML ingest descriptor and a JSONL output file in `service-business/`
-- Wikidata Q-IDs are preferred over name queries; fall back to name queries only when Wikidata coverage is absent
-- The taxonomy registration step links the JSONL file to the clustering pipeline
-- A full cluster rebuild is required after adding a new chain — incremental updates are not supported in the current pipeline
+- [[build-a-colocation-map]] — render the rebuilt cluster tiles in a MapLibre application
 
 ## See also
 
-- [[pointsav-gis-engine]] — the GIS engine architecture and the DBSCAN clustering pipeline
-- [[build-a-colocation-map]] — how to surface cluster data in a MapLibre web application
-- Location intelligence archetypes (projects.woodfinegroup.com/site-selection) — the PRO/VWH/PKS archetype model that the taxonomy feeds
-- [[export-structured-data]] — exporting the resulting GeoJSON for external use
+- [[location-intelligence-substrate]] — the flat-file/PMTiles architecture this pipeline feeds
