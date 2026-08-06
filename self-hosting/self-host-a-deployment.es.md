@@ -17,12 +17,6 @@ editor: pointsav-engineering
 paired_with: self-host-a-deployment.md
 ---
 
-**Corrección (2026-08-04):** este artículo describía anteriormente un binario
-`pointsav-gateway`, un esquema `manifest.toml` y un modelo de token de licencia. Ninguno
-de ellos corresponde a un crate real del monorepo. Esta es una reescritura completa en
-torno al mecanismo real de autoalojamiento descrito abajo, no un parche del contenido
-anterior. **Señalado en la versión anterior, ahora resuelto.**
-
 ## Requisitos previos
 
 - Un host capaz de ejecutar QEMU para `aarch64` (las imágenes de appliance apuntan a esta arquitectura con independencia de la CPU propia del host)

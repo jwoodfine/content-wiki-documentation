@@ -16,14 +16,6 @@ paired_with: self-host-a-deployment.es.md
 research_trail:
   sources: [GUIDE-deploying-os-totebox-orchestration-appliances.draft.md (project-totebox, 2026-08-03), BRIEF-os-totebox-platform.md, .agent/binary-targets.yaml]
   verification_method: "consolidated with project-totebox's own staged, source-verified draft rather than re-derived independently"
----
-
-**Correction (2026-08-04):** this article previously described a `pointsav-gateway`
-binary, a `manifest.toml` schema, and a licence-token model. None of these correspond
-to any real crate in the monorepo. This is a full rewrite around the real self-hosting
-mechanism below, not a patch of the prior content. **Flagged in the prior version, now
-resolved.**
-
 ## Prerequisites
 
 - A host that can run QEMU for `aarch64` (the appliance images target this architecture regardless of your host's own CPU)
