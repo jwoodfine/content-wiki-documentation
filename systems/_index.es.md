@@ -68,7 +68,7 @@ Los sistemas que gestionan el tejido de red, la ruta de arranque y el sustrato d
 El SO orientado al público que aloja la superficie de marketing de la empresa, el wiki interno y la sala de prensa de cumplimiento en un único dispositivo soberano.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: publishing-and-media -->
-- [[mediakit-os]] — El SO orientado al público: aloja el sitio web de marketing de una empresa, el wiki interno y la sala de prensa de cumplimiento en un único dispositivo soberano propiedad de la empresa.
+- [[os-mediakit]] — La imagen del SO invitado para el nivel vm-mediakit, que aísla los wikis de conocimiento, los sitios de marketing, el corrector de pruebas y la orquestación BIM de los niveles de bóveda y orquestación. Ubuntu 24.04 hoy; una imagen seL4 Microkit es la forma prevista a largo plazo.
 <!-- END AUTO-GENERATED -->
 
 ## Véase también

@@ -67,7 +67,7 @@ The systems that manage the network fabric, the bootstrap path, and the underlyi
 The public-facing OS that hosts the company's marketing surface, internal wiki, and compliance newsroom on a single sovereign appliance.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: publishing-and-media -->
-- [[mediakit-os]] — The public-facing OS: hosts a company's marketing website, internal wiki, and compliance newsroom on a single sovereign appliance the company owns outright.
+- [[os-mediakit]] — The guest OS image for the vm-mediakit tier, isolating knowledge wikis, marketing sites, the proofreader, and BIM orchestration from the vault and orchestration tiers. Ubuntu 24.04 today; a seL4 Microkit image is the planned long-term form.
 <!-- END AUTO-GENERATED -->
 
 ## See also

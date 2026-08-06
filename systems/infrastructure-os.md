@@ -18,7 +18,7 @@ short_description: "os-infrastructure is the compute substrate hosting PointSav 
 cites: []
 ---
 
-`os-infrastructure` is the compute substrate that hosts the other PointSav operating systems. One instance runs on one piece of hardware — a bare-metal server in an office, a colocated rack, or a cloud virtual machine. Taken together, a fleet of `os-infrastructure` nodes forms the [[pointsav-private-network|PointSav Private Network]] (PPN): an encrypted WireGuard mesh that ties [[totebox-os|Toteboxes]], [[console-os|Consoles]], [[mediakit-os|MediaKits]], and [[os-privategit|PrivateGit]] instances together without exposing any node to the public internet. This article covers the three deployment postures, the [[genesis-protocol|Genesis Protocol]] that bootstraps a fleet, and the structural gap in conventional cloud offerings that the design exploits.
+`os-infrastructure` is the compute substrate that hosts the other PointSav operating systems. One instance runs on one piece of hardware — a bare-metal server in an office, a colocated rack, or a cloud virtual machine. Taken together, a fleet of `os-infrastructure` nodes forms the [[pointsav-private-network|PointSav Private Network]] (PPN): an encrypted WireGuard mesh that ties [[totebox-os|Toteboxes]], [[console-os|Consoles]], [[os-mediakit|MediaKits]], and [[os-privategit|PrivateGit]] instances together without exposing any node to the public internet. This article covers the three deployment postures, the [[genesis-protocol|Genesis Protocol]] that bootstraps a fleet, and the structural gap in conventional cloud offerings that the design exploits.
 
 ## The three deployment postures
 

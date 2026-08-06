@@ -88,7 +88,7 @@ The workspace is intended to run on two separate compute nodes:
 
 **[[os-orchestration|os-orchestration]] node** — the development environment. Hosts the Command Session, all [[totebox-archive|Totebox Archives]], the [[service-slm|`service-slm`]] access-control gateway, source code, and workspace tooling. Intelligence work, code development, and staging are intended to happen here. Not accessible from the public internet.
 
-**[[mediakit-os|os-mediakit]] node** — the delivery layer. Hosts the live public websites, nginx, and production service instances. Receives deployments from the [[os-orchestration|os-orchestration]] node via a deliberate human-gated rsync bridge. No source code, no development work, no direct connection to the os-orchestration node.
+**[[os-mediakit]] node** — the delivery layer. Hosts the live public websites, nginx, and production service instances. Receives deployments from the [[os-orchestration|os-orchestration]] node via a deliberate human-gated rsync bridge. No source code, no development work, no direct connection to the os-orchestration node.
 
 The separation is designed so that a development incident — a failing test, a disk-full event, an unfinished feature — cannot affect the live public websites. The rsync bridge is intended as the deliberate human gate between development and production, consistent with the [[architecture-decisions|SYS-ADR-19]] discipline of no automated publishing to live environments.
 

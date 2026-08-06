@@ -18,7 +18,7 @@ short_description: "os-infrastructure es el sustrato de cómputo que aloja los s
 cites: []
 ---
 
-`os-infrastructure` es el sustrato de cómputo que aloja los demás sistemas operativos de PointSav. Una instancia se ejecuta en una pieza de hardware — un servidor bare-metal en una oficina, un rack colocado o una máquina virtual en la nube. Tomado en conjunto, una flota de nodos `os-infrastructure` forma la [[pointsav-private-network|Red Privada PointSav]] (PPN): una malla cifrada WireGuard que conecta [[totebox-os|Toteboxes]], [[console-os|Consolas]], [[mediakit-os|MediaKits]] e instancias [[os-privategit|PrivateGit]] sin exponer ningún nodo a internet público. Este artículo cubre los tres modos de despliegue, el Protocolo Génesis que arranca una flota y la brecha estructural en las ofertas convencionales de nube que el diseño explota.
+`os-infrastructure` es el sustrato de cómputo que aloja los demás sistemas operativos de PointSav. Una instancia se ejecuta en una pieza de hardware — un servidor bare-metal en una oficina, un rack colocado o una máquina virtual en la nube. Tomado en conjunto, una flota de nodos `os-infrastructure` forma la [[pointsav-private-network|Red Privada PointSav]] (PPN): una malla cifrada WireGuard que conecta [[totebox-os|Toteboxes]], [[console-os|Consolas]], [[os-mediakit|MediaKits]] e instancias [[os-privategit|PrivateGit]] sin exponer ningún nodo a internet público. Este artículo cubre los tres modos de despliegue, el Protocolo Génesis que arranca una flota y la brecha estructural en las ofertas convencionales de nube que el diseño explota.
 
 ## Los tres modos de despliegue
 

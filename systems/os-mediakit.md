@@ -5,6 +5,7 @@ title: "OS mediakit"
 slug: os-mediakit
 short_description: "Guest OS image for the vm-mediakit tier — isolates knowledge wikis, marketing sites, proofreader, and BIM orchestration from the vault and orchestration tiers."
 category: systems
+index_group: publishing-and-media
 last_edited: 2026-07-11
 editor: pointsav-engineering
 status: stable

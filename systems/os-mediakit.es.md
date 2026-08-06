@@ -5,6 +5,7 @@ title: "OS Mediakit"
 slug: os-mediakit
 short_description: "Imagen de SO invitado para el nivel vm-mediakit — aísla wikis de conocimiento, sitios de marketing, corrector y orquestación BIM de los niveles de bóveda y orquestación."
 category: systems
+index_group: publishing-and-media
 last_edited: 2026-05-29
 editor: pointsav-engineering
 status: stable

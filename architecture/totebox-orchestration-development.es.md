@@ -85,7 +85,7 @@ El espacio de trabajo está previsto para ejecutarse en dos nodos de cómputo se
 
 **Nodo [[os-orchestration|os-orchestration]]** — el entorno de desarrollo. Aloja la sesión de Comando, todos los [[totebox-archive|archivos Totebox]], la pasarela [[service-slm|`service-slm`]], el código fuente y las herramientas del espacio de trabajo. El trabajo de inteligencia, el desarrollo de código y el staging están previstos para suceder aquí. No accesible desde la internet pública.
 
-**Nodo [[mediakit-os|os-mediakit]]** — la capa de entrega. Aloja los sitios web públicos activos, nginx y las instancias de servicio en producción. Recibe despliegues desde el nodo [[os-orchestration|os-orchestration]] a través de un puente rsync deliberadamente con compuerta humana. Sin código fuente, sin trabajo de desarrollo, sin conexión directa con el nodo os-orchestration.
+**Nodo [[os-mediakit]]** — la capa de entrega. Aloja los sitios web públicos activos, nginx y las instancias de servicio en producción. Recibe despliegues desde el nodo [[os-orchestration|os-orchestration]] a través de un puente rsync deliberadamente con compuerta humana. Sin código fuente, sin trabajo de desarrollo, sin conexión directa con el nodo os-orchestration.
 
 La separación está diseñada para que un incidente de desarrollo — una prueba fallida, un evento de disco lleno, una característica inacabada — no pueda afectar a los sitios web públicos activos. El puente rsync está concebido como la compuerta humana deliberada entre desarrollo y producción, coherente con la disciplina SYS-ADR-19 de no publicación automatizada a entornos activos.
 

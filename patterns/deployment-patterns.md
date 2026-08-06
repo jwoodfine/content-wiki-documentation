@@ -92,7 +92,7 @@ Each canonical configuration has a corresponding subdirectory under the fleet-de
 |---|---|---|
 | `vault-privategit-source` | Internal source-control deployment; the workspace is an instance of this template (Correction, 2026-08-02: this row previously carried the `-1` instance suffix, but this is the catalog row — per this wiki's own [[customer-tier-catalog-pattern]] naming rule, catalog entries never carry the instance suffix; `-1` names the running instance, not the template) | Active |
 | Real-property asset-management | The reference operational deployment for a real-property firm | Planned |
-| Reporting Issuer | An [[mediakit-os]] and [[totebox-os]] pair for public-company disclosure | Planned |
+| Reporting Issuer | An [[os-mediakit]] and [[totebox-os]] pair for public-company disclosure | Planned |
 
 Templates in the Showcase Layer correspond to numbered instances in the Instance Layer — private to the operator, gitignored from all public repositories. See [[three-layer-architecture]] for the three-layer model.
 

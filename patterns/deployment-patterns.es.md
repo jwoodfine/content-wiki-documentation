@@ -86,7 +86,7 @@ El modelo de aislamiento se deriva del patrón arquitectónico de micro-frontend
 |---|---|---|
 | `vault-privategit-source-1` | Despliegue de control de fuentes interno; el espacio de trabajo es una instancia de esta plantilla | Activo |
 | Gestión de activos inmobiliarios | El despliegue operativo de referencia para una empresa inmobiliaria | Planeado |
-| Emisor de información | Un par de [[mediakit-os]] y [[totebox-os]] para divulgación de empresa pública | Planeado |
+| Emisor de información | Un par de [[os-mediakit]] y [[totebox-os]] para divulgación de empresa pública | Planeado |
 
 Las plantillas en la Capa de Exhibición corresponden a instancias numeradas en la Capa de Instancias — privadas para el operador, ignoradas por git en todos los repositorios públicos. Consulte [[three-layer-architecture]] para el modelo de tres capas.
 

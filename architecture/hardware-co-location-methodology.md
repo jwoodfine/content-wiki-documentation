@@ -24,7 +24,7 @@ The co-location methodology is the structured approach [[pointsav-overview|Point
 
 Co-location, in the PointSav deployment model, refers to placing customer-owned hardware in a third-party data centre facility rather than on a customer's own premises. The customer retains ownership of the hardware, the software stack, and the data; the facility provides power, cooling, physical security, and network transit.
 
-The methodology addresses the site-selection step: given a deployment requirement — a [[totebox-os|ToteboxOS]] node, a [[mediakit-os|MediaKit-class]] workload, or a GPU-capable inference tier — which facilities across which development regions best satisfy the combination of latency, jurisdiction, compliance posture, and cost constraints?
+The methodology addresses the site-selection step: given a deployment requirement — a [[totebox-os|ToteboxOS]] node, a [[os-mediakit|MediaKit-class]] workload, or a GPU-capable inference tier — which facilities across which development regions best satisfy the combination of latency, jurisdiction, compliance posture, and cost constraints?
 
 ## Scoring dimensions
 
