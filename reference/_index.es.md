@@ -63,9 +63,8 @@ paired_with: _index.md
 - [[wiki-provider-landscape|Panorama de proveedores de wikis]] — una auditoría estructural de por qué ningún proveedor existente ha cerrado la brecha de Wikipedia
 <!-- END AUTO-GENERATED -->
 
-## Lo que esto no es
-
-Esta página no es en sí misma una fuente de definiciones — para un término específico, acuda directamente al glosario en lugar de buscar en esta lista. No es exhaustiva de todo hecho de referencia en el wiki: las definiciones arquitectónicas viven junto a su tema (`substrate/`, `security/`), no aquí. No distingue visualmente entre términos específicos de la plataforma y de computación general — ambos viven en esta categoría porque un lector que consulta uno suele consultar también el otro.
+Para un término específico, acuda directamente al [[glossary-documentation|glosario]]. Los
+términos arquitectónicos se definen junto a su tema, no se enumeran aquí.
 
 ## Véase también
 

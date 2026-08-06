@@ -87,14 +87,9 @@ Mantener el código honesto desde la máquina de un colaborador hasta producció
 
 ## Lo que esto no es
 
-Esta página no sustituye la lectura de los artículos enlazados — la anotación de una línea de
-cada grupo orienta, no reemplaza las advertencias propias del mecanismo subyacente ni su propia
-sección "qué no es esto". No es exhaustiva de todo hecho relevante para la seguridad en esta
-wiki: los límites de aislamiento son especialmente delgados aquí porque el trabajo de
-aislamiento de inquilinos comercialmente relevante vive en [[infrastructure|Dónde se ejecuta]],
-no en esta categoría. No es una certificación de cumplimiento: varios artículos enlazados
-describen mecanismos planificados, aún no construidos, con el matiz correspondiente en su propio
-texto.
+Varios artículos enlazados aquí describen mecanismos planificados, aún no construidos, y
+están matizados en su propio texto. Esta página es una orientación, no una certificación
+de cumplimiento.
 
 ## Véase también
 

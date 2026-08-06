@@ -82,14 +82,8 @@ Keeping code honest from a contributor's machine to production.
 - [[pre-commit-defense-in-depth|Pre-commit defense in depth]] — the helper-only gate, secret-pattern scan, and size guard that run on every commit
 <!-- END AUTO-GENERATED -->
 
-## What this is not
-
-This page is not a substitute for reading the linked articles — each group's one-line annotation
-orients, it doesn't replace the underlying mechanism's own caveats and "what this is not"
-section. It is not exhaustive of every security-relevant fact in this wiki: isolation boundaries
-in particular are thin here because the commercially load-bearing tenant-isolation work lives in
-[[infrastructure|Where It Runs]], not this category. It is not a compliance attestation — several
-linked articles describe planned, not-yet-built mechanisms, hedged accordingly in their own text.
+Several articles linked here describe planned, not-yet-built mechanisms and are hedged in
+their own text. This page is an orientation, not a compliance attestation.
 
 ## See also
 

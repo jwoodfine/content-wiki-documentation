@@ -16,15 +16,6 @@ editor: pointsav-engineering
 paired_with: _index.es.md
 ---
 
-**Correction (2026-08-04):** superseded a legacy MOC page (`slug: _index`, `type:
-reference`, no `index_type`/`index_scope`) that listed only 10 of this category's 23
-real articles — 13 were never added as the category grew. This is the same content
-rebuilt against the Index Topic mechanism, with every current article included.
-**Resolved, not silently dropped** — the legacy page's own 2 sections that no longer
-apply (BIM/real-property reference, since that content moved to the projects wiki;
-the 2 wikilinks now pointing to categories rather than articles) are not carried
-forward, since both were already stale pointers, not real content.
-
 **Reference material** on this platform serves two different needs: a reader who wants one term defined precisely, and a reader who wants to understand the vocabulary well enough to read everything else in this wiki without stumbling. Both needs live here — general computing concepts defined in plain language, the full platform glossary, orientation for a reader who hasn't picked a starting point yet, and the standards this wiki itself is written to.
 
 <!-- START-HERE-HIGHLIGHT: engine reads this block to render the single "start here" card
@@ -72,9 +63,8 @@ forward, since both were already stale pointers, not real content.
 - [[wiki-provider-landscape|Wiki provider landscape]] — a structural audit of why no existing provider has closed Wikipedia's gap
 <!-- END AUTO-GENERATED -->
 
-## What this is not
-
-This page is not itself a definition source — for a specific term, go to the glossary directly rather than searching this list. It is not exhaustive of every reference-shaped fact in the wiki: architectural definitions live with their subject (`substrate/`, `security/`), not here. It does not distinguish platform-specific from general-computing terms visually — both live in this category because a reader consulting one is often also consulting the other.
+For a specific term, go to the [[glossary-documentation|glossary]] directly. Architectural
+terms are defined with their subject, not listed here.
 
 ## See also
 

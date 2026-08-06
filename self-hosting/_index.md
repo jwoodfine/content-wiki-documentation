@@ -39,9 +39,9 @@ paired_with: _index.es.md
 - [[run-local-slm-inference|Run local SLM inference]] — start the local model and submit a request through Doorman
 <!-- END AUTO-GENERATED -->
 
-## What this is not
-
-This page is not a substitute for reading the linked guides — each one carries its own prerequisites, verification steps, and rollback procedure that this page doesn't repeat. It does not cover day-to-day platform operation once a deployment is running (pairing devices, issuing tokens, scaling access) — those guides stay in [How You Run It](/category/how-to) until they get the same category treatment in a later pass.
+Each guide carries its own prerequisites, verification steps, and rollback procedure; this
+page doesn't repeat them. Day-to-day operation of a running deployment is in
+[How You Run It](/category/how-to).
 
 ## See also
 

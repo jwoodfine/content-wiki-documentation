@@ -39,9 +39,9 @@ paired_with: _index.md
 - [[run-local-slm-inference|Ejecutar inferencia SLM local]] — inicie el modelo local y envíe una solicitud a través de Doorman
 <!-- END AUTO-GENERATED -->
 
-## Lo que esto no es
-
-Esta página no sustituye la lectura de las guías enlazadas — cada una tiene sus propios prerrequisitos, pasos de verificación y procedimiento de reversión que esta página no repite. No cubre la operación cotidiana de la plataforma una vez que un despliegue está en marcha (emparejar dispositivos, emitir tokens, escalar el acceso) — esas guías permanecen en [Cómo lo opera](/category/how-to) hasta que reciban el mismo tratamiento de categoría en una fase posterior.
+Cada guía tiene sus propios prerrequisitos, pasos de verificación y procedimiento de
+reversión; esta página no los repite. La operación cotidiana de un despliegue en marcha
+está en [Cómo lo opera](/category/how-to).
 
 ## Véase también
 
