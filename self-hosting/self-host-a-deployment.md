@@ -15,7 +15,9 @@ editor: pointsav-engineering
 paired_with: self-host-a-deployment.es.md
 research_trail:
   sources: [GUIDE-deploying-os-totebox-orchestration-appliances.draft.md (project-totebox, 2026-08-03), BRIEF-os-totebox-platform.md, .agent/binary-targets.yaml]
-  verification_method: "consolidated with project-totebox's own staged, source-verified draft rather than re-derived independently"
+  verification_method: "independently confirmed by project-totebox 2026-08-06 against real source (build-guest-rootfs.sh + deploy-loader-img.sh present for both os-totebox and app-orchestration-slm; vendor-libvmm/ confirmed genuine upstream seL4 Microkit VMM) after this archive raised a direct contradiction question against capability-based-security.md and os-totebox's Cargo.toml; app-orchestration-command's separate, not-yet-built seL4 packaging status was confirmed at the same time and does not apply to this guide, which never references that product"
+---
+
 ## Prerequisites
 
 - A host that can run QEMU for `aarch64` (the appliance images target this architecture regardless of your host's own CPU)
