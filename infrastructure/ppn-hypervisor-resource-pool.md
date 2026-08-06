@@ -58,7 +58,7 @@ A cluster-totebox VM running an active inference workload (via `service-slm`) ca
 
 ## Relationship to os-orchestration
 
-`os-orchestration` is a data-layer aggregator. It aggregates **data access** across Totebox Archives using the PointSav Protocol (PSP) — capability-based queries that return only result rows, never raw records. It is stateless and holds no keys to archives.
+`os-orchestration` is a data-layer aggregator. It is designed to aggregate **data access** across Totebox Archives using capability-based queries that return only result rows, never raw records. It is stateless and holds no keys to archives.
 
 `os-orchestration` does not allocate CPU. It does not adjust memory. It does not communicate with the hypervisor balloon controller. The two layers are designed to be blind to each other:
 

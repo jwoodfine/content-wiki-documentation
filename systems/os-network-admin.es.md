@@ -35,7 +35,7 @@ Esta distinción es importante: `os-network-admin` no almacena ni procesa datos 
 
 ### Enrutamiento e integridad de túnel
 
-`os-network-admin` establece y mantiene la malla WireGuard en la interfaz `ppn0`. Gestiona la distribución del mapa de pares, supervisa la actividad del túnel y aplica las reglas del Diodo que restringen qué nodos pueden enviar comandos a qué destinos. No inspecciona el contenido del tráfico que fluye a través de los túneles.
+`os-network-admin` establece y mantiene la malla WireGuard en la interfaz `wg0`. Gestiona la distribución del mapa de pares, supervisa la actividad del túnel y aplica las reglas del Diodo que restringen qué nodos pueden enviar comandos a qué destinos. No inspecciona el contenido del tráfico que fluye a través de los túneles.
 
 ### Ceremonia de unión de nodos
 
@@ -44,10 +44,10 @@ Cuando un nuevo nodo físico quiere unirse a la malla PPN, genera un código cor
 La implementación mínima actual consulta el backend `service-ppn-pairing` en busca de solicitudes pendientes y las imprime en la salida estándar. La aprobación del operador se emite mediante curl:
 
 ```bash
-PAIRING_SERVER=http://10.8.0.9:9202 ./os-network-admin
+PAIRING_SERVER=http://10.8.0.9:9205 ./os-network-admin
 
 # Aprobar una unión pendiente desde otra terminal:
-curl -s -X POST http://10.8.0.9:9202/v1/node-join/approve \
+curl -s -X POST http://10.8.0.9:9205/v1/node-join/approve \
      -H 'Content-Type: application/json' \
      -d '{"code":"XXXX-XXXX"}'
 ```
@@ -69,7 +69,7 @@ La división `os-` / `app-` sigue la convención de nomenclatura estándar Found
 
 ## Hardware de destino
 
-El hardware de referencia canónico es un iMac 12,1 (mediados de 2011) con un Intel Sandy Bridge i5-2400S y una NIC Broadcom 14e4:16b4. Esta máquina es especialmente adecuada como nodo de autoridad de comando: tiene VT-x de hardware real (para ejecutar VMs en la misma máquina si es necesario), una NIC Broadcom para la que `system-substrate-broadcom` proporciona el sustrato de detección de silicio, y una ubicación física estable en el sitio del operador.
+El hardware de referencia canónico es una plataforma Intel Sandy Bridge i5-2400S con una NIC Broadcom 14e4:16b4. Esta máquina es especialmente adecuada como nodo de autoridad de comando: tiene VT-x de hardware real (para ejecutar VMs en la misma máquina si es necesario), una NIC Broadcom para la que `system-substrate-broadcom` proporciona el sustrato de detección de silicio, y una ubicación física estable en el sitio del operador.
 
 Para despliegues donde dedicar hardware físico no es práctico, `os-network-admin` puede ejecutarse dentro de un contenedor LXC en el nodo de flota local, con la interfaz WireGuard puenteada desde el host.
 

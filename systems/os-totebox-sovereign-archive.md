@@ -13,20 +13,45 @@ paired_with: os-totebox-sovereign-archive.es.md
 category: systems
 status: active
 quality: complete
-last_edited: 2026-07-18
+last_edited: 2026-08-06
 ---
 
 # os-totebox: The Sovereign WORM Data Vault (Intended Design)
 
-**Correction (2026-07-18):** this article describes os-totebox's intended end-state
-architecture — the seL4 Microkit bare-metal image is planned for Phase H1 of the
-platform roadmap and has not shipped. The `os-totebox` binary running today is a
-conventional Rust/tokio process (`service-content` + `service-slm`/Doorman run as one
-deployable process, per the crate's own description) — not a seL4 bare-metal OS. The
-capability-graph/Protection-Domain design below is real, intended engineering work, not
-fabrication, but it is future-tense throughout — read every present-tense claim in this
-article as "designed to" or "intended to," not as a description of the software as
-deployed today. `bcsc_class` corrected to `forward-looking` to match.
+**Status (2026-08-06):** the seL4 Microkit image described in this article has moved
+from planned to live-verified. A real boot of the image is confirmed, with end-to-end
+inference round-trips confirmed working — the capability-graph and Protection-Domain
+design below is real, current engineering, not merely intended work or a paper design.
+This is a verified boot milestone on the seL4 path specifically; it is not yet a
+description of os-totebox's general deployment, which remains the conventional
+Rust/tokio process (`service-content` + `service-slm`/Doorman run as one deployable
+process) described in the platform's engineering registry. `bcsc_class` stays
+`forward-looking`: the full production stack, capability-graph enforcement at scale, and
+the persistence guarantees this article argues for are not yet real — see Known
+limitations, below, before treating this as a deployed, persistent sovereign vault. Read
+every other present-tense architectural claim in this article as the target design,
+confirmed today only at the boot-and-inference layer described here.
+
+## Known limitations (2026-08-06)
+
+Three gaps are open against this article's own positioning as a persistent sovereign
+vault, and are load-bearing for anyone evaluating the design today:
+
+- **Storage is not yet persistent.** The deployed guest's virtio-blk storage device is
+  never actually mounted. A guest reboot wipes all data — a direct, current gap against
+  the "persistent WORM vault" positioning this article argues for.
+- **Graceful shutdown is broken.** Shutdown via QMP (QEMU Machine Protocol) is documented
+  as broken: the guest has no ACPI or power-button device to receive a shutdown request.
+  Redeploys currently hard-kill the guest, with no checkpoint guarantee at the moment of
+  kill.
+- **Nothing anchors or signs the ledger yet.** The integrity-anchoring companion service
+  has been failing since 2026-08-01, and checkpoint signing is deliberately left unset at
+  this baseline. The WORM ledger runs, but no external anchor and no signature currently
+  attach to its checkpoints.
+
+None of this is a fabricated risk — it is the current, factual state of the deployed
+build. The boot and inference verification above is real and current; the vault's
+persistence, availability, and ledger-anchoring guarantees are not yet delivered.
 
 Every organisation that relies on a third-party platform to store its records is making an implicit wager: that the platform provider will remain solvent, accessible, and free of security failures for as long as those records matter. [[os-totebox]] is designed for operators who have decided that wager is unacceptable.
 
@@ -76,4 +101,4 @@ os-totebox is designed as one of three purpose-specific operating systems in the
 
 The intended deployment pattern is operator-owned hardware with a single physical network interface, with the WORM vault as a node in a private network segment rather than a service accessible from the public internet, once that deployment model ships.
 
-**The seL4 Microkit image for os-totebox is planned for Phase H1 of the platform roadmap and has not shipped as of this writing.** Everything above describes the intended design; implementation status is tracked in the platform's engineering registry — see `os-totebox`'s own crate description for the currently-deployed reality (service-content + service-slm running as one conventional process).
+**The seL4 Microkit image for os-totebox has moved from planned to live-verified: a real boot of the image is confirmed, with end-to-end inference round-trips confirmed working.** Everything above describes the intended end-state design; the boot-and-inference milestone above is real progress on that path, but the persistence, graceful-shutdown, and ledger-anchoring gaps described in Known limitations remain open — see that section before treating this as a production-ready persistent vault. Implementation status is tracked in the platform's engineering registry — see `os-totebox`'s own crate description for further detail on the currently-deployed build (service-content + service-slm running as one conventional process, in general deployment).

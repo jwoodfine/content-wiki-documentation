@@ -44,7 +44,7 @@ The **[[genesis-protocol]]** governs first boot: a node generates its keypair fr
 
 The hypervisor layer is the compute substrate.
 
-**`os-infrastructure`** is the hypervisor layer that hosts the virtual machines running Totebox Archives and orchestration gateways (QEMU/KVM-hosted today; **intended** to become a bare-metal Type-I hypervisor under NetBSD/NVMM in Phase 2 and seL4/Microkit in Phase 3). It manages a **per-node resource pool**: memory via `virtio_balloon` (inflation reclaims guest RAM into the node pool; deflation returns it) and CPU via cgroups v2 `cpu.weight` per QEMU process. (Correction, 2026-08-02, verified against canonical `origin/main`: no `virtio_balloon` or cgroups/`cpu.weight` code exists anywhere in `os-infrastructure` or `service-vm-fleet` — real `os-infrastructure/src/main.rs` is a bare-metal Multiboot2 boot stub doing framebuffer text + mDNS genesis handshake, with zero resource-pooling logic. Separately, `os-orchestration` — described elsewhere in this article as a stateless PSP aggregator — is a 2-line placeholder scaffold on canonical, matching the finding on [[os-orchestration-stateless-hub]]. Flagged, not resolved.)
+**`os-infrastructure`** is the hypervisor layer that hosts the virtual machines running Totebox Archives and orchestration gateways (QEMU/KVM-hosted today; **intended** to become a bare-metal Type-I hypervisor under NetBSD/NVMM in Phase 2 and seL4/Microkit in Phase 3). It manages a **per-node resource pool**: memory via `virtio_balloon` (inflation reclaims guest RAM into the node pool; deflation returns it) and CPU via cgroups v2 `cpu.weight` per QEMU process. (Correction, 2026-08-02, verified against canonical `origin/main`: no `virtio_balloon` or cgroups/`cpu.weight` code exists anywhere in `os-infrastructure` or `service-vm-fleet` — real `os-infrastructure/src/main.rs` is a bare-metal Multiboot2 boot stub doing framebuffer text + mDNS genesis handshake, with zero resource-pooling logic. Separately, `os-orchestration` — described elsewhere in this article as a stateless aggregator — is a 2-line placeholder scaffold on canonical, matching the finding on [[os-orchestration-stateless-hub]]. Flagged, not resolved.)
 
 The pool is bounded to the physical node. Cross-node workload placement is the Totebox Orchestration layer's responsibility; once a VM is placed on a node, the hypervisor manages its local resource allocation.
 
@@ -58,11 +58,11 @@ See also: [[ppn-distributed-vm-fabric]]
 
 The Totebox Orchestration layer is the data plane. It runs inside the VMs managed by the hypervisor and is entirely separate from the PPN.
 
-**Totebox Archives** (`cluster-totebox-*`) are sovereign data vaults — immutable WORM ledgers packaged as freely transferable bootable disk images. Each archive holds an Ed25519 keypair registered in `pairings.yaml`. It exposes data only via signed capability objects delivered over the PointSav Protocol (PSP).
+**Totebox Archives** (`cluster-totebox-*`) are sovereign data vaults — immutable WORM ledgers packaged as freely transferable bootable disk images. Each archive holds an Ed25519 keypair registered in `pairings.yaml`. It is designed to expose data only via signed capability objects over a capability-based protocol — the design intent for that protocol is described in [[totebox-archive]]; no specific protocol name is committed to code today.
 
 **`os-console`** is the keyboard-native operator terminal. It connects to one archive at a time (or many via `os-orchestration`) and is the free tier.
 
-**`os-orchestration`** is a stateless multi-archive aggregator. It fans PSP queries across many archives simultaneously, returns only result rows (never raw records), and holds no keys of its own. It is the paid tier: multi-archive aggregation is the commercial boundary.
+**`os-orchestration`** is a stateless multi-archive aggregator. It is designed to fan capability-based queries across many archives simultaneously, returning only result rows (never raw records), and to hold no keys of its own. It is the paid tier: multi-archive aggregation is the commercial boundary.
 
 See: [[totebox-archive]], [[os-orchestration]]
 
@@ -88,7 +88,7 @@ This separation is intentional: the network control plane and the data access pl
 
 ## What PPN is not
 
-- **Not a data access layer.** PPN manages physical nodes. Archive data access goes through `os-console` or `os-orchestration` via MBA + PSP — not through WireGuard.
+- **Not a data access layer.** PPN manages physical nodes. Archive data access goes through `os-console` or `os-orchestration` via MBA-authenticated queries — not through WireGuard.
 - **Not a compute scheduler.** `os-network-admin` does not schedule workloads across nodes. Cross-node placement is `gateway-orchestration-command-1`'s job (Totebox Orchestration layer). The hypervisor manages the local resource pool after placement.
 - **Not an identity authority.** The PPN mesh knows which physical nodes are enrolled. It does not know which operators are authorised to read which archives. That is `pairings.yaml`.
 
@@ -101,7 +101,7 @@ This separation is intentional: the network control plane and the data access pl
 - [[os-network-admin]] — Foundation OS layer, zero crypto authority, node-join ceremony
 - [[ppn-hypervisor-resource-pool]] — per-node virtio_balloon + vCPU scheduling
 - [[totebox-archive]] — sovereign WORM data vault, freely transferable disk image
-- [[os-orchestration]] — stateless PSP aggregator, multi-archive queries, paid tier
+- [[os-orchestration]] — stateless multi-archive aggregator, paid tier
 - [[ppn-distributed-vm-fabric]] — planned cross-node VM fabric: virtio-mem lending, distributed capability ledger, sovereign attestation
 - [[pointsav-private-network|PointSav Private Network]] — infrastructure overview and WireGuard mesh provisioning context
 - [[enroll-ppn-node]] — step-by-step guide: register a compute node with the fleet controller and verify the first heartbeat

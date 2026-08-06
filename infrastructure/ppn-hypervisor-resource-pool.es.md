@@ -57,7 +57,7 @@ Una VM cluster-totebox que ejecuta una carga de trabajo de inferencia activa (a 
 
 ## Relación con os-orchestration
 
-`os-orchestration` es un agregador de capa de datos. Agrega **acceso a datos** a través de Totebox Archives utilizando el Protocolo PointSav (PSP) — consultas basadas en capacidades que devuelven solo filas de resultados, nunca registros sin procesar. Es sin estado y no posee claves de archivos.
+`os-orchestration` es un agregador de capa de datos. Está diseñado para agregar **acceso a datos** a través de Totebox Archives mediante consultas basadas en capacidades que devuelven solo filas de resultados, nunca registros sin procesar. Es sin estado y no posee claves de archivos.
 
 `os-orchestration` no asigna CPU. No ajusta la memoria. No se comunica con el controlador de balloon del hipervisor. Las dos capas están diseñadas para ser ciegas entre sí:
 

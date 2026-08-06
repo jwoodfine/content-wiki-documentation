@@ -15,7 +15,7 @@ last_edited: 2026-08-03
 editor: editorial
 ---
 
-**Correction revised, 2026-08-02** (an earlier pass in this session checked a stale local branch; re-checked against canonical `origin/main`): (1) `os-orchestration` is a real registered crate, but its own `src/lib.rs` is a 4-line placeholder scaffold with no aggregation logic — the described functionality still isn't built, but "not a built crate" was the wrong framing; the "PSP" protocol claim remains confirmed fabricated (zero code footprint even on canonical). (2) The GeoParquet claim needs softening, not full retraction: GeoParquet is real in the codebase (`app-orchestration-gis/ingest-overture.py`), but as the format Overture Maps Foundation publishes its open *external* dataset in, ingested for GIS analysis — not as this article claims, an internal Totebox WORM storage format for site boundaries/location records. (3) The `pairings.yaml` correction needs reversing: it's real and, per canonical `orchestration-command-server`'s own `main.rs` (`COMMAND_PAIRINGS_PATH`, default `/srv/foundry/pairings.yaml`), it genuinely is read by real `app-orchestration-command` runtime code — the claim that "no os-orchestration/os-totebox runtime code queries it" was itself wrong. **Flagged, not resolved** — needs re-hedging os-orchestration/PSP to planned/intended language and correcting the GeoParquet row's actual use case; the pairings.yaml claim can likely stand closer to as originally written.
+**Correction revised, 2026-08-02** (an earlier pass in this session checked a stale local branch; re-checked against canonical `origin/main`): (1) `os-orchestration` is a real registered crate, but its own `src/lib.rs` is a 4-line placeholder scaffold with no aggregation logic — the described functionality still isn't built, but "not a built crate" was the wrong framing; the "PSP" protocol claim was confirmed fabricated (zero code footprint even on canonical) and has been removed below (2026-08-06) — the query/access-path description is now hedged as planned/intended with no invented protocol name. (2) The GeoParquet claim needs softening, not full retraction: GeoParquet is real in the codebase (`app-orchestration-gis/ingest-overture.py`), but as the format Overture Maps Foundation publishes its open *external* dataset in, ingested for GIS analysis — not as this article claims, an internal Totebox WORM storage format for site boundaries/location records. (3) The `pairings.yaml` correction needs reversing: it's real and, per canonical `orchestration-command-server`'s own `main.rs` (`COMMAND_PAIRINGS_PATH`, default `/srv/foundry/pairings.yaml`), it genuinely is read by real `app-orchestration-command` runtime code — the claim that "no os-orchestration/os-totebox runtime code queries it" was itself wrong. **Flagged, not resolved** — still needs correcting the GeoParquet row's actual use case; the pairings.yaml claim can likely stand closer to as originally written.
 
 A Totebox Archive is a sovereign data vault assigned to a single entity — a building, a company, a person, or any other unit the operator defines. It is the fundamental storage and identity unit of the PointSav stack. The archive is packaged as a bootable disk image and runs as a virtual machine on the PPN hypervisor layer. It is released under Apache 2.0 and available free of charge: one operator, one archive, is a free deployment.
 
@@ -46,18 +46,17 @@ Every write appends; no record is ever modified or deleted. This is a Write Once
 
 This design is intentional: the archive is a legal-grade record of what an entity knew and when it knew it. The immutability guarantee is structural, not a configuration option.
 
-## Access model: Diode + PSP only
+## Access model: Diode-gated queries only
 
 A Totebox Archive does not expose a general-purpose API. It responds only to queries delivered via the [[diode-standard|Diode Standard]] — the unidirectional command flow that governs the PointSav stack:
 
 ```
 os-console  ──┐
                ├──▶  os-orchestration  ──▶  os-totebox (inside the archive VM)
-               │         (PSP)
                └──▶  os-totebox (direct, single-archive)
 ```
 
-Queries arrive as signed capability objects delivered over the PointSav Protocol (PSP), a capability-based binary protocol that tunnels over TLS. A capability object grants permission to read a specific row or set of rows — nothing more. The archive verifies the object's signature against its MBA keypair, executes the query, and returns only the matching result rows. It never returns raw records in bulk. It never accepts commands from a direction outside the Diode flow.
+Queries are designed to arrive as signed capability objects, delivered over a capability-based protocol tunnelled through TLS — no specific protocol name is committed to code today. A capability object is intended to grant permission to read a specific row or set of rows — nothing more. The archive would verify the object's signature against its MBA keypair, execute the query, and return only the matching result rows, never raw records in bulk. Under this design it would never accept commands from a direction outside the Diode flow.
 
 No VM can issue commands back up the Diode to the control plane. No archive can instruct the PPN mesh to add or remove a node. The flow is structurally unidirectional.
 
@@ -92,9 +91,9 @@ The prefix `cluster-` indicates a VM instance managed by the PPN hypervisor laye
 
 | Component | Role |
 |---|---|
-| `os-totebox` | The operating system that runs inside the archive VM; manages the WORM ledger and the PSP query surface |
+| `os-totebox` | The operating system that runs inside the archive VM; manages the WORM ledger and the query surface |
 | `os-console` | A keyboard-native terminal that connects to one archive at a time; free tier |
-| `os-orchestration` | A stateless multi-archive aggregator that fans queries across many archives via PSP; paid tier |
+| `os-orchestration` | A stateless multi-archive aggregator designed to fan queries across many archives; paid tier |
 | `os-infrastructure` | The Type I hypervisor that hosts archive VMs and manages the per-node resource pool |
 
 `os-totebox` and `os-console` are Apache 2.0 — free. `os-orchestration` introduces the commercial boundary: querying a single archive directly via `os-console` is free; routing queries across multiple archives through `os-orchestration` is the paid tier.
@@ -102,7 +101,7 @@ The prefix `cluster-` indicates a VM instance managed by the PPN hypervisor laye
 ## What a Totebox Archive is not
 
 - **Not a database.** There is no query planner, no index, no transaction log in the relational-database sense. The archive is an append-only ledger that returns rows matching a signed capability object.
-- **Not cloud storage.** There is no S3 bucket, no object storage API, no presigned URL. Data exits the archive only via the Diode + PSP path.
+- **Not cloud storage.** There is no S3 bucket, no object storage API, no presigned URL. Data exits the archive only via the Diode-gated query path.
 - **Not a file share.** There is no SMB share, no NFS mount, no SFTP endpoint. Operators access data through `os-console` or `os-orchestration`, not through filesystem protocols.
 - **Not a VM in the general sense.** The VM is the packaging medium. The archive is the data, identity, and history it contains. When someone refers to "the Totebox Archive", they mean the disk image and its contents — not the hypervisor instance that happens to be running it at this moment.
 

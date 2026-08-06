@@ -49,7 +49,7 @@ Servicios: `app-mediakit-knowledge` (wikis de documentación, corporativa y de p
 **Binario fuente:** `os-orchestration`
 **Propósito:** Agregador multi-archivo sin estado. Nivel comercial de pago.
 
-VM-Orchestration consulta múltiples instancias de VM-Totebox y presenta vistas a nivel de flota o portafolio. No retiene datos propios: agrega mediante el Protocolo PointSav (PSP), un protocolo de consulta basado en capacidades. Una instancia de VM-Orchestration sirve el terminal de coordinación BIM, el mapa de flota GIS y el corredor de SLM.
+VM-Orchestration consulta múltiples instancias de VM-Totebox y presenta vistas a nivel de flota o portafolio. No retiene datos propios: está diseñado para agregar mediante un protocolo de consulta basado en capacidades, sin un nombre de protocolo específico incorporado al código hoy. Una instancia de VM-Orchestration sirve el terminal de coordinación BIM, el mapa de flota GIS y el corredor de SLM.
 
 Servicios: `app-orchestration-bim`, `app-orchestration-gis`, `app-orchestration-slm` (:9180).
 

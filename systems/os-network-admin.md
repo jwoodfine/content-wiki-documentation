@@ -34,7 +34,7 @@ This distinction matters: `os-network-admin` does not store or process business 
 
 ### Routing and tunnel integrity
 
-`os-network-admin` establishes and maintains the WireGuard mesh on the `ppn0` interface. It manages peer-map distribution, monitors tunnel liveness, and enforces the Diode rules that constrain which nodes may send commands to which targets. It does not inspect the content of traffic flowing through the tunnels.
+`os-network-admin` establishes and maintains the WireGuard mesh on the `wg0` interface. It manages peer-map distribution, monitors tunnel liveness, and enforces the Diode rules that constrain which nodes may send commands to which targets. It does not inspect the content of traffic flowing through the tunnels.
 
 ### Node-join ceremony
 
@@ -43,10 +43,10 @@ When a new physical node wants to join the PPN mesh, it generates a Crockford ba
 The current minimal implementation polls the `service-ppn-pairing` backend for pending requests and prints them to stdout. Operator approval is issued via curl:
 
 ```bash
-PAIRING_SERVER=http://10.8.0.9:9202 ./os-network-admin
+PAIRING_SERVER=http://10.8.0.9:9205 ./os-network-admin
 
 # Approve a pending join from another terminal:
-curl -s -X POST http://10.8.0.9:9202/v1/node-join/approve \
+curl -s -X POST http://10.8.0.9:9205/v1/node-join/approve \
      -H 'Content-Type: application/json' \
      -d '{"code":"XXXX-XXXX"}'
 ```
@@ -68,7 +68,7 @@ The `os-` / `app-` split follows the standard Foundation/Application naming conv
 
 ## Hardware target
 
-The canonical reference hardware is an iMac 12,1 (Mid-2011) with an Intel Sandy Bridge i5-2400S and a Broadcom 14e4:16b4 NIC. This machine is purpose-suited as a command authority node: it has real hardware VT-x (for running VMs on the same machine if needed), a Broadcom NIC for which `system-substrate-broadcom` provides the silicon detection substrate, and a stable physical location at the operator's site.
+The canonical reference hardware is an Intel Sandy Bridge i5-2400S platform with a Broadcom 14e4:16b4 NIC. This machine is purpose-suited as a command authority node: it has real hardware VT-x (for running VMs on the same machine if needed), a Broadcom NIC for which `system-substrate-broadcom` provides the silicon detection substrate, and a stable physical location at the operator's site.
 
 For deployments where bare-metal dedication is impractical, `os-network-admin` can run inside an LXC container on the on-premises fleet node, with the WireGuard interface bridged from the host.
 

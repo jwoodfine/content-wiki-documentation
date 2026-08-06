@@ -59,11 +59,11 @@ Ver también: [[ppn-distributed-vm-fabric]]
 
 La capa de Orquestación de Totebox es el plano de datos. Se ejecuta dentro de las VMs gestionadas por el hipervisor y está completamente separada de la PPN.
 
-Los **Totebox Archives** (`cluster-totebox-*`) son bóvedas de datos soberanas — ledgers WORM inmutables empaquetados como imágenes de disco de arranque libremente transferibles. Cada archivo posee un par de claves Ed25519 registrado en `pairings.yaml`. Expone datos solo mediante objetos de capacidad firmados entregados a través del Protocolo PointSav (PSP).
+Los **Totebox Archives** (`cluster-totebox-*`) son bóvedas de datos soberanas — ledgers WORM inmutables empaquetados como imágenes de disco de arranque libremente transferibles. Cada archivo posee un par de claves Ed25519 registrado en `pairings.yaml`. Está diseñado para exponer datos solo mediante objetos de capacidad firmados, entregados a través de un protocolo basado en capacidades — el diseño previsto para ese protocolo se describe en [[totebox-archive]]; hoy no hay un nombre de protocolo específico incorporado al código.
 
 **`os-console`** es el terminal de operador nativo de teclado. Se conecta a un archivo a la vez (o a varios mediante `os-orchestration`) y es el nivel gratuito.
 
-**`os-orchestration`** es un agregador sin estado para múltiples archivos. Distribuye consultas PSP a través de muchos archivos simultáneamente, devuelve solo filas de resultados (nunca registros brutos), y no posee claves propias. Es el nivel de pago: la agregación de múltiples archivos es el límite comercial.
+**`os-orchestration`** es un agregador sin estado para múltiples archivos. Está diseñado para distribuir consultas basadas en capacidades a través de muchos archivos simultáneamente, devolviendo solo filas de resultados (nunca registros brutos), y para no poseer claves propias. Es el nivel de pago: la agregación de múltiples archivos es el límite comercial.
 
 Ver: [[totebox-archive]], [[os-orchestration]]
 
@@ -89,7 +89,7 @@ Esta separación es intencional: el plano de control de red y el plano de acceso
 
 ## Lo que la PPN no es
 
-- **No es una capa de acceso a datos.** La PPN gestiona nodos físicos. El acceso a los datos de los archivos se realiza a través de `os-console` u `os-orchestration` mediante MBA + PSP — no a través de WireGuard.
+- **No es una capa de acceso a datos.** La PPN gestiona nodos físicos. El acceso a los datos de los archivos se realiza a través de `os-console` u `os-orchestration` mediante consultas autenticadas por MBA — no a través de WireGuard.
 - **No es un planificador de cómputo.** `os-network-admin` no planifica cargas de trabajo entre nodos. La colocación entre nodos es responsabilidad de `gateway-orchestration-command-1` (capa de Orquestación de Totebox). El hipervisor gestiona el pool de recursos local después de la colocación.
 - **No es una autoridad de identidad.** La malla PPN sabe qué nodos físicos están inscritos. No sabe qué operadores están autorizados para leer qué archivos. Eso corresponde a `pairings.yaml`.
 
@@ -102,7 +102,7 @@ Esta separación es intencional: el plano de control de red y el plano de acceso
 - [[os-network-admin]] — capa Foundation OS, autoridad criptográfica nula, ceremonia de unión de nodos
 - [[ppn-hypervisor-resource-pool]] — virtio_balloon por nodo + planificación de vCPU
 - [[totebox-archive]] — bóveda de datos WORM soberana, imagen de disco libremente transferible
-- [[os-orchestration]] — agregador PSP sin estado, consultas de múltiples archivos, nivel de pago
+- [[os-orchestration]] — agregador sin estado de múltiples archivos, nivel de pago
 - [[ppn-distributed-vm-fabric]] — tejido VM entre nodos planificado: préstamo virtio-mem, ledger de capacidades distribuido, atestación soberana
 - [[enroll-ppn-node]] — guía paso a paso: registrar un nodo de cómputo con el controlador de flota y verificar el primer latido
 - [[add-a-fleet-node]] — guía paso a paso: inscribir un segundo nodo en una flota en funcionamiento sin interrumpir las operaciones existentes

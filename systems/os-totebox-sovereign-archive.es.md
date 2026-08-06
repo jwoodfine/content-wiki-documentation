@@ -13,24 +13,51 @@ paired_with: os-totebox-sovereign-archive.md
 category: systems
 status: active
 quality: complete
-last_edited: 2026-07-18
+last_edited: 2026-08-06
 ---
 
 # os-totebox: La Bóveda Soberana de Datos WORM (Diseño Previsto)
 
-**Corrección (2026-07-18):** este artículo describe la arquitectura final prevista de
-os-totebox — la imagen seL4 Microkit sobre hardware físico está planificada para la Fase
-H1 de la hoja de ruta de la plataforma y aún no se ha distribuido. El binario `os-totebox`
-que se ejecuta hoy es un proceso convencional de Rust/tokio (`service-content` +
-`service-slm`/Doorman ejecutándose como un único proceso desplegable, según la propia
-descripción del crate) — no un sistema operativo seL4 sobre hardware físico. El diseño de
-grafo de capacidades y Dominios de Protección descrito a continuación es trabajo de
-ingeniería real y previsto, no una invención, pero es enteramente en tiempo futuro — cada
-afirmación en tiempo presente de este artículo debe leerse como "está diseñado para" o
-"se prevé que", no como una descripción del software tal como se distribuye hoy.
-`bcsc_class` corregido a `forward-looking` en consecuencia. **Nota**: el resto del cuerpo
-de este artículo en español aún no ha recibido el mismo ajuste de tiempo verbal sección
-por sección que la versión en inglés — pendiente, no silenciosamente omitido.
+**Estado (2026-08-06):** la imagen seL4 Microkit descrita en este artículo ha pasado de
+planificada a verificada en vivo. Se ha confirmado un arranque real de la imagen, con
+ciclos completos de inferencia confirmados y funcionando — el diseño de grafo de
+capacidades y Dominios de Protección descrito a continuación es trabajo de ingeniería
+real y actual, no simplemente trabajo previsto ni un diseño en papel. Este es un hito de
+arranque verificado específicamente en la vía seL4; no describe todavía el despliegue
+general de os-totebox, que sigue siendo el proceso convencional de Rust/tokio
+(`service-content` + `service-slm`/Doorman ejecutándose como un único proceso
+desplegable) descrito en el registro de ingeniería de la plataforma. `bcsc_class` se
+mantiene como `forward-looking`: la pila de producción completa, la aplicación del grafo
+de capacidades a escala y las garantías de persistencia que argumenta este artículo aún
+no son reales — véanse las Limitaciones conocidas, a continuación, antes de tratar esto
+como una bóveda soberana persistente ya desplegada. Cada otra afirmación en tiempo
+presente de este artículo debe leerse como el diseño previsto, confirmado hoy solo en la
+capa de arranque e inferencia descrita aquí. **Nota**: el resto del cuerpo de este
+artículo en español aún no ha recibido el mismo ajuste de tiempo verbal sección por
+sección que la versión en inglés — pendiente, no silenciosamente omitido.
+
+## Limitaciones conocidas (2026-08-06)
+
+Hay tres brechas abiertas frente a la propia posición de este artículo como bóveda
+soberana persistente, y son información determinante para quien evalúe el diseño hoy:
+
+- **El almacenamiento aún no es persistente.** El dispositivo de almacenamiento virtio-blk
+  del huésped desplegado nunca llega a montarse. Un reinicio del huésped borra todos los
+  datos — una brecha directa y actual frente a la posición de "bóveda WORM persistente"
+  que argumenta este artículo.
+- **El apagado ordenado está roto.** El apagado mediante QMP (QEMU Machine Protocol) está
+  documentado como roto: el huésped no tiene ningún dispositivo ACPI ni de botón de
+  encendido para recibir una solicitud de apagado. Los nuevos despliegues actualmente
+  eliminan el huésped de forma abrupta, sin ninguna garantía de punto de control en el
+  momento de la eliminación.
+- **Nada ancla ni firma el registro todavía.** El servicio complementario de anclaje de
+  integridad lleva fallando desde el 2026-08-01, y la firma de los puntos de control se
+  deja deliberadamente sin configurar en esta línea base. El registro WORM se ejecuta,
+  pero ningún anclaje externo ni firma se adjunta actualmente a sus puntos de control.
+
+Nada de esto es un riesgo inventado — es el estado actual y factual del despliegue. La
+verificación de arranque e inferencia anterior es real y actual; las garantías de
+persistencia, disponibilidad y anclaje del registro de la bóveda aún no se han entregado.
 
 Toda organización que depende de una plataforma de terceros para almacenar sus registros está asumiendo una apuesta implícita: que el proveedor de esa plataforma seguirá siendo solvente, accesible y libre de fallas de seguridad durante todo el tiempo que esos registros tengan relevancia. [[os-totebox]] está diseñado para los operadores que han decidido que esa apuesta es inaceptable.
 
@@ -80,4 +107,4 @@ os-totebox es uno de los tres sistemas operativos de hardware físico de propós
 
 El patrón de despliegue previsto es hardware propiedad del operador con una única interfaz de red física. La bóveda WORM no es un servicio accesible desde internet público; es un nodo en un segmento de red privado cuyas rutas de entrada están controladas por la misma disciplina de capacidades que rige su almacenamiento.
 
-La imagen seL4 Microkit para os-totebox está planificada para la Fase H1 del plan de desarrollo de la plataforma. El DAG de capacidades y la arquitectura de anillos descritos aquí representan el diseño previsto; el estado de implementación se registra en el registro de ingeniería de la plataforma.
+**La imagen seL4 Microkit para os-totebox ha pasado de planificada a verificada en vivo: se ha confirmado un arranque real de la imagen, con ciclos completos de inferencia confirmados y funcionando.** Todo lo anterior describe el diseño final previsto; el hito de arranque e inferencia es un avance real en esa vía, pero las brechas de persistencia, apagado ordenado y anclaje del registro descritas en Limitaciones conocidas siguen abiertas — véase esa sección antes de tratar esto como una bóveda persistente lista para producción. El estado de implementación se registra en el registro de ingeniería de la plataforma — véase la propia descripción del crate `os-totebox` para más detalle sobre el despliegue actual (service-content + service-slm ejecutándose como un único proceso convencional, en el despliegue general).

@@ -13,15 +13,39 @@ paired_with: os-totebox-service-pd-model.es.md
 category: systems
 status: active
 quality: complete
-last_edited: 2026-07-18
+last_edited: 2026-08-06
 ---
 
-**Correction (2026-07-18):** the `os-totebox` binary deployed today is a conventional
-Rust/tokio process (`service-content` + `service-slm`/Doorman running as one process) —
-not yet the seL4 bare-metal OS this article describes. Confirmed the rest of this article
-was already properly hedged throughout ("Phase H1, planned," "the planned production
-stack") — only this opening paragraph needed the same treatment, applied below.
-`bcsc_class` corrected to `forward-looking` to match the article's own actual content.
+**Status (2026-08-06):** the seL4 Microkit image this article describes has moved from
+planned to live-verified. A real boot of the image is confirmed, with end-to-end
+inference round-trips confirmed working — the seven-Protection-Domain design below is
+real, current engineering, not merely a paper design. This is a verified boot milestone
+on the seL4 path specifically; os-totebox's general deployment remains the conventional
+Rust/tokio process (`service-content` + `service-slm`/Doorman running as one process)
+described in the platform's engineering registry. `bcsc_class` stays `forward-looking`:
+the production-scale PD stack and the persistence/integrity guarantees this article
+depends on are not yet real — see Known limitations, below.
+
+## Known limitations (2026-08-06)
+
+Three gaps are open against this article's own claims about the WORM ledger, and are
+load-bearing for anyone evaluating the design today:
+
+- **Storage is not yet persistent.** The deployed guest's virtio-blk storage device is
+  never actually mounted. A guest reboot wipes all data — a direct, current gap against
+  the append-only, durable ledger this article describes service-fs PD as enforcing.
+- **Graceful shutdown is broken.** Shutdown via QMP (QEMU Machine Protocol) is documented
+  as broken: the guest has no ACPI or power-button device to receive a shutdown request.
+  Redeploys currently hard-kill the guest, with no checkpoint guarantee at the moment of
+  kill.
+- **Nothing anchors or signs the ledger yet.** The integrity-anchoring companion service
+  has been failing since 2026-08-01, and checkpoint signing is deliberately left unset at
+  this baseline. The WORM ledger runs, but no external anchor and no signature currently
+  attach to its checkpoints.
+
+None of this is a fabricated risk — it is the current, factual state of the deployed
+build. The boot and inference verification above is real and current; the ledger's
+persistence, availability, and anchoring guarantees are not yet delivered.
 
 [[os-totebox]] is designed to be the Sovereign WORM Data Vault tier of the [[topic-three-binary-architecture|three-binary architecture]], intended to run as a Type I bare-metal OS on top of the [[sel4-microkernel-substrate|seL4 microkernel]] — no shell, no root process, no init system, no package manager — once the Phase H1 seL4 image ships. In that end-state design, every service that handles durable data becomes a seL4 Protection Domain (PD): a hardware-enforced isolation unit whose capability set is fixed at build time and cannot be extended at runtime. This article explains what that design means, why it takes the shape it does, and how two planned tools — moonshot-sel4-vmm and [[moonshot-toolkit-build-orchestrator|moonshot-toolkit]] — are intended to turn ordinary Rust service binaries into a formally verified PD graph.
 
@@ -101,4 +125,4 @@ The WORM ledger is the authoritative audit record for the system. Every write th
 
 ---
 
-*All Phase H1 and later language in this article describes planned or intended functionality. The Phase H0 NetBSD reference image is the only deployed artefact at the time of writing (2026-06-19).*
+*All Phase H1 and later language in this article describes planned or intended functionality. The seL4 Microkit image has moved from planned to live-verified — a real boot is confirmed, with end-to-end inference round-trips confirmed working — but the persistence, graceful-shutdown, and ledger-anchoring gaps described in Known limitations remain open. The Phase H0 NetBSD reference image remains the platform's general deployment artefact at the time of writing.*

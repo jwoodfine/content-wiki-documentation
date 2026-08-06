@@ -15,7 +15,7 @@ last_edited: 2026-08-01
 editor: pointsav-engineering
 ---
 
-The **sovereign mesh** is the application-level network overlay that connects every PointSav Private Network (PPN) fleet node. It runs over WireGuard cryptographic tunnels on a dedicated `ppn0` interface and carries signed binary commands without relying on a centralised message broker. Each node communicates directly with its authorised peers; the mesh layer enforces the same authority hierarchy as the [[diode-standard|Diode Standard]] as a structural property, not a configuration option.
+The **sovereign mesh** is the application-level network overlay that connects every PointSav Private Network (PPN) fleet node. It runs over WireGuard cryptographic tunnels on a dedicated `wg0` interface and carries signed binary commands without relying on a centralised message broker. Each node communicates directly with its authorised peers; the mesh layer enforces the same authority hierarchy as the [[diode-standard|Diode Standard]] as a structural property, not a configuration option.
 
 ## Hub-and-spoke topology
 
@@ -29,11 +29,11 @@ The mesh uses a hub-and-spoke arrangement. The cloud relay node sits at the cent
 | Spoke | On-premises node | `10.8.0.2` | `app-infrastructure-onprem` |
 | Spoke | Leased node | `10.8.0.3` | `app-infrastructure-leased` |
 
-The `10.8.0.0/24` subnet is the intended PPN address range. All mesh traffic is encapsulated inside WireGuard before leaving a node; the underlying transport — public internet, private LAN, or GCP internal network — is irrelevant to the mesh layer.
+The `10.8.0.0/24` subnet is the intended PPN address range. All mesh traffic is encapsulated inside WireGuard before leaving a node; the underlying transport — public internet, private LAN, or GCP internal network — is irrelevant to the mesh layer. A `10.42.0.0/16` addressing scheme is the ratified future target, with migration ("Part A") in progress; no deployed node uses it yet.
 
 ## WireGuard overlay
 
-Each node brings up a `ppn0` WireGuard interface as part of its boot sequence. WireGuard provides:
+Each node brings up a `wg0` WireGuard interface as part of its boot sequence. WireGuard provides:
 
 - **Key agreement** — Noise Protocol IK handshake; each node's long-term keypair is generated and stored at first mesh join by `os-network-admin` for the control-plane node, or via the Genesis Protocol for bare-metal edge nodes
 - **Encryption and integrity** — ChaCha20-Poly1305 per packet; no plaintext mesh traffic ever leaves a node
@@ -56,7 +56,7 @@ service-slm semantic router
       ↓
 16-byte binary command (authorised and signed)
       ↓
-service-udp broadcast  →  ppn0  →  WireGuard tunnel
+service-udp broadcast  →  wg0  →  WireGuard tunnel
       ↓
 Target node  —  UDP port 8090
 ```
@@ -67,7 +67,7 @@ Commands flow in one direction only — from `os-network-admin` outward to the m
 
 ### os-infrastructure — edge anchor
 
-The bare-metal `os-infrastructure` node is a mesh peer, not a mesh controller. It listens on port 8090 for signed binary commands addressed to it and executes them; it does not initiate commands. The node's Broadcom 14e4:16b4 NIC carries mesh traffic via the `ppn0` interface once the Genesis Protocol join sequence completes.
+The bare-metal `os-infrastructure` node is a mesh peer, not a mesh controller. It listens on port 8090 for signed binary commands addressed to it and executes them; it does not initiate commands. The node's Broadcom 14e4:16b4 NIC carries mesh traffic via the `wg0` interface once the Genesis Protocol join sequence completes.
 
 ### os-network-admin — control plane
 

@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Totebox Archive"
 slug: totebox-archive
-short_description: "Un Totebox Archive es una bóveda soberana de datos asignada a una única entidad — empaquetada como una imagen de disco de arranque libremente transferible, almacenando datos como archivos planos WORM, y aceptando consultas solo a través del Diode Standard y el PointSav Protocol."
+short_description: "Un Totebox Archive es una bóveda soberana de datos asignada a una única entidad — empaquetada como una imagen de disco de arranque libremente transferible, almacenando datos como archivos planos WORM, y aceptando consultas solo a través del Diode Standard."
 category: infrastructure
 index_group: storage-substrate
 type: topic
@@ -45,18 +45,17 @@ Cada escritura añade datos; ningún registro se modifica ni elimina jamás. Est
 
 Este diseño es intencional: el archivo es un registro de calidad legal de lo que una entidad sabía y cuándo lo sabía. La garantía de inmutabilidad es estructural, no una opción de configuración.
 
-## Modelo de acceso: solo Diodo + PSP
+## Modelo de acceso: solo consultas con puerta de Diodo
 
 Un Totebox Archive no expone una API de propósito general. Responde solo a consultas entregadas a través del [[diode-standard|Diode Standard]] — el flujo de comandos unidireccional que gobierna la pila PointSav:
 
 ```
 os-console  ──┐
                ├──▶  os-orchestration  ──▶  os-totebox (dentro de la VM del archivo)
-               │         (PSP)
                └──▶  os-totebox (directo, archivo único)
 ```
 
-Las consultas llegan como objetos de capacidad firmados entregados a través del PointSav Protocol (PSP), un protocolo binario basado en capacidades que tuneliza sobre TLS. Un objeto de capacidad otorga permiso para leer una fila específica o un conjunto de filas — nada más. El archivo verifica la firma del objeto contra su par de claves MBA, ejecuta la consulta y devuelve solo las filas de resultados coincidentes. Nunca devuelve registros sin procesar en bloque. Nunca acepta comandos desde una dirección fuera del flujo del Diodo.
+Las consultas están diseñadas para llegar como objetos de capacidad firmados, entregados a través de un protocolo basado en capacidades que tuneliza sobre TLS — hoy no hay un nombre de protocolo específico incorporado al código. Un objeto de capacidad está pensado para otorgar permiso para leer una fila específica o un conjunto de filas — nada más. El archivo verificaría la firma del objeto contra su par de claves MBA, ejecutaría la consulta y devolvería solo las filas de resultados coincidentes, nunca registros sin procesar en bloque. Bajo este diseño, nunca aceptaría comandos desde una dirección fuera del flujo del Diodo.
 
 Ninguna VM puede emitir comandos de regreso al plano de control. Ningún archivo puede instruir a la malla PPN para añadir o eliminar un nodo. El flujo es estructuralmente unidireccional.
 
@@ -91,9 +90,9 @@ El prefijo `cluster-` indica una instancia de VM gestionada por la capa de hiper
 
 | Componente | Rol |
 |---|---|
-| `os-totebox` | El sistema operativo que se ejecuta dentro de la VM del archivo; gestiona el libro mayor WORM y la superficie de consulta PSP |
+| `os-totebox` | El sistema operativo que se ejecuta dentro de la VM del archivo; gestiona el libro mayor WORM y la superficie de consulta |
 | `os-console` | Un terminal nativo de teclado que se conecta a un archivo a la vez; nivel gratuito |
-| `os-orchestration` | Un agregador sin estado de múltiples archivos que distribuye consultas a través de muchos archivos mediante PSP; nivel de pago |
+| `os-orchestration` | Un agregador sin estado de múltiples archivos diseñado para distribuir consultas a través de muchos archivos; nivel de pago |
 | `os-infrastructure` | El hipervisor Tipo I que aloja VMs de archivo y gestiona el pool de recursos por nodo |
 
 `os-totebox` y `os-console` son Apache 2.0 — gratuitos. `os-orchestration` introduce el límite comercial: consultar un único archivo directamente a través de `os-console` es gratuito; enrutar consultas a través de múltiples archivos mediante `os-orchestration` es el nivel de pago.
@@ -101,7 +100,7 @@ El prefijo `cluster-` indica una instancia de VM gestionada por la capa de hiper
 ## Lo que un Totebox Archive no es
 
 - **No es una base de datos.** No existe planificador de consultas, índice ni registro de transacciones en el sentido de bases de datos relacionales. El archivo es un libro mayor de solo anexado que devuelve filas que coinciden con un objeto de capacidad firmado.
-- **No es almacenamiento en la nube.** No hay bucket S3, API de almacenamiento de objetos ni URL prefirmada. Los datos salen del archivo solo a través de la ruta Diodo + PSP.
+- **No es almacenamiento en la nube.** No hay bucket S3, API de almacenamiento de objetos ni URL prefirmada. Los datos salen del archivo solo a través de la ruta con puerta de Diodo.
 - **No es un recurso compartido de archivos.** No hay recurso compartido SMB, montaje NFS ni punto final SFTP. Los operadores acceden a los datos a través de `os-console` o `os-orchestration`, no a través de protocolos de sistema de archivos.
 - **No es una VM en el sentido general.** La VM es el medio de empaquetado. El archivo son los datos, la identidad y la historia que contiene. Cuando alguien se refiere al "Totebox Archive", se refiere a la imagen de disco y su contenido — no a la instancia del hipervisor que en este momento la ejecuta.
 

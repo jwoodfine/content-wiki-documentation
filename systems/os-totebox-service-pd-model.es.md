@@ -13,15 +13,43 @@ paired_with: os-totebox-service-pd-model.md
 category: systems
 status: active
 quality: complete
-last_edited: 2026-07-18
+last_edited: 2026-08-06
 ---
 
-**Corrección (2026-07-18):** el binario `os-totebox` distribuido hoy es un proceso
-convencional de Rust/tokio (`service-content` + `service-slm`/Doorman ejecutándose como
-un único proceso) — todavía no el sistema operativo seL4 sobre hardware físico que
-describe este artículo. El resto del artículo ya estaba correctamente matizado
-("Fase H1, planificado") — solo este párrafo inicial necesitaba el mismo tratamiento.
-`bcsc_class` corregido a `forward-looking`.
+**Estado (2026-08-06):** la imagen seL4 Microkit que describe este artículo ha pasado de
+planificada a verificada en vivo. Se ha confirmado un arranque real de la imagen, con
+ciclos completos de inferencia confirmados y funcionando — el diseño de siete Dominios de
+Protección descrito a continuación es trabajo de ingeniería real y actual, no simplemente
+un diseño en papel. Este es un hito de arranque verificado específicamente en la vía
+seL4; el despliegue general de os-totebox sigue siendo el proceso convencional de
+Rust/tokio (`service-content` + `service-slm`/Doorman ejecutándose como un único proceso)
+descrito en el registro de ingeniería de la plataforma. `bcsc_class` se mantiene como
+`forward-looking`: la pila de PD a escala de producción y las garantías de persistencia
+e integridad de las que depende este artículo aún no son reales — véanse las
+Limitaciones conocidas, a continuación.
+
+## Limitaciones conocidas (2026-08-06)
+
+Hay tres brechas abiertas frente a las propias afirmaciones de este artículo sobre el
+registro WORM, y son información determinante para quien evalúe el diseño hoy:
+
+- **El almacenamiento aún no es persistente.** El dispositivo de almacenamiento virtio-blk
+  del huésped desplegado nunca llega a montarse. Un reinicio del huésped borra todos los
+  datos — una brecha directa y actual frente al registro duradero y de solo anexado que
+  este artículo describe que aplica el PD service-fs.
+- **El apagado ordenado está roto.** El apagado mediante QMP (QEMU Machine Protocol) está
+  documentado como roto: el huésped no tiene ningún dispositivo ACPI ni de botón de
+  encendido para recibir una solicitud de apagado. Los nuevos despliegues actualmente
+  eliminan el huésped de forma abrupta, sin ninguna garantía de punto de control en el
+  momento de la eliminación.
+- **Nada ancla ni firma el registro todavía.** El servicio complementario de anclaje de
+  integridad lleva fallando desde el 2026-08-01, y la firma de los puntos de control se
+  deja deliberadamente sin configurar en esta línea base. El registro WORM se ejecuta,
+  pero ningún anclaje externo ni firma se adjunta actualmente a sus puntos de control.
+
+Nada de esto es un riesgo inventado — es el estado actual y factual del despliegue. La
+verificación de arranque e inferencia anterior es real y actual; las garantías de
+persistencia, disponibilidad y anclaje del registro aún no se han entregado.
 
 [[os-totebox]] está diseñado para ser el nivel de Bóveda de Datos WORM Soberana en la [[topic-three-binary-architecture|arquitectura de tres binarios]], con la intención de ejecutarse como un sistema operativo de metal desnudo Tipo I sobre el [[sel4-microkernel-substrate|micronúcleo seL4]] — sin shell, sin proceso root, sin sistema init, sin gestor de paquetes — una vez que se distribuya la imagen seL4 de la Fase H1. En ese diseño de estado final, cada servicio que maneja datos duraderos se convertiría en un Dominio de Protección (PD) seL4: una unidad de aislamiento reforzada por hardware cuyo conjunto de capacidades queda fijo en el momento de la compilación y no puede ampliarse en tiempo de ejecución. Este artículo explica qué significa ese diseño, por qué toma la forma que tiene y cómo dos herramientas planificadas — moonshot-sel4-vmm y [[moonshot-toolkit-build-orchestrator|moonshot-toolkit]] — están pensadas para convertir binarios de servicio Rust convencionales en un grafo de PD formalmente verificado.
 
@@ -101,4 +129,4 @@ El registro WORM es el registro de auditoría autoritativo del sistema. Cada esc
 
 ---
 
-*Todo el lenguaje de la Fase H1 y posterior en este artículo describe funcionalidad planificada o prevista. La imagen de referencia NetBSD de la Fase H0 es el único artefacto desplegado en el momento de la redacción (2026-06-19).*
+*Todo el lenguaje de la Fase H1 y posterior en este artículo describe funcionalidad planificada o prevista. La imagen seL4 Microkit ha pasado de planificada a verificada en vivo — se ha confirmado un arranque real, con ciclos completos de inferencia confirmados y funcionando — pero las brechas de persistencia, apagado ordenado y anclaje del registro descritas en Limitaciones conocidas siguen abiertas. La imagen de referencia NetBSD de la Fase H0 sigue siendo el artefacto de despliegue general de la plataforma en el momento de la redacción.*

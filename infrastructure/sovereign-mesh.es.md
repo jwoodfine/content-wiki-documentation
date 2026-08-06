@@ -16,7 +16,7 @@ last_edited: 2026-08-01
 editor: pointsav-engineering
 ---
 
-La **malla soberana** es la capa de red a nivel de aplicación que conecta todos los nodos de la flota de la Red Privada PointSav (PPN). Funciona sobre túneles criptográficos WireGuard a través de una interfaz `ppn0` dedicada y entrega comandos binarios firmados sin depender de un intermediario de mensajes centralizado. Cada nodo se comunica directamente con sus pares autorizados; la capa de malla aplica la misma jerarquía de autoridad que el [[diode-standard|Diode Standard]] como propiedad estructural, no como opción de configuración.
+La **malla soberana** es la capa de red a nivel de aplicación que conecta todos los nodos de la flota de la Red Privada PointSav (PPN). Funciona sobre túneles criptográficos WireGuard a través de una interfaz `wg0` dedicada y entrega comandos binarios firmados sin depender de un intermediario de mensajes centralizado. Cada nodo se comunica directamente con sus pares autorizados; la capa de malla aplica la misma jerarquía de autoridad que el [[diode-standard|Diode Standard]] como propiedad estructural, no como opción de configuración.
 
 ## Topología en hub y radios
 
@@ -28,11 +28,11 @@ La malla utiliza una disposición de hub central con radios. El nodo de retransm
 | Radio | Nodo en instalaciones propias | `10.8.0.2` | `app-infrastructure-onprem` |
 | Radio | Nodo arrendado | `10.8.0.3` | `app-infrastructure-leased` |
 
-La subred `10.8.0.0/24` es el rango de direcciones previsto para la PPN. Todo el tráfico de la malla queda encapsulado dentro de WireGuard antes de salir de un nodo; el transporte subyacente — internet público, LAN privada o red interna de GCP — es irrelevante para la capa de malla.
+La subred `10.8.0.0/24` es el rango de direcciones previsto para la PPN. Todo el tráfico de la malla queda encapsulado dentro de WireGuard antes de salir de un nodo; el transporte subyacente — internet público, LAN privada o red interna de GCP — es irrelevante para la capa de malla. Un esquema de direccionamiento `10.42.0.0/16` es el objetivo futuro ratificado, con la migración ("Parte A") en curso; ningún nodo desplegado lo utiliza todavía.
 
 ## Superposición WireGuard
 
-Cada nodo levanta una interfaz WireGuard `ppn0` como parte de su secuencia de arranque. WireGuard proporciona:
+Cada nodo levanta una interfaz WireGuard `wg0` como parte de su secuencia de arranque. WireGuard proporciona:
 
 - **Acuerdo de claves** — intercambio Noise Protocol IK; el par de claves a largo plazo de cada nodo es generado y almacenado en el primer ingreso a la malla por `os-network-admin` en el nodo de plano de control, o a través del Genesis Protocol en nodos de borde bare-metal
 - **Cifrado e integridad** — ChaCha20-Poly1305 por paquete; ningún tráfico de malla en texto plano abandona nunca un nodo
@@ -55,7 +55,7 @@ Enrutador semántico service-slm
       ↓
 Comando binario de 16 bytes (autorizado y firmado)
       ↓
-Difusión service-udp  →  ppn0  →  Túnel WireGuard
+Difusión service-udp  →  wg0  →  Túnel WireGuard
       ↓
 Nodo destino  —  UDP puerto 8090
 ```
@@ -66,7 +66,7 @@ Los comandos fluyen en una sola dirección — desde `os-network-admin` hacia la
 
 ### os-infrastructure — ancla de borde
 
-El nodo bare-metal `os-infrastructure` es un par de la malla, no un controlador. Escucha en el puerto 8090 los comandos binarios firmados dirigidos a él y los ejecuta; no inicia comandos. La tarjeta de red Broadcom 14e4:16b4 del nodo transporta el tráfico de la malla a través de la interfaz `ppn0` una vez que concluye la secuencia de ingreso del Genesis Protocol.
+El nodo bare-metal `os-infrastructure` es un par de la malla, no un controlador. Escucha en el puerto 8090 los comandos binarios firmados dirigidos a él y los ejecuta; no inicia comandos. La tarjeta de red Broadcom 14e4:16b4 del nodo transporta el tráfico de la malla a través de la interfaz `wg0` una vez que concluye la secuencia de ingreso del Genesis Protocol.
 
 ### os-network-admin — plano de control
 

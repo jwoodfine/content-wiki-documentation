@@ -11,71 +11,104 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-08-06
 editor: pointsav-engineering
 paired_with: os-workplace.es.md
-short_description: "os-workplace is the free desktop OS in the PointSav family — a native-Rust sovereign desktop pairing with a Totebox archive, the adoption gateway to the commercial line."
+short_description: "os-workplace is the planned free desktop tier in the PointSav family — today a growing set of independent Rust and Tauri apps an operator runs on their own computer, joining the network as a station-* WireGuard peer; the intended adoption gateway to the commercial line."
 cites: []
 references:
   - id: 1
     text: "ISO 19005-1:2005 — Document management — Electronic document file format for long-term preservation — Part 1: Use of PDF 1.4 (PDF/A-1)."
     url: "https://www.iso.org/standard/38920.html"
-  - id: 2
-    text: "W3C. 'WebRTC 1.0: Real-Time Communication Between Browsers.' W3C Recommendation, 2021."
-    url: "https://www.w3.org/TR/webrtc/"
 ---
 
-`os-workplace` is the free desktop operating system in the PointSav family. It provides a clean, secure, native-Rust desktop environment that pairs naturally with a [[totebox-archive|Totebox archive]] and brings the F-key discipline and [[machine-based-auth|security model]] of the platform to a community user installing it for the first time. The strategy is deliberate: `os-workplace` is the adoption gateway. A new user installs it because it is free and fast; once their daily work happens inside the PointSav ecosystem, the commercial [[os-orchestration|`os-orchestration`]] aggregator becomes a logical next step. This article covers the reference hardware, the application suite, the pairing model, and the strategic rationale for a free desktop.
+**Correction, 2026-08-02, resolved 2026-08-06.** The original app-suite table named 11 apps; 8
+did not exist in any form (`app-workplace-{wordprocessor,spreadsheet,email,browser,
+communications,chat,file-manager,wiki}`), and the 3 that did exist (`app-workplace-pdf`, `-gis`,
+`-bim`) were misdescribed. This correction replaces the table with the real nine-crate
+`app-workplace-*` family, each row checked directly against its own source tree. It also corrects
+two further claims found while re-verifying. First: the apps are Tauri applications — a Rust
+backend paired with an HTML/JS/CSS WebView, targeting macOS 10.13 and later — not the "native Rust
+binaries" the article previously claimed. Second: the "Reference hardware" section's Dell XPS/HP
+ProBook/hardened-FreeBSD-or-seL4 framing has been removed. It contradicted every app's own stated
+macOS target and does not appear anywhere in the ratified architecture
+(`BRIEF-os-product-family.md` §D); `os-workplace` itself remains a one-line architectural
+placeholder (`"SYSTEM EVENT: os-workplace scaffold verified."`, no other logic), not built
+infrastructure behind a custom kernel. That section has been replaced with the real, ratified
+deployment model below. The rest of the article is hedged to planned/intended language
+accordingly.
 
-## Reference hardware
+`os-workplace` is planned as the free desktop tier in the PointSav family. What exists today is a
+family of independent Rust and Tauri desktop applications — the workplace apps — that an operator
+downloads and runs directly on their own computer. The `os-workplace` crate that would bind them
+into one unified, branded environment is still a one-line placeholder, not built infrastructure.
+The strategy behind the free tier is deliberate: an operator installs the workplace apps because
+they are fast and cost nothing; once daily work happens inside the PointSav ecosystem, the
+commercial [[os-orchestration|`os-orchestration`]] aggregator becomes a logical next step. This
+article covers the real applications that exist today, the ratified plan for how a workplace
+machine joins the network, and the strategic rationale for a free desktop tier.
 
-`os-workplace` targets a small, deliberate set of devices. Hardware fragmentation is the enemy of stability; the official reference profiles are chosen for first-class driver support under a hardened FreeBSD or seL4 base:
+## The workplace apps
 
-| Tier | Device |
-|---|---|
-| Flagship | Dell XPS 13 / 14 (Developer Edition) |
-| Fleet | HP ProBook 400 series (445/450) |
+The apps are Tauri desktop applications — a Rust backend paired with an HTML/JS/CSS WebView,
+targeting macOS 10.13 High Sierra and later. Two of the nine crates below are pure Rust with no
+WebView. Each app is independent: an operator can install one without the others, and none
+require the unified `os-workplace` shell to run.
 
-The kernel evolution mirrors the rest of the family: Phase 1 runs on a hardened FreeBSD desktop profile; Phase 2 (planned) migrates to a native [[sel4-microkernel-substrate|seL4]] microkernel build.
+| App | State | What it does |
+|---|---|---|
+| `app-workplace-memo` | Active | Document editor; produces a self-contained `.html` file with fonts embedded, printing to a flawless PDF via the OS print dialogue [^1] |
+| `app-workplace-presentation` | Active | Slide editor, built on the same offline-first, no-cloud design as Memo |
+| `app-workplace-workbench` | Active | A thin WebView window onto the locally running `app-privategit-workbench` HTTP server; it does not itself start, stop, or manage that server |
+| `app-workplace-proforma` | Active | Spreadsheet for institutional financial analysis; produces a self-contained `.json` file carrying formulas, formatting, and an audit chain |
+| `app-workplace-pdf` | Scaffold-coded | PDF viewer and print tool using the `pdfium-render` crate (Google PDFium, Apache-2.0) |
+| `app-workplace-gis` | Scaffold-coded | Desktop viewer for location-intelligence data; loads a MapLibre GL tile viewer against `gis.woodfinegroup.com` or a local tile server over the PPN |
+| `app-workplace-bim` | Reserved-folder | Planned BIM authoring editor (Revit/AutoCAD muscle memory); a research document only today — no `Cargo.toml` or source exists yet |
+| `app-workplace-aibridge` | Built, not yet registry-tracked | The AI section-edit bridge core — lets an operator hand one section of a document to an external AI session and apply only that section's result; enforces [[machine-based-auth|SYS-ADR-07]] by refusing structured schemas (proforma, GIS, BIM data) at every entry point |
+| `app-workplace-http-prototype` | Built, not yet registry-tracked | An axum server exposing the workplace apps over the WireGuard PPN while native Tauri builds await a macOS build host; the Memo editor is the only surface it currently serves, the rest are listed pending |
 
-## The application suite
+## Deployment: joining the network
 
-**Correction (2026-08-02):** the table below does not match the real codebase. 8 of the 11 named apps do not exist in any form (`app-workplace-{wordprocessor,spreadsheet,email,browser,communications,chat,file-manager,wiki}`); the real `app-workplace-*` family instead includes six crates this table never mentions: `app-workplace-aibridge`, `app-workplace-http-prototype`, `app-workplace-memo`, `app-workplace-presentation`, `app-workplace-proforma`, `app-workplace-workbench`. Of the 3 named apps that do exist, all are misdescribed: `app-workplace-pdf` (not `-pdfs`) uses the `pdfium-render` crate, not a `pdf-rs` fork; `app-workplace-gis` is a Tauri app loading a MapLibre GL tile viewer, not a `Whitebox-tools` fork; `app-workplace-bim` has no `Cargo.toml`/`src` at all yet (planning docs only) despite this table's unhedged "(planned)" framing implying the others are current. The real apps are Tauri (Rust backend + HTML/JS/CSS WebView, targeting macOS 10.13+), not the "native Rust binaries" claimed in the paragraph below — `os-workplace` itself is an explicit "Architectural Scaffold (Pending Engineering Cycle)" with a one-line stub, not built infrastructure behind a FreeBSD/seL4 base. **Flagged, not resolved** — this table needs a full rewrite against the real 6-crate `app-workplace-*` family, not a rewording of the current one.
-
-All applications are native Rust binaries. The choice is principled: an SMB customer in 2030 values local-first performance and offline reliability over browser-based subscription tooling. Each app is small, single-purpose, and starts in under 100 milliseconds.
-
-| App | Source approach |
-|---|---|
-| `app-workplace-pdfs` | Fork of `pdf-rs`; ISO PDF/A fidelity only [^1] |
-| `app-workplace-wordprocessor` | Typst engine for document layout |
-| `app-workplace-spreadsheet` | IronCalc — deterministic-maths Rust engine |
-| `app-workplace-email` | Fork of Himalaya; TUI-first, local-first |
-| `app-workplace-browser` | Fork of Servo; telemetry removed |
-| `app-workplace-communications` | WebRTC-based peer-to-peer Rust client [^2] |
-| `app-workplace-chat` | Real-time secure messaging |
-| `app-workplace-file-manager` | Fork of Broot; fuzzy-search, action-triggered |
-| `app-workplace-wiki` | Offline-first documentation viewer |
-| `app-workplace-gis` (planned) | Fork of Whitebox-tools; pure-Rust geospatial |
-| `app-workplace-bim` (planned) | ifc-rs and truck B-rep kernel |
+**Ratified 2026-05-23** (`DOCTRINE.md §IV.f`); implementation pending. `os-workplace` runs on the
+operator's own personal computer — today, a MacBook — and is planned to deliver
+`app-workplace-desktop`, the unified operator desktop surface that would bind the apps above into
+one environment. It hosts [[console-os|`os-console`]] as a co-resident application, not through
+Type 2 virtualization — the two are independent layers sharing the same machine. The machine joins
+the [[ppn-architecture-overview|PointSav Private Network]] as a direct WireGuard peer in the
+`10.42.20.0/24` range; the `node-*` instance of `os-console` it hosts inherits that membership
+rather than getting a separate address. Deployment instances use the `station-*` prefix. The first
+two planned are `station-workplace-jennifer-1` and `station-workplace-mathew-1`, both awaiting the
+WireGuard network rollout and the `app-workplace-desktop` build. `os-workplace` does not connect
+to [[totebox-orchestration|the orchestration gateway]] directly — only indirectly, through the
+`os-console` instance it hosts.
 
 ## Pairing with the Totebox
 
-`os-workplace` is the user's local environment. Data lives in the user's [[totebox-os|os-totebox]]. A pairing handshake between the workstation and the archive establishes hardware-bound trust through `service-pairing`. There are no usernames or passwords — the pairing is the permission.
-
-A user can carry `os-workplace` on a USB drive, boot it on a borrowed machine, and have the same secure environment without leaving traces on the host. Closing the session wipes the secure memory. The Totebox remains untouched in the cloud.
+`os-workplace` is the operator's local environment. Data lives in the operator's
+[[totebox-os|os-totebox]]. Machine-based pairing establishes hardware-bound trust between the
+workstation and the archive — see [[machine-based-auth]] for the mechanism. There are no
+usernames or passwords; the pairing is the permission.
 
 ## Why a free desktop is strategic
 
 Three reasons make `os-workplace` a structural commitment rather than a marketing gesture:
 
-1. **Adoption funnel.** A free, fast desktop introduces the operator to the F-key discipline of [[console-os|`os-console`]] and the security model of the [[diode-standard|Diode]]. The commercial products feel familiar from day one.
-2. **Reference implementation.** Every line of code written for `os-workplace` is reviewable in the public monorepo. Customers can audit the [[compounding-substrate|substrate]] before they buy commercial aggregation against it.
-3. **Ecosystem gravity.** A growing community of `os-workplace` users creates an independent constituency of contributors, packagers, and translators that no commercial-only product can replicate. The [[contributor-model|contributor model]] describes the roles and rights for community participation.
+1. **Adoption funnel.** A free, fast set of desktop apps is intended to introduce the operator to
+   the F-key discipline of [[console-os|`os-console`]] and the security model of the
+   [[diode-standard|Diode]], so the commercial products feel familiar from day one.
+2. **Reference implementation.** Every line of code written for the workplace apps is reviewable
+   in the public monorepo. Customers can audit the [[compounding-substrate|substrate]] before they
+   buy commercial aggregation against it.
+3. **Ecosystem gravity.** A growing community of workplace-app users is intended to create an
+   independent constituency of contributors, packagers, and translators that no commercial-only
+   product can replicate. The [[contributor-model|contributor model]] describes the roles and
+   rights for community participation.
 
 ## See also
 
 - [[os-family-overview]] — the eight-OS family and where os-workplace fits
 - [[totebox-os]] — the data partner; the archive os-workplace pairs with
-- [[console-os]] — the alternative TUI-first surface for operators who want keyboard-only control
+- [[console-os]] — the co-resident TUI-first surface that carries os-workplace's network
+  connection
 - [[machine-based-auth]] — the pairing model that replaces usernames and passwords
-- [[hardware-reference]] — full CPU and hardware requirements for the PointSav family
+- [[ppn-architecture-overview]] — the WireGuard network that station-* deployments join

@@ -53,7 +53,7 @@ Los directorios de proyecto `moonshot-protocol` y `moonshot-database` están res
 
 ## Componente 3 — Planificador de VMs entre nodos (planificado; os-orchestration)
 
-`gateway-orchestration-command-1` es el hogar previsto para la lógica de colocación entre nodos. Hoy es sin estado — agrega consultas de datos PSP a través de Totebox Archives y devuelve filas de resultados. La extensión planificada tiene como objetivo agregar una capa de planificación de recursos:
+`gateway-orchestration-command-1` es el hogar previsto para la lógica de colocación entre nodos. Hoy es sin estado — está diseñado para agregar consultas de datos basadas en capacidades a través de Totebox Archives y devolver filas de resultados. La extensión planificada tiene como objetivo agregar una capa de planificación de recursos:
 
 - **Colocación**: cuando es necesario lanzar una nueva VM, el planificador leería los anuncios de disponibilidad de recursos de `os-network-admin` de cada nodo, verificaría el estado de confianza del nodo en el ledger de capacidades y colocaría la VM en el nodo de mejor ajuste.
 - **Migración**: la migración en vivo de QEMU transfiere el estado de una VM en ejecución (memoria, registros de CPU, estado de dispositivos) a través de una conexión TCP tunelizada mediante WireGuard. La VM permanece disponible durante la transferencia; la pausa de transición es típicamente de menos de un segundo en una LAN.

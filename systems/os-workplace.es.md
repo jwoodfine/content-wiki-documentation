@@ -11,69 +11,114 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-08-06
 editor: pointsav-engineering
 paired_with: os-workplace.md
-short_description: "os-workplace es el sistema operativo de escritorio gratuito de la familia PointSav — un escritorio soberano nativo en Rust que se empareja con un archivo Totebox, funciona en hardware de referencia deliberado y sirve como puerta de entrada a la línea de productos comerciales de PointSav."
+short_description: "os-workplace es el nivel de escritorio gratuito previsto en la familia PointSav — hoy, un conjunto creciente de aplicaciones independientes en Rust y Tauri que el operador ejecuta en su propio equipo, incorporándose a la red como un par WireGuard station-*; la puerta de entrada prevista a la línea comercial."
 cites: []
 references:
   - id: 1
     text: "ISO 19005-1:2005 — Gestión de documentos — Formato de archivo de documento electrónico para preservación a largo plazo — Parte 1: Uso de PDF 1.4 (PDF/A-1)."
     url: "https://www.iso.org/standard/38920.html"
-  - id: 2
-    text: "W3C. 'WebRTC 1.0: Comunicación en Tiempo Real entre Navegadores.' Recomendación W3C, 2021."
-    url: "https://www.w3.org/TR/webrtc/"
 ---
 
-`os-workplace` es el sistema operativo de escritorio gratuito de la familia PointSav. Proporciona un entorno de escritorio limpio, seguro y nativo en Rust que se empareja naturalmente con un [[totebox-archive|archivo Totebox]] y lleva la disciplina de teclas de función y el [[machine-based-auth|modelo de seguridad]] de la plataforma a un usuario comunitario que lo instala por primera vez. La estrategia es deliberada: `os-workplace` es la puerta de entrada a la adopción. Un nuevo usuario lo instala porque es gratuito y rápido; una vez que su trabajo diario ocurre dentro del ecosistema PointSav, el agregador comercial [[os-orchestration|`os-orchestration`]] se convierte en el siguiente paso lógico. Este artículo cubre el hardware de referencia, la suite de aplicaciones, el modelo de emparejamiento y la justificación estratégica de un escritorio gratuito.
+**Corrección, 2026-08-06 (paridad con la versión en inglés).** La versión anterior de este
+artículo conservaba la tabla original de 11 aplicaciones (sin ninguna nota de corrección) y una
+hoja de ruta de núcleo FreeBSD/seL4 que no existe en la arquitectura ratificada. Verificado
+directamente contra el árbol de fuentes: de las 11 aplicaciones nombradas, 8 no existen en ninguna
+forma (`app-workplace-{wordprocessor,spreadsheet,email,browser,communications,chat,file-manager,
+wiki}`), y las 3 que sí existen (`app-workplace-pdf`, `-gis`, `-bim`) estaban mal descritas. Esta
+revisión sustituye la tabla por la familia real de nueve crates `app-workplace-*`, cada fila
+verificada contra su propio código fuente. También corrige dos afirmaciones adicionales. Primera:
+las aplicaciones son aplicaciones Tauri — un backend en Rust junto con una WebView en HTML/JS/CSS,
+dirigidas a macOS 10.13 en adelante — no "binarios nativos en Rust" como afirmaba la versión
+anterior. Segunda: se elimina el marco de "Dell XPS/HP ProBook con base FreeBSD o seL4 reforzada".
+Contradecía el objetivo macOS declarado por cada aplicación y no aparece en ningún lugar de la
+arquitectura ratificada (`BRIEF-os-product-family.md` §D). `os-workplace` en sí sigue siendo un
+marcador de posición arquitectónico de una sola línea (`"SYSTEM EVENT: os-workplace scaffold
+verified."`, sin ninguna otra lógica), no infraestructura construida sobre un núcleo propio. Esa
+sección se ha sustituido por el modelo de despliegue real y ratificado que aparece más abajo. El resto del
+artículo se ha reformulado en lenguaje previsto/planeado en consecuencia.
 
-## Hardware de referencia
+`os-workplace` está previsto como el nivel de escritorio gratuito de la familia PointSav. Lo que
+existe hoy es una familia de aplicaciones de escritorio independientes en Rust y Tauri — las
+aplicaciones de Workplace — que el operador descarga y ejecuta directamente en su propio equipo.
+El crate `os-workplace` que las uniría en un único entorno unificado y de marca sigue siendo un
+marcador de posición de una sola línea, no infraestructura construida. La estrategia detrás del
+nivel gratuito es deliberada: un operador instala las aplicaciones de Workplace porque son rápidas
+y no cuestan nada; una vez que su trabajo diario ocurre dentro del ecosistema PointSav, el
+agregador comercial [[os-orchestration|`os-orchestration`]] se convierte en el siguiente paso
+lógico. Este artículo cubre las aplicaciones reales que existen hoy, el plan ratificado para que
+un equipo de Workplace se incorpore a la red, y la justificación estratégica de un nivel de
+escritorio gratuito.
 
-`os-workplace` apunta a un conjunto pequeño y deliberado de dispositivos. La fragmentación de hardware es el enemigo de la estabilidad; los perfiles de referencia oficiales se eligen por su compatibilidad de primer nivel con una base FreeBSD reforzada o seL4:
+## Las aplicaciones de Workplace
 
-| Nivel | Dispositivo |
-|---|---|
-| Insignia | Dell XPS 13 / 14 (Developer Edition) |
-| Flota | HP ProBook serie 400 (445/450) |
+Las aplicaciones son aplicaciones de escritorio Tauri — un backend en Rust junto con una WebView
+en HTML/JS/CSS, dirigidas a macOS 10.13 High Sierra en adelante. Dos de los nueve crates de abajo
+son Rust puro, sin WebView. Cada aplicación es independiente: un operador puede instalar una sin
+las demás, y ninguna requiere el shell unificado `os-workplace` para funcionar.
 
-La evolución del núcleo refleja al resto de la familia: la Fase 1 funciona con un perfil de escritorio FreeBSD reforzado; la Fase 2 (prevista) migra a una compilación nativa del [[sel4-microkernel-substrate|micronúcleo seL4]].
+| Aplicación | Estado | Qué hace |
+|---|---|---|
+| `app-workplace-memo` | Activa | Editor de documentos; produce un archivo `.html` autocontenido con las fuentes incrustadas, que imprime a un PDF impecable mediante el diálogo de impresión del sistema [^1] |
+| `app-workplace-presentation` | Activa | Editor de diapositivas, construido sobre el mismo diseño local-primero y sin nube que Memo |
+| `app-workplace-workbench` | Activa | Una ventana WebView delgada sobre el servidor HTTP `app-privategit-workbench` que corre localmente; no inicia, detiene ni administra ese servidor por sí misma |
+| `app-workplace-proforma` | Activa | Hoja de cálculo para análisis financiero institucional; produce un archivo `.json` autocontenido con fórmulas, formato y una cadena de auditoría |
+| `app-workplace-pdf` | Con andamiaje de código | Visor de PDF y herramienta de impresión que usa el crate `pdfium-render` (Google PDFium, Apache-2.0) |
+| `app-workplace-gis` | Con andamiaje de código | Visor de escritorio para datos de inteligencia de localización; carga un visor de teselas MapLibre GL contra `gis.woodfinegroup.com` o un servidor de teselas local sobre la PPN |
+| `app-workplace-bim` | Carpeta reservada | Editor de autoría BIM previsto (memoria muscular de Revit/AutoCAD); hoy es solo un documento de investigación — todavía no existen `Cargo.toml` ni código fuente |
+| `app-workplace-aibridge` | Construido, aún no registrado en el catálogo | El núcleo del puente de edición de secciones con IA — permite a un operador entregar solo una sección de un documento a una sesión de IA externa y aplicar únicamente el resultado de esa sección; aplica [[machine-based-auth|SYS-ADR-07]] rechazando esquemas estructurados (datos de proforma, GIS, BIM) en cada punto de entrada |
+| `app-workplace-http-prototype` | Construido, aún no registrado en el catálogo | Un servidor axum que expone las aplicaciones de Workplace sobre la PPN WireGuard mientras las compilaciones nativas de Tauri esperan un equipo de compilación macOS; el editor Memo es la única superficie que sirve hoy, el resto figura como pendiente |
 
-## La suite de aplicaciones
+## Despliegue: incorporación a la red
 
-Todas las aplicaciones son binarios nativos en Rust. La elección es razonada: un cliente PYME en 2030 valora el rendimiento local-primero y la fiabilidad sin conexión por encima de las herramientas de suscripción basadas en el navegador. Cada aplicación es pequeña, de propósito único y arranca en menos de 100 milisegundos.
-
-| Aplicación | Enfoque del código fuente |
-|---|---|
-| `app-workplace-pdfs` | Bifurcación de `pdf-rs`; solo fidelidad ISO PDF/A [^1] |
-| `app-workplace-wordprocessor` | Motor Typst para maquetación de documentos |
-| `app-workplace-spreadsheet` | IronCalc — motor Rust con matemáticas deterministas |
-| `app-workplace-email` | Bifurcación de Himalaya; TUI-primero, local-primero |
-| `app-workplace-browser` | Bifurcación de Servo; telemetría eliminada |
-| `app-workplace-communications` | Cliente Rust punto a punto basado en WebRTC [^2] |
-| `app-workplace-chat` | Mensajería segura en tiempo real |
-| `app-workplace-file-manager` | Bifurcación de Broot; búsqueda difusa, activado por acciones |
-| `app-workplace-wiki` | Visor de documentación local-primero |
-| `app-workplace-gis` (previsto) | Bifurcación de Whitebox-tools; geoespacial puro en Rust |
-| `app-workplace-bim` (previsto) | ifc-rs y núcleo B-rep truck |
+**Ratificado el 2026-05-23** (`DOCTRINE.md §IV.f`); implementación pendiente. `os-workplace` se
+ejecuta en el propio equipo personal del operador — hoy, una MacBook — y está previsto que entregue
+`app-workplace-desktop`, la superficie de escritorio unificada del operador que uniría las
+aplicaciones anteriores en un solo entorno. Aloja [[console-os|`os-console`]] como aplicación
+co-residente, no mediante virtualización de Tipo 2 — son dos capas independientes que comparten la
+misma máquina. El equipo se incorpora a la [[ppn-architecture-overview|Red Privada PointSav]] como
+par WireGuard directo dentro del rango `10.42.20.0/24`; la instancia `node-*` de `os-console` que
+aloja hereda esa membresía en lugar de recibir una dirección propia. Las instancias de despliegue
+usan el prefijo `station-*`. Las dos primeras previstas son `station-workplace-jennifer-1` y
+`station-workplace-mathew-1`, ambas a la espera del despliegue de la red WireGuard y de la
+construcción de `app-workplace-desktop`. `os-workplace` no se conecta directamente con
+[[totebox-orchestration|la puerta de enlace de orquestación]] — solo indirectamente, a través de
+la instancia de `os-console` que aloja.
 
 ## Emparejamiento con el Totebox
 
-`os-workplace` es el entorno local del usuario. Los datos viven en el [[totebox-os|os-totebox]] del usuario. Un apretón de manos de emparejamiento entre la estación de trabajo y el archivo establece confianza vinculada al hardware a través de `service-pairing`. No hay nombres de usuario ni contraseñas — el emparejamiento es el permiso.
-
-Un usuario puede llevar `os-workplace` en una memoria USB, arrancarlo en una máquina prestada y tener el mismo entorno seguro sin dejar rastros en el anfitrión. Al cerrar la sesión, la memoria segura se borra. El Totebox permanece intacto en la nube.
+`os-workplace` es el entorno local del operador. Los datos viven en el
+[[totebox-os|os-totebox]] del operador. El emparejamiento basado en la máquina establece
+confianza vinculada al hardware entre la estación de trabajo y el archivo — véase
+[[machine-based-auth]] para el mecanismo. No hay nombres de usuario ni contraseñas; el
+emparejamiento es el permiso.
 
 ## Por qué un escritorio gratuito es estratégico
 
 Tres razones hacen de `os-workplace` un compromiso estructural en lugar de un gesto de marketing:
 
-1. **Embudo de adopción.** Un escritorio gratuito y rápido introduce al operador en la disciplina de teclas de función de [[console-os|`os-console`]] y el modelo de seguridad del [[diode-standard|Diodo]]. Los productos comerciales se sienten familiares desde el primer día.
-2. **Implementación de referencia.** Cada línea de código escrita para `os-workplace` es revisable en el monorepo público. Los clientes pueden auditar el [[compounding-substrate|sustrato]] antes de adquirir la agregación comercial.
-3. **Gravedad del ecosistema.** Una comunidad creciente de usuarios de `os-workplace` crea una circunscripción independiente de contribuidores, empaquetadores y traductores que ningún producto exclusivamente comercial puede replicar. El [[contributor-model|modelo de contribuidores]] describe los roles y derechos para la participación comunitaria.
+1. **Embudo de adopción.** Un conjunto de aplicaciones de escritorio gratuito y rápido está
+   pensado para introducir al operador en la disciplina de teclas de función de
+   [[console-os|`os-console`]] y el modelo de seguridad del [[diode-standard|Diodo]]. Así, los
+   productos comerciales se sienten familiares desde el primer día.
+2. **Implementación de referencia.** Cada línea de código escrita para las aplicaciones de
+   Workplace es revisable en el monorepo público. Los clientes pueden auditar el
+   [[compounding-substrate|sustrato]] antes de adquirir la agregación comercial.
+3. **Gravedad del ecosistema.** Se prevé que una comunidad creciente de usuarios de las
+   aplicaciones de Workplace cree una circunscripción independiente de contribuidores,
+   empaquetadores y traductores que ningún producto exclusivamente comercial puede replicar. El
+   [[contributor-model|modelo de contribuidores]] describe los roles y derechos para la
+   participación comunitaria.
 
 ## Véase también
 
 - [[os-family-overview]] — la familia de ocho SO y dónde encaja os-workplace
 - [[totebox-os]] — el socio de datos; el archivo con el que os-workplace se empareja
-- [[console-os]] — la superficie alternativa TUI-primero para operadores que quieren control solo por teclado
-- [[machine-based-auth]] — el modelo de emparejamiento que reemplaza los nombres de usuario y contraseñas
-- [[hardware-reference]] — requisitos completos de CPU y hardware para la familia PointSav
+- [[console-os]] — la superficie co-residente TUI-primero que transporta la conexión de red de
+  os-workplace
+- [[machine-based-auth]] — el modelo de emparejamiento que reemplaza los nombres de usuario y
+  contraseñas
+- [[ppn-architecture-overview]] — la red WireGuard a la que se incorporan los despliegues
+  station-*

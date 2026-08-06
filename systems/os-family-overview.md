@@ -55,7 +55,7 @@ All eight operating systems share the same foundational layer:
 | Kernel | [[sel4-microkernel-substrate|seL4 microkernel]] (planned substrate — not yet the shipped kernel for every OS family member; confirmed not yet integrated into `os-console`) | Mathematically verified hardware isolation |
 | Language | Rust (memory-safe; no garbage collector) | All `system-*`, `service-*`, and `os-*` code; C/C++ banned at L3 and above |
 | Drivers | sDDF (seL4 Device Driver Framework) | Direct hardware access without runtime bloat |
-| Protocol | PointSav Protocol (PSP) | Capability-based binary protocol; tunnels through TLS and VirtIO at the edge |
+| Protocol | Capability-based protocol (planned — no protocol name is committed to code today) | Tunnels through TLS and VirtIO at the edge |
 | Trust | `service-pairing` | Hardware-bound cryptographic pairings; no usernames, no passwords |
 | Audit | Append-only ledger (planned) | Tamper-resistant event record that cannot be disabled by an administrator |
 | Transferability | Sovereign Addendum (planned) | The running instance remains the operator's property in any cloud provider |

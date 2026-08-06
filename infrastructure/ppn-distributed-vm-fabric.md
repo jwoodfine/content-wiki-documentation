@@ -52,7 +52,7 @@ The `moonshot-protocol` and `moonshot-database` project directories are reserved
 
 ## Component 3 — Cross-node VM scheduler (planned; os-orchestration)
 
-`gateway-orchestration-command-1` is the intended home for cross-node placement logic. It is stateless today — it aggregates PSP data queries across Totebox Archives and returns result rows. The planned extension is intended to add a resource scheduling layer:
+`gateway-orchestration-command-1` is the intended home for cross-node placement logic. It is stateless today — it is designed to aggregate capability-based data queries across Totebox Archives and return result rows. The planned extension is intended to add a resource scheduling layer:
 
 - **Placement**: when a new VM needs to be launched, the scheduler would read resource-availability advertisements from each node's `os-network-admin`, check the capability ledger for node trust status, and place the VM on the best-fit node.
 - **Migration**: QEMU live migration transfers a running VM's state (memory, CPU registers, device state) over a TCP connection tunnelled through WireGuard. The VM remains available during the transfer; the cutover pause is typically under one second on a LAN.
