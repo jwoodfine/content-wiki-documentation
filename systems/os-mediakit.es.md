@@ -3,10 +3,10 @@ schema: foundry-doc-v1
 content_type: topic
 title: "OS Mediakit"
 slug: os-mediakit
-short_description: "Imagen de SO invitado para el nivel vm-mediakit — aísla wikis de conocimiento, sitios de marketing, corrector y orquestación BIM de los niveles de bóveda y orquestación."
+short_description: "El nivel web público de la familia de SO PointSav — os-mediakit posee TLS, el ciclo de vida systemd y el acceso a datos mediado por la puerta de enlace; app-mediakit-knowledge/marketing/distribution poseen la lógica de dominio. Ubuntu 24.04 hoy; el estado final previsto es una VM seL4 por instancia de despliegue, no un dispositivo combinado único."
 category: systems
 index_group: publishing-and-media
-last_edited: 2026-05-29
+last_edited: 2026-08-06
 editor: pointsav-engineering
 status: stable
 bcsc_class: no-disclosure-implication
@@ -14,10 +14,52 @@ bcsc_class: no-disclosure-implication
 
 **os-mediakit** es la imagen del sistema operativo invitado para el nivel de VM
 `vm-mediakit` en la capa del hipervisor de la Red Privada PointSav. Aísla la superficie
-de servicio MediaKit — wikis de conocimiento, sitios de marketing, corrector de pruebas
-y orquestación BIM — del almacén de fuentes y los niveles de orquestación.
+de servicio MediaKit — wikis de conocimiento, sitios de marketing y flujos de
+cumplimiento/distribución — del almacén de fuentes y los niveles de orquestación.
 
----
+## Frontera entre SO y aplicaciones
+
+`os-mediakit` (el sistema operativo) y `app-mediakit-*` (las aplicaciones que aloja)
+tienen una división fija de responsabilidades, ratificada como parte de las
+definiciones de nivel de la familia de SO.
+
+`os-mediakit` proporciona: terminación TLS (nginx y certbot), ciclo de vida de
+unidades systemd, el diseño de sistema de archivos por inquilino, la rotación de
+registros con reenvío al libro mayor WORM, el emparejamiento MBA con la puerta de
+enlace de la flota, el arranque TLS del cliente Doorman, la limitación de tasa y el
+servicio de activos estáticos.
+
+`app-mediakit-*` proporciona: lógica de dominio — renderizado de páginas, búsqueda,
+verificación de pagos, consultas de taxonomía, la interfaz editorial, la resolución
+de wikilinks y la emisión de licencias. Cada binario `app-mediakit-*` es un inquilino
+del SO, no parte de él.
+
+## Despliegues y flujo de datos
+
+Cada instancia `app-mediakit-*` alcanza los datos de Totebox únicamente a través de la
+puerta de enlace de la flota — `media-* → MBA saliente → gateway-orchestration-command-1
+→ auditoría Doorman → cluster-totebox-*`. **Ningún proceso `app-mediakit-*` lee el
+almacenamiento de Totebox directamente**; la puerta de enlace es el único punto de
+cruce, y cada lectura queda registrada en el libro de auditoría a su paso.
+
+| Instancia | Binario | Superficie | Estado |
+|---|---|---|---|
+| `media-knowledge-documentation-1` | app-mediakit-knowledge | documentation.pointsav.com | Activo |
+| `media-knowledge-projects-1` | app-mediakit-knowledge | projects.woodfinegroup.com | Activo |
+| `media-marketing-landing-1` | app-mediakit-marketing | home.woodfinegroup.com | Activo |
+| `media-marketing-landing-2` | app-mediakit-marketing | home.pointsav.com | Activo |
+| `media-intranet-1` | nginx (sin binario de aplicación) | Vista previa interna solo por VPN de lo anterior | Activo, restringido a WireGuard |
+| `media-knowledge-corporate-1` | app-mediakit-knowledge | corporate.woodfinegroup.com | Aún no desplegado |
+| `media-distribution-*` | app-mediakit-distribution | Flujo de comunicados/cumplimiento | Aún no desplegado |
+
+Dos cosas que conviene decir con claridad en lugar de suavizar. Primero, el
+emparejamiento MBA con la puerta de enlace de la flota del que depende este modelo de
+flujo de datos no está aún conectado para ninguna instancia `media-*` hoy — cada una
+accede a su contenido localmente en lugar de a través de la puerta de enlace, una
+brecha conocida y registrada. Segundo, `software.pointsav.com` — asociado a veces con
+`app-mediakit-distribution` en la planificación temprana — en la práctica es servido
+por los binarios independientes `app-privategit-marketplace`/`app-privategit-source`;
+ninguna instancia de `app-mediakit-distribution` está desplegada allí hoy.
 
 ## Posición en la arquitectura
 
@@ -46,8 +88,8 @@ os-mediakit es uno de los tres invitados en el esquema de tres VMs:
 ## Fase 1: Ubuntu 24.04 provisional (presente)
 
 El primer despliegue de vm-mediakit utiliza una imagen **Ubuntu 24.04 server cloud x86_64 QCOW2**
-como SO invitado. Esta es la implementación provisional de producción mientras se desarrolla
-la imagen seL4 Microkit.
+como SO invitado. Esta es la implementación provisional de producción mientras se desarrollan
+las VMs seL4 por instancia.
 
 Ubuntu 24.04 es obligatorio — no Debian 12 — porque todos los binarios de servicio compilados
 en el anfitrión GCP (Ubuntu 24.04, glibc 2.39) dependen de los símbolos `GLIBC_2.39`. Debian 12
@@ -78,53 +120,43 @@ Servicios dentro del invitado Ubuntu 24.04 (estado Fase 1, 2026-05-29):
 
 ---
 
-## Fase 3: imagen seL4 Microkit (prevista)
+## Fase 3: una VM seL4 por instancia de despliegue (prevista)
 
-La forma prevista a largo plazo de os-mediakit es una **imagen seL4 Microkit 2.2 AArch64**
-ensamblada por `moonshot-toolkit`. Cada servicio se ejecuta como un Dominio de Protección
-(PD) seL4 aislado dentro del micronúcleo con verificación formal.
+La topología moonshot ratificada para la familia de SO no empaqueta `os-mediakit`
+como un único dispositivo seL4 combinado, a diferencia de cómo `os-orchestration`
+consolidó Command y SLM en un solo invitado. En cambio, cada **instancia de
+despliegue** `app-mediakit-*` — no cada tipo de servicio — obtiene su propia VM
+seL4/Microkit dedicada, usando el mismo patrón de invitado Linux Microkit-más-
+`vendor-libvmm` ya probado para `os-totebox`.
 
-Se trata de un hito planificado. La ruta seL4 requiere un anfitrión AArch64 (Microkit 2.2.0
-admite AArch64 y RISC-V 64; no hay objetivo x86_64 para Microkit).
+| VM prevista | Aloja |
+|---|---|
+| `mediakit-knowledge-vm-1` | `media-knowledge-documentation-1` (documentation.pointsav.com) |
+| `mediakit-knowledge-vm-2` | `media-knowledge-projects-1` (projects.woodfinegroup.com) |
+| `mediakit-knowledge-vm-3` | `media-knowledge-corporate-1` (corporate.woodfinegroup.com, aún no desplegado) |
+| `mediakit-marketing-vm` | las instancias de páginas de aterrizaje de marketing |
+| `mediakit-dist-vm` | la instancia de distribución/flujo de cumplimiento, una vez construida |
 
-### Distribución planificada de componentes
-
-Cada servicio principal se convierte en un PD seL4 con un conjunto mínimo de capacidades:
-
-| PD | Binario | Capacidad seL4 |
-|---|---|---|
-| `mediakit-root` | servidor raíz os-mediakit | Arranque, distribución de capacidades |
-| `service-fs-pd` | service-fs Envelope B | IPC al ledger-pd; solo punto final de sistema de archivos |
-| `system-ledger-pd` | system-ledger (función nativa) | seL4_Call al oráculo de capacidades |
-| `proofreader-pd` | service-proofreader | Punto final HTTP; sin capacidad de sistema de archivos |
-| `knowledge-pd` | app-mediakit-knowledge | Punto final HTTP; capacidad de SF de solo lectura |
-| `marketing-pd` | app-mediakit-marketing | Punto final HTTP; sin capacidad de SF |
-
-El invariante de aislamiento: ningún PD tiene capacidad de lectura sobre la memoria de
-otro PD. Impuesto por el modelo de capacidades seL4 — no por permisos a nivel de SO.
-
-### El shim `system-substrate-sel4`
-
-`system-core` y `system-ledger` están escritos para entornos `std` (forma de demonio Linux).
-Ejecutarlos como PDs seL4 requiere `system-substrate-sel4` — una caja shim con indicadores
-de características `["native"]` (seL4_Call/seL4_Send vía rust-sel4) y `["compat"]`
-(envoltorio std para Linux). El shim es una caja planificada. El mismo patrón aplica
-específicamente a service-fs (Envelope B).
+La justificación es la misma que las tres instancias independientes de
+`os-privategit` (bóveda de fuentes, distribución de software, activos de diseño):
+distintas superficies públicas conllevan distintos perfiles de ataque, y el
+compromiso de una instancia de wiki no debería poner en riesgo el espacio de
+proceso de una instancia hermana. Se trata de un hito planificado, aún no iniciado
+— ninguna VM `os-mediakit`, combinada o por instancia, se ejecuta bajo seL4 hoy.
 
 ---
 
 ## Qué cambia respecto a la Fase 1 y qué permanece igual
 
-| Propiedad | Ubuntu 24.04 (Fase 1) | seL4 Microkit (Fase 3, previsto) |
+| Propiedad | Ubuntu 24.04 (Fase 1, hoy) | VMs seL4 por instancia (Fase 3, prevista) |
 |---|---|---|
-| SO invitado | Ubuntu 24.04 Linux 6.x (glibc 2.39) | Micronúcleo seL4 + PDs Microkit |
+| SO invitado | Ubuntu 24.04 Linux 6.x (glibc 2.39), un invitado para todas las instancias co-inquilinas | Micronúcleo seL4, un invitado por instancia de despliegue |
 | Anfitrión | QEMU/TCG (x86_64) | QEMU/KVM o bare metal AArch64 |
-| Binarios de servicio | Los mismos (compilación cruzada) | Los mismos (recompilados para AArch64 no_std) |
-| Protocolos de comunicación | CBOR sobre HTTP | CBOR sobre QUIC (mismo esquema de datos) |
-| Números de puerto | Los mismos (9090, 9092, ...) | Los mismos (superposición WireGuard) |
+| Binarios de servicio | Los mismos (compilación cruzada) | Los mismos, recompilados para el invitado seL4 objetivo |
+| Frontera de aislamiento | Separación de proceso/sistema de archivos dentro de un invitado compartido | Una frontera de VM completa por instancia |
+| Números de puerto | Los mismos (9090, 9093, 9095, ...) | Los mismos, accesibles a través de la malla PPN |
 | virtio-balloon | Presente | Presente (capa del hipervisor sin cambios) |
-| Aislamiento formal | Modelo de seguridad del núcleo Linux | Prueba de no-interferencia intransitiva seL4 |
-| Custodia de claves | Permisos de archivos del SO | Objeto de capacidad seL4 — sin SO |
+| Custodia de claves | Permisos de archivos del SO | Material de clave por VM, sin invitado compartido que comprometer |
 
 ---
 
@@ -146,3 +178,4 @@ ya es miembro del PPN.
 - [[ppn-hypervisor-resource-pool]] — cómo virtio-balloon gestiona la RAM para vm-mediakit
 - [[totebox-archive]] — qué hace el nivel Totebox Archive sobre el SO invitado
 - [[os-network-admin]] — el plano de control PPN; vm-mediakit se une a la malla a través de él
+- [[os-family-overview|Visión general de la familia de SO]] — la familia completa de SO PointSav
