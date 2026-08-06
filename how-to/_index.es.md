@@ -42,9 +42,9 @@ Usa la interfaz de terminal de la plataforma y sus Cartuchos integrados.
 Trabaja con el libro mayor de auditoría WORM y los datos de entidades.
 
 - [[read-write-totebox-archives|Leer y escribir en archivos Totebox]] — protocolo de lectura al inicio de sesión, flujo de confirmación, preparación de borradores, buzón entre archivos
-- [[verify-worm-ledger|Verificar una entrada del libro mayor WORM]] — confirmar la integridad de la cadena de hash y validar contra un punto de control Sigstore firmado
-- [[query-the-datagraph|Consultar el DataGraph]] — buscar entidades nombradas, navegar relaciones, manejar interrupciones del Nivel A
-- [[export-structured-data|Exportar datos estructurados]] — cuatro rutas de exportación: DataGraph, Markdown wiki, GeoJSON, tiles del libro mayor
+- [[verify-worm-ledger|Verificar una entrada del libro mayor WORM]] — verifique contra un punto de control obtenido, usando solo curl y SHA-256
+- [[query-the-datagraph|Consultar el DataGraph]] — las herramientas reales query_datagraph/get_entity_context
+- [[export-structured-data|Exportar datos estructurados]] — tres rutas de exportación reales: DataGraph, Markdown wiki, entradas del libro mayor
 
 ## Escala multi-entidad
 

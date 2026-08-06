@@ -1,82 +1,72 @@
 ---
 schema: foundry-doc-v1
-title: "How to query the DataGraph"
+title: "Query the DataGraph"
 slug: query-the-datagraph
-short_description: "Queries the DataGraph for current entity state with query_datagraph and get_entity_context, navigating relationships, filtering by type, and handling a Tier A circuit outage."
+short_description: "Queries the DataGraph for current entity state with the real query_datagraph and get_entity_context MCP tools, and handles DataGraph unavailability as its own signal, separate from Doorman's inference tiers."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-06-14
+audience: "Engineers (hands on keyboard); customer operators"
+last_edited: 2026-08-06
 editor: pointsav-engineering
 paired_with: query-the-datagraph.es.md
+research_trail:
+  sources: [live MCP tool schemas for query_datagraph and get_entity_context, confirmed 2026-08-06; app-console-slm F9 dashboard's DataGraph section (confirmed in a prior investigation this session — entity_count is its own field, not a Doorman tier)]
+  verification_method: "the two tool signatures were read directly from the live, currently-registered MCP schema rather than inferred from documentation; corrected the guide's own prior Correction note's finding (DataGraph availability is not a Doorman tier) into plain prose"
 ---
-
-The DataGraph is the live entity store at the centre of `service-content`. It holds every person, organisation, project, and service that the Gravity Engine has identified and verified from the corpus — the ground truth for entity state at any point in time. Querying the DataGraph lets you look up current entity state, navigate relationships between entities, and verify facts before committing content.
-
-For the DataGraph's place in the Gravity Engine, see [[service-content]]. For how entities are extracted into the graph, see [[service-extraction]].
 
 ## Prerequisites
 
-- Access to the Doorman gateway (see [[doorman-protocol]])
-- Doorman Tier A circuit in a live state (check the SLM Cartridge status bar)
-- A `query_datagraph` call routed through the MCP interface
+- Access to the DataGraph MCP tools (`query_datagraph`, `get_entity_context`)
+- DataGraph availability (check the F9 dashboard's DataGraph section — see [[use-f-key-model]])
 
-## Make a basic entity lookup
+## Purpose
 
-Call `query_datagraph` with a plain-text question about the entity you are looking for:
+Look up current, verified entity state instead of relying on session memory, which is a snapshot that drifts. A lookup takes seconds once you know which tool to reach for.
 
-```
-query_datagraph("project-editorial archive status")
-```
+## Procedure
 
-The DataGraph performs a semantic search over the entity store and returns a ranked list of matching entities. Each result includes the entity's identifier, type, and the most recent verified fields.
+1. For a broad or exploratory lookup, call `query_datagraph` with a free-text or keyword query:
 
-For a full entity profile with all recorded fields, use `get_entity_context`:
+   ```
+   query_datagraph(q: "project-editorial archive status")
+   ```
 
-```
-get_entity_context("service-content")
-```
+   It accepts an optional `limit` (default 10 results) and an optional `format_for_prompt` flag that returns a pre-formatted block ready to paste into another prompt.
 
-## Navigate related entities
+2. For a full profile of a specific, already-identified entity, call `get_entity_context` with its name or identifier:
 
-Entity results include a `related_to` field listing linked entities by type. To follow a relationship:
+   ```
+   get_entity_context(entity: "service-content")
+   ```
 
-1. Read the entity result and note the identifier of the related entity.
-2. Call `get_entity_context("<identifier>")` to retrieve the related entity's profile.
+3. To follow a relationship from one entity to another, take the identifier of the entity you're interested in from your first result and call `get_entity_context` on it directly. Navigate from the entity you already know toward the one you're looking for.
 
-Relationships are directional — a project entity links to the services it depends on, but a service entity does not automatically list all projects that use it. Navigate from the entity you know toward the entity you are looking for.
+4. Narrow a broad query by adding an entity-type keyword — person, organization, project, service, deployment — to the query text; the DataGraph's own taxonomy usually surfaces the right entity in the first result.
 
-## Filter results by type
+## Expected outcome
 
-Add an entity type keyword to the query to narrow results:
+A ranked list of matching entities from `query_datagraph`, or a full entity profile from `get_entity_context` — current, verified state rather than a snapshot from whenever your own context was last updated.
 
-```
-query_datagraph("service extraction pipeline")
-query_datagraph("project editorial status")
-```
+## Verification
 
-The DataGraph understands the platform's entity taxonomy: persons, organisations, projects, services, deployments. Qualifying the query with the type usually surfaces the right entity in the first result.
+Compare the result's freshness against your own assumption — if you expected a fact that isn't in the returned profile, or the profile is older than you expected, treat the DataGraph's answer as authoritative and update your own understanding, not the reverse.
 
-## Handle a closed Tier A circuit
+> **Note:** DataGraph availability is not one of Doorman's inference tiers. Tiers A/B/C govern where an inference request routes; DataGraph is a separate live entity store with its own status, shown in its own section of the F9 dashboard. The two can be up or down independently of each other.
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** DataGraph availability is not a Doorman tier. Real Tier A/B/C (`app-console-slm/src/health.rs`, the Doorman systemd unit) are local model / Yo-Yo GPU burst / external API fallback — DataGraph availability is a separate, unrelated status field (`entity_count`). Same systemic defect found across several `how-to/` articles this sweep. **Flagged, not resolved** — needs rewriting around the real, separate DataGraph-availability signal.
+## Rollback
 
-If Doorman's Tier A circuit is `OPEN`, the DataGraph is unavailable. The inference stack falls back to Tier B (SLM only) or Tier C (local fallback), but `query_datagraph` calls will fail.
+Queries are read-only. Nothing to undo.
 
-Proceed with the following caveat in any content you are drafting: *"DataGraph unavailable — verified from session memory; check current state before committing."* Do not commit entity-dependent content during a Tier A outage without the caveat.
+## Next steps
 
-## Key takeaways
-
-- The DataGraph is the live authority for entity state; session memory is a snapshot and drifts
-- Use `get_entity_context` when you need the full profile, `query_datagraph` for search
-- A Tier A circuit OPEN means the DataGraph is unreachable — note the caveat and check before committing
-- Related entities are traversed by calling `get_entity_context` on the identifier from the first result
+- [[export-structured-data]] — export entity records once you've found what you need
+- [[use-f-key-model]] — where DataGraph's own status is actually shown
 
 ## See also
 
-- [[service-content]] — the Gravity Engine that maintains the DataGraph
+- [[service-content]] — the service that maintains the DataGraph
 - [[service-extraction]] — how entities enter the graph from raw corpus documents
-- [[doorman-protocol]] — the gateway routing DataGraph calls and its circuit-breaker model
-- [[app-console-slm]] — the Doorman health dashboard showing Tier A/B/C states
-- [[run-first-slm-query]] — submitting inference queries once Tier A/B is live
+- [[doorman-protocol]] — the separate inference-routing gateway and its tier model

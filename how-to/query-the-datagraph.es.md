@@ -1,82 +1,71 @@
 ---
 schema: foundry-doc-v1
-title: "Cómo consultar el DataGraph"
+title: "Consultar el DataGraph"
 slug: query-the-datagraph
-short_description: "Consulta el DataGraph para conocer el estado actual de las entidades con query_datagraph y get_entity_context, navegando relaciones, filtrando por tipo y gestionando una interrupción del circuito de Nivel A."
+short_description: "Consulta el DataGraph para obtener el estado actual de entidades con las herramientas MCP reales query_datagraph y get_entity_context, y maneja la indisponibilidad del DataGraph como su propia señal, separada de los niveles de inferencia de Doorman."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-06-14
-editor: pointsav-engineering
+audience: "Ingenieros (con acceso directo al terminal); operadores de cliente"
 language: es
 language_protocol: TRANSLATE-ES
+last_edited: 2026-08-06
+editor: pointsav-engineering
 paired_with: query-the-datagraph.md
 ---
 
-El DataGraph es el almacén de entidades activo en el centro de `service-content`. Contiene cada persona, organización, proyecto y servicio que el Motor de Gravedad ha identificado y verificado del corpus — la fuente de verdad para el estado de entidades en cualquier momento. Consultar el DataGraph permite buscar el estado actual de entidades, navegar relaciones entre ellas y verificar hechos antes de confirmar contenido.
-
-Para el lugar del DataGraph en el Motor de Gravedad, véase [[service-content]]. Para cómo se extraen las entidades al grafo, véase [[service-extraction]].
-
 ## Requisitos previos
 
-- Acceso a la puerta de enlace Doorman (véase [[doorman-protocol]])
-- Circuito Nivel A de Doorman en estado activo (verifique la barra de estado del Cartucho SLM)
-- Una llamada `query_datagraph` enrutada a través de la interfaz MCP
+- Acceso a las herramientas MCP del DataGraph (`query_datagraph`, `get_entity_context`)
+- Disponibilidad del DataGraph (verifique la sección DataGraph del panel F9 — véase [[use-f-key-model]])
 
-## Realizar una búsqueda básica de entidad
+## Propósito
 
-Llame a `query_datagraph` con una pregunta en texto plano sobre la entidad que busca:
+Consulte el estado actual y verificado de una entidad en lugar de confiar en la memoria de la sesión, que es una instantánea que se desactualiza. Una consulta toma segundos una vez que sabe a qué herramienta recurrir.
 
-```
-query_datagraph("estado del archivo project-editorial")
-```
+## Procedimiento
 
-El DataGraph realiza una búsqueda semántica sobre el almacén de entidades y devuelve una lista clasificada de entidades coincidentes. Cada resultado incluye el identificador de la entidad, su tipo y los campos verificados más recientes.
+1. Para una búsqueda amplia o exploratoria, llame a `query_datagraph` con una consulta de texto libre o palabras clave:
 
-Para un perfil completo de entidad con todos los campos registrados, use `get_entity_context`:
+   ```
+   query_datagraph(q: "estado del archivo project-editorial")
+   ```
 
-```
-get_entity_context("service-content")
-```
+   Acepta un `limit` opcional (10 resultados por defecto) y un indicador opcional `format_for_prompt` que devuelve un bloque preformateado listo para pegar en otro prompt.
 
-## Navegar entidades relacionadas
+2. Para un perfil completo de una entidad específica ya identificada, llame a `get_entity_context` con su nombre o identificador:
 
-Los resultados de entidades incluyen un campo `related_to` que lista entidades vinculadas por tipo. Para seguir una relación:
+   ```
+   get_entity_context(entity: "service-content")
+   ```
 
-1. Lea el resultado de la entidad y anote el identificador de la entidad relacionada.
-2. Llame a `get_entity_context("<identificador>")` para recuperar el perfil de la entidad relacionada.
+3. Para seguir una relación de una entidad a otra, tome el identificador de la entidad que le interesa de su primer resultado y llame a `get_entity_context` sobre esa entidad directamente. Navegue desde la entidad que ya conoce hacia la que busca.
 
-Las relaciones son direccionales — una entidad de proyecto enlaza a los servicios de los que depende, pero una entidad de servicio no lista automáticamente todos los proyectos que la usan. Navegue desde la entidad que conoce hacia la entidad que busca.
+4. Reduzca una consulta amplia añadiendo una palabra clave de tipo de entidad — persona, organización, proyecto, servicio, despliegue — al texto de la consulta; la propia taxonomía del DataGraph suele mostrar la entidad correcta en el primer resultado.
 
-## Filtrar resultados por tipo
+## Resultado esperado
 
-Agregue una palabra clave de tipo de entidad a la consulta para reducir los resultados:
+Una lista clasificada de entidades coincidentes de `query_datagraph`, o un perfil completo de entidad de `get_entity_context` — estado actual y verificado, no una instantánea de cuando su propio contexto se actualizó por última vez.
 
-```
-query_datagraph("servicio pipeline de extracción")
-query_datagraph("proyecto estado editorial")
-```
+## Verificación
 
-El DataGraph entiende la taxonomía de entidades de la plataforma: personas, organizaciones, proyectos, servicios, despliegues. Calificar la consulta con el tipo generalmente muestra la entidad correcta en el primer resultado.
+Compare la actualidad del resultado con su propia suposición. Si esperaba un dato que no está en el perfil devuelto, o el perfil es más antiguo de lo que esperaba, trate la respuesta del DataGraph como autoritativa y actualice su propia comprensión, no al revés.
 
-## Manejar un circuito Nivel A cerrado
+> **Nota:** la disponibilidad del DataGraph no es uno de los niveles de inferencia de Doorman. Los niveles A/B/C determinan hacia dónde se enruta una solicitud de inferencia; el DataGraph es un almacén de entidades en vivo separado con su propio estado, mostrado en su propia sección del panel F9. Ambos pueden estar activos o caídos de forma independiente entre sí.
 
-Si el circuito Nivel A de Doorman está `OPEN`, el DataGraph no está disponible. La pila de inferencia cae de vuelta al Nivel B (solo SLM) o Nivel C (respaldo local), pero las llamadas `query_datagraph` fallarán.
+## Reversión
 
-Proceda con la siguiente advertencia en el contenido que esté redactando: *"DataGraph no disponible — verificado desde memoria de sesión; compruebe el estado actual antes de confirmar."* No confirme contenido dependiente de entidades durante una interrupción del Nivel A sin la advertencia.
+Las consultas son de solo lectura. Nada que deshacer.
 
-## Puntos clave
+## Próximos pasos
 
-- El DataGraph es la autoridad activa para el estado de entidades; la memoria de sesión es una instantánea y puede quedar desactualizada
-- Use `get_entity_context` cuando necesite el perfil completo, `query_datagraph` para búsqueda
-- Un circuito Nivel A OPEN significa que el DataGraph no está disponible — anote la advertencia y verifique antes de confirmar
-- Las entidades relacionadas se recorren llamando a `get_entity_context` con el identificador del primer resultado
+- [[export-structured-data]] — exporte registros de entidades una vez que haya encontrado lo que necesita
+- [[use-f-key-model]] — dónde se muestra realmente el propio estado del DataGraph
 
 ## Véase también
 
-- [[service-content]] — el Motor de Gravedad que mantiene el DataGraph
-- [[service-extraction]] — cómo las entidades entran al grafo desde documentos del corpus en bruto
-- [[doorman-protocol]] — la puerta de enlace que enruta las llamadas al DataGraph y su modelo de interruptor de circuito
-- [[app-console-slm]] — el panel de estado de Doorman mostrando los estados del Nivel A/B/C
-- [[run-first-slm-query]] — enviar consultas de inferencia una vez que el Nivel A/B está activo
+- [[service-content]] — el servicio que mantiene el DataGraph
+- [[service-extraction]] — cómo entran las entidades al grafo desde el corpus en bruto
+- [[doorman-protocol]] — la pasarela de enrutamiento de inferencia separada y su modelo de niveles

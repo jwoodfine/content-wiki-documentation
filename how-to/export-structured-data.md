@@ -1,96 +1,85 @@
 ---
 schema: foundry-doc-v1
-title: "How to export structured data from the platform"
+title: "Export structured data from the platform"
 slug: export-structured-data
-short_description: "Exports platform data through four paths — DataGraph entity records, wiki Markdown, GeoJSON datasets, and tamper-evident ledger tiles — matched to the right layer and format."
+short_description: "Exports platform data through three real paths — DataGraph entity records via MCP tools, wiki Markdown read directly from git, and paginated ledger entries over service-fs's HTTP API."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-06-14
+audience: "Engineers (hands on keyboard); customer operators"
+last_edited: 2026-08-06
 editor: pointsav-engineering
 paired_with: export-structured-data.es.md
+research_trail:
+  sources: [live MCP tool schemas for query_datagraph/get_entity_context, service-fs/src/http.rs (GET /v1/entries pagination), media-knowledge-* wiki repo structure]
+  verification_method: "the guide's own prior Correction note already confirmed 2 of the original 4 export paths were fabricated (a fictional wiki export endpoint, a fictional service-fs CLI); this rewrite replaces both with what's real, drops the unverified GIS GeoJSON path rather than repeat a specific endpoint that couldn't be confirmed in this pass, and fixes the fabricated INPUT/USER tier-access framing found across this whole guide group"
 ---
-
-**Correction (2026-08-02, verified against canonical `origin/main`):** two of the four export paths described below don't exist. `GET /export/<category>/<slug>` has no matching route anywhere in `app-mediakit-knowledge`. `service-fs export --format tlog-tiles` and `service-fs verify` are fictional — `service-fs` is a pure HTTP daemon with no CLI at all. `query_datagraph`/`get_entity_context` (Path 1) are real MCP tools; `read_since` is a real internal Rust trait method on `service-fs`, not a documented public API as this guide implies. Also uses the "INPUT/USER" pairing-tier naming already found wrong elsewhere this sweep — see [[pair-a-new-device]]. **Flagged, not resolved.**
-
-The platform stores data at multiple layers — raw ledger tiles, entity records in the DataGraph, wiki content, and location intelligence datasets. Exporting that data means choosing the right layer for your use case and the appropriate export format. This guide covers the four main export paths and when to use each.
-
-For the layered data model, see [[service-content]]. For the underlying ledger storage, see [[service-fs-architecture]].
 
 ## Prerequisites
 
-- A paired device with appropriate tier access (INPUT for ledger; USER for read-only exports)
-- An active Totebox session (see [[open-first-totebox-session]])
-- Knowledge of which data layer you are targeting
+- Access to the DataGraph MCP tools, for entity exports
+- Read access to the relevant `media-knowledge-*` git repository, for wiki exports
+- Network access to `service-fs` and your module identifier, for ledger exports
+- A device paired to the workspace (see [[pair-a-new-device]])
 
-## Export path 1: Entity data from the DataGraph
+## Purpose
 
-Use this when you need structured records about people, organisations, projects, or services.
+Pick the right export path for what you're actually trying to get out of the platform — entity records, article content, or audit-grade ledger history each have a genuinely different real mechanism.
 
-Call `query_datagraph` to identify the entity, then call `get_entity_context` to retrieve the full entity profile. The returned JSON object is the authoritative entity record. Copy or pipe it to your destination system.
+## Procedure
 
-For bulk exports, the `service-fs` API provides a `read_since` operation that returns entity-linked records from the ledger in chronological order.
+### Path 1: Entity data from the DataGraph
 
-## Export path 2: Wiki articles as Markdown
+Use this for structured records about a person, organization, project, or service.
 
-Use this when you need article content for downstream publication, processing, or indexing.
+1. Call `query_datagraph` to identify the entity, then `get_entity_context` on its identifier to retrieve the full profile — see [[query-the-datagraph]] for the exact tool signatures.
+2. The returned object is the authoritative entity record. Copy or pipe it to your destination.
 
-Wiki articles are plain Markdown files with YAML frontmatter, stored in the `media-knowledge-*` git repositories. Export them by reading the files directly, or by using the knowledge instance's export endpoint if it is configured:
+There is no separate bulk-export operation for entity data beyond repeated `get_entity_context` calls — treat it as a lookup interface, not a bulk dump tool.
 
-```
-GET /export/<category>/<slug>
-Accept: text/markdown
-```
+### Path 2: Wiki articles as Markdown
 
-The response is the raw Markdown file including frontmatter. No authentication is required for content marked `audience: vendor-public`.
+Use this for article content you need for downstream publication, processing, or indexing.
 
-## Export path 3: Location intelligence datasets as GeoJSON
+Wiki articles are plain Markdown files with YAML frontmatter, stored directly in the `media-knowledge-*` git repositories. Read or export them the same way you'd export any file from a git repository — clone or pull the relevant repo and read the files you need directly. There is no separate HTTP export endpoint; the git repository itself is the export surface.
 
-Use this when you need cluster or archetype spatial data for GIS applications.
+### Path 3: Ledger entries for audit
 
-The GIS gateway serves pre-built GeoJSON files at:
+Use this for tamper-evident records for compliance, legal discovery, or third-party audit.
 
-```
-GET /data/archetype-<name>.geojson
-```
-
-Where `<name>` is one of: `vwh` (Vertical Warehouse), `pks` (Parking Structures), or the main cluster file. These files include tier classifications, co-location signal fields, and enrichment attributes.
-
-For the data schema and field definitions, see [[pointsav-gis-engine]].
-
-## Export path 4: Ledger tiles for audit
-
-Use this when you need tamper-evident records for compliance, legal discovery, or third-party audit.
-
-Use the `service-fs verify` CLI or the `read_since` API to export C2SP tlog-tiles:
-
-```
-service-fs export --from <checkpoint-id> --format tlog-tiles --out <output-file>
-```
-
-The resulting file is plain text, verifiable with a SHA-256 utility, and readable without any PointSav tooling. See [[verify-worm-ledger]] for the verification procedure.
+Page through `GET /v1/entries?since=<cursor>` against your `service-fs` instance until the response is empty, then fetch `GET /v1/checkpoint` to anchor what you exported to a specific `tree_size`/`root_hash`. See [[read-the-command-ledger]] for the full procedure and [[verify-worm-ledger]] for confirming what you exported hasn't been altered. The exported entries and checkpoint are both plain JSON, verifiable with a standard SHA-256 utility — no proprietary tooling required.
 
 ## Choosing the right path
 
-| What you need | Use export path |
+| What you need | Use path |
 |---|---|
 | Information about a named entity (person, project, service) | 1 — DataGraph |
 | Article content for publishing or indexing | 2 — Wiki Markdown |
-| Spatial cluster data for a map application | 3 — GeoJSON |
-| Tamper-evident records for compliance or audit | 4 — Ledger tiles |
+| Tamper-evident records for compliance or audit | 3 — Ledger entries |
 
-## Key takeaways
+> **Note:** if you're looking for a spatial/GIS export path (co-location clusters, archetype data), that's a separate system this guide doesn't cover — check the GIS-specific documentation for your deployment rather than assuming the generic paths above apply there.
 
-- The DataGraph is the right path for named entity data — it holds verified, current records
-- Wiki Markdown exports include frontmatter; strip it or process it before sending to downstream consumers that expect plain prose
-- GeoJSON files are pre-built and served statically; they update when the nightly rebuild runs
-- Ledger tile exports are self-verifying with a SHA-256 utility; no live service is needed after export
+## Expected outcome
+
+The data you need, exported through the path that actually matches how the platform stores it — not a fabricated unified export endpoint that doesn't exist.
+
+## Verification
+
+For entity data, confirm the returned profile's freshness matches your expectation (see [[query-the-datagraph]]). For wiki content, confirm the frontmatter block parses and the `slug` matches what you expected to export. For ledger entries, verify the checkpoint's `tree_size` covers every cursor you exported.
+
+## Rollback
+
+All three paths are read-only. Nothing to undo.
+
+## Next steps
+
+- [[query-the-datagraph]] — the full entity-lookup procedure
+- [[read-the-command-ledger]] — the full ledger-reading procedure
+- [[verify-worm-ledger]] — confirm exported ledger entries haven't been altered
 
 ## See also
 
-- [[service-content]] — the Gravity Engine and the five-layer data model
-- [[service-fs-architecture]] — the WORM ledger that stores the raw record layer
-- [[verify-worm-ledger]] — how to verify the integrity of an exported ledger tile
-- [[pointsav-gis-engine]] — the GIS engine and its data schema
-- [[query-the-datagraph]] — how to look up entity data before exporting
+- [[service-content]] — the service that maintains the DataGraph
+- [[service-fs]] — the WORM ledger these entries come from

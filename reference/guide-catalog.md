@@ -44,9 +44,9 @@ These guides cover the platform's terminal interface and its F-key Cartridge slo
 These guides cover the WORM audit ledger and entity data operations.
 
 - [[read-write-totebox-archives]] — the five-step session start reading protocol, commit flow, draft staging, cross-archive mailbox
-- [[verify-worm-ledger]] — confirm hash-chain integrity using SHA-256 and validate against a signed Sigstore checkpoint
-- [[query-the-datagraph]] — search named entities by plain-text query, navigate relationships, handle Tier A circuit outages
-- [[export-structured-data]] — four export paths by use case: DataGraph, wiki Markdown, GeoJSON, ledger tiles
+- [[verify-worm-ledger]] — verify a ledger entry against a fetched checkpoint using only curl and SHA-256
+- [[query-the-datagraph]] — the real query_datagraph/get_entity_context tools, and why DataGraph availability isn't a Doorman tier
+- [[export-structured-data]] — the three real export paths, since a fourth in an earlier version of this guide didn't exist
 
 ## Machine authorization
 

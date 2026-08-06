@@ -7,7 +7,7 @@ category: how-to
 content_type: how-to
 type: how-to
 status: active
-last_edited: 2026-06-14
+last_edited: 2026-08-06
 editor: pointsav-engineering
 paired_with: read-write-totebox-archives.es.md
 ---
@@ -18,7 +18,7 @@ For the session model that governs archive access, see [[totebox-session]] and [
 
 ## Prerequisites
 
-- A paired device with INPUT-tier access (see [[pair-a-new-device]])
+- A device paired to the workspace, with write access to the archive (see [[pair-a-new-device]])
 - A Totebox Archive opened in your working directory
 - An active session (see [[open-first-totebox-session]])
 
@@ -74,5 +74,5 @@ Write to another archive's inbox only via the Command Session or an approved MCP
 - [[totebox-session]] — the scoped working environment model
 - [[totebox-orchestration-development]] — the orchestration model governing how archives interoperate
 - [[open-first-totebox-session]] — opening a session from scratch on a newly paired device
-- [[machine-based-auth]] — how INPUT-tier pairing grants write access to archives
+- [[machine-based-auth]] — how pairing grants write access to archives
 - [[worm-ledger-architecture]] — the append-only ledger that records all platform events

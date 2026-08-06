@@ -7,7 +7,7 @@ category: how-to
 content_type: how-to
 type: how-to
 status: active
-last_edited: 2026-06-14
+last_edited: 2026-08-06
 editor: pointsav-engineering
 language: es
 language_protocol: TRANSLATE-ES
@@ -20,7 +20,7 @@ Para el modelo de sesión que rige el acceso a archivos, véase [[totebox-sessio
 
 ## Requisitos previos
 
-- Un dispositivo emparejado con acceso de nivel INPUT (véase [[pair-a-new-device]])
+- Un dispositivo emparejado con el espacio de trabajo, con acceso de escritura al archivo (véase [[pair-a-new-device]])
 - Un Archivo Totebox abierto en su directorio de trabajo
 - Una sesión activa (véase [[open-first-totebox-session]])
 
@@ -76,5 +76,5 @@ Escriba en la bandeja de entrada de otro archivo solo a través de la Sesión de
 - [[totebox-session]] — el modelo de entorno de trabajo delimitado
 - [[totebox-orchestration-development]] — el modelo de orquestación que rige cómo interoperan los archivos
 - [[open-first-totebox-session]] — abrir una sesión desde cero en un dispositivo recién emparejado
-- [[machine-based-auth]] — cómo el emparejamiento de nivel INPUT otorga acceso de escritura a los archivos
+- [[machine-based-auth]] — cómo el emparejamiento otorga acceso de escritura a los archivos
 - [[worm-ledger-architecture]] — el libro mayor de solo anexar que registra todos los eventos de la plataforma

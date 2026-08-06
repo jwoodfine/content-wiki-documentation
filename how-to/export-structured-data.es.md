@@ -1,96 +1,84 @@
 ---
 schema: foundry-doc-v1
-title: "Cómo exportar datos estructurados de la plataforma"
+title: "Exportar datos estructurados de la plataforma"
 slug: export-structured-data
-short_description: "Exporta datos de la plataforma por cuatro vías — registros de entidad del DataGraph, Markdown del wiki, conjuntos GeoJSON y mosaicos de registro verificables — según la capa y el formato adecuados."
+short_description: "Exporta datos de la plataforma por tres rutas reales — registros de entidades del DataGraph a través de herramientas MCP, Markdown wiki leído directamente de git, y entradas de libro mayor paginadas a través de la API HTTP de service-fs."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-06-14
-editor: pointsav-engineering
+audience: "Ingenieros (con acceso directo al terminal); operadores de cliente"
 language: es
 language_protocol: TRANSLATE-ES
+last_edited: 2026-08-06
+editor: pointsav-engineering
 paired_with: export-structured-data.md
 ---
 
-La plataforma almacena datos en múltiples capas — tiles del libro mayor en bruto, registros de entidades en el DataGraph, contenido wiki y conjuntos de datos de inteligencia de ubicación. Exportar esos datos significa elegir la capa correcta para su caso de uso y el formato de exportación apropiado. Esta guía cubre las cuatro rutas principales de exportación y cuándo usar cada una.
-
-Para el modelo de datos por capas, véase [[service-content]]. Para el almacenamiento del libro mayor subyacente, véase [[service-fs-architecture]].
-
 ## Requisitos previos
 
-- Un dispositivo emparejado con acceso de nivel apropiado (INPUT para el libro mayor; USER para exportaciones de solo lectura)
-- Una sesión Totebox activa (véase [[open-first-totebox-session]])
-- Conocimiento de qué capa de datos está consultando
+- Acceso a las herramientas MCP del DataGraph, para exportaciones de entidades
+- Acceso de lectura al repositorio git `media-knowledge-*` correspondiente, para exportaciones wiki
+- Acceso de red a `service-fs` y su identificador de módulo, para exportaciones del libro mayor
+- Un dispositivo emparejado con el espacio de trabajo (véase [[pair-a-new-device]])
 
-## Ruta de exportación 1: Datos de entidad del DataGraph
+## Propósito
 
-Use esta ruta cuando necesite registros estructurados sobre personas, organizaciones, proyectos o servicios.
+Elija la ruta de exportación correcta para lo que realmente busca obtener de la plataforma — registros de entidades, contenido de artículos o historial del libro mayor con grado de auditoría tienen cada uno un mecanismo real genuinamente distinto.
 
-Llame a `query_datagraph` para identificar la entidad, luego llame a `get_entity_context` para recuperar el perfil completo. El objeto JSON devuelto es el registro de entidad autorizado. Cópielo o envíelo a su sistema de destino.
+## Procedimiento
 
-Para exportaciones masivas, la API de `service-fs` proporciona una operación `read_since` que devuelve registros vinculados a entidades del libro mayor en orden cronológico.
+### Ruta 1: Datos de entidades del DataGraph
 
-## Ruta de exportación 2: Artículos wiki como Markdown
+Use esto para registros estructurados sobre una persona, organización, proyecto o servicio.
 
-Use esta ruta cuando necesite contenido de artículos para publicación posterior, procesamiento o indexación.
+1. Llame a `query_datagraph` para identificar la entidad, luego a `get_entity_context` sobre su identificador para obtener el perfil completo — véase [[query-the-datagraph]] para las firmas exactas de las herramientas.
+2. El objeto devuelto es el registro de entidad autoritativo. Cópielo o canalícelo a su destino.
 
-Los artículos wiki son archivos Markdown planos con frontmatter YAML, almacenados en los repositorios git `media-knowledge-*`. Expórtelos leyendo los archivos directamente, o usando el endpoint de exportación de la instancia de conocimiento si está configurado:
+No existe una operación de exportación masiva separada para datos de entidades más allá de llamadas repetidas a `get_entity_context` — trátela como una interfaz de búsqueda, no como una herramienta de volcado masivo.
 
-```
-GET /export/<categoría>/<slug>
-Accept: text/markdown
-```
+### Ruta 2: Artículos wiki como Markdown
 
-La respuesta es el archivo Markdown crudo incluyendo frontmatter. No se requiere autenticación para contenido marcado como `audience: vendor-public`.
+Use esto para contenido de artículos que necesita para publicación, procesamiento o indexación posteriores.
 
-## Ruta de exportación 3: Conjuntos de datos de inteligencia de ubicación como GeoJSON
+Los artículos wiki son archivos Markdown planos con frontmatter YAML, almacenados directamente en los repositorios git `media-knowledge-*`. Léalos o expórtelos de la misma manera que exportaría cualquier archivo de un repositorio git — clone o actualice el repositorio correspondiente y lea los archivos que necesita directamente. No existe un endpoint HTTP de exportación separado; el propio repositorio git es la superficie de exportación.
 
-Use esta ruta cuando necesite datos espaciales de clusters o arquetipos para aplicaciones GIS.
+### Ruta 3: Entradas del libro mayor para auditoría
 
-La puerta de enlace GIS sirve archivos GeoJSON preconstruidos en:
+Use esto para registros a prueba de manipulación para cumplimiento, descubrimiento legal o auditoría de terceros.
 
-```
-GET /data/archetype-<nombre>.geojson
-```
-
-Donde `<nombre>` es uno de: `vwh` (Almacén Vertical), `pks` (Estructuras de Estacionamiento), o el archivo principal de clusters. Estos archivos incluyen clasificaciones de nivel, campos de señal de co-localización y atributos de enriquecimiento.
-
-Para el esquema de datos y definiciones de campos, véase [[pointsav-gis-engine]].
-
-## Ruta de exportación 4: Tiles del libro mayor para auditoría
-
-Use esta ruta cuando necesite registros con evidencia de manipulación para cumplimiento, descubrimiento legal o auditoría por terceros.
-
-Use la CLI `service-fs verify` o la API `read_since` para exportar C2SP tlog-tiles:
-
-```
-service-fs export --from <checkpoint-id> --format tlog-tiles --out <archivo-salida>
-```
-
-El archivo resultante es texto plano, verificable con una utilidad SHA-256 y legible sin herramientas de PointSav. Véase [[verify-worm-ledger]] para el procedimiento de verificación.
+Pagine a través de `GET /v1/entries?since=<cursor>` contra su instancia de `service-fs` hasta que la respuesta esté vacía, luego obtenga `GET /v1/checkpoint` para anclar lo que exportó a un `tree_size`/`root_hash` específico. Véase [[read-the-command-ledger]] para el procedimiento completo y [[verify-worm-ledger]] para confirmar que lo que exportó no ha sido alterado. Tanto las entradas exportadas como el punto de control son JSON plano, verificable con una utilidad SHA-256 estándar — no se requiere ninguna herramienta propietaria.
 
 ## Elegir la ruta correcta
 
-| Lo que necesita | Use la ruta de exportación |
+| Lo que necesita | Use la ruta |
 |---|---|
 | Información sobre una entidad nombrada (persona, proyecto, servicio) | 1 — DataGraph |
-| Contenido de artículo para publicación o indexación | 2 — Markdown wiki |
-| Datos espaciales de clusters para una aplicación de mapa | 3 — GeoJSON |
-| Registros con evidencia de manipulación para cumplimiento o auditoría | 4 — Tiles del libro mayor |
+| Contenido de artículos para publicación o indexación | 2 — Markdown wiki |
+| Registros a prueba de manipulación para cumplimiento o auditoría | 3 — Entradas del libro mayor |
 
-## Puntos clave
+> **Nota:** si busca una ruta de exportación espacial/GIS (clústeres de co-ubicación, datos de arquetipos), eso es un sistema separado que esta guía no cubre — consulte la documentación específica de GIS de su despliegue en lugar de asumir que las rutas genéricas anteriores se aplican ahí.
 
-- El DataGraph es la ruta correcta para datos de entidades nombradas — contiene registros verificados y actuales
-- Las exportaciones de Markdown wiki incluyen frontmatter; elimínelo o procéselo antes de enviarlo a consumidores de destino que esperan prosa plana
-- Los archivos GeoJSON están preconstruidos y se sirven estáticamente; se actualizan cuando se ejecuta la reconstrucción nocturna
-- Las exportaciones de tiles del libro mayor son autoverificables con una utilidad SHA-256; no se necesita servicio activo después de la exportación
+## Resultado esperado
+
+Los datos que necesita, exportados a través de la ruta que realmente coincide con cómo los almacena la plataforma — no un endpoint de exportación unificado fabricado que no existe.
+
+## Verificación
+
+Para datos de entidades, confirme que la actualidad del perfil devuelto coincide con su expectativa (véase [[query-the-datagraph]]). Para contenido wiki, confirme que el bloque de frontmatter se analiza correctamente y que el `slug` coincide con lo que esperaba exportar. Para entradas del libro mayor, verifique que el `tree_size` del punto de control cubre cada cursor que exportó.
+
+## Reversión
+
+Las tres rutas son de solo lectura. Nada que deshacer.
+
+## Próximos pasos
+
+- [[query-the-datagraph]] — el procedimiento completo de búsqueda de entidades
+- [[read-the-command-ledger]] — el procedimiento completo de lectura del libro mayor
+- [[verify-worm-ledger]] — confirme que las entradas del libro mayor exportadas no han sido alteradas
 
 ## Véase también
 
-- [[service-content]] — el Motor de Gravedad y el modelo de datos de cinco capas
-- [[service-fs-architecture]] — el libro mayor WORM que almacena la capa de registros en bruto
-- [[verify-worm-ledger]] — cómo verificar la integridad de un tile del libro mayor exportado
-- [[pointsav-gis-engine]] — el motor GIS y su esquema de datos
-- [[query-the-datagraph]] — cómo buscar datos de entidades antes de exportar
+- [[service-content]] — el servicio que mantiene el DataGraph
+- [[service-fs]] — el libro mayor WORM del que provienen estas entradas

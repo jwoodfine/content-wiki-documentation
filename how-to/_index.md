@@ -42,9 +42,9 @@ Use the platform's terminal interface and its built-in Cartridges.
 Work with the WORM audit ledger and entity data.
 
 - [[read-write-totebox-archives|Read and write Totebox archives]] — session start reading protocol, commit flow, draft staging, cross-archive mailbox
-- [[verify-worm-ledger|Verify a WORM ledger entry]] — confirm hash-chain integrity and validate against a signed Sigstore checkpoint
-- [[query-the-datagraph|Query the DataGraph]] — search named entities, navigate relationships, handle Tier A outages
-- [[export-structured-data|Export structured data]] — four export paths: DataGraph, wiki Markdown, GeoJSON, ledger tiles
+- [[verify-worm-ledger|Verify a WORM ledger entry]] — verify against a fetched checkpoint using only curl and SHA-256
+- [[query-the-datagraph|Query the DataGraph]] — the real query_datagraph/get_entity_context tools
+- [[export-structured-data|Export structured data]] — three real export paths: DataGraph, wiki Markdown, ledger entries
 
 ## Multi-entity scale
 

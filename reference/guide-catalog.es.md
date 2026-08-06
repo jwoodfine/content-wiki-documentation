@@ -44,9 +44,9 @@ Estas guías cubren la interfaz de terminal de la plataforma y sus ranuras de Ca
 Estas guías cubren el libro mayor de auditoría WORM y las operaciones con datos de entidades.
 
 - [[read-write-totebox-archives]] — protocolo de lectura al inicio de sesión, flujo de confirmación, preparación de borradores, buzón entre archivos
-- [[verify-worm-ledger]] — confirmar la integridad de la cadena de hash mediante SHA-256 y validar contra un punto de control Sigstore firmado
-- [[query-the-datagraph]] — buscar entidades nombradas mediante consulta en texto plano, navegar relaciones, gestionar interrupciones del Nivel A
-- [[export-structured-data]] — cuatro rutas de exportación por caso de uso: DataGraph, Markdown wiki, GeoJSON, tiles del libro mayor
+- [[verify-worm-ledger]] — verifique una entrada del libro mayor contra un punto de control obtenido, usando solo curl y SHA-256
+- [[query-the-datagraph]] — las herramientas reales query_datagraph/get_entity_context, y por qué la disponibilidad del DataGraph no es un nivel de Doorman
+- [[export-structured-data]] — las tres rutas de exportación reales, ya que una cuarta en una versión anterior de esta guía no existía
 
 ## Autorización de máquinas
 

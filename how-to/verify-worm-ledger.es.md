@@ -1,85 +1,72 @@
 ---
 schema: foundry-doc-v1
-title: "Cómo verificar una entrada del libro mayor WORM"
+title: "Verificar una entrada del libro mayor WORM"
 slug: verify-worm-ledger
-short_description: "Verifica una entrada del ledger WORM comprobando su cadena de hash contra los archivos de tile y, cuando existe, un checkpoint firmado — usando solo herramientas SHA-256 estándar."
+short_description: "Verifica entradas del libro mayor WORM contra un punto de control obtenido a través de la API HTTP real de service-fs, usando un conjunto de herramientas SHA-256 estándar — no existe ni se necesita ninguna CLI ni herramienta propietaria."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-06-14
-editor: pointsav-engineering
+audience: "Ingenieros (con acceso directo al terminal); operadores de cliente"
 language: es
 language_protocol: TRANSLATE-ES
+last_edited: 2026-08-06
+editor: pointsav-engineering
 paired_with: verify-worm-ledger.md
 ---
 
-El libro mayor WORM garantiza que los registros no pueden modificarse ni eliminarse después de ser escritos. La verificación confirma que esa garantía se mantiene para una entrada específica: que la cadena de hash está intacta y que no ocurrió ninguna alteración posterior a la escritura. Esta guía cubre la verificación usando la API de service-fs y la cadena de herramientas SHA-256 estándar — no se requieren herramientas propietarias.
-
-Para lo que cubre la garantía WORM y lo que no cubre, véase [[worm-ledger-architecture]]. Para el formato de almacenamiento, véase [[worm-ledger-storage-architecture]].
-
 ## Requisitos previos
 
-- Acceso a un libro mayor de Totebox (acceso local a archivos o API de service-fs)
-- Una utilidad SHA-256 (`sha256sum` en Linux, `shasum -a 256` en macOS, o equivalente)
-- La posición (índice de fila) o rango de tiempo de la entrada a verificar
+- Acceso de red a su instancia de `service-fs`
+- Su identificador de módulo para la cabecera `X-Foundry-Module-ID`
+- Una utilidad SHA-256 (`sha256sum` en Linux, `shasum -a 256` en macOS)
 
-## Paso 1: Exportar el tile que contiene su entrada
+## Propósito
 
-Usando la API de service-fs, llame a `read_since` con el punto de control inmediatamente anterior a la entrada objetivo:
+Confirme que una entrada del libro mayor no ha sido alterada desde que se escribió, usando solo `curl` y herramientas de hash estándar — no existe ninguna herramienta de verificación CLI ni propietaria para esto, y no se necesita ninguna.
 
-```
-read_since(checkpoint_id: "<checkpoint-id>", limit: 1)
-```
+## Procedimiento
 
-Esto devuelve el archivo tile para ese segmento del libro mayor. En un despliegue local también puede leer los archivos C2SP tlog-tiles directamente desde el directorio del libro mayor.
+1. Obtenga la entrada (o rango de entradas) que quiere verificar, según [[read-the-command-ledger]]:
 
-## Paso 2: Localizar la entrada en el tile
+   ```bash
+   curl -s -H "X-Foundry-Module-ID: <su-id-de-modulo>" \
+     "http://<host-de-service-fs>/v1/entries?since=<cursor>"
+   ```
 
-El tile es texto plano en formato C2SP tlog-tiles. Cada línea es una entrada de registro codificada en base64 seguida de su hash. Encuentre la fila que corresponde a su entrada objetivo por marca de tiempo o número de secuencia.
+2. Obtenga el punto de control actual:
 
-## Paso 3: Verificar la cadena de hash
+   ```bash
+   curl -s -H "X-Foundry-Module-ID: <su-id-de-modulo>" \
+     "http://<host-de-service-fs>/v1/checkpoint"
+   ```
 
-Para cada fila en el tile, el hash de esa fila se incluye en el cálculo de hash de la fila siguiente. Para verificar la entrada N:
+   El punto de control lleva `tree_size` (el recuento total de entradas en el momento en que se emitió), `root_hash` (un compromiso SHA-256 codificado en hexadecimal que cubre cada entrada hasta `tree_size`), `algorithm` (`"sha256"`), un `timestamp` y una `signature`.
 
-1. Tome el hash de la fila N−1 (o el hash génesis para la primera entrada).
-2. Concatenéelo con los bytes crudos de la entrada N.
-3. Calcule SHA-256 de la concatenación.
-4. Compare el resultado con el hash registrado en la fila N.
+3. Confirme que sus entradas obtenidas están cubiertas por el punto de control: sus cursores deben caer dentro de `tree_size`. Si el cursor de su entrada objetivo es mayor que el `tree_size` del punto de control, obtenga primero un punto de control más reciente.
 
-Una coincidencia confirma que la cadena está intacta desde el génesis hasta ese punto. Una discrepancia en la fila N significa que esa fila o alguna anterior fue alterada — inspeccione cada fila hacia atrás desde N para aislar el punto de manipulación.
+4. Si el punto de control lleva una firma, verifíquela. `signature` contiene una firma Ed25519 sobre el cuerpo del signed-note C2SP (`origin`, `tree_size` y el `root_hash` codificado en base64), usando la clave de verificación publicada de la plataforma. Una firma válida significa que el estado de la cadena fue atestiguado en ese punto — independientemente de confiar en el servicio en vivo en el momento en que lo lee.
 
-## Paso 4: Verificar contra un punto de control firmado
+   > **Nota:** `signature` solo está presente si la instancia de `service-fs` se inició con una clave de firma configurada. El punto de control de un despliegue sin firmar sigue siendo una instantánea real y honesta de `tree_size`/`root_hash` — simplemente no lleva una atestación independiente de terceros. No trate una firma ausente como un error.
 
-Si un punto de control firmado cubre el rango que contiene su entrada, puede verificar la firma de ese punto de control para extender la garantía hasta el punto de anclaje:
+## Resultado esperado
 
-1. Recupere el signed-note C2SP para el punto de control correspondiente.
-2. Verifique la firma Ed25519 de la nota usando la clave pública publicada para el ancla Sigstore Rekor.
-3. Confirme que el punto de control cubre un número de secuencia que incluye su entrada.
+Un punto de control cuyo `root_hash` y `tree_size` puede mantener de forma independiente como un compromiso con el estado del libro mayor en ese punto. Cuando hay una firma presente, además obtiene prueba criptográfica de que ese compromiso fue atestiguado, no simplemente afirmado por el servicio en ejecución.
 
-Una firma válida de Sigstore Rekor significa que el estado de la cadena fue marcado con tiempo externamente en ese punto, proporcionando verificabilidad independiente del servicio activo.
+## Verificación
 
-## Verificación automatizada
+Vuelva a obtener el punto de control más tarde y confirme que `tree_size` solo aumenta y que el `root_hash` para cualquier `tree_size` que haya visto antes nunca cambia. Una entrada cubierta por el `root_hash` de un punto de control anterior, que sigue presente y sin modificar bajo el `tree_size` mayor de un punto de control posterior, nunca ha sido alterada. Esa consistencia entre puntos de control a lo largo del tiempo es la verificación práctica y repetible disponible con solo estos dos endpoints.
 
-La CLI de `service-fs` proporciona un subcomando `verify` que ejecuta los pasos 2–4 automáticamente:
+## Reversión
 
-```
-service-fs verify --from <checkpoint-id> --to <entry-id>
-```
+La verificación es de solo lectura. Nada que deshacer.
 
-Use el procedimiento manual anterior cuando quiera inspeccionar la cadena sin confiar en la CLI.
+## Próximos pasos
 
-## Puntos clave
-
-- La verificación requiere solo una utilidad SHA-256 y los archivos tile crudos — no se necesita servicio activo
-- Una discrepancia en la cadena de hash en la fila N significa alteración en N o antes; inspeccione hacia atrás para aislarla
-- Los puntos de control firmados extienden la verificación a un ancla de tiempo público, permitiendo auditorías por terceros
-- El formato C2SP tlog-tiles garantiza que estos pasos sean ejecutables con herramientas estándar durante décadas
+- [[read-the-command-ledger]] — el procedimiento de lectura de entradas contra el que verifica esta guía
 
 ## Véase también
 
-- [[worm-ledger-architecture]] — qué cubre la garantía WORM y sus propiedades estructurales
-- [[worm-ledger-storage-architecture]] — el formato de tiles, escrituras atómicas y estructura de puntos de control
-- [[service-fs-architecture]] — el servicio que implementa y sirve el libro mayor
-- [[read-the-command-ledger]] — leer entradas del libro mayor desde os-console
-- [[worm-ledger-design]] — la filosofía de diseño y el fundamento de cumplimiento regulatorio
+- [[worm-ledger-architecture]] — qué cubre la garantía WORM y qué no
+- [[service-fs]] — el servicio que implementa y sirve el libro mayor
