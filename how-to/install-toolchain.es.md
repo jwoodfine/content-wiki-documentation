@@ -7,7 +7,7 @@ category: how-to
 content_type: how-to
 type: how-to
 status: active
-last_edited: 2026-06-14
+last_edited: 2026-08-06
 editor: pointsav-engineering
 language: es
 language_protocol: TRANSLATE-ES
@@ -20,9 +20,9 @@ Para la arquitectura más amplia del espacio de trabajo, véase [[totebox-orches
 
 ## Requisitos previos
 
-- Un dispositivo emparejado con acceso de nivel INPUT (véase [[pair-a-new-device]])
-- Acceso SSH a la VM del espacio de trabajo (`foundry-workspace`)
-- Una sesión de shell en la VM del espacio de trabajo
+- Un dispositivo emparejado con el espacio de trabajo (véase [[pair-a-new-device]])
+- Acceso SSH a su VM del espacio de trabajo
+- Una sesión de shell en esa VM
 
 ## Paso 1: Instalar el conjunto de herramientas Rust
 
@@ -72,13 +72,13 @@ Verifique que haya una clave SSH cargada:
 ssh-add -l
 ```
 
-Si no se lista ninguna clave, añada la clave de preparación:
+Si no se lista ninguna clave, añada la clave de su identidad de preparación:
 
 ```
-ssh-add ~/Foundry/identity/jwoodfine/id_jwoodfine
+ssh-add ~/Foundry/identity/<su-identidad>/<su-clave>
 ```
 
-El asistente de confirmación alterna la identidad de autor entre `jwoodfine` y `pwoodfine` automáticamente — no se necesita selección manual.
+Los equipos de nivel de preparación normalmente alternan la autoría de las confirmaciones entre dos o más identidades automáticamente — consulte el almacén de identidades de su espacio de trabajo para ver los nombres exactos en uso.
 
 ## Paso 5: Ejecutar pruebas
 
@@ -101,5 +101,5 @@ Todas las pruebas deben pasar en un clon limpio. Un fallo de prueba antes de cua
 
 - [[totebox-orchestration-development]] — la arquitectura de sesión que admite este conjunto de herramientas
 - [[open-first-totebox-session]] — la secuencia completa de inicio de sesión después de configurar el conjunto de herramientas
-- [[pair-a-new-device]] — cómo un dispositivo adquiere el acceso de nivel INPUT que permite las confirmaciones
+- [[pair-a-new-device]] — cómo se empareja un dispositivo con el espacio de trabajo en primer lugar
 - [[read-write-totebox-archives]] — el flujo completo de lectura/escritura para trabajar en un archivo

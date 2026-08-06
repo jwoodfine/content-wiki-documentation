@@ -1,85 +1,72 @@
 ---
 schema: foundry-doc-v1
-title: "How to open your first Totebox session"
+title: "Open your first Totebox session"
 slug: open-first-totebox-session
-short_description: "Opens a first Totebox session from a paired device — selecting an archive, reviewing the inbox, starting a BRIEF task, and completing the shutdown sweep before closing."
+short_description: "Opens a first Totebox session in a single archive: read the manifest, check your inbox, understand what the session can and can't write, and complete the shutdown sweep before closing."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-06-14
+audience: "Engineers (hands on keyboard); customer operators"
+last_edited: 2026-08-06
 editor: pointsav-engineering
 paired_with: open-first-totebox-session.es.md
+research_trail:
+  sources: [pointsav-monorepo architecture/totebox-session.md (session scope, Tetrad, inbox/outbox protocol, permission tiers — corrected 2026-08-06), architecture/os-console.md (customer entry point via os-console Direct mode)]
+  verification_method: "grounded directly in totebox-session.md after independently re-verifying and correcting a false claim on that same page (its PermissionTier/PairingRole conflation, fixed 2026-08-06); this guide describes only mechanics stated as current on that page, hedging anything the source itself marks planned/intended rather than shipped"
 ---
-
-A Totebox session is the scoped working environment for a single archive — the boundary within which you read records, commit changes, and route requests to other archives. Every development task begins by opening a session in the archive that owns the work.
-
-This guide covers the initial setup from a freshly paired device. If your device is not yet paired, complete [[pair-a-new-device]] first.
-
-For architecture details, see [[totebox-session]] and [[totebox-orchestration-development]].
 
 ## Prerequisites
 
-- A device paired at INPUT tier or above (see [[pair-a-new-device]])
-- `os-console` installed and authenticated
-- At least one archive provisioned on your account
+- A device already paired to the workspace (see [[pair-a-new-device]])
+- At least one Totebox Archive your account has access to
+- A permission tier sufficient for the work you intend to do (see [[personnel-permissions]])
 
-## Steps
+## Purpose
 
-### 1. Launch os-console
+Open a Totebox Session — the scoped, AI-assisted working environment bound to a single archive — and understand what it can and can't do before you start. Every development task in Totebox Orchestration begins this way, whether you're a contributor working in the development workspace or a customer connecting through [[os-console]].
 
-Open `os-console` on your paired device. The home screen lists your account's archives. If no archives appear, your account has not yet been assigned archive access — contact the system administrator.
+## Procedure
 
-### 2. Select an archive
+1. Identify the archive you're opening a session in. A session is always scoped to exactly one archive; there is no cross-archive session.
 
-Tap or click the archive you want to work in. The console reads the archive manifest and displays:
+2. Read the archive's manifest before doing anything else. It carries the archive's mission, its [[totebox-orchestration-development|Tetrad]] status (which of vendor, customer, deployment, and wiki legs are active), and its AI gateway endpoint.
 
-- Archive name and module identifier
-- Tetrad status — which of the four delivery legs (vendor, customer, deployment, wiki) are active
-- Pending inbox count — messages from other archives or sessions awaiting your attention
-- The AI gateway endpoint the session will use for inference
+3. Check the archive's inbox. A non-zero pending count means another archive or session has left you a message — a decision, a blocker, or context that may change what you do this session. Read it before starting work; archive each message as actioned once you've addressed it.
 
-### 3. Review your inbox
+4. Confirm your permission tier covers the work ahead. Tiers are enforced by pairings, not by a role you type in — see [[personnel-permissions]] for what each tier can reach.
 
-If the pending inbox count is non-zero, review inbox messages before starting work. Messages may carry decisions, blockers, or context that should inform what you do this session. Mark each message actioned when you have addressed it.
+5. Work within the session's scope (see below). The boundary is structural, not a policy you have to remember to follow.
 
-### 4. Start a task
+6. Before closing, run the shutdown sweep:
 
-In the session view, tasks appear as BRIEF cards — durable project artifacts that survive session boundaries. Each BRIEF shows its status (active, reference, archived), the current carry-forward items, and the artifact types the work produces.
+   1. Update or create the archive's durable work-in-progress record for anything still open
+   2. Prepend any outbound messages for other archives to the outbox
+   3. Commit uncommitted changes to the archive's staging branch
 
-Select a BRIEF to see its work log and open items. If this is a new archive with no BRIEFs, the session is in bootstrap state — your first task is typically to write the archive's BRIEF.
+## Expected outcome
 
-### 5. Save your work before closing
+A working session scoped to a single archive: you can read and write the repositories that archive declares, your inbox has been reviewed, and any cross-archive requests are queued as outbox messages rather than direct writes.
 
-Before ending a session, the console prompts a shutdown sweep:
+## Verification
 
-1. Update or create BRIEFs for in-progress work
-2. Prepend outbound messages to the outbox for other archives or the hub
-3. Commit any uncommitted changes on the archive's staging branch
+- Confirm the session cannot write outside the archive's declared repositories — this is enforced structurally, not by convention, so a write attempt outside scope fails rather than merely being discouraged.
+- Confirm the inbox's pending count is zero, or that every remaining pending message is one you've deliberately deferred, not overlooked.
+- Before ending the session, confirm `git status` shows nothing left uncommitted that the shutdown sweep should have caught.
 
-Closing without completing the shutdown sweep leaves work in an unstaged state that may conflict with the next session.
+## Rollback
 
-## What a session can do
+Closing a session without the shutdown sweep isn't destructive, but it leaves work unstaged and undocumented — the next session (yours or someone else's) starts without knowing what was in progress. There's no separate "undo" for a skipped sweep; the recovery is to open a new session in the same archive and run the sweep late, checking `git status` and the archive's own carry-forward notes for whatever was left open.
 
-A Totebox session writes only to its own archive's declared repositories. It cannot write workspace configuration, identity keys, or any file in a sibling archive. Cross-archive requests are routed as messages through the outbox — the hub session delivers them.
+## Next steps
 
-| Allowed | Not allowed |
-|---|---|
-| Edit files in this archive's repos | Write to another archive's files |
-| Commit on the archive's staging branch | Push to canonical without Stage 6 |
-| Send messages via the outbox | Write workspace-level config |
-| Stage wiki drafts in drafts-outbound | Write to the identity store |
-
-## Key takeaways
-
-- Every session opens inside a single archive — scope is enforced structurally, not by policy
-- Read your inbox before starting work; messages may change your task priorities
-- BRIEFs are the durable record of in-progress work — they survive session close
-- Complete the shutdown sweep to avoid lost work and staging conflicts
+- [[navigate-console-tui]] — work the console once your session is open
+- [[explore-the-console]] — a first-time tour of the console's layout and function-key slots
+- [[read-write-totebox-archives]] — the full read/write flow for working in an archive
 
 ## See also
 
-- [[totebox-session]] — what a session is and its full capability model
-- [[pair-a-new-device]] — enroll the device this session runs on
-- [[pairing-as-permission]] — how the session's access boundaries are enforced
-- [[totebox-orchestration-development]] — the development architecture a session participates in
+- [[totebox-session]] — the full architecture: session scope, the Tetrad, and permission tiers in depth
+- [[pairing-as-permission]] — how session access boundaries are enforced
+- [[os-console]] — the customer-facing entry point that performs the same function

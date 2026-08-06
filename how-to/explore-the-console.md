@@ -1,95 +1,80 @@
 ---
 schema: foundry-doc-v1
-title: "How to explore the console for the first time"
+title: "Explore the console for the first time"
 slug: explore-the-console
-short_description: "Orients a first-time operator to the console — the three-zone layout, status bar fields, Doorman health at F9, and the mandatory F12 input checkpoint."
+short_description: "Orients a first-time operator to os-console — the status bar, the F9 inference-gateway dashboard, and the mandatory F12 input checkpoint that writes to the WORM ledger."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-06-14
+audience: "Engineers (hands on keyboard); customer operators"
+last_edited: 2026-08-06
 editor: pointsav-engineering
 paired_with: explore-the-console.es.md
+research_trail:
+  sources: [pointsav-monorepo app-console-keys (status bar, F-key labels, chassis), app-console-slm (F9 SlmCartridge, health polling, refresh), app-console-input (F12 InputMachine cartridge, SYS-ADR-10), service-slm/slm-core (Tier A/B/C definitions), service-input + service-fs (the real WORM append chain), DOCTRINE.md + conventions/multi-agent-protocol.md (SYS-ADR-10 citation), infrastructure/systemd/console (deployment unit)]
+  verification_method: "independently source-verified against pointsav-monorepo on 2026-08-06 by reading the Rust source directly, with file:line citations recorded per claim; corrected the guide's own prior tier-semantics error (A/B/C are not DataGraph/SLM-local/fallback), removed an invented F12 outcome-labeling scheme borrowed from an unrelated subsystem, fixed a wrong systemd unit name, and removed an unverifiable minimum-terminal-size claim"
 ---
-
-The platform console is a terminal application that organises operator-facing tools into a set of function-key slots, each running a distinct Cartridge. When you open the console for the first time, the interface may look unfamiliar — this guide walks you through the layout, how to move between slots, and how to confirm the system is working before you start your first real task.
-
-For the full TUI reference, see [[navigate-console-tui]]. For the F-key slot model in depth, see [[use-f-key-model]].
 
 ## Prerequisites
 
-- A paired device with appropriate tier access (see [[pair-a-new-device]])
-- The console binary built and available in your PATH, or the workspace binary at `~/Foundry/clones/<archive>/os-console/`
-- A terminal emulator that supports 24-bit colour and at least 80×24 characters
+- A paired device (see [[pair-a-new-device]])
+- The `os-console` binary available in your PATH, or built locally from `os-console/`
+- A terminal emulator — 24-bit color and the Kitty or Sixel graphics protocol are used when available and improve the display, but the console degrades gracefully to named colors and text-only rendering without them
 
-## Step 1: Launch the console
+## Purpose
 
-Start the console from the command line:
+Get oriented to `os-console` for the first time: the status bar's live situational picture, the F9 inference-gateway health dashboard, and the F12 input checkpoint every platform-state change passes through — before you start a real task.
 
-```
-os-console
-```
+## Procedure
 
-If the binary is not in PATH, run it directly from the build output:
+1. Launch the console from the command line:
 
-```
-~/Foundry/clones/<archive>/target/debug/os-console
-```
+   ```
+   os-console
+   ```
 
-The console opens in full-screen mode. You will see a three-zone layout: a status bar at the top, a main content area in the centre, and a navigation strip at the bottom.
+2. Read the status bar at the bottom of the screen. It shows, left to right: your identity as `username@tenant`; the Machine-Based Authorization link state (`MBA LINK ACTIVE`, `MBA LINK INACTIVE: <reason>`, or `MBA LINK PENDING`); the active slot, shown as its full label (e.g. `F9: SLM`, not a bare F-key number); and elapsed session time. A `[N pending]` badge appears only when you have pending pairing requests to review.
 
-## Step 2: Read the status bar
+3. Press **F9** to open the SLM Infrastructure dashboard. It polls the inference gateway every 10 seconds and shows five sections: **Gateway** (Tier A throughput, Tier B circuit state, node class), **YoYo Fleet** (per-node state for cloud GPU burst capacity), **DataGraph** (entity count and its own circuit state — DataGraph is a separate field, not a fourth tier), **Queue** (pending, in-flight, paused, done, quarantine, and poison counts), and **Cost Today**.
 
-The status bar at the top of the screen shows the system's current state at a glance. Left to right:
+   > **Note:** the three inference tiers are Tier A (local model, on this machine), Tier B (Yo-Yo — burst to cloud GPU capacity), and Tier C (external API, narrow-precision tasks against an explicit allowlist). This is not the same three-way split as DataGraph availability, which the dashboard tracks separately.
 
-- **Identity** — the active operator identity (a short name string set at pairing time)
-- **Auth state** — `INPUT`, `USER`, or `READ` — the access tier of the current session
-- **Active slot** — the F-key currently active (e.g., `F3`)
-- **SLM tier** — the Doorman tier in use: `A` (DataGraph live), `B` (SLM only), or `C` (local fallback)
-- **Session duration** — time since the console was launched
+4. Press **R** to force an immediate refresh of the F9 dashboard rather than waiting for the next 10-second poll. The on-screen hint line confirms the shortcut is live.
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** two rows above don't match the real status bar (`app-console-keys/src/widgets/status_bar.rs`). (1) The real bar shows `username@tenant │ MBA LINK state │ active-slot │ elapsed [pending pairs]` — no `INPUT`/`USER`/`READ` auth-state field exists; the real pairing-role model is `User`/`Admin`/`Interface` (see [[pair-a-new-device]] for the full finding). (2) No SLM-tier field exists in the status bar at all, and real Tier A/B/C semantics are local model/Yo-Yo GPU burst/external API — DataGraph availability is a separate field. **Flagged, not resolved.**
+5. Press **F12** to open the Input Machine — the platform's mandatory ingestion checkpoint. Every operator input that modifies platform state passes through this slot; it cannot be bypassed by a menu or mouse path.
 
-If the auth state reads `READ` and you expected `INPUT` or `USER`, the device has not completed the pairing sequence for the requested tier. See [[pair-a-new-device]] to resolve.
+   > **Warning:** F12 is not a sandbox. A submission here is a real write. If it succeeds, it's appended to the platform's immutable WORM ledger and cannot be retracted — don't submit throwaway content to "just see what happens."
 
-## Step 3: Navigate to the Doorman health slot
+6. Submit a short, genuinely disposable test note if you want to see the flow complete. You'll see one of two outcomes: a confirmation showing a Payload ID and the ledger height/root it was written at (with a warning variant if the submission carried a non-fatal issue), or a plain error panel if the submission failed. There is no separate "quarantine" outcome in this flow — that concept belongs to a different subsystem (the inference queue shown on F9), not to F12.
 
-Press **F9** to activate the SLM Cartridge. This slot shows the Doorman health dashboard — the current state of the Tier A/B/C inference circuit.
+7. Move between F3, F9, and F12 and confirm the status bar's active-slot label updates to match each time.
 
-Each tier shows its status:
+## Expected outcome
 
-- `A — DataGraph` — green if the entity store is reachable; `OPEN` if the circuit has tripped
-- `B — SLM` — green if the local inference model is loaded and responding; `OPEN` if it failed to start
-- `C — Local fallback` — always `AVAILABLE` unless the local OLMo model binary is missing
+You can read the status bar's identity, link state, and active-slot fields at a glance; the F9 dashboard shows live Gateway/YoYo Fleet/DataGraph/Queue/Cost data and responds to a manual refresh; and F12 has accepted or rejected a real submission, with the outcome visible on screen.
 
-Doorman health is the first thing to check when starting a session. A green A and B means the full inference and entity-lookup stack is available. An open circuit on either tier means some features are degraded; the console falls back automatically but you should note which tier is affected.
+## Verification
 
-## Step 4: Press R to refresh
+- The status bar's active-slot label changes correctly as you switch between F3, F9, and F12.
+- F9's on-screen "updated" timestamp changes when you press **R**.
+- A successful F12 submission shows a Payload ID and ledger position; the platform's WORM ledger records it as a genuine, permanent entry.
 
-While in F9, press **R** to force a Doorman health refresh. The status line updates within a second. This confirms the console is polling the Doorman service and the keyboard is responding correctly.
+## Rollback
 
-## Step 5: Navigate to the Input Machine slot
+Exploring the status bar and F9 dashboard changes nothing — exit the console at any time with no cleanup needed. A real F12 submission is the one exception: it cannot be rolled back once confirmed, which is why step 6 above is optional and only worth doing with content you're comfortable being permanent.
 
-Press **F12** to activate the Input Machine Cartridge. This is the mandatory input checkpoint required by SYS-ADR-10 — every operator input that modifies platform state passes through this slot.
+If the console doesn't respond as expected, exit and restart it. Watch your own terminal's output for errors rather than checking system logs — a plain `os-console` launched from your own shell isn't running under any system service, so a system log has nothing to have captured.
 
-You will see a prompt area. Try submitting a simple text note. The console shows whether the input was **confirmed** (written to the WORM ledger) or **rejected** (quarantined with a reason code).
+## Next steps
 
-## Step 6: Review the status bar changes
-
-As you move between slots, the status bar's **Active slot** indicator changes. Confirm that switching between F3, F9, and F12 updates the indicator correctly. If the indicator does not update, the TUI rendering loop may have encountered an error — exit and restart the console, then check `journalctl -u os-console` for error output.
-
-## Key takeaways
-
-- The three main zones are: status bar (top), content area (centre), navigation strip (bottom)
-- F9 = Doorman health dashboard; check this first at every session start
-- R refreshes the current slot without switching slots
-- F12 is the mandatory input checkpoint; all platform-state modifications route through it
-- `READ` auth state means INPUT or USER pairing has not completed for this session
+- [[navigate-console-tui]] — the full TUI reference: every key binding and status bar field
+- [[use-f-key-model]] — the F-key slot architecture and every Cartridge's default assignment
+- [[run-first-slm-query]] — submit a real inference query once F9 shows Tier B live
 
 ## See also
 
-- [[navigate-console-tui]] — full TUI reference: key bindings, status bar field definitions
-- [[use-f-key-model]] — the F-key slot architecture, Cartridge model, all default slot assignments
-- [[pair-a-new-device]] — how to acquire higher auth tiers for the console session
-- [[run-first-slm-query]] — submitting an SLM inference query once F9 shows Tier B live
-- [[read-the-command-ledger]] — reading the WORM ledger from the F12 LEDGER tab
+- [[pair-a-new-device]] — how to acquire the device pairing this console session depends on
+- [[read-the-command-ledger]] — reading the WORM ledger entries F12 writes
+- [[os-console]] — the full architecture behind the console you just explored

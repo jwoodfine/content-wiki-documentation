@@ -7,7 +7,7 @@ category: how-to
 content_type: how-to
 type: how-to
 status: active
-last_edited: 2026-06-14
+last_edited: 2026-08-06
 editor: pointsav-engineering
 paired_with: install-toolchain.es.md
 ---
@@ -18,9 +18,9 @@ For the broader workspace architecture, see [[totebox-orchestration-development]
 
 ## Prerequisites
 
-- A paired device with INPUT-level access (see [[pair-a-new-device]])
-- SSH access to the workspace VM (`foundry-workspace`)
-- A shell session on the workspace VM
+- A device paired to the workspace (see [[pair-a-new-device]])
+- SSH access to your workspace VM
+- A shell session on that VM
 
 ## Step 1: Install the Rust toolchain
 
@@ -70,13 +70,13 @@ Verify an SSH key is loaded:
 ssh-add -l
 ```
 
-If no keys are listed, add the staging key:
+If no keys are listed, add your staging identity's key:
 
 ```
-ssh-add ~/Foundry/identity/jwoodfine/id_jwoodfine
+ssh-add ~/Foundry/identity/<your-identity>/<your-key>
 ```
 
-The commit helper alternates author identity between `jwoodfine` and `pwoodfine` automatically — no manual selection is needed.
+Staging-tier teams typically alternate commit authorship across two or more identities automatically — check your workspace's identity store for the exact names in use.
 
 ## Step 5: Run tests
 
@@ -99,5 +99,5 @@ All tests should pass on a clean clone. A test failure before any local changes 
 
 - [[totebox-orchestration-development]] — the session architecture this toolchain supports
 - [[open-first-totebox-session]] — the full session startup sequence after toolchain setup
-- [[pair-a-new-device]] — how a device acquires the INPUT-level access that allows commits
+- [[pair-a-new-device]] — how a device gets paired to the workspace in the first place
 - [[read-write-totebox-archives]] — the full read/write flow for working in an archive
