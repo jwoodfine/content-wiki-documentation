@@ -1,16 +1,18 @@
 ---
 schema: foundry-doc-v1
 title: "Servicios"
-slug: _index
+slug: services-index
 short_description: "Los servicios autónomos que implementan ingestión de límite Ring 1 y procesamiento de conocimiento determinista Ring 2 en la arquitectura de tres anillos de PointSav — agrupados por capa de anillo y función."
 lang: es
 category: services
 type: topic
 content_type: topic
 quality: complete
+index_type: thematic
+index_scope: services
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-08-06
 editor: pointsav-engineering
 paired_with: _index.md
 ---
@@ -19,36 +21,50 @@ La arquitectura de tres anillos de PointSav asigna cada servicio a una capa con 
 
 La plataforma funciona completamente a través de los Anillos 1 y 2 sin cómputo de IA — un despliegue puede excluir el Anillo 3 por completo, reduciendo la superficie de ataque y satisfaciendo los requisitos de aislamiento de red. Donde se incluye el Anillo 3, la pregunta de cumplimiento sobre si la IA ha tocado el registro autoritativo se responde de forma arquitectónica, no procedimental: los servicios del Anillo 2 pueden invocar al Anillo 3 para obtener propuestas de extracción o clasificación (la entrega de corpus de `service-extraction` a `service-content`, que llama al Doorman para la extracción de entidades restringida por gramática hacia el DataGraph, es una de esas vías), pero el Anillo 3 nunca escribe en el grafo de conocimiento, el libro mayor ni ningún almacén de registros estructurados. Toda propuesta aceptada entra al registro únicamente a través de una vía de escritura del Anillo 2 con un punto de control de aprobación humana.
 
+<!-- START-HERE-HIGHLIGHT: el motor lee este bloque para la tarjeta "empezar aquí"
+     (reutiliza el componente cluster-card--start-here existente). No añadir más de una. -->
+
+**Empiece aquí:** [[service-fs]] — el servicio de sistema de archivos en el que escribe cada otro servicio del Anillo 1, y la base de la postura de auditoría WORM que asume el resto de esta categoría.
+
+<!-- END-START-HERE-HIGHLIGHT -->
+
 ## Anillo 1 — Ingesta en el límite
 
 Servicios de límite por inquilino. Cada uno se ejecuta como un proceso separado por inquilino y expone una interfaz de servidor de Protocolo de Contexto de Modelo.
 
+<!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: ring-1-boundary-ingest -->
 - [[service-fs]] — El servicio de sistema de archivos: libro WORM de solo anexado, raíz de almacenamiento por inquilino, la base en la que escribe cada otro servicio del Anillo 1 — arquitectura, durabilidad y la postura de cumplimiento SEC 17a-4(f)/eIDAS/SOC 2 que habilita por construcción.
 - [[service-email]] — Ingesta de correo electrónico: SMTP e IMAP, cargas útiles saneadas, Maildir de solo anexado en almacenamiento local en bloque.
 - [[service-people]] — Libro de identidad: registros de personas, asignaciones de roles y el modelo de datos Anchor-Claim-Socket que nunca sobreescribe el estado.
+<!-- END AUTO-GENERATED -->
 
 ## Anillo 2 — Conocimiento y procesamiento
 
 Servicios de procesamiento determinista. Cada uno lee del Anillo 1 y produce registros estructurados — ninguna varianza de IA entra en el registro autoritativo.
 
+<!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: ring-2-knowledge-and-processing -->
 - [[service-extraction]] — El controlador central de tráfico del Anillo 2: elimina el formato propietario, construye Paquetes de Entidades, asigna IDs de transacción, enruta a servicios deterministas o a service-slm.
 - [[service-content]] — El Motor de Gravedad: lee cargas útiles brutas de un Totebox, las ejecuta contra una taxonomía institucional, genera los documentos estructurados que publica una organización.
 - [[service-search]] — Búsqueda de texto completo sobre Tantivy: fragmentación por inquilino, recuperación en microsegundos, sin proceso de base de datos activo.
 - [[service-egress]] — Válvula de liberación física: los registros estructurados salen de la plataforma únicamente a través de este servicio.
 - [[archetypes-and-chart-of-accounts]] — La taxonomía institucional: once arquetipos y un Plan de Cuentas que clasifican al personal y los documentos por posición estructural y rol funcional.
+<!-- END AUTO-GENERATED -->
 
 ## Anillo 3 — Puerta de IA
 
 Un servicio abarca el Anillo 3. Lee del Anillo 2 y produce propuestas que un humano revisa; nunca escribe en el grafo de conocimiento ni en el libro.
 
+<!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: ring-3-ai-gateway -->
 - [[service-slm]] — El Portero: enrutamiento de IA entre niveles de cómputo local, de ráfaga y externo; libro de auditoría en cada llamada; todas las claves API retenidas en este límite.
 - [[service-slm-yoyo-operational]] — Estado operativo de service-slm y la VM de ráfaga GPU Yo-Yo: configuración de Nivel A/B, cola de borradores de aprendizaje, techo de coste por apagado inactivo.
 - [[service-slm-totebox-sysadmin]] — Cómo service-slm se convierte en el asistente operativo para despliegues Totebox: diez familias de tareas operativas, pipeline de cuatro etapas desde la captura del corpus hasta los adaptadores LoRA por inquilino.
+<!-- END AUTO-GENERATED -->
 
 ## Servicios especializados y de dominio
 
 Servicios construidos para capacidades específicas de la plataforma.
 
+<!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: specialist-and-domain-services -->
 - [[service-business-clustering]] — Convierte datos minoristas brutos en clústeres comerciales: esquema espacial padre-hijo, una entidad comercial por sitio.
 - [[service-places-filtering]] — Filtra la infraestructura cívica e institucional para retener solo las instalaciones de grado regional en las clasificaciones GIS.
 - [[service-wallet-settlement]] — Infraestructura de cartera y liquidación de pagos directos.
@@ -56,6 +72,7 @@ Servicios construidos para capacidades específicas de la plataforma.
 - [[fs-anchor-emitter]] — Puntos de control firmados del libro WORM a cadencia horaria, anclados a Sigstore Rekor mensualmente para auditabilidad externa.
 - [[service-fs-data-lake]] — Data lake de archivos planos para el pipeline GIS: puntos geoespaciales brutos de fuentes abiertas, sin paso ETL.
 - [[template-ledger]] — Distribuye plantillas de correo electrónico aprobadas al entorno de correo del operador; elimina la desviación de versiones entre el diseño de plantillas y la ejecución.
+<!-- END AUTO-GENERATED -->
 
 ## Véase también
 
