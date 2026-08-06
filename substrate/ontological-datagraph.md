@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: small-language-model-stack
 short_description: "Organizational knowledge graph of people, companies, projects, and relationships — persistent semantic memory for answering business-state queries without re-reading sources."
 status: active
 bcsc_class: public-disclosure-safe

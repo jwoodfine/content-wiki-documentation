@@ -4,6 +4,7 @@ title: "Platform architecture overview"
 slug: architecture
 short_description: "The platform is designed around distributed cryptographic consistency and sovereign bootability — collapsing a federated archive into a bootable image transferable anywhere."
 category: architecture
+index_group: platform-structure
 type: topic
 content_type: topic
 quality: complete

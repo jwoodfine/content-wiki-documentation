@@ -4,6 +4,7 @@ title: "PointSav platform — architectural overview"
 slug: foundry-doctrine-architecture
 short_description: "Constitutional charter encoding six foundational commitments and fifty-four numbered structural claims that govern every PointSav engineering decision."
 category: architecture
+index_group: platform-structure
 type: topic
 content_type: topic
 quality: complete

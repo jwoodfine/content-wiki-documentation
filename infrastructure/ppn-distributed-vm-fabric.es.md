@@ -11,6 +11,7 @@ bcsc_class: public-disclosure-safe
 language: es
 language_protocol: TRANSLATE-ES
 paired_with: ppn-distributed-vm-fabric.md
+index_group: compute-and-vm-fabric
 last_edited: 2026-05-30
 editor: editorial
 ---

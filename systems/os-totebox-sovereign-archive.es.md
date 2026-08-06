@@ -8,6 +8,7 @@ short_description: "os-totebox está diseñado para convertirse en un sistema op
 audience: vendor-public
 bcsc_class: forward-looking
 language: es
+index_group: the-archive-layer
 paired_with: os-totebox-sovereign-archive.md
 category: systems
 status: active

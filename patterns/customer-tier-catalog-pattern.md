@@ -13,6 +13,7 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-06-10
 editor: pointsav-engineering
 paired_with: customer-tier-catalog-pattern.es.md
+index_group: deployment-and-configuration
 ---
 
 The customer tier separates deployment definitions from deployment instances. The catalog records what a deployment is — its runbooks, required artefacts, and operational scope. Numbered instances record where and how a specific copy of that deployment runs. The two shapes live at different paths, follow different tracking rules, and serve different purposes. Conflating them is a recurring operational mistake in fleet management; the naming convention and path structure make the distinction visible at a glance.

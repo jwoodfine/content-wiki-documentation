@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: small-language-model-stack
 short_description: "A tiered inference gateway routing AI requests through a local model first, escalating to remote GPU nodes and external APIs only when needed, minimizing cost and exposure."
 status: active
 bcsc_class: public-disclosure-safe

@@ -11,6 +11,7 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-06-01
 editor: pointsav-engineering
 paired_with: federation-via-content-mounts.md
+index_group: interface-and-user-experience
 ---
 
 # Federación mediante montajes de contenido

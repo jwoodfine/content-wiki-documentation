@@ -67,6 +67,8 @@ How the SLM tier is structured, selected, and trained.
 - [[yo-yo-lora-training-pipeline]] — The nightly two-phase pipeline: entity extraction for the business DataGraph (Phase 1) and LoRA adapter training against engineering and apprenticeship corpora using QLoRA on a single L4 GPU (Phase 2).
 - [[tui-corpus-producer]] — Every terminal interaction with service-slm through the operator TUI is a curated training corpus contribution for the per-tenant adapter.
 - [[nightly-datagraph-rebuild]] — The scheduled process that reconstructs the platform's knowledge graph from canonical flat-file sources each night, producing a fresh queryable substrate from deterministic inputs without AI involvement.
+- [[ontological-datagraph]] — The organizational knowledge graph of people, companies, projects, and relationships — persistent semantic memory injected as context before every AI inference request.
+- [[soft-slm-tiered-gateway]] — The tiered inference gateway that routes AI requests through a local model first, escalating to burst GPU nodes and external APIs only when needed.
 <!-- END AUTO-GENERATED -->
 
 ## Cryptographic and microkernel primitives
@@ -78,6 +80,10 @@ The formal verification and cryptographic foundations beneath every PointSav ope
 - [[merkle-proofs-as-substrate-primitive]] — RFC 9162 Merkle proof primitives as the cryptographic floor of the platform's capability ledger; ledger validity verifiable without trust in any central authority.
 - [[capability-ledger-substrate]] — The mechanism by which every access-control decision in a Foundry deployment becomes a cryptographically auditable event anchored to a customer-controlled log; extends seL4's formally verified capability model with a Merkle transparency layer.
 - [[system-substrate-doctrine]] — The kernel-level architecture: a customer-rooted capability ledger that is the audit log, a two-bottoms sovereign OS strategy, and three mechanisms for time-bound capabilities and boot-anywhere recovery.
+- [[capability-geometry]] — PointSav's term for seL4-based authorization that replaces mutable access-control policy with a formally proven, kernel-enforced capability DAG.
+- [[moonshot-toolkit-build-orchestrator]] — Rust-only build orchestrator for seL4 unikernel images — TOML spec to content-addressed manifest to bootable AArch64 elfloader binary, replacing Python and CMake.
+- [[sel4-aarch64-qemu-substrate-target]] — Hardware foundation for the unikernel platform — formally verified seL4 on AArch64 with QEMU's virt machine as the development, testing, and CI target.
+- [[sel4-unikernel-substrate]] — os-console's intended production form: a seL4 Microkit unikernel image compiling application code directly with a formally verified kernel, eliminating general-purpose OS attack surface.
 <!-- END AUTO-GENERATED -->
 
 ## Sovereignty and customer ownership

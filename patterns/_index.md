@@ -48,6 +48,7 @@ The canonical configurations in which the substrate is shipped and the disciplin
 - [[deployment-patterns]] — The six canonical configurations in which the PointSav substrate is deployed — each built on the same five primitives and OS surface, with the Chart of Accounts and compliance surface adapted per segment.
 - [[three-layer-architecture]] — How PointSav deliverables move through SOFTWARE, SHOWCASE, and INSTANCE layers with a strict one-way vendor-to-customer flow.
 - [[3-layer-stack]] — The three-layer infrastructure decomposition: raw compute capability, isolated platform execution, and secure operator access.
+- [[customer-tier-catalog-pattern]] — Separates deployment catalog entries (tenant-agnostic, git-tracked in the fleet-deployment repository) from numbered instances (tenant-specific, gitignored); the prefix taxonomy and path structure make catalog-versus-instance visible without reading a MANIFEST.
 <!-- END AUTO-GENERATED -->
 
 ## Collaboration and editorial workflow
@@ -69,6 +70,7 @@ Patterns that recur in the operator-facing chrome — the wiki, the location-int
 - [[knowledge-wiki-leapfrog-architecture]] — The wiki engine design: Wikipedia-shaped interface elements over flat Markdown git files, with citation verification, research trail provenance, and AI-integrated editing as the differentiation layer.
 - [[location-intelligence-ux]] — The Conclusion-First design philosophy: ranked tier conclusions rather than individual data points, so users see the most defensible commercial nodes at national zoom before drilling into individual operators.
 - [[wikipedia-leapfrog-design]] — What the wiki engine inherits from Wikipedia, what it adds beyond it, and what the five-percent leapfrog headroom means.
+- [[federation-via-content-mounts]] — Combines curated editorial articles with declarative mounts from domain-specific repositories in a single wiki instance, extending source-of-truth inversion from one repository to many; planned for Phase 6.
 <!-- END AUTO-GENERATED -->
 
 ## See also

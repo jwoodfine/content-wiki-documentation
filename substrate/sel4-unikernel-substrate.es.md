@@ -9,6 +9,7 @@ short_description: "os-console está previsto para ejecutarse como imagen uniker
 category: substrate
 type: reference
 quality: complete
+index_group: cryptographic-and-microkernel-primitives
 status: active
 audience: public
 bcsc_class: public-disclosure-safe

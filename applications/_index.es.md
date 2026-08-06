@@ -38,6 +38,7 @@ El motor wiki, la superficie de marketing y los artículos de intención de dise
 - [[knowledge-wiki-home-page-design|Diseño de la página de inicio del wiki]] — Cómo la página de inicio de documentación hereda las convenciones estructurales de Wikipedia y las extiende para lectores de ingeniería y de la comunidad financiera.
 - [[wikipedia-leapfrog-design|Diseño de salto sobre Wikipedia]] — Qué hereda el motor wiki de Wikipedia, qué añade más allá y qué significa el margen de salto del cinco por ciento para lectores e ingenieros.
 - [[documentation-pointsav-com-launch-2026-04-27|Lanzamiento de documentation.pointsav.com]] — El lanzamiento TLS de abril de 2026 de `documentation.pointsav.com`: pila de servicio, postura de marcador de posición y comandos de verificación.
+- [[radical-proofreader-ui|Consola del corrector]] — La consola del operador para la canalización editorial service-proofreader: revisar hallazgos estructurados, aceptar o rechazar reescrituras y registrar los veredictos que alimentan el corpus de aprendizaje de la plataforma.
 <!-- END AUTO-GENERATED -->
 
 ## Inteligencia de ubicación
@@ -57,6 +58,9 @@ La puerta de entrada estructurada que admite archivos externos a un Totebox, y e
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: input-and-developer-surfaces -->
 - [[app-console-input]] — La superficie F12 en os-console: la puerta de entrada estructurada a través de la cual los archivos externos brutos entran en un Totebox antes de ser sellados en el libro verificado.
 - [[app-privategit-workbench|Workbench de PrivateGit]] — Un editor de archivos de tres columnas basado en navegador incluido en os-privategit; para trabajar con archivos sin una sesión de terminal.
+- [[app-console-keys|Chasis de la consola]] — El chasis base siempre instalado de os-console: define el rasgo Cartridge que implementa cada módulo de teclas de función, la barra de navegación F, la barra de estado y el cliente de autorización basada en máquina al que se conectan los demás cartuchos.
+- [[app-console-email|Cartucho de comunicaciones]] — El cartucho de comunicaciones F3 de os-console: bandeja de entrada, lectura de mensajes y redacción y envío a través de la ruta de salida Diodo de Comunicaciones de service-email.
+- [[app-console-slm|Consola de monitorización SLM]] — El cartucho de terminal F9 que muestra el estado en vivo de la infraestructura de inferencia de IA — salud del modelo, flota de nodos GPU, profundidad de cola y gasto diario — para el operador que gestiona un Totebox.
 <!-- END AUTO-GENERATED -->
 
 ## Aplicaciones de dominio

@@ -9,6 +9,7 @@ short_description: "Geometría de Capacidades es el término de PointSav para la
 category: substrate
 type: reference
 quality: complete
+index_group: cryptographic-and-microkernel-primitives
 status: active
 audience: public
 bcsc_class: public-disclosure-safe

@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "service-vm-tenant"
 slug: service-vm-tenant
 category: services
+index_group: specialist-and-domain-services
 type: service
 content_type: topic
 quality: stub

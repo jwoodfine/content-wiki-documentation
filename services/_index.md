@@ -35,6 +35,7 @@ Per-tenant boundary services. Each runs as a separate process per tenant and exp
 - [[service-fs]] — The filesystem service: append-only WORM ledger, per-tenant storage root, the foundation every other Ring 1 service writes to — architecture, durability, and the SEC 17a-4(f)/eIDAS/SOC 2 compliance posture it enables by construction.
 - [[service-email]] — Email ingest: SMTP and IMAP, sanitised payloads, append-only Maildir on local block storage.
 - [[service-people]] — Identity ledger: person records, role assignments, and the Anchor-Claim-Socket data model that never overwrites state.
+- [[service-input]] — Document intake at the Ring 1 boundary: parses PDF, Markdown, DOCX, and XLSX by format detection, normalizes to a `ParsedDocument`, and hands off to service-fs for WORM ledger commit.
 <!-- END AUTO-GENERATED -->
 
 ## Ring 2 — Knowledge and processing
@@ -57,6 +58,8 @@ One service spans Ring 3. It reads from Ring 2 and produces proposals a human re
 - [[service-slm]] — The Doorman: AI routing across local, burst, and external compute tiers; audit ledger on every call; every API key held at this boundary.
 - [[service-slm-yoyo-operational]] — Operational state of service-slm and the Yo-Yo GPU burst VM: Tier A/B configuration, apprenticeship brief queue, idle-shutdown cost ceiling.
 - [[service-slm-totebox-sysadmin]] — How service-slm becomes the operational assistant for Totebox deployments: ten operational task families, four-stage pipeline from corpus capture to per-tenant LoRA adapters.
+- [[service-slm-graph-store-migration]] — The DataGraph's live property graph: nightly LadybugDB rebuild via grammar-constrained entity extraction through the Doorman, gated by human approval before any write.
+- [[yoyo-daily-enrichment-cycle]] — The Yo-Yo GPU burst VM's daily batch window: enriches the DataGraph and accumulates DPO training pairs under a fixed schedule and hard cost cap.
 <!-- END AUTO-GENERATED -->
 
 ## Specialist and domain services
@@ -71,6 +74,11 @@ Services built for specific platform capabilities.
 - [[fs-anchor-emitter]] — Signed WORM ledger checkpoints at hourly cadence, anchored to Sigstore Rekor on a monthly schedule for external auditability.
 - [[service-fs-data-lake]] — Flat-file data lake for the GIS pipeline: raw geospatial points from open sources, no ETL step.
 - [[template-ledger]] — Distributes approved email templates to the operator's mail environment; eliminates version drift between template design and execution.
+- [[editorial-pipeline-three-stages]] — Three-stage proofreading pipeline ordered by cost: deterministic banned-vocabulary scan, LanguageTool mechanical pass, then a generative rewrite routed through the inference layer.
+- [[private-git-paid-customer-endpoint]] — The binary release server behind software.pointsav.com: verifies Ed25519 license tokens and streams compiled binaries, holding no payment records or signing keys.
+- [[service-pointsav-link]] — The hot-pluggable adapter connecting an os-* Subject node to a PointSav fleet: not installed by default, with a clean-severance failure mode.
+- [[service-vm-fleet]] — The placement and registry service for the PPN VM resource pool: two-pass placement algorithm and heartbeat-driven node state.
+- [[service-vm-tenant]] — The customer-facing tenant proxy for the PPN VM resource pool: authentication, namespace isolation, quota enforcement, and an immutable audit trail.
 <!-- END AUTO-GENERATED -->
 
 ## See also

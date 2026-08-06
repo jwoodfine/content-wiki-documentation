@@ -4,6 +4,7 @@ title: "Ciclo Diario de Enriquecimiento Yo-Yo"
 slug: yoyo-daily-enrichment-cycle
 short_description: "Ventana diaria de lote en GPU que enriquece el DataGraph y acumula datos de entrenamiento — horario fijo, tope de costo estricto y apagado garantizado de la VM."
 category: services
+index_group: ring-3-ai-gateway
 type: topic
 content_type: topic
 status: stable

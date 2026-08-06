@@ -4,6 +4,7 @@ title: "service-pointsav-link"
 slug: service-pointsav-link
 short_description: "service-pointsav-link es el adaptador hot-pluggable que conecta un nodo Sujeto os-* a una flota PointSav, con un estado predeterminado de no instalado y un modo de fallo de separación limpia."
 category: services
+index_group: specialist-and-domain-services
 type: topic
 content_type: topic
 status: stable

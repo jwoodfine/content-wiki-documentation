@@ -34,6 +34,8 @@ The core record-keeping systems at the foundation of every deployment — where 
 - [[totebox-orchestration]] — The coordination layer that manages multiple Totebox data-archive containers, keeping software execution engines isolated from passive corporate ledgers across deployments.
 - [[vm-architecture]] — The five named VM types (Totebox, MediaKit, Orchestration, PrivateGit, Infrastructure) and how each maps exactly to one `os-*` source binary.
 - [[scaling-coordinated-development-totebox-archives]] — The coordination bottlenecks that appear past twenty archives, and the path toward per-archive process isolation.
+- [[os-totebox-sovereign-archive]] — os-totebox's intended end-state design as a Type I bare-metal seL4 OS: the WORM data vault enforced by a compiled capability graph rather than a policy an administrator could override.
+- [[os-totebox-service-pd-model]] — How os-totebox is designed to map its Rust service binaries onto seven seL4 Protection Domains, with capability confinement guaranteeing a compromised service-slm PD can never reach the storage-holding service-fs PD.
 <!-- END AUTO-GENERATED -->
 
 ## Operator surfaces
@@ -57,6 +59,7 @@ The systems that manage the network fabric, the bootstrap path, and the underlyi
 - [[os-network-admin]] — The control plane for a fleet: manages the pairing registry, Diode rules, and mesh routing policy; commands broadcast as 16-byte binary packets across the WireGuard mesh.
 - [[os-privategit]] — Private Git hosting for sovereign version control within a fleet.
 - [[app-privategit-workbench|Browser workbench]] — The browser-based file editor included in os-privategit: a three-column interface for working with archive files without a terminal session.
+- [[os-infrastructure-ppn-node]] — The OS layer for PPN nodes: managing WireGuard tunnels, hosting guest VMs for other platform services, and running the Genesis Protocol node-join ceremony.
 <!-- END AUTO-GENERATED -->
 
 ## Publishing and media

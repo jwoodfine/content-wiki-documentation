@@ -5,6 +5,7 @@ slug: foundry-services-slice-model
 short_description: "Particionado de cgroups de systemd que da a los servicios de producción el doble de peso de CPU frente a sesiones interactivas — aislamiento de un solo nodo sin Kubernetes."
 language: es
 category: architecture
+index_group: customer-ownership-and-deployment
 type: topic
 content_type: topic
 status: active

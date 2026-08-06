@@ -6,6 +6,7 @@ category: applications
 type: app
 content_type: topic
 quality: complete
+index_group: input-and-developer-surfaces
 status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe

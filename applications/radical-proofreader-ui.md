@@ -6,6 +6,7 @@ category: applications
 type: app
 content_type: topic
 quality: complete
+index_group: knowledge-and-editorial-applications
 short_description: "Operator-facing web interface for the service-proofreader pipeline, with two-tier design tokens for tenant branding and a pure-Rust apprenticeship distillation tool."
 status: active
 bcsc_class: public-disclosure-safe

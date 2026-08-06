@@ -8,6 +8,7 @@ short_description: "How os-totebox is designed to map Rust service binaries to s
 audience: vendor-public
 bcsc_class: forward-looking
 language: en
+index_group: the-archive-layer
 paired_with: os-totebox-service-pd-model.es.md
 category: systems
 status: active

@@ -9,6 +9,7 @@ content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
 language: en
+index_group: network-control-and-infrastructure
 paired_with: os-infrastructure-ppn-node.es.md
 last_edited: 2026-07-11
 editor: editorial

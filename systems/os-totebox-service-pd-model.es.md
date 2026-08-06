@@ -8,6 +8,7 @@ short_description: "Explica cómo os-totebox está diseñado para asignar binari
 audience: vendor-public
 bcsc_class: forward-looking
 language: es
+index_group: the-archive-layer
 paired_with: os-totebox-service-pd-model.md
 category: systems
 status: active

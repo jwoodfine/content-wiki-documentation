@@ -5,6 +5,7 @@ slug: private-git-paid-customer-endpoint
 aliases:
   - topic-private-git-paid-customer-endpoint
 category: services
+index_group: specialist-and-domain-services
 type: topic
 content_type: topic
 quality: complete

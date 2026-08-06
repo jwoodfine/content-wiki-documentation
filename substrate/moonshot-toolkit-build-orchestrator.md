@@ -5,6 +5,7 @@ title: "moonshot-toolkit build orchestrator"
 slug: moonshot-toolkit-build-orchestrator
 short_description: "Rust-only build orchestrator for seL4 unikernel images — TOML spec to content-addressed manifest to bootable AArch64 elfloader, replacing Python and CMake."
 category: substrate
+index_group: cryptographic-and-microkernel-primitives
 last_edited: 2026-06-23
 editor: pointsav-engineering
 status: stable

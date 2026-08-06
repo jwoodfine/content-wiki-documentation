@@ -35,6 +35,8 @@ Los sistemas centrales de mantenimiento de registros en la base de cada desplieg
 - [[totebox-orchestration|Orquestación Totebox]] — La capa de coordinación que gestiona múltiples contenedores de archivo de datos Totebox, manteniendo los motores de ejecución de software aislados de los libros corporativos pasivos a través de los despliegues.
 - [[vm-architecture|Arquitectura VM-*]] — Los cinco tipos de VM nombrados (Totebox, MediaKit, Orchestration, PrivateGit, Infrastructure) y cómo cada uno corresponde exactamente a un binario fuente `os-*`.
 - [[scaling-coordinated-development-totebox-archives|Escalar el desarrollo coordinado en múltiples Totebox Archives]] — Los cuellos de botella de coordinación que aparecen más allá de veinte archivos, y la trayectoria hacia el aislamiento de procesos por archivo.
+- [[os-totebox-sovereign-archive|os-totebox: la bóveda soberana de datos WORM]] — El diseño final previsto de os-totebox como sistema operativo de Tipo I sobre seL4: la bóveda de datos WORM impuesta por un grafo de capacidades compilado, no por una política que un administrador pudiera anular.
+- [[os-totebox-service-pd-model|Cómo los service-* se convierten en dominios de protección seL4]] — Cómo os-totebox está diseñado para asignar sus binarios de servicio Rust a siete Dominios de Protección seL4, con un confinamiento de capacidades que garantiza que un PD de service-slm comprometido nunca pueda alcanzar el PD de service-fs que retiene el almacenamiento.
 <!-- END AUTO-GENERATED -->
 
 ## Superficies del operador
@@ -58,6 +60,7 @@ Los sistemas que gestionan el tejido de red, la ruta de arranque y el sustrato d
 - [[os-network-admin]] — El plano de control de una flota: gestiona el registro de emparejamientos, las reglas Diode y la política de enrutamiento de malla; los comandos se transmiten como paquetes binarios de 16 bytes a través de la malla WireGuard.
 - [[os-privategit]] — Alojamiento Git privado para control de versiones soberano dentro de una flota.
 - [[app-privategit-workbench|Workbench de navegador]] — El editor de archivos basado en navegador incluido en os-privategit: una interfaz de tres columnas para trabajar con archivos sin una sesión de terminal.
+- [[os-infrastructure-ppn-node|os-infrastructure: sistema operativo de nodo PPN]] — La capa de sistema operativo para los nodos PPN: gestiona túneles WireGuard, aloja las VMs invitadas de los demás servicios de la plataforma y ejecuta la ceremonia de incorporación del Protocolo Génesis.
 <!-- END AUTO-GENERATED -->
 
 ## Publicación y medios

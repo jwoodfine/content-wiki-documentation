@@ -10,6 +10,7 @@ status: active
 bcsc_class: public-disclosure-safe
 language: en
 paired_with: ppn-hypervisor-resource-pool.es.md
+index_group: compute-and-vm-fabric
 last_edited: 2026-07-11
 editor: editorial
 ---

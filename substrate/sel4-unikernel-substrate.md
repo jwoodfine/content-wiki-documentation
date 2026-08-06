@@ -9,6 +9,7 @@ short_description: "os-console is intended to run as a seL4 Microkit unikernel i
 category: substrate
 type: reference
 quality: complete
+index_group: cryptographic-and-microkernel-primitives
 status: active
 audience: public
 bcsc_class: public-disclosure-safe

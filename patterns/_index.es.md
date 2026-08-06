@@ -48,6 +48,7 @@ Las configuraciones canónicas en las que se envía el sustrato y las disciplina
 - [[deployment-patterns|Patrones de despliegue]] — Las seis configuraciones canónicas en las que se despliega el sustrato de PointSav — cada una construida sobre las mismas cinco primitivas y superficie de SO, con el Plan de Cuentas y la superficie de cumplimiento adaptados por segmento.
 - [[three-layer-architecture|Arquitectura de tres capas]] — Cómo los entregables PointSav se mueven a través de las capas SOFTWARE, SHOWCASE e INSTANCE con un flujo estricto unidireccional de proveedor a cliente.
 - [[3-layer-stack|Pila de tres capas]] — La descomposición de infraestructura en tres capas: capacidad de cómputo bruta, ejecución de plataforma aislada y acceso seguro del operador.
+- [[customer-tier-catalog-pattern|Patrón de catálogo en el nivel cliente]] — Separa las entradas de catálogo de despliegue (agnósticas al inquilino, versionadas en el repositorio de flota) de las instancias numeradas (específicas del inquilino, excluidas del control de versiones); la taxonomía de prefijos y la estructura de rutas hacen visible la distinción catálogo-instancia sin necesidad de leer un MANIFEST.
 <!-- END AUTO-GENERATED -->
 
 ## Colaboración y flujo de trabajo editorial
@@ -69,6 +70,7 @@ Patrones que se repiten en el cromo orientado al operador — el wiki, la superf
 - [[knowledge-wiki-leapfrog-architecture|Arquitectura de salto del wiki de conocimiento]] — El diseño del motor wiki: elementos de interfaz con forma de Wikipedia sobre archivos Markdown git planos, con verificación de citaciones, procedencia del rastro de investigación e integración de IA en la edición como capa de diferenciación.
 - [[location-intelligence-ux|Experiencia de inteligencia de ubicación]] — La filosofía de diseño Conclusión Primero: conclusiones de nivel ordenadas en lugar de puntos de datos individuales, para que los usuarios vean los nodos comerciales más defendibles a zoom nacional antes de profundizar en operadores individuales.
 - [[wikipedia-leapfrog-design|Diseño de salto sobre Wikipedia]] — Qué hereda el motor wiki de Wikipedia, qué añade más allá y qué significa el margen de salto del cinco por ciento.
+- [[federation-via-content-mounts|Federación mediante montajes de contenido]] — Combina artículos editoriales curados con montajes declarativos de repositorios especializados en una única instancia wiki, extendiendo la inversión de la fuente de verdad de un repositorio único a varios; previsto para la Fase 6.
 <!-- END AUTO-GENERATED -->
 
 ## Véase también

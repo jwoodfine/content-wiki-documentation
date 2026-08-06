@@ -13,6 +13,7 @@ bcsc_class: public-disclosure-safe
 last_edited: 2026-06-10
 editor: pointsav-engineering
 paired_with: customer-tier-catalog-pattern.md
+index_group: deployment-and-configuration
 ---
 
 El nivel cliente separa las definiciones de despliegue de las instancias de despliegue. El catálogo registra qué es un despliegue: sus manuales operativos, artefactos requeridos y alcance. Las instancias numeradas registran dónde y cómo se ejecuta una copia concreta de ese despliegue. Las dos formas viven en rutas distintas, siguen reglas de seguimiento distintas y sirven propósitos distintos. Confundirlas es un error operativo recurrente en la gestión de flota; la convención de nomenclatura y la estructura de rutas hacen la distinción visible de un vistazo.

@@ -6,6 +6,7 @@ category: applications
 type: app
 content_type: topic
 quality: complete
+index_group: input-and-developer-surfaces
 short_description: "Terminal console cartridge showing live AI inference infrastructure state — model health, GPU nodes, queue depth, and daily spend — with per-tier kill switches."
 status: active
 bcsc_class: public-disclosure-safe

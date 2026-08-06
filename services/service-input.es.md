@@ -10,6 +10,7 @@ bcsc_class: current-fact
 language: es
 paired_with: service-input.md
 category: services
+index_group: ring-1-boundary-ingest
 status: active
 quality: complete
 last_edited: 2026-07-18

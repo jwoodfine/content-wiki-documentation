@@ -10,6 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
+index_group: compute-and-vm-fabric
 last_edited: 2026-07-11
 editor: pointsav-engineering
 paired_with: ppn-vm-resource-pool.es.md

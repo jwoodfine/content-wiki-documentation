@@ -6,6 +6,7 @@ category: applications
 type: app
 content_type: topic
 quality: complete
+index_group: knowledge-and-editorial-applications
 short_description: "Interfaz web para el operador de la canalización service-proofreader, con tokens de diseño de dos niveles para marca del inquilino y herramienta de destilación en Rust puro."
 status: active
 bcsc_class: public-disclosure-safe

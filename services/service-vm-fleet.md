@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "service-vm-fleet"
 slug: service-vm-fleet
 category: services
+index_group: specialist-and-domain-services
 type: service
 content_type: topic
 quality: stub

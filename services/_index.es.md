@@ -36,6 +36,7 @@ Servicios de límite por inquilino. Cada uno se ejecuta como un proceso separado
 - [[service-fs]] — El servicio de sistema de archivos: libro WORM de solo anexado, raíz de almacenamiento por inquilino, la base en la que escribe cada otro servicio del Anillo 1 — arquitectura, durabilidad y la postura de cumplimiento SEC 17a-4(f)/eIDAS/SOC 2 que habilita por construcción.
 - [[service-email]] — Ingesta de correo electrónico: SMTP e IMAP, cargas útiles saneadas, Maildir de solo anexado en almacenamiento local en bloque.
 - [[service-people]] — Libro de identidad: registros de personas, asignaciones de roles y el modelo de datos Anchor-Claim-Socket que nunca sobreescribe el estado.
+- [[service-input]] — Ingesta de documentos en el límite del Anillo 1: detecta el formato, enruta el contenido a analizadores específicos por formato y lo entrega a service-fs para su escritura en el libro WORM.
 <!-- END AUTO-GENERATED -->
 
 ## Anillo 2 — Conocimiento y procesamiento
@@ -58,6 +59,8 @@ Un servicio abarca el Anillo 3. Lee del Anillo 2 y produce propuestas que un hum
 - [[service-slm]] — El Portero: enrutamiento de IA entre niveles de cómputo local, de ráfaga y externo; libro de auditoría en cada llamada; todas las claves API retenidas en este límite.
 - [[service-slm-yoyo-operational]] — Estado operativo de service-slm y la VM de ráfaga GPU Yo-Yo: configuración de Nivel A/B, cola de borradores de aprendizaje, techo de coste por apagado inactivo.
 - [[service-slm-totebox-sysadmin]] — Cómo service-slm se convierte en el asistente operativo para despliegues Totebox: diez familias de tareas operativas, pipeline de cuatro etapas desde la captura del corpus hasta los adaptadores LoRA por inquilino.
+- [[service-slm-graph-store-migration]] — El grafo de propiedades activo del DataGraph: reconstrucción nocturna en LadybugDB mediante extracción de entidades restringida por gramática a través del Doorman, condicionada a la aprobación humana antes de cualquier escritura.
+- [[yoyo-daily-enrichment-cycle]] — La ventana diaria de lote de la VM de ráfaga GPU Yo-Yo: enriquece el DataGraph y acumula pares de entrenamiento DPO bajo un horario fijo y un tope de costo estricto.
 <!-- END AUTO-GENERATED -->
 
 ## Servicios especializados y de dominio
@@ -72,6 +75,11 @@ Servicios construidos para capacidades específicas de la plataforma.
 - [[fs-anchor-emitter]] — Puntos de control firmados del libro WORM a cadencia horaria, anclados a Sigstore Rekor mensualmente para auditabilidad externa.
 - [[service-fs-data-lake]] — Data lake de archivos planos para el pipeline GIS: puntos geoespaciales brutos de fuentes abiertas, sin paso ETL.
 - [[template-ledger]] — Distribuye plantillas de correo electrónico aprobadas al entorno de correo del operador; elimina la desviación de versiones entre el diseño de plantillas y la ejecución.
+- [[editorial-pipeline-three-stages]] — Proceso de corrección en tres etapas ordenadas por costo: escaneo determinista de vocabulario prohibido, pasada mecánica con LanguageTool y una reescritura generativa enrutada a través de la capa de inferencia.
+- [[private-git-paid-customer-endpoint]] — El servidor de versiones binarias detrás de software.pointsav.com: verifica tokens de licencia Ed25519 y transmite binarios compilados, sin almacenar registros de pago ni claves de firma.
+- [[service-pointsav-link]] — El adaptador de conexión en caliente que conecta un nodo Sujeto os-* a una flota PointSav: no instalado de forma predeterminada, con un modo de fallo de separación limpia.
+- [[service-vm-fleet]] — El servicio de colocación y registro del pool de recursos VM de la PPN: algoritmo de colocación de dos pasadas y estado de nodos impulsado por heartbeats.
+- [[service-vm-tenant]] — El proxy de inquilino orientado al cliente del pool de recursos VM de la PPN: autenticación, aislamiento de espacio de nombres, aplicación de cuotas y una pista de auditoría inmutable.
 <!-- END AUTO-GENERATED -->
 
 ## Véase también

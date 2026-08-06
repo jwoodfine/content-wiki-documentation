@@ -64,6 +64,18 @@ Cómo se comunican los nodos de la flota y cómo se recopilan las señales de ob
 - [[data-sovereignty-telemetry|Soberanía de datos en telemetría]] — Cómo la telemetría preserva las garantías de soberanía de datos mientras sigue produciendo señal operativamente útil.
 <!-- END AUTO-GENERATED -->
 
+## Cómputo y tejido de VM
+
+Cómo se agrupan, aíslan y protegen las máquinas virtuales en los nodos PPN — desde el pool de recursos del hipervisor por nodo hasta la hoja de ruta de arquitectura seL4 y el tejido distribuido planificado que permitirá a las VMs tomar prestado cómputo a través de la malla.
+
+<!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: compute-and-vm-fabric -->
+- [[ppn-vm-resource-pool|Pool de recursos VM de la PPN]] — La pila de tres servicios — controlador de flota, agente de host, proxy de inquilino — que aprovisiona, coloca y contabiliza VMs en una malla WireGuard heterogénea.
+- [[ppn-hypervisor-resource-pool|Pool de recursos del hipervisor PPN]] — Agrupación de CPU y RAM por nodo mediante virtio_balloon y pesos cgroups v2, estructuralmente ciega al agregador de la capa de datos que se ejecuta por encima.
+- [[ppn-tenant-vm-isolation|Aislamiento de VM por inquilino en la PPN]] — Qué aislamiento de espacio de nombres, proceso y red ofrece hoy el pool de recursos PPN, y el camino planificado hacia subredes WireGuard por inquilino.
+- [[ppn-distributed-vm-fabric|Tejido VM distribuido de la PPN]] — La extensión planificada de la capa de hipervisor por nodo a un pool multinodo: préstamo de memoria entre nodos, un libro de capacidades distribuido y una cadena de atestación soberana.
+- [[ppn-three-path-architecture|Arquitectura seL4 de tres caminos de la PPN]] — Tres opciones seL4 secuenciales para nodos de infraestructura PPN, desde un hipervisor con invitado Linux hasta dominios de protección sin ninguna máquina virtual.
+<!-- END AUTO-GENERATED -->
+
 ## Véase también
 
 - [Arquitectura](/architecture/) — arquitectura transversal de la plataforma y el modelo de tres anillos

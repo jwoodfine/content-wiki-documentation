@@ -63,6 +63,8 @@ Los nueve sustratos nombrados: cada uno designa una propiedad estructural de la 
 - [[yo-yo-lora-training-pipeline]] — La tubería nocturna de dos fases: extracción de entidades para el DataGraph empresarial (Fase 1) y entrenamiento del adaptador LoRA usando QLoRA en una GPU L4 (Fase 2).
 - [[tui-corpus-producer]] — Cada interacción terminal con service-slm a través del TUI del operador es una contribución curada al corpus de entrenamiento del adaptador del cliente.
 - [[nightly-datagraph-rebuild]] — El proceso programado que reconstruye el grafo de conocimiento de la plataforma desde fuentes canónicas de archivos planos cada noche.
+- [[ontological-datagraph]] — El grafo de conocimiento organizativo de personas, empresas y proyectos: memoria semántica persistente que se inyecta como contexto antes de cada solicitud de inferencia de IA.
+- [[soft-slm-tiered-gateway]] — La pasarela de inferencia por niveles que enruta primero al modelo local, escalando a nodos GPU adicionales y APIs externas solo cuando hace falta.
 <!-- END AUTO-GENERATED -->
 
 ## Primitivas criptográficas y de micronúcleo
@@ -72,6 +74,10 @@ Los nueve sustratos nombrados: cada uno designa una propiedad estructural de la 
 - [[merkle-proofs-as-substrate-primitive]] — Primitivas de prueba Merkle RFC 9162 como piso criptográfico del registro de capacidades de la plataforma.
 - [[capability-ledger-substrate]] — El mecanismo por el cual cada decisión de control de acceso en un despliegue de Foundry se convierte en un evento criptográficamente auditable, anclado en un registro que controla el cliente; extiende el modelo de capacidades de seL4 con una capa de transparencia Merkle.
 - [[system-substrate-doctrine]] — La arquitectura a nivel de kernel: un registro de capacidades con raíz en el cliente que es el registro de auditoría.
+- [[capability-geometry]] — El término de PointSav para la autorización basada en seL4 que reemplaza la política de control de acceso mutable por un DAG de capacidades aplicado formalmente por el kernel.
+- [[moonshot-toolkit-build-orchestrator]] — Orquestador de construcción escrito íntegramente en Rust para imágenes unikernel seL4 — de especificación TOML a binario elfloader AArch64 de arranque, sin Python ni CMake.
+- [[sel4-aarch64-qemu-substrate-target]] — Base de hardware de la plataforma unikernel: seL4 verificado formalmente sobre AArch64 con la máquina virt de QEMU como entorno de desarrollo, pruebas e integración continua.
+- [[sel4-unikernel-substrate]] — La forma de producción prevista para os-console: una imagen unikernel seL4 Microkit que compila el código de la aplicación directamente con un kernel formalmente verificado, eliminando la superficie de ataque de un SO de propósito general.
 <!-- END AUTO-GENERATED -->
 
 ## Soberanía y propiedad del cliente

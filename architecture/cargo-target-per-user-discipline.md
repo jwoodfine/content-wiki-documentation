@@ -5,6 +5,7 @@ slug: cargo-target-per-user-discipline
 short_description: "Per-user partitioning of the shared Cargo build cache — why a per-developer CARGO_TARGET_DIR eliminates cross-user lock races and permission errors."
 language: en
 category: architecture
+index_group: customer-ownership-and-deployment
 type: topic
 content_type: topic
 status: active

@@ -5,6 +5,7 @@ slug: mailbox-atomicity
 short_description: "flock-guarded prepend and msg-id idempotency for flat-file mailboxes — how concurrent sessions serialize writes instead of silently losing messages."
 language: en
 category: architecture
+index_group: customer-ownership-and-deployment
 type: topic
 content_type: topic
 status: active

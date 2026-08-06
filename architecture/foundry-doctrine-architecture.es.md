@@ -4,6 +4,7 @@ title: "PointSav Platform — Visión arquitectónica"
 slug: foundry-doctrine-architecture
 short_description: "Carta constitucional que codifica seis compromisos fundacionales y cincuenta y cuatro afirmaciones estructurales que rigen cada decisión de ingeniería de PointSav."
 category: architecture
+index_group: platform-structure
 type: topic
 content_type: topic
 quality: complete

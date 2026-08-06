@@ -7,6 +7,7 @@ aliases:
   - topic-three-binary-architecture
 short_description: "Totebox Orchestration se entrega mediante tres entornos operativos binarios distintos — os-console, os-totebox y os-orchestration — cada uno con un rol, objetivo de despliegue y conjunto de aplicaciones diferenciados."
 category: architecture
+index_group: platform-structure
 type: reference
 quality: complete
 status: active

@@ -4,6 +4,7 @@ title: "Yo-yo daily enrichment cycle"
 slug: yoyo-daily-enrichment-cycle
 short_description: "Daily GPU batch window that enriches the DataGraph and accumulates training data — fixed schedule, hard cost cap, and guaranteed VM termination."
 category: services
+index_group: ring-3-ai-gateway
 type: topic
 content_type: topic
 status: stable

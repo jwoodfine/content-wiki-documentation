@@ -6,6 +6,7 @@ category: applications
 type: app
 content_type: topic
 quality: complete
+index_group: input-and-developer-surfaces
 short_description: "Cartucho de consola en terminal que muestra el estado en vivo de la infraestructura de inferencia — salud del modelo, nodos GPU, colas y gasto diario — con conmutadores por nivel."
 status: active
 bcsc_class: public-disclosure-safe

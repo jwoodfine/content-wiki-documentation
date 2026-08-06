@@ -8,6 +8,7 @@ short_description: "os-totebox is designed to become a Type I bare-metal OS buil
 audience: vendor-public
 bcsc_class: forward-looking
 language: en
+index_group: the-archive-layer
 paired_with: os-totebox-sovereign-archive.es.md
 category: systems
 status: active

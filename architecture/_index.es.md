@@ -40,6 +40,10 @@ Los artículos estructurales fundacionales — los patrones que componen cada de
 - [[foundry-doctrine-overview]] — Resumen público del estatuto constitucional de la plataforma: seis pilares, cincuenta y dos afirmaciones estructurales y el modelo económico que los sustenta.
 - [[leapfrog-2030-architecture]] — La visión arquitectónica Leapfrog 2030: la física de infraestructura de la era hiperescaladora de 2030 y cómo la plataforma está posicionada para beneficiarse de ella.
 - [[pointsav-overview]] — PointSav Digital Systems: qué construye la empresa, cómo está organizada y la estructura corporativa de tres entidades.
+- [[architecture]] — Las dos propiedades estructurales de la plataforma: consistencia criptográfica distribuida y capacidad de arranque soberano, mantenidas de forma simultánea entre la nube y bóvedas físicas desconectadas.
+- [[architecture-overview]] — Un mapa de las principales superficies arquitectónicas de la plataforma: sustrato de cómputo, distribución de software, inteligencia GIS y el flujo editorial.
+- [[foundry-doctrine-architecture]] — La carta constitucional en detalle: los seis pilares, las afirmaciones estructurales numeradas y las ocho invenciones de proceso adaptadas de otras industrias.
+- [[three-binary-architecture]] — Los tres entornos operativos binarios — os-console, os-totebox, os-orchestration — cada uno con un rol, objetivo de despliegue y conjunto de aplicaciones propios.
 <!-- END AUTO-GENERATED -->
 
 ## Seguridad e identidad
@@ -81,6 +85,10 @@ Los principios y mecanismos por los cuales los clientes son dueños plenos de su
 - [[totebox-orchestration-development]] — El entorno de desarrollo es en sí mismo una instancia de Totebox Orchestration; el espacio de trabajo que construye la plataforma funciona sobre la misma arquitectura que entrega.
 - [[totebox-session]] — Una Sesión Totebox: una sesión de colaboración asistida por IA, circunscrita a un solo archivo, incapaz de escribir fuera de él.
 - [[vertical-seed-packs-marketplace]] — Taxonomías iniciales específicas del sector distribuidas como paquetes semilla; los inquilinos contribuyen con refinamientos a través de un mercado planificado.
+- [[foundry-services-slice-model]] — La partición cgroup de systemd que protege los servicios de producción frente a la carga de sesiones de compilación concurrentes en un mismo servidor Totebox compartido.
+- [[cargo-target-per-user-discipline]] — Particionado de la caché de compilación por desarrollador que elimina las carreras de bloqueo entre usuarios en un servidor Totebox compartido.
+- [[mailbox-atomicity]] — Escritura exclusiva con flock e idempotencia por msg-id en los buzones de archivo plano que usan las sesiones Totebox para comunicarse entre sí.
+- [[multi-engine-session-coordination]] — Protocolo de bloqueos de sesión con detección de obsolescencia por boot_id que evita que motores de IA concurrentes toquen el mismo `.git/index`.
 <!-- END AUTO-GENERATED -->
 
 ## Inteligencia de ubicación y dominio

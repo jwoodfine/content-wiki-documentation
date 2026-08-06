@@ -12,6 +12,7 @@ paired_with: doctrine-invention-7-rekor-anchoring.es.md
 category: governance
 status: active
 quality: complete
+index_group: platform-disciplines
 last_edited: 2026-07-11
 ---
 

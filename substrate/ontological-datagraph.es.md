@@ -6,6 +6,7 @@ category: substrate
 type: topic
 content_type: topic
 quality: complete
+index_group: small-language-model-stack
 short_description: "Grafo de conocimiento organizativo de personas, empresas, proyectos y relaciones — memoria semántica persistente para responder consultas de negocio sin releer documentos fuente."
 status: active
 bcsc_class: public-disclosure-safe

@@ -63,6 +63,18 @@ How fleet nodes communicate and how observability signals are collected without 
 - [[data-sovereignty-telemetry]] — How telemetry preserves data-sovereignty guarantees while still producing operationally useful signal.
 <!-- END AUTO-GENERATED -->
 
+## Compute and VM fabric
+
+How virtual machines are pooled, isolated, and secured across PPN nodes — from the per-node hypervisor resource pool to the seL4 architecture roadmap and the planned distributed fabric that lets VMs borrow compute across the mesh.
+
+<!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: compute-and-vm-fabric -->
+- [[ppn-vm-resource-pool|PPN VM resource pool]] — The three-service stack — fleet controller, host agent, tenant proxy — that provisions, places, and accounts for VMs across a heterogeneous WireGuard mesh.
+- [[ppn-hypervisor-resource-pool|PPN hypervisor resource pool]] — Per-node CPU and RAM pooling via virtio_balloon and cgroups v2 weights, structurally blind to the data-layer aggregator above it.
+- [[ppn-tenant-vm-isolation|PPN tenant VM isolation]] — What namespace, process, and network isolation the PPN resource pool provides today, and the planned path to per-tenant WireGuard subnets.
+- [[ppn-distributed-vm-fabric|PPN distributed VM fabric]] — The planned extension of the per-node hypervisor layer to a multi-node pool: cross-node memory lending, a distributed capability ledger, and a sovereign attestation chain.
+- [[ppn-three-path-architecture|PPN three-path seL4 architecture]] — Three sequential seL4 options for PPN infrastructure nodes, from a hypervisor with a Linux guest to protection domains with no virtual machines at all.
+<!-- END AUTO-GENERATED -->
+
 ## See also
 
 - [Architecture](/architecture/) — cross-cutting platform architecture and the three-ring model

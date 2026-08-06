@@ -44,6 +44,7 @@ Start here for procurement, security, and compliance evaluation.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: formal-decision-records -->
 - [[architecture-decisions]] — The twelve binding architecture decisions that constrain all future engineering; grouped by compliance weight, data separation, deployment custody, and operational integrity.
+- [[adr-07-zero-ai-in-ring-1]] — Why the four Ring 1 boundary-ingest services are restricted to deterministic-only operations, and where AI inference is permitted to begin.
 <!-- END AUTO-GENERATED -->
 
 ## Licensing and contribution
@@ -69,6 +70,7 @@ Start here for procurement, security, and compliance evaluation.
 - [[anti-homogenization-discipline]] — The architectural posture that resists AI writing assistants pulling contributors toward a single voice, defaulting to flagging rather than silent rewriting.
 - [[api-key-boundary-discipline]] — The rule that all external LLM API credentials belong exclusively at the gateway service and never at inference engines or downstream consumers.
 - [[favicon-matrix]] — The icon matrix governing visual identity across all platform surfaces: one distinct glyph per service, OS, and application, enforced at the asset-pipeline layer.
+- [[doctrine-invention-7-rekor-anchoring]] — How the platform posts a monthly signed ledger checkpoint to the public Sigstore Rekor transparency log, giving auditors independently verifiable evidence outside the platform's own infrastructure.
 <!-- END AUTO-GENERATED -->
 
 ## See also

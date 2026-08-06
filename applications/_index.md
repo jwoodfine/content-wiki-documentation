@@ -37,6 +37,7 @@ The wiki engine, the marketing surface, and the design-intent articles that desc
 - [[knowledge-wiki-home-page-design]] — How the documentation home page inherits Wikipedia's structural conventions and extends them for engineering and financial-community readers.
 - [[wikipedia-leapfrog-design]] — What the wiki engine inherits from Wikipedia, what it adds beyond it, and what the five-percent leapfrog headroom means for readers and engineers.
 - [[documentation-pointsav-com-launch-2026-04-27]] — The April 2026 TLS launch of `documentation.pointsav.com`: serving stack, placeholder posture, and verification commands.
+- [[radical-proofreader-ui]] — The operator console for the service-proofreader editorial pipeline: review structured findings, accept or reject rewrites, and record the verdicts that feed the platform's apprenticeship corpus.
 <!-- END AUTO-GENERATED -->
 
 ## Location intelligence applications
@@ -56,6 +57,9 @@ The structured-input gate that admits external files to a Totebox, and the brows
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: input-and-developer-surfaces -->
 - [[app-console-input]] — The F12 surface in os-console: the structured input gate through which raw external files enter a Totebox before being sealed into the verified ledger.
 - [[app-privategit-workbench]] — A browser-based three-column file editor included in os-privategit; for working with archive files without a terminal session.
+- [[app-console-keys]] — The always-installed base chassis of os-console: defines the Cartridge trait every F-key module implements, the F-key navigation strip, the status bar, and the machine-based-authorization client the other cartridges connect through.
+- [[app-console-email]] — The F3 communications cartridge for os-console: inbox, message reading, and compose-and-send through service-email's Comm Diode egress path.
+- [[app-console-slm]] — The F9 terminal cartridge showing live AI inference infrastructure state — model health, GPU node fleet, queue depth, and daily spend — for the operator running a Totebox.
 <!-- END AUTO-GENERATED -->
 
 ## Domain applications

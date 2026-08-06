@@ -4,6 +4,7 @@ title: "service-pointsav-link"
 slug: service-pointsav-link
 short_description: "service-pointsav-link is the hot-pluggable adapter that connects an os-* Subject node to a PointSav fleet, with a default state of not installed and a clean-severance failure mode."
 category: services
+index_group: specialist-and-domain-services
 type: topic
 content_type: topic
 status: stable

@@ -12,6 +12,7 @@ paired_with: adr-07-zero-ai-in-ring-1.md
 category: governance
 status: active
 quality: complete
+index_group: formal-decision-records
 last_edited: 2026-06-23
 cites: []
 ---

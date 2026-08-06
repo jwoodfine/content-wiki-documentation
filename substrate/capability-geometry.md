@@ -9,6 +9,7 @@ short_description: "Capability Geometry is PointSav's term for seL4-based author
 category: substrate
 type: reference
 quality: complete
+index_group: cryptographic-and-microkernel-primitives
 status: active
 audience: public
 bcsc_class: public-disclosure-safe

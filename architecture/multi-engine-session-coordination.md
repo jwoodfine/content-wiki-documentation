@@ -5,6 +5,7 @@ slug: multi-engine-session-coordination
 short_description: "Session-lock protocol for concurrent AI engines on one host — boot_id staleness detection and role locks that keep two sessions off the same .git/index."
 language: en
 category: architecture
+index_group: customer-ownership-and-deployment
 type: topic
 content_type: topic
 status: active

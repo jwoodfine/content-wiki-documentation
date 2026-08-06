@@ -41,6 +41,7 @@ Punto de entrada para la evaluación de adquisición, seguridad y cumplimiento.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: formal-decision-records -->
 - [[architecture-decisions]] — Las doce decisiones de arquitectura vinculantes que restringen toda la ingeniería futura; agrupadas por peso regulatorio, separación de datos, custodia del despliegue e integridad operativa.
+- [[adr-07-zero-ai-in-ring-1]] — Por qué los cuatro servicios de ingesta de frontera (Ring 1) se restringen a operaciones exclusivamente deterministas, y dónde se permite que comience la inferencia de IA.
 <!-- END AUTO-GENERATED -->
 
 ## Licencias y contribución
@@ -66,6 +67,7 @@ Punto de entrada para la evaluación de adquisición, seguridad y cumplimiento.
 - [[anti-homogenization-discipline]] — La postura arquitectónica que resiste que los asistentes de escritura con IA empujen a los colaboradores hacia una única voz, aplicando por defecto el marcado en lugar de la reescritura silenciosa.
 - [[api-key-boundary-discipline]] — La regla de que todas las credenciales de API de LLM externas pertenecen exclusivamente al servicio de puerta de enlace y nunca a motores de inferencia ni consumidores descendentes.
 - [[favicon-matrix]] — La matriz de iconos que rige la identidad visual en todas las superficies de la plataforma: un glifo distinto por servicio, SO y aplicación, aplicado en la capa de la cadena de activos.
+- [[doctrine-invention-7-rekor-anchoring]] — Cómo la plataforma publica mensualmente un punto de control firmado del libro contable en el registro público de transparencia Sigstore Rekor, dando a los auditores evidencia verificable de forma independiente, fuera de la infraestructura propia de la plataforma.
 <!-- END AUTO-GENERATED -->
 
 ## Véase también

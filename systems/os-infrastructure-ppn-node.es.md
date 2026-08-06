@@ -10,6 +10,7 @@ status: active
 bcsc_class: public-disclosure-safe
 language: es
 language_protocol: TRANSLATE-ES
+index_group: network-control-and-infrastructure
 paired_with: os-infrastructure-ppn-node.md
 last_edited: 2026-05-30
 editor: editorial

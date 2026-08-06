@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "Migración del almacén de grafos de service-slm"
 slug: service-slm-graph-store-migration
 category: services
+index_group: ring-3-ai-gateway
 type: concept
 content_type: topic
 quality: pre-build

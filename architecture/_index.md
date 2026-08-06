@@ -39,6 +39,10 @@ The foundational structural articles — the patterns that compose every PointSa
 - [[foundry-doctrine-overview]] — A public summary of the platform's constitutional charter: six pillars, fifty-two structural claims, and the economic model that sustains them.
 - [[leapfrog-2030-architecture]] — The Leapfrog 2030 architectural vision: the infrastructure physics of the 2030 hyperscaler era, and how the platform is positioned to benefit from it.
 - [[pointsav-overview]] — PointSav Digital Systems: what the company builds, how it is organised, and the three-entity corporate structure.
+- [[architecture]] — The platform's two structural properties: distributed cryptographic consistency and sovereign bootability, preserved simultaneously across cloud and offline-vault environments.
+- [[architecture-overview]] — A map of the platform's major architectural surfaces: compute substrate, software distribution, GIS intelligence, and the editorial pipeline.
+- [[foundry-doctrine-architecture]] — The constitutional charter in full: the six pillars, the numbered structural claims, and the eight cross-industry process inventions.
+- [[three-binary-architecture]] — The three binary operating environments — os-console, os-totebox, os-orchestration — each with a distinct role, deployment target, and hosted-application set.
 <!-- END AUTO-GENERATED -->
 
 ## Security and identity
@@ -80,6 +84,10 @@ The principles and mechanisms by which customers own their deployment outright.
 - [[totebox-orchestration-development]] — The development environment itself is a Totebox Orchestration instance; the workspace that builds the platform runs on the architecture it delivers.
 - [[totebox-session]] — A Totebox Session: an AI-assisted contributor session scoped to one archive, unable to write outside it, the standard entry point for all development work in Totebox Orchestration.
 - [[vertical-seed-packs-marketplace]] — Curated industry-specific starter taxonomies distributed as seed packs; tenants contribute refinements back through a planned marketplace.
+- [[foundry-services-slice-model]] — The systemd cgroup partition that keeps production services running under load from concurrent build sessions on the same shared Totebox host.
+- [[cargo-target-per-user-discipline]] — Per-developer build-cache partitioning that eliminates cross-user lock races on a shared Totebox development host.
+- [[mailbox-atomicity]] — flock-guarded prepend and msg-id idempotency for the flat-file mailboxes that Totebox sessions use to communicate.
+- [[multi-engine-session-coordination]] — Session-lock protocol with boot_id staleness detection that keeps concurrent AI engines off the same `.git/index`.
 <!-- END AUTO-GENERATED -->
 
 ## Location intelligence and domain

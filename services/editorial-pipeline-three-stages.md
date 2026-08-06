@@ -6,6 +6,7 @@ aliases:
   - editorial-pipeline-three-stages
 short_description: "Service-level view of the proofreading pipeline — stage ordering by cost, degradation paths when dependencies fail, and independently verifiable finding sets."
 category: services
+index_group: specialist-and-domain-services
 type: topic
 content_type: topic
 status: active

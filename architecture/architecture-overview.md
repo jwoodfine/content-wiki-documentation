@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "Architecture overview — PointSav platform"
 slug: architecture-overview
 category: architecture
+index_group: platform-structure
 type: concept
 content_type: topic
 quality: stub

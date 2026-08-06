@@ -5,6 +5,7 @@ title: "Orquestador de construcción moonshot-toolkit"
 slug: moonshot-toolkit-build-orchestrator
 short_description: "Orquestador de construcción solo Rust para imágenes unikernel seL4 — de especificación TOML a manifiesto direccionado por contenido y elfloader AArch64, sin Python ni CMake."
 category: substrate
+index_group: cryptographic-and-microkernel-primitives
 last_edited: 2026-06-23
 editor: pointsav-engineering
 status: stable
