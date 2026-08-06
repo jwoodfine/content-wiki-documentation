@@ -6,6 +6,7 @@ short_description: "La plataforma PointSav organiza sus despliegues en tiempo de
 category: systems
 type: topic
 content_type: topic
+index_group: the-archive-layer
 status: active
 bcsc_class: public-disclosure-safe
 language: es

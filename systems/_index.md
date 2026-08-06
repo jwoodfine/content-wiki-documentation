@@ -32,6 +32,8 @@ The core record-keeping systems at the foundation of every deployment — where 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: the-archive-layer -->
 - [[totebox-os]] — The archive layer: one isolated, kernel-level vault per entity, storing records as inert flat files with no delete operation, exposed only through the Diode on command from os-console or os-orchestration.
 - [[totebox-orchestration]] — The coordination layer that manages multiple Totebox data-archive containers, keeping software execution engines isolated from passive corporate ledgers across deployments.
+- [[vm-architecture]] — The five named VM types (Totebox, MediaKit, Orchestration, PrivateGit, Infrastructure) and how each maps exactly to one `os-*` source binary.
+- [[scaling-coordinated-development-totebox-archives]] — The coordination bottlenecks that appear past twenty archives, and the path toward per-archive process isolation.
 <!-- END AUTO-GENERATED -->
 
 ## Operator surfaces

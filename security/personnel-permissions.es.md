@@ -164,7 +164,7 @@ del proceso que lo edita.
 
 ## Véase también
 
-- [[app-orchestration-command-branch-model]] — el componente que aloja el modelo de niveles y el endpoint
+- [[totebox-session]] — el modelo de cuatro niveles de permisos referido anteriormente
 - [[contributor-model]] — el esquema de contribución que describen los niveles
 - [[pairing-as-permission]] — el principio de que la autoridad la confiere el emparejamiento, no una concesión de rol
 - [[machine-based-auth]] — autorización a nivel de dispositivo, un mecanismo aparte

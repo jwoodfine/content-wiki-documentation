@@ -8,6 +8,7 @@ aliases:
   - scaling-coordinated-development-sovereign-archives
 title: "Scaling coordinated development across many Totebox Archives"
 category: systems
+index_group: the-archive-layer
 short_description: "Coordination bottlenecks past twenty archives — publication serialization, message relay latency, operator load, and the path to per-archive process isolation."
 status: active
 language_protocol: TOPIC
@@ -15,7 +16,7 @@ last_edited: 2026-08-03
 editor: pointsav-engineering
 ---
 
-The `app-orchestration-command` topology is designed to accommodate growth. This article describes the coordination challenges that appear as the number of [[totebox-archive|Totebox Archives]] increases, the mechanisms introduced to address them, and the planned trajectory toward per-archive process isolation.
+The vendor's own multi-archive development workflow is designed to accommodate growth. This article describes the coordination challenges that appear as the number of [[totebox-archive|Totebox Archives]] increases, the mechanisms introduced to address them, and the planned trajectory toward per-archive process isolation.
 
 ## The Coordination Challenge
 
@@ -27,11 +28,9 @@ When a small number of archives share a central coordinator, the coordinator's o
 
 ## The Decentralized Publication Path
 
-The first mitigation is a tiered eligibility model. Archives that have demonstrated operational maturity — consistently passing their build and test suites, maintaining clean histories, and operating without frequent interventions — may be granted a higher self-service level.
+The first mitigation is a tiered eligibility model, already real today for some archives rather than only planned. Archives that have demonstrated operational maturity — consistently passing their build and test suites, maintaining clean histories, and operating without frequent interventions — may be granted a self-service publication level: the archive pushes its own branch to its staging mirrors and appends a record to a promotion queue file, which notifies the coordinating session's inbox rather than writing to canonical directly. See [[five-stage-supply-chain]] for the full mechanics of that promotion path, including the guards a promotion request must clear either way.
 
-At the highest self-service level *(planned/intended)*, an archive may initiate canonical publication directly, without waiting for the coordinator operator to act. The prerequisite is that the administrator key is accessible from the archive's environment. The coordinator validates the result after the fact and records the publication event in the [[worm-ledger-architecture|audit ledger]].
-
-This does not eliminate the coordinator's role; it offloads routine, low-risk publication to the archives that have earned that trust, reserving coordinator attention for higher-stakes decisions.
+This does not eliminate the coordinator's role; it offloads routine, low-risk publication to the archives that have earned that trust, reserving coordinator attention for higher-stakes decisions. Archives without self-service eligibility submit a request and wait for the coordinator to run publication on their behalf.
 
 ## The Messaging Substrate
 
@@ -59,17 +58,15 @@ The transition from shared-user to per-operator isolation is incremental. The fi
 
 ## Trajectory
 
-**Correction retracted, 2026-08-02:** an earlier pass said neither `app-orchestration-command` nor `os-orchestration` "exists as a built crate," and that this paragraph "misattributes" real Foundry coordination practice to "a nonexistent PointSav product name." That was checked against a stale local branch. On canonical, `app-orchestration-command` is real and substantial — a "CommandCentre" server whose own default config (`COMMAND_INSTANCE_ID` default `gateway-orchestration-command-1`, `COMMAND_CLONES_ROOT` default `/srv/foundry/clones`, `COMMAND_PAIRINGS_PATH` default `/srv/foundry/pairings.yaml`) is directly wired to manage exactly this kind of multi-archive fleet — so this paragraph's "21 archives... shared-user environment" description may be describing the real product's actual current deployment shape, not a misattribution. This has not been independently re-verified against the real server's code; see [[app-orchestration-command-branch-model]] for the fuller finding and its own caveat about what remains unverified.
+The current installation operates 21 archives in a shared-user environment on a single host. It is a working prototype of the target architecture — not, as an earlier draft of this article implied, a deployment of the `app-orchestration-command` product. `app-orchestration-command` is real and substantial on canonical, but its actual function is archive pairing, fleet visibility, personnel/permission tiers, and GPU brokering (see [[pairing-as-permission]] and [[personnel-permissions]]) — it holds no role in canonical publication. The coordination and publication mechanics this article describes belong to the vendor's own promotion tooling, detailed in [[five-stage-supply-chain]].
 
-The current `app-orchestration-command` installation operates 21 archives in a shared-user environment on a single `os-orchestration` host. It is a working prototype of the target architecture.
-
-The planned production topology maps each archive to a dedicated `os-totebox` instance — a single-purpose compute node running the archive's services, with its own operator user, commit identity, and network boundary. `app-orchestration-command` on `os-orchestration` remains the publication coordinator and audit authority; it does not disappear, but its role becomes coordination rather than execution.
+The planned production topology maps each archive to a dedicated `os-totebox` instance — a single-purpose compute node running the archive's services, with its own operator user, commit identity, and network boundary.
 
 This topology is the subject of ongoing architecture work. Current documentation on the `os-orchestration` and `os-totebox` models is maintained separately; see the related topics below.
 
 ## Related Topics
 
-- [[app-orchestration-command-publication-flow]] — the publication flow and eligibility model
-- [[app-orchestration-command-branch-model]] — isolation and filtering
+- [[five-stage-supply-chain]] — the real publication pipeline: promotion tooling, self-service eligibility, and the guards a commit must clear before reaching canonical
+- [[pairing-as-permission]] — the cryptographic-pairing model `app-orchestration-command` actually implements
 - [[os-orchestration|os-orchestration architecture]] — the coordinator's host platform
 - [[os-totebox-sovereign-archive|os-totebox archive model]] — the per-archive operating system this trajectory targets

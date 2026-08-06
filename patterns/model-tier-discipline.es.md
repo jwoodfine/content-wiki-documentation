@@ -6,6 +6,7 @@ category: patterns
 type: topic
 content_type: topic
 quality: complete
+index_group: collaboration-and-editorial-workflow
 short_description: La disciplina para enrutar el trabajo al nivel de modelo de IA apropiado — pensamiento profundo, implementación o mecánico — para adaptar la capacidad del modelo a la forma del trabajo y controlar el costo de inferencia.
 status: active
 bcsc_class: public-disclosure-safe

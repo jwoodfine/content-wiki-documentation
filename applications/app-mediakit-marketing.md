@@ -6,6 +6,7 @@ category: applications
 type: concept
 content_type: topic
 quality: complete
+index_group: knowledge-and-editorial-applications
 status: active
 audience: vendor-public
 bcsc_class: no-disclosure-implication
@@ -17,7 +18,7 @@ short_description: "app-mediakit-marketing is a Rust web server delivering marke
 cites: []
 ---
 
-**Correction (2026-08-02):** the WordPress-admin-vocabulary framing below is entirely fabricated — a repo-wide search for "Dashboard," "WordPress," or any `/admin/` UI in `app-mediakit-marketing/src` returns zero hits. The real content model isn't flat Markdown/HTML either: `src/content.rs` loads typed `page.yaml` manifests validated against `app_mediakit_shell::Page`'s section contract. The crate's own doc comments describe its actual architecture as agent-first: AI authors content via an MCP server, humans approve via an F12 gate (`Cargo.toml` description: "AI authors via MCP, humans approve (F12)") — a materially different model from a WordPress-style admin UI, and unmentioned anywhere in this article. Separately, `os-orchestration` (cited elsewhere in this article) is a real crate on canonical but currently an empty placeholder scaffold (retracted from an earlier, wrong "not a built crate at all" claim — see [[app-orchestration-command-branch-model]]), and the article's `pointsav-monorepo/` source path is wrong — the real crate lives at top-level `app-mediakit-marketing/`. **Flagged, not resolved** — this needs a rewrite around the real MCP-authoring/F12-approval model, not a wording fix.
+**Correction (2026-08-02):** the WordPress-admin-vocabulary framing below is entirely fabricated — a repo-wide search for "Dashboard," "WordPress," or any `/admin/` UI in `app-mediakit-marketing/src` returns zero hits. The real content model isn't flat Markdown/HTML either: `src/content.rs` loads typed `page.yaml` manifests validated against `app_mediakit_shell::Page`'s section contract. The crate's own doc comments describe its actual architecture as agent-first: AI authors content via an MCP server, humans approve via an F12 gate (`Cargo.toml` description: "AI authors via MCP, humans approve (F12)") — a materially different model from a WordPress-style admin UI, and unmentioned anywhere in this article. Separately, `os-orchestration` (cited elsewhere in this article) is a real crate on canonical but currently an empty placeholder scaffold (retracted from an earlier, wrong "not a built crate at all" claim — the related `app-orchestration-command` crate is real and substantial, see [[personnel-permissions]]), and the article's `pointsav-monorepo/` source path is wrong — the real crate lives at top-level `app-mediakit-marketing/`. **Flagged, not resolved** — this needs a rewrite around the real MCP-authoring/F12-approval model, not a wording fix.
 
 `app-mediakit-marketing` is a Rust web server that delivers marketing landing sites. It presents the same vocabulary — Dashboard, Pages, Posts, Media, Themes, Plugins, Settings — that WordPress users already know, but replaces the PHP + MySQL stack beneath with a sovereign, Tier 0-compatible architecture: a single compiled binary, flat-file content storage, and a graph-entity integration layer that costs nothing to run on a $7/month node.
 

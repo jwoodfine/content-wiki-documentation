@@ -33,6 +33,8 @@ Los sistemas centrales de mantenimiento de registros en la base de cada desplieg
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: the-archive-layer -->
 - [[totebox-os]] — La capa de archivo: un vault aislado a nivel de kernel por entidad, que almacena registros como archivos planos inertes sin operación de eliminación, expuestos únicamente a través del Diode bajo comando de os-console u os-orchestration.
 - [[totebox-orchestration|Orquestación Totebox]] — La capa de coordinación que gestiona múltiples contenedores de archivo de datos Totebox, manteniendo los motores de ejecución de software aislados de los libros corporativos pasivos a través de los despliegues.
+- [[vm-architecture|Arquitectura VM-*]] — Los cinco tipos de VM nombrados (Totebox, MediaKit, Orchestration, PrivateGit, Infrastructure) y cómo cada uno corresponde exactamente a un binario fuente `os-*`.
+- [[scaling-coordinated-development-totebox-archives|Escalar el desarrollo coordinado en múltiples Totebox Archives]] — Los cuellos de botella de coordinación que aparecen más allá de veinte archivos, y la trayectoria hacia el aislamiento de procesos por archivo.
 <!-- END AUTO-GENERATED -->
 
 ## Superficies del operador

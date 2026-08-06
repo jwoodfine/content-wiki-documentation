@@ -150,7 +150,7 @@ file and of the process that edits it.
 
 ## See also
 
-- [[app-orchestration-command-branch-model]] — the component hosting the tier model and endpoint
+- [[totebox-session]] — the four-tier permission model referenced above
 - [[contributor-model]] — the contribution arrangement the tiers describe
 - [[pairing-as-permission]] — the principle that pairing, not a role grant, confers authority
 - [[machine-based-auth]] — device-level authorisation, a separate mechanism

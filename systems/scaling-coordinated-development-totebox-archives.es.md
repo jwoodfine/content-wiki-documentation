@@ -8,6 +8,7 @@ aliases:
   - scaling-coordinated-development-sovereign-archives
 title: "Escalar el desarrollo coordinado en múltiples Totebox Archives"
 category: systems
+index_group: the-archive-layer
 short_description: "Cuellos de botella de coordinación más allá de veinte archivos — serialización de publicaciones, latencia de mensajes, carga del operador y aislamiento por proceso."
 status: active
 language_protocol: TOPIC
@@ -15,7 +16,7 @@ last_edited: 2026-08-03
 editor: pointsav-engineering
 ---
 
-La topología de `app-orchestration-command` está diseñada para crecer. Este artículo describe los desafíos de coordinación que aparecen a medida que aumenta el número de [[totebox-archive|Totebox Archives]], los mecanismos introducidos para abordarlos y la trayectoria prevista hacia el aislamiento de procesos por archivo.
+El propio flujo de desarrollo multi-archivo del proveedor está diseñado para crecer. Este artículo describe los desafíos de coordinación que aparecen a medida que aumenta el número de [[totebox-archive|Totebox Archives]], los mecanismos introducidos para abordarlos y la trayectoria prevista hacia el aislamiento de procesos por archivo.
 
 ## El desafío de coordinación
 
@@ -27,11 +28,9 @@ Cuando un número reducido de archivos comparte un coordinador central, la carga
 
 ## La ruta de publicación descentralizada
 
-La primera mitigación es un modelo de elegibilidad por niveles. Los archivos que han demostrado madurez operativa —superando de forma consistente sus suites de compilación y pruebas, manteniendo historiales limpios y operando sin intervenciones frecuentes— pueden obtener un nivel de autoservicio más alto.
+La primera mitigación es un modelo de elegibilidad por niveles, ya real hoy para algunos archivos, no solo previsto. Los archivos que han demostrado madurez operativa —superando de forma consistente sus suites de compilación y pruebas, manteniendo historiales limpios y operando sin intervenciones frecuentes— pueden obtener un nivel de autoservicio: el archivo empuja su propia rama a sus espejos de preparación y añade un registro a un fichero de cola de promoción, que notifica a la bandeja de entrada de la sesión coordinadora en lugar de escribir directamente en el canónico. Véase [[five-stage-supply-chain]] para el mecanismo completo de esa ruta de promoción, incluidas las verificaciones que una solicitud de promoción debe superar en cualquier caso.
 
-En el nivel de autoservicio más alto *(previsto/en desarrollo)*, un archivo puede iniciar la publicación canónica directamente, sin esperar a que actúe el operador del coordinador. El requisito previo es que la clave de administrador sea accesible desde el entorno del archivo. El coordinador valida el resultado a posteriori y registra el evento de publicación en el [[worm-ledger-architecture|libro mayor de auditoría]].
-
-Esto no elimina el papel del coordinador; delega la publicación rutinaria de bajo riesgo a los archivos que se han ganado esa confianza, reservando la atención del coordinador para decisiones de mayor importancia.
+Esto no elimina el papel del coordinador; delega la publicación rutinaria de bajo riesgo a los archivos que se han ganado esa confianza, reservando la atención del coordinador para decisiones de mayor importancia. Los archivos sin elegibilidad de autoservicio envían una solicitud y esperan a que el coordinador ejecute la publicación en su nombre.
 
 ## El sustrato de mensajería
 
@@ -59,15 +58,15 @@ La transición del entorno de usuario compartido al aislamiento por operador es 
 
 ## Trayectoria
 
-La instalación actual de `app-orchestration-command` opera 21 archivos en un entorno de usuario compartido en un único host `os-orchestration`. Es un prototipo funcional de la arquitectura objetivo.
+La instalación actual opera 21 archivos en un entorno de usuario compartido en un único host. Es un prototipo funcional de la arquitectura objetivo — no, como implicaba una versión anterior de este artículo, un despliegue del producto `app-orchestration-command`. `app-orchestration-command` es real y sustancial en el canónico, pero su función real es el emparejamiento de archivos, la visibilidad de flota, los niveles de personal/permisos y el bróker de GPU (véase [[pairing-as-permission]] y [[personnel-permissions]]) — no desempeña ningún papel en la publicación canónica. La mecánica de coordinación y publicación que describe este artículo pertenece a las herramientas de promoción propias del proveedor, detalladas en [[five-stage-supply-chain]].
 
-La topología de producción prevista asigna cada archivo a una instancia `os-totebox` dedicada —un nodo de cómputo monofuncional que ejecuta los servicios del archivo, con su propio usuario operador, identidad de commit y límite de red. `app-orchestration-command` en `os-orchestration` sigue siendo el coordinador de publicación y la autoridad de auditoría; no desaparece, pero su papel pasa a ser de coordinación más que de ejecución.
+La topología de producción prevista asigna cada archivo a una instancia `os-totebox` dedicada —un nodo de cómputo monofuncional que ejecuta los servicios del archivo, con su propio usuario operador, identidad de commit y límite de red.
 
 Esta topología es objeto de trabajo arquitectónico en curso. La documentación actual sobre los modelos `os-orchestration` y `os-totebox` se mantiene de forma independiente; consulte los temas relacionados a continuación.
 
 ## Temas relacionados
 
-- [[app-orchestration-command-publication-flow]] — el flujo de publicación y el modelo de elegibilidad
-- [[app-orchestration-command-branch-model]] — aislamiento y filtrado
+- [[five-stage-supply-chain]] — la canalización de publicación real: herramientas de promoción, elegibilidad de autoservicio y las verificaciones que un commit debe superar antes de alcanzar el canónico
+- [[pairing-as-permission]] — el modelo de emparejamiento criptográfico que `app-orchestration-command` implementa realmente
 - [[os-orchestration|arquitectura de os-orchestration]] — la plataforma anfitriona del coordinador
 - [[os-totebox-sovereign-archive|modelo de archivo os-totebox]] — el sistema operativo por archivo al que apunta esta trayectoria

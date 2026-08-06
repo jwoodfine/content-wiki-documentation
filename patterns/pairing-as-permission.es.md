@@ -6,6 +6,7 @@ category: patterns
 type: topic
 content_type: topic
 quality: complete
+index_group: sovereignty-and-infrastructure-patterns
 short_description: "PairingAsPermission es el modelo de control de acceso por capacidades de objeto utilizado en la orquestación Totebox: un emparejamiento criptográfico entre dos nodos es el permiso, y la ausencia de emparejamiento hace estructuralmente imposible la conexión — no es acceso denegado, sino la inexistencia de un camino."
 status: active
 bcsc_class: no-disclosure-implication
