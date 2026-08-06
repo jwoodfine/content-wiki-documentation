@@ -14,7 +14,7 @@ editor: pointsav-engineering
 paired_with: totebox-session.es.md
 ---
 
-A Totebox Session is an AI-assisted contributor session opened within a single [[totebox-archive|Totebox Archive]]. It is scoped to the archive's declared repositories and cannot write outside them. From the contributor's perspective, opening a Totebox Session is how every development task in [[totebox-orchestration|Totebox Orchestration]] begins. The session protocol mirrors the customer experience: the contributor's entry point in the workspace and the customer's entry point through [[console-os|`os-console`]] perform the same function.
+A Totebox Session is an AI-assisted contributor session opened within a single [[totebox-archive|Totebox Archive]]. It is scoped to the archive's declared repositories and cannot write outside them. From the contributor's perspective, opening a Totebox Session is how every development task in [[totebox-orchestration|Totebox Orchestration]] begins. The session protocol mirrors the customer experience: the contributor's entry point in the workspace and the customer's entry point through [[os-console|`os-console`]] perform the same function.
 
 This article describes how a session is opened, what it can and cannot do, the four permission tiers, and the inbox-and-outbox protocol that coordinates work across archives.
 
@@ -28,7 +28,7 @@ The intended entry point is the `open-archive` console command, planned for invo
 4. Set the `FOUNDRY_ARCHIVE` and `FOUNDRY_MODULE_ID` environment variables
 5. Open an AI session at the archive's root directory
 
-This mirrors the customer experience: a community member or customer opens a [[totebox-archive|Totebox Archive]] through [[console-os|`os-console`]]. The development workflow uses the same entry point, adapted for the workspace.
+This mirrors the customer experience: a community member or customer opens a [[totebox-archive|Totebox Archive]] through [[os-console|`os-console`]]. The development workflow uses the same entry point, adapted for the workspace.
 
 ## Session scope
 
@@ -73,8 +73,6 @@ In the planned next phase, `app-orchestration-command` (CommandCentre) is intend
 
 ## Permission tiers
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** the real `PairingRole` enum (`app-orchestration-command/crates/orchestration-command-core/src/lib.rs`) has exactly **three** roles — `User`, `Admin`, `Interface` — not four. This table invents a fourth by splitting Admin into "System Administrator" + "Package Manager." Same systemic finding as several `how-to/` articles this session. **Flagged, not resolved.**
-
 Four tiers govern what a contributor — and the session they open — can do:
 
 | Tier | Label | Pairing set |
@@ -84,11 +82,16 @@ Four tiers govern what a contributor — and the session they open — can do:
 | P3 | User | Specific archives; no Command pairing; read-only cross-archive |
 | P4 | Interface | Read-only API surface only |
 
+This is the contributor's own permission tier, a distinct concept from the role granted by
+an individual archive-pairing token (see [[pair-a-new-device]]) — a contributor's tier
+governs what they can do across the workspace; a pairing token's role governs what one
+specific archive pairing grants.
+
 Tiers are enforced by pairings, not string comparisons. A P3 contributor's `os-console` is not paired to the Command — the connection does not exist. See [[pairing-as-permission]] for the formal mechanism.
 
 ## Relationship to os-console
 
-[[console-os|`os-console`]] is the customer-facing entry point for opening a [[totebox-archive|Totebox Archive]]. In the development workspace, the `open-archive` command is the equivalent. Both are intended to perform the same function: read the archive manifest, validate the contributor's permission scope, set the session context, and open a working session inside the archive. The development environment uses the same pattern the customer is intended to use.
+[[os-console|`os-console`]] is the customer-facing entry point for opening a [[totebox-archive|Totebox Archive]]. In the development workspace, the `open-archive` command is the equivalent. Both are intended to perform the same function: read the archive manifest, validate the contributor's permission scope, set the session context, and open a working session inside the archive. The development environment uses the same pattern the customer is intended to use.
 
 ## See also
 
