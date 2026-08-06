@@ -1,4 +1,5 @@
 ---
+schema: foundry-doc-v1
 title: "Cryptographic ledgers"
 slug: cryptographic-ledgers
 category: security

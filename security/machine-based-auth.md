@@ -1,4 +1,5 @@
 ---
+schema: foundry-doc-v1
 title: "Machine-based authorization"
 slug: machine-based-auth
 category: security

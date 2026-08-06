@@ -1,4 +1,5 @@
 ---
+schema: foundry-doc-v1
 title: "seL4 capability topology"
 slug: sel4-capability-topology
 category: security

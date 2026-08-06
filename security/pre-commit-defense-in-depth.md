@@ -1,4 +1,5 @@
 ---
+schema: foundry-doc-v1
 title: "Pre-commit defense in depth"
 slug: pre-commit-defense-in-depth
 category: security
@@ -12,7 +13,7 @@ bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
 last_edited: 2026-08-03
 editor: pointsav-engineering
-short_description: "Three independent git hooks run before a commit is recorded: a helper-only gate, a data-path block, a staged-content secret and size scan, and an author-identity check. Every bypass is logged."
+short_description: "Four independent git hooks run before a commit is recorded: a helper-only gate, a data-path block, a staged-content secret and size scan, and an author-identity check. Every bypass is logged."
 paired_with: pre-commit-defense-in-depth.es.md
 ---
 

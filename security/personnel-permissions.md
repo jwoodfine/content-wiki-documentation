@@ -1,4 +1,5 @@
 ---
+schema: foundry-doc-v1
 title: "Personnel and permissions"
 slug: personnel-permissions
 category: security

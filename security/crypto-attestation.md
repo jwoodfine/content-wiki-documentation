@@ -1,4 +1,5 @@
 ---
+schema: foundry-doc-v1
 title: "Cryptographic payload attestation"
 slug: crypto-attestation
 category: security

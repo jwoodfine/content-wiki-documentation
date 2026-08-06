@@ -1,4 +1,5 @@
 ---
+schema: foundry-doc-v1
 title: "Verification surveyor"
 slug: verification-surveyor
 category: security

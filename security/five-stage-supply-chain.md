@@ -1,4 +1,5 @@
 ---
+schema: foundry-doc-v1
 title: "Five-stage supply chain"
 slug: five-stage-supply-chain
 category: security

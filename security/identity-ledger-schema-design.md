@@ -1,4 +1,5 @@
 ---
+schema: foundry-doc-v1
 title: "Identity ledger schema design"
 slug: identity-ledger-schema-design
 category: security

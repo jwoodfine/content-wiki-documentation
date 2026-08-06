@@ -1,4 +1,5 @@
 ---
+schema: foundry-doc-v1
 title: "Diode standard"
 slug: diode-standard
 category: security

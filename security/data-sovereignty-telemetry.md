@@ -1,4 +1,5 @@
 ---
+schema: foundry-doc-v1
 title: "Data sovereignty and zero-state telemetry"
 slug: data-sovereignty-telemetry
 category: security
