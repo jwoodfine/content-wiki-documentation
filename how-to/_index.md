@@ -23,7 +23,7 @@ For the concepts behind each guide, start in [[architecture]] or [[patterns-inde
 
 The foundation: authenticate your device, install the toolchain, and open your first session.
 
-- [[pair-a-new-device|Pair a new device]] — enroll a machine using machine-based authorization; no username or password required
+- [[pair-a-new-device|Pair a new device]] — register a device with the pairing server and get it approved onto the network (now part of [Machine Authorization](/category/machine-authorization))
 - [[install-toolchain|Install the development toolchain]] — set up Rust and the staging-tier commit helper on a workspace VM
 - [[open-first-totebox-session|Open your first Totebox session]] — navigate to an archive, read your inbox, and start contributing
 - [[explore-the-console|Explore the console]] — tour the three-zone TUI, the status bar, and the F-key slots
@@ -32,10 +32,10 @@ The foundation: authenticate your device, install the toolchain, and open your f
 
 Use the platform's terminal interface and its built-in Cartridges.
 
-- [[navigate-console-tui|Navigate the console TUI]] — status bar fields, F-key switching, universal key bindings
-- [[use-f-key-model|Use the F-key model]] — default slot assignments, Cartridge architecture, Email / SLM / Input Machine
-- [[read-the-command-ledger|Read the command ledger]] — view WORM ledger entries from the F12 LEDGER tab and export to C2SP format
-- [[run-first-slm-query|Run your first SLM query]] — submit an inference prompt in F9 and read the Doorman health dashboard
+- [[navigate-console-tui|Navigate the console TUI]] — the real screen layout and status bar fields
+- [[use-f-key-model|Use the F-key model]] — what F3, F9, and F12 actually do
+- [[read-the-command-ledger|Read the command ledger]] — page entries and fetch a signed checkpoint over service-fs's real HTTP API
+- [[run-first-slm-query|Run your first SLM query]] — the real path to a first inference request
 
 ## Records & storage
 
@@ -45,16 +45,6 @@ Work with the WORM audit ledger and entity data.
 - [[verify-worm-ledger|Verify a WORM ledger entry]] — confirm hash-chain integrity and validate against a signed Sigstore checkpoint
 - [[query-the-datagraph|Query the DataGraph]] — search named entities, navigate relationships, handle Tier A outages
 - [[export-structured-data|Export structured data]] — four export paths: DataGraph, wiki Markdown, GeoJSON, ledger tiles
-
-## Machine authorization
-
-Credential and access control operations.
-
-- [[pair-a-new-device|Pair a new device]] — the core enrollment flow; all four pairing types (ADMIN, INPUT, USER, INTERFACE)
-- [[enroll-ppn-node|Enroll a PPN node]] — register a compute node with the fleet controller and verify heartbeat enrollment
-- [[issue-capability-token|Issue a capability token]] — generate an Ed25519 token for a device or service at a specific scope
-- [[rotate-keys|Rotate keys and tokens]] — replace a keypair and its token with a new one through the three-phase rotation sequence
-- [[authenticate-binary-downloads|Authenticate binary downloads]] — verify and fetch signed binaries from the private distribution endpoint
 
 ## Multi-entity scale
 
@@ -88,3 +78,5 @@ Deploy the platform on your own infrastructure.
 - [[patterns/_index|Patterns]] — named design patterns used across the platform
 - [[totebox-session]] — what a Totebox session is and what it can do
 - [[machine-based-auth]] — how machine-based authorization works
+- [Machine Authorization](/category/machine-authorization) — device pairing, capability tokens, fleet enrollment, and binary-download authentication
+- [Self-Hosting](/category/self-hosting) — deploying platform components on your own infrastructure

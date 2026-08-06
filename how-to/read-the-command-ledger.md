@@ -1,75 +1,81 @@
 ---
 schema: foundry-doc-v1
-title: "How to read the command ledger"
+title: "Read the command ledger"
 slug: read-the-command-ledger
-short_description: "Reads the append-only command ledger in the F12 Input Machine — interpreting entry types, verifying an entry against its checkpoint hash, and exporting entries as C2SP tlog-tiles."
+short_description: "Reads the append-only WORM ledger over service-fs's real HTTP API — paging entries with a cursor and fetching a signed checkpoint — since no ledger-browsing UI exists in the console."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-06-14
+audience: "Engineers (hands on keyboard); customer operators"
+last_edited: 2026-08-06
 editor: pointsav-engineering
 paired_with: read-the-command-ledger.es.md
+research_trail:
+  sources: [pointsav-monorepo service-fs/src/http.rs (GET /v1/entries, GET /v1/checkpoint routes), service-fs/src/ledger.rs (Checkpoint struct, signing)]
+  verification_method: "independently source-verified against pointsav-monorepo on 2026-08-06 by reading the Rust source directly, with file:line citations recorded per claim; this guide replaces its own prior premise entirely — there is no F12 LEDGER tab, no in-console browsing UI of any kind, and service-fs has no CLI, so the real read path is service-fs's HTTP API directly"
 ---
-
-**Correction (2026-08-02, verified against canonical `origin/main`):** the F12 LEDGER tab UI described below doesn't exist. `app-console-input/src/cartridge.rs` has no `LEDGER` tab, Page Up/Down navigation, `/` search, or `e`-export key — F12 only shows an inline ledger height/root indicator during ingest. `read_since` is also not CLI-callable from within the console — `service-fs` has no CLI parsing at all (pure env-var-configured HTTP daemon). **Flagged, not resolved.**
-
-The Command Ledger is the append-only audit record of everything a Totebox operator session has produced — commands executed, records verified, messages sent, and session boundaries. Reading the ledger is how you understand the history of a session, audit what changed during a window, and verify that a record was written in the sequence you expected.
-
-For the Command Ledger's place in the session architecture, see [[console-os]]. For how the underlying storage layer works, see [[service-fs-architecture]].
 
 ## Prerequisites
 
-- An active Totebox session (see [[open-first-totebox-session]])
-- F12 Input Machine available (see [[app-console-input]])
+- Network access to your `service-fs` instance
+- Your module identifier for the required `X-Foundry-Module-ID` header
 
-## Read the ledger in the Input Machine (F12)
+## Purpose
 
-The Input Machine at F12 surfaces ledger activity alongside the verification queue.
+Read ledger history and fetch a verifiable checkpoint over `service-fs`'s real HTTP API — a couple of minutes. There is no ledger-browsing screen anywhere in `os-console`; F12 only shows an inline height/root indicator while a submission is in progress, not a history you can page through.
 
-1. Press **F12** to open the Input Machine.
-2. Use the tab or arrow keys to navigate to the **Ledger** view (shown in the navigation strip as `LEDGER`).
-3. The ledger displays entries in chronological order, newest at the bottom. Each entry shows a timestamp, entry type, and a short summary.
-4. Use **Page Up** / **Page Down** to scroll; **/** to search entries by keyword.
+## Procedure
 
-## Entry types
+1. Fetch entries from a cursor, starting at 0 for the full history:
 
-| Type | Meaning |
-|---|---|
-| `SESSION_OPEN` | A Totebox session was started with the listed identity |
-| `SESSION_CLOSE` | The session was closed; duration recorded |
-| `RECORD_VERIFIED` | A human operator confirmed a record through F12 |
-| `RECORD_REJECTED` | A record was rejected; routed to quarantine |
-| `MESSAGE_SENT` | An outbound message was dispatched |
-| `CHECKPOINT` | A signed proof of ledger state was written (periodic) |
+   ```bash
+   curl -s -H "X-Foundry-Module-ID: <your-module-id>" \
+     "http://<service-fs-host>/v1/entries?since=0"
+   ```
 
-## Verify a specific entry
+   The header is required — a missing `X-Foundry-Module-ID` returns a 400, and a mismatched one returns a 403. Each entry in the response carries a `cursor`, a `payload_id`, and the `payload` itself.
 
-To confirm that a record is genuinely in the ledger (and not altered after the fact):
+2. Page forward using the response's own `next_cursor` field:
 
-1. Note the entry's position (row index) and its displayed hash suffix.
-2. Export the corresponding tile using the `read_since` operation on the CLI or the service-fs API.
-3. Compute the SHA-256 hash of the tile and compare it to the checkpoint hash for that position.
+   ```bash
+   curl -s -H "X-Foundry-Module-ID: <your-module-id>" \
+     "http://<service-fs-host>/v1/entries?since=<next_cursor>"
+   ```
 
-A mismatch indicates tampering — the WORM guarantee covers the chain from the first write, not just the visible summary.
+   Repeat until the returned entry list is empty — that's the end of the ledger as of your request.
 
-For the verification procedure in detail, see [[verify-worm-ledger]].
+3. Fetch the current checkpoint to anchor what you just read:
 
-## Export ledger entries
+   ```bash
+   curl -s -H "X-Foundry-Module-ID: <your-module-id>" \
+     "http://<service-fs-host>/v1/checkpoint"
+   ```
 
-In the Input Machine's Ledger view, press **e** to export a date range as a local text file. The file format is plain-text C2SP tlog-tiles — readable without any PointSav tooling.
+   The response carries `tree_size` (the ledger's height — total entry count), `root_hash` (a hex-encoded SHA-256 tip hash), `algorithm` (`"sha256"`), a `timestamp`, and a `signature`.
 
-## Key takeaways
+   > **Note:** `signature` is only present if the `service-fs` instance was started with a signing key configured. An unsigned deployment returns `signature: null` — that's a real, valid configuration state, not a broken response.
 
-- The Command Ledger is append-only; no entry can be modified or deleted
-- The Input Machine (F12) surfaces ledger activity alongside the verification queue — they are two views of the same audit trail
-- Checkpoint hashes enable third-party verification without a live service
-- Exporting tiles produces standard C2SP tlog-tiles format; any SHA-256 implementation can verify the chain
+## Expected outcome
+
+The full set of ledger entries from your starting cursor onward, plus a checkpoint giving you the ledger's current height and root hash to check them against.
+
+## Verification
+
+Confirm the number of entries you paged through is consistent with the checkpoint's `tree_size` at the time you fetched it — fetching entries and the checkpoint aren't atomic against each other, so a small gap from activity between the two calls is expected, not an error. For a full step-by-step tamper-verification procedure using the checkpoint's hash and signature, see [[verify-worm-ledger]] — this guide covers reading the ledger, not proving it hasn't been altered.
+
+## Rollback
+
+Reading is non-destructive — there's nothing to undo. Re-running any of the calls above is always safe.
+
+## Next steps
+
+- [[verify-worm-ledger]] — verify a checkpoint's hash and signature against the entries it covers
+- [[run-first-slm-query]] — a separate real HTTP path, for inference rather than ledger reads
 
 ## See also
 
-- [[console-os]] — the Command Ledger's role in the session architecture
-- [[service-fs-architecture]] — the WORM storage layer that persists ledger entries
+- [[service-fs]] — the WORM storage layer these endpoints belong to
 - [[worm-ledger-architecture]] — what the WORM guarantee covers and what it does not
-- [[verify-worm-ledger]] — step-by-step ledger verification procedure
-- [[app-console-input]] — the Input Machine and its ledger view
+- [[app-console-input]] — the F12 Input Machine that writes the entries you're reading here

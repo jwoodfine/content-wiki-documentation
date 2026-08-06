@@ -25,7 +25,7 @@ Los manuales operativos internos para el despliegue de flota Woodfine no se incl
 
 Estas guías cubren los primeros pasos para un desarrollador nuevo en la plataforma: configurar el conjunto de herramientas, autenticar un dispositivo y abrir una sesión de trabajo.
 
-- [[pair-a-new-device]] — registra un nuevo dispositivo y asígnale un nivel de emparejamiento (INPUT, USER o INTERFACE)
+- [[pair-a-new-device]] — registra un nuevo dispositivo con el servidor de emparejamiento y logra que se apruebe en la red
 - [[install-toolchain]] — instala el compilador de Rust y el asistente de confirmación del nivel de preparación en una VM del espacio de trabajo
 - [[open-first-totebox-session]] — abre una sesión de trabajo en un Archivo Totebox y navega por el ciclo de vida de la sesión
 - [[explore-the-console]] — recorre el diseño de tres zonas de la TUI, la barra de estado y las ranuras de teclas de función por primera vez
@@ -34,10 +34,10 @@ Estas guías cubren los primeros pasos para un desarrollador nuevo en la platafo
 
 Estas guías cubren la interfaz de terminal de la plataforma y sus ranuras de Cartucho integradas.
 
-- [[navigate-console-tui]] — definiciones de campos de la barra de estado, cambio de tecla de función, atajos de teclado universales
-- [[use-f-key-model]] — asignaciones de ranuras predeterminadas, modelo de compilación de Cartucho, Email / SLM / Máquina de Entrada
-- [[read-the-command-ledger]] — ver entradas del libro mayor WORM desde la pestaña LEDGER de F12, comprender tipos de entrada, exportar a formato C2SP
-- [[run-first-slm-query]] — enviar un prompt de inferencia en F9 y leer el panel de salud del Doorman
+- [[navigate-console-tui]] — el diseño real de pantalla y los campos de la barra de estado, y cómo cambiar de ranura sin perder estado
+- [[use-f-key-model]] — qué hacen realmente F3, F9 y F12, corrigiendo dos comportamientos inventados
+- [[read-the-command-ledger]] — pagine entradas del libro mayor y obtenga un punto de control firmado a través de la API HTTP real de service-fs
+- [[run-first-slm-query]] — la ruta real hacia una primera solicitud de inferencia, ya que F9 no tiene ninguna interfaz de consulta
 
 ## Registros y almacenamiento
 
@@ -50,13 +50,16 @@ Estas guías cubren el libro mayor de auditoría WORM y las operaciones con dato
 
 ## Autorización de máquinas
 
-Estas guías cubren el emparejamiento criptográfico de dispositivos que controla el acceso a la plataforma.
+Estas guías cubren los mecanismos de credenciales y admisión que determinan quién y qué
+puede actuar sobre la plataforma — emparejamiento de dispositivos, tokens de capacidad
+servicio a servicio, inscripción de nodos de flota y descargas de binarios firmadas. Son
+mecanismos separados, no un solo sistema con nombres diferentes.
 
-- [[pair-a-new-device]] — el flujo de registro principal; los cuatro tipos de emparejamiento (ADMIN, INPUT, USER, INTERFACE)
-- [[enroll-ppn-node]] — registrar un nodo de cómputo PPN con el controlador de flota y verificar el primer latido
-- [[issue-capability-token]] — generar un token Ed25519 con alcance para un dispositivo o servicio
-- [[rotate-keys]] — reemplazar un par de claves y su token mediante la secuencia de rotación en tres fases
-- [[authenticate-binary-downloads]] — verificar y descargar binarios firmados desde el punto de distribución privado
+- [[pair-a-new-device]] — registra un dispositivo con el servidor de emparejamiento y logra que se apruebe en la malla WireGuard
+- [[issue-capability-token]] — genera un token de capacidad firmado con Ed25519 y regístralo con un servicio par
+- [[rotate-keys]] — reemplaza una credencial dentro de los límites reales de expiración de 24 horas del sistema; no existe mecanismo de revocación
+- [[enroll-ppn-node]] — inicia el agente de latido por nodo y confírmalo en el controlador de la flota
+- [[authenticate-binary-downloads]] — confirma un pedido y sigue la ruta de descarga firmada de una versión
 
 Para el modelo de autorización que sustenta todas estas operaciones, consulta [[machine-based-auth]] y [[pairing-as-permission]].
 

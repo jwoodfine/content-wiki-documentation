@@ -1,74 +1,73 @@
 ---
 schema: foundry-doc-v1
-title: "How to run your first SLM query"
+title: "Run your first SLM query"
 slug: run-first-slm-query
-short_description: "Opens the F9 SLM cartridge, confirms a live Doorman circuit, and submits a first prompt to the on-premises language model without sending data off the host."
+short_description: "Submits a first inference request to Doorman directly over HTTP — the real path, since the console's F9 slot is a monitoring dashboard with no query interface at all."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-06-14
+audience: "Engineers (hands on keyboard); customer operators"
+last_edited: 2026-08-06
 editor: pointsav-engineering
 paired_with: run-first-slm-query.es.md
+research_trail:
+  sources: [pointsav-monorepo service-slm/scripts/slm-chat.sh (the real working curl-based query tool), service-slm/crates/slm-doorman-server (the /v1/chat/completions route), service-slm/crates/slm-doorman/src/router.rs (tier selection and fallback logic)]
+  verification_method: "independently source-verified against pointsav-monorepo on 2026-08-06 by reading the Rust source and the real slm-chat.sh script directly, with file:line citations recorded per claim; this guide replaces its own prior premise entirely — F9 in os-console has no prompt-submission UI of any kind (confirmed by reading its full event-handling code), so the real path is a direct HTTP call to Doorman, not a console feature; also corrected a real tier-fallback misconception (Tier A, not Tier B, is the practical default/minimum) and a real streaming claim from an internal doc that doesn't match the reference script's actual blocking behavior"
 ---
-
-The SLM Cartridge at F9 routes inference requests through Doorman to the on-premises language model. No prompt data is transmitted to an external provider — the model runs locally. This guide covers opening the SLM slot, checking that Doorman has a live circuit, and submitting your first prompt.
-
-For the inference architecture, see [[app-console-slm]] and [[slm-stack-architecture]]. For setting up the inference stack on a new deployment, see [[run-local-slm-inference]].
 
 ## Prerequisites
 
-- An active Totebox session with F9 available
-- The local SLM service running on the host instance
-- Doorman running and reachable on the local port
+- The local SLM service and Doorman running and reachable (see [[run-local-slm-inference]])
+- `curl`, or the reference script at `service-slm/scripts/slm-chat.sh` if you have it available
+- Your module identifier for the `X-Foundry-Module-ID` header
 
-## Steps
+## Purpose
 
-### 1. Open the SLM Cartridge
+Submit a first inference request and get a response back — under a minute once Doorman is up. This is not a console task: F9 in `os-console` is a read-only health dashboard with no way to type or submit a query, so the real path is a direct HTTP call to Doorman.
 
-Press **F9**. The Doorman health dashboard fills the slot area. It shows three rows:
+## Procedure
 
-| Row | What it shows |
-|---|---|
-| Tier A | DataGraph (service-content) availability |
-| Tier B | SLM model availability |
-| Tier C | Local fallback availability |
+1. Confirm Doorman is reachable. The default local address is `http://127.0.0.1:9080`, though your deployment may differ.
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** this tier mapping is wrong. Real Tier A/B/C (`app-console-slm/src/health.rs`, the Doorman systemd unit) are local on-prem model / Yo-Yo GPU burst / external API fallback — DataGraph availability is a separate field, not a tier. Same systemic defect found across several `how-to/` articles this sweep. **Flagged, not resolved.**
+2. Send a request to the chat-completions endpoint:
 
-A green indicator means the tier is available; a red indicator or `OPEN` means the circuit breaker has tripped and that tier is temporarily bypassed.
+   ```bash
+   curl -s -X POST \
+     -H "Content-Type: application/json" \
+     -H "X-Foundry-Module-ID: <your-module-id>" \
+     -d '{"messages": [{"role": "user", "content": "Say hello in one sentence."}]}' \
+     http://127.0.0.1:9080/v1/chat/completions
+   ```
 
-### 2. Confirm inference is available
+   Headers are forgiving in development: Doorman generates safe defaults when they're absent, specifically so ad-hoc curl probes like this one work without extra setup. Still, set `X-Foundry-Module-ID` explicitly once you're doing real work — it's how the platform attributes usage to your module.
 
-For inference to work, at minimum Tier B must show a live circuit. If Tier B shows `OPEN`, press **R** to refresh. If it remains open, the local SLM service may not be running — see [[run-local-slm-inference]] for startup steps.
+3. Read the response. It arrives as a single JSON payload, not a stream — the whole reply lands in one `content` field once the model finishes, not token by token.
 
-### 3. Submit a prompt
+   > **Note:** a reference REPL script exists at `service-slm/scripts/slm-chat.sh` that wraps this same call in a loop, so you can keep a conversation going without retyping headers each time. Despite what an older internal note claims, that script does not stream either — it's the same one blocking call per turn, just looped.
 
-Navigate to the prompt input line (shown at the bottom of the slot area). Type your prompt and press **Enter**. The response streams into the slot area above the input line.
+## Expected outcome
 
-Prompts are processed by the local model only. Context is drawn from the Totebox session and the connected DataGraph entities, not from external sources.
+A JSON response containing the model's reply in its `content` field, returned as one complete payload.
 
-### 4. Read the response
+## Verification
 
-The response streams token by token. When complete, the cursor returns to the input line. To start a new prompt, type and press Enter again. Prior responses remain visible by scrolling up.
+Confirm the response's `content` field holds a real, on-topic reply rather than an error body. An HTTP error status or a JSON `error` field means Doorman couldn't complete the request — check that the local SLM service is actually running before retrying.
 
-Press **Esc** to clear the current prompt without submitting.
+> **Note:** you don't need any specific inference tier "up" for this to work. Doorman defaults ordinary requests to the local tier; a higher tier only comes into play for requests explicitly marked high-complexity, and even then it falls back to the local tier automatically on failure rather than failing your request.
 
-## Check inference tier in the status bar
+## Rollback
 
-The status bar shows the current SLM tier as a single letter (`A`, `B`, or `C`) next to the active slot label. This updates in real time as circuit states change. If the tier drops during a long-running prompt, the response may be truncated — resubmit when the circuit recovers.
+Nothing to roll back — a query is read-only against your own conversation history. Sending another request doesn't require undoing the last one.
 
-## Key takeaways
+## Next steps
 
-- Doorman is the gateway — the Cartridge never connects to the model directly
-- Tier B minimum is needed for inference; Tier A is needed for DataGraph entity context
-- Press R in F9 to refresh circuit state without switching slots
-- All inference is on-premises; no data leaves the host machine
+- [[read-the-command-ledger]] — read platform activity history via its own real HTTP API
+- [[use-f-key-model]] — what F9 actually shows, now that you know it isn't where queries go
 
 ## See also
 
-- [[app-console-slm]] — the SLM Cartridge and Doorman health dashboard
+- [[run-local-slm-inference]] — start the local SLM service and Doorman on a new deployment
+- [[doorman-protocol]] — Doorman's routing and circuit-breaker model
 - [[slm-stack-architecture]] — the full inference stack and tier definitions
-- [[doorman-protocol]] — Doorman's circuit-breaker model and routing rules
-- [[run-local-slm-inference]] — start the SLM service and Doorman on a new instance
-- [[navigate-console-tui]] — console navigation basics

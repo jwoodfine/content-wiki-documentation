@@ -1,79 +1,66 @@
 ---
 schema: foundry-doc-v1
-title: "Cómo navegar la TUI de la consola"
+title: "Navegar la TUI de la consola"
 slug: navigate-console-tui
-short_description: "Navega la interfaz de terminal de os-console con el teclado — cambiando entre ranuras de teclas F, leyendo la barra de estado de identidad y nivel SLM, y siguiendo qué ranura está activa."
+short_description: "Navega os-console por teclado — la barra de teclas de función arriba, los campos reales de la barra de estado abajo, y el cambio de ranuras sin perder estado."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-06-14
-editor: pointsav-engineering
+audience: "Ingenieros (con acceso directo al terminal); operadores de cliente"
 language: es
 language_protocol: TRANSLATE-ES
+last_edited: 2026-08-06
+editor: pointsav-engineering
 paired_with: navigate-console-tui.md
 ---
-
-`os-console` es una aplicación de terminal de pantalla completa que organiza las funciones de la plataforma en ranuras numeradas por tecla de función. Navegar la consola significa cambiar entre ranuras, leer la barra de estado y entender qué muestra la ranura activa. No se requiere ratón — el modelo de teclado es completo.
-
-Para la arquitectura detrás de este modelo, véase [[app-console-keys]] y [[os-console-platform]].
 
 ## Requisitos previos
 
 - Un dispositivo emparejado (véase [[pair-a-new-device]])
-- `os-console` instalado y abierto
+- `os-console` instalado y lanzado
 - Una sesión activa (véase [[open-first-totebox-session]])
 
-## Disposición
+## Propósito
 
-La consola ocupa toda la ventana del terminal con tres regiones permanentes:
+Aprenda el diseño real de pantalla de la consola y los campos de la barra de estado lo suficientemente bien como para navegar con confianza — unos minutos, y se mantiene preciso para cada cartucho que use después.
 
-| Región | Ubicación | Contenido |
-|---|---|---|
-| Barra de estado | Parte superior | Etiqueta de identidad, estado de autorización, nombre de ranura activa, nivel SLM, duración de sesión |
-| Área de ranura | Cuerpo principal | Salida de la ranura actualmente activa |
-| Franja de navegación | Parte inferior | Etiquetas de tecla de función con las ranuras cargadas |
+## Procedimiento
 
-La franja de navegación muestra los nombres de ranura vinculados a cada tecla de función. Las ranuras no cargadas aparecen atenuadas.
+1. Lance `os-console` y observe las tres regiones fijas, de arriba a abajo: una fila de barra de teclas de función, el contenido del cartucho activo llenando el resto de la pantalla, y una fila de barra de estado en la parte inferior.
 
-## Cambiar ranuras con teclas de función
+2. Lea la barra de teclas de función. Muestra una etiqueta para cada ranura de tecla de función, con la activa resaltada y las ranuras no cargadas atenuadas.
 
-Presione cualquier tecla de función etiquetada para activar esa ranura. El área de ranura se actualiza de inmediato. El nombre de ranura activa en la barra de estado confirma cuál está activa.
+3. Lea la barra de estado. De izquierda a derecha: su identidad como `usuario@tenant`; el estado del enlace de Autorización Basada en Máquina (`MBA LINK ACTIVE`, `MBA LINK INACTIVE: <razón>`, o `MBA LINK PENDING`); la etiqueta completa de la ranura activa (p. ej. `F9: SLM`, no un número aislado); y el tiempo transcurrido de la sesión. Un distintivo `[N pendientes]` aparece solo cuando tiene solicitudes de emparejamiento pendientes.
 
-Las ranuras cargadas conservan su estado al cambiar — una bandeja de entrada desplazada a un mensaje específico permanece en esa posición al regresar a F3.
+   > **Nota:** no hay ningún indicador de nivel SLM en la barra de estado. El nivel de inferencia y el estado del circuito se muestran dentro del propio panel F9, no en la barra de estado persistente.
 
-## Leer la barra de estado
+4. Presione cualquier tecla de función para cambiar a esa ranura. El área de contenido se actualiza de inmediato, y tanto el resaltado de la barra de teclas de función como el campo de ranura activa de la barra de estado confirman cuál está en vivo.
 
-La barra de estado se actualiza de forma continua. De izquierda a derecha:
+5. Cambie de una ranura y regrese. Los cartuchos mantienen su propio estado — un documento que estaba editando o un panel que estaba viendo queda exactamente como lo dejó.
 
-- **Identidad** — la identidad del dispositivo emparejado y su nivel de permiso
-- **Estado de autenticación** — `LINKED` cuando la autorización basada en máquina está activa; `LINK INACTIVE` cuando no está disponible
-- **Ranura activa** — el nombre del cartucho mostrado actualmente (p. ej., `INPUT`, `EMAIL`, `SLM`)
-- **Nivel SLM** — el estado del circuito de Doorman: `A` (DataGraph activo), `B` (solo SLM) o `C` (respaldo local)
-- **Duración de sesión** — tiempo transcurrido desde que se abrió la sesión
+6. Consulte la línea de sugerencias propia de cada cartucho para sus atajos de teclado específicos. No son universales — el panel de F9 responde a **R** (actualizar) y **?** (ayuda), por ejemplo, pero los atajos de un cartucho distinto son suyos propios y se muestran en su propia interfaz, no en una tabla de referencia compartida.
 
-## Combinaciones de teclas que funcionan en todas las ranuras
+## Resultado esperado
 
-| Tecla | Acción |
-|---|---|
-| F1–F12 | Cambiar a esa ranura |
-| ? | Mostrar ayuda contextual para la ranura activa |
-| q o Esc | Salir de la ranura activa al inicio (depende de la ranura) |
-| Ctrl-C | Salir de `os-console` |
+Puede leer correctamente cada campo de la barra de estado, cambiar entre ranuras de teclas de función cargadas sin perder el estado de un cartucho, y sabe que debe consultar la línea de sugerencias propia de cada cartucho para los atajos específicos de este.
 
-Las combinaciones específicas de cada ranura se muestran en la franja de navegación de la ranura activa.
+## Verificación
 
-## Puntos clave
+Cambie a al menos dos ranuras cargadas distintas y confirme que tanto la etiqueta resaltada de la barra de teclas de función como el campo de ranura activa de la barra de estado se actualizan para coincidir cada vez.
 
-- La navegación es completamente por teclado — el número de tecla de función = número de ranura
-- Las ranuras conservan su estado; cambiar y regresar no destruye datos
-- La barra de estado es la fuente de verdad sobre el estado de autorización y disponibilidad de SLM
-- F12 es la Máquina de Entrada; siempre está presente y no puede reasignarse
+## Reversión
+
+La navegación no tiene estado que revertir — cambiar de ranura o salir de la consola no cambia nada persistente por sí mismo. Si la propia acción de un cartucho sí escribe algo (enviar una entrada en F12, por ejemplo), la guía de ese cartucho cubre su propia reversión.
+
+## Próximos pasos
+
+- [[use-f-key-model]] — qué hace realmente cada cartucho predeterminado, corregido contra la fuente real
+- [[explore-the-console]] — un primer recorrido guiado que combina el diseño, F9 y F12
 
 ## Véase también
 
-- [[app-console-keys]] — el chasis y la interfaz Cartridge que implementan todas las ranuras
-- [[os-console-platform]] — la taxonomía completa de teclas de función y qué cartucho ocupa cada ranura
-- [[use-f-key-model]] — cómo trabajar con el modelo de cartuchos de tecla de función
-- [[machine-based-auth]] — qué significan los estados de autenticación `LINKED`/`LINK INACTIVE`
-- [[pair-a-new-device]] — registrar un dispositivo antes de abrir la consola
+- [[app-console-keys]] — el chasis, el trait Cartridge y la implementación de la barra de estado
+- [[machine-based-auth]] — qué significan los estados del enlace MBA
+- [[pair-a-new-device]] — registre un dispositivo antes de abrir la consola

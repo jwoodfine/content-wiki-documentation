@@ -25,7 +25,7 @@ Internal operator runbooks for the Woodfine fleet deployment are not listed here
 
 These guides cover the first steps for a developer new to the platform — setting up the toolchain, authenticating a device, and opening a working session.
 
-- [[pair-a-new-device]] — register a new device and assign it a pairing tier (INPUT, USER, or INTERFACE)
+- [[pair-a-new-device]] — register a new device with the pairing server and get it approved onto the network
 - [[install-toolchain]] — install the Rust compiler and the workspace commit helper on a workspace VM
 - [[open-first-totebox-session]] — open a scoped working session in a Totebox Archive and navigate the session lifecycle
 - [[explore-the-console]] — tour the three-zone TUI, read the status bar, and navigate F-key slots for the first time
@@ -34,10 +34,10 @@ These guides cover the first steps for a developer new to the platform — setti
 
 These guides cover the platform's terminal interface and its F-key Cartridge slots.
 
-- [[navigate-console-tui]] — status bar field definitions, F-key switching, and universal key bindings
-- [[use-f-key-model]] — default slot assignments, the Cartridge compilation model, Email / SLM / Input Machine slots
-- [[read-the-command-ledger]] — view WORM ledger entries from the F12 LEDGER tab, understand entry types, export to C2SP format
-- [[run-first-slm-query]] — submit an inference prompt in F9 and read the Doorman health dashboard
+- [[navigate-console-tui]] — the real screen layout and status bar fields, and switching slots without losing state
+- [[use-f-key-model]] — what F3, F9, and F12 actually do, correcting two invented behaviors
+- [[read-the-command-ledger]] — page ledger entries and fetch a signed checkpoint over service-fs's real HTTP API
+- [[run-first-slm-query]] — the real path to a first inference request, since F9 has no query interface at all
 
 ## Records & storage
 
@@ -50,13 +50,16 @@ These guides cover the WORM audit ledger and entity data operations.
 
 ## Machine authorization
 
-These guides cover the cryptographic device pairing that controls platform access.
+These guides cover the credential and admission mechanisms that gate who and what can act
+on the platform — device pairing, service-to-service capability tokens, fleet node
+enrollment, and signed binary downloads. These are separate mechanisms, not one system
+under different names.
 
-- [[pair-a-new-device]] — the core pairing workflow; all four pairing types (ADMIN, INPUT, USER, INTERFACE)
-- [[enroll-ppn-node]] — register a PPN compute node with the fleet controller and verify the first heartbeat
-- [[issue-capability-token]] — generate a scoped Ed25519 capability token for a device or service
-- [[rotate-keys]] — replace a keypair and its token using the three-phase transition sequence
-- [[authenticate-binary-downloads]] — verify Ed25519-signed binary releases from the private distribution endpoint
+- [[pair-a-new-device]] — register a device with the pairing server and get it approved onto the WireGuard mesh
+- [[issue-capability-token]] — mint an Ed25519-signed capability token and register it with a peer service
+- [[rotate-keys]] — replace a credential within the system's real 24-hour expiry limits; there is no revocation mechanism
+- [[enroll-ppn-node]] — start the per-node heartbeat agent and confirm it in the fleet controller
+- [[authenticate-binary-downloads]] — confirm an order and follow the signed download path for a release
 
 For the authorization model that underpins all these operations, see [[machine-based-auth]] and [[pairing-as-permission]].
 

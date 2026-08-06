@@ -1,20 +1,21 @@
 ---
 schema: foundry-doc-v1
-title: "How to navigate the console TUI"
+title: "Navigate the console TUI"
 slug: navigate-console-tui
-short_description: "Navigates the os-console terminal interface by keyboard — switching between F-key slots, reading the status bar for identity and SLM tier, and tracking which slot is active."
+short_description: "Navigates os-console by keyboard — the F-key strip at the top, the status bar's real fields at the bottom, and switching slots without losing state."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-06-14
+audience: "Engineers (hands on keyboard); customer operators"
+last_edited: 2026-08-06
 editor: pointsav-engineering
 paired_with: navigate-console-tui.es.md
+research_trail:
+  sources: [pointsav-monorepo app-console-keys (chassis layout, status bar widget, F-key strip widget)]
+  verification_method: "independently source-verified against pointsav-monorepo on 2026-08-06 by reading the Rust source directly, with file:line citations recorded per claim; corrected the guide's own prior layout error (status bar and F-key strip positions were reversed) and its status bar field claims, both against the actual chassis render function"
 ---
-
-`os-console` is a full-screen terminal application that organises platform functions into numbered F-key slots. Navigating the console means switching between slots, reading the status bar, and understanding what the active slot is showing you. No mouse is required — the keyboard model is complete.
-
-For the architecture behind this model, see [[app-console-keys]] and [[os-console-platform]].
 
 ## Prerequisites
 
@@ -22,56 +23,45 @@ For the architecture behind this model, see [[app-console-keys]] and [[os-consol
 - `os-console` installed and launched
 - An active session (see [[open-first-totebox-session]])
 
-## Layout
+## Purpose
 
-The console occupies the full terminal window with three persistent regions:
+Learn the console's real screen layout and status bar fields well enough to navigate confidently — a few minutes, and it stays accurate for every cartridge you'll use later.
 
-| Region | Location | Contents |
-|---|---|---|
-| Status bar | Top of screen | Identity label, authorization state, active slot name, SLM tier, session duration |
-| Slot area | Main body | Output from whichever slot is currently active |
-| Navigation strip | Bottom of screen | F-key labels showing which slots are loaded |
+## Procedure
 
-The navigation strip displays the slot names bound to each F-key. Unloaded slots appear dimmed.
+1. Launch `os-console` and observe the three fixed regions, top to bottom: a one-row F-key strip, the active cartridge's content filling the rest of the screen, and a one-row status bar at the very bottom.
 
-## Switching slots with F-keys
+2. Read the F-key strip. It shows a label for every F-key slot, with the currently active one highlighted and unloaded slots dimmed.
 
-Press any labelled F-key to activate that slot. The slot area updates immediately. The active slot name in the status bar confirms which slot is live.
+3. Read the status bar. Left to right: your identity as `username@tenant`; the Machine-Based Authorization link state (`MBA LINK ACTIVE`, `MBA LINK INACTIVE: <reason>`, or `MBA LINK PENDING`); the active slot's full label (e.g. `F9: SLM`, not a bare number); and elapsed session time. A `[N pending]` badge appears only when you have pending pairing requests.
 
-Loaded slots hold their state when you switch away — an email inbox you scrolled to a particular message stays at that position when you return to F3.
+   > **Note:** there is no SLM-tier indicator in the status bar. Inference tier and circuit state are shown inside the F9 dashboard itself, not in the persistent status bar.
 
-## Reading the status bar
+4. Press any F-key to switch to that slot. The content area updates immediately, and the F-key strip's highlight and the status bar's active-slot field both confirm which slot is live.
 
-The status bar updates continuously. Left to right:
+5. Switch away from a slot and back. Cartridges hold their own state — a document you were editing or a dashboard you were viewing is exactly as you left it.
 
-- **Identity** — the paired device identity and its permission tier
-- **Auth state** — `LINKED` when machine-based authorization is active; `LINK INACTIVE` when unavailable
-- **Active slot** — the name of the currently displayed cartridge (e.g., `INPUT`, `EMAIL`, `SLM`)
-- **SLM tier** — the Doorman circuit state: `A` (DataGraph live), `B` (SLM only), or `C` (local fallback) (Correction, 2026-08-02, verified against canonical `origin/main`: the real status bar, `app-console-keys/src/widgets/status_bar.rs`, has no SLM-tier field at all — it shows `username@tenant │ MBA LINK state │ active-slot │ elapsed time [pending pairs]`. Real Tier A/B/C semantics (confirmed in `app-console-slm/src/health.rs` and the Doorman systemd unit description) are Tier A = local on-prem model, Tier B = Yo-Yo GPU burst, Tier C = external API fallback — DataGraph availability (`entity_count`) is a separate, unrelated field, not a tier. Same systemic defect found across several `how-to/` articles this sweep. Flagged, not resolved.)
-- **Session duration** — elapsed time since the session was opened
+6. Check each cartridge's own hint line for its specific key bindings. They aren't universal — F9's dashboard responds to **R** (refresh) and **?** (help), for example, but a different cartridge's bindings are its own and shown in its own interface, not in a shared reference table.
 
-## Key bindings that work in every slot
+## Expected outcome
 
-| Key | Action |
-|---|---|
-| F1–F12 | Switch to that slot |
-| ? | Show contextual help for the active slot |
-| q or Esc | Exit the active slot back to the home view (slot-dependent) |
-| Ctrl-C | Quit `os-console` |
+You can read every field in the status bar correctly, switch between loaded F-key slots without losing a cartridge's state, and know to check each cartridge's own hint line for bindings specific to it.
 
-Slot-specific bindings are shown in the navigation strip of the active slot.
+## Verification
 
-## Key takeaways
+Switch to at least two different loaded slots and confirm both the F-key strip's highlighted label and the status bar's active-slot field update to match each time.
 
-- Navigation is entirely keyboard-driven — F-key number = slot number
-- Slots hold their state; switching away and back is non-destructive
-- The status bar is the ground truth for authorization state and SLM availability
-- F12 is the Input Machine; it is always present and cannot be reassigned
+## Rollback
+
+Navigation has no state to roll back — switching slots or exiting the console changes nothing persistent by itself. If a cartridge's own action does write something (submitting input at F12, for example), that cartridge's own guide covers its own rollback.
+
+## Next steps
+
+- [[use-f-key-model]] — what each default cartridge actually does, corrected against real source
+- [[explore-the-console]] — a guided first tour combining layout, F9, and F12
 
 ## See also
 
-- [[app-console-keys]] — the chassis and Cartridge trait that all slots implement
-- [[os-console-platform]] — the full F-key taxonomy and which cartridge occupies each slot
-- [[use-f-key-model]] — how to work with the F-key cartridge model
-- [[machine-based-auth]] — what the `LINKED`/`LINK INACTIVE` auth state means
+- [[app-console-keys]] — the chassis, the Cartridge trait, and the status bar's implementation
+- [[machine-based-auth]] — what the MBA link states mean
 - [[pair-a-new-device]] — register a device before opening the console

@@ -1,75 +1,80 @@
 ---
 schema: foundry-doc-v1
-title: "Cómo leer el libro mayor de comandos"
+title: "Leer el libro mayor de comandos"
 slug: read-the-command-ledger
-short_description: "Lee el libro mayor de comandos de solo anexión en la Máquina de Entrada F12 — interpretando los tipos de entrada, verificando una entrada contra su hash de punto de control y exportando entradas como tlog-tiles C2SP."
+short_description: "Lee el libro mayor WORM de solo anexado a través de la API HTTP real de service-fs — paginando entradas con un cursor y obteniendo un punto de control firmado — ya que no existe ninguna interfaz de navegación del libro mayor en la consola."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-06-14
-editor: pointsav-engineering
+audience: "Ingenieros (con acceso directo al terminal); operadores de cliente"
 language: es
 language_protocol: TRANSLATE-ES
+last_edited: 2026-08-06
+editor: pointsav-engineering
 paired_with: read-the-command-ledger.md
 ---
 
-El Libro Mayor de Comandos es el registro de auditoría de solo anexar de todo lo que ha producido una sesión de operador de Totebox — comandos ejecutados, registros verificados, mensajes enviados y límites de sesión. Leer el libro mayor es cómo se entiende el historial de una sesión, se audita lo que cambió durante una ventana y se verifica que un registro fue escrito en la secuencia esperada.
-
-Para el papel del Libro Mayor de Comandos en la arquitectura de sesión, véase [[console-os]]. Para cómo funciona la capa de almacenamiento subyacente, véase [[service-fs-architecture]].
-
 ## Requisitos previos
 
-- Una sesión Totebox activa (véase [[open-first-totebox-session]])
-- Máquina de Entrada F12 disponible (véase [[app-console-input]])
+- Acceso de red a su instancia de `service-fs`
+- Su identificador de módulo para la cabecera obligatoria `X-Foundry-Module-ID`
 
-## Leer el libro mayor en la Máquina de Entrada (F12)
+## Propósito
 
-La Máquina de Entrada en F12 muestra la actividad del libro mayor junto a la cola de verificación.
+Lea el historial del libro mayor y obtenga un punto de control verificable a través de la API HTTP real de `service-fs` — un par de minutos. No existe ninguna pantalla de navegación del libro mayor en `os-console`; F12 solo muestra un indicador en línea de altura/raíz mientras un envío está en curso, no un historial que pueda recorrer.
 
-1. Presione **F12** para abrir la Máquina de Entrada.
-2. Use las teclas de tabulador o flecha para navegar a la vista **Libro Mayor** (mostrada en la franja de navegación como `LEDGER`).
-3. El libro mayor muestra entradas en orden cronológico, las más recientes al final. Cada entrada muestra una marca de tiempo, tipo de entrada y un resumen breve.
-4. Use **Página Arriba** / **Página Abajo** para desplazarse; **/** para buscar entradas por palabra clave.
+## Procedimiento
 
-## Tipos de entrada
+1. Obtenga entradas desde un cursor, comenzando en 0 para el historial completo:
 
-| Tipo | Significado |
-|---|---|
-| `SESSION_OPEN` | Se inició una sesión Totebox con la identidad indicada |
-| `SESSION_CLOSE` | La sesión se cerró; duración registrada |
-| `RECORD_VERIFIED` | Un operador humano confirmó un registro a través de F12 |
-| `RECORD_REJECTED` | Un registro fue rechazado; enrutado a cuarentena |
-| `MESSAGE_SENT` | Se despachó un mensaje saliente |
-| `CHECKPOINT` | Se escribió una prueba firmada del estado del libro mayor (periódica) |
+   ```bash
+   curl -s -H "X-Foundry-Module-ID: <su-id-de-modulo>" \
+     "http://<host-de-service-fs>/v1/entries?since=0"
+   ```
 
-## Verificar una entrada específica
+   La cabecera es obligatoria — un `X-Foundry-Module-ID` ausente devuelve un 400, y uno no coincidente devuelve un 403. Cada entrada en la respuesta lleva un `cursor`, un `payload_id` y la propia `payload`.
 
-Para confirmar que un registro está genuinamente en el libro mayor (y no fue alterado después):
+2. Avance usando el propio campo `next_cursor` de la respuesta:
 
-1. Anote la posición de la entrada (índice de fila) y el sufijo de hash mostrado.
-2. Exporte el tile correspondiente usando la operación `read_since` en la CLI o la API de service-fs.
-3. Calcule el hash SHA-256 del tile y compárelo con el hash de punto de control para esa posición.
+   ```bash
+   curl -s -H "X-Foundry-Module-ID: <su-id-de-modulo>" \
+     "http://<host-de-service-fs>/v1/entries?since=<next_cursor>"
+   ```
 
-Una discrepancia indica manipulación — la garantía WORM cubre la cadena desde la primera escritura, no solo el resumen visible.
+   Repita hasta que la lista de entradas devuelta esté vacía — ese es el final del libro mayor al momento de su solicitud.
 
-Para el procedimiento de verificación detallado, véase [[verify-worm-ledger]].
+3. Obtenga el punto de control actual para anclar lo que acaba de leer:
 
-## Exportar entradas del libro mayor
+   ```bash
+   curl -s -H "X-Foundry-Module-ID: <su-id-de-modulo>" \
+     "http://<host-de-service-fs>/v1/checkpoint"
+   ```
 
-En la vista Libro Mayor de la Máquina de Entrada, presione **e** para exportar un rango de fechas como archivo de texto local. El formato del archivo es C2SP tlog-tiles en texto plano — legible sin herramientas de PointSav.
+   La respuesta lleva `tree_size` (la altura del libro mayor — el recuento total de entradas), `root_hash` (un hash SHA-256 de la punta, codificado en hexadecimal), `algorithm` (`"sha256"`), un `timestamp` y una `signature`.
 
-## Puntos clave
+   > **Nota:** `signature` solo está presente si la instancia de `service-fs` se inició con una clave de firma configurada. Un despliegue sin firmar devuelve `signature: null` — ese es un estado de configuración real y válido, no una respuesta rota.
 
-- El Libro Mayor de Comandos es de solo anexar; ninguna entrada puede modificarse ni eliminarse
-- La Máquina de Entrada (F12) muestra la actividad del libro mayor junto a la cola de verificación — son dos vistas del mismo rastro de auditoría
-- Los hashes de punto de control permiten verificación por terceros sin un servicio activo
-- Exportar tiles produce formato C2SP tlog-tiles estándar; cualquier implementación SHA-256 puede verificar la cadena
+## Resultado esperado
+
+El conjunto completo de entradas del libro mayor desde su cursor inicial en adelante, más un punto de control que le da la altura actual del libro mayor y el hash raíz contra el cual verificarlas.
+
+## Verificación
+
+Confirme que el número de entradas que recorrió es coherente con el `tree_size` del punto de control en el momento en que lo obtuvo. Obtener entradas y el punto de control no son atómicos entre sí, así que una pequeña brecha por actividad entre las dos llamadas es esperada, no un error. Para un procedimiento completo paso a paso de verificación contra manipulación usando el hash y la firma del punto de control, véase [[verify-worm-ledger]] — esta guía cubre la lectura del libro mayor, no la demostración de que no ha sido alterado.
+
+## Reversión
+
+La lectura no es destructiva — no hay nada que deshacer. Volver a ejecutar cualquiera de las llamadas anteriores siempre es seguro.
+
+## Próximos pasos
+
+- [[verify-worm-ledger]] — verifique el hash y la firma de un punto de control contra las entradas que cubre
+- [[run-first-slm-query]] — una ruta HTTP real separada, para inferencia en lugar de lecturas del libro mayor
 
 ## Véase también
 
-- [[console-os]] — el papel del Libro Mayor de Comandos en la arquitectura de sesión
-- [[service-fs-architecture]] — la capa de almacenamiento WORM que persiste las entradas del libro mayor
+- [[service-fs]] — la capa de almacenamiento WORM a la que pertenecen estos endpoints
 - [[worm-ledger-architecture]] — qué cubre la garantía WORM y qué no
-- [[verify-worm-ledger]] — procedimiento paso a paso para verificar el libro mayor
-- [[app-console-input]] — la Máquina de Entrada y su vista del libro mayor
+- [[app-console-input]] — la Máquina de Entrada F12 que escribe las entradas que está leyendo aquí

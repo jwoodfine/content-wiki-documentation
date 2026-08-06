@@ -23,7 +23,7 @@ Para los conceptos detrás de cada guía, comienza en [[architecture|Arquitectur
 
 La base: autentica tu dispositivo, instala el conjunto de herramientas y abre tu primera sesión.
 
-- [[pair-a-new-device|Vincular un nuevo dispositivo]] — registra una máquina mediante autorización basada en hardware; sin nombre de usuario ni contraseña
+- [[pair-a-new-device|Vincular un nuevo dispositivo]] — registra un dispositivo con el servidor de emparejamiento y logra que se apruebe en la red (ahora parte de [Autorización de Máquinas](/category/machine-authorization))
 - [[install-toolchain|Instalar el conjunto de herramientas de desarrollo]] — configura Rust y el asistente de confirmación del nivel de preparación en una VM del espacio de trabajo
 - [[open-first-totebox-session|Abrir tu primera sesión Totebox]] — navega a un archivo, lee tu bandeja de entrada y empieza a contribuir
 - [[explore-the-console|Explorar la consola]] — recorre el diseño de tres zonas de la TUI, la barra de estado y las ranuras de teclas de función
@@ -32,10 +32,10 @@ La base: autentica tu dispositivo, instala el conjunto de herramientas y abre tu
 
 Usa la interfaz de terminal de la plataforma y sus Cartuchos integrados.
 
-- [[navigate-console-tui|Navegar la TUI de la consola]] — campos de la barra de estado, cambio de tecla de función, atajos de teclado universales
-- [[use-f-key-model|Usar el modelo de teclas de función]] — asignaciones de ranuras predeterminadas, arquitectura de Cartucho, Email / SLM / Máquina de Entrada
-- [[read-the-command-ledger|Leer el libro mayor de comandos]] — ver entradas del libro mayor WORM desde la pestaña LEDGER de F12 y exportar a formato C2SP
-- [[run-first-slm-query|Ejecutar tu primera consulta SLM]] — enviar un prompt de inferencia en F9 y leer el panel de salud del Doorman
+- [[navigate-console-tui|Navegar la TUI de la consola]] — el diseño real de pantalla y los campos de la barra de estado
+- [[use-f-key-model|Usar el modelo de teclas de función]] — qué hacen realmente F3, F9 y F12
+- [[read-the-command-ledger|Leer el libro mayor de comandos]] — pagine entradas y obtenga un punto de control firmado a través de la API HTTP real de service-fs
+- [[run-first-slm-query|Ejecutar tu primera consulta SLM]] — la ruta real hacia una primera solicitud de inferencia
 
 ## Registros y almacenamiento
 
@@ -45,16 +45,6 @@ Trabaja con el libro mayor de auditoría WORM y los datos de entidades.
 - [[verify-worm-ledger|Verificar una entrada del libro mayor WORM]] — confirmar la integridad de la cadena de hash y validar contra un punto de control Sigstore firmado
 - [[query-the-datagraph|Consultar el DataGraph]] — buscar entidades nombradas, navegar relaciones, manejar interrupciones del Nivel A
 - [[export-structured-data|Exportar datos estructurados]] — cuatro rutas de exportación: DataGraph, Markdown wiki, GeoJSON, tiles del libro mayor
-
-## Autorización de máquinas
-
-Operaciones de credenciales y control de acceso.
-
-- [[pair-a-new-device|Vincular un nuevo dispositivo]] — el flujo de registro principal; los cuatro tipos de emparejamiento (ADMIN, INPUT, USER, INTERFACE)
-- [[enroll-ppn-node|Registrar un nodo PPN]] — registrar un nodo de cómputo con el controlador de flota y verificar el registro de latido
-- [[issue-capability-token|Emitir un token de capacidad]] — generar un token Ed25519 para un dispositivo o servicio con un alcance específico
-- [[rotate-keys|Rotar claves y tokens]] — reemplazar un par de claves y su token a través de la secuencia de rotación en tres fases
-- [[authenticate-binary-downloads|Autenticar descargas de binarios]] — verifica y descarga binarios firmados desde el punto de distribución privado
 
 ## Escala multi-entidad
 
@@ -88,3 +78,5 @@ Despliega la plataforma en tu propia infraestructura.
 - [[patterns/_index|Patrones]] — patrones de diseño nombrados utilizados en toda la plataforma
 - [[totebox-session]] — qué es una sesión Totebox y qué puede hacer
 - [[machine-based-auth]] — cómo funciona la autorización basada en máquinas
+- [Autorización de Máquinas](/category/machine-authorization) — emparejamiento de dispositivos, tokens de capacidad, inscripción de flota y autenticación de descargas de binarios
+- [Autoalojamiento](/category/self-hosting) — desplegar componentes de la plataforma en tu propia infraestructura

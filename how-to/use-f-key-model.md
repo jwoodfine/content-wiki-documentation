@@ -1,89 +1,66 @@
 ---
 schema: foundry-doc-v1
-title: "How to use the F-key cartridge model"
+title: "Use the F-key cartridge model"
 slug: use-f-key-model
-short_description: "Navigates the os-console F-key cartridge model — F3 email, F9 SLM inference, F12 Input Machine — where each compiled-in cartridge owns its slot's rendering and input."
+short_description: "Works the os-console F-key cartridge model — F3 email, F9's monitoring-only SLM dashboard, F12's file-based Input Machine — where each compiled-in cartridge owns its slot's rendering and input."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-06-14
+audience: "Engineers (hands on keyboard); customer operators"
+last_edited: 2026-08-06
 editor: pointsav-engineering
 paired_with: use-f-key-model.es.md
+research_trail:
+  sources: [pointsav-monorepo app-console-slm (F9 SlmCartridge, confirmed monitoring-only, no prompt UI), app-console-input (F12 InputMachine cartridge, real outcome states), app-console-email (F3 EmailCartridge)]
+  verification_method: "independently source-verified against pointsav-monorepo on 2026-08-06 by reading the Rust source directly, with file:line citations recorded per claim; corrected two fabrications — F9 was described as an interactive prompt/chat interface (it has no text-input widget of any kind, confirmed by reading its full event-handling code) and F12 was described with a reject/quarantine outcome that doesn't exist (real outcomes are Done-with-payload-ID or a generic Error)"
 ---
 
-The F-key model is the operator interface of `os-console`. Each F-key slot hosts a Cartridge — a self-contained module compiled into the binary that owns its rendering, keyboard handling, and lifecycle. Understanding the slot assignments and how each Cartridge works lets you move efficiently between platform functions without leaving the terminal.
+## Prerequisites
 
-For the Cartridge trait and how slots are compiled in, see [[app-console-keys]]. For navigation fundamentals, see [[navigate-console-tui]].
+- An active session with `os-console` open (see [[open-first-totebox-session]])
+- Familiarity with the console's layout (see [[navigate-console-tui]])
 
-## Default slot assignments
+## Purpose
 
-| F-key | Cartridge | Primary function |
-|---|---|---|
-| F3 | Email | Read and compose messages; see [[app-console-email]] |
-| F9 | SLM | Local inference and Doorman health dashboard; see [[app-console-slm]] |
-| F12 | Input Machine | Human-verified record entry; mandatory per SYS-ADR-10; see [[app-console-input]] |
+Understand what each default cartridge actually does before you rely on one for real work — a few minutes, and it corrects two real fabrications that were in this guide previously: F9 is not a chat interface, and F12 does not have a reject/quarantine outcome.
 
-Slots not listed above are reserved or unloaded. A dimmed label in the navigation strip indicates the slot is unloaded in the current session.
+## Procedure
 
-## How a Cartridge works
+1. Recognize that a Cartridge is compiled directly into the `os-console` binary — not a plugin, not a subprocess. Pressing its F-key hands control to that registered module, which owns its own rendering and keyboard handling until you switch away.
 
-A Cartridge is compiled into the `os-console` binary. It is not a plugin or runtime script. When you press an F-key, the binary hands control to the Cartridge registered for that slot.
+2. Use the Email Cartridge at **F3**: press **F3**, read the inbox list (unread counts and sender summaries), navigate with arrow keys, press **Enter** to open a message, and **c** to compose. Outbound mail routes through `service-email`, not a direct SMTP connection.
 
-Each Cartridge:
-- Renders its own full-screen view in the slot area
-- Handles keyboard events for that slot
-- Reports to the status bar which slot is active
-- Connects to the relevant platform service (email, SLM, ledger) using the active MBA connection
+3. Use the SLM Cartridge at **F9** for what it actually is: a live monitoring dashboard, not a query tool. Press **F9** and read its five sections — Gateway, YoYo Fleet, DataGraph, Queue, and Cost Today. Press **R** to force an immediate refresh instead of waiting for the next poll.
 
-A Cartridge that cannot reach its backing service shows a status indicator in the slot area rather than failing silently.
+   > **Note:** F9 has no prompt input of any kind — no text field, no submit key, no streaming response. If you're looking for how to actually run an inference query, see [[run-first-slm-query]], which covers the real path.
 
-## Using the Email Cartridge (F3)
+4. Use the Input Machine at **F12** for what it actually does: it's the platform's mandatory file-ingestion checkpoint, not a record-review-and-approve screen. Files entering through F12 have execution permissions stripped and are tagged before being routed onward — this is the only path raw external files can enter a Totebox.
 
-1. Press **F3** to open the Email Cartridge.
-2. The inbox list appears showing unread counts and sender summaries.
-3. Navigate with arrow keys; press **Enter** to open a message.
-4. Press **c** to compose a new message.
+   > **Warning:** a submission through F12 either succeeds (shown as Done, with a payload ID and ledger position — occasionally with a non-fatal warning attached) or fails with a generic error. There is no separate "reject and quarantine" outcome in this flow — a rejected submission simply shows as an error, not a distinct quarantine state.
 
-Outbound messages route through `service-email`. Direct SMTP connections are not used — the Cartridge acts as a Comm Diode, applying tenant communication policy before sending.
+## Expected outcome
 
-For detail on the email flow, see [[app-console-email]].
+You know which cartridge does what without guessing: F3 for mail, F9 for read-only inference-gateway health, F12 for the mandatory file-ingestion checkpoint — and you know F9 is not where you submit a query.
 
-## Using the SLM Cartridge (F9)
+## Verification
 
-1. Press **F9** to open the SLM Cartridge.
-2. The Doorman health dashboard shows which inference tier (A, B, or C) is active and the entity count from the DataGraph.
-3. Press **R** to manually refresh the health status.
-4. Submit a prompt at the input line. The response streams into the slot area.
+Open each of F3, F9, and F12 in turn and confirm what you see matches this guide: an inbox at F3, a five-section health dashboard with no input field at F9, and a file-ingestion interface at F12.
 
-All inference requests route through Doorman. No prompt data leaves the operator's hardware.
+## Rollback
 
-For the inference architecture, see [[app-console-slm]] and [[doorman-protocol]].
+Viewing F3 or F9 changes nothing. A real F12 submission is not reversible — see [[explore-the-console]] for that caution in more detail before you submit anything through it.
 
-## Using the Input Machine (F12)
+## Next steps
 
-The F12 slot is the human-in-the-loop gate required by SYS-ADR-10. It is the only path through which an operator-verified record can enter the WORM ledger.
-
-1. Press **F12** to open the Input Machine.
-2. Review the record or document displayed for verification.
-3. Confirm or reject using the labelled key bindings shown in the navigation strip.
-
-A confirmed record is written to the ledger immediately. A rejected record is routed to quarantine.
-
-For the design rationale, see [[app-console-input]] and [[worm-ledger-architecture]].
-
-## Key takeaways
-
-- Each slot is compiled in at build time — there is no plugin runtime or slot hot-swap
-- A Cartridge that loses its backing service degrades gracefully and shows a status indicator
-- F12 cannot be reassigned; it is structurally the human-verification gate for the ledger
-- The Comm Diode model in F3 means email routing applies tenant policy — you cannot bypass it from within the Cartridge
+- [[run-first-slm-query]] — the real way to submit an inference query, since F9 isn't it
+- [[read-the-command-ledger]] — read what F12 has written, via the ledger's real HTTP API
 
 ## See also
 
-- [[app-console-keys]] — chassis architecture, Cartridge trait, status bar components
-- [[app-console-email]] — Email Cartridge: inbox, reading, compose, and plain-text mode
-- [[app-console-slm]] — SLM Cartridge: Doorman dashboard and local inference
-- [[app-console-input]] — Input Machine: the F12 human-verification gate
+- [[app-console-keys]] — chassis architecture and the Cartridge trait every slot implements
+- [[app-console-email]] — the Email Cartridge in full
+- [[app-console-slm]] — the SLM Cartridge's dashboard in full
+- [[app-console-input]] — the Input Machine in full
 - [[navigate-console-tui]] — overall TUI layout and slot navigation
-- [[worm-ledger-architecture]] — the ledger that F12 writes into

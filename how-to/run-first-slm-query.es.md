@@ -1,74 +1,72 @@
 ---
 schema: foundry-doc-v1
-title: "Cómo ejecutar su primera consulta SLM"
+title: "Ejecutar su primera consulta SLM"
 slug: run-first-slm-query
-short_description: "Abre el cartucho SLM en F9, confirma un circuito Doorman activo y envía un primer prompt al modelo de lenguaje local sin enviar datos fuera del host."
+short_description: "Envía una primera solicitud de inferencia directamente a Doorman por HTTP — la ruta real, ya que la ranura F9 de la consola es un panel de monitoreo sin ninguna interfaz de consulta."
 category: how-to
 content_type: how-to
 type: how-to
+quality: complete
 status: active
-last_edited: 2026-06-14
-editor: pointsav-engineering
+audience: "Ingenieros (con acceso directo al terminal); operadores de cliente"
 language: es
 language_protocol: TRANSLATE-ES
+last_edited: 2026-08-06
+editor: pointsav-engineering
 paired_with: run-first-slm-query.md
 ---
 
-El Cartucho SLM en F9 enruta solicitudes de inferencia a través de Doorman hacia el modelo de lenguaje local. No se transmiten datos del prompt a un proveedor externo — el modelo se ejecuta localmente. Esta guía cubre cómo abrir la ranura SLM, verificar que Doorman tiene un circuito activo y enviar su primer prompt.
-
-Para la arquitectura de inferencia, véase [[app-console-slm]] y [[slm-stack-architecture]]. Para configurar la pila de inferencia en un nuevo despliegue, véase [[run-local-slm-inference]].
-
 ## Requisitos previos
 
-- Una sesión Totebox activa con F9 disponible
-- El servicio SLM local ejecutándose en la instancia anfitriona
-- Doorman ejecutándose y accesible en el puerto local
+- El servicio SLM local y Doorman en ejecución y accesibles (véase [[run-local-slm-inference]])
+- `curl`, o el script de referencia en `service-slm/scripts/slm-chat.sh` si lo tiene disponible
+- Su identificador de módulo para la cabecera `X-Foundry-Module-ID`
 
-## Pasos
+## Propósito
 
-### 1. Abrir el Cartucho SLM
+Envíe una primera solicitud de inferencia y obtenga una respuesta — menos de un minuto una vez que Doorman esté activo. Esta no es una tarea de consola: F9 en `os-console` es un panel de salud de solo lectura sin manera de escribir o enviar una consulta, así que la ruta real es una llamada HTTP directa a Doorman.
 
-Presione **F9**. El panel de estado de Doorman llena el área de ranura. Muestra tres filas:
+## Procedimiento
 
-| Fila | Lo que muestra |
-|---|---|
-| Nivel A | Disponibilidad del DataGraph (service-content) |
-| Nivel B | Disponibilidad del modelo SLM |
-| Nivel C | Disponibilidad del respaldo local |
+1. Confirme que Doorman es accesible. La dirección local predeterminada es `http://127.0.0.1:9080`, aunque su despliegue puede diferir.
 
-Un indicador verde significa que el nivel está disponible; un indicador rojo o `OPEN` significa que el interruptor de circuito se ha activado y ese nivel se omite temporalmente.
+2. Envíe una solicitud al endpoint de finalización de chat:
 
-### 2. Confirmar que la inferencia está disponible
+   ```bash
+   curl -s -X POST \
+     -H "Content-Type: application/json" \
+     -H "X-Foundry-Module-ID: <su-id-de-modulo>" \
+     -d '{"messages": [{"role": "user", "content": "Di hola en una oración."}]}' \
+     http://127.0.0.1:9080/v1/chat/completions
+   ```
 
-Para que la inferencia funcione, al menos el Nivel B debe mostrar un circuito activo. Si el Nivel B muestra `OPEN`, presione **R** para actualizar. Si permanece abierto, el servicio SLM local puede no estar ejecutándose — véase [[run-local-slm-inference]] para los pasos de inicio.
+   Las cabeceras son flexibles en desarrollo: Doorman genera valores predeterminados seguros cuando están ausentes, específicamente para que sondeos ad hoc con curl como este funcionen sin configuración adicional. Aun así, establezca `X-Foundry-Module-ID` explícitamente una vez que haga trabajo real — así es como la plataforma atribuye el uso a su módulo.
 
-### 3. Enviar un prompt
+3. Lea la respuesta. Llega como una única carga útil JSON, no como un flujo — toda la respuesta llega en un campo `content` una vez que el modelo termina, no palabra por palabra.
 
-Navegue a la línea de entrada del prompt (mostrada en la parte inferior del área de ranura). Escriba su prompt y presione **Enter**. La respuesta se transmite al área de ranura sobre la línea de entrada.
+   > **Nota:** existe un script REPL de referencia en `service-slm/scripts/slm-chat.sh` que envuelve esta misma llamada en un bucle, para que pueda mantener una conversación sin volver a escribir las cabeceras cada vez. A pesar de lo que afirma una nota interna antigua, ese script tampoco transmite en flujo — es la misma llamada bloqueante por turno, simplemente repetida en bucle.
 
-Los prompts son procesados únicamente por el modelo local. El contexto proviene de la sesión Totebox y las entidades del DataGraph conectado, no de fuentes externas.
+## Resultado esperado
 
-### 4. Leer la respuesta
+Una respuesta JSON que contiene la respuesta del modelo en su campo `content`, devuelta como una única carga útil completa.
 
-La respuesta se transmite token por token. Al completarse, el cursor regresa a la línea de entrada. Para comenzar un nuevo prompt, escriba y presione Enter nuevamente. Las respuestas anteriores permanecen visibles al desplazarse hacia arriba.
+## Verificación
 
-Presione **Esc** para borrar el prompt actual sin enviarlo.
+Confirme que el campo `content` de la respuesta contiene una respuesta real y pertinente en lugar de un cuerpo de error. Un estado de error HTTP o un campo `error` en el JSON significa que Doorman no pudo completar la solicitud — verifique que el servicio SLM local esté realmente en ejecución antes de reintentar.
 
-## Verificar el nivel de inferencia en la barra de estado
+> **Nota:** no necesita que ningún nivel de inferencia específico esté "activo" para que esto funcione. Doorman dirige las solicitudes ordinarias al nivel local por defecto; un nivel superior solo entra en juego para solicitudes explícitamente marcadas como de alta complejidad, e incluso entonces recae automáticamente en el nivel local en caso de fallo en lugar de hacer fallar su solicitud.
 
-La barra de estado muestra el nivel SLM actual como una sola letra (`A`, `B` o `C`) junto a la etiqueta de ranura activa. Esto se actualiza en tiempo real conforme cambian los estados del circuito. Si el nivel cae durante un prompt de larga ejecución, la respuesta puede truncarse — reenvíe cuando el circuito se recupere.
+## Reversión
 
-## Puntos clave
+Nada que revertir — una consulta es de solo lectura contra su propio historial de conversación. Enviar otra solicitud no requiere deshacer la anterior.
 
-- Doorman es la puerta de enlace — el Cartucho nunca se conecta directamente al modelo
-- Se necesita al menos el Nivel B para inferencia; se necesita el Nivel A para contexto de entidades del DataGraph
-- Presione R en F9 para actualizar el estado del circuito sin cambiar de ranura
-- Toda la inferencia es local; ningún dato sale del equipo anfitrión
+## Próximos pasos
+
+- [[read-the-command-ledger]] — lea el historial de actividad de la plataforma a través de su propia API HTTP real
+- [[use-f-key-model]] — qué muestra realmente F9, ahora que sabe que no es ahí donde van las consultas
 
 ## Véase también
 
-- [[app-console-slm]] — el Cartucho SLM y el panel de estado de Doorman
-- [[slm-stack-architecture]] — la pila de inferencia completa y definiciones de niveles
-- [[doorman-protocol]] — el modelo de interruptor de circuito de Doorman y reglas de enrutamiento
-- [[run-local-slm-inference]] — iniciar el servicio SLM y Doorman en una nueva instancia
-- [[navigate-console-tui]] — fundamentos de navegación de la consola
+- [[run-local-slm-inference]] — inicie el servicio SLM local y Doorman en un despliegue nuevo
+- [[doorman-protocol]] — el modelo de enrutamiento y disyuntor de circuito de Doorman
+- [[slm-stack-architecture]] — la pila de inferencia completa y las definiciones de nivel
