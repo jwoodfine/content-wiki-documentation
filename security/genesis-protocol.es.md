@@ -102,7 +102,7 @@ El Genesis Protocol es la fase de aprovisionamiento de la [[machine-based-auth|a
 
 ## Véase también
 
-- [[infrastructure-os]] — el sustrato de cómputo que ejecuta el Genesis Protocol en el primer arranque
+- [[os-infrastructure-ppn-node]] — el sustrato de cómputo que ejecuta el Genesis Protocol en el primer arranque
 - [[os-network-admin]] — el plano de control que ejecuta la secuencia de reclamación
 - [[sovereign-mesh]] — la superposición WireGuard a la que se une el nodo tras una reclamación exitosa
 - [[machine-based-auth]] — el sistema de pares de claves fiduciarias en el que se basa el protocolo

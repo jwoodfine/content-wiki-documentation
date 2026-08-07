@@ -107,7 +107,7 @@ The prefix `cluster-` indicates a VM instance managed by the PPN hypervisor laye
 
 ## See also
 
-- [[infrastructure-os]] — the Type I hypervisor that hosts archive VMs and manages the resource pool
+- [[os-infrastructure-ppn-node]] — the Type I hypervisor that hosts archive VMs and manages the resource pool
 - [[ppn-hypervisor-resource-pool]] — how the hypervisor gives and reclaims CPU/RAM from each VM
 - [[machine-based-auth]] — the Ed25519 keypair model that governs archive access
 - [[diode-standard]] — the unidirectional command flow that every archive query traverses

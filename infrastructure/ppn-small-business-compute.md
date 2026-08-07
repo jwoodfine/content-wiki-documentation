@@ -22,7 +22,7 @@ cites: []
 A PointSav Private Platform Network (PPN) is a private, encrypted compute network
 assembled from machines a business owns or leases. Each machine — an old laptop in a back
 office, a rented server in a data centre, a virtual machine at a cloud provider — runs
-the same operating layer, [[infrastructure-os|os-infrastructure]], and joins the same [[ppn-mesh-architecture|encrypted mesh]]. Once
+the same operating layer, [[os-infrastructure-ppn-node|os-infrastructure]], and joins the same [[ppn-mesh-architecture|encrypted mesh]]. Once
 joined, the machines stop being individual computers and become nodes in a single pool of
 compute capacity.
 

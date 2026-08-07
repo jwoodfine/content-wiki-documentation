@@ -61,6 +61,6 @@ Este estándar uniforme es lo que hace auditable una flota compleja. Cada conexi
 
 - [[diode-standard]] — la jerarquía de autoridad y las reglas de tráfico que aplica el adaptador
 - [[os-network-admin]] — la Autoridad que activa y ordena a los Sujetos a través del adaptador
-- [[infrastructure-os]] — un Sujeto os-infrastructure que usa este adaptador para unirse a una flota
+- [[os-infrastructure-ppn-node]] — un Sujeto os-infrastructure que usa este adaptador para unirse a una flota
 - [[ppn-command-protocol]] — el formato de cable binario de 16 bytes que recibe el adaptador
 - [[machine-based-auth]] — los pares de claves fiduciarias que autentican el canal de comandos del adaptador

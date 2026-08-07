@@ -106,7 +106,7 @@ El prefijo `cluster-` indica una instancia de VM gestionada por la capa de hiper
 
 ## Temas relacionados
 
-- [[infrastructure-os]] — el hipervisor Tipo I que aloja VMs de archivo y gestiona el pool de recursos
+- [[os-infrastructure-ppn-node]] — el hipervisor Tipo I que aloja VMs de archivo y gestiona el pool de recursos
 - [[ppn-hypervisor-resource-pool]] — cómo el hipervisor otorga y recupera CPU/RAM de cada VM
 - [[machine-based-auth]] — el modelo de par de claves Ed25519 que gobierna el acceso al archivo
 - [[diode-standard]] — el flujo de comandos unidireccional que atraviesa cada consulta al archivo

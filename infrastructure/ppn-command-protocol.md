@@ -68,7 +68,7 @@ Upstream telemetry — logs, heartbeats, status — travels over a separate, str
 ## See also
 
 - [[os-network-admin]] — the control plane that produces and broadcasts command packets
-- [[infrastructure-os]] — the compute substrate nodes that receive and execute commands
+- [[os-infrastructure-ppn-node]] — the compute substrate nodes that receive and execute commands
 - [[diode-standard]] — the authority hierarchy and traffic rules the protocol implements
 - [[sovereign-mesh]] — the WireGuard overlay the protocol runs over
 - [[service-slm]] — the local semantic router that translates intent into the two-byte operation code

@@ -86,5 +86,5 @@ Los comandos fluyen hacia abajo: `os-network-admin` → `os-infrastructure` (cap
 - [[sovereign-mesh]] — la superposición WireGuard y el protocolo de comando binario de 16 bytes
 - [[genesis-protocol]] — la secuencia de arranque autónomo que ejecuta `os-network-admin` en un nodo nuevo
 - [[machine-based-auth]] — el modelo de emparejamiento MBA que gobierna el acceso al nivel de archivo
-- [[infrastructure-os]] — la capa de hipervisor Tipo I que gestiona `os-network-admin`
+- [[os-infrastructure-ppn-node]] — la capa de hipervisor Tipo I que gestiona `os-network-admin`
 - [[diode-standard]] — la jerarquía de autoridad y las reglas de tráfico que aplica el plano de control

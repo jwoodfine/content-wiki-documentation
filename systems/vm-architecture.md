@@ -120,7 +120,7 @@ Creating a VM is an operator action and requires explicit confirmation in the `a
 
 ## See also
 
-- [[infrastructure-os]] — the Type I hypervisor OS that hosts all other VM types
+- [[os-infrastructure-ppn-node]] — the Type I hypervisor OS that hosts all other VM types
 - [[os-network-admin]] — Foundation OS layer; control plane for the PPN mesh
 - [[totebox-archive]] — the sovereign WORM data vault running inside VM-Totebox
 - [[ppn-architecture-overview]] — four-layer PPN overview: operator, PPN, hypervisor, orchestration

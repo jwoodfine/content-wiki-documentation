@@ -62,6 +62,6 @@ This uniform standard is what makes a complex fleet auditable. Every connection 
 
 - [[diode-standard]] — the authority hierarchy and traffic rules the adapter enforces
 - [[os-network-admin]] — the Authority that activates and commands Subjects via the adapter
-- [[infrastructure-os]] — an os-infrastructure Subject that uses this adapter to join a fleet
+- [[os-infrastructure-ppn-node]] — an os-infrastructure Subject that uses this adapter to join a fleet
 - [[ppn-command-protocol]] — the 16-byte binary wire format the adapter receives
 - [[machine-based-auth]] — the fiduciary keypairs that authenticate the adapter's command channel

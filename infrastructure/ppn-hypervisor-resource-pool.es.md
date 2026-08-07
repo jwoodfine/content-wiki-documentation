@@ -100,7 +100,7 @@ El controlador automático de balloon — el componente dentro de `os-infrastruc
 
 ## Véase también
 
-- [[infrastructure-os]] — el hipervisor Tipo I que implementa el controlador de balloon
+- [[os-infrastructure-ppn-node]] — el hipervisor Tipo I que implementa el controlador de balloon
 - [[totebox-archive]] — la bóveda soberana de datos que se ejecuta dentro de cada VM
 - [[ppn-distributed-vm-fabric]] — la extensión entre nodos planificada: préstamo virtio-mem, ledger de capacidades distribuido, planificador entre nodos
 - [[sovereign-mesh]] — la capa de transporte WireGuard que conecta los nodos PPN

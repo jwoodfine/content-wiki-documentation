@@ -119,7 +119,7 @@ Crear una VM es una acción del operador y requiere confirmación explícita en 
 
 ## Temas relacionados
 
-- [[infrastructure-os]] — el SO de hipervisor Tipo I que aloja todos los demás tipos de VM
+- [[os-infrastructure-ppn-node]] — el SO de hipervisor Tipo I que aloja todos los demás tipos de VM
 - [[os-network-admin]] — capa Foundation OS; plano de control para la malla PPN
 - [[totebox-archive]] — la bóveda de datos WORM soberana que se ejecuta dentro de VM-Totebox
 - [[ppn-architecture-overview]] — descripción general de PPN en cuatro capas: operador, PPN, hipervisor, orquestación

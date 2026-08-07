@@ -56,7 +56,6 @@ Los sistemas a través de los cuales un operador humano interactúa con la plata
 Los sistemas que gestionan el tejido de red, la ruta de arranque y el sustrato de cómputo subyacente.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: network-control-and-infrastructure -->
-- [[infrastructure-os]] — El sustrato de cómputo que aloja los sistemas operativos PointSav en hardware on-premises, arrendado y en la nube; arranca flotas aisladas a través del Protocolo Génesis.
 - [[os-network-admin]] — El plano de control de una flota: gestiona el registro de emparejamientos, las reglas Diode y la política de enrutamiento de malla; los comandos se transmiten como paquetes binarios de 16 bytes a través de la malla WireGuard.
 - [[os-privategit]] — Alojamiento Git privado para control de versiones soberano dentro de una flota.
 - [[app-privategit-workbench|Workbench de navegador]] — El editor de archivos basado en navegador incluido en os-privategit: una interfaz de tres columnas para trabajar con archivos sin una sesión de terminal.

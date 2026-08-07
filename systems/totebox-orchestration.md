@@ -44,6 +44,6 @@ A new Totebox container is provisioned with a three-directory skeleton — `app-
 
 - [[totebox-os]] — the operating system running inside each managed Totebox
 - [[totebox-archive]] — the fundamental unit of data storage being orchestrated
-- [[infrastructure-os]] — the compute substrate hosting the Totebox instances
+- [[os-infrastructure-ppn-node]] — the compute substrate hosting the Totebox instances
 - [[console-os]] — the Command Ledger that operators use to interact with orchestrated archives
 - [[os-orchestration]] — the fleet-level OS aggregator for multi-entity commercial deployments

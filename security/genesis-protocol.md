@@ -96,7 +96,7 @@ The Genesis Protocol is the provisioning phase of [[machine-based-auth|machine-b
 
 ## See also
 
-- [[infrastructure-os]] — the compute substrate that runs the Genesis Protocol at first boot
+- [[os-infrastructure-ppn-node]] — the compute substrate that runs the Genesis Protocol at first boot
 - [[os-network-admin]] — the control plane that executes the claim sequence
 - [[sovereign-mesh]] — the WireGuard overlay the node joins after a successful claim
 - [[machine-based-auth]] — the fiduciary keypair system the protocol relies on

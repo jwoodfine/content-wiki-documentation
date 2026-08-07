@@ -21,13 +21,15 @@ The **sovereign mesh** is the application-level network overlay that connects ev
 
 **Correction (2026-08-02, verified against canonical `origin/main`):** several specific claims below don't match the real implementation. (1) Crate name — real crate is `system-udp`, not `service-udp` (confirmed absent on canonical). (2) `service-pointsav-link` — confirmed nonexistent anywhere in the codebase, corroborating this repo's own 2026-07-18 `diode-standard.md` finding; there is no separate adapter enforcing one-way flow. (3) Packet format — the real `system-udp/src/main.rs` sends a plain `serde_json` `MeshPayload{sender_id, intent, target, timestamp}` over UDP 8090, not a 16-byte binary format with an intent token/nonce/truncated signature; its only guard is an IP-prefix check. (4) The UEFI Secure Variable / port 9443 genesis claim doesn't match real code — `system-network-interface`'s genesis handshake is a 32-byte `GNES`-magic frame with no UEFI or port 9443 involvement, and `os-infrastructure/CLAUDE.md` explicitly states "No UEFI officially... do not implement UEFI until explicitly approved." Port 8090 and the `10.8.0.0/24` addressing are independently confirmed accurate. **Flagged, not resolved.**
 
-The mesh uses a hub-and-spoke arrangement. The cloud relay node sits at the centre and relays packets between spoke nodes that may not have a direct path to each other.
+The mesh uses a hub-and-spoke arrangement. The cloud relay node sits at the centre and relays packets between spoke nodes that may not have a direct path to each other. `os-infrastructure` runs identically in all three roles — the operator chooses where their compute lives, and the same WireGuard mesh spans any combination.
 
-| Role | Node | Planned address | Crate |
-|---|---|---|---|
-| Hub | Cloud relay (GCP) | `10.8.0.1` | `app-infrastructure-cloud` |
-| Spoke | On-premises node | `10.8.0.2` | `app-infrastructure-onprem` |
-| Spoke | Leased node | `10.8.0.3` | `app-infrastructure-leased` |
+| Role | Node | Planned address | Crate | Trust profile |
+|---|---|---|---|---|
+| Hub | Cloud relay (GCP) | `10.8.0.1` | `app-infrastructure-cloud` | Lowest — the cloud provider retains physical access to the hardware; intended for stateless relay, not persistent storage |
+| Spoke | On-premises node | `10.8.0.2` | `app-infrastructure-onprem` | Highest — the operator owns and can physically verify the hardware |
+| Spoke | Leased node | `10.8.0.3` | `app-infrastructure-leased` | Hybrid — the operator controls the OS but cannot physically verify every boot |
+
+WireGuard's encryption secures traffic between nodes, but it does not by itself address the leased and cloud profiles' trust gap: whoever owns the physical hardware can still access it directly. Closing that gap is intended to be seL4 microkernel isolation at the hardware layer — planned, not yet running on bare metal today.
 
 The `10.8.0.0/24` subnet is the intended PPN address range. All mesh traffic is encapsulated inside WireGuard before leaving a node; the underlying transport — public internet, private LAN, or GCP internal network — is irrelevant to the mesh layer. A `10.42.0.0/16` addressing scheme is the ratified future target, with migration ("Part A") in progress; no deployed node uses it yet.
 
@@ -77,6 +79,19 @@ The bare-metal `os-infrastructure` node is a mesh peer, not a mesh controller. I
 
 The GCP cloud relay node relays WireGuard-encapsulated packets between spoke nodes. It does not interpret mesh commands; it is a transport layer only. The relay's fixed public IP and static WireGuard configuration make it the anchor point that allows on-premises and leased nodes to find each other without DNS or DHCP dependency.
 
+## The gap this design targets
+
+The hub-and-spoke topology above is designed to exploit a structural gap in conventional cloud offerings, not merely to work around it:
+
+| Conventional cloud | This design's intent |
+|---|---|
+| Couples compute to proprietary storage; charges egress for data movement | Treat the cloud relay as a stateless pass-through; persistent storage stays on the operator's own hardware |
+| Provides rental access; withholds custodial ownership of the underlying machine | The operator can physically unplug and relocate an on-premises or leased node |
+| Requires network engineering before compute can be added | A node is intended to be able to join the mesh with minimal manual WireGuard provisioning, once the join sequence described below is fully built |
+| A single vendor's control plane is a single point of failure | Each node is designed so that a fleet does not depend on any one hyperscaler remaining available |
+
+An operator running an on-premises node, a cloud relay for public reachability, and `os-network-admin` on an administrative workstation is intended to end up with a fleet that is not locked to any single hyperscaler. The [[worm-ledger-design|WORM discipline]] that governs PointSav data persistence applies to each node regardless of which trust profile it runs under.
+
 ## Genesis Protocol integration
 
 A bare-metal node joins the mesh through the [[genesis-protocol|Genesis Protocol]] rather than manual WireGuard provisioning. At first boot:
@@ -96,7 +111,7 @@ The Diode Standard's unidirectionality constraint — authority commands flow fr
 
 ## See also
 
-- [[infrastructure-os]] — deployment postures, Genesis Protocol sequence, Broadcom NIC substrate
+- [[os-infrastructure-ppn-node]] — the compute-substrate OS itself: current deployment state, Genesis Protocol sequence
 - [[os-network-admin]] — F8 Terminal, service-slm integration, mesh policy ownership
 - [[diode-standard]] — authority hierarchy and traffic category definitions
 - [[machine-based-auth]] — Noise Protocol keypair management and pairing types

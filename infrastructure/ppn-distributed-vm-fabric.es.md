@@ -109,5 +109,5 @@ La capa por nodo es la base. Se prevé que el tejido distribuido se construya so
 - [[ppn-hypervisor-resource-pool]] — el pool por nodo implementado: virtio_balloon, cgroups v2, hito del controlador de balloon
 - [[sovereign-mesh]] — la capa de transporte WireGuard sobre la que se ejecuta el tejido distribuido
 - [[genesis-protocol]] — la ceremonia de primer arranque; la raíz de atestación prevista para el tejido distribuido
-- [[infrastructure-os]] — el hipervisor Tipo I; hogar del controlador de balloon y el demonio de préstamo virtio-mem previsto
+- [[os-infrastructure-ppn-node]] — el hipervisor Tipo I; hogar del controlador de balloon y el demonio de préstamo virtio-mem previsto
 - [[os-orchestration]] — el hogar previsto para el planificador de VMs entre nodos

@@ -55,7 +55,6 @@ The systems through which a human operator interacts with the platform — keybo
 The systems that manage the network fabric, the bootstrap path, and the underlying compute substrate.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: network-control-and-infrastructure -->
-- [[infrastructure-os]] — The compute substrate that hosts PointSav operating systems across on-premises, leased, and cloud hardware; bootstraps isolated fleets through the Genesis Protocol.
 - [[os-network-admin]] — The control plane for a fleet: manages the pairing registry, Diode rules, and mesh routing policy; commands broadcast as 16-byte binary packets across the WireGuard mesh.
 - [[os-privategit]] — Private Git hosting for sovereign version control within a fleet.
 - [[app-privategit-workbench|Browser workbench]] — The browser-based file editor included in os-privategit: a three-column interface for working with archive files without a terminal session.

@@ -45,7 +45,7 @@ Pre-Haswell CPUs — Nehalem and earlier — lack `fsgsbase`. Attempting to run 
 
 ## Infrastructure deployment patterns
 
-[[infrastructure-os|os-infrastructure]] deploys in three patterns, each with a distinct trust profile:
+[[sovereign-mesh|os-infrastructure]] deploys in three patterns, each with a distinct trust profile:
 
 | Pattern | Hardware | Trust profile |
 |---|---|---|
@@ -90,6 +90,6 @@ The `e2-micro` baseline disables hardware virtualisation, which prevents running
 ## See also
 
 - [[os-workplace]] — the workstation OS that runs on the reference device profiles
-- [[infrastructure-os]] — the infrastructure OS covering the three deployment patterns
+- [[sovereign-mesh]] — the mesh topology covering the three deployment patterns and their trust profiles
 - [[worm-ledger-design]] — the WORM ledger deployed on the Tier-1 baseline node
 - [[sel4-microkernel-substrate]] — the seL4 microkernel that enforces the CPU architectural constraints

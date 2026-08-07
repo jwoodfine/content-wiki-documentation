@@ -101,7 +101,7 @@ The automated balloon controller — the component inside `os-infrastructure` th
 
 ## See also
 
-- [[infrastructure-os]] — the Type I hypervisor that implements the balloon controller
+- [[os-infrastructure-ppn-node]] — the Type I hypervisor that implements the balloon controller
 - [[totebox-archive]] — the sovereign data vault running inside each VM
 - [[ppn-distributed-vm-fabric]] — the planned cross-node extension: virtio-mem lending, distributed capability ledger, cross-node scheduler
 - [[sovereign-mesh]] — the WireGuard transport layer connecting PPN nodes

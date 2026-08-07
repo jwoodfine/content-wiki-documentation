@@ -20,13 +20,15 @@ La **malla soberana** es la capa de red a nivel de aplicación que conecta todos
 
 ## Topología en hub y radios
 
-La malla utiliza una disposición de hub central con radios. El nodo de retransmisión en la nube se sitúa en el centro y retransmite paquetes entre nodos radio que pueden no tener una ruta directa entre sí.
+La malla utiliza una disposición de hub central con radios. El nodo de retransmisión en la nube se sitúa en el centro y retransmite paquetes entre nodos radio que pueden no tener una ruta directa entre sí. `os-infrastructure` se ejecuta de forma idéntica en los tres roles — el operador elige dónde reside su cómputo, y la misma malla WireGuard abarca cualquier combinación.
 
-| Rol | Nodo | Dirección prevista | Paquete |
-|---|---|---|---|
-| Hub | Retransmisión en la nube (GCP) | `10.8.0.1` | `app-infrastructure-cloud` |
-| Radio | Nodo en instalaciones propias | `10.8.0.2` | `app-infrastructure-onprem` |
-| Radio | Nodo arrendado | `10.8.0.3` | `app-infrastructure-leased` |
+| Rol | Nodo | Dirección prevista | Paquete | Perfil de confianza |
+|---|---|---|---|---|
+| Hub | Retransmisión en la nube (GCP) | `10.8.0.1` | `app-infrastructure-cloud` | Más bajo — el proveedor de la nube conserva acceso físico al hardware; previsto para retransmisión sin estado, no para almacenamiento persistente |
+| Radio | Nodo en instalaciones propias | `10.8.0.2` | `app-infrastructure-onprem` | Más alto — el operador posee y puede verificar físicamente el hardware |
+| Radio | Nodo arrendado | `10.8.0.3` | `app-infrastructure-leased` | Híbrido — el operador controla el SO pero no puede verificar físicamente cada arranque |
+
+El cifrado de WireGuard protege el tráfico entre nodos, pero por sí solo no resuelve la brecha de confianza de los perfiles arrendado y en la nube: quien posea el hardware físico aún puede acceder directamente a él. Cerrar esa brecha está previsto mediante aislamiento a nivel de hardware del micronúcleo seL4 — planificado, aún no en ejecución sobre bare metal hoy.
 
 La subred `10.8.0.0/24` es el rango de direcciones previsto para la PPN. Todo el tráfico de la malla queda encapsulado dentro de WireGuard antes de salir de un nodo; el transporte subyacente — internet público, LAN privada o red interna de GCP — es irrelevante para la capa de malla. Un esquema de direccionamiento `10.42.0.0/16` es el objetivo futuro ratificado, con la migración ("Parte A") en curso; ningún nodo desplegado lo utiliza todavía.
 
@@ -76,6 +78,19 @@ El nodo bare-metal `os-infrastructure` es un par de la malla, no un controlador.
 
 El nodo de retransmisión en GCP retransmite paquetes encapsulados en WireGuard entre nodos radio. No interpreta comandos de la malla; es únicamente una capa de transporte. La IP pública fija del retransmisor y su configuración WireGuard estática lo convierten en el punto de anclaje que permite a los nodos en instalaciones propias y arrendados localizarse mutuamente sin depender de DNS ni DHCP.
 
+## La brecha que este diseño busca cerrar
+
+La topología en hub y radios anterior está pensada para explotar una brecha estructural en las ofertas convencionales de nube, no simplemente para sortearla:
+
+| Nube convencional | Intención de este diseño |
+|---|---|
+| Acopla el cómputo a almacenamiento propietario; cobra por egreso de datos | Tratar el retransmisor en la nube como un simple paso sin estado; el almacenamiento persistente permanece en el hardware propio del operador |
+| Ofrece acceso en alquiler; retiene la propiedad custodial de la máquina subyacente | El operador puede desconectar y trasladar físicamente un nodo en instalaciones propias o arrendado |
+| Requiere ingeniería de red antes de poder añadir cómputo | Se prevé que un nodo pueda unirse a la malla con un aprovisionamiento manual de WireGuard mínimo, una vez completada la secuencia de ingreso descrita más abajo |
+| El plano de control de un único proveedor es un punto único de fallo | Cada nodo está diseñado para que una flota no dependa de la disponibilidad continua de un único proveedor de nube |
+
+Se prevé que un operador que ejecute un nodo en instalaciones propias, un retransmisor en la nube para conectividad pública y `os-network-admin` en una estación de trabajo administrativa termine con una flota que no está atada a ningún proveedor de nube en particular. La [[worm-ledger-design|disciplina WORM]] que rige la persistencia de datos de PointSav se aplica a cada nodo, independientemente del perfil de confianza bajo el que opere.
+
 ## Integración con el Genesis Protocol
 
 Un nodo bare-metal se incorpora a la malla a través del [[genesis-protocol|Genesis Protocol]], no mediante aprovisionamiento WireGuard manual. En el primer arranque:
@@ -95,7 +110,7 @@ La restricción de unidireccionalidad del Diode Standard — los comandos de aut
 
 ## Véase también
 
-- [[infrastructure-os]] — posiciones de despliegue, secuencia del Genesis Protocol, sustrato NIC Broadcom
+- [[os-infrastructure-ppn-node]] — el SO del sustrato de cómputo en sí: estado de despliegue actual, secuencia del Genesis Protocol
 - [[os-network-admin]] — Terminal F8, integración con service-slm, propiedad de la política de malla
 - [[diode-standard]] — jerarquía de autoridad y definiciones de categorías de tráfico
 - [[machine-based-auth]] — gestión de pares de claves Noise Protocol y tipos de emparejamiento

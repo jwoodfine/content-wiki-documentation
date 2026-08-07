@@ -67,7 +67,7 @@ La telemetría ascendente — logs, latidos, estado — viaja por un canal separ
 ## Véase también
 
 - [[os-network-admin]] — el plano de control que produce y difunde los paquetes de comandos
-- [[infrastructure-os]] — los nodos de sustrato de cómputo que reciben y ejecutan los comandos
+- [[os-infrastructure-ppn-node]] — los nodos de sustrato de cómputo que reciben y ejecutan los comandos
 - [[diode-standard]] — la jerarquía de autoridad y las reglas de tráfico que implementa el protocolo
 - [[sovereign-mesh]] — la superposición WireGuard sobre la que se ejecuta el protocolo
 - [[service-slm]] — el enrutador semántico local que traduce la intención al código de operación de dos bytes

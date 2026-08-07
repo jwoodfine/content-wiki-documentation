@@ -44,7 +44,7 @@ Las CPUs anteriores a Haswell — Nehalem y anteriores — carecen de `fsgsbase`
 
 ## Patrones de despliegue de infraestructura
 
-[[infrastructure-os|os-infrastructure]] se despliega en tres patrones, cada uno con un perfil de confianza distinto:
+[[sovereign-mesh|os-infrastructure]] se despliega en tres patrones, cada uno con un perfil de confianza distinto:
 
 | Patrón | Hardware | Perfil de confianza |
 |---|---|---|
@@ -89,6 +89,6 @@ La base `e2-micro` deshabilita la virtualización de hardware, lo que impide eje
 ## Véase también
 
 - [[os-workplace]] — el sistema operativo de estación de trabajo que ejecuta los perfiles de dispositivos de referencia
-- [[infrastructure-os]] — el sistema operativo de infraestructura que cubre los tres patrones de despliegue
+- [[sovereign-mesh]] — la topología de malla que cubre los tres patrones de despliegue y sus perfiles de confianza
 - [[worm-ledger-design]] — el libro mayor WORM desplegado en el nodo base de Nivel 1
 - [[sel4-microkernel-substrate]] — el micronúcleo seL4 que aplica las restricciones arquitectónicas de CPU

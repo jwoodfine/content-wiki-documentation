@@ -51,6 +51,6 @@ La capa de orquestación también gestiona el retiro seguro de contenedores — 
 
 - [[totebox-os]] — el sistema operativo que se ejecuta dentro de cada Totebox gestionado
 - [[totebox-archive]] — la unidad fundamental de almacenamiento de datos que se orquesta
-- [[infrastructure-os]] — el sustrato de cómputo que aloja las instancias Totebox
+- [[os-infrastructure-ppn-node]] — el sustrato de cómputo que aloja las instancias Totebox
 - [[console-os]] — el Libro Mayor de Comandos que los operadores usan para interactuar con los archivos orquestados
 - [[os-orchestration]] — el agregador de SO a nivel de flota para despliegues comerciales multi-entidad

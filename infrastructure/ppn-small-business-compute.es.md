@@ -24,7 +24,7 @@ Una Red de Plataforma Privada de PointSav (PPN, por sus siglas en inglés) es un
 cómputo privada y cifrada, ensamblada a partir de máquinas que una empresa posee o
 arrienda. Cada máquina — una computadora portátil antigua en una oficina, un servidor
 arrendado en un centro de datos, una máquina virtual en un proveedor de nube — ejecuta
-la misma capa operativa, [[infrastructure-os|os-infrastructure]], y se une a la misma [[ppn-mesh-architecture|malla cifrada]]. Una vez
+la misma capa operativa, [[os-infrastructure-ppn-node|os-infrastructure]], y se une a la misma [[ppn-mesh-architecture|malla cifrada]]. Una vez
 unidas, las máquinas dejan de ser computadoras individuales y se convierten en nodos de
 un único conjunto de capacidad de cómputo.
 

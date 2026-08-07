@@ -85,6 +85,6 @@ Commands flow downward: `os-network-admin` → `os-infrastructure` (hypervisor l
 - [[sovereign-mesh]] — the WireGuard overlay and 16-byte binary command protocol
 - [[genesis-protocol]] — the autonomous bootstrap sequence that `os-network-admin` executes on a fresh node
 - [[machine-based-auth]] — the MBA pairing model that governs archive-tier access
-- [[infrastructure-os]] — the Type I hypervisor layer that `os-network-admin` manages
+- [[os-infrastructure-ppn-node]] — the Type I hypervisor layer that `os-network-admin` manages
 - [[diode-standard]] — the authority hierarchy and traffic rules the control plane enforces
 - [[os-family-overview|OS Family Overview]] — the full PointSav OS family
