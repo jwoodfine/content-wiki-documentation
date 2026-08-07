@@ -40,7 +40,7 @@ Un ciclo de entrenamiento sano es un circuito cerrado: corpus → SFT → DPO on
 
 ## Cómo es coherente la ontología (estado previsto)
 
-Un DataGraph coherente resuelve entidades en cuatro etapas — agrupamiento, similitud, clustering y canonicalización — respaldadas por una tabla de alias para que las variantes superficiales ("Woodfine Management Corp.", "Woodfine Capital Projects") colapsen en una única identidad canónica. Los hechos llevan procedencia (documento fuente, nivel del extractor, confianza, marca de tiempo); los hechos en conflicto se reconcilian en lugar de sobrescribirse; las relaciones son aristas tipadas de una ontología cerrada y direccional; y se conserva el historial para poder leer cualquier hecho "a fecha de" un momento dado.
+Un DataGraph coherente resuelve entidades en cuatro etapas — agrupamiento, similitud, clustering y canonicalización — respaldadas por una tabla de alias para que las variantes superficiales ("MCorp", "Woodfine Capital Projects") colapsen en una única identidad canónica. Los hechos llevan procedencia (documento fuente, nivel del extractor, confianza, marca de tiempo); los hechos en conflicto se reconcilian en lugar de sobrescribirse; las relaciones son aristas tipadas de una ontología cerrada y direccional; y se conserva el historial para poder leer cualquier hecho "a fecha de" un momento dado.
 
 ## Estado objetivo (planificado)
 

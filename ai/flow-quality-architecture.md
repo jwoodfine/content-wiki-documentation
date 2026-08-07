@@ -40,7 +40,7 @@ A healthy training loop is a closed circuit: corpus → SFT → on-policy DPO �
 
 ## How the ontology is intended to be coherent
 
-A coherent DataGraph resolves entities through four stages — blocking, similarity, clustering, and canonicalisation — backed by an alias table so that surface variants ("Woodfine Management Corp.", "Woodfine Capital Projects") collapse to a single canonical identity. Facts carry provenance (source document, extractor tier, confidence, timestamp); conflicting facts are reconciled rather than blindly overwritten; relationships are typed edges from a closed, directional ontology; and history is retained so any fact can be read "as of" a point in time.
+A coherent DataGraph resolves entities through four stages — blocking, similarity, clustering, and canonicalisation — backed by an alias table so that surface variants ("MCorp", "Woodfine Capital Projects") collapse to a single canonical identity. Facts carry provenance (source document, extractor tier, confidence, timestamp); conflicting facts are reconciled rather than blindly overwritten; relationships are typed edges from a closed, directional ontology; and history is retained so any fact can be read "as of" a point in time.
 
 ## Target state (planned)
 
