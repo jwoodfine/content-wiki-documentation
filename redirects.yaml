@@ -181,54 +181,58 @@ redirects:
   - from: /design-system/design-motion
     to: https://design.pointsav.com/elements/motion/overview
 
-  # Batch 2 — Component guides → pointsav-design-system/components/<name>/guide.md
+  # Batch 2 — Component guides → pointsav-design-system/components/<name>/usage.md
+  # Repointed 2026-08-09: /guide 404s on the live local-design server (port 9094),
+  # /usage is the real serving path (dtcg-vault has only ever built usage.md, not
+  # guide.md — flagged by Command 2026-08-02, verified directly here before fixing,
+  # every one of these 16 confirmed 200 on /usage before the swap).
   - from: /design-system/guide-component-badge
-    to: https://design.pointsav.com/components/badge/guide
+    to: https://design.pointsav.com/components/badge/usage
 
   - from: /design-system/guide-component-breadcrumb
-    to: https://design.pointsav.com/components/breadcrumb/guide
+    to: https://design.pointsav.com/components/breadcrumb/usage
 
   - from: /design-system/guide-component-button
-    to: https://design.pointsav.com/components/button/guide
+    to: https://design.pointsav.com/components/button/usage
 
   - from: /design-system/guide-component-checkbox
-    to: https://design.pointsav.com/components/checkbox/guide
+    to: https://design.pointsav.com/components/checkbox/usage
 
   - from: /design-system/guide-component-citation-authority-ribbon
-    to: https://design.pointsav.com/components/citation-authority-ribbon/guide
+    to: https://design.pointsav.com/components/citation-authority-ribbon/usage
 
   - from: /design-system/guide-component-freshness-ribbon
-    to: https://design.pointsav.com/components/freshness-ribbon/guide
+    to: https://design.pointsav.com/components/freshness-ribbon/usage
 
   - from: /design-system/guide-component-home-grid
-    to: https://design.pointsav.com/components/home-grid/guide
+    to: https://design.pointsav.com/components/home-grid/usage
 
   - from: /design-system/guide-component-input-text
-    to: https://design.pointsav.com/components/input-text/guide
+    to: https://design.pointsav.com/components/input-text/usage
 
   - from: /design-system/guide-component-link
-    to: https://design.pointsav.com/components/link/guide
+    to: https://design.pointsav.com/components/link/usage
 
   - from: /design-system/guide-component-navigation-bar
-    to: https://design.pointsav.com/components/navigation-bar/guide
+    to: https://design.pointsav.com/components/navigation-bar/usage
 
   - from: /design-system/guide-component-notification
-    to: https://design.pointsav.com/components/notification/guide
+    to: https://design.pointsav.com/components/notification/usage
 
   - from: /design-system/guide-component-research-trail-footer
-    to: https://design.pointsav.com/components/research-trail-footer/guide
+    to: https://design.pointsav.com/components/research-trail-footer/usage
 
   - from: /design-system/guide-component-select
-    to: https://design.pointsav.com/components/select/guide
+    to: https://design.pointsav.com/components/select/usage
 
   - from: /design-system/guide-component-surface
-    to: https://design.pointsav.com/components/surface/guide
+    to: https://design.pointsav.com/components/surface/usage
 
   - from: /design-system/guide-component-switch
-    to: https://design.pointsav.com/components/switch/guide
+    to: https://design.pointsav.com/components/switch/usage
 
   - from: /design-system/guide-component-tab
-    to: https://design.pointsav.com/components/tab/guide
+    to: https://design.pointsav.com/components/tab/usage
 
   # Batch 2 wiki-surface docs — REMOVED 2026-07-28. These 3 redirects were dead code:
   # the engine only consults redirects.yaml when no live article exists at that slug
@@ -240,16 +244,22 @@ redirects:
   # from file size. These are not the Decision #7 "moved to pointsav-design-system"
   # husks the redirects implied; they never should have been listed for that move.
 
-  # Batch 3 — Spatial components → pointsav-design-system/components/<name>/guide.md
+  # Batch 3 — Spatial components → pointsav-design-system/components/<name>/usage.md
+  # Repointed 2026-08-09, same guide→usage fix and verification method as Batch 2 above
+  # — country-filter-chips/map-side-drawer/map-stats-panel all confirmed 200 on /usage.
   - from: /design-system/country-filter-chips
-    to: https://design.pointsav.com/components/country-filter-chips/guide
+    to: https://design.pointsav.com/components/country-filter-chips/usage
 
   - from: /design-system/map-side-drawer
-    to: https://design.pointsav.com/components/map-side-drawer/guide
+    to: https://design.pointsav.com/components/map-side-drawer/usage
 
   - from: /design-system/map-stats-panel
-    to: https://design.pointsav.com/components/map-stats-panel/guide
+    to: https://design.pointsav.com/components/map-stats-panel/usage
 
+  # NOT repointed 2026-08-09: unlike every other entry in this file, climate-zone-tokens
+  # and zoom-tier-reveal-pattern 404 on BOTH /guide and /usage — the guide→usage fix that
+  # worked for every other component doesn't apply here. Real current location unknown;
+  # flagged to project-design rather than guessed at (NEXT.md, 2026-08-09).
   - from: /design-system/climate-zone-tokens
     to: https://design.pointsav.com/components/climate-zone-tokens/guide
 
@@ -257,6 +267,9 @@ redirects:
     to: https://design.pointsav.com/components/zoom-tier-reveal-pattern/guide
 
   # Batch 3 — Accessibility docs → pointsav-design-system/docs/accessibility/
+  # NOT repointed 2026-08-09: both 404 under /accessibility/<slug> as well as the
+  # working /accessibility/overview path — real current location unknown, same as the
+  # 2 components above; flagged to project-design rather than guessed at.
   - from: /design-system/neurodiversity-typography-standards
     to: https://design.pointsav.com/accessibility/neurodiversity-typography-standards
 
