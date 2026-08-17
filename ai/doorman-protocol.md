@@ -10,7 +10,7 @@ index_group: the-doorman-boundary
 status: active
 bcsc_class: current-fact
 forward_looking: true
-last_edited: 2026-05-22
+last_edited: 2026-08-17
 editor: pointsav-engineering
 cites: []
 paired_with: doorman-protocol.es.md
@@ -31,21 +31,23 @@ A customer data vault holds the customer's authoritative structured data, and ex
 
 ## Three-tier compute routing
 
-The Doorman routes inference calls across three compute tiers.
+The Doorman routes inference calls across three compute tiers. All three are implemented in the routing code — "planned" describes activation state, not code that doesn't exist yet.
 
 **Tier A — local.** Executes on the host VM using CPU and RAM, for fast, low-latency, low-cost inference on a locally hosted model. Tier A handles the majority of routing volume with no cloud spend, and is operationally verified.
 
-**Tier B — on-demand GPU pool.** Tier B is planned to route workloads to ephemeral GPU instances ([[yoyo-compute-substrate|the Yo-Yo compute substrate]]), spun up on demand and shut down on idle, with two profiles: a trainer instance for continued training cycles on accumulated tuples, and an extractor instance for large-scale corpus ingestion. Both profiles use idle-shutdown timers so billing stops when the queue is empty.
+**Tier B — on-demand GPU pool.** Tier B routes workloads to ephemeral GPU instances ([[yoyo-compute-substrate|the Yo-Yo compute substrate]]), spun up on demand and shut down on idle (a 30-minute default idle-shutdown monitor issues the real deprovision call), with two profiles: a **trainer** instance for continued training cycles on accumulated tuples, and a **graph** instance for property-graph workloads — not an "extractor" instance as earlier documentation described. The routing logic and idle-shutdown monitor are fully wired; whether a given profile is reachable at any moment depends on its own health probe and circuit-breaker state, which the Doorman's `/readyz` endpoint reports per profile.
 
-**Tier C — external API proxy.** Tier C is planned to route specialised linguistic refinement and formatting tasks to external frontier models. The Doorman enforces cost guardrails and injects predefined [[service-content|`service-content`]] ontologies to constrain output to canonical platform vocabulary.
+**Tier C — external API proxy.** Tier C's allowlist and cost-guardrail scaffolding are implemented for narrow-precision tasks — citation grounding, graph-build assistance, entity disambiguation — but the crate's own source comments state live external API calls are not yet enabled in this version; activating them is a separate operator decision, not a missing feature. Earlier documentation claimed Tier C "injects predefined `service-content` ontologies to constrain output to canonical platform vocabulary" — no such mechanism exists in the Tier C code path; that claim is retracted here, not merely softened.
 
 ## The audit ledger
 
-Every inference call produces a JSONL audit-ledger entry appended to a daily file. The required fields are timestamp, request ID, module ID, tier, model, inference duration, cost estimate, sanitised-outbound flag, and completion status. The ledger is append-only; no entry is modified or deleted after write.
+Every inference call produces a JSONL audit-ledger entry appended to a daily file. Fields: timestamp, request ID, module ID, tier, model, inference duration, cost estimate, sanitised-outbound flag, completion status, entry type, and (when applicable) an error message and an archive name. Each entry also carries a hash computed at write time for tamper detection. The ledger is append-only; no entry is modified or deleted after write.
 
 ## The moduleId discipline
 
-A single `moduleId` field serves five roles at once: it selects the systemd unit that handles the request, namespaces the key-value cache blocks, scopes the property-graph database traversals to the correct tenant, selects the adapter stack, and tags audit-ledger entries for per-project cost accounting. A request without a valid `moduleId` is rejected at the Doorman boundary.
+`moduleId` is confirmed to serve two roles, not five: it tags audit-ledger entries for per-project cost accounting, and — since the tenant-isolation fix landed — it strictly scopes property-graph reads and writes to the caller's own module, with no cross-tenant merge. Earlier documentation additionally claimed `moduleId` selects the systemd unit handling a request, namespaces the key-value cache, and selects the adapter stack. None of those three roles has support in the current routing, caching, or adapter-hub code, so the claim is retracted here rather than carried forward unverified.
+
+Enforcement is real but narrower than "every request needs a valid `moduleId`": the graph endpoints (`graph_query`, `graph_mutate`) reject a missing or malformed `moduleId` outright. The primary inference endpoint (`chat_completions`) rejects a malformed `moduleId`, but silently falls back to a default when the header is simply absent, logging only a warning — a real gap between the two endpoint families, not a uniform boundary.
 
 ## Learning-pipeline routing
 

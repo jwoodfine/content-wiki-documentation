@@ -10,7 +10,7 @@ index_group: the-doorman-boundary
 status: active
 bcsc_class: current-fact
 forward_looking: true
-last_edited: 2026-05-22
+last_edited: 2026-08-17
 editor: pointsav-engineering
 language: es
 paired_with: doorman-protocol.md
@@ -32,21 +32,25 @@ La bóveda de datos del cliente contiene sus datos estructurados autorizados, y 
 
 ## Enrutamiento de cómputo en tres niveles
 
-El Doorman enruta las llamadas de inferencia en tres niveles.
+El Doorman enruta las llamadas de inferencia en tres niveles. Los tres están implementados en el código de enrutamiento — "planificado" describe el estado de activación, no código que aún no existe.
 
 **Nivel A — local.** Se ejecuta en la VM del servidor usando CPU y RAM, para inferencia rápida, de baja latencia y bajo costo sobre un modelo alojado localmente. El Nivel A gestiona la mayor parte del volumen de enrutamiento sin gasto en la nube, y está verificado operativamente.
 
-**Nivel B — grupo de GPU por demanda.** El Nivel B está planificado para enrutar cargas de trabajo a instancias GPU efímeras ([[yoyo-compute-substrate|el sustrato de cómputo Yo-Yo]]), iniciadas bajo demanda y detenidas en reposo, con dos perfiles: una instancia de entrenamiento para ciclos continuos sobre tuplas acumuladas, y una instancia de extracción para la ingesta de corpus a gran escala. Ambos perfiles usan temporizadores de apagado por inactividad para que la facturación se detenga cuando la cola está vacía.
+**Nivel B — grupo de GPU por demanda.** El Nivel B enruta cargas de trabajo a instancias GPU efímeras ([[yoyo-compute-substrate|el sustrato de cómputo Yo-Yo]]), iniciadas bajo demanda y detenidas en reposo (un monitor de apagado por inactividad, con un valor predeterminado de 30 minutos, emite la llamada real de desaprovisionamiento), con dos perfiles: una instancia de **entrenamiento** para ciclos continuos sobre tuplas acumuladas, y una instancia de **grafo** para cargas de trabajo del grafo de propiedades — no una instancia de "extracción" como describía la documentación anterior. La lógica de enrutamiento y el monitor de apagado por inactividad están completamente implementados; que un perfil determinado esté accesible en un momento dado depende de su propia verificación de salud y del estado de su interruptor de circuito, que el punto de conexión `/readyz` del Doorman reporta por perfil.
 
-**Nivel C — proxy de API externa.** El Nivel C está planificado para enrutar tareas especializadas de refinamiento lingüístico y formato a modelos de frontera externos. El Doorman aplica límites de costo e inyecta ontologías de [[service-content|`service-content`]] predefinidas para restringir la salida al vocabulario canónico de la plataforma.
+**Nivel C — proxy de API externa.** La lista de permitidos y el andamiaje de límites de costo del Nivel C están implementados para tareas de precisión limitada — fundamentación de citas, asistencia en la construcción del grafo, desambiguación de entidades — pero los comentarios del propio código fuente indican que las llamadas en vivo a API externas aún no están habilitadas en esta versión; activarlas es una decisión operativa separada, no una función faltante. La documentación anterior afirmaba que el Nivel C "inyecta ontologías de `service-content` predefinidas para restringir la salida al vocabulario canónico de la plataforma" — no existe tal mecanismo en la ruta de código del Nivel C; esa afirmación se retracta aquí, no simplemente se suaviza.
 
 ## El libro de auditoría
 
-Cada llamada de inferencia produce una entrada JSONL anexada a un archivo diario. Los campos requeridos son marca de tiempo, ID de solicitud, ID de módulo, nivel, modelo, duración de inferencia, estimación de costo, indicador de saneamiento de salida y estado de finalización. El libro es de solo adición; ninguna entrada se modifica ni se borra tras la escritura.
+Cada llamada de inferencia produce una entrada JSONL anexada a un archivo diario. Campos: marca de tiempo, ID de solicitud, ID de módulo, nivel, modelo, duración de inferencia, estimación de costo, indicador de saneamiento de salida, estado de finalización, tipo de entrada y, cuando corresponde, un mensaje de error y un nombre de archivo. Cada entrada también lleva un hash calculado al momento de la escritura para la detección de manipulaciones. El libro es de solo adición; ninguna entrada se modifica ni se borra tras la escritura.
 
 ## La disciplina de moduleId
 
-Un único campo `moduleId` cumple cinco funciones a la vez. Selecciona la unidad systemd que gestiona la solicitud, delimita los bloques de caché clave-valor y circunscribe los recorridos de la base de datos de grafo de propiedades al inquilino correcto. También selecciona la pila de adaptadores y etiqueta las entradas del libro de auditoría para la contabilidad de costos por proyecto. Una solicitud sin un `moduleId` válido se rechaza en el límite del Doorman.
+Se confirma que `moduleId` cumple dos funciones, no cinco. Etiqueta las entradas del libro de auditoría para la contabilidad de costos por proyecto y — desde que se implementó la corrección de aislamiento de inquilinos — circunscribe estrictamente las lecturas y escrituras del grafo de propiedades al módulo del solicitante, sin fusión entre inquilinos.
+
+La documentación anterior afirmaba además que `moduleId` selecciona la unidad systemd que gestiona la solicitud, delimita la caché clave-valor y selecciona la pila de adaptadores. Ninguna de esas tres funciones tiene respaldo en el código actual de enrutamiento, caché o centro de adaptadores, así que la afirmación se retracta aquí en lugar de mantenerse sin verificar.
+
+La aplicación es real pero más limitada que "toda solicitud necesita un `moduleId` válido": los puntos de conexión del grafo (`graph_query`, `graph_mutate`) rechazan un `moduleId` ausente o mal formado directamente. El punto de conexión de inferencia principal (`chat_completions`) rechaza un `moduleId` mal formado, pero recurre silenciosamente a un valor predeterminado cuando el encabezado simplemente está ausente, registrando solo una advertencia — una brecha real entre las dos familias de puntos de conexión, no un límite uniforme.
 
 ## Enrutamiento de la tubería de aprendizaje
 
