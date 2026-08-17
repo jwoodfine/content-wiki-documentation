@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Grafo de aprendizaje — Cola de aprendizaje, pares DPO y captura de trayectorias"
 slug: learning-datagraph-architecture
-short_description: "Ciclo de entrenamiento de cuatro vías que convierte interacciones del operador en tuplas — trayectorias, cola de aprendizaje, pares DPO editoriales y correcciones destiladas."
+short_description: "Ciclo de entrenamiento que convierte interacciones del operador en señal de entrenamiento — captura de trayectorias, cola de aprendizaje y un canal real de destilación GLiNER→OLMo (no la vía DPO editorial que versiones anteriores de este artículo describían)."
 language: es
 category: ai
 type: topic
@@ -10,7 +10,7 @@ content_type: topic
 index_group: entity-extraction-and-the-training-loop
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-08-17
 editor: pointsav-engineering
 cites: []
 paired_with: learning-datagraph-architecture.md
@@ -21,28 +21,28 @@ La plataforma construye un [[compounding-substrate|sustrato acumulativo]]: cada 
 
 ## Puntos clave
 
-- El sustrato acumula señal de entrenamiento a través de cuatro patas distintas: captura de trayectorias al cierre de sesión, una cola de aprendizaje que se activa en cada confirmación, pares DPO editoriales del flujo editorial de embudo inverso y destilación de trayectorias negativas a partir de correcciones del operador. Cada pata captura una dimensión diferente de la intención del operador.
-- Toda la señal de entrenamiento pasa por el mismo límite auditable — [[doorman-protocol|Doorman]] — y aterriza en el ledger de solo adición. Nada evita el ledger; nada sale del entorno local. El bucle de aprendizaje está aislado del exterior y es autónomo.
-- El corpus se acumula con cada sesión. A mediados de 2026 el corpus de aprendizaje contaba con 502 tuplas y el corpus de DPO editorial con 34 pares. Estos números crecen sin curación manual — el nivel base del modelo sube a medida que el operador utiliza el entorno.
-- La única pata aún no conectada es el bucle de entidades estructuradas: un endpoint `POST /v1/draft/generate` en [[service-content]] que fundamentaría la generación en entidades del grafo. La infraestructura de soporte (cola, ledger, hooks, enrutamiento de auditoría) ya está implementada; lo que resta es un esfuerzo de ingeniería Rust de varias semanas.
+- El sustrato acumula señal de entrenamiento mediante varios mecanismos distintos: captura de trayectorias al cierre de sesión, una cola de aprendizaje que se activa en cada confirmación, y un canal real de destilación GLiNER→OLMo — no la vía "DPO editorial de embudo inverso" que versiones anteriores de este artículo describían, la cual no tiene respaldo en el código.
+- Toda la señal de entrenamiento pasa por el mismo límite auditable — [[doorman-protocol|Doorman]] — y aterriza en el ledger de solo adición. La verificación del alcance por inquilino de esta misma sesión (véase abajo) es un ejemplo real de ese límite siendo aplicado, no solo descrito.
+- Las cifras específicas del corpus (número de tuplas, número de pares) no se repiten aquí — las únicas cifras verificadas de forma independiente en esta revisión están fechadas el 2026-04-29 y ya están desactualizadas (14 archivos de aprendizaje, un corpus de retroalimentación vacío); citar un número que suene más reciente sin una verificación reciente sería peor que no citar ninguno.
+- `POST /v1/draft/generate` es real, está construido y en producción — `service-content/src/http.rs:352-479` (no las líneas `176-280` citadas antes), confirmado por lectura directa, no solo por el código de estado de una prueba en vivo. Su propio comentario de documentación lo llama "Tier C Drafting Pipeline" y hace proxy hacia **Claude Haiku 4.5** (`anthropic:claude-haiku-4-5-20251001`) — no Claude 3.5 Sonnet como afirmaba una corrección anterior. No existe ningún `service-content/CLAUDE.md` en ninguna parte del monorepo; esa cita fue fabricada junto con la afirmación sobre la versión del modelo.
 
-## Cuatro patas de señal de entrenamiento
+## Mecanismos de señal de entrenamiento
 
-El sustrato tiene cuatro patas.
+**Captura de trayectorias.** Un hook de cierre de sesión se activa al final de cada sesión. El verdadero `capture-trajectory.sh` publica un resumen de sesión en texto libre envuelto en un esquema JSON de brief de aprendizaje (`brief_id`/`senior_role`/`task_type`/`body`) — no un conjunto fijo de campos de estado de rama/recuento de archivos/SHA como afirmaba texto anterior.
 
-**Captura de trayectorias.** Un hook de cierre de sesión se activa al final de cada sesión, escribiendo una entrada JSONL estructurada en el ledger de auditoría: estado de la rama, recuento de archivos sin confirmar, SHA de la cabeza y un indicador de promoción pendiente. Una cosecha nocturna de transcripciones copia las transcripciones del día en el mismo ledger, etiquetadas por operador y archivo.
+**Cola de aprendizaje.** Un hook post-commit dispara un brief "shadow" vía `POST /v1/shadow` para confirmaciones en 8 clústeres — el intervalo específico de "drenador de 15 minutos" de texto anterior no tiene respaldo en el código ni en `service-slm/docs/trainer-scoping.md`, la documentación real más cercana a este mecanismo. El modelo local en este bucle es **OLMo 3** (`OLMo-3-7B-Q4_K_M.gguf`, `slm-doorman/src/tier/local.rs`; también `olmo-3-1125-7b-q4` en `slm-core/src/apprenticeship.rs`) — no "OLMo-2 7B Q4"; no existe ninguna referencia a un modelo OLMo-2 en ninguna parte del código.
 
-**Cola de aprendizaje.** Un hook post-commit emite un brief para cada confirmación del espacio de trabajo. Un drenador de 15 minutos llama al SLM local (OLMo-2 7B Q4) contra cada brief, captura el intento del modelo y escribe la tupla `(brief, intento, diff_real)` en el [[apprenticeship-substrate|corpus de aprendizaje]]. A 2026-05-18 se habían acumulado 502 tuplas.
+**El mecanismo DPO real es destilación GLiNER→OLMo, no pares editoriales de embudo inverso.** `service-content/src/lib.rs` (`write_gliner_olmo_dpo_pair`, alrededor de las líneas 279–282 y 659–690) muestra el verdadero canal DPO: GLiNER (extracción de Nivel 0, `:9085`) propone entidades, se le pide a OLMo 7B (Nivel A) que reproduzca o mejore la extracción, y la diferencia se convierte en un par DPO — una señal de calidad de extracción de entidades, no una señal de voz editorial proveniente de un canal "crudo → refinado → editado creativamente". No existe tal mecanismo de embudo inverso hacia pares DPO en el código; el texto anterior que describía uno no estaba fundamentado en el código base.
 
-**Pares DPO editoriales.** Cada borrador que pasa por el patrón editorial de embudo inverso — de crudo a refinado a editado creativamente — emite dos pares de preferencia directa (DPO, del inglés direct preference optimisation) en el corpus de edición de prosa. El par captura los deltas de mejora editorial. A esa fecha se habían acumulado 34 pares.
+**Destilación de trayectorias negativas.** Un script de análisis de buzones lee las correcciones del operador de los mensajes archivados y emite señales de trayectoria negativa en el corpus de retroalimentación — no reverificado de forma independiente en esta revisión; se mantiene como se describía antes, sin reconfirmar.
 
-**Destilación de trayectorias negativas.** Un script de análisis de buzones lee las correcciones del operador de los mensajes archivados y emite señales de trayectoria negativa en el corpus de retroalimentación. Esta cuarta pata captura lo que el modelo no debe hacer.
+## El bucle de entidades estructuradas, y el comportamiento de alcance por inquilino que realmente tiene
 
-## Bucle de entidades estructuradas — la pata pendiente
+`POST /v1/draft/generate` efectivamente fundamenta la generación en entidades del grafo — consulta `state.graph.query_context` y un subgrafo de aristas inducido antes de llamar hacia afuera, lo cual coincide con la descripción de "fundamenta la generación en entidades del grafo". Lo que **no** hace: llamar a un planificador LoRA ni activar el cómputo GPU de Nivel B. Texto anterior afirmaba que "un planificador LoRA activa luego el cómputo GPU de Nivel B para el entrenamiento nocturno de adaptadores" en un paso posterior a este endpoint — no existe tal conexión en `draft_generate`; es una llamada síncrona de `/v1/audit/proxy` del Doorman hacia un modelo en la nube (Claude Haiku 4.5, véase arriba), punto final.
 
-Lo que queda por conectar — trabajo de ingeniería en Rust de varias semanas: el bucle de entidades estructuradas. [[service-content]] (grafo respaldado por LadybugDB) necesita un endpoint `POST /v1/draft/generate` que consulte el grafo para obtener entidades relevantes, ensamble un prompt fundamentado de 2K tokens, llame al [[doorman-protocol|Doorman]] y escriba la respuesta como tupla de corpus fundamentado en el grafo. Un planificador LoRA deberá activar el [[yoyo-compute-substrate|cómputo GPU de nivel B]] para el [[elastic-compute-lora-training-pipeline|entrenamiento nocturno de adaptadores]].
+**No documentado antes en absoluto, a pesar de ser fundamental:** toda consulta al grafo que hace este endpoint está sujeta a la misma aplicación de aislamiento por inquilino descrita en [[doorman-protocol]] — `graph_query`/`graph_mutate` se limitan estrictamente al módulo propio del solicitante, sin fusión entre inquilinos, desde que la corrección se confirmó en producción el 2026-07-28. Un borrador de entidades estructuradas para un inquilino no puede fundamentarse en las entidades del grafo de otro inquilino. Esto importa exactamente por la razón de la reivindicación #48 de la DOCTRINA que [[doorman-protocol]] cubre con más detalle — la propiedad intelectual del grafo del cliente nunca se agrega entre inquilinos sin consentimiento explícito — y aplica aquí aunque el texto anterior de este artículo nunca lo haya mencionado.
 
-El sustrato se acumula en dos direcciones: estructuralmente (la densidad de citas y las cadenas de supersedencia se enriquecen con cada borrador) y generativamente (cada adaptador eleva el nivel del "crudo" para que cada ciclo de refinamiento comience más cerca de lo publicable).
+El sustrato se acumula en dos direcciones en principio: estructuralmente (la densidad de citas y las cadenas de supersedencia se enriquecen con cada borrador) y generativamente (cada adaptador eleva el nivel del "crudo" para que el refinamiento comience más cerca de lo publicable) — la mitad generativa depende del canal de entrenamiento LoRA descrito en [[elastic-compute-lora-training-pipeline]], que este artículo no verifica por sí mismo.
 
 ## Véase también
 
