@@ -23,8 +23,8 @@ The Totebox knowledge flow turns prose into two durable assets: an [[ontological
 
 ```
 prose ─▶ service-extraction ─▶ CORPUS_*.json
-      ─▶ service-content ──▶ GLiNER Tier 0 (fast — no sourced figure; only a qualitative "~150x faster than OLMo" code comment) ─▶ entity spans
-                         └──▶ OLMo Tier A (fallback, no sourced latency figure) ─▶ extraction fallback (Tier 0 unreachable) + async training-pass job
+      ─▶ service-content ──▶ GLiNER Tier 0 (fast — no published figure; qualitatively "~150x faster than OLMo") ─▶ entity spans
+                         └──▶ OLMo Tier A (fallback, latency not published) ─▶ extraction fallback (Tier 0 unreachable) + async training-pass job
                          └──▶ GPU Tier B (enrichment) ─▶ role/location vectors
                          └──▶ LadybugDB graph
       ◀── Doorman queries the graph for context before each inference ◀──
@@ -32,7 +32,7 @@ training corpus (git-commit shadow tuples + Tier-A-vs-B enrichment pairs)
       ─▶ TRL SFT / DPO ─▶ PEFT adapter
 ```
 
-The Tier-0-success path enqueues a `TierAJob` for an asynchronous Tier A *training* pass, not a "DPO queue" as earlier text labeled it — DPO pair generation happens later, downstream in `service-slm`, not at this queue.
+The Tier-0-success path enqueues a `TierAJob` for an asynchronous Tier A *training* pass. DPO pair generation happens later, downstream, not at this queue.
 
 Two quality questions decide whether the flow is worth its cost: is the **training loop** producing adapters that measurably improve the model, and is the **DataGraph** an accurate, well-resolved ontology rather than a pile of fragments?
 
@@ -40,15 +40,15 @@ Two quality questions decide whether the flow is worth its cost: is the **traini
 
 A healthy training loop is a closed circuit: corpus → SFT → on-policy DPO → an eval gate → promotion only on a measured improvement → the promoted adapter **served** on the inference path → its behaviour captured back into the corpus. Several stages are real and confirmed: adapters attach to all linear projections of the base model and the attachment is asserted post-build (a fail-closed check on the exact target-module list, in both the SFT and DPO training scripts); learning rates sit an order of magnitude above full fine-tuning (2e-4 vs. a stated 2e-5 full-FT default); preference training runs only above a clean, diverse pair floor (a real `CLEAN_PAIR_FLOOR = 3000` constant, plus per-pair quality gates); and no adapter is promoted that a base-versus-adapter probe cannot distinguish from the base model (a real deploy-gate script implementing exactly this check).
 
-**One claim corrected, not just softened**: the eval gate does not compare the new adapter "to the incumbent on a frozen, version-hashed gold set." No incumbent-comparison or version-hashed gold set exists anywhere in `service-slm`. The real gate (`score-gate.sh`) scores an adapter's own completions against a static pass-rate threshold — diff-parse / git-apply / envelope-format correctness — over a randomly-shuffled 10% holdout, freshly split each run, not a comparison against a prior adapter's performance.
+The eval gate does not compare the new adapter to an incumbent on a frozen, version-hashed gold set — no incumbent comparison or version-hashed gold set exists. The gate scores an adapter's own completions against a static pass-rate threshold — diff-parse / git-apply / envelope-format correctness — over a randomly-shuffled 10% holdout, freshly split each run.
 
 ## How the ontology is intended to be coherent
 
-A coherent DataGraph is intended to resolve entities through blocking, similarity, and canonicalisation stages, so that surface variants ("MCorp", "Woodfine Capital Projects") collapse to a single canonical identity. **What's actually built today is narrower than that, and narrower than earlier versions of this article claimed**: real entity resolution (`service-content/src/er.rs`) implements three stages, not four — blocking → similarity → decision bands (auto-merge / review / new) — with no clustering stage. The alias table that would back canonicalization is explicitly not yet implemented; the module's own comment describes it as "an additive migration applied separately." Entity resolution today is pure and side-effect-free, not yet backed by the alias mechanism this section describes.
+A coherent DataGraph is intended to resolve entities through blocking, similarity, and canonicalisation stages, so that surface variants ("MCorp", "Woodfine Capital Projects") collapse to a single canonical identity. What's built today is narrower: entity resolution implements three stages, not four — blocking → similarity → decision bands (auto-merge / review / new) — with no clustering stage. The alias table that would back canonicalization is explicitly not yet implemented; the module's own comment describes it as "an additive migration applied separately." Entity resolution today is pure and side-effect-free, not yet backed by the alias mechanism this section describes.
 
 Facts carry partial provenance: a real `confidence` field and a real `source_doc` field exist on every graph entity, with `source_doc` first-write-wins — but there is no `extractor_tier` field, so provenance does not yet capture which tier (GLiNER, OLMo, or GPU) produced a given fact. Conflict handling is mixed, not uniformly "reconciled rather than blindly overwritten": vector fields use a new-wins-if-present merge and `source_doc` is first-write-wins, but `confidence` is unconditionally overwritten on every write — the one field most directly meant to signal trust is the one field that isn't reconciled at all. Relationships genuinely are typed, directional edges from a closed ontology (a real relation-type vocabulary loaded from a CSV file) — this part is accurate as described.
 
-**"History is retained so any fact can be read 'as of' a point in time" is not built** — no temporal or bitemporal versioning code exists anywhere in `service-content/src` today, despite being part of the file layout this article's own "Target state" section below describes as a future target. Stating it as already true here, one section above where the same capability is correctly described as planned, was an internal contradiction — corrected by moving the claim to where it belongs, in Target state.
+Point-in-time history — reading any fact "as of" a date — is not built. It is planned; see Target state, below.
 
 ## Target state (planned)
 
