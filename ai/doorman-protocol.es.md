@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Protocolo Doorman"
 slug: doorman-protocol
-short_description: "Doorman es el único límite de solicitud de IA a través del cual se enruta toda llamada de inferencia — imponiendo la disciplina de sanitizar-y-rehidratar una sola vez, registrando cada llamada en un libro mayor de auditoría inmutable y capturando la señal de entrenamiento que compone la plataforma con el tiempo."
+short_description: "Doorman es el único límite de solicitud de IA a través del cual se enruta toda llamada de inferencia — conserva cada credencial de modelo externo y registra cada llamada en un libro mayor de auditoría inmutable."
 category: ai
 type: concept
 content_type: topic
@@ -18,27 +18,29 @@ cites: []
 
 ---
 
-Cada servicio que puede llamar a un modelo de IA externo es su propio agujero en el muro. Diez servicios con diez rutas de salida significan diez superficies de auditoría, y diez lugares donde la disciplina de saneamiento puede olvidarse.
+Cada servicio que puede llamar a un modelo de IA externo es su propio agujero en el muro. Diez servicios con diez rutas de salida significan diez superficies de auditoría, y diez lugares donde el manejo de credenciales y el registro pueden desincronizarse.
 
 El Doorman reduce el muro a una sola puerta. [[service-slm|`service-slm`]] es el único límite de solicitud de IA de la plataforma; toda llamada de inferencia se enruta por una sola puerta de control de acceso, y ninguna llamada sale de la bóveda de datos del cliente sin atravesarla.
 
-En ese único límite, el Doorman aplica la disciplina de sanitizar-y-rehidratar, enruta la llamada al nivel de cómputo apropiado, registra cada evento en un libro mayor de auditoría inmutable y captura la señal de entrenamiento que compone la plataforma con el tiempo.
+En ese único límite, el Doorman conserva cada credencial de modelo externo, enruta la llamada al nivel de cómputo apropiado, registra cada evento en un libro mayor de auditoría inmutable y captura la señal de entrenamiento que mejora la plataforma con el tiempo.
 
-Para un comprador regulado la consecuencia es concreta. Ninguna llamada de inferencia sale de la bóveda de datos sin registrar ni sanear, porque la disciplina es una garantía estructural y no una configuración por servicio. Este artículo define las reglas de enrutamiento, el esquema de auditoría, la disciplina de `moduleId` y la captura de señal de entrenamiento.
+Para un comprador regulado la consecuencia es concreta. Ninguna llamada de inferencia sale de la bóveda de datos sin registrar ni con una credencial que el Doorman no controle, porque el límite es una garantía estructural y no una configuración por servicio. Este artículo define las reglas de enrutamiento, el esquema de auditoría, la disciplina de `moduleId` y la captura de señal de entrenamiento.
 
 ## Por qué un Doorman
 
-La bóveda de datos del cliente contiene sus datos estructurados autorizados, y el cómputo externo — los grandes modelos de lenguaje — no puede recibir esos datos en bruto. Sin un único límite, cada servicio del [[totebox-os|Totebox]] desarrolla su propia ruta de salida, cada ruta necesita su propia auditoría, y la disciplina de sanitizar-y-rehidratar (SYS-ADR-07) se convierte en disciplina por servicio en lugar de disciplina de sustrato. El Doorman centraliza el límite para que la disciplina se aplique una sola vez.
+La bóveda de datos del cliente contiene sus datos estructurados autorizados. Sin un único límite, cada servicio del [[totebox-os|Totebox]] desarrolla su propia ruta de salida, cada ruta necesita su propia auditoría, y la disciplina de credenciales y auditoría se vuelve por servicio en lugar de vigente en toda la plataforma. El Doorman centraliza el límite para que la disciplina se aplique una sola vez.
+
+**Lo que el Doorman todavía no hace**: no depura información personal identificable ni datos de ubicación de un prompt antes de una llamada externa. El único código de saneamiento de la plataforma hoy redacta credenciales — claves de API, tokens, claves privadas — y se ejecuta únicamente en la ruta que escribe ejemplos de entrenamiento en el corpus de aprendizaje, nunca en la ruta hacia un modelo externo. Véase [[sovereign-ai-routing]] para el panorama completo de qué llega hoy al Nivel C y qué no.
 
 ## Enrutamiento de cómputo en tres niveles
 
-El Doorman enruta las llamadas de inferencia en tres niveles. Los tres están implementados en el código de enrutamiento — "planificado" describe el estado de activación, no código que aún no existe.
+El Doorman enruta las llamadas de inferencia en tres niveles.
 
-**Nivel A — local.** Se ejecuta en la VM del servidor usando CPU y RAM, para inferencia rápida, de baja latencia y bajo costo sobre un modelo alojado localmente. El Nivel A gestiona la mayor parte del volumen de enrutamiento sin gasto en la nube, y está verificado operativamente.
+**Nivel A — local.** Se ejecuta en la VM del servidor usando CPU y RAM, para inferencia rápida, de baja latencia y bajo costo sobre un modelo alojado localmente. El Nivel A gestiona la mayor parte del volumen de enrutamiento sin gasto en la nube.
 
-**Nivel B — grupo de GPU por demanda.** El Nivel B enruta cargas de trabajo a instancias GPU efímeras ([[yoyo-compute-substrate|el sustrato de cómputo Yo-Yo]]), iniciadas bajo demanda y detenidas en reposo (un monitor de apagado por inactividad, con un valor predeterminado de 30 minutos, emite la llamada real de desaprovisionamiento), con dos perfiles: una instancia de **entrenamiento** para ciclos continuos sobre tuplas acumuladas, y una instancia de **grafo** para cargas de trabajo del grafo de propiedades — no una instancia de "extracción" como describía la documentación anterior. La lógica de enrutamiento y el monitor de apagado por inactividad están completamente implementados; que un perfil determinado esté accesible en un momento dado depende de su propia verificación de salud y del estado de su interruptor de circuito, que el punto de conexión `/readyz` del Doorman reporta por perfil.
+**Nivel B — grupo de GPU por demanda.** El Nivel B enruta cargas de trabajo a instancias GPU efímeras ([[yoyo-compute-substrate|el sustrato de cómputo Yo-Yo]]), iniciadas bajo demanda y detenidas en reposo — una ventana de inactividad predeterminada de 30 minutos antes del desaprovisionamiento — con dos perfiles: una instancia de **entrenamiento** para ciclos continuos sobre tuplas acumuladas, y una instancia de **grafo** para cargas de trabajo del grafo de propiedades. Que un perfil determinado esté accesible en un momento dado depende de su propia verificación de salud y del estado de su interruptor de circuito, que el punto de estado del Doorman reporta por perfil.
 
-**Nivel C — proxy de API externa.** La lista de permitidos y el andamiaje de límites de costo del Nivel C están implementados para tareas de precisión limitada — fundamentación de citas, asistencia en la construcción del grafo, desambiguación de entidades — pero los comentarios del propio código fuente indican que las llamadas en vivo a API externas aún no están habilitadas en esta versión; activarlas es una decisión operativa separada, no una función faltante. La documentación anterior afirmaba que el Nivel C "inyecta ontologías de `service-content` predefinidas para restringir la salida al vocabulario canónico de la plataforma" — no existe tal mecanismo en la ruta de código del Nivel C; esa afirmación se retracta aquí, no simplemente se suaviza.
+**Nivel C — proxy de API externa.** La lista de permitidos y el andamiaje de límites de costo del Nivel C cubren tareas de precisión limitada — fundamentación de citas, asistencia en la construcción del grafo, desambiguación de entidades. Activar llamadas externas en vivo es una decisión operativa deliberada y separada, no una construcción en curso.
 
 ## El libro de auditoría
 
@@ -46,11 +48,9 @@ Cada llamada de inferencia produce una entrada JSONL anexada a un archivo diario
 
 ## La disciplina de moduleId
 
-Se confirma que `moduleId` cumple dos funciones, no cinco. Etiqueta las entradas del libro de auditoría para la contabilidad de costos por proyecto y — desde que se implementó la corrección de aislamiento de inquilinos — circunscribe estrictamente las lecturas y escrituras del grafo de propiedades al módulo del solicitante, sin fusión entre inquilinos.
+`moduleId` cumple dos funciones. Etiqueta las entradas del libro de auditoría para la contabilidad de costos por proyecto, y circunscribe estrictamente las lecturas y escrituras del grafo de propiedades al módulo del solicitante, sin fusión entre inquilinos.
 
-La documentación anterior afirmaba además que `moduleId` selecciona la unidad systemd que gestiona la solicitud, delimita la caché clave-valor y selecciona la pila de adaptadores. Ninguna de esas tres funciones tiene respaldo en el código actual de enrutamiento, caché o centro de adaptadores, así que la afirmación se retracta aquí en lugar de mantenerse sin verificar.
-
-La aplicación es real pero más limitada que "toda solicitud necesita un `moduleId` válido": los puntos de conexión del grafo (`graph_query`, `graph_mutate`) rechazan un `moduleId` ausente o mal formado directamente. El punto de conexión de inferencia principal (`chat_completions`) rechaza un `moduleId` mal formado, pero recurre silenciosamente a un valor predeterminado cuando el encabezado simplemente está ausente, registrando solo una advertencia — una brecha real entre las dos familias de puntos de conexión, no un límite uniforme.
+La aplicación varía según el punto de conexión. Los puntos de conexión del grafo rechazan un `moduleId` ausente o mal formado directamente. El punto de conexión de inferencia principal rechaza un `moduleId` mal formado, pero recurre a un valor predeterminado cuando el encabezado simplemente está ausente, registrando solo una advertencia — una garantía más limitada en esa ruta que en los puntos de conexión del grafo.
 
 ## Enrutamiento de la tubería de aprendizaje
 
