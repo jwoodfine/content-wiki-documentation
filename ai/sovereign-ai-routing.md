@@ -7,10 +7,10 @@ type: topic
 content_type: topic
 quality: complete
 index_group: the-doorman-boundary
-short_description: "AI routing processes language model requests through a local sanitization step before any data reaches external models, keeping internal structured data off third-party servers."
+short_description: "AI routing holds every external-model credential and audit-logs every request at a single boundary — but the sanitize-outbound/rehydrate-inbound PII mechanism earlier versions of this article described does not exist in code, and Tier C external routing itself is not live yet."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-30
+last_edited: 2026-08-17
 editor: pointsav-engineering
 cites: []
 paired_with: sovereign-ai-routing.es.md
@@ -18,47 +18,29 @@ paired_with: sovereign-ai-routing.es.md
 ---
 
 
-**Correction (2026-08-02) — compliance-relevant, escalated:** the sanitize-outbound/rehydrate-inbound mechanism described in this article does not exist. The only real sanitization code, `service-slm/crates/slm-doorman/src/redact.rs`, is a plain regex-based **secret/credential redactor** (PEM keys, AWS/GitHub/Slack tokens) — its own doc comment states it is "the only redaction surface in the apprenticeship pipeline," called exclusively when writing training-corpus tuples (`apprenticeship.rs`, `verdict.rs`), never on the Tier C external-routing path. A corpus-wide search for "PII," "pseudonym," "location identif," or any rehydration-table code returns zero hits anywhere in `service-slm`. Separately, the real Tier C client (`tier/external.rs`) documents "no live API calls in v0.1.x" and gates every call behind a compile-time allowlist — contradicting this article's unhedged claim of live routing to external providers today. This is the same class of finding as the `security/data-sovereignty-telemetry.md` correction (an active gap between a public compliance-adjacent claim and real code, not just a stale technical detail) — escalated to Command by mailbox given this article explicitly targets regulated-industry readers (real estate, financial advisory, clinics, law firms) evaluating the platform's actual privacy protections. **Flagged, not resolved.**
+**What this article used to claim, and what's actually true.** Earlier versions described a "sanitize-outbound / rehydrate-inbound" mechanism: a local pass that would strip PII and location identifiers before any text left the customer's network, replace them with pseudonymous tokens, and reverse the substitution when the external model's response came back — a "linguistic air-lock." **No part of that mechanism exists.** The only real sanitization code, `service-slm/crates/slm-doorman/src/redact.rs`, is a plain regex-based **secret/credential redactor** — PEM private keys, AWS/GitHub/Slack tokens, generic bearer/API-key/secret/password patterns — and its own doc comment states it is "the only redaction surface in the apprenticeship pipeline," called exclusively when writing training-corpus tuples. It never runs on the path to an external model. A corpus-wide search for "PII," "pseudonym," "location identif," or any rehydration-table code returns zero hits anywhere in `service-slm`. Separately, the real Tier C client (`crates/slm-doorman/src/tier/external.rs`) documents "no live API calls in v0.1.x" and gates every call behind a compile-time allowlist that cannot be extended at runtime — so the routing this article describes as live today is not live at all yet, on top of never having had the sanitization step it claimed.
 
-> AI routing processes language model requests through a local sanitization step before any data reaches external models, keeping internal structured data off third-party servers.
+This is a compliance-relevant gap, not a cosmetic one. This article explicitly targets regulated-industry readers — real estate, financial advisory, clinics, law firms — evaluating the platform's actual privacy protections. The honest current answer: **when Tier C does go live, raw customer text will reach an external model unless a real PII-scrubbing mechanism is built first** — the credential redactor protects secrets, not customer data. What follows describes what's real today, not the retracted mechanism.
 
-**AI routing** in the [[pointsav-overview|PointSav]] platform is the mechanism by which [[service-slm|`service-slm`]] — the [[doorman-protocol|Doorman]] — mediates every request that involves a language model, whether the model runs locally on the customer's hardware, on a burst compute provider, or on an external API. The routing design treats the boundary between customer-controlled infrastructure and external compute as a one-directional filter: before any text leaves the customer's private network, the payload passes through a local Small Language Model that sanitizes sensitive information, strips location identifiers, and masks Personally Identifiable Information (PII). Only the sanitized prompt — containing the mathematical structure of the request but not the customer's private data — routes to external compute. When the external model returns a result, the router re-hydrates the response with the correct internal context before delivering it to the operator. The external model never holds the actual structured records from the customer's ledger.
+**AI routing**, as it actually exists, is the mechanism by which [[service-slm|`service-slm`]] — the [[doorman-protocol|Doorman]] — mediates every request that involves a language model, across three real compute tiers. [[service-slm|`service-slm`]] is confirmed as the sole boundary that holds external-model credentials and logs every call to the per-tenant audit ledger; no other component in the system holds external AI credentials or makes direct outbound calls to external language models. This part of the architecture is real and does what it claims — the gap is specifically the sanitization/rehydration layer, not the single-boundary design.
 
-## Overview
+## What's real today
 
-Commercial language models operate as external services. When an operator sends raw internal documents, ledger records, or operational questions to a centralized AI provider, that data enters third-party servers. For regulated industries — real estate, financial advisory, small clinics, law firms — this creates a compliance problem that cannot be solved by contractual agreements alone, because the data has physically left the customer's infrastructure.
+- **Three compute tiers, confirmed in `crates/slm-doorman/src/flow_policy.rs` and `lib.rs`**: Tier A (local), Tier B (Yo-Yo burst/GPU), Tier C (external API) as real routing targets (`RouteTarget::TierALocal`/`TierBNode`).
+- **Model names**: Tier A runs `olmo-3-7b-instruct` locally; Tier B (Yo-Yo) defaults to `Olmo-3-1125-32B-Think`.
+- **Tier C is not live.** `tier/external.rs` documents no live external API calls in this version; the client is wired only against a test mock, and every call is gated behind a fixed, compile-time allowlist.
+- **Every proxied call is audit-logged** — confirmed in `audit_proxy.rs`, `lib.rs`, and `cost_ledger.rs` — with cost and response recorded to a real audit ledger.
+- **Every request carries a mandatory tenant tag** (`ModuleId` in `slm-core`), confirmed real.
+- **Not found in code**: a "tenant's configured budget cap" determining routing decisions — cost tracking and pricing config exist, but no explicit per-tenant budget gate on the routing decision itself was located.
 
-The [[pointsav-overview|PointSav]] routing design solves this at the architecture layer. [[service-slm|`service-slm`]] acts as the sole boundary that holds API keys, logs every external call to the per-tenant audit ledger, and applies the sanitize-outbound / rehydrate-inbound discipline on every request. No other component in the system holds external AI credentials or makes direct outbound calls to external language models. See [[single-boundary-compute-discipline|the single-boundary compute discipline]].
+## What is not real (retracted, not softened)
 
-## How It Works
+The sanitize-outbound / rehydrate-inbound pass; PII detection; location-identifier stripping; pseudonymous token substitution; a rehydration table of any kind. None of it exists in `service-slm`. Any future version of this article that reinstates language like "sanitizes sensitive information" or "masks PII" for the Tier C routing path needs a fresh code citation, not a restoration of this text.
 
-The routing flow for a request that reaches Tier C (external API):
+## Applications — reframed as what the platform can honestly promise today
 
-1. Operator or service sends request to [[service-slm|`service-slm`]] [[doorman-protocol|Doorman]].
-2. Doorman identifies the tenant (`moduleId`) and the request tier.
-3. Local SLM (Tier A, OLMo 3 7B) runs the sanitization pass: identifies PII patterns, strips physical coordinates, replaces identifiable references with pseudonymous tokens, and records the token-to-original mapping in a per-request rehydration table held in local memory.
-4. Sanitized prompt routes outbound to the external model endpoint.
-5. External model returns response.
-6. Doorman applies the rehydration pass: replaces pseudonymous tokens with the correct internal context before returning the response to the caller.
-7. Doorman appends the full request record — original (local), sanitized version, response, grammar version, [[adapter-composition|adapter composition]] — to the per-tenant audit ledger ([[service-fs-architecture|`service-fs`]]).
-
-For Tier A (local) and Tier B (burst) requests, steps 3–6 simplify: the sanitization pass still runs for consistency of audit records, but the data does not leave the customer's infrastructure.
-
-## Architecture
-
-[[service-slm|`service-slm`]] is the single [[doorman-protocol|Doorman]] boundary across all three compute tiers:
-
-- **Tier A — Local:** OLMo 3 7B Q4 on the customer's machine (CPU). Zero data leaves the customer's hardware.
-- **Tier B — [[yoyo-compute-substrate|Yo-Yo burst]]:** OLMo 3.1 32B Think on multi-cloud GPU burst (GCP Cloud Run / RunPod / Modal / customer GPU). Sanitized prompt only.
-- **Tier C — External API:** Anthropic Claude / Google Gemini / OpenAI for narrow precision tasks. Sanitized prompt only; API keys held exclusively by Doorman.
-
-The customer does not select the tier. Request shape, prompt length, and the tenant's configured budget caps determine routing. The Doorman's routing decision is logged to the audit ledger alongside the request record.
-
-## Applications
-
-- **Editorial workflow:** TOPIC and GUIDE drafts routed through external models carry only the sanitized editorial prompt; customer-specific terminology maps are applied locally.
-- **Financial advisory firms:** ledger summaries routed for analysis strip account numbers, client names, and jurisdiction identifiers before leaving the office network.
-- **Real estate operations:** property records routed for description generation replace addresses and owner names with pseudonymous tokens for the external call.
+- **Editorial workflow**: TOPIC and GUIDE drafts that reach Tier C today do so through the fixed allowlist's narrow-precision tasks (see [[learning-datagraph-architecture]] for `draft_generate`'s real behavior) — not through any sanitization step, because none exists for this path.
+- **Financial advisory / real estate / clinic / law-firm use** of Tier C: not yet a safe claim to make in this article's own terms, given the retraction above. Any of these use cases sending ledger records, client names, or property/owner records through Tier C today would reach the external model unredacted for PII. This should stay flagged until a real mechanism is built and independently verified, not implied as already solved.
 
 ## See also
 
