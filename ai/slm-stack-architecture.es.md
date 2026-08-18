@@ -7,72 +7,62 @@ type: topic
 content_type: topic
 quality: complete
 index_group: the-doorman-boundary
-short_description: "Visión estratégica del stack Rust de service-slm: un binario único, licencias permisivas de extremo a extremo, y la disciplina de construcción que mantiene la soberanía técnica sobre cada dependencia."
+short_description: "El stack real de service-slm: cinco crates de Rust con dos binarios reales — no el binario único que versiones anteriores afirmaban — con la inferencia en llama-server/vLLM externos, no Rust, y varios crates de procesamiento de documentos que no existen en el código."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-07-31
+last_edited: 2026-08-17
 editor: pointsav-engineering
 cites: []
 paired_with: slm-stack-architecture.md
 
 ---
 
-[[service-slm|`service-slm`]] — el [[doorman-protocol|Doorman]] de la plataforma [[pointsav-overview|PointSav]] — se construye como un único binario de Rust enlazado estáticamente. Cada dependencia directa en el stack es Rust puro o bindings Rust sobre una biblioteca nativa con licencia permisiva. No hay licencias copyleft en ningún punto del grafo de dependencias. Esta propiedad, denominada criterio "We Own It", garantiza que PointSav conserva el derecho irrestricto de bifurcar, modificar y redistribuir la totalidad del código base en cualquier momento.
+**Qué cambió en esta revisión.** Versiones anteriores de este artículo describían con confianza un stack que no coincide con el código real de `service-slm`. Esta revisión está verificada directamente contra el código fuente, no solo suavizada, y encontró un binario único inventado, un motor de inferencia en Rust que no existe, un marco "We Own It" fabricado, un tercer servicio externo sin respaldo en el código, y varios crates de procesamiento de documentos que no existen en ninguna parte del `Cargo.lock`.
+
+[[service-slm|`service-slm`]] se distribuye como un workspace Cargo de cinco crates reales (`slm-core`, `slm-doorman`, `slm-doorman-server`, `adapter-hub`, `slm-mcp-server`) con dos binarios `[[bin]]` reales (`slm-doorman-server`, `slm-mcp-server`) — no el binario único enlazado estáticamente que afirmaba texto anterior; no existe ninguna configuración de enlace estático (musl o similar) en la configuración del toolchain. El propio `ARCHITECTURE.md` del workspace lo llama una "arquitectura plana" por binario, no un binario único para todo el sistema.
 
 ## Por qué importa la elección de Rust
 
 La elección no es una preferencia de lenguaje. Es una restricción de ingeniería impuesta por el destino de despliegue previsto: hardware [[totebox-os|ToteboxOS]], donde un intérprete CPython más un marco de ML de gran tamaño no caben en el presupuesto de memoria disponible. La ausencia de recolector de basura, el arranque predecible y el paralelismo real sobre múltiples núcleos sin bloqueo global de intérprete son requisitos operativos, no mejoras opcionales.
 
-El objetivo técnico es lo que la industria denomina "Rust de nivel L2": todo el código escrito por PointSav es Rust, y cada crate de dependencia directa es un crate Rust — aunque internamente pueda usar FFI hacia C/C++ para kernels CUDA o motores de almacenamiento columnares. El nivel L3 (Rust transitive completo hasta el metal) no es alcanzable en 2026 para los motores de inferencia GPU, y tampoco es el objetivo correcto. La prueba "We Own It" es una cuestión de licencias, no de lenguaje: `MIT + Apache-2.0 = lo poseemos`.
+## El marco real "We Own It" — no la taxonomía de dependencias Rust que inventaba texto anterior
+
+Versiones anteriores describían una tabla de tres niveles "L1/L2/L3 de Rust" que clasificaba cuánto del árbol de dependencias es Rust frente a FFI, y llamaba a eso la prueba "We Own It". **Esa tabla no corresponde a ningún marco real de este código base.** El concepto real de "We Own It", documentado en `substrate/llm-substrate-decision.md` y `service-slm/docs/yoyo-training-substrate-and-service-content-integration.md`, clasifica la **apertura del LLM**, no la composición del grafo de dependencias: L1 es pesos abiertos, L2 añade una licencia permisiva, L3 exige que todo el linaje — pesos, datos de entrenamiento y código — esté abiertamente licenciado. OLMo 3 se cita en la documentación real como cumplidor de L3 bajo *este* marco, una afirmación sobre el modelo, no sobre cuánto del propio árbol de dependencias Cargo de `service-slm` está escrito en Rust. La propiedad de higiene de licencias que texto anterior buscaba describir (sin licencias copyleft en ningún punto del grafo de dependencias, por lo que PointSav conserva el derecho irrestricto de bifurcar, modificar y redistribuir) es real y la aplica `cargo-deny` — simplemente no es lo que "We Own It" significa en el vocabulario propio de este código base, y confundir ambos conceptos inventa un marco que no existe.
 
 ## Capas clave del stack
 
-**Inferencia**: `mistral.rs` (MIT) — binario Rust enlazado estáticamente, con FlashAttention V2/V3, PagedAttention y carga en caliente de adaptadores LoRA por token. El modelo base de producción es la familia **OLMo 3**, el único modelo de pesos abiertos cuya totalidad — pesos, datos de entrenamiento y código — está bajo licencias permisivas (Apache 2.0 + Open Data Commons). Esta es la condición necesaria para la ruta de preentrenamiento continuo del [[apprenticeship-substrate]].
+**Inferencia**: no es un binario Rust. El Nivel A ejecuta **llama-server (llama.cpp)** y el Nivel B ejecuta **vLLM** — ambos procesos externos, no Rust, invocados por HTTP (`service-slm/ARCHITECTURE.md`). `mistral.rs` y `candle` no están desplegados en ninguna parte del stack actual; `candle` aparece solo como una ruta futura hipotética en la documentación, no como infraestructura de producción. La afirmación de texto anterior de que vLLM era "el motor de inferencia de prueba de la Fase 1, reemplazado por mistral.rs en la Fase 2" se contradice con el resto del propio historial de correcciones de este artículo — vLLM es el motor real y actual del Nivel B, sin reemplazo planificado ni en curso.
 
-**HTTP y runtime**: `axum` + `tower` + `tokio` (todos MIT). Un único loop de eventos asíncrono atiende las peticiones entrantes del [[doorman-protocol|Doorman]] y despacha las llamadas salientes a Cloud Run GPU ([[yoyo-compute-substrate|Yo-Yo]]) y a las APIs externas.
+El modelo base de producción es la familia **OLMo 3**, cuya totalidad — pesos, datos de entrenamiento y código — está bajo licencias permisivas (Apache 2.0 + Open Data Commons). Esta es la condición necesaria para la ruta de preentrenamiento continuo del [[apprenticeship-substrate]].
 
-**Almacenamiento y estado**: `sqlx` con SQLite para el ledger de auditoría de solo-lectura-apendizaje; LadybugDB via bindings Rust (en [[service-content]]) para el grafo de conocimiento; `object_store` (Apache-2.0) para pesos y adaptadores LoRA en almacenamiento en la nube.
+**HTTP y runtime**: `axum` + `tower` + `tokio` (todos MIT), confirmados en el `Cargo.toml` real. Las llamadas HTTP salientes usan `reqwest`.
 
-**Procesamiento de documentos**: `oxidize-pdf` (Rust puro, cero dependencias C, 3.000–4.000 páginas/seg), `docx-rust`, `calamine` y `pulldown-cmark`. **mupdf-rs está explícitamente excluido** por su licencia AGPL-3.0, y la política `cargo-deny` en CI lo hace cumplir automáticamente en cada commit.
+**Almacenamiento y estado**: el ledger de auditoría usa **rusqlite** con SQLite, no `sqlx` como afirmaba texto anterior — `Cargo.lock` no tiene ninguna coincidencia de `sqlx` entre los 286 paquetes del workspace. El grafo de conocimiento a largo plazo (en [[service-content]]) es LadybugDB. No se encontró ninguna dependencia `object_store` para el almacenamiento en la nube de pesos/adaptadores; la afirmación de texto anterior al respecto no está confirmada.
 
-**Orquestación**: `apalis` (MIT) — procesamiento de trabajos con composición de pasos y middleware `tower`. Sin dependencias Python, sin bucles de mensajería externos. El modelo de trabajo de service-slm es: saneamiento → envío → espera → recepción → rehidratación. apalis encaja de forma nativa en ese modelo.
+**Procesamiento de documentos, orquestación y observabilidad — no son dependencias reales.** Texto anterior nombraba un stack sustancial de procesamiento de documentos y orquestación — `oxidize-pdf`, `docx-rust`, `calamine`, `pulldown-cmark` para la ingesta de documentos; `apalis` para orquestación de trabajos; `opentelemetry-rust` para exportación de trazas; `sigstore-rs` para firma de artefactos; `mupdf-rs` como dependencia AGPL explícitamente excluida. **Ninguno de estos aparece en ninguna parte del `Cargo.lock` del workspace.** Esta sección completa de texto anterior fue inventada, no simplemente imprecisa — no hay evidencia real de que este stack de procesamiento de documentos/orquestación/observabilidad exista en `service-slm` hoy.
 
-## Arquitectura plana: un binario, sin malla de servicios
-
-El workspace Cargo produce un único binario: `slm-cli`. Los módulos lógicos se comunican mediante llamadas a funciones Rust, no mediante RPC. Las llamadas externas — a Cloud Run, al sidecar Mooncake, a las APIs externas permitidas, a LadybugDB — son los únicos límites de red.
-
-Este es el perfil que requiere un componente de ToteboxOS: un proceso, un flujo de logs, un conjunto de métricas, un binario para firmar con Sigstore, un archivo de configuración.
+**Higiene de licencias — confirmada real, con correcciones menores.** `cargo-deny` realmente se ejecuta en CI con un `deny.toml` real, confirmado por lectura directa. La lista de licencias permitidas coincide en gran parte con lo descrito antes (`MIT`, `Apache-2.0`, `BSD-2-Clause`, `BSD-3-Clause`, `ISC`, `MPL-2.0` a nivel de archivo, `Zlib`), con dos correcciones: el archivo real también permite `Apache-2.0 WITH LLVM-exception` y `CC0-1.0`, ambas omitidas antes; y las entradas de licencia Unicode son `Unicode-DFS-2016`/`Unicode-3.0` en el archivo real, no el `Unicode-DFS` genérico que usaba texto anterior.
 
 ## Integración con ToteboxOS
 
-La arquitectura de binario único está motivada en parte por las restricciones de despliegue de ToteboxOS. Un stack CPython más un marco de inferencia GPU no cabe en el presupuesto de memoria disponible en hardware de appliance restringido. Un binario Rust con un runtime de inferencia cuantizado operando en modo CPU sí cabe.
+La arquitectura está motivada en parte por las restricciones de despliegue de ToteboxOS. Un stack CPython más un marco de inferencia GPU no cabe en el presupuesto de memoria disponible en hardware de appliance restringido. Un binario Rust con un runtime de inferencia cuantizado operando en modo CPU sí cabe.
 
-Las restricciones relevantes según el perfil de hardware ToteboxOS Laptop-A (~550 MB de margen disponible tras los servicios centrales):
+**La restricción vinculante en los hosts Laptop-A es el presupuesto de 4 GB de RAM** — no la cifra de "~550 MB de margen disponible" que citaba texto anterior, la cual no tiene fuente en ninguna parte del código base; el `ARCHITECTURE.md` real indica directamente la cifra de 4 GB.
 
-- Binario estático, sin arranque de intérprete — segundos, no minutos, hasta la primera inferencia
+- Binario estático por cada objetivo `[[bin]]`, sin arranque de intérprete — segundos, no minutos, hasta la primera inferencia
 - Sin recolector de basura, sin heap de intérprete
 - Paralelismo real entre núcleos sin bloqueo global de intérprete
 - Compilación cruzada vía `cargo build --target aarch64-unknown-linux-gnu` para objetivos ARM de ToteboxOS
 
-## Tres servicios externos que no son Rust
+## Dos servicios externos que no son Rust — no tres
 
-Tres servicios del sustrato de cómputo Yo-Yo se sitúan fuera del binario Rust, todos detrás de protocolos de red estables:
+Versiones anteriores de este artículo enumeraban tres servicios externos no-Rust en el sustrato de cómputo Yo-Yo, incluyendo "SkyPilot" para orquestación de GPU multi-nube. **SkyPilot no tiene ninguna referencia en ninguna parte del monorepo** y se elimina aquí en lugar de mantenerse sin verificar. Los dos reales:
 
 **LMCache + Mooncake Store** (plano de control en Python + Mooncake Transfer Engine en C++): el nivel de caché KV que persiste el estado de prefill a través de los reinicios de nodos GPU. service-slm mantiene un cliente Rust que se comunica con Mooncake vía HTTP y TCP. Sin acoplamiento FFI. Ambos tienen licencia Apache-2.0.
 
-**vLLM** (Python): el motor de inferencia de prueba de la Fase 1. Reemplazado por mistral.rs en la Fase 2. Apache-2.0.
+**vLLM** (Python): el motor de inferencia real y actual del Nivel B (véase Capa de inferencia, arriba) — no una prueba superada, como afirmaba texto anterior. Apache-2.0.
 
-**SkyPilot** (Python): orquestación de GPU multi-nube. Se usa cuando Cloud Run GPU por sí solo resulta insuficiente. Apache-2.0.
-
-Los tres están detrás de protocolos de red estables. service-slm depende del protocolo de comunicación, no de la implementación. Sustituir cualquiera de ellos requiere cambiar un único módulo cliente.
-
-## Soberanía de licencias en producción
-
-`cargo-deny` impone la política de licencias sobre el grafo completo de dependencias transitivas en cada ejecución de CI. Cualquier dependencia nueva que introduzca AGPL, GPL, LGPL, BSL o licencias comunitarias personalizadas falla la compilación de forma automática. La política está registrada en `deny.toml` en el repositorio y se revisa con cada adición de dependencia.
-
-## Camino de apertura futura
-
-Si en el futuro PointSav decidiera publicar `service-slm` como código abierto, la publicación sería mecánica: todas las dependencias ya son Apache-2.0 o MIT. La decisión de licencia para el código propio de PointSav se prevé Apache-2.0 (por la concesión explícita de patentes, ventajosa en mercados institucionales), con sign-off de Developer Certificate of Origin en lugar de CLA. No hay modificaciones técnicas necesarias en la base de código.
+Ambos están detrás de protocolos de red estables; service-slm depende del protocolo de comunicación, no de la implementación. Sustituir cualquiera de ellos requiere cambiar un único módulo cliente.
 
 ## Véase también
 
