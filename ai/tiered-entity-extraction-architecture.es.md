@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: TRANSLATE-ES
-last_edited: 2026-06-28
+last_edited: 2026-08-17
 editor: editorial
 short_description: "La plataforma PointSav ejecuta tres niveles de extracción en secuencia sobre cada documento: el Nivel 0 proporciona detección extractiva rápida vía GLiNER; el Nivel A ofrece una alternativa generativa vía OLMo en CPU; el Nivel B aplica enriquecimiento en GPU y registra las mejoras como señal de entrenamiento."
 paired_with: tiered-entity-extraction-architecture.md
@@ -26,11 +26,11 @@ La plataforma PointSav ejecuta tres niveles de extracción en secuencia sobre ca
 
 ## Nivel 0 — Detección Extractiva (GLiNER)
 
-El Nivel 0 envía los documentos a `service-gliner`, un microservicio de reconocimiento de entidades nombradas GLiNER que se ejecuta localmente en la VM. GLiNER es un modelo basado en el codificador BERT que lee un tramo de texto y devuelve los tramos de entidades con sus clasificaciones. Es puramente extractivo: sólo puede devolver tramos que aparecen literalmente en el texto de entrada y no puede generar ni inferir nombres que no estén presentes.
+El Nivel 0 envía los documentos a `service-gliner`, un microservicio de reconocimiento de entidades nombradas GLiNER que se ejecuta localmente en la VM (`urchade/gliner_medium-v2.1`). GLiNER es un modelo basado en el codificador **DeBERTa**, no BERT — el propio comentario del código real señala DeBERTa específicamente porque libera el GIL de Python, una propiedad real de rendimiento que BERT no comparte. Lee un tramo de texto y devuelve los tramos de entidades con sus clasificaciones, y es puramente extractivo: sólo puede devolver tramos que aparecen literalmente en el texto de entrada y no puede generar ni inferir nombres que no estén presentes.
 
-La latencia típica en CPU es de 130 a 208 milisegundos por documento, dos o tres órdenes de magnitud más rápido que la inferencia generativa.
+La latencia típica en CPU solo se documenta de forma cualitativa en el código — un comentario describe GLiNER como aproximadamente "150 veces más rápido que OLMo" — no se encontró ninguna cifra específica en milisegundos como la citada anteriormente aquí; trátese la cifra exacta como sin fuente en lugar de repetirla como un hecho.
 
-Los documentos se dividen en fragmentos con límite de oración de hasta 2.000 caracteres cada uno antes del envío. El codificador BERT opera con un contexto fijo de 512 tokens; el texto en el límite de 2.000 caracteres ocupa aproximadamente 480 tokens, dejando margen para las cadenas de descripción de etiquetas sin truncación. Todos los fragmentos se envían en secuencia; los tramos de entidades de todos los fragmentos se fusionan y deduplican por clave (lower(entity_name), classification) antes de escribirlos en el almacén de grafo. Los artículos largos y los documentos de varias páginas quedan, por tanto, completamente cubiertos.
+Los documentos se dividen en fragmentos con límite de oración de hasta 2.000 caracteres cada uno antes del envío, con un solapamiento de 150 caracteres entre fragmentos consecutivos (no documentado anteriormente aquí). El codificador DeBERTa opera con un contexto fijo de 512 tokens; el texto en el límite de 2.000 caracteres ocupa aproximadamente 480 tokens, dejando margen para las cadenas de descripción de etiquetas sin truncación. Todos los fragmentos se envían en secuencia; los tramos de entidades de todos los fragmentos se fusionan y deduplican por clave (lower(entity_name), classification) antes de escribirlos en el almacén de grafo. Los artículos largos y los documentos de varias páginas quedan, por tanto, completamente cubiertos.
 
 Las etiquetas se expresan como descripciones en lenguaje natural. El identificador de dominio del documento selecciona el conjunto de etiquetas:
 
@@ -50,7 +50,7 @@ El Nivel A envía los documentos a OLMo 7B ejecutándose en CPU a través del en
 
 La extracción utiliza un prompt estructurado que restringe el modelo a las mismas cinco clasificaciones de entidades que usa el Nivel 0. Cuando las restricciones gramaticales están habilitadas, el modelo se ve obligado a emitir JSON válido conforme al esquema de extracción, eliminando los rechazos por violación de esquema. La llamada de inferencia utiliza `temperature: 0.0` para producir resultados deterministas y `cache_prompt: true` para permitir la reutilización del caché KV entre llamadas consecutivas de extracción con el mismo prompt de sistema.
 
-La latencia del Nivel A en CPU oscila entre 30 y 137 segundos por documento según la longitud del documento y la carga concurrente. Cuando la cola de [[apprenticeship-substrate|aprendiz]] del Doorman está activa, los slots del Nivel A pueden estar ocupados y las llamadas de extracción interactivas se pondrán en cola.
+La latencia del Nivel A en CPU varía según la longitud del documento y la carga concurrente; ninguna cifra concreta tiene respaldo en el código, así que no se afirma ninguna aquí. Cuando la cola de [[apprenticeship-substrate|aprendiz]] del Doorman está activa, los slots del Nivel A pueden estar ocupados y las llamadas de extracción interactivas se pondrán en cola.
 
 ## Nivel B — Enriquecimiento en GPU
 
@@ -64,7 +64,7 @@ Los resultados del Nivel B y su referencia del Nivel A se registran como un par 
 
 Las entidades producidas por el nivel que genera el resultado aceptado se escriben en LadybugDB. Las entidades se identifican por módulo y nombre; los duplicados dentro de un módulo se actualizan mediante upsert. Se emite un punto de control después de cada lote de escritura para garantizar que las entidades escritas por el hilo de drenaje sean inmediatamente visibles para las consultas HTTP de lectura, que se ejecutan en un contexto de tiempo de ejecución separado.
 
-El [[service-extraction|servicio de extracción]] registra los documentos procesados en un libro de contabilidad JSONL para evitar la re-extracción al reiniciar el servicio.
+**Corrección:** este artículo enlazaba antes a `service-extraction`, un vigilante de ingesta de CRM/correo de un solo paso, sin relación, sin llamada a GLiNER, sin niveles y sin cola DPO. El crate real que implementa este pipeline es `service-content` — su pipeline GLiNER→OLMo→GPU coincide casi línea por línea con cada afirmación específica de este artículo. El [[service-content|servicio de contenido]] registra los documentos procesados en un libro de contabilidad JSONL para evitar la re-extracción al reiniciar el servicio.
 
 ## Contrapresión
 
@@ -76,6 +76,6 @@ Los documentos para los que el Nivel 0 devuelve una lista de entidades no vacía
 
 | Nivel | Servicio | Método | Latencia típica | Se activa cuando |
 |---|---|---|---|---|
-| 0 | service-gliner (GLiNER) | Detección extractiva | 130–208 ms | Por defecto — primera vía |
-| A | [[service-slm]] (OLMo 7B CPU) | Completado generativo | 30–137 s | Extracción: Nivel 0 inalcanzable; Entrenamiento: cada documento (asíncrono) |
-| B | service-slm (nodo GPU) | Enriquecimiento generativo | 10–30 s | Circuito cerrado + nodo saludable |
+| 0 | service-gliner (GLiNER, DeBERTa) | Detección extractiva | Sin fuente — cualitativamente "~150x más rápido que OLMo" según comentario del código | Por defecto — primera vía |
+| A | [[service-slm]] (OLMo 7B CPU) | Completado generativo | Sin fuente en el código | Extracción: Nivel 0 inalcanzable; Entrenamiento: cada documento (asíncrono) |
+| B | service-slm (nodo GPU) | Enriquecimiento generativo | Sin fuente en el código | Circuito cerrado + nodo saludable |

@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-07-11
+last_edited: 2026-08-17
 editor: editorial
 short_description: "The entity extraction pipeline runs three tiers per document: Tier 0 fast extractive detection via GLiNER, Tier A generative fallback via OLMo, Tier B GPU enrichment."
 paired_with: tiered-entity-extraction-architecture.es.md
@@ -26,11 +26,11 @@ The PointSav [[service-content|entity extraction pipeline]] runs three tiers in 
 
 ## Tier 0 — Extractive Detection (GLiNER)
 
-Tier 0 routes document payloads to `service-gliner`, a GLiNER named entity recognition microservice running locally on the workspace VM. GLiNER is a BERT-encoder model that reads a text span and returns entity spans with classifications. It is purely extractive: it can only return spans that appear verbatim in the input text and cannot generate or infer names that are not present.
+Tier 0 routes document payloads to `service-gliner`, a GLiNER named entity recognition microservice running locally on the workspace VM (`urchade/gliner_medium-v2.1`). GLiNER is a **DeBERTa**-encoder model, not BERT — the real code's own comment notes DeBERTa specifically because it releases the Python GIL, a real performance property BERT does not share. It reads a text span and returns entity spans with classifications, and is purely extractive: it can only return spans that appear verbatim in the input text and cannot generate or infer names that are not present.
 
-Typical latency on CPU is 130–208 milliseconds per document. This is two to three orders of magnitude faster than generative inference.
+Typical latency on CPU is stated elsewhere in the codebase only qualitatively — a comment describes GLiNER as roughly "150x faster than OLMo" — no specific millisecond figure like the one previously cited here was found in source; treat the exact number as unsourced rather than repeat it as fact.
 
-Documents are split into sentence-boundary chunks of at most 2,000 characters each before dispatch. The BERT encoder operates on a fixed context of 512 tokens; prose at the 2,000-character limit occupies approximately 480 tokens, leaving room for the label description strings without truncation. All chunks are dispatched in sequence; entity spans from all chunks are merged and deduplicated by (lower(entity_name), classification) key before the result is written to the graph store. Long articles and multi-page documents are therefore fully covered.
+Documents are split into sentence-boundary chunks of at most 2,000 characters each before dispatch, with a 150-character overlap between consecutive chunks (not previously documented here). The DeBERTa encoder operates on a fixed context of 512 tokens; prose at the 2,000-character limit occupies approximately 480 tokens, leaving room for the label description strings without truncation. All chunks are dispatched in sequence; entity spans from all chunks are merged and deduplicated by (lower(entity_name), classification) key before the result is written to the graph store. Long articles and multi-page documents are therefore fully covered.
 
 Labels are expressed as plain-English descriptions rather than bare category names. The domain identifier in the document payload selects a label set:
 
@@ -50,7 +50,7 @@ Tier A routes document payloads to OLMo 7B running on the workspace VM's CPU via
 
 Extraction uses a structured prompt that constrains the model to the same five entity classifications used by Tier 0. When grammar constraints are enabled, the model is forced to emit valid JSON conforming to the extraction schema, eliminating schema-violation rejections. The inference call uses `temperature: 0.0` to produce deterministic output and `cache_prompt: true` to allow KV-cache reuse across consecutive extraction calls on the same system prompt.
 
-Tier A latency on CPU ranges from 30 to 137 seconds per document depending on document length and concurrent load. When the Doorman's [[apprenticeship-substrate|apprenticeship]] drain queue is active, Tier A slots may be occupied and interactive extraction calls will queue.
+Tier A latency on CPU varies with document length and concurrent load; no specific range has a source citation, so none is asserted here. When the Doorman's [[apprenticeship-substrate|apprenticeship]] drain queue is active, Tier A slots may be occupied and interactive extraction calls will queue.
 
 ## Tier B — GPU Enrichment
 
@@ -76,6 +76,6 @@ Documents for which Tier 0 returns a non-empty entity list always proceed to Tie
 
 | Tier | Service | Method | Typical latency | Activates when |
 |---|---|---|---|---|
-| 0 | service-gliner (GLiNER) | Extractive span detection | 130–208 ms | Default — first path |
-| A | [[service-slm|service-slm]] (OLMo 7B CPU) | Generative completion | 30–137 s | Extraction: Tier 0 unreachable; Training: every document (async) |
-| B | service-slm (GPU node) | Generative enrichment | 10–30 s | Circuit closed + node healthy |
+| 0 | service-gliner (GLiNER, DeBERTa) | Extractive span detection | Not sourced — qualitatively "~150x faster than OLMo" per code comment | Default — first path |
+| A | [[service-slm|service-slm]] (OLMo 7B CPU) | Generative completion | Not sourced in code | Extraction: Tier 0 unreachable; Training: every document (async) |
+| B | service-slm (GPU node) | Generative enrichment | Not sourced in code | Circuit closed + node healthy |
