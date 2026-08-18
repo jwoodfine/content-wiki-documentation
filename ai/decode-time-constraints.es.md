@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Restricciones en tiempo de decodificación (resumen)"
 slug: decode-time-constraints
-short_description: "La técnica de decodificación restringida, descrita con precisión — y una línea clara entre esa técnica y lo que PointSav realmente ha construido: hoy, un linter asesor posterior a la generación; el mecanismo basado en gramática sigue siendo enteramente planificado, no implementado."
+short_description: "La técnica de decodificación restringida, y una línea clara entre esa técnica y lo que PointSav ha construido hoy: un linter asesor posterior a la generación, con el mecanismo basado en gramática planificado, no implementado."
 category: ai
 type: topic
 content_type: topic
@@ -31,35 +31,25 @@ gramática, y está bien establecida en la literatura: la biblioteca `[llguidanc
 Microsoft Research, `[xgrammar]` de Carnegie Mellon, las salidas estructuradas de vLLM, y
 un cuerpo creciente de literatura sobre generación estructurada con modelos de lenguaje.
 
-## Lo que realmente está en producción hoy
+## Lo que está en producción hoy
 
 La aplicación del vocabulario editorial en esta plataforma no usa restricciones de tiempo
-de decodificación. El mecanismo real y actual es una lista de palabras asesora,
-`.agent/editorial-qa/banned-vocabulary.txt`, verificada por
-`.agent/scripts/editorial-lint.py` — un linter que se ejecuta después de la generación,
-no durante ella, y cuyo propio encabezado indica que ningún commit se bloquea jamás por
-una coincidencia; las infracciones se registran como advertencias para revisión
-editorial. Desde el 2026-08-01 el propio linter fue actualizado para leer
-`tokens/linguistic/vocabulary-banned-*.yaml` de `pointsav-design-system` en lugar del
-archivo de texto estático, así que incluso este mecanismo asesor ya cambió una vez.
+de decodificación. El mecanismo actual es una lista de palabras asesora verificada por un
+linter que se ejecuta después de la generación, no durante ella; ningún commit se bloquea
+jamás por una coincidencia, y las infracciones se registran como advertencias para
+revisión editorial.
 
-No existe ningún archivo de gramática `.lark`, ningún directorio `service-content/
-schemas/`, ningún `validate.py`, ni ningún directorio de plantillas por género
-`service-disclosure/templates/` en ninguna parte del monorepo — confirmado por búsqueda
-directa, no inferido. La inferencia de producción en el Nivel A (`slm-doorman/src/tier/
-local.rs`) **rechaza** explícitamente las gramáticas Lark ("llama-server no incluye
-llguidance") y escala al Nivel B en su lugar. `llguidance` es una dependencia real en el
-código, pero valida la sintaxis de gramática arbitraria proporcionada por quien llama, en
-el límite de la solicitud HTTP del Doorman — un paso de validación de entrada, sin
-relación con la aplicación de vocabulario prohibido.
+La inferencia de producción en el Nivel A rechaza la decodificación restringida por
+gramática y escala al Nivel B en su lugar — el runtime local no la admite. `llguidance`
+se usa en otro punto de la plataforma, en el límite de la solicitud HTTP del Doorman, para
+validar la sintaxis de gramática arbitraria proporcionada por quien llama — un paso de
+validación de entrada, sin relación con la aplicación de vocabulario prohibido.
 
-## La técnica que este artículo describía originalmente como construida
+## El mecanismo completo, planificado
 
-Todo lo que sigue describe el *diseño* — una arquitectura real, coherente y factible,
-consistente con la técnica general anterior — no un sistema ya implementado. Cada verbo
-en tiempo presente en esta sección debe leerse como `planificado`/`intencionado`, según
-la postura estándar de esta plataforma sobre lenguaje prospectivo de la BCSC; nada de
-esto debe leerse como una capacidad actual.
+Todo lo que sigue describe un diseño — coherente y factible, consistente con la técnica
+general anterior — no un sistema ya implementado. Cada verbo en tiempo presente en esta
+sección describe algo planificado o intencionado, no una capacidad actual.
 
 **El mecanismo previsto.** Una gramática declararía qué vocabulario está prohibido; el
 runtime haría que el token infractor fuera inalcanzable en lugar de detectarlo después
@@ -106,14 +96,13 @@ está construida.
 **3. La restricción necesitaría ser auditable.** Por la postura de divulgación continua
 de la BCSC (`[ni-51-102]`), toda salida editorial debería ser trazable a las reglas bajo
 las cuales fue generada. El libro mayor de auditoría actual (véase [[doorman-protocol]])
-no lleva un campo de versión de gramática ni de hash de respuesta — eso es
-genuinamente prospectivo, no una omisión de esta descripción.
+no lleva un campo de versión de gramática ni de hash de respuesta.
 
 ## Trabajo planificado
 
-Por la postura de divulgación continua de la BCSC (`[ni-51-102]`), todo el mecanismo
-basado en gramática descrito arriba es `planificado` e `intencionado`, no construido. En
-orden aproximado de dependencia:
+Por la postura de divulgación continua de la BCSC (`[ni-51-102]`), esta plataforma
+describe el mecanismo basado en gramática como `planificado` e `intencionado`, no
+construido. En orden aproximado de dependencia:
 
 - Una gramática base real (reglas de vocabulario prohibido universales), que reemplace
   al linter asesor actual.
