@@ -7,10 +7,10 @@ type: topic
 content_type: topic
 quality: complete
 index_group: compute-tiers
-short_description: "The planned vendor-tier specialist AI model for substrate-sovereign SMBs — Tier 3 of the Four-Tier SLM Substrate Ladder, built by continued pretraining of OLMo 3 32B."
+short_description: "The planned vendor-tier specialist AI model for substrate-sovereign SMBs — Tier 3 of the Four-Tier SLM Substrate Ladder, built by continued pretraining of the OLMo 3 32B base model (not the Think variant earlier text named — AllenAI has not published a 32B-Think variant)."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-07-18
+last_edited: 2026-08-17
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -19,7 +19,7 @@ paired_with: pointsav-llm.es.md
 
 ---
 
-**PointSav-LLM** is the planned Tier 3 specialist AI model in [[pointsav-overview|PointSav]]'s [[four-tier-slm-substrate|Four-Tier SLM Substrate Ladder]] — the vendor-trained layer that is intended to emerge from continued pretraining of OLMo 3 32B Think (Apache 2.0) on the platform's federated, multi-tenant [[apprenticeship-substrate|apprenticeship corpus]]. It is not an active product. It is a planned trajectory: a first continued-pretraining (CPT) cycle is currently targeted for v0.5.0, Q1 2027, with a productized deployment currently targeted for v1.0.0, Q4 2027. When operational, PointSav-LLM is intended to serve small and medium-sized businesses that require a specialist model trained on PointSav conventions, [[totebox-archive|Totebox Archive]] operations, and multi-tenant editorial patterns — without requiring the infrastructure investment or minimum-spend commitments that closed-source enterprise AI products impose.
+**PointSav-LLM** is the planned Tier 3 specialist AI model in [[pointsav-overview|PointSav]]'s [[four-tier-slm-substrate|Four-Tier SLM Substrate Ladder]] — the vendor-trained layer that is intended to emerge from continued pretraining of the OLMo 3 32B base model (Apache 2.0) on the platform's federated, multi-tenant [[apprenticeship-substrate|apprenticeship corpus]]. Internal engineering documentation describes this specifically as CPT of the 32B **base** model, not a "32B Think" variant — AllenAI has not published a Think variant at the 32B size, so that framing in earlier text was not just imprecise but referred to a model that does not exist. It is not an active product. It is a planned trajectory: a first continued-pretraining (CPT) cycle is currently targeted for v0.5.0, Q1 2027, with a productized deployment currently targeted for v1.0.0, Q4 2027. When operational, PointSav-LLM is intended to serve small and medium-sized businesses that require a specialist model trained on PointSav conventions, [[totebox-archive|Totebox Archive]] operations, and multi-tenant editorial patterns — without requiring the infrastructure investment or minimum-spend commitments that closed-source enterprise AI products impose.
 
 *All capability descriptions, timelines, pricing structures, and performance targets in this article are forward-looking. They are planned or intended, not current operational facts. Actual outcomes depend on corpus growth rate, model performance, engineering capacity, and market conditions. [ni-51-102] [osc-sn-51-721]*
 
@@ -52,16 +52,21 @@ The planned access path routes entirely through each customer's local [[doorman-
 1. Customer application sends a query to the local [[doorman-protocol|Doorman]] (127.0.0.1:9080 by default).
 2. Doorman classifies query complexity using the current Tier A local model (OLMo 3 7B Q4).
 
-**Correction (2026-07-18):** the exact Tier A model name is inconsistent across this
-wiki's own sibling articles and across the engineering source itself. This article says
-"OLMo 3 7B Q4" (here and in the Four-Tier table below); [[learning-datagraph-architecture]]
-says "the local SLM (OLMo-2 7B Q4)" for the same Tier A role, matching one internal
-engineering doc (`service-slm/NEXT.md`: "OLMo-2-7B Q4_K_M; Tier A primary"); a third
-internal doc describes Tier A as "OLMo 2 1B." These do not read as three names for one
-model — they look like an unresolved version-drift in the underlying engineering docs
-themselves, not just a wiki staleness issue. **Flagged, not resolved** — needs
-project-totebox confirmation of the actual current Tier A model before either name is
-corrected here.
+**Correction (2026-08-17, citation fixed — the underlying finding was real, the prior
+citation to `service-slm/NEXT.md` was not; no file by that name exists anywhere in the
+monorepo).** The Tier A model name genuinely is inconsistent across the real engineering
+source, confirmed by direct search, not by wiki cross-referencing alone: the canonical
+registry (`service-slm/data/base-registry.yaml`) sets `allenai/OLMo-3-7B-Instruct` as
+Tier A — matching this article and the Four-Tier table below — but several other real
+docs disagree with the canonical registry and with each other: `docs/topic-claude-code-
+sovereign-routing.md`, `docs/guide-activate-anthropic-shim.md`, and `docs/topic-tos-
+training-constraints.md` all say "OLMo 2 1B," while `docs/guide-post-commit-training-
+hook.md` and `crates/adapter-hub/src/lib.rs` say "OLMo-2-7B." [[learning-datagraph-
+architecture]]'s own prior "OLMo-2 7B Q4" claim has since been corrected there to match
+the canonical registry (OLMo 3, not OLMo 2) — this article's "OLMo 3 7B Q4" was already
+right. The underlying inconsistency in the engineering docs themselves is real and still
+unresolved — **flagged, not resolved** — needs project-totebox confirmation of which
+non-canonical doc references should be updated to match `base-registry.yaml`.
 3. For queries classified as simple or routine, the Doorman routes to Tier A and returns a local response — no external call.
 4. For queries classified as requiring specialist depth (domain-specific platform conventions, [[totebox-archive|Totebox Archive]] operations, multi-tenant editorial structure), the Doorman is intended to route to the PointSav-LLM Tier C endpoint, authenticating via the customer's provisioned API key.
 5. The response returns through the Doorman. An audit row is written simultaneously at the customer's local Doorman and at the PointSav-LLM gateway — two-ledger, per-call audit trail.
@@ -85,6 +90,8 @@ PointSav-LLM is intended to carry explicit confidence signalling. When the model
 
 The customer's Doorman, on receiving this envelope, is intended to surface an escalation prompt to the end user — for example, "Ask a PointSav engineer." The customer does not see the raw confidence score; they see a product-level prompt tuned to their configured language and escalation SLA.
 
+This exact JSON shape does not exist in code today, which is expected for a Tier 3 product that has no operational state — but a differently-shaped, currently-real mechanism for a related, distinct purpose is worth noting as design precedent: `slm-core/src/apprenticeship.rs` already gates internal agent apprenticeship trajectories on `self_confidence: f32` and an `escalate: bool` flag, threshold `APPRENTICE_ESCALATE_THRESHOLD = 0.5`. That mechanism governs whether an AI session's own attempt gets escalated to a senior reviewer inside this workspace — it is not a customer-facing PointSav-LLM response envelope, and should not be cited as evidence this feature is built. It is evidence the general pattern (confidence score → threshold → escalation) already has one working implementation to design the customer-facing version against.
+
 ### Escalation events as training data
 
 Escalation events are planned to become training data. A resolved escalation — where a human engineer provides the correct answer — is intended to generate a Direct Preference Optimization (DPO) pair that feeds back into the next CPT cycle via the apprenticeship-substrate pipeline. The intended tiering:
@@ -95,7 +102,9 @@ Escalation events are planned to become training data. A resolved escalation —
 | L2 | Human-in-the-loop escalation | Remaining automated queries |
 | L3 | Engineering-tier escalation surfaced from unresolved L2 | Edge cases |
 
-All percentages are planned targets, not current operational data.
+All percentages are planned targets, not current operational data — and unlike most other figures in this article, no design document or prototype was found backing the specific ~80–90% split; treat it as illustrative rather than a sourced estimate until one exists.
+
+**Related, currently-real infrastructure, for a different tier of the commercial ladder.** `crates/adapter-hub/src/lib.rs` implements substantial, working LoRA/adapter infrastructure today — but it serves customer-tenant and commit-graph adapters (the commercial ladder's Tier 1/2), not the Tier 3 CPT model this article describes. It's the closest thing to "something has already been built" in this space, and worth knowing about, but it answers a different question than PointSav-LLM's own readiness.
 
 ---
 
@@ -147,10 +156,12 @@ PointSav-LLM occupies Tier 3 of the planned Four-Tier SLM Substrate Ladder. The 
 |------|------|------|--------|
 | 0 | Deterministic core | Rules, regex, structured lookup | Operational |
 | A | Local small model | OLMo 3 7B Q4 (CPU) | Operational (local llama-server) |
-| B | Burst compute | OLMo 3.1 32B Think (GPU via Yo-Yo) | Operational |
-| C | Vendor specialist | PointSav-LLM (planned CPT of OLMo 3 32B) | Planned — Q1 2027 |
+| B | Burst compute | `Olmo-3-1125-32B-Think` (GPU via Yo-Yo) | Operational |
+| C | Vendor specialist | PointSav-LLM (planned CPT of OLMo 3 32B base) | Planned — Q1 2027 |
 
 Tiers 0, A, and B are operational today. Tier C (PointSav-LLM) is planned, with no operational state at the time of this article. The Doorman's routing logic for Tier C is planned infrastructure; its current state is Tier A/B routing only.
+
+**A real distinction this table's own "0/A/B/C" numbering blurs.** The engineering source (`slm-core/src/tier.rs`) uses `InferenceRoute` (`Local`/`Yoyo`/`External`) for the technical compute tiers this table calls A/B/C — and its own code comment explicitly warns this naming is chosen "to avoid colliding with the unrelated customer-facing commercial tier ladder (Tier 0/1/2/3)." That commercial ladder (the Open/Paid-C/Paid-C+ pricing tiers described later in this article) is a genuinely separate numbering scheme from the technical A/B/C compute-routing tiers, even though this table's single "0/A/B/C" column visually merges them into one ladder. Worth keeping distinct in any future revision of this table, not collapsing further.
 
 ---
 

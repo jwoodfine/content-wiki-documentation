@@ -10,7 +10,7 @@ index_group: compute-tiers
 short_description: "El modelo de IA especialista planificado para el Nivel 3 del sistema de cuatro niveles SLM de PointSav, construido mediante entrenamiento continuo de OLMo 3 32B sobre el corpus federado de aprendizaje de la plataforma."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-07-31
+last_edited: 2026-08-17
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -43,16 +43,22 @@ El acceso de los clientes está previsto que se realice íntegramente a través 
 
 La secuencia planificada es la siguiente: el Doorman recibe la consulta, clasifica su complejidad mediante el modelo local del Nivel A (OLMo 3 7B Q4), y enruta hacia el Nivel A para consultas sencillas o hacia el endpoint de PointSav-LLM para consultas que requieran profundidad especialista. La respuesta retorna a través del Doorman, se escribe una fila de auditoría tanto en el Doorman del cliente como en la pasarela de PointSav-LLM, y la facturación por token se computa en la pasarela. El código de la aplicación del cliente no cambia entre el enrutamiento local del Nivel A y el enrutamiento al Nivel C de PointSav-LLM.
 
-**Corrección (2026-07-18):** el nombre exacto del modelo del Nivel A es inconsistente
-entre los artículos hermanos de este wiki y en la propia documentación de ingeniería.
-Este artículo dice "OLMo 3 7B Q4"; [[learning-datagraph-architecture]] dice "el SLM
-local (OLMo-2 7B Q4)" para el mismo rol de Nivel A, coincidiendo con un documento interno
-de ingeniería (`service-slm/NEXT.md`: "OLMo-2-7B Q4_K_M; Tier A primary"); un tercer
-documento interno describe el Nivel A como "OLMo 2 1B." Esto no se lee como tres nombres
-para un mismo modelo — parece una desactualización de versión sin resolver en la propia
-documentación de ingeniería, no solo un problema de desactualización del wiki.
-**Señalado, no resuelto** — necesita confirmación de project-totebox sobre el modelo
-actual real del Nivel A antes de corregir cualquiera de los dos nombres aquí.
+**Corrección (2026-08-17, cita corregida — el hallazgo de fondo era real, la cita previa
+a `service-slm/NEXT.md` no lo era; ese archivo no existe en ninguna parte del monorepo).**
+El nombre del modelo del Nivel A realmente es inconsistente en la fuente de ingeniería
+real, confirmado por búsqueda directa: el registro canónico
+(`service-slm/data/base-registry.yaml`) fija `allenai/OLMo-3-7B-Instruct` como Nivel A —
+coincidiendo con este artículo — pero varios otros documentos reales no coinciden con el
+registro canónico ni entre sí: `docs/topic-claude-code-sovereign-routing.md`,
+`docs/guide-activate-anthropic-shim.md` y `docs/topic-tos-training-constraints.md` dicen
+"OLMo 2 1B", mientras que `docs/guide-post-commit-training-hook.md` y
+`crates/adapter-hub/src/lib.rs` dicen "OLMo-2-7B". La afirmación previa de
+[[learning-datagraph-architecture]] ("OLMo-2 7B Q4") ya fue corregida allí para coincidir
+con el registro canónico (OLMo 3, no OLMo 2) — la afirmación de este artículo, "OLMo 3
+7B Q4", ya era correcta. La inconsistencia real en los propios documentos de ingeniería
+sigue sin resolverse — **señalado, no resuelto** — necesita confirmación de
+project-totebox sobre qué referencias no canónicas deben actualizarse para coincidir con
+`base-registry.yaml`.
 
 ---
 
@@ -60,7 +66,11 @@ actual real del Nivel A antes de corregir cualquiera de los dos nombres aquí.
 
 Cuando la confianza del modelo cae por debajo de un umbral, la respuesta está planificada para incluir señales de confianza estructuradas: `confidence: low`, `escalate_to_human: true` y una etiqueta de motivo de escalado. El Doorman del cliente presenta entonces una opción de escalado al usuario, como "Consultar con un ingeniero de PointSav".
 
-Los eventos de escalado resueltos por ingenieros humanos están planificados para convertirse en pares de datos de entrenamiento DPO para el siguiente ciclo CPT, a través del sustrato de aprendizaje (claim #32 de la Doctrina). La distribución prevista es: aproximadamente el 80–90% de las consultas gestionadas de forma autónoma en el Nivel L1, las restantes con intervención humana en L2, y los casos límite no resueltos escalados al Nivel L3 de ingeniería. Todos los porcentajes son objetivos planificados, no datos operativos actuales.
+Los eventos de escalado resueltos por ingenieros humanos están planificados para convertirse en pares de datos de entrenamiento DPO para el siguiente ciclo CPT, a través del sustrato de aprendizaje (claim #32 de la Doctrina). La distribución prevista es: aproximadamente el 80–90% de las consultas gestionadas de forma autónoma en el Nivel L1, las restantes con intervención humana en L2, y los casos límite no resueltos escalados al Nivel L3 de ingeniería. Todos los porcentajes son objetivos planificados, no datos operativos actuales — y, a diferencia de la mayoría de las cifras de este artículo, no se encontró ningún documento de diseño ni prototipo que respalde específicamente la división ~80–90%; trátese como ilustrativo, no como una estimación con fuente, hasta que exista una.
+
+Este esquema JSON exacto no existe en el código hoy, lo cual es esperable para un producto de Nivel 3 sin estado operativo — pero vale la pena señalar un mecanismo real hoy, de forma distinta, para un propósito relacionado pero diferente: `slm-core/src/apprenticeship.rs` ya condiciona las trayectorias internas de aprendizaje de los agentes de IA con `self_confidence: f32` y una bandera `escalate: bool`, umbral `APPRENTICE_ESCALATE_THRESHOLD = 0.5`. Ese mecanismo rige si el propio intento de una sesión de IA se escala a un revisor sénior dentro de este espacio de trabajo — no es un sobre de respuesta de PointSav-LLM orientado al cliente, y no debe citarse como evidencia de que esta función está construida. Es evidencia de que el patrón general (puntuación de confianza → umbral → escalado) ya tiene una implementación funcional sobre la cual diseñar la versión orientada al cliente.
+
+**Infraestructura relacionada, real hoy, para un nivel distinto de la escalera comercial.** `crates/adapter-hub/src/lib.rs` implementa infraestructura sustancial y funcional de LoRA/adaptadores hoy — pero sirve a adaptadores por inquilino-cliente y por grafo de commits (el Nivel 1/2 de la escalera comercial), no al modelo CPT de Nivel 3 que describe este artículo. Es lo más cercano a "algo ya construido" en este espacio, y vale la pena conocerlo, pero responde a una pregunta distinta de la preparación de PointSav-LLM en sí.
 
 ---
 
@@ -110,16 +120,18 @@ PointSav-LLM ocupa el Nivel 3 de la Escalera de Cuatro Niveles del Sustrato SLM 
 |------|------|------|--------|
 | 0 | Núcleo determinista | Reglas, regex, búsqueda estructurada | Operativo |
 | A | Modelo local pequeño | OLMo 3 7B Q4 (CPU) | Operativo (llama-server local) |
-| B | Cómputo de ráfaga | OLMo 3.1 32B Think (GPU vía Yo-Yo) | Operativo |
-| C | Especialista del proveedor | PointSav-LLM (CPT planificado de OLMo 3 32B) | Planificado — primer trimestre de 2027 |
+| B | Cómputo de ráfaga | `Olmo-3-1125-32B-Think` (GPU vía Yo-Yo) | Operativo |
+| C | Especialista del proveedor | PointSav-LLM (CPT planificado del modelo base OLMo 3 32B) | Planificado — primer trimestre de 2027 |
 
 Los niveles 0, A y B son operativos hoy. El Nivel C (PointSav-LLM) está planificado, sin estado operativo en la fecha de este artículo. La lógica de enrutamiento del Doorman para el Nivel C es infraestructura planificada; su estado actual es únicamente enrutamiento a los Niveles A/B.
+
+**Una distinción real que la numeración "0/A/B/C" de esta tabla difumina.** La fuente de ingeniería (`slm-core/src/tier.rs`) usa `InferenceRoute` (`Local`/`Yoyo`/`External`) para los niveles técnicos de cómputo que esta tabla llama A/B/C — y su propio comentario de código advierte explícitamente que este nombramiento se eligió "para evitar colisionar con la escalera comercial de niveles orientada al cliente (Nivel 0/1/2/3)", que es distinta. Esa escalera comercial (los niveles de precios Abierto/C de pago/C+ de pago descritos más adelante) es un esquema de numeración genuinamente separado de los niveles técnicos A/B/C de enrutamiento de cómputo, aunque la columna única "0/A/B/C" de esta tabla los fusiona visualmente en una sola escalera.
 
 ---
 
 ## Fundamento de código abierto
 
-La base técnica de PointSav-LLM es OLMo 3 32B Think, publicado por AllenAI bajo licencia Apache 2.0, con datos de entrenamiento base bajo Open Data Commons. Esta elección es estructural: una base completamente abierta permite el entrenamiento continuo propio (CPT), la auditoría independiente de los pesos y la portabilidad para el cliente. Los pesos base son abiertos; el valor comercial de PointSav reside en el CPT especialista sobre el corpus agregado de la plataforma, la infraestructura de escalado con intervención humana, el sustrato de auditoría por tenant y el SLA.
+La base técnica de PointSav-LLM es el modelo base OLMo 3 32B, publicado por AllenAI bajo licencia Apache 2.0, con datos de entrenamiento base bajo Open Data Commons — no la variante "Think", que AllenAI no ha publicado en el tamaño de 32B. Esta elección es estructural: una base completamente abierta permite el entrenamiento continuo propio (CPT), la auditoría independiente de los pesos y la portabilidad para el cliente. Los pesos base son abiertos; el valor comercial de PointSav reside en el CPT especialista sobre el corpus agregado de la plataforma, la infraestructura de escalado con intervención humana, el sustrato de auditoría por tenant y el SLA.
 
 ---
 
