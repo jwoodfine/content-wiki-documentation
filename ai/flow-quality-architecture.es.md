@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: planned
 language_protocol: TRANSLATE-ES
-last_edited: 2026-06-28
+last_edited: 2026-08-17
 editor: editorial
 short_description: "Marco de calidad del flujo de conocimiento Totebox: si los adaptadores LoRA mejoran el modelo de forma medible y si el DataGraph es una ontología precisa y bien resuelta."
 paired_with: flow-quality-architecture.md
@@ -23,8 +23,8 @@ El flujo de conocimiento del Totebox convierte prosa en dos activos duraderos: u
 
 ```
 prosa ─▶ service-extraction ─▶ CORPUS_*.json
-      ─▶ service-content ──▶ GLiNER Nivel 0 (~150ms) ─▶ tramos de entidades
-                         └──▶ OLMo Nivel A  (30–137s) ─▶ alternativa de extracción (Nivel 0 inalcanzable) + cola DPO asíncrona
+      ─▶ service-content ──▶ GLiNER Nivel 0 (rápido — sin cifra con fuente; solo un comentario cualitativo de código, "~150x más rápido que OLMo") ─▶ tramos de entidades
+                         └──▶ OLMo Nivel A  (alternativa, sin cifra de latencia con fuente) ─▶ alternativa de extracción (Nivel 0 inalcanzable) + tarea asíncrona de entrenamiento
                          └──▶ GPU Nivel B   (enriquecimiento) ─▶ vectores rol/ubicación
                          └──▶ grafo LadybugDB
       ◀── el Doorman consulta el grafo por contexto antes de cada inferencia ◀──
@@ -32,15 +32,23 @@ corpus de entrenamiento (tuplas de commits + pares de enriquecimiento Nivel-A-vs
       ─▶ TRL SFT / DPO ─▶ adaptador PEFT
 ```
 
+La ruta de éxito del Nivel 0 encola un `TierAJob` para una pasada asíncrona de *entrenamiento* del Nivel A, no una "cola DPO" como afirmaba texto anterior — la generación de pares DPO ocurre después, en `service-slm`, no en esta cola.
+
 Dos preguntas de calidad determinan si el flujo vale su costo: ¿produce el **ciclo de entrenamiento** adaptadores que mejoran el modelo de forma medible, y es el **DataGraph** una ontología precisa y bien resuelta en lugar de un montón de fragmentos?
 
 ## Cómo se cierra el ciclo (estado previsto)
 
-Un ciclo de entrenamiento sano es un circuito cerrado: corpus → SFT → DPO on-policy → una **compuerta de evaluación** que compara el nuevo adaptador con el vigente sobre un conjunto dorado fijo y versionado → promoción solo ante una mejora medida → el adaptador promovido **servido** en la ruta de inferencia → su comportamiento capturado de vuelta al corpus. La norma de referencia para cada etapa está bien establecida: los adaptadores se acoplan a todas las proyecciones lineales del modelo base y el acoplamiento se verifica tras la construcción; las tasas de aprendizaje superan en un orden de magnitud al ajuste completo; el entrenamiento por preferencias solo corre por encima de un umbral de pares limpios y diversos; y no se promueve ningún adaptador que una sonda base-contra-adaptador no pueda distinguir del modelo base.
+Un ciclo de entrenamiento sano es un circuito cerrado: corpus → SFT → DPO on-policy → una compuerta de evaluación → promoción solo ante una mejora medida → el adaptador promovido **servido** en la ruta de inferencia → su comportamiento capturado de vuelta al corpus. Varias etapas son reales y confirmadas: los adaptadores se acoplan a todas las proyecciones lineales del modelo base y el acoplamiento se verifica tras la construcción (una comprobación de fallo-cerrado sobre la lista exacta de módulos objetivo, en los scripts de entrenamiento SFT y DPO); las tasas de aprendizaje superan en un orden de magnitud al ajuste completo (2e-4 frente a un valor por defecto declarado de 2e-5 para ajuste completo); el entrenamiento por preferencias solo corre por encima de un umbral de pares limpios y diversos (una constante real `CLEAN_PAIR_FLOOR = 3000`, más compuertas de calidad por par); y no se promueve ningún adaptador que una sonda base-contra-adaptador no pueda distinguir del modelo base (un script real de compuerta de despliegue implementa exactamente esta comprobación).
+
+**Una afirmación corregida, no solo suavizada**: la compuerta de evaluación no compara el nuevo adaptador "con el vigente sobre un conjunto dorado fijo y versionado". No existe ninguna comparación con un adaptador vigente ni ningún conjunto dorado versionado en ninguna parte de `service-slm`. La compuerta real (`score-gate.sh`) puntúa las propias completions del adaptador contra un umbral fijo de tasa de aprobación — corrección de diff-parse / git-apply / formato de sobre — sobre un 10% de retención barajado aleatoriamente, dividido de nuevo en cada ejecución, no una comparación contra el rendimiento de un adaptador anterior.
 
 ## Cómo es coherente la ontología (estado previsto)
 
-Un DataGraph coherente resuelve entidades en cuatro etapas — agrupamiento, similitud, clustering y canonicalización — respaldadas por una tabla de alias para que las variantes superficiales ("MCorp", "Woodfine Capital Projects") colapsen en una única identidad canónica. Los hechos llevan procedencia (documento fuente, nivel del extractor, confianza, marca de tiempo); los hechos en conflicto se reconcilian en lugar de sobrescribirse; las relaciones son aristas tipadas de una ontología cerrada y direccional; y se conserva el historial para poder leer cualquier hecho "a fecha de" un momento dado.
+Se prevé que un DataGraph coherente resuelva entidades mediante etapas de agrupamiento, similitud y canonicalización, para que las variantes superficiales ("MCorp", "Woodfine Capital Projects") colapsen en una única identidad canónica. **Lo que realmente está construido hoy es más limitado que eso, y más limitado de lo que afirmaban versiones anteriores de este artículo**: la resolución de entidades real (`service-content/src/er.rs`) implementa tres etapas, no cuatro — agrupamiento → similitud → bandas de decisión (auto-fusión / revisión / nuevo) — sin ninguna etapa de clustering. La tabla de alias que respaldaría la canonicalización explícitamente aún no está implementada; el propio comentario del módulo la describe como "una migración aditiva aplicada por separado". La resolución de entidades hoy es pura y sin efectos secundarios, todavía no respaldada por el mecanismo de alias que describe esta sección.
+
+Los hechos llevan procedencia parcial: existe un campo real `confidence` y un campo real `source_doc` en cada entidad del grafo, con `source_doc` de tipo primero-en-escribir-gana — pero no existe ningún campo `extractor_tier`, así que la procedencia todavía no captura qué nivel (GLiNER, OLMo o GPU) produjo un hecho dado. El manejo de conflictos es mixto, no uniformemente "reconciliado en lugar de sobrescrito": los campos vectoriales usan una fusión de nuevo-gana-si-está-presente y `source_doc` es primero-en-escribir-gana, pero `confidence` se sobrescribe incondicionalmente en cada escritura — el campo pensado más directamente para señalar confianza es precisamente el que no se reconcilia en absoluto. Las relaciones sí son genuinamente aristas tipadas y direccionales de una ontología cerrada (un vocabulario real de tipos de relación cargado desde un archivo CSV) — esta parte es precisa tal como se describe.
+
+**"Se conserva el historial para poder leer cualquier hecho 'a fecha de' un momento dado" no está construido** — no existe código de versionado temporal ni bitemporal en ninguna parte de `service-content/src` hoy, a pesar de formar parte del diseño de archivos que la propia sección "Estado objetivo" de este artículo, más abajo, describe como un objetivo futuro. Afirmarlo como ya cierto aquí, una sección antes de donde la misma capacidad se describe correctamente como planificada, era una contradicción interna — corregida trasladando la afirmación a donde corresponde, en Estado objetivo.
 
 ## Estado objetivo (planificado)
 
