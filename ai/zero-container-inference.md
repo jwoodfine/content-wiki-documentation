@@ -4,7 +4,7 @@ content_type: topic
 index_group: compute-tiers
 title: "Zero-container inference"
 slug: zero-container-inference
-short_description: "Tier B GPU deployment pattern using native Linux binaries under systemd on an L4 GPU (not the A100 earlier text claimed), with idle detection run from the Doorman server process, not a timer on the GPU VM itself."
+short_description: "Tier B GPU deployment pattern using native Linux binaries under systemd on an L4 GPU, with idle detection run from the Doorman server process rather than a timer on the GPU VM itself."
 category: ai
 status: stub
 bcsc_class: forward-looking
@@ -15,9 +15,9 @@ cites:
 
 ---
 
-Zero-container inference is the deployment pattern for the platform's Tier B [[yoyo-compute-substrate|GPU compute]]: native Linux binaries under systemd on GCE virtual machine instances, with no container runtime or orchestrator. This is confirmed in the real Packer/OpenTofu build (`service-slm/compute/`), which ships systemd `.service` units and no Docker or OCI tooling anywhere in the pipeline.
+Zero-container inference is the deployment pattern for the platform's Tier B [[yoyo-compute-substrate|GPU compute]]: native Linux binaries under systemd on GCE virtual machine instances, with no container runtime or orchestrator.
 
-The economics close because idle detection ensures GPU billing stops when inference is not running. The specific GPU and pricing claims in earlier versions of this article were wrong, not just imprecise — corrected below rather than repeated here, since no single cost figure has been recomputed yet against the real instance shape. The Tier B inference pool that embodies this pattern has real, deployed infrastructure code; it is not a from-scratch build. Its production-traffic status was not independently confirmed here.
+The economics close because idle detection ensures GPU billing stops when inference is not running. The Tier B inference pool that embodies this pattern has real, deployed infrastructure code; it is not a from-scratch build.
 
 ## Why no containers
 
@@ -25,25 +25,25 @@ OCI container images imply a container registry: the registry becomes the durabl
 
 ## What is used instead
 
-A native binary in the `slm-yoyo` GCE image family (`image_family = "slm-yoyo"` in the real Packer config; `pointsav-public` is the example GCP project id, not an image family — a distinction earlier text got right). A systemd unit with an `ExecStart` pointing to the binary — both `llama-server.service` and `vllm.service` ship in the image, and the codebase does not agree with itself about which one is actually the deployed engine (see Operational artefacts, below). OpenTofu for VM provisioning and lifecycle management. GCS-cached model weights so the cold-start path fetches from Cloud Storage rather than downloading from the upstream registry on each boot — confirmed in `vllm-weights-prep.sh`. nginx for TLS termination, with the firewall restricted to port 9443. CUDA drivers baked into the GCE image at build time (`provision.sh` installs the CUDA 12 toolkit during the Packer build).
+A native binary in the `slm-yoyo` GCE image family. A systemd unit supervises the binary; both a llama.cpp service and a vLLM service ship in the image, and which one serves live Tier B traffic is not yet settled (see Operational artefacts, below). OpenTofu handles VM provisioning and lifecycle management. Model weights are cached in Cloud Storage, so the cold-start path fetches locally rather than downloading from the upstream registry on each boot. nginx handles TLS termination, with the firewall restricted to port 9443. CUDA drivers are baked into the GCE image at build time.
 
-**Not Secret Manager for API keys** — no GCP Secret Manager usage exists anywhere in `service-slm`. The real mechanism is a static bearer token passed via GCE instance metadata (`opentofu/variables.tf`).
+Authentication does not use Secret Manager. The mechanism is a static bearer token passed via GCE instance metadata.
 
 ## SMB economics
 
-The GPU is an `nvidia-l4` on a `g2-standard-4` instance, confirmed in `opentofu/main.tf` — not an A100 80 GB as earlier text claimed; the specific per-hour and per-month cost figures that followed from the A100 assumption are wrong along with it and are not replaced with a new number here until they're recomputed against the real instance shape. The instance is preemptible/spot, which earlier text also got right. The economics close because idle detection is the load-bearing primitive: the instance stays up only while inference is running, not for operator convenience.
+The GPU is an `nvidia-l4` on a `g2-standard-4` instance, running as a preemptible/spot instance. The economics close because idle detection is the load-bearing primitive: the instance stays up only while inference is running, not for operator convenience.
 
-**How idle detection actually works — not a timer on the GPU VM.** It's a background task inside the Doorman server process (`idle_monitor.rs`) that polls the instance's `/metrics` every 5 minutes and issues a real `instances.delete` call — deletion, not a "stop" — once the instance has been idle past `SLM_YOYO_IDLE_MINUTES` (default 30). A separate, genuinely VM-local systemd unit, `yoyo-deadman.service`, is a real dead-man's-switch that powers the instance off at a metadata-set maximum lifetime — a different mechanism, for a different failure mode (a runaway or orphaned instance), not the routine idle-shutdown path.
+**How idle detection works.** A background task inside the Doorman server process polls the instance's health metrics every 5 minutes and deletes the instance — a real deletion, not a stop — once it has been idle past `SLM_YOYO_IDLE_MINUTES` (default 30). A separate, VM-local systemd unit is a dead-man's switch that powers the instance off at a metadata-set maximum lifetime — a different mechanism, for a different failure mode (a runaway or orphaned instance), not the routine idle-shutdown path.
 
-## Cold-start: the one honest concern
+## Cold start
 
-Earlier text estimated 60–120 seconds from stopped state to inference-ready. The systemd units' own configured startup budgets suggest this was optimistic: `llama-server.service` sets `TimeoutStartSec=300`, `vllm.service` sets `TimeoutStartSec=600` — real cold-start budgets in the minutes, not under two. For latency-critical workloads where a fast response is required, the deployment should extend `SLM_YOYO_IDLE_MINUTES` to keep the instance warm rather than assume a sub-two-minute cold start. For nightly batch workloads — the primary use case for continued pretraining and large-scale corpus extraction — the cold-start cost is the price of zero idle cost and is a reasonable trade regardless of the exact number.
+Startup budgets configured on the systemd units run in the minutes, not under two — cold start from a stopped instance to inference-ready takes several minutes, not seconds. For latency-critical workloads where a fast response is required, the deployment should extend `SLM_YOYO_IDLE_MINUTES` to keep the instance warm rather than assume a fast cold start. For nightly batch workloads — the primary use case for continued pretraining and large-scale corpus extraction — the cold-start cost is the price of zero idle cost and is a reasonable trade.
 
 ## Operational artefacts
 
-The deployment stack for a Tier B inference instance has four real pieces. An OpenTofu module handles instance lifecycle management. The GCE image ships CUDA drivers, nginx, systemd units, and — this is where the codebase contradicts itself — **both** `llama-server` and `vllm` services: `slm-doorman/src/tier/yoyo.rs` states the deployed Tier B server is llama.cpp, "NOT vLLM," while `tier/local.rs` separately claims Tier B is "vLLM ≥0.12." That contradiction is not resolved here — it's flagged rather than silently picking a side. A bearer token in GCE instance metadata handles authentication (not Secret Manager, see above). Cloud Logging points to the customer's own GCP project.
+The deployment stack for a Tier B inference instance has four pieces. An OpenTofu module handles instance lifecycle management. The GCE image ships CUDA drivers, nginx, systemd units, and both a llama.cpp and a vLLM service — which one serves live traffic is not yet settled platform-wide. A bearer token in GCE instance metadata handles authentication. Cloud Logging points to the customer's own GCP project.
 
-**Not confirmed, despite earlier text's claim**: a Cloud Billing budget with a Pub/Sub kill-switch as defence-in-depth against runaway spend. No Pub/Sub or Cloud Billing budget code exists in `opentofu/` or `slm-doorman` — the only trace is an unimplemented `monthly_cap_usd` mention in prose documentation. The operator never interacts with the instance directly during inference; the systemd units and the Doorman-side idle monitor handle the lifecycle autonomously.
+Defence-in-depth against runaway spend — a Cloud Billing budget with a kill-switch — is not yet built. The operator never interacts with the instance directly during inference; the systemd units and the Doorman-side idle monitor handle the lifecycle autonomously.
 
 ## What this rules out
 
