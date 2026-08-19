@@ -33,7 +33,7 @@ Los ADR son compromisos formales con decisiones de diseño específicas. No son 
 
 **Arquitectura de Seguridad**
 
-`SYS-ADR-13.yaml` — Por qué el nodo de enrutamiento maestro y sus claves criptográficas residen en hardware físico que el ejecutivo controla, en lugar de en infraestructura de nube.
+`SYS-ADR-13.yaml` — Por qué el nodo de enrutamiento maestro y sus claves criptográficas residen en hardware físico bajo custodia directa dedicada, en lugar de en infraestructura de nube.
 
 `SYS-ADR-19.yaml` — Por qué la publicación automatizada de IA en registros verificados está prohibida, y el modelo de Verificación Airgap (Git para el Conocimiento) que lo aplica.
 

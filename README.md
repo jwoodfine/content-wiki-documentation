@@ -38,7 +38,7 @@ ADRs are formal commitments to specific design choices. They are not proposals �
 
 `SYS-ADR-08.yaml` — Why systemd is classified as a quarantined foreign component and what constraints govern its temporary use on Debian cloud relays.
 
-`SYS-ADR-13.yaml` — Why the master routing node and its cryptographic keys reside on physical hardware the executive controls, rather than on cloud infrastructure.
+`SYS-ADR-13.yaml` — Why the master routing node and its cryptographic keys reside on dedicated physical hardware under direct custody, rather than on cloud infrastructure.
 
 `SYS-ADR-16.yaml` — Why WireGuard's layer-3 topology requires application-level unicast for fleet commands and why UDP broadcast is prohibited.
 
