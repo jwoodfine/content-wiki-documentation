@@ -69,13 +69,15 @@ La producción elimina tokens en los tipos graduados. La sombra genera los datos
 
 ## Tubería de captura
 
-El corpus de aprendizaje es un cuarto corpus junto a los corpus constitucional, de ingeniería y de runtime de inquilino. La partición por inquilino vive a nivel de directorio:
+El corpus de aprendizaje es un cuarto corpus junto a los corpus constitucional, de ingeniería y de runtime de inquilino.
 
 ```
-data/training-corpus/apprenticeship/<task-type>/<tenant>/<ulid>.jsonl
+data/training-corpus/apprenticeship/<task-type>/<ulid>.jsonl
 ```
 
-Un archivo contiene una triple (brief, intento, veredicto). Los registros privados del inquilino nunca salen de su infraestructura. Un veredicto `refine` o `reject` produce además una triple de Optimización Directa de Preferencias — intento rechazado, diff corregido, etiqueta de violación de restricción — que alimenta el entrenamiento de adaptadores.
+Un archivo contiene una triple (brief, intento, veredicto); el inquilino es un campo dentro del registro, no un segmento de directorio. Los registros privados del inquilino nunca salen de su infraestructura. Un veredicto `refine` o `reject` produce además una triple de Optimización Directa de Preferencias — intento rechazado, diff corregido, etiqueta de violación de restricción — que alimenta el entrenamiento de adaptadores.
+
+El enrutamiento está activo y la captura en sombra es real: cada commit de forma de código dispara un brief y registra una triple (brief, intento, diff-real) sin veredicto adjunto. Lo que aún no ha ocurrido es el lado firmado por el sénior — ningún tipo de tarea tiene un veredicto puntuado registrado, así que el libro de promoción no ha movido ningún tipo de tarea de su etapa inicial. El mecanismo está encendido; el ciclo de veredicto que lo gradúa todavía está por delante.
 
 ## Configuración
 

@@ -77,18 +77,12 @@ Production routing eliminates senior tokens on graduated types. Shadow routing g
 The apprenticeship corpus is a fourth corpus alongside the constitutional, engineering, and tenant-runtime corpora. Per-tenant partitioning lives at the directory level (see [[totebox-archive|Totebox]] storage layout):
 
 ```
-data/training-corpus/apprenticeship/<task-type>/<tenant>/<ulid>.jsonl
+data/training-corpus/apprenticeship/<task-type>/<ulid>.jsonl
 ```
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** the real path
-(`service-slm/ARCHITECTURE.md` / `slm-doorman/src/verdict.rs`) has no `<tenant>` segment —
-`data/training-corpus/apprenticeship/<task-type>/<ulid>.jsonl`. Separately, this
-article's "the routing structure is operational today" claim above is also
-stale — `service-slm/NEXT.md` lists re-enabling apprenticeship routing
-(`SLM_APPRENTICESHIP_ENABLED=true`) as an open TODO, not a live default.
-**Flagged, not resolved.**
+One file holds one (brief, attempt, verdict) triple; the tenant is a field inside the record itself, not a directory segment. Tenant-private records never leave the tenant's infrastructure. A `refine` or `reject` verdict additionally produces a Direct Preference Optimisation triple — rejected attempt, corrected diff, constraint-violation tag — which feeds adapter training on the apprentice's policy.
 
-One file holds one (brief, attempt, verdict) triple. Tenant-private records never leave the tenant's infrastructure. A `refine` or `reject` verdict additionally produces a Direct Preference Optimisation triple — rejected attempt, corrected diff, constraint-violation tag — which feeds adapter training on the apprentice's policy.
+Routing is live and shadow capture is real: every code-shaped commit fires a brief and records a (brief, attempt, actual-diff) triple with no verdict attached. What hasn't happened yet is the senior-signed side — no task type has a scored verdict on record, so the promotion ledger has not moved any task type off its starting stage. The mechanism is switched on; the verdict loop that graduates it is still ahead.
 
 ## Configuration
 
