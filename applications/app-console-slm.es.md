@@ -7,29 +7,26 @@ type: app
 content_type: topic
 quality: complete
 index_group: input-and-developer-surfaces
-short_description: "Cartucho de consola en terminal que muestra el estado en vivo de la infraestructura de inferencia — salud del modelo, nodos GPU, colas y gasto diario — con conmutadores por nivel."
+short_description: "Cartucho de consola en terminal que muestra el estado en vivo de la infraestructura de inferencia — salud del modelo, la flota GPU de ráfaga, profundidad de cola y gasto diario — de solo lectura, sin controles propios."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-06-09
+last_edited: 2026-08-22
 editor: pointsav-engineering
 cites: []
 references: []
 paired_with: app-console-slm.md
 ---
 
-# app-console-slm — consola de monitorización de infraestructura de inferencia
-
-app-console-slm es un cartucho de interfaz de usuario de terminal (TUI) para la
-consola del operador que muestra el estado en tiempo real de la infraestructura de
-inferencia de IA. Muestra el estado del modelo de inferencia local, el estado de los
-[[yoyo-compute-substrate|nodos GPU remotos]], la profundidad de la cola de prioridad, el recuento de entidades
-del grafo organizativo y el gasto del día en curso. Proporciona controles de teclado
-para ajustar la política de enrutamiento y activar [[spot-vm-lifecycle-kill-switch|interruptores de emergencia]] por nivel.
+app-console-slm es un cartucho TUI para la consola del operador que muestra el
+estado en vivo de la infraestructura de inferencia de IA: la salud del modelo
+local, la flota de cómputo de ráfaga, el grafo de entidades, la profundidad de
+cola y el gasto del día. Es un panel de solo lectura. Toda operación de escritura que muestra — política de
+enrutamiento, [[spot-vm-lifecycle-kill-switch|el interruptor de emergencia]] — ocurre a través de una superficie de API
+separada, no desde esta consola.
 
 La consola se ejecuta en una ventana de terminal en el mismo nodo que la [[service-slm|pasarela de
-inferencia]]. No requiere navegador, conexión de red a un servicio externo ni autenticación
-más allá del acceso local al shell. Es el panel de control principal del operador para
-comprender y controlar la capa de inferencia.
+inferencia]]. No requiere navegador, conexión de red a un servicio externo ni
+autenticación más allá del acceso local al shell.
 
 ## Paneles de visualización
 
@@ -39,61 +36,71 @@ momento con la tecla R.
 
 ### Panel de pasarela
 
-El panel de pasarela muestra el estado actual del enrutador de inferencia: si está
-en funcionamiento, la política de enrutamiento activa (balanced, drain-batch,
-drain-express o local-only) y la disponibilidad de cada nivel. Un indicador verde
-marca un nivel como disponible. Un indicador amarillo marca un nivel como degradado.
-Un indicador gris marca un nivel como desconectado.
+Muestra si el enrutador está en funcionamiento, la disponibilidad del modelo local y
+su rendimiento en tokens por segundo, el estado del disyuntor del nivel de ráfaga, y
+la clase de nodo que atiende las solicitudes actualmente.
 
-### Panel de flota de nodos GPU
+### Panel de flota YoYo
 
-El panel de flota muestra cada nodo GPU remoto configurado con su estado actual:
-detenido, arrancando, disponible, fallido o zombie. Para los nodos disponibles,
-el panel muestra la latencia de la sonda más reciente en milisegundos.
+Lista cada nodo de cómputo de ráfaga configurado por nombre junto con su estado de
+ciclo de vida: uno de desconocido, detenido, en preparación, ejecutándose,
+disponible, fallo al iniciar o zombie (en ejecución pero sin responder ya a las
+sondas de salud). El panel destaca solo los nodos disponibles como saludables; los
+detenidos, fallidos y zombie comparten un mismo estilo atenuado.
 
-### Panel de grafo organizativo
+### Panel de DataGraph
 
-El panel del grafo muestra el recuento total de entidades en el grafo de conocimiento
-organizativo, el número de tipos de aristas distintos presentes y la marca de tiempo
-de la extracción más reciente. También muestra el estado del disyuntor para el servicio
-del grafo.
+Muestra el recuento total de entidades en el grafo de conocimiento y el estado del
+disyuntor del nivel de ráfaga (el mismo disyuntor que muestra el panel de pasarela,
+ya que ambos reflejan el mismo nivel).
 
 ### Panel de cola
 
-El panel de cola muestra la profundidad actual de cada nivel de cola de prioridad.
-P0 contiene tareas de clasificación en segundo plano. P1 contiene tareas de extracción
-a la espera de un nodo GPU. P2 contiene generación de corpus de entrenamiento y trabajo
-de aprendizaje. El panel también muestra el total completado y el recuento de poison
-actual.
+Muestra la profundidad de la cola de extracción: cuántas tareas están pendientes,
+cuántas en curso, cuántas pausadas, cuántas completadas, cuántas en cuarentena y —
+resaltado cuando es distinto de cero — cuántas han agotado los reintentos y quedan
+marcadas como poison, requiriendo revisión del operador.
 
-### Panel de costes
+### Panel de costes de hoy
 
-El panel de costes muestra el gasto del día en curso en todos los niveles. El panel
-desglosa el gasto por etiqueta de nodo: el nodo batch, el nodo express y la API externa
-(si está configurada).
+Muestra el gasto total del día en curso, desglosado en la porción de cómputo de
+ráfaga y la porción de horas de VM, junto con el recuento de solicitudes del día.
 
 ## Controles de teclado
 
 | Tecla | Acción |
 |---|---|
-| R | Actualización inmediata |
-| K | Diálogo de interruptor de emergencia — activar/desactivar por nivel o global |
-| P | Diálogo de política — seleccionar política de enrutamiento |
-| G | Detalle del grafo — mostrar desglose de tipos de entidades |
-| ? | Ayuda — mostrar todos los atajos de teclado |
+| R | Actualización inmediata — vuelve a consultar todos los endpoints de estado |
+| ? | Ayuda — muestra todos los atajos de teclado |
+| Esc | Cierra la ayuda |
 | Q | Salir |
+
+El cambio de política de enrutamiento y el interruptor de emergencia son mecanismos
+reales, controlados por el operador. El interruptor detiene por completo, sin que
+ninguna solicitud pueda evitarlo; la política de enrutamiento (balanced, drain-batch,
+drain-express o local-only) es cambiable en tiempo de ejecución. Ambos residen tras
+la API propia de la pasarela, no en esta consola — que solo muestra sus efectos.
 
 ## Características técnicas
 
-La consola es un crate de biblioteca que implementa el trait Cartridge para el chasis
+La consola es un crate de biblioteca que implementa el rasgo Cartridge para el chasis
 de la consola del operador. Se carga en el [[use-f-key-model|slot F9]]. La comunicación con la pasarela
-de inferencia utiliza HTTP estándar contra los endpoints de monitorización de la
-pasarela. El modo de texto plano está disponible mediante la bandera `--plain` para
-entornos de terminal sin soporte unicode.
+de inferencia usa HTTP estándar contra los endpoints de monitorización de la pasarela.
+
+La consola usa una tarea de sondeo en segundo plano que obtiene datos de estado cada
+diez segundos y los envía a la tarea de renderizado por un canal. La tarea de
+renderizado no bloquea en las solicitudes de red; muestra los datos más recientes que
+haya recibido, por lo que la consola permanece receptiva incluso cuando la pasarela
+responde con lentitud.
+
+El modo de texto plano está disponible mediante la bandera `--plain` para entornos de
+terminal sin soporte unicode. Los símbolos de estado unicode se reemplazan por
+equivalentes ASCII.
 
 ## Relación con la pasarela de inferencia
 
-La consola es un observador principalmente de lectura de la pasarela de inferencia.
-No participa en las decisiones de enrutamiento. Los comandos de interruptor de
-emergencia y política enviados a través de la consola surten efecto inmediatamente en
-la pasarela.
+La consola es un observador puro: no realiza ninguna llamada de escritura a la
+pasarela de inferencia. Se despliega junto a la pasarela en el mismo nodo y no
+requiere conectividad de red a servicios externos. Si la pasarela no está disponible,
+la consola sigue ejecutándose y muestra cada panel como no disponible en lugar de
+fallar.
