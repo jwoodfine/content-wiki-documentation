@@ -16,8 +16,6 @@ index_group: platform-disciplines
 last_edited: 2026-07-11
 ---
 
-# Doctrine Invention #7 — The Integrity Anchor
-
 Doctrine §III.7 defines the Integrity Anchor pattern: a monthly operation that bundles the workspace state hash, manifest hashes, and ledger hash, then posts the result to Sigstore Rekor — a public, append-only transparency log. The result is independently verifiable: anyone can confirm that this state existed at this time, under this identity, without trusting Foundry's own infrastructure.
 
 The pattern is modelled on notarization combined with public timestamping. Notarization proves that a document existed; public timestamping proves it existed at or before a specific moment. The Rekor transparency log provides both: the [[merkle-proofs-as-substrate-primitive|inclusion proof]] in the log constitutes independent, third-party evidence.

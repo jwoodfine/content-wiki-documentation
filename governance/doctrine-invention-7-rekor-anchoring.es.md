@@ -16,8 +16,6 @@ index_group: platform-disciplines
 last_edited: 2026-06-23
 ---
 
-# Doctrina Invención #7 — El Ancla de Integridad
-
 La Doctrina §III.7 define el patrón Ancla de Integridad: una operación mensual que agrupa el hash del estado del espacio de trabajo, los hashes de manifiestos y el hash del registro, y publica el resultado en Sigstore Rekor — un registro de transparencia público y de solo anexado. El resultado es verificable de forma independiente: cualquier parte puede confirmar que este estado existió en este momento, bajo esta identidad, sin confiar en la infraestructura de Foundry.
 
 El patrón se modela sobre la notarización combinada con el sellado de tiempo público. La notarización prueba que un documento existió; el sellado de tiempo público prueba que existió en un momento determinado o antes. El registro de transparencia de Rekor proporciona ambas garantías: la [[merkle-proofs-as-substrate-primitive|prueba de inclusión]] en el registro constituye evidencia independiente de terceros.
