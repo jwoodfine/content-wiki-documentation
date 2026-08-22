@@ -12,7 +12,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-25
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: design-primitive-vocabulary.es.md
 cites:
@@ -40,7 +40,7 @@ The substrate uses PointSav-original vocabulary, hex values, font choices, and c
 
 | Surface | Common field convention | Substrate choice | Why replaced |
 |---|---|---|---|
-| Color family names | `gray`, `blue`, `red`, `green`, `yellow` | `neutral`, `primary`, `positive`, `caution`, `critical` | Role-names per Agent B research §9. PointSav's names describe role, not chromatic family — tenants who shift their brand from blue to teal don't have to rename tokens. |
+| Color family names | `gray`, `blue`, `red`, `green`, `yellow` | `neutral`, `primary`, `positive`, `caution`, `critical` | PointSav's names describe role, not chromatic family — tenants who shift their brand from blue to teal don't have to rename tokens. |
 | Hex values | Vendor-specific shades | PointSav-chosen shades (e.g., Primary 60 = `#234ed8`) | Avoid IP entanglement; the substrate stands on its own values. |
 | Spacing token name | `spacing-01` through `spacing-13` (zero-padded) | `space-1` through `space-13` (no zero-pad) | Slightly cleaner; same numeric scale; same 8px-base structure. |
 | Type-scale family names | `productive-01..N`, `expressive-01..N` | `utility-1..4`, `display-1..4` | Same conceptual split; PointSav-original names. |
@@ -83,7 +83,7 @@ The structural patterns are field-shared; the literal tokens are not.
 - [[what-is-a-design-token]] — start here for a first-time definition of a design token before this rationale article
 - [[design-philosophy]] — the three structural inversions that motivate the substrate's design choices
 - [[wiki-typography-system]] — the Inter and Source Serif 4 type stack built on these token conventions
-- [[wiki-component-library]] — nine wiki components that consume the token layers described here
+- [[wiki-component-library]] — the wiki's shared chrome and page templates, which consume the token layers described here
 - [[component-recipes-vs-raw-tokens]] — how the component tier consumes the naming scheme described here
 - [[design-tokens-and-accessibility]] — how the WCAG 2.2 AAA contrast floor named above is enforced structurally as tokens
 

@@ -12,7 +12,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-07-31
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: design-primitive-vocabulary.md
 cites:
@@ -33,7 +33,7 @@ El sustrato utiliza vocabulario, valores hexadecimales, elecciones tipográficas
 
 | Superficie | Convención habitual del campo | Elección del sustrato | Por qué se reemplazó |
 |---|---|---|---|
-| Nombres de familias de color | `gray`, `blue`, `red`, `green`, `yellow` | `neutral`, `primary`, `positive`, `caution`, `critical` | Nombres por rol, según la investigación del Agente B §9. Los nombres de PointSav describen el rol, no la familia cromática — los inquilinos que cambian su marca de azul a verde azulado no tienen que renombrar tokens. |
+| Nombres de familias de color | `gray`, `blue`, `red`, `green`, `yellow` | `neutral`, `primary`, `positive`, `caution`, `critical` | Los nombres de PointSav describen el rol, no la familia cromática — los inquilinos que cambian su marca de azul a verde azulado no tienen que renombrar tokens. |
 | Valores hexadecimales | Tonos propios del proveedor | Tonos elegidos por PointSav (p. ej., Primary 60 = `#234ed8`) | Evita el entrelazamiento de propiedad intelectual; el sustrato se sostiene con sus propios valores. |
 | Nombre del token de espaciado | `spacing-01` a `spacing-13` (con ceros a la izquierda) | `space-1` a `space-13` (sin ceros a la izquierda) | Ligeramente más limpio; misma escala numérica; misma estructura de base de 8px. |
 | Nombres de familia de escala tipográfica | `productive-01..N`, `expressive-01..N` | `utility-1..4`, `display-1..4` | Misma división conceptual; nombres originales de PointSav. |
@@ -68,7 +68,7 @@ Un token nombrado por familia cromática con los valores exactos de un proveedor
 - [[what-is-a-design-token|Qué es un token de diseño]] — comience aquí para una definición introductoria de un token de diseño antes de este artículo de justificación
 - [[design-philosophy]] — las tres inversiones estructurales que motivan las decisiones de diseño del sustrato
 - [[wiki-typography-system]] — la pila tipográfica Inter y Source Serif 4 construida sobre estas convenciones de tokens
-- [[wiki-component-library]] — nueve componentes del wiki que consumen las capas de tokens descritas aquí
+- [[wiki-component-library]] — el armazón compartido y las plantillas de página del wiki, que consumen las capas de tokens descritas aquí
 - [[component-recipes-vs-raw-tokens|Recetas de componentes frente a tokens en bruto]] — cómo el nivel de componentes consume el esquema de nomenclatura descrito aquí
 - [[design-tokens-and-accessibility|Tokens de diseño y conformidad de accesibilidad]] — cómo se aplica estructuralmente como tokens el límite de contraste WCAG 2.2 AAA mencionado arriba
 
