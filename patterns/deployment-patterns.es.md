@@ -24,7 +24,7 @@ references:
     url: "https://www.opengroup.org/togaf"
 ---
 
-Los patrones de despliegue describen las seis configuraciones canónicas en las que se despliega el sustrato PointSav en diferentes contextos institucionales, cada una construida sobre la [[three-ring-architecture|arquitectura de tres anillos]]. Cada configuración se basa en los mismos cinco primitivos — Personas, Comunicaciones, Borradores, Registros, Dinero — y la misma superficie de [[console-os|Libro Mayor de Comandos]]; lo que cambia por configuración es el [[archetypes-and-chart-of-accounts|Plan de Cuentas]] y la superficie de cumplimiento. El sustrato no se bifurca entre segmentos; se adapta. Al finalizar este artículo, el lector comprenderá el posicionamiento de Compañero, las seis configuraciones canónicas y el modelo de aislamiento de micro-frontend que hace práctica la versión independiente en los seis.
+Los patrones de despliegue describen las seis configuraciones canónicas en las que se despliega el sustrato PointSav en diferentes contextos institucionales, cada una construida sobre la [[three-ring-architecture|arquitectura de tres anillos]]. Cada configuración se basa en los mismos cinco primitivos — Personas, Comunicaciones, Borradores, Registros, Dinero — y la misma superficie de [[console-os|Libro Mayor de Comandos]]; lo que cambia por configuración es el [[archetypes-and-chart-of-accounts|Plan de Cuentas]] y la superficie de cumplimiento. El sustrato no se bifurca entre segmentos; se adapta. Al finalizar este artículo, el lector comprenderá el posicionamiento de Compañero, las seis configuraciones canónicas y el modelo de aislamiento de cartuchos en tiempo de compilación que hace práctica la versión independiente en los seis.
 
 ## Cinco primitivos que abarcan todos los contextos institucionales [^2]
 
@@ -67,24 +67,24 @@ Las seis configuraciones representan familias de GUIDEs distintas en el catálog
 | Family office | Registros fiscales, documentos de sucesión, contratos del hogar | Anclajes adaptados en Personal y Administración Local |
 | Hogar | Recibos, garantías, correspondencia familiar | Plan simplificado de un solo Perfil |
 
-## Aislamiento de micro-frontend dentro del Libro Mayor de Comandos [^1]
+## Aislamiento de cartuchos dentro del Libro Mayor de Comandos
 
-El [[console-os|Libro Mayor de Comandos]] no es una aplicación HTML monolítica. Es un chasis vacío que carga pequeños plugins aislados bajo demanda. Cuando el operador presiona F2, el chasis solicita la vista `/app-console-people/`; cuando presiona F3, destruye esa vista y carga `/app-console-email/`.
+El [[console-os|Libro Mayor de Comandos]] es una aplicación de terminal, no una superficie web — no tiene capa HTTP ni HTML, CSS o JavaScript en ninguna parte. **Cada tecla de función carga un fragmento de código completamente separado y compilado de forma independiente, y ningún cartucho puede leer el estado de otro por accidente** — esa separación la aplica el compilador, no una comprobación de permisos en tiempo de ejecución. El chasis es una capa vacía que registra un conjunto fijo de objetos Rust — uno por cartucho — al iniciar. Cuando el operador presiona F2, el chasis despacha al cartucho de Personas ya registrado; F3 despacha al de Correo.
 
 | Propiedad de aislamiento | Efecto |
 |---|---|
-| Aislamiento matemático en disco | El plugin de Personas no puede leer el estado del plugin de Correo; ocupan árboles de directorio separados |
-| Versión independiente | Una actualización del plugin de Contabilidad no requiere una actualización del plugin de Contenido |
-| Eficiencia de ancho de banda | Solo el HTML, CSS y JS del plugin activo se carga; el resto permanece en disco |
-| Sin dependencia externa | Sin CDN, sin biblioteca de UI de terceros, sin telemetría; los plugins se envían dentro del mismo binario que el chasis |
+| Aislamiento de estado en tiempo de compilación | El cartucho de Personas no puede leer el estado del cartucho de Correo; cada uno es un módulo Rust separado |
+| Versión independiente | Actualizar el crate de un cartucho no requiere reconstruir los demás |
+| Envío en binario único | Cada cartucho se envía dentro del mismo binario compilado que el chasis |
+| Sin dependencia externa | Sin CDN, sin navegador, sin biblioteca de UI de terceros |
 
-El modelo de aislamiento se deriva del patrón arquitectónico de micro-frontends[^1] aplicado con disciplina soberana: toda la superficie se envía como un único binario Rust, ningún plugin obtiene activos de un host externo, y ningún plugin puede observar el estado de otro plugin.
+Este modelo de aislamiento logra el mismo objetivo práctico que una arquitectura de micro-frontends[^1] basada en navegador: módulos mutuamente aislados y versionados de forma independiente detrás de una capa compartida. El mecanismo difiere — el sistema de módulos y traits de Rust, aplicado en tiempo de compilación.
 
 ## Cómo las plantillas de despliegue se asignan al catálogo de flota
 
 | Plantilla | Función | Estado |
 |---|---|---|
-| `vault-privategit-source-1` | Despliegue de control de fuentes interno; el espacio de trabajo es una instancia de esta plantilla | Activo |
+| `vault-privategit-source` | Plantilla de despliegue de control de fuentes interno. Por la regla de nomenclatura del catálogo ([[customer-tier-catalog-pattern]]), la entrada de catálogo lleva el nombre base de la plantilla — el espacio de trabajo en ejecución es la instancia numerada aprovisionada a partir de ella | Activo |
 | Gestión de activos inmobiliarios | El despliegue operativo de referencia para una empresa inmobiliaria | Planeado |
 | Emisor de información | Un par de [[os-mediakit]] y [[totebox-os]] para divulgación de empresa pública | Planeado |
 

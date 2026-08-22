@@ -24,7 +24,7 @@ references:
     url: "https://www.opengroup.org/togaf"
 ---
 
-Deployment patterns describes the six canonical configurations in which the PointSav substrate is deployed across different institutional contexts, each built on the [[three-ring-architecture|three-ring architecture]]. Each configuration rests on the same five primitives — People, Communications, Drafts, Records, Money — and the same [[console-os|Command Ledger]] surface; what changes per configuration is the [[archetypes-and-chart-of-accounts|Chart of Accounts]] and the compliance surface. The substrate does not fork across segments; it adapts. By the end of this article, a reader will understand the Companion positioning, the six canonical patterns, and the micro-frontend isolation model that makes independent-versioning practical across all six.
+Deployment patterns describes the six canonical configurations in which the PointSav substrate is deployed across different institutional contexts, each built on the [[three-ring-architecture|three-ring architecture]]. Each configuration rests on the same five primitives — People, Communications, Drafts, Records, Money — and the same [[console-os|Command Ledger]] surface; what changes per configuration is the [[archetypes-and-chart-of-accounts|Chart of Accounts]] and the compliance surface. The substrate does not fork across segments; it adapts. By the end of this article, a reader will understand the Companion positioning, the six canonical patterns, and the compile-time cartridge isolation model that makes independent-versioning practical across all six.
 
 ## Five primitives that span every institutional context [^2]
 
@@ -69,20 +69,18 @@ The six configurations represent distinct GUIDE families in the fleet-deployment
 
 Each row is a configuration, provisioned from a named template in the fleet-deployment catalogue. The pattern for a real-property deployment differs from the pattern for a law firm only in its Chart of Accounts configuration and compliance surface — the underlying substrate components are identical.
 
-## Micro-frontend isolation inside the Command Ledger [^1]
+## Cartridge isolation inside the Command Ledger
 
-**Correction (2026-08-02):** the web-style "chassis requests a view"/HTML-CSS-JS framing below doesn't match the real system. `os-console` (`Cargo.toml`: `ratatui`/`crossterm`, no `axum` or web dependency, no `.html`/`.css`/`.js` files) is a terminal application — the real chassis (`os-console/src/main.rs:45-269`) registers compiled Rust trait objects (`PeopleCartridge`, `EmailCartridge`, etc.) into an in-process registry via `chassis.register(Box::new(...))`; there is no HTTP request for a view and no HTML/CSS/JS bundle to load or unload. This matches this repo's own earlier-confirmed finding (`cleanup-log.md`, 2026-07-18) that `os-console` is a terminal application, not a web surface. The underlying isolation properties in the table below (separate state, independent versioning, single-binary shipping, no external dependency) are broadly accurate as a description of the real per-cartridge compile-time isolation — only the micro-frontend/HTTP-view metaphor is wrong. **Flagged, not resolved** — needs reframing from "web view requests" to "in-process trait-object cartridge registration."
-
-The [[console-os|Command Ledger]] is not a monolithic HTML application. It is an empty chassis that loads small, isolated plugins on demand. When the operator presses F2, the chassis requests the `/app-console-people/` view; when they press F3, it destroys that view and loads `/app-console-email/`.
+The [[console-os|Command Ledger]] is a terminal application, not a web surface — it is built on `ratatui`/`crossterm`, with no HTTP layer and no HTML, CSS, or JavaScript anywhere in it. **Each function key loads a fully separate, independently compiled piece of code.** No plugin can accidentally read another plugin's state — that separation is enforced by the compiler, not by a runtime permission check. The chassis is an empty shell that registers a fixed set of Rust trait objects — one per plugin — into an in-process registry at startup. When the operator presses F2, the chassis dispatches to the already-registered People cartridge; F3 dispatches to Email; each function key maps to its own compiled cartridge object living in the same process the whole time.
 
 | Isolation property | Effect |
 |---|---|
-| Mathematical disk isolation | The People plugin cannot read the Email plugin's state; they occupy separate directory trees |
-| Independent versioning | An update to the Bookkeeper plugin does not require an update to the Content plugin |
-| Bandwidth efficiency | Only the active plugin's HTML, CSS, and JS is loaded; the rest remains on disk |
-| No external dependency | No CDN, no third-party UI library, no telemetry; plugins ship inside the same binary as the chassis |
+| Compile-time state isolation | The People cartridge cannot read the Email cartridge's state; each is a separate Rust module with its own types |
+| Independent versioning | An update to one cartridge's crate does not require rebuilding every other cartridge |
+| Single-binary shipping | Every cartridge ships inside the same compiled binary as the chassis — no separate download or install step per function key |
+| No external dependency | No CDN, no browser, no third-party UI library; the whole surface is one process with no network dependency for its own operation |
 
-The isolation model is derived from the micro-frontend architectural pattern[^1] applied with sovereign discipline: the entire surface ships as a single Rust binary, no plugin fetches assets from an external host, and no plugin can observe another plugin's state. The isolation is mathematical — a property of the directory structure — not a security policy that must be enforced at runtime.
+This isolation model achieves the same practical goal a browser-based micro-frontend architecture[^1] pursues: independently versioned, mutually isolated feature modules behind a shared shell. The mechanism differs — Rust's module and trait system, enforced at compile time, rather than separate HTML/JS bundles isolated by the browser at runtime. The isolation here is structural, a property of how the binary is built, not a security policy that has to be enforced while the program is running.
 
 ## How deployment templates map to the fleet catalogue
 
@@ -90,7 +88,7 @@ Each canonical configuration has a corresponding subdirectory under the fleet-de
 
 | Template | Function | Status |
 |---|---|---|
-| `vault-privategit-source` | Internal source-control deployment; the workspace is an instance of this template (Correction, 2026-08-02: this row previously carried the `-1` instance suffix, but this is the catalog row — per this wiki's own [[customer-tier-catalog-pattern]] naming rule, catalog entries never carry the instance suffix; `-1` names the running instance, not the template) | Active |
+| `vault-privategit-source` | Internal source-control deployment template. Per the catalog naming rule ([[customer-tier-catalog-pattern]]), the catalog entry carries the bare template name — the running workspace itself is the numbered instance provisioned from it | Active |
 | Real-property asset-management | The reference operational deployment for a real-property firm | Planned |
 | Reporting Issuer | An [[os-mediakit]] and [[totebox-os]] pair for public-company disclosure | Planned |
 
