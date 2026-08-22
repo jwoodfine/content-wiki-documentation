@@ -7,12 +7,12 @@ type: concept
 content_type: topic
 quality: complete
 index_group: ring-2-knowledge-and-processing
-short_description: "The Chart of Accounts and eleven archetypes are the two-part taxonomy at the core of service-people and service-content, classifying by structural position, not job title."
+short_description: "The Chart of Accounts and eleven archetypes are two reference taxonomies service-content loads into the knowledge graph, giving every classified entity a structural category and a functional signature."
 status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: archetypes-and-chart-of-accounts.es.md
 references:
@@ -24,102 +24,56 @@ references:
     url: "https://www.ilo.org/public/english/bureau/stat/isco/docs/publication08.pdf"
 ---
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** several specific claims below don't match the real schema. The eleven archetype names are real (`service-content/ontology/archetypes.csv`), but the real schema uses `signature`/`healing_trigger` columns — this article's whole "evaluator keys" table (`exec_integrity`, `risk_variance`, etc.) has no corresponding code anywhere. The Chart hierarchy is real but two-level (`profile`/`sub_domain` or `category`/`type`), not the three-level "Profile → Domain → Sub-Domain" described below. The "socket-based" framing and the described archetype/Chart drift-detection "alignment engine" have no basis in real code — no "archetype" string appears anywhere in `service-people/` at all, and the "socket" concept is the same fabrication already found on `services/service-people.md`. **Flagged, not resolved.**
+The Chart of Accounts and the eleven archetypes are two reference taxonomies [[service-content]] maintains as CSV files and loads into the knowledge graph as static entities. Together they give every classified document or entity two independent labels: where it sits in an institutional structure, and what functional role it plays. A reader who only needs the vocabulary can stop after the two tables below; a reader who wants to see how the platform actually uses them should continue to the Verification Surveyor section.
 
-The Chart of Accounts and the eleven archetypes are the two-part institutional taxonomy at the core of [[service-people]] and [[service-content]]. Together they let the platform classify personnel and documents by structural position and functional role, without relying on volatile job-title text. Unlike a free-text personnel record, the taxonomy is socket-based: each person occupies a fixed position in the Chart and inherits properties from one of eleven immutable archetype classes. The Chart is a component of the [[totebox-os|Totebox]] institutional intelligence layer, alongside the [[service-slm|small language model]] and the [[service-extraction|deterministic parser]]. By the end of this article, a reader will understand the archetype taxonomy, the Chart of Accounts hierarchy, and the self-healing mechanism their intersection enables.
+## Two reference tables, two dimensions
 
-## Two ledgers, one institution
-
-The taxonomy is built from two interlocking ledgers. One defines the structural anatomy of the organisation. The other defines the functional role of the people inside it.
-
-| Ledger | What it captures | How it changes |
+| Table | Real shape | What it captures |
 |---|---|---|
-| Chart of Accounts | Where authority, risk, and production reside in the organisation — a three-level hierarchy of Profile → Domain → Sub-Domain [^1] | Adjusted deliberately by operators; stable between adjustments |
-| Eleven Archetypes | How a person operates and what they produce, regardless of their job title [^2] | Fixed permanently; the eleven categories are exhaustive |
+| Chart of Accounts | `reference_number`, `category`, `type`, `gravity_keywords` — a flat, two-level list, not a deep hierarchy | Structural position: which institutional category (Personal, Compliance, Real Estate, Construction, and others) and which specific type within it |
+| Eleven Archetypes | `id`, `name`, `signature`, `healing_trigger`, `gravity_keywords` — one row per archetype | Functional role: what a person or entity does, independent of job title |
 
-### Chart as general ledger and namespace
+A small sample of the real Chart of Accounts:
 
-The Chart of Accounts is the institution's general ledger and namespace simultaneously. To a financial reader, every row is a cost or revenue centre. To an engineering reader, every row is a stable namespace path that prevents orphaned documents. [[service-content]] consumes the Chart hierarchy when classifying incoming documents at the [[input-machine|F12 gate]]; [[service-people]] consumes the archetype layer when evaluating personnel alignment.
-
-Neither ledger is a substitute for the other. The Chart captures *where* in the organisation a document or decision belongs; the archetype captures *how* the person producing it operates. Their intersection is the platform's working model of institutional behaviour.
-
-## The eleven archetypes and their evaluator keys
-
-Each of the eleven archetypes maps to a primary organisational function and a machine-readable evaluator key. The key is consumed by the platform's alignment engine when comparing a person's observed behaviour against their structural position.
-
-| Archetype | Primary function | Evaluator key |
+| Reference | Category | Type |
 |---|---|---|
-| The Executive | Authority and strategy | `exec_integrity` |
-| The Guardian | Risk and compliance | `risk_variance` |
-| The Fiduciary | Fiscal management | `asset_trust` |
-| The Architect | Structural systems | `vision_alignment` |
-| The Engineer | Logic and data | `logic_efficiency` |
-| The Artisan | Craft and aesthetics | `output_fidelity` |
-| The Constructor | Physical build | `build_durability` |
-| The Catalyst | Growth and momentum | `velocity_factor` |
-| The Envoy | Influence and diplomacy | `relation_equity` |
-| The Steward | Logistics and support | `system_stability` |
-| The Sage | Theory and knowledge | `knowledge_depth` |
+| 1001 | Personal | Director |
+| 2001 | Compliance | Counsel |
+| 2002 | Compliance | Accounting |
+| 3003 | Real Estate | Office Leasing |
 
-### Archetypes as object classes
+The Chart is flat by design — a category and a type, nothing deeper. There is no separate "Domain" or "Sub-Domain" layer; the type field carries that level of specificity directly.
 
-The archetypes function as object classes in the software sense: every entity in [[service-people]] inherits properties from one of the eleven base classes, and that inheritance determines which platform functions the system can apply to that person's record. Two people with different job titles who share an archetype share the same computational treatment; two people with the same title but different archetypes do not. The [[verification-surveyor|Verification Surveyor]] uses archetype keys as one signal when calculating alignment scores.
+## The eleven archetypes
 
-The evaluator keys are not scores. They are dimension labels — the platform tracks the variance of each key over time rather than its absolute value, which makes the system stable across different baseline levels among individuals.
+Each archetype row carries a name and a short signature. It also carries a "healing trigger" — the failure mode the archetype is defined against:
 
-## How the Chart of Accounts anchors to archetype roles
-
-Each row in the Chart of Accounts carries a primary archetype anchor. The anchor is the expected functional role for that structural position. A small illustration from a canonical real-property institutional Chart:
-
-| Profile | Domain | Sub-Domain | Anchor archetype |
-|---|---|---|---|
-| Compliance | Counsel | Legal Representation | The Guardian |
-| Compliance | Accounting | — | The Fiduciary |
-| Real Estate | Office Leasing | — | The Catalyst |
-| Real Estate | Office Tenants | — | The Steward |
-| Construction | Collaborators | Façade Consultants | The Engineer |
-| Construction | Collaborators | Landscape Architects | The Artisan |
-| Construction | Trades | — | The Constructor |
-| IT Support | Contributors | BIM | The Engineer |
-| IT Support | Contributors | Data Science | The Sage |
-| Personnel | Supervisory Board | — | The Executive |
-
-### Seven-Profile reference deployment
-
-The Chart spans seven top-level Profiles in a typical deployment: Compliance, Real Estate, Construction, IT Support, Investor Relations, Personnel, and Local Administration. Together they cover the institutional surface of a real-property enterprise. The specific Profiles are operator-configurable; the seven-Profile example represents a reference deployment, not a fixed constraint.
-
-The anchor archetype is used to set expectations, not to restrict access. A Guardian-anchored Compliance Counsel can hold Fiduciary responsibilities if the operator assigns them; the Chart captures the primary anchor, and the alignment engine tracks divergence from it.
-
-## How the platform detects and surfaces organisational drift
-
-The most distinctive property of the dual-ledger design is that [[service-people]] and [[service-content]] use the relationship between the two tables to detect and flag organisational drift. The engine evaluates whether a person's observed behaviour matches their structural position.
-
-| Scenario | Diagnosis | System response |
+| Archetype | Signature | Healing trigger |
 |---|---|---|
-| Chart position matches archetype output | Healthy alignment | No action |
-| Chart position matches, archetype output drifts | Functional friction | The system throttles mismatched task routing and re-routes to aligned tasks |
-| Chart position mismatches, high archetype signal | Talent discovery | The system flags a potential role mismatch and proposes a Chart adjustment to the administrator |
-| Neither dimension matches | Systemic noise | The system suspends metric calculation to prevent contaminating aggregate data; a manual audit is flagged |
+| The Executive | Strategic Direction | Stagnation |
+| The Guardian | Risk & Compliance | Breach |
+| The Fiduciary | Resource Integrity | Leakage |
+| The Architect | System Design | Complexity |
+| The Engineer | Technical Execution | Friction |
+| The Artisan | Creative Precision | Homogeneity |
+| The Constructor | Physical Realization | Structural Gap |
+| The Catalyst | Growth & Momentum | Inertia |
+| The Envoy | External Synergy | Friction |
+| The Steward | Asset Preservation | Degradation |
+| The Sage | Knowledge & Vision | Ignorance |
 
-The mechanism does not take autonomous personnel action. The platform does not move, promote, or dismiss people. It surfaces structural mismatches and proposes adjustments; an operator makes every decision. The audit trail captured in the [[worm-ledger-design|WORM ledger]] records the proposal, the operator's decision, and the timestamp — the same pattern as the [[app-console-input|F12 input gate]].
+Both tables also carry a `gravity_keywords` column — a pipe-separated list of terms associated with the row (a Guardian's keywords include "compliance," "counsel," "audit," "legal"). This column exists in the data today as reference vocabulary; no classification code currently matches incoming text against it automatically.
 
-## Why socket-based taxonomy outperforms free-text job titles
+## How the taxonomy reaches the knowledge graph
 
-Conventional HR and relationship-management systems store job titles as free text. Four different strings can describe one role with seniority bands; the database treats them as four entirely different entities, and aggregation across them requires manual normalisation. [^2]
+[[service-content]] exposes a small admin API that reads each CSV file and loads its rows into the graph as static entities. The eleven archetype rows load as `classification: "archetype"`, the Chart of Accounts rows as `classification: "coa-profile"`, both tagged with a dedicated `__taxonomy__` module so they're distinguishable from entities extracted from real documents. Reloading either file replaces the prior set of rows rather than appending to it.
 
-The Chart of Accounts and archetype design resolves this structurally:
+## Where the archetype label is actually applied
 
-| Property | Effect |
-|---|---|
-| Sockets, not strings | Each person maps to a fixed Profile → Domain → Sub-Domain socket; the title text is supplementary metadata |
-| Semantic translation | Updating the definition of a role requires changing one row in the central Chart, not every personnel record that references it |
-| Behaviour-aware classification | The archetype layer tracks what the person produces, not what their title claims they produce |
-
-The deterministic identity assigned to an individual by [[service-extraction]] — a content-hash-derived identifier stable across renames and title changes — remains constant; the socket assignment and archetype reading evolve as the operator updates them. The full sequence from raw payload to socketed identity runs through the [[three-ring-architecture|three-ring architecture]]'s Ring 2 processing layer.
+The archetype taxonomy's one confirmed point of use today is the [[verification-surveyor|Verification Surveyor]] tool. When an operator manually verifies an extracted entity's identity, the tool prompts them to pick one of the eleven archetypes from the ontology file and records that choice as a claim on the entity, alongside the verification timestamp and source URL. This is a human decision made once per entity during review — not an automated inference, and not a mechanism that evaluates or scores a person's ongoing behaviour against their archetype. The Chart of Accounts categories are not part of this workflow; only the archetype selection is.
 
 ## See also
 
-- [[service-people]] — the service that maintains personnel records against this taxonomy
-- [[service-content]] — the service that classifies incoming documents against the Chart of Accounts hierarchy
-- [[service-extraction]] — the extraction engine that derives entity identifiers from incoming documents
-- [[app-console-input]] — the F12 input gate where operators confirm routing decisions against the Chart
+- [[service-content]] — the service that owns both CSV files and loads them into the knowledge graph
+- [[verification-surveyor]] — the tool where an operator applies an archetype label to a verified entity
+- [[service-extraction]] — the extraction engine that produces the entities a Verification Surveyor session reviews
