@@ -4,84 +4,51 @@ type: topic
 content_type: topic
 slug: service-fs
 title: "service-fs — el núcleo del libro mayor WORM"
-short_description: "El libro mayor inmutable Write-Once-Read-Many por inquilino que respalda cada registro escrito en la plataforma — arquitectura, durabilidad y la postura regulatoria que habilita por construcción."
+short_description: "El libro mayor inmutable Write-Once-Read-Many por inquilino que respalda cada registro escrito en la plataforma — una interfaz HTTP y MCP real e implementada sobre un registro de anexado encadenado por hash, con anclaje externo mensual a un registro público de transparencia."
 category: services
 index_group: ring-1-boundary-ingest
 audience: vendor-public
 bcsc_class: current-fact
 status: active
 aliases: [service-fs-architecture, service-fs-security-compliance]
-last_edited: 2026-07-31
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: service-fs.md
 ---
 
 Cada registro escrito en la plataforma PointSav — anclajes de identidad, comunicaciones de correo electrónico, artefactos de documentos — llega a `service-fs`, un libro contable inmutable de escritura única y lectura múltiple (WORM) por inquilino. Una vez escrito, los registros no pueden modificarse ni eliminarse; el libro contable es la columna vertebral con evidencia de manipulación que los servicios del [[three-ring-architecture|Anillo 2]] consultan y los servicios del Anillo 1 escriben. El artículo sobre [[worm-ledger-design|diseño del libro mayor WORM]] describe la filosofía de diseño WORM en detalle.
 
-`service-fs` no es un sistema de archivos de propósito general. Un sistema de archivos local permite lecturas, escrituras, modificaciones y eliminaciones a través de un árbol de directorios estándar. `service-fs` expone solo tres operaciones: `append` (añadir un registro), `read_since` (leer hacia adelante desde un punto de control) y `checkpoint` (crear una prueba firmada del estado). La superficie de API reducida es lo que hace que las garantías de integridad del libro mayor sean estructuralmente sólidas en lugar de impuestas por políticas — esta misma estrechez estructural es lo que permite que la postura de cumplimiento descrita más abajo se derive de la arquitectura, no de controles configurables.
+`service-fs` no es un sistema de archivos de propósito general. Un sistema de archivos local permite lecturas, escrituras, modificaciones y eliminaciones a través de un árbol de directorios estándar. `service-fs` expone una superficie reducida de anexar-y-verificar: escribir un nuevo registro, leer hacia adelante desde un punto del registro, y producir una prueba firmada del estado actual del libro mayor — además de las operaciones criptográficas que permiten a quien llama verificar una entrada específica o confirmar que dos puntos de control son consistentes entre sí. Esta superficie reducida es lo que hace que las garantías de integridad del libro mayor sean estructuralmente sólidas en lugar de aplicadas por política.
 
 ## Puntos clave
 
-- `service-fs` es un libro mayor WORM, no un sistema de archivos. La superficie de API implementada tiene dos operaciones: `append` y salud. Las operaciones `read_since` y `checkpoint` están planificadas.
-- El libro mayor es por inquilino — cada Totebox tiene su propio libro mayor aislado; no son posibles lecturas cruzadas entre inquilinos en la capa de almacenamiento.
-- El cumplimiento de SEC Rule 17a-4(f), eIDAS y SOC 2 se deriva de propiedades arquitectónicas, no de controles configurables: el motor de almacenamiento carece físicamente de la capacidad de eliminar o modificar registros.
-- El anclaje recurrente a Sigstore Rekor por parte de [[fs-anchor-emitter]] crea una cadena de marca temporal externa y públicamente verificable. **Verificado en vivo**: la unidad systemd `local-fs-anchor.timer` está activa y se ejecuta mensualmente (confirmado contra el sistema en ejecución).
-- El aislamiento de inquilinos mediante seguridad basada en capacidades a nivel de microkernel es el objetivo previsto del despliegue [[sel4-microkernel-substrate|seL4]], no el actual — hoy el aislamiento es a nivel de proceso, bajo un daemon estándar de Linux/BSD.
+- El servicio expone anexado, lectura, punto de control, y verificación tanto de entrada única como entre puntos de control, tanto por HTTP como por MCP — todo implementado, no planeado.
+- El libro mayor es por inquilino — cada Totebox mantiene su propio libro mayor aislado; no son posibles lecturas entre inquilinos en la capa de almacenamiento.
+- Cada entrada se encadena criptográficamente con la anterior (una cadena de hash SHA-256 lineal), y un sub-libro mayor de auditoría dedicado registra cada evento de lectura junto al libro mayor de registros principal.
+- El anclaje recurrente a Sigstore Rekor por [[fs-anchor-emitter]] crea una cadena de marcas de tiempo externa y públicamente verificable para todo el libro mayor, con una cadencia mensual.
+- El despliegue actual es un demonio Linux/BSD estándar con aislamiento a nivel de proceso — una garantía real pero más débil que la que ofrecería un límite impuesto por un microkernel. Se exploró un entorno de microkernel seL4 como diseño de unikernel de bajo nivel bajo este mismo nombre de paquete; ese diseño ahora vive en su propio paquete de proveedor separado, y no hay un objetivo seL4 en desarrollo activo dentro del código actual de `service-fs`.
 
-## La arquitectura de cuatro capas
+## La arquitectura por capas
 
-Para garantizar modularidad y supervivencia, `service-fs` se implementa como una pila desacoplada de cuatro capas:
+`service-fs` separa las responsabilidades en capas que pueden cambiar de forma independiente:
 
-- **L4: Anclaje (nivel de espacio de trabajo):** Trabajo periódico mensual realizado por [[fs-anchor-emitter]] que ancla puntos de control firmados en el registro público de Sigstore Rekor.
-- **L3: Protocolo de comunicación:** La interfaz de comunicación (HTTP/axum hoy; [[mcp-substrate-protocol|MCP]] a largo plazo) que aplica límites por inquilino mediante `moduleId`.
-- **L2: API del libro mayor WORM (Rust Trait):** El contrato central estable (`append`, `read_since`, `checkpoint`) que sobrevive a los cambios en las capas superior e inferior.
-- **L1: Primitiva de almacenamiento en tiles:** El motor de almacenamiento específico del entorno (POSIX en Linux; mediado por capacidades en [[sel4-microkernel-substrate|seL4]]) usando el formato **C2SP tlog-tiles**.
-
-## Entornos de ejecución duales
-
-`service-fs` está **diseñado** para operar en dos entornos de ejecución desde una sola base de código. El artículo sobre [[worm-ledger-storage-architecture|arquitectura de almacenamiento WORM]] describe el modelo de almacenamiento previsto para cada entorno.
-
-1. **Envolvente A (actual):** Un daemon Linux/BSD bajo systemd. Usa E/S de archivos POSIX estándar y aislamiento de procesos. Este es el único entorno implementado; expone `POST /v1/append` y `GET /healthz`.
-2. **Envolvente B (seL4 — diferido):** Un dominio de protección [[sel4-microkernel-substrate|seL4]] Microkit verificado es el objetivo futuro planificado. Está previsto que use `moonshot-database` (PSDB) para almacenamiento direccionado por capacidades, proporcionando aislamiento de inquilinos formalmente verificado. El Envolvente B existe solo como un punto de entrada de referencia (`main_sel4_stub.rs`) que no está compilado en la compilación actual.
+- **Anclaje:** trabajo mensual realizado por [[fs-anchor-emitter]], anclando puntos de control firmados al registro público de Sigstore Rekor.
+- **Protocolo de transporte:** una interfaz HTTP (vía axum) y una interfaz de servidor MCP, ambas exponiendo las mismas operaciones subyacentes a distintos tipos de llamadores.
+- **Contrato del libro mayor:** un trait de Rust estable — anexar, leer desde un cursor, punto de control, y ambas operaciones de prueba — sobre el que se componen tanto la capa de transporte como la de almacenamiento, de modo que cualquiera puede cambiar sin romper a la otra.
+- **Almacenamiento:** hoy, un registro de cadena de hash por inquilino basado en archivos POSIX, usando el formato C2SP tlog-tiles para la estructura de mosaicos en disco y el formato C2SP signed-note para los puntos de control.
 
 ## Durabilidad
 
-El formato de durabilidad objetivo usa estándares abiertos:
+El formato en disco del libro mayor sigue estándares abiertos en lugar de un esquema propietario — C2SP tlog-tiles para el registro mismo, C2SP signed-note para los puntos de control — de modo que un lector futuro pueda decodificar los archivos en bruto con herramientas estándar incluso sin el software propio de la plataforma. Cada escritura también llega al sub-libro mayor de auditoría, un registro WORM independiente de la actividad de lectura junto a los datos principales.
 
-- **C2SP tlog-tiles:** Un formato basado en texto de estándar abierto que garantiza legibilidad a 100 años, permitiendo que futuros archivistas decodifiquen el almacenamiento usando utilidades Unix estándar sin software propietario ni asistencia del proveedor.
-- **Puntos de control C2SP signed-note:** Artefactos compactos y firmados que prueban el estado del libro mayor en cualquier momento.
+## Modelo de amenazas
 
-El backend de tiles está planificado; la compilación actual usa un registro JSON de solo adición por inquilino con resúmenes SHA-256 por carga. Un **sub-libro mayor de auditoría** — un libro mayor WORM dedicado que registra cada evento de lectura — satisface los requisitos de integridad de procesamiento de SOC 2 independientemente de que el formato de tiles esté completo.
-
-## Alineación regulatoria y cumplimiento
-
-La postura de seguridad de `service-fs` no es una capa de políticas sino una propiedad arquitectónica fundamental, diseñada para satisfacer múltiples marcos regulatorios internacionales:
-
-- **SEC Rule 17a-4(f):** La plataforma apunta a la ruta estricta de "WORM", denegando estructuralmente la modificación de registros. Esto supera la alternativa de "rastro de auditoría" que suelen usar los proveedores de nube para enmascarar almacenamiento subyacente mutable.
-- **eIDAS (UE 2025/1946):** Se alinea con los estándares de Preservación Calificada, garantizando integridad, autenticidad y accesibilidad a largo plazo "independientemente de futuros cambios tecnológicos."
-- **Criterios de Servicios de Confianza SOC 2:** Aborda directamente la Integridad de Procesamiento (PI1, PI4) mediante ingesta firmada y sub-libros de auditoría de lectura, y el Acceso Lógico (CC6) mediante aislamiento a nivel de inquilino.
-
-Tres propiedades estructurales sustentan esta postura:
-
-1. **Inmutabilidad estructural.** La superficie de API de Rust y el motor de almacenamiento subyacente carecen físicamente de la capacidad de eliminar o modificar registros.
-2. **Integridad de cadena Merkle.** Cada entrada está vinculada criptográficamente a la siguiente mediante [[merkle-proofs-as-substrate-primitive|pruebas de consistencia Merkle]]; cualquier intento de alterar el historial es detectable al instante.
-3. **Testificación externa.** El anclaje mensual al registro público de Sigstore Rekor por parte de [[fs-anchor-emitter]] proporciona una prueba de estado independiente de los propios sistemas internos de la plataforma.
-
-**El aislamiento de inquilinos** es la única propiedad aún en construcción: en el despliegue [[sel4-microkernel-substrate|seL4]] previsto, el aislamiento se aplica mediante [[capability-based-security|seguridad basada en capacidades]] a nivel de microkernel, haciendo el acceso entre inquilinos matemáticamente imposible. Hoy, bajo el Envolvente A, el aislamiento es a nivel de proceso bajo los límites estándar de un daemon Linux/BSD — una garantía real pero más débil que el objetivo seL4.
-
-## Mitigación del modelo de amenazas
-
-- **Manipulación por parte del operador.** Incluso un administrador con acceso root no puede alterar el libro mayor sin romper la cadena Merkle y fallar las verificaciones públicas de consistencia de Rekor. El sistema de [[machine-based-auth|autenticación basada en máquina]] impide la firma no autorizada.
-- **Obsolescencia del proveedor.** Los formatos de estándar abierto garantizan la supervivencia de los datos más allá de la vida útil del proveedor de software.
-- **Agilidad criptográfica.** El sistema está diseñado para migrar a esquemas de firma poscuánticos (por ejemplo, Dilithium) sin necesidad de una migración completa del almacenamiento.
+- **Manipulación por el operador.** Incluso un administrador con acceso directo al almacenamiento no puede alterar un registro pasado sin romper la cadena de hash — y una cadena rota es detectable tanto localmente como contra los puntos de control anclados externamente en Rekor.
+- **Obsolescencia del proveedor.** El formato en disco de estándar abierto está diseñado para sobrevivir al software de cualquier proveedor en particular.
 
 ## Véase también
 
-- [[fs-anchor-emitter]] — el emisor periódico de anclajes que registra el libro mayor en Sigstore Rekor
-- [[worm-ledger-architecture]] — arquitectura WORM a nivel de infraestructura
+- [[fs-anchor-emitter]] — el emisor de anclaje periódico que registra puntos de control del libro mayor en Sigstore Rekor
 - [[worm-ledger-design]] — la filosofía de diseño detrás del enfoque WORM
-- [[sel4-microkernel-substrate]] — el envolvente Microkit seL4 (Envolvente B) previsto como tiempo de ejecución
-- [[capability-based-security]] — el mecanismo de aislamiento a nivel de microkernel objetivo del Envolvente B
-- [[machine-based-auth]] — el sistema de autenticación que impide la firma no autorizada
-- [[service-content]] — el Motor de Gravedad que escribe los registros de geometría base L0 en service-fs
-- [[service-pointsav-link|Servicio PointSav Link]] — adaptador conectable que conecta nodos os-* a la red de flota
+- [[machine-based-auth]] — el sistema de autenticación que gobierna quién puede actuar en nombre del libro mayor
+- [[service-content]] — un consumidor del Anillo 2 de los registros que mantiene `service-fs`
