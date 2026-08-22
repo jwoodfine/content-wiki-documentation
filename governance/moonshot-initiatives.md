@@ -42,10 +42,10 @@ platform's outstanding external exposure.
 
 Until a legacy component can be replaced, it is physically isolated
 into a quarantined component silo (for example, `vendor-azure-auth`
-or `vendor-microsoft-graph`). These directories act as structural
-boundaries. The foreign code may not execute outside a tightly
-controlled capability sandbox. Isolation prevents a dependency from
-spreading coupling into adjacent platform layers. (Correction, 2026-08-02: `vendor-azure-auth/README.md` and `vendor-microsoft-graph/README.md` are real "Quarantined Foreign Component" warning banners, matching the quarantine concept — but there is no actual foreign code physically isolated in a capability sandbox behind them yet; most named `moonshot-*` directories are bare 4-file Cargo scaffolds, not active engineering. The quarantine mechanism and ADR-08 relationship are real; the "isolation prevents coupling" claim describes a design intent ahead of what's actually running. Flagged, not resolved.)
+or `vendor-microsoft-graph`) — each carrying a "Quarantined Foreign
+Component" warning banner in its `README.md`. No foreign code runs
+inside a capability sandbox behind these banners yet; the directories
+today are placeholders marking the boundary, not active containment.
 
 ## Replacement pipeline
 
@@ -57,21 +57,21 @@ reaches structural parity with its quarantined counterpart, it
 replaces the isolated directory. The ledger entry closes at that
 point.
 
-## Active initiative areas
+## Initiative areas and real status
 
-Each moonshot targets a distinct dependency class. The following classes have open initiatives in the engineering platform:
+Nine moonshot directories exist. Three carry substantial, active engineering today; the remaining six are named directories with a 4-file Cargo scaffold and no implementation yet:
 
-| Initiative | Target dependency | Rationale |
+| Initiative | Target dependency | Status |
 |---|---|---|
-| `moonshot-database` | External database engine | Data layer sovereignty; replace foreign engine with a formally verified flat-file or embedded store |
-| `moonshot-gpu` | Cloud GPU inference services | Inference sovereignty; platform-local GPU capacity removes reliance on cloud inference APIs |
-| `moonshot-hypervisor` | External hypervisor layer | Substrate sovereignty; a verified hypervisor closes the gap between the seL4 microkernel and commodity hardware |
-| `moonshot-index` | External search and index backends | Search sovereignty; a platform-native index eliminates dependency on third-party search infrastructure |
-| `moonshot-kernel` | Commodity Linux kernel | Kernel sovereignty; the [[sel4-microkernel-substrate|seL4 formally verified microkernel]] replaces the quarantined systemd/Linux dependency recorded in [[architecture-decisions|ADR-08]] |
-| `moonshot-network` | External network control plane | Network sovereignty; a native WireGuard-native mesh eliminates reliance on managed network services |
-| `moonshot-protocol` | Proprietary communication protocols | Protocol sovereignty; replace proprietary wire protocols with open, formally specified equivalents |
-| `moonshot-sel4-vmm` | Commodity virtual machine monitor | Verification layer; a seL4-native VMM closes the verified boundary below all guest operating systems |
-| `moonshot-toolkit` | External build and CI tooling | Build sovereignty; a Rust-native build orchestrator replaces reliance on external CI infrastructure |
+| `moonshot-index` | External search and index backends | Active — a working trigram substring index plus a planned ranked-search layer, pure `std`, no external dependency |
+| `moonshot-sel4-vmm` | Commodity virtual machine monitor | Active — a real seL4 protection-domain runtime with multiple working binaries, including a confirmed HTTP call over VirtIO-net DMA |
+| `moonshot-toolkit` | External build and CI tooling | Active — a working Rust build orchestrator that produces a bootable system image |
+| `moonshot-database` | External database engine | Scaffold — directory and Cargo manifest exist, no implementation |
+| `moonshot-gpu` | Cloud GPU inference services | Scaffold — directory and Cargo manifest exist, no implementation |
+| `moonshot-hypervisor` | External hypervisor layer | Scaffold — directory and Cargo manifest exist, no implementation |
+| `moonshot-kernel` | Commodity Linux kernel | Scaffold — directory and Cargo manifest exist, no implementation. The [[sel4-microkernel-substrate|seL4 formally verified microkernel]] is the intended eventual replacement for the quarantined systemd/Linux dependency recorded in [[architecture-decisions|ADR-08]], but that replacement work currently lives in `moonshot-sel4-vmm`, not here |
+| `moonshot-network` | External network control plane | Scaffold — directory and Cargo manifest exist, no implementation |
+| `moonshot-protocol` | Proprietary communication protocols | Scaffold — directory and Cargo manifest exist, no implementation |
 
 Completion status of each initiative is tracked in the [[sovereign-replacement-initiative|Sovereign Replacement Initiative]] ledger.
 
