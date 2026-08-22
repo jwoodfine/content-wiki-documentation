@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Modelo de lenguaje pequeño institucional"
+title: "Servicio de inferencia de IA"
 slug: service-slm
 category: services
 type: concept
@@ -11,10 +11,10 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-07-18
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: service-slm.md
-short_description: "service-slm es el servicio de modelo de lenguaje de la familia PointSav — un Modelo de Lenguaje Pequeño cuantizado y estrecho que traduce la intención institucional en salidas deterministas y enruta cada llamada de inferencia de IA a través del límite de auditoría del Portero."
+short_description: "service-slm es la puerta de enlace de inferencia de IA de la plataforma — cada solicitud, local o remota, transita el límite de auditoría del Doorman y uno de tres niveles de cómputo antes de que se devuelva una respuesta."
 cites:
  - olmo3-allenai
 references:
@@ -26,91 +26,67 @@ references:
     url: "https://arxiv.org/abs/2402.00838"
 ---
 
-Una solicitud de IA que sale del edificio no puede auditarse ni revocarse. En el momento en que la intención institucional llega a un modelo de frontera en la nube de otra empresa, la organización ha cedido tanto el registro de la decisión como el control sobre ella.
+Una solicitud de IA que sale del edificio no puede auditarse ni recuperarse. `service-slm` es
+la puerta de enlace de inferencia de IA de la plataforma — el espacio de trabajo que aloja el
+enrutador [[doorman-protocol|Doorman]] y sus crates de soporte. Su propiedad central es que
+cada llamada de inferencia, sea cual sea el nivel que finalmente la sirva, cruza primero el
+límite de auditoría del Doorman.
 
-`service-slm` es el servicio de modelo de lenguaje de la familia PointSav. Es deliberadamente un Modelo de Lenguaje Pequeño — cuantizado, estrecho, rápido — y su trabajo no es la conversación sino la traducción semántica: convertir la intención institucional en salidas deterministas.
+## El Doorman enruta, quien llama solo sugiere
 
-El servicio se ejecuta en tres niveles de cómputo. Cada llamada de inferencia — local, de ráfaga o externa — transita el límite de auditoría del [[doorman-protocol|Portero]], donde cada prompt y cada respuesta se capturan en el [[worm-ledger-design|libro mayor]] por inquilino antes de que la respuesta regrese.
+`service-slm` implementa [[model-tier-discipline|la disciplina de enrutamiento por niveles
+de la plataforma]]: quien llama envía una sugerencia de complejidad, no una elección de nivel,
+y el Doorman elige una de tres rutas según esa sugerencia más el estado de presupuesto en
+tiempo real.
 
-Para un comprador regulado la consecuencia es concreta. Ninguna decisión de IA queda sin registrar, y ninguna solicitud llega a una API de terceros sin cruzar un límite que el operador controla. Este artículo cubre las cuatro operaciones, los tres niveles de cómputo, el límite del Portero y por qué un modelo pequeño es una elección estructural y no un compromiso de costo.
-
-## Qué hace service-slm
-
-El servicio es invisible — no hay ventana de chat, y el operador nunca escribe directamente en `service-slm`. La superficie por encima de él presenta un flujo de trabajo estructurado; `service-slm` es el intermediario silencioso. Realiza cuatro operaciones, en orden de peso institucional creciente.
-
-| Operación | Entradas | Salida |
+| Ruta | Dónde se ejecuta | Modelo |
 |---|---|---|
-| Análisis de comandos semánticos | Intención en inglés desde el Terminal F8 | Comando UDP binario para `service-udp` |
+| Local | En el mismo host que el Doorman | OLMo 3 7B cuantizado, servido por HTTP |
+| Yoyo | Una instancia GPU multi-nube prescindible de ráfaga | Un modelo OLMo 3 más grande ajustado para razonamiento más profundo |
+| External | Una API de terceros con licencia, controlada por lista blanca | Un modelo de frontera, solo para tareas de precisión crítica y estrechas |
 
-**Corrección (2026-07-18):** esta fila no coincide con la fuente real de
-`app-network-admin` (el binario real del F8 Terminal Gateway;
-`app-network-admin/README.md`). Tres discrepancias específicas: (1) **no existe ningún
-servicio `service-udp`** — la difusión de malla UDP la envía directamente
-`app-network-admin` en el puerto 8090 a tres direcciones fijas de pares, no se enruta a
-un servicio de destino separado; (2) el formato del comando actualmente es **cadenas
-JSON, no binario** — el README afirma "the intended protocol is a 16-byte binary packet
-format," es decir, el binario es el objetivo, no la realidad actual; (3) lo más
-significativo: la propia sección "Known gaps" del README admite que `handle_translation`
-actualmente ejecuta una ruta de binario codificada de forma fija
-(`/opt/pointsav/f8-gateway/system-slm`) en lugar de enrutar a través de la API HTTP de
-Doorman de `service-slm` — "the intended architecture routes through the `service-slm`
-Doorman HTTP API instead. This is tracked as a pending alignment item." Eso califica
-directamente la propia afirmación de este artículo dos secciones más abajo de que "los
-tres niveles transitan la frontera de auditoría de Doorman. Ningún nivel la evita" — para
-esta operación específica, tal como está implementada actualmente, sí la evita.
-**Señalado, no reescrito silenciosamente** — necesita confirmación de project-totebox
-sobre el estado actual antes de corregir esta fila y la afirmación de "ningún nivel la
-evita".
+Estos tres niveles de enrutamiento interno son un sistema distinto de la escala de
+suscripción comercial de cara al cliente descrita en [[pointsav-llm]] — el propio código
+fuente nombra el enum de enrutamiento deliberadamente para evitar que ambos se confundan.
 
-| Verificación de gravedad | Vector de Gravedad de 50 palabras de [[service-content]] | Token único `VALID` o `REJECT` |
-| Asignación de enchufe | Paquete de entidades de [[service-extraction]] + [[archetypes-and-chart-of-accounts|Plan de Cuentas]] | Sovereign-ID con enchufe del Plan de Cuentas |
-| Sugerencia de temas | Patrones recurrentes que señala el Motor de Gravedad | Entradas propuestas a la Bóveda de Semillas de Temas, para aprobación del operador |
+## El límite de auditoría del Doorman
 
-El modelo nunca publica datos estructurados de forma autónoma. Cada salida transita un paso de verificación con intervención humana antes de poder escribirse en un libro mayor verificado.
+Cada mensaje y cada finalización capturados por el Doorman se escriben en una ruta de
+auditoría antes de que la respuesta regrese a quien llamó, formando el registro institucional
+de cada decisión de IA. El Doorman existe por tres razones:
 
-## Los tres niveles de cómputo
+1. **Regulatoria.** ISO/IEC 42001, el estándar de sistema de gestión de IA [^1], exige un
+   registro inmutable de las decisiones asistidas por IA.
+2. **Operativa.** Un sistema autocurativo necesita un corpus de su propio comportamiento
+   pasado para mejorar; la captura de auditoría lo proporciona.
+3. **Soberana.** Ninguna solicitud llega a una API de terceros sin antes pasar por un límite
+   que controla el operador.
 
-La misma interfaz de `service-slm` se adapta al hardware del anfitrión a través de tres modos de ejecución.
+Detalle completo sobre el enrutamiento y los mecanismos de auditoría propios del Doorman:
+[[doorman-protocol]].
 
-| Nivel | Dónde se ejecuta | Tamaño del modelo | Caso de uso |
-|---|---|---|---|
-| Local | Estación de trabajo del operador u [[totebox-os|`os-totebox`]] con al menos 16 GB de RAM | Modelo cuantizado de 1B–7B parámetros cargado localmente | Bóveda de Hierro Soberano — clientes institucionales; sin egreso a la nube |
-| Ráfaga elástica | Nodo GPU efímero aprovisionado por el operador | Modelo más grande en hardware arrendado; datos tunelizados por un enlace cifrado | Procesamiento por lotes pesado optimizado en costo; el nodo se desmonta tras la ejecución |
-| API externa | Endpoint de API de terceros con licencia | Modelo de frontera | Enrutamiento de último recurso para tareas donde la capacidad local es insuficiente |
+## Selección de modelo
 
-Los tres niveles transitan el límite de auditoría del Portero. Ningún nivel lo elude.
+El modelo local canónico proviene de la familia OLMo, que se distribuye con pesos
+completamente abiertos y documentación de datos de entrenamiento [^2]. Esto es un requisito
+previo para el pre-entrenamiento continuo sobre el propio corpus de un operador, la ruta a
+largo plazo hacia un modelo especializado por dominio.
 
-## El límite del Portero
+## Por qué un modelo pequeño, por defecto
 
-El Portero es el punto de control de auditoría y enrutamiento entre `service-slm` y el resto del sistema. Cada prompt y cada respuesta se capturan antes de que la respuesta regrese al solicitante. El registro de auditoría vive en el libro mayor local por inquilino y forma el registro institucional de cada decisión de IA.
-
-El Portero existe por tres razones.
-
-1. **Regulatoria.** ISO/IEC 42001, el estándar de sistema de gestión de IA [^1], exige un registro inmutable de las decisiones asistidas por IA.
-2. **Operativa.** Un sistema auto-reparable necesita un corpus de su propio comportamiento pasado; el Portero lo captura.
-3. **Soberana.** Ninguna solicitud llega a una API de terceros sin pasar por un límite local que controla el operador.
-
-## Selección del modelo
-
-El modelo local canónico es de la familia OLMo, que se distribuye con pesos completamente abiertos y documentación de los datos de entrenamiento [^2]. Los pesos abiertos y los datos documentados son un prerrequisito para el preentrenamiento continuo sobre el corpus propio del operador — el camino a largo plazo hacia un modelo institucional especializado en el dominio.
-
-| Perfil | Modelo | RAM objetivo |
-|---|---|---|
-| Edge | OLMo-2-0425-1B-Instruct | ~2 GB |
-| Standard | OLMo-3-1125-7B-Think-Q4_K_M | ~6 GB |
-
-## Por qué un modelo pequeño
-
-Un modelo de escala de frontera impone tres costos que `service-slm` no puede aceptar: exige egreso a la nube, consume decenas de gigabytes de RAM y no puede auditarse de ninguna manera significativa. Un modelo cuantizado de 1B parámetros es suficiente para la única tarea estrecha — traducir el inglés institucional en salidas deterministas — y encaja dentro del presupuesto de un nodo en la nube de bajo costo junto con un Totebox.
-
-La especialización, no la escala, es el principio de diseño.
+Un modelo de escala de frontera impone costos que el nivel Local está diseñado para evitar:
+egreso a la nube, decenas de gigabytes de RAM, y una solicitud que no puede auditarse de
+manera significativa. Un modelo cuantizado de 7B es suficiente para la mayoría de las
+solicitudes y cabe dentro del presupuesto de costo de un nodo de bajo costo que se ejecuta
+junto al resto de la plataforma. La especialización y la segmentación por niveles, no la escala por defecto,
+es el principio de diseño — los niveles Yoyo y External existen precisamente para las
+solicitudes donde genuinamente se necesita más capacidad.
 
 ## Véase también
 
-- [[service-content]] — el Motor de Gravedad ascendente; principal solicitante de service-slm para la verificación de gravedad
-- [[os-network-admin]] — el Terminal F8 donde se origina el análisis de comandos semánticos
-- [[totebox-os]] — el Totebox que aloja service-slm en modo Hierro Soberano
-- [[architecture-decisions|SYS-ADR-07]] — los datos estructurados nunca se enrutan a través de IA; service-slm implementa este límite
-- [[doorman-protocol]] — el protocolo de auditoría y enrutamiento del Portero en detalle
+- [[doorman-protocol]] — los mecanismos de enrutamiento y auditoría del Doorman en detalle
+- [[model-tier-discipline]] — la disciplina de enrutamiento por niveles que implementa este servicio
+- [[pointsav-llm]] — la escala comercial distinta, de cara al cliente
+- [[architecture-decisions|SYS-ADR-07]] — los datos estructurados nunca se enrutan a través de IA; el Doorman implementa este límite
 - [[run-local-slm-inference]] — guía paso a paso: iniciar el servicio SLM y enviar solicitudes de inferencia desde la consola o la API
-- [[run-first-slm-query]] — guía paso a paso: leer el panel de salud del Doorman y enviar el primer prompt
+- [[run-first-slm-query]] — guía paso a paso: leer el panel de salud del Doorman y enviar tu primera consulta

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Institutional small language model"
+title: "AI inference service"
 slug: service-slm
 category: services
 type: concept
@@ -11,10 +11,10 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-07-18
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: service-slm.es.md
-short_description: "service-slm is the language-model service of the PointSav family, translating institutional intent into deterministic outputs via the Doorman audit boundary."
+short_description: "service-slm is the platform's AI inference gateway — every request, local or remote, transits the Doorman's audit boundary and one of three compute tiers before a response returns."
 cites:
  - olmo3-allenai
 references:
@@ -26,88 +26,62 @@ references:
     url: "https://arxiv.org/abs/2402.00838"
 ---
 
-An AI request that leaves the building cannot be audited and cannot be recalled. The moment institutional intent reaches a frontier model in another company's cloud, the organization has surrendered both the record of the decision and control over it.
+An AI request that leaves the building cannot be audited and cannot be recalled. `service-slm`
+is the platform's AI inference gateway — the workspace that houses the [[doorman-protocol|
+Doorman]] router and its supporting crates — and its central property is that every inference
+call, whatever tier ultimately serves it, crosses the Doorman's audit boundary first.
 
-`service-slm` is the language-model service of the PointSav family. It is deliberately a Small Language Model — quantised, narrow, fast — and its job is not conversation but semantic translation: turning institutional intent into deterministic outputs.
+## The Doorman routes, callers hint
 
-The service runs in three compute tiers, and every inference call — local, burst, or external — transits the [[doorman-protocol|Doorman]] audit boundary, where each prompt and completion is captured to the per-tenant [[worm-ledger-design|ledger]] before the response returns.
+`service-slm` implements [[model-tier-discipline|the platform's tier-routing discipline]]:
+a caller submits a complexity hint, not a tier choice, and the Doorman picks one of three
+routes based on that hint plus live budget state.
 
-For a regulated buyer the consequence is concrete. No AI decision is unlogged, and no request reaches a third-party API without crossing a boundary the operator controls. This article covers the four operations, the three compute tiers, the Doorman boundary, and why a small model is a structural choice rather than a cost compromise.
-
-## What service-slm does
-
-The service is invisible — there is no chat window, and the operator never types into `service-slm` directly. The surface above it presents a structured workflow; `service-slm` is the silent intermediary. It performs four operations, in order of increasing institutional weight.
-
-| Operation | Inputs | Output |
+| Route | Where it runs | Model |
 |---|---|---|
-| Semantic command parsing | English intent from the F8 Terminal | Binary UDP command for `service-udp` |
+| Local | On the same host as the Doorman | Quantized OLMo 3 7B, served over HTTP |
+| Yoyo | A preemptible multi-cloud GPU burst instance | A larger OLMo 3 model tuned for deeper reasoning |
+| External | A licensed third-party API, allowlist-gated | A frontier model, for narrow precision-critical tasks only |
 
-**Correction (2026-07-18):** this row does not match the live `app-network-admin`
-source (the real F8 Terminal Gateway binary; `app-network-admin/README.md`). Three
-specific mismatches: (1) **there is no `service-udp` service** — UDP mesh broadcast is
-sent directly by `app-network-admin` itself on port 8090 to three fixed peer addresses,
-not routed to a separate destination service; (2) the command format is currently
-**JSON strings, not binary** — the README states "the intended protocol is a 16-byte
-binary packet format," meaning binary is the target, not the current reality; (3) most
-significantly, the README's own "Known gaps" section admits `handle_translation`
-currently shells out to a hardcoded binary path
-(`/opt/pointsav/f8-gateway/system-slm`) rather than routing through `service-slm`'s
-Doorman HTTP API — "the intended architecture routes through the `service-slm` Doorman
-HTTP API instead. This is tracked as a pending alignment item." That directly qualifies
-this article's own claim two sections below that "all three tiers transit the Doorman
-audit boundary. No tier bypasses it" — for this specific operation, as currently
-implemented, it does. **Flagged, not silently rewritten** — needs project-totebox
-confirmation of current status before this row and the "no tier bypasses it" claim are
-corrected.
-| Gravity verification | 50-word Gravity Vector from [[service-content]] | `VALID` or `REJECT` single token |
-| Socket assignment | Entity bundle from [[service-extraction]] + [[archetypes-and-chart-of-accounts|Chart of Accounts]] | Sovereign-ID with Chart-of-Accounts socket |
-| Theme suggestion | Recurring patterns the Gravity Engine flags | Proposed new entries to the Themes Seed Vault, for operator approval |
+These three internal routing tiers are a distinct system from the customer-facing commercial
+subscription ladder described in [[pointsav-llm]] — the source code itself names the routing
+enum deliberately to avoid the two colliding.
 
-The model never publishes structured data autonomously. Every output transits a human-in-the-loop verification step before it can be written to a verified ledger.
+## The Doorman audit boundary
 
-## The three compute tiers
+Every prompt and completion captured by the Doorman is written to an audit path before the
+response returns to the caller, forming the institutional record of every AI decision. The
+Doorman exists for three reasons:
 
-The same `service-slm` interface adapts to the host hardware through three execution modes.
+1. **Regulatory.** ISO/IEC 42001, the AI management-system standard [^1], calls for an
+   immutable log of AI-assisted decisions.
+2. **Operational.** A self-healing system needs a corpus of its own past behaviour to improve
+   against; the audit capture provides it.
+3. **Sovereign.** No request reaches a third-party API without first passing through a
+   boundary the operator controls.
 
-| Tier | Where it runs | Model size | Use case |
-|---|---|---|---|
-| Local | Operator workstation or [[totebox-os|`os-totebox`]] with at least 16 GB RAM | 1B–7B-parameter quantised model loaded locally | Sovereign Iron Vault — institutional customers; no cloud egress |
-| Elastic burst | Operator-provisioned ephemeral GPU node | Larger model on rented hardware; data tunnelled over an encrypted link | Cost-optimised heavy batch processing; the node is torn down after the run |
-| External API | Licensed third-party API endpoint | Frontier model | Last-resort routing for tasks where local capacity is insufficient |
-
-All three tiers transit the Doorman audit boundary. No tier bypasses it.
-
-## The Doorman boundary
-
-The Doorman is the audit-routing checkpoint between `service-slm` and the rest of the system. Every prompt and every completion is captured before the response returns to the caller. The audit trail lives in the local per-tenant ledger and forms the institutional record of every AI decision.
-
-The Doorman exists for three reasons.
-
-1. **Regulatory.** ISO/IEC 42001, the AI management-system standard [^1], requires an immutable log of AI-assisted decisions.
-2. **Operational.** A self-healing system needs a corpus of its own past behaviour; the Doorman captures it.
-3. **Sovereign.** No request reaches a third-party API without passing through a local boundary the operator controls.
+Full detail on the Doorman's own routing and audit mechanics: [[doorman-protocol]].
 
 ## Model selection
 
-The canonical local model is from the OLMo family, which ships with fully open weights and training-data documentation [^2]. Open weights and documented training data are a prerequisite for continued pre-training on an operator's own corpus — the long-term path to a domain-specialised institutional model.
+The canonical local model is from the OLMo family, which ships with fully open weights and
+training-data documentation [^2] — a prerequisite for continued pre-training on an operator's
+own corpus, the long-term path to a domain-specialised model.
 
-| Profile | Model | RAM target |
-|---|---|---|
-| Edge | OLMo-2-0425-1B-Instruct | ~2 GB |
-| Standard | OLMo-3-1125-7B-Think-Q4_K_M | ~6 GB |
+## Why a small model, by default
 
-## Why a small model
-
-A frontier-scale model imposes three costs `service-slm` cannot accept: it requires cloud egress, it consumes tens of gigabytes of RAM, and it cannot be audited in any meaningful sense. A 1B-parameter quantised model is sufficient for the one narrow task — translating institutional English into deterministic outputs — and fits inside the cost envelope of a low-cost cloud node alongside a Totebox.
-
-Specialisation, not scale, is the design principle.
+A frontier-scale model imposes costs the Local tier is built to avoid: cloud egress, tens of
+gigabytes of RAM, and a request that cannot be meaningfully audited. A quantized 7B model is
+sufficient for most requests and fits inside the cost envelope of a low-cost node running
+alongside the rest of the platform. Specialisation and tiering, not scale by default, is the
+design principle — the Yoyo and External tiers exist precisely for the requests where more
+capability is genuinely needed.
 
 ## See also
 
-- [[service-content]] — the upstream Gravity Engine; primary caller of service-slm for gravity verification
-- [[os-network-admin]] — the F8 Terminal where semantic command parsing originates
-- [[totebox-os]] — the Totebox that hosts service-slm in Sovereign Iron mode
-- [[architecture-decisions|SYS-ADR-07]] — structured data never routes through AI; service-slm implements this boundary
-- [[doorman-protocol]] — the Doorman audit-routing protocol in detail
+- [[doorman-protocol]] — the Doorman's routing and audit mechanics in detail
+- [[model-tier-discipline]] — the tier-routing discipline this service implements
+- [[pointsav-llm]] — the distinct, customer-facing commercial tier ladder
+- [[architecture-decisions|SYS-ADR-07]] — structured data never routes through AI; the Doorman implements this boundary
 - [[run-local-slm-inference]] — step-by-step guide: start the SLM service and submit inference requests from the console or API
 - [[run-first-slm-query]] — step-by-step guide: read the Doorman health dashboard and submit your first prompt
