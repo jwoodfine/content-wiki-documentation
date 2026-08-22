@@ -26,7 +26,7 @@ The PointSav platform is too broad for any single team to maintain and too valua
 |---|---|---|---|
 | **Core** | 4–7 | PointSav-employed; salaried; equity in PointSav Digital Systems | Day-to-day stewardship of the substrate |
 | **Paid** | 50–100 | PointSav-funded contracts; outcome-based deliverables | Project-tier engineering work via GitHub pull requests |
-| **Open** | 10,000+ | None — Apache 2.0 / MIT / CC BY 4.0 contributions | Public substrate contributions; no CLA required (Correction, 2026-08-02: the real, ratified root `LICENSE` ("MULTI-LICENSE NOTICE" v1.1, effective 2026-05-24) places most `os-*`/`service-*`/`app-*` code — the "open core" this article describes — under **AGPL-3.0-or-later**, not Apache 2.0/MIT; only a handful of directories (`os-infrastructure/`, `os-mediakit/`, `app-mediakit-*/`, etc.) are the more permissive FSL-1.1-ALv2. AGPL is materially more restrictive on network-served modifications than the "unrestricted open-source" framing implied here. The CC BY 4.0 claim for documentation is independently confirmed accurate. Flagged, not resolved.) |
+| **Open** | 10,000+ | None — AGPL-3.0-or-later for most platform code, FSL-1.1-ALv2 for a smaller set of modules, CC BY 4.0 for documentation | Public substrate contributions; no CLA required |
 
 ### Core
 
@@ -44,9 +44,9 @@ The 50–100 band is the size where individual contributor reputation can be tra
 
 Contributors to the public substrate via pull requests against the open repositories: `pointsav/factory-release-engineering`, `pointsav-design-system`, the wiki engine `app-mediakit-knowledge`, MCP server adapters, LoRA adapter recipes, and TOPIC content in the `content-wiki-*` repositories.
 
-Apache 2.0 / MIT / CC BY 4.0 licensed contributions per the artefact tier. No CLA required for contributions to the open core; CLAs are only needed for dual-licensed commercial-tier components.
+Licensing is assigned per directory: most platform code (`service-*`, `system-*`, `os-console`, `os-workplace`, most `tool-*`, most `moonshot-*`) is AGPL-3.0-or-later; a smaller set of modules (`os-infrastructure`, `os-privategit`, `os-totebox`, `os-mediakit`, `os-network-admin`, and their `app-*` extensions) is the more permissive FSL-1.1-ALv2; documentation is CC BY 4.0. AGPL's network-use copyleft is a deliberate choice for the platform-code tier — it requires anyone who runs a modified version as a network service to publish their modifications, closing the loop that a plain permissive license leaves open. No CLA is required for open-core contributions; CLAs apply only to the proprietary, dual-licensed commercial-tier components not covered here.
 
-The 10,000-plus scale is plausible because comparable substrate communities have demonstrated it: the Linux kernel sustains roughly 14,000 contributors per year, the Apache Foundation crosses tens of thousands across projects, and Kubernetes carries 4,000-plus on a single project. The licensing posture (Apache 2.0 weights, CC BY 4.0 docs, Apache 2.0 design-system) matches the licensing patterns that have demonstrably scaled to these levels.
+The 10,000-plus scale is plausible under a strong copyleft license because the closest real-world comparable operates under one: the Linux kernel, GPL-2.0-licensed, sustains roughly 14,000 contributors per year. A strong copyleft license has not historically been a ceiling on contributor scale for platform-shaped projects.
 
 The Open tier is what makes the substrate self-sustaining at a scale that 4–7 Core could not possibly maintain alone. Most substrate features ship via Open contribution; Core reviews and accepts; Paid implements the commercial-tier extensions that Open contributors do not typically tackle.
 

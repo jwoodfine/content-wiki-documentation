@@ -32,7 +32,7 @@ Abierto — con caminos de movilidad explícitos entre ellos.
 |---|---|---|---|
 | **Núcleo** | 4-7 | Empleados de PointSav; salario; participación accionaria | Administración cotidiana del sustrato |
 | **Pagado** | 50-100 | Contratos financiados por PointSav; entregables por resultado | Trabajo de ingeniería a nivel de proyecto vía PRs en GitHub |
-| **Abierto** | 10.000+ | Ninguno — contribuciones bajo Apache 2.0 / MIT / CC BY 4.0 | Contribuciones al sustrato público; sin CLA requerido |
+| **Abierto** | 10.000+ | Ninguno — AGPL-3.0-or-later para la mayoría del código de la plataforma, FSL-1.1-ALv2 para un conjunto más pequeño de módulos, CC BY 4.0 para la documentación | Contribuciones al sustrato público; sin CLA requerido |
 
 ### Núcleo
 
@@ -53,13 +53,27 @@ pueden sostener la nómina sin capital de escala VC.
 
 ### Abierto
 
-**Sin CLA requerido** para contribuciones al núcleo abierto,
-según las mejores prácticas del manual *open-core* de 2026.
-El 10.000+ es plausible: el kernel de Linux sostiene
-aproximadamente 14.000 contribuyentes por año; la Apache
-Foundation supera decenas de miles; Kubernetes lleva más de
-4.000 en un solo proyecto; PostgreSQL opera con aproximadamente
-700 contribuyentes centrales más muchos ocasionales.
+La licencia se asigna por directorio. La mayor parte del código
+de la plataforma (`service-*`, `system-*`, `os-console`,
+`os-workplace`, la mayoría de `tool-*` y `moonshot-*`) es
+AGPL-3.0-or-later. Un conjunto más pequeño de módulos
+(`os-infrastructure`, `os-privategit`, `os-totebox`,
+`os-mediakit`, `os-network-admin`, y sus extensiones `app-*`) es
+el más permisivo FSL-1.1-ALv2; la documentación es CC BY 4.0. El
+copyleft de red de AGPL es una elección deliberada para el nivel
+de código de la plataforma — exige que quien ejecute una versión
+modificada como servicio de red publique sus modificaciones,
+cerrando el vacío que deja una licencia permisiva simple. **Sin
+CLA requerido** para contribuciones al núcleo abierto; los CLA
+solo aplican a los componentes propietarios de nivel comercial
+con doble licencia, no cubiertos aquí.
+
+El 10.000+ es plausible bajo una licencia copyleft estricta
+porque el comparable real más cercano opera bajo una: el kernel
+de Linux, licenciado bajo GPL-2.0, sostiene aproximadamente
+14.000 contribuyentes por año. Una licencia copyleft estricta no
+ha sido históricamente un techo para la escala de contribuyentes
+en proyectos con forma de plataforma.
 
 ## Movilidad entre niveles
 
