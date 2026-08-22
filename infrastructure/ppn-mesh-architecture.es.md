@@ -56,7 +56,7 @@ La estación de trabajo local es también el objetivo de despliegue principal pa
 
 WireGuard [^1] utiliza pares de claves de curva elíptica Curve25519: una clave privada y una pública por nodo. La clave privada nunca abandona el nodo en el que fue generada. Las claves públicas se distribuyen a los pares y se registran en la configuración de pares WireGuard del concentrador.
 
-El ciclo de vida de las claves sigue principios de mínima exposición: las claves privadas se almacenan únicamente en el dispositivo, nunca se transmiten a ninguna otra parte. `os-network-admin` mantiene el registro de pares — el registro de qué máquinas son miembros de la malla — y las asignaciones de direcciones de subred asociadas.
+El ciclo de vida de las claves sigue principios de mínima exposición: las claves privadas se almacenan únicamente en el dispositivo, nunca se transmiten a ninguna otra parte. `app-network-admin` mantiene el registro de pares — el registro de qué máquinas son miembros de la malla — y las asignaciones de direcciones de subred asociadas, y transmite comandos de flota por el puerto UDP 9206. `os-network-admin` es un componente aparte y más minimalista: vigila las solicitudes de unión de nodos pendientes y permite que un operador las apruebe o rechace; no gestiona por sí mismo el enrutamiento de pares ni transmite comandos.
 
 La PPN utiliza un patrón de difusión UDP sin intermediario para las señales de estado de la flota: los comandos de estado se difunden simultáneamente a todos los nodos activos en la malla, sin enrutar a través de un intermediario central. Cada nodo que está en línea responde. El patrón elimina el punto único de fallo que introduciría un intermediario central de comandos.
 
@@ -66,7 +66,7 @@ La incorporación de un nuevo nodo físico a la PPN se denomina Mesh Fusion. El 
 
 1. Instalar el sistema operativo host en el hardware de destino.
 2. Generar un par de claves Curve25519 de WireGuard en el nuevo nodo.
-3. Registrar la clave pública en el registro de pares de `os-network-admin`.
+3. Registrar la clave pública en el registro de pares de `app-network-admin`, tras la aprobación de la solicitud de unión de nodo a través de `os-network-admin`.
 4. Configurar la interfaz WireGuard en el nuevo nodo: endpoint del concentrador, IP de subred asignada y pares permitidos.
 5. Establecer el túnel cifrado: el nuevo radio establece conexión hacia el retransmisor en la nube.
 6. Verificar la conectividad: el concentrador observa el nuevo radio; el radio puede alcanzar otros nodos de la malla.
@@ -75,7 +75,7 @@ El Mesh Fusion se completa en el paso 6. El nodo es ahora miembro de la red. No 
 
 ## El Terminal F8: gestión de malla con supervisión humana
 
-La PPN se gestiona a través de `os-network-admin`, accesible mediante el slot F8 en `os-console`. La interfaz aplica un protocolo de dos pasos que asegura la confirmación humana de todos los cambios de estado de la red.
+La capa de comandos y enrutamiento de pares de la PPN se gestiona a través de `app-network-admin`, accesible mediante el slot F8 en `os-console`; la aprobación de unión de nodos específicamente pasa por el `os-network-admin`, aparte y más minimalista. La interfaz aplica un protocolo de dos pasos que asegura la confirmación humana de todos los cambios de estado de la red.
 
 El operador envía una intención de gestión en lenguaje natural. El sistema traduce la intención a una carga de comando estructurada mediante el servicio de inferencia local. La interfaz se detiene y muestra la acción propuesta para inspección visual antes de difundir. El operador confirma explícitamente antes de que el comando se ejecute.
 

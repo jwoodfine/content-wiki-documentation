@@ -56,7 +56,7 @@ The on-premises workstation is also the primary deployment target for `os-consol
 
 WireGuard [^1] uses Curve25519 elliptic-curve key pairs: one private and one public key per node. The private key never leaves the node on which it was generated. Public keys are distributed to peers and recorded in the hub's WireGuard peer configuration.
 
-The key lifecycle follows minimum-exposure principles: private keys are stored on-device only, never transmitted to any other party. `os-network-admin` maintains the peer registry — the record of which machines are members of the mesh — and the associated subnet address assignments.
+The key lifecycle follows minimum-exposure principles: private keys are stored on-device only, never transmitted to any other party. `app-network-admin` maintains the peer registry — the record of which machines are members of the mesh — and the associated subnet address assignments, and broadcasts fleet commands over UDP port 9206. `os-network-admin` is a separate, more minimal component: it watches for pending node-join requests and lets an operator approve or deny them; it does not itself manage peer routing or broadcast commands.
 
 The PPN uses a Zero-Broker UDP broadcast pattern for fleet health signalling: health commands are broadcast simultaneously to all active nodes across the mesh, without routing through a central broker. Every node that is online responds. The pattern eliminates the single point of failure that a central command broker would introduce.
 
@@ -66,7 +66,7 @@ Joining a new physical node to the PPN is called Mesh Fusion. The procedure is i
 
 1. Install the host operating system on the target hardware.
 2. Generate a WireGuard Curve25519 key pair on the new node.
-3. Register the public key with `os-network-admin`'s peer registry.
+3. Register the public key with `app-network-admin`'s peer registry, following approval of the node-join request through `os-network-admin`.
 4. Configure the WireGuard interface on the new node: hub endpoint, assigned subnet IP, and allowed peers.
 5. Establish the encrypted tunnel: the new spoke dials the cloud relay.
 6. Verify connectivity: the hub observes the new spoke; the spoke can reach other mesh nodes.
@@ -75,7 +75,7 @@ Mesh Fusion completes at step 6. The node is now a network member. No applicatio
 
 ## The F8 Terminal: human-in-the-loop mesh management
 
-The PPN is managed through `os-network-admin`, accessed via the F8 slot in `os-console`. The interface enforces a two-step protocol that ensures human confirmation of all network state changes.
+The PPN's command and peer-routing layer is managed through `app-network-admin`, accessed via the F8 slot in `os-console`; node-join approval specifically goes through the separate, more minimal `os-network-admin`. The interface enforces a two-step protocol that ensures human confirmation of all network state changes.
 
 The operator submits a management intent in natural language. The system translates the intent into a structured command payload using the local inference service. The interface pauses and displays the proposed action for visual inspection before broadcasting. The operator explicitly confirms before the command executes.
 
