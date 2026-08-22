@@ -11,7 +11,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-01
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: retail-co-location-tier-methodology.es.md
 cites:
@@ -51,18 +51,21 @@ vocabulary.
 
 ## What a cluster must clear
 
-Every tier requires all of its gates to pass — composition, catchment rank, civic
-support, and non-overlap:
+Every tier requires all of its gates to pass — composition, catchment rank, spend rank
+where it applies, civic support, and non-overlap:
 
 - **Composition** — which categories of capital-intensive anchor must co-occur. Regional
   requires a warehouse-club or lifestyle anchor alongside a hypermarket; District requires
   a hypermarket alongside hardware or warehouse; Local requires a hardware or warehouse
   anchor on its own.
-- **Catchment population rank** — each cluster's primary catchment population is ranked
+- **Catchment population rank** — each cluster's catchment population is ranked
   against every other cluster *within its own country*, not globally, so a Tier 1 cluster
   in a smaller market is compared to its own market's distribution rather than penalized
-  for that market's overall size. Regional requires the top 10% nationally; District the
-  top 25%; Local the top 50%.
+  for that market's overall size. Regional requires the top 10% nationally on primary
+  catchment (plus a secondary-catchment population check); District the top 25% on primary
+  catchment; Local the top 50%.
+- **Spend rank** — District additionally requires the cluster to rank in the top quartile
+  nationally on at least one of several consumer-spend measures, not population alone.
 - **Civic support** — a minimum count of regionally or locally classified hospitals within
   the cluster's outer catchment ring. Regional requires a regional-grade hospital; District
   accepts a regional or district hospital; Local accepts any classified hospital.

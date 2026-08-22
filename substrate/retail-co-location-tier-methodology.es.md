@@ -11,7 +11,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: TRANSLATE-ES
-last_edited: 2026-08-01
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: retail-co-location-tier-methodology.md
 cites:
@@ -54,18 +54,22 @@ el vocabulario de un corredor de arrendamiento.
 ## Qué debe superar un clúster
 
 Todo nivel exige que se cumplan todas sus condiciones — composición, rango de captación,
-respaldo cívico y no solapamiento:
+rango de gasto donde aplica, respaldo cívico y no solapamiento:
 
 - **Composición** — qué categorías de ancla de capital intensivo deben coexistir. Regional
   exige un ancla de club mayorista o de estilo de vida junto con un hipermercado; Distrital
   exige un hipermercado junto con ferretería o mayorista; Local exige un ancla de
   ferretería o mayorista por sí sola.
-- **Rango de población de captación** — la población de captación primaria de cada clúster
+- **Rango de población de captación** — la población de captación de cada clúster
   se clasifica frente a todos los demás clústeres *dentro de su propio país*, no
   globalmente, de modo que un clúster de Nivel 1 en un mercado más pequeño se compara con
   la distribución de su propio mercado en lugar de ser penalizado por el tamaño general de
-  ese mercado. Regional exige el 10% superior a nivel nacional; Distrital el 25% superior;
-  Local el 50% superior.
+  ese mercado. Regional exige el 10% superior a nivel nacional en captación primaria (más
+  una verificación de captación secundaria); Distrital el 25% superior en captación
+  primaria; Local el 50% superior.
+- **Rango de gasto** — Distrital exige además que el clúster se ubique en el cuartil
+  superior a nivel nacional en al menos una de varias medidas de gasto del consumidor, no
+  solo en población.
 - **Respaldo cívico** — un recuento mínimo de hospitales clasificados como regionales o
   locales dentro del anillo exterior de captación del clúster. Regional exige un hospital
   de grado regional; Distrital acepta un hospital regional o distrital; Local acepta
