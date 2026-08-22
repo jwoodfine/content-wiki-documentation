@@ -15,7 +15,7 @@ last_edited: 2026-07-11
 editor: editorial
 ---
 
-The PointSav Private Network (PPN) hypervisor layer manages a per-node pool of CPU and RAM, dynamically allocating those resources across the virtual machines it runs. This is the mechanism by which the PPN gives more or less compute capacity to each Totebox Archive VM in response to workload demand.
+The PointSav Private Network (PPN) hypervisor layer is designed to manage a per-node pool of CPU and RAM, dynamically allocating those resources across the virtual machines it runs. This is the intended mechanism by which the PPN would give more or less compute capacity to each Totebox Archive VM in response to workload demand. **Neither mechanism described below is built yet** — `os-infrastructure`'s real boot code is a bare-metal Multiboot2 stub (framebuffer text output and an mDNS peer scan) with no resource-pooling logic, and no `virtio_balloon` or cgroups v2 `cpu.weight` code exists anywhere in the crate. This article describes the planned design.
 
 ## One pool per physical node
 
@@ -23,9 +23,9 @@ Each physical PPN node — a GCP instance, an on-premises server, a leased machi
 
 Cross-node workload placement is a separate concern: the Totebox Orchestration Layer (`gateway-orchestration-command-1`) decides which physical node a cluster-totebox instance runs on, based on MBA pairing and available capacity signals. Once that decision is made, the receiving node's hypervisor manages the local resource pool for that VM. The PPN pool and the Totebox scheduler are orthogonal.
 
-## Memory pool: virtio_balloon
+## Memory pool: virtio_balloon (planned)
 
-The primary memory reclaim mechanism is the `virtio_balloon` paravirtual device. Every VM provisioned by `os-infrastructure` is started with a balloon driver, which runs as a standard kernel module inside the guest operating system.
+The intended primary memory reclaim mechanism is the `virtio_balloon` paravirtual device. Once built, every VM provisioned by `os-infrastructure` would start with a balloon driver, running as a standard kernel module inside the guest operating system.
 
 **How inflation works (reclaiming memory):**
 
@@ -48,13 +48,11 @@ pool_available = physical_ram − Σ(balloon_minimum across all VMs)
 
 Each VM has a minimum balloon reservation below which the controller will not inflate. This prevents a VM from being starved of memory when the node is under pressure.
 
-## CPU pool: vCPU scheduling weights
+## CPU pool: vCPU scheduling weights (planned)
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** no cgroups v2/`cpu.weight` code exists anywhere in `os-infrastructure` or `service-vm-fleet` — this whole mechanism is unbuilt, contrary to `ppn-distributed-vm-fabric.md`'s separate "implemented and proven" claim about this exact section (also corrected). The memory/`virtio_balloon` sections above this one should be treated with the same caution — `vm-prove.sh` is a real but standalone manual demo script, not an integrated hypervisor mechanism. **Flagged, not resolved.**
+CPU pool management is designed around the Linux cgroups v2 `cpu.weight` interface. Each QEMU process (one per VM) would be placed in a cgroup with a weight drawn from the capability ledger. Under CPU contention, the scheduler would distribute vCPU time proportionally to those weights; when the node is not under contention, all VMs would run at full speed regardless of weight.
 
-CPU pool management uses the Linux cgroups v2 `cpu.weight` interface. Each QEMU process (one per VM) is placed in a cgroup with a weight drawn from the capability ledger. Under CPU contention, the scheduler distributes vCPU time proportionally to those weights. When the node is not under contention, all VMs run at full speed regardless of weight.
-
-A cluster-totebox VM running an active inference workload (via `service-slm`) can be assigned a higher weight than an idle archive VM. The ledger entry is the authoritative weight; `os-infrastructure` applies it at VM launch and can adjust it live.
+A cluster-totebox VM running an active inference workload (via `service-slm`) could be assigned a higher weight than an idle archive VM. The ledger entry would be the authoritative weight, applied by `os-infrastructure` at VM launch and adjustable live — once this mechanism is built.
 
 ## Relationship to os-orchestration
 
@@ -69,15 +67,13 @@ This is the isolation invariant: the hypervisor has zero read capability over VM
 
 ## Freely transferable archives
 
-Because the hypervisor manages only VM lifecycle and resource allocation — not the data inside the VMs — a Totebox Archive can be stopped, the disk image copied to another node, and restarted there without any change to its data or its identity. The destination node's hypervisor will allocate resources from its own pool for the relocated VM.
+Because the hypervisor is designed to manage only VM lifecycle and resource allocation — not the data inside the VMs — a Totebox Archive can be stopped, the disk image copied to another node, and restarted there without any change to its data or its identity; this property holds regardless of whether the resource-pooling mechanisms above are built. The destination node's hypervisor would allocate resources from its own pool for the relocated VM, once that pool mechanism exists.
 
 This is the freely transferable property of Totebox Archives: the bootable disk image is the archive; the resource pool is the node's infrastructure. Moving the image moves the archive. The new node's pool absorbs the workload.
 
 ## Implementation status
 
-The `virtio_balloon` device flag is available in QEMU 7.x. Adding `-device virtio-balloon` to the VM launch command installs the balloon driver in the guest.
-
-The balloon **controller** — the component inside `os-infrastructure` that decides when to inflate or deflate each VM's balloon in response to demand signals — is a planned milestone. Until the controller is implemented, operators can exercise the mechanism manually via the QEMU monitor:
+The `virtio_balloon` device flag is available in QEMU 7.x and can be added to a VM launch command to install the balloon driver in a guest — as a standalone QEMU capability, independent of whether `os-infrastructure` uses it. Today, `os-infrastructure` does not: no code in the crate adds the flag, inflates or deflates a balloon, or applies a cgroups v2 weight. A separate, standalone demo script exercises the mechanism manually via the QEMU monitor, launching a single test VM with the balloon device present from boot and letting an operator drive it by hand:
 
 ```
 (qemu) info balloon      # show current guest-visible RAM
@@ -85,7 +81,7 @@ The balloon **controller** — the component inside `os-infrastructure` that dec
 (qemu) info balloon      # confirm reclaim
 ```
 
-The `infrastructure/virt/vm-prove.sh` script includes `-device virtio-balloon` so that the balloon driver is present in the test VM from the first boot.
+That script proves the underlying QEMU mechanism works; it is not evidence that `os-infrastructure` has integrated it. The balloon **controller** — the component that would decide when to inflate or deflate each VM's balloon in response to demand signals, and the cgroups v2 weight assignment described above — are both planned work, not yet started.
 
 ## Planned: cross-node resource extension
 
