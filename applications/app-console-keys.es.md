@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: TRANSLATE-ES
-last_edited: 2026-06-14
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: app-console-keys.md
 short_description: "app-console-keys es el chasis base siempre instalado de os-console. Proporciona el rasgo Cartridge que implementan todos los módulos de la consola, la barra de navegación de teclas de función, la barra de estado y el cliente de autorización basada en máquina."
@@ -43,16 +43,14 @@ La barra de estado de `app-console-keys` se ejecuta a lo largo de la parte infer
 | Identidad | Nombre de usuario y tenant establecidos durante la ceremonia de emparejamiento |
 | Estado de autorización | `MBA LINK ACTIVE`, `MBA LINK INACTIVE <razón>` o `MBA LINK PENDING` |
 | Slot activo | Nombre del cartucho enfocado actualmente |
-| Nivel de modelo | `Nivel A` (local), `Nivel B` (ráfaga en nube) o `Nivel C` (API de frontera) |
+| Emparejamientos pendientes | Cantidad de solicitudes de emparejamiento a la espera de aprobación del operador |
 | Duración de la sesión | Tiempo transcurrido desde el inicio de la consola |
-
-El indicador de nivel refleja la última decisión de enrutamiento tomada por la puerta de enlace de inferencia. No consulta la puerta de enlace continuamente — se actualiza cuando se enruta una solicitud.
 
 ## Cliente de autorización
 
-`app-console-keys` mantiene las conexiones de [[machine-based-auth|autorización basada en máquina]] salientes a los servicios `os-*` emparejados. Cada emparejamiento es independiente: la consola puede mantener un enlace activo con `os-totebox` mientras el enlace con `os-privategit` está inactivo.
+`app-console-keys` mantiene un único enlace saliente de [[machine-based-auth|autorización basada en máquina]] hacia el host Totebox. A diferencia de los slots por cartucho de la barra F, este enlace es de todo el chasis, no por servicio: hay un único estado de autorización, no uno por backend emparejado.
 
-Cuando un enlace de autorización está inactivo, el cartucho afectado degrada con elegancia. El contenido almacenado en caché localmente sigue siendo accesible; las solicitudes al backend fallan con un estado explícito en lugar de hacerlo silenciosamente. Ningún cartucho hace caer el chasis cuando su backend es inalcanzable.
+Cuando el enlace se vuelve inactivo, el chasis reemplaza toda su área de contenido con una pantalla de emparejamiento a pantalla completa — todos los cartuchos, sin importar con qué backend hablen, dejan de renderizarse hasta que el enlace se restablece. Ningún cartucho hace caer el chasis; el chasis simplemente muestra la pantalla de emparejamiento en lugar de cualquier contenido de cartucho.
 
 ## Configuración
 
@@ -60,7 +58,7 @@ La configuración basada en perfiles se almacena en `~/.config/os-console/config
 
 ## Renderización de PDF y soporte gráfico
 
-`app-console-keys` proporciona la infraestructura gráfica utilizada por los cartuchos que renderizan imágenes o PDFs. Las páginas PDF se renderizan como mapas de bits RGB usando la biblioteca `pdfium-render`. La ruta de visualización usa el protocolo de gráficos Kitty como camino principal, con la codificación Sixel como alternativa y un mensaje de error para entornos de terminal que no admiten ninguno de los dos.
+`app-console-keys` proporciona la infraestructura gráfica utilizada por los cartuchos que renderizan imágenes: la ruta de visualización usa el protocolo de gráficos Kitty como camino principal, con la codificación Sixel como alternativa y un mensaje de error para entornos de terminal que no admiten ninguno de los dos. La renderización de PDF es un asunto aparte — los cartuchos que renderizan páginas PDF como mapas de bits dependen de `app-console-content`, que incorpora `pdfium-render` directamente en lugar de pasar por este chasis.
 
 ## Véase también
 
