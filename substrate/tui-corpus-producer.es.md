@@ -24,7 +24,7 @@ paired_with: tui-corpus-producer.md
 ---
 
 
-El patrón **TUI como Productora de Corpus** designa la interfaz de terminal del operador (`slm-cli`) como fuente primaria de datos de entrenamiento de alta calidad para el [[adapter-composition|adaptador del modelo]] por inquilino. Cada interacción con el [[compounding-doorman|Portero]] a través de esta interfaz es una contribución curada al corpus.
+El patrón **TUI como Productora de Corpus** es la intención de diseño de que la interacción del operador por terminal con el [[compounding-doorman|Portero]] se convierta en fuente primaria de datos de entrenamiento de alta calidad para el [[adapter-composition|adaptador del modelo]] por inquilino. No existe un único componente de terminal `slm-cli` — la app de consola que hoy monitorea al Portero (`app-console-slm`) es un panel de salud y conteo de entidades, sin superficie de chat ni de captura de veredicto propia. La vía de captura de veredicto que sí existe hoy, `POST /v1/verdict`, la invoca la consola del corrector de estilo, no una interfaz de chat de SLM de propósito general. El patrón que describe este artículo — cualquier interacción de terminal alimentando un corpus de entrenamiento mediante un veredicto firmado — es la dirección prevista de la plataforma, no una TUI generalizada ya entregada.
 
 ## Por qué las interacciones de terminal producen datos de alta calidad
 
@@ -36,9 +36,9 @@ Las interacciones de administración de sistemas e infraestructura tienen tres p
 
 **Retroalimentación de expertos en el dominio.** El operador que emite un veredicto es la persona que sabe si la respuesta fue correcta, no un anotador distante del trabajo real. La literatura publicada sobre aprendizaje por refuerzo a partir de retroalimentación humana reporta consistentemente que las tuplas de interacción firmadas con veredicto entrenan un orden de magnitud más eficientemente que las tuplas sin veredicto. [^1]
 
-## El mecanismo de /feedback
+## El mecanismo de veredicto
 
-Después de cada respuesta del asistente en la TUI, el operador recibe tres opciones de veredicto explícito: Buena (la respuesta fue correcta — tupla marcada como ejemplo positivo de optimización de preferencia directa), Refinar (la respuesta era aproximada pero necesitaba ajuste — el operador proporciona una corrección inline) o Mala (la respuesta fue incorrecta — tupla marcada como ejemplo negativo). Si el operador descarta sin veredicto, la tupla contribuye al ajuste fino supervisado pero no a la optimización de preferencia directa.
+El endpoint de veredicto que existe hoy (`POST /v1/verdict`) es binario: aceptar la respuesta, o rechazarla y quedarse con la alternativa. No hay una tercera disposición de "refinar en línea" en el mecanismo entregado, aunque sería una extensión de diseño natural. Un veredicto binario de aceptar/rechazar basta para producir un par de entrenamiento de optimización de preferencia directa — la respuesta aceptada y la rechazada para el mismo prompt — sin necesitar una escala graduada. Si una interacción no produce ningún veredicto, no se ha confirmado que exista hoy una vía de captura para el ajuste fino supervisado sin veredicto.
 
 ## Propiedad del adaptador por inquilino
 

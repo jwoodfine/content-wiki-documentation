@@ -23,19 +23,7 @@ references:
 paired_with: tui-corpus-producer.es.md
 ---
 
-The **TUI-as-Corpus-Producer** pattern designates the operator terminal interface (`slm-cli`) as a primary source of high-quality training data for the per-tenant model [[adapter-composition|adapter]]. Every interaction with the [[compounding-doorman|Doorman]] through this interface is a curated corpus contribution.
-
-**Correction (2026-08-02, verified against canonical `origin/main`):** `slm-cli` is
-not a real component name — a corpus-wide grep for `slm-cli`/`slm_cli` across every
-`.rs`/`.toml` file in canonical returns zero hits. The real `service-slm/crates/` set
-is `adapter-hub`, `slm-core`, `slm-doorman-server`, `slm-doorman`, `slm-mcp-server` —
-no CLI/TUI crate. The real operator-facing SLM surface is `app-console-slm` (a real
-`Active` crate, "SlmCartridge (F9); Doorman health dashboard + entity count," per this
-archive's own project registry). This invented name is also used, with equal
-confidence, in [[tier-zero-customer-side-sovereign-specialist]] — a corpus-wide sweep
-for other `slm-cli` occurrences is worth doing in a future pass. The underlying
-corpus-production concept described in this article is plausible; only the component
-name is fabricated. **Flagged, not resolved.**
+The **TUI-as-Corpus-Producer** pattern is the design intent that operator terminal interaction with the [[compounding-doorman|Doorman]] becomes a primary source of high-quality training data for the per-tenant model [[adapter-composition|adapter]]. There is no single `slm-cli` terminal component — the console app that monitors the Doorman today (`app-console-slm`) is a health and entity-count dashboard with no chat or verdict-capture surface of its own. The real verdict-capture path that exists today, `POST /v1/verdict`, is called by the proofreader console, not a general-purpose SLM chat interface. The pattern this article describes — any terminal interaction feeding a training corpus through a signed verdict — is the platform's intended direction, not a currently-shipped generalized TUI.
 
 ## Why terminal interactions are high-quality training data
 
@@ -47,17 +35,11 @@ Three properties distinguish system administration and IT-support interactions f
 
 **Domain-expert feedback.** The operator issuing a verdict is the person who knows whether the response was correct — not a proxy labeler separated from the actual work. Published reinforcement-learning-from-human-feedback literature consistently reports that high-quality verdict-signed interaction tuples train an order of magnitude more efficiently than observation-only tuples. [^1]
 
-## The /feedback mechanism
+## The verdict mechanism
 
-After every assistant response in the TUI, the operator is offered three explicit verdicts:
+The verdict endpoint that exists today (`POST /v1/verdict`) is binary: accept the response, or reject it and keep the alternative. There is no third "refine inline" disposition in the shipped mechanism, despite that being a natural design extension. A binary accept/reject verdict is enough to produce a direct preference optimisation training pair — the accepted and rejected responses to the same prompt — without needing a graded scale.
 
-**Good.** The response was correct and useful. The tuple is flagged as a positive direct preference optimisation example.
-
-**Refine.** The response was close but needed adjustment. The operator provides a correction inline; the tuple captures the response-and-refinement pair as training signal.
-
-**Bad.** The response was wrong. The tuple is flagged as a negative direct preference optimisation example.
-
-If the operator dismisses without providing a verdict, the tuple is captured as unsigned and contributes to supervised fine-tuning but not to direct preference optimisation.
+If an interaction produces no verdict at all, the interaction is not currently captured as a training tuple at all — there is no unsigned-but-still-useful capture path confirmed to exist for supervised fine-tuning today.
 
 ## Adapter quality budget
 
