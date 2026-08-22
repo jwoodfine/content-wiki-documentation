@@ -22,7 +22,7 @@ cites:
 
 Cada artículo de esta documentación que realiza una afirmación basada en autoridades externas incluye una declaración `cites:` en su encabezado YAML con los instrumentos regulatorios, artículos académicos o especificaciones técnicas de los que depende. Esos identificadores se resuelven contra un registro YAML único de ámbito de plataforma. El resultado es un grafo de procedencia, no una bibliografía: una estructura que recorre desde una afirmación publicada hasta su fuente primaria, recorrible por una máquina o un revisor sin acceso a sistemas internos.
 
-Al 27 de abril de 2026, el registro contiene 62 entradas que cubren instrumentos regulatorios (NI 51-102, Regla SEC 17a-4(f), eIDAS), artículos académicos, especificaciones técnicas, documentos de proveedores y estándares abiertos. Cada referencia `[ni-51-102]` en un artículo publicado apunta a la misma entrada canónica del registro, con tipo, jurisdicción, URL estable y hash SHA-256 del contenido para detección de deriva.
+El registro contiene 159 entradas que cubren instrumentos regulatorios (NI 51-102, Regla SEC 17a-4(f), eIDAS), artículos académicos, especificaciones técnicas, documentos de proveedores y estándares abiertos. Cada referencia `[ni-51-102]` en un artículo publicado apunta a la misma entrada canónica del registro, con tipo, jurisdicción, URL estable y hash SHA-256 del contenido para detección de deriva.
 
 Tres componentes trabajan en conjunto: un registro central con una entrada por identificador de cita; campos `cites:` en el encabezado por documento que hacen las dependencias legibles por máquina; y sintaxis `[id]` en línea en el cuerpo del texto que marca cada referencia con su identificador resoluble en el registro. Un proceso nocturno automatizado descarga cada URL registrada, verifica el hash del contenido y presenta cambios materiales o enlaces rotos para revisión humana antes de que se propaguen al contenido publicado.
 
@@ -30,7 +30,7 @@ Para compradores regulados, esto significa que cada afirmación sobre propiedade
 
 ## Componentes
 
-**El registro** (`citations.yaml`). Un archivo YAML en formato CFF `[cff-spec]` con una entrada por identificador de cita. Cada entrada incluye el tipo, la jurisdicción (para instrumentos regulatorios), el título oficial, la URL estable, la fecha de última verificación, un hash de contenido para detectar cambios, la clase de evidencia, y los alias que puedan aparecer en prosa. Al 27 de abril de 2026, el registro contiene 62 entradas.
+**El registro** (`citations.yaml`). Un archivo YAML en formato CFF `[cff-spec]` con una entrada por identificador de cita. Cada entrada incluye el tipo, la jurisdicción (para instrumentos regulatorios), el título oficial, la URL estable, la fecha de última verificación, un hash de contenido para detectar cambios, la clase de evidencia, y los alias que puedan aparecer en prosa. El registro contiene 159 entradas.
 
 **El encabezado por documento**. Un campo `cites:` en el YAML de cada artículo publicado y documento de especificación. Los identificadores declarados se resuelven contra el registro; las herramientas pueden validar que existan, generar automáticamente una sección de referencias, y construir un índice inverso de quién cita a quién.
 
@@ -61,8 +61,7 @@ página y lo compara con el hash almacenado. Una coincidencia actualiza la fecha
 presenta para revisión humana junto con el diff. Un error 404 se marca como enlace roto,
 junto con resultados de búsqueda de posibles reemplazos.
 
-Hasta que [[service-slm]] esté operativo, el mantenedor de la plataforma realiza una
-revisión manual mensual del registro.
+La revisión nocturna automatizada aún no está construida; hasta que llegue, el mantenedor de la plataforma realiza una revisión manual mensual del registro.
 
 Agregar una nueva cita sigue el principio de siembra: la entrada del registro y la
 referencia en línea llegan en el mismo commit. Una referencia en línea huérfana — cuyo

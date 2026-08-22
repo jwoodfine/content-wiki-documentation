@@ -25,13 +25,7 @@ paired_with: citation-substrate.es.md
 
 Every article in this documentation that makes an externally-grounded claim carries a `cites:` declaration in its front-matter listing the regulatory instruments, research papers, or technical specifications the claim depends on. Those IDs resolve against a single platform-wide YAML registry. The result is a provenance graph rather than a bibliography — a structure that runs from a published claim back to its primary source, traversable by a machine or a reviewer without access to internal systems.
 
-As of 2026-04-27, the registry holds 62 entries covering regulatory instruments (NI 51-102, SEC Rule 17a-4(f), eIDAS), research papers, technical specifications, vendor documents, and open standards. Every `[ni-51-102]` reference in a published article traces to the same canonical registry entry, with type, jurisdiction, stable URL, and a SHA-256 content hash for drift detection.
-
-**Correction (2026-08-02):** this entry count was accurate on 2026-04-27 but the
-registry has grown substantially since (it already held ~101 entries by this
-article's own `last_edited: 2026-05-15`, and more have been registered in
-subsequent sessions) — the "62" figure was never refreshed. **Flagged, not
-resolved.**
+The registry holds 159 entries covering regulatory instruments (NI 51-102, SEC Rule 17a-4(f), eIDAS), research papers, technical specifications, vendor documents, and open standards. Every `[ni-51-102]` reference in a published article traces to the same canonical registry entry, with type, jurisdiction, stable URL, and a SHA-256 content hash for drift detection.
 
 Three components work together: a central registry holding one entry per citation ID; per-document `cites:` front-matter that makes dependencies machine-readable; and inline `[id]` syntax in body prose that marks each reference with its registry-resolvable ID. A nightly automated pass fetches each registered URL, verifies the content hash, and surfaces material changes or link rot for human review before they propagate into published content or training data.
 
@@ -41,7 +35,7 @@ For regulated buyers, this means every claim about compliance properties — rec
 
 Three components constitute the Citation Substrate:
 
-1. **The registry** (`citations.yaml`). A CFF-flavored YAML file `[cff-spec]` `[cff-github]` `[turing-way-cff]` that holds one entry per citation ID. Each entry carries the citation's type, jurisdiction (for regulatory items), authoritative title, stable URL, date of most recent verification, a content-hash field for drift detection, an evidence class, and any aliases that might appear in prose. As of 2026-04-27 the registry holds 62 entries covering regulatory instruments, research papers, technical specifications, vendor documents, and open standards.
+1. **The registry** (`citations.yaml`). A CFF-flavored YAML file `[cff-spec]` `[cff-github]` `[turing-way-cff]` that holds one entry per citation ID. Each entry carries the citation's type, jurisdiction (for regulatory items), authoritative title, stable URL, date of most recent verification, a content-hash field for drift detection, an evidence class, and any aliases that might appear in prose. The registry holds 159 entries covering regulatory instruments, research papers, technical specifications, vendor documents, and open standards.
 
 2. **Per-document frontmatter**. A `cites:` field in the YAML frontmatter of every published article and specification document:
 
@@ -71,7 +65,7 @@ The registry entry schema makes provenance explicit at each step. A regulatory c
 
 The `content_hash` field is the self-healing mechanism. When [[service-slm]] runs its nightly hygiene pass, it fetches each URL, computes a SHA-256 of the page content, and compares against the stored hash. A match updates the `last_verified` date. A mismatch is flagged as a material change candidate and surfaced for human review with the diff. A 404 is flagged as link rot alongside candidate-replacement search results.
 
-Until [[service-slm]] is operational, the platform maintainer performs a manual review of the registry monthly.
+The nightly hygiene pass itself is not yet built; until it lands, the platform maintainer performs a manual review of the registry monthly.
 
 Adding a new citation follows the seeding principle: the registry entry and the inline reference land in the same commit. An orphaned inline reference — one whose ID does not resolve in the registry — is a defect.
 
