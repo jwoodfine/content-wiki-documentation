@@ -7,50 +7,43 @@ type: topic
 content_type: topic
 quality: complete
 index_group: specialist-and-domain-services
-short_description: "Signed hourly checkpoints of the Write-Once-Read-Many ledger prepared for monthly anchoring to Sigstore Rekor, making ledger state auditable from outside the platform."
+short_description: "A one-shot binary that fetches a signed WORM-ledger checkpoint from service-fs, anchors it to the public Sigstore Rekor transparency log, and writes the resulting log entry back — making ledger state auditable from outside the platform."
 status: active
 audience: vendor-public
 bcsc_class: current-fact
-last_edited: 2026-05-25
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: fs-anchor-emitter.es.md
 ---
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** the architecture below is reversed and the env vars are wrong. The real `service-fs/anchor-emitter/src/main.rs` reads `FS_ENDPOINT`, `FS_MODULE_ID`, and `REKOR_URL` — not `FS_LEDGER_ROOT`/`FS_SIGNING_KEY`/`FS_ANCHOR_INTERVAL` (those are `service-fs`'s own variables, not the emitter's). The real flow is: (1) `GET /v1/checkpoint` from `service-fs` — the emitter *fetches* an already-generated checkpoint, it does not itself read the tile tree or generate the checkpoint; (2) build a Sigstore hashedrekord entry; (3) `POST` to the Rekor v2 log; (4) `POST` the tlog entry back to `service-fs /v1/append`. The general subject (monthly Rekor anchoring of WORM checkpoints) is real and accurate — see the separately-verified `governance/doctrine-invention-7-rekor-anchoring.md`, which describes this correctly. **Flagged, not resolved** — this article's specific config/architecture section needs rewriting to match the real fetch-not-generate flow.
+`fs-anchor-emitter` connects the platform's immutable [[worm-ledger-design|Write-Once-Read-Many ledger]] to a public, third-party transparency log. It doesn't generate the ledger checkpoint itself — [[service-fs-architecture|service-fs]] does that — the emitter's job is to fetch an already-signed checkpoint, submit it to Sigstore Rekor, and record the result. This design keeps checkpoint generation and public anchoring as separate, independently-auditable steps.
 
-`fs-anchor-emitter` is the component that generates signed checkpoints of the immutable [[worm-ledger-design|Write-Once-Read-Many ledger]] at hourly cadence and prepares them for external anchoring to the Sigstore Rekor transparency log on a monthly schedule — the mechanism that makes the platform's ledger state cryptographically auditable from outside the platform itself. The emitter operates at Layer 4 of the WORM stack as described in [[service-fs-architecture]], reads the latest state of the per-tenant tile tree, generates a `signed-note` checkpoint, and stores it at the authoritative path under `$FS_LEDGER_ROOT/<moduleId>/checkpoint`. The monthly workspace anchoring process consumes those checkpoints and posts them to the public transparency log.
+## What it does, in order
 
-## Configuration Requirements
+The emitter is a one-shot binary, invoked on a schedule by an external process rather than running its own timer:
 
-The emitter requires the following environment variables to be defined at runtime:
+1. **Fetch.** `GET /v1/checkpoint` from `service-fs`, scoped to the running tenant's module ID. The checkpoint carries an origin string, a monotonic tree size, a base64 Merkle root hash, and — already applied by `service-fs` — a signature and public key.
+2. **Anchor to Rekor.** The checkpoint is serialised, hashed with SHA-256, and wrapped in a Sigstore `hashedRekordRequestV002` entry (Rekor v0.0.2's request shape). The emitter generates a fresh Ed25519 keypair for this step alone, on every run — that ephemeral key exists only to produce the Rekor timestamp and inclusion proof, not to assert a persistent identity. The request is posted to the configured Rekor endpoint.
+3. **Write back.** The resulting transparency-log entry is posted to `service-fs`'s `/v1/append`, so the platform's own record shows exactly what was anchored publicly and when.
 
-| Variable | Description | Standard Value |
-| :--- | :--- | :--- |
-| **FS_LEDGER_ROOT** | Path to the tenant storage root. | `/srv/platform/ledgers/` |
-| **FS_SIGNING_KEY** | Path to the tenant private key (Ed25519). | `/etc/foundry/keys/tenant.key` |
-| **FS_ANCHOR_INTERVAL** | Frequency of checkpoint generation. | `3600s` (1 hour) |
+## Configuration
 
-## Implementation of the Signed-Note Format
+Three environment variables, read once at startup:
 
-Checkpoints must strictly follow the **C2SP signed-note** format to ensure interoperability with the Sigstore ecosystem. A valid emitter output includes:
-1. **Origin:** The service identifier (e.g., `service-fs.foundry.example`).
-2. **Tree Size:** The current monotonic entry count.
-3. **Root Hash:** The base64-encoded SHA-256 Merkle root.
-4. **Signature:** A detached Ed25519 signature from the tenant key.
+| Variable | Purpose | Default |
+|---|---|---|
+| `FS_ENDPOINT` | Base URL of the `service-fs` instance to fetch from and write back to | none — required |
+| `FS_MODULE_ID` | Tenant module scoping the checkpoint fetch | none — required |
+| `REKOR_URL` | Rekor log-entries endpoint | `log2025-1.rekor.sigstore.dev`'s v2 API |
 
-## Operational Procedures
+A distinct exit code identifies where a run failed: configuration error, checkpoint fetch failure, Rekor submission failure, or the final write-back to `service-fs`.
 
-### Bootstrapping a New Emitter
-Upon first initialization, the emitter verifies the presence of the `FS_SIGNING_KEY`. If no prior state exists, it generates a "Tree Size 0" checkpoint to establish the ledger’s origin. The [[machine-based-auth|machine-based authentication]] layer controls which identities may hold signing keys.
+## Cadence and scope
 
-### Verification of Consistency
-Before emitting a new checkpoint, the emitter is intended to perform an internal consistency proof against the previously signed state. If the new hash-chain does not append cleanly to the old one, the emitter must abort and trigger an infrastructure alert (SOC 2 CC7 alignment). The [[merkle-proofs-as-substrate-primitive|Merkle proof substrate]] underpins this consistency verification.
-
-## External Anchoring
-While the emitter produces checkpoints hourly, external publication to Rekor is currently planned for a monthly cadence. This provides a balance between evidentiary density and network overhead. The [[service-fs-security-compliance|security and compliance posture]] document describes how this anchoring satisfies SEC Rule 17a-4(f) and eIDAS requirements.
+The binary itself has no internal generation or consistency-proof logic — both would require holding ledger state, which this design deliberately keeps out of the anchoring step. Its own source identifies it as "Doctrine Invention #7," documented as monthly Rekor anchoring of `service-fs` checkpoints — a deliberate balance between evidentiary density and network overhead, not a technical ceiling on how often it could run.
 
 ## See also
 
-- [[service-fs-architecture]]
-- [[service-fs-security-compliance]]
-- [[worm-ledger-design]]
+- [[service-fs-architecture]] — generates and signs the checkpoints this emitter fetches
+- [[worm-ledger-design]] — the ledger the checkpoint attests to
+- [[service-fs-security-compliance]] — the compliance posture this anchoring supports
