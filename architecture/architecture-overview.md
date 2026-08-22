@@ -46,6 +46,4 @@ The GIS orchestration platform produces commercial co-location cluster data cove
 
 The OS Console is the terminal-based interface for platform management. Workplace-surface applications target AEC professionals.
 
-- [[os-console-architecture|OS Console Architecture]] — cartridge model, Ratatui surface, Doorman health dashboard
-
-*This article is a stub. Full content is planned for a future session.*
+- [[os-console|OS Console]] — cartridge model, Ratatui surface, Doorman health dashboard

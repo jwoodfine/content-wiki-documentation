@@ -45,6 +45,4 @@ La plataforma de orquestación GIS produce datos comerciales de clústeres de co
 
 La Consola OS es la interfaz de terminal para la gestión de la plataforma. Las aplicaciones de superficie Workplace están dirigidas a profesionales del sector AEC.
 
-- [[os-console-architecture|Arquitectura de la Consola OS]] — modelo de cartuchos, superficie Ratatui, panel de estado de Doorman
-
-*Este artículo es un resumen provisional. El contenido completo está previsto para una sesión futura.*
+- [[os-console|Consola OS]] — modelo de cartuchos, superficie Ratatui, panel de estado de Doorman
