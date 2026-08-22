@@ -27,7 +27,7 @@ Cada directorio en la raíz del monorepo pertenece a uno de los siguientes nivel
 | Nivel | Prefijo | Propósito | Componentes de ejemplo |
 |---|---|---|---|
 | 1 — Aplicación | `app-` | Superficies orientadas al usuario — los cartuchos de personalidad que definen el aspecto y la sensación de un trabajo | `app-console-input`, `app-mediakit-marketing`, `app-orchestration-command` |
-| 2 — Activo | `asset-` | Recursos no-código — fuentes, íconos, modelos 3D, tokens de diseño, activos de marca | `asset-brand-pointsav`, `asset-brand-wcp` |
+| 2 — Activo | `asset-` | Recursos no-código — fuentes, íconos, modelos 3D, tokens de diseño, activos de marca | Prefijo reservado, ningún directorio poblado todavía |
 | 3 — Moonshot | `moonshot-` | Experimentos de investigación y desarrollo aún no promovidos a producción | `moonshot-gpu` |
 | 4 — OS | `os-` | Composiciones de sistemas operativos — los contenedores de ejecución que cargan otros componentes | [[console-os|`os-console`]], [[totebox-os|`os-totebox`]], [[os-orchestration|`os-orchestration`]] |
 | 5 — Servicio | `service-` | Daemons de lógica de negocio en segundo plano | [[service-slm|`service-slm`]], [[service-content|`service-content`]], [[service-email|`service-email`]], [[service-people|`service-people`]] |
@@ -82,7 +82,7 @@ La taxonomía tardó varias generaciones en estabilizarse. Los nombres anteriore
 | `lib-pointsav-*` | `package-*` (bibliotecas compartidas) |
 | `software-pdfs`, `software-wordprocessing` | `app-workplace-pdfs`, `app-workplace-wordprocessor` |
 | `console-people`, `node-console-people` | `app-console-people` |
-| `sys-marketing`, `sys-knowledge`, `sys-distro` | `app-mediakit-marketing`, `app-mediakit-knowledge`, `app-mediakit-distribution` |
+| `sys-marketing`, `sys-knowledge`, `sys-distro` | `app-mediakit-marketing`, `app-mediakit-knowledge`, `app-mediakit-distributions` |
 | `fleet-infrastructure-*`, `gateway-interface-*`, `route-network-admin` | `app-infrastructure-onprem` / `-leased` / `-cloud`, `app-orchestration-command`, `app-network-admin` |
 
 ## Véase también

@@ -27,7 +27,7 @@ Every directory at the monorepo root falls into one of the following tiers:
 | Tier | Prefix | Purpose | Example components |
 |---|---|---|---|
 | 1 — Application | `app-` | User-facing surfaces — the personality cartridges that define how a job looks and feels | `app-console-input`, `app-mediakit-marketing`, `app-orchestration-command` |
-| 2 — Asset | `asset-` | Non-code resources — fonts, icons, 3D models, design tokens, brand assets | `asset-brand-pointsav`, `asset-brand-wcp` (Correction, 2026-08-02, verified against canonical `origin/main`: no `asset-*` directory of any name exists in the monorepo — the whole 6th tier is a naming convention with zero real examples yet. Separately, this article's "Name supersession" table names `app-mediakit-distribution` (singular); the real directory is `app-mediakit-distributions` (plural). Flagged, not resolved.) |
+| 2 — Asset | `asset-` | Non-code resources — fonts, icons, 3D models, design tokens, brand assets | Reserved prefix, no directory populated yet |
 | 3 — Moonshot | `moonshot-` | Research and development experiments not yet promoted to production | `moonshot-gpu` |
 | 4 — OS | `os-` | Operating-system compositions — the runtime containers that load other components | [[console-os|`os-console`]], [[totebox-os|`os-totebox`]], [[os-orchestration|`os-orchestration`]] |
 | 5 — Service | `service-` | Background business-logic daemons | [[service-slm|`service-slm`]], [[service-content|`service-content`]], [[service-email|`service-email`]], [[service-people|`service-people`]] |
@@ -82,7 +82,7 @@ The taxonomy took several generations to settle. Earlier names appear throughout
 | `lib-pointsav-*` | `package-*` (shared libraries) |
 | `software-pdfs`, `software-wordprocessing` | `app-workplace-pdfs`, `app-workplace-wordprocessor` |
 | `console-people`, `node-console-people` | `app-console-people` |
-| `sys-marketing`, `sys-knowledge`, `sys-distro` | `app-mediakit-marketing`, `app-mediakit-knowledge`, `app-mediakit-distribution` |
+| `sys-marketing`, `sys-knowledge`, `sys-distro` | `app-mediakit-marketing`, `app-mediakit-knowledge`, `app-mediakit-distributions` |
 | `fleet-infrastructure-*`, `gateway-interface-*`, `route-network-admin` | `app-infrastructure-onprem` / `-leased` / `-cloud`, `app-orchestration-command`, `app-network-admin` |
 
 ## See also
