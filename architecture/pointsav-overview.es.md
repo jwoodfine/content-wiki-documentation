@@ -42,7 +42,7 @@ Tres ventajas estructurales emergen de la separación:
 
 ## Modelo de licenciamiento
 
-La estrategia de productos sigue un patrón de núcleo abierto. Los sistemas operativos principales ([[totebox-os|`os-totebox`]], [[console-os|`os-console`]], [[os-workplace|`os-workplace`]]) están previstos para su lanzamiento bajo Apache 2.0 con un Addendum Soberano previsto que garantice que las instancias en ejecución permanezcan libremente transferibles por el operador independientemente de dónde estén alojadas. El producto agregador de flota ([[os-orchestration|`os-orchestration`]]) está previsto para permanecer como propietario en calidad de impulsor de ingresos comerciales.
+La estrategia de productos sigue un patrón de núcleo abierto, licenciado por directorio en lugar de bajo una única concesión general. [[console-os|`os-console`]] y [[os-workplace|`os-workplace`]] se distribuyen bajo AGPL-3.0-or-later. [[totebox-os|`os-totebox`]] se distribuye bajo la Functional Source License (FSL-1.1-ALv2), que se convierte automáticamente a Apache-2.0 para cada versión tras un período fijo. El producto agregador de flota ([[os-orchestration|`os-orchestration`]]) permanece completamente propietario como el foso comercial declarado de la empresa — nunca se distribuye bajo el nivel alternativo comercial de AGPL ni bajo el nivel FSL que llevan los otros tres.
 
 PointSav tiene previsto asociarse con la Sovereign Data Foundation para supervisar la integridad de los componentes de código abierto. Los términos y la estructura de cualquier acuerdo de este tipo están previstos y sujetos a finalización.
 
