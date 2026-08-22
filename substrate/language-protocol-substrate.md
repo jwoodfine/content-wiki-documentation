@@ -7,10 +7,10 @@ type: topic
 content_type: topic
 quality: complete
 index_group: core-named-substrates
-short_description: "Editorial infrastructure encoding register, brand voice, document sub-type, and audience as reusable prompt scaffolding across four replaceable services."
+short_description: "The routing mechanism that carries a draft's declared register, document type, and destination between archives — a frontmatter field, a routing table, and a mailbox convention, not an AI adapter system."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-07-10
+last_edited: 2026-08-22
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -18,82 +18,27 @@ cites:
 paired_with: language-protocol-substrate.es.md
 ---
 
-Every editorial action that passes through the PointSav platform — document generation, schema validation, training-tuple capture — is shaped by a substrate that encodes register, brand voice, document sub-type, and target audience as reusable prompt scaffolding rather than ad-hoc instruction. The result is editorial work that is audited, per-tenant, and replaceable at any layer without rebuilding the rest.
+Every draft artifact moving through the PointSav platform — a wiki article, a README, a legal correction, a translation — declares its register, document type, and destination up front rather than having those inferred later. That declaration is the language-protocol substrate: a frontmatter field, a routing table, and a mailbox convention, not an AI system.
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** this article
-names `service-disclosure` and `service-proofreader` as real, shipped Rust crates
-(here and at 5 further places below, including a table attributing them to owner
-clusters "project-language"/"project-proofreader"). Neither crate exists anywhere in
-the monorepo — a corpus-wide grep for both names returns zero hits, and neither
-"project-language" nor "project-proofreader" appears in the current archive list.
-Real editorial-assist code exists only as `app-console-content/src/proofreader.rs`
-(a module, not a crate) and a `local-proofreader.service` systemd unit. This is
-presented in unhedged present tense, not as planned/intended — unlike this article's
-own correctly-hedged treatment of its training pipeline elsewhere. **Flagged, not
-resolved — this article needs a structural rewrite around the real service
-boundaries, not a line-by-line fix.**
+The substrate has two real, separate layers. The **routing layer** — described in full below — is genuinely operational: every staged draft carries a `language_protocol` value, a workspace-level table maps that value to the archive that owns it, and a mailbox message picks up the hand-off automatically. The **register-and-schema layer** — what a PROSE or LEGAL document must contain, and which words it may not use — lives as data, not code: YAML token files in `pointsav-design-system` (one register file per wiki, e.g. `register-documentation.yaml`; one banned-vocabulary list per wiki; one schema per content type — TOPIC, GUIDE, JOURNAL) that an editorial-lint script reads and checks drafts against before they publish. There is no unified "four-family adapter taxonomy," no LoRA adapter composed per request, and no single Rust crate that owns schema, templates, and validation together — those are three real, separate mechanisms this article previously described as one integrated system.
 
-The substrate provides four artefact families, eighteen genre templates, a frontmatter validator that returns all schema violations in a single pass, and a banned-vocabulary list of eight cross-genre prohibited terms. These ship as a Rust crate (`service-disclosure`) split across four services — [[service-content]] (knowledge graph), [[service-slm]] ([[compounding-doorman|Doorman]] and inference), `service-disclosure` (schema and templates), `service-proofreader` (HTTP write-assistant) — where any single service can be replaced by a [[customer-hostability|customer-owned equivalent]] while the rest hold.
+## The four protocol values — real, and how they actually route
 
-Three adapters compose at request time: base model, tenant adapter (brand voice), and protocol adapter (PROSE | COMMS | LEGAL | TRANSLATE). Register, brand voice, and target audience live as prompt scaffolding rather than additional adapters — five or more adapters per request crosses into multi-task interference per the 2025 LoRA literature; the platform stays at three. Every editorial action produces a verdict-signed training tuple through the [[apprenticeship-substrate]] pipeline, feeding continued pretraining on the customer's adapter without the customer's text leaving their infrastructure.
+`PROSE-*`, `COMMS-*`, `LEGAL-*`, and `TRANSLATE-*` are real `language_protocol` values a staged draft's frontmatter carries. Two gateway archives own the routing: `project-editorial` receives PROSE/COMMS/LEGAL/TRANSLATE, `project-design` receives DESIGN-*. A draft is staged with `foundry-draft-v1` frontmatter (language protocol, destination, routing field), and a mailbox message-prefix convention carries the routing intent to the owning archive automatically — no manual hand-off. This is the mechanism this article's own architecture section (below) already described accurately.
 
-For regulated buyers, the four-service split matters because every editorial action is audited in the per-tenant [[worm-ledger-architecture|ledger]] before it exits the customer's network. The customer can fork any [[adapter-composition|adapter]], inspect the prompt scaffolding, and verify that their brand voice is not pooled with another tenant's training data. Per `[ni-51-102]` and `[osc-sn-51-721]`, the training pipeline is described in planned terms; the substrate architecture is operational today.
+What is not real: an AI system that composes a base model with a per-tenant "brand voice" adapter and a per-protocol adapter at inference time, or that produces "eighteen genre templates" and "eight cross-genre prohibited terms" from a shared Rust crate. The register and schema content that actually governs each protocol's output is per-wiki YAML — currently 3 content-type schemas (TOPIC, GUIDE, JOURNAL) and one banned-vocabulary list per wiki, not a single cross-genre taxonomy of eighteen templates.
 
-## Overview
+## Where the register and schema content actually lives
 
-The substrate provides four artefacts:
+`pointsav-design-system/tokens/linguistic/` holds one register file per wiki (defining section structure, tone, and accessibility rules) and one banned-vocabulary file per wiki (retired internal terms, each with an approved plain-language replacement). `pointsav-design-system/tokens/content-schema/` holds the frontmatter and structural schema for each content type. `project-editorial` is the content-steward of this token subtree — it drafts and applies these files, though committing changes to them routes through `project-design`, which holds the mechanical commit gate.
 
-1. **A 4-family adapter taxonomy.** PROSE for long-form English, COMMS for short-form interpersonal, LEGAL for volume-gated formal documents, TRANSLATE as a meta-protocol layered on top of any other family.
-2. **A genre-template registry.** Eighteen templates, each carrying its required sections, register parameters, bilingual-pair convention, frontmatter schema, and prompt scaffolding.
-3. **A frontmatter validator.** Returns every per-genre rule violation in one pass rather than first-fail.
-4. **A banned-vocabulary list.** Eight cross-genre prohibited terms that survive in marketing prose and have no place in precise writing.
+`editorial-lint.py` (owned by `project-editorial`) reads these token files directly and checks a draft's structure and vocabulary against them before it can be committed. This is a lint script run at commit time, not an inference-time adapter or a service any other component calls at request time.
 
-These four artefacts ship as a Rust crate (`service-disclosure`) that any platform component can consume. The Doorman composes the templates into prompts at request time; the per-tenant write-assistant validates inbound and outbound text against the schema; the apprenticeship pipeline produces verdict-signed training tuples on every editorial action.
+## `service-proofreader` — a real, separately-deployed service
 
-## Ring and Role
+`service-proofreader` is a real, running interactive write-assist service (`local-proofreader.service`, port 9092) — but it is not a crate inside `pointsav-monorepo`, and it is not one leg of a four-service split alongside `service-content`/`service-slm`. It is its own deployment, reachable from the [[radical-proofreader-ui|proofreader console]] terminal cartridge, and it dispatches its generative pass through the Doorman like any other inference caller. Whether every editorial action anywhere on the platform produces a verdict-signed training tuple through it, as previously claimed, is not confirmed — that claim described a broader integration than what is verified here.
 
-The Language-Protocol Substrate spans Ring 3 — Optional Intelligence (inference via the [[compounding-doorman|Doorman]]) and Ring 2 — Knowledge and Processing (schema validation and template management via [[service-content]] and `service-disclosure`). It has no Ring 1 component: editorial work begins after boundary ingest completes. The substrate is activated on every editorial action that passes through the Doorman, whether that action is a document generation request, a validation pass, or a training-tuple capture.
-
-## Architecture
-
-### The four families
-
-| Family | Generation responsibility | Templates |
-|---|---|---|
-| **PROSE** | Long-form English prose | README (workspace / repo / project), TOPIC, GUIDE, MEMO, ARCHITECTURE, INVENTORY, license-explainer, CHANGELOG |
-| **COMMS** | Short-form interpersonal | email, chat, ticket comment, meeting notes |
-| **LEGAL** | Volume-gated formal | contract, CLA, policy, terms (default-routes to Tier C) |
-| **TRANSLATE** | Meta-protocol | Operates over the other families; not a separate generation track |
-
-Three adapters compose at request time:
-
-```
-composed_weights =
-  base_model
-  ⊕ tenant_adapter[<tenant_id>] // brand voice
-  ⊕ protocol_adapter[PROSE | COMMS | LEGAL | TRANSLATE]
-```
-
-Five or more adapters per request crosses into multi-task interference per the 2025 LoRA literature (LoRAX, S-LoRA, TC-LoRA, LoRI). The platform stays at three.
-
-Register, brand voice, document sub-type, and target audience live as prompt scaffolding rather than additional adapters. Fewer adapters, richer scaffolding, retrieval grounding, decode-time constraints — this is the 2026 industry consensus for production editorial systems.
-
-### The four-service split
-
-The editorial-write path runs through four services. Each owns one shape:
-
-| Service | Shape | Owner cluster |
-|---|---|---|
-| `service-content` | Data — taxonomy ledger and knowledge graph | project-slm |
-| `service-slm` | Inference — Doorman, tier routing, audit ledger | project-slm |
-| `service-disclosure` | Schema — types, validators, CFG, templates | project-language |
-| `service-proofreader` | Operational — request-shaped HTTP write-assistant | project-proofreader |
-
-A customer can replace any one without touching the rest. Replace `service-slm` with a customer-owned GPU host while keeping `service-content` and `service-disclosure`. Replace `service-content` with a customer's existing knowledge graph while keeping `service-slm`. The contract between services is the only thing that needs to hold.
-
-The platform's contribution to this pattern is the per-tenant [[worm-ledger-architecture|audit ledger]] that makes each substitution composable across regulatory contexts — a replacement service produces the same audit trail the original produced.
-
-### Multi-tenant via moduleId namespacing
+## Multi-tenant via moduleId namespacing
 
 One `service-content` instance per platform deployment, with `moduleId` partitioning tenants inside. Per-tenant isolated deployment is the escalation path — when a customer needs key-management-per-tenant or stronger isolation, they spin up their own platform instance in their own infrastructure and get their own `service-content` there.
 
@@ -133,11 +78,11 @@ the request boundary, and the pipeline applies genre-specific rules from that de
 position. The operator already knows what register they are writing in; the substrate
 reflects that knowledge structurally rather than inferring it.
 
-## Configuration
+## Auditing editorial work done outside the Doorman
 
-Eight editorial task-types are defined in the platform's editorial cluster manifest: `prose-edit`, `comms-edit`, `frontmatter-normalize`, `citation-insert`, `register-tighten`, `cross-link-verify`, `schema-validate`, `template-author`. Each generates verdict-signed training tuples through the [[apprenticeship-substrate]] pipeline. The tuples feed continued pretraining on the customer's adapter when corpus volume warrants.
+A cluster that does editorial work locally — without routing the request through the Doorman — can still push a record of it into the central audit ledger with a single call. The event carries a type tag: `prose-edit` for editorial work, plus `design-edit`, `graph-mutation`, `anchor-event`, and `verdict-issued` for other work classes the same endpoint covers. This keeps the ledger complete even when work happens off the Doorman's own request path — it does not, by itself, generate a training tuple; only work that actually routes through the Doorman's apprenticeship pipeline does that.
 
-Per `[ni-51-102]` continuous-disclosure language and in accordance with the forward-looking information principles of `[osc-sn-51-721]`, the substrate's training pipeline is described in planned terms. The shape is in place; the operational throughput is what matures over time. The pipeline target: every editorial action a customer deployment performs is one tuple of training data for the customer's adapter. The customer's voice deepens over time without their text leaving their infrastructure.
+Per `[ni-51-102]` continuous-disclosure language and in accordance with the forward-looking information principles of `[osc-sn-51-721]`: whether every editorial action across the platform eventually produces a verdict-signed training tuple for a customer's own adapter is a planned target, not a confirmed current behavior.
 
 ## See also
 

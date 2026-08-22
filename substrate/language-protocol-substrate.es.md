@@ -9,55 +9,35 @@ type: topic
 content_type: topic
 quality: complete
 index_group: core-named-substrates
-short_description: "Infraestructura editorial que codifica registro, voz de marca, subtipo de documento y audiencia como andamiaje de indicaciones reutilizable en cuatro servicios sustituibles."
+short_description: "El mecanismo de enrutamiento que transporta el registro, tipo de documento y destino declarados de un borrador entre archivos — un campo de portada, una tabla de enrutamiento y una convención de buzón, no un sistema de adaptadores de IA."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-08-22
 editor: pointsav-engineering
 cites:
  - ni-51-102
  - osc-sn-51-721
 ---
 
-Cada acción editorial que pasa por la plataforma PointSav — generación de documentos, validación de esquemas, captura de tuplas de entrenamiento — está modelada por un sustrato que codifica el registro, la voz de marca, el subtipo de documento y el público objetivo como andamiaje de indicaciones reutilizable, no como instrucción ad-hoc. El resultado es trabajo editorial auditado, por inquilino y sustituible en cualquier capa sin reconstruir el resto.
+Cada borrador que se mueve por la plataforma PointSav — un artículo de wiki, un README, una corrección legal, una traducción — declara de antemano su registro, tipo de documento y destino, en lugar de que estos se infieran después. Esa declaración es el sustrato de protocolo de lenguaje: un campo de portada, una tabla de enrutamiento y una convención de buzón, no un sistema de IA.
 
-El sustrato provee cuatro familias de artefactos, dieciocho plantillas de género, un validador de portada que devuelve todas las violaciones de esquema en una sola pasada, y una lista de vocabulario prohibido de ocho términos transversales. Estos viajan en un crate de Rust (`service-disclosure`) dividido entre cuatro servicios — [[service-content]] (grafo de conocimiento), [[service-slm]] ([[compounding-doorman|Doorman]] e inferencia), `service-disclosure` (esquema y plantillas), `service-proofreader` (asistente HTTP) — donde cualquier servicio puede ser sustituido por uno del cliente sin afectar a los demás.
+El sustrato tiene dos capas reales y separadas. La **capa de enrutamiento** es genuinamente operativa: cada borrador lleva un valor `language_protocol`, una tabla a nivel de espacio de trabajo mapea ese valor al archivo que lo posee, y un mensaje de buzón recoge el traspaso automáticamente. La **capa de registro y esquema** vive como datos, no como código — qué debe contener un documento PROSE o LEGAL, y qué palabras no puede usar. Archivos YAML en `pointsav-design-system` (un registro por wiki, una lista de vocabulario prohibido por wiki, un esquema por tipo de contenido) definen esas reglas; un script de linting las verifica antes de publicar. No existe una "taxonomía de adaptadores en cuatro familias" unificada, ningún adaptador LoRA compuesto por petición, ni un único crate de Rust que posea esquema, plantillas y validación juntos.
 
-Tres adaptadores se componen al momento del pedido: modelo base, adaptador de inquilino (voz de marca) y adaptador de protocolo (PROSE | COMMS | LEGAL | TRANSLATE). El registro, la voz de marca y el público objetivo viven como andamiaje de indicaciones, no como adaptadores adicionales — cinco o más adaptadores por pedido cruzan a interferencia multi-tarea según la literatura LoRA de 2025; la plataforma se mantiene en tres. Cada acción editorial produce una tupla de entrenamiento firmada por el revisor a través de la línea de [[apprenticeship-substrate|aprendizaje]], alimentando el pre-entrenamiento continuo del adaptador del cliente sin que el texto salga de su infraestructura.
+## Los cuatro valores de protocolo — reales, y cómo enrutan realmente
 
-Para compradores regulados, la división en cuatro servicios importa porque cada acción editorial queda auditada en el [[worm-ledger-architecture|libro]] por inquilino antes de salir de la red del cliente. El cliente puede bifurcar cualquier [[adapter-composition|adaptador]], inspeccionar el andamiaje de indicaciones y verificar que su voz de marca no se agrupa con los datos de entrenamiento de otro inquilino. Por `[ni-51-102]` y `[osc-sn-51-721]`, la línea de entrenamiento se describe en términos prospectivos; la arquitectura del sustrato está operativa hoy.
+`PROSE-*`, `COMMS-*`, `LEGAL-*` y `TRANSLATE-*` son valores reales de `language_protocol`. Dos archivos gateway poseen el enrutamiento: `project-editorial` recibe PROSE/COMMS/LEGAL/TRANSLATE, `project-design` recibe DESIGN-*. Un borrador se marca con la portada `foundry-draft-v1` (protocolo, destino, campo de enrutamiento), y una convención de prefijo de mensaje de buzón lleva la intención de enrutamiento al archivo propietario automáticamente.
 
-## Qué provee
+Lo que no es real: un sistema de IA que compone un modelo base con un adaptador de "voz de marca" y un adaptador por protocolo al momento de la inferencia. Tampoco existe un crate de Rust compartido que produzca "dieciocho plantillas de género" y "ocho términos prohibidos transversales." El contenido de registro y esquema que realmente gobierna cada protocolo son actualmente 3 esquemas de tipo de contenido (TOPIC, GUIDE, JOURNAL) y una lista de vocabulario prohibido por wiki — no una taxonomía única de dieciocho plantillas.
 
-**Una taxonomía de adaptadores en cuatro familias.** PROSE para texto largo en inglés, COMMS para mensajería corta interpersonal, LEGAL para documentos formales con volumen gatillado, TRANSLATE como meta-protocolo sobre las demás familias.
+## Dónde vive realmente el contenido de registro y esquema
 
-**Un registro de plantillas de género.** Dieciocho plantillas; cada una con sus secciones requeridas, parámetros de registro, convención bilingüe, esquema de portada y andamiaje de indicaciones.
+`pointsav-design-system/tokens/linguistic/` contiene un archivo de registro por wiki y una lista de vocabulario prohibido por wiki, cada término con su reemplazo aprobado en lenguaje llano. `pointsav-design-system/tokens/content-schema/` contiene el esquema de portada y estructura de cada tipo de contenido. `project-editorial` es el custodio de contenido de este subárbol de tokens; aplicar cambios pasa por la puerta de confirmación mecánica de `project-design`.
 
-**Un validador de portada.** Devuelve todas las violaciones por género en una sola pasada, no la primera falla.
+`editorial-lint.py` (de `project-editorial`) lee estos archivos de tokens directamente y verifica la estructura y el vocabulario de un borrador contra ellos antes de que pueda confirmarse. Es un script de linting que corre al momento de confirmar, no un adaptador de inferencia ni un servicio que otro componente invoca por petición.
 
-**Una lista de vocabulario prohibido.** Ocho términos transversales que sobreviven en prosa de marketing y no tienen lugar en escritura precisa.
+## `service-proofreader` — un servicio real, desplegado por separado
 
-## Las cuatro familias
-
-| Familia | Responsabilidad | Plantillas |
-|---|---|---|
-| **PROSE** | Prosa larga en inglés | README, TOPIC, GUIDE, MEMO, ARCHITECTURE, INVENTORY, license-explainer, CHANGELOG |
-| **COMMS** | Comunicación corta | correo, chat, comentario de ticket, notas de reunión |
-| **LEGAL** | Formal con volumen gatillado | contrato, CLA, política, términos (rutea a Tier C por defecto) |
-| **TRANSLATE** | Meta-protocolo | Opera sobre las otras familias |
-
-Tres adaptadores se componen al momento del pedido: `base ⊕ adaptador-inquilino ⊕ adaptador-protocolo`. Cinco o más cruzan a interferencia multi-tarea según la literatura LoRA de 2025; la plataforma se mantiene en tres.
-
-## La división en cuatro servicios
-
-| Servicio | Forma | Cluster propietario |
-|---|---|---|
-| `service-content` | Datos — grafo de conocimiento | project-slm |
-| `service-slm` | Inferencia — Doorman + ruteo de niveles | project-slm |
-| `service-disclosure` | Esquema — tipos, validadores, CFG, plantillas | project-language |
-| `service-proofreader` | Operativo — asistente HTTP por petición | project-proofreader |
-
-Un cliente puede sustituir cualquiera sin tocar los demás. La contribución de la plataforma es el [[worm-ledger-architecture|libro de auditoría]] por inquilino que hace que cada sustitución sea composable a través de contextos regulatorios.
+`service-proofreader` es un servicio real de asistencia de escritura interactiva en ejecución (`local-proofreader.service`, puerto 9092) — pero no es un crate dentro de `pointsav-monorepo`, ni una pata de una división en cuatro servicios junto a `service-content`/`service-slm`. Es su propio despliegue, alcanzable desde la [[radical-proofreader-ui|consola de revisión]], y despacha su paso generativo a través del Doorman como cualquier otro llamador de inferencia.
 
 ## Véase también
 
