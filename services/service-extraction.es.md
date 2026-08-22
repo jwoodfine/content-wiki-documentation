@@ -1,8 +1,8 @@
 ---
 schema: foundry-doc-v1
-title: "service-extraction — Analizador determinista"
+title: "service-extraction"
 slug: service-extraction
-short_description: "service-extraction es el controlador de tráfico central Ring 2 que elimina formato propietario de cargas útiles sin procesar, construye Entity Bundles estructurados, asigna IDs de transacción y enruta datos a servicios deterministas o a service-slm para extracción asistida por IA."
+short_description: "service-extraction vigila un directorio en busca de cargas útiles JSON entrantes que llevan entidades clasificadas en el borde, escribe un registro de libro mayor por carga útil para el servicio objetivo, y puede puentear el mismo texto hacia la canalización de ingesta del DataGraph."
 category: services
 type: topic
 content_type: topic
@@ -12,29 +12,30 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-08
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: service-extraction.md
 cites: []
 ---
 
-Cada carga útil que cruza el límite de la plataforma llega a `service-extraction`, el controlador de tráfico del [[three-ring-architecture|Anillo 2]] que elimina el formato propietario (JSON, MIME, Base64), construye un Paquete de Entidades legible por máquina y asigna el identificador de transacción que sigue al paquete a través de cada paso descendente. Las cargas útiles estructuradas se enrutan completamente dentro del Anillo 2; el texto no estructurado se enruta a [[service-slm]] para extracción asistida por IA. `service-extraction` es el sucesor canónico del nombre de trabajo heredado `service-parser`.
+`service-extraction` vigila un directorio en busca de cargas útiles JSON entrantes y convierte cada una en un registro duradero de libro mayor. A diferencia de un componente del Anillo 2 que clasifica los datos por sí mismo, consume entidades que ya han sido clasificadas — su carga útil de entrada lleva un campo `edge_entities`, poblado por inferencia de IA local basada en WASM antes de que la carga útil llegue siquiera a este servicio.
 
-## Línea de base arquitectónica
+## El ciclo de vigilancia y escritura
 
-Cada mensaje que pasa a través del Anillo 1 llega a `service-extraction` como una carga útil sin procesar con formato del proveedor. El primer servicio del Anillo 1 en producir tales cargas útiles es típicamente [[service-email]] o [[service-input]]. El servicio tiene una responsabilidad: transformar esa carga útil en un Paquete de Entidades limpio y trazable, y enrutarlo al servicio descendente correcto. Asigna un ID de transacción a cada paquete, proporcionando una referencia de cadena de custodia que persiste a través de cada paso de procesamiento posterior.
+Ejecutándose como un vigilante del sistema de archivos, el servicio recoge cada archivo JSON nuevo depositado en su directorio de vigilancia, identificado por un `worm_id` derivado del nombre de archivo. Para cada carga útil:
 
-## Anillo y función
+1. Lee las `edge_entities` ya clasificadas y construye un conjunto de entidades listas para el grafo a partir de ellas.
+2. Escribe esas entidades en un registro de libro mayor `CRM_<worm_id>.json`, archivado bajo el servicio objetivo nombrado en la propia carga útil — el objetivo no está fijo a un solo servicio posterior, es lo que la carga útil especifique.
+3. Si hay configurada una ruta de emisión de corpus, también escribe un segundo archivo separado, `CORPUS_<worm_id>.json`, con el texto en bruto de la carga útil — un archivo puente que [[service-content]] vigila de forma independiente, alimentando ese texto a su propia canalización escalonada de extracción de entidades para el grafo de conocimiento.
 
-`service-extraction` ocupa el **Anillo 2 — Conocimiento y Procesamiento** en la [[three-ring-architecture|arquitectura de tres anillos]]. El Anillo 2 es multiinquilino (a través del espacio de nombres `moduleId`) y determinista: procesa datos sin invocar inferencia de IA a menos que la forma de los datos lo requiera. Cuando una carga útil contiene texto no estructurado que no puede clasificarse por reglas deterministas, `service-extraction` enruta ese texto al Anillo 3 ([[service-slm]]) para extracción asistida por IA. Los identificadores de entidades producidos aquí son consumidos por la lógica de [[archetypes-and-chart-of-accounts|asignación de conectores del Plan de Cuentas]] en [[service-people]].
+Las dos salidas cumplen propósitos distintos: el libro mayor CRM es el registro de entidades estructuradas para el servicio objetivo propio de la carga útil, y el puente CORPUS es lo que permite que el mismo texto también alimente el grafo de conocimiento general de la plataforma, sin que este servicio necesite saber nada sobre cómo ocurre esa extracción más adelante.
 
-## El Paquete de Entidades
+## Lo que no hace
 
-Cada carga útil se aísla en un directorio Unix nombrado por su marca de tiempo e ID de enrutamiento. El paquete se almacena eventualmente como registro inmutable en [[service-fs-architecture|`service-fs`]]. El paquete contiene `payload.txt` — el registro legible permanente — más adjuntos binarios almacenados de forma nativa junto al texto.
+Este servicio no ejecuta su propia clasificación de IA — las `edge_entities` que consume llegan ya etiquetadas. No analiza formatos de documentos binarios (PDF, DOCX, XLSX) — eso es una canalización separada y dedicada. Y no mantiene una matriz de enrutamiento de propósito general por tipo de contenido; cada carga útil simplemente nombra su propio servicio objetivo.
 
 ## Véase también
 
-- [[service-email]]
-- [[service-people]]
-- [[service-slm]]
-- [[service-search]]
+- [[service-content]] — vigila los archivos puente CORPUS que emite este servicio y ejecuta su propia extracción escalonada sobre el texto
+- [[service-people]] — un servicio objetivo común para los registros de libro mayor CRM que escribe este servicio
+- [[service-email]] — una fuente ascendente típica de las cargas útiles JSON que este servicio vigila

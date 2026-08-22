@@ -1,66 +1,39 @@
 ---
 schema: foundry-doc-v1
-title: "Deterministic parser"
+title: "service-extraction"
 slug: service-extraction
 category: services
 type: topic
 content_type: topic
 quality: complete
 index_group: ring-2-knowledge-and-processing
-short_description: "service-extraction is the Ring 2 traffic controller that strips proprietary formatting from raw payloads, builds Entity Bundles, and routes data for extraction."
+short_description: "service-extraction watches a directory for incoming JSON payloads carrying edge-classified entities, writes a per-payload ledger record for the target service, and can bridge the same text into the DataGraph ingestion pipeline."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-08
+last_edited: 2026-08-22
 editor: pointsav-engineering
 cites: []
 paired_with: service-extraction.es.md
 ---
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** several claims below don't match the real crate. `service-extraction`'s real `CLAUDE.md`/`src/main.rs` describe a single-purpose filesystem watcher that ingests JSON email payloads and writes `CRM_<worm_id>.json` records for `service-people` only — not a general-purpose "traffic controller" for all platform-boundary payloads. The "Entity Bundle" (`payload.txt` + binary attachments in a timestamped Unix directory), transaction-ID chain-of-custody, TOML routing config, and the multi-path routing matrix have no match in the real source. Most significantly, the real pipeline explicitly consumes pre-classified `edge_entities` from WASM AI inference — directly contradicting this article's "no AI inference required for routing" framing. Note this is a different crate from the document-parsing pipeline (PDF/DOCX/XLSX via `lopdf`/`docx-rs`/`calamine`) already confirmed to live here per `governance/adr-07-zero-ai-in-ring-1.md`'s correction — that finding still holds; this is an additional, separate defect in this article's own routing/entity-bundle description. **Flagged, not resolved.**
+`service-extraction` watches a directory for incoming JSON payloads and turns each one into a durable ledger record. Unlike a Ring-2 component that classifies data itself, it consumes entities that have already been classified — its input payload carries an `edge_entities` field, populated by local WASM-based AI inference before the payload ever reaches this service.
 
-Every payload that crosses the platform boundary lands at **service-extraction**, the [[three-ring-architecture|Ring 2]] traffic controller that strips proprietary formatting (JSON, MIME, Base64), constructs a machine-readable Entity Bundle, and assigns the transaction identifier that follows the bundle through every downstream step. Structured payloads route entirely within Ring 2; unstructured text routes onward to [[service-slm]] for AI-assisted extraction. service-extraction is the canonical successor to the legacy working name `service-parser`.
+## The watch-and-write cycle
 
-## Architectural Baseline
+Running as a filesystem watcher, the service picks up each new JSON file dropped into its watch directory, keyed by a `worm_id` derived from the filename. For each payload:
 
-Every message that passes through Ring 1 arrives at service-extraction as an unprocessed, vendor-formatted payload. The first Ring 1 service to produce such payloads is typically [[service-email]] or [[service-input]]. The service has one responsibility: transform that payload into a clean, traceable Entity Bundle and route it to the correct downstream service. It assigns a transaction ID to each bundle, providing a chain-of-custody reference that persists through every subsequent processing step.
+1. It reads the pre-classified `edge_entities` and builds a set of graph-ready entities from them.
+2. It writes those entities to a `CRM_<worm_id>.json` ledger record, filed under the target service named in the payload itself — the target isn't fixed to one downstream service, it's whatever the payload specifies.
+3. If a corpus-emission path is configured, it also writes a second, separate `CORPUS_<worm_id>.json` file carrying the payload's raw text — a bridge file that [[service-content]] watches independently, feeding that text into its own tiered entity-extraction pipeline for the knowledge graph.
 
-## Ring and Role
+The two outputs serve different purposes: the CRM ledger is the structured-entity record for the payload's own target service, and the CORPUS bridge is what lets the same text also feed the platform's general knowledge graph, without this service needing to know anything about how that extraction happens downstream.
 
-service-extraction occupies **Ring 2 — Knowledge and Processing** in the [[three-ring-architecture]]. Ring 2 is multi-tenant (via `moduleId` namespacing) and deterministic: it processes data without invoking AI inference unless the data shape requires it. When a payload contains unstructured text that cannot be classified by deterministic rules, service-extraction routes that text to Ring 3 ([[service-slm]]) for AI-assisted extraction. Structured and semi-structured payloads route entirely within Ring 2. Entity identifiers produced here are consumed by the [[archetypes-and-chart-of-accounts|Chart of Accounts socket-assignment]] logic in [[service-people]].
+## What it doesn't do
 
-## Structural Organization of Components
-
-### The Entity Bundle
-
-Each payload is isolated into a Unix directory named by its timestamp and routing ID. The bundle is eventually stored as an immutable record in [[service-fs-architecture|`service-fs`]]. The bundle contains:
-
-- **`payload.txt`** — the core text payload reduced to plain-text frontmatter format. This file is the permanent, human-readable record of the communication.
-- **Binary attachments** — PDFs, images, and other attached files stored natively alongside the text payload. Binary decoupling eliminates split-brain metadata tracking between the text record and its attachments.
-
-### The Multi-Path Routing Matrix
-
-After constructing the bundle, the service routes it based on the payload's origin tags:
-
-| Route | Destination | Condition |
-|---|---|---|
-| Immutable ledger | Cold storage via service-fs | Standard assets (most messages) |
-| Identity ledger | [[service-people]] | Sender identity records for CRM downstream ingestion |
-| AI synthesis | [[service-slm]], then purge | Consumable media (newsletters, low-retention items) |
-
-The routing decision is deterministic and tag-driven. No AI inference is required for the routing step itself.
-
-## Configuration
-
-| Parameter | Purpose |
-|---|---|
-| Queue path | Input path for Ring 1 payloads (e.g., `assets/tmp-maildir/`) |
-| Bundle output path | Filesystem location for completed Entity Bundles |
-| Routing rules | TOML configuration file mapping origin tags to routing destinations |
-| Transaction ID format | Timestamp + routing ID composition format |
+This service doesn't run its own AI classification — the `edge_entities` it consumes arrive already labelled. It doesn't parse binary document formats (PDF, DOCX, XLSX) — that's a separate, dedicated pipeline. And it doesn't hold a general-purpose routing matrix keyed by content type; each payload simply names its own target service.
 
 ## See also
 
-- [[service-email]]
-- [[service-people]]
-- [[service-slm]]
-- [[service-search]]
+- [[service-content]] — watches the CORPUS bridge files this service emits and runs its own tiered extraction on the text
+- [[service-people]] — a common target service for CRM ledger records this service writes
+- [[service-email]] — a typical upstream source of the JSON payloads this service watches for
