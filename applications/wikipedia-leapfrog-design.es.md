@@ -9,13 +9,11 @@ content_type: topic
 index_group: knowledge-and-editorial-applications
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-07-31
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: wikipedia-leapfrog-design.md
 cites: [ni-51-102, osc-sn-51-721]
 ---
-
-# Diseño leapfrog de Wikipedia — memoria muscular y 5% de margen
 
 El motor wiki [[app-mediakit-knowledge]] hereda el 95% de su interfaz de las convenciones de disposición establecidas por Wikipedia. El 5% restante es el margen leapfrog: añadidos que ningún lector de Wikipedia ha encontrado antes, implementados de forma aditiva para no perturbar la experiencia de lectura base. Este artículo explica por qué se tomó cada decisión de diseño y cómo se construye el contrato estructural con dos tipos de audiencia distintos.
 
@@ -43,17 +41,13 @@ Los dieciocho patrones sagrados catalogados en la especificación de diseño UX 
 
 ## Lo que se añade más allá de Wikipedia
 
-Cinco añadidos se incorporan más allá del inventario de Wikipedia. Cada uno es aditivo: ningún patrón de memoria muscular existente se elimina ni altera.
-
-**Insignias de citas.** Junto a cada referencia de cita en línea, la interfaz renderiza una pequeña insignia en la convención de pin CR de las C2PA Content Credentials. La insignia es gris neutro por defecto. En modo predeterminado, el estado positivo (verificado verde) sólo aparece cuando el lector activa explícitamente la configuración de densidad "mostrar todas las marcas verificadas". Las marcas de excepción (ámbar, rojo, azul) se muestran de forma prominente sin necesidad de activación.
+Tres añadidos se incorporan más allá del inventario de Wikipedia hoy. Cada uno es aditivo: ningún patrón de memoria muscular existente se elimina ni altera.
 
 **Banner de información prospectiva.** Los artículos cuyo frontmatter establece `forward_looking: true` muestran un banner de advertencia en la vista de lectura. El banner es la expresión en la superficie de lectura de los [[compliance-and-continuous-disclosure|requisitos de divulgación continua]] bajo [ni-51-102] y [osc-sn-51-721].
 
-**Campo de clase de divulgación.** Los artículos llevan un campo `disclosure_class` en el frontmatter con tres valores: `narrative`, `financial`, `governance`. En la fase actual este campo es invisible para los lectores — aparece en los datos estructurados JSON-LD en el bloque `<head>` del artículo renderizado.
+**Campo de clase de divulgación.** Los artículos llevan un campo `disclosure_class` en el frontmatter con tres valores: `narrative`, `financial`, `governance`. Este campo es invisible para los lectores — aparece en los datos estructurados JSON-LD en el bloque `<head>` del artículo renderizado.
 
-**Banda del encabezado IVC (marcador de posición).** Una franja horizontal debajo de la fila del título. En la fase actual esta banda muestra texto de marcador de posición indicando que la verificación aún no está disponible. Se prevé que una fase futura complete la banda con un resumen de verificación en tiempo real.
-
-**Control de densidad para el lector.** Un control de preferencias con tres estados: Desactivado, Solo excepciones (predeterminado), Todos. La configuración se conserva entre sesiones.
+**Banda del encabezado IVC (marcador de posición).** Una franja horizontal debajo de la fila del título. Esta banda muestra texto de marcador de posición indicando que la verificación aún no está disponible. Se prevé que una fase futura complete la banda con un resumen de verificación en tiempo real.
 
 ---
 
@@ -79,13 +73,22 @@ Un lector de ingeniería tiene la misma experiencia de navegación y también no
 
 Los siguientes elementos están previstos o planificados para fases posteriores. No se indican fechas de entrega específicas. Cualquier cambio material al plan de entrega se registraría en los documentos del plan de fases de ingeniería y en el registro de cambios del espacio de trabajo, conforme a las obligaciones de divulgación continua de [ni-51-102].
 
-**Insignias de verificación criptográfica por afirmación** (planificado): el sistema de insignias en línea descrito arriba, previsto para conectarse a una capa de federación direccionada por contenido en una fase futura. El marcador de posición de la banda del encabezado y el control de densidad para el lector se implementan ahora como ubicaciones estructurales; la maquinaria prevista para llenarlos está planificada para una fase posterior.
+**Insignias de verificación de citas por afirmación** (planificado): el frontmatter ya
+lleva un campo `cites:` de ID entre corchetes para esto — distinto del mecanismo de notas
+al pie `references:` ya implementado — pero ninguna ruta de renderizado lo consume todavía;
+una fase posterior prevé conectarlo a una insignia en línea junto a cada cita, ligada a la
+misma maquinaria de verificación que completará la banda del encabezado. Se prevé un
+control de densidad para las marcas resultantes junto con ella. Ninguno de los dos existe
+hoy en la experiencia de lectura.
 
-**Edición colaborativa en tiempo real** (opcional): la implementación CRDT se distribuye tras un indicador `--enable-collab`. Prevista para despliegues multiusuario de confianza donde varios autores editan el mismo artículo simultáneamente con conciencia de cursor compartida. Git sigue siendo canónico; el CRDT está previsto como estado efímero de sesión que se serializa en un commit al guardar explícitamente.
+**Edición colaborativa en tiempo real**: el motor no tiene editor en el navegador ni ruta
+de escritura hoy, para ningún modo de edición. Se construyó y luego se retiró un diseño
+colaborativo en tiempo real — un relé que reenviaba actualizaciones CRDT entre clientes
+sin retener el estado del documento — véase [[collab-via-passthrough-relay]] para el
+porqué. Nada en la versión actual ofrece edición colaborativa ni de un solo autor en el
+navegador.
 
-**Editor móvil**: una superficie de edición diseñada primero para móvil está prevista para una fase posterior. El editor actual está diseñado primero para escritorio.
-
-**Navegación por grafo de citas**: afinidades previstas para navegar "qué cita este artículo" y "qué cita a este artículo", planificadas para después de que se implemente el grafo de wikilinks redb.
+**Navegación por grafo de citas**: afinidades previstas para navegar "qué cita este artículo" y "qué cita a este artículo", planificadas para después de que se implemente un almacén de grafo de wikilinks.
 
 **Exploración semántica**: "artículos similares a este" y "conceptos adyacentes a este" obtenidos del grafo de citas, no de un modelo de inferencia en la ruta de lectura. Prevista como complemento a la exploración por categoría.
 
@@ -97,3 +100,4 @@ Los siguientes elementos están previstos o planificados para fases posteriores.
 - [[knowledge-wiki-home-page-design]] — la intención de diseño de la página de inicio y las convenciones de Wikipedia aplicadas
 - [[source-of-truth-inversion]] — el patrón canónico/vista/efímero que sustenta la postura editorial del motor
 - [[substrate-native-compatibility]] — la justificación de la superficie API nativa del sustrato frente a un adaptador de MediaWiki
+- [[collab-via-passthrough-relay]] — el diseño de edición colaborativa en tiempo real que se construyó y luego se retiró

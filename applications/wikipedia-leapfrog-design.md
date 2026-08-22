@@ -9,13 +9,11 @@ content_type: topic
 index_group: knowledge-and-editorial-applications
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: wikipedia-leapfrog-design.es.md
 cites: [ni-51-102, osc-sn-51-721]
 ---
-
-# Wikipedia leapfrog design — muscle memory and 5% headroom
 
 The [[app-mediakit-knowledge]] wiki engine inherits 95% of its chrome from Wikipedia's established layout conventions. The remaining 5% is leapfrog headroom: additions that no Wikipedia reader has encountered, shipped as additive features so the baseline reading experience is undisturbed. This article explains why each design choice was made and what the structural contract with two different audiences looks like.
 
@@ -45,15 +43,7 @@ The eighteen sacred patterns catalogued in the engine's UX design specification 
 
 ## What was added beyond Wikipedia
 
-Five additions ship beyond the Wikipedia inventory. Each is additive — no existing Wikipedia muscle-memory pattern is removed or altered.
-
-### Citation badges
-
-**Correction (2026-08-02):** the C2PA citation-badge feature below doesn't exist — zero hits for "C2PA," "Content Credentials," or any citation-badge implementation anywhere in `app-mediakit-knowledge/src/`; the real `src/citations.rs` implements only a plain footnote/citation-registry API with no verification-state coloring. The real-time collaborative editing claim further down (a shipped `--enable-collab` CRDT flag) is also fabricated — zero CRDT code or `--enable-collab` flag exists anywhere in the crate, same finding as `patterns/collab-via-passthrough-relay.md`. This article's disclosure-class field, forward-looking banner, masthead-band placeholder, and reader density toggle are all independently verified accurate — only these two features are invented. **Flagged, not resolved.**
-
-Next to every inline citation reference, the chrome renders a small badge in the C2PA Content Credentials (CR) pin glyph convention. The badge defaults to neutral grey. This follows the lesson of the TLS padlock: in May 2023, Chrome removed the green padlock because 89% of users misread the positive state as "this site is trustworthy" rather than "the connection is encrypted." A positive-state signal that is ubiquitous becomes noise. Citation badges follow the same calibration: neutral grey for all-verified, amber for source drift, red for a missing or hash-mismatched citation, blue for forward-looking information. The verified-green state appears only when a reader explicitly toggles the "show all verified marks" density setting.
-
-This addition does not interfere with footnote conventions. The badge appears at clause end, next to — not replacing — the existing `[n]` footnote superscript.
+Three additions ship beyond the Wikipedia inventory today. Each is additive — no existing Wikipedia muscle-memory pattern is removed or altered.
 
 ### Forward-looking information banner
 
@@ -61,15 +51,11 @@ Articles whose frontmatter sets `forward_looking: true` render a cautionary bann
 
 ### Disclosure class field
 
-Articles carry a `disclosure_class` field in frontmatter with three values: `narrative`, `financial`, `governance`. In the current phase this field is invisible to readers — it appears in the JSON-LD structured data in the rendered article's `<head>` block. A planned linter will check that articles classified as financial carry an iXBRL block and that articles with `forward_looking: true` carry the required cautionary language patterns.
+Articles carry a `disclosure_class` field in frontmatter with three values: `narrative`, `financial`, `governance`. This field is invisible to readers — it appears in the JSON-LD structured data in the rendered article's `<head>` block. A planned linter will check that articles classified as financial carry an iXBRL block and that articles with `forward_looking: true` carry the required cautionary language patterns.
 
 ### IVC masthead band placeholder
 
-A single horizontal strip below the title row. In the current phase this band renders placeholder text indicating that verification is not yet available. A planned future phase is intended to fill the band with a live verification summary: the count of claims in the article, the count verified, and the time since the last drift check. The band's structural location is established now so the template is not restructured when the verification machinery ships.
-
-### Reader density toggle
-
-A preference control with three states: Off, Exceptions only (default), All. The setting persists across sessions. In the default state, neutral grey marks are rendered at low visual weight and coloured exception marks (amber, red, blue) are prominent. The All state renders verified-green marks alongside exception marks, for readers who want the full verification picture. The Off state provides the pure Wikipedia reading experience.
+A single horizontal strip below the title row. This band renders placeholder text indicating that verification is not yet available. A planned future phase is intended to fill the band with a live verification summary: the count of claims in the article, the count verified, and the time since the last drift check. The band's structural location is established now so the template is not restructured when the verification machinery ships.
 
 ---
 
@@ -99,13 +85,20 @@ An engineering reader has the same navigational experience, and also notices the
 
 The following items are intended or planned for later phases. No specific delivery dates are stated. Material changes to the delivery plan would be recorded in the engineering phase plan documents and the workspace changelog, in accordance with [ni-51-102] continuous-disclosure obligations.
 
-**Per-claim cryptographic verification badges** (planned): the inline badge system described above, intended to be wired to a content-addressed federation layer in a future phase. The masthead band placeholder and reader density toggle ship as structural locations now; the machinery intended to fill them is planned for a later phase.
+**Per-claim citation-verification badges** (planned): frontmatter already carries a
+bracket-ID `cites:` field for this — distinct from the already-shipped `references:`
+footnote mechanism — but no render path consumes it yet; a later phase is intended to wire
+it to an inline badge next to each citation, tied to the same verification machinery
+that fills the masthead band. A reader-facing density control for the resulting marks is
+intended alongside it. Neither exists in the reading experience today.
 
-**Real-time collaborative editing** (opt-in): the CRDT implementation ships behind a `--enable-collab` flag. Intended for trusted multi-user deployments where multiple authors edit the same article simultaneously with shared cursor awareness. Git remains canonical; the CRDT is intended as session-ephemeral state that serialises to a commit on explicit save.
+**Real-time collaborative editing**: the engine has no in-browser editor and no write
+route today, for any editing mode. A real-time collaborative design — a relay that
+forwarded CRDT updates between clients without holding document state itself — was built
+and later removed; see [[collab-via-passthrough-relay]] for why. Nothing in the current
+build offers collaborative or single-author in-browser editing.
 
-**Mobile editor**: a mobile-first edit surface is intended for a later phase. The current editor is desktop-first.
-
-**Citation-graph navigation**: intended affordances for navigating "what this article cites" and "what cites this article", planned for after the redb wikilink graph ships.
+**Citation-graph navigation**: intended affordances for navigating "what this article cites" and "what cites this article", planned for after a wikilink graph store ships.
 
 **Semantic browse**: "articles like this" and "concepts adjacent to this" surfaced from the citation graph, not from an inference model in the read path. Intended as a complement to category browse.
 
@@ -117,3 +110,4 @@ The following items are intended or planned for later phases. No specific delive
 - [[knowledge-wiki-home-page-design]] — the home page design intent and Wikipedia conventions applied
 - [[source-of-truth-inversion]] — the canonical/view/ephemeral pattern that underpins the engine's editorial posture
 - [[substrate-native-compatibility]] — the rationale for the substrate-native API surface over a MediaWiki shim
+- [[collab-via-passthrough-relay]] — the real-time collaborative editing design that was built, then removed
