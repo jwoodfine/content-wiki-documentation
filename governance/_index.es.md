@@ -11,7 +11,7 @@ index_type: thematic
 index_scope: governance
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-06
+last_edited: 2026-08-22
 editor: pointsav-engineering
 ---
 
@@ -56,17 +56,17 @@ Punto de entrada para la evaluación de adquisición, seguridad y cumplimiento.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: engineering-sovereignty -->
 - [[sovereign-replacement-initiative]] — El programa formal que registra cada dependencia de terceros en un libro contable estructurado, aplica el aislamiento de cuarentena y retira cada dependencia cuando un reemplazo nativo alcanza paridad estructural.
-- [[moonshot-initiatives]] — Los nueve programas de ingeniería activos que construyen reemplazos nativos para dependencias de terceros en cuarentena, desde la capa del kernel hasta la cadena de herramientas de compilación.
+- [[moonshot-initiatives]] — Nueve programas de ingeniería nombrados dirigidos a reemplazos nativos de dependencias de terceros en cuarentena; tres llevan ingeniería activa sustancial hoy, seis siguen siendo esqueletos en etapa temprana.
 - [[sovereign-airlock-doctrine]] — El protocolo de commits por etapas que aplica una separación estructural entre las identidades de staging (autores de commits) y las identidades de push canónico, sin ruta directa entre ellos.
 <!-- END AUTO-GENERATED -->
 
 ## Disciplinas de plataforma
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: platform-disciplines -->
-- [[ontological-governance]] — Los cuatro libros contables de control con velocidad limitada y el bucle de verificación humana que evitan que la deriva de clasificación automatizada socave la integridad de los datos institucionales de larga duración.
+- [[ontological-governance]] — Los cuatro libros contables de vocabulario de referencia y el bucle de verificación humana que mantienen legible con el tiempo la clasificación de identidad de la plataforma.
 - [[anti-homogenization-discipline]] — La postura arquitectónica que resiste que los asistentes de escritura con IA empujen a los colaboradores hacia una única voz, aplicando por defecto el marcado en lugar de la reescritura silenciosa.
 - [[api-key-boundary-discipline]] — La regla de que todas las credenciales de API de LLM externas pertenecen exclusivamente al servicio de puerta de enlace y nunca a motores de inferencia ni consumidores descendentes.
-- [[favicon-matrix]] — La matriz de iconos que rige la identidad visual en todas las superficies de la plataforma: un glifo distinto por servicio, SO y aplicación, aplicado en la capa de la cadena de activos.
+- [[favicon-matrix]] — El único favicon SVG estático servido en cada inquilino del wiki, y por qué el mecanismo es un archivo enlazado y no una URI de datos insertada.
 - [[doctrine-invention-7-rekor-anchoring]] — Cómo la plataforma publica mensualmente un punto de control firmado del libro contable en el registro público de transparencia Sigstore Rekor, dando a los auditores evidencia verificable de forma independiente, fuera de la infraestructura propia de la plataforma.
 <!-- END AUTO-GENERATED -->
 

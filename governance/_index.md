@@ -11,7 +11,7 @@ index_type: thematic
 index_scope: governance
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-06
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: _index.es.md
 ---
@@ -59,17 +59,17 @@ Start here for procurement, security, and compliance evaluation.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: engineering-sovereignty -->
 - [[sovereign-replacement-initiative]] — The formal program that records every third-party dependency in a structured ledger, enforces quarantine isolation, and retires each dependency when a native replacement reaches structural parity.
-- [[moonshot-initiatives]] — The nine active engineering programs building native replacements for quarantined third-party dependencies, from the kernel layer up through the build toolchain.
+- [[moonshot-initiatives]] — Nine named engineering programs targeting native replacements for quarantined third-party dependencies; three carry substantial active engineering today, six remain early-stage scaffolds.
 - [[sovereign-airlock-doctrine]] — The staged-commit protocol that enforces a structural separation between staging identities (commit authors) and canonical push identities, with no direct path between them.
 <!-- END AUTO-GENERATED -->
 
 ## Platform disciplines
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: platform-disciplines -->
-- [[ontological-governance]] — The four throttled control ledgers and human-verification loop that prevent automated classification drift from undermining the integrity of long-lived institutional data.
+- [[ontological-governance]] — The four reference vocabulary ledgers and human-verification loop that keep the platform's identity classification legible over time.
 - [[anti-homogenization-discipline]] — The architectural posture that resists AI writing assistants pulling contributors toward a single voice, defaulting to flagging rather than silent rewriting.
 - [[api-key-boundary-discipline]] — The rule that all external LLM API credentials belong exclusively at the gateway service and never at inference engines or downstream consumers.
-- [[favicon-matrix]] — The icon matrix governing visual identity across all platform surfaces: one distinct glyph per service, OS, and application, enforced at the asset-pipeline layer.
+- [[favicon-matrix]] — The single static SVG favicon served across every wiki tenant, and why the mechanism is a linked file rather than an inline data URI.
 - [[doctrine-invention-7-rekor-anchoring]] — How the platform posts a monthly signed ledger checkpoint to the public Sigstore Rekor transparency log, giving auditors independently verifiable evidence outside the platform's own infrastructure.
 <!-- END AUTO-GENERATED -->
 
