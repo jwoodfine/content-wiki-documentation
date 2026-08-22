@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "app-mediakit-marketing — WordPress-leapfrog marketing landing server"
+title: "app-mediakit-marketing — agent-authored marketing landing server"
 slug: app-mediakit-marketing
 category: applications
 type: concept
@@ -11,48 +11,30 @@ status: active
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-01
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: app-mediakit-marketing.es.md
-short_description: "app-mediakit-marketing is a Rust web server delivering marketing landing sites over a flat-file architecture, serving home.woodfinegroup.com and home.pointsav.com."
+short_description: "app-mediakit-marketing is a Rust web server delivering marketing landing sites from typed page manifests — AI authors via MCP, a human approves before anything publishes. Serves home.woodfinegroup.com and home.pointsav.com."
 cites: []
 ---
 
-**Correction (2026-08-02):** the WordPress-admin-vocabulary framing below is entirely fabricated — a repo-wide search for "Dashboard," "WordPress," or any `/admin/` UI in `app-mediakit-marketing/src` returns zero hits. The real content model isn't flat Markdown/HTML either: `src/content.rs` loads typed `page.yaml` manifests validated against `app_mediakit_shell::Page`'s section contract. The crate's own doc comments describe its actual architecture as agent-first: AI authors content via an MCP server, humans approve via an F12 gate (`Cargo.toml` description: "AI authors via MCP, humans approve (F12)") — a materially different model from a WordPress-style admin UI, and unmentioned anywhere in this article. Separately, `os-orchestration` (cited elsewhere in this article) is a real crate on canonical but currently an empty placeholder scaffold (retracted from an earlier, wrong "not a built crate at all" claim — the related `app-orchestration-command` crate is real and substantial, see [[personnel-permissions]]), and the article's `pointsav-monorepo/` source path is wrong — the real crate lives at top-level `app-mediakit-marketing/`. **Flagged, not resolved** — this needs a rewrite around the real MCP-authoring/F12-approval model, not a wording fix.
+`app-mediakit-marketing` is a Rust web server that delivers marketing landing sites — server-rendered, agent-first. A page is a typed manifest, not free-form Markdown or HTML: it composes a title, description, language, and an ordered list of typed sections (a hero, for instance) drawn from the shared [[app-mediakit-shell|`app-mediakit-shell`]] section vocabulary. The binary validates every manifest against that vocabulary before it can render, so a manifest either conforms or is rejected — there is no partial or malformed page.
 
-`app-mediakit-marketing` is a Rust web server that delivers marketing landing sites. It presents the same vocabulary — Dashboard, Pages, Posts, Media, Themes, Plugins, Settings — that WordPress users already know, but replaces the PHP + MySQL stack beneath with a sovereign, Tier 0-compatible architecture: a single compiled binary, flat-file content storage, and a graph-entity integration layer that costs nothing to run on a $7/month node.
+## Agent-first authoring, human-gated publish
 
-The name "WordPress leapfrog" describes the goal: preserve the user-facing interface that tens of millions of operators have internalized, and leapfrog the technical substrate to remove the constraints that make WordPress difficult to operate and extend.
+Content on this platform is meant to be authored by an AI agent and approved by a human before it goes live, the same [[architecture-decisions|SYS-ADR-10]]/SYS-ADR-19 human-checkpoint pattern applied elsewhere on the platform. An MCP server, mounted at `POST /api/mcp` when explicitly enabled, exposes tools an AI author calls directly: list the available section types, read an existing page, validate a draft manifest against the section contract, propose a new or revised page, and list what's currently pending.
 
-## Background
-
-WordPress powers roughly 40 percent of websites tracked by web crawlers. Its prevalence reflects a genuine product achievement: the admin interface standardized content management for an entire generation of operators. An operator who learned WordPress in 2010 can navigate a new WordPress install in 2026 without retraining.
-
-The liability is the substrate. PHP execution environments, MySQL administration, plugin sprawl, and database-level content storage create operational overhead that is disproportionate for small and medium operators. Upgrade paths break plugins. Database corruption requires specialist recovery. Hosting costs scale with server capacity, not content volume. Multi-tenancy requires database-per-tenant isolation or complex shared-table schemas.
-
-`app-mediakit-marketing` addresses this by keeping the interface contract while discarding the substrate.
+An AI author never writes to the live content tree. `propose_page` validates the manifest and stages it as a pending item; nothing is published until a human reviews the proposed manifest against what's currently live and approves it. There is no automated publish path.
 
 ## Architecture
 
 ### Binary
 
-A single statically linked Rust binary (`app-mediakit-marketing`) runs the server. Built with the Axum web framework. No runtime dependencies beyond the OS kernel and a libc.
-
-The binary:
-- Serves static-rendered content from a flat-file content directory
-- Exposes the WordPress-vocabulary admin UI at `/admin/`
-- Reads tenant configuration from environment variables at startup
-- Optionally queries the service-content DataGraph via Doorman for entity-grounded content references
-
-### Flat-file content
-
-Content lives in a directory on the host filesystem (`SERVICE_MARKETING_CONTENT_DIR`). Files are Markdown and HTML; there is no database. The binary reads content files on each request (with in-memory caching planned for v0.0.2). Edits to content files take effect on the next request with no service restart.
-
-This eliminates the database administration surface: no schema migrations, no backup/restore complexity, no connection-pool management.
+A single statically linked Rust binary (`app-mediakit-marketing`) runs the server, built on Axum. No runtime dependencies beyond the OS kernel and a libc.
 
 ### Multi-tenant via environment variables
 
-A single binary supports multiple tenants. Tenant identity is set at startup via `SERVICE_MARKETING_MODULE_ID` (e.g., `woodfine`, `pointsav`). Content directory, bind port, site title, and DataGraph module target all resolve from this value.
+A single binary supports multiple tenants. Tenant identity is set at startup via `SERVICE_MARKETING_MODULE_ID` (e.g., `woodfine`, `pointsav`); content directory, bind port, and site title resolve from this value.
 
 Two instances running the same binary on the same host demonstrate this:
 
@@ -63,27 +45,16 @@ Two instances running the same binary on the same host demonstrate this:
 
 Each instance is a systemd service with its own unit file and environment block. Neither instance knows about the other.
 
-### DataGraph integration (optional)
-
-Landing pages can reference graph entities — people, companies, products — by ID. When `SERVICE_MARKETING_GRAPH_URL` is configured (pointing to a running Doorman instance), the binary resolves entity references at render time and embeds structured data. When the DataGraph is unavailable, the binary falls back to static content without error.
-
-This integration is Tier 0 optional: a site running without DataGraph access is fully functional; DataGraph enriches it when present.
-
 ## Sovereignty and Tier 0 alignment
 
 The [[compounding-substrate|Compounding Substrate]] discipline defines Tier 0 as an operator-owned system that functions without any vendor cloud dependency. `app-mediakit-marketing` meets this bar:
 
 - Single binary with no external runtime dependencies
-- Flat-file content storage (no cloud database, no object storage required)
+- File-based content storage — page manifests on disk, no database
 - nginx reverse proxy handles TLS; no managed load balancer required
 - Runs on the smallest commercially available VPS ($7/month)
-- DataGraph integration is optional — the site is not degraded in its absence
 
 An SMB operator can run their own marketing landing site on hardware they own, with software built from auditable source, without any ongoing vendor relationship.
-
-## WORM-ledger content history
-
-Planned for v0.0.3: every content edit captured via the audit endpoint (`/v1/audit/capture` through Doorman) is intended to form an append-only version history. This aligns with the [[worm-ledger-design|WORM-ledger-design]] convention: content history is never deleted, only appended. The audit log serves two purposes — operator rollback, and training corpus for the AI tier.
 
 ## Deployment pattern
 
@@ -98,8 +69,7 @@ The binary never listens on a public port. All public traffic passes through ngi
 ```
 Internet → nginx :443 (TLS) → 127.0.0.1:PORT → app-mediakit-marketing
                               │
-                              └→ CONTENT_DIR/ (flat-file reads)
-                              └→ Doorman :9081 (DataGraph, optional)
+                              └→ CONTENT_DIR/ (page manifests)
 ```
 
 ## Live reference deployments
@@ -111,24 +81,9 @@ Two deployments are active as of 2026-05-07 on `foundry-workspace`:
 
 Both sites run the same `app-mediakit-marketing` binary. The difference is content and theme tokens.
 
-## Roadmap
-
-| Version | Key additions |
-|---|---|
-| v0.0.1 | Rust binary, WordPress vocab nav, multi-tenant env, DataGraph optional, Tier 0 |
-| v0.0.2 | Theme system (CSS tokens from pointsav-design-system), per-tenant branding, audit-logged edits (planned) |
-| v0.0.3 | WORM-ledger page-edit version history, SEO basics (meta, sitemap, RSS) (planned) |
-| v0.1.0 | Plugin surface (app-orchestration-* composed via iframe/API mount), contact/lead forms feeding DataGraph (planned) |
-
-## Source
-
-`pointsav-monorepo/app-mediakit-marketing/`. Available at [github.com/pointsav](https://github.com/pointsav).
-
 ## See also
 
 - [[app-mediakit-knowledge]] — sibling Rust server for knowledge-base content (same architectural pattern)
+- [[app-mediakit-shell]] — the shared typed-section vocabulary this crate composes pages from
 - [[compounding-substrate]] — sovereign architecture discipline
-- [[leapfrog-2030-architecture]] — the leapfrog-2030 pattern that governs the flat-file, no-database substrate
-- [[worm-ledger-design]] — append-only content version history pattern
 - [[totebox-archive]] — the Totebox Archive that holds canonical content for each tenant
-- [[os-orchestration]] — the orchestration OS that hosts the MediaKit family

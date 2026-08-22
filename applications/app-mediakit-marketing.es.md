@@ -1,48 +1,59 @@
 ---
 schema: foundry-doc-v1
-title: "Aplicación de marketing MediaKit"
+title: "app-mediakit-marketing — servidor de páginas de marketing autoría por agente"
 slug: app-mediakit-marketing
 category: applications
 type: concept
 content_type: topic
 quality: complete
 index_group: knowledge-and-editorial-applications
-short_description: "app-mediakit-marketing es un servidor web en Rust que entrega sitios de marketing usando el vocabulario de WordPress sobre una arquitectura soberana de archivos planos. Dos despliegues activos sirven home.woodfinegroup.com y home.pointsav.com."
+short_description: "app-mediakit-marketing es un servidor web en Rust que entrega sitios de marketing a partir de manifiestos de página tipados — la IA redacta vía MCP, un humano aprueba antes de que algo se publique. Sirve home.woodfinegroup.com y home.pointsav.com."
 status: active
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-last_edited: 2026-07-31
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: app-mediakit-marketing.md
+cites: []
 ---
 
-`app-mediakit-marketing` sirve páginas de inicio de marketing multi-inquilino desde un único binario Rust compilado estáticamente — sin PHP, sin MySQL, sin infraestructura de plugins — preservando al mismo tiempo la memoria muscular de WordPress.org en la superficie de URL y navegación orientada al operador. La aplicación entró en servicio en la versión v0.0.1 en mayo de 2026 y ejecuta dos inquilinos simultáneos en producción — Woodfine en `home.woodfinegroup.com` y PointSav en `home.pointsav.com` — desde el mismo binario en una única máquina virtual de bajo coste, separados únicamente por configuración de variables de entorno. Forma parte de la familia de superficies [[os-orchestration|`os-orchestration`]] y sigue el patrón [[leapfrog-2030-architecture|leapfrog-2030]] de contenido en archivos planos sin dependencia de base de datos.
+`app-mediakit-marketing` es un servidor web en Rust que entrega páginas de inicio de marketing — renderizadas en el servidor, con la IA como autora principal. Una página es un manifiesto tipado, no HTML ni Markdown libre: compone un título, una descripción, un idioma y una lista ordenada de secciones tipadas (una "hero", por ejemplo) tomadas del vocabulario de secciones compartido de [[app-mediakit-shell|`app-mediakit-shell`]]. El binario valida cada manifiesto contra ese vocabulario antes de poder renderizarlo, de modo que un manifiesto se ajusta o se rechaza — no existe una página parcial o malformada.
 
-## Antecedentes
+## Redacción por agente, publicación con aprobación humana
 
-WordPress impulsa aproximadamente el 40 por ciento de los sitios web rastreados por los motores de búsqueda. Su prevalencia refleja un logro de producto genuino: la interfaz de administración estandarizó la gestión de contenido para toda una generación de operadores. Un operador que aprendió WordPress en 2010 puede navegar una instalación nueva de WordPress en 2026 sin necesidad de reentrenamiento.
+El contenido de esta plataforma está pensado para que lo redacte un agente de IA y lo apruebe un humano antes de publicarse, el mismo patrón de punto de control humano [[architecture-decisions|SYS-ADR-10]]/SYS-ADR-19 aplicado en el resto de la plataforma. Un servidor MCP, montado en `POST /api/mcp` cuando se habilita explícitamente, expone herramientas que un autor de IA invoca directamente: listar los tipos de sección disponibles, leer una página existente, validar un borrador contra el contrato de secciones, proponer una página y listar lo pendiente.
 
-El pasivo es el sustrato. Los entornos de ejecución PHP, la administración de MySQL, la proliferación de plugins y el almacenamiento de contenido a nivel de base de datos crean una sobrecarga operativa desproporcionada para operadores pequeños y medianos. Las rutas de actualización rompen plugins. La corrupción de la base de datos requiere recuperación especializada. Los costos de alojamiento escalan con la capacidad del servidor, no con el volumen de contenido. La multi-tenencia requiere aislamiento de base de datos por inquilino o esquemas complejos de tablas compartidas.
+Un autor de IA nunca escribe directamente al árbol de contenido en producción. `propose_page` valida el manifiesto y lo deja en cola como un elemento pendiente; nada se publica hasta que un humano revisa el manifiesto propuesto frente a lo que está actualmente en vivo y lo aprueba. No existe una ruta de publicación automatizada.
 
-`app-mediakit-marketing` resuelve esto conservando el contrato de interfaz mientras descarta el sustrato.
+## Arquitectura
 
-## Función y arquitectura
+### Binario
 
-El servidor presenta la presencia de marketing pública de cada inquilino en un dominio
-configurable. La memoria muscular de WordPress se conserva en la capa UX: la interfaz
-de administración expone el vocabulario Dashboard, Pages, Media y Themes familiar para
-cualquier operador de WordPress, pero internamente la aplicación no utiliza PHP, MySQL
-ni infraestructura de plugins.
+Un único binario de Rust compilado estáticamente (`app-mediakit-marketing`) ejecuta el servidor, construido sobre Axum. Sin dependencias de tiempo de ejecución más allá del kernel del sistema operativo y una libc.
 
-Cada instancia por inquilino lee contenido desde un directorio de archivos planos
-configurable. Un único binario compilado sirve tanto al inquilino Woodfine como al
-inquilino PointSav mediante variables de entorno. El contenido almacenado en el [[totebox-archive|Archivo Totebox]] del inquilino es la fuente canónica; el binario en ejecución es una vista derivada sobre ese árbol de archivos planos. La compatibilidad de rutas
-(`/wp-admin/`, `/wp-admin/post.php`, `/wp-admin/upload.php`) se mantiene en la capa
-HTTP, garantizando la integración con herramientas que esperan el vocabulario WordPress.
+### Multi-inquilino mediante variables de entorno
 
-## Historial de contenido en el libro contable WORM
+Un único binario admite múltiples inquilinos. La identidad del inquilino se establece al inicio mediante `SERVICE_MARKETING_MODULE_ID` (por ejemplo, `woodfine`, `pointsav`); el directorio de contenido, el puerto de escucha y el título del sitio se resuelven a partir de ese valor.
 
-Previsto para v0.0.3: cada edición de contenido capturada a través del endpoint de auditoría (`/v1/audit/capture` mediante Doorman) está pensada para formar un historial de versiones de solo anexado. Esto se alinea con la convención [[worm-ledger-design|de diseño del libro contable WORM]]: el historial de contenido nunca se elimina, solo se anexa. El registro de auditoría cumple dos propósitos — reversión por parte del operador, y corpus de entrenamiento para el nivel de IA.
+Dos instancias que ejecutan el mismo binario en el mismo host lo demuestran:
+
+| Instancia | Inquilino | Dominio | Puerto |
+|---|---|---|---|
+| media-marketing-landing-1 | woodfine | home.woodfinegroup.com | 9102 |
+| media-marketing-landing-2 | pointsav | home.pointsav.com | 9101 |
+
+Cada instancia es un servicio systemd con su propio archivo de unidad y bloque de entorno. Ninguna instancia conoce a la otra.
+
+## Soberanía y alineación con Nivel 0
+
+La disciplina del [[compounding-substrate|Sustrato Compuesto]] define el Nivel 0 como un sistema propiedad del operador que funciona sin ninguna dependencia de nube de terceros. `app-mediakit-marketing` cumple este estándar:
+
+- Binario único sin dependencias externas de tiempo de ejecución
+- Almacenamiento de contenido basado en archivos — manifiestos de página en disco, sin base de datos
+- El proxy inverso nginx gestiona TLS; no se requiere balanceador de carga administrado
+- Se ejecuta en el VPS comercial más pequeño disponible ($7/mes)
+
+Un operador PYME puede ejecutar su propio sitio de marketing en hardware que posee, con software construido a partir de fuente auditable, sin ninguna relación continua con un proveedor.
 
 ## Patrón de despliegue
 
@@ -57,38 +68,21 @@ El binario nunca escucha en un puerto público. Todo el tráfico público pasa a
 ```
 Internet → nginx :443 (TLS) → 127.0.0.1:PUERTO → app-mediakit-marketing
                               │
-                              └→ CONTENT_DIR/ (lecturas de archivos planos)
-                              └→ Doorman :9081 (DataGraph, opcional)
+                              └→ CONTENT_DIR/ (manifiestos de página)
 ```
 
-## Despliegues
+## Despliegues de referencia en vivo
 
-Dos despliegues de producción simultáneos operan en una única máquina virtual de bajo coste:
+Dos despliegues están activos desde el 2026-05-07 en `foundry-workspace`:
 
-| Despliegue | Inquilino | Dominio |
-|---|---|---|
-| `media-marketing-landing-1` | Woodfine | home.woodfinegroup.com |
-| `media-marketing-landing-2` | PointSav | home.pointsav.com |
+- **home.woodfinegroup.com** — sitio de marketing de nivel cliente de MCorp. Demuestra el patrón cliente: con marca propia, operado bajo la identidad del cliente.
+- **home.pointsav.com** — despliegue de referencia abierto de nivel proveedor de PointSav. Demuestra el patrón proveedor: una referencia pública que los clientes potenciales pueden inspeccionar antes de desplegar su propia instancia.
 
-## Hoja de ruta
-
-| Versión | Adiciones clave |
-|---|---|
-| v0.0.1 | Binario Rust, navegación con vocabulario WordPress, entorno multi-inquilino, DataGraph opcional, Nivel 0 |
-| v0.0.2 | Sistema de temas (tokens CSS desde pointsav-design-system), marca por inquilino, ediciones auditadas (previsto) |
-| v0.0.3 | Historial de versiones de edición de páginas en el libro contable WORM, fundamentos SEO (meta, sitemap, RSS) (previsto) |
-| v0.1.0 | Superficie de plugins (app-orchestration-* compuestos vía iframe/API), formularios de contacto/leads que alimentan DataGraph (previsto) |
-
-## Estado actual
-
-v0.0.1 entrega el servidor multi-inquilino central, la navegación compatible con
-WordPress y el servicio básico de contenido en archivos planos. La integración de
-entidades DataGraph, la gestión de carga de medios y el panel de administración
-completo equivalente a WordPress están previstos para hitos posteriores.
+Ambos sitios ejecutan el mismo binario `app-mediakit-marketing`. La diferencia es el contenido y los tokens de tema.
 
 ## Véase también
 
-- [[app-mediakit-knowledge]] — el motor wiki compañero en la familia MediaKit
-- [[leapfrog-2030-architecture]] — el patrón arquitectónico que rige el sustrato de archivos planos sin base de datos
+- [[app-mediakit-knowledge]] — servidor Rust hermano para contenido de base de conocimiento (mismo patrón arquitectónico)
+- [[app-mediakit-shell]] — el vocabulario de secciones tipadas compartido del que este crate compone páginas
+- [[compounding-substrate]] — la disciplina arquitectónica soberana
 - [[totebox-archive]] — el Archivo Totebox que contiene el contenido canónico de cada inquilino
-- [[os-orchestration]] — el SO de orquestación que aloja la familia MediaKit
