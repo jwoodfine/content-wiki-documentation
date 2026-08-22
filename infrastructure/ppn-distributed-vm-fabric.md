@@ -17,13 +17,13 @@ editor: editorial
 
 The **PPN Distributed VM Fabric** is the planned extension of the per-node PPN hypervisor layer to a multi-node resource pool. Where the current hypervisor layer manages CPU and RAM within a single physical node, the distributed fabric is intended to allow VMs to borrow compute from other nodes in the mesh and to place and migrate VMs across the fleet without per-move operator involvement.
 
-This topic describes the planned architecture. The per-node layer — `virtio_balloon`, cgroups v2 weights, and the `vm-prove.sh` proof — is implemented and proven as of 2026-05-28. The four distributed components described below are planned milestones; none is built yet. (Correction, 2026-08-02, verified against canonical `origin/main`: this "implemented and proven" claim is itself wrong — no `virtio_balloon` or cgroups/`cpu.weight` code exists anywhere in `os-infrastructure` or `service-vm-fleet`, on either branch. `vm-prove.sh` is confirmed real, but it's a standalone manual QEMU-monitor demo script, not an integrated hypervisor mechanism — it doesn't prove what this article claims it proves. Flagged, not resolved — the "Complete" status in the table below and the linked [[ppn-hypervisor-resource-pool]] article need the same correction.)
+This topic describes the planned architecture. Neither the per-node layer nor the four distributed components below is built yet. `virtio_balloon` and cgroups v2 weights have no code anywhere in `os-infrastructure` or `service-vm-fleet` — a real, standalone demo script exercises the underlying QEMU balloon mechanism manually via the QEMU monitor, but it is not an integrated hypervisor mechanism and does not by itself demonstrate that the per-node layer is built.
 
-## Current state: per-node only
+## Current state: neither layer is built
 
-The implemented hypervisor layer allocates CPU and RAM within one physical node. The pool is bounded by that node's hardware. Expanding a VM's memory means taking from the same node's free pool. Placing a VM on a different node requires stopping it, transferring the disk image, and restarting — a manual operation the Totebox Orchestration layer is intended to automate.
+The intended per-node layer would allocate CPU and RAM within one physical node. The pool would be bounded by that node's hardware; expanding a VM's memory would mean taking from the same node's free pool. Placing a VM on a different node today requires stopping it, transferring the disk image, and restarting by hand — a manual operation the Totebox Orchestration layer is intended to automate eventually.
 
-The `virtio_balloon` mechanism proven in `infrastructure/virt/vm-prove.sh` operates entirely within a single node. No network communication is involved. No reboot of host or guest is required for balloon operations — inflation, deflation, and cgroups v2 weight changes are all dynamic adjustments to a running system.
+The `virtio_balloon` mechanism the demo script exercises operates entirely within a single node and requires no network communication — a property that would carry over once the mechanism is integrated. No reboot of host or guest would be required for balloon operations: inflation, deflation, and cgroups v2 weight changes are all designed as dynamic adjustments to a running system.
 
 ## Component 1 — Virtio-mem lending over WireGuard (planned)
 
@@ -92,7 +92,7 @@ The per-node layer is the foundation. The distributed fabric is intended to buil
 
 | Step | State | Reserved directory |
 |---|---|---|
-| Per-node virtio_balloon + cgroups v2 | **Complete** — proven 2026-05-28 | `os-infrastructure/` |
+| Per-node virtio_balloon + cgroups v2 | Planned — not started; only the underlying QEMU mechanism has a manual demo | `os-infrastructure/` |
 | Ceremony deployment (`service-ppn-pairing` on GCP VM) | Pending | `service-ppn-pairing/` |
 | First real node join (`os-network-admin` on Laptop A) | Pending | `os-network-admin/` |
 | Genesis Protocol `os-infrastructure` rewrite | Planned | `os-infrastructure/`, `moonshot-hypervisor/` |

@@ -18,13 +18,13 @@ editor: editorial
 
 El **Tejido VM Distribuido PPN** es la extensión planificada de la capa de hipervisor PPN por nodo hacia un pool de recursos multinodo. Donde la capa de hipervisor actual gestiona CPU y RAM dentro de un único nodo físico, el tejido distribuido tiene como objetivo permitir que las VMs tomen prestado cómputo de otros nodos de la malla y colocar y migrar VMs a través de la flota sin intervención del operador en cada movimiento.
 
-Este tema describe la arquitectura planificada. La capa por nodo — `virtio_balloon`, pesos de cgroups v2 y la prueba `vm-prove.sh` — está implementada y verificada a partir del 2026-05-28. Los cuatro componentes distribuidos que se describen a continuación son hitos planificados; ninguno está construido todavía.
+Este tema describe la arquitectura planificada. Ni la capa por nodo ni los cuatro componentes distribuidos de abajo están construidos todavía. `virtio_balloon` y los pesos de cgroups v2 no tienen código en ningún lugar de `os-infrastructure` ni `service-vm-fleet` — un script de demostración real y aparte ejerce el mecanismo subyacente de balloon de QEMU manualmente vía el monitor QEMU, pero no es un mecanismo de hipervisor integrado y no demuestra por sí solo que la capa por nodo esté construida.
 
-## Estado actual: solo por nodo
+## Estado actual: ninguna capa está construida
 
-La capa de hipervisor implementada asigna CPU y RAM dentro de un único nodo físico. El pool está acotado por el hardware de ese nodo. Expandir la memoria de una VM significa tomar del pool libre del mismo nodo. Colocar una VM en un nodo diferente requiere detenerla, transferir la imagen de disco y reiniciarla — una operación manual que la capa de Orquestación de Totebox tiene como objetivo automatizar.
+La capa de hipervisor prevista asignaría CPU y RAM dentro de un único nodo físico. El pool estaría acotado por el hardware de ese nodo; expandir la memoria de una VM significaría tomar del pool libre del mismo nodo. Colocar una VM en un nodo diferente hoy requiere detenerla, transferir la imagen de disco a mano y reiniciarla — una operación manual que la capa de Orquestación de Totebox tiene como objetivo automatizar eventualmente.
 
-El mecanismo `virtio_balloon` probado en `infrastructure/virt/vm-prove.sh` opera completamente dentro de un único nodo. No se requiere comunicación de red. No se necesita reiniciar el anfitrión ni el invitado para las operaciones de balloon — la inflación, deflación y los cambios de peso de cgroups v2 son todos ajustes dinámicos a un sistema en ejecución.
+El mecanismo `virtio_balloon` que ejerce el script de demostración opera completamente dentro de un único nodo y no requiere comunicación de red — una propiedad que se mantendría una vez integrado el mecanismo. No se necesitaría reiniciar el anfitrión ni el invitado para las operaciones de balloon: la inflación, deflación y los cambios de peso de cgroups v2 están diseñados como ajustes dinámicos a un sistema en ejecución.
 
 ## Componente 1 — Préstamo virtio-mem sobre WireGuard (planificado)
 
@@ -93,7 +93,7 @@ La capa por nodo es la base. Se prevé que el tejido distribuido se construya so
 
 | Paso | Estado | Directorio reservado |
 |---|---|---|
-| virtio_balloon por nodo + cgroups v2 | **Completo** — probado 2026-05-28 | `os-infrastructure/` |
+| virtio_balloon por nodo + cgroups v2 | Planificado — sin comenzar; solo el mecanismo subyacente de QEMU tiene una demo manual | `os-infrastructure/` |
 | Despliegue de ceremonia (`service-ppn-pairing` en GCP VM) | Pendiente | `service-ppn-pairing/` |
 | Primera incorporación real de nodo (`os-network-admin` en Laptop A) | Pendiente | `os-network-admin/` |
 | Reescritura de `os-infrastructure` según el Protocolo Génesis | Planificado | `os-infrastructure/`, `moonshot-hypervisor/` |
