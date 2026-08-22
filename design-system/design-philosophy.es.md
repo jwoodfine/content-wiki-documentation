@@ -37,7 +37,7 @@ El sustrato lleva cinco elementos por inquilino, en una bóveda rastreada en Git
 - **`research/`** — justificación de decisiones de diseño legible por IA, justificaciones de accesibilidad, reglas de voz de marca, antipatrones.
 - **`exports/`** — cachés derivados (JSON de Variables de Figma, configuración de Tailwind, variables CSS, builds de Style Dictionary). Recalculables a partir de los cuatro directorios canónicos anteriores.
 
-El motor del sustrato (`app-privategit-design`) lee esta bóveda y la sirve como un showcase público, un paquete DTCG, una superficie de investigación legible por IA y un servidor de Model Context Protocol (MCP). Los agentes de IA consultan el endpoint MCP en tiempo de generación de código; las herramientas de diseño consultan `/tokens.json` para la sincronización con el editor; las personas leen el showcase.
+El motor del sustrato (`app-privategit-design`) lee esta bóveda y la sirve como un showcase público, un paquete DTCG, una superficie de investigación legible por IA y un servidor de Model Context Protocol (MCP). Los agentes de IA consultan el endpoint MCP en tiempo de generación de código; las herramientas de diseño consultan el paquete de tokens exportado para la sincronización con el editor; las personas leen el showcase.
 
 El sustrato responde con tres inversiones estructurales:
 
