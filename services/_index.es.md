@@ -12,7 +12,7 @@ index_type: thematic
 index_scope: services
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-06
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: _index.md
 ---
@@ -35,7 +35,7 @@ Servicios de límite por inquilino. Cada uno se ejecuta como un proceso separado
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: ring-1-boundary-ingest -->
 - [[service-fs]] — El servicio de sistema de archivos: libro WORM de solo anexado, raíz de almacenamiento por inquilino, la base en la que escribe cada otro servicio del Anillo 1 — arquitectura, durabilidad y la postura de cumplimiento SEC 17a-4(f)/eIDAS/SOC 2 que habilita por construcción.
 - [[service-email]] — Ingesta de correo electrónico: SMTP e IMAP, cargas útiles saneadas, Maildir de solo anexado en almacenamiento local en bloque.
-- [[service-people]] — Libro de identidad: registros de personas, asignaciones de roles y el modelo de datos Anchor-Claim-Socket que nunca sobreescribe el estado.
+- [[service-people]] — Libro de identidad: una superficie F2 de os-console que expone herramientas de anexado, búsqueda y escaneo de correo por expresión regular vía MCP, respaldada por un almacén que rechaza identidades en conflicto.
 - [[service-input]] — Ingesta de documentos en el límite del Anillo 1: detecta el formato, enruta el contenido a analizadores específicos por formato y lo entrega a service-fs para su escritura en el libro WORM.
 <!-- END AUTO-GENERATED -->
 
@@ -46,7 +46,7 @@ Servicios de procesamiento determinista. Cada uno lee del Anillo 1 y produce reg
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: ring-2-knowledge-and-processing -->
 - [[service-extraction]] — El controlador central de tráfico del Anillo 2: elimina el formato propietario, construye Paquetes de Entidades, asigna IDs de transacción, enruta a servicios deterministas o a service-slm.
 - [[service-content]] — El Motor de Gravedad: lee cargas útiles brutas de un Totebox, las ejecuta contra una taxonomía institucional, genera los documentos estructurados que publica una organización.
-- [[service-search]] — Búsqueda de texto completo sobre Tantivy: fragmentación por inquilino, recuperación en microsegundos, sin proceso de base de datos activo.
+- [[service-search]] — Búsqueda de texto completo sobre Tantivy: un servicio de índice invertido diseñado pero no construido — hoy solo existe una descripción, sin código fuente.
 - [[service-egress]] — Válvula de liberación física: los registros estructurados salen de la plataforma únicamente a través de este servicio.
 - [[archetypes-and-chart-of-accounts]] — La taxonomía institucional: once arquetipos y un Plan de Cuentas que clasifican al personal y los documentos por posición estructural y rol funcional.
 <!-- END AUTO-GENERATED -->
@@ -58,9 +58,9 @@ Un servicio abarca el Anillo 3. Lee del Anillo 2 y produce propuestas que un hum
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: ring-3-ai-gateway -->
 - [[service-slm]] — El Portero: enrutamiento de IA entre niveles de cómputo local, de ráfaga y externo; libro de auditoría en cada llamada; todas las claves API retenidas en este límite.
 - [[service-slm-yoyo-operational]] — Estado operativo de service-slm y la VM de ráfaga GPU Yo-Yo: configuración de Nivel A/B, cola de borradores de aprendizaje, techo de coste por apagado inactivo.
-- [[service-slm-totebox-sysadmin]] — Cómo service-slm se convierte en el asistente operativo para despliegues Totebox: diez familias de tareas operativas, pipeline de cuatro etapas desde la captura del corpus hasta los adaptadores LoRA por inquilino.
-- [[service-slm-graph-store-migration]] — El grafo de propiedades activo del DataGraph: reconstrucción nocturna en LadybugDB mediante extracción de entidades restringida por gramática a través del Doorman, condicionada a la aprobación humana antes de cualquier escritura.
-- [[yoyo-daily-enrichment-cycle]] — La ventana diaria de lote de la VM de ráfaga GPU Yo-Yo: enriquece el DataGraph y acumula pares de entrenamiento DPO bajo un horario fijo y un tope de costo estricto.
+- [[service-slm-totebox-sysadmin]] — Una dirección planificada para service-slm como asistente sysadmin de Totebox, construida sobre la canalización real y ya operativa de entrenamiento por aprendizaje — la taxonomía de tareas específica es propuesta, aún no registrada.
+- [[service-slm-graph-store-migration]] — El grafo de propiedades activo del DataGraph: reconstrucción nocturna en LadybugDB mediante extracción de entidades restringida por gramática a través del Doorman, escribiendo directamente sin paso de revisión propio.
+- [[yoyo-daily-enrichment-cycle]] — La ventana diaria de lote de la VM de ráfaga GPU Yo-Yo: dos fases, reconstrucción del DataGraph y (una vez habilitado por completo) entrenamiento de adaptador — el entrenamiento se ejecuta actualmente en modo solo-marcador.
 <!-- END AUTO-GENERATED -->
 
 ## Servicios especializados y de dominio
@@ -70,14 +70,14 @@ Servicios construidos para capacidades específicas de la plataforma.
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: specialist-and-domain-services -->
 - [[service-business-clustering]] — Convierte datos minoristas brutos en clústeres comerciales: esquema espacial padre-hijo, una entidad comercial por sitio.
 - [[service-places-filtering]] — Filtra la infraestructura cívica e institucional para retener solo las instalaciones de grado regional en las clasificaciones GIS.
-- [[service-wallet-settlement]] — Infraestructura de cartera y liquidación de pagos directos.
+- [[service-wallet-settlement]] — Cartera y liquidación de pagos directos: un diseño de libro contable por inquilino planificado, aún no construido.
 - [[message-courier]] — Motor de automatización web sin interfaz que conecta libros de identidad internos con portales web externos.
 - [[fs-anchor-emitter]] — Puntos de control firmados del libro WORM a cadencia horaria, anclados a Sigstore Rekor mensualmente para auditabilidad externa.
 - [[service-fs-data-lake]] — Data lake de archivos planos para el pipeline GIS: puntos geoespaciales brutos de fuentes abiertas, sin paso ETL.
 - [[template-ledger]] — Distribuye plantillas de correo electrónico aprobadas al entorno de correo del operador; elimina la desviación de versiones entre el diseño de plantillas y la ejecución.
 - [[editorial-pipeline-three-stages]] — Proceso de corrección en tres etapas ordenadas por costo: escaneo determinista de vocabulario prohibido, pasada mecánica con LanguageTool y una reescritura generativa enrutada a través de la capa de inferencia.
 - [[private-git-paid-customer-endpoint]] — El servidor de versiones binarias detrás de software.pointsav.com: verifica tokens de licencia Ed25519 y transmite binarios compilados, sin almacenar registros de pago ni claves de firma.
-- [[service-pointsav-link]] — El adaptador de conexión en caliente que conecta un nodo Sujeto os-* a una flota PointSav: no instalado de forma predeterminada, con un modo de fallo de separación limpia.
+- [[service-pointsav-link]] — Un concepto de diseño nombrado pero no construido para un adaptador de conexión a flota; no existe ningún paquete correspondiente en el monorepo hoy.
 - [[service-vm-fleet]] — El servicio de colocación y registro del pool de recursos VM de la PPN: algoritmo de colocación de dos pasadas y estado de nodos impulsado por heartbeats.
 - [[service-vm-tenant]] — El proxy de inquilino orientado al cliente del pool de recursos VM de la PPN: autenticación, aislamiento de espacio de nombres, aplicación de cuotas y una pista de auditoría inmutable.
 <!-- END AUTO-GENERATED -->
