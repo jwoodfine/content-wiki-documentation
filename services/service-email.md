@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "WORM ingest"
+title: "Email ingest"
 slug: service-email
 category: services
 type: concept
@@ -11,55 +11,40 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: service-email.es.md
-short_description: "service-email is the Totebox's email server — it ingests SMTP and IMAP traffic, sanitises payloads, and writes text to an append-only Maildir on local storage."
+short_description: "service-email pulls mail out of a Microsoft Exchange mailbox over EWS, writes the raw message to local storage, and deletes it from the source mailbox immediately after extraction — the cloud mailbox is a transit point, not a copy of record."
 cites: []
 references:
   - id: 1
     text: "Hardt, D. (Ed.). 'The OAuth 2.0 Authorization Framework.' IETF RFC 6749, 2012."
     url: "https://www.rfc-editor.org/rfc/rfc6749"
-  - id: 2
-    text: "NIST. 'Security Guidelines for Storage Infrastructure.' SP 800-209, 2020."
-    url: "https://doi.org/10.6028/NIST.SP.800-209"
 ---
 
-`service-email` is the [[totebox-os|Totebox]]'s email server. It listens for SMTP and IMAP traffic, sanitises every payload — stripping HTML rendering logic and tracking pixels — and writes the raw text into an append-only Maildir on local block storage via [[service-fs-architecture|`service-fs`]]. The service does not interpret content; that work happens upstream in `service-content`. This article covers the ingest pipeline, the Sovereign properties that distinguish it from a conventional email client, and its relationship with the Microsoft 365 integration path.
+`service-email` pulls mail out of a Microsoft Exchange mailbox and onto local storage. It authenticates with OAuth2 client-credentials, connects to Exchange Web Services (EWS) — the SOAP-based Exchange API, not the newer Microsoft Graph API — and, for each message it finds, extracts the raw MIME content, writes it as a local file, and issues a hard delete against the source mailbox. It does not interpret, classify, or route content; that happens downstream in `service-content` and `service-extraction`.
 
-## The ingest pipeline
+## The extraction cycle
 
-The service operates in six stages, each carrying a specific Sovereign property:
+For each folder it polls, the service:
 
-| Stage | Action | Sovereign property |
-|---|---|---|
-| Boot | The Rust binary scans the local audit store and recovers pending jobs | Self-healing — no work is lost across restarts |
-| Auth | OAuth2 token refresh via Microsoft Entra (client-credentials flow) | Immunity — no legacy username/password authentication |
-| Sync | IMAP mirror loop writes verified mail into Maildir using atomic filesystem operations | Resilience — atomic writes prevent partial records |
-| Clean | Hygiene agent enforces TTL rules on the cloud source while the Maildir copy remains permanent | Sovereignty — the vendor cloud cannot retroactively erase the operator's record |
-| Render | When the operator drafts a templated email, the engine renders the HTML payload and stages it for manual forwarding | Human-in-the-loop discipline |
-| Audit | The audit logger writes non-blocking JSONL entries that downstream services consume | Independent ingest by `service-people` and the Gravity Engine |
+1. Authenticates against Exchange using a client-credentials OAuth2 token, scoped to Exchange's own default scope rather than any Graph-specific permission.
+2. Lists message IDs in the folder over EWS SOAP calls.
+3. Fetches each message's raw MIME content, base64-decoded from the SOAP response, and writes it to a local file.
+4. Issues an EWS hard-delete request for that message against the source mailbox.
 
-## Microsoft 365 integration
+This is an extract-then-delete flow, not a soft retention policy — a message is removed from the source mailbox as soon as its content has been written locally, not after some elapsed time.
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** the real crate uses the Microsoft Graph API's predecessor, not Graph itself. `Cargo.toml` describes it as "EWS SOAP ingest from Microsoft Exchange," and `ingress-harvester/src/main.rs` posts to `outlook.office365.com/EWS/Exchange.asmx` — the specific Graph permission scopes below (`Mail.ReadWrite`, `Mail.Send`, `User.Read.All`) don't appear anywhere in the real source. **Flagged, not resolved.**
+## Why the cloud mailbox isn't the copy of record
 
-The OAuth2 setup uses a Confidential Client registration in Microsoft Entra [^1]. Three Graph permissions are required: `Mail.ReadWrite` (to sync into Maildir), `Mail.Send` (to stage templates), and `User.Read.All` (to verify sender identities). Admin consent is granted once so the service runs as a daemon without per-message human interaction.
-
-This approach confines the cloud-trust boundary to a single, well-defined point in the pipeline. Each polling cycle is a discrete, authenticated HTTP exchange — rather than a persistent IMAP connection — making the ingest boundary auditable and stateless. The [[machine-based-auth|machine-based authentication]] system governs the credentials used for this exchange.
-
-## The WORM discipline
-
-`service-email` writes payloads to the WORM Maildir — an append-only structure on the Totebox's local block storage governed by [[worm-ledger-design|the WORM ledger design]]. [^2] There is no delete operation. A payload written to the Maildir cannot be erased, even if the cloud source (the Microsoft 365 mailbox) is later modified, deleted, or the subscription lapses. The operator's email record is sovereign: it belongs to the archive, not the cloud provider. The [[fs-anchor-emitter|anchor emitter]] periodically creates signed checkpoints of the full ledger state.
+Because extraction and deletion happen together, the Exchange mailbox never accumulates a durable archive of its own — the local file written at extraction time is the one copy that persists. This confines what the cloud provider ever holds to messages awaiting extraction, not a full historical record.
 
 ## What service-email is not
 
-`service-email` is the ingest boundary, not the email client. It does not render HTML emails for the operator to read. It does not synthesise content. It does not classify or route messages. It hands the sanitised raw payload to `service-content` and `service-extraction` and surrenders execution. Downstream services handle everything from entity extraction to the F3 EMAIL surface the operator sees in [[os-console-platform|`os-console`]]. The [[three-ring-architecture|three-ring architecture]] positions `service-email` at Ring 1 — the trust perimeter where payloads first enter the platform.
+`service-email` is the ingest boundary, not the email client. It does not render HTML for an operator to read, does not synthesise content, and does not classify or route messages — it hands the raw local file to downstream services and stops. The [[three-ring-architecture|three-ring architecture]] positions `service-email` at Ring 1, the trust perimeter where payloads first enter the platform.
 
 ## See also
 
-- [[service-people]] — the identity ledger that receives sender records from service-email via service-extraction
-- [[service-content]] — the Gravity Engine that synthesises content from the WORM Maildir
+- [[service-egress]] — takes the locally-written mail forward for outbound transfer, using its own separate release mechanism
+- [[service-content]] — consumes the raw local files this service produces
 - [[app-console-input]] — the F12 Input Machine; companion ingest surface for non-email payloads
-- [[architecture-decisions|SYS-ADR-07]] — structured data never routes through AI (governs downstream handling of service-email output)
-- [[totebox-os]] — the Totebox that hosts service-email and its WORM storage
