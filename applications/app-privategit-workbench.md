@@ -9,7 +9,7 @@ quality: pre-build
 index_group: input-and-developer-surfaces
 status: active
 bcsc_class: no-disclosure-implication
-last_edited: 2026-05-29
+last_edited: 2026-08-22
 editor: project-editorial
 short_description: "Browser-based file editor in os-privategit presenting a three-column file tree, viewer, and editor for working across the cluster archive tree without a terminal."
 paired_with: app-privategit-workbench.es.md
@@ -33,15 +33,9 @@ for history and promotion.
 ## Architecture
 
 The workbench is a single Rust crate (`app-privategit-workbench`,
-AGPL-3.0-or-later — **Correction retracted, 2026-08-02**: an earlier pass in this
-session flagged this as wrong, based on this archive's local `LICENSE`/`Cargo.toml`
-files, which are stale relative to canonical (`origin/main`). The real, ratified
-per-directory license policy (root `LICENSE`, "MULTI-LICENSE NOTICE" v1.1, effective
-2026-05-24, propagating `factory-release-engineering/mapping/repo-license-map.yaml`)
-places every `app-privategit-*/` directory under **AGPL-3.0-or-later** — this
-article's original claim was correct. See the `systems/app-orchestration-command-
-branch-model.md` correction for the broader local-checkout-staleness finding this
-session made.) in the `pointsav-monorepo`. It has two components:
+AGPL-3.0-or-later, per the ratified per-directory license policy that places every
+`app-privategit-*/` directory under that license) in the `pointsav-monorepo`. It has
+two components:
 
 **Write-service (Rust/axum):** An HTTP server that handles file reads
 and writes. It binds to a loopback address and is never exposed
@@ -148,13 +142,15 @@ service file update causes silent write failures at the filesystem layer.
 
 ## Relationship to os-privategit
 
-**Correction (2026-08-02):** this relationship doesn't match real code. The real `os-privategit/src/main.rs` is a 31-line license-check placeholder with an empty `Cargo.toml` dependency list — it has no dependency on the workbench crate at all. Neither `app-privategit-design-system` nor `service-privategit` exist anywhere in the monorepo (the closest real name is `app-privategit-design`, no "-system" suffix). **Flagged, not resolved.**
-
-`app-privategit-workbench` is included in the [[os-privategit|`os-privategit`]] host
-operating system alongside `app-privategit-design-system` and
-`service-privategit`. It is the authoring surface for operators who
-use the privategit tier — a locally-hosted, network-isolated development
-environment for [[totebox-orchestration|Totebox Orchestration]] instances. Access to writable roots is governed by the [[machine-based-auth|machine-based authorization]] model.
+`app-privategit-workbench` ships on the [[os-privategit|`os-privategit`]] host image
+alongside its other `app-privategit-*` crates — `app-privategit-design`,
+`app-privategit-source`, `app-privategit-marketplace`, and `app-privategit-bim`
+among them. The host image's own entry point is a small, separate license-check
+gate that starts before any of these applications run; it has no dependency on the
+workbench or any other bundled crate. The workbench is the authoring surface for
+operators who use the privategit tier — a locally-hosted, network-isolated
+development environment for [[totebox-orchestration|Totebox Orchestration]]
+instances. Access to writable roots is governed by the [[machine-based-auth|machine-based authorization]] model.
 
 The crate is licensed under AGPL-3.0-or-later and intended
 for downstream deployment in customer-tier instances of `os-privategit`.

@@ -9,7 +9,7 @@ quality: complete
 index_group: input-and-developer-surfaces
 status: active
 bcsc_class: no-disclosure-implication
-last_edited: 2026-06-20
+last_edited: 2026-08-22
 editor: pointsav-engineering
 language_protocol: TRANSLATE-ES
 short_description: "Editor de archivos en navegador incluido en os-privategit, con interfaz de tres columnas — árbol, visor y editor — para trabajar en el árbol del clúster sin terminal."
@@ -151,9 +151,14 @@ provoca fallos de escritura silenciosos en la capa del sistema de archivos.
 
 ## Relación con os-privategit
 
-`app-privategit-workbench` se incluye en el sistema operativo host
-[[os-privategit|`os-privategit`]] junto a `app-privategit-design-system` y
-`service-privategit`. Es la superficie de creación para los operadores que
+`app-privategit-workbench` se distribuye en la imagen host de
+[[os-privategit|`os-privategit`]] junto a sus otros crates `app-privategit-*` —
+entre ellos `app-privategit-design`, `app-privategit-source`,
+`app-privategit-marketplace` y `app-privategit-bim`. El propio punto de entrada
+de la imagen host es una pequeña puerta de verificación de licencia, separada,
+que se ejecuta antes que cualquiera de estas aplicaciones; no depende de la
+estación de trabajo ni de ningún otro crate incluido. Es la superficie de
+creación para los operadores que
 utilizan el nivel privategit — un entorno de desarrollo alojado localmente y
 aislado en red para instancias de [[totebox-orchestration|Totebox Orchestration]]. El acceso a las
 raíces con permiso de escritura está gobernado por el modelo de
