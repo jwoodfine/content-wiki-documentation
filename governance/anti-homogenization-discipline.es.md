@@ -56,11 +56,16 @@ adaptador por inquilino entrena sobre el corpus del cliente
 dentro de su sustrato y aprende su voz: las palabras que usa,
 los ritmos de oración que prefiere, el registro por defecto.
 
-Al componer en tiempo de petición, la salida refleja ambos:
-las convenciones del género del protocolo y la voz del
-inquilino. Un README escrito por la plataforma dentro del sustrato
-del Cliente A suena como el Cliente A; el mismo README dentro
-del sustrato del Cliente B suena como el Cliente B.
+El mecanismo previsto: al componer en tiempo de petición, la
+salida reflejaría ambos — las convenciones del género del
+protocolo y la voz del inquilino. La composición en sí aún no
+está en producción; hoy devuelve un identificador compuesto
+simbólico en lugar de fusionar los pesos del adaptador, a la
+espera de una capacidad del entorno de ejecución que la
+plataforma no controla en su calendario. Un README escrito
+dentro del sustrato del Cliente A está diseñado para sonar como
+el Cliente A una vez que la composición esté disponible; el
+mismo README dentro del sustrato del Cliente B, como el Cliente B.
 
 ## Pruebas operativas
 

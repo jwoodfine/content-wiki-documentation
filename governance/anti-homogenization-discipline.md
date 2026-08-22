@@ -34,22 +34,17 @@ The same dynamic operates across organisations. A platform-hosted writing assist
 
 The platform's default editorial action is `flag`, not `rewrite`. When the assistant identifies a potential issue, it surfaces the issue and proposes an edit; it does not silently rewrite the user's text. The user's voice is the authority unless the user explicitly delegates a rewrite.
 
-This default applies across every editorial task-type:
-
-- `prose-edit` — flag banned vocabulary, register drift, citation gaps; do not rewrite.
-- `register-tighten` — propose tightenings; mark them clearly as proposals; let the user accept individually.
-- `frontmatter-normalize` — fill in missing fields; never silently overwrite a present-but-unconventional value.
-- `citation-insert` — propose `[citation-id]` references; surface the candidate citation source for verification.
+This default applies across every audit-logged editorial event type — `prose-edit`, `design-edit`, `graph-mutation`, `anchor-event`, and `verdict-issued`: the assistant flags banned vocabulary, register drift, or a proposed change and lets the contributor accept or reject it, rather than applying it silently.
 
 A user who explicitly requests "rewrite this in institutional register" gets a rewrite. The flag-don't-rewrite default does not block delegation; it requires the delegation to be explicit.
 
 ## Per-tenant adapters preserve voice
 
-The platform's adapter-composition algebra separates the per-tenant adapter from the protocol adapter. The per-tenant adapter trains on the customer's own corpus inside the customer's own [[totebox-os|substrate]]. It learns the customer's voice — the words they use, the sentence rhythms they favour, the register they default to.
+The platform's adapter-composition design separates the per-tenant adapter from the protocol adapter. The per-tenant adapter trains on the customer's own corpus inside the customer's own [[totebox-os|substrate]]. It learns the customer's voice — the words they use, the sentence rhythms they favour, the register they default to.
 
-When the protocol adapter (PROSE / COMMS / LEGAL / TRANSLATE) composes with the per-tenant adapter at request time, the output reflects both: the genre conventions of the protocol and the voice of the tenant. A README authored by the platform inside Customer A's substrate sounds like Customer A; the same README authored inside Customer B's substrate sounds like Customer B.
+The intended mechanism: when the protocol adapter (PROSE / COMMS / LEGAL / TRANSLATE) composes with the per-tenant adapter at request time, the output reflects both — the genre conventions of the protocol and the voice of the tenant. Composition itself is not live yet; today it returns a symbolic composed identifier rather than merging adapter weights, pending a runtime capability the platform depends on but does not control the timeline of. A README authored inside Customer A's substrate is designed to sound like Customer A once composition ships; the same README inside Customer B's substrate, like Customer B.
 
-This is the Writer Brand IQ pattern adapted to customer data ownership. Brand-voice adapters work; the platform establishes that they work without the customer's text leaving the customer's substrate.
+This is the Writer Brand IQ pattern adapted to customer data ownership — brand-voice adapters that work without the customer's text leaving the customer's substrate, once composition is operational.
 
 ## Forward-looking — federated voice preservation
 
@@ -59,7 +54,7 @@ A customer who does not contribute continues to benefit from base-model improvem
 
 ## What anti-homogenization is not
 
-It is not a refusal to suggest improvements. The discipline is the opposite of inertia — every editorial action produces a verdict-signed training tuple that improves the per-tenant adapter over time. The customer's voice is preserved, not frozen.
+It is not a refusal to suggest improvements. The discipline is the opposite of inertia — every editorial action is designed to produce a verdict-signed training tuple that improves the per-tenant adapter over time. That pipeline captures real activity today; the verdict-signing step itself — a human confirming an edit before it trains the adapter — has not processed a real verdict yet. The customer's voice is preserved, not frozen, once the loop closes end to end.
 
 It is not a rejection of standardisation. The platform's banned-vocabulary list, sentence-length budgets, and register parameters are standardised across all tenants because the absence of `leverage` and `seamless` is universally an improvement. Standardisation operates at the level of mechanical defects; voice operates at the level above that.
 
