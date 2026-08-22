@@ -33,9 +33,9 @@ declara `language_protocol: TOPIC-*` se resuelve a la pasarela `project-editoria
 destino wiki de documentación.
 
 **Convención de notificación de archivo** — el protocolo mediante el cual los mensajes de
-bandeja de salida llevan la intención de enrutamiento del borrador. Un borrador puesto en
-escena en `.agent/drafts-outbound/` genera un mensaje de bandeja de salida dirigido a la
-sesión pasarela apropiada.
+bandeja de salida llevan la intención de enrutamiento del borrador. Poner en escena un
+borrador genera un mensaje de bandeja de salida dirigido a la pasarela apropiada; la entrega
+es automática, sin paso de retransmisión manual.
 
 ## Por qué la selección explícita del protocolo
 
@@ -47,35 +47,24 @@ las salidas hacia la expectativa del modelo del género, en lugar del registro p
 autor.[^1] La selección explícita evita esto: el operador declara el registro previsto en el
 límite de la solicitud.
 
-## Las cuatro familias de género
+## Las tres familias de género
 
-Se definen cuatro familias de género, cada una con su propia lista de vocabulario prohibido,
-objetivos de ajuste de registro y reglas de análisis de la Etapa 1:
+Nueve protocolos se agrupan en tres familias de género, cada una con su propia lista de
+vocabulario prohibido y objetivos de ajuste de registro:
 
-- **PROSE** — editorial general: artículos, documentación técnica, TOPICs de arquitectura.
-  Apunta al registro institucional de artículo; prohíbe el vocabulario de marketing de productos
-  de IA y las frases de cobertura vagas.
-- **COMMS** — comunicaciones externas: cartas a inversores, comunicados de prensa, declaraciones
-  públicas. Restricciones adicionales de formalidad; la postura de divulgación continua aplica
-  donde corresponda.
-- **LEGAL** — contratos e instrumentos legales. Precisión primero; paráfrasis mínima; lista
-  específica de sinónimos no permitidos para evitar la deriva de significado no intencionada.
-- **TRANSLATE** — producción bilingüe: el paso `.es.md` para artículos TOPIC y GUIDE.
-  La política de señalar-sin-reescribir aplica estrictamente; el traductor humano es la
-  autoridad.
+- **PROSE** — editorial general: TOPICs de arquitectura, GUIDEs, memos, READMEs. Apunta al
+  registro institucional de artículo; prohíbe el vocabulario de marketing de productos de IA
+  y las frases de cobertura vagas.
+- **COMMS** — registro de chat, correo electrónico y comentarios de ticket. Restricciones
+  adicionales de formalidad; la postura de divulgación continua aplica donde corresponda.
+- **TRANSLATE** — el paso EN → ES para artículos TOPIC y GUIDE. La política de
+  señalar-sin-reescribir aplica estrictamente; el traductor humano es la autoridad.
 
-## Composición de la canalización de tres etapas
+## Mecanismo de la canalización
 
-`service-proofreader` compone tres etapas en cada llamada `/v1/proofread`:
-
-1. **Análisis de vocabulario prohibido** — basado en reglas; determinista; submilisegundo;
-   solo señala, nunca reescribe
-2. **Paso mecánico de LanguageTool 6.6** — ortografía, gramática y estilo; se ejecuta como
-   compañero Docker; hallazgos serializados a JSON para la Etapa 3
-3. **Paso generativo del Doorman** — reescritura completa de texto de ajuste de registro a
-   través del [[doorman-protocol|Doorman]] ([[service-slm]])
-
-Véase [[editorial-pipeline-three-stages]] para la especificación completa de la canalización.
+Véase [[editorial-pipeline-three-stages]] para el mecanismo verificado de la canalización — el
+operador envía texto con una selección de protocolo y recibe hallazgos estructurados, luego
+registra un veredicto que cierra el ciclo de aprendizaje.
 
 ## El valor predeterminado de señalar sin reescribir
 
@@ -85,11 +74,12 @@ aplicar-todo es opcional por solicitud, no predeterminada.
 
 ## El veredicto del operador cierra el ciclo de aprendizaje
 
-Después de revisar la reescritura de la Etapa 3, el operador registra una de tres
-disposiciones: `accepted`, `rejected` o `edited`. El veredicto alimenta el par de eventos del
-[[apprenticeship-substrate|corpus de aprendizaje]] — `draft-created` → `draft-refined` → `creative-edited`. El sustrato es
-tanto la herramienta editorial como la capa de recopilación de datos para el entrenamiento
-continuo del modelo; estas dos funciones son inseparables por diseño.
+Después de revisar los hallazgos devueltos, el operador registra un veredicto binario —
+aceptar o rechazar — contra la solicitud. El veredicto alimenta el
+[[apprenticeship-substrate|corpus de aprendizaje]]: una decisión editorial real, vinculada a
+su solicitud, se convierte en señal de entrenamiento para la siguiente iteración del modelo.
+El sustrato es tanto la herramienta editorial como la capa de recopilación de datos para el
+entrenamiento continuo del modelo; estas dos funciones son inseparables por diseño.
 
 ## Separación de inquilinos en el corpus
 
@@ -110,6 +100,6 @@ el límite.
 
 ## Véase también
 
-- [[editorial-pipeline-three-stages]] — la canalización de tres etapas en detalle completo
+- [[editorial-pipeline-three-stages]] — el mecanismo de la canalización en detalle completo
 - [[customer-tier-catalog-pattern]] — cómo se provisionan las instancias de despliegue para
   ejecutar la canalización

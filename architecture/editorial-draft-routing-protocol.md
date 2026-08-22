@@ -36,9 +36,8 @@ is the single source of truth for routing; no archive hard-codes routing logic f
 archive's artifacts.
 
 **Archive notification convention** — the protocol by which outbox messages carry draft
-routing intent. A draft staged to `.agent/drafts-outbound/` generates an outbox message
-addressed to the appropriate gateway session. The relay picks it up within 15 minutes; no
-manual relay step is required.
+routing intent. Staging a draft generates an outbox message addressed to the appropriate
+gateway; delivery is automatic, with no manual relay step required.
 
 The substrate differs from a content management system in two ways. It does not store content
 — content lives in git, in the receiving archive's tracked directories. It does not own
@@ -60,36 +59,23 @@ declares the intended register at the request boundary, and the pipeline applies
 rules from that declared position. The operator knows what register they are writing in; the
 substrate reflects that knowledge structurally.
 
-## The four genre families
+## The three genre families
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** the real `PROTOCOLS` constant defines only **three** genre families — `prose-*`, `comms-*`, `translate-en-es` (9 protocols total) — not four. No `LEGAL` family exists anywhere in the real code. **Flagged, not resolved.**
+Nine protocols group into three genre families, each with its own banned-vocabulary list and
+register-tightening targets:
 
-Four genre families are defined, each with its own banned-vocabulary list, register-tightening
-targets, and Stage-1 scan rules:
+- **PROSE** — general editorial: architecture TOPICs, GUIDEs, memos, READMEs. Targets
+  institutional-article register; bans AI-product marketing vocabulary and vague hedge phrases.
+- **COMMS** — chat, email, and ticket-comment register. Additional formality constraints;
+  continuous disclosure posture applies where applicable.
+- **TRANSLATE** — the EN → ES pass for TOPIC and GUIDE articles. Flag-don't-rewrite applies
+  strictly; the human translator is the authority.
 
-- **PROSE** — general editorial: articles, technical documentation, architecture TOPICs.
-  Targets institutional-article register; bans AI-product marketing vocabulary and vague hedge
-  phrases.
-- **COMMS** — external communications: investor letters, press releases, public statements.
-  Additional formality constraints; continuous disclosure posture applies where applicable.
-- **LEGAL** — contracts and legal instruments. Precision-first; minimal paraphrase; specific
-  disallowed-synonym list to prevent unintended meaning drift.
-- **TRANSLATE** — bilingual production: the `.es.md` pass for TOPIC and GUIDE articles.
-  Flag-don't-rewrite applies strictly; the human translator is the authority.
+## Pipeline mechanism
 
-## Three-stage pipeline composition
-
-`service-proofreader` composes three stages on every `/v1/proofread` call:
-
-1. **Banned-vocabulary scan** — rule-driven; deterministic; sub-millisecond; flags only,
-   never rewrites
-2. **LanguageTool 6.6 mechanical pass** — spelling, grammar, and style; runs as a Docker
-   companion; findings serialised to JSON for Stage 3
-3. **Doorman generative pass** — register-tightening whole-text rewrite via the [[doorman-protocol|Doorman]]
-   ([[service-slm]]); reads Stage-2 findings as inline JSON context; produces a complete rewrite
-
-See [[editorial-pipeline-three-stages]] for the full pipeline specification, including
-inline JSON flow, severity discriminants, and degradation paths.
+See [[editorial-pipeline-three-stages]] for the verified pipeline mechanism — the operator
+submits text with a protocol selection and receives back structured findings, then records a
+verdict that closes the apprenticeship loop.
 
 ## Flag-don't-rewrite default
 
@@ -100,13 +86,11 @@ refines, flags, and suggests — the operator retains the final text.
 
 ## Operator verdict closes the apprenticeship loop
 
-After reviewing the Stage-3 rewrite, the operator records one of three dispositions:
-`accepted`, `rejected`, or `edited` (with the final text of their choice). The verdict feeds
-the [[apprenticeship-substrate|apprenticeship corpus]] event-pair — `draft-created` → `draft-refined` → `creative-edited`
-— per the reverse-funnel editorial pattern. Stage-1 DPO pairs derive directly from the
-`(input, chosen-rewrite, operator-disposition)` tuple. The substrate is both the editorial
-tool and the data-collection layer for continued model training; these two functions are
-inseparable by design.
+After reviewing the returned findings, the operator records a binary verdict — accept or
+reject — against the request. The verdict feeds the [[apprenticeship-substrate|apprenticeship corpus]]:
+a real editorial decision, tied to its request, becomes training signal for the next model
+iteration. The substrate is both the editorial tool and the data-collection layer for
+continued model training; these two functions are inseparable by design.
 
 ## Tenant separation in the corpus
 
@@ -126,6 +110,6 @@ property of the directory layout.
 
 ## See also
 
-- [[editorial-pipeline-three-stages]] — the three-stage pipeline in full detail
+- [[editorial-pipeline-three-stages]] — the pipeline mechanism in full detail
 - [[customer-tier-catalog-pattern]] — how deployment instances are provisioned to run
   the pipeline
