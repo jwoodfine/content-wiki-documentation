@@ -33,9 +33,9 @@ The structural commitments that define what a PointSav deployment is and is not.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: sovereignty-and-infrastructure -->
 - [[source-of-truth-inversion]] — Designates one layer as canonical (signed, committed), a second as a deterministically rebuilt view, and a third as session-ephemeral; eliminates entire classes of sync and data-loss bugs.
-- [[pairing-as-permission]] — A cryptographic pairing between two nodes is the permission; the absence of a pairing makes the connection structurally impossible — not access-denied, but no pathway.
+- [[pairing-as-permission]] — The Object Capability access-control principle — a cryptographic pairing is the permission, its absence means no pathway — as embodied in the platform's machine-based node admission.
 - [[zero-container-runtime]] — Every deployment runs as a Linux binary under systemd on a plain VM or bare-metal host; no container runtime, no container orchestrator, no managed-runtime platform.
-- [[zero-execution-routing]] — Presentation layers adhere to a zero-execution mandate: bilingual routing via structural determinism and interactive elements via native CSS state machines, eliminating client-side JavaScript for core DOM manipulation.
+- [[zero-execution-routing]] — The platform's public homepage templates use a native-CSS checkbox pattern for language toggling and interactive elements, alongside a small amount of client-side JavaScript for page-integrity display and analytics.
 - [[customer-first-ordering]] — A software vendor building something a customer will install should build it in the same order the customer will install it, on the same substrate the customer will use.
 - [[customer-hostability]] — The architectural commitment that every artefact runs on the customer's own hardware, against the customer's own keys, with the customer's own audit ledger.
 <!-- END AUTO-GENERATED -->
@@ -56,8 +56,8 @@ The canonical configurations in which the substrate is shipped and the disciplin
 Patterns that govern how multiple sessions, multiple engines, and multiple humans collaborate without corrupting the canonical record.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: collaboration-and-editorial-workflow -->
-- [[collab-via-passthrough-relay]] — The passthrough relay pattern holds no document state on the server and forwards CRDT updates directly between clients, keeping the canonical git tree as the sole authoritative record at every point in time.
-- [[model-tier-discipline]] — Routing work to the appropriate AI model tier — deep-think, implementation, or mechanical — to match model capability to work shape and control inference cost.
+- [[collab-via-passthrough-relay]] — A real-time collaborative editing design that held no document state on the server, forwarding CRDT updates directly between clients — implemented in the wiki engine, then removed.
+- [[model-tier-discipline]] — The Doorman routes every inference request to one of three compute tiers — local, burst GPU, or external API — based on a complexity hint and live budget state, not a caller's direct choice.
 - [[multi-engine-session-coordination]] — How multiple AI engines coordinate on the same workspace without racing on the `.git/index` or each other's session state.
 - [[mailbox-atomicity]] — The atomic mailbox primitive that keeps inbox / outbox handoffs across sessions consistent under concurrent writes.
 <!-- END AUTO-GENERATED -->
@@ -70,7 +70,7 @@ Patterns that recur in the operator-facing chrome — the wiki, the location-int
 - [[knowledge-wiki-leapfrog-architecture]] — The wiki engine design: Wikipedia-shaped interface elements over flat Markdown git files, with citation verification, research trail provenance, and AI-integrated editing as the differentiation layer.
 - [[location-intelligence-ux]] — The Conclusion-First design philosophy: ranked tier conclusions rather than individual data points, so users see the most defensible commercial nodes at national zoom before drilling into individual operators.
 - [[wikipedia-leapfrog-design]] — What the wiki engine inherits from Wikipedia, what it adds beyond it, and what the five-percent leapfrog headroom means.
-- [[federation-via-content-mounts]] — Combines curated editorial articles with declarative mounts from domain-specific repositories in a single wiki instance, extending source-of-truth inversion from one repository to many; planned for Phase 6.
+- [[federation-via-content-mounts]] — The wiki engine renders curated articles committed directly to its repository alongside content mounted from separate local directories, sharing one URL surface and search index.
 <!-- END AUTO-GENERATED -->
 
 ## See also
