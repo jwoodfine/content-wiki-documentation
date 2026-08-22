@@ -7,12 +7,12 @@ type: concept
 content_type: topic
 quality: complete
 index_group: domain-applications
-short_description: "BIM y superficies de bienes raíces describe cómo PointSav trata el Modelado de Información de Construcción como un dominio operativo de primera clase, con herramientas de sistema de diseño dedicadas, disciplina de registro ISO 19650 y patrones de archivo Totebox."
+short_description: "Cómo PointSav trata el Modelado de Información de Construcción como un dominio operativo distinto — un sistema de diseño de nivel cliente separado, una ubicación real en el Plan de Cuentas y superficies de consola específicas de BIM aún en fase de investigación."
 status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-07-09
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: bim-and-real-property-surfaces.md
 references:
@@ -24,7 +24,7 @@ references:
     url: "https://www.buildingsmart.org/standards/bsi-standards/industry-foundation-classes/"
 ---
 
-BIM y superficies de bienes raíces describe cómo la plataforma PointSav trata el Modelado de Información de Construcción (BIM) como un dominio operativo de primera clase en los despliegues de clientes del sector inmobiliario. La plataforma proporciona herramientas de sistema de diseño dedicadas, convenciones de registro ISO 19650[^1] y patrones de archivo [[totebox-os|Totebox]] para datos inmobiliarios. Los componentes, tokens y primitivas geoespaciales de BIM residen en un sistema de diseño de nivel cliente separado (`woodfine-bim-library`), distinto del vendor `pointsav-design-system` — este artículo resume los puntos de integración; el contenido detallado de BIM está en `woodfine-bim-library`. Al finalizar este artículo, el lector comprenderá la separación de los dos sistemas de diseño, la disciplina de sufijos ISO 19650 y la ubicación de los colaboradores BIM en el [[archetypes-and-chart-of-accounts|Plan de Cuentas]].
+BIM y superficies de bienes raíces describe cómo la plataforma PointSav trata el Modelado de Información de Construcción (BIM) como un dominio operativo distinto en los despliegues de clientes del sector inmobiliario. Los componentes, tokens y primitivas geoespaciales de BIM residen en un sistema de diseño de nivel cliente separado (`woodfine-bim-library`), distinto del vendor `pointsav-design-system` — este artículo resume los puntos de integración; el contenido detallado de BIM está en `woodfine-bim-library`. Al finalizar este artículo, el lector comprenderá la separación de los dos sistemas de diseño, la ubicación real de los colaboradores BIM en el [[archetypes-and-chart-of-accounts|Plan de Cuentas]], y el estado actual (fase de investigación) de las superficies de consola específicas de BIM.
 
 ## Dos sistemas de diseño, deliberadamente separados
 
@@ -32,58 +32,53 @@ La aclaración estructural más importante: PointSav opera dos sistemas de dise�
 
 | Sistema de diseño | Repositorio | Audiencia | Dominio |
 |---|---|---|---|
-| `pointsav-design-system` | `github.com/pointsav` (vendor) | Colaboradores de PointSav y operadores de flota | Sustrato de UI y UX para [[console-os|os-console]], [[os-workplace]] y toda la familia de SO vendor |
+| `pointsav-design-system` | `github.com/pointsav` (vendor) | Colaboradores de PointSav y operadores de flota | Sustrato de UI y UX para [[os-console]], [[os-workplace]] y toda la familia de SO vendor |
 | `woodfine-bim-library` | `github.com/woodfine` (cliente) | Arquitectos, ingenieros, operadores inmobiliarios | Tokens BIM, componentes IFC[^2], primitivas visuales geoespaciales, sistema de diseño inmobiliario |
 
 Los dos sistemas comparten metodología de autoría — un esquema común de metadatos estructurados, [[six-tier-sovereignty-matrix|estructura de soberanía de seis niveles]], nomenclatura estricta en minúsculas con guiones — pero no comparten contenido. La separación es estructural: BIM concierne a los bienes raíces; el sistema de diseño del vendor concierne a las superficies del sistema operativo. El contenido o los tokens específicos de los flujos de trabajo BIM pertenecen a `woodfine-bim-library`, nunca a `pointsav-design-system`.
 
 El despliegue público previsto para `woodfine-bim-library` es `bim.woodfinegroup.com`. Las especificaciones completas de componentes BIM, definiciones de tokens y primitivas geoespaciales se mantienen allí.
 
-## Disciplina de sufijos de registro ISO 19650
+## Sufijos de nombre de archivo por estado de documento
 
-La gestión de documentos BIM opera bajo ISO 19650[^1], que define códigos explícitos de estado de documento para cada artefacto. El despliegue de PointSav adopta estos códigos como convenciones de sufijo de nombre de archivo para que las herramientas de auditoría puedan leer el estado del documento directamente del nombre del archivo.
-
-| Sufijo | Estado ISO 19650 | Significado |
-|---|---|---|
-| `_JW` | S0 | Trabajo en curso — borrador, aún no compartido |
-| `_FIN` | S4 | Final, compartido para aprobación o coordinación |
-| `_PUB` | A0 | Publicado y aprobado para uso |
-| `_EXE` | CR | Ejecutado o firmado — estado de registro o como construido |
-| `_MCH` / `_DAT` | (coincide con el padre) | Versión legible por máquina del documento padre |
-
-Las herramientas de auditoría leen el sufijo y enrutan en consecuencia. Un archivo `_PUB` está firmado y se trata como inmutable; un archivo `_JW` está en vuelo y no lleva estado verificado. Un archivo `_EXE` ha pasado la [[app-console-input|confirmación del operador F12]] e ingresa al archivo [[totebox-os|Totebox]] como un registro sellado bajo la [[worm-ledger-design|disciplina del libro mayor WORM]].
-
-La disciplina de sufijos se aplica a cada artefacto BIM que ingresa al [[service-content|Motor de Gravedad]] — ya sea un dibujo, un modelo de coordinación, un permiso o un registro de arrendamiento. Esto hace que la postura de mantenimiento de registros sea coherente con la disciplina más amplia del [[worm-ledger-design|libro mayor WORM]] en toda la plataforma.
+Los documentos fuente de bienes raíces en el corpus de trabajo de la plataforma llevan sufijos
+de nombre de archivo como `_FIN` (final, compartido para aprobación o coordinación) y
+`_JW`/`_EXE` (estados de borrador y ejecutado/firmado), una convención informal anterior a
+cualquier herramienta de la plataforma. Formalizar esto como un sistema de estado legible por
+máquina, mapeado a ISO 19650[^1] — con `service-bim` inspeccionando el sufijo y enrutando el
+documento automáticamente — es una intención de diseño para la canalización de ingesta BIM, no
+una capacidad construida hoy: `service-bim` existe solo como notas de investigación y diseño,
+sin código de ingesta, validación o enrutamiento de auditoría entregado.
 
 ## Colaboradores BIM en el Plan de Cuentas
 
-En el [[archetypes-and-chart-of-accounts|Plan de Cuentas]] institucional, los colaboradores del dominio BIM ocupan un conector estructural específico:
-
-| Perfil | Dominio | Subdominio | Arquetipo ancla |
-|---|---|---|---|
-| Soporte de TI | Colaboradores | BIM | El Ingeniero |
-
-Esta ubicación no es estética. Determina cómo [[service-people]] conecta a los colaboradores BIM cuando su producto de trabajo ingresa a [[service-content]]. Un modelador BIM, un coordinador BIM y un ingeniero estructural ocupan el mismo conector de arquetipo Ingeniero bajo Soporte de TI → Colaboradores → BIM, lo que significa que la plataforma aplica la misma clave de evaluación (`logic_efficiency`) y la misma lógica de enrutamiento de tareas a su producción.
-
-Los colaboradores BIM son estructuralmente adyacentes a los trabajadores de DevOps, Redes, Bases de datos, Backend, GIS e IoT — todos posiciones de arquetipo Ingeniero bajo Soporte de TI. Esta adyacencia significa que el trabajo BIM hereda el mismo tratamiento computacional que otras disciplinas de datos y lógica.
+El [[archetypes-and-chart-of-accounts|Plan de Cuentas]] institucional tiene una entrada real
+para el trabajo BIM: categoría **Soporte de TI**, tipo **BIM** (referencia `6010`), asociada
+con palabras clave que incluyen `bim`, `building information modeling`, `digital twin`,
+`revit` e `ifc`. Los colaboradores BIM están en la misma categoría que otros roles de
+ejecución técnica, no bajo Cumplimiento o Bienes Raíces, donde aplican categorías distintas.
 
 ## Superficies de sistema operativo adyacentes a BIM
 
-Tres superficies de [[console-os|os-console]] están previstas para el trabajo de dominio BIM. Las tres son aspiracionales y llevan el lenguaje prospectivo apropiado.
-
-| Superficie prevista | Función |
-|---|---|
-| `app-console-bim` | Visualización y revisión BIM de alta fidelidad; previsto para leer archivos IFC mediante una biblioteca Rust nativa para IFC; renderiza geometría B-rep mediante un kernel de geometría Rust |
-| Variante GIS de `app-console-bim` | Superposición geoespacial y análisis mediante un conjunto de herramientas de caja blanca nativo de Rust; previsto para reemplazar las herramientas geoespaciales C++ heredadas |
-| Consola de mapas de `app-console-bim` | Visualización espacial con un diseño de Consola basado en mapas |
-
-La [[app-console-input|puerta de entrada F12]] gestiona la ingesta de documentos BIM — un operador arrastra un archivo IFC o un plano a F12, selecciona el destino en el Plan de Cuentas, confirma las entidades extraídas y el archivo ingresa al archivo Totebox con un sufijo ISO 19650 y un registro de auditoría con marca de tiempo.
+El trabajo de dominio BIM en [[os-console]] está en fase de investigación — existe un
+documento de diseño (`app-console-bim`), no se ha entregado código. La forma prevista, según
+esa investigación: una única terminal de enrutamiento y coordinación (`app-console-bim`)
+distinta de una superficie de autoría (`app-workplace-bim`) — la separación coincide con la
+distinción consola/estación de trabajo que ya existe en la plataforma, ver-y-vincular frente a
+crear-y-editar. `app-console-bim` consultaría elementos, vincularía órdenes de trabajo y
+crearía incidencias; no editaría geometría BIM. Para carteras que abarcan múltiples
+propiedades, una capa de agregación sin estado (`app-orchestration-bim`) está prevista para
+federar consultas entre archivos de propiedades en lugar de almacenar datos ella misma. La
+dirección técnica actual del documento de investigación favorece la renderización IFC basada
+en navegador (evaluando `xeokit-sdk` y `@thatopen/components`) sobre un kernel de geometría
+Rust nativo — nada de esto está comprometido ni construido, y la dirección puede cambiar antes
+de que comience la implementación.
 
 ## Véase también
 
 - `woodfine-bim-library` — el sistema de diseño BIM de nivel cliente (mantenido por separado en `github.com/woodfine`)
 - [[archetypes-and-chart-of-accounts]] — la taxonomía del Plan de Cuentas y los once arquetipos
-- [[totebox-os]] — el sistema operativo Totebox que aloja los archivos de bienes raíces
-- [[app-console-input]] — la puerta de entrada F12 a través de la cual los documentos BIM ingresan a la plataforma
-- [[service-content]] — el Motor de Gravedad que clasifica y enruta los documentos BIM
-- [[worm-ledger-design]] — el sustrato del libro mayor WORM que sella los registros inmobiliarios
+- [[totebox-os]] — el sistema operativo Totebox en el que corren los archivos de bienes raíces
+- [[app-console-input]] — la puerta de entrada general de ingesta de documentos de la plataforma
+- [[service-content]] — el servicio de clasificación y taxonomía de documentos de la plataforma
+- [[worm-ledger-design]] — el diseño del libro mayor de registro inmutable de la plataforma
