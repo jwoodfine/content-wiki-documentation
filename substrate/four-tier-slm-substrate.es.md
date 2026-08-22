@@ -40,7 +40,7 @@ El entrenamiento de [[adapter-composition|adaptadores LoRA]] por inquilino está
 
 ## Nivel 2 — Modelo de 32B alojado por el proveedor (Yo-Yo)
 
-En el Nivel 2 el proveedor opera un modelo de 32B en una [[yoyo-compute-substrate|instancia de GPU bajo demanda]] con disciplina de apagado inactivo. Desde la perspectiva del cliente, es un servicio de Capa C accesible mediante el Doorman local. El modelo es OLMo 3.1 32B Think; se aplica en tiempo de ejecución una [[adapter-composition|composición de adaptadores]] por solicitud, incluyendo el adaptador constitucional y adaptadores específicos por inquilino.
+En el Nivel 2 el proveedor opera un modelo de 32B en una [[yoyo-compute-substrate|instancia de GPU bajo demanda]] con disciplina de apagado inactivo. Desde la perspectiva del cliente, es un servicio de Capa B accesible mediante el Doorman local. El modelo es OLMo 3.1 32B Think; se aplica en tiempo de ejecución una [[adapter-composition|composición de adaptadores]] por solicitud, incluyendo el adaptador constitucional y adaptadores específicos por inquilino.
 
 ## Nivel 3 — Servicio especialista PointSav-LLM (planificado)
 
