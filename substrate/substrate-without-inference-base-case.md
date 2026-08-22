@@ -28,7 +28,7 @@ When all three compute tiers (local specialist, [[yoyo-compute-substrate|GPU bur
 
 The WORM file ledger ([[service-fs-architecture|service-fs]]) is operational: ingest, query, and checkpoint all work. The knowledge runtime ([[service-content|`service-content`]]) is operational: graph queries, vector search, and temporal queries work, with mutations from non-AI paths only. The input service, extraction service (at the deterministic parsing layer), egress service, people service, and email service are all operational. The [[compounding-doorman|Doorman]] is bound and listening, returning 503 to inference endpoints while keeping health and contract endpoints always responsive. The operator [[tui-corpus-producer|TUI]] operates in deterministic-only mode.
 
-When marketplace and settlement services are enabled, those are also operational in the base case. Transactions may proceed without AI-assisted grounding; audit and consent records are still enforced.
+The [[reverse-flow-substrate|marketplace and settlement services]] are planned, not yet built; when they exist, the design intends the same discipline to apply — transactions proceed without AI-assisted grounding, with audit and consent records still enforced.
 
 ## What the base case does not require
 
@@ -36,21 +36,19 @@ It is not required that all three tiers be simultaneously unavailable to activat
 
 ## TUI in deterministic-only mode
 
-When the operator TUI detects that no inference tier is available, it enters deterministic-only mode. The status bar shows that AI is disabled. Natural-language chat input is unavailable. Slash commands that depend on AI — verdict capture, brief submission, adapter listing — gracefully return no-ops or unavailability notices.
-
-Deterministic slash commands remain fully operational: status and health queries, audit ledger queries, knowledge graph queries, keyword search, export, and the ownership transfer preparation flow.
+A dedicated deterministic-only mode for the operator TUI — a status-bar indicator that AI is disabled, graceful no-op behavior for AI-dependent slash commands — is the design's intent when no inference tier is available, but is not yet built as a distinct mode. What is confirmed real today is that AI-independent operations (status and health queries, audit ledger queries, knowledge graph queries, keyword search) do not require an inference tier to function; the base case's requirement is that they keep working, not that the TUI presents a separate labeled mode for it.
 
 ## Transfer of ownership
 
-The "freely transferable" property is more than a philosophical statement. It is implemented through a structured transfer flow. The operator runs a transfer preparation command to produce a self-contained, cryptographically signed bundle: the per-tenant graph snapshot, the [[worm-ledger-architecture|audit ledger]], the trained [[adapter-composition|adapter weights]], the [[seed-taxonomy-as-smb-bootstrap|seed taxonomy]], the pack manifest, and the tenant configuration. The bundle is signed by the operator's identity key and the integrity is anchored to a public transparency log. [^1]
+The "freely transferable" property is the design's intended commercial outcome, not yet a shipped mechanism. A single export command — producing a self-contained, cryptographically signed bundle of the per-tenant graph snapshot, the [[worm-ledger-architecture|audit ledger]], the trained [[adapter-composition|adapter weights]], the [[seed-taxonomy-as-smb-bootstrap|seed taxonomy]], the pack manifest, and the tenant configuration — is planned and not yet built (see [[customer-owned-graph-ip]]). The bundle is intended to be signed by the operator's identity key with integrity anchored to a public transparency log. [^1]
 
-The receiving party imports the bundle into a fresh Totebox. Deterministic operations work immediately on the imported state. AI-assisted operations become available once the new operator configures the compute tier.
+Once built, the receiving party is intended to import the bundle into a fresh Totebox, with deterministic operations working immediately on the imported state and AI-assisted operations available once the new operator configures a compute tier.
 
 ## Why this matters commercially
 
-The freely transferable property distinguishes a sovereign asset from a service subscription. When a business is sold, the new owner imports the Totebox bundle and has the complete operational history available immediately — the knowledge graph, the audit ledger, and the workflow vocabulary — without re-subscribing to any platform or engaging migration consultants.
+The freely transferable property is intended to distinguish a sovereign asset from a service subscription. Once the export path is built, the design intends that when a business is sold, the new owner imports the Totebox bundle and has the complete operational history available immediately — the knowledge graph, the audit ledger, and the workflow vocabulary — without re-subscribing to any platform or engaging migration consultants.
 
-When a business dissolves or splits, each party receives their share of the graph as a portable, cryptographically-signed artefact. When the acquiring party in a corporate transaction imports the bundle, patient or client records, audit history, and operational patterns are available immediately with verifiable provenance.
+The same intended mechanism covers a business dissolving or splitting (each party receiving their share of the graph as a portable, signed artefact) and a corporate acquisition (records, audit history, and operational patterns available immediately with verifiable provenance to the acquiring party).
 
 If the platform itself ceases operations, the customer continues operating their Totebox indefinitely. The deterministic substrate works without the platform. The customer loses the ability to receive new vertical packs and to transact on the platform's marketplace, but their existing operations do not pause.
 
