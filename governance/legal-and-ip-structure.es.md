@@ -12,7 +12,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: legal-and-ip-structure.md
 cites:
@@ -77,17 +77,20 @@ La práctica regulatoria canadiense distingue entre roles con autoridad fiduciar
 
 Las decisiones estratégicas y fiduciarias se escalan fuera del nivel de contribuyentes rutinario; el administrador del sistema es la única identidad con acceso de escritura entre organizaciones a los repositorios canónicos.
 
-## Estrategia de licencias (prevista)
+## Estrategia de licencias
 
-La estrategia de licencias prevista sigue un modelo de núcleo abierto. Todos los objetivos de licencias son previstos y están sujetos a la [[bcsc-disclosure-posture|postura de divulgación continua de la BCSC]] [ni-51-102] [osc-sn-51-721]:
+Las licencias siguen un modelo de núcleo abierto, ratificado y asignado a nivel de directorio (`LICENSE` en la raíz, "MULTI-LICENSE NOTICE" v1.2, vigente desde 2026-08-02):
 
-| Componente | Licencia planificada |
-|---|---|
-| `os-totebox`, `os-console`, `os-workplace` (núcleo abierto) | Apache 2.0 + Addendum Soberano (previsto) |
-| `os-orchestration` (agregador comercial) | Propietario (previsto) |
-| `service-pointsav-link` (el adaptador [[diode-standard|Diodo]]) | Propietario, vendido como complemento empresarial (previsto) |
+| Nivel | Cobertura | Representa |
+|---|---|---|
+| AGPL-3.0-or-later | El valor predeterminado de la plataforma — `os-console`, `os-workplace`, todos los `service-*`/`system-*`/`tool-*` (excepto `tool-wallet`), la mayoría de los directorios `moonshot-*`, `app-console-*`, `app-workplace-*` y las herramientas del espacio de trabajo | El núcleo abierto |
+| FSL-1.1-ALv2 | `os-totebox`, `os-infrastructure`, `os-privategit`, `os-mediakit`, `os-network-admin`, sus extensiones `app-*`, y 5 excepciones nombradas de `moonshot-*` | Un nivel de código disponible que se convierte en Apache-2.0 en una fecha futura |
+| Apache-2.0 | Solo `tool-wallet` | Una excepción deliberada — sin papel en los ingresos, siembra el estante de binarios de código abierto |
+| PointSav-ARR (propietario) | `os-orchestration` (el objetivo de la renombración de `os-interface`) y `app-orchestration-*` | El foso comercial — no distribuido bajo ninguno de los niveles abiertos |
 
-El Addendum Soberano es la extensión de licencia prevista para garantizar que la instancia en ejecución — no solo el código fuente — permanezca como propiedad del usuario y sea libremente transferible entre sustratos de hardware. El patrón sigue el modelo de núcleo abierto: el núcleo abierto atrae la adopción; los servicios propietarios producen ingresos.
+`os-totebox` tiene licencia FSL; `os-console` y `os-workplace` son AGPL — los tres componentes llevan dos licencias distintas, no un solo nivel uniforme de "núcleo abierto". No existe ninguna extensión de licencia "Addendum Soberano" en el texto real de la licencia — la propiedad de portabilidad de la instancia en ejecución descrita a continuación es un objetivo de diseño, no una concesión de licencia distinta. `service-pointsav-link`, el adaptador [[diode-standard|Diodo]], no existe como crate en el código base, por lo que no lleva asignación de licencia.
+
+El patrón sigue el modelo de núcleo abierto: los niveles AGPL/FSL atraen la adopción; el nivel PointSav-ARR produce ingresos.
 
 ## Estrategia de patentes (prevista)
 

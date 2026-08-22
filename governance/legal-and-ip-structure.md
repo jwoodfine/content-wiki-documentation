@@ -12,7 +12,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: legal-and-ip-structure.es.md
 cites:
@@ -77,19 +77,20 @@ Canadian regulatory practice distinguishes between roles with fiduciary authorit
 
 Strategic and fiduciary decisions are escalated outside the routine contributor tier; the system administrator is the only identity with cross-org write access to canonical repositories.
 
-## License strategy (intended)
+## License strategy
 
-The intended licensing pattern follows an open-core model. All licensing targets are planned and subject to the [[bcsc-disclosure-posture|BCSC continuous-disclosure posture]] [ni-51-102] [osc-sn-51-721]:
+Licensing follows an open-core model, ratified and assigned at the directory level (root `LICENSE`, "MULTI-LICENSE NOTICE" v1.2, effective 2026-08-02):
 
-**Correction (2026-08-02):** this table is now stale, not fabricated — it predates (last-edited 2026-05-15) the real licensing policy that was ratified and propagated repo-wide on 2026-05-24 (root `LICENSE`, "MULTI-LICENSE NOTICE" v1.1). The "planned" outcome landed differently than predicted: `os-totebox`, `os-console`, and `os-workplace` are already **AGPL-3.0-or-later**, not "Apache 2.0 + Sovereign Addendum" — there is no separate "Sovereign Addendum" concept anywhere in the real license text. `os-orchestration`'s real license (per its own `Cargo.toml` on canonical) is `FSL-1.1-ALv2`, inherited from its `os-interface` rename-predecessor, not a standalone "Proprietary" tier. `service-pointsav-link` is confirmed absent from the codebase — checked on canonical too, not just this archive's local checkout. **Flagged, not resolved** — needs updating to the real, already-ratified per-directory scheme rather than a still-future "planned" framing.
+| Tier | Coverage | Represents |
+|---|---|---|
+| AGPL-3.0-or-later | The platform default — `os-console`, `os-workplace`, all `service-*`/`system-*`/`tool-*` (except `tool-wallet`), most `moonshot-*` directories, `app-console-*`, `app-workplace-*`, and workspace tooling | The open core |
+| FSL-1.1-ALv2 | `os-totebox`, `os-infrastructure`, `os-privategit`, `os-mediakit`, `os-network-admin`, their `app-*` extensions, and 5 named `moonshot-*` overrides | A source-available tier that converts to Apache-2.0 on a future date |
+| Apache-2.0 | `tool-wallet` only | A deliberate override — no revenue role, seeds the open-source binary shelf |
+| PointSav-ARR (proprietary) | `os-orchestration` (the `os-interface` rename target) and `app-orchestration-*` | The commercial moat — not distributed under either open tier |
 
-| Component | Planned licence |
-|---|---|
-| `os-totebox`, `os-console`, `os-workplace` (open core) | Apache 2.0 + Sovereign Addendum (planned) |
-| `os-orchestration` (commercial aggregator) | Proprietary (planned) |
-| `service-pointsav-link` (the [[diode-standard|Diode]] adapter) | Proprietary, sold as an enterprise add-on (planned) |
+`os-totebox` is FSL-licensed; `os-console` and `os-workplace` are AGPL — the three components carry two different licenses, not one uniform "open core" tier. No "Sovereign Addendum" license extension exists anywhere in the real license text — the running-instance-portability property described below is a design goal, not a distinct license grant. `service-pointsav-link`, the [[diode-standard|Diode]] enforcement adapter, does not exist as a crate in the codebase, so it carries no license assignment.
 
-The Sovereign Addendum is the planned licence extension intended to guarantee that the running instance — not just the source code — remains the user's property and is freely transferable between hardware substrates. The pattern follows the open-core model: open core attracts adoption; proprietary services produce revenue.
+The pattern follows the open-core model: the AGPL/FSL tiers attract adoption; the PointSav-ARR tier produces revenue.
 
 ## Patent strategy (intended)
 
