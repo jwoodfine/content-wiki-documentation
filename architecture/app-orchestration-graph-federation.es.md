@@ -10,12 +10,11 @@ bcsc_class: current-fact
 language: es
 paired_with: app-orchestration-graph-federation.md
 category: architecture
+index_group: platform-structure
 status: active
 quality: complete
 last_edited: 2026-06-23
 ---
-
-# Federación de DataGraph: de app-orchestration-slm a app-orchestration-graph
 
 Cada [[totebox-archive|archivo Totebox]] en la plataforma PointSav mantiene un DataGraph soberano: un
 grafo de entidades, relaciones y metadatos del corpus específicos a su dominio
@@ -55,10 +54,12 @@ en os-orchestration barre los DataGraphs de los Toteboxes. Esto es intencional: 
 lecturas no solicitadas desde un archivo soberano requerirían un permiso de acceso
 permanente entre archivos, que la arquitectura no permite.
 
-**Protegido por autenticación.** Cada Doorman Totebox valida la consulta entrante
-según sus reglas de capacidad locales antes de exponer datos del DataGraph. El
-intermediario no puede extraer datos que el Totebox no haya autorizado para acceso
-entre archivos.
+**Distribución sin confirmación.** La llamada saliente del intermediario a cada
+Doorman no lleva hoy ninguna cabecera de capacidad firmada — esa propiedad la añade
+`app-orchestration-graph` (más abajo) cuando se active, no algo que haga todavía el
+mecanismo actual de `app-orchestration-slm`. Un archivo inalcanzable se omite en
+silencio de la respuesta en lugar de generar un error; el llamante ve
+`archives_queried` frente a `archives_reachable` y puede distinguir ambos números.
 
 ## Por qué app-orchestration-slm alberga la federación ahora
 
@@ -101,33 +102,33 @@ Gestionarlo dentro de `app-orchestration-slm` — diseñado para ser un proceso 
 enrutamiento sin estado — introduce una complejidad operacional que un servicio
 dedicado maneja de forma natural.
 
-El umbral de activación previsto es aproximadamente 10 archivos Totebox activos con
-DataGraphs no triviales, o la aparición de un segundo consumidor.
+`app-orchestration-graph` se activa cuando la flota alcanza dos archivos Totebox con
+endpoints de DataGraph, o cuando surge un segundo consumidor de consultas federadas
+— lo que ocurra primero.
 
-## Lo que app-orchestration-graph está previsto que asuma
+## Lo que app-orchestration-graph asume
 
-Cuando se extraiga, `app-orchestration-graph` está previsto que asuma:
-
-- El endpoint `POST /v1/graph/federated` y toda la lógica de distribución (transferido
-  desde `app-orchestration-slm`)
-- Un pool de conexiones persistente a todos los endpoints `service-content` de los
-  Toteboxes registrados
-- Tolerancia a fallos parciales: un DataGraph Totebox inaccesible devuelve una
-  bandera `partial: true` en la respuesta, y los resultados restantes se devuelven
-  en lugar de fallar toda la consulta
-- Normalización de resultados: los resultados de entidades entre archivos usarían
-  un formato canónico común independientemente de las variaciones de esquema del
-  DataGraph por archivo
-- Caché de resultados (TTL corto, configurable por tipo de consulta): la federación
-  es costosa a escala; una caché de 30 segundos sobre consultas de entidades estables
-  está prevista para evitar distribuciones redundantes
+`app-orchestration-graph` ya existe como un scaffold funcional, aún no activado en
+producción. Sirve `GET /v1/graph/context?q=&module_id=`, distribuyendo la consulta a
+cada destino listado en la variable de entorno `ORCHESTRATION_GRAPH_TARGETS`. Es una
+lista separada por comas de tripletas `archive_name|endpoint|module_id`: cada destino
+lleva así su propio ámbito de tenant de forma explícita, en vez de inferirse a partir
+de una URL desnuda. Cada llamada de distribución lleva una
+cabecera `X-Foundry-Capability` firmada, establecida al arrancar mediante un
+protocolo de emparejamiento Ed25519 con cada destino; la propia puerta de
+capacidades de un destino rechaza una consulta cuyo ámbito firmado no coincida con
+el `module_id` bajo el que se consultó. Las entidades devueltas por distintos
+archivos se deduplican por nombre normalizado. La respuesta informa de `warnings`,
+`archives_queried` y `archives_responding` en lugar de una única bandera `partial`
+— un llamante puede ver exactamente qué archivos respondieron y cuáles no, no solo
+si la consulta se completó.
 
 Puerto planificado: `:9181` (`:9180` corresponde a `app-orchestration-slm`).
 
-## Lo que app-orchestration-graph NO asumirá
+## Lo que app-orchestration-graph no asume
 
-`app-orchestration-graph` no mantendrá datos de entidades, no replicará DataGraphs
-y no enviará nada a los Toteboxes. Es una puerta de enlace de solo lectura. La
+`app-orchestration-graph` no mantiene datos de entidades, no replica DataGraphs
+y no envía nada a los Toteboxes. Es una puerta de enlace de solo lectura. La
 fuente de verdad de cada entidad permanece en la instancia de `service-content` del
 Totebox que la generó.
 

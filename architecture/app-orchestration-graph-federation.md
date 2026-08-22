@@ -10,12 +10,11 @@ bcsc_class: current-fact
 language: en
 paired_with: app-orchestration-graph-federation.es.md
 category: architecture
+index_group: platform-structure
 status: active
 quality: complete
 last_edited: 2026-06-23
 ---
-
-# DataGraph Federation: From app-orchestration-slm to app-orchestration-graph
 
 Every [[totebox-archive|Totebox Archive]] in the PointSav platform maintains a sovereign DataGraph — a
 graph of entities, relationships, and corpus metadata specific to its operational
@@ -52,9 +51,12 @@ os-orchestration sweeps Totebox DataGraphs. This is intentional — unsolicited 
 from a sovereign archive would require a standing cross-archive capability grant,
 which the architecture does not permit.
 
-**Auth-gated.** Each Totebox Doorman validates the incoming query against its local
-capability rules before exposing DataGraph data. The chassis cannot extract data that
-the Totebox has not authorised for cross-archive access.
+**Fire-and-forget fan-out.** The chassis's own outbound call to each Doorman carries
+no signed capability header today — that's a property `app-orchestration-graph`
+(below) adds when it activates, not something the current `app-orchestration-slm`
+mechanism does yet. An unreachable archive is silently omitted from the response
+rather than raising an error; the caller sees `archives_queried` against
+`archives_reachable` and can tell the two numbers apart.
 
 ## Why app-orchestration-slm Holds Federation Now
 
@@ -92,33 +94,31 @@ of 20 or more Toteboxes, this connection pool is a non-trivial resource. Managin
 inside `app-orchestration-slm` — which is designed to be a stateless routing process —
 introduces operational complexity that a dedicated service handles naturally.
 
-The expected activation threshold is approximately 10 active Totebox Archives with
-non-trivial DataGraphs, or the appearance of a second consumer.
+`app-orchestration-graph` activates when the fleet reaches two Totebox Archives with
+DataGraph endpoints, or when a second consumer of federated queries emerges —
+whichever comes first.
 
-## What app-orchestration-graph Is Intended to Own
+## What app-orchestration-graph owns
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** `app-orchestration-graph` isn't a future extraction target — it already exists as a substantial scaffold (`src/main.rs`, `src/capability.rs`), and its real, already-built design differs from every prediction below. The real endpoint is `GET /v1/graph/context`, not `POST /v1/graph/federated`; real archive discovery is a static `ORCHESTRATION_GRAPH_TARGETS` env var of `archive_name|endpoint|module_id` triples, not automatic FleetRegistry-based fanout; the real response includes `warnings`/`archives_queried`/`archives_responding` fields, not a `partial: true` flag; and the real code implements Ed25519 capability-forwarding/pairing, unmentioned anywhere below. Port `:9181` is independently confirmed correct. **Flagged, not resolved** — this section needs a rewrite around the real, already-shipped design rather than a still-future intent.
-
-When extracted, `app-orchestration-graph` is intended to own:
-
-- The `POST /v1/graph/federated` endpoint and all fanout logic (moved from
-  `app-orchestration-slm`)
-- A persistent connection pool to all registered Totebox `service-content` endpoints
-- Partial-failure tolerance: a Totebox DataGraph that is unreachable returns a
-  `partial: true` flag in the response, and the remaining results are returned rather
-  than failing the whole query
-- Result normalisation: cross-archive entity results would use a common canonical form
-  regardless of per-archive DataGraph schema variations
-- Query caching (short TTL, configurable per query type): federation is expensive at
-  scale; a 30-second cache on stable entity queries is intended to avoid redundant
-  fanout
+`app-orchestration-graph` already exists as a working scaffold, not yet activated in
+production. It serves `GET /v1/graph/context?q=&module_id=`, fanning out to every
+target listed in the `ORCHESTRATION_GRAPH_TARGETS` environment variable — a
+comma-separated list of `archive_name|endpoint|module_id` triples, so each target
+carries its own tenant scope explicitly rather than being inferred from a bare URL.
+Each fan-out call carries a signed `X-Foundry-Capability` header, established at
+startup via an Ed25519 pairing handshake with each target; a target's own
+capability gate rejects a query whose signed scope doesn't match the `module_id` it
+was queried under. Entities returned from different archives are deduplicated by
+normalised name. The response reports `warnings`, `archives_queried`, and
+`archives_responding` rather than a single `partial` flag — a caller can see exactly
+which archives answered and which didn't, not just whether the query was complete.
 
 Planned port: `:9181` (`:9180` is `app-orchestration-slm`).
 
-## What app-orchestration-graph Will NOT Own
+## What app-orchestration-graph does not own
 
-`app-orchestration-graph` will not hold entity data, replicate DataGraphs, or push
-anything to Toteboxes. It is a read-only gateway. The source of truth for every entity
+`app-orchestration-graph` holds no entity data, replicates no DataGraph, and pushes
+nothing to Toteboxes. It is a read-only gateway. The source of truth for every entity
 remains the `service-content` instance in the Totebox that generated it.
 
 The name `app-orchestration-content` was considered and explicitly rejected. It would
