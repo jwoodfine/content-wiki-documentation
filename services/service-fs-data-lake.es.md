@@ -12,7 +12,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-07-31
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: service-fs-data-lake.md
 cites: []
@@ -40,10 +40,9 @@ Como capa con estado de la plataforma, `service-fs` es responsable de la persist
 
 ## Implementación como unikernel (planificada)
 
-El despliegue de producción previsto es un unikernel de baja sobrecarga que proporciona una API restringida para que las capas de inteligencia [[service-business-clustering|`service-business`]] y [[service-places-filtering|`service-places`]] lean datos en bruto y escriban resultados procesados, aplicando una separación limpia entre preocupaciones de almacenamiento y análisis. **Estado actual**: el entorno unikernel aún no existe — las zonas de aterrizaje descritas arriba son directorios planos del sistema de archivos del host, leídos y escritos directamente por los scripts de ingesta y análisis GIS (verificado contra los propios scripts de ingesta de `app-orchestration-gis`, que leen/escriben estas rutas mediante E/S de archivos ordinaria). La [[retail-co-location-tier-methodology|metodología de niveles de co-ubicación minorista]] describe cómo se usará la salida de agrupación para generar clasificaciones por nivel, una vez que esa capa de análisis exista.
+El despliegue de producción previsto es un unikernel de baja sobrecarga que proporciona una API restringida para que las capas de inteligencia [[service-business-clustering|`service-business`]] y [[service-places-filtering|`service-places`]] lean datos en bruto y escriban resultados procesados, aplicando una separación limpia entre preocupaciones de almacenamiento y análisis. **Estado actual**: el entorno unikernel aún no existe — las zonas de aterrizaje descritas arriba son directorios planos del sistema de archivos del host, leídos y escritos directamente por los scripts de ingesta y análisis GIS mediante E/S de archivos ordinaria. La [[retail-co-location-tier-methodology|metodología de niveles de co-ubicación minorista]] describe cómo se usará la salida de agrupación para generar clasificaciones por nivel, una vez que esa capa de análisis exista.
 
 ## Véase también
 
 - [[service-business-clustering]]
-- [[service-places-filtering]]
 - [[app-orchestration-gis]]

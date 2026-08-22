@@ -12,7 +12,7 @@ audience: public
 short_description: "service-fs is the foundational storage layer for the GIS pipeline — a flat-file data lake storing raw geospatial points, available to every downstream service."
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-07-31
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: service-fs-data-lake.es.md
 cites: []
@@ -40,11 +40,9 @@ As the stateful layer of the platform, `service-fs` is responsible for data pers
 
 ## Unikernel Implementation (Planned)
 
-The target production deployment is a low-overhead unikernel providing a restricted API for the [[service-business-clustering|`service-business`]] and [[service-places-filtering|`service-places`]] intelligence layers to read raw data and write back processed results, enforcing clean separation between storage and analysis concerns. **Current state**: the unikernel envelope does not exist yet — the landing zones described above are plain host-filesystem directories, read and written directly by the GIS ingestion and analysis scripts (verified against `app-orchestration-gis`'s own ingestion scripts, which read/write these paths with ordinary file I/O). The [[retail-co-location-tier-methodology|retail co-location tier methodology]] describes how the clustering output is used to generate tier rankings, once that analysis layer is built.
+The target production deployment is a low-overhead unikernel providing a restricted API for the [[service-business-clustering|`service-business`]] and [[service-places-filtering|`service-places`]] intelligence layers to read raw data and write back processed results, enforcing clean separation between storage and analysis concerns. **Current state**: the unikernel envelope does not exist yet — the landing zones described above are plain host-filesystem directories, read and written directly by the GIS ingestion and analysis scripts with ordinary file I/O. The [[retail-co-location-tier-methodology|retail co-location tier methodology]] describes how the clustering output is used to generate tier rankings, once that analysis layer is built.
 
 ## See also
 
 - [[service-business-clustering]]
-- [[service-places-filtering]]
 - [[app-orchestration-gis]]
-- [[service-pointsav-link|PointSav Link Service]] — fleet adapter that makes os-* storage accessible across node boundaries
