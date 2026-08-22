@@ -1,17 +1,17 @@
 ---
 schema: foundry-doc-v1
-title: "Colaboración en tiempo real mediante relé de paso — un patrón de sustrato"
+title: "Colaboración mediante relé de paso — un patrón de sustrato retirado"
 slug: collab-via-passthrough-relay
 aliases:
   - collab-via-passthrough-relay
-short_description: "El patrón de retransmisión de paso no mantiene estado de documento en el servidor y reenvía actualizaciones CRDT directamente entre clientes, manteniendo el árbol de git canónico como el único registro autorizado de contenido en todo momento."
+short_description: "Un diseño de edición colaborativa en tiempo real que no conservaba estado de documento en el servidor, reenviando actualizaciones CRDT directamente entre clientes — implementado en el motor wiki y luego retirado."
 status: active
 category: patterns
 type: topic
 content_type: topic
 quality: complete
 index_group: collaboration-and-editorial-workflow
-last_edited: 2026-05-09
+last_edited: 2026-08-22
 editor: pointsav-engineering
 audience: vendor-public
 bcsc_class: no-disclosure-implication
@@ -24,48 +24,36 @@ cites:
 
 ## El patrón en un párrafo
 
-El patrón de relé de paso invierte la suposición habitual sobre dónde reside la autoridad en un sistema de edición colaborativa con respecto al [[worm-ledger-design|libro mayor WORM]] canónico: el servidor de relé no conserva ningún estado de documento, por lo que el árbol git canónico sigue siendo el único registro autoritativo del contenido de cada tema en todo momento. Los editores concurrentes se conectan mediante WebSocket a un canal `tokio::sync::broadcast` identificado por slug — una sala de difusión por documento — y la única responsabilidad del servidor es reenviar mensajes de actualización del protocolo CRDT de Yjs entre esos clientes. El servidor nunca decodifica ni almacena el estado del documento que esos mensajes codifican. El único límite de persistencia en todo el sistema es la ruta de escritura atómica `POST /edit/{slug}`: cuando un editor guarda, el cliente serializa su documento Yjs local a Markdown, lo envía por HTTP, y el servidor mueve atómicamente el nuevo archivo a su lugar en disco — la misma operación que un guardado de un solo autor.
+El patrón de relé de paso fue un diseño de edición colaborativa en tiempo real implementado en el motor wiki y retirado posteriormente. Invertía la suposición habitual sobre dónde reside la autoridad en un sistema de edición colaborativa. El servidor de relé no conservaba ningún estado de documento; el árbol git canónico seguía siendo el único registro autoritativo del contenido de cada artículo en todo momento. Los editores concurrentes se conectaban mediante WebSocket a un canal de difusión por documento, y la única responsabilidad del servidor era reenviar mensajes de actualización CRDT entre esos clientes — nunca decodificaba ni almacenaba el estado que esos mensajes codificaban. El diseño se documenta aquí porque el razonamiento detrás de él sigue siendo útil aunque la implementación ya no exista.
 
 ## Por qué un relé de paso, no un servidor CRDT
 
-Herramientas como Etherpad y HackMD operan bajo un modelo de documento autoritativo en el servidor: el servidor de edición colaborativa mantiene un objeto de documento vivo y mutable, y ese objeto es el registro principal del contenido actual. Una exportación a git es una instantánea tomada de ese registro del servidor, no al revés. La consecuencia es un segundo estado autoritativo permanente: dos lugares en el sistema contienen la respuesta a la pregunta "¿cuál es el texto actual de este documento?", y pueden divergir si el mecanismo de exportación falla o el registro CRDT del servidor difiere del historial de git.
+Herramientas como Etherpad y HackMD operan bajo un modelo de documento autoritativo en el servidor: el servidor de edición colaborativa mantiene un objeto de documento vivo y mutable, y ese objeto es el registro principal del contenido actual. Una exportación a git es una instantánea tomada de ese registro del servidor, no al revés. La consecuencia es un segundo estado autoritativo permanente que puede divergir si el mecanismo de exportación falla o el servidor se detiene antes de guardar.
 
-### Conducto de mensajes, no un almacén
+El diseño de relé de paso elimina ese segundo registro por completo. El servidor actúa como un conducto de mensajes, no un almacén — reenvía mensajes de actualización entre clientes sin nunca deserializar ni conservar el estado del documento que transportan.
 
-El diseño de relé de paso elimina ese segundo registro por completo. El servidor es un conducto de mensajes, no un almacén. Cuando un cliente Yjs envía un mensaje de actualización binario, el manejador Rust recibe los bytes en bruto del WebSocket y los difunde a todos los demás clientes de la misma sala mediante `tokio::sync::broadcast`. El servidor nunca deserializa el protocolo Yjs; nunca construye un Y.Doc; nunca escribe nada en disco como efecto secundario de una operación de relé.
+**Un lector que guarda un artículo nunca depende de que el servidor de colaboración haya hecho algo correctamente.** Toda edición que llega al registro canónico lo hace por la misma ruta de guardado que usaría una edición de un solo autor.
 
-El registro de divulgación canónico es el árbol git. Bajo el diseño de relé de paso, no existe ningún registro paralelo: el estado CRDT en curso no forma parte del registro de divulgación por construcción, porque nunca se escribe en ningún lugar. El registro se cierra en el momento de `POST /edit`, no antes.
+## Lo que esto significaba para la divulgación
 
-## Implementación en `app-mediakit-knowledge`
+Esto era relevante para la postura de divulgación del motor wiki. El registro de divulgación canónico es el árbol git: el historial de contenido de cada artículo es una secuencia de commits firmados, y esa secuencia es lo que produciría una auditoría. Bajo el diseño de relé de paso no existía ningún registro paralelo — el estado CRDT en curso nunca se escribía en ningún lugar, por lo que nunca formó parte del registro de divulgación. El registro se cerraba en el momento de guardar, no antes.
 
-El relé de colaboración se implementó como `src/collab.rs`, restringido por el indicador CLI `--enable-collab`. Cuando el indicador está ausente — la configuración predeterminada y la postura de producción actual en v0.1.29 — la ruta WebSocket `GET /ws/collab/{slug}` no se registra en el enrutador axum, y el paquete JavaScript del lado del cliente nunca se carga. Ninguna ruta de código de colaboración se ejecuta en la configuración desactivada por defecto.
+## Estado actual
 
-### Salas de difusión por slug
+La función de colaboración que describe este patrón ha sido eliminada del motor wiki. Se lanzó restringida detrás de un indicador de activación explícita, nunca estuvo habilitada por defecto, y posteriormente fue eliminada por completo en lugar de quedar inactiva — el motor actual no tiene ninguna ruta de código de edición colaborativa. Este artículo documenta el diseño como registro histórico de un patrón que se construyó, funcionó según lo previsto, y fue retirado después; no describe el comportamiento actual del motor wiki.
 
-El relé del lado del servidor usa `tokio::sync::broadcast`. Cada slug obtiene su propio canal de difusión con capacidad de 256 mensajes. Cuando un cliente WebSocket envía un mensaje de actualización de Yjs, el manejador lee los bytes en bruto y llama a `sender.send(bytes)` — una sola línea que distribuye el mensaje a todos los demás receptores del canal. No hay dependencia del crate `yrs`: el servidor reenvía mensajes binarios sin deserializarlos, por lo que no porta ningún estado de documento en ningún momento.
+## Más allá del wiki
 
-El paquete cliente `cm-collab.bundle.js` está construido a partir de tres paquetes npm: `yjs`, `y-codemirror.next` e `y-websocket`. El paquete se confirma como un artefacto precompilado, por lo que no se requiere ninguna cadena de herramientas npm en tiempo de ejecución.
-
-## Lo que esto significa para la divulgación
-
-El estado CRDT en curso — la secuencia de mensajes de actualización de Yjs intercambiados entre clientes durante una sesión de colaboración — no forma parte del registro de divulgación y no puede serlo, por construcción. Dado que el relé nunca persiste esos mensajes, no existe ningún artefacto del lado del servidor que pudiera producirse en respuesta a una obligación de divulgación. La sesión de colaboración no deja ningún estado en el servidor.
-
-Las ediciones guardadas ingresan al registro de divulgación a través de la misma ruta que todas las demás ediciones: `POST /edit/{slug}` envía el texto Markdown completo del documento, el servidor realiza un renombrado atómico del archivo, y el siguiente commit git captura esa instantánea. Desde la perspectiva de git, un guardado editado en colaboración es idéntico a un guardado de un solo autor.
-
-## El patrón más allá del wiki
-
-El relé de paso es un patrón de sustrato, no una característica específica del wiki. Cualquier servicio que desee semánticas de edición concurrente enfrenta la misma pregunta arquitectónica: ¿necesita la infraestructura de colaboración mantener el estado del documento en el servidor, o puede ese estado residir completamente en los clientes y en el almacenamiento canónico?
-
-El patrón aplica directamente cuando el tipo de documento CRDT se mapea con claridad al tipo de almacenamiento canónico. Para `service-extraction` (registros estructurados) y las aplicaciones `app-workplace-presentation` y `app-workplace-proforma` (planificadas), el mismo principio guía la decisión de diseño: si un servidor CRDT con estado competiría con el almacén canónico por la autoridad, el relé de paso es la respuesta preferida.
+El relé de paso es un patrón de sustrato, no una característica específica del wiki, y la pregunta de diseño subyacente sobrevive a esta implementación en particular. Cualquier servicio que desee semánticas de edición concurrente enfrenta la misma pregunta: ¿necesita la infraestructura de colaboración mantener el estado del documento en el servidor, o puede ese estado residir completamente en los clientes y en el almacenamiento canónico? La respuesta de paso se aplica con claridad cuando el tipo de documento colaborativo se corresponde directamente con el tipo de almacenamiento canónico.
 
 ## Véase también
 
-- [[source-of-truth-inversion]] — la taxonomía de tres capas (canónica / vista / efímera) que este patrón instancia
-- [[app-mediakit-knowledge]] — arquitectura del motor wiki que implementa este patrón
+- [[source-of-truth-inversion]] — la taxonomía de tres capas (canónica / vista / efímera) que este patrón instanciaba
+- [[app-mediakit-knowledge]] — arquitectura del motor wiki en el que se implementó este patrón y del que después se eliminó
 - [[worm-ledger-design]] — el sustrato del libro mayor WORM que cierra el registro de divulgación en el momento de guardar
 - [[substrate-native-compatibility]] — por qué el motor wiki no imita interfaces existentes
-- [[disclosure-substrate]] — la convención de postura de divulgación que este diseño satisface
+- [[disclosure-substrate]] — la convención de postura de divulgación que este diseño satisfacía
 
 ## Procedencia
 
-Versión en español elaborada por project-language el 2026-04-30, basada en el borrador de project-knowledge (sesión 619abe3eff24497e, 2026-04-28). Vista general estratégica por DOCTRINE.md §XII — no es una traducción literal del inglés canónico.
+Versión en español elaborada por project-language, adaptación estratégica del artículo canónico en inglés — no es una traducción literal. Vista general estratégica por DOCTRINE.md §XII.
