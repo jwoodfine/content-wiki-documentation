@@ -1,89 +1,51 @@
 ---
 schema: foundry-doc-v1
-title: "Three-stage editorial pipeline"
+title: "The proofreading pipeline's wire contract"
 slug: editorial-pipeline-three-stages
 aliases:
   - editorial-pipeline-three-stages
-short_description: "Service-level view of the proofreading pipeline — stage ordering by cost, degradation paths when dependencies fail, and independently verifiable finding sets."
+short_description: "The real client-confirmed contract for the platform's proofreading pipeline: a fixed set of language protocols, a response that reports which compute tier ran and what degraded, and a binary human verdict that feeds the training corpus."
 category: services
 index_group: specialist-and-domain-services
 type: topic
 content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-06-10
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: editorial-pipeline-three-stages.es.md
 ---
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** `service-proofreader` doesn't exist as a crate. The real proofreader is a TUI cartridge, `app-console-content` (`src/proofreader.rs`, a thin HTTP client to `/v1/proofread`/`/v1/verdict`), not a standalone service. `service-content`'s real `http.rs` has no proofread route at all — only `/v1/graph/verdict`. No LanguageTool integration, no "Banned/Mechanical/Generative" severity enum, and no Tier A/B/C routing logic for this pipeline exist anywhere in the real source. **Flagged, not resolved** — needs a rewrite around the real `app-console-content` TUI cartridge, matching the same finding already made on `applications/radical-proofreader-ui.md` this session.
+The [[radical-proofreader-ui|proofreader console]] — the F4 content cartridge in `app-console-content` — submits text for editorial review and gets back a rewrite. What follows describes only what's confirmed by the client's own request and response types: the language-protocol vocabulary, the shape of a proofread response, and the verdict step that closes the loop.
 
-Every document processed by `service-proofreader` passes through three discrete stages executed in sequence. Each stage is independently verifiable. Each has a defined degradation path when its dependency is unavailable. The stages are ordered from cheapest to most expensive, so that inexpensive deterministic checks prevent costlier downstream operations from handling input that a rule-pass could resolve.
+## Protocol selection is a fixed, real list
 
-## Why Three Stages, in This Order
+Every submission names a `protocol` from a fixed set of nine, defaulting to `prose-topic`:
 
-Three principles drive the ordering.
+| Protocol | Genre |
+|---|---|
+| `prose-architecture` | Architecture documentation |
+| `prose-guide` | Operational runbook |
+| `prose-memo` | Memo |
+| `prose-readme` | README |
+| `prose-topic` | Content-wiki TOPIC (default) |
+| `comms-chat` | Chat message |
+| `comms-email` | Email |
+| `comms-ticket-comment` | Ticket comment |
+| `translate-en-es` | English-to-Spanish translation |
 
-*Cost discipline.* Stage 1 is deterministic and completes in sub-millisecond time for any input length. Stage 2 calls a locally-hosted language service. Stage 3 routes through the inference layer to a compute tier that may involve GPU capacity or an external API. Processing stops and returns early if Stage 1 flags a banned-vocabulary violation severe enough to require human intervention before any language pass is appropriate. Expensive inference never receives input that the upstream stages have already handled.
+The request also carries a `tenant`, scoping the submission to the caller's own organisation.
 
-*Correctness.* Stage 2 applies hundreds of grammar and style rules with consistent output. When Stage 3 receives the document, the Stage-2 finding set is embedded in the prompt as editorial context. The inference model therefore encounters the document with known mechanical errors already annotated rather than discovering them inconsistently on each pass.
+## The response reports what actually ran
 
-*Auditability.* Each stage emits a structured finding set that is independently verifiable. The full pipeline response includes findings from all three stages, each attributed to its source. An operator can inspect what each stage flagged and verify that the final rewrite addressed or consciously disregarded each item.
+A successful response carries `improved_text` (the rewrite) alongside fields that describe how it was produced. `tier_used` names which compute tier handled the request. `degraded` lists anything that didn't run at full capability — real evidence that the pipeline has more than one internal component capable of failing independently, though this contract doesn't name those components or their order. `audit_ledger_id` references the audit trail, and `request_id` is used to record the verdict afterward. A caller can tell from the response alone whether the full pipeline ran or something degraded along the way, without needing separate status calls.
 
-## Stage 1 — Banned-Vocabulary Scan
+## The verdict is binary, and it trains the model
 
-Stage 1 scans the input text against the workspace vocabulary lists compiled per language protocol family: PROSE, COMMS, LEGAL, and TRANSLATE families each carry different term sets appropriate to their registered genres.
+After reviewing the rewrite, the operator posts a verdict tied to the original `request_id`. The verdict is binary — accept or reject — and it's SSH-signed the same way the platform's other human-review checkpoints are: a reviewer's signature is checked against the workspace's `allowed_signers` file before the verdict is recorded. An accepted verdict marks the rewrite as a positive training example; a rejected one keeps the original. This is the same apprenticeship-style verdict mechanism used elsewhere in the platform for supervised model improvement — a human decision converted directly into training signal, never an automated accept.
 
-A match produces a finding with severity `Banned`, a character span identifying the flagged term, and a replacement hint drawn from the vocabulary list entry. Stage 1 flags findings only — it does not silently rewrite the document. The principle is that a banned-vocabulary match requires a human to understand and apply the correct substitution; automated rewriting would bypass that understanding.
+## See also
 
-Stage 1 has no external dependency. It runs against an in-memory term set and completes regardless of the availability of the Stage-2 or Stage-3 services.
-
-## Stage 2 — LanguageTool Mechanical Pass
-
-Stage 2 calls LanguageTool 6.6, running as a companion HTTP service co-located with the pipeline. LanguageTool applies spelling, grammar, and style rules — categories too numerous to enumerate as a static vocabulary list.
-
-The pipeline normalises the LanguageTool response into the internal `Finding` type used across all three stages. Each LanguageTool rule match is mapped to a finding with severity `Mechanical` and a character span. The normalisation step isolates the pipeline from changes in the LanguageTool response schema.
-
-Stage-2 findings are serialised as a structured JSON annotation block embedded in the prompt for Stage 3. Each entry in the block carries the span, the rule category, and the LanguageTool rule identifier. The annotation block is part of the signed request record — the findings that Stage 3 was given are recoverable after the fact.
-
-## Stage 3 — Generative Pass
-
-Stage 3 routes the document and the embedded Stage-2 finding set to the inference layer. The routing service selects a compute tier based on the request shape and applicable budget constraints: Tier A is a locally-hosted 7B quantised model, Tier B is a 32B model available via multi-cloud GPU capacity, and Tier C routes to an external inference API. The system prompt includes the Stage-2 annotation block so the model reads the mechanical findings as editorial context rather than discovering the same issues independently.
-
-The Stage-3 output is a whole-text rewrite of the input. The rewrite is expected to address or consciously disregard each item in the Stage-2 finding set. The operator review step that follows can compare the annotation block against the rewrite to verify which findings were acted on.
-
-Stage-3 findings carry severity `Generative` and represent per-span editorial suggestions arising from the inference pass, beyond the scope of the Stage-2 mechanical rules.
-
-## Severity Levels on the Wire
-
-The `/v1/proofread` response carries a `findings` array where each entry has a `severity` field:
-
-| Severity | Source | Meaning |
-|---|---|---|
-| `Banned` | Stage 1 | Term appears in the applicable vocabulary list; requires human substitution |
-| `Mechanical` | Stage 2 | Grammar, spelling, or style rule match from the mechanical pass |
-| `Generative` | Stage 3 | Per-span suggestion from the editorial inference pass |
-
-Callers use severity to drive interface decisions. `Banned` findings may warrant prominent display before any editorial work proceeds; `Mechanical` findings may be collapsed by default in a review pane; `Generative` findings are advisory.
-
-## Operator Verdict and the Learning Loop
-
-After reviewing the Stage-3 rewrite, the operator records a verdict via `/v1/verdict`: `accepted` (the rewrite is adopted as-is), `rejected` (the operator reverts to the original), or `edited` (the operator has made further changes and submits the final text).
-
-The verdict closes the loop by contributing to the corpus that informs future model behaviour. The tuple of original input, pipeline rewrite, and operator disposition forms a training-quality pair. When the operator edits rather than accepting or rejecting outright, the edited text is the positive example and the unedited rewrite is the negative. The corpus accumulates across verdicts, building an editorial preference record grounded in actual operator decisions rather than external datasets.
-
-## Graceful Degradation
-
-Each stage has a defined behaviour when its dependency is unavailable.
-
-If the Stage-2 LanguageTool service is unreachable, the pipeline continues to Stage 3 with an empty mechanical findings set. The Stage-3 prompt includes a metadata flag indicating that the mechanical pass did not run. The response includes this flag so the caller can surface a partial-results notice.
-
-If Stage 3 cannot reach any compute tier within its configured timeout, the pipeline returns the Stage-1 and Stage-2 findings only, with `generative_pass: false` in the response. The caller receives a complete mechanical-pass result rather than an error.
-
-Neither degradation path silently omits findings available from the stages that did run. The response accurately represents the scope of what was evaluated.
-
-## See Also
-
-- [[language-protocol-substrate]] — the genre family definitions and per-family vocabulary lists that Stage 1 draws from
-- [[customer-tier-catalog-pattern]] — the deployment model for the proofreader service instance
-- [[soft-slm-tiered-gateway]] — the inference routing layer that Stage 3 dispatches through
+- [[radical-proofreader-ui]] — the terminal console that submits text through this pipeline
+- [[language-protocol-substrate]] — the genre family definitions the protocol list is drawn from
+- [[customer-tier-catalog-pattern]] — the deployment model for a proofreading pipeline instance
