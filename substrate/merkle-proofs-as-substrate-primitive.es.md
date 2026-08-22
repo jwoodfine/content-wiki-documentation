@@ -10,7 +10,7 @@ index_group: cryptographic-and-microkernel-primitives
 short_description: "Las pruebas de Merkle son el mecanismo criptográfico que permite al sustrato de la plataforma garantizar — a cualquier tercero, sin necesidad de confianza previa — que un registro específico forma parte de un registro de sólo-adición y que ese log no ha sido reescrito entre dos puntos de observación."
 status: active
 bcsc_class: no-disclosure-implication
-last_edited: 2026-05-25
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: merkle-proofs-as-substrate-primitive.md
 cites: []

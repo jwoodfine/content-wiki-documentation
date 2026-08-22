@@ -10,7 +10,7 @@ index_group: cryptographic-and-microkernel-primitives
 short_description: "Merkle proofs are the cryptographic mechanism letting the platform prove to any third party that a record is part of an append-only log that has not been rewritten."
 status: active
 bcsc_class: no-disclosure-implication
-last_edited: 2026-05-25
+last_edited: 2026-08-22
 editor: pointsav-engineering
 cites: []
 references:
@@ -325,18 +325,17 @@ the public contract:
 ```rust
 pub trait LedgerConsumer {
     fn consult_capability(
-        &mut self,
+        &self,
         cap: &Capability,
         current_root: &SignedCheckpoint,
+        now: u64,
+        witness: Option<&WitnessRecord>,
     ) -> Result<Verdict, ConsultError>;
 
     fn apply_witness_record(
         &mut self,
-        record: &WitnessRecord,
-        proof: &InclusionProof,
-        current_checkpoint: &SignedCheckpoint,
-        signer_name: &str,
-        signer_pubkey: &VerifyingKey,
+        record: WitnessRecord,
+        proof: InclusionProof,
     ) -> Result<(), LedgerError>;
 
     // ... revocation and apex methods
@@ -352,11 +351,13 @@ created a gap: a misconfigured or compromised caller could extend the ledger
 with records that never appeared in the signed transparency log.
 
 Phase 1A.4 closed this gap by promoting `apply_witness_record` to require an
-`InclusionProof` and a `SignedCheckpoint`. The method now delegates to
-`verify_inclusion_proof` before recording the witness. A record is accepted
-only if the Merkle proof confirms the record's hash is in the tree covered by
-the current apex-signed checkpoint. This is the v0.1.x → v0.2.0 breaking
-change: trait signature changed, not just implementation.
+`InclusionProof` alongside the record. The current checkpoint the proof is
+verified against comes from the consumer's own held state (`InMemoryLedger`
+keeps a `CheckpointCache`), not a parameter on every call. The method now
+delegates to `verify_inclusion_proof` before recording the witness. A record
+is accepted only if the Merkle proof confirms the record's hash is in the
+tree covered by the current apex-signed checkpoint. This is the v0.1.x →
+v0.2.0 breaking change: trait signature changed, not just implementation.
 
 ### Read-side cost and the checkpoint cache
 
