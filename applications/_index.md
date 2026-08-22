@@ -11,7 +11,7 @@ index_type: thematic
 index_scope: applications
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-06
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: _index.es.md
 ---
@@ -32,12 +32,12 @@ Each application here corresponds to an `app-*` directory in the monorepo and in
 The wiki engine, the marketing surface, and the design-intent articles that describe their reader-facing chrome.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: knowledge-and-editorial-applications -->
-- [[app-mediakit-knowledge]] — The single-binary Rust wiki engine that renders PointSav's engineering documentation; a view over a Markdown tree where the git commits are canonical and every running binary is throwaway derived state.
-- [[app-mediakit-marketing]] — Multi-tenant marketing landing pages from a single statically-compiled Rust binary; WordPress.org muscle memory at the operator-facing URL, sovereign infrastructure underneath.
-- [[knowledge-wiki-home-page-design]] — How the documentation home page inherits Wikipedia's structural conventions and extends them for engineering and financial-community readers.
+- [[app-mediakit-knowledge]] — Single-binary Rust wiki engine serving documentation.pointsav.com — a view over a markdown tree where git commits are canonical and the running binary is disposable.
+- [[app-mediakit-marketing]] — Rust web server delivering marketing landing sites from typed page manifests — AI authors via MCP, a human approves before anything publishes. Serves home.woodfinegroup.com and home.pointsav.com.
+- [[knowledge-wiki-home-page-design]] — How the documentation.pointsav.com home page inherits Wikipedia's structural conventions and extends them for engineering and financial-community readers.
 - [[wikipedia-leapfrog-design]] — What the wiki engine inherits from Wikipedia, what it adds beyond it, and what the five-percent leapfrog headroom means for readers and engineers.
-- [[documentation-pointsav-com-launch-2026-04-27]] — The April 2026 TLS launch of `documentation.pointsav.com`: serving stack, placeholder posture, and verification commands.
-- [[radical-proofreader-ui]] — The operator console for the service-proofreader editorial pipeline: review structured findings, accept or reject rewrites, and record the verdicts that feed the platform's apprenticeship corpus.
+- [[documentation-pointsav-com-launch-2026-04-27]] — The April 2026 TLS launch of `documentation.pointsav.com`: serving stack, placeholder posture, BCSC disclosure rationale, and verification commands.
+- [[radical-proofreader-ui]] — Terminal content cartridge for the service-proofreader pipeline — operators submit text, review findings, and record a binary accept/reject verdict that feeds the apprenticeship corpus.
 <!-- END AUTO-GENERATED -->
 
 ## Location intelligence applications
@@ -45,8 +45,8 @@ The wiki engine, the marketing surface, and the design-intent articles that desc
 The GIS analytics engine, the platform article that frames it alongside the rendering layer, and the user-experience design intent.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: location-intelligence-applications -->
-- [[app-orchestration-gis]] — The stateless spatial analytics engine for linear-geometry calculations and co-location ranking; a pure function that holds no canonical data and can be re-provisioned by pointing a fresh instance at the data layer.
-- [[location-intelligence-platform]] — The full location intelligence platform: `app-orchestration-gis` (analytics) paired with the rendering engine; every dataset, algorithm, and rendering decision under customer control.
+- [[app-orchestration-gis]] — The Python data pipeline that produces the Woodfine co-location rankings and interactive map — cluster geometry rebuilt on a nightly schedule from source datasets, published as static map tiles.
+- [[location-intelligence-platform]] — The full location intelligence platform: a nightly `app-orchestration-gis` pipeline paired with an interactive rendering layer; every dataset, algorithm, and rendering decision under customer control.
 - [[location-intelligence-ux]] — The Conclusion-First design philosophy: ranked tier conclusions rather than individual data points, so users see the most defensible commercial nodes at national zoom before drilling into individual operators.
 <!-- END AUTO-GENERATED -->
 
@@ -67,10 +67,10 @@ The structured-input gate that admits external files to a Totebox, and the brows
 Surfaces dedicated to a specific operational domain — Building Information Modelling and real-property workflows.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: domain-applications -->
-- [[bim-and-real-property-surfaces]] — How PointSav treats Building Information Modelling as a first-class operational domain, with dedicated design-system tooling and ISO 19650 record-keeping discipline.
+- [[bim-and-real-property-surfaces]] — How PointSav treats Building Information Modelling as a distinct operational domain — a separate customer-tier design system, a real Chart of Accounts placement, and BIM-specific console surfaces still at the research stage.
 <!-- END AUTO-GENERATED -->
 
-Additional planned articles for this domain — design-system tooling for BIM, the flat-file ISO 19650 approach, AEC interface conventions, and the gap between BIM authoring tools and property-manager workflows — are not yet written.
+Additional planned articles for this domain — design-system tooling for BIM, AEC interface conventions, and the gap between BIM authoring tools and property-manager workflows — are not yet written.
 
 ## See also
 

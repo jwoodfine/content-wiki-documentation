@@ -12,7 +12,7 @@ index_type: thematic
 index_scope: applications
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-06
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: _index.md
 ---
@@ -33,12 +33,12 @@ Cada aplicación aquí corresponde a un directorio `app-*` en el monorepo y here
 El motor wiki, la superficie de marketing y los artículos de intención de diseño que describen su cromo orientado al lector.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: knowledge-and-editorial-applications -->
-- [[app-mediakit-knowledge]] — El motor de wiki Rust de binario único que renderiza la documentación de ingeniería de PointSav; una vista sobre un árbol de Markdown donde los commits de git son canónicos y cada binario en ejecución es estado derivado desechable.
-- [[app-mediakit-marketing]] — Páginas de aterrizaje de marketing multiinquilino desde un único binario Rust compilado estáticamente; memoria muscular de WordPress.org en la URL orientada al operador, infraestructura soberana debajo.
-- [[knowledge-wiki-home-page-design|Diseño de la página de inicio del wiki]] — Cómo la página de inicio de documentación hereda las convenciones estructurales de Wikipedia y las extiende para lectores de ingeniería y de la comunidad financiera.
+- [[app-mediakit-knowledge]] — Motor de wiki Rust de binario único que sirve documentation.pointsav.com — una vista sobre un árbol de markdown donde los commits de git son canónicos y el binario en ejecución es desechable.
+- [[app-mediakit-marketing]] — Servidor web Rust que entrega sitios de aterrizaje de marketing desde manifiestos de página tipados — la IA redacta vía MCP, un humano aprueba antes de que algo se publique. Sirve home.woodfinegroup.com y home.pointsav.com.
+- [[knowledge-wiki-home-page-design|Diseño de la página de inicio del wiki]] — Cómo la página de inicio de documentation.pointsav.com hereda las convenciones estructurales de Wikipedia y las extiende para lectores de ingeniería y de la comunidad financiera.
 - [[wikipedia-leapfrog-design|Diseño de salto sobre Wikipedia]] — Qué hereda el motor wiki de Wikipedia, qué añade más allá y qué significa el margen de salto del cinco por ciento para lectores e ingenieros.
-- [[documentation-pointsav-com-launch-2026-04-27|Lanzamiento de documentation.pointsav.com]] — El lanzamiento TLS de abril de 2026 de `documentation.pointsav.com`: pila de servicio, postura de marcador de posición y comandos de verificación.
-- [[radical-proofreader-ui|Consola del corrector]] — La consola del operador para la canalización editorial service-proofreader: revisar hallazgos estructurados, aceptar o rechazar reescrituras y registrar los veredictos que alimentan el corpus de aprendizaje de la plataforma.
+- [[documentation-pointsav-com-launch-2026-04-27|Lanzamiento de documentation.pointsav.com]] — El lanzamiento TLS de abril de 2026 de `documentation.pointsav.com`: pila de servicio, postura de marcador de posición, justificación de divulgación BCSC y comandos de verificación.
+- [[radical-proofreader-ui|Consola del corrector]] — Cartucho de contenido de terminal para la canalización service-proofreader — el operador envía texto, revisa los hallazgos y registra un veredicto binario aceptar/rechazar que alimenta el corpus de aprendizaje.
 <!-- END AUTO-GENERATED -->
 
 ## Inteligencia de ubicación
@@ -46,8 +46,8 @@ El motor wiki, la superficie de marketing y los artículos de intención de dise
 El motor de análisis GIS, el artículo de plataforma que lo enmarca junto a la capa de renderizado y la intención de diseño de experiencia de usuario.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: location-intelligence-applications -->
-- [[app-orchestration-gis]] — El motor de análisis espacial sin estado para cálculos de geometría lineal y clasificación de co-localización; una función pura sin datos canónicos que puede reprovisarse apuntando una instancia nueva a la capa de datos.
-- [[location-intelligence-platform|Plataforma de inteligencia de ubicación]] — La plataforma completa de inteligencia de ubicación: app-orchestration-gis (análisis) emparejado con el motor de renderizado; cada conjunto de datos, algoritmo y decisión de renderizado bajo el control del cliente.
+- [[app-orchestration-gis]] — La canalización de datos en Python que produce las clasificaciones de co-ubicación de Woodfine y el mapa interactivo — geometría de clústeres reconstruida en un horario nocturno a partir de conjuntos de datos fuente, publicada como mosaicos de mapa estáticos.
+- [[location-intelligence-platform|Plataforma de inteligencia de ubicación]] — La plataforma completa de inteligencia de ubicación: una canalización nocturna app-orchestration-gis emparejada con una capa de renderizado interactiva; cada conjunto de datos, algoritmo y decisión de renderizado bajo el control del cliente.
 - [[location-intelligence-ux|Experiencia de inteligencia de ubicación]] — La filosofía de diseño Conclusión Primero: conclusiones de nivel ordenadas en lugar de puntos de datos individuales, para que los usuarios vean los nodos comerciales más defendibles a zoom nacional antes de profundizar en operadores individuales.
 <!-- END AUTO-GENERATED -->
 
@@ -68,10 +68,10 @@ La puerta de entrada estructurada que admite archivos externos a un Totebox, y e
 Superficies dedicadas a un dominio operativo específico — Modelado de Información de Edificios y flujos de trabajo de propiedad inmobiliaria.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: domain-applications -->
-- [[bim-and-real-property-surfaces|Superficies BIM y propiedad inmobiliaria]] — Cómo PointSav trata el Modelado de Información de Edificios como un dominio operativo de primera clase, con herramientas de sistema de diseño dedicadas y disciplina de mantenimiento de registros ISO 19650.
+- [[bim-and-real-property-surfaces|Superficies BIM y propiedad inmobiliaria]] — Cómo PointSav trata el Modelado de Información de Edificios como un dominio operativo distinto — un sistema de diseño de nivel cliente separado, una ubicación real en el Plan de Cuentas y superficies de consola específicas de BIM aún en fase de investigación.
 <!-- END AUTO-GENERATED -->
 
-Artículos adicionales planificados para este dominio — herramientas del sistema de diseño para BIM, el enfoque de archivos planos ISO 19650, convenciones de interfaz AEC y la brecha entre las herramientas de autoría BIM y los flujos de trabajo del gestor inmobiliario — aún no están escritos.
+Artículos adicionales planificados para este dominio — herramientas del sistema de diseño para BIM, convenciones de interfaz AEC y la brecha entre las herramientas de autoría BIM y los flujos de trabajo del gestor inmobiliario — aún no están escritos.
 
 ## Véase también
 
