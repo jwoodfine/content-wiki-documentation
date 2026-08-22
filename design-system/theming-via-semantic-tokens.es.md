@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Tematización mediante tokens semánticos"
 slug: theming-via-semantic-tokens
-short_description: "Artículo de contexto sobre los temas claro/oscuro como sustitución de tokens semánticos en lugar de una hoja de estilos paralela, fundamentado en el grupo theme.dark ya publicado del paquete PointSav (27 tokens, conmutador [data-theme=\\"dark\\"]) y situado frente al mismo patrón en Carbon, Material 3 y Radix — una técnica establecida, sin pretensión de novedad."
+short_description: "Artículo de contexto sobre los temas claro/oscuro como sustitución de tokens semánticos en lugar de una hoja de estilos paralela, fundamentado en el grupo theme.dark ya publicado del paquete PointSav (28 tokens, conmutador [data-theme=\\"dark\\"]) y situado frente al mismo patrón en Carbon, Material 3 y Radix — una técnica establecida, sin pretensión de novedad."
 category: design-system
 type: topic
 content_type: topic
@@ -19,7 +19,7 @@ cites: []
 ---
 
 El modo oscuro, en este sistema de diseño, no es una segunda hoja de estilos.
-Es una sustitución: los mismos 37 roles semánticos que estilizan cada
+Es una sustitución: los mismos 53 roles semánticos que estilizan cada
 superficie clara — `surface-base`, `ink-primary`, `border-subtle`,
 `interactive-primary` — se vuelven a vincular a valores optimizados para
 oscuridad cuando un único atributo, `data-theme="dark"`, aparece en el
@@ -36,24 +36,24 @@ popularizaron el patrón.
 ## El mecanismo, tal como se envía
 
 El paquete publicado, `tokens.full.json`, transporta el tema oscuro completo
-como un solo grupo: `theme.dark`, 27 tokens junto a los 37 roles del tema
+como un solo grupo: `theme.dark`, 28 tokens junto a los 53 roles del tema
 claro en `theme.semantic`. El propio campo de descripción del grupo enuncia
 el mecanismo de conmutación — "Dark mode semantic overrides — applied via
 `[data-theme='dark']` on the root element" (anulaciones semánticas del modo
 oscuro, aplicadas mediante `[data-theme='dark']` en el elemento raíz) — y su
 composición cuenta la historia arquitectónica:
 
-- **20 de los 27 tokens anulan un rol semántico por su nombre.**
+- **La mayoría del grupo anula un rol semántico por su nombre.**
   `surface-base`, que en el tema claro se resuelve a blanco, se convierte en
   `#1f2125` (el paso primitivo neutral-90) en oscuro. `ink-primary` pasa de
   casi negro a `#f5f6f8` (neutral-10). `border-subtle`, `focus-ring`,
   `interactive-primary`, los colores de estado de precaución, crítico y
   positivo — cada uno conserva su nombre y cambia su valor.
-- **7 tokens existen solo en oscuro.** `surface-code` (un fondo de bloque de
-  código casi negro, más oscuro que la página, para preservar la
-  profundidad), `ink-on-inverse` y cinco colores específicos del wiki —
-  enlace, enlace inexistente y tres roles de resaltado de sintaxis — cubren
-  los casos en que el modo oscuro no es un espejo del claro, sino que
+- **Un conjunto más pequeño existe solo en oscuro.** `surface-code` (un fondo
+  de bloque de código casi negro, más oscuro que la página, para preservar
+  la profundidad), `ink-on-inverse` y varios colores específicos del wiki —
+  enlace, enlace inexistente y roles de resaltado de sintaxis — cubren los
+  casos en que el modo oscuro no es un espejo del claro, sino que
   necesita decisiones propias.
 
 Dos detalles del mapa oscuro merecen atención. Primero, la dirección del

@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Theming via semantic tokens"
 slug: theming-via-semantic-tokens
-short_description: "Background article on light/dark theming as semantic-token substitution rather than a parallel stylesheet, grounded in the PointSav bundle's shipped theme.dark group (27 tokens, [data-theme=\\"dark\\"] switch) and situated against the same pattern in Carbon, Material 3, and Radix — an established technique, not a novelty claim."
+short_description: "Background article on light/dark theming as semantic-token substitution rather than a parallel stylesheet, grounded in the PointSav bundle's shipped theme.dark group (28 tokens, [data-theme=\\"dark\\"] switch) and situated against the same pattern in Carbon, Material 3, and Radix — an established technique, not a novelty claim."
 category: design-system
 type: topic
 content_type: topic
@@ -19,7 +19,7 @@ cites: []
 ---
 
 Dark mode, in this design system, is not a second stylesheet. It is a
-substitution: the same 37 semantic roles that style every light surface —
+substitution: the same 53 semantic roles that style every light surface —
 `surface-base`, `ink-primary`, `border-subtle`, `interactive-primary` — are
 re-bound to dark-optimized values when a single attribute,
 `data-theme="dark"`, appears on the document's root element. Components never
@@ -35,22 +35,22 @@ situate it against the systems that popularized the pattern.
 ## The mechanism, as shipped
 
 The published bundle, `tokens.full.json`, carries the entire dark theme as
-one group: `theme.dark`, 27 tokens sitting alongside the 37 light-theme roles
-in `theme.semantic` (Correction, 2026-08-02: both counts are stale — real `theme.dark` has **28** leaves and real `theme.semantic` has **53**, not 37; same stale-count issue found on `what-is-a-design-token.md` and `component-recipes-vs-raw-tokens.md` in this same category. Flagged, not resolved.). The group's own description field states the switching
+one group: `theme.dark`, 28 tokens sitting alongside the 53 light-theme roles
+in `theme.semantic`. The group's own description field states the switching
 mechanism — "Dark mode semantic overrides — applied via `[data-theme='dark']`
 on the root element" — and its composition tells the architectural story:
 
-- **20 of the 27 tokens override a semantic role by name.** `surface-base`,
+- **Most of the group overrides a semantic role by name.** `surface-base`,
   which resolves to white in the light theme, becomes `#1f2125` (the
   neutral-90 primitive step) in dark. `ink-primary` flips from near-black to
   `#f5f6f8` (neutral-10). `border-subtle`, `focus-ring`,
   `interactive-primary`, the caution/critical/positive support colors — each
   keeps its name and changes its value.
-- **7 tokens exist only in dark.** `surface-code` (a near-black code-block
+- **A smaller set exists only in dark.** `surface-code` (a near-black code-block
   background darker than the page, to preserve depth), `ink-on-inverse`, and
-  five wiki-specific colors — link, missing-link, and three
-  syntax-highlighting roles — cover cases where dark mode is not a mirror of
-  light but needs its own decisions.
+  several wiki-specific colors — link, missing-link, and syntax-highlighting
+  roles — cover cases where dark mode is not a mirror of light but needs its
+  own decisions.
 
 Two details in the dark map repay attention. First, hover direction reverses:
 in the light theme, `interactive-primary` is the primary-60 blue and its
