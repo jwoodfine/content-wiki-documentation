@@ -24,7 +24,7 @@ In the PointSav platform, `service-slm` is the Compounding Doorman. It is the so
 
 The Doorman enforces four disciplines simultaneously on every call:
 
-**Sanitise outbound, rehydrate inbound.** [[architecture-decisions|SYS-ADR-07]] prohibits structured data from routing through AI. Before any request leaves the Doorman boundary, identifiers, foreign keys, and structured fields are replaced with opaque tokens. After the response returns, the tokens are resolved back to their original values. The AI model sees only prose and opaque tokens; it never receives or returns structured records. This is what makes the audit-routing path reversible and auditable (see [[disclosure-substrate]]).
+**Redaction on the apprenticeship path.** [[architecture-decisions|SYS-ADR-07]] prohibits structured data from routing through AI. The Doorman's redaction logic strips credentials and identifiers from every brief, attempt, and verdict before it's captured into the apprenticeship corpus — the path that produces training data. A general sanitise-outbound/rehydrate-inbound tokenization on every Ring 3 call is the design intent, not yet built beyond that corpus-capture path.
 
 **Three-tier compute routing.** The Doorman selects among three compute tiers per request shape and budget policy (see [[four-tier-slm-substrate]]):
 - **Tier A — local**: OLMo 3 7B on the customer's own hardware. Zero marginal cost, full data locality. Default for most operations.
@@ -53,9 +53,8 @@ The compounding loop closes because the audit ledger that records what the Doorm
 The metaphor maps precisely to the operational discipline:
 
 - A doorman greets every guest — every request enters through this boundary.
-- A doorman checks identification — the Doorman validates `moduleId` and sanitises inputs.
+- A doorman checks identification — the Doorman validates `moduleId`.
 - A doorman directs guests to the right destination — routing to local, GPU burst, or external API per policy.
-- A doorman carries bags through the door — rehydrating the response with full identifiers stripped at outbound.
 - A doorman keeps a log of who came and went — the audit ledger.
 - A doorman never enters the rooms themselves — the Doorman never writes to the authoritative knowledge graph; it only proposes, per [[architecture-decisions|SYS-ADR-07]].
 
@@ -69,17 +68,7 @@ This is what allows a deployment to operate Ring 3 at any trust level — from f
 
 ## Implementation state
 
-The Doorman (`service-slm`) is operational on the workspace VM. It binds at `127.0.0.1:9080`, routes Tier A to the local model service, and enforces sanitise-outbound and rehydrate-inbound discipline on every call. The audit ledger writes to `data/audit-ledger/<tenant>/<YYYY-MM>.jsonl`.
-
-**Correction (2026-07-18):** the bind address checks out (`127.0.0.1:9080`, confirmed
-against `SLM_BIND_ADDR` in the live deploy config), but the audit ledger path does not.
-The real env var is `SLM_AUDIT_DIR` (`slm-doorman-server/src/main.rs`), with the
-workspace dogfood deployment explicitly setting it to `/var/lib/local-doorman/audit/`
-(default when unset: `$HOME/.service-slm/audit/`) — not `data/audit-ledger/<tenant>/
-<YYYY-MM>.jsonl` as this article states. Whether the per-tenant/per-month filename
-structure inside that directory matches this article's `<tenant>/<YYYY-MM>.jsonl` shape
-was not independently re-verified here. **Flagged, not silently rewritten** — needs
-project-totebox confirmation of the real internal layout before this line is corrected.
+The Doorman (`service-slm`) is operational on the workspace VM. It binds at `127.0.0.1:9080` and routes Tier A to the local model service. The audit ledger writes daily files (`<YYYY-MM-DD>.jsonl`) to a directory set by `SLM_AUDIT_DIR` — `/var/lib/local-doorman/audit/` on the workspace deployment, `$HOME/.service-slm/audit/` by default when unset.
 
 Tier B integration (Yo-Yo GPU burst) is in progress. Tier C external API routing is available for narrow precision tasks where the operator has explicitly configured an allowlist.
 

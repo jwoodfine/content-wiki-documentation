@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Doorman compuesto"
 slug: compounding-doorman
-short_description: "El patrón operativo en el corazón de sustratos de IA soberana: un único servicio que media cada llamada de cómputo externa, aplica disciplina de desinfectar-e-rehidratar, registra cada evento en un libro mayor de auditoría y acumula señal de capacitación que compone el sustrato a lo largo del tiempo."
+short_description: "El patrón operativo en el corazón de sustratos de IA soberana: un único servicio que media cada llamada de cómputo externa, registra cada evento en un libro mayor de auditoría y acumula señal de capacitación que compone el sustrato a lo largo del tiempo."
 category: substrate
 type: topic
 content_type: topic
@@ -17,7 +17,7 @@ paired_with: compounding-doorman.md
 
 ## Adaptación estratégica — El Doorman Compuesto
 
-El **Doorman Compuesto** es el patrón operativo que define los sustratos de IA soberanos. Un único servicio media cada llamada de cómputo externo. Aplica la disciplina de saneamiento y rehidratación en ambos extremos de la llamada. Registra cada evento en un libro mayor de auditoría inmutable. Y acumula señal de entrenamiento que compone el sustrato con el tiempo: cada interacción hace más precisa la siguiente, sin que ningún dato bruto abandone la infraestructura del cliente.
+El **Doorman Compuesto** es el patrón operativo que define los sustratos de IA soberanos. Un único servicio media cada llamada de cómputo externo. Registra cada evento en un libro mayor de auditoría inmutable. Y acumula señal de entrenamiento que compone el sustrato con el tiempo: cada interacción hace más precisa la siguiente, sin que ningún dato bruto abandone la infraestructura del cliente.
 
 En la plataforma PointSav, [[service-slm]] es el Doorman Compuesto. Es el único servicio del Anillo 3 de la [[three-ring-architecture]]. Toda solicitud que toque un modelo de inferencia de IA pasa por este límite, y solo por este límite.
 
@@ -25,7 +25,7 @@ En la plataforma PointSav, [[service-slm]] es el Doorman Compuesto. Es el único
 
 El Doorman aplica cuatro disciplinas en cada llamada:
 
-**Sanear los datos salientes, rehidratar los entrantes.** SYS-ADR-07 prohíbe que los datos estructurados se enruten a través de IA. Antes de que cualquier solicitud cruce el límite del Doorman, los identificadores, las claves foráneas y los campos estructurados se sustituyen por tokens opacos. Tras recibir la respuesta, los tokens se resuelven de vuelta a sus valores originales. El modelo de IA recibe y devuelve solo prosa y tokens opacos; nunca ve ni devuelve registros estructurados. Esto hace que la ruta de auditoría sea reversible y verificable.
+**Saneamiento en la vía de aprendizaje.** SYS-ADR-07 prohíbe que los datos estructurados se enruten a través de IA. La lógica de saneamiento del Doorman elimina credenciales e identificadores de cada brief, intento y veredicto antes de capturarlo en el corpus de aprendizaje — la vía que produce datos de entrenamiento. Un saneamiento general de salida y rehidratación de entrada en cada llamada del Anillo 3 es la intención de diseño, aún no construida más allá de esa vía de captura del corpus.
 
 **Enrutamiento de cómputo en tres niveles.** El Doorman selecciona entre tres niveles de cómputo según la forma de la solicitud y la política de presupuesto (ver [[four-tier-slm-substrate]]): Nivel A (OLMo 3 7B local en el hardware propio del cliente, coste marginal cero), Nivel B (OLMo 3.1 32B Think en una instancia de [[yoyo-compute-substrate|GPU efímera]]), y Nivel C (APIs de proveedores externos con lista de permitidos explícita por solicitud). La configuración del cliente determina la selección; no se requiere elección manual por solicitud.
 
