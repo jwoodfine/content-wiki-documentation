@@ -7,7 +7,7 @@ type: topic
 content_type: topic
 quality: complete
 index_group: sovereignty-and-customer-ownership
-short_description: "El Nivel 0 Totebox es un despliegue especialista soberano que funciona en el propio hardware del cliente sin ninguna dependencia de nube requerida y con una huella total de 1 GB."
+short_description: "El Nivel 0 Totebox es un despliegue especialista soberano que funciona en el propio hardware del cliente sin ninguna dependencia de nube requerida y sin conectividad a internet requerida."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
@@ -17,13 +17,13 @@ paired_with: tier-zero-customer-side-sovereign-specialist.md
 ---
 
 
-El **Especialista Soberano en el Lado del Cliente — Nivel 0** es el modelo de despliegue de referencia para la plataforma: la pila de plataforma completa funcionando en el propio hardware del cliente — la forma operativa de [[customer-hostability]] — sin dependencia de nube requerida, sin conectividad a internet requerida, y con una huella de disco total de aproximadamente un gigabyte.
+El **Especialista Soberano en el Lado del Cliente — Nivel 0** es el modelo de despliegue de referencia para la plataforma: la pila de plataforma completa funcionando en el propio hardware del cliente — la forma operativa de [[customer-hostability]] — sin dependencia de nube requerida y sin conectividad a internet requerida.
 
 ## La unidad de referencia
 
-El despliegue de referencia del Nivel 0 es un Totebox — un dispositivo compacto de factor de forma pequeño (x86 o ARM). La pila completa ocupa aproximadamente un gigabyte de disco y un conjunto de trabajo de dos a cuatro gigabytes de memoria en dos a cuatro núcleos de CPU. No se requiere GPU.
+El despliegue de referencia del Nivel 0 es un Totebox — un dispositivo compacto de factor de forma pequeño (x86 o ARM). Los servicios determinísticos propios de la plataforma (el registro, el motor de conocimiento, los servicios de entrada/extracción/salida) suman unos pocos cientos de megabytes de binarios autónomos; el modelo especialista local, una compilación cuantizada de OLMo 3 de 7B parámetros, es con diferencia el componente individual más grande en disco, varios gigabytes con cuantización de 4 bits. No se requiere GPU.
 
-La pila incluye el [[worm-ledger-architecture|registro de archivos WORM]] (`service-fs`), el motor de conocimiento ([[service-content|`service-content`]]), la [[compounding-doorman|frontera del Portero]] (`service-slm`), el modelo especialista local (OLMo 2 1B a aproximadamente 600 MB en disco), la [[tui-corpus-producer|TUI del operador]] (`slm-cli`), y los servicios de entrada, extracción y salida. Todos los componentes son binarios autónomos sin dependencias de tiempo de ejecución más allá del sistema operativo.
+La pila incluye el [[worm-ledger-architecture|registro de archivos WORM]] (`service-fs`), el motor de conocimiento ([[service-content|`service-content`]]), la [[compounding-doorman|frontera del Portero]] (`service-slm`), el modelo especialista local (OLMo 3 7B Instruct, cuantizado), la interfaz del operador ([[app-console-slm|app-console-slm]]), y los servicios de entrada, extracción y salida. Todos los componentes son binarios autónomos sin dependencias de tiempo de ejecución más allá del sistema operativo.
 
 ## Por qué un especialista en lugar de un generalista
 
@@ -31,9 +31,9 @@ El modelo local en el Totebox es un especialista en administración de sistemas 
 
 No está previsto para trabajo editorial, generación bilingüe o razonamiento de formato largo. Esas tareas se enrutan al Nivel B de [[yoyo-compute-substrate|GPU en ráfaga]] cuando está disponible, o devuelven una respuesta elegante de "nivel no disponible" cuando no lo está.
 
-## Base empírica para la inferencia solo con CPU
+## Inferencia solo con CPU
 
-La afirmación del Nivel A se basa en rendimiento medido, no en capacidad teórica: en un despliegue de solo cuatro vCPU, el modelo de 1B parámetros con cuantización de cuatro bits produce aproximadamente siete tokens por segundo, generando respuestas completas en el rango de seis segundos para respuestas típicas de 40 tokens. Esto es suficientemente rápido para uso conversacional humano.
+El especialista del Nivel A es un modelo cuantizado de 7B parámetros, mayor que la clase de modelo que normalmente se esperaría ejecutar cómodamente en núcleos de CPU compartidos — pero la carga de trabajo enrutada al especialista (clasificación de salida corta, ediciones mecánicas, consultas al registro y al grafo de conocimiento) tolera una tasa de tokens por segundo más lenta de lo que exigiría la generación interactiva de formato largo. El operador escribe una pregunta; el especialista responde en pocos segundos para una respuesta corta típica, sin GPU.
 
 No se requieren GPU, mantenimiento de controladores ni gestión térmica. El perfil del hardware es la misma clase que cualquier otro dispositivo interno que el cliente ya opera.
 

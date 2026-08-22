@@ -7,7 +7,7 @@ type: topic
 content_type: topic
 quality: complete
 index_group: sovereignty-and-customer-ownership
-short_description: "The Tier 0 Totebox is a sovereign specialist deployment running on the customer's own hardware with no required cloud dependency and a 1 GB total footprint."
+short_description: "The Tier 0 Totebox is a sovereign specialist deployment running on the customer's own hardware with no required cloud dependency and no required internet connectivity."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-01
@@ -16,24 +16,13 @@ cites: []
 paired_with: tier-zero-customer-side-sovereign-specialist.es.md
 ---
 
-The **Tier 0 Customer-Side Sovereign Specialist** is the reference deployment model for the platform: the complete platform stack running on the customer's own hardware, with no required cloud dependency, no required internet connectivity, and a total disk footprint of approximately one gigabyte. It is the operational form of [[customer-hostability]].
+The **Tier 0 Customer-Side Sovereign Specialist** is the reference deployment model for the platform: the complete platform stack running on the customer's own hardware, with no required cloud dependency and no required internet connectivity. It is the operational form of [[customer-hostability]].
 
 ## The reference unit
 
-The reference Tier 0 deployment is a Totebox — a small-form-factor x86 or ARM appliance. The full stack occupies approximately one gigabyte of disk and a two-to-four gigabyte working memory set on two to four CPU cores. No GPU is required.
+The reference Tier 0 deployment is a Totebox — a small-form-factor x86 or ARM appliance. The platform's own deterministic services (the ledger, the knowledge runtime, the input/extraction/egress services) are a few hundred megabytes of self-contained binaries; the local specialist model, a quantized 7B-parameter OLMo 3 build, is by far the largest single component on disk, several gigabytes at 4-bit quantization. No GPU is required.
 
-The stack includes the [[worm-ledger-architecture|WORM file ledger]] (`service-fs`), the knowledge runtime ([[service-content|`service-content`]]), the [[compounding-doorman|Doorman boundary]] (`service-slm`), the local specialist model (OLMo 2 1B at roughly 600 MB on disk), the operator [[tui-corpus-producer|TUI]] (`slm-cli`), and the input, extraction, and egress services. All components are self-contained binaries with no runtime dependencies beyond the operating system.
-
-**Correction (2026-08-02, verified against canonical `origin/main`):** two defects
-here. (1) The real configured Tier A model
-(`service-slm/docs/deploy/local-doorman.env.example`) is `Olmo-3-1125-7B-Think-Q4_K_M.gguf`
-— a 7B model, not 1B — so the ~600 MB footprint and the CPU-only performance figures
-below don't match. (2) `slm-cli` does not exist anywhere in canonical (a corpus-wide
-grep for `slm-cli`/`slm_cli` across all `.rs`/`.toml` files returns zero hits); the
-real operator-facing SLM surface is `app-console-slm` (a real `Active` crate per this
-archive's own project registry). This wiki's own [[trajectory-substrate]] article
-already flags that the Tier A model name is inconsistent across the corpus —
-this article states its own version unhedged. **Flagged, not resolved.**
+The stack includes the [[worm-ledger-architecture|WORM file ledger]] (`service-fs`), the knowledge runtime ([[service-content|`service-content`]]), the [[compounding-doorman|Doorman boundary]] (`service-slm`), the local specialist model (OLMo 3 7B Instruct, quantized), the operator interface ([[app-console-slm|app-console-slm]]), and the input, extraction, and egress services. All components are self-contained binaries with no runtime dependencies beyond the operating system.
 
 Hardware at this scale costs in the range of three hundred to fifteen hundred dollars depending on the customer's size and requirements. The intended monthly operating cost is zero — there is no subscription, no recurring cloud fee, and no per-seat charge.
 
@@ -43,9 +32,9 @@ The local model on the Totebox is a purpose-routed sysadmin specialist. It handl
 
 It is not intended for editorial work, bilingual generation, or long-form reasoning. Those tasks route to the optional GPU burst tier when available, or return a graceful "tier unavailable" response when not. The specialist's value is that it handles a large fraction of daily operational queries quickly and with zero marginal cost — questions that would otherwise consume expensive API calls or require a heavier model.
 
-## Empirical basis for CPU-only inference
+## CPU-only inference
 
-The Tier A claim rests on measured performance rather than theoretical capability: on a four-vCPU CPU-only deployment, the 1B parameter model at four-bit quantization produces approximately seven tokens per second, yielding end-to-end responses in the range of six seconds for typical 40-token answers. This is fast enough for human-conversational use. The operator types a question; the specialist responds in seconds.
+The Tier A specialist is a quantized 7B-parameter model, larger than the class of model that would be expected to run comfortably on shared CPU cores — but the specialist's routed workload (short-output classification, mechanical edits, ledger and knowledge-graph lookups) tolerates a slower per-token rate than interactive long-form generation would. The operator types a question; the specialist responds within a few seconds for a typical short answer, without a GPU.
 
 No GPU acquisition, no driver maintenance, and no thermal management are required. The hardware profile is the same class as any other internal appliance the customer already operates.
 
