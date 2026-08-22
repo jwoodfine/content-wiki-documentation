@@ -6,7 +6,7 @@ slug: sel4-aarch64-qemu-substrate-target
 short_description: "Hardware foundation for the unikernel platform — formally verified seL4 on AArch64 with QEMU's virt machine as the development, testing, and CI environment."
 category: substrate
 index_group: cryptographic-and-microkernel-primitives
-last_edited: 2026-06-23
+last_edited: 2026-08-22
 editor: pointsav-engineering
 status: stable
 bcsc_class: no-disclosure-implication
@@ -157,20 +157,14 @@ static ELF, entry point `0xffffff8040000000`.
 elfloader image was loaded by QEMU, producing kernel output through the PL011 UART
 and handing off to a minimal rootserver.
 
-**Phase 1C.d** (completed 2026-05-29): moonshot-toolkit v0.3.0 automates the full
-pipeline. The command:
+**Phase 1C.d** (completed 2026-05-29): moonshot-toolkit v0.3.1 automates the full
+pipeline. `moonshot-toolkit` is its own standalone workspace, not a member of the
+monorepo's root workspace, so building it requires running from its own directory or
+pointing at its manifest directly:
 
 ```
-cargo run -p moonshot-toolkit -- build moonshot-toolkit/examples/hello-world.toml
+cargo run --manifest-path moonshot-toolkit/Cargo.toml -- build moonshot-toolkit/examples/hello-world.toml
 ```
-
-**Correction (2026-08-02, verified against canonical `origin/main`):** this command
-would fail — `moonshot-toolkit` declares its own standalone `[workspace]` and is not
-a member of the monorepo root workspace (`grep moonshot-toolkit` against the root
-`Cargo.toml` returns no match), so `-p moonshot-toolkit` from the monorepo root
-errors with "package ID did not match." The real invocation is `cargo run
---manifest-path moonshot-toolkit/Cargo.toml -- build <spec>`, per this archive's own
-`CLAUDE.md`. **Flagged, not resolved.**
 
 produces `build/system-image.bin` with entry point `0x40400000`. Booting with:
 
