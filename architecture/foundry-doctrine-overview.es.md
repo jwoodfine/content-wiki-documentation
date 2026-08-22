@@ -7,7 +7,7 @@ index_group: platform-structure
 type: topic
 content_type: topic
 quality: complete
-short_description: Resumen público fiel de la carta constitucional de PointSav — seis pilares, cincuenta y dos afirmaciones de salto adelante, ocho invenciones operativas entre industrias, y el modelo económico que las sostiene.
+short_description: Resumen público fiel de la carta constitucional de PointSav — seis pilares, cincuenta y cuatro afirmaciones de salto adelante, ocho invenciones operativas entre industrias, y el modelo económico que las sostiene.
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25
@@ -20,9 +20,9 @@ cites:
 paired_with: foundry-doctrine-overview.md
 ---
 
-La **arquitectura [[pointsav-overview|PointSav]] 2030** es la carta constitucional del entorno de desarrollo de software de PointSav. Define los seis pilares de la arquitectura de la plataforma, cincuenta y dos afirmaciones de salto adelante que constituyen sus compromisos estructurales, ocho invenciones operativas entre industrias, y el [[economic-model|modelo económico]] que la sostiene. La propia doctrina es un artefacto público — versionada, firmada y publicada bajo CC BY 4.0 en cada versión MINOR. Véase [[foundry-doctrine-architecture|la visión arquitectónica]] para el conjunto detallado de afirmaciones.
+La **arquitectura [[pointsav-overview|PointSav]] 2030** es la carta constitucional del entorno de desarrollo de software de PointSav. Define los seis pilares de la arquitectura de la plataforma, cincuenta y cuatro afirmaciones de salto adelante que constituyen sus compromisos estructurales, ocho invenciones operativas entre industrias, y el [[economic-model|modelo económico]] que la sostiene. La propia doctrina es un artefacto público — versionada, firmada y publicada bajo CC BY 4.0 en cada versión MINOR. Véase [[foundry-doctrine-architecture|la visión arquitectónica]] para el conjunto detallado de afirmaciones.
 
-Este artículo es un resumen público de la carta constitucional v0.1.0 ALPHA (ratificada el 30 de abril de 2026). El texto autorizado está disponible a través del repositorio `pointsav/factory-release-engineering`.
+Este artículo es un resumen público de la carta constitucional v0.1.0 ALPHA (ratificada el 30 de abril de 2026).
 
 ## Los Seis Pilares
 

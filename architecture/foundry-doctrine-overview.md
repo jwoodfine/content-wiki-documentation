@@ -7,7 +7,7 @@ index_group: platform-structure
 type: topic
 content_type: topic
 quality: complete
-short_description: "A faithful public summary of the PointSav constitutional charter — six pillars, fifty-two structural claims, eight cross-industry inventions, and the economic model."
+short_description: "A faithful public summary of the PointSav constitutional charter — six pillars, fifty-four structural claims, eight cross-industry inventions, and the economic model."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25
@@ -25,9 +25,9 @@ cites:
 paired_with: foundry-doctrine-overview.es.md
 ---
 
-**PointSav Architecture 2030** is the constitutional charter for the [[pointsav-overview|PointSav]] software development environment. It defines the six pillars of the platform's architecture, fifty-two structural claims that constitute its operational commitments, eight cross-industry operational inventions, and the [[economic-model|economic model]] that sustains it across a small core team, paid contributors, and a large open-contributor population. The text is itself a public artifact — versioned, signed, and published under CC BY 4.0 at every MINOR version bump. See [[foundry-doctrine-architecture|the architecture overview]] for the detailed claim set.
+**PointSav Architecture 2030** is the constitutional charter for the [[pointsav-overview|PointSav]] software development environment. It defines the six pillars of the platform's architecture, fifty-four structural claims that constitute its operational commitments, eight cross-industry operational inventions, and the [[economic-model|economic model]] that sustains it across a small core team, paid contributors, and a large open-contributor population. The text is itself a public artifact — versioned, signed, and published under CC BY 4.0 at every MINOR version bump. See [[foundry-doctrine-architecture|the architecture overview]] for the detailed claim set.
 
-This article is a public summary of v0.1.0 ALPHA (ratified 2026-04-30). The authoritative text is available via the `pointsav/factory-release-engineering` repository. (Correction, 2026-08-02, verified against canonical `origin/main`: this repo's real content is purely license/legal-governance tooling — LICENSE-MATRIX, CLA, SPDX headers, license-propagation scripts. No doctrine/charter document exists anywhere in it. Same finding on the sibling article `foundry-doctrine-architecture.md`, which also has an internal "52 vs. 54 claims" contradiction this article doesn't share — this article is consistently "fifty-two" throughout. Flagged, not resolved — needs a real source located or the citation removed.)
+This article is a public summary of v0.1.0 ALPHA (ratified 2026-04-30).
 
 ## Core Structural Invariants
 
