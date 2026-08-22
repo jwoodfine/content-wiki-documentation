@@ -20,7 +20,7 @@ The platform moves all external network connections to the outermost boundary of
 ## Key Takeaways
 
 - All inbound internet traffic is processed exclusively in Ring 1 — the boundary layer. No external payload reaches Ring 2 until it has been sanitized, validated, and stripped of transport metadata by the appropriate Ring 1 ingest service. The public internet is never in direct contact with Ring 2 or Ring 3.
-- Ring 1 is implemented as a set of per-channel MCP server processes (one per ingest type: email, filesystem, people records, external input). Each accepts, sanitizes, and passes only clean structured records inward — a compromised ingest channel cannot escalate to the ledger layer.
+- Ring 1 is implemented as a set of per-channel ingest services (email, filesystem, people records, external input). Three of the four — email, filesystem, people records — expose their sanitized-record interface as an MCP server; the external-input channel exposes the same boundary over plain HTTP instead. Each accepts, sanitizes, and passes only clean structured records inward — a compromised ingest channel cannot escalate to the ledger layer.
 - The audit ledger in Ring 2 records what the system acted on, not what arrived at the network boundary. This is a precondition of the [[worm-ledger-architecture|WORM ledger design]]: clean, validated events — not raw traffic — are what get written to the immutable record.
 - Ring 2 has no outbound internet path except through [[service-egress]]. The boundary is enforced in both directions: inbound via Ring 1 ingest, outbound via the egress service.
 
@@ -37,6 +37,8 @@ Each Ring 1 process:
 1. Accepts the inbound payload from the external source.
 2. Sanitizes the payload — removes transport metadata, validates structure, discards malformed input.
 3. Passes only the cleaned, structured record inward to Ring 2.
+
+Email, filesystem, and people-record ingest each expose this boundary as an MCP server; the external-input channel exposes it over plain HTTP.
 
 The public internet is never in direct contact with Ring 2 or Ring 3. Ring 2 has no outbound internet path except through service-egress.
 
