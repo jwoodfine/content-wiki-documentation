@@ -44,9 +44,7 @@ The platform is built on six foundational commitments that take precedence over 
 
 **Human checkpoint at F12 is mandatory.** [[architecture-decisions|SYS-ADR-10]] — the final human checkpoint before any state is committed to a verified ledger — is never bypassed. Automation serves the human; no automated path exists around F12.
 
-## The Fifty-Two Leapfrog Claims
-
-**Correction (2026-08-02, verified against canonical `origin/main`):** two issues. (1) This heading says "Fifty-Two" but the body text below says "54 numbered structural claims" — an internal contradiction within this same article, and inconsistent with the sibling article `foundry-doctrine-overview.md`, which consistently says fifty-two throughout. (2) The claim that "the authoritative text is available via the `pointsav/factory-release-engineering` repository" doesn't check out — that repo's real content (confirmed via commit log and full-text search) is purely license/legal-governance tooling (LICENSE-MATRIX, CLA, SPDX headers, license-propagation scripts); no doctrine/charter document, "six pillars," "leapfrog claims," or "cross-industry inventions" text exists anywhere in it. **Flagged, not resolved** — needs a real source located (or the citation removed) and the 52-vs-54 contradiction resolved.
+## The Fifty-Four Leapfrog Claims
 
 The doctrine enumerates 54 numbered structural claims that together constitute the platform's competitive positioning relative to hyperscaler software-as-a-service. Each claim identifies a structural property of the platform substrate that hyperscaler economics or architecture structurally foreclose — not a feature advantage, but a property that cannot be replicated without changing the underlying business model.
 

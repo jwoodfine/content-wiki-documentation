@@ -34,7 +34,7 @@ La plataforma se construye sobre seis compromisos fundamentales que tienen prior
 
 **El punto de control humano en F12 es obligatorio.** SYS-ADR-10 — el punto de control humano final antes de que cualquier estado se confirme en un libro de contabilidad verificado — nunca se omite.
 
-## Las Cincuenta y Dos Afirmaciones de Salto
+## Las Cincuenta y Cuatro Afirmaciones de Salto
 
 La doctrina enumera 54 afirmaciones estructurales numeradas que juntas constituyen el posicionamiento de la plataforma frente al software como servicio de hiperescaladores. Cada afirmación identifica una propiedad estructural del sustrato de la plataforma que la economía o arquitectura de los hiperescaladores no puede replicar sin cambiar el modelo de negocio subyacente.
 
