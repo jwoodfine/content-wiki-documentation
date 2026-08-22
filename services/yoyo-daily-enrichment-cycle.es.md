@@ -1,176 +1,70 @@
 ---
 schema: foundry-doc-v1
-title: "Ciclo Diario de Enriquecimiento Yo-Yo"
+title: "Ciclo diario de enriquecimiento Yo-Yo"
 slug: yoyo-daily-enrichment-cycle
-short_description: "Ventana diaria de lote en GPU que enriquece el DataGraph y acumula datos de entrenamiento — horario fijo, tope de costo estricto y apagado garantizado de la VM."
+short_description: "La ventana nocturna de dos fases en GPU que reconstruye el DataGraph y, una vez habilitada por completo, entrena pesos de adaptador para el modelo de lenguaje local — actualmente ejecutándose solo en modo DataGraph."
 category: services
 index_group: ring-3-ai-gateway
 type: topic
 content_type: topic
 status: stable
-bcsc_class: no-disclosure-implication
-last_edited: 2026-07-18
+bcsc_class: current-fact
+language_protocol: PROSE-TOPIC
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: yoyo-daily-enrichment-cycle.md
 ---
 
-El ciclo diario de enriquecimiento Yo-Yo es la ventana de procesamiento por lotes que
-arranca una máquina virtual con GPU una vez al día para enriquecer el [[ontological-datagraph|DataGraph]] y
-acumular datos de entrenamiento para el [[pointsav-llm|modelo de lenguaje local]]. El ciclo se ejecuta
-a una hora fija, aplica un límite de costo máximo y termina la VM tanto si el trabajo
-concluye antes como si alcanza el límite.
+El ciclo diario de enriquecimiento Yo-Yo es la ventana de lote nocturna en el
+[[yoyo-compute-substrate|nodo GPU de ráfaga]] que reconstruye el
+[[ontological-datagraph|DataGraph]] y, una vez habilitada por completo, entrena pesos de
+adaptador actualizados para el modelo de lenguaje del espacio de trabajo. El ciclo se
+ejecuta en un horario fijo y siempre libera la GPU al final, complete o no ambas fases.
 
-## Propósito
+## Dos fases, no ocho
 
-La VM de trabajo ejecuta un modelo de lenguaje de 7.000 millones de parámetros (OLMo 2 7B)
-en CPU para uso interactivo. Este modelo funciona correctamente para instrucciones cortas,
-pero extrae entidades de documentos con menor precisión que un modelo más grande
-en GPU. El ciclo diario aborda esta limitación arrancando una VM de lotes independiente
-— el nodo Yo-Yo — que carga un modelo de 32.000 millones de parámetros y procesa una
-cola de documentos acumulados durante el día.
+El ciclo es un solo script que ejecuta dos fases secuenciales, cada una
+con su propio presupuesto de tiempo configurable, por defecto de dos horas — aproximadamente
+cuatro horas en total, no una ventana de cuarenta y cinco minutos. Las dos fases no pueden
+superponerse: necesitan acceso exclusivo a la misma GPU, y el script detiene el servidor de
+inferencia antes de que comience la fase de entrenamiento.
 
-Los productos de cada ciclo son:
-- Nuevas entidades nombradas añadidas al DataGraph (almacén de grafos)
-- Pares de entrenamiento por Optimización de Preferencias Directas (DPO) escritos en el corpus de enriquecimiento
+**Fase 1 — Reconstrucción del DataGraph.** La VM de lote arranca, espera a que su servidor de
+inferencia esté saludable, y luego procesa los documentos acumulados del día a través del
+Doorman, escribiendo las entidades extraídas directamente en el DataGraph. Detalle completo:
+[[service-slm-graph-store-migration]].
 
-Cada par DPO registra lo que extrajo el modelo de 32B como salida preferida y lo que
-extrajo el modelo de 7B como referencia, permitiendo afinar el modelo de 7B hacia la
-calidad de extracción del modelo mayor en sucesivas ejecuciones de entrenamiento.
+**Fase 2 — Entrenamiento de adaptador.** Una verificación de umbral cuenta las tuplas de
+entrenamiento acumuladas en dos depósitos de corpus. Una vez que un depósito cruza su piso de
+pares limpios, se escribe un marcador de entrenamiento pendiente y, si está configurado, el
+corpus correspondiente se sincroniza al almacenamiento en la nube. En la VM de lote, un
+script de entrenamiento sondea ese marcador y ejecuta un ajuste fino eficiente en parámetros
+(QLoRA) contra el modelo base cuando aparece uno.
 
-## Las ocho fases
+## Estado actual: el entrenamiento aún no está activo
 
-**Corrección mayor (2026-07-18):** la estructura de fases de esta sección, el nombre del
-script y el límite máximo de 45 minutos en el que se basa no coinciden con el
-orquestador real en producción. El script real es `nightly-run.sh` (no
-`yoyo-daily-cycle.sh` — la misma desactualización de nombre ya señalada en
-[[spot-vm-lifecycle-kill-switch]]), y ejecuta un ciclo de **dos fases**, no ocho: Fase 1
-(reconstrucción del DataGraph) y Fase 2 (Entrenamiento), cada una con un presupuesto
-configurable de forma independiente cuyo valor por defecto es
-`DATAGRAPH_SECONDS=7200` y `TRAINING_SECONDS=7200` — **2 horas cada una, aproximadamente
-4 horas en total**, no el límite de 45 minutos en el que se basa la sección de
-Presupuesto y costo de este artículo. Esto coincide con la estructura de dos fases ya
-verificada en [[elastic-compute-lora-training-pipeline]] (verificada por tarea
-anteriormente en esta revisión) — el planteamiento Fase 1/Fase 2 de ese artículo es el
-correcto; el planteamiento de ocho fases y 45 minutos de este artículo parece describir
-un diseño anterior o distinto. La zona (`us-central1-a`, confirmada mediante el valor
-por defecto de `SLM_YOYO_GCP_ZONE` en el script real) y el tipo de VM/ruta del
-interruptor de emergencia son correctos de forma independiente y no están en disputa.
-**Las cifras de costo más abajo ($0.53/ciclo, ~$16/mes) dependen de la suposición
-incorrecta de 45 minutos** — con la duración real de ~4 horas por ciclo y la misma tarifa
-de $0.71/hora, el costo real sería aproximadamente 6 veces mayor. **Señalado, no
-reescrito silenciosamente** — las ocho fases nombradas más abajo pueden corresponder
-parcialmente a subpasos dentro del script real de dos fases, pero esa correspondencia no
-se ha verificado; necesita confirmación de project-totebox antes de corregir esta
-sección y la tabla de costos.
+Al momento de escribir esto, la mitad de entrenamiento del ciclo se ejecuta en modo
+solo-marcador: la verificación de umbral escribe y despacha el marcador, pero el propio
+script de entrenamiento aún no está habilitado en la imagen en ejecución de la VM de lote —
+una reconstrucción de imagen pendiente es el siguiente paso antes de que entre en vivo. Cada
+ciclo nocturno hoy realiza un enriquecimiento real del DataGraph; ningún adaptador ha sido
+producido aún por esta canalización ejecutándose de principio a fin en su propio horario.
 
-El ciclo es un script Bash (`yoyo-daily-cycle.sh`) que ejecuta ocho fases secuenciales.
-El script escribe un archivo de registro con marca de tiempo para cada ejecución.
+## Costo y la detención garantizada
 
-**Fase 1 — Arranque de la VM.** Si la VM de lotes no está ya en ejecución, se emite
-un comando `gcloud instances start`. La VM arranca desde un disco persistente que
-conserva los pesos del modelo y la configuración del servidor de inferencia del ciclo
-anterior.
+La VM se detiene incondicionalmente al final del ciclo sin importar hasta dónde llegaron las
+fases, y un archivo de interruptor de apagado puede suprimir todo el ciclo de inmediato si se
+establece. Un monitor de inactividad ofrece un respaldo: si el ciclo alguna vez falla en
+detener la VM por sí mismo, el monitor la detiene tras un período sostenido de inactividad,
+acotando el peor de los casos. Al largo real del ciclo de varias horas — no la cifra de
+cuarenta y cinco minutos que asumía una versión desactualizada de este artículo — el costo
+por ciclo es varias veces mayor de lo que sugeriría esa ventana más corta; no se republica
+aquí una cifra exacta actual, ya que necesitaría remedirse contra los presupuestos reales de
+la Fase 1/Fase 2 y los precios actuales de la nube, no arrastrarse desde una suposición ya
+corregida.
 
-**Fase 2 — Estado del servidor de inferencia.** El script consulta el endpoint de estado
-de llama-server (`/health`) cada diez segundos hasta recibir `{"status":"ok"}`. El
-arranque tarda sistemáticamente unos 170 segundos desde el encendido hasta la primera
-respuesta positiva. Si el servidor no responde en diez minutos, el ciclo se interrumpe
-y la VM se detiene.
+## Véase también
 
-**Fase 3 — Circuito Tier B.** La [[soft-slm-tiered-gateway|pasarela de inferencia local]] mantiene un interruptor
-de circuito para el nodo Yo-Yo. El script espera hasta dos minutos a que el circuito se
-cierre, confirmando que la pasarela ha registrado la VM como accesible. Si el circuito
-no se cierra, el ciclo continúa con una advertencia de respaldo a Tier A.
-
-**Fase 4 — Drenaje de enriquecimiento.** Durante el 40 por ciento del presupuesto del
-ciclo (18 minutos con el límite de 45 minutos), el script espera mientras la pasarela
-procesa la cola de enriquecimiento pendiente. En este período, el [[service-content|servicio de contenido]]
-envía fragmentos de documentos al nodo Yo-Yo para la extracción de entidades y escribe
-los pares DPO en el corpus de enriquecimiento. El progreso se registra cada 60 segundos
-con conteos de entidades, pares DPO, utilización de la GPU y uso de VRAM.
-
-**Fase 5 — Verificación del umbral del corpus.** Tras el enriquecimiento, se ejecuta
-`corpus-threshold.py` para contar los datos listos para entrenamiento acumulados. Si los
-conteos superan el umbral configurado, el script escribe archivos marcadores de
-entrenamiento con fecha en `data/training-pending/`. Estos marcadores son la entrada
-de la Fase 6.
-
-**Fase 6 — Activación del [[yo-yo-lora-training-pipeline|entrenamiento LoRA]].** Se deben cumplir tres condiciones para
-que se ejecute el entrenamiento: los marcadores de entrenamiento deben estar presentes,
-las bibliotecas de aprendizaje automático deben estar instaladas en el entorno virtual de
-entrenamiento de la VM de lotes, y debe existir una etiqueta de aprobación del operador
-para la fecha actual. Si las tres se cumplen, el script detiene el servidor de inferencia
-para liberar aproximadamente 16 gigabytes de VRAM e invoca `run-dpo-training.py` por SSH
-con el 45 por ciento del presupuesto (20 minutos con el límite de 45 minutos). El indicador
-`--resume` acumula puntos de control diarios para que cada ejecución extienda el
-entrenamiento del día anterior en lugar de comenzar desde cero.
-
-**Fase 7 — Sincronización con GCS.** Si la variable de entorno
-`SLM_YOYO_WEIGHTS_GCS_BUCKET` está definida y hay marcadores de entrenamiento presentes,
-el corpus de enriquecimiento se sincroniza con el bucket de Cloud Storage configurado.
-Este paso está actualmente desactivado a la espera de una sesión futura que configure
-el bucket.
-
-**Fase 8 — Parada definitiva.** El servidor de inferencia se detiene por SSH, la VM se
-detiene con `gcloud instances stop` y el script espera hasta tres minutos a que la VM
-alcance el estado `TERMINATED`. Una línea de resumen registra el tiempo total transcurrido,
-el delta de entidades, el delta de pares DPO y el estado final de la VM.
-
-## Presupuesto y costo
-
-El ciclo diario opera con un límite máximo de 45 minutos. La VM se detiene
-incondicionalmente al final de la Fase 8, independientemente de si las fases se
-completaron con normalidad.
-
-| Elemento | Valor |
-|---|---|
-| Tipo de VM | g2-standard-4 con NVIDIA L4 24 GB |
-| Zona | us-central1-a |
-| Costo en ejecución | aproximadamente $0.71 por hora |
-| Costo por ciclo (límite de 45 min) | aproximadamente $0.53 por ciclo |
-| Costo en estado TERMINATED | $0.00 |
-| Costo mensual (ciclos diarios) | aproximadamente $16 por mes |
-
-Un archivo de [[spot-vm-lifecycle-kill-switch|interruptor de emergencia]] (`/srv/foundry/data/yoyo-disabled`) suprime todas
-las operaciones de ciclo de vida de la VM de forma inmediata. Crear el archivo impide que
-la Fase 1 emita un comando de arranque. Eliminarlo reanuda el funcionamiento normal en el
-siguiente ciclo programado.
-
-Un temporizador de monitor de inactividad comprueba cada cinco minutos si la VM lleva
-más de 30 minutos en ejecución sin actividad. Si el ciclo diario no logra detener la VM,
-el monitor de inactividad la detendrá como medida de seguridad, evitando la acumulación
-de costos sin límite.
-
-## Formato de los pares DPO
-
-Cada par DPO de enriquecimiento es un archivo JSON escrito en el directorio de
-retroalimentación. El formato es compatible con el DPOTrainer de TRL:
-
-```json
-{
-  "prompt":      "<texto del fragmento del documento>",
-  "chosen":      "[{\"classification\":\"Person\",\"entity_name\":\"...\"}]",
-  "rejected":    "[{\"classification\":\"Person\",\"entity_name\":\"...\"}]",
-  "source_type": "datagraph-enrichment",
-  "worm_id":     "<identificador del documento>",
-  "timestamp":   "<ISO 8601>"
-}
-```
-
-`chosen` es la extracción del modelo de 32B. `rejected` es la extracción del modelo de 7B.
-Un par solo se escribe cuando ambos modelos encontraron al menos una entidad y los
-resultados difieren después de la normalización. Los pares en los que el modelo de 7B no
-encontró nada se descartan, ya que no contienen señal de preferencia genuina.
-
-## Resultados de prueba verificados (2026-06-09)
-
-Tres ciclos de prueba de 10 minutos confirmaron que el pipeline funciona correctamente
-de extremo a extremo.
-
-| Ciclo | Duración | Delta de entidades | Pares DPO añadidos | Estado final de la VM |
-|---|---|---|---|---|
-| 1 | 10 min 43 s | +7 | +6 | TERMINATED |
-| 2 | 9 min 12 s | +8 | +4 | TERMINATED |
-| 3 | 10 min 38 s | +22 | +8 | TERMINATED |
-
-Diagnósticos de GPU en el ciclo 3: 99% de utilización, 16.151 de 23.034 MB de VRAM en uso, 73 °C.
+- [[service-slm-graph-store-migration]] — la reconstrucción del DataGraph que es la Fase 1 de este ciclo
+- [[elastic-compute-lora-training-pipeline]] — la descripción más completa de la canalización de dos fases, incluida la configuración QLoRA real de la fase de entrenamiento
+- [[service-slm]] — el servicio que orquesta la canalización
