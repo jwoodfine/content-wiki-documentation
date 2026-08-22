@@ -1,78 +1,55 @@
 ---
 schema: foundry-doc-v1
-title: "Federación mediante montajes de contenido"
+title: "Montajes de contenido y federación"
 slug: federation-via-content-mounts
-short_description: "El patrón para combinar contenido editorial curado con montajes declarativos de repositorios especializados en una única superficie wiki — previsto para la Fase 6 del motor de conocimiento."
+short_description: "El motor wiki renderiza artículos curados comprometidos directamente en su repositorio junto con contenido montado desde directorios locales separados, compartiendo una superficie de URL e índice de búsqueda."
 category: patterns
 type: topic
 content_type: topic
-status: pre-build
+status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-06-01
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: federation-via-content-mounts.md
 index_group: interface-and-user-experience
 ---
 
-# Federación mediante montajes de contenido
-
-El patrón de federación de contenido combina dos modos de autoría complementarios en una única instancia wiki: artículos editoriales curados comprometidos directamente en el repositorio de conocimiento, y montajes declarativos que extraen contenido de repositorios especializados. Ambos modos comparten superficie de URL, cromo de navegación e índice de búsqueda, manteniendo sus repositorios fuente independientes. Este patrón está previsto para la Fase 6 de [[app-mediakit-knowledge]]; el modelo de repositorio único es la forma actualmente desplegada.
-
----
+El patrón de montajes de contenido combina dos modos de autoría en una única instancia wiki: artículos editoriales curados comprometidos directamente en el repositorio de conocimiento, y contenido montado desde un directorio local separado. **Un lector que navega el wiki no puede distinguir qué modo produjo un artículo dado** — ambos se renderizan en las mismas páginas de categoría, el mismo índice de búsqueda, la misma navegación. El montaje de directorios locales ya funciona hoy; una extensión adicional — montar contenido obtenido automáticamente de un repositorio git remoto en lugar de una ruta ya local — sigue siendo una dirección de diseño, no una capacidad implementada.
 
 ## El modelo híbrido
 
-Una instancia wiki desplegada se configura mediante un manifiesto `knowledge.toml` en la raíz del directorio de contenido. El manifiesto declara cero o más montajes junto a cualquier artículo comprometido directamente en el repositorio. Ambas fuentes se renderizan en el mismo espacio de nombres de URL; los lectores no encuentran distinción visible entre un artículo editorial y un artículo montado.
+Una instancia wiki desplegada se configura mediante un manifiesto `knowledge.toml` en la raíz del directorio de contenido. El manifiesto declara uno o más montajes, cada uno apuntando a un directorio local, junto con cualquier artículo comprometido directamente en el repositorio. Exactamente un montaje puede llevar el rol `primary` — el conjunto editable; cualquier montaje adicional es de solo lectura.
 
-Los compromisos directos son la opción correcta para el contenido de naturaleza editorial — artículos de referencia de la plataforma, notas del sistema de diseño, documentos de gobernanza — donde el repositorio de conocimiento es el hogar canónico y la edición fluye a través de la cadena de compromisos de staging estándar. Los montajes declarativos son la opción correcta para el contenido que se origina en un repositorio especializado — documentación por proyecto, registros de decisiones arquitectónicas, registros de cambios — donde el repositorio fuente es el hogar canónico y el wiki es una superficie de lectura sobre él.
+Los commits directos al montaje primario son la opción correcta para contenido de naturaleza editorial. Un montaje de solo lectura es la opción correcta para contenido cuyo hogar canónico es un repositorio distinto por completo — el wiki lo muestra sin asumir la responsabilidad de editarlo.
 
----
+## Cómo funcionan los montajes hoy
 
-## Cómo funcionan los montajes
+Una entrada de montaje en `knowledge.toml` declara una ruta local, un rol (`primary` o solo lectura) y un `blueprint_set` — una lista de tipos de contenido que se espera que contenga el montaje. El motor recorre el directorio de cada montaje declarado al iniciar y construye su índice de contenido a partir de lo que encuentra; el directorio de un montaje debe existir ya en disco cuando el motor arranca.
 
-Se prevé que una entrada de montaje en `knowledge.toml` especifique cuatro elementos: el repositorio fuente (URL remota o ruta local que el motor puede extraer), la ruta de montaje local (directorio bajo el cual se coloca el contenido extraído), el plano (esquema nombrado que valida y enruta los archivos del montaje), y la plantilla de URL de edición (patrón de URL que el motor usa para construir el enlace "editar esta página", enrutando a los editores de vuelta al repositorio fuente).
+**Lo que esto todavía no hace: obtener contenido de un repositorio remoto por iniciativa propia del wiki.** Un montaje hoy es un puntero a un directorio local ya presente, no un remoto git que el motor clona o actualiza según un calendario. Llevar contenido de un repositorio separado al directorio de un montaje es un paso que ocurre fuera del motor wiki.
 
-Se prevé que el motor extraiga el repositorio fuente al arrancar y en un intervalo de actualización configurado, escriba el contenido extraído en la ruta de montaje y lo procese de forma idéntica a los artículos comprometidos directamente.
+## Planos (blueprints)
 
----
-
-## Planos
-
-Un plano es un esquema nombrado que restringe qué contenido puede contener un montaje. Se prevé que dos planos sean integrados:
-
-*`topic`.* El formato de artículo wiki estándar. Los archivos deben cumplir el esquema de frontmatter del contrato de contenido y las convenciones de cuerpo. Renderizado en `/:categoría/:slug` e incluido en el índice de artículos principal y la búsqueda.
-
-*`guide`.* Documentos operacionales dirigidos a profesionales. Renderizados con un cromo diferenciado que enfatiza los pasos procedurales sobre las secciones de prosa. Excluidos del índice de artículos principal, pero descubribles mediante búsqueda y el [[guide-catalog|catálogo de guías]].
-
-Se prevé que los operadores puedan registrar planos adicionales como complementos cuando la Fase 6 esté disponible. Los planos especializados candidatos incluyen `regional-market` (artículos de ubicación estructurados), `adr` (registros de decisiones arquitectónicas con esquema fijo de decisión/estado/contexto) y `changelog` (notas de versión ordenadas cronológicamente).
-
----
+El campo `blueprint_set` permite que un montaje declare qué tipos de contenido se espera que contenga — `TOPIC` y `GUIDE` son los dos nombres en uso actual. Es una expectativa declarada en la configuración; todavía no impulsa validación o enrutamiento específico por tipo de contenido más allá de esa declaración.
 
 ## Aislamiento por instancia
 
-Se prevé que cada instancia wiki lea sólo los montajes declarados en su propio `knowledge.toml`. Dos instancias que extraigan del mismo repositorio pueden presentar conjuntos de artículos completamente diferentes según sus configuraciones de montaje. No existe un registro global de montajes — el aislamiento es una propiedad de configuración de la instancia, no un problema de coordinación.
+Cada instancia wiki lee solo los montajes declarados en su propio `knowledge.toml`. El aislamiento es una propiedad de la configuración de cada instancia, no algo coordinado centralmente.
 
-Esta propiedad de aislamiento es lo que permite que un único repositorio de contenido canónico sirva a múltiples despliegues wiki distintos. El repositorio de contenido es la fuente de verdad; cada despliegue es una vista sobre él, configurada por su manifiesto de montaje.
+## Lo que añadiría una extensión de obtención remota
 
----
-
-## Procedencia y enrutamiento de edición
-
-Se prevé que todo artículo renderizado desde un montaje declarativo lleve campos de procedencia en su frontmatter: `source_repo` (URL remota del repositorio fuente), `source_path` (ruta del archivo dentro del repositorio fuente) y `edit_url` (URL que el motor renderiza como enlace "editar esta página").
-
-Se prevé que el campo `edit_url` enrute a los editores a la ruta de edición canónica en el repositorio fuente, en lugar de aceptar escrituras localmente. Esto mantiene intacta la inversión de la fuente de verdad en toda la superficie de contenido federada: el hogar canónico de un artículo montado es el repositorio fuente; la instancia wiki es una superficie de lectura sobre él, no un segundo almacén canónico.
-
----
+Extender el montaje de rutas locales a la obtención de repositorios remotos — que el propio motor wiki clone y actualice periódicamente un remoto git dentro del directorio de un montaje, en lugar de depender de un proceso externo — es una dirección de diseño real para este patrón, todavía no construida. La extensión natural junto a ella son los metadatos de procedencia por artículo y el enrutamiento de edición hacia el repositorio fuente — ninguno de los cuales existe en la configuración de montajes hoy.
 
 ## Relación con la inversión de la fuente de verdad
 
-Este patrón está previsto para extender [[source-of-truth-inversion]] de una topología de repositorio único a una topología de múltiples repositorios. La invariante es la misma: git es canónico; el binario en ejecución es una vista. La extensión es que "git" puede ser uno de varios repositorios nombrados, cada uno el hogar canónico de su dominio, y la instancia wiki una vista sobre todos ellos simultáneamente.
-
----
+Este patrón extiende [[source-of-truth-inversion]] desde una topología de un solo repositorio hacia una de múltiples repositorios. El invariante es el mismo: git es canónico, el binario en ejecución es una vista.
 
 ## Véase también
 
 - [[app-mediakit-knowledge]] — el motor que implementa este patrón
-- [[source-of-truth-inversion]] — la decisión de diseño fundamental que este patrón extiende
-- [[knowledge-wiki-leapfrog-architecture]] — la filosofía de arquitectura de IA y navegación más amplia
-- [[federate-archives-via-content-mounts]] — guía paso a paso: configurar montajes de contenido declarativos en una instancia wiki
+- [[source-of-truth-inversion]] — la decisión de diseño fundacional que extiende este patrón
+- [[knowledge-wiki-leapfrog-architecture]] — la filosofía más amplia de arquitectura de información y navegación
+
+## Procedencia
+
+Versión en español elaborada por project-language, adaptación estratégica — no es una traducción literal del artículo canónico en inglés.

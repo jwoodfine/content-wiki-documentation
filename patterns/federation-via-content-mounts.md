@@ -1,89 +1,51 @@
 ---
 schema: foundry-doc-v1
-title: "Federation via content mounts"
+title: "Content mounts and federation"
 slug: federation-via-content-mounts
-short_description: "The pattern combining curated editorial content with declarative mounts from domain-specific repositories into a single wiki surface, planned for Phase 6."
+short_description: "The wiki engine renders curated articles committed directly to its repository alongside content mounted from separate local directories, sharing one URL surface and search index."
 category: patterns
 type: topic
 content_type: topic
-status: pre-build
+status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-06-01
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: federation-via-content-mounts.es.md
 index_group: interface-and-user-experience
 ---
 
-# Federation via content mounts
-
-The content-federation pattern combines two complementary authoring modes in a single wiki instance: curated editorial articles committed directly to the knowledge repository, and declarative mounts that pull content from domain-specific repositories. The two modes share a URL surface, navigation chrome, and search index while keeping their source repositories independent. This pattern is planned for Phase 6 of [[app-mediakit-knowledge]]; the single-repository model is the current deployed form.
-
----
+The content-mount pattern combines two authoring modes in a single wiki instance: curated editorial articles committed directly to the knowledge repository, and content mounted from a separate local directory. **A reader browsing the wiki cannot tell which mode produced any given article.** Both render into the same category pages, the same search index, the same navigation, with no visible seam. Local directory mounting is live today; a further extension — mounting content fetched automatically from a remote git repository rather than an already-local path — remains a design direction, not a shipped capability.
 
 ## The hybrid model
 
-A deployed wiki instance is configured by a `knowledge.toml` manifest at the content directory root. The manifest declares zero or more mounts alongside any articles committed directly to the repository. Both sources render into the same URL namespace; readers encounter no visible distinction between a curated article and a mounted article.
+A deployed wiki instance is configured by a `knowledge.toml` manifest at the content directory root. The manifest declares one or more mounts, each pointing to a local directory, alongside any articles committed directly to the repository. Exactly one mount may hold the `primary` role — the editable article set; any additional mounts are read-only. Both render into the same URL namespace.
 
-Direct commits are the correct choice for content that is editorial in nature — platform reference articles, design-system notes, governance documents — where the knowledge repository is the canonical home and editing flows through the standard staging-tier commit path. Declarative mounts are the correct choice for content that originates in a domain-specific repository — per-project documentation, per-deployment operational records, architectural decision records — where the source repository is the canonical home and the wiki is a read surface over it.
+Direct commits into the primary mount are the correct choice for content that is editorial in nature — platform reference articles, design-system notes, governance documents — where the knowledge repository is the canonical home and editing flows through the standard staging-tier commit path. A read-only mount is the correct choice for content whose canonical home is a different repository entirely — the wiki surfaces it without taking on editing responsibility for it.
 
----
+## How mounts work today
 
-## How mounts work
+A mount entry in `knowledge.toml` declares a local filesystem path, a role (`primary` or read-only), and a `blueprint_set` — a list of content-type names the mount is expected to contain. The engine walks each declared mount's directory at startup and builds its content index from what it finds there; a mount's directory must already exist on disk when the engine starts.
 
-A mount entry in `knowledge.toml` is intended to specify four elements:
-
-- *Source repository.* A git remote URL or a local path that the engine can pull.
-- *Mount path.* The local directory path under which the fetched content is placed.
-- *Blueprint.* The named schema that validates and routes files in the mount.
-- *Edit URL template.* A URL pattern the engine uses to construct the "edit this page" link for mounted articles, routing editors back to the source repository rather than accepting writes locally.
-
-The engine is intended to fetch the source repository on startup and on a configured refresh interval, write fetched content to the mount path, and process it identically to directly committed articles.
-
----
+**What this does not yet do: fetch content from a remote repository on the wiki's own initiative.** A mount today is a pointer to an already-present local directory, not a git remote the engine clones or pulls on a schedule. Getting content from a separate repository into a mount's directory is a step performed outside the wiki engine — by whatever process keeps that directory populated — not something the engine does for itself.
 
 ## Blueprints
 
-A blueprint is a named schema that constrains what content a mount may contain. Two blueprints are intended to be built in:
-
-*`topic`.* The standard wiki article format. Files must conform to the content contract's frontmatter schema and body conventions. Rendered at `/:category/:slug` and included in the primary article index and search.
-
-*`guide`.* Operational documents addressed to practitioners. Rendered with a distinct chrome that emphasises procedural steps over prose sections. Excluded from the primary article index but discoverable via search and the [[guide-catalog|guide catalog]].
-
-Operators are intended to register additional blueprints as plugins when Phase 6 ships. Candidate domain-specific blueprints include `regional-market` (structured location articles), `adr` (architectural decision records with a fixed decision/status/context schema), and `changelog` (time-ordered release notes). Each plugin blueprint would define its frontmatter schema, the URL pattern it occupies, and the chrome template it uses.
-
----
+The `blueprint_set` field lets a mount declare which content types it is expected to hold — `TOPIC` and `GUIDE` are the two names in current use. This is a declared expectation carried in configuration; it does not yet drive content-type-specific validation or routing behavior beyond that declaration.
 
 ## Per-instance isolation
 
-Each wiki instance is intended to read only the mounts declared in its own `knowledge.toml`. Two instances sourcing the same repository may present entirely different article sets depending on their mount configurations. There is no global mount registry — isolation is a configuration property of the instance, not a coordination problem.
+Each wiki instance reads only the mounts declared in its own `knowledge.toml`. Two instances could in principle point their mounts at directories sourced from the same upstream content, and still present entirely different article sets depending on their own mount configuration — isolation is a property of each instance's own configuration, not something coordinated centrally.
 
-This isolation property is what allows a single canonical content repository to serve multiple distinct wiki deployments. The content repository is the source of truth; each deployment is a view over it shaped by its mount manifest.
+## What a remote-fetch extension would add
 
----
-
-## Provenance and edit-routing
-
-Every article rendered from a declarative mount is intended to carry provenance fields in its frontmatter:
-
-- `source_repo` — the remote URL of the source repository.
-- `source_path` — the file path within the source repository.
-- `edit_url` — the URL the engine renders as the "edit this page" link.
-
-The `edit_url` is intended to route editors to the canonical editing path in the source repository rather than accepting writes locally. This keeps the source-of-truth inversion intact across a federated content surface: a mounted article's canonical home is the source repository; the wiki instance is a read surface over it, not a second canonical store.
-
----
+Extending local-path mounting to remote-repository fetching — the wiki engine cloning and periodically refreshing a git remote into a mount's directory itself, rather than relying on an external process to keep that directory current — is a real design direction for this pattern, not yet built. The natural extension alongside it is per-article provenance metadata (which source repository and path an article came from) and edit-URL routing (sending an editor back to the source repository's own edit path rather than accepting a write locally) — neither of which exists in the mount configuration today.
 
 ## Relationship to source-of-truth inversion
 
-This pattern is intended to extend [[source-of-truth-inversion]] from a single-repository topology to a multi-repository topology. The invariant is the same: git is canonical; the running binary is a view. The extension is that "git" may be one of several named repositories, each the canonical home for its domain, and the wiki instance a view over all of them simultaneously.
-
-The federation model is not intended to introduce a central coordination layer. Each source repository is autonomous; the mount manifest is a per-instance declaration; and the engine's fetch-and-render pipeline is stateless with respect to source repositories.
-
----
+This pattern extends [[source-of-truth-inversion]] from a single-repository topology toward a multi-repository one. The invariant is the same: git is canonical, the running binary is a view. What a mount adds is that "the canonical repository" is no longer necessarily the wiki's own repository — a mounted directory's real canonical home can be wherever the process populating it draws from.
 
 ## See also
 
 - [[app-mediakit-knowledge]] — the engine that implements this pattern
 - [[source-of-truth-inversion]] — the foundational design choice this pattern extends
 - [[knowledge-wiki-leapfrog-architecture]] — the broader IA and navigation philosophy
-- [[federate-archives-via-content-mounts]] — step-by-step guide: configure declarative content mounts in a wiki instance
