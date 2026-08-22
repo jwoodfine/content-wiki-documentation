@@ -28,16 +28,16 @@ La Pila de Tres Capas es el patrón de descomposición de infraestructura utiliz
 
 ## Puntos clave
 
-- Tres capas distintas: Infraestructura (cómputo bruto — bare-metal, nube o hardware del cliente), Plataforma (microkernel aislado y ejecución de servicios con límites de seguridad basada en capacidades), Entrega (interfaces de terminal y consola con las que interactúan directamente los operadores).
+- Tres capas distintas: Infraestructura (cómputo bruto — bare-metal, nube o hardware del cliente), Plataforma (ejecución de servicios con acceso limitado por capacidades; aislamiento a nivel de kernel probado para un servicio y objetivo de diseño para el resto), Entrega (interfaces de terminal y consola con las que interactúan directamente los operadores).
 - Reemplazabilidad independiente en cada capa. Migrar de una infraestructura en la nube a hardware local no requiere cambios en la capa de plataforma. Las capas están desacopladas por diseño, no por convención.
-- Ningún componente en la capa de plataforma puede superar las capacidades explícitamente otorgadas. El aislamiento se aplica en la capa del [[sel4-microkernel-substrate|microkernel]], no por política — un servicio comprometido no puede elevar su propio acceso.
+- Ningún componente de la capa de plataforma debe superar las capacidades explícitamente otorgadas. El [[sel4-microkernel-substrate|aislamiento a nivel de kernel]] que aplica ese límite está probado para la ruta de arranque del servicio de archivo; la mayoría de los demás servicios corren hoy sin él.
 - La capa de entrega es la única capa con la que los operadores interactúan directamente. Reenvía solicitudes hacia la plataforma y devuelve resultados hacia arriba; los operadores nunca tienen acceso directo a las primitivas de la capa de infraestructura como disco en bruto o interfaces de red.
 
 ## Las tres capas
 
 **Capa de infraestructura** — el sustrato de cómputo físico o virtual: servidores bare-metal, instancias en la nube, hardware del cliente o cualquier combinación. Esta capa suministra tiempo de CPU y memoria. No realiza garantías de seguridad más allá de las que ofrece el hardware.
 
-**Capa de plataforma** — el entorno de ejecución del sistema operativo y los servicios: [[totebox-os|ToteboxOS]], gestores de [[capability-based-security|capacidades]] y los procesos de servicio de los [[three-ring-architecture|Anillos 1 y 2]]. El aislamiento entre componentes se aplica en esta capa. Ningún componente de la capa de plataforma puede superar las capacidades que se le han concedido explícitamente.
+**Capa de plataforma** — el entorno de ejecución del sistema operativo y los servicios: [[totebox-os|el servicio de archivo]] y los procesos de servicio de los [[three-ring-architecture|Anillos 1 y 2]]. El aislamiento aplicado por kernel entre componentes es el objetivo de diseño, probado en el arranque del servicio de archivo; la mayoría de los demás servicios corren hoy como procesos ordinarios, sin esa garantía. El acceso limitado por capacidades — ningún componente excediendo lo que se le concedió explícitamente — es el límite previsto, independientemente de qué mecanismo lo aplique.
 
 **Capa de entrega** — las interfaces de terminal y consola que utilizan los operadores: terminales [[console-os|ConsoleOS]], la interfaz del corrector y cualquier superficie de acceso basada en navegador. La capa de entrega es la única capa con la que los operadores interactúan directamente; reenvía las solicitudes hacia la plataforma y devuelve los resultados hacia arriba.
 
