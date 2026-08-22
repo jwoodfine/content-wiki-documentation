@@ -37,15 +37,12 @@ answer, checked in one place.
 
 ## Accessibility values are tokens
 
-**Correction (2026-08-02):** several specific claims below don't exist or are wrong. Neither `a11y-target-min` nor `cds-focus`/`cds-positive-text`/`cds-positive-bg` exist anywhere in the real token files — the `cds-` string appears only as an unrelated, already-flagged-as-inconsistent prefix in two component style docs. The cited contrast triple (19.2:1/8.2:1/6.7:1) doesn't match the real published figures in `dtcg-vault/elements/color/overview.md` (`ink-primary`/`surface-base` 14.7:1, `ink-on-interactive`/`interactive-primary` 7.4:1, `ink-secondary`/`surface-base` 8.9:1). Most significant: this article claims the Button's shipped spec shows "text contrast at 7.4:1... passing SC 1.4.6 Contrast Enhanced, AAA" with a component-wide "conformance target of WCAG 2.2 AAA" — the real `dtcg-vault/components/button/accessibility.md` states plainly that the primary variant is **6.66:1** and **does not meet the 7:1 AAA floor** (AA only), and the real target is "WCAG 2.2 AA, AAA where achievable," not blanket AAA. That real file already carries its own dated correction (2026-07-15) fixing an earlier false blanket-AAA claim — this wiki article repeats the exact mistake the source has already corrected once. **Flagged, not resolved** — this is an accessibility-conformance claim and should be synced to the real (already-correct) source, not left standing.
-
-Two tokens anchor the pattern. `a11y-target-min` is a primitive token whose
-value is 44 pixels — the minimum target dimension defined by WCAG Success
-Criterion 2.5.5, Target Size (Enhanced), a Level AAA criterion requiring
-pointer targets of at least 44 by 44 CSS pixels. `cds-focus` is a semantic
-token naming the focus-ring color; it resolves to a primitive from the blue
-scale rather than carrying a hex value of its own, so a theme change
-propagates to every focus ring at once.
+The focus ring anchors the pattern. `focus.ring` is a primitive token —
+not a bare color, but a composite bundling the ring's color
+(`{color.primary-60}`), width, style, and 2px offset — so a theme change
+to the primary color propagates to every focus ring at once. Target size
+is not a standalone token in the same way; it is met arithmetically at the
+component tier — the button below shows exactly how.
 
 The external requirements these tokens encode are worth stating precisely,
 because the levels differ. WCAG 2.2, published as a W3C Recommendation in
@@ -62,53 +59,52 @@ against adjacent colors.
 ## The tier chain carries the requirement
 
 The system's tokens resolve in three tiers — primitive, semantic,
-component — and an accessibility requirement travels down the chain the
+component — and the focus-ring requirement travels down the chain the
 same way a brand color does:
 
 ```
-a11y-target-min (primitive, 44px, WCAG 2.5.5 AAA)
-  → cds-focus (semantic, focus-ring color)
-    → btn-min-height (component: {a11y-target-min}, applied to every button)
+focus.ring (primitive: color {color.primary-60}, width, style, 2px offset)
+  → every component recipe that needs a focus indicator references it directly
 ```
 
-The component tier never restates the number. `btn-min-height` is a
-reference, `{a11y-target-min}`, not a second copy of "44px" that could
-drift when the first copy changes. If the organization ever adopted a
-different target-size policy, the change would be made once, at the
-primitive, and every component consuming the chain would follow — exactly
-the maintenance property that motivates tokens for color, applied to a
+A component's focus ring is a reference to `{focus.ring}`, not a second
+copy of the color and width values that could drift when the primitive
+changes. If the ring color ever changes, the change is made once, at the
+primitive, and every component consuming it follows — the same
+maintenance property that motivates tokens for color, applied to a
 conformance value instead.
 
 ## Contrast pairs are computed from the graph
 
 Because color tokens are data, the contrast relationships between them are
-computable rather than assertable. The system's foundations reference
-presents accessibility pairs — a foreground token against a background
+computable rather than assertable. The system's color reference publishes
+the pairs that matter most — a foreground token against a background
 token — with ratios computed directly from the token hex values using the
-WCAG relative-luminance formula: primary text on the default background at
-roughly 19.2:1 (AAA), secondary text at roughly 8.2:1 (AAA), the primary
-link color at roughly 6.7:1 (AA).
+WCAG relative-luminance formula: `ink-primary` on the default surface at
+14.7:1 (AAA), `ink-secondary` on the default surface at 8.9:1 (AAA), and
+button text (`ink-on-interactive`) on the primary interactive background at
+7.4:1 (AAA).
 
-The fourth published pair is the honest one: `cds-positive-text` on
-`cds-positive-bg` computes to roughly 4.3:1, below the 4.5:1 AA threshold
-for normal text at the current values, and it is shown flagged rather than
-quietly adjusted. A registry that computes conformance from its own data
-surfaces regressions the same way it surfaces everything else. Two caveats
-travel with these numbers, stated on the reference page itself and repeated
-here: the ratios are illustrative of the pattern, not a substitute for a
-live audit tool, and the flagged pair is an open item, not a resolved one.
+Not every pair clears the same bar — the Button component below shows a
+real example where a specific variant lands at AA rather than AAA, and the
+component's own accessibility spec states that plainly rather than
+rounding up. A registry that computes conformance from its own data
+surfaces exactly this kind of gap instead of asserting a uniform standard
+across every color pairing.
 
 ## A component inherits its conformance
 
 The Button component's shipped accessibility specification shows what the
-token approach produces at the component tier. Its conformance target is
-WCAG 2.2 AAA, and its conformance table resolves criterion by criterion to
-token-derived facts: text contrast at 7.4:1 against the primary variant's
-background (passing SC 1.4.6 Contrast Enhanced, AAA); a 2-pixel focus ring
-with a 2-pixel offset holding the 3:1 minimum of SC 1.4.11; and target size
-met by arithmetic — the button renders at 40 pixels of height, and the
-focus ring plus offset add 2 pixels per side, bringing the activatable area
-to the 44 pixels SC 2.5.5 requires.
+token approach produces at the component tier, including the parts that
+don't clear the strictest bar. Its conformance target is WCAG 2.2 AA, AAA
+where achievable — not a blanket AAA claim — and the spec is explicit
+about which variant lands where: the primary variant's text contrast is
+6.66:1, which passes AA (SC 1.4.3) but falls short of the 7:1 AAA floor
+(SC 1.4.6); the critical variant clears both at 7.33:1. The focus ring
+holds the 3:1 minimum of SC 1.4.11 at every variant. Target size is met by
+arithmetic — the button renders at 40 pixels of height, and the focus ring
+plus offset add 2 pixels per side, bringing the activatable area to the 44
+pixels SC 2.5.5 requires.
 
 The same specification shows requirements that are behavioral rather than
 numeric being carried by tokens where a token can carry them: the CSS
@@ -130,7 +126,7 @@ Stated plainly. The conformance claims above are self-declared by the
 design system's maintainers against the cited criteria; no third-party
 accessibility audit of the system has been performed. Tokens enforce the
 values a criterion depends on, not the criterion itself — a component can
-reference `a11y-target-min` and still fail keyboard users through broken
+reference `{focus.ring}` and still fail keyboard users through broken
 markup, and no token expresses the judgment-dependent criteria around
 content, labels, and context. Assistive-technology testing with real
 screen readers remains manual. The structural claim is narrower and, for
@@ -149,7 +145,7 @@ specifically — target size and focus color as first-class tokens with the
 WCAG criterion recorded in the token's own description field.
 
 On licensing, precision matters because two different licenses are in
-play. The token data itself — `a11y-target-min`, `cds-focus`, the DTCG
+play. The token data itself — `focus.ring`, the DTCG
 token files and component recipes that reference them — ships in the
 `pointsav-design-system` repository under the Apache-2.0 license. The text
 of this article is published in the documentation wiki under CC BY 4.0.

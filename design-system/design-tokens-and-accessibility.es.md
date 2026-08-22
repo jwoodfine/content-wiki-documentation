@@ -39,14 +39,13 @@ sola respuesta, verificada en un solo lugar.
 
 ## Los valores de accesibilidad son tokens
 
-Dos tokens anclan el patrón. `a11y-target-min` es un token primitivo cuyo
-valor es 44 píxeles — la dimensión mínima de objetivo definida por el
-Criterio de Éxito 2.5.5 de las WCAG, Tamaño del Objetivo (Mejorado), un
-criterio de nivel AAA que exige objetivos de puntero de al menos 44 por 44
-píxeles CSS. `cds-focus` es un token semántico que nombra el color del
-anillo de foco; se resuelve contra un primitivo de la escala de azules en
-lugar de portar un valor hexadecimal propio, de modo que un cambio de tema
-se propaga a todos los anillos de foco a la vez.
+El anillo de foco ancla el patrón. `focus.ring` es un token primitivo —
+no un simple color, sino un token compuesto que agrupa el color del
+anillo (`{color.primary-60}`), el grosor, el estilo y un desplazamiento de
+2px — de modo que un cambio en el color primario se propaga a todos los
+anillos de foco a la vez. El tamaño del objetivo no es un token
+independiente de la misma forma; se cumple aritméticamente en el nivel de
+componente — el botón, más abajo, muestra exactamente cómo.
 
 Vale la pena enunciar con precisión los requisitos externos que estos
 tokens codifican, porque los niveles difieren. Las WCAG 2.2, publicadas
@@ -64,55 +63,54 @@ contraste frente a los colores adyacentes.
 ## La cadena de niveles porta el requisito
 
 Los tokens del sistema se resuelven en tres niveles — primitivo, semántico,
-componente — y un requisito de accesibilidad desciende por la cadena igual
-que lo hace un color de marca:
+componente — y el requisito del anillo de foco desciende por la cadena
+igual que lo hace un color de marca:
 
 ```
-a11y-target-min (primitivo, 44px, WCAG 2.5.5 AAA)
-  → cds-focus (semántico, color del anillo de foco)
-    → btn-min-height (componente: {a11y-target-min}, aplicado a todo botón)
+focus.ring (primitivo: color {color.primary-60}, grosor, estilo, offset 2px)
+  → toda receta de componente que necesita un indicador de foco lo referencia directamente
 ```
 
-El nivel de componente nunca repite el número. `btn-min-height` es una
-referencia, `{a11y-target-min}`, no una segunda copia de "44px" que podría
-derivar cuando la primera cambie. Si la organización adoptara alguna vez
-otra política de tamaño de objetivo, el cambio se haría una sola vez, en el
-primitivo, y todos los componentes que consumen la cadena lo seguirían —
-exactamente la propiedad de mantenimiento que motiva los tokens de color,
-aplicada a un valor de conformidad.
+El anillo de foco de un componente es una referencia a `{focus.ring}`, no
+una segunda copia de los valores de color y grosor que podría derivar
+cuando el primitivo cambie. Si el color del anillo cambiara alguna vez, el
+cambio se haría una sola vez, en el primitivo, y todos los componentes que
+lo consumen lo seguirían — la misma propiedad de mantenimiento que motiva
+los tokens de color, aplicada a un valor de conformidad.
 
 ## Los pares de contraste se computan desde el grafo
 
 Como los tokens de color son datos, las relaciones de contraste entre ellos
-son computables en lugar de meramente afirmables. La referencia de
-fundamentos del sistema presenta pares de accesibilidad — un token de
-primer plano contra un token de fondo — con razones computadas directamente
-desde los valores hexadecimales de los tokens mediante la fórmula de
-luminancia relativa de las WCAG: el texto primario sobre el fondo
-predeterminado en torno a 19,2:1 (AAA), el texto secundario en torno a
-8,2:1 (AAA), el color de enlace primario en torno a 6,7:1 (AA).
+son computables en lugar de meramente afirmables. La referencia de color
+del sistema publica los pares que más importan — un token de primer plano
+contra un token de fondo — con razones computadas directamente desde los
+valores hexadecimales mediante la fórmula de luminancia relativa de las
+WCAG: `ink-primary` sobre la superficie predeterminada en 14,7:1 (AAA),
+`ink-secondary` sobre la superficie predeterminada en 8,9:1 (AAA), y el
+texto de botón (`ink-on-interactive`) sobre el fondo interactivo primario
+en 7,4:1 (AAA).
 
-El cuarto par publicado es el honesto: `cds-positive-text` sobre
-`cds-positive-bg` computa en torno a 4,3:1, por debajo del umbral AA de
-4,5:1 para texto normal con los valores actuales, y se muestra señalado en
-lugar de ajustado en silencio. Un registro que computa la conformidad desde
-sus propios datos hace aflorar las regresiones igual que hace aflorar todo
-lo demás. Dos salvedades acompañan a estas cifras, enunciadas en la propia
-página de referencia y repetidas aquí: las razones ilustran el patrón y no
-sustituyen a una herramienta de auditoría en vivo, y el par señalado es un
-asunto abierto, no resuelto.
+No todos los pares alcanzan el mismo nivel — el componente Button, más
+abajo, muestra un caso real donde una variante específica queda en AA en
+vez de AAA, y la especificación de accesibilidad del propio componente lo
+declara con claridad en vez de redondear hacia arriba. Un registro que
+computa la conformidad desde sus propios datos hace aflorar precisamente
+este tipo de brecha en vez de afirmar un estándar uniforme entre todos los
+pares de color.
 
 ## Un componente hereda su conformidad
 
 La especificación de accesibilidad ya publicada del componente Button
-muestra lo que el enfoque de tokens produce en el nivel de componente. Su
-objetivo de conformidad es WCAG 2.2 AAA, y su tabla de conformidad se
-resuelve, criterio por criterio, en hechos derivados de tokens: contraste
-de texto de 7,4:1 contra el fondo de la variante primaria (superando el
-SC 1.4.6 Contraste Mejorado, AAA); un anillo de foco de 2 píxeles con un
-desplazamiento de 2 píxeles que mantiene el mínimo de 3:1 del SC 1.4.11; y
-el tamaño de objetivo cumplido por aritmética — el botón se renderiza con
-40 píxeles de altura, y el anillo de foco más su desplazamiento añaden 2
+muestra lo que el enfoque de tokens produce en el nivel de componente,
+incluidas las partes que no alcanzan el nivel más estricto. Su objetivo de
+conformidad es WCAG 2.2 AA, con AAA donde sea alcanzable — no una
+afirmación general de AAA — y la especificación es explícita sobre qué
+variante alcanza qué nivel: el contraste de texto de la variante primaria
+es de 6,66:1, que aprueba AA (SC 1.4.3) pero no llega al piso de 7:1 de
+AAA (SC 1.4.6); la variante crítica alcanza ambos en 7,33:1. El anillo de
+foco mantiene el mínimo de 3:1 del SC 1.4.11 en todas las variantes. El
+tamaño de objetivo se cumple por aritmética — el botón se renderiza con 40
+píxeles de altura, y el anillo de foco más su desplazamiento añaden 2
 píxeles por lado, llevando el área activable a los 44 píxeles que exige el
 SC 2.5.5.
 
@@ -138,7 +136,7 @@ Dicho con claridad. Las afirmaciones de conformidad anteriores son
 autodeclaradas por los mantenedores del sistema de diseño contra los
 criterios citados; no se ha realizado una auditoría de accesibilidad por
 terceros. Los tokens imponen los valores de los que depende un criterio,
-no el criterio en sí — un componente puede referenciar `a11y-target-min` y
+no el criterio en sí — un componente puede referenciar `{focus.ring}` y
 aun así fallar a los usuarios de teclado por un marcado roto, y ningún
 token expresa los criterios que dependen del juicio sobre contenido,
 etiquetas y contexto. Las pruebas con tecnología de asistencia y lectores
@@ -160,8 +158,8 @@ objetivo y el color de foco como tokens de primera clase, con el criterio
 WCAG registrado en el propio campo de descripción del token.
 
 En cuanto al licenciamiento, la precisión importa porque hay dos licencias
-distintas en juego. Los datos de tokens en sí — `a11y-target-min`,
-`cds-focus`, los archivos de tokens DTCG y las recetas de componentes que
+distintas en juego. Los datos de tokens en sí — `focus.ring`, los
+archivos de tokens DTCG y las recetas de componentes que
 los referencian — se publican en el repositorio `pointsav-design-system`
 bajo la licencia Apache-2.0. El texto de este artículo se publica en el
 wiki de documentación bajo CC BY 4.0. Reutilizar los tokens implica cumplir
