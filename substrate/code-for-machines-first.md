@@ -24,15 +24,7 @@ The platform uses a consistent set of formats across all surfaces:
 
 Inter-service communication uses MCP (see [[mcp-substrate-protocol]]). The audit ledger uses JSONL with schema versioning. Seed taxonomies use JSON. Service configuration uses TOML or YAML. Conventions and documentation use Markdown with structured frontmatter. Per-tenant configuration uses YAML.
 
-Every artefact is machine-mutable and machine-introspectable. The MCP `describe` endpoint on any service returns the current tool catalog in a machine-readable form. There is no configuration surface that requires a human operator to interpret undocumented fields.
-
-**Correction (2026-08-02, verified against canonical `origin/main`):** the real MCP
-method names (e.g. `service-fs/src/mcp.rs`) are `initialize`, `tools/list`,
-`tools/call`, `resources/list`, `resources/read` — there is no `describe` method.
-Same imprecise shorthand also appears in this article's own cross-reference,
-[[mcp-substrate-protocol]]. The underlying claim (every service exposes a
-machine-readable tool catalog) is directionally accurate; only the specific method
-name is wrong. **Flagged, not resolved.**
+Every artefact is machine-mutable and machine-introspectable. The MCP `tools/list` method on any service returns the current tool catalog in a machine-readable form. There is no configuration surface that requires a human operator to interpret undocumented fields.
 
 ## Why this matters
 
@@ -52,7 +44,7 @@ Topic and guide documentation follows the same pattern. Frontmatter is structure
 
 ## Composition
 
-This discipline is the structural claim that [[mcp-substrate-protocol]] realizes at the wire level. Every service exposes its contract through MCP `describe`, which returns a machine-readable tool catalog. Human-facing surfaces consume this catalog the same way any automated client would.
+This discipline is the structural claim that [[mcp-substrate-protocol]] realizes at the wire level. Every service exposes its contract through MCP `tools/list`, which returns a machine-readable tool catalog. Human-facing surfaces consume this catalog the same way any automated client would.
 
 ## See also
 

@@ -23,7 +23,7 @@ paired_with: code-for-machines-first.md
 
 La plataforma usa un conjunto consistente de formatos en todas las superficies: la comunicación entre servicios usa MCP; el registro de auditoría usa JSONL con versionado de esquema; las taxonomías semilla usan JSON; la configuración de servicios usa TOML o YAML; las convenciones y la documentación usan Markdown con frontmatter estructurado; la configuración por inquilino usa YAML.
 
-Cada artefacto es mutable e introspectable por máquinas. El endpoint `describe` de MCP en cualquier servicio devuelve el catálogo de herramientas actual en formato legible por máquinas. No existe ninguna superficie de configuración que requiera que un operador humano interprete campos no documentados.
+Cada artefacto es mutable e introspectable por máquinas. El método `tools/list` de MCP en cualquier servicio devuelve el catálogo de herramientas actual en formato legible por máquinas. No existe ninguna superficie de configuración que requiera que un operador humano interprete campos no documentados.
 
 ## Por qué esto importa
 
@@ -41,7 +41,7 @@ Los documentos de gobernanza y especificación en prosa, incluido este artículo
 
 ## Composición
 
-Esta disciplina es la reclamación estructural que [[mcp-substrate-protocol]] realiza a nivel de cable. Cada servicio expone su contrato a través del `describe` de MCP, que devuelve un catálogo de herramientas legible por máquinas. Las superficies orientadas al ser humano consumen este catálogo de la misma manera que lo haría cualquier cliente automatizado.
+Esta disciplina es la reclamación estructural que [[mcp-substrate-protocol]] realiza a nivel de cable. Cada servicio expone su contrato a través del `tools/list` de MCP, que devuelve un catálogo de herramientas legible por máquinas. Las superficies orientadas al ser humano consumen este catálogo de la misma manera que lo haría cualquier cliente automatizado.
 
 ## Véase También
 
