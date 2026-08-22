@@ -49,7 +49,7 @@ The nine named substrates: each names a structural property the platform depends
 The single AI gateway that enforces the Ring 3 boundary, routes inference, and accumulates training signal.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: compounding-doorman-and-ai-boundary -->
-- [[compounding-doorman]] — The single service mediating every external compute call: sanitise-and-rehydrate discipline, audit ledger, accumulated training signal.
+- [[compounding-doorman]] — The single service mediating every external compute call: logs every event, accumulates training signal.
 - [[mcp-substrate-protocol]] — Every Ring 1 and Ring 2 service exposes a Model Context Protocol server interface as its primary external contract; the Doorman is the MCP gateway.
 - [[adapter-composition]] — The OS metaphor for AI in PointSav: Doorman as kernel, adapters as processes, service-content as filesystem; composition algebra for per-request intelligence from versioned LoRA layers.
 - [[knowledge-graph-grounded-apprenticeship]] — The Doorman consults the per-tenant knowledge graph before every inference request; graph and adapter co-evolve as training tuples accumulate.
@@ -66,7 +66,7 @@ How the SLM tier is structured, selected, and trained.
 - [[yoyo-compute-substrate]] — The three-ring compute substrate that lets service-slm spin GPU inference capacity up and down while retaining state and producing an audit ledger of every compute event.
 - [[yo-yo-lora-training-pipeline]] — The nightly two-phase pipeline: entity extraction for the business DataGraph (Phase 1) and LoRA adapter training against engineering and apprenticeship corpora using QLoRA on a single L4 GPU (Phase 2).
 - [[tui-corpus-producer]] — Every terminal interaction with service-slm through the operator TUI is a curated training corpus contribution for the per-tenant adapter.
-- [[nightly-datagraph-rebuild]] — The scheduled process that reconstructs the platform's knowledge graph from canonical flat-file sources each night, producing a fresh queryable substrate from deterministic inputs without AI involvement.
+- [[nightly-datagraph-rebuild]] — The scheduled process that reconstructs the platform's knowledge graph from canonical flat-file sources each night; entity extraction runs through the Doorman, with a human-approval checkpoint that exists but is off by default.
 - [[ontological-datagraph]] — The organizational knowledge graph of people, companies, projects, and relationships — persistent semantic memory injected as context before every AI inference request.
 - [[soft-slm-tiered-gateway]] — The tiered inference gateway that routes AI requests through a local model first, escalating to burst GPU nodes and external APIs only when needed.
 <!-- END AUTO-GENERATED -->
@@ -94,7 +94,7 @@ What the platform makes freely transferable, customer-owned, and vendor-independ
 - [[sovereign-ai-commons]] — PointSav's market positioning as a steward of shared open AI infrastructure for regulated SMBs: five structural properties that large-scale cloud providers cannot offer without dismantling their own billing models.
 - [[knowledge-commons]] — The economic model that separates what PointSav publishes freely from what it sells: public knowledge artifacts under open licences, paid service at the point of multi-Totebox aggregation.
 - [[customer-owned-graph-ip]] — The per-tenant knowledge graph and trained adapter weights are the customer's intellectual property, portable and exportable without vendor approval.
-- [[tier-zero-customer-side-sovereign-specialist]] — A sovereign specialist Totebox deployment running on the customer's own hardware with no required cloud dependency and a 1 GB total footprint.
+- [[tier-zero-customer-side-sovereign-specialist]] — A sovereign specialist Totebox deployment running on the customer's own hardware with no required cloud dependency and no required internet connectivity.
 - [[substrate-without-inference-base-case]] — The Totebox Archive remains fully operational and freely transferable even when no AI inference tier is available; the deterministic substrate is the load-bearing foundation.
 - [[substrate-native-compatibility]] — Structural compatibility with MediaWiki reader conventions while deliberately declining API mimicry, maintaining substrate-native interfaces.
 <!-- END AUTO-GENERATED -->

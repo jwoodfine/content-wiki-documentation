@@ -47,7 +47,7 @@ Los nueve sustratos nombrados: cada uno designa una propiedad estructural de la 
 ## El Doorman compuesto y la frontera de IA
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: compounding-doorman-and-ai-boundary -->
-- [[compounding-doorman]] — El servicio único que media cada llamada de cómputo externo: disciplina de saneamiento y rehidratación, registro de auditoría, señal de entrenamiento acumulada.
+- [[compounding-doorman]] — El servicio único que media cada llamada de cómputo externo: registra cada evento, acumula señal de entrenamiento.
 - [[mcp-substrate-protocol]] — Cada servicio de Ring 1 y Ring 2 expone una interfaz de servidor del Protocolo de Contexto de Modelo como su contrato externo principal.
 - [[adapter-composition]] — La metáfora del sistema operativo para la IA en PointSav: Doorman como kernel, adaptadores como procesos, service-content como sistema de archivos.
 - [[knowledge-graph-grounded-apprenticeship]] — El Doorman consulta el grafo de conocimiento del cliente antes de cada solicitud de inferencia; el grafo y el adaptador coevolucionan.
@@ -86,7 +86,7 @@ Los nueve sustratos nombrados: cada uno designa una propiedad estructural de la 
 - [[sovereign-ai-commons]] — El posicionamiento de mercado de PointSav como administrador de infraestructura de IA abierta y compartida para PYMEs reguladas.
 - [[knowledge-commons]] — El modelo económico que separa lo que PointSav publica libremente de lo que vende.
 - [[customer-owned-graph-ip]] — El grafo de conocimiento del cliente y los pesos del adaptador entrenado son propiedad intelectual del cliente, portátil y exportable.
-- [[tier-zero-customer-side-sovereign-specialist]] — Un despliegue Totebox especialista soberano en el propio hardware del cliente sin dependencia de la nube y con un tamaño total de 1 GB.
+- [[tier-zero-customer-side-sovereign-specialist]] — Un despliegue Totebox especialista soberano en el propio hardware del cliente sin dependencia de la nube y sin conectividad a internet requerida.
 - [[substrate-without-inference-base-case]] — El Archivo Totebox permanece completamente operativo y libremente transferible incluso sin un nivel de inferencia de IA disponible.
 - [[substrate-native-compatibility]] — Compatibilidad estructural con las convenciones de los lectores de MediaWiki sin mimetismo de API.
 <!-- END AUTO-GENERATED -->
