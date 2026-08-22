@@ -68,9 +68,9 @@ How the brand identity is encoded as colour families and typographic stacks acro
 The component vocabulary, typographic system, and dark-mode palette that compose the `documentation.pointsav.com` reading surface.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: wiki-surface-design -->
-- [[wiki-component-library]] — Nine reusable interface components that compose a complete wiki article page; Wikipedia layout conventions, current accessibility standards, PointSav token system.
+- [[wiki-component-library]] — The wiki's shared chrome (header, off-canvas mobile nav, sidebar, footer) and the page templates it wraps, in a shared `k-*` token vocabulary.
 - [[wiki-typography-system]] — Inter and Source Serif 4 type stack, heading scale, and spacing tokens for the wiki; broad linguistic coverage for bilingual content.
-- [[wiki-dark-mode]] — Light and dark colour schemes for the wiki: WCAG-verified palettes and theme persistence via localStorage.
+- [[wiki-dark-mode]] — Light and dark colour schemes for the wiki: semantic-token overrides on a `data-theme` attribute, with theme persistence via localStorage.
 <!-- END AUTO-GENERATED -->
 
 ## Related foundations
