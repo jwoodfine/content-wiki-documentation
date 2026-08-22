@@ -10,7 +10,7 @@ quality: complete
 index_group: core-named-substrates
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-01
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: location-intelligence-substrate.md
 aliases:
@@ -34,29 +34,11 @@ El stack de renderización utiliza MapLibre GL JS en el navegador — un renderi
 
 La generación de tiles utiliza Tippecanoe para convertir GeoJSON en MBTiles o PMTiles, reduciendo el tamaño del archivo en un 85-95% frente al GeoJSON sin procesar. El servicio de tiles utiliza Martin, el servidor de tiles Rust de la Fundación MapLibre. El formato de archivo de tiles es PMTiles — un archivo de único archivo con soporte de solicitudes de rango HTTP, que permite servir tiles directamente desde nginx sin ejecutar Martin cuando los tiles están pre-cocinados.
 
-## Esquema de servicio — service-business, service-places, service-parking
+## Forma de los datos — registros de negocios y lugares
 
-Una sola forma de registro cubre los tres servicios de localización del Anillo 1, con campos discriminadores:
+El pipeline de ingesta organiza los registros en dos categorías de datos, negocios y lugares, cada una con un campo discriminador, un slug de marca con normalización por familia de marca (de modo que equivalentes regionales de una misma cadena cuentan como un único operador lógico a través de países), una geometría de punto, y un campo de procedencia que registra de qué conjunto de datos abierto proviene cada registro. Los registros de lugares llevan además un campo de tipo para anclas no minoristas como hospitales, campus de educación superior y aeropuertos.
 
-```jsonc
-{
- "id": "01HZ...", // ULID
- "service": "business" | "places" | "parking",
- "operator": "walmart", // slug de marca
- "operator_brand_family": "walmart", // unifica equivalentes regionales
- "name": "Walmart Supercenter Burnaby",
- "country_code": "US" | "CA" | "MX" | "ES",
- "address": "...",
- "lat": 49.2827,
- "lng": -123.1207,
- "geometry": { "type": "Point", ... },
- "store_type": "supercenter" | "warehouse" | "diy" | "warehouse-club",
- "data_source": "official-store-locator" | "openstreetmap" | "overture" | "foursquare-os" | "manual",
- "captured_at": "2026-04-30T00:00:00Z"
-}
-```
-
-La normalización por familia de marca permite que las consultas de co-localización traten equivalentes regionales como un único operador lógico a través de países. `service-places` lleva un campo `place_type` (hospital, educación superior, aeropuerto). `service-parking` lleva una `geometry` de tipo Polígono (el perímetro del estacionamiento) en lugar de un Punto, además de un campo `associated_business_id` que vincula el estacionamiento con su negocio ancla cuando se conoce.
+Estas categorías son convenciones de datos a nivel de pipeline, no servicios independientes de la plataforma en el sentido en que lo son [[service-content]] o [[service-people]] — la forma del registro es un esquema que este mismo proceso de ingesta y clasificación por nivel usa internamente, no un contrato público de solicitud/respuesta. Una tercera categoría que este artículo describía anteriormente, para perímetros de estacionamiento, no existe en el pipeline actual.
 
 ## Renderizado de nivel
 

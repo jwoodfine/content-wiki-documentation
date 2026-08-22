@@ -10,7 +10,7 @@ quality: complete
 index_group: core-named-substrates
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-01
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: location-intelligence-substrate.es.md
 aliases:
@@ -62,39 +62,11 @@ The tile archive format is PMTiles — a single-file archive with HTTP range-req
 
 For data-visualisation overlays (scatter, heatmap, arc, polygon-extrusion layers), deck.gl composes naturally with MapLibre.
 
-## Service schema — service-business, service-places, service-parking
+## Data shape — business and places records
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** `service-parking`
-does not exist anywhere in the codebase — a corpus-wide grep returns zero hits (no
-directory, no code reference, no script reference). `service-business` and
-`service-places` are real, but only as Python data-pipeline directory-naming
-conventions consumed by `app-orchestration-gis`'s scripts, not formal Rust "Ring 1
-services" comparable to `service-content`/`service-people`. This article frames all
-three as architecturally equivalent platform services; only a data-directory
-convention for two of the three actually exists, and the third is invented outright.
-**Flagged, not resolved.**
+The ingest pipeline organizes records into two data categories, business and places, each with a discriminator field, a brand slug and brand-family normalisation (so regional equivalents of the same chain count as one logical operator across countries), a point geometry, and a source-provenance field recording which open dataset each record came from. Places records carry an additional type field for non-retail anchors such as hospitals, higher-education campuses, and airports.
 
-A single record shape covers all three Ring 1 location services with discriminator fields:
-
-```jsonc
-{
- "id": "01HZ...", // ULID
- "service": "business" | "places" | "parking",
- "operator": "walmart", // brand slug
- "operator_brand_family": "walmart", // unifies regional equivalents
- "name": "Walmart Supercenter Burnaby",
- "country_code": "US" | "CA" | "MX" | "ES",
- "address": "...",
- "lat": 49.2827,
- "lng": -123.1207,
- "geometry": { "type": "Point", ... },
- "store_type": "supercenter" | "warehouse" | "diy" | "warehouse-club",
- "data_source": "official-store-locator" | "openstreetmap" | "overture" | "foursquare-os" | "manual",
- "captured_at": "2026-04-30T00:00:00Z"
-}
-```
-
-Brand-family normalisation lets co-location queries treat regional equivalents as one logical operator across countries. `service-places` carries a `place_type` field (hospital, higher-education, airport). `service-parking` carries a Polygon `geometry` (the lot geofence) rather than a Point, plus an `associated_business_id` linking the lot to its anchor business when known.
+These categories are pipeline-level data conventions, not standalone platform services in the sense [[service-content]] or [[service-people]] are — the record shape is a schema this article's own ingest and tiering process uses internally, not a public request/response contract. A third category this article previously described, covering parking-lot geofences, does not exist in the current pipeline.
 
 ## Tier rendering
 
@@ -137,7 +109,7 @@ Statements regarding deployment schedule, customer outcomes, and feature roadmap
 
 ## See also
 
-- [[three-ring-architecture]] — `service-business`, `service-places`, and `service-parking` are Ring 1 services
+- [[three-ring-architecture]] — the boundary-ingest pattern this substrate's data pipeline follows
 - [[substrate-without-inference-base-case]] — GIS substrate functions fully without the AI ring
 - [[customer-owned-graph-ip]] — geographic datasets owned by the customer, not the vendor
 - [[retail-co-location-tier-methodology]] — the tier gates applied to the `tier` property rendered here
