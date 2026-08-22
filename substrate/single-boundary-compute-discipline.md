@@ -32,17 +32,13 @@ A single boundary makes four properties structurally guaranteed rather than poli
 
 **Sovereignty.** API keys for external providers and the bearer token for GPU burst capacity live exclusively in the Doorman's environment. No other process holds these credentials. When a key is rotated or revoked, the change happens in one place.
 
-## Four enforcement mechanisms
+## What actually enforces the boundary today
 
-The single-boundary discipline is structural, not policy:
+**Bearer-only-in-Doorman.** The GPU burst bearer token and external provider API keys are read from the Doorman's own environment; no cluster session holds them directly.
 
-**Bearer-only-in-Doorman.** All inference credentials — the GPU burst bearer token and all external provider API keys — exist only in the Doorman's environment file. No cluster session has read access to them. Without credentials, a bypass attempt fails at the authentication layer.
+**Loopback binding.** The Doorman's default bind address is `127.0.0.1`, not a network-reachable interface — a caller on the same machine can reach it, but nothing off-machine can, without a separate reverse proxy or port-forward the operator would have to set up deliberately.
 
-**Firewall.** The GPU burst instance accepts inbound connections only from the Doorman's host IP. External API provider endpoints have rate limits and audit visibility only at the Doorman. Network-level enforcement is a second structural layer.
-
-**UID-owner iptables on the local tier.** The local inference server binds to a loopback address and accepts connections only from the Doorman process UID, enforced via iptables on the kernel output chain. Any other process on the same machine attempting a direct connection is dropped at the kernel boundary.
-
-**Startup verification.** On boot, the Doorman verifies that its GPU burst bearer token is present when a burst endpoint is configured, and refuses to start with an unset bearer. Misconfiguration cannot accidentally allow burst traffic to flow without audit.
+Two mechanisms this article previously described as already enforced are not, currently, backed by code: a kernel-level, UID-scoped iptables rule restricting the local inference server to Doorman-process connections only, and a startup check that refuses to boot with a missing GPU burst bearer token. The real startup behavior defaults an unset bearer token to an empty string rather than refusing to start — a real gap between the intended discipline and what's enforced today, not a design choice. Firewalling the GPU burst instance to the Doorman's host IP is a real, standard cloud-networking control at the infrastructure level, independent of application code.
 
 ## What callers send
 

@@ -31,11 +31,11 @@ Un único punto de frontera garantiza estructuralmente cuatro propiedades clave:
 
 **Soberanía.** Las claves de API y los tokens de autenticación para el cómputo externo residen exclusivamente en el entorno del Portero. Ningún otro proceso los posee. Cuando se rota una clave, el cambio ocurre en un único lugar.
 
-## Cuatro mecanismos de cumplimiento
+## Qué aplica la frontera realmente hoy
 
-La disciplina se hace cumplir a nivel estructural, no como política:
+Los secretos de inferencia viven únicamente en el archivo de entorno del Portero. La dirección de enlace por defecto del Portero es `127.0.0.1`, no una interfaz alcanzable por red — un proceso en la misma máquina puede alcanzarlo, pero nada fuera de ella, sin un proxy inverso o reenvío de puerto configurado deliberadamente.
 
-Los secretos de inferencia viven únicamente en el archivo de entorno del Portero. Las reglas de cortafuegos restringen las instancias de GPU en ráfaga para aceptar conexiones únicamente desde el IP del Portero. El servidor de inferencia local acepta conexiones únicamente desde el UID del proceso del Portero, aplicado mediante reglas de iptables a nivel de kernel. Y el Portero verifica la presencia del token de autenticación en el inicio y se niega a arrancar si falta.
+Dos mecanismos que este artículo describía antes como ya aplicados no cuentan hoy con respaldo de código: una regla de iptables a nivel de kernel que restrinja el servidor de inferencia local a conexiones solo del proceso del Portero, y una verificación de arranque que rechace iniciar sin un token de autenticación de ráfaga GPU. El comportamiento real de arranque asigna una cadena vacía cuando el token no está definido, en lugar de negarse a arrancar — una brecha real entre la disciplina prevista y lo que se aplica hoy, no una decisión de diseño. Restringir la instancia de GPU en ráfaga a la IP del Portero es un control real y estándar a nivel de redes en la nube, independiente del código de la aplicación.
 
 ## Relación con la arquitectura de tres anillos
 
