@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Platform architecture overview"
 slug: architecture
-short_description: "The platform is designed around distributed cryptographic consistency and sovereign bootability — collapsing a federated archive into a bootable image transferable anywhere."
+short_description: "The platform's cryptographic consistency rests on a real Merkle-chained ledger; sovereign bootability — collapsing a deployment into one portable image — is a design goal, not yet a shipped feature."
 category: architecture
 index_group: platform-structure
 type: topic
@@ -15,35 +15,26 @@ editor: pointsav-engineering
 paired_with: architecture.es.md
 ---
 
-The [[pointsav-overview|PointSav]] platform is designed around two structural properties: distributed [[cryptographic-ledgers|cryptographic consistency]] and sovereign bootability. Both properties are preserved across cloud and offline-vault environments simultaneously.
+The [[pointsav-overview|PointSav]] platform is designed around two structural properties: cryptographic consistency, backed by a real [[merkle-proofs-as-substrate-primitive|Merkle-chained ledger]] primitive, and sovereign bootability, a planned capability. Neither an operator-triggered archive-collapse-to-bootable-image feature nor a live dual-environment (cloud-plus-offline-vault) shared-root sync exists in the platform today — both are the intended shape this article describes, not shipped mechanisms.
 
 ## Key Takeaways
 
-- The platform maintains a single, unified cryptographic state across multiple physical environments simultaneously. An active cloud node and an offline vault share an identical [[merkle-proofs-as-substrate-primitive|Merkle root]] at all times — an auditor can verify either copy without requiring both to be online.
-- Sovereign bootability means any deployment can collapse into a self-contained bootable image (`.ISO` or `.IMG`) and reconstitute on new hardware without fetching data from a remote source. The system carries its own state.
-- The archive collapse operation is explicit and operator-initiated. It does not run on a schedule or trigger automatically. This is a deliberate design constraint: portability is a capability an operator invokes, not a background process.
-- These two properties — cryptographic consistency and sovereign bootability — are structural, not add-ons. They are preserved simultaneously, not traded against each other when moving between cloud and offline-vault environments.
+- Cryptographic consistency rests on a real primitive: a [[merkle-proofs-as-substrate-primitive|Merkle-chained ledger]] with inclusion and consistency proofs, already used by several platform services for tamper-evident append-only records.
+- The specific dual-environment guarantee this article describes — an active cloud node and an offline vault sharing an identical Merkle root, verifiable independently — is a design goal, not a built feature. No cross-environment sync mechanism was found in the current codebase.
+- Sovereign bootability — collapsing a deployment into a self-contained bootable image and reconstituting it on new hardware without a remote source — is also a design goal. Real bootable-image tooling exists for several individual platform products; an operator-triggered "collapse this archive's current state" command spanning cloud and offline copies does not.
+- Both properties are intended to be structural once built, not add-ons — but stating them as already operating would overclaim what's shipped today.
 
-## Distributed cryptographic state
+## The cryptographic ledger primitive
 
-A single archive can exist across multiple physical environments — an active cloud node and an offline vault — while maintaining a single, unified cryptographic state. The two environments share an identical root [[merkle-proofs-as-substrate-primitive|Merkle hash]] at all times.
+The real building block behind the consistency claim is the platform's [[merkle-proofs-as-substrate-primitive|Merkle-chained ledger]]: an append-only structure with cryptographic checkpoints and inclusion/consistency proofs, already in use by several services for tamper-evident records. What is not built is the specific dual-environment property described below — a live cloud node and an offline vault continuously sharing one verified root.
 
-- **Active cloud node** — the live, networked copy of the archive.
-- **Offline vault** — a physically isolated copy that mirrors the cloud node's Merkle root without a persistent network connection.
+## Planned: dual-environment shared state
 
-This shared-root property means an auditor can verify the integrity of either copy against the same hash without needing both to be online simultaneously.
+The intended design: a single archive would exist across two physical environments — an active cloud node and a physically isolated offline vault — sharing an identical Merkle root at all times, so an auditor could verify either copy independently without both being online. This is forward-looking; no synchronization mechanism implementing it exists in the platform today.
 
-## Archive collapse and portability
+## Planned: archive collapse and portability
 
-When an operator issues the collapse command, the platform compresses the federated cloud index and the offline physical copy into a single transferable entity. The result is a self-executing bootable image (`.ISO` or `.IMG` format).
-
-The collapse operation is explicit and operator-initiated. It is not automatic and does not run on a schedule.
-
-## Sovereign bootable image
-
-The resulting image is a self-contained operating environment. It can be deployed on bare-metal hardware or imported into a commercial cloud environment. The image carries the full archive state, making it possible to reconstitute the system on new hardware without reconstructing data from a remote source.
-
-This property is intended to guarantee operational continuity when a primary deployment environment becomes unavailable.
+The intended design: an operator-issued command would compress a deployment's state into a single self-executing bootable image. Real bootable-image build tooling exists for individual platform products today (compiling a specific product into a `.img` for its own deployment target), but a general "collapse this live archive, including its offline-vault counterpart, into one portable image" operator command does not exist. The design intent is for this operation to be explicit and operator-initiated, never automatic or scheduled.
 
 ## See also
 

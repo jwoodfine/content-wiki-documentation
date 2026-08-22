@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Visión general de la arquitectura de la plataforma"
 slug: architecture
-short_description: "La plataforma está diseñada alrededor de la coherencia criptográfica distribuida y la capacidad de arranque soberana, con la capacidad de reducir un archivo federado a una imagen arrancable autónoma transferible entre entornos."
+short_description: "La consistencia criptográfica de la plataforma se apoya en un registro real encadenado por Merkle; la capacidad de arranque soberana — colapsar un despliegue en una sola imagen portátil — es un objetivo de diseño, aún no una función publicada."
 category: architecture
 index_group: platform-structure
 type: topic
@@ -15,28 +15,26 @@ editor: pointsav-engineering
 paired_with: architecture.md
 ---
 
-La plataforma [[pointsav-overview|PointSav]] está diseñada en torno a dos propiedades estructurales: [[cryptographic-ledgers|consistencia criptográfica]] distribuida y capacidad de arranque soberano. Ambas propiedades se mantienen de forma simultánea en entornos en la nube y en bóvedas físicas desconectadas.
+La plataforma [[pointsav-overview|PointSav]] está diseñada en torno a dos propiedades estructurales: consistencia criptográfica, respaldada por un [[merkle-proofs-as-substrate-primitive|registro real encadenado por Merkle]], y capacidad de arranque soberana, una función planificada. Ni un comando de colapso-a-imagen-arrancable iniciado por el operador ni una sincronización en vivo entre entornos (nube más bóveda sin conexión) existen hoy en la plataforma — ambas son la forma prevista que describe este artículo, no mecanismos ya publicados.
 
 ## Puntos clave
 
-- La plataforma mantiene un estado criptográfico unificado en múltiples entornos físicos de forma simultánea. Un nodo activo en la nube y una bóveda sin conexión comparten en todo momento el mismo [[merkle-proofs-as-substrate-primitive|hash Merkle]] raíz — un auditor puede verificar cualquiera de las copias sin necesidad de que ambas estén en línea.
-- La capacidad de arranque soberano significa que cualquier despliegue puede colapsar en una imagen de arranque autocontenida (`.ISO` o `.IMG`) y reconstituirse en hardware nuevo sin necesidad de recuperar datos desde una fuente remota. El sistema lleva consigo su propio estado.
-- La operación de colapso del archivo es explícita e iniciada por el operador. No se ejecuta según un calendario ni se activa automáticamente. Esta es una restricción de diseño deliberada: la portabilidad es una capacidad que el operador invoca, no un proceso en segundo plano.
-- Estas dos propiedades — consistencia criptográfica y capacidad de arranque soberano — son estructurales, no complementos añadidos. Se mantienen de forma simultánea, sin que una se sacrifique en favor de la otra al moverse entre entornos en la nube y bóvedas sin conexión.
+- La consistencia criptográfica se apoya en una primitiva real: un [[merkle-proofs-as-substrate-primitive|registro encadenado por Merkle]] con pruebas de inclusión y consistencia, ya usado por varios servicios de la plataforma para registros de solo-anexar a prueba de manipulación.
+- La garantía específica entre dos entornos que describe este artículo — un nodo activo en la nube y una bóveda sin conexión que comparten un mismo hash raíz, verificable de forma independiente — es un objetivo de diseño, no una función construida. No se encontró ningún mecanismo de sincronización entre entornos en el código actual.
+- La capacidad de arranque soberana — colapsar un despliegue en una imagen de arranque autocontenida y reconstituirlo en hardware nuevo sin una fuente remota — también es un objetivo de diseño. Existen herramientas reales de construcción de imágenes arrancables para varios productos individuales de la plataforma; no existe un comando de operador que "colapse el estado actual de este archivo", abarcando las copias en la nube y sin conexión.
+- Ambas propiedades están pensadas para ser estructurales una vez construidas, no complementos añadidos — pero afirmar que ya operan sería exagerar lo que hoy está publicado.
 
-## Estado criptográfico distribuido
+## La primitiva del registro criptográfico
 
-Un único archivo puede existir en múltiples entornos físicos —un nodo activo en la nube y una bóveda sin conexión— mientras mantiene un estado criptográfico unificado. Ambos entornos comparten en todo momento el mismo [[merkle-proofs-as-substrate-primitive|hash Merkle]] raíz. Esto permite que un auditor verifique la integridad de cualquiera de las copias sin necesidad de que ambas estén en línea simultáneamente.
+El bloque real detrás de la afirmación de consistencia es el [[merkle-proofs-as-substrate-primitive|registro encadenado por Merkle]] de la plataforma: una estructura de solo-anexar con puntos de control criptográficos y pruebas de inclusión/consistencia, ya en uso por varios servicios para registros a prueba de manipulación. Lo que no está construido es la propiedad específica entre dos entornos descrita abajo — un nodo activo en la nube y una bóveda sin conexión que comparten continuamente un mismo hash raíz verificado.
 
-## Colapso y portabilidad del archivo
+## Planificado: estado compartido entre dos entornos
 
-Cuando un operador emite el comando de colapso, la plataforma comprime el índice federado en la nube y la copia física sin conexión en una única entidad transferible: una imagen de arranque autoejecutada en formato `.ISO` o `.IMG`. Esta operación es explícita e iniciada por el operador; no se ejecuta de forma automática.
+El diseño previsto: un único archivo existiría en dos entornos físicos — un nodo activo en la nube y una bóveda físicamente aislada sin conexión — compartiendo en todo momento el mismo hash raíz Merkle. Un auditor podría entonces verificar cualquiera de las copias de forma independiente, sin que ambas estuvieran en línea. Esto es prospectivo; no existe hoy ningún mecanismo de sincronización que lo implemente.
 
-## Imagen de arranque soberana
+## Planificado: colapso y portabilidad del archivo
 
-La imagen resultante es un entorno operativo autocontenido. Puede desplegarse en hardware físico o importarse en un entorno de nube comercial. La imagen lleva el estado completo del archivo, lo que permite reconstituir el sistema en hardware nuevo sin necesidad de recuperar datos desde una fuente remota.
-
-Esta propiedad está diseñada para garantizar la continuidad operativa cuando el entorno de despliegue principal no está disponible.
+El diseño previsto: un comando emitido por el operador comprimiría el estado de un despliegue en una única imagen de arranque autoejecutable. Existen hoy herramientas reales para construir imágenes arrancables de productos individuales — compilar un producto específico en una imagen `.img` para su propio destino de despliegue. No existe un comando general que "colapse este archivo en vivo, incluida su bóveda sin conexión, en una sola imagen portátil". La intención de diseño es que esa operación sea explícita e iniciada por el operador, nunca automática ni programada.
 
 ## Véase también
 
