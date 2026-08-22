@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-14
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: app-console-email.es.md
 short_description: "app-console-email is the F3 communications cartridge for os-console, providing inbox listing, message reading, and compose-and-send via service-email."
@@ -36,7 +36,7 @@ Messages are sourced from `service-email`'s message store. The cartridge does no
 
 ## Message reading
 
-Selecting a message from the inbox opens the message reading view. The view displays the full message body, headers, and any attachments listed by name (Correction, 2026-08-02: the real `EmailSummary` struct carries only `subject`/`body` fields — no attachment field or download path exists anywhere in the crate; flagged, not resolved). Attachment content is available for download to a staging path; attachments do not open automatically.
+Selecting a message from the inbox opens the message reading view, which fetches and displays the full message body alongside the sender, subject, and timestamp already shown in the inbox row. The cartridge carries no attachment support — a message's body is plain text or an HTML fallback, with nothing to download or open separately.
 
 Plain-text mode is available via the `--plain` flag at console startup. In plain mode, HTML-only message bodies are rendered as their plaintext fallback. Terminals without unicode support receive ASCII approximations of any unicode symbols in subject lines and sender names.
 
@@ -48,7 +48,7 @@ Draft saving is not implemented. An abandoned compose session is discarded; no p
 
 ## Authorization dependency
 
-The cartridge's connection to `service-email` is brokered through the [[machine-based-auth|machine-based authorization]] client managed by [[app-console-keys|app-console-keys]]. If the authorization link to the email service is inactive, the inbox view shows a `MBA LINK INACTIVE` status and the compose view is disabled. The cartridge degrades gracefully rather than crashing the chassis. (Correction, 2026-08-02: real MBA-inactive behavior is chassis-wide, not per-cartridge graceful degradation — `app-console-keys/src/chassis.rs` replaces *all* cartridge content with a full-screen pairing UI when inactive; the email cartridge specifically is never rendered at all in that state. Flagged, not resolved.)
+The cartridge's connection to `service-email` is brokered through the [[machine-based-auth|machine-based authorization]] client managed by [[app-console-keys|app-console-keys]]. That authorization link is chassis-wide, not per-cartridge: when it goes inactive, the chassis replaces the entire content area with a full-screen pairing prompt, and `app-console-email` — like every other cartridge — is not rendered at all until the link is restored.
 
 ## See also
 

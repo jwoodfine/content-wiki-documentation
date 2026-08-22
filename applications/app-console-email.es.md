@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: TRANSLATE-ES
-last_edited: 2026-06-14
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: app-console-email.md
 short_description: "app-console-email es el cartucho de comunicaciones F3 de os-console. Proporciona listado de bandeja de entrada, lectura de mensajes y redacción y envío, operando a través de service-email como el Diodo de Comunicaciones entre el operador y los corresponsales externos."
@@ -36,7 +36,7 @@ Los mensajes provienen del almacén de mensajes de `service-email`. El cartucho 
 
 ## Lectura de mensajes
 
-Seleccionar un mensaje de la bandeja de entrada abre la vista de lectura. Esta vista muestra el cuerpo completo del mensaje, las cabeceras y los adjuntos listados por nombre. El contenido de los adjuntos está disponible para descarga a una ruta de preparación; los adjuntos no se abren automáticamente.
+Seleccionar un mensaje de la bandeja de entrada abre la vista de lectura, que obtiene y muestra el cuerpo completo del mensaje junto con el remitente, el asunto y la marca de tiempo ya mostrados en la fila de la bandeja de entrada. El cartucho no admite adjuntos — el cuerpo de un mensaje es texto plano o su alternativa HTML, sin nada que descargar o abrir por separado.
 
 El modo de texto plano está disponible mediante el indicador `--plain` al iniciar la consola. En modo plano, los cuerpos de mensaje solo en HTML se renderizan como su alternativa de texto sin formato. Los terminales sin soporte Unicode reciben aproximaciones ASCII de los símbolos Unicode en las líneas de asunto y nombres de remitente.
 
@@ -48,7 +48,7 @@ El guardado de borradores no está implementado. Una sesión de redacción aband
 
 ## Dependencia de autorización
 
-La conexión del cartucho con `service-email` es mediada por el cliente de [[machine-based-auth|autorización basada en máquina]] gestionado por [[app-console-keys|app-console-keys]]. Si el enlace de autorización con el servicio de correo electrónico está inactivo, la vista de bandeja de entrada muestra el estado `MBA LINK INACTIVE` y la vista de redacción queda desactivada. El cartucho degrada con elegancia en lugar de hacer caer el chasis.
+La conexión del cartucho con `service-email` es mediada por el cliente de [[machine-based-auth|autorización basada en máquina]] gestionado por [[app-console-keys|app-console-keys]]. Ese enlace es de todo el chasis, no por cartucho: si se vuelve inactivo, el chasis reemplaza toda el área de contenido con una pantalla de emparejamiento. `app-console-email` no se renderiza en absoluto hasta que el enlace se restablece.
 
 ## Véase también
 
