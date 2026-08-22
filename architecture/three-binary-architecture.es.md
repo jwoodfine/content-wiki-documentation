@@ -20,8 +20,6 @@ paired_with: three-binary-architecture.md
 cites: []
 ---
 
-# La Arquitectura de Tres Binarios: os-console, os-totebox, os-orchestration
-
 [[totebox-orchestration|Totebox Orchestration]] se entrega mediante tres entornos operativos binarios distintos.
 Cada uno tiene un rol distinto, un objetivo de despliegue distinto y un conjunto distinto
 de aplicaciones alojadas. Juntos forman un sistema completo para la gestión soberana de datos.
@@ -104,15 +102,22 @@ os-console se ejecuta en la máquina personal del operador. Es la interfaz a tra
 cual el operador interactúa con los servicios de Totebox. No almacena datos — renderiza
 vistas de datos que residen en os-totebox.
 
-| Tecla | Cartridge | Servicio Backend |
-|---|---|---|
-| F2 | Personas | service-people |
-| F3 | Email | service-email |
-| F4 | Contenido | service-content |
-| F6 | Contabilidad | service-bookkeeper |
-| F9 | SLM | service-slm |
-| F11 | Sistema / Emparejamiento | pairing-server |
-| F12 | Entrada / Auditoría | service-input |
+El esquema de etiquetas de teclas F (`app-console-keys`) reserva las doce teclas de
+función, pero solo siete cartridges están registrados hoy en el chasis en ejecución:
+
+| Tecla | Cartridge | Servicio Backend | ¿Conectado hoy? |
+|---|---|---|---|
+| F2 | Personas | service-people | Sí |
+| F3 | Email | service-email | Sí |
+| F4 | Contenido | service-proofreader / service-content | Sí |
+| F5 | Búsqueda | service-search | Sí |
+| F6 | Contabilidad | — | No — etiqueta reservada, sin cartridge registrado |
+| F7 | BIM | — | No — etiqueta reservada, sin cartridge registrado |
+| F8 | GIS | — | No — etiqueta reservada, sin cartridge registrado |
+| F9 | SLM | service-slm | Sí |
+| F10 | Malla | — | No — etiqueta reservada, sin cartridge registrado |
+| F11 | Sistema / Emparejamiento | pairing-server | Sí |
+| F12 | Entrada / Auditoría | service-input | Sí |
 
 ---
 

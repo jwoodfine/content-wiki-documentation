@@ -20,8 +20,6 @@ paired_with: three-binary-architecture.es.md
 cites: []
 ---
 
-# The Three-Binary Architecture: os-console, os-totebox, os-orchestration
-
 [[totebox-orchestration|Totebox Orchestration]] is delivered through three distinct binary operating environments.
 Each has a distinct role, a distinct deployment target, and a distinct set of hosted
 applications. Together they form a complete system for sovereign data management.
@@ -108,17 +106,23 @@ os-console is deployed as a node instance (naming prefix: `node-console-*`). The
 operator boots it or runs it as an application. It connects outbound to the Totebox,
 authenticates via [[pairing-as-permission|machine pairing]] (F11), and presents the authorized cartridge set.
 
-**Cartridges (app-console-*) are the rendering unit:**
+**Cartridges (app-console-*) are the rendering unit.** The F-key label scheme
+(`app-console-keys`) reserves all twelve function keys, but only seven cartridges are
+currently registered in the running chassis:
 
-| Key | Cartridge | Backend |
-|---|---|---|
-| F2 | People | service-people |
-| F3 | Email | service-email |
-| F4 | Content | service-content |
-| F6 | Bookkeeper | service-bookkeeper |
-| F9 | SLM | service-slm |
-| F11 | System / Pairing | pairing-server |
-| F12 | Input / Audit | service-input |
+| Key | Cartridge | Backend | Wired in today? |
+|---|---|---|---|
+| F2 | People | service-people | Yes |
+| F3 | Email | service-email | Yes |
+| F4 | Content | service-proofreader / service-content | Yes |
+| F5 | Search | service-search | Yes |
+| F6 | Bookkeeper | — | No — label reserved, no cartridge registered |
+| F7 | BIM | — | No — label reserved, no cartridge registered |
+| F8 | GIS | — | No — label reserved, no cartridge registered |
+| F9 | SLM | service-slm | Yes |
+| F10 | Mesh | — | No — label reserved, no cartridge registered |
+| F11 | System / Pairing | pairing-server | Yes |
+| F12 | Input / Audit | service-input | Yes |
 
 **Intended final form (Phase H2, planned):** os-console boots as a seL4 Microkit image.
 Each cartridge runs as a seL4 Protection Domain (the "browser tab" isolation model).
