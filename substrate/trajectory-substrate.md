@@ -69,44 +69,19 @@ Tenant adapters do not leave the customer's deployment unless that customer expl
 
 ### Capture mechanics
 
-**Correction (2026-07-18):** of the five scripts below, only one exists in the live
-monorepo — `capture-edit.sh` (`service-slm/scripts/`), and even that has the wrong
-extension here (this article says `capture-edit.py`; the real file is a `.sh`). A
-repo-wide search finds no `capture-trajectory.sh`, `capture-doctrine.sh`,
-`capture-feedback.sh`, or `capture-tenant-runtime.sh` anywhere. This is consistent with
-(not contradicted by) the Configuration section below, which states only L1
-("edit-corpus capture") is live and L2–L4 are planned/intended — but this table presents
-all five scripts in the present tense with no such hedge, which reads as already-built.
-**Flagged, not silently rewritten** — the L2–L4 script names may be provisional/aspirational
-naming for not-yet-built capture points rather than a factual claim of existing files;
-needs project-totebox confirmation of intended vs. actual naming before this table is
-corrected.
+One capture script is live today: `capture-edit.sh` (`service-slm/scripts/`), installed as a `git post-commit` hook. It does not write a JSONL file directly — it posts the commit's diff (stat header plus unified 3-line context, truncated at 64 KiB) and commit message to the Doorman's shadow-brief endpoint (`POST /v1/shadow`), where it becomes the `actual_diff` field of the pending brief. It is a no-op when no brief is pending for that repository. It carries no redaction or PII-scrubbing step of its own — matching the already-established finding that outbound sanitization elsewhere in the platform covers only the apprenticeship-corpus write path this script feeds, not a separate, general-purpose redaction layer.
 
-Five scripts handle capture:
+The remaining four capture points this article names — session-end trajectory capture, doctrine capture on MINOR bumps, rejected-feedback capture, and tenant-runtime capture — describe intended future capture points, not scripts that exist in the monorepo today under any name found by a repo-wide search. Whether their eventual names match what's written here is not yet confirmed against any implementation plan.
 
-| Script | Trigger | Writes |
-|---|---|---|
-| `capture-edit.py` | `git post-commit` hook on cluster branches and the main branch | `engineering/<cluster>/<sha>.jsonl` |
-| `capture-trajectory.sh` | Session end | `engineering/sessions/<id>.jsonl` |
-| `capture-doctrine.sh` | Per platform MINOR bump | `doctrine/<version>/<tuple>.jsonl` |
-| `capture-feedback.sh` | Inbox-archive of rejected or redo messages | `engineering/feedback/<record>.jsonl` |
-| `capture-tenant-runtime.sh` | Scheduled inside deployment instance | `<instance>/training-corpus/<tenant>/<shard>.jsonl` |
-
-Sanitize-outbound discipline applies at every capture point: private keys, PII, and customer-identifying details are redacted before write. Redaction runs at the capture script, not at the downstream consumer. Diff output is truncated at 1,000 lines.
-
-Every JSONL record carries a provenance header with fields `tuple_type`, `doctrine_version`, `tenant`, `moduleId`, `cluster`, `role`, `scope`, `redaction_class`, `evidence_class`, `source_commit`, `session_id`, and `created`. The training pipeline filters on `(tenant, redaction_class, evidence_class)` to assemble each corpus. Any adapter version is re-derivable from its source records; any record can answer which adapter versions it trained.
+Every JSONL record the live capture path produces carries a provenance header with fields including `tuple_type`, `doctrine_version`, `tenant`, `moduleId`, `cluster`, `role`, `scope`, `source_commit`, `session_id`, and `created`. The training pipeline is intended to filter on these fields to assemble each corpus once the pipeline itself is built; any adapter version is intended to be re-derivable from its source records.
 
 ### Adapter composition at request time
 
 At inference time the [[compounding-doorman|Doorman]] (`service-slm`) composes adapters per request:
 
-(Same base-model naming note as [[adapter-composition]] and [[pointsav-llm]] — the exact
-Tier A model name is inconsistent across this wiki and the underlying engineering docs;
-not re-litigated here.)
-
 ```
 composed_weights =
-  base_model[OLMo-3-1125-7B-Q4]
+  base_model[OLMo-3-7B-Instruct]
   ⊕ constitutional[doctrine_v0.0.x] ← always
   ⊕ engineering[pointsav_vN]? ← if request is platform-build context
   ⊕ tenant[<tenant>_vK]? ← if request is tenant-data context
