@@ -18,7 +18,7 @@ cites:
 paired_with: totebox-orchestration-development.es.md
 ---
 
-[[pointsav-overview|PointSav]]'s development environment is deployed as a [[totebox-orchestration|Totebox Orchestration]] instance — the same architecture the platform delivers to customers. The development workspace, where the platform is written and shipped, runs as a hub coordinating thirteen [[totebox-archive|Totebox Archives]] over a single shared [[service-slm|`service-slm`]] access-control gateway. The development workflow is the customer workflow. There is no test environment that diverges from production architecture; the environment that produces the code is the architecture the code describes.
+[[pointsav-overview|PointSav]]'s development environment is deployed as a [[totebox-orchestration|Totebox Orchestration]] instance — the same architecture the platform delivers to customers. The development workspace, where the platform is written and shipped, runs as a hub coordinating a growing set of [[totebox-archive|Totebox Archives]] over a single shared [[service-slm|`service-slm`]] access-control gateway. The development workflow is the customer workflow. There is no test environment that diverges from production architecture; the environment that produces the code is the architecture the code describes.
 
 This article documents how the workspace maps onto Totebox Orchestration, what the Command Session and Totebox Sessions own, and which components are operationally live versus planned.
 
@@ -36,7 +36,7 @@ The development workspace maps directly onto this topology:
 | [[service-slm|`service-slm`]] access-control gateway | The shared [[totebox-orchestration|Orchestration]] AI routing layer |
 | `vault-privategit-source-1` (declared in `MANIFEST.md`) | The Command instance identity |
 
-Thirteen Totebox Archives are currently active in the workspace, covering the building-information, geographic-information, editorial, design, knowledge, marketing, bookkeeping, proofreading, and platform-infrastructure concerns. Two additional development archives are planned to complete the topology — `project-source` for PointSav canonical-tier work and `project-woodfine` for Woodfine customer-tier work. (Correction, 2026-08-02, verified against the live workspace: `/srv/foundry/clones/` now holds 26 `project-*` archives, not thirteen — organic workspace growth since this article's `last_edited: 2026-05-25` date, not a fabrication. Flagged, not resolved.)
+Multiple Totebox Archives are active in the workspace, covering the building-information, geographic-information, editorial, design, knowledge, marketing, bookkeeping, proofreading, and platform-infrastructure concerns, and the set grows as new archives are provisioned. Two additional development archives are planned to complete the topology — `project-source` for PointSav canonical-tier work and `project-woodfine` for Woodfine customer-tier work.
 
 ## The Command Session
 
@@ -80,7 +80,7 @@ An archive with all four legs ratified is complete. Archives with pending legs c
 
 Every Totebox Archive routes inference through the same `service-slm` access-control gateway instance. The gateway is multi-tenant: it accepts requests tagged with an `X-Module-ID` header identifying which archive is making the request, routes to the appropriate compute tier, and enforces per-tenant boundaries on every call.
 
-A single `service-slm` instance currently serves all thirteen active archives. Each archive's manifest declares `slm_endpoint: http://localhost:8011`, pointing at this shared instance. When archives eventually move to separate virtual machines, each machine is intended to run its own gateway instance — the manifest field updates with no other changes required of calling code.
+A single `service-slm` instance currently serves every active archive. Each archive's manifest declares `slm_endpoint: http://localhost:8011`, pointing at this shared instance. When archives eventually move to separate virtual machines, each machine is intended to run its own gateway instance — the manifest field updates with no other changes required of calling code.
 
 ## The two-node architecture
 
@@ -97,7 +97,7 @@ The separation is designed so that a development incident — a failing test, a 
 The architectural claim is provable from artefacts already in place:
 
 - The workspace is declared as `vault-privategit-source-1` in `MANIFEST.md` — a Totebox instance in the canonical sense.
-- Thirteen Totebox Archives are active, each following the Project Tetrad discipline.
+- Multiple Totebox Archives are active, each following the Project Tetrad discipline.
 - The shared `service-slm` access-control gateway is operationally live (177 of 177 tests passing) and serves as the Orchestration AI routing layer.
 - The commit flow — staging branches promoted via the Stage 6 pipeline to the canonical ledger — is the Totebox promotion pipeline.
 - The inbox-and-outbox file protocol is the AI session coordination protocol — the same pattern customers are intended to use for cross-archive communication.

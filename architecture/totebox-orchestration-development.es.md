@@ -15,7 +15,7 @@ editor: pointsav-engineering
 paired_with: totebox-orchestration-development.md
 ---
 
-El entorno de desarrollo de [[pointsav-overview|PointSav]] está desplegado como una instancia de [[totebox-orchestration|orquestación Totebox]] — la misma arquitectura que la plataforma entrega a los clientes. El espacio de trabajo de desarrollo, donde se escribe y publica la plataforma, opera como un concentrador que coordina trece [[totebox-archive|archivos Totebox]] a través de una única pasarela compartida de control de acceso [[service-slm|`service-slm`]]. El flujo de trabajo de desarrollo es el flujo de trabajo del cliente. No existe un entorno de pruebas que se aparte de la arquitectura de producción; el entorno que produce el código es la arquitectura que el código describe.
+El entorno de desarrollo de [[pointsav-overview|PointSav]] está desplegado como una instancia de [[totebox-orchestration|orquestación Totebox]] — la misma arquitectura que la plataforma entrega a los clientes. El espacio de trabajo de desarrollo, donde se escribe y publica la plataforma, opera como un concentrador que coordina un conjunto creciente de [[totebox-archive|archivos Totebox]] a través de una única pasarela compartida de control de acceso [[service-slm|`service-slm`]]. El flujo de trabajo de desarrollo es el flujo de trabajo del cliente. No existe un entorno de pruebas que se aparte de la arquitectura de producción; el entorno que produce el código es la arquitectura que el código describe.
 
 Este artículo documenta cómo el espacio de trabajo se asigna a la orquestación Totebox, qué responsabilidades tienen la sesión de Comando y las sesiones Totebox, y qué componentes están operativos frente a los planificados.
 
@@ -77,7 +77,7 @@ Un archivo con las cuatro patas ratificadas está completo. Los archivos con pat
 
 Cada archivo Totebox enruta la inferencia a través de la misma instancia de la pasarela `service-slm`. La pasarela es multi-inquilino: acepta solicitudes etiquetadas con un encabezado `X-Module-ID` que identifica qué archivo está realizando la solicitud, enruta al nivel de cómputo apropiado y aplica los límites por inquilino en cada llamada.
 
-Una sola instancia de `service-slm` actualmente sirve a los trece archivos activos. El manifiesto de cada archivo declara `slm_endpoint: http://localhost:8011`, apuntando a esta instancia compartida. Cuando los archivos finalmente se trasladen a máquinas virtuales separadas, cada máquina está prevista para ejecutar su propia instancia de pasarela — el campo del manifiesto se actualiza sin que el código que llama requiera otros cambios.
+Una sola instancia de `service-slm` actualmente sirve a todos los archivos activos. El manifiesto de cada archivo declara `slm_endpoint: http://localhost:8011`, apuntando a esta instancia compartida. Cuando los archivos finalmente se trasladen a máquinas virtuales separadas, cada máquina está prevista para ejecutar su propia instancia de pasarela — el campo del manifiesto se actualiza sin que el código que llama requiera otros cambios.
 
 ## La arquitectura de dos nodos
 
