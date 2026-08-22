@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Gravity engine"
+title: "service-content"
 slug: service-content
 category: services
 type: concept
@@ -11,96 +11,49 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-22
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: service-content.es.md
-short_description: "Synthesis engine reading raw Totebox payloads against an institutional taxonomy to generate structured documents, with human review on every verified ledger."
+short_description: "service-content extracts named entities from raw payloads through a tiered model pipeline, writes them into the knowledge graph under a human-review checkpoint, and hosts the platform's reference taxonomies."
 cites: []
 references:
   - id: 1
-    text: "Aho, A. V. & Corasick, M. J. 'Efficient String Matching: An Aid to Bibliographic Search.' Communications of the ACM, 18(6):333–340, 1975."
-    url: "https://dl.acm.org/doi/10.1145/360825.360855"
-  - id: 2
     text: "ILO. 'ISCO-08: International Standard Classification of Occupations.' International Labour Organization, 2012."
     url: "https://www.ilo.org/public/english/bureau/stat/isco/isco08/"
 ---
 
-An organization's files hold its knowledge but do not surface it. An email archive, a folder of contracts, a store of PDFs — each is searchable, and none of it knows who relates to whom, which concerns recur, or what the organization's own terms mean.
+An organization's files hold its knowledge but do not surface it. An email archive, a folder of contracts, a store of PDFs — each is searchable, and none of it knows who relates to whom or what the organization's own terms mean. `service-content` is the platform's entity-extraction and knowledge-graph write service: it turns raw document payloads into named entities and relationships, and it owns the reference taxonomies those entities are classified against.
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** several specific mechanics below don't match the real crate. No "Gravity Vector"/"Gravity Engine" term exists anywhere in the real source. The described binary `VALID`/`REJECT` verification token doesn't match the real Doorman verdict vocabulary, which is `accept`/`refine`/`reject`/`defer-tier-c`. No "Stratified Ontology" L0–L5/D1–D3 naming exists in the codebase. What is real and confirmed accurate: the Seed-Vault pillars (Entities/Archetypes/Chart/Domains/Themes, `service-content/ontology/*.csv`) and human-in-the-loop write-governance (`src/write_governance.rs`). **Flagged, not resolved** — the pipeline-mechanics sections need rewriting against the real vocabulary; the seed-vault and governance sections are accurate as-is.
+## Extraction runs through three tiers, cheapest first
 
-`service-content` — the Gravity Engine — is the synthesis engine of the PointSav family. It reads raw payloads from inside a [[totebox-os|Totebox]], runs them against an institutional taxonomy, produces dense Gravity Vectors, and generates the documents an organisation publishes: wikis, news releases, due-diligence ledgers, internal memos.
+When a payload arrives, `service-content` tries the fastest extraction method first and only escalates when it has to:
 
-The engine is built on a Four-Pillar Seed Vault — the institutional grammar — a deterministic ingest-to-routing pipeline, and a five-layer Stratified Ontology. It is the difference between a file store and an active intelligence engine. The [[archetypes-and-chart-of-accounts|Chart of Accounts and eleven archetypes]] form two of the four Seed Vault pillars.
+1. **Tier 0 — GLiNER.** A direct HTTP call to a local GLiNER model (port 9085), with no call to the AI request router (the Doorman) involved. Most documents are handled here.
+2. **Tier A fallback — OLMo, via the Doorman.** Runs when GLiNER is unreachable, when GLiNER finds nothing (to catch its blind spots), or when the payload is structured CSV data GLiNER's natural-language model can't parse. Every Tier 0 pass also queues an asynchronous Tier A run in the background. The two results become a training pair — GLiNER's extractive output as the preferred answer, OLMo's as the comparison — used to keep improving Tier A's own extraction quality over time. This is the platform's real self-improvement loop for this pipeline: a concrete training-data mechanism, not an organically growing glossary.
+3. **Tier B — OLMo 32B, via the Doorman's `/v1/extract` endpoint.** The heaviest tier, used when the faster tiers are unavailable or insufficient.
 
-For a regulated buyer, one boundary governs all of it. `service-content` does not publish to a verified ledger autonomously; every verified entry transits a human-in-the-loop verification step first. This article covers the Seed Vault, the Gravity Engine pipeline, the Stratified Ontology, and that boundary.
+A backpressure check against the Doorman's queue depth can defer a document rather than pile onto an already-loaded pipeline.
 
-## The Four-Pillar Seed Vault
+## Every automated graph write is held for a human verdict
 
-Every [[totebox-os|Totebox]] is provisioned with four JSON ledgers that form the institutional grammar of the system — the Seed Vault. The Seed Vault is built once, locked, and adjusted only by operators, never by AI.
+`service-content` never writes extracted entities straight into the knowledge graph. Every write — from either tier — passes through the same checkpoint. It captures the write first, then promotes it only after a human signs off:
 
-| Pillar | What it captures | Example |
-|---|---|---|
-| Entities | The "who" — every individual, organisation, email, and phone number extracted from payloads | A Sovereign-ID keyed to a contact's email hash |
-| Archetypes | The "logos" — eleven functional personas (Executive, Guardian, Fiduciary, Architect, Engineer, Artisan, Constructor, Catalyst, Envoy, Steward, Sage) | A façade consultant maps to "The Engineer" |
-| Chart of Accounts | The "where" — the rigid hierarchical structure of the organisation (Profile → Domain → Sub-Domain) | Construction → Collaborators → Façade Consultants |
-| Domains | The "what" — the localised vocabulary and glossary terms in use | "Direct-Hold Solution" |
+1. **Capture.** The write is recorded to a durable, on-disk JSONL file instead of touching the graph. It survives a process restart, and a human can review the full pending queue at any time.
+2. **Verify.** A reviewer submits an SSH-signed verdict. The signature is checked against the workspace's `allowed_signers` file under a dedicated namespace, so a verdict signature from this system can never be replayed against an unrelated one.
+3. **Promote on accept.** Only after a verdict is signed does the write actually reach the graph.
+4. **Discard on reject.** The pending record is kept — never deleted — with the rejection verdict attached, for audit.
 
-A fifth pillar, Themes, captures the recurring topics and institutional concerns emerging from the corpus — flagged and proposed to operators for approval.
+This satisfies the platform's SYS-ADR-07 (no structured data through AI) and SYS-ADR-19 (no automated AI publishing to verified ledgers) commitments directly: the extraction pipeline can run unattended, but nothing it produces becomes part of the graph of record without an explicit, signed human decision.
 
-## The Gravity Engine pipeline
+## The reference taxonomies it hosts
 
-When a payload arrives — an email, a PDF, a DOCX — the engine runs a tight, deterministic sequence.
-
-1. **Ingest.** `service-email`, or the [[app-console-input|Input Machine]], writes the raw payload to the Totebox's WORM vault. Nothing is mutated yet.
-2. **Entity extraction.** `service-extraction` runs Aho-Corasick string matching [^1] over the raw text and pulls out every name, email, phone number, and organisation. Each receives a deterministic Sovereign-ID and begins in `Discovery` status.
-3. **Gravity calculation.** `service-content` loads the four pillars, fuses them into a single search automaton, and extracts only the sentences containing structural keywords. A 5 MB payload becomes a 50-word Gravity Vector.
-4. **Verification.** The vector and the entity bundle pass to `service-slm`, which evaluates whether the payload aligns with the institution's taxonomy. The output is a single token — `VALID` or `REJECT`.
-5. **Routing.** Verified payloads go to deep storage; rejected payloads go to quarantine. Verified entities have their `Discovery` status upgraded and are socketed to the Chart of Accounts.
-
-## The Stratified Ontology
-
-`service-content` organises information in a five-layer stack, with three derivative engines on top. The L0 base layer feeds directly into the [[service-fs-architecture|WORM ledger architecture]] provided by `service-fs`.
-
-| Layer | What it holds |
-|---|---|
-| L0 — Base Geometry | Raw files (`/source`, `/assets`, `/ledger`) — immutable, local |
-| L1/L2 — Raw Graph | Blind full extraction into a JSONL knowledge graph |
-| L3 — Global Anchors | Universal standards (IFRS/GAAP for finance, O*NET/ISCO for personnel) [^2] |
-| L4 — Sovereign Taxonomy | The institution's bespoke operational reality — Domains, Glossaries, Topics |
-| L5 — Verification Crust | The human-in-the-loop truth ledger; outputs from operator-verified content only |
-
-| Derivative | What it produces |
-|---|---|
-| D1 — Thematic Quant | Foresight: monitors graph inflow and surfaces emerging themes for operator review |
-| D2 — Linguistic Protocols | Behavioural constraints — TRANSLATE, MEMO, COMMS, TEXT, LEGAL protocols |
-| D3 — Content Creation | Final artefacts: HTML wikis, PDF ledgers, news releases — generated from L5 truth |
-
-## Self-healing
-
-The Gravity Engine is self-healing in a specific, narrow sense: its own outputs feed back into its inputs. A successfully synthesised memo becomes new content the engine indexes on its next run. Over months, the Domain glossaries grow, the Themes track real institutional concerns, and the engine's syntheses converge on the institution's actual voice. This is not autonomous model fine-tuning — the improvement is corpus-level: the engine has more verified material to draw from. The [[compounding-substrate|compounding substrate]] pattern describes the architectural logic behind this feedback loop.
-
-## The human-in-the-loop boundary
-
-Every L5 entry must transit a human-in-the-loop verification step — through the [[app-console-input|Input Machine]] (F12) or the content review surface — before it can be written to a verified ledger. This satisfies SYS-ADR-07 (no structured data through AI) and SYS-ADR-19 (no automated AI publishing to verified ledgers).
-
-The boundary is what makes the engine usable in a regulated setting. The engine accelerates synthesis; a human, not the engine, commits the result to a ledger of record.
-
-## Key takeaways
-
-- `service-content` is the Gravity Engine — a synthesis engine that transforms an organisation's raw document payload into structured, human-verified intelligence.
-- Its institutional grammar is the Four-Pillar Seed Vault: Entities, Archetypes, Chart of Accounts, and Domains — built once by operators and never mutated by AI.
-- The pipeline is deterministic: Ingest → Extract → Gravity calculation → Verification → Routing. Every step produces auditable outputs.
-- The Stratified Ontology has five layers. Only L5 — operator-verified content — feeds final published artefacts.
-- The human-in-the-loop boundary is architectural, not optional: no content reaches a verified ledger without an explicit operator decision at the F12 gate.
+Separately from extraction, `service-content` owns a set of CSV taxonomy files — the [[archetypes-and-chart-of-accounts|Chart of Accounts and eleven archetypes]] among them, plus domain vocabularies, glossaries, and topic/guide indexes for each wiki. These load into the graph as static reference entities through a small admin API, distinct from the entities the extraction pipeline produces from real documents.
 
 ## See also
 
-- [[service-slm]] — the local small language model that produces `VALID`/`REJECT` decisions
-- [[service-people]] — the identity ledger that receives socketed entities from the Gravity Engine
-- [[archetypes-and-chart-of-accounts]] — the institutional taxonomy that forms the Seed Vault's structure
-- [[app-console-input]] — the F12 Input Machine; the human-gated ingest surface
-- [[service-fs-architecture]] — the WORM ledger that stores the L0 base geometry layer
-- [[totebox-os]] — the Totebox that hosts service-content and its WORM storage
+- [[archetypes-and-chart-of-accounts]] — the two reference taxonomies `service-content` loads into the knowledge graph
+- [[verification-surveyor]] — where a human applies the archetype label that `service-content`'s taxonomy makes available
+- [[service-extraction]] — the deterministic identity layer entities receive once extracted
+- [[app-console-input]] — the F12 gate where an operator reviews a pending automated write
 - [[query-the-datagraph]] — step-by-step guide: search named entities, navigate relationships, and handle Tier A outages
 - [[export-structured-data]] — step-by-step guide: four export paths including DataGraph queries and wiki Markdown
