@@ -22,14 +22,7 @@ An organization that adopts an AI platform today rents the intelligence. The mod
 
 PointSav builds on a different pattern — the **Compounding Substrate**. The platform code is open and forkable, the deterministic data layer runs with zero AI compute, and every operational interaction generates training signal that compounds across every tenant deployment.
 
-A curator — PointSav — periodically rolls the accumulated signal into an improved base model that flows back to every deployment. The customer's data never leaves the customer's infrastructure; only adapter weights and key-value cache blocks, stripped of source data, enter the shared federation.
-
-**Correction (2026-08-02, verified against canonical `origin/main`):** the KV-cache
-claim here is factually reversed. `service-slm/ARCHITECTURE.md` states the KV-cache
-tier "is not active in the current implementation," and its designed purpose is the
-opposite of federation — strict per-tenant isolation ("Project A never sees Project
-B's blocks"). No commit history suggests KV-cache blocks were ever designed to leave
-a tenant's deployment. **Flagged, not resolved.**
+A curator — PointSav — periodically rolls the accumulated signal into an improved base model that flows back to every deployment. The customer's data never leaves the customer's infrastructure; only adapter weights, stripped of source data, enter the shared federation. Key-value cache blocks stay strictly per-tenant — the cache namespaces by `moduleId` specifically so one tenant's blocks are never visible to another's, the opposite of a shared federation resource.
 
 For a regulated buyer the consequence is concrete. The AI layer improves with each month of production use, and no data is surrendered beyond what the buyer chose at onboarding. The pattern is durable for a structural reason: a rented-intelligence vendor cannot copy it without dismantling its own billing model.
 
@@ -73,7 +66,7 @@ A rented-intelligence vendor bills each tier as a separate relationship and cann
 
 ### Privacy-preserving federation
 
-Customers opt in to a [[sovereign-ai-commons|federated adapter marketplace]] that aggregates improvements without moving source data. Each customer's own data stays in place; only adapter weights and key-value cache blocks, without source data, flow into the federation. The aggregation method follows the privacy-preserving federated-adapter research lineage.
+Customers opt in to a [[sovereign-ai-commons|federated adapter marketplace]] that aggregates improvements without moving source data. Each customer's own data stays in place; only adapter weights, without source data, flow into the federation. The aggregation method follows the privacy-preserving federated-adapter research lineage.
 
 A rented-intelligence vendor's per-tenant billing and compliance posture make cross-tenant pooling structurally impermissible. It cannot operate a true federation.
 

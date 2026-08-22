@@ -19,7 +19,7 @@ Una organización que adopta una plataforma de IA hoy alquila la inteligencia. E
 
 PointSav se construye sobre un patrón distinto — el **sustrato compuesto**. El código de la plataforma es abierto y bifurcable, la capa de datos determinista funciona con cero cómputo de IA, y cada interacción operativa genera señal de entrenamiento que se compone a través de cada despliegue de inquilino.
 
-Un curador — PointSav — incorpora periódicamente la señal acumulada en un modelo base mejorado que regresa a cada despliegue. Los datos del cliente nunca salen de su infraestructura; solo los pesos de los adaptadores y los bloques de caché clave-valor, despojados de los datos de origen, entran en la federación compartida.
+Un curador — PointSav — incorpora periódicamente la señal acumulada en un modelo base mejorado que regresa a cada despliegue. Los datos del cliente nunca salen de su infraestructura; solo los pesos de los adaptadores, despojados de los datos de origen, entran en la federación compartida. Los bloques de caché clave-valor permanecen estrictamente por inquilino — la caché se aísla por `moduleId` precisamente para que los bloques de un inquilino nunca sean visibles para otro, lo opuesto a un recurso federado compartido.
 
 Para un comprador regulado la consecuencia es concreta. La capa de IA mejora con cada mes de uso en producción, y no se cede ningún dato más allá de lo que el comprador eligió al incorporarse. El patrón es duradero por una razón estructural: un proveedor de inteligencia alquilada no puede copiarlo sin desmantelar su propio modelo de facturación.
 
@@ -63,7 +63,7 @@ Un proveedor de inteligencia alquilada factura cada nivel como una relación sep
 
 ### Federación que preserva la privacidad
 
-Los clientes optan por un [[sovereign-ai-commons|mercado federado de adaptadores]] que agrega mejoras sin mover los datos de origen. Los datos propios de cada cliente permanecen en su lugar; solo los pesos de los adaptadores y los bloques de caché clave-valor, sin datos de origen, fluyen hacia la federación. El método de agregación sigue el linaje de investigación de adaptadores federados que preservan la privacidad.
+Los clientes optan por un [[sovereign-ai-commons|mercado federado de adaptadores]] que agrega mejoras sin mover los datos de origen. Los datos propios de cada cliente permanecen en su lugar; solo los pesos de los adaptadores, sin datos de origen, fluyen hacia la federación. El método de agregación sigue el linaje de investigación de adaptadores federados que preservan la privacidad.
 
 La facturación por inquilino y la postura de cumplimiento de un proveedor de inteligencia alquilada hacen que el agrupamiento cruzado entre inquilinos sea estructuralmente inadmisible. No puede operar una verdadera federación.
 
