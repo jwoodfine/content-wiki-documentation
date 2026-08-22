@@ -108,16 +108,11 @@ specific point in that auditable history.
 
 ### Deterministic capability hashing
 
-The `Capability::hash()` method computes the SHA-256 of the JSON-serialized
-struct. This is the value used as the leaf in the Merkle tree and as the key
+The `Capability::hash()` method computes the SHA-256 of the CBOR-serialized
+struct (via `ciborium`). This is the value used as the leaf in the Merkle tree and as the key
 in the revocation set. Determinism is tested: the same struct always produces
 the same hash; changing any field — including `expiry_t` or the anchor's
 `tree_size` — produces a different hash.
-
-**Correction (2026-08-02, verified against canonical `origin/main`):** this was
-accurate at this article's original edit date but the crate has since moved on
-(commit `9d0a3b07`) — `system-core` now hashes via CBOR (`ciborium`), not the
-JSON-serialization framing described here. **Flagged, not resolved.**
 
 
 ## 3. Time-Bound Capabilities (Mechanism A)
@@ -401,14 +396,10 @@ its own tier.
   algorithms, and performance benchmarks. Read alongside this article for the
   cryptographic grounding.
 
-- **Implementation state (Phase 1A)**
-
-  **Correction (2026-08-02, verified against canonical `origin/main`):** stale —
-  `origin/main` HEAD is `v1.0.0` on both crates, with 62 and 47 tests (+12 benchmarks)
-  respectively, not the v0.2.x/51/44 figures below. **Flagged, not resolved.**
-  - `system-core` v0.2.0: `Capability`, `WitnessRecord`, `LedgerAnchor`,
+- **Implementation state**
+  - `system-core` v1.0.0: `Capability`, `WitnessRecord`, `LedgerAnchor`,
     `Checkpoint`, `NoteSignature`, `SignedCheckpoint`, `InclusionProof`,
-    `ConsistencyProof`. 51 tests.
-  - `system-ledger` v0.2.1: `LedgerConsumer` trait, `InMemoryLedger`,
+    `ConsistencyProof`. 62 tests.
+  - `system-ledger` v1.0.0: `LedgerConsumer` trait, `InMemoryLedger`,
     `CheckpointCache`, `RevocationSet`, `ApexHistory`,
-    `verify_witness_signature`. 44 tests + 10 criterion benchmarks.
+    `verify_witness_signature`. 47 tests + 12 criterion benchmarks.

@@ -133,8 +133,8 @@ consumidores.
 
 El Sustrato del Libro de Capacidades y el Sustrato Soberano de Dos Bases;
 especificación operativa del sustrato; diseño del libro WORM; TOPIC compañero
-sobre pruebas de Merkle; estado de implementación Phase 1A (system-core
-v0.2.0 con 51 pruebas; system-ledger v0.2.1 con 44 pruebas + 10 benchmarks).
+sobre pruebas de Merkle; estado de implementación (system-core
+v1.0.0 con 62 pruebas; system-ledger v1.0.0 con 47 pruebas + 12 benchmarks).
 
 
 ---
