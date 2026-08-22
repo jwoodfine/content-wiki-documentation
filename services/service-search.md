@@ -1,16 +1,16 @@
 ---
 schema: foundry-doc-v1
-title: "Inverted index"
+title: "Full-text search"
 slug: service-search
 category: services
 type: topic
 content_type: topic
 quality: complete
 index_group: ring-2-knowledge-and-processing
-short_description: "service-search is the Ring 2 full-text search service built on Tantivy, providing microsecond retrieval across millions of files with no active database process."
+short_description: "service-search is a designed but unbuilt Ring 2 full-text search service — a README describes a Tantivy-based inverted index, but no source code exists yet."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-08-22
 editor: pointsav-engineering
 cites: []
 references:
@@ -20,42 +20,31 @@ references:
 paired_with: service-search.es.md
 ---
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** `service-search/` contains only `README.md`/`README.es.md` — no `Cargo.toml`, no `src/`. This is an aspirational design description presented as a current, operating fact, matching the same finding already made this session on `reference/glossary-documentation.md`'s `service-search` entry. **Flagged, not resolved.**
+`service-search` is a design, not yet an implementation. Its directory in the monorepo holds
+only a README describing the intended service — a static, memory-mapped full-text index
+built with the [[three-ring-architecture|Ring 2]] Rust library Tantivy — and no source code.
+The design goal, as recorded, is retrieval that answers full-text queries across the
+platform's documents without a live database process: the index is a file, so it can be
+copied and queried on any machine with no server to run.
 
-**service-search** answers full-text queries across millions of platform documents in microseconds, using a static binary inverted index built in Rust on the Tantivy library — and because the index is a file rather than a live database process, it can be copied to portable media and queried on any machine without additional dependencies. The service is a [[three-ring-architecture|Ring 2]] knowledge-and-processing component and conforms to the Data Archive and Retrieval Protocol (DARP) standard. It locates documents; it does not generate or classify them.
+## The intended design
 
-## Architectural Baseline
+An inverted index maps every word in a corpus to the documents that contain it, the same
+principle as the index at the back of a reference book. Tantivy is built for high-throughput
+indexing and low-latency lookup on commodity hardware. [^1] The recorded design calls for the
+index to sit in Ring 2 of the platform's tiered architecture — multi-tenant, deterministic,
+no AI inference in the retrieval path — answering queries with ranked document references
+that other services consume for downstream processing. It would not generate or classify
+content, only locate it.
 
-An inverted index works by building a compressed map from every word in the corpus to the list of documents that contain it — analogous to the index at the back of a reference book. At query time, the service looks up the query terms in this map and returns matching documents in microseconds, regardless of corpus size. Tantivy, the underlying Rust library, is designed for high-throughput indexing and low-latency retrieval on commodity hardware. [^1]
+## What exists today
 
-## Ring and Role
-
-service-search occupies **Ring 2 — Knowledge and Processing** in the [[three-ring-architecture]]. Ring 2 is multi-tenant via `moduleId` namespacing and operates deterministically without AI inference. service-search's role within Ring 2 is retrieval: it answers queries against the indexed corpus and returns ranked document references that Ring 2 or [[service-slm|Ring 3 services]] use for downstream processing. The service does not generate content or classify documents — it locates them.
-
-## Structural Organization of Components
-
-The index is built as a static binary file. Key architectural properties:
-
-- **No active process required for queries.** The index is memory-mapped at query time; there is no database daemon to manage or restart.
-- **Portable.** The index file can be copied to USB storage or a different machine and queried immediately.
-- **Compressed.** Tantivy's index format uses block-maximal encoding for term frequency data, keeping the index compact relative to corpus size.
-- **Updatable.** New documents are added to the index via a background indexing process that merges new segments. Queries can run against existing segments while new segments are being built.
-
-The service is integrated with [[service-extraction]] for post-parse indexing and with the system contracts layer for programmatic retrieval.
-
-## Configuration
-
-| Parameter | Purpose |
-|---|---|
-| Index path | Filesystem path for the Tantivy index directory |
-| Schema | Field definitions for indexed documents (title, body, date, category, moduleId) |
-| Merge policy | Segment merge configuration controlling index compaction frequency |
-| Writer threads | Number of indexing threads for parallel document ingestion |
+Nothing beyond the description. There is no build configuration, no source directory, and no
+running service. Nothing in the platform currently depends on `service-search` for
+retrieval; other services perform any full-text lookups they need directly.
 
 ## See also
 
-- [[service-extraction]] — Ring 2 service whose parsed output is fed into the search index
-- [[service-slm]] — Ring 3 intelligence layer that consumes ranked retrieval results
-- [[service-people]] — identity ledger whose records form part of the searchable corpus
-- [[trajectory-substrate]] — the substrate model for compounding retrieval intelligence over time
-
+- [[service-extraction]] — a Ring 2 service that would feed parsed output into this index if built
+- [[service-slm]] — the Ring 3 intelligence layer that would consume ranked retrieval results
+- [[service-people]] — an identity ledger whose records would form part of a future searchable corpus

@@ -1,8 +1,8 @@
 ---
 schema: foundry-doc-v1
-title: "service-search — Índice invertido"
+title: "Búsqueda de texto completo"
 slug: service-search
-short_description: "service-search es el servicio de búsqueda de texto completo Ring 2 construido en la biblioteca Rust Tantivy, proporcionando recuperación de microsegundos en millones de archivos a través de un índice invertido de binario estático que no requiere proceso de base de datos activo."
+short_description: "service-search es un servicio de búsqueda de texto completo Ring 2 diseñado pero no construido — un README describe un índice invertido basado en Tantivy, pero aún no existe código fuente."
 category: services
 type: topic
 content_type: topic
@@ -12,7 +12,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: service-search.md
 cites: []
@@ -22,26 +22,34 @@ references:
     url: "https://docs.rs/tantivy/"
 ---
 
-`service-search` responde consultas de texto completo en millones de documentos de la plataforma en microsegundos, utilizando un índice invertido binario estático construido en Rust sobre la biblioteca Tantivy [^1] — y dado que el índice es un archivo en lugar de un proceso de base de datos activo, puede copiarse a medios portátiles y consultarse en cualquier máquina sin dependencias adicionales. El servicio es un componente del [[three-ring-architecture|Anillo 2]] — conocimiento y procesamiento — y cumple con el estándar Data Archive and Retrieval Protocol (DARP). Localiza documentos; no los genera ni los clasifica.
+`service-search` es un diseño, aún no una implementación. Su directorio en el monorepo solo
+contiene un README que describe el servicio previsto — un índice de texto completo estático
+y mapeado en memoria, construido con la biblioteca Rust Tantivy de
+[[three-ring-architecture|Ring 2]] — y ningún código fuente. El objetivo de diseño, según lo
+registrado, es una recuperación que responda consultas de texto completo en los documentos
+de la plataforma sin un proceso de base de datos activo. El índice es un archivo, por lo que
+puede copiarse y consultarse en cualquier máquina sin servidor que ejecutar.
 
-## Línea de base arquitectónica
+## El diseño previsto
 
-Un índice invertido funciona construyendo un mapa comprimido de cada palabra del corpus a la lista de documentos que la contienen — análogo al índice al final de un libro de referencia. En el momento de la consulta, el servicio busca los términos de consulta en este mapa y devuelve los documentos coincidentes en microsegundos, independientemente del tamaño del corpus.
+Un índice invertido mapea cada palabra de un corpus a los documentos que la contienen, el
+mismo principio que el índice al final de un libro de referencia. Tantivy está construido
+para indexación de alto rendimiento y búsqueda de baja latencia en hardware convencional.
+[^1] El diseño registrado llama a que el índice se ubique en el Ring 2 de la arquitectura
+por niveles de la plataforma — multi-inquilino, determinista, sin inferencia de IA en la
+ruta de recuperación. Respondería consultas con referencias a documentos clasificados por
+relevancia que otros servicios consumen para procesamiento posterior. No generaría ni
+clasificaría contenido, solo lo localizaría.
 
-## Anillo y función
+## Lo que existe hoy
 
-`service-search` ocupa el **Anillo 2 — Conocimiento y Procesamiento** en la [[three-ring-architecture|arquitectura de tres anillos]]. El Anillo 2 es multiinquilino a través del espacio de nombres `moduleId` y opera deterministamente sin inferencia de IA. La función de `service-search` dentro del Anillo 2 es la recuperación: responde consultas contra el corpus indexado y devuelve referencias de documentos clasificadas que los servicios del Anillo 2 o [[service-slm|Anillo 3]] utilizan para el procesamiento descendente.
-
-## Propiedades arquitectónicas clave
-
-- **Sin proceso activo requerido para consultas.** El índice está mapeado en memoria en el momento de la consulta; no hay ningún demonio de base de datos que gestionar.
-- **Portátil.** El archivo de índice puede copiarse a almacenamiento USB o una máquina diferente y consultarse inmediatamente.
-- **Comprimido.** El formato de índice de Tantivy usa codificación block-maximal para datos de frecuencia de términos.
-- **Actualizable.** Los nuevos documentos se añaden al índice a través de un proceso de indexación en segundo plano que fusiona nuevos segmentos.
+Nada más allá de la descripción. No hay configuración de compilación, ni directorio de
+código fuente, ni servicio en ejecución. Nada en la plataforma depende actualmente de
+`service-search` para recuperación; otros servicios realizan directamente cualquier
+búsqueda de texto completo que necesitan.
 
 ## Véase también
 
-- [[service-extraction]] — servicio del Anillo 2 cuya salida analizada se alimenta al índice
-- [[service-slm]] — capa de inteligencia del Anillo 3 que consume los resultados de recuperación
-- [[service-people]] — libro mayor de identidades cuyos registros forman parte del corpus consultable
-- [[trajectory-substrate]] — el modelo de sustrato para la inteligencia de recuperación compuesta
+- [[service-extraction]] — un servicio Ring 2 que alimentaría salida analizada a este índice si se construyera
+- [[service-slm]] — la capa de inteligencia Ring 3 que consumiría los resultados de recuperación clasificados
+- [[service-people]] — un libro de identidades cuyos registros formarían parte de un futuro corpus consultable
