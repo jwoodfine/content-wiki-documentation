@@ -29,22 +29,17 @@ The interface draws inspiration from professional-grade spatial platforms (e.g.,
 - **Decision-Driven Visualization:** The map renders conclusions (e.g., "This node is Tier 5") rather than individual data points, allowing for rapid cross-market comparisons.
 - **Scale-Adaptive Legibility:** Visual detail adapts dynamically to zoom level, ensuring a coherent national overview without sacrificing street-level precision.
 
-## Design Differentiation: Cluster-Grade-as-Primary-Unit
+## Design differentiation: cluster grade as the primary unit
 
-**Correction (2026-08-02):** the specific color scheme, tier count, and component names below don't match the real live GIS surface. `app-orchestration-gis/www/index.html` uses a **multi-hue** scheme (blue/green/gold/maroon mapping to Regional/District/Local/Fringe), not a single-hue amber ramp; there are only **4 tiers**, not "Tier 5 and Tier 4"; the cluster inspector is a "BentoBox" drawer, not the `cluster-grade-marker`/`location-index-card`/`map-layer-controls` component names below — a repo-wide search for those three names and "D1-D5" returns zero hits anywhere in real frontend code. The general design principle (cluster-as-primary-unit, side-drawer over modal) is consistent with the real UI's actual behavior; only the specific color/tier/component-naming details are fabricated. **Flagged, not resolved** — needs rewriting against the real `TIER_COLORS` scheme and BentoBox component names.
+Unlike commercial GIS products that default to individual "dots on a map," the PointSav platform uses **cluster grade** as the primary visual and analytical unit. **A user scanning the national map sees which clusters are worth their attention before they see any individual site.** The map answers the ranking question first, not last. This differentiation reflects three design choices:
 
-Unlike commercial GIS products that default to individual "dots on a map," the PointSav platform uses **Cluster Grade** as the primary visual and analytical unit. This differentiation represents a core Leapfrog 2030 design principle:
+1. **Multi-hue tier encoding.** Sites are color-coded across four tiers — Regional, District, Local, and Fringe — using a distinct hue per tier rather than a single gradient. A user distinguishes tiers by color family at a glance, not by judging shade intensity against neighboring markers.
+2. **Structural guardrails.** The interface enforces a visual hierarchy where Regional and District nodes dominate the national view, guiding the user toward the most defensible commercial nodes before the lower tiers compete for attention.
+3. **Contextual drawer, not a modal.** Clicking a cluster opens a side drawer that provides immediate municipal ranking, operator detail, and institutional support counts without losing map context — the underlying map stays visible and interactive behind the drawer.
 
-1. **Confidence Ramp:** Sites are encoded using a single-hue color ramp (pale to deep amber). Darker, larger markers indicate higher levels of capital-validated convergence.
-2. **Structural Guardrails:** The interface enforces a strict visual hierarchy where Tier 5 and Tier 4 nodes dominate the national view, guiding the user toward the most defensible commercial nodes.
-3. **Contextual index-cards:** Clicking a cluster activates a side-drawer (not a modal) that provides immediate municipal ranking, operator chips, and institutional support counts without losing map context.
+## Component architecture
 
-## Component Architecture
-
-The GIS surface uses a standardized component set designed for rapid re-provisioning:
-- **cluster-grade-marker:** A five-state vector symbol with built-in accessibility labeling (D1-D5).
-- **location-index-card:** A responsive, data-dense drawer for cluster-level metadata.
-- **map-layer-controls:** A consistent UI panel for managing the three-layer architecture.
+The GIS surface's cluster inspector is a drawer component (internally named "BentoBox") that renders cluster-level metadata in a dense, scannable layout without requiring the user to leave the map view. The four-tier color scheme and the drawer pattern together are what make the cluster-as-primary-unit choice legible to a reader browsing a national-scale map.
 
 ## See also
 
