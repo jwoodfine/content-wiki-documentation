@@ -10,7 +10,7 @@ index_group: small-language-model-stack
 short_description: "The rationale for selecting OLMo 3 as the local and GPU-burst substrate: the only fully open model family permitting continued pretraining and public-company procurement."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-08-22
 editor: pointsav-engineering
 cites: []
 references:
@@ -23,7 +23,7 @@ references:
 paired_with: llm-substrate-decision.es.md
 ---
 
-The PointSav platform uses the OLMo 3 model family as its language model substrate. OLMo 3 7B runs locally on [[customer-hostability|customer hardware]]. OLMo 3.1 32B Think runs on a short-lived [[yoyo-compute-substrate|GPU burst instance]] for heavier inference tasks. The selection is not primarily about benchmark performance — it is about ownership depth.
+The PointSav platform uses the OLMo 3 model family as its language model substrate. The instruction-tuned OLMo 3 7B build runs locally on [[customer-hostability|customer hardware]]. A larger OLMo 3 model, tuned for extended reasoning, runs on a short-lived [[yoyo-compute-substrate|GPU burst instance]] for heavier inference tasks. The selection is not primarily about benchmark performance — it is about ownership depth.
 
 ## Three levels of openness
 
@@ -55,7 +55,7 @@ Models considered and rejected:
 
 ## Capability
 
-OLMo 3 32B Think, in the updated OLMo 3.1 December 2025 release, reaches 91.4% on HumanEvalPlus — the measure of practical code generation accuracy — and sits within two percentage points of the leading open-weight model on the standard mathematical reasoning and instruction-following benchmarks. The 7B variant is strong on programming, reading comprehension, and mathematics with a 65,000-token context window.
+The 32B reasoning variant, in the updated OLMo 3.1 release, reaches 91.4% on HumanEvalPlus — the measure of practical code generation accuracy — and sits within two percentage points of the leading open-weight model on the standard mathematical reasoning and instruction-following benchmarks. [^1] The 7B variant is strong on programming, reading comprehension, and mathematics with a 65,000-token context window.
 
 These numbers do not place OLMo 3 at the absolute frontier of open-weight performance. They do place it firmly in the range where the [[compounding-doorman|Doorman]] — the service that mediates all AI inference calls in the PointSav architecture — produces useful results on the daily tasks it handles. The 7B local variant handles routine work; the 32B burst variant handles tasks requiring extended reasoning. The same vocabulary, tokenizer, and prompt format apply to both, which means the [[adapter-composition|adapter library]] trained on one is compatible with the other.
 
@@ -63,9 +63,9 @@ These numbers do not place OLMo 3 at the absolute frontier of open-weight perfor
 
 The Doorman routes requests among three tiers:
 
-**Tier A — local.** OLMo 3 7B running on the customer's own hardware. Approximately zero marginal cost once the hardware is in place. Default for most operations.
+**Tier A — local.** OLMo 3 7B Instruct running on the customer's own hardware. Approximately zero marginal cost once the hardware is in place. Default for most operations.
 
-**Tier B — GPU burst.** OLMo 3.1 32B Think on a short-lived GPU instance. Approximately $0.84 per hour at list pricing on major cloud providers, significantly less on spot/preemptible instances. Used for requests the local tier cannot handle efficiently. Idle-shutdown discipline means the instance runs only when a request requires it.
+**Tier B — GPU burst.** The 32B reasoning variant on a short-lived GPU instance. Approximately $0.84 per hour at list pricing on major cloud providers, significantly less on spot/preemptible instances. Used for requests the local tier cannot handle efficiently. Idle-shutdown discipline means the instance runs only when a request requires it.
 
 **Tier C — external API.** Third-party language model services via a per-request allowlist. Used only for narrow precision tasks — [[citation-substrate|citation grounding]], initial [[knowledge-graph-grounded-apprenticeship|knowledge graph]] construction, entity disambiguation — where the precision requirement justifies the cost. Every Tier C call is logged at the customer's [[worm-ledger-architecture|audit ledger]].
 

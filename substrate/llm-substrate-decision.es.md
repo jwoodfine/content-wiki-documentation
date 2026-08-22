@@ -10,7 +10,7 @@ index_group: small-language-model-stack
 short_description: "La justificación para seleccionar OLMo 3 como sustrato de inferencia local y en GPU: la única familia de modelos completamente abierta — datos, código de entrenamiento y puntos de control incluidos — que permite el preentrenamiento continuo y satisface la postura de adquisición de una empresa pública canadiense."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-07-31
+last_edited: 2026-08-22
 editor: pointsav-engineering
 cites: []
 references:
@@ -24,7 +24,7 @@ paired_with: llm-substrate-decision.md
 ---
 
 
-La plataforma PointSav utiliza la familia de modelos OLMo 3 como sustrato de inferencia de lenguaje. OLMo 3 7B se ejecuta localmente en el [[customer-hostability|hardware del cliente]]. OLMo 3.1 32B Think se ejecuta en [[yoyo-compute-substrate|instancias de GPU bajo demanda]] para tareas de inferencia más exigentes. La selección no responde principalmente al desempeño en benchmarks, sino a la profundidad de propiedad que cada modelo permite.
+La plataforma PointSav utiliza la familia de modelos OLMo 3 como sustrato de inferencia de lenguaje. La variante instruct de OLMo 3 7B se ejecuta localmente en el [[customer-hostability|hardware del cliente]]. Un modelo OLMo 3 mayor, ajustado para razonamiento extendido, se ejecuta en [[yoyo-compute-substrate|instancias de GPU bajo demanda]] para tareas de inferencia más exigentes. La selección no responde principalmente al desempeño en benchmarks, sino a la profundidad de propiedad que cada modelo permite.
 
 ## Los tres niveles de apertura
 
@@ -50,7 +50,7 @@ Los modelos Phi-4, Granite 4 y otros con licencias permisivas fueron descartados
 
 ## Capacidad
 
-OLMo 3 32B Think, en la versión actualizada OLMo 3.1 de diciembre de 2025, alcanza un 91.4% en HumanEvalPlus — la medida de precisión práctica en generación de código — y se sitúa a menos de dos puntos porcentuales del modelo de pesos abiertos líder en los benchmarks estándar de razonamiento matemático y seguimiento de instrucciones. La variante de 7B es sólida en programación, comprensión lectora y matemáticas, con una ventana de contexto de 65,000 tokens.
+La variante de razonamiento de 32B, en la versión actualizada OLMo 3.1, alcanza un 91.4% en HumanEvalPlus — la medida de precisión práctica en generación de código — y se sitúa a menos de dos puntos porcentuales del modelo de pesos abiertos líder en los benchmarks estándar de razonamiento matemático y seguimiento de instrucciones. La variante de 7B es sólida en programación, comprensión lectora y matemáticas, con una ventana de contexto de 65,000 tokens.
 
 Estas cifras no sitúan a OLMo 3 en la frontera absoluta del rendimiento en pesos abiertos. Sí lo sitúan firmemente en el rango donde el [[compounding-doorman|Doorman]] — el servicio que media todas las llamadas de inferencia de IA en la arquitectura de PointSav — produce resultados útiles en las tareas diarias que gestiona. La variante local de 7B maneja el trabajo rutinario; la variante de ráfaga de 32B maneja tareas que requieren razonamiento extendido. Ambas comparten el mismo vocabulario, tokenizador y formato de prompt, lo que significa que la [[adapter-composition|biblioteca de adaptadores]] entrenada sobre una es compatible con la otra.
 
@@ -58,8 +58,8 @@ Estas cifras no sitúan a OLMo 3 en la frontera absoluta del rendimiento en peso
 
 El [[compounding-doorman|Doorman]] enruta las solicitudes entre tres capas:
 
-- **Capa A — local:** OLMo 3 7B en el hardware del cliente. Costo marginal aproximadamente cero.
-- **Capa B — ráfaga GPU:** OLMo 3.1 32B Think en [[yoyo-compute-substrate|instancias de GPU de corta duración]]. Utilizado para razonamiento extendido. Disciplina de apagado inactivo por defecto.
+- **Capa A — local:** OLMo 3 7B Instruct en el hardware del cliente. Costo marginal aproximadamente cero.
+- **Capa B — ráfaga GPU:** la variante de razonamiento de 32B en [[yoyo-compute-substrate|instancias de GPU de corta duración]]. Utilizado para razonamiento extendido. Disciplina de apagado inactivo por defecto.
 - **Capa C — API externa:** servicios de terceros bajo lista de permitidos explícita, registrados en el [[worm-ledger-architecture|libro de auditoría]] del cliente.
 
 ## Trayectoria de preentrenamiento continuo (planificada)
