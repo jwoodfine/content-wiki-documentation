@@ -14,19 +14,15 @@ editor: pointsav-engineering
 paired_with: wiki-typography-system.es.md
 ---
 
-# Wiki typography system
-
-**Correction (2026-08-02):** the two typefaces' roles below are swapped relative to the real CSS, and the specific token names cited don't exist. Real `static/style.css` sets `--font-body: "Inter"...` applied to body text (`font-family: var(--font-body)` on the article body), and `--font-display: "Source Serif 4"...` applied to headings and nav labels — the reverse of this article's claim that Inter is for UI/navigation and Source Serif 4 is for body prose. None of the cited `--ps-wiki-font-ui`/`--ps-wiki-text-h1..h4`/`--ps-wiki-measure` variables exist anywhere in the repo — real variables are `--text-base`, `--font-display`, `--font-body` (same fabricated `--ps-*` family found on [[wiki-component-library]] and [[wiki-dark-mode]]). Separately, an unused auto-generated `static/tokens.css` file declares yet a third font stack (Georgia/Charter/Nunito Sans/Roboto Slab) matching neither this article nor the real `style.css` — a genuine inconsistency in the real codebase, not something this article invented, but further evidence its specific claims weren't checked against the actual shipped CSS. **Flagged, not resolved.**
-
-The [[app-mediakit-knowledge|PointSav wiki]]'s typographic system uses Inter for user interface elements and navigation, Source Serif 4 for body reading prose, and a system-provided monospace stack for code and technical notation, built on [[design-system-substrate|the platform token system]] following the [[design-primitive-vocabulary|primitive vocabulary conventions]]. This article explains the font choices, the heading scale, the spacing tokens, and how the system achieves broad linguistic coverage for bilingual (English/Spanish) content.
+The [[app-mediakit-knowledge|PointSav wiki]]'s typographic system uses Source Serif 4 for the article title and section headings, Inter for body reading prose, and a system-provided monospace stack for code and technical notation, built on [[design-system-substrate|the platform token system]] following the [[design-primitive-vocabulary|primitive vocabulary conventions]]. This article explains the font choices, the heading scale, the spacing tokens, and how the system achieves broad linguistic coverage for bilingual (English/Spanish) content.
 
 ---
 
 ## Font stack
 
-**User interface and headings:** Inter (variable font, weight axis 100–900). Inter is a community open-source typeface designed by Rasmus Andersson, published under the SIL Open Font License 1.1 (SIL OFL 1.1), which permits use, modification, and redistribution without restriction. Inter is a neo-grotesque designed specifically for screen readability, with high legibility at small sizes and clear differentiation between commonly confused glyphs (l, 1, I; O, 0). It carries no corporate brand association and is the modern UI workhorse across the design-system field.
+**Article title and section headings:** Source Serif 4 (variable font). Source Serif 4 is Adobe's open-source text typeface, published under the SIL Open Font License 1.1 (SIL OFL 1.1), which permits use, modification, and redistribution without restriction. Its slightly higher stroke contrast than a sans-serif face gives the title and headings a distinct register from the running text beneath them.
 
-**Body reading prose:** Source Serif 4 (variable font, weight axis 200–900). Source Serif 4 is Adobe's open-source text typeface, published under the SIL Open Font License 1.1. It provides comfortable reading at a 68-character measure with slightly higher stroke contrast than Inter, which aids eye-tracking across long prose lines.
+**Body reading prose:** Inter (variable font). Inter is a community open-source typeface designed by Rasmus Andersson, published under SIL OFL 1.1. It is a neo-grotesque designed specifically for screen readability, with high legibility at small sizes and clear differentiation between commonly confused glyphs (l, 1, I; O, 0). It carries no corporate brand association and is the modern UI workhorse across the design-system field.
 
 **Code and technical notation:** System-provided monospace stack — `ui-monospace`, `SFMono-Regular`, `Cascadia Code`, `Consolas`, `Liberation Mono`. No custom font file is loaded for code. The system stack covers all major platforms with zero additional network round-trip. Used for inline `code`, code blocks, command-line examples, and metadata fields (dates, identifiers).
 
@@ -49,15 +45,15 @@ Inter and Source Serif 4 are available through Google Fonts and direct download 
 
 ## Type scale
 
-| Level | Token | rem | px (17 px base) | Use |
+| Level | Token | rem | px | Use |
 |---|---|---|---|---|
-| H1 | `--ps-wiki-text-h1` | 2.25 rem | 38 px | Article title |
-| H2 | `--ps-wiki-text-h2` | 1.75 rem | 29.75 px | Major section |
-| H3 | `--ps-wiki-text-h3` | 1.375 rem | 23.375 px | Subsection |
-| H4 | `--ps-wiki-text-h4` | 1.125 rem | 19.125 px | Minor heading |
-| Body | `--ps-wiki-font-size-base` | 1.0625 rem | 17 px | Running prose |
+| H1 | `--k-title-fs` | 2.125 rem | 34 px | Article title |
+| H2 | `--k-h2-fs` | 1.5 rem | 24 px | Major section |
+| H3 | `--k-h3-fs` | 1.2 rem | 19 px | Subsection |
+| H4 | (unnamed, set directly) | 1.05 rem | 16.8 px | Minor heading |
+| Body | `--k-prose-fs` | 1 rem | 16 px | Running prose |
 
-**Base:** 106.25% root font size (17 px) — slightly larger than the 16 px browser default for improved readability at a 68-character measure on desktop. Headings and navigation labels render in Inter; body prose renders in Source Serif 4.
+Base body size is the 16 px browser default. Headings render in Source Serif 4 (`--k-title-font`); body prose renders in Inter (`--k-prose-font`).
 
 ---
 
@@ -65,40 +61,32 @@ Inter and Source Serif 4 are available through Google Fonts and direct download 
 
 | Property | Value | Token |
 |---|---|---|
-| Measure (max-width) | 68 ch | `--ps-wiki-measure` |
-| Body line-height | 1.6 | `--ps-wiki-line-height-body` |
+| Measure (max-width) | 44 rem (~72 ch) | `--k-prose-measure` |
+| Body line-height | 1.6 | `--k-prose-leading` |
 
-68 characters per line is the typographic optimum for sustained reading with a text-weight serifed face. A 1.6 line-height at 17 px base gives 27.2 px leading, matching the spacing rhythm of Wikipedia's body text.
+A wide measure keeps the reading column full-width in the Wikipedia-style layout rather than narrowing it artificially. A 1.6 line-height at 16 px base gives 25.6 px leading.
 
 ---
 
 ## CSS tokens
 
-All values are CSS custom properties defined on `:root` in `dist/tokens.css`:
+All values are CSS custom properties defined in the engine's token stylesheet:
 
 ```css
---ps-wiki-font-ui:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
---ps-wiki-font-prose: 'Source Serif 4', 'Georgia', 'Times New Roman', serif;
---ps-wiki-font-mono:  ui-monospace, 'SFMono-Regular', 'Cascadia Code', 'Consolas',
-                      'Liberation Mono', monospace;
---ps-wiki-font-size-base:   1.0625rem;
---ps-wiki-line-height-body: 1.6;
---ps-wiki-measure:          68ch;
---ps-wiki-text-h1: 2.25rem;
---ps-wiki-text-h2: 1.75rem;
---ps-wiki-text-h3: 1.375rem;
---ps-wiki-text-h4: 1.125rem;
+--k-font-sans:  'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+--k-font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+--k-font-mono:  ui-monospace, 'SFMono-Regular', 'Menlo', 'Consolas', monospace;
 
-/* Short-form aliases used by wiki templates */
---font-ui:      var(--ps-wiki-font-ui);
---font-prose:   var(--ps-wiki-font-prose);
---font-mono:    var(--ps-wiki-font-mono);
---leading-body: 1.6;
---measure:      68ch;
---text-h1:      var(--ps-wiki-text-h1);
---text-h2:      var(--ps-wiki-text-h2);
---text-h3:      var(--ps-wiki-text-h3);
---text-h4:      var(--ps-wiki-text-h4);
+--k-prose-font:  var(--k-font-sans);
+--k-title-font:  var(--k-font-serif);
+--k-code-font:   var(--k-font-mono);
+
+--k-prose-fs:      1rem;      /* 16px body */
+--k-title-fs:      2.125rem;  /* 34px h1 */
+--k-h2-fs:         1.5rem;    /* 24px */
+--k-h3-fs:         1.2rem;    /* 19px */
+--k-prose-leading: 1.6;
+--k-prose-measure: 44rem;     /* ~72ch */
 ```
 
 ---
