@@ -7,46 +7,37 @@ type: topic
 content_type: topic
 quality: complete
 index_group: platform-disciplines
-short_description: "The platform uses inline SVG data URIs for browser-tab favicons, avoiding a network call and pixelation, with distinct vendor and customer marks per tab."
+short_description: "The wiki serves a single static SVG favicon — a navy document-page glyph, linked from a static file, the same mark on every tab regardless of tenant."
 status: active
 bcsc_class: no-disclosure-implication
-last_edited: 2026-05-08
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: favicon-matrix.es.md
 ---
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** no favicon or `<link rel="icon">` element exists anywhere in the real `app-mediakit-knowledge` renderer — `src/chrome/mod.rs`'s `head()` function contains charset, viewport, title, font preloads, stylesheets, and a dark-mode init script, but no icon element at all. The steel-blue (`#869FB9`)/Woodfine-blue (`#164679`) colors themselves are real design tokens, correctly cited, but this whole favicon mechanism doesn't exist in the shipped engine. **Flagged, not resolved.**
+The wiki serves one favicon: a navy (`#1a4480`) document-page glyph on a rounded square, defined as a static SVG file and linked from the page `<head>` with a standard `<link rel="icon">` element. Every tenant's tabs carry the same mark — there is no per-tenant colour or shape variant, and no inline data-URI encoding.
 
-The platform uses inline SVG data URIs for browser-tab favicons — eliminating a network call for the icon file, scaling without pixelation on every display, and assigning two distinct marks so the entity behind every browser tab is unambiguous at a glance. Vendor sites carry a steel-blue square; customer sites carry a Woodfine blue circle. The marks are encoded directly in the page `<head>`, so a tab identity is established before any other resource loads.
-
-This article describes the engineering rationale and the entity-mark assignment.
+This article describes the mechanism as built.
 
 ## Key Takeaways
 
-- Embedding the SVG as a data URI in the `<link rel="icon">` element eliminates the network call for the icon file. Tab identity is established before any other resource loads — no separate favicon HTTP request is issued.
-- Vector geometry scales without pixelation across display densities. The same few-hundred-byte inline mark is sharp on a low-density laptop and a high-density external monitor. No retina-suffixed asset variants are required.
-- Two marks are in use: steel-blue (`#869FB9`) square for PointSav-served properties (documentation, design system, vendor wikis) and Woodfine blue (`#164679`) circle for Woodfine-served properties (project portfolios, corporate disclosures, customer wikis). The assignment is unambiguous — square = vendor, circle = customer.
-- The geometric distinction between square and circle is preserved independently of colour. A reader with reduced colour vision can still identify which entity's property is open in each browser tab without relying on the colour difference alone.
+- The favicon is a static file (`static/favicon.svg`), served over HTTP and referenced by a normal `<link rel="icon">` tag — not an inline SVG data URI.
+- `/favicon.ico`, the path browsers request by convention regardless of what `<head>` declares, redirects to the same static SVG file.
+- One mark serves every tenant. There is no vendor/customer, square/circle, or steel-blue/Woodfine-blue distinction in the current build.
 
-## Engineering rationale
+## The mechanism
 
-Embedding the SVG inline in the `<link rel="icon">` element as a URL-encoded data URI delivers two practical properties:
+`app-mediakit-knowledge`'s page layout links the icon in `<head>`:
 
-- **Zero HTTP requests.** No network call for an icon file. The favicon is parsed from the page `<head>` and rendered immediately. Tab identity is established on first paint.
-- **Resolution-independent rendering.** Vector geometry scales without pixelation, so the same icon is sharp on a low-density laptop display and a high-density external monitor. No retina-suffixed asset variants are required.
+```html
+<link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+```
 
-The cost is a small payload increase per page (a few hundred bytes of inline SVG). The benefit — a faster first-paint and a single canonical asset path — is worth the trade.
+The server also registers a `/favicon.ico` route that redirects to the same file, so browsers and crawlers that request that exact path by convention (independent of the `<head>` declaration) still resolve to the real icon rather than a 404.
 
-## Entity-mark assignment
+## The mark
 
-Two marks are in use across all platform-served pages:
-
-| Mark | Colour | Shape | Identifies |
-|---|---|---|---|
-| Vendor | Steel blue (`#869FB9`) | Square | PointSav-served properties: documentation, design system, vendor-side wikis. |
-| Customer | Woodfine blue (`#164679`) | Circle | Woodfine-served properties: project portfolios, [[disclosure-substrate|corporate disclosures]], customer-side wikis. |
-
-A reader who has both vendor and customer sites open in adjacent browser tabs can identify the source of each tab without reading the title. The geometric distinction (square vs circle) is preserved when colour vision is reduced.
+The icon is a single, un-parameterised SVG: a navy (`#1a4480`) rounded-square base with a white document-page glyph. It does not vary by tenant, deployment, or wiki — `documentation.pointsav.com`, `projects.woodfinegroup.com`, and `corporate.woodfinegroup.com` all serve the identical file.
 
 ## See also
 
