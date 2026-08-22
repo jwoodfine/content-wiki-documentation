@@ -26,9 +26,7 @@ El nombre es literal: el nivel de cómputo baja y vuelve a subir, repetidamente,
 
 ## Los tres anillos
 
-**Anillo 1 — Bootstrap**: el estado necesario para arrancar el nodo en menos de treinta segundos sin coste de inactividad. Se logra pre-almacenando cuatro capas en almacenamiento frío de bajo coste: imagen de contenedor precompilada en un registro de artefactos regional, pesos del modelo en almacenamiento en la nube (evita descargas repetidas de decenas de gigabytes), instancias GPU de Cloud Run con drivers preinstalados (arranque en aproximadamente cinco segundos), y warm pool activado únicamente durante ventanas de carga sostenida predecibles — no de forma permanente.
-
-El resultado es un arranque en caliente con peor caso de aproximadamente quince segundos, a coste de inactividad cero en operación normal.
+**Anillo 1 — Bootstrap**: el nodo Yo-Yo #1 real es una VM de GCE convencional (`google_compute_instance`) con GPU L4, activada según una programación (`google_compute_resource_policy`) para la ventana de entrenamiento nocturna — no un servicio Cloud Run que escala a cero entre solicitudes. El arranque real espera hasta noventa minutos a que el servidor de inferencia señale que está listo, no los segundos que sugeriría un arranque serverless. Los pesos del modelo se mantienen en un disco persistente (`google_compute_disk`) en lugar de descargarse en cada ciclo, lo que sí evita descargas repetidas de decenas de gigabytes.
 
 **Anillo 2 — Memoria de trabajo (caché KV)**: el estado de prefill que sobrevive al apagado del nodo mediante LMCache y Mooncake Store. LMCache divide los tokens en bloques hash y los recupera desde una tienda escalonada: memoria GPU → DRAM CPU → almacenamiento en la nube. El campo `moduleId` del sobre RF2 aísla los bloques de caché por cliente: los bloques del Cliente A no colisionan nunca con los del Cliente B, aunque ambos compartan el mismo pool físico.
 
@@ -50,7 +48,7 @@ Este [[worm-ledger-architecture|ledger]] vincula cada output — cada página ge
 
 ## Hoja de ruta (planificada)
 
-La Fase 1 (actual) construye completamente el Anillo 1 y el ledger. Los Anillos 2 y 3b están intencionalmente diferidos hasta que el ensayo de arquitectura complete su validación. La Fase 2 (planificada) añade LMCache y Mooncake Store, con objetivo de sesenta por ciento de tasa de acierto de caché en el segundo run completo. La Fase 3 (planificada) introduce los primeros adaptadores LoRA y el pipeline de entrenamiento. La Fase 4 (prevista a largo plazo) incorporará mejoras en checkpoint/restore de GPU y gestión de adaptadores a escala multi-proyecto.
+La Fase 1 (actual) construye completamente el Anillo 1 (como VM de GCE programada, no como el diseño de Cloud Run descrito antes) y el ledger. Los Anillos 2 y 3b están intencionalmente diferidos hasta que el ensayo de arquitectura complete su validación. El nivel Yo-Yo está actualmente inactivo según el [[service-slm-yoyo-operational|artículo de estado operativo]] de esta wiki — conviene verificarlo antes de asumir que la Fase 1 sirve tráfico en vivo. La Fase 2 (planificada) añade LMCache y Mooncake Store, con objetivo de sesenta por ciento de tasa de acierto de caché en el segundo run completo. La Fase 3 (planificada) introduce los primeros adaptadores LoRA y el pipeline de entrenamiento. La Fase 4 (prevista a largo plazo) incorporará mejoras en checkpoint/restore de GPU y gestión de adaptadores a escala multi-proyecto.
 
 ## Véase también
 

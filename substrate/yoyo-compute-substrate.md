@@ -35,20 +35,13 @@ The name is literal: the compute tier comes down and goes back up, repeatedly, w
 
 Everything outside these rings is ephemeral and intentionally discarded.
 
-## Ring 1 — Bootstrap: sub-thirty-second warm starts at zero idle cost
+## Ring 1 — Bootstrap: a scheduled VM, not a serverless endpoint
 
-The standard trade-off presented by managed GPU services is a false binary: pay continuously for a warm endpoint, or accept sixty-to-one-hundred-twenty-second cold starts for a fully serverless one. Neither is correct for a workload pattern that is bursty but predictable — weekly batch runs plus opportunistic query-time calls.
+The real Yo-Yo #1 node is a `google_compute_instance` — a conventional GCE VM with an L4 GPU, brought up on a `google_compute_resource_policy` schedule for the nightly training window, not a Cloud Run service scaling to zero between requests. There is no drivers-pre-installed serverless cold start to describe here; the real boot sequence starts the VM and then waits — up to ninety minutes — for the inference server to signal readiness before the nightly pipeline's first phase can begin. The workload pattern this ring actually serves is scheduled batch work, not opportunistic sub-second query-time bursts.
 
-The Yo-Yo substrate resolves this through four pre-staged bootstrap layers:
+**Pre-downloaded model weights**, staged on a persistent disk (`google_compute_disk`) rather than pulled fresh on every boot, remain accurate — this avoids re-downloading tens of gigabytes from the upstream model repository on every nightly cycle.
 
-1. **Pre-built container image** in a regional artefact registry. The image contains the inference runtime plus configuration. Pull time from a regional mirror is approximately five to ten seconds.
-2. **Pre-downloaded model weights** in cloud object storage. Mounting from cold storage avoids re-downloading tens of gigabytes from the upstream model repository on every cycle.
-3. **Cloud Run GPU with drivers pre-installed**. Per Google's April 2026 documentation, GPU instances with drivers already available start in approximately five seconds. Driver installation is not on the critical path.
-4. **Warm pool as an opt-in, not a default**. `min-instances=1` is activated only during a declared sustained-load window — an overnight full-corpus run, for example — then switched off. Idle billing applies only during that window.
-
-The combined result is a worst-case warm-start of approximately fifteen seconds at zero idle cost in normal operation.
-
-When CUDA checkpoint/restore reaches production maturity (currently at RFC stage as of early 2026, with demonstrated ten-times cold-start improvement in controlled environments), Ring 1 is designed to accept a checkpoint bundle as an optional bootstrap input. That is a configuration change, not an architectural rewrite.
+CUDA checkpoint/restore, single-routed-adapter migration, and the other forward-looking primitives described later in this article remain genuinely planned research directions independent of this correction — this section's fix is about which GCP product Ring 1 actually runs on and how long its real boot takes, not about whether those primitives are worth pursuing.
 
 ## Ring 2 — Working memory: KV cache that survives teardown
 
@@ -62,7 +55,7 @@ For workloads with repeated-prefix structure — every document processed agains
 
 ## Ring 3a — Long-term graph memory
 
-The LadybugDB knowledge graph in `service-content` is the long-term semantic memory for every project. `service-slm` reads from it at context-assembly time. It never writes back directly; all writes flow through the validated delta-application path after the sanitise / compute / rehydrate cycle completes.
+The LadybugDB knowledge graph in `service-content` is the long-term semantic memory for every project. `service-slm` reads from it at context-assembly time. It never writes back directly — writes flow through the human-gated proposal pipeline documented elsewhere in this wiki, not an automated cycle inside `service-slm` itself.
 
 Ring 3a is project-scoped by design. One tenant's graph partition is inaccessible to another without an explicit export through the authorised data channel. This is the correct behaviour for data. It is the wrong behaviour for skill — which is why Ring 3b exists as a separate layer.
 
@@ -111,7 +104,7 @@ The substrate is designed so research primitives that are planned or at RFC stag
 |---|---|---|
 | CUDA checkpoint/restore | RFC stage; ten-times cold-start gain demonstrated in controlled settings | Ring 1: optional checkpoint bundle input |
 | Single routed adapter (C-LoRA) | Published 2025 | Ring 3b: registry schema migration |
-| Multi-cloud KV pool | Multi-cloud pool support planned in SkyPilot 0.11+ | Ring 2: Mooncake master on multi-cloud pool |
+| Multi-cloud KV pool | Long-horizon research direction; no orchestration layer for it exists in the current deployment | Ring 2: Mooncake master on multi-cloud pool |
 | FP8 KV cache quantisation | Available as inference engine config flag | Ring 2: config flag, approximately two-times memory reduction |
 | Sleep-time adapter retraining | Research stage | Ring 3b: nightly batch retraining on reduced-cost compute |
 
@@ -119,7 +112,7 @@ Each of these may integrate as a configuration addition or new subdirectory. Non
 
 ## Phase roadmap
 
-**Phase 1 (current — trial)**: Ring 1 fully built (bootstrap, Cloud Run GPU, SkyPilot). Ledger fully built with all event types defined. `moduleId` propagated through every call even with only one project active. Rings 2 and 3b are not yet needed and are intentionally deferred.
+**Phase 1 (current — trial)**: Ring 1 built as a scheduled GCE VM (see above, not the Cloud Run/SkyPilot shape this roadmap once described). Ledger fully built with all event types defined. `moduleId` propagated through every call even with only one project active. Rings 2 and 3b are not yet needed and are intentionally deferred. The Yo-Yo tier is currently down at the time of this wiki's own [[service-slm-yoyo-operational|operational status article]] — worth checking before assuming Phase 1 is presently serving live traffic.
 
 **Phase 2 (planned — after trial)**: Ring 2 added. LMCache and Mooncake Store integrated. Target: sixty percent or greater cache hit rate on the second full corpus run.
 
