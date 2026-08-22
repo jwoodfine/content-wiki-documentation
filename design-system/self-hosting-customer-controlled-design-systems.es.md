@@ -45,8 +45,9 @@ El problema del *formato* de los tokens de diseño está resuelto. El Design
 Tokens Community Group del W3C publicó la primera versión estable de su
 Format Module en octubre de 2025, y el formato está implementado en las
 principales herramientas de autoría y construcción. El grafo de tokens de
-PointSav — 146 tokens hoja resueltos entre los niveles primitivo, semántico
-y de tema oscuro al momento de escribir — se publica en ese formato, bajo
+PointSav — más de 200 tokens hoja resueltos entre los niveles primitivo,
+semántico y de tema oscuro, en crecimiento junto con el sistema — se
+publica en ese formato, bajo
 Apache-2.0, en un repositorio git público.
 
 Esa es toda la transacción. Un equipo que quiere los tokens clona o descarga

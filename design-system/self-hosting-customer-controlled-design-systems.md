@@ -41,8 +41,8 @@ and exactly where the line between them sits.
 The design-token *format* problem is solved. The W3C Design Tokens Community
 Group published the first stable version of its Format Module in October
 2025, and the format is implemented across the major authoring and build
-tools. PointSav's token graph — 146 resolved leaf tokens across primitive,
-semantic, and dark-theme tiers at the time of writing — is published in that
+tools. PointSav's token graph — over 200 resolved leaf tokens across primitive,
+semantic, and dark-theme tiers, growing as the system does — is published in that
 format, under Apache-2.0, in a public git repository.
 
 That is the whole transaction. A team that wants the tokens clones or
@@ -120,7 +120,7 @@ here matters:
   recipes, and research files in the design-system repository. This is the
   layer you consume directly, and the layer a fork replaces with its own
   content.
-- **Server source — AGPL-3.0-or-later** (Correction retracted, 2026-08-02: an earlier pass flagged this as unverifiable, checking a stale local checkout of `app-privategit-design`. The real, ratified root `LICENSE` ("MULTI-LICENSE NOTICE" v1.1, effective 2026-05-24) places every `app-privategit-*/` directory under AGPL-3.0-or-later — this article's claim is correct.). The serving engine
+- **Server source — AGPL-3.0-or-later.** The serving engine
   (`app-privategit-design` in the PointSav monorepo). Running it unmodified
   for your own organization carries no unusual burden; an organization that
   modifies the server and offers it to users over a network takes on AGPL
