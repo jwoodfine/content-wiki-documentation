@@ -79,12 +79,9 @@ The substrate does not claim to own what it does not own. Silicon, microcode, an
 
 ## Phased Rollout Architecture
 
-Phase 0 workspace hygiene for the `project-system` cluster is pending. Phase 1A — a capability-ledger primitive prototype binding C2SP signed-note multi-signature checkpoints to capability invocation — is planned work. Phase 1B — the `moonshot-toolkit` Rust CLI for orchestrating seL4 builds with a reproducible-build harness — is planned foundational work. NetBSD compat-bottom prototype, TOPIC and GUIDE drafting, and the minimal moonshot-kernel capability subset are subsequent phases.
+The build-orchestration and kernel-runtime foundations are further along than a from-scratch reading of the roadmap would suggest. `moonshot-toolkit`, the Rust CLI that orchestrates seL4 builds with a reproducible-build harness, has already shipped its Phase 1C milestone (`v0.3.1`, 35 passing tests): it compiles the real AArch64 seL4 kernel from source, assembles the boot image, and has confirmed a full QEMU boot through elfloader to kernel to root task. `moonshot-sel4-vmm`, the protection-domain runtime, has separately completed Phases H1 through H8 — real `#![no_std]` protection-domain binaries with a confirmed passing HTTP request to the Doorman's health endpoint over VirtIO-net DMA. Neither is the "planned foundational work" this roadmap once described; both are running, verified pipelines.
 
-**Correction (2026-08-02):** stale — `moonshot-toolkit` was already live and producing
-real boot images by 2026-05-29 (Phase 1C.d), well before this "planned foundational
-work" framing, and is now `v0.3.1` with 35 passing tests, per this archive's own
-project registry (`Active`). **Flagged, not resolved.**
+What remains ahead of these two: the capability-ledger primitive itself — binding C2SP `signed-note` multi-signature checkpoints to capability invocation — has not been prototyped. The NetBSD compat-bottom, the dual-kernel shim, and the minimal moonshot-kernel capability subset described elsewhere in this article are design targets, not yet building blocks with running code behind them the way the seL4 build and boot pipeline now has.
 
 ## See also
 

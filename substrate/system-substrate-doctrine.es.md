@@ -86,14 +86,25 @@ provenance*) y los artefactos de verificación formal.
 
 ## Arquitectura de implementación por fases
 
-La higiene de espacio de trabajo de la Fase 0 para el clúster `project-system` está
-pendiente. La Fase 1A — un prototipo de la primitiva de registro de capacidades que
-vincula los checkpoints de multi-firma C2SP `signed-note` con la invocación de
-capacidades — es trabajo planificado. La Fase 1B — el CLI de Rust `moonshot-toolkit`
-para orquestar builds de seL4 con un arnés de construcción reproducible — es trabajo
-fundacional planificado. El prototipo de la base de compatibilidad NetBSD, la
-redacción de TOPIC y GUIDE, y el subconjunto mínimo de capacidades de
-moonshot-kernel son fases posteriores.
+Los cimientos de orquestación de builds y de tiempo de ejecución del kernel están
+más avanzados de lo que sugeriría leer la hoja de ruta desde cero. `moonshot-toolkit`,
+el CLI de Rust que orquesta builds de seL4 con un arnés de construcción reproducible,
+ya completó su hito de la Fase 1C (`v0.3.1`, 35 pruebas superadas): compila el kernel
+seL4 real para AArch64 desde el código fuente, ensambla la imagen de arranque, y ha
+confirmado un arranque completo en QEMU desde elfloader hasta el kernel y la tarea
+raíz. `moonshot-sel4-vmm`, el tiempo de ejecución de dominios de protección, completó
+por separado las Fases H1 a H8 — binarios reales de dominio de protección `#![no_std]`
+con una solicitud HTTP confirmada exitosa al endpoint de salud del Portero sobre DMA
+VirtIO-net. Ninguno de los dos es ya "trabajo fundacional planificado"; ambos son
+pipelines en funcionamiento, verificados.
+
+Lo que queda por delante de estos dos: la primitiva de registro de capacidades en sí
+— vincular los checkpoints de multi-firma C2SP `signed-note` con la invocación de
+capacidades — no se ha prototipado todavía. La base de compatibilidad NetBSD, el
+shim de doble kernel, y el subconjunto mínimo de capacidades de moonshot-kernel
+descritos en otras partes de este artículo son objetivos de diseño, todavía sin
+código en funcionamiento detrás como sí lo tiene ahora el pipeline de build y
+arranque de seL4.
 
 ## Véase también
 
