@@ -35,7 +35,7 @@ references:
     url: "https://docs.rs/comrak/latest/comrak/struct.ExtensionOptions.html"
 ---
 
-[[app-mediakit-knowledge|`app-mediakit-knowledge`]] is the PointSav knowledge platform engine, a Rust binary that serves three wiki instances — `documentation.pointsav.com`, `projects.woodfinegroup.com`, and `corporate.woodfinegroup.com` — from flat Markdown files stored in git repositories. The engine renders content with Wikipedia-shaped chrome: sticky table of contents, wikilink resolution with red-link signalling, category pages, edit history, and full-text search. As of May 2026, it implements approximately 78 percent of the full Wikipedia muscle-memory surface. A planned multi-sprint roadmap is intended to bring that figure to approximately 95 percent before adding a Leapfrog 2030 differentiation layer that goes beyond what Wikipedia offers.
+[[app-mediakit-knowledge|`app-mediakit-knowledge`]] is the PointSav knowledge platform engine, a Rust binary that serves three wiki instances — `documentation.pointsav.com`, `projects.woodfinegroup.com`, and `corporate.woodfinegroup.com` — from flat Markdown files stored in git repositories. The engine renders content with Wikipedia-shaped chrome: sticky table of contents, wikilink resolution with red-link signalling, category pages, edit history, and full-text search. **A reader comparing this wiki to Wikipedia feature-by-feature will find most of the reading experience already matches — the two clearly missing pieces are the infobox and the navbox**, the two highest-impact elements of Wikipedia's visual muscle memory. A planned multi-sprint roadmap is intended to close that gap before adding a Leapfrog 2030 differentiation layer that goes beyond what Wikipedia offers.
 
 ## Why not port MediaWiki
 
@@ -86,9 +86,7 @@ As of May 2026, `app-mediakit-knowledge` implements approximately 78 percent of 
 
 ### Missing elements ranked by impact
 
-**Correction (2026-08-02):** infobox and navbox are not absent — both shipped in `app-mediakit-knowledge` commit `4145cd33`, dated 2026-05-07, a week *before* this article's own `last_edited: 2026-05-14` date. `src/render.rs` implements `render_navbox()` (collapsible `.navbox` HTML) and both fenced-block and frontmatter-driven infobox rendering. The comrak-upgrade claim below is also stale: `Cargo.toml` already pins `comrak = "0.52"`, not 0.29 — the described upgrade already happened. This affects the article's own headline "78 percent" completeness metric, since these are the two highest-weighted rows in the impact table. **Flagged, not resolved** — needs re-scoring the completeness metric and rewriting both rows to reflect shipped status.
-
-The following elements are stubbed or absent, ranked by muscle-memory impact:
+The following elements are stubbed or absent today, ranked by muscle-memory impact:
 
 | Missing feature | Impact | Notes |
 |---|---|---|
@@ -129,7 +127,7 @@ The engine walks the comrak AST, matches `CodeBlock` nodes with `info = "infobox
 
 ### comrak upgrade path
 
-Implementing the infobox and navbox block types requires upgrading comrak from version 0.29 to 0.52 as a planned step.[^5] (Correction, 2026-08-02: `Cargo.toml` already pins `comrak = "0.52"` — this upgrade already happened, see the correction above.) The newer version adds the `block_directive` extension (`:::infobox`, `:::navbox` syntax), which is cleaner than fenced code blocks for multi-line Markdown content inside the block body. The API is stable across these versions; existing code compiles without change.
+The comrak upgrade this design depends on has already happened — the engine has run comrak 0.52 since before this article was last checked.[^5] That version adds the `block_directive` extension (`:::infobox`, `:::navbox` syntax), cleaner than fenced code blocks for multi-line Markdown content inside the block body. **The upgrade itself was the easy part; the infobox and navbox rendering code that would use it has not been written yet.** Having the newer comrak version in place removes one prerequisite for building these block types — it does not mean they are built.
 
 ## The Leapfrog 2030 layer
 

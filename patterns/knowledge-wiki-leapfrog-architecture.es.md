@@ -40,7 +40,7 @@ En lugar de implementar un motor de expansión de macros wikitext, `app-mediakit
 - **Navbox** — tabla de navegación colapsable en la parte inferior del artículo, que agrupa enlaces a artículos relacionados bajo un título común.
 - **Citas con tooltip** — la sintaxis de notas al pie de comrak (`[^id]`) ya parsea correctamente; el trabajo pendiente es el CSS de estilo `[1][2][3]` y el tooltip JavaScript de vista previa en hover.
 
-La implementación de los tipos infobox y navbox requiere, como paso planificado, actualizar comrak de la versión 0.29 a la 0.52, que incorpora la extensión `block_directive`.
+El motor ya ejecuta comrak 0.52, que incorpora la extensión `block_directive` necesaria para estos bloques. **La actualización de comrak fue la parte fácil; el código de renderizado de infobox y navbox que la usaría todavía no se ha escrito.** Ambos siguen ausentes del wiki en vivo hoy. Son, junto con el CSS de citas con estilo `[1][2][3]`, los elementos de mayor impacto visual todavía pendientes.
 
 ## Capa Leapfrog 2030
 
