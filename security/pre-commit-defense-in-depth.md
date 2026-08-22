@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-03
+last_edited: 2026-08-22
 editor: pointsav-engineering
 short_description: "Four independent git hooks run before a commit is recorded: a helper-only gate, a data-path block, a staged-content secret and size scan, and an author-identity check. Every bypass is logged."
 paired_with: pre-commit-defense-in-depth.es.md
@@ -63,7 +63,7 @@ path alone, cheaply, rather than being pumped through pattern matching first.
 
 ### Secret-pattern and size scan
 
-The largest layer reads a pattern catalogue from `conventions/secret-patterns.yaml` and scans the
+The largest layer reads a maintained pattern catalogue and scans the
 staged content of each added, copied, modified, or renamed file. Content is retrieved through Git
 plumbing rather than from disk. Binary files are skipped by a heuristic examining null bytes and the
 printable-character ratio of the first four kilobytes of each file — checked before the expensive

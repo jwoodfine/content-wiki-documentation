@@ -12,7 +12,7 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 language_protocol: TRANSLATE-ES
-last_edited: 2026-08-06
+last_edited: 2026-08-22
 editor: pointsav-engineering
 short_description: "Cuatro hooks de git independientes se ejecutan antes de que un commit quede registrado: una compuerta de solo-helper, un bloqueo por ruta de datos, un escaneo de secretos y tamaño sobre el contenido preparado, y una comprobación de identidad del autor. Toda elusión queda registrada."
 paired_with: pre-commit-defense-in-depth.md
@@ -67,7 +67,7 @@ ruta, de forma barata, en lugar de pasar primero por la comparación de patrones
 
 ### Escaneo de patrones de secretos y de tamaño
 
-La capa más grande lee un catálogo de patrones desde `conventions/secret-patterns.yaml` y escanea el
+La capa más grande lee un catálogo de patrones mantenido y escanea el
 contenido preparado de cada archivo añadido, copiado, modificado o renombrado. El contenido se obtiene
 mediante las órdenes de fontanería (*plumbing*) de Git y no desde el disco. Los archivos binarios se
 omiten mediante una heurística que examina los bytes nulos y la proporción de caracteres imprimibles de
