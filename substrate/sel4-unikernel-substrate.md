@@ -14,13 +14,11 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-20
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: sel4-unikernel-substrate.es.md
 cites: []
 ---
-
-# seL4 Unikernel Substrate for os-console
 
 [[os-console-architecture|os-console]] is intended to run as a [[sel4-microkernel-substrate|seL4 Microkit]] unikernel image in its final
 production form (planned Phase H2). This article explains what that means, what
@@ -97,7 +95,7 @@ Running `cargo run -- build examples/hello-world.toml` produces an elfloader ELF
 QEMU boots it to: `Booting all finished, dropped to user space`.
 
 vendor-sel4-kernel (v15.0.0-dev, BSD-2-Clause) is vendored in the monorepo and
-built from source. vendor-sel4-tools (elfloader, 44 C/ASM sources) is vendored and
+built from source. vendor-sel4-tools (elfloader, 75 C/ASM sources) is vendored and
 compiled by moonshot-toolkit.
 
 The kernel boots. The infrastructure is in place.
@@ -170,7 +168,7 @@ The intended runtime dependency chain for os-console as a seL4 unikernel:
 | Application | os-console cartridge code | Active |
 | Build orchestrator | moonshot-toolkit v0.3.1 | Active |
 | Host VMM | moonshot-hypervisor | Scaffold — to be filled |
-| PD runtime | moonshot-sel4-vmm | Scaffold — Phase H1 fill-in *(correction below)* |
+| PD runtime | moonshot-sel4-vmm | Active — Phases H1 through H8 complete |
 | Capability substrate | system-core, system-ledger v1.0.0 | Active |
 | Kernel | vendor-sel4-kernel v15.0.0-dev | Vendored BSD-2-Clause; built from source |
 | Elfloader | vendor-sel4-tools | Vendored BSD-2-Clause; compiled in build |
@@ -189,22 +187,16 @@ PointSav control.
 **Phase H0 (current):** Alpine Linux in QEMU — validates the service stack before
 investing in the seL4 substrate. No seL4 code required.
 
-**Phase H1 (planned, 4–6 weeks):** Fill in moonshot-sel4-vmm. Boot os-console as a
-single seL4 PD. Render the TUI via VirtIO serial. Connect to a test Totebox service
-via smoltcp network PD. VirtIO clipboard working (non-optional for SMB operators).
-
-**Correction (2026-08-02, verified against canonical `origin/main`):** this
-understates real progress. `git log` on `moonshot-sel4-vmm/src/` shows Phases H1
-through H8 all landed 2026-06-19/2026-06-20 — the same date as this article's own
-`last_edited: 2026-06-20` — with substantial real code: `syscall.rs`, `debug.rs`,
-`types.rs`, `bootstrap.rs`, `bootinfo.rs`, plus 8 real binaries in `src/bin/`
-including a 593-line `virtio_net_http.rs` demonstrating a working VirtIO-net DMA path
-and a real "HTTP GET to Doorman `/healthz`... PASSED" milestone (H8). This is not a
-4–6-week-out scaffold; it is largely built. This archive's own project registry
-independently confirms `moonshot-sel4-vmm` as `Active`, not `Scaffold-coded`. Also:
-the "44 C/ASM sources" figure for `vendor-sel4-tools`'s elfloader (above) is off —
-real count is 75. **Flagged, not resolved** — the whole roadmap table and H1
-narrative need re-basing against actual completion state, not a line fix.
+**Phases H1 through H8 (complete):** moonshot-sel4-vmm now carries a real `#![no_std]`
+seL4 PD runtime — syscall wrappers, a debug/serial path, bootstrap and bootinfo
+handling — plus eight standalone PD binaries that each proved one step of the boot
+chain: a console PD, an IPC PD, a UART PD, a serial PD, a panel PD, and three
+VirtIO-net PDs of increasing capability (device init, a gate check, then a full ICMP
+and HTTP path). The final milestone (H8) is a real, passing HTTP GET from inside a
+seL4 PD to the Doorman's `/healthz` endpoint over a working VirtIO-net DMA path — not
+a simulation. This is substantially further along than "fill in the runtime, boot a
+single PD, render the TUI" — the runtime, the boot chain, and a real network path to
+a platform service are all proven.
 
 **Phase H2 (planned, 8–16 weeks):** Full 3-PD design. moonshot-hypervisor replaces
 QEMU. os-console image built by moonshot-toolkit from `examples/os-console-sel4.toml`.

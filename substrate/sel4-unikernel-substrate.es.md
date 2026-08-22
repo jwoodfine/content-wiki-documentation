@@ -14,13 +14,11 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: TRANSLATE-ES
-last_edited: 2026-06-20
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: sel4-unikernel-substrate.md
 cites: []
 ---
-
-# Sustrato Unikernel seL4 para os-console
 
 [[os-console-architecture|os-console]] está previsto para ejecutarse como una imagen unikernel [[sel4-microkernel-substrate|seL4 Microkit]] en su
 forma de producción final (previsto Fase H2). Este artículo explica qué significa eso,
@@ -95,7 +93,7 @@ QEMU lo arranca hasta: `Booting all finished, dropped to user space`.
 
 vendor-sel4-kernel (v15.0.0-dev, BSD-2-Clause) está incluido como código fuente propio
 en el monorepo y se compila desde el código fuente. vendor-sel4-tools (cargador ELF,
-44 fuentes C/ASM) está incluido y compilado por moonshot-toolkit.
+75 fuentes C/ASM) está incluido y compilado por moonshot-toolkit.
 
 El kernel arranca. La infraestructura está en su lugar.
 
@@ -163,7 +161,7 @@ La cadena de dependencias de runtime prevista para os-console como unikernel seL
 | Aplicación | Código de cartridges de os-console | Activo |
 | Orquestador de compilación | moonshot-toolkit v0.3.1 | Activo |
 | VMM del host | moonshot-hypervisor | Andamiaje — a rellenar |
-| Runtime de PD | moonshot-sel4-vmm | Andamiaje — Fase H1 |
+| Runtime de PD | moonshot-sel4-vmm | Activo — Fases H1 a H8 completas |
 | Sustrato de capacidades | system-core, system-ledger v1.0.0 | Activo |
 | Kernel | vendor-sel4-kernel v15.0.0-dev | Código fuente propio BSD-2-Clause |
 | Cargador ELF | vendor-sel4-tools | Código fuente propio BSD-2-Clause |
@@ -179,9 +177,14 @@ Nanos (unikernel comercial) y hermit-os (arquitectura de mini-SO externa) no se 
 **Fase H0 (actual):** Alpine Linux en QEMU — valida la pila de servicios antes de
 invertir en el sustrato seL4.
 
-**Fase H1 (prevista, 4–6 semanas):** Rellenar moonshot-sel4-vmm. Arrancar os-console
-como un único PD seL4. Renderizar la TUI mediante serie VirtIO. Portapapeles VirtIO
-funcional (imprescindible para operadores de pequeña empresa).
+**Fases H1 a H8 (completas):** moonshot-sel4-vmm ahora tiene un runtime de PD seL4 real
+en `#![no_std]` — envoltorios de syscall, una ruta de depuración/serie, manejo de
+arranque y bootinfo — más ocho binarios de PD independientes que probaron cada paso de
+la cadena de arranque: un PD de consola, uno de IPC, uno de UART, uno de serie, uno de
+panel y tres PD de VirtIO-red de capacidad creciente (inicialización del dispositivo,
+una verificación de puerta, y luego una ruta ICMP y HTTP completa). El hito final (H8)
+es un GET HTTP real y exitoso desde dentro de un PD seL4 hacia el endpoint `/healthz`
+del Portero, sobre una ruta DMA de VirtIO-red funcional — no una simulación.
 
 **Fase H2 (prevista, 8–16 semanas):** Diseño completo de 3 PDs. moonshot-hypervisor
 reemplaza QEMU. Imagen arrancable en menos de 1 segundo. Pila 100% soberana.
