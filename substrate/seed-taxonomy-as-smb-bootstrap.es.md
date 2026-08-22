@@ -10,28 +10,30 @@ index_group: platform-mechanics
 short_description: "Cada despliegue de inquilino provisiona una taxonomía semilla de cuatro partes — Arquetipos, Plan de Cuentas, Dominios, Temas — como el arranque del grafo de conocimiento."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-08-22
 editor: pointsav-engineering
 cites: []
 paired_with: seed-taxonomy-as-smb-bootstrap.md
 ---
 
 
-Cada despliegue de inquilino comienza con una **taxonomía semilla**: una estructura compacta, ajustable manualmente y de cuatro partes que forma el andamiaje inicial del [[knowledge-graph-grounded-apprenticeship|grafo de conocimiento]] por inquilino. Las cuatro partes son Arquetipos, Plan de Cuentas, Dominios y Temas. Cada entidad lleva palabras clave de gravedad — anclajes de palabras clave explicables que impulsan la [[service-content|clasificación del contenido entrante]].
+Cada despliegue de inquilino comienza con una **taxonomía semilla**: una estructura compacta, ajustable manualmente y de cuatro partes que forma el andamiaje inicial del [[knowledge-graph-grounded-apprenticeship|grafo de conocimiento]] por inquilino. Las cuatro partes son Arquetipos, Plan de Cuentas, Dominios y Temas. Cada entidad lleva palabras clave de gravedad — texto de referencia explicable que un operador lee al clasificar contenido nuevo dentro de [[service-content|la taxonomía]].
 
 ## Las cuatro partes
 
-**Arquetipos — quién actúa.** Cinco a siete identidades de rol por patrón cognitivo. El valor predeterminado lleva cinco roles universales que aparecen en alguna forma en cualquier negocio: el Ejecutivo (Dirección Estratégica), el Guardián (Riesgo y Cumplimiento), el Fiduciario (Integridad de Recursos), el Arquitecto (Diseño del Sistema) y el Constructor (Realización Física). Los roles específicos de la industria se añaden a través de los Paquetes de Semilla Vertical.
+**Arquetipos — quién actúa.** Once identidades de rol por patrón cognitivo, cada una con un nombre, una firma (su función central), un "disparador de sanación" (el modo de fallo que el rol existe para detectar) y palabras clave de gravedad — por ejemplo el Ejecutivo (Dirección Estratégica, disparado por Estancamiento) o el Guardián (Riesgo y Cumplimiento, disparado por Brecha). El conjunto abarca roles estratégicos, operativos y de realización física. Los roles específicos de la industria se añaden a través de los Paquetes de Semilla Vertical.
 
-**Plan de Cuentas — qué negocio es este.** Cinco a diez perfiles de negocio específicos de la industria, cada uno con un identificador, un nombre de perfil, un subdominio y palabras clave de gravedad. Los perfiles reflejan las categorías reales de ingresos y gastos del negocio.
+**Plan de Cuentas — quién ocupa qué rol, no qué negocio es este.** Pese al nombre, no es una clasificación de industria ni de ingresos/gastos — es una taxonomía de roles de personal, organizada en subdominios (roles de gobierno personal, cumplimiento, finanzas y varios más), cada entrada con un número de referencia, un tipo de rol y palabras clave de gravedad para clasificar el cargo o función de una persona frente a ella.
 
-**Dominios — categorías macro de trabajo.** Tres a cinco categorías macro que agrupan unidades de trabajo. El valor predeterminado proporciona Corporativo, Proyectos y Documentación. Cada Dominio contiene un Glosario y una colección de Temas.
+**Dominios — categorías macro de trabajo.** Categorías macro que agrupan unidades de trabajo, cada una respaldada por su propio archivo semilla. El valor predeterminado proporciona Corporativo, Proyectos y Documentación. Cada Dominio contiene un Glosario y una colección de Temas.
 
-**Temas — iniciativas acotadas en el tiempo.** Cuatro a diez temas activos que representan el enfoque estratégico actual. Los Temas son la parte más volátil de la taxonomía — pueden cambiar trimestralmente a medida que las iniciativas se abren y cierran.
+**Temas — iniciativas acotadas en el tiempo.** Temas activos que representan el enfoque estratégico actual, cada uno con un identificador, un nombre, un alcance (táctico o estratégico), una tesis de una línea y palabras clave de gravedad. Los Temas son la parte más volátil de la taxonomía y son genuinamente específicos de cada inquilino — los despliegues reales siembran aquí prioridades estratégicas reales, a menudo comercialmente sensibles, no un conjunto de plantillas genéricas.
 
-## El mecanismo de palabras clave de gravedad
+## El campo de palabras clave de gravedad
 
-La clasificación del nuevo contenido usa coincidencia de palabras clave en lugar de similitud de embeddings. Este enfoque es deliberado: la clasificación basada en palabras clave es explicable (el operador puede leer y verificar "este documento fue clasificado como Bienes Raíces porque coincidieron los términos Arrendamiento, Oficina e Industrial"), auditable y ajustable manualmente. La similitud de [[service-slm|embeddings]] se proporciona como capa adicional para los casos donde las palabras clave explícitas no coinciden, pero no reemplaza el mecanismo de palabras clave.
+Cada entidad de la taxonomía lleva palabras clave de gravedad, pero su función hoy es más limitada que un clasificador automático: son texto de referencia que un operador humano lee antes de tomar una decisión de clasificación, no una entrada para un sistema automático de coincidencia de palabras clave o similitud de embeddings. En el único consumidor real confirmado de la plataforma — el flujo de trabajo [[radical-proofreader-ui|Verification Surveyor]] — un operador que revisa una entidad descubierta ve la lista de nombres de Arquetipos y elige uno manualmente; las palabras clave de gravedad orientan ese juicio humano en lugar de dirigirlo programáticamente.
+
+El objetivo de explicabilidad para el que se diseñó el campo se mantiene incluso bajo selección manual: un operador puede leer las palabras clave de gravedad de una entidad de la taxonomía y entender por qué una entidad pertenecería o no a ella, y puede editar la lista de palabras clave a mano cuando una categoría necesita redefinirse. Si se añadirá un clasificador automático por palabras clave o por similitud de embeddings sobre este paso manual es un diseño que la plataforma aún no ha construido.
 
 ## Diferencia estructural con los enfoques de ontología empresarial
 
