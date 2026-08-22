@@ -43,7 +43,7 @@ Cada cambio es una decisión arquitectónica única con consecuencias en cadena.
 
 ## Lo que la tesis no es
 
-La tesis no es contraria a la nube. PointSav usa extensivamente proveedores de nube comerciales. No es contraria a la inteligencia artificial. PointSav integra modelos de lenguaje en toda la arquitectura. No es un rechazo del código abierto. Los sistemas operativos principales de PointSav están previstos para su publicación bajo Apache 2.0.
+La tesis no es contraria a la nube. PointSav usa extensivamente proveedores de nube comerciales. No es contraria a la inteligencia artificial. PointSav integra modelos de lenguaje en toda la arquitectura. No es un rechazo del código abierto. Los sistemas operativos principales de PointSav se publican abiertos — `os-console` y `os-totebox` bajo AGPL-3.0-or-later, `os-workplace` bajo FSL-1.1-ALv2 — no una única licencia permisiva, sino una división real y ratificada de código abierto central.
 
 La tesis es estructural: el activo que posee el cliente es la instancia en ejecución, no un asiento de suscripción.
 
