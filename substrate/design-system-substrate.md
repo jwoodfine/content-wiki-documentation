@@ -34,22 +34,17 @@ The substrate's content lives in a per-tenant vault directory:
 
 ```
 <tenant-vault>/
-├── tokens/ DTCG primitive + semantic + component layers
-├── components/ HTML+CSS+ARIA recipe files
-├── themes/ per-brand semantic-layer overrides
-├── research/ AI-readable design-decision rationale (markdown)
-└── exports/ derived caches (Figma, Tailwind, Style Dictionary)
+├── elements/    DTCG token layers, nested per slug
+├── components/  HTML+CSS+ARIA recipe files, nested per slug
+├── guidelines/  usage and accessibility guidance, nested per slug
+├── developing/  engineering-facing reference (flat)
+├── designing/   design-facing reference (flat)
+├── about/       substrate-level documentation (flat)
+├── research/    AI-readable design-decision rationale (markdown, flat)
+└── exports/     derived caches (Figma, Tailwind, Style Dictionary)
 ```
 
-The vault is the only canonical layer. Rendered exports — Figma Variables JSON, Tailwind config, CSS variables, Style Dictionary builds — are derived caches recomputable from the canonical four directories above.
-
-**Correction (2026-08-02, verified against canonical `origin/main`):** the real vault
-layout (`app-privategit-design/src/vault.rs`) is `elements/`, `components/`,
-`guidelines/`, `developing/`, `designing/`, `about/`, `research/`, plus a generated
-`exports/` output directory — there is no `themes/` section anywhere in the codebase,
-and `tokens/` is not a top-level vault directory name. This looks like an earlier
-design aspiration that diverged from what actually shipped, not a stale-but-once-true
-snapshot. **Flagged, not resolved.**
+The vault is the only canonical layer. Rendered exports — Figma Variables JSON, Tailwind config, CSS variables, Style Dictionary builds — are derived caches recomputable from the canonical directories above.
 
 The substrate engine is a stateless HTTP service that reads the vault from disk. Per-tenant isolation is achieved by running one engine process per tenant, each pointed at its own vault. Persistence above the vault filesystem is via the substrate's [[worm-ledger-architecture|WORM ledger]]. Token and component history is anchored monthly to Sigstore Rekor `[sigstore-rekor-v2]`, producing a customer-rooted Merkle log using the C2SP tlog-tiles format `[c2sp-tlog-tiles]`.
 
@@ -73,13 +68,7 @@ ai_consumption_hint: "When generating a button for a primary
 ---
 ```
 
-The frontmatter is machine-readable; the body is prose-readable. AI agents consume the research through the substrate's [[mcp-substrate-protocol|MCP endpoint]] `[mcp-spec]` at decode time. Methods include `list_tokens`, `list_components`, `list_research`, and `describe`. An AI agent registers the substrate as an MCP server, then queries it during UI generation to align with the SMB's brand intent.
-
-**Correction (2026-08-02, verified against canonical `origin/main`):** the real MCP
-tool list (`app-privategit-design/src/mcp/tools.rs::list_tools()`) is
-`get_component_recipe`, `list_components`, `get_token`, `search_design_system`,
-`list_token_families` — only `list_components` matches; `list_tokens`,
-`list_research`, and `describe` do not exist. **Flagged, not resolved.**
+The frontmatter is machine-readable; the body is prose-readable. AI agents consume the research through the substrate's [[mcp-substrate-protocol|MCP endpoint]] `[mcp-spec]` at decode time. Methods include `get_component_recipe`, `list_components`, `get_token`, `search_design_system`, and `list_token_families`. An AI agent registers the substrate as an MCP server, then queries it during UI generation to align with the SMB's brand intent.
 
 Design systems that publish only token values and component shapes omit the rationale behind those choices. The substrate publishes both, in the same machine-readable tier, served through the same endpoint.
 
@@ -100,7 +89,7 @@ The customer chooses the editor; the substrate does not require a particular one
 
 The substrate imports IBM Carbon's primitive token vocabulary as the floor layer of every new instance. Color naming follows Carbon's convention (`gray-10` through `gray-100`). Type scale follows Carbon's productive and expressive families. Spacing follows Carbon's 8px grid. Focus ring follows Carbon's WCAG 2.2 AAA-conformant style.
 
-Brand-specific work happens at the semantic layer (`themes/<brand>/`), not the primitive layer. SMB customers extend with brand overrides without re-learning a new component taxonomy.
+Brand-specific work happens at the semantic token layer, not the primitive layer. SMB customers extend with brand overrides without re-learning a new component taxonomy.
 
 Carbon was chosen for three reasons: familiarity surface (wide accessible-design muscle-memory footprint among practitioners), accessibility floor (WCAG 2.2 AAA conformance built into primitive choices), and permissive licensing on the form (Carbon's token values are publicly documented; IBM Plex is permissively licensed; the naming convention is a documentation artefact, not a trademarked asset).
 
@@ -110,7 +99,7 @@ A planned future milestone may introduce an alternative primitive bottom — Unt
 
 ## Sovereign Forking Procedure
 
-An SMB customer forks by cloning the source repository, building the substrate engine (a native Rust binary), initialising a vault from the canonical template, editing their brand's semantic layer in `themes/<smb-brand>.json`, and running the bootstrap script to configure the service and TLS. The operator runbook at `vault-privategit-design/GUIDE-deploy-design-substrate.md` covers the full procedure.
+An SMB customer forks by cloning the source repository, building the substrate engine (a native Rust binary), initialising a vault from the canonical template, editing their brand's semantic token layer, and running the bootstrap script to configure the service and TLS. The operator runbook at `vault-privategit-design/GUIDE-deploy-design-substrate.md` covers the full procedure.
 
 The customer ends up with a fully self-hosted, customer-owned design-system substrate. No SaaS dependency. No hyperscaler runtime. Their theme files and any research entries they author are their work product, in their Git repository, signed by their key.
 

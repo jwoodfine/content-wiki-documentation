@@ -43,7 +43,7 @@ El historial del substrato se ancla mensualmente a Sigstore Rekor, produciendo u
 
 El substrato importa el vocabulario de tokens primitivos de IBM Carbon como capa base. Esta elección responde a tres factores: la familiaridad del vocabulario entre practicantes de sistemas de diseño en sectores regulados (finanzas, salud, administración pública); el nivel de conformidad de accesibilidad que Carbon garantiza desde sus elecciones primitivas (WCAG 2.2 AAA); y la naturaleza permisiva de la convención de nomenclatura, que es un artefacto de documentación, no un activo de marca registrada.
 
-El trabajo específico de marca de cada cliente ocurre en la capa semántica (`themes/<marca>/`), sin necesidad de aprender una taxonomía nueva.
+El trabajo específico de marca de cada cliente ocurre en la capa semántica de tokens, sin necesidad de aprender una taxonomía nueva.
 
 ## Horizonte planificado
 
