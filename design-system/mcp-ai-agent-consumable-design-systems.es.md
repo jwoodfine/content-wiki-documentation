@@ -95,20 +95,23 @@ El servidor del sistema de diseño expone tres puntos de entrada para
 máquinas.
 
 - **`POST /mcp`** — el punto de conexión MCP. Habla JSON-RPC 2.0 según la
-  especificación y expone cuatro herramientas: `list_components` (todos los
+  especificación y expone cinco herramientas: `list_components` (todos los
   componentes que el registro conoce, filtrables por origen),
   `get_component_recipe` (el HTML, el CSS, la guía ARIA, los tokens
   consumidos y las variantes de un componente con nombre — la misma receta
   desde la que el sitio genera sus vistas previas en vivo), `get_token`
   (resuelve un token de diseño individual por su nombre de propiedad
-  personalizada CSS o por su ruta DTCG) y `search_design_system` (búsqueda
-  de texto completo sobre componentes, tokens y notas de investigación, para
-  un agente que aún no conoce el nombre exacto de lo que necesita).
+  personalizada CSS o por su ruta DTCG), `list_token_families` (enumera los
+  grupos de tokens disponibles antes de profundizar en uno) y
+  `search_design_system` (búsqueda de texto completo sobre componentes,
+  tokens y notas de investigación, para un agente que aún no conoce el
+  nombre exacto de lo que necesita).
 - **`GET /tokens/search`** — el mismo índice de tokens como consulta HTTP
   simple, para herramientas que prefieren una petición ordinaria a hablar
   MCP.
-- **`GET /bundles/:name/download`** — paquetes de archivos versionados,
-  incluida la exportación completa de tokens en formato Design Tokens
+- **`GET /bundles/:name/download`** y **`GET /elements/:slug/download`** —
+  paquetes de archivos versionados, incluida la exportación completa de
+  tokens en formato Design Tokens
   Community Group (DTCG). Un agente o una cadena de compilación que solo
   necesita los valores de los tokens puede descargar este archivo
   directamente y no tocar nunca el punto de conexión MCP.
@@ -152,7 +155,7 @@ de CC BY.
 ## Alcance y límites
 
 Dicho con claridad: el conjunto de puntos de conexión descrito arriba —
-`/mcp` con sus cuatro herramientas, `/tokens/search` y la ruta de descarga
+`/mcp` con sus cinco herramientas, `/tokens/search` y la ruta de descarga
 de paquetes — está implementado en el código fuente del servidor del sistema
 de diseño y es la superficie que expone una instancia autoalojada. La
 documentación pública v3 de esa superficie, incluida la página Agents que la

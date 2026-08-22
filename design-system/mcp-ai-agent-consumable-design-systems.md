@@ -82,25 +82,25 @@ the site's pages are rendered from.
 
 ## The machine surface, concretely
 
-**Correction retracted, 2026-08-02:** an earlier pass in this session flagged the `/mcp` endpoint and license claims below as fabricated, based on this archive's local `app-privategit-design` checkout, which is stale relative to canonical (`origin/main`). Re-checked directly against `origin/main`: the MCP module is real (`src/mcp/{mod,protocol,tools}.rs`), wired at `POST /mcp` → `crate::mcp::mcp_handler` (`src/routes/mod.rs`), and `src/mcp/tools.rs` implements all 4 named tools (`get_component_recipe`, `list_components`, `get_token`, `search_design_system`) almost verbatim to this article's description — plus a 5th tool, `list_token_families`, not mentioned here. `GET /bundles/:name/download` is also a real route, alongside `GET /elements/:slug/download`. The AGPL-3.0-or-later license claim is also correct — every `app-privategit-*/` directory falls under AGPL per the real, ratified root `LICENSE` ("MULTI-LICENSE NOTICE" v1.1, effective 2026-05-24). This article's claims hold up well against canonical; the earlier correction should not have been applied. See [[app-orchestration-command-branch-model]] for the broader local-checkout-staleness finding this session made.
-
 The design-system server exposes three machine entry points.
 
 - **`POST /mcp`** — the MCP endpoint. It speaks JSON-RPC 2.0 per the
-  specification and exposes four tools: `list_components` (every component
+  specification and exposes five tools: `list_components` (every component
   the registry knows, filterable by origin), `get_component_recipe` (the
   HTML, CSS, ARIA guidance, consumed tokens, and variants for one named
   component — the same recipe the site renders live previews from),
   `get_token` (resolve a single design token by its CSS custom property name
-  or its DTCG path), and `search_design_system` (full-text search across
-  components, tokens, and research notes, for an agent that does not yet know
-  the exact name of what it needs).
+  or its DTCG path), `list_token_families` (enumerate the token groups
+  available before drilling into one), and `search_design_system` (full-text
+  search across components, tokens, and research notes, for an agent that
+  does not yet know the exact name of what it needs).
 - **`GET /tokens/search`** — the same token index as a plain HTTP query, for
   tooling that would rather make an ordinary request than speak MCP.
-- **`GET /bundles/:name/download`** — versioned file bundles, including the
-  full token export in Design Tokens Community Group (DTCG) format. An agent
-  or build pipeline that only needs token values can pull this file directly
-  and never touch the MCP endpoint at all.
+- **`GET /bundles/:name/download`** and **`GET /elements/:slug/download`** —
+  versioned file bundles, including the full token export in Design Tokens
+  Community Group (DTCG) format. An agent or build pipeline that only needs
+  token values can pull a bundle directly and never touch the MCP endpoint
+  at all.
 
 The design principle tying the three together is single-sourcing. Token
 counts on the documentation pages, live component previews, MCP tool
@@ -136,8 +136,8 @@ text carries CC BY attribution terms.
 
 ## Scope and limits
 
-Stated plainly: the endpoint set described above — `/mcp` with its four
-tools, `/tokens/search`, and the bundle download route — is implemented in
+Stated plainly: the endpoint set described above — `/mcp` with its five
+tools, `/tokens/search`, and the bundle download routes — is implemented in
 the design-system server's source and is the surface a self-hosted instance
 exposes. The v3 public documentation of that surface, including the Agents
 page that presents it to human readers, is under operator review at the time
