@@ -4,44 +4,34 @@ type: topic
 content_type: topic
 index_group: sovereignty-and-infrastructure-patterns
 slug: zero-execution-routing
-short_description: "Las capas de presentación en la plataforma cumplen un mandato de ejecución cero, eliminando JavaScript del lado del cliente para manipulación central de DOM mediante el uso de determinismo estructural para enrutamiento bilingüe y máquinas de estado CSS nativas para elementos interactivos."
-title: Enrutamiento y presentación de ejecución cero
+short_description: "Las plantillas públicas de la página de inicio de la plataforma usan un patrón de casilla CSS nativa para el cambio de idioma y elementos interactivos, junto con una pequeña cantidad de JavaScript del lado del cliente para la integridad de página y analítica."
+title: "Enrutamiento y script del lado del cliente en la capa de presentación"
 audience: vendor-public
 bcsc_class: current-fact
 language: es
 paired_with: zero-execution-routing.md
 category: patterns
-last_edited: 2026-05-25
+last_edited: 2026-08-22
 editor: pointsav-engineering
 ---
 
+Las plantillas públicas de la página de inicio usan estado de casilla CSS nativa — no JavaScript — para sus elementos interactivos. Los selectores de idioma y los botones de descarga cambian el contenido visible mediante selectores `:checked`, no mediante un script que escucha clics. **Un lector que cambia de idioma en la página de inicio no ejecuta ningún script para hacerlo** — esa interacción funciona incluso con JavaScript completamente desactivado. Las mismas plantillas sí llevan una pequeña cantidad de JavaScript del lado del cliente con otro propósito: calcular y mostrar una suma de verificación de integridad de página, y reportar analítica básica de vista de página al salir de ella.
 
+## El patrón de casilla CSS
 
-Las capas de presentación de la plataforma siguen un mandato de "Ejecución Cero", eliminando el uso de JavaScript en el cliente para la manipulación de la interfaz y el enrutamiento de idiomas. Esta arquitectura minimiza la superficie de ataque y garantiza un rendimiento instantáneo. El patrón complementa la capa de [[machine-based-auth|autenticación basada en máquinas]] y la arquitectura de [[sovereign-ai-routing|enrutamiento de IA soberana]].
+Los elementos interactivos — selectores de idioma, variantes de botón de descarga — operan sobre el estado de una casilla CSS nativa, no sobre estado controlado por script. El DOM carga todos los bloques de idioma y variantes de botón a la vez; reglas CSS de `display` ligadas al estado `:checked` de una casilla oculta muestran u ocultan el bloque correspondiente. Cambiar de idioma no implica ejecución de script ni recarga de página — es un cambio de estado puramente CSS. Los dos bloques de idioma viven hoy en un único archivo de plantilla, alternados por una sola casilla, no como documentos separados en rutas distintas.
 
-## Puntos clave
+## Qué script del lado del cliente sí ejecutan las páginas
 
-- Sin JavaScript del lado del cliente para manipulación central del DOM, enrutamiento de idiomas ni servicio de archivos. El mandato de ejecución cero reduce la superficie de ataque de la capa de presentación y apoya el cumplimiento SOC 3 al depender exclusivamente de archivos estáticos deterministas y CSS nativo.
-- El enrutamiento bilingüe es estructural, no condicional. El `index.html` en inglés reside en la raíz; el `index.html` en español reside en `/es/` con la casilla de verificación de estado de idioma `checked` en el HTML estático — sin detección de IP, sin lógica de redirección del lado del servidor.
-- Los elementos interactivos (selectores de idioma, botones de descarga) usan máquinas de estado CSS nativas: todos los bloques de idioma se cargan simultáneamente, y `display: block/none` en CSS cambia entre ellos según el estado `:checked`. Resultado: latencia de ejecución cero, superficie de inyección de scripts cero en la capa de presentación.
-- El patrón se combina con [[machine-based-auth]]. Las superficies de presentación que no ejecutan JavaScript no pueden ser explotadas mediante inyección de scripts — la autenticación ocurre en la capa de máquina, no en la capa del navegador.
-
-## Enrutamiento Bilingüe Determinista
-
-La plataforma no utiliza scripts de detección de IP. El cambio de idioma es estructural:
-- **Directorio Raíz (`/`):** Contiene la versión por defecto en inglés.
-- **Subdirectorio de Idioma (`/es/`):** Contiene el mismo archivo, pero con el estado de idioma español activado de forma nativa en el código HTML.
-
-## Máquina de Estado de CSS Puro
-
-Los elementos interactivos (como el cambio de idioma o botones dinámicos) funcionan mediante lógica de CSS puro:
-- **Carga Simultánea:** El navegador carga todos los bloques de idioma a la vez.
-- **Cambio Instantáneo:** Las reglas de CSS muestran u ocultan el contenido según el estado de un selector nativo del navegador.
-- **Cero Latencia:** Se logra la fluidez de una aplicación moderna sin los riesgos de seguridad y retrasos asociados a la ejecución de scripts externos.
+Las plantillas de la página de inicio cargan un pequeño script en línea con dos propósitos ajenos al enrutamiento o al cambio de idioma. Calcula una suma de verificación SHA-256 del contenido para mostrarla en el bloque de metadatos, y emite una señal de vista de página (`navigator.sendBeacon`) cuando el lector navega fuera de ella. **Esto significa que la capa de presentación no está completamente libre de scripts** — un lector que audite el comportamiento real de la página encontrará este script ejecutándose hoy tanto en `pointsav.com` como en `woodfinegroup.com`. El enrutamiento y los cambios de estado basados en casillas descritos arriba sí funcionan sin script; la suma de verificación y la señal de analítica son una funcionalidad separada, más pequeña, superpuesta a esa página basada en CSS.
 
 ## Véase también
 
-- [[sovereign-ai-routing]] — la arquitectura de enrutamiento de IA soberana que se combina con esta disciplina de ejecución cero
-- [[machine-based-auth]] — capa de autenticación basada en máquinas que opera en el mismo contexto de presentación de confianza cero
+- [[sovereign-ai-routing]] — la arquitectura de enrutamiento de IA soberana que se combina con esta capa de presentación
+- [[machine-based-auth]] — capa de autenticación basada en máquinas que opera en el mismo contexto de presentación
 - [[decode-time-constraints]] — restricciones en tiempo de decodificación que aplican los límites de ejecución deterministas
 - [[sel4-microkernel-substrate]] — el sustrato de microkernel que fundamenta el modelo de aislamiento de ejecución
+
+## Procedencia
+
+Versión en español elaborada por project-language, adaptación estratégica — no es una traducción literal del artículo canónico en inglés.
