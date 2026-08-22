@@ -6,7 +6,7 @@ slug: moonshot-toolkit-build-orchestrator
 short_description: "Rust-only build orchestrator for seL4 unikernel images — TOML spec to content-addressed manifest to bootable AArch64 elfloader, replacing Python and CMake."
 category: substrate
 index_group: cryptographic-and-microkernel-primitives
-last_edited: 2026-06-23
+last_edited: 2026-08-22
 editor: pointsav-engineering
 status: stable
 bcsc_class: no-disclosure-implication
@@ -153,12 +153,9 @@ point at which the cosignature (Sigstore Cosign with customer-apex key) attaches
 
 ## 6. Phase 1C Status
 
-moonshot-toolkit v0.3.0, released 2026-05-29, completes the Phase 1C milestone:
-
-**Correction (2026-08-02, verified against canonical `origin/main`):** current
-version is `v0.3.1` (commit `0531affa`, "CompilePd -O2 fix," landed the same day,
-2026-05-29, right after the v0.3.0 milestone) — a minor stale-version slip, not a
-factual defect in the milestone description itself. **Flagged, not resolved.**
+moonshot-toolkit v0.3.1 completes the Phase 1C milestone (v0.3.0 shipped the milestone
+itself on 2026-05-29; a same-day follow-up fix to CompilePd's optimization flags moved
+the version to 0.3.1):
 
 - **Phase 1C.a** (v0.2.0, 2026-05-27): CompilePd invokes the real AArch64
   cross-compiler and produces a verified bare-metal ELF. Confirmed: `build/hello.elf`,

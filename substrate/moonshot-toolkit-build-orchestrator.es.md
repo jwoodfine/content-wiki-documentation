@@ -6,7 +6,7 @@ slug: moonshot-toolkit-build-orchestrator
 short_description: "Orquestador de construcción solo Rust para imágenes unikernel seL4 — de especificación TOML a manifiesto direccionado por contenido y elfloader AArch64, sin Python ni CMake."
 category: substrate
 index_group: cryptographic-and-microkernel-primitives
-last_edited: 2026-06-23
+last_edited: 2026-08-22
 editor: pointsav-engineering
 status: stable
 bcsc_class: no-disclosure-implication
@@ -38,7 +38,7 @@ partir de la especificación y verificar que el `plan_hash` coincide con el valo
 cofirmado, y opcionalmente reconstruir el binario byte-a-byte en su propia
 infraestructura.
 
-Phase 1C complete (moonshot-toolkit v0.3.0, 2026-05-29): el comando completo
+Phase 1C complete (moonshot-toolkit v0.3.1): el comando completo
 de construcción — desde especificación TOML hasta imagen de arranque seL4 en QEMU
 — se ejecuta en una sola invocación de `cargo run`, sin dependencias externas en
 tiempo de ejecución más allá del compilador cruzado de sistema.
