@@ -37,6 +37,8 @@ The migration involved moving the existing 3.3 GiB cache into one user's subdire
 
 Service accounts in the workspace group (local-doorman, local-design, and similar) do not run Cargo and do not receive a per-user cache directory. The profile script only exports when the shared cache root exists, so non-workspace contexts are unaffected.
 
+A timer checks the shared cache's disk usage every 30 minutes and trims it once root filesystem usage passes 80% — per-user partitioning solves the cross-user race, but a growing cache still needs a backstop against filling the disk.
+
 ## Generalising beyond Cargo
 
 The lesson generalises: any group-writable shared workspace path needs explicit design around which operations are safe to share (reads, content appends) and which require per-user partition (build state, lock files, temp). Cargo is the prominent example; the same logic applies to anything with mutable state under a shared root.

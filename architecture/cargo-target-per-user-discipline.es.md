@@ -37,6 +37,8 @@ La migración implicó mover la caché existente de 3,3 GiB al subdirectorio del
 
 Las cuentas de servicio en el grupo del espacio de trabajo (local-doorman, local-design y similares) no ejecutan Cargo y no reciben un directorio de caché por usuario. El script de perfil solo exporta cuando existe la raíz de caché compartida, por lo que los contextos que no son del espacio de trabajo no se ven afectados.
 
+Un temporizador revisa el uso de disco de la caché compartida cada 30 minutos y la recorta al superar el 80% del sistema raíz. La partición por usuario resuelve la carrera entre usuarios; una caché en crecimiento sigue necesitando este respaldo.
+
 ## Generalización más allá de Cargo
 
 La lección generaliza: cualquier ruta compartida de escritura grupal necesita diseño explícito sobre qué operaciones son seguras de compartir (lecturas, adiciones de contenido) y cuáles requieren partición por usuario (estado de compilación, archivos de bloqueo, temporales). Cargo es el ejemplo prominente; la misma lógica aplica a cualquier cosa con estado mutable bajo una raíz compartida.
