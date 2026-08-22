@@ -1,8 +1,8 @@
 ---
 schema: foundry-doc-v1
-title: "service-business — Agrupación comercial"
+title: "Agrupación comercial"
 slug: service-business-clustering
-short_description: "Esquema espacial padre-hijo que convierte puntos minoristas en bruto en clústeres comerciales, entregando al motor GIS una entidad por sitio en lugar de puntos superpuestos."
+short_description: "Un patrón espacial padre-hijo que convierte puntos minoristas en bruto en una entidad comercial por sitio físico, para que la canalización GIS razone sobre una ubicación una sola vez en lugar de una vez por cada inquilino colocalizado."
 category: services
 type: topic
 content_type: topic
@@ -12,40 +12,23 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-25
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: service-business-clustering.md
 cites: []
 ---
 
-Los datos minoristas son inherentemente ruidosos — un único sitio comercial frecuentemente contiene múltiples puntos distintos, como una tienda ancla de gran formato, una farmacia integrada y una estación de combustible que comparten la misma zona de estacionamiento. **`service-business`** convierte esos puntos crudos en clústeres comerciales accionables utilizando un esquema espacial padre-hijo, de modo que el motor GIS recibe una entidad comercial unificada por sitio físico en lugar de varios registros superpuestos. El servicio itera el lago de datos crudos de `service-fs`, agrupa entidades que comparten una huella dentro de un umbral de proximidad de 100 m y asigna el ancla nombrada de mayor peso como el padre.
+Los datos minoristas son inherentemente desordenados — un solo sitio comercial suele contener múltiples puntos distintos, como un ancla de gran formato, una farmacia anidada y una estación de servicio que comparten el mismo estacionamiento. El paso de agrupación comercial de la plataforma convierte esos puntos en bruto en clústeres comerciales mediante un patrón padre-hijo, de modo que el análisis GIS posterior razone sobre una entidad comercial unificada por sitio físico en lugar de varios registros superpuestos.
 
-## Puntos clave
+## El patrón padre-hijo
 
-- `service-business` utiliza un índice espacial basado en cuadrícula con celdas de aproximadamente 1 km para agrupar puntos minoristas crudos. Los puntos dentro de 100 m entre sí se consolidan en un único clúster comercial antes de que se calcule cualquier puntuación de nivel.
-- El esquema padre-hijo asigna el ancla nombrada de mayor peso como padre. Cada otro operador en el mismo sitio se convierte en un registro hijo. Sin este paso, estaciones de combustible y farmacias co-ubicadas contarían como señales de nivel independientes.
-- La salida es `cleansed-clusters.jsonl`, consumida directamente por `[[app-orchestration-gis]]` al construir el índice de co-ubicación regional. El paso de agrupación es el límite entre datos de PDI crudos e inteligencia comercial clasificada.
-- El umbral de proximidad de 100 m está calibrado para parques comerciales de gran formato — suficientemente cercano para capturar co-ubicación genuina, suficientemente lejano para separar destinos de compras adyacentes pero estructuralmente distintos.
+Los puntos que plausiblemente pertenecen al mismo sitio físico se fusionan en un pequeño número de pasadas basadas en proximidad, usando distintos umbrales de distancia según si los puntos comparten una señal identificadora (la misma cadena minorista, por ejemplo) o solo coinciden a nivel de marca. El punto con mayor peso en un sitio fusionado se convierte en el registro padre; el resto pasa a ser hijo. Sin este paso, varios inquilinos colocalizados en un sitio contarían cada uno como una señal independiente en la puntuación posterior, sobrestimando el peso comercial de esa ubicación.
 
-## Lógica de agrupación
+## Dónde encaja esto en la canalización
 
-`service-business` procesa nodos comerciales crudos de modo que el motor GIS produzca una única entidad comercial unificada por sitio físico.
-
-## Índice espacial basado en cuadrícula
-
-Para realizar esto a escala, el servicio utiliza un índice espacial basado en cuadrícula (aproximadamente 1 km de celdas). Itera a través del lago de datos crudo de `service-fs` y agrupa entidades que comparten una huella física dentro de un umbral de proximidad de 100 m.
-
-## Esquema padre-hijo
-
-- **Nodo padre** — el motor comercial primario: típicamente el ancla nombrada de mayor peso en el sitio.
-- **Hijos (subentidades)** — operadores secundarios ubicados dentro del mismo nodo espacial.
-
-## Salida de datos depurada
-
-La salida es un archivo `cleansed-clusters.jsonl` refinado. Este conjunto de datos procesado es consumido por el `app-orchestration-gis` descendente para construir el índice de co-ubicación regional.
+La agrupación se ejecuta como parte de la misma canalización GIS basada en Python documentada en [[app-orchestration-gis]] — el código que convierte datos geográficos y comerciales en bruto en el índice regional de co-localización — en lugar de como un servicio desplegado por separado. Este artículo no reproduce los umbrales de distancia específicos de la canalización ni los nombres internos de los scripts; el patrón general (fusionar puntos colocalizados, promover al ancla más fuerte a padre) es la parte estable y de cara pública del diseño.
 
 ## Véase también
 
-- [[app-orchestration-gis]]
-- [[service-fs-data-lake]]
-- [[service-places-filtering]]
+- [[app-orchestration-gis]] — la canalización de la que este paso de agrupación forma parte
+- [[service-fs-data-lake]] — los datos en bruto que consume este paso
