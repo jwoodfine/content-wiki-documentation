@@ -12,113 +12,159 @@ status: active
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-last_edited: 2026-07-31
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: app-mediakit-knowledge.md
-cites:
- - ni-51-102
- - osc-sn-51-721
+cites: []
+references:
+  - id: 1
+    text: "CommonMark Specification."
+    url: "https://commonmark.org/"
+  - id: 2
+    text: "comrak — CommonMark-compliant Markdown processor in Rust."
+    url: "https://github.com/kivikakk/comrak"
+  - id: 3
+    text: "Tantivy full-text search engine."
+    url: "https://www.tantivy-search.org/"
+  - id: 4
+    text: "Schema.org TechArticle schema."
+    url: "https://schema.org/TechArticle"
+  - id: 5
+    text: "Atom Syndication Format — RFC 4287."
+    url: "https://datatracker.ietf.org/doc/html/rfc4287"
+  - id: 7
+    text: "llmstxt.org convention for LLM crawlers."
+    url: "https://llmstxt.org/"
+  - id: 8
+    text: "Wikipedia Manual of Style — Layout."
+    url: "https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style/Layout"
 ---
 
-`app-mediakit-knowledge` es el motor wiki Rust de binario único que sirve la documentación de ingeniería de PointSav en `https://documentation.pointsav.com` — una vista sobre un árbol de Markdown, no un repositorio de contenido. Los commits de Markdown son canónicos; cada binario en ejecución es un estado derivado descartable, incluyendo el HTML renderizado, el índice Tantivy y (cuando la edición colaborativa está habilitada) la sala CRDT. El motor combina un servidor HTTP `axum`, un renderizador CommonMark `comrak` con extensiones específicas de la plataforma para wikilinks y notas al pie, un backend de búsqueda de texto completo `tantivy`, y una capa de plantillas `maud` con cuatro plantillas de artículo. La primera implementación pública del motor entró en servicio el 2026-04-27 a las 16:25 UTC.
+`app-mediakit-knowledge` es el motor wiki Rust de binario único que sirve la documentación de ingeniería de PointSav en `https://documentation.pointsav.com`. El motor combina un servidor HTTP `axum`, un renderizador CommonMark `comrak`[^1][^2] con extensiones específicas de la plataforma para wikilinks, notas al pie, tabla de contenidos y anclas de sección, un backend de búsqueda de texto completo `tantivy`[^3] y una capa de plantillas `maud`. El motor lee archivos Markdown desde un directorio de contenido que el operador indica al arrancar, los renderiza bajo demanda a HTML y los devuelve con cabeceras de caché ajustadas para un público de documentación técnica.
 
-El motor es una *vista* sobre un árbol de Markdown, no un repositorio de contenido. El árbol de Markdown es canónico; el binario en ejecución es una vista. Esta inversión de la fuente de verdad es la decisión de diseño más importante del sistema.
+El motor es una *vista* sobre un árbol de Markdown, no un repositorio de contenido. El árbol de Markdown es canónico; el binario en ejecución es una vista que cualquier número de operadores puede levantar sobre el mismo árbol de contenido, o sobre árboles distintos, sin estado mutable compartido del lado del binario. Esta inversión de la fuente de verdad es la decisión de diseño más importante y se trata en detalle en la siguiente sección.
 
-La primera implementación pública entró en servicio el 2026-04-27 a las 16:25 UTC, sirviendo un árbol de contenido inicial de cuatro archivos en `https://documentation.pointsav.com`. La superficie de rutas completa de las fases de construcción 1, 1.1, 2 y 3 está operativa; las fases 4 a 8 están planificadas pero aún no implementadas.
+La primera implementación pública del motor entró en servicio el 2026-04-27 a las 16:25 UTC, sirviendo un árbol de contenido inicial de cuatro archivos en `https://documentation.pointsav.com`.
 
-## La inversión de la fuente de verdad
+## Inversión de la fuente de verdad
 
-La decisión de diseño central del sustrato: **git es canónico; el binario en ejecución es una vista; el CRDT, cuando la edición colaborativa está habilitada, es efímero de sesión**.
+La decisión de diseño central del sustrato: **git es canónico; el binario en ejecución es una vista**.
 
-Todo artefacto concreto con que un lector interactúa — la página HTML, la entrada del feed Atom, el bloque JSON-LD, el resultado de búsqueda — se deriva en tiempo de solicitud del árbol de Markdown en disco. El estado del disco es lo que se confirma, revisa, replica y divulga. El índice Tantivy se reconstruye desde el árbol de contenido al arrancar. El CRDT de colaboración es efímero entre sesiones.
+Todo artefacto concreto con el que un lector interactúa — la página HTML, la entrada del feed Atom, el bloque JSON-LD, el resultado de búsqueda — se deriva en tiempo de solicitud del árbol de Markdown en disco. El estado del disco es lo que se confirma, revisa, replica y divulga. El HTML es descartable. El índice Tantivy es descartable, reconstruido desde el árbol de Markdown al arrancar.
 
 ### Inversión del modelo MediaWiki
 
-Esta inversión revierte el modelo tradicional de MediaWiki, donde la base de datos es canónica y el sistema de archivos es una copia de trabajo derivada. El motor elige el sistema de archivos como canónico y la base de datos como copia derivada. La motivación es la simplicidad operacional — una copia de seguridad del árbol de contenido es un `git clone`; una replicación es un `git pull`; una auditoría es un `git log` — y también una invariante a nivel de sustrato: cada afirmación publicada es un commit git firmado; el registro de divulgación es el historial de git; la postura de divulgación continua BCSC queda impuesta por la estructura del sustrato, no sólo por política.
+Esta inversión revierte el modelo tradicional de MediaWiki, donde la base de datos es canónica y el sistema de archivos es una copia de trabajo derivada. Aquí, el sistema de archivos es canónico y la base de datos (índice de búsqueda) es una copia de trabajo derivada. La motivación es la simplicidad operativa — una copia de seguridad del árbol de contenido es un `git clone`; una réplica es un `git pull`; una auditoría es un `git log` — y una invariante a nivel de sustrato: cada afirmación publicada es un commit git firmado; el registro de divulgación es el historial de git; la postura de divulgación continua BCSC queda impuesta por la estructura, no solo por política.
+
+### Flujos de trabajo que la inversión elimina
+
+De la inversión se derivan otros patrones. La wiki no tiene flujo de vista-previa-y-publicación porque el estado canónico es lo que ya se confirmó — un commit ya es una publicación. La wiki no tiene publicación programada por la misma razón. La wiki no tiene estado de borrador del lado del servidor porque los borradores viven en la copia de trabajo git del colaborador o en el pipeline editorial, no en una base de datos que el motor posea.
 
 ## Superficie de rutas
 
-El motor expone un conjunto acotado de rutas HTTP, cada una independiente y sin estado de sesión ni base de datos propia. Las rutas de la Fase 1 cubren el servidor básico y el renderizado de artículos; la Fase 1.1 añade el cromo Wikipedia; la Fase 2 introduce el editor CodeMirror 6 y el relé WebSocket para colaboración; la Fase 3 incluye búsqueda Tantivy, feeds de sindicación Atom y JSON Feed, sitemap, y el endpoint `/git/{slug}` para ingesta de markdown crudo. Las fases 4 a 8 están planificadas.
+El motor expone un conjunto acotado de rutas HTTP. Cada una es independiente; ninguna depende de estado de sesión ni de una base de datos que el motor posea.
 
-## Cromo de memoria muscular Wikipedia
+| Ruta | Propósito |
+|---|---|
+| `/healthz`, `/health` | Verificación de disponibilidad |
+| `/` | Página de índice (lista todos los artículos del árbol de contenido servido) |
+| `/wiki/{slug}` | HTML del artículo renderizado |
+| `/es/wiki/{slug}` | HTML del par en español renderizado |
+| `/category/{name}` | Página de categoría |
+| `/history/{slug}` | Historial de revisiones por artículo, leído directamente del log de git y mostrando el diff de cada revisión |
+| `/special/all-pages` | Índice completo de artículos |
+| `/special/recent-changes` | Artículos editados recientemente |
+| `/search?q=` | Resultados de búsqueda de texto completo (Tantivy) |
+| `/sitemap.xml` | Sitemap conforme a sitemaps.org |
+| `/robots.txt` | Descubrimiento para rastreadores |
+| `/feed.atom` | Feed de sindicación Atom RFC 4287[^5] |
+| `/llms.txt` | Convención llmstxt.org para rastreadores de LLM[^7] |
+| `/static/{*path}` | Activos estáticos (CSS, JS, fuentes) |
 
-El motor incluye un cromo deliberadamente reconocible para los lectores de Wikipedia. Los elementos preservados incluyen pestañas Artículo/Discusión, pestañas Leer/Editar/Ver historial, lápices de edición por sección, ordenación final del artículo (Referencias, Véase también, Categorías), notas hatnote, convención de primera oración en negrita, índice de contenidos plegable en el margen izquierdo, y selector de idioma.
+No existe editor en el navegador ni ruta de escritura — cada artículo se edita en su repositorio git de origen y se recoge en el siguiente renderizado, no a través del propio motor.
 
-Los añadidos más allá de Wikipedia incluyen insignias de citas junto a referencias `[citation-id]`, un banner de información prospectiva cuando el frontmatter del artículo establece `forward_looking: true`, y una banda de encabezado IVC de verificación (Phase 7 está planificada para añadir la maquinaria de verificación real).
+### Esquema JSON-LD del artículo
 
-## Superficie del editor
+El motor emite esquema JSON-LD `TechArticle`[^4] y `DefinedTerm` en el bloque `<head>` de cada artículo renderizado, para comprensión de motores de búsqueda y rastreadores. Los datos estructurados se generan a partir del frontmatter del artículo, no se redactan a mano por página; el esquema tiene la misma forma en todo el corpus.
 
-El editor de la wiki es una instancia de CodeMirror 6 empaquetada en el binario, servida en `/edit/{slug}`. Admite resaltado de sintaxis Markdown con numeración de línea, ajuste de línea configurable e historial de deshacer/rehacer, con escritura atómica en disco a través de `POST /edit/{slug}`.
+## Cromo de memoria muscular de Wikipedia
 
-### Funciones de edición conscientes del sustrato
+El motor incluye un cromo deliberadamente reconocible para cualquier lector de Wikipedia. Un lector de cualquier artículo de Wikipedia navegará el motor sin instrucciones previas, y un lector no familiarizado con Wikipedia adoptará el patrón rápidamente porque son convenciones bien documentadas.[^8]
 
-Tres funciones distinguen la implementación:
+### Convenciones conservadas de Wikipedia
 
-**Linter en tiempo real (Fase 2, Paso 4).** Siete reglas deterministas señalan problemas editoriales mientras se escribe, cada una con una autoridad citada en una tarjeta emergente. Las reglas cubren vocabulario prohibido, formulaciones prospectivas sin el banner cautelar correspondiente, verificaciones de disciplina BCSC y verificaciones de registro institucional. Las reglas son deterministas en el momento de edición; se prevé que la decodificación restringida estructurada en tiempo de inferencia endurezca estas reglas hasta convertirlas en garantías equivalentes a tiempo de compilación una vez que el Doorman de service-slm incorpore la integración de restricciones gramaticales.
+- Pestañas Artículo/Discusión en la parte superior de la página
+- Una pestaña Ver historial junto al par Artículo/Discusión, leída directamente del log de git del artículo
+- Orden de cierre del artículo: Referencias, Véase también, Categorías, con una banda de pie que nombra la licencia del artículo y el sustrato
+- Banda hatnote en la parte superior del artículo para desambiguación y referencias cruzadas
+- Convención de primera oración del lead (sujeto en negrita más cópula más definición)
+- Eslogan directamente bajo el título del artículo
+- Tabla de contenidos plegable en el margen izquierdo (construida desde encabezados H2 y H3)
+- Selector de idioma (actualmente inglés / español)
 
-**Autocompletado de citas (Fase 2, Paso 5).** Al pulsar `[` se activa un autocompletado que consulta el registro de citas del espacio de trabajo. El colaborador escribe `[ni-51` y la lista se reduce a `ni-51-102` (divulgación continua BCSC) más cualquier otra coincidencia. Seleccionar una entrada inserta la forma canónica `[citation-id]` y añade la cita a la lista `cites:` del frontmatter del artículo automáticamente.
+### Añadidos más allá de Wikipedia
 
-**Escalera de tres teclas para el Doorman (Fase 2, Paso 6 — stubs).** Tab abre una escalera de funciones "preguntar al Doorman" en la posición del cursor — buscar una cita, sugerir un objetivo de hatnote, generar un enlace de desambiguación, proponer un encabezado de sección. Estas devuelven stubs 501 en el binario v0.1.29; la Fase 4 está planificada para conectarlas al Doorman de service-slm.
+- Insignias de cita junto a referencias `[citation-id]` en línea, con tarjeta emergente que muestra la entrada del registro
+- Banner cautelar de Información Prospectiva cuando el frontmatter de un artículo establece `forward_looking: true`
+- Campo `disclosure_class` de BCSC expresado en los datos estructurados JSON-LD de cada artículo renderizado
+- Selector de densidad de lectura (compacto / cómodo; la preferencia persiste del lado del cliente)
 
-### Semántica de escritura atómica
+## Modelo de edición
 
-La semántica de escritura atómica del editor es conservadora: el motor escribe el contenido nuevo del archivo en una ruta temporal dentro del mismo directorio, ejecuta fsync y renombra sobre el destino. Una escritura fallida es visible para el colaborador y deja el contenido canónico intacto. Las ediciones concurrentes desde dos sesiones no colaborativas compiten en el paso de renombrado; la convención documentada es que gana la última escritura.
+No existe editor en el navegador, ni API de escritura, ni modelo de sesión colaborativa o de bloqueo — el motor es de solo lectura desde la perspectiva de un visitante. Un artículo se edita en su repositorio git de origen, mediante el flujo editorial normal que produce el commit, y el cambio aparece en el siguiente renderizado sin reinicio del servicio. El historial de revisiones que un lector ve en `/history/{slug}` es ese mismo log de git, leído directamente en lugar de duplicado en una base de datos aparte.
 
-## Búsqueda, feeds e ingesta
+## Búsqueda y sindicación
 
-El motor indexa el árbol de contenido al arrancar y de forma incremental en cada edición. El índice es Tantivy en disco (BM25 por defecto) en `<state-dir>/search/`, reconstruido desde el árbol de contenido si falta. El `IndexWriter` de Tantivy se mantiene en un `Arc<Mutex<>>` siguiendo el patrón habitual del crate, y se libera antes de recargar el lector para evitar la condición de carrera de recarga asíncrona.
+El motor indexa el árbol de contenido al arrancar. El índice es Tantivy en disco en `<state-dir>/search/`, reconstruido desde el árbol de contenido si falta.
 
-### Sindicación y descubrimiento por rastreadores
+### Sindicación y descubrimiento para rastreadores
 
-Tres formatos de sindicación presentan el corpus a los rastreadores:
-
-- **`/feed.atom`** — sindicación Atom RFC 4287. Cada artículo es una entrada del feed con `title`, `summary`, `published`, `updated` y la lista `cites:` del artículo resuelta contra el registro.
-- **`/feed.json`** — sindicación JSON Feed 1.1. Mismo contenido que el feed Atom; solo difiere el formato.
+- **`/feed.atom`** — feed de sindicación Atom RFC 4287 del corpus.
 - **`/sitemap.xml`** — conforme a sitemaps.org. Enumera cada URL de artículo con su fecha de última modificación.
+- **`/robots.txt`** y **`/llms.txt`** — archivos de descubrimiento para rastreadores y rastreadores de LLM[^7].
 
-Dos archivos de descubrimiento para rastreadores completan la superficie: **`/robots.txt`** y **`/llms.txt`**. La ruta `/git/{slug}` sirve el código fuente Markdown crudo. Un rastreador o un futuro par de federación puede ingerir el árbol de contenido siguiendo `/llms.txt` para descubrir la lista de artículos y luego consultando `/git/{slug}` para cada fuente de artículo. La ruta acepta un sufijo `.md` opcional para las herramientas que esperan que las URL de Markdown terminen en `.md`.
+## Superficie de compatibilidad nativa del sustrato
 
-## Colaboración en tiempo real
+El motor es una wiki nativa del sustrato, no un shim de MediaWiki. Esto refleja decisiones arquitectónicas tomadas durante el desarrollo temprano de la plataforma.
 
-El motor admite opcionalmente la edición colaborativa en tiempo real mediante el CRDT Yjs. La función está desactivada por defecto tras el indicador de línea de comandos `--enable-collab`; el despliegue de producción en v0.1.29 no la activa.
+### Superficies de MediaWiki conservadas y descartadas
 
-### Relé de paso, no un servidor Yjs
+Lo que se conservó: la **ruta de importación `xml-dump`** para migración de corpus única; las **convenciones de URL** (`/wiki/{slug}`); la **sintaxis de wikilink** (`[[slug]]` y `[[slug|texto]]`); la **sintaxis de nota al pie** (`[^1]`).
 
-La implementación sigue la inversión de la fuente de verdad: **el servidor es un relé WebSocket de paso, no un servidor Yjs**. El estado del documento Yjs nunca reside en el servidor. El relé es una sala `tokio::sync::broadcast` ligera por slug con un búfer de rezago de 256 mensajes; los clientes envían paquetes de actualización Yjs, el servidor los reenvía a los demás clientes de la sala, y la persistencia fluye a través de la ruta de guardado existente `POST /edit/{slug}` en un guardado deliberado. Cuando todos los clientes abandonan la sala, esta se cierra y cualquier estado CRDT sin guardar se descarta.
+Lo que se descartó: el **shim de la Action API de MediaWiki** — el shim se limitó en v0.1.10 y se retiró en v0.1.14, porque el mantenimiento escala con la velocidad de MediaWiki y la auditoría de cumplimiento escala con la superficie de la API. La superficie nativa del sustrato (HTML de artículo, JSON-LD, Atom, sitemap, llms.txt, búsqueda vía `/search?q=`) cubre los mismos casos de uso sin una interfaz autoritativa paralela que exija mantenimiento aparte. Las **plantillas y funciones de parser de MediaWiki** se descartaron porque la ruta de renderizado del motor es CommonMark con extensiones propias de PointSav, no un parser de MediaWiki. El **ecosistema pywikibot** se descartó porque la ruta de automatización del sustrato es el conjunto de herramientas del espacio de trabajo ya existente, no el framework pywikibot.
 
-Un documento Yjs de larga duración en el servidor crearía un registro canónico paralelo que se desviaría de git, complicaría la auditoría y entraría en conflicto con la postura de divulgación BCSC. El relé de paso mantiene a git como canónico y al CRDT como efímero de sesión.
+### Superficie más estrecha, postura coherente
 
-### Paquete de cliente de carga diferida
+El compromiso es una superficie de compatibilidad más estrecha a cambio de una postura coherente con el sustrato. Un lector que migra desde un despliegue de MediaWiki pierde plantillas y la Action API; gana inversión de la fuente de verdad, renderizado determinista, postura de divulgación fundamentada en BCSC y una superficie de ataque menor.
 
-El cliente carga de forma diferida `cm-collab.bundle.js` (302 KB) solo cuando la plantilla establece el indicador `window.WIKI_COLLAB_ENABLED` desde el servidor, de modo que los despliegues de producción sin `--enable-collab` nunca cargan JavaScript de Yjs. Una prueba manual de humo con dos clientes (dos navegadores editando el mismo artículo, viendo los cursores del otro) es la vía de homologación actual para la experiencia visual de renderizado de cursores — una propiedad incómoda de verificar mediante programación.
+Un artículo hermano aparte ([[substrate-native-compatibility]]) cubre la justificación completa.
 
 ## Federación de contenido
 
-El motor está planificado para servir contenido desde múltiples repositorios git a través de una única superficie renderizada, mediante un manifiesto declarativo de montaje (`knowledge.toml`) que el operador coloca en la raíz del directorio de contenido. Cada entrada de montaje nombra un repositorio fuente, una ruta de montaje local y un plano — el esquema que determina cómo se validan, enrutan y enlazan los archivos en ese montaje. Esta capacidad está planificada; la arquitectura descrita aquí es el diseño previsto, y el modelo de repositorio único es la forma actualmente desplegada.
+El motor está pensado para servir contenido desde múltiples repositorios git a través de una única superficie renderizada, mediante un manifiesto de montaje declarativo (`knowledge.toml`) que el operador coloca en la raíz del directorio de contenido. Cada entrada de montaje nombra un repositorio de origen, una ruta de montaje local y un plano — el esquema que determina cómo se validan, enrutan y enlazan los archivos de ese montaje. Esta capacidad está planificada; la arquitectura aquí descrita es el diseño previsto, y el modelo de un solo repositorio es la forma actualmente desplegada.
 
 ### Montajes y esquemas de plano
 
-Los montajes son subárboles de directorio derivados de repositorios git nombrados. Los planos son esquemas nombrados que restringen el contenido que puede contener un montaje y determinan el patrón de URL que ocupa. Dos planos son integrados: `topic` (el artículo wiki estándar) y `guide` (documentos operacionales, renderizados con un cromo diferenciado y excluidos del índice de artículos principal). Los operadores podrán registrar planos adicionales — `regional-market`, `adr`, `changelog` y esquemas especializados similares — como complementos cuando la Fase 6 esté disponible.
+Un montaje de contenido es un subárbol de directorio derivado de un repositorio git nombrado. Los planos son esquemas nombrados que restringen el contenido que un montaje puede contener y determinan el patrón de URL que ocupa. Dos planos vienen integrados: `topic` (el artículo wiki estándar) y `guide` (documentos operativos, renderizados con un cromo distinto y excluidos del índice de artículos principal). Los operadores podrán registrar planos adicionales — `regional-market`, `adr`, `changelog` y esquemas específicos de dominio similares — como complementos cuando la Fase 6 esté disponible.
 
-### Aislamiento por instancia y procedencia
+### Aislamiento por instancia
 
-Cada instancia wiki lee sólo los montajes que declara su propio `knowledge.toml`. La configuración de montaje es por instancia, no estado de registro global. Cada artículo renderizado desde un montaje declarativo lleva metadatos de procedencia que identifican el repositorio fuente y la ruta, con enrutamiento de edición de vuelta al repositorio fuente canónico — manteniendo intacta la inversión de la fuente de verdad en toda la superficie federada.
+Cada instancia wiki lee solo los montajes declarados en su propio `knowledge.toml`. Un despliegue de `documentation.pointsav.com` y uno de `projects.woodfinegroup.com` pueden tomar de repositorios superpuestos pero presentar superficies de artículo completamente independientes — las definiciones de montaje son configuración por instancia, no estado de registro global.
 
-La Fase 6 está planificada para entregar la especificación del esquema `knowledge.toml` y la API de plugin de planos. La Fase 7 está planificada para la recuperación con direccionamiento por contenido y la federación anclada en `blake3`. Véase [[federation-via-content-mounts]] para el patrón en profundidad.
+### Procedencia
 
-## Inventario de inventos
+Cada artículo renderizado desde un montaje declarativo lleva frontmatter de procedencia que identifica el repositorio de origen y la ruta. Puesto que el motor no tiene superficie de escritura propia, esto mantiene intacta la inversión de la fuente de verdad en toda una superficie federada por construcción: ninguna instancia wiki puede escribir a un repositorio del que no es originaria, porque ninguna instancia wiki escribe a ningún repositorio.
 
-`INVENTIONS.md` en la raíz del crate cataloga ocho inventos específicos del motor (conteo a la fecha de v0.1.29): inversión de la fuente de verdad, compatibilidad nativa del sustrato, Autor Constitucionalmente Restringido (CCA), Cita de Verificabilidad de Información (IVC, planificado Fase 7), Prestaciones Autorizadas por el Sustrato (SAA), esquema de URL `verify://` (planificado Fase 7), el relé WebSocket de paso, y el conjunto de superficie API nativa del sustrato.
+La Fase 6 está planificada para entregar la especificación del esquema `knowledge.toml`, la API de complementos de plano y el manejo del frontmatter de procedencia. La Fase 7 está planificada para entregar recuperación con direccionamiento por contenido y federación anclada en `blake3`. Véase [[federation-via-content-mounts]] para el patrón en profundidad.
 
-## Trayectoria de fases de construcción
+## Estado de construcción
 
-A fecha de 2026-04-27, el motor está al final de la Fase 3. Las Fases 1, 1.1, 2 y 3 están implementadas. Las Fases 4 a 8 están *planificadas*; aplica lenguaje cautelar conforme a [ni-51-102] y [osc-sn-51-721]. Los cambios materiales al plan de construcción se registran en los documentos de planificación de fase y en el `CHANGELOG.md` del espacio de trabajo.
+El motor está desplegado y sirviendo `documentation.pointsav.com` hoy: el renderizado, los wikilinks, las páginas de categoría, el historial por artículo, la búsqueda y la superficie de sindicación/rastreadores anterior están todos en producción. No existe editor, ni API de escritura, ni superficie de edición colaborativa — el único camino de un artículo hacia la publicación es un commit a su repositorio git de origen, leído por el motor en el siguiente renderizado.
 
 ## Véase también
 
-- [[source-of-truth-inversion]] — el patrón canónico / vista / efímero generalizado
-- [[substrate-native-compatibility]] — la decisión de eliminar el shim de la Action API
-- [[collab-via-passthrough-relay]] — la implementación del relé WebSocket
+- [[source-of-truth-inversion]] — el patrón canónico / vista / efímero generalizado en el sustrato
+- [[substrate-native-compatibility]] — la justificación de retirar la Action API y el conjunto de superficie nativa del sustrato
 - [[wikipedia-leapfrog-design]] — la filosofía de diseño de memoria muscular y margen leapfrog del 95%/5%
 - [[knowledge-wiki-home-page-design]] — la intención de diseño de la página de inicio y la estructura de espacios
 - [[deploy-knowledge-instance]] — guía paso a paso: compilar e iniciar app-mediakit-knowledge apuntando a un repositorio de contenido local
