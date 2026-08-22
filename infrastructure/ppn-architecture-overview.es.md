@@ -4,6 +4,7 @@ title: "Descripción General de la Arquitectura PPN"
 slug: ppn-architecture-overview
 short_description: "Plano de infraestructura física del stack PointSav, que incorpora nodos a una malla autenticada criptográficamente y aloja las máquinas virtuales de la flota."
 category: infrastructure
+index_group: compute-and-vm-fabric
 type: topic
 content_type: topic
 status: active
@@ -27,7 +28,7 @@ La capa del operador es donde un administrador humano interactúa con la flota.
 
 **`os-network-admin`** es la capa Foundation OS — el plano de control para la malla PPN. Se ejecuta en la máquina del operador (bare metal o contenedor LXC), gestiona la distribución del mapa de pares, y aplica las reglas del Diodo que restringen el flujo de comandos. No posee autoridad criptográfica: no puede leer datos de archivos, no puede aprobar el acceso a datos, y no puede emitir credenciales de identidad. Su rol es conocer qué nodos físicos están en la malla y hacer cumplir esa membresía — nada más.
 
-**`app-network-admin`** es la interfaz del Terminal F8 que se ejecuta sobre `os-network-admin`. Acepta la intención del operador en lenguaje natural en el puerto HTTP 8085, la enruta a través de `service-slm` para producir un comando binario de 16 bytes autorizado, y transmite ese comando por UDP en el puerto 8090 a la malla.
+**`app-network-admin`** es la interfaz del Terminal F8. Acepta la intención del operador en lenguaje natural en el puerto HTTP 8085, la enruta a través de `service-slm` para producir un comando binario de 16 bytes autorizado, y transmite ese comando por UDP en el puerto 9206 a la malla. `os-network-admin` en sí es un sondeador de aprobación de emparejamiento de unión de nodos aparte y minimalista — no tiene lógica propia de difusión de malla.
 
 Ver: [[os-network-admin]], [[ppn-command-protocol]]
 
@@ -45,7 +46,7 @@ El **[[genesis-protocol|Protocolo Génesis]]** gobierna el primer arranque: un n
 
 La capa de hipervisor es el sustrato de cómputo.
 
-**`os-infrastructure`** es la capa de hipervisor que aloja las máquinas virtuales que ejecutan Totebox Archives y pasarelas de orquestación (QEMU/KVM hoy; **previsto** para convertirse en un hipervisor de metal desnudo de Tipo I bajo NetBSD/NVMM en la Fase 2 y seL4/Microkit en la Fase 3). Gestiona un **pool de recursos por nodo**: memoria mediante `virtio_balloon` (la inflación recupera la RAM del invitado en el pool del nodo; la deflación la devuelve) y CPU mediante `cpu.weight` de cgroups v2 por proceso QEMU.
+**`os-infrastructure`** es la capa de hipervisor planificada, prevista para alojar las máquinas virtuales que ejecutan Totebox Archives y pasarelas de orquestación (QEMU/KVM para empezar; un hipervisor de metal desnudo de Tipo I bajo NetBSD/NVMM en la Fase 2, seL4/Microkit en la Fase 3). Está diseñada para gestionar un **pool de recursos por nodo** — memoria mediante `virtio_balloon`, CPU mediante `cpu.weight` de cgroups v2 por proceso QEMU — pero ningún mecanismo está construido todavía: el código real de `os-infrastructure` es un stub Multiboot2 de metal desnudo con salida de texto por framebuffer y un handshake mDNS de génesis, sin lógica de pooling de recursos. `os-orchestration`, descrito en otra parte de este artículo como un agregador sin estado, es igualmente un scaffold de 2 líneas hoy, no un sistema en funcionamiento.
 
 El pool está acotado al nodo físico. La colocación de cargas de trabajo entre nodos es responsabilidad de la capa de Orquestación de Totebox; una vez que una VM se coloca en un nodo, el hipervisor gestiona su asignación de recursos local.
 
@@ -97,7 +98,7 @@ Esta separación es intencional: el plano de control de red y el plano de acceso
 
 - [[sovereign-mesh]] — superposición WireGuard, protocolo de comandos binarios de 16 bytes, topología hub-spoke
 - [[genesis-protocol]] — secuencia de arranque autónomo en primer arranque, ensamblaje de flota diferido
-- [[ppn-command-protocol]] — el formato de cable binario de 16 bytes transmitido por UDP en el puerto 8090
+- [[ppn-command-protocol]] — el formato de cable binario de 16 bytes transmitido por UDP en el puerto 9206
 - [[service-pointsav-link]] — adaptador conectable en caliente que conecta nodos os-* a la flota
 - [[os-network-admin]] — capa Foundation OS, autoridad criptográfica nula, ceremonia de unión de nodos
 - [[ppn-hypervisor-resource-pool]] — virtio_balloon por nodo + planificación de vCPU

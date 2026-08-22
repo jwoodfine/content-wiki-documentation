@@ -4,6 +4,7 @@ title: "PPN architecture overview"
 slug: ppn-architecture-overview
 short_description: "Physical infrastructure plane of the PointSav stack, enrolling nodes into a cryptographically authenticated mesh and hosting the fleet's virtual machines."
 category: infrastructure
+index_group: compute-and-vm-fabric
 type: topic
 content_type: topic
 status: active
@@ -26,7 +27,7 @@ The operator layer is where a human administrator interacts with the fleet.
 
 **`os-network-admin`** is the Foundation OS layer — the control plane for the PPN mesh. It runs on the operator's machine (bare metal or LXC container), manages peer-map distribution, and enforces the Diode rules that restrict command flow. It holds zero cryptographic authority: it cannot read archive data, it cannot approve data access, and it cannot issue identity credentials. Its role is to know which physical nodes are on the mesh and to enforce that membership — nothing more.
 
-**`app-network-admin`** is the F8 Terminal interface that runs on top of `os-network-admin`. It accepts plain-language operator intent at HTTP port 8085, routes it through `service-slm` to produce an authorised 16-byte binary command, and broadcasts that command over UDP port 8090 to the mesh.
+**`app-network-admin`** is the F8 Terminal interface. It accepts plain-language operator intent at HTTP port 8085, routes it through `service-slm` to produce an authorised 16-byte binary command, and broadcasts that command over UDP port 9206 to the mesh. `os-network-admin` itself is a separate, minimal node-join pairing-approval poller — it carries no mesh-broadcast logic of its own.
 
 See: [[os-network-admin]], [[ppn-command-protocol]]
 
@@ -44,7 +45,7 @@ The **[[genesis-protocol]]** governs first boot: a node generates its keypair fr
 
 The hypervisor layer is the compute substrate.
 
-**`os-infrastructure`** is the hypervisor layer that hosts the virtual machines running Totebox Archives and orchestration gateways (QEMU/KVM-hosted today; **intended** to become a bare-metal Type-I hypervisor under NetBSD/NVMM in Phase 2 and seL4/Microkit in Phase 3). It manages a **per-node resource pool**: memory via `virtio_balloon` (inflation reclaims guest RAM into the node pool; deflation returns it) and CPU via cgroups v2 `cpu.weight` per QEMU process. (Correction, 2026-08-02, verified against canonical `origin/main`: no `virtio_balloon` or cgroups/`cpu.weight` code exists anywhere in `os-infrastructure` or `service-vm-fleet` — real `os-infrastructure/src/main.rs` is a bare-metal Multiboot2 boot stub doing framebuffer text + mDNS genesis handshake, with zero resource-pooling logic. Separately, `os-orchestration` — described elsewhere in this article as a stateless aggregator — is a 2-line placeholder scaffold on canonical, matching the finding on [[os-orchestration-stateless-hub]]. Flagged, not resolved.)
+**`os-infrastructure`** is the planned hypervisor layer, intended to host the virtual machines running Totebox Archives and orchestration gateways (QEMU/KVM to start; a bare-metal Type-I hypervisor under NetBSD/NVMM in Phase 2, seL4/Microkit in Phase 3). It is designed to manage a **per-node resource pool** — memory via `virtio_balloon`, CPU via cgroups v2 `cpu.weight` per QEMU process — but neither mechanism is built yet: the real `os-infrastructure` boot code is a bare-metal Multiboot2 stub doing framebuffer text output and an mDNS genesis handshake, with no resource-pooling logic. `os-orchestration`, described elsewhere in this article as a stateless aggregator, is similarly a 2-line placeholder scaffold today, not a running system.
 
 The pool is bounded to the physical node. Cross-node workload placement is the Totebox Orchestration layer's responsibility; once a VM is placed on a node, the hypervisor manages its local resource allocation.
 
@@ -96,7 +97,7 @@ This separation is intentional: the network control plane and the data access pl
 
 - [[sovereign-mesh]] — WireGuard overlay, 16-byte binary command protocol, hub-spoke topology
 - [[genesis-protocol]] — autonomous first-boot bootstrap sequence, deferred fleet assembly
-- [[ppn-command-protocol]] — the 16-byte binary wire format broadcast over UDP port 8090
+- [[ppn-command-protocol]] — the 16-byte binary wire format broadcast over UDP port 9206
 - [[service-pointsav-link]] — hot-pluggable adapter connecting os-* nodes to the fleet
 - [[os-network-admin]] — Foundation OS layer, zero crypto authority, node-join ceremony
 - [[ppn-hypervisor-resource-pool]] — per-node virtio_balloon + vCPU scheduling
