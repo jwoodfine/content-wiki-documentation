@@ -12,7 +12,7 @@ audience: vendor-public
 bcsc_class: forward-looking
 language: es
 language_protocol: TRANSLATE-ES
-last_edited: 2026-08-06
+last_edited: 2026-08-22
 editor: pointsav-engineering
 short_description: "El Estándar del Diodo es la regla de diseño según la cual los comandos y los datos circulan en una sola dirección, de la autoridad al sujeto. Varios mecanismos reales la cumplen; ningún componente la aplica como estándar con nombre propio."
 paired_with: diode-standard.md
@@ -94,7 +94,7 @@ como regla.
 ### Promoción direccional del código
 
 La aplicación más estricta de la plataforma recae sobre el código fuente, no sobre los datos en
-ejecución. La promoción (`bin/promote.sh`) discurre en una sola dirección — desde los espejos de
+ejecución. El paso de promoción discurre en una sola dirección — desde los espejos de
 staging, al repositorio canónico, a los espejos de servicio locales — y el script rechaza activamente
 el caso inverso: solo permite envíos de avance rápido o reproducciones explícitas commit a commit
 sobre la rama canónica, bloquea la divergencia real del historial, bloquea las eliminaciones masivas
@@ -109,10 +109,9 @@ ejecución que describe el estándar.
 Descripciones anteriores de este estándar nombraban un componente aplicador concreto: un pequeño
 servicio de enlace conectable en caliente, ausente por omisión e instalable por el operador, que
 sería el único código encargado de traducir los comandos de la autoridad en operaciones ejecutables
-por el sujeto. Una búsqueda directa en el árbol de código canónico confirma que no existe en ninguna
-parte ningún paquete con ese nombre, bajo ninguno de los dos nombres empleados anteriormente. Una
-búsqueda en todo el corpus de ambas cadenas, y de «Diode» o «DiodeStandard» en código Rust, no
-devuelve nada fuera de la documentación referida al propio asunto de este artículo.
+por el sujeto. No existe ningún paquete con ese nombre, bajo ninguno de los dos nombres empleados
+anteriormente, en ninguna parte del código de la plataforma, y ni «Diode» ni «DiodeStandard»
+aparecen en el código Rust fuera de la documentación referida al propio asunto de este artículo.
 
 El único paquete con un nombre parecido es un marcador de posición de siete líneas cuya única
 función devuelve una cadena de verificación de andamiaje y cuya lista de dependencias está vacía. No

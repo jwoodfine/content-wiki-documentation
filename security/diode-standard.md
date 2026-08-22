@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: forward-looking
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-03
+last_edited: 2026-08-22
 editor: pointsav-engineering
 short_description: "The Diode Standard is the design rule that command and data flow in one direction only, from authority to subject. Several real mechanisms follow it; no component enforces it as a named standard."
 paired_with: diode-standard.es.md
@@ -87,8 +87,8 @@ directionality as a rule.
 
 ### Directional code promotion
 
-The strongest enforcement in the platform is over source code rather than runtime data. Promotion
-(`bin/promote.sh`) runs in one direction only — from staging mirrors, to the canonical repository,
+The strongest enforcement in the platform is over source code rather than runtime data. The
+promotion step runs in one direction only — from staging mirrors, to the canonical repository,
 to local service mirrors — and the script actively refuses the reverse case: it permits only
 fast-forward pushes or explicit commit-by-commit replays onto the canonical branch, blocks true
 history divergence, blocks mass deletions above a threshold, blocks patterns that would silently
@@ -101,11 +101,10 @@ runtime command path the standard describes.
 
 Earlier descriptions of this standard named a specific enforcing component — a small,
 hot-pluggable link service, absent by default and installable by the operator, that would be the
-only code translating authority commands into subject-executable operations. Direct search of the
-canonical source tree confirms that no package of that name, under either of the two names
-previously used, exists anywhere. A corpus-wide search for both strings, and for "Diode" or
-"DiodeStandard" in Rust source, returns nothing outside documentation about this article's own
-subject.
+only code translating authority commands into subject-executable operations. No package under
+either of the two names previously used exists anywhere in the platform's source, and neither
+"Diode" nor "DiodeStandard" appears anywhere in the Rust source outside documentation about this
+article's own subject.
 
 The one package with a similar-sounding name is a seven-line placeholder whose single function
 returns a scaffold-verification string and whose dependency list is empty. It contains no
