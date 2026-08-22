@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Component recipes vs. raw tokens"
 slug: component-recipes-vs-raw-tokens
-short_description: "What the PointSav Design System's component tier adds beyond a token value: the recipe.json format — variants, markup, token references, CSS, ARIA guidance, and WCAG targets in one machine-readable artifact — demonstrated against the shipped Button recipe and the registry's real two-tier documentation state (37 components: 20 fully documented, 17 recipe-only)."
+short_description: "What the PointSav Design System's component tier adds beyond a token value: the recipe.json format — variants, markup, token references, CSS, ARIA guidance, and WCAG targets in one machine-readable artifact — demonstrated against the shipped Button recipe and the registry's real documentation state (53 components: 20 fully documented, 33 with a recipe plus at least a usage document)."
 category: design-system
 type: topic
 content_type: topic
@@ -78,9 +78,11 @@ including the states a value-only view omits: hover, active, disabled, and
 **The accessibility contract.** An `aria` field states screen-reader
 guidance in prose — native button role, `aria-label` for icon-only use, and
 the rule that destructive actions must not be one click from completion. A
-structured `wcag` block declares the target (2.2 AAA), focus visibility,
-the text-contrast floor (at least 7:1 for the primary variant), and the
-44-by-44 minimum touch target.
+structured `wcag` block declares the target (2.2 AA, AAA where
+achievable), focus visibility, the real per-variant contrast figures — 6.66:1
+for the primary variant, which passes AA but not the 7:1 AAA floor, and
+7.33:1 for the critical variant, which clears both — and the 44-by-44
+minimum touch target.
 
 **Provenance links.** `research_links` points at the design-rationale
 documents behind the component, and `registry_dependencies` declares what
@@ -93,26 +95,22 @@ cannot disagree about a value.
 
 ## Two documentation tiers, one registry
 
-The registry currently holds 37 components, and they are not uniformly
+The registry currently holds 53 components, and they are not uniformly
 documented. Twenty carry the full five-file set — the recipe plus four
 human-facing documents covering usage, style, code, and accessibility.
-Seventeen carry a recipe.json only. The components reference presents the
-split honestly, as two labeled groups, rather than presenting 37 uniformly
+The rest are not bare data, either: 30 carry the recipe plus a usage
+document, and 3 carry the recipe plus a bilingual usage pair — every
+component in the registry ships at least one prose document alongside its
+recipe, not just the machine-readable artifact. The components reference
+presents this as three labeled tiers rather than pretending 53 uniformly
 finished entries.
 
-**Correction (2026-08-02):** 2 of these 3 numbers are stale. The real registry
-(`dtcg-vault/components/`) currently holds **49** components, not 37 — the
-"20 with the full five-file set" figure is still correct, but the recipe-only
-count is **29**, not 17. Notably, `pointsav-design-system`'s own commit
-history shows an earlier internal correction from "17 generic" down to "8" —
-this article's "17" doesn't match either that corrected figure or the current
-real count. **Flagged, not resolved.**
-
-The two-tier state is a fact about sequencing, and the recipe's role in it
-is the point: the recipe is the floor. A recipe-only component is already
-machine-consumable — its markup, tokens, CSS, and WCAG block exist — while
-its human-facing documentation is still owed. The inverse (prose
-documentation with no data artifact) is not a state the registry permits.
+The tiered state is a fact about sequencing, and the recipe's role in it
+is the point: the recipe is the floor. Every component is already
+machine-consumable at minimum — its markup, tokens, CSS, and WCAG block
+exist — while the remaining style and code documentation is owed for
+33 of the 53. The inverse (prose documentation with no data artifact) is
+not a state the registry permits.
 
 ## Prior art: the component tier is well established
 
@@ -149,14 +147,13 @@ system must say which of the two it means; this one has.
 ## Scope and honest limits
 
 The worked example is one component, and the registry census is a snapshot
-dated to this article's writing — the 37/20/17 split will change as
-recipe-only components gain their documentation sets. An earlier draft of
+dated to this article's writing — the tier split will change as
+components gain their remaining documentation sets. An earlier draft of
 this article flagged a description/variants-array mismatch in the shipped
 Button recipe (the description once named a fifth "link" variant not
 present in the `variants` array); that mismatch has since been corrected
-at the source (`dtcg-vault/components/button/recipe.json` now describes
-four variants and explains the prior miscount), verified directly against
-the file before publication — no open inconsistency remains. The recipe
+at the source, which now describes four variants and explains the prior
+miscount — no open inconsistency remains. The recipe
 schema is versioned (`component-recipe-v1`), and nothing in this article
 should be read as a compatibility promise for future schema versions.
 

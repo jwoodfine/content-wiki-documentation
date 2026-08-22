@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Recetas de componentes frente a tokens en bruto"
 slug: component-recipes-vs-raw-tokens
-short_description: "Qué añade el nivel de componentes del Sistema de Diseño PointSav más allá del valor de un token: el formato recipe.json — variantes, marcado, referencias de tokens, CSS, guía ARIA y objetivos WCAG en un solo artefacto legible por máquina — demostrado contra la receta publicada del componente Button y el estado documental real de dos niveles del registro (37 componentes: 20 con documentación completa, 17 solo con receta)."
+short_description: "Qué añade el nivel de componentes del Sistema de Diseño PointSav más allá del valor de un token: el formato recipe.json — variantes, marcado, referencias de tokens, CSS, guía ARIA y objetivos WCAG en un solo artefacto legible por máquina — demostrado contra la receta publicada del componente Button y el estado documental real del registro (53 componentes: 20 con documentación completa, 33 con receta más al menos un documento de uso)."
 category: design-system
 type: topic
 content_type: topic
@@ -86,8 +86,10 @@ y un desplazamiento de 2 píxeles.
 para lectores de pantalla — rol de botón nativo, `aria-label` para uso de
 solo icono, y la regla de que las acciones destructivas no deben quedar a
 un clic de completarse. Un bloque `wcag` estructurado declara el objetivo
-(2.2 AAA), la visibilidad del foco, el piso de contraste de texto (al menos
-7:1 para la variante primaria) y el objetivo táctil mínimo de 44 por 44.
+(2.2 AA, con AAA donde sea alcanzable), la visibilidad del foco, las cifras
+reales de contraste por variante —6,66:1 para la primaria, que aprueba AA
+pero no el piso de 7:1 de AAA, y 7,33:1 para la crítica, que alcanza
+ambos— y el objetivo táctil mínimo de 44 por 44.
 
 **Enlaces de procedencia.** `research_links` apunta a los documentos de
 fundamentación de diseño detrás del componente, y `registry_dependencies`
@@ -101,18 +103,22 @@ referencia, de modo que los dos niveles no pueden discrepar sobre un valor.
 
 ## Dos niveles documentales, un registro
 
-El registro contiene actualmente 37 componentes, y no están documentados de
+El registro contiene actualmente 53 componentes, y no están documentados de
 manera uniforme. Veinte portan el juego completo de cinco archivos — la
 receta más cuatro documentos de cara humana que cubren uso, estilo, código
-y accesibilidad. Diecisiete portan únicamente un recipe.json. La referencia
-de componentes presenta la división con honestidad, como dos grupos
-etiquetados, en lugar de presentar 37 entradas uniformemente terminadas.
+y accesibilidad. Tampoco el resto son puro dato: 30 portan la receta más un
+documento de uso, y 3 portan la receta más un par de uso bilingüe — todo
+componente del registro distribuye al menos un documento en prosa junto a
+su receta, no solo el artefacto legible por máquina. La referencia de
+componentes presenta esto como tres niveles etiquetados, en lugar de
+fingir 53 entradas uniformemente terminadas.
 
-El estado de dos niveles es un hecho de secuenciación, y el papel de la
-receta en él es la clave: la receta es el piso. Un componente de solo-receta
-ya es consumible por máquina — su marcado, sus tokens, su CSS y su bloque
-WCAG existen — mientras su documentación de cara humana sigue pendiente. El
-estado inverso (documentación en prosa sin artefacto de datos) no es un
+El estado escalonado es un hecho de secuenciación, y el papel de la receta
+en él es la clave: la receta es el piso. Todo componente ya es consumible
+por máquina en el mínimo — su marcado, sus tokens, su CSS y su bloque WCAG
+existen — mientras la documentación de estilo y código restante sigue
+pendiente para 33 de los 53. El estado inverso (documentación en prosa sin
+artefacto de datos) no es un
 estado que el registro permita.
 
 ## Antecedentes: el nivel de componentes está bien establecido
@@ -152,15 +158,14 @@ decir a cuál de las dos se refiere; esta lo ha hecho.
 ## Alcance y límites honestos
 
 El ejemplo trabajado es un solo componente, y el censo del registro es una
-instantánea fechada al momento de redactar este artículo — la división
-37/20/17 cambiará a medida que los componentes de solo-receta obtengan sus
-juegos de documentación. Un borrador anterior de este artículo señaló una discrepancia entre la
+instantánea fechada al momento de redactar este artículo — la división por
+niveles cambiará a medida que los componentes obtengan la documentación
+que les falta. Un borrador anterior de este artículo señaló una discrepancia entre la
 descripción y el arreglo de variantes en la receta publicada del Button (la
 descripción nombraba una quinta variante "link" ausente del arreglo
-`variants`); esa discrepancia ya se corrigió en la fuente
-(`dtcg-vault/components/button/recipe.json` ahora describe cuatro variantes
-y explica el conteo erróneo anterior), verificado directamente contra el
-archivo antes de la publicación — no queda ninguna inconsistencia abierta.
+`variants`); esa discrepancia ya se corrigió en la fuente, que ahora
+describe cuatro variantes y explica el conteo erróneo anterior — no queda
+ninguna inconsistencia abierta.
 El esquema de recetas está versionado (`component-recipe-v1`), y nada en
 este artículo debe leerse como una promesa de compatibilidad para versiones
 futuras del esquema.
