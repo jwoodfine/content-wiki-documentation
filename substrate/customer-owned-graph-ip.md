@@ -24,19 +24,9 @@ Every node, edge, mutation, and [[worm-ledger-architecture|audit-ledger entry]] 
 
 Ownership carries four operational properties:
 
-**Export at any time.** The operator may run a single export command to produce a complete bundle: the graph, the audit ledger, the per-tenant adapters, and the seed taxonomy. This is a routine operation, not a legal or contractual event requiring vendor involvement.
+**Export at any time.** The design commits to a single export command producing a complete bundle: the graph, the audit ledger, the per-tenant adapters, and the seed taxonomy — a routine operation, not a legal or contractual event requiring vendor involvement. The export command itself is not yet built; it's a planned near-term capability, not an optional one.
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** this
-export mechanism does not exist yet. `export_bundle` appears only as an
-unimplemented Phase-3d line item in `service-content/ARCHITECTURE.md`'s
-planning table — a corpus-wide grep for `export_bundle`/`fn export` returns
-zero implementation hits anywhere in the monorepo. This is a real,
-commercially consequential customer-trust claim presented as routine current
-fact when it is a planned capability. **Flagged, not resolved — this is the
-kind of claim that warrants hedging to planned/intended language, not a
-line-level fix.**
-
-**No format lock-in.** The export bundle uses open formats: a Cypher dump for the graph, JSONL for the audit ledger, and standard tensor formats for the adapter weights. The bundle is importable into any compatible system.
+**No format lock-in.** The export bundle is designed around open formats: a Cypher dump for the graph, JSONL for the audit ledger, and standard tensor formats for the adapter weights, importable into any compatible system.
 
 **No aggregate license.** The platform does not retain rights to use the customer's data to train cross-tenant models without explicit per-tenant consent.
 
@@ -46,7 +36,7 @@ line-level fix.**
 
 Most enterprise software platforms shape customer data to the vendor's ontology. When a customer attempts to leave, the data must be re-shaped to fit whatever system they are moving to — a migration project that typically requires vendor cooperation and specialist staff.
 
-The platform's approach inverts this. The customer's data is shaped by their own seed taxonomy (see [[seed-taxonomy-as-smb-bootstrap]]). Export is a single-command operation producing an open-format bundle. The customer's access to their data does not depend on the platform's servers remaining operational — a core property of [[customer-hostability]].
+The platform's approach inverts this. The customer's data is shaped by their own seed taxonomy (see [[seed-taxonomy-as-smb-bootstrap]]), designed for single-command export to an open-format bundle. The customer's access to their data does not depend on the platform's servers remaining operational — a core property of [[customer-hostability]].
 
 The economic complement is the transaction-fee pricing model (see [[direct-payment-settlement]]): the customer pays a platform fee only when they earn from their data, not a recurring subscription for access to their own records.
 

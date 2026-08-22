@@ -23,13 +23,13 @@ La **Propiedad Intelectual del Grafo del Cliente** es el principio por el cual e
 
 Cada nodo, arista, mutación y [[worm-ledger-architecture|entrada del registro de auditoría]] con alcance en el identificador de módulo de un inquilino es propiedad de ese inquilino. La plataforma no tiene derecho a agregar, revender ni usar los datos del grafo del inquilino fuera de los consentimientos explícitos por inquilino definidos en la arquitectura de la plataforma.
 
-La propiedad conlleva cuatro propiedades operacionales: exportación en cualquier momento mediante un único comando que produce un paquete completo en formatos abiertos; sin bloqueo de formato (volcado Cypher para el grafo, JSONL para el registro de auditoría, formatos de tensor estándar para los pesos del adaptador); sin licencia agregada (la plataforma no retiene derechos para usar los datos del cliente en el entrenamiento de modelos entre inquilinos sin consentimiento explícito); y transferencia de propiedad sin involucrar al proveedor.
+La propiedad conlleva cuatro propiedades operacionales: exportación en cualquier momento mediante un único comando que produce un paquete completo en formatos abiertos (el comando de exportación en sí está diseñado pero aún no construido — una capacidad planificada a corto plazo, no opcional); sin bloqueo de formato (volcado Cypher para el grafo, JSONL para el registro de auditoría, formatos de tensor estándar para los pesos del adaptador); sin licencia agregada (la plataforma no retiene derechos para usar los datos del cliente en el entrenamiento de modelos entre inquilinos sin consentimiento explícito); y transferencia de propiedad sin involucrar al proveedor.
 
 ## Por qué esto invierte el patrón SaaS
 
 La mayoría de las plataformas de software empresariales moldean los datos del cliente según la ontología del proveedor. Cuando un cliente intenta salir, los datos deben re-moldearse para adaptarse al sistema de destino — un proyecto de migración que típicamente requiere cooperación del proveedor y personal especializado.
 
-El enfoque de la plataforma invierte esto. Los datos del cliente son moldeados por su propia [[seed-taxonomy-as-smb-bootstrap|taxonomía semilla]]. La exportación es una operación de un solo comando que produce un paquete en formato abierto. El acceso del cliente a sus datos no depende de que los servidores de la plataforma permanezcan operativos — una propiedad fundamental de [[customer-hostability]].
+El enfoque de la plataforma invierte esto. Los datos del cliente son moldeados por su propia [[seed-taxonomy-as-smb-bootstrap|taxonomía semilla]], diseñada para exportación de un solo comando a un paquete en formato abierto. El acceso del cliente a sus datos no depende de que los servidores de la plataforma permanezcan operativos — una propiedad fundamental de [[customer-hostability]].
 
 El complemento económico es el modelo de comisión por transacción: el cliente paga una comisión a la plataforma solo cuando gana de sus datos, no una suscripción recurrente por acceso a sus propios registros.
 
