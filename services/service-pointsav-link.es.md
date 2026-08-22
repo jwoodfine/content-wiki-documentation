@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "service-pointsav-link"
 slug: service-pointsav-link
-short_description: "service-pointsav-link es el adaptador hot-pluggable que conecta un nodo Sujeto os-* a una flota PointSav, con un estado predeterminado de no instalado y un modo de fallo de separación limpia."
+short_description: "service-pointsav-link es un concepto de adaptador nombrado pero no construido para conectar un nodo os-* a una flota PointSav — no existe un paquete correspondiente en el monorepo hoy."
 category: services
 index_group: specialist-and-domain-services
 type: topic
@@ -12,55 +12,46 @@ bcsc_class: public-disclosure-safe
 language: es
 language_protocol: TRANSLATE-ES
 paired_with: service-pointsav-link.md
-last_edited: 2026-06-23
+last_edited: 2026-08-22
 editor: pointsav-engineering
 ---
 
-`service-pointsav-link` es el adaptador de conexión en caliente que conecta un nodo Sujeto `os-*` a una flota PointSav. Es el único código responsable de traducir los comandos de autoridad — emitidos por `os-network-admin` y entregados a través del [[ppn-command-protocol|PPN Command Protocol]] — en operaciones ejecutables por el Sujeto. El adaptador se distribuye como el paquete `pointsav-protocol`. Su propiedad más importante es su estado predeterminado: no está instalado. Un Sujeto sin `service-pointsav-link` no tiene ningún concepto de llamar a casa, recibir comandos o participar en la gestión de flota.
+`service-pointsav-link` nombra un concepto, no un paquete distribuido: un adaptador de
+conexión en caliente que conectaría un nodo `os-*` a la gestión de flota, traduciendo
+comandos de autoridad en operaciones ejecutables por el sujeto. No existe ningún crate con
+este nombre, ni un paquete `pointsav-protocol`, en ninguna parte del código fuente de la
+plataforma. El concepto aparece en material de planificación interna con un estado de
+"conceptual" — definido y nombrado, pero no construido.
 
-## Las cuatro propiedades
+## Lo que haría el diseño
 
-| Propiedad | Comportamiento |
-|---|---|
-| Estado predeterminado | No instalado; el Sujeto no tiene ningún concepto de llamar a casa |
-| Estado activado | Conectado en caliente por el operador con un solo comando; pone al Sujeto bajo gestión de flota |
-| Modo de fallo | Si el adaptador falla, el enlace se corta limpiamente; el Sujeto continúa ejecutándose de forma autónoma; la superficie de gestión de flota queda oscura |
-| Ruta de código | La política del Diode Standard reside dentro del adaptador, no en el kernel del sistema operativo — la política puede actualizarse sin tocar el resto del sistema |
+La forma descrita, según el material de planificación: un nodo Sujeto se distribuye sin el
+adaptador instalado por defecto, por lo que no contiene código capaz de iniciar contacto con
+una autoridad. Un operador lo activa con un solo comando, que instala el adaptador y registra
+el nodo en un registro de emparejamiento de flota. Si el adaptador falla o se elimina, el
+Sujeto continúa ejecutando sus propias cargas de trabajo — solo la visibilidad de la flota
+sobre él desaparece. Esta forma, de construirse, sería una implementación concreta del
+[[diode-standard|Estándar Diode]]: un canal de autoridad a sujeto sin ruta de retorno para
+comandos.
 
-## Estado predeterminado: sin capacidad de llamar a casa
+## Lo que existe en su lugar
 
-Un nodo `os-infrastructure` recién arrancado no tiene instalado `service-pointsav-link`. Esto no es una elección de configuración — es un invariante arquitectónico. El sistema operativo Sujeto no contiene ningún código que le permita iniciar contacto con ninguna autoridad. No hay cliente `ssh`, ni tabla de enrutamiento entre pares, ni iniciador RPC. El Sujeto es estructuralmente incapaz de llamar a casa.
+Los mecanismos unidireccionales reales de la plataforma están documentados en
+[[diode-standard]]. Cubre cada uno en detalle: un par de egreso de extracción-y-borrado, una
+canalización de telemetría basada en extracción, un componente de ingesta que nombra su
+propia lógica "el diodo de ingreso," y una canalización de promoción de código direccional
+con protecciones contra el flujo inverso. Ninguno de estos es el adaptador descrito aquí, y
+ninguno es un enlace de comando de flota de propósito general — cada uno satisface la regla
+unidireccional para su propio propósito estrecho.
 
-Esta propiedad se cumple en toda la familia `os-*`. Cada Sujeto — `os-totebox`, `os-mediakit`, `os-privategit`, `os-infrastructure` y `os-network-admin` cuando actúa como Sujeto — comienza en un estado en el que la gestión de flota está ausente. Poner un nodo bajo gestión es siempre una acción explícita del operador, nunca automática.
-
-## Activación: conectar el adaptador en caliente
-
-Un operador activa `service-pointsav-link` en un Sujeto con un solo comando emitido desde `os-network-admin`. La secuencia de activación instala el paquete `pointsav-protocol`, registra el par de claves fiduciarias del nodo en el registro de emparejamiento de la flota como una entrada de Sujeto, y abre el único canal de comandos entrantes del adaptador.
-
-Tras la activación, el Sujeto se vuelve direccionable por la difusión de comandos de la flota. El canal entrante del adaptador escucha en la malla PPN y acepta solo los paquetes cuyo código de operación está dentro del conjunto permitido definido por la política del [[diode-standard|Diode Standard]] de la flota. Todo el demás tráfico se descarta en el límite del adaptador.
-
-## Modo de fallo: separación limpia
-
-Si `service-pointsav-link` falla o se desinstala deliberadamente, el Sujeto no colapsa. Continúa ejecutando sus cargas de trabajo — sirviendo contenido, ejecutando cómputos, manteniendo su estado local — como si la gestión de flota nunca hubiera estado presente. La superficie de gestión de flota queda oscura: `os-network-admin` pierde visibilidad del Sujeto y no puede emitirle comandos. Pero los servicios propios del Sujeto no se ven afectados.
-
-Este modo de fallo es por diseño. Un Sujeto que dependiera del adaptador para su operación normal estaría permanentemente acoplado al plano de control — cualquier interrupción del plano de control se propagaría a las cargas de trabajo del Sujeto. Al desacoplar la operación del Sujeto de la presencia del adaptador, `service-pointsav-link` garantiza que un fallo del plano de control sea una pérdida de observabilidad, no una interrupción del servicio.
-
-## La política en el adaptador, no en el kernel
-
-La política del [[diode-standard|Diode Standard]] — qué flujos de comandos están permitidos, qué operaciones se permiten desde qué autoridades, qué telemetría se emite — reside dentro de `service-pointsav-link`, no en el kernel del sistema operativo Sujeto. Esta separación tiene una consecuencia práctica: actualizar la política de flota requiere actualizar el adaptador, no reconstruir ni reiniciar el sistema operativo.
-
-Una versión del sistema operativo Sujeto y una actualización de política del Diode Standard son despliegues independientes. Un operador puede endurecer o relajar la política de flota enviando una nueva versión del paquete `pointsav-protocol` a los Sujetos activos sin tocar ningún código del kernel.
-
-## El estándar universal
-
-`service-pointsav-link` no es una característica de un sistema operativo específico. El mismo paquete `pointsav-protocol`, con diferentes vinculaciones de política, es el adaptador entre cualquier par de instancias del sistema operativo PointSav que necesiten comunicarse. Un Sujeto `os-totebox` conectado a una Autoridad `os-console` utiliza la misma ruta de código del adaptador que un Sujeto `os-infrastructure` conectado a `os-network-admin`.
-
-Este estándar uniforme es lo que hace auditable una flota compleja. Cada conexión tiene el mismo aspecto en la capa del protocolo. Un auditor que examine cualquier par de nodos conectados ve la misma forma del adaptador — el mismo comportamiento predeterminado desactivado, la misma secuencia de activación, la misma garantía de separación limpia.
+Si este adaptador específico es un componente planificado aún no construido, o un diseño
+renombrado o superado por uno de esos otros mecanismos, es una pregunta abierta señalada al
+grupo de ingeniería responsable. Este artículo no aventura una respuesta.
 
 ## Véase también
 
-- [[diode-standard]] — la jerarquía de autoridad y las reglas de tráfico que aplica el adaptador
-- [[os-network-admin]] — la Autoridad que activa y ordena a los Sujetos a través del adaptador
-- [[os-infrastructure-ppn-node]] — un Sujeto os-infrastructure que usa este adaptador para unirse a una flota
-- [[ppn-command-protocol]] — el formato de cable binario de 16 bytes que recibe el adaptador
-- [[machine-based-auth]] — los pares de claves fiduciarias que autentican el canal de comandos del adaptador
+- [[diode-standard]] — la regla de diseño que este adaptador implementaría, y los mecanismos
+  reales que la siguen hoy
+- [[machine-based-auth]] — cómo se autentican dos máquinas antes de que se permita cualquier
+  conexión, real o conceptual
+- [[os-network-admin]] — el lado de autoridad al que se conectaría el diseño de este adaptador
