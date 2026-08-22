@@ -1,8 +1,8 @@
 ---
 schema: foundry-doc-v1
-title: "service-places — Filtrado de infraestructura cívica"
+title: "Filtrado de lugares"
 slug: service-places-filtering
-short_description: "service-places filtra datos crudos de infraestructura cívica e institucional para retener solo instalaciones de nivel regional — hospitales, universidades y centros de transporte importantes — así los rankings de nivel de GIS reflejan concentración de nivel institucional en lugar de densidad de servicios locales."
+short_description: "Un paso de filtrado que conserva solo instituciones de nivel regional de los datos cívicos en bruto, para que los rankings de nivel GIS reflejen concentración institucional en lugar de cada clínica e instalación comunitaria."
 category: services
 type: topic
 content_type: topic
@@ -12,40 +12,55 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-01
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: service-places-filtering.md
 cites: []
 ---
 
-Las [[retail-co-location-tier-methodology|clasificaciones de nivel GIS]] dependen de saber dónde se ubican las instituciones regionales, no dónde se ubica cada clínica y colegio comunitario. **`service-places`** filtra los datos cívicos en bruto para retener únicamente instalaciones de escala regional — hospitales con al menos 50 camas dotadas, universidades con al menos 1.000 estudiantes equivalentes a tiempo completo, centros de transporte principales validados — y aplica un búfer espacial de 200 m para consolidar grandes campus institucionales en anclas regionales únicas. La densidad de servicios locales se filtra en esta etapa; las clasificaciones descendentes reflejan la concentración institucional en lugar del recuento de instalaciones.
+Los [[retail-co-location-tier-methodology|rankings de nivel GIS]] dependen de saber dónde se
+ubican las instituciones regionales, no dónde se ubica cada clínica o instalación comunitaria
+local. El paso de filtrado de lugares de la plataforma conserva solo las instalaciones
+cívicas e institucionales que alcanzan una escala regional — hospitales, universidades y
+centros de transporte importantes validados por encima de umbrales de tamaño fijos — y
+consolida los registros de campus multipunto en un solo ancla regional. La densidad de
+servicios locales se elimina en esta etapa, de modo que los rankings posteriores reflejan
+concentración institucional en lugar del recuento bruto de instalaciones.
 
-## Puntos clave
+## Lo que conserva el filtro
 
-- Los umbrales de nivel regional son estructurales en el servicio: hospitales con ≥50 camas dotadas, universidades con ≥1.000 estudiantes equivalentes a tiempo completo, y aeropuertos de aviación general excluidos de la puntuación. Estos filtros no son parámetros configurables.
-- Un búfer espacial de 200 m consolida registros de campus multipunto — un hospital grande puede aparecer en OSM como decenas de nodos — en un único ancla regional con un centroide unificado. Esto previene el doble conteo en grandes huellas institucionales.
-- La salida es `cleansed-places.jsonl`, consumida por `[[app-orchestration-gis]]` junto al conjunto de datos de clústeres minoristas de `[[service-business-clustering]]` al asignar los niveles de co-ubicación finales.
-- La etapa de filtrado es deliberadamente anterior a la puntuación de nivel. Una vez que la densidad de servicios locales se elimina aquí, toda la puntuación posterior opera sobre una señal limpia de instituciones regionales.
+El filtro aplica umbrales fijos y estructurales en lugar de parámetros configurables: un
+hospital debe alcanzar un recuento mínimo de camas con personal, una universidad una
+matrícula mínima equivalente a tiempo completo, y un aeropuerto debe ser un centro regional
+validado en lugar de una instalación de aviación general. Las instituciones por debajo de
+estos umbrales se descartan antes de que se ejecute cualquier puntuación posterior.
 
-## Umbrales de filtrado
+## Consolidación de registros de campus
 
-El servicio aplica filtros de ponderación de atributos a los datos cívicos en bruto proporcionados por [[service-fs-data-lake|`service-fs`]]:
+Un campus institucional grande suele aparecer en los datos geoespaciales abiertos en bruto
+como muchos puntos separados. El filtro fusiona los puntos que plausiblemente pertenecen al
+mismo campus físico en un solo ancla regional con un centroide unificado, evitando que una
+sola institución grande se cuente muchas veces.
 
-- **Hospitales regionales:** umbral mínimo de capacidad (50+ camas con personal).
-- **Universidades regionales:** umbral mínimo de matrícula (1.000+ estudiantes equivalentes a tiempo completo).
-- **Aeropuertos:** validados como centros de transporte regional principales; las instalaciones de aviación general se excluyen.
+## Dónde encaja esto en la canalización
 
-## Agregación espacial
-
-Los grandes campus institucionales frecuentemente aparecen en datos geoespaciales abiertos en bruto como múltiples puntos separados. `service-places` aplica un búfer espacial de 200 m para agruparlos en un único ancla regional con un centro de gravedad unificado, previniendo el doble conteo de grandes huellas de campus.
-
-## Salida de datos
-
-El `cleansed-places.jsonl` resultante proporciona el conjunto de datos de anclas regionales que [[app-orchestration-gis]] utiliza al otorgar las [[retail-co-location-tier-methodology|clasificaciones de nivel de co-ubicación]] finales.
+El filtrado se ejecuta como parte de la misma canalización GIS basada en Python documentada
+en [[app-orchestration-gis]] — el código que convierte datos geográficos y comerciales en
+bruto en el índice regional de co-localización — en lugar de como un servicio desplegado por
+separado. Su salida alimenta a [[app-orchestration-gis]] junto con el paso de agrupación
+minorista de [[service-business-clustering]] cuando la canalización asigna los niveles
+finales de co-localización. Este artículo no reproduce los umbrales específicos de la
+canalización, las distancias de buffer, ni los nombres de archivos internos; el patrón
+general (descartar instalaciones subregionales, consolidar campus multipunto en un solo
+ancla) es la parte estable y de cara pública del diseño.
 
 ## Véase también
 
-- [[service-fs-data-lake]] — lago de datos GIS que suministra los datos cívicos y minoristas en bruto
-- [[service-business-clustering]] — servicio de agrupación minorista que consume los datos de lugares filtrados
-- [[app-orchestration-gis]] — capa de orquestación que ensambla las clasificaciones de nivel
-- [[retail-co-location-tier-methodology]] — la metodología de niveles que impulsa las asignaciones de nivel
+- [[app-orchestration-gis]] — la canalización de la que este paso de filtrado forma parte
+- [[service-business-clustering]] — el paso de agrupación minorista que se ejecuta junto a él
+- [[service-fs-data-lake]] — los datos cívicos y minoristas en bruto que consume este paso
+- [[retail-co-location-tier-methodology]] — la metodología de niveles que alimentan los datos filtrados
+
+## Referencias
+
+- [Punto de interés](https://es.wikipedia.org/wiki/Punto_de_inter%C3%A9s) — Wikipedia, consultado 2026-06-14

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Places filtering service"
+title: "Places filtering"
 slug: service-places-filtering
 category: services
 type: topic
@@ -9,48 +9,55 @@ quality: complete
 index_group: specialist-and-domain-services
 status: active
 audience: public
-short_description: "service-places filters raw civic and institutional data to retain only regional-grade facilities, so GIS tier rankings reflect institutional concentration."
+short_description: "A filtering step that keeps only regional-grade institutions from raw civic data, so GIS tier rankings reflect institutional concentration rather than every clinic and community facility."
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-01
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: service-places-filtering.es.md
 cites: []
 ---
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** `service-places-filtering` (and its companion `service-business-clustering`) don't exist as real crates anywhere in the monorepo — already flagged twice this session (the GIS cluster merge, 2026-08-01; and `applications/app-orchestration-gis.md`, this same sweep). The real implementation is a Python pipeline in the separate `project-gis` archive, not a Rust service in this monorepo. **Flagged, not resolved.**
+[[retail-co-location-tier-methodology|GIS tier rankings]] depend on knowing where regional
+institutions sit, not where every local clinic or community facility sits. The platform's
+places-filtering step keeps only civic and institutional facilities that meet a regional
+scale — hospitals, universities, and validated major transport hubs above fixed size
+thresholds — and consolidates multi-point campus records into a single regional anchor.
+Local-service density is removed at this stage, so downstream rankings reflect institutional
+concentration rather than raw facility count.
 
-[[retail-co-location-tier-methodology|GIS tier rankings]] depend on knowing where regional institutions sit, not where every clinic and community college sits. **`service-places`** filters raw civic data to retain only regional-grade facilities — hospitals with at least 50 staffed beds, universities with at least 1,000 full-time-equivalent students, validated major regional transport hubs — and applies a 200 m spatial buffer to consolidate large institutional campuses into single regional anchors. Local-service density is filtered out at this stage; downstream rankings reflect institutional concentration rather than facility count.
+## What the filter keeps
 
-## Key Takeaways
+The filter applies fixed, structural thresholds rather than configurable parameters: a
+hospital must reach a minimum staffed-bed count, a university a minimum full-time-equivalent
+enrollment, and an airport must be a validated major regional hub rather than a general
+aviation facility. Institutions below these thresholds are dropped before any downstream
+scoring runs.
 
-- Regional-grade thresholds are hard-coded into the service: hospitals require ≥50 staffed beds, universities require ≥1,000 full-time-equivalent students, and general aviation facilities are excluded from airport scoring. These filters are structural, not configurable parameters.
-- A 200 m spatial buffer consolidates multi-point campus records — a large hospital campus often appears as dozens of OSM nodes — into a single regional anchor with a unified centroid. This prevents tier over-counting on large institutional footprints.
-- Output is `cleansed-places.jsonl`, consumed by `[[app-orchestration-gis]]` alongside the retail cluster dataset from `[[service-business-clustering]]` when assigning final co-location tiers.
-- The filtering stage is deliberately upstream of tier scoring. Once local-service density is removed here, all downstream scoring operates on a clean regional-institution signal.
+## Consolidating campus records
 
-## Filtering Thresholds
+A large institutional campus often appears in raw open geospatial data as many separate
+points. The filter merges points that plausibly belong to the same physical campus into a
+single regional anchor with one unified centroid, preventing a single large institution from
+being counted many times over.
 
-The service applies attribute-weight filters to the raw civic data provided by [[service-fs-data-lake|`service-fs`]]:
+## Where this fits in the pipeline
 
-- **Regional hospitals:** minimum capacity threshold (50+ staffed beds).
-- **Regional universities:** minimum enrollment threshold (1,000+ full-time equivalent students).
-- **Airports:** validated as major regional transport hubs; general aviation facilities are excluded.
-
-## Spatial Aggregation
-
-Large institutional campuses frequently appear in raw open geospatial data as multiple separate points. `service-places` applies a 200 m spatial buffer to cluster these into a single regional anchor with a unified center of gravity, preventing over-counting of large campus footprints.
-
-## Data Output
-
-The resulting `cleansed-places.jsonl` provides the regional anchor dataset that [[app-orchestration-gis]] uses when awarding final [[retail-co-location-tier-methodology|co-location tier rankings]].
+Filtering runs as part of the same Python-based GIS pipeline documented in
+[[app-orchestration-gis]] — the code that turns raw geographic and business data into the
+regional co-location index — rather than as a separately deployed service. Its output feeds
+[[app-orchestration-gis]] alongside the retail clustering step from
+[[service-business-clustering]] when the pipeline assigns final co-location tiers. This
+article does not restate the pipeline's specific thresholds, buffer distances, or internal
+file names; the general pattern (drop sub-regional facilities, consolidate multi-point
+campuses to a single anchor) is the stable, public-facing part of the design.
 
 ## See also
 
-- [[service-fs-data-lake]] — GIS data lake supplying the raw civic and retail data
-- [[service-business-clustering]] — retail clustering service that consumes the filtered place data
-- [[app-orchestration-gis]] — orchestration layer that assembles tier rankings from both services
-- [[retail-co-location-tier-methodology]] — the tier methodology driving tier assignments
+- [[app-orchestration-gis]] — the pipeline this filtering step is part of
+- [[service-business-clustering]] — the retail clustering step that runs alongside it
+- [[service-fs-data-lake]] — the raw civic and retail data this step consumes
+- [[retail-co-location-tier-methodology]] — the tier methodology the filtered data feeds
 
 ## References
 
