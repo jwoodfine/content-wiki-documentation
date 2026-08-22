@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-03
+last_edited: 2026-08-22
 editor: pointsav-engineering
 short_description: "Four permission tiers, P1 through P4, are implemented as a typed enumeration and served over an HTTP endpoint that reads a workspace configuration file. That file currently declares no contributors, so the endpoint resolves nothing for any real user."
 paired_with: personnel-permissions.es.md
@@ -49,8 +49,8 @@ own archives without that reach. P4 cannot write at all.
 
 The resolution path is short and entirely file-driven.
 
-A personnel module reads a workspace configuration file — the workspace-root `pairings.yaml` —
-looking for a top-level `contributors` key. Each entry there would supply an operating-system
+A personnel module reads a workspace configuration file — the same file that declares which
+archives exist and how they're organised — looking for a top-level `contributors` key. Each entry there would supply an operating-system
 username, a tier string, and a list of paired archives. The module maps that raw shape into an
 internal three-field record and parses the tier string into the typed enumeration; an unrecognised
 or missing tier falls back to P3, the more restrictive of the two archive-scoped tiers.
@@ -70,28 +70,24 @@ record are separate systems joined only by convention on the username.
 ## The configuration file declares no contributors today
 
 The `contributors` key is optional in the parser, so a file lacking it entirely still loads without
-error and yields an empty contributor set. The real workspace `pairings.yaml` was read directly for
-this article: it contains a `pairings:` list of archive-topology entries (cluster name, module ID,
-branch, self-service level) and carries **no `contributors:` key anywhere in it**.
+error and yields an empty contributor set. The real workspace configuration file contains a list of
+archive-topology entries (cluster name, module ID, branch, self-service level) and carries
+**no `contributors:` key anywhere in it**.
 
 The consequence is exact and worth stating without euphemism: the personnel endpoint would return
 not-found for every real user today. No contributor currently holds a resolved tier through this
-path. The enumeration, the parser, the endpoint, and its fallback behaviour are all real, built, and
-independently verified against canonical source — but the data that would give any of it a
-practical effect for a real operator has not been populated into the file it reads. This is a case
+path. The enumeration, the parser, the endpoint, and its fallback behaviour are all real and built — but
+the data that would give any of it a practical effect for a real operator has not been populated
+into the file it reads. This is a case
 of code that is built and correct sitting in front of data that is unpopulated, not a case of a
 fictitious feature — a distinction that matters for anyone assessing this platform's access-control
 posture, because the honest description is neither "not implemented" nor "fully governs access
 today."
 
-One historical caution belongs alongside this, because this article's own verification record has
-been on both sides of it. An earlier review of this subject concluded the P1–P4 model described a
-system that did not exist at all — a conclusion that rested on a search scoped to one component and
-one configuration file. A broader search located the real implementation described above, and that
-earlier finding was retracted. The standing lesson is procedural: a search scoped to one component
-is not sufficient evidence that something does not exist anywhere in the monorepo, and the same
-caution applies to the finding in this section — the file was read directly, in full, for this
-draft, rather than inferred from its absence in a narrower search.
+One caution belongs alongside this. The P1–P4 model is real, built code — not a proposal, not a
+description of intent. A reader assessing this platform's access-control posture should treat
+"the tier system exists but has no data behind it yet" as the accurate description, not "the tier
+system doesn't exist."
 
 ## Why a configuration file rather than a database
 

@@ -12,7 +12,7 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 language_protocol: TRANSLATE-ES
-last_edited: 2026-08-06
+last_edited: 2026-08-22
 editor: pointsav-engineering
 short_description: "Cuatro niveles de permisos, de P1 a P4, implementados como una enumeración tipada y servidos a través de un endpoint HTTP que lee un archivo de configuración del espacio de trabajo. Ese archivo no declara hoy ningún colaborador, de modo que el endpoint no resuelve nada para ningún usuario real."
 paired_with: personnel-permissions.md
@@ -52,8 +52,9 @@ sus propios archivos de trabajo, sin ese alcance. P4 no puede escribir en absolu
 
 La ruta de resolución es corta y está gobernada íntegramente por un archivo.
 
-Un módulo de personal lee un archivo de configuración del espacio de trabajo — el `pairings.yaml` de
-la raíz del espacio de trabajo — buscando una clave `contributors` de primer nivel. Cada entrada ahí
+Un módulo de personal lee un archivo de configuración del espacio de trabajo — el mismo archivo que
+declara qué archivos de trabajo existen y cómo están organizados — buscando una clave `contributors`
+de primer nivel. Cada entrada ahí
 aportaría un nombre de usuario del sistema operativo, una cadena de nivel y una lista de archivos de
 trabajo emparejados. El módulo convierte esa forma en bruto en un registro interno de tres campos y
 convierte la cadena de nivel en la enumeración tipada; un nivel no reconocido o ausente cae de vuelta
@@ -76,30 +77,24 @@ sistemas separados, unidos únicamente por la convención del nombre de usuario.
 ## Hoy el archivo de configuración no declara ningún colaborador
 
 La clave `contributors` es opcional para el analizador, de modo que un archivo que carezca de ella por
-completo se carga igualmente sin error y produce un conjunto vacío de colaboradores. El
-`pairings.yaml` real del espacio de trabajo se leyó directamente para este artículo: contiene una
-lista `pairings:` de entradas de topología de archivos de trabajo (nombre del clúster, ID de módulo,
-rama, nivel de autoservicio) y **no lleva ninguna clave `contributors:` en ninguna parte**.
+completo se carga igualmente sin error y produce un conjunto vacío de colaboradores. El archivo de
+configuración real del espacio de trabajo contiene una lista de entradas de topología de archivos de
+trabajo (nombre del clúster, ID de módulo, rama, nivel de autoservicio) y **no lleva ninguna clave
+`contributors:` en ninguna parte**.
 
 La consecuencia es exacta y merece enunciarse sin eufemismos: hoy el endpoint de personal devolvería
 no encontrado para todo usuario real. Ningún colaborador tiene actualmente un nivel resuelto por esta
-vía. La enumeración, el analizador, el endpoint y su comportamiento de reserva son todos reales, están
-construidos y han sido verificados de forma independiente contra la fuente canónica — pero los datos
-que darían a todo ello un efecto práctico para un operador real no se han poblado en el archivo que
-lee. Es un caso de código construido y correcto situado frente a datos sin poblar, no un caso de una
+vía. La enumeración, el analizador, el endpoint y su comportamiento de reserva son todos reales y están
+construidos — pero los datos que darían a todo ello un efecto práctico para un operador real no se
+han poblado en el archivo que lee. Es un caso de código construido y correcto situado frente a datos sin poblar, no un caso de una
 funcionalidad ficticia — una distinción que importa a cualquiera que evalúe la postura de control de
 acceso de esta plataforma, porque la descripción honesta no es ni «no implementado» ni «gobierna hoy
 el acceso por completo».
 
-Una advertencia histórica acompaña a lo anterior, porque el propio historial de verificación de este
-artículo ha estado en ambos lados de ella. Una revisión anterior de este asunto concluyó que el modelo
-P1–P4 describía un sistema que no existía en absoluto — una conclusión apoyada en una búsqueda acotada
-a un solo componente y un solo archivo de configuración. Una búsqueda más amplia localizó la
-implementación real descrita arriba, y aquel hallazgo anterior fue retractado. La lección permanente
-es de procedimiento: una búsqueda acotada a un solo componente no es prueba suficiente de que algo no
-exista en ninguna parte del monorepo, y la misma cautela se aplica al hallazgo de esta sección — el
-archivo se leyó directamente, íntegro, para este borrador, en lugar de inferirse de su ausencia en una
-búsqueda más estrecha.
+Cabe señalar una advertencia junto a lo anterior. El modelo P1–P4 es código real y construido — no
+una propuesta, no una descripción de intención. Quien evalúe la postura de control de acceso de esta
+plataforma debería tratar «el sistema de niveles existe pero aún no tiene datos detrás» como la
+descripción correcta, no «el sistema de niveles no existe».
 
 ## Por qué un archivo de configuración y no una base de datos
 
