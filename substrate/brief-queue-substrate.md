@@ -47,12 +47,7 @@ The Brief Queue Substrate delivers five operational properties that the platform
 
 **Capture-edit pipeline simplification.** The previous pattern required the capture pipeline to write directly to corpus JSONL files during the editorial session, which created ordering dependencies between the Doorman's audit-routing logic and the corpus file's append position. The queue removes that dependency: the Doorman writes an event record to `queue/` and returns immediately; the drain worker serializes corpus appends in arrival order without blocking the inference path.
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** the
-`[[service-extraction|service-input]]` wikilink below conflates two distinct, both-real
-services — `service-extraction` and `service-input` are separate crates with different
-missions, not one service under two names. **Flagged, not resolved.**
-
-**Customer Tier 1 alignment.** The queue architecture matches the pattern that Ring 1 ingest services ([[service-people]], [[service-email]], [[service-extraction|service-input]]) already use for durable event capture at the [[totebox-archive|tenant]] boundary. A customer extending the platform with an additional MCP server can use the same four-directory queue pattern for their ingest events. Consistency across tiers reduces the surface area a contributor needs to understand.
+**Customer Tier 1 alignment.** The queue architecture matches the pattern that Ring 1 ingest services ([[service-people]], [[service-email]], [[service-extraction]], [[service-input]]) already use for durable event capture at the [[totebox-archive|tenant]] boundary. A customer extending the platform with an additional MCP server can use the same four-directory queue pattern for their ingest events. Consistency across tiers reduces the surface area a contributor needs to understand.
 
 **Future PointSav-LLM readiness.** The [[apprenticeship-substrate|apprenticeship corpus]] — the accumulation of draft-created, draft-refined, and creative-edited JSONL events — is the intended training signal for a future PointSav-LLM continued-pretraining run [1]. The Brief Queue Substrate ensures that corpus growth is uninterrupted by compute-tier transitions, idle shutdowns, or preemption events. Every [[yo-yo-lora-training-pipeline|editorial session]] contributes to the corpus regardless of which compute tier handled the inference.
 
@@ -90,18 +85,13 @@ When the platform scales to multi-node corpus producers — a planned future sta
 
 ## Implementation status
 
-The Brief Queue Substrate convention was ratified at workspace v0.1.78. Implementation is in progress within the SLM service engineering scope.
+The Brief Queue Substrate convention was ratified at workspace v0.1.78. The queue and drain worker are built and running.
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** this understates
-real progress — `git log` shows the queue/drain-worker was fully built, tested, and had
-already been through a real production incident by 2026-06-01, before this article's own
-`last_edited` date. **Flagged, not resolved.**
-
-The functional components being built are:
+The functional components are:
 
 - **Queue API** — four operations exposed to producers: `enqueue` (write an event file to `queue/`), `dequeue` (atomically lease a file from `queue/`), `release` (move from `queue-in-flight/` back to `queue/` on non-fatal error), and `poison` (move to `queue-poison/` on fatal error).
 - **Background drain worker** — a long-running process inside the Doorman that polls `queue/` at a configurable interval, processes leased files, and appends to the corpus JSONL. The drain worker also performs startup recovery of any files stranded in `queue-in-flight/`.
-- **Post-commit hook graduation** — the current capture-edit pipeline writes corpus events inline during the editorial session. Once the queue API is available, the post-commit hook is updated to write to `queue/` instead of directly to the corpus file. The corpus write path is then exclusively the drain worker's responsibility.
+- **Post-commit hook graduation** — the capture-edit pipeline writes to `queue/` rather than directly to the corpus file; the corpus write path is exclusively the drain worker's responsibility.
 
 The implementation does not change the corpus JSONL schema. Consumers of the apprenticeship corpus — including the future PointSav-LLM pretraining pipeline — observe no change in corpus format; only the write path changes.
 

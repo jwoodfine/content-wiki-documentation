@@ -47,7 +47,7 @@ El Sustrato de Cola de Briefs ofrece cinco propiedades operativas de las que dep
 
 **Simplificación del pipeline de captura-edición.** El patrón anterior requería que el pipeline de captura escribiera directamente en los archivos JSONL del corpus durante la sesión editorial, lo que creaba dependencias de ordenación entre la lógica de enrutamiento de auditoría del Doorman y la posición de adición del archivo del corpus. La cola elimina esa dependencia: el Doorman escribe un registro de evento en `queue/` y retorna inmediatamente; el proceso de vaciado serializa las adiciones al corpus en orden de llegada sin bloquear la ruta de inferencia.
 
-**Alineación con el Nivel 1 del cliente.** La arquitectura de cola coincide con el patrón que los servicios de ingestión del Anillo 1 ([[service-people]], [[service-email]], [[service-extraction|service-input]]) ya utilizan para la captura durable de eventos en el límite del [[totebox-archive|inquilino]]. Un cliente que extienda la plataforma con un servidor MCP adicional puede usar el mismo patrón de cola de cuatro directorios para sus eventos de ingestión. La coherencia entre niveles reduce la superficie que un colaborador necesita comprender.
+**Alineación con el Nivel 1 del cliente.** La arquitectura de cola coincide con el patrón que los servicios de ingestión del Anillo 1 ([[service-people]], [[service-email]], [[service-extraction]], [[service-input]]) ya utilizan para la captura durable de eventos en el límite del [[totebox-archive|inquilino]]. Un cliente que extienda la plataforma con un servidor MCP adicional puede usar el mismo patrón de cola de cuatro directorios para sus eventos de ingestión. La coherencia entre niveles reduce la superficie que un colaborador necesita comprender.
 
 **Preparación para PointSav-LLM futuro.** El [[apprenticeship-substrate|corpus de aprendizaje]] — la acumulación de eventos JSONL creados-por-draft, refinados-por-draft y editados-creativamente — es la señal de entrenamiento prevista para una futura ejecución de preentrenamiento continuo de PointSav-LLM. El Sustrato de Cola de Briefs garantiza que el crecimiento del corpus no se interrumpa por transiciones de nivel de cómputo, apagados inactivos o eventos de apropiación. Cada sesión editorial contribuye al corpus independientemente del nivel de cómputo que haya manejado la inferencia.
 
@@ -85,9 +85,9 @@ Cuando la plataforma escale a productores de corpus de múltiples nodos — un e
 
 ## Estado de implementación
 
-La convención del Sustrato de Cola de Briefs fue ratificada en la versión v0.1.78 del espacio de trabajo. La implementación está en curso dentro del ámbito de ingeniería del servicio SLM.
+La convención del Sustrato de Cola de Briefs fue ratificada en la versión v0.1.78 del espacio de trabajo. La cola y el proceso de vaciado están construidos y en funcionamiento.
 
-Los componentes funcionales en construcción son:
+Los componentes funcionales son:
 
 - **API de cola** — cuatro operaciones expuestas a los productores: `enqueue` (escribir un archivo de evento en `queue/`), `dequeue` (arrendar atómicamente un archivo desde `queue/`), `release` (mover de `queue-in-flight/` de vuelta a `queue/` en caso de error no fatal) y `poison` (mover a `queue-poison/` en caso de error fatal).
 - **Proceso de vaciado en segundo plano** — un proceso de larga ejecución dentro del Doorman que sondea `queue/` a intervalos configurables, procesa los archivos arrendados y añade al JSONL del corpus. El proceso de vaciado también realiza la recuperación al arrancar de cualquier archivo varado en `queue-in-flight/`.
