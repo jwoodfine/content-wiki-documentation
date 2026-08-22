@@ -7,10 +7,10 @@ type: topic
 content_type: topic
 quality: complete
 index_group: the-compounding-doorman-and-ai-boundary
-short_description: "El Portero consulta el grafo de conocimiento por inquilino antes de cada solicitud de inferencia, produciendo tuplas de entrenamiento donde el grafo y el adaptador del modelo co-evolucionan."
+short_description: "El Portero busca entidades coincidentes en el grafo de conocimiento por inquilino antes de despachar una solicitud, fundamentando la respuesta del modelo en hechos que el grafo ya contiene."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-08-22
 editor: pointsav-engineering
 cites: []
 references:
@@ -21,46 +21,35 @@ paired_with: knowledge-graph-grounded-apprenticeship.md
 ---
 
 
-El **Aprendizaje Fundamentado en Grafos de Conocimiento** es el patrón por el cual el [[compounding-doorman|Portero]] ([[service-slm]]) consulta el grafo de conocimiento por inquilino en [[service-content]] antes de despachar cualquier solicitud de inferencia sustantiva. El contexto de fundamentación — un subgrafo de entidades y relaciones relevantes para la consulta — se suministra al modelo junto con la solicitud. La tupla de entrenamiento resultante contiene tanto el contexto del grafo como la respuesta del modelo, lo que significa que el grafo de conocimiento y el [[adapter-composition|adaptador]] por inquilino mejoran juntos con el tiempo.
+La **fundamentación en el grafo de conocimiento** es el patrón por el cual el [[compounding-doorman|Portero]] ([[service-slm]]) consulta el grafo de conocimiento por inquilino en [[service-content]] antes de despachar una solicitud a un nivel de cómputo. Las entidades coincidentes se anteponen al prompt del sistema del modelo como contexto factual, aisladas por inquilino mediante el identificador de módulo — el adaptador de Woodfine nunca ve el contexto del grafo de PointSav, ni viceversa.
+
+Este patrón extiende el [[apprenticeship-substrate|sustrato de aprendizaje]] con una capa de fundamentación por grafo.
 
 ## Fundamentación previa a la inferencia
 
-Antes de despachar una solicitud a cualquier nivel de cómputo, el [[compounding-doorman|Portero]] llama a la herramienta de consulta de grafo de [[service-content]] para ensamblar un subgrafo de dos saltos alrededor de los términos de la consulta. Este subgrafo se presenta como un prefijo estructurado en el prompt del sistema del modelo, incluyendo entidades relevantes, sus relaciones y sus clasificaciones de dominio y tema.
+Antes de despachar una solicitud, el Portero extrae las palabras de cuatro o más caracteres del mensaje más reciente del usuario y consulta a [[service-content]] por entidades cuyo nombre coincide como subcadena con esas palabras, prefiriendo los candidatos más largos y específicos primero. Una entidad coincidente aporta su clasificación (Persona, Empresa, Proyecto, Cuenta o Ubicación) y, si se conocen, su rol, ubicación y datos de contacto — la consulta por defecto avanza un salto desde las entidades encontradas, no un recorrido más amplio. Los resultados se anteponen como un mensaje de sistema que el modelo ve junto con la consulta del usuario.
 
-Cuando una consulta no tiene contexto de grafo relevante — por ejemplo, una pregunta genérica de administración del sistema — el Portero procede sin fundamentación y la tupla de entrenamiento se marca como no fundamentada. El modelo aprende así que algunas preguntas no requieren contexto de grafo.
+La búsqueda no es crítica: si `service-content` no está disponible o ninguna entidad coincide, la solicitud continúa sin modificar. Una pregunta genérica de administración del sistema, sin entidades relevantes en su texto, simplemente no recibe fundamentación — es el caso esperado y común, no un fallo.
 
-## Mutación del grafo post-inferencia
+## Sin escritura automática al grafo desde la inferencia
 
-Cuando la respuesta del modelo incluye salidas estructuradas y el veredicto del operador acepta la respuesta, el [[compounding-doorman|Portero]] puede proponer mutaciones del grafo derivadas de la respuesta — nuevas entidades, nuevas relaciones o propiedades actualizadas. [[service-content]] aplica los cambios atómicamente, por inquilino, y el [[worm-ledger-architecture|registro de auditoría]] registra el evento de mutación.
-
-El bucle se cierra: las entidades descubiertas durante una interacción de inferencia se convierten en contexto de fundamentación para la siguiente. El grafo de conocimiento crece a través del uso.
+Nada en la ruta de enrutamiento o manejo de veredictos del Portero escribe de vuelta al grafo. El endpoint de mutación que expone [[service-content]] (`POST /v1/graph/mutate`) existe, pero su único invocador real es una herramienta operada por humanos — `graph-committer.py` de project-editorial, que exige que un operador revise una propuesta almacenada y confirme explícitamente antes de escribir nada. Una ruta separada, no relacionada, sí escribe entidades sin revisión humana por elemento: un trabajo de extracción nocturno que, cuando está habilitado, captura entidades extraídas automáticamente para su aprobación por lote posterior. Véase [[nightly-datagraph-rebuild]] para el comportamiento real de ese mecanismo y su brecha de gobernanza actualmente abierta. Ninguna de las dos rutas se activa por el veredicto de una solicitud de inferencia.
 
 ## Aislamiento por inquilino
 
-El identificador de módulo que determina el alcance de cada grafo también aísla el contexto de entrenamiento. El grafo y el corpus de entrenamiento de un inquilino no pueden ser accedidos por otro inquilino ni utilizados para entrenar el adaptador de otro inquilino. Los límites son estructurales, no de política.
+El identificador de módulo que determina el alcance de cada grafo también aísla el contexto de entrenamiento. El grafo de un inquilino no puede ser accedido por otro inquilino. Los límites son estructurales, no de política.
 
 ## Métricas de calidad basadas en coherencia con el grafo
 
-Una respuesta del modelo puede evaluarse contra el grafo en tres dimensiones: la tasa de citación (qué fracción de las entidades nombradas en la respuesta existen en el grafo), la precisión de las relaciones (qué fracción de las relaciones declaradas coinciden con aristas del grafo) y la tasa de alucinación (qué fracción de las entidades nombradas no están presentes en el grafo). Una tasa de alucinación elevada es el principal modo de fallo; las respuestas por encima de un umbral son candidatas para rechazo o refinamiento. [^1]
+Una respuesta del modelo puede evaluarse contra el grafo en tres dimensiones, independientemente de si el grafo mismo cambia. La tasa de citación mide qué fracción de las entidades nombradas en la respuesta existen en el grafo. La precisión de las relaciones mide qué fracción de las relaciones declaradas coinciden con las aristas ya registradas. La tasa de alucinación mide qué fracción de las entidades nombradas no están presentes en el grafo — es el principal modo de fallo; las respuestas por encima de un umbral son candidatas para rechazo o refinamiento. [^1]
 
-## Dependencia de la Disciplina de Límite Único
+## Dependencia de la disciplina de límite único
 
-Este patrón depende de la [[single-boundary-compute-discipline]]. Si la inferencia puede evitar el Portero, también evita la fundamentación del grafo. Sin cumplimiento de límite único, el aprendizaje fundamentado en grafos de conocimiento no puede garantizarse estructuralmente.
-
-## Véase También
-
-- [[single-boundary-compute-discipline]] — requisito previo estructural
-- [[seed-taxonomy-as-smb-bootstrap]] — la taxonomía por inquilino que siembra el grafo de conocimiento utilizado para la fundamentación
-- [[mcp-substrate-protocol]] — las herramientas MCP `graph_query` y `graph_mutate`
-
----
-
-## Procedencia
-
-Resumen de adaptación estratégica del archivo fuente `convention-knowledge-graph-grounded-apprenticeship.md` (refinado el 30 de abril de 2026).
+La fundamentación depende de la [[single-boundary-compute-discipline]]. Si la inferencia puede evitar al Portero, también evita la fundamentación del grafo por completo — una solicitud que rodea al Portero no recibe contexto de entidades ni medición de tasa de citación. Sin cumplimiento de límite único, la fundamentación no puede garantizarse para cada solicitud.
 
 ## Véase también
 
-- [[single-boundary-compute-discipline]]
-- [[seed-taxonomy-as-smb-bootstrap]]
-- [[mcp-substrate-protocol]]
+- [[single-boundary-compute-discipline]] — requisito previo estructural; la fundamentación ocurre en el límite del Portero
+- [[seed-taxonomy-as-smb-bootstrap]] — la taxonomía por inquilino que siembra el grafo de conocimiento utilizado para la fundamentación
+- [[mcp-substrate-protocol]] — las herramientas MCP mediante las cuales el Portero interactúa con `service-content`
+- [[nightly-datagraph-rebuild]] — la ruta separada, no relacionada, que sí escribe nuevas entidades al grafo

@@ -7,10 +7,10 @@ type: topic
 content_type: topic
 quality: complete
 index_group: the-compounding-doorman-and-ai-boundary
-short_description: "The Doorman consults the per-tenant knowledge graph before every inference request, producing training tuples where the graph and the model adapter co-evolve."
+short_description: "The Doorman looks up matching entities in the per-tenant knowledge graph before dispatching a request, grounding the model's response in facts the graph already holds."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-08-22
 editor: pointsav-engineering
 cites: []
 references:
@@ -20,37 +20,27 @@ references:
 paired_with: knowledge-graph-grounded-apprenticeship.es.md
 ---
 
-**Knowledge-Graph-Grounded Apprenticeship** is the pattern by which the [[compounding-doorman|Doorman]] ([[service-slm]]) consults the per-tenant knowledge graph in [[service-content]] before routing every substantive inference request. The grounding context — a subgraph of entities and relationships relevant to the query — is supplied to the model alongside the request. The resulting training tuple carries both the graph context and the model's response, which means the knowledge graph and the per-tenant adapter improve together over time.
+**Knowledge-graph grounding** is the pattern by which the [[compounding-doorman|Doorman]] ([[service-slm]]) consults the per-tenant knowledge graph in [[service-content]] before dispatching a request to a compute tier. Matching entities are prepended to the model's system prompt as factual context, isolated per tenant by module identifier — the Woodfine adapter never sees PointSav graph context or vice versa.
 
 This pattern extends the [[apprenticeship-substrate]] with a graph-grounding layer.
 
 ## Pre-inference grounding
 
-Before the [[compounding-doorman|Doorman]] dispatches a request to any compute tier, it calls [[service-content]]'s graph query tool to assemble a two-hop subgraph around the query terms. The subgraph is rendered as a structured prefix to the model's system prompt, presenting the relevant entities, their relationships, and their domain and theme classifications.
+Before dispatching a request, the Doorman extracts words of four or more characters from the user's most recent message and queries [[service-content]] for entities whose names substring-match those words, preferring longer and more specific candidates first. A matching entity carries its classification (Person, Company, Project, Account, or Location) and, where known, role, location, and contact detail — the query defaults to one hop out from the matched entities, not a wider traversal. Results are prepended as a system message the model sees alongside the user's query.
 
-The model therefore receives not only the user's query but also the factual context that the knowledge graph already holds about the parties and topics involved. The grounded entity identifiers are recorded in the [[worm-ledger-architecture|audit ledger]] for subsequent citation verification.
+The lookup is non-fatal: if `service-content` is unavailable or no entity matches, the request proceeds unmodified. A generic system-administration question with no relevant entities in its text simply gets no grounding — that is the expected, common case, not a failure.
 
-When a query has no relevant graph context — for example, a generic system administration question — the graph query returns an empty subgraph and the request proceeds without grounding. These ungrounded tuples are valid training data; the model learns that some questions do not require graph context.
+## No automatic graph-writeback from inference
 
-## Post-inference graph mutation
-
-When the model's response includes structured outputs and the senior verdict accepts the response, the [[compounding-doorman|Doorman]] may propose graph mutations derived from the response — new entities, new relationships, or updated properties. It calls [[service-content]]'s graph mutation tool; `service-content` applies the changes atomically, per tenant, and the [[worm-ledger-architecture|audit ledger]] records the mutation event.
-
-The loop closes: entities discovered during one inference interaction become grounding context for the next. The knowledge graph grows through use.
-
-## Training tuple shape
-
-The [[apprenticeship-substrate|apprenticeship corpus]] tuple gains a graph context field alongside the brief, the model's attempt, and the verdict. Direct preference optimisation training treats verdict-signed tuples with populated graph context as higher-weight examples than ungrounded tuples. Supervised fine-tuning over unsigned tuples uses graph context as additional input signal.
-
-Because graph context is per-tenant — isolated by module identifier — the Woodfine [[adapter-composition|adapter]] trains on Woodfine graph context and the PointSav adapter trains on PointSav graph context. There is no cross-tenant leakage at training time.
+Nothing in the Doorman's routing or verdict-handling path writes back to the graph. The mutation endpoint [[service-content]] exposes (`POST /v1/graph/mutate`) exists, but its only real caller is a human-operated tool — project-editorial's `graph-committer.py`, which requires an operator to review a staged proposal and pass `--confirm` before anything is written. A separate, unrelated path writes graph entities without a per-item human review: a nightly extraction job that (when enabled) captures automatically-extracted entities for later batch approval rather than writing them immediately — see [[nightly-datagraph-rebuild]] for that mechanism's own real behavior and its currently-open governance gap. Neither path is triggered by an inference request's verdict.
 
 ## Graph-coherence quality metrics
 
-A model response can be evaluated against the knowledge graph on three dimensions:
+A model response can still be evaluated against the knowledge graph on three dimensions, independent of whether the graph itself changes:
 
 **Citation rate** — the fraction of named entities in the response that exist in the graph. A high citation rate indicates the model is staying within known facts.
 
-**Relationship accuracy** — the fraction of stated relationships that match edges in the graph. Inaccurate relationships signal model drift from the grounded record.
+**Relationship accuracy** — the fraction of stated relationships that match the graph's own recorded edges. Inaccurate relationships signal model drift from the grounded record.
 
 **Hallucination rate** — the fraction of named entities in the response that are not present in the graph. Hallucination rate is the primary failure mode; responses above a threshold are candidates for refinement or rejection. [^1]
 
@@ -58,11 +48,12 @@ These metrics feed the verdict process. A response with high hallucination rate 
 
 ## Dependency on single-boundary discipline
 
-Knowledge-graph-grounded apprenticeship depends on the [[single-boundary-compute-discipline]]. If inference can bypass the Doorman, it bypasses graph grounding. An ungrounded inference call produces no graph context field in the training tuple, no citation rate measurement, and no proposed graph mutation. The two claims compose as a structural dependency: without single-boundary enforcement, graph-grounded apprenticeship cannot be guaranteed.
+Grounding depends on the [[single-boundary-compute-discipline]]. If inference can bypass the Doorman, it bypasses graph grounding entirely — a request routed around the Doorman gets no entity context and no citation-rate measurement. Without single-boundary enforcement, grounded apprenticeship cannot be guaranteed for every request.
 
 ## See also
 
 - [[single-boundary-compute-discipline]] — structural prerequisite; grounding happens at the Doorman boundary
 - [[seed-taxonomy-as-smb-bootstrap]] — the per-tenant taxonomy that seeds the knowledge graph used for grounding
-- [[mcp-substrate-protocol]] — the MCP tools (`graph_query`, `graph_mutate`) through which the Doorman interacts with `service-content`
+- [[mcp-substrate-protocol]] — the MCP tools through which the Doorman interacts with `service-content`
+- [[nightly-datagraph-rebuild]] — the separate, unrelated path that writes new entities into the graph
 
