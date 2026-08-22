@@ -45,11 +45,13 @@ to see the platform's current external exposure.
 
 Until a native replacement is available, a legacy component is
 physically isolated into a quarantined component silo (for example,
-`vendor-azure-auth` or `vendor-microsoft-graph`). These directories
-are structural containers that restrict the foreign code to a
-controlled capability boundary. The isolation prevents coupling from
-spreading into adjacent platform layers while the replacement is
-under development. (Correction, 2026-08-02: same finding as [[moonshot-initiatives]], which covers this identical subject — the quarantine README banners are real, but there is no actual foreign code physically isolated in a capability sandbox behind them yet; most `moonshot-*` directories are bare scaffolds, not active engineering. Flagged, not resolved.)
+`vendor-azure-auth` or `vendor-microsoft-graph`) — each carrying a
+"Quarantined Foreign Component" warning banner in its `README.md`.
+No foreign code runs inside a capability sandbox behind these
+banners yet; the directories today mark the boundary rather than
+actively containing anything. See [[moonshot-initiatives]] for the
+per-initiative build status — three of the nine moonshot directories
+carry substantial active engineering, six remain bare scaffolds.
 
 ## Moonshot pipeline
 
