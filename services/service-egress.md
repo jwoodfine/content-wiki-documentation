@@ -3,41 +3,32 @@ schema: foundry-doc-v1
 type: topic
 content_type: topic
 slug: service-egress
-short_description: "The data sovereignty service that physically transfers cloud-stored payloads to local cold storage, eliminating vendor-side data retention and cloud dependency."
+short_description: "service-egress compresses and chunks local mail data for outbound transfer, and only deletes the local source once an external counterpart confirms receipt with a cryptographic proof — an outbound release valve, not a cloud-to-local import."
 title: "Egress service"
 category: services
 index_group: ring-2-knowledge-and-processing
 language: en
 paired_with: service-egress.es.md
 status: stub
-last_edited: 2026-05-07
+last_edited: 2026-08-22
 editor: pointsav-engineering
 ---
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** the data-flow direction below is reversed. The real `service-egress/src/main.rs` ("SOVEREIGN RELEASE VALVE") does the opposite: it reads **local** Maildir (`cur/`), zstd-compresses and chunks it for an **outbound** queue, and only wipes the local source after a cryptographic receipt from an external `tool-egress-pull` client — the direction is local-to-cloud, not cloud-to-local. There is no IMAP client, no object-store client, and no `service-fs` `/v1/append` call anywhere in this binary; the "Acquire (cloud) → Write (WORM) → Clear (cloud)" protocol described below has no matching implementation. **Flagged, not resolved** — needs a full rewrite around the real outbound-release architecture.
+`service-egress` moves local mail data outward — the reverse of what its name might suggest at first glance. It doesn't pull anything in from the cloud; it stages local data for outbound transfer and only removes the local copy once it has proof the transfer succeeded.
 
-[[service-fs-architecture|`service-egress`]] is the data sovereignty engine that physically transfers cloud-stored payloads to local cold storage, executing the flow-through protocol that removes vendor-side data retention and eliminates dependency on cloud storage continuity. Transferred payloads are written to the per-tenant [[worm-ledger-design|WORM ledger]] managed by [[service-fs-architecture]], where they become append-only records. The service works alongside [[service-email]] to ensure every message ingested from a cloud mailbox has a permanent local copy before the cloud source is cleared. See the [[sovereign-airlock-doctrine|sovereign airlock]] for the architectural principle that governs data flow direction.
+## The loop
 
-## Key Takeaways
+Running continuously, the service repeats two steps:
 
-- The flow-through protocol is three steps in order: download from cloud → write to local WORM → clear the cloud source. The original cloud copy is removed; the local WORM record is the permanent copy.
-- Transferred payloads become append-only WORM records. The egress path cannot overwrite or delete prior records — data sovereignty is enforced structurally, not by policy.
-- service-egress operates at the sovereignty boundary. Once a payload crosses from cloud to local WORM storage, it is no longer subject to the cloud provider's data retention, compelled-disclosure, or service-termination policies.
-- The service depends on [[service-email]] for mailbox ingestion and on [[service-fs-architecture]] for the WORM storage interface. These three services together constitute the inbound data sovereignty stack.
+1. **Stage.** Any local mail file not yet staged is compressed and split into fixed-size chunks in an outbound queue, ready for an external counterpart process to pick up.
+2. **Wipe on receipt.** When that external process confirms it has received a transfer — a cryptographic receipt, not a simple acknowledgement — `service-egress` deletes both the original local file and its staged chunks. Nothing is removed until that receipt exists.
 
-## Flow-through protocol
+## Why the ordering matters
 
-The flow-through protocol proceeds as follows:
+This ordering means data loss during a transfer is impossible on this service's side: the local original stays in place through staging and transfer, and disappears only after independent confirmation that the outbound copy landed. A crash mid-transfer simply leaves the local original and its staged chunks both present for the next cycle to pick back up.
 
-1. **Acquire** — `service-egress` connects to the cloud source (a mailbox via IMAP, an object store, or a cloud file system) and fetches the payload.
-2. **Write** — the payload is written to the per-tenant WORM ledger via `service-fs`. The write is acknowledged only when the ledger confirms the record is durable on local storage.
-3. **Clear** — only after a confirmed durable local write does `service-egress` issue the delete or archive command to the cloud source. The clearing step is conditional: if the write fails, the cloud copy is preserved.
-
-This ordering ensures that payload loss is impossible within the service's failure domain. A crash between steps 2 and 3 leaves the payload in both places; the next run deduplicates before retrying the clear.
+This service has no IMAP or object-store client, and never calls into the [[worm-ledger-design|WORM ledger]] interface — the WORM ledger's append-only guarantees are real elsewhere in the platform, just not part of this particular service.
 
 ## See also
 
-- [[sovereign-airlock-doctrine]] — the architectural principle governing unidirectional data flow into the WORM ledger
-- [[service-email]] — the email ingestion service that coordinates with service-egress for mailbox ingest
-- [[service-fs-architecture]] — the file-system service providing the WORM ledger interface
-- [[worm-ledger-design]] — the append-only storage discipline that egress records enter
+- [[service-email]] — the mail ingestion service whose local Maildir this service stages for outbound transfer

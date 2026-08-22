@@ -3,39 +3,32 @@ schema: foundry-doc-v1
 type: topic
 content_type: topic
 slug: service-egress
-short_description: "El servicio de soberanía de datos que transfiere físicamente cargas útiles almacenadas en la nube al almacenamiento en frío local, ejecutando protocolos de flujo que eliminan retención de datos del lado del proveedor y dependencia de almacenamiento en la nube."
+short_description: "service-egress comprime y fragmenta datos de correo locales para transferencia saliente, y solo elimina la fuente local una vez que una contraparte externa confirma la recepción con una prueba criptográfica — una válvula de liberación saliente, no una importación de la nube a local."
 title: "Servicio de egreso"
 category: services
 index_group: ring-2-knowledge-and-processing
 language: es
 paired_with: service-egress.md
 status: stub
-last_edited: 2026-05-07
+last_edited: 2026-08-22
 editor: pointsav-engineering
 ---
 
-[[service-fs-architecture|`service-egress`]] es el motor de soberanía de datos que transfiere físicamente las cargas almacenadas en la nube al almacenamiento local en frío, ejecutando el protocolo de flujo que elimina la retención de datos del proveedor y la dependencia de la continuidad del almacenamiento en nube. Las cargas transferidas se escriben en el [[worm-ledger-design|libro mayor WORM]] por inquilino gestionado por [[service-fs-architecture]], donde se convierten en registros de solo adición. El servicio trabaja junto a [[service-email]] para garantizar que cada mensaje ingestado de un buzón en la nube tenga una copia local permanente antes de que se limpie la fuente en la nube. Consulte la [[sovereign-airlock-doctrine|exclusa soberana]] para conocer el principio arquitectónico que rige la dirección del flujo de datos.
+`service-egress` mueve datos de correo locales hacia afuera — lo contrario de lo que su nombre podría sugerir a primera vista. No trae nada desde la nube; prepara datos locales para transferencia saliente y solo elimina la copia local una vez que tiene la prueba de que la transferencia tuvo éxito.
 
-## Puntos clave
+## El ciclo
 
-- El protocolo de flujo tiene tres pasos en orden: descargar de la nube → escribir en el WORM local → limpiar la fuente en la nube. La copia original en la nube se elimina; el registro WORM local es la copia permanente.
-- Las cargas transferidas se convierten en registros WORM de solo adición. La ruta de egreso no puede sobrescribir ni eliminar registros anteriores — la soberanía de datos se aplica estructuralmente, no por política.
-- service-egress opera en el límite de soberanía. Una vez que una carga cruza de la nube al almacenamiento WORM local, ya no está sujeta a las políticas de retención de datos, divulgación compelida o terminación de servicio del proveedor de nube.
-- El servicio depende de [[service-email]] para la ingestión de buzones y de [[service-fs-architecture]] para la interfaz de almacenamiento WORM. Estos tres servicios constituyen juntos la pila de soberanía de datos de entrada.
+Ejecutándose continuamente, el servicio repite dos pasos:
 
-## Protocolo de flujo
+1. **Preparar.** Cualquier archivo de correo local aún no preparado se comprime y divide en fragmentos de tamaño fijo dentro de una cola de salida, listos para que un proceso externo homólogo los recoja.
+2. **Eliminar al recibir confirmación.** Cuando ese proceso externo confirma que ha recibido una transferencia — un recibo criptográfico, no un simple acuse de recibo — `service-egress` elimina tanto el archivo local original como sus fragmentos preparados. Nada se elimina hasta que existe ese recibo.
 
-El protocolo de flujo sigue la secuencia siguiente:
+## Por qué importa el orden
 
-1. **Adquisición** — `service-egress` se conecta a la fuente en la nube (un buzón vía IMAP, un almacén de objetos o un sistema de archivos en la nube) y obtiene la carga.
-2. **Escritura** — la carga se escribe en el libro mayor WORM por inquilino vía `service-fs`. La escritura solo se confirma cuando el libro mayor certifica que el registro es duradero en el almacenamiento local.
-3. **Limpieza** — solo tras una escritura local durable confirmada emite `service-egress` el comando de eliminación o archivado a la fuente en la nube. El paso de limpieza es condicional: si la escritura falla, la copia en la nube se conserva.
+Este orden hace que la pérdida de datos durante una transferencia sea imposible del lado de este servicio: el original local permanece en su lugar durante la preparación y la transferencia, y desaparece solo después de la confirmación independiente de que la copia saliente llegó. Un fallo a mitad de la transferencia simplemente deja tanto el original local como sus fragmentos preparados presentes para que el siguiente ciclo los retome.
 
-Esta ordenación garantiza que la pérdida de carga sea imposible dentro del dominio de fallo del servicio. Un fallo entre los pasos 2 y 3 deja la carga en ambos lugares; la siguiente ejecución deduplica antes de reintentar la limpieza.
+Este servicio no tiene cliente IMAP ni de almacenamiento de objetos, y nunca llama a la interfaz del [[worm-ledger-design|libro mayor WORM]] — las garantías de solo adición del libro mayor WORM son reales en otra parte de la plataforma, simplemente no forman parte de este servicio en particular.
 
 ## Véase también
 
-- [[sovereign-airlock-doctrine]] — el principio arquitectónico que rige el flujo de datos unidireccional hacia el libro mayor WORM
-- [[service-email]] — el servicio de ingestión de correo que coordina con service-egress para la ingestión de buzones
-- [[service-fs-architecture]] — el servicio de sistema de archivos que proporciona la interfaz del libro mayor WORM
-- [[worm-ledger-design]] — la disciplina de almacenamiento de solo adición en la que entran los registros de egreso
+- [[service-email]] — el servicio de ingesta de correo cuyo Maildir local este servicio prepara para transferencia saliente
