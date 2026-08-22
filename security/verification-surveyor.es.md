@@ -12,7 +12,7 @@ audience: vendor-public
 bcsc_class: current-fact
 language: es
 language_protocol: TRANSLATE-ES
-last_edited: 2026-08-06
+last_edited: 2026-08-22
 editor: pointsav-engineering
 short_description: "Una herramienta de línea de comandos que exige a una persona confirmar cada identidad extraída contra evidencia externa antes de que ascienda de una cola a un registro verificado, con un tope de diez confirmaciones al día."
 paired_with: verification-surveyor.md
@@ -134,11 +134,9 @@ registro descrito en [[identity-ledger-schema-design|el diseño del esquema del 
 al que se llega por una interfaz HTTP y que se persiste a través del servicio de archivos. Tratarlos
 como un mismo sistema lleva a conclusiones incorrectas sobre ambos.
 
-Una revisión anterior sobre este asunto concluyó erróneamente que el mecanismo del inspector no
-existía, habiendo buscado únicamente en el fuente del propio servicio de identidad; aquel hallazgo fue
-retractado en cuanto se localizó la implementación real en la consola de contenido. La lección
-permanente: una búsqueda en un solo crate no es prueba suficiente de que un mecanismo descrito no
-exista en ninguna parte del monorepo.
+El mecanismo del inspector es código real y construido — no una propuesta, no una descripción de
+intención. Vive en la consola de contenido, no en el servicio de identidad donde la mayoría de los
+lectores esperarían encontrarlo.
 
 ## Ninguna inferencia en toda la ruta
 

@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-03
+last_edited: 2026-08-22
 editor: pointsav-engineering
 short_description: "A command-line tool that requires a person to confirm each extracted identity against external evidence before it is promoted from a queue to a verified record, throttled to ten confirmations per day."
 paired_with: verification-surveyor.es.md
@@ -125,10 +125,8 @@ sharing any code. One is the file-based queue described here. The other is the r
 described in [[identity-ledger-schema-design]], reached over an HTTP interface and persisted
 through the file service. Treating them as one system leads to incorrect conclusions about both.
 
-An earlier review pass on this subject wrongly concluded the surveyor mechanism did not exist,
-having searched only the identity service's own source; that finding was retracted once the real
-implementation was located in the content console. The standing lesson: a single-crate search is
-not sufficient evidence that a described mechanism doesn't exist anywhere in the monorepo.
+The surveyor mechanism is real, built code — not a proposal, not a description of intent. It lives
+in the content console, not in the identity service most readers would expect to find it in.
 
 ## No inference anywhere in the path
 
