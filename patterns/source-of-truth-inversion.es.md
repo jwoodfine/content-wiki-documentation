@@ -29,7 +29,7 @@ El patrón se repite en el motor wiki, en la canalización de extracción de Rin
 
 ## Por qué el patrón importa
 
-En el motor wiki, git es canónico; el proceso en ejecución es una vista; la superposición CRDT de colaboración en tiempo real (planificada, desactivada por defecto) es efímera de sesión. El índice de búsqueda Tantivy, el grafo de wikilinks redb (planificado), y todo el HTML renderizado se derivan bajo demanda del árbol de Markdown en disco. Cualquiera de estos artefactos derivados puede descartarse y reconstruirse; ninguno se respalda ni se divulga. Lo que se respalda, replica, firma y divulga es el árbol git.
+En el motor wiki, git es canónico; el proceso en ejecución es una vista; la [[collab-via-passthrough-relay|superposición CRDT de colaboración en tiempo real]] — desde entonces eliminada del motor — fue la capa efímera de sesión mientras existió. El índice de búsqueda Tantivy, el grafo de wikilinks redb (planificado), y todo el HTML renderizado se derivan bajo demanda del árbol de Markdown en disco. Cualquiera de estos artefactos derivados puede descartarse y reconstruirse; ninguno se respalda ni se divulga. Lo que se respalda, replica, firma y divulga es el árbol git.
 
 Para `service-extraction` (canalización de revisión multiautor de Ring 2), el registro canónico es el registro de eventos de extracción confirmado en el ledger WORM inmutable gestionado por `service-fs`. El ledger aplica un orden total sobre todos los eventos. La cola de revisión mostrada a cada revisor se deriva del conjunto de entradas del ledger que aún no han recibido un commit de veredicto. Esta derivación es determinista: el mismo ledger produce la misma cola en cada consulta.
 
@@ -41,7 +41,7 @@ El diseño de dos sustratos de la plataforma requiere que los mismos binarios `o
 
 ## Aplicaciones planificadas
 
-Para las aplicaciones planificadas `app-workplace-presentation` (autoría colaborativa de presentaciones) y `app-workplace-proforma` (edición de tablas estructuradas en contextos de negocio regulados), el mismo mapeo de fuente de verdad se aplica: el repositorio git del cliente es canónico; la interfaz de usuario renderizada es una vista; el estado CRDT de colaboración durante sesiones compartidas es efímero de sesión. Nada persiste al registro canónico sin un commit explícito de un autor humano. Estas capas de colaboración son planificadas y no están implementadas al 2026-04-27.
+Para las aplicaciones planificadas `app-workplace-presentation` (autoría colaborativa de presentaciones) y `app-workplace-proforma` (edición de tablas estructuradas en contextos de negocio regulados), el mismo mapeo de fuente de verdad se aplica: el repositorio git del cliente es canónico; la interfaz de usuario renderizada es una vista; el estado CRDT de colaboración durante sesiones compartidas es efímero de sesión. Nada persiste al registro canónico sin un commit explícito de un autor humano. Estas capas de colaboración están planificadas; todavía no se han implementado.
 
 ## Véase también
 

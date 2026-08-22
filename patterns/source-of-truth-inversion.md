@@ -28,7 +28,7 @@ The pattern recurs across the wiki engine, the Ring 2 extraction pipeline, and t
 
 ## Application: wiki engine (anchor instance)
 
-The full treatment of source-of-truth inversion in the wiki engine appears in [[app-mediakit-knowledge]] §2. The summary here: git is canonical; the running binary is a view; the CRDT passthrough relay (Phase 2 Step 7, planned, default-off) is session-ephemeral.
+The full treatment of source-of-truth inversion in the wiki engine appears in [[app-mediakit-knowledge]] §2. The summary here: git is canonical, the running binary is a view, and the historical [[collab-via-passthrough-relay|CRDT passthrough relay]] — since removed from the engine — was the session-ephemeral layer while it existed.
 
 The Tantivy full-text search index, the redb wikilink graph (planned, Phase 4), and all rendered HTML are derived on demand from the Markdown tree on disk. Any of those derived artefacts can be discarded and rebuilt; none is backed up; none is disclosed. The git tree is what is backed up, replicated, signed, and disclosed. The binary cannot accumulate state that the git tree does not have.
 
@@ -38,21 +38,7 @@ This case grounds the pattern with a live deployment: `https://documentation.poi
 
 `service-extraction` is the Ring 2 service that runs the multi-author document review pipeline. The source-of-truth mapping:
 
-**Canonical**: the extraction event log committed to the WORM immutable ledger managed by `service-fs` (live on the workspace VM since v0.1.23, binding `127.0.0.1:9100`, ledger root at `/var/lib/local-fs/ledger/`). An extraction event is durably sequenced the moment it is appended to the ledger; the ledger enforces total order over all events. Ledger entries are not modifiable after the fact — that is what WORM (Write Once Read Many) means structurally, not just operationally. The WORM ledger as canonical storage follows the substrate's general preference for append-only signed records: instead of a mutable relational database as the authority for review state, the substrate is an append-only signed log.
-
-**Correction (2026-07-18):** the port checks out (9100), but the bind address and ledger
-root path do not match the live systemd unit
-(`infrastructure/systemd/mediakit/local-fs.service`, verified in the
-[[worm-ledger-architecture]] correction). The real unit sets `FS_BIND_ADDR=0.0.0.0:9100`
-(not `127.0.0.1:9100`) and `FS_LEDGER_ROOT=/opt/mediakit/data/service-fs/ledger` (not
-`/var/lib/local-fs/ledger/`). The `v0.1.23` version claim was not independently
-re-verified. **Flagged, not silently rewritten** — the bind-address and path details may
-simply be stale relative to a later deployment change; needs project-totebox confirmation
-before correcting.
-
-**Follow-up correction (2026-08-02):** the `v0.1.23` version claim above, left unverified
-in the 2026-07-18 pass, is now checked — the real crate (`service-fs/Cargo.toml`) is
-`version = "1.0.1"`, not `0.1.23`.
+**Canonical**: the extraction event log committed to the WORM immutable ledger managed by `service-fs` (binding `0.0.0.0:9100`, ledger root at `/opt/mediakit/data/service-fs/ledger`). An extraction event is durably sequenced the moment it is appended to the ledger; the ledger enforces total order over all events. Ledger entries are not modifiable after the fact — that is what WORM (Write Once Read Many) means structurally, not just operationally. The WORM ledger as canonical storage follows the substrate's general preference for append-only signed records: instead of a mutable relational database as the authority for review state, the substrate is an append-only signed log.
 
 **View**: the review queue shown to each reviewer is derived from the set of ledger entries that have not yet received a verdict commit. The per-reviewer verdict summary is derived similarly. Neither the queue nor the summary is stored separately — both re-derive on each query from the ledger. The derivation is deterministic: the same ledger produces the same queue and summary every time it is queried, because the ledger is immutable and total-ordered.
 
@@ -66,7 +52,7 @@ in the 2026-07-18 pass, is now checked — the real crate (`service-fs/Cargo.tom
 
 **View**: rendered slide frames served to browser clients, computed from the committed deck source on demand. The rendered frames are not stored persistently; they are rebuilt from the committed source on each request.
 
-**Ephemeral**: CRDT multi-cursor collaboration state for real-time co-authoring sessions is planned as session-ephemeral. Participating authors see each other's edits in real time via a passthrough relay analogous to the wiki engine's Phase 2 Step 7 relay design. That session-state does not persist between sessions without an explicit commit by a human author. When all authors leave the session, the ephemeral state is discarded; the canonical record in git is unchanged. Note: the CRDT collaboration layer for `app-workplace-presentation` is planned; it is not yet implemented as of 2026-04-27.
+**Ephemeral**: CRDT multi-cursor collaboration state for real-time co-authoring sessions is planned as session-ephemeral, on the same passthrough-relay design the wiki engine once ran — the wiki's own implementation has since been removed, but the design itself remains the reference for this planned layer. That session-state does not persist between sessions without an explicit commit by a human author. When all authors leave the session, the ephemeral state is discarded; the canonical record in git is unchanged. The CRDT collaboration layer for `app-workplace-presentation` is planned; it is not yet implemented.
 
 ## Application: app-workplace-proforma (table collaboration, planned)
 
