@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Qué es un token de diseño"
 slug: what-is-a-design-token
-short_description: "Artículo introductorio que define los tokens de diseño, el Format Module del Design Tokens Community Group del W3C (primera versión estable, octubre de 2025) y la arquitectura de tres niveles primitivo/semántico/componente, fundamentado en el paquete DTCG publicado del Sistema de Diseño PointSav, con 146 tokens."
+short_description: "Artículo introductorio que define los tokens de diseño, el Format Module del Design Tokens Community Group del W3C (primera versión estable, octubre de 2025) y la arquitectura de tres niveles primitivo/semántico/componente, fundamentado en el paquete DTCG publicado del Sistema de Diseño PointSav (130 primitivos + 86 de tema, más los pilares separados de papel y escritura)."
 category: design-system
 type: topic
 content_type: topic
@@ -28,11 +28,18 @@ plataformas nativas — consume la entrada por su nombre, de modo que la
 decisión se toma una vez y se referencia en todas partes.
 
 El Sistema de Diseño PointSav publica sus tokens como un único paquete
-legible por máquina, `tokens.full.json`, con 146 tokens hoja repartidos en
-dos grupos de nivel superior: una capa primitiva de 82 tokens y una capa
-semántica tematizada de 64 (37 roles del tema claro más 27 entradas del modo
-oscuro). Cada recuento, nombre y valor de este artículo proviene de ese
-archivo publicado, no de un ejemplo idealizado.
+legible por máquina, `tokens.full.json`. El paquete ha crecido más allá de
+su forma original de dos grupos: ahora reúne cuatro pilares de nivel
+superior — `primitive` (130 tokens hoja), `theme` (86, repartidos en 53
+roles semánticos del tema claro, 28 entradas del modo oscuro y 5
+anulaciones específicas de accesibilidad) y dos pilares que el alcance
+original de este artículo no cubría, `paper` (383, tokens de impresión/
+documentos) y `writing` (37, tokens de contenido editorial). Los recuentos
+siguientes describen los pilares `primitive` y `theme`, que son de lo que
+trata realmente este artículo; como cualquier paquete vivo, el recuento
+exacto de tokens se mueve conforme crece el sistema de diseño, y el
+archivo mismo —no una cifra fija en este artículo— es la fuente
+autorizada.
 
 ## Una decisión con nombre
 
@@ -95,18 +102,21 @@ niveles, cada uno de los cuales responde una pregunta distinta.
 bruto: opciones, no decisiones de uso. El ejemplo didáctico del sitio de
 documentación es `ps-blue-600: #234ed8` — un azul con una posición en la
 escala y sin opinión sobre dónde aparece. En el paquete publicado este nivel
-es el grupo `primitive`: 36 colores en familias con nombre de rol
+es el grupo `primitive`: 60 colores en familias con nombre de rol
 (`primary`, `neutral`, `positive`, `caution`, `critical`, cada una en una
 escala numérica 10–100, más negro y blanco), una escala de espaciado de 13
 pasos, 14 estilos tipográficos, 6 duraciones, 4 curvas de aceleración, 5
-dimensiones de borde, 3 puntos de quiebre de viewport y un compuesto de
-anillo de foco — 82 tokens en total.
+dimensiones de borde, 3 puntos de quiebre de viewport, un compuesto de
+anillo de foco, y un conjunto de subgrupos de superficie, elevación y
+elementos de sitio (surface, elevation, brand-accent, category-tile,
+footer) añadidos desde el alcance original de este artículo — 130 tokens
+en total.
 
 **Los tokens semánticos responden "¿qué significa este valor aquí?"** Toman
 un primitivo por alias y le adjuntan un rol. El ejemplo didáctico es
 `cds-interactive: {ps-blue-600}` — "todo aquello sobre lo que una persona
 puede actuar". La contraparte del paquete es
-`theme.semantic.interactive-primary: {color.primary-60}`, uno de 37 roles
+`theme.semantic.interactive-primary: {color.primary-60}`, uno de 53 roles
 semánticos que cubren superficies (`surface-base`, `surface-elevated`),
 texto ("ink", tinta, en el vocabulario de este sistema: `ink-primary`,
 `ink-secondary`), bordes, foco, estados interactivos con sus variantes de

@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "What a design token is"
 slug: what-is-a-design-token
-short_description: "Entry-level background article defining design tokens, the W3C Design Tokens Community Group Format Module (first stable version, October 2025), and the primitive/semantic/component three-tier architecture, grounded in the PointSav Design System's published 146-token DTCG bundle."
+short_description: "Entry-level background article defining design tokens, the W3C Design Tokens Community Group Format Module (first stable version, October 2025), and the primitive/semantic/component three-tier architecture, grounded in the PointSav Design System's published DTCG bundle (130 primitive + 86 theme tokens, plus separate paper and writing pillars)."
 category: design-system
 type: topic
 content_type: topic
@@ -27,20 +27,16 @@ platforms — consumes the entry by name, so the decision is made once and
 referenced everywhere.
 
 The PointSav Design System publishes its tokens as a single machine-readable
-bundle, `tokens.full.json`, containing 146 leaf tokens across two top-level
-groups: a primitive layer of 82 tokens and a themed semantic layer of 64 (37
-light-theme roles plus 27 dark-mode entries). Every count, name, and value in
-this article comes from that published file, not from an idealized example.
-(Correction, 2026-08-02: this is stale — every count has moved. Real
-`primitive` = 100 leaves (includes 18 `orgchart.*` tokens this article never
-mentions), real `theme.semantic` = 53, real `theme.dark` = 28, plus an
-unmentioned `theme.accessibility` group (5). Two entire top-level pillars,
-`paper` (167 leaves) and `writing` (32 leaves), were folded into the same
-export file and aren't mentioned anywhere in this article. Git history shows
-146 was accurate three weeks before this article's own `last_edited` date and
-has moved twice since. The specific hex value and color-family count cited
-elsewhere in this article are independently confirmed accurate. Flagged, not
-resolved.)
+bundle, `tokens.full.json`. The bundle has grown past its original two-group
+shape: it now carries four top-level pillars — `primitive` (130 leaves),
+`theme` (86 leaves, split 53 light-theme semantic roles, 28 dark-mode
+entries, and 5 accessibility-specific overrides), and two pillars this
+article's original scope didn't cover, `paper` (383 leaves, print/document
+tokens) and `writing` (37 leaves, editorial-content tokens). The counts
+below describe the `primitive` and `theme` pillars this article is actually
+about; like any live bundle, the exact leaf count moves as the design
+system grows, and the file itself — not a fixed number in this article — is
+the authoritative source.
 
 ## A decision with a name
 
@@ -98,17 +94,19 @@ answering a different question.
 options, not decisions about use. The documentation site's teaching example
 is `ps-blue-600: #234ed8` — a blue with a scale position and no opinion about
 where it appears. In the published bundle this tier is the `primitive` group:
-36 colors in role-named families (`primary`, `neutral`, `positive`,
+60 colors in role-named families (`primary`, `neutral`, `positive`,
 `caution`, `critical`, each on a numeric 10–100 scale, plus black and white),
 a 13-step spacing scale, 14 typography styles, 6 durations, 4 easing curves,
-5 border dimensions, 3 viewport breakpoints, and a focus-ring composite — 82
-tokens in all.
+5 border dimensions, 3 viewport breakpoints, a focus-ring composite, and a
+set of surface, elevation, and site-chrome subgroups (surface, elevation,
+brand-accent, category-tile, footer) added since this article's original
+scope — 130 tokens in all.
 
 **Semantic tokens answer "what does this value mean here?"** They alias a
 primitive and attach a role. The teaching example is
 `cds-interactive: {ps-blue-600}` — "anything a person can act on." The
 bundle's counterpart is `theme.semantic.interactive-primary:
-{color.primary-60}`, one of 37 semantic roles covering surfaces (`surface-base`,
+{color.primary-60}`, one of 53 semantic roles covering surfaces (`surface-base`,
 `surface-elevated`), text ("ink" in this system's vocabulary: `ink-primary`,
 `ink-secondary`), borders, focus, interactive states with their hover and
 pressed variants, and status support colors. The semantic tier is where a
