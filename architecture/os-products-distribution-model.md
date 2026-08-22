@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "os-infrastructure and os-network-admin: Distribution Model"
 slug: os-products-distribution-model
 category: architecture
+index_group: customer-ownership-and-deployment
 type: topic
 content_type: topic
 quality: complete
@@ -13,24 +14,22 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-06-29
 editor: pointsav-engineering
 paired_with: os-products-distribution-model.es.md
-short_description: "Two products are planned for software.pointsav.com: os-infrastructure ($19 USDC) and os-network-admin ($1 USDC); each ships as three signed artifacts per version."
+short_description: "os-network-admin distributes today at software.pointsav.com at $0 USDC (beta); os-infrastructure's bare-metal/cloud-VM distribution model is planned but not yet catalogued. Both ship as signed artifacts, licensed and delivered on-chain."
 cites: []
 ---
 
-Two products are planned/intended for distribution at `software.pointsav.com`:
+`os-network-admin` is catalogued for distribution at `software.pointsav.com` today, currently priced at $0 USDC while in beta — no non-zero price has been ratified for it yet. `os-infrastructure`, the sovereign OS for PPN infrastructure nodes described below, is planned but not yet a catalogued product; its distribution model is the intended design, not a live listing.
 
-| Product | Price | What it provides |
-|---|---|---|
-| `os-infrastructure` | $19 USDC | Sovereign OS for PPN infrastructure nodes — runs on bare metal, cloud VMs, or QEMU |
-| `os-network-admin` | $1 USDC | Mesh control plane; also available as a Linux daemon for existing systems |
-
-**Correction (2026-08-02, verified against canonical `origin/main`):** both prices are wrong. The real catalog (`app-privategit-marketplace/catalog/products.yaml`) prices `os-network-admin` at `$0` (BETA), and `os-infrastructure` doesn't appear as a catalogued product at all — only `os-console` and `os-network-admin` are listed. The ratified licensing BRIEF cited in the marketplace code states explicitly: "every catalogued product is priced at $0 USDC (BETA)... no non-zero future price has been ratified for any tier." **Flagged, not resolved.**
+| Product | Status | Price | What it provides |
+|---|---|---|---|
+| `os-network-admin` | Catalogued (beta) | $0 USDC | Mesh control plane; also available as a Linux daemon for existing systems |
+| `os-infrastructure` | Planned, not yet catalogued | Not yet set | Sovereign OS for PPN infrastructure nodes — runs on bare metal, cloud VMs, or QEMU |
 
 Pricing is denominated in USDC on Polygon PoS. No subscription billing. No customer account required. The on-chain transaction is the receipt.
 
 ## Three artifacts per product
 
-Each product ships three signed artifacts per version. The same Ed25519 key signs all three, so artifact authenticity is verifiable independently of the distribution server.
+The design intends up to three signed artifacts per product per version, the same Ed25519 key signing all three so artifact authenticity is verifiable independently of the distribution server. `os-network-admin`'s catalogued beta ships as the daemon artifact today; the `.iso`/`.qcow2` bare-metal and cloud-VM paths described below are part of `os-infrastructure`'s planned distribution model, not yet a live listing.
 
 ### `.iso` — Bare metal
 
@@ -56,13 +55,13 @@ Payment flow:
 4. The download token unlocks all three artifact formats for the purchased version.
 5. On subsequent use, the installed binary can re-verify its token against the storefront's public key without contacting the storefront again.
 
-Source code is available on GitHub. The $19 / $1 payment covers the pre-built binary, the Ed25519 signature from the PointSav signing key, and the commercial license token.
+Source code is available on GitHub. Payment, where a price is set, is intended to cover the pre-built binary, the Ed25519 signature from the PointSav signing key, and the commercial license token.
 
 ## Two-click install principle
 
-The target market is small and medium businesses with limited IT staff. Installation complexity is constrained to three operator decisions or fewer.
+The target market is small and medium businesses with limited IT staff. Installation complexity is designed to stay within three operator decisions or fewer.
 
-For `os-infrastructure` on bare metal: download the `.iso`, write it to USB, boot the machine, and answer three setup questions (node name, genesis endpoint, pairing code). The node appears in the fleet within thirty seconds of completing the pairing sequence.
+For `os-infrastructure` on bare metal, once catalogued: download the `.iso`, write it to USB, boot the machine, and answer three setup questions (node name, genesis endpoint, pairing code). The node is designed to appear in the fleet within thirty seconds of completing the pairing sequence.
 
 For `os-network-admin` in daemon mode: download the AppImage, mark it executable, run it, and configure the WireGuard endpoint through the guided terminal interface. The daemon joins the mesh and registers in the fleet without requiring any system reimaging.
 

@@ -3,6 +3,7 @@ schema: foundry-doc-v1
 title: "os-infrastructure y os-network-admin: Modelo de Distribución"
 slug: os-products-distribution-model
 category: architecture
+index_group: customer-ownership-and-deployment
 type: topic
 content_type: topic
 quality: complete
@@ -13,22 +14,22 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-06-29
 editor: pointsav-engineering
 paired_with: os-products-distribution-model.md
-short_description: "Dos productos están previstos para software.pointsav.com: os-infrastructure ($19 USDC, metal desnudo o VM en la nube) y os-network-admin ($1 USDC, plano de control de la malla que incluye modo demonio Linux). Cada uno se distribuye como tres artefactos firmados por versión."
+short_description: "os-network-admin se distribuye hoy en software.pointsav.com a $0 USDC (beta); el modelo de distribución de os-infrastructure (metal desnudo/VM en la nube) está previsto pero aún no catalogado. Ambos se entregan como artefactos firmados, licenciados y entregados en cadena."
 cites: []
 ---
 
-Dos productos están previstos para distribución en `software.pointsav.com`:
+`os-network-admin` está catalogado para distribución en `software.pointsav.com` hoy, con precio actual de $0 USDC mientras está en beta — no se ha ratificado ningún precio distinto de cero todavía. `os-infrastructure`, el SO soberano para nodos de infraestructura PPN descrito abajo, está previsto pero aún no es un producto catalogado; su modelo de distribución es el diseño previsto, no un listado en vivo.
 
-| Producto | Precio | Qué proporciona |
-|---|---|---|
-| `os-infrastructure` | 19 USD en USDC | SO soberano para nodos de infraestructura PPN — funciona en metal desnudo, VM en la nube o QEMU |
-| `os-network-admin` | 1 USD en USDC | Plano de control de la malla; también disponible como demonio Linux para sistemas existentes |
+| Producto | Estado | Precio | Qué proporciona |
+|---|---|---|---|
+| `os-network-admin` | Catalogado (beta) | $0 USDC | Plano de control de la malla; también disponible como demonio Linux para sistemas existentes |
+| `os-infrastructure` | Previsto, aún no catalogado | Sin fijar | SO soberano para nodos de infraestructura PPN — funciona en metal desnudo, VM en la nube o QEMU |
 
 El precio está denominado en USDC en Polygon PoS. Sin facturación por suscripción. Sin necesidad de cuenta de cliente. La transacción en cadena es el recibo.
 
-## Tres artefactos por producto
+## Artefactos por producto
 
-Cada producto distribuye tres artefactos firmados por versión. La misma clave Ed25519 firma los tres, por lo que la autenticidad del artefacto es verificable independientemente del servidor de distribución.
+El diseño prevé hasta tres artefactos firmados por producto por versión, con la misma clave Ed25519 firmando los tres para que la autenticidad sea verificable independientemente del servidor de distribución. La beta catalogada de `os-network-admin` se distribuye hoy como el artefacto demonio; las rutas `.iso`/`.qcow2` de metal desnudo y VM en la nube descritas abajo forman parte del modelo de distribución previsto de `os-infrastructure`, aún no un listado en vivo.
 
 ### `.iso` — Metal desnudo
 
@@ -54,13 +55,13 @@ Flujo de pago:
 4. El token de descarga desbloquea los tres formatos de artefacto para la versión adquirida.
 5. En usos posteriores, el binario instalado puede reverificar su token contra la clave pública de la tienda sin contactar de nuevo con la tienda.
 
-El código fuente está disponible en GitHub. El pago de $19 / $1 cubre el binario precompilado, la firma Ed25519 de la clave de firma de PointSav y el token de licencia comercial.
+El código fuente está disponible en GitHub. El pago, donde se fije un precio, está previsto para cubrir el binario precompilado, la firma Ed25519 de la clave de firma de PointSav y el token de licencia comercial.
 
 ## Principio de instalación en dos clics
 
-El mercado objetivo son pequeñas y medianas empresas con personal de TI limitado. La complejidad de la instalación está limitada a tres decisiones del operador o menos.
+El mercado objetivo son pequeñas y medianas empresas con personal de TI limitado. La complejidad de la instalación está diseñada para mantenerse en tres decisiones del operador o menos.
 
-Para `os-infrastructure` en metal desnudo: descargar el `.iso`, grabarlo en USB, arrancar la máquina y responder tres preguntas de configuración (nombre del nodo, punto de acceso de génesis, código de emparejamiento). El nodo aparece en la flota en treinta segundos tras completar la secuencia de emparejamiento.
+Para `os-infrastructure` en metal desnudo, una vez catalogado: descargar el `.iso`, grabarlo en USB, arrancar la máquina y responder tres preguntas de configuración (nombre del nodo, punto de acceso de génesis, código de emparejamiento). Está previsto que el nodo aparezca en la flota en treinta segundos tras completar la secuencia de emparejamiento.
 
 Para `os-network-admin` en modo demonio: descargar el AppImage, hacerlo ejecutable, ejecutarlo y configurar el punto de acceso WireGuard a través de la interfaz de terminal guiada. El demonio se une a la malla y se registra en la flota sin necesidad de reimaginar ningún sistema.
 
