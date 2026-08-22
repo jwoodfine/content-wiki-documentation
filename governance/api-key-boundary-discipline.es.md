@@ -45,7 +45,7 @@ Tres propiedades estructurales justifican la regla:
 
 ## Cumplimiento
 
-La combinación de límite de pasarela, ledger de auditoría por tenant y lista de propósitos permitidos produce un rastro de auditoría criptográfico sobre cada llamada de inferencia externa. Esta estructura satisface los requisitos de integridad de procesamiento de SOC 2 y los principios de cadena de custodia de ISAE 3402 por construcción.
+La combinación de límite de pasarela, ledger de auditoría por tenant y lista de propósitos permitidos produce un rastro de auditoría criptográfico sobre cada llamada de inferencia externa por construcción, no mediante un proceso de cumplimiento aparte. Esta estructura está diseñada para respaldar los requisitos de integridad de procesamiento de SOC 2 y los principios de cadena de custodia de ISAE 3402; ninguna certificación SOC 2 ni ISAE 3402 existe todavía — véase [[compliance-and-continuous-disclosure]] para el estado actual de certificación.
 
 ## Véase también
 
