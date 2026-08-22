@@ -34,11 +34,29 @@ Las PYME reguladas comparten tres características que definen el mercado.
 
 Clínicas pequeñas bajo legislación de privacidad sanitaria, despachos jurídicos regionales con obligaciones de confidencialidad, asesores financieros medianos con requisitos de reporte regulatorio y operadoras inmobiliarias con archivos corporativos son ejemplos representativos. No son casos excepcionales; conforman la economía regulada por debajo del umbral empresarial.
 
-## Los dos niveles
+## Dos niveles comerciales, tres licencias
 
-**Community** es el nivel gratuito, bajo licencia AGPL-3.0-or-later. Un despliegue Community es un archivo [[totebox-os|ToteboxOS]] y una terminal [[console-os|ConsoleOS]], con inferencia local de modelos como componente opcional. Community es el embudo de adopción — genera contribuidores y expone casos límite — y [[pointsav-overview|PointSav]] no obtiene ingresos de él.
+La licencia se aplica por módulo, no por nivel — cada crate lleva su propio
+identificador SPDX, y las tres licencias reales se agrupan en un patrón, no en una
+división limpia de dos vías. `os-console` y `os-workplace` (las superficies que
+realmente ejecuta un despliegue Community) son AGPL-3.0-or-later. La mayor parte del
+resto de la plataforma — `os-privategit`, `os-totebox`, `os-mediakit`,
+`os-infrastructure` y las familias `app-privategit-*`/`app-totebox-*`/
+`app-mediakit-*` — lleva una Functional Source License (FSL-1.1-ALv2), que se
+convierte en Apache-2.0 tras su período de espera. La familia `app-orchestration-*`
+— el núcleo comercial de enrutamiento de inferencia y federación — es totalmente
+propietaria y nunca se convierte a ninguna de las dos licencias abiertas.
 
-**Cliente PYME** es el nivel de ingresos, con un contrato de Orden de Servicio por cliente. Incorpora agregación de múltiples archivos, capacidad de cómputo en GPU bajo demanda, participación en el mercado federado de adaptadores y acceso prioritario a las actualizaciones del modelo base.
+**Community** es el nivel gratuito: un archivo [[totebox-os|ToteboxOS]] y una
+terminal [[console-os|ConsoleOS]], ambos bajo AGPL, con inferencia local de modelos
+como componente opcional. Community es el embudo de adopción — genera contribuidores
+y expone casos límite — y [[pointsav-overview|PointSav]] no obtiene ingresos de él.
+
+**Cliente PYME** es el nivel de ingresos. Incorpora las superficies de distribución
+bajo FSL más el núcleo propietario `app-orchestration-*`: agregación de múltiples
+archivos, capacidad de cómputo en GPU bajo demanda, participación en el mercado
+federado de adaptadores y acceso prioritario a las actualizaciones del modelo base.
+La relación se formaliza mediante una Orden de Servicio por cliente.
 
 ## Por qué no hay nivel Enterprise
 
