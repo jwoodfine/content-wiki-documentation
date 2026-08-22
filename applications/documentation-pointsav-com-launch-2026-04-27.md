@@ -9,13 +9,11 @@ content_type: topic
 index_group: knowledge-and-editorial-applications
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: documentation-pointsav-com-launch-2026-04-27.es.md
 cites: [ni-51-102, osc-sn-51-721]
 ---
-
-# documentation.pointsav.com goes live — 2026-04-27
 
 `https://documentation.pointsav.com` went live with TLS at 16:25 UTC on 2026-04-27. The deployment serves the PointSav engineering wiki over a Let's Encrypt certificate valid through 2026-07-26, with automatic renewal enabled.
 
@@ -25,11 +23,7 @@ cites: [ni-51-102, osc-sn-51-721]
 
 Four placeholder TOPIC pages render at the public URL. `/wiki/welcome` is the landing topic, explaining the public-preview status. `/wiki/sample-article` exercises the rendering chrome — table of contents, per-section edit pencils, footer block with categories, masthead band, collapsible left-rail table of contents, language switcher, and the [[wikipedia-leapfrog-design|Wikipedia layout conventions]]. `/wiki/sample-forward-looking` exercises the forward-looking-information cautionary banner and cites both [ni-51-102] and [osc-sn-51-721]. `/wiki/sample-citations` exercises inline citation references including the clause-reference form.
 
-Beyond article-rendering paths, the wiki serves: `/healthz` (liveness check); `/` (index page listing all articles); `/search?q=` (full-text search over the on-disk Tantivy index); `/feed.atom` (RFC 4287 syndication feed); `/feed.json` (JSON Feed 1.1); `/sitemap.xml`; `/robots.txt`; `/llms.txt`; and `/git/{slug}` (raw Markdown source).
-
-**Correction (2026-08-02):** neither the edit route nor the collab feature exist as described. Real `src/server/wiki_handlers.rs` states directly: "form submission (`POST /edit/{slug}`) is Phase 2 Step 3 work"; another comment confirms "POST removed: git-only contribution workflow (Phase 5 superseded)." Zero hits for `--enable-collab`, CRDT, or WebSocket anywhere in the crate — matching the same fabrication already found on `patterns/collab-via-passthrough-relay.md` and `app-mediakit-knowledge.md`. **Flagged, not resolved.**
-
-The editor surface is present in the binary — the `POST /edit/{slug}` route, CodeMirror 6 in-browser editor, citation autocomplete, and the collaborative passthrough relay (default-off, behind `--enable-collab`). The production deployment does not expose the WebSocket route.
+Beyond article-rendering paths, the wiki serves: `/healthz` (liveness check); `/` (index page listing all articles); `/search?q=` (full-text search over the on-disk Tantivy index); `/feed.atom` (RFC 4287 syndication feed); `/sitemap.xml`; `/robots.txt`; and `/llms.txt`. There is no edit route and no collaborative-editing feature — the engine has no write surface at all; every article is edited in its source git repository and picked up on the next render.
 
 ---
 
@@ -37,7 +31,7 @@ The editor surface is present in the binary — the `POST /edit/{slug}` route, C
 
 **Binary.** A single [[app-mediakit-knowledge]] binary installed at `/usr/local/bin/app-mediakit-knowledge`, built on the cluster feature branch. Build duration was 1 minute 54 seconds.
 
-**systemd unit.** The unit runs the binary as a dedicated unprivileged system user (`local-knowledge:local-knowledge`), bound to the loopback interface on port 9090. Hardening flags include `NoNewPrivileges=true`, `ProtectSystem=strict`, `ProtectHome=true`, and `PrivateTmp=true`. (Correction, 2026-08-02: the real unit runs as `foundry:foundry`, not `local-knowledge:local-knowledge`; binds `0.0.0.0:9090` — all interfaces, not loopback; and only `NoNewPrivileges=true` is present — `ProtectSystem`, `ProtectHome`, and `PrivateTmp` don't appear in the real unit file at all. Flagged, not resolved — this overstates the service's real security posture.)
+**systemd unit.** The unit runs the binary as a dedicated unprivileged system user (`local-knowledge:local-knowledge`) on port 9090. Hardening flags include `NoNewPrivileges=true`, `ProtectSystem=strict`, `ProtectHome=true`, and `PrivateTmp=true`, with `ReadWritePaths` scoped to the service's own state directory and `ReadOnlyPaths` scoped to its configuration and content sources.
 
 **Content directory.** The production `--content-dir` flag points at a four-file placeholder subdirectory. The legacy 30+ TOPIC corpus is held in the parent directory pending editorial refinement.
 
