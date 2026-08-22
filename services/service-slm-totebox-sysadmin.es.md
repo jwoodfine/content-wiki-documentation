@@ -1,66 +1,92 @@
 ---
 schema: foundry-doc-v1
-title: "service-slm como administrador y centro de soporte Totebox"
+title: "SLM como sysadmin de Totebox — el plan"
 slug: service-slm-totebox-sysadmin
-short_description: "Cómo service-slm se convierte en el asistente operativo y centro de soporte para implementaciones de Totebox Archive y Totebox Orchestration — la estrategia de capacitación, las diez familias de tareas operativas y la tubería de cuatro etapas desde captura de corpus hasta adaptadores LoRA por tenant."
 category: services
 type: topic
 content_type: topic
 quality: complete
 index_group: ring-3-ai-gateway
+short_description: "Una dirección planificada para service-slm: usar su canalización real y ya operativa de captura-y-veredicto para construir un asistente sysadmin de Totebox — la taxonomía de tareas específica y las herramientas descritas aquí aún no están construidas."
 status: active
-bcsc_class: public-disclosure-safe
-last_edited: 2026-05-08
+bcsc_class: forward-looking
+language_protocol: PROSE-TOPIC
+last_edited: 2026-08-22
 editor: pointsav-engineering
 cites:
+ - olmo3-allenai
+ - federated-lora-2502-05087
+ - lorax-predibase
+ - s-lora-2024
+ - constitutional-ai-2212-08073
+ - vllm-multi-lora
  - ni-51-102
  - osc-sn-51-721
 paired_with: service-slm-totebox-sysadmin.md
 ---
 
-[[service-slm]] — la pasarela de control de acceso en el [[three-ring-architecture|Anillo 3]] de la plataforma, también referida como el [[doorman-protocol|Doorman]] — está prevista para convertirse en el asistente operativo y centro de soporte de los despliegues de [[totebox-os|Totebox]] Archive y Totebox Orchestration. Este artículo describe la estrategia: las familias de tareas operativas que maneja un administrador, por qué `service-slm` es estructuralmente adecuado para manejarlas, la forma del corpus necesaria para entrenarlo, y las cuatro etapas que llevan un despliegue desde la captura inicial hasta un adaptador LoRA por inquilino en producción.
+Se pretende que [[service-slm]] se convierta en el asistente operativo de los despliegues
+[[totebox-os|Totebox]] — una IA que ayude a un operador a diagnosticar y resolver problemas
+cotidianos de sysadmin en lugar de exigirle buscar en la documentación o escalar a
+ingeniería. Esta es una dirección planificada, no una función distribuida: lo que es real hoy
+es el sustrato de entrenamiento subyacente; lo que está planificado es dirigirlo
+específicamente al trabajo de sysadmin.
 
-## Las diez familias de tareas operativas
+## Lo que es real hoy
 
-Un análisis de los archivos GUIDE en los tres clusters de despliegue Totebox — personal, corporativo y propiedad — produce una taxonomía clara de los escenarios del día a día que un administrador Totebox encuentra. Estas diez familias cubren aproximadamente el 95 por ciento de los escenarios operativos presentes en las guías existentes.
+La [[apprenticeship-substrate|canalización de aprendizaje]] sobre la que se construiría este
+plan es real y operativa. Captura una tupla de corpus para cualquier tipo de tarea etiquetado
+en `stage_at_capture: review`, `verdict: null`, en cada commit relevante — automático, sin
+acción del operador. Una identidad senior revisa posteriormente las tuplas capturadas y firma
+un veredicto (aprobar, refinar, rechazar o diferir) usando una firma SSH verificada contra el
+registro de firmantes del espacio de trabajo. Este mecanismo de captura-y-firma-de-veredicto
+es genérico — ya se ejecuta hoy para tipos de tarea de ingeniería, no de sysadmin — y los
+adaptadores LoRA por inquilino compuestos en tiempo de solicitud por el Doorman son una
+capacidad real y funcional.
 
-Las familias incluyen: aprovisionamiento de nodos (secuencia física de 9 pasos con verificación criptográfica), diagnóstico de operaciones de ingesta (daemon de spool, autenticación MSFT Graph, errores de glosario de dominio), extracción soberana de datos (DARP), sincronización de almacenamiento en frío, revisión de ejecución del modelo de lenguaje, operaciones de búsqueda soberana, operaciones de identidad y capacidad (protocolo MBA), validación de inyección de adaptadores, reconciliación de pistas de auditoría, e importación de datos conformes al esquema.
+**Lo que no es real hoy**: ningún tipo de tarea de sysadmin se ha registrado en esta
+canalización. La taxonomía específica a continuación, y las herramientas que nombra, son una
+propuesta de cómo esa capacidad podría extenderse al trabajo de sysadmin — no un inventario de
+lo que existe.
 
-Estas diez familias de tareas se convierten en los tipos de tareas nombrados para el registro de aprendizaje de service-slm.
+## La taxonomía de tareas propuesta
 
-## Por qué service-slm y no una API externa
+Un relevamiento de las guías operativas en los clústeres de despliegue de Totebox sugiere
+aproximadamente diez categorías recurrentes de trabajo de sysadmin con las que un asistente
+entrenado podría ayudar: aprovisionamiento de nodos, diagnóstico de canalización de ingreso,
+extracción soberana de datos, egreso a almacenamiento en frío, revisión de registros
+redactados por IA contra los verificados, operaciones de índice de búsqueda, operaciones de
+identidad y emparejamiento, validación de despliegue de adaptadores, reconciliación de rastro
+de auditoría, e importación de datos conforme a esquema. Cada una necesitaría su propio tipo
+de tarea registrado en la canalización anterior, con su propio corpus de interacciones reales
+del operador, antes de que pudiera entrenarse un adaptador para ella.
 
-Cuatro propiedades estructurales hacen que estas cargas de trabajo sean idóneas para service-slm:
+## Por qué service-slm en lugar de una API externa, si se construye
 
-**Soberanía.** Cada familia de tareas toca datos del tenant — registros de personal, libros mayores corporativos, archivos de bienes raíces, pistas de auditoría. Enviar estos datos a un servicio externo para operaciones rutinarias de administración rompe la garantía de soberanía de datos de la plataforma. service-slm ejecutándose localmente dentro del límite del Doorman del cliente es la única arquitectura donde los datos nunca salen del sustrato controlado por el cliente.
+El razonamiento para mantener este trabajo local en lugar de enrutarlo a una API de terceros
+aplica independientemente de si la taxonomía específica anterior es lo que finalmente se
+distribuye: cada una de estas categorías de tareas toca datos de inquilinos — registros de
+personal, libros mayores corporativos, archivos de propiedades, rastros de auditoría — y
+enrutar esos datos a un servicio externo para operaciones rutinarias de sysadmin rompería la
+garantía de soberanía de datos de la plataforma. Un modelo ejecutándose dentro del límite
+propio del Doorman del cliente es la arquitectura donde los datos nunca salen de la
+infraestructura propia del cliente. Los adaptadores LoRA por inquilino, una vez entrenados con
+el corpus operativo propio de un cliente, también harían al asistente más preciso para ese
+cliente específicamente que lo que podría lograr un servicio genérico — el historial de
+interacción propio del cliente permanece dentro de su propio sustrato, disponible para
+entrenamiento, sin transmisión externa.
 
-**Latencia.** El trabajo de administración es de alta frecuencia y baja latencia. El Nivel B (OLMo 3.1 32B Think en GPU A100) entrega aproximadamente 100–150 tokens por segundo. Una llamada de API externa añade 5–15 segundos por llamada incluyendo red y cola del proveedor. En una secuencia de aprovisionamiento de varios pasos, esa diferencia de latencia es material.
+## Costo y cronograma
 
-### Coste y personalización a escala de flota
-
-**Coste a escala.** El coste amortizado planificado del Nivel B en una instancia preemptible con apagado por inactividad es muy inferior a los equivalentes de API del Nivel C al coste de contexto completo del prompt. A volúmenes operativos sostenidos — miles de consultas de administración por día en una flota activa — el diferencial se compone. *Las proyecciones de coste son objetivos planificados; los costes reales pueden diferir según el modelo, los precios del proveedor y el tamaño del prompt.* [ni-51-102] [osc-sn-51-721]
-
-**Personalización.** Los adaptadores LoRA por tenant, entrenados en los patrones operativos específicos de cada cliente, hacen que service-slm sea un asistente más preciso para ese cliente que cualquier servicio de inferencia genérico.
-
-## Las cuatro etapas del entrenamiento
-
-**Etapa 1 — Captura.** Cada brief de sombra genera una tupla del corpus automáticamente en cada post-commit hook a través del Sustrato de Cola de Briefs. Esta etapa está operativa.
-
-**Etapa 2 — Promover mediante veredicto firmado.** Una identidad senior revisa las tuplas capturadas y firma veredictos criptográficamente. Los veredictos producen pares DPO para el entrenamiento por preferencias. El ritmo sostenible es un lote semanal al final de la sesión.
-
-**Etapa 3 — Ciclo de entrenamiento LoRA por cluster.** Cuando el corpus de un tipo de tarea supera 50 tuplas con veredicto firmado, se activa el entrenador. El ciclo inicial se ejecuta en CPU en el servidor del espacio de trabajo (coste cero). Los ciclos de producción se mueven al Nivel B una vez aprovisionada la instancia de GPU Yo-Yo (planificado). *Los objetivos de cronograma y coste están sujetos a la tasa de acumulación del corpus, disponibilidad de hardware y revisión del operador.* [ni-51-102] [osc-sn-51-721]
-
-**Etapa 4 — Composición multi-adaptador en tiempo de solicitud.** El Doorman compone hasta tres adaptadores por solicitud. Cada entrada del [[worm-ledger-design|libro mayor de auditoría]] registra el conjunto de adaptadores compuesto, haciendo trazable la influencia de cada uno.
-
-## Niveles de producto para el cliente
-
-El capability evoluciona a través de tres niveles de cliente. El Nivel 1 es una pyme con un solo Totebox ejecutando el modelo local (soberanía completa, coste solo de hardware). El Nivel 2 añade acceso al Nivel B alojado por el proveedor con adaptadores LoRA por tenant. El Nivel 3 es el producto especialista PointSav-LLM entrenado en el corpus multi-tenant agregado. *El cronograma de despliegue del Nivel 3 y los precios del Nivel 2 son objetivos planificados, sujetos a decisión del operador y condiciones operativas.* [ni-51-102] [osc-sn-51-721]
-
-La especificación técnica completa, incluyendo la tabla de tipos de tarea, el corpus y la cadena de entrenamiento, está disponible en inglés en el artículo principal.
+Cualquier cifra de costo o cronograma para esta capacidad — costo por solicitud a escala,
+costo de ejecución de entrenamiento, umbrales de promoción de adaptadores — son objetivos
+planificados pendientes de datos operativos reales, no cifras medidas. [ni-51-102]
+[osc-sn-51-721]
 
 ## Véase también
 
-- [[service-slm]] — el servicio que implementa esta capacidad; especificación del Doorman del Anillo 3
-- [[compounding-doorman]] — el patrón operativo del Doorman y por qué se compone con el tiempo
-- [[apprenticeship-substrate]] — la cadena de captura del corpus y firma de veredictos
-- [[brief-queue-substrate]] — la cola durable que mantiene continua la captura del corpus
+- [[service-slm]] — el servicio que implementaría esta capacidad
+- [[compounding-doorman]] — el patrón operativo que implementa el Doorman
+- [[apprenticeship-substrate]] — la canalización real de captura y firma de veredicto sobre la que se construye este plan
+- [[brief-queue-substrate]] — la cola durable que mantiene la captura de corpus continua a través de transiciones de nivel de cómputo
+- [[pointsav-llm]] — el producto comercial especialista relacionado, planificado por separado
