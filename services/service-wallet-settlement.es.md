@@ -1,47 +1,82 @@
 ---
 schema: foundry-doc-v1
-title: "Liquidación con Service-wallet"
+title: "Liquidación de billetera — el diseño"
 slug: service-wallet-settlement
-short_description: "Un libro mayor contable interno por tenant que registra y liquida ingresos de flujo inverso del mercado de datos como entradas JSONL firmadas, con opciones de retiro sin custodia a blockchain o moneda fiduciaria y deducciones de tarifa de plataforma aplicadas en tiempo de crédito."
+short_description: "service-wallet es un libro mayor contable por inquilino planificado para ingresos de flujo inverso del mercado — aún no existe código; el diseño propone un libro firmado sin custodia en lugar de un riel de pago."
 category: services
 type: topic
 content_type: topic
 quality: complete
 index_group: specialist-and-domain-services
 status: active
-bcsc_class: public-disclosure-safe
-last_edited: 2026-07-31
+bcsc_class: forward-looking
+language_protocol: PROSE-TOPIC
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: service-wallet-settlement.md
+references:
+  - id: 1
+    text: "PointSav platform specification: per-tenant accounting ledger design for reverse-flow settlement — structural properties of the service-wallet component."
+  - id: 2
+    text: "PointSav platform specification: reverse-flow substrate — the revenue-routing mechanism through which data marketplace proceeds reach operator wallets."
+  - id: 3
+    text: "PointSav platform specification: customer-owned graph intellectual property — the portability and ownership guarantees for operator-generated graph data."
+  - id: 4
+    text: "PointSav platform specification: Write-Once-Read-Many (WORM) ledger design — the append-only storage substrate underpinning all platform accounting records."
 ---
 
+`service-wallet` es un libro mayor contable por inquilino planificado para los ingresos del
+mercado de datos y el intercambio publicitario de la plataforma — registrando y liquidando lo
+que se le debe a un inquilino como entradas firmadas criptográficamente, sin custodiar fondos
+nunca. Aún no existe ninguna implementación; este artículo describe el diseño, no un servicio
+distribuido. Existe una utilidad real y distinta, ya distribuida, llamada `tool-wallet` en el
+mismo monorepo — un vigilante de pagos USDC en Polygon del lado del proveedor, de un solo
+inquilino, para compras de licencias — pero es un componente diferente con un propósito
+diferente, no este libro mayor planificado bajo otro nombre.
 
-`service-wallet` es el libro mayor de contabilidad interna por tenant que registra y liquida todos los ingresos de flujo inverso procedentes del mercado de datos y el intercambio publicitario de la plataforma. El servicio opera en el [[three-ring-architecture|Anillo 2]] de la plataforma y no custodia fondos: registra créditos, débitos y comisiones como entradas firmadas criptográficamente, y el retiro hacia la cartera o cuenta bancaria del operador se gestiona fuera de la plataforma.
+## La distinción central del diseño
 
-## Qué es service-wallet (y qué no es)
+El diseño propone que `service-wallet` sea un libro mayor contable, nunca un riel de pago ni
+una billetera con custodia — una distinción que importa tanto estructural como legalmente.
 
-`service-wallet` es un **libro mayor de contabilidad**, no un riel de pago ni una cartera custodiada. Esta distinción importa legal y estructuralmente: registra créditos, débitos y comisiones como entradas JSONL firmadas; PointSav no tiene fondos en tránsito; la plataforma nunca tiene las claves privadas del inquilino. Esta arquitectura mantiene a la plataforma estructuralmente fuera del territorio regulado de transmisores de dinero y carteras custodiadas.
+- **Libro mayor contable**: registra créditos, débitos y comisiones como entradas firmadas
+  denominadas en la unidad de cuenta elegida por el operador; ningún fondo pasa por la
+  plataforma.
+- **No es un riel de pago**: el dinero se movería directamente entre el comprador y la
+  dirección de destino o el contrato inteligente; la comisión de la plataforma se propone
+  como una deducción contable en el momento en que se registra un crédito, no como un
+  movimiento de dinero separado.
+- **No es una billetera con custodia**: la plataforma nunca mantendría las claves privadas
+  de un inquilino — el saldo de un inquilino sería una cifra contable que representa un monto
+  adeudado, no un fondo bajo control de la plataforma.
 
-## Flujo de liquidación
+Si se construye según lo diseñado, esto mantendría a la plataforma estructuralmente fuera del
+territorio regulado de transmisión de dinero y billeteras con custodia. Esto es una
+descripción del diseño previsto, no asesoría legal; las propias actividades de pago de un
+inquilino son responsabilidad de su propio asesor.
 
-El flujo va de: evento de ingresos → crédito registrado (con comisión de plataforma deducida) → el saldo neto del inquilino aumenta → el inquilino inicia el retiro (controlado por el inquilino, no automático) → el evento de retiro se registra en el libro mayor, el recibo se ancla a Sigstore Rekor mediante [[fs-anchor-emitter]], y la entrada en el [[worm-ledger-design|libro mayor WORM]] en [[service-fs-architecture|service-fs]] cierra el ciclo contable.
+## Lo que propone el diseño
 
-## Rieles de pago para retiros en criptomoneda
+Un registro firmado por cada entrada de crédito, débito o comisión, rastreando monto, moneda,
+cadena (si aplica), deducción de comisión, y un saldo de inquilino en ejecución. Un flujo de
+liquidación donde un evento de ingreso registra un crédito con la comisión de plataforma
+deducida en ese paso, el saldo del inquilino se acumula, y el inquilino — no la plataforma —
+inicia cualquier retiro, ya sea a una dirección cripto, una cuenta bancaria, o reinvertido
+como crédito de cómputo.
 
-Polygon PoS (aproximadamente $0,002/tx; principal) y Solana (aproximadamente $0,0005/tx; secundario). No custodiado: la plataforma almacena solo las direcciones de destino (claves públicas); el retiro lo firma la cartera del inquilino, no la plataforma. Circle Paymaster maneja la abstracción del gas — los inquilinos pagan el gas en USDC; no se requiere token nativo de Polygon/Solana.
+Cada recibo de retiro se anclaría al mismo registro de transparencia externo que
+[[fs-anchor-emitter]] ya usa para otros registros de la plataforma. El historial completo del
+libro sería exportable por el inquilino en cualquier momento, en el mismo formato en que se
+escribió — portabilidad incondicional, en línea con los compromisos de datos de propiedad del
+cliente en el resto de la plataforma.[^3]
 
-## Mecanismo de deducción de comisión
-
-El porcentaje de comisión de la plataforma es una configuración del operador definida en el momento del despliegue, aplicada de manera uniforme a todas las transacciones de flujo inverso de ese inquilino. Es una deducción contable, no una transacción separada. El porcentaje específico queda como una decisión abierta del operador.
-
-Referencia de la industria: los modelos de pago directo al titular de derechos, ya validados a escala, demuestran que dejar que el cliente conserve la mayoría de los ingresos es una estructura comercial viable. El reparto de ingresos de la plataforma es una configuración del operador; el valor por defecto previsto es que "el cliente conserve la mayoría".
-
-## Portabilidad
-
-El historial completo del libro mayor es consultable por el inquilino en cualquier momento. El formato de exportación es JSONL. La portabilidad es incondicional; el libro mayor viaja con el tenant al salir, conforme a la garantía de portabilidad de datos de propiedad del cliente.
+Los porcentajes de comisión específicos, las elecciones de cadena, y los mecanismos de
+abstracción de gas nombrados en borradores anteriores de este diseño son detalles de
+implementación que no se han decidido, y mucho menos construido — no se repiten aquí como si
+estuvieran resueltos.
 
 ## Véase también
 
-- [[reverse-flow-substrate]] — fuentes de ingresos; detalle del riel de pago
-- [[customer-owned-graph-ip]] — la exportación del libro mayor es propiedad incondicional del tenant
-- [[worm-ledger-architecture]] — service-wallet agrega entradas al libro mayor WORM de service-fs
+- [[reverse-flow-substrate]] — las fuentes de ingresos que este libro registraría
+- [[customer-owned-graph-ip]] — el compromiso de portabilidad que sigue el formato de exportación de este diseño
+- [[worm-ledger-architecture]] — el patrón de almacenamiento de solo-anexado que este diseño usaría

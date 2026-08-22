@@ -1,16 +1,16 @@
 ---
 schema: foundry-doc-v1
-title: "Wallet settlement"
+title: "Wallet settlement — the design"
 slug: service-wallet-settlement
-short_description: "A per-tenant accounting ledger recording and settling reverse-flow marketplace revenue as signed JSONL entries, with non-custodial withdrawal and fee deductions."
+short_description: "service-wallet is a planned per-tenant accounting ledger for reverse-flow marketplace revenue — no code exists yet; the design calls for a non-custodial, signed-entry ledger rather than a payment rail."
 category: services
 type: topic
 content_type: topic
 quality: complete
 index_group: specialist-and-domain-services
 status: active
-bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+bcsc_class: forward-looking
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: service-wallet-settlement.es.md
 references:
@@ -24,89 +24,50 @@ references:
     text: "PointSav platform specification: Write-Once-Read-Many (WORM) ledger design — the append-only storage substrate underpinning all platform accounting records."
 ---
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** `service-wallet` has no folder presence at all in the monorepo — not even a placeholder, unlike `service-market`/`service-exchange`, which exist as "Reserved-folder — implementation pending" directories. The only real mention of it anywhere is `tool-wallet/README.md`, which explicitly names it as a distinct, unbuilt sibling. This article presents a fully detailed implementation (signed JSONL ledger schema, five-step settlement flow, Circle Paymaster gas abstraction, Sigstore Rekor anchoring, specific Polygon/Solana fee figures) with no corresponding code anywhere. **Flagged, not resolved** — needs re-hedging to planned/intended language throughout, or reframing around the real `tool-wallet` crate if that's the intended subject.
+`service-wallet` is a planned per-tenant accounting ledger for revenue from the platform's
+data marketplace and ad exchange — recording and settling what a tenant is owed as
+cryptographically signed entries, never holding funds itself. No implementation exists yet;
+this article describes the design, not a shipped service. A distinct, real, already-shipped
+utility named `tool-wallet` exists in the same monorepo — a single-tenant, vendor-side
+Polygon USDC payment watcher for license purchases — but it is a different component with a
+different purpose, not this planned ledger under another name.
 
-`service-wallet` is the per-tenant internal accounting ledger that records and settles all reverse-flow revenue from the platform's data marketplace and ad exchange. The service operates at [[three-ring-architecture|Ring 2]] — the knowledge-and-processing layer of the platform — and holds no funds: it tracks credits, debits, and fees as cryptographically signed entries, with withdrawal to the operator's own wallet or bank account handled outside the platform.
+## The design's central distinction
 
-The structural design properties are specified in the platform accounting ledger design.[^1]
+The design calls for `service-wallet` to be an accounting ledger, never a payment rail and
+never a custodial wallet — a distinction that matters both structurally and legally.
 
-## Structural Accounting Isolation
+- **Accounting ledger**: records credits, debits, and fees as signed entries denominated in
+  the operator's chosen unit of account; no funds pass through the platform.
+- **Not a payment rail**: money would move directly between the buyer and the destination
+  address or smart contract; the platform's fee is intended as an accounting deduction at the
+  moment a credit is recorded, not a separate money movement.
+- **Not a custodial wallet**: the platform would never hold a tenant's private keys — a
+  tenant's balance would be an accounting figure representing an amount owed, not a pool of
+  funds under platform control.
 
-`service-wallet` is an **accounting ledger**, not a payment rail and not a custodial wallet. The distinction matters legally and structurally:
+If built as designed, this would keep the platform structurally outside regulated
+money-transmitter and custodial-wallet territory. This is a description of intended design,
+not legal advice; a tenant's own payment activities are their own counsel's to assess.
 
-- **Accounting ledger**: records credits, debits, and fees as signed JSONL entries; denominated in the operator's chosen unit of account; no funds in transit; PointSav holds no float
-- **Not a payment rail**: The platform does not route money between parties; the buyer's transaction goes directly to the destination address or through the smart contract; the platform fee is an accounting deduction at the time the incoming credit is recorded
-- **Not a custodial wallet**: The platform never holds the tenant's private keys; the tenant's balance in `service-wallet` is an accounting balance representing amounts owed, not a pool of funds under platform control
+## What the design proposes
 
-This architecture keeps the platform structurally outside regulated money-transmitter and custodial-wallet territory. Tenants should obtain local legal counsel on their own payment activities; this is directional, not legal advice.
+A signed record per credit, debit, or fee entry, tracking amount, currency, chain (if
+applicable), fee deduction, and a running tenant balance. A settlement flow where a revenue
+event records a credit with the platform fee deducted at that step, the tenant's balance
+accumulates, and the tenant — not the platform — initiates any withdrawal, whether to a
+crypto address, a bank account, or reinvested as compute credit. Every withdrawal receipt
+would anchor to the same external transparency log [[fs-anchor-emitter]] already uses for
+other platform records, and the full ledger history would be exportable by the tenant at any
+time in the same format it was written in — unconditional portability, matching the
+platform's customer-owned-data commitments elsewhere.[^3]
 
-## Cryptographic Ledger Records
-
-Every credit, debit, and fee entry is a signed JSONL record:
-
-```json
-{
- "schema": "foundry-wallet-entry-v1",
- "entry_id": "<ulid>",
- "tenant_id": "<module_id>",
- "type": "credit | debit | fee_deduction | withdrawal",
- "amount": "<decimal string>",
- "currency": "USDC | USD | CAD | <operator-configured>",
- "chain": "polygon-pos | solana | fiat | null",
- "tx_hash": "<on-chain tx hash if applicable>",
- "source_service": "service-market | service-exchange",
- "platform_fee_pct": "<decimal string>",
- "platform_fee_amount": "<decimal string>",
- "net_tenant_amount": "<decimal string>",
- "signed_at": "<ISO 8601>",
- "ledger_seq": "<monotonic integer>"
-}
-```
-
-The `platform_fee_amount` is deducted at credit time. The tenant's balance is `net_tenant_amount` accumulated across credits minus debits.
-
-## Settlement Flow Execution
-
-```
-1. Revenue event occurs (data purchase or ad impression/win)
-2. Incoming credit recorded in service-wallet ledger
- Platform fee deducted at this step (accounting deduction)
-3. Tenant's net balance increases
-4. Tenant initiates withdrawal (tenant-controlled; not automatic)
- Options:
- (a) Crypto withdrawal → tenant's pre-registered address (EVM or Solana)
- (b) Fiat withdrawal → tenant's bank account (via Stripe Connect or equivalent)
- (c) Tier B credit → balance reinvested as Yo-Yo compute budget
-5. Withdrawal event recorded in ledger
- Receipt anchored to Sigstore Rekor
- [[worm-ledger-design|WORM ledger]] entry in [[service-fs-architecture|service-fs]] closes the accounting cycle
-```
-
-## Settlement Payment Rails
-
-| Chain | Typical fee | Role |
-|---|---|---|
-| Polygon PoS | approximately $0.002/tx | Primary — lowest fees, proven micropayment volume |
-| Solana | approximately $0.0005/tx | Secondary — fastest settlement, sub-cent fees |
-
-Non-custodial: platform stores destination addresses (public keys only). The withdrawal transaction is signed by the tenant's wallet, not by the platform. Platform cannot move funds without the tenant's signature.
-
-Circle Paymaster handles gas abstraction — tenants pay gas in USDC; no native Polygon/Solana token required for SMB operators.
-
-## Fee Deduction Mechanism
-
-The platform fee percentage is an operator configuration at deployment time, applied uniformly across all reverse-flow transactions for that tenant. It is an accounting deduction, not a separate transaction. The specific percentage is an open operator decision.
-
-Industry reference: direct-payment-to-rights-holder models at scale validate that customers keeping a majority of revenue is a workable commercial structure. The platform's revenue split is an operator configuration; the intended default is "customer keeps majority."
-
-## Audit and Public Anchoring
-
-Every withdrawal receipt is anchored to Sigstore Rekor by [[fs-anchor-emitter]]. The anchor record includes: tenant ID, ledger sequence at withdrawal, amount, chain, and transaction hash. This provides a tamper-evident external timestamp suitable for accounting and legal purposes.
-
-The full ledger history is queryable by the tenant at any time. The export format is JSONL — the same format as the ingestion record. Portability is unconditional; the ledger travels with the tenant on exit per the customer-owned data portability guarantee.[^3]
+Specific fee percentages, chain choices, and gas-abstraction mechanics named in earlier
+drafts of this design are implementation detail that has not been decided, let alone built —
+not repeated here as though they were settled.
 
 ## See also
 
-- [[reverse-flow-substrate]] — revenue sources; payment rail detail
-- [[customer-owned-graph-ip]] — ledger export is unconditional tenant property
-- [[worm-ledger-architecture]] — service-wallet appends to service-fs WORM ledger
+- [[reverse-flow-substrate]] — the revenue sources this ledger would record
+- [[customer-owned-graph-ip]] — the portability commitment this design's export format follows
+- [[worm-ledger-architecture]] — the append-only storage pattern this design would use
