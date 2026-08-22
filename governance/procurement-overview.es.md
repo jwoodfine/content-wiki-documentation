@@ -51,7 +51,7 @@ Por `[osc-sn-51-721]`, lo siguiente describe la trayectoria comercial planificad
 
 La postura de cumplimiento de la plataforma es estructural, no procedimental. El cumplimiento no se logra mediante controles de política que un administrador con errores de configuración pueda anular — se logra mediante la arquitectura del motor de almacenamiento y los límites del servicio.
 
-- **Inmutabilidad de registros.** El libro WORM satisface la Regla SEC 17a-4(f), la preservación de registros electrónicos cualificados de eIDAS y SOC 2. La modificación no está prohibida a nivel de política; está prohibida por el motor de almacenamiento, que no tiene operación de eliminación ni sobreescritura.
+- **Inmutabilidad de registros.** El libro WORM satisface la Regla SEC 17a-4(f) y la preservación de registros electrónicos cualificados de eIDAS. No existe hoy ninguna certificación SOC 2 ni ISAE 3402 — un informe SOC 3 está planificado. La modificación no está prohibida a nivel de política; está prohibida por el motor de almacenamiento, que no tiene operación de eliminación ni sobreescritura.
 - **Pista de auditoría de IA.** Cada llamada de inferencia de IA pasa por el [[doorman-protocol|Portero]] y genera una fila de auditoría en el libro local del cliente. La puerta de enlace del proveedor genera una segunda fila de auditoría simultáneamente.
 - **Divulgación continua BCSC.** La plataforma produce registros de grado de divulgación continua como salida estructural del procesamiento del Anillo 2. Un emisor informante bajo NI 51-102 que despliega la plataforma dentro de su propio sustrato puede satisfacer las obligaciones de divulgación continua contra registros que posee y controla.
 - **Residencia de datos.** Los datos del cliente nunca salen del hardware designado del cliente excepto a través de una llamada de egreso explícita auditada en el libro.
@@ -61,6 +61,6 @@ La postura de cumplimiento de la plataforma es estructural, no procedimental. El
 - [[customer-hostability]] — el compromiso arquitectónico que hace estructurales las propiedades de adquisición
 - [[architecture-decisions]] — las doce decisiones de ingeniería vinculantes, incluidas las reglas de separación de datos y autoridad de IA
 - [[compliance-and-continuous-disclosure]] — cómo la plataforma produce registros de grado de divulgación continua
-- [[worm-ledger-design]] — el libro WORM que satisface SEC 17a-4(f), eIDAS y SOC 2 por estructura
+- [[worm-ledger-design]] — el libro WORM que satisface SEC 17a-4(f) y eIDAS por estructura
 - [[economic-model]] — la estructura comercial de dos niveles y su justificación
 - [[security-overview]] — la arquitectura de seguridad de la plataforma para la debida diligencia técnica

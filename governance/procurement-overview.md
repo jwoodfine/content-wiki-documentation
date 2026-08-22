@@ -56,7 +56,7 @@ The base model weights (OLMo 3, Apache 2.0) are open source. The commercial line
 
 The platform's compliance posture is structural rather than procedural. Compliance is not achieved by policy controls that a misconfigured administrator can override — it is achieved by the architecture of the storage engine and the service boundaries.
 
-- **Record immutability.** The WORM ledger satisfies SEC Rule 17a-4(f) for US broker-dealer record-keeping, eIDAS qualified electronic records preservation, and SOC 2. Modification is not denied at the policy layer; it is denied by the storage engine, which has no delete or overwrite operation.
+- **Record immutability.** The WORM ledger satisfies SEC Rule 17a-4(f) for US broker-dealer record-keeping and eIDAS qualified electronic records preservation. No SOC 2 or ISAE 3402 certification exists today — a SOC 3 report is planned. Modification is not denied at the policy layer; it is denied by the storage engine, which has no delete or overwrite operation.
 - **AI audit trail.** Every AI inference call — local, GPU burst, or external API — passes through the [[doorman-protocol|Doorman]] and generates an audit row in the customer's local ledger. The vendor's gateway generates a second audit row simultaneously. Two-ledger, per-call coverage.
 - **BCSC continuous disclosure.** The platform produces continuous-disclosure-grade records as a structural output of Ring 2 processing. A reporting issuer under NI 51-102 who deploys the platform inside their own substrate can satisfy continuous-disclosure obligations against records they own and control.
 - **Data residency.** Customer data never leaves the customer's designated hardware except through an explicit egress call audited in the ledger. Data residency is a property of the deployment topology, not a contractual commitment subject to interpretation.
@@ -70,7 +70,7 @@ Customers operating under the following frameworks have directly applicable comp
 | Canadian NI 51-102 continuous disclosure | WORM ledger + egress audit trail satisfy documentary requirements |
 | US SEC Rule 17a-4(f) | WORM ledger satisfies non-erasable, non-rewritable electronic storage requirements |
 | EU eIDAS qualified preservation | Hash-chained, signed ledger satisfies qualified electronic records requirements |
-| SOC 2 | WORM ledger + access-control audit trail satisfy SOC 2 availability and integrity criteria |
+| SOC 3 (planned) | The WORM ledger + access-control audit trail are designed to support SOC 3 availability and integrity criteria; no SOC 2 or ISAE 3402 certification exists today |
 
 Customers in other regulated environments should evaluate the platform's structural properties against their own framework. The technical documentation is [[worm-ledger-design]] and [[compliance-and-continuous-disclosure]].
 
@@ -85,7 +85,7 @@ The vendor runs `documentation.pointsav.com` because PointSav is the canonical-t
 - [[customer-hostability]] — the architectural commitment that makes the procurement properties structural
 - [[architecture-decisions]] — the twelve binding engineering decisions, including the data-separation and AI-authority rules that underpin the compliance properties
 - [[compliance-and-continuous-disclosure]] — how the platform produces continuous-disclosure-grade records
-- [[worm-ledger-design]] — the WORM ledger that satisfies SEC 17a-4(f), eIDAS, and SOC 2 by structure
+- [[worm-ledger-design]] — the WORM ledger that satisfies SEC 17a-4(f) and eIDAS by structure
 - [[economic-model]] — the two-tier commercial structure and its rationale
 - [[bcsc-disclosure-posture]] — the BCSC continuous-disclosure posture and how the platform satisfies it by structure
 - [[security-overview]] — the platform's security architecture for technical due diligence
