@@ -21,21 +21,21 @@ La orquestación Totebox admite múltiples motores de IA y operadores humanos tr
 ## Puntos clave
 
 - Cada motor escribe `.agent/engines/<id-motor>/session.lock` al inicio, con el id del motor, rol, PID, hora de inicio ISO-8601 y el `boot_id` de `/proc/sys/kernel/random/boot_id`. Un `boot_id` diferente en un archivo de bloqueo significa que el anfitrión se reinició entre sesiones — el bloqueo está definitivamente muerto y puede eliminarse automáticamente.
-- La sesión concentradora escribe `role.lock` en la raíz del espacio de trabajo; un segundo intento de inicio produce un error en lugar de competir. Las sesiones de archivo delimitan sus bloqueos a su propio directorio `.agent/`, no a la raíz del espacio de trabajo.
+- La Sesión Command escribe `role.lock` en la raíz del espacio de trabajo; un segundo intento de inicio produce un error en lugar de competir. Las sesiones Totebox delimitan sus bloqueos a su propio directorio `.agent/`, no a la raíz del espacio de trabajo.
 - El protocolo advierte sobre conflictos en el mismo archivo pero no impide físicamente una segunda escritura en `.git/index`. Un hook PreToolUse planificado añadirá aplicación en tiempo de escritura. Hasta entonces, la única salvaguarda estructural contra corrupción del índice es el `flock` a nivel OS en `.git/index`.
-- Las sesiones concentradoras deben ejecutar la herramienta de verificación del espacio de trabajo al inicio para detectar y limpiar bloqueos obsoletos antes de abrir cualquier archivo — los bloqueos obsoletos de arranques anteriores o PIDs muertos requieren eliminación automática o manual.
+- La Sesión Command debe ejecutar la herramienta de verificación del espacio de trabajo al inicio para detectar y limpiar bloqueos obsoletos antes de abrir cualquier archivo — los bloqueos obsoletos de arranques anteriores o PIDs muertos requieren eliminación automática o manual.
 
 ## Protocolo de bloqueo de sesión y obsolescencia por boot_id
 
 El protocolo es intencionalmente minimal: cada motor escribe `.agent/engines/<id-motor>/session.lock` al inicio. El bloqueo contiene el identificador del motor, el rol de sesión, el PID del proceso padre, la hora de inicio en ISO-8601 y el ID de arranque de `/proc/sys/kernel/random/boot_id`. El ID de arranque es la clave — permite que una sesión futura determine si un bloqueo está obsoleto (un ID de arranque diferente significa que el anfitrión se reinició entre sesiones, haciendo que el bloqueo esté definitivamente muerto) o potencialmente vivo (mismo ID de arranque, verificar `kill -0 <pid>` para la actividad del proceso).
 
-El modelo [[totebox-session]] asigna exactamente una sesión concentradora a la raíz del espacio de trabajo. Esa sesión escribe `role.lock` en `.agent/role.lock`; un segundo intento produce un error a menos que el operador borre manualmente el bloqueo. Las sesiones de archivo quedan delimitadas a archivos individuales y escriben sus bloqueos bajo el directorio `.agent/engines/<id-motor>/session.lock` de cada archivo.
+El modelo [[totebox-session]] asigna exactamente una Sesión Command a la raíz del espacio de trabajo. Esa sesión escribe `role.lock` en `.agent/role.lock`; un segundo intento produce un error a menos que el operador borre manualmente el bloqueo. Las sesiones Totebox quedan delimitadas a archivos individuales y escriben sus bloqueos bajo el directorio `.agent/engines/<id-motor>/session.lock` de cada archivo.
 
 ## Brechas de aplicación y limpieza de bloqueos obsoletos
 
 Lo que esto no resuelve: dos motores abiertos en el mismo archivo. El protocolo de bloqueo de sesión detecta el conflicto y advierte, pero no lo impide físicamente — para eso está `flock` en `.git/index`. Un hook PreToolUse planificado añadirá una verificación que rechazará cualquier llamada de escritura en un archivo cuyo `session.lock` muestre un motor diferente activo. La herramienta de verificación del espacio de trabajo incluye un detector de `index.lock` entre usuarios que identifica bloqueos en el mismo archivo mantenidos por operadores distintos.
 
-La limpieza de bloqueos obsoletos es automática cuando los IDs de arranque difieren, y manual en los demás casos. Una pasada de limpieza el 2026-05-18 eliminó 8 bloqueos de este tipo — 3 de un arranque anterior y 5 de PIDs muertos en el arranque actual. Las sesiones concentradoras deben ejecutar la herramienta de verificación al inicio y limpiar los bloqueos obsoletos antes de abrir cualquier archivo.
+La limpieza de bloqueos obsoletos es automática cuando los IDs de arranque difieren, y manual en los demás casos. Una pasada de limpieza el 2026-05-18 eliminó 8 bloqueos de este tipo — 3 de un arranque anterior y 5 de PIDs muertos en el arranque actual. La Sesión Command debe ejecutar la herramienta de verificación al inicio y limpiar los bloqueos obsoletos antes de abrir cualquier archivo.
 
 ## Véase también
 

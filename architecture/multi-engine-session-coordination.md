@@ -21,21 +21,21 @@ Totebox Orchestration supports multiple AI engines and human operators working c
 ## Key Takeaways
 
 - Each engine writes `.agent/engines/<engine-id>/session.lock` at startup, carrying engine-id, role, PID, ISO-8601 start-time, and the `boot_id` from `/proc/sys/kernel/random/boot_id`. A mismatched `boot_id` in a lock file means the host rebooted between sessions — the lock is definitively dead and may be removed automatically.
-- The hub session writes `role.lock` at the workspace root; a second startup attempt errors out rather than racing. Archive sessions scope their locks to their own `.agent/` directory, not the workspace root.
+- The Command Session writes `role.lock` at the workspace root; a second startup attempt errors out rather than racing. Totebox sessions scope their locks to their own `.agent/` directory, not the workspace root.
 - The protocol warns on same-archive conflicts but does not physically prevent a second write to `.git/index`. A planned PreToolUse hook adds write-time enforcement. Until then, the only structural guard on index corruption is the OS-level `flock` on `.git/index`.
-- Hub sessions should run the workspace health-check tool early to detect and clear stale locks before opening any archive — stale locks from prior boots or dead PIDs in the current boot require either automatic or manual removal.
+- The Command Session should run the workspace health-check tool early to detect and clear stale locks before opening any archive — stale locks from prior boots or dead PIDs in the current boot require either automatic or manual removal.
 
 ## Session-lock protocol and boot_id staleness
 
 The protocol is intentionally minimal: each engine writes `.agent/engines/<engine-id>/session.lock` at startup. The lock carries the engine identifier, session role, parent PID, ISO-8601 start time, and the boot ID from `/proc/sys/kernel/random/boot_id`. The boot ID is the key — it lets a future session decide whether a lock is stale (a different boot ID means the host rebooted between sessions, making the lock definitively dead) or potentially live (same boot ID, check `kill -0 <pid>` for process liveness).
 
-The [[totebox-session]] model assigns exactly one hub session to the workspace root. That session writes `role.lock` at `.agent/role.lock`; a second attempt errors out unless the operator manually clears the lock. Archive sessions are scoped to individual archives and write their locks under that archive's `.agent/engines/<engine-id>/session.lock`.
+The [[totebox-session]] model assigns exactly one Command Session to the workspace root. That session writes `role.lock` at `.agent/role.lock`; a second attempt errors out unless the operator manually clears the lock. Totebox sessions are scoped to individual archives and write their locks under that archive's `.agent/engines/<engine-id>/session.lock`.
 
 ## Enforcement gaps and stale-lock cleanup
 
 What this does not solve: two engines opened in the same archive. The session-lock protocol detects the conflict and warns, but does not physically prevent it — `flock` on `.git/index` does that. A planned PreToolUse hook adds a check that refuses any write call in an archive whose `session.lock` shows a different live engine. The workspace health-check tool includes a cross-user `index.lock` detector that surfaces same-archive locks held by different operators.
 
-Stale-lock cleanup is automatic when boot IDs disagree, manual otherwise. A cleanup pass on 2026-05-18 removed 8 such locks — 3 from a previous boot, 5 from dead PIDs in the current boot. Hub sessions should run the health-check tool early and clear stale locks before opening any archive.
+Stale-lock cleanup is automatic when boot IDs disagree, manual otherwise. A cleanup pass on 2026-05-18 removed 8 such locks — 3 from a previous boot, 5 from dead PIDs in the current boot. The Command Session should run the health-check tool early and clear stale locks before opening any archive.
 
 ## See also
 
