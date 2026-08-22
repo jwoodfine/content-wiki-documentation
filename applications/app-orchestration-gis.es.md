@@ -9,10 +9,10 @@ quality: complete
 index_group: location-intelligence-applications
 status: active
 audience: public
-short_description: "Motor de análisis espacial sin estado que produce las clasificaciones de coubicación de Woodfine y el mapa interactivo — una función pura sin datos canónicos."
+short_description: "El pipeline de datos en Python que produce las clasificaciones de co-ubicación de Woodfine y el mapa interactivo — geometría de clústeres reconstruida en un ciclo nocturno a partir de los conjuntos de datos de origen, publicada como mosaicos de mapa estáticos."
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-01
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: app-orchestration-gis.md
 cites:
@@ -20,32 +20,30 @@ cites:
  - maplibre-gl-js
 ---
 
-`app-orchestration-gis` es el motor de análisis espacial sin estado que realiza cálculos de geometría lineal y mapeo de coordenadas para producir las clasificaciones de co-ubicación de Woodfine y el mapa interactivo en [gis.woodfinegroup.com](https://gis.woodfinegroup.com). La aplicación no contiene datos canónicos — opera como una función pura desde archivos de clúster depurados hacia mosaicos geográficos clasificados, de modo que una instancia perdida puede reprovisionarse apuntando un nuevo proceso a la capa de datos inmutable [[totebox-archive|del Archivo Totebox]] sin migración de estado. Se ejecuta sobre [[os-orchestration|`os-orchestration`]] y se compone con [[service-business-clustering]] y [[service-places-filtering]] para producir sus conjuntos de datos de entrada.
-
-## Posición estructural
-
-La aplicación opera como la capa de análisis determinista entre el lago de datos soberano y la interfaz visual. Cada ejecución produce un artefacto reproducible: dado el mismo conjunto de datos de entrada, el índice resultante es idéntico. Esta garantía de reproducibilidad sustituye la dependencia de servicios de análisis gestionados por terceros.
+El pipeline que produce las clasificaciones de co-ubicación de Woodfine y el mapa interactivo en [gis.woodfinegroup.com](https://gis.woodfinegroup.com) es un pipeline de datos en Python, no un servicio permanente — no contiene datos canónicos propios y no produce salida alguna hasta que se ejecuta. Cada reconstrucción nocturna lee los conjuntos de datos actuales de negocios y lugares, reagrupa los clústeres, reasigna el nivel de cada uno y escribe mosaicos de mapa nuevos; los mosaicos que produce son lo que el sitio realmente sirve entre reconstrucciones.
 
 ## Asignación de nivel
 
-El motor asigna a cada clúster uno de cuatro niveles evaluándolo frente a la
+El pipeline asigna a cada clúster uno de cuatro niveles evaluándolo frente a la
 [[retail-co-location-tier-methodology|metodología de niveles de co-localización minorista]]
 — composición, rango de población de captación, respaldo cívico y no solapamiento con
 vecinos más fuertes. La asignación de nivel es una clasificación de aprobación/rechazo
 frente a condiciones fijas, no una puntuación numérica compuesta.
 
-## Pila de renderizado soberana
+## Generación de mosaicos
 
-La salida se entrega como archivos PMTiles — un formato de archivo plano que elimina la necesidad de un servidor de teselas dedicado. MapLibre GL JS renderiza los resultados directamente en el navegador con alto rendimiento WebGL, sin dependencias de servicios de mapeo SaaS comerciales.
+El pipeline compila la salida clasificada en activos de mosaicos vectoriales para su entrega al mapa interactivo:
 
-## Diseño sin estado
+- **Mosaicos vectoriales:** formato PMTiles para renderizado del lado del cliente sin necesidad de un servidor de mosaicos dedicado [pmtiles-spec]
+- **Renderizado:** MapLibre GL JS procesa los mosaicos del lado del cliente con alto rendimiento [maplibre-gl-js]
+- **Niveles visuales:** la convergencia espacial entre categorías de anclaje (primaria, ferretería, almacén, cívica) se traduce en la clasificación visual de cuatro niveles en la superficie del mapa, según la [[retail-co-location-tier-methodology|metodología de niveles]] anterior
 
-La arquitectura de la aplicación es completamente sin estado: no persiste datos entre ejecuciones. Todo el estado reside en el archivo PMTiles de salida, versionado en el [[totebox-archive|Archivo Totebox]]. Esto permite re-provisionar el entorno GIS completo de forma instantánea desde la capa de datos inmutable, aplicando la [[retail-co-location-tier-methodology|metodología de niveles]] de forma reproducible.
+## Ciclo de reconstrucción, no un servicio bajo demanda
+
+El pipeline se ejecuta en un ciclo nocturno, no bajo demanda. Cada reconstrucción reagrupa los datos de origen actuales, regenera las capas de mosaicos y publica el resultado; el sitio, entre reconstrucciones, sirve lo que produjo la última ejecución exitosa. Esto simplifica la recuperación en un sentido concreto: un conjunto de mosaicos perdido o dañado se reemplaza con la siguiente reconstrucción programada, o con una reejecución bajo demanda, sin requerir migración de estado alguna. También significa que el mapa publicado refleja los datos de la última reconstrucción, no el instante actual.
 
 ## Véase también
 
-- [[location-intelligence-substrate]] — la capa de renderizado que sirve los mosaicos producidos por este motor
-- [[service-business-clustering]] — el servicio de agrupamiento que forma los clústeres de co-ubicación
-- [[service-places-filtering]] — el servicio de filtrado que prepara los datos de entrada depurados
-- [[retail-co-location-tier-methodology]] — la metodología de niveles implementada por el motor
+- [[location-intelligence-substrate]] — la capa de renderizado que sirve los mosaicos producidos por este pipeline
+- [[retail-co-location-tier-methodology]] — la metodología de niveles implementada por el pipeline
 - [[location-intelligence-platform]] — el artículo de plataforma que cubre el despliegue GIS completo
