@@ -17,8 +17,6 @@ last_edited: 2026-07-11
 cites: []
 ---
 
-# SYS-ADR-07: Zero AI in Ring 1
-
 SYS-ADR-07 is an architectural decision that prohibits AI inference from Ring 1
 boundary-ingest services. It is not a preference or a guideline — it is a
 hard constraint that all four Ring 1 services implement as code, with no
@@ -38,7 +36,7 @@ storage. In the current implementation, Ring 1 consists of four services:
 | `service-fs` | [[worm-ledger-architecture|WORM immutable ledger]] — all Ring 1 writes land here |
 | `service-people` | Identity ingest — Person, Anchor, and Claim records |
 | `service-email` | Email ingest via EWS (Exchange Web Services SOAP) |
-| `service-input` | Document ingest — PDF, Markdown, DOCX, XLSX |
+| `service-input` | Reference-archive ingest — migrates and calibration-scores content into `service-fs` |
 
 These services are the first point of contact for data entering the system.
 Everything they write to `service-fs` becomes part of the permanent, auditable
@@ -155,18 +153,21 @@ from the WORM ledger — never inline during ingest.
 
 ### service-input
 
-**Correction (2026-08-02, verified against canonical `origin/main`, not just this archive's local checkout):** this whole section misattributes document parsing to the wrong Ring. The real `service-input` (Ring 1, per this article's own §1 table) has zero PDF/Markdown/DOCX/XLSX dependencies in its `Cargo.toml` — it's a batch-migration/calibration ingest tool. The four parsers below actually live in `service-extraction`, which this article's own §1 table names as a **Ring 2** service — architecturally significant for an article whose thesis is the Ring-1/Ring-2 AI boundary. The specific crate names are also wrong: real deps are `lopdf` (not `oxidize-pdf`) and `docx-rs` (not `docx-rust`); no `pulldown-cmark` dependency exists anywhere in the corpus. `calamine` is the one accurate match. **Flagged, not resolved.**
+`service-input` migrates reference-archive content into `service-fs` and
+calibration-scores the entity extraction Ring 2 later produces from it — it
+does not parse documents itself. Migration and calibration are both
+deterministic: migration copies content byte-for-byte into the ledger, and
+calibration computes precision, recall, and F1 by comparing Ring 2's output
+against a pre-labeled reference set. Neither step runs a model. A low F1
+score flags an extraction-quality issue downstream — it never triggers
+`service-input` to reinterpret or re-score anything itself.
 
-`service-input` parses documents into text content:
-
-- **PDF** — structural parsing via `oxidize-pdf`; extracts text spans
-- **Markdown** — event-stream parsing via `pulldown-cmark`; strips HTML tags
-- **DOCX** — ZIP + XML paragraph extraction via `docx-rust`
-- **XLSX** — all-sheets tab-delimited extraction via `calamine`
-
-In every case, the parser reads format-defined structure and emits text.
-No semantic interpretation, no summarisation, no classification. The raw
-extracted text is what lands in `service-fs`.
+Document parsing — PDF, DOCX, XLSX, and plain-text Markdown — happens in
+`service-extraction`, a Ring 2 service (§5, below). That distinction matters
+for this article's thesis: the parsers are
+deterministic (`lopdf` for PDF, `docx-rs` for DOCX, `calamine` for XLSX;
+Markdown is read as plain text, no dedicated parser), but they run one Ring
+below the boundary this ADR governs, not at it.
 
 ---
 

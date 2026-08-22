@@ -17,8 +17,6 @@ last_edited: 2026-06-23
 cites: []
 ---
 
-# SYS-ADR-07: Cero IA en el Ring 1
-
 SYS-ADR-07 es una decisión arquitectónica que prohíbe la inferencia de IA en los
 servicios de ingestión del Ring 1. No es una preferencia ni una directriz — es una
 restricción estricta que los cuatro servicios del Ring 1 implementan en código, sin
@@ -39,7 +37,7 @@ compuesto por cuatro servicios:
 | `service-fs` | [[worm-ledger-architecture|Libro mayor inmutable WORM]] — todas las escrituras del Ring 1 llegan aquí |
 | `service-people` | Ingestión de identidades — registros de Person, Anchor y Claim |
 | `service-email` | Ingestión de correo electrónico vía EWS (Exchange Web Services SOAP) |
-| `service-input` | Ingestión de documentos — PDF, Markdown, DOCX, XLSX |
+| `service-input` | Ingestión de archivo de referencia — migra y calibra contenido hacia `service-fs` |
 
 Estos servicios son el primer punto de contacto para los datos que entran al sistema.
 Todo lo que escriben en `service-fs` pasa a formar parte del registro permanente y
@@ -163,18 +161,22 @@ ingestión.
 
 ### service-input
 
-`service-input` analiza documentos y extrae su contenido textual:
+`service-input` migra contenido de archivo de referencia hacia `service-fs` y
+calibra la extracción de entidades que el Ring 2 produce a partir de él más
+adelante — no analiza documentos directamente. Tanto la migración como la
+calibración son deterministas: la migración copia el contenido byte a byte
+hacia el libro mayor, y la calibración calcula precisión, exhaustividad y F1
+comparando la salida del Ring 2 contra un conjunto de referencia previamente
+etiquetado. Ninguno de los dos pasos ejecuta un modelo. Una puntuación F1 baja
+señala un problema de calidad de extracción en un nivel inferior — nunca hace
+que `service-input` reinterprete o vuelva a puntuar nada por sí mismo.
 
-- **PDF** — análisis sintáctico estructural vía `oxidize-pdf`; extrae tramos de texto
-- **Markdown** — análisis sintáctico por flujo de eventos vía `pulldown-cmark`; elimina
-  etiquetas HTML
-- **DOCX** — extracción de párrafos mediante ZIP + XML vía `docx-rust`
-- **XLSX** — extracción de todas las hojas en formato delimitado por tabuladores vía
-  `calamine`
-
-En todos los casos, el analizador lee la estructura definida por el formato y emite
-texto. Sin interpretación semántica, sin resumen, sin clasificación. El texto extraído
-sin procesar es lo que llega a `service-fs`.
+El análisis de documentos — PDF, DOCX, XLSX y Markdown como texto plano —
+ocurre en `service-extraction`, un servicio del Ring 2 (§5, más adelante).
+Esa distinción importa para la tesis de este artículo: los analizadores son
+deterministas (`lopdf` para PDF, `docx-rs` para DOCX, `calamine` para XLSX;
+Markdown se lee como texto plano, sin analizador dedicado), pero operan un
+Ring por debajo de la frontera que esta ADR gobierna, no en ella.
 
 ---
 
