@@ -37,7 +37,7 @@ Los artículos estructurales fundacionales — los patrones que componen cada de
 - [[3-layer-stack]] — La descomposición de infraestructura en tres capas: capacidad de cómputo pura, ejecución de plataforma aislada y acceso seguro del operador.
 - [[three-layer-architecture]] — Cómo los entregables de PointSav transitan por las capas SOFTWARE, SHOWCASE e INSTANCIA con un flujo estrictamente unidireccional del proveedor al cliente.
 - [[six-tier-sovereignty-matrix]] — La taxonomía de seis prefijos del monorepo (app-, asset-, os-, service-, system-, moonshot-) que hace estructural la higiene de dependencias.
-- [[foundry-doctrine-overview]] — Resumen público del estatuto constitucional de la plataforma: seis pilares, cincuenta y dos afirmaciones estructurales y el modelo económico que los sustenta.
+- [[foundry-doctrine-overview]] — Resumen público del estatuto constitucional de la plataforma: seis pilares, cincuenta y cuatro afirmaciones estructurales y el modelo económico que los sustenta.
 - [[leapfrog-2030-architecture]] — La visión arquitectónica Leapfrog 2030: la física de infraestructura de la era hiperescaladora de 2030 y cómo la plataforma está posicionada para beneficiarse de ella.
 - [[pointsav-overview]] — PointSav Digital Systems: qué construye la empresa, cómo está organizada y la estructura corporativa de tres entidades.
 - [[architecture]] — Las dos propiedades estructurales de la plataforma: consistencia criptográfica distribuida y capacidad de arranque soberano, mantenidas de forma simultánea entre la nube y bóvedas físicas desconectadas.

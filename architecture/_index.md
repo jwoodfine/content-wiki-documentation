@@ -36,7 +36,7 @@ The foundational structural articles — the patterns that compose every PointSa
 - [[3-layer-stack]] — The three-layer infrastructure decomposition: raw compute capability, isolated platform execution, and secure operator access.
 - [[three-layer-architecture]] — How PointSav deliverables move through SOFTWARE, SHOWCASE, and INSTANCE layers with a strict one-way vendor-to-customer flow.
 - [[six-tier-sovereignty-matrix]] — The six-prefix monorepo taxonomy (app-, asset-, os-, service-, system-, moonshot-) that makes dependency hygiene structural.
-- [[foundry-doctrine-overview]] — A public summary of the platform's constitutional charter: six pillars, fifty-two structural claims, and the economic model that sustains them.
+- [[foundry-doctrine-overview]] — A public summary of the platform's constitutional charter: six pillars, fifty-four structural claims, and the economic model that sustains them.
 - [[leapfrog-2030-architecture]] — The Leapfrog 2030 architectural vision: the infrastructure physics of the 2030 hyperscaler era, and how the platform is positioned to benefit from it.
 - [[pointsav-overview]] — PointSav Digital Systems: what the company builds, how it is organised, and the three-entity corporate structure.
 - [[architecture]] — The platform's two structural properties: distributed cryptographic consistency and sovereign bootability, preserved simultaneously across cloud and offline-vault environments.
