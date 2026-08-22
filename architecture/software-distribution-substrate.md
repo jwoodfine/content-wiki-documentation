@@ -5,6 +5,7 @@ slug: software-distribution-substrate
 aliases:
   - topic-software-distribution-substrate
 category: architecture
+index_group: platform-structure
 type: topic
 content_type: topic
 quality: complete
@@ -89,22 +90,25 @@ A purchase proceeds through five stages:
 
 ## License tiers
 
-Two tiers are available. The open-source tier is licensed under Apache 2.0. The
-commercial tier is licensed under the Functional Source Licence (FSL). Both tiers are
-one-time purchases; there are no subscriptions. The tier is encoded in the token's
-entitlements field and in the payment receipt. Current pricing is published at
-
-**Correction (2026-08-02, verified against canonical `origin/main`):** this "two tiers" framing is an oversimplification. The real, ratified model (per the 2026-07-07 licensing BRIEF, confirmed in `app-privategit-marketplace-2`) has four tiers — Proprietary, AGPL, and FSL, plus a fourth — not two, and no tier uses plain Apache 2.0. **Flagged, not resolved.**
-`software.pointsav.com`.
+Four tiers are available: Proprietary, FSL, AGPL, and Apache. Proprietary grants a
+license key with no source-code disclosure. FSL sells a license key against source that
+converts automatically to Apache-2.0 for each release after a fixed period. AGPL sells a
+commercial-alternative key for source already public under AGPL. Apache is a genuine,
+unconditional open-source grant — no purchase required, the binary is available here
+purely for convenience. All four are one-time purchases; there are no subscriptions. The
+tier is encoded in the token's entitlements field and in the payment receipt. Current
+pricing is published at `software.pointsav.com`.
 
 ## What this system is not
 
 The substrate handles payments, token issuance, and binary delivery. It does not manage
 subscriptions — all purchases are perpetual one-time transactions. It does not create
-customer accounts. It does not restrict access to source code: the GitHub repository is
-separately public under the Apache 2.0 licence. Customers who purchase the commercial FSL
-tier receive a license key that unlocks the binary distribution; source-code terms are
-governed by the respective licence, not by this system.
+customer accounts. It does not restrict access to source code for the tiers whose source
+is already public — a customer buying an Apache or AGPL license key can read the
+corresponding source on GitHub without paying anything; the license key here buys a
+convenience binary, not access. Customers who purchase an FSL or Proprietary tier receive
+a license key that unlocks the binary distribution; source-code terms are governed by the
+respective license, not by this system.
 
 ## See also
 

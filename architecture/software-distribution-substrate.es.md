@@ -5,6 +5,7 @@ slug: software-distribution-substrate
 aliases:
   - topic-software-distribution-substrate
 category: architecture
+index_group: platform-structure
 type: topic
 content_type: topic
 quality: complete
@@ -100,21 +101,26 @@ Una compra se realiza en cinco etapas:
 
 ## Niveles de licencia
 
-Están disponibles dos niveles. El nivel de código abierto tiene licencia Apache 2.0.
-El nivel comercial tiene licencia bajo la Functional Source Licence (FSL). Ambos
-niveles son compras únicas; no existen suscripciones. El nivel está codificado en el
-campo de autorizaciones del token y en el recibo de pago. Los precios actuales se
-publican en `software.pointsav.com`.
+Están disponibles cuatro niveles: Propietario, FSL, AGPL y Apache. Propietario otorga
+una clave de licencia sin divulgación del código fuente. FSL vende una clave de licencia
+sobre código fuente que se convierte automáticamente a Apache-2.0 para cada versión tras
+un período fijo. AGPL vende una clave alternativa comercial para código ya público bajo
+AGPL. Apache es una concesión de código abierto genuina e incondicional — no requiere
+compra; el binario está disponible aquí únicamente por conveniencia. Los cuatro niveles
+son compras únicas; no existen suscripciones. El nivel está codificado en el campo de
+autorizaciones del token y en el recibo de pago. Los precios actuales se publican en
+`software.pointsav.com`.
 
 ## Lo que este sistema no es
 
 El sustrato gestiona pagos, emisión de tokens y entrega de binarios. No gestiona
 suscripciones — todas las compras son transacciones únicas y perpetuas. No crea cuentas
-de cliente. No restringe el acceso al código fuente: el repositorio de GitHub es
-públicamente accesible por separado bajo la licencia Apache 2.0. Los clientes que
-adquieren el nivel comercial FSL reciben una clave de licencia que desbloquea la
-distribución binaria; los términos del código fuente se rigen por la licencia
-respectiva, no por este sistema.
+de cliente. No restringe el acceso al código fuente para los niveles cuyo código ya es
+público — un cliente que compra una clave de licencia Apache o AGPL puede leer el código
+correspondiente en GitHub sin pagar nada; la clave de licencia aquí compra un binario de
+conveniencia, no el acceso. Los clientes que adquieren un nivel FSL o Propietario reciben
+una clave de licencia que desbloquea la distribución binaria; los términos del código
+fuente se rigen por la licencia respectiva, no por este sistema.
 
 ## Véase también
 
