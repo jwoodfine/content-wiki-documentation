@@ -20,27 +20,27 @@ paired_with: data-vault-bookkeeping-substrate.md
 
 ## Resumen estratégico
 
-El sustrato de bóveda de datos para contabilidad aborda el bloqueo estructural en el software de contabilidad para PYMEs separando el registro canónico de cada herramienta que lo consume. Construido sobre la disciplina del [[worm-ledger-design|libro mayor WORM]] de los [[three-ring-architecture|servicios del Anillo 1]], la bóveda almacena hechos; los consumidores calculan vistas derivadas. La bóveda almacena hechos; los consumidores calculan vistas derivadas. La migración desde cualquier herramienta de contabilidad es estructuralmente sin costo: la bóveda permanece intacta, la nueva herramienta reproduce el diario, y las vistas derivadas se reconstruyen desde la misma fuente canónica.
+El sustrato de bóveda de datos para contabilidad es una arquitectura planeada, pensada para abordar el bloqueo estructural en el software de contabilidad para PYMEs separando el registro canónico de cada herramienta que lo consume, sobre la misma disciplina del [[worm-ledger-design|libro mayor WORM]] usada en los [[three-ring-architecture|servicios del Anillo 1]] en otras partes de la plataforma. **Hoy, la única superficie construida es un panel de interfaz provisional** (`app-console-bookkeeper`, un cartucho de `os-console`) que muestra una cifra estática de "esperando sincronización" — nada de la bóveda, el libro mayor o la lógica contable descrita abajo existe todavía.
 
-## Tres inversiones estructurales
+## Tres inversiones estructurales (planeadas)
 
-**La bóveda es la única capa canónica.** Los documentos fuente llegan en cualquier formato compatible y se almacenan inmutablemente en el libro mayor de solo adición de la plataforma. El documento original, los campos semánticos analizados y un compromiso criptográfico se almacenan juntos. Nada se sobrescribe nunca.
+**La bóveda sería la única capa canónica.** Los documentos fuente llegarían en cualquier formato compatible y se almacenarían inmutablemente en el libro mayor de solo adición de la plataforma. El documento original, los campos semánticos analizados y un compromiso criptográfico se almacenarían juntos.
 
-**Contabilidad y cuentas son preocupaciones separadas.** La aplicación de contabilidad es una superficie de lectura: permite navegar, auditar y exportar desde la bóveda. La aplicación de cuentas es una superficie productiva: genera balances de comprobación, estados financieros y documentos de cumplimiento fiscal. El contador del cliente puede usar cualquier herramienta contra la exportación de la bóveda.
+**Contabilidad y cuentas serían preocupaciones separadas.** Una aplicación de contabilidad sería una superficie de lectura: navegar, auditar y exportar desde la bóveda. Una aplicación de cuentas sería una superficie productiva: generar balances de comprobación, estados financieros y documentos de cumplimiento fiscal. El contador del cliente podría usar cualquier herramienta contra la exportación de la bóveda.
 
-**Sin lógica contable dentro de la bóveda.** La bóveda almacena hechos; los consumidores calculan vistas derivadas.
+**Ninguna lógica contable viviría dentro de la bóveda.** La bóveda almacenaría hechos; los consumidores calcularían vistas derivadas.
 
-## Tres capas
+## Tres capas planeadas
 
-La capa de bóveda organiza los datos de facturas analizadas en tres directorios: `/source` (documentos originales, inmutables), `/ledger` (diario de doble entrada, solo adición, firmado criptográficamente por fila), y `/asset` (vistas materializadas derivadas, reconstruibles desde el libro mayor). La capa de contabilidad proporciona la superficie de consulta principalmente de lectura. La capa de cuentas proporciona la superficie productiva.
+Ninguna existe en código todavía. Una capa de bóveda organizaría los datos de facturas analizadas en tres directorios: `/source` (documentos originales, inmutables), `/ledger` (diario de doble entrada, solo adición, firmado criptográficamente por fila), y `/asset` (vistas materializadas derivadas, reconstruibles desde el libro mayor). Una capa de contabilidad proporcionaría la superficie de consulta principalmente de lectura. Una capa de cuentas proporcionaría la superficie productiva.
 
-## Auditoría y garantía
+## Auditoría y garantía (planeada)
 
-La estructura del sustrato satisface los requisitos de cadena de custodia de ISAE 3402 Tipo II y SOC 2 Integridad de Procesamiento por construcción. Un informe de attestation trimestral cita estas propiedades explícitamente. Un auditor puede verificar el attestation de forma independiente usando herramientas de verificación disponibles públicamente, sin depender de la caracterización del proveedor de sus propios controles.
+La estructura del sustrato está diseñada para satisfacer, una vez construida, los requisitos de cadena de custodia de ISAE 3402 Tipo II y SOC 2 Integridad de Procesamiento por construcción. La intención es que un informe de attestation trimestral cite estas propiedades explícitamente, verificable de forma independiente por un auditor con herramientas públicas. Nada de esto existe hoy; no puede producirse un informe de attestation contra una bóveda sin construir.
 
 ## Véase también
 
 - [[worm-ledger-design]] — el diseño del libro mayor WORM que proporciona la disciplina de inmutabilidad estructural
 - [[three-ring-architecture]] — el límite del Anillo 1 donde opera el sustrato de la bóveda
 - [[compounding-substrate]] — el contexto arquitectónico más amplio del sustrato
-- [[service-fs-architecture]] — la implementación `service-fs` del libro mayor WORM en producción
+- [[service-fs]] — la implementación `service-fs` del libro mayor WORM en producción
