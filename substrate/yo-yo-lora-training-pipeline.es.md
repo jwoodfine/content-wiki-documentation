@@ -28,16 +28,9 @@ paired_with: yo-yo-lora-training-pipeline.md
 
 ## Adaptación estratégica — Pipeline de Entrenamiento LoRA Nocturno en Yo-Yo #1
 
-[[yoyo-compute-substrate|Yo-Yo #1]] es una instancia spot g2-standard-4 de Google Cloud equipada con
-una GPU NVIDIA L4 de 24 GB de VRAM.
-
-**Corrección (2026-07-18):** esta afirmación de "instancia spot" entra en conflicto con
-un artículo hermano, [[service-slm-yoyo-operational]], que afirma que el mismo hardware
-se aprovisiona bajo demanda en lugar de como instancia spot, porque la capacidad spot de
-L4 resultó poco fiable — la misma contradicción ya encontrada y señalada en
-[[elastic-compute-lora-training-pipeline]] anteriormente en esta revisión. **Señalado,
-no resuelto en ningún sentido** — necesita confirmación de project-totebox sobre cuál es
-la versión actual.
+[[yoyo-compute-substrate|Yo-Yo #1]] es una instancia g2-standard-4 de Google Cloud equipada con
+una GPU NVIDIA L4 de 24 GB de VRAM, aprovisionada bajo demanda en lugar de como instancia
+spot — la capacidad spot para esta clase de GPU resultó poco fiable.
 
 En cada ejecución nocturna, ejecuta un
 pipeline de dos fases y cuatro horas de duración que produce [[adapter-composition|pesos
@@ -91,8 +84,10 @@ Al finalizar la Fase 1, vLLM se detiene y la GPU queda libre.
 `corpus-threshold.py` se ejecuta al inicio de la Fase 2. Cuenta los pares
 JSONL en dos buckets del corpus — `engineering-pointsav` (pares SFT
 extraídos de commits de ingeniería entre todos los clústeres) y
-`apprenticeship-pointsav` (pares DPO generados por el sustrato de
-enrutamiento de aprendizaje). Cuando alguno de los buckets alcanza 50 pares,
+`apprenticeship-pointsav` (pares generados por el sustrato de
+enrutamiento de aprendizaje, configurados hoy para ajuste fino supervisado
+mientras el corpus acumula veredictos firmados — véase más abajo).
+Cuando alguno de los buckets alcanza 50 pares,
 el script escribe un archivo marcador de entrenamiento pendiente y, si la
 variable de entorno `SLM_YOYO_WEIGHTS_GCS_BUCKET` está configurada,
 sincroniza el directorio del corpus relevante con el bucket de GCS
@@ -136,13 +131,18 @@ trabajo de ingeniería: cómo se describen los diffs, cómo se formulan los
 comentarios de revisión y cómo se documentan las decisiones de
 implementación.
 
-**Pares de aprendizaje** son pares DPO (optimización de preferencias
-directas) producidos por el sustrato de enrutamiento de aprendizaje. Cada
-par consiste en una respuesta en sombra (la salida sin guía del modelo) y
-una respuesta veredicto (la formulación preferida confirmada por el
-operador). El entrenamiento DPO sobre estos pares mueve el modelo hacia la
-distribución de respuestas preferidas sin requerir etiquetas explícitas
-para cada token. [^3]
+**Pares de aprendizaje** los produce el sustrato de enrutamiento de
+aprendizaje como pares respuesta-en-sombra/respuesta-veredicto, la forma
+que necesita el entrenamiento DPO (optimización de preferencias directas).
+DPO no es, sin embargo, lo que se ejecuta hoy contra este corpus:
+`corpus-threshold.py` configura el cubo `apprenticeship-pointsav` para
+ajuste fino supervisado en su lugar, con su propia nota de auditoría que
+explica por qué — DPO requiere veredictos firmados y al menos mil a tres
+mil pares contrastivos, y el corpus tenía cero veredictos firmados entre
+1.619 pares cuando se hizo el cambio. [^3] El ajuste fino supervisado
+entrena sobre la estructura y el vocabulario de los pares sin necesitar la
+señal de preferencia de la que depende DPO; el corpus pasa a DPO en cuanto
+se acumulen suficientes veredictos.
 
 ## Salida del adaptador y publicación
 

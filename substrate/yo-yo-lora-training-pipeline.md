@@ -26,15 +26,9 @@ references:
 paired_with: yo-yo-lora-training-pipeline.es.md
 ---
 
-Yo-Yo #1 is a [[yoyo-compute-substrate|g2-standard-4 Google Cloud spot instance]] equipped with a
-single NVIDIA L4 GPU (24 GB VRAM).
-
-**Correction (2026-07-18):** this "spot instance" claim conflicts with a sibling article,
-[[service-slm-yoyo-operational]], which states the same hardware is provisioned
-on-demand rather than as a spot instance because L4 spot capacity proved unreliable —
-the same contradiction already found and flagged on
-[[elastic-compute-lora-training-pipeline]] earlier this pass. **Flagged, not resolved
-either way** — needs project-totebox confirmation of which is current.
+Yo-Yo #1 is a [[yoyo-compute-substrate|g2-standard-4 Google Cloud instance]] equipped with a
+single NVIDIA L4 GPU (24 GB VRAM), provisioned on-demand rather than as a spot instance —
+spot capacity for this GPU class proved unreliable.
 
 On each nightly run, it executes a
 two-phase, four-hour pipeline that produces fine-tuned [[adapter-composition|adapter weights]] for
@@ -82,8 +76,10 @@ At the end of Phase 1, vLLM stops and the GPU is released.
 
 `corpus-threshold.py` runs at the start of Phase 2. It counts JSONL tuples
 in two corpus buckets — `engineering-pointsav` (SFT tuples drawn from
-cross-cluster engineering commits) and `apprenticeship-pointsav` (DPO pairs
-drawn from the apprenticeship routing substrate). When either bucket reaches
+cross-cluster engineering commits) and `apprenticeship-pointsav` (pairs
+drawn from the apprenticeship routing substrate, currently configured for
+supervised fine-tuning while the corpus accumulates signed verdicts — see
+below). When either bucket reaches
 50 tuples, the script writes a training-pending marker file and, if the
 `SLM_YOYO_WEIGHTS_GCS_BUCKET` environment variable is set, syncs the
 relevant corpus directory to the configured GCS bucket.
@@ -122,23 +118,14 @@ structural patterns used in the engineering workflow: how diffs are
 described, how review comments are phrased, and how implementation decisions
 are documented.
 
-**Apprenticeship tuples** are DPO (direct preference optimisation) pairs
-produced by the apprenticeship routing substrate. Each pair consists of a
-shadow response (the model's unguided output) and a verdict response (the
-preferred formulation confirmed by the operator). DPO training on these
-pairs moves the model toward the preferred response distribution without
-requiring explicit labels for every token. [^3]
-
-**Correction (2026-08-02, verified against canonical `origin/main`):** the real
-`corpus-threshold.py` (dated by its own audit-note comment 2026-06-24, before this
-article's `last_edited: 2026-07-18`) configures `apprenticeship-pointsav` as `"method":
-"sft"`, with an explicit audit note: "apprenticeship changed from DPO to SFT. DPO
-requires signed verdicts and ≥1-3K contrastive pairs; the current corpus has verdict=0
-across all 1619 pairs." DPO training on this corpus is not happening today — it was
-deliberately disabled pending prerequisites that aren't yet met. Every other technical
-claim in this article (GPU tier, ports, corpus threshold, QLoRA hyperparameters, base
-model paths) was independently verified accurate against canonical. **Flagged, not
-resolved.**
+**Apprenticeship tuples** are produced by the apprenticeship routing substrate as
+shadow-response/verdict-response pairs, the shape DPO (direct preference optimisation)
+training needs. DPO is not what runs against this corpus today, though: `corpus-threshold.py`
+configures the `apprenticeship-pointsav` bucket for supervised fine-tuning instead, with
+its own audit note explaining why — DPO requires signed verdicts and at least one to three
+thousand contrastive pairs, and the corpus had zero signed verdicts across 1,619 pairs when
+the switch was made. [^3] SFT trains on the pairs' structure and vocabulary without needing
+the preference signal DPO depends on; the corpus moves to DPO once enough verdicts accumulate.
 
 ## Adapter Output and Publication
 
