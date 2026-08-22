@@ -10,7 +10,7 @@ index_group: the-compounding-doorman-and-ai-boundary
 short_description: "Every Ring 1 and Ring 2 service exposes a Model Context Protocol server interface as its primary external contract, with the Doorman as the MCP gateway."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-08-22
 editor: pointsav-engineering
 cites: []
 references:
@@ -42,19 +42,9 @@ The Doorman is both MCP Client (calling `service-content` for graph grounding) a
 
 ## Tool semantics
 
-Each service exposes a small set of named MCP tools. `service-content` exposes graph query, graph mutation, vector search, and temporal query. The file ledger service exposes ledger append, ledger query, and checkpoint. The extraction service exposes entity extraction and classification. The people service exposes person lookup, upsert, and relationship query.
+Each service exposes a small set of named MCP tools. `service-content` exposes graph query and graph mutation; vector search and temporal query are not yet implemented — the service's own architecture notes list keyword classification, not vector search, as the current retrieval mechanism. The file ledger service exposes exactly one MCP tool, `ledger.append`; a separate read-only "Ledger Entries" MCP resource exists for reading history, a different primitive from a query tool, and there is no dedicated checkpoint tool. The extraction service exposes entity extraction and classification. The people service exposes person lookup, upsert, and relationship query.
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** `graph_query`/
-`graph_mutate` are real (`service-content/src/http.rs`). `vector_search`/
-`temporal_query` are not implemented — `service-content/ARCHITECTURE.md` §2 lists
-"no vector search — keyword classification only" as a current gap. `service-fs/src/
-mcp.rs::handle_tools_list()` exposes exactly one MCP tool, `ledger.append` — there is
-no `ledger.query` or `checkpoint` tool (a read-only "Ledger Entries" MCP *resource*
-exists, a different primitive). This article correctly hedges its marketplace-tools
-section as "planned Phase 5" elsewhere but presents these equally-unbuilt tool names
-in unhedged present tense. **Flagged, not resolved.**
-
-The marketplace service (planned Phase 5) is intended to expose listing creation, listing query, and transaction initiation as MCP tools. Customers extending the platform add new MCP servers that expose their own vertical-specific tools. The [[compounding-doorman|Doorman]] discovers new tools at session start via MCP's describe mechanism; no core code changes are required to accommodate a new extension.
+The marketplace service (planned Phase 5) is intended to expose listing creation, listing query, and transaction initiation as MCP tools. Customers extending the platform add new MCP servers that expose their own vertical-specific tools. The [[compounding-doorman|Doorman]] discovers new tools at session start via MCP's `tools/list` method; no core code changes are required to accommodate a new extension.
 
 ## The Doorman as MCP gateway
 
