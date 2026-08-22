@@ -23,7 +23,7 @@ The **Vertical Seed Packs Marketplace** is a planned distribution mechanism for 
 Each pack is a curated bundle in open formats:
 
 - Archetypes JSON file — industry-specific role identities
-- Chart of Accounts JSON file — industry-specific business profiles
+- Chart of Accounts JSON file — a personnel-role taxonomy (director, officer, counsel, and similar roles grouped under sub-domains like personal, compliance, and finance), not a set of accounting or revenue categories despite the name
 - Domains JSON file — macro work categories
 - Themes JSON file — starter time-bound initiatives (typically sparse; the customer adds their own)
 - Glossary CSV — terms in common use in the vertical
