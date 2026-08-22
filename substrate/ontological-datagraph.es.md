@@ -10,14 +10,12 @@ index_group: small-language-model-stack
 short_description: "Grafo de conocimiento organizativo de personas, empresas, proyectos y relaciones — memoria semántica persistente para responder consultas de negocio sin releer documentos fuente."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-07-31
+last_edited: 2026-08-22
 editor: pointsav-engineering
 cites: []
 references: []
 paired_with: ontological-datagraph.md
 ---
-
-# El grafo de conocimiento organizativo — memoria ontológica para operaciones empresariales
 
 Un grafo de conocimiento organizativo almacena lo que una empresa sabe sobre sí misma:
 quiénes son sus personas, empresas y proyectos; cómo se relacionan entre sí; qué
@@ -95,10 +93,9 @@ estructurada.
 
 Las entidades entran al grafo a través de un [[service-extraction|pipeline de extracción]].
 Documentos, correos electrónicos, notas de reuniones y otras fuentes en prosa llegan a
-un directorio de entrada vigilado. El servicio de extracción lee cada fuente, envía el
+un directorio de entrada vigilado. El servicio de extracción lee cada fuente y envía el
 texto al enrutador de inferencia para la extracción estructurada de entidades mediante
-un esquema restringido por gramática, y escribe las entidades resultantes en el grafo a
-través del endpoint de mutación del enrutador.
+un esquema restringido por gramática.
 
 La calidad de la extracción depende del nivel de inferencia. El modelo compacto local
 (Tier A) extrae entidades con menor confianza. El nodo GPU de ráfaga (Tier B) extrae con
@@ -106,7 +103,13 @@ mayor confianza, usando ventanas de contexto más amplias y restricciones de sal
 estrictas. La extracción de Tier A es útil para cobertura rápida; la extracción de Tier B
 se usa para el registro organizativo canónico.
 
-Cada extracción se registra con una referencia de fuente y una puntuación de confianza.
+Que una entidad extraída llegue al grafo de inmediato o espere una aprobación firmada
+por un humano depende de una configuración del operador: existe un punto de control de
+captura-y-promoción exactamente para este caso, pero viene desactivado por defecto —
+véase [[nightly-datagraph-rebuild]] para el mecanismo y su brecha de gobernanza
+actualmente abierta. Cada extracción se registra con una referencia de fuente y una
+puntuación de confianza, sin importar cuál ruta siga.
+
 Las entidades extraídas de fuentes autoritativas (contratos ejecutados, documentos
 presentados, registros oficiales) llevan mayor confianza que las extraídas de
 correspondencia informal.

@@ -10,14 +10,12 @@ index_group: small-language-model-stack
 short_description: "Organizational knowledge graph of people, companies, projects, and relationships — persistent semantic memory for answering business-state queries without re-reading sources."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-06-09
+last_edited: 2026-08-22
 editor: pointsav-engineering
 cites: []
 references: []
 paired_with: ontological-datagraph.es.md
 ---
-
-# The organizational knowledge graph — ontological memory for business operations
 
 An organizational knowledge graph stores what a business knows about itself: who its
 people, companies, and projects are; how they relate to one another; what decisions
@@ -133,9 +131,8 @@ encodes that structure explicitly and makes it available at inference time.
 
 Entities enter the graph through an [[service-extraction|extraction pipeline]]. Documents, emails, meeting
 notes, and other prose sources arrive in a watched input directory. The extraction
-service reads each source, sends the text to the inference router for structured
-entity extraction using a grammar-constrained schema, and writes the resulting
-entities to the graph through the router's mutation endpoint.
+service reads each source and sends the text to the inference router for structured
+entity extraction using a grammar-constrained schema.
 
 The extraction quality depends on the inference tier. The local compact model
 (Tier A) extracts entities at lower confidence. The burst GPU node (Tier B) extracts
@@ -143,7 +140,11 @@ at higher confidence using larger context windows and strict output constraints.
 Tier A extraction is useful for rapid coverage; Tier B extraction is used for the
 canonical organizational record.
 
-Every extraction is logged with a source reference and a confidence score. Entities
+Whether an extracted entity reaches the graph immediately or waits for a human-signed
+approval depends on an operator setting: a capture-then-promote checkpoint exists for
+exactly this case, but ships off by default — see [[nightly-datagraph-rebuild]] for
+the mechanism and its currently-open governance gap. Every extraction is logged with a
+source reference and a confidence score regardless of which path it takes. Entities
 extracted from authoritative sources (executed contracts, filed documents, official
 registrations) carry higher confidence than those extracted from informal
 correspondence.
