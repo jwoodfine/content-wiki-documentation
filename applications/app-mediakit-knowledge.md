@@ -108,7 +108,6 @@ What was kept (per `UX-DESIGN.md` §1):
 
 What was added beyond Wikipedia:
 
-- Citation badges next to inline `[citation-id]` references, with hover-card showing the registry entry
 - Forward-Looking-Information cautionary banner when an article's frontmatter sets `forward_looking: true`
 - BCSC `disclosure_class` field expressed in the JSON-LD structured data in every rendered article's `<head>` block (not visible as default chrome; consequential when the Phase 8 linter activates)
 - Information Verifiability Citation (IVC) masthead band placeholder (Phase 7 is intended to provide the verification machinery)

@@ -104,7 +104,6 @@ El motor incluye un cromo deliberadamente reconocible para cualquier lector de W
 
 ### Añadidos más allá de Wikipedia
 
-- Insignias de cita junto a referencias `[citation-id]` en línea, con tarjeta emergente que muestra la entrada del registro
 - Banner cautelar de Información Prospectiva cuando el frontmatter de un artículo establece `forward_looking: true`
 - Campo `disclosure_class` de BCSC expresado en los datos estructurados JSON-LD de cada artículo renderizado
 - Selector de densidad de lectura (compacto / cómodo; la preferencia persiste del lado del cliente)
