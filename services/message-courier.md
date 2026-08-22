@@ -7,43 +7,33 @@ type: topic
 content_type: topic
 quality: stub
 index_group: specialist-and-domain-services
-short_description: "The message courier service is a headless web-automation engine bridging internal identity ledgers with external web portals via runtime-injected adapters."
+short_description: "A deliberately thin engine that dynamically loads a customer's private adapter script and hands it execution control — keeping every operational detail of a client's web-automation logic out of the open-source codebase entirely."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-08
+last_edited: 2026-08-22
 editor: pointsav-engineering
 cites: []
 paired_with: message-courier.es.md
 ---
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** the real `service-message-courier.py` (60 lines) is a thin CLI that dynamically loads a private adapter module and calls `execute_payload()` — the "Query (poll WORM ledger) → Execute → Write-back" three-step engine-level cycle described below is not present in the engine itself; no WORM-ledger or browser-automation code exists at the engine layer in the real codebase. **Flagged, not resolved.**
+`service-message-courier` is intentionally small. Its entire job is to load a piece of code the engine itself has never seen — a private adapter — and hand it control. Everything a specific web-automation task actually does lives in that adapter, not in the engine.
 
-**`service-message-courier`** is the headless web-automation engine that bridges the platform's internal [[service-people|identity ledger]] with external web portals — without embedding any client-specific logic in the open-source codebase. The core engine reads pending dispatch records from the [[worm-ledger-design|WORM ledger]], executes portal interactions through privately distributed runtime adapters, and writes completion timestamps back; the engine itself remains free of hard-coded selectors, credentials, or target URLs. The adapter directory (`private-adapters/`) is excluded from version control so proprietary client operational data never enters the public Git history.
+## What the engine does
 
-## Key Takeaways
+The command-line entry point takes two arguments: which adapter to run, and an operational limit (defaulting to 10) to cap how much work one execution cycle does. It then:
 
-- The core engine has no knowledge of any specific portal. All operational logic — CSS selectors, URL shapes, authentication flows — lives in `private-adapters/`, excluded from version control. The open-source monorepo remains tenant-agnostic; each deployment carries its own private adapter set.
-- Three-step cycle per dispatch: Query (poll WORM ledger for pending records) → Execute (run headless browser via adapter) → Write-back (log completion timestamp). A failure at execution leaves the dispatch pending in the ledger; the record is never corrupted.
-- Keeping proprietary client logic in `private-adapters/` ensures it never enters the public Git history. Operators can update adapter scripts without touching or forking the core engine.
-- Completed write-backs are consumed by [[sovereign-telemetry|zero-state telemetry]] for audit. The courier produces an auditable dispatch trail without any identifiable data leaving the operator's environment.
+1. Dynamically imports the named adapter from `private-adapters/<name>.py`.
+2. Calls the adapter's `execute_payload(limit=...)` function.
+3. Reports success or failure — the adapter's own exception, if it raises one, is caught and logged.
 
-## Adapter pattern
+That's the whole engine. It has no built-in knowledge of any ledger, any portal, or any browser-automation library — those are choices the adapter makes, entirely outside this codebase.
 
-The core engine contains no knowledge of any specific portal or site. Operational logic — CSS selectors, URL shapes, authentication flows — is injected at runtime via scripts placed in `private-adapters/`. This directory is explicitly excluded by `.gitignore`. The separation means the open-source monorepo remains tenant-agnostic while each deployment instance carries its own private adapter set. This runtime-injection architecture is consistent with the [[sovereign-airlock-doctrine|sovereign airlock]] principle — proprietary client logic never crosses into the open codebase.
+## Why the adapter lives outside version control
 
-## Operational flow
+`private-adapters/` is excluded from Git by the repository's own `.gitignore`, alongside local credentials and any local execution-tracking database. A customer's operational logic — which portal to reach, what to do there, and how to authenticate — never enters the public monorepo's history. The engine fails loudly and exits if the requested adapter file isn't present, rather than silently doing nothing.
 
-The courier follows a three-step cycle per dispatch:
-
-1. **Query.** The engine polls the local [[service-fs-architecture|WORM ledger]] for pending dispatch records.
-2. **Execution.** It mounts the specified private adapter and runs the headless browser routine against the target portal.
-3. **Write-back.** On success, the engine logs the completion timestamp to the ledger and unloads the adapter.
-
-Each step is isolated. A failure at execution does not corrupt the ledger record; the dispatch remains pending until a successful write-back closes it. Completed write-backs are logged by [[sovereign-telemetry|zero-state telemetry]] for audit purposes.
+This keeps the open-source engine genuinely tenant-agnostic: the same 56-line script runs unmodified for any deployment, and everything specific to one customer's operation is an external file the engine loads at runtime, never a fork of the engine itself.
 
 ## See also
 
-- [[ontological-governance|Ontological Governance]] — the governance framework governing adapter permissions
-- [[verification-surveyor|Verification Surveyor]] — the service that monitors daily dispatch volumes
-- [[sovereign-telemetry|Zero-State Telemetry Architecture]] — telemetry layer consuming write-back events
-- [[service-people]] — the identity ledger the courier bridges to external portals
+- [[service-people]] — a plausible source of records an adapter might act on, though the engine itself has no direct connection to it

@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Servicio de mensajería Courier"
 slug: message-courier
-short_description: "El servicio de mensajería es un motor de automatización web sin interfaz que vincula registros de identidad internos con portales web externos usando adaptadores inyectados en tiempo de ejecución, manteniendo lógica operativa propietaria fuera del monorepo de código abierto."
+short_description: "Un motor deliberadamente delgado que carga dinámicamente el script adaptador privado de un cliente y le entrega el control de ejecución — manteniendo cada detalle operativo de la lógica de automatización web de un cliente completamente fuera del código abierto."
 category: services
 type: topic
 content_type: topic
@@ -12,36 +12,30 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-08
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: message-courier.md
 cites: []
 ---
 
-`service-message-courier` es el motor de automatización web sin cabeza que conecta el [[service-people|libro contable de identidades]] interno de la plataforma con portales web externos — sin incrustar ninguna lógica específica del cliente en la base de código abierta. El motor central lee registros de despacho pendientes del [[worm-ledger-design|libro mayor WORM]], ejecuta interacciones con portales a través de adaptadores en tiempo de ejecución distribuidos de forma privada, y escribe marcas de tiempo de finalización; el motor en sí permanece libre de selectores codificados, credenciales o lógica específica del portal.
+`service-message-courier` es deliberadamente pequeño. Su única función es cargar un fragmento de código que el motor mismo nunca ha visto — un adaptador privado — y entregarle el control. Todo lo que una tarea específica de automatización web realmente hace vive en ese adaptador, no en el motor.
 
-## Puntos clave
+## Qué hace el motor
 
-- El motor central no tiene conocimiento de ningún portal específico. Toda la lógica operativa — selectores CSS, formas de URL, flujos de autenticación — reside en `private-adapters/`, excluido del control de versiones. El monorepo de código abierto permanece agnóstico al inquilino; cada despliegue lleva su propio conjunto de adaptadores privados.
-- Ciclo de tres pasos por despacho: Consulta (sondear el libro mayor WORM para registros pendientes) → Ejecución (ejecutar navegador sin cabeza via adaptador) → Registro (escribir marca de tiempo de finalización). Un fallo en la ejecución deja el despacho pendiente en el libro mayor; el registro nunca se corrompe.
-- Mantener la lógica propietaria del cliente en `private-adapters/` garantiza que nunca entre en el historial de Git público. Los operadores pueden actualizar los scripts de adaptador sin modificar ni bifurcar el motor central.
-- Los registros completados son consumidos por la [[sovereign-telemetry|telemetría de estado cero]] con fines de auditoría. El servicio produce un rastro de despacho auditable sin que ningún dato identificable salga del entorno del operador.
+El punto de entrada de línea de comandos recibe dos argumentos: qué adaptador ejecutar y un límite operativo (10 por defecto) para acotar cuánto trabajo realiza un ciclo de ejecución. Luego:
 
-## Patrón de adaptadores
+1. Importa dinámicamente el adaptador nombrado desde `private-adapters/<nombre>.py`.
+2. Llama a la función `execute_payload(limit=...)` del adaptador.
+3. Reporta éxito o fallo — si el adaptador lanza una excepción propia, se captura y se registra.
 
-El motor central no contiene conocimiento de ningún portal o sitio específico. La lógica operativa — selectores CSS, formas de URL, flujos de autenticación — se inyecta en tiempo de ejecución a través de scripts colocados en `private-adapters/`. Este directorio está explícitamente excluido por `.gitignore`. La separación significa que el monorepo de código abierto permanece agnóstico al inquilino mientras cada instancia de despliegue lleva su propio conjunto de adaptadores privados. Esta arquitectura de inyección en tiempo de ejecución es coherente con el principio de [[sovereign-airlock-doctrine|exclusa soberana]] — la lógica propietaria del cliente nunca cruza hacia el código base abierto.
+Eso es todo el motor. No tiene conocimiento incorporado de ningún libro mayor, portal o biblioteca de automatización de navegador — esas son decisiones que toma el adaptador, completamente fuera de este código.
 
-## Por qué importa la separación
+## Por qué el adaptador vive fuera del control de versiones
 
-El diseño garantiza que los datos operativos propietarios — selectores de portales de clientes, flujos de autenticación, URL objetivo — nunca entren en el historial de Git público. El motor en sí es revisable y reutilizable; la lógica del portal es privada y específica del despliegue.
+`private-adapters/` está excluido de Git por el propio `.gitignore` del repositorio, junto con las credenciales locales y cualquier base de datos local de seguimiento de ejecución. La lógica operativa de un cliente — a qué portal acceder, qué hacer allí y cómo autenticarse — nunca entra al historial del monorepo público. El motor falla de forma explícita y termina si el archivo del adaptador solicitado no está presente, en lugar de no hacer nada silenciosamente.
 
-## Flujo operativo
-
-El servicio lee los registros de despacho pendientes del [[service-fs-architecture|libro mayor WORM]] interno, ejecuta las interacciones del portal a través de los adaptadores privados en tiempo de ejecución, y escribe las marcas de tiempo de finalización de vuelta sin incrustar ninguna lógica específica del cliente en la base de código de código abierto. Los registros completados son capturados por la [[sovereign-telemetry|telemetría de estado cero]] con fines de auditoría.
+Esto mantiene al motor de código abierto genuinamente agnóstico del inquilino: el mismo script de 56 líneas se ejecuta sin modificación para cualquier implementación, y todo lo específico de la operación de un cliente es un archivo externo que el motor carga en tiempo de ejecución, nunca una bifurcación del motor mismo.
 
 ## Véase también
 
-- [[ontological-governance|Gobernanza ontológica]] — el marco de gobernanza que rige los permisos de adaptadores
-- [[verification-surveyor|Supervisor de verificación]] — el servicio que monitorea los volúmenes diarios de despacho
-- [[sovereign-telemetry|Arquitectura de telemetría de estado cero]] — la capa de telemetría que consume eventos de registro
-- [[service-people]] — el libro mayor de identidades que el servicio courier vincula con portales externos
+- [[service-people]] — una fuente plausible de registros sobre los que un adaptador podría actuar, aunque el motor mismo no tiene conexión directa con él
