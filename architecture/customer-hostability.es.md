@@ -32,10 +32,13 @@ hospedable por el cliente por construcción. Véase también [[customer-first-or
 
 ## Tres compromisos concretos
 
-1. **Bootstrap auto-hospedable.** Cada servicio de la plataforma envía un
- `bootstrap.sh` que levanta el servicio en la máquina propia
- del cliente — sin dependencia SaaS, sin login con proveedor,
- sin API medida.
+1. **Bootstrap auto-hospedable.** Un servicio de la plataforma se ejecuta en la
+ máquina propia del cliente mediante una unidad systemd — sin dependencia SaaS,
+ sin login con proveedor, sin API medida. Hoy solo un servicio cuenta con un
+ script de instalación completo que configura la unidad y descarga el binario;
+ la mayoría se instala aplicando el archivo de unidad a mano. Un script único
+ por servicio para todos ellos es la intención declarada, no todavía la
+ práctica uniforme.
 2. **Adaptadores por inquilino en el sistema de archivos del
  cliente.** Cuando el adaptador del cliente entrena sobre el
  corpus del cliente, el `.lora` resultante vive en

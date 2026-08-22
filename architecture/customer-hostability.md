@@ -27,7 +27,7 @@ This is not a pricing tier or a deployment option. It is the shape of the substr
 
 Three concrete commitments, each operationally testable:
 
-1. **Self-hostable bootstrap.** Every platform service ships with a `bootstrap.sh` that brings the service up on the customer's own machine — no SaaS dependency, no provider login, no metered API. The pattern is established by the `infrastructure/local-slm/`, `infrastructure/local-doorman/`, and `infrastructure/local-knowledge/` precedents.
+1. **Self-hostable bootstrap.** A platform service runs on the customer's own machine via a systemd unit — no SaaS dependency, no provider login, no metered API. Per-service unit files are organised by function (inference routing, the three wiki surfaces, the fleet controller, and others) rather than one directory per service. A standalone install script that sets up the unit and fetches the binary exists for one service today — a consistent, uniform install script plus a manifest across every service is the intended shape, not yet the shipped state.
 2. **Per-tenant adapters in the customer's filesystem.** When the customer's adapter trains on the customer's corpus, the resulting `.lora` lives at `data/adapters/` inside the customer's substrate. It never traverses the vendor's network. Loss-of-adapter risk falls on the customer's backup discipline, not on the vendor's continued operation.
 3. **Customer-anchored audit ledger.** The [[apprenticeship-substrate|apprenticeship corpus]] that records every editorial action and verdict lives at `data/training-corpus/apprenticeship/<task-type>/<tenant>/` inside the customer's substrate. Tenant-private records never leave the customer's infrastructure.
 
@@ -41,36 +41,21 @@ Hyperscaler economics depend on central training, shared trust roots, and provid
 
 The platform is built so the customer's regulatory posture does not depend on the vendor's. A BCSC reporting issuer per `[ni-51-102]` who deploys the platform inside their own substrate can satisfy continuous-disclosure obligations against records they own and control. A vendor outage does not impair their ability to respond to a regulator's request.
 
-## Bootstrap pattern
+## What actually ships today
 
-Each service ships with three artefacts:
+`infrastructure/` organises service installation by function, not by one bootstrap
+directory per service:
 
-| Artefact | Purpose |
+| Group | What it covers |
 |---|---|
-| `bootstrap.sh` | Brings the service up on the customer's machine — installs systemd unit, configures storage paths, sets defaults. |
-| `bootstrap.es.sh` | Spanish-language operator-friendly variant where applicable. |
-| `MANIFEST.md` | Declares what this deployment provides, the substrate version it inherits from, and the operational state. |
+| Wiki surfaces | One unit per wiki — documentation, corporate, and projects — plus the marketing site and proofreader. |
+| Orchestration and fleet | The fleet controller, VM host agent, tenant proxy, and inference-routing units. |
+| Command surface | The one service today with a full install script — sets up the systemd unit and fetches the binary from the release server, a local build path, or a pinned default. |
 
-Three already in production:
-
-- `infrastructure/local-slm/` — local OLMo-3 inference
-- `infrastructure/local-doorman/` — Tier-A routing on the workspace VM
-- `infrastructure/local-knowledge/` — wiki-engine bootstrap
-
-**Correction (2026-07-18):** none of these three directory paths exist in the live
-monorepo as named. Direct verification of `pointsav-monorepo/infrastructure/` finds
-`local-orchestration-command/`, `local-vm-mediakit/`, and a `systemd/` directory holding
-`local-orchestration-slm.service` and three separate `local-knowledge-{projects,
-corporate,documentation}.service` units — a different naming shape (per-property
-systemd units, not per-service bootstrap directories) than the single `local-knowledge/`
-this article describes. No `bootstrap.es.sh` or `MANIFEST.md` was found anywhere under
-`infrastructure/` for any service, contrary to the "Bootstrap pattern" table above.
-**Flagged, not silently rewritten** — this may reflect a real restructuring since this
-article was last verified, or the three-directory pattern described may never have
-shipped as designed; needs project-totebox confirmation before the specific paths and
-the MANIFEST.md/bootstrap.es.sh claims are corrected.
-
-Each was built to the same shape so a platform-shaped customer substrate is predictable: the customer reads one bootstrap runbook and applies it across services.
+The intended shape — every service self-installable from a single script, in the
+customer's own language, with a manifest declaring what it provides — is real intent,
+not yet uniform practice. Most services today are brought up by hand-applying a
+systemd unit file rather than running a per-service install script.
 
 ## What customer hostability is not
 
