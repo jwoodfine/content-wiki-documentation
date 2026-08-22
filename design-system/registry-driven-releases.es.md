@@ -103,10 +103,16 @@ cinco colores primitivos existían solo en la copia que ya no se mantenía.
 Dos detalles hacen útil este ejemplo. Primero, ninguna de las dos copias
 alimentaba realmente el sitio: los tokens que sirve design.pointsav.com se
 resuelven a través de una sola cadena — los archivos fuente del vault
-compilados en una única exportación resuelta
-(`dtcg-vault/exports/tokens.full.json`, 146 tokens hoja) — de modo que la
-divergencia era invisible en producción mientras seguía siendo un riesgo
-vivo para cualquier herramienta que eligiera el archivo equivocado. Segundo,
+(`primitive.json`, `pointsav-brand.json`, más los pilares `paper` y
+`writing`) compilados en una única exportación resuelta,
+`dtcg-vault/exports/tokens.full.json` — de modo que la divergencia era
+invisible en producción mientras seguía siendo un riesgo vivo para
+cualquier herramienta que eligiera el archivo equivocado. Esa exportación
+ha crecido bastante más allá de la forma de dos pilares que esta sección
+midió por primera vez; el paquete publicado actual abarca cuatro pilares y
+varios cientos de tokens hoja en total, y el archivo mismo es el recuento
+vigente, no una cifra fija a la fecha de redacción de este artículo.
+Segundo,
 la resolución tuvo forma de registro: declarar canónica una copia, plegar en
 ella los cinco valores genuinamente nuevos, y reemplazar la otra con un
 talón de obsolescencia que apunta al archivo canónico. No una limpieza de
