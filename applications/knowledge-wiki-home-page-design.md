@@ -9,13 +9,11 @@ content_type: topic
 index_group: knowledge-and-editorial-applications
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: knowledge-wiki-home-page-design.es.md
 cites: [ni-51-102, osc-sn-51-721]
 ---
-
-# Knowledge wiki home page — design intent
 
 The PointSav documentation wiki at documentation.pointsav.com is the canonical reading surface for the platform's architecture, services, operating systems, governance, infrastructure, applications, and reference vocabulary, served by the [[app-mediakit-knowledge]] engine. Its home page inherits Wikipedia's Main Page structural conventions — the gold standard for general-knowledge home pages — and extends that inheritance with capabilities Wikipedia's governance model has been structurally unable to ship, following the [[wikipedia-leapfrog-design|leapfrog design philosophy]].
 
@@ -41,7 +39,7 @@ Ten structural slots compose Wikipedia's English Main Page. The PointSav home pa
 
 **Featured article.** Wikipedia's Today's Featured Article enforces a 909–1,009 character blurb — character count, not word count. The PointSav home page preserves the format invariant: bolded linked title, body-register paraphrase of the article lead, "→ Read" closer. The featured article rotates as the editorial pipeline warrants; the current rotation cadence is weekly.
 
-**Browse by category.** Wikipedia surfaces topics through its category system. The PointSav home page surfaces all nine ratified categories — architecture, services, systems, applications, governance, infrastructure, company, reference, help — in a 3×3 grid. The grid renders all nine even when a category is empty, so the platform's intended scope is visible at launch. (Correction, 2026-08-02: `company`/`help` were retired 16 days before this article's own last-edited date, commit `ff23832`/`2e843fb`, 2026-05-09 — the real category count is 10, not 9, and neither `company` nor `help` exist. The real home-page browse grid, `HOMEPAGE_CATEGORIES`, is a 7-tile marketing IA — "Developer Platform," "Operator Workspace," etc. — not a literal 3×3 grid of category names. Flagged, not resolved.)
+**Browse by category.** Wikipedia surfaces topics through its category system. The PointSav home page surfaces every ratified category as a card, rendered directly from the wiki's category registry rather than a hand-maintained list — a category that gains its first article appears on the home page on the next render, with no template change required.
 
 **Recent additions.** The top five articles by `last_edited` date, in descending order. The intent matches Wikipedia's Did You Know section: signal that the corpus is actively maintained and give returning readers a reason to return.
 
@@ -53,11 +51,11 @@ The blue link colour, sans-serif headings, the absence of bold except for articl
 
 ## Extensions beyond Wikipedia
 
-Five primitives extend Wikipedia's home-page composition. Three are available in the current iteration. Two are planned for later iterations.
+Five primitives extend Wikipedia's home-page composition. Two are available in the current iteration. Three are planned for later iterations.
 
-### Machine-readable slot structure
+### Machine-readable slot structure (planned)
 
-Wikipedia's home page has no structured data describing its slots. The PointSav home page emits JSON-LD per slot — the featured-article slot as a typed `Article` reference, the recent-additions slot as an `ItemList`, the category grid as a typed `WebPageElement` collection. Downstream consumers — feed readers, voice interfaces, language models — receive structure rather than prose to infer. (Correction, 2026-08-02: zero JSON-LD code exists in the real home-page handler — `src/jsonld.rs` implements JSON-LD only for individual TOPIC pages, not the home page. Flagged, not resolved.)
+Wikipedia's home page has no structured data describing its slots. Individual TOPIC pages already emit JSON-LD structured data; extending the same treatment to the home page's own slots — the featured-article slot as a typed `Article` reference, the recent-additions slot as an `ItemList` — is a natural next step, not yet built. Today the home page itself carries no structured data of its own; only the articles it links to do.
 
 ### Editorial-labour cadence as visible signal
 

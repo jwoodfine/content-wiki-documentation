@@ -9,13 +9,11 @@ content_type: topic
 index_group: knowledge-and-editorial-applications
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: knowledge-wiki-home-page-design.md
 cites: [ni-51-102, osc-sn-51-721]
 ---
-
-# Página de inicio del wiki de conocimiento — intención de diseño
 
 El wiki de documentación de PointSav en documentation.pointsav.com es la superficie de lectura canónica para la arquitectura, los servicios, los sistemas operativos, la gobernanza, la infraestructura, las aplicaciones y el vocabulario de referencia de la plataforma, servido por el motor [[app-mediakit-knowledge]]. Su página de inicio hereda las convenciones estructurales de la Portada de Wikipedia — el estándar de referencia para páginas de inicio de conocimiento general — y extiende esa herencia con capacidades que el modelo de gobernanza de Wikipedia no ha podido incorporar, siguiendo la [[wikipedia-leapfrog-design|filosofía de diseño leapfrog]].
 
@@ -29,7 +27,7 @@ La página de inicio sirve simultáneamente a dos tipos de audiencia.
 
 Un lector técnico — un arquitecto, un desarrollador, un redactor técnico — busca profundidad, autoridad de fuente y estructura legible por máquinas. Un lector del ámbito financiero — un analista, un auditor, un inversor, un regulador — busca la postura de la plataforma, el [[compliance-and-continuous-disclosure|historial de divulgación]] y la estructura corporativa, en el mismo registro autoritativo que un expediente regulatorio.
 
-Ambas audiencias llegan a la misma URL (`/`), ven la misma composición y siguen los mismos enlaces hacia el corpus. La página de inicio no se bifurca por audiencia. Sirve a ambas al heredar el compromiso editorial más fundamental de Wikipedia: la ausencia de texto de marketing y la presencia de trabajo editorial. Las declaraciones sobre la plataforma son estructurales ("9 categorías", "N artículos", "actualizado por última vez AAAA-MM-DD"), no promocionales.
+Ambas audiencias llegan a la misma URL (`/`), ven la misma composición y siguen los mismos enlaces hacia el corpus. La página de inicio no se bifurca por audiencia. Sirve a ambas al heredar el compromiso editorial más fundamental de Wikipedia: la ausencia de texto de marketing y la presencia de trabajo editorial. Las declaraciones sobre la plataforma son estructurales ("N categorías", "N artículos", "actualizado por última vez AAAA-MM-DD"), no promocionales.
 
 ---
 
@@ -37,11 +35,11 @@ Ambas audiencias llegan a la misma URL (`/`), ven la misma composición y siguen
 
 La Portada en inglés de Wikipedia se compone de diez espacios estructurales. La página de inicio de PointSav preserva los primitivos fundamentales.
 
-**Banner de bienvenida.** Wikipedia abre con el alcance y la escala de la comunidad. La página de inicio de PointSav abre con el alcance ("La documentación de la plataforma de PointSav cubre la arquitectura, los servicios, los sistemas operativos y las convenciones de gobernanza del sustrato PointSav") y la escala estructural ("N artículos en 9 categorías, actualizado por última vez el AAAA-MM-DD").
+**Banner de bienvenida.** Wikipedia abre con el alcance y la escala de la comunidad. La página de inicio de PointSav abre con el alcance ("La documentación de la plataforma de PointSav cubre la arquitectura, los servicios, los sistemas operativos y las convenciones de gobernanza del sustrato PointSav") y la escala estructural ("N artículos en N categorías, actualizado por última vez el AAAA-MM-DD").
 
 **Artículo destacado.** El artículo destacado de hoy de Wikipedia impone un fragmento de entre 909 y 1.009 caracteres — por recuento de caracteres, no de palabras. La página de inicio de PointSav preserva ese invariante de formato: título enlazado en negrita, paráfrasis del párrafo de apertura del artículo en registro de cuerpo, cierre "→ Leer".
 
-**Explorar por categoría.** La página de inicio de PointSav presenta las nueve categorías ratificadas — arquitectura, servicios, sistemas, aplicaciones, gobernanza, infraestructura, empresa, referencia, ayuda — en una cuadrícula de 3×3. La cuadrícula muestra las nueve categorías incluso cuando están vacías.
+**Explorar por categoría.** La página de inicio de PointSav presenta cada categoría ratificada como una tarjeta, renderizada directamente desde el registro de categorías del wiki en lugar de una lista mantenida a mano — una categoría que gana su primer artículo aparece en la página de inicio en el siguiente renderizado, sin necesidad de cambiar la plantilla.
 
 **Adiciones recientes.** Los cinco artículos más recientes por fecha `last_edited`, en orden descendente. La intención coincide con la sección "¿Sabías que...?" de Wikipedia: señalizar que el corpus se mantiene activamente.
 
@@ -51,9 +49,9 @@ La Portada en inglés de Wikipedia se compone de diez espacios estructurales. La
 
 ## Extensiones más allá de Wikipedia
 
-Cinco primitivos extienden la composición de la página de inicio de Wikipedia. Tres están disponibles en la iteración actual. Dos están previstos para iteraciones futuras.
+Cinco primitivos extienden la composición de la página de inicio de Wikipedia. Dos están disponibles en la iteración actual. Tres están previstos para iteraciones futuras.
 
-**Estructura de espacios legible por máquinas.** La página de inicio emite JSON-LD por espacio — el espacio del artículo destacado como referencia `Article` tipada, el espacio de adiciones recientes como `ItemList`, la cuadrícula de categorías como colección `WebPageElement`. Los consumidores posteriores reciben estructura en lugar de prosa a interpretar.
+**Estructura de espacios legible por máquinas (prevista).** Los artículos individuales ya emiten datos estructurados JSON-LD; extender el mismo tratamiento a los propios espacios de la página de inicio — el espacio del artículo destacado como referencia `Article` tipada, el espacio de adiciones recientes como `ItemList` — es un siguiente paso natural, aún no construido. Hoy la página de inicio en sí no lleva datos estructurados propios; solo los artículos que enlaza.
 
 **Cadencia de trabajo editorial como señal visible.** La página de inicio muestra la cadencia editorial a través de la marca de tiempo "última actualización" en el banner de bienvenida, el artículo destacado rotatorio y el feed de adiciones recientes.
 
