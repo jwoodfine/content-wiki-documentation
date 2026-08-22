@@ -18,22 +18,15 @@ cites:
 paired_with: adapter-composition.md
 ---
 
-El **Álgebra de Composición de Adaptadores** es el modelo que rige cómo se ensambla la inteligencia de IA en tiempo de solicitud en un despliegue de PointSav. Su metáfora central se asigna con precisión a un sistema operativo: el Doorman ([[service-slm]]) es el kernel; los adaptadores LoRA son procesos; [[service-content]] es el sistema de archivos; el modelo base es el firmware. La analogía no es ilustrativa — es operativa.
+El **Álgebra de Composición de Adaptadores** es el modelo diseñado para cómo se ensamblará la inteligencia de IA en tiempo de solicitud en un despliegue de PointSav. Su metáfora central se asigna con precisión a un sistema operativo: el Doorman ([[service-slm]]) es el kernel; los adaptadores LoRA son procesos; [[service-content]] es el sistema de archivos; el modelo base es el firmware. El mecanismo de composición aún no está construido — hoy existe un solo adaptador, entrenado pero aún no promovido a producción — pero la forma que sigue es el objetivo comprometido del sustrato, no una hipótesis.
 
 ## El álgebra
 
-En tiempo de solicitud, el [[compounding-doorman|Doorman]] compone adaptadores apilándolos sobre el modelo base:
-
-**Corrección (2026-07-18):** el nombre del modelo base aquí (`OLMo-3-1125-7B-Q4`) es la
-tercera nomenclatura distinta del modelo local/Nivel A encontrada en este wiki durante
-esta revisión — véase la inconsistencia ya señalada en [[pointsav-llm]] (que cita
-"OLMo 3 7B Q4" y un artículo hermano con "OLMo-2-7B Q4_K_M" en conflicto). No se
-relitiga en su totalidad aquí — es la misma desactualización de versión subyacente en la
-documentación de ingeniería, no una discrepancia nueva.
+En tiempo de solicitud, el [[compounding-doorman|Doorman]] está diseñado para componer adaptadores apilándolos sobre el modelo base:
 
 ```
 pesos_compuestos =
- modelo_base[OLMo-3-1125-7B-Q4]
+ modelo_base[OLMo-3-7B-Instruct]
  ⊕ adaptador_constitucional[doctrina_vM.m.p]
  ⊕ adaptador_ingeniería[pointsav_vN]?
  ⊕ adaptador_inquilino[<inquilino>_vK]?
@@ -41,7 +34,9 @@ pesos_compuestos =
  ⊕ adaptador_clúster[<nombre-clúster>_vJ]?
 ```
 
-Donde `?` denota un adaptador opcional cargado solo cuando aplica el contexto de la solicitud. La composición es determinista dado el contexto de la solicitud; no hay una decisión en tiempo de ejecución sobre qué adaptadores usar.
+Donde `?` denota un adaptador opcional cargado solo cuando aplica el contexto de la solicitud. La composición está diseñada para ser determinista dado el contexto de la solicitud — sin decisión en tiempo de ejecución sobre qué adaptadores usar, solo lo que determina el contexto.
+
+Componer pesos en tiempo de ejecución depende de una capacidad de llama.cpp que aún no ha llegado. Hasta entonces, el paso de fusión devuelve un ID compuesto simbólico en lugar de pesos fusionados — esto conecta el resto del sustrato de extremo a extremo sin bloquearse en la pieza faltante. Solo un adaptador está registrado hoy, evaluado pero aún no promovido más allá de esa etapa; la tipología de cinco familias a continuación es la forma objetivo que el registro está construido para contener, no su población actual.
 
 ## Tipología y reglas de enrutamiento de adaptadores
 

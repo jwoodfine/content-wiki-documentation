@@ -19,21 +19,15 @@ cites:
 paired_with: adapter-composition.es.md
 ---
 
-The **Adapter Composition Algebra** is the model that governs how AI intelligence is assembled at request time in a PointSav deployment. Its central metaphor maps precisely to an operating system: the Doorman ([[service-slm]]) is the kernel; LoRA adapters are processes; [[service-content]] is the filesystem; the base model is firmware. The analogy is not illustrative — it is operational.
+The **Adapter Composition Algebra** is the designed model for how AI intelligence will be assembled at request time in a PointSav deployment. Its central metaphor maps precisely to an operating system: the Doorman ([[service-slm]]) is the kernel; LoRA adapters are processes; [[service-content]] is the filesystem; the base model is firmware. The composition mechanism itself is not yet built — one adapter exists today, trained but not yet promoted to production — but the shape below is the substrate's committed target, not a hypothetical.
 
 ## The algebra
 
-At request time, the [[compounding-doorman|Doorman]] composes adapters by stacking onto the base model:
-
-**Correction (2026-07-18):** the base model name here (`OLMo-3-1125-7B-Q4`) is the third
-distinct naming of the local/Tier A model found in this wiki this pass — see the
-already-flagged inconsistency on [[pointsav-llm]] (which cites "OLMo 3 7B Q4" and a
-sibling article's "OLMo-2-7B Q4_K_M" as conflicting). Not re-litigated in full here;
-same underlying engineering-doc version drift, not a new discrepancy.
+At request time, the [[compounding-doorman|Doorman]] is designed to compose adapters by stacking onto the base model:
 
 ```
 composed_weights =
- base_model[OLMo-3-1125-7B-Q4]
+ base_model[OLMo-3-7B-Instruct]
  ⊕ constitutional_adapter[doctrine_vM.m.p]
  ⊕ engineering_adapter[pointsav_vN]?
  ⊕ tenant_adapter[<tenant>_vK]?
@@ -43,17 +37,9 @@ composed_weights =
 
 Where `?` denotes an optional adapter loaded only when the request context applies. `⊕` is the LoRA-stacking operator — a rank-r delta added to the base model weights at runtime.
 
-The composition is deterministic given the request context. There is no runtime decision about which adapters to use; the context determines the composition.
+The composition is intended to be deterministic given the request context — no runtime decision about which adapters to use, only what the context determines.
 
-**Correction (2026-08-02, verified against canonical `origin/main`):** this whole
-composition mechanism is described here as current, operational behavior, but the
-real `service-slm/ARCHITECTURE.md` states plainly: "Ring 3b is planned for the phase
-following the first commercial deployment beyond Woodfine." The real
-`adapter-hub/src/lib.rs::fuse_adapters()` is an explicit placeholder — it string-concatenates
-adapter IDs rather than merging weights, and its own test is named `fuse_adapters_stub`.
-Only one adapter is currently registered in `data/adapters/registry.yaml`, not the
-five-family taxonomy shown above. **Flagged, not resolved** — this article should be
-hedged to planned/intended language throughout, not corrected line-by-line here.
+Composing weights at runtime depends on an upstream llama.cpp capability that has not yet landed. Until it does, the fuse step returns a symbolic composed ID rather than merged weights — it wires the rest of the substrate together end to end without blocking on the missing piece. Only one adapter is registered today, evaluated but not yet promoted past that stage; the five-family typology below is the target shape the registry is built to hold, not its current population.
 
 ## Adapter typology and routing rules
 
