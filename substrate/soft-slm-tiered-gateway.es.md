@@ -18,8 +18,6 @@ paired_with: soft-slm-tiered-gateway.md
 supersedes: slm-tiered-substrate.es.md
 ---
 
-# La pasarela de inferencia por niveles — enrutamiento de IA local-primero
-
 Una pasarela de inferencia por niveles enruta cada solicitud de IA a través de una
 jerarquía de niveles de cómputo, seleccionando el nivel más económico y capaz para
 cada solicitud. El trabajo rutinario se ejecuta en hardware propiedad de la
@@ -108,7 +106,7 @@ completan; ninguna nueva comienza. El trabajo en cola se acumula y se vacía cua
 reabre el interruptor.
 
 El interruptor de emergencia es el control de facturación del operador. Cerrar el
-interruptor del nodo express detiene el arranque de la GPU A100; el coste cae a cero.
+interruptor del nodo express detiene el arranque de la GPU L4; el coste cae a cero.
 
 ## La memoria organizativa
 
@@ -120,7 +118,10 @@ nuevo mediante inferencia.
 
 ## El servidor MCP
 
-La pasarela expone una interfaz de memoria organizativa mediante el [[mcp-substrate-protocol|Protocolo de
-Contexto de Modelo]] en un segundo puerto. Cualquier cliente de IA compatible con MCP
-puede conectarse a esta interfaz usando su suscripción integrada, sin necesidad de una
-clave API adicional.
+Un proceso complementario expone la memoria organizativa de la pasarela como
+herramientas [[mcp-substrate-protocol|Protocolo de Contexto de Modelo]] — no un
+segundo puerto de red en la propia pasarela, sino un programa separado que habla
+MCP por entrada y salida estándar con quien lo invoque, y habla HTTP normal con la
+pasarela como su propio cliente. Cualquier cliente de IA compatible con MCP puede
+invocar este proceso usando su suscripción integrada, sin necesidad de una clave
+API adicional.

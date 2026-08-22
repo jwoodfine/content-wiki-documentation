@@ -18,8 +18,6 @@ paired_with: soft-slm-tiered-gateway.es.md
 supersedes: slm-tiered-substrate.md
 ---
 
-# The tiered inference gateway — local-first AI routing
-
 A tiered inference gateway routes every AI request through a hierarchy of compute
 tiers, selecting the least expensive capable tier for each request. Routine work runs
 on hardware the organization owns. Burst capacity on rented GPU handles work that
@@ -118,8 +116,8 @@ dispatching to that tier immediately. In-flight requests complete; no new reques
 start. Queued work accumulates and drains when the kill switch is reopened.
 
 The kill switch is the operator's billing control. Closing the express node switch
-stops the A100 from starting; the cost drops to zero. Closing the global switch
-stops all Tier B and Tier C spending while allowing Tier A to continue serving.
+stops the L4 GPU node from starting; the cost drops to zero. Closing the global
+switch stops all Tier B and Tier C spending while allowing Tier A to continue serving.
 
 The express lane — which bypasses the file-backed queue for time-sensitive work —
 still checks the kill switch. Nothing bypasses the kill switch.
@@ -152,11 +150,14 @@ slow graph service from blocking inference.
 
 ## The MCP server
 
-The gateway exposes an organizational memory interface via the [[mcp-substrate-protocol|Model Context Protocol]]
-at a second port. Any MCP-capable AI client can connect to this interface using its
-built-in subscription — no separate API key is required. The client's reasoning
-capability combines with the gateway's [[ontological-datagraph|organizational knowledge graph]] to produce
-responses that are grounded in the organization's actual data.
+A companion process exposes the gateway's organizational memory as [[mcp-substrate-protocol|Model Context Protocol]]
+tools — not a second network port on the gateway itself. It is a separate program,
+speaking MCP over standard input and output to whatever client launches it, and
+speaking ordinary HTTP to the gateway as its own client. Any MCP-capable AI client
+can launch this process using its built-in subscription — no separate API key is
+required. The client's reasoning capability combines with the gateway's
+[[ontological-datagraph|organizational knowledge graph]] to produce responses that
+are grounded in the organization's actual data.
 
 This is the primary path for interactive use by operators who already have a
 subscription to an MCP-capable client. The gateway handles memory; the client
