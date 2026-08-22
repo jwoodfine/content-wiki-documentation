@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-slm graph store migration"
+title: "service-slm graph store rebuild"
 slug: service-slm-graph-store-migration
 category: services
 index_group: ring-3-ai-gateway
@@ -11,131 +11,75 @@ status: pre-build
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-01
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: service-slm-graph-store-migration.es.md
-short_description: "service-slm's graph store runs a nightly DataGraph rebuild — grammar-constrained entity extraction via Doorman producing proposals, gated by human approval before any write — feeding inference context injection."
+short_description: "service-slm's graph store runs a nightly rebuild — entity extraction via the Doorman writes directly to the graph on completion, with no human review step in the rebuild script itself."
 cites: []
 ---
 
-**Correction (2026-08-01):** the short_description on this article previously claimed a
-"migration from LadybugDB to SQLite" that the body below never described or supported —
-a metadata/body mismatch, now corrected. The graph store described throughout this
-article is LadybugDB; no SQLite migration is described here. Separately, the write flow
-described below (the rebuild script calling `graph/mutate` directly) predates a human-
-approval gate added to the DataGraph write path and proven end-to-end 2026-07-18 — see
-the "Current status" correction near the end of this article.
+The [[service-slm]] graph store is a live property graph of named business entities
+extracted nightly from an operator's data corpus — the entity layer [[service-content]] uses
+to inject structured business context into inference requests without sending proprietary
+data to an external model. The graph is stored in LadybugDB and rebuilt nightly by a script
+that runs as Phase 1 of the Elastic Compute window, before the model-training phase claims
+the GPU.
 
-The [[service-slm]] graph store is a live property graph of named business entities extracted nightly from an operator's data corpus — the entity layer that [[service-content]] uses to inject structured business context into every inference request without sending proprietary data to an external model. The graph is stored in LadybugDB and rebuilt on a nightly schedule by the DataGraph rebuild script, which runs as Phase 1 of the Elastic Compute nightly window before the model-training phase claims the GPU.
+## What the graph contains
 
-Each night, the DataGraph rebuild script processes the operator data
-corpus and writes extracted named entities to a property graph stored in
-LadybugDB. This property graph — the deployment DataGraph — is the entity layer
-that service-content uses to inject structured business context into inference
-requests. The rebuild runs as Phase 1 of the Elastic Compute #1 nightly window, before
-the training phase claims the GPU. The deployment DataGraph is live, with an
-11 MB LadybugDB file currently active at service-content.
-
-## What the DataGraph contains
-
-The deployment DataGraph is a property graph of named business entities
-extracted from the operator deployment's data corpus. The graph holds five
-entity classifications: Person (staff, contacts, counterparties), Company
-(vendors, customers, partner organisations), Project (active and historical
-engagements), Account (financial accounts and ledger references), and
-Location (offices, sites, and operational addresses). These entities are
-extracted from three document streams: meeting transcript markdown files
-from the minutebook asset directory, research and background YAML and markdown
-files from the service-agents directory, and contact source JSON records from
-the [[service-people]] directory.
+The graph holds five entity classifications: Person (staff, contacts, counterparties),
+Company (vendors, customers, partner organisations), Project (active and historical
+engagements), Account (financial accounts and ledger references), and Location (offices,
+sites, and operational addresses). These entities are extracted from three document
+streams: meeting-transcript files, research and background material, and contact source
+records from [[service-people]].
 
 ## What the nightly rebuild does
 
-For each unprocessed document, the rebuild script calls
-`POST :9080/v1/chat/completions` through the [[doorman-protocol|Doorman]] endpoint, passing the
-document text with a JSON Schema grammar constraint. The language model —
-OLMo 3 32B Think running on Elastic Compute #1 via vLLM — returns a structured JSON
-array of entity objects. Each object carries the entity name, classification,
-confidence score, and optional role, location, and contact vectors. The script
-then calls `POST :9081/v1/graph/mutate` on service-content to write those
-entities into LadybugDB. The health probe at the end of the cycle queries
-service-content for the current entity count and writes a summary JSON file
-at `$DEPLOYMENT_ROOT/data/datagraph-health.json`.
+For each unprocessed document, the rebuild script calls the [[doorman-protocol|Doorman]]'s
+completion endpoint with a JSON Schema grammar constraint. The language model — running on
+the burst GPU tier via vLLM — returns a structured array of entity objects, each carrying a
+name, classification, confidence score, and optional role, location, and contact fields. The
+script then writes those entities directly to the graph through service-content's mutate
+endpoint. A health check at the end of each cycle records the current entity count.
 
-The script processes three document batches each run: the full minutebook
-asset tree, the full service-agents tree, and the 50 most recent unprocessed
-service-people JSON files. A randomised inter-document delay (0.3 to 1.5
-seconds) prevents the Doorman from receiving a burst of requests that could
-interfere with the training phase startup.
+The script processes the full backlog of unprocessed documents each run, with a randomised
+delay between requests so the Doorman never receives a burst that could interfere with the
+training phase's own startup.
 
-## The routing parity principle
+## The write path has no review step of its own
 
-The DataGraph rebuild script calls only the same two REST API
-endpoints that any operator or community member running service-slm and
-service-content would call from their own automation:
-
-- `POST :9080/v1/chat/completions` — entity extraction through Doorman
-- `POST :9081/v1/graph/mutate` — entity write through service-content
-
-There is no file-watcher shortcut, no internal gRPC bypass, and no direct
-database write. This is a deliberate design decision. If the rebuild script
-fails, the failure indicates a real defect in service-slm or service-content
-that would also affect any operator or customer running the same API surface.
-The nightly rebuild functions as a full-stack integration test that runs
-against production services on production data every night. Failures are
-explicit and immediately actionable rather than hidden in an internal path
-that real callers would never exercise.
+This is the fact a reader evaluating the platform's data-governance posture needs: the
+rebuild script's write to the graph is unconditioned. It calls the same mutate endpoint any
+operator or community member could call from their own automation, and that endpoint writes
+immediately — there is no proposal file, no pending queue, and no human sign-off anywhere in
+this script's own flow. A separate write-governance checkpoint exists elsewhere in
+service-content (a capture-then-verify path for a different automated call site, requiring a
+signed human verdict before a write lands), but it does not cover this endpoint or this
+script; the endpoint's own design instead assumes each caller provides its own gate, and this
+script does not provide one.
 
 ## Idempotency
 
-The script tracks processed documents using a local [[worm-ledger-design|ledger]] at
-`$DEPLOYMENT_ROOT/data/datagraph-processed.txt`. Each document is identified by
-a hash of its file content, prefixed with a source tag (`mk-` for minutebook,
-`ag-` for service-agents, `sp-` for service-people). Before processing any
-document, the script checks whether its identifier appears in the ledger. If
-it does, the document is skipped. After a successful `graph/mutate` call, the
-identifier is appended to the ledger. This mechanism ensures that documents
-are not re-processed across multiple nightly runs, even if the same content
-is present in the source directories.
-
-The ledger is append-only and not pruned automatically. If service-content
-is restarted and the graph is rebuilt from scratch, the ledger can be cleared
-to force a full re-extraction on the next nightly run.
+The script tracks processed documents in a local append-only ledger, identified by a hash of
+each document's content. A document already in the ledger is skipped on future runs. The
+ledger is not pruned automatically; clearing it forces a full re-extraction on the next run.
 
 ## Graph context injection
 
-The deployment DataGraph is not a static reference store. service-content
-queries it before each inference request. When the Doorman receives a
-completion request from an operator or application, service-content retrieves
-entities relevant to the request context — based on module ID, entity
-classification, and confidence thresholds — and injects them into the system
-message as a structured entity context block. The language model receives
-structured business context (who the relevant people are, what projects are
-active, which companies are counterparties) without requiring that structured
-data to cross the external model boundary. The graph stays within the
-deployment boundary; only the injected prose context leaves it.
+The graph is not a static reference store. service-content queries it before each inference
+request, retrieves entities relevant to the request's context, and injects them into the
+model's system message as structured business context — who the relevant people are, what
+projects are active, which companies are counterparties — without that structured data
+crossing the external model boundary. The graph itself stays within the deployment; only the
+injected prose context leaves it.
 
-## Current status and gate criterion
+## Current status
 
-The deployment DataGraph is live. Three consecutive nightly runs reporting
-HEALTHY status — defined as a non-negative entity count delta and a successful
-round trip on both the extraction and mutation endpoints — are the intended
-criterion before the DataGraph pattern is extended to larger operational
-contexts. That gate has not yet been met; the rebuild pipeline is in its
+The graph is live today, with real extracted entities actively serving inference requests.
+Whether this pattern is ready to extend to larger operational contexts is gated on a
+consecutive-healthy-runs criterion that has not yet been met — the pipeline is still in its
 initial operational period.
-
-**Correction (2026-08-01):** the `graph/mutate` write step described above
-predates a real correctness fix. Per the platform's [[architecture/three-ring-architecture|Three-Ring
-Architecture]] rule, Ring 3 (Doorman/AI) output is always a proposal, never a
-direct write — every accepted extraction proposal must pass a human approval
-checkpoint before a Ring 2 write path commits it. That gate was built and
-proven end-to-end on real data 2026-07-18 (extract → proposal → validate →
-operator-approve → dry-run → confirmed commit). This article's routing-parity
-description above (the rebuild calling the same two REST endpoints any
-operator could call) is still accurate as far as it goes, but should now be
-read as ending at a proposal, not an unconditioned write — the "no fabricated
-commands"/"no defect hidden" integration-test framing holds, with the human
-checkpoint as an explicit additional stage between extraction and mutation.
 
 ## See also
 

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Migración del almacén de grafos de service-slm"
+title: "Reconstrucción del almacén de grafos de service-slm"
 slug: service-slm-graph-store-migration
 category: services
 index_group: ring-3-ai-gateway
@@ -11,144 +11,81 @@ status: pre-build
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-01
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: service-slm-graph-store-migration.md
-short_description: "El almacén de grafos de service-slm ejecuta una reconstrucción nocturna del DataGraph — extracción de entidades restringida por gramática vía Doorman, produciendo propuestas, condicionada a la aprobación humana antes de cualquier escritura — que alimenta la inyección de contexto en inferencia."
+short_description: "El almacén de grafos de service-slm ejecuta una reconstrucción nocturna — la extracción de entidades vía Doorman escribe directamente en el grafo al completarse, sin paso de revisión humana en el propio script de reconstrucción."
 cites: []
 ---
 
-**Corrección (2026-08-01):** el short_description de este artículo afirmaba anteriormente
-una "migración de LadybugDB a SQLite" que el cuerpo del artículo nunca describió ni
-respaldó — una discrepancia entre metadatos y cuerpo, ya corregida. El almacén de grafos
-descrito a lo largo de este artículo es LadybugDB; no se describe ninguna migración a
-SQLite aquí. Por separado, el flujo de escritura descrito abajo (el script de
-reconstrucción llamando directamente a `graph/mutate`) es anterior a un punto de control
-de aprobación humana añadido a la vía de escritura del DataGraph, probado de extremo a
-extremo el 2026-07-18 — véase la corrección en "Estado actual" cerca del final de este
-artículo.
+El almacén de grafos de [[service-slm]] es un grafo de propiedades en vivo de entidades
+comerciales nombradas, extraídas cada noche del corpus de datos de un operador — la capa de
+entidades que [[service-content]] usa para inyectar contexto comercial estructurado en las
+solicitudes de inferencia sin enviar datos propietarios a un modelo externo. El grafo se
+almacena en LadybugDB y se reconstruye cada noche mediante un script que se ejecuta como Fase
+1 de la ventana de Cómputo Elástico, antes de que la fase de entrenamiento del modelo reclame
+la GPU.
 
-El almacén de grafos de [[service-slm]] es un grafo de propiedades activo de entidades de negocio nombradas, extraídas nocturnamente del corpus de datos del operador — la capa de entidades que [[service-content]] utiliza para inyectar contexto de negocio estructurado en cada solicitud de inferencia sin enviar datos propietarios a un modelo externo. El grafo se almacena en LadybugDB y se reconstruye en un ciclo nocturno mediante el script de reconstrucción del DataGraph, que se ejecuta como Fase 1 de la ventana nocturna de Elastic Compute antes de que la fase de entrenamiento reclame la GPU.
+## Qué contiene el grafo
 
-Cada noche, el script de reconstrucción del DataGraph procesa el corpus de datos
-del operador y escribe las entidades nombradas extraídas en un grafo
-de propiedades almacenado en LadybugDB. Este grafo de propiedades — el
-DataGraph del despliegue — es la capa de entidades que service-content utiliza
-para inyectar contexto de negocio estructurado en las solicitudes de
-inferencia. El DataGraph del despliegue está activo, con un archivo LadybugDB de 11 MB
-actualmente operativo en service-content.
-
-## Qué contiene el DataGraph
-
-El DataGraph del despliegue es un grafo de propiedades de entidades de negocio
-nombradas extraídas del corpus de datos del despliegue del operador. El grafo
-contiene cinco clasificaciones de entidades: Persona (personal, contactos,
-contrapartes), Empresa (proveedores, clientes, organizaciones asociadas),
-Proyecto (compromisos activos e históricos), Cuenta (cuentas financieras y
-referencias de libro mayor) y Ubicación (oficinas, instalaciones y direcciones
-operativas). Estas entidades se extraen de tres flujos de documentos: archivos
-markdown de transcripciones de reuniones del directorio de activos del
-minutebook, archivos YAML y markdown de investigación del directorio de
-service-agents, y registros JSON de fuentes de contactos del directorio de
-[[service-people]].
+El grafo mantiene cinco clasificaciones de entidades: Persona (personal, contactos,
+contrapartes), Empresa (proveedores, clientes, organizaciones socias), Proyecto
+(compromisos activos e históricos), Cuenta (cuentas financieras y referencias de libro
+mayor), y Ubicación (oficinas, sitios y direcciones operativas). Estas entidades se extraen
+de tres flujos de documentos: archivos de transcripción de reuniones, material de
+investigación y contexto, y registros de contacto de origen desde [[service-people]].
 
 ## Qué hace la reconstrucción nocturna
 
-Para cada documento no procesado, el script de reconstrucción llama a
-`POST :9080/v1/chat/completions` a través del endpoint [[doorman-protocol|Doorman]], pasando el
-texto del documento con una restricción de gramática JSON Schema. El modelo de
-lenguaje — OLMo 3 32B Think ejecutándose en Elastic Compute #1 mediante vLLM — devuelve
-un arreglo JSON estructurado de objetos de entidades. Cada objeto incluye el
-nombre de la entidad, la clasificación, la puntuación de confianza y vectores
-opcionales de rol, ubicación y contacto. Luego, el script llama a
-`POST :9081/v1/graph/mutate` en service-content para escribir esas entidades
-en LadybugDB. La sonda de salud al final del ciclo consulta service-content
-para obtener el conteo actual de entidades y escribe un archivo JSON resumen
-en `$DEPLOYMENT_ROOT/data/datagraph-health.json`.
+Por cada documento no procesado, el script de reconstrucción llama al endpoint de
+finalización del [[doorman-protocol|Doorman]] con una restricción de gramática JSON Schema.
+El modelo de lenguaje — ejecutándose en el nivel de ráfaga GPU vía vLLM — devuelve un arreglo
+estructurado de objetos de entidad, cada uno con un nombre, clasificación, puntuación de
+confianza, y campos opcionales de rol, ubicación y contacto. El script entonces escribe esas
+entidades directamente en el grafo a través del endpoint de mutación de service-content. Una
+verificación de salud al final de cada ciclo registra el conteo actual de entidades.
 
-El script procesa tres lotes de documentos por ejecución: el árbol completo de
-activos del minutebook, el árbol completo de service-agents y los 50 archivos
-JSON de service-people más recientes no procesados. Un retardo aleatorio entre
-documentos (de 0,3 a 1,5 segundos) evita que Doorman reciba una ráfaga de
-solicitudes que podría interferir con el inicio de la fase de entrenamiento.
+El script procesa todo el backlog de documentos no procesados en cada ejecución, con un
+retraso aleatorizado entre solicitudes para que el Doorman nunca reciba una ráfaga que pudiera
+interferir con el arranque propio de la fase de entrenamiento.
 
-## El principio de paridad de enrutamiento
+## La ruta de escritura no tiene paso de revisión propio
 
-El script de reconstrucción del DataGraph llama únicamente a los mismos dos
-endpoints REST API que cualquier operador o miembro de la comunidad que ejecute
-service-slm y service-content llamaría desde su propia automatización:
-
-- `POST :9080/v1/chat/completions` — extracción de entidades a través de Doorman
-- `POST :9081/v1/graph/mutate` — escritura de entidades a través de service-content
-
-No existe un acceso directo mediante observador de archivos, sin desvío interno
-gRPC ni escritura directa en la base de datos. Esta es una decisión de diseño
-deliberada. Si el script de reconstrucción falla, el fallo indica un defecto
-real en service-slm o service-content que también afectaría a cualquier
-operador o cliente que utilice la misma superficie de API. La reconstrucción
-nocturna funciona como una prueba de integración completa que se ejecuta contra
-servicios en producción con datos en producción cada noche. Los fallos son
-explícitos y accionables de inmediato, en lugar de estar ocultos en una ruta
-interna que los usuarios reales nunca ejercerían.
+Este es el hecho que un lector que evalúa la postura de gobernanza de datos de la plataforma
+necesita: la escritura del script de reconstrucción al grafo es incondicionada. Llama al mismo
+endpoint de mutación que cualquier operador o miembro de la comunidad podría llamar desde su
+propia automatización, y ese endpoint escribe de inmediato — no hay archivo de propuesta, ni
+cola pendiente, ni visto bueno humano en ningún punto del flujo propio de este script. Existe
+un punto de control de gobernanza de escritura separado en otra parte de service-content (una
+ruta de captura-y-verificación para un sitio de llamada automatizado distinto, que requiere un
+veredicto humano firmado antes de que una escritura se concrete), pero no cubre este endpoint
+ni este script; el diseño propio del endpoint asume en cambio que cada quien lo llama provee
+su propio control, y este script no provee ninguno.
 
 ## Idempotencia
 
-El script rastrea los documentos procesados mediante un [[worm-ledger-design|registro]] local en
-`$DEPLOYMENT_ROOT/data/datagraph-processed.txt`. Cada documento se identifica
-mediante un hash de su contenido de archivo, prefijado con una etiqueta de
-origen (`mk-` para minutebook, `ag-` para service-agents, `sp-` para
-service-people). Antes de procesar cualquier documento, el script verifica si
-su identificador aparece en el registro. Si está presente, el documento se
-omite. Después de una llamada exitosa a `graph/mutate`, el identificador se
-agrega al registro. Este mecanismo garantiza que los documentos no sean
-reprocesados en múltiples ejecuciones nocturnas, incluso si el mismo contenido
-está presente en los directorios de origen.
-
-El registro es de solo adición y no se poda automáticamente. Si service-content
-se reinicia y el grafo se reconstruye desde cero, el registro puede borrarse
-para forzar una re-extracción completa en la próxima ejecución nocturna.
+El script rastrea los documentos procesados en un libro local de solo-anexado, identificado
+por un hash del contenido de cada documento. Un documento ya presente en el libro se omite en
+ejecuciones futuras. El libro no se depura automáticamente; limpiarlo fuerza una
+re-extracción completa en la siguiente ejecución.
 
 ## Inyección de contexto del grafo
 
-El DataGraph del despliegue no es un almacén de referencia estático.
-service-content lo consulta antes de cada solicitud de inferencia. Cuando
-Doorman recibe una solicitud de completación de un operador o aplicación,
-service-content recupera las entidades relevantes al contexto de la solicitud
-— basándose en el ID de módulo, la clasificación de entidades y los umbrales
-de confianza — y las inyecta en el mensaje de sistema como un bloque de
-contexto de entidades estructurado. El modelo de lenguaje recibe contexto de
-negocio estructurado (quiénes son las personas relevantes, qué proyectos están
-activos, qué empresas son contrapartes) sin que esos datos estructurados crucen
-el límite del modelo externo. El grafo permanece dentro del límite del
-despliegue; solo el contexto en prosa inyectado lo abandona.
+El grafo no es un almacén de referencia estático. service-content lo consulta antes de cada
+solicitud de inferencia, recupera las entidades relevantes al contexto de la solicitud, y las
+inyecta en el mensaje de sistema del modelo como contexto comercial estructurado — quiénes son
+las personas relevantes, qué proyectos están activos, qué empresas son contrapartes — sin que
+esos datos estructurados crucen el límite del modelo externo. El grafo en sí permanece dentro
+del despliegue; solo el contexto en prosa inyectado sale de él.
 
-## Estado actual y criterio de validación
+## Estado actual
 
-El DataGraph del despliegue está activo. Tres ejecuciones nocturnas consecutivas
-que reporten estado HEALTHY — definido como un delta de conteo de entidades no
-negativo y un ciclo exitoso de ida y vuelta en los endpoints de extracción y
-mutación — son el criterio previsto antes de que el patrón DataGraph se extienda
-a contextos operativos más amplios. Ese criterio aún no se ha alcanzado; el
-pipeline de reconstrucción se encuentra en su período operativo inicial.
-
-**Corrección (2026-08-01):** el paso de escritura `graph/mutate` descrito arriba
-es anterior a una corrección real de exactitud. Según la regla de la
-[[architecture/three-ring-architecture|Arquitectura de Tres Anillos]] de la
-plataforma, la salida del Anillo 3 (Doorman/IA) es siempre una propuesta, nunca
-una escritura directa — toda propuesta de extracción aceptada debe pasar un
-punto de control de aprobación humana antes de que una vía de escritura del
-Anillo 2 la confirme. Ese control se construyó y se probó de extremo a extremo
-con datos reales el 2026-07-18 (extracción → propuesta → validación →
-aprobación del operador → ejecución de prueba → confirmación de escritura). La
-descripción de paridad de enrutamiento anterior en este artículo (la
-reconstrucción invocando los mismos dos endpoints REST que cualquier operador
-podría invocar) sigue siendo precisa hasta donde llega, pero ahora debe leerse
-como terminando en una propuesta, no en una escritura incondicionada — el
-marco de "sin comandos fabricados"/"sin defectos ocultos" como prueba de
-integración se mantiene, con el punto de control humano como una etapa
-explícita adicional entre la extracción y la mutación.
+El grafo está en vivo hoy, con entidades extraídas reales sirviendo activamente solicitudes de
+inferencia. Si este patrón está listo para extenderse a contextos operativos más grandes está
+condicionado a un criterio de ejecuciones saludables consecutivas que aún no se ha cumplido —
+la canalización sigue en su período operativo inicial.
 
 ## Véase también
 
-- [[elastic-compute-lora-training-pipeline]] — la Fase 2 de la misma ventana nocturna (entrenamiento de adaptador LoRA)
-- [[service-slm]] — el servicio que orquesta el pipeline nocturno completo
+- [[elastic-compute-lora-training-pipeline]] — Fase 2 de la misma ventana nocturna (entrenamiento de adaptador LoRA)
+- [[service-slm]] — el servicio que orquesta la canalización nocturna completa
