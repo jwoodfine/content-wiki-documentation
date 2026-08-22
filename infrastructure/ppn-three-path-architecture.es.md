@@ -24,9 +24,9 @@ La pila de nodos de la Red Privada PointSav está diseñada en torno al micronú
 
 ## Opción B — Hipervisor seL4 con invitado Linux
 
-**Camino actual.**
+**Prioridad de desarrollo actual — todavía no es el sistema operativo del nodo PPN en funcionamiento.** El código real de arranque de `os-infrastructure` que correría hoy en un nodo PPN no tiene ninguna integración con seL4: es un stub Multiboot2 de metal desnudo (salida de texto por framebuffer, un escaneo mDNS de pares), y todos los servicios PPN — WireGuard, gestión de flota, enrutamiento de inferencias — se ejecutan hoy sobre Linux convencional, no dentro de un invitado alojado por seL4. Existe trabajo real y sustancial de ingeniería seL4 (un entorno de ejecución de unikernel/dominios de protección aparte, `moonshot-sel4-vmm`, con dominios de protección de consola/IPC/serie/UART/panel/red comprobados funcionando, incluida una solicitud HTTP real sobre DMA de VirtIO-net), pero todavía no está integrado en el propio camino de arranque de `os-infrastructure`. El diseño de abajo es el objetivo hacia el que apunta ese trabajo de desarrollo.
 
-seL4 funciona como hipervisor de Tipo 1 a EL2 (AArch64) o con VT-x (x86-64). El VMM CAmkES funciona como un dominio de protección seL4 y aloja una máquina virtual Linux (Debian 12). Todos los servicios PPN — WireGuard, gestión de flota, enrutamiento de inferencias — se ejecutan dentro del invitado Linux.
+Una vez construido: seL4 funcionaría como hipervisor de Tipo 1 a EL2 (AArch64) o con VT-x (x86-64). El VMM CAmkES funcionaría como un dominio de protección seL4 y alojaría una máquina virtual Linux (Debian 12). Todos los servicios PPN — WireGuard, gestión de flota, enrutamiento de inferencias — se ejecutarían dentro de ese invitado Linux.
 
 ```
 Hardware
@@ -108,7 +108,7 @@ La compatibilidad con x86-64 se añadió en Microkit 2.1.0. Esta arquitectura es
 
 | Opción | seL4 como | Linux | Base de cómputo de confianza | Verificación | Estado |
 |---|---|---|---|---|---|
-| B (actual) | Hipervisor | VM invitada | seL4 + VMM + Linux | Integridad AArch64 | Activo |
+| B (prioridad actual) | Hipervisor | VM invitada | seL4 + VMM + Linux | Integridad AArch64 | Prioridad de desarrollo; aún no integrado en el camino de arranque de `os-infrastructure` |
 | C (previsto) | Hipervisor + PD WireGuard | VM invitada (limitada) | seL4 + VMM + PD WireGuard + Linux | Integridad AArch64 | Previsto/con intención |
 | A (previsto) | SO (todos los componentes) | Ninguno | Solo seL4 | AArch64 todas CIA (en curso) | Previsto/con intención |
 

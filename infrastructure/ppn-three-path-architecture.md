@@ -24,9 +24,9 @@ The PointSav Private Network node stack is designed around the seL4 microkernel.
 
 ## Option B — seL4 hypervisor with Linux guest
 
-**Current path.**
+**Current development priority — not yet the operating PPN node OS.** The real `os-infrastructure` boot code that would run on a PPN node today has no seL4 integration at all: it is a bare-metal Multiboot2 stub (framebuffer text output, an mDNS peer scan), and all PPN services — WireGuard, fleet management, inference routing — currently run on conventional Linux, not inside a seL4-hosted guest. Real, substantial seL4 engineering exists (a separate unikernel/protection-domain runtime, `moonshot-sel4-vmm`, with console/IPC/serial/UART/panel/network protection domains proven working, including a real HTTP request over VirtIO-net DMA), but it is not yet wired into `os-infrastructure`'s own boot path. The design below is the target this development work is building toward.
 
-seL4 runs as a Type 1 hypervisor at EL2 (AArch64) or with VT-x (x86-64). The CAmkES VMM runs as a seL4 protection domain and hosts one Linux (Debian 12) guest VM. All PPN services — WireGuard, fleet management, inference routing — run inside the Linux guest.
+Once built: seL4 would run as a Type 1 hypervisor at EL2 (AArch64) or with VT-x (x86-64). The CAmkES VMM would run as a seL4 protection domain and host one Linux (Debian 12) guest VM. All PPN services — WireGuard, fleet management, inference routing — would run inside that Linux guest.
 
 ```
 Hardware
@@ -108,7 +108,7 @@ x86-64 support was added in Microkit 2.1.0. This architecture is a valid develop
 
 | Option | seL4 as | Linux | Trusted computing base | Verification | Status |
 |---|---|---|---|---|---|
-| B (current) | Hypervisor | Guest VM | seL4 + VMM + Linux | AArch64 integrity | Active |
+| B (current priority) | Hypervisor | Guest VM | seL4 + VMM + Linux | AArch64 integrity | Development priority; not yet integrated into `os-infrastructure`'s boot path |
 | C (planned) | Hypervisor + WireGuard PD | Guest VM (limited) | seL4 + VMM + WireGuard PD + Linux | AArch64 integrity | Planned/intended |
 | A (planned) | OS (all components) | None | seL4 only | AArch64 all CIA (in progress) | Planned/intended |
 
