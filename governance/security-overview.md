@@ -32,7 +32,7 @@ The platform enforces tenant isolation at three layers:
 
 **Namespace isolation at Ring 2.** Ring 2 services are multi-tenant via `moduleId`. One process handles requests for all tenants, but each tenant's knowledge graph and search index are isolated behind their `moduleId` namespace at every read and write path. A query for tenant A cannot return records for tenant B.
 
-**Single-boundary AI isolation at Ring 3.** [[service-slm]] is the sole Ring 3 service. Every AI request passes through the Doorman, which sanitises outbound data, routes among three compute tiers, and writes an audit row at the customer's local ledger before any external call is made. No other service in the platform makes external AI calls.
+**Single-boundary AI isolation at Ring 3.** [[service-slm]] is the sole Ring 3 service. Every AI request passes through the Doorman, which routes among three compute tiers and writes an audit row at the customer's local ledger before any external call is made. No other service in the platform makes external AI calls.
 
 ## The Doorman boundary
 
@@ -42,7 +42,7 @@ The Doorman is the single point through which all AI inference flows. It enforce
 
 **Every call is logged before it is made.** The Doorman writes an audit row to the customer's local ledger before dispatching the external call. A call that fails at the network layer still has a ledger entry. The external gateway writes a second audit row simultaneously — two-ledger, per-call coverage that does not depend on the success of the call.
 
-**Outbound data is sanitised.** The Doorman inspects every outbound payload before it leaves the customer's network. Structured data subject to the platform's data-classification rules is stripped at this boundary before the request is dispatched.
+**Credential redaction on one write path.** The Doorman strips credentials before writing to the apprenticeship training corpus. It does not inspect or sanitise the outbound request payload itself before dispatching an external call — that broader outbound-sanitisation property is a design goal, not a shipped mechanism.
 
 **Inbound responses are contained.** The response from an external model returns to the Doorman and is not directly exposed to Ring 2 or Ring 1 services. The Doorman routes the response to the requesting application.
 
@@ -52,13 +52,13 @@ The Doorman is the single point through which all AI inference flows. It enforce
 
 Every Ring 1 service writes to a Write-Once-Read-Many ledger. The ledger has no delete operation and no overwrite operation — these functions do not exist in the storage engine. Modification is structurally impossible rather than policy-prohibited.
 
-The ledger is tile-based and hash-chained: each tile contains the hash of the previous tile. Any modification to any tile breaks the hash chain and is detectable by any verifier without access to the platform's own systems. The `[[fs-anchor-emitter]]` service generates signed checkpoints of the ledger at hourly cadence and prepares them for external anchoring to the Sigstore Rekor public transparency log on a monthly schedule — independent, external proof-of-state that does not depend on the vendor's continued operation.
+The ledger is tile-based and hash-chained: each tile contains the hash of the previous tile. Any modification to any tile breaks the hash chain and is detectable by any verifier without access to the platform's own systems. The `[[fs-anchor-emitter]]` service generates signed checkpoints of the ledger and anchors them externally to the Sigstore Rekor public transparency log on a monthly schedule — independent, external proof-of-state that does not depend on the vendor's continued operation.
 
-The WORM ledger structure satisfies SEC Rule 17a-4(f), eIDAS qualified electronic records preservation, and SOC 2 — by structural guarantee, not by policy attestation that can be amended.
+The WORM ledger structure satisfies SEC Rule 17a-4(f) and eIDAS qualified electronic records preservation by structural guarantee, not by policy attestation that can be amended. No SOC 2 or ISAE 3402 certification exists today; a SOC 3 report is planned.
 
 ## The Diode standard
 
-The Diode standard is the foundational network security topology of the PointSav fleet. Commands flow from authority (os-orchestration, os-console) to subject (Totebox archives, services) and never the reverse. (Note, 2026-08-02, verified against canonical `origin/main` — not this archive's stale local checkout, which showed `os-orchestration` as entirely absent: the crate is real but its own `src/lib.rs` is currently a 4-line placeholder scaffold, so this article's "authority" framing is aspirational, not yet backed by real aggregation logic. The `[[fs-anchor-emitter]]` claim above this section and the WORM-ledger claims are both confirmed real and functional on canonical — an earlier draft of this correction, based on the stale local tree, would have wrongly called them fabricated. The "hourly cadence" checkpoint-generation detail specifically was not confirmed either way — no matching code or timer file found on a quick check; the monthly Rekor-anchoring schedule is independently confirmed accurate.)
+The Diode standard is the foundational network security topology of the PointSav fleet. Commands flow from authority (os-orchestration, os-console) to subject (Totebox archives, services) and never the reverse. `os-orchestration` exists as a named crate but is currently a placeholder — the authority-side aggregation logic described here is a design target, not yet running code.
 
 A Totebox archive that receives a command from os-console cannot initiate a command back to os-console. The routing logic that would allow this does not exist in the communication stack. This removes the lateral movement attack surface: an attacker who compromises a Totebox archive cannot use that position to issue commands to the orchestration layer or to peer archives.
 

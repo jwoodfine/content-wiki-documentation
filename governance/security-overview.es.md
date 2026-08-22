@@ -55,11 +55,11 @@ Cada servicio del Anillo 1 escribe en un libro de Solo Escritura y Múltiple Lec
 
 El libro está basado en tiles y encadenado por hash: cada tile contiene el hash del tile anterior. Cualquier modificación en cualquier tile rompe la cadena de hash y es detectable sin acceder a los sistemas propios de la plataforma. El servicio `[[fs-anchor-emitter]]` genera puntos de control firmados del libro a cadencia horaria y los prepara para su anclaje externo en el registro de transparencia público Sigstore Rekor mensualmente.
 
-Esta estructura satisface la Regla SEC 17a-4(f), la preservación de registros electrónicos cualificados de eIDAS y SOC 2 — por garantía estructural, no por atestación de política que puede modificarse.
+Esta estructura satisface la Regla SEC 17a-4(f) y la preservación de registros electrónicos cualificados de eIDAS por garantía estructural, no por atestación de política que puede modificarse. No existe hoy ninguna certificación SOC 2 ni ISAE 3402; un informe SOC 3 está planificado.
 
 ## El estándar Diode
 
-El estándar Diode es la topología de seguridad de red fundamental de la flota PointSav. Los comandos fluyen de autoridad (os-orchestration, os-console) a sujeto (archivos Totebox, servicios) y nunca al revés.
+El estándar Diode es la topología de seguridad de red fundamental de la flota PointSav. Los comandos fluyen de autoridad (os-orchestration, os-console) a sujeto (archivos Totebox, servicios) y nunca al revés. `os-orchestration` existe como crate nombrado pero hoy es un marcador de posición — la lógica de agregación del lado de autoridad descrita aquí es un objetivo de diseño, no código en ejecución todavía.
 
 Un archivo Totebox que recibe un comando de os-console no puede iniciar un comando de vuelta a os-console. La lógica de enrutamiento que permitiría esto no existe en la pila de comunicación. Esto elimina la superficie de ataque de movimiento lateral.
 
