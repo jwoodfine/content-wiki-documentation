@@ -8,8 +8,8 @@ title: "Metodología de co-ubicación de hardware"
 category: architecture
 index_group: location-intelligence-and-domain
 language: es
-quality: complete
-status: stable
+quality: stub
+status: planned
 bcsc_class: public-disclosure-safe
 last_edited: 2026-08-03
 editor: pointsav-engineering
@@ -17,7 +17,7 @@ paired_with: hardware-co-location-methodology.md
 cites: []
 ---
 
-La metodología de co-ubicación es el enfoque estructurado que utiliza [[pointsav-overview|PointSav]] para evaluar y clasificar oportunidades de co-ubicación física para despliegues de clientes. Combina datos de mercado, contexto regulatorio y características de infraestructura extraídos del canal de inteligencia de la plataforma y del [[compounding-substrate]] para producir una lista clasificada de sitios candidatos para un requisito de despliegue dado.
+La metodología de co-ubicación es un enfoque estructurado planificado para evaluar y clasificar oportunidades de co-ubicación física para despliegues de hardware de clientes — jurisdicción, tránsito de red, ajuste de infraestructura y costo, en ese orden de prioridad. Todavía no existe un canal automatizado de puntuación; la metodología describe el diseño previsto, no un sistema operativo. (Es un concepto distinto de la puntuación de co-ubicación inmobiliaria de la plataforma, usada para la selección de sitios de propiedad comercial — un dominio diferente con su propia metodología, implementada por separado.)
 
 ## Qué significa co-ubicación en este contexto
 
@@ -37,7 +37,11 @@ La metodología aborda el paso de selección de sitio: dado un requisito de desp
 
 ## Integración con regiones de desarrollo
 
-La puntuación de co-ubicación opera dentro de la taxonomía de regiones de desarrollo. Una región de desarrollo define el alcance geográfico y jurisdiccional dentro del cual se consideran los candidatos de co-ubicación. El operador revisa la lista clasificada producida por el canal de inteligencia y toma la decisión final de selección de sitio.
+La puntuación de co-ubicación opera dentro de la taxonomía de regiones de desarrollo. Una región de desarrollo define el alcance geográfico y jurisdiccional dentro del cual se consideran los candidatos de co-ubicación.
+
+## Estado
+
+Hoy no existe un canal automatizado de puntuación ni un almacén de datos estructurado de perfiles de instalaciones. Las dimensiones anteriores describen el diseño previsto; actualmente un operador arma y evalúa la lista de candidatos manualmente, sin un canal automatizado.
 
 ## Véase también
 
