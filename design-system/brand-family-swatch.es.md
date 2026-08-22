@@ -37,7 +37,7 @@ El componente está reservado para la clasificación taxonómica. No debe utiliz
 ## Especificaciones técnicas
 
 ### Anatomía y composición
-- **Indicador**: Un punto circular de 12px (predeterminado) o 24px (marcador) que utiliza tokens de color específicos de la familia.
+- **Indicador**: Un punto circular de 10px (predeterminado) o 24px (marcador) que utiliza tokens de color específicos de la familia.
 - **Etiqueta**: Un nombre de visualización resuelto por la taxonomía (por ejemplo, "Warehouse Club").
 - **Capa de Accesibilidad**: Un `aria-label` que combina la semántica del punto y la etiqueta, garantizando que el indicador visual esté oculto para los lectores de pantalla para evitar anuncios redundantes.
 
@@ -52,13 +52,13 @@ El componente está diseñado para cumplir con los estándares WCAG 2.2 AA:
 
 ## Tokens de diseño (DTCG)
 
-| Token | Valor | Descripción |
-| :--- | :--- | :--- |
-| `ps.swatch.dot.size` | 12px | Tamaño de punto en línea predeterminado |
-| `ps.swatch.dot.size.marker` | 24px | Tamaño de variante de marcador de mapa |
-| `ps.brand-family.department.color` | `#0B5FFF` | Azul azur |
-| `ps.brand-family.hardware.color` | `#FF6B00` | Naranja construcción |
-| `ps.brand-family.warehouse-club.color` | `#00875A` | Verde almacén |
+El punto es CSS en línea, no un token dimensionado — `.ps-swatch__dot` está fijado en 10px por defecto y 24px en la variante de marcador de mapa. El componente referencia cuatro tokens compartidos (`{semantic.ink-primary}`, `{semantic.ink-secondary}`, `{primitive.space.05}`, `{primitive.radius.sm}`) más tres colores de familia de marca, específicos de cada implementación y definidos en tiempo de ejecución en lugar de venir incluidos en el paquete de tokens primitivos:
+
+| Valor | Descripción |
+| :--- | :--- |
+| `#0B5FFF` | Department — azul azur |
+| `#FF6B00` | Hardware — naranja construcción |
+| `#00875A` | Warehouse Club — verde almacén |
 
 ## Extensiones previstas
 Se prevé que las futuras iteraciones incluyan:

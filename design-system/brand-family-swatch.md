@@ -53,15 +53,13 @@ The component is engineered to meet WCAG 2.2 AA standards:
 
 ## Design tokens (DTCG)
 
-**Correction (2026-08-02):** the dot-size tokens below don't exist. The real recipe (`dtcg-vault/components/brand-family-swatch/recipe.json`) hardcodes dot size as inline CSS (`.ps-swatch__dot { width: 10px; height: 10px }`, not 12px), with no named `ps.swatch.dot.size` token — its actual token references are `{semantic.ink-primary}`, `{semantic.ink-secondary}`, `{primitive.space.05}`, `{primitive.radius.sm}`. The three brand-family color values below are independently confirmed accurate. **Flagged, not resolved.**
+The dot is inline CSS, not a sized token — `.ps-swatch__dot` is hardcoded to 10px by default and 24px for the map-marker variant. The component references four shared tokens (`{semantic.ink-primary}`, `{semantic.ink-secondary}`, `{primitive.space.05}`, `{primitive.radius.sm}`) plus three brand-family colors, which are deployment-specific and set at runtime rather than shipped in the primitive token bundle:
 
-| Token | Value | Description |
-| :--- | :--- | :--- |
-| `ps.swatch.dot.size` | 12px | Default inline dot size |
-| `ps.swatch.dot.size.marker` | 24px | Map marker variant size |
-| `ps.brand-family.department.color` | `#0B5FFF` | Azure blue |
-| `ps.brand-family.hardware.color` | `#FF6B00` | Construction orange |
-| `ps.brand-family.warehouse-club.color` | `#00875A` | Warehouse green |
+| Value | Description |
+| :--- | :--- |
+| `#0B5FFF` | Department — azure blue |
+| `#FF6B00` | Hardware — construction orange |
+| `#00875A` | Warehouse Club — warehouse green |
 
 ## Planned extensions
 Future iterations are intended to include:
