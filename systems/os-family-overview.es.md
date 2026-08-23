@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-07-18
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: os-family-overview.md
 short_description: "PointSav construye ocho sistemas operativos de propósito específico, diseñados en torno a una disciplina Rust y un protocolo Diodo compartidos; un sustrato común de micronúcleo seL4 es un objetivo de hoja de ruta, no el estado actual de todos los miembros."
@@ -44,9 +44,9 @@ Los ocho sistemas operativos comparten la misma capa fundacional:
 |---|---|---|
 | Núcleo | [[sel4-microkernel-substrate|Micronúcleo seL4]] (sustrato planificado — aún no es el núcleo distribuido en cada miembro de la familia de SO; confirmado que aún no está integrado en `os-console`) | Aislamiento de hardware verificado matemáticamente |
 | Lenguaje | Rust (seguro en memoria; sin recolector de basura) | Todo el código `system-*`, `service-*` y `os-*`; C/C++ prohibido en L3 y superior |
-| Controladores | sDDF (Marco de Controladores de Dispositivos seL4) | Acceso directo al hardware sin sobrecarga de tiempo de ejecución |
+| Controladores | Aislamiento de controladores de dispositivo (planificado — hoy no hay un marco específico incorporado al código) | Acceso directo al hardware sin sobrecarga de tiempo de ejecución |
 | Protocolo | Protocolo basado en capacidades (planificado — hoy no hay un nombre de protocolo incorporado al código) | Tuneliza a través de TLS y VirtIO en el borde |
-| Confianza | `service-pairing` | Emparejamientos criptográficos vinculados al hardware; sin nombres de usuario, sin contraseñas |
+| Confianza | [[machine-based-auth|`system-gateway-mba`]] | Emparejamientos criptográficos vinculados al hardware; sin nombres de usuario, sin contraseñas |
 | Auditoría | Libro mayor de solo adición (previsto) | Registro de eventos inalterable que no puede ser desactivado por un administrador |
 | Transferibilidad | Addendum Soberano (previsto) | La instancia en ejecución permanece como propiedad del operador en cualquier proveedor de nube |
 

@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-07-18
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: os-family-overview.es.md
 short_description: "PointSav builds eight purpose-built operating systems, designed around a shared Rust discipline and a Diode-based protocol; a common seL4 microkernel substrate is a roadmap target, not the current state of every member."
@@ -54,9 +54,9 @@ All eight operating systems share the same foundational layer:
 |---|---|---|
 | Kernel | [[sel4-microkernel-substrate|seL4 microkernel]] (planned substrate — not yet the shipped kernel for every OS family member; confirmed not yet integrated into `os-console`) | Mathematically verified hardware isolation |
 | Language | Rust (memory-safe; no garbage collector) | All `system-*`, `service-*`, and `os-*` code; C/C++ banned at L3 and above |
-| Drivers | sDDF (seL4 Device Driver Framework) | Direct hardware access without runtime bloat |
+| Drivers | Device driver isolation (planned — no specific framework is committed to code today) | Direct hardware access without runtime bloat |
 | Protocol | Capability-based protocol (planned — no protocol name is committed to code today) | Tunnels through TLS and VirtIO at the edge |
-| Trust | `service-pairing` | Hardware-bound cryptographic pairings; no usernames, no passwords |
+| Trust | [[machine-based-auth|`system-gateway-mba`]] | Hardware-bound cryptographic pairings; no usernames, no passwords |
 | Audit | Append-only ledger (planned) | Tamper-resistant event record that cannot be disabled by an administrator |
 | Transferability | Sovereign Addendum (planned) | The running instance remains the operator's property in any cloud provider |
 
