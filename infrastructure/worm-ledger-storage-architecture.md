@@ -42,7 +42,7 @@ The long-term trajectory involves deploying `service-fs` as an seL4 Microkit Pro
 The storage engine is engineered to satisfy strict regulatory requirements:
 * **SEC 17a-4(f):** Satisfies the "WORM path" by structurally denying modification at the storage layer.
 * **eIDAS Qualified Preservation:** Ensures 100-year readability through open-standard plain-text encodings and algorithm-agile hash functions.
-* **SOC 2 Processing Integrity:** Provides verifiable audit trails through a dedicated sub-ledger that records every read event.
+* **SOC 2 Processing Integrity (audit-ready, not yet certified):** the design provides verifiable audit trails through a dedicated sub-ledger that records every read event — the underlying controls are in place, but no SOC 2 Type 2 audit has been performed and no attestation has been issued.
 
 ## 4. Portability and sovereignty
 
