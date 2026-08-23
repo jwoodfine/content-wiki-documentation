@@ -8,7 +8,7 @@ category: reference
 index_group: editorial-and-publishing-standards
 status: stable
 bcsc_class: no-disclosure-implication
-last_edited: 2026-05-08
+last_edited: 2026-08-22
 editor: pointsav-engineering
 ---
 
@@ -67,17 +67,15 @@ The wiki articles were authored before the DataGraph was fully populated. The Da
 
 The language tokens govern register. The DataGraph governs substance. An article that has correct register but thin substance fails the encyclopedic test. An article that has rich substance but wrong register fails to communicate. Both inputs are required.
 
-## The monthly improvement cycle
+## How articles actually improve
 
-The PointSav wikis improve continuously through a monthly content sweep. Each sweep runs against an updated DataGraph — refined by on-demand GPU inference passes that run daily and external API passes that run weekly or monthly as new source data accumulates. Each sweep takes every article one level higher in quality.
+Article quality improves through editorial sessions, not an automated pipeline. An editor queries the DataGraph for the article's subject, reads the real source the article describes, and rewrites the article to match — dropping claims the source doesn't support and adding facts the DataGraph or the source surfaces that the article was missing. There is no scheduled sweep that regenerates drafts on a cadence; a category is rewritten when an editorial pass reaches it.
 
-The mechanism: the inference system generates a new draft of each article against the current DataGraph. Editorial review produces a verdict — accept, refine, or reject. Each verdict is a training example that makes the next month's generated draft better. The language tokens score each generated draft for register correctness, so register drift is caught automatically.
+Register correctness is checked mechanically, not by human judgment alone: a linter scores each draft against the vocabulary and structural rules the language tokens define, and a draft with a register violation does not pass review. Substance correctness — whether the article's claims match what the platform actually does — is checked by reading the real source directly, the same discipline as any fact-check.
 
-### Compounding returns and the calibration rule
+### Why this produces compounding value anyway
 
-The result is [[compounding-substrate|compounding]] improvement. Each monthly pass produces better training signal than the last because the DataGraph is richer, the system has been trained on prior editorial verdicts, and the articles being refined are themselves already better. The work required per article per month decreases as the system matures.
-
-**The calibration rule:** The goal for each article in any given sweep is "draft 2 of 10" — good enough that the inference system produces a clearly better draft 3. Perfection in a single pass wastes effort better spent establishing the framework that makes every subsequent pass better.
+Even without an automated generation loop, each editorial pass compounds: the DataGraph a later pass queries is richer than the one an earlier pass saw, and a pass that finds a defect in one article often finds the same defect's pattern repeated in a sibling article, correcting several at once. The improvement comes from the DataGraph and the source code getting richer and more current over time, and from each editorial pass building on what the last one already fixed — not from an inference system training on prior verdicts.
 
 ## See also
 

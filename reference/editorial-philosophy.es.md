@@ -7,7 +7,7 @@ short_description: "Cada artículo es un recurso de aprendizaje que enseña comp
 category: reference
 status: stable
 bcsc_class: no-disclosure-implication
-last_edited: 2026-05-08
+last_edited: 2026-08-22
 editor: pointsav-engineering
 language: es
 paired_with: editorial-philosophy.md
@@ -48,11 +48,11 @@ Una reescritura informada por el DataGraph añade ese conocimiento al artículo 
 
 Los tokens de lenguaje rigen el registro. El DataGraph rige el contenido. Un artículo con registro correcto pero contenido escaso no supera la prueba enciclopédica. Un artículo con contenido rico pero registro incorrecto no comunica. Ambas entradas son necesarias.
 
-## El ciclo mensual de mejora
+## Cómo mejoran los artículos en realidad
 
-Los wikis de PointSav mejoran continuamente mediante una revisión mensual del contenido. Cada revisión se ejecuta contra un DataGraph actualizado — refinado por pasadas de inferencia de GPU bajo demanda que se ejecutan diariamente y pasadas de API externa que se ejecutan semanal o mensualmente a medida que se acumulan nuevos datos fuente.
+La calidad de un artículo mejora mediante sesiones editoriales, no mediante una tubería automatizada. Un editor consulta el DataGraph sobre el tema del artículo, lee la fuente real que el artículo describe, y reescribe el artículo para que coincida con ella. No existe una revisión programada que regenere borradores con una cadencia fija; una categoría se reescribe cuando una pasada editorial llega a ella.
 
-El objetivo de cada artículo en cualquier revisión es "borrador 2 de 10" — suficientemente bueno para que la siguiente [[compounding-substrate|pasada automática]] produzca un borrador 3 claramente mejor. La perfección en un único pase desperdicia esfuerzo que sería mejor dedicar a establecer el marco que hace que cada pase posterior sea mejor.
+La corrección del registro se verifica mecánicamente: un linter puntúa cada borrador contra las reglas de vocabulario y estructura que definen los tokens de lenguaje, y un borrador con una violación de registro no supera la revisión. La corrección del contenido — si las afirmaciones del artículo coinciden con lo que la plataforma realmente hace — se verifica leyendo directamente la fuente real, la misma disciplina que cualquier verificación de hechos. La mejora proviene de que el DataGraph y el código fuente se vuelven más ricos y actuales con el tiempo, y de que cada pasada editorial se construye sobre lo que la anterior ya corrigió — no de un sistema de inferencia que entrena con veredictos previos.
 
 ## Véase también
 
