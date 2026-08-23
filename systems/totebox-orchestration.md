@@ -23,14 +23,12 @@ Totebox Orchestration is the coordination layer that provisions, monitors, and m
 
 - Each Totebox runs as an independent unit. No container shares a ledger directory with any other — a compromise in one container cannot propagate to siblings because there is no shared mutable state at the ledger layer.
 - Integrity verification runs as scheduled checksum audits across all managed containers. Results land in a consolidated audit record; any mismatch surfaces at the orchestration level before reaching the operator.
-- A new container is provisioned with a three-directory skeleton (`app-console-input/`, `assets/`, `ledger/`) and registered with the orchestration layer at creation, enabling lifecycle tracking across active, suspended, and archived states.
+- A new container is registered with the orchestration layer at creation, enabling lifecycle tracking across active, suspended, and archived states. The specific per-container directory layout is still being finalized.
 - Totebox Orchestration makes it possible for a regulated operator to maintain separate, independently isolated archives for different record types — contracts, financial records, correspondence — managed through a single unified health surface.
 
 ## Container isolation
 
-**Correction (2026-08-02):** `os-totebox`'s real `Cargo.toml` has zero dependencies — no seL4, nothing — and `os-totebox/src/lib.rs` is NetBSD 10.1 guest-image-builder metadata for a VM running OLMo 7B inference, unrelated to microkernel isolation. This matches this repo's own earlier-confirmed finding (`cleanup-log.md`, 2026-07-18) that `os-totebox` and `os-console` are plain Rust/tokio with no seL4 dependency. Separately, the "three-directory skeleton (`app-console-input/`, `assets/`, `ledger/`)" claim below doesn't match real provisioning either — `app-console-input` is an independent standalone crate, not a per-archive subdirectory template, and no provisioning script creates this exact skeleton. **Flagged, not resolved** — needs re-hedging to planned/intended language.
-
-Each Totebox runs as an independent unit backed by the [[sel4-microkernel-substrate|seL4 microkernel's]] hardware isolation guarantees. No container shares a ledger directory with any other container. A compromise in one container's asset directory does not propagate to sibling containers, because there is no shared mutable state at the ledger layer.
+Each Totebox runs as an independent unit. Today that independence is filesystem-level: no container shares a ledger directory with any other, so a compromise in one container's asset directory does not propagate to a sibling through shared mutable state. Hardware-enforced isolation — the intended end state, where each Totebox runs as its own [[sel4-microkernel-substrate|seL4]] protection domain — is a design goal, not the deployed model; the currently running `os-totebox` is a conventional Rust/tokio process with no seL4 dependency, as [[os-totebox-sovereign-archive|the os-totebox article]] describes in detail.
 
 ## Integrity verification
 
@@ -38,7 +36,7 @@ The orchestration layer schedules periodic checksum audits across all managed co
 
 ## Provisioning and lifecycle
 
-A new Totebox container is provisioned with a three-directory skeleton — `app-console-input/`, `assets/`, and `ledger/` — and registered with the orchestration layer at creation time. The orchestration layer tracks container state across its operational lifecycle: active, suspended, or archived. The [[deployment-patterns|deployment patterns]] article describes how Totebox Orchestration appears in each canonical fleet configuration.
+A new Totebox container is registered with the orchestration layer at creation time. The orchestration layer tracks container state across its operational lifecycle: active, suspended, or archived. `app-console-input` is a separate, standalone crate rather than a directory this provisioning step creates. The [[deployment-patterns|deployment patterns]] article describes how Totebox Orchestration appears in each canonical fleet configuration.
 
 ## See also
 

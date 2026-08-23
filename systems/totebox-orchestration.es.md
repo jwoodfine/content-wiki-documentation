@@ -25,12 +25,12 @@ La Orquestación Totebox es la capa de coordinación que aprovisiona, supervisa 
 
 - Cada Totebox se ejecuta como una unidad independiente. Ningún contenedor comparte un directorio de libro contable con ningún otro — un incidente en un contenedor no puede propagarse a los hermanos porque no hay estado mutable compartido en la capa del libro contable.
 - La verificación de integridad se ejecuta como auditorías periódicas de checksum en todos los contenedores gestionados. Los resultados se registran en un único registro de auditoría consolidado; cualquier discrepancia en el checksum se presenta a nivel de orquestación antes de llegar al operador.
-- Un nuevo contenedor se aprovisiona con un esqueleto de tres directorios (`app-console-input/`, `assets/`, `ledger/`) y se registra en la capa de orquestación en el momento de creación, habilitando el seguimiento del ciclo de vida desde el primer día.
+- Un nuevo contenedor se registra en la capa de orquestación en el momento de su creación, habilitando el seguimiento del ciclo de vida desde el primer día. El diseño final de directorios por contenedor todavía se está definiendo.
 - La Orquestación Totebox permite a un operador regulado mantener archivos separados e independientemente aislados para diferentes tipos de registros — contratos, registros financieros, correspondencia — gestionados a través de una única superficie de salud unificada.
 
 ## Aislamiento de contenedores
 
-Cada Totebox se ejecuta como una unidad independiente respaldada por las garantías de aislamiento de hardware del [[sel4-microkernel-substrate|micronúcleo seL4]]. Ningún contenedor comparte un directorio de libro contable con ningún otro contenedor. Un compromiso en el directorio de activos de un contenedor no se propaga a los contenedores hermanos, porque no hay estado mutable compartido en la capa del libro contable.
+Cada Totebox se ejecuta como una unidad independiente. Hoy esa independencia es a nivel de sistema de archivos: ningún contenedor comparte un directorio de libro contable con ningún otro, por lo que un compromiso en el directorio de activos de un contenedor no se propaga a un contenedor hermano por estado mutable compartido. El aislamiento reforzado por hardware — el estado final previsto, en el que cada Totebox se ejecuta como su propio dominio de protección [[sel4-microkernel-substrate|seL4]] — es un objetivo de diseño, no el modelo desplegado; el `os-totebox` actualmente en ejecución es un proceso convencional de Rust/tokio sin dependencia de seL4, como describe en detalle [[os-totebox-sovereign-archive|el artículo de os-totebox]].
 
 ## Verificación de integridad
 
