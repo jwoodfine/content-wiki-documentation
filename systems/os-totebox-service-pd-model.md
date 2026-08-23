@@ -43,8 +43,8 @@ load-bearing for anyone evaluating the design today:
   this baseline. The WORM ledger runs, but no external anchor and no signature currently
   attach to its checkpoints.
 
-None of this is a fabricated risk — it is the current, factual state of the deployed
-build. The boot and inference verification above is real and current; the ledger's
+These are the deployed build's current, factual limits. The boot and inference
+verification above is real and current; the ledger's
 persistence, availability, and anchoring guarantees are not yet delivered.
 
 [[os-totebox]] is designed to be the Sovereign WORM Data Vault tier of the [[topic-three-binary-architecture|three-binary architecture]], intended to run as a Type I bare-metal OS on top of the [[sel4-microkernel-substrate|seL4 microkernel]] — no shell, no root process, no init system, no package manager — once the Phase H1 seL4 image ships. In that end-state design, every service that handles durable data becomes a seL4 Protection Domain (PD): a hardware-enforced isolation unit whose capability set is fixed at build time and cannot be extended at runtime. This article explains what that design means, why it takes the shape it does, and how two planned tools — moonshot-sel4-vmm and [[moonshot-toolkit-build-orchestrator|moonshot-toolkit]] — are intended to turn ordinary Rust service binaries into a formally verified PD graph.

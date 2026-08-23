@@ -47,7 +47,7 @@ registro WORM, y son información determinante para quien evalúe el diseño hoy
   deja deliberadamente sin configurar en esta línea base. El registro WORM se ejecuta,
   pero ningún anclaje externo ni firma se adjunta actualmente a sus puntos de control.
 
-Nada de esto es un riesgo inventado — es el estado actual y factual del despliegue. La
+Estos son los límites actuales y factuales del despliegue. La
 verificación de arranque e inferencia anterior es real y actual; las garantías de
 persistencia, disponibilidad y anclaje del registro aún no se han entregado.
 
