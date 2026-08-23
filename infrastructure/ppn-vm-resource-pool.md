@@ -11,7 +11,7 @@ audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
 index_group: compute-and-vm-fabric
-last_edited: 2026-07-11
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: ppn-vm-resource-pool.es.md
 short_description: "The PPN VM resource pool is a three-service stack that provisions, places, and accounts for VMs across a heterogeneous WireGuard mesh spanning cloud and physical nodes."
@@ -21,7 +21,7 @@ cites: []
 
 The [[pointsav-private-network|PointSav Private Network]] (PPN) VM resource pool is a three-service stack that provisions, places, and accounts for virtual machines across a heterogeneous WireGuard mesh. The pool combines cloud nodes with physical hardware, forming a distributed compute substrate that spans different capability profiles.
 
-Three services partition the responsibility surface. The [[service-vm-fleet|fleet controller]] maintains a global view of node capacity and handles placement decisions. The host agent runs per-node as the spawn authority, communicating with the hypervisor and holding the local state for each VM. The [[service-vm-tenant|tenant proxy]] sits at the customer boundary, enforcing authentication, tenant namespace isolation, quota limits, and an immutable audit trail. Above this stack, a commercial inference broker manages metered workloads for the local [[service-slm|SLM]] tier.
+Three services partition the responsibility surface. The [[service-vm-fleet|fleet controller]] maintains a global view of node capacity and handles placement decisions. The host agent runs per-node as the spawn authority, communicating with the hypervisor and holding the local state for each VM. The [[service-vm-tenant|tenant proxy]] sits at the customer boundary, enforcing authentication, tenant namespace isolation, quota limits, and an immutable audit trail.
 
 All service processes communicate across the PPN WireGuard underlay. No service exposes a public interface; all customer-facing traffic enters through the tenant proxy.
 
@@ -45,19 +45,11 @@ Nodes signal their reservation status and stable identity to the fleet controlle
 
 The tenant proxy is the customer-facing layer. It accepts spawn, destroy, and status requests from authenticated callers and enforces the tenant contract before forwarding to the fleet controller.
 
-Authentication uses bearer tokens issued at tenant provisioning time. Each token carries a tenant identifier that the proxy uses to namespace all VM records. A tenant may not query, modify, or destroy VMs belonging to another tenant; the proxy enforces this at every endpoint before any fleet interaction.
+Authentication is bearer-token based, with each tenant assigned a `max_vms`/`max_ram_mb` quota at provisioning time. A tenant may not query, modify, or destroy VMs belonging to another tenant; the proxy enforces this at every endpoint before any fleet interaction. With an explicit token-to-tenant map configured, a bearer token is opaque and resolves to a tenant identifier server-side. Without one, the bearer token doubles as the tenant identifier directly — a documented, less-hardened fallback mode, not the sole authentication path.
 
-Quota enforcement operates at the capacity level. Each tenant is assigned a ceiling at provisioning time. The proxy checks current allocated capacity against the ceiling before forwarding a spawn request; requests that would exceed the quota are rejected. Concurrent creates from the same tenant are serialised through a per-tenant gate to prevent two simultaneous requests from both passing the quota check against the same pre-spawn total.
+Quota enforcement checks current allocated capacity against the ceiling before forwarding a spawn request; requests that would exceed the quota are rejected. Concurrent create requests are serialised through a single lock shared across all tenants, not a separate gate per tenant, closing the same TOCTOU window a per-tenant gate would but without per-tenant concurrency.
 
-All write operations are appended to an immutable audit log. Each entry records the tenant identifier, VM identifier, operation type, timestamp, and request source. The log is append-only; no path touches existing entries.
-
-## Inference broker
-
-The inference broker manages metered traffic to the local SLM tier, positioned above the VM stack as the commercial brokering surface. It does not spawn or manage VMs directly; it brokers inference requests and accounts for per-tenant consumption.
-
-The broker implements a circuit breaker with configurable thresholds. When the circuit is open or the admission gate is closed, incoming inference requests receive a service-unavailable response rather than queuing indefinitely. This protects the local SLM from load spikes that would otherwise degrade response latency for all tenants.
-
-Per-tenant metering records token counts for each completed inference. A billing reconciliation endpoint aggregates metering records by tenant. License status is checked at startup and periodically thereafter; a license fault closes the admission gate without dropping in-flight requests.
+Every write operation is appended to a local, append-only audit file (timestamp, tenant identifier, operation, VM identifier) and forwarded, best-effort, to [[service-fs|service-fs's WORM ledger]] as a durable secondary record; the local file remains authoritative if that forward fails.
 
 ## WireGuard mesh
 

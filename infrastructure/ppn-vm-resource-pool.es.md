@@ -11,7 +11,7 @@ audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: TRANSLATE-ES
 index_group: compute-and-vm-fabric
-last_edited: 2026-06-20
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: ppn-vm-resource-pool.md
 short_description: "El pool de recursos VM de la PPN es una pila de tres servicios que aprovisiona, coloca y contabiliza máquinas virtuales en una malla WireGuard heterogénea que combina nodos en la nube y hardware físico."
@@ -20,7 +20,7 @@ cites: []
 
 El pool de recursos de máquinas virtuales de la [[pointsav-private-network|Red Privada de PointSav]] (PPN) es una pila de tres servicios que aprovisiona, coloca y contabiliza máquinas virtuales en una malla WireGuard heterogénea. El pool combina nodos en la nube con hardware físico, formando un sustrato de cómputo distribuido que abarca distintos perfiles de capacidad.
 
-Tres servicios dividen la superficie de responsabilidad. El [[service-vm-fleet|controlador de flota]] mantiene una visión global de la capacidad de los nodos y gestiona las decisiones de colocación. El agente de host se ejecuta por nodo como la autoridad de creación de VMs, comunicándose con el hipervisor y conservando el estado local de cada máquina virtual. El [[service-vm-tenant|proxy de inquilino]] se sitúa en el límite del cliente, aplicando autenticación, aislamiento del espacio de nombres del inquilino, límites de cuota y un registro de auditoría inmutable. Por encima de esta pila, un broker de inferencia comercial gestiona cargas de trabajo medidas para el nivel [[service-slm|SLM]] local.
+Tres servicios dividen la superficie de responsabilidad. El [[service-vm-fleet|controlador de flota]] mantiene una visión global de la capacidad de los nodos y gestiona las decisiones de colocación. El agente de host se ejecuta por nodo como la autoridad de creación de VMs, comunicándose con el hipervisor y conservando el estado local de cada máquina virtual. El [[service-vm-tenant|proxy de inquilino]] se sitúa en el límite del cliente, aplicando autenticación, aislamiento del espacio de nombres del inquilino, límites de cuota y un registro de auditoría inmutable.
 
 Todos los procesos de servicio se comunican a través de la capa subyacente WireGuard de la PPN. Ningún servicio expone una interfaz pública; todo el tráfico dirigido al cliente entra a través del proxy de inquilino.
 
@@ -44,19 +44,11 @@ Los nodos señalan su estado de reserva e identidad estable al controlador de fl
 
 El proxy de inquilino es la capa orientada al cliente. Acepta solicitudes de creación, destrucción y consulta de estado de llamantes autenticados, y aplica el contrato de inquilino antes de reenviarlas al controlador de flota.
 
-La autenticación utiliza tokens portadores emitidos en el momento del aprovisionamiento del inquilino. Cada token lleva un identificador de inquilino que el proxy utiliza para delimitar todos los registros de VM en un espacio de nombres. Un inquilino no puede consultar, modificar ni destruir las VMs de otro inquilino; el proxy aplica esta restricción en cada endpoint antes de cualquier interacción con la flota.
+La autenticación se basa en tokens portadores, con una cuota `max_vms`/`max_ram_mb` asignada a cada inquilino en el momento del aprovisionamiento. Un inquilino no puede consultar, modificar ni destruir las VMs de otro inquilino; el proxy aplica esta restricción en cada endpoint antes de cualquier interacción con la flota. Con un mapa explícito de token a inquilino configurado, el token portador es opaco y se resuelve a un identificador de inquilino en el servidor. Sin él, el propio token portador funciona como identificador de inquilino — un modo alternativo documentado, menos reforzado, no la única vía de autenticación.
 
-La aplicación de cuota opera a nivel de capacidad. Cada inquilino tiene asignado un techo en el momento del aprovisionamiento. El proxy comprueba la capacidad asignada actualmente frente al techo antes de reenviar una solicitud de creación; las solicitudes que superarían la cuota son rechazadas. Las creaciones concurrentes del mismo inquilino se serializan mediante una compuerta por inquilino para impedir que dos solicitudes simultáneas superen ambas la comprobación de cuota contra el mismo total previo a la creación.
+La aplicación de cuota comprueba la capacidad asignada actualmente frente al techo antes de reenviar una solicitud de creación; las solicitudes que superarían la cuota son rechazadas. Las solicitudes de creación concurrentes se serializan mediante un único bloqueo compartido entre todos los inquilinos, no una compuerta separada por inquilino, cerrando la misma ventana de condición de carrera que cerraría una compuerta por inquilino, pero sin concurrencia por inquilino.
 
-Todas las operaciones de escritura se añaden a un registro de auditoría inmutable. Cada entrada registra el identificador del inquilino, el identificador de la VM, el tipo de operación, la marca de tiempo y el origen de la solicitud. El registro es de solo adición; ninguna ruta modifica las entradas existentes.
-
-## Broker de inferencia
-
-El broker de inferencia gestiona el tráfico medido hacia el nivel SLM local, posicionado por encima de la pila de VMs como la superficie de intermediación comercial. No crea ni gestiona VMs directamente; intermedia solicitudes de inferencia y contabiliza el consumo por inquilino.
-
-El broker implementa un disyuntor con umbrales configurables. Cuando el disyuntor está abierto o la compuerta de admisión está cerrada, las solicitudes de inferencia entrantes reciben una respuesta de servicio no disponible en lugar de encolarse indefinidamente. Esto protege al SLM local de picos de carga que de otro modo degradarían la latencia de respuesta para todos los inquilinos.
-
-La medición por inquilino registra los recuentos de tokens de cada inferencia completada. Un endpoint de conciliación de facturación agrega los registros de medición por inquilino. El estado de la licencia se comprueba en el arranque y periódicamente a partir de entonces; un fallo de licencia cierra la compuerta de admisión sin interrumpir las solicitudes en vuelo.
+Cada operación de escritura se añade a un archivo de auditoría local, de solo adición (marca de tiempo, identificador de inquilino, operación, identificador de VM). Ese registro se reenvía, de mejor esfuerzo, al [[service-fs|registro WORM de service-fs]] como copia secundaria duradera; el archivo local sigue siendo la fuente autoritativa si ese reenvío falla.
 
 ## Malla WireGuard
 
