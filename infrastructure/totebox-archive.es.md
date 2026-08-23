@@ -38,8 +38,9 @@ Un Totebox Archive almacena datos como archivos planos inmutables:
 | Formato | Contenido |
 |---|---|
 | JSONL | Registros estructurados (entradas de libro mayor, registros de eventos, metadatos de entidades) |
-| GeoParquet | Datos geoespaciales (límites de sitios, registros de ubicación) |
 | Markdown | Documentos legibles por humanos (memorandos, notas, informes) |
+
+GeoParquet no es uno de los formatos de almacenamiento propios del archivo — es el formato en el que Overture Maps Foundation publica su conjunto de datos externo abierto, ingerido por separado para análisis GIS.
 
 Cada escritura añade datos; ningún registro se modifica ni elimina jamás. Este es un libro mayor de Escritura Única, Lectura Múltiple (WORM). El archivo acumula un historial completo e inalterable de cada entrada registrada. No existe operación `DELETE` ni operación `UPDATE` — solo anexado. Una entrada que debe ser reemplazada es seguida por una entrada de corrección; la entrada original permanece permanentemente visible en el registro.
 

@@ -15,8 +15,6 @@ last_edited: 2026-08-03
 editor: editorial
 ---
 
-**Correction revised, 2026-08-02** (an earlier pass in this session checked a stale local branch; re-checked against canonical `origin/main`): (1) `os-orchestration` is a real registered crate, but its own `src/lib.rs` is a 4-line placeholder scaffold with no aggregation logic — the described functionality still isn't built, but "not a built crate" was the wrong framing; the "PSP" protocol claim was confirmed fabricated (zero code footprint even on canonical) and has been removed below (2026-08-06) — the query/access-path description is now hedged as planned/intended with no invented protocol name. (2) The GeoParquet claim needs softening, not full retraction: GeoParquet is real in the codebase (`app-orchestration-gis/ingest-overture.py`), but as the format Overture Maps Foundation publishes its open *external* dataset in, ingested for GIS analysis — not as this article claims, an internal Totebox WORM storage format for site boundaries/location records. (3) The `pairings.yaml` correction needs reversing: it's real and, per canonical `orchestration-command-server`'s own `main.rs` (`COMMAND_PAIRINGS_PATH`, default `/srv/foundry/pairings.yaml`), it genuinely is read by real `app-orchestration-command` runtime code — the claim that "no os-orchestration/os-totebox runtime code queries it" was itself wrong. **Flagged, not resolved** — still needs correcting the GeoParquet row's actual use case; the pairings.yaml claim can likely stand closer to as originally written.
-
 A Totebox Archive is a sovereign data vault assigned to a single entity — a building, a company, a person, or any other unit the operator defines. It is the fundamental storage and identity unit of the PointSav stack. The archive is packaged as a bootable disk image and runs as a virtual machine on the PPN hypervisor layer. It is released under Apache 2.0 and available free of charge: one operator, one archive, is a free deployment.
 
 ## The disk image is the archive
@@ -39,8 +37,9 @@ A Totebox Archive stores data as immutable flat files:
 | Format | Content |
 |---|---|
 | JSONL | Structured records (ledger entries, event logs, entity metadata) |
-| GeoParquet | Geospatial data (site boundaries, location records) |
 | Markdown | Human-readable documents (memos, notes, reports) |
+
+GeoParquet is not one of the archive's own storage formats — it's the format Overture Maps Foundation publishes its open external dataset in, ingested separately for GIS analysis.
 
 Every write appends; no record is ever modified or deleted. This is a Write Once, Read Many (WORM) ledger. The archive accumulates a complete, tamper-evident history of every entry ever recorded. There is no `DELETE` operation and no `UPDATE` operation — only append. An entry that must be superseded is followed by a correction entry; the original entry remains permanently visible in the log.
 
