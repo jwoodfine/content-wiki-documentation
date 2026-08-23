@@ -26,13 +26,13 @@ references:
     url: "https://www.coso.org/guidance-on-ic"
 ---
 
-El posicionamiento estructural es el enfoque que PointSav utiliza para describir la arquitectura al mercado: articular compromisos visibles a nivel del sistema de archivos, el protocolo o el kernel, en lugar de hacer comparaciones con competidores nombrados o afirmaciones de rendimiento relativo. La arquitectura está construida para fiduciarios institucionales — Consejeros Generales de empresas públicas, gestores de activos regulados, profesionales médicos y legales — que evalúan el software por su defensibilidad arquitectónica bajo auditoría, no por material de marketing. Los ocho compromisos descritos en este artículo son verificables por un auditor directamente en el sustrato desplegado. Al finalizar este artículo, el lector comprenderá los ocho compromisos estructurales, los patrones heredados que reemplazan y los segmentos de clientes a los que se dirigen.
+El posicionamiento estructural es el enfoque que PointSav utiliza para describir la arquitectura al mercado: articular compromisos visibles a nivel del sistema de archivos, el protocolo o el kernel, en lugar de hacer comparaciones con competidores nombrados o afirmaciones de rendimiento relativo. La arquitectura está construida para fiduciarios institucionales — Consejeros Generales de empresas públicas, gestores de activos regulados, profesionales médicos y legales — que evalúan el software por su defensibilidad arquitectónica bajo auditoría, no por material de marketing. Cinco de los ocho compromisos descritos en este artículo son verificables hoy por un auditor directamente en el sustrato desplegado; tres son compromisos arquitectónicos planificados, marcados como tales más abajo. Al finalizar este artículo, el lector comprenderá los ocho compromisos estructurales, los patrones heredados que reemplazan y los segmentos de clientes a los que se dirigen.
 
 ## Por qué PointSav se posiciona estructuralmente en lugar de comparativamente
 
 La base de clientes a la que sirve la plataforma no compra software basándose en comparaciones entre proveedores. Los gestores de activos, los profesionales regulados y las instituciones fiduciarias compran basándose en la defensibilidad: ¿puede el sistema responder las preguntas de un auditor directamente desde su propia estructura, sin una carta de atestación del proveedor?
 
-El posicionamiento estructural aborda esto directamente. Cada compromiso en la tabla siguiente está presente en el sustrato desplegado o no lo está — ningún argumento de marketing interviene. Un auditor independiente puede verificar la propiedad de solo-adición del libro mayor, la ausencia del verbo de eliminación en la ruta de código, o la restricción unidireccional en el [[diode-standard|adaptador Diodo]], sin depender del resumen de controles autoreportado por el proveedor. [^2]
+El posicionamiento estructural aborda esto directamente. Donde un compromiso ya está presente en la arquitectura desplegada — el libro mayor de solo-adición, la ausencia del verbo de eliminación en la ruta de código, la restricción unidireccional en el [[diode-standard|adaptador Diodo]] — un auditor independiente puede verificarlo directamente, sin depender del resumen de controles autoreportado por el proveedor. [^2] Tres de los ocho compromisos siguientes son planificados, no desplegados hoy; cada fila indica cuál.
 
 Las comparaciones con competidores nombrados se evitan específicamente. Los segmentos de clientes que atiende la plataforma toman decisiones de compra institucional que sobreviven cualquier tabla de comparación entre dos proveedores; los compromisos descritos aquí se mantienen independientemente del panorama competitivo cuando se revisa la decisión.
 
@@ -46,10 +46,10 @@ Ocho propiedades distinguen el sustrato PointSav de los patrones que está dise�
 | Libro mayor de solo adición | El verbo de eliminación está ausente de la ruta de código del [[worm-ledger-design|libro mayor WORM]] |
 | Flujo de comandos unidireccional | El [[diode-standard|adaptador Diodo]] es el único componente de enrutamiento entre la autoridad y el sujeto |
 | Emparejamiento como permiso | No existen bases de datos de nombres de usuario y contraseñas en ningún lugar del sustrato; el acceso se rige por [[machine-based-auth|emparejamiento basado en máquina]] |
-| Auditoría continua | El registro de auditoría se ejecuta a nivel del sistema; un administrador no puede deshabilitarlo |
-| Resolución de activos en caso de fallo del proveedor | El Paquete de Resolución de Activos Digitales separa los datos limpiamente y los devuelve al propietario en caso de fallo del proveedor |
+| Auditoría continua (planificado) | El registro de auditoría está previsto para ejecutarse a nivel del sistema, donde un administrador no podrá deshabilitarlo |
+| Resolución de activos en caso de fallo del proveedor (planificado) | El Paquete de Resolución de Activos Digitales está previsto para separar los datos limpiamente y devolverlos al propietario en caso de fallo del proveedor |
 | Sustrato soberano | El cómputo y el almacenamiento se desacoplan entre sustratos — en las instalaciones, arrendado, nube — sin trampa de salida |
-| Cumplimiento legible por máquina | Los manifiestos OSCAL[^1], el inventario de software y el inventario de hardware se exponen continuamente en lugar de solo durante los ciclos de auditoría anuales |
+| Cumplimiento legible por máquina (planificado) | Los manifiestos OSCAL[^1], el inventario de software y el inventario de hardware están previstos para exponerse continuamente en lugar de solo durante los ciclos de auditoría anuales |
 
 ## Patrones heredados que la arquitectura reemplaza estructuralmente
 
