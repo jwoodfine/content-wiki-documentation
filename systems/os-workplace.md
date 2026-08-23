@@ -22,22 +22,6 @@ references:
     url: "https://www.iso.org/standard/38920.html"
 ---
 
-**Correction, 2026-08-02, resolved 2026-08-06.** The original app-suite table named 11 apps; 8
-did not exist in any form (`app-workplace-{wordprocessor,spreadsheet,email,browser,
-communications,chat,file-manager,wiki}`), and the 3 that did exist (`app-workplace-pdf`, `-gis`,
-`-bim`) were misdescribed. This correction replaces the table with the real nine-crate
-`app-workplace-*` family, each row checked directly against its own source tree. It also corrects
-two further claims found while re-verifying. First: the apps are Tauri applications — a Rust
-backend paired with an HTML/JS/CSS WebView, targeting macOS 10.13 and later — not the "native Rust
-binaries" the article previously claimed. Second: the "Reference hardware" section's Dell XPS/HP
-ProBook/hardened-FreeBSD-or-seL4 framing has been removed. It contradicted every app's own stated
-macOS target and does not appear anywhere in the ratified architecture
-(`BRIEF-os-product-family.md` §D); `os-workplace` itself remains a one-line architectural
-placeholder (`"SYSTEM EVENT: os-workplace scaffold verified."`, no other logic), not built
-infrastructure behind a custom kernel. That section has been replaced with the real, ratified
-deployment model below. The rest of the article is hedged to planned/intended language
-accordingly.
-
 `os-workplace` is planned as the free desktop tier in the PointSav family. What exists today is a
 family of independent Rust and Tauri desktop applications — the workplace apps — that an operator
 downloads and runs directly on their own computer. The `os-workplace` crate that would bind them

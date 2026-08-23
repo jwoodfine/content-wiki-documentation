@@ -22,24 +22,6 @@ references:
     url: "https://www.iso.org/standard/38920.html"
 ---
 
-**Corrección, 2026-08-06 (paridad con la versión en inglés).** La versión anterior de este
-artículo conservaba la tabla original de 11 aplicaciones (sin ninguna nota de corrección) y una
-hoja de ruta de núcleo FreeBSD/seL4 que no existe en la arquitectura ratificada. Verificado
-directamente contra el árbol de fuentes: de las 11 aplicaciones nombradas, 8 no existen en ninguna
-forma (`app-workplace-{wordprocessor,spreadsheet,email,browser,communications,chat,file-manager,
-wiki}`), y las 3 que sí existen (`app-workplace-pdf`, `-gis`, `-bim`) estaban mal descritas. Esta
-revisión sustituye la tabla por la familia real de nueve crates `app-workplace-*`, cada fila
-verificada contra su propio código fuente. También corrige dos afirmaciones adicionales. Primera:
-las aplicaciones son aplicaciones Tauri — un backend en Rust junto con una WebView en HTML/JS/CSS,
-dirigidas a macOS 10.13 en adelante — no "binarios nativos en Rust" como afirmaba la versión
-anterior. Segunda: se elimina el marco de "Dell XPS/HP ProBook con base FreeBSD o seL4 reforzada".
-Contradecía el objetivo macOS declarado por cada aplicación y no aparece en ningún lugar de la
-arquitectura ratificada (`BRIEF-os-product-family.md` §D). `os-workplace` en sí sigue siendo un
-marcador de posición arquitectónico de una sola línea (`"SYSTEM EVENT: os-workplace scaffold
-verified."`, sin ninguna otra lógica), no infraestructura construida sobre un núcleo propio. Esa
-sección se ha sustituido por el modelo de despliegue real y ratificado que aparece más abajo. El resto del
-artículo se ha reformulado en lenguaje previsto/planeado en consecuencia.
-
 `os-workplace` está previsto como el nivel de escritorio gratuito de la familia PointSav. Lo que
 existe hoy es una familia de aplicaciones de escritorio independientes en Rust y Tauri — las
 aplicaciones de Workplace — que el operador descarga y ejecuta directamente en su propio equipo.
