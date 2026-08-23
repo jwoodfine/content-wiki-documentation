@@ -22,8 +22,8 @@ This article describes the architecture as of the initial deployment. The routin
 ## Key Takeaways
 
 - Telemetry routes through four tiers: edge capture → WireGuard encrypted transit → local processing node → control workstation pull. No payload passes through a third-party cloud aggregation service at any step.
-- Per-tenant isolation is enforced at the ledger level. Each tenant's analytics are written to separate CSV ledgers on the local processing node and are never commingled in a shared cloud table.
-- The control workstation pulls only compiled Markdown reports — not the raw CSV ledger. Raw data stays on the local processing node; what moves to the analyst is the extracted summary. This design limits the blast radius of a workstation compromise to summary data, not the full traffic record.
+- All traffic is written to a single shared ledger on the local processing node (`assets/ledger_telemetry.csv`) — there is no per-tenant ledger separation today.
+- The control workstation pulls only compiled Markdown reports from the processing node's `outbox/` directory over rsync — not the raw CSV ledger, which stays on the processing node. This limits the blast radius of a workstation compromise to summary data, not the full traffic record.
 - Local-first telemetry is a precondition of the tenancy isolation model and the [[customer-hostability|customer-rooted data custody]] property. The operator holds full custody of traffic analytics; no third party holds or processes the raw data.
 
 ## Four-tier routing path
@@ -38,19 +38,19 @@ Payloads traverse a WireGuard mesh (`wg0`) between the cloud edge and the local 
 
 ### Tier 3 — Local processing
 
-A Rust telemetry daemon running on the local processing node (`laptop-a`) binds to all interfaces, receives the decrypted payloads, and writes them to per-tenant CSV ledgers. A cross-reference process consults the GeoLite2 City database to resolve IP addresses to geographic regions and produces structured Markdown reports from the ledger data.
+A Rust telemetry daemon running on the local processing node binds to all interfaces, receives the decrypted payloads, and appends them to a single shared CSV ledger. A separate reporting binary reads that ledger, consults a local GeoLite2 City database to resolve each recorded IP address to a geographic region, and writes a structured Markdown report to the outbox directory.
 
 ### Tier 4 — Analysis extraction
 
-The control node (the operator's workstation) runs a pull script (`pull_sovereign_telemetry.sh`) that physically extracts the compiled reports from the processing node without touching the raw ledger data. Analysis is performed on the extracted reports; the raw CSV ledger remains on the processing node.
+The control node (the operator's workstation) runs a pull script that extracts the compiled reports from the processing node without touching the raw ledger data. Analysis is performed on the extracted reports; the raw CSV ledger remains on the processing node.
 
 ## Design rationale
 
-Routing telemetry to a locally controlled node rather than a cloud aggregation service means the operator retains full custody of traffic data. No third party holds or processes the raw analytics. This is a precondition for the tenancy isolation model: each tenant's analytics are isolated at the ledger level and never commingled in a shared cloud table.
+Routing telemetry to a locally controlled node rather than a cloud aggregation service means the operator retains full custody of traffic data. No third party holds or processes the raw analytics.
 
 ## See also
 
-- [[sovereign-telemetry]] — the zero-state telemetry architecture (V4 Intent Beacon) that operates over this routing path — the client-side payload counterpart to this article's server-side routing
+- [[sovereign-telemetry]] — the client-side beacon payload that this article's server-side routing carries
 - [[worm-ledger-architecture]] — the WORM ledger design that shares the append-only write model
 - [[edge-deployment]] — the boundary ingest architecture for the Ring 1 services
 - [[compounding-substrate]] — the broader substrate context for local-first data custody
