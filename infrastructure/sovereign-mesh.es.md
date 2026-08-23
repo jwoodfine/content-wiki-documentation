@@ -16,7 +16,7 @@ last_edited: 2026-08-01
 editor: pointsav-engineering
 ---
 
-La **malla soberana** es la capa de red a nivel de aplicación que conecta todos los nodos de la flota de la Red Privada PointSav (PPN). Funciona sobre túneles criptográficos WireGuard a través de una interfaz `wg0` dedicada y entrega comandos binarios firmados sin depender de un intermediario de mensajes centralizado. Cada nodo se comunica directamente con sus pares autorizados; la capa de malla aplica la misma jerarquía de autoridad que el [[diode-standard|Diode Standard]] como propiedad estructural, no como opción de configuración.
+La **malla soberana** es la superposición WireGuard que conecta todos los nodos de la flota de la Red Privada PointSav (PPN), sobre una interfaz `wg0` dedicada. Dos mecanismos distintos y reales operan sobre ella: una difusión de carga JSON sin intermediario (`system-udp`, puerto 8090) y un canal de comandos binarios firmados (`app-network-admin`, puerto 9206) que transporta los comandos emitidos por el operador desde la Terminal F8. Cada nodo se comunica directamente con sus pares autorizados; ningún intermediario de mensajes central se sitúa en la ruta.
 
 ## Topología en hub y radios
 
@@ -36,7 +36,7 @@ La subred `10.8.0.0/24` es el rango de direcciones previsto para la PPN. Todo el
 
 Cada nodo levanta una interfaz WireGuard `wg0` como parte de su secuencia de arranque. WireGuard proporciona:
 
-- **Acuerdo de claves** — intercambio Noise Protocol IK; el par de claves a largo plazo de cada nodo es generado y almacenado en el primer ingreso a la malla por `os-network-admin` en el nodo de plano de control, o a través del Genesis Protocol en nodos de borde bare-metal
+- **Acuerdo de claves** — intercambio Noise Protocol IK, el predeterminado de WireGuard; el par de claves a largo plazo de cada nodo es generado y almacenado en el primer ingreso a la malla, hoy de forma manual en el nodo de plano de control, o mediante el Genesis Protocol (diseñado, aún no construido) en nodos de borde bare-metal
 - **Cifrado e integridad** — ChaCha20-Poly1305 por paquete; ningún tráfico de malla en texto plano abandona nunca un nodo
 - **Alcanzabilidad entre pares** — el retransmisor en la nube es el único par con dirección estática; los nodos en instalaciones propias y arrendados se localizan entre sí a través del retransmisor hasta que se disponga de una ruta directa
 
@@ -44,35 +44,37 @@ La configuración WireGuard de cada nodo se almacena en el directorio de instanc
 
 ## Protocolo de comandos
 
-Todos los comandos de la malla utilizan un formato de paquete binario de 16 bytes entregado por UDP en el puerto 8090. El tamaño reducido es deliberado: el paquete contiene un token de intención, un selector de destino, un nonce y una firma de autoridad truncada — suficiente para identificar el comando, verificar su procedencia y detectar ataques de repetición sin necesitar una sesión TLS completa por cada comando.
+Los comandos de autoridad utilizan un formato de paquete binario de 16 bytes entregado por UDP en el puerto 9206: un código de operación de 2 bytes (ping, isolate, pong), un selector de nodo destino de 2 bytes, una marca temporal de 4 bytes y 8 bytes reservados. Es una malla distinta y más pequeña que la difusión JSON descrita arriba — pertenece a `app-network-admin`, no a `system-udp`.
 
 El flujo de comandos desde el operador hasta el nodo de destino es:
 
 ```
 Intención del operador (lenguaje natural)
       ↓
-Terminal F8  —  os-network-admin  HTTP :8085
+Terminal F8  —  app-network-admin  HTTP :8085  (/translate)
       ↓
-Enrutador semántico service-slm
+Doorman :9080/v1/translate — devuelve una propuesta pendiente
       ↓
-Comando binario de 16 bytes (autorizado y firmado)
+Aprobación del operador  —  app-network-admin HTTP :8085  (/authorize)
       ↓
-Difusión service-udp  →  wg0  →  Túnel WireGuard
+Comando binario de 16 bytes
       ↓
-Nodo destino  —  UDP puerto 8090
+UDP unicast  →  wg0  →  Túnel WireGuard
+      ↓
+Nodo destino  —  UDP puerto 9206
 ```
 
-Los comandos fluyen en una sola dirección — desde `os-network-admin` hacia la malla, nunca en sentido inverso — restricción aplicada por `service-pointsav-link` en la capa de aplicación. Véase [[diode-standard]] para la jerarquía de autoridad completa.
+Traducir una intención y autorizarla son dos llamadas separadas — un comando nunca se envía solo con la propuesta del Doorman. Véase [[diode-standard]] para la jerarquía de autoridad más amplia en la que se inserta esta doble verificación.
 
 ## Roles de los nodos en la malla
 
 ### os-infrastructure — ancla de borde
 
-El nodo bare-metal `os-infrastructure` es un par de la malla, no un controlador. Escucha en el puerto 8090 los comandos binarios firmados dirigidos a él y los ejecuta; no inicia comandos. La tarjeta de red Broadcom 14e4:16b4 del nodo transporta el tráfico de la malla a través de la interfaz `wg0` una vez que concluye la secuencia de ingreso del Genesis Protocol.
+El nodo bare-metal `os-infrastructure` es un par de la malla, no un controlador. Escucha los comandos binarios firmados dirigidos a él y los ejecuta; no inicia comandos. La tarjeta de red Broadcom 14e4:16b4 del nodo transporta el tráfico de la malla a través de la interfaz `wg0` una vez que concluye la secuencia de ingreso del Genesis Protocol.
 
-### os-network-admin — plano de control
+### app-network-admin — plano de control
 
-`os-network-admin` posee la autoridad de comandos sobre la malla. La Terminal F8 — una interfaz de comandos en lenguaje natural en el puerto HTTP 8085 — acepta la intención del operador y la enruta a través de `service-slm` para producir un comando binario firmado de 16 bytes. El comando se difunde luego a través de `service-udp` en el puerto 8090 a uno o más pares de la malla. `os-network-admin` también alberga el registro de emparejamiento y gestiona la admisión de nuevos nodos mediante el protocolo [[machine-based-auth|autenticación basada en máquina]].
+`app-network-admin` posee la autoridad de comandos sobre la malla — no `os-network-admin`, que hoy es una página estática sin servicio detrás. La Terminal F8, una interfaz de comandos en lenguaje natural en el puerto HTTP 8085, acepta la intención del operador, la reenvía al Doorman para su traducción y — una vez que el operador autoriza explícitamente la propuesta resultante — difunde el comando binario firmado de 16 bytes a uno o más pares de la malla en el puerto 9206.
 
 ### Retransmisor en la nube — hub
 
@@ -89,29 +91,20 @@ La topología en hub y radios anterior está pensada para explotar una brecha es
 | Requiere ingeniería de red antes de poder añadir cómputo | Se prevé que un nodo pueda unirse a la malla con un aprovisionamiento manual de WireGuard mínimo, una vez completada la secuencia de ingreso descrita más abajo |
 | El plano de control de un único proveedor es un punto único de fallo | Cada nodo está diseñado para que una flota no dependa de la disponibilidad continua de un único proveedor de nube |
 
-Se prevé que un operador que ejecute un nodo en instalaciones propias, un retransmisor en la nube para conectividad pública y `os-network-admin` en una estación de trabajo administrativa termine con una flota que no está atada a ningún proveedor de nube en particular. La [[worm-ledger-design|disciplina WORM]] que rige la persistencia de datos de PointSav se aplica a cada nodo, independientemente del perfil de confianza bajo el que opere.
+Se prevé que un operador que ejecute un nodo en instalaciones propias, un retransmisor en la nube para conectividad pública y `app-network-admin` en una estación de trabajo administrativa termine con una flota que no está atada a ningún proveedor de nube en particular. La [[worm-ledger-design|disciplina WORM]] que rige la persistencia de datos de PointSav se aplica a cada nodo, independientemente del perfil de confianza bajo el que opere.
 
 ## Integración con el Genesis Protocol
 
-Un nodo bare-metal se incorpora a la malla a través del [[genesis-protocol|Genesis Protocol]], no mediante aprovisionamiento WireGuard manual. En el primer arranque:
-
-1. seL4 genera un par de claves sembrado con entropía de fuentes de hardware
-2. El nodo entra en modo de arranque ciego — ignorando todo DHCP y DNS — y explora el balizamiento de `os-network-admin` en el puerto 8090
-3. Si se encuentra la baliza, `os-network-admin` guía al nodo a través del proceso de ingreso a la malla: registro del par WireGuard, asignación de IP y vinculación del par de claves al registro de emparejamiento
-4. Si no se encuentra ninguna baliza dentro de la ventana de exploración, el nodo realiza su auto-génesis: escribe su par de claves en el almacenamiento de variables seguras UEFI y entra en un patrón de espera en el puerto 9443, aguardando una reclamación de administrador
-
-Este mecanismo garantiza que ningún nodo se incorpore nunca a la malla sin un protocolo de autoridad verificado. Los flujos de trabajo manuales con `wg genkey` aplican únicamente durante el aprovisionamiento inicial de la flota; no constituyen la ruta de ingreso en tiempo de ejecución para nodos en producción.
+Un nodo bare-metal está pensado para incorporarse a la malla a través del [[genesis-protocol|Genesis Protocol]], no mediante aprovisionamiento WireGuard manual: descubrimiento por mDNS de un servidor de emparejamiento, un intercambio UDP con un código corto, un intercambio de claves autenticado por contraseña CPace, una ceremonia de reclamación aprobada por un administrador y, finalmente, la entrega de la configuración de malla. El trabajo del controlador de red del que depende esta secuencia aún no está listo — cada paso existe como código diseñado, no como comportamiento en ejecución. El aprovisionamiento manual con `wg genkey` es hoy la ruta de ingreso en tiempo de ejecución para todos los nodos de la malla.
 
 ## Relación con el Diode Standard
 
-El [[diode-standard|Diode Standard]] define tres categorías de tráfico en la malla: comandos de autoridad, telemetría y sincronización entre nodos. Las tres fluyen a través de la malla soberana, pero solo los comandos de autoridad utilizan el formato binario de 16 bytes en el puerto 8090. El tráfico de telemetría y sincronización utiliza TCP o UDP encapsulado en WireGuard en otros puertos.
-
-La restricción de unidireccionalidad del Diode Standard — los comandos de autoridad fluyen desde `os-network-admin` hacia los nodos, nunca en sentido inverso — se implementa en la capa de la malla mediante `service-pointsav-link`, un adaptador conectable en caliente que aplica la dirección del flujo sin requerir cambios en la política de WireGuard.
+El [[diode-standard|Diode Standard]] describe un flujo de comandos en una sola dirección — los comandos de autoridad viajan desde `app-network-admin` hacia los nodos, nunca en sentido inverso — como regla de diseño declarada para la plataforma. Solo los comandos de autoridad utilizan el formato binario de 16 bytes en el puerto 9206; el tráfico de telemetría y sincronización utiliza TCP o UDP encapsulado en WireGuard en otros puertos. Ningún componente individual verifica ni aplica esta direccionalidad como invariante comprobada por conformidad; se cumple porque nada en la malla implementa una ruta inversa, no porque un adaptador dedicado la bloquee.
 
 ## Véase también
 
 - [[os-infrastructure-ppn-node]] — el SO del sustrato de cómputo en sí: estado de despliegue actual, secuencia del Genesis Protocol
-- [[os-network-admin]] — Terminal F8, integración con service-slm, propiedad de la política de malla
+- [[os-network-admin]] — la entrada de wiki provisional para este rol de nodo; el servicio real de la Terminal F8 es el crate `app-network-admin`, aún no documentado bajo su propio nombre
 - [[diode-standard]] — jerarquía de autoridad y definiciones de categorías de tráfico
 - [[machine-based-auth]] — gestión de pares de claves Noise Protocol y tipos de emparejamiento
 - [[ppn-command-protocol]] — el análisis detallado dedicado al formato de trama: restricciones de diseño, disposición del paquete, secuencia de despacho

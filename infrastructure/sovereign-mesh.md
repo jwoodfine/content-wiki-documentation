@@ -15,11 +15,9 @@ last_edited: 2026-08-01
 editor: pointsav-engineering
 ---
 
-The **sovereign mesh** is the application-level network overlay that connects every PointSav Private Network (PPN) fleet node. It runs over WireGuard cryptographic tunnels on a dedicated `wg0` interface and carries signed binary commands without relying on a centralised message broker. Each node communicates directly with its authorised peers; the mesh layer enforces the same authority hierarchy as the [[diode-standard|Diode Standard]] as a structural property, not a configuration option.
+The **sovereign mesh** is the WireGuard overlay that connects every PointSav Private Network (PPN) fleet node, running over a dedicated `wg0` interface. Two distinct, real mechanisms operate on top of it: a zero-broker JSON-payload broadcast (`system-udp`, port 8090) and a signed binary command channel (`app-network-admin`, port 9206) that carries the F8 Terminal's operator-issued commands. Each node communicates directly with its authorised peers; no central message broker sits on the path.
 
 ## Hub-and-spoke topology
-
-**Correction (2026-08-02, verified against canonical `origin/main`):** several specific claims below don't match the real implementation. (1) Crate name — real crate is `system-udp`, not `service-udp` (confirmed absent on canonical). (2) `service-pointsav-link` — confirmed nonexistent anywhere in the codebase, corroborating this repo's own 2026-07-18 `diode-standard.md` finding; there is no separate adapter enforcing one-way flow. (3) Packet format — the real `system-udp/src/main.rs` sends a plain `serde_json` `MeshPayload{sender_id, intent, target, timestamp}` over UDP 8090, not a 16-byte binary format with an intent token/nonce/truncated signature; its only guard is an IP-prefix check. (4) The UEFI Secure Variable / port 9443 genesis claim doesn't match real code — `system-network-interface`'s genesis handshake is a 32-byte `GNES`-magic frame with no UEFI or port 9443 involvement, and `os-infrastructure/CLAUDE.md` explicitly states "No UEFI officially... do not implement UEFI until explicitly approved." Port 8090 and the `10.8.0.0/24` addressing are independently confirmed accurate. **Flagged, not resolved.**
 
 The mesh uses a hub-and-spoke arrangement. The cloud relay node sits at the centre and relays packets between spoke nodes that may not have a direct path to each other. `os-infrastructure` runs identically in all three roles — the operator chooses where their compute lives, and the same WireGuard mesh spans any combination.
 
@@ -37,7 +35,7 @@ The `10.8.0.0/24` subnet is the intended PPN address range. All mesh traffic is 
 
 Each node brings up a `wg0` WireGuard interface as part of its boot sequence. WireGuard provides:
 
-- **Key agreement** — Noise Protocol IK handshake; each node's long-term keypair is generated and stored at first mesh join by `os-network-admin` for the control-plane node, or via the Genesis Protocol for bare-metal edge nodes
+- **Key agreement** — Noise Protocol IK handshake, WireGuard's own default; each node's long-term keypair is generated and stored at first mesh join, manually today on the control-plane node, or via the designed (not yet built) Genesis Protocol for bare-metal edge nodes
 - **Encryption and integrity** — ChaCha20-Poly1305 per packet; no plaintext mesh traffic ever leaves a node
 - **Peer reachability** — the cloud relay is the only statically-addressed peer; on-premises and leased nodes resolve each other through the relay until a direct routed path becomes available
 
@@ -45,35 +43,37 @@ WireGuard configuration for each node is held in the deployment instance directo
 
 ## Command protocol
 
-All mesh commands use a 16-byte binary packet format delivered over UDP on port 8090. The compact size is deliberate: the packet carries an intent token, a target selector, a nonce, and a truncated authority signature — sufficient to identify the command, verify its provenance, and detect replay attacks without requiring a full TLS session per command.
+Authority commands use a 16-byte binary packet format delivered over UDP on port 9206: a 2-byte op code (ping, isolate, pong), a 2-byte target-node selector, a 4-byte timestamp, and 8 reserved bytes. This is a distinct, smaller mesh from the JSON broadcast described above — `app-network-admin` owns it, not `system-udp`.
 
 The command flow from operator to target node is:
 
 ```
 Operator intent (plain language)
       ↓
-F8 Terminal  —  os-network-admin  HTTP :8085
+F8 Terminal  —  app-network-admin  HTTP :8085  (/translate)
       ↓
-service-slm semantic router
+Doorman :9080/v1/translate — returns a pending proposal
       ↓
-16-byte binary command (authorised and signed)
+Operator approval  —  app-network-admin HTTP :8085  (/authorize)
       ↓
-service-udp broadcast  →  wg0  →  WireGuard tunnel
+16-byte binary command
       ↓
-Target node  —  UDP port 8090
+UDP unicast  →  wg0  →  WireGuard tunnel
+      ↓
+Target node  —  UDP port 9206
 ```
 
-Commands flow in one direction only — from `os-network-admin` outward to the mesh — a constraint enforced by `service-pointsav-link` at the application layer. See [[diode-standard]] for the full authority hierarchy.
+Translating an intent and authorising it are two separate calls — a command is never sent purely on the strength of the Doorman's proposal. See [[diode-standard]] for the broader authority hierarchy this two-step gate sits inside.
 
 ## Node roles in the mesh
 
 ### os-infrastructure — edge anchor
 
-The bare-metal `os-infrastructure` node is a mesh peer, not a mesh controller. It listens on port 8090 for signed binary commands addressed to it and executes them; it does not initiate commands. The node's Broadcom 14e4:16b4 NIC carries mesh traffic via the `wg0` interface once the Genesis Protocol join sequence completes.
+The bare-metal `os-infrastructure` node is a mesh peer, not a mesh controller. It listens for signed binary commands addressed to it and executes them; it does not initiate commands. The node's Broadcom 14e4:16b4 NIC carries mesh traffic via the `wg0` interface once the Genesis Protocol join sequence completes.
 
-### os-network-admin — control plane
+### app-network-admin — control plane
 
-`os-network-admin` owns command authority for the mesh. The F8 Terminal — a plain-language command surface on HTTP port 8085 — accepts operator intent and routes it through `service-slm` to produce a signed 16-byte binary command. The command is then broadcast over `service-udp` on port 8090 to one or more mesh peers. `os-network-admin` also hosts the pairing registry and manages new-node admission via the [[machine-based-auth|machine-based auth]] handshake.
+`app-network-admin` owns command authority for the mesh — not `os-network-admin`, which today is a static placeholder page with no service behind it. The F8 Terminal, a plain-language command surface on HTTP port 8085, accepts operator intent, forwards it to the Doorman for translation, and — once the operator explicitly authorises the resulting proposal — broadcasts the signed 16-byte command to one or more mesh peers on port 9206.
 
 ### Cloud relay — hub
 
@@ -90,29 +90,20 @@ The hub-and-spoke topology above is designed to exploit a structural gap in conv
 | Requires network engineering before compute can be added | A node is intended to be able to join the mesh with minimal manual WireGuard provisioning, once the join sequence described below is fully built |
 | A single vendor's control plane is a single point of failure | Each node is designed so that a fleet does not depend on any one hyperscaler remaining available |
 
-An operator running an on-premises node, a cloud relay for public reachability, and `os-network-admin` on an administrative workstation is intended to end up with a fleet that is not locked to any single hyperscaler. The [[worm-ledger-design|WORM discipline]] that governs PointSav data persistence applies to each node regardless of which trust profile it runs under.
+An operator running an on-premises node, a cloud relay for public reachability, and `app-network-admin` on an administrative workstation is intended to end up with a fleet that is not locked to any single hyperscaler. The [[worm-ledger-design|WORM discipline]] that governs PointSav data persistence applies to each node regardless of which trust profile it runs under.
 
 ## Genesis Protocol integration
 
-A bare-metal node joins the mesh through the [[genesis-protocol|Genesis Protocol]] rather than manual WireGuard provisioning. At first boot:
-
-1. seL4 generates an entropy-seeded keypair from hardware sources
-2. The node enters blind-boot mode — ignoring all DHCP and DNS — and scans for the `os-network-admin` beacon on port 8090
-3. If the beacon is found, `os-network-admin` guides the node through the mesh-join handshake: WireGuard peer registration, IP assignment, and keypair binding to the pairing registry
-4. If no beacon is found within the scan window, the node self-geneses: it writes its keypair to UEFI Secure Variable storage and enters a holding pattern on port 9443, awaiting an admin claim
-
-This mechanism ensures that no node ever joins the mesh without a verified authority handshake. Manual `wg genkey` workflows apply during initial fleet provisioning only; they are not the runtime join path for production nodes.
+A bare-metal node is designed to join the mesh through the [[genesis-protocol|Genesis Protocol]] rather than manual WireGuard provisioning: mDNS discovery of a pairing server, a UDP handshake carrying a short code, a CPace password-authenticated key exchange, an administrator-approved claim ceremony, and finally mesh-configuration handoff. The network driver work this sequence depends on hasn't landed yet — every step exists as designed code, not as running behavior. Manual `wg genkey` provisioning is the current runtime path for every node in the mesh today.
 
 ## Relationship to the Diode Standard
 
-The [[diode-standard]] defines three mesh traffic categories: authority commands, telemetry, and inter-node sync. All three flow through the sovereign mesh, but only authority commands use the 16-byte binary format on port 8090. Telemetry and sync traffic use WireGuard-encapsulated TCP or UDP on other ports.
-
-The Diode Standard's unidirectionality constraint — authority commands flow from `os-network-admin` to nodes, never the reverse — is implemented at the mesh layer by `service-pointsav-link`, a hot-pluggable adapter that enforces the flow direction without requiring WireGuard policy changes.
+The [[diode-standard]] describes a one-way command flow — authority commands travel from `app-network-admin` to nodes, never the reverse — as a stated design rule for the platform. Only authority commands use the 16-byte binary format on port 9206; telemetry and sync traffic use WireGuard-encapsulated TCP or UDP on other ports. No single named component checks or enforces this directionality as a conformance-tested invariant; it holds because nothing in the mesh implements a reverse path, not because a dedicated adapter blocks one.
 
 ## See also
 
 - [[os-infrastructure-ppn-node]] — the compute-substrate OS itself: current deployment state, Genesis Protocol sequence
-- [[os-network-admin]] — F8 Terminal, service-slm integration, mesh policy ownership
+- [[os-network-admin]] — the placeholder wiki entry for this node role; the real F8 Terminal service is the `app-network-admin` crate, not yet documented under its own name
 - [[diode-standard]] — authority hierarchy and traffic category definitions
 - [[machine-based-auth]] — Noise Protocol keypair management and pairing types
 - [[ppn-command-protocol]] — the dedicated wire-format deep dive: design constraints, packet layout, dispatch sequence
