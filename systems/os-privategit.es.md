@@ -10,11 +10,11 @@ category: systems
 language: es
 paired_with: os-privategit.md
 status: stub
-last_edited: 2026-05-25
+last_edited: 2026-08-22
 editor: pointsav-engineering
 ---
 
-`os-privategit` es la capa del sistema operativo que aloja la infraestructura soberana de control de versiones de la plataforma — repositorios Git privados y alojamiento del [[design-system-substrate|sistema de diseño]] — en hardware propiedad del operador, sin enrutar el código fuente a través de un proveedor externo de alojamiento Git. Pertenece a la [[os-family-overview|familia de ocho SO]] y se empareja con el [[app-privategit-workbench|banco de trabajo de navegador]] para la autoría y revisión de archivos.
+`os-privategit` es la capa del sistema operativo que ejecuta la infraestructura soberana de control de versiones de la plataforma — repositorios Git privados y alojamiento del [[design-system-substrate|sistema de diseño]] — en hardware propiedad del operador, sin enrutar el código fuente a través de un proveedor externo de alojamiento Git. El propio binario del SO es una puerta de verificación de licencia; la lógica de alojamiento Git y del sistema de diseño reside en las aplicaciones hermanas `app-privategit-*` que aloja (`app-privategit-source`, `app-privategit-design`, `app-privategit-marketplace`, `app-privategit-workbench`), siguiendo la misma división SO/aplicación que el resto de la familia. Pertenece a la [[os-family-overview|familia de ocho SO]] y se empareja con el [[app-privategit-workbench|banco de trabajo de navegador]] para la autoría y revisión de archivos.
 
 El entorno de escritorio [[os-workplace|os-workplace]] y el archivo [[totebox-os|Totebox]] son los consumidores principales del software alojado en `os-privategit`. El código fuente fluye desde `os-privategit` hacia el modelo de despliegue [[customer-first-ordering|cliente-primero]].
 
