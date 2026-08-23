@@ -19,8 +19,6 @@ The PointSav platform organises its runtime deployments under a set of named VM 
 
 This correspondence is not incidental. The platform is designed to be deployed the same way by a builder running a development environment as by a customer running a production system. The five VM types map directly to the five ways customers and community members engage with the platform.
 
-**Correction (2026-08-02, revised):** several specific claims below don't match the real codebase. (1) `os-orchestration` (VM-Orchestration's named source binary) is a real crate on canonical but currently an empty placeholder scaffold (retracted from an earlier "not built" claim — the related `app-orchestration-command` crate is real and substantial, see [[personnel-permissions]]); its "PointSav Protocol (PSP)" aggregation mechanism was confirmed fabricated, zero code footprint even on canonical, and has been removed below (2026-08-06) — the mechanism is now described as planned/intended with no invented protocol name. (2) `service-proofreader` is not a real crate name — the real proofreader implementation is `app-console-content/src/proofreader.rs`, described in its own `Cargo.toml` as "os-console F4 Content Cartridge," which undercuts this article's own placement argument that its callers are MediaKit-resident: its real caller is `os-console`. (3) `app-privategit-design-system` is misnamed — the real crate is `app-privategit-design` (no "-system" suffix). (4) The genesis-node roles below are inverted relative to the real provisioning scripts: `infrastructure/virt/provision-vm-infrastructure-cloud.sh` states outright that "GCP is the canonical genesis-seed for the internet-facing hub" (not Laptop A), and `provision-vm-infrastructure-onprem.sh` shows Laptop A peers with the GCP hub via `--genesis` while Laptop B uses a distinct `--genesis-hub` flag for the on-prem LAN — not the plain `--join <short-code>` this article assigns it. **Flagged, not resolved** — still needs correcting the binary/crate names and the genesis-role sequence; the Phase 2/3 Microkit/NVMM roadmap section is already correctly hedged as "intended" and needs no change.
-
 ## VM types and their purposes
 
 ### VM-Totebox
@@ -41,9 +39,7 @@ Services: `service-fs` (WORM block storage), `service-people`, `service-email`, 
 
 VM-MediaKit hosts the websites and knowledge portals that a Reporting Issuer or small business presents to the public. It runs wiki-based knowledge portals, static marketing sites, and a newsroom. Each hosted application is a stateless service — it reads from a content directory but holds no per-entity ledger state.
 
-The proofreader service co-locates in VM-MediaKit because its callers are MediaKit-resident. Moving it to VM-Totebox would route every editorial request across the PPN boundary — the placement rule enforces that co-location pressure dissolves at the network boundary.
-
-Services: `app-mediakit-knowledge` (documentation, corporate, and projects wikis), `app-mediakit-marketing`, `service-proofreader`.
+Services: `app-mediakit-knowledge` (documentation, corporate, and projects wikis), `app-mediakit-marketing`. Proofreading is not a VM-MediaKit service — it runs as a module inside `os-console`'s content cartridge, not as a separate deployable.
 
 ### VM-Orchestration
 
@@ -61,7 +57,7 @@ Services: `app-orchestration-bim`, `app-orchestration-gis`, `app-orchestration-s
 
 VM-PrivateGit runs Gitea as a bidirectional mirror of the canonical GitHub repositories, and optionally a design-system preview server. It provides source control independence from third-party hosting for intellectual property and brand assets. The Foundry workspace itself (`vault-privategit-source-1`) is the first deployment of this type, currently running on the GCP host directly.
 
-Services: `app-privategit-source-control`, `app-privategit-design-system`.
+Services: `app-privategit-source-control`, `app-privategit-design`.
 
 ### VM-Infrastructure
 
@@ -70,9 +66,11 @@ Services: `app-privategit-source-control`, `app-privategit-design-system`.
 
 VM-Infrastructure is not a VM in the conventional sense. It is the `os-infrastructure` binary running on bare metal, providing the hypervisor layer that hosts all other VM types. Three nodes form the minimum production fleet:
 
-- **Laptop A (genesis-seed):** First node. Runs `provision-vm-infrastructure-onprem.sh --genesis`, which self-configures WireGuard and opens the pairing ceremony server. Hosts VM-Totebox-1.
-- **Laptop B (relay):** Second node. Joins the mesh via `--join <short-code>` (CPace PAKE + SAS confirmation). Hosts the WireGuard hub.
-- **GCP cloud node:** Third node. Joins via `provision-vm-infrastructure-cloud.sh --join <short-code>`. Hosts VM-MediaKit, VM-Orchestration, VM-PrivateGit.
+- **GCP cloud node (genesis-seed):** The canonical seed for the internet-facing hub. Hosts VM-MediaKit, VM-Orchestration, VM-PrivateGit.
+- **Laptop A (on-prem peer):** Configures WireGuard as a peer of the GCP hub. Hosts VM-Totebox-1.
+- **Laptop B (on-prem LAN hub):** Acts as the WireGuard hub for the on-prem local network, a distinct role from Laptop A's.
+
+Additional on-prem nodes join an already-seeded mesh via a short-code pairing ceremony (CPace PAKE + SAS confirmation).
 
 VM-Infrastructure is a trust-meshed host fleet, not a resource-pooling cluster scheduler. Each node is independently provisioned. Placement decisions — which VM runs on which node — are operator policy, not automated scheduling. The PPN WireGuard mesh provides the name-to-endpoint binding.
 
@@ -83,7 +81,6 @@ A service belongs in the VM whose `os-*` namespace owns its data lifecycle and t
 Derivations from this rule:
 - `service-fs` (WORM ledger) belongs in VM-Totebox. It is the Totebox storage substrate.
 - `app-orchestration-bim` belongs in VM-Orchestration. Its name declares its class.
-- `service-proofreader` belongs in VM-MediaKit. Its callers are MediaKit-resident.
 - WireGuard and the pairing ceremony belong in VM-Infrastructure. These are fabric concerns.
 
 If a service requires loopback co-location with a service in a different VM, that is a design signal. The PPN boundary is where services of different types communicate.
@@ -92,7 +89,7 @@ If a service requires loopback co-location with a service in a different VM, tha
 
 The VM types correspond directly to the ways customers and community members engage with the platform.
 
-**PointSav Private Network users** deploy VM-Infrastructure on their own hardware — at minimum one on-prem node (Laptop A) and the GCP cloud relay. The Genesis Protocol bootstraps the mesh from a single node. No external certificate authority is required.
+**PointSav Private Network users** deploy VM-Infrastructure on their own hardware — at minimum one on-prem node and the GCP genesis-seed node. The Genesis Protocol bootstraps the mesh from a single node. No external certificate authority is required.
 
 **Totebox Orchestration users** deploy VM-Totebox (data vault) and VM-Orchestration (fleet view). A single VM-Totebox instance is sufficient for a small business. Larger organisations add VM-Orchestration to aggregate across multiple archives.
 

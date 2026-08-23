@@ -40,9 +40,7 @@ Servicios: `service-fs` (almacenamiento de bloques WORM), `service-people`, `ser
 
 VM-MediaKit aloja los sitios web y portales de conocimiento que un emisor de información regulada o una pequeña empresa presenta al público. Ejecuta portales de conocimiento tipo wiki, sitios de marketing estáticos y una sala de noticias. Cada aplicación alojada es un servicio sin estado: lee de un directorio de contenido pero no mantiene estado de libro mayor por entidad.
 
-El servicio de corrección ortográfica (proofreader) se ubica junto con VM-MediaKit porque sus clientes residen en MediaKit. Moverlo a VM-Totebox enrutaría cada solicitud editorial a través de la frontera PPN.
-
-Servicios: `app-mediakit-knowledge` (wikis de documentación, corporativa y de proyectos), `app-mediakit-marketing`, `service-proofreader`.
+Servicios: `app-mediakit-knowledge` (wikis de documentación, corporativa y de proyectos), `app-mediakit-marketing`. La corrección ortográfica (proofreader) no es un servicio de VM-MediaKit — se ejecuta como un módulo dentro del cartucho de contenido de `os-console`, no como un despliegue independiente.
 
 ### VM-Orchestration
 
@@ -60,7 +58,7 @@ Servicios: `app-orchestration-bim`, `app-orchestration-gis`, `app-orchestration-
 
 VM-PrivateGit ejecuta Gitea como espejo bidireccional de los repositorios canónicos en GitHub y, opcionalmente, un servidor de previsualización del sistema de diseño. Proporciona independencia de control de fuentes respecto a proveedores externos para la propiedad intelectual y los activos de marca. El espacio de trabajo Foundry (`vault-privategit-source-1`) es la primera implementación de este tipo.
 
-Servicios: `app-privategit-source-control`, `app-privategit-design-system`.
+Servicios: `app-privategit-source-control`, `app-privategit-design`.
 
 ### VM-Infrastructure
 
@@ -69,9 +67,11 @@ Servicios: `app-privategit-source-control`, `app-privategit-design-system`.
 
 VM-Infrastructure no es una VM en el sentido convencional. Es el binario `os-infrastructure` ejecutándose en hardware físico, proporcionando la capa de hipervisor que aloja todos los demás tipos de VM. Tres nodos forman la flota de producción mínima:
 
-- **Laptop A (nodo génesis):** Primer nodo. Ejecuta `provision-vm-infrastructure-onprem.sh --genesis`, que configura WireGuard de forma autónoma y abre el servidor de ceremonia de emparejamiento. Aloja VM-Totebox-1.
-- **Laptop B (retransmisor):** Segundo nodo. Se une a la malla mediante `--join <código-corto>` (CPace PAKE + confirmación SAS). Aloja el concentrador WireGuard.
-- **Nodo GCP (nube):** Tercer nodo. Se une mediante `provision-vm-infrastructure-cloud.sh --join <código-corto>`. Aloja VM-MediaKit, VM-Orchestration y VM-PrivateGit.
+- **Nodo en la nube de GCP (semilla génesis):** La semilla canónica del concentrador orientado a internet. Aloja VM-MediaKit, VM-Orchestration, VM-PrivateGit.
+- **Laptop A (par local):** Configura WireGuard como par del concentrador de GCP. Aloja VM-Totebox-1.
+- **Laptop B (concentrador LAN local):** Actúa como concentrador WireGuard para la red local, un rol distinto al de Laptop A.
+
+Los nodos locales adicionales se unen a una malla ya sembrada mediante una ceremonia de emparejamiento por código corto (CPace PAKE + confirmación SAS).
 
 VM-Infrastructure es una flota de hosts con confianza en malla, no un planificador de recursos en clúster. Cada nodo se aprovisiona de forma independiente. Las decisiones de ubicación — qué VM se ejecuta en qué nodo — son política del operador. La malla WireGuard proporciona la vinculación nombre-a-endpoint.
 
@@ -82,7 +82,6 @@ Un servicio pertenece a la VM cuyo espacio de nombres `os-*` posee el ciclo de v
 Derivaciones de esta regla:
 - `service-fs` (libro mayor WORM) pertenece a VM-Totebox. Es el sustrato de almacenamiento del Totebox.
 - `app-orchestration-bim` pertenece a VM-Orchestration. Su nombre declara su clase.
-- `service-proofreader` pertenece a VM-MediaKit. Sus clientes residen en MediaKit.
 - WireGuard y la ceremonia de emparejamiento pertenecen a VM-Infrastructure. Son preocupaciones del tejido.
 
 Si un servicio requiere co-ubicación de loopback con un servicio en una VM diferente, eso es una señal de diseño. La frontera PPN es donde los servicios de diferentes tipos se comunican.
@@ -91,7 +90,7 @@ Si un servicio requiere co-ubicación de loopback con un servicio en una VM dife
 
 Los tipos de VM se corresponden directamente con las formas en que clientes y miembros de la comunidad se relacionan con la plataforma.
 
-**Usuarios de la Red Privada PointSav** implementan VM-Infrastructure en su propio hardware: como mínimo un nodo físico (Laptop A) y el retransmisor en la nube GCP. El Protocolo Génesis inicia la malla desde un único nodo. No se requiere ninguna autoridad de certificación externa.
+**Usuarios de la Red Privada PointSav** implementan VM-Infrastructure en su propio hardware: como mínimo un nodo local y el nodo semilla génesis de GCP. El Protocolo Génesis inicia la malla desde un único nodo. No se requiere ninguna autoridad de certificación externa.
 
 **Usuarios de Totebox Orchestration** implementan VM-Totebox (bóveda de datos) y VM-Orchestration (vista de flota). Una sola instancia de VM-Totebox es suficiente para una pequeña empresa. Las organizaciones más grandes añaden VM-Orchestration para agregar a través de múltiples archivos.
 
