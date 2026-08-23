@@ -12,7 +12,7 @@ bcsc_class: public-disclosure-safe
 language: es
 language_protocol: TRANSLATE-ES
 paired_with: os-network-admin.md
-last_edited: 2026-05-30
+last_edited: 2026-08-22
 editor: editorial
 ---
 
@@ -59,7 +59,7 @@ Se planea una TUI completa controlada por teclado — con teclas de aprobación/
 `app-network-admin` es la interfaz del Terminal F8 que se ejecuta sobre `os-network-admin`. Proporciona dos superficies:
 
 - **Superficie de comandos HTTP** en el puerto 8085 — acepta la intención del operador en lenguaje natural, la enruta a través de `service-slm` para producir un comando autorizado y lo despacha a la malla
-- **Transmisión UDP a la malla** en el puerto 8090 — envía cargas útiles binarias firmadas de 16 bytes a las direcciones de pares PPN
+- **Transmisión UDP a la malla** en el puerto 9206 por defecto (`PPN_MESH_LISTEN_PORT` lo puede sobrescribir) — envía cargas útiles binarias firmadas a las direcciones de pares PPN. El puerto 8090 pertenece a un crate distinto, `system-udp`, que habla un protocolo de difusión diferente, basado en JSON, en su propio `MESH_PORT` — son dos mecanismos distintos, no dos nombres para el mismo.
 
 La división `os-` / `app-` sigue la convención de nomenclatura estándar Foundation/Aplicación: `os-network-admin` es el sustrato del SO; `app-network-admin` es la aplicación orientada al operador que se ejecuta sobre él.
 
