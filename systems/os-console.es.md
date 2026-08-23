@@ -12,7 +12,7 @@ audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
 language: es
-last_edited: 2026-07-31
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: os-console.md
 aliases: [console-os, os-console-architecture, os-console-platform, topic-os-console-architecture]
@@ -32,7 +32,7 @@ short_description: "os-console es la superficie de cara al operador de la plataf
 
 - `os-console` se distribuye hoy como una aplicación de terminal `ratatui`/`crossterm`, no la canalización de renderizado nativa de GPU o con aislamiento seL4 descrita en su hoja de ruta — esas son planificadas, no actuales. Reservar afirmaciones como "reforzado por el kernel" para ese estado futuro.
 - Los cartuchos se compilan directamente en el binario — no se cargan dinámicamente ni se lanzan como subprocesos. `app-console-keys` (el chasis) y `app-console-input` (F12) son los únicos cartuchos obligatorios; todo lo demás es opcional.
-- Según el registro de proyectos propio de la plataforma, 5 de 12 cartuchos posibles están `Active` hoy (bookkeeper, email, keys, slm, system); 3 están `Scaffold-coded` (content, input, people); los 4 restantes son marcadores de posición `Reserved-folder` (bim, help, mesh, minutebook — vault también está reservado).
+- El propio código de arranque de `os-console` registra 7 cartuchos hoy: personas, correo, contenido, búsqueda, slm, sistema y entrada (F12, obligatorio). Existen otros directorios `app-console-*` en disco pero sin ninguna implementación funcional detrás todavía — véase el mapa de teclas de función más abajo para saber cuáles.
 - Ambos modos (Directo y Agregado) utilizan el mismo binario; el agregador no requiere una Consola diferente.
 - Todos los puntos de acceso de servicio predeterminados se resuelven a direcciones localhost — el binario es operable sin archivo de configuración y no tiene dependencia fija de ninguna red externa.
 
@@ -76,31 +76,36 @@ Los cartuchos se registran al inicio mediante `chassis.register(Box<dyn Cartridg
 
 ## El mapa de teclas de función
 
-La consola presenta doce ranuras direccionables mediante teclas de función. F12 está fijada como El Ancla — la [[input-machine|Máquina de Entrada]] — y nunca se mueve. F12 es obligatorio según [[architecture-decisions|SYS-ADR-10]]: es la única superficie a través de la cual archivos externos sin procesar pueden entrar a un Totebox. Los archivos depositados en F12 tienen eliminados sus permisos de ejecución, se etiquetan contra el [[archetypes-and-chart-of-accounts|Plan de Cuentas]] del operador y se enrutan en consecuencia.
+La consola presenta doce ranuras direccionables mediante teclas de función. F12 está fijada como El Ancla — la [[input-machine|Máquina de Entrada]] — y nunca se mueve. F12 es obligatorio según [[architecture-decisions|SYS-ADR-10]]: es la única superficie a través de la cual archivos externos sin procesar pueden entrar a un Totebox. Los archivos enviados a través de F12 se leen una vez, se deduplican por hash de contenido, se etiquetan con una marca de enrutamiento aproximada y se reenvían a `service-fs` — véase [[input-machine|el artículo de la Máquina de Entrada]] para el mecanismo exacto.
 
-| Tecla F | Cartucho | Dominio | Estado del crate |
+Siete cartuchos están registrados hoy en el propio código de arranque de `os-console`; el resto son ranuras sin reclamar, sin implementación funcional detrás.
+
+| Tecla F | Cartucho | Dominio | Estado |
 |---|---|---|---|
-| F1 | `app-console-help` | Panel de ayuda | Reserved-folder |
-| F2 | `app-console-people` | Identidad y contactos — [[service-people|service-people]] | Scaffold-coded |
-| F3 | `app-console-email` | Comunicaciones — [[service-email|service-email]] | Active |
-| F4 | `app-console-content` | Editorial — corrección, redacción, verificación — [[service-content|service-content]] | Scaffold-coded |
-| F5 | `app-console-minutebook` | Gobernanza — actas, resoluciones | Reserved-folder |
-| F6 | `app-console-bookkeeper` | Libro mayor financiero | Active |
-| F7 | `app-console-bim` | Gestión de información de construcción | Reserved-folder |
-| F8 | `app-console-gis` | Información geográfica | Reserved-folder |
-| F9 | `app-console-slm` | Gestión de IA y mercado de adaptadores — Doorman / `service-slm` | Active |
-| F10 | `app-console-mesh` | Gestión de malla de red | Reserved-folder |
-| F11 | `app-console-system` | Estado de salud en vivo de los servicios `os-*` y estado de emparejamiento | Active |
-| F12 | `app-console-input` | El Ancla — Máquina de Entrada (SYS-ADR-10) | Scaffold-coded |
+| F1 | — | Panel de ayuda | Sin reclamar — `app-console-help` no tiene archivos fuente |
+| F2 | `app-console-people` | Identidad y contactos — [[service-people|service-people]] | Registrado |
+| F3 | `app-console-email` | Comunicaciones — [[service-email|service-email]] | Registrado |
+| F4 | `app-console-content` | Editorial — corrección, redacción, verificación — [[service-content|service-content]] | Registrado |
+| F5 | `app-console-search` | Búsqueda | Registrado |
+| F6 | — | Libro mayor financiero | Sin reclamar — `app-console-bookkeeper` son dos archivos HTML estáticos, sin implementación del trait `Cartridge`, no registrado |
+| F7 | — | Gestión de información de construcción | Sin reclamar — `app-console-bim` no tiene archivos fuente |
+| F8 | — | Información geográfica | Sin reclamar — no existe ningún crate con ese nombre en el monorepo |
+| F9 | `app-console-slm` | Gestión de IA y mercado de adaptadores — Doorman / `service-slm` | Registrado |
+| F10 | — | Gestión de malla de red | Sin reclamar — `app-console-mesh` no tiene archivos fuente |
+| F11 | `app-console-system` | Estado de salud en vivo de los servicios `os-*` y estado de emparejamiento | Registrado |
+| F12 | `app-console-input` | El Ancla — Máquina de Entrada (SYS-ADR-10) | Registrado |
 
-El estado del crate corresponde al registro de proyectos propio de la plataforma, verificado contra las afirmaciones de este mismo artículo — borradores anteriores de este contenido subestimaban el conjunto activo (nombrando solo 4 de los 5 cartuchos actualmente `Active`). `app-console-vault` (sin asignación de tecla F) también es `Reserved-folder`.
+El estado refleja las propias llamadas de registro de arranque de la consola, no la presencia del crate en disco — que un directorio exista bajo `app-console-*` no significa que esté conectado a la consola en ejecución. `app-console-vault`, `app-console-exchange` y `app-console-market` (sin asignación de tecla F) también están sin reclamar; `app-console-minutebook`, a la que antes se atribuía F5, tampoco tiene archivos fuente.
 
-### Cartuchos activos hoy
+### Cartuchos registrados hoy
 
+- **F2 — Personas (`app-console-people`).** Búsqueda de identidad y contactos contra `service-people`.
 - **F3 — Correo (`app-console-email`).** `EmailCartridge` se conecta a Exchange Web Services (EWS) a través del backend `service-email` y presenta tres vistas: una lista de bandeja de entrada (resúmenes de mensajes en hilo con recuentos de no leídos), una vista de lectura (cuerpo completo del mensaje con indicadores de adjuntos) y redactar/enviar (composición en texto plano con campos `Para:` y `Asunto:`). Se admite el modo sin gráficos (sin Kitty/Sixel) para terminales que carecen de soporte de protocolo gráfico.
-- **F6 — Bookkeeper (`app-console-bookkeeper`).** Patrón de plugin HTML (vista + cartucho); activado el 2026-04-22 como piloto de framework.
+- **F4 — Contenido (`app-console-content`).** Flujo editorial contra `service-content`.
+- **F5 — Búsqueda (`app-console-search`).** Búsqueda sobre el contenido indexado del Totebox conectado.
 - **F9 — SLM (`app-console-slm`).** `SlmCartridge` renderiza un panel de estado en vivo para la [[doorman-protocol|pasarela de inferencia local]], consultando el endpoint de estado de la pasarela cada 10 segundos y mostrando la disponibilidad de los niveles A/B/C y el estado del disyuntor de circuito, el número de entidades en el almacén de datos local, y la profundidad de la cola de corpus con el resumen de coste diario. El operador puede forzar una actualización manual con `R`.
 - **F11 — Sistema (`app-console-system`).** `SystemCartridge` proporciona el panel de operador para la gestión de sesiones Totebox. Su función principal en la fase actual es mostrar las aprobaciones de pairing pendientes — sesiones de preparación que esperan la firma del Command Session antes de que un commit sea promovido.
+- **F12 — Entrada (`app-console-input`).** El Ancla; véase [[input-machine|Máquina de Entrada]] para el mecanismo completo de ingesta.
 
 ## Negociación de capacidades del terminal
 

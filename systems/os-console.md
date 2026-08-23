@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-07-31
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: os-console.es.md
 aliases: [console-os, os-console-architecture, os-console-platform, topic-os-console-architecture]
@@ -31,7 +31,7 @@ short_description: "os-console is the human-facing surface of the PointSav platf
 
 - `os-console` ships today as a `ratatui`/`crossterm` terminal application, not the seL4-isolated or GPU-native rendering pipeline described in its roadmap — those are planned, not current. Reserve "kernel-enforced" and similar claims for that future state.
 - Cartridges are compiled directly into the binary — not loaded dynamically, not launched as subprocesses. `app-console-keys` (the chassis) and `app-console-input` (F12) are the only mandatory cartridges; everything else is optional.
-- Per the platform's own project registry, 5 of 12 possible cartridges are `Active` today (bookkeeper, email, keys, slm, system); 3 are `Scaffold-coded` (content, input, people); the remaining 4 are `Reserved-folder` placeholders (bim, help, mesh, minutebook — vault is also reserved).
+- `os-console`'s own startup code registers 7 cartridges today: people, email, content, search, slm, system, and input (F12, mandatory). Several other `app-console-*` directories exist on disk but have no working implementation behind them yet — see the F-key map below for which.
 - Both modes (Direct and Aggregate) use the same binary; the aggregator does not require a different Console.
 - All default service endpoints resolve to localhost addresses — the binary is operable without a configuration file and has no hard dependency on any external network.
 
@@ -75,31 +75,36 @@ Cartridges are registered at startup via `chassis.register(Box<dyn Cartridge>)`.
 
 ## The F-key map
 
-The console presents twelve addressable slots via F-keys. F12 is fixed as The Anchor — the [[input-machine|Input Machine]] — and is never moved. F12 is mandatory per [[architecture-decisions|SYS-ADR-10]]: it is the only surface through which raw external files can enter a Totebox. Files dropped into F12 have execution permissions stripped, are tagged against the operator's [[archetypes-and-chart-of-accounts|Chart of Accounts]], and are routed onward.
+The console presents twelve addressable slots via F-keys. F12 is fixed as The Anchor — the [[input-machine|Input Machine]] — and is never moved. F12 is mandatory per [[architecture-decisions|SYS-ADR-10]]: it is the only surface through which raw external files can enter a Totebox. Files submitted through F12 are read once, deduplicated by content hash, tagged with a coarse routing label, and forwarded to `service-fs` — see [[input-machine|the Input Machine article]] for the exact mechanism.
 
-| F-key | Cartridge | Domain | Crate state |
+Seven cartridges are registered in `os-console`'s own startup code today; the rest are unclaimed slots with no working implementation behind them.
+
+| F-key | Cartridge | Domain | State |
 |---|---|---|---|
-| F1 | `app-console-help` | Help overlay | Reserved-folder |
-| F2 | `app-console-people` | Identity and contacts — [[service-people|service-people]] | Scaffold-coded |
-| F3 | `app-console-email` | Communications — [[service-email|service-email]] | Active |
-| F4 | `app-console-content` | Editorial — proofread, draft, verify — [[service-content|service-content]] | Scaffold-coded |
-| F5 | `app-console-minutebook` | Governance — minutes, resolutions | Reserved-folder |
-| F6 | `app-console-bookkeeper` | Financial ledger | Active |
-| F7 | `app-console-bim` | Building information management | Reserved-folder |
-| F8 | `app-console-gis` | Geographic information | Reserved-folder |
-| F9 | `app-console-slm` | AI management and adapter marketplace — Doorman / `service-slm` | Active |
-| F10 | `app-console-mesh` | Network mesh management | Reserved-folder |
-| F11 | `app-console-system` | Live `os-*` service health and pairing status | Active |
-| F12 | `app-console-input` | The Anchor — Input Machine (SYS-ADR-10) | Scaffold-coded |
+| F1 | — | Help overlay | Unclaimed — `app-console-help` has no source files |
+| F2 | `app-console-people` | Identity and contacts — [[service-people|service-people]] | Registered |
+| F3 | `app-console-email` | Communications — [[service-email|service-email]] | Registered |
+| F4 | `app-console-content` | Editorial — proofread, draft, verify — [[service-content|service-content]] | Registered |
+| F5 | `app-console-search` | Search | Registered |
+| F6 | — | Financial ledger | Unclaimed — `app-console-bookkeeper` is two static HTML files, no `Cartridge` implementation, not registered |
+| F7 | — | Building information management | Unclaimed — `app-console-bim` has no source files |
+| F8 | — | Geographic information | Unclaimed — no crate of this name exists in the monorepo |
+| F9 | `app-console-slm` | AI management and adapter marketplace — Doorman / `service-slm` | Registered |
+| F10 | — | Network mesh management | Unclaimed — `app-console-mesh` has no source files |
+| F11 | `app-console-system` | Live `os-*` service health and pairing status | Registered |
+| F12 | `app-console-input` | The Anchor — Input Machine (SYS-ADR-10) | Registered |
 
-Crate state is per the platform's own project registry, cross-checked against this article's own claims — earlier drafts of this content understated the active set (naming only 4 of the 5 currently `Active` cartridges). `app-console-vault` (not F-key-mapped) is also `Reserved-folder`.
+State reflects the console's own startup registration calls, not the crate's presence on disk — a directory existing under `app-console-*` does not mean it is wired into the running console. `app-console-vault`, `app-console-exchange`, and `app-console-market` (not F-key-mapped) are also unclaimed; `app-console-minutebook`, once assumed to hold F5, has no source files either.
 
-### Active cartridges today
+### Registered cartridges today
 
+- **F2 — People (`app-console-people`).** Identity and contact lookups against `service-people`.
 - **F3 — Email (`app-console-email`).** `EmailCartridge` connects to Exchange Web Services (EWS) via the `service-email` backend and presents three views: an inbox list (threaded message summaries with unread counts), a read view (full message body with attachment indicators), and compose/send (plain-text composition with `To:` and `Subject:` fields). Plain mode (no Kitty/Sixel) is supported for terminals that lack graphics protocol support.
-- **F6 — Bookkeeper (`app-console-bookkeeper`).** HTML-plugin pattern (view + cartridge); activated 2026-04-22 as a framework pilot.
+- **F4 — Content (`app-console-content`).** Editorial workflow against `service-content`.
+- **F5 — Search (`app-console-search`).** Search across the connected Totebox's indexed content.
 - **F9 — SLM (`app-console-slm`).** `SlmCartridge` renders a live health dashboard for the [[doorman-protocol|local inference gateway]], polling the gateway health endpoint every 10 seconds and displaying Tier A/B/C availability and circuit-breaker state, entity count from the local data store, and corpus queue depth with daily cost summary. The operator can force a manual refresh with `R`.
 - **F11 — System (`app-console-system`).** `SystemCartridge` provides the operator panel for Totebox session management. Its primary function in the current phase is displaying pending-pair approvals — staging sessions awaiting Command Session sign-off before a commit is promoted.
+- **F12 — Input (`app-console-input`).** The Anchor; see [[input-machine|Input Machine]] for the full ingest mechanism.
 
 ## Terminal capability negotiation
 
