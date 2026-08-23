@@ -6,8 +6,8 @@ category: infrastructure
 index_group: network-and-telemetry
 type: topic
 content_type: topic
-quality: stub
-short_description: "The zero-state telemetry architecture: the V4 Intent Beacon collects behavioural and hardware signals without cookies or third-party analytics, via client-side compilation."
+quality: complete
+short_description: "Zero-state telemetry: a single unload beacon carrying URI and timestamp, paired server-side with the requester's IP and user agent, written unmasked to an append-only CSV ledger."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25
@@ -16,51 +16,17 @@ cites: []
 paired_with: sovereign-telemetry.es.md
 ---
 
-The zero-state telemetry architecture is the platform's approach to understanding user behaviour without accumulating persistent client state. It collects behavioural and hardware signals from edge clients using only native browser APIs — no cookies, no session identifiers, no third-party analytics aggregators — and transmits the compiled payload asynchronously at tab-close via the [[telemetry-architecture|four-tier routing path]]. The current implementation, the V4 Intent Beacon, is operationally independent of external analytics platforms by structure, not by policy, consistent with [[customer-hostability|customer-rooted data custody]].
+The zero-state telemetry architecture is the platform's approach to understanding site traffic without cookies, session identifiers, or a third-party analytics provider. A page sends one small beacon when the visitor leaves; the server captures it alongside the requester's IP address and writes an append-only ledger line. There is no client-side accumulation of state between visits — "zero-state" describes the client, not the server-side record.
 
-The V4 Intent Beacon enforces a strict no-cookie, no-session-ID posture. Data is compiled entirely on the client side using native browser APIs and transmitted asynchronously via `navigator.sendBeacon` on the `visibilitychange` event. No tracking pixels, session identifiers, or third-party analytics providers are involved. (Correction, 2026-08-02, verified against canonical `origin/main`: the deployed payload collects far less than described below — real `service-content/templates/pointsav-monolith.html` sends only `{uri, timestamp}` via `sendBeacon` on `unload`, not `visibilitychange`; the real server-side `TelemetryPayload` struct in `app-mediakit-telemetry` has exactly 3 fields — `uri`, `timestamp`, `user_agent` — none of the richer fields this article describes below (`viewport`, `timezone`, `device_memory`, `hardware_cores`, `dwell_seconds`, `scroll_depth`, `intent_clicks`) exist server-side. A "V4 Intent Beacon" with similar richer language does appear in an internal user-guide document, suggesting this article describes a target spec rather than an invented feature — but it is not what ships today. Flagged, not resolved.)
+## Payload
 
-## Payload structure
+On `unload`, the page sends `navigator.sendBeacon` a JSON body with two fields: `uri` (the page path) and `timestamp` (the client's clock, in milliseconds). No cookies, tracking pixels, or third-party analytics script are involved — the beacon is a single same-origin POST.
 
-The V4 Intent Beacon payload captures distinct signals, each drawn
-from a native browser API:
-
-| Field | Source | Notes |
-|---|---|---|
-| `user_agent` | `navigator.userAgent` | Device and browser identification |
-| `viewport` | `window.innerWidth` / `innerHeight` | Rendering geometry |
-| `timezone` | `Intl.DateTimeFormat().resolvedOptions().timeZone` | Regional mapping without IP geolocation |
-| `device_memory` | `navigator.deviceMemory` | Estimated device RAM range |
-| `hardware_cores` | `navigator.hardwareConcurrency` | CPU thread count |
-| `dwell_seconds` | DOM load to tab-close delta (milliseconds) | Time-on-page signal |
-| `scroll_depth` | Maximum vertical scroll percentage | Engagement depth |
-| `intent_clicks` | Array of interaction targets | High-value click events (e.g., Fleet Manifest links, contact initiations) |
-
-No field captures personally identifiable information. The
-`timezone` field provides regional resolution without requiring IP
-geolocation.
-
-## Graceful degradation
-
-The receiving Rust daemon (`telemetry-daemon`) uses `Option<T>`
-serialisation for all V4 parameters. This ensures backward
-compatibility with clients that have cached an older payload
-format. When a legacy payload arrives, the daemon ingests the
-available fields and writes `unknown` or `0` to the absent columns.
-The immutable ledger record is written in either case, maintaining
-alignment across all fleet deployments without requiring a
-coordinated client-side rollout.
-
-## Chronological synthesis
-
-The `telemetry-synthesizer` binary parses the CSV ledger and
-generates executive-grade Markdown reports partitioned into
-standard financial reporting windows: 1D, 1W, 30D, 60D, 90D,
-year-to-date, and inception-to-date.
+The server pairs that payload with two values it reads from the request itself: the requester's IP address (from a forwarding header, first entry if the header carries a chain) and the `User-Agent` string. All four values — IP, timestamp, URI, user agent — are appended as one line to a plaintext CSV ledger. **None of the four fields is masked or truncated.** See [[data-sovereignty-telemetry|the security-category article on this same daemon]] for the compliance implications of the unmasked IP specifically, already escalated separately — this article isn't re-raising that finding, just describing the same real payload from the infrastructure side.
 
 ## See also
 
-- [[telemetry-architecture]] — the four-tier routing path that delivers V4 Intent Beacon payloads to local processing
+- [[telemetry-architecture]] — how the beacon payload is routed and processed after it reaches the server
 - [[ontological-governance|Ontological Governance]] — the governance layer that this telemetry substrate serves
 - [[verification-surveyor|Verification Surveyor]] — the verification pattern that this telemetry architecture supports
 - [[customer-hostability|Customer Hostability]] — the customer-rooted data custody principle this architecture implements

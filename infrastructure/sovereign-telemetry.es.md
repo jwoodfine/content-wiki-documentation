@@ -2,12 +2,12 @@
 schema: foundry-doc-v1
 title: "Arquitectura de telemetría de estado cero"
 slug: sovereign-telemetry
-short_description: "La arquitectura de telemetría de estado cero describe cómo el Faro de Intención V4 de la plataforma recopila señales de comportamiento y hardware de clientes perimetrales sin cookies, identificadores de sesión o análisis de terceros, utilizando compilación del lado del cliente y transmisión de balizas asincrónicas."
+short_description: "Telemetría de estado cero: una única baliza al cierre de página con URI y marca temporal, emparejada del lado del servidor con la IP y el user agent del solicitante, escrita sin enmascarar en un registro CSV de solo anexado."
 category: infrastructure
 index_group: network-and-telemetry
 type: topic
 content_type: topic
-quality: stub
+quality: complete
 status: active
 audience: public
 bcsc_class: public-disclosure-safe
@@ -18,36 +18,18 @@ paired_with: sovereign-telemetry.md
 cites: []
 ---
 
+La arquitectura de telemetría de estado cero es el enfoque de la plataforma para entender el tráfico del sitio sin cookies, identificadores de sesión ni un proveedor de análisis de terceros. Una página envía una pequeña baliza cuando el visitante se va; el servidor la captura junto con la dirección IP del solicitante y escribe una línea en un registro de solo anexado. No hay acumulación de estado del lado del cliente entre visitas — "estado cero" describe al cliente, no el registro del lado del servidor.
 
-La arquitectura de telemetría de estado cero recopila señales de comportamiento y hardware de los clientes perimetrales sin cookies, identificadores de sesión ni agregadores de análisis de terceros, mediante la [[telemetry-architecture|ruta de enrutamiento de cuatro niveles]] de la plataforma. Utiliza la compilación del lado del cliente y la transmisión de balizas asíncrona en el cierre de la pestaña, coherente con los principios de [[customer-hostability|custodia de datos del cliente]].
+## Carga útil
 
-## Principio de diseño
+En el evento `unload`, la página envía mediante `navigator.sendBeacon` un cuerpo JSON con dos campos: `uri` (la ruta de la página) y `timestamp` (el reloj del cliente, en milisegundos). No intervienen cookies, píxeles de seguimiento ni scripts de análisis de terceros — la baliza es un único POST del mismo origen.
 
-La implementación actual, denominada internamente V4 Intent Beacon, aplica una postura estricta de sin cookies y sin ID de sesión. Los datos se compilan completamente del lado del cliente usando APIs nativas del navegador y se transmiten de forma asíncrona mediante `navigator.sendBeacon` en el evento `visibilitychange`. No intervienen píxeles de seguimiento, identificadores de sesión ni proveedores de análisis de terceros.
-
-## Señales capturadas
-
-La carga del V4 Intent Beacon captura señales distintas, cada una extraída de una API nativa del navegador:
-
-- `user_agent` — identificación de dispositivo y navegador
-- `viewport` — geometría de renderización
-- `timezone` — mapeo regional sin geolocalización de IP
-- `device_memory` — rango estimado de RAM del dispositivo
-- `hardware_cores` — número de hilos de CPU
-- `dwell_seconds` — tiempo en la página
-- `scroll_depth` — profundidad máxima de desplazamiento vertical
-- `intent_clicks` — eventos de clic de alto valor
-
-Ningún campo captura información personalmente identificable. El campo `timezone` proporciona resolución regional sin requerir geolocalización de IP.
-
-## Independencia operativa
-
-La arquitectura es operacionalmente independiente de plataformas de análisis externas. La señal de telemetría existe en la infraestructura del cliente, no en sistemas de terceros.
+El servidor empareja esa carga con dos valores que lee de la propia solicitud: la dirección IP del solicitante (de una cabecera de reenvío, la primera entrada si la cabecera contiene una cadena) y la cadena `User-Agent`. Los cuatro valores — IP, marca temporal, URI y user agent — se anexan como una línea a un registro CSV en texto plano. **Ninguno de los cuatro campos está enmascarado o truncado.** Véase [[data-sovereignty-telemetry|el artículo de la categoría de seguridad sobre este mismo demonio]] para las implicaciones de cumplimiento de la IP sin enmascarar específicamente, ya escaladas por separado — este artículo no vuelve a plantear ese hallazgo, solo describe la misma carga real desde el lado de la infraestructura.
 
 ## Véase también
 
-- [[telemetry-architecture]] — la ruta de enrutamiento de cuatro niveles que transporta las señales de balizas
+- [[telemetry-architecture]] — cómo se enruta y procesa la carga de la baliza una vez que llega al servidor
 - [[ontological-governance]] — gobernanza que rige el uso de señales de comportamiento
-- [[verification-surveyor]] — el servicio que consume las señales del Intent Beacon
+- [[verification-surveyor]] — el servicio que consume las señales de telemetría
 - [[message-courier]] — enrutamiento de mensajes dentro de la plataforma
 - [[customer-hostability]] — principios de custodia de datos del cliente que informan este diseño
