@@ -11,16 +11,16 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-03
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: os-orchestration.md
 short_description: "os-orchestration es el sistema operativo de nivel comercial que permite a un único operador ver, consultar y comandar muchos archivos Totebox a la vez — el Agregador de Flota para portafolios multi-entidad y despliegues empresariales."
 cites: []
 ---
 
-**Corrección, 2026-08-03 (paridad con la versión en inglés).** Verificado directamente contra `origin/main` del monorepo: `os-orchestration/` existe como crate registrado (`Cargo.toml` propio, `license = "FSL-1.1-ALv2"`), pero su `src/lib.rs` es un scaffold de 4 líneas ("SYSTEM EVENT: os-orchestration scaffold verified.") — sin lógica de agregación. La afirmación del "Protocolo PointSav (PSP)" se confirmó fabricada — cero huella de código en `origin/main` — y se elimina más abajo; la descripción del protocolo de agregación ahora se presenta como previsto/planeado, sin inventar un nombre de protocolo. El resto del artículo también se ha reformulado en este pase con lenguaje previsto/planeado — la funcionalidad descrita aún no está construida. La afirmación de licencia "Propietario" en la tabla se mantiene como hecho actual confirmado, ya que la clasificación del archivo `LICENSE` aplica hoy aunque el código de agregación todavía no exista.
+`os-orchestration` existe hoy como un crate registrado pero vacío — todo su código fuente es una función de estado de marcador de posición, sin ninguna lógica de agregación detrás. Todo lo que describe este artículo es el diseño previsto, no una función ya construida.
 
-`os-orchestration` está previsto como el sistema operativo de nivel comercial que permitiría a un único operador ver, consultar y comandar muchos [[totebox-archive|archivos Totebox]] a la vez. Mientras [[console-os|`os-console`]] se conecta a un único [[totebox-os|`os-totebox`]], `os-orchestration` está pensado como el concentrador entre la Consola de un operador y una flota de Toteboxes — lo que un ejecutivo vería para conocer la posición de cada propiedad en un portafolio, cada entidad en una sociedad holding o cada proyecto en un pipeline de desarrollo, en una respuesta única y unificada a "¿cuál es el estado de todo el patrimonio ahora mismo?" Este artículo cubre el diseño previsto: qué está planeado que haga `os-orchestration`, qué está diseñado para no hacer deliberadamente, cómo se prevé que funcione la agregación, las funciones comerciales planeadas y cuándo se desplegaría. **Nada de esto está construido todavía** — véase la corrección anterior.
+`os-orchestration` está previsto como el sistema operativo de nivel comercial que permitiría a un único operador ver, consultar y comandar muchos [[totebox-archive|archivos Totebox]] a la vez. Mientras [[console-os|`os-console`]] se conecta a un único [[totebox-os|`os-totebox`]], `os-orchestration` está pensado como el concentrador entre la Consola de un operador y una flota de Toteboxes — lo que un ejecutivo vería para conocer la posición de cada propiedad en un portafolio, cada entidad en una sociedad holding o cada proyecto en un pipeline de desarrollo, en una respuesta única y unificada a "¿cuál es el estado de todo el patrimonio ahora mismo?" Este artículo cubre el diseño previsto: qué está planeado que haga `os-orchestration`, qué está diseñado para no hacer deliberadamente, cómo se prevé que funcione la agregación, las funciones comerciales planeadas y cuándo se desplegaría. **Nada de esto está construido todavía.**
 
 ## Qué está diseñado para no hacer
 
@@ -34,7 +34,7 @@ Se prevé que este límite sea estructuralmente importante: incluso si `os-orche
 |---|---|---|
 | `os-console` | Terminal de cara al operador | Código fuente AGPL-3.0-or-later; BETA gratuita actualmente |
 | `os-totebox` | Archivo de datos por entidad | FSL-1.1-ALv2, código disponible desde ya; se convierte a Apache-2.0 tras 2 años; BETA gratuita actualmente |
-| `os-orchestration` | Agregador de flota (previsto) | Propietario — confirmado hoy vía el archivo `LICENSE` del monorepo, por delante de la propia lógica de agregación |
+| `os-orchestration` | Agregador de flota (previsto) | Propietario según la propia tabla de directorios del archivo `LICENSE` del monorepo — aunque la cabecera SPDX del propio `Cargo.toml` del crate indica actualmente FSL-1.1-ALv2, una discrepancia sin resolver entre ambas declaraciones |
 
 Se prevé que la línea comercial se trace en el agregador. La Consola y el Totebox están previstos como libres y libremente transferibles. El agregador de Orquestación está planeado como el producto de pago — un operador individual que gestiona una sola entidad nunca lo necesitaría.
 

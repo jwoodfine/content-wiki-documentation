@@ -11,14 +11,14 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-03
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: os-orchestration.es.md
 short_description: "os-orchestration is the commercial-tier OS letting a single operator see, query, and command many Totebox archives at once — the Fleet Aggregator for enterprise deployments."
 cites: []
 ---
 
-**Correction revised, 2026-08-02.** An earlier pass said "no crate named `os-orchestration` exists in the monorepo today" — checked against this archive's stale local branch. On canonical (`origin/main`), `os-orchestration/` is a real, registered crate (own `Cargo.toml`, `license = "FSL-1.1-ALv2"`), but its `src/lib.rs` is a 4-line placeholder ("SYSTEM EVENT: os-orchestration scaffold verified.") — no aggregation logic. The rename from `os-interface` is confirmed in-progress on canonical too (root `LICENSE`: "os-interface/ — interface module (renames to os-orchestration)"). The "PSP" (PointSav Protocol) claim was confirmed fabricated — re-checked directly against `origin/main`, zero code footprint anywhere — and has been removed below (2026-08-03); the aggregation-protocol description is now hedged as planned/intended with no invented protocol name. Net effect: the substantive finding is unchanged (this article's described functionality isn't built) but "the crate doesn't exist" was the wrong framing — it exists as an empty scaffold, same as many other placeholder crates found this session. The rest of the article has also been re-hedged to planned/intended language throughout (2026-08-03) — the "Proprietary" licence claim in the table below is kept as confirmed current fact, since the `LICENSE` file classification applies today even though the aggregation code does not yet exist.
+`os-orchestration` exists today as a registered, empty scaffold crate — its entire source is a placeholder status function, with no aggregation logic behind it. Everything this article describes is the intended design, not a shipped feature.
 
 `os-orchestration` is planned as the commercial-tier operating system intended to let a single operator see, query, and command many [[totebox-archive|Totebox archives]] at once. Where [[console-os|`os-console`]] connects to one [[totebox-os|`os-totebox`]], `os-orchestration` is intended as the hub between an operator's Console and a fleet of Toteboxes — what an executive would view to see the position of every property in a portfolio, every entity in a holding company, or every project in a development pipeline, in a single unified answer to "what is the state of the entire estate, right now?" This article covers the intended design: what `os-orchestration` is planned to do, what it is designed to deliberately not do, how aggregation is intended to work, the commercial features planned for it, and when it would be deployed. **None of this is built yet** — see the correction above.
 
@@ -34,7 +34,7 @@ This boundary is intended to be structurally important: even if `os-orchestratio
 |---|---|---|
 | `os-console` | Operator-facing terminal | AGPL-3.0-or-later source; free BETA today |
 | `os-totebox` | Data archive per entity | FSL-1.1-ALv2 source-available now; converts to Apache-2.0 after 2 years; free BETA today |
-| `os-orchestration` | Fleet aggregator (planned) | Proprietary — confirmed via the monorepo `LICENSE` file today, ahead of the aggregation logic itself |
+| `os-orchestration` | Fleet aggregator (planned) | Proprietary per the monorepo `LICENSE` file's own directory table — though the crate's own `Cargo.toml` SPDX header currently states FSL-1.1-ALv2, an unresolved mismatch between the two declarations |
 
 The commercial line is intended to be drawn at the aggregator. The Console and the Totebox are intended to be free and freely transferable. The Orchestration aggregator is planned as the paid product — an individual operator managing one entity would never need it.
 
