@@ -96,7 +96,8 @@ en el anfitrión GCP (Ubuntu 24.04, glibc 2.39) dependen de los símbolos `GLIBC
 solo proporciona glibc 2.36 y no puede ejecutar los binarios.
 
 Lo que está en funcionamiento actualmente:
-- Ubuntu 24.04 arrancado mediante `provision-vm-mediakit.sh` bajo QEMU/TCG
+- Ubuntu 24.04 arrancado bajo QEMU/TCG (este host no tiene KVM por hardware; TCG es
+  adecuado para las pruebas de la Fase 1)
 - 6 GiB de RAM, disco QCOW2 de 20 GB
 - Red NAT de modo usuario: reenvíos de puerto anfitrión `1xxxx → :xxxx` por cada servicio
 - Dispositivo `virtio-balloon`: ajuste dinámico de RAM sin reinicio del invitado

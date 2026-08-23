@@ -95,8 +95,8 @@ GCP host (Ubuntu 24.04, glibc 2.39) link against `GLIBC_2.39` symbols. Debian 12
 only glibc 2.36 and would fail to execute the binaries at load time.
 
 What is running today:
-- Ubuntu 24.04 booted via `provision-vm-mediakit.sh` under QEMU/TCG (GCP workspace has no
-  hardware KVM; TCG is adequate for Phase 1 testing)
+- Ubuntu 24.04 booted under QEMU/TCG (this host has no hardware KVM; TCG is adequate
+  for Phase 1 testing)
 - 6 GiB RAM (`-m 6144`), 20 GB QCOW2 disk
 - User-mode NAT networking: host port-forwards `1xxxx → :xxxx` for each service
 - `virtio-balloon` device: dynamic RAM adjustment without guest reboot
