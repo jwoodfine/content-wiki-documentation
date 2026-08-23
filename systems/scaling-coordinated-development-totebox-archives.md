@@ -23,7 +23,7 @@ The vendor's own multi-archive development workflow is designed to accommodate g
 When a small number of archives share a central coordinator, the coordinator's overhead is manageable — a human operator can relay inter-archive messages, review publication requests one by one, and maintain the queue manually. As the archive count grows past ten or twenty, three bottlenecks emerge:
 
 1. **Publication serialization.** Each archive that wants its code in canonical history must wait for the coordinator to run the publication sequence. If the coordinator is occupied with another archive — or simply not running — the queue grows.
-2. **Message relay latency.** Archives communicate through a file-based message system. Without automation, messages sit in an archive's outgoing queue until a coordinator operator manually delivers them to the destination. With 21 archives, this becomes a recurring manual task.
+2. **Message relay latency.** Archives communicate through a file-based message system. Without automation, messages sit in an archive's outgoing queue until a coordinator operator manually delivers them to the destination. Past a couple dozen archives, this becomes a recurring manual task.
 3. **Operator cognitive load.** The coordinator operator must track the state of every archive simultaneously: pending publication requests, outstanding messages, blocked work items, and operational alerts. At scale, this is unsustainable.
 
 ## The Decentralized Publication Path
@@ -58,7 +58,7 @@ The transition from shared-user to per-operator isolation is incremental. The fi
 
 ## Trajectory
 
-The current installation operates 21 archives in a shared-user environment on a single host. It is a working prototype of the target architecture — not, as an earlier draft of this article implied, a deployment of the `app-orchestration-command` product. `app-orchestration-command` is real and substantial on canonical, but its actual function is archive pairing, fleet visibility, personnel/permission tiers, and GPU brokering (see [[pairing-as-permission]] and [[personnel-permissions]]) — it holds no role in canonical publication. The coordination and publication mechanics this article describes belong to the vendor's own promotion tooling, detailed in [[five-stage-supply-chain]].
+The current installation operates a couple dozen archives in a shared-user environment on a single host. It is a working prototype of the target architecture — not, as an earlier draft of this article implied, a deployment of the `app-orchestration-command` product. `app-orchestration-command` is real and substantial on canonical, but its actual function is archive pairing, fleet visibility, personnel/permission tiers, and GPU brokering (see [[pairing-as-permission]] and [[personnel-permissions]]) — it holds no role in canonical publication. The coordination and publication mechanics this article describes belong to the vendor's own promotion tooling, detailed in [[five-stage-supply-chain]].
 
 The planned production topology maps each archive to a dedicated `os-totebox` instance — a single-purpose compute node running the archive's services, with its own operator user, commit identity, and network boundary.
 
