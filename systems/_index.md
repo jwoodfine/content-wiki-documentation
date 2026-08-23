@@ -33,7 +33,7 @@ The core record-keeping systems at the foundation of every deployment — where 
 - [[totebox-os]] — The archive layer: one isolated, kernel-level vault per entity, storing records as inert flat files with no delete operation, exposed only through the Diode on command from os-console or os-orchestration.
 - [[totebox-orchestration]] — The coordination layer that manages multiple Totebox data-archive containers, keeping software execution engines isolated from passive corporate ledgers across deployments.
 - [[vm-architecture]] — The five named VM types (Totebox, MediaKit, Orchestration, PrivateGit, Infrastructure) and how each maps exactly to one `os-*` source binary.
-- [[scaling-coordinated-development-totebox-archives]] — The coordination bottlenecks that appear past twenty archives, and the path toward per-archive process isolation.
+- [[scaling-coordinated-development-totebox-archives]] — The coordination bottlenecks that appear past a couple dozen archives, and the path toward per-archive process isolation.
 - [[os-totebox-sovereign-archive]] — os-totebox's intended end-state design as a Type I bare-metal seL4 OS: the WORM data vault enforced by a compiled capability graph rather than a policy an administrator could override.
 - [[os-totebox-service-pd-model]] — How os-totebox is designed to map its Rust service binaries onto seven seL4 Protection Domains, with capability confinement guaranteeing a compromised service-slm PD can never reach the storage-holding service-fs PD.
 <!-- END AUTO-GENERATED -->
@@ -46,7 +46,7 @@ The systems through which a human operator interacts with the platform — keybo
 - [[os-console]] — The human-facing surface: a Command Ledger and single Rust binary that connects to a Totebox and renders its state through a keyboard-driven, cartridge-based, F-key-structured interface.
 - [[os-console-totebox-browser]] — The browser-analogy explainer for os-console's design philosophy: cartridges as tabs, machine pairing as the certificate store.
 - [[input-machine]] — The mandatory document ingest gate in os-console, bound permanently to F12 and backed by `service-input` on the Totebox Archive.
-- [[os-workplace]] — The free desktop operating system: a native-Rust sovereign desktop that pairs with a Totebox archive and serves as the adoption gateway to the commercial product line.
+- [[os-workplace]] — The free desktop tier: a growing family of independent Rust and Tauri apps that pair with a Totebox archive and serve as the adoption gateway to the commercial product line.
 - [[os-orchestration]] — The Fleet Aggregator for multi-entity portfolios: one operator sees, queries, and commands many Totebox archives at once.
 <!-- END AUTO-GENERATED -->
 
@@ -66,7 +66,7 @@ The systems that manage the network fabric, the bootstrap path, and the underlyi
 The public-facing OS that hosts the company's marketing surface, internal wiki, and compliance newsroom on a single sovereign appliance.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: publishing-and-media -->
-- [[os-mediakit]] — The guest OS image for the vm-mediakit tier, isolating knowledge wikis, marketing sites, the proofreader, and BIM orchestration from the vault and orchestration tiers. Ubuntu 24.04 today; a seL4 Microkit image is the planned long-term form.
+- [[os-mediakit]] — The guest OS image for the vm-mediakit tier, isolating knowledge wikis, marketing sites, and compliance/distribution feeds from the vault and orchestration tiers. Ubuntu 24.04 today; per-instance seL4 Microkit VMs are the planned long-term form.
 <!-- END AUTO-GENERATED -->
 
 ## See also

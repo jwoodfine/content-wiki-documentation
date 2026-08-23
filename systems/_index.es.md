@@ -34,7 +34,7 @@ Los sistemas centrales de mantenimiento de registros en la base de cada desplieg
 - [[totebox-os]] — La capa de archivo: un vault aislado a nivel de kernel por entidad, que almacena registros como archivos planos inertes sin operación de eliminación, expuestos únicamente a través del Diode bajo comando de os-console u os-orchestration.
 - [[totebox-orchestration|Orquestación Totebox]] — La capa de coordinación que gestiona múltiples contenedores de archivo de datos Totebox, manteniendo los motores de ejecución de software aislados de los libros corporativos pasivos a través de los despliegues.
 - [[vm-architecture|Arquitectura VM-*]] — Los cinco tipos de VM nombrados (Totebox, MediaKit, Orchestration, PrivateGit, Infrastructure) y cómo cada uno corresponde exactamente a un binario fuente `os-*`.
-- [[scaling-coordinated-development-totebox-archives|Escalar el desarrollo coordinado en múltiples Totebox Archives]] — Los cuellos de botella de coordinación que aparecen más allá de veinte archivos, y la trayectoria hacia el aislamiento de procesos por archivo.
+- [[scaling-coordinated-development-totebox-archives|Escalar el desarrollo coordinado en múltiples Totebox Archives]] — Los cuellos de botella de coordinación que aparecen pasadas un par de docenas de archivos, y la trayectoria hacia el aislamiento de procesos por archivo.
 - [[os-totebox-sovereign-archive|os-totebox: la bóveda soberana de datos WORM]] — El diseño final previsto de os-totebox como sistema operativo de Tipo I sobre seL4: la bóveda de datos WORM impuesta por un grafo de capacidades compilado, no por una política que un administrador pudiera anular.
 - [[os-totebox-service-pd-model|Cómo los service-* se convierten en dominios de protección seL4]] — Cómo os-totebox está diseñado para asignar sus binarios de servicio Rust a siete Dominios de Protección seL4, con un confinamiento de capacidades que garantiza que un PD de service-slm comprometido nunca pueda alcanzar el PD de service-fs que retiene el almacenamiento.
 <!-- END AUTO-GENERATED -->
@@ -47,7 +47,7 @@ Los sistemas a través de los cuales un operador humano interactúa con la plata
 - [[os-console]] — La superficie orientada al ser humano: un Libro Mayor de Comandos y binario Rust único que se conecta a un Totebox y renderiza su estado a través de una interfaz controlada por teclado, basada en cartuchos y estructurada por teclas F.
 - [[os-console-totebox-browser]] — El explicador de la analogía del navegador para la filosofía de diseño de os-console: cartuchos como pestañas, emparejamiento de máquinas como el almacén de certificados.
 - [[input-machine|Máquina de entrada]] — La puerta de ingesta obligatoria de documentos en os-console, vinculada permanentemente a F12 y respaldada por `service-input` en el Archivo Totebox.
-- [[os-workplace]] — El sistema operativo de escritorio gratuito: un escritorio soberano nativo en Rust que se empareja con un archivo Totebox y sirve como puerta de entrada de adopción a la línea de producto comercial.
+- [[os-workplace]] — El nivel de escritorio gratuito: una familia creciente de aplicaciones independientes en Rust y Tauri que se emparejan con un archivo Totebox y sirven como puerta de entrada de adopción a la línea de producto comercial.
 - [[os-orchestration]] — El Agregador de Flota para carteras de múltiples entidades: un operador ve, consulta y comanda muchos archivos Totebox a la vez.
 <!-- END AUTO-GENERATED -->
 
