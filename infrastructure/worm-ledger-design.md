@@ -37,7 +37,7 @@ paired_with: worm-ledger-design.es.md
 
 A regulated firm's records are only as trustworthy as the weakest hand that can reach them. An administrator flag, a software upgrade, a backup restore — any of these can silently alter a historical record. A policy that promises they will not is not the same as a structure that does not let them.
 
-PointSav's [[three-ring-architecture|Ring 1 services]] persist every boundary record — filesystem, people data, email, structured input — to a Write-Once-Read-Many ledger via [[service-fs-architecture|the service-fs substrate]]. The on-disk format is a per-tenant append log; each record carries a SHA-256 digest of its payload. The ledger is **designed to adopt** the C2SP tlog-tiles transparency-log format and per-record hash-chaining; the current `service-fs` implementation persists records as a newline-delimited JSON log (`log.jsonl`) with a per-payload digest, and the tile/hash-chain format is planned.
+PointSav's [[three-ring-architecture|Ring 1 services]] persist every boundary record — filesystem, people data, email, structured input — to a Write-Once-Read-Many ledger via [[service-fs-architecture|the service-fs substrate]]. Each record's hash chains into the one before it, so altering any past entry changes every hash after it — a property that already holds today, on top of a flat per-tenant append log (`log.jsonl`). The ledger is **designed to adopt** the C2SP tlog-tiles transparency-log format as its on-disk layout; that tile segmentation is the one piece still ahead of the current implementation.
 
 The ledger is **designed as four layers** — tile storage, a WORM API, a wire protocol, and recurring anchoring of signed checkpoints to a public transparency log. Immutability is a property of the storage substrate, not of operational policy.
 
@@ -49,11 +49,11 @@ The ledger is built in four layers.
 
 **Layer 1 — tile storage.** The storage architecture **specifies** the C2SP tlog-tiles specification [^1] — the same tile format used internally by Trillian-Tessera and externally by Sigstore Rekor v2 [^2] — as the target storage primitive. The current `service-fs` implementation persists a per-tenant JSON append log pending the tile backend. When the tile format is implemented, every tile the platform writes will be verifiable by any tool in the transparency-log ecosystem, with no format conversion.
 
-**Layer 2 — WORM ledger API.** The design specifies a five-operation ledger trait: open a ledger for a tenant, append a payload and receive a cursor, read entries since a cursor, produce a signed checkpoint [^3], and verify inclusion and consistency proofs. The shipping `service-fs` currently implements append (`POST /v1/append`) and a health endpoint only; the checkpoint, read-since, and proof operations, and the `PosixTileLedger` production backend, are planned and not yet implemented.
+**Layer 2 — WORM ledger API.** The ledger trait's five operations — open a ledger for a tenant, append a payload and receive a cursor, read entries since a cursor, produce a signed checkpoint [^3], and verify inclusion and consistency proofs — are all implemented today. The shipping `service-fs` exposes `POST /v1/append`, `GET /v1/entries`, `GET /v1/checkpoint`, `GET /v1/contract`, `GET /healthz`, and `GET /readyz` over HTTP, plus an MCP endpoint. The production backend, `PosixTileLedger`, writes to a flat per-tenant `log.jsonl` file today — real tile segmentation, the eventual C2SP-format on-disk layout, is what's still pending.
 
 **Layer 3 — wire protocol.** An HTTP service layer exposes the ledger API over the network, with the MCP server protocol — the 2026 standard for tool-bearing AI services — layered on top. The same wire shape runs on a standard Linux daemon and on a seL4 Microkit unikernel; the execution envelope changes, the protocol does not.
 
-**Layer 4 — anchoring.** Signed checkpoints are **intended to be** published on a recurring basis (target: monthly) to a public transparency log such as Sigstore Rekor v2 [^2], providing an external and publicly verifiable record of the ledger's state at a point in time. No anchoring runs today; the checkpoint operation itself is not yet implemented. When anchoring is in place, a third-party auditor will be able to confirm a record's integrity without involving the platform operator.
+**Layer 4 — anchoring.** Signed checkpoints are published monthly to Sigstore Rekor [^2] by a dedicated anchor-emitter client, which fetches the current checkpoint, submits it as a hashedRekord entry, and appends the resulting Rekor entry back to the ledger — a systemd timer drives the monthly cadence. This runs today; a third-party auditor can already confirm a record's integrity against the public log without involving the platform operator.
 
 ## How immutability is enforced structurally
 
@@ -69,7 +69,7 @@ An auditor inspecting one tenant's ledger therefore need not trust that the vend
 
 ## Compliance mapping
 
-**SEC Rule 17a-4(f)** requires records to be preserved in a non-rewriteable, non-erasable format with verifiable timestamps and an independent third-party verification capability. The tile format (planned) satisfies the format requirement structurally. Each signed checkpoint carries a timestamp under the per-tenant signing key. Monthly publication to the Rekor transparency log is **intended to** supply third-party verification that does not need the operator's cooperation; this anchoring operation is planned but not yet implemented.
+**SEC Rule 17a-4(f)** requires records to be preserved in a non-rewriteable, non-erasable format with verifiable timestamps and an independent third-party verification capability. The current flat-file format satisfies the non-rewriteable property structurally today, ahead of the tile format's own eventual segmentation. Each signed checkpoint carries a timestamp under the per-tenant signing key. Monthly publication to the Rekor transparency log runs today, supplying third-party verification that does not need the operator's cooperation.
 
 **EU qualified preservation under eIDAS** requires long-term preservation independent of future technological change, integrity preservation, and authentication of the originator. The ledger carries an explicit hash-algorithm field in each checkpoint, so migrating to a different hash function is a per-tenant decision that does not require rewriting historical tiles. The tile format is an open specification — RFC 9162 [^4] and C2SP — readable with standard tools that remain available regardless of future commercial software. Integrity and originator authentication use the same mechanisms as the SEC mapping.
 
@@ -83,7 +83,7 @@ This property — customer key sovereignty with optional vendor redundancy — i
 
 ## Implementation state
 
-The `service-fs` Ring 1 service implements the append and health operations of the WORM ledger substrate in production: `POST /v1/append` and `GET /healthz`. Each appended record carries a per-payload SHA-256 digest. The tile-format storage backend (`PosixTileLedger`), the `/v1/checkpoint` endpoint, the `read_since` cursor operation, and the inclusion and consistency proof endpoints are planned and not yet implemented. Monthly Rekor anchoring of production checkpoints is planned as a formal recurring operation; the checkpoint format is already designed to be compatible.
+The `service-fs` Ring 1 service implements the full WORM ledger substrate in production: append, entries, checkpoint, contract, health, and readiness over HTTP, plus checkpoint signing, inclusion proofs, and consistency proofs at the ledger-trait level. Each appended record carries a per-payload SHA-256 digest, chained into the running ledger hash. Monthly Rekor anchoring of production checkpoints runs today via a dedicated anchor-emitter client on a systemd timer. What remains ahead of the design's own stated target is the storage format itself: `PosixTileLedger` currently persists to a flat per-tenant `log.jsonl` file, not yet segmented into genuine C2SP tiles.
 
 ## See also
 
