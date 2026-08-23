@@ -30,7 +30,7 @@ paired_with: _index.md
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: platform-orientation -->
 - [[getting-started|Primeros pasos con la plataforma PointSav]] — qué es la plataforma, para quién es y por dónde empezar
 - [[glossary-documentation|Enciclopedia PointSav — glosario y léxico]] — la fuente canónica de definiciones término por término
-- [[wiki-structure|Cómo está organizada esta base de conocimiento]] — un mapa de las trece áreas del wiki de documentación
+- [[wiki-structure|Cómo está organizada esta base de conocimiento]] — un mapa de las quince áreas del wiki de documentación
 - [[guide-catalog|Índice de guías para desarrolladores]] — todas las guías prácticas, agrupadas por área de interés
 - [[hardware-reference|Referencia de hardware]] — perfiles de hardware de referencia para estaciones de trabajo y dispositivos de flota
 - [[service-slm-operationalization-plan|Plan de operacionalización de SLM]] — el plan para pasar de llamadas a modelos externos a un modelo local por inquilino

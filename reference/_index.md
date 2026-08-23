@@ -30,7 +30,7 @@ paired_with: _index.es.md
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: platform-orientation -->
 - [[getting-started|Getting started with the PointSav platform]] — what the platform is, who it's for, and where to go first
 - [[glossary-documentation|PointSav encyclopedia — glossary and lexicon]] — the canonical term-by-term definition source
-- [[wiki-structure|How this knowledge base is organized]] — a reader's map of all thirteen documentation-wiki areas
+- [[wiki-structure|How this knowledge base is organized]] — a reader's map of all fifteen documentation-wiki areas
 - [[guide-catalog|Developer guide index]] — every how-to guide, grouped by developer concern
 - [[hardware-reference|Hardware reference]] — reference hardware profiles for workstations and fleet devices
 - [[service-slm-operationalization-plan|SLM operationalization plan]] — the plan for moving from external model calls to a per-tenant local model
