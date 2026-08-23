@@ -51,25 +51,18 @@ Este artículo describe la arquitectura de cuatro capas, los dos sobres operativ
 
 La arquitectura está diseñada en capas de forma intencionada para que cada capa sea intercambiable de forma independiente. La capa intermedia (L2) es el contrato durable del trait de Rust que sobrevive a los cambios por encima y por debajo de ella. El patrón de cuatro capas a nivel de sustrato está regido por la convención de diseño del ledger WORM del workspace (ratificada en workspace v0.1.7, commit `6c0b79a`); este artículo describe cómo `service-fs` lo aplica específicamente.
 
-### L1 — Primitiva de almacenamiento de tiles (específica del sobre)
+### L1 — Primitiva de almacenamiento (específica del sobre)
 
-El formato en disco son los **tiles C2SP tlog-tiles** — el mismo formato usado por RFC 9162 v2 (Certificate Transparency v2), Trillian-Tessera y Sigstore Rekor v2. Los tiles son archivos de texto estáticos que contienen 256 entradas (o 256 hashes en niveles Merkle intermedios), codificados en base64 para inspección en texto plano según el principio DARP (directo, auditable, reproducible, texto plano).
+Los **tiles C2SP tlog-tiles** — el mismo formato usado por RFC 9162 v2 (Certificate Transparency v2), Trillian-Tessera y Sigstore Rekor v2 — son el formato en disco al que esta capa está diseñada para llegar: archivos de tile estáticos de 256 entradas cada uno (o 256 hashes en niveles intermedios), codificados en base64 para inspección en texto plano según el principio DARP. Todavía no se ha llegado ahí.
 
-Disposición concreta en disco por tenant:
+La disposición real en disco por tenant hoy es un único archivo plano:
 
 ```
 $FS_LEDGER_ROOT/<moduleId>/
-├── checkpoint            — cabeza de árbol firmada más reciente (formato signed-note)
-├── tile/0/x000.b64       — tile de hoja 0, entradas 0–255
-├── tile/0/x001.b64       — tile de hoja 1, entradas 256–511
-├── tile/1/x000.b64       — tile de altura 1, hashes que cubren 256 hojas cada uno
-├── tile/2/x000.b64       — tile de altura 2, hashes que cubren 65.536 hojas cada uno
-└── audit-log/
-    ├── checkpoint        — sub-ledger separado para eventos de lectura ADR-07
-    └── tile/0/x000.b64
+└── log.jsonl              — cada registro, reescrito completo en cada adición
 ```
 
-La implementación L1 actual es `PosixTileLedger`: archivos POSIX bajo `FS_LEDGER_ROOT`, escritura atómica-luego-renombrado por tile, fsync tras cada tile y cada checkpoint, tiles finalizados marcados como solo lectura (modo `0o444`). El reemplazo previsto a largo plazo es `MoonshotDatabaseLedger` sobre IPC mediado por capacidades al sustrato `moonshot-database`. Los bytes son idénticos en ambas implementaciones — solo difiere el mecanismo de E/S.
+La implementación L1 actual, `PosixTileLedger`, añade un registro bajo un mutex y reescribe el archivo de registro completo mediante la disciplina de escritura atómica D4 (escribir `.tmp` → fsync → renombrar → chmod `0o444`) — una reescritura O(N) por cada adición, una concesión aceptada a la escala actual. La disposición en tiles por segmentos descrita arriba (256 entradas por segmento sellado más un segmento abierto actual) es el siguiente paso documentado, aún no construido; la superficie del trait `LedgerBackend` y el esquema de registro en disco están diseñados para sobrevivir esa actualización sin cambios. El backend `MoonshotDatabaseLedger`, mediado por capacidades, es un reemplazo aún más lejano y a más largo plazo, posterior a esa actualización.
 
 ### L2 — API del ledger WORM (trait de Rust, independiente del objetivo)
 
@@ -89,20 +82,7 @@ La Invención de Doctrina #7 especifica el anclaje a Sigstore Rekor v2 de los ch
 
 La implementación (`service-fs/anchor-emitter/`) es un binario Rust autónomo (su propio `[workspace]` para evitar conflictos de openssl-sys en el monorepo principal). Usa `reqwest` bloqueante con rustls-tls (sin tokio en este binario), genera un par de claves Ed25519 efímero por anclaje y finaliza con códigos estructurados (0 éxito / 1 configuración / 2 obtención / 3 Rekor / 4 adición). La unidad systemd (`local-fs-anchor.{service,timer}`) está configurada con `OnCalendar=*-*-01 02:30:00`, `Persistent=true`, `RandomizedDelaySec=900`.
 
-**Corrección (2026-07-18):** el binario `anchor-emitter` en sí se verifica directamente —
-su propio `Cargo.toml` confirma el `[workspace]` autónomo y la dependencia `reqwest`
-bloqueante/rustls-tls exactamente como se describe. **No se encontró ningún archivo
-`local-fs-anchor.service` ni `local-fs-anchor.timer` en ninguna parte del monorepo**, sin
-embargo — una búsqueda en todo el repositorio solo encuentra
-`infrastructure/systemd/mediakit/local-fs.service` (la unidad del daemon en sí, que
-confirma las variables de entorno `FS_LEDGER_ROOT`/`FS_MODULE_ID` usadas en otras partes
-de este artículo) en una ruta distinta a `infrastructure/local-fs/local-fs.service` que
-este artículo cita en la siguiente sección. O bien el temporizador de anclaje se despliega
-directamente en el host en producción sin un archivo de unidad bajo control de versiones
-(a diferencia de la unidad del daemon, que sí está registrada), o el horario específico
-(`OnCalendar=*-*-01 02:30:00`) es aspiracional en lugar de estar desplegado. **Señalado,
-no reescrito silenciosamente** — necesita confirmación de project-totebox sobre si el
-cron de anclaje mensual realmente se ejecuta hoy antes de corregir esto.
+La cadencia de anclaje mensual funciona hoy, confirmada en vivo contra el temporizador desplegado.
 
 ## Los dos sobres de arranque
 
@@ -153,7 +133,7 @@ El invariante de solo adición se aplica en tres niveles:
 
 - **Superficie de la API de Rust** — ningún método público de `LedgerBackend` elimina ni modifica una entrada.
 - **Nivel de sistema de archivos** — los tiles finalizados se marcan como solo lectura (`0o444`); hardening futuro mediante `chattr +i` cuando la unidad systemd esté instalada y el operador pueda conceder `CAP_LINUX_IMMUTABLE`.
-- **Nivel criptográfico** — la cadena de hashes Merkle detecta cualquier modificación retroactiva; las pruebas de consistencia contra un checkpoint anclado en Rekor fallan públicamente si se altera el historial.
+- **Nivel criptográfico** — la cadena lineal de hashes detecta cualquier modificación retroactiva; las pruebas de consistencia contra un checkpoint anclado en Rekor fallan públicamente si se altera el historial.
 
 ## Flujo de lectura (llamantes del Anillo 2)
 
@@ -168,7 +148,7 @@ El esqueleto actual también implementa `GET /v1/entries?since=N` como un envolt
 
 Cada lectura produce una adición a `audit-log/` (su propio sub-árbol de tiles, separado del ledger de datos). Cada entrada de auditoría es JSON: moduleId, request-id, cursor since, entradas devueltas, marca de tiempo.
 
-El sub-ledger es en sí mismo WORM — los auditores pueden verificar retroactivamente que el registro de auditoría no ha sido manipulado. El checkpoint del sub-ledger se ancla junto con el checkpoint del ledger de datos en el paquete mensual de Rekor. Esto satisface SOC 2 PI4 (Integridad del procesamiento — Salidas) y el requisito de que las lecturas de material sean externamente demostrables.
+El sub-ledger es en sí mismo WORM — los auditores pueden verificar retroactivamente que el registro de auditoría no ha sido manipulado. El checkpoint del sub-ledger se ancla junto con el checkpoint del ledger de datos en el paquete mensual de Rekor. Esto está diseñado para cumplir SOC 2 PI4 (Integridad del procesamiento — Salidas) y el requisito de que las lecturas de material sean externamente demostrables — los controles son reales y están en funcionamiento, pero no se ha realizado ninguna auditoría SOC 2 ni se ha emitido ninguna certificación.
 
 ## Agilidad criptográfica
 

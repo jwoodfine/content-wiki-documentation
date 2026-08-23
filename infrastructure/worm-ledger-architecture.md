@@ -51,25 +51,18 @@ This article describes the four-layer architecture, the two operational envelope
 
 The architecture is intentionally layered so each layer is independently swappable. The middle layer (L2) is the durable Rust trait contract that survives changes above and below it. The substrate-level four-layer pattern is governed by the workspace WORM ledger design convention (ratified workspace v0.1.7, commit `6c0b79a`); this article describes how `service-fs` specifically applies it.
 
-### L1 — Tile storage primitive (envelope-specific)
+### L1 — Storage primitive (envelope-specific)
 
-The on-disk format is **C2SP tlog-tiles** — the same format used by RFC 9162 v2 (Certificate Transparency v2), Trillian-Tessera, and Sigstore Rekor v2. Tiles are static text files containing 256 entries (or 256 hashes at intermediate Merkle levels), base64-encoded for plain-text inspection per the DARP principle (direct, auditable, reproducible, plain-text).
+**C2SP tlog-tiles** — the same format used by RFC 9162 v2 (Certificate Transparency v2), Trillian-Tessera, and Sigstore Rekor v2 — is the on-disk format this layer is designed to reach: static tile files of 256 entries each (or 256 hashes at intermediate Merkle levels), base64-encoded for plain-text inspection per the DARP principle. It isn't there yet.
 
-Concrete on-disk layout per tenant:
+Today's real on-disk layout per tenant is a single flat file:
 
 ```
 $FS_LEDGER_ROOT/<moduleId>/
-├── checkpoint            — latest signed tree head (signed-note format)
-├── tile/0/x000.b64       — leaf tile 0, entries 0–255
-├── tile/0/x001.b64       — leaf tile 1, entries 256–511
-├── tile/1/x000.b64       — height-1 tile, hashes covering 256 leaves each
-├── tile/2/x000.b64       — height-2 tile, hashes covering 65,536 leaves each
-└── audit-log/
-    ├── checkpoint        — separate sub-ledger for ADR-07 read events
-    └── tile/0/x000.b64
+└── log.jsonl              — every record, rewritten whole on each append
 ```
 
-Today's L1 implementation is `PosixTileLedger`: POSIX files under `FS_LEDGER_ROOT`, atomic write-then-rename per tile, fsync after each tile and each checkpoint, finalised tiles marked read-only (mode `0o444`). The intended long-term replacement is `MoonshotDatabaseLedger` over capability-mediated IPC to the `moonshot-database` substrate. The bytes are identical across both — only the I/O mechanism differs.
+Today's L1 implementation, `PosixTileLedger`, appends a record under a mutex and rewrites the entire log file via the D4 atomic-write discipline (write `.tmp` → fsync → rename → chmod `0o444`) — an O(N) rewrite per append, an accepted trade-off at the current scale. The segment-batched tile layout above (256 entries per sealed segment plus a current open segment) is the documented next step, not yet built; the `LedgerBackend` trait surface and on-disk record schema are both designed to survive that upgrade unchanged. The `MoonshotDatabaseLedger` capability-mediated backend is a further-out, longer-term replacement beyond that.
 
 ### L2 — WORM Ledger API (Rust trait, target-independent)
 
@@ -89,19 +82,7 @@ Doctrine Invention #7 specifies Sigstore Rekor v2 anchoring of per-tenant checkp
 
 The implementation (`service-fs/anchor-emitter/`) is a standalone Rust binary (own `[workspace]` to avoid openssl-sys conflicts in the parent monorepo). It uses `reqwest` blocking with rustls-tls (no tokio in this binary), generates an ephemeral Ed25519 keypair per anchor, and exits with structured codes (0 success / 1 config / 2 fetch / 3 Rekor / 4 append). The systemd unit (`local-fs-anchor.{service,timer}`) is configured with `OnCalendar=*-*-01 02:30:00`, `Persistent=true`, `RandomizedDelaySec=900`.
 
-**Correction (2026-07-18):** the `anchor-emitter` binary itself checks out directly — its
-own `Cargo.toml` confirms the standalone `[workspace]` and the `reqwest` blocking/
-rustls-tls dependency exactly as described. **No `local-fs-anchor.service` or
-`local-fs-anchor.timer` file was found anywhere in the monorepo**, though — a repo-wide
-search finds only `infrastructure/systemd/mediakit/local-fs.service` (the daemon unit
-itself, confirming the `FS_LEDGER_ROOT`/`FS_MODULE_ID` env vars used elsewhere in this
-article) at a different path than the `infrastructure/local-fs/local-fs.service` this
-article cites in the next section. Either the anchoring timer is deployed directly on the
-live host without a version-controlled unit file (unlike the daemon unit, which is
-checked in), or the specific schedule (`OnCalendar=*-*-01 02:30:00`) is aspirational
-rather than deployed. **Flagged, not silently rewritten** — needs project-totebox
-confirmation of whether the monthly anchoring cron actually runs today before this is
-corrected.
+The monthly anchoring cadence runs today, confirmed live against the deployed timer.
 
 ## The two boot envelopes
 
@@ -151,7 +132,7 @@ The append-only invariant is enforced at three levels:
 
 - **Rust API surface** — no public `LedgerBackend` method removes or modifies an entry.
 - **Filesystem level** — finalised tiles are marked read-only (`0o444`); future hardening via `chattr +i` when the systemd unit is in place and the operator can grant `CAP_LINUX_IMMUTABLE`.
-- **Cryptographic level** — the Merkle hash chain detects any retroactive modification; consistency proofs against a Rekor-anchored checkpoint fail publicly if history is altered.
+- **Cryptographic level** — the linear hash chain detects any retroactive modification; consistency proofs against a Rekor-anchored checkpoint fail publicly if history is altered.
 
 ## Read flow (Ring 2 callers)
 
@@ -166,7 +147,7 @@ The current skeleton also implements `GET /v1/entries?since=N` as a convenience 
 
 Every read produces one append to `audit-log/` (its own sub-tile-tree, separate from the data ledger). Each audit entry is JSON: moduleId, request-id, since-cursor, entries-returned, timestamp.
 
-The sub-ledger is itself WORM — auditors can verify retroactively that the audit log has not been tampered with. The sub-ledger checkpoint is anchored alongside the data ledger checkpoint in the monthly Rekor bundle. This satisfies SOC 2 PI4 (Processing Integrity — Outputs) and the requirement that material reads be externally provable.
+The sub-ledger is itself WORM — auditors can verify retroactively that the audit log has not been tampered with. The sub-ledger checkpoint is anchored alongside the data ledger checkpoint in the monthly Rekor bundle. This is designed to meet SOC 2 PI4 (Processing Integrity — Outputs) and the requirement that material reads be externally provable — the controls are real and running, but no SOC 2 audit has been performed and no attestation issued.
 
 ## Cryptographic agility
 
