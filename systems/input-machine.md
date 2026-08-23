@@ -11,7 +11,7 @@ content_type: topic
 index_group: operator-surfaces
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: input-machine.es.md
 ---
@@ -22,7 +22,7 @@ The Input Machine is the mandatory ingest gate through which all documents and t
 
 F12 occupies the boundary position on the function-key row, physically separated from F1–F11 by a wider gap on most keyboards. This positioning is deliberate. The Input Machine is not a workflow feature; it is a boundary control. It must be immediately and unambiguously locatable regardless of which cartridge is currently active.
 
-System architecture decision SYS-ADR-10 establishes F12 as the mandatory human checkpoint for all ingest operations. The assignment cannot be bypassed by another pane and cannot be remapped. These constraints are enforced in the [[app-console-input|`app-console-keys`]] event dispatcher rather than by convention.
+System architecture decision SYS-ADR-10 establishes F12 as the mandatory human checkpoint for all ingest operations. The assignment cannot be bypassed by another pane and cannot be remapped. These constraints are enforced in the [[app-console-keys|`app-console-keys`]] event dispatcher rather than by convention.
 
 ## What happens when F12 is pressed
 
@@ -32,57 +32,44 @@ The ingest workflow runs as follows:
 
 1. A modal presents the file path input field.
 2. The operator enters and confirms the path. Passive submission is not accepted — explicit confirmation is required.
-3. The Input Machine validates that the file exists and is readable.
-4. The validated file is sent to `service-input` on the Totebox Archive.
-5. `service-input` classifies the document and determines the routing target.
-6. `service-input` routes the document to the appropriate service — for example, to `service-proofreader` for editorial content or to `service-fs` for archiving.
-7. An immutable audit log entry is written: timestamp, file path, classification, routing target, and operator identity.
-8. The active cartridge resumes with the ingested document available in its context.
+3. `app-console-input` posts the path, submitting username, and tenant to `service-input`'s `/v1/append` endpoint on the Totebox Archive.
+4. `service-input` reads the file, hashes it, and skips it if that hash has already been processed. New files are tagged with a coarse target label — `service-research` or `service-minutebook` if the path contains that string, `service-content` otherwise — and forwarded to `service-fs` under that label.
+5. `service-input` writes its own ledger entry (payload ID, path, hash, timestamp, target label) and `app-console-input` writes a local record (timestamp, operator, tenant, path, status).
+6. The active cartridge resumes with the ingested document available in its context.
 
-## service-input: the Ring 1 boundary service
+## service-input: the ingest boundary service
 
-**Correction (2026-08-02):** the MCP-server/classification/routing architecture described in this section is not what's actually built. Real `service-input/src/main.rs`'s `infer_target_service()` is a trivial substring match on the file path, with no MIME-type or structural-signature classification; there is no MCP code anywhere in `service-input/`; the real local audit table (`app-console-input/src/audit.rs` `IngestRecord`) has no `classification` or `routing_target` field, contradicting the audit-trail claim below. This is the identical architecture already flagged as wrong on the sibling article [[service-input]] (2026-07-18 correction) — that correction was never carried over here. `[[three-ring-architecture]]`'s own text states directly that "no Ring 1 data is transformed or classified; it is only stored," which this article's own claim contradicts. **Flagged, not resolved** — needs the same correction already applied to the sibling article.
+`service-input` is the server-side counterpart of the Input Machine cartridge, running on the Totebox Archive. It reads a document once, deduplicates it by content hash, and forwards it to [[service-fs|service-fs]] under a coarse label. It does not classify document type, and it does not route to different downstream services by content — every non-duplicate file ends up in `service-fs`, distinguished only by its label, with no separate path to `service-proofreader`, a BIM-specific handler, or any other content-aware destination.
 
-`service-input` is a Ring 1 service in the [[three-ring-architecture|Three-Ring Architecture]] — a per-tenant boundary ingest service that handles generic document ingestion. It is the server-side counterpart of the Input Machine cartridge.
-
-Ring 1 placement means `service-input` is per-tenant, a data-ingest boundary through which data flows in but never out, and an [[mcp-substrate-protocol|MCP server]] implementing the Model Context Protocol boundary.
-
-`service-input` performs three functions: classify the document type and appropriate processing pipeline; route the document to the correct Ring 2 or Ring 1 service; and write an immutable record of the ingest event to the ledger.
-
-`service-input` performs no AI inference. Classification uses deterministic rules per SYS-ADR-07, which states that structured data does not pass through AI inference. This ensures the audit trail is reproducible and not dependent on model availability.
+`service-input` performs no AI inference — the label assignment is a plain substring check on the file path, not a MIME-type or structural-signature classifier. This keeps the ingest step reproducible and independent of model availability, consistent with SYS-ADR-07.
 
 ## The audit trail
 
-Every document that passes through the Input Machine generates two audit trail entries.
+Every document that passes through the Input Machine generates two records.
 
-A local SQLite log on the os-console machine records the timestamp, file path, classification, and routing target. This local record persists even if the [[totebox-archive|Totebox Archive]] is unreachable.
+A local SQLite log on the os-console machine records the timestamp, operator, tenant, file path, and a status field. This local record persists even if the [[totebox-archive|Totebox Archive]] is unreachable.
 
-A canonical record in the `service-input` ledger on the Totebox Archive is written as an immutable append. Together these entries ensure that every document that entered a workflow is logged with when it arrived, how it was classified, where it was sent, and who submitted it. This dual-entry approach mirrors the [[worm-ledger-design|WORM ledger discipline]] used across the platform.
+A separate ledger entry on `service-input` itself records the payload ID, file path, content hash, timestamp, and the target label assigned. Together these two records establish when a document arrived, who submitted it, and where it was forwarded — but neither one records a content classification, since none is performed.
 
 ## The app-console-input cartridge
 
-`app-console-input` is the F12 cartridge crate in `pointsav-monorepo`. It implements the Input Machine workflow on the os-console client side: it renders the file path input modal, sends the POST to `service-input` on the Totebox Archive with a 30-second timeout, writes the local SQLite audit entry, and returns control to the previously-active cartridge after ingest completes.
+`app-console-input` is the F12 cartridge crate in `pointsav-monorepo`. It implements the Input Machine workflow on the os-console client side: it renders the file path input modal, sends the POST to `service-input` with a 30-second timeout, and writes the local SQLite audit entry. Control returns to the previously-active cartridge once ingest completes.
 
 `app-console-input` is always installed and the modal is always reachable via F12. This is not configurable.
 
 ## ADR-07 compliance
 
-SYS-ADR-07 states that no structured data passes through AI inference. The Input Machine enforces this at the ingest boundary. `service-input`'s classification is deterministic — it uses file extension, MIME type, and structural signatures. Given the same file, `service-input` always produces the same classification. The audit record is not dependent on model versions or inference availability.
+SYS-ADR-07 states that no structured data passes through AI inference. The Input Machine enforces this at the ingest boundary — `service-input`'s label assignment is a plain, deterministic substring check on the file path, not a model call. Given the same file, `service-input` always produces the same label, and the audit record never depends on model versions or inference availability.
 
 ## The Zero-Form architecture
 
-The Input Machine is the foundation of what operational documentation describes as the Zero-Form architecture. Traditional document workflows require forms — the operator fills in fields to contextualize a document before it enters a system. The Input Machine inverts this: the operator provides a document and the system classifies, routes, and contextualizes it automatically. The only input required is the document itself and an explicit confirmation of intent to submit.
+The Input Machine is the foundation of what operational documentation describes as the Zero-Form architecture. Traditional document workflows require forms — the operator fills in fields to contextualize a document before it enters a system. The Input Machine inverts this: the operator provides a document and confirms intent, and the system logs, labels, and forwards it without further data entry. The only input required is the document itself and an explicit confirmation of intent to submit.
 
 Explicit confirmation is a compliance design choice. It means the audit trail reflects a deliberate human decision, not an accidental submission.
 
-## Routing across cartridges
+## Resumption after ingest
 
-Each cartridge uses the Input Machine for its source material. The routing decision — which cartridge receives the document after ingest — is made by `service-input` based on classification, not by which cartridge was active when F12 was pressed.
-
-- F4 (Content): submitted documents become the source text for proofreading or draft generation.
-- F5 (Minutebook): meeting notes and resolution documents are processed by the governance workflow.
-- F6 (Bookkeeper): financial documents enter the ledger pipeline.
-- F7 (BIM): IFC model files are routed to `service-bim`.
+Every cartridge uses the same Input Machine for its source material, and F12 always returns control to whichever cartridge was active when it was pressed. It is the active cartridge, not the assigned target label, that determines what happens to the document next. The target label `service-input` assigns is independent of which F-key opened the modal — it reflects only where the file's path text matched, not which cartridge submitted it.
 
 ## See also
 
