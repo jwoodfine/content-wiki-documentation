@@ -32,7 +32,7 @@ El sustrato es autocorrectivo a nivel de corpus. Cuando el portal editorial acep
 
 ## Marco de entrenamiento LoRA y corpus por inquilino
 
-El entrenamiento de adaptadores usa el marco Axolotl con el modelo OLMo 3.1 32B Think. Un adaptador por inquilino se entrena con adaptación de bajo rango. Los datos de entrenamiento por inquilino viven en instancias de despliegue separadas, una por inquilino, para mantener los datos de cada uno estructuralmente separados entre sí.
+El entrenamiento de adaptadores usa la pila de Hugging Face (`peft`/`trl`/`transformers`), no un marco de terceros, sobre el modelo local de nivel base, no el modelo de mayor tamaño usado en ráfaga. Un adaptador por inquilino se entrena con adaptación de bajo rango. Los datos de entrenamiento por inquilino viven en instancias de despliegue separadas, una por inquilino, para mantener los datos de cada uno estructuralmente separados entre sí.
 
 ## Véase también
 
