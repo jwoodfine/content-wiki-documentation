@@ -8,7 +8,7 @@ category: reference
 index_group: editorial-and-publishing-standards
 status: stable
 bcsc_class: no-disclosure-implication
-last_edited: 2026-05-21
+last_edited: 2026-08-22
 editor: pointsav-engineering
 ---
 
@@ -32,13 +32,11 @@ Register is not style preference. It is the difference between a reader who unde
 
 ## Audience map
 
-**Correction (2026-08-02):** the repo names below are stale — all three wikis were renamed `content-wiki-*` → `media-knowledge-*` on 2026-05-23 (this repo's own `CLAUDE.md`); this article's `last_edited: 2026-05-21` predates the rename and was never updated across the more than two months since. **Flagged, not resolved.**
-
 | Wiki | Primary audience | Secondary audience | Register |
 |---|---|---|---|
-| `content-wiki-corporate` | Bankers, family offices, institutional investors | C-suite principals, corporate advisors | Institutional financial-press register |
-| `content-wiki-projects` | Top-400 development firms, commercial architects, construction programme managers | Same institutional investors reading project subject matter | Institutional financial-press register |
-| `content-wiki-documentation` | Software engineers, graphic designers, platform developers | Emerging institutional readers evaluating technical credibility | Developer-platform register primary + Corporate accessibility layer |
+| `media-knowledge-corporate` | Bankers, family offices, institutional investors | C-suite principals, corporate advisors | Institutional financial-press register |
+| `media-knowledge-projects` | Top-400 development firms, commercial architects, construction programme managers | Same institutional investors reading project subject matter | Institutional financial-press register |
+| `media-knowledge-documentation` | Software engineers, graphic designers, platform developers | Emerging institutional readers evaluating technical credibility | Developer-platform register primary + Corporate accessibility layer |
 | `bim.woodfinegroup.com` | Architects, engineers, building code officials | — | Regulatory specification register |
 | `gis.woodfinegroup.com` | GIS analysts, co-location programme managers | — | Technical specification |
 | `design.pointsav.com` | Design system contributors, component authors | — | Design specification (DTCG, component API) |
@@ -47,7 +45,7 @@ The corporate and projects wikis share a register because they share a primary a
 
 ## Register 1 — Institutional financial-press register
 
-**Applies to:** `content-wiki-corporate` and `content-wiki-projects`
+**Applies to:** `media-knowledge-corporate` and `media-knowledge-projects`
 
 The reader is an institutional decision-maker. They have financial literacy and no obligation to understand software architecture or building codes. They are reading to make a capital allocation decision or to evaluate the platform's sponsors and structure.
 
@@ -73,7 +71,7 @@ Same reader, same register, different subject matter.
 
 ## Register 2 — Developer-platform register + Corporate accessibility layer
 
-**Applies to:** `content-wiki-documentation`
+**Applies to:** `media-knowledge-documentation`
 
 The primary reader is a software engineer, designer, or developer. They have technical literacy and are reading to understand how the platform works, how to deploy it, or how to contribute to it. The secondary reader — increasingly important — is an emerging institutional reader: a bank's technology committee, a family office's incoming principal, a senior developer from a Top-400 firm who is evaluating whether the platform is credible enough to approve or fund. This reader is technically literate — they can read code — but does not know the platform's internal vocabulary.
 

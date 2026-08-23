@@ -7,7 +7,7 @@ short_description: "Tres registros de lenguaje que ajustan las wikis de PointSav
 category: reference
 status: stable
 bcsc_class: no-disclosure-implication
-last_edited: 2026-07-31
+last_edited: 2026-08-22
 editor: pointsav-engineering
 language: es
 paired_with: editorial-language-registers.md
@@ -35,9 +35,9 @@ El registro no es una preferencia de estilo. Es la diferencia entre un lector qu
 
 | Wiki | Audiencia primaria | Audiencia secundaria | Registro |
 |---|---|---|---|
-| `content-wiki-corporate` | Banqueros, family offices, inversores institucionales | Directivos de nivel C, asesores corporativos | Registro institucional de prensa financiera |
-| `content-wiki-projects` | Top-400 firmas promotoras, arquitectos comerciales, gestores de programas de construcción | Los mismos inversores institucionales, leyendo sobre la materia de proyectos | Registro institucional de prensa financiera |
-| `content-wiki-documentation` | Ingenieros de software, diseñadores gráficos, desarrolladores de plataforma | Lectores institucionales emergentes que evalúan la credibilidad técnica | Registro de plataforma de desarrolladores + capa de accesibilidad corporativa |
+| `media-knowledge-corporate` | Banqueros, family offices, inversores institucionales | Directivos de nivel C, asesores corporativos | Registro institucional de prensa financiera |
+| `media-knowledge-projects` | Top-400 firmas promotoras, arquitectos comerciales, gestores de programas de construcción | Los mismos inversores institucionales, leyendo sobre la materia de proyectos | Registro institucional de prensa financiera |
+| `media-knowledge-documentation` | Ingenieros de software, diseñadores gráficos, desarrolladores de plataforma | Lectores institucionales emergentes que evalúan la credibilidad técnica | Registro de plataforma de desarrolladores + capa de accesibilidad corporativa |
 | `bim.woodfinegroup.com` | Arquitectos, ingenieros, funcionarios de código de construcción | — | Registro de especificación regulatoria |
 | `gis.woodfinegroup.com` | Analistas GIS, gestores de programas de co-ubicación | — | Especificación técnica |
 | `design.pointsav.com` | Contribuidores al sistema de diseño, autores de componentes | — | Especificación de diseño (DTCG, API de componentes) |
@@ -46,7 +46,7 @@ Los wikis corporativo y de proyectos comparten registro porque comparten audienc
 
 ## Registro 1 — Registro institucional de prensa financiera
 
-**Aplica a:** `content-wiki-corporate` y `content-wiki-projects`
+**Aplica a:** `media-knowledge-corporate` y `media-knowledge-projects`
 
 El lector es un tomador de decisiones institucional con alfabetización financiera. Lee para tomar decisiones de asignación de capital o para evaluar la estructura y los patrocinadores de la plataforma.
 
@@ -72,7 +72,7 @@ Mismo lector, mismo registro, distinta materia.
 
 ## Registro 2 — Registro de plataforma de desarrolladores + capa de accesibilidad corporativa
 
-**Aplica a:** `content-wiki-documentation`
+**Aplica a:** `media-knowledge-documentation`
 
 El lector primario es un ingeniero o diseñador. El lector secundario —cada vez más importante— es un lector institucional emergente: el comité tecnológico de un banco, un responsable entrante en una family office, o un desarrollador senior de una firma del Top-400 que evalúa si la plataforma merece respaldo financiero.
 
