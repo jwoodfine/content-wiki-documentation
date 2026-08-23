@@ -4,6 +4,7 @@ title: "Spot VM lifecycle — single controller and kill switch pattern"
 slug: spot-vm-lifecycle-kill-switch
 short_description: "Single-controller lifecycle for the Yo-Yo spot VM — why one timer owns both start and stop, plus the sentinel-file kill switch for immediate operator override."
 category: infrastructure
+index_group: compute-and-vm-fabric
 type: topic
 content_type: topic
 status: stable
@@ -19,35 +20,6 @@ to start the VM will eventually fire at the same time, leaving the VM running be
 cycles at full cost with no automated stop path. This document describes the single-controller
 architecture used for the [[yoyo-compute-substrate|Yo-Yo batch node]] and the sentinel file kill switch that provides
 immediate operator control.
-
-**Correction (2026-07-18):** several specific names in this article do not match the live
-`service-slm` source, though the kill-switch mechanism itself checks out. Verified facts:
-
-- **The orchestrator script is `nightly-run.sh`** (`service-slm/scripts/nightly-run.sh`,
-  with flags `--no-yoyo` and `--test-mode`), triggered by a real `nightly-run.timer`
-  (`OnCalendar=*-*-* 00:00:00 UTC`) — not `yoyo-daily-cycle.sh` / `local-yoyo-daily.timer`
-  as this article names them. One piece of corroboration for the drift: a Rust doc comment
-  in `slm-doorman-server/src/idle_monitor.rs` itself still says "see `yoyo-daily-cycle.sh`"
-  — that name is real, just apparently superseded by a rename to `nightly-run.sh` that this
-  wiki article (and that Rust comment) haven't caught up with.
-- **The kill switch itself is accurate as described** — `/srv/foundry/data/yoyo-disabled`,
-  checked by `corpus-threshold.py` before any `gcloud instances start` call, matches the
-  live source closely (message wording differs slightly but the mechanism is identical).
-- **The idle monitor is not a systemd timer.** It is an in-process background tokio task
-  inside `slm-doorman-server` (`idle_monitor.rs`), not a unit named `yoyo-idle-monitor.timer`
-  firing externally every 5 minutes. Its poll interval (5 min) and idle threshold (30 min
-  default) do match this article's numbers. One further behavioral difference: it issues a
-  GCP `instances.delete` (not `instances.stop`) — the boot disk survives because auto-delete
-  is disabled on it, matching a delete+create nightly pattern, not a stop/start one.
-- **Open, unresolved discrepancy — not silently decided either way**: a separate
-  `training-trigger.timer` file (`service-slm/docs/deploy/training-trigger.timer`, "Phase 3
-  corpus threshold check," Sunday 02:00 UTC) still exists in the repo with active,
-  operator-facing install instructions ("`sudo systemctl enable --now
-  training-trigger.timer`") — this reads as a currently-recommended timer, in tension with
-  this article's claim that the corpus-threshold timer "was masked." This may be a stale
-  leftover doc for an already-disabled unit, or it may mean the single-controller fix
-  described here is not (or no longer) the deployed reality. Needs project-totebox
-  confirmation before this article's central claim is corrected either way.
 
 ## The two-timer problem
 
@@ -69,14 +41,17 @@ approximately $17.
 ## The single-controller fix
 
 The fix is architectural: exactly one systemd unit owns the full VM lifecycle for each VM.
-`local-corpus-threshold.timer` was masked (redirected to `/dev/null`), removing its
-ability to start the VM. All VM lifecycle operations — start, enrich, check threshold,
-optionally train, stop, verify — are now performed within a single invocation of
-`yoyo-daily-cycle.sh` triggered by `local-yoyo-daily.timer`.
+All VM lifecycle operations — start, DataGraph extraction, corpus-threshold check, training,
+stop — are now performed within a single invocation of `nightly-run.sh`, triggered daily by
+`nightly-run.timer` (`OnCalendar=*-*-* 00:00:00 UTC`). A separate weekly `training-trigger.timer`
+still exists as an installable unit file in the repo, but its own Sunday-only cadence is
+superseded by `nightly-run.sh`'s Phase 2, which already runs training every night — it reads
+as leftover documentation for the scheme this single-controller design replaced, not a second
+live start path.
 
-The corpus threshold check is now Phase 5 inside the daily cycle rather than a separate
-timer. The training trigger is Phase 6. Both run while the VM is already running for
-enrichment, adding no additional VM start cost.
+`nightly-run.sh` runs two mandatory phases every night: a DataGraph extraction phase, then a
+training phase running QLoRA against the corpus-threshold check. Both run while the VM is
+already up, adding no additional start cost beyond the one nightly boot.
 
 The rule generalises: for any spot VM that performs multiple automated tasks, consolidate
 all tasks into a single orchestrator script invoked by a single timer. Do not give
@@ -129,15 +104,16 @@ requires no elevated privileges to activate.
 ## Defense in depth: the idle monitor
 
 The kill switch prevents starts. A separate safety layer stops a VM that is running when
-it should not be. The idle monitor timer (`yoyo-idle-monitor.timer`) fires every five
-minutes and checks whether the Yo-Yo batch VM has been running for more than 30 minutes
-without an active inference request. If that condition is met, the monitor issues a stop
-command.
+it should not be. This isn't a standalone timer — it's an in-process background task
+inside the Doorman itself, polling every five minutes for whether the Yo-Yo batch VM has
+been running for more than 30 minutes without an active inference request. If that
+condition is met, the monitor deletes the instance directly (its boot disk survives, since
+auto-delete is disabled on it — the VM is re-created, not resumed, on the next nightly run).
 
 The idle monitor is a backstop, not the primary controller. Its role is to bound the cost
-exposure if the daily cycle fails to complete its stop sequence — for example, if the
-workspace VM loses connectivity during Phase 8, or if the cycle is interrupted by a
-process signal before the stop command is issued.
+exposure if the nightly run fails to complete its stop sequence — for example, if the
+workspace VM loses connectivity mid-run, or if the run is interrupted by a process signal
+before the stop step executes.
 
 The combination of single-controller daily cycle, sentinel file kill switch, and idle
 monitor provides three independent layers:

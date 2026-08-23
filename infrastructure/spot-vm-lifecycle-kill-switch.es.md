@@ -4,6 +4,7 @@ title: "Ciclo de Vida de VM Spot — Controlador Único e Interruptor de Emergen
 slug: spot-vm-lifecycle-kill-switch
 short_description: "Ciclo de vida de controlador único para la VM spot Yo-Yo — un solo temporizador posee arranque y parada, con interruptor centinela de archivo para control inmediato."
 category: infrastructure
+index_group: compute-and-vm-fabric
 type: topic
 content_type: topic
 status: stable
@@ -21,41 +22,6 @@ automatizada para detenerla. Este documento describe la arquitectura de controla
 utilizada para el [[yoyo-compute-substrate|nodo de lotes Yo-Yo]] y el interruptor de emergencia basado en archivo
 centinela que proporciona control inmediato al operador.
 
-**Corrección (2026-07-18):** varios nombres específicos de este artículo no coinciden con
-la fuente real de `service-slm`, aunque el mecanismo del interruptor de emergencia en sí
-se verifica correctamente. Hechos verificados:
-
-- **El script orquestador es `nightly-run.sh`** (`service-slm/scripts/nightly-run.sh`, con
-  las banderas `--no-yoyo` y `--test-mode`), disparado por un `nightly-run.timer` real
-  (`OnCalendar=*-*-* 00:00:00 UTC`) — no `yoyo-daily-cycle.sh` / `local-yoyo-daily.timer`
-  como los nombra este artículo. Un dato que corrobora la desactualización: un comentario
-  de documentación en Rust en `slm-doorman-server/src/idle_monitor.rs` todavía dice "see
-  `yoyo-daily-cycle.sh`" — ese nombre es real, solo que aparentemente fue reemplazado por
-  una renombración a `nightly-run.sh` que ni este artículo del wiki ni ese comentario en
-  Rust han seguido.
-- **El interruptor de emergencia en sí es correcto tal como se describe** —
-  `/srv/foundry/data/yoyo-disabled`, verificado por `corpus-threshold.py` antes de
-  cualquier llamada a `gcloud instances start`, coincide estrechamente con la fuente real
-  (el texto del mensaje difiere ligeramente pero el mecanismo es idéntico).
-- **El monitor de inactividad no es un temporizador systemd.** Es una tarea tokio en
-  segundo plano dentro del proceso de `slm-doorman-server` (`idle_monitor.rs`), no una
-  unidad llamada `yoyo-idle-monitor.timer` que se dispara externamente cada 5 minutos. Su
-  intervalo de sondeo (5 min) y su umbral de inactividad (30 min por defecto) sí coinciden
-  con los números de este artículo. Otra diferencia de comportamiento: emite un
-  `instances.delete` de GCP (no un `instances.stop`) — el disco de arranque sobrevive
-  porque la eliminación automática está deshabilitada en él, coincidiendo con un patrón
-  nocturno de eliminar+crear, no de detener/arrancar.
-- **Discrepancia abierta, no resuelta silenciosamente en ningún sentido**: un archivo
-  `training-trigger.timer` separado (`service-slm/docs/deploy/training-trigger.timer`,
-  "Phase 3 corpus threshold check," domingo 02:00 UTC) todavía existe en el repositorio
-  con instrucciones de instalación activas orientadas al operador ("`sudo systemctl
-  enable --now training-trigger.timer`") — esto se lee como un temporizador actualmente
-  recomendado, en tensión con la afirmación de este artículo de que el temporizador de
-  umbral de corpus "fue enmascarado." Esto puede ser un documento obsoleto para una unidad
-  ya deshabilitada, o puede significar que la corrección de controlador único descrita
-  aquí no es (o ya no es) la realidad desplegada. Necesita confirmación de
-  project-totebox antes de corregir la afirmación central de este artículo en cualquier
-  sentido.
 
 ## El problema de los dos temporizadores
 
@@ -79,16 +45,20 @@ la VM podría ejecutarse durante 24 horas o más con un costo de aproximadamente
 ## La solución de controlador único
 
 La solución es arquitectónica: exactamente una unidad systemd controla el ciclo de vida
-completo de cada VM. `local-corpus-threshold.timer` fue enmascarado (redirigido a `/dev/null`),
-eliminando su capacidad de arrancar la VM. Todas las operaciones del ciclo de vida de
-la VM — arrancar, enriquecer, comprobar umbral, entrenar opcionalmente, detener, verificar —
-se realizan ahora dentro de una única invocación de `yoyo-daily-cycle.sh` disparada por
-`local-yoyo-daily.timer`.
+completo de cada VM. Todas las operaciones del ciclo de vida de la VM — arrancar,
+extracción al DataGraph, comprobación de umbral del corpus, entrenamiento, detener — se
+realizan ahora dentro de una única invocación de `nightly-run.sh`, disparada diariamente
+por `nightly-run.timer` (`OnCalendar=*-*-* 00:00:00 UTC`). Un `training-trigger.timer`
+semanal independiente todavía existe como archivo de unidad instalable en el repositorio,
+pero su propia cadencia de solo los domingos queda sustituida por la Fase 2 de
+`nightly-run.sh`, que ya ejecuta el entrenamiento cada noche — se lee como documentación
+remanente del esquema que este diseño de controlador único reemplazó, no como una segunda
+vía de arranque en producción.
 
-La comprobación del umbral del corpus es ahora la Fase 5 dentro del ciclo diario en lugar
-de un temporizador independiente. El activador del entrenamiento es la Fase 6. Ambos se
-ejecutan mientras la VM ya está en marcha para el enriquecimiento, sin ningún costo
-adicional de arranque de VM.
+`nightly-run.sh` ejecuta dos fases obligatorias cada noche: una fase de extracción al
+DataGraph y luego una fase de entrenamiento que ejecuta QLoRA contra la comprobación de
+umbral del corpus. Ambas se ejecutan mientras la VM ya está en marcha, sin ningún costo
+adicional de arranque más allá del único arranque nocturno.
 
 La regla se generaliza: para cualquier VM spot que realice múltiples tareas automatizadas,
 consolidar todas las tareas en un único script orquestador invocado por un único temporizador.
@@ -146,11 +116,13 @@ activarlo.
 ## Defensa en profundidad: el monitor de inactividad
 
 El interruptor de emergencia evita los arranques. Una capa de seguridad independiente
-detiene una VM que está en ejecución cuando no debería estarlo. El temporizador del
-monitor de inactividad (`yoyo-idle-monitor.timer`) se dispara cada cinco minutos y
-comprueba si la VM de lotes Yo-Yo ha estado en ejecución más de 30 minutos sin una
-solicitud de inferencia activa. Si se cumple esa condición, el monitor emite un comando
-de parada.
+detiene una VM que está en ejecución cuando no debería estarlo. Esto no es un
+temporizador independiente — es una tarea en segundo plano dentro del propio Doorman,
+que sondea cada cinco minutos si la VM de lotes Yo-Yo ha estado en ejecución más de 30
+minutos sin una solicitud de inferencia activa. Si se cumple esa condición, el monitor
+elimina la instancia directamente (su disco de arranque sobrevive, ya que la eliminación
+automática está deshabilitada en él — la VM se vuelve a crear, no se reanuda, en la
+siguiente ejecución nocturna).
 
 El monitor de inactividad es una medida de seguridad, no el controlador principal. Su
 función es limitar la exposición al costo si el ciclo diario no completa su secuencia
