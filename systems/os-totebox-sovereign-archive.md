@@ -16,8 +16,6 @@ quality: complete
 last_edited: 2026-08-06
 ---
 
-# os-totebox: The Sovereign WORM Data Vault (Intended Design)
-
 **Status (2026-08-06):** the seL4 Microkit image described in this article has moved
 from planned to live-verified. A real boot of the image is confirmed, with end-to-end
 inference round-trips confirmed working — the capability-graph and Protection-Domain
@@ -49,8 +47,8 @@ vault, and are load-bearing for anyone evaluating the design today:
   this baseline. The WORM ledger runs, but no external anchor and no signature currently
   attach to its checkpoints.
 
-None of this is a fabricated risk — it is the current, factual state of the deployed
-build. The boot and inference verification above is real and current; the vault's
+These are the deployed build's current, factual limits. The boot and inference
+verification above is real and current; the vault's
 persistence, availability, and ledger-anchoring guarantees are not yet delivered.
 
 Every organisation that relies on a third-party platform to store its records is making an implicit wager: that the platform provider will remain solvent, accessible, and free of security failures for as long as those records matter. [[os-totebox]] is designed for operators who have decided that wager is unacceptable.

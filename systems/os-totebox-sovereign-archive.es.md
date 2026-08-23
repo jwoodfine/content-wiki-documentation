@@ -16,8 +16,6 @@ quality: complete
 last_edited: 2026-08-06
 ---
 
-# os-totebox: La Bóveda Soberana de Datos WORM (Diseño Previsto)
-
 **Estado (2026-08-06):** la imagen seL4 Microkit descrita en este artículo ha pasado de
 planificada a verificada en vivo. Se ha confirmado un arranque real de la imagen, con
 ciclos completos de inferencia confirmados y funcionando — el diseño de grafo de
@@ -55,7 +53,7 @@ soberana persistente, y son información determinante para quien evalúe el dise
   deja deliberadamente sin configurar en esta línea base. El registro WORM se ejecuta,
   pero ningún anclaje externo ni firma se adjunta actualmente a sus puntos de control.
 
-Nada de esto es un riesgo inventado — es el estado actual y factual del despliegue. La
+Estos son los límites actuales y factuales del despliegue. La
 verificación de arranque e inferencia anterior es real y actual; las garantías de
 persistencia, disponibilidad y anclaje del registro de la bóveda aún no se han entregado.
 
