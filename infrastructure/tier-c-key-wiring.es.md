@@ -25,11 +25,11 @@ Las claves de API viven en el portal únicamente — nunca en el código de apli
 
 ## Dónde viven las claves
 
-Las claves se conservan en archivos de extensión de unidad systemd en la máquina virtual de trabajo. Cada proveedor puede tener su propio archivo de extensión, lo que hace que la rotación por proveedor sea atómica. Los archivos de extensión son propiedad de root y legibles por el usuario del servicio que ejecuta el Doorman. No están rastreados en ningún repositorio de control de versiones.
+Las claves de Anthropic, Gemini y OpenAI se conservan juntas en un único archivo de entorno gestionado por el operador en la máquina virtual de trabajo, cargado mediante una sola directiva `EnvironmentFile=` aplicada a toda la unidad del Doorman — no en archivos de extensión separados por proveedor. Rotar la clave de un proveedor significa editar ese archivo compartido y recargar el servicio; no está aislado de la configuración de los demás proveedores como lo estaría con una extensión real por proveedor. El archivo es propiedad de root y legible por el usuario del servicio que ejecuta el Doorman. No está rastreado en ningún repositorio de control de versiones.
 
 ## Aprovisionamiento y rotación
 
-Activar una nueva clave requiere la presencia del operador para los pasos que tocan el valor de la clave. La secuencia de ocho pasos comienza con la obtención de la clave desde la consola del proveedor, crea un archivo temporal con permisos restringidos para la clave, escribe la extensión systemd del Doorman, recarga el servicio, verifica el funcionamiento con una llamada de prueba de bajo costo, y finaliza con la eliminación segura del archivo temporal y una entrada en el registro de cambios.
+Activar una nueva clave requiere la presencia del operador para los pasos que tocan el valor de la clave. La secuencia de ocho pasos comienza con la obtención de la clave desde la consola del proveedor, crea un archivo temporal con permisos restringidos para la clave, añade la nueva clave al archivo de entorno compartido, recarga el servicio, verifica el funcionamiento con una llamada de prueba de bajo costo, y finaliza con la eliminación segura del archivo temporal y una entrada en el registro de cambios.
 
 La rotación trimestral por proveedor es el ritmo predeterminado. La rotación acelerada es apropiada cuando se sospecha un compromiso, cuando el proveedor exige rotación en su propio calendario, o cuando el operador elige un ritmo más frecuente.
 
