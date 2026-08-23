@@ -9,7 +9,7 @@ category: reference
 index_group: platform-orientation
 status: complete
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-04
+last_edited: 2026-08-22
 editor: pointsav-engineering
 csv_source: glossary-documentation.csv
 ---
@@ -21,13 +21,6 @@ This lexicon provides canonical definitions for PointSav platform terms, bridgin
 <div class="wiki-toc" style="padding: 10px; background: #f9f9f9; border: 1px solid #ccc; text-align: center; font-weight: bold; margin-bottom: 2em;">
  <a href="#h-a">A</a> | <a href="#h-b">B</a> | <a href="#h-c">C</a> | <a href="#h-d">D</a> | <a href="#h-e">E</a> | <a href="#h-f">F</a> | <a href="#h-g">G</a> | <a href="#h-h">H</a> | <a href="#h-i">I</a> | <a href="#h-j">J</a> | <a href="#h-k">K</a> | <a href="#h-l">L</a> | <a href="#h-m">M</a> | <a href="#h-n">N</a> | <a href="#h-o">O</a> | <a href="#h-p">P</a> | Q | <a href="#h-r">R</a> | <a href="#h-s">S</a> | <a href="#h-t">T</a> | <a href="#h-u">U</a> | <a href="#h-v">V</a> | <a href="#h-w">W</a> | X | Y | <a href="#h-z">Z</a>
 </div>
-
-**Correction (2026-08-04):** the anchor links above were dead — they pointed at
-`#A`/`#B`/etc., but this wiki's renderer (comrak, `header_id_prefix = "h-"`)
-generates lowercase `id="h-a"`/`id="h-b"` for each `## A`/`## B` heading. Fixed to
-match the real generated IDs. Also removed 187 empty `- **Term**` stub bullets
-(bare CSV rows with no definition — zero information, pure duplication of blank
-entries already in `glossary-documentation.csv`).
 
 ---
 
@@ -289,7 +282,7 @@ The Tier 2 system administration and package management layer manages software i
 The PointSav design system is a tokenized, DTCG-format component library and token vault delivered as a Git-tracked repository, providing the visual and interactive vocabulary for all PointSav product surfaces.
 
 ### PointSav Digital Systems
-PointSav Digital Systems is the software vendor entity that builds and maintains the PointSav platform, publishing canonical open-source engineering repositories at github.com/pointsav under the Apache 2.0 license (Correction, 2026-08-02, verified against canonical `origin/main`: no directory is currently Apache-2.0-licensed. The real, ratified root `LICENSE` ("MULTI-LICENSE NOTICE" v1.1, effective 2026-05-24) is a per-directory scheme — most `os-*`/`service-*`/`app-console-*` directories are AGPL-3.0-or-later; a handful (`os-infrastructure`, `os-mediakit`, `os-interface`, `app-mediakit-*`) are FSL-1.1-ALv2. Flagged, not resolved.).
+PointSav Digital Systems is the software vendor entity that builds and maintains the PointSav platform, publishing canonical engineering repositories at github.com/pointsav under a per-directory license scheme (the ratified root `LICENSE`, v1.2). Most `os-*`/`service-*`/`app-console-*` directories are AGPL-3.0-or-later; a handful (`os-infrastructure`, `os-mediakit`, `app-mediakit-*`, `os-totebox`) are FSL-1.1-ALv2, with `os-totebox` auto-converting to Apache-2.0 on each dated release; `os-orchestration` is fully proprietary under the PointSav-ARR terms.
 
 ### PointSav Private Network
 The PointSav private network is the on-premises sovereign mesh that connects os-console terminals, os-orchestration compute, and os-totebox archives within a customer deployment, isolated from the public internet by the os-infrastructure layer.
@@ -348,7 +341,7 @@ The deterministic parser service. Strips proprietary formatting from inbound pay
 ### service-search
 *service-search*
 
-The inverted index service. Provides rapid full-text retrieval across all files in a Totebox Archive using Tantivy. Operates without a running database engine — the index is static and binary and can be searched on an air-gapped machine. Satisfies DARP compliance: data must be searchable without proprietary software. (Correction, 2026-08-02, verified against canonical `origin/main`: `service-search/` contains only a README.md — no `Cargo.toml`, no `src/`. This is an aspirational design description presented as a current, operating fact in a `status: complete` article. Flagged, not resolved.)
+The planned inverted-index service for full-text retrieval across the files in a Totebox Archive using Tantivy, designed to operate without a running database engine and to remain searchable on an air-gapped machine. Not yet built — the directory holds a README describing the design, with no crate implementing it.
 
 ### Smart Building
 *Edificio Inteligente*

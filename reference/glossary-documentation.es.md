@@ -10,7 +10,7 @@ quality: complete
 status: active
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-25
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: glossary-documentation.md
 ---
@@ -18,7 +18,7 @@ paired_with: glossary-documentation.md
 Este léxico proporciona definiciones canónicas de los términos de la plataforma PointSav, conectando el vocabulario estándar del sector con los conceptos arquitectónicos de la plataforma. Cada entrada define un término tal como se usa en la documentación de la plataforma, con notas de desambiguación y referencias cruzadas donde corresponde. Para el [[language-protocol-substrate|protocolo de lenguaje]] que rige qué términos son canónicos en los tres wikis, y para los [[editorial-language-registers|registros de lenguaje editorial]], véanse esos artículos.
 
 <div class="wiki-toc" style="padding: 10px; background: #f9f9f9; border: 1px solid #ccc; text-align: center; font-weight: bold; margin-bottom: 2em;">
- <a href="#A">A</a> | <a href="#B">B</a> | <a href="#C">C</a> | <a href="#D">D</a> | <a href="#E">E</a> | <a href="#F">F</a> | <a href="#G">G</a> | <a href="#H">H</a> | <a href="#I">I</a> | <a href="#J">J</a> | <a href="#K">K</a> | <a href="#L">L</a> | <a href="#M">M</a> | <a href="#N">N</a> | <a href="#O">O</a> | <a href="#P">P</a> | Q | <a href="#R">R</a> | <a href="#S">S</a> | <a href="#T">T</a> | <a href="#U">U</a> | <a href="#V">V</a> | <a href="#W">W</a> | X | Y | <a href="#Z">Z</a>
+ <a href="#h-a">A</a> | <a href="#h-b">B</a> | <a href="#h-c">C</a> | <a href="#h-d">D</a> | <a href="#h-e">E</a> | <a href="#h-f">F</a> | <a href="#h-g">G</a> | <a href="#h-h">H</a> | <a href="#h-i">I</a> | <a href="#h-j">J</a> | <a href="#h-k">K</a> | <a href="#h-l">L</a> | <a href="#h-m">M</a> | <a href="#h-n">N</a> | <a href="#h-o">O</a> | <a href="#h-p">P</a> | Q | <a href="#h-r">R</a> | <a href="#h-s">S</a> | <a href="#h-t">T</a> | <a href="#h-u">U</a> | <a href="#h-v">V</a> | <a href="#h-w">W</a> | X | Y | <a href="#h-z">Z</a>
 </div>
 
 ---
@@ -414,7 +414,7 @@ La capa de administración del sistema y gestión de paquetes de Nivel 2 gestion
 El sistema de diseño PointSav es una biblioteca de componentes tokenizada en formato DTCG y una bóveda de tokens entregada como repositorio rastreado por Git, que proporciona el vocabulario visual e interactivo para todas las superficies de producto de PointSav.
 
 ### PointSav Digital Systems
-PointSav Digital Systems es la entidad proveedora de software que construye y mantiene la plataforma PointSav, publicando repositorios de ingeniería de código abierto canónicos en github.com/pointsav bajo la licencia Apache 2.0.
+PointSav Digital Systems es la entidad proveedora de software que construye y mantiene la plataforma PointSav, publicando repositorios de ingeniería canónicos en github.com/pointsav bajo un esquema de licencias por directorio (la `LICENSE` raíz ratificada, v1.2). La mayoría de los directorios `os-*`/`service-*`/`app-console-*` son AGPL-3.0-or-later; un grupo reducido (`os-infrastructure`, `os-mediakit`, `app-mediakit-*`, `os-totebox`) usa FSL-1.1-ALv2, con `os-totebox` convirtiéndose automáticamente a Apache-2.0 en cada versión con fecha; `os-orchestration` es totalmente propietario bajo los términos PointSav-ARR.
 
 - **Documentación de PointSav o wiki de documentación de PointSav**
 - **Página de inicio de PointSav**
@@ -500,7 +500,7 @@ El servicio analizador determinista. Elimina el formato propietario de los datos
 ### service-search
 *service-search*
 
-El servicio de índice invertido. Proporciona recuperación rápida de texto completo en todos los archivos de un archivo Totebox usando Tantivy. Opera sin un motor de base de datos en ejecución — el índice es estático y binario, y puede consultarse en una máquina sin conexión. Cumple la conformidad DARP: los datos deben ser consultables sin software propietario.
+El servicio de índice invertido planificado para la recuperación de texto completo en los archivos de un archivo Totebox usando Tantivy, diseñado para operar sin un motor de base de datos en ejecución y permanecer consultable en una máquina sin conexión. Aún no construido — el directorio contiene un README que describe el diseño, sin ningún crate que lo implemente.
 
 ### Edificio inteligente
 *Smart Building*
