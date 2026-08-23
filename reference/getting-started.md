@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-07-11
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: getting-started.es.md
 short_description: "An orientation to the PointSav developer platform: what it is, who it is for, where to start, and how the pieces fit together before the first task."
@@ -20,7 +20,7 @@ aliases:
 cites: []
 ---
 
-The PointSav platform is an independently verifiable, operator-controlled software stack for commercial real estate intelligence, fleet management, and distributed compute (Correction, 2026-08-02: "sovereign" as a bare adjective is on this workspace's own Do-Not-Use list — see `editorial-language-registers.md`'s own vocabulary-retirement table — and this `audience: vendor-public` article violated it). This guide orients new contributors and evaluators to the platform's main surfaces and the documentation structure.
+The PointSav platform is an independently verifiable, operator-controlled software stack for commercial real estate intelligence, fleet management, and distributed compute. This guide orients new contributors and evaluators to the platform's main surfaces and the documentation structure.
 
 ## Where to start
 
@@ -43,4 +43,4 @@ A task-oriented path to a working session, for an engineer opening the platform 
 3. **Create a VM.** Issue a spawn request through the tenant proxy. See the operational guides in the [[guide-catalog|Developer Guide Catalog]].
 4. **Access the console surface.** The OS Console provides a terminal interface for provisioned VMs and platform management.
 
-*This article is a stub, merged 2026-08-03 with the former `quick-start` article (same onboarding purpose, overlapping content — see `redirects.yaml` and this file's `aliases:`). Full content is planned for a future session.*
+This orientation covers where to start and the prerequisites for a first working session; a fuller walkthrough of the platform's surfaces is not yet written.
