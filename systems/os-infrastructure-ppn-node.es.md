@@ -12,7 +12,7 @@ language: es
 language_protocol: TRANSLATE-ES
 index_group: network-control-and-infrastructure
 paired_with: os-infrastructure-ppn-node.md
-last_edited: 2026-05-30
+last_edited: 2026-08-22
 editor: editorial
 ---
 
@@ -112,4 +112,4 @@ Se prevé que los objetivos de la Fase 3 hagan que el hardware de reserva de cua
 - [[vm-architecture]] — los cinco tipos de VM y cómo os-infrastructure los aloja
 - [[ppn-architecture-overview]] — descripción general de PPN en cuatro capas; os-infrastructure es la capa de hipervisor
 - [[genesis-protocol]] — descripción completa de la ceremonia de unión de nodos
-- [[ppn-hypervisor-resource-pool]] — gestión del pool de recursos virtio_balloon + vCPU por nodo
+- [[ppn-hypervisor-resource-pool]] — el diseño de agrupación de recursos del hipervisor por nodo, aún no construido

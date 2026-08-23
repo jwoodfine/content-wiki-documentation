@@ -11,7 +11,7 @@ bcsc_class: public-disclosure-safe
 language: en
 index_group: network-control-and-infrastructure
 paired_with: os-infrastructure-ppn-node.es.md
-last_edited: 2026-07-11
+last_edited: 2026-08-22
 editor: editorial
 ---
 
@@ -88,7 +88,7 @@ Intended resource target: 8 MB disk, 12 MB RAM idle.
 
 The Genesis Protocol is the node-join ceremony that adds a new node to the mesh.
 
-An operator initiating a new node starts `service-ppn-pairing` on the node being added. The service performs a CPace PAKE handshake and presents a Crockford base32 short-code on the console — a fixed 8 symbols, formatted `XXXX-XXXX` (Correction, 2026-08-02: the real generator at `system-pairing-codes/src/lib.rs` produces a fixed-length code, not a variable six-to-ten-character range). The operator reads this code and enters it in the `app-network-admin` F11 approval panel on the administering machine.
+An operator initiating a new node starts `service-ppn-pairing` on the node being added. The service performs a CPace PAKE handshake and presents a Crockford base32 short-code on the console — a fixed 8 symbols, formatted `XXXX-XXXX`. The operator reads this code and enters it in the `app-network-admin` F11 approval panel on the administering machine.
 
 Once the codes match, the pairing establishes mutual WireGuard peer records on both nodes, adds an entry to `nodes.jsonl` in the capability ledger, and terminates `service-ppn-pairing`. The ceremony window is 600 seconds; if the operator does not complete approval within that window, the code expires and the ceremony must restart from the beginning.
 
@@ -111,5 +111,5 @@ Phase 3 targets are intended to make any operator's spare hardware outperform cl
 - [[vm-architecture]] — the five VM types and how os-infrastructure hosts them
 - [[ppn-architecture-overview]] — four-layer PPN overview; os-infrastructure is the hypervisor layer
 - [[genesis-protocol]] — full description of the node-join ceremony
-- [[ppn-hypervisor-resource-pool]] — per-node virtio_balloon + vCPU resource pool management
+- [[ppn-hypervisor-resource-pool]] — the per-node hypervisor resource-pooling design, not yet built
 - [[os-family-overview|OS Family Overview]] — the full PointSav OS family and how os-infrastructure fits within it
