@@ -73,7 +73,7 @@ The seL4-hosted guest's `virtio-blk` storage device is attached but is never act
 
 ## Freely transferable
 
-Every `os-totebox` instance is intended to ship as a single, signed boot image. The operator picks it up and moves it between cloud providers, a private server, or bare-metal at their own facility. There is no host operating system underneath that holds the keys. This is the Sovereign Addendum's intended commitment in physical form: the running instance remains the operator's property in any environment.
+Every `os-totebox` instance is intended to ship as a single, signed boot image. The operator picks it up and moves it between cloud providers, a private server, or bare-metal at their own facility. There is no host operating system underneath that holds the keys. Portability of this kind is a design goal — the running instance stays the operator's property in any environment — rather than a distinct license grant; `os-totebox` itself is FSL-licensed, one of two separate licenses across the OS family (see [[legal-and-ip-structure]]).
 
 ## See also
 

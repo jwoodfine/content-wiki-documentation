@@ -72,7 +72,7 @@ El dispositivo de almacenamiento `virtio-blk` del invitado alojado por seL4 est�
 
 ## Libremente transferible
 
-Cada instancia de `os-totebox` está prevista para distribuirse como una única imagen de arranque firmada. El operador la toma y la mueve entre proveedores de nube, un servidor privado o hardware propio en sus instalaciones. No hay sistema operativo anfitrión subyacente que posea las claves. Esta es la intención del Addendum Soberano en forma física: la instancia en ejecución permanece como propiedad del operador en cualquier entorno.
+Cada instancia de `os-totebox` está prevista para distribuirse como una única imagen de arranque firmada. El operador la toma y la mueve entre proveedores de nube, un servidor privado o hardware propio en sus instalaciones. No hay sistema operativo anfitrión subyacente que posea las claves. Esta portabilidad es un objetivo de diseño — la instancia en ejecución permanece como propiedad del operador en cualquier entorno — no una concesión de licencia distinta; `os-totebox` en sí tiene licencia FSL, una de las dos licencias separadas dentro de la familia de sistemas operativos (véase [[legal-and-ip-structure]]).
 
 ## Véase también
 
