@@ -26,7 +26,7 @@ La arquitectura de almacenamiento del [[worm-ledger-design|libro de registros WO
 La arquitectura de almacenamiento **especifica** el estándar **C2SP tlog-tiles** como primitivo de almacenamiento objetivo, dividiendo el historial de datos en archivos estáticos e inmutables. El backend de bloques está planificado y aún no implementado.
 - **Durabilidad Atómica (actual):** Los registros se escriben en un archivo temporal, se sincronizan con `fsync` y se renombran atómicamente a la ruta canónica.
 - **Transparencia de Texto Plano (planificado):** Bajo el formato de bloques objetivo, los bloques se almacenan como texto base64 delimitado por saltos de línea, inspeccionable con utilidades Unix estándar.
-- **Integridad Basada en Merkle (planificado):** El diseño encadena cada entrada en una estructura Merkle para permitir pruebas de inclusión y consistencia. **Este es el modelo previsto — la compilación actual de `service-fs` registra resúmenes por carga y aún no construye un árbol Merkle ni sirve pruebas.**
+- **Integridad Basada en Cadena (actual), Árbol Merkle (planificado):** El hash de cada entrada se encadena con el de la anterior, y `service-fs` ya sirve hoy pruebas reales de inclusión y consistencia contra esa cadena — recalculando el segmento de cadena relevante y comparándolo con el hash raíz registrado en un punto de control firmado. Lo que el diseño busca y aún no tiene es un verdadero árbol Merkle ramificado, que haría que el tamaño de una prueba fuera independiente de cuán atrás esté la entrada, en lugar de escalar con la longitud del segmento de cadena.
 
 ## Dualidad de Ejecución
 

@@ -25,7 +25,7 @@ The storage architecture **specifies** the **C2SP tlog-tiles** format as its tar
 
 * **Atomic Durability (current):** Records are written to a temporary file, synchronised with `fsync`, and renamed atomically to the canonical path. This ensures that partial writes never corrupt the ledger state.
 * **Plain-Text Transparency (planned):** Under the target tile format, tiles are stored as newline-delimited base64 text, inspectable using standard Unix utilities (`cat`, `base64`, `sha256sum`).
-* **Merkle-Based Integrity (planned):** The design chains every entry into a Merkle structure to allow inclusion proofs and consistency checks. **This is the intended model — the current `service-fs` build records per-payload digests and does not yet construct a Merkle tree or serve proofs.**
+* **Chain-Based Integrity (current), Merkle Tree (planned):** Every entry's hash chains into the one before it, and `service-fs` already serves real inclusion and consistency proofs against that chain today — recomputing the relevant chain segment and checking it against a signed checkpoint's recorded root hash. What the design targets and doesn't yet have is a true branching Merkle tree, which would make a proof's size independent of how far back the entry sits rather than scaling with the chain segment length.
 
 ## 2. Dual-target runtime envelopes
 
