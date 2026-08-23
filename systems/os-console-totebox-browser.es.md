@@ -14,13 +14,11 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: TRANSLATE-ES
-last_edited: 2026-07-18
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: os-console-totebox-browser.md
 cites: []
 ---
-
-# os-console: El Navegador de Totebox Orchestration
 
 os-console es la superficie de terminal del operador para [[totebox-orchestration|Totebox Orchestration]]. Se
 ejecuta en la máquina host del operador —un ordenador personal, una estación de trabajo
@@ -62,14 +60,17 @@ Una pestaña del navegador es un proceso de renderizado con un origen definido. 
 acceder a recursos de su origen y no puede leer la memoria de otras pestañas. El
 navegador aplica este límite.
 
-En os-console, cada cartridge de tecla F es una aplicación distinta:
+En os-console, cada cartridge de tecla F registrado es una aplicación distinta — véase
+[[os-console|os-console]] para el panorama completo, incluidos los directorios
+`app-console-*` que existen en disco pero aún no tienen una implementación funcional
+registrada:
 
 | Tecla | Cartridge | Servicio |
 |---|---|---|
 | F2 | Personas | [[service-people]] |
 | F3 | Email | [[service-email]] |
 | F4 | Contenido | [[service-content]] |
-| F6 | Contabilidad | service-bookkeeper |
+| F5 | Búsqueda | — |
 | F9 | SLM | [[service-slm]] |
 | F11 | Sistema / Emparejamiento | pairing-server |
 | F12 | Entrada / Auditoría | [[service-input]] |
@@ -155,7 +156,7 @@ La intención de diseño para os-console es que no requiera conocimientos técni
 2. **Descubrimiento**: os-console detecta automáticamente los Toteboxes en la red local.
 3. **Emparejamiento**: F11 muestra un código QR; el administrador del Totebox lo escanea;
    los cartridges se activan.
-4. **Uso**: las teclas F navegan entre Personas, Email, Contenido, Contabilidad, SLM.
+4. **Uso**: las teclas F navegan entre Personas, Email, Contenido, Búsqueda, SLM.
 5. **Pegar**: Cmd+V / Ctrl+V funciona en cualquier cartridge. Deposita archivos en la
    Carpeta de Seguimiento.
 6. **Sin configuración**: sin direcciones IP que escribir, sin puertos que recordar, sin

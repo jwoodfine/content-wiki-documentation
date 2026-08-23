@@ -14,13 +14,11 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-07-18
+last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: os-console-totebox-browser.es.md
 cites: []
 ---
-
-# os-console: The Totebox Orchestration Browser
 
 os-console is the operator terminal surface for [[totebox-orchestration|Totebox Orchestration]]. It runs on the
 operator's host machine — a personal computer, workstation, or thin client — and presents
@@ -61,14 +59,16 @@ leave the operator's premises.
 A browser tab is a renderer process with a defined origin. It can reach resources from
 its origin and cannot read memory from other tabs. The browser enforces this boundary.
 
-In os-console, each F-key cartridge is a distinct application:
+In os-console, each registered F-key cartridge is a distinct application. See
+[[os-console|os-console]] for the full picture, including which `app-console-*`
+directories exist on disk but have no working implementation registered yet:
 
 | Key | Cartridge | Service |
 |---|---|---|
 | F2 | People | [[service-people|service-people]] |
 | F3 | Email | [[service-email|service-email]] |
 | F4 | Content | [[service-content|service-content]] |
-| F6 | Bookkeeper | service-bookkeeper |
+| F5 | Search | — |
 | F9 | SLM | [[service-slm|service-slm]] |
 | F11 | System | pairing-server |
 | F12 | Input | [[service-input|service-input]] |
@@ -166,7 +166,7 @@ The design intention for os-console is that it requires no technical knowledge t
 2. **Discover**: os-console auto-discovers Toteboxes on the local network or connects to
    a configured address.
 3. **Pair**: F11 shows a QR code; the Totebox admin scans it; cartridges activate.
-4. **Use**: F-keys navigate between People, Email, Content, Bookkeeper, SLM.
+4. **Use**: F-keys navigate between People, Email, Content, Search, SLM.
 5. **Paste**: Cmd+V / Ctrl+V works in any cartridge. Drop files into the Watch Folder.
 6. **No configuration**: no IP addresses to type, no ports to remember, no SSH keys to
    manage. The machine pairing token handles authentication.
