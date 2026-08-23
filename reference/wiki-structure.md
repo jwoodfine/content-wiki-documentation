@@ -7,7 +7,7 @@ index_group: platform-orientation
 type: topic
 content_type: topic
 quality: complete
-short_description: "A reader's map of the platform knowledge base: thirteen areas covering what PointSav builds, how it's built, and why it can be trusted, for every reader."
+short_description: "A reader's map of the platform knowledge base: fifteen areas covering what PointSav builds, how it's built, and why it can be trusted, for every reader."
 status: active
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
@@ -79,10 +79,19 @@ background. Each area name says plainly what it holds.
 - **How You Run It** — step-by-step instructions for the hands-on work:
   installing, configuring, deploying, operating. Customers run their
   own instance, so these are written for a reader at a keyboard.
+- **Self-Hosting** — running platform components on your own
+  infrastructure: booting the appliance images, deploying the wiki
+  engine, configuring the inference gateway, and running local
+  inference.
+- **Machine Authorization** — the credential and admission mechanisms
+  that gate who and what can act on the platform: pairing a device,
+  issuing a service-to-service capability token, and authenticating a
+  binary download.
 - **Glossary and Reference** — every term defined in plain words, plus
   the catalogues used across the knowledge base. The fastest route to
   an unfamiliar term.
-- ~~**Research**~~ (Correction, 2026-08-02: the `research/` category was retired 2026-07-15, `naming-convention.md` Decision #13 — no `research/` directory exists on disk, and `categories.yaml` lists thirteen categories, not fourteen. JOURNAL papers now publish to each product site's own `/research` page under the sovereign-per-surface model, not to this wiki. This article's own headline "fourteen areas" claim is corrected to thirteen in this pass, 2026-08-03.)
+
+JOURNAL research papers publish to each product site's own `/research` page rather than to this knowledge base.
 
 Every article is published in English and Spanish. Category pages list
 their articles alphabetically; each opens with a curated guide to the

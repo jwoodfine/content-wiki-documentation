@@ -7,7 +7,7 @@ type: topic
 content_type: topic
 quality: complete
 short_description: "Un mapa para el lector de la base de conocimiento de
-  la plataforma: trece áreas que cubren qué construye PointSav, cómo
+  la plataforma: quince áreas que cubren qué construye PointSav, cómo
   está construida, por qué se puede confiar en ella y cómo la operan los
   clientes — escrito para que tanto ingenieros como lectores del ámbito
   financiero puedan navegarla."
@@ -89,10 +89,19 @@ El nombre de cada área dice con claridad qué contiene.
   práctico: instalar, configurar, desplegar, operar. Los clientes operan
   su propia instancia, así que están escritas para un lector frente al
   teclado.
+- **Autohospedaje** — ejecutar componentes de la plataforma en tu
+  propia infraestructura: arrancar las imágenes de dispositivo,
+  desplegar el motor wiki, configurar la puerta de enlace de inferencia
+  y ejecutar inferencia local.
+- **Autorización de máquinas** — los mecanismos de credencial y
+  admisión que determinan quién y qué puede actuar en la plataforma:
+  emparejar un dispositivo, emitir un token de capacidad
+  servicio-a-servicio y autenticar una descarga de binario.
 - **Glosario y referencia** — cada término definido en palabras
   sencillas, más los catálogos usados en toda la base de conocimiento.
   La vía más rápida hacia un término desconocido.
-- ~~**Investigación**~~ (Corrección, 2026-08-03, en paridad con la versión en inglés: la categoría `research/` fue retirada el 2026-07-15, Decisión #13 de `naming-convention.md` — no existe ningún directorio `research/` en el disco, y `categories.yaml` lista trece categorías, no catorce. Los artículos JOURNAL ahora se publican en la propia página `/research` de cada sitio de producto bajo el modelo soberano por superficie, no en esta wiki. La afirmación del propio titular de este artículo, "catorce áreas", se corrige a trece en este pase.)
+
+Los artículos de investigación JOURNAL se publican en la propia página `/research` de cada sitio de producto, no en esta base de conocimiento.
 
 Cada artículo se publica en inglés y en español. Las páginas de
 categoría listan sus artículos alfabéticamente; cada una abre con una
