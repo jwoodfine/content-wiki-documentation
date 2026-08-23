@@ -40,7 +40,7 @@ Tres restricciones rigen qué hardware puede ejecutar el sustrato PointSav:
 | Extensión requerida | `fsgsbase` — utilizada por las rutas optimizadas del micronúcleo seL4 |
 | Paginación de memoria | 1 GB de Huge Pages habilitado (flag de CPU `+pdpe1gb`) |
 
-Las CPUs anteriores a Haswell — Nehalem y anteriores — carecen de `fsgsbase`. Intentar ejecutar el núcleo en hardware pre-Haswell provoca un `UserException` en la primera impresión del núcleo. La restricción es un requisito funcional, no una preferencia de rendimiento.
+Las CPUs anteriores a Haswell — Nehalem y anteriores — carecen de `fsgsbase`. El propio código de arranque del núcleo comprueba directamente la instrucción: en un procesador que carece de ella, la secuencia de arranque imprime "fsgsbase instructions not supported by the processor" y se detiene, antes de que exista ningún contexto de espacio de usuario. La restricción es un requisito funcional, no una preferencia de rendimiento.
 
 ## Patrones de despliegue de infraestructura
 
