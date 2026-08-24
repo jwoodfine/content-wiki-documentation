@@ -10,7 +10,7 @@ type: topic
 content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: customer-tier-catalog-pattern.es.md
 index_group: deployment-and-configuration
@@ -68,4 +68,4 @@ The catalog entry persists after decommissioning. A future instance of the same 
 
 - [[editorial-pipeline-three-stages]] — an example of a catalog-defined pipeline that a provisioned instance runs
 - [[language-protocol-substrate]] — the genre family substrate an editorial-pipeline instance implements
-- [[os-totebox]] — the operating environment in which cluster-type deployments run
+- [[totebox-os]] — the operating environment in which cluster-type deployments run

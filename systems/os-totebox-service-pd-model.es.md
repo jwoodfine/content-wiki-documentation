@@ -13,7 +13,7 @@ paired_with: os-totebox-service-pd-model.md
 category: systems
 status: active
 quality: complete
-last_edited: 2026-08-06
+last_edited: 2026-08-24
 ---
 
 **Estado (2026-08-06):** la imagen seL4 Microkit que describe este artículo ha pasado de
@@ -51,7 +51,7 @@ Estos son los límites actuales y factuales del despliegue. La
 verificación de arranque e inferencia anterior es real y actual; las garantías de
 persistencia, disponibilidad y anclaje del registro aún no se han entregado.
 
-[[os-totebox]] está diseñado para ser el nivel de Bóveda de Datos WORM Soberana en la [[topic-three-binary-architecture|arquitectura de tres binarios]], con la intención de ejecutarse como un sistema operativo de metal desnudo Tipo I sobre el [[sel4-microkernel-substrate|micronúcleo seL4]] — sin shell, sin proceso root, sin sistema init, sin gestor de paquetes — una vez que se distribuya la imagen seL4 de la Fase H1. En ese diseño de estado final, cada servicio que maneja datos duraderos se convertiría en un Dominio de Protección (PD) seL4: una unidad de aislamiento reforzada por hardware cuyo conjunto de capacidades queda fijo en el momento de la compilación y no puede ampliarse en tiempo de ejecución. Este artículo explica qué significa ese diseño, por qué toma la forma que tiene y cómo dos herramientas planificadas — moonshot-sel4-vmm y [[moonshot-toolkit-build-orchestrator|moonshot-toolkit]] — están pensadas para convertir binarios de servicio Rust convencionales en un grafo de PD formalmente verificado.
+[[totebox-os]] está diseñado para ser el nivel de Bóveda de Datos WORM Soberana en la [[three-binary-architecture|arquitectura de tres binarios]], con la intención de ejecutarse como un sistema operativo de metal desnudo Tipo I sobre el [[sel4-microkernel-substrate|micronúcleo seL4]] — sin shell, sin proceso root, sin sistema init, sin gestor de paquetes — una vez que se distribuya la imagen seL4 de la Fase H1. En ese diseño de estado final, cada servicio que maneja datos duraderos se convertiría en un Dominio de Protección (PD) seL4: una unidad de aislamiento reforzada por hardware cuyo conjunto de capacidades queda fijo en el momento de la compilación y no puede ampliarse en tiempo de ejecución. Este artículo explica qué significa ese diseño, por qué toma la forma que tiene y cómo dos herramientas planificadas — moonshot-sel4-vmm y [[moonshot-toolkit-build-orchestrator|moonshot-toolkit]] — están pensadas para convertir binarios de servicio Rust convencionales en un grafo de PD formalmente verificado.
 
 ## La cadena de herramientas que lo hace posible
 
@@ -59,7 +59,7 @@ Dos componentes están previstos para ensamblar la imagen de sistema de os-toteb
 
 **moonshot-sel4-vmm** es un crate Rust de aproximadamente 300 líneas que actúa como entorno de ejecución de PD. Proporciona la macro de punto de entrada `sel4_main!` que cada binario de servicio utiliza en lugar de `fn main()`, inicializa los canales IPC entre PDs en el arranque y registra el latido de cada PD con el watchdog. El crate tiene como objetivo la ABI de seL4 Microkit; no utiliza el crate externo rust-sel4. Esa dependencia externa fue evaluada y rechazada: el entorno de ejecución soberano es el único enlace Rust a seL4 en uso.
 
-**moonshot-toolkit** es el constructor de imágenes de sistema (v0.3.1, 35 pruebas, Fase 1C completada). Lee una especificación de sistema en formato TOML — `examples/os-totebox.toml` — y genera un archivo `.system` que describe el grafo de PD completo: qué PDs existen, qué capacidades tiene cada uno, cómo están conectados los extremos IPC y qué regiones de memoria se asignan. El verificador de imágenes del toolkit comprueba, en tiempo de compilación, que la capacidad de dispositivo de bloque aparece exactamente una vez en la tabla de concesiones — en poder del PD [[service-fs-architecture|service-fs]] y de ningún otro PD. Si esa afirmación falla, la compilación falla.
+**moonshot-toolkit** es el constructor de imágenes de sistema (v0.3.1, 35 pruebas, Fase 1C completada). Lee una especificación de sistema en formato TOML — `examples/os-totebox.toml` — y genera un archivo `.system` que describe el grafo de PD completo: qué PDs existen, qué capacidades tiene cada uno, cómo están conectados los extremos IPC y qué regiones de memoria se asignan. El verificador de imágenes del toolkit comprueba, en tiempo de compilación, que la capacidad de dispositivo de bloque aparece exactamente una vez en la tabla de concesiones — en poder del PD [[service-fs|service-fs]] y de ningún otro PD. Si esa afirmación falla, la compilación falla.
 
 La especificación TOML es la declaración autoritativa única del grafo de PD. Un desarrollador que quiera entender qué servicio puede acceder a qué recurso lee `os-totebox.toml`, no un archivo de configuración en tiempo de ejecución ni un documento de política.
 

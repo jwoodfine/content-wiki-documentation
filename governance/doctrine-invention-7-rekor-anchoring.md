@@ -13,7 +13,7 @@ category: governance
 status: active
 quality: complete
 index_group: platform-disciplines
-last_edited: 2026-07-11
+last_edited: 2026-08-24
 ---
 
 Doctrine §III.7 defines the Integrity Anchor pattern: a monthly operation that bundles the workspace state hash, manifest hashes, and ledger hash, then posts the result to Sigstore Rekor — a public, append-only transparency log. The result is independently verifiable: anyone can confirm that this state existed at this time, under this identity, without trusting Foundry's own infrastructure.
@@ -91,7 +91,7 @@ Old shard entries remain readable for an extended period after rotation. Histori
 
 The anchor-emitter binary (`fs-anchor-emitter`) executes four steps in sequence:
 
-1. **Checkpoint fetch** — `GET /v1/checkpoint` from [[service-fs-architecture|service-fs]], with `X-Foundry-Module-ID` header set to `FS_MODULE_ID`. Returns the signed checkpoint JSON. Exit 2 on failure.
+1. **Checkpoint fetch** — `GET /v1/checkpoint` from [[service-fs|service-fs]], with `X-Foundry-Module-ID` header set to `FS_MODULE_ID`. Returns the signed checkpoint JSON. Exit 2 on failure.
 
 2. **Hashedrekord construction** — SHA-256 digest of the checkpoint JSON computed in-process; ephemeral Ed25519 keypair generated via OS RNG; checkpoint bytes signed; SPKI DER of the verifying key encoded. The `hashedRekordRequestV002` JSON body is assembled.
 

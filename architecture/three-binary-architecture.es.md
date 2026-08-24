@@ -14,7 +14,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: TRANSLATE-ES
-last_edited: 2026-06-20
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: three-binary-architecture.md
 cites: []
@@ -70,13 +70,13 @@ de aplicaciones alojadas. Juntos forman un sistema completo para la gestión sob
 
 ## os-totebox: Almacén de Datos WORM Soberano
 
-[[os-totebox]] es el despliegue del lado del cliente. Se ejecuta en hardware bajo el control
+[[totebox-os]] es el despliegue del lado del cliente. Se ejecuta en hardware bajo el control
 físico del cliente — una máquina tipo NUC, una VM de GCP o un servidor privado. Su función
 es alojar los servicios de los [[three-ring-architecture|Anillos 1 y 2]]:
 
 **Anillo 1 — Ingesta en el Límite:**
 - `service-fs` — [[worm-ledger-architecture|sistema de archivos de solo adición WORM]]; cada escritura es una entrada de registro
-- `service-input` — ingesta de entrada estructurada de operadores [[os-console-architecture|os-console]]
+- `service-input` — ingesta de entrada estructurada de operadores [[os-console|os-console]]
 - `service-extraction` — pipeline de extracción de entidades de emails y documentos
 - `service-egress` — flujo de datos de salida controlado
 

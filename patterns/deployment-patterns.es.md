@@ -12,7 +12,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: deployment-patterns.md
 references:
@@ -24,7 +24,7 @@ references:
     url: "https://www.opengroup.org/togaf"
 ---
 
-Los patrones de despliegue describen las seis configuraciones canónicas en las que se despliega el sustrato PointSav en diferentes contextos institucionales, cada una construida sobre la [[three-ring-architecture|arquitectura de tres anillos]]. Cada configuración se basa en los mismos cinco primitivos — Personas, Comunicaciones, Borradores, Registros, Dinero — y la misma superficie de [[console-os|Libro Mayor de Comandos]]; lo que cambia por configuración es el [[archetypes-and-chart-of-accounts|Plan de Cuentas]] y la superficie de cumplimiento. El sustrato no se bifurca entre segmentos; se adapta. Al finalizar este artículo, el lector comprenderá el posicionamiento de Compañero, las seis configuraciones canónicas y el modelo de aislamiento de cartuchos en tiempo de compilación que hace práctica la versión independiente en los seis.
+Los patrones de despliegue describen las seis configuraciones canónicas en las que se despliega el sustrato PointSav en diferentes contextos institucionales, cada una construida sobre la [[three-ring-architecture|arquitectura de tres anillos]]. Cada configuración se basa en los mismos cinco primitivos — Personas, Comunicaciones, Borradores, Registros, Dinero — y la misma superficie de [[os-console|Libro Mayor de Comandos]]; lo que cambia por configuración es el [[archetypes-and-chart-of-accounts|Plan de Cuentas]] y la superficie de cumplimiento. El sustrato no se bifurca entre segmentos; se adapta. Al finalizar este artículo, el lector comprenderá el posicionamiento de Compañero, las seis configuraciones canónicas y el modelo de aislamiento de cartuchos en tiempo de compilación que hace práctica la versión independiente en los seis.
 
 ## Cinco primitivos que abarcan todos los contextos institucionales [^2]
 
@@ -38,7 +38,7 @@ Cada contexto en el que operan los usuarios institucionales se asigna a las mism
 | Registros | Documentos firmados, sellados o ejecutados |
 | Dinero | Registros financieros, facturas, entradas del libro mayor |
 
-El [[console-os|Libro Mayor de Comandos]] expone cada primitivo como una superficie de tecla F dedicada. El operador presiona una tecla; el chasis carga el plugin relevante; el plugin muestra los registros de ese primitivo dentro del contexto [[totebox-os|Totebox]] actual.
+El [[os-console|Libro Mayor de Comandos]] expone cada primitivo como una superficie de tecla F dedicada. El operador presiona una tecla; el chasis carga el plugin relevante; el plugin muestra los registros de ese primitivo dentro del contexto [[totebox-os|Totebox]] actual.
 
 ## Cómo la plataforma opera junto a las herramientas incumbentes
 
@@ -56,7 +56,7 @@ El cliente no necesita abandonar ninguna herramienta funcional. El sustrato oper
 
 ## Seis configuraciones de despliegue canónicas
 
-Las seis configuraciones representan familias de GUIDEs distintas en el catálogo de despliegue de flota. Cada una es una configuración, no un producto separado; el [[totebox-os]], el [[console-os|os-console]] y los servicios subyacentes son idénticos en las seis.
+Las seis configuraciones representan familias de GUIDEs distintas en el catálogo de despliegue de flota. Cada una es una configuración, no un producto separado; el [[totebox-os]], el [[os-console|os-console]] y los servicios subyacentes son idénticos en las seis.
 
 | Configuración | Registros principales | Adaptación del [[archetypes-and-chart-of-accounts|Plan de Cuentas]] |
 |---|---|---|
@@ -69,7 +69,7 @@ Las seis configuraciones representan familias de GUIDEs distintas en el catálog
 
 ## Aislamiento de cartuchos dentro del Libro Mayor de Comandos
 
-El [[console-os|Libro Mayor de Comandos]] es una aplicación de terminal, no una superficie web — no tiene capa HTTP ni HTML, CSS o JavaScript en ninguna parte. **Cada tecla de función carga un fragmento de código completamente separado y compilado de forma independiente, y ningún cartucho puede leer el estado de otro por accidente** — esa separación la aplica el compilador, no una comprobación de permisos en tiempo de ejecución. El chasis es una capa vacía que registra un conjunto fijo de objetos Rust — uno por cartucho — al iniciar. Cuando el operador presiona F2, el chasis despacha al cartucho de Personas ya registrado; F3 despacha al de Correo.
+El [[os-console|Libro Mayor de Comandos]] es una aplicación de terminal, no una superficie web — no tiene capa HTTP ni HTML, CSS o JavaScript en ninguna parte. **Cada tecla de función carga un fragmento de código completamente separado y compilado de forma independiente, y ningún cartucho puede leer el estado de otro por accidente** — esa separación la aplica el compilador, no una comprobación de permisos en tiempo de ejecución. El chasis es una capa vacía que registra un conjunto fijo de objetos Rust — uno por cartucho — al iniciar. Cuando el operador presiona F2, el chasis despacha al cartucho de Personas ya registrado; F3 despacha al de Correo.
 
 | Propiedad de aislamiento | Efecto |
 |---|---|
@@ -99,6 +99,6 @@ Los patrones de despliegue se lanzan con una cadencia de visible-primero: la URL
 - [[three-ring-architecture]] — la arquitectura de anillos que cada configuración despliega
 - [[three-layer-architecture]] — el modelo de tres capas Software / Exhibición / Instancias
 - [[archetypes-and-chart-of-accounts]] — la taxonomía del Plan de Cuentas que se adapta por configuración
-- [[console-os|os-console]] — la superficie del Libro Mayor de Comandos común a las seis configuraciones
+- [[os-console|os-console]] — la superficie del Libro Mayor de Comandos común a las seis configuraciones
 - [[totebox-os]] — el sistema operativo Totebox que aloja los archivos de cada configuración
 - [[self-host-a-deployment]] — guía paso a paso: desplegar una configuración de este catálogo en infraestructura propia

@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-06
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: os-workplace.es.md
 short_description: "os-workplace is the planned free desktop tier in the PointSav family — today a growing set of independent Rust and Tauri apps an operator runs on their own computer, joining the network as a station-* WireGuard peer; the intended adoption gateway to the commercial line."
@@ -56,7 +56,7 @@ require the unified `os-workplace` shell to run.
 **Ratified 2026-05-23** (`DOCTRINE.md §IV.f`); implementation pending. `os-workplace` runs on the
 operator's own personal computer — today, a MacBook — and is planned to deliver
 `app-workplace-desktop`, the unified operator desktop surface that would bind the apps above into
-one environment. It hosts [[console-os|`os-console`]] as a co-resident application, not through
+one environment. It hosts [[os-console|`os-console`]] as a co-resident application, not through
 Type 2 virtualization — the two are independent layers sharing the same machine. The machine joins
 the [[ppn-architecture-overview|PointSav Private Network]] as a direct WireGuard peer in the
 `10.42.20.0/24` range; the `node-*` instance of `os-console` it hosts inherits that membership
@@ -78,7 +78,7 @@ usernames or passwords; the pairing is the permission.
 Three reasons make `os-workplace` a structural commitment rather than a marketing gesture:
 
 1. **Adoption funnel.** A free, fast set of desktop apps is intended to introduce the operator to
-   the F-key discipline of [[console-os|`os-console`]] and the security model of the
+   the F-key discipline of [[os-console|`os-console`]] and the security model of the
    [[diode-standard|Diode]], so the commercial products feel familiar from day one.
 2. **Reference implementation.** Every line of code written for the workplace apps is reviewable
    in the public monorepo. Customers can audit the [[compounding-substrate|substrate]] before they
@@ -92,7 +92,7 @@ Three reasons make `os-workplace` a structural commitment rather than a marketin
 
 - [[os-family-overview]] — the eight-OS family and where os-workplace fits
 - [[totebox-os]] — the data partner; the archive os-workplace pairs with
-- [[console-os]] — the co-resident TUI-first surface that carries os-workplace's network
+- [[os-console]] — the co-resident TUI-first surface that carries os-workplace's network
   connection
 - [[machine-based-auth]] — the pairing model that replaces usernames and passwords
 - [[ppn-architecture-overview]] — the WireGuard network that station-* deployments join

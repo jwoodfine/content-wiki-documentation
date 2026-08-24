@@ -13,7 +13,7 @@ category: infrastructure
 index_group: storage-substrate
 status: active
 quality: complete
-last_edited: 2026-07-18
+last_edited: 2026-08-24
 editor: pointsav-engineering
 ---
 
@@ -209,7 +209,7 @@ Supuestos materiales para la transición a seL4: el ecosistema rust-sel4 y sel4-
 
 - [[worm-ledger-design]] — mapeo de cumplimiento normativo y el argumento de inmutabilidad estructural
 - [[worm-ledger-storage-architecture]] — detalle de la capa de almacenamiento: formato de tiles, durabilidad atómica y sobres de doble objetivo
-- [[service-fs-architecture]] — el servicio que implementa esta arquitectura como ledger desplegado por tenant
+- [[service-fs]] — el servicio que implementa esta arquitectura como ledger desplegado por tenant
 - [[app-console-input]] — la puerta F12 de verificación con intervención humana que es el control de calidad aguas arriba del ledger
 - [[sel4-microkernel-substrate]] — la trayectoria prevista de cumplimiento de capacidades seL4 para el aislamiento entre tenants
 - [[verify-worm-ledger]] — guía paso a paso: exportar un tile, verificar la cadena de hashes y validar el checkpoint firmado

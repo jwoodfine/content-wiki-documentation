@@ -11,13 +11,13 @@ short_description: "app-mediakit-marketing es un servidor web en Rust que entreg
 status: active
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: app-mediakit-marketing.md
 cites: []
 ---
 
-`app-mediakit-marketing` es un servidor web en Rust que entrega páginas de inicio de marketing — renderizadas en el servidor, con la IA como autora principal. Una página es un manifiesto tipado, no HTML ni Markdown libre: compone un título, una descripción, un idioma y una lista ordenada de secciones tipadas (una "hero", por ejemplo) tomadas del vocabulario de secciones compartido de [[app-mediakit-shell|`app-mediakit-shell`]]. El binario valida cada manifiesto contra ese vocabulario antes de poder renderizarlo, de modo que un manifiesto se ajusta o se rechaza — no existe una página parcial o malformada.
+`app-mediakit-marketing` es un servidor web en Rust que entrega páginas de inicio de marketing — renderizadas en el servidor, con la IA como autora principal. Una página es un manifiesto tipado, no HTML ni Markdown libre: compone un título, una descripción, un idioma y una lista ordenada de secciones tipadas (una "hero", por ejemplo) tomadas del vocabulario de secciones compartido de `app-mediakit-shell`. El binario valida cada manifiesto contra ese vocabulario antes de poder renderizarlo, de modo que un manifiesto se ajusta o se rechaza — no existe una página parcial o malformada.
 
 ## Redacción por agente, publicación con aprobación humana
 
@@ -83,6 +83,6 @@ Ambos sitios ejecutan el mismo binario `app-mediakit-marketing`. La diferencia e
 ## Véase también
 
 - [[app-mediakit-knowledge]] — servidor Rust hermano para contenido de base de conocimiento (mismo patrón arquitectónico)
-- [[app-mediakit-shell]] — el vocabulario de secciones tipadas compartido del que este crate compone páginas
+- `app-mediakit-shell` — el vocabulario de secciones tipadas compartido del que este crate compone páginas (todavía sin artículo en la wiki de documentación)
 - [[compounding-substrate]] — la disciplina arquitectónica soberana
 - [[totebox-archive]] — el Archivo Totebox que contiene el contenido canónico de cada inquilino

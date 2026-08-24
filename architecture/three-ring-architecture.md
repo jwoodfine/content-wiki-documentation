@@ -10,7 +10,7 @@ quality: complete
 short_description: "The durable composition pattern for the platform: three concentric rings with one-way dependencies, where the AI ring is structurally optional and data flows without it."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites: []
 paired_with: three-ring-architecture.es.md
@@ -47,7 +47,7 @@ Ring 1 produces raw data and depends on nothing else. Ring 2 reads from Ring 1, 
 
 | Ring | Service | Purpose | Required at all tiers? |
 |---|---|---|---|
-| 1 | [[service-fs-architecture|service-fs]] | [[worm-ledger-architecture|Immutable Ledger (WORM append-only)]] | Required |
+| 1 | [[service-fs|service-fs]] | [[worm-ledger-architecture|Immutable Ledger (WORM append-only)]] | Required |
 | 1 | [[service-people]] | Identity Ledger | Optional |
 | 1 | [[service-email]] | Communications Ledger | Optional |
 | 1 | service-input | Generic document ingestion | Optional |

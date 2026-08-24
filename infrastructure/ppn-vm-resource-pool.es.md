@@ -11,14 +11,14 @@ audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: TRANSLATE-ES
 index_group: compute-and-vm-fabric
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: ppn-vm-resource-pool.md
 short_description: "El pool de recursos VM de la PPN es una pila de tres servicios que aprovisiona, coloca y contabiliza máquinas virtuales en una malla WireGuard heterogénea que combina nodos en la nube y hardware físico."
 cites: []
 ---
 
-El pool de recursos de máquinas virtuales de la [[pointsav-private-network|Red Privada de PointSav]] (PPN) es una pila de tres servicios que aprovisiona, coloca y contabiliza máquinas virtuales en una malla WireGuard heterogénea. El pool combina nodos en la nube con hardware físico, formando un sustrato de cómputo distribuido que abarca distintos perfiles de capacidad.
+El pool de recursos de máquinas virtuales de la [[ppn-mesh-architecture|Red Privada de PointSav]] (PPN) es una pila de tres servicios que aprovisiona, coloca y contabiliza máquinas virtuales en una malla WireGuard heterogénea. El pool combina nodos en la nube con hardware físico, formando un sustrato de cómputo distribuido que abarca distintos perfiles de capacidad.
 
 Tres servicios dividen la superficie de responsabilidad. El [[service-vm-fleet|controlador de flota]] mantiene una visión global de la capacidad de los nodos y gestiona las decisiones de colocación. El agente de host se ejecuta por nodo como la autoridad de creación de VMs, comunicándose con el hipervisor y conservando el estado local de cada máquina virtual. El [[service-vm-tenant|proxy de inquilino]] se sitúa en el límite del cliente, aplicando autenticación, aislamiento del espacio de nombres del inquilino, límites de cuota y un registro de auditoría inmutable.
 

@@ -10,7 +10,7 @@ index_group: sovereignty-and-customer-ownership
 short_description: "El Archivo Totebox permanece completamente operativo y transferible libremente incluso cuando no hay ningún nivel de inferencia de IA disponible; el substrato determinístico es la base estructural."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites: []
 references:
@@ -25,7 +25,7 @@ El **Substrato sin Inferencia — El Caso Base** establece que el [[totebox-arch
 
 ## Lo que requiere el caso base
 
-Cuando los tres niveles de cómputo (especialista local, [[yoyo-compute-substrate|GPU en ráfaga]] y API externa) están simultáneamente no disponibles, todos los servicios determinísticos deben seguir siendo operativos: el registro de archivos WORM ([[service-fs-architecture|service-fs]]), el motor de conocimiento ([[service-content|`service-content`]]), el servicio de entrada, el [[service-extraction|servicio de extracción]] en su capa de análisis determinístico, el servicio de salida, y los servicios de personas, email y archivos. El [[compounding-doorman|Portero]] está vinculado y escuchando, devolviendo 503 a los endpoints de inferencia mientras mantiene los endpoints de salud y contrato siempre respondiendo. Las consultas y operaciones de la [[tui-corpus-producer|TUI]] del operador que no dependen de IA siguen funcionando; un modo "solo-determinístico" dedicado, con indicador visual propio, está previsto pero aún no construido como modo distinto.
+Cuando los tres niveles de cómputo (especialista local, [[yoyo-compute-substrate|GPU en ráfaga]] y API externa) están simultáneamente no disponibles, todos los servicios determinísticos deben seguir siendo operativos: el registro de archivos WORM ([[service-fs|service-fs]]), el motor de conocimiento ([[service-content|`service-content`]]), el servicio de entrada, el [[service-extraction|servicio de extracción]] en su capa de análisis determinístico, el servicio de salida, y los servicios de personas, email y archivos. El [[compounding-doorman|Portero]] está vinculado y escuchando, devolviendo 503 a los endpoints de inferencia mientras mantiene los endpoints de salud y contrato siempre respondiendo. Las consultas y operaciones de la [[tui-corpus-producer|TUI]] del operador que no dependen de IA siguen funcionando; un modo "solo-determinístico" dedicado, con indicador visual propio, está previsto pero aún no construido como modo distinto.
 
 Los [[reverse-flow-substrate|servicios de mercado y liquidación]] están previstos, no construidos todavía; cuando existan, el diseño prevé que se aplique la misma disciplina — las transacciones proceden sin fundamentación asistida por IA, con los registros de auditoría y consentimiento siempre aplicados.
 

@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-01
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: ppn-mesh-architecture.md
 short_description: "Malla WireGuard de concentrador y radios que conecta nodos de flota, con custodia física de claves en las instalaciones del operador e incorporación de nodos Mesh Fusion."
@@ -50,7 +50,7 @@ La estación de trabajo local almacena la configuración WireGuard maestra de la
 
 Si el retransmisor en la nube es destruido o desaprovisionado, la configuración maestra sobrevive en la estación de trabajo local. Un retransmisor de reemplazo solo requiere una nueva instancia en la nube con una nueva IP; las claves WireGuard que definen la red permanecen con el cliente, no con el proveedor. La red puede reconstruirse sin intervención del proveedor.
 
-La estación de trabajo local es también el objetivo de despliegue principal para `os-console`, la interfaz de consola nativa de teclado para las operaciones del Totebox Archive (véase [[os-console-platform]]).
+La estación de trabajo local es también el objetivo de despliegue principal para `os-console`, la interfaz de consola nativa de teclado para las operaciones del Totebox Archive (véase [[os-console]]).
 
 ## El tejido criptográfico WireGuard
 
@@ -110,7 +110,7 @@ El Entrelazamiento de Almacenamiento Frío opera fuera de la PPN. Es un mecanism
 
 - [[ppn-architecture-overview]] — el modelo de cuatro capas de la PPN como plataforma de cómputo
 - [[machine-based-auth]] — el mecanismo de autorización de capa de aplicación que opera sobre la PPN
-- [[os-console-platform]] — la interfaz de consola para operadores que utilizan archivos conectados a través de la PPN
+- [[os-console]] — la interfaz de consola para operadores que utilizan archivos conectados a través de la PPN
 - [[three-ring-architecture]] — la arquitectura de servicios que se ejecuta en la infraestructura PPN
 - [[sovereign-mesh]] — el detalle a nivel de protocolo: negociación criptográfica, formato de comandos, arquitectura de código por rol de nodo
 - [[ppn-command-protocol]] — el formato binario de 16 bytes para comandos de flota

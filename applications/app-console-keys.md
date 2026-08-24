@@ -11,14 +11,14 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: app-console-keys.es.md
 short_description: "app-console-keys is the always-installed base chassis of os-console, providing the Cartridge trait, F-key navigation strip, status bar, and auth client."
 cites: []
 ---
 
-`app-console-keys` is the always-installed base chassis of [[console-os|os-console]]. All other console modules — email, content, SLM monitoring, and the rest — are optional cartridges that plug into the framework `app-console-keys` defines. The module is mandatory: an `os-console` binary built without it will not compile.
+`app-console-keys` is the always-installed base chassis of [[os-console|os-console]]. All other console modules — email, content, SLM monitoring, and the rest — are optional cartridges that plug into the framework `app-console-keys` defines. The module is mandatory: an `os-console` binary built without it will not compile.
 
 **Naming note:** "keys" in `app-console-keys` refers to keyboard function keys — the F1 through F12 strip that navigates between cartridge slots. It does not refer to cryptographic keys. Cryptographic pairing and machine-based authorization are implemented by `system-gateway-mba`, a separate crate.
 
@@ -62,8 +62,8 @@ Profile-based configuration is stored at `~/.config/os-console/config.toml`. The
 
 ## See also
 
-- [[console-os]] — the os-console product overview, including the F-key surface and operating modes
-- [[os-console-platform]] — the complete cartridge architecture and F-key map
+- [[os-console]] — the os-console product overview, including the F-key surface and operating modes
+- [[os-console]] — the complete cartridge architecture and F-key map
 - [[app-console-input]] — the F12 mandatory input gate; always compiled alongside app-console-keys
 - [[machine-based-auth]] — the authorization mechanism the chassis client manages
 - [[three-ring-architecture]] — the Ring 1/2/3 architecture the authorization client connects to

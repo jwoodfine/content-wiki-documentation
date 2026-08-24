@@ -13,7 +13,7 @@ category: governance
 status: active
 quality: complete
 index_group: platform-disciplines
-last_edited: 2026-06-23
+last_edited: 2026-08-24
 ---
 
 La Doctrina §III.7 define el patrón Ancla de Integridad: una operación mensual que agrupa el hash del estado del espacio de trabajo, los hashes de manifiestos y el hash del registro, y publica el resultado en Sigstore Rekor — un registro de transparencia público y de solo anexado. El resultado es verificable de forma independiente: cualquier parte puede confirmar que este estado existió en este momento, bajo esta identidad, sin confiar en la infraestructura de Foundry.
@@ -91,7 +91,7 @@ Las entradas de fragmentos antiguos siguen siendo legibles durante un período p
 
 El binario emisor-de-ancla (`fs-anchor-emitter`) ejecuta cuatro pasos en secuencia:
 
-1. **Obtención del punto de control** — `GET /v1/checkpoint` a [[service-fs-architecture|service-fs]], con la cabecera `X-Foundry-Module-ID` configurada con el valor de `FS_MODULE_ID`. Devuelve el JSON del punto de control firmado. Salida con código 2 en caso de fallo.
+1. **Obtención del punto de control** — `GET /v1/checkpoint` a [[service-fs|service-fs]], con la cabecera `X-Foundry-Module-ID` configurada con el valor de `FS_MODULE_ID`. Devuelve el JSON del punto de control firmado. Salida con código 2 en caso de fallo.
 
 2. **Construcción del hashedrekord** — se calcula el resumen SHA-256 del JSON del punto de control en el propio proceso; se genera un par de claves Ed25519 efímeras mediante el generador de números aleatorios del sistema operativo; se firman los bytes del punto de control; se codifica el DER SPKI de la clave de verificación. Se ensambla el cuerpo JSON `hashedRekordRequestV002`.
 

@@ -14,7 +14,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-20
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: three-binary-architecture.es.md
 cites: []
@@ -70,7 +70,7 @@ applications. Together they form a complete system for sovereign data management
 
 ## os-totebox: Sovereign WORM Data Vault
 
-[[os-totebox|os-totebox]] is the customer-side deployment. It runs on hardware under the customer's
+[[totebox-os|os-totebox]] is the customer-side deployment. It runs on hardware under the customer's
 physical control — a NUC-class machine, a GCP VM, or a private server. Its function is
 to host the [[three-ring-architecture|Ring 1 and Ring 2]] services:
 
@@ -98,7 +98,7 @@ device capability; no other PD can reach the physical storage directly.
 
 ## os-console: Operator Terminal Surface
 
-[[os-console-architecture|os-console]] runs on the operator's personal machine. It is the interface through which
+[[os-console|os-console]] runs on the operator's personal machine. It is the interface through which
 the operator interacts with Totebox services. It does not store data — it renders views
 of data that lives in os-totebox.
 

@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: six-tier-sovereignty-matrix.es.md
 short_description: "Six fixed directory prefixes organising the PointSav monorepo by purpose, making the repository self-documenting and enforcing dependency hygiene by convention."
@@ -29,7 +29,7 @@ Every directory at the monorepo root falls into one of the following tiers:
 | 1 — Application | `app-` | User-facing surfaces — the personality cartridges that define how a job looks and feels | `app-console-input`, `app-mediakit-marketing`, `app-orchestration-command` |
 | 2 — Asset | `asset-` | Non-code resources — fonts, icons, 3D models, design tokens, brand assets | Reserved prefix, no directory populated yet |
 | 3 — Moonshot | `moonshot-` | Research and development experiments not yet promoted to production | `moonshot-gpu` |
-| 4 — OS | `os-` | Operating-system compositions — the runtime containers that load other components | [[console-os|`os-console`]], [[totebox-os|`os-totebox`]], [[os-orchestration|`os-orchestration`]] |
+| 4 — OS | `os-` | Operating-system compositions — the runtime containers that load other components | [[os-console|`os-console`]], [[totebox-os|`os-totebox`]], [[os-orchestration|`os-orchestration`]] |
 | 5 — Service | `service-` | Background business-logic daemons | [[service-slm|`service-slm`]], [[service-content|`service-content`]], [[service-email|`service-email`]], [[service-people|`service-people`]] |
 | 6 — System | `system-` | Foundational technology — drivers, networking, foundation utilities | `system-foundation`, `system-driver-network`, `system-audit` |
 

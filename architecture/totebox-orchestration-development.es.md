@@ -10,7 +10,7 @@ quality: complete
 short_description: "El entorno de desarrollo de PointSav está desplegado como una instancia de orquestación Totebox — el espacio de trabajo que construye la plataforma se ejecuta sobre la misma arquitectura que la plataforma entrega a los clientes."
 status: active
 bcsc_class: forward-looking
-last_edited: 2026-05-25
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: totebox-orchestration-development.md
 ---
@@ -52,7 +52,7 @@ La sesión de Comando es la única sesión que puede escribir archivos a nivel d
 
 Una sesión Totebox se abre dentro de un archivo específico. Opera dentro de ese archivo — escribiendo código, confirmando en ramas de staging, redactando contenido del wiki, actualizando el despliegue. No escribe en otros archivos, no modifica archivos del espacio de trabajo y no tiene acceso directo al almacén de identidades.
 
-El punto de entrada planificado es el comando de consola `open-archive`, previsto para leer el manifiesto del archivo, mostrar el estado de la tétrada y los mensajes pendientes, establecer las variables de entorno con alcance al archivo y abrir una sesión en el directorio raíz del archivo. Esto está pensado para reflejar cómo un cliente o miembro de la comunidad abre un [[totebox-archive|archivo Totebox]] a través de [[console-os|`os-console`]]: el flujo de trabajo de desarrollo es idéntico al flujo del cliente.
+El punto de entrada planificado es el comando de consola `open-archive`, previsto para leer el manifiesto del archivo, mostrar el estado de la tétrada y los mensajes pendientes, establecer las variables de entorno con alcance al archivo y abrir una sesión en el directorio raíz del archivo. Esto está pensado para reflejar cómo un cliente o miembro de la comunidad abre un [[totebox-archive|archivo Totebox]] a través de [[os-console|`os-console`]]: el flujo de trabajo de desarrollo es idéntico al flujo del cliente.
 
 ## La sesión raíz retirada
 

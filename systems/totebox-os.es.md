@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-06
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: totebox-os.md
 short_description: "os-totebox es la capa de archivo de la familia PointSav — una bóveda aislada por entidad, que almacena registros como archivos planos inertes sin operación de borrado y los expone únicamente a través del Diodo bajo comando de os-console u os-orchestration. Su vía de producción aloja un invitado Linux bajo el micronúcleo seL4; existen otras formas de host para compatibilidad y desarrollo local."
@@ -22,7 +22,7 @@ references:
     url: "https://doi.org/10.6028/NIST.SP.800-209"
 ---
 
-`os-totebox` es la capa de archivo de la familia PointSav: una bóveda aislada por entidad. Almacena los registros, ejecuta los servicios que los procesan y no expone nada más. Una entidad es cualquier cosa que necesita su propio conjunto de libros — una persona, una corporación, una propiedad inmobiliaria, un proyecto, un hogar. Cada entidad tiene su propio `os-totebox`. Los Toteboxes no comparten archivos, no comparten usuarios y no pueden verse entre sí. Se comunican únicamente a través del [[diode-standard|Diodo]], y solo bajo comando de [[console-os|os-console]] u [[os-orchestration]]. Este artículo cubre los servicios internos, la disciplina WORM, la forma actual del host, una limitación de persistencia conocida, los niveles de cómputo y el diseño libremente transferible.
+`os-totebox` es la capa de archivo de la familia PointSav: una bóveda aislada por entidad. Almacena los registros, ejecuta los servicios que los procesan y no expone nada más. Una entidad es cualquier cosa que necesita su propio conjunto de libros — una persona, una corporación, una propiedad inmobiliaria, un proyecto, un hogar. Cada entidad tiene su propio `os-totebox`. Los Toteboxes no comparten archivos, no comparten usuarios y no pueden verse entre sí. Se comunican únicamente a través del [[diode-standard|Diodo]], y solo bajo comando de [[os-console|os-console]] u [[os-orchestration]]. Este artículo cubre los servicios internos, la disciplina WORM, la forma actual del host, una limitación de persistencia conocida, los niveles de cómputo y el diseño libremente transferible.
 
 ## Qué vive dentro
 
@@ -77,7 +77,7 @@ Cada instancia de `os-totebox` está prevista para distribuirse como una única 
 ## Véase también
 
 - [[os-family-overview]] — dónde encaja os-totebox en la familia de ocho SO
-- [[console-os]] — el Libro Mayor de Comandos que se conecta a os-totebox y presenta su estado
+- [[os-console]] — el Libro Mayor de Comandos que se conecta a os-totebox y presenta su estado
 - [[os-orchestration]] — el agregador de flota que consulta muchos Toteboxes a la vez
 - [[diode-standard]] — el protocolo unidireccional a través del cual se comunica el Totebox
 - [[sel4-microkernel-substrate]] — el núcleo que sustenta las garantías de aislamiento de os-totebox

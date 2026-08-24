@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-01
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: ppn-mesh-architecture.es.md
 short_description: "Hub-and-spoke WireGuard mesh connecting fleet nodes, with physical key custody on the operator's premises and Mesh Fusion node joining."
@@ -50,7 +50,7 @@ The on-premises workstation holds the master WireGuard configuration for the fle
 
 If the cloud relay is destroyed or deprovisioned, the master configuration survives at the on-premises workstation. A replacement relay requires only a new cloud instance with a new IP; the WireGuard keys that define the network remain with the customer, not with the vendor. The network can be rebuilt without vendor involvement.
 
-The on-premises workstation is also the primary deployment target for `os-console`, the keyboard-native console interface for Totebox Archive operations (see [[os-console-platform]]).
+The on-premises workstation is also the primary deployment target for `os-console`, the keyboard-native console interface for Totebox Archive operations (see [[os-console]]).
 
 ## The WireGuard cryptographic fabric
 
@@ -110,7 +110,7 @@ Cold Storage Entanglement operates outside the PPN. It is a physical custody mec
 
 - [[ppn-architecture-overview]] — the four-layer model of PPN as a compute platform
 - [[machine-based-auth]] — the application-layer authorization mechanism that operates above the PPN
-- [[os-console-platform]] — the console interface for operators using archives connected through the PPN
+- [[os-console]] — the console interface for operators using archives connected through the PPN
 - [[three-ring-architecture]] — the service architecture that runs on the PPN infrastructure
 - [[sovereign-mesh]] — the protocol-level detail: cryptographic handshake, command wire format, node-role code architecture
 - [[ppn-command-protocol]] — the 16-byte binary wire format for fleet commands

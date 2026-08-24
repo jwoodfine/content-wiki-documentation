@@ -11,7 +11,7 @@ bcsc_class: public-disclosure-safe
 language: en
 paired_with: ppn-hypervisor-resource-pool.es.md
 index_group: compute-and-vm-fabric
-last_edited: 2026-07-11
+last_edited: 2026-08-24
 editor: editorial
 ---
 
@@ -101,4 +101,4 @@ The automated balloon controller — the component inside `os-infrastructure` th
 - [[totebox-archive]] — the sovereign data vault running inside each VM
 - [[ppn-distributed-vm-fabric]] — the planned cross-node extension: virtio-mem lending, distributed capability ledger, cross-node scheduler
 - [[sovereign-mesh]] — the WireGuard transport layer connecting PPN nodes
-- [[pointsav-private-network|PointSav Private Network]] — infrastructure overview; the resource pool is one component in the PPN stack
+- [[ppn-mesh-architecture|PointSav Private Network]] — infrastructure overview; the resource pool is one component in the PPN stack

@@ -13,7 +13,7 @@ audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
 language: es
-last_edited: 2026-07-09
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: ppn-small-business-compute.md
 short_description: "Una Red de Plataforma Privada ensambla máquinas que una empresa ya posee en un único conjunto de cómputo cifrado. El aislamiento de red mediante WireGuard está operativo hoy; el aislamiento de anfitrión mediante seL4 está planificado."
@@ -190,4 +190,4 @@ que el proyecto avanza.
 
 ## Véase también
 
-- [[os-totebox]] — el sistema operativo que ejecuta cargas de trabajo dentro de la PPN
+- [[totebox-os]] — el sistema operativo que ejecuta cargas de trabajo dentro de la PPN

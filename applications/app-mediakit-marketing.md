@@ -11,14 +11,14 @@ status: active
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: app-mediakit-marketing.es.md
 short_description: "app-mediakit-marketing is a Rust web server delivering marketing landing sites from typed page manifests — AI authors via MCP, a human approves before anything publishes. Serves home.woodfinegroup.com and home.pointsav.com."
 cites: []
 ---
 
-`app-mediakit-marketing` is a Rust web server that delivers marketing landing sites — server-rendered, agent-first. A page is a typed manifest, not free-form Markdown or HTML: it composes a title, description, language, and an ordered list of typed sections (a hero, for instance) drawn from the shared [[app-mediakit-shell|`app-mediakit-shell`]] section vocabulary. The binary validates every manifest against that vocabulary before it can render, so a manifest either conforms or is rejected — there is no partial or malformed page.
+`app-mediakit-marketing` is a Rust web server that delivers marketing landing sites — server-rendered, agent-first. A page is a typed manifest, not free-form Markdown or HTML: it composes a title, description, language, and an ordered list of typed sections (a hero, for instance) drawn from the shared `app-mediakit-shell` section vocabulary. The binary validates every manifest against that vocabulary before it can render, so a manifest either conforms or is rejected — there is no partial or malformed page.
 
 ## Agent-first authoring, human-gated publish
 
@@ -84,6 +84,6 @@ Both sites run the same `app-mediakit-marketing` binary. The difference is conte
 ## See also
 
 - [[app-mediakit-knowledge]] — sibling Rust server for knowledge-base content (same architectural pattern)
-- [[app-mediakit-shell]] — the shared typed-section vocabulary this crate composes pages from
+- `app-mediakit-shell` — the shared typed-section vocabulary this crate composes pages from (no documentation-wiki article yet)
 - [[compounding-substrate]] — sovereign architecture discipline
 - [[totebox-archive]] — the Totebox Archive that holds canonical content for each tenant

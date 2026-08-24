@@ -6,13 +6,13 @@ slug: sel4-aarch64-qemu-substrate-target
 short_description: "Base de hardware de la plataforma unikernel — seL4 verificado formalmente sobre AArch64 con la máquina virt de QEMU para desarrollo, pruebas y CI."
 category: substrate
 index_group: cryptographic-and-microkernel-primitives
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 status: stable
 bcsc_class: no-disclosure-implication
 ---
 
-Las [[topic-sel4-unikernel-substrate|imágenes de unikernel]] del stack de substrato se ejecutan sobre el [[sel4-microkernel-substrate|microkernel seL4]]
+Las [[sel4-unikernel-substrate|imágenes de unikernel]] del stack de substrato se ejecutan sobre el [[sel4-microkernel-substrate|microkernel seL4]]
 dirigido a la arquitectura de conjunto de instrucciones AArch64, con el modelo
 de máquina `virt` de QEMU como entorno de emulación principal para el desarrollo,
 las pruebas y la integración continua. Este objetivo fue seleccionado mediante

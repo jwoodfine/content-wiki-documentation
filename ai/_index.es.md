@@ -11,7 +11,7 @@ index_type: thematic
 index_scope: ai
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-06
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: _index.md
 ---
@@ -23,7 +23,7 @@ Esta es la puerta de entrada a la afirmación arquitectónica más distintiva de
 <!-- START-HERE-HIGHLIGHT: el motor lee este bloque para la tarjeta "empezar aquí"
      (reutiliza el componente cluster-card--start-here existente). No añadir más de una. -->
 
-**"El núcleo funciona completamente sin ella"** es la afirmación central de esta categoría, y el artículo que la sustenta — [[substrate-without-inference-base-case]] — vive en [[substrate|Componentes básicos]], no aquí. Léalo primero si está evaluando la afirmación de contención en sí misma; todo lo demás la asume.
+**"El núcleo funciona completamente sin ella"** es la afirmación central de esta categoría, y el artículo que la sustenta — [[substrate-without-inference-base-case]] — vive en [Componentes básicos](/category/substrate), no aquí. Léalo primero si está evaluando la afirmación de contención en sí misma; todo lo demás la asume.
 
 <!-- END-START-HERE-HIGHLIGHT -->
 

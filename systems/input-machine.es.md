@@ -11,13 +11,13 @@ content_type: topic
 index_group: operator-surfaces
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: input-machine.md
 language: es
 ---
 
-La Máquina de Entrada es la puerta obligatoria de incorporación a través de la cual todos los documentos y textos ingresan a los flujos de trabajo de [[console-os|os-console]]. Ocupa permanentemente la tecla F12 en todas las configuraciones de teclado. Cada [[os-console-platform|cartucho]] en os-console depende de la Máquina de Entrada para su material de origen. Ningún flujo de trabajo la evita.
+La Máquina de Entrada es la puerta obligatoria de incorporación a través de la cual todos los documentos y textos ingresan a los flujos de trabajo de [[os-console|os-console]]. Ocupa permanentemente la tecla F12 en todas las configuraciones de teclado. Cada [[os-console|cartucho]] en os-console depende de la Máquina de Entrada para su material de origen. Ningún flujo de trabajo la evita.
 
 ## Por qué la posición es permanente
 
@@ -80,8 +80,8 @@ dónde coincidió el texto de la ruta, no qué cartucho envió el archivo.
 
 ## Véase también
 
-- [[console-os]] — la plataforma de os-console
+- [[os-console]] — la plataforma de os-console
 - [[machine-based-auth]] — el mecanismo de autorización de os-console
 - [[three-ring-architecture]] — la arquitectura de tres anillos
-- [[os-console-platform]] — la arquitectura de cartuchos y el mapa de teclas de función
+- [[os-console]] — la arquitectura de cartuchos y el mapa de teclas de función
 - [[worm-ledger-design]] — la disciplina del ledger de solo adición para los registros de auditoría

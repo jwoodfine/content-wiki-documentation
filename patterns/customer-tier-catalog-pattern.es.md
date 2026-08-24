@@ -10,7 +10,7 @@ type: topic
 content_type: topic
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: customer-tier-catalog-pattern.md
 index_group: deployment-and-configuration
@@ -58,7 +58,7 @@ El decomisionamiento sigue un modelo de dos partes: la sesión propietaria desma
 
 - [[editorial-pipeline-three-stages]] — un ejemplo de proceso definido en catálogo que ejecuta una instancia aprovisionada
 - [[language-protocol-substrate]] — el sustrato de familia de género que implementa un proceso editorial
-- [[os-totebox]] — el entorno operativo en el que se ejecutan los despliegues de tipo clúster
+- [[totebox-os]] — el entorno operativo en el que se ejecutan los despliegues de tipo clúster
 
 ## Procedencia
 

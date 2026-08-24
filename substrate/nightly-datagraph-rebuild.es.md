@@ -10,7 +10,7 @@ status: stub
 short_description: "El proceso programado que reconstruye el grafo de conocimiento de la plataforma cada noche. Existe un punto de control de aprobación humana para las entidades extraídas por IA, pero es opcional — un operador debe habilitarlo; por defecto, las escrituras automatizadas llegan al grafo sin revisión por elemento."
 bcsc_class: public-disclosure-safe
 lang: es
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: nightly-datagraph-rebuild.md
 ---
@@ -21,7 +21,7 @@ La reconstrucción nocturna del grafo de datos es el proceso programado que reco
 
 - El grafo se reconstruye a partir de fuentes de archivos planos cada noche, sin mantenimiento por mutación continua. Los consumidores leen una instantánea estable, no un grafo parcialmente construido en tiempo real.
 - Cada ciclo de reconstrucción puede replicarse a partir de archivos planos archivados, ya que la instantánea del libro de registros WORM que cada ciclo lee es en sí misma inmutable.
-- La extracción de entidades usa inferencia restringida por gramática a través del [[doorman-protocol|Doorman]] — esto es el Anillo 2 invocando al Anillo 3 para obtener una propuesta, no un paso determinista interno del Anillo 2. Existe un punto de control de captura-y-promoción exactamente para este caso — la salida de extracción puede retenerse para una aprobación firmada criptográficamente y revisada por un humano antes de convertirse en una escritura al grafo, en línea con el límite de [SYS-ADR-07](governance/architecture-decisions). Ese punto de control es opcional, no el valor por defecto: un operador debe habilitarlo explícitamente. Con la configuración por defecto, la salida de extracción se escribe en el grafo de inmediato, sin revisión por elemento. Véase [[architecture/three-ring-architecture|la Arquitectura de Tres Anillos]] para la regla general que este punto de control implementa cuando está habilitado.
+- La extracción de entidades usa inferencia restringida por gramática a través del [[doorman-protocol|Doorman]] — esto es el Anillo 2 invocando al Anillo 3 para obtener una propuesta, no un paso determinista interno del Anillo 2. Existe un punto de control de captura-y-promoción exactamente para este caso — la salida de extracción puede retenerse para una aprobación firmada criptográficamente y revisada por un humano antes de convertirse en una escritura al grafo, en línea con el límite de [SYS-ADR-07](governance/architecture-decisions). Ese punto de control es opcional, no el valor por defecto: un operador debe habilitarlo explícitamente. Con la configuración por defecto, la salida de extracción se escribe en el grafo de inmediato, sin revisión por elemento. Véase [[three-ring-architecture|la Arquitectura de Tres Anillos]] para la regla general que este punto de control implementa cuando está habilitado.
 - Cada ciclo acumula el anterior. Los registros recién comprometidos extienden el grafo; ningún registro se elimina. El mecanismo [[compounding-substrate]] hace que el grafo crezca con precisión de forma monotónica con el tiempo.
 
 ## Propósito

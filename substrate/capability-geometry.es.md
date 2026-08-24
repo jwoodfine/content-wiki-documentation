@@ -14,7 +14,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: TRANSLATE-ES
-last_edited: 2026-06-20
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: capability-geometry.md
 cites: []
@@ -140,7 +140,7 @@ rastro de auditoría F12 se enruta a través de esta función de veredicto.
 
 ## Emparejamiento de Máquinas como Ceremonia de Acuñación de Capacidades
 
-El emparejamiento de máquinas F11 [[pairing-as-permission|(machine pairing)]] en [[os-console-architecture|os-console]] es la ceremonia de acuñación de
+El emparejamiento de máquinas F11 [[pairing-as-permission|(machine pairing)]] en [[os-console|os-console]] es la ceremonia de acuñación de
 capacidades prevista para el acceso a Totebox (planificado; Fase H3 de la hoja de ruta
 del sustrato os-console):
 

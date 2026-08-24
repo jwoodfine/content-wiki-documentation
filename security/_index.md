@@ -11,7 +11,7 @@ quality: complete
 short_description: "How the platform is protected and how its records are verified: identity and permissions, cryptographic verification, isolation boundaries, how data is handled and kept private, and the supply-chain controls designed to keep code honest."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-04
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: _index.es.md
 ---
@@ -58,7 +58,7 @@ How a reader independently checks that a record hasn't been altered.
 
 What contains a compromise once one occurs. Thin relative to the category's own scope — see the
 [[ppn-tenant-vm-isolation|tenant isolation]] and [[service-vm-tenant|VM tenant]] articles in
-[[infrastructure|Where It Runs]] for the commercially load-bearing case, which isn't yet
+[Where It Runs](/category/infrastructure) for the commercially load-bearing case, which isn't yet
 cross-referenced from here.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: isolation-boundaries -->

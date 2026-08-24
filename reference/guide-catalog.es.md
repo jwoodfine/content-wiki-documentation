@@ -8,7 +8,7 @@ type: topic
 content_type: topic
 status: stable
 language_protocol: TRANSLATE-ES
-last_edited: 2026-06-15
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: guide-catalog.md
 aliases:
@@ -78,7 +78,7 @@ Estas guías cubren el consumo de datos de la plataforma y la conexión de aplic
 - [[build-a-colocation-map]] — carga un archivo PMTiles directamente en MapLibre; no existe API REST ni clave de API
 - [[connect-osm-data-pipeline]] — ejecute el script real ingest-osm.py y registre una cadena en taxonomy.py
 - [[federate-archives-via-content-mounts]] — monte el contenido de un segundo repositorio en una instancia en ejecución
-- [[use-knowledge-mounts]] — el esquema real de [[mount]], y el riesgo real (un espacio de nombres compartido y plano, no aislado por montaje)
+- [[use-knowledge-mounts]] — el esquema real de `[[mount]]`, y el riesgo real (un espacio de nombres compartido y plano, no aislado por montaje)
 
 ## Autoalojamiento
 

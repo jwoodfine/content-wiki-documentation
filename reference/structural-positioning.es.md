@@ -87,7 +87,7 @@ La misma configuración de sustrato sirve a cada uno de los siguientes segmentos
 | Family office | Registros fiscales, documentos de sucesión, contratos del hogar |
 | Hogar | Recibos, garantías, correspondencia personal |
 
-Cada segmento utiliza los mismos cinco primitivos — Personas, Comunicaciones, Borradores, Registros, Dinero — bajo la misma superficie de [[console-os|Libro Mayor de Comandos]]. El sustrato no cambia. El Plan de Cuentas cambia.
+Cada segmento utiliza los mismos cinco primitivos — Personas, Comunicaciones, Borradores, Registros, Dinero — bajo la misma superficie de [[os-console|Libro Mayor de Comandos]]. El sustrato no cambia. El Plan de Cuentas cambia.
 
 ## Véase también
 

@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: os-orchestration.es.md
 short_description: "os-orchestration is the commercial-tier OS letting a single operator see, query, and command many Totebox archives at once — the Fleet Aggregator for enterprise deployments."
@@ -20,7 +20,7 @@ cites: []
 
 `os-orchestration` exists today as a registered, empty scaffold crate — its entire source is a placeholder status function, with no aggregation logic behind it. Everything this article describes is the intended design, not a shipped feature.
 
-`os-orchestration` is planned as the commercial-tier operating system intended to let a single operator see, query, and command many [[totebox-archive|Totebox archives]] at once. Where [[console-os|`os-console`]] connects to one [[totebox-os|`os-totebox`]], `os-orchestration` is intended as the hub between an operator's Console and a fleet of Toteboxes — what an executive would view to see the position of every property in a portfolio, every entity in a holding company, or every project in a development pipeline, in a single unified answer to "what is the state of the entire estate, right now?" This article covers the intended design: what `os-orchestration` is planned to do, what it is designed to deliberately not do, how aggregation is intended to work, the commercial features planned for it, and when it would be deployed. **None of this is built yet** — see the correction above.
+`os-orchestration` is planned as the commercial-tier operating system intended to let a single operator see, query, and command many [[totebox-archive|Totebox archives]] at once. Where [[os-console|`os-console`]] connects to one [[totebox-os|`os-totebox`]], `os-orchestration` is intended as the hub between an operator's Console and a fleet of Toteboxes — what an executive would view to see the position of every property in a portfolio, every entity in a holding company, or every project in a development pipeline, in a single unified answer to "what is the state of the entire estate, right now?" This article covers the intended design: what `os-orchestration` is planned to do, what it is designed to deliberately not do, how aggregation is intended to work, the commercial features planned for it, and when it would be deployed. **None of this is built yet** — see the correction above.
 
 ## What it is designed not to do
 
@@ -70,7 +70,7 @@ The design calls for `os-orchestration` to be able to issue commands downstream 
 
 ## See also
 
-- [[console-os]] — the Direct vs. Aggregate mode distinction; os-console pairs with os-orchestration in Aggregate mode
+- [[os-console]] — the Direct vs. Aggregate mode distinction; os-console pairs with os-orchestration in Aggregate mode
 - [[totebox-os]] — the archives being aggregated
 - [[diode-standard]] — the unidirectional command discipline that governs the aggregator
 - [[machine-based-auth]] — how pairings secure aggregator-to-Totebox connections

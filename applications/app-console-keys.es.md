@@ -11,14 +11,14 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: TRANSLATE-ES
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: app-console-keys.md
 short_description: "app-console-keys es el chasis base siempre instalado de os-console. Proporciona el rasgo Cartridge que implementan todos los módulos de la consola, la barra de navegación de teclas de función, la barra de estado y el cliente de autorización basada en máquina."
 cites: []
 ---
 
-`app-console-keys` es el chasis base siempre instalado de [[console-os|os-console]]. Todos los demás módulos de la consola — correo electrónico, contenido, monitorización de modelos de inferencia y el resto — son cartuchos opcionales que se conectan al marco que define `app-console-keys`. El módulo es obligatorio: un binario de `os-console` construido sin él no compilará.
+`app-console-keys` es el chasis base siempre instalado de [[os-console|os-console]]. Todos los demás módulos de la consola — correo electrónico, contenido, monitorización de modelos de inferencia y el resto — son cartuchos opcionales que se conectan al marco que define `app-console-keys`. El módulo es obligatorio: un binario de `os-console` construido sin él no compilará.
 
 **Nota de nomenclatura:** "keys" en `app-console-keys` hace referencia a las teclas de función del teclado — la barra F1 a F12 que navega entre los slots de cartuchos. No hace referencia a claves criptográficas. El emparejamiento criptográfico y la autorización basada en máquina son implementados por `system-gateway-mba`, un crate separado.
 
@@ -62,8 +62,8 @@ La configuración basada en perfiles se almacena en `~/.config/os-console/config
 
 ## Véase también
 
-- [[console-os]] — descripción general del producto os-console, incluida la superficie de teclas de función y los modos de operación
-- [[os-console-platform]] — la arquitectura completa de cartuchos y el mapa de teclas de función
+- [[os-console]] — descripción general del producto os-console, incluida la superficie de teclas de función y los modos de operación
+- [[os-console]] — la arquitectura completa de cartuchos y el mapa de teclas de función
 - [[app-console-input]] — la puerta de entrada obligatoria F12; siempre compilada junto a app-console-keys
 - [[machine-based-auth]] — el mecanismo de autorización que gestiona el cliente del chasis
 - [[three-ring-architecture]] — la arquitectura Ring 1/2/3 a la que se conecta el cliente de autorización

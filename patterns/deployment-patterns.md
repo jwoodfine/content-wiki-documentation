@@ -12,7 +12,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: deployment-patterns.es.md
 references:
@@ -24,7 +24,7 @@ references:
     url: "https://www.opengroup.org/togaf"
 ---
 
-Deployment patterns describes the six canonical configurations in which the PointSav substrate is deployed across different institutional contexts, each built on the [[three-ring-architecture|three-ring architecture]]. Each configuration rests on the same five primitives — People, Communications, Drafts, Records, Money — and the same [[console-os|Command Ledger]] surface; what changes per configuration is the [[archetypes-and-chart-of-accounts|Chart of Accounts]] and the compliance surface. The substrate does not fork across segments; it adapts. By the end of this article, a reader will understand the Companion positioning, the six canonical patterns, and the compile-time cartridge isolation model that makes independent-versioning practical across all six.
+Deployment patterns describes the six canonical configurations in which the PointSav substrate is deployed across different institutional contexts, each built on the [[three-ring-architecture|three-ring architecture]]. Each configuration rests on the same five primitives — People, Communications, Drafts, Records, Money — and the same [[os-console|Command Ledger]] surface; what changes per configuration is the [[archetypes-and-chart-of-accounts|Chart of Accounts]] and the compliance surface. The substrate does not fork across segments; it adapts. By the end of this article, a reader will understand the Companion positioning, the six canonical patterns, and the compile-time cartridge isolation model that makes independent-versioning practical across all six.
 
 ## Five primitives that span every institutional context [^2]
 
@@ -38,7 +38,7 @@ Every context in which institutional users operate maps to the same five primiti
 | Records | Signed, sealed, or executed documents |
 | Money | Financial records, invoices, ledger entries |
 
-The [[console-os|Command Ledger]] exposes each primitive as a dedicated F-key surface. The operator presses a key; the chassis loads the relevant plugin; the plugin displays the records for that primitive within the current [[totebox-os|Totebox]] context. No context switch between segments requires a different architecture — the five primitives are universal.
+The [[os-console|Command Ledger]] exposes each primitive as a dedicated F-key surface. The operator presses a key; the chassis loads the relevant plugin; the plugin displays the records for that primitive within the current [[totebox-os|Totebox]] context. No context switch between segments requires a different architecture — the five primitives are universal.
 
 ## How the platform operates alongside incumbent tools
 
@@ -48,7 +48,7 @@ The platform is positioned as a complementary engine, not a replacement for exis
 |---|---|
 | Professional email client | [[service-email|service-email]] ingests each message into a WORM Maildir; the cloud copy may rotate while the sovereign copy remains sealed |
 | Spreadsheet applications | The intended sovereign spreadsheet surface stores executed financial models in the [[worm-ledger-design|WORM ledger]] |
-| Word-processing applications | The intended sovereign word-processing surface uses Typst for print-fidelity output; F4 in the [[console-os|Command Ledger]] synthesises content from structured records |
+| Word-processing applications | The intended sovereign word-processing surface uses Typst for print-fidelity output; F4 in the [[os-console|Command Ledger]] synthesises content from structured records |
 | Professional networking platforms | [[service-people]] is intended to harvest verified contact data into the Totebox identity ledger |
 | Corporate document repositories | service-minutebook cryptographically seals signed records against the [[worm-ledger-design|WORM ledger]] substrate |
 
@@ -56,7 +56,7 @@ The customer is not asked to abandon any working tool. The substrate operates in
 
 ## Six canonical deployment configurations
 
-The six configurations represent distinct GUIDE families in the fleet-deployment catalogue. Each is a configuration, not a separate product; the underlying [[totebox-os]], [[console-os|os-console]], and services are identical across all six.
+The six configurations represent distinct GUIDE families in the fleet-deployment catalogue. Each is a configuration, not a separate product; the underlying [[totebox-os]], [[os-console|os-console]], and services are identical across all six.
 
 | Configuration | Primary records | [[archetypes-and-chart-of-accounts|Chart of Accounts]] adaptation |
 |---|---|---|
@@ -71,7 +71,7 @@ Each row is a configuration, provisioned from a named template in the fleet-depl
 
 ## Cartridge isolation inside the Command Ledger
 
-The [[console-os|Command Ledger]] is a terminal application, not a web surface — it is built on `ratatui`/`crossterm`, with no HTTP layer and no HTML, CSS, or JavaScript anywhere in it. **Each function key loads a fully separate, independently compiled piece of code.** No plugin can accidentally read another plugin's state — that separation is enforced by the compiler, not by a runtime permission check. The chassis is an empty shell that registers a fixed set of Rust trait objects — one per plugin — into an in-process registry at startup. When the operator presses F2, the chassis dispatches to the already-registered People cartridge; F3 dispatches to Email; each function key maps to its own compiled cartridge object living in the same process the whole time.
+The [[os-console|Command Ledger]] is a terminal application, not a web surface — it is built on `ratatui`/`crossterm`, with no HTTP layer and no HTML, CSS, or JavaScript anywhere in it. **Each function key loads a fully separate, independently compiled piece of code.** No plugin can accidentally read another plugin's state — that separation is enforced by the compiler, not by a runtime permission check. The chassis is an empty shell that registers a fixed set of Rust trait objects — one per plugin — into an in-process registry at startup. When the operator presses F2, the chassis dispatches to the already-registered People cartridge; F3 dispatches to Email; each function key maps to its own compiled cartridge object living in the same process the whole time.
 
 | Isolation property | Effect |
 |---|---|
@@ -105,6 +105,6 @@ This cadence prevents two common failure modes: designs that are specced but nev
 - [[three-ring-architecture]] — the ring architecture that each configuration deploys
 - [[three-layer-architecture]] — the Software / Showcase / Instance three-layer model underlying the template catalogue
 - [[archetypes-and-chart-of-accounts]] — the Chart of Accounts taxonomy that adapts per configuration
-- [[console-os|os-console]] — the Command Ledger surface common to all six configurations
+- [[os-console|os-console]] — the Command Ledger surface common to all six configurations
 - [[totebox-os]] — the Totebox operating system that hosts each configuration's archives
 - [[self-host-a-deployment]] — step-by-step guide: deploy a configuration from this catalogue on customer-owned infrastructure

@@ -10,7 +10,7 @@ quality: complete
 short_description: "Sustrato de libro mayor Write-Once-Read-Many de los servicios Ring 1 de PointSav, diseñado hacia un formato encadenado por hash y firmado que cumple la normativa por estructura."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-06-23
+last_edited: 2026-08-24
 editor: pointsav-engineering
 forward_looking: true
 cites:
@@ -37,7 +37,7 @@ paired_with: worm-ledger-design.md
 
 Un registro regulado es tan confiable como la mano más débil que puede alcanzarlo. Una bandera de administrador, una actualización de software, una restauración de respaldo — cualquiera de ellas puede alterar silenciosamente un registro histórico. Una política que promete que no lo harán no es lo mismo que una estructura que no se lo permite.
 
-Los [[three-ring-architecture|servicios del anillo 1]] de PointSav conservan cada registro de límite — sistema de archivos, datos de personas, correo electrónico, entrada estructurada — en un libro de registros de escritura única y lectura múltiple (WORM), a través del [[service-fs-architecture|sustrato service-fs]]. El hash de cada registro se encadena con el anterior, de modo que alterar cualquier entrada pasada cambia todos los hashes posteriores — una propiedad que ya se cumple hoy, sobre un registro de solo adición plano por inquilino (`log.jsonl`). El libro de registros está **diseñado para adoptar** el formato de registro de transparencia C2SP tlog-tiles como su disposición en disco; esa segmentación en bloques es lo único que aún está por delante de la implementación actual.
+Los [[three-ring-architecture|servicios del anillo 1]] de PointSav conservan cada registro de límite — sistema de archivos, datos de personas, correo electrónico, entrada estructurada — en un libro de registros de escritura única y lectura múltiple (WORM), a través del [[service-fs|sustrato service-fs]]. El hash de cada registro se encadena con el anterior, de modo que alterar cualquier entrada pasada cambia todos los hashes posteriores — una propiedad que ya se cumple hoy, sobre un registro de solo adición plano por inquilino (`log.jsonl`). El libro de registros está **diseñado para adoptar** el formato de registro de transparencia C2SP tlog-tiles como su disposición en disco; esa segmentación en bloques es lo único que aún está por delante de la implementación actual.
 
 El libro de registros está **diseñado como cuatro capas** — almacenamiento por bloques, una API WORM, un protocolo de red y anclaje recurrente de puntos de control firmados en un registro público de transparencia. La inmutabilidad es una propiedad del sustrato de almacenamiento, no de la política operativa.
 
@@ -84,6 +84,6 @@ El servicio Ring 1 `service-fs` implementa el sustrato completo del libro de reg
 - [[three-ring-architecture]] — el límite del anillo 1 donde opera el libro de registros WORM
 - [[worm-ledger-architecture]] — la integración arquitectónica de cuatro capas: almacenamiento por bloques, API WORM, protocolo de red, anclaje
 - [[worm-ledger-storage-architecture]] — detalle de la capa de almacenamiento: formato C2SP tlog-tiles, disciplina de escritura atómica
-- [[service-fs-architecture]] — la implementación `service-fs` que ejecuta este sustrato en producción
+- [[service-fs]] — la implementación `service-fs` que ejecuta este sustrato en producción
 - [[compounding-doorman]] — el servicio del anillo 3 cuyo libro de auditoría usa el mismo primitivo
 - [[trajectory-substrate]] — el registro de señal de entrenamiento que usa el mismo formato de libro

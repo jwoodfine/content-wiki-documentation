@@ -14,13 +14,13 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: sel4-unikernel-substrate.es.md
 cites: []
 ---
 
-[[os-console-architecture|os-console]] is intended to run as a [[sel4-microkernel-substrate|seL4 Microkit]] unikernel image in its final
+[[os-console|os-console]] is intended to run as a [[sel4-microkernel-substrate|seL4 Microkit]] unikernel image in its final
 production form (planned Phase H2). This article explains what that means, what
 already works, and what remains to be built.
 
@@ -154,7 +154,7 @@ moonshot-sel4-vmm is intended to provide:
 - `notified(ch: u64)` and `protected(ch: u64, msginfo)` callbacks per the Microkit protocol
 - `DebugPutChar` for development-time output
 
-This crate is shared across all three OS-family binaries: os-console PDs, [[os-totebox|os-totebox]]
+This crate is shared across all three OS-family binaries: os-console PDs, [[totebox-os|os-totebox]]
 service PDs, and [[os-orchestration|os-orchestration]] app PDs all use the same runtime.
 
 ---

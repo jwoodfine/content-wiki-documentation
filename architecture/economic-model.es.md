@@ -10,7 +10,7 @@ quality: complete
 short_description: "La estructura comercial de dos niveles de PointSav: un nivel Community gratuito como embudo de adopción, y un nivel de Cliente PYME de pago orientado a pequeñas y medianas empresas reguladas que los modelos de facturación a hiperescala no pueden atender económicamente."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites: []
 paired_with: economic-model.md
@@ -48,7 +48,7 @@ convierte en Apache-2.0 tras su período de espera. La familia `app-orchestratio
 propietaria y nunca se convierte a ninguna de las dos licencias abiertas.
 
 **Community** es el nivel gratuito: un archivo [[totebox-os|ToteboxOS]] y una
-terminal [[console-os|ConsoleOS]], ambos bajo AGPL, con inferencia local de modelos
+terminal [[os-console|ConsoleOS]], ambos bajo AGPL, con inferencia local de modelos
 como componente opcional. Community es el embudo de adopción — genera contribuidores
 y expone casos límite — y [[pointsav-overview|PointSav]] no obtiene ingresos de él.
 

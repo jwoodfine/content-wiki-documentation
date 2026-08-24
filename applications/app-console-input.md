@@ -27,7 +27,7 @@ references:
     url: "https://www.iso.org/standard/82875.html"
 ---
 
-`app-console-input` is the F12 surface in [[console-os|os-console]] — the only path through which raw external files enter a [[totebox-os|Totebox]] before being sealed into the [[worm-ledger-design|WORM ledger]]. The surface holds the operator accountable for every file that enters the ledger: nothing is submitted without an explicit, keyboard-confirmed operator decision, so every fiduciary act carries an operator signature in the [[worm-ledger-design|audit trail]]. By the end of this article, a reader will understand the F12 workflow and the audit properties the gate enforces.
+`app-console-input` is the F12 surface in [[os-console|os-console]] — the only path through which raw external files enter a [[totebox-os|Totebox]] before being sealed into the [[worm-ledger-design|WORM ledger]]. The surface holds the operator accountable for every file that enters the ledger: nothing is submitted without an explicit, keyboard-confirmed operator decision, so every fiduciary act carries an operator signature in the [[worm-ledger-design|audit trail]]. By the end of this article, a reader will understand the F12 workflow and the audit properties the gate enforces.
 
 ## How the F12 session unfolds
 
@@ -69,6 +69,6 @@ F12 is not a bulk-import interface. The operator may have several files to submi
 - [[architecture-decisions|SYS-ADR-07]] — the architectural decision mandating human verification before structured data enters a verified ledger
 - [[architecture-decisions|SYS-ADR-10]] — the architectural decision mandating F12 as the required input gate
 - [[architecture-decisions|SYS-ADR-19]] — the architectural decision prohibiting automated publishing to verified ledgers
-- [[console-os|os-console]] — the operating system that hosts the F12 surface
+- [[os-console|os-console]] — the operating system that hosts the F12 surface
 - [[worm-ledger-design]] — the design principles behind the WORM ledger substrate
 - [[machine-based-auth]] — the authentication layer that ties ledger entries to verified operator identity

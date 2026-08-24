@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: os-orchestration.md
 short_description: "os-orchestration es el sistema operativo de nivel comercial que permite a un único operador ver, consultar y comandar muchos archivos Totebox a la vez — el Agregador de Flota para portafolios multi-entidad y despliegues empresariales."
@@ -20,7 +20,7 @@ cites: []
 
 `os-orchestration` existe hoy como un crate registrado pero vacío — todo su código fuente es una función de estado de marcador de posición, sin ninguna lógica de agregación detrás. Todo lo que describe este artículo es el diseño previsto, no una función ya construida.
 
-`os-orchestration` está previsto como el sistema operativo de nivel comercial que permitiría a un único operador ver, consultar y comandar muchos [[totebox-archive|archivos Totebox]] a la vez. Mientras [[console-os|`os-console`]] se conecta a un único [[totebox-os|`os-totebox`]], `os-orchestration` está pensado como el concentrador entre la Consola de un operador y una flota de Toteboxes — lo que un ejecutivo vería para conocer la posición de cada propiedad en un portafolio, cada entidad en una sociedad holding o cada proyecto en un pipeline de desarrollo, en una respuesta única y unificada a "¿cuál es el estado de todo el patrimonio ahora mismo?" Este artículo cubre el diseño previsto: qué está planeado que haga `os-orchestration`, qué está diseñado para no hacer deliberadamente, cómo se prevé que funcione la agregación, las funciones comerciales planeadas y cuándo se desplegaría. **Nada de esto está construido todavía.**
+`os-orchestration` está previsto como el sistema operativo de nivel comercial que permitiría a un único operador ver, consultar y comandar muchos [[totebox-archive|archivos Totebox]] a la vez. Mientras [[os-console|`os-console`]] se conecta a un único [[totebox-os|`os-totebox`]], `os-orchestration` está pensado como el concentrador entre la Consola de un operador y una flota de Toteboxes — lo que un ejecutivo vería para conocer la posición de cada propiedad en un portafolio, cada entidad en una sociedad holding o cada proyecto en un pipeline de desarrollo, en una respuesta única y unificada a "¿cuál es el estado de todo el patrimonio ahora mismo?" Este artículo cubre el diseño previsto: qué está planeado que haga `os-orchestration`, qué está diseñado para no hacer deliberadamente, cómo se prevé que funcione la agregación, las funciones comerciales planeadas y cuándo se desplegaría. **Nada de esto está construido todavía.**
 
 ## Qué está diseñado para no hacer
 
@@ -70,7 +70,7 @@ El diseño prevé que `os-orchestration` pueda emitir comandos a los Toteboxes q
 
 ## Véase también
 
-- [[console-os]] — la distinción entre modo Directo y modo Agregado; os-console se empareja con os-orchestration en modo Agregado
+- [[os-console]] — la distinción entre modo Directo y modo Agregado; os-console se empareja con os-orchestration en modo Agregado
 - [[totebox-os]] — los archivos que se están agregando
 - [[diode-standard]] — la disciplina de comandos unidireccional que rige el agregador
 - [[machine-based-auth]] — cómo los emparejamientos aseguran las conexiones del agregador con los Toteboxes

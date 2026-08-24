@@ -11,7 +11,7 @@ status: stable
 bcsc_class: public-disclosure-safe
 language: en
 paired_with: ppn-command-protocol.es.md
-last_edited: 2026-06-23
+last_edited: 2026-08-24
 editor: pointsav-engineering
 ---
 
@@ -72,4 +72,4 @@ Upstream telemetry — logs, heartbeats, status — travels over a separate, str
 - [[sovereign-mesh]] — the WireGuard overlay the protocol runs over
 - [[service-slm]] — the local semantic router that translates intent into the two-byte operation code
 - [[machine-based-auth]] — the fiduciary keypairs that secure the mesh peers
-- [[pointsav-private-network|PointSav Private Network]] — infrastructure overview; the command protocol runs over this mesh
+- [[ppn-mesh-architecture|PointSav Private Network]] — infrastructure overview; the command protocol runs over this mesh

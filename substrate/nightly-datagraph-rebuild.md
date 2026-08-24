@@ -9,7 +9,7 @@ index_group: small-language-model-stack
 status: stub
 short_description: "The scheduled process that reconstructs the platform's knowledge graph from canonical flat-file sources each night. A human-approval checkpoint exists for AI-extracted entities, but it is opt-in — an operator must enable it; automated writes land without per-item review by default."
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: nightly-datagraph-rebuild.es.md
 ---
@@ -20,7 +20,7 @@ The nightly datagraph rebuild is the scheduled pipeline that reconstructs the pl
 
 - The graph is rebuilt from flat-file sources nightly, not maintained by continuous mutation. Consumers read a stable snapshot, not a live partially-constructed graph.
 - Every rebuild cycle can be replicated from archived flat files, since the WORM ledger snapshot each cycle reads from is itself immutable.
-- Entity extraction uses grammar-constrained inference through the [[doorman-protocol|Doorman]] — this is Ring 2 calling Ring 3 for a proposal, not a Ring 2-internal deterministic step. A capture-then-promote checkpoint exists for exactly this case — extraction output can be held for a human-reviewed, cryptographically-signed approval before it becomes a graph write, matching the [SYS-ADR-07](governance/architecture-decisions) boundary. That checkpoint is opt-in, not the default: an operator must explicitly enable it. Left at its default setting, extraction output writes to the graph immediately with no per-item review. See [[architecture/three-ring-architecture|the Three-Ring Architecture]] for the general rule this checkpoint implements when enabled.
+- Entity extraction uses grammar-constrained inference through the [[doorman-protocol|Doorman]] — this is Ring 2 calling Ring 3 for a proposal, not a Ring 2-internal deterministic step. A capture-then-promote checkpoint exists for exactly this case — extraction output can be held for a human-reviewed, cryptographically-signed approval before it becomes a graph write, matching the [SYS-ADR-07](governance/architecture-decisions) boundary. That checkpoint is opt-in, not the default: an operator must explicitly enable it. Left at its default setting, extraction output writes to the graph immediately with no per-item review. See [[three-ring-architecture|the Three-Ring Architecture]] for the general rule this checkpoint implements when enabled.
 - Each cycle compounds the prior cycle. Newly committed records extend the graph; no record is removed. The [[compounding-substrate]] mechanism means the graph grows monotonically accurate over time.
 
 ## Purpose

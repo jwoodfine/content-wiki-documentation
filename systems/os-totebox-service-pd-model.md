@@ -13,7 +13,7 @@ paired_with: os-totebox-service-pd-model.es.md
 category: systems
 status: active
 quality: complete
-last_edited: 2026-08-06
+last_edited: 2026-08-24
 ---
 
 **Status (2026-08-06):** the seL4 Microkit image this article describes has moved from
@@ -47,7 +47,7 @@ These are the deployed build's current, factual limits. The boot and inference
 verification above is real and current; the ledger's
 persistence, availability, and anchoring guarantees are not yet delivered.
 
-[[os-totebox]] is designed to be the Sovereign WORM Data Vault tier of the [[topic-three-binary-architecture|three-binary architecture]], intended to run as a Type I bare-metal OS on top of the [[sel4-microkernel-substrate|seL4 microkernel]] — no shell, no root process, no init system, no package manager — once the Phase H1 seL4 image ships. In that end-state design, every service that handles durable data becomes a seL4 Protection Domain (PD): a hardware-enforced isolation unit whose capability set is fixed at build time and cannot be extended at runtime. This article explains what that design means, why it takes the shape it does, and how two planned tools — moonshot-sel4-vmm and [[moonshot-toolkit-build-orchestrator|moonshot-toolkit]] — are intended to turn ordinary Rust service binaries into a formally verified PD graph.
+[[totebox-os]] is designed to be the Sovereign WORM Data Vault tier of the [[three-binary-architecture|three-binary architecture]], intended to run as a Type I bare-metal OS on top of the [[sel4-microkernel-substrate|seL4 microkernel]] — no shell, no root process, no init system, no package manager — once the Phase H1 seL4 image ships. In that end-state design, every service that handles durable data becomes a seL4 Protection Domain (PD): a hardware-enforced isolation unit whose capability set is fixed at build time and cannot be extended at runtime. This article explains what that design means, why it takes the shape it does, and how two planned tools — moonshot-sel4-vmm and [[moonshot-toolkit-build-orchestrator|moonshot-toolkit]] — are intended to turn ordinary Rust service binaries into a formally verified PD graph.
 
 ## The toolchain that makes it work
 
@@ -55,7 +55,7 @@ Two components are intended to assemble the os-totebox system image (Phase H1, p
 
 **moonshot-sel4-vmm** is a ~300-line Rust crate that acts as the PD runtime. It provides the `sel4_main!` entry point macro that each service binary uses in place of `fn main()`, initialises the IPC channels between PDs at boot, and registers each PD's heartbeat with the watchdog. The crate targets the seL4 Microkit ABI — it does not use the external rust-sel4 crate. That external dependency was evaluated and rejected; the sovereign runtime is the only seL4 Rust binding in use.
 
-**moonshot-toolkit** is the system image builder (v0.3.1, 35 tests, Phase 1C complete). It reads a TOML system specification — `examples/os-totebox.toml` — and emits a `.system` file describing the full PD graph: which PDs exist, what capabilities each one holds, how IPC endpoints are wired, and what memory regions are assigned. The toolkit's image verifier asserts, at build time, that the block device capability appears exactly once in the grant table — held by [[service-fs-architecture|service-fs]] PD and by no other PD. If that assertion fails, the build fails.
+**moonshot-toolkit** is the system image builder (v0.3.1, 35 tests, Phase 1C complete). It reads a TOML system specification — `examples/os-totebox.toml` — and emits a `.system` file describing the full PD graph: which PDs exist, what capabilities each one holds, how IPC endpoints are wired, and what memory regions are assigned. The toolkit's image verifier asserts, at build time, that the block device capability appears exactly once in the grant table — held by [[service-fs|service-fs]] PD and by no other PD. If that assertion fails, the build fails.
 
 The TOML spec is the single authoritative declaration of the PD graph. A developer who wants to understand which service can reach which resource reads `os-totebox.toml`, not a runtime configuration file or a policy document.
 

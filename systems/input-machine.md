@@ -11,12 +11,12 @@ content_type: topic
 index_group: operator-surfaces
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: input-machine.es.md
 ---
 
-The Input Machine is the mandatory ingest gate through which all documents and text enter [[console-os|os-console]] workflows. It occupies the F12 key slot permanently across all keyboard configurations. Every [[os-console-platform|cartridge]] in os-console depends on the Input Machine for its source material. No workflow bypasses it.
+The Input Machine is the mandatory ingest gate through which all documents and text enter [[os-console|os-console]] workflows. It occupies the F12 key slot permanently across all keyboard configurations. Every [[os-console|cartridge]] in os-console depends on the Input Machine for its source material. No workflow bypasses it.
 
 ## Why the position is permanent
 
@@ -73,8 +73,8 @@ Every cartridge uses the same Input Machine for its source material, and F12 alw
 
 ## See also
 
-- [[console-os]] — the platform context for the Input Machine
+- [[os-console]] — the platform context for the Input Machine
 - [[machine-based-auth]] — the authorization mechanism os-console uses
 - [[three-ring-architecture]] — service-input Ring 1 placement
-- [[os-console-platform]] — the cartridge architecture and F-key map
+- [[os-console]] — the cartridge architecture and F-key map
 - [[worm-ledger-design]] — the append-only ledger discipline for audit records

@@ -27,7 +27,7 @@ references:
     url: "https://www.iso.org/standard/82875.html"
 ---
 
-`app-console-input` es la superficie F12 en [[console-os|os-console]] — el único camino a través del cual los archivos externos sin procesar ingresan a un [[totebox-os|Totebox]] antes de sellarse en el [[worm-ledger-design|libro mayor WORM]]. La superficie responsabiliza al operador por cada archivo que ingresa al libro mayor: nada se envía sin una decisión explícita del operador confirmada por teclado, de modo que cada acto fiduciario lleva la firma del operador en el [[worm-ledger-design|registro de auditoría]]. Al finalizar este artículo, el lector comprenderá el flujo de trabajo F12 y las propiedades de auditoría que protege esta puerta.
+`app-console-input` es la superficie F12 en [[os-console|os-console]] — el único camino a través del cual los archivos externos sin procesar ingresan a un [[totebox-os|Totebox]] antes de sellarse en el [[worm-ledger-design|libro mayor WORM]]. La superficie responsabiliza al operador por cada archivo que ingresa al libro mayor: nada se envía sin una decisión explícita del operador confirmada por teclado, de modo que cada acto fiduciario lleva la firma del operador en el [[worm-ledger-design|registro de auditoría]]. Al finalizar este artículo, el lector comprenderá el flujo de trabajo F12 y las propiedades de auditoría que protege esta puerta.
 
 ## Cómo se desarrolla una sesión F12
 
@@ -69,6 +69,6 @@ F12 no es una interfaz de importación masiva. El operador puede tener varios ar
 - [[architecture-decisions|SYS-ADR-07]] — la decisión arquitectónica que exige verificación humana antes de que los datos estructurados ingresen a un libro mayor verificado
 - [[architecture-decisions|SYS-ADR-10]] — la decisión arquitectónica que establece F12 como la puerta de entrada obligatoria
 - [[architecture-decisions|SYS-ADR-19]] — la decisión arquitectónica que prohíbe la publicación automatizada en libros mayores verificados
-- [[console-os|os-console]] — el sistema operativo que aloja la superficie F12
+- [[os-console|os-console]] — el sistema operativo que aloja la superficie F12
 - [[worm-ledger-design]] — los principios de diseño detrás del sustrato del libro mayor WORM
 - [[machine-based-auth]] — la capa de autenticación que vincula las entradas del libro mayor con la identidad verificada del operador

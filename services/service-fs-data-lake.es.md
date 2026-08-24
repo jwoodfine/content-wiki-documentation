@@ -12,13 +12,13 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: service-fs-data-lake.md
 cites: []
 ---
 
-**`service-fs`** es la capa de almacenamiento fundacional para la [[pointsav-gis-engine|canalización GIS]] de la plataforma — un lago de datos en archivos planos que almacena puntos geoespaciales en bruto ingeridos desde fuentes abiertas (OpenStreetMap, Overture Maps Foundation) en zonas de aterrizaje separadas para datos minoristas y cívicos, disponibles inmediatamente para cada servicio descendente sin una etapa ETL. Los registros minoristas — operadores comerciales, tiendas ancla, estaciones de combustible — y los registros cívicos — hospitales, universidades, centros de transporte — se mantienen en subárboles distintos para que los servicios de [[service-places-filtering|filtrado]] y [[service-business-clustering|agrupación]] puedan trabajar en cada dominio de forma independiente.
+**`service-fs`** es la capa de almacenamiento fundacional para la [[location-intelligence-substrate|canalización GIS]] de la plataforma — un lago de datos en archivos planos que almacena puntos geoespaciales en bruto ingeridos desde fuentes abiertas (OpenStreetMap, Overture Maps Foundation) en zonas de aterrizaje separadas para datos minoristas y cívicos, disponibles inmediatamente para cada servicio descendente sin una etapa ETL. Los registros minoristas — operadores comerciales, tiendas ancla, estaciones de combustible — y los registros cívicos — hospitales, universidades, centros de transporte — se mantienen en subárboles distintos para que los servicios de [[service-places-filtering|filtrado]] y [[service-business-clustering|agrupación]] puedan trabajar en cada dominio de forma independiente.
 
 ## Puntos clave
 
@@ -36,7 +36,7 @@ El servicio mantiene una estructura de sistema de archivos unificada con zonas d
 
 ## Rol arquitectónico
 
-Como capa con estado de la plataforma, `service-fs` es responsable de la persistencia de datos. Está diseñado para ser independiente del software analítico: si la [[app-orchestration-gis|capa de orquestación GIS]] se re-aprovisiona, los activos de datos principales permanecen intactos dentro de esta capa. La separación limpia entre persistencia de datos y lógica analítica es un invariante de diseño fundamental. Este mismo principio de separación se extiende al libro mayor WORM utilizado para registros institucionales; véase [[service-fs-architecture|arquitectura FS]] para el diseño completo de cuatro capas.
+Como capa con estado de la plataforma, `service-fs` es responsable de la persistencia de datos. Está diseñado para ser independiente del software analítico: si la [[app-orchestration-gis|capa de orquestación GIS]] se re-aprovisiona, los activos de datos principales permanecen intactos dentro de esta capa. La separación limpia entre persistencia de datos y lógica analítica es un invariante de diseño fundamental. Este mismo principio de separación se extiende al libro mayor WORM utilizado para registros institucionales; véase [[service-fs|arquitectura FS]] para el diseño completo de cuatro capas.
 
 ## Implementación como unikernel (planificada)
 

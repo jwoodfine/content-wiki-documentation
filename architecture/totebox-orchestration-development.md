@@ -55,7 +55,7 @@ The Command Session is the only session that can write workspace-level files. In
 
 A Totebox Session opens within a specific archive. It works inside that archive — writing code, committing to staging branches, drafting wiki content, updating the deployment. It does not write to other archives, does not modify workspace files, and does not have direct access to the identity store.
 
-The intended entry point is the `open-archive` console command, planned to read the archive manifest, surface the archive's tetrad status and pending messages, set archive-scoped environment variables, and open a session at the archive's root directory. This is intended to mirror how a customer or community member opens a [[totebox-archive|Totebox Archive]] via [[console-os|`os-console`]]: the development workflow is the same as the customer workflow.
+The intended entry point is the `open-archive` console command, planned to read the archive manifest, surface the archive's tetrad status and pending messages, set archive-scoped environment variables, and open a session at the archive's root directory. This is intended to mirror how a customer or community member opens a [[totebox-archive|Totebox Archive]] via [[os-console|`os-console`]]: the development workflow is the same as the customer workflow.
 
 ## The retired Root session
 

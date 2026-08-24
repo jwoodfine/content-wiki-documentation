@@ -13,7 +13,7 @@ category: infrastructure
 index_group: storage-substrate
 status: active
 quality: complete
-last_edited: 2026-06-23
+last_edited: 2026-08-24
 editor: pointsav-engineering
 ---
 
@@ -52,5 +52,5 @@ The tile-based logs are portable, open-standard, and self-verifying across any h
 
 - [[worm-ledger-architecture]] — the four-layer architectural overview: tile storage, WORM API, wire protocol, anchoring
 - [[worm-ledger-design]] — regulatory compliance mapping and customer key sovereignty rationale
-- [[service-fs-architecture]] — the `service-fs` implementation that applies this storage architecture in production
+- [[service-fs]] — the `service-fs` implementation that applies this storage architecture in production
 - [[cryptographic-ledgers]] — the broader cryptographic ledger context for the C2SP tlog-tiles format

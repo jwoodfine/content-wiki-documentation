@@ -92,7 +92,7 @@ The same substrate configuration serves each of the following customer segments.
 | Family office | Tax records, estate documents, household contracts |
 | Household | Receipts, warranties, personal correspondence |
 
-Each segment uses the same five primitives — People, Communications, Drafts, Records, Money — under the same [[console-os|Command Ledger]] surface. The substrate does not change. The Chart of Accounts changes.
+Each segment uses the same five primitives — People, Communications, Drafts, Records, Money — under the same [[os-console|Command Ledger]] surface. The substrate does not change. The Chart of Accounts changes.
 
 ## See also
 

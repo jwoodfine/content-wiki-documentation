@@ -14,13 +14,13 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: TRANSLATE-ES
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: sel4-unikernel-substrate.md
 cites: []
 ---
 
-[[os-console-architecture|os-console]] está previsto para ejecutarse como una imagen unikernel [[sel4-microkernel-substrate|seL4 Microkit]] en su
+[[os-console|os-console]] está previsto para ejecutarse como una imagen unikernel [[sel4-microkernel-substrate|seL4 Microkit]] en su
 forma de producción final (previsto Fase H2). Este artículo explica qué significa eso,
 qué ya funciona y qué queda por construir.
 
@@ -148,7 +148,7 @@ moonshot-sel4-vmm está previsto para proporcionar:
 - Callbacks `notified(ch: u64)` y `protected(ch: u64, msginfo)` según el protocolo Microkit
 
 Esta crate es compartida entre los tres binarios del sistema operativo: PDs de os-console,
-PDs de servicio de [[os-totebox]] y PDs de app-orchestration-* de [[os-orchestration]].
+PDs de servicio de [[totebox-os]] y PDs de app-orchestration-* de [[os-orchestration]].
 
 ---
 

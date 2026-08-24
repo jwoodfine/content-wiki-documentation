@@ -10,7 +10,7 @@ quality: stub
 short_description: "The Three-Layer Stack is the infrastructure decomposition pattern across PointSav deployments, separating raw compute, isolated platform execution, and secure operator access."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-07-28
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites: []
 paired_with: 3-layer-stack.es.md
@@ -39,7 +39,7 @@ The three layers map directly to the operational concerns of a regulated SMB dep
 
 - **Infrastructure layer** — the physical or virtual computing substrate: bare-metal servers, GCE instances, customer iMac hardware, or any combination. This layer supplies CPU time and memory. It makes no security guarantees above what the hardware provides.
 - **Platform layer** — the operating system and service execution environment: [[totebox-os|the archive service]] and the [[three-ring-architecture|Ring 1/Ring 2]] service processes. Kernel-enforced isolation between components is the design target, proven for the archive service's own boot path; most services today run as ordinary processes without that isolation guarantee. Capability-scoped access — no component exceeding what it's explicitly granted — is the intended boundary regardless of which isolation mechanism enforces it.
-- **Delivery layer** — the terminal and console interfaces operators use: [[console-os|ConsoleOS]] terminals, the proofreader interface, and any browser-based access surface. The delivery layer is the only layer operators interact with directly; it forwards requests down into the platform and returns results upward.
+- **Delivery layer** — the terminal and console interfaces operators use: [[os-console|ConsoleOS]] terminals, the proofreader interface, and any browser-based access surface. The delivery layer is the only layer operators interact with directly; it forwards requests down into the platform and returns results upward.
 
 ## See also
 

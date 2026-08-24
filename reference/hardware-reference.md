@@ -12,7 +12,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: hardware-reference.es.md
 ---
@@ -21,7 +21,7 @@ The PointSav hardware reference defines the device profiles and infrastructure c
 
 ## Reference hardware profiles
 
-[[os-workplace|os-workplace]] and [[console-os|os-console]] target a deliberate set of devices:
+[[os-workplace|os-workplace]] and [[os-console|os-console]] target a deliberate set of devices:
 
 | Tier | Device | Rationale |
 |---|---|---|

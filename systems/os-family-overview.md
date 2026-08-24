@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: os-family-overview.es.md
 short_description: "PointSav builds eight purpose-built operating systems, designed around a shared Rust discipline and a Diode-based protocol; a common seL4 microkernel substrate is a roadmap target, not the current state of every member."
@@ -74,7 +74,7 @@ Across all eight, command flow is unidirectional. `os-console` and `os-orchestra
 
 ## See also
 
-- [[console-os]] — the Command Ledger terminal; human-facing surface
+- [[os-console]] — the Command Ledger terminal; human-facing surface
 - [[totebox-os]] — the sovereign vault and service host
 - [[os-orchestration]] — the fleet aggregator for commercial deployments
 - [[sel4-microkernel-substrate]] — the shared seL4 kernel and why PointSav adopted it

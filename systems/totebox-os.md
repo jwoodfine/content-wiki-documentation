@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-06
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: totebox-os.es.md
 aliases: [os-totebox]
@@ -23,7 +23,7 @@ references:
     url: "https://doi.org/10.6028/NIST.SP.800-209"
 ---
 
-`os-totebox` is the archive layer of the PointSav family: one isolated vault per entity. It stores the records, runs the services that process them, and exposes nothing else. An entity is whatever needs a separate set of books — a person, a corporation, a real property, a project, a household. Each entity has its own `os-totebox`. Toteboxes do not share files, do not share users, and cannot see each other. They communicate only through the [[diode-standard|Diode]], and only on command from [[console-os|os-console]] or [[os-orchestration]]. This article covers the services inside, the WORM discipline, the current host shape, a known persistence limitation, the compute tiers, and the freely transferable design.
+`os-totebox` is the archive layer of the PointSav family: one isolated vault per entity. It stores the records, runs the services that process them, and exposes nothing else. An entity is whatever needs a separate set of books — a person, a corporation, a real property, a project, a household. Each entity has its own `os-totebox`. Toteboxes do not share files, do not share users, and cannot see each other. They communicate only through the [[diode-standard|Diode]], and only on command from [[os-console|os-console]] or [[os-orchestration]]. This article covers the services inside, the WORM discipline, the current host shape, a known persistence limitation, the compute tiers, and the freely transferable design.
 
 ## What lives inside
 
@@ -78,7 +78,7 @@ Every `os-totebox` instance is intended to ship as a single, signed boot image. 
 ## See also
 
 - [[os-family-overview]] — where os-totebox fits in the eight-OS family
-- [[console-os]] — the Command Ledger that connects to os-totebox and presents its state
+- [[os-console]] — the Command Ledger that connects to os-totebox and presents its state
 - [[os-orchestration]] — the fleet aggregator that queries many Toteboxes at once
 - [[diode-standard]] — the unidirectional protocol through which the Totebox communicates
 - [[sel4-microkernel-substrate]] — the kernel underpinning os-totebox's isolation guarantees

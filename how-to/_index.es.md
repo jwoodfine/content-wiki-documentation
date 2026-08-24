@@ -12,7 +12,7 @@ bcsc_class: public-disclosure-safe
 language_protocol: TRANSLATE-ES
 index_type: thematic
 index_scope: how-to
-last_edited: 2026-08-06
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: _index.md
 ---
@@ -79,15 +79,15 @@ Conecta tuberías de datos externas y crea aplicaciones de inteligencia de ubica
 - [[build-a-colocation-map|Construir un mapa de co-ubicación]] — carga un archivo PMTiles directamente; no existe API REST ni clave de API
 - [[connect-osm-data-pipeline|Conectarse al pipeline de datos OSM]] — el script real ingest-osm.py y el registro en taxonomy.py
 - [[federate-archives-via-content-mounts|Federar archivos mediante montajes de contenido]] — monte el contenido de un segundo repositorio en una instancia en ejecución
-- [[use-knowledge-mounts|Usar montajes de conocimiento declarativos]] — el esquema real de [[mount]] y su riesgo real de colisión de slugs sin mitigar
+- [[use-knowledge-mounts|Usar montajes de conocimiento declarativos]] — el esquema real de `[[mount]]` y su riesgo real de colisión de slugs sin mitigar
 <!-- END AUTO-GENERATED -->
 
 El emparejamiento de dispositivos, los tokens de capacidad y la inscripción de flota ahora tienen su propia categoría — véase [Autorización de Máquinas](/category/machine-authorization). El despliegue autoalojado ahora tiene su propia categoría — véase [Autoalojamiento](/category/self-hosting).
 
 ## Véase también
 
-- [[architecture/_index|Arquitectura]] — arquitectura transversal de la plataforma
-- [[patterns/_index|Patrones]] — patrones de diseño nombrados utilizados en toda la plataforma
+- [[architecture-index|Arquitectura]] — arquitectura transversal de la plataforma
+- [[patterns-index|Patrones]] — patrones de diseño nombrados utilizados en toda la plataforma
 - [[totebox-session]] — qué es una sesión Totebox y qué puede hacer
 - [[machine-based-auth]] — cómo funciona la autorización basada en máquinas
 - [Autorización de Máquinas](/category/machine-authorization) — emparejamiento de dispositivos, tokens de capacidad, inscripción de flota y autenticación de descargas de binarios

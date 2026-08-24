@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-25
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: pointsav-overview.es.md
 short_description: "PointSav Digital Systems is a technology vendor building sovereign, on-premise-capable operating systems for record-keeping, within a three-organisation structure."
@@ -42,7 +42,7 @@ Three structural advantages emerge from the separation:
 
 ## Licensing model
 
-The product strategy follows an open-core pattern, licensed per directory rather than as one blanket grant. [[console-os|`os-console`]] and [[os-workplace|`os-workplace`]] ship under AGPL-3.0-or-later. [[totebox-os|`os-totebox`]] ships under the Functional Source License (FSL-1.1-ALv2), which converts automatically to Apache-2.0 for each release after a fixed period. The fleet-aggregator product ([[os-orchestration|`os-orchestration`]]) remains fully proprietary as the company's stated commercial moat — it is never distributed under either the AGPL commercial-alternative tier or the FSL tier the other three carry.
+The product strategy follows an open-core pattern, licensed per directory rather than as one blanket grant. [[os-console|`os-console`]] and [[os-workplace|`os-workplace`]] ship under AGPL-3.0-or-later. [[totebox-os|`os-totebox`]] ships under the Functional Source License (FSL-1.1-ALv2), which converts automatically to Apache-2.0 for each release after a fixed period. The fleet-aggregator product ([[os-orchestration|`os-orchestration`]]) remains fully proprietary as the company's stated commercial moat — it is never distributed under either the AGPL commercial-alternative tier or the FSL tier the other three carry.
 
 PointSav intends to partner with the Sovereign Data Foundation to oversee the integrity of the open-source components. Terms and structure of any such arrangement are planned and subject to finalisation.
 

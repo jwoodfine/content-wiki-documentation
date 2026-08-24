@@ -6,14 +6,14 @@ slug: moonshot-toolkit-build-orchestrator
 short_description: "Orquestador de construcción solo Rust para imágenes unikernel seL4 — de especificación TOML a manifiesto direccionado por contenido y elfloader AArch64, sin Python ni CMake."
 category: substrate
 index_group: cryptographic-and-microkernel-primitives
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 status: stable
 bcsc_class: no-disclosure-implication
 ---
 
 moonshot-toolkit es la herramienta de compilación escrita íntegramente en Rust
-que produce las [[topic-sel4-unikernel-substrate|imágenes de arranque de los sistemas seL4]]. Lee una
+que produce las [[sel4-unikernel-substrate|imágenes de arranque de los sistemas seL4]]. Lee una
 especificación de sistema en formato TOML, genera un manifiesto de construcción
 con contenido direccionado, y orquesta todo el proceso — desde la compilación de
 los dominios de protección hasta el ensamblaje del binario de arranque — sin

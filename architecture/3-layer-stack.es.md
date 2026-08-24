@@ -12,7 +12,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-07-28
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: 3-layer-stack.md
 cites: []
@@ -39,7 +39,7 @@ La Pila de Tres Capas es el patrón de descomposición de infraestructura utiliz
 
 **Capa de plataforma** — el entorno de ejecución del sistema operativo y los servicios: [[totebox-os|el servicio de archivo]] y los procesos de servicio de los [[three-ring-architecture|Anillos 1 y 2]]. El aislamiento aplicado por kernel entre componentes es el objetivo de diseño, probado en el arranque del servicio de archivo; la mayoría de los demás servicios corren hoy como procesos ordinarios, sin esa garantía. El acceso limitado por capacidades — ningún componente excediendo lo que se le concedió explícitamente — es el límite previsto, independientemente de qué mecanismo lo aplique.
 
-**Capa de entrega** — las interfaces de terminal y consola que utilizan los operadores: terminales [[console-os|ConsoleOS]], la interfaz del corrector y cualquier superficie de acceso basada en navegador. La capa de entrega es la única capa con la que los operadores interactúan directamente; reenvía las solicitudes hacia la plataforma y devuelve los resultados hacia arriba.
+**Capa de entrega** — las interfaces de terminal y consola que utilizan los operadores: terminales [[os-console|ConsoleOS]], la interfaz del corrector y cualquier superficie de acceso basada en navegador. La capa de entrega es la única capa con la que los operadores interactúan directamente; reenvía las solicitudes hacia la plataforma y devuelve los resultados hacia arriba.
 
 ## Por qué importa la separación
 

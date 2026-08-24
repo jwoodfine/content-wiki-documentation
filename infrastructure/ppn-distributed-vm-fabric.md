@@ -11,7 +11,7 @@ bcsc_class: public-disclosure-safe
 language: en
 paired_with: ppn-distributed-vm-fabric.es.md
 index_group: compute-and-vm-fabric
-last_edited: 2026-07-11
+last_edited: 2026-08-24
 editor: editorial
 ---
 
@@ -110,4 +110,4 @@ The per-node layer is the foundation. The distributed fabric is intended to buil
 - [[genesis-protocol]] — the first-boot ceremony; the intended attestation root for the distributed fabric
 - [[os-infrastructure-ppn-node]] — the Type I hypervisor; home of the balloon controller and intended virtio-mem lending daemon
 - [[os-orchestration]] — the intended home for the cross-node VM scheduler
-- [[pointsav-private-network|PointSav Private Network]] — infrastructure overview; the distributed VM fabric extends this substrate
+- [[ppn-mesh-architecture|PointSav Private Network]] — infrastructure overview; the distributed VM fabric extends this substrate

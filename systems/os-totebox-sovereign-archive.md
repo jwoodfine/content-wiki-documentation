@@ -13,7 +13,7 @@ paired_with: os-totebox-sovereign-archive.es.md
 category: systems
 status: active
 quality: complete
-last_edited: 2026-08-06
+last_edited: 2026-08-24
 ---
 
 **Status (2026-08-06):** the seL4 Microkit image described in this article has moved
@@ -51,7 +51,7 @@ These are the deployed build's current, factual limits. The boot and inference
 verification above is real and current; the vault's
 persistence, availability, and ledger-anchoring guarantees are not yet delivered.
 
-Every organisation that relies on a third-party platform to store its records is making an implicit wager: that the platform provider will remain solvent, accessible, and free of security failures for as long as those records matter. [[os-totebox]] is designed for operators who have decided that wager is unacceptable.
+Every organisation that relies on a third-party platform to store its records is making an implicit wager: that the platform provider will remain solvent, accessible, and free of security failures for as long as those records matter. [[totebox-os]] is designed for operators who have decided that wager is unacceptable.
 
 ## What os-totebox Is Designed To Be
 
@@ -71,7 +71,7 @@ The concrete failure scenario this is designed to defend against: if [[service-s
 
 os-totebox is designed to organise its services into two [[three-ring-architecture|concentric rings]] based on their proximity to storage, once the seL4 image lands.
 
-**Ring 1** is planned to comprise the services that interact directly with durable data and external I/O: [[service-fs-architecture|service-fs]], service-input, service-extraction, and service-egress, with service-fs holding the WORM block device capability exclusively — the only Protection Domain on the machine able to perform storage operations, with no other service able to reach the block device directly regardless of execution state.
+**Ring 1** is planned to comprise the services that interact directly with durable data and external I/O: [[service-fs|service-fs]], service-input, service-extraction, and service-egress, with service-fs holding the WORM block device capability exclusively — the only Protection Domain on the machine able to perform storage operations, with no other service able to reach the block device directly regardless of execution state.
 
 **Ring 2** is planned to comprise the services that process, classify, and reason about data: service-content, service-people, service-email, and service-slm, communicating with Ring 1 through a defined and bounded inter-domain communication protocol — able to request that service-fs write a record, without holding the capability to do so themselves.
 

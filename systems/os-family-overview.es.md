@@ -10,7 +10,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: os-family-overview.md
 short_description: "PointSav construye ocho sistemas operativos de propósito específico, diseñados en torno a una disciplina Rust y un protocolo Diodo compartidos; un sustrato común de micronúcleo seL4 es un objetivo de hoja de ruta, no el estado actual de todos los miembros."
@@ -64,7 +64,7 @@ En los ocho, el flujo de comandos es unidireccional. `os-console` y `os-orchestr
 
 ## Véase también
 
-- [[console-os]] — el terminal Libro Mayor de Comandos; superficie de cara al operador
+- [[os-console]] — el terminal Libro Mayor de Comandos; superficie de cara al operador
 - [[totebox-os]] — la bóveda soberana y host de servicios
 - [[os-orchestration]] — el agregador de flota para despliegues comerciales
 - [[sel4-microkernel-substrate]] — el núcleo seL4 compartido y por qué PointSav lo adoptó

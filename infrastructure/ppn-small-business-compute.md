@@ -12,7 +12,7 @@ status: active
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-07-09
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: ppn-small-business-compute.es.md
 short_description: "A Private Platform Network assembles machines a business already owns into an encrypted compute pool. WireGuard isolation runs today; seL4 host isolation is planned."
@@ -173,5 +173,5 @@ verified isolation layer is the target the project is building toward.
 
 ## See also
 
-- [[os-totebox]] — the operating system that runs workloads inside the PPN
-- [[pointsav-private-network|PointSav Private Network]] — infrastructure overview; small-business compute is a PPN workload class
+- [[totebox-os]] — the operating system that runs workloads inside the PPN
+- [[ppn-mesh-architecture|PointSav Private Network]] — infrastructure overview; small-business compute is a PPN workload class

@@ -8,7 +8,7 @@ index_group: platform-orientation
 type: topic
 content_type: topic
 status: stable
-last_edited: 2026-07-11
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: guide-catalog.es.md
 aliases:
@@ -78,7 +78,7 @@ These guides cover consuming platform data and connecting external applications.
 - [[build-a-colocation-map]] — load a PMTiles archive directly in MapLibre; there's no REST API or API key
 - [[connect-osm-data-pipeline]] — run the real ingest-osm.py script and register a chain in taxonomy.py
 - [[federate-archives-via-content-mounts]] — mount a second repository's content into a running instance
-- [[use-knowledge-mounts]] — the real [[mount]] schema, and the real risk (a flat shared namespace, not isolated per mount)
+- [[use-knowledge-mounts]] — the real `[[mount]]` schema, and the real risk (a flat shared namespace, not isolated per mount)
 
 ## Self-hosting
 

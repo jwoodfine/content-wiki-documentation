@@ -11,14 +11,14 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: app-console-email.es.md
 short_description: "app-console-email is the F3 communications cartridge for os-console, providing inbox listing, message reading, and compose-and-send via service-email."
 cites: []
 ---
 
-`app-console-email` is the F3 communications cartridge for [[console-os|os-console]]. It connects to [[service-email|service-email]] and provides an operator-facing interface for three communication tasks: reading an inbox, reading a message, and composing and sending a message. The cartridge is keyboard-driven throughout; no pointer interaction is required.
+`app-console-email` is the F3 communications cartridge for [[os-console|os-console]]. It connects to [[service-email|service-email]] and provides an operator-facing interface for three communication tasks: reading an inbox, reading a message, and composing and sending a message. The cartridge is keyboard-driven throughout; no pointer interaction is required.
 
 The cartridge implements the `Cartridge` trait defined by [[app-console-keys|app-console-keys]], occupying the F3 slot in the console's navigation strip.
 
@@ -53,8 +53,8 @@ The cartridge's connection to `service-email` is brokered through the [[machine-
 ## See also
 
 - [[service-email]] — the email service that handles routing, queuing, and egress
-- [[console-os]] — the os-console product overview and F-key surface
-- [[os-console-platform]] — cartridge architecture and the full F-key map
+- [[os-console]] — the os-console product overview and F-key surface
+- [[os-console]] — cartridge architecture and the full F-key map
 - [[app-console-keys]] — the chassis that hosts this cartridge; defines the Cartridge trait
 - [[app-console-input]] — the F12 mandatory gate for inbound file ingestion
 - [[machine-based-auth]] — the authorization layer the cartridge connects through

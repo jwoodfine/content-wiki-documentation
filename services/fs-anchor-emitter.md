@@ -11,12 +11,12 @@ short_description: "A one-shot binary that fetches a signed WORM-ledger checkpoi
 status: active
 audience: vendor-public
 bcsc_class: current-fact
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: fs-anchor-emitter.es.md
 ---
 
-`fs-anchor-emitter` connects the platform's immutable [[worm-ledger-design|Write-Once-Read-Many ledger]] to a public, third-party transparency log. It doesn't generate the ledger checkpoint itself — [[service-fs-architecture|service-fs]] does that — the emitter's job is to fetch an already-signed checkpoint, submit it to Sigstore Rekor, and record the result. This design keeps checkpoint generation and public anchoring as separate, independently-auditable steps.
+`fs-anchor-emitter` connects the platform's immutable [[worm-ledger-design|Write-Once-Read-Many ledger]] to a public, third-party transparency log. It doesn't generate the ledger checkpoint itself — [[service-fs|service-fs]] does that — the emitter's job is to fetch an already-signed checkpoint, submit it to Sigstore Rekor, and record the result. This design keeps checkpoint generation and public anchoring as separate, independently-auditable steps.
 
 ## What it does, in order
 
@@ -44,6 +44,6 @@ The binary itself has no internal generation or consistency-proof logic — both
 
 ## See also
 
-- [[service-fs-architecture]] — generates and signs the checkpoints this emitter fetches
+- [[service-fs]] — generates and signs the checkpoints this emitter fetches
 - [[worm-ledger-design]] — the ledger the checkpoint attests to
-- [[service-fs-security-compliance]] — the compliance posture this anchoring supports
+- `service-fs` — the compliance posture this anchoring supports

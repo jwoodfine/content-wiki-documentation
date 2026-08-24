@@ -14,7 +14,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-07-11
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: capability-geometry.es.md
 cites: []
@@ -136,7 +136,7 @@ via RFC 9162 [[merkle-proofs-as-substrate-primitive|Merkle proof chains]]. The F
 
 ## Machine Pairing as Capability Minting
 
-F11 [[pairing-as-permission|machine pairing]] in [[os-console-architecture|os-console]] is the intended capability minting ceremony for Totebox
+F11 [[pairing-as-permission|machine pairing]] in [[os-console|os-console]] is the intended capability minting ceremony for Totebox
 access (planned; Phase H3 of the os-console substrate roadmap):
 
 1. The Totebox pairing authority holds a `CapabilityType::CNode` — the root of its

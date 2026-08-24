@@ -12,13 +12,13 @@ audience: public
 short_description: "service-fs is the foundational storage layer for the GIS pipeline — a flat-file data lake storing raw geospatial points, available to every downstream service."
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: service-fs-data-lake.es.md
 cites: []
 ---
 
-**`service-fs`** is the foundational storage layer for the platform's [[pointsav-gis-engine|GIS pipeline]] — a flat-file data lake that stores raw geospatial points ingested from open sources (OpenStreetMap, Overture Maps Foundation) in separate retail and civic landing zones, available immediately to every downstream service without an ETL step. Retail records — commercial operators, anchor stores, fuel outlets — and civic records — hospitals, universities, transport hubs — are kept in distinct subtrees so the [[service-places-filtering|filtering]] and [[service-business-clustering|clustering]] services can work on each domain independently.
+**`service-fs`** is the foundational storage layer for the platform's [[location-intelligence-substrate|GIS pipeline]] — a flat-file data lake that stores raw geospatial points ingested from open sources (OpenStreetMap, Overture Maps Foundation) in separate retail and civic landing zones, available immediately to every downstream service without an ETL step. Retail records — commercial operators, anchor stores, fuel outlets — and civic records — hospitals, universities, transport hubs — are kept in distinct subtrees so the [[service-places-filtering|filtering]] and [[service-business-clustering|clustering]] services can work on each domain independently.
 
 ## Key Takeaways
 
@@ -36,7 +36,7 @@ The service maintains a unified filesystem structure with separate landing zones
 
 ### Architectural Role
 
-As the stateful layer of the platform, `service-fs` is responsible for data persistence. It is designed to be independent of the analytical software — if the [[app-orchestration-gis|GIS orchestration layer]] is re-provisioned, the core data assets remain intact within this layer. The clean separation between data persistence and analytical logic is a core design invariant. This same separation principle extends to the WORM ledger used for institutional records; see [[service-fs-architecture|FS architecture]] for the full four-layer design.
+As the stateful layer of the platform, `service-fs` is responsible for data persistence. It is designed to be independent of the analytical software — if the [[app-orchestration-gis|GIS orchestration layer]] is re-provisioned, the core data assets remain intact within this layer. The clean separation between data persistence and analytical logic is a core design invariant. This same separation principle extends to the WORM ledger used for institutional records; see [[service-fs|FS architecture]] for the full four-layer design.
 
 ## Unikernel Implementation (Planned)
 

@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-06
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: os-workplace.md
 short_description: "os-workplace es el nivel de escritorio gratuito previsto en la familia PointSav — hoy, un conjunto creciente de aplicaciones independientes en Rust y Tauri que el operador ejecuta en su propio equipo, incorporándose a la red como un par WireGuard station-*; la puerta de entrada prevista a la línea comercial."
@@ -58,7 +58,7 @@ las demás, y ninguna requiere el shell unificado `os-workplace` para funcionar.
 **Ratificado el 2026-05-23** (`DOCTRINE.md §IV.f`); implementación pendiente. `os-workplace` se
 ejecuta en el propio equipo personal del operador — hoy, una MacBook — y está previsto que entregue
 `app-workplace-desktop`, la superficie de escritorio unificada del operador que uniría las
-aplicaciones anteriores en un solo entorno. Aloja [[console-os|`os-console`]] como aplicación
+aplicaciones anteriores en un solo entorno. Aloja [[os-console|`os-console`]] como aplicación
 co-residente, no mediante virtualización de Tipo 2 — son dos capas independientes que comparten la
 misma máquina. El equipo se incorpora a la [[ppn-architecture-overview|Red Privada PointSav]] como
 par WireGuard directo dentro del rango `10.42.20.0/24`; la instancia `node-*` de `os-console` que
@@ -83,7 +83,7 @@ Tres razones hacen de `os-workplace` un compromiso estructural en lugar de un ge
 
 1. **Embudo de adopción.** Un conjunto de aplicaciones de escritorio gratuito y rápido está
    pensado para introducir al operador en la disciplina de teclas de función de
-   [[console-os|`os-console`]] y el modelo de seguridad del [[diode-standard|Diodo]]. Así, los
+   [[os-console|`os-console`]] y el modelo de seguridad del [[diode-standard|Diodo]]. Así, los
    productos comerciales se sienten familiares desde el primer día.
 2. **Implementación de referencia.** Cada línea de código escrita para las aplicaciones de
    Workplace es revisable en el monorepo público. Los clientes pueden auditar el
@@ -98,7 +98,7 @@ Tres razones hacen de `os-workplace` un compromiso estructural en lugar de un ge
 
 - [[os-family-overview]] — la familia de ocho SO y dónde encaja os-workplace
 - [[totebox-os]] — el socio de datos; el archivo con el que os-workplace se empareja
-- [[console-os]] — la superficie co-residente TUI-primero que transporta la conexión de red de
+- [[os-console]] — la superficie co-residente TUI-primero que transporta la conexión de red de
   os-workplace
 - [[machine-based-auth]] — el modelo de emparejamiento que reemplaza los nombres de usuario y
   contraseñas

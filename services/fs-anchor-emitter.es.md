@@ -11,12 +11,12 @@ short_description: "Un binario de un solo uso que obtiene un punto de control fi
 status: active
 audience: vendor-public
 bcsc_class: current-fact
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: fs-anchor-emitter.md
 ---
 
-`fs-anchor-emitter` conecta el [[worm-ledger-design|libro mayor Write-Once-Read-Many]] inmutable de la plataforma con un registro público de transparencia de terceros. No genera él mismo el punto de control del libro mayor — eso lo hace [[service-fs-architecture|service-fs]] — la función del emisor es obtener un punto de control ya firmado, enviarlo a Sigstore Rekor y registrar el resultado. Este diseño mantiene la generación del punto de control y el anclaje público como pasos separados y auditables de forma independiente.
+`fs-anchor-emitter` conecta el [[worm-ledger-design|libro mayor Write-Once-Read-Many]] inmutable de la plataforma con un registro público de transparencia de terceros. No genera él mismo el punto de control del libro mayor — eso lo hace [[service-fs|service-fs]] — la función del emisor es obtener un punto de control ya firmado, enviarlo a Sigstore Rekor y registrar el resultado. Este diseño mantiene la generación del punto de control y el anclaje público como pasos separados y auditables de forma independiente.
 
 ## Qué hace, en orden
 
@@ -44,6 +44,6 @@ El binario en sí no tiene lógica interna de generación ni de prueba de consis
 
 ## Véase también
 
-- [[service-fs-architecture]] — genera y firma los puntos de control que este emisor obtiene
+- [[service-fs]] — genera y firma los puntos de control que este emisor obtiene
 - [[worm-ledger-design]] — el libro mayor que el punto de control certifica
-- [[service-fs-security-compliance]] — la postura de cumplimiento que respalda este anclaje
+- `service-fs` — la postura de cumplimiento que respalda este anclaje

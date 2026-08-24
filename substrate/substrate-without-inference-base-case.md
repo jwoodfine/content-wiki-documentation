@@ -10,7 +10,7 @@ index_group: sovereignty-and-customer-ownership
 short_description: "The Totebox Archive remains fully operational and freely transferable even when no AI inference tier is available; the deterministic substrate is the load-bearing foundation."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites: []
 references:
@@ -26,7 +26,7 @@ The **Substrate-Without-Inference Base Case** establishes that the [[totebox-arc
 
 When all three compute tiers (local specialist, [[yoyo-compute-substrate|GPU burst]], and external API) are simultaneously unavailable, the following must hold:
 
-The WORM file ledger ([[service-fs-architecture|service-fs]]) is operational: ingest, query, and checkpoint all work. The knowledge runtime ([[service-content|`service-content`]]) is operational: graph queries, vector search, and temporal queries work, with mutations from non-AI paths only. The input service, extraction service (at the deterministic parsing layer), egress service, people service, and email service are all operational. The [[compounding-doorman|Doorman]] is bound and listening, returning 503 to inference endpoints while keeping health and contract endpoints always responsive. The operator [[tui-corpus-producer|TUI]] operates in deterministic-only mode.
+The WORM file ledger ([[service-fs|service-fs]]) is operational: ingest, query, and checkpoint all work. The knowledge runtime ([[service-content|`service-content`]]) is operational: graph queries, vector search, and temporal queries work, with mutations from non-AI paths only. The input service, extraction service (at the deterministic parsing layer), egress service, people service, and email service are all operational. The [[compounding-doorman|Doorman]] is bound and listening, returning 503 to inference endpoints while keeping health and contract endpoints always responsive. The operator [[tui-corpus-producer|TUI]] operates in deterministic-only mode.
 
 The [[reverse-flow-substrate|marketplace and settlement services]] are planned, not yet built; when they exist, the design intends the same discipline to apply — transactions proceed without AI-assisted grounding, with audit and consent records still enforced.
 

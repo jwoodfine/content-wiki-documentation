@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: six-tier-sovereignty-matrix.md
 short_description: "Seis prefijos fijos de directorio que organizan el monorepo de PointSav por propósito, haciendo el repositorio autodocumentado y reforzando la higiene de dependencias."
@@ -29,7 +29,7 @@ Cada directorio en la raíz del monorepo pertenece a uno de los siguientes nivel
 | 1 — Aplicación | `app-` | Superficies orientadas al usuario — los cartuchos de personalidad que definen el aspecto y la sensación de un trabajo | `app-console-input`, `app-mediakit-marketing`, `app-orchestration-command` |
 | 2 — Activo | `asset-` | Recursos no-código — fuentes, íconos, modelos 3D, tokens de diseño, activos de marca | Prefijo reservado, ningún directorio poblado todavía |
 | 3 — Moonshot | `moonshot-` | Experimentos de investigación y desarrollo aún no promovidos a producción | `moonshot-gpu` |
-| 4 — OS | `os-` | Composiciones de sistemas operativos — los contenedores de ejecución que cargan otros componentes | [[console-os|`os-console`]], [[totebox-os|`os-totebox`]], [[os-orchestration|`os-orchestration`]] |
+| 4 — OS | `os-` | Composiciones de sistemas operativos — los contenedores de ejecución que cargan otros componentes | [[os-console|`os-console`]], [[totebox-os|`os-totebox`]], [[os-orchestration|`os-orchestration`]] |
 | 5 — Servicio | `service-` | Daemons de lógica de negocio en segundo plano | [[service-slm|`service-slm`]], [[service-content|`service-content`]], [[service-email|`service-email`]], [[service-people|`service-people`]] |
 | 6 — Sistema | `system-` | Tecnología fundacional — controladores, redes, utilidades de base | `system-foundation`, `system-driver-network`, `system-audit` |
 

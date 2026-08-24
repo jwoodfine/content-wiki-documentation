@@ -10,7 +10,7 @@ quality: complete
 short_description: "PointSav's two-tier commercial structure: a free Community tier as an adoption funnel, and a paid SMB tier targeting regulated businesses hyperscale billing can't serve."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites: []
 paired_with: economic-model.es.md
@@ -37,7 +37,7 @@ The `app-orchestration-*` family — the commercial inference-routing and federa
 core — is fully proprietary, never converting to either open license.
 
 <strong>Community</strong> is the free tier: one [[totebox-os|ToteboxOS]] archive and
-one [[console-os|ConsoleOS]] terminal, both AGPL, with local model inference as an
+one [[os-console|ConsoleOS]] terminal, both AGPL, with local model inference as an
 optional component. Community is the adoption funnel — it generates contributors and
 surfaces edge cases — and [[pointsav-overview|PointSav]] earns no revenue from it.
 

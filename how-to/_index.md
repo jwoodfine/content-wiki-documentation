@@ -12,7 +12,7 @@ bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
 index_type: thematic
 index_scope: how-to
-last_edited: 2026-08-06
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: _index.es.md
 ---
@@ -79,15 +79,15 @@ Connect external data pipelines and build location-intelligence applications.
 - [[build-a-colocation-map|Build a co-location map]] — load a PMTiles archive directly; no REST API or API key exists
 - [[connect-osm-data-pipeline|Connect to the OSM data pipeline]] — the real ingest-osm.py script and taxonomy.py registration
 - [[federate-archives-via-content-mounts|Federate archives via content mounts]] — mount a second repository's content into a running instance
-- [[use-knowledge-mounts|Use declarative knowledge mounts]] — the real [[mount]] schema and its real, unmitigated slug-collision risk
+- [[use-knowledge-mounts|Use declarative knowledge mounts]] — the real `[[mount]]` schema and its real, unmitigated slug-collision risk
 <!-- END AUTO-GENERATED -->
 
 Device pairing, capability tokens, and fleet enrollment now have their own category — see [Machine Authorization](/category/machine-authorization). Self-hosted deployment now has its own category — see [Self-Hosting](/category/self-hosting).
 
 ## See also
 
-- [[architecture/_index|Architecture]] — cross-cutting platform architecture
-- [[patterns/_index|Patterns]] — named design patterns used across the platform
+- [[architecture-index|Architecture]] — cross-cutting platform architecture
+- [[patterns-index|Patterns]] — named design patterns used across the platform
 - [[totebox-session]] — what a Totebox session is and what it can do
 - [[machine-based-auth]] — how machine-based authorization works
 - [Machine Authorization](/category/machine-authorization) — device pairing, capability tokens, fleet enrollment, and binary-download authentication

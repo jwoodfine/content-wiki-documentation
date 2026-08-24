@@ -13,7 +13,7 @@ paired_with: os-totebox-sovereign-archive.md
 category: systems
 status: active
 quality: complete
-last_edited: 2026-08-06
+last_edited: 2026-08-24
 ---
 
 **Estado (2026-08-06):** la imagen seL4 Microkit descrita en este artículo ha pasado de
@@ -57,7 +57,7 @@ Estos son los límites actuales y factuales del despliegue. La
 verificación de arranque e inferencia anterior es real y actual; las garantías de
 persistencia, disponibilidad y anclaje del registro de la bóveda aún no se han entregado.
 
-Toda organización que depende de una plataforma de terceros para almacenar sus registros está asumiendo una apuesta implícita: que el proveedor de esa plataforma seguirá siendo solvente, accesible y libre de fallas de seguridad durante todo el tiempo que esos registros tengan relevancia. [[os-totebox]] está diseñado para los operadores que han decidido que esa apuesta es inaceptable.
+Toda organización que depende de una plataforma de terceros para almacenar sus registros está asumiendo una apuesta implícita: que el proveedor de esa plataforma seguirá siendo solvente, accesible y libre de fallas de seguridad durante todo el tiempo que esos registros tengan relevancia. [[totebox-os]] está diseñado para los operadores que han decidido que esa apuesta es inaceptable.
 
 ## Qué está diseñado para ser os-totebox
 
@@ -77,7 +77,7 @@ Esto tiene consecuencias concretas en un escenario de falla. Si [[service-slm]] 
 
 os-totebox organiza sus servicios en dos [[three-ring-architecture|anillos concéntricos]] según su proximidad al almacenamiento.
 
-**El Anillo 1** comprende los servicios que interactúan directamente con los datos duraderos y con la E/S externa: [[service-fs-architecture|service-fs]], service-input, service-extraction y service-egress. service-fs posee en exclusividad la capacidad sobre el dispositivo de bloques WORM — es el único Dominio de Protección de la máquina que puede realizar operaciones de almacenamiento. Ningún otro servicio puede acceder directamente al dispositivo de bloques, independientemente de su estado de ejecución.
+**El Anillo 1** comprende los servicios que interactúan directamente con los datos duraderos y con la E/S externa: [[service-fs|service-fs]], service-input, service-extraction y service-egress. service-fs posee en exclusividad la capacidad sobre el dispositivo de bloques WORM — es el único Dominio de Protección de la máquina que puede realizar operaciones de almacenamiento. Ningún otro servicio puede acceder directamente al dispositivo de bloques, independientemente de su estado de ejecución.
 
 **El Anillo 2** comprende los servicios que procesan, clasifican y razonan sobre los datos: service-content, service-people, service-email y service-slm. Estos servicios se comunican con el Anillo 1 a través de un protocolo de comunicación entre dominios definido y acotado. Pueden solicitar a service-fs que escriba un registro; no pueden poseer por sí mismos la capacidad para hacerlo.
 

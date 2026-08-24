@@ -10,7 +10,7 @@ index_group: the-archive-layer
 short_description: "Totebox Orchestration is the coordination layer managing multiple Totebox data-archive containers, keeping execution engines isolated from passive corporate ledgers."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites: []
 paired_with: totebox-orchestration.es.md
@@ -43,5 +43,5 @@ A new Totebox container is registered with the orchestration layer at creation t
 - [[totebox-os]] — the operating system running inside each managed Totebox
 - [[totebox-archive]] — the fundamental unit of data storage being orchestrated
 - [[os-infrastructure-ppn-node]] — the compute substrate hosting the Totebox instances
-- [[console-os]] — the Command Ledger that operators use to interact with orchestrated archives
+- [[os-console]] — the Command Ledger that operators use to interact with orchestrated archives
 - [[os-orchestration]] — the fleet-level OS aggregator for multi-entity commercial deployments

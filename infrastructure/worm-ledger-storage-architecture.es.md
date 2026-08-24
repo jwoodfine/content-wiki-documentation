@@ -13,7 +13,7 @@ category: infrastructure
 index_group: storage-substrate
 status: active
 quality: complete
-last_edited: 2026-06-23
+last_edited: 2026-08-24
 editor: pointsav-engineering
 ---
 
@@ -42,5 +42,5 @@ Este diseño cumple con las normativas SEC (EE. UU.) y eIDAS (UE), devolviendo l
 
 - [[worm-ledger-architecture]] — visión arquitectónica de cuatro capas: almacenamiento por bloques, API WORM, protocolo de red, anclaje
 - [[worm-ledger-design]] — mapeo de cumplimiento regulatorio y soberanía de claves del cliente
-- [[service-fs-architecture]] — la implementación `service-fs` que aplica esta arquitectura de almacenamiento en producción
+- [[service-fs]] — la implementación `service-fs` que aplica esta arquitectura de almacenamiento en producción
 - [[cryptographic-ledgers]] — el contexto más amplio del libro de registros criptográfico

@@ -10,7 +10,7 @@ quality: complete
 short_description: "Write-Once-Read-Many ledger substrate for PointSav Ring 1 services, designed toward a hash-chained, signed format that satisfies recordkeeping rules by structure."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-06-23
+last_edited: 2026-08-24
 editor: pointsav-engineering
 forward_looking: true
 cites:
@@ -37,7 +37,7 @@ paired_with: worm-ledger-design.es.md
 
 A regulated firm's records are only as trustworthy as the weakest hand that can reach them. An administrator flag, a software upgrade, a backup restore — any of these can silently alter a historical record. A policy that promises they will not is not the same as a structure that does not let them.
 
-PointSav's [[three-ring-architecture|Ring 1 services]] persist every boundary record — filesystem, people data, email, structured input — to a Write-Once-Read-Many ledger via [[service-fs-architecture|the service-fs substrate]]. Each record's hash chains into the one before it, so altering any past entry changes every hash after it — a property that already holds today, on top of a flat per-tenant append log (`log.jsonl`). The ledger is **designed to adopt** the C2SP tlog-tiles transparency-log format as its on-disk layout; that tile segmentation is the one piece still ahead of the current implementation.
+PointSav's [[three-ring-architecture|Ring 1 services]] persist every boundary record — filesystem, people data, email, structured input — to a Write-Once-Read-Many ledger via [[service-fs|the service-fs substrate]]. Each record's hash chains into the one before it, so altering any past entry changes every hash after it — a property that already holds today, on top of a flat per-tenant append log (`log.jsonl`). The ledger is **designed to adopt** the C2SP tlog-tiles transparency-log format as its on-disk layout; that tile segmentation is the one piece still ahead of the current implementation.
 
 The ledger is **designed as four layers** — tile storage, a WORM API, a wire protocol, and recurring anchoring of signed checkpoints to a public transparency log. Immutability is a property of the storage substrate, not of operational policy.
 
@@ -90,6 +90,6 @@ The `service-fs` Ring 1 service implements the full WORM ledger substrate in pro
 - [[three-ring-architecture]] — the Ring 1 boundary where the WORM ledger operates
 - [[worm-ledger-architecture]] — the four-layer architectural integration: tile storage, WORM API, wire protocol, anchoring
 - [[worm-ledger-storage-architecture]] — storage-layer detail: C2SP tlog-tiles format, atomic write discipline, dual-target runtime
-- [[service-fs-architecture]] — the `service-fs` implementation that runs this substrate in production
+- [[service-fs]] — the `service-fs` implementation that runs this substrate in production
 - [[compounding-doorman]] — the Ring 3 service whose audit ledger uses the same primitive
 - [[trajectory-substrate]] — the training-corpus capture that will use the same ledger format when its archival shape stabilises

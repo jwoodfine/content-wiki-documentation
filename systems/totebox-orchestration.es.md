@@ -12,7 +12,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-25
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: totebox-orchestration.md
 cites: []
@@ -52,5 +52,5 @@ La capa de orquestación también gestiona el retiro seguro de contenedores — 
 - [[totebox-os]] — el sistema operativo que se ejecuta dentro de cada Totebox gestionado
 - [[totebox-archive]] — la unidad fundamental de almacenamiento de datos que se orquesta
 - [[os-infrastructure-ppn-node]] — el sustrato de cómputo que aloja las instancias Totebox
-- [[console-os]] — el Libro Mayor de Comandos que los operadores usan para interactuar con los archivos orquestados
+- [[os-console]] — el Libro Mayor de Comandos que los operadores usan para interactuar con los archivos orquestados
 - [[os-orchestration]] — el agregador de SO a nivel de flota para despliegues comerciales multi-entidad
