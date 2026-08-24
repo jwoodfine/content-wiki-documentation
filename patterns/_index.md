@@ -38,6 +38,7 @@ The structural commitments that define what a PointSav deployment is and is not.
 - [[zero-execution-routing]] — The platform's public homepage templates use a native-CSS checkbox pattern for language toggling and interactive elements, alongside a small amount of client-side JavaScript for page-integrity display and analytics.
 - [[customer-first-ordering]] — A software vendor building something a customer will install should build it in the same order the customer will install it, on the same substrate the customer will use.
 - [[customer-hostability]] — The architectural commitment that every artefact runs on the customer's own hardware, against the customer's own keys, with the customer's own audit ledger.
+- [[totebox-archives-as-the-asset]] — Why a Totebox Archive is a self-contained, freely transferable data unit rather than a database record owned by the platform that created it.
 <!-- END AUTO-GENERATED -->
 
 ## Deployment and configuration

@@ -33,9 +33,44 @@ references:
   - id: 5
     text: "comrak — ExtensionOptions."
     url: "https://docs.rs/comrak/latest/comrak/struct.ExtensionOptions.html"
+  - id: 6
+    text: "Library — Wikipedia."
+    url: "https://en.wikipedia.org/wiki/Library"
+  - id: 7
+    text: "Encyclopedia — Wikipedia."
+    url: "https://en.wikipedia.org/wiki/Encyclopedia"
+  - id: 8
+    text: "Content repository — Wikipedia."
+    url: "https://en.wikipedia.org/wiki/Content_repository"
 ---
 
 [[app-mediakit-knowledge|`app-mediakit-knowledge`]] is the PointSav knowledge platform engine, a Rust binary that serves three wiki instances — `documentation.pointsav.com`, `projects.woodfinegroup.com`, and `corporate.woodfinegroup.com` — from flat Markdown files stored in git repositories. The engine renders content with Wikipedia-shaped chrome: sticky table of contents, wikilink resolution with red-link signalling, category pages, edit history, and full-text search. **A reader comparing this wiki to Wikipedia feature-by-feature will find most of the reading experience already matches — the two clearly missing pieces are the infobox and the navbox**, the two highest-impact elements of Wikipedia's visual muscle memory. A planned multi-sprint roadmap is intended to close that gap before adding a Leapfrog 2030 differentiation layer that goes beyond what Wikipedia offers.
+
+## Why Topics, not pages
+
+The engine's Wikipedia-shaped chrome serves a specific content model: an article is a
+**Topic** — a self-contained unit with its own table of contents — not a page in a
+larger document, and not an email thread. Reaching for a wiki at all is a response to a
+concrete, recognisable failure mode: distributing knowledge as a growing set of
+standalone documents, each updated ad hoc and re-sent to whoever asks, eventually
+collapses under its own volume. Every recipient ends up with a different, dated copy;
+nobody can tell which version is current without asking.
+
+Three older library-science concepts describe what a Topic-based wiki restores. A
+**library** offers information services — someone or something that helps a reader find
+what they need, rather than a folder of files.[^6] An **encyclopedia** divides
+knowledge into topics rather than chapters, each independently findable and
+cross-linked.[^7] A **repository** adds version control and access discipline on top —
+a document's current state and its history are both first-class, not just its current
+state.[^8] A knowledge platform that is only one of the three is incomplete: a pure
+library with no topic structure sprawls; a pure encyclopedia with no version discipline
+loses its history; a pure repository with no topic structure is a file server with
+better auditing.
+
+This is why the engine's baseline target is Wikipedia's reading and editing muscle
+memory specifically, rather than a generic content-management system: Wikipedia is the
+clearest existing example of a platform that is a library, an encyclopedia, and a
+repository at once, at a scale that proves the model holds.
 
 ## Why not port MediaWiki
 

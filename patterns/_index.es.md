@@ -38,6 +38,7 @@ Los compromisos estructurales que definen qué es y qué no es un despliegue de 
 - [[zero-execution-routing|Enrutamiento sin ejecución]] — Las plantillas públicas de la página de inicio usan un patrón de casilla CSS nativa para el cambio de idioma y elementos interactivos, junto con una pequeña cantidad de JavaScript del lado del cliente para integridad de página y analítica.
 - [[customer-first-ordering|Orden cliente-primero]] — Un proveedor de software que construye algo que un cliente instalará debe construirlo en el mismo orden en que el cliente lo instalará, sobre el mismo sustrato que el cliente utilizará.
 - [[customer-hostability|Alojabilidad por el cliente]] — El compromiso arquitectónico de que cada artefacto se ejecute en el propio hardware del cliente, contra las propias claves del cliente, con el propio libro de auditoría del cliente.
+- [[totebox-archives-as-the-asset|Los Archivos Totebox como el activo]] — Por qué un Archivo Totebox es una unidad de datos autónoma y libremente transferible, en lugar de un registro de base de datos propiedad de la plataforma que lo creó.
 <!-- END AUTO-GENERATED -->
 
 ## Despliegue y configuración

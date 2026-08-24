@@ -26,6 +26,25 @@ paired_with: knowledge-wiki-leapfrog-architecture.md
 
 En mayo de 2026, el motor implementa aproximadamente el 78 % de la experiencia visual y funcional de Wikipedia. Una hoja de ruta de varios sprints prevé llevar esa cifra a aproximadamente el 95 %, tras lo cual se añade una capa diferenciadora de Leapfrog 2030 que va más allá de lo que ofrece Wikipedia.
 
+## Por qué Temas, no páginas
+
+La interfaz al estilo Wikipedia del motor responde a un modelo de contenido concreto:
+un artículo es un **Tema** — una unidad autónoma con su propia tabla de contenidos —
+no una página dentro de un documento mayor. Adoptar un wiki responde a un patrón de
+fallo reconocible: distribuir conocimiento como un conjunto creciente de documentos
+independientes, cada uno actualizado por separado y reenviado a quien lo solicita,
+termina por colapsar bajo su propio volumen — cada destinatario acaba con una copia
+distinta y desactualizada, sin forma de saber cuál es la vigente.
+
+Tres conceptos más antiguos de la ciencia bibliotecaria describen lo que un wiki
+organizado por Temas restituye. Una **biblioteca** ofrece servicios de información —
+alguien o algo que ayuda al lector a encontrar lo que necesita, no una carpeta de
+archivos. Una **enciclopedia** divide el conocimiento en temas en lugar de capítulos,
+cada uno localizable y enlazado de forma independiente. Un **repositorio** añade
+control de versiones y disciplina de acceso — el estado actual de un documento y su
+historial son ambos de primera clase, no solo el estado actual. Una plataforma que
+solo cumple uno de los tres queda incompleta.
+
 ## Por qué no se porta MediaWiki
 
 MediaWiki fue diseñado en 2003 para un stack PHP y MySQL. Su parser — el componente que convierte el formato wikitext en HTML — fue descrito por su autor original como "un gran montón de expresiones regulares." El proyecto Parsoid, el intento de MediaWiki de reemplazar ese parser con un convertidor bidireccional HTML↔wikitext, tardó diez años en desplegarse y aún completaba su adopción en 2025.
