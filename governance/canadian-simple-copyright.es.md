@@ -1,16 +1,16 @@
 ---
 schema: foundry-doc-v1
-title: "Canadian-simple copyright posture"
+title: "Postura de derechos de autor canadiense-simple"
 slug: canadian-simple-copyright
 category: governance
 type: topic
 content_type: topic
 quality: complete
 index_group: licensing-and-contribution
-short_description: "The platform's intellectual property vests in a single Canadian parent holding company by operation of Canadian Copyright Act § 13(3), without inter-company assignment, and is designed to be evolved incrementally as the corporate structure matures."
+short_description: "La propiedad intelectual de la plataforma se concentra en una única sociedad holding matriz canadiense por operación del artículo 13(3) de la Ley de Derechos de Autor canadiense, sin cesión entre empresas, y está diseñada para evolucionar de forma incremental a medida que madura la estructura corporativa."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-07-31
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - ni-51-102

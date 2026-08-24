@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Nightly Datagraph rebuild"
+title: "Nightly DataGraph rebuild"
 slug: nightly-datagraph-rebuild
 category: substrate
 type: concept

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "structural-positioning"
+title: "Posicionamiento estructural"
 slug: structural-positioning
 category: reference
 type: concept

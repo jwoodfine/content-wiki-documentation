@@ -10,7 +10,7 @@ quality: complete
 short_description: "The convention that every repository and project sub-clone keeps a small, explicitly enumerated set of canonical companion files at its root — and nothing else."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-01
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites: []
 paired_with: root-files-discipline.es.md
@@ -38,7 +38,7 @@ The `AGENTS.md` convention, published in December 2025 and maintained under the 
 
 ## Licence discipline
 
-The `LICENSE` file in every repository is the single most consequential Tier-1 file. It determines what downstream consumers may do with the repository's content. The framework maintains a licence directory in the [[disclosure-substrate|factory-release-engineering]] repository as the source of truth for every licence text used across the framework. Licence assignments are declared in a machine-readable map that names which licence applies to which repository, sometimes with per-path overrides for mixed-licence monorepos. A propagation script reads the map and copies the appropriate licence text into each target repository's `LICENSE` file when governance propagation runs.
+The `LICENSE` file in every repository is the single most consequential Tier-1 file. It determines what downstream consumers may do with the repository's content. The framework maintains a licence directory in the `factory-release-engineering` repository as the source of truth for every licence text used across the framework. Licence assignments are declared in a machine-readable map that names which licence applies to which repository, sometimes with per-path overrides for mixed-licence monorepos. A propagation script reads the map and copies the appropriate licence text into each target repository's `LICENSE` file when governance propagation runs.
 
 Source files carry SPDX licence identifier headers using the standardised identifier vocabulary rather than embedding full licence text inline.
 
@@ -55,6 +55,6 @@ Missing files surface at session start when any session in a repository observes
 ## See also
 
 - [[citation-substrate]] — the platform citation infrastructure that `CITATION.cff` feeds
-- [[disclosure-substrate]] — the factory-release-engineering governance layer that controls licence propagation
+- [[disclosure-substrate]] — the governance layer that controls licence propagation
 - [[language-protocol-substrate]] — the bilingual posture specification that governs README pair requirements
 

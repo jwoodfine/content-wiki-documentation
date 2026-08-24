@@ -10,7 +10,7 @@ index_group: specialist-and-domain-services
 short_description: "Mecanismo de distribución en service-email-template que sincroniza una copia autoritativa de cada plantilla aprobada con el correo del operador, eliminando la deriva de versiones."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-08
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: template-ledger.md
 cites: []
@@ -28,7 +28,7 @@ El operador abre su carpeta `Template Ledger` en Microsoft 365, accede al catál
 
 ## Sincronización silenciosa
 
-Cuando un ingeniero de PointSav actualiza una plantilla, el servicio de sincronización utiliza la API de [[machine-based-auth|Microsoft Graph]] para reemplazar la versión anterior en la subcarpeta del operador por la nueva, sin enviar ninguna notificación. La ausencia de notificaciones es deliberada: la plantilla actual siempre está disponible en la carpeta y no se requiere ninguna acción por parte del operador para recibirla.
+Cuando un ingeniero de PointSav actualiza una plantilla, el servicio de sincronización utiliza la API de Microsoft Graph para reemplazar la versión anterior en la subcarpeta del operador por la nueva, sin enviar ninguna notificación. La ausencia de notificaciones es deliberada: la plantilla actual siempre está disponible en la carpeta y no se requiere ninguna acción por parte del operador para recibirla.
 
 ## Véase también
 

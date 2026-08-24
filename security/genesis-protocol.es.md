@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Genesis protocol"
+title: "Protocolo Génesis"
 slug: genesis-protocol
 short_description: "El Genesis Protocol es la secuencia diseñada de arranque de flota para nodos os-infrastructure: enviarse sin configuración previa, arrancar en cualquier red y alcanzar un estado seguro y reclamable sin necesitar contacto con el plano de control."
 category: security
@@ -12,7 +12,7 @@ bcsc_class: public-disclosure-safe
 language: es
 language_protocol: TRANSLATE-ES
 paired_with: genesis-protocol.md
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 ---
 

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-pointsav-link"
+title: "service-pointsav-link — planned PointSav fleet adapter"
 slug: service-pointsav-link
 short_description: "service-pointsav-link is a named but unbuilt adapter concept for connecting an os-* node to a PointSav fleet — no corresponding package exists in the monorepo today."
 category: services
@@ -11,7 +11,7 @@ status: stable
 bcsc_class: public-disclosure-safe
 language: en
 paired_with: service-pointsav-link.es.md
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 ---
 

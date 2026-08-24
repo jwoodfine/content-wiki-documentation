@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-vm-fleet"
+title: "service-vm-fleet — the PPN VM fleet controller"
 slug: service-vm-fleet
 category: services
 index_group: specialist-and-domain-services
@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-20
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: service-vm-fleet.es.md
 short_description: "The fleet controller maintains a global view of node capacity across the PPN WireGuard mesh and handles placement decisions for virtual machine spawns."

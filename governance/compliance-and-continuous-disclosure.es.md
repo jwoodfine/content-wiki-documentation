@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "compliance-and-continuous-disclosure"
+title: "Cumplimiento y divulgación continua"
 slug: compliance-and-continuous-disclosure
 category: governance
 type: concept

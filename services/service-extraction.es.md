@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-extraction"
+title: "service-extraction — la canalización de ingesta del DataGraph"
 slug: service-extraction
 short_description: "service-extraction vigila un directorio en busca de cargas útiles JSON entrantes que llevan entidades clasificadas en el borde, escribe un registro de libro mayor por carga útil para el servicio objetivo, y puede puentear el mismo texto hacia la canalización de ingesta del DataGraph."
 category: services
@@ -12,7 +12,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: service-extraction.md
 cites: []

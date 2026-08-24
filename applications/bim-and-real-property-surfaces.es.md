@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "bim-and-real-property-surfaces"
+title: "Superficies BIM y propiedad inmobiliaria"
 slug: bim-and-real-property-surfaces
 category: applications
 type: concept
@@ -12,7 +12,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: bim-and-real-property-surfaces.md
 references:

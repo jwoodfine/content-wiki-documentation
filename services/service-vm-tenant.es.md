@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-vm-tenant"
+title: "service-vm-tenant — el proxy de inquilino de VM de la PPN"
 slug: service-vm-tenant
 category: services
 index_group: specialist-and-domain-services
@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: TRANSLATE-ES
-last_edited: 2026-06-20
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: service-vm-tenant.md
 short_description: "El proxy de inquilino aplica autenticación, aislamiento de espacio de nombres, límites de cuota y una pista de auditoría inmutable en el límite del cliente del pool de recursos VM de la PPN."

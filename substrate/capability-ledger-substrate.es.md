@@ -10,7 +10,7 @@ index_group: cryptographic-and-microkernel-primitives
 short_description: "El Sustrato del Libro de Capacidades es el mecanismo por el cual cada decisión de control de acceso en un despliegue de plataforma se convierte en un evento criptográficamente auditable, anclado en un registro que controla el cliente."
 status: active
 bcsc_class: no-disclosure-implication
-last_edited: 2026-05-25
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: capability-ledger-substrate.md
 cites: []
@@ -40,7 +40,7 @@ checkpoints publicados sin acceder al registro completo.
 
 El resultado es un sustrato de seguridad con dos capas verificables
 independientemente: la capa del kernel (prueba formal de seL4) y la capa del
-libro ([[worm-ledger-design|registro de auditoría Merkle]], que no puede ser reescrito sin las claves
+libro ([[worm-ledger-design|registro de auditoría]], que no puede ser reescrito sin las claves
 apex del cliente). La combinación es lo que el Sustrato del Libro de
 Capacidades nombra como el salto adelante.
 

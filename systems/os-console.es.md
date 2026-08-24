@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "os-console"
+title: "os-console — el Libro Mayor de Comandos"
 slug: os-console
 category: systems
 type: concept
@@ -12,7 +12,7 @@ audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
 language: es
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: os-console.md
 aliases: [console-os, os-console-architecture, os-console-platform, topic-os-console-architecture]

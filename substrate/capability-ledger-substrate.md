@@ -10,7 +10,7 @@ index_group: cryptographic-and-microkernel-primitives
 short_description: "The Capability Ledger Substrate is the mechanism by which every access-control decision becomes a cryptographically auditable event anchored to a customer-controlled log."
 status: active
 bcsc_class: no-disclosure-implication
-last_edited: 2026-05-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites: []
 references:
@@ -57,7 +57,7 @@ without access to the full log.
 
 The result is a security substrate with two independently verifiable layers:
 the kernel layer (seL4 formal proof — the kernel cannot be misled into
-honoring a capability it should refuse) and the ledger layer ([[worm-ledger-design|Merkle audit trail]] — the history of capability state changes cannot be rewritten without
+honoring a capability it should refuse) and the ledger layer ([[worm-ledger-design|audit trail]] — the history of capability state changes cannot be rewritten without
 the customer's apex keys). The combination is what the Capability Ledger
 Substrate names as the leapfrog: neither layer alone provides both properties.
 

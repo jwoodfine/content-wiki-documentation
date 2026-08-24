@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-content"
+title: "service-content — entity extraction and knowledge-graph host"
 slug: service-content
 category: services
 type: concept
@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: service-content.es.md
 short_description: "service-content extracts named entities from raw payloads through a tiered model pipeline, writes them into the knowledge graph under a human-review checkpoint, and hosts the platform's reference taxonomies."

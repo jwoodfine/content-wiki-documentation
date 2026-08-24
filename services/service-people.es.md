@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-people"
+title: "service-people — el servicio de libro de identidades"
 slug: service-people
 category: services
 type: concept
@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: service-people.md
 short_description: "service-people es la superficie F2 en os-console — un servidor MCP sobre un libro de identidades de solo-anexado y respaldado por WORM, con tres herramientas: anexar, buscar y escanear correos por expresión regular."

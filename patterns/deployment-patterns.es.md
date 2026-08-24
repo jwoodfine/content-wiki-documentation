@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "deployment-patterns"
+title: "Patrones de despliegue"
 slug: deployment-patterns
 category: patterns
 type: concept

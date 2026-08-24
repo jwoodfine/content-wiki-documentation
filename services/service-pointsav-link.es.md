@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-pointsav-link"
+title: "service-pointsav-link — adaptador de flota PointSav planificado"
 slug: service-pointsav-link
 short_description: "service-pointsav-link es un concepto de adaptador nombrado pero no construido para conectar un nodo os-* a una flota PointSav — no existe un paquete correspondiente en el monorepo hoy."
 category: services
@@ -12,7 +12,7 @@ bcsc_class: public-disclosure-safe
 language: es
 language_protocol: TRANSLATE-ES
 paired_with: service-pointsav-link.md
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 ---
 

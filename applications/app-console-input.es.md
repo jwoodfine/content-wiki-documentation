@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "app-console-input"
+title: "Aplicación de entrada de consola"
 slug: app-console-input
 category: applications
 type: app

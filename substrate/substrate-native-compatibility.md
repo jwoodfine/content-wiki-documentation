@@ -56,7 +56,7 @@ The second part is **internal-system interface mimicry**: extensions that read a
 
 ### Cost calculus for declining the shim
 
-The substrate's choice is to participate in the first part fully and decline the second part deliberately. The cost calculus favours [[citation-substrate|decline]]:
+The substrate's choice is to participate in the first part fully and decline the second part deliberately. The cost calculus favours decline:
 
 - Reader and integrator ecosystem effects scale via conventions, which are stable across a decade. The substrate adopts the convention once and benefits indefinitely.
 - Internal-system extension ecosystem effects scale via interfaces, which evolve with MediaWiki releases. The substrate would inherit a maintenance burden that grows with MediaWiki's ecosystem velocity, not the substrate's.

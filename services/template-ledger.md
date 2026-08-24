@@ -10,7 +10,7 @@ index_group: specialist-and-domain-services
 short_description: "Distribution mechanism in service-email-template that syncs one authoritative copy of every approved template to the operator's mail environment, eliminating version drift."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-08
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: template-ledger.es.md
 cites: []
@@ -34,7 +34,7 @@ The key is the only input the operator supplies. The template content is sourced
 
 ## Silent synchronization via Microsoft Graph
 
-When a PointSav engineer updates a template — for example, adding a revised Direct-Hold Solutions rider — the synchronization service uses the [[machine-based-auth|Microsoft Graph]] API to:
+When a PointSav engineer updates a template — for example, adding a revised Direct-Hold Solutions rider — the synchronization service uses the Microsoft Graph API to:
 
 1. Remove the previous version of the template from the operator's sub-folder.
 2. Insert the updated version in its place.

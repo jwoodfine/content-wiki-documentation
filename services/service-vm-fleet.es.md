@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-vm-fleet"
+title: "service-vm-fleet — el controlador de flota de VM de la PPN"
 slug: service-vm-fleet
 category: services
 index_group: specialist-and-domain-services
@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: TRANSLATE-ES
-last_edited: 2026-06-20
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: service-vm-fleet.md
 short_description: "El controlador de flota mantiene una vista global de la capacidad de nodos en la malla WireGuard de la PPN y gestiona las decisiones de colocación de máquinas virtuales."

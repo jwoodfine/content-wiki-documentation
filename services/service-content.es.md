@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-content"
+title: "service-content — extracción de entidades y alojamiento del grafo de conocimiento"
 slug: service-content
 category: services
 type: concept
@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: service-content.md
 short_description: "service-content extrae entidades nombradas de cargas útiles en bruto mediante una canalización de modelos escalonada, las escribe en el grafo de conocimiento bajo un punto de control de revisión humana, y aloja las taxonomías de referencia de la plataforma."

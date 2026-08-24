@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "service-vm-tenant"
+title: "service-vm-tenant — the PPN VM tenant proxy"
 slug: service-vm-tenant
 category: services
 index_group: specialist-and-domain-services
@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-06-20
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: service-vm-tenant.es.md
 short_description: "The tenant proxy enforces authentication, namespace isolation, quota limits, and an immutable audit trail at the customer boundary of the PPN VM resource pool."

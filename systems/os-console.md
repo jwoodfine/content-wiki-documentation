@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "os-console"
+title: "os-console — the Command Ledger"
 slug: os-console
 category: systems
 type: concept
@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: os-console.es.md
 aliases: [console-os, os-console-architecture, os-console-platform, topic-os-console-architecture]

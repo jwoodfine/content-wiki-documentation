@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Tier c key wiring"
+title: "Tier C key wiring"
 slug: tier-c-key-wiring
 category: infrastructure
 index_group: fleet-and-edge-deployment
@@ -10,7 +10,7 @@ quality: complete
 short_description: "The operational procedure for managing external API keys in the Doorman service — where keys live, how they are provisioned, how they rotate, and how a breach is contained."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites: []
 paired_with: tier-c-key-wiring.es.md
