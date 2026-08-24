@@ -100,7 +100,3 @@ Los niveles se aplican mediante emparejamientos, no comparaciones de cadenas. El
 - [[pairing-as-permission]]
 - [[personnel-permissions]]
 - [[doorman-protocol]]
-
-## Referencias
-
-- Carta constitucional de la plataforma — disponible en el repositorio `pointsav/factory-release-engineering`.

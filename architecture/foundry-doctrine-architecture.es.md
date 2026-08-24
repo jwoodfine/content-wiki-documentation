@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "PointSav Platform — Visión arquitectónica"
 slug: foundry-doctrine-architecture
-short_description: "Carta constitucional que codifica seis compromisos fundacionales y cincuenta y cuatro afirmaciones estructurales que rigen cada decisión de ingeniería de PointSav."
+short_description: "El alcance planificado para una futura carta constitucional que se prevé codifique compromisos fundacionales y afirmaciones estructurales que rijan las decisiones de ingeniería de PointSav — aún no redactada ni ratificada."
 category: architecture
 index_group: platform-structure
 type: topic
@@ -16,11 +16,11 @@ paired_with: foundry-doctrine-architecture.md
 ---
 
 
-La carta constitucional de la plataforma [[pointsav-overview|PointSav]] codifica los principios, compromisos y afirmaciones estructurales que rigen cada decisión de ingeniería, operaciones y editorial. La versión actual es v0.1.0 ALPHA, ratificada el 30 de abril de 2026. Véase [[foundry-doctrine-overview|la visión general de la doctrina]] para el encuadre introductorio.
+Se prevé que la carta constitucional de la plataforma [[pointsav-overview|PointSav]] codifique los principios, compromisos y afirmaciones estructurales destinados a regir las decisiones de ingeniería, operaciones y editorial. Ninguna versión ha sido ratificada; este artículo describe el alcance previsto, no un documento publicado. Véase [[foundry-doctrine-overview|la visión general de la doctrina]] para el encuadre introductorio.
 
 ## Los Seis Pilares
 
-La plataforma se construye sobre seis compromisos fundamentales que tienen prioridad sobre cualquier decisión de diseño específica:
+Se prevé que la plataforma se construya sobre seis compromisos fundamentales planificados para tener prioridad sobre cualquier decisión de diseño específica:
 
 **Texto plano, archivo plano, código abierto.** Cada artefacto producido por el sustrato — grafos de conocimiento, libros de auditoría, documentación, configuración, datos de entrenamiento — es texto plano. Sin almacenes de solo binarios, sin formatos propietarios.
 
@@ -36,9 +36,9 @@ La plataforma se construye sobre seis compromisos fundamentales que tienen prior
 
 ## Las Cincuenta y Cuatro Afirmaciones de Salto
 
-La doctrina enumera 54 afirmaciones estructurales numeradas que juntas constituyen el posicionamiento de la plataforma frente al software como servicio de hiperescaladores. Cada afirmación identifica una propiedad estructural del sustrato de la plataforma que la economía o arquitectura de los hiperescaladores no puede replicar sin cambiar el modelo de negocio subyacente.
+Se prevé que la carta planificada enumere afirmaciones estructurales numeradas que en conjunto constituirían el posicionamiento de la plataforma frente al software como servicio de hiperescaladores — cada una identificando una propiedad estructural que la economía o arquitectura de los hiperescaladores no podría replicar sin cambiar el modelo de negocio subyacente.
 
-Grupos representativos del conjunto completo de afirmaciones:
+Grupos representativos del conjunto de afirmaciones previsto:
 
 **Soberanía y propiedad de datos (afirmaciones #1–#11, #48, #54).** El grafo de conocimiento del cliente es [[customer-owned-graph-ip|propiedad intelectual del cliente]]. El [[worm-ledger-architecture|libro de contabilidad WORM]] por inquilino está enraizado en el cliente. Los formatos de exportación son abiertos desde el primer día.
 
@@ -69,7 +69,7 @@ monetización es una decisión contractual, no una reconstrucción arquitectóni
 
 ## Las Ocho Invenciones Transectoriales
 
-Más allá de las afirmaciones estructurales, la doctrina se inspira en ocho invenciones de proceso tomadas de industrias establecidas: Pasaporte del Espacio de Trabajo (marítimo), NOTAM (aviación), Procedimiento de Retirada (farmacéutico), Conocimiento de Embarque (transporte marítimo), Operación con Período de Consolidación (banca), Modo Aprendiz (aviación/medicina), Ancla de Integridad (notarización), Convención Constitucional (IETF/enmienda constitucional).
+Más allá de las afirmaciones estructurales, se prevé que la carta planificada se inspire en invenciones de proceso tomadas de industrias establecidas, entre ellas: Pasaporte del Espacio de Trabajo (marítimo), NOTAM (aviación), Procedimiento de Retirada (farmacéutico), Conocimiento de Embarque (transporte marítimo), Operación con Período de Consolidación (banca), Modo Aprendiz (aviación/medicina), Ancla de Integridad (notarización), y Convención Constitucional (IETF/enmienda constitucional, prevista para tramitarse a través del proceso de gobernanza ya existente de `factory-release-engineering` una vez que exista la carta).
 
 ## Estructura del espacio de trabajo
 
@@ -86,10 +86,6 @@ control del espacio de trabajo, una sola a la vez), la sesión de archivo (un pl
 repositorio de ingeniería, uno por repositorio) y la sesión de proyecto (por clúster de
 proyecto, varias concurrentes). La restricción `.git/index` — una sola sesión por
 índice — es la condición de carrera que determina esta estructura.
-
-## Postura de Divulgación Continua
-
-Cada artefacto escrito en el espacio de trabajo se trata como potencialmente revisable bajo las obligaciones de divulgación continua. Las declaraciones prospectivas sobre capacidad futura, cronograma o resultados del cliente llevan el encuadre "planificado"/"previsto"/"puede", una base razonable declarada y lenguaje cautelar.
 
 ## Véase también
 

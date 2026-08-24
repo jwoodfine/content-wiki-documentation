@@ -1,13 +1,13 @@
 ---
 schema: foundry-doc-v1
-title: "PointSav arquitectura 2030 — Resumen"
+title: "PointSav arquitectura 2030 — Resumen planificado"
 slug: foundry-doctrine-overview
 category: architecture
 index_group: platform-structure
 type: topic
 content_type: topic
 quality: complete
-short_description: Resumen público fiel de la carta constitucional de PointSav — seis pilares, cincuenta y cuatro afirmaciones de salto adelante, ocho invenciones operativas entre industrias, y el modelo económico que las sostiene.
+short_description: El alcance planificado para la futura carta constitucional de PointSav — aún no ratificada ni redactada; descrita aquí solo en términos planificados/previstos.
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25
@@ -20,13 +20,13 @@ cites:
 paired_with: foundry-doctrine-overview.md
 ---
 
-La **arquitectura [[pointsav-overview|PointSav]] 2030** es la carta constitucional del entorno de desarrollo de software de PointSav. Define los seis pilares de la arquitectura de la plataforma, cincuenta y cuatro afirmaciones de salto adelante que constituyen sus compromisos estructurales, ocho invenciones operativas entre industrias, y el [[economic-model|modelo económico]] que la sostiene. La propia doctrina es un artefacto público — versionada, firmada y publicada bajo CC BY 4.0 en cada versión MINOR. Véase [[foundry-doctrine-architecture|la visión arquitectónica]] para el conjunto detallado de afirmaciones.
+La **arquitectura [[pointsav-overview|PointSav]] 2030** es una carta constitucional planificada para el entorno de desarrollo de software de PointSav — aún no redactada ni ratificada. Este artículo describe su alcance previsto: seis pilares planificados, un conjunto previsto de afirmaciones estructurales que constituirían sus compromisos, invenciones operativas entre industrias previstas, y el [[economic-model|modelo económico]] que se pretende que la sostenga. Una vez redactada, se prevé que la carta sea un artefacto público — versionada, firmada y publicada bajo CC BY 4.0 en cada versión MINOR. Véase [[foundry-doctrine-architecture|la visión arquitectónica]] para el conjunto de afirmaciones previsto.
 
-Este artículo es un resumen público de la carta constitucional v0.1.0 ALPHA (ratificada el 30 de abril de 2026).
+Ninguna versión de esta carta ha sido ratificada. Lo que sigue describe la planificación actual, no un documento publicado.
 
 ## Los Seis Pilares
 
-Los seis pilares son los invariantes de la arquitectura. No son principios aspiracionales; son restricciones aplicadas.
+Los seis pilares siguientes son los invariantes previstos de la arquitectura, planificados para funcionar como restricciones aplicadas una vez ratificada la carta — aún no vigentes como documento firmado.
 
 **1. Solo texto plano.** UTF-8 Markdown para prosa, YAML simple para el enrutamiento. Sin formatos binarios, sin bases de datos, sin daemons, sin índices activos a nivel del sustrato.
 
@@ -46,7 +46,7 @@ Los seis pilares son los invariantes de la arquitectura. No son principios aspir
 
 La tesis central de la doctrina: una plataforma cuyo modelo cabe completamente en texto plano en una sola VM, funciona sin una API externa y sobrevive 100 años en un disco duro se vuelve más valiosa a medida que la conectividad global se fragmenta y los entornos regulatorios divergen.
 
-Cincuenta y dos afirmaciones constituyen este compromiso estructural. Las afirmaciones añadidas en v0.1.0 (#43–#54) constituyen el compromiso arquitectónico soberano para PYMEs:
+Se prevé que un conjunto de afirmaciones estructurales constituya este compromiso arquitectónico soberano para PYMEs, entre ellas:
 
 - **[[single-boundary-compute-discipline|Disciplina de Cómputo de Límite Único]] (#43)** — cada llamada de inferencia de IA pasa por un único límite de servicio, el [[doorman-protocol|Doorman]].
 - **[[knowledge-graph-grounded-apprenticeship|Aprendizaje Fundamentado en Grafo de Conocimiento]] (#44)** — el servicio de inferencia consulta el grafo de conocimiento por inquilino antes de cada solicitud sustantiva.
@@ -77,7 +77,7 @@ La plataforma organiza los servicios en tres anillos. Los Anillos 1 y 2 son dete
 
 ## Las Ocho Invenciones Entre Industrias
 
-La doctrina extrae patrones operativos de ocho dominios fuera del software: Pasaporte del Espacio de Trabajo (marítimo), NOTAM (aviación), Procedimiento de Retiro (farmacéutico), Conocimiento de Embarque (transporte marítimo), Operación Diferida en el Tiempo (bancario/fiduciario), Modo Aprendiz (habilitación tipo aviación / residencia médica), Ancla de Integridad (notaría / sellado de tiempo público), y Convención Constitucional (IETF RFC / enmienda constitucional).
+Se prevé que la arquitectura extraiga patrones operativos de dominios fuera del software, entre ellos: Pasaporte del Espacio de Trabajo (marítimo), NOTAM (aviación), Procedimiento de Retiro (farmacéutico), Conocimiento de Embarque (transporte marítimo), Operación Diferida en el Tiempo (bancario/fiduciario), Modo Aprendiz (habilitación tipo aviación / residencia médica), Ancla de Integridad (notaría / sellado de tiempo público), y Convención Constitucional (IETF RFC / enmienda constitucional, prevista para ejecutarse a través del proceso de gobernanza ya existente de `factory-release-engineering` una vez que exista la carta).
 
 ## El Modelo Económico
 
