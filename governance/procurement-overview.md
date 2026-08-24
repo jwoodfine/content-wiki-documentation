@@ -87,5 +87,4 @@ The vendor runs `documentation.pointsav.com` because PointSav is the canonical-t
 - [[compliance-and-continuous-disclosure]] — how the platform produces continuous-disclosure-grade records
 - [[worm-ledger-design]] — the WORM ledger that satisfies SEC 17a-4(f) and eIDAS by structure
 - [[economic-model]] — the two-tier commercial structure and its rationale
-- [[bcsc-disclosure-posture]] — the BCSC continuous-disclosure posture and how the platform satisfies it by structure
 - [[security-overview]] — the platform's security architecture for technical due diligence

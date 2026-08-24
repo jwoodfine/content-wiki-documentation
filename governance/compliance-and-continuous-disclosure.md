@@ -91,12 +91,6 @@ The architecture adopts ISO 19650 document-state codes as filename suffix conven
 
 A `_PUB` file is treated as signed and immutable. A `_JW` file is in flight and carries no verified status. A `_EXE` file has passed operator confirmation at the [[app-console-input|F12 input gate]] and is sealed in the [[worm-ledger-design|WORM ledger]].
 
-## How the BCSC continuous-disclosure posture applies
-
-PointSav operates inside a Canadian regulatory frame. The British Columbia Securities Commission requires that forward-looking statements carry appropriate cautionary language and that claims about current compliance accurately reflect the current state.
-
-Every public document the platform publishes — including this article — applies the [[bcsc-disclosure-posture|following discipline]]: planned and intended language for controls not yet deployed; no claims of current certification without operator confirmation; all references to the Sovereign Data Foundation in planned and intended terms only, until operator clearance for a different classification.
-
 ## See also
 
 - [[architecture-decisions|SYS-ADR-07]] — the architectural decision prohibiting structured data from passing through AI without human verification

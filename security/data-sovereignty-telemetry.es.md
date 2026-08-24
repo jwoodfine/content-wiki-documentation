@@ -175,7 +175,6 @@ porque no se ha comprometido ninguno.
 - [[sovereign-telemetry]] — la posición arquitectónica más amplia sobre la medición en manos del operador
 - [[telemetry-architecture]] — la estructura de la canalización de recolección y análisis
 - [[app-mediakit-marketing]] — la superficie servida cuya página de privacidad publicada se cita arriba
-- [[bcsc-disclosure-posture]] — la disciplina de divulgación que rige las afirmaciones prospectivas sobre esta plataforma
 - [[cryptographic-ledgers]] — el registro de solo anexado usado para eventos auditables, distinto de esta canalización
 - [[customer-owned-graph-ip]] — el principio de propiedad aplicado a los datos derivados
 - [[machine-based-auth]]

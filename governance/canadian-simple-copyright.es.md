@@ -83,7 +83,7 @@ La postura depende de:
 La postura se actualiza cuando ocurre cualquiera de los
 siguientes: primer empleado no-fundador / no-oficial; primera
 contribución de contratista al trabajo en alcance; primer
-ingreso externo usando PI de WCP; [[bcsc-disclosure-posture|estado de emisor reportante]]
+ingreso externo usando PI de WCP; estado de emisor reportante
 bajo BCSC NI 51-102; incorporación de PointSav Digital Systems
 Inc. (manejada al rollover, Ley del Impuesto sobre la Renta
 § 85); cualquier uso inter-empresa de PI entre WCP y una
@@ -121,15 +121,14 @@ estatutario por defecto. La estructura es deliberadamente mínima para que esa s
 escalonarse.
 
 No es divulgación continua al estilo BCSC. Las disciplinas descritas aquí rigen cómo se asigna el
-derecho de autor y cómo se ve la estructura corporativa; el [[bcsc-disclosure-posture|régimen de
-divulgación]] bajo `[ni-51-102]` opera en una superficie distinta y se aplica independientemente de
+derecho de autor y cómo se ve la estructura corporativa; el régimen de
+divulgación continua bajo `[ni-51-102]` opera en una superficie distinta y se aplica independientemente de
 si la entidad correspondiente es actualmente un emisor reportante.
 
 ## Véase también
 
 - [[customer-hostability|Hospedaje por el cliente]] — la postura de soberanía de datos del cliente que esta estructura de derechos de autor habilita
 - [[contributor-model|Modelo de contribución]] — quién puede contribuir trabajo creador de PI y bajo qué condiciones
-- [[bcsc-disclosure-posture|Postura de divulgación continua]] — la disciplina de divulgación paralela que aplica junto con la gobernanza de derechos de autor
 - [[sovereign-replacement-initiative|Iniciativa de reemplazo soberano]] — el programa de independencia de proveedores cuya PI se gobierna aquí
 
 ## Referencias

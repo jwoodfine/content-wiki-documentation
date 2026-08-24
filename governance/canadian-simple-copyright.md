@@ -154,7 +154,7 @@ is intentionally minimal so the supersession can be staged.
 
 It is not BCSC-style continuous-disclosure. The disciplines
 described here govern how copyright vests and what the
-corporate structure looks like; the [[bcsc-disclosure-posture|disclosure regime]] per
+corporate structure looks like; the continuous-disclosure regime per
 `[ni-51-102]` operates on a different surface and applies
 whether or not the relevant entity is currently a reporting
 issuer.
@@ -163,7 +163,6 @@ issuer.
 
 - [[customer-hostability|Customer Hostability]] — the customer-data sovereignty posture that this copyright structure enables
 - [[contributor-model|Contributor Model]] — who may contribute IP-creating work and under what terms
-- [[bcsc-disclosure-posture]] — the parallel continuous-disclosure discipline that applies alongside copyright governance
 - [[sovereign-replacement-initiative|Sovereign Replacement Initiative]] — the planned vendor-independence programme whose IP is governed here
 
 ## References

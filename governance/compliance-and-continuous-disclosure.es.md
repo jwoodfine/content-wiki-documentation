@@ -91,12 +91,6 @@ La arquitectura adopta los códigos de estado de documentos ISO 19650 como conve
 
 Un archivo `_EXE` ha pasado la confirmación del operador en la [[app-console-input|puerta de entrada F12]] y está sellado en el [[worm-ledger-design|libro mayor WORM]].
 
-## Cómo aplica la postura de divulgación continua de la BCSC
-
-PointSav opera dentro de un marco regulatorio canadiense. La Comisión de Valores de Columbia Británica requiere que las declaraciones prospectivas lleven el lenguaje de advertencia apropiado y que las afirmaciones sobre el cumplimiento actual reflejen con precisión el estado actual.
-
-Cada documento público que publica la plataforma aplica la [[bcsc-disclosure-posture|siguiente disciplina]]: lenguaje de planeado y previsto para controles aún no desplegados; sin afirmaciones de certificación actual sin confirmación del operador; todas las referencias a la Fundación de Datos Soberanos solo en términos planeados y previstos, hasta que el operador conceda autorización para una clasificación diferente.
-
 ## Véase también
 
 - [[architecture-decisions|SYS-ADR-07]] — la decisión arquitectónica que prohíbe que los datos estructurados pasen por IA sin verificación humana

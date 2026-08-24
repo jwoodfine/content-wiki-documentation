@@ -157,7 +157,6 @@ above, because none has been committed.
 - [[sovereign-telemetry]] — the wider architectural position on operator-held measurement
 - [[telemetry-architecture]] — the structure of the collection and analysis pipeline
 - [[app-mediakit-marketing]] — the served surface whose published privacy page is quoted above
-- [[bcsc-disclosure-posture]] — the disclosure discipline governing forward-looking statements about this platform
 - [[cryptographic-ledgers]] — the append-only record used for auditable events, distinct from this pipeline
 - [[customer-owned-graph-ip]] — the ownership principle applied to derived data
 - [[machine-based-auth]]

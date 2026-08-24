@@ -37,7 +37,6 @@ Start here for procurement, security, and compliance evaluation.
 - [[procurement-overview]] — What a regulated buyer acquires: customer-owned hardware deployment, no vendor-held data, no minimum-spend commitment, and the compliance properties enforced by architecture rather than contractual promise.
 - [[security-overview]] — The platform's security posture: capability-based isolation, the Diode unidirectional command-flow standard, the Doorman AI boundary, the WORM audit ledger, and how each property is enforced by architecture.
 - [[compliance-and-continuous-disclosure]] — How the platform produces continuous-disclosure-grade records and what that means for regulated buyers.
-- [[bcsc-disclosure-posture]] — The BCSC continuous-disclosure posture and how the platform satisfies it by structure.
 <!-- END AUTO-GENERATED -->
 
 ## Formal decision records
