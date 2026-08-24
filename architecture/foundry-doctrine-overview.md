@@ -1,13 +1,13 @@
 ---
 schema: foundry-doc-v1
-title: "PointSav architecture 2030 — an overview"
+title: "PointSav architecture 2030 — a planned overview"
 slug: foundry-doctrine-overview
 category: architecture
 index_group: platform-structure
 type: topic
 content_type: topic
 quality: complete
-short_description: "A faithful public summary of the PointSav constitutional charter — six pillars, fifty-four structural claims, eight cross-industry inventions, and the economic model."
+short_description: "The planned scope for PointSav's future constitutional charter — not yet ratified or written; described here in planned/intended terms only."
 status: active
 bcsc_class: public-disclosure-safe
 last_edited: 2026-05-25
@@ -25,13 +25,13 @@ cites:
 paired_with: foundry-doctrine-overview.es.md
 ---
 
-**PointSav Architecture 2030** is the constitutional charter for the [[pointsav-overview|PointSav]] software development environment. It defines the six pillars of the platform's architecture, fifty-four structural claims that constitute its operational commitments, eight cross-industry operational inventions, and the [[economic-model|economic model]] that sustains it across a small core team, paid contributors, and a large open-contributor population. The text is itself a public artifact — versioned, signed, and published under CC BY 4.0 at every MINOR version bump. See [[foundry-doctrine-architecture|the architecture overview]] for the detailed claim set.
+**PointSav Architecture 2030** is a planned constitutional charter for the [[pointsav-overview|PointSav]] software development environment — not yet written or ratified. This article describes its intended scope: six planned pillars, a planned set of structural claims constituting its operational commitments, planned cross-industry operational patterns, and the [[economic-model|economic model]] intended to sustain it across a small core team, paid contributors, and a large open-contributor population. Once written, the text is intended to be a public artifact — versioned, signed, and published under CC BY 4.0 at every MINOR version bump. See [[foundry-doctrine-architecture|the architecture overview]] for the intended claim set.
 
-This article is a public summary of v0.1.0 ALPHA (ratified 2026-04-30).
+No version of this charter has been ratified. The structure below describes current planning, not a shipped document.
 
 ## Core Structural Invariants
 
-The six pillars are the invariants of the architecture. They are not aspirational principles; they are enforced constraints.
+The six pillars below are the intended invariants of the architecture, planned to function as enforced constraints once the charter is ratified — not yet in force as a signed document.
 
 **1. Plain text only.** UTF-8 Markdown for prose, simple YAML frontmatter for routing. No binary formats, no databases, no daemons, no live indexes at the substrate level. The filesystem is the truth. Readable in 100 years with `cat`.
 
@@ -51,7 +51,7 @@ The six pillars are the invariants of the architecture. They are not aspirationa
 
 The central thesis: a platform whose model fits entirely in plain text on one VM, runs without an external API, and survives 100 years on a hard drive becomes more valuable as global connectivity fragments and regulatory environments diverge. The architecture occupies structural ground that connectivity-dependent platforms cannot enter.
 
-Fifty-two claims constitute this structural commitment. The sovereign-SMB architectural commitment includes:
+The planned sovereign-SMB architectural commitment is intended to include structural claims such as:
 
 **[[single-boundary-compute-discipline|Single-Boundary Compute Discipline]].** Every AI inference call in every platform deployment passes through a single service boundary — the [[doorman-protocol|Doorman]]. Bearer tokens and compute endpoints for all inference tiers live exclusively in the Doorman's configuration. The audit ledger is complete and cryptographic because the boundary is exclusive, not preferred.
 
@@ -106,7 +106,7 @@ The platform organises services into three rings. Rings 1 and 2 are deterministi
 
 ## Cross-Domain Operational Patterns
 
-The architecture draws operational patterns from eight domains outside software:
+The architecture is intended to draw operational patterns from domains outside software, planned to include:
 
 1. **Workspace Passport** (maritime) — every workspace and instance carries a MANIFEST.md that travels with it.
 2. **NOTAM** (aviation) — time-sensitive operational warnings read at session start.
@@ -115,7 +115,7 @@ The architecture draws operational patterns from eight domains outside software:
 5. **Time-Vested Operation** (banking/fiduciary) — destructive operations post to a queue with a vesting date and cannot execute until the date passes.
 6. **Apprentice Mode** (aviation type-rating / medical residency) — new model versions run in apprentice mode; actions land in a shadow outbox; the senior reviews before promoting.
 7. **Integrity Anchor** (notarization / public timestamping) — monthly and per-MINOR-bump, the workspace state hash is posted to Sigstore Rekor public transparency log. Externally verifiable; anyone can prove this state existed at this time under this identity.
-8. **Constitutional Convention** (IETF RFC 2026 Last Call / constitutional amendment) — MAJOR bumps require a 30-day public comment period in the `factory-release-engineering` repository.
+8. **Constitutional Convention** (IETF RFC 2026 Last Call / constitutional amendment) — MAJOR bumps are intended to require a 30-day public comment period, planned to run through the `factory-release-engineering` repository's existing governance-policy process once the charter exists.
 
 ## Open Commons Economic Structure
 
@@ -125,9 +125,9 @@ The contributor model that sustains this: 4–7 Core employees, 50–100 paid co
 
 ## Sovereign Versioning Discipline
 
-The text versions independently of any single repository. PATCH increments per accepted commit; MINOR per shipped feature milestone; MAJOR per breaking change. v1.0.0 is the first declared-stable version; v0.1.0 ALPHA is the current state.
+The text is intended to version independently of any single repository once written: PATCH increments per accepted commit; MINOR per shipped feature milestone; MAJOR per breaking change, with v1.0.0 planned as the first declared-stable version. No version currently exists.
 
-MAJOR bumps require a 30-day public comment period. MINOR bumps produce a signed, versioned, publicly-citable bundle. Every commit is signed with SSH-based signing and anchored to a public transparency log via the Integrity Anchor.
+MAJOR bumps are intended to require a 30-day public comment period. MINOR bumps are intended to produce a signed, versioned, publicly-citable bundle. Commits to the eventual charter are intended to be signed with SSH-based signing and anchored to a public transparency log via the Integrity Anchor.
 
 Forward-looking statements in this document carry "planned," "intended," or "may" language with a stated basis and cautionary framing. The text does not describe future capabilities as current facts.
 

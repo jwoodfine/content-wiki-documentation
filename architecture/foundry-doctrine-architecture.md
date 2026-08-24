@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "PointSav platform — architectural overview"
 slug: foundry-doctrine-architecture
-short_description: "Constitutional charter encoding six foundational commitments and fifty-four numbered structural claims that govern every PointSav engineering decision."
+short_description: "The planned scope for a future constitutional charter intended to encode foundational commitments and structural claims governing PointSav engineering decisions — not yet written or ratified."
 category: architecture
 index_group: platform-structure
 type: topic
@@ -26,11 +26,11 @@ references:
     text: "Overture Maps Foundation. overturemaps.org"
 ---
 
-The [[pointsav-overview|PointSav]] constitutional charter encodes the principles, commitments, and structural claims that govern every engineering, operational, and editorial decision across the platform. The current release is v0.1.0 ALPHA, ratified 2026-04-30 under the `ps-administrator` signing identity. See [[foundry-doctrine-overview|the doctrine overview]] for the introductory framing.
+The [[pointsav-overview|PointSav]] constitutional charter is planned to encode the principles, commitments, and structural claims intended to govern engineering, operational, and editorial decisions across the platform. No version has been ratified; this article describes intended scope, not a shipped document. See [[foundry-doctrine-overview|the doctrine overview]] for the introductory framing.
 
 ## The Six Pillars
 
-The platform is built on six foundational commitments that take precedence over any specific design decision or engineering convenience:
+The platform is intended to be built on six foundational commitments planned to take precedence over any specific design decision or engineering convenience:
 
 **Plain text, flat file, open source.** Every artifact produced by the substrate — knowledge graphs, audit ledgers, documentation, configuration, training data — is plain text. No binary-only stores, no proprietary formats that require a running service to read.
 
@@ -46,9 +46,9 @@ The platform is built on six foundational commitments that take precedence over 
 
 ## The Fifty-Four Leapfrog Claims
 
-The doctrine enumerates 54 numbered structural claims that together constitute the platform's competitive positioning relative to hyperscaler software-as-a-service. Each claim identifies a structural property of the platform substrate that hyperscaler economics or architecture structurally foreclose — not a feature advantage, but a property that cannot be replicated without changing the underlying business model.
+The planned charter is intended to enumerate numbered structural claims that would together constitute the platform's competitive positioning relative to hyperscaler software-as-a-service — each identifying a structural property of the platform substrate that hyperscaler economics or architecture would structurally foreclose, not a feature advantage but a property intended to be unreplicable without changing the underlying business model.
 
-Representative clusters from the full claim set:
+Representative clusters from the intended claim set:
 
 **Sovereignty and data ownership (claims #1–#11, #48, #54).** The customer's knowledge graph is the customer's [[customer-owned-graph-ip|intellectual property]]. The per-tenant [[worm-ledger-architecture|WORM ledger]] is customer-rooted. Export formats are open at day zero. The substrate runs fully — queries, audit, search, transfer of ownership — with no platform-side dependency. No hyperscaler SaaS can offer this without abandoning per-tenant hosting economics.
 
@@ -68,9 +68,9 @@ Representative clusters from the full claim set:
 
 ## The Eight Cross-Industry Inventions
 
-Beyond the structural claims, the doctrine draws on eight process inventions borrowed from established industries:
+Beyond the structural claims, the planned charter is intended to draw on process inventions borrowed from established industries, planned to include:
 
-**Workspace Passport** (maritime) — every deployment carries a `MANIFEST.md` declaring origin, owner, and current state. **NOTAM** (aviation) — time-sensitive warnings read at every session start. **Recall Procedure** (pharmaceuticals) — defective vendor commits trigger recall notices into every downstream deployment inbox. **Bill of Lading** (shipping) — cross-realm handoffs generate append-only log entries. **Time-Vested Operation** (banking) — destructive operations post to a queue with a vesting date; execution is blocked until the date passes. **Apprentice Mode** (aviation/medicine) — new model versions run in shadow mode; graduate after N approved actions. **Integrity Anchor** (notarization) — monthly workspace state hashes posted to Sigstore Rekor public transparency log. **Constitutional Convention** (IETF/constitutional amendment) — doctrine major-version bumps require 30-day public comment in `factory-release-engineering`.
+**Workspace Passport** (maritime) — every deployment carries a `MANIFEST.md` declaring origin, owner, and current state. **NOTAM** (aviation) — time-sensitive warnings read at every session start. **Recall Procedure** (pharmaceuticals) — defective vendor commits trigger recall notices into every downstream deployment inbox. **Bill of Lading** (shipping) — cross-realm handoffs generate append-only log entries. **Time-Vested Operation** (banking) — destructive operations post to a queue with a vesting date; execution is blocked until the date passes. **Apprentice Mode** (aviation/medicine) — new model versions run in shadow mode; graduate after N approved actions. **Integrity Anchor** (notarization) — monthly workspace state hashes posted to Sigstore Rekor public transparency log. **Constitutional Convention** (IETF/constitutional amendment) — planned so that major-version bumps would require 30-day public comment, intended to run through `factory-release-engineering`'s existing governance-policy process once the charter exists.
 
 ## Workspace Structure
 
@@ -81,10 +81,6 @@ The workspace is itself a deployment of the substrate — `vault-privategit-sour
 - `deployments/` — numbered runtime instances — local-only, gitignored
 
 Three session roles operate the workspace: the hub session (workspace control plane, single at a time), the archive session (per engineering-repo plane, one per repo), and the project session (per project-cluster, multiple concurrent). The `.git/index` constraint — one session per index — is the hard race condition that determines this structure.
-
-## Continuous Disclosure Posture
-
-Every artifact written to the workspace — documentation, commit messages, code comments — is treated as potentially reviewable under continuous-disclosure obligations. Forward-looking statements about future capability, timeline, or customer outcome carry "planned"/"intended"/"may" framing, a stated reasonable basis, cautionary language, and material assumptions. This is not a compliance statement; it is the operational practice that makes compliance a byproduct.[^1][^2]
 
 ## See also
 
