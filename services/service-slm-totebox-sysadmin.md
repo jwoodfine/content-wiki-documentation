@@ -10,7 +10,7 @@ index_group: ring-3-ai-gateway
 short_description: "A planned direction for service-slm: using its real, already-operational capture-then-verdict training pipeline to build a Totebox sysadmin assistant — the specific task taxonomy and tooling described here are not yet built."
 status: active
 bcsc_class: forward-looking
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - olmo3-allenai
@@ -20,7 +20,7 @@ cites:
  - constitutional-ai-2212-08073
  - vllm-multi-lora
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 paired_with: service-slm-totebox-sysadmin.es.md
 ---
 
@@ -72,7 +72,7 @@ available for training, without external transmission.
 
 Any cost or timeline figures for this capability — per-request cost at scale, training-run
 cost, adapter promotion thresholds — are planned targets pending real operational data,
-not measured figures. [ni-51-102] [osc-sn-51-721]
+not measured figures. [ni-51-102] [np-51-201]
 
 ## See also
 

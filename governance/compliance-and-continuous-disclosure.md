@@ -12,12 +12,12 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: compliance-and-continuous-disclosure.es.md
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 references:
   - id: 1
     text: "NIST, Open Security Controls Assessment Language (OSCAL) — machine-readable formats for representing security control catalogs, baselines, system security plans, and assessment results."
@@ -27,7 +27,7 @@ references:
     url: "https://www.iso.org/standard/81230.html"
 ---
 
-Compliance and continuous disclosure describes the regulatory frameworks the PointSav architecture addresses and the structural approach it takes to evidence those controls. Conventional enterprise compliance relies on annual point-in-time audits: an auditor examines a sample, produces a written report, and the customer holds a certificate that may be stale within weeks of issue. The PointSav substrate is designed for a continuous model: machine-readable controls that update in real time and expose a queryable attestation surface. All compliance certifications and framework targets described here are planned or intended; forward-looking language applies throughout per Canadian securities continuous-disclosure requirements [ni-51-102] [osc-sn-51-721]. By the end of this article, a reader will understand the compliance framework targets, the structural controls approach, and the document-state discipline the architecture enforces.
+Compliance and continuous disclosure describes the regulatory frameworks the PointSav architecture addresses and the structural approach it takes to evidence those controls. Conventional enterprise compliance relies on annual point-in-time audits: an auditor examines a sample, produces a written report, and the customer holds a certificate that may be stale within weeks of issue. The PointSav substrate is designed for a continuous model: machine-readable controls that update in real time and expose a queryable attestation surface. All compliance certifications and framework targets described here are planned or intended; forward-looking language applies throughout per Canadian securities continuous-disclosure requirements [ni-51-102] [np-51-201]. By the end of this article, a reader will understand the compliance framework targets, the structural controls approach, and the document-state discipline the architecture enforces.
 
 ## How continuous-proof replaces annual audit cycles
 
@@ -47,7 +47,7 @@ The PointSav substrate approaches this by placing controls at a level where they
 | DORA (EU Digital Operational Resilience Act) | EU sector regulation | Targeted: supports intended EU customer deployments |
 | FedRAMP | US Government | Targeted: supports intended US public-sector deployments |
 | GDPR | EU privacy | Targeted: supports intended EU privacy compliance |
-| BCSC (NI 51-102, OSC SN 51-721) [ni-51-102] [osc-sn-51-721] | Continuous disclosure | All forward-looking claims carry planned/intended/may/target language |
+| BCSC (NI 51-102, CSA National Policy 51-201) [ni-51-102] [np-51-201] | Continuous disclosure | All forward-looking claims carry planned/intended/may/target language |
 | SLSA (Supply-chain Levels for Software Artifacts) | Supply-chain integrity | Planned: vendor-side build attestation |
 | ISO 15489 | Records management | Repository documentation naming conventions |
 | ISO 24495-1 | Plain language | Voice and tone discipline for [[service-content|service-content]] outputs |

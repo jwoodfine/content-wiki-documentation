@@ -10,11 +10,11 @@ index_group: core-named-substrates
 short_description: "Platform-wide YAML citation registry with drift detection that makes provenance machine-auditable from regulatory instrument to published claim."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
  - cff-spec
  - cff-github
  - turing-way-cff
@@ -29,7 +29,7 @@ The registry holds 159 entries covering regulatory instruments (NI 51-102, SEC R
 
 Three components work together: a central registry holding one entry per citation ID; per-document `cites:` front-matter that makes dependencies machine-readable; and inline `[id]` syntax in body prose that marks each reference with its registry-resolvable ID. A nightly automated pass fetches each registered URL, verifies the content hash, and surfaces material changes or link rot for human review before they propagate into published content or training data.
 
-For regulated buyers, this means every claim about compliance properties — record immutability, AI audit trails, data residency — carries a traceable stated basis. A compliance officer auditing documentation about SEC Rule 17a-4(f) can follow the citation to the primary regulatory instrument without accessing internal systems. This satisfies the "stated basis" requirement under `[ni-51-102]` and `[osc-sn-51-721]` for forward-looking information in [[disclosure-substrate|public-facing content]].
+For regulated buyers, this means every claim about compliance properties — record immutability, AI audit trails, data residency — carries a traceable stated basis. A compliance officer auditing documentation about SEC Rule 17a-4(f) can follow the citation to the primary regulatory instrument without accessing internal systems. This satisfies the "stated basis" requirement under `[ni-51-102]` and `[np-51-201]` for forward-looking information in [[disclosure-substrate|public-facing content]].
 
 ## Overview
 
@@ -45,7 +45,7 @@ Three components constitute the Citation Substrate:
    document_version: 0.0.2
    cites:
    - ni-51-102
-   - osc-sn-51-721
+   - np-51-201
    ---
    ```
 
@@ -73,7 +73,7 @@ Adding a new citation follows the seeding principle: the registry entry and the 
 
 Three reasons drive the discipline, not one.
 
-**Regulatory traceability.** Per `[ni-51-102]` and `[osc-sn-51-721]`, forward-looking information in public-facing content must carry cautionary language, a stated basis, and material assumptions. The citation graph makes "stated basis" machine-auditable: a reviewer can walk from a public-facing claim back to the regulatory instrument or research paper that grounds it. Without per-claim citations, the walk is manual and incomplete.
+**Regulatory traceability.** Per `[ni-51-102]` and `[np-51-201]`, forward-looking information in public-facing content must carry cautionary language, a stated basis, and material assumptions. The citation graph makes "stated basis" machine-auditable: a reviewer can walk from a public-facing claim back to the regulatory instrument or research paper that grounds it. Without per-claim citations, the walk is manual and incomplete.
 
 **Drift prevention.** The corpus grows across sessions, contributors, and years. Two documents citing the same authority can make divergent claims about what it says — divergent-claim pairs on primary sources are the primary failure mode of large knowledge corpora. The nightly hygiene pass's drift-detection step finds exactly these pairs and surfaces them as review items before they propagate into training data or public publication.
 

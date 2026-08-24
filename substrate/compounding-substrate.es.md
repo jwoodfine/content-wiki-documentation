@@ -10,7 +10,7 @@ index_group: core-named-substrates
 short_description: "Patrón arquitectónico que une código de plataforma abierto, una capa de datos determinista sin IA y una capa de inteligencia opcional que genera señal de entrenamiento compuesta."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-21
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: compounding-substrate.md
 ---
@@ -127,7 +127,7 @@ operador + asistente en la siguiente sesión ← el bucle se cierra, compuesto
 
 ## Trayectoria operativa
 
-La trayectoria descrita a continuación es `planeada` e `intencionada`, enmarcada según el [[disclosure-substrate|lenguaje de divulgación continua]] de `[ni-51-102]` y la disciplina prospectiva de `[osc-sn-51-721]`. La forma arquitectónica está establecida; la capacidad operativa madura con el tiempo.
+La trayectoria descrita a continuación es `planeada` e `intencionada`, enmarcada según el [[disclosure-substrate|lenguaje de divulgación continua]] de `[ni-51-102]` y la disciplina prospectiva de `[np-51-201]`. La forma arquitectónica está establecida; la capacidad operativa madura con el tiempo.
 
 Para 2030, el sustrato compuesto pretende producir:
 

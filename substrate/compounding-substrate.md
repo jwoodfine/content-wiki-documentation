@@ -10,11 +10,11 @@ index_group: core-named-substrates
 short_description: "Architectural pattern pairing open platform code and a deterministic AI-free data layer with an optional intelligence layer whose interactions compound as training signal."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-21
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 paired_with: compounding-substrate.es.md
 ---
 
@@ -130,7 +130,7 @@ operator + assistant in next session ← loop closes, compounded
 
 ## Operational trajectory
 
-The trajectory below is `planned` and `intended`, framed per `[ni-51-102]` [[disclosure-substrate|continuous-disclosure language]] and the forward-looking discipline of `[osc-sn-51-721]`. The architectural shape is in place; operational throughput matures over time.
+The trajectory below is `planned` and `intended`, framed per `[ni-51-102]` [[disclosure-substrate|continuous-disclosure language]] and the forward-looking discipline of `[np-51-201]`. The architectural shape is in place; operational throughput matures over time.
 
 By 2030, the Compounding Substrate is intended to produce:
 

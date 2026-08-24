@@ -9,10 +9,10 @@ content_type: topic
 index_group: knowledge-and-editorial-applications
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: wikipedia-leapfrog-design.md
-cites: [ni-51-102, osc-sn-51-721]
+cites: [ni-51-102, np-51-201]
 ---
 
 El motor wiki [[app-mediakit-knowledge]] hereda el 95% de su interfaz de las convenciones de disposición establecidas por Wikipedia. El 5% restante es el margen leapfrog: añadidos que ningún lector de Wikipedia ha encontrado antes, implementados de forma aditiva para no perturbar la experiencia de lectura base. Este artículo explica por qué se tomó cada decisión de diseño y cómo se construye el contrato estructural con dos tipos de audiencia distintos.
@@ -43,7 +43,7 @@ Los dieciocho patrones sagrados catalogados en la especificación de diseño UX 
 
 Tres añadidos se incorporan más allá del inventario de Wikipedia hoy. Cada uno es aditivo: ningún patrón de memoria muscular existente se elimina ni altera.
 
-**Banner de información prospectiva.** Los artículos cuyo frontmatter establece `forward_looking: true` muestran un banner de advertencia en la vista de lectura. El banner es la expresión en la superficie de lectura de los [[compliance-and-continuous-disclosure|requisitos de divulgación continua]] bajo [ni-51-102] y [osc-sn-51-721].
+**Banner de información prospectiva.** Los artículos cuyo frontmatter establece `forward_looking: true` muestran un banner de advertencia en la vista de lectura. El banner es la expresión en la superficie de lectura de los [[compliance-and-continuous-disclosure|requisitos de divulgación continua]] bajo [ni-51-102] y [np-51-201].
 
 **Campo de clase de divulgación.** Los artículos llevan un campo `disclosure_class` en el frontmatter con tres valores: `narrative`, `financial`, `governance`. Este campo es invisible para los lectores — aparece en los datos estructurados JSON-LD en el bloque `<head>` del artículo renderizado.
 

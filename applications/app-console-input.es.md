@@ -12,12 +12,12 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: app-console-input.md
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 references:
   - id: 1
     text: "NIST, Marco de Gestión de Riesgos de Inteligencia Artificial (AI RMF 1.0), NIST AI 100-1, enero de 2023. Sección 5: Supervisión humana y responsabilidad en implementaciones de IA."

@@ -10,11 +10,11 @@ index_group: institutional-due-diligence
 short_description: "What a regulated buyer acquires deploying PointSav: hardware the customer owns outright, data the vendor never holds, and compliance enforced by architecture."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 paired_with: procurement-overview.es.md
 ---
 
@@ -42,7 +42,7 @@ No PointSav service stores a decryption key for customer data on the vendor's in
 
 ## Commercial structure (planned)
 
-Per `[osc-sn-51-721]`, the following describes the planned commercial trajectory. Specific rates and SLA terms will be published when the first continued-pretraining assessment data is available.
+Per `[np-51-201]`, the following describes the planned commercial trajectory. Specific rates and SLA terms will be published when the first continued-pretraining assessment data is available.
 
 **Open tier (no cost).** Knowledge-commons read access, community forum, and public documentation. The intended entry point for individual contributors and organisations evaluating the platform.
 

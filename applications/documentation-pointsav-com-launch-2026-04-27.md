@@ -9,10 +9,10 @@ content_type: topic
 index_group: knowledge-and-editorial-applications
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: documentation-pointsav-com-launch-2026-04-27.es.md
-cites: [ni-51-102, osc-sn-51-721]
+cites: [ni-51-102, np-51-201]
 ---
 
 `https://documentation.pointsav.com` went live with TLS at 16:25 UTC on 2026-04-27. The deployment serves the PointSav engineering wiki over a Let's Encrypt certificate valid through 2026-07-26, with automatic renewal enabled.
@@ -21,7 +21,7 @@ cites: [ni-51-102, osc-sn-51-721]
 
 ## What serves today
 
-Four placeholder TOPIC pages render at the public URL. `/wiki/welcome` is the landing topic, explaining the public-preview status. `/wiki/sample-article` exercises the rendering chrome — table of contents, per-section edit pencils, footer block with categories, masthead band, collapsible left-rail table of contents, language switcher, and the [[wikipedia-leapfrog-design|Wikipedia layout conventions]]. `/wiki/sample-forward-looking` exercises the forward-looking-information cautionary banner and cites both [ni-51-102] and [osc-sn-51-721]. `/wiki/sample-citations` exercises inline citation references including the clause-reference form.
+Four placeholder TOPIC pages render at the public URL. `/wiki/welcome` is the landing topic, explaining the public-preview status. `/wiki/sample-article` exercises the rendering chrome — table of contents, per-section edit pencils, footer block with categories, masthead band, collapsible left-rail table of contents, language switcher, and the [[wikipedia-leapfrog-design|Wikipedia layout conventions]]. `/wiki/sample-forward-looking` exercises the forward-looking-information cautionary banner and cites both [ni-51-102] and [np-51-201]. `/wiki/sample-citations` exercises inline citation references including the clause-reference form.
 
 Beyond article-rendering paths, the wiki serves: `/healthz` (liveness check); `/` (index page listing all articles); `/search?q=` (full-text search over the on-disk Tantivy index); `/feed.atom` (RFC 4287 syndication feed); `/sitemap.xml`; `/robots.txt`; and `/llms.txt`. There is no edit route and no collaborative-editing feature — the engine has no write surface at all; every article is edited in its source git repository and picked up on the next render.
 
@@ -55,7 +55,7 @@ This pattern is generalizable. Any deployment that depends on a corpus being edi
 
 ## Forward-looking items
 
-The following are planned or intended, not committed. Cautionary language applies per [ni-51-102] and [osc-sn-51-721]. Material assumptions include the continued availability of the workspace VM and sustained editorial-pipeline activity.
+The following are planned or intended, not committed. Cautionary language applies per [ni-51-102] and [np-51-201]. Material assumptions include the continued availability of the workspace VM and sustained editorial-pipeline activity.
 
 The editorial pipeline is intended to refine the legacy TOPIC corpus in a separate pass. The expected outcome is a ratified content tree to which `--content-dir` may be swapped, producing a single material-change disclosure event.
 

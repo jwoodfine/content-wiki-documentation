@@ -10,11 +10,11 @@ category: substrate
 index_group: core-named-substrates
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-04-28
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
  - constitutional-ai-2212-08073
  - federated-lora-2502-05087
  - s-lora-2024

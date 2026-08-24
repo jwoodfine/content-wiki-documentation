@@ -11,12 +11,12 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: retail-co-location-tier-methodology.es.md
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 ---
 
 A retail co-location cluster earns a tier by passing a fixed set of gates, not by
@@ -100,7 +100,7 @@ stack]] as the tiered map layer.
 
 Statements regarding threshold refinement and future methodology changes are intended
 targets subject to change. Actual timelines depend on operator review, data coverage, and
-development velocity. [ni-51-102] [osc-sn-51-721]
+development velocity. [ni-51-102] [np-51-201]
 
 ## See also
 

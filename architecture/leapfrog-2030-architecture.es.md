@@ -12,12 +12,12 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: leapfrog-2030-architecture.md
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 references:
   - id: 1
     text: "IDC. 'The SMB 2026 Digital Landscape: How AI is Redefining Growth.' IDC Research, 2026."
@@ -131,7 +131,7 @@ Esta es la realización estructural del principio de ordenación-cliente-primero
 
 ## Lo que se publica y cuándo (previsto)
 
-Todas las fases descritas aquí son objetivos previstos, no compromisos. Se aplica lenguaje prospectivo en todo momento conforme a los requisitos de divulgación continua de valores canadienses [ni-51-102] [osc-sn-51-721].
+Todas las fases descritas aquí son objetivos previstos, no compromisos. Se aplica lenguaje prospectivo en todo momento conforme a los requisitos de divulgación continua de valores canadienses [ni-51-102] [np-51-201].
 
 La implementación prevista se desarrolla a lo largo de 2026:
 

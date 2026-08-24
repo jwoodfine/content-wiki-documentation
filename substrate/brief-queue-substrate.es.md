@@ -10,11 +10,11 @@ index_group: core-named-substrates
 short_description: "Una cola persistente respaldada en archivos que hace viable el apagado inactivo de Yo-Yo sin perder datos del corpus de aprendizaje — la capa de durabilidad del sustrato SLM de tres niveles."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-06-20
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 paired_with: brief-queue-substrate.md
 ---
 

@@ -9,10 +9,10 @@ content_type: topic
 index_group: knowledge-and-editorial-applications
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: documentation-pointsav-com-launch-2026-04-27.md
-cites: [ni-51-102, osc-sn-51-721]
+cites: [ni-51-102, np-51-201]
 ---
 
 `https://documentation.pointsav.com` entró en producción con TLS a las 16:25 UTC del 27 de abril de 2026. El despliegue sirve el wiki de ingeniería de PointSav con un certificado Let's Encrypt válido hasta el 26 de julio de 2026, con renovación automática habilitada.
@@ -21,7 +21,7 @@ cites: [ni-51-102, osc-sn-51-721]
 
 ## Lo que se sirve hoy
 
-Cuatro páginas TOPIC de marcador de posición se renderizan en la URL pública. `/wiki/welcome` es el artículo de bienvenida que explica el estado de vista previa pública. `/wiki/sample-article` ejercita la interfaz de renderizado: tabla de contenidos, lápices de edición por sección, bloque de pie de página con categorías, banda de encabezado, tabla de contenidos colapsable en el rail izquierdo, selector de idioma y las [[wikipedia-leapfrog-design|convenciones de disposición de Wikipedia]]. `/wiki/sample-forward-looking` ejercita el banner de advertencia de información prospectiva y cita tanto [ni-51-102] como [osc-sn-51-721]. `/wiki/sample-citations` ejercita las referencias de citas en línea.
+Cuatro páginas TOPIC de marcador de posición se renderizan en la URL pública. `/wiki/welcome` es el artículo de bienvenida que explica el estado de vista previa pública. `/wiki/sample-article` ejercita la interfaz de renderizado: tabla de contenidos, lápices de edición por sección, bloque de pie de página con categorías, banda de encabezado, tabla de contenidos colapsable en el rail izquierdo, selector de idioma y las [[wikipedia-leapfrog-design|convenciones de disposición de Wikipedia]]. `/wiki/sample-forward-looking` ejercita el banner de advertencia de información prospectiva y cita tanto [ni-51-102] como [np-51-201]. `/wiki/sample-citations` ejercita las referencias de citas en línea.
 
 Más allá de las rutas de renderizado de artículos, el wiki sirve: `/healthz` (verificación de disponibilidad); `/` (página de índice con todos los artículos); `/search?q=` (búsqueda de texto completo sobre el índice Tantivy en disco); `/feed.atom` (feed de sindicación RFC 4287); `/sitemap.xml`; `/robots.txt`; y `/llms.txt`. No existe ruta de edición ni función de colaboración — el motor no tiene ninguna superficie de escritura; cada artículo se edita en su repositorio git de origen y se recoge en el siguiente renderizado.
 
@@ -55,7 +55,7 @@ Este patrón es generalizable. Cualquier despliegue que dependa de que un corpus
 
 ## Elementos prospectivos
 
-Los siguientes elementos son planificados o previstos, no comprometidos. El lenguaje de advertencia se aplica conforme a [ni-51-102] y [osc-sn-51-721].
+Los siguientes elementos son planificados o previstos, no comprometidos. El lenguaje de advertencia se aplica conforme a [ni-51-102] y [np-51-201].
 
 El canal editorial está previsto para refinar el corpus TOPIC legado en un pase separado. El resultado esperado es un árbol de contenido ratificado al que se puede intercambiar `--content-dir`, produciendo un único evento de cambio material.
 

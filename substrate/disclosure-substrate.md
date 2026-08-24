@@ -10,11 +10,11 @@ index_group: core-named-substrates
 short_description: "Mechanism making a version-controlled Markdown wiki the primary continuous-disclosure record, with signed authorship chains and cryptographic content hashes."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
  - bcsc-continuous-disclosure
  - mondaq-ni-51-102-summary
  - sec-17a-4-f
@@ -46,7 +46,7 @@ The practical consequence for regulated buyers: a reporting issuer that serves i
 
 The substrate collapses three conventionally separate bodies of text — internal documentation, an investor relations website, and statutory filings — into one Markdown corpus under issuer infrastructure, rendered into reader-facing wiki pages, regulator-compliant export packages, and cryptographic proof-of-state artefacts from the same source.
 
-For regulated issuers under `[ni-51-102]` and `[osc-sn-51-721]`, the export adapters and cryptographic anchoring described in this article are planned infrastructure; the signed authorship chain and content-hash anchoring are operational today.
+For regulated issuers under `[ni-51-102]` and `[np-51-201]`, the export adapters and cryptographic anchoring described in this article are planned infrastructure; the signed authorship chain and content-hash anchoring are operational today.
 
 ## Overview
 
@@ -73,9 +73,9 @@ Two timestamp mechanisms are planned for Phase 7 of the wiki engine (intended; a
 - **OpenTimestamps anchoring** `[opentimestamps]` — planned cryptographic anchoring of each commit to the Bitcoin blockchain. Bitcoin anchoring is free, open-source, and external to the issuer's infrastructure; it produces proof that a specific content state existed at a specific block height, without requiring trust in any single intermediary.
 - **RFC 3161 timestamping** `[rfc-3161]` — planned formal timestamp tokens from a recognised Time-Stamp Authority. RFC 3161 tokens carry legal recognition in EU and most common-law jurisdictions. The planned use of both mechanisms provides cryptographic redundancy: one anchors to a decentralised ledger; the other provides the formally-recognised token a regulator or court can verify.
 
-Two timestamp fields are planned per TOPIC — `published_at` (when the wiki rendered this content state) and `valid_at` (when the underlying fact the TOPIC asserts holds). The distinction matters for forward-looking information labelled under `[osc-sn-51-721]`: the publication date and the validity period of the information are separate facts that a disclosure record must be able to distinguish.
+Two timestamp fields are planned per TOPIC — `published_at` (when the wiki rendered this content state) and `valid_at` (when the underlying fact the TOPIC asserts holds). The distinction matters for forward-looking information labelled under `[np-51-201]`: the publication date and the validity period of the information are separate facts that a disclosure record must be able to distinguish.
 
-Material-change commits — those whose TOPIC edits constitute material changes under the `[bcsc-continuous-disclosure]` posture — are intended to emit a signed Disclosure-Diff artefact alongside the updated TOPIC. The Disclosure-Diff is a cryptographically signed diff of the change, not a derivative of the TOPIC; it is planned to be committed as a W3C Verifiable Credential `[w3c-verifiable-credentials]` alongside the affected article. This is forward-looking and subject to the cautionary factors in `[ni-51-102]` and `[osc-sn-51-721]`.
+Material-change commits — those whose TOPIC edits constitute material changes under the `[bcsc-continuous-disclosure]` posture — are intended to emit a signed Disclosure-Diff artefact alongside the updated TOPIC. The Disclosure-Diff is a cryptographically signed diff of the change, not a derivative of the TOPIC; it is planned to be committed as a W3C Verifiable Credential `[w3c-verifiable-credentials]` alongside the affected article. This is forward-looking and subject to the cautionary factors in `[ni-51-102]` and `[np-51-201]`.
 
 ### Per-jurisdiction export adapters (planned)
 
@@ -110,7 +110,7 @@ Vendor SaaS disclosure platforms running on US-headquartered infrastructure face
 
 A disclosure substrate that permits AI-generated text to reach publication without verification produces a structural liability: if the AI hallucinated a fact, that fact is in the disclosure record. Vectara's HHEM `[vectara-hhem]` is a detection-only approach — identifying hallucinations after generation. The substrate's planned mechanism is refusal-to-render: a TOPIC whose proof-of-grounding chain does not verify does not reach the reader.
 
-The planned mechanism (Phase 9 of the wiki engine; intended subject to the `project-disclosure` cluster reaching this milestone; subject to the cautionary factors in `[ni-51-102]` and `[osc-sn-51-721]`):
+The planned mechanism (Phase 9 of the wiki engine; intended subject to the `project-disclosure` cluster reaching this milestone; subject to the cautionary factors in `[ni-51-102]` and `[np-51-201]`):
 
 1. Every claim in an AI-drafted TOPIC must be paired with a citation ID resolvable in the citations registry.
 2. Each citation's content hash must verify against the registry's stored hash.

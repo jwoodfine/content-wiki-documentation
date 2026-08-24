@@ -11,12 +11,12 @@ quality: complete
 audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-last_edited: 2026-07-30
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: wiki-provider-landscape.md
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 ---
 
 El wiki de documentación de PointSav en `documentation.pointsav.com` es uno de los
@@ -123,4 +123,4 @@ identificables por nombre, per la disciplina de posicionamiento estructural del
 espacio de trabajo. Basada en el borrador de project-knowledge (síntesis Opus desde
 informe Sonnet sub-agente C, 2026-04-30). Por DOCTRINE.md §XII, esta vista general no
 es una traducción literal — adapta el análisis del campo para lectores en español. Las
-afirmaciones prospectivas siguen [ni-51-102] y [osc-sn-51-721].
+afirmaciones prospectivas siguen [ni-51-102] y [np-51-201].

@@ -11,11 +11,11 @@ short_description: "Cómo operan el enrutador de inferencia de tres niveles de s
 status: active
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
  - olmo3-allenai
 paired_with: service-slm-yoyo-operational.md
 ---
@@ -126,4 +126,4 @@ multiplicador para el trabajo rutinario; el modelo de frontera se reserva para l
 1. Capa de Inteligencia Opcional — el Ring 3 es estructuralmente opcional; los Rings 1 y 2 funcionan sin él.
 2. Familia de modelos OLMo 3 de AllenAI. Apache 2.0 (pesos del modelo); Open Data Commons (datos de entrenamiento). [olmo3-allenai] https://huggingface.co/allenai
 3. NI 51-102 Obligaciones de Divulgación Continua. British Columbia Securities Commission. [ni-51-102] https://www.bcsc.bc.ca/securities-law/law-and-policy/instruments-and-policies/5-ongoing-requirements-for-issuers-insiders/current/51-102
-4. OSC Staff Notice 51-721 Divulgación de Información Prospectiva. Ontario Securities Commission. [osc-sn-51-721] https://www.osc.ca/en/securities-law/instruments-rules-policies/5/51-721/osc-staff-notice-51-721-forward-looking-information-disclosure
+4. CSA National Policy 51-201 Divulgación de Información Prospectiva. Ontario Securities Commission. [np-51-201] https://www.osc.ca/en/securities-law/instruments-rules-policies/5/51-721/osc-staff-notice-51-721-forward-looking-information-disclosure

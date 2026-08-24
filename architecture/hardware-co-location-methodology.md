@@ -12,7 +12,7 @@ language: en
 quality: stub
 status: planned
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-03
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: hardware-co-location-methodology.es.md
 cites: []
@@ -28,7 +28,7 @@ The methodology addresses the site-selection step: given a deployment requiremen
 
 ## Scoring dimensions
 
-**Jurisdictional fit.** Each co-location candidate is evaluated against the regulatory context of the customer's operating region. For Canadian customers under NI 51-102 or OSC SN 51-721 disclosure obligations, data residency within Canada is a baseline requirement. The methodology encodes jurisdiction-first scoring: a facility outside the required jurisdiction is excluded before other dimensions are evaluated.
+**Jurisdictional fit.** Each co-location candidate is evaluated against the regulatory context of the customer's operating region. For Canadian customers under NI 51-102 or CSA National Policy 51-201 disclosure obligations, data residency within Canada is a baseline requirement. The methodology encodes jurisdiction-first scoring: a facility outside the required jurisdiction is excluded before other dimensions are evaluated.
 
 **Network transit characteristics.** Latency to the customer's primary users and to the [[pointsav-overview|PointSav]] workspace endpoint is measured at candidate selection time. Facilities are scored on round-trip time, transit provider diversity, and the availability of a WireGuard-compatible BGP peering path to the customer's existing nodes.
 

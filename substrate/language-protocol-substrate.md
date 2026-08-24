@@ -10,11 +10,11 @@ index_group: core-named-substrates
 short_description: "The routing mechanism that carries a draft's declared register, document type, and destination between archives — a frontmatter field, a routing table, and a mailbox convention, not an AI adapter system."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 paired_with: language-protocol-substrate.es.md
 ---
 
@@ -82,7 +82,7 @@ reflects that knowledge structurally rather than inferring it.
 
 A cluster that does editorial work locally — without routing the request through the Doorman — can still push a record of it into the central audit ledger with a single call. The event carries a type tag: `prose-edit` for editorial work, plus `design-edit`, `graph-mutation`, `anchor-event`, and `verdict-issued` for other work classes the same endpoint covers. This keeps the ledger complete even when work happens off the Doorman's own request path — it does not, by itself, generate a training tuple; only work that actually routes through the Doorman's apprenticeship pipeline does that.
 
-Per `[ni-51-102]` continuous-disclosure language and in accordance with the forward-looking information principles of `[osc-sn-51-721]`: whether every editorial action across the platform eventually produces a verdict-signed training tuple for a customer's own adapter is a planned target, not a confirmed current behavior.
+Per `[ni-51-102]` continuous-disclosure language and in accordance with the forward-looking information principles of `[np-51-201]`: whether every editorial action across the platform eventually produces a verdict-signed training tuple for a customer's own adapter is a planned target, not a confirmed current behavior.
 
 ## See also
 

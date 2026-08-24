@@ -12,12 +12,12 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: app-console-input.es.md
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 references:
   - id: 1
     text: "NIST, Artificial Intelligence Risk Management Framework (AI RMF 1.0), NIST AI 100-1, January 2023. Section 5: Human oversight and accountability in AI deployments."

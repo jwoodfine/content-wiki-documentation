@@ -10,11 +10,11 @@ index_group: ring-3-ai-gateway
 short_description: "How service-slm's three-tier inference router and the Yo-Yo GPU burst VM operate: the Doorman boundary, the local and burst tiers, the apprenticeship queue, and the idle-shutdown cost ceiling."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
  - olmo3-allenai
 paired_with: service-slm-yoyo-operational.es.md
 ---
@@ -114,4 +114,4 @@ multiplier for routine work; the frontier model is reserved for judgment calls.
 1. Optional Intelligence Layer — Ring 3 is structurally optional; Rings 1 and 2 function without it.
 2. AllenAI OLMo 3 model family. Apache 2.0 (model weights); Open Data Commons (training data). [olmo3-allenai] https://huggingface.co/allenai
 3. NI 51-102 Continuous Disclosure Obligations. British Columbia Securities Commission. [ni-51-102] https://www.bcsc.bc.ca/securities-law/law-and-policy/instruments-and-policies/5-ongoing-requirements-for-issuers-insiders/current/51-102
-4. OSC Staff Notice 51-721 Forward-Looking Information Disclosure. Ontario Securities Commission. [osc-sn-51-721] https://www.osc.ca/en/securities-law/instruments-rules-policies/5/51-721/osc-staff-notice-51-721-forward-looking-information-disclosure
+4. CSA National Policy 51-201 Forward-Looking Information Disclosure. Ontario Securities Commission. [np-51-201] https://www.osc.ca/en/securities-law/instruments-rules-policies/5/51-721/osc-staff-notice-51-721-forward-looking-information-disclosure

@@ -11,12 +11,12 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: structural-positioning.md
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 references:
   - id: 1
     text: "NIST, Open Security Controls Assessment Language (OSCAL) — un conjunto de formatos en XML, JSON y YAML que proporcionan representaciones legibles por máquina de catálogos de controles, líneas base de controles, planes de seguridad del sistema y planes y resultados de evaluaciones."
@@ -81,7 +81,7 @@ La misma configuración de sustrato sirve a cada uno de los siguientes segmentos
 | Segmento de clientes | Registros en archivos [[totebox-os|Totebox]] |
 |---|---|
 | Gestor de activos inmobiliarios | Documentos de arrendamiento, modelos de información de construcción, comunicaciones con inquilinos |
-| Emisor de información pública [ni-51-102] [osc-sn-51-721] | Comunicados de prensa, presentaciones regulatorias, actas de la junta |
+| Emisor de información pública [ni-51-102] [np-51-201] | Comunicados de prensa, presentaciones regulatorias, actas de la junta |
 | Práctica médica o quirúrgica | Registros de pacientes, archivos de diagnóstico, facturación clínica |
 | Bufete de abogados | Expedientes de casos, materiales de descubrimiento, escritos judiciales firmados |
 | Family office | Registros fiscales, documentos de sucesión, contratos del hogar |

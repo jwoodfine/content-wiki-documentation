@@ -11,12 +11,12 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: TRANSLATE-ES
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: retail-co-location-tier-methodology.md
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 ---
 
 Un clúster de co-localización minorista obtiene un nivel al superar un conjunto fijo de
@@ -107,7 +107,7 @@ plataforma]] como la capa de mapa con niveles.
 Las declaraciones relativas al refinamiento de umbrales y a futuros cambios de
 metodología son objetivos previstos sujetos a cambio. Los plazos reales dependen de la
 revisión del operador, la cobertura de datos y la velocidad de desarrollo. [ni-51-102]
-[osc-sn-51-721]
+[np-51-201]
 
 ## Véase también
 

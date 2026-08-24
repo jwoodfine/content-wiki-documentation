@@ -10,18 +10,18 @@ index_group: compute-tiers
 short_description: "El modelo de IA especialista planificado para el Nivel 3 del sistema de cuatro niveles SLM de PointSav, construido mediante entrenamiento continuo de OLMo 3 32B sobre el corpus federado de aprendizaje de la plataforma."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-17
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 paired_with: pointsav-llm.md
 
 ---
 
 **PointSav-LLM** es el modelo de IA especialista planificado para el Nivel 3 del [[four-tier-slm-substrate|escalón SLM de cuatro niveles]] de [[pointsav-overview|PointSav]]. No es un producto activo en la fecha de este artículo. Se trata de una trayectoria planificada: el primer ciclo de entrenamiento continuo (CPT, por sus siglas en inglés) está actualmente previsto para v0.5.0 en el primer trimestre de 2027, con un despliegue productivo actualmente previsto para v1.0.0 en el cuarto trimestre de 2027.
 
-*Todas las descripciones de capacidades, calendarios, estructuras de precios y objetivos de rendimiento de este artículo son de carácter prospectivo. Son planes o intenciones, no hechos operativos actuales. Los resultados reales dependen de la tasa de crecimiento del corpus, el rendimiento del modelo, la capacidad de ingeniería y las condiciones del mercado. [ni-51-102] [osc-sn-51-721]*
+*Todas las descripciones de capacidades, calendarios, estructuras de precios y objetivos de rendimiento de este artículo son de carácter prospectivo. Son planes o intenciones, no hechos operativos actuales. Los resultados reales dependen de la tasa de crecimiento del corpus, el rendimiento del modelo, la capacidad de ingeniería y las condiciones del mercado. [ni-51-102] [np-51-201]*
 
 ---
 
@@ -91,7 +91,7 @@ Tres niveles de suscripción planificados; los detalles y las tarifas específic
 - Contribución al corpus: datos de trayectoria completos del nivel contribuyente, previstos para generar tarifas por token preferenciales en ciclos de facturación posteriores como crédito acumulativo.
 - SLA: compromisos de tiempo de respuesta mejorados más ventana de respuesta de escalado L2/L3.
 
-Las tarifas específicas por token y las ventanas de SLA de escalado se publicarán cuando estén disponibles los datos de evaluación del primer ciclo CPT. Todos los precios son planificados y están sujetos a revisión según los costos de infraestructura, el rendimiento del modelo y las condiciones del mercado. [ni-51-102] [osc-sn-51-721]
+Las tarifas específicas por token y las ventanas de SLA de escalado se publicarán cuando estén disponibles los datos de evaluación del primer ciclo CPT. Todos los precios son planificados y están sujetos a revisión según los costos de infraestructura, el rendimiento del modelo y las condiciones del mercado. [ni-51-102] [np-51-201]
 
 ---
 
@@ -134,4 +134,4 @@ La base técnica de PointSav-LLM es el modelo base OLMo 3 32B, publicado por All
 
 1. AllenAI. *Familia de modelos OLMo 3*. Licencia Apache 2.0; datos de entrenamiento bajo licencia Open Data Commons. https://allenai.org/olmo
 2. *National Instrument 51-102 Continuous Disclosure Obligations.* British Columbia Securities Commission. [ni-51-102]
-3. *OSC Staff Notice 51-721: Forward-Looking Information Disclosure.* Ontario Securities Commission. [osc-sn-51-721]
+3. *CSA National Policy 51-201: Forward-Looking Information Disclosure.* Ontario Securities Commission. [np-51-201]

@@ -10,11 +10,11 @@ content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-07-31
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 paired_with: customer-hostability.md
 ---
 
@@ -69,7 +69,7 @@ regulatoria del cliente no dependa de la del proveedor.
 
 ## Mirando hacia adelante — pre-entrenamiento continuo federado
 
-Conforme a `[osc-sn-51-721]`, el lenguaje que describe la trayectoria de
+Conforme a `[np-51-201]`, el lenguaje que describe la trayectoria de
 pre-entrenamiento continuo federado es prospectivo. La forma ya está
 establecida; el rendimiento operativo madura con el tiempo.
 

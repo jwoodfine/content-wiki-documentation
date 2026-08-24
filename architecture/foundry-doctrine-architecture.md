@@ -10,14 +10,14 @@ content_type: topic
 quality: complete
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-06-23
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: foundry-doctrine-architecture.es.md
 references:
   - id: 1
     text: "NI 51-102 Continuous Disclosure Obligations — BCSC"
   - id: 2
-    text: "OSC Staff Notice 51-721 Forward-Looking Information Disclosure"
+    text: "CSA National Policy 51-201 Forward-Looking Information Disclosure"
   - id: 3
     text: "OLMo 3 — Allen Institute for AI. allenai.org/blog/olmo3"
   - id: 4

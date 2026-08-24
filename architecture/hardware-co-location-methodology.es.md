@@ -11,7 +11,7 @@ language: es
 quality: stub
 status: planned
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-03
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: hardware-co-location-methodology.md
 cites: []
@@ -27,7 +27,7 @@ La metodología aborda el paso de selección de sitio: dado un requisito de desp
 
 ## Dimensiones de evaluación
 
-**Adecuación jurisdiccional.** Cada candidato de co-ubicación se evalúa frente al contexto regulatorio de la región operativa del cliente. Para clientes canadienses bajo obligaciones de divulgación de la NI 51-102 o OSC SN 51-721, la residencia de datos dentro de Canadá es un requisito base. La metodología codifica la puntuación con jurisdicción primero: una instalación fuera de la jurisdicción requerida se excluye antes de evaluar otras dimensiones.
+**Adecuación jurisdiccional.** Cada candidato de co-ubicación se evalúa frente al contexto regulatorio de la región operativa del cliente. Para clientes canadienses bajo obligaciones de divulgación de la NI 51-102 o Política Nacional 51-201 de la CSA, la residencia de datos dentro de Canadá es un requisito base. La metodología codifica la puntuación con jurisdicción primero: una instalación fuera de la jurisdicción requerida se excluye antes de evaluar otras dimensiones.
 
 **Características del tránsito de red.** La latencia hacia los usuarios primarios del cliente y hacia el punto de acceso del espacio de trabajo PointSav se mide en el momento de la selección de candidatos. Las instalaciones se puntúan por tiempo de ida y vuelta, diversidad de proveedores de tránsito, y disponibilidad de una ruta de emparejamiento BGP compatible con WireGuard.
 

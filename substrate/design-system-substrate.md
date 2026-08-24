@@ -10,14 +10,14 @@ index_group: core-named-substrates
 short_description: "The design-system substrate is a self-hosted, customer-owned engine storing tokens and components in the customer's own Git repo, served via a machine-readable MCP endpoint."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - mcp-spec
  - sigstore-rekor-v2
  - c2sp-tlog-tiles
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 paired_with: design-system-substrate.es.md
 ---
 
@@ -95,7 +95,7 @@ Carbon was chosen for three reasons: familiarity surface (wide accessible-design
 
 What is not imported from Carbon: IBM Cloud-specific themes, React-specific component implementations, the IBM logo and "Carbon" wordmark, Carbon-specific component micro-interactions.
 
-A planned future milestone may introduce an alternative primitive bottom — Untitled UI (MIT-licensed) is a candidate for a second primitive layer in a subsequent release. That work is intended and subject to technical evaluation; no timeline is committed. Forward-looking statements about future milestones are subject to the cautionary factors described in `[ni-51-102]` and `[osc-sn-51-721]`.
+A planned future milestone may introduce an alternative primitive bottom — Untitled UI (MIT-licensed) is a candidate for a second primitive layer in a subsequent release. That work is intended and subject to technical evaluation; no timeline is committed. Forward-looking statements about future milestones are subject to the cautionary factors described in `[ni-51-102]` and `[np-51-201]`.
 
 ## Sovereign Forking Procedure
 

@@ -12,12 +12,12 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: legal-and-ip-structure.es.md
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 ---
 
 The PointSav legal structure describes the three-corporation topology that governs intellectual property transfer from contributors to vendor to customer. A squash-and-merge git operation serves as the atomic IP-transfer event; the vendor is the only party bridging contributors and the customer. The design is intentional: contributor experimental commits never reach the customer, and the customer's operational records never reach the vendor. This article covers the three-corporation topology, the IP-transfer mechanic, the contributor protocol, the intended license structure, and the planned patent streams.
@@ -94,7 +94,7 @@ The pattern follows the open-core model: the AGPL/FSL tiers attract adoption; th
 
 ## Patent strategy (intended)
 
-Two distinct patent streams are planned. All patent claims are forward-looking statements subject to the BCSC continuous-disclosure posture [ni-51-102] [osc-sn-51-721]:
+Two distinct patent streams are planned. All patent claims are forward-looking statements subject to the BCSC continuous-disclosure posture [ni-51-102] [np-51-201]:
 
 | Patent stream | Owner | Subject |
 |---|---|---|
@@ -105,7 +105,7 @@ The streams do not overlap: PointSav Digital Systems is intended to patent the s
 
 ## The Sovereign Data Foundation (planned)
 
-A planned governance partner, the Sovereign Data Foundation, is intended to oversee the integrity of the open-source components of the PointSav substrate. The Sovereign Data Foundation is referred to in planned and intended terms only; no active oversight role, equity position, or governance authority is asserted at this time. All references to the Sovereign Data Foundation in public communications carry planned and intended language only, per the BCSC continuous-disclosure posture [ni-51-102] [osc-sn-51-721].
+A planned governance partner, the Sovereign Data Foundation, is intended to oversee the integrity of the open-source components of the PointSav substrate. The Sovereign Data Foundation is referred to in planned and intended terms only; no active oversight role, equity position, or governance authority is asserted at this time. All references to the Sovereign Data Foundation in public communications carry planned and intended language only, per the BCSC continuous-disclosure posture [ni-51-102] [np-51-201].
 
 ## See also
 

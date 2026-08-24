@@ -9,10 +9,10 @@ content_type: topic
 index_group: knowledge-and-editorial-applications
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: wikipedia-leapfrog-design.es.md
-cites: [ni-51-102, osc-sn-51-721]
+cites: [ni-51-102, np-51-201]
 ---
 
 The [[app-mediakit-knowledge]] wiki engine inherits 95% of its chrome from Wikipedia's established layout conventions. The remaining 5% is leapfrog headroom: additions that no Wikipedia reader has encountered, shipped as additive features so the baseline reading experience is undisturbed. This article explains why each design choice was made and what the structural contract with two different audiences looks like.
@@ -47,7 +47,7 @@ Three additions ship beyond the Wikipedia inventory today. Each is additive — 
 
 ### Forward-looking information banner
 
-Articles whose frontmatter sets `forward_looking: true` render a cautionary banner in reading view. The banner is the reading-surface expression of [[compliance-and-continuous-disclosure|continuous-disclosure requirements]] under [ni-51-102] and [osc-sn-51-721]: forward-looking information must be labelled, carry a stated reasonable basis, and include material assumptions and cautionary language. The banner appears below the article title in reading view, distinct in colour from the body, and does not interfere with the hatnote or lead sentence.
+Articles whose frontmatter sets `forward_looking: true` render a cautionary banner in reading view. The banner is the reading-surface expression of [[compliance-and-continuous-disclosure|continuous-disclosure requirements]] under [ni-51-102] and [np-51-201]: forward-looking information must be labelled, carry a stated reasonable basis, and include material assumptions and cautionary language. The banner appears below the article title in reading view, distinct in colour from the body, and does not interfere with the hatnote or lead sentence.
 
 ### Disclosure class field
 

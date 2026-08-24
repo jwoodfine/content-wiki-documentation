@@ -9,10 +9,10 @@ content_type: topic
 index_group: knowledge-and-editorial-applications
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: knowledge-wiki-home-page-design.es.md
-cites: [ni-51-102, osc-sn-51-721]
+cites: [ni-51-102, np-51-201]
 ---
 
 The PointSav documentation wiki at documentation.pointsav.com is the canonical reading surface for the platform's architecture, services, operating systems, governance, infrastructure, applications, and reference vocabulary, served by the [[app-mediakit-knowledge]] engine. Its home page inherits Wikipedia's Main Page structural conventions — the gold standard for general-knowledge home pages — and extends that inheritance with capabilities Wikipedia's governance model has been structurally unable to ship, following the [[wikipedia-leapfrog-design|leapfrog design philosophy]].
@@ -85,7 +85,7 @@ Each absence is intentional. A home page optimised for conversion or engagement 
 
 ## Forward-looking items
 
-The following are planned or intended, not committed. Cautionary language applies per [ni-51-102] and [osc-sn-51-721]. Material assumptions include sustained editorial labour cadence and operator clearance of each phase.
+The following are planned or intended, not committed. Cautionary language applies per [ni-51-102] and [np-51-201]. Material assumptions include sustained editorial labour cadence and operator clearance of each phase.
 
 The platform is intended to reach the structural standard required by major design and editorial-publishing awards in the reference and information-design categories. Whether any specific recognition results depends on factors outside the platform's control — submission timing, jury composition, competitive entries — and no specific award is claimed here.
 

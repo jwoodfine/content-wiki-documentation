@@ -8,12 +8,12 @@ short_description: "Patrón de implementación GPU de Nivel B con binarios Linux
 category: ai
 status: stub
 bcsc_class: forward-looking
-last_edited: 2026-08-17
+last_edited: 2026-08-24
 editor: pointsav-engineering
 language: es
 paired_with: zero-container-inference.md
 cites:
- - osc-sn-51-721
+ - np-51-201
 
 ---
 
@@ -60,4 +60,4 @@ Plataformas de orquestación de contenedores gestionadas, entornos de ejecución
 ## Referencias
 
 - [[zero-container-runtime]] — especificación del compromiso de despliegue sin contenedores.
-- **Aviso de personal OSC 51-721** — Divulgación de información prospectiva. El conjunto de inferencia de Nivel B y los plazos de despliegue en este artículo son declaraciones prospectivas sujetas a cambios.
+- **Política Nacional 51-201 de la CSA** — Divulgación de información prospectiva. El conjunto de inferencia de Nivel B y los plazos de despliegue en este artículo son declaraciones prospectivas sujetas a cambios.

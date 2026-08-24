@@ -9,10 +9,10 @@ content_type: topic
 index_group: knowledge-and-editorial-applications
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: knowledge-wiki-home-page-design.md
-cites: [ni-51-102, osc-sn-51-721]
+cites: [ni-51-102, np-51-201]
 ---
 
 El wiki de documentación de PointSav en documentation.pointsav.com es la superficie de lectura canónica para la arquitectura, los servicios, los sistemas operativos, la gobernanza, la infraestructura, las aplicaciones y el vocabulario de referencia de la plataforma, servido por el motor [[app-mediakit-knowledge]]. Su página de inicio hereda las convenciones estructurales de la Portada de Wikipedia — el estándar de referencia para páginas de inicio de conocimiento general — y extiende esa herencia con capacidades que el modelo de gobernanza de Wikipedia no ha podido incorporar, siguiendo la [[wikipedia-leapfrog-design|filosofía de diseño leapfrog]].

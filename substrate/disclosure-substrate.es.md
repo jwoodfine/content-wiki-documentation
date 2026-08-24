@@ -11,13 +11,13 @@ category: substrate
 type: topic
 index_group: core-named-substrates
 status: active
-last_edited: 2026-06-20
+last_edited: 2026-08-24
 editor: pointsav-engineering
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
  - bcsc-continuous-disclosure
  - sec-17a-4-f
  - eidas-qualified-preservation
@@ -36,7 +36,7 @@ La consecuencia práctica para los compradores regulados: un emisor de reportes 
 
 El sustrato colapsa tres cuerpos de texto convencionalmente separados — documentación interna, un sitio de relaciones con inversores y presentaciones regulatorias periódicas — en un único corpus Markdown bajo infraestructura del emisor, que se renderiza en páginas wiki orientadas al lector, paquetes de exportación conformes a reguladores y artefactos de prueba de estado criptográficos, todo desde la misma fuente.
 
-Para los emisores regulados bajo `[ni-51-102]` y `[osc-sn-51-721]`, los adaptadores de exportación y el anclaje criptográfico descritos en este artículo son infraestructura planificada; la cadena de autoría firmada y el anclaje por hash de contenido son operativos en la actualidad.
+Para los emisores regulados bajo `[ni-51-102]` y `[np-51-201]`, los adaptadores de exportación y el anclaje criptográfico descritos en este artículo son infraestructura planificada; la cadena de autoría firmada y el anclaje por hash de contenido son operativos en la actualidad.
 
 ## Descripción general
 
@@ -63,7 +63,7 @@ Dos mecanismos de marca de tiempo están planificados para la Fase 7 del motor w
 - **Anclaje OpenTimestamps** `[opentimestamps]` — anclaje criptográfico planificado de cada compromiso a la blockchain de Bitcoin. El anclaje en Bitcoin es gratuito, de código abierto y externo a la infraestructura del emisor; produce prueba de que un estado de contenido específico existía en una altura de bloque específica, sin requerir confianza en ningún intermediario único.
 - **Marca de tiempo RFC 3161** `[rfc-3161]` — tokens de marca de tiempo formales planificados de una Autoridad de Sellado de Tiempo reconocida. Los tokens RFC 3161 tienen reconocimiento legal en la UE y en la mayoría de las jurisdicciones de derecho consuetudinario. El uso planificado de ambos mecanismos proporciona redundancia criptográfica: uno se ancla a un libro descentralizado; el otro proporciona el token formalmente reconocido que un regulador o tribunal puede verificar.
 
-Los compromisos de cambio material — aquellos cuyas ediciones de TOPIC constituyen cambios materiales bajo la postura `[bcsc-continuous-disclosure]` — están previstos para emitir un artefacto de Diff-de-Divulgación firmado junto al TOPIC actualizado. El Diff-de-Divulgación es un diff criptográficamente firmado del cambio, no un derivado del TOPIC; está planificado para comprometerse como una Credencial Verificable W3C `[w3c-verifiable-credentials]` junto al artículo afectado. Esto es prospectivo y está sujeto a los factores de precaución en `[ni-51-102]` y `[osc-sn-51-721]`.
+Los compromisos de cambio material — aquellos cuyas ediciones de TOPIC constituyen cambios materiales bajo la postura `[bcsc-continuous-disclosure]` — están previstos para emitir un artefacto de Diff-de-Divulgación firmado junto al TOPIC actualizado. El Diff-de-Divulgación es un diff criptográficamente firmado del cambio, no un derivado del TOPIC; está planificado para comprometerse como una Credencial Verificable W3C `[w3c-verifiable-credentials]` junto al artículo afectado. Esto es prospectivo y está sujeto a los factores de precaución en `[ni-51-102]` y `[np-51-201]`.
 
 ### Adaptadores de exportación por jurisdicción (planificados)
 
@@ -96,7 +96,7 @@ Las plataformas SaaS de divulgación de proveedores que operan en infraestructur
 
 Un sustrato de divulgación que permita que texto generado por IA llegue a la publicación sin verificación produce una responsabilidad estructural: si la IA alució un hecho, ese hecho queda en el registro de divulgación. El HHEM de Vectara `[vectara-hhem]` es un enfoque de solo detección — identificar alucinaciones después de la generación. El mecanismo planificado del sustrato es la negativa de renderización: un TOPIC cuya cadena de prueba de fundamentación no verifica no llega al lector.
 
-El mecanismo planificado (Fase 9 del motor wiki; previsto sujeto a que el clúster `project-disclosure` alcance este hito; sujeto a los factores de precaución en `[ni-51-102]` y `[osc-sn-51-721]`):
+El mecanismo planificado (Fase 9 del motor wiki; previsto sujeto a que el clúster `project-disclosure` alcance este hito; sujeto a los factores de precaución en `[ni-51-102]` y `[np-51-201]`):
 
 1. Cada afirmación en un TOPIC redactado por IA debe estar emparejada con un ID de cita resolvible en el registro de citas.
 2. El hash de contenido de cada cita debe verificarse contra el hash almacenado del registro.

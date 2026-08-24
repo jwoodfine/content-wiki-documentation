@@ -11,11 +11,11 @@ quality: complete
 index_group: institutional-due-diligence
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-15
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 paired_with: procurement-overview.md
 ---
 
@@ -39,7 +39,7 @@ Tres propiedades están garantizadas estructuralmente — no prometidas contract
 
 ## Estructura comercial (planificada)
 
-Por `[osc-sn-51-721]`, lo siguiente describe la trayectoria comercial planificada.
+Por `[np-51-201]`, lo siguiente describe la trayectoria comercial planificada.
 
 **Nivel Abierto (sin costo).** Acceso de lectura a los recursos comunitarios, foro comunitario y documentación pública. El punto de entrada previsto para colaboradores individuales y organizaciones que evalúan la plataforma.
 

@@ -9,7 +9,7 @@ type: topic
 content_type: topic
 quality: complete
 index_group: sovereignty-and-infrastructure-patterns
-last_edited: 2026-07-18
+last_edited: 2026-08-24
 editor: pointsav-engineering
 audience: vendor-public
 bcsc_class: no-disclosure-implication
@@ -17,7 +17,7 @@ language_protocol: PROSE-TOPIC
 paired_with: source-of-truth-inversion.es.md
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 ---
 
 ## Pattern statement

@@ -12,11 +12,11 @@ index_group: core-named-substrates
 short_description: "El mecanismo de enrutamiento que transporta el registro, tipo de documento y destino declarados de un borrador entre archivos — un campo de portada, una tabla de enrutamiento y una convención de buzón, no un sistema de adaptadores de IA."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 ---
 
 Cada borrador que se mueve por la plataforma PointSav — un artículo de wiki, un README, una corrección legal, una traducción — declara de antemano su registro, tipo de documento y destino, en lugar de que estos se infieran después. Esa declaración es el sustrato de protocolo de lenguaje: un campo de portada, una tabla de enrutamiento y una convención de buzón, no un sistema de IA.

@@ -12,11 +12,11 @@ index_group: core-named-substrates
 short_description: "Registro YAML de citas de ámbito de plataforma con detección de deriva que hace la procedencia auditable por máquina, del instrumento regulatorio a la afirmación publicada."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-07-31
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
  - cff-spec
 ---
 
@@ -26,7 +26,7 @@ El registro contiene 159 entradas que cubren instrumentos regulatorios (NI 51-10
 
 Tres componentes trabajan en conjunto: un registro central con una entrada por identificador de cita; campos `cites:` en el encabezado por documento que hacen las dependencias legibles por máquina; y sintaxis `[id]` en línea en el cuerpo del texto que marca cada referencia con su identificador resoluble en el registro. Un proceso nocturno automatizado descarga cada URL registrada, verifica el hash del contenido y presenta cambios materiales o enlaces rotos para revisión humana antes de que se propaguen al contenido publicado.
 
-Para compradores regulados, esto significa que cada afirmación sobre propiedades de cumplimiento — inmutabilidad de registros, pistas de auditoría de IA, residencia de datos — lleva una base declarada rastreable. Un responsable de cumplimiento que audite documentación sobre la Regla SEC 17a-4(f) puede seguir la cita hasta el instrumento regulatorio primario sin acceder a sistemas internos. Esto satisface el requisito de "base declarada" bajo `[ni-51-102]` y `[osc-sn-51-721]` para información prospectiva en [[disclosure-substrate|contenido público]].
+Para compradores regulados, esto significa que cada afirmación sobre propiedades de cumplimiento — inmutabilidad de registros, pistas de auditoría de IA, residencia de datos — lleva una base declarada rastreable. Un responsable de cumplimiento que audite documentación sobre la Regla SEC 17a-4(f) puede seguir la cita hasta el instrumento regulatorio primario sin acceder a sistemas internos. Esto satisface el requisito de "base declarada" bajo `[ni-51-102]` y `[np-51-201]` para información prospectiva en [[disclosure-substrate|contenido público]].
 
 ## Componentes
 
@@ -69,7 +69,7 @@ identificador no se resuelve en el registro — es un defecto.
 
 ## Por qué importa esta disciplina
 
-**Rastreabilidad regulatoria.** Conforme a `[ni-51-102]` y `[osc-sn-51-721]`, la información prospectiva en contenido público debe incluir lenguaje de precaución y una base declarada. El grafo de citas hace que esa base sea auditable por máquina: un revisor puede recorrer desde una afirmación pública hasta el instrumento regulatorio o artículo académico que la fundamenta.
+**Rastreabilidad regulatoria.** Conforme a `[ni-51-102]` y `[np-51-201]`, la información prospectiva en contenido público debe incluir lenguaje de precaución y una base declarada. El grafo de citas hace que esa base sea auditable por máquina: un revisor puede recorrer desde una afirmación pública hasta el instrumento regulatorio o artículo académico que la fundamenta.
 
 **Prevención de divergencia.** Un corpus que crece a lo largo de sesiones, colaboradores y años puede producir documentos que citan la misma autoridad pero hacen afirmaciones contradictorias. El proceso de detección de divergencias del ciclo nocturno de higiene identifica exactamente estos pares y los presenta para revisión antes de que se propaguen al contenido publicado o a los datos de entrenamiento.
 

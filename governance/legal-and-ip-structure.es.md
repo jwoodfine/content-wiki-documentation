@@ -12,12 +12,12 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: legal-and-ip-structure.md
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 ---
 
 La estructura legal de PointSav describe la topología de tres corporaciones que rige la transferencia de propiedad intelectual desde los contribuyentes hasta el proveedor y, posteriormente, hasta el cliente. Una operación git de squash-and-merge sirve como el evento atómico de transferencia de propiedad intelectual; el proveedor es el único puente entre los contribuyentes y el cliente. El diseño es intencional: los commits experimentales de los contribuyentes nunca llegan al cliente, y los registros operativos del cliente nunca llegan al proveedor. Este artículo cubre la topología de tres corporaciones, el mecanismo de transferencia de propiedad intelectual, el protocolo de contribuyentes, la estructura de licencias prevista y las corrientes de patentes planificadas.
@@ -94,7 +94,7 @@ El patrón sigue el modelo de núcleo abierto: los niveles AGPL/FSL atraen la ad
 
 ## Estrategia de patentes (prevista)
 
-Se planifican dos corrientes distintas de patentes. Todas las afirmaciones sobre patentes son declaraciones prospectivas sujetas a la postura de divulgación continua de la BCSC [ni-51-102] [osc-sn-51-721]:
+Se planifican dos corrientes distintas de patentes. Todas las afirmaciones sobre patentes son declaraciones prospectivas sujetas a la postura de divulgación continua de la BCSC [ni-51-102] [np-51-201]:
 
 | Corriente de patentes | Propietario | Objeto |
 |---|---|---|
@@ -105,7 +105,7 @@ Las corrientes no se superponen: PointSav Digital Systems tiene previsto patenta
 
 ## La Fundación de Datos Soberanos (prevista)
 
-Un socio de gobernanza previsto, la Fundación de Datos Soberanos, está destinado a supervisar la integridad de los componentes de código abierto del sustrato PointSav. La Fundación de Datos Soberanos se menciona únicamente en términos previstos e intencionales; no se afirma ningún rol de supervisión activo, posición accionaria ni autoridad de gobernanza en este momento. Todas las referencias a la Fundación de Datos Soberanos en comunicaciones públicas llevan lenguaje exclusivamente previsto e intencional, conforme a la postura de divulgación continua de la BCSC [ni-51-102] [osc-sn-51-721].
+Un socio de gobernanza previsto, la Fundación de Datos Soberanos, está destinado a supervisar la integridad de los componentes de código abierto del sustrato PointSav. La Fundación de Datos Soberanos se menciona únicamente en términos previstos e intencionales; no se afirma ningún rol de supervisión activo, posición accionaria ni autoridad de gobernanza en este momento. Todas las referencias a la Fundación de Datos Soberanos en comunicaciones públicas llevan lenguaje exclusivamente previsto e intencional, conforme a la postura de divulgación continua de la BCSC [ni-51-102] [np-51-201].
 
 ## Véase también
 

@@ -8,10 +8,10 @@ short_description: "Tier B GPU deployment pattern using native Linux binaries un
 category: ai
 status: stub
 bcsc_class: forward-looking
-last_edited: 2026-08-17
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
- - osc-sn-51-721
+ - np-51-201
 
 ---
 

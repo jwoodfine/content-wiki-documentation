@@ -10,11 +10,11 @@ quality: complete
 short_description: "PointSav's development environment is itself a Totebox Orchestration instance — the workspace that builds the platform runs on the same architecture it delivers."
 status: active
 bcsc_class: forward-looking
-last_edited: 2026-05-25
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 paired_with: totebox-orchestration-development.es.md
 ---
 

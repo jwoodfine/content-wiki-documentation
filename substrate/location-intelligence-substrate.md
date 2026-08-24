@@ -10,7 +10,7 @@ quality: complete
 index_group: core-named-substrates
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: location-intelligence-substrate.es.md
 aliases:
@@ -33,7 +33,7 @@ references:
   - id: 8
     text: "NI 51-102 Continuous Disclosure Obligations — BCSC"
   - id: 9
-    text: "OSC Staff Notice 51-721 Forward-Looking Information Disclosure"
+    text: "CSA National Policy 51-201 Forward-Looking Information Disclosure"
 ---
 
 A platform that depends on a running database and a live network connection is a platform a customer rents, not owns — outages, per-seat cost, and air-gap ineligibility follow. The Location Intelligence Substrate avoids that dependency by construction: it is a flat-file, open-GIS architecture that lets [[customer-hostability|customers own their geographic datasets end-to-end]] — no tile API billing, no warehouse licensing, no cloud-vendor lock-in. The substrate is built on Apache-licensed open-data foundations (Overture Maps Foundation, Foursquare Open Source Places) and rendered via a Rust-aligned open-source stack (MapLibre GL JS, Martin tile server, PMTiles).[^1][^2]

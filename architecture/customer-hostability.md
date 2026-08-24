@@ -10,11 +10,11 @@ quality: complete
 short_description: "Customer hostability is the architectural commitment that every artefact runs on the customer's own hardware and keys, making self-hosted deployment the canonical pattern."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-07-18
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 paired_with: customer-hostability.es.md
 ---
 
@@ -67,7 +67,7 @@ It is not "you can export your data." Data export is a feature. Customer hostabi
 
 ## Forward-looking — federated continued pretraining
 
-Per `[osc-sn-51-721]`, the language describing the federated continued-pretraining trajectory is forward-looking. The shape is in place; the operational throughput matures over time.
+Per `[np-51-201]`, the language describing the federated continued-pretraining trajectory is forward-looking. The shape is in place; the operational throughput matures over time.
 
 The trajectory: a customer's adapter trains on the customer's corpus inside the customer's substrate ([[yoyo-compute-substrate|Tier B Yo-Yo]] or the customer's own GPU host). Aggregated improvements may feed back to a shared base model when the customer chooses to contribute, under explicit consent. Customers who do not contribute continue to benefit from base-model improvements driven by customers who do, with no leakage of corpus contents either direction.
 

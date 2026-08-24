@@ -10,11 +10,11 @@ quality: complete
 short_description: "The planned scope for PointSav's future constitutional charter — not yet ratified or written; described here in planned/intended terms only."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
  - constitutional-ai-2212-08073
  - mcp-spec
  - olmo3-allenai

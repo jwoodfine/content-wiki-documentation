@@ -10,7 +10,7 @@ quality: complete
 index_group: core-named-substrates
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: location-intelligence-substrate.md
 aliases:
@@ -64,7 +64,7 @@ El scraping directo de sitios web de minoristas no se utiliza cuando los términ
 
 ## Información prospectiva
 
-Las declaraciones sobre el calendario de despliegue, los resultados para el cliente y la hoja de ruta de funcionalidades del Sustrato de Inteligencia de Localización son objetivos previstos sujetos a cambio. Los plazos reales dependen de la revisión del operador en cada etapa, de la precisión de la cobertura de datos abiertos y de la velocidad de desarrollo. Estas declaraciones llevan el matiz "planificado"/"previsto"/"puede" conforme a la postura de divulgación continua del espacio de trabajo, según el National Instrument 51-102 (Continuous Disclosure Obligations) de la BCSC y el OSC Staff Notice 51-721 (Forward-Looking Information Disclosure).
+Las declaraciones sobre el calendario de despliegue, los resultados para el cliente y la hoja de ruta de funcionalidades del Sustrato de Inteligencia de Localización son objetivos previstos sujetos a cambio. Los plazos reales dependen de la revisión del operador en cada etapa, de la precisión de la cobertura de datos abiertos y de la velocidad de desarrollo. Estas declaraciones llevan el matiz "planificado"/"previsto"/"puede" conforme a la postura de divulgación continua del espacio de trabajo, según el National Instrument 51-102 (Continuous Disclosure Obligations) de la BCSC y el CSA National Policy 51-201 (Forward-Looking Information Disclosure).
 
 ## Véase también
 

@@ -9,7 +9,7 @@ type: topic
 content_type: topic
 quality: complete
 index_group: sovereignty-and-customer-ownership
-last_edited: 2026-05-25
+last_edited: 2026-08-24
 editor: pointsav-engineering
 audience: vendor-public
 bcsc_class: no-disclosure-implication
@@ -17,7 +17,7 @@ language_protocol: PROSE-TOPIC
 paired_with: substrate-native-compatibility.es.md
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 ---
 
 The PointSav wiki at `documentation.pointsav.com` provides structural compatibility with MediaWiki's reader-facing conventions — URL patterns, wikilink syntax, footnote syntax — while deliberately declining to replicate MediaWiki's internal API surface, including a write API. Every interface the substrate does not replicate is a [[compliance-and-continuous-disclosure|compliance obligation]] it does not assume.
@@ -26,7 +26,7 @@ The engine is read-only from a visitor's perspective — there is no in-browser 
 
 ## Cost and benefit of declining the shim
 
-That decision has a concrete cost and a concrete benefit. The cost: contributors migrating automation workflows from MediaWiki-compatible tools re-implement against new interfaces. The benefit: every Action API endpoint MediaWiki ships, deprecates, or modifies would have generated a maintenance event; the platform has no control over that velocity, and every public interface the platform exposes is a continuous-disclosure surface under Canadian securities law (National Instrument 51-102 and OSC Staff Notice 51-721). Declining the shim means the wiki's disclosure commitments are bounded to what the substrate actually provides.
+That decision has a concrete cost and a concrete benefit. The cost: contributors migrating automation workflows from MediaWiki-compatible tools re-implement against new interfaces. The benefit: every Action API endpoint MediaWiki ships, deprecates, or modifies would have generated a maintenance event; the platform has no control over that velocity, and every public interface the platform exposes is a continuous-disclosure surface under Canadian securities law (National Instrument 51-102 and CSA National Policy 51-201). Declining the shim means the wiki's disclosure commitments are bounded to what the substrate actually provides.
 
 The result is a wiki with the reader and integrator ecosystem reach of a MediaWiki-replacement — resolving wikilinks, serving `sitemap.xml`, accepting Wikipedia-style markup — and a maintenance surface that scales with the [[app-mediakit-knowledge|platform's own velocity]], not MediaWiki's.
 
@@ -112,7 +112,7 @@ The interfaces compose with the substrate's other invariants. The JSON-LD is gen
 
 A future substrate-specific URL scheme — `verify://{citation-id}` — is *intended* to resolve a citation reference to its verifiable source through the substrate's verification path, not through public DNS. The scheme is *planned* for Phase 7 of the wiki engine; it is not implemented as of v0.1.29.
 
-The motivation: a `[citation-id]` in an article is a structured reference that the substrate can resolve to an authoritative source through the citation registry. The registry maps the ID to a (title, URL, optional clause reference) tuple, and a future Information Verifiability Citation (IVC) machinery is *intended* to harden the resolution to a cryptographically-verifiable proof of provenance. This is forward-looking. Cautionary language applies per [ni-51-102] and [osc-sn-51-721]. The reasonable basis is the citation-registry substrate already operating at v0.1.29. The material assumption is that the IVC machinery is ratified before Phase 7 implementation begins.
+The motivation: a `[citation-id]` in an article is a structured reference that the substrate can resolve to an authoritative source through the citation registry. The registry maps the ID to a (title, URL, optional clause reference) tuple, and a future Information Verifiability Citation (IVC) machinery is *intended* to harden the resolution to a cryptographically-verifiable proof of provenance. This is forward-looking. Cautionary language applies per [ni-51-102] and [np-51-201]. The reasonable basis is the citation-registry substrate already operating at v0.1.29. The material assumption is that the IVC machinery is ratified before Phase 7 implementation begins.
 
 ## Disclosure posture as compatibility lens
 

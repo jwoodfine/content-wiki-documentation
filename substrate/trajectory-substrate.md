@@ -10,11 +10,11 @@ index_group: core-named-substrates
 short_description: "The platform mechanism converting operational work — commits, sessions, feedback — into structured JSONL training tuples feeding a continued-pretraining corpus."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-07-18
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
  - constitutional-ai-2212-08073
  - federated-lora-2502-05087
  - s-lora-2024
@@ -29,7 +29,7 @@ Three orthogonal corpus types determine the architecture. The constitutional cor
 
 Capture is automatic — no operator decision is required to generate a training tuple. Every JSONL record carries provenance fields (`tuple_type`, `doctrine_version`, `tenant`, `role`, `scope`, `redaction_class`) that let the training pipeline assemble each corpus without trusting prose. Vendor data never co-mingles with customer data at training time; tenant data never crosses tenants — the separation is directory-level and pipeline-level, not policy-level.
 
-An operator's specific correction shapes their own cluster's adapter exclusively — no other tenant benefits or is burdened by it. This per-contributor inverse of aggregate preference learning is structurally inaccessible to platforms whose preference signal is averaged across all users. Per `[ni-51-102]` and `[osc-sn-51-721]`, the continued-pretraining pipeline is described in planned terms; the capture infrastructure and corpus accumulation are operational today.
+An operator's specific correction shapes their own cluster's adapter exclusively — no other tenant benefits or is burdened by it. This per-contributor inverse of aggregate preference learning is structurally inaccessible to platforms whose preference signal is averaged across all users. Per `[ni-51-102]` and `[np-51-201]`, the continued-pretraining pipeline is described in planned terms; the capture infrastructure and corpus accumulation are operational today.
 
 ## Overview
 
@@ -107,7 +107,7 @@ This per-contributor inverse of aggregate preference learning is structurally in
 
 ## Configuration
 
-The Trajectory Substrate currently operates at L1 (edit-corpus capture, live since v0.1.1). Per `[ni-51-102]` continuous-disclosure language, and in accordance with the forward-looking information principles of `[osc-sn-51-721]`, the statements below describe planned and intended development. Material assumptions: continued-pretraining technology matures on the current trajectory; OLMo 3 base model `[olmo3-allenai]` remains openly licensed; engineering corpus accumulates at the current platform development cadence. Actual outcomes may differ.
+The Trajectory Substrate currently operates at L1 (edit-corpus capture, live since v0.1.1). Per `[ni-51-102]` continuous-disclosure language, and in accordance with the forward-looking information principles of `[np-51-201]`, the statements below describe planned and intended development. Material assumptions: continued-pretraining technology matures on the current trajectory; OLMo 3 base model `[olmo3-allenai]` remains openly licensed; engineering corpus accumulates at the current platform development cadence. Actual outcomes may differ.
 
 Planned subsequent tiers:
 

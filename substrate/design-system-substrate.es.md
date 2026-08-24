@@ -9,13 +9,13 @@ paired_with: design-system-substrate.md
 category: substrate
 index_group: core-named-substrates
 status: published
-last_edited: 2026-04-28
+last_edited: 2026-08-24
 editor: pointsav-engineering
 bcsc_class: current-fact + forward-looking
 cites:
  - mcp-spec
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 ---
 
 
@@ -49,7 +49,7 @@ El trabajo específico de marca de cada cliente ocurre en la capa semántica de 
 
 El substrato está en producción como v0.0.1 desde el 28 de abril de 2026. El trabajo futuro planificado incluye la evaluación de una capa primitiva alternativa (Untitled UI, con licencia MIT) como segunda opción de base, y una modalidad de alojamiento gestionado para clientes SMB que prefieran no operar la infraestructura. Ambas son direcciones de producto previstas, sujetas a evaluación técnica y capacidad operativa; no representan compromisos de calendario.
 
-*Esta sección contiene información prospectiva en los términos de `[ni-51-102]` y `[osc-sn-51-721]`. Los resultados reales pueden diferir de los objetivos descritos.*
+*Esta sección contiene información prospectiva en los términos de `[ni-51-102]` y `[np-51-201]`. Los resultados reales pueden diferir de los objetivos descritos.*
 
 ## Para profundizar
 

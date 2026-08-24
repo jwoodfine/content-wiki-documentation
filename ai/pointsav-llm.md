@@ -10,18 +10,18 @@ index_group: compute-tiers
 short_description: "The planned vendor-tier specialist AI model for substrate-sovereign SMBs — Tier 3 of the Four-Tier SLM Substrate Ladder, built by continued pretraining of the OLMo 3 32B base model."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-17
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 paired_with: pointsav-llm.es.md
 
 ---
 
 **PointSav-LLM** is the planned Tier 3 specialist AI model in [[pointsav-overview|PointSav]]'s [[four-tier-slm-substrate|Four-Tier SLM Substrate Ladder]] — the vendor-trained layer that is intended to emerge from continued pretraining of the OLMo 3 32B **base** model (Apache 2.0) on the platform's federated, multi-tenant [[apprenticeship-substrate|apprenticeship corpus]]. It is not an active product. It is a planned trajectory: a first continued-pretraining (CPT) cycle is currently targeted for v0.5.0, Q1 2027, with a productized deployment currently targeted for v1.0.0, Q4 2027. When operational, PointSav-LLM is intended to serve small and medium-sized businesses that require a specialist model trained on PointSav conventions, [[totebox-archive|Totebox Archive]] operations, and multi-tenant editorial patterns — without requiring the infrastructure investment or minimum-spend commitments that closed-source enterprise AI products impose.
 
-*All capability descriptions, timelines, pricing structures, and performance targets in this article are forward-looking. They are planned or intended, not current operational facts. Actual outcomes depend on corpus growth rate, model performance, engineering capacity, and market conditions. [ni-51-102] [osc-sn-51-721]*
+*All capability descriptions, timelines, pricing structures, and performance targets in this article are forward-looking. They are planned or intended, not current operational facts. Actual outcomes depend on corpus growth rate, model performance, engineering capacity, and market conditions. [ni-51-102] [np-51-201]*
 
 ---
 
@@ -128,7 +128,7 @@ Three planned subscription tiers, details and specific token rates not yet publi
 - Corpus contribution: full contributing-tier trajectory data, intended to generate preferential per-token rates in subsequent billing cycles as compounding credit.
 - SLA: enhanced response-time commitments plus L2/L3 escalation response window.
 
-Specific token rates and escalation SLA windows will be published when the first CPT cycle assessment data is available. All pricing is planned and subject to revision based on infrastructure costs, model performance, and market conditions. [ni-51-102] [osc-sn-51-721]
+Specific token rates and escalation SLA windows will be published when the first CPT cycle assessment data is available. All pricing is planned and subject to revision based on infrastructure costs, model performance, and market conditions. [ni-51-102] [np-51-201]
 
 ---
 
@@ -165,4 +165,4 @@ The technical A/B/C compute-routing tiers in this table and the customer-facing 
 
 1. AllenAI. *OLMo 3 model family*. Apache 2.0 license; training data under Open Data Commons license. https://allenai.org/olmo
 2. *National Instrument 51-102 Continuous Disclosure Obligations.* British Columbia Securities Commission. [ni-51-102]
-3. *OSC Staff Notice 51-721: Forward-Looking Information Disclosure.* Ontario Securities Commission. [osc-sn-51-721]
+3. *CSA National Policy 51-201: Forward-Looking Information Disclosure.* Ontario Securities Commission. [np-51-201]

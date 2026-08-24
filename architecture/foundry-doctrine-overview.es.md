@@ -10,11 +10,11 @@ quality: complete
 short_description: El alcance planificado para la futura carta constitucional de PointSav — aún no ratificada ni redactada; descrita aquí solo en términos planificados/previstos.
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
  - mcp-spec
  - olmo3-allenai
 paired_with: foundry-doctrine-overview.md
@@ -96,6 +96,6 @@ El modelo de contribuidores que sostiene esto: 4–7 empleados del Núcleo, 50�
 ## Referencias
 
 1. NI 51-102 Obligaciones de Divulgación Continua — Administradores de Valores de Canadá.
-2. Aviso de Personal OSC 51-721 Divulgación de Información Prospectiva.
+2. Política Nacional 51-201 de la CSA Divulgación de Información Prospectiva.
 3. Especificación MCP — Protocolo de Contexto de Modelo, Anthropic, 2024.
 4. OLMo 3 — Allen Institute for AI, Apache 2.0.

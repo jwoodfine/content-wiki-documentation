@@ -12,11 +12,11 @@ status: active
 language: es
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-14
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 paired_with: knowledge-wiki-leapfrog-architecture.md
 ---
 

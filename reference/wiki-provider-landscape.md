@@ -11,12 +11,12 @@ content_type: topic
 quality: complete
 audience: vendor-public
 bcsc_class: no-disclosure-implication
-last_edited: 2026-07-30
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: wiki-provider-landscape.es.md
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 ---
 
 The PointSav documentation wiki at `documentation.pointsav.com` is one entrant in a
@@ -234,8 +234,8 @@ The next re-audit is intended for approximately April 2027. If a provider in any
 archetype ships a structural change between audits — for example, an Archetype B
 reference implementation ships a modern UX layer, or another Archetype B product adds
 NPOV-style editorial discipline — this article is amended in transit. Forward-looking
-framings carry stated assumptions and cautionary language per NI 51-102 and OSC Staff
-Notice 51-721.
+framings carry stated assumptions and cautionary language per NI 51-102 and CSA National
+Policy 51-201.
 
 ## See also
 

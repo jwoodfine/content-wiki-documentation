@@ -11,7 +11,7 @@ short_description: "Una dirección planificada para service-slm: usar su canaliz
 status: active
 bcsc_class: forward-looking
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
  - olmo3-allenai
@@ -21,7 +21,7 @@ cites:
  - constitutional-ai-2212-08073
  - vllm-multi-lora
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 paired_with: service-slm-totebox-sysadmin.md
 ---
 
@@ -81,7 +81,7 @@ entrenamiento, sin transmisión externa.
 Cualquier cifra de costo o cronograma para esta capacidad — costo por solicitud a escala,
 costo de ejecución de entrenamiento, umbrales de promoción de adaptadores — son objetivos
 planificados pendientes de datos operativos reales, no cifras medidas. [ni-51-102]
-[osc-sn-51-721]
+[np-51-201]
 
 ## Véase también
 

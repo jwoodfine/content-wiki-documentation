@@ -12,12 +12,12 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: compliance-and-continuous-disclosure.md
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 references:
   - id: 1
     text: "NIST, Open Security Controls Assessment Language (OSCAL) — formatos legibles por máquina para representar catálogos de controles de seguridad, líneas base, planes de seguridad del sistema y resultados de evaluaciones."
@@ -27,7 +27,7 @@ references:
     url: "https://www.iso.org/standard/81230.html"
 ---
 
-Cumplimiento y divulgación continua describe los marcos regulatorios que aborda la arquitectura PointSav y el enfoque estructural que adopta para evidenciar esos controles. El cumplimiento empresarial convencional se basa en auditorías anuales en un momento puntual: un auditor examina una muestra, produce un informe escrito y el cliente posee un certificado que puede quedar desactualizado semanas después de su emisión. El sustrato PointSav está diseñado para un modelo continuo: controles legibles por máquina que se actualizan en tiempo real y exponen una superficie de atestación consultable. Todas las certificaciones de cumplimiento y objetivos de marcos descritos aquí son planificados o previstos; se aplica lenguaje prospectivo en todo momento según los requisitos de divulgación continua de valores canadienses [ni-51-102] [osc-sn-51-721]. Al finalizar este artículo, el lector comprenderá los objetivos del marco de cumplimiento, el enfoque de controles estructurales y la disciplina de estado de documentos que aplica la arquitectura.
+Cumplimiento y divulgación continua describe los marcos regulatorios que aborda la arquitectura PointSav y el enfoque estructural que adopta para evidenciar esos controles. El cumplimiento empresarial convencional se basa en auditorías anuales en un momento puntual: un auditor examina una muestra, produce un informe escrito y el cliente posee un certificado que puede quedar desactualizado semanas después de su emisión. El sustrato PointSav está diseñado para un modelo continuo: controles legibles por máquina que se actualizan en tiempo real y exponen una superficie de atestación consultable. Todas las certificaciones de cumplimiento y objetivos de marcos descritos aquí son planificados o previstos; se aplica lenguaje prospectivo en todo momento según los requisitos de divulgación continua de valores canadienses [ni-51-102] [np-51-201]. Al finalizar este artículo, el lector comprenderá los objetivos del marco de cumplimiento, el enfoque de controles estructurales y la disciplina de estado de documentos que aplica la arquitectura.
 
 ## Cómo la prueba continua reemplaza los ciclos de auditoría anuales
 
@@ -47,7 +47,7 @@ El sustrato PointSav aborda esto colocando controles a un nivel donde no pueden 
 | DORA (Ley de Resiliencia Operativa Digital de la UE) | Regulación sectorial de la UE | Objetivo: apoya los despliegues previstos de clientes en la UE |
 | FedRAMP | Gobierno de EE.UU. | Objetivo: apoya los despliegues previstos en el sector público de EE.UU. |
 | GDPR | Privacidad en la UE | Objetivo: apoya el cumplimiento previsto de privacidad en la UE |
-| BCSC (NI 51-102, OSC SN 51-721) [ni-51-102] [osc-sn-51-721] | Divulgación continua | Todas las afirmaciones prospectivas llevan lenguaje de planeado/previsto/puede/objetivo |
+| BCSC (NI 51-102, Política Nacional 51-201 de la CSA) [ni-51-102] [np-51-201] | Divulgación continua | Todas las afirmaciones prospectivas llevan lenguaje de planeado/previsto/puede/objetivo |
 | SLSA (Niveles de la Cadena de Suministro para Artefactos de Software) | Integridad de la cadena de suministro | Planeado: atestación de construcción del lado del proveedor |
 | ISO 15489 | Gestión de registros | Convenciones de nomenclatura de documentación del repositorio |
 | ISO 24495-1 | Lenguaje claro | Disciplina de voz y tono para las salidas de [[service-content|service-content]] |

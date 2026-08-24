@@ -12,12 +12,12 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-05-15
+last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: leapfrog-2030-architecture.es.md
 cites:
  - ni-51-102
- - osc-sn-51-721
+ - np-51-201
 references:
   - id: 1
     text: "IDC. 'The SMB 2026 Digital Landscape: How AI is Redefining Growth.' IDC Research, 2026."
@@ -131,7 +131,7 @@ This is the structural realization of the [[customer-first-ordering|customer-fir
 
 ## What ships when (planned)
 
-All phases are planned targets, not commitments. Forward-looking statements apply throughout per Canadian securities continuous-disclosure requirements [ni-51-102] [osc-sn-51-721].
+All phases are planned targets, not commitments. Forward-looking statements apply throughout per Canadian securities continuous-disclosure requirements [ni-51-102] [np-51-201].
 
 The intended implementation rolls out over 2026:
 
