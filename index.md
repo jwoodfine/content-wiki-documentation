@@ -3,9 +3,10 @@ schema: foundry-doc-v1
 content_type: page
 title: "PointSav Knowledge"
 slug: index
+short_description: "The engineering library for the PointSav platform — operating systems and services for regulated businesses that own their data, their AI, and their record-keeping outright. Where the monorepo holds the code, this wiki holds the reasoning: architecture, services, security, and the governance commitments that bind future development."
 category: root
 status: active
-last_edited: 2026-05-17
+last_edited: 2026-08-25
 editor: pointsav-engineering
 ---
 
