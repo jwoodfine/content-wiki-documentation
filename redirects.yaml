@@ -22,19 +22,20 @@ redirects:
     to: /wiki/totebox-archive
 
   # app-orchestration-command-branch-model, app-orchestration-command-publication-flow:
-  # moved systems/ -> applications/. Both are app-* prefixed per the Nomenclature
-  # Matrix, and every other app-* article in the corpus (app-orchestration-gis,
-  # app-mediakit-knowledge, app-console-*, app-privategit-workbench) lives in
-  # applications/ per naming-convention.md §5 and §13's established os-*->systems/,
-  # app-*->applications/ split. Same pass also stripped leaked draft-pipeline
-  # frontmatter fields (route, target_wiki, session, research_trail) from these two
-  # files plus systems/scaling-coordinated-development-totebox-archives.md (a third,
-  # directly related file discovered to carry the identical leak; that one stays in
-  # systems/ — no category-move needed, only the frontmatter fix).
+  # moved systems/ -> applications/ (this note is historical — see the superseding
+  # note below; kept for the from: path history).
+  # 2026-08-25: both articles were subsequently retired entirely (commit 3f571a8,
+  # 2026-08-06) — they misattributed this workspace's own promote.sh/cluster-branch
+  # publication pipeline to the app-orchestration-command product, which does none of
+  # that (its real modules are invite/pairing/fleet/personnel/license/routing/child).
+  # The real mechanism is already documented accurately in five-stage-supply-chain.md.
+  # These two `to:` targets accordingly now point there instead of the dead
+  # applications/ slug, matching how every other inbound reference was repointed at
+  # retraction time.
   - from: /systems/app-orchestration-command-branch-model
-    to: /wiki/app-orchestration-command-branch-model
+    to: /wiki/five-stage-supply-chain
   - from: /systems/app-orchestration-command-publication-flow
-    to: /wiki/app-orchestration-command-publication-flow
+    to: /wiki/five-stage-supply-chain
 
   # quick-start retired into getting-started (both reference/, both orphaned
   # quality:stub articles with no inbound wikilinks from any curated MOC and
@@ -411,11 +412,16 @@ redirects:
   # Batch A1b collision resolutions — Phase C category redesign, 2026-07-03:
   # duplicate copies retired in favor of the specialist-category copy
   # (proposal-documentation.md §4d). Same slug in both locations; path only.
+  # 2026-08-25: both articles were subsequently retired entirely (commit 3f571a8,
+  # 2026-08-06) — misattributed this workspace's own promote.sh pipeline to
+  # app-orchestration-command. Repointed to the real, accurate replacement,
+  # five-stage-supply-chain.md, matching every other inbound reference fixed at
+  # retraction time.
   - from: /architecture/app-orchestration-command-branch-model
-    to: /wiki/app-orchestration-command-branch-model
+    to: /wiki/five-stage-supply-chain
 
   - from: /architecture/app-orchestration-command-publication-flow
-    to: /wiki/app-orchestration-command-publication-flow
+    to: /wiki/five-stage-supply-chain
 
   - from: /architecture/os-console-platform
     to: /wiki/os-console
