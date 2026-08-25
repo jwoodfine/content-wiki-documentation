@@ -19,7 +19,7 @@ redirects:
   # OS-itself description. Slug and category-field both updated; MOC entries moved from
   # systems/_index.md to infrastructure/_index.md (EN+ES).
   - from: /systems/totebox-archive
-    to: /infrastructure/totebox-archive
+    to: /wiki/totebox-archive
 
   # app-orchestration-command-branch-model, app-orchestration-command-publication-flow:
   # moved systems/ -> applications/. Both are app-* prefixed per the Nomenclature
@@ -32,9 +32,9 @@ redirects:
   # directly related file discovered to carry the identical leak; that one stays in
   # systems/ — no category-move needed, only the frontmatter fix).
   - from: /systems/app-orchestration-command-branch-model
-    to: /applications/app-orchestration-command-branch-model
+    to: /wiki/app-orchestration-command-branch-model
   - from: /systems/app-orchestration-command-publication-flow
-    to: /applications/app-orchestration-command-publication-flow
+    to: /wiki/app-orchestration-command-publication-flow
 
   # quick-start retired into getting-started (both reference/, both orphaned
   # quality:stub articles with no inbound wikilinks from any curated MOC and
@@ -44,7 +44,7 @@ redirects:
   # First steps sections merged in as new sections. aliases: [quick-start] added to
   # getting-started.md + .es.md.
   - from: /reference/quick-start
-    to: /reference/getting-started
+    to: /wiki/getting-started
 
   # service-fs cluster consolidation 2026-07-31 (content-matrix merge-candidate work):
   # service-fs-architecture.md and service-fs-security-compliance.md were genuine
@@ -57,9 +57,9 @@ redirects:
   # convention, not the WORM ledger service) and was independently corrected for its
   # own unhedged-claim defect, not merged.
   - from: /services/service-fs-architecture
-    to: /services/service-fs
+    to: /wiki/service-fs
   - from: /services/service-fs-security-compliance
-    to: /services/service-fs
+    to: /wiki/service-fs
 
   # os-console cluster consolidation 2026-07-31 (content-matrix merge-candidate work):
   # console-os.md, os-console-architecture.md, and os-console-platform.md were genuine
@@ -74,11 +74,11 @@ redirects:
   # os-console-totebox-browser.md was investigated and kept SEPARATE — a genuinely
   # distinct browser-analogy explainer, not a duplicate.
   - from: /systems/console-os
-    to: /systems/os-console
+    to: /wiki/os-console
   - from: /systems/os-console-architecture
-    to: /systems/os-console
+    to: /wiki/os-console
   - from: /systems/os-console-platform
-    to: /systems/os-console
+    to: /wiki/os-console
 
   # PPN cluster consolidation 2026-08-01 (content-matrix merge-candidate work):
   # Of 11 flagged PPN articles, only ONE genuine duplicate pair was found on full read —
@@ -100,7 +100,7 @@ redirects:
   # were found but NOT resolved — flagged for engineering clarification, not an
   # editorial call.
   - from: /infrastructure/pointsav-private-network
-    to: /infrastructure/ppn-mesh-architecture
+    to: /wiki/ppn-mesh-architecture
 
   # GIS/location-intelligence cluster consolidation 2026-08-01 (content-matrix
   # merge-candidate work, final of 5 flagged clusters). Of 5 candidate articles, only
@@ -125,7 +125,7 @@ redirects:
   # truth (real facts only, from the verified V3 methodology doc) and repointing all
   # citing articles to it instead of re-describing the mechanism themselves.
   - from: /services/pointsav-gis-engine
-    to: /substrate/location-intelligence-substrate
+    to: /wiki/location-intelligence-substrate
 
   # scaling-coordinated-development three-way duplicate resolved 2026-07-28 (diagnosed
   # 2026-07-09, execution blocked by the permission system until operator sign-off this
@@ -136,15 +136,15 @@ redirects:
   # systems/scaling-coordinated-development-totebox-archives.md is sole canonical
   # (already carries aliases: [scaling-coordinated-development-sovereign-archives]).
   - from: /systems/scaling-coordinated-development-sovereign-archives
-    to: /systems/scaling-coordinated-development-totebox-archives
+    to: /wiki/scaling-coordinated-development-totebox-archives
 
   - from: /architecture/scaling-coordinated-development-totebox-archives
-    to: /systems/scaling-coordinated-development-totebox-archives
+    to: /wiki/scaling-coordinated-development-totebox-archives
 
   # research/ category retired 2026-07-15 (naming-convention.md §13 Decision #13) —
   # its one real article relocated to reference/; slug unchanged, path only.
   - from: /research/preprint-notice-convention
-    to: /reference/preprint-notice-convention
+    to: /wiki/preprint-notice-convention
 
   # os-totebox.md stub retired 2026-07-18 — redundant with totebox-os.md, which already
   # claims `os-totebox` as an alias and is the complete, correctly-hedged canonical
@@ -153,7 +153,7 @@ redirects:
   # the alias resolve correctly. Path redirect kept in case any external link hit the
   # stub's URL directly.
   - from: /systems/os-totebox
-    to: /systems/totebox-os
+    to: /wiki/totebox-os
 
   # os-privategit-workbench.md retired 2026-07-30 — redundant duplicate of
   # applications/app-privategit-workbench.md (same crate, same architecture, near-
@@ -161,7 +161,7 @@ redirects:
   # crate; archived to systems/.archive/ per the newly-adopted archive-before-delete
   # convention rather than deleted outright.
   - from: /systems/os-privategit-workbench
-    to: /applications/app-privategit-workbench
+    to: /wiki/app-privategit-workbench
 
   # Batch 1 — Foundation token docs → design.pointsav.com.
   # Destination corrected 2026-07-28: the original /foundations/<slug> targets
@@ -284,156 +284,156 @@ redirects:
 
   # Substrate supersession — slm-tiered-substrate superseded by soft-slm-tiered-gateway (2026-06-09)
   - from: /substrate/slm-tiered-substrate
-    to: /substrate/soft-slm-tiered-gateway
+    to: /wiki/soft-slm-tiered-gateway
 
   # Batch A1a — Phase C category redesign, 2026-07-03: architecture/ split into
   # security/ + ai/ (proposal-documentation.md §4a). Slugs unchanged; path only.
   - from: /architecture/capability-based-security
-    to: /security/capability-based-security
+    to: /wiki/capability-based-security
 
   - from: /architecture/machine-based-auth
-    to: /security/machine-based-auth
+    to: /wiki/machine-based-auth
 
   - from: /architecture/crypto-attestation
-    to: /security/crypto-attestation
+    to: /wiki/crypto-attestation
 
   - from: /architecture/cryptographic-ledgers
-    to: /security/cryptographic-ledgers
+    to: /wiki/cryptographic-ledgers
 
   - from: /architecture/personnel-permissions
-    to: /security/personnel-permissions
+    to: /wiki/personnel-permissions
 
   - from: /architecture/diode-standard
-    to: /security/diode-standard
+    to: /wiki/diode-standard
 
   - from: /architecture/five-stage-supply-chain
-    to: /security/five-stage-supply-chain
+    to: /wiki/five-stage-supply-chain
 
   - from: /architecture/verification-surveyor
-    to: /security/verification-surveyor
+    to: /wiki/verification-surveyor
 
   - from: /architecture/sel4-capability-topology
-    to: /security/sel4-capability-topology
+    to: /wiki/sel4-capability-topology
 
   - from: /architecture/pre-commit-defense-in-depth
-    to: /security/pre-commit-defense-in-depth
+    to: /wiki/pre-commit-defense-in-depth
 
   - from: /architecture/data-sovereignty-telemetry
-    to: /security/data-sovereignty-telemetry
+    to: /wiki/data-sovereignty-telemetry
 
   - from: /architecture/identity-ledger-schema-design
-    to: /security/identity-ledger-schema-design
+    to: /wiki/identity-ledger-schema-design
 
   - from: /architecture/genesis-protocol
-    to: /security/genesis-protocol
+    to: /wiki/genesis-protocol
 
   - from: /architecture/doorman-protocol
-    to: /ai/doorman-protocol
+    to: /wiki/doorman-protocol
 
   - from: /architecture/sovereign-ai-routing
-    to: /ai/sovereign-ai-routing
+    to: /wiki/sovereign-ai-routing
 
   - from: /architecture/zero-container-inference
-    to: /ai/zero-container-inference
+    to: /wiki/zero-container-inference
 
   - from: /architecture/decode-time-constraints
-    to: /ai/decode-time-constraints
+    to: /wiki/decode-time-constraints
 
   - from: /architecture/pointsav-llm
-    to: /ai/pointsav-llm
+    to: /wiki/pointsav-llm
 
   - from: /architecture/slm-stack-architecture
-    to: /ai/slm-stack-architecture
+    to: /wiki/slm-stack-architecture
 
   - from: /architecture/learning-datagraph-architecture
-    to: /ai/learning-datagraph-architecture
+    to: /wiki/learning-datagraph-architecture
 
   - from: /architecture/elastic-compute-lora-training-pipeline
-    to: /ai/elastic-compute-lora-training-pipeline
+    to: /wiki/elastic-compute-lora-training-pipeline
 
   - from: /architecture/flow-quality-architecture
-    to: /ai/flow-quality-architecture
+    to: /wiki/flow-quality-architecture
 
   - from: /architecture/topic-tiered-entity-extraction-architecture
-    to: /ai/topic-tiered-entity-extraction-architecture
+    to: /wiki/tiered-entity-extraction-architecture
 
   # Batch A1b — Phase C category redesign, 2026-07-03: architecture/ rebalancing
   # into infrastructure/ + systems/ + substrate/ + services/ (proposal-documentation.md
   # §4a). Slugs unchanged; path only.
   - from: /architecture/ppn-architecture-overview
-    to: /infrastructure/ppn-architecture-overview
+    to: /wiki/ppn-architecture-overview
 
   - from: /architecture/ppn-command-protocol
-    to: /infrastructure/ppn-command-protocol
+    to: /wiki/ppn-command-protocol
 
   - from: /architecture/ppn-distributed-vm-fabric
-    to: /infrastructure/ppn-distributed-vm-fabric
+    to: /wiki/ppn-distributed-vm-fabric
 
   - from: /architecture/ppn-hypervisor-resource-pool
-    to: /infrastructure/ppn-hypervisor-resource-pool
+    to: /wiki/ppn-hypervisor-resource-pool
 
   - from: /architecture/ppn-mesh-architecture
-    to: /infrastructure/ppn-mesh-architecture
+    to: /wiki/ppn-mesh-architecture
 
   - from: /architecture/ppn-small-business-compute
-    to: /infrastructure/ppn-small-business-compute
+    to: /wiki/ppn-small-business-compute
 
   - from: /architecture/ppn-tenant-vm-isolation
-    to: /infrastructure/ppn-tenant-vm-isolation
+    to: /wiki/ppn-tenant-vm-isolation
 
   - from: /architecture/ppn-three-path-architecture
-    to: /infrastructure/ppn-three-path-architecture
+    to: /wiki/ppn-three-path-architecture
 
   - from: /architecture/ppn-vm-resource-pool
-    to: /infrastructure/ppn-vm-resource-pool
+    to: /wiki/ppn-vm-resource-pool
 
   - from: /architecture/spot-vm-lifecycle-kill-switch
-    to: /infrastructure/spot-vm-lifecycle-kill-switch
+    to: /wiki/spot-vm-lifecycle-kill-switch
 
   - from: /architecture/os-console-architecture
-    to: /systems/os-console-architecture
+    to: /wiki/os-console
 
   - from: /architecture/topic-os-console-totebox-browser
-    to: /systems/topic-os-console-totebox-browser
+    to: /wiki/os-console-totebox-browser
 
   - from: /architecture/os-totebox-service-pd-model
-    to: /systems/os-totebox-service-pd-model
+    to: /wiki/os-totebox-service-pd-model
 
   - from: /architecture/os-totebox-sovereign-archive
-    to: /systems/os-totebox-sovereign-archive
+    to: /wiki/os-totebox-sovereign-archive
 
   - from: /architecture/topic-sel4-unikernel-substrate
-    to: /substrate/topic-sel4-unikernel-substrate
+    to: /wiki/sel4-unikernel-substrate
 
   - from: /architecture/service-pointsav-link
-    to: /services/service-pointsav-link
+    to: /wiki/service-pointsav-link
 
   # Batch A1b collision resolutions — Phase C category redesign, 2026-07-03:
   # duplicate copies retired in favor of the specialist-category copy
   # (proposal-documentation.md §4d). Same slug in both locations; path only.
   - from: /architecture/app-orchestration-command-branch-model
-    to: /systems/app-orchestration-command-branch-model
+    to: /wiki/app-orchestration-command-branch-model
 
   - from: /architecture/app-orchestration-command-publication-flow
-    to: /systems/app-orchestration-command-publication-flow
+    to: /wiki/app-orchestration-command-publication-flow
 
   - from: /architecture/os-console-platform
-    to: /systems/os-console-platform
+    to: /wiki/os-console
 
   - from: /architecture/input-machine
-    to: /systems/input-machine
+    to: /wiki/input-machine
 
   - from: /architecture/collab-via-passthrough-relay
-    to: /patterns/collab-via-passthrough-relay
+    to: /wiki/collab-via-passthrough-relay
 
   - from: /architecture/customer-tier-catalog-pattern
-    to: /patterns/customer-tier-catalog-pattern
+    to: /wiki/customer-tier-catalog-pattern
 
   - from: /architecture/editorial-pipeline-three-stages
-    to: /services/editorial-pipeline-three-stages
+    to: /wiki/editorial-pipeline-three-stages
 
   - from: /applications/location-intelligence-ux
-    to: /patterns/location-intelligence-ux
+    to: /wiki/location-intelligence-ux
 
   # language-protocol-substrate slug-collision resolution, 2026-07-03 (editorial call,
   # see cleanup-log.md): two DIFFERENT articles shared this slug. substrate/ (platform
@@ -441,7 +441,7 @@ redirects:
   # unchanged. architecture/ (Foundry-internal draft-routing mechanism, zero inbound
   # wikilinks under this slug) renamed to editorial-draft-routing-protocol.
   - from: /architecture/language-protocol-substrate
-    to: /architecture/editorial-draft-routing-protocol
+    to: /wiki/editorial-draft-routing-protocol
 
   # Batch A1d — Phase C category redesign, 2026-07-03: topic-* prefix batch merges
   # and renames (proposal-documentation.md §4c). Four 2026-06-20 duplicates merged
@@ -450,28 +450,28 @@ redirects:
   # final category from batches A1a/A1b/A1c; two were collision merge-checks against
   # an incumbent unprefixed slug).
   - from: /architecture/topic-crypto-license-sales-architecture
-    to: /architecture/crypto-license-sales-architecture
+    to: /wiki/crypto-license-sales-architecture
 
   - from: /architecture/topic-os-console-architecture
-    to: /systems/os-console-architecture
+    to: /wiki/os-console
 
   - from: /architecture/topic-ppn-small-business-compute
-    to: /infrastructure/ppn-small-business-compute
+    to: /wiki/ppn-small-business-compute
 
   - from: /architecture/topic-software-distribution-substrate
-    to: /architecture/software-distribution-substrate
+    to: /wiki/software-distribution-substrate
 
   - from: /systems/topic-os-console-totebox-browser
-    to: /systems/os-console-totebox-browser
+    to: /wiki/os-console-totebox-browser
 
   - from: /architecture/topic-three-binary-architecture
-    to: /architecture/three-binary-architecture
+    to: /wiki/three-binary-architecture
 
   - from: /substrate/topic-sel4-unikernel-substrate
-    to: /substrate/sel4-unikernel-substrate
+    to: /wiki/sel4-unikernel-substrate
 
   - from: /ai/topic-tiered-entity-extraction-architecture
-    to: /ai/tiered-entity-extraction-architecture
+    to: /wiki/tiered-entity-extraction-architecture
 
   # Merge-check: topic-capability-geometry (architecture/) was the same subject as the
   # pre-existing substrate/capability-geometry (already the target of ~8 corpus-wide
@@ -480,13 +480,13 @@ redirects:
   # the stale draft content at substrate/capability-geometry; schema corrected to
   # foundry-doc-v1 in the same change.
   - from: /architecture/topic-capability-geometry
-    to: /substrate/capability-geometry
+    to: /wiki/capability-geometry
 
   # Merge-check: topic-private-git-paid-customer-endpoint (architecture/) was the same
   # subject as the pre-existing services/private-git-paid-customer-endpoint. One unique
   # fact (token-introspection endpoint) merged into the incumbent; topic- copy retired.
   - from: /architecture/topic-private-git-paid-customer-endpoint
-    to: /services/private-git-paid-customer-endpoint
+    to: /wiki/private-git-paid-customer-endpoint
 
   # Batch — Phase C re-categorization, CROSS-REPO move, batch D2 (2026-07-03).
   # 11 articles moved to media-knowledge-projects; 2 thin-stub duplicates retired in
@@ -507,45 +507,45 @@ redirects:
   #     the redirect entry near the end of this file.
 
   - from: /architecture/co-location-tiering-scoring
-    to: https://projects.woodfinegroup.com/site-selection/co-location-tiering-scoring
+    to: https://projects.woodfinegroup.com/wiki/co-location-tiering-scoring
 
   - from: /architecture/trade-area-methodology
-    to: https://projects.woodfinegroup.com/site-selection/trade-area-methodology
+    to: https://projects.woodfinegroup.com/wiki/trade-area-methodology
 
   - from: /architecture/development-regions
-    to: https://projects.woodfinegroup.com/rollout/development-regions
+    to: https://projects.woodfinegroup.com/wiki/development-regions
 
   - from: /architecture/spend-population-provenance
-    to: https://projects.woodfinegroup.com/gis/spend-population-provenance
+    to: https://projects.woodfinegroup.com/wiki/spend-population-provenance
 
   - from: /architecture/3d-asset-tokens
-    to: https://projects.woodfinegroup.com/building-design/3d-asset-tokens
+    to: https://projects.woodfinegroup.com/wiki/3d-asset-tokens
 
   - from: /reference/bim-aec-muscle-memory
-    to: https://projects.woodfinegroup.com/building-design/bim-aec-muscle-memory
+    to: https://projects.woodfinegroup.com/wiki/bim-aec-muscle-memory
 
   - from: /reference/bim-design-philosophy
-    to: https://projects.woodfinegroup.com/building-design/bim-design-philosophy
+    to: https://projects.woodfinegroup.com/wiki/bim-design-philosophy
 
   - from: /reference/bim-market-context
-    to: https://projects.woodfinegroup.com/building-design/bim-market-context
+    to: https://projects.woodfinegroup.com/wiki/bim-market-context
 
   - from: /reference/bim-token-taxonomy
-    to: https://projects.woodfinegroup.com/building-design/bim-token-taxonomy
+    to: https://projects.woodfinegroup.com/wiki/bim-token-taxonomy
 
   - from: /reference/bim-token-three-layers
-    to: https://projects.woodfinegroup.com/building-design/bim-token-three-layers
+    to: https://projects.woodfinegroup.com/wiki/bim-token-three-layers
 
   - from: /reference/bim-token-what-it-is
-    to: https://projects.woodfinegroup.com/building-design/bim-token-what-it-is
+    to: https://projects.woodfinegroup.com/wiki/bim-token-what-it-is
 
   # Retirements — documentation's copy was a thin stub; projects' pre-existing article
   # is canonical and more complete. Redirect to the projects article, not a new copy.
   - from: /architecture/location-intelligence-archetypes
-    to: https://projects.woodfinegroup.com/site-selection/location-intelligence-archetypes
+    to: https://projects.woodfinegroup.com/wiki/location-intelligence-archetypes
 
   - from: /reference/open-bim-regulatory-acceptance
-    to: https://projects.woodfinegroup.com/building-design/open-bim-regulatory-acceptance
+    to: https://projects.woodfinegroup.com/wiki/open-bim-regulatory-acceptance
 
   # architecture/co-location-methodology.md renamed to
   # architecture/hardware-co-location-methodology.md 2026-08-03 — disambiguates from
@@ -554,7 +554,7 @@ redirects:
   # above). `aliases: [co-location-methodology]` on the EN article also resolves
   # `[[co-location-methodology]]` wikilinks; this redirect covers direct path hits.
   - from: /architecture/co-location-methodology
-    to: /architecture/hardware-co-location-methodology
+    to: /wiki/hardware-co-location-methodology
 
   # architecture/regional-market-definition.md moved 2026-08-03 to the projects wiki —
   # cross-wiki content move (confirmed orphaned here: zero inbound wikilinks in this
@@ -562,4 +562,4 @@ redirects:
   # as its own distinct article at markets/regional-market-definition.md, cross-linked
   # with (not merged into) the pre-existing markets/about-regional-markets-system.md.
   - from: /architecture/regional-market-definition
-    to: https://projects.woodfinegroup.com/markets/regional-market-definition
+    to: https://projects.woodfinegroup.com/wiki/regional-market-definition
