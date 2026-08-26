@@ -73,6 +73,7 @@ Patterns that recur in the operator-facing chrome — the wiki, the location-int
 - [[location-intelligence-ux]] — The Conclusion-First design philosophy: ranked tier conclusions rather than individual data points, so users see the most defensible commercial nodes at national zoom before drilling into individual operators.
 - [[wikipedia-leapfrog-design]] — What the wiki engine inherits from Wikipedia, what it adds beyond it, and what the five-percent leapfrog headroom means.
 - [[federation-via-content-mounts]] — The wiki engine renders curated articles committed directly to its repository alongside content mounted from separate local directories, sharing one URL surface and search index.
+- [[aec-interface-conventions]] — BIM authoring tools across the industry share a common interface vocabulary — a spatial hierarchy, an element properties panel, a 3D viewport, and saved views — because they build on the same underlying IFC data model; the Building Design System's planned interface layer reuses this vocabulary rather than inventing a new one.
 <!-- END AUTO-GENERATED -->
 
 ## See also

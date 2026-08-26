@@ -43,6 +43,7 @@ Los nueve sustratos nombrados: cada uno designa una propiedad estructural de la 
 - [[retail-co-location-tier-methodology]] — El sistema de condiciones de cuatro niveles (Regional/Distrital/Local/Marginal) que clasifica los clústeres de co-ubicación minorista — composición, rango de captación, respaldo cívico, no solapamiento.
 - [[brief-queue-substrate]] — Cola duradera respaldada por archivos que hace viable la computación Yo-Yo de apagado inactivo sin perder datos de captura del corpus de aprendizaje.
 - [[gis-as-bim-substrate|El SIG como sustrato del BIM]] — Qué ofrece el conjunto de datos de coubicación a una tubería de composición BIM: el manifiesto de agrupaciones y sus campos enlazables, la profundidad de resolución regional, las capas de contexto cívico y las garantías de estabilidad con las que puede contar un consumidor posterior.
+- [[bim-object-specification|Especificación de Objeto BIM]] — La unidad de especificación reutilizable de elementos de construcción de la plataforma: un conjunto fijo de categorías primitivas ancladas a estándares abiertos (IFC, Uniclass, bSDD), cada una portando tres capas de información a la vez — qué es, qué exige su jurisdicción, y qué exige su clima.
 <!-- END AUTO-GENERATED -->
 
 ## El Doorman compuesto y la frontera de IA

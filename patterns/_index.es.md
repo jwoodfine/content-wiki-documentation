@@ -73,6 +73,7 @@ Patrones que se repiten en el cromo orientado al operador — el wiki, la superf
 - [[location-intelligence-ux|Experiencia de inteligencia de ubicación]] — La filosofía de diseño Conclusión Primero: conclusiones de nivel ordenadas en lugar de puntos de datos individuales, para que los usuarios vean los nodos comerciales más defendibles a zoom nacional antes de profundizar en operadores individuales.
 - [[wikipedia-leapfrog-design|Diseño de salto sobre Wikipedia]] — Qué hereda el motor wiki de Wikipedia, qué añade más allá y qué significa el margen de salto del cinco por ciento.
 - [[federation-via-content-mounts|Montajes de contenido y federación]] — El motor wiki renderiza artículos curados comprometidos directamente en su repositorio junto con contenido montado desde directorios locales separados, compartiendo una superficie de URL e índice de búsqueda.
+- [[aec-interface-conventions|Convenciones de interfaz AEC]] — Las herramientas de autoría BIM de toda la industria comparten un vocabulario de interfaz común — una jerarquía espacial, un panel de propiedades de elementos, una vista 3D y vistas guardadas — porque se construyen sobre el mismo modelo de datos IFC subyacente; la capa de interfaz planificada del Sistema de Diseño de la Construcción reutiliza ese vocabulario en lugar de inventar uno nuevo.
 <!-- END AUTO-GENERATED -->
 
 ## Véase también

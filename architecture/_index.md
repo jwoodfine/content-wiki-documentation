@@ -97,9 +97,11 @@ Architectural decisions for the location intelligence and real-property domain.
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: location-intelligence-and-domain -->
 - [[hardware-co-location-methodology]] — The methodology for ranking third-party data-center facility co-location candidates: jurisdictional fit, network transit, infrastructure compatibility, and cost, regulatory requirements first. (Not to be confused with [[retail-co-location-tier-methodology|the retail co-location tier methodology]], a different subject that shares the same term.)
 - [[flat-file-bim-leapfrog]] — The five architectural constraints — flat-file storage, open standards, Rust and Tauri, offline-first operation, and Apache 2.0 licensing — that a building's digital record is built on, and the five capabilities that follow from them rather than being added on top.
+- [[building-design-system]] — A planned coordination layer for the built environment: a canonical, machine-readable library of building-element specifications that independent BIM authoring surfaces consume by reference, the way a software design system keeps independent product teams consistent.
+- [[asset-anchored-bim-vault]] — A building's authoritative digital record structured as plain-text and standardized-binary files in a git-versioned directory, qualifying as an ISO 19650-conforming Common Data Environment that travels with the property deed.
 <!-- END AUTO-GENERATED -->
 
-Additional planned articles for the location-intelligence and BIM/real-property domain — covering regional development taxonomy and the design-system tooling that supports it — are not yet written.
+An additional planned article for the location-intelligence and BIM/real-property domain — covering regional development taxonomy — is not yet written.
 
 ## See also
 

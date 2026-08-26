@@ -98,9 +98,11 @@ Decisiones arquitectónicas para el dominio de inteligencia de ubicación e inmu
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: location-intelligence-and-domain -->
 - [[hardware-co-location-methodology]] — La metodología para clasificar candidatos de co-ubicación en instalaciones de centros de datos de terceros: idoneidad jurisdiccional, tránsito de red, compatibilidad de infraestructura y costo, con los requisitos regulatorios primero. (No debe confundirse con la [[retail-co-location-tier-methodology|metodología de niveles de co-ubicación minorista]], un tema distinto que comparte el mismo término.)
 - [[flat-file-bim-leapfrog]] — Las cinco restricciones arquitectónicas — almacenamiento en archivos planos, estándares abiertos, Rust y Tauri, funcionamiento sin conexión y licencia Apache 2.0 — sobre las que se construye el registro digital de un edificio, y las cinco capacidades que se derivan de ellas en lugar de añadirse encima.
+- [[building-design-system]] — Una capa de coordinación planificada para el entorno construido: una biblioteca canónica y legible por máquina de especificaciones de elementos de construcción que las superficies de autoría BIM independientes consumen por referencia, de la misma manera que un sistema de diseño de software mantiene consistentes a equipos de producto independientes.
+- [[asset-anchored-bim-vault]] — El registro digital autoritativo de un edificio, estructurado como archivos de texto plano y binario estandarizado en un directorio versionado con git, que califica como un Entorno de Datos Común conforme a ISO 19650 y que viaja con la escritura de la propiedad.
 <!-- END AUTO-GENERATED -->
 
-Artículos adicionales planificados para el dominio de inteligencia de ubicación y BIM/inmuebles — que cubren la taxonomía regional de desarrollo y las herramientas del sistema de diseño que la respaldan — aún no están escritos.
+Un artículo adicional planificado para el dominio de inteligencia de ubicación y BIM/inmuebles — que cubre la taxonomía regional de desarrollo — aún no está escrito.
 
 ## Véase también
 

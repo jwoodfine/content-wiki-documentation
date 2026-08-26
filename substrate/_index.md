@@ -43,6 +43,7 @@ The nine named substrates: each names a structural property the platform depends
 - [[retail-co-location-tier-methodology]] — The four-tier (Regional/District/Local/Fringe) gate system that scores retail co-location clusters — composition, catchment rank, civic support, non-overlap.
 - [[brief-queue-substrate]] — Durable file-backed queue that makes idle-shutdown Yo-Yo compute viable without losing apprenticeship corpus capture data.
 - [[gis-as-bim-substrate]] — What the co-location dataset offers a BIM composition pipeline: the cluster manifold and its joinable fields, region-resolution depth, civic context layers, and the stability guarantees a downstream consumer can rely on.
+- [[bim-object-specification]] — The platform's reusable building-element specification unit: a fixed set of primitive categories anchored to open standards (IFC, Uniclass, bSDD), each carrying three layers of information at once — what it is, what its jurisdiction requires, and what its climate requires.
 <!-- END AUTO-GENERATED -->
 
 ## The compounding Doorman and AI boundary
