@@ -10,7 +10,7 @@ quality: complete
 status: active
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-08-26
 editor: pointsav-engineering
 paired_with: glossary-documentation.md
 ---
@@ -245,7 +245,7 @@ Los datos de primera parte son información recopilada directamente de los usuar
 Proveedor de alojamiento en internet para desarrollo de software y control de versiones mediante Git. Ofrece la funcionalidad de control de versiones distribuido y gestión de código fuente (SCM) de Git, además de sus propias características.
 
 - **GitHub — PointSav**
-- **GitHub — WCP**
+- **GitHub — Woodfine**
 - **Diseño gráfico**
 
 ## H
@@ -628,11 +628,11 @@ Emulación basada en software de un ordenador físico. Tiene su propio sistema o
 <hr>
 
 - **Billetera digital**
-- **Folleto corporativo WCP o presentación para inversores WCP**
-- **Wiki corporativa WCP**
-- **Página de inicio WCP**
-- **Sala de prensa WCP**
-- **Wiki de proyectos WCP**
+- **Folleto corporativo Woodfine o presentación para inversores Woodfine**
+- **Wiki corporativa Woodfine**
+- **Página de inicio Woodfine**
+- **Sala de prensa Woodfine**
+- **Wiki de proyectos Woodfine**
 - **Web 3.0**
 - **Lo que ves es lo que obtienes (WYSIWYG)**
 - **Proceso de descubrimiento de libro blanco**

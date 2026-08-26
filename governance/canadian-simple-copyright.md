@@ -10,7 +10,7 @@ index_group: licensing-and-contribution
 short_description: "The platform's IP vests in a single Canadian parent holding company by operation of Canadian Copyright Act § 13(3), without inter-company assignment."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-25
+last_edited: 2026-08-26
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -34,8 +34,7 @@ trigger event below.
 
 ## The holder
 
-Copyright is held by **Woodfine Capital Projects Inc.** ("WCP
-Inc."), a British Columbia corporation that sits as the parent
+Copyright is held by **Woodfine Capital Projects Inc.** ("Woodfine"), a British Columbia corporation that sits as the parent
 holding entity of the PointSav trajectory.
 
 ## The statutory basis — Canadian Copyright Act § 13(3)
@@ -58,19 +57,19 @@ Three entities of differing status are operative:
 | Entity | Status | Role |
 |---|---|---|
 | Woodfine Capital Projects Inc. | Incorporated (BC); parent holding | Copyright + trademark holder for all software, documentation, content, and brand IP |
-| MCorp | Incorporated (BC); operating sub | Operations / shield-blocker; does not generate IP-derived revenue using WCP IP |
-| PointSav Digital Systems | Yet to be incorporated | Operated as a trade name of WCP Inc. pre-incorporation; eventual BC operating subsidiary |
+| MCorp | Incorporated (BC); operating sub | Operations / shield-blocker; does not generate IP-derived revenue using Woodfine IP |
+| PointSav Digital Systems | Yet to be incorporated | Operated as a trade name of Woodfine pre-incorporation; eventual BC operating subsidiary |
 
 ## Why this works without inter-company IP agreements
 
 The structure has **no inter-company IP flow** while it operates
 this way:
 
-- WCP holds IP and, through its employees, creates and uses it
+- Woodfine holds IP and, through its employees, creates and uses it
  directly.
 - MCorp is genuinely non-operating with
- respect to WCP IP.
-- "PointSav Digital Systems" is a trade name of WCP, not a
+ respect to Woodfine IP.
+- "PointSav Digital Systems" is a trade name of Woodfine, not a
  separate legal person.
 
 Canadian Copyright Act § 13(3) is sufficient for vesting. CRA
@@ -83,18 +82,18 @@ company use to document.
 The posture depends on the following disciplines being kept:
 
 - **Employee-only contributors.** Every IP-creating contributor
- is a bona fide WCP Inc. employee on T4 payroll, performing
- in-scope work under WCP direction per the [[contributor-model|contributor rules]]. Independent contractors
+ is a bona fide Woodfine employee on T4 payroll, performing
+ in-scope work under Woodfine direction per the [[contributor-model|contributor rules]]. Independent contractors
  retain copyright by default under Canadian law and would
  require separate written assignment under § 13(4). Until
  counsel-drafted contractor IP-assignment templates are in
  place, the posture admits no contractor contributions to
  in-scope work.
 - **MCorp stays non-operating** with
- respect to WCP IP. If MCorp begins using
- WCP IP to generate revenue, an inter-company licence with
+ respect to Woodfine IP. If MCorp begins using
+ Woodfine IP to generate revenue, an inter-company licence with
  arm's-length pricing documentation becomes expected.
-- **"PointSav Digital Systems" is a trade name of WCP** under
+- **"PointSav Digital Systems" is a trade name of Woodfine** under
  BC's Partnership Act until incorporation. A Declaration of
  Trade Name with the BC Registrar should be filed if the brand
  is used commercially before incorporation.
@@ -113,18 +112,18 @@ IP-assignment agreement, moral-rights waivers) become standard:
 - First hire who is not a founder or officer.
 - First contractor contribution to in-scope code, content, or
  design work.
-- First external revenue generated using WCP IP.
+- First external revenue generated using Woodfine IP.
 - Reporting-issuer status under BCSC `[ni-51-102]`.
 - PointSav Digital Systems Inc. incorporation event (handled at
  the rollover; Income Tax Act § 85 rollover transfers the IP
  estate to the new entity in a single transaction).
-- Any inter-company IP use between WCP and an operating
+- Any inter-company IP use between Woodfine and an operating
  subsidiary.
 
 ## Why this preserves equity value
 
 Holding IP at the parent enables **share-sale** transactions:
-selling WCP equity transfers the entire IP estate in one
+selling Woodfine equity transfers the entire IP estate in one
 transaction. No per-asset assignments. No Bulk Sales Act
 triggers. No customer consents required.
 

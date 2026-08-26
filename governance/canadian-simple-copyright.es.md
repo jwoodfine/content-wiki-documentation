@@ -10,7 +10,7 @@ index_group: licensing-and-contribution
 short_description: "La propiedad intelectual de la plataforma se concentra en una única sociedad holding matriz canadiense por operación del artículo 13(3) de la Ley de Derechos de Autor canadiense, sin cesión entre empresas, y está diseñada para evolucionar de forma incremental a medida que madura la estructura corporativa."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-24
+last_edited: 2026-08-26
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -31,7 +31,7 @@ asesor jurídico antes de cualquier evento disparador.
 ## El titular
 
 Los derechos de autor son del **Woodfine Capital Projects Inc.**
-("WCP Inc."), una corporación de Columbia Británica que es la
+("Woodfine"), una corporación de Columbia Británica que es la
 entidad holding matriz de la trayectoria PointSav.
 
 ## Base estatutaria — Ley canadiense de derechos de autor § 13(3)
@@ -49,8 +49,8 @@ del § 13(4).
 | Entidad | Estado | Rol |
 |---|---|---|
 | Woodfine Capital Projects Inc. | Incorporada (BC); matriz holding | Titular de derechos de autor y marca para todo el software, documentación, contenido y marca |
-| MCorp | Incorporada (BC); operativa | Operaciones; no genera ingresos derivados de PI usando PI de WCP |
-| PointSav Digital Systems | Aún no incorporada | Nombre comercial de WCP Inc. pre-incorporación |
+| MCorp | Incorporada (BC); operativa | Operaciones; no genera ingresos derivados de PI usando PI de Woodfine |
+| PointSav Digital Systems | Aún no incorporada | Nombre comercial de Woodfine pre-incorporación |
 
 ## Por qué funciona sin acuerdos inter-empresa de PI
 
@@ -65,13 +65,13 @@ hay uso inter-empresa que documentar.
 La postura depende de:
 
 - **Solo contribuyentes empleados.** Cada contribuyente que crea
- PI es empleado bona fide de WCP Inc. en nómina T4 conforme al [[contributor-model|modelo de contribución]]. Los
+ PI es empleado bona fide de Woodfine en nómina T4 conforme al [[contributor-model|modelo de contribución]]. Los
  contratistas independientes retienen los derechos de autor
  por defecto bajo la ley canadiense y requerirían cesión
  escrita bajo § 13(4).
 - **MCorp permanece no-operativa** respecto
- a la PI de WCP.
-- **"PointSav Digital Systems" es nombre comercial de WCP**
+ a la PI de Woodfine.
+- **"PointSav Digital Systems" es nombre comercial de Woodfine**
  bajo la Partnership Act de BC hasta su incorporación.
 - **Brecha de derechos morales reconocida.** Los derechos
  morales § 14.1 no pueden cederse, solo renunciarse por
@@ -83,16 +83,16 @@ La postura depende de:
 La postura se actualiza cuando ocurre cualquiera de los
 siguientes: primer empleado no-fundador / no-oficial; primera
 contribución de contratista al trabajo en alcance; primer
-ingreso externo usando PI de WCP; estado de emisor reportante
+ingreso externo usando PI de Woodfine; estado de emisor reportante
 bajo BCSC NI 51-102; incorporación de PointSav Digital Systems
 Inc. (manejada al rollover, Ley del Impuesto sobre la Renta
-§ 85); cualquier uso inter-empresa de PI entre WCP y una
+§ 85); cualquier uso inter-empresa de PI entre Woodfine y una
 subsidiaria operativa.
 
 ## Por qué preserva valor patrimonial
 
 Mantener la PI en la matriz habilita transacciones de
-**venta-de-acciones**: vender el patrimonio de WCP transfiere
+**venta-de-acciones**: vender el patrimonio de Woodfine transfiere
 el patrimonio completo de PI en una transacción. Sin cesiones
 por activo, sin disparadores de Bulk Sales Act, sin
 consentimientos de cliente. Empujar PI hacia abajo a PointSav
