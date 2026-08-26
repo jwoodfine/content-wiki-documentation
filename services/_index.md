@@ -78,6 +78,8 @@ Services built for specific platform capabilities.
 - [[private-git-paid-customer-endpoint]] — The binary release server behind software.pointsav.com: verifies Ed25519 license tokens and streams compiled binaries, holding no payment records or signing keys.
 - [[service-pointsav-link]] — A named but unbuilt design concept for a fleet-connecting adapter; no corresponding package exists in the monorepo today.
 - [[service-vm-fleet]] — The placement and registry service for the PPN VM resource pool: two-pass placement algorithm and heartbeat-driven node state.
+- [[poi-data-schema]] — The record structures for location data ingested from OpenStreetMap and Overture Maps Foundation, normalised into a unified JSONL schema before cluster analysis.
+- [[regional-name-resolution-architecture]] — The layered offline reverse-geocoding engine that turns a cluster's coordinates into a human-readable regional name, with no external API calls.
 - [[service-vm-tenant]] — The customer-facing tenant proxy for the PPN VM resource pool: authentication, namespace isolation, quota enforcement, and an immutable audit trail.
 <!-- END AUTO-GENERATED -->
 

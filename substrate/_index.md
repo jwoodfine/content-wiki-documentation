@@ -42,6 +42,7 @@ The nine named substrates: each names a structural property the platform depends
 - [[location-intelligence-substrate]] — Flat-file open-GIS architecture: Apache-licensed open data, Rust-aligned rendering stack, retail co-location analysis as the first deployed surface.
 - [[retail-co-location-tier-methodology]] — The four-tier (Regional/District/Local/Fringe) gate system that scores retail co-location clusters — composition, catchment rank, civic support, non-overlap.
 - [[brief-queue-substrate]] — Durable file-backed queue that makes idle-shutdown Yo-Yo compute viable without losing apprenticeship corpus capture data.
+- [[gis-as-bim-substrate]] — What the co-location dataset offers a BIM composition pipeline: the cluster manifold and its joinable fields, region-resolution depth, civic context layers, and the stability guarantees a downstream consumer can rely on.
 <!-- END AUTO-GENERATED -->
 
 ## The compounding Doorman and AI boundary

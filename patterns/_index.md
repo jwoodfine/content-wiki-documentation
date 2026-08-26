@@ -31,7 +31,7 @@ Patterns in this collection sit on top of the [[compounding-substrate]] and the 
 
 The structural commitments that define what a PointSav deployment is and is not.
 
-<!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: sovereignty-and-infrastructure -->
+<!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: sovereignty-and-infrastructure-patterns -->
 - [[source-of-truth-inversion]] — Designates one layer as canonical (signed, committed), a second as a deterministically rebuilt view, and a third as session-ephemeral; eliminates entire classes of sync and data-loss bugs.
 - [[pairing-as-permission]] — The Object Capability access-control principle — a cryptographic pairing is the permission, its absence means no pathway — as embodied in the platform's machine-based node admission.
 - [[zero-container-runtime]] — Every deployment runs as a Linux binary under systemd on a plain VM or bare-metal host; no container runtime, no container orchestrator, no managed-runtime platform.
@@ -39,6 +39,7 @@ The structural commitments that define what a PointSav deployment is and is not.
 - [[customer-first-ordering]] — A software vendor building something a customer will install should build it in the same order the customer will install it, on the same substrate the customer will use.
 - [[customer-hostability]] — The architectural commitment that every artefact runs on the customer's own hardware, against the customer's own keys, with the customer's own audit ledger.
 - [[totebox-archives-as-the-asset]] — Why a Totebox Archive is a self-contained, freely transferable data unit rather than a database record owned by the platform that created it.
+- [[city-code-as-composable-geometry]] — A composition-first pattern that encodes regulatory requirements into element specifications as geometric and numeric constraints rather than applying them post-design, so a non-compliant configuration cannot be placed in the first place.
 <!-- END AUTO-GENERATED -->
 
 ## Deployment and configuration

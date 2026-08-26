@@ -31,7 +31,7 @@ Los patrones de esta colección se sitúan sobre el [[compounding-substrate|sust
 
 Los compromisos estructurales que definen qué es y qué no es un despliegue de PointSav.
 
-<!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: sovereignty-and-infrastructure -->
+<!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: sovereignty-and-infrastructure-patterns -->
 - [[source-of-truth-inversion|Inversión de la fuente de verdad]] — Designa una capa como canónica (firmada, confirmada), una segunda como vista reconstruida de forma determinista, y una tercera como efímera de sesión; elimina clases enteras de errores de sincronización y pérdida de datos.
 - [[pairing-as-permission|Emparejamiento-como-permiso]] — El principio de control de acceso por Capacidades de Objeto — un emparejamiento criptográfico es el permiso, su ausencia hace inexistente el camino — tal como se manifiesta en la admisión de nodos basada en máquinas de la plataforma.
 - [[zero-container-runtime|Runtime sin contenedores]] — Cada despliegue se ejecuta como un binario Linux bajo systemd en una máquina virtual o host bare-metal estándar; sin entorno de ejecución de contenedores, sin orquestador de contenedores, sin plataforma de tiempo de ejecución gestionada.
@@ -39,6 +39,7 @@ Los compromisos estructurales que definen qué es y qué no es un despliegue de 
 - [[customer-first-ordering|Orden cliente-primero]] — Un proveedor de software que construye algo que un cliente instalará debe construirlo en el mismo orden en que el cliente lo instalará, sobre el mismo sustrato que el cliente utilizará.
 - [[customer-hostability|Alojabilidad por el cliente]] — El compromiso arquitectónico de que cada artefacto se ejecute en el propio hardware del cliente, contra las propias claves del cliente, con el propio libro de auditoría del cliente.
 - [[totebox-archives-as-the-asset|Los Archivos Totebox como el activo]] — Por qué un Archivo Totebox es una unidad de datos autónoma y libremente transferible, en lugar de un registro de base de datos propiedad de la plataforma que lo creó.
+- [[city-code-as-composable-geometry|El código urbanístico como geometría componible]] — Un patrón de composición previa que codifica los requisitos normativos en las especificaciones de los elementos como restricciones geométricas y numéricas, en lugar de aplicarlos después del diseño, de modo que una configuración no conforme no llega a poder colocarse.
 <!-- END AUTO-GENERATED -->
 
 ## Despliegue y configuración

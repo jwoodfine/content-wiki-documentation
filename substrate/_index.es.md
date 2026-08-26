@@ -42,6 +42,7 @@ Los nueve sustratos nombrados: cada uno designa una propiedad estructural de la 
 - [[location-intelligence-substrate]] — Arquitectura GIS abierta de archivos planos: datos abiertos con licencia Apache, stack de renderizado alineado con Rust, análisis de co-ubicación minorista como primera superficie desplegada.
 - [[retail-co-location-tier-methodology]] — El sistema de condiciones de cuatro niveles (Regional/Distrital/Local/Marginal) que clasifica los clústeres de co-ubicación minorista — composición, rango de captación, respaldo cívico, no solapamiento.
 - [[brief-queue-substrate]] — Cola duradera respaldada por archivos que hace viable la computación Yo-Yo de apagado inactivo sin perder datos de captura del corpus de aprendizaje.
+- [[gis-as-bim-substrate|El SIG como sustrato del BIM]] — Qué ofrece el conjunto de datos de coubicación a una tubería de composición BIM: el manifiesto de agrupaciones y sus campos enlazables, la profundidad de resolución regional, las capas de contexto cívico y las garantías de estabilidad con las que puede contar un consumidor posterior.
 <!-- END AUTO-GENERATED -->
 
 ## El Doorman compuesto y la frontera de IA

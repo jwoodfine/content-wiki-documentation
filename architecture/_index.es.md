@@ -97,9 +97,10 @@ Decisiones arquitectónicas para el dominio de inteligencia de ubicación e inmu
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: location-intelligence-and-domain -->
 - [[hardware-co-location-methodology]] — La metodología para clasificar candidatos de co-ubicación en instalaciones de centros de datos de terceros: idoneidad jurisdiccional, tránsito de red, compatibilidad de infraestructura y costo, con los requisitos regulatorios primero. (No debe confundirse con la [[retail-co-location-tier-methodology|metodología de niveles de co-ubicación minorista]], un tema distinto que comparte el mismo término.)
+- [[flat-file-bim-leapfrog]] — Las cinco restricciones arquitectónicas — almacenamiento en archivos planos, estándares abiertos, Rust y Tauri, funcionamiento sin conexión y licencia Apache 2.0 — sobre las que se construye el registro digital de un edificio, y las cinco capacidades que se derivan de ellas en lugar de añadirse encima.
 <!-- END AUTO-GENERATED -->
 
-Artículos adicionales planificados para el dominio de inteligencia de ubicación y BIM/inmuebles — que cubren el enfoque BIM de archivos planos, la taxonomía regional de desarrollo y las herramientas del sistema de diseño que los respaldan — aún no están escritos.
+Artículos adicionales planificados para el dominio de inteligencia de ubicación y BIM/inmuebles — que cubren la taxonomía regional de desarrollo y las herramientas del sistema de diseño que la respaldan — aún no están escritos.
 
 ## Véase también
 

@@ -80,6 +80,8 @@ Servicios construidos para capacidades específicas de la plataforma.
 - [[service-pointsav-link]] — Un concepto de diseño nombrado pero no construido para un adaptador de conexión a flota; no existe ningún paquete correspondiente en el monorepo hoy.
 - [[service-vm-fleet]] — El servicio de colocación y registro del pool de recursos VM de la PPN: algoritmo de colocación de dos pasadas y estado de nodos impulsado por heartbeats.
 - [[service-vm-tenant]] — El proxy de inquilino orientado al cliente del pool de recursos VM de la PPN: autenticación, aislamiento de espacio de nombres, aplicación de cuotas y una pista de auditoría inmutable.
+- [[poi-data-schema|Esquema de datos de puntos de interés]] — Las estructuras de registro de los datos de localización ingeridos de OpenStreetMap y de Overture Maps Foundation, normalizadas en un esquema JSONL unificado antes del análisis de agrupaciones.
+- [[regional-name-resolution-architecture|Arquitectura de resolución de nombres regionales]] — El motor de geocodificación inversa por capas y sin conexión que convierte las coordenadas de una agrupación en un nombre regional legible, sin ninguna llamada a API externa.
 <!-- END AUTO-GENERATED -->
 
 ## Véase también
