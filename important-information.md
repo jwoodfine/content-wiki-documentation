@@ -1,7 +1,8 @@
 # Important Information
 
-**Corporate structure.** PointSav Digital Systems ("PointSav") is a trade name of Woodfine
-Capital Projects Inc. ("Woodfine"). PointSav does not itself offer, sell, or solicit any
+**Corporate structure.** PointSav Digital Systems ("PointSav") is currently a trade name of
+Woodfine Capital Projects Inc. ("Woodfine"), planned to become a wholly-owned Woodfine
+subsidiary upon incorporation. PointSav does not itself offer, sell, or solicit any
 security. Any securities offering associated with Woodfine's real-property direct-hold
 solutions is made exclusively by Woodfine, and only by means of the applicable Private
 Placement Memorandum.

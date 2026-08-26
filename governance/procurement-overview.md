@@ -10,7 +10,7 @@ index_group: institutional-due-diligence
 short_description: "What a regulated buyer acquires deploying PointSav: hardware the customer owns outright, data the vendor never holds, and compliance enforced by architecture."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-24
+last_edited: 2026-08-26
 editor: pointsav-engineering
 cites:
  - ni-51-102
@@ -76,7 +76,7 @@ Customers in other regulated environments should evaluate the platform's structu
 
 ## Vendor structure
 
-PointSav Digital Systems is the software vendor and is wholly owned by Woodfine Capital Projects Inc. The customer-facing deployment catalog is maintained by MCorp, also wholly owned by Woodfine Capital Projects Inc.
+PointSav Digital Systems is the software vendor and is currently a trade name of Woodfine Capital Projects Inc., planned to become a wholly-owned Woodfine subsidiary upon incorporation. The customer-facing deployment catalog is maintained by MCorp, a wholly-owned Woodfine subsidiary.
 
 The vendor runs `documentation.pointsav.com` because PointSav is the canonical-tier customer of every package it ships. Customer-hosted deployment is the canonical pattern; vendor hosting is a convenience option.
 

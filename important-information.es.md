@@ -1,10 +1,11 @@
 # Información Importante
 
-**Estructura corporativa.** PointSav Digital Systems ("PointSav") es un nombre comercial de
-Woodfine Capital Projects Inc. ("Woodfine"). PointSav no ofrece, vende ni solicita por sí
-mismo valor alguno. Toda oferta de valores asociada a las soluciones inmobiliarias de
-tenencia directa de Woodfine se realiza exclusivamente por parte de Woodfine, y únicamente
-por medio del Memorando de Colocación Privada aplicable.
+**Estructura corporativa.** PointSav Digital Systems ("PointSav") es actualmente un nombre
+comercial de Woodfine Capital Projects Inc. ("Woodfine"), con previsión de convertirse en
+una subsidiaria de propiedad absoluta de Woodfine tras su incorporación. PointSav no
+ofrece, vende ni solicita por sí mismo valor alguno. Toda oferta de valores asociada a las
+soluciones inmobiliarias de tenencia directa de Woodfine se realiza exclusivamente por
+parte de Woodfine, y únicamente por medio del Memorando de Colocación Privada aplicable.
 
 **Sin asesoramiento de inversión.** El contenido de este wiki se ofrece con fines de
 ingeniería, operativos, de investigación y de desarrollo. Nada de lo que figura en este wiki

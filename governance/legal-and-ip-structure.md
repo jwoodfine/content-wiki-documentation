@@ -12,7 +12,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-24
+last_edited: 2026-08-26
 editor: pointsav-engineering
 paired_with: legal-and-ip-structure.es.md
 cites:
@@ -28,8 +28,8 @@ PointSav exists inside a deliberate three-corporation topology:
 
 | Entity | Type | Role |
 |---|---|---|
-| Woodfine Capital Projects Inc. | Parent | 100% owner of both subsidiaries; real-property operating company |
-| PointSav Digital Systems | Subsidiary (vendor) | IP holder; designs and builds the technology |
+| Woodfine Capital Projects Inc. | Parent | Owner of MCorp; PointSav currently operates as its trade name, planned to become a Woodfine subsidiary upon incorporation; real-property operating company |
+| PointSav Digital Systems | Trade name (vendor); planned subsidiary upon incorporation | IP holder; designs and builds the technology |
 | MCorp | Subsidiary (customer) | Operates real-property assets; PointSav's first and reference customer |
 
 The intercompany flow is unidirectional: vendor builds → customer adopts → customer deploys. PointSav never receives the customer's operational records; the customer never edits vendor source.

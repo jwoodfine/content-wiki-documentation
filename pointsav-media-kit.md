@@ -4,7 +4,7 @@ title: "PointSav media kit"
 slug: pointsav-media-kit
 category: governance
 status: active
-last_edited: 2026-07-11
+last_edited: 2026-08-26
 editor: pointsav-engineering
 ---
 
@@ -14,7 +14,7 @@ PointSav Digital Systems builds operating systems and services for regulated bus
 that need to own their data, their AI, and their record-keeping outright. The platform
 runs on customer hardware and produces continuous-disclosure-grade audit trails.
 
-PointSav is a wholly-owned subsidiary of Woodfine Capital Projects Inc.
+PointSav is currently a trade name of Woodfine Capital Projects Inc., planned to become a wholly-owned Woodfine subsidiary upon incorporation.
 
 ## Brand and Wordmarks
 

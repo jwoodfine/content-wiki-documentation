@@ -9,12 +9,12 @@ quality: complete
 short_description: "Información de contacto de PointSav Digital Systems y Woodfine Capital Projects Inc."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-29
+last_edited: 2026-08-26
 editor: pointsav-engineering
 paired_with: contact.md
 ---
 
-PointSav Digital Systems es una filial de propiedad total de Woodfine Capital Projects Inc.
+PointSav Digital Systems es actualmente un nombre comercial de Woodfine Capital Projects Inc., con previsión de convertirse en una subsidiaria de propiedad absoluta de Woodfine tras su incorporación.
 
 ## Consultas generales
 

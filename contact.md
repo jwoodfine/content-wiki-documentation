@@ -9,11 +9,11 @@ quality: complete
 short_description: "Contact information for PointSav Digital Systems and Woodfine Capital Projects Inc."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-05-27
+last_edited: 2026-08-26
 editor: pointsav-engineering
 ---
 
-PointSav Digital Systems is a wholly-owned subsidiary of Woodfine Capital Projects Inc.
+PointSav Digital Systems is currently a trade name of Woodfine Capital Projects Inc., planned to become a wholly-owned Woodfine subsidiary upon incorporation.
 
 ## General inquiries
 

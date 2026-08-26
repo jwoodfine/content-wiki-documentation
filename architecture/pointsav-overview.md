@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-24
+last_edited: 2026-08-26
 editor: pointsav-engineering
 paired_with: pointsav-overview.es.md
 short_description: "PointSav Digital Systems is a technology vendor building sovereign, on-premise-capable operating systems for record-keeping, within a three-organisation structure."
@@ -25,7 +25,7 @@ PointSav Digital Systems is a technology vendor that builds and licenses soverei
 | Organisation | Role | Relationship |
 |---|---|---|
 | **Woodfine Capital Projects Inc.** | 100% parent | Real-estate firm; owns both subsidiaries outright |
-| **PointSav Digital Systems** | Vendor | IP holder; designs and builds the technology platform |
+| **PointSav Digital Systems** | Vendor | Designs and builds the technology platform; IP currently vests in Woodfine, planned to transfer to PointSav upon incorporation |
 | **MCorp** | Customer | First and reference customer; operates real-property assets |
 
 The relationship flow is strictly one-directional: the vendor builds, the customer adopts, deployments run. There are no reverse writes — the customer never edits vendor source, and the vendor never manages customer records.
@@ -34,7 +34,7 @@ The relationship flow is strictly one-directional: the vendor builds, the custom
 
 Three structural advantages emerge from the separation:
 
-**Clean IP custody.** PointSav holds the intellectual property. MCorp licenses the product like any other customer. There is no commingling of corporate records and source code.
+**Clean IP custody.** Intellectual property currently vests in Woodfine by operation of Canadian copyright law, and is planned to transfer to PointSav upon its incorporation. MCorp licenses the product like any other customer. There is no commingling of corporate records and source code.
 
 **Reference deployment.** Because MCorp is a real operator — not a test environment — every product feature must survive contact with actual business operations before it can be sold elsewhere. The reference customer is the quality gate.
 

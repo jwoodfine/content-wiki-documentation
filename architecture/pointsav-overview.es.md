@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-24
+last_edited: 2026-08-26
 editor: pointsav-engineering
 paired_with: pointsav-overview.md
 short_description: "PointSav Digital Systems es un proveedor de tecnología que construye sistemas operativos soberanos y con capacidad de instalación local para gestión de registros y administración empresarial. Se encuentra dentro de una estructura de tres organizaciones establecida por Woodfine Capital Projects Inc."
@@ -25,7 +25,7 @@ PointSav Digital Systems es un proveedor de tecnología que construye y licencia
 | Organización | Rol | Relación |
 |---|---|---|
 | **Woodfine Capital Projects Inc.** | Matriz al 100% | Firma inmobiliaria; posee ambas subsidiarias íntegramente |
-| **PointSav Digital Systems** | Proveedor | Titular de PI; diseña y construye la plataforma tecnológica |
+| **PointSav Digital Systems** | Proveedor | Diseña y construye la plataforma tecnológica; la PI reside actualmente en Woodfine, con previsión de transferirse a PointSav tras su incorporación |
 | **MCorp** | Cliente | Primer cliente y cliente de referencia; opera activos inmobiliarios |
 
 El flujo de relaciones es estrictamente unidireccional: el proveedor construye, el cliente adopta, los despliegues funcionan. No hay escrituras inversas — el cliente nunca edita el código fuente del proveedor, y el proveedor nunca gestiona los registros del cliente.
@@ -34,7 +34,7 @@ El flujo de relaciones es estrictamente unidireccional: el proveedor construye, 
 
 Tres ventajas estructurales emergen de la separación:
 
-**Custodia limpia de PI.** PointSav posee la propiedad intelectual. MCorp licencia el producto como cualquier otro cliente. No hay mezcla de registros corporativos y código fuente.
+**Custodia limpia de PI.** La propiedad intelectual reside actualmente en Woodfine por operación de la ley canadiense de derechos de autor, con previsión de transferirse a PointSav tras su incorporación. MCorp licencia el producto como cualquier otro cliente. No hay mezcla de registros corporativos y código fuente.
 
 **Despliegue de referencia.** Dado que MCorp es un operador real — no un entorno de prueba — cada función del producto debe sobrevivir el contacto con operaciones empresariales reales antes de poder venderse en otro lugar. El cliente de referencia es la puerta de calidad.
 

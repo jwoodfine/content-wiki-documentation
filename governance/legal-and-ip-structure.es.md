@@ -12,7 +12,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-24
+last_edited: 2026-08-26
 editor: pointsav-engineering
 paired_with: legal-and-ip-structure.md
 cites:
@@ -28,8 +28,8 @@ PointSav existe dentro de una topología deliberada de tres corporaciones:
 
 | Entidad | Tipo | Función |
 |---|---|---|
-| Woodfine Capital Projects Inc. | Matriz | Propietaria al 100% de ambas subsidiarias; empresa operadora de activos inmobiliarios |
-| PointSav Digital Systems | Subsidiaria (proveedor) | Titular de la propiedad intelectual; diseña y construye la tecnología |
+| Woodfine Capital Projects Inc. | Matriz | Propietaria de MCorp; PointSav opera actualmente como su nombre comercial, con previsión de convertirse en subsidiaria de Woodfine tras su incorporación; empresa operadora de activos inmobiliarios |
+| PointSav Digital Systems | Nombre comercial (proveedor); subsidiaria prevista tras la incorporación | Titular de la propiedad intelectual; diseña y construye la tecnología |
 | MCorp | Subsidiaria (cliente) | Opera activos inmobiliarios; primer cliente de referencia de PointSav |
 
 El flujo interempresarial es unidireccional: el proveedor construye → el cliente adopta → el cliente despliega. PointSav nunca recibe los registros operativos del cliente; el cliente nunca edita el código fuente del proveedor.
