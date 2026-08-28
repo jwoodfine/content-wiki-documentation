@@ -42,9 +42,15 @@ Un Totebox Archive almacena datos como archivos planos inmutables:
 
 GeoParquet no es uno de los formatos de almacenamiento propios del archivo — es el formato en el que Overture Maps Foundation publica su conjunto de datos externo abierto, ingerido por separado para análisis GIS.
 
-Cada escritura añade datos; ningún registro se modifica ni elimina jamás. Este es un libro mayor de Escritura Única, Lectura Múltiple (WORM). El archivo acumula un historial completo e inalterable de cada entrada registrada. No existe operación `DELETE` ni operación `UPDATE` — solo anexado. Una entrada que debe ser reemplazada es seguida por una entrada de corrección; la entrada original permanece permanentemente visible en el registro.
+Cada escritura añade datos; ningún registro se modifica jamás. Este es un libro mayor de Escritura Única, Lectura Múltiple (WORM). El archivo acumula un historial completo e inalterable de cada entrada registrada. No existe operación `UPDATE` — solo anexado. Una entrada que debe ser reemplazada es seguida por una entrada de corrección; la entrada original permanece permanentemente visible en el registro.
 
-Este diseño es intencional: el archivo es un registro de calidad legal de lo que una entidad sabía y cuándo lo sabía. La garantía de inmutabilidad es estructural, no una opción de configuración.
+Este diseño es intencional: el archivo es un registro de calidad legal de lo que una entidad sabía y cuándo lo sabía. La garantía de inmutabilidad es estructural, no una opción de configuración, durante el período de retención aplicable a cada registro.
+
+### Retención y disposición
+
+Cada registro lleva su propia clase de retención — una propiedad incorporada en el momento de su creación, nunca una marca modificable — establecida ya sea con una duración acotada (que coincide con el piso de retención del régimen que lo gobierna: seis años bajo FINRA, cinco años bajo MiFID II, y así sucesivamente) o como permanente/sin vencimiento (que coincide con un régimen regulatorio sin vía de disposición, como una designación de registro permanente de NARA). Mientras un registro se encuentra dentro de su ventana de retención, es totalmente de escritura única: sin actualización, sin eliminación, exactamente como se describe arriba.
+
+Una vez que la ventana de retención de un registro expira, este se vuelve elegible para su eliminación — nunca de forma automática. La eliminación es siempre una acción deliberada, autorizada individualmente y registrada, y queda completamente bloqueada mientras exista una retención legal (legal hold) activa sobre el registro, sin importar el estado de la ventana de retención. Esto refleja la práctica estándar de gestión de registros: un período de retención es un mínimo obligatorio, no un mandato de conservación perpetua, y la disposición posterior a ese mínimo es el resultado normal y esperado — no un debilitamiento de la garantía WORM, que permanece absoluta para cada registro durante todo su período de retención obligatorio.
 
 ## Modelo de acceso: solo consultas con puerta de Diodo
 

@@ -41,9 +41,15 @@ A Totebox Archive stores data as immutable flat files:
 
 GeoParquet is not one of the archive's own storage formats — it's the format Overture Maps Foundation publishes its open external dataset in, ingested separately for GIS analysis.
 
-Every write appends; no record is ever modified or deleted. This is a Write Once, Read Many (WORM) ledger. The archive accumulates a complete, tamper-evident history of every entry ever recorded. There is no `DELETE` operation and no `UPDATE` operation — only append. An entry that must be superseded is followed by a correction entry; the original entry remains permanently visible in the log.
+Every write appends; no record is ever modified. This is a Write Once, Read Many (WORM) ledger. The archive accumulates a complete, tamper-evident history of every entry ever recorded. There is no `UPDATE` operation — only append. An entry that must be superseded is followed by a correction entry; the original entry remains permanently visible in the log.
 
-This design is intentional: the archive is a legal-grade record of what an entity knew and when it knew it. The immutability guarantee is structural, not a configuration option.
+This design is intentional: the archive is a legal-grade record of what an entity knew and when it knew it. The immutability guarantee is structural, not a configuration option, for the duration of a record's applicable retention period.
+
+### Retention and disposal
+
+Every record carries its own retention class — a create-time, embedded property, never a mutable flag — set either to a bounded duration (matching the retention floor of whatever regime governs it: six years under FINRA, five years under MiFID II, and so on) or to permanent/no-expiry (matching a governing regime with no disposal path, such as a NARA permanent-record designation). While a record is within its retention window, it is fully write-once: no update, no deletion, exactly as above.
+
+Once a record's retention window elapses, it becomes eligible for deletion — never automatically. Deletion is always a deliberate, individually authorized, logged action, and is blocked entirely while a legal hold is active on the record, regardless of retention-window status. This mirrors standard records-management practice: a retention period is a required minimum, not a mandate to retain forever, and disposal after that minimum is the normal, expected outcome — not a weakening of the WORM guarantee, which remains absolute for every record throughout its mandatory retention period.
 
 ## Access model: Diode-gated queries only
 
