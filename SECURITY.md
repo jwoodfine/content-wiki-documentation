@@ -1,4 +1,14 @@
-# PointSav and Woodfine Security Policy
+---
+schema: foundry-doc-v1
+content_type: topic
+title: "Security Policy"
+slug: security
+category: root
+short_description: "How Woodfine, PointSav, and MCorp receive, triage, and disclose security vulnerabilities in Woodfine-managed software and services."
+status: active
+last_edited: 2026-08-27
+editor: pointsav-engineering
+---
 
 Version 1.0 — Effective 2026-04-20
 Copyright (c) 2026 Woodfine Capital Projects Inc. All rights reserved.

@@ -1,4 +1,17 @@
-# Información Importante
+---
+schema: foundry-doc-v1
+content_type: topic
+title: "Información Importante"
+slug: important-information
+category: root
+short_description: "Avisos legales que rigen este wiki: la estructura corporativa de PointSav, las cláusulas de exención de asesoramiento de inversión y de garantía, los derechos de propiedad intelectual, y la postura sobre declaraciones prospectivas."
+status: active
+bcsc_class: public-disclosure-safe
+language_protocol: TRANSLATE-ES
+last_edited: 2026-08-27
+editor: pointsav-engineering
+paired_with: important-information.md
+---
 
 **Estructura corporativa.** PointSav Digital Systems ("PointSav") es actualmente un nombre
 comercial de Woodfine Capital Projects Inc. ("Woodfine"), con previsión de convertirse en

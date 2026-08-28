@@ -1,4 +1,16 @@
-# Important Information
+---
+schema: foundry-doc-v1
+content_type: topic
+title: "Important Information"
+slug: important-information
+category: root
+short_description: "Legal notices governing this wiki: PointSav's corporate structure, the no-investment-advice and no-warranty disclaimers, intellectual-property rights, and the forward-looking-statement posture."
+status: active
+bcsc_class: public-disclosure-safe
+last_edited: 2026-08-27
+editor: pointsav-engineering
+paired_with: important-information.es.md
+---
 
 **Corporate structure.** PointSav Digital Systems ("PointSav") is currently a trade name of
 Woodfine Capital Projects Inc. ("Woodfine"), planned to become a wholly-owned Woodfine

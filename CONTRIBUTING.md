@@ -1,4 +1,14 @@
-# Contributing
+---
+schema: foundry-doc-v1
+content_type: topic
+title: "Contributing"
+slug: contributing
+category: root
+short_description: "How to contribute to repositories managed through factory-release-engineering — code of conduct, issue filing, CLA requirements, and the pull-request process."
+status: active
+last_edited: 2026-08-27
+editor: pointsav-engineering
+---
 
 Version 1.0 — Effective 2026-04-20
 Copyright (c) 2026 Woodfine Capital Projects Inc.
