@@ -73,6 +73,17 @@ Superficies dedicadas a un dominio operativo específico — Modelado de Informa
 
 Artículos adicionales planificados para este dominio — herramientas del sistema de diseño para BIM, convenciones de interfaz AEC y la brecha entre las herramientas de autoría BIM y los flujos de trabajo del gestor inmobiliario — aún no están escritos.
 
+## Herramientas financieras y de construcción
+
+Una familia de herramientas de libro contable bajo control del propietario que comparten un mismo diseño de partida doble: contabilidad, control de costo/cronograma/calidad de construcción y (propuesta) nómina. Las tres están en etapa temprana — una tiene código real y verificado; las otras dos van desde andamiaje vacío hasta completamente sin construir.
+
+<!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: financial-and-construction-tools -->
+- [[financial-and-construction-tools-overview|financial-and-construction-tools-overview]] — Cómo se relacionan las tres herramientas como una sola familia de productos: el diseño compartido de partida doble, las alimentaciones de datos unidireccionales entre ellas y el límite compartido de arquitectura gratuita/pagada.
+- [[tool-accounting|tool-accounting]] — Un libro contable de partida doble, de archivos planos y bajo control del propietario, que produce estados financieros listos para auditoría; el más avanzado de los tres, con código real verificado contra datos históricos reales.
+- [[tool-construction|tool-construction]] — Un libro contable de archivos planos, bajo control del propietario, para el costo, cronograma y control de calidad de la construcción; con el andamiaje compilando pero sin lógica de canalización escrita todavía.
+- [[tool-payroll|tool-payroll]] — Un motor propuesto de nómina y remesas estatutarias, sensible a la jurisdicción; 100% de diseño hoy, sin código escrito.
+<!-- END AUTO-GENERATED -->
+
 ## Véase también
 
 - [Servicios](/services/) — la capa de servicios sobre la que construyen las aplicaciones

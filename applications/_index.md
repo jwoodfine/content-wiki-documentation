@@ -72,6 +72,17 @@ Surfaces dedicated to a specific operational domain — Building Information Mod
 
 Additional planned articles for this domain — design-system tooling for BIM, AEC interface conventions, and the gap between BIM authoring tools and property-manager workflows — are not yet written.
 
+## Financial and construction tools
+
+A family of owner-held ledger tools sharing one double-entry design: accounting, construction cost/schedule/quality control, and (proposed) payroll. All three are early-stage — one has real, verified code; the other two range from scaffolded-but-empty to fully unbuilt.
+
+<!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: financial-and-construction-tools -->
+- [[financial-and-construction-tools-overview]] — How the three tools relate as one product family: the shared double-entry design, the one-way data feeds between them, and the shared free/paid architecture boundary.
+- [[tool-accounting]] — A flat-file, owner-held double-entry ledger producing audit-ready financial statements; the furthest along of the three, with real code verified against real historical data.
+- [[tool-construction]] — A flat-file, owner-held ledger for construction cost, schedule, and quality control; crates scaffolded and compiling, no pipeline logic written yet.
+- [[tool-payroll]] — A proposed jurisdiction-aware payroll and statutory-remittance engine; 100% design today, no code written.
+<!-- END AUTO-GENERATED -->
+
 ## See also
 
 - [Services](/services/) — the service layer that applications build on
