@@ -101,7 +101,7 @@ The prefix `cluster-` indicates a VM instance managed by the PPN hypervisor laye
 | `os-orchestration` | A stateless multi-archive aggregator designed to fan queries across many archives; paid tier |
 | `os-infrastructure` | The Type I hypervisor that hosts archive VMs and manages the per-node resource pool |
 
-`os-totebox` and `os-console` are Apache 2.0 — free. `os-orchestration` introduces the commercial boundary: querying a single archive directly via `os-console` is free; routing queries across multiple archives through `os-orchestration` is the paid tier.
+`os-console` is AGPL-3.0-or-later and `os-totebox` is FSL-1.1-ALv2 (converting to Apache-2.0 two years after each release) — both free to use. `os-orchestration` introduces the commercial boundary: querying a single archive directly via `os-console` is free; routing queries across multiple archives through `os-orchestration` is the paid tier.
 
 ## What a Totebox Archive is not
 

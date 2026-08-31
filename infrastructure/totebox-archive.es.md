@@ -102,7 +102,7 @@ El prefijo `cluster-` indica una instancia de VM gestionada por la capa de hiper
 | `os-orchestration` | Un agregador sin estado de múltiples archivos diseñado para distribuir consultas a través de muchos archivos; nivel de pago |
 | `os-infrastructure` | El hipervisor Tipo I que aloja VMs de archivo y gestiona el pool de recursos por nodo |
 
-`os-totebox` y `os-console` son Apache 2.0 — gratuitos. `os-orchestration` introduce el límite comercial: consultar un único archivo directamente a través de `os-console` es gratuito; enrutar consultas a través de múltiples archivos mediante `os-orchestration` es el nivel de pago.
+`os-console` es AGPL-3.0-or-later y `os-totebox` es FSL-1.1-ALv2 (convirtiéndose a Apache-2.0 dos años después de cada versión) — ambos de uso gratuito. `os-orchestration` introduce el límite comercial: consultar un único archivo directamente a través de `os-console` es gratuito; enrutar consultas a través de múltiples archivos mediante `os-orchestration` es el nivel de pago.
 
 ## Lo que un Totebox Archive no es
 
