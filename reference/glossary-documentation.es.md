@@ -497,6 +497,11 @@ El servicio analizador determinista. Elimina el formato propietario de los datos
 - **Proveedores de servicios**
 - **Servicios**
 
+### service-materials
+*Catálogo de materiales*
+
+Un servicio planificado, alojado en el archivo, destinado a contener el catálogo compartido de identidad de materiales y elementos constructivos para uso de motores de dominio como [[tool-construction]] — clasificación según las tablas Uniclass publicadas, unidad de medida nativa, una referencia opcional al diccionario de datos de buildingSMART y una citación de especificación verificada por hash de contenido. `service-materials` nunca contiene datos de costo, precio o productividad — los registros propios de un proyecto que lo cita hacen referencia a una fila del catálogo por su hash de contenido, de modo que una edición posterior a la definición compartida sea detectable en lugar de silenciosa, mientras que lo que cuesta un material o qué tan productiva es su instalación permanece como dato local, propiedad del contratista. Propuesto; aún no construido.
+
 ### service-search
 *service-search*
 
@@ -541,6 +546,20 @@ Los datos de terceros son recopilados por una entidad sin relación directa con 
 - **Tokens**
 - **Temas (topics)**
 - **Plantillas de temas**
+
+### tool-accounting
+Un motor de dominio de archivos planos, bajo control del propietario, que ofrece contabilidad de partida doble — diarios, libros contables, estados financieros y consolidación multi-entidad — calculada de forma determinista a partir de registros de texto plano, sin base de datos alojada y con git como rastro de auditoría. El motor de dominio original de la plataforma, y el patrón de diseño sobre el que se modelan los motores `tool-*` hermanos (incluido `tool-construction`). Licenciado bajo FSL-1.1-ALv2. Véase [[tool-accounting]] para el artículo completo.
+
+### tool-construction
+Un motor de dominio de archivos planos, bajo control del propietario, que ofrece responsabilidad de costo, cronograma y calidad de construcción, construido sobre la misma disciplina de diseño de partida doble que `tool-accounting`. Su mecanismo central: la cantidad de material instalado, reportada una sola vez desde el campo, consume simultáneamente un presupuesto de horas de mano de obra y reduce un saldo de material en la misma transacción — lo que hace que la relación entre materiales y mano de obra sea estructural al libro contable en lugar de una convención aplicada por encima de él. Licenciado bajo FSL-1.1-ALv2. Véase [[tool-construction]] para el artículo completo.
+
+### tool-payroll
+Un motor de dominio propuesto, sensible a la jurisdicción, para el cálculo de pago bruto a neto y la temporización de remesas estatutarias, diseñado como producto hermano de `tool-accounting` y alimentado en un solo sentido por las tarjetas de tiempo de `tool-construction`. 100% de diseño al momento de esta redacción — sin código escrito, sin crate creado. Licenciado bajo FSL-1.1-ALv2. Véase [[tool-payroll]] para el artículo completo.
+
+### Gobernanza de distribución de `tool-*`
+*(Nota de referencia cruzada, no una entrada completa)*
+
+La gobernanza de distribución de la plataforma clasifica cada directorio `tool-*` como herramienta interna del operador por defecto, no distribuida como producto de catálogo independiente, con excepciones otorgadas de forma individual — `tool-wallet` es el único precedente existente. Actualmente no existe ninguna excepción registrada para `tool-accounting`, `tool-construction` ni `tool-payroll`.
 
 ### Archivo Totebox
 *Totebox Archive*

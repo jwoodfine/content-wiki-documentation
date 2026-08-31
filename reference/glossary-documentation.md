@@ -338,6 +338,11 @@ Second-party data is first-party data obtained through a direct partnership agre
 
 The deterministic parser service. Strips proprietary formatting from inbound payloads and routes structured data to deterministic services and unstructured text to service-slm. Assigns transaction IDs for chain-of-custody tracing. Canonical long-term name replacing the legacy working name service-parser.
 
+### service-materials
+*Catálogo de materiales*
+
+A planned, archive-resident service intended to hold the shared catalog of material and building-element identity for use by domain engines such as [[tool-construction|tool-construction]] — classification against the published Uniclass tables, native unit of measure, an optional buildingSMART data dictionary reference, and a content-hash-verified specification citation. `service-materials` never holds cost, price, or productivity data — a citing project's own records reference a catalog row by its content hash, so a later edit to the shared definition is detectable rather than silent, while what a material costs or how productively it installs stays local, contractor-owned data. Proposed; not yet built.
+
 ### service-search
 *service-search*
 
@@ -363,6 +368,20 @@ A term describing structural dependency on platform providers who control access
 
 ### Third-party Data
 Third-party data is collected by an entity with no direct relationship to the end user and sold commercially; PointSav evaluates all third-party data through SYS-ADR-07 and ingests approved datasets via the service-content deterministic pipeline.
+
+### tool-accounting
+A flat-file, owner-held domain engine providing double-entry accounting — journals, ledgers, financial statements, and multi-entity consolidation — computed deterministically from plain-text records with no hosted database and git as the audit trail. The platform's original domain engine, and the design pattern sibling `tool-*` engines (including `tool-construction`) are modeled against. Licensed under FSL-1.1-ALv2. See [[tool-accounting|tool-accounting]] for the full article.
+
+### tool-construction
+A flat-file, owner-held domain engine providing construction cost, schedule, and quality accountability, built on the same double-entry design discipline as `tool-accounting`. Its central mechanism: installed material quantity, reported once from the field, both earns a labour-hours budget and draws down a material balance in the same transaction — making the relationship between materials and labour structural to the ledger rather than a convention applied on top of it. Licensed under FSL-1.1-ALv2. See [[tool-construction|tool-construction]] for the full article.
+
+### tool-payroll
+A proposed, jurisdiction-aware domain engine for gross-to-net pay and statutory remittance timing, designed as a sibling product to `tool-accounting` and fed one-way by `tool-construction` timecards. 100% design as of this writing — no code written, no crate scaffolded. Licensed under FSL-1.1-ALv2. See [[tool-payroll|tool-payroll]] for the full article.
+
+### `tool-*` distribution governance
+*(Cross-reference note, not a full entry)*
+
+The platform's distribution governance classifies every `tool-*` directory as internal operator tooling by default, not distributed as a standalone catalog product, with exceptions granted individually — `tool-wallet` is the one existing precedent. No such exception is currently recorded for `tool-accounting`, `tool-construction`, or `tool-payroll`.
 
 ### Totebox Archive
 *Archivo Totebox*
