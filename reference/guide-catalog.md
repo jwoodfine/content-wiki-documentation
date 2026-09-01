@@ -80,6 +80,14 @@ These guides cover consuming platform data and connecting external applications.
 - [[federate-archives-via-content-mounts]] — mount a second repository's content into a running instance
 - [[use-knowledge-mounts]] — the real `[[mount]]` schema, and the real risk (a flat shared namespace, not isolated per mount)
 
+## Financial & construction tools
+
+These guides cover the domain tools that run on the platform — the construction cost,
+schedule, and quality ledger and its accounting and payroll siblings. Each is a
+command-line tool; none has a console screen today.
+
+- [[generate-a-construction-cost-estimate]] — run the real reporting binary against a CSV data directory; there are no flags, because it parses no arguments at all
+
 ## Self-hosting
 
 These guides cover deploying and running platform components on operator-controlled infrastructure.

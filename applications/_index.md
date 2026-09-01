@@ -74,12 +74,12 @@ Additional planned articles for this domain — design-system tooling for BIM, A
 
 ## Financial and construction tools
 
-A family of owner-held ledger tools sharing one double-entry design: accounting, construction cost/schedule/quality control, and (proposed) payroll. All three are early-stage — one has real, verified code; the other two range from scaffolded-but-empty to fully unbuilt.
+A family of owner-held ledger tools sharing one double-entry design: accounting, construction cost/schedule/quality control, and (proposed) payroll. Two of the three now have real, running code — tool-accounting's ledger engine and tool-construction's cost/schedule/reporting engine; tool-payroll remains a proposed design with no code written.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: financial-and-construction-tools -->
 - [[financial-and-construction-tools-overview]] — How the three tools relate as one product family: the shared double-entry design, the one-way data feeds between them, and the shared free/paid architecture boundary.
-- [[tool-accounting]] — A flat-file, owner-held double-entry ledger producing audit-ready financial statements; the furthest along of the three, with real code verified against real historical data.
-- [[tool-construction]] — A flat-file, owner-held ledger for construction cost, schedule, and quality control; crates scaffolded and compiling, no pipeline logic written yet.
+- [[tool-accounting]] — A flat-file, owner-held double-entry ledger producing audit-ready financial statements; real code verified against real historical data.
+- [[tool-construction]] — A flat-file, owner-held ledger for construction cost, schedule, and quality control; the core engine now runs as a real CLI, producing cost estimate and schedule reports for a live pilot — estimate-stage only, no console yet.
 - [[tool-payroll]] — A proposed jurisdiction-aware payroll and statutory-remittance engine; 100% design today, no code written.
 <!-- END AUTO-GENERATED -->
 

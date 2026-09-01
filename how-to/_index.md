@@ -84,6 +84,14 @@ Connect external data pipelines and build location-intelligence applications.
 
 Device pairing, capability tokens, and fleet enrollment now have their own category — see [Machine Authorization](/category/machine-authorization). Self-hosted deployment now has its own category — see [Self-Hosting](/category/self-hosting).
 
+## Financial & construction tools
+
+Run the platform's domain tools — the construction cost, schedule, and quality ledger and its accounting and payroll siblings. Each is a command-line tool; none has a console screen today.
+
+<!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: financial-construction-tools -->
+- [[generate-a-construction-cost-estimate|Generate a construction cost estimate report]] — run the real reporting binary against a CSV data directory; there are no flags, since it parses no arguments at all
+<!-- END AUTO-GENERATED -->
+
 ## See also
 
 - [[architecture-index|Architecture]] — cross-cutting platform architecture

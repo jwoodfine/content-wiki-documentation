@@ -75,12 +75,12 @@ Artículos adicionales planificados para este dominio — herramientas del siste
 
 ## Herramientas financieras y de construcción
 
-Una familia de herramientas de libro contable bajo control del propietario que comparten un mismo diseño de partida doble: contabilidad, control de costo/cronograma/calidad de construcción y (propuesta) nómina. Las tres están en etapa temprana — una tiene código real y verificado; las otras dos van desde andamiaje vacío hasta completamente sin construir.
+Una familia de herramientas de libro contable bajo control del propietario que comparten un mismo diseño de partida doble: contabilidad, control de costo/cronograma/calidad de construcción y (propuesta) nómina. Dos de las tres ya tienen código real en funcionamiento — el motor de libro contable de tool-accounting y el motor de costo/cronograma/informes de tool-construction; tool-payroll permanece como un diseño propuesto sin código escrito.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: financial-and-construction-tools -->
 - [[financial-and-construction-tools-overview|financial-and-construction-tools-overview]] — Cómo se relacionan las tres herramientas como una sola familia de productos: el diseño compartido de partida doble, las alimentaciones de datos unidireccionales entre ellas y el límite compartido de arquitectura gratuita/pagada.
-- [[tool-accounting|tool-accounting]] — Un libro contable de partida doble, de archivos planos y bajo control del propietario, que produce estados financieros listos para auditoría; el más avanzado de los tres, con código real verificado contra datos históricos reales.
-- [[tool-construction|tool-construction]] — Un libro contable de archivos planos, bajo control del propietario, para el costo, cronograma y control de calidad de la construcción; con el andamiaje compilando pero sin lógica de canalización escrita todavía.
+- [[tool-accounting|tool-accounting]] — Un libro contable de partida doble, de archivos planos y bajo control del propietario, que produce estados financieros listos para auditoría; código real verificado contra datos históricos reales.
+- [[tool-construction|tool-construction]] — Un libro contable de archivos planos, bajo control del propietario, para el costo, cronograma y control de calidad de la construcción; el motor central ya funciona como CLI real, produciendo informes de estimación de costes y cronograma para un piloto en vivo — solo en etapa de estimación, sin consola todavía.
 - [[tool-payroll|tool-payroll]] — Un motor propuesto de nómina y remesas estatutarias, sensible a la jurisdicción; 100% de diseño hoy, sin código escrito.
 <!-- END AUTO-GENERATED -->
 

@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: forward-looking
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-30
+last_edited: 2026-09-01
 editor: pointsav-engineering
 paired_with: tool-payroll.md
 short_description: "Un motor propuesto, sensible a la jurisdicción, para nómina bruto-a-neto y remesas estatutarias — actualmente 100% diseño, sin código escrito y sin crate creado."
@@ -311,7 +311,12 @@ provienen las horas.
 
 ## Licenciamiento
 
-`tool-payroll` está licenciado bajo FSL-1.1-ALv2.
+`tool-payroll` está licenciado bajo AGPL-3.0-or-later. AGPL-3.0-or-later es una licencia
+copyleft: el código fuente está disponible para todos, y cualquier versión modificada —
+incluida una operada como servicio de red — debe publicarse bajo la misma licencia si se
+distribuye o se pone a disposición a través de una red. Existe una licencia
+PointSav-Commercial independiente como alternativa de pago para quien necesite distribuir
+una versión modificada, u ofrecerla como servicio de red, sin esa obligación de copyleft.
 
 ---
 

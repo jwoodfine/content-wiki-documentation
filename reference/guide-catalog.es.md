@@ -80,6 +80,15 @@ Estas guías cubren el consumo de datos de la plataforma y la conexión de aplic
 - [[federate-archives-via-content-mounts]] — monte el contenido de un segundo repositorio en una instancia en ejecución
 - [[use-knowledge-mounts]] — el esquema real de `[[mount]]`, y el riesgo real (un espacio de nombres compartido y plano, no aislado por montaje)
 
+## Herramientas financieras y de construcción
+
+Estas guías cubren las herramientas de dominio que se ejecutan sobre la plataforma — el
+libro mayor de costes, cronograma y calidad de construcción y sus herramientas hermanas de
+contabilidad y nóminas. Todas son herramientas de línea de comandos; ninguna tiene hoy una
+pantalla de consola.
+
+- [[generate-a-construction-cost-estimate]] — ejecute el binario real de informes sobre un directorio de datos CSV; no hay opciones, porque no analiza argumento alguno
+
 ## Autoalojamiento
 
 Estas guías cubren el despliegue y la ejecución de componentes de la plataforma en infraestructura controlada por el operador.

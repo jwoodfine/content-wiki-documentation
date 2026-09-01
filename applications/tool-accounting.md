@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: forward-looking
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-30
+last_edited: 2026-09-01
 editor: pointsav-engineering
 paired_with: tool-accounting.es.md
 short_description: "A flat-file, owner-held double-entry accounting engine producing audit-ready financial statements from plain-text journals; its core engine and PDF/HTML renderer are built and verified against real historical data, ahead of the rest of the platform's ledger tooling."
@@ -219,9 +219,12 @@ yet.
 
 ## Licensing
 
-`tool-accounting` is licensed under FSL-1.1-ALv2. FSL-1.1-ALv2 is a source-available
-license: the code is readable and forkable from day one, with a defined, time-limited
-restriction that is intended to lapse automatically on a fixed future date.
+`tool-accounting` is licensed under AGPL-3.0-or-later. AGPL-3.0-or-later is a copyleft
+license: the source code is available to everyone, and any modified version — including
+one operated as a network service — must be released under the same license if it is
+distributed or made available over a network. A separate PointSav-Commercial license is
+available as a paid alternative for anyone who needs to distribute a modified version, or
+offer it as a network service, without that copyleft obligation.
 
 **Why it matters:** a lender or an owner's own engineer can read and audit the full source
 before deciding whether to trust it — the code is not a black box behind a paywall.

@@ -84,6 +84,14 @@ Conecta tuberías de datos externas y crea aplicaciones de inteligencia de ubica
 
 El emparejamiento de dispositivos, los tokens de capacidad y la inscripción de flota ahora tienen su propia categoría — véase [Autorización de Máquinas](/category/machine-authorization). El despliegue autoalojado ahora tiene su propia categoría — véase [Autoalojamiento](/category/self-hosting).
 
+## Herramientas financieras y de construcción
+
+Ejecute las herramientas de dominio de la plataforma — el libro mayor de costes, cronograma y calidad de construcción y sus herramientas hermanas de contabilidad y nóminas. Todas son herramientas de línea de comandos; ninguna tiene hoy una pantalla de consola.
+
+<!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: financial-construction-tools -->
+- [[generate-a-construction-cost-estimate|Generar un informe de estimación de costes de construcción]] — ejecute el binario real de informes sobre un directorio de datos CSV; no hay opciones, porque no analiza argumento alguno
+<!-- END AUTO-GENERATED -->
+
 ## Véase también
 
 - [[architecture-index|Arquitectura]] — arquitectura transversal de la plataforma

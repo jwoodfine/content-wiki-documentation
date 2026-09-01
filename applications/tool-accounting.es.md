@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: forward-looking
 language_protocol: TRANSLATE-ES
-last_edited: 2026-08-30
+last_edited: 2026-09-01
 editor: pointsav-engineering
 paired_with: tool-accounting.md
 short_description: "Un motor de contabilidad de partida doble, en archivos planos y de propiedad del titular, que produce estados financieros auditables a partir de diarios en texto plano; su motor central y su renderizador PDF/HTML están construidos y verificados contra datos históricos reales, por delante del resto de las herramientas de libro mayor de la plataforma."
@@ -241,10 +241,13 @@ ese nombre.
 
 ## Licenciamiento
 
-`tool-accounting` está licenciado bajo FSL-1.1-ALv2. FSL-1.1-ALv2 es una licencia de
-código disponible: el código es legible y bifurcable desde el primer día, con una
-restricción definida y de duración limitada que está prevista para caducar
-automáticamente en una fecha futura fija.
+`tool-accounting` está licenciado bajo AGPL-3.0-or-later. AGPL-3.0-or-later es una
+licencia copyleft: el código fuente está disponible para todos, y cualquier versión
+modificada — incluida una operada como servicio de red — debe publicarse bajo la misma
+licencia si se distribuye o se pone a disposición a través de una red. Existe una
+licencia PointSav-Commercial independiente como alternativa de pago para quien necesite
+distribuir una versión modificada, u ofrecerla como servicio de red, sin esa obligación
+de copyleft.
 
 **Por qué importa:** un prestamista o el propio ingeniero de un propietario puede leer y
 auditar el código fuente completo antes de decidir si confiar en él — el código no es una
