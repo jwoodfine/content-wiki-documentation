@@ -10,31 +10,37 @@ index_group: financial-and-construction-tools
 status: active
 audience: vendor-public
 bcsc_class: forward-looking
-language_protocol: PROSE-TOPIC
+language_protocol: TRANSLATE-ES
 last_edited: 2026-09-01
 editor: pointsav-engineering
 paired_with: tool-payroll.md
-short_description: "Un motor propuesto, sensible a la jurisdicción, para nómina bruto-a-neto y remesas estatutarias — actualmente 100% diseño, sin código escrito y sin crate creado."
+short_description: "Un motor de nómina y remesas estatutarias sensible a la jurisdicción cuyo primer informe real — un Registro de Nómina por división que agrega las horas laborales presupuestadas del piloto de construcción bajo una fila citada de reglas salariales de Alberta — está construido y en funcionamiento; el cálculo bruto-a-neto, la frecuencia de pago y el cálculo de remesas siguen siendo solo diseño."
 cites: []
 ---
 
-`tool-payroll` es un motor de dominio propuesto para calcular el pago
-bruto-a-neto de un trabajador. Está diseñado para gestionar el lado
-estatutario de pagarle: con qué frecuencia se paga a un trabajador, cuándo
-una fecha de pago calculada puede caer legalmente, y cómo el hecho de pagar
-a alguien se relaciona con remitir las deducciones estatutarias a la
-autoridad correcta. Está planeado
-como producto hermano de [[tool-accounting]], no como una función de
-[[tool-construction]] — de dominio transversal, no específico de
-construcción — y está pensado para recibir tarjetas de horas de ambas
-herramientas como alimentaciones de una sola vía.
+`tool-payroll` es un motor de nómina en su primera etapa real de construcción,
+diseñado para gestionar el lado estatutario de pagarle a un trabajador: con qué
+frecuencia se le paga, cuándo una fecha de pago calculada puede caer
+legalmente, y cómo el hecho de pagar a alguien se relaciona con remitir las
+deducciones estatutarias a la autoridad correcta. Es un producto hermano de
+[[tool-accounting]], no una función de [[tool-construction]] — de dominio
+transversal, no específico de construcción — y está pensado para recibir
+tarjetas de horas de ambas herramientas como alimentaciones de una sola vía.
 
-**Nada de lo descrito en este artículo está construido.** `tool-payroll` es
-hoy 100% diseño: no se ha escrito código alguno, no se ha creado ningún
-crate, y no se ha asignado ningún archivo para desarrollarlo. El trabajo de
-diseño que sí existe — la capa de cadencia de pago y sincronización
-estatutaria que cubre este artículo — está fijado como decisión de diseño,
-no entregado como software.
+**Lo que existe hoy.** Existe un informe real, y solo uno. Un crate binario
+piloto — creado junto a los propios crates piloto de la cadena de herramientas
+de construcción, que es donde vive ahora el desarrollo del motor — lee las
+horas laborales presupuestadas y los supuestos de cuadrilla que el piloto de
+[[tool-construction]] ya mantiene, más la tabla de reglas salariales de
+Alberta de una sola fila descrita abajo, los agrega en totales laborales por
+división, y renderiza un Registro de Nómina (por División) como HTML y PDF a
+través de `tool-typeset`, el mismo renderizador compartido que usan los
+motores hermanos. Es un solo comando sin banderas ni argumentos, y sus pruebas
+pasan. El límite es igual de real: la frecuencia de pago, el pago bruto y el
+pago neto no se calculan en ninguna parte — el registro imprime una raya en
+esas columnas en lugar de una cifra fabricada — y nunca se ha registrado una
+tarjeta de horas ni una transacción de nómina. Todo lo demás que describe este
+artículo sigue siendo diseño.
 
 ---
 
@@ -57,39 +63,80 @@ eventualmente confundirá una con la otra.
 
 ---
 
+## El Registro de Nómina — el único informe real
+
+La primera salida entregada del motor es un solo documento: el Registro de
+Nómina (por División), una planilla de trabajo de labor presupuestada — no un
+estado financiero presentado, y no una corrida de pago. El binario piloto lee
+tres conjuntos de archivos planos: la propia tabla de correspondencia de
+códigos de costo a divisiones del piloto de construcción y sus supuestos de
+cuadrilla, sus datos reales de paquetes de trabajo, y la tabla de reglas
+salariales de abajo. Une cada código de costo con su división de la industria
+de la construcción, agrega las horas laborales presupuestadas y el tamaño de
+cuadrilla por división, y renderiza el registro como HTML y PDF.
+
+Vale la pena destacar dos propiedades. Primero, la agregación de horas refleja
+deliberadamente, paso a paso, la lógica que el propio informe mensual de
+estado del piloto de construcción usa para sus cifras de horas-hombre — los
+mismos números subyacentes, calculados de la misma manera, de modo que los dos
+documentos nunca puedan divergir en silencio. La lectura es por archivos a
+propósito: no existe dependencia de código entre los dos crates piloto, solo
+archivos, en línea con la disciplina de alimentación de una sola vía del
+diseño. Segundo, las columnas de Frecuencia de Pago y Pago Bruto del registro
+imprimen una raya en cada fila, y su propia nota de base de preparación dice
+por qué: esos números no existen en ninguna parte — la frecuencia de pago aún
+no tiene un lugar diseñado en los datos, y el cálculo bruto-a-neto está
+explícitamente fuera de alcance — así que el registro declara el vacío en
+lugar de mostrar una cifra plausible. La misma nota imprime los hechos de
+jurisdicción que el motor resolvió de su tabla de reglas salariales: el límite
+de pago salarial, la base de conteo de días, la autoridad de remesa y la
+autoridad de compensación de trabajadores, con la propia cita de fuente de la
+fila.
+
+**Por qué importa:** lo primero que entregó este motor es su límite honesto.
+Quien lee el registro obtiene horas reales y cifras reales de cuadrilla, una
+declaración impresa de qué columnas aún no son reales, y las reglas citadas de
+sincronización salarial que eventualmente las regirán — nunca una cifra de
+pago inventada.
+
+**Casos límite:** el tamaño de cuadrilla es opcional por división — una
+división sin supuesto de cuadrilla también imprime una raya allí, nunca un
+cero, porque una cuadrilla de cero sería en sí misma una afirmación.
+
+---
+
 ## Alcance de jurisdicción — solo Alberta, y explícitamente piloto
 
-Cada cifra de sincronización salarial y remesa en el diseño está planeada
-como una fila citada en una tabla organizada por jurisdicción
-(`wage_payment_rules.csv`, propuesta, aún no creada), nunca como una regla
+Cada cifra de sincronización salarial y remesa vive como una fila citada en
+una tabla organizada por jurisdicción — `wage_payment_rules.csv`, ahora un
+archivo real que el registro en funcionamiento carga — nunca como una regla
 codificada de forma fija en el motor. Al momento de escribir esto, solo hay
 **una fila de jurisdicción poblada y verificada: Alberta**, porque el sitio
-piloto previsto se encuentra allí. Esto es explícitamente un alcance piloto,
-no cobertura de plataforma. Toda otra jurisdicción es un vacío nombrado y
-sin poblar. Se pretende que una entidad cuya jurisdicción carezca de fila
-sea un vacío rechazado y visible, en lugar de recibir en silencio los
-valores de Alberta por defecto.
+piloto se encuentra allí. Esto es explícitamente un alcance piloto, no
+cobertura de plataforma. Toda otra jurisdicción es un vacío nombrado y sin
+poblar. Se pretende que una entidad cuya jurisdicción carezca de fila sea un
+vacío rechazado y visible, en lugar de recibir en silencio los valores de
+Alberta por defecto.
 
 ```
-wage_payment_rules.csv                              [PROPUESTO — aún no creado]
+wage_payment_rules.csv — real; una fila poblada y con fuente citada
 
-jurisdiction_code                  estilo ISO-3166-2, ej. CA-AB     [clave primaria]
-max_pay_period_days                periodo de pago máximo permitido, días
-max_days_to_pay_after_period_end   el límite de pago salarial
-day_counting                       calendar | working
-remitting_authority                ej. CRA (federal, cualquier jurisdicción canadiense)
-comp_authority                     ej. WCB Alberta
-source_ref                         cita
-effective_from                     fecha
+jurisdiction_code,max_pay_period_days,max_days_to_pay_after_period_end,
+day_counting,remitting_authority,comp_authority,source_ref,effective_from
 
-# la única fila actualmente poblada y citada:
-CA-AB,31,10,calendar,CRA,WCB Alberta,alberta.ca/payment-earnings,2026-01-01
+AB,31,10,calendar,CRA,WCB Alberta,"alberta.ca/payment-earnings; canada.ca
+calendario de tipos de remitente; mecánica de primas de empleador de WCB Alberta",
 ```
+
+Las citas viajan en el propio campo `source_ref` de la fila, de modo que la
+regla y su fuente van juntas — quien revisa nunca tiene que confiar en que un
+número en el motor coincide con una regla en otro lugar.
 
 **Por qué importa:** se planea que agregar una segunda provincia, o una
 jurisdicción fuera de Canadá, signifique agregar una fila citada a una
 tabla — no tocar código del motor. Si ese plan se sostiene en la práctica
-está por verse, ya que aún no se ha diseñado ninguna segunda jurisdicción.
+está por verse, ya que todavía no existe ninguna segunda fila de
+jurisdicción.
 
 ---
 
@@ -136,15 +183,20 @@ de la entidad. Se pretende que una corrida de pago que caería fuera de la
 ventana aparezca como un error nombrado y bloqueante, no como una
 advertencia.
 
+Hoy el límite es dato, no aplicación: el registro en funcionamiento resuelve
+la fila de Alberta e imprime la cifra de diez días en sus propias notas, pero
+todavía no se calcula ninguna fecha de pago en ninguna parte, así que el
+comportamiento de rechazar-en-lugar-de-ajustar sigue siendo diseño.
+
 Las propias excepciones publicadas por Alberta para la industria de la
 construcción son estrechas: cubren solo cómo puede sincronizarse el pago de
 vacaciones y el pago de días festivos generales. No cubren un periodo de
 pago más corto o más largo, ni una regla de sincronización de pago distinta
 para los trabajadores de la construcción o el trabajo por jornada en
-general. Se
-diseña que los trabajadores de la construcción sigan el mismo límite que
-cualquier otro empleado en la fila de Alberta — este hallazgo es específico
-de Alberta y no se asume que se generalice a ninguna otra jurisdicción.
+general. Se diseña que los trabajadores de la construcción sigan el mismo
+límite que cualquier otro empleado en la fila de Alberta — este hallazgo es
+específico de Alberta y no se asume que se generalice a ninguna otra
+jurisdicción.
 
 **Por qué importa:** el derecho legal de un trabajador a cobrar dentro de
 una ventana acotada después de realizar el trabajo no se flexibiliza para
@@ -280,6 +332,15 @@ Ambas alimentaciones están diseñadas para llegar al libro mayor de
 sola vía, por el mismo camino de revisión que cualquier otra transacción de
 origen.
 
+Un precursor de la primera alimentación ya es real, y es deliberadamente más
+estrecho que la alimentación que nombra el diseño: el Registro de Nómina lee
+las horas *presupuestadas* de los paquetes de trabajo del piloto de
+construcción como archivos planos. Un presupuesto es una cifra de etapa de
+estimación; una tarjeta de horas es un registro de datos reales, y todavía no
+existe ninguna tarjeta de horas en ninguna parte del canal — el mismo límite
+de etapa-de-estimación que el propio motor de construcción declara para su
+libro mayor.
+
 ```
 tool-construction (horas + clase laboral)   ──▶  tool-payroll   (alimentación 1)
 tool-accounting (horas de personal propio)  ──▶  tool-payroll   (alimentación 2)
@@ -324,11 +385,12 @@ una versión modificada, u ofrecerla como servicio de red, sin esa obligación d
 
 | Componente | Estado |
 |---|---|
-| Clasificación y contrato de integración con `tool-construction` | Fijado como decisión de diseño |
-| Diseño de cadencia de pago y sincronización estatutaria (modelo de jurisdicción, los dos relojes, el límite de pago salarial, la distinción calendario/laborable, el reporte de compensación de trabajadores) | Diseñado y fijado; no construido |
-| Cobertura de jurisdicción | Una fila poblada y completamente citada (Alberta). Toda otra jurisdicción es un vacío nombrado y sin poblar |
+| Registro de Nómina (por División) — agregación de horas presupuestadas y cuadrilla por división, HTML + PDF | **Construido y en funcionamiento** — el primer informe real del motor; un solo comando sin banderas |
+| Tabla de jurisdicción (`wage_payment_rules.csv`) | Real — una fila poblada y con fuente citada (Alberta), cargada por el informe en funcionamiento. Toda otra jurisdicción es un vacío nombrado y sin poblar |
+| Clasificación y contrato de integración con `tool-construction` | Fijado como decisión de diseño; una lectura por archivos de las horas presupuestadas del piloto de construcción es real, pero la alimentación de tarjetas de horas en sí no está construida |
+| Diseño de cadencia de pago y sincronización estatutaria (modelo de jurisdicción, los dos relojes, el límite de pago salarial, la distinción calendario/laborable, el reporte de compensación de trabajadores) | Diseñado y fijado; la aplicación no está construida — todavía no se calcula ninguna fecha de pago en ninguna parte |
 | El cálculo bruto-a-neto mismo (tramos impositivos, fórmulas de deducción estatutaria) | Explícitamente diferido; no diseñado |
-| El motor `tool-payroll` y los crates orientados al operador | No creados. Ningún archivo asignado para desarrollarlo |
+| El motor y los crates orientados al operador | Primer crate piloto creado y en funcionamiento, desarrollado junto a la cadena de herramientas de construcción; todavía no existe un crate de motor completo |
 | `service-bank-feed` | Propuesto; propiedad aún no confirmada; aún no se ha enviado una propuesta formal |
 | Generación de archivo de pago y aprobación de doble control | Nombrado como la forma futura prevista; no diseñado ni construido |
 | Extensión de la terminal de contabilidad para aprobación de corridas de pago y tarjetas de horas | Propuesta; requiere el visto bueno de quien es dueño de esa superficie |
@@ -342,4 +404,5 @@ una versión modificada, u ofrecerla como servicio de red, sin esa obligación d
   importar qué herramienta le alimente las horas
 - [[tool-construction]] — la herramienta cuyas tarjetas de horas de cuadrilla
   están diseñadas como una de las dos fuentes de alimentación previstas de
-  `tool-payroll`
+  `tool-payroll`, y cuyas horas presupuestadas del piloto ya lee el primer
+  informe real

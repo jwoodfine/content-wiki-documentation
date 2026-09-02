@@ -14,23 +14,30 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-09-01
 editor: pointsav-engineering
 paired_with: tool-payroll.es.md
-short_description: "A proposed, jurisdiction-aware payroll and statutory-remittance engine for gross-to-net pay, currently 100% design with no code written and no crate scaffolded."
+short_description: "A jurisdiction-aware payroll and statutory-remittance engine whose first real report — a division-level Payroll Register aggregating the construction pilot's budgeted labour hours under a cited Alberta wage-rules row — is built and running; gross-to-net pay, pay frequency, and remittance computation remain design-only."
 cites: []
 ---
 
-`tool-payroll` is a proposed domain engine for computing gross-to-net pay. It
-is designed to handle the statutory side of paying a worker: how often a
-worker is paid, when a computed pay date is legally permitted to fall, and
-how paying someone relates to remitting statutory deductions to the correct
-authority. It is planned as a sibling product to [[tool-accounting]], not a feature of
-[[tool-construction]] — cross-domain rather than construction-specific — and
-is intended to receive timecards from both of those tools as one-way feeds.
+`tool-payroll` is a payroll engine in its earliest real build-out, designed to
+handle the statutory side of paying a worker: how often a worker is paid, when
+a computed pay date is legally permitted to fall, and how paying someone
+relates to remitting statutory deductions to the correct authority. It is a
+sibling product to [[tool-accounting]], not a feature of [[tool-construction]]
+— cross-domain rather than construction-specific — and is intended to receive
+timecards from both of those tools as one-way feeds.
 
-**Nothing described in this article is built.** `tool-payroll` is 100% design
-today: zero code has been written, no crate has been scaffolded, and no
-archive has been assigned to own its development. The design work that does
-exist — the pay-cadence and statutory-timing layer this article covers — is
-locked as a design decision, not shipped as software.
+**What exists today.** One real report exists, and only one. A pilot binary
+crate — scaffolded alongside the construction toolchain's own pilot crates,
+which is where the engine's development now lives — reads the budgeted labour
+hours and crew assumptions the [[tool-construction]] pilot already maintains,
+plus the one-row Alberta wage-rules table described below, aggregates them into
+division-level labour totals, and renders a Payroll Register (by Division) as
+HTML and PDF through `tool-typeset`, the same shared renderer the sibling
+engines use. It is a single command with no flags or arguments, and its tests
+pass. The boundary is just as real: pay frequency, gross pay, and net pay are
+computed nowhere — the register prints an em dash in those columns rather than
+a fabricated number — and no timecard or payroll transaction has ever been
+recorded. Everything else this article describes remains design.
 
 ---
 
@@ -51,37 +58,71 @@ the difference, or it will eventually get one of the two wrong.
 
 ---
 
+## The Payroll Register — the one real report
+
+The engine's first shipped output is a single document: the Payroll Register
+(by Division), a working schedule of budgeted labour — not a filed statement,
+and not a pay run. The pilot binary reads three sets of plain files: the
+construction pilot's own cost-code-to-division crosswalk and crew assumptions,
+its real work-package data, and the wage-rules table below. It joins each cost
+code to its construction-industry division, aggregates budgeted labour hours
+and crew size per division, and renders the register as HTML and PDF.
+
+Two properties are worth stating. First, the hours aggregation deliberately
+mirrors, step for step, the logic the construction pilot's own monthly status
+report uses for its man-hours figures — the same underlying numbers, computed
+the same way, so the two documents can never silently diverge. The read is
+file-based on purpose: no code dependency exists between the two pilot crates,
+only files, matching the one-way feed discipline of the design. Second, the
+register's Pay Frequency and Gross Pay columns print an em dash on every row,
+and its own basis-of-preparation note says why: those numbers do not exist
+anywhere — pay frequency has no designed data home yet, and gross-to-net
+computation is explicitly out of scope — so the register states the gap
+instead of showing a plausible figure. The same note prints the jurisdiction
+facts the engine resolved from its wage-rules table: the wage-payment ceiling,
+the day-counting basis, the remitting authority, and the
+workers'-compensation authority, with the row's own source citation.
+
+**Why it matters:** the first thing this engine shipped is its honest
+boundary. A reader of the register gets real hours and real crew figures, a
+printed statement of which columns are not yet real, and the cited wage-timing
+rules that will eventually govern them — never an invented pay number.
+
+**Edge cases:** crew size is optional per division — a division with no crew
+assumption prints an em dash there too, never a zero, because a zero crew
+would itself be a claim.
+
+---
+
 ## Jurisdiction scope — Alberta only, and explicitly a pilot
 
-Every wage-timing and remittance figure in the design is planned as a cited
-row in a jurisdiction-keyed table (`wage_payment_rules.csv`, proposed, not yet
-created), never a rule hardcoded into engine logic. As of this writing, only
-**one jurisdiction row is populated and verified: Alberta**, because the
-intended pilot site sits there. This is explicitly a pilot scope, not
+Every wage-timing and remittance figure lives as a cited row in a
+jurisdiction-keyed table — `wage_payment_rules.csv`, now a real file the
+running register loads — never a rule hardcoded into engine logic. As of this
+writing, only **one jurisdiction row is populated and verified: Alberta**,
+because the pilot site sits there. This is explicitly a pilot scope, not
 platform coverage — every other jurisdiction is a named, unpopulated gap, and
 an entity whose jurisdiction has no row is intended to be a refused, visible
 gap rather than silently defaulted to Alberta's numbers.
 
 ```
-wage_payment_rules.csv                              [PROPOSED — not yet created]
+wage_payment_rules.csv — real; one populated, source-cited row
 
-jurisdiction_code                  ISO-3166-2 style, e.g. CA-AB     [primary key]
-max_pay_period_days                longest permitted pay period, days
-max_days_to_pay_after_period_end   the wage-payment ceiling
-day_counting                       calendar | working
-remitting_authority                e.g. CRA (federal, any Canadian jurisdiction)
-comp_authority                     e.g. WCB Alberta
-source_ref                         citation
-effective_from                     date
+jurisdiction_code,max_pay_period_days,max_days_to_pay_after_period_end,
+day_counting,remitting_authority,comp_authority,source_ref,effective_from
 
-# the one row currently populated and cited:
-CA-AB,31,10,calendar,CRA,WCB Alberta,alberta.ca/payment-earnings,2026-01-01
+AB,31,10,calendar,CRA,WCB Alberta,"alberta.ca/payment-earnings; canada.ca
+remitter-type schedule; WCB Alberta employer premium mechanics",
 ```
+
+The citations ride in the row's own `source_ref` field, so the rule and its
+source travel together — a reviewer never has to trust that a number in the
+engine matches a rule somewhere else.
 
 **Why it matters:** adding a second province, or a jurisdiction outside
 Canada, is planned to mean adding one cited row to a table — not touching
 engine code. Whether that plan holds in practice is untested, since no second
-jurisdiction has been designed yet.
+jurisdiction row exists yet.
 
 ---
 
@@ -122,6 +163,11 @@ configuration or manual pay-date entry that would violate this ceiling once
 resolved from the entity's own jurisdiction row. A pay run that would land
 outside the window is meant to surface as a named, blocking error rather than
 a warning.
+
+Today the ceiling is data, not enforcement: the running register resolves
+Alberta's row and prints the ten-day figure into its own notes, but no pay
+date is computed anywhere yet, so the refuse-rather-than-clamp behavior
+remains design.
 
 Alberta's own published construction-industry exceptions are narrow: they
 cover only how vacation pay and general-holiday pay may be timed, not a
@@ -249,6 +295,13 @@ any other kind of business. Both feeds are designed to land in
 `tool-accounting`'s ledger the same way — as ordinary postings, one-way,
 through the same review path as any other source transaction.
 
+A precursor of the first feed is now real, and it is deliberately narrower
+than the feed the design names: the Payroll Register reads the construction
+pilot's *budgeted* work-package hours as plain files. A budget is an
+estimate-stage figure; a timecard is an actuals record, and no timecard
+exists anywhere in the pipeline yet — the same estimate-stage boundary the
+construction engine itself states for its own ledger.
+
 ```
 tool-construction (hours + labour class)  ──▶  tool-payroll   (feed 1)
 tool-accounting (own staff hours)         ──▶  tool-payroll   (feed 2)
@@ -290,11 +343,12 @@ offer it as a network service, without that copyleft obligation.
 
 | Component | Status |
 |---|---|
-| Classification and integration contract with `tool-construction` | Locked as a design decision |
-| Pay-cadence and statutory-timing design (jurisdiction model, the two clocks, the wage-payment ceiling, calendar/working-day distinction, workers'-compensation reporting) | Designed and locked; not built |
-| Jurisdiction coverage | One row populated and fully cited (Alberta). Every other jurisdiction is a named, unpopulated gap |
+| Payroll Register (by Division) — division-level budgeted-hours and crew aggregation, HTML + PDF | **Built and running** — the engine's first real report; a single command with no flags |
+| Jurisdiction table (`wage_payment_rules.csv`) | Real — one populated, source-cited row (Alberta), loaded by the running report. Every other jurisdiction is a named, unpopulated gap |
+| Classification and integration contract with `tool-construction` | Locked as a design decision; a file-based read of the construction pilot's budgeted hours is real, but the timecard feed itself is not built |
+| Pay-cadence and statutory-timing design (jurisdiction model, the two clocks, the wage-payment ceiling, calendar/working-day distinction, workers'-compensation reporting) | Designed and locked; enforcement not built — no pay date is computed anywhere yet |
 | Gross-to-net computation itself (tax brackets, statutory deduction formulas) | Explicitly deferred; not designed |
-| `tool-payroll` engine and operator-facing crates | Not scaffolded. No archive assigned to own development |
+| Engine and operator-facing crates | First pilot crate scaffolded and running, developed alongside the construction toolchain; a full engine crate does not exist |
 | `service-bank-feed` | Proposed; ownership not yet confirmed; no formal proposal sent yet |
 | Payment-file generation and maker-checker approval | Named as the intended future shape; not designed or built |
 | Bookkeeping-terminal extension for pay-run and timecard approval | Proposed; requires sign-off from the surface's owner |
@@ -304,4 +358,4 @@ offer it as a network service, without that copyleft obligation.
 ## See also
 
 - [[tool-accounting]] — the sibling product `tool-payroll` is designed to extend; both are planned to share the identical gross-to-net engine regardless of which tool feeds it hours
-- [[tool-construction]] — the tool whose crew timecards are designed as one of `tool-payroll`'s two intended feed sources
+- [[tool-construction]] — the tool whose crew timecards are designed as one of `tool-payroll`'s two intended feed sources, and whose pilot's budgeted hours the first real report already reads

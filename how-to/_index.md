@@ -90,6 +90,8 @@ Run the platform's domain tools — the construction cost, schedule, and quality
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: financial-construction-tools -->
 - [[generate-a-construction-cost-estimate|Generate a construction cost estimate report]] — run the real reporting binary against a CSV data directory; there are no flags, since it parses no arguments at all
+- [[generate-a-financial-statement-package|Generate a financial statement package]] — render a consolidated package for one fiscal year and period; the run refuses rather than publish a figure that does not tie
+- [[generate-a-payroll-register|Generate a payroll register]] — aggregate budgeted labour hours by division; it computes no gross pay, no pay frequency, and no remittance
 <!-- END AUTO-GENERATED -->
 
 ## See also

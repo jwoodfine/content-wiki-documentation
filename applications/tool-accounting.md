@@ -14,7 +14,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-09-01
 editor: pointsav-engineering
 paired_with: tool-accounting.es.md
-short_description: "A flat-file, owner-held double-entry accounting engine producing audit-ready financial statements from plain-text journals; its core engine and PDF/HTML renderer are built and verified against real historical data, ahead of the rest of the platform's ledger tooling."
+short_description: "A flat-file, owner-held double-entry accounting engine producing audit-ready financial statements from plain-text journals; its core engine and PDF/HTML renderer are built, verified against real historical multi-entity data, and driven by a real CLI toolchain of statement, ledger, narrative, and timeline report binaries — CLI-only, with no console surface yet."
 cites: []
 ---
 
@@ -56,7 +56,7 @@ apart from the entries it was just computed from cannot disagree with them.
 ```rust
 pub struct Money {
     pub minor: i64,          // an exact integer count of minor units — never a float
-    pub currency: Currency,  // carried explicitly on every amount
+    pub currency: Currency,  // carried explicitly on every amount — CAD | USD today
 }
 ```
 
@@ -78,9 +78,20 @@ from context, and a cumulative label is rejected outright at the journal-entry l
 Every entity's chart of accounts is a single flat file, not a table an operator can
 silently extend by typing a new code into a transaction. An entry referencing an account
 the chart does not contain fails to load — an invariant failure, not a new account created
-by side effect. A small set of other master files carry the same discipline. Each is a single
-source of truth for one category of fact, referenced by code rather than re-typed at the
-point of use. Among them: an entity registry (jurisdiction, functional currency, reporting
+by side effect. The chart is nine named columns, and a file's header row must match them
+exactly — a renamed or reordered column is a refused file, not a warning:
+
+```
+entity_code,account_code,ledger_account,statement,periods,sign,posting_tag,sourced,notes
+```
+
+The `sign` column is where the chart admits what it does not yet know: a confirmed `+1`
+or `-1`, or an explicit `TBD` or blank. An unconfirmed sign excludes that account from
+every computed statement, and the exclusion is reported by name — never guessed at.
+
+A small set of other master files carry the same discipline. Each is a single source of
+truth for one category of fact, referenced by code rather than re-typed at the point of
+use. Among them: an entity registry (jurisdiction, functional currency, reporting
 framework, which periods are formally delivered), a counterparty registry, a period
 registry, opening balances, and an exchange-rate table. A consolidation-membership table
 rounds out the set, kept separate from both the chart and the entity registry.
@@ -89,12 +100,20 @@ rounds out the set, kept separate from both the chart and the entity registry.
 the engine sees. An account whose sign convention is still undecided is excluded from
 every computed statement and reported by name — never guessed at.
 
-Every posted transaction is one row of a fixed seventeen-field schema. The fields cover
-entity, account, fiscal year, disjoint quarter, and transaction date; counterparty
-(tagged intercompany or external at entry time, never inferred later) and description; a
-reference number and an optional pre-tax subtotal and tax amount; and currency, the
-functional-currency amount, and an invoice reference. There is exactly one such schema.
-The engine refuses to load a file whose structure has drifted from it.
+Every posted transaction is one row of a fixed seventeen-column schema — entity, account,
+fiscal year, disjoint quarter, and transaction date; counterparty (tagged intercompany or
+external at entry time, never inferred later) and description; reference fields; an
+optional pre-tax subtotal and tax amount; and currency, the functional-currency amount,
+and an invoice reference:
+
+```
+entity_code,account_code,fiscal_year,period,txn_date,counterparty_type,counterparty_id,
+description,ref_no,ref_source,subtotal_cad,gst_number,gst_amount,currency_code,
+amount_foreign,amount_cad,invoice_number
+```
+
+There is exactly one such schema, and the same rule applies as to the chart: the engine
+refuses to load a file whose header has drifted from it.
 
 ```rust
 pub struct JournalLine {
@@ -136,7 +155,10 @@ pair rather than paper over the difference.
 
 Ownership percentage is a general field on every consolidation-membership row from the
 outset, even where every member today is wholly owned, so the equity logic needs no
-structural rewrite if a partially owned entity is ever added.
+structural rewrite if a partially owned entity is ever added. Today that field is a
+recorded fact awaiting its mathematics: the engine refuses outright to consolidate a
+member recorded below full ownership rather than scaling its lines proportionately, and it
+likewise refuses a membership change that falls mid-year rather than prorating it.
 
 ---
 
@@ -147,8 +169,8 @@ without independently re-performing it. Four properties do that work: output rep
 from the same inputs; a population of entries that is tamper-evident once posted; an
 opening balance independently re-derived rather than only asserted; and a mechanical path
 from any statement figure back to the entries that produced it. **This is a design
-posture, not a compliance certification of any kind** — a design that makes an audit more efficient to
-perform is not the same claim as a design that has passed one.
+posture, not a compliance certification of any kind** — a design that makes an audit more
+efficient to perform is not the same claim as a design that has passed one.
 
 **Why it matters:** an owner who has never engaged an auditor still gets a record held to
 the same discipline an audit would demand of it. The standard does not wait for someone to
@@ -156,9 +178,12 @@ check the homework.
 
 The engine refuses to render anything on an invariant failure — an unbalanced entry, a
 reference to an account that was never declared, an unresolved opening-balance discrepancy
-— rather than continuing past it with a warning. The one governed exception is a formally
-logged reconciling item, itself required to close within two reporting periods or the run
-fails outright.
+— rather than continuing past it with a warning. Two governed exceptions exist, both
+visible by construction. A formally logged reconciling item is permitted, and is itself
+required to close within two reporting periods or the run fails outright. And where the
+chart still marks an account's sign unconfirmed, the affected statements render with those
+accounts excluded — and the document itself discloses the resulting residual and names
+every excluded account, rather than forcing an artificial tie or guessing a sign.
 
 ---
 
@@ -180,19 +205,64 @@ in a statement can be reproduced from it on that accountant's own machine.
 
 ---
 
+## The command-line toolchain
+
+The engine ships as two crates. `tool-accounting-core` is a pure library — the money,
+period, and journal-line types, the CSV parsers, and the chart, ledger, trial-balance, and
+consolidation logic — with zero external dependencies and zero entity-specific data:
+every chart, journal, and registry is read from a data directory the caller supplies. A
+pilot binary crate drives that library as a command-line toolchain of report binaries,
+each rendering HTML and PDF through `tool-typeset`, the platform's shared zero-dependency
+renderer, into `outputs/<fiscal_year>/` beside the data — redirectable with the
+`ACCOUNTING_OUTPUT_DIR` environment variable, so an experiment never writes into a shared
+data folder.
+
+```
+statements          [--year YYYY] [--period Q1|Q2|Q3|YE]   # consolidated statement package; YE is the default
+gp_statements       [--year YYYY] [--period Q1|Q2|Q3|YE]   # the controlling entity's standalone package
+titleco_statements                                         # per-subsidiary packages, from one shared template
+ledger_report                                              # the full general ledger, rendered
+mda                 [--year YYYY] [--register-root PATH]   # the narrative management-discussion document
+events_timeline     --year YYYY | --from DATE --to DATE    # business-event timeline; optional --entity CODE
+```
+
+The crate's default binary takes no flags at all: it prints an entity-by-entity ledger
+walk — every posted line with its running balance — and the trial balance folded from it,
+the fastest way to see what the journals currently prove. Three behaviors of the report
+binaries carry the engine's character. A quarter the entity registry does not mark as
+formally delivered still renders, but the run labels the result as audit support rather
+than a delivered deliverable — the registry, not the caller, decides that label. The
+narrative management-discussion document renders only for the primary reporting entity;
+asked to produce one for a controlling or nominee entity, the engine refuses, because that
+obligation attaches to the reporting entity alone. And the per-subsidiary statement
+packages render from one shared template, with a test asserting the rendered packages stay
+identical apart from the entity itself — a lint that runs over the same code path the
+binary runs, not a second implementation that could agree with itself while disagreeing
+with the deliverable.
+
+**Why it matters:** every deliverable is one command with at most three flags, run against
+a folder of files — producing a complete, consolidated statement package requires no
+server, no login, and no vendor in the room. The toolchain is CLI-only: no terminal or
+console surface exists yet.
+
+---
+
 ## Build status
 
 `tool-accounting-core` — the shared money, period, and journal-line types, the CSV parser,
-and the chart, ledger, and trial-balance logic — is built and has been verified against
-real historical annual data rather than synthetic fixtures, which surfaced and fixed real
-data-entry defects in the process. `tool-typeset`, the zero-dependency PDF and HTML
-renderer this engine shares with the platform's sibling construction tool, is built and
-independently verified by extracting text back out of a rendered PDF and checking it
-against the source structure. Together they have already run one full fiscal year's
-complete pipeline — journals into a computed ledger, a trial balance folded from it,
-rendered statements, and rendered narrative. That run was entered and rendered end to end
-for a primary reporting entity and its general partner, and a second year is now in
-progress.
+and the chart, ledger, trial-balance, and consolidation logic — is built and has been
+verified against real historical annual data rather than synthetic fixtures, which
+surfaced and fixed real data-entry defects in the process. `tool-typeset`, the
+zero-dependency PDF and HTML renderer this engine shares with the platform's sibling
+construction tool, is built and independently verified by extracting text back out of a
+rendered PDF and checking it against the source structure. Together they have already run
+one full fiscal year's complete pipeline — journals into a computed ledger, a trial
+balance folded from it, rendered statements, and rendered narrative. That run was entered
+and rendered end to end for a primary reporting entity and its general partner, and a
+second year is now in progress. Both crates carry passing unit-test suites, and the
+rendered statement packages were structured line for line against independently prepared
+professional drafts of the same record — an answer key, not data the reports merely
+reformat.
 
 **Why it matters:** an owner evaluating this platform is not being asked to take the
 design on faith. The components that touch real dollar figures have already been checked
@@ -200,20 +270,27 @@ against a real year of real transactions, not designed on paper alone — which 
 `tool-accounting` further along than any comparable tool elsewhere in the platform's
 ledger-and-statement family.
 
-What is registered but not yet active: several wholly-owned subsidiary entities are
-registered as consolidation members, with membership and ownership percentage recorded and
-fully specified. But the consolidation math itself is not yet wired in, no journal data
-exists yet for those subsidiaries, and interim (quarterly) statement rendering is
-specified but not yet built. Opening balances are empty for every entity; current runs
-treat an opening balance as an open item rather than assuming a figure, and dual
-verification against a prior year's own closing balance is a locked design not yet
-exercised in practice. The bookkeeping review terminal planned to confirm entries into the
-ledger is scaffolded and active as a plugin surface, but it is not yet wired to live ledger
-data — its current view renders placeholder figures. A cross-archive aggregation component
-intended for a firm servicing many owners' books at once is referred to here under the
-working name `app-orchestration-accounting`. **This is a proposed name and scope only —
-not a name ratified anywhere else in the platform** — and nothing under that name exists
-yet.
+Three items this article once listed as unbuilt are now real. The consolidation fold is
+wired: the consolidated statement package renders the reporting entity together with its
+registered wholly-owned members, every consolidated line traceable back to the per-entity
+lines it folded from. Journal data now exists for those subsidiary entities, and each
+renders its own standalone year-end package from the shared template described above. And
+interim (quarterly) rendering is built: the statement binaries accept a quarter as readily
+as a year-end, with the entity registry deciding whether the result is a formally
+delivered period or audit support.
+
+Still not built, and reported as such rather than approximated: non-wholly-owned
+consolidation — a member recorded below full ownership is refused, not scaled; mid-year
+consolidation entry or exit — refused, not prorated; opening balances — empty for every
+entity, treated as an open item rather than an assumed figure, with dual verification
+against a prior year's own closing balance a locked design not yet exercised in practice;
+and the archive storage mode described above. The bookkeeping review terminal planned to
+confirm entries into the ledger is scaffolded and active as a plugin surface, but it is
+not yet wired to live ledger data — its current view renders placeholder figures. A
+cross-archive aggregation component intended for a firm servicing many owners' books at
+once is referred to here under the working name `app-orchestration-accounting`. **This is
+a proposed name and scope only — not a name ratified anywhere else in the platform** —
+and nothing under that name exists yet.
 
 ---
 
@@ -235,6 +312,8 @@ before deciding whether to trust it — the code is not a black box behind a pay
 
 - [[tool-construction]] — the sibling development-and-construction ledger tool, built on
   the same double-entry design and sharing this engine's renderer
+- [[tool-payroll]] — the sibling payroll engine, whose first real report is built and
+  designed to post computed pay into this ledger as ordinary entries
 - [[service-fs]] — the append-log storage substrate the planned archive storage mode is
   designed against
 - [[totebox-archive]] — the owner-held archive an entity's records are intended to live

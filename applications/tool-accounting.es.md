@@ -14,7 +14,7 @@ language_protocol: TRANSLATE-ES
 last_edited: 2026-09-01
 editor: pointsav-engineering
 paired_with: tool-accounting.md
-short_description: "Un motor de contabilidad de partida doble, en archivos planos y de propiedad del titular, que produce estados financieros auditables a partir de diarios en texto plano; su motor central y su renderizador PDF/HTML están construidos y verificados contra datos históricos reales, por delante del resto de las herramientas de libro mayor de la plataforma."
+short_description: "Un motor de contabilidad de partida doble, en archivos planos y de propiedad del titular, que produce estados financieros auditables a partir de diarios en texto plano; su motor central y su renderizador PDF/HTML están construidos, verificados contra datos históricos reales multi-entidad, y operados por una cadena de herramientas CLI real de binarios de estados, libro mayor, narrativa y línea de tiempo — solo CLI, sin superficie de consola todavía."
 cites: []
 ---
 
@@ -60,7 +60,7 @@ partir de los cuales se acaba de calcular no puede estar en desacuerdo con ellos
 ```rust
 pub struct Money {
     pub minor: i64,          // un conteo entero exacto de unidades menores — nunca un float
-    pub currency: Currency,  // se registra explícitamente en cada monto
+    pub currency: Currency,  // se registra explícitamente en cada monto — CAD | USD hoy
 }
 ```
 
@@ -85,8 +85,21 @@ de diario.
 El plan de cuentas de cada entidad es un único archivo plano, no una tabla que un operador
 pueda extender silenciosamente escribiendo un código nuevo dentro de una transacción. Un
 asiento que haga referencia a una cuenta que el plan de cuentas no contiene falla al
-cargarse — un fallo de invariante, no una cuenta nueva creada como efecto secundario. Un
-pequeño conjunto de otros archivos maestros mantiene la misma disciplina. Cada uno es la
+cargarse — un fallo de invariante, no una cuenta nueva creada como efecto secundario. El
+plan de cuentas consta de nueve columnas con nombre, y la fila de encabezado de un archivo
+debe coincidir con ellas exactamente — una columna renombrada o reordenada es un archivo
+rechazado, no una advertencia:
+
+```
+entity_code,account_code,ledger_account,statement,periods,sign,posting_tag,sourced,notes
+```
+
+La columna `sign` es donde el plan de cuentas admite lo que aún no sabe: un `+1` o `-1`
+confirmado, o un `TBD` explícito o un valor en blanco. Un signo sin confirmar excluye esa
+cuenta de todo estado financiero calculado, y la exclusión se reporta por nombre — nunca
+se adivina.
+
+Un pequeño conjunto de otros archivos maestros mantiene la misma disciplina. Cada uno es la
 única fuente de verdad para una categoría de hecho, referenciado por código en lugar de
 volver a escribirse en el punto de uso. Entre ellos: un registro de entidades
 (jurisdicción, moneda funcional, marco de reporte, qué períodos se entregan formalmente),
@@ -96,15 +109,23 @@ separada tanto del plan de cuentas como del registro de entidades.
 
 **Por qué importa:** quien revisa el plan de cuentas ve las mismas preguntas abiertas que
 ve el motor. Una cuenta cuya convención de signo aún no está decidida se excluye de todo
-estado financiero calculado y se reporta por nombre — nunca se adivina.
+estado financiero calculado y se reporta por nombre.
 
-Cada transacción registrada es una fila de un esquema fijo de diecisiete campos. Los
-campos cubren entidad, cuenta, año fiscal, trimestre disjunto y fecha de la transacción;
-contraparte (etiquetada como intercompañía o externa en el momento del registro, nunca
-inferida después) y descripción; número de referencia y un subtotal antes de impuestos y
-un monto de impuesto opcionales; y moneda, el monto en la moneda funcional, y una
-referencia de factura. Existe exactamente un esquema de este tipo. El motor rechaza cargar
-un archivo cuya estructura se haya desviado de él.
+Cada transacción registrada es una fila de un esquema fijo de diecisiete columnas —
+entidad, cuenta, año fiscal, trimestre disjunto y fecha de la transacción; contraparte
+(etiquetada como intercompañía o externa en el momento del registro, nunca inferida
+después) y descripción; campos de referencia; un subtotal antes de impuestos y un monto de
+impuesto opcionales; y moneda, el monto en la moneda funcional, y una referencia de
+factura:
+
+```
+entity_code,account_code,fiscal_year,period,txn_date,counterparty_type,counterparty_id,
+description,ref_no,ref_source,subtotal_cad,gst_number,gst_amount,currency_code,
+amount_foreign,amount_cad,invoice_number
+```
+
+Existe exactamente un esquema de este tipo, y aplica la misma regla que al plan de
+cuentas: el motor rechaza cargar un archivo cuyo encabezado se haya desviado de él.
 
 ```rust
 pub struct JournalLine {
@@ -149,7 +170,10 @@ que no cuadre, en lugar de disimular la diferencia.
 El porcentaje de propiedad es un campo general en cada fila de membresía de consolidación
 desde el inicio, incluso cuando hoy todos los miembros son de propiedad total. Así, la
 lógica de patrimonio no necesita una reescritura estructural si alguna vez se agrega una
-entidad de propiedad parcial.
+entidad de propiedad parcial. Hoy ese campo es un hecho registrado a la espera de su
+matemática: el motor se niega directamente a consolidar un miembro registrado por debajo
+de la propiedad total, en lugar de escalar sus líneas proporcionalmente, y de igual modo
+rechaza un cambio de membresía que caiga a mitad de año, en lugar de prorratearlo.
 
 ---
 
@@ -171,9 +195,13 @@ estándar no espera a que alguien revise el trabajo.
 
 El motor se niega a renderizar cualquier cosa ante un fallo de invariante — un asiento
 desbalanceado, una referencia a una cuenta nunca declarada, una discrepancia sin resolver
-en el saldo de apertura — en lugar de continuar con una advertencia. La única excepción
-gobernada es una partida de conciliación formalmente registrada, la cual está obligada a
-cerrarse dentro de dos períodos de reporte o la ejecución falla por completo.
+en el saldo de apertura — en lugar de continuar con una advertencia. Existen dos
+excepciones gobernadas, ambas visibles por construcción. Se permite una partida de
+conciliación formalmente registrada, la cual está obligada a cerrarse dentro de dos
+períodos de reporte o la ejecución falla por completo. Y cuando el plan de cuentas aún
+marca el signo de una cuenta como no confirmado, los estados afectados se renderizan con
+esas cuentas excluidas — y el propio documento revela el residual resultante y nombra cada
+cuenta excluida, en lugar de forzar un cuadre artificial o adivinar un signo.
 
 ---
 
@@ -187,9 +215,9 @@ verificación de manipulación de [[service-fs]], dentro de un [[totebox-archive
 permitiría a un contador revisor verificar no solo que el contenido de un asiento no ha
 sido alterado, sino también que el registro en el que se encuentra solo se ha ido
 anexando desde un punto de control previo que esa persona sostuvo. Se pretende que ambos
-modos compartan
-todas las capas por encima del propio trait de almacenamiento, de modo que cuál de los dos
-use un propietario no cambiaría nada de la lógica del motor — solo dónde viven los bytes.
+modos compartan todas las capas por encima del propio trait de almacenamiento, de modo que
+cuál de los dos use un propietario no cambiaría nada de la lógica del motor — solo dónde
+viven los bytes.
 
 **Por qué importa:** nunca se exige a un propietario adoptar una plataforma alojada para
 usar el libro mayor. El motor puede entregarse a un contador como una carpeta en una
@@ -198,20 +226,70 @@ propia máquina de ese contador.
 
 ---
 
+## La cadena de herramientas de línea de comandos
+
+El motor se distribuye como dos crates. `tool-accounting-core` es una biblioteca pura —
+los tipos de dinero, período y línea de diario, los analizadores de CSV, y la lógica del
+plan de cuentas, el libro mayor, el balance de comprobación y la consolidación — con cero
+dependencias externas y cero datos específicos de entidad: cada plan de cuentas, diario y
+registro se lee desde un directorio de datos que provee quien la invoca. Un crate binario
+piloto opera esa biblioteca como una cadena de herramientas de línea de comandos de
+binarios de informe, cada uno renderizando HTML y PDF a través de `tool-typeset`, el
+renderizador compartido sin dependencias de la plataforma, hacia `outputs/<año_fiscal>/`
+junto a los datos — redirigible con la variable de entorno `ACCOUNTING_OUTPUT_DIR`, de
+modo que un experimento nunca escriba dentro de una carpeta de datos compartida.
+
+```
+statements          [--year YYYY] [--period Q1|Q2|Q3|YE]   # paquete de estados consolidados; YE es el valor por defecto
+gp_statements       [--year YYYY] [--period Q1|Q2|Q3|YE]   # el paquete independiente de la entidad controladora
+titleco_statements                                         # paquetes por subsidiaria, desde una plantilla compartida
+ledger_report                                              # el libro mayor general completo, renderizado
+mda                 [--year YYYY] [--register-root PATH]   # el documento narrativo de discusión de la gerencia
+events_timeline     --year YYYY | --from FECHA --to FECHA  # línea de tiempo de eventos; --entity CODE opcional
+```
+
+El binario por defecto del crate no toma bandera alguna: imprime un recorrido del libro
+mayor entidad por entidad — cada línea registrada con su saldo corriente — y el balance de
+comprobación plegado a partir de él, la forma más rápida de ver lo que los diarios prueban
+actualmente. Tres comportamientos de los binarios de informe llevan el carácter del motor.
+Un trimestre que el registro de entidades no marca como formalmente entregado se renderiza
+de todos modos, pero la ejecución etiqueta el resultado como soporte de auditoría en lugar
+de un entregable formal — el registro, no quien invoca, decide esa etiqueta. El documento
+narrativo de discusión de la gerencia se renderiza solo para la entidad de reporte
+principal; si se le pide producir uno para una entidad controladora o fiduciaria, el motor
+se niega, porque esa obligación corresponde únicamente a la entidad de reporte. Y los
+paquetes de estados por subsidiaria se renderizan desde una plantilla compartida, con una
+prueba que verifica que los paquetes renderizados permanezcan idénticos salvo por la
+entidad misma — una verificación que corre sobre el mismo camino de código que ejecuta el
+binario, no una segunda implementación que podría estar de acuerdo consigo misma mientras
+discrepa del entregable.
+
+**Por qué importa:** cada entregable es un comando con a lo sumo tres banderas, ejecutado
+contra una carpeta de archivos — producir un paquete completo de estados consolidados no
+requiere ningún servidor, ningún inicio de sesión, ni ningún proveedor presente. La cadena
+de herramientas es solo CLI: todavía no existe ninguna superficie de terminal ni de
+consola.
+
+---
+
 ## Estado de construcción
 
 `tool-accounting-core` reúne los tipos compartidos de dinero, período y línea de diario, el
-analizador de CSV, y la lógica del plan de cuentas, el libro mayor y el balance de
-comprobación. Está construido y ha sido verificado contra datos históricos anuales reales
-en lugar de datos de prueba sintéticos, lo cual sacó a la luz y corrigió defectos reales de
-entrada de datos en el proceso. `tool-typeset`, el renderizador de PDF y HTML sin
-dependencias que este motor comparte con la herramienta hermana de construcción de la
-plataforma, está construido y verificado de forma independiente extrayendo texto de un PDF
-renderizado y comparándolo contra la estructura de origen. Juntos, ya han ejecutado el
-canal completo de un año fiscal entero — diarios hacia un libro mayor calculado, un balance
-de comprobación plegado a partir de él, estados financieros renderizados, y narrativa
-renderizada. Esa corrida se introdujo y renderizó de extremo a extremo para una entidad de
-reporte principal y su socio administrador, y un segundo año está actualmente en curso.
+analizador de CSV, y la lógica del plan de cuentas, el libro mayor, el balance de
+comprobación y la consolidación. Está construido y ha sido verificado contra datos
+históricos anuales reales en lugar de datos de prueba sintéticos, lo cual sacó a la luz y
+corrigió defectos reales de entrada de datos en el proceso. `tool-typeset`, el
+renderizador de PDF y HTML sin dependencias que este motor comparte con la herramienta
+hermana de construcción de la plataforma, está construido y verificado de forma
+independiente extrayendo texto de un PDF renderizado y comparándolo contra la estructura
+de origen. Juntos, ya han ejecutado el canal completo de un año fiscal entero — diarios
+hacia un libro mayor calculado, un balance de comprobación plegado a partir de él, estados
+financieros renderizados, y narrativa renderizada. Esa corrida se introdujo y renderizó de
+extremo a extremo para una entidad de reporte principal y su socio administrador, y un
+segundo año está actualmente en curso. Ambos crates cuentan con suites de pruebas
+unitarias que pasan, y los paquetes de estados renderizados se estructuraron línea por
+línea contra borradores profesionales preparados de forma independiente del mismo registro
+— una clave de respuestas, no datos que los informes simplemente reformatean.
 
 **Por qué importa:** a quien evalúa esta plataforma no se le pide confiar en el diseño por
 fe. Los componentes que tocan cifras de dinero real ya han sido verificados contra un año
@@ -219,23 +297,30 @@ real de transacciones reales, no solo diseñados en papel. Eso sitúa a `tool-ac
 más avanzado que cualquier herramienta comparable en el resto de la familia de
 herramientas de libro mayor de la plataforma.
 
-Lo que está registrado pero aún no activo: varias entidades subsidiarias de propiedad total
-están registradas como miembros de consolidación, con la membresía y el porcentaje de
-propiedad registrados y totalmente especificados. Pero el cálculo de la consolidación en
-sí aún no está integrado, todavía no existen datos de diario para esas subsidiarias, y el
-renderizado de estados financieros intermedios (trimestrales) está especificado pero aún
-no construido. Los saldos de apertura están vacíos para todas las entidades. Las
-ejecuciones actuales tratan un saldo de apertura como una partida abierta en lugar de
-asumir una cifra, y la verificación dual contra el saldo de cierre del año anterior es un
-diseño ya decidido, pero aún no ejercitado en la práctica. La terminal de
-revisión contable prevista para confirmar asientos hacia el libro mayor está construida
-como andamiaje y activa como superficie de complemento, pero todavía no está conectada a
-datos reales del libro mayor — su vista actual renderiza cifras de marcador de posición.
-Un componente de agregación entre archivos, previsto para una firma que administra los
-libros de muchos propietarios a la vez, se menciona aquí bajo el nombre de trabajo
-`app-orchestration-accounting`. **Este es solo un nombre y un alcance propuestos — no un
-nombre ratificado en ninguna otra parte de la plataforma** — y todavía no existe nada bajo
-ese nombre.
+Tres puntos que este artículo alguna vez listó como no construidos ya son reales. El
+plegado de consolidación está integrado: el paquete de estados consolidados renderiza la
+entidad de reporte junto con sus miembros registrados de propiedad total, y cada línea
+consolidada es rastreable hasta las líneas por entidad de las que se plegó. Ya existen
+datos de diario para esas entidades subsidiarias, y cada una renderiza su propio paquete
+independiente de cierre de año desde la plantilla compartida descrita arriba. Y el
+renderizado intermedio (trimestral) está construido: los binarios de estados aceptan un
+trimestre con la misma facilidad que un cierre de año, y el registro de entidades decide
+si el resultado es un período formalmente entregado o soporte de auditoría.
+
+Aún no construido, y reportado como tal en lugar de aproximado: la consolidación de
+propiedad parcial — un miembro registrado por debajo de la propiedad total se rechaza, no
+se escala; la entrada o salida de consolidación a mitad de año — se rechaza, no se
+prorratea; los saldos de apertura — vacíos para todas las entidades, tratados como partida
+abierta en lugar de una cifra asumida, con la verificación dual contra el saldo de cierre
+del año anterior como diseño decidido pero aún no ejercitado en la práctica; y el modo de
+almacenamiento de archivo descrito arriba. La terminal de revisión contable prevista para
+confirmar asientos hacia el libro mayor está construida como andamiaje y activa como
+superficie de complemento, pero todavía no está conectada a datos reales del libro mayor —
+su vista actual renderiza cifras de marcador de posición. Un componente de agregación
+entre archivos, previsto para una firma que administra los libros de muchos propietarios a
+la vez, se menciona aquí bajo el nombre de trabajo `app-orchestration-accounting`. **Este
+es solo un nombre y un alcance propuestos — no un nombre ratificado en ninguna otra parte
+de la plataforma** — y todavía no existe nada bajo ese nombre.
 
 ---
 
@@ -260,6 +345,8 @@ caja negra detrás de un muro de pago.
 - [[tool-construction]] — la herramienta hermana de libro mayor para desarrollo y
   construcción, construida sobre el mismo diseño de partida doble y que comparte el
   renderizador de este motor
+- [[tool-payroll]] — el motor hermano de nómina, cuyo primer informe real está construido
+  y diseñado para asentar el pago calculado en este libro mayor como asientos ordinarios
 - [[service-fs]] — el sustrato de almacenamiento de registro de anexado contra el que está
   diseñado el modo de archivo previsto
 - [[totebox-archive]] — el archivo de propiedad del titular donde se prevé que vivan los

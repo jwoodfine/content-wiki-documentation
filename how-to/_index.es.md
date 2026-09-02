@@ -90,6 +90,8 @@ Ejecute las herramientas de dominio de la plataforma — el libro mayor de coste
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: financial-construction-tools -->
 - [[generate-a-construction-cost-estimate|Generar un informe de estimación de costes de construcción]] — ejecute el binario real de informes sobre un directorio de datos CSV; no hay opciones, porque no analiza argumento alguno
+- [[generate-a-financial-statement-package|Generar un paquete de estados financieros]] — represente un paquete consolidado para un ejercicio y un período; la ejecución se niega antes que publicar una cifra que no cuadra
+- [[generate-a-payroll-register|Generar un registro de nóminas]] — agregue las horas de mano de obra presupuestadas por división; no calcula salario bruto, ni frecuencia de pago, ni remisión
 <!-- END AUTO-GENERATED -->
 
 ## Véase también

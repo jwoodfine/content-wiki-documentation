@@ -88,6 +88,8 @@ contabilidad y nóminas. Todas son herramientas de línea de comandos; ninguna t
 pantalla de consola.
 
 - [[generate-a-construction-cost-estimate]] — ejecute el binario real de informes sobre un directorio de datos CSV; no hay opciones, porque no analiza argumento alguno
+- [[generate-a-financial-statement-package]] — represente un paquete de estados consolidados para un ejercicio y un período; la ejecución se niega antes que publicar una cifra que no cuadra
+- [[generate-a-payroll-register]] — agregue las horas de mano de obra presupuestadas por división; no calcula salario bruto, ni frecuencia de pago, ni remisión
 
 ## Autoalojamiento
 

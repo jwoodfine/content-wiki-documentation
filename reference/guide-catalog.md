@@ -87,6 +87,8 @@ schedule, and quality ledger and its accounting and payroll siblings. Each is a
 command-line tool; none has a console screen today.
 
 - [[generate-a-construction-cost-estimate]] — run the real reporting binary against a CSV data directory; there are no flags, because it parses no arguments at all
+- [[generate-a-financial-statement-package]] — render a consolidated statement package for one fiscal year and period; the run refuses rather than publish a figure that does not tie
+- [[generate-a-payroll-register]] — aggregate budgeted labour hours by division; it computes no gross pay, no pay frequency, and no remittance
 
 ## Self-hosting
 
