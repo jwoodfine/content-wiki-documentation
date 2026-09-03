@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Governance"
+title: "Governance and Standards"
 slug: governance-index
 category: governance
 type: topic
@@ -15,8 +15,6 @@ last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: _index.es.md
 ---
-
-## Governance
 
 This category covers the formal decision records, licensing posture, contributor model, and compliance requirements that govern how the PointSav platform is built, licensed, and changed over time. Governance articles are the written record of decisions that have been made and the rationale behind them; they are not aspirational statements.
 
@@ -75,6 +73,6 @@ Start here for procurement, security, and compliance evaluation.
 ## See also
 
 - [Wiki home](/)
-- [Architecture](/architecture/)
-- [Infrastructure](/infrastructure/)
+- [How It's Built](/architecture/)
+- [Where It Runs](/infrastructure/)
 - [Reference](/reference/)

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Patrones de diseño"
+title: "Patrones de Diseño"
 slug: patterns-index
 category: patterns
 type: topic
@@ -78,7 +78,7 @@ Patrones que se repiten en el cromo orientado al operador — el wiki, la superf
 
 ## Véase también
 
-- [Sustrato](/substrate/) — mecanismos fundamentales sobre los que se construyen los patrones
-- [Arquitectura](/architecture/) — arquitectura concreta de la plataforma
+- [Bloques de Construcción](/substrate/) — mecanismos fundamentales sobre los que se construyen los patrones
+- [Cómo Está Construido](/architecture/) — arquitectura concreta de la plataforma
 - [Aplicaciones](/applications/) — aplicaciones orientadas al operador que componen estos patrones
-- [Sistemas](/systems/) — los sistemas operativos en los que se realizan los patrones
+- [Sistemas Operativos](/systems/) — los sistemas operativos en los que se realizan los patrones

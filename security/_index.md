@@ -87,6 +87,6 @@ their own text. This page is an orientation, not a compliance attestation.
 
 ## See also
 
-- [Architecture](/architecture/) — how the platform is put together
+- [How It's Built](/architecture/) — how the platform is put together
 - [Governance and Standards](/governance/) — what was decided and why it is compliant
 - [Where It Runs](/infrastructure/) — the deployed storage and ledger infrastructure these mechanisms protect

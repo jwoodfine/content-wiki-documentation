@@ -60,6 +60,6 @@ Cómo la plataforma convierte el uso en señal de entrenamiento — el mecanismo
 
 ## Véase también
 
-- [Arquitectura](/architecture/) — la construcción de tres anillos que hace estructural este límite
+- [Cómo Está Construido](/architecture/) — la construcción de tres anillos que hace estructural este límite
 - [Componentes básicos](/substrate/) — conceptos de mecanismo relacionados con la IA, incluyendo el artículo de opcionalidad de IA mencionado arriba
 - [Servicios de la plataforma](/services/) — las páginas por servicio, incluyendo el propio servicio de IA

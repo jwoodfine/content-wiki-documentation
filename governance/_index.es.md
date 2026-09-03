@@ -1,7 +1,7 @@
 ---
 schema: foundry-doc-v1
 content_type: topic
-title: "Gobernanza"
+title: "Gobernanza y Estándares"
 slug: governance-index
 short_description: "Registros formales de decisiones, postura de licenciamiento, modelo de contribuidor y requisitos de cumplimiento que rigen cómo se construye, licencia y modifica la plataforma PointSav — incluyendo las doce decisiones arquitectónicas vinculantes, la postura de divulgación continua BCSC y la matriz de licencias."
 lang: es
@@ -72,6 +72,6 @@ Punto de entrada para la evaluación de adquisición, seguridad y cumplimiento.
 ## Véase también
 
 - [Inicio del wiki](/)
-- [Arquitectura](/architecture/)
-- [Infraestructura](/infrastructure/)
+- [Cómo Está Construido](/architecture/)
+- [Dónde Se Ejecuta](/infrastructure/)
 - [Referencia](/reference/)

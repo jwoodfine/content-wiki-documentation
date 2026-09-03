@@ -93,6 +93,6 @@ de cumplimiento.
 
 ## Véase también
 
-- [Arquitectura](/architecture/) — cómo está construida la plataforma
+- [Cómo Está Construido](/architecture/) — cómo está construida la plataforma
 - [Gobernanza y estándares](/governance/) — qué se decidió y por qué es conforme
 - [Dónde se ejecuta](/infrastructure/) — la infraestructura de almacenamiento y registro desplegada que protegen estos mecanismos

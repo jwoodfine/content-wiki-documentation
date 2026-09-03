@@ -60,6 +60,6 @@ How the platform turns use into training signal — the mechanism behind "the pl
 
 ## See also
 
-- [Architecture](/architecture/) — the three-ring build that makes this boundary structural
+- [How It's Built](/architecture/) — the three-ring build that makes this boundary structural
 - [Building Blocks](/substrate/) — AI-adjacent mechanism concepts, including the AI-optionality article above
 - [Platform Services](/services/) — the per-service pages, including the AI service itself

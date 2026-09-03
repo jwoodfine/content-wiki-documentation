@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Sistema de diseño"
+title: "Diseño y Marca"
 slug: design-system-index
 short_description: "El sistema de diseño PointSav como componente de plataforma — su vocabulario fundacional, filosofía de diseño y contexto de superficie de marca. Las guías de implementación de componentes, especificaciones de tokens y documentación de accesibilidad se encuentran en design.pointsav.com."
 category: design-system
@@ -94,6 +94,6 @@ Las cuatro familias de tokens de la capa de fundación: color, tipografía, espa
 
 ## Véase también
 
-- [Sustrato](/substrate/) — el marco de sustrato del sistema de diseño junto con los otros sustratos de mecanismos fundacionales
-- [Patrones](/patterns/) — patrones de diseño nombrados que el sistema de diseño codifica en la capa de interfaz
+- [Bloques de Construcción](/substrate/) — el marco de sustrato del sistema de diseño junto con los otros sustratos de mecanismos fundacionales
+- [Patrones de Diseño](/patterns/) — patrones de diseño nombrados que el sistema de diseño codifica en la capa de interfaz
 - [Aplicaciones](/applications/) — aplicaciones orientadas al operador que consumen el sistema de diseño a través de las capas de tokens y componentes

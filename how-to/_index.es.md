@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Guías para Desarrolladores"
+title: "Cómo Lo Operas"
 slug: how-to
 category: how-to
 type: topic

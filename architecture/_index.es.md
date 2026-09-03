@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Arquitectura"
+title: "Cómo Está Construido"
 slug: architecture-index
 short_description: "Arquitectura de plataforma transversal: el modelo de composición de tres anillos, límite de enrutamiento e inferencia de IA, sustrato de seguridad e identidad, principios de propiedad del cliente y el dominio de inteligencia de ubicación."
 lang: es
@@ -106,7 +106,7 @@ Un artículo adicional planificado para el dominio de inteligencia de ubicación
 
 ## Véase también
 
-- [Sustrato](/substrate/) — conceptos de mecanismo fundacionales: los sustratos compuesto, de aprendizaje, de citas y de divulgación
-- [Patrones](/patterns/) — patrones de diseño nombrados realizados en la plataforma
-- [Gobernanza](/governance/) — los registros de decisiones formales, la postura de licenciamiento y los requisitos de cumplimiento
-- [Infraestructura](/infrastructure/) — topología de despliegue de flota, entorno en la nube e infraestructura física
+- [Bloques de Construcción](/substrate/) — conceptos de mecanismo fundacionales: los sustratos compuesto, de aprendizaje, de citas y de divulgación
+- [Patrones de Diseño](/patterns/) — patrones de diseño nombrados realizados en la plataforma
+- [Gobernanza y Estándares](/governance/) — los registros de decisiones formales, la postura de licenciamiento y los requisitos de cumplimiento
+- [Dónde Se Ejecuta](/infrastructure/) — topología de despliegue de flota, entorno en la nube e infraestructura física

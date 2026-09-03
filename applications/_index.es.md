@@ -86,7 +86,7 @@ Una familia de herramientas de libro contable bajo control del propietario que c
 
 ## Véase también
 
-- [Servicios](/services/) — la capa de servicios sobre la que construyen las aplicaciones
-- [Sistemas](/systems/) — los sistemas operativos que alojan las aplicaciones
-- [Arquitectura](/architecture/) — el modelo de tres anillos y los principios de propiedad del cliente
-- [Sistema de diseño](/design-system/) — el vocabulario de tokens y componentes que hereda el cromo de las aplicaciones
+- [Servicios de la Plataforma](/services/) — la capa de servicios sobre la que construyen las aplicaciones
+- [Sistemas Operativos](/systems/) — los sistemas operativos que alojan las aplicaciones
+- [Cómo Está Construido](/architecture/) — el modelo de tres anillos y los principios de propiedad del cliente
+- [Diseño y Marca](/design-system/) — el vocabulario de tokens y componentes que hereda el cromo de las aplicaciones

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Sistemas"
+title: "Sistemas Operativos"
 slug: systems-index
 short_description: "Los sistemas operativos de propósito específico que comparten un sustrato seL4 y Rust común — Totebox, Console, Workplace, Orchestration, Infrastructure, Network Admin, MediaKit y PrivateGit — cada uno realizando un trabajo, sin características que no necesita, y comunicándose a través de una disciplina de protocolo común basada en Diode."
 lang: es
@@ -72,7 +72,7 @@ El SO orientado al público que aloja la superficie de marketing de la empresa, 
 
 ## Véase también
 
-- [Arquitectura](/architecture/) — arquitectura transversal de la plataforma y el modelo de tres anillos
-- [Servicios](/services/) — los servicios autónomos que se ejecutan dentro y a través de los sistemas operativos
-- [Infraestructura](/infrastructure/) — topología de despliegue de flota y entorno operativo en la nube
-- [Sustrato](/substrate/) — las disciplinas de sustrato y las primitivas del microkernel que hereda la familia de SO
+- [Cómo Está Construido](/architecture/) — arquitectura transversal de la plataforma y el modelo de tres anillos
+- [Servicios de la Plataforma](/services/) — los servicios autónomos que se ejecutan dentro y a través de los sistemas operativos
+- [Dónde Se Ejecuta](/infrastructure/) — topología de despliegue de flota y entorno operativo en la nube
+- [Bloques de Construcción](/substrate/) — las disciplinas de sustrato y las primitivas del microkernel que hereda la familia de SO

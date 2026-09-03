@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Servicios"
+title: "Servicios de la Plataforma"
 slug: services-index
 short_description: "Los servicios autónomos que implementan ingestión de límite Ring 1 y procesamiento de conocimiento determinista Ring 2 en la arquitectura de tres anillos de PointSav — agrupados por capa de anillo y función."
 lang: es
@@ -86,6 +86,6 @@ Servicios construidos para capacidades específicas de la plataforma.
 
 ## Véase también
 
-- [Sistemas](/systems/) — los sistemas operativos dentro de los cuales se ejecutan los servicios
-- [Arquitectura](/architecture/) — el modelo de tres anillos y los invariantes que rigen la interacción entre anillos
-- [Infraestructura](/infrastructure/) — despliegue de flota y la capa física en la que se ejecutan los servicios
+- [Sistemas Operativos](/systems/) — los sistemas operativos dentro de los cuales se ejecutan los servicios
+- [Cómo Está Construido](/architecture/) — el modelo de tres anillos y los invariantes que rigen la interacción entre anillos
+- [Dónde Se Ejecuta](/infrastructure/) — despliegue de flota y la capa física en la que se ejecutan los servicios

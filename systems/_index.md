@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Systems"
+title: "Operating Systems"
 slug: systems-index
 category: systems
 type: topic
@@ -71,7 +71,7 @@ The public-facing OS that hosts the company's marketing surface, internal wiki, 
 
 ## See also
 
-- [Architecture](/architecture/) — cross-cutting platform architecture and the three-ring model
-- [Services](/services/) — the autonomous services that run within and across operating systems
-- [Infrastructure](/infrastructure/) — fleet deployment topology and cloud operational runtime
-- [Substrate](/substrate/) — the substrate disciplines and microkernel primitives the OS family inherits
+- [How It's Built](/architecture/) — cross-cutting platform architecture and the three-ring model
+- [Platform Services](/services/) — the autonomous services that run within and across operating systems
+- [Where It Runs](/infrastructure/) — fleet deployment topology and cloud operational runtime
+- [Building Blocks](/substrate/) — the substrate disciplines and microkernel primitives the OS family inherits

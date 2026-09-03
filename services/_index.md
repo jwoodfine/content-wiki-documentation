@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Services"
+title: "Platform Services"
 slug: services-index
 category: services
 type: topic
@@ -85,6 +85,6 @@ Services built for specific platform capabilities.
 
 ## See also
 
-- [Systems](/systems/) — the operating systems that services run within
-- [Architecture](/architecture/) — the three-ring model and the invariants that govern ring interaction
-- [Infrastructure](/infrastructure/) — fleet deployment and the physical layer services run on
+- [Operating Systems](/systems/) — the operating systems that services run within
+- [How It's Built](/architecture/) — the three-ring model and the invariants that govern ring interaction
+- [Where It Runs](/infrastructure/) — fleet deployment and the physical layer services run on

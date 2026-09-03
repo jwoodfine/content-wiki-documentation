@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Infraestructura"
+title: "Dónde Se Ejecuta"
 slug: infrastructure-index
 short_description: "Topología de implementación de flota, runtime operacional en la nube e infraestructura física — el sustrato de almacenamiento del registro WORM, patrones de despliegue en el borde, la malla privada WireGuard, la telemetría soberana, las operaciones de cableado de claves y el vault contable que ancla la superficie contable PYME."
 lang: es
@@ -78,7 +78,7 @@ Cómo se agrupan, aíslan y protegen las máquinas virtuales en los nodos PPN �
 
 ## Véase también
 
-- [Arquitectura](/architecture/) — arquitectura transversal de la plataforma y el modelo de tres anillos
-- [Sistemas](/systems/) — los sistemas operativos que se ejecutan sobre esta infraestructura
-- [Servicios](/services/) — los servicios que dependen del sustrato de almacenamiento y red
-- [Sustrato](/substrate/) — los conceptos de mecanismos fundacionales que realiza la infraestructura
+- [Cómo Está Construido](/architecture/) — arquitectura transversal de la plataforma y el modelo de tres anillos
+- [Sistemas Operativos](/systems/) — los sistemas operativos que se ejecutan sobre esta infraestructura
+- [Servicios de la Plataforma](/services/) — los servicios que dependen del sustrato de almacenamiento y red
+- [Bloques de Construcción](/substrate/) — los conceptos de mecanismos fundacionales que realiza la infraestructura

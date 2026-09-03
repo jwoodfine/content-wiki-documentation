@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Design patterns"
+title: "Design Patterns"
 slug: patterns-index
 category: patterns
 type: topic
@@ -78,7 +78,7 @@ Patterns that recur in the operator-facing chrome — the wiki, the location-int
 
 ## See also
 
-- [Substrate](/substrate/) — foundational mechanisms patterns build on
-- [Architecture](/architecture/) — concrete platform architecture
+- [Building Blocks](/substrate/) — foundational mechanisms patterns build on
+- [How It's Built](/architecture/) — concrete platform architecture
 - [Applications](/applications/) — operator-facing applications that compose these patterns
-- [Systems](/systems/) — the operating systems on which the patterns are realised
+- [Operating Systems](/systems/) — the operating systems on which the patterns are realised

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Developer Guides"
+title: "How You Run It"
 slug: how-to
 category: how-to
 type: topic

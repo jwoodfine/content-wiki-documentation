@@ -85,7 +85,7 @@ A family of owner-held ledger tools sharing one double-entry design: accounting,
 
 ## See also
 
-- [Services](/services/) — the service layer that applications build on
-- [Systems](/systems/) — the operating systems that host applications
-- [Architecture](/architecture/) — the three-ring model and the customer-ownership principles
-- [Design system](/design-system/) — the token and component vocabulary the application chrome inherits
+- [Platform Services](/services/) — the service layer that applications build on
+- [Operating Systems](/systems/) — the operating systems that host applications
+- [How It's Built](/architecture/) — the three-ring model and the customer-ownership principles
+- [Design and Brand](/design-system/) — the token and component vocabulary the application chrome inherits

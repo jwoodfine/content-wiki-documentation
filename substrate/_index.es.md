@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Sustrato"
+title: "Bloques de Construcción"
 slug: substrate-index
 category: substrate
 type: topic
@@ -103,5 +103,5 @@ Los nueve sustratos nombrados: cada uno designa una propiedad estructural de la 
 
 ## Véase también
 
-- [Architecture](/architecture/) — arquitectura transversal de la plataforma
-- [Patterns](/patterns/) — patrones de diseño nombrados realizados sobre sustratos
+- [Cómo Está Construido](/architecture/) — arquitectura transversal de la plataforma
+- [Patrones de Diseño](/patterns/) — patrones de diseño nombrados realizados sobre sustratos
