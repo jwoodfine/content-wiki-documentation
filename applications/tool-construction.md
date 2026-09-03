@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: forward-looking
 language_protocol: PROSE-TOPIC
-last_edited: 2026-09-01
+last_edited: 2026-09-03
 editor: pointsav-engineering
 paired_with: tool-construction.es.md
 short_description: "A flat-file, owner-held ledger for construction cost, schedule, and quality control, built on the same double-entry discipline as tool-accounting; the core engine now runs as a real CLI, posting a live pilot's estimates through all four cost-type chains — estimate-stage only, with no console surface yet."
@@ -101,6 +101,8 @@ Two characteristics of the reporting are worth stating because they are unusual.
 
 Construction contracts are subject to statutory holdback (retainage) — a defined percentage of every certified payment withheld by the owner, released once a lien period during which unpaid suppliers can register a claim against the building expires with no claims registered. The design accounts for three consequences this creates: holdback applies against a certified payment application as a whole, not just against subcontract work; different kinds of work carry different lien periods, so parties on the same project become releasable on different dates; and the relevant statutory clocks run in working days, not calendar days, making a correct working-day calendar a legal requirement of the software rather than a scheduling convenience. The subcontract chain's certification and retainage mechanics are built; the working-day calendar and statutory-clock model is the largest piece of this section still unimplemented, and it gates the payment-cycle reporting that would sit on top of it.
 
+**Why it matters:** a holdback released one day early, or a lien period miscounted by even one working day, is a real compliance failure under lien law, not a rounding error the software can quietly absorb — which is exactly why the calendar model is treated as a legal requirement rather than a scheduling nicety.
+
 ---
 
 ## Platform services
@@ -119,9 +121,13 @@ The platform's archive substrate and terminal are free (Apache-2.0); cross-archi
 
 The platform's distribution rules classify `tool-*` components as internal operator tooling not distributed as a standalone product by default, with exceptions granted individually — `tool-wallet` is the one existing precedent. **No distribution exception is currently recorded for `tool-construction`.**
 
+**Why it matters:** the free/paid line sits at the domain engineering itself, not at the infrastructure underneath it — the same principle that keeps the platform's archive substrate and terminal free applies here too, just one layer up.
+
 ## Licensing
 
 `tool-construction` is licensed under AGPL-3.0-or-later. AGPL-3.0-or-later is a copyleft license: the source code is available to everyone, and any modified version — including one operated as a network service — must be released under the same license if it is distributed or made available over a network. A separate PointSav-Commercial license is available as a paid alternative for anyone who needs to distribute a modified version, or offer it as a network service, without that copyleft obligation.
+
+**Why it matters:** a lender or an owner's own engineer can read and audit the full source before deciding whether to trust it — the code is not a black box behind a paywall.
 
 ---
 
@@ -130,6 +136,8 @@ The platform's distribution rules classify `tool-*` components as internal opera
 The boundaries stated at the top are worth restating precisely. Not yet built: the dollar-side cost ledger (payables, payroll postings, holdback dollars) and with it any actual-cost reporting — the pilot has no invoice, payment, or payroll document in its pipeline, and the engine reports that absence rather than modelling around it; an independent installed-quantity measurement source, which gates real earned-value reporting; the working-day calendar and statutory-clock model; the one-way feeds into [[tool-accounting]] and [[tool-payroll]]; the archive storage adapter that would persist ledger data through the platform's own record store; the sale-transition access-transfer mechanism; and any console or terminal surface — the two proposed screens (a ledger table view and a work-package/quality panel) remain without a build slot on the platform's fixed twelve-function-key terminal, and the toolchain is operated entirely from the command line.
 
 Open design questions that remain genuinely unresolved include whether quality sign-offs need cryptographic signing given their potential legal weight in a defect claim, whether individual-performance scoring belongs inside this system or stays a separate concern, and what triggers and authorizes the sale-transition access transfer and interfaces with a real legal closing process.
+
+**Why it matters:** none of these gaps is hidden inside a passing test or a silent fallback — each is named here so a reader evaluating the engine knows precisely which claims are proven today and which are still stated intent.
 
 ## See also
 

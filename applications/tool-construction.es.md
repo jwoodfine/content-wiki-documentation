@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: forward-looking
 language_protocol: PROSE-TOPIC
-last_edited: 2026-09-01
+last_edited: 2026-09-03
 editor: pointsav-engineering
 paired_with: tool-construction.md
 short_description: "Un libro contable de archivos planos, bajo control del propietario, para el costo, cronograma y control de calidad de la construcción, sobre la misma disciplina de partida doble que tool-accounting; el motor central ya funciona como CLI real, contabilizando los estimados de un piloto en vivo a través de las cuatro cadenas de tipo de costo — solo en etapa de estimación y sin superficie de consola todavía."
@@ -101,6 +101,8 @@ Vale la pena señalar dos características del sistema de reportes porque son po
 
 Los contratos de construcción están sujetos a retención estatutaria (holdback) — un porcentaje definido de cada pago certificado que el propietario retiene, liberado una vez que expira, sin reclamos registrados, un período de gravamen durante el cual los proveedores impagos pueden registrar un reclamo contra el edificio. El diseño contempla tres consecuencias que esto genera: la retención se aplica sobre una solicitud de pago certificada en su totalidad, no solo sobre el trabajo subcontratado; distintos tipos de trabajo llevan distintos períodos de gravamen, por lo que las partes del mismo proyecto quedan liberables en fechas diferentes; y los plazos estatutarios relevantes corren en días hábiles, no en días calendario, lo que convierte un calendario correcto de días hábiles en un requisito legal del software, no en una conveniencia de programación. La mecánica de certificación y retención de la cadena de subcontratos está construida; el modelo de calendario de días hábiles y plazos estatutarios es la pieza más grande de esta sección aún sin implementar, y condiciona los reportes de ciclo de pagos que se apoyarían en él.
 
+**Por qué importa:** una retención liberada un día antes, o un período de gravamen mal contado por siquiera un día hábil, es una falla real de cumplimiento bajo la ley de gravámenes, no un error de redondeo que el software pueda absorber en silencio — precisamente por eso el modelo de calendario se trata como un requisito legal y no como una comodidad de programación.
+
 ---
 
 ## Servicios de plataforma
@@ -119,9 +121,13 @@ El sustrato de archivo y la terminal de la plataforma son gratuitos (Apache-2.0)
 
 Las reglas de distribución de la plataforma clasifican los componentes `tool-*` como herramientas internas del operador que, por defecto, no se distribuyen como producto independiente, con excepciones otorgadas de forma individual — `tool-wallet` es el único precedente existente. **Actualmente no existe ninguna excepción de distribución registrada para `tool-construction`.**
 
+**Por qué importa:** el límite entre lo gratuito y lo pagado se sitúa en la ingeniería de dominio misma, no en la infraestructura subyacente — el mismo principio que mantiene gratuitos el sustrato de archivo y la terminal de la plataforma se aplica aquí también, un nivel más arriba.
+
 ## Licenciamiento
 
 `tool-construction` está licenciado bajo AGPL-3.0-or-later. AGPL-3.0-or-later es una licencia copyleft: el código fuente está disponible para todos, y cualquier versión modificada — incluida una operada como servicio de red — debe publicarse bajo la misma licencia si se distribuye o se pone a disposición a través de una red. Existe una licencia PointSav-Commercial independiente como alternativa de pago para quien necesite distribuir una versión modificada, u ofrecerla como servicio de red, sin esa obligación de copyleft.
+
+**Por qué importa:** un prestamista o el propio ingeniero de un propietario puede leer y auditar el código fuente completo antes de decidir si confiar en él — el código no es una caja negra detrás de un muro de pago.
 
 ---
 
@@ -130,6 +136,8 @@ Las reglas de distribución de la plataforma clasifican los componentes `tool-*`
 Los límites enunciados al inicio merecen precisarse. Aún no construido: el libro de costos del lado de dólares (cuentas por pagar, asientos de nómina, dólares de retención) y con él cualquier reporte de costo efectivo — el piloto no tiene ninguna factura, pago o documento de nómina en su canalización, y el motor reporta esa ausencia en lugar de modelar a su alrededor; una fuente independiente de medición de cantidad instalada, que condiciona el reporte real de valor ganado; el modelo de calendario de días hábiles y plazos estatutarios; las alimentaciones unidireccionales hacia [[tool-accounting]] y [[tool-payroll]]; el adaptador de almacenamiento de archivo que persistiría los datos del libro a través del propio almacén de registros de la plataforma; el mecanismo de transferencia de acceso en la transición de venta; y cualquier superficie de consola o terminal — las dos pantallas propuestas (una vista de tabla del libro contable y un panel de paquete de trabajo/calidad) siguen sin espacio de compilación en la terminal fija de doce teclas de función de la plataforma, y la cadena de herramientas se opera enteramente desde la línea de comandos.
 
 Entre las preguntas de diseño abiertas que permanecen genuinamente sin resolver están si las certificaciones de calidad necesitan firma criptográfica dado su posible peso legal en un reclamo por defectos, si la puntuación de desempeño individual pertenece dentro de este sistema o permanece como un asunto separado, y qué desencadena y autoriza la transferencia de acceso en la transición de venta, y cómo se relaciona con un proceso real de cierre legal.
+
+**Por qué importa:** ninguno de estos vacíos está oculto dentro de una prueba que pasa o un valor de respaldo silencioso — cada uno se nombra aquí para que quien evalúe el motor sepa con precisión qué afirmaciones están demostradas hoy y cuáles siguen siendo una intención declarada.
 
 ## Véase también
 
