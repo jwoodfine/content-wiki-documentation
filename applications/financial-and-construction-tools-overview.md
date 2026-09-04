@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: forward-looking
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-30
+last_edited: 2026-09-04
 editor: pointsav-engineering
 paired_with: financial-and-construction-tools-overview.es.md
 short_description: "How tool-accounting, tool-construction, and tool-payroll relate as one product family — a shared double-entry design, one-way data feeds between them, and a shared free/paid architecture boundary."
@@ -41,17 +41,23 @@ All three tools sit on the same underlying platform architecture: the archive su
 
 ## Licensing
 
-`tool-accounting`, `tool-construction`, and `tool-payroll` are licensed under FSL-1.1-ALv2.
+`tool-accounting`, `tool-construction`, and `tool-payroll` are licensed under
+AGPL-3.0-or-later. A separate PointSav-Commercial license is available as a paid
+alternative for anyone who needs to distribute a modified version, or offer it as a
+network service, without the copyleft obligation.
 
 ## Build status, side by side
 
 | Tool | Real state today |
 |---|---|
-| `tool-accounting` | Furthest along: real code, built and run against real historical data end-to-end for statement production. Subsidiary-entity consolidation math is not yet wired in. |
-| `tool-construction` | Crates exist and compile as real workspace members, but are empty skeletons with no pipeline logic written. One pilot construction site is registered with source documents cited by hash; zero ledger entries exist. |
-| `tool-payroll` | 100% design: zero code written, no crate scaffolded. Only one jurisdiction (Alberta) has been worked through, explicitly as a pilot, not full platform coverage. |
+| `tool-accounting` | Furthest along: `tool-accounting-core` and `tool-typeset` are real, built, and verified end to end against a real historical fiscal year — journals, ledger, trial balance, and rendered statements. The consolidation fold, subsidiary journal data, and interim (quarterly) rendering are now real; non-wholly-owned consolidation, mid-year entry/exit, and opening balances remain unbuilt. |
+| `tool-construction` | A real pilot CLI (`tool-construction-tco-26`) renders four real reports — a cost estimate, a critical-path schedule, a materials listing, and a monthly status report — against a registered pilot site's real work-package data. The dollar-side cost ledger, actual-cost reporting, and the working-day statutory-clock model remain unbuilt. |
+| `tool-payroll` | One real report exists: a division-level Payroll Register aggregating the construction pilot's budgeted labour hours under a single, cited jurisdiction's wage-rules row (an explicit pilot scope, not platform coverage). Gross-to-net pay, pay frequency, and remittance computation remain design-only. |
 
-**Why it matters:** the three tools are frequently discussed together because of their shared design, but they are not at the same stage of readiness — nothing in any of the three should be read as describing shipped, operable software today.
+**Why it matters:** the three tools are frequently discussed together because of their
+shared design, but they are not at the same stage of readiness — each has at least one
+real, running report today, but none is complete platform coverage, and nothing in any of
+the three should be read as production-ready software.
 
 ## See also
 

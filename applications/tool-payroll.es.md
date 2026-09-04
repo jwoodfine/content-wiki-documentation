@@ -11,10 +11,10 @@ status: active
 audience: vendor-public
 bcsc_class: forward-looking
 language_protocol: TRANSLATE-ES
-last_edited: 2026-09-01
+last_edited: 2026-09-04
 editor: pointsav-engineering
 paired_with: tool-payroll.md
-short_description: "Un motor de nómina y remesas estatutarias sensible a la jurisdicción cuyo primer informe real — un Registro de Nómina por división que agrega las horas laborales presupuestadas del piloto de construcción bajo una fila citada de reglas salariales de Alberta — está construido y en funcionamiento; el cálculo bruto-a-neto, la frecuencia de pago y el cálculo de remesas siguen siendo solo diseño."
+short_description: "Un motor de nómina y remesas estatutarias sensible a la jurisdicción cuyo primer informe real — un Registro de Nómina por división que agrega las horas laborales presupuestadas del piloto de construcción bajo una fila citada de reglas salariales de una sola jurisdicción — está construido y en funcionamiento; el cálculo bruto-a-neto, la frecuencia de pago y el cálculo de remesas siguen siendo solo diseño."
 cites: []
 ---
 
@@ -31,8 +31,8 @@ tarjetas de horas de ambas herramientas como alimentaciones de una sola vía.
 piloto — creado junto a los propios crates piloto de la cadena de herramientas
 de construcción, que es donde vive ahora el desarrollo del motor — lee las
 horas laborales presupuestadas y los supuestos de cuadrilla que el piloto de
-[[tool-construction]] ya mantiene, más la tabla de reglas salariales de
-Alberta de una sola fila descrita abajo, los agrega en totales laborales por
+[[tool-construction]] ya mantiene, más la tabla de reglas salariales de una
+sola jurisdicción y de una sola fila descrita abajo, los agrega en totales laborales por
 división, y renderiza un Registro de Nómina (por División) como HTML y PDF a
 través de `tool-typeset`, el mismo renderizador compartido que usan los
 motores hermanos. Es un solo comando sin banderas ni argumentos, y sus pruebas
@@ -105,18 +105,19 @@ cero, porque una cuadrilla de cero sería en sí misma una afirmación.
 
 ---
 
-## Alcance de jurisdicción — solo Alberta, y explícitamente piloto
+## Alcance de jurisdicción — solo una, y explícitamente piloto
 
 Cada cifra de sincronización salarial y remesa vive como una fila citada en
 una tabla organizada por jurisdicción — `wage_payment_rules.csv`, ahora un
 archivo real que el registro en funcionamiento carga — nunca como una regla
 codificada de forma fija en el motor. Al momento de escribir esto, solo hay
-**una fila de jurisdicción poblada y verificada: Alberta**, porque el sitio
-piloto se encuentra allí. Esto es explícitamente un alcance piloto, no
+**una fila de jurisdicción poblada y verificada**, que corresponde a la
+provincia donde se encuentra el sitio piloto (no se nombra en contenido
+público). Esto es explícitamente un alcance piloto, no
 cobertura de plataforma. Toda otra jurisdicción es un vacío nombrado y sin
 poblar. Se pretende que una entidad cuya jurisdicción carezca de fila sea un
-vacío rechazado y visible, en lugar de recibir en silencio los valores de
-Alberta por defecto.
+vacío rechazado y visible, en lugar de recibir en silencio los valores
+de la fila poblada por defecto.
 
 ```
 wage_payment_rules.csv — real; una fila poblada y con fuente citada
@@ -124,8 +125,9 @@ wage_payment_rules.csv — real; una fila poblada y con fuente citada
 jurisdiction_code,max_pay_period_days,max_days_to_pay_after_period_end,
 day_counting,remitting_authority,comp_authority,source_ref,effective_from
 
-AB,31,10,calendar,CRA,WCB Alberta,"alberta.ca/payment-earnings; canada.ca
-calendario de tipos de remitente; mecánica de primas de empleador de WCB Alberta",
+[jurisdicción],31,10,calendar,CRA,WCB [jurisdicción],"estatuto de pago
+salarial de la jurisdicción; calendario federal de tipos de remitente;
+mecánica de primas de empleador de la junta de compensación de trabajadores",
 ```
 
 Las citas viajan en el propio campo `source_ref` de la fila, de modo que la
@@ -147,7 +149,8 @@ diseñada para estar completamente desacoplada de la frecuencia de remesa
 estatutaria, la distinción más consecuente de todo este diseño. Se pretende
 que la frecuencia de pago sea configurable por el operador, por cuadrilla o
 empleado: diaria, semanal, quincenal o semi-mensual, con el mes como límite
-superior en la fila citada de Alberta, en lugar de una opción distinta del
+superior en la fila citada de la jurisdicción piloto, en lugar de una opción
+distinta del
 operador. La frecuencia de remesa, en cambio, es un hecho a nivel de
 *empleador* fijado por la autoridad fiscal según el volumen de retención
 histórico. La mayoría de los empleadores remite mensualmente sin importar
@@ -172,35 +175,38 @@ respuestas distintas.
 
 ## El límite de pago salarial
 
-La regla citada de Alberta fija un límite máximo estricto: una fecha de
-pago calculada para un periodo de pago dado no puede caer más tarde del
-número de días que indique la jurisdicción después de que termine el
-periodo. La fila citada de Alberta fija ese número en diez días calendario
-consecutivos. El diseño pretende que el motor rechace, en lugar de ajustar
-en silencio, cualquier configuración o entrada manual de fecha de pago que
-violaría este límite una vez resuelto a partir de la fila de jurisdicción
-de la entidad. Se pretende que una corrida de pago que caería fuera de la
-ventana aparezca como un error nombrado y bloqueante, no como una
-advertencia.
+La regla citada de la jurisdicción piloto fija un límite máximo estricto:
+una fecha de pago calculada para un periodo de pago dado no puede caer más
+tarde del número de días que indique la jurisdicción después de que termine
+el periodo. La fila citada de la jurisdicción piloto fija ese número en diez
+días calendario consecutivos. El diseño pretende que el motor rechace, en
+lugar de ajustar en silencio, cualquier configuración o entrada manual de
+fecha de pago que violaría este límite una vez resuelto a partir de la fila
+de jurisdicción de la entidad. Se pretende que una corrida de pago que
+caería fuera de la ventana aparezca como un error nombrado y bloqueante, no
+como una advertencia.
 
 Hoy el límite es dato, no aplicación: el registro en funcionamiento resuelve
-la fila de Alberta e imprime la cifra de diez días en sus propias notas, pero
-todavía no se calcula ninguna fecha de pago en ninguna parte, así que el
-comportamiento de rechazar-en-lugar-de-ajustar sigue siendo diseño.
+la fila de la jurisdicción piloto e imprime la cifra de diez días en sus
+propias notas, pero todavía no se calcula ninguna fecha de pago en ninguna
+parte, así que el comportamiento de rechazar-en-lugar-de-ajustar sigue
+siendo diseño.
 
-Las propias excepciones publicadas por Alberta para la industria de la
-construcción son estrechas: cubren solo cómo puede sincronizarse el pago de
-vacaciones y el pago de días festivos generales. No cubren un periodo de
+Las propias excepciones publicadas por la jurisdicción piloto para la
+industria de la construcción son estrechas: cubren solo cómo puede
+sincronizarse el pago de vacaciones y el pago de días festivos generales.
+No cubren un periodo de
 pago más corto o más largo, ni una regla de sincronización de pago distinta
 para los trabajadores de la construcción o el trabajo por jornada en
 general. Se diseña que los trabajadores de la construcción sigan el mismo
-límite que cualquier otro empleado en la fila de Alberta — este hallazgo es
-específico de Alberta y no se asume que se generalice a ninguna otra
-jurisdicción.
+límite que cualquier otro empleado en esa fila — este hallazgo es
+específico de la jurisdicción piloto y no se asume que se generalice a
+ninguna otra jurisdicción.
 
 **Por qué importa:** el derecho legal de un trabajador a cobrar dentro de
 una ventana acotada después de realizar el trabajo no se flexibiliza para
-los oficios de la construcción, al menos bajo la regla de Alberta — el
+los oficios de la construcción, al menos bajo la regla de la jurisdicción
+piloto — el
 diseño trata esto como una restricción estricta que aplica el motor, no
 como una preferencia que pueda anular.
 
@@ -208,8 +214,9 @@ como una preferencia que pueda anular.
 
 ## Los días calendario y los días laborables nunca son el mismo reloj
 
-El reloj de pago salarial de Alberta cuenta días calendario. Un conjunto
-distinto de relojes, ya real y en operación dentro de [[tool-construction]]
+El reloj de pago salarial de la jurisdicción piloto cuenta días calendario.
+Un conjunto distinto de relojes, ya real y en operación dentro de
+[[tool-construction]]
 — que rigen la liberación de retenciones y la sincronización de pago
 pronto entre partes contratantes — cuenta en cambio días *laborables*. Se
 trata de regímenes legalmente distintos: uno rige los salarios que se le
@@ -220,7 +227,8 @@ relojes no reducen ni alteran las obligaciones de pago salarial de un
 empleador.
 
 El diseño trata `day_counting` como su propio campo en la fila de
-jurisdicción — `calendar` para el reloj salarial de Alberta — en lugar de
+jurisdicción — `calendar` para el reloj salarial de la jurisdicción piloto —
+en lugar de
 una constante fija compartida con cualquier calendario de días laborables
 que tool-construction ya mantiene para sus propios fines. Una regla que
 tomara prestado en silencio el conteo de días de un reloj para el otro se
@@ -238,16 +246,17 @@ difícil de cometer.
 
 El reporte de ingresos evaluables para compensación de trabajadores y la
 remesa de primas está diseñado como ortogonal a ambos relojes anteriores.
-El requisito citado de Alberta es una estimación anual de nómina más una
+El requisito citado de la jurisdicción piloto es una estimación anual de
+nómina más una
 remesa periódica de primas — mensual, trimestral o anual, a elección del
 empleador por debajo de un umbral de tamaño de nómina — a la junta
 provincial de compensación de trabajadores. Ese calendario no sigue con qué
 frecuencia, ni con qué rapidez, un empleador paga a sus trabajadores.
 
 El diseño modela esto como un campo `comp_authority` por fila de
-jurisdicción — la junta de Alberta es el único valor poblado hoy; las
-juntas equivalentes de otras provincias son filas nombradas pero sin
-poblar, y no se asume que compartan la mecánica específica de Alberta.
+jurisdicción — la junta de la jurisdicción piloto es el único valor poblado
+hoy; las juntas equivalentes de otras jurisdicciones son filas nombradas
+pero sin poblar, y no se asume que compartan su mecánica específica.
 
 **Por qué importa:** una plataforma de nómina puede acertar tanto en la
 sincronización salarial como en la remesa fiscal y aun así reportar mal las
@@ -386,7 +395,7 @@ una versión modificada, u ofrecerla como servicio de red, sin esa obligación d
 | Componente | Estado |
 |---|---|
 | Registro de Nómina (por División) — agregación de horas presupuestadas y cuadrilla por división, HTML + PDF | **Construido y en funcionamiento** — el primer informe real del motor; un solo comando sin banderas |
-| Tabla de jurisdicción (`wage_payment_rules.csv`) | Real — una fila poblada y con fuente citada (Alberta), cargada por el informe en funcionamiento. Toda otra jurisdicción es un vacío nombrado y sin poblar |
+| Tabla de jurisdicción (`wage_payment_rules.csv`) | Real — una fila poblada y con fuente citada (jurisdicción no nombrada en contenido público), cargada por el informe en funcionamiento. Toda otra jurisdicción es un vacío nombrado y sin poblar |
 | Clasificación y contrato de integración con `tool-construction` | Fijado como decisión de diseño; una lectura por archivos de las horas presupuestadas del piloto de construcción es real, pero la alimentación de tarjetas de horas en sí no está construida |
 | Diseño de cadencia de pago y sincronización estatutaria (modelo de jurisdicción, los dos relojes, el límite de pago salarial, la distinción calendario/laborable, el reporte de compensación de trabajadores) | Diseñado y fijado; la aplicación no está construida — todavía no se calcula ninguna fecha de pago en ninguna parte |
 | El cálculo bruto-a-neto mismo (tramos impositivos, fórmulas de deducción estatutaria) | Explícitamente diferido; no diseñado |

@@ -11,7 +11,7 @@ status: active
 audience: vendor-public
 bcsc_class: forward-looking
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-30
+last_edited: 2026-09-04
 editor: pointsav-engineering
 paired_with: financial-and-construction-tools-overview.md
 short_description: "Cómo se relacionan tool-accounting, tool-construction y tool-payroll como una sola familia de productos — un diseño compartido de partida doble, alimentaciones de datos unidireccionales entre ellos y un límite compartido de arquitectura gratuita/pagada."
@@ -41,17 +41,23 @@ Las tres herramientas se apoyan en la misma arquitectura de plataforma subyacent
 
 ## Licenciamiento
 
-`tool-accounting`, `tool-construction` y `tool-payroll` están licenciados bajo FSL-1.1-ALv2.
+`tool-accounting`, `tool-construction` y `tool-payroll` están licenciados bajo
+AGPL-3.0-or-later. Existe una licencia PointSav-Commercial independiente como alternativa
+de pago para quien necesite distribuir una versión modificada, u ofrecerla como servicio
+de red, sin la obligación de copyleft.
 
 ## Estado de construcción, lado a lado
 
 | Herramienta | Estado real hoy |
 |---|---|
-| `tool-accounting` | La más avanzada: código real, construido y ejecutado contra datos históricos reales de extremo a extremo para la producción de estados financieros. La matemática de consolidación de entidades subsidiarias aún no está integrada. |
-| `tool-construction` | Los crates existen y compilan como miembros reales del workspace, pero son andamiajes vacíos sin lógica de canalización escrita. Un sitio de construcción piloto está registrado con documentos de origen citados por hash; no existe ninguna entrada contable. |
-| `tool-payroll` | 100% de diseño: sin código escrito, sin crate creado. Solo se ha trabajado una jurisdicción (Alberta), explícitamente como piloto, no como cobertura completa de la plataforma. |
+| `tool-accounting` | La más avanzada: `tool-accounting-core` y `tool-typeset` son reales, están construidos y verificados de extremo a extremo contra un año fiscal histórico real — asientos, libro mayor, balance de comprobación y estados financieros renderizados. El plegado de consolidación, los datos de diario de las entidades subsidiarias y el renderizado interino (trimestral) ya son reales; la consolidación sin propiedad total, la entrada o salida a mitad de año y los saldos de apertura siguen sin construirse. |
+| `tool-construction` | Un CLI piloto real (`tool-construction-tco-26`) renderiza cuatro informes reales — una estimación de costos, un cronograma de ruta crítica, un listado de materiales y un informe mensual de estado — contra los datos reales de paquetes de trabajo de un sitio piloto registrado. El libro de costos en dólares, el reporte de costos reales y el modelo de plazos estatutarios en días laborables siguen sin construirse. |
+| `tool-payroll` | Existe un informe real: un Registro de Nómina por división que agrega las horas laborales presupuestadas del piloto de construcción bajo una fila citada de reglas salariales de una sola jurisdicción (un alcance explícitamente piloto, no cobertura de plataforma). El cálculo bruto-a-neto, la frecuencia de pago y el cálculo de remesas siguen siendo solo diseño. |
 
-**Por qué importa:** las tres herramientas se discuten frecuentemente juntas por su diseño compartido, pero no están en la misma etapa de madurez — nada en ninguna de las tres debe interpretarse como una descripción de software operable y ya enviado hoy.
+**Por qué importa:** las tres herramientas se discuten frecuentemente juntas por su diseño
+compartido, pero no están en la misma etapa de madurez — cada una tiene hoy al menos un
+informe real en funcionamiento, pero ninguna ofrece cobertura completa de plataforma, y
+nada en ninguna de las tres debe interpretarse como software listo para producción.
 
 ## Véase también
 

@@ -11,10 +11,10 @@ status: active
 audience: vendor-public
 bcsc_class: forward-looking
 language_protocol: PROSE-TOPIC
-last_edited: 2026-09-01
+last_edited: 2026-09-04
 editor: pointsav-engineering
 paired_with: tool-payroll.es.md
-short_description: "A jurisdiction-aware payroll and statutory-remittance engine whose first real report — a division-level Payroll Register aggregating the construction pilot's budgeted labour hours under a cited Alberta wage-rules row — is built and running; gross-to-net pay, pay frequency, and remittance computation remain design-only."
+short_description: "A jurisdiction-aware payroll and statutory-remittance engine whose first real report — a division-level Payroll Register aggregating the construction pilot's budgeted labour hours under a cited single-jurisdiction wage-rules row — is built and running; gross-to-net pay, pay frequency, and remittance computation remain design-only."
 cites: []
 ---
 
@@ -30,7 +30,7 @@ timecards from both of those tools as one-way feeds.
 crate — scaffolded alongside the construction toolchain's own pilot crates,
 which is where the engine's development now lives — reads the budgeted labour
 hours and crew assumptions the [[tool-construction]] pilot already maintains,
-plus the one-row Alberta wage-rules table described below, aggregates them into
+plus the one-row, single-jurisdiction wage-rules table described below, aggregates them into
 division-level labour totals, and renders a Payroll Register (by Division) as
 HTML and PDF through `tool-typeset`, the same shared renderer the sibling
 engines use. It is a single command with no flags or arguments, and its tests
@@ -94,16 +94,17 @@ would itself be a claim.
 
 ---
 
-## Jurisdiction scope — Alberta only, and explicitly a pilot
+## Jurisdiction scope — one jurisdiction only, and explicitly a pilot
 
 Every wage-timing and remittance figure lives as a cited row in a
 jurisdiction-keyed table — `wage_payment_rules.csv`, now a real file the
 running register loads — never a rule hardcoded into engine logic. As of this
-writing, only **one jurisdiction row is populated and verified: Alberta**,
-because the pilot site sits there. This is explicitly a pilot scope, not
-platform coverage — every other jurisdiction is a named, unpopulated gap, and
-an entity whose jurisdiction has no row is intended to be a refused, visible
-gap rather than silently defaulted to Alberta's numbers.
+writing, only **one jurisdiction row is populated and verified**, matching
+the province where the pilot site sits (not named in public content). This
+is explicitly a pilot scope, not platform coverage — every other
+jurisdiction is a named, unpopulated gap, and an entity whose jurisdiction
+has no row is intended to be a refused, visible gap rather than silently
+defaulted to the populated row's numbers.
 
 ```
 wage_payment_rules.csv — real; one populated, source-cited row
@@ -111,8 +112,9 @@ wage_payment_rules.csv — real; one populated, source-cited row
 jurisdiction_code,max_pay_period_days,max_days_to_pay_after_period_end,
 day_counting,remitting_authority,comp_authority,source_ref,effective_from
 
-AB,31,10,calendar,CRA,WCB Alberta,"alberta.ca/payment-earnings; canada.ca
-remitter-type schedule; WCB Alberta employer premium mechanics",
+[jurisdiction],31,10,calendar,CRA,[jurisdiction] WCB,"[jurisdiction wage-payment
+statute; federal remitter-type schedule; provincial workers'-compensation
+premium mechanics]",
 ```
 
 The citations ride in the row's own `source_ref` field, so the rule and its
@@ -132,8 +134,9 @@ Pay frequency — how often a worker is paid — is designed to be fully
 decoupled from statutory remittance frequency, which is the single most
 consequential distinction in this design. Pay frequency is intended to be
 operator-configured per crew or employee: daily, weekly, bi-weekly, or
-semi-monthly, with monthly as an outer bound in Alberta's cited row rather
-than a distinct operator choice. Remittance frequency, by contrast, is an
+semi-monthly, with monthly as an outer bound in the pilot jurisdiction's
+cited row rather than a distinct operator choice. Remittance frequency, by
+contrast, is an
 *employer*-level fact set by the tax authority from trailing withholding
 volume — most employers remit monthly regardless of how often they pay staff,
 and only the highest-volume employers are required to remit more often as
@@ -155,37 +158,38 @@ questions with two different answers.
 
 ## The wage-payment ceiling
 
-Alberta's cited rule sets a hard outer limit: a computed pay date for a given
-pay period may fall no later than the jurisdiction's stated number of days
-after the period ends — ten consecutive calendar days, in Alberta's cited
-row. The design intends the engine to refuse, not silently clamp, any
-configuration or manual pay-date entry that would violate this ceiling once
-resolved from the entity's own jurisdiction row. A pay run that would land
-outside the window is meant to surface as a named, blocking error rather than
-a warning.
+The pilot jurisdiction's cited rule sets a hard outer limit: a computed pay
+date for a given pay period may fall no later than the jurisdiction's stated
+number of days after the period ends — ten consecutive calendar days, in the
+pilot jurisdiction's cited row. The design intends the engine to refuse, not
+silently clamp, any configuration or manual pay-date entry that would
+violate this ceiling once resolved from the entity's own jurisdiction row. A
+pay run that would land outside the window is meant to surface as a named,
+blocking error rather than a warning.
 
 Today the ceiling is data, not enforcement: the running register resolves
-Alberta's row and prints the ten-day figure into its own notes, but no pay
-date is computed anywhere yet, so the refuse-rather-than-clamp behavior
-remains design.
+the pilot jurisdiction's row and prints the ten-day figure into its own
+notes, but no pay date is computed anywhere yet, so the
+refuse-rather-than-clamp behavior remains design.
 
-Alberta's own published construction-industry exceptions are narrow: they
-cover only how vacation pay and general-holiday pay may be timed, not a
-shorter or longer pay period, and not a different payment-timing rule for
-trades or day labour generally. Trades are designed to follow the identical
-ceiling as any other employee in Alberta's row — this finding is
-Alberta-specific and is not assumed to generalize to any other jurisdiction.
+The pilot jurisdiction's own published construction-industry exceptions are
+narrow: they cover only how vacation pay and general-holiday pay may be
+timed, not a shorter or longer pay period, and not a different
+payment-timing rule for trades or day labour generally. Trades are designed
+to follow the identical ceiling as any other employee in that jurisdiction's
+row — this finding is specific to the pilot jurisdiction and is not assumed
+to generalize to any other.
 
-**Why it matters:** a worker's legal right to be paid within a bounded window
-after doing the work does not bend for the construction trades, at least
-under Alberta's rule — the design treats that as a hard constraint the engine
-enforces, not a preference it can override.
+**Why it matters:** a worker's legal right to be paid within a bounded
+window after doing the work does not bend for the construction trades, at
+least under the pilot jurisdiction's rule — the design treats that as a hard
+constraint the engine enforces, not a preference it can override.
 
 ---
 
 ## Calendar days and working days are never the same clock
 
-Alberta's wage-payment clock counts calendar days. A separate set of clocks,
+The pilot jurisdiction's wage-payment clock counts calendar days. A separate set of clocks,
 already real and shipped in [[tool-construction]], counts *working* days
 instead — governing holdback release and prompt-payment timing between
 contracting parties. These are legally distinct regimes: one governs wages
@@ -195,7 +199,7 @@ governing construction-payment statute states directly that its own clocks do
 not reduce or alter an employer's wage-payment obligations.
 
 The design treats `day_counting` as its own field on the jurisdiction row —
-`calendar` for Alberta's wage clock — rather than a hardcoded constant shared
+`calendar` for the pilot jurisdiction's wage clock — rather than a hardcoded constant shared
 with any working-day calendar tool-construction already maintains for its own
 purposes. A rule that quietly borrowed one clock's day-counting for the other
 would be treated as a real compliance defect, not a rounding difference.
@@ -209,16 +213,16 @@ design is structured to make structurally hard to write.
 ## Workers'-compensation reporting — a third, independent clock
 
 Workers'-compensation assessable-earnings reporting and premium remittance is
-designed as orthogonal to both of the clocks above. Alberta's cited
+designed as orthogonal to both of the clocks above. The pilot jurisdiction's cited
 requirement is an annual payroll estimate plus periodic premium remittance —
 monthly, quarterly, or annual, at the employer's choice below a payroll-size
 threshold — to the provincial workers'-compensation board. That schedule
 does not follow how often, or how quickly, an employer pays its workers.
 
 The design models this as a `comp_authority` field per jurisdiction row —
-Alberta's board is the one populated value today; equivalent boards in other
-provinces are named-but-unpopulated rows, not assumed to share Alberta's
-specific mechanics.
+the pilot jurisdiction's board is the one populated value today; equivalent
+boards in other jurisdictions are named-but-unpopulated rows, not assumed to
+share its specific mechanics.
 
 **Why it matters:** a payroll platform can get wage timing and tax remittance
 both right and still misreport workers'-compensation premiums if it assumes
@@ -344,7 +348,7 @@ offer it as a network service, without that copyleft obligation.
 | Component | Status |
 |---|---|
 | Payroll Register (by Division) — division-level budgeted-hours and crew aggregation, HTML + PDF | **Built and running** — the engine's first real report; a single command with no flags |
-| Jurisdiction table (`wage_payment_rules.csv`) | Real — one populated, source-cited row (Alberta), loaded by the running report. Every other jurisdiction is a named, unpopulated gap |
+| Jurisdiction table (`wage_payment_rules.csv`) | Real — one populated, source-cited row (jurisdiction not named in public content), loaded by the running report. Every other jurisdiction is a named, unpopulated gap |
 | Classification and integration contract with `tool-construction` | Locked as a design decision; a file-based read of the construction pilot's budgeted hours is real, but the timecard feed itself is not built |
 | Pay-cadence and statutory-timing design (jurisdiction model, the two clocks, the wage-payment ceiling, calendar/working-day distinction, workers'-compensation reporting) | Designed and locked; enforcement not built — no pay date is computed anywhere yet |
 | Gross-to-net computation itself (tax brackets, statutory deduction formulas) | Explicitly deferred; not designed |
