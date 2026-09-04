@@ -12,7 +12,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-26
+last_edited: 2026-09-04
 editor: pointsav-engineering
 short_description: "A composition-first pattern that encodes regulatory requirements into element specifications as geometric and numeric constraints rather than applying them post-design, so a non-compliant configuration cannot be placed in the first place."
 cites: [ifc-4-3, ids-1-0, bsdd-v1]
@@ -92,7 +92,7 @@ Three structural reasons prevent a centralised cloud service from replicating th
 
 The pattern is implemented progressively.
 
-**Stage 1 (current, planned for v0.0.3).** Object vault with the Specification layer complete. Regulation layer skeleton present with a first overlay set: British Columbia residential (RS-1 zoning), illustrative of a representative jurisdiction's residential zoning code. Climate Zone layer populated with BC temperate-coastal (ASHRAE 5C equivalent) performance parameters.
+**Stage 1 (current, planned for v0.0.3).** Object vault with the Specification layer complete. Regulation layer skeleton present with a first overlay set: a representative jurisdiction's residential zoning code (RS-1-style zoning), illustrative rather than exhaustive. Climate Zone layer populated with that same jurisdiction's temperate-coastal (ASHRAE 5C equivalent) performance parameters.
 
 **Stage 2 (intended, v0.1.x).** IDS 1.0 constraint-file generation. For each registered Regulation overlay, a conformant IDS 1.0 file is generated from the object data and published alongside the DTCG JSON, so existing IDS-aware validators can consume PointSav-authored constraint specifications.
 

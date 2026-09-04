@@ -12,7 +12,7 @@ status: active
 audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-26
+last_edited: 2026-09-04
 editor: pointsav-engineering
 short_description: "Un patrón de composición previa que codifica los requisitos normativos en las especificaciones de los elementos como restricciones geométricas y numéricas, en lugar de aplicarlos después del diseño, de modo que una configuración no conforme no llega a poder colocarse."
 cites: [ifc-4-3, ids-1-0, bsdd-v1]
@@ -79,7 +79,7 @@ Una restricción numérica IDS puede expresar REI 90; no puede expresar la conti
 
 ## Etapas de implementación
 
-**Etapa 1 (actual, prevista para v0.0.3).** Archivo de objetos con la capa de Especificación completa. Esqueleto de la capa de Regulación con un primer conjunto de capas jurisdiccionales: residencial de Columbia Británica (zonificación RS-1), ilustrativa del código de zonificación residencial de una jurisdicción representativa. Capa de Zona Climática poblada con los parámetros de desempeño de la zona templada costera de BC (equivalente ASHRAE 5C).
+**Etapa 1 (actual, prevista para v0.0.3).** Archivo de objetos con la capa de Especificación completa. Esqueleto de la capa de Regulación con un primer conjunto de capas jurisdiccionales: el código de zonificación residencial de una jurisdicción representativa (zonificación estilo RS-1), ilustrativo y no exhaustivo. Capa de Zona Climática poblada con los parámetros de desempeño de la zona templada costera (equivalente ASHRAE 5C) de esa misma jurisdicción.
 
 **Etapa 2 (prevista, v0.1.x).** Generación de archivos de restricción IDS 1.0. Para cada capa de Regulación registrada se genera un archivo IDS 1.0 conforme a partir de los datos del objeto, publicado junto al JSON DTCG, de modo que los validadores compatibles con IDS ya existentes puedan consumir especificaciones de restricción creadas por PointSav.
 
