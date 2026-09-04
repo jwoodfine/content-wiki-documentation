@@ -11,7 +11,7 @@ index_type: thematic
 index_scope: applications
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+last_edited: 2026-09-04
 editor: pointsav-engineering
 paired_with: _index.es.md
 ---
@@ -33,10 +33,10 @@ The wiki engine, the marketing surface, and the design-intent articles that desc
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: knowledge-and-editorial-applications -->
 - [[app-mediakit-knowledge]] — Single-binary Rust wiki engine serving documentation.pointsav.com — a view over a markdown tree where git commits are canonical and the running binary is disposable.
-- [[app-mediakit-marketing]] — Rust web server delivering marketing landing sites from typed page manifests — AI authors via MCP, a human approves before anything publishes. Serves home.woodfinegroup.com and home.pointsav.com.
+- [[app-mediakit-marketing]] — app-mediakit-marketing is a Rust web server delivering marketing landing sites from typed page manifests — AI authors via MCP, a human approves before anything publishes. Serves home.woodfinegroup.com and home.pointsav.com.
 - [[knowledge-wiki-home-page-design]] — How the documentation.pointsav.com home page inherits Wikipedia's structural conventions and extends them for engineering and financial-community readers.
-- [[wikipedia-leapfrog-design]] — What the wiki engine inherits from Wikipedia, what it adds beyond it, and what the five-percent leapfrog headroom means for readers and engineers.
-- [[documentation-pointsav-com-launch-2026-04-27]] — The April 2026 TLS launch of `documentation.pointsav.com`: serving stack, placeholder posture, BCSC disclosure rationale, and verification commands.
+- [[wikipedia-leapfrog-design]] — What the app-mediakit-knowledge wiki engine inherits from Wikipedia, what it adds beyond it, and what the 5% leapfrog headroom means for readers and engineers.
+- [[documentation-pointsav-com-launch-2026-04-27]] — The April 2026 TLS launch of documentation.pointsav.com: serving stack, placeholder posture, BCSC disclosure rationale, and verification commands.
 - [[radical-proofreader-ui]] — Terminal content cartridge for the service-proofreader pipeline — operators submit text, review findings, and record a binary accept/reject verdict that feeds the apprenticeship corpus.
 <!-- END AUTO-GENERATED -->
 
@@ -46,7 +46,7 @@ The GIS analytics engine, the platform article that frames it alongside the rend
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: location-intelligence-applications -->
 - [[app-orchestration-gis]] — The Python data pipeline that produces the Woodfine co-location rankings and interactive map — cluster geometry rebuilt on a nightly schedule from source datasets, published as static map tiles.
-- [[location-intelligence-platform]] — The full location intelligence platform: a nightly `app-orchestration-gis` pipeline paired with an interactive rendering layer; every dataset, algorithm, and rendering decision under customer control.
+- [[location-intelligence-platform]] — Customer-owned flat-file GIS application for retail cluster analysis and strategic site selection, pairing a nightly scoring pipeline with an interactive rendering layer.
 - [[location-intelligence-ux]] — The Conclusion-First design philosophy: ranked tier conclusions rather than individual data points, so users see the most defensible commercial nodes at national zoom before drilling into individual operators.
 <!-- END AUTO-GENERATED -->
 
@@ -55,11 +55,11 @@ The GIS analytics engine, the platform article that frames it alongside the rend
 The structured-input gate that admits external files to a Totebox, and the browser workbench for working with archive files outside a terminal.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: input-and-developer-surfaces -->
-- [[app-console-input]] — The F12 surface in os-console: the structured input gate through which raw external files enter a Totebox before being sealed into the verified ledger.
-- [[app-privategit-workbench]] — A browser-based three-column file editor included in os-privategit; for working with archive files without a terminal session.
-- [[app-console-keys]] — The always-installed base chassis of os-console: defines the Cartridge trait every F-key module implements, the F-key navigation strip, the status bar, and the machine-based-authorization client the other cartridges connect through.
-- [[app-console-email]] — The F3 communications cartridge for os-console: inbox, message reading, and compose-and-send through service-email's Comm Diode egress path.
-- [[app-console-slm]] — The F9 terminal cartridge showing live AI inference infrastructure state — model health, GPU node fleet, queue depth, and daily spend — for the operator running a Totebox.
+- [[app-console-input]] — app-console-input is the F12 surface in os-console — a path, a confirm prompt, and a submission, through which raw external files enter a Totebox before being sealed into the verified ledger.
+- [[app-privategit-workbench]] — Browser-based file editor in os-privategit presenting a three-column file tree, viewer, and editor for working across the cluster archive tree without a terminal.
+- [[app-console-keys]] — app-console-keys is the always-installed base chassis of os-console, providing the Cartridge trait, F-key navigation strip, status bar, and auth client.
+- [[app-console-email]] — app-console-email is the F3 communications cartridge for os-console, providing inbox listing, message reading, and compose-and-send via service-email.
+- [[app-console-slm]] — Terminal console cartridge showing live AI inference infrastructure state — model health, the burst-GPU fleet, queue depth, and daily spend — read-only, with no controls of its own.
 <!-- END AUTO-GENERATED -->
 
 ## Domain applications
@@ -77,10 +77,10 @@ Additional planned articles for this domain — design-system tooling for BIM, A
 A family of owner-held ledger tools sharing one double-entry design: accounting, construction cost/schedule/quality control, and payroll. All three now have real, running code — tool-accounting's ledger engine, tool-construction's cost/schedule/reporting engine, and tool-payroll's first report — though the depth of what's built varies widely across the three.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: financial-and-construction-tools -->
-- [[financial-and-construction-tools-overview]] — How the three tools relate as one product family: the shared double-entry design, the one-way data feeds between them, and the shared free/paid architecture boundary.
-- [[tool-accounting]] — A flat-file, owner-held double-entry ledger producing audit-ready financial statements; core engine and a real CLI toolchain of report binaries, verified against real historical multi-entity data.
-- [[tool-construction]] — A flat-file, owner-held ledger for construction cost, schedule, and quality control; the core engine now runs as a real CLI, producing cost estimate and schedule reports for a live pilot — estimate-stage only, no console yet.
-- [[tool-payroll]] — A jurisdiction-aware payroll and statutory-remittance engine; its first real report (a division-level Payroll Register) is built and running, but gross-to-net pay, pay frequency, and remittance remain design-only.
+- [[financial-and-construction-tools-overview]] — How tool-accounting, tool-construction, and tool-payroll relate as one product family — a shared double-entry design, one-way data feeds between them, and a shared free/paid architecture boundary.
+- [[tool-accounting]] — A flat-file, owner-held double-entry accounting engine producing audit-ready financial statements from plain-text journals; its core engine and PDF/HTML renderer are built, verified against real historical multi-entity data, and driven by a real CLI toolchain of statement, ledger, narrative, and timeline report binaries — CLI-only, with no console surface yet.
+- [[tool-construction]] — A flat-file, owner-held ledger for construction cost, schedule, and quality control, built on the same double-entry discipline as tool-accounting; the core engine now runs as a real CLI, posting a live pilot's estimates through all four cost-type chains — estimate-stage only, with no console surface yet.
+- [[tool-payroll]] — A jurisdiction-aware payroll and statutory-remittance engine whose first real report — a division-level Payroll Register aggregating the construction pilot's budgeted labour hours under a cited single-jurisdiction wage-rules row — is built and running; gross-to-net pay, pay frequency, and remittance computation remain design-only.
 <!-- END AUTO-GENERATED -->
 
 ## See also

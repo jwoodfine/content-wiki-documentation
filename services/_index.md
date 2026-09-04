@@ -11,7 +11,7 @@ index_type: thematic
 index_scope: services
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+last_edited: 2026-09-04
 editor: pointsav-engineering
 paired_with: _index.es.md
 ---
@@ -32,10 +32,10 @@ The platform functions fully across Rings 1 and 2 without AI compute — a deplo
 Per-tenant boundary services. Each runs as a separate process per tenant and exposes a Model Context Protocol server interface.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: ring-1-boundary-ingest -->
-- [[service-fs]] — The filesystem service: append-only WORM ledger, per-tenant storage root, the foundation every other Ring 1 service writes to — architecture, durability, and the SEC 17a-4(f)/eIDAS/SOC 2 compliance posture it enables by construction.
-- [[service-email]] — Email ingest: SMTP and IMAP, sanitised payloads, append-only Maildir on local block storage.
-- [[service-people]] — Identity ledger: an F2 os-console surface exposing append, lookup, and regex-based email-scan tools over MCP, backed by a store that rejects conflicting identities.
-- [[service-input]] — Document intake at the Ring 1 boundary: parses PDF, Markdown, DOCX, and XLSX by format detection, normalizes to a `ParsedDocument`, and hands off to service-fs for WORM ledger commit.
+- [[service-fs]] — The per-tenant Write-Once-Read-Many immutable ledger that backs every record written to the platform — a real, implemented HTTP and MCP interface over a hash-chained append log, with monthly external anchoring to a public transparency log.
+- [[service-email]] — service-email pulls mail out of a Microsoft Exchange mailbox over EWS, writes the raw message to local storage, and deletes it from the source mailbox immediately after extraction — the cloud mailbox is a transit point, not a copy of record.
+- [[service-people]] — service-people is the F2 surface in os-console — an MCP server over an append-only, WORM-backed identity ledger with three tools: append, lookup, and regex-based email scanning.
+- [[service-input]] — service-input batch-migrates markdown reference material from a source archive into the platform's ingest pipeline, deduplicating by content hash and validating against each file's own ledger record — with a companion tool that scores how well downstream extraction matches that ledger.
 <!-- END AUTO-GENERATED -->
 
 ## Ring 2 — Knowledge and processing
@@ -43,11 +43,11 @@ Per-tenant boundary services. Each runs as a separate process per tenant and exp
 Deterministic processing services. Each reads from Ring 1 and produces structured records — no AI variance enters the authoritative record.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: ring-2-knowledge-and-processing -->
-- [[service-extraction]] — The central Ring 2 traffic controller: strips proprietary formatting, constructs Entity Bundles, assigns transaction IDs, routes to deterministic services or to service-slm.
-- [[service-content]] — The Gravity Engine: reads raw payloads from a Totebox, runs them against an institutional taxonomy, generates the structured documents an organisation publishes.
-- [[service-search]] — Full-text search on Tantivy: a designed but not yet built inverted-index service — only a description exists today, no source code.
-- [[service-egress]] — Physical release valve: structured records leave the platform only through this service.
-- [[archetypes-and-chart-of-accounts]] — The institutional taxonomy: eleven archetypes and a Chart of Accounts that classify personnel and documents by structural position and functional role.
+- [[service-extraction]] — service-extraction watches a directory for incoming JSON payloads carrying edge-classified entities, writes a per-payload ledger record for the target service, and can bridge the same text into the DataGraph ingestion pipeline.
+- [[service-content]] — service-content extracts named entities from raw payloads through a tiered model pipeline, writes them into the knowledge graph under a human-review checkpoint, and hosts the platform's reference taxonomies.
+- [[service-search]] — service-search is a designed but unbuilt Ring 2 full-text search service — a README describes a Tantivy-based inverted index, but no source code exists yet.
+- [[service-egress]] — service-egress compresses and chunks local mail data for outbound transfer, and only deletes the local source once an external counterpart confirms receipt with a cryptographic proof — an outbound release valve, not a cloud-to-local import.
+- [[archetypes-and-chart-of-accounts]] — The Chart of Accounts and eleven archetypes are two reference taxonomies service-content loads into the knowledge graph, giving every classified entity a structural category and a functional signature.
 <!-- END AUTO-GENERATED -->
 
 ## Ring 3 — AI gateway
@@ -55,11 +55,11 @@ Deterministic processing services. Each reads from Ring 1 and produces structure
 One service spans Ring 3. It reads from Ring 2 and produces proposals a human reviews; it never writes to the knowledge graph or the ledger.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: ring-3-ai-gateway -->
-- [[service-slm]] — The Doorman: AI routing across local, burst, and external compute tiers; audit ledger on every call; every API key held at this boundary.
-- [[service-slm-yoyo-operational]] — Operational state of service-slm and the Yo-Yo GPU burst VM: Tier A/B configuration, apprenticeship brief queue, idle-shutdown cost ceiling.
-- [[service-slm-totebox-sysadmin]] — A planned direction for service-slm as a Totebox sysadmin assistant, built on the real, already-operational apprenticeship training pipeline — the specific task taxonomy is proposed, not yet registered.
-- [[service-slm-graph-store-migration]] — The DataGraph's live property graph: nightly LadybugDB rebuild via grammar-constrained entity extraction through the Doorman, writing directly with no review step of its own.
-- [[yoyo-daily-enrichment-cycle]] — The Yo-Yo GPU burst VM's daily batch window: two phases, DataGraph rebuild and (once fully enabled) adapter training — training currently runs in marker-only mode.
+- [[service-slm]] — service-slm is the platform's AI inference gateway — every request, local or remote, transits the Doorman's audit boundary and one of three compute tiers before a response returns.
+- [[service-slm-yoyo-operational]] — How service-slm's three-tier inference router and the Yo-Yo GPU burst VM operate: the Doorman boundary, the local and burst tiers, the apprenticeship queue, and the idle-shutdown cost ceiling.
+- [[service-slm-totebox-sysadmin]] — A planned direction for service-slm: using its real, already-operational capture-then-verdict training pipeline to build a Totebox sysadmin assistant — the specific task taxonomy and tooling described here are not yet built.
+- [[service-slm-graph-store-migration]] — service-slm's graph store runs a nightly rebuild — entity extraction via the Doorman writes directly to the graph on completion, with no human review step in the rebuild script itself.
+- [[yoyo-daily-enrichment-cycle]] — The nightly two-phase GPU batch window that rebuilds the DataGraph and, once fully enabled, trains adapter weights for the local language model — currently running in DataGraph-only mode.
 <!-- END AUTO-GENERATED -->
 
 ## Specialist and domain services
@@ -67,20 +67,20 @@ One service spans Ring 3. It reads from Ring 2 and produces proposals a human re
 Services built for specific platform capabilities.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: specialist-and-domain-services -->
-- [[service-business-clustering]] — Turns raw retail data into commercial clusters: parent-child spatial schema, one commercial entity per site.
-- [[service-places-filtering]] — Filters civic and institutional infrastructure to retain only regional-grade facilities for GIS tier rankings.
-- [[service-wallet-settlement]] — Wallet and direct payment settlement: a planned per-tenant accounting ledger design, not yet built.
-- [[message-courier]] — Headless web-automation engine bridging internal identity ledgers with external web portals.
-- [[fs-anchor-emitter]] — Signed WORM ledger checkpoints at hourly cadence, anchored to Sigstore Rekor on a monthly schedule for external auditability.
-- [[service-fs-data-lake]] — Flat-file data lake for the GIS pipeline: raw geospatial points from open sources, no ETL step.
-- [[template-ledger]] — Distributes approved email templates to the operator's mail environment; eliminates version drift between template design and execution.
-- [[editorial-pipeline-three-stages]] — Three-stage proofreading pipeline ordered by cost: deterministic banned-vocabulary scan, LanguageTool mechanical pass, then a generative rewrite routed through the inference layer.
-- [[private-git-paid-customer-endpoint]] — The binary release server behind software.pointsav.com: verifies Ed25519 license tokens and streams compiled binaries, holding no payment records or signing keys.
-- [[service-pointsav-link]] — A named but unbuilt design concept for a fleet-connecting adapter; no corresponding package exists in the monorepo today.
-- [[service-vm-fleet]] — The placement and registry service for the PPN VM resource pool: two-pass placement algorithm and heartbeat-driven node state.
-- [[poi-data-schema]] — The record structures for location data ingested from OpenStreetMap and Overture Maps Foundation, normalised into a unified JSONL schema before cluster analysis.
-- [[regional-name-resolution-architecture]] — The layered offline reverse-geocoding engine that turns a cluster's coordinates into a human-readable regional name, with no external API calls.
-- [[service-vm-tenant]] — The customer-facing tenant proxy for the PPN VM resource pool: authentication, namespace isolation, quota enforcement, and an immutable audit trail.
+- [[service-business-clustering]] — A parent-child spatial pattern that turns raw retail points into one commercial entity per physical site, so the GIS pipeline reasons about a location once instead of once per co-located tenant.
+- [[service-places-filtering]] — A filtering step that keeps only regional-grade institutions from raw civic data, so GIS tier rankings reflect institutional concentration rather than every clinic and community facility.
+- [[service-wallet-settlement]] — service-wallet is a planned per-tenant accounting ledger for reverse-flow marketplace revenue — no code exists yet; the design calls for a non-custodial, signed-entry ledger rather than a payment rail.
+- [[message-courier]] — A deliberately thin engine that dynamically loads a customer's private adapter script and hands it execution control — keeping every operational detail of a client's web-automation logic out of the open-source codebase entirely.
+- [[fs-anchor-emitter]] — A one-shot binary that fetches a signed WORM-ledger checkpoint from service-fs, anchors it to the public Sigstore Rekor transparency log, and writes the resulting log entry back — making ledger state auditable from outside the platform.
+- [[service-fs-data-lake]] — service-fs is the foundational storage layer for the GIS pipeline — a flat-file data lake storing raw geospatial points, available to every downstream service.
+- [[template-ledger]] — Distribution mechanism in service-email-template that syncs one authoritative copy of every approved template to the operator's mail environment, eliminating version drift.
+- [[editorial-pipeline-three-stages]] — The real client-confirmed contract for the platform's proofreading pipeline: a fixed set of language protocols, a response that reports which compute tier ran and what degraded, and a binary human verdict that feeds the training corpus.
+- [[private-git-paid-customer-endpoint]] — The binary release server behind software.pointsav.com verifies Ed25519 license tokens and streams compiled binaries — stateless, holding no payment records or keys, with some products served openly and no license check at all.
+- [[service-pointsav-link]] — service-pointsav-link is a named but unbuilt adapter concept for connecting an os-* node to a PointSav fleet — no corresponding package exists in the monorepo today.
+- [[service-vm-fleet]] — The fleet controller maintains a global view of node capacity across the PPN WireGuard mesh and handles placement decisions for virtual machine spawns.
+- [[poi-data-schema]] — The record structures for location data ingested from OpenStreetMap and Overture Maps Foundation, normalised into a unified JSONL schema before cluster analysis. Wikidata QIDs are the primary chain identifier, and a parent-child sub-location model handles co-branded ancillary services.
+- [[regional-name-resolution-architecture]] — The layered offline reverse-geocoding engine that turns a cluster's coordinates into a human-readable regional name — its boundary datasets, its country-specific routing order, and the post-processing that makes source-language names readable — with no external API calls.
+- [[service-vm-tenant]] — The tenant proxy enforces authentication, namespace isolation, quota limits, and an immutable audit trail at the customer boundary of the PPN VM resource pool.
 <!-- END AUTO-GENERATED -->
 
 ## See also

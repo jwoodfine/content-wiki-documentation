@@ -11,7 +11,7 @@ index_type: thematic
 index_scope: systems
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-06
+last_edited: 2026-09-04
 editor: pointsav-engineering
 paired_with: _index.es.md
 ---
@@ -30,12 +30,12 @@ PointSav builds a family of purpose-built operating systems that share a common 
 The core record-keeping systems at the foundation of every deployment — where the canonical record lives and how it is coordinated across a fleet.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: the-archive-layer -->
-- [[totebox-os]] — The archive layer: one isolated, kernel-level vault per entity, storing records as inert flat files with no delete operation, exposed only through the Diode on command from os-console or os-orchestration.
-- [[totebox-orchestration]] — The coordination layer that manages multiple Totebox data-archive containers, keeping software execution engines isolated from passive corporate ledgers across deployments.
-- [[vm-architecture]] — The five named VM types (Totebox, MediaKit, Orchestration, PrivateGit, Infrastructure) and how each maps exactly to one `os-*` source binary.
-- [[scaling-coordinated-development-totebox-archives]] — The coordination bottlenecks that appear past a couple dozen archives, and the path toward per-archive process isolation.
-- [[os-totebox-sovereign-archive]] — os-totebox's intended end-state design as a Type I bare-metal seL4 OS: the WORM data vault enforced by a compiled capability graph rather than a policy an administrator could override.
-- [[os-totebox-service-pd-model]] — How os-totebox is designed to map its Rust service binaries onto seven seL4 Protection Domains, with capability confinement guaranteeing a compromised service-slm PD can never reach the storage-holding service-fs PD.
+- [[totebox-os]] — os-totebox is the archive layer of the PointSav family — one isolated vault per entity, storing inert flat files with no delete, exposed via the Diode on command. Its production path hosts a Linux guest under the seL4 microkernel; other host forms exist for compatibility and local development.
+- [[totebox-orchestration]] — Totebox Orchestration is the coordination layer managing multiple Totebox data-archive containers, keeping execution engines isolated from passive corporate ledgers.
+- [[vm-architecture]] — The PointSav platform organises runtime deployments under five named VM types — Totebox, MediaKit, Orchestration, PrivateGit, Infrastructure — each mapping to one os-* binary.
+- [[scaling-coordinated-development-totebox-archives]] — Coordination bottlenecks past twenty archives — publication serialization, message relay latency, operator load, and the path to per-archive process isolation.
+- [[os-totebox-sovereign-archive]] — os-totebox is designed to become a Type I bare-metal OS built on a formally verified seL4 microkernel, with a WORM data vault enforced by a compiled capability graph — the intended end state, not the software running today.
+- [[os-totebox-service-pd-model]] — How os-totebox is designed to map Rust service binaries to seL4 Protection Domains: the planned seven-PD stack, capability confinement, startup ordering, and the two-bottom development path — Phase H1 roadmap work, not the binary running today.
 <!-- END AUTO-GENERATED -->
 
 ## Operator surfaces
@@ -43,11 +43,11 @@ The core record-keeping systems at the foundation of every deployment — where 
 The systems through which a human operator interacts with the platform — keyboard-driven, F-key-structured, and built around muscle memory rather than discoverability.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: operator-surfaces -->
-- [[os-console]] — The human-facing surface: a Command Ledger and single Rust binary that connects to a Totebox and renders its state through a keyboard-driven, cartridge-based, F-key-structured interface.
-- [[os-console-totebox-browser]] — The browser-analogy explainer for os-console's design philosophy: cartridges as tabs, machine pairing as the certificate store.
-- [[input-machine]] — The mandatory document ingest gate in os-console, bound permanently to F12 and backed by `service-input` on the Totebox Archive.
-- [[os-workplace]] — The free desktop tier: a growing family of independent Rust and Tauri apps that pair with a Totebox archive and serve as the adoption gateway to the commercial product line.
-- [[os-orchestration]] — The Fleet Aggregator for multi-entity portfolios: one operator sees, queries, and commands many Totebox archives at once.
+- [[os-console]] — os-console is the human-facing surface of the PointSav platform — a single-binary, keyboard-native Command Ledger that connects to a Totebox and hosts independent TUI cartridges through a unified chassis.
+- [[os-console-totebox-browser]] — os-console is the keyboard-native operator terminal for Totebox Orchestration, structurally like a browser: it renders service views without storing data locally.
+- [[input-machine]] — The Input Machine is the mandatory document ingest gate in os-console, bound permanently to F12 and backed by service-input on the Totebox Archive.
+- [[os-workplace]] — os-workplace is the planned free desktop tier in the PointSav family — today a growing set of independent Rust and Tauri apps an operator runs on their own computer, joining the network as a station-* WireGuard peer; the intended adoption gateway to the commercial line.
+- [[os-orchestration]] — os-orchestration is the commercial-tier OS letting a single operator see, query, and command many Totebox archives at once — the Fleet Aggregator for enterprise deployments.
 <!-- END AUTO-GENERATED -->
 
 ## Network control and infrastructure
@@ -55,10 +55,10 @@ The systems through which a human operator interacts with the platform — keybo
 The systems that manage the network fabric, the bootstrap path, and the underlying compute substrate.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: network-control-and-infrastructure -->
-- [[os-network-admin]] — The control plane for a fleet: manages the pairing registry, Diode rules, and mesh routing policy; commands broadcast as 16-byte binary packets across the WireGuard mesh.
-- [[os-privategit]] — Private Git hosting for sovereign version control within a fleet.
+- [[os-network-admin]] — os-network-admin is the control plane for a PPN: WireGuard mesh routing, the node-join ceremony surface, and Diode-standard enforcement, without archive-tier authority.
+- [[os-privategit]] — The OS layer hosting the private Git infrastructure underpinning the development workspace, staging-tier commit flow, and canonical repos for PointSav engineering.
 - [[app-privategit-workbench|Browser workbench]] — The browser-based file editor included in os-privategit: a three-column interface for working with archive files without a terminal session.
-- [[os-infrastructure-ppn-node]] — The OS layer for PPN nodes: managing WireGuard tunnels, hosting guest VMs for other platform services, and running the Genesis Protocol node-join ceremony.
+- [[os-infrastructure-ppn-node]] — os-infrastructure is the OS layer for PPN nodes — its sole purpose is to set up and maintain a node: WireGuard tunnels, guest VMs, and the operator control plane.
 <!-- END AUTO-GENERATED -->
 
 ## Publishing and media
@@ -66,7 +66,7 @@ The systems that manage the network fabric, the bootstrap path, and the underlyi
 The public-facing OS that hosts the company's marketing surface, internal wiki, and compliance newsroom on a single sovereign appliance.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: publishing-and-media -->
-- [[os-mediakit]] — The guest OS image for the vm-mediakit tier, isolating knowledge wikis, marketing sites, and compliance/distribution feeds from the vault and orchestration tiers. Ubuntu 24.04 today; per-instance seL4 Microkit VMs are the planned long-term form.
+- [[os-mediakit]] — The public-web tier of the PointSav OS family — os-mediakit owns TLS, systemd lifecycle, and gateway-mediated data access; app-mediakit-knowledge/marketing/distribution own domain logic. Ubuntu 24.04 today; the planned end state is one seL4 VM per deployment instance, not a single combined appliance.
 <!-- END AUTO-GENERATED -->
 
 ## See also

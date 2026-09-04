@@ -11,7 +11,7 @@ quality: complete
 short_description: "Running the platform on your own infrastructure: booting the seL4 appliance images, deploying the wiki engine, and wiring up local inference."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-04
+last_edited: 2026-09-04
 editor: pointsav-engineering
 paired_with: _index.es.md
 ---
@@ -28,15 +28,15 @@ paired_with: _index.es.md
 ## Getting the platform running
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: getting-running -->
-- [[self-host-a-deployment|Self-host a deployment]] — boot the `os-totebox` and `app-orchestration-slm` appliance images under QEMU
-- [[deploy-knowledge-instance|Deploy a knowledge instance]] — serve a documentation, projects, or corporate wiki from a local content path
+- [[self-host-a-deployment|Self-host a deployment]] — Boots the published os-totebox and app-orchestration-slm seL4 appliance images under QEMU, with configuration baked in at build time via device-tree bootargs, and verifies both come up healthy.
+- [[deploy-knowledge-instance|Deploy a knowledge instance]] — Deploys an instance of app-mediakit-knowledge from a local content path: write a knowledge.toml [site] + [[mount]] configuration, build the binary, and start it with the serve subcommand.
 <!-- END AUTO-GENERATED -->
 
 ## Wiring up inference
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: wiring-inference -->
-- [[configure-doorman|Configure the Doorman gateway]] — set Tier A/B/C endpoints through environment variables, no config file
-- [[run-local-slm-inference|Run local SLM inference]] — start the local model and submit a request through Doorman
+- [[configure-doorman|Configure the Doorman gateway]] — Configures a single-instance Doorman gateway via environment variables — Tier A local endpoint, optional Tier B Yo-Yo burst compute, optional Tier C external providers — and verifies tier state through /readyz.
+- [[run-local-slm-inference|Run local SLM inference]] — Starts the local Tier A SLM service, verifies Doorman readiness, and submits an inference request from the console or the API, with all prompt data staying on the deployment.
 <!-- END AUTO-GENERATED -->
 
 Each guide carries its own prerequisites, verification steps, and rollback procedure; this

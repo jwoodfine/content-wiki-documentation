@@ -11,7 +11,7 @@ index_type: thematic
 index_scope: governance
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+last_edited: 2026-09-04
 editor: pointsav-engineering
 ---
 
@@ -31,42 +31,42 @@ Las doce [[architecture-decisions|decisiones de arquitectura vinculantes]] son l
 Punto de entrada para la evaluación de adquisición, seguridad y cumplimiento.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: institutional-due-diligence -->
-- [[procurement-overview]] — Lo que adquiere un comprador regulado: despliegue en hardware propiedad del cliente, datos que el proveedor nunca posee, sin compromiso de gasto mínimo, y propiedades de cumplimiento aplicadas por arquitectura.
-- [[security-overview]] — La postura de seguridad de la plataforma: aislamiento basado en capacidades, el estándar Diode de flujo de comandos unidireccional, el límite de IA Portero, el libro de auditoría WORM y cómo cada propiedad es aplicada por arquitectura.
-- [[compliance-and-continuous-disclosure]] — Cómo la plataforma produce registros con calidad de divulgación continua y qué significa esto para los compradores regulados.
+- [[procurement-overview]] — Lo que un comprador regulado adquiere al implementar PointSav: hardware que el cliente posee íntegramente, datos que el proveedor nunca posee, sin compromiso de gasto mínimo, y propiedades de cumplimiento ejecutadas por arquitectura en lugar de promesas contractuales.
+- [[security-overview]] — La postura de seguridad de la plataforma: aislamiento de hardware basado en capacidades, el estándar unidireccional Diode de flujo de comandos, el límite de inteligencia artificial Doorman, el registro de auditoría WORM, y cómo cada propiedad se ejecuta por arquitectura en lugar de controles de política que pueden configurarse incorrectamente.
+- [[compliance-and-continuous-disclosure]] — Cumplimiento y divulgación continua describe los marcos regulatorios que aborda la arquitectura PointSav y el enfoque estructural que adopta para exponer evidencia de auditoría de forma continua, en lugar de mediante ciclos anuales de certificación puntual.
 <!-- END AUTO-GENERATED -->
 
 ## Registros de decisiones formales
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: formal-decision-records -->
 - [[architecture-decisions]] — Las doce decisiones de arquitectura vinculantes que restringen toda la ingeniería futura; agrupadas por peso regulatorio, separación de datos, custodia del despliegue e integridad operativa.
-- [[adr-07-zero-ai-in-ring-1]] — Por qué los cuatro servicios de ingesta de frontera (Ring 1) se restringen a operaciones exclusivamente deterministas, y dónde se permite que comience la inferencia de IA.
+- [[adr-07-zero-ai-in-ring-1]] — SYS-ADR-07 prohíbe la inferencia de IA en todos los servicios de ingestión del Ring 1, garantizando operaciones exclusivamente deterministas en la ruta de escritura WORM para asegurar auditabilidad y composabilidad.
 <!-- END AUTO-GENERATED -->
 
 ## Licencias y contribución
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: licensing-and-contribution -->
-- [[contributor-model]] — El modelo de colaboración de tres niveles: comunidad abierta, integradores de pago y el nivel de proveedor canónico.
-- [[canadian-simple-copyright]] — La postura de derechos de autor conforme al derecho canadiense: selección de licencias y contexto jurídico.
-- [[legal-and-ip-structure]] — La topología de IP de tres corporaciones: cómo se transfiere la propiedad intelectual de colaboradores al proveedor y al cliente, con squash-and-merge como el evento atómico de transferencia de IP.
+- [[contributor-model]] — El Modelo de Contribuidor de Tres Capas organiza los contribuidores del sustrato PointSav en Core (4–7 ingenieros asalariados), Paid (50–100 contribuidores de proyectos contratados) y Open (10.000 o más participantes públicos), con trayectorias explícitas de movilidad entre capas.
+- [[canadian-simple-copyright]] — La propiedad intelectual de la plataforma se concentra en una única sociedad holding matriz canadiense por operación del artículo 13(3) de la Ley de Derechos de Autor canadiense, sin cesión entre empresas, y está diseñada para evolucionar de forma incremental a medida que madura la estructura corporativa.
+- [[legal-and-ip-structure]] — La topología de tres corporaciones que rige la transferencia de propiedad intelectual de contribuidores a proveedor a cliente, con squash-and-merge como el evento de transferencia de propiedad intelectual atómico y separación estricta que impide exposición de código no auditado o registros operacionales.
 <!-- END AUTO-GENERATED -->
 
 ## Soberanía de ingeniería
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: engineering-sovereignty -->
-- [[sovereign-replacement-initiative]] — El programa formal que registra cada dependencia de terceros en un libro contable estructurado, aplica el aislamiento de cuarentena y retira cada dependencia cuando un reemplazo nativo alcanza paridad estructural.
-- [[moonshot-initiatives]] — Nueve programas de ingeniería nombrados dirigidos a reemplazos nativos de dependencias de terceros en cuarentena; tres llevan ingeniería activa sustancial hoy, seis siguen siendo esqueletos en etapa temprana.
-- [[sovereign-airlock-doctrine]] — El protocolo de commits por etapas que aplica una separación estructural entre las identidades de staging (autores de commits) y las identidades de push canónico, sin ruta directa entre ellos.
+- [[sovereign-replacement-initiative]] — La Iniciativa de Reemplazo Soberano es el programa de gobernanza de ingeniería que rastrea dependencias de terceros, las aísla en directorios de componentes en cuarentena, y coordina los programas moonshot activos que construyen reemplazos nativos.
+- [[moonshot-initiatives]] — Las iniciativas moonshot son programas de ingeniería activos que construyen reemplazos nativos para dependencias de terceros en cuarentena, con el objetivo de eliminar el bloqueo de proveedor y reducir la superficie de ataque externa de la plataforma a lo largo del tiempo.
+- [[sovereign-airlock-doctrine]] — La exclusa soberana es el protocolo de commits por etapas que impone una separación estricta entre las identidades de staging que escriben trabajo y las identidades de repositorio canónico que lo publican — dos autores de staging para todos los commits, dos identidades de administrador para los pushes canónicos, sin ruta directa entre ellos.
 <!-- END AUTO-GENERATED -->
 
 ## Disciplinas de plataforma
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: platform-disciplines -->
-- [[ontological-governance]] — Los cuatro libros contables de vocabulario de referencia y el bucle de verificación humana que mantienen legible con el tiempo la clasificación de identidad de la plataforma.
-- [[anti-homogenization-discipline]] — La postura arquitectónica que resiste que los asistentes de escritura con IA empujen a los colaboradores hacia una única voz, aplicando por defecto el marcado en lugar de la reescritura silenciosa.
-- [[api-key-boundary-discipline]] — La regla de que todas las credenciales de API de LLM externas pertenecen exclusivamente al servicio de puerta de enlace y nunca a motores de inferencia ni consumidores descendentes.
-- [[favicon-matrix]] — El único favicon SVG estático servido en cada inquilino del wiki, y por qué el mecanismo es un archivo enlazado y no una URI de datos insertada.
-- [[doctrine-invention-7-rekor-anchoring]] — Cómo la plataforma publica mensualmente un punto de control firmado del libro contable en el registro público de transparencia Sigstore Rekor, dando a los auditores evidencia verificable de forma independiente, fuera de la infraestructura propia de la plataforma.
+- [[ontological-governance]] — Cuatro libros contables de vocabulario de referencia mantenidos deliberadamente acotados, más un bucle de verificación humana que revisa los fragmentos de identidad extraídos antes de comprometerlos al libro contable verificado.
+- [[anti-homogenization-discipline]] — La disciplina anti-homogenización es la postura arquitectónica que resiste que los asistentes de escritura con IA empujen a los colaboradores hacia una voz única, marcando posibles problemas por defecto en lugar de reescribir el texto silenciosamente.
+- [[api-key-boundary-discipline]] — La regla que establece que todas las credenciales externas de LLM pertenecen exclusivamente al servicio de pasarela y nunca a los motores de inferencia.
+- [[favicon-matrix]] — El wiki sirve un único favicon SVG estático — un glifo de documento azul marino, enlazado desde un archivo estático, la misma marca en cada pestaña sin importar el inquilino.
+- [[doctrine-invention-7-rekor-anchoring]] — Cómo el binario emisor-de-ancla de Foundry publica un punto de control firmado en Sigstore Rekor cada mes, proporcionando evidencia independiente y verificable del estado del espacio de trabajo.
 <!-- END AUTO-GENERATED -->
 
 ## Véase también

@@ -11,7 +11,7 @@ quality: complete
 short_description: "How the platform is protected and how its records are verified: identity and permissions, cryptographic verification, isolation boundaries, how data is handled and kept private, and the supply-chain controls designed to keep code honest."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-24
+last_edited: 2026-09-04
 editor: pointsav-engineering
 paired_with: _index.es.md
 ---
@@ -38,11 +38,11 @@ ambient privilege. One software layer implements it today; kernel-level enforcem
 Who is known to the system, how a device proves it, and what it's allowed to do.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: identity-and-permissions -->
-- [[capability-based-security|Capability-based security]] — the access-control model: components hold verified cryptographic tokens instead of ambient privilege
-- [[machine-based-auth|Machine-based authorization]] — pairing hardware to hardware replaces passwords; the pairing itself is the permission
-- [[personnel-permissions|Personnel and permissions]] — how contributor identity and the four permission tiers are expressed through pairings, not database roles
-- [[identity-ledger-schema-design|Identity ledger schema design]] — the Person/Anchor/Claim record types behind Ring 1 identity resolution
-- [[verification-surveyor|Verification surveyor]] — the human-in-the-loop checkpoint that confirms an extracted identity before it's committed
+- [[capability-based-security|Capability-based security]] — Capability-based security grants each component an unforgeable, scoped token it must present to act, replacing ambient privilege. One software layer implements it today; kernel-level enforcement is planned.
+- [[machine-based-auth|Machine-based authorization]] — Access is granted to a device's key rather than to a person's password. A short-code pairing ceremony binds an SSH key fingerprint to a user record after operator approval, with no password stored anywhere.
+- [[personnel-permissions|Personnel and permissions]] — Four permission tiers, P1 through P4, are implemented as a typed enumeration and served over an HTTP endpoint that reads a workspace configuration file. That file currently declares no contributors, so the endpoint resolves nothing for any real user.
+- [[identity-ledger-schema-design|Identity ledger schema design]] — Three record types — Person, Anchor, Claim — separate who is known from how they were observed and what was asserted. Identity is a UUIDv5 of a lowercased email, so the same input always yields the same identifier.
+- [[verification-surveyor|Verification surveyor]] — A command-line tool that requires a person to confirm each extracted identity against external evidence before it is promoted from a queue to a verified record, throttled to ten confirmations per day.
 <!-- END AUTO-GENERATED -->
 
 ## Cryptographic verification {#group-count-2}
@@ -50,8 +50,8 @@ Who is known to the system, how a device proves it, and what it's allowed to do.
 How a reader independently checks that a record hasn't been altered.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: cryptographic-verification -->
-- [[crypto-attestation|Cryptographic payload attestation]] — client-side SHA-256 hashing that would let any viewer verify published content wasn't changed in transit; today it's an unwired, cosmetic pattern in a few templates, not a capability any shipped surface actually offers
-- [[cryptographic-ledgers|Cryptographic ledgers]] — the immutable-state storage pattern: hash-chained entries, signed checkpoints, monthly Sigstore Rekor anchoring
+- [[crypto-attestation|Cryptographic payload attestation]] — Cryptographic payload attestation lets a reader recompute a hash of published content and compare it against a published value. Unwired, cosmetic prototypes exist in a few release templates; the knowledge wiki does not offer it.
+- [[cryptographic-ledgers|Cryptographic ledgers]] — An append-only log where each entry's hash covers the one before it, closed by Ed25519-signed checkpoints and anchored monthly in a public transparency log. Implemented as a linear chain, one flat file per tenant.
 <!-- END AUTO-GENERATED -->
 
 ## Isolation boundaries {#group-count-3}
@@ -62,15 +62,15 @@ What contains a compromise once one occurs. Thin relative to the category's own 
 cross-referenced from here.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: isolation-boundaries -->
-- [[sel4-capability-topology|seL4 capability topology]] — why security in an seL4 system is the shape of the capability graph, not a policy layer
-- [[diode-standard|Diode standard]] — the unidirectional authority-to-subject command flow that removes lateral movement by design
-- [[genesis-protocol|Genesis protocol]] — the fleet-bootstrapping sequence a node runs at first boot to reach a secure, claimable state
+- [[sel4-capability-topology|seL4 capability topology]] — In an seL4 system the security policy is the shape of the capability graph established at boot, not a runtime policy layer. First-party work is nine bare-metal test binaries; no platform service runs on seL4.
+- [[diode-standard|Diode standard]] — The Diode Standard is the design rule that command and data flow in one direction only, from authority to subject. Several real mechanisms follow it; no component enforces it as a named standard.
+- [[genesis-protocol|Genesis protocol]] — The Genesis Protocol is the designed fleet-bootstrapping sequence for os-infrastructure nodes: ship with no prior configuration, boot on any network, and reach a secure, claimable state with no control-plane contact required.
 <!-- END AUTO-GENERATED -->
 
 ## Data handling and privacy {#group-count-1}
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: data-handling-and-privacy -->
-- [[data-sovereignty-telemetry|Data sovereignty and zero-state telemetry]] — the platform's only article on this clause today; retention, deletion, and encryption-at-rest have no dedicated article yet
+- [[data-sovereignty-telemetry|Data sovereignty and zero-state telemetry]] — Zero-state telemetry is the intended posture of measuring site usage without retaining identifying data. The pipeline running today writes full unmasked IP addresses to a plaintext file for up to a year; masking is not implemented.
 <!-- END AUTO-GENERATED -->
 
 ## Supply-chain controls {#group-count-2}
@@ -78,8 +78,8 @@ cross-referenced from here.
 Keeping code honest from a contributor's machine to production.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: supply-chain-controls -->
-- [[five-stage-supply-chain|Five-stage supply chain]] — the contributor-to-customer promotion path, gated by a heavily guarded promotion script rather than a pull request, and the double-blind air-gap between contributor and customer
-- [[pre-commit-defense-in-depth|Pre-commit defense in depth]] — the helper-only gate, secret-pattern scan, and size guard that run on every commit
+- [[five-stage-supply-chain|Five-stage supply chain]] — The path from a contributor's commit to a customer deployment crosses three repository tiers and two organisations, gated by a heavily guarded promotion script. There is no pull request and no second-party review.
+- [[pre-commit-defense-in-depth|Pre-commit defense in depth]] — Four independent git hooks run before a commit is recorded: a helper-only gate, a data-path block, a staged-content secret and size scan, and an author-identity check. Every bypass is logged.
 <!-- END AUTO-GENERATED -->
 
 Several articles linked here describe planned, not-yet-built mechanisms and are hedged in

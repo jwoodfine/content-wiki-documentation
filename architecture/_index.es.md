@@ -12,7 +12,7 @@ index_type: thematic
 index_scope: architecture
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-06
+last_edited: 2026-09-04
 editor: pointsav-engineering
 paired_with: _index.md
 ---
@@ -33,17 +33,17 @@ El modelo de tres anillos es el marco de carga: el Anillo 1 gestiona la ingesta 
 Los artículos estructurales fundacionales — los patrones que componen cada despliegue PointSav.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: platform-structure -->
-- [[three-ring-architecture]] — Tres anillos concéntricos con dependencias estrictamente unidireccionales; la IA es estructuralmente opcional; el flujo determinista funciona plenamente sin el Anillo 3.
-- [[3-layer-stack]] — La descomposición de infraestructura en tres capas: capacidad de cómputo pura, ejecución de plataforma aislada y acceso seguro del operador.
-- [[three-layer-architecture]] — Cómo los entregables de PointSav transitan por las capas SOFTWARE, SHOWCASE e INSTANCIA con un flujo estrictamente unidireccional del proveedor al cliente.
-- [[six-tier-sovereignty-matrix]] — La taxonomía de seis prefijos del monorepo (app-, asset-, os-, service-, system-, moonshot-) que hace estructural la higiene de dependencias.
-- [[foundry-doctrine-overview]] — Resumen público del estatuto constitucional de la plataforma: seis pilares, cincuenta y cuatro afirmaciones estructurales y el modelo económico que los sustenta.
-- [[leapfrog-2030-architecture]] — La visión arquitectónica Leapfrog 2030: la física de infraestructura de la era hiperescaladora de 2030 y cómo la plataforma está posicionada para beneficiarse de ella.
-- [[pointsav-overview]] — PointSav Digital Systems: qué construye la empresa, cómo está organizada y la estructura corporativa de tres entidades.
-- [[architecture]] — Las dos propiedades estructurales de la plataforma: consistencia criptográfica distribuida y capacidad de arranque soberano, mantenidas de forma simultánea entre la nube y bóvedas físicas desconectadas.
-- [[architecture-overview]] — Un mapa de las principales superficies arquitectónicas de la plataforma: sustrato de cómputo, distribución de software, inteligencia GIS y el flujo editorial.
-- [[foundry-doctrine-architecture]] — La carta constitucional en detalle: los seis pilares, las afirmaciones estructurales numeradas y las ocho invenciones de proceso adaptadas de otras industrias.
-- [[three-binary-architecture]] — Los tres entornos operativos binarios — os-console, os-totebox, os-orchestration — cada uno con un rol, objetivo de despliegue y conjunto de aplicaciones propios.
+- [[three-ring-architecture]] — El patrón de composición duradero para la plataforma PointSav: tres anillos concéntricos con dependencias estrictamente unidireccionales, donde el anillo de IA es estructuralmente opcional y la canalización de datos determinista funciona completamente sin él.
+- [[3-layer-stack]] — El Three-Layer Stack es el patrón de descomposición de infraestructura utilizado en todas las implementaciones de PointSav, separando la capacidad de cómputo puro, la ejecución de plataforma aislada y el acceso seguro del operador en tres capas distintas.
+- [[three-layer-architecture]] — Flujo estrictamente unidireccional de los entregables de PointSav por tres capas: monorepo del proveedor, catálogo escaparate del cliente e instancias privadas en ejecución.
+- [[six-tier-sovereignty-matrix]] — Seis prefijos fijos de directorio que organizan el monorepo de PointSav por propósito, haciendo el repositorio autodocumentado y reforzando la higiene de dependencias.
+- [[foundry-doctrine-overview]] — El alcance planificado para la futura carta constitucional de PointSav — aún no ratificada ni redactada; descrita aquí solo en términos planificados/previstos.
+- [[leapfrog-2030-architecture]] — Tesis de posicionamiento estructural que combina hardware, datos y pesos de adaptador propiedad del cliente con ingresos por transacción en lugar de suscripción.
+- [[pointsav-overview]] — PointSav Digital Systems es un proveedor de tecnología que construye sistemas operativos soberanos y con capacidad de instalación local para gestión de registros y administración empresarial. Se encuentra dentro de una estructura de tres organizaciones establecida por Woodfine Capital Projects Inc.
+- [[architecture]] — La consistencia criptográfica de la plataforma se apoya en un registro real encadenado por Merkle; la capacidad de arranque soberana — colapsar un despliegue en una sola imagen portátil — es un objetivo de diseño, aún no una función publicada.
+- [[architecture-overview]] — Mapa de las principales superficies arquitectónicas de la plataforma PointSav: sustrato de cómputo, distribución de software, inteligencia GIS y el pipeline editorial.
+- [[foundry-doctrine-architecture]] — El alcance planificado para una futura carta constitucional que se prevé codifique compromisos fundacionales y afirmaciones estructurales que rijan las decisiones de ingeniería de PointSav — aún no redactada ni ratificada.
+- [[three-binary-architecture]] — Totebox Orchestration se entrega mediante tres entornos operativos binarios distintos — os-console, os-totebox y os-orchestration — cada uno con un rol, objetivo de despliegue y conjunto de aplicaciones diferenciados.
 <!-- END AUTO-GENERATED -->
 
 ## Seguridad e identidad
@@ -79,16 +79,16 @@ Cómo se clasifican, enrutan y contienen las solicitudes de IA para que nunca to
 Los principios y mecanismos por los cuales los clientes son dueños plenos de su despliegue.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: customer-ownership-and-deployment -->
-- [[customer-hostability]] — El compromiso arquitectónico de que cada artefacto se ejecuta sobre el hardware del cliente, contra sus propias claves, con su propio libro de auditoría.
-- [[economic-model]] — La estructura comercial de dos niveles: un nivel Comunidad gratuito y un nivel Cliente PYME de pago dimensionado para empresas reguladas que los hiperescaladores no pueden atender económicamente.
-- [[direct-payment-settlement]] — Los pagos de transacciones del mercado fluyen directamente del comprador al inquilino-cliente; la comisión de la plataforma se cobra en la liquidación.
-- [[totebox-orchestration-development]] — El entorno de desarrollo es en sí mismo una instancia de Totebox Orchestration; el espacio de trabajo que construye la plataforma funciona sobre la misma arquitectura que entrega.
-- [[totebox-session]] — Una Sesión Totebox: una sesión de colaboración asistida por IA, circunscrita a un solo archivo, incapaz de escribir fuera de él.
-- [[vertical-seed-packs-marketplace]] — Taxonomías iniciales específicas del sector distribuidas como paquetes semilla; los inquilinos contribuyen con refinamientos a través de un mercado planificado.
-- [[foundry-services-slice-model]] — La partición cgroup de systemd que protege los servicios de producción frente a la carga de sesiones de compilación concurrentes en un mismo servidor Totebox compartido.
-- [[cargo-target-per-user-discipline]] — Particionado de la caché de compilación por desarrollador que elimina las carreras de bloqueo entre usuarios en un servidor Totebox compartido.
-- [[mailbox-atomicity]] — Escritura exclusiva con flock e idempotencia por msg-id en los buzones de archivo plano que usan las sesiones Totebox para comunicarse entre sí.
-- [[multi-engine-session-coordination]] — Protocolo de bloqueos de sesión con detección de obsolescencia por boot_id que evita que motores de IA concurrentes toquen el mismo `.git/index`.
+- [[customer-hostability]] — La capacidad de alojamiento del cliente es el compromiso arquitectónico de que cada artefacto de PointSav pueda ejecutarse en el hardware del cliente, contra las claves del cliente, con el libro mayor de auditoría del cliente — haciendo que la implementación autohospedada sea el patrón canónico, no un nivel.
+- [[economic-model]] — La estructura comercial de dos niveles de PointSav: un nivel Community gratuito como embudo de adopción, y un nivel de Cliente PYME de pago orientado a pequeñas y medianas empresas reguladas que los modelos de facturación a hiperescala no pueden atender económicamente.
+- [[direct-payment-settlement]] — El pago por transacciones del mercado está planificado para fluir directamente del comprador al inquilino-cliente; la participación de PointSav es una comisión por transacción en el momento de la liquidación, no una suscripción recurrente.
+- [[totebox-orchestration-development]] — El entorno de desarrollo de PointSav está desplegado como una instancia de orquestación Totebox — el espacio de trabajo que construye la plataforma se ejecuta sobre la misma arquitectura que la plataforma entrega a los clientes.
+- [[totebox-session]] — Una sesión Totebox es una sesión de colaborador asistida por IA abierta dentro de un único archivo Totebox — con alcance a los repositorios declarados del archivo, sin capacidad de escribir fuera de ellos, y es el punto de entrada estándar para todo trabajo de desarrollo en la orquestación Totebox.
+- [[vertical-seed-packs-marketplace]] — PointSav tiene previsto distribuir paquetes de semilla curados específicos de la industria como taxonomías de inicio, con un mercado planificado que permite a los inquilinos contribuir mejoras.
+- [[foundry-services-slice-model]] — Una reserva de memoria cgroup de systemd que protege los servicios de producción de ser desalojados por procesos pesados de compilación o investigación en el mismo host — aislamiento de un solo nodo sin Kubernetes.
+- [[cargo-target-per-user-discipline]] — Particionado por usuario de la caché compartida de Cargo — CARGO_TARGET_DIR por desarrollador elimina carreras de bloqueo y errores de permisos entre usuarios.
+- [[mailbox-atomicity]] — Escritura exclusiva con flock e idempotencia por msg-id en buzones de archivo plano — cómo las sesiones concurrentes serializan escrituras sin perder mensajes en silencio.
+- [[multi-engine-session-coordination]] — Protocolo de bloqueos de sesión para motores de IA concurrentes en un mismo host — detección de bloqueos obsoletos por boot_id y protección del índice git compartido.
 <!-- END AUTO-GENERATED -->
 
 ## Inteligencia de ubicación y dominio
@@ -96,10 +96,10 @@ Los principios y mecanismos por los cuales los clientes son dueños plenos de su
 Decisiones arquitectónicas para el dominio de inteligencia de ubicación e inmuebles.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: location-intelligence-and-domain -->
-- [[hardware-co-location-methodology]] — La metodología para clasificar candidatos de co-ubicación en instalaciones de centros de datos de terceros: idoneidad jurisdiccional, tránsito de red, compatibilidad de infraestructura y costo, con los requisitos regulatorios primero. (No debe confundirse con la [[retail-co-location-tier-methodology|metodología de niveles de co-ubicación minorista]], un tema distinto que comparte el mismo término.)
-- [[flat-file-bim-leapfrog]] — Las cinco restricciones arquitectónicas — almacenamiento en archivos planos, estándares abiertos, Rust y Tauri, funcionamiento sin conexión y licencia Apache 2.0 — sobre las que se construye el registro digital de un edificio, y las cinco capacidades que se derivan de ellas en lugar de añadirse encima.
+- [[hardware-co-location-methodology]] — Un enfoque estructurado para clasificar candidatos de coubicación de hardware en dimensiones regulatorias, de red, de infraestructura y de costo, restringido primero por requisitos regulatorios antes de que ocurra cualquier otra optimización.
+- [[flat-file-bim-leapfrog]] — El Sistema de Diseño de Edificios se construye sobre cinco restricciones arquitectónicas — almacenamiento en archivos planos, estándares abiertos, Rust y Tauri, funcionamiento sin conexión y licencia Apache 2.0. La propiedad anclada al activo, el uso en campo sin red, la ingesta de sensores y la convergencia del modelo con los registros de arrendamiento y financieros se derivan de la arquitectura, no se añaden encima.
 - [[building-design-system]] — Una capa de coordinación planificada para el entorno construido: una biblioteca canónica y legible por máquina de especificaciones de elementos de construcción que las superficies de autoría BIM independientes consumen por referencia, de la misma manera que un sistema de diseño de software mantiene consistentes a equipos de producto independientes.
-- [[asset-anchored-bim-vault]] — El registro digital autoritativo de un edificio, estructurado como archivos de texto plano y binario estandarizado en un directorio versionado con git, que califica como un Entorno de Datos Común conforme a ISO 19650 y que viaja con la escritura de la propiedad.
+- [[asset-anchored-bim-vault]] — El registro digital autoritativo de un edificio, estructurado como archivos de texto plano y binario estandarizado en un directorio versionado con git, que califica como un Entorno de Datos Común conforme a la norma ISO 19650 y que viaja con la escritura de la propiedad.
 <!-- END AUTO-GENERATED -->
 
 Un artículo adicional planificado para el dominio de inteligencia de ubicación y BIM/inmuebles — que cubre la taxonomía regional de desarrollo — aún no está escrito.

@@ -11,7 +11,7 @@ quality: complete
 short_description: "Ejecutar la plataforma en infraestructura propia: iniciar las imágenes de aparato seL4, desplegar el motor wiki y conectar la inferencia local."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-04
+last_edited: 2026-09-04
 editor: pointsav-engineering
 paired_with: _index.md
 ---
@@ -28,15 +28,15 @@ paired_with: _index.md
 ## Poner la plataforma en marcha
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: getting-the-platform-running -->
-- [[self-host-a-deployment|Autoalojar un despliegue]] — inicie las imágenes de aparato `os-totebox` y `app-orchestration-slm` bajo QEMU
-- [[deploy-knowledge-instance|Desplegar una instancia de conocimiento]] — sirva una wiki de documentación, proyectos o corporativa desde una ruta de contenido local
+- [[self-host-a-deployment|Autoalojar un despliegue]] — Arranca las imágenes de appliance seL4/Microkit publicadas de os-totebox y app-orchestration-slm bajo QEMU, con la configuración incrustada en tiempo de compilación mediante bootargs del device tree, y verifica que ambas arrancan en buen estado.
+- [[deploy-knowledge-instance|Desplegar una instancia de conocimiento]] — Despliega una instancia de app-mediakit-knowledge desde una ruta de contenido local: escribe una configuración knowledge.toml con [site] + [[mount]], compila el binario y arráncalo con el subcomando serve.
 <!-- END AUTO-GENERATED -->
 
 ## Conectar la inferencia
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: wiring-up-inference -->
-- [[configure-doorman|Configurar la puerta de enlace Doorman]] — defina los extremos de Nivel A/B/C mediante variables de entorno, sin archivo de configuración
-- [[run-local-slm-inference|Ejecutar inferencia SLM local]] — inicie el modelo local y envíe una solicitud a través de Doorman
+- [[configure-doorman|Configurar la puerta de enlace Doorman]] — Configura un gateway Doorman de instancia única mediante variables de entorno — endpoint local de Tier A, cómputo de ráfaga Yo-Yo opcional de Tier B, proveedores externos opcionales de Tier C — y verifica el estado de cada nivel a través de /readyz.
+- [[run-local-slm-inference|Ejecutar inferencia SLM local]] — Inicia el servicio local de Tier A, verifica que Doorman lo reconoce como listo y envía una solicitud de inferencia desde la consola o la API, manteniendo todos los datos del prompt en el despliegue.
 <!-- END AUTO-GENERATED -->
 
 Cada guía tiene sus propios prerrequisitos, pasos de verificación y procedimiento de

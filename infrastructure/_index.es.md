@@ -12,7 +12,7 @@ index_type: thematic
 index_scope: infrastructure
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-06
+last_edited: 2026-09-04
 editor: pointsav-engineering
 paired_with: _index.md
 ---
@@ -31,12 +31,12 @@ Los artículos de infraestructura se sitúan en el límite entre la arquitectura
 La capa de persistencia fundacional — el libro de Solo Escritura y Múltiple Lectura y el vault contable construido sobre él.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: storage-substrate -->
-- [[totebox-archive|Archivo Totebox]] — Una máquina virtual micro-autónoma y libremente transferible que persiste datos institucionales como archivos planos inmutables; la unidad de despliegue y almacenamiento de la capa de archivo [[totebox-os|os-totebox]].
-- [[worm-ledger-design|Diseño del libro WORM]] — El libro de Solo Escritura y Múltiple Lectura de cuatro capas: basado en tiles, encadenado por hash, firmado criptográficamente; satisface SEC 17a-4(f), eIDAS y SOC 2 por estructura, no por política.
-- [[worm-ledger-architecture|Arquitectura del libro WORM]] — Disposición arquitectónica del libro WORM a través de los servicios del Anillo 1.
-- [[worm-ledger-storage-architecture|Arquitectura de almacenamiento WORM]] — Organización del almacenamiento físico para despliegues del libro WORM.
-- [[storage|Almacenamiento]] — Escrituras de solo adición a nivel de hardware, registros evidentes a la manipulación, eliminación legal mediante destrucción de claves criptográficas y protección de respaldo mediante unidades secundarias emparejadas criptográficamente.
-- [[data-vault-bookkeeping-substrate|Sustrato contable de Data Vault]] — Una arquitectura de contabilidad para PYME construida sobre un vault de origen inmutable y un diario de solo anexado, con separación estructural entre el registro contable y cualquier herramienta de contabilidad.
+- [[totebox-archive|Archivo Totebox]] — Un Totebox Archive es una bóveda soberana de datos asignada a una única entidad — empaquetada como una imagen de disco de arranque libremente transferible, almacenando datos como archivos planos WORM, y aceptando consultas solo a través del Diode Standard.
+- [[worm-ledger-design|Diseño del libro WORM]] — Sustrato de libro mayor Write-Once-Read-Many de los servicios Ring 1 de PointSav, diseñado hacia un formato encadenado por hash y firmado que cumple la normativa por estructura.
+- [[worm-ledger-architecture|Arquitectura del libro WORM]] — El ledger inmutable WORM por tenant al que escriben todos los servicios de ingestión del Anillo 1, construido sobre tiles C2SP con encadenamiento criptográfico de hashes, anclaje mensual a Sigstore Rekor y un diseño de doble sobre que abarca daemon Linux y unikernel seL4.
+- [[worm-ledger-storage-architecture|Arquitectura de almacenamiento WORM]] — La arquitectura de almacenamiento especifica C2SP tlog-tiles como primitivo objetivo; la implementación actual de service-fs conserva un registro JSON de solo adición por inquilino pendiente del backend de bloques, con inmutabilidad estructural y legibilidad a largo plazo como diseño previsto.
+- [[storage|Almacenamiento]] — El registro resistente a manipulaciones de la plataforma se apoya en permisos de sistema de archivos y una cadena de hash criptográfica, no en un bloqueo de escritura a nivel de hardware — un administrador con privilegios aún puede eludirlo, y cualquier elusión es detectable, no impedida.
+- [[data-vault-bookkeeping-substrate|Sustrato contable de Data Vault]] — Una arquitectura de contabilidad para PYMEs construida sobre una bóveda de fuente inmutable, un diario de solo adición y separación estructural entre el registro contable y cualquier herramienta de contabilidad.
 - [[cryptographic-ledgers|Libros criptográficos]] — Almacenamiento de estado inmutable mediante cadena de hash; cualquier alteración rompe una prueba criptográfica verificable en lugar de una comprobación de política.
 <!-- END AUTO-GENERATED -->
 
@@ -45,8 +45,8 @@ La capa de persistencia fundacional — el libro de Solo Escritura y Múltiple L
 Cómo se provisiona, actualiza y mantiene un despliegue en hardware on-premises y en la nube.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: fleet-and-edge-deployment -->
-- [[edge-deployment|Despliegue en el borde]] — Patrones de despliegue en el borde: conexiones de red externas enrutadas a través de servicios de ingesta de frontera del Anillo 1, saneamiento de carga útil antes de los anillos de procesamiento central, eventos limpios registrados en el libro de auditoría en lugar del tráfico de red bruto.
-- [[tier-c-key-wiring|Cableado de claves Tier C]] — El procedimiento operativo para gestionar claves API externas en el servicio Portero: dónde viven las claves, cómo rotan y cómo se contiene una brecha.
+- [[edge-deployment|Despliegue en el borde]] — La plataforma enruta todas las conexiones de red externas a través de servicios de ingesta perimetral de Ring 1 en el borde del sistema, desinfectando cargas útiles entrantes antes de que lleguen a los anillos de procesamiento central y registrando eventos limpios y validados en el registro de auditoría en lugar de tráfico de red sin procesar.
+- [[tier-c-key-wiring|Cableado de claves Tier C]] — El procedimiento operativo para gestionar las claves de API externas en el servicio Doorman — dónde viven las claves, cómo se aprovisionan, cómo rotan y cómo se contiene una brecha.
 - [[genesis-protocol|Protocolo Génesis]] — Cómo una flota aislada arranca desde un estado frío, derivando su identidad y emparejamientos sin una autoridad externa.
 - [[five-stage-supply-chain|Cadena de suministro de cinco etapas]] — El código pasa de contribuyente a producción a través de cinco etapas, con un aislamiento doble ciego que separa las credenciales de producción de los espacios de trabajo de contribuyentes.
 <!-- END AUTO-GENERATED -->
@@ -56,11 +56,11 @@ Cómo se provisiona, actualiza y mantiene un despliegue en hardware on-premises 
 Cómo se comunican los nodos de la flota y cómo se recopilan las señales de observabilidad sin centralizar datos identificables.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: network-and-telemetry -->
-- [[sovereign-mesh|Malla soberana]] — La red de malla entre pares basada en WireGuard que conecta los nodos de flota PointSav sin una autoridad de enrutamiento central.
-- [[ppn-mesh-architecture|Red privada PointSav]] — La malla privada WireGuard que conecta los nodos de flota de Woodfine, proporcionando transporte cifrado sin otorgar acceso de capa de aplicación a los servicios en esos nodos.
-- [[ppn-command-protocol|Protocolo de comandos PPN]] — El protocolo de comandos utilizado sobre la malla privada: paquetes binarios compactos transportados dentro de túneles WireGuard.
-- [[sovereign-telemetry|Telemetría soberana]] — Telemetría de estado cero: el V4 Intent Beacon recopila señales de comportamiento y hardware de clientes en el borde sin cookies, identificadores de sesión ni análisis de terceros.
-- [[telemetry-architecture|Arquitectura de telemetría]] — Pipeline de telemetría de extremo a extremo: recopilación en los nodos de borde de producción, transporte cifrado, procesamiento controlado localmente, sin dependencias de nube de terceros.
+- [[sovereign-mesh|Malla soberana]] — La malla soberana es la superposición WireGuard a nivel de aplicación que conecta todos los nodos de la flota PPN, transportando comandos binarios firmados sin depender de un intermediario de mensajes centralizado.
+- [[ppn-mesh-architecture|Red privada PointSav]] — Malla WireGuard de concentrador y radios que conecta nodos de flota, con custodia física de claves en las instalaciones del operador e incorporación de nodos Mesh Fusion.
+- [[ppn-command-protocol|Protocolo de comandos PPN]] — El PPN Command Protocol es el formato de cable binario de 16 bytes utilizado por app-network-admin para emitir comandos a los nodos os-infrastructure a través de la malla WireGuard, sin intermediario central ni sobrecarga de sesión.
+- [[sovereign-telemetry|Telemetría soberana]] — Telemetría de estado cero: una única baliza al cierre de página con URI y marca temporal, emparejada del lado del servidor con la IP y el user agent del solicitante, escrita sin enmascarar en un registro CSV de solo anexado.
+- [[telemetry-architecture|Arquitectura de telemetría]] — La plataforma recopila análisis de tráfico web de nodos perimetrales de producción y los enruta a un entorno de procesamiento controlado localmente a través de una ruta cifrada sin pasar por servicios de análisis de terceros en la nube.
 - [[data-sovereignty-telemetry|Soberanía de datos en telemetría]] — Cómo la telemetría preserva las garantías de soberanía de datos mientras sigue produciendo señal operativamente útil.
 <!-- END AUTO-GENERATED -->
 
@@ -69,11 +69,11 @@ Cómo se comunican los nodos de la flota y cómo se recopilan las señales de ob
 Cómo se agrupan, aíslan y protegen las máquinas virtuales en los nodos PPN — desde el pool de recursos del hipervisor por nodo hasta la hoja de ruta de arquitectura seL4 y el tejido distribuido planificado que permitirá a las VMs tomar prestado cómputo a través de la malla.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: compute-and-vm-fabric -->
-- [[ppn-vm-resource-pool|Pool de recursos VM de la PPN]] — La pila de tres servicios — controlador de flota, agente de host, proxy de inquilino — que aprovisiona, coloca y contabiliza VMs en una malla WireGuard heterogénea.
-- [[ppn-hypervisor-resource-pool|Pool de recursos del hipervisor PPN]] — Agrupación de CPU y RAM por nodo mediante virtio_balloon y pesos cgroups v2, estructuralmente ciega al agregador de la capa de datos que se ejecuta por encima.
-- [[ppn-tenant-vm-isolation|Aislamiento de VM por inquilino en la PPN]] — Qué aislamiento de espacio de nombres, proceso y red ofrece hoy el pool de recursos PPN, y el camino planificado hacia subredes WireGuard por inquilino.
-- [[ppn-distributed-vm-fabric|Tejido VM distribuido de la PPN]] — La extensión planificada de la capa de hipervisor por nodo a un pool multinodo: préstamo de memoria entre nodos, un libro de capacidades distribuido y una cadena de atestación soberana.
-- [[ppn-three-path-architecture|Arquitectura seL4 de tres caminos de la PPN]] — Tres opciones seL4 secuenciales para nodos de infraestructura PPN, desde un hipervisor con invitado Linux hasta dominios de protección sin ninguna máquina virtual.
+- [[ppn-vm-resource-pool|Pool de recursos VM de la PPN]] — El pool de recursos VM de la PPN es una pila de tres servicios que aprovisiona, coloca y contabiliza máquinas virtuales en una malla WireGuard heterogénea que combina nodos en la nube y hardware físico.
+- [[ppn-hypervisor-resource-pool|Pool de recursos del hipervisor PPN]] — La capa de hipervisor PPN está diseñada para gestionar un pool de CPU y RAM por nodo mediante virtio_balloon y pesos cgroups v2 — ningún mecanismo está construido todavía.
+- [[ppn-tenant-vm-isolation|Aislamiento de VM por inquilino en la PPN]] — El pool de recursos PPN separa las cargas de trabajo por inquilino mediante aislamiento de espacio de nombres, aislamiento de proceso por VM y redes en modo usuario. El aislamiento a nivel de subred de red es un hito planificado.
+- [[ppn-distributed-vm-fabric|Tejido VM distribuido de la PPN]] — El Tejido VM Distribuido PPN es la extensión planificada de la capa de hipervisor PPN por nodo hacia un pool de recursos multinodo, previsto para permitir que las VMs tomen prestado cómputo de otros nodos de la malla y migren a través de la flota sin intervención del operador en cada movimiento.
+- [[ppn-three-path-architecture|Arquitectura seL4 de tres caminos de la PPN]] — Tres opciones de arquitectura seL4 secuenciales para nodos de infraestructura PPN: la Opción B se implementa primero (hipervisor seL4 + invitado Linux), la Opción C añade WireGuard como dominio de protección seL4, y la Opción A apunta a un entorno seL4 puro sin máquinas virtuales.
 <!-- END AUTO-GENERATED -->
 
 ## Véase también

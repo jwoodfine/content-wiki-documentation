@@ -13,7 +13,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-06
+last_edited: 2026-09-04
 editor: pointsav-engineering
 paired_with: _index.es.md
 ---
@@ -34,8 +34,8 @@ The design system is itself one of the platform's load-bearing substrates — se
 The foundational decisions: why the substrate exists, what it preserved from convention, what it replaced.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: philosophy-and-primitive-vocabulary -->
-- [[design-philosophy]] — Why the substrate exists; three structural inversions of the enterprise-tier pattern; self-hosted, customer-owned, editor-agnostic token publishing.
-- [[design-primitive-vocabulary]] — Vocabulary rationale: numeric colour scales, layered semantic aliasing, productive-versus-expressive type split, and numeric spacing scales aligned with 2018 to 2026 field convention.
+- [[design-philosophy]] — The PointSav design system is a self-hosted, customer-owned substrate at design.pointsav.com publishing design decision research alongside DTCG-format token values.
+- [[design-primitive-vocabulary]] — Rationale for the primitive token layer's structural patterns — numeric color scales, semantic aliasing, and type splits — using PointSav-specific naming and values.
 - [[design-system-substrate]] — The substrate framing: self-hosted design-system engine storing tokens and components in the customer's own git repository; W3C DTCG token format; machine-readable MCP endpoint.
 <!-- END AUTO-GENERATED -->
 
@@ -44,14 +44,14 @@ The foundational decisions: why the substrate exists, what it preserved from con
 Background articles on what tokens are, how they compose into components, how they theme, and how they reach designers, AI agents, and other organizations.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: token-concepts-and-tooling -->
-- [[what-is-a-design-token]] — A design token as a design decision recorded as data; the W3C DTCG Format Module; the primitive/semantic/component tier model.
+- [[what-is-a-design-token]] — Entry-level background article defining design tokens, the W3C Design Tokens Community Group Format Module (first stable version, October 2025), and the primitive/semantic/component three-tier architecture, grounded in the PointSav Design System's published DTCG bundle (130 primitive + 86 theme tokens, plus separate paper and writing pillars).
 - [[theming-via-semantic-tokens]] — Light/dark theming as semantic-token substitution, grounded in the published `theme.dark` group and the same pattern in Carbon, Material 3, and Radix.
-- [[component-recipes-vs-raw-tokens]] — What the component tier adds beyond a token value: the `recipe.json` format and the registry's two-tier documentation state.
-- [[design-tokens-and-accessibility]] — How accessibility requirements — touch targets, focus-ring colour, contrast — are expressed as tokens rather than checked ad hoc.
-- [[figma-tokens-studio-integration]] — Bringing the published token export into Figma via the Tokens Studio plugin's read-only URL sync.
-- [[mcp-ai-agent-consumable-design-systems]] — Why the design system exposes a machine-readable MCP endpoint and token search API for AI coding agents.
-- [[registry-driven-releases]] — The registry-driven architecture that keeps navigation, homepage statistics, and release packaging from drifting apart.
-- [[self-hosting-customer-controlled-design-systems]] — The two separate offers: using the published tokens directly, and self-hosting the serving engine for a different organization's own design system.
+- [[component-recipes-vs-raw-tokens]] — What the PointSav Design System's component tier adds beyond a token value: the recipe.json format — variants, markup, token references, CSS, ARIA guidance, and WCAG targets in one machine-readable artifact — demonstrated against the shipped Button recipe and the registry's real documentation state (53 components: 20 fully documented, 33 with a recipe plus at least a usage document).
+- [[design-tokens-and-accessibility]] — How the PointSav Design System expresses accessibility requirements — minimum touch targets, focus-ring color, contrast relationships — as named design tokens, so that WCAG conformance is enforced by the token graph's structure rather than checked ad hoc per component, demonstrated against the shipped Button accessibility specification.
+- [[figma-tokens-studio-integration]] — Explains how designers bring the PointSav Design System's published DTCG token export into Figma with the Tokens Studio plugin's URL sync — a read-only pull from the system's own hosted JSON, with no export/import step — and why the read-only direction is a governance feature, with an honest comparison to Penpot's native token support.
+- [[mcp-ai-agent-consumable-design-systems]] — Explains why the PointSav Design System exposes a machine-readable surface — an on-prem Model Context Protocol endpoint, a token search API, and a DTCG token export — so AI coding agents can query current token and component data from the same registry that renders the human-facing documentation, without any query leaving the host's own infrastructure.
+- [[registry-driven-releases]] — Explains the registry-driven architecture behind the design-system site's releases: navigation, homepage statistics, the machine-readable registry endpoint, MCP responses, and release packaging all resolve against one registry file, so they cannot drift apart — illustrated with two real defects from the system's own history rather than hypotheticals.
+- [[self-hosting-customer-controlled-design-systems]] — Explains the two distinct offers of the PointSav Design System — using the Apache-2.0 token data directly, which requires nothing, and separately self-hosting the serving engine to run a different organization's own in-house design system — including the real five-step fork procedure, the three-variable configuration surface, git-based governance, and the precise license boundaries between token data, server source, and article text.
 <!-- END AUTO-GENERATED -->
 
 ## Brand surface
@@ -59,8 +59,8 @@ Background articles on what tokens are, how they compose into components, how th
 How the brand identity is encoded as colour families and typographic stacks across PointSav and Woodfine product surfaces.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: brand-surface -->
-- [[brand-family-swatch]] — Brand colour families assigned to retail and institutional anchor categories in the co-location GIS surface; consistent colour-coded identifiers for map visualisation and tabular data.
-- [[brand-typography]] — The typographic separation between web interface system fonts and institutional print typography; open-licence serif typefaces reserved for PDF generation and formal disclosures.
+- [[brand-family-swatch]] — The brand color families assigned to retail and institutional anchor categories in the co-location GIS surface, providing consistent color-coded map and table identifiers.
+- [[brand-typography]] — PointSav's web surfaces render in Inter, Source Serif 4, and Playfair Display, self-hosted rather than loaded from a system font stack. A separate, documented OFL print-typography matrix exists but has no shipped generation pipeline yet.
 <!-- END AUTO-GENERATED -->
 
 ## Wiki surface design
@@ -68,9 +68,9 @@ How the brand identity is encoded as colour families and typographic stacks acro
 The component vocabulary, typographic system, and dark-mode palette that compose the `documentation.pointsav.com` reading surface.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: wiki-surface-design -->
-- [[wiki-component-library]] — The wiki's shared chrome (header, off-canvas mobile nav, sidebar, footer) and the page templates it wraps, in a shared `k-*` token vocabulary.
-- [[wiki-typography-system]] — Inter and Source Serif 4 type stack, heading scale, and spacing tokens for the wiki; broad linguistic coverage for bilingual content.
-- [[wiki-dark-mode]] — Light and dark colour schemes for the wiki: semantic-token overrides on a `data-theme` attribute, with theme persistence via localStorage.
+- [[wiki-component-library]] — The shared chrome — header, off-canvas mobile nav, left sidebar, and footer — plus the page templates it wraps, that together render every page on the PointSav knowledge platform.
+- [[wiki-typography-system]] — The Inter and Source Serif 4 type stack, heading scale, and spacing tokens governing every wiki article page across the PointSav knowledge platform.
+- [[wiki-dark-mode]] — Light and dark colour schemes for the PointSav wiki, driven by semantic-token overrides on a data-theme attribute, with theme persistence via localStorage.
 <!-- END AUTO-GENERATED -->
 
 ## Related foundations

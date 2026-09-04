@@ -11,7 +11,7 @@ index_type: thematic
 index_scope: governance
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+last_edited: 2026-09-04
 editor: pointsav-engineering
 paired_with: _index.es.md
 ---
@@ -32,42 +32,42 @@ The twelve binding [[architecture-decisions|architecture decisions]] are the mos
 Start here for procurement, security, and compliance evaluation.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: institutional-due-diligence -->
-- [[procurement-overview]] — What a regulated buyer acquires: customer-owned hardware deployment, no vendor-held data, no minimum-spend commitment, and the compliance properties enforced by architecture rather than contractual promise.
-- [[security-overview]] — The platform's security posture: capability-based isolation, the Diode unidirectional command-flow standard, the Doorman AI boundary, the WORM audit ledger, and how each property is enforced by architecture.
-- [[compliance-and-continuous-disclosure]] — How the platform produces continuous-disclosure-grade records and what that means for regulated buyers.
+- [[procurement-overview]] — What a regulated buyer acquires deploying PointSav: hardware the customer owns outright, data the vendor never holds, and compliance enforced by architecture.
+- [[security-overview]] — The platform's security posture: capability-based hardware isolation, the Diode command-flow standard, the Doorman AI boundary, and the WORM audit ledger.
+- [[compliance-and-continuous-disclosure]] — The regulatory frameworks the PointSav architecture addresses, and its structural approach to exposing audit evidence continuously, not via annual certification.
 <!-- END AUTO-GENERATED -->
 
 ## Formal decision records
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: formal-decision-records -->
-- [[architecture-decisions]] — The twelve binding architecture decisions that constrain all future engineering; grouped by compliance weight, data separation, deployment custody, and operational integrity.
-- [[adr-07-zero-ai-in-ring-1]] — Why the four Ring 1 boundary-ingest services are restricted to deterministic-only operations, and where AI inference is permitted to begin.
+- [[architecture-decisions]] — Twelve binding architecture decisions governing how the PointSav platform is built, constraining engineering work on data handling, oversight, and deployment custody.
+- [[adr-07-zero-ai-in-ring-1]] — SYS-ADR-07 prohibits AI inference from all Ring 1 boundary-ingest services, enforcing deterministic-only operations at the WORM write path.
 <!-- END AUTO-GENERATED -->
 
 ## Licensing and contribution
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: licensing-and-contribution -->
-- [[contributor-model]] — The three-tier contributor model: open community, paid integrators, and the canonical vendor tier; how work flows between them.
-- [[canadian-simple-copyright]] — The Canadian-simple copyright posture: licence selection, attribution requirements, and the Canadian legal context.
-- [[legal-and-ip-structure]] — The three-corporation IP topology: how intellectual property transfers from contributors to vendor to customer, with squash-and-merge as the atomic IP-transfer event.
+- [[contributor-model]] — The Three-Tier Contributor Model organises substrate contributors into Core (4-7 engineers), Paid (50-100 contractors), and Open (10,000+ public), with mobility paths.
+- [[canadian-simple-copyright]] — The platform's IP vests in a single Canadian parent holding company by operation of Canadian Copyright Act § 13(3), without inter-company assignment.
+- [[legal-and-ip-structure]] — The three-corporation topology governing IP transfer from contributor to vendor to customer, with squash-and-merge as the atomic IP-transfer event.
 <!-- END AUTO-GENERATED -->
 
 ## Engineering sovereignty
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: engineering-sovereignty -->
-- [[sovereign-replacement-initiative]] — The formal program that records every third-party dependency in a structured ledger, enforces quarantine isolation, and retires each dependency when a native replacement reaches structural parity.
-- [[moonshot-initiatives]] — Nine named engineering programs targeting native replacements for quarantined third-party dependencies; three carry substantial active engineering today, six remain early-stage scaffolds.
-- [[sovereign-airlock-doctrine]] — The staged-commit protocol that enforces a structural separation between staging identities (commit authors) and canonical push identities, with no direct path between them.
+- [[sovereign-replacement-initiative]] — The engineering governance program tracking third-party dependencies, isolating them in quarantine, and coordinating the moonshot programs replacing them.
+- [[moonshot-initiatives]] — Moonshot initiatives are active engineering programs building native replacements for quarantined third-party dependencies, reducing vendor lock-in.
+- [[sovereign-airlock-doctrine]] — The staged-commit protocol enforcing separation between staging identities and canonical repository identities — two staging authors, two admin push identities.
 <!-- END AUTO-GENERATED -->
 
 ## Platform disciplines
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: platform-disciplines -->
-- [[ontological-governance]] — The four reference vocabulary ledgers and human-verification loop that keep the platform's identity classification legible over time.
-- [[anti-homogenization-discipline]] — The architectural posture that resists AI writing assistants pulling contributors toward a single voice, defaulting to flagging rather than silent rewriting.
-- [[api-key-boundary-discipline]] — The rule that all external LLM API credentials belong exclusively at the gateway service and never at inference engines or downstream consumers.
-- [[favicon-matrix]] — The single static SVG favicon served across every wiki tenant, and why the mechanism is a linked file rather than an inline data URI.
-- [[doctrine-invention-7-rekor-anchoring]] — How the platform posts a monthly signed ledger checkpoint to the public Sigstore Rekor transparency log, giving auditors independently verifiable evidence outside the platform's own infrastructure.
+- [[ontological-governance]] — Four reference vocabulary ledgers kept deliberately narrow, plus a human-verification loop that reviews extracted identity fragments before they enter the verified ledger.
+- [[anti-homogenization-discipline]] — Anti-homogenization discipline resists AI writing assistants pulling contributors toward a single voice, by flagging potential issues rather than silently rewriting text.
+- [[api-key-boundary-discipline]] — The rule that all external LLM API credentials belong exclusively at the gateway service and never at inference engines.
+- [[favicon-matrix]] — The wiki serves a single static SVG favicon — a navy document-page glyph, linked from a static file, the same mark on every tab regardless of tenant.
+- [[doctrine-invention-7-rekor-anchoring]] — How Foundry's anchor-emitter binary posts a signed ledger checkpoint to Sigstore Rekor each month, providing independently verifiable, third-party evidence of workspace state.
 <!-- END AUTO-GENERATED -->
 
 ## See also

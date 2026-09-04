@@ -11,7 +11,7 @@ index_type: thematic
 index_scope: ai
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-24
+last_edited: 2026-09-04
 editor: pointsav-engineering
 paired_with: _index.md
 ---
@@ -32,10 +32,10 @@ Esta es la puerta de entrada a la afirmación arquitectónica más distintiva de
 La única puerta por la que se enruta cada llamada de inferencia — ningún servicio posee sus propias credenciales de IA ni realiza una llamada saliente directa.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: the-doorman-boundary -->
-- [[doorman-protocol|Protocolo Doorman]] — el único límite de solicitudes de IA: enrutamiento de tres niveles, el libro de auditoría, la disciplina `moduleId`
-- [[sovereign-ai-routing|Enrutamiento de IA y la esclusa lingüística]] — la disciplina de sanitizar-al-salir / rehidratar-al-entrar aplicada en ese límite antes de que cualquier dato llegue a un modelo externo
-- [[decode-time-constraints|Restricciones en tiempo de decodificación]] — reglas gramaticales aplicadas en cada paso de token, que hacen matemáticamente imposible producir vocabulario prohibido o salidas inválidas
-- [[slm-stack-architecture|Arquitectura de la pila Rust de SLM]] — el grafo de dependencias Rust y la arquitectura binaria detrás de `service-slm`, el crate que implementa el Doorman
+- [[doorman-protocol|Protocolo Doorman]] — Doorman es el único límite de solicitud de IA a través del cual se enruta toda llamada de inferencia — conserva cada credencial de modelo externo y registra cada llamada en un libro mayor de auditoría inmutable.
+- [[sovereign-ai-routing|Enrutamiento de IA y la esclusa lingüística]] — El enrutamiento de IA mantiene cada credencial de modelo externo y audita cada solicitud en una única frontera. No depura PII de los prompts, y el enrutamiento de Nivel C hacia modelos externos todavía no está en producción.
+- [[decode-time-constraints|Restricciones en tiempo de decodificación]] — La técnica de decodificación restringida, y una línea clara entre esa técnica y lo que PointSav ha construido hoy: un linter asesor posterior a la generación, con el mecanismo basado en gramática planificado, no implementado.
+- [[slm-stack-architecture|Arquitectura de la pila Rust de SLM]] — El grafo de dependencias Rust y la arquitectura de binarios de service-slm, el servicio Doorman que media cada llamada de inferencia en la plataforma PointSav.
 <!-- END AUTO-GENERATED -->
 
 ## Niveles de cómputo
@@ -43,8 +43,8 @@ La única puerta por la que se enruta cada llamada de inferencia — ningún ser
 Dónde se ejecuta realmente la inferencia, y el modelo especializado de proveedor hacia el que apunta el nivel superior.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: compute-tiers -->
-- [[zero-container-inference|Inferencia sin contenedores]] — el patrón de despliegue planeado para el Nivel B de GPU: binarios nativos bajo systemd, temporizadores de apagado por inactividad en lugar de un runtime de contenedores
-- [[pointsav-llm|PointSav-LLM]] — el modelo especializado de proveedor planeado para el Nivel 3, aún no operativo; prospectivo en su totalidad
+- [[zero-container-inference|Inferencia sin contenedores]] — Patrón de implementación GPU de Nivel B con binarios Linux nativos bajo systemd sobre una GPU L4, con la detección de inactividad ejecutándose desde el proceso del servidor Doorman en lugar de un temporizador en la propia VM de GPU.
+- [[pointsav-llm|PointSav-LLM]] — El modelo de IA especialista planificado para el Nivel 3 del sistema de cuatro niveles SLM de PointSav, construido mediante entrenamiento continuo de OLMo 3 32B sobre el corpus federado de aprendizaje de la plataforma.
 <!-- END AUTO-GENERATED -->
 
 ## Extracción de entidades y el bucle de entrenamiento
@@ -52,10 +52,10 @@ Dónde se ejecuta realmente la inferencia, y el modelo especializado de proveedo
 Cómo la plataforma convierte el uso en señal de entrenamiento — el mecanismo detrás de "la plataforma aprende de cómo se usa."
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: entity-extraction-and-training-loop -->
-- [[tiered-entity-extraction-architecture|Arquitectura de extracción de entidades por niveles]] — la canalización de extracción de tres niveles por documento: detección extractiva GLiNER, respaldo generativo OLMo, enriquecimiento por GPU
-- [[elastic-compute-lora-training-pipeline|Canalización nocturna de entrenamiento LoRA de Elastic Compute #1]] — el trabajo nocturno de dos fases que reconstruye el DataGraph y entrena los pesos del adaptador
-- [[learning-datagraph-architecture|DataGraph de aprendizaje]] — las cuatro vías de captura de señal de entrenamiento: captura de trayectoria, cola de aprendizaje, pares DPO editoriales, destilación de correcciones
-- [[flow-quality-architecture|Flujo de conocimiento: bucle de entrenamiento y DataGraph ontológico]] — el marco de calidad que pregunta si el bucle de entrenamiento y el DataGraph realmente funcionan, no solo si se ejecutan
+- [[tiered-entity-extraction-architecture|Arquitectura de extracción de entidades por niveles]] — La plataforma PointSav ejecuta tres niveles de extracción en secuencia sobre cada documento: el Nivel 0 proporciona detección extractiva rápida vía GLiNER; el Nivel A ofrece una alternativa generativa vía OLMo en CPU; el Nivel B aplica enriquecimiento en GPU y registra las mejoras como señal de entrenamiento.
+- [[elastic-compute-lora-training-pipeline|Canalización nocturna de entrenamiento LoRA de Elastic Compute #1]] — Pipeline nocturno de dos fases en Elastic Compute #1 que reconstruye el DataGraph del despliegue y entrena pesos adaptadores LoRA para el modelo de lenguaje local.
+- [[learning-datagraph-architecture|DataGraph de aprendizaje]] — Ciclo de entrenamiento que convierte interacciones del operador en señal de entrenamiento — captura de trayectorias, una cola de aprendizaje y un canal de destilación GLiNER→OLMo que genera pares DPO de extracción de entidades.
+- [[flow-quality-architecture|Flujo de conocimiento: bucle de entrenamiento y DataGraph ontológico]] — Marco de calidad del flujo de conocimiento Totebox: si los adaptadores LoRA mejoran el modelo de forma medible y si el DataGraph es una ontología precisa y bien resuelta.
 <!-- END AUTO-GENERATED -->
 
 ## Véase también

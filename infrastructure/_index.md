@@ -11,7 +11,7 @@ index_type: thematic
 index_scope: infrastructure
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-06
+last_edited: 2026-09-04
 editor: pointsav-engineering
 paired_with: _index.es.md
 ---
@@ -30,12 +30,12 @@ Infrastructure articles sit at the boundary between the abstract platform archit
 The foundational persistence layer — the Write-Once-Read-Many ledger and the bookkeeping vault built on top of it.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: storage-substrate -->
-- [[totebox-archive]] — A self-contained, freely transferable micro-virtual machine that persists institutional data as immutable flat files; the deployment and storage unit for the [[totebox-os|os-totebox]] archive layer.
-- [[worm-ledger-design]] — The four-layer Write-Once-Read-Many ledger: tile-based, hash-chained, cryptographically signed; satisfies SEC 17a-4(f), eIDAS, and SOC 2 by structure rather than policy.
-- [[worm-ledger-architecture]] — Architectural layout of the WORM ledger across Ring 1 services.
-- [[worm-ledger-storage-architecture]] — Physical storage organisation for WORM ledger deployments.
-- [[storage]] — Hardware-level append-only writes, tamper-evident records, legal deletion through cryptographic key destruction, and backup protection via cryptographically paired secondary drives.
-- [[data-vault-bookkeeping-substrate]] — An SMB bookkeeping architecture built on an immutable source vault and append-only journal, with structural separation between the bookkeeping record and any accounting tool.
+- [[totebox-archive]] — A Totebox Archive is a sovereign data vault for a single entity — a freely transferable bootable disk image storing WORM flat files, accessed only via the Diode Standard.
+- [[worm-ledger-design]] — Write-Once-Read-Many ledger substrate for PointSav Ring 1 services, designed toward a hash-chained, signed format that satisfies recordkeeping rules by structure.
+- [[worm-ledger-architecture]] — The per-tenant WORM immutable ledger every Ring 1 service writes through, built on C2SP tlog-tiles with hash-chaining and monthly Sigstore Rekor anchoring.
+- [[worm-ledger-storage-architecture]] — C2SP tlog-tiles is the target storage primitive; the current service-fs build persists a per-tenant JSON append log pending the tile backend, immutable by design.
+- [[storage]] — The platform's tamper-evident record rests on filesystem read-only permissions and a cryptographic hash chain, not a hardware write-block — a privileged administrator can still bypass it, and any bypass is detectable, not prevented.
+- [[data-vault-bookkeeping-substrate]] — An SMB bookkeeping and accounting architecture built on an immutable source vault and append-only journal, structurally separate from any accounting tool.
 - [[cryptographic-ledgers]] — Immutable-state storage by hash-chain; any alteration breaks a verifiable cryptographic proof rather than a policy check.
 <!-- END AUTO-GENERATED -->
 
@@ -44,8 +44,8 @@ The foundational persistence layer — the Write-Once-Read-Many ledger and the b
 How a deployment is provisioned, updated, and maintained across on-premises and cloud hardware.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: fleet-and-edge-deployment -->
-- [[edge-deployment]] — Edge deployment patterns: external network connections routed through Ring 1 boundary-ingest services, payload sanitisation before the core processing rings, clean events recorded to the audit ledger rather than raw network traffic.
-- [[tier-c-key-wiring]] — The operational procedure for managing external API keys in the Doorman service: where keys live, how they rotate, and how a breach is contained.
+- [[edge-deployment]] — The platform routes external network connections through Ring 1 boundary-ingest services at the edge, sanitizing payloads before core processing and recording clean events.
+- [[tier-c-key-wiring]] — The operational procedure for managing external API keys in the Doorman service — where keys live, how they are provisioned, how they rotate, and how a breach is contained.
 - [[genesis-protocol]] — How an isolated fleet bootstraps itself from a cold state, deriving its identity and pairings without an external authority.
 - [[five-stage-supply-chain]] — Code moves from contributor to production through five stages, with a double-blind air-gap that separates production credentials from contributor workspaces.
 <!-- END AUTO-GENERATED -->
@@ -55,11 +55,11 @@ How a deployment is provisioned, updated, and maintained across on-premises and 
 How fleet nodes communicate and how observability signals are collected without centralising identifiable data.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: network-and-telemetry -->
-- [[sovereign-mesh]] — The WireGuard-based peer-to-peer mesh that connects PointSav fleet nodes without a central routing authority.
-- [[ppn-mesh-architecture]] — The private WireGuard mesh that connects Woodfine's fleet nodes, providing encrypted transport without granting application-layer access to the services on those nodes.
-- [[ppn-command-protocol]] — The command protocol used over the private mesh: compact binary packets carried inside WireGuard tunnels.
-- [[sovereign-telemetry]] — Zero-state telemetry: a single unload beacon carrying URI and timestamp, paired server-side with the requester's unmasked IP and user agent.
-- [[telemetry-architecture]] — End-to-end telemetry pipeline: collection at production edge nodes, encrypted transport, locally controlled processing, no third-party cloud dependencies.
+- [[sovereign-mesh]] — The sovereign mesh is the application-level WireGuard overlay connecting every PPN fleet node, carrying signed binary commands without a centralised message broker.
+- [[ppn-mesh-architecture]] — Hub-and-spoke WireGuard mesh connecting fleet nodes, with physical key custody on the operator's premises and Mesh Fusion node joining.
+- [[ppn-command-protocol]] — The PPN Command Protocol is the 16-byte binary wire format app-network-admin uses to issue commands to os-infrastructure nodes over WireGuard, with no central broker.
+- [[sovereign-telemetry]] — Zero-state telemetry: a single unload beacon carrying URI and timestamp, paired server-side with the requester's IP and user agent, written unmasked to an append-only CSV ledger.
+- [[telemetry-architecture]] — The platform collects web traffic analytics from production edge nodes, routing them to a locally controlled environment via an encrypted path, no third-party cloud.
 - [[data-sovereignty-telemetry]] — How telemetry preserves data-sovereignty guarantees while still producing operationally useful signal.
 <!-- END AUTO-GENERATED -->
 
@@ -68,11 +68,11 @@ How fleet nodes communicate and how observability signals are collected without 
 How virtual machines are pooled, isolated, and secured across PPN nodes — from the per-node hypervisor resource pool to the seL4 architecture roadmap and the planned distributed fabric that lets VMs borrow compute across the mesh.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: compute-and-vm-fabric -->
-- [[ppn-vm-resource-pool|PPN VM resource pool]] — The three-service stack — fleet controller, host agent, tenant proxy — that provisions, places, and accounts for VMs across a heterogeneous WireGuard mesh.
-- [[ppn-hypervisor-resource-pool|PPN hypervisor resource pool]] — Per-node CPU and RAM pooling via virtio_balloon and cgroups v2 weights, structurally blind to the data-layer aggregator above it.
-- [[ppn-tenant-vm-isolation|PPN tenant VM isolation]] — What namespace, process, and network isolation the PPN resource pool provides today, and the planned path to per-tenant WireGuard subnets.
-- [[ppn-distributed-vm-fabric|PPN distributed VM fabric]] — The planned extension of the per-node hypervisor layer to a multi-node pool: cross-node memory lending, a distributed capability ledger, and a sovereign attestation chain.
-- [[ppn-three-path-architecture|PPN three-path seL4 architecture]] — Three sequential seL4 options for PPN infrastructure nodes, from a hypervisor with a Linux guest to protection domains with no virtual machines at all.
+- [[ppn-vm-resource-pool|PPN VM resource pool]] — The PPN VM resource pool is a three-service stack that provisions, places, and accounts for VMs across a heterogeneous WireGuard mesh spanning cloud and physical nodes.
+- [[ppn-hypervisor-resource-pool|PPN hypervisor resource pool]] — The PPN hypervisor layer is designed to manage a per-node pool of CPU and RAM via virtio_balloon and cgroups v2 — neither mechanism is built in os-infrastructure yet.
+- [[ppn-tenant-vm-isolation|PPN tenant VM isolation]] — The PPN resource pool separates tenant workloads through namespace isolation, per-VM process isolation, and user-mode networking; subnet isolation is a planned milestone.
+- [[ppn-distributed-vm-fabric|PPN distributed VM fabric]] — The planned extension of the per-node PPN hypervisor layer to a multi-node resource pool, letting VMs borrow compute and migrate across the fleet automatically.
+- [[ppn-three-path-architecture|PPN three-path seL4 architecture]] — Three sequential seL4 options for PPN infrastructure nodes: Option B ships first (hypervisor + Linux guest), Option C adds WireGuard as a protection domain.
 <!-- END AUTO-GENERATED -->
 
 ## See also

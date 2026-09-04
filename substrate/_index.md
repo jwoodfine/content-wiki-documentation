@@ -11,7 +11,7 @@ index_type: thematic
 index_scope: substrate
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-06
+last_edited: 2026-09-04
 editor: pointsav-engineering
 paired_with: _index.es.md
 ---
@@ -32,16 +32,16 @@ The category answers questions like: *what makes the platform improve continuous
 The nine named substrates: each names a structural property the platform depends on.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: core-named-substrates -->
-- [[compounding-substrate]] — Five structural properties that make every operational interaction a compounding training event across all tenant deployments.
-- [[apprenticeship-substrate]] — Routes work through a local SLM, captures signed senior verdicts, and uses the resulting preference pairs as continued-pretraining signal.
-- [[citation-substrate]] — Platform-wide YAML citation registry with drift detection; makes provenance machine-auditable from regulatory instrument to published claim.
-- [[disclosure-substrate]] — Version-controlled Markdown with signed authorship chains and cryptographic content hashes produces structurally BCSC-compliant continuous-disclosure records.
-- [[trajectory-substrate]] — Converts operational work — commits, sessions, operator feedback — into structured JSONL training tuples for continued pretraining.
-- [[language-protocol-substrate]] — Four adapter families and eighteen genre templates encoding register, brand voice, and target audience as reusable prompt scaffolding.
-- [[design-system-substrate]] — Self-hosted design-system engine storing tokens and components in the customer's own git repository; W3C DTCG token format; machine-readable MCP endpoint.
-- [[location-intelligence-substrate]] — Flat-file open-GIS architecture: Apache-licensed open data, Rust-aligned rendering stack, retail co-location analysis as the first deployed surface.
+- [[compounding-substrate]] — Architectural pattern pairing open platform code and a deterministic AI-free data layer with an optional intelligence layer whose interactions compound as training signal.
+- [[apprenticeship-substrate]] — Platform mechanism routing work through a local Small Language Model first, capturing signed senior verdicts as preference pairs for continued pretraining.
+- [[citation-substrate]] — Platform-wide YAML citation registry with drift detection that makes provenance machine-auditable from regulatory instrument to published claim.
+- [[disclosure-substrate]] — Mechanism making a version-controlled Markdown wiki the primary continuous-disclosure record, with signed authorship chains and cryptographic content hashes.
+- [[trajectory-substrate]] — The platform mechanism converting operational work — commits, sessions, feedback — into structured JSONL training tuples feeding a continued-pretraining corpus.
+- [[language-protocol-substrate]] — The routing mechanism that carries a draft's declared register, document type, and destination between archives — a frontmatter field, a routing table, and a mailbox convention, not an AI adapter system.
+- [[design-system-substrate]] — The design-system substrate is a self-hosted, customer-owned engine storing tokens and components in the customer's own Git repo, served via a machine-readable MCP endpoint.
+- [[location-intelligence-substrate]] — A flat-file, open-GIS architecture letting customers own geographic datasets end-to-end using open data and a Rust-aligned rendering stack, retail co-location as first surface.
 - [[retail-co-location-tier-methodology]] — The four-tier (Regional/District/Local/Fringe) gate system that scores retail co-location clusters — composition, catchment rank, civic support, non-overlap.
-- [[brief-queue-substrate]] — Durable file-backed queue that makes idle-shutdown Yo-Yo compute viable without losing apprenticeship corpus capture data.
+- [[brief-queue-substrate]] — A durable file-backed queue that makes idle-shutdown Yo-Yo compute viable without losing apprenticeship corpus capture data — the durability layer of the three-tier SLM substrate.
 - [[gis-as-bim-substrate]] — What the co-location dataset offers a BIM composition pipeline: the cluster manifold and its joinable fields, region-resolution depth, civic context layers, and the stability guarantees a downstream consumer can rely on.
 - [[bim-object-specification]] — The platform's reusable building-element specification unit: a fixed set of primitive categories anchored to open standards (IFC, Uniclass, bSDD), each carrying three layers of information at once — what it is, what its jurisdiction requires, and what its climate requires.
 <!-- END AUTO-GENERATED -->
@@ -51,11 +51,11 @@ The nine named substrates: each names a structural property the platform depends
 The single AI gateway that enforces the Ring 3 boundary, routes inference, and accumulates training signal.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: compounding-doorman-and-ai-boundary -->
-- [[compounding-doorman]] — The single service mediating every external compute call: logs every event, accumulates training signal.
-- [[mcp-substrate-protocol]] — Every Ring 1 and Ring 2 service exposes a Model Context Protocol server interface as its primary external contract; the Doorman is the MCP gateway.
-- [[adapter-composition]] — The OS metaphor for AI in PointSav: Doorman as kernel, adapters as processes, service-content as filesystem; composition algebra for per-request intelligence from versioned LoRA layers.
-- [[knowledge-graph-grounded-apprenticeship]] — The Doorman consults the per-tenant knowledge graph before every inference request; graph and adapter co-evolve as training tuples accumulate.
-- [[single-boundary-compute-discipline]] — Every AI inference request routes exclusively through the Doorman; bypass is structurally prevented at the kernel level.
+- [[compounding-doorman]] — The operational pattern at the heart of sovereign AI substrates: a single service mediating every external compute call, logging events, accumulating training signal.
+- [[mcp-substrate-protocol]] — Every Ring 1 and Ring 2 service exposes a Model Context Protocol server interface as its primary external contract, with the Doorman as the MCP gateway.
+- [[adapter-composition]] — The operating-system metaphor for AI in PointSav — the Doorman as kernel, adapters as processes — and the algebra assembling intelligence from LoRA layers.
+- [[knowledge-graph-grounded-apprenticeship]] — The Doorman looks up matching entities in the per-tenant knowledge graph before dispatching a request, grounding the model's response in facts the graph already holds.
+- [[single-boundary-compute-discipline]] — Every AI inference request in a platform deployment routes exclusively through the Doorman, with bypass structurally prevented at the kernel level.
 <!-- END AUTO-GENERATED -->
 
 ## Small Language Model stack
@@ -63,14 +63,14 @@ The single AI gateway that enforces the Ring 3 boundary, routes inference, and a
 How the SLM tier is structured, selected, and trained.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: small-language-model-stack -->
-- [[llm-substrate-decision]] — The rationale for OLMo 3: the only fully open model family — training data, training code, and checkpoints included — satisfying a Canadian public-company procurement posture.
-- [[four-tier-slm-substrate]] — A graduated sovereignty path from a lightweight API gateway with no local model up through a domain-specialist service trained on the vendor's aggregated corpus.
-- [[yoyo-compute-substrate]] — The three-ring compute substrate that lets service-slm spin GPU inference capacity up and down while retaining state and producing an audit ledger of every compute event.
-- [[yo-yo-lora-training-pipeline]] — The nightly two-phase pipeline: entity extraction for the business DataGraph (Phase 1) and LoRA adapter training against engineering and apprenticeship corpora using QLoRA on a single L4 GPU (Phase 2).
+- [[llm-substrate-decision]] — The rationale for selecting OLMo 3 as the local and GPU-burst substrate: the only fully open model family permitting continued pretraining and public-company procurement.
+- [[four-tier-slm-substrate]] — A graduated sovereignty path for AI deployment: four customer tiers from a lightweight API gateway up to a domain-specialist service, each adding capability without regressions.
+- [[yoyo-compute-substrate]] — The three-ring compute substrate letting service-slm spin GPU inference capacity up and down while retaining state and producing an audit ledger of every compute event.
+- [[yo-yo-lora-training-pipeline]] — The nightly two-phase pipeline on Yo-Yo #1: Phase 1 runs entity extraction for the DataGraph; Phase 2 trains a LoRA adapter via QLoRA on a single L4 GPU.
 - [[tui-corpus-producer]] — Every terminal interaction with service-slm through the operator TUI is a curated training corpus contribution for the per-tenant adapter.
-- [[nightly-datagraph-rebuild]] — The scheduled process that reconstructs the platform's knowledge graph from canonical flat-file sources each night; entity extraction runs through the Doorman, with a human-approval checkpoint that exists but is off by default.
-- [[ontological-datagraph]] — The organizational knowledge graph of people, companies, projects, and relationships — persistent semantic memory injected as context before every AI inference request.
-- [[soft-slm-tiered-gateway]] — The tiered inference gateway that routes AI requests through a local model first, escalating to burst GPU nodes and external APIs only when needed.
+- [[nightly-datagraph-rebuild]] — The scheduled process that reconstructs the platform's knowledge graph from canonical flat-file sources each night. A human-approval checkpoint exists for AI-extracted entities, but it is opt-in — an operator must enable it; automated writes land without per-item review by default.
+- [[ontological-datagraph]] — Organizational knowledge graph of people, companies, projects, and relationships — persistent semantic memory for answering business-state queries without re-reading sources.
+- [[soft-slm-tiered-gateway]] — A tiered inference gateway routing AI requests through a local model first, escalating to remote GPU nodes and external APIs only when needed, minimizing cost and exposure.
 <!-- END AUTO-GENERATED -->
 
 ## Cryptographic and microkernel primitives
@@ -78,14 +78,14 @@ How the SLM tier is structured, selected, and trained.
 The formal verification and cryptographic foundations beneath every PointSav operating system.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: cryptographic-and-microkernel-primitives -->
-- [[sel4-microkernel-substrate]] — The mathematically formally verified seL4 microkernel as L1 kernel for all PointSav operating systems: structurally guaranteed memory isolation, zero buffer overflows, capability-based permissions.
-- [[merkle-proofs-as-substrate-primitive]] — RFC 9162 Merkle proof primitives as the cryptographic floor of the platform's capability ledger; ledger validity verifiable without trust in any central authority.
-- [[capability-ledger-substrate]] — The mechanism by which every access-control decision in a Foundry deployment becomes a cryptographically auditable event anchored to a customer-controlled log; extends seL4's formally verified capability model with a Merkle transparency layer.
-- [[system-substrate-doctrine]] — The kernel-level architecture: a customer-rooted capability ledger that is the audit log, a two-bottoms sovereign OS strategy, and three mechanisms for time-bound capabilities and boot-anywhere recovery.
-- [[capability-geometry]] — PointSav's term for seL4-based authorization that replaces mutable access-control policy with a formally proven, kernel-enforced capability DAG.
-- [[moonshot-toolkit-build-orchestrator]] — Rust-only build orchestrator for seL4 unikernel images — TOML spec to content-addressed manifest to bootable AArch64 elfloader binary, replacing Python and CMake.
-- [[sel4-aarch64-qemu-substrate-target]] — Hardware foundation for the unikernel platform — formally verified seL4 on AArch64 with QEMU's virt machine as the development, testing, and CI target.
-- [[sel4-unikernel-substrate]] — os-console's intended production form: a seL4 Microkit unikernel image compiling application code directly with a formally verified kernel, eliminating general-purpose OS attack surface.
+- [[sel4-microkernel-substrate]] — Formally verified seL4 microkernel, PointSav's planned shared L1 kernel substrate — not yet the running kernel for every OS family member as shipped today.
+- [[merkle-proofs-as-substrate-primitive]] — Merkle proofs are the cryptographic mechanism letting the platform prove to any third party that a record is part of an append-only log that has not been rewritten.
+- [[capability-ledger-substrate]] — The Capability Ledger Substrate is the mechanism by which every access-control decision becomes a cryptographically auditable event anchored to a customer-controlled log.
+- [[system-substrate-doctrine]] — The kernel-level architecture beneath every PointSav service — a customer-rooted capability ledger, a two-bottoms sovereign OS strategy, and boot-anywhere recovery.
+- [[capability-geometry]] — Capability Geometry is PointSav's term for seL4-based authorization that replaces mutable access-control policy with a formally proven, kernel-enforced capability DAG.
+- [[moonshot-toolkit-build-orchestrator]] — Rust-only build orchestrator for seL4 unikernel images — TOML spec to content-addressed manifest to bootable AArch64 elfloader, replacing Python and CMake.
+- [[sel4-aarch64-qemu-substrate-target]] — Hardware foundation for the unikernel platform — formally verified seL4 on AArch64 with QEMU's virt machine as the development, testing, and CI environment.
+- [[sel4-unikernel-substrate]] — os-console is intended to run as a seL4 Microkit unikernel image in production, compiling application code with a formally verified kernel to eliminate OS attack surface.
 <!-- END AUTO-GENERATED -->
 
 ## Sovereignty and customer ownership
@@ -93,12 +93,12 @@ The formal verification and cryptographic foundations beneath every PointSav ope
 What the platform makes freely transferable, customer-owned, and vendor-independent.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: sovereignty-and-customer-ownership -->
-- [[sovereign-ai-commons]] — PointSav's market positioning as a steward of shared open AI infrastructure for regulated SMBs: five structural properties that large-scale cloud providers cannot offer without dismantling their own billing models.
-- [[knowledge-commons]] — The economic model that separates what PointSav publishes freely from what it sells: public knowledge artifacts under open licences, paid service at the point of multi-Totebox aggregation.
+- [[sovereign-ai-commons]] — PointSav's market positioning as steward of shared, open AI infrastructure for regulated SMBs: structural properties large cloud providers cannot offer without changing billing.
+- [[knowledge-commons]] — The economic model separating what PointSav publishes freely from what it sells — public knowledge under open licenses, paid service at multi-Totebox aggregation.
 - [[customer-owned-graph-ip]] — The per-tenant knowledge graph and trained adapter weights are the customer's intellectual property, portable and exportable without vendor approval.
-- [[tier-zero-customer-side-sovereign-specialist]] — A sovereign specialist Totebox deployment running on the customer's own hardware with no required cloud dependency and no required internet connectivity.
+- [[tier-zero-customer-side-sovereign-specialist]] — The Tier 0 Totebox is a sovereign specialist deployment running on the customer's own hardware with no required cloud dependency and no required internet connectivity.
 - [[substrate-without-inference-base-case]] — The Totebox Archive remains fully operational and freely transferable even when no AI inference tier is available; the deterministic substrate is the load-bearing foundation.
-- [[substrate-native-compatibility]] — Structural compatibility with MediaWiki reader conventions while deliberately declining API mimicry, maintaining substrate-native interfaces.
+- [[substrate-native-compatibility]] — Structural compatibility with MediaWiki reader and integrator conventions while declining API mimicry, keeping substrate-native interfaces to reduce maintenance burden.
 <!-- END AUTO-GENERATED -->
 
 ## Platform mechanics
@@ -108,7 +108,7 @@ Cross-cutting principles that apply across all substrate implementations.
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: platform-mechanics -->
 - [[code-for-machines-first]] — Every inter-service contract, audit record, configuration, and ontology is machine-readable as a primary surface; human-facing interfaces are skins on machine-first APIs.
 - [[seed-taxonomy-as-smb-bootstrap]] — Every tenant deployment provisions a four-part seed taxonomy — Archetypes, Chart of Accounts, Domains, Themes — as the knowledge graph bootstrap.
-- [[reverse-flow-substrate]] — The Doorman gateway and audit ledger that enforce inbound data discipline are planned to also enforce outbound commercial flows — data marketplace and ad exchange — both opt-in per tenant.
+- [[reverse-flow-substrate]] — The Doorman gateway and audit ledger enforcing inbound data discipline are planned to also enforce outbound commercial flows — marketplace and ad exchange, opt-in per tenant.
 <!-- END AUTO-GENERATED -->
 
 ## See also

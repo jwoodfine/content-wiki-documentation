@@ -12,7 +12,7 @@ index_type: thematic
 index_scope: services
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+last_edited: 2026-09-04
 editor: pointsav-engineering
 paired_with: _index.md
 ---
@@ -33,10 +33,10 @@ La plataforma funciona completamente a través de los Anillos 1 y 2 sin cómputo
 Servicios de límite por inquilino. Cada uno se ejecuta como un proceso separado por inquilino y expone una interfaz de servidor de Protocolo de Contexto de Modelo.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: ring-1-boundary-ingest -->
-- [[service-fs]] — El servicio de sistema de archivos: libro WORM de solo anexado, raíz de almacenamiento por inquilino, la base en la que escribe cada otro servicio del Anillo 1 — arquitectura, durabilidad y la postura de cumplimiento SEC 17a-4(f)/eIDAS/SOC 2 que habilita por construcción.
-- [[service-email]] — Ingesta de correo electrónico: SMTP e IMAP, cargas útiles saneadas, Maildir de solo anexado en almacenamiento local en bloque.
-- [[service-people]] — Libro de identidad: una superficie F2 de os-console que expone herramientas de anexado, búsqueda y escaneo de correo por expresión regular vía MCP, respaldada por un almacén que rechaza identidades en conflicto.
-- [[service-input]] — Ingesta de documentos en el límite del Anillo 1: detecta el formato, enruta el contenido a analizadores específicos por formato y lo entrega a service-fs para su escritura en el libro WORM.
+- [[service-fs]] — El libro mayor inmutable Write-Once-Read-Many por inquilino que respalda cada registro escrito en la plataforma — una interfaz HTTP y MCP real e implementada sobre un registro de anexado encadenado por hash, con anclaje externo mensual a un registro público de transparencia.
+- [[service-email]] — service-email extrae correo de un buzón de Microsoft Exchange vía EWS, escribe el mensaje en bruto en almacenamiento local y lo elimina del buzón de origen inmediatamente después de extraerlo — el buzón en la nube es un punto de tránsito, no una copia de registro.
+- [[service-people]] — service-people es la superficie F2 en os-console — un servidor MCP sobre un libro de identidades de solo-anexado y respaldado por WORM, con tres herramientas: anexar, buscar y escanear correos por expresión regular.
+- [[service-input]] — service-input migra por lotes material de referencia en markdown desde un archivo fuente hacia la canalización de ingesta de la plataforma, deduplicando por hash de contenido y validando contra el registro de libro mayor propio de cada archivo — con una herramienta complementaria que puntúa qué tan bien coincide la extracción posterior con ese libro mayor.
 <!-- END AUTO-GENERATED -->
 
 ## Anillo 2 — Conocimiento y procesamiento
@@ -44,11 +44,11 @@ Servicios de límite por inquilino. Cada uno se ejecuta como un proceso separado
 Servicios de procesamiento determinista. Cada uno lee del Anillo 1 y produce registros estructurados — ninguna varianza de IA entra en el registro autoritativo.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: ring-2-knowledge-and-processing -->
-- [[service-extraction]] — El controlador central de tráfico del Anillo 2: elimina el formato propietario, construye Paquetes de Entidades, asigna IDs de transacción, enruta a servicios deterministas o a service-slm.
-- [[service-content]] — El Motor de Gravedad: lee cargas útiles brutas de un Totebox, las ejecuta contra una taxonomía institucional, genera los documentos estructurados que publica una organización.
-- [[service-search]] — Búsqueda de texto completo sobre Tantivy: un servicio de índice invertido diseñado pero no construido — hoy solo existe una descripción, sin código fuente.
-- [[service-egress]] — Válvula de liberación física: los registros estructurados salen de la plataforma únicamente a través de este servicio.
-- [[archetypes-and-chart-of-accounts]] — La taxonomía institucional: once arquetipos y un Plan de Cuentas que clasifican al personal y los documentos por posición estructural y rol funcional.
+- [[service-extraction]] — service-extraction vigila un directorio en busca de cargas útiles JSON entrantes que llevan entidades clasificadas en el borde, escribe un registro de libro mayor por carga útil para el servicio objetivo, y puede puentear el mismo texto hacia la canalización de ingesta del DataGraph.
+- [[service-content]] — service-content extrae entidades nombradas de cargas útiles en bruto mediante una canalización de modelos escalonada, las escribe en el grafo de conocimiento bajo un punto de control de revisión humana, y aloja las taxonomías de referencia de la plataforma.
+- [[service-search]] — service-search es un servicio de búsqueda de texto completo Ring 2 diseñado pero no construido — un README describe un índice invertido basado en Tantivy, pero aún no existe código fuente.
+- [[service-egress]] — service-egress comprime y fragmenta datos de correo locales para transferencia saliente, y solo elimina la fuente local una vez que una contraparte externa confirma la recepción con una prueba criptográfica — una válvula de liberación saliente, no una importación de la nube a local.
+- [[archetypes-and-chart-of-accounts]] — El Plan de Cuentas y los once arquetipos son dos taxonomías de referencia que service-content carga en el grafo de conocimiento, dando a cada entidad clasificada una categoría estructural y una firma funcional.
 <!-- END AUTO-GENERATED -->
 
 ## Anillo 3 — Puerta de IA
@@ -56,11 +56,11 @@ Servicios de procesamiento determinista. Cada uno lee del Anillo 1 y produce reg
 Un servicio abarca el Anillo 3. Lee del Anillo 2 y produce propuestas que un humano revisa; nunca escribe en el grafo de conocimiento ni en el libro.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: ring-3-ai-gateway -->
-- [[service-slm]] — El Portero: enrutamiento de IA entre niveles de cómputo local, de ráfaga y externo; libro de auditoría en cada llamada; todas las claves API retenidas en este límite.
-- [[service-slm-yoyo-operational]] — Estado operativo de service-slm y la VM de ráfaga GPU Yo-Yo: configuración de Nivel A/B, cola de borradores de aprendizaje, techo de coste por apagado inactivo.
-- [[service-slm-totebox-sysadmin]] — Una dirección planificada para service-slm como asistente sysadmin de Totebox, construida sobre la canalización real y ya operativa de entrenamiento por aprendizaje — la taxonomía de tareas específica es propuesta, aún no registrada.
-- [[service-slm-graph-store-migration]] — El grafo de propiedades activo del DataGraph: reconstrucción nocturna en LadybugDB mediante extracción de entidades restringida por gramática a través del Doorman, escribiendo directamente sin paso de revisión propio.
-- [[yoyo-daily-enrichment-cycle]] — La ventana diaria de lote de la VM de ráfaga GPU Yo-Yo: dos fases, reconstrucción del DataGraph y (una vez habilitado por completo) entrenamiento de adaptador — el entrenamiento se ejecuta actualmente en modo solo-marcador.
+- [[service-slm]] — service-slm es la puerta de enlace de inferencia de IA de la plataforma — cada solicitud, local o remota, transita el límite de auditoría del Doorman y uno de tres niveles de cómputo antes de que se devuelva una respuesta.
+- [[service-slm-yoyo-operational]] — Cómo operan el enrutador de inferencia de tres niveles de service-slm y la VM de ráfaga GPU Yo-Yo: el límite del Doorman, los niveles local y de ráfaga, la cola de aprendizaje, y el techo de costo por apagado en inactividad.
+- [[service-slm-totebox-sysadmin]] — Una dirección planificada para service-slm: usar su canalización real y ya operativa de captura-y-veredicto para construir un asistente sysadmin de Totebox — la taxonomía de tareas específica y las herramientas descritas aquí aún no están construidas.
+- [[service-slm-graph-store-migration]] — El almacén de grafos de service-slm ejecuta una reconstrucción nocturna — la extracción de entidades vía Doorman escribe directamente en el grafo al completarse, sin paso de revisión humana en el propio script de reconstrucción.
+- [[yoyo-daily-enrichment-cycle]] — La ventana nocturna de dos fases en GPU que reconstruye el DataGraph y, una vez habilitada por completo, entrena pesos de adaptador para el modelo de lenguaje local — actualmente ejecutándose solo en modo DataGraph.
 <!-- END AUTO-GENERATED -->
 
 ## Servicios especializados y de dominio
@@ -68,20 +68,20 @@ Un servicio abarca el Anillo 3. Lee del Anillo 2 y produce propuestas que un hum
 Servicios construidos para capacidades específicas de la plataforma.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: specialist-and-domain-services -->
-- [[service-business-clustering]] — Convierte datos minoristas brutos en clústeres comerciales: esquema espacial padre-hijo, una entidad comercial por sitio.
-- [[service-places-filtering]] — Filtra la infraestructura cívica e institucional para retener solo las instalaciones de grado regional en las clasificaciones GIS.
-- [[service-wallet-settlement]] — Cartera y liquidación de pagos directos: un diseño de libro contable por inquilino planificado, aún no construido.
-- [[message-courier]] — Motor de automatización web sin interfaz que conecta libros de identidad internos con portales web externos.
-- [[fs-anchor-emitter]] — Puntos de control firmados del libro WORM a cadencia horaria, anclados a Sigstore Rekor mensualmente para auditabilidad externa.
-- [[service-fs-data-lake]] — Data lake de archivos planos para el pipeline GIS: puntos geoespaciales brutos de fuentes abiertas, sin paso ETL.
-- [[template-ledger]] — Distribuye plantillas de correo electrónico aprobadas al entorno de correo del operador; elimina la desviación de versiones entre el diseño de plantillas y la ejecución.
-- [[editorial-pipeline-three-stages]] — Proceso de corrección en tres etapas ordenadas por costo: escaneo determinista de vocabulario prohibido, pasada mecánica con LanguageTool y una reescritura generativa enrutada a través de la capa de inferencia.
-- [[private-git-paid-customer-endpoint]] — El servidor de versiones binarias detrás de software.pointsav.com: verifica tokens de licencia Ed25519 y transmite binarios compilados, sin almacenar registros de pago ni claves de firma.
-- [[service-pointsav-link]] — Un concepto de diseño nombrado pero no construido para un adaptador de conexión a flota; no existe ningún paquete correspondiente en el monorepo hoy.
-- [[service-vm-fleet]] — El servicio de colocación y registro del pool de recursos VM de la PPN: algoritmo de colocación de dos pasadas y estado de nodos impulsado por heartbeats.
-- [[service-vm-tenant]] — El proxy de inquilino orientado al cliente del pool de recursos VM de la PPN: autenticación, aislamiento de espacio de nombres, aplicación de cuotas y una pista de auditoría inmutable.
-- [[poi-data-schema|Esquema de datos de puntos de interés]] — Las estructuras de registro de los datos de localización ingeridos de OpenStreetMap y de Overture Maps Foundation, normalizadas en un esquema JSONL unificado antes del análisis de agrupaciones.
-- [[regional-name-resolution-architecture|Arquitectura de resolución de nombres regionales]] — El motor de geocodificación inversa por capas y sin conexión que convierte las coordenadas de una agrupación en un nombre regional legible, sin ninguna llamada a API externa.
+- [[service-business-clustering]] — Un patrón espacial padre-hijo que convierte puntos minoristas en bruto en una entidad comercial por sitio físico, para que la canalización GIS razone sobre una ubicación una sola vez en lugar de una vez por cada inquilino colocalizado.
+- [[service-places-filtering]] — Un paso de filtrado que conserva solo instituciones de nivel regional de los datos cívicos en bruto, para que los rankings de nivel GIS reflejen concentración institucional en lugar de cada clínica e instalación comunitaria.
+- [[service-wallet-settlement]] — service-wallet es un libro mayor contable por inquilino planificado para ingresos de flujo inverso del mercado — aún no existe código; el diseño propone un libro firmado sin custodia en lugar de un riel de pago.
+- [[message-courier]] — Un motor deliberadamente delgado que carga dinámicamente el script adaptador privado de un cliente y le entrega el control de ejecución — manteniendo cada detalle operativo de la lógica de automatización web de un cliente completamente fuera del código abierto.
+- [[fs-anchor-emitter]] — Un binario de un solo uso que obtiene un punto de control firmado del libro mayor WORM desde service-fs, lo ancla en el registro público de transparencia Sigstore Rekor y escribe el resultado de vuelta — haciendo el estado del libro mayor auditable desde fuera de la plataforma.
+- [[service-fs-data-lake]] — service-fs es la capa de almacenamiento fundamental para la canalización GIS de la plataforma — un lago de datos de archivos planos que almacena puntos geoespaciales sin procesar ingeridos de fuentes abiertas en zonas de aterrizaje separadas de venta minorista y cívicas, disponibles inmediatamente para cada servicio descendente sin un paso ETL.
+- [[template-ledger]] — Mecanismo de distribución en service-email-template que sincroniza una copia autoritativa de cada plantilla aprobada con el correo del operador, eliminando la deriva de versiones.
+- [[editorial-pipeline-three-stages]] — El contrato real, confirmado del lado cliente, de la canalización de corrección de la plataforma: un conjunto fijo de protocolos de idioma, una respuesta que informa qué nivel de cómputo se ejecutó y qué se degradó, y un veredicto humano binario que alimenta el corpus de entrenamiento.
+- [[private-git-paid-customer-endpoint]] — El servidor de versiones binarias de software.pointsav.com verifica tokens de licencia Ed25519 y transmite binarios compilados — sin estado, sin registros de pago ni claves, con algunos productos servidos abiertamente sin verificación de licencia.
+- [[service-pointsav-link]] — service-pointsav-link es un concepto de adaptador nombrado pero no construido para conectar un nodo os-* a una flota PointSav — no existe un paquete correspondiente en el monorepo hoy.
+- [[service-vm-fleet]] — El controlador de flota mantiene una vista global de la capacidad de nodos en la malla WireGuard de la PPN y gestiona las decisiones de colocación de máquinas virtuales.
+- [[service-vm-tenant]] — El proxy de inquilino aplica autenticación, aislamiento de espacio de nombres, límites de cuota y una pista de auditoría inmutable en el límite del cliente del pool de recursos VM de la PPN.
+- [[poi-data-schema|Esquema de datos de puntos de interés]] — Las estructuras de registro de los datos de localización ingeridos de OpenStreetMap y de Overture Maps Foundation, normalizadas en un esquema JSONL unificado antes del análisis de agrupaciones. Los QID de Wikidata son el identificador principal de cadena, y un modelo padre-hijo resuelve los servicios auxiliares comarcados.
+- [[regional-name-resolution-architecture|Arquitectura de resolución de nombres regionales]] — El motor de geocodificación inversa por capas y sin conexión que convierte las coordenadas de una agrupación en un nombre regional legible: sus conjuntos de límites, su orden de enrutamiento por país y el posprocesado que hace legibles los nombres en lengua de origen, sin ninguna llamada a API externa.
 <!-- END AUTO-GENERATED -->
 
 ## Véase también

@@ -11,7 +11,7 @@ quality: complete
 short_description: "Cómo se protege la plataforma y cómo se verifican sus registros: identidad y permisos, verificación criptográfica, límites de aislamiento, cómo se maneja y se mantiene privada la información, y los controles de la cadena de suministro diseñados para mantener el código honesto."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-24
+last_edited: 2026-09-04
 editor: pointsav-engineering
 paired_with: _index.md
 ---
@@ -41,11 +41,11 @@ implementa; la aplicación a nivel de núcleo está planificada.
 Quién es conocido por el sistema, cómo lo demuestra un dispositivo, y qué se le permite hacer.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: identity-and-permissions -->
-- [[capability-based-security|Seguridad basada en capacidades]] — el modelo de control de acceso: los componentes poseen tokens criptográficos verificados en lugar de privilegio ambiental
-- [[machine-based-auth|Autorización basada en máquina]] — emparejar hardware con hardware reemplaza las contraseñas; el emparejamiento mismo es el permiso
-- [[personnel-permissions|Personal y permisos]] — cómo la identidad del colaborador y los cuatro niveles de permiso se expresan mediante emparejamientos, no roles de base de datos
-- [[identity-ledger-schema-design|Diseño del esquema del libro de identidad]] — los tipos de registro Person/Anchor/Claim detrás de la resolución de identidad de Ring 1
-- [[verification-surveyor|Supervisor de verificación]] — el punto de control humano que confirma una identidad extraída antes de confirmarla
+- [[capability-based-security|Seguridad basada en capacidades]] — La seguridad basada en capacidades entrega a cada componente un token infalsificable y acotado que debe presentar para actuar, en lugar del privilegio ambiental. Hoy la implementa una única capa de software; la aplicación a nivel de kernel está planificada.
+- [[machine-based-auth|Autorización basada en máquina]] — El acceso se concede a la clave de un dispositivo, no a la contraseña de una persona. Una ceremonia de emparejamiento con código corto liga la huella de una clave SSH a un registro de usuario tras la aprobación del operador, sin almacenar ninguna contraseña en ningún sitio.
+- [[personnel-permissions|Personal y permisos]] — Cuatro niveles de permisos, de P1 a P4, implementados como una enumeración tipada y servidos a través de un endpoint HTTP que lee un archivo de configuración del espacio de trabajo. Ese archivo no declara hoy ningún colaborador, de modo que el endpoint no resuelve nada para ningún usuario real.
+- [[identity-ledger-schema-design|Diseño del esquema del libro de identidad]] — Tres tipos de registro — Person, Anchor y Claim — separan quién es conocido de cómo fue observado y de qué se afirmó sobre él. La identidad es un UUIDv5 de un correo en minúsculas, de modo que la misma entrada produce siempre el mismo identificador.
+- [[verification-surveyor|Supervisor de verificación]] — Una herramienta de línea de comandos que exige a una persona confirmar cada identidad extraída contra evidencia externa antes de que ascienda de una cola a un registro verificado, con un tope de diez confirmaciones al día.
 <!-- END AUTO-GENERATED -->
 
 ## Verificación criptográfica {#group-count-2}
@@ -53,8 +53,8 @@ Quién es conocido por el sistema, cómo lo demuestra un dispositivo, y qué se 
 Cómo un lector comprueba de forma independiente que un registro no ha sido alterado.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: cryptographic-verification -->
-- [[crypto-attestation|Atestación criptográfica de carga útil]] — hash SHA-256 del lado del cliente que permitiría a cualquier visitante verificar que el contenido publicado no cambió en tránsito; hoy es un patrón cosmético y sin conectar presente en algunas plantillas, no una capacidad que ninguna superficie publicada ofrezca realmente
-- [[cryptographic-ledgers|Libros contables criptográficos]] — el patrón de almacenamiento de estado inmutable: entradas encadenadas por hash, checkpoints firmados, anclaje mensual en Sigstore Rekor
+- [[crypto-attestation|Atestación criptográfica de carga útil]] — La atestación criptográfica permite a un lector recalcular el hash del contenido publicado y compararlo con un valor publicado. Existen prototipos cosméticos y sin conectar en unas pocas plantillas de publicación; el wiki de conocimiento no ofrece esta función.
+- [[cryptographic-ledgers|Libros contables criptográficos]] — Un registro de solo anexado en el que el hash de cada entrada cubre a la anterior, cerrado con puntos de control firmados con Ed25519 y anclado mensualmente en un registro público de transparencia. Implementado como cadena lineal, con un archivo plano por inquilino.
 <!-- END AUTO-GENERATED -->
 
 ## Límites de aislamiento {#group-count-3}
@@ -65,15 +65,15 @@ categoría — véanse los artículos de [[ppn-tenant-vm-isolation|aislamiento d
 comercialmente relevante, que aún no está referenciado desde aquí.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: isolation-boundaries -->
-- [[sel4-capability-topology|Topología de capacidades de seL4]] — por qué la seguridad en un sistema seL4 es la forma del grafo de capacidades, no una capa de política
-- [[diode-standard|Estándar del diodo]] — el flujo unidireccional de comandos de autoridad a sujeto que elimina el movimiento lateral por diseño
-- [[genesis-protocol|Protocolo génesis]] — la secuencia de arranque de flota que ejecuta un nodo en el primer arranque para alcanzar un estado seguro y reclamable
+- [[sel4-capability-topology|Topología de capacidades de seL4]] — En un sistema seL4 la política de seguridad es la forma del grafo de capacidades establecido en el arranque, no una capa de política en tiempo de ejecución. El trabajo propio son nueve binarios de prueba sobre hardware desnudo; ningún servicio de la plataforma se ejecuta sobre seL4.
+- [[diode-standard|Estándar del diodo]] — El Estándar del Diodo es la regla de diseño según la cual los comandos y los datos circulan en una sola dirección, de la autoridad al sujeto. Varios mecanismos reales la cumplen; ningún componente la aplica como estándar con nombre propio.
+- [[genesis-protocol|Protocolo génesis]] — El Genesis Protocol es la secuencia diseñada de arranque de flota para nodos os-infrastructure: enviarse sin configuración previa, arrancar en cualquier red y alcanzar un estado seguro y reclamable sin necesitar contacto con el plano de control.
 <!-- END AUTO-GENERATED -->
 
 ## Manejo de datos y privacidad {#group-count-1}
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: data-handling-and-privacy -->
-- [[data-sovereignty-telemetry|Soberanía de datos y telemetría de estado cero]] — el único artículo de esta categoría sobre esta cláusula por ahora; la retención, eliminación y cifrado en reposo aún no tienen artículo propio
+- [[data-sovereignty-telemetry|Soberanía de datos y telemetría de estado cero]] — La telemetría de estado cero es la postura prevista: medir el uso de un sitio sin conservar datos identificativos. La canalización que se ejecuta hoy escribe direcciones IP completas y sin enmascarar en un archivo de texto plano durante hasta un año; el enmascaramiento no está implementado.
 <!-- END AUTO-GENERATED -->
 
 ## Controles de la cadena de suministro {#group-count-2}
@@ -81,8 +81,8 @@ comercialmente relevante, que aún no está referenciado desde aquí.
 Mantener el código honesto desde la máquina de un colaborador hasta producción.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: supply-chain-controls -->
-- [[five-stage-supply-chain|Cadena de suministro de cinco etapas]] — la ruta de promoción de colaborador a cliente, controlada por un script de promoción fuertemente resguardado y no por una solicitud de extracción (pull request), y el air-gap doble ciego entre colaborador y cliente
-- [[pre-commit-defense-in-depth|Defensa en profundidad pre-commit]] — la puerta de solo ayudante, el análisis de patrones de secretos y la guarda de tamaño que se ejecutan en cada confirmación
+- [[five-stage-supply-chain|Cadena de suministro de cinco etapas]] — El camino que va del commit de un colaborador al despliegue de un cliente atraviesa tres niveles de repositorio y dos organizaciones, controlado por un script de promoción fuertemente resguardado. No hay solicitud de extracción (pull request) ni revisión por un segundo interviniente.
+- [[pre-commit-defense-in-depth|Defensa en profundidad pre-commit]] — Cuatro hooks de git independientes se ejecutan antes de que un commit quede registrado: una compuerta de solo-helper, un bloqueo por ruta de datos, un escaneo de secretos y tamaño sobre el contenido preparado, y una comprobación de identidad del autor. Toda elusión queda registrada.
 <!-- END AUTO-GENERATED -->
 
 ## Lo que esto no es

@@ -11,7 +11,7 @@ quality: complete
 short_description: "Pairing devices and nodes onto the network, issuing and rotating service-to-service capability tokens, and authenticating binary downloads."
 status: active
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-06
+last_edited: 2026-09-04
 editor: pointsav-engineering
 paired_with: _index.es.md
 ---
@@ -28,21 +28,21 @@ paired_with: _index.es.md
 ## Pairing and tokens
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: pairing-and-tokens -->
-- [[pair-a-new-device|Pair a new device]] — register an os-console device and get it approved onto the WireGuard mesh
-- [[issue-capability-token|Issue a capability token]] — mint an Ed25519-signed token and register it with a peer service
-- [[rotate-keys|Rotate keys and capability tokens]] — replace a credential within the system's real 24-hour expiry limits
+- [[pair-a-new-device|Pair a new device]] — Pairs an unpaired os-console device onto the PPN mesh: read the pairing code from the startup screen, have an administrator approve it, and confirm network admission.
+- [[issue-capability-token|Issue a capability token]] — Issues an Ed25519-signed pairing token from service-content over plain HTTP, registers it with the receiving peer, and covers the separate X-Foundry-Capability request header.
+- [[rotate-keys|Rotate keys and capability tokens]] — Replaces a service-content credential within the real system's limits: tokens expire on a fixed 24-hour clock, overlap is unavoidable, and no mechanism cuts a live token short.
 <!-- END AUTO-GENERATED -->
 
 ## Fleet enrollment
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: fleet-enrollment -->
-- [[enroll-ppn-node|Enroll a PPN node]] — start the per-node heartbeat agent and confirm it in the fleet controller
+- [[enroll-ppn-node|Enroll a PPN node]] — Enrolls a machine into a PPN compute fleet by setting service-vm-host's three required environment variables, running it under systemd, and confirming the node in the controller listing.
 <!-- END AUTO-GENERATED -->
 
 ## Software distribution
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: software-distribution -->
-- [[authenticate-binary-downloads|Authenticate binary downloads]] — confirm an order and follow the signed download path for a release
+- [[authenticate-binary-downloads|Authenticate binary downloads]] — Authenticates a release from software.pointsav.com: confirm the on-chain order, follow the download link that mints an Ed25519 token, and understand where verification actually happens.
 <!-- END AUTO-GENERATED -->
 
 Each guide carries its own prerequisites, verification steps, and rollback procedure; this

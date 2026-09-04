@@ -13,7 +13,7 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-06
+last_edited: 2026-09-04
 editor: pointsav-engineering
 paired_with: _index.md
 ---
@@ -34,8 +34,8 @@ El sistema de diseño es en sí mismo uno de los sustratos portantes de la plata
 Las decisiones fundacionales: por qué existe el sustrato, qué preservó de la convención, qué reemplazó.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: philosophy-and-primitive-vocabulary -->
-- [[design-philosophy|Filosofía de diseño]] — Por qué existe el sustrato; tres inversiones estructurales del patrón de plataformas enterprise; publicación de tokens autoalojada, de propiedad del cliente y agnóstica al editor.
-- [[design-primitive-vocabulary|Vocabulario primitivo de diseño]] — Justificación del vocabulario: escalas numéricas de color, aliasing semántico por capas, separación entre tipografía productiva y expresiva, y escalas numéricas de espaciado alineadas con la convención del campo de 2018 a 2026.
+- [[design-philosophy|Filosofía de diseño]] — El sistema de diseño PointSav es un sustrato auto-alojado propiedad del cliente que se ejecuta en design.pointsav.com y publica investigación de decisiones de diseño junto con valores de tokens en formato DTCG, priorizando interoperabilidad agnóstica respecto a editores y rationale estructurado.
+- [[design-primitive-vocabulary|Vocabulario primitivo de diseño]] — Justificación de los patrones de la capa de tokens primitivos — escalas de color numéricas, aliasing semántico y separación tipográfica — con nomenclatura propia de PointSav.
 - [[design-system-substrate|Sustrato del sistema de diseño]] — El marco de sustrato: motor de sistema de diseño autoalojado que almacena tokens y componentes en el propio repositorio git del cliente; formato de tokens W3C DTCG; endpoint MCP legible por máquina.
 <!-- END AUTO-GENERATED -->
 
@@ -44,14 +44,14 @@ Las decisiones fundacionales: por qué existe el sustrato, qué preservó de la 
 Artículos de contexto sobre qué son los tokens, cómo componen los componentes, cómo tematizan y cómo llegan a diseñadores, agentes de IA y otras organizaciones.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: token-concepts-and-tooling -->
-- [[what-is-a-design-token|Qué es un token de diseño]] — Un token de diseño como decisión de diseño registrada como datos; el Format Module DTCG del W3C; el modelo de niveles primitivo/semántico/componente.
+- [[what-is-a-design-token|Qué es un token de diseño]] — Artículo introductorio que define los tokens de diseño, el Format Module del Design Tokens Community Group del W3C (primera versión estable, octubre de 2025) y la arquitectura de tres niveles primitivo/semántico/componente, fundamentado en el paquete DTCG publicado del Sistema de Diseño PointSav (130 primitivos + 86 de tema, más los pilares separados de papel y escritura).
 - [[theming-via-semantic-tokens|Tematización mediante tokens semánticos]] — Los temas claro/oscuro como sustitución de tokens semánticos, fundamentado en el grupo `theme.dark` publicado y el mismo patrón en Carbon, Material 3 y Radix.
-- [[component-recipes-vs-raw-tokens|Recetas de componentes frente a tokens en bruto]] — Qué añade el nivel de componentes más allá del valor de un token: el formato `recipe.json` y el estado documental de dos niveles del registro.
-- [[design-tokens-and-accessibility|Tokens de diseño y conformidad de accesibilidad]] — Cómo los requisitos de accesibilidad — objetivos táctiles, color del anillo de foco, contraste — se expresan como tokens en lugar de verificarse ad hoc.
-- [[figma-tokens-studio-integration|Figma y Tokens Studio]] — Cómo llevar la exportación de tokens publicada a Figma mediante la sincronización de solo lectura por URL del plugin Tokens Studio.
-- [[mcp-ai-agent-consumable-design-systems|MCP y sistemas de diseño consumibles por agentes de IA]] — Por qué el sistema de diseño expone un endpoint MCP legible por máquina y una API de búsqueda de tokens para agentes de codificación de IA.
-- [[registry-driven-releases|Versiones dirigidas por registro]] — La arquitectura dirigida por registro que evita que la navegación, las estadísticas de la página de inicio y el empaquetado de versiones se desalineen.
-- [[self-hosting-customer-controlled-design-systems|Autoalojar un sistema de diseño]] — Las dos ofertas diferenciadas: usar directamente los tokens publicados y autoalojar el motor de servicio para el propio sistema de diseño de otra organización.
+- [[component-recipes-vs-raw-tokens|Recetas de componentes frente a tokens en bruto]] — Qué añade el nivel de componentes del Sistema de Diseño PointSav más allá del valor de un token: el formato recipe.json — variantes, marcado, referencias de tokens, CSS, guía ARIA y objetivos WCAG en un solo artefacto legible por máquina — demostrado contra la receta publicada del componente Button y el estado documental real del registro (53 componentes: 20 con documentación completa, 33 con receta más al menos un documento de uso).
+- [[design-tokens-and-accessibility|Tokens de diseño y conformidad de accesibilidad]] — Cómo el Sistema de Diseño PointSav expresa los requisitos de accesibilidad — objetivos táctiles mínimos, color del anillo de foco, relaciones de contraste — como tokens de diseño con nombre, de modo que la conformidad WCAG se aplica por la estructura del grafo de tokens en lugar de verificarse ad hoc por componente, demostrado contra la especificación de accesibilidad del componente Button ya publicada.
+- [[figma-tokens-studio-integration|Figma y Tokens Studio]] — Explica cómo los diseñadores incorporan a Figma la exportación de tokens DTCG publicada por el Sistema de Diseño PointSav mediante la sincronización por URL del plugin Tokens Studio — una lectura de solo consulta desde el propio JSON alojado por el sistema, sin paso de exportación/importación — y por qué la dirección de solo lectura es una característica de gobernanza, con una comparación honesta con el soporte nativo de tokens de Penpot.
+- [[mcp-ai-agent-consumable-design-systems|MCP y sistemas de diseño consumibles por agentes de IA]] — Explica por qué el Sistema de Diseño PointSav expone una superficie legible por máquinas — un punto de conexión Model Context Protocol alojado en la propia infraestructura, una API de búsqueda de tokens y una exportación de tokens DTCG — para que los agentes de codificación de IA consulten datos actuales de tokens y componentes desde el mismo registro que genera la documentación para lectores humanos, sin que ninguna consulta salga de la infraestructura del anfitrión.
+- [[registry-driven-releases|Versiones dirigidas por registro]] — Explica la arquitectura dirigida por registro detrás de las versiones del sitio del sistema de diseño: la navegación, las estadísticas de la portada, el punto de acceso de registro legible por máquina, las respuestas MCP y el empaquetado de versiones se resuelven todos contra un único archivo de registro, de modo que no pueden divergir — ilustrado con dos defectos reales de la propia historia del sistema, no con hipótesis.
+- [[self-hosting-customer-controlled-design-systems|Autoalojar un sistema de diseño]] — Explica las dos ofertas diferenciadas del Sistema de Diseño PointSav — usar directamente los datos de tokens bajo Apache-2.0, que no requiere nada, y por separado autoalojar el motor de publicación para operar el sistema de diseño propio y distinto de otra organización — incluyendo el procedimiento real de bifurcación en cinco pasos, la superficie de configuración de tres variables, la gobernanza basada en git y los límites precisos de licencia entre datos de tokens, código del servidor y texto del artículo.
 <!-- END AUTO-GENERATED -->
 
 ## Superficie de marca
@@ -59,8 +59,8 @@ Artículos de contexto sobre qué son los tokens, cómo componen los componentes
 Cómo se codifica la identidad de marca como familias de color y pilas tipográficas en las superficies de producto PointSav y Woodfine.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: brand-surface -->
-- [[brand-family-swatch|Familias de color de marca]] — Las familias de colores de la marca asignadas a categorías minoristas e institucionales en la superficie GIS de co-localización; identificadores codificados por color consistentes para visualización en mapa y datos tabulares.
-- [[brand-typography|Tipografía de marca]] — La separación tipográfica entre fuentes del sistema para interfaz web y tipografía institucional para impresión; tipos serif de licencia abierta reservados para generación de PDF y divulgaciones formales.
+- [[brand-family-swatch|Familias de color de marca]] — Las familias de color de marca asignadas a categorías de anclaje minoristas e institucionales en la superficie GIS de co-ubicación de la plataforma, proporcionando identificadores codificados por color consistentes para visualización de mapas y datos tabulares en modos de visualización accesible y estándar.
+- [[brand-typography|Tipografía de marca]] — Las superficies web de PointSav se renderizan en Inter, Source Serif 4 y Playfair Display, alojadas localmente en vez de depender de la pila de fuentes del sistema. Existe una matriz tipográfica OFL de impresión documentada por separado, sin canal de generación aún implementado.
 <!-- END AUTO-GENERATED -->
 
 ## Diseño de superficie wiki
@@ -68,9 +68,9 @@ Cómo se codifica la identidad de marca como familias de color y pilas tipográf
 El vocabulario de componentes, sistema tipográfico y paleta de modo oscuro que componen la superficie de lectura de `documentation.pointsav.com`.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: wiki-surface-design -->
-- [[wiki-component-library|Biblioteca de componentes wiki]] — El armazón compartido del wiki (encabezado, navegación móvil fuera de lienzo, barra lateral, pie de página) y las plantillas de página que envuelve, en un vocabulario de tokens `k-*` compartido.
-- [[wiki-typography-system|Sistema tipográfico wiki]] — Pila tipográfica Inter y Source Serif 4, escala de encabezados y tokens de espaciado para el wiki; cobertura lingüística amplia para contenido bilingüe.
-- [[wiki-dark-mode|Modo oscuro wiki]] — Esquemas de color claro y oscuro para el wiki: anulaciones de tokens semánticos sobre un atributo `data-theme`, con persistencia del tema mediante localStorage.
+- [[wiki-component-library|Biblioteca de componentes wiki]] — El armazón compartido — encabezado, navegación móvil fuera de lienzo, barra lateral izquierda y pie de página — más las plantillas de página que envuelve, que juntas renderizan cada página de la plataforma de conocimiento de PointSav.
+- [[wiki-typography-system|Sistema tipográfico wiki]] — Pila tipográfica Inter y Source Serif 4, escala de encabezados y tokens de espaciado para el wiki de PointSav.
+- [[wiki-dark-mode|Modo oscuro wiki]] — Esquemas de color claro y oscuro para el wiki de PointSav, controlados por anulaciones de tokens semánticos sobre un atributo data-theme, con persistencia de tema mediante localStorage.
 <!-- END AUTO-GENERATED -->
 
 ## Fundaciones relacionadas
