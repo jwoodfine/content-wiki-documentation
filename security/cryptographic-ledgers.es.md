@@ -129,8 +129,8 @@ archivo de unidad.
 
 ## Quién escribe en él
 
-El registro es una instalación compartida a la que se accede por una interfaz HTTP local en el
-puerto 9100, y cada escritor identifica a su inquilino mediante una cabecera obligatoria
+El registro es una instalación compartida a la que se accede por una interfaz HTTP local,
+y cada escritor identifica a su inquilino mediante una cabecera obligatoria
 `X-Foundry-Module-ID` que el servicio contrasta con su propio identificador de módulo configurado
 antes de aceptar una escritura. Los escritores confirmados son la consola de ingesta, el servicio
 de correo, el servicio de personas, el vigilante de flota de la administración de red y el emisor

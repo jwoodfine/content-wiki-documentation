@@ -67,31 +67,26 @@ The largest layer reads a maintained pattern catalogue and scans the
 staged content of each added, copied, modified, or renamed file. Content is retrieved through Git
 plumbing rather than from disk. Binary files are skipped by a heuristic examining null bytes and the
 printable-character ratio of the first four kilobytes of each file — checked before the expensive
-full-content decode, after a real commit of roughly 150 business-admin files (several large PDFs and
-a zip) once took over 25 minutes because that ordering was reversed.
+full-content decode, after a real large commit of business-admin files (several large PDFs and
+a zip) once took an unacceptably long time to scan because that ordering was reversed.
 
-Reading the live catalogue directly, it currently carries **23 pattern entries**: private keys in
-six forms (OpenSSH, RSA, EC, DSA, PGP, and encrypted PEM), a dedicated bare WireGuard
-`PrivateKey =` line pattern — added after a real, live finding of an untracked WireGuard private
-key in a business-admin configuration file that the PEM-armored patterns would have missed
-entirely — cloud and platform credentials (a major cloud provider's access keys, another's
-service-account and API keys, and three shapes of source-forge token), three model-provider API
-keys and one chat-platform token, generic password assignments and bearer tokens, a hardcoded
-workspace identity path, and four patterns matching personal-information shapes — telephone
-numbers, email addresses, national identity numbers, and street addresses. The catalogue has grown
-twice since it was last measured at 18 entries: the WireGuard pattern and the four
-personal-information patterns were both added afterward, for the reasons above.
+Reading the live catalogue directly, it currently carries several dozen pattern entries: private
+keys in several formats, cloud and platform credentials, API tokens from several model providers
+and a chat platform, generic password assignments and bearer tokens, a hardcoded workspace identity
+path, and several patterns matching personal-information shapes — telephone numbers, email
+addresses, national identity numbers, and street addresses. The catalogue has grown over time,
+most recently to add coverage for a class of private key format a real, live finding showed the
+existing patterns did not catch.
 
 Severity determines the outcome. Critical and high matches block the commit outright. Lower
 severities print a warning and allow it to proceed. A path allowlist exempts the catalogue file
 itself, `identity/*.pub` and `allowed_signers`, and two named test fixtures whose unit tests
 necessarily contain secret-shaped strings.
 
-The same layer enforces a size ceiling, set in the catalogue as `size_cap_mb: 2` and applied as a
-2 MiB limit against the staged blob size, checked ahead of the secret scan so an oversized blob is
-refused on size alone rather than scanned first. A separate path allowlist covers directories where
-large artefacts are legitimately expected — the binary ledger, media-asset repositories, and
-deployment web roots.
+The same layer enforces a configured size ceiling against the staged blob size, checked ahead of
+the secret scan so an oversized blob is refused on size alone rather than scanned first. A separate
+path allowlist covers directories where large artefacts are legitimately expected — the binary
+ledger, media-asset repositories, and deployment web roots.
 
 ### Author-identity check
 

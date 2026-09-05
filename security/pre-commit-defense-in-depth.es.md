@@ -72,32 +72,27 @@ contenido preparado de cada archivo añadido, copiado, modificado o renombrado. 
 mediante las órdenes de fontanería (*plumbing*) de Git y no desde el disco. Los archivos binarios se
 omiten mediante una heurística que examina los bytes nulos y la proporción de caracteres imprimibles de
 los primeros cuatro kilobytes de cada archivo — comprobación que se hace antes de la costosa
-decodificación del contenido completo, después de que un commit real de unos 150 archivos de
-administración de negocio (varios PDF grandes y un zip) llegara a tardar más de 25 minutos porque ese
-orden estaba invertido.
+decodificación del contenido completo, después de que un commit real grande de archivos de
+administración de negocio (varios PDF grandes y un zip) llegara a tardar un tiempo inaceptablemente
+largo en escanearse porque ese orden estaba invertido.
 
-Leyendo el catálogo vivo directamente, hoy contiene **23 entradas de patrón**: claves privadas en seis
-formas (OpenSSH, RSA, EC, DSA, PGP y PEM cifrado), un patrón dedicado a la línea `PrivateKey =` de
-WireGuard en formato desnudo — añadido tras un hallazgo real y en vivo de una clave privada de
-WireGuard sin seguimiento en un archivo de configuración de administración de negocio que los patrones
-con armadura PEM habrían pasado por alto por completo —, credenciales de nube y de plataforma (las
-claves de acceso de un gran proveedor de nube, las claves de cuenta de servicio y de API de otro, y
-tres formas de token de forja de código), tres claves de API de proveedores de modelos y un token de
-plataforma de chat, asignaciones genéricas de contraseña y tokens bearer, una ruta de identidad del
-espacio de trabajo escrita en duro, y cuatro patrones que corresponden a formas de información personal
-— números de teléfono, direcciones de correo electrónico, números de identidad nacional y direcciones
-postales. El catálogo ha crecido dos veces desde su última medición en 18 entradas: el patrón de
-WireGuard y los cuatro patrones de información personal se añadieron después, por los motivos
-anteriores.
+Leyendo el catálogo vivo directamente, hoy contiene varias decenas de entradas de patrón: claves
+privadas en varios formatos, credenciales de nube y de plataforma, tokens de API de varios
+proveedores de modelos y de una plataforma de chat, asignaciones genéricas de contraseña y tokens
+bearer, una ruta de identidad del espacio de trabajo escrita en duro, y varios patrones que
+corresponden a formas de información personal — números de teléfono, direcciones de correo
+electrónico, números de identidad nacional y direcciones postales. El catálogo ha crecido con el
+tiempo, más recientemente para cubrir un formato de clave privada que un hallazgo real y en vivo
+mostró que los patrones existentes no detectaban.
 
 La severidad determina el desenlace. Las coincidencias críticas y altas bloquean el commit sin más.
 Las severidades menores imprimen una advertencia y lo dejan proceder. Una lista de rutas permitidas
 exime al propio archivo del catálogo, a `identity/*.pub` y `allowed_signers`, y a dos fixtures de
 prueba con nombre propio cuyas pruebas unitarias contienen necesariamente cadenas con forma de secreto.
 
-La misma capa impone un techo de tamaño, fijado en el catálogo como `size_cap_mb: 2` y aplicado como un
-límite de 2 MiB sobre el tamaño del blob preparado, comprobado antes del escaneo de secretos para que
-un blob sobredimensionado se rechace solo por su tamaño en lugar de escanearse primero. Una lista de
+La misma capa impone un techo de tamaño configurado sobre el tamaño del blob preparado, comprobado
+antes del escaneo de secretos para que un blob sobredimensionado se rechace solo por su tamaño en
+lugar de escanearse primero. Una lista de
 rutas permitidas aparte cubre los directorios donde los artefactos grandes son legítimamente esperables
 — el registro de binarios, los repositorios de activos multimedia y las raíces web de despliegue.
 

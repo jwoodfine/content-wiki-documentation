@@ -127,9 +127,9 @@ The remaining guards, each of which can stop a promotion: a lock directory preve
 runs; a scope check confirming the session is entitled to promote; a formatting, lint, and test
 gate; a required-remotes check; a branch-match check; a clean-working-tree check; a
 staging-mirror-synchronisation check; a fast-forward-possible check that blocks true divergence; a
-business-data path filter that exits without self-certification; a mass-deletion guard above twenty
-files; a silent-revert guard above twenty files for content quietly reverted to an older canonical
-state; a content-pattern check for real entity names in the design repository; a top-level path
+business-data path filter that exits without self-certification; a mass-deletion guard above a
+configured threshold; a silent-revert guard above the same threshold for content quietly reverted
+to an older canonical state; a content-pattern check for real entity names in the design repository; a top-level path
 allowlist for the canonical repository; forced interactive confirmation for the publicly visible
 repositories even in non-interactive mode; and a final confirmation prompt. The deletion and revert
 overrides are themselves logged to a bypass record.

@@ -138,9 +138,9 @@ autorizada a promover; una compuerta de formato, análisis estático y pruebas; 
 remotos requeridos; una comprobación de correspondencia de rama; una comprobación de árbol de
 trabajo limpio; una comprobación de sincronización con el espejo de staging; una comprobación de
 avance rápido posible que bloquea la divergencia real; un filtro de rutas de datos de negocio que
-termina la ejecución sin autocertificarse; una guarda de eliminación masiva por encima de veinte
-archivos; una guarda de reversión silenciosa por encima de veinte archivos para contenido revertido
-discretamente a un estado canónico anterior; una comprobación de patrones de contenido en busca de
+termina la ejecución sin autocertificarse; una guarda de eliminación masiva por encima de un
+umbral configurado; una guarda de reversión silenciosa por encima del mismo umbral para contenido
+revertido discretamente a un estado canónico anterior; una comprobación de patrones de contenido en busca de
 nombres de entidades reales en el repositorio de diseño; una lista blanca de rutas de primer nivel
 para el repositorio canónico; confirmación interactiva forzada para los repositorios visibles
 públicamente incluso en modo no interactivo; y una petición final de confirmación. Las excepciones

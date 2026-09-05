@@ -49,8 +49,8 @@ de tiempo y una cadena completa de agente de usuario. Obtiene la dirección del 
 cabecera de petición `x-forwarded-for`, tomando el primer valor separado por comas, y recurre a una
 dirección de marcador de posición cuando la cabecera no está presente. A continuación escribe una
 única línea con valores entrecomillados y separados por comas — dirección, marca de tiempo, URI y
-agente de usuario — en un archivo de texto plano abierto en modo anexado,
-`assets/ledger_telemetry.csv`. La dirección se escribe literalmente: **en ningún punto del
+agente de usuario — en un archivo de registro de texto plano abierto en modo anexado.
+La dirección se escribe literalmente: **en ningún punto del
 recolector se produce enmascaramiento, truncamiento, hashing ni generalización de la dirección del
 cliente.**
 
@@ -64,11 +64,10 @@ de conservar el valor completo en ese paso.
 
 ### La exposición del recolector
 
-Otras dos propiedades del recolector son relevantes para una lectura de seguridad. Su propio
-comentario en el código atribuye la decisión de escuchar en `0.0.0.0` — todas las interfaces, en
-lugar de solo la de bucle local — a la aceptación de tráfico de malla sobre la red WireGuard de la
-plataforma, en un puerto tomado del entorno con valor predeterminado 8081. Su configuración CORS
-permite cualquier origen (`allow_any_origin`).
+Otras dos propiedades del recolector son relevantes para una lectura de seguridad. El recolector
+acepta envíos de cualquier llamante que pueda alcanzarlo, sin autenticación — su propio comentario
+en el código atribuye esto a la aceptación de tráfico de malla sobre la red WireGuard de la
+plataforma — y su configuración CORS permite cualquier origen.
 
 En conjunto, el punto de acceso admite un registro de cualquier llamante capaz de alcanzarlo, y los
 valores que almacena los suministra el llamante: el URI, la marca de tiempo y el agente de usuario

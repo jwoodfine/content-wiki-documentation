@@ -7,9 +7,11 @@ category: security
 index_group: isolation-boundaries
 type: topic
 content_type: topic
-status: stable
+quality: complete
+status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
-language: en
+language_protocol: PROSE-TOPIC
 paired_with: genesis-protocol.es.md
 last_edited: 2026-08-22
 editor: pointsav-engineering

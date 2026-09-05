@@ -7,9 +7,10 @@ category: security
 index_group: isolation-boundaries
 type: topic
 content_type: topic
-status: stable
+quality: complete
+status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
-language: es
 language_protocol: TRANSLATE-ES
 paired_with: genesis-protocol.md
 last_edited: 2026-08-24

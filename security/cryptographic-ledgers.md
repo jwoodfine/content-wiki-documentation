@@ -117,7 +117,7 @@ and the anchoring mechanism itself functions as v0.0.2 regardless of what the un
 
 ## Who writes to it
 
-The ledger is a shared facility reached over a local HTTP interface on port 9100, with each writer
+The ledger is a shared facility reached over a local HTTP interface, with each writer
 identifying its tenant through a required `X-Foundry-Module-ID` header that the service checks
 against its own configured module ID before accepting a write. Confirmed writers are the ingest
 console, the email service, the people service, the network-administration fleet watcher, and the

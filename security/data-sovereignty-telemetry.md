@@ -44,9 +44,9 @@ The collector (`telemetry-daemon`) accepts a JSON body containing a requested UR
 and a full user-agent string. It obtains the client address from the `x-forwarded-for` request
 header, taking the first comma-separated value, and falling back to a placeholder address when the
 header is absent. It then writes a single quoted comma-separated line containing the address, the
-timestamp, the URI, and the user-agent to an append-mode plaintext file,
-`assets/ledger_telemetry.csv`. The address is written verbatim: **no masking, truncation, hashing,
-or generalisation of the client address occurs at any point in the collector.**
+timestamp, the URI, and the user-agent to an append-mode plaintext ledger file. The address is
+written verbatim: **no masking, truncation, hashing, or generalisation of the client address
+occurs at any point in the collector.**
 
 The second program, `omni-matrix-engine`, reads that file, skips rows carrying the placeholder
 address, and performs a geographic lookup for every remaining address against a locally held
@@ -57,10 +57,10 @@ current design actively depends on holding the complete value at that step.
 
 ### The collector's exposure
 
-Two further properties of the collector are relevant to a security reading. Its own source comment
-attributes its choice to bind to `0.0.0.0` — all interfaces, rather than loopback — to accepting
-mesh traffic over the platform's WireGuard network, on a port taken from the environment with a
-default of 8081. Its CORS configuration permits any origin (`allow_any_origin`).
+Two further properties of the collector are relevant to a security reading. The collector accepts
+submissions from any reachable caller with no authentication — its own source comment attributes
+this to accepting mesh traffic over the platform's WireGuard network — and its CORS configuration
+permits any origin.
 
 Taken together, the endpoint accepts a record from any caller that can reach it, and the values it
 stores are supplied by the caller: the URI, timestamp, and user-agent are read from a submitted
