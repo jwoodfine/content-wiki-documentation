@@ -44,6 +44,7 @@ The nine named substrates: each names a structural property the platform depends
 - [[brief-queue-substrate]] — A durable file-backed queue that makes idle-shutdown Yo-Yo compute viable without losing apprenticeship corpus capture data — the durability layer of the three-tier SLM substrate.
 - [[gis-as-bim-substrate]] — What the co-location dataset offers a BIM composition pipeline: the cluster manifold and its joinable fields, region-resolution depth, civic context layers, and the stability guarantees a downstream consumer can rely on.
 - [[bim-object-specification]] — The platform's reusable building-element specification unit: a fixed set of primitive categories anchored to open standards (IFC, Uniclass, bSDD), each carrying three layers of information at once — what it is, what its jurisdiction requires, and what its climate requires.
+- [[editorial-draft-routing-protocol]] — Metadata classification layer that routes editorial drafts by their language_protocol declaration — which gateway processes an artifact and which vocabulary rules apply.
 <!-- END AUTO-GENERATED -->
 
 ## The compounding Doorman and AI boundary

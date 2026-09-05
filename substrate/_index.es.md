@@ -44,6 +44,7 @@ Los nueve sustratos nombrados: cada uno designa una propiedad estructural de la 
 - [[brief-queue-substrate]] — Una cola persistente respaldada en archivos que hace viable el apagado inactivo de Yo-Yo sin perder datos del corpus de aprendizaje — la capa de durabilidad del sustrato SLM de tres niveles.
 - [[gis-as-bim-substrate|El SIG como sustrato del BIM]] — Qué ofrece el conjunto de datos de coubicación a una tubería de composición BIM: el manifiesto de agrupaciones y sus campos enlazables, la profundidad de resolución regional, las capas de contexto cívico y las garantías de estabilidad con las que puede contar un consumidor posterior.
 - [[bim-object-specification|Especificación de Objeto BIM]] — La unidad de especificación reutilizable de elementos de construcción de la plataforma: un conjunto fijo de categorías primitivas ancladas a estándares abiertos (IFC, Uniclass, bSDD), cada una portando tres capas de información a la vez — qué es, qué exige su jurisdicción, y qué exige su clima.
+- [[editorial-draft-routing-protocol]] — Capa de clasificación de metadatos que enruta borradores editoriales según language_protocol — qué pasarela procesa cada artefacto y qué reglas de vocabulario aplican.
 <!-- END AUTO-GENERATED -->
 
 ## El Doorman compuesto y la frontera de IA
@@ -73,8 +74,8 @@ Los nueve sustratos nombrados: cada uno designa una propiedad estructural de la 
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: cryptographic-and-microkernel-primitives -->
 - [[sel4-microkernel-substrate]] — Micronúcleo seL4 formalmente verificado, sustrato L1 compartido y planificado de PointSav — aún no es el núcleo en ejecución de cada miembro de la familia de SO tal como se distribuye hoy.
-- [[merkle-proofs-as-substrate-primitive]] — Las pruebas de Merkle son el mecanismo criptográfico que permite al sustrato de la plataforma garantizar — a cualquier tercero, sin necesidad de confianza previa — que un registro específico forma parte de un registro de sólo-adición y que ese log no ha sido reescrito entre dos puntos de observación.
-- [[capability-ledger-substrate]] — El Sustrato del Libro de Capacidades es el mecanismo por el cual cada decisión de control de acceso en un despliegue de plataforma se convierte en un evento criptográficamente auditable, anclado en un registro que controla el cliente.
+- [[merkle-proofs-as-substrate-primitive]] — Las pruebas de Merkle son el mecanismo criptográfico que permite a la plataforma demostrar a cualquier tercero que un registro forma parte de un libro de solo adición que no ha sido reescrito.
+- [[capability-ledger-substrate]] — El Sustrato del Libro de Capacidades es el mecanismo por el cual cada decisión de control de acceso se convierte en un evento criptográficamente auditable, anclado en un registro controlado por el cliente.
 - [[system-substrate-doctrine]] — La arquitectura de nivel de kernel bajo cada servicio de PointSav — un registro de capacidades con raíz en el cliente, una estrategia de SO soberana de dos bases, y mecanismos para capacidades de tiempo limitado, verificación reproducible y recuperación universal.
 - [[capability-geometry]] — Geometría de Capacidades es el término de PointSav para la autorización basada en seL4, que reemplaza la política de control de acceso mutable por un DAG de capacidades aplicado formalmente por el kernel.
 - [[moonshot-toolkit-build-orchestrator]] — Orquestador de construcción solo Rust para imágenes unikernel seL4 — de especificación TOML a manifiesto direccionado por contenido y elfloader AArch64, sin Python ni CMake.

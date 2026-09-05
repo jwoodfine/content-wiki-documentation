@@ -33,7 +33,6 @@ For the concepts behind each guide, start in [[architecture]] or [[patterns-inde
 The foundation: install the toolchain and open your first session.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: getting-started -->
-- [[pair-a-new-device|Pair a new device]] — register a device with the pairing server and get it approved onto the network (now part of [Machine Authorization](/category/machine-authorization))
 - [[install-toolchain|Install the development toolchain]] — Installs the pinned Rust toolchain with rustup, runs a baseline build and tests, and verifies the commit helper and SSH signing key needed before working in a monorepo archive.
 - [[open-first-totebox-session|Open your first Totebox session]] — Opens a first Totebox session in a single archive: read the manifest, check your inbox, understand what the session can and can't write, and complete the shutdown sweep before closing.
 - [[explore-the-console|Explore the console]] — Orients a first-time operator to os-console — the status bar, the F9 inference-gateway dashboard, and the mandatory F12 input checkpoint that writes to the WORM ledger.

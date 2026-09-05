@@ -37,7 +37,6 @@ The structural commitments that define what a PointSav deployment is and is not.
 - [[zero-container-runtime]] — The structural commitment that every PointSav deployment runs as a Linux binary under systemd on a plain host, with no container runtime or orchestrator.
 - [[zero-execution-routing]] — The platform's public homepage templates use a native-CSS checkbox pattern for language toggling and interactive elements, alongside a small amount of client-side JavaScript for page-integrity display and analytics.
 - [[customer-first-ordering]] — The principle that a vendor building something a customer will install should build it in the same order the customer installs it, on the same substrate.
-- [[customer-hostability]] — The architectural commitment that every artefact runs on the customer's own hardware, against the customer's own keys, with the customer's own audit ledger.
 - [[totebox-archives-as-the-asset]] — Why a Totebox Archive is designed as a self-contained, freely transferable data unit rather than a database record owned by the platform that created it.
 - [[city-code-as-composable-geometry]] — A composition-first pattern that encodes regulatory requirements into element specifications as geometric and numeric constraints rather than applying them post-design, so a non-compliant configuration cannot be placed in the first place.
 <!-- END AUTO-GENERATED -->
@@ -48,8 +47,6 @@ The canonical configurations in which the substrate is shipped and the disciplin
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: deployment-and-configuration -->
 - [[deployment-patterns]] — The six canonical configurations the PointSav substrate is deployed in — each built on the same five primitives and OS surface, adapted per segment.
-- [[three-layer-architecture]] — How PointSav deliverables move through SOFTWARE, SHOWCASE, and INSTANCE layers with a strict one-way vendor-to-customer flow.
-- [[3-layer-stack]] — The three-layer infrastructure decomposition: raw compute capability, isolated platform execution, and secure operator access.
 - [[customer-tier-catalog-pattern]] — Catalog-versus-instance discipline at the customer tier — reusable deployment definitions tracked in git, tenant-specific instances kept out of shared repositories.
 <!-- END AUTO-GENERATED -->
 
@@ -60,8 +57,6 @@ Patterns that govern how multiple sessions, multiple engines, and multiple human
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: collaboration-and-editorial-workflow -->
 - [[collab-via-passthrough-relay]] — A real-time collaborative editing design that held no document state on the server, forwarding CRDT updates directly between clients — implemented in the wiki engine, then removed.
 - [[model-tier-discipline]] — The Doorman routes every inference request to one of three compute tiers — local, burst GPU, or external API — based on a complexity hint and live budget state, not a caller's direct choice.
-- [[multi-engine-session-coordination]] — How multiple AI engines coordinate on the same workspace without racing on the `.git/index` or each other's session state.
-- [[mailbox-atomicity]] — The atomic mailbox primitive that keeps inbox / outbox handoffs across sessions consistent under concurrent writes.
 <!-- END AUTO-GENERATED -->
 
 ## Interface and user experience
@@ -71,7 +66,6 @@ Patterns that recur in the operator-facing chrome — the wiki, the location-int
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: interface-and-user-experience -->
 - [[knowledge-wiki-leapfrog-architecture]] — Wiki engine strategy serving flat Markdown from git with Wikipedia-shaped chrome, reaching muscle-memory parity before adding a citation and provenance layer.
 - [[location-intelligence-ux]] — Conclusion-First interface philosophy rendering ranked tier conclusions rather than individual data points, so defensible commercial nodes surface immediately.
-- [[wikipedia-leapfrog-design]] — What the wiki engine inherits from Wikipedia, what it adds beyond it, and what the five-percent leapfrog headroom means.
 - [[federation-via-content-mounts]] — The wiki engine renders curated articles committed directly to its repository alongside content mounted from separate local directories, sharing one URL surface and search index.
 - [[aec-interface-conventions]] — BIM authoring tools across the industry share a common interface vocabulary — a spatial hierarchy, an element properties panel, a 3D viewport, and saved views — because they build on the same underlying IFC data model. The Building Design System's planned interface layer reuses this vocabulary rather than inventing a new one, and is intended to extend it into facility-management workflows.
 <!-- END AUTO-GENERATED -->

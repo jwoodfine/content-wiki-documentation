@@ -44,34 +44,8 @@ Los artículos estructurales fundacionales — los patrones que componen cada de
 - [[architecture-overview]] — Mapa de las principales superficies arquitectónicas de la plataforma PointSav: sustrato de cómputo, distribución de software, inteligencia GIS y el pipeline editorial.
 - [[foundry-doctrine-architecture]] — El alcance planificado para una futura carta constitucional que se prevé codifique compromisos fundacionales y afirmaciones estructurales que rijan las decisiones de ingeniería de PointSav — aún no redactada ni ratificada.
 - [[three-binary-architecture]] — Totebox Orchestration se entrega mediante tres entornos operativos binarios distintos — os-console, os-totebox y os-orchestration — cada uno con un rol, objetivo de despliegue y conjunto de aplicaciones diferenciados.
-<!-- END AUTO-GENERATED -->
-
-## Seguridad e identidad
-
-Cómo la plataforma aplica el aislamiento, verifica la identidad y hace estructuralmente imposible el acceso no autorizado.
-
-<!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: security-and-identity -->
-- [[diode-standard]] — La disciplina unidireccional de flujo de comandos; elimina el movimiento lateral al suprimir la lógica de enrutamiento que lo haría posible.
-- [[capability-based-security]] — Cada componente de software posee un token criptográfico de capacidad para comunicarse con cualquier otro; sin autoridad ambiente.
-- [[machine-based-auth]] — Autorización basada en hardware: el emparejamiento criptográfico reemplaza usuario y contraseña; el par es el permiso.
-- [[crypto-attestation]] — Atestación de contenido en nodos de borde: el hash SHA-256 en el cliente permite a cualquier auditor verificar que una divulgación no ha sido alterada en tránsito.
-- [[cryptographic-ledgers]] — Almacenamiento de estado inmutable por cadena de hash; cualquier alteración rompe una prueba criptográfica verificable en lugar de un control de política.
-- [[personnel-permissions]] — Identidad de colaboradores en Totebox Orchestration: emparejamientos criptográficos de hardware, no control de acceso por roles almacenado en una base de datos.
-- [[five-stage-supply-chain]] — El código pasa de colaborador a producción en cinco etapas, con una barrera de doble ciego que separa las credenciales de producción de los espacios de trabajo de los colaboradores.
-- [[verification-surveyor]] — El componente humano en el bucle que presenta fragmentos de identidad extraídos a un operador antes del compromiso permanente en el libro verificado.
-<!-- END AUTO-GENERATED -->
-
-## Enrutamiento de IA y límite de inferencia
-
-Cómo se clasifican, enrutan y contienen las solicitudes de IA para que nunca toquen el registro autoritativo.
-
-<!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: ai-routing-and-inference-boundary -->
-- [[doorman-protocol]] — El Portero: el único límite de IA que sanea datos, enruta entre niveles de cómputo y centraliza todas las claves API; ninguna clave vive fuera de este límite.
-- [[pointsav-llm]] — El modelo especialista de nivel proveedor planificado (Nivel 3 de la Escalera de Sustrato SLM de Cuatro Niveles); preentrenamiento continuado de OLMo 3 32B sobre el corpus de aprendizaje federado.
-- [[slm-stack-architecture]] — El grafo completo de dependencias Rust y la arquitectura binaria de service-slm.
-- [[sovereign-ai-routing]] — Las solicitudes de IA pasan por un paso de saneado local antes de llegar a cualquier modelo externo; los datos estructurados internos nunca viajan a servidores de terceros de forma identificable.
-- [[zero-container-inference]] — Por qué la plataforma ejecuta la inferencia directamente en el binario del servicio en lugar de en un entorno de contenedor.
-- [[decode-time-constraints]] — Restricciones estructurales aplicadas en cada paso de emisión de token; el vocabulario prohibido y las respuestas estructuralmente inválidas son matemáticamente imposibles de producir.
+- [[app-orchestration-graph-federation]] — Cómo la plataforma PointSav federa los DataGraphs soberanos de cada archivo a través de una única puerta de enlace auditable, y las condiciones bajo las cuales esa puerta pasa a ser un servicio dedicado.
+- [[software-distribution-substrate]] — Un sistema de tres componentes — servidor de versiones, tienda virtual y observador de pagos — que entrega binarios compilados contra pagos USDC en cadena, sin cuentas de cliente ni facturación por suscripción.
 <!-- END AUTO-GENERATED -->
 
 ## Propiedad del cliente y despliegue
@@ -89,6 +63,7 @@ Los principios y mecanismos por los cuales los clientes son dueños plenos de su
 - [[cargo-target-per-user-discipline]] — Particionado por usuario de la caché compartida de Cargo — CARGO_TARGET_DIR por desarrollador elimina carreras de bloqueo y errores de permisos entre usuarios.
 - [[mailbox-atomicity]] — Escritura exclusiva con flock e idempotencia por msg-id en buzones de archivo plano — cómo las sesiones concurrentes serializan escrituras sin perder mensajes en silencio.
 - [[multi-engine-session-coordination]] — Protocolo de bloqueos de sesión para motores de IA concurrentes en un mismo host — detección de bloqueos obsoletos por boot_id y protección del índice git compartido.
+- [[os-products-distribution-model]] — os-network-admin se distribuye hoy en software.pointsav.com a $0 USDC (beta); el modelo de distribución de os-infrastructure (metal desnudo/VM en la nube) está previsto pero aún no catalogado. Ambos se entregan como artefactos firmados, licenciados y entregados en cadena.
 <!-- END AUTO-GENERATED -->
 
 ## Inteligencia de ubicación y dominio

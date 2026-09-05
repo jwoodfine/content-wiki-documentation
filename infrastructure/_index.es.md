@@ -37,7 +37,6 @@ La capa de persistencia fundacional — el libro de Solo Escritura y Múltiple L
 - [[worm-ledger-storage-architecture|Arquitectura de almacenamiento WORM]] — La arquitectura de almacenamiento especifica C2SP tlog-tiles como primitivo objetivo; la implementación actual de service-fs conserva un registro JSON de solo adición por inquilino pendiente del backend de bloques, con inmutabilidad estructural y legibilidad a largo plazo como diseño previsto.
 - [[storage|Almacenamiento]] — El registro resistente a manipulaciones de la plataforma se apoya en permisos de sistema de archivos y una cadena de hash criptográfica, no en un bloqueo de escritura a nivel de hardware — un administrador con privilegios aún puede eludirlo, y cualquier elusión es detectable, no impedida.
 - [[data-vault-bookkeeping-substrate|Sustrato contable de Data Vault]] — Una arquitectura de contabilidad para PYMEs construida sobre una bóveda de fuente inmutable, un diario de solo adición y separación estructural entre el registro contable y cualquier herramienta de contabilidad.
-- [[cryptographic-ledgers|Libros criptográficos]] — Almacenamiento de estado inmutable mediante cadena de hash; cualquier alteración rompe una prueba criptográfica verificable en lugar de una comprobación de política.
 <!-- END AUTO-GENERATED -->
 
 ## Despliegue de flota y borde
@@ -47,8 +46,7 @@ Cómo se provisiona, actualiza y mantiene un despliegue en hardware on-premises 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: fleet-and-edge-deployment -->
 - [[edge-deployment|Despliegue en el borde]] — La plataforma enruta todas las conexiones de red externas a través de servicios de ingesta perimetral de Ring 1 en el borde del sistema, desinfectando cargas útiles entrantes antes de que lleguen a los anillos de procesamiento central y registrando eventos limpios y validados en el registro de auditoría en lugar de tráfico de red sin procesar.
 - [[tier-c-key-wiring|Cableado de claves Tier C]] — El procedimiento operativo para gestionar las claves de API externas en el servicio Doorman — dónde viven las claves, cómo se aprovisionan, cómo rotan y cómo se contiene una brecha.
-- [[genesis-protocol|Protocolo Génesis]] — Cómo una flota aislada arranca desde un estado frío, derivando su identidad y emparejamientos sin una autoridad externa.
-- [[five-stage-supply-chain|Cadena de suministro de cinco etapas]] — El código pasa de contribuyente a producción a través de cinco etapas, con un aislamiento doble ciego que separa las credenciales de producción de los espacios de trabajo de contribuyentes.
+- [[os-orchestration-stateless-hub]] — os-orchestration coordina el trabajo entre los Archivos Totebox sin almacenar datos de clientes, claves ni registros de auditoría, actuando como superficie de enrutamiento e intermediación sin estado por encima de la capa de capacidades por archivo.
 <!-- END AUTO-GENERATED -->
 
 ## Red y telemetría
@@ -61,7 +59,6 @@ Cómo se comunican los nodos de la flota y cómo se recopilan las señales de ob
 - [[ppn-command-protocol|Protocolo de comandos PPN]] — El PPN Command Protocol es el formato de cable binario de 16 bytes utilizado por app-network-admin para emitir comandos a los nodos os-infrastructure a través de la malla WireGuard, sin intermediario central ni sobrecarga de sesión.
 - [[sovereign-telemetry|Telemetría soberana]] — Telemetría de estado cero: una única baliza al cierre de página con URI y marca temporal, emparejada del lado del servidor con la IP y el user agent del solicitante, escrita sin enmascarar en un registro CSV de solo anexado.
 - [[telemetry-architecture|Arquitectura de telemetría]] — La plataforma recopila análisis de tráfico web de nodos perimetrales de producción y los enruta a un entorno de procesamiento controlado localmente a través de una ruta cifrada sin pasar por servicios de análisis de terceros en la nube.
-- [[data-sovereignty-telemetry|Soberanía de datos en telemetría]] — Cómo la telemetría preserva las garantías de soberanía de datos mientras sigue produciendo señal operativamente útil.
 <!-- END AUTO-GENERATED -->
 
 ## Cómputo y tejido de VM
@@ -74,6 +71,8 @@ Cómo se agrupan, aíslan y protegen las máquinas virtuales en los nodos PPN �
 - [[ppn-tenant-vm-isolation|Aislamiento de VM por inquilino en la PPN]] — El pool de recursos PPN separa las cargas de trabajo por inquilino mediante aislamiento de espacio de nombres, aislamiento de proceso por VM y redes en modo usuario. El aislamiento a nivel de subred de red es un hito planificado.
 - [[ppn-distributed-vm-fabric|Tejido VM distribuido de la PPN]] — El Tejido VM Distribuido PPN es la extensión planificada de la capa de hipervisor PPN por nodo hacia un pool de recursos multinodo, previsto para permitir que las VMs tomen prestado cómputo de otros nodos de la malla y migren a través de la flota sin intervención del operador en cada movimiento.
 - [[ppn-three-path-architecture|Arquitectura seL4 de tres caminos de la PPN]] — Tres opciones de arquitectura seL4 secuenciales para nodos de infraestructura PPN: la Opción B se implementa primero (hipervisor seL4 + invitado Linux), la Opción C añade WireGuard como dominio de protección seL4, y la Opción A apunta a un entorno seL4 puro sin máquinas virtuales.
+- [[ppn-architecture-overview]] — Plano de infraestructura física del stack PointSav, que incorpora nodos a una malla autenticada criptográficamente y aloja las máquinas virtuales de la flota.
+- [[spot-vm-lifecycle-kill-switch]] — Ciclo de vida de controlador único para la VM spot Yo-Yo — un solo temporizador posee arranque y parada, con interruptor centinela de archivo para control inmediato.
 <!-- END AUTO-GENERATED -->
 
 ## Véase también

@@ -58,7 +58,6 @@ Los sistemas que gestionan el tejido de red, la ruta de arranque y el sustrato d
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: network-control-and-infrastructure -->
 - [[os-network-admin]] — os-network-admin es el plano de control de una Red Privada PointSav — proporciona enrutamiento de malla WireGuard, la superficie de ceremonia de unión de nodos y la aplicación del Diode Standard, sin poseer ninguna autoridad criptográfica del nivel de archivo.
 - [[os-privategit]] — La capa de sistema operativo que aloja la infraestructura Git privada que sustenta el espacio de trabajo de desarrollo, flujo de commit de nivel de staging y repositorios de fuente canónica para todos los repos de ingeniería de PointSav.
-- [[app-privategit-workbench|Workbench de navegador]] — El editor de archivos basado en navegador incluido en os-privategit: una interfaz de tres columnas para trabajar con archivos sin una sesión de terminal.
 - [[os-infrastructure-ppn-node|os-infrastructure: sistema operativo de nodo PPN]] — os-infrastructure es la capa del sistema operativo para los nodos de la Red Privada PointSav — su único propósito es configurar, operar y mantener un nodo PPN: gestionar túneles WireGuard, alojar máquinas virtuales y exponer el plano de control del operador.
 <!-- END AUTO-GENERATED -->
 

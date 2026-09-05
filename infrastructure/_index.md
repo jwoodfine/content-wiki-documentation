@@ -36,7 +36,6 @@ The foundational persistence layer — the Write-Once-Read-Many ledger and the b
 - [[worm-ledger-storage-architecture]] — C2SP tlog-tiles is the target storage primitive; the current service-fs build persists a per-tenant JSON append log pending the tile backend, immutable by design.
 - [[storage]] — The platform's tamper-evident record rests on filesystem read-only permissions and a cryptographic hash chain, not a hardware write-block — a privileged administrator can still bypass it, and any bypass is detectable, not prevented.
 - [[data-vault-bookkeeping-substrate]] — An SMB bookkeeping and accounting architecture built on an immutable source vault and append-only journal, structurally separate from any accounting tool.
-- [[cryptographic-ledgers]] — Immutable-state storage by hash-chain; any alteration breaks a verifiable cryptographic proof rather than a policy check.
 <!-- END AUTO-GENERATED -->
 
 ## Fleet and edge deployment
@@ -46,8 +45,7 @@ How a deployment is provisioned, updated, and maintained across on-premises and 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: fleet-and-edge-deployment -->
 - [[edge-deployment]] — The platform routes external network connections through Ring 1 boundary-ingest services at the edge, sanitizing payloads before core processing and recording clean events.
 - [[tier-c-key-wiring]] — The operational procedure for managing external API keys in the Doorman service — where keys live, how they are provisioned, how they rotate, and how a breach is contained.
-- [[genesis-protocol]] — How an isolated fleet bootstraps itself from a cold state, deriving its identity and pairings without an external authority.
-- [[five-stage-supply-chain]] — Code moves from contributor to production through five stages, with a double-blind air-gap that separates production credentials from contributor workspaces.
+- [[os-orchestration-stateless-hub]] — os-orchestration coordinates work across Totebox Archives without storing customer data, keys, or audit records — a stateless routing surface above the capability layer.
 <!-- END AUTO-GENERATED -->
 
 ## Network and telemetry
@@ -60,7 +58,6 @@ How fleet nodes communicate and how observability signals are collected without 
 - [[ppn-command-protocol]] — The PPN Command Protocol is the 16-byte binary wire format app-network-admin uses to issue commands to os-infrastructure nodes over WireGuard, with no central broker.
 - [[sovereign-telemetry]] — Zero-state telemetry: a single unload beacon carrying URI and timestamp, paired server-side with the requester's IP and user agent, written unmasked to an append-only CSV ledger.
 - [[telemetry-architecture]] — The platform collects web traffic analytics from production edge nodes, routing them to a locally controlled environment via an encrypted path, no third-party cloud.
-- [[data-sovereignty-telemetry]] — How telemetry preserves data-sovereignty guarantees while still producing operationally useful signal.
 <!-- END AUTO-GENERATED -->
 
 ## Compute and VM fabric
@@ -73,6 +70,8 @@ How virtual machines are pooled, isolated, and secured across PPN nodes — from
 - [[ppn-tenant-vm-isolation|PPN tenant VM isolation]] — The PPN resource pool separates tenant workloads through namespace isolation, per-VM process isolation, and user-mode networking; subnet isolation is a planned milestone.
 - [[ppn-distributed-vm-fabric|PPN distributed VM fabric]] — The planned extension of the per-node PPN hypervisor layer to a multi-node resource pool, letting VMs borrow compute and migrate across the fleet automatically.
 - [[ppn-three-path-architecture|PPN three-path seL4 architecture]] — Three sequential seL4 options for PPN infrastructure nodes: Option B ships first (hypervisor + Linux guest), Option C adds WireGuard as a protection domain.
+- [[ppn-architecture-overview]] — Physical infrastructure plane of the PointSav stack, enrolling nodes into a cryptographically authenticated mesh and hosting the fleet's virtual machines.
+- [[spot-vm-lifecycle-kill-switch]] — Single-controller lifecycle for the Yo-Yo spot VM — why one timer owns both start and stop, plus the sentinel-file kill switch for immediate operator override.
 <!-- END AUTO-GENERATED -->
 
 ## See also

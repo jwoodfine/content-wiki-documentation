@@ -57,7 +57,6 @@ The systems that manage the network fabric, the bootstrap path, and the underlyi
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: network-control-and-infrastructure -->
 - [[os-network-admin]] — os-network-admin is the control plane for a PPN: WireGuard mesh routing, the node-join ceremony surface, and Diode-standard enforcement, without archive-tier authority.
 - [[os-privategit]] — The OS layer hosting the private Git infrastructure underpinning the development workspace, staging-tier commit flow, and canonical repos for PointSav engineering.
-- [[app-privategit-workbench|Browser workbench]] — The browser-based file editor included in os-privategit: a three-column interface for working with archive files without a terminal session.
 - [[os-infrastructure-ppn-node]] — os-infrastructure is the OS layer for PPN nodes — its sole purpose is to set up and maintain a node: WireGuard tunnels, guest VMs, and the operator control plane.
 <!-- END AUTO-GENERATED -->
 

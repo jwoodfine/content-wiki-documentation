@@ -43,34 +43,8 @@ The foundational structural articles — the patterns that compose every PointSa
 - [[architecture-overview]] — A map of the PointSav platform's major architectural surfaces: compute substrate, software distribution, GIS intelligence, and the editorial pipeline.
 - [[foundry-doctrine-architecture]] — The planned scope for a future constitutional charter intended to encode foundational commitments and structural claims governing PointSav engineering decisions — not yet written or ratified.
 - [[three-binary-architecture]] — Totebox Orchestration is delivered through three binary operating environments — os-console, os-totebox, os-orchestration — each with a distinct role and target.
-<!-- END AUTO-GENERATED -->
-
-## Security and identity
-
-How the platform enforces isolation, verifies identity, and makes unauthorised access structurally impossible.
-
-<!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: security-and-identity -->
-- [[diode-standard]] — The foundational unidirectional command-flow discipline; eliminates lateral movement by removing the routing logic that would allow it.
-- [[capability-based-security]] — Every software component holds a cryptographic capability token to communicate with any other; no ambient authority.
-- [[machine-based-auth]] — Machine-based authorization: cryptographic hardware pairing replaces username and password; the pair is the permission.
-- [[crypto-attestation]] — Edge-node content attestation: client-side SHA-256 hashing lets any auditor verify a disclosure has not been altered in transit.
-- [[cryptographic-ledgers]] — Immutable-state storage by hash-chain; any alteration breaks a verifiable cryptographic proof rather than a policy check.
-- [[personnel-permissions]] — Contributor identity in Totebox Orchestration: cryptographic hardware pairings, not role-based access control stored in a database.
-- [[five-stage-supply-chain]] — Code moves from contributor to production through five stages, with a double-blind air-gap that separates production credentials from contributor workspaces.
-- [[verification-surveyor]] — The human-in-the-loop component that presents extracted identity fragments to an operator before permanent commitment to the verified ledger.
-<!-- END AUTO-GENERATED -->
-
-## AI routing and inference boundary
-
-How AI requests are classified, routed, and contained so they never touch the authoritative record.
-
-<!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: ai-routing-and-inference-boundary -->
-- [[doorman-protocol]] — The Doorman: the single AI boundary that sanitises data, routes among compute tiers, and holds every API key; no key lives outside this boundary.
-- [[pointsav-llm]] — The planned vendor-tier specialist model (Tier 3 of the Four-Tier SLM Substrate Ladder); continued pretraining of OLMo 3 32B on the federated apprenticeship corpus.
-- [[slm-stack-architecture]] — The full Rust dependency graph and binary architecture for service-slm.
-- [[sovereign-ai-routing]] — AI requests pass through a local sanitisation step before reaching any external model; internal structured data never travels to third-party servers in identifiable form.
-- [[zero-container-inference]] — Why the platform runs inference directly in the service binary rather than in a container runtime, and what that means for isolation and cost.
-- [[decode-time-constraints]] — Structural constraints applied at each token-emission step; banned vocabulary and structurally invalid responses are mathematically impossible to produce.
+- [[app-orchestration-graph-federation]] — How PointSav federates sovereign per-archive DataGraphs through a single auditable gateway, and the conditions under which that gateway becomes a dedicated service.
+- [[software-distribution-substrate]] — A three-component system — release server, storefront, payment watcher — delivering compiled binaries against on-chain USDC payments, no accounts or subscriptions.
 <!-- END AUTO-GENERATED -->
 
 ## Customer ownership and deployment
@@ -88,6 +62,7 @@ The principles and mechanisms by which customers own their deployment outright.
 - [[cargo-target-per-user-discipline]] — Per-user partitioning of the shared Cargo build cache — why a per-developer CARGO_TARGET_DIR eliminates cross-user lock races and permission errors.
 - [[mailbox-atomicity]] — flock-guarded prepend and msg-id idempotency for flat-file mailboxes — how concurrent sessions serialize writes instead of silently losing messages.
 - [[multi-engine-session-coordination]] — Session-lock protocol for concurrent AI engines on one host — boot_id staleness detection and role locks that keep two sessions off the same .git/index.
+- [[os-products-distribution-model]] — os-network-admin distributes today at software.pointsav.com at $0 USDC (beta); os-infrastructure's bare-metal/cloud-VM distribution model is planned but not yet catalogued. Both ship as signed artifacts, licensed and delivered on-chain.
 <!-- END AUTO-GENERATED -->
 
 ## Location intelligence and domain

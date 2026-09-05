@@ -36,7 +36,6 @@ Las decisiones fundacionales: por qué existe el sustrato, qué preservó de la 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: philosophy-and-primitive-vocabulary -->
 - [[design-philosophy|Filosofía de diseño]] — El sistema de diseño PointSav es un sustrato auto-alojado propiedad del cliente que se ejecuta en design.pointsav.com y publica investigación de decisiones de diseño junto con valores de tokens en formato DTCG, priorizando interoperabilidad agnóstica respecto a editores y rationale estructurado.
 - [[design-primitive-vocabulary|Vocabulario primitivo de diseño]] — Justificación de los patrones de la capa de tokens primitivos — escalas de color numéricas, aliasing semántico y separación tipográfica — con nomenclatura propia de PointSav.
-- [[design-system-substrate|Sustrato del sistema de diseño]] — El marco de sustrato: motor de sistema de diseño autoalojado que almacena tokens y componentes en el propio repositorio git del cliente; formato de tokens W3C DTCG; endpoint MCP legible por máquina.
 <!-- END AUTO-GENERATED -->
 
 ## Conceptos de tokens y herramientas
@@ -71,14 +70,6 @@ El vocabulario de componentes, sistema tipográfico y paleta de modo oscuro que 
 - [[wiki-component-library|Biblioteca de componentes wiki]] — El armazón compartido — encabezado, navegación móvil fuera de lienzo, barra lateral izquierda y pie de página — más las plantillas de página que envuelve, que juntas renderizan cada página de la plataforma de conocimiento de PointSav.
 - [[wiki-typography-system|Sistema tipográfico wiki]] — Pila tipográfica Inter y Source Serif 4, escala de encabezados y tokens de espaciado para el wiki de PointSav.
 - [[wiki-dark-mode|Modo oscuro wiki]] — Esquemas de color claro y oscuro para el wiki de PointSav, controlados por anulaciones de tokens semánticos sobre un atributo data-theme, con persistencia de tema mediante localStorage.
-<!-- END AUTO-GENERATED -->
-
-## Fundaciones relacionadas
-
-Los artículos arquitectónicos y de sustrato que enmarcan el sistema de diseño dentro de la plataforma más amplia.
-
-<!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: related-foundations -->
-- [[knowledge-wiki-leapfrog-architecture|Arquitectura de salto del wiki de conocimiento]] — Cómo el motor wiki consume los tokens y componentes del sistema de diseño para renderizar cromo con forma de Wikipedia sobre Markdown plano.
 <!-- END AUTO-GENERATED -->
 
 Artículos adicionales planificados — herramientas del sistema de diseño para BIM y convenciones de interfaz AEC — aún no están escritos.

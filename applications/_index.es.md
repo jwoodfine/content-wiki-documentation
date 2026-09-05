@@ -48,7 +48,6 @@ El motor de análisis GIS, el artículo de plataforma que lo enmarca junto a la 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: location-intelligence-applications -->
 - [[app-orchestration-gis]] — El pipeline de datos en Python que produce las clasificaciones de co-ubicación de Woodfine y el mapa interactivo — geometría de clústeres reconstruida en un ciclo nocturno a partir de los conjuntos de datos de origen, publicada como mosaicos de mapa estáticos.
 - [[location-intelligence-platform|Plataforma de inteligencia de ubicación]] — Aplicación GIS de archivos planos propiedad del cliente para análisis de clústeres minoristas y selección de sitios, que une una canalización de puntuación nocturna con una capa de renderizado interactiva.
-- [[location-intelligence-ux|Experiencia de inteligencia de ubicación]] — La filosofía de diseño Conclusión Primero: conclusiones de nivel ordenadas en lugar de puntos de datos individuales, para que los usuarios vean los nodos comerciales más defendibles a zoom nacional antes de profundizar en operadores individuales.
 <!-- END AUTO-GENERATED -->
 
 ## Superficies de entrada y desarrollo

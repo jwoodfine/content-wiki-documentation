@@ -60,7 +60,7 @@ paired_with: _index.md
 - [[preprint-notice-convention|Aviso de preimpresión]] — Qué significa el aviso de preimpresión obligatorio en cada documento de investigación: un borrador de trabajo, aún sin revisión por pares, sujeto a revisión y no un relato final o definitivo.
 - [[root-files-discipline|Disciplina de archivos raíz]] — La convención según la cual todo repositorio y sub-clon de proyecto mantiene un conjunto pequeño y explícitamente enumerado de archivos de acompañamiento canónicos en su raíz — y nada más.
 - [[structural-positioning|Posicionamiento estructural]] — El posicionamiento estructural es el enfoque de PointSav para la diferenciación de mercado: articular compromisos arquitectónicos visibles en el código y la topología, en lugar de hacer comparaciones con competidores nombrados o referencias de rendimiento.
-- [[wiki-provider-landscape|Panorama de proveedores de wikis]] — Una auditoría estructural del mercado de superficies de conocimiento con forma de wiki, por arquetipo, que documenta razones estructurales por las que ningún arquetipo ha cerrado la brecha enciclopédica de Wikipedia.
+- [[wiki-provider-landscape|Panorama de proveedores de wikis]] — Una auditoría estructural del mercado de superficies de conocimiento con forma de wiki, por arquetipo, que documenta por qué ninguna categoría de proveedor ha cerrado la brecha enciclopédica de Wikipedia, y qué se requeriría para cerrarla.
 <!-- END AUTO-GENERATED -->
 
 Para un término específico, acuda directamente al [[glossary-documentation|glosario]]. Los

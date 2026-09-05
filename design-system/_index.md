@@ -36,7 +36,6 @@ The foundational decisions: why the substrate exists, what it preserved from con
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: philosophy-and-primitive-vocabulary -->
 - [[design-philosophy]] — The PointSav design system is a self-hosted, customer-owned substrate at design.pointsav.com publishing design decision research alongside DTCG-format token values.
 - [[design-primitive-vocabulary]] — Rationale for the primitive token layer's structural patterns — numeric color scales, semantic aliasing, and type splits — using PointSav-specific naming and values.
-- [[design-system-substrate]] — The substrate framing: self-hosted design-system engine storing tokens and components in the customer's own git repository; W3C DTCG token format; machine-readable MCP endpoint.
 <!-- END AUTO-GENERATED -->
 
 ## Token concepts and tooling
@@ -71,14 +70,6 @@ The component vocabulary, typographic system, and dark-mode palette that compose
 - [[wiki-component-library]] — The shared chrome — header, off-canvas mobile nav, left sidebar, and footer — plus the page templates it wraps, that together render every page on the PointSav knowledge platform.
 - [[wiki-typography-system]] — The Inter and Source Serif 4 type stack, heading scale, and spacing tokens governing every wiki article page across the PointSav knowledge platform.
 - [[wiki-dark-mode]] — Light and dark colour schemes for the PointSav wiki, driven by semantic-token overrides on a data-theme attribute, with theme persistence via localStorage.
-<!-- END AUTO-GENERATED -->
-
-## Related foundations
-
-The architectural and substrate articles that frame the design system within the wider platform.
-
-<!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: related-foundations -->
-- [[knowledge-wiki-leapfrog-architecture]] — How the wiki engine consumes the design system's tokens and components to render Wikipedia-shaped chrome over flat Markdown.
 <!-- END AUTO-GENERATED -->
 
 Additional planned articles — design-system tooling for BIM and AEC interface conventions — are not yet written.

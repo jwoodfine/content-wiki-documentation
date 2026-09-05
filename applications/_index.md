@@ -47,7 +47,6 @@ The GIS analytics engine, the platform article that frames it alongside the rend
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: location-intelligence-applications -->
 - [[app-orchestration-gis]] — The Python data pipeline that produces the Woodfine co-location rankings and interactive map — cluster geometry rebuilt on a nightly schedule from source datasets, published as static map tiles.
 - [[location-intelligence-platform]] — Customer-owned flat-file GIS application for retail cluster analysis and strategic site selection, pairing a nightly scoring pipeline with an interactive rendering layer.
-- [[location-intelligence-ux]] — The Conclusion-First design philosophy: ranked tier conclusions rather than individual data points, so users see the most defensible commercial nodes at national zoom before drilling into individual operators.
 <!-- END AUTO-GENERATED -->
 
 ## Input and developer surfaces

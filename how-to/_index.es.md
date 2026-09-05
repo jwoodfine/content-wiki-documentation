@@ -33,7 +33,6 @@ Para los conceptos detrás de cada guía, comienza en [[architecture|Arquitectur
 La base: instala el conjunto de herramientas y abre tu primera sesión.
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: getting-started -->
-- [[pair-a-new-device|Vincular un nuevo dispositivo]] — registra un dispositivo con el servidor de emparejamiento y logra que se apruebe en la red (ahora parte de [Autorización de Máquinas](/category/machine-authorization))
 - [[install-toolchain|Instalar el conjunto de herramientas de desarrollo]] — Instala el conjunto de herramientas Rust fijado con rustup, ejecuta una compilación y pruebas base, y verifica el asistente de commits y la clave SSH de firma necesarios antes de trabajar en un archivo del monorepo.
 - [[open-first-totebox-session|Abrir tu primera sesión Totebox]] — Abre una primera sesión Totebox en un único archivo: lea el manifiesto, revise su bandeja de entrada, entienda qué puede y no puede escribir la sesión, y complete el barrido de cierre antes de cerrar.
 - [[explore-the-console|Explorar la consola]] — Orienta a un operador de primera vez en os-console — la barra de estado, el panel F9 de la pasarela de inferencia y el punto de control obligatorio F12 que escribe en el libro mayor WORM.
