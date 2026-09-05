@@ -39,6 +39,7 @@ El software comercial construido sobre la plataforma se distribuye mediante un p
 La plataforma de orquestación GIS produce datos comerciales de clústeres de co-ubicación para los arquetipos PRO, VWH y PKS.
 
 - Descripción General de Datos — capas de datos y pipeline de teselas GIS
+- [[hardware-co-location-methodology|Arquetipos de Co-ubicación de Inteligencia de Localización]] — descripción general PRO/VWH/PKS
 - Nomenclatura de Niveles de Co-ubicación — vocabulario T1/T2/T3
 
 ## Consola OS y superficies de escritorio

@@ -45,7 +45,7 @@ applications. Together they form a complete system for sovereign data management
                     │       CUSTOMER HARDWARE / VM         │
                     │                                      │
                     │         os-totebox                   │
-                    │   Sovereign WORM Data Vault          │
+                    │   WORM Data Vault                     │
                     │   services: service-* (Ring 1+2)    │
                     │   no shell; no root process          │
                     │   WORM append-only ledger            │
@@ -68,7 +68,7 @@ applications. Together they form a complete system for sovereign data management
 
 ---
 
-## os-totebox: Sovereign WORM Data Vault
+## os-totebox: WORM Data Vault
 
 [[totebox-os|os-totebox]] is the customer-side deployment. It runs on hardware under the customer's
 physical control — a NUC-class machine, a GCP VM, or a private server. Its function is
@@ -192,7 +192,7 @@ gateway-orchestration-command-1   [os-orchestration hub]
   └── gateway-orchestration-[gis/bim/slm]-N  outbound federation
 ```
 
-Each `cluster-totebox-*` is one customer's Sovereign WORM Data Vault. Each
+Each `cluster-totebox-*` is one customer's WORM Data Vault. Each
 `node-console-*` is one operator's terminal. `gateway-orchestration-*` instances are
 named deployments of specific os-orchestration applications.
 

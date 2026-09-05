@@ -68,9 +68,7 @@ Representative clusters from the intended claim set:
 
 ## The Eight Cross-Industry Inventions
 
-Beyond the structural claims, the planned charter is intended to draw on process inventions borrowed from established industries, planned to include:
-
-**Workspace Passport** (maritime) — every deployment carries a `MANIFEST.md` declaring origin, owner, and current state. **NOTAM** (aviation) — time-sensitive warnings read at every session start. **Recall Procedure** (pharmaceuticals) — defective vendor commits trigger recall notices into every downstream deployment inbox. **Bill of Lading** (shipping) — cross-realm handoffs generate append-only log entries. **Time-Vested Operation** (banking) — destructive operations post to a queue with a vesting date; execution is blocked until the date passes. **Apprentice Mode** (aviation/medicine) — new model versions run in shadow mode; graduate after N approved actions. **Integrity Anchor** (notarization) — monthly workspace state hashes posted to Sigstore Rekor public transparency log. **Constitutional Convention** (IETF/constitutional amendment) — planned so that major-version bumps would require 30-day public comment, intended to run through `factory-release-engineering`'s existing governance-policy process once the charter exists.
+Beyond the structural claims, the planned charter is intended to draw on process inventions borrowed from established industries — Workspace Passport, NOTAM, Recall Procedure, Bill of Lading, Time-Vested Operation, Apprentice Mode, Integrity Anchor, and Constitutional Convention. See [[foundry-doctrine-overview|the planned overview]]'s "Cross-Domain Operational Patterns" section for the full description of each.
 
 ## Workspace Structure
 

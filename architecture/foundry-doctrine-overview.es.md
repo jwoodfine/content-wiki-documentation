@@ -48,22 +48,35 @@ La tesis central de la doctrina: una plataforma cuyo modelo cabe completamente e
 
 Se prevé que un conjunto de afirmaciones estructurales constituya este compromiso arquitectónico soberano para PYMEs, entre ellas:
 
-- **[[single-boundary-compute-discipline|Disciplina de Cómputo de Límite Único]] (#43)** — cada llamada de inferencia de IA pasa por un único límite de servicio, el [[doorman-protocol|Doorman]].
-- **[[knowledge-graph-grounded-apprenticeship|Aprendizaje Fundamentado en Grafo de Conocimiento]] (#44)** — el servicio de inferencia consulta el grafo de conocimiento por inquilino antes de cada solicitud sustantiva.
-- **[[tui-corpus-producer|TUI como Productor de Corpus]] (#45)** — cada interacción terminal con el servicio de inferencia es una contribución de corpus de entrenamiento curada.
-- **[[mcp-substrate-protocol|MCP como Protocolo del Sustrato]] (#46)** — cada servicio de Ring 1 y Ring 2 expone una interfaz de servidor MCP como su contrato externo principal.
+- **[[single-boundary-compute-discipline|Disciplina de Cómputo de Límite Único]]** — cada llamada de inferencia de IA pasa por un único límite de servicio, el [[doorman-protocol|Doorman]].
+- **[[knowledge-graph-grounded-apprenticeship|Aprendizaje Fundamentado en Grafo de Conocimiento]]** — el servicio de inferencia consulta el grafo de conocimiento por inquilino antes de cada solicitud sustantiva.
+- **[[tui-corpus-producer|TUI como Productor de Corpus]]** — cada interacción terminal con el servicio de inferencia es una contribución de corpus de entrenamiento curada.
+- **[[mcp-substrate-protocol|MCP como Protocolo del Sustrato]]** — cada servicio de Ring 1 y Ring 2 expone una interfaz de servidor MCP como su contrato externo principal.
 ### Bootstrap del inquilino y propiedad del cliente
 
-- **[[seed-taxonomy-as-smb-bootstrap|Taxonomía Semilla como Bootstrap para PYMEs]] (#47)** — cada despliegue de inquilino se aprovisiona con una taxonomía semilla de cuatro partes como el bootstrap de su grafo de conocimiento.
-- **[[customer-owned-graph-ip|IP del Grafo de Propiedad del Cliente]] (#48)** — el grafo de conocimiento por inquilino es propiedad intelectual del cliente.
-- **[[tier-zero-customer-side-sovereign-specialist|Especialista Soberano del Lado del Cliente Nivel 0]] (#49)** — el despliegue de referencia Nivel 0 es un dispositivo de pequeño factor de forma que ejecuta el sustrato determinista completo más un modelo especialista de 1B, sin GPU requerida.
-- **[[vertical-seed-packs-marketplace|Mercado de Paquetes Semilla Verticales]] (#50)** — paquetes semilla específicos de la industria distribuidos como taxonomías iniciales para nuevos despliegues de inquilinos.
+- **[[seed-taxonomy-as-smb-bootstrap|Taxonomía Semilla como Bootstrap para PYMEs]]** — cada despliegue de inquilino se aprovisiona con una taxonomía semilla de cuatro partes como el bootstrap de su grafo de conocimiento.
+- **[[customer-owned-graph-ip|IP del Grafo de Propiedad del Cliente]]** — el grafo de conocimiento por inquilino es propiedad intelectual del cliente.
+- **[[tier-zero-customer-side-sovereign-specialist|Especialista Soberano del Lado del Cliente Nivel 0]]** — el despliegue de referencia Nivel 0 es un dispositivo de pequeño factor de forma que ejecuta el sustrato determinista completo más un modelo especialista de 1B, sin GPU requerida.
+- **[[vertical-seed-packs-marketplace|Mercado de Paquetes Semilla Verticales]]** — paquetes semilla específicos de la industria distribuidos como taxonomías iniciales para nuevos despliegues de inquilinos.
 ### Contratos máquina-primero y flujos comerciales
 
-- **[[code-for-machines-first|Código para Máquinas Primero]] (#51)** — cada contrato entre servicios, registro de auditoría, configuración y ontología es legible por máquinas como superficie primaria.
-- **[[reverse-flow-substrate|Sustrato de Flujo Inverso]] (#52)** — la misma puerta de enlace [[doorman-protocol|Doorman]] y el mismo registro de auditoría que aplican la disciplina entrante también aplican los flujos comerciales salientes: un mercado de datos y un intercambio de publicidad.
-- **[[service-wallet-settlement|Liquidación de Cartera de Servicios]] (#53)** — los ingresos del mercado y el intercambio de publicidad se acumulan en un libro de contabilidad interno por inquilino; [[pointsav-overview|PointSav]] nunca es un intermediario de custodia.
-- **[[substrate-without-inference-base-case|Caso Base del Sustrato Sin Inferencia]] (#54)** — el [[totebox-archive|Archivo Totebox]] permanece completamente operativo y libremente transferible incluso cuando ningún nivel de inferencia está disponible.
+- **[[code-for-machines-first|Código para Máquinas Primero]]** — cada contrato entre servicios, registro de auditoría, configuración y ontología es legible por máquinas como superficie primaria.
+- **[[reverse-flow-substrate|Sustrato de Flujo Inverso]]** — la misma puerta de enlace [[doorman-protocol|Doorman]] y el mismo registro de auditoría que aplican la disciplina entrante también aplican los flujos comerciales salientes: un mercado de datos y un intercambio de publicidad.
+- **[[service-wallet-settlement|Liquidación de Cartera de Servicios]]** — los ingresos del mercado y el intercambio de publicidad se acumulan en un libro de contabilidad interno por inquilino; [[pointsav-overview|PointSav]] nunca es un intermediario de custodia.
+- **[[substrate-without-inference-base-case|Caso Base del Sustrato Sin Inferencia]]** — el [[totebox-archive|Archivo Totebox]] permanece completamente operativo y libremente transferible incluso cuando ningún nivel de inferencia está disponible.
+
+### Afirmaciones fundacionales de versiones anteriores
+
+Afirmaciones anteriores de importancia estructural, seleccionadas:
+
+- **Vía de preentrenamiento continuo** hacia un modelo base propiedad del cliente. El sustrato se compone sin dependencia de proveedor a nivel del modelo.
+- **El Sustrato Compuesto.** Cada interacción mejora el sustrato para las interacciones posteriores, dentro de la infraestructura del cliente.
+- **Álgebra de Composición de Adaptadores.** El Doorman es un núcleo; los adaptadores son procesos; `service-content` es el sistema de archivos. Inteligencia componible.
+- **Conocimiento Común / Comercio de Servicios.** Los artefactos de conocimiento son públicos y licenciados bajo CC. El umbral comercial es la agregación multi-Totebox.
+- **Tenencia Diseñada para la Ruptura.** La salida del cliente es el final previsto por diseño, no una excepción de soporte.
+- **Redacción Constitucional-Restringida.** El esquema de documentos del sustrato se compila en una gramática libre de contexto y se aplica en tiempo de decodificación de la IA. La IA no puede emitir contenido que no cumpla el esquema.
+- **El Sustrato del Registro de Capacidades.** El estado de capacidad del sistema en ejecución ES el registro de solo-adición. La titularidad se transfiere mediante una única ceremonia de co-firma en la cúspide.
+- **El Sustrato Soberano de Dos Bases.** seL4 para despliegues verificados; NetBSD para soberanía de arranque en cualquier lugar. Los mismos binarios en ambos.
 
 ## La Arquitectura de Tres Anillos
 
@@ -85,13 +98,22 @@ Los artefactos de conocimiento son la capa pública — publicados bajo licencia
 
 El modelo de contribuidores que sostiene esto: 4–7 empleados del Núcleo, 50–100 contribuidores de pago bajo contratos basados en resultados, y más de 10,000 contribuidores abiertos previstos construyendo sobre el sustrato público.
 
+## Disciplina de Versionado
+
+Se prevé que el texto se versione de forma independiente de cualquier repositorio individual una vez redactado: incrementos PATCH por cada commit aceptado; MINOR por cada hito de funcionalidad enviado; MAJOR por cada cambio disruptivo, con v1.0.0 planificada como la primera versión declarada estable. Actualmente no existe ninguna versión.
+
+Se prevé que los incrementos MAJOR requieran un período de comentario público de 30 días. Se prevé que los incrementos MINOR produzcan un paquete firmado, versionado y citable públicamente. Se prevé que los commits a la eventual carta se firmen mediante firma basada en SSH y se anclen a un registro público de transparencia a través del Ancla de Integridad.
+
+Las declaraciones prospectivas en este documento usan lenguaje de "planificado," "previsto" o "puede" con una base declarada y un marco de cautela. El texto no describe capacidades futuras como hechos actuales.
+
 ## Véase también
 
-- [[compounding-substrate]] — las cinco propiedades estructurales del Sustrato Compuesto (Afirmación #18)
-- [[compounding-doorman]] — la disciplina de cómputo de límite único (Afirmación #43)
-- [[adapter-composition]] — el Álgebra de Composición de Adaptadores (Afirmación #22)
-- [[knowledge-commons]] — el modelo de Conocimiento Común / Comercio de Servicios (Afirmación #23)
-- [[system-substrate-doctrine]] — el Registro de Capacidades y el Sustrato Soberano de Dos Bases (Afirmaciones #33, #34)
+- [[compounding-substrate]] — las cinco propiedades estructurales del Sustrato Compuesto
+- [[compounding-doorman]] — la disciplina de cómputo de límite único
+- [[adapter-composition]] — el Álgebra de Composición de Adaptadores
+- [[knowledge-commons]] — el modelo de Conocimiento Común / Comercio de Servicios
+- [[system-substrate-doctrine]] — el Registro de Capacidades y el Sustrato Soberano de Dos Bases
+- [[disclosure-substrate]] — el Sustrato de Divulgación Continua aplicado a la capa de la wiki
 
 ## Referencias
 

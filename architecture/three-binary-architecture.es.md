@@ -45,7 +45,7 @@ de aplicaciones alojadas. Juntos forman un sistema completo para la gestión sob
                     │       HARDWARE / VM DEL CLIENTE      │
                     │                                      │
                     │         os-totebox                   │
-                    │   Almacén de Datos WORM Soberano     │
+                    │   Almacén de Datos WORM               │
                     │   servicios: service-* (Anillos 1+2) │
                     │   sin shell; sin proceso root        │
                     │   registro de solo adición WORM      │
@@ -68,7 +68,7 @@ de aplicaciones alojadas. Juntos forman un sistema completo para la gestión sob
 
 ---
 
-## os-totebox: Almacén de Datos WORM Soberano
+## os-totebox: Almacén de Datos WORM
 
 [[totebox-os]] es el despliegue del lado del cliente. Se ejecuta en hardware bajo el control
 físico del cliente — una máquina tipo NUC, una VM de GCP o un servidor privado. Su función

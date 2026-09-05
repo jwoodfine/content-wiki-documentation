@@ -123,7 +123,7 @@ The economic architecture follows from the Knowledge Commons model. Knowledge ar
 
 The contributor model that sustains this: 4–7 Core employees, 50–100 paid contributors under outcome-based contracts, and an intended 10,000+ open contributors building on the public substrate. The open tier sustains features and coverage that a small core could not maintain alone.
 
-## Sovereign Versioning Discipline
+## Versioning Discipline
 
 The text is intended to version independently of any single repository once written: PATCH increments per accepted commit; MINOR per shipped feature milestone; MAJOR per breaking change, with v1.0.0 planned as the first declared-stable version. No version currently exists.
 

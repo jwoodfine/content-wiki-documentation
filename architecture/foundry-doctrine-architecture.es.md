@@ -69,7 +69,7 @@ monetización es una decisión contractual, no una reconstrucción arquitectóni
 
 ## Las Ocho Invenciones Transectoriales
 
-Más allá de las afirmaciones estructurales, se prevé que la carta planificada se inspire en invenciones de proceso tomadas de industrias establecidas, entre ellas: Pasaporte del Espacio de Trabajo (marítimo), NOTAM (aviación), Procedimiento de Retirada (farmacéutico), Conocimiento de Embarque (transporte marítimo), Operación con Período de Consolidación (banca), Modo Aprendiz (aviación/medicina), Ancla de Integridad (notarización), y Convención Constitucional (IETF/enmienda constitucional, prevista para tramitarse a través del proceso de gobernanza ya existente de `factory-release-engineering` una vez que exista la carta).
+Más allá de las afirmaciones estructurales, se prevé que la carta planificada se inspire en invenciones de proceso tomadas de industrias establecidas — Pasaporte del Espacio de Trabajo, NOTAM, Procedimiento de Retirada, Conocimiento de Embarque, Operación con Período de Consolidación, Modo Aprendiz, Ancla de Integridad, y Convención Constitucional. Véase la sección "Patrones Operativos Interdominio" en [[foundry-doctrine-overview|el resumen planificado]] para la descripción completa de cada una.
 
 ## Estructura del espacio de trabajo
 
