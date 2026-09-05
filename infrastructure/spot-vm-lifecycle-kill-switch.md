@@ -25,33 +25,31 @@ immediate operator control.
 
 The Yo-Yo batch pipeline initially had two timers operating independently:
 
-- `local-yoyo-daily.timer` — ran the [[yoyo-daily-enrichment-cycle|daily enrichment cycle]], which started and stopped the VM
-- `local-corpus-threshold.timer` — checked the training corpus and started the VM if the threshold was exceeded
+- a **daily-cycle timer**, which ran the [[yoyo-daily-enrichment-cycle|daily enrichment cycle]] and both started and stopped the VM
+- a **corpus-threshold timer**, which checked the training corpus on its own schedule and started the VM if a threshold was exceeded
 
-Both timers called `gcloud instances start`. Only the daily cycle timer called `gcloud instances stop`.
-When `local-corpus-threshold.timer` fired, it could start the VM but had no path to stop it.
-If the daily cycle timer did not fire shortly afterward, the VM would remain running indefinitely.
+Both timers could start the VM. Only the daily-cycle timer stopped it. When the
+corpus-threshold timer fired on its own, it could start the VM but had no path to stop it.
+If the daily cycle did not fire shortly afterward, the VM would remain running indefinitely.
 
-At the Yo-Yo node's cost of approximately $0.71 per hour, an uncapped start event from
-the threshold timer would cost approximately $0.85 before the next daily cycle fired to
-stop it — assuming the cycle fired at all. If the cycle was skipped due to a holiday or
-a kill switch being active, the VM could run for 24 hours or more at a cost of
-approximately $17.
+An uncapped start event from the threshold timer meant real, unbudgeted cost accrual for
+every hour the VM ran beyond its intended window — and if the daily cycle was itself
+skipped (a holiday, or a kill switch left active), the VM could run for a full day or more
+before anything stopped it.
 
 ## The single-controller fix
 
-The fix is architectural: exactly one systemd unit owns the full VM lifecycle for each VM.
-All VM lifecycle operations — start, DataGraph extraction, corpus-threshold check, training,
-stop — are now performed within a single invocation of `nightly-run.sh`, triggered daily by
-`nightly-run.timer` (`OnCalendar=*-*-* 00:00:00 UTC`). A separate weekly `training-trigger.timer`
-still exists as an installable unit file in the repo, but its own Sunday-only cadence is
-superseded by `nightly-run.sh`'s Phase 2, which already runs training every night — it reads
-as leftover documentation for the scheme this single-controller design replaced, not a second
-live start path.
+The fix is architectural: exactly one scheduled unit owns the full VM lifecycle for each
+VM. All VM lifecycle operations — start, data extraction, corpus-threshold check,
+training, stop — are now performed within a single invocation of one orchestrator script,
+triggered once daily. A separate weekly trigger for the training step still exists as an
+installable unit in the repository, but its own cadence is superseded by the orchestrator's
+own training phase, which already runs every night — it reads as leftover documentation for
+the scheme this single-controller design replaced, not a second live start path.
 
-`nightly-run.sh` runs two mandatory phases every night: a DataGraph extraction phase, then a
-training phase running QLoRA against the corpus-threshold check. Both run while the VM is
-already up, adding no additional start cost beyond the one nightly boot.
+The daily orchestrator runs two mandatory phases every night: a data-extraction phase, then
+a training phase run against the corpus-threshold check. Both run while the VM is already
+up, adding no additional start cost beyond the one nightly boot.
 
 The rule generalises: for any spot VM that performs multiple automated tasks, consolidate
 all tasks into a single orchestrator script invoked by a single timer. Do not give
@@ -67,10 +65,11 @@ presence of /path/to/flag-file  →  suppress the operation
 absence of /path/to/flag-file   →  normal operation
 ```
 
-For the Yo-Yo batch node, the kill switch file is `/srv/foundry/data/yoyo-disabled`.
+For the Yo-Yo batch node, the kill switch is a single sentinel file at a fixed,
+reboot-durable path.
 
 The daily cycle script checks for this file as its first action (Phase 0), before issuing
-any `gcloud` commands:
+any VM-lifecycle commands:
 
 ```bash
 if [[ -e "$KILL_SWITCH" ]]; then
@@ -82,13 +81,13 @@ fi
 Creating the file is a one-command action that takes effect on the next timer firing:
 
 ```bash
-touch /srv/foundry/data/yoyo-disabled
+touch "$KILL_SWITCH"
 ```
 
 Removing the file resumes normal operation:
 
 ```bash
-rm /srv/foundry/data/yoyo-disabled
+rm "$KILL_SWITCH"
 ```
 
 The pattern is appropriate for any automated process where:
@@ -112,8 +111,8 @@ auto-delete is disabled on it — the VM is re-created, not resumed, on the next
 
 The idle monitor is a backstop, not the primary controller. Its role is to bound the cost
 exposure if the nightly run fails to complete its stop sequence — for example, if the
-workspace VM loses connectivity mid-run, or if the run is interrupted by a process signal
-before the stop step executes.
+controlling host loses connectivity mid-run, or if the run is interrupted by a process
+signal before the stop step executes.
 
 The combination of single-controller daily cycle, sentinel file kill switch, and idle
 monitor provides three independent layers:
@@ -123,11 +122,11 @@ monitor provides three independent layers:
 3. The kill switch prevents the VM from starting if the operator needs to pause all
    activity (operator override at Phase 0)
 
-## The corpus-threshold.py guard
+## The threshold-check guard
 
-`corpus-threshold.py` contains a `_start_trainer_vm()` function that was originally called
-by the corpus threshold timer. After the timer was masked, this function was modified to
-check the kill switch file before issuing any `gcloud instances start` command. This is a
+The corpus-threshold script contains a start-trainer function that was originally called
+directly by the corpus-threshold timer. After that timer was masked, this function was
+modified to check the kill switch file before issuing any VM-start command. This is a
 defense-in-depth measure: if the function is ever called from a code path that bypasses
 the daily cycle, the kill switch still takes effect.
 
@@ -145,12 +144,11 @@ Any script that has the authority to start a spot VM should implement this check
 
 To apply single-controller + kill switch to any spot VM pipeline:
 
-1. Identify all timers and scripts that call `gcloud instances start` for the VM.
+1. Identify all timers and scripts that hold authority to start the VM.
 2. Consolidate all work into a single orchestrator script. The script starts the VM,
    performs all tasks in sequence, and stops the VM as its final step.
 3. Disable all other start paths (mask the timers; modify any scripts that had start
    authority to check the kill switch file instead).
-4. Create the kill switch file path in a directory that survives reboots
-   (e.g. `/srv/foundry/data/` or `/var/lib/`).
+4. Create the kill switch file path in a directory that survives reboots.
 5. Add the kill switch check as the first statement in the orchestrator script.
 6. Add an idle monitor as a cost backstop, targeting the specific VM name and zone.

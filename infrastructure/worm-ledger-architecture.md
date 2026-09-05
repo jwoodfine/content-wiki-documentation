@@ -49,7 +49,7 @@ This article describes the four-layer architecture, the two operational envelope
 
 ## The four-layer stack
 
-The architecture is intentionally layered so each layer is independently swappable. The middle layer (L2) is the durable Rust trait contract that survives changes above and below it. The substrate-level four-layer pattern is governed by the workspace WORM ledger design convention (ratified workspace v0.1.7, commit `6c0b79a`); this article describes how `service-fs` specifically applies it.
+The architecture is intentionally layered so each layer is independently swappable. The middle layer (L2) is the durable Rust trait contract that survives changes above and below it. The substrate-level four-layer pattern is governed by an internal, ratified WORM ledger design convention; this article describes how `service-fs` specifically applies it.
 
 ### L1 — Storage primitive (envelope-specific)
 
@@ -80,7 +80,7 @@ The intended long-term evolution adds a fuller MCP-server interface: MCP resourc
 
 Doctrine Invention #7 specifies Sigstore Rekor v2 anchoring of per-tenant checkpoints. A monthly cron bundles each tenant's latest signed checkpoint, submits to the Rekor v2 GA endpoint (year-sharded; URL rotates annually), and writes the returned tlog entry back into the originating tenant's ledger as an `anchor-rekor-<unix-ts>` payload. The anchor flow is independent of request-time work — the daemon is stateless about anchoring; it produces signed checkpoints that the workspace anchoring run consumes.
 
-The implementation (`service-fs/anchor-emitter/`) is a standalone Rust binary (own `[workspace]` to avoid openssl-sys conflicts in the parent monorepo). It uses `reqwest` blocking with rustls-tls (no tokio in this binary), generates an ephemeral Ed25519 keypair per anchor, and exits with structured codes (0 success / 1 config / 2 fetch / 3 Rekor / 4 append). The systemd unit (`local-fs-anchor.{service,timer}`) is configured with `OnCalendar=*-*-01 02:30:00`, `Persistent=true`, `RandomizedDelaySec=900`.
+The implementation (`service-fs/anchor-emitter/`) is a standalone Rust binary (own `[workspace]` to avoid openssl-sys conflicts in the parent monorepo). It uses `reqwest` blocking with rustls-tls (no tokio in this binary), generates an ephemeral Ed25519 keypair per anchor, and exits with structured codes (0 success / 1 config / 2 fetch / 3 Rekor / 4 append). It runs as a scheduled unit fired once monthly, with a randomized delay window to avoid a synchronized thundering-herd of anchor submissions across tenants.
 
 The monthly anchoring cadence runs today, confirmed live against the deployed timer.
 
@@ -90,8 +90,7 @@ The monthly anchoring cadence runs today, confirmed live against the deployed ti
 
 ### Envelope A — Linux/BSD daemon under systemd (current)
 
-Tokio async runtime, axum 0.7 HTTP server, std Rust. POSIX storage in `FS_LEDGER_ROOT/<moduleId>/`. Per-tenant boundary via separate process address spaces, filesystem permissions, and the wire-layer header check. Deploys as a systemd unit (`infrastructure/local-fs/local-fs.service` — real path verified
-as `infrastructure/systemd/mediakit/local-fs.service`, see the correction above). Runs on any Linux or BSD kernel — the Foundry workspace VM, customer on-premises hardware, cloud compute, or inside a Linux/BSD guest VM hosted by seL4 on hardware where seL4 cannot boot natively.
+Tokio async runtime, axum 0.7 HTTP server, std Rust. POSIX storage in `FS_LEDGER_ROOT/<moduleId>/`. Per-tenant boundary via separate process address spaces, filesystem permissions, and the wire-layer header check. Deploys as a systemd unit. Runs on any Linux or BSD kernel — the platform's own internal engineering host, customer on-premises hardware, cloud compute, or inside a Linux/BSD guest VM hosted by seL4 on hardware where seL4 cannot boot natively.
 
 ### Envelope B — seL4 Microkit Protection Domain unikernel (intended)
 

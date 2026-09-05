@@ -70,7 +70,7 @@ Traducir una intención y autorizarla son dos llamadas separadas — un comando 
 
 ### os-infrastructure — ancla de borde
 
-El nodo bare-metal `os-infrastructure` es un par de la malla, no un controlador. Escucha los comandos binarios firmados dirigidos a él y los ejecuta; no inicia comandos. La tarjeta de red Broadcom 14e4:16b4 del nodo transporta el tráfico de la malla a través de la interfaz `wg0` una vez que concluye la secuencia de ingreso del Genesis Protocol.
+El nodo bare-metal `os-infrastructure` es un par de la malla, no un controlador. Escucha los comandos binarios firmados dirigidos a él y los ejecuta; no inicia comandos. La tarjeta de red integrada del nodo transporta el tráfico de la malla a través de la interfaz `wg0` una vez que concluye la secuencia de ingreso del Genesis Protocol.
 
 ### app-network-admin — plano de control
 

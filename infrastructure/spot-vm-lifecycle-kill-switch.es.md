@@ -28,37 +28,36 @@ centinela que proporciona control inmediato al operador.
 El pipeline de lotes Yo-Yo tenía inicialmente dos temporizadores funcionando de forma
 independiente:
 
-- `local-yoyo-daily.timer` — ejecutaba el [[yoyo-daily-enrichment-cycle|ciclo de enriquecimiento diario]], que arrancaba y detenía la VM
-- `local-corpus-threshold.timer` — comprobaba el corpus de entrenamiento y arrancaba la VM si se superaba el umbral
+- un **temporizador de ciclo diario**, que ejecutaba el [[yoyo-daily-enrichment-cycle|ciclo de enriquecimiento diario]] y tanto arrancaba como detenía la VM
+- un **temporizador de umbral de corpus**, que comprobaba el corpus de entrenamiento en su propio calendario y arrancaba la VM si se superaba un umbral
 
-Ambos temporizadores llamaban a `gcloud instances start`. Solo el temporizador del ciclo
-diario llamaba a `gcloud instances stop`. Cuando se disparaba `local-corpus-threshold.timer`,
-podía arrancar la VM pero no tenía ruta para detenerla. Si el temporizador del ciclo diario
-no se disparaba poco después, la VM permanecería en ejecución indefinidamente.
+Ambos temporizadores podían arrancar la VM. Solo el temporizador de ciclo diario la
+detenía. Cuando el temporizador de umbral de corpus se disparaba por sí solo, podía
+arrancar la VM pero no tenía ruta para detenerla. Si el ciclo diario no se disparaba
+poco después, la VM permanecería en ejecución indefinidamente.
 
-Al costo del nodo Yo-Yo de aproximadamente $0.71 por hora, un evento de arranque sin
-control del temporizador de umbral costaría aproximadamente $0.85 antes de que el
-siguiente ciclo diario se disparara para detenerlo — asumiendo que el ciclo se disparara.
-Si el ciclo se omitía por un día festivo o por tener el interruptor de emergencia activo,
-la VM podría ejecutarse durante 24 horas o más con un costo de aproximadamente $17.
+Un evento de arranque sin control del temporizador de umbral suponía una acumulación real
+y no presupuestada de costo por cada hora que la VM se ejecutara más allá de su ventana
+prevista — y si el propio ciclo diario se omitía (un día festivo, o un interruptor de
+emergencia dejado activo), la VM podía ejecutarse durante un día completo o más antes de
+que algo la detuviera.
 
 ## La solución de controlador único
 
-La solución es arquitectónica: exactamente una unidad systemd controla el ciclo de vida
+La solución es arquitectónica: exactamente una unidad programada controla el ciclo de vida
 completo de cada VM. Todas las operaciones del ciclo de vida de la VM — arrancar,
-extracción al DataGraph, comprobación de umbral del corpus, entrenamiento, detener — se
-realizan ahora dentro de una única invocación de `nightly-run.sh`, disparada diariamente
-por `nightly-run.timer` (`OnCalendar=*-*-* 00:00:00 UTC`). Un `training-trigger.timer`
-semanal independiente todavía existe como archivo de unidad instalable en el repositorio,
-pero su propia cadencia de solo los domingos queda sustituida por la Fase 2 de
-`nightly-run.sh`, que ya ejecuta el entrenamiento cada noche — se lee como documentación
-remanente del esquema que este diseño de controlador único reemplazó, no como una segunda
-vía de arranque en producción.
+extracción de datos, comprobación de umbral del corpus, entrenamiento, detener — se
+realizan ahora dentro de una única invocación de un script orquestador, disparado una vez
+al día. Un disparador semanal independiente para el paso de entrenamiento todavía existe
+como unidad instalable en el repositorio, pero su propia cadencia queda sustituida por la
+propia fase de entrenamiento del orquestador, que ya se ejecuta cada noche — se lee como
+documentación remanente del esquema que este diseño de controlador único reemplazó, no
+como una segunda vía de arranque en producción.
 
-`nightly-run.sh` ejecuta dos fases obligatorias cada noche: una fase de extracción al
-DataGraph y luego una fase de entrenamiento que ejecuta QLoRA contra la comprobación de
-umbral del corpus. Ambas se ejecutan mientras la VM ya está en marcha, sin ningún costo
-adicional de arranque más allá del único arranque nocturno.
+El orquestador diario ejecuta dos fases obligatorias cada noche: una fase de extracción de
+datos y luego una fase de entrenamiento ejecutada contra la comprobación de umbral del
+corpus. Ambas se ejecutan mientras la VM ya está en marcha, sin ningún costo adicional de
+arranque más allá del único arranque nocturno.
 
 La regla se generaliza: para cualquier VM spot que realice múltiples tareas automatizadas,
 consolidar todas las tareas en un único script orquestador invocado por un único temporizador.
@@ -74,11 +73,11 @@ presencia de /ruta/al/archivo-bandera  →  suprimir la operación
 ausencia de /ruta/al/archivo-bandera   →  operación normal
 ```
 
-Para el nodo de lotes Yo-Yo, el archivo del interruptor de emergencia es
-`/srv/foundry/data/yoyo-disabled`.
+Para el nodo de lotes Yo-Yo, el interruptor de emergencia es un único archivo centinela
+en una ruta fija que sobrevive a los reinicios.
 
 El script del ciclo diario comprueba este archivo como su primera acción (Fase 0),
-antes de emitir cualquier comando `gcloud`:
+antes de emitir cualquier comando del ciclo de vida de la VM:
 
 ```bash
 if [[ -e "$KILL_SWITCH" ]]; then
@@ -91,13 +90,13 @@ Crear el archivo es una acción de un solo comando que tiene efecto en el siguie
 del temporizador:
 
 ```bash
-touch /srv/foundry/data/yoyo-disabled
+touch "$KILL_SWITCH"
 ```
 
 Eliminar el archivo reanuda el funcionamiento normal:
 
 ```bash
-rm /srv/foundry/data/yoyo-disabled
+rm "$KILL_SWITCH"
 ```
 
 El patrón es apropiado para cualquier proceso automatizado donde:
@@ -126,8 +125,8 @@ siguiente ejecución nocturna).
 
 El monitor de inactividad es una medida de seguridad, no el controlador principal. Su
 función es limitar la exposición al costo si el ciclo diario no completa su secuencia
-de parada — por ejemplo, si la VM de trabajo pierde conectividad durante la Fase 8, o
-si el ciclo es interrumpido por una señal de proceso antes de que se emita el comando
+de parada — por ejemplo, si el host de control pierde conectividad durante la ejecución,
+o si el ciclo es interrumpido por una señal de proceso antes de que se emita el comando
 de parada.
 
 La combinación de ciclo diario de controlador único, interruptor de emergencia con
@@ -138,14 +137,14 @@ archivo centinela y monitor de inactividad proporciona tres capas independientes
 3. El interruptor de emergencia evita que la VM arranque si el operador necesita pausar
    toda la actividad (anulación del operador en la Fase 0)
 
-## El guardia en corpus-threshold.py
+## El guardia de comprobación de umbral
 
-`corpus-threshold.py` contiene una función `_start_trainer_vm()` que originalmente era
-llamada por el temporizador de umbral del corpus. Tras enmascarar el temporizador, esta
-función fue modificada para comprobar el archivo del interruptor de emergencia antes
-de emitir cualquier comando `gcloud instances start`. Esta es una medida de defensa en
-profundidad: si la función alguna vez es llamada desde una ruta de código que omite el
-ciclo diario, el interruptor de emergencia sigue teniendo efecto.
+El script de umbral de corpus contiene una función de arranque de entrenador que
+originalmente era llamada directamente por el temporizador de umbral del corpus. Tras
+enmascarar ese temporizador, esta función fue modificada para comprobar el archivo del
+interruptor de emergencia antes de emitir cualquier comando de arranque de VM. Esta es
+una medida de defensa en profundidad: si la función alguna vez es llamada desde una ruta
+de código que omite el ciclo diario, el interruptor de emergencia sigue teniendo efecto.
 
 El patrón del guardia:
 
@@ -162,15 +161,14 @@ comprobación.
 
 Para aplicar controlador único + interruptor de emergencia a cualquier pipeline de VM spot:
 
-1. Identificar todos los temporizadores y scripts que llaman a `gcloud instances start`
-   para la VM.
+1. Identificar todos los temporizadores y scripts que tienen autoridad para arrancar la VM.
 2. Consolidar todo el trabajo en un único script orquestador. El script arranca la VM,
    realiza todas las tareas en secuencia y detiene la VM como paso final.
 3. Deshabilitar todas las demás rutas de arranque (enmascarar los temporizadores;
    modificar cualquier script que tuviera autoridad de arranque para que compruebe
    el archivo del interruptor de emergencia en su lugar).
 4. Crear la ruta del archivo del interruptor de emergencia en un directorio que
-   sobreviva a los reinicios (p. ej. `/srv/foundry/data/` o `/var/lib/`).
+   sobreviva a los reinicios.
 5. Añadir la comprobación del interruptor de emergencia como primera instrucción del
    script orquestador.
 6. Añadir un monitor de inactividad como medida de seguridad de costo, apuntando al

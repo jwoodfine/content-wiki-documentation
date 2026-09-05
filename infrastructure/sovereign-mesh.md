@@ -69,7 +69,7 @@ Translating an intent and authorising it are two separate calls — a command is
 
 ### os-infrastructure — edge anchor
 
-The bare-metal `os-infrastructure` node is a mesh peer, not a mesh controller. It listens for signed binary commands addressed to it and executes them; it does not initiate commands. The node's Broadcom 14e4:16b4 NIC carries mesh traffic via the `wg0` interface once the Genesis Protocol join sequence completes.
+The bare-metal `os-infrastructure` node is a mesh peer, not a mesh controller. It listens for signed binary commands addressed to it and executes them; it does not initiate commands. The node's onboard NIC carries mesh traffic via the `wg0` interface once the Genesis Protocol join sequence completes.
 
 ### app-network-admin — control plane
 

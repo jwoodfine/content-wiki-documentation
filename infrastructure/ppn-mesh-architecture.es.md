@@ -24,7 +24,7 @@ references:
     url: "https://www.ndss-symposium.org/ndss2017/ndss-2017-programme/wireguard-next-generation-kernel-network-tunnel/"
 ---
 
-La Red Privada de PointSav (PPN, por sus siglas en inglés) es la malla WireGuard cifrada que conecta los nodos de flota de Woodfine. Es una capa de infraestructura de red: proporciona tránsito cifrado entre máquinas virtuales, mantiene una topología de nodos estable y aloja los servicios `os-*` que ejecutan los Totebox Archives y las pasarelas de orquestación.
+La Red Privada de PointSav (PPN, por sus siglas en inglés) es la malla WireGuard cifrada que conecta los nodos de flota de MCorp. Es una capa de infraestructura de red: proporciona tránsito cifrado entre máquinas virtuales, mantiene una topología de nodos estable y aloja los servicios `os-*` que ejecutan los Totebox Archives y las pasarelas de orquestación.
 
 La PPN no es un sistema de autorización. La pertenencia a la red no otorga acceso a las aplicaciones. Una máquina en la PPN puede alcanzar otros nodos de la malla; no puede leer el contenido de ningún archivo sin un emparejamiento separado de [[machine-based-auth|Autorización Basada en Hardware]] establecido a nivel de la capa de aplicación. Los dos mecanismos abordan problemas diferentes y se describen por separado. Este artículo cubre la PPN.
 

@@ -49,7 +49,7 @@ Este artículo describe la arquitectura de cuatro capas, los dos sobres operativ
 
 ## La pila de cuatro capas
 
-La arquitectura está diseñada en capas de forma intencionada para que cada capa sea intercambiable de forma independiente. La capa intermedia (L2) es el contrato durable del trait de Rust que sobrevive a los cambios por encima y por debajo de ella. El patrón de cuatro capas a nivel de sustrato está regido por la convención de diseño del ledger WORM del workspace (ratificada en workspace v0.1.7, commit `6c0b79a`); este artículo describe cómo `service-fs` lo aplica específicamente.
+La arquitectura está diseñada en capas de forma intencionada para que cada capa sea intercambiable de forma independiente. La capa intermedia (L2) es el contrato durable del trait de Rust que sobrevive a los cambios por encima y por debajo de ella. El patrón de cuatro capas a nivel de sustrato está regido por una convención interna, ratificada, de diseño de ledger WORM; este artículo describe cómo `service-fs` lo aplica específicamente.
 
 ### L1 — Primitiva de almacenamiento (específica del sobre)
 
@@ -80,7 +80,7 @@ La evolución prevista a largo plazo añade una interfaz MCP-server más complet
 
 La Invención de Doctrina #7 especifica el anclaje a Sigstore Rekor v2 de los checkpoints por tenant. Un cron mensual agrupa el checkpoint firmado más reciente de cada tenant, lo envía al endpoint GA de Rekor v2 (fragmentado por año; la URL rota anualmente) y escribe la entrada tlog devuelta de vuelta en el ledger del tenant de origen como payload `anchor-rekor-<unix-ts>`. El flujo de anclaje es independiente del trabajo en tiempo de solicitud — el daemon no tiene estado respecto al anclaje; produce checkpoints firmados que consume la ejecución de anclaje del workspace.
 
-La implementación (`service-fs/anchor-emitter/`) es un binario Rust autónomo (su propio `[workspace]` para evitar conflictos de openssl-sys en el monorepo principal). Usa `reqwest` bloqueante con rustls-tls (sin tokio en este binario), genera un par de claves Ed25519 efímero por anclaje y finaliza con códigos estructurados (0 éxito / 1 configuración / 2 obtención / 3 Rekor / 4 adición). La unidad systemd (`local-fs-anchor.{service,timer}`) está configurada con `OnCalendar=*-*-01 02:30:00`, `Persistent=true`, `RandomizedDelaySec=900`.
+La implementación (`service-fs/anchor-emitter/`) es un binario Rust autónomo (su propio `[workspace]` para evitar conflictos de openssl-sys en el monorepo principal). Usa `reqwest` bloqueante con rustls-tls (sin tokio en este binario), genera un par de claves Ed25519 efímero por anclaje y finaliza con códigos estructurados (0 éxito / 1 configuración / 2 obtención / 3 Rekor / 4 adición). Se ejecuta como una unidad programada que se dispara una vez al mes, con una ventana de retraso aleatorio para evitar una avalancha sincronizada de envíos de anclaje entre tenants.
 
 La cadencia de anclaje mensual funciona hoy, confirmada en vivo contra el temporizador desplegado.
 
@@ -90,9 +90,7 @@ La cadencia de anclaje mensual funciona hoy, confirmada en vivo contra el tempor
 
 ### Sobre A — daemon Linux/BSD bajo systemd (actual)
 
-Runtime asíncrono Tokio, servidor HTTP axum 0.7, Rust std. Almacenamiento POSIX en `FS_LEDGER_ROOT/<moduleId>/`. Frontera por tenant mediante espacios de direcciones de proceso separados, permisos de sistema de archivos y la comprobación de encabezado en la capa de cable. Se despliega como unidad systemd (`infrastructure/local-fs/local-fs.service` — ruta real
-verificada como `infrastructure/systemd/mediakit/local-fs.service`, véase la corrección
-anterior). Funciona en cualquier kernel Linux o BSD — la VM del workspace de Foundry, hardware local del cliente, cómputo en la nube, o dentro de una VM Linux/BSD alojada por seL4 en hardware donde seL4 no puede arrancar de forma nativa.
+Runtime asíncrono Tokio, servidor HTTP axum 0.7, Rust std. Almacenamiento POSIX en `FS_LEDGER_ROOT/<moduleId>/`. Frontera por tenant mediante espacios de direcciones de proceso separados, permisos de sistema de archivos y la comprobación de encabezado en la capa de cable. Se despliega como unidad systemd. Funciona en cualquier kernel Linux o BSD — el propio host de ingeniería interno de la plataforma, hardware local del cliente, cómputo en la nube, o dentro de una VM Linux/BSD alojada por seL4 en hardware donde seL4 no puede arrancar de forma nativa.
 
 ### Sobre B — unikernel seL4 Microkit Protection Domain (previsto)
 
