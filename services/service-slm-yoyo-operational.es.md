@@ -9,14 +9,25 @@ quality: complete
 index_group: ring-3-ai-gateway
 short_description: "Cómo operan el enrutador de inferencia de tres niveles de service-slm y la VM de ráfaga GPU Yo-Yo: el límite del Doorman, los niveles local y de ráfaga, la cola de aprendizaje, y el techo de costo por apagado en inactividad."
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-24
+last_edited: 2026-09-05
 editor: pointsav-engineering
 cites:
  - ni-51-102
  - np-51-201
  - olmo3-allenai
+references:
+  - id: 1
+    text: "Familia de modelos OLMo 3 de AllenAI. Apache 2.0 (pesos del modelo); Open Data Commons (datos de entrenamiento)."
+    url: "https://huggingface.co/allenai"
+  - id: 2
+    text: "NI 51-102 Obligaciones de Divulgación Continua. British Columbia Securities Commission."
+    url: "https://www.bcsc.bc.ca/securities-law/law-and-policy/instruments-and-policies/5-ongoing-requirements-for-issuers-insiders/current/51-102"
+  - id: 3
+    text: "CSA National Policy 51-201 Divulgación de Información Prospectiva. Ontario Securities Commission."
+    url: "https://www.osc.ca/en/securities-law/instruments-rules-policies/5/51-721/osc-staff-notice-51-721-forward-looking-information-disclosure"
 paired_with: service-slm-yoyo-operational.md
 ---
 
@@ -48,7 +59,7 @@ drenar la cola de aprendizaje descrita más abajo.
 
 El nivel local ejecuta `llama-server` (el servidor HTTP en C++ de llama.cpp) en la propia CPU
 de la VM de espacio de trabajo. El modelo cargado es una compilación cuantizada de OLMo 3 7B
-**Instruct** — la variante de instrucción, no la variante de razonamiento "Think". El
+**Instruct**[^1] — la variante de instrucción, no la variante de razonamiento "Think". El
 rendimiento en una VM solo-CPU es del orden de unos pocos tokens por
 segundo — suficiente para briefs cortos y completaciones triviales, no para trabajo editorial
 rutinario a escala. Este techo de latencia es lo que motivó el nivel de ráfaga a continuación.
@@ -69,7 +80,8 @@ Doorman reporta el circuito del nivel Yo-Yo abierto en las tres etiquetas config
 debido a fallos sostenidos en la sonda de salud — este nivel no ha estado sirviendo
 solicitudes durante un período extendido. Las solicitudes que se enrutarían aquí actualmente
 retroceden o se encolan en lugar de completarse en este nivel; este es un hecho operativo en
-vivo, no una descripción de diseño.
+vivo, divulgado aquí sobre la misma base de divulgación continua que cualquier otra
+afirmación de estado actual en esta wiki, no una descripción de diseño.[^2][^3]
 
 ### Aprovisionamiento
 
@@ -120,10 +132,3 @@ multiplicador para el trabajo rutinario; el modelo de frontera se reserva para l
 - [[apprenticeship-substrate]] — cómo se acumula la señal de entrenamiento a partir de tuplas de corpus operativas
 - [[brief-queue-substrate]] — la cola durable que conecta la cola de briefs con el procesamiento por niveles
 - [[worm-ledger-architecture]] — el libro de auditoría que registra cada llamada externa
-
-## Referencias
-
-1. Capa de Inteligencia Opcional — el Ring 3 es estructuralmente opcional; los Rings 1 y 2 funcionan sin él.
-2. Familia de modelos OLMo 3 de AllenAI. Apache 2.0 (pesos del modelo); Open Data Commons (datos de entrenamiento). [olmo3-allenai] https://huggingface.co/allenai
-3. NI 51-102 Obligaciones de Divulgación Continua. British Columbia Securities Commission. [ni-51-102] https://www.bcsc.bc.ca/securities-law/law-and-policy/instruments-and-policies/5-ongoing-requirements-for-issuers-insiders/current/51-102
-4. CSA National Policy 51-201 Divulgación de Información Prospectiva. Ontario Securities Commission. [np-51-201] https://www.osc.ca/en/securities-law/instruments-rules-policies/5/51-721/osc-staff-notice-51-721-forward-looking-information-disclosure

@@ -9,8 +9,10 @@ content_type: topic
 quality: complete
 index_group: specialist-and-domain-services
 status: active
+audience: vendor-public
 bcsc_class: forward-looking
-last_edited: 2026-08-22
+language_protocol: PROSE-TOPIC
+last_edited: 2026-09-05
 editor: pointsav-engineering
 paired_with: service-wallet-settlement.es.md
 references:
@@ -46,10 +48,6 @@ never a custodial wallet — a distinction that matters both structurally and le
   tenant's balance would be an accounting figure representing an amount owed, not a pool of
   funds under platform control.
 
-If built as designed, this would keep the platform structurally outside regulated
-money-transmitter and custodial-wallet territory. This is a description of intended design,
-not legal advice; a tenant's own payment activities are their own counsel's to assess.
-
 ## What the design proposes
 
 A signed record per credit, debit, or fee entry, tracking amount, currency, chain (if
@@ -62,9 +60,15 @@ other platform records, and the full ledger history would be exportable by the t
 time in the same format it was written in — unconditional portability, matching the
 platform's customer-owned-data commitments elsewhere.[^3]
 
-Specific fee percentages, chain choices, and gas-abstraction mechanics named in earlier
-drafts of this design are implementation detail that has not been decided, let alone built —
-not repeated here as though they were settled.
+## What this is not
+
+No implementation exists yet — everything above is design, not a shipped service. If built
+as designed, this would keep the platform structurally outside regulated money-transmitter
+and custodial-wallet territory; that is a description of intended design, not legal advice,
+and a tenant's own payment activities remain their own counsel's to assess. Specific fee
+percentages, chain choices, and gas-abstraction mechanics named in earlier drafts of this
+design are implementation detail that has not been decided, let alone built — not repeated
+here as though they were settled.
 
 ## See also
 

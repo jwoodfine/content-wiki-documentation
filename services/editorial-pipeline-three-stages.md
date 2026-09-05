@@ -9,9 +9,12 @@ category: services
 index_group: specialist-and-domain-services
 type: topic
 content_type: topic
+quality: complete
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+language_protocol: PROSE-TOPIC
+last_edited: 2026-09-05
 editor: pointsav-engineering
 paired_with: editorial-pipeline-three-stages.es.md
 ---

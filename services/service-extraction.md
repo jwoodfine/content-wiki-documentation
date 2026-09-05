@@ -9,8 +9,10 @@ quality: complete
 index_group: ring-2-knowledge-and-processing
 short_description: "service-extraction watches a directory for incoming JSON payloads carrying edge-classified entities, writes a per-payload ledger record for the target service, and can bridge the same text into the DataGraph ingestion pipeline."
 status: active
+audience: public
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-24
+language_protocol: PROSE-TOPIC
+last_edited: 2026-09-05
 editor: pointsav-engineering
 cites: []
 paired_with: service-extraction.es.md

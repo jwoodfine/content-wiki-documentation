@@ -9,8 +9,10 @@ quality: stub
 index_group: specialist-and-domain-services
 short_description: "A deliberately thin engine that dynamically loads a customer's private adapter script and hands it execution control — keeping every operational detail of a client's web-automation logic out of the open-source codebase entirely."
 status: active
+audience: public
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+language_protocol: PROSE-TOPIC
+last_edited: 2026-09-05
 editor: pointsav-engineering
 cites: []
 paired_with: message-courier.es.md

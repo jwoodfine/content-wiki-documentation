@@ -24,13 +24,9 @@ Operators at MCorp do not draft routine corporate emails from scratch. Each temp
 
 ## Operator workflow
 
-1. The operator opens their `Template Ledger` folder in Microsoft 365.
-2. The root folder contains a single email (`[TMPL-000]`) with an attached offline `.html` catalog.
-3. The operator opens the catalog, filters by category (for example, *Compliance* or *Finance*), and copies the key for the desired template.
-4. The operator pastes the key (for example, `[TMPL-042]`) into the M365 search bar. The current version of that template appears immediately.
-5. The operator clicks **Forward**, updates the recipient, removes the routing metadata block at the top of the email body, and sends.
+Retrieval is key-based, not folder-browsing: a `Template Ledger` folder in Microsoft 365 holds an offline `.html` catalog the operator filters by category (*Compliance*, *Finance*) to find a template's key, then pastes that key into the M365 search bar to surface the current version instantly. Forwarding it — after removing the routing metadata block at the top of the email body and updating the recipient — is the only manual step; the key is the only input the operator supplies, and the template content itself is always sourced from the ledger, never typed or pasted from memory.
 
-The key is the only input the operator supplies. The template content is sourced from the ledger, not typed or pasted.
+The exact click-by-click retrieval procedure is operator runbook material, not covered step by step here — this article describes why the mechanism is structured this way, not how to execute it.
 
 ## Silent synchronization via Microsoft Graph
 

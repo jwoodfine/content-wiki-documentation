@@ -9,13 +9,25 @@ quality: complete
 index_group: ring-3-ai-gateway
 short_description: "How service-slm's three-tier inference router and the Yo-Yo GPU burst VM operate: the Doorman boundary, the local and burst tiers, the apprenticeship queue, and the idle-shutdown cost ceiling."
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-24
+language_protocol: PROSE-TOPIC
+last_edited: 2026-09-05
 editor: pointsav-engineering
 cites:
  - ni-51-102
  - np-51-201
  - olmo3-allenai
+references:
+  - id: 1
+    text: "AllenAI OLMo 3 model family. Apache 2.0 (model weights); Open Data Commons (training data)."
+    url: "https://huggingface.co/allenai"
+  - id: 2
+    text: "NI 51-102 Continuous Disclosure Obligations. British Columbia Securities Commission."
+    url: "https://www.bcsc.bc.ca/securities-law/law-and-policy/instruments-and-policies/5-ongoing-requirements-for-issuers-insiders/current/51-102"
+  - id: 3
+    text: "CSA National Policy 51-201 Forward-Looking Information Disclosure. Ontario Securities Commission."
+    url: "https://www.osc.ca/en/securities-law/instruments-rules-policies/5/51-721/osc-staff-notice-51-721-forward-looking-information-disclosure"
 paired_with: service-slm-yoyo-operational.es.md
 ---
 
@@ -44,7 +56,7 @@ audit ledger, and draining the apprenticeship brief queue described below.
 ## Local tier — always available
 
 The local tier runs `llama-server` (the C++ HTTP server from llama.cpp) on the workspace VM's
-own CPU. The model loaded is a quantized OLMo 3 7B **Instruct** build — the instruction-tuned
+own CPU. The model loaded is a quantized OLMo 3 7B **Instruct** build[^1] — the instruction-tuned
 variant, not the "Think" reasoning variant. Throughput on a CPU-only workspace VM is on the
 order of a few tokens per second — sufficient for short briefs and trivial completions, not for
 routine editorial work at scale. This latency ceiling is what motivated the burst tier below.
@@ -63,7 +75,8 @@ bearer token the Doorman holds.
 tier's circuit open on all three of its configured labels, due to sustained health-probe
 failures — this tier has not been serving requests for an extended period. Requests that
 would route here currently fall back or queue rather than complete on this tier; this is a
-live operational fact, not a design description.
+live operational fact, disclosed here on the same continuous-disclosure basis as any other
+current-state claim on this wiki, not a design description.[^2][^3]
 
 ### Provisioning
 
@@ -108,10 +121,3 @@ multiplier for routine work; the frontier model is reserved for judgment calls.
 - [[apprenticeship-substrate]] — how training signal accumulates from operational corpus tuples
 - [[brief-queue-substrate]] — the durable queue connecting the brief queue to tier processing
 - [[worm-ledger-architecture]] — the audit ledger that records every external call
-
-## References
-
-1. Optional Intelligence Layer — Ring 3 is structurally optional; Rings 1 and 2 function without it.
-2. AllenAI OLMo 3 model family. Apache 2.0 (model weights); Open Data Commons (training data). [olmo3-allenai] https://huggingface.co/allenai
-3. NI 51-102 Continuous Disclosure Obligations. British Columbia Securities Commission. [ni-51-102] https://www.bcsc.bc.ca/securities-law/law-and-policy/instruments-and-policies/5-ongoing-requirements-for-issuers-insiders/current/51-102
-4. CSA National Policy 51-201 Forward-Looking Information Disclosure. Ontario Securities Commission. [np-51-201] https://www.osc.ca/en/securities-law/instruments-rules-policies/5/51-721/osc-staff-notice-51-721-forward-looking-information-disclosure

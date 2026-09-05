@@ -7,9 +7,12 @@ category: services
 index_group: ring-3-ai-gateway
 type: topic
 content_type: topic
+quality: complete
 status: stable
+audience: vendor-public
 bcsc_class: current-fact
-last_edited: 2026-08-22
+language_protocol: PROSE-TOPIC
+last_edited: 2026-09-05
 editor: pointsav-engineering
 paired_with: yoyo-daily-enrichment-cycle.es.md
 ---
@@ -50,11 +53,10 @@ this pipeline running end to end on its own schedule.
 The VM is stopped unconditionally at the end of the cycle regardless of how far the phases
 got, and a kill-switch file can suppress the whole cycle immediately if set. An idle monitor
 provides a backstop: if the cycle ever fails to stop the VM itself, the monitor stops it after
-a sustained idle period, bounding the worst case. At the real multi-hour cycle length — not
-the forty-five-minute figure a stale version of this article assumed — the per-cycle cost is
-several times higher than that shorter window would suggest; an exact current figure isn't
-republished here since it would need to be re-measured against the real Phase 1/Phase 2
-budgets and current cloud pricing, not carried forward from a since-corrected assumption.
+a sustained idle period, bounding the worst case. At the real multi-hour cycle length, the
+per-cycle cost is meaningfully higher than a much shorter window would suggest; an exact
+current figure isn't republished here since it would need to be re-measured against the real
+Phase 1/Phase 2 budgets and current cloud pricing.
 
 ## See also
 

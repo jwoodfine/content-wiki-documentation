@@ -9,8 +9,10 @@ quality: complete
 index_group: ring-3-ai-gateway
 short_description: "A planned direction for service-slm: using its real, already-operational capture-then-verdict training pipeline to build a Totebox sysadmin assistant — the specific task taxonomy and tooling described here are not yet built."
 status: active
+audience: vendor-public
 bcsc_class: forward-looking
-last_edited: 2026-08-24
+language_protocol: PROSE-TOPIC
+last_edited: 2026-09-05
 editor: pointsav-engineering
 cites:
  - olmo3-allenai
@@ -41,10 +43,6 @@ verdict-sign mechanism is generic — it already runs today for engineering task
 sysadmin ones — and per-tenant LoRA adapters composed at request time by the Doorman are a
 real, working capability.
 
-**What is not real today**: no sysadmin task type has been registered in this pipeline. The
-specific taxonomy below, and the specific tools it names, are a proposal for how that
-capability could be extended to sysadmin work — not an inventory of what exists.
-
 ## The proposed task taxonomy
 
 A survey of the operational guides across Totebox deployment clusters suggests roughly ten
@@ -73,6 +71,14 @@ available for training, without external transmission.
 Any cost or timeline figures for this capability — per-request cost at scale, training-run
 cost, adapter promotion thresholds — are planned targets pending real operational data,
 not measured figures. [ni-51-102] [np-51-201]
+
+## What this is not
+
+No sysadmin task type has been registered in the apprenticeship pipeline. The task taxonomy
+above, and the specific tools it names, are a proposal for how the pipeline's existing
+capture-then-verdict mechanism could be extended to sysadmin work — not an inventory of what
+exists today. No sysadmin-specific adapter has been trained, and no cost or timeline figure
+above is a measured value.
 
 ## See also
 

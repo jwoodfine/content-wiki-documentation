@@ -9,9 +9,10 @@ quality: complete
 index_group: ring-3-ai-gateway
 short_description: "Una dirección planificada para service-slm: usar su canalización real y ya operativa de captura-y-veredicto para construir un asistente sysadmin de Totebox — la taxonomía de tareas específica y las herramientas descritas aquí aún no están construidas."
 status: active
+audience: vendor-public
 bcsc_class: forward-looking
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-24
+last_edited: 2026-09-05
 editor: pointsav-engineering
 cites:
  - olmo3-allenai
@@ -43,11 +44,6 @@ registro de firmantes del espacio de trabajo. Este mecanismo de captura-y-firma-
 es genérico — ya se ejecuta hoy para tipos de tarea de ingeniería, no de sysadmin — y los
 adaptadores LoRA por inquilino compuestos en tiempo de solicitud por el Doorman son una
 capacidad real y funcional.
-
-**Lo que no es real hoy**: ningún tipo de tarea de sysadmin se ha registrado en esta
-canalización. La taxonomía específica a continuación, y las herramientas que nombra, son una
-propuesta de cómo esa capacidad podría extenderse al trabajo de sysadmin — no un inventario de
-lo que existe.
 
 ## La taxonomía de tareas propuesta
 
@@ -82,6 +78,14 @@ Cualquier cifra de costo o cronograma para esta capacidad — costo por solicitu
 costo de ejecución de entrenamiento, umbrales de promoción de adaptadores — son objetivos
 planificados pendientes de datos operativos reales, no cifras medidas. [ni-51-102]
 [np-51-201]
+
+## Lo que esto no es
+
+Ningún tipo de tarea de sysadmin se ha registrado en la canalización de aprendizaje. La
+taxonomía de tareas anterior, y las herramientas específicas que nombra, son una propuesta de
+cómo el mecanismo existente de captura-y-veredicto de la canalización podría extenderse al
+trabajo de sysadmin — no un inventario de lo que existe hoy. Ningún adaptador específico de
+sysadmin ha sido entrenado, y ninguna cifra de costo o cronograma anterior es un valor medido.
 
 ## Véase también
 

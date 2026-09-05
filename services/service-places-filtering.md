@@ -12,10 +12,14 @@ audience: public
 short_description: "A filtering step that keeps only regional-grade institutions from raw civic data, so GIS tier rankings reflect institutional concentration rather than every clinic and community facility."
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-09-05
 editor: pointsav-engineering
 paired_with: service-places-filtering.es.md
 cites: []
+references:
+  - id: 1
+    text: "Point of interest. Wikipedia, accessed 2026-06-14."
+    url: "https://en.wikipedia.org/wiki/Point_of_interest"
 ---
 
 [[retail-co-location-tier-methodology|GIS tier rankings]] depend on knowing where regional
@@ -24,7 +28,7 @@ places-filtering step keeps only civic and institutional facilities that meet a 
 scale — hospitals, universities, and validated major transport hubs above fixed size
 thresholds — and consolidates multi-point campus records into a single regional anchor.
 Local-service density is removed at this stage, so downstream rankings reflect institutional
-concentration rather than raw facility count.
+concentration rather than raw facility count.[^1]
 
 ## What the filter keeps
 
@@ -58,7 +62,3 @@ campuses to a single anchor) is the stable, public-facing part of the design.
 - [[service-business-clustering]] — the retail clustering step that runs alongside it
 - [[service-fs-data-lake]] — the raw civic and retail data this step consumes
 - [[retail-co-location-tier-methodology]] — the tier methodology the filtered data feeds
-
-## References
-
-- [Point of interest](https://en.wikipedia.org/wiki/Point_of_interest) — Wikipedia, accessed 2026-06-14

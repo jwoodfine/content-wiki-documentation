@@ -7,11 +7,13 @@ title: "service-fs — el núcleo del libro mayor WORM"
 short_description: "El libro mayor inmutable Write-Once-Read-Many por inquilino que respalda cada registro escrito en la plataforma — una interfaz HTTP y MCP real e implementada sobre un registro de anexado encadenado por hash, con anclaje externo mensual a un registro público de transparencia."
 category: services
 index_group: ring-1-boundary-ingest
+quality: complete
 audience: vendor-public
 bcsc_class: current-fact
+language_protocol: PROSE-TOPIC
 status: active
 aliases: [service-fs-architecture, service-fs-security-compliance]
-last_edited: 2026-08-22
+last_edited: 2026-09-05
 editor: pointsav-engineering
 paired_with: service-fs.md
 ---

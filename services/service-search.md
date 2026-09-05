@@ -9,8 +9,10 @@ quality: complete
 index_group: ring-2-knowledge-and-processing
 short_description: "service-search is a designed but unbuilt Ring 2 full-text search service — a README describes a Tantivy-based inverted index, but no source code exists yet."
 status: active
+audience: public
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+language_protocol: PROSE-TOPIC
+last_edited: 2026-09-05
 editor: pointsav-engineering
 cites: []
 references:

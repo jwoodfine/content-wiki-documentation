@@ -7,13 +7,13 @@ title: "service-input — reference-archive migration and calibration"
 short_description: "service-input batch-migrates markdown reference material from a source archive into the platform's ingest pipeline, deduplicating by content hash and validating against each file's own ledger record — with a companion tool that scores how well downstream extraction matches that ledger."
 audience: vendor-public
 bcsc_class: current-fact
-language: en
+language_protocol: PROSE-TOPIC
 paired_with: service-input.es.md
 category: services
 index_group: ring-1-boundary-ingest
 status: active
 quality: complete
-last_edited: 2026-08-22
+last_edited: 2026-09-05
 editor: pointsav-engineering
 ---
 

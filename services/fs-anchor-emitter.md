@@ -46,4 +46,4 @@ The binary itself has no internal generation or consistency-proof logic — both
 
 - [[service-fs]] — generates and signs the checkpoints this emitter fetches
 - [[worm-ledger-design]] — the ledger the checkpoint attests to
-- `service-fs` — the compliance posture this anchoring supports
+- [[service-fs]] — the compliance posture this anchoring supports

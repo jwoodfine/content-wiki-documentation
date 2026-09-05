@@ -7,13 +7,13 @@ title: "service-input — migración de archivo de referencia y calibración"
 short_description: "service-input migra por lotes material de referencia en markdown desde un archivo fuente hacia la canalización de ingesta de la plataforma, deduplicando por hash de contenido y validando contra el registro de libro mayor propio de cada archivo — con una herramienta complementaria que puntúa qué tan bien coincide la extracción posterior con ese libro mayor."
 audience: vendor-public
 bcsc_class: current-fact
-language: es
+language_protocol: PROSE-TOPIC
 paired_with: service-input.md
 category: services
 index_group: ring-1-boundary-ingest
 status: active
 quality: complete
-last_edited: 2026-08-22
+last_edited: 2026-09-05
 editor: pointsav-engineering
 ---
 

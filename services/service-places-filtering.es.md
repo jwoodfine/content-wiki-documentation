@@ -12,10 +12,14 @@ status: active
 audience: public
 bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-09-05
 editor: pointsav-engineering
 paired_with: service-places-filtering.md
 cites: []
+references:
+  - id: 1
+    text: "Point of interest. Wikipedia, consultado el 2026-06-14."
+    url: "https://es.wikipedia.org/wiki/Punto_de_inter%C3%A9s"
 ---
 
 Los [[retail-co-location-tier-methodology|rankings de nivel GIS]] dependen de saber dónde se
@@ -25,7 +29,7 @@ cívicas e institucionales que alcanzan una escala regional — hospitales, univ
 centros de transporte importantes validados por encima de umbrales de tamaño fijos — y
 consolida los registros de campus multipunto en un solo ancla regional. La densidad de
 servicios locales se elimina en esta etapa, de modo que los rankings posteriores reflejan
-concentración institucional en lugar del recuento bruto de instalaciones.
+concentración institucional en lugar del recuento bruto de instalaciones.[^1]
 
 ## Lo que conserva el filtro
 
@@ -60,7 +64,3 @@ ancla) es la parte estable y de cara pública del diseño.
 - [[service-business-clustering]] — el paso de agrupación minorista que se ejecuta junto a él
 - [[service-fs-data-lake]] — los datos cívicos y minoristas en bruto que consume este paso
 - [[retail-co-location-tier-methodology]] — la metodología de niveles que alimentan los datos filtrados
-
-## Referencias
-
-- [Punto de interés](https://es.wikipedia.org/wiki/Punto_de_inter%C3%A9s) — Wikipedia, consultado 2026-06-14

@@ -46,4 +46,4 @@ El binario en sí no tiene lógica interna de generación ni de prueba de consis
 
 - [[service-fs]] — genera y firma los puntos de control que este emisor obtiene
 - [[worm-ledger-design]] — el libro mayor que el punto de control certifica
-- `service-fs` — la postura de cumplimiento que respalda este anclaje
+- [[service-fs]] — la postura de cumplimiento que respalda este anclaje

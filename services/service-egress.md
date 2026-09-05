@@ -7,10 +7,13 @@ short_description: "service-egress compresses and chunks local mail data for out
 title: "Egress service"
 category: services
 index_group: ring-2-knowledge-and-processing
-language: en
+quality: stub
+audience: vendor-public
+bcsc_class: current-fact
+language_protocol: PROSE-TOPIC
 paired_with: service-egress.es.md
 status: stub
-last_edited: 2026-08-22
+last_edited: 2026-09-05
 editor: pointsav-engineering
 ---
 

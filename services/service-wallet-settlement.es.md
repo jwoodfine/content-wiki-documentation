@@ -9,9 +9,10 @@ content_type: topic
 quality: complete
 index_group: specialist-and-domain-services
 status: active
+audience: vendor-public
 bcsc_class: forward-looking
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-09-05
 editor: pointsav-engineering
 paired_with: service-wallet-settlement.md
 references:
@@ -50,11 +51,6 @@ una billetera con custodia — una distinción que importa tanto estructural com
   de un inquilino — el saldo de un inquilino sería una cifra contable que representa un monto
   adeudado, no un fondo bajo control de la plataforma.
 
-Si se construye según lo diseñado, esto mantendría a la plataforma estructuralmente fuera del
-territorio regulado de transmisión de dinero y billeteras con custodia. Esto es una
-descripción del diseño previsto, no asesoría legal; las propias actividades de pago de un
-inquilino son responsabilidad de su propio asesor.
-
 ## Lo que propone el diseño
 
 Un registro firmado por cada entrada de crédito, débito o comisión, rastreando monto, moneda,
@@ -70,10 +66,16 @@ libro sería exportable por el inquilino en cualquier momento, en el mismo forma
 escribió — portabilidad incondicional, en línea con los compromisos de datos de propiedad del
 cliente en el resto de la plataforma.[^3]
 
-Los porcentajes de comisión específicos, las elecciones de cadena, y los mecanismos de
-abstracción de gas nombrados en borradores anteriores de este diseño son detalles de
-implementación que no se han decidido, y mucho menos construido — no se repiten aquí como si
-estuvieran resueltos.
+## Lo que esto no es
+
+Aún no existe ninguna implementación — todo lo anterior es diseño, no un servicio distribuido.
+Si se construye según lo diseñado, esto mantendría a la plataforma estructuralmente fuera del
+territorio regulado de transmisión de dinero y billeteras con custodia; esto es una
+descripción del diseño previsto, no asesoría legal, y las propias actividades de pago de un
+inquilino siguen siendo responsabilidad de su propio asesor. Los porcentajes de comisión
+específicos, las elecciones de cadena, y los mecanismos de abstracción de gas nombrados en
+borradores anteriores de este diseño son detalles de implementación que no se han decidido, y
+mucho menos construido — no se repiten aquí como si estuvieran resueltos.
 
 ## Véase también
 

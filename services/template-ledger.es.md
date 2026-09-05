@@ -24,7 +24,9 @@ Los operadores de MCorp no redactan correos corporativos de rutina desde cero. C
 
 ## Flujo de trabajo del operador
 
-El operador abre su carpeta `Template Ledger` en Microsoft 365, accede al catálogo `.html` adjunto al correo `[TMPL-000]`, filtra por categoría (por ejemplo, *Compliance* o *Finance*) y copia la clave de la plantilla deseada. A continuación, pega la clave en la barra de búsqueda de M365 para obtener la versión actual, hace clic en **Reenviar**, actualiza el destinatario, elimina el bloque de metadatos de enrutamiento y envía.
+La recuperación se basa en claves, no en la navegación de carpetas: una carpeta `Template Ledger` en Microsoft 365 contiene un catálogo `.html` sin conexión que el operador filtra por categoría (*Compliance*, *Finance*) para encontrar la clave de una plantilla, y luego pega esa clave en la barra de búsqueda de M365 para que aparezca de inmediato la versión actual. Reenviarla — tras eliminar el bloque de metadatos de enrutamiento en la parte superior del cuerpo del correo y actualizar el destinatario — es el único paso manual; la clave es el único dato que aporta el operador, y el contenido de la plantilla siempre proviene del registro, nunca se escribe ni se pega de memoria.
+
+El procedimiento exacto de recuperación, paso a paso, es material de manual operativo y no se cubre aquí en detalle — este artículo describe por qué el mecanismo está estructurado así, no cómo ejecutarlo.
 
 ## Sincronización silenciosa
 

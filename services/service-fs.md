@@ -7,11 +7,13 @@ title: "service-fs — the WORM ledger backbone"
 short_description: "The per-tenant Write-Once-Read-Many immutable ledger that backs every record written to the platform — a real, implemented HTTP and MCP interface over a hash-chained append log, with monthly external anchoring to a public transparency log."
 category: services
 index_group: ring-1-boundary-ingest
+quality: complete
 audience: vendor-public
 bcsc_class: current-fact
+language_protocol: PROSE-TOPIC
 status: active
 aliases: [service-fs-architecture, service-fs-security-compliance]
-last_edited: 2026-08-22
+last_edited: 2026-09-05
 editor: pointsav-engineering
 paired_with: service-fs.es.md
 ---

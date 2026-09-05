@@ -7,10 +7,12 @@ category: services
 index_group: ring-3-ai-gateway
 type: topic
 content_type: topic
+quality: complete
 status: stable
+audience: vendor-public
 bcsc_class: current-fact
 language_protocol: PROSE-TOPIC
-last_edited: 2026-08-22
+last_edited: 2026-09-05
 editor: pointsav-engineering
 paired_with: yoyo-daily-enrichment-cycle.md
 ---
@@ -56,12 +58,10 @@ La VM se detiene incondicionalmente al final del ciclo sin importar hasta dónde
 fases, y un archivo de interruptor de apagado puede suprimir todo el ciclo de inmediato si se
 establece. Un monitor de inactividad ofrece un respaldo: si el ciclo alguna vez falla en
 detener la VM por sí mismo, el monitor la detiene tras un período sostenido de inactividad,
-acotando el peor de los casos. Al largo real del ciclo de varias horas — no la cifra de
-cuarenta y cinco minutos que asumía una versión desactualizada de este artículo — el costo
-por ciclo es varias veces mayor de lo que sugeriría esa ventana más corta; no se republica
-aquí una cifra exacta actual, ya que necesitaría remedirse contra los presupuestos reales de
-la Fase 1/Fase 2 y los precios actuales de la nube, no arrastrarse desde una suposición ya
-corregida.
+acotando el peor de los casos. Al largo real del ciclo de varias horas, el costo por ciclo es
+significativamente mayor de lo que sugeriría una ventana mucho más corta; no se republica aquí
+una cifra exacta actual, ya que necesitaría remedirse contra los presupuestos reales de la
+Fase 1/Fase 2 y los precios actuales de la nube.
 
 ## Véase también
 

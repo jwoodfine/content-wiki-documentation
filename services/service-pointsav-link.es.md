@@ -7,12 +7,13 @@ category: services
 index_group: specialist-and-domain-services
 type: topic
 content_type: topic
+quality: complete
 status: stable
+audience: vendor-public
 bcsc_class: public-disclosure-safe
-language: es
 language_protocol: TRANSLATE-ES
 paired_with: service-pointsav-link.md
-last_edited: 2026-08-24
+last_edited: 2026-09-05
 editor: pointsav-engineering
 ---
 

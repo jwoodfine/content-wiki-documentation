@@ -7,10 +7,13 @@ short_description: "service-egress comprime y fragmenta datos de correo locales 
 title: "Servicio de egreso"
 category: services
 index_group: ring-2-knowledge-and-processing
-language: es
+quality: stub
+audience: vendor-public
+bcsc_class: current-fact
+language_protocol: PROSE-TOPIC
 paired_with: service-egress.md
 status: stub
-last_edited: 2026-08-22
+last_edited: 2026-09-05
 editor: pointsav-engineering
 ---
 
