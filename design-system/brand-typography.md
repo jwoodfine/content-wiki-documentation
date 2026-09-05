@@ -8,10 +8,11 @@ short_description: "PointSav's web surfaces render in Inter, Source Serif 4, and
 title: "Brand typography and print standards"
 audience: vendor-public
 bcsc_class: current-fact
-language: en
+language_protocol: PROSE-TOPIC
 paired_with: brand-typography.es.md
 category: design-system
 status: active
+quality: complete
 last_edited: 2026-08-22
 editor: pointsav-engineering
 ---

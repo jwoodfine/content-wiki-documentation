@@ -8,7 +8,9 @@ type: topic
 content_type: topic
 index_group: wiki-surface-design
 status: active
+audience: public
 bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
 last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: wiki-component-library.es.md

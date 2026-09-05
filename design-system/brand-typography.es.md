@@ -8,10 +8,11 @@ short_description: "Las superficies web de PointSav se renderizan en Inter, Sour
 title: Tipografía de marca y estándares de impresión
 audience: vendor-public
 bcsc_class: current-fact
-language: es
+language_protocol: TRANSLATE-ES
 paired_with: brand-typography.md
 category: design-system
 status: active
+quality: complete
 last_edited: 2026-08-22
 editor: pointsav-engineering
 ---
