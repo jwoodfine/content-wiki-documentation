@@ -42,7 +42,7 @@ El componente está reservado para la clasificación taxonómica. No debe utiliz
 - **Capa de Accesibilidad**: Un `aria-label` que combina la semántica del punto y la etiqueta, garantizando que el indicador visual esté oculto para los lectores de pantalla para evitar anuncios redundantes.
 
 ### Modelo de interacción
-El muestrario es nativamente estático. La interactividad se hereda de su contenedor principal (por ejemplo, un botón de filtro o una función de mapa). En las superficies de mapas, el componente admite un comportamiento de revelación por zoom: se prevé que los anillos de centroide de conglomerado se representen en niveles de zoom inferiores a 8.5, transicionando a muestrarios individuales en aumentos mayores.
+El muestrario es nativamente estático. La interactividad se hereda de su contenedor principal (por ejemplo, un botón de filtro o una función de mapa). En las superficies de mapas, el componente admite un comportamiento de revelación por zoom: se prevé que los anillos de centroide de conglomerado se representen en niveles de zoom bajos, transicionando a muestrarios individuales en aumentos mayores.
 
 ## Accesibilidad y cumplimiento
 El componente está diseñado para cumplir con los estándares WCAG 2.2 AA:
@@ -63,7 +63,7 @@ El punto es CSS en línea, no un token dimensionado — `.ps-swatch__dot` está 
 ## Extensiones previstas
 Se prevé que las futuras iteraciones incluyan:
 - **Rellenos con Patrones**: Soporte planificado para patrones geométricos dentro del punto para mejorar la distinción para usuarios con deficiencias avanzadas de visión cromática.
-- **Gráficos de Tarta Dinámicos**: Se está investigando la transición del anillo de centroide de conglomerado a un gráfico de dona dinámico cuando la densidad del conglomerado supere las 10 anclas.
+- **Gráficos de Tarta Dinámicos**: Se está investigando la transición del anillo de centroide de conglomerado a un gráfico de dona dinámico una vez que la densidad del conglomerado supere un umbral configurado.
 
 ## Véase también
 

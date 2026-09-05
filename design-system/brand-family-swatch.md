@@ -43,7 +43,7 @@ The component is reserved for taxonomic classification. It must not be used for 
 - **Accessibility Layer**: An `aria-label` that combines the dot and label semantics, ensuring the visual indicator is hidden from screen readers to prevent redundant announcements.
 
 ### Interaction model
-The swatch is natively static. Interactivity is inherited from its parent container (e.g., a filter button or map feature). On map surfaces, the component supports a reveal-by-zoom behavior: cluster-centroid rings are intended to render at zoom levels below 8.5, transitioning to individual swatches at higher magnifications.
+The swatch is natively static. Interactivity is inherited from its parent container (e.g., a filter button or map feature). On map surfaces, the component supports a reveal-by-zoom behavior: cluster-centroid rings are intended to render at low zoom levels, transitioning to individual swatches at higher magnifications.
 
 ## Accessibility and compliance
 The component is engineered to meet WCAG 2.2 AA standards:
@@ -64,7 +64,7 @@ The dot is inline CSS, not a sized token — `.ps-swatch__dot` is hardcoded to 1
 ## Planned extensions
 Future iterations are intended to include:
 - **Pattern Infills**: Planned support for geometric patterns within the dot to enhance distinguishability for users with advanced color vision deficiencies.
-- **Dynamic Pie Charts**: Research is underway to transition the cluster-centroid ring into a dynamic donut chart when cluster density exceeds 10 anchors.
+- **Dynamic Pie Charts**: Research is underway to transition the cluster-centroid ring into a dynamic donut chart once cluster density crosses a configured threshold.
 
 ## See also
 
