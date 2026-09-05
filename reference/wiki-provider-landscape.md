@@ -162,7 +162,10 @@ authority.
 ## 4. What each archetype does better than Wikipedia
 
 The honesty floor of the audit. Every archetype has genuine advantages over Wikipedia
-in some dimension. The leapfrog candidates worth considering, by archetype:
+in some dimension. "Leapfrog" here means adopting a feature an archetype does well
+without inheriting that archetype's structural weaknesses — matching a competitor's
+strength while skipping past its limitation, rather than copying the whole product.
+The leapfrog candidates worth considering, by archetype:
 
 | Archetype | Genuine advantages worth preserving |
 |---|---|

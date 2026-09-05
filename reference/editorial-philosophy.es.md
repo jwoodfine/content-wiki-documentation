@@ -5,11 +5,12 @@ title: "Filosofía editorial"
 slug: editorial-philosophy
 short_description: "Cada artículo es un recurso de aprendizaje que enseña comprensión en lugar de recuperar hechos, estructurado con párrafos de apertura enciclopédicos, vinculación interna y jerarquía de encabezados consistente adecuada tanto para lectores humanos como para máquinas."
 category: reference
+index_group: editorial-and-publishing-standards
 status: stable
 bcsc_class: no-disclosure-implication
 last_edited: 2026-08-22
 editor: pointsav-engineering
-language: es
+language_protocol: TRANSLATE-ES
 paired_with: editorial-philosophy.md
 ---
 
@@ -25,7 +26,9 @@ Tres decisiones estructurales producen este resultado:
 
 **2. Enlazado interno que construye redes de comprensión.** Los artículos se enlazan entre sí mediante wikilinks `[[slug]]`. Un lector que sigue los enlaces construye progresivamente un conocimiento más profundo. Los enlaces rojos — enlaces a artículos que aún no existen — son características, no defectos. Muestran al lector dónde la enciclopedia está incompleta e invitan a contribuir.
 
-**3. Estructura consistente.** Párrafo inicial → secciones del cuerpo → Véase también → Referencias. Esta estructura es la memoria muscular de Wikipedia. Un lector que la ha usado durante diez minutos la reconoce. El reconocimiento es en sí mismo una forma de confianza.
+**3. Estructura consistente.** Párrafo inicial → secciones del cuerpo → Véase también → Referencias. Esta estructura es la memoria muscular de Wikipedia. Un lector que la ha usado durante diez minutos la reconoce. El reconocimiento es en sí mismo una forma de confianza — el lector sabe cómo usar el artículo antes de leerlo.
+
+Los wikis de PointSav aplican este modelo a tres audiencias distintas en tres registros lingüísticos distintos. La estructura es la misma. El registro cambia para adaptarse al lector.
 
 ## La prueba enciclopédica
 
@@ -35,11 +38,29 @@ Cada artículo debe superar una prueba:
 
 Un artículo de recuperación de datos responde "¿qué es X?". Un artículo enciclopédico responde "¿qué es X, por qué importa, cómo funciona y cómo se conecta con Y y Z?". El segundo artículo es un recurso de aprendizaje. El primero es una entrada de glosario.
 
+### Ejemplos trabajados en los tres wikis
+
+Esta prueba se aplica a los tres wikis:
+
+- **Corporativo:** Tras leer `direct-hold-structures`, un banquero comprende por qué Woodfine usa esta estructura, qué significa para la asignación de capital y en qué se diferencia de las estructuras agrupadas — no solo qué significa el término.
+- **Proyectos:** Tras leer `co-location-mandate`, un promotor o arquitecto comprende la lógica del mandato, el marco de capital que lo valida y las condiciones de mercado que lo hacen viable.
+- **Documentación:** Tras leer `service-slm`, un ingeniero comprende la lógica de enrutamiento, por qué los umbrales de nivel están fijados así y cuál es la consecuencia para el operador — y un lector institucional que escanea los encabezados de sección comprende que la plataforma gestiona los costos de IA automáticamente sin enviar solicitudes fuera de las instalaciones.
+
+Si un artículo no supera esta prueba, la reescritura añade las relaciones, el contexto y el encuadre de consecuencia que convierten un dato en comprensión.
+
 ## Contenido enriquecido por el DataGraph
 
 Los wikis de PointSav están conectados a una base de datos de grafos de propiedades — el DataGraph — que acumula conocimiento sobre cada entidad de la plataforma: a qué se conecta cada entidad, a qué dominio pertenece, qué temas la atraviesan y qué dice el corpus de investigación sobre ella.
 
-Una reescritura informada por el DataGraph añade ese conocimiento al artículo con dos entradas distintas:
+Los artículos de la wiki se redactaron antes de que el DataGraph estuviera completamente poblado. El DataGraph ahora sabe cosas que muchos artículos todavía no expresan. Una reescritura informada por el DataGraph añade ese conocimiento al artículo:
+
+- **Qué se conecta con qué.** Un artículo sobre `service-slm` que no menciona los tres niveles de cómputo, la puerta de enlace de control de acceso que atraviesa, o el registro de auditoría que produce, está incompleto — no porque falten esos hechos, sino porque el lector no puede construir el modelo mental sin ellos.
+- **Por qué debería importarle al lector institucional.** El encuadre de consecuencia — la frase que conecta el mecanismo técnico con el resultado de negocio — suele ser la pieza que omiten los artículos escritos para una audiencia de ingeniería. "La lógica de enrutamiento está controlada por el operador" es un dato. "Una solicitud que se resuelve localmente nunca sale de la infraestructura del cliente — y nunca aparece en una factura de la nube" es una consecuencia que construye comprensión.
+- **Contexto de dominio y tema.** Un artículo que explica qué hace un servicio sin explicar dónde se sitúa en la arquitectura de la plataforma deja al lector con un dato y sin mapa. Las conexiones de dominio y tema son cómo el lector construye el mapa.
+
+### Registro y contenido como las dos entradas
+
+**Las dos entradas de todo artículo:**
 
 | Entrada | Fuente | Lo que aporta |
 |---|---|---|
@@ -50,9 +71,13 @@ Los tokens de lenguaje rigen el registro. El DataGraph rige el contenido. Un art
 
 ## Cómo mejoran los artículos en realidad
 
-La calidad de un artículo mejora mediante sesiones editoriales, no mediante una tubería automatizada. Un editor consulta el DataGraph sobre el tema del artículo, lee la fuente real que el artículo describe, y reescribe el artículo para que coincida con ella. No existe una revisión programada que regenere borradores con una cadencia fija; una categoría se reescribe cuando una pasada editorial llega a ella.
+La calidad de un artículo mejora mediante sesiones editoriales, no mediante una tubería automatizada. Un editor consulta el DataGraph sobre el tema del artículo, lee la fuente real que el artículo describe, y reescribe el artículo para que coincida con ella — descartando afirmaciones que la fuente no respalda y añadiendo hechos que el DataGraph o la fuente revelan y que al artículo le faltaban. No existe una revisión programada que regenere borradores con una cadencia fija; una categoría se reescribe cuando una pasada editorial llega a ella.
 
-La corrección del registro se verifica mecánicamente: un linter puntúa cada borrador contra las reglas de vocabulario y estructura que definen los tokens de lenguaje, y un borrador con una violación de registro no supera la revisión. La corrección del contenido — si las afirmaciones del artículo coinciden con lo que la plataforma realmente hace — se verifica leyendo directamente la fuente real, la misma disciplina que cualquier verificación de hechos. La mejora proviene de que el DataGraph y el código fuente se vuelven más ricos y actuales con el tiempo, y de que cada pasada editorial se construye sobre lo que la anterior ya corrigió — no de un sistema de inferencia que entrena con veredictos previos.
+La corrección del registro se verifica mecánicamente, no solo mediante juicio humano: un linter puntúa cada borrador contra las reglas de vocabulario y estructura que definen los tokens de lenguaje, y un borrador con una violación de registro no supera la revisión. La corrección del contenido — si las afirmaciones del artículo coinciden con lo que la plataforma realmente hace — se verifica leyendo directamente la fuente real, la misma disciplina que cualquier verificación de hechos.
+
+### Por qué esto produce valor acumulativo de todos modos
+
+Incluso sin un ciclo de generación automatizado, cada pasada editorial se acumula: el DataGraph que consulta una pasada posterior es más rico que el que vio una pasada anterior, y una pasada que encuentra un defecto en un artículo a menudo encuentra el mismo patrón repetido en un artículo hermano, corrigiendo varios a la vez. La mejora proviene de que el DataGraph y el código fuente se vuelven más ricos y actuales con el tiempo, y de que cada pasada editorial se construye sobre lo que la anterior ya corrigió — no de un sistema de inferencia que entrena con veredictos previos.
 
 ## Véase también
 

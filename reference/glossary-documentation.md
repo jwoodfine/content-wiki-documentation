@@ -84,7 +84,7 @@ CCTV data collection refers to the ingestion of video surveillance feeds; in a P
 
 The delivery of computing services—including servers, storage, databases, networking, software, analytics, and intelligence—over the Internet ("the cloud") to offer faster innovation, flexible resources, and economies of scale.
 
-> **2030 Platform Context:** Addressed by PointSav's Sovereign Infrastructure to eliminate vendor lock-in and structural dependency (Technofeudalism).
+> **2030 Platform Context:** PointSav's planned architecture is intended to eliminate vendor lock-in and the structural dependency on hyperscaler infrastructure sometimes described as Technofeudalism.
 
 ### Console OS
 *SO de Consola*
@@ -154,10 +154,10 @@ A set of platform as a service (PaaS) products that use OS-level virtualization 
 <hr>
 
 ### File System
-A file system organizes and stores files on a storage medium; in PointSav, the sovereign file system is managed by os-totebox under WORM-ledger constraints, with os-mediakit providing the public-facing document store.
+A file system organizes and stores files on a storage medium; in PointSav, the file system is managed by os-totebox under WORM-ledger constraints, with os-mediakit providing the public-facing document store.
 
 ### First-party Data
-First-party data is information collected directly from users by the organization that will use it; in PointSav, it enters through service-content's authenticated ingestion endpoints and is stored in the sovereign ToteboxOS archive.
+First-party data is information collected directly from users by the organization that will use it; in PointSav, it enters through service-content's authenticated ingestion endpoints and is stored in the ToteboxOS archive.
 
 
 ## G
@@ -309,10 +309,7 @@ Function of proprietary software.
 Public browser delivery for the data marketplace provides browser-accessible endpoints through which external consumers purchase and retrieve licensed data assets curated by service-content.
 
 ### Public Cloud
-Traditional off-premise infrastructure. In the 2030 platform vision, this represents a structural dependency that Sovereign Infrastructure aims to mitigate.
-
-### Public Cloud Resources
-Traditional off-premise infrastructure. In the 2030 platform vision, this represents a structural dependency that Sovereign Infrastructure aims to mitigate.
+Traditional off-premise infrastructure. In the 2030 platform vision, this represents a structural dependency that PointSav's planned architecture is intended to mitigate.
 
 
 ## R
@@ -331,7 +328,7 @@ Function of proprietary software.
 <hr>
 
 ### Second-party Data
-Second-party data is first-party data obtained through a direct partnership agreement; in PointSav, it enters through controlled service-content endpoints with explicit data-sharing contracts recorded in the sovereign ledger.
+Second-party data is first-party data obtained through a direct partnership agreement; in PointSav, it enters through controlled service-content endpoints with explicit data-sharing contracts recorded in the ledger.
 
 ### service-extraction
 *service-extraction*

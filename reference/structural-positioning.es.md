@@ -48,7 +48,7 @@ Ocho propiedades distinguen el sustrato PointSav de los patrones que está dise�
 | Emparejamiento como permiso | No existen bases de datos de nombres de usuario y contraseñas en ningún lugar del sustrato; el acceso se rige por [[machine-based-auth|emparejamiento basado en máquina]] |
 | Auditoría continua (planificado) | El registro de auditoría está previsto para ejecutarse a nivel del sistema, donde un administrador no podrá deshabilitarlo |
 | Resolución de activos en caso de fallo del proveedor (planificado) | El Paquete de Resolución de Activos Digitales está previsto para separar los datos limpiamente y devolverlos al propietario en caso de fallo del proveedor |
-| Sustrato soberano | El cómputo y el almacenamiento se desacoplan entre sustratos — en las instalaciones, arrendado, nube — sin trampa de salida |
+| Portabilidad del sustrato | El cómputo y el almacenamiento se desacoplan entre sustratos — en las instalaciones, arrendado, nube — sin trampa de salida |
 | Cumplimiento legible por máquina (planificado) | Los manifiestos OSCAL[^1], el inventario de software y el inventario de hardware están previstos para exponerse continuamente en lugar de solo durante los ciclos de auditoría anuales |
 
 ## Patrones heredados que la arquitectura reemplaza estructuralmente

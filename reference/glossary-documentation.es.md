@@ -110,7 +110,7 @@ La recopilación de datos CCTV se refiere a la ingesta de flujos de videovigilan
 
 Prestación de servicios informáticos —incluyendo servidores, almacenamiento, bases de datos, redes, software, análisis e inteligencia— a través de Internet para ofrecer innovación más rápida, recursos flexibles y economías de escala.
 
-> **Contexto de la plataforma 2030:** Abordado por la infraestructura soberana de PointSav para eliminar la dependencia de proveedores y la dependencia estructural (tecnofeudalismo).
+> **Contexto de la plataforma 2030:** La arquitectura planificada de PointSav pretende eliminar la dependencia de proveedores y la dependencia estructural de la infraestructura de los hiperescaladores, a veces descrita como tecnofeudalismo.
 
 - **Colaboradores**
 - **Interfaz de línea de comandos**
@@ -219,13 +219,13 @@ Conjunto de productos de plataforma como servicio (PaaS) que usan virtualizació
 <hr>
 
 ### Sistema de archivos
-Un sistema de archivos organiza y almacena archivos en un medio de almacenamiento; en PointSav, el sistema de archivos soberano lo gestiona os-totebox bajo restricciones de libro WORM, con os-mediakit proporcionando el almacén de documentos de cara al público.
+Un sistema de archivos organiza y almacena archivos en un medio de almacenamiento; en PointSav, el sistema de archivos lo gestiona os-totebox bajo restricciones de libro WORM, con os-mediakit proporcionando el almacén de documentos de cara al público.
 
 - **.FIN**
 - **Comunidad financiera**
 
 ### Datos de primera parte
-Los datos de primera parte son información recopilada directamente de los usuarios por la organización que la utilizará; en PointSav, entran a través de los endpoints de ingesta autenticados de service-content y se almacenan en el archivo soberano ToteboxOS.
+Los datos de primera parte son información recopilada directamente de los usuarios por la organización que la utilizará; en PointSav, entran a través de los endpoints de ingesta autenticados de service-content y se almacenan en el archivo ToteboxOS.
 
 - **Computación en la niebla (fog computing)**
 - **Bifurcación (fork)**
@@ -443,7 +443,7 @@ Archivo ToteboxOS para un inmueble físico. Anclado a un PIN de título de propi
 ### Administración de propiedades
 *Property Management*
 
-Función de software propietario; en PointSav, gestionada por la capa soberana os-totebox mediante registros WORM auditables.
+Función de software propietario; en PointSav, gestionada por la capa os-totebox mediante registros WORM auditables.
 
 - **Tecnología propietaria**
 - **.PUB**
@@ -457,10 +457,7 @@ La entrega en navegador público para el mercado de datos proporciona endpoints 
 - **Entrega en navegador público — Mapas**
 
 ### Nube pública
-Infraestructura tradicional fuera de las instalaciones. En la visión de la plataforma 2030, representa una dependencia estructural que la infraestructura soberana busca mitigar.
-
-### Recursos de nube pública
-Infraestructura tradicional fuera de las instalaciones. En la visión de la plataforma 2030, representa una dependencia estructural que la infraestructura soberana busca mitigar.
+Infraestructura tradicional fuera de las instalaciones. En la visión de la plataforma 2030, representa una dependencia estructural que la arquitectura planificada de PointSav pretende mitigar.
 
 ## R
 <hr>
@@ -485,7 +482,7 @@ Función de software propietario; en PointSav, gestionada mediante entradas audi
 - **Escalabilidad**
 
 ### Datos de segunda parte
-Los datos de segunda parte son datos de primera parte obtenidos a través de un acuerdo de asociación directa; en PointSav, entran a través de endpoints controlados de service-content con contratos explícitos de intercambio de datos registrados en el libro soberano.
+Los datos de segunda parte son datos de primera parte obtenidos a través de un acuerdo de asociación directa; en PointSav, entran a través de endpoints controlados de service-content con contratos explícitos de intercambio de datos registrados en el libro contable.
 
 - **Diseño de servicios**
 

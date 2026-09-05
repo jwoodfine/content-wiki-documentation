@@ -105,7 +105,8 @@ de lectores de Wikipedia conocen por reflejo.
 
 El motor wiki [[app-mediakit-knowledge]] se convierte en la demostración instalable por
 el cliente de ese sustrato. El argumento estructural para la afirmación de salto
-generacional es lo que este artículo documenta: la brecha existe por las cinco causas
+generacional — adoptar lo que cada arquetipo hace bien sin heredar su debilidad
+estructural — es lo que este artículo documenta: la brecha existe por las cinco causas
 estructurales anteriores; cerrarla requiere las condiciones previas de soberanía de
 sustrato, enrutamiento de cómputo de tres niveles y captura de corpus de aprendizaje
 que PointSav ya tiene como intención de diseño.
@@ -114,13 +115,3 @@ que PointSav ya tiene como intención de diseño.
 
 - [[app-mediakit-knowledge]]
 - [[compounding-substrate]]
-
-## Procedencia
-
-Vista general estratégica en español elaborada por project-language el 2026-04-30,
-revisada el 2026-07-30 para eliminar comparaciones directas con competidores
-identificables por nombre, per la disciplina de posicionamiento estructural del
-espacio de trabajo. Basada en el borrador de project-knowledge (síntesis Opus desde
-informe Sonnet sub-agente C, 2026-04-30). Por DOCTRINE.md §XII, esta vista general no
-es una traducción literal — adapta el análisis del campo para lectores en español. Las
-afirmaciones prospectivas siguen [ni-51-102] y [np-51-201].

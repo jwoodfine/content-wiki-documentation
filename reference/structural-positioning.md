@@ -49,7 +49,7 @@ Eight properties distinguish the PointSav substrate from the patterns it is desi
 | Pairing as permission | No username-and-password databases exist anywhere in the substrate; access is governed by [[machine-based-auth|machine-based pairing]] |
 | Continuous audit (planned) | The audit log is intended to run at the system tier, where an administrator cannot disable it |
 | Asset resolution on vendor failure (planned) | The Digital Asset Resolution Package is intended to sever data cleanly and return it to the owner on vendor failure |
-| Sovereign substrate | Compute and storage decouple across substrates — on-premises, leased, cloud — without an egress trap |
+| Substrate portability | Compute and storage decouple across substrates — on-premises, leased, cloud — without an egress trap |
 | Machine-readable compliance (planned) | OSCAL[^1] manifests, software bill of materials, and hardware bill of materials are intended to be exposed continuously rather than only during annual audit cycles |
 
 Each row is a structural argument. The replacement pattern — [[totebox-os|Totebox]] archives, [[machine-based-auth|machine-based pairing]], append-only ledgers, brokerless protocol mesh, semantic routing behind a verification gate — is the direct answer to the failure mode described in the row.

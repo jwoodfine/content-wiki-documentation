@@ -5,44 +5,32 @@ content_type: topic
 slug: news-release-standards
 short_description: "Aplica reglas estrictas de formato para sindicación de noticias corporativas: alineación a la izquierda, disciplina de mayúsculas de título, precisión geográfica y estructuras estandarizadas de encabezado y línea de fecha que aseguran autoridad institucional en medios físicos y digitales."
 title: Estándares de tipografía y diseño de comunicados de prensa
+quality: complete
+status: active
 audience: vendor-public
 bcsc_class: current-fact
-language: es
+language_protocol: TRANSLATE-ES
 paired_with: news-release-standards.md
 category: reference
 ---
 
 
 
-La plataforma impone reglas estrictas de formato para la difusión de noticias corporativas, siguiendo los principios de Lenguaje Claro ISO 24495-1. Esto asegura que cada [[disclosure-substrate|comunicado]] proyecte autoridad institucional y sea perfectamente legible tanto en formato digital como impreso.
+Los comunicados de prensa corporativos reciben más escrutinio que la prosa habitual de la wiki: los lee la prensa, los reguladores y las contrapartes que evalúan la credibilidad de un comunicado de un vistazo. Un comunicado que se lee de forma inconsistente entre formatos — un bloque de texto justificado e irregular aquí, un titular en mayúsculas sostenidas allá — se percibe como menos creíble institucionalmente, sin importar su contenido. El formato de comunicados de prensa de la plataforma sigue los principios de Lenguaje Claro ISO 24495-1 precisamente por esta razón: la consistencia del formato es en sí misma parte de lo que hace que un [[disclosure-substrate|comunicado]] se lea como autoritativo, tanto en formato digital como impreso.
 
-## 1. Reglas Universales de Formato
+## Formato universal
 
-- **Alineación a la Izquierda:** El texto justificado está prohibido para evitar distracciones visuales y mejorar la accesibilidad.
-- **Uso de Mayúsculas:** Se prohíben los bloques de texto en mayúsculas sostenidas. Los titulares y nombres deben usar "Mayúsculas de Título".
-- **Precisión Geográfica:** Los estados y provincias deben escribirse completos (ej. "British Columbia" o "Columbia Británica") para evitar confusiones internacionales.
+Cada comunicado se alinea a la izquierda (margen derecho irregular) en lugar de justificarse — el texto justificado produce un espaciado de palabras irregular que interrumpe el flujo de lectura a la densidad que exige un comunicado. Los titulares y los nombres de entidades corporativas usan Mayúsculas de Título; se evitan los bloques en mayúsculas sostenidas por la misma razón de claridad. Los estados y provincias se escriben completos ("British Columbia" o "Columbia Británica"), eliminando cualquier ambigüedad para un lector internacional que no conozca las abreviaturas postales de una jurisdicción.
 
-## 2. Estándares de Impresión Institucional
+## Presentación impresa
 
-Los comunicados de prensa físicos están concebidos para proyectar confianza institucional mediante una estética estandarizada de "Libro Blanco":
-* **Encabezado:** Negrita, Mayúsculas de Título.
-* **Línea de fecha:** Separada de la narrativa por un guion corto (–) o un guion largo (—).
-* **Estructura obligatoria:**
- **Para publicación inmediata**
- **[Titular en Mayúsculas de Título]**
- **Vancouver, Columbia Británica – [Fecha] –** [Cuerpo narrativo del comunicado...]
+Un comunicado físico se compone con un encabezado en negrita y Mayúsculas de Título, y una línea de fecha separada de la narrativa por un guion corto o un guion largo, siguiendo una estructura estándar de "Para publicación inmediata" — titular, luego una línea de fecha de Vancouver, Columbia Británica, luego el cuerpo narrativo. Esta es la convención impresa que los lectores institucionales ya esperan de un comunicado de prensa, por lo que la plataforma la sigue en lugar de inventar la suya propia.
 
-## 3. Estándares de Presentación Digital
+## Presentación digital
 
-Los comunicados en formato web utilizan etiquetas semánticas y separadores específicos para asegurar una legibilidad de alta densidad:
-* **Jerarquía semántica:** Usar H2 para la categoría del comunicado (p. ej., "Actualización Operativa") y H1 para el titular.
-* **Pleca de metadatos:** Usar el símbolo de pleca (|) para separar los elementos de la línea de fecha en una línea de metadatos dedicada.
-* **Estructura:**
- **[Entidad Corporativa] — [Categoría del Comunicado]**
- **[Titular en Mayúsculas de Título]**
- **Para publicación inmediata | Vancouver, Columbia Británica | [Fecha]**
+Un comunicado en formato web usa un H2 para la categoría del comunicado (por ejemplo, "Actualización Operativa") y un H1 para el titular, con un símbolo de pleca separando los elementos de la línea de fecha — entidad corporativa y categoría del comunicado, luego titular, luego una línea "Para publicación inmediata" con ubicación y fecha — en sus propias líneas de metadatos. La estructura semántica de encabezados le da a un lector de pantalla y a un motor de búsqueda la misma jerarquía que un lector impreso obtiene solo de la tipografía.
 
-Estos estándares aseguran que cada comunicado de la plataforma mantenga una [[editorial-language-registers|voz de autoridad]] coherente, ya sea en una pantalla de alta densidad de píxeles o en una página impresa física.
+Juntas, estas tres capas mantienen a cada comunicado de la plataforma con la misma [[editorial-language-registers|voz de autoridad]], ya sea en una pantalla de alta densidad de píxeles o en una página impresa física.
 
 ## Véase también
 
