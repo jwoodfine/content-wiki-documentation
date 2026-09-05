@@ -19,21 +19,9 @@ cites: []
 
 ---
 
-El [[compounding-substrate|sustrato acumulativo]] de [[pointsav-overview|PointSav]] requiere reentrenamiento periódico para incorporar las interacciones del operador y las decisiones editoriales acumuladas desde el ciclo anterior. Elastic Compute #1 es el nodo de cómputo que ejecuta este reentrenamiento cada noche — una instancia spot en la nube con GPU ([[yoyo-compute-substrate|cómputo Yo-Yo]]) que reconstruye el grafo de conocimiento y produce pesos adaptadores LoRA (Adaptación de Bajo Rango, del inglés Low-Rank Adaptation) actualizados para el modelo de lenguaje local de la plataforma. El pipeline operacionaliza la afirmación estructural de que cada sesión productiva mejora la plataforma para la siguiente: convierte datos de interacción en bruto en pesos de modelo que hereda la próxima sesión.
+El [[compounding-substrate|sustrato acumulativo]] de [[pointsav-overview|PointSav]] requiere reentrenamiento periódico para incorporar las interacciones del operador y las decisiones editoriales acumuladas desde el ciclo anterior. Elastic Compute #1 es el nodo de cómputo que ejecuta este reentrenamiento cada noche ([[yoyo-compute-substrate|cómputo Yo-Yo]]) — reconstruye el grafo de conocimiento y produce pesos adaptadores LoRA (Adaptación de Bajo Rango, del inglés Low-Rank Adaptation) actualizados para el modelo de lenguaje local de la plataforma. El pipeline operacionaliza la afirmación estructural de que cada sesión productiva mejora la plataforma para la siguiente: convierte datos de interacción en bruto en pesos de modelo que hereda la próxima sesión.
 
-**Corrección (2026-07-18):** este artículo llama a Elastic Compute #1 una "instancia
-spot". Un artículo hermano (`service-slm-yoyo-operational.md`) sobre el mismo hardware
-Yo-Yo afirma lo contrario directamente, con una razón indicada: se aprovisiona bajo
-demanda en lugar de como instancia spot, porque la capacidad spot de L4 resultó poco
-fiable en múltiples zonas de EE. UU. Ambos artículos describen el mismo hardware exacto
-y este artículo enlaza a Elastic Compute #1 como el mismo concepto de
-[[yoyo-compute-substrate|cómputo Yo-Yo]] — parecen ser la misma instancia física, no dos
-distintas. Esto se lee como el mismo patrón de desactualización encontrado en otras
-partes de esta revisión. **Señalado, no resuelto silenciosamente en ningún sentido** —
-necesita confirmación de project-totebox antes de tratar cualquiera de las dos
-afirmaciones como autoritativa.
-
-Elastic Compute #1 es una instancia g2-standard-4 de Google Cloud (modelo de aprovisionamiento — spot vs. bajo demanda — señalado arriba, no afirmado aquí) equipada con
+Elastic Compute #1 es una instancia g2-standard-4 de Google Cloud equipada con
 una GPU NVIDIA L4 de 24 GB de VRAM. Cada noche ejecuta un pipeline de dos
 fases y cuatro horas de duración que produce pesos adaptadores ajustados para
 el modelo de lenguaje de la plataforma. La Fase 1 extrae entidades de
@@ -47,8 +35,8 @@ porque ambas requieren acceso exclusivo a la GPU L4.
 ## Por qué las fases son separadas
 
 La GPU L4 sirve dos cargas de trabajo incompatibles dentro de la ventana
-nocturna. Durante la Fase 1, vLLM carga OLMo 3 32B Think (cuantizado a
-4 bits) para ejecutar la inferencia de extracción de entidades. Durante la
+nocturna. Durante la Fase 1, vLLM carga OLMo 3 32B Think, cuantizado a
+Q3_K_M para ajustarse a los 22 GiB de VRAM de la L4, para ejecutar la inferencia de extracción de entidades. Durante la
 Fase 2, el ciclo de entrenamiento QLoRA carga los safetensors de OLMo 3 7B
 Think para el cómputo de gradientes. Una GPU no puede servir simultáneamente
 un proceso de inferencia vLLM activo y un ciclo de entrenamiento PyTorch —
@@ -63,7 +51,7 @@ tiene un presupuesto de tiempo configurable, con un valor predeterminado de
 
 Al inicio de la ventana nocturna, `start-yoyo.sh` arranca la VM de Elastic Compute #1
 y espera hasta 90 minutos a que vLLM señale su disponibilidad. Una vez que
-el servidor de inferencia está activo, `jennifer-datagraph-rebuild.sh` procesa
+el servidor de inferencia está activo, `datagraph-rebuild.sh` procesa
 tres flujos de documentos del despliegue del operador: archivos markdown de
 transcripciones de reuniones, archivos YAML y markdown de investigación de
 agentes, y registros JSON de fuentes de contactos. Para cada documento, el
@@ -85,7 +73,8 @@ Al finalizar la Fase 1, vLLM se detiene y la GPU queda libre.
 JSONL en dos buckets del corpus — `engineering-pointsav` (pares SFT extraídos
 de commits de ingeniería entre todos los clústeres) y `apprenticeship-pointsav`
 (pares DPO generados por el sustrato de enrutamiento de aprendizaje). Cuando
-alguno de los buckets alcanza 50 pares, el script escribe un archivo marcador
+alguno de los buckets supera el umbral del marcador de composición aplicado por
+`corpus-threshold.py` (`CLEAN_PAIR_FLOOR = 3000` pares limpios), el script escribe un archivo marcador
 de entrenamiento pendiente y, si la variable de entorno
 `SLM_YOYO_WEIGHTS_GCS_BUCKET` está configurada, sincroniza el directorio del
 corpus relevante con el bucket de GCS configurado.

@@ -1,6 +1,6 @@
 ---
 schema: foundry-doc-v1
-title: "Restricciones en tiempo de decodificación (resumen)"
+title: "Restricciones en tiempo de decodificación"
 slug: decode-time-constraints
 short_description: "La técnica de decodificación restringida, y una línea clara entre esa técnica y lo que PointSav ha construido hoy: un linter asesor posterior a la generación, con el mecanismo basado en gramática planificado, no implementado."
 category: ai
@@ -18,6 +18,9 @@ cites:
  - ni-51-102
  - llguidance
  - llm-structured-output-2026
+ - vllm-multi-lora
+ - xgrammar
+ - olmo3-allenai
 
 ---
 
@@ -28,8 +31,8 @@ producir JSON válido", el runtime hace que el token infractor sea matemáticame
 imposible — el modelo elige del conjunto de tokens válidos restantes. Esta técnica se
 conoce como decodificación restringida, generación estructurada o generación guiada por
 gramática, y está bien establecida en la literatura: la biblioteca `[llguidance]` de
-Microsoft Research, `[xgrammar]` de Carnegie Mellon, las salidas estructuradas de vLLM, y
-un cuerpo creciente de literatura sobre generación estructurada con modelos de lenguaje.
+Microsoft Research, `[xgrammar]` de Carnegie Mellon, las salidas estructuradas de vLLM
+`[vllm-multi-lora]`, y un cuerpo creciente de literatura sobre `[llm-structured-output-2026]`.
 
 ## Lo que está en producción hoy
 
@@ -121,3 +124,4 @@ construido. En orden aproximado de dependencia:
 - [[language-protocol-substrate]]
 - [[apprenticeship-substrate]]
 - [[sovereign-ai-routing]]
+- [[worm-ledger-architecture]]

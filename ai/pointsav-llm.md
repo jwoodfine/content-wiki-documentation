@@ -10,6 +10,7 @@ index_group: compute-tiers
 short_description: "The planned vendor-tier specialist AI model for substrate-sovereign SMBs — Tier 3 of the Four-Tier SLM Substrate Ladder, built by continued pretraining of the OLMo 3 32B base model."
 status: active
 bcsc_class: public-disclosure-safe
+forward_looking: true
 last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:

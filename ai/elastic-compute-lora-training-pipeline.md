@@ -19,27 +19,14 @@ cites: []
 
 ---
 
-The [[pointsav-overview|PointSav]] [[compounding-substrate|compounding substrate]] requires periodic retraining to incorporate the operator interactions and editorial decisions accumulated since the previous cycle. Elastic Compute #1 is the compute node that runs this retraining nightly — a GPU-equipped cloud spot instance ([[yoyo-compute-substrate|Yo-Yo compute]]) that rebuilds the knowledge graph and produces updated LoRA (Low-Rank Adaptation) adapter weights for the platform's local language model. The pipeline operationalises the theoretical claim that every productive session improves the platform for the next one: it converts raw interaction data into model weights the next session inherits.
+The [[pointsav-overview|PointSav]] [[compounding-substrate|compounding substrate]] requires periodic retraining to incorporate the operator interactions and editorial decisions accumulated since the previous cycle. Elastic Compute #1 is the compute node that runs this retraining nightly ([[yoyo-compute-substrate|Yo-Yo compute]]) — it rebuilds the knowledge graph and produces updated LoRA (Low-Rank Adaptation) adapter weights for the platform's local language model. The pipeline operationalises the theoretical claim that every productive session improves the platform for the next one: it converts raw interaction data into model weights the next session inherits.
 
-**Correction (2026-07-18):** this article calls Elastic Compute #1 a "spot instance."
-A sibling article (`service-slm-yoyo-operational.md`) on the same Yo-Yo hardware states
-the opposite directly, with a stated rationale: "provisioned on-demand rather than as a
-spot instance — L4 spot capacity proved unreliable across multiple US zones during
-initial bootstrapping." Both articles describe identical hardware (g2-standard-4, single
-L4 GPU, 24 GB VRAM) and this article's own wikilink identifies Elastic Compute #1 as the
-same [[yoyo-compute-substrate|Yo-Yo compute]] concept — these read as the same physical
-instance, not two different ones. This looks like the same staleness pattern found
-elsewhere in this pass: an early design decision (spot) documented here, later revised
-(to on-demand) and reflected in the sibling article, with this one never updated.
-**Flagged, not silently resolved either way** — needs project-totebox confirmation of
-which is current before either wording is treated as authoritative.
-
-Elastic Compute #1 is a g2-standard-4 Google Cloud instance (provisioning model — spot vs. on-demand — flagged above, not asserted here) equipped with a single NVIDIA L4 GPU (24 GB VRAM). Each night it runs a two-phase, four-hour pipeline that produces fine-tuned adapter weights for the workspace language model. Phase 1 extracts structured business entities from the operator data corpus and writes them to a property graph. Phase 2 reads accumulated engineering and apprenticeship training tuples, checks whether the corpus has crossed a minimum threshold, and runs a parameter-efficient training pass against the base model. The two phases are mandatory and sequential — they cannot overlap because both require exclusive access to the L4 GPU.
+Elastic Compute #1 is a g2-standard-4 Google Cloud instance equipped with a single NVIDIA L4 GPU (24 GB VRAM). Each night it runs a two-phase, four-hour pipeline that produces fine-tuned adapter weights for the workspace language model. Phase 1 extracts structured business entities from the operator data corpus and writes them to a property graph. Phase 2 reads accumulated engineering and apprenticeship training tuples, checks whether the corpus has crossed a minimum threshold, and runs a parameter-efficient training pass against the base model. The two phases are mandatory and sequential — they cannot overlap because both require exclusive access to the L4 GPU.
 
 ## Why the phases are separate
 
 The L4 GPU serves two incompatible workloads within the nightly window.
-During Phase 1, vLLM loads OLMo 3 32B Think (Correction, 2026-08-02: real quantization is **Q3_K_M**, not 4-bit — `vllm-weights-prep.sh:159-166`, file `olmo-3-32b-think-q3.gguf`, chosen to fit the L4's 22 GiB VRAM) to run entity
+During Phase 1, vLLM loads OLMo 3 32B Think, quantized to Q3_K_M to fit the L4's 22 GiB VRAM, to run entity
 extraction inference. During Phase 2, the QLoRA training loop loads OLMo 3
 7B Think safetensors for gradient computation. A GPU cannot serve an active
 vLLM inference process and a PyTorch training loop simultaneously — memory
@@ -53,7 +40,7 @@ defaulting to 7200 seconds (two hours) each.
 
 At the start of the nightly window, `start-yoyo.sh` boots the Elastic Compute #1 VM
 and waits up to 90 minutes for vLLM to signal readiness. Once the inference
-server is live, `jennifer-datagraph-rebuild.sh` processes three document
+server is live, `datagraph-rebuild.sh` processes three document
 streams from the operator deployment: meeting transcript markdown files,
 agent research YAML and markdown files, and contact source JSON records.
 For each document, the script calls `POST :9080/v1/chat/completions` through
@@ -72,8 +59,8 @@ At the end of Phase 1, vLLM stops and the GPU is released.
 `corpus-threshold.py` runs at the start of Phase 2. It counts JSONL tuples
 in two corpus buckets — `engineering-pointsav` (SFT tuples drawn from
 cross-cluster engineering commits) and `apprenticeship-pointsav` (DPO pairs
-drawn from the apprenticeship routing substrate). When either bucket reaches
-50 tuples (Correction, 2026-08-02: the raw 50-count is now vestigial — the live gate in `corpus-threshold.py` is a composition scorecard requiring `CLEAN_PAIR_FLOOR = 3000` clean pairs, adopted per an internal audit dated 2026-06-21, before this article's own last-edited date), the script writes a training-pending marker file and, if the
+drawn from the apprenticeship routing substrate). When either bucket crosses the composition-scorecard threshold enforced by
+`corpus-threshold.py` (`CLEAN_PAIR_FLOOR = 3000` clean pairs), the script writes a training-pending marker file and, if the
 `SLM_YOYO_WEIGHTS_GCS_BUCKET` environment variable is set, syncs the
 relevant corpus directory to the configured GCS bucket.
 

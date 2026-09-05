@@ -6,7 +6,8 @@ title: "Inferencia sin contenedores"
 slug: zero-container-inference
 short_description: "Patrón de implementación GPU de Nivel B con binarios Linux nativos bajo systemd sobre una GPU L4, con la detección de inactividad ejecutándose desde el proceso del servidor Doorman en lugar de un temporizador en la propia VM de GPU."
 category: ai
-status: stub
+status: active
+quality: complete
 bcsc_class: forward-looking
 last_edited: 2026-08-24
 editor: pointsav-engineering
@@ -56,8 +57,3 @@ Plataformas de orquestación de contenedores gestionadas, entornos de ejecución
 - [[zero-container-runtime]] — el compromiso estructural que subyace a este patrón de despliegue
 - [[doorman-protocol]] — la ruta de enrutamiento de Nivel B que distribuye al conjunto de inferencia
 - [[substrate-without-inference-base-case]] — el sustrato funciona completamente sin Nivel B; la inferencia es aditiva
-
-## Referencias
-
-- [[zero-container-runtime]] — especificación del compromiso de despliegue sin contenedores.
-- **Política Nacional 51-201 de la CSA** — Divulgación de información prospectiva. El conjunto de inferencia de Nivel B y los plazos de despliegue en este artículo son declaraciones prospectivas sujetas a cambios.

@@ -6,7 +6,8 @@ title: "Zero-container inference"
 slug: zero-container-inference
 short_description: "Tier B GPU deployment pattern using native Linux binaries under systemd on an L4 GPU, with idle detection run from the Doorman server process rather than a timer on the GPU VM itself."
 category: ai
-status: stub
+status: active
+quality: complete
 bcsc_class: forward-looking
 last_edited: 2026-08-24
 editor: pointsav-engineering

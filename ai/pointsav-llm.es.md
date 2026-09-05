@@ -10,6 +10,7 @@ index_group: compute-tiers
 short_description: "El modelo de IA especialista planificado para el Nivel 3 del sistema de cuatro niveles SLM de PointSav, construido mediante entrenamiento continuo de OLMo 3 32B sobre el corpus federado de aprendizaje de la plataforma."
 status: active
 bcsc_class: public-disclosure-safe
+forward_looking: true
 last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
@@ -109,12 +110,6 @@ PointSav-LLM ocupa el Nivel 3 de la Escalera de Cuatro Niveles del Sustrato SLM 
 Los niveles 0, A y B son operativos hoy. El Nivel C (PointSav-LLM) está planificado, sin estado operativo en la fecha de este artículo. La lógica de enrutamiento del Doorman para el Nivel C es infraestructura planificada; su estado actual es únicamente enrutamiento a los Niveles A/B.
 
 Los niveles técnicos A/B/C de enrutamiento de cómputo de esta tabla y la escalera comercial 0/1/2/3 orientada al cliente (los niveles de precios Abierto/C de pago/C+ de pago descritos más adelante) son dos esquemas de numeración separados que comparten dígitos por coincidencia — no la misma escalera, aunque la columna única "0/A/B/C" de esta tabla los fusiona visualmente.
-
----
-
-## Fundamento de código abierto
-
-La base técnica de PointSav-LLM es el modelo base OLMo 3 32B, publicado por AllenAI bajo licencia Apache 2.0, con datos de entrenamiento base bajo Open Data Commons — no la variante "Think", que AllenAI no ha publicado en el tamaño de 32B. Esta elección es estructural: una base completamente abierta permite el entrenamiento continuo propio (CPT), la auditoría independiente de los pesos y la portabilidad para el cliente. Los pesos base son abiertos; el valor comercial de PointSav reside en el CPT especialista sobre el corpus agregado de la plataforma, la infraestructura de escalado con intervención humana, el sustrato de auditoría por tenant y el SLA.
 
 ---
 
