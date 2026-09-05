@@ -8,8 +8,12 @@ type: topic
 content_type: topic
 index_group: knowledge-and-editorial-applications
 status: active
+quality: complete
+audience: vendor-public
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-24
+forward_looking: true
+language_protocol: PROSE-TOPIC
+last_edited: 2026-09-05
 editor: pointsav-engineering
 paired_with: wikipedia-leapfrog-design.es.md
 cites: [ni-51-102, np-51-201]

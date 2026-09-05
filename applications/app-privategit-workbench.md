@@ -8,8 +8,10 @@ content_type: topic
 quality: pre-build
 index_group: input-and-developer-surfaces
 status: active
+audience: vendor-public
 bcsc_class: no-disclosure-implication
-last_edited: 2026-08-22
+language_protocol: PROSE-TOPIC
+last_edited: 2026-09-05
 editor: project-editorial
 short_description: "Browser-based file editor in os-privategit presenting a three-column file tree, viewer, and editor for working across the cluster archive tree without a terminal."
 paired_with: app-privategit-workbench.es.md

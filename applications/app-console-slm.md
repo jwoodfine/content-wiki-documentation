@@ -9,8 +9,10 @@ quality: complete
 index_group: input-and-developer-surfaces
 short_description: "Terminal console cartridge showing live AI inference infrastructure state — model health, the burst-GPU fleet, queue depth, and daily spend — read-only, with no controls of its own."
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+language_protocol: PROSE-TOPIC
+last_edited: 2026-09-05
 editor: pointsav-engineering
 cites: []
 references: []
@@ -96,3 +98,11 @@ The console is a pure observer: it makes no write calls to the inference gateway
 all. It is deployed alongside the gateway on the same node and requires no network
 connectivity to external services. If the gateway is unreachable, the console keeps
 running and shows each panel as unavailable rather than crashing.
+
+## See also
+
+- [[app-console-keys]] — the chassis that hosts this cartridge; defines the Cartridge trait
+- [[os-console]] — the os-console product overview and F-key surface
+- [[service-slm]] — the inference gateway whose state this console displays
+- [[spot-vm-lifecycle-kill-switch]] — the kill switch this console surfaces but does not control
+- [[app-console-email]] — a sibling cartridge on the same console chassis

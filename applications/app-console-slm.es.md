@@ -9,8 +9,10 @@ quality: complete
 index_group: input-and-developer-surfaces
 short_description: "Cartucho de consola en terminal que muestra el estado en vivo de la infraestructura de inferencia — salud del modelo, la flota GPU de ráfaga, profundidad de cola y gasto diario — de solo lectura, sin controles propios."
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+language_protocol: TRANSLATE-ES
+last_edited: 2026-09-05
 editor: pointsav-engineering
 cites: []
 references: []
@@ -104,3 +106,11 @@ pasarela de inferencia. Se despliega junto a la pasarela en el mismo nodo y no
 requiere conectividad de red a servicios externos. Si la pasarela no está disponible,
 la consola sigue ejecutándose y muestra cada panel como no disponible en lugar de
 fallar.
+
+## Véase también
+
+- [[app-console-keys]] — el chasis que aloja este cartucho; define el rasgo Cartridge
+- [[os-console]] — la visión general del producto os-console y la superficie de teclas F
+- [[service-slm]] — la pasarela de inferencia cuyo estado muestra esta consola
+- [[spot-vm-lifecycle-kill-switch]] — el interruptor de emergencia que esta consola muestra pero no controla
+- [[app-console-email]] — un cartucho hermano en el mismo chasis de consola

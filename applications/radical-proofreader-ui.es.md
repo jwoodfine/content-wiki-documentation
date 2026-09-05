@@ -9,8 +9,10 @@ quality: complete
 index_group: knowledge-and-editorial-applications
 short_description: "Cartucho de contenido de terminal para la canalización service-proofreader — el operador envía texto, revisa los hallazgos y registra un veredicto binario aceptar/rechazar que alimenta el corpus de aprendizaje."
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+language_protocol: TRANSLATE-ES
+last_edited: 2026-09-05
 editor: pointsav-engineering
 cites: []
 references: []

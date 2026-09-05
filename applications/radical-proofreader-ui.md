@@ -9,8 +9,10 @@ quality: complete
 index_group: knowledge-and-editorial-applications
 short_description: "Terminal content cartridge for the service-proofreader pipeline — operators submit text, review findings, and record a binary accept/reject verdict that feeds the apprenticeship corpus."
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
-last_edited: 2026-08-22
+language_protocol: PROSE-TOPIC
+last_edited: 2026-09-05
 editor: pointsav-engineering
 cites: []
 references: []

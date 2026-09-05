@@ -8,8 +8,9 @@ content_type: topic
 quality: complete
 index_group: input-and-developer-surfaces
 status: active
+audience: vendor-public
 bcsc_class: no-disclosure-implication
-last_edited: 2026-08-22
+last_edited: 2026-09-05
 editor: pointsav-engineering
 language_protocol: TRANSLATE-ES
 short_description: "Editor de archivos en navegador incluido en os-privategit, con interfaz de tres columnas — árbol, visor y editor — para trabajar en el árbol del clúster sin terminal."
