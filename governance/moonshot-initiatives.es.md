@@ -33,7 +33,7 @@ La cuarentena no es una medida punitiva — es una postura arquitectónica. Un c
 
 ## Áreas de iniciativa y estado real
 
-Existen nueve directorios moonshot. Tres llevan ingeniería activa y sustancial hoy; los seis restantes son directorios nombrados con un esqueleto Cargo de 4 archivos y sin implementación todavía:
+Existen veintitrés directorios moonshot a la fecha de este escrito. La tabla siguiente rastrea las nueve iniciativas con mayor actividad de ingeniería o visibilidad de gobernanza hasta el momento — tres con ingeniería activa y sustancial, y seis que son directorios nombrados con un esqueleto Cargo de 4 archivos y sin implementación todavía. Los catorce directorios restantes aún no se evalúan individualmente en este artículo:
 
 | Iniciativa | Dependencia objetivo | Estado |
 |---|---|---|

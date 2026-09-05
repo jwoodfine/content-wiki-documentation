@@ -9,7 +9,9 @@ quality: complete
 index_group: licensing-and-contribution
 short_description: "La propiedad intelectual de la plataforma se concentra en una única sociedad holding matriz canadiense por operación del artículo 13(3) de la Ley de Derechos de Autor canadiense, sin cesión entre empresas, y está diseñada para evolucionar de forma incremental a medida que madura la estructura corporativa."
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
 last_edited: 2026-08-26
 editor: pointsav-engineering
 cites:

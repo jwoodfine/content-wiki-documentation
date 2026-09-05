@@ -9,7 +9,9 @@ quality: complete
 index_group: licensing-and-contribution
 short_description: "The Three-Tier Contributor Model organises substrate contributors into Core (4-7 engineers), Paid (50-100 contractors), and Open (10,000+ public), with mobility paths."
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:

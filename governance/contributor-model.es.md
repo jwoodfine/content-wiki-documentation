@@ -11,7 +11,9 @@ content_type: topic
 quality: complete
 index_group: licensing-and-contribution
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
 last_edited: 2026-07-31
 editor: pointsav-engineering
 cites:

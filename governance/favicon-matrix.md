@@ -9,7 +9,9 @@ quality: complete
 index_group: platform-disciplines
 short_description: "The wiki serves a single static SVG favicon — a navy document-page glyph, linked from a static file, the same mark on every tab regardless of tenant."
 status: active
+audience: vendor-public
 bcsc_class: no-disclosure-implication
+language_protocol: PROSE-TOPIC
 last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: favicon-matrix.es.md

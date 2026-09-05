@@ -10,7 +10,9 @@ content_type: topic
 quality: complete
 index_group: institutional-due-diligence
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
 last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []
@@ -33,7 +35,7 @@ La plataforma aplica el aislamiento de inquilinos en tres capas:
 
 **Aislamiento de espacio de nombres en el Anillo 2.** Los servicios del Anillo 2 son multiinquilino mediante `moduleId`. El grafo de conocimiento y el índice de búsqueda de cada inquilino están aislados detrás de su espacio de nombres `moduleId` en cada ruta de lectura y escritura. Una consulta para el inquilino A no puede devolver registros del inquilino B.
 
-**Aislamiento de IA de límite único en el Anillo 3.** [[service-slm]] es el único servicio del Anillo 3. Cada solicitud de IA pasa por el Portero, que sanea los datos de salida, enruta entre tres niveles de cómputo y escribe una fila de auditoría en el libro local del cliente antes de que se realice cualquier llamada externa.
+**Aislamiento de IA de límite único en el Anillo 3.** [[service-slm]] es el único servicio del Anillo 3. Cada solicitud de IA pasa por el Portero, que enruta entre tres niveles de cómputo y escribe una fila de auditoría en el libro local del cliente antes de que se realice cualquier llamada externa.
 
 ## El límite del Portero
 
@@ -43,7 +45,7 @@ El Portero es el único punto por el que fluye toda la inferencia de IA. Aplica 
 
 **Cada llamada se registra antes de realizarse.** El Portero escribe una fila de auditoría en el libro local del cliente antes de enviar la llamada externa. Una llamada que falla en la capa de red sigue teniendo una entrada en el libro. La puerta de enlace del proveedor escribe una segunda fila de auditoría simultáneamente.
 
-**Los datos de salida se sanean.** El Portero inspecciona cada carga útil de salida antes de que salga de la red del cliente. Los datos estructurados sujetos a las reglas de clasificación de datos de la plataforma se eliminan en este límite.
+**Redacción de credenciales en una sola ruta de escritura.** El Portero elimina las credenciales antes de escribir en el corpus de entrenamiento de aprendizaje. No inspecciona ni sanea la carga útil de la solicitud saliente en sí misma antes de despachar una llamada externa — esa propiedad más amplia de saneamiento de salida es un objetivo de diseño, no un mecanismo ya implementado.
 
 **La respuesta de entrada queda contenida.** La respuesta de un modelo externo vuelve al Portero y no se expone directamente a los servicios del Anillo 2 o del Anillo 1.
 
@@ -53,7 +55,7 @@ El Portero es el único punto por el que fluye toda la inferencia de IA. Aplica 
 
 Cada servicio del Anillo 1 escribe en un libro de Solo Escritura y Múltiple Lectura. El libro no tiene operación de eliminación ni de sobreescritura — estas funciones no existen en el motor de almacenamiento. La modificación es estructuralmente imposible, no prohibida por política.
 
-El libro está basado en tiles y encadenado por hash: cada tile contiene el hash del tile anterior. Cualquier modificación en cualquier tile rompe la cadena de hash y es detectable sin acceder a los sistemas propios de la plataforma. El servicio `[[fs-anchor-emitter]]` genera puntos de control firmados del libro a cadencia horaria y los prepara para su anclaje externo en el registro de transparencia público Sigstore Rekor mensualmente.
+El libro está basado en tiles y encadenado por hash: cada tile contiene el hash del tile anterior. Cualquier modificación en cualquier tile rompe la cadena de hash y es detectable sin acceder a los sistemas propios de la plataforma. El servicio `[[fs-anchor-emitter]]` genera puntos de control firmados del libro y los ancla externamente en el registro de transparencia público Sigstore Rekor con una cadencia mensual.
 
 Esta estructura satisface la Regla SEC 17a-4(f) y la preservación de registros electrónicos cualificados de eIDAS por garantía estructural, no por atestación de política que puede modificarse. No existe hoy ninguna certificación SOC 2 ni ISAE 3402; un informe SOC 3 está planificado.
 

@@ -10,7 +10,9 @@ content_type: topic
 quality: complete
 index_group: institutional-due-diligence
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
 last_edited: 2026-08-24
 editor: pointsav-engineering
 cites:
@@ -37,6 +39,10 @@ Tres propiedades están garantizadas estructuralmente — no prometidas contract
 
 **El libro de auditoría.** El libro de auditoría por inquilino — el registro de cada acción editorial, cada llamada de inferencia de IA, cada ingesta de datos — vive en el despliegue del cliente. Una interrupción del proveedor no impide que el cliente presente este libro a un regulador.
 
+## Lo que el proveedor no posee
+
+Ningún servicio de PointSav almacena una clave de descifrado de los datos del cliente en la infraestructura del proveedor. Ningún servicio de PointSav enruta el contenido de los registros del cliente a través de un intermediario operado por el proveedor. El proveedor entrega el software; el cliente aporta el hardware, las claves y el almacenamiento. Este es el compromiso de [[customer-hostability]] expresado como condiciones de adquisición: el sustrato no tiene una función de exportación de datos porque los datos ya estaban en el hardware del cliente desde el momento en que se escribieron.
+
 ## Estructura comercial (planificada)
 
 Por `[np-51-201]`, lo siguiente describe la trayectoria comercial planificada.
@@ -54,7 +60,26 @@ La postura de cumplimiento de la plataforma es estructural, no procedimental. El
 - **Inmutabilidad de registros.** El libro WORM satisface la Regla SEC 17a-4(f) y la preservación de registros electrónicos cualificados de eIDAS. No existe hoy ninguna certificación SOC 2 ni ISAE 3402 — un informe SOC 3 está planificado. La modificación no está prohibida a nivel de política; está prohibida por el motor de almacenamiento, que no tiene operación de eliminación ni sobreescritura.
 - **Pista de auditoría de IA.** Cada llamada de inferencia de IA pasa por el [[doorman-protocol|Portero]] y genera una fila de auditoría en el libro local del cliente. La puerta de enlace del proveedor genera una segunda fila de auditoría simultáneamente.
 - **Divulgación continua BCSC.** La plataforma produce registros de grado de divulgación continua como salida estructural del procesamiento del Anillo 2. Un emisor informante bajo NI 51-102 que despliega la plataforma dentro de su propio sustrato puede satisfacer las obligaciones de divulgación continua contra registros que posee y controla.
-- **Residencia de datos.** Los datos del cliente nunca salen del hardware designado del cliente excepto a través de una llamada de egreso explícita auditada en el libro.
+- **Residencia de datos.** Los datos del cliente nunca salen del hardware designado del cliente excepto a través de una llamada de egreso explícita auditada en el libro. La residencia de datos es una propiedad de la topología del despliegue, no un compromiso contractual sujeto a interpretación.
+
+## Contexto regulatorio
+
+Los clientes que operan bajo los siguientes marcos regulatorios tienen propiedades de cumplimiento directamente aplicables en la arquitectura de la plataforma:
+
+| Marco | Propiedad aplicable |
+|---|---|
+| Divulgación continua NI 51-102 (Canadá) | El libro WORM más la pista de auditoría de egreso satisfacen los requisitos documentales |
+| Regla SEC 17a-4(f) (EE. UU.) | El libro WORM satisface los requisitos de almacenamiento electrónico no borrable y no reescribible |
+| Preservación cualificada eIDAS (UE) | El libro encadenado por hash y firmado satisface los requisitos de registros electrónicos cualificados |
+| SOC 3 (planificado) | El libro WORM más la pista de auditoría de control de acceso están diseñados para respaldar los criterios de disponibilidad e integridad de SOC 3; no existe hoy ninguna certificación SOC 2 ni ISAE 3402 |
+
+Los clientes en otros entornos regulados deben evaluar las propiedades estructurales de la plataforma frente a su propio marco. La documentación técnica es [[worm-ledger-design]] y [[compliance-and-continuous-disclosure]].
+
+## Estructura del proveedor
+
+PointSav Digital Systems es el proveedor de software y actualmente es un nombre comercial de Woodfine Capital Projects Inc., con planes de convertirse en una subsidiaria de propiedad exclusiva de Woodfine tras su constitución. El catálogo de despliegue orientado al cliente lo mantiene MCorp, una subsidiaria de propiedad exclusiva de Woodfine.
+
+El proveedor opera `documentation.pointsav.com` porque PointSav es el cliente de nivel canónico de cada paquete que distribuye. El despliegue alojado por el cliente es el patrón canónico; el alojamiento por el proveedor es una opción de conveniencia.
 
 ## Véase también
 

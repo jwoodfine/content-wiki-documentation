@@ -9,7 +9,9 @@ quality: complete
 index_group: institutional-due-diligence
 short_description: "The platform's security posture: capability-based hardware isolation, the Diode command-flow standard, the Doorman AI boundary, and the WORM audit ledger."
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
 last_edited: 2026-05-15
 editor: pointsav-engineering
 cites: []

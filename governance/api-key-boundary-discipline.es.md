@@ -9,7 +9,9 @@ quality: complete
 index_group: platform-disciplines
 short_description: La regla que establece que todas las credenciales externas de LLM pertenecen exclusivamente al servicio de pasarela y nunca a los motores de inferencia.
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
 last_edited: 2026-05-01
 editor: pointsav-engineering
 cites:
@@ -36,12 +38,26 @@ Tres propiedades estructurales justifican la regla:
 
 **Escalado sin estado.** Los procesos de inferencia que no almacenan secretos pueden iniciarse, detenerse y reemplazarse sin rotación de credenciales.
 
+## Ubicación de las claves por nivel
+
+La disciplina se aplica de manera consistente en cada forma de despliegue:
+
+**[[totebox-os|Totebox]] autohospedado (despliegue del cliente).** El [[doorman-protocol|Portero]] local del cliente conserva las claves externas de LLM y, opcionalmente, una clave de suscripción para los niveles de modelo alojados en la nube. El motor de inferencia local no conserva nada. Las claves del cliente nunca viajan hacia el proveedor.
+
+**Trabajadores de ráfaga en la nube.** Cuando una solicitud se enruta hacia un trabajador de GPU en la infraestructura de un proveedor de nube, ese trabajador no conserva credenciales externas de API. La autenticación entre el nivel de ráfaga en la nube y cualquier proveedor externo la gestiona la pasarela que despachó la solicitud.
+
+**Pasarela del proveedor (despliegues del lado del proveedor).** El Portero del proveedor conserva las credenciales del lado del proveedor. El proveedor nunca conserva, almacena ni accede a las claves externas de LLM propiedad del cliente. Las contribuciones federadas al mercado intercambian adaptadores, no credenciales.
+
 ## Patrones prohibidos
 
 - Un proceso de inferencia que lee claves desde variables de entorno, aunque no realice llamadas externas en ese momento.
 - Un proceso de inferencia que obtiene claves de un gestor de secretos al arrancar.
 - Scripts ad hoc que leen claves de API desde cualquier fuente distinta a la pasarela.
 - Almacenamiento del lado del proveedor de claves externas de LLM propiedad del cliente.
+
+## Relación con las credenciales de identidad
+
+Las claves de API para proveedores de LLM son credenciales de tiempo de ejecución — cambian con la rotación, pertenecen al Portero, y nunca se incrustan en el código. Son distintas de las claves de firma de identidad, que son credenciales de autoría usadas en el momento del commit. Las dos clases de credencial tienen ubicaciones de almacenamiento y reglas de ciclo de vida separadas; ninguna cruza el límite de la otra.
 
 ## Cumplimiento
 

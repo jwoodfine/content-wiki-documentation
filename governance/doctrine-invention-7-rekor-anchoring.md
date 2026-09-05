@@ -8,12 +8,14 @@ short_description: "How Foundry's anchor-emitter binary posts a signed ledger ch
 audience: vendor-public
 bcsc_class: current-fact
 language: en
+language_protocol: PROSE-TOPIC
 paired_with: doctrine-invention-7-rekor-anchoring.es.md
 category: governance
 status: active
 quality: complete
 index_group: platform-disciplines
 last_edited: 2026-08-24
+editor: pointsav-engineering
 ---
 
 Doctrine §III.7 defines the Integrity Anchor pattern: a monthly operation that bundles the workspace state hash, manifest hashes, and ledger hash, then posts the result to Sigstore Rekor — a public, append-only transparency log. The result is independently verifiable: anyone can confirm that this state existed at this time, under this identity, without trusting Foundry's own infrastructure.

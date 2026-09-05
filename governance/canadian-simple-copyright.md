@@ -9,7 +9,9 @@ quality: complete
 index_group: licensing-and-contribution
 short_description: "The platform's IP vests in a single Canadian parent holding company by operation of Canadian Copyright Act § 13(3), without inter-company assignment."
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
 last_edited: 2026-08-26
 editor: pointsav-engineering
 cites:

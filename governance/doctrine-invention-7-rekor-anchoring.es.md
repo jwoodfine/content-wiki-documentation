@@ -8,12 +8,14 @@ short_description: "Cómo el binario emisor-de-ancla de Foundry publica un punto
 audience: vendor-public
 bcsc_class: current-fact
 language: es
+language_protocol: PROSE-TOPIC
 paired_with: doctrine-invention-7-rekor-anchoring.md
 category: governance
 status: active
 quality: complete
 index_group: platform-disciplines
 last_edited: 2026-08-24
+editor: pointsav-engineering
 ---
 
 La Doctrina §III.7 define el patrón Ancla de Integridad: una operación mensual que agrupa el hash del estado del espacio de trabajo, los hashes de manifiestos y el hash del registro, y publica el resultado en Sigstore Rekor — un registro de transparencia público y de solo anexado. El resultado es verificable de forma independiente: cualquier parte puede confirmar que este estado existió en este momento, bajo esta identidad, sin confiar en la infraestructura de Foundry.

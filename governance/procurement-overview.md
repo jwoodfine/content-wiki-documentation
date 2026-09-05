@@ -9,7 +9,9 @@ quality: complete
 index_group: institutional-due-diligence
 short_description: "What a regulated buyer acquires deploying PointSav: hardware the customer owns outright, data the vendor never holds, and compliance enforced by architecture."
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
 last_edited: 2026-08-26
 editor: pointsav-engineering
 cites:

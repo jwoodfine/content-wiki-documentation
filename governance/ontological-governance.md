@@ -9,7 +9,9 @@ quality: complete
 index_group: platform-disciplines
 short_description: "Four reference vocabulary ledgers kept deliberately narrow, plus a human-verification loop that reviews extracted identity fragments before they enter the verified ledger."
 status: active
+audience: public
 bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
 last_edited: 2026-08-22
 editor: pointsav-engineering
 cites: []

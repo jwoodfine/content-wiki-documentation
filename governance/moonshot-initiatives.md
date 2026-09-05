@@ -9,7 +9,9 @@ quality: complete
 index_group: engineering-sovereignty
 short_description: "Moonshot initiatives are active engineering programs building native replacements for quarantined third-party dependencies, reducing vendor lock-in."
 status: active
+audience: public
 bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
 last_edited: 2026-05-19
 editor: pointsav-engineering
 cites: []
@@ -59,7 +61,7 @@ point.
 
 ## Initiative areas and real status
 
-Nine moonshot directories exist. Three carry substantial, active engineering today; the remaining six are named directories with a 4-file Cargo scaffold and no implementation yet:
+Twenty-three moonshot directories exist as of this writing. The table below tracks the nine initiatives with the most engineering activity or governance visibility to date — three carrying substantial, active engineering, and six that are named directories with a 4-file Cargo scaffold and no implementation yet. The remaining fourteen directories are not yet individually assessed in this article:
 
 | Initiative | Target dependency | Status |
 |---|---|---|

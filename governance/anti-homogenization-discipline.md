@@ -9,7 +9,9 @@ quality: complete
 index_group: platform-disciplines
 short_description: "Anti-homogenization discipline resists AI writing assistants pulling contributors toward a single voice, by flagging potential issues rather than silently rewriting text."
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
 last_edited: 2026-04-30
 editor: pointsav-engineering
 cites:

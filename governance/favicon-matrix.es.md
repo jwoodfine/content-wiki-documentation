@@ -9,7 +9,9 @@ quality: complete
 index_group: platform-disciplines
 short_description: "El wiki sirve un único favicon SVG estático — un glifo de documento azul marino, enlazado desde un archivo estático, la misma marca en cada pestaña sin importar el inquilino."
 status: active
+audience: vendor-public
 bcsc_class: no-disclosure-implication
+language_protocol: PROSE-TOPIC
 last_edited: 2026-08-22
 editor: pointsav-engineering
 paired_with: favicon-matrix.md

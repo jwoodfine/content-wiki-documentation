@@ -9,6 +9,7 @@ quality: complete
 index_group: engineering-sovereignty
 short_description: "La exclusa soberana es el protocolo de commits por etapas que impone una separación estricta entre las identidades de staging que escriben trabajo y las identidades de repositorio canónico que lo publican — dos autores de staging para todos los commits, dos identidades de administrador para los pushes canónicos, sin ruta directa entre ellos."
 status: active
+audience: public
 bcsc_class: public-disclosure-safe
 language: es
 language_protocol: PROSE-TOPIC
@@ -25,8 +26,8 @@ El almacén de identidades de la plataforma define cuatro identidades, cada una 
 
 | Identidad | Clave | Función | Ámbito |
 |---|---|---|---|
-| `jwoodfine` | `id_jwoodfine` | Staging — Jennifer | Todos los commits en repos de ingeniería |
-| `pwoodfine` | `id_pwoodfine` | Staging — Peter | Todos los commits en repos de ingeniería |
+| `jwoodfine` | `id_jwoodfine` | Staging — J | Todos los commits en repos de ingeniería |
+| `pwoodfine` | `id_pwoodfine` | Staging — P | Todos los commits en repos de ingeniería |
 | `ps-administrator` | `id_pointsav-administrator` | Solo push | Org canónica `pointsav` en GitHub |
 | `mcorp-administrator` | `id_woodfine-administrator` | Solo push | Org canónica `woodfine` en GitHub |
 

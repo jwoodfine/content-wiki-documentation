@@ -27,7 +27,7 @@ Cualquier plataforma que haya pasado por una fase de transformación digital her
 
 ## El libro contable de dependencias
 
-La Iniciativa mantiene un libro contable físico de dependencias de terceros pendientes. Cada entrada registra la dependencia, el riesgo estructural que representa, y el estado de la iniciativa moonshot que construye el reemplazo.
+La Iniciativa mantiene un libro contable físico de dependencias de terceros pendientes. Cada entrada registra la dependencia, el riesgo estructural que representa, y el estado de la iniciativa moonshot que construye el reemplazo. Véase [[moonshot-initiatives]] para el estado de construcción por iniciativa — existen veintitrés directorios moonshot hoy, de los cuales tres llevan ingeniería activa sustancial, seis siguen siendo esqueletos, y catorce aún no se evalúan individualmente.
 
 El libro contable hace la deuda visible. La visibilidad evita que se acumule silenciosamente — una dependencia no registrada es una dependencia que no recibe priorización de ingeniería.
 

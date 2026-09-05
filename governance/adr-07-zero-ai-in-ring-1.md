@@ -8,12 +8,14 @@ short_description: "SYS-ADR-07 prohibits AI inference from all Ring 1 boundary-i
 audience: vendor-public
 bcsc_class: current-fact
 language: en
+language_protocol: PROSE-TOPIC
 paired_with: adr-07-zero-ai-in-ring-1.es.md
 category: governance
 status: active
 quality: complete
 index_group: formal-decision-records
 last_edited: 2026-07-11
+editor: pointsav-engineering
 cites: []
 ---
 

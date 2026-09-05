@@ -8,12 +8,14 @@ short_description: "SYS-ADR-07 prohíbe la inferencia de IA en todos los servici
 audience: vendor-public
 bcsc_class: current-fact
 language: es
+language_protocol: PROSE-TOPIC
 paired_with: adr-07-zero-ai-in-ring-1.md
 category: governance
 status: active
 quality: complete
 index_group: formal-decision-records
 last_edited: 2026-06-23
+editor: pointsav-engineering
 cites: []
 ---
 

@@ -9,7 +9,9 @@ quality: complete
 index_group: engineering-sovereignty
 short_description: "The engineering governance program tracking third-party dependencies, isolating them in quarantine, and coordinating the moonshot programs replacing them."
 status: active
+audience: public
 bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
 last_edited: 2026-05-19
 editor: pointsav-engineering
 cites: []
