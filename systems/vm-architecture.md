@@ -8,8 +8,11 @@ type: topic
 content_type: topic
 index_group: the-archive-layer
 status: active
+quality: complete
+audience: vendor-public
 bcsc_class: public-disclosure-safe
 language: en
+language_protocol: PROSE-TOPIC
 paired_with: vm-architecture.es.md
 last_edited: 2026-07-11
 editor: editorial

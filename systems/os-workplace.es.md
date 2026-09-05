@@ -63,8 +63,10 @@ co-residente, no mediante virtualización de Tipo 2 — son dos capas independie
 misma máquina. El equipo se incorpora a la [[ppn-architecture-overview|Red Privada PointSav]] como
 par WireGuard directo dentro del rango `10.42.20.0/24`; la instancia `node-*` de `os-console` que
 aloja hereda esa membresía en lugar de recibir una dirección propia. Las instancias de despliegue
-usan el prefijo `station-*`. Las dos primeras previstas son `station-workplace-jennifer-1` y
-`station-workplace-mathew-1`, ambas a la espera del despliegue de la red WireGuard y de la
+usan el prefijo `station-*`, siguiendo la misma convención de numeración `<nombre>-N` que otras
+instancias de despliegue de la PPN (véase, por ejemplo,
+[[os-network-admin|`route-network-admin-1`]]). Las dos primeras previstas son `station-workplace-1`
+y `station-workplace-2`, ambas a la espera del despliegue de la red WireGuard y de la
 construcción de `app-workplace-desktop`. `os-workplace` no se conecta directamente con
 [[totebox-orchestration|la puerta de enlace de orquestación]] — solo indirectamente, a través de
 la instancia de `os-console` que aloja.

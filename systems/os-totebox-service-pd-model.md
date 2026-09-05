@@ -8,6 +8,7 @@ short_description: "How os-totebox is designed to map Rust service binaries to s
 audience: vendor-public
 bcsc_class: forward-looking
 language: en
+language_protocol: PROSE-TOPIC
 index_group: the-archive-layer
 paired_with: os-totebox-service-pd-model.es.md
 category: systems
@@ -28,24 +29,11 @@ depends on are not yet real — see Known limitations, below.
 
 ## Known limitations (2026-08-06)
 
-Three gaps are open against this article's own claims about the WORM ledger, and are
-load-bearing for anyone evaluating the design today:
-
-- **Storage is not yet persistent.** The deployed guest's virtio-blk storage device is
-  never actually mounted. A guest reboot wipes all data — a direct, current gap against
-  the append-only, durable ledger this article describes service-fs PD as enforcing.
-- **Graceful shutdown is broken.** Shutdown via QMP (QEMU Machine Protocol) is documented
-  as broken: the guest has no ACPI or power-button device to receive a shutdown request.
-  Redeploys currently hard-kill the guest, with no checkpoint guarantee at the moment of
-  kill.
-- **Nothing anchors or signs the ledger yet.** The integrity-anchoring companion service
-  has been failing since 2026-08-01, and checkpoint signing is deliberately left unset at
-  this baseline. The WORM ledger runs, but no external anchor and no signature currently
-  attach to its checkpoints.
-
-These are the deployed build's current, factual limits. The boot and inference
-verification above is real and current; the ledger's
-persistence, availability, and anchoring guarantees are not yet delivered.
+These same limitations — storage not yet persistent, graceful shutdown broken, nothing
+anchoring or signing the ledger yet — are load-bearing for anyone evaluating the design
+today. Rather than restate them here, see [[totebox-os]]'s own **"A known limitation —
+data persistence inside the seL4 guest"** section for the canonical, single-sourced
+version of this fact.
 
 [[totebox-os]] is designed to be the Sovereign WORM Data Vault tier of the [[three-binary-architecture|three-binary architecture]], intended to run as a Type I bare-metal OS on top of the [[sel4-microkernel-substrate|seL4 microkernel]] — no shell, no root process, no init system, no package manager — once the Phase H1 seL4 image ships. In that end-state design, every service that handles durable data becomes a seL4 Protection Domain (PD): a hardware-enforced isolation unit whose capability set is fixed at build time and cannot be extended at runtime. This article explains what that design means, why it takes the shape it does, and how two planned tools — moonshot-sel4-vmm and [[moonshot-toolkit-build-orchestrator|moonshot-toolkit]] — are intended to turn ordinary Rust service binaries into a formally verified PD graph.
 

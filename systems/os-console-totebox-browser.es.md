@@ -5,7 +5,7 @@ title: "os-console: El Navegador de Totebox Orchestration"
 slug: os-console-totebox-browser
 aliases:
   - topic-os-console-totebox-browser
-short_description: "os-console es el terminal del operador orientado al teclado para Totebox Orchestration, estructuralmente análogo a un navegador: renderiza vistas de los servicios Totebox sin almacenar datos en la máquina del operador."
+short_description: "os-console-totebox-browser se ha incorporado a la sección propia de os-console 'Por qué este diseño: la analogía del navegador' — este artículo es ahora un breve puntero, no un análisis independiente."
 category: systems
 type: reference
 quality: complete
@@ -13,151 +13,25 @@ index_group: operator-surfaces
 status: active
 audience: public
 bcsc_class: public-disclosure-safe
-language_protocol: TRANSLATE-ES
-last_edited: 2026-08-22
+language_protocol: PROSE-TOPIC
+last_edited: 2026-09-05
 editor: pointsav-engineering
 paired_with: os-console-totebox-browser.md
 cites: []
 ---
 
-os-console es la superficie de terminal del operador para [[totebox-orchestration|Totebox Orchestration]]. Se
-ejecuta en la máquina host del operador —un ordenador personal, una estación de trabajo
-o un cliente ligero— y presenta una interfaz orientada al teclado para los servicios
-que se ejecutan en el Totebox del operador.
+La explicación de la analogía del navegador para el diseño de os-console —la analogía del
+almacén de certificados/emparejamiento, el enfoque de "navegador arrancable" y el modelo de
+interacción estructurada (Carpeta de Seguimiento)— ahora vive en la sección propia de
+[[os-console]] **"Por qué este diseño: la analogía del navegador"**, junto con el mapa de
+teclas F y el contenido de Modo Directo/Agregado que este artículo solía repetir por
+separado.
 
-La analogía más cercana es un navegador web. La intención es que la analogía sea
-estructural, no meramente metafórica, una vez que el diseño esté completamente construido
-— os-console y un navegador están diseñados para resolver el mismo problema arquitectónico
-por los mismos medios. Como muestra la tabla siguiente, varias filas de esa
-correspondencia estructural (el límite de Dominio de Protección seL4 entre cartuchos, el
-empaquetado como imagen de VM arrancable) siguen planificadas, no vigentes — la analogía
-se cumple hoy para las piezas ya construidas, y es el objetivo de diseño para el resto.
+Esta página se mantiene como un breve puntero, en lugar de eliminarse por completo, porque
+el slug es un destino de wikilink real y en uso en otras partes del corpus. Los lectores que
+buscan la analogía del navegador deben ir directamente a [[os-console]].
 
----
+## Véase también
 
-## La Analogía del Navegador
-
-| Navegador Web | os-console |
-|---|---|
-| Renderiza HTML de servidores web | Renderiza vistas TUI de cartridges desde servicios Totebox |
-| Pestañas del navegador — procesos de renderizado aislados | Cartridges de teclas F — [[sel4-microkernel-substrate|Dominios de Protección seL4]] (previsto Fase H2) |
-| Almacén de certificados — identidades de servidor confiables | [[pairing-as-permission|Emparejamiento de máquina]] (F11) — máquina host como ancla de confianza |
-| HTTP + DNS — protocolo de transporte universal | Protocolo de servicio Totebox — contrato cartridge-servicio |
-| Service Workers — caché sin conexión | Caché de cartridge sin conexión (previsto Fase H3) |
-| Política de mismo origen — aislamiento de pestañas | Límite de capacidades seL4 entre PDs de cartridge (previsto) |
-| La red de tu proveedor de Internet | Tu Totebox — soberano, en las instalaciones del cliente, sin dependencia de la nube |
-| Navegador como imagen de arranque | os-console como imagen de VM arrancable (previsto Fase H2) |
-
-La distinción clave respecto a un navegador web: os-console se conecta a hardware bajo
-el control físico del operador. El Totebox no es un servicio en la nube. Los datos no
-salen de las instalaciones del operador.
-
----
-
-## Cartridges de Teclas F como Pestañas del Navegador
-
-Una pestaña del navegador es un proceso de renderizado con un origen definido. Puede
-acceder a recursos de su origen y no puede leer la memoria de otras pestañas. El
-navegador aplica este límite.
-
-En os-console, cada cartridge de tecla F registrado es una aplicación distinta — véase
-[[os-console|os-console]] para el panorama completo, incluidos los directorios
-`app-console-*` que existen en disco pero aún no tienen una implementación funcional
-registrada:
-
-| Tecla | Cartridge | Servicio |
-|---|---|---|
-| F2 | Personas | [[service-people]] |
-| F3 | Email | [[service-email]] |
-| F4 | Contenido | [[service-content]] |
-| F5 | Búsqueda | — |
-| F9 | SLM | [[service-slm]] |
-| F11 | Sistema / Emparejamiento | pairing-server |
-| F12 | Entrada / Auditoría | [[service-input]] |
-
-En el sustrato seL4 Microkit previsto (Fase H2), cada cartridge se ejecuta como un
-Dominio de Protección seL4. Un PD no puede leer la memoria de otro PD. El kernel seL4
-aplica este límite con la misma garantía con que un navegador aplica el mismo origen:
-de forma formal, no por convención.
-
-Un cartridge F9 (SLM) comprometido no puede leer los datos del cartridge de Personas.
-No porque haya un firewall entre ellos — sino porque no existe ninguna ruta de capacidad
-seL4.
-
----
-
-## Emparejamiento de Máquina como Almacén de Certificados
-
-El almacén de certificados de un navegador establece qué servidores son de confianza.
-El emparejamiento de máquina (F11) es el equivalente en Totebox. El SystemCartridge F11
-presenta un código QR. El operador del Totebox lo escanea. El Totebox emite tokens de
-capacidad para los servicios de cartridge autorizados. Desde ese momento, la máquina
-host está autorizada — no la cuenta de usuario, la máquina.
-
-La revocación funciona de manera inmediata: eliminar un emparejamiento de máquina en el
-Totebox se propaga de inmediato. La siguiente solicitud de esa instancia os-console
-devuelve un fallo de autorización. No hay período de gracia.
-
----
-
-## Más Allá del Portapapeles: Interacción Estructurada
-
-Un navegador web no utiliza el portapapeles para interactuar con un sitio web. Envías
-un formulario. Adjuntas un archivo. Arrastras un componente. La interacción es
-estructurada.
-
-os-console está diseñado siguiendo el mismo modelo. El portapapeles (Cmd+V / Ctrl+V
-mediante arboard, previsto Fase H1) es la base. La superficie de interacción
-estructurada prevista es VirtIO-fs:
-
-1. La máquina host del operador tiene una **Carpeta de Seguimiento del Totebox** — un
-   directorio local montado en la VM os-console mediante VirtIO-fs.
-2. El operador deposita un archivo en la Carpeta de Seguimiento.
-3. El cartridge apropiado (Corrector, Contenido, Entrada) detecta el archivo, lo lee
-   como entrada estructurada y lo presenta como un envío de formulario en lugar de
-   texto pegado sin formato.
-4. El archivo nunca se transmite como bytes a través del portapapeles. Se direcciona
-   como una entrada restringida por capacidades a un formulario de cartridge específico.
-
----
-
-## Un Totebox o Varios: os-orchestration como Múltiples Sitios Web
-
-Un navegador puede mostrar contenido de múltiples sitios web simultáneamente.
-[[os-orchestration]] es el equivalente Totebox de un agregador multisitio.
-
-Cuando la organización de un operador gestiona múltiples Toteboxes —uno por oficina, o
-uno por entidad jurídica— os-orchestration los federa. La sesión os-console del operador
-puede mostrar vistas de cartridge de múltiples Toteboxes sin cambiar de conexión. Cada
-Totebox es un archivo de datos independiente con su propio espacio de nombres de
-capacidades. os-orchestration posee tokens de capacidad derivados de cada uno.
-
----
-
-## El Navegador Arrancable
-
-La forma final prevista de os-console (previsto Fase H2) es una imagen de VM arrancable.
-El operador la arranca — en una máquina dedicada, dentro de su sistema operativo
-existente como VM, o como un [[virtual-appliance|dispositivo virtual]]. La imagen contiene el kernel seL4
-Microkit, los PDs de cartridge de os-console, los controladores VirtIO y nada más. No
-hay sistema operativo de propósito general por debajo. Sin shell. Sin gestor de
-paquetes. Sin superficie de ataque que el operador no haya aprobado.
-
-Para el operador de pequeña empresa sin departamento de TI: descarga la imagen, ejecútala,
-escanea el código QR. El navegador Totebox está en funcionamiento.
-
----
-
-## Experiencia del Operador No Técnico
-
-La intención de diseño para os-console es que no requiera conocimientos técnicos:
-
-1. **Arranque**: la imagen se lanza (en hardware o como VM); la TUI aparece en segundos.
-2. **Descubrimiento**: os-console detecta automáticamente los Toteboxes en la red local.
-3. **Emparejamiento**: F11 muestra un código QR; el administrador del Totebox lo escanea;
-   los cartridges se activan.
-4. **Uso**: las teclas F navegan entre Personas, Email, Contenido, Búsqueda, SLM.
-5. **Pegar**: Cmd+V / Ctrl+V funciona en cualquier cartridge. Deposita archivos en la
-   Carpeta de Seguimiento.
-6. **Sin configuración**: sin direcciones IP que escribir, sin puertos que recordar, sin
-   claves SSH que gestionar.
+- [[os-console]] — el artículo del Libro Mayor de Comandos; la analogía del navegador ahora vive en su sección "Por qué este diseño"
+- [[totebox-orchestration]] — la capa de coordinación a la que se conecta el terminal de os-console

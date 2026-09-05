@@ -8,6 +8,7 @@ short_description: "os-totebox is designed to become a Type I bare-metal OS buil
 audience: vendor-public
 bcsc_class: forward-looking
 language: en
+language_protocol: PROSE-TOPIC
 index_group: the-archive-layer
 paired_with: os-totebox-sovereign-archive.es.md
 category: systems
@@ -32,24 +33,11 @@ confirmed today only at the boot-and-inference layer described here.
 
 ## Known limitations (2026-08-06)
 
-Three gaps are open against this article's own positioning as a persistent sovereign
-vault, and are load-bearing for anyone evaluating the design today:
-
-- **Storage is not yet persistent.** The deployed guest's virtio-blk storage device is
-  never actually mounted. A guest reboot wipes all data — a direct, current gap against
-  the "persistent WORM vault" positioning this article argues for.
-- **Graceful shutdown is broken.** Shutdown via QMP (QEMU Machine Protocol) is documented
-  as broken: the guest has no ACPI or power-button device to receive a shutdown request.
-  Redeploys currently hard-kill the guest, with no checkpoint guarantee at the moment of
-  kill.
-- **Nothing anchors or signs the ledger yet.** The integrity-anchoring companion service
-  has been failing since 2026-08-01, and checkpoint signing is deliberately left unset at
-  this baseline. The WORM ledger runs, but no external anchor and no signature currently
-  attach to its checkpoints.
-
-These are the deployed build's current, factual limits. The boot and inference
-verification above is real and current; the vault's
-persistence, availability, and ledger-anchoring guarantees are not yet delivered.
+These same limitations — storage not yet persistent, graceful shutdown broken, nothing
+anchoring or signing the ledger yet — are load-bearing for anyone evaluating the design
+today. Rather than restate them here, see [[totebox-os]]'s own **"A known limitation —
+data persistence inside the seL4 guest"** section for the canonical, single-sourced
+version of this fact.
 
 Every organisation that relies on a third-party platform to store its records is making an implicit wager: that the platform provider will remain solvent, accessible, and free of security failures for as long as those records matter. [[totebox-os]] is designed for operators who have decided that wager is unacceptable.
 

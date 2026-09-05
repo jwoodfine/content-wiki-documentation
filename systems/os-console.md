@@ -160,6 +160,30 @@ Both modes use the same `os-console` binary. The aggregator does not require a d
 
 `os-console` is one product. There is no "Home" edition and no "Pro" edition. An individual hosting one Totebox uses the same Command Ledger as the administrator of a [[compliance-and-continuous-disclosure|Reporting Issuer]] aggregating hundreds. Commercial differentiation is determined by the presence or absence of `os-orchestration`, never by a tiered Console. The [[six-tier-sovereignty-matrix|six-tier sovereignty model]] governs how commercial tiers are structured across the platform.
 
+## Why this design: the browser analogy
+
+`os-console` is designed by analogy to a web browser — intended as a structural correspondence, not merely a metaphor, once the design is fully built out. Several rows below (the seL4 Protection Domain boundary between cartridges, the bootable-VM-image packaging) are still planned, not current — the analogy holds today for the pieces already built and is the design target for the rest.
+
+| Web browser | os-console |
+|---|---|
+| Renders HTML from web servers | Renders TUI cartridge views from Totebox services |
+| Browser tabs — isolated renderer processes | F-key cartridges — [[sel4-microkernel-substrate|seL4 Protection Domains]] (planned) |
+| Certificate store — trusted server identities | [[machine-based-auth|Machine pairing]] (F11) — host machine as trust anchor |
+| HTTP + DNS — universal transport protocol | Totebox service protocol — cartridge-to-service contract |
+| Service Workers — offline cache | Offline cartridge cache (planned) |
+| Same-origin policy — tab isolation | seL4 capability boundary between cartridge PDs (planned) |
+| Your ISP's network | Your Totebox — sovereign, on-premises, no cloud dependency |
+| Browser as installed application | os-console as bootable VM image (planned) |
+| Browser extensions | Future: operator-registered cartridges |
+
+The key distinction from a web browser: `os-console` connects to hardware under the operator's physical control. The Totebox is not a cloud service, and the data does not leave the operator's premises.
+
+**Machine pairing as the certificate store.** A browser's certificate store establishes which servers are trusted; the F11 SystemCartridge plays the same role for a Totebox. It presents a QR code, the Totebox operator scans it, and the Totebox issues capability tokens for the authorized cartridge services — the host machine is authorized, not a user account. Revocation propagates immediately: removing a machine pairing on the Totebox takes effect on the console's next request, with no grace period.
+
+**Beyond the clipboard.** A browser does not use the clipboard to submit a form or attach a file — the interaction is structured. `os-console` is designed toward the same model: the clipboard is a baseline, and the intended structured-interaction surface (planned) is a **Totebox Watch Folder** — a local directory mounted into the console via VirtIO-fs, where a file the operator drops in is read as a form submission by the appropriate cartridge rather than pasted as raw text.
+
+**The bootable browser.** The intended final form of `os-console` (planned) is a bootable VM image the operator runs on a dedicated machine, inside their existing OS as a VM, or as a [[virtual-appliance|virtual appliance]] — containing the seL4 Microkit kernel, the cartridge PDs, the VirtIO drivers, and nothing else: no general-purpose OS underneath, no shell, no package manager. For the operator with no IT department, the intended experience is: download the image, run it, scan the QR code to pair, and use F-keys to navigate between cartridges — no IP addresses to type, no ports to remember, no SSH keys to manage.
+
 ## See also
 
 - [[totebox-os]] — the Totebox archive that os-console connects to and renders
@@ -171,6 +195,6 @@ Both modes use the same `os-console` binary. The aggregator does not require a d
 - [[input-machine]] — The Anchor; mandatory ingest gate at F12
 - [[three-ring-architecture]] — the Ring 1/2/3 architecture os-console connects to
 - [[compounding-doorman]] — the Doorman audit boundary for service-slm access
-- [[os-console-totebox-browser]] — the browser-analogy explainer for os-console's design philosophy
+- [[os-console-totebox-browser]] — a short pointer to this article's own browser-analogy section, above
 - [[ppn-small-business-compute]] — the network substrate os-console connects into
 - [[architecture-decisions]] — architectural decisions governing the platform data layer

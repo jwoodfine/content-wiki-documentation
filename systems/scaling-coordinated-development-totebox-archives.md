@@ -11,7 +11,9 @@ category: systems
 index_group: the-archive-layer
 short_description: "Coordination bottlenecks past twenty archives — publication serialization, message relay latency, operator load, and the path to per-archive process isolation."
 status: active
-language_protocol: TOPIC
+quality: complete
+audience: vendor-public
+language_protocol: PROSE-TOPIC
 last_edited: 2026-08-03
 editor: pointsav-engineering
 ---

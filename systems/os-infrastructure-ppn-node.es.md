@@ -6,7 +6,9 @@ short_description: "os-infrastructure es la capa del sistema operativo para los 
 category: systems
 type: topic
 content_type: topic
+quality: complete
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
 language: es
 language_protocol: TRANSLATE-ES

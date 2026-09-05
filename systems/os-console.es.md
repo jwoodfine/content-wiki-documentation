@@ -161,6 +161,30 @@ Ambos modos utilizan el mismo binario de `os-console`. El agregador no requiere 
 
 `os-console` es un único producto. No existe edición "Doméstica" ni edición "Pro". Un individuo que aloja un Totebox utiliza el mismo Libro Mayor de Comandos que el administrador de un [[compliance-and-continuous-disclosure|Emisor Informante]] que agrega cientos. La diferenciación comercial la determina la presencia o ausencia de `os-orchestration`, nunca una Consola escalonada. La [[six-tier-sovereignty-matrix|matriz de soberanía de seis niveles]] rige cómo se estructuran los niveles comerciales en toda la plataforma.
 
+## Por qué este diseño: la analogía del navegador
+
+`os-console` está diseñado por analogía con un navegador web — pensada como una correspondencia estructural, no meramente metafórica, una vez que el diseño esté completamente construido. Varias filas de la tabla siguiente (el límite de Dominio de Protección seL4 entre cartuchos, el empaquetado como imagen de VM arrancable) siguen previstas, no vigentes — la analogía se cumple hoy para las piezas ya construidas, y es el objetivo de diseño para el resto.
+
+| Navegador web | os-console |
+|---|---|
+| Renderiza HTML de servidores web | Renderiza vistas TUI de cartuchos desde servicios Totebox |
+| Pestañas del navegador — procesos de renderizado aislados | Cartuchos de teclas F — [[sel4-microkernel-substrate|Dominios de Protección seL4]] (previsto) |
+| Almacén de certificados — identidades de servidor confiables | [[machine-based-auth|Emparejamiento de máquina]] (F11) — máquina host como ancla de confianza |
+| HTTP + DNS — protocolo de transporte universal | Protocolo de servicio Totebox — contrato cartucho-servicio |
+| Service Workers — caché sin conexión | Caché de cartucho sin conexión (previsto) |
+| Política de mismo origen — aislamiento de pestañas | Límite de capacidades seL4 entre PDs de cartucho (previsto) |
+| La red de tu proveedor de Internet | Tu Totebox — soberano, en las instalaciones propias, sin dependencia de la nube |
+| Navegador como aplicación instalada | os-console como imagen de VM arrancable (previsto) |
+| Extensiones del navegador | Futuro: cartuchos registrados por el operador |
+
+La distinción clave respecto a un navegador web: `os-console` se conecta a hardware bajo el control físico del operador. El Totebox no es un servicio en la nube, y los datos no salen de las instalaciones del operador.
+
+**El emparejamiento de máquina como almacén de certificados.** El almacén de certificados de un navegador establece qué servidores son de confianza; el SystemCartridge F11 cumple el mismo rol para un Totebox. Presenta un código QR, el operador del Totebox lo escanea, y el Totebox emite tokens de capacidad para los servicios de cartucho autorizados — la máquina host queda autorizada, no una cuenta de usuario. La revocación se propaga de inmediato: eliminar un emparejamiento de máquina en el Totebox surte efecto en la siguiente solicitud de la consola, sin período de gracia.
+
+**Más allá del portapapeles.** Un navegador no utiliza el portapapeles para enviar un formulario o adjuntar un archivo — la interacción es estructurada. `os-console` está diseñado siguiendo el mismo modelo: el portapapeles es la base, y la superficie de interacción estructurada prevista (planificada) es una **Carpeta de Seguimiento del Totebox** — un directorio local montado en la consola mediante VirtIO-fs, donde un archivo que el operador deposita se lee como un envío de formulario por el cartucho apropiado, en lugar de pegarse como texto sin formato.
+
+**El navegador arrancable.** La forma final prevista de `os-console` (planificada) es una imagen de VM arrancable que el operador ejecuta en una máquina dedicada, dentro de su sistema operativo existente como VM, o como un [[virtual-appliance|dispositivo virtual]] — que contiene el kernel seL4 Microkit, los PDs de cartucho, los controladores VirtIO y nada más: sin sistema operativo de propósito general por debajo, sin shell, sin gestor de paquetes. Para el operador sin departamento de TI, la experiencia prevista es: descargar la imagen, ejecutarla, escanear el código QR para emparejar, y usar las teclas F para navegar entre cartuchos — sin direcciones IP que escribir, sin puertos que recordar, sin claves SSH que gestionar.
+
 ## Véase también
 
 - [[totebox-os]] — el archivo Totebox al que os-console se conecta y cuyo estado presenta
@@ -172,6 +196,6 @@ Ambos modos utilizan el mismo binario de `os-console`. El agregador no requiere 
 - [[input-machine]] — El Ancla; puerta de ingesta obligatoria en F12
 - [[three-ring-architecture]] — la arquitectura de anillos a la que se conecta os-console
 - [[compounding-doorman]] — el límite de auditoría Doorman para el acceso a service-slm
-- [[os-console-totebox-browser]] — el explicador de la analogía del navegador para la filosofía de diseño de os-console
+- [[os-console-totebox-browser]] — un breve puntero a la sección de analogía del navegador de este mismo artículo, arriba
 - [[ppn-small-business-compute]] — el sustrato de red al que se conecta os-console
 - [[architecture-decisions]] — decisiones arquitectónicas que rigen la capa de datos de la plataforma

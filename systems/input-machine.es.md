@@ -8,9 +8,12 @@ short_description: "La Máquina de Entrada es la puerta obligatoria de incorpora
 category: systems
 type: topic
 content_type: topic
+quality: complete
 index_group: operator-surfaces
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
 last_edited: 2026-08-24
 editor: pointsav-engineering
 paired_with: input-machine.md

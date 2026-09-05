@@ -8,6 +8,8 @@ type: topic
 content_type: topic
 index_group: the-archive-layer
 status: active
+quality: complete
+audience: vendor-public
 bcsc_class: public-disclosure-safe
 language: es
 language_protocol: TRANSLATE-ES

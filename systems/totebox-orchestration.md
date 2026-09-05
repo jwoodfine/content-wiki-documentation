@@ -9,7 +9,9 @@ quality: complete
 index_group: the-archive-layer
 short_description: "Totebox Orchestration is the coordination layer managing multiple Totebox data-archive containers, keeping execution engines isolated from passive corporate ledgers."
 status: active
+audience: public
 bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
 last_edited: 2026-08-24
 editor: pointsav-engineering
 cites: []

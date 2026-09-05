@@ -41,13 +41,13 @@ Esta distinción es importante: `os-network-admin` no almacena ni procesa datos 
 
 Cuando un nuevo nodo físico quiere unirse a la malla PPN, genera un código corto en base32 de Crockford (ocho caracteres, aproximadamente 40 bits de entropía). El operador ingresa este código en `os-network-admin`. Un intercambio CPace PAKE establece una clave de sesión compartida a través del canal de código corto; una comparación de Cadena Corta Autenticada (SAS) cierra la brecha de intermediario. Bajo esta clave, el nodo que se une envía su clave pública WireGuard, recibe un certificado firmado por la CA del clúster y el mapa de pares se distribuye automáticamente.
 
-La implementación mínima actual consulta el backend `service-ppn-pairing` en busca de solicitudes pendientes y las imprime en la salida estándar. La aprobación del operador se emite mediante curl:
+La implementación mínima actual consulta el backend `service-ppn-pairing` en busca de solicitudes pendientes y las imprime en la salida estándar. La aprobación del operador se emite mediante una solicitud HTTP POST a ese backend — ilustrada abajo contra una dirección de marcador de posición (según el rango de documentación de la RFC 5737), no un punto de conexión real de despliegue:
 
 ```bash
-PAIRING_SERVER=http://10.8.0.9:9205 ./os-network-admin
+PAIRING_SERVER=http://192.0.2.10:9205 ./os-network-admin
 
 # Aprobar una unión pendiente desde otra terminal:
-curl -s -X POST http://10.8.0.9:9205/v1/node-join/approve \
+curl -s -X POST http://192.0.2.10:9205/v1/node-join/approve \
      -H 'Content-Type: application/json' \
      -d '{"code":"XXXX-XXXX"}'
 ```

@@ -60,9 +60,11 @@ one environment. It hosts [[os-console|`os-console`]] as a co-resident applicati
 Type 2 virtualization — the two are independent layers sharing the same machine. The machine joins
 the [[ppn-architecture-overview|PointSav Private Network]] as a direct WireGuard peer in the
 `10.42.20.0/24` range; the `node-*` instance of `os-console` it hosts inherits that membership
-rather than getting a separate address. Deployment instances use the `station-*` prefix. The first
-two planned are `station-workplace-jennifer-1` and `station-workplace-mathew-1`, both awaiting the
-WireGuard network rollout and the `app-workplace-desktop` build. `os-workplace` does not connect
+rather than getting a separate address. Deployment instances use the `station-*` prefix, following
+the same `<name>-N` numbering convention as other PPN deployment instances (see, for example,
+[[os-network-admin|`route-network-admin-1`]]). The first two planned are `station-workplace-1` and
+`station-workplace-2`, both awaiting the WireGuard network rollout and the `app-workplace-desktop`
+build. `os-workplace` does not connect
 to [[totebox-orchestration|the orchestration gateway]] directly — only indirectly, through the
 `os-console` instance it hosts.
 

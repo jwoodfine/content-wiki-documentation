@@ -5,11 +5,16 @@ title: "OS mediakit"
 slug: os-mediakit
 short_description: "The public-web tier of the PointSav OS family — os-mediakit owns TLS, systemd lifecycle, and gateway-mediated data access; app-mediakit-knowledge/marketing/distribution own domain logic. Ubuntu 24.04 today; the planned end state is one seL4 VM per deployment instance, not a single combined appliance."
 category: systems
+type: concept
+quality: complete
 index_group: publishing-and-media
 last_edited: 2026-08-06
 editor: pointsav-engineering
 status: stable
+audience: vendor-public
 bcsc_class: no-disclosure-implication
+language_protocol: PROSE-TOPIC
+paired_with: os-mediakit.es.md
 ---
 
 **os-mediakit** is the guest operating system image for the `vm-mediakit` VM tier in
@@ -98,28 +103,27 @@ What is running today:
 - Ubuntu 24.04 booted under QEMU/TCG (this host has no hardware KVM; TCG is adequate
   for Phase 1 testing)
 - 6 GiB RAM (`-m 6144`), 20 GB QCOW2 disk
-- User-mode NAT networking: host port-forwards `1xxxx → :xxxx` for each service
+- User-mode NAT networking: the host forwards a dedicated local port to each guest service
 - `virtio-balloon` device: dynamic RAM adjustment without guest reboot
 - cloud-init first boot: hostname `vm-mediakit`, user `foundry`, systemd-native
 - nginx/1.24.0 and build-essential installed post-boot
 
-Services running inside the Ubuntu 24.04 guest (Phase 1 state, 2026-05-29):
+Services running inside the Ubuntu 24.04 guest, by category (Phase 1 state, 2026-05-29):
 
-| Service | Port | Purpose | Phase 1 status |
-|---|---|---|---|
-| local-proofreader | 9092 | Proofreader service | ✓ active |
-| local-knowledge-documentation | 9090 | Documentation wiki | ✓ active |
-| local-knowledge-corporate | 9095 | Corporate wiki | ✓ active |
-| local-knowledge-projects | 9093 | Projects wiki | ✓ active |
-| local-marketing-pointsav | 9101 | PointSav marketing site | ✓ active |
-| local-marketing | 9102 | Woodfine marketing site | ✓ active |
-| service-fs | 9100 | WORM ledger — data ingest backbone | pending (project-data build) |
-| local-bim-orchestration | 9096 | BIM gateway | pending (depends on service-fs) |
-| system-core | — | Capability Ledger substrate | pending (project-system install) |
-| system-ledger | — | Ledger state-machine | pending (project-system install) |
+| Service category | Purpose | Phase 1 status |
+|---|---|---|
+| Proofreader | Proofreader service | ✓ active |
+| Knowledge wikis (documentation, corporate, projects) | The three media-knowledge wikis | ✓ active |
+| Marketing sites (PointSav, Woodfine) | The two public marketing landing sites | ✓ active |
+| `service-fs` | WORM ledger — data ingest backbone | pending (project-data build) |
+| BIM gateway | Depends on `service-fs` | pending |
+| `system-core` | Capability Ledger substrate | pending (project-system install) |
+| `system-ledger` | Ledger state-machine | pending (project-system install) |
 
-The systemd host unit `infrastructure/local-vm-mediakit/vm-mediakit.service` manages the
-QEMU process and handles graceful shutdown via the QEMU monitor socket.
+Each active service is reachable only on the guest's own local network interface,
+port-forwarded from the host; none of these are exposed addresses a reader outside the
+platform's own infrastructure could reach. A systemd unit on the host manages the QEMU
+process for the guest and handles graceful shutdown via the QEMU monitor socket.
 
 ---
 
@@ -155,7 +159,7 @@ instance's process space at risk. This is a planned milestone, not yet started �
 | Host | QEMU/TCG (x86_64) | QEMU/KVM or bare metal AArch64 |
 | Service binaries | Same (cross-compiled) | Same, recompiled for the target seL4 guest |
 | Isolation boundary | Process/filesystem separation within one shared guest | A full VM boundary per instance |
-| Port numbers | Same (9090, 9093, 9095, ...) | Same, reachable over the PPN mesh |
+| Port assignments | Same, host port-forwarded | Same, reachable over the PPN mesh |
 | virtio-balloon | Present | Present (hypervisor layer unchanged) |
 | Key custody | OS file permissions | Per-VM key material, no shared guest to compromise |
 

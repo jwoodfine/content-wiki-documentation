@@ -6,9 +6,12 @@ short_description: "os-infrastructure is the OS layer for PPN nodes — its sole
 category: systems
 type: topic
 content_type: topic
+quality: complete
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
 language: en
+language_protocol: PROSE-TOPIC
 index_group: network-control-and-infrastructure
 paired_with: os-infrastructure-ppn-node.es.md
 last_edited: 2026-08-22

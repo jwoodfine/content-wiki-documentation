@@ -8,6 +8,7 @@ short_description: "Explica cómo os-totebox está diseñado para asignar binari
 audience: vendor-public
 bcsc_class: forward-looking
 language: es
+language_protocol: PROSE-TOPIC
 index_group: the-archive-layer
 paired_with: os-totebox-service-pd-model.md
 category: systems
@@ -30,26 +31,11 @@ Limitaciones conocidas, a continuación.
 
 ## Limitaciones conocidas (2026-08-06)
 
-Hay tres brechas abiertas frente a las propias afirmaciones de este artículo sobre el
-registro WORM, y son información determinante para quien evalúe el diseño hoy:
-
-- **El almacenamiento aún no es persistente.** El dispositivo de almacenamiento virtio-blk
-  del huésped desplegado nunca llega a montarse. Un reinicio del huésped borra todos los
-  datos — una brecha directa y actual frente al registro duradero y de solo anexado que
-  este artículo describe que aplica el PD service-fs.
-- **El apagado ordenado está roto.** El apagado mediante QMP (QEMU Machine Protocol) está
-  documentado como roto: el huésped no tiene ningún dispositivo ACPI ni de botón de
-  encendido para recibir una solicitud de apagado. Los nuevos despliegues actualmente
-  eliminan el huésped de forma abrupta, sin ninguna garantía de punto de control en el
-  momento de la eliminación.
-- **Nada ancla ni firma el registro todavía.** El servicio complementario de anclaje de
-  integridad lleva fallando desde el 2026-08-01, y la firma de los puntos de control se
-  deja deliberadamente sin configurar en esta línea base. El registro WORM se ejecuta,
-  pero ningún anclaje externo ni firma se adjunta actualmente a sus puntos de control.
-
-Estos son los límites actuales y factuales del despliegue. La
-verificación de arranque e inferencia anterior es real y actual; las garantías de
-persistencia, disponibilidad y anclaje del registro aún no se han entregado.
+Estas mismas limitaciones —almacenamiento aún no persistente, apagado ordenado roto, nada
+que ancle o firme el registro todavía— son información determinante para quien evalúe el
+diseño hoy. En lugar de repetirlas aquí, véase la sección propia de [[totebox-os]]
+**"Una limitación conocida — persistencia de datos dentro del invitado seL4"** para la
+versión canónica y de fuente única de este hecho.
 
 [[totebox-os]] está diseñado para ser el nivel de Bóveda de Datos WORM Soberana en la [[three-binary-architecture|arquitectura de tres binarios]], con la intención de ejecutarse como un sistema operativo de metal desnudo Tipo I sobre el [[sel4-microkernel-substrate|micronúcleo seL4]] — sin shell, sin proceso root, sin sistema init, sin gestor de paquetes — una vez que se distribuya la imagen seL4 de la Fase H1. En ese diseño de estado final, cada servicio que maneja datos duraderos se convertiría en un Dominio de Protección (PD) seL4: una unidad de aislamiento reforzada por hardware cuyo conjunto de capacidades queda fijo en el momento de la compilación y no puede ampliarse en tiempo de ejecución. Este artículo explica qué significa ese diseño, por qué toma la forma que tiene y cómo dos herramientas planificadas — moonshot-sel4-vmm y [[moonshot-toolkit-build-orchestrator|moonshot-toolkit]] — están pensadas para convertir binarios de servicio Rust convencionales en un grafo de PD formalmente verificado.
 

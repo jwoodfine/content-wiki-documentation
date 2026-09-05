@@ -8,6 +8,7 @@ short_description: "os-totebox está diseñado para convertirse en un sistema op
 audience: vendor-public
 bcsc_class: forward-looking
 language: es
+language_protocol: PROSE-TOPIC
 index_group: the-archive-layer
 paired_with: os-totebox-sovereign-archive.md
 category: systems
@@ -36,26 +37,11 @@ sección que la versión en inglés — pendiente, no silenciosamente omitido.
 
 ## Limitaciones conocidas (2026-08-06)
 
-Hay tres brechas abiertas frente a la propia posición de este artículo como bóveda
-soberana persistente, y son información determinante para quien evalúe el diseño hoy:
-
-- **El almacenamiento aún no es persistente.** El dispositivo de almacenamiento virtio-blk
-  del huésped desplegado nunca llega a montarse. Un reinicio del huésped borra todos los
-  datos — una brecha directa y actual frente a la posición de "bóveda WORM persistente"
-  que argumenta este artículo.
-- **El apagado ordenado está roto.** El apagado mediante QMP (QEMU Machine Protocol) está
-  documentado como roto: el huésped no tiene ningún dispositivo ACPI ni de botón de
-  encendido para recibir una solicitud de apagado. Los nuevos despliegues actualmente
-  eliminan el huésped de forma abrupta, sin ninguna garantía de punto de control en el
-  momento de la eliminación.
-- **Nada ancla ni firma el registro todavía.** El servicio complementario de anclaje de
-  integridad lleva fallando desde el 2026-08-01, y la firma de los puntos de control se
-  deja deliberadamente sin configurar en esta línea base. El registro WORM se ejecuta,
-  pero ningún anclaje externo ni firma se adjunta actualmente a sus puntos de control.
-
-Estos son los límites actuales y factuales del despliegue. La
-verificación de arranque e inferencia anterior es real y actual; las garantías de
-persistencia, disponibilidad y anclaje del registro de la bóveda aún no se han entregado.
+Estas mismas limitaciones —almacenamiento aún no persistente, apagado ordenado roto, nada
+que ancle o firme el registro todavía— son información determinante para quien evalúe el
+diseño hoy. En lugar de repetirlas aquí, véase la sección propia de [[totebox-os]]
+**"Una limitación conocida — persistencia de datos dentro del invitado seL4"** para la
+versión canónica y de fuente única de este hecho.
 
 Toda organización que depende de una plataforma de terceros para almacenar sus registros está asumiendo una apuesta implícita: que el proveedor de esa plataforma seguirá siendo solvente, accesible y libre de fallas de seguridad durante todo el tiempo que esos registros tengan relevancia. [[totebox-os]] está diseñado para los operadores que han decidido que esa apuesta es inaceptable.
 

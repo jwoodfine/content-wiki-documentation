@@ -5,11 +5,16 @@ title: "OS Mediakit"
 slug: os-mediakit
 short_description: "El nivel web público de la familia de SO PointSav — os-mediakit posee TLS, el ciclo de vida systemd y el acceso a datos mediado por la puerta de enlace; app-mediakit-knowledge/marketing/distribution poseen la lógica de dominio. Ubuntu 24.04 hoy; el estado final previsto es una VM seL4 por instancia de despliegue, no un dispositivo combinado único."
 category: systems
+type: concept
+quality: complete
 index_group: publishing-and-media
 last_edited: 2026-08-06
 editor: pointsav-engineering
 status: stable
+audience: vendor-public
 bcsc_class: no-disclosure-implication
+language_protocol: PROSE-TOPIC
+paired_with: os-mediakit.md
 ---
 
 **os-mediakit** es la imagen del sistema operativo invitado para el nivel de VM
@@ -99,25 +104,28 @@ Lo que está en funcionamiento actualmente:
 - Ubuntu 24.04 arrancado bajo QEMU/TCG (este host no tiene KVM por hardware; TCG es
   adecuado para las pruebas de la Fase 1)
 - 6 GiB de RAM, disco QCOW2 de 20 GB
-- Red NAT de modo usuario: reenvíos de puerto anfitrión `1xxxx → :xxxx` por cada servicio
+- Red NAT de modo usuario: el anfitrión reenvía un puerto local dedicado a cada servicio invitado
 - Dispositivo `virtio-balloon`: ajuste dinámico de RAM sin reinicio del invitado
 - Primer arranque cloud-init: nombre de host `vm-mediakit`, usuario `foundry`, systemd nativo
 - nginx/1.24.0 y build-essential instalados tras el arranque
 
-Servicios dentro del invitado Ubuntu 24.04 (estado Fase 1, 2026-05-29):
+Servicios dentro del invitado Ubuntu 24.04, por categoría (estado Fase 1, 2026-05-29):
 
-| Servicio | Puerto | Propósito | Estado Fase 1 |
-|---|---|---|---|
-| local-proofreader | 9092 | Servicio de corrección de pruebas | ✓ activo |
-| local-knowledge-documentation | 9090 | Wiki de documentación | ✓ activo |
-| local-knowledge-corporate | 9095 | Wiki corporativa | ✓ activo |
-| local-knowledge-projects | 9093 | Wiki de proyectos | ✓ activo |
-| local-marketing-pointsav | 9101 | Sitio de marketing PointSav | ✓ activo |
-| local-marketing | 9102 | Sitio de marketing Woodfine | ✓ activo |
-| service-fs | 9100 | Registro WORM — columna vertebral de datos | pendiente (build project-data) |
-| local-bim-orchestration | 9096 | Puerta de enlace BIM | pendiente (depende de service-fs) |
-| system-core | — | Substrato del Registro de Capacidades | pendiente (project-system) |
-| system-ledger | — | Máquina de estado del registro | pendiente (project-system) |
+| Categoría de servicio | Propósito | Estado Fase 1 |
+|---|---|---|
+| Corrector de pruebas | Servicio de corrección de pruebas | ✓ activo |
+| Wikis de conocimiento (documentación, corporativa, proyectos) | Las tres wikis media-knowledge | ✓ activo |
+| Sitios de marketing (PointSav, Woodfine) | Los dos sitios públicos de aterrizaje de marketing | ✓ activo |
+| `service-fs` | Registro WORM — columna vertebral de datos | pendiente (build project-data) |
+| Puerta de enlace BIM | Depende de `service-fs` | pendiente |
+| `system-core` | Substrato del Registro de Capacidades | pendiente (project-system) |
+| `system-ledger` | Máquina de estado del registro | pendiente (project-system) |
+
+Cada servicio activo solo es alcanzable en la propia interfaz de red local del invitado,
+reenviada desde el anfitrión; ninguna de ellas es una dirección expuesta que un lector
+externo a la infraestructura propia de la plataforma pudiera alcanzar. Una unidad systemd
+en el anfitrión gestiona el proceso QEMU del invitado y maneja el apagado ordenado a
+través del socket de monitor de QEMU.
 
 ---
 
@@ -155,7 +163,7 @@ proceso de una instancia hermana. Se trata de un hito planificado, aún no inici
 | Anfitrión | QEMU/TCG (x86_64) | QEMU/KVM o bare metal AArch64 |
 | Binarios de servicio | Los mismos (compilación cruzada) | Los mismos, recompilados para el invitado seL4 objetivo |
 | Frontera de aislamiento | Separación de proceso/sistema de archivos dentro de un invitado compartido | Una frontera de VM completa por instancia |
-| Números de puerto | Los mismos (9090, 9093, 9095, ...) | Los mismos, accesibles a través de la malla PPN |
+| Asignación de puertos | La misma, reenviada desde el anfitrión | La misma, accesible a través de la malla PPN |
 | virtio-balloon | Presente | Presente (capa del hipervisor sin cambios) |
 | Custodia de claves | Permisos de archivos del SO | Material de clave por VM, sin invitado compartido que comprometer |
 

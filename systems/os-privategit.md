@@ -18,6 +18,24 @@ editor: pointsav-engineering
 
 The [[os-workplace|os-workplace]] desktop environment and the [[totebox-os|Totebox]] archive are the primary consumers of the software hosted on `os-privategit`. Source code flows from `os-privategit` into the [[customer-first-ordering|customer-first]] deployment model.
 
+## Current build and deployment status
+
+Unlike a general-purpose "list of apps" summary, each of the four hosted applications has its own
+confirmed build state rather than a single, uniform description:
+
+| Application | Version | Status | What it does |
+|---|---|---|---|
+| `app-privategit-source` | v0.1.0 | Active | Binary release server with Ed25519 license-token verification |
+| `app-privategit-marketplace` | v0.1.0 | Active | Software storefront — product catalog, license issuance, payment verification |
+| `app-privategit-workbench` | v0.0.1 | Active | The browser-based three-column file editor (tree / viewer / editor) referenced above |
+| `app-privategit-design` | v0.3.0 | Unconfirmed | A substantial codebase exists on disk; the crate's own README self-describes it as an early architectural scaffold pending a dedicated engineering cycle — the two signals conflict and are not reconciled here |
+
+`app-privategit-source` and `app-privategit-marketplace` are both deployed and active on the
+`vault-privategit-source-1` host today. `app-privategit-workbench` is active as the file-editing
+surface described above. `app-privategit-design`'s actual state could not be confirmed one way or
+the other from available sources at the time of writing — it is named here rather than silently
+omitted, with its status flagged as unconfirmed rather than asserted.
+
 ## See also
 
 - [[app-privategit-workbench]] — the browser-based file editor running on os-privategit

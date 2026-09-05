@@ -40,13 +40,13 @@ This distinction matters: `os-network-admin` does not store or process business 
 
 When a new physical node wants to join the PPN mesh, it generates a Crockford base32 short code (eight characters, approximately 40 bits of entropy). The operator enters this code into `os-network-admin`. A CPace PAKE exchange establishes a shared session key over the short-code channel; a Short Authenticated String (SAS) comparison closes the man-in-the-middle gap. Under this key, the joining node submits its WireGuard public key, receives a cluster CA–signed certificate, and the peer-map distributes automatically.
 
-The current minimal implementation polls the `service-ppn-pairing` backend for pending requests and prints them to stdout. Operator approval is issued via curl:
+The current minimal implementation polls the `service-ppn-pairing` backend for pending requests and prints them to stdout. Operator approval is issued via an HTTP POST to that backend — illustrated below against a placeholder address (per RFC 5737's documentation range), not a real deployment endpoint:
 
 ```bash
-PAIRING_SERVER=http://10.8.0.9:9205 ./os-network-admin
+PAIRING_SERVER=http://192.0.2.10:9205 ./os-network-admin
 
 # Approve a pending join from another terminal:
-curl -s -X POST http://10.8.0.9:9205/v1/node-join/approve \
+curl -s -X POST http://192.0.2.10:9205/v1/node-join/approve \
      -H 'Content-Type: application/json' \
      -d '{"code":"XXXX-XXXX"}'
 ```

@@ -44,7 +44,7 @@ The systems through which a human operator interacts with the platform — keybo
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: operator-surfaces -->
 - [[os-console]] — os-console is the human-facing surface of the PointSav platform — a single-binary, keyboard-native Command Ledger that connects to a Totebox and hosts independent TUI cartridges through a unified chassis.
-- [[os-console-totebox-browser]] — os-console is the keyboard-native operator terminal for Totebox Orchestration, structurally like a browser: it renders service views without storing data locally.
+- [[os-console-totebox-browser]] — os-console-totebox-browser has been folded into os-console's own 'Why this design: the browser analogy' section — this article is now a short pointer, not a separate deep dive.
 - [[input-machine]] — The Input Machine is the mandatory document ingest gate in os-console, bound permanently to F12 and backed by service-input on the Totebox Archive.
 - [[os-workplace]] — os-workplace is the planned free desktop tier in the PointSav family — today a growing set of independent Rust and Tauri apps an operator runs on their own computer, joining the network as a station-* WireGuard peer; the intended adoption gateway to the commercial line.
 - [[os-orchestration]] — os-orchestration is the commercial-tier OS letting a single operator see, query, and command many Totebox archives at once — the Fleet Aggregator for enterprise deployments.

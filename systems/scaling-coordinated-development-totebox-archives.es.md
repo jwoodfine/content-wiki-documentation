@@ -11,7 +11,9 @@ category: systems
 index_group: the-archive-layer
 short_description: "Cuellos de botella de coordinación más allá de veinte archivos — serialización de publicaciones, latencia de mensajes, carga del operador y aislamiento por proceso."
 status: active
-language_protocol: TOPIC
+quality: complete
+audience: vendor-public
+language_protocol: PROSE-TOPIC
 last_edited: 2026-08-03
 editor: pointsav-engineering
 ---

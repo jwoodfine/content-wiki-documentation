@@ -45,7 +45,7 @@ Los sistemas a través de los cuales un operador humano interactúa con la plata
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: operator-surfaces -->
 - [[os-console]] — os-console es la superficie de cara al operador de la plataforma PointSav — un Libro Mayor de Comandos, en un único binario nativo de teclado, que se conecta a un Totebox y aloja cartuchos TUI independientes mediante un chasis unificado.
-- [[os-console-totebox-browser]] — os-console es el terminal del operador orientado al teclado para Totebox Orchestration, estructuralmente análogo a un navegador: renderiza vistas de los servicios Totebox sin almacenar datos en la máquina del operador.
+- [[os-console-totebox-browser]] — os-console-totebox-browser se ha incorporado a la sección propia de os-console 'Por qué este diseño: la analogía del navegador' — este artículo es ahora un breve puntero, no un análisis independiente.
 - [[input-machine|Máquina de entrada]] — La Máquina de Entrada es la puerta obligatoria de incorporación de documentos en os-console, asignada permanentemente a F12 y respaldada por service-input en el Archivo Totebox.
 - [[os-workplace]] — os-workplace es el nivel de escritorio gratuito previsto en la familia PointSav — hoy, un conjunto creciente de aplicaciones independientes en Rust y Tauri que el operador ejecuta en su propio equipo, incorporándose a la red como un par WireGuard station-*; la puerta de entrada prevista a la línea comercial.
 - [[os-orchestration]] — os-orchestration es el sistema operativo de nivel comercial que permite a un único operador ver, consultar y comandar muchos archivos Totebox a la vez — el Agregador de Flota para portafolios multi-entidad y despliegues empresariales.
