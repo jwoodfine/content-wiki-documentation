@@ -21,9 +21,11 @@ paired_with: location-intelligence-ux.es.md
 
 The PointSav [[location-intelligence-platform|Location Intelligence]] interface uses a Conclusion-First design philosophy — rendering ranked tier conclusions rather than individual data points — so a user comparing markets at a national zoom level sees the most defensible commercial nodes immediately, and only drills into individual operators when a node has earned the attention. The interface draws inspiration from professional-grade spatial platforms where complex multi-parameter models are rendered as intuitive layered navigation surfaces rather than legend-driven dot maps. The [[app-orchestration-gis|GIS orchestration surface]] delivers this design at production scale.
 
-## Quality Benchmark: The Professional Map
+**Why it matters:** a user does not have to already know which markets matter before opening the map — the interface itself surfaces the ranked conclusion, so the analytical work of the platform is visible on first glance rather than buried behind a legend the user has to learn.
 
-The interface draws inspiration from professional-grade spatial platforms (e.g., meteoblue.com), where complex multi-parameter models are rendered as intuitive, layered navigation surfaces. Key design patterns adopted from this benchmark include:
+## Quality benchmark: the professional map
+
+The interface draws inspiration from professional-grade spatial platforms, where complex multi-parameter models are rendered as intuitive, layered navigation surfaces rather than a flat scatter of individual data points. Key design patterns adopted from this class of benchmark include:
 
 - **First-Class Layer Toggles:** Analytical layers (Clusters, Catchment, OD Study) are presented as primary navigation controls, not secondary legend items.
 - **Decision-Driven Visualization:** The map renders conclusions (e.g., "This node is Tier 5") rather than individual data points, allowing for rapid cross-market comparisons.
@@ -37,9 +39,13 @@ Unlike commercial GIS products that default to individual "dots on a map," the P
 2. **Structural guardrails.** The interface enforces a visual hierarchy where Regional and District nodes dominate the national view, guiding the user toward the most defensible commercial nodes before the lower tiers compete for attention.
 3. **Contextual drawer, not a modal.** Clicking a cluster opens a side drawer that provides immediate municipal ranking, operator detail, and institutional support counts without losing map context — the underlying map stays visible and interactive behind the drawer.
 
+**Why it matters:** a user comparing several markets never loses their place on the national map to check one cluster's detail — the drawer keeps the broader comparison and the specific detail on screen at the same time.
+
 ## Component architecture
 
 The GIS surface's cluster inspector is a drawer component (internally named "BentoBox") that renders cluster-level metadata in a dense, scannable layout without requiring the user to leave the map view. The four-tier color scheme and the drawer pattern together are what make the cluster-as-primary-unit choice legible to a reader browsing a national-scale map.
+
+**Why it matters:** the density of the drawer's layout means a user gets the full picture of one cluster — ranking, operator detail, institutional support — without a second screen or a second page load.
 
 ## See also
 

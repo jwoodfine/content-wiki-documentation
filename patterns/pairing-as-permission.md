@@ -9,7 +9,9 @@ quality: complete
 index_group: sovereignty-and-infrastructure-patterns
 short_description: "The Object Capability access-control principle — a cryptographic pairing is the permission, and its absence means no pathway exists to ask for one — as embodied in the platform's machine-based node admission."
 status: active
+audience: vendor-public
 bcsc_class: no-disclosure-implication
+language_protocol: PROSE-TOPIC
 last_edited: 2026-08-22
 editor: pointsav-engineering
 cites: []

@@ -9,6 +9,9 @@ title: "Presentation-layer routing and client-side script"
 audience: vendor-public
 bcsc_class: current-fact
 language: en
+language_protocol: PROSE-TOPIC
+quality: complete
+cites: []
 paired_with: zero-execution-routing.es.md
 category: patterns
 last_edited: 2026-08-22

@@ -9,7 +9,9 @@ quality: complete
 index_group: collaboration-and-editorial-workflow
 short_description: "The Doorman routes every inference request to one of three compute tiers — local, burst GPU, or external API — based on a complexity hint and live budget state, not a caller's direct choice."
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
 last_edited: 2026-08-22
 editor: pointsav-engineering
 cites: []
@@ -28,15 +30,21 @@ The Doorman defines three inference routes:
 
 **External** — an external API (Anthropic, Google, or OpenAI), reserved for narrow, precision-critical tasks and gated behind an explicit allowlist rather than opened to arbitrary requests. **A request only reaches an external API when the task genuinely needs it — every request defaults toward staying on infrastructure the operator controls, not away from it.**
 
+**Why it matters:** the default direction is always toward the operator's own infrastructure — an external vendor only ever sees the narrow slice of work that genuinely requires it, never the platform's traffic by default.
+
 ## The caller hints; the Doorman decides
 
 A caller does not pick a tier directly. It submits a complexity hint — low, medium, or high — describing the shape of the work, and the Doorman maps that hint to a concrete tier using its own budget caps and current instance state. The same "high complexity" hint might route to Yoyo when a burst instance is already warm, or hold at Local under tight budget conditions — the caller's hint is an input to the routing decision, not the decision itself.
 
 This indirection is what makes the discipline enforceable rather than aspirational. If callers picked their own tier, cost discipline would depend on every caller consistently choosing the cheapest tier that would work — the same problem a platform with no tier guidance has, just moved one layer down. Routing through the Doorman means the enforcement point is one piece of code, not every caller's judgment.
 
+**Why it matters:** cost discipline does not depend on every individual caller behaving well — it is enforced in exactly one place, so it cannot be silently bypassed by a caller that forgot to check its own budget.
+
 ## Why this matters for cost
 
 Running work at whichever tier can actually serve it — rather than defaulting every request to the most capable tier available — produces a large effective cost multiplier at a fixed compute budget. Simple, well-specified requests that a local model handles correctly never touch the more expensive burst or external tiers at all. The savings compound: a platform running at tier discipline sustains substantially more request volume within the same infrastructure cost than one that does not.
+
+**Why it matters:** the same fixed compute budget serves substantially more real work — a customer's costs do not scale linearly with usage the way they would under a platform that routes everything to the most capable, most expensive tier by default.
 
 ## See also
 

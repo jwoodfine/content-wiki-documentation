@@ -9,7 +9,9 @@ quality: complete
 index_group: sovereignty-and-infrastructure-patterns
 short_description: "El principio de control de acceso por Capacidades de Objeto — un emparejamiento criptográfico es el permiso, y su ausencia hace inexistente el camino — tal como se manifiesta en la admisión de nodos basada en máquinas de la plataforma."
 status: active
+audience: vendor-public
 bcsc_class: no-disclosure-implication
+language_protocol: PROSE-TOPIC
 last_edited: 2026-08-22
 editor: pointsav-engineering
 cites: []
@@ -65,7 +67,3 @@ No es un modelo teórico. Está desplegado a escala en sistemas de producción a
 - [[compounding-substrate]] — la arquitectura más amplia dentro de la cual opera este modelo de acceso
 - [[three-ring-architecture]] — el modelo de límite de anillos que este principio refuerza a nivel de nodo
 - [[pair-a-new-device]] — guía paso a paso: registrar un dispositivo mediante la ceremonia de emparejamiento
-
-## Procedencia
-
-Versión en español elaborada por project-language, adaptación estratégica — no es una traducción literal del artículo canónico en inglés.

@@ -9,7 +9,9 @@ quality: complete
 index_group: collaboration-and-editorial-workflow
 short_description: "El Doorman enruta cada solicitud de inferencia a uno de tres niveles de cómputo — local, ráfaga en GPU, o API externa — según una indicación de complejidad y el estado presupuestario en vivo, no una elección directa del solicitante."
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
 last_edited: 2026-08-22
 editor: pointsav-engineering
 cites: []
@@ -26,22 +28,24 @@ Una plataforma que enruta cada solicitud de inferencia por la misma ruta de cóm
 
 **External** — una API externa (Anthropic, Google u OpenAI), reservada para tareas estrechas y críticas de precisión, restringida por una lista de permitidos explícita en lugar de abrirse a solicitudes arbitrarias. **Una solicitud solo llega a una API externa cuando la tarea genuinamente lo requiere** — toda solicitud por defecto permanece en infraestructura controlada por el operador.
 
+**Por qué importa:** la dirección por defecto siempre apunta a la infraestructura propia del operador — un proveedor externo solo ve la franja estrecha de trabajo que genuinamente lo requiere, nunca el tráfico de la plataforma por defecto.
+
 ## El solicitante indica; el Doorman decide
 
 Un solicitante no elige el nivel directamente. Envía una indicación de complejidad — baja, media o alta — y el Doorman la traduce a un nivel concreto usando sus propios límites presupuestarios y el estado actual de las instancias. La misma indicación de "complejidad alta" podría enrutar a Yoyo cuando ya hay una instancia activa, o permanecer en Local bajo condiciones de presupuesto ajustadas.
 
 Esta indirección es lo que hace la disciplina exigible en lugar de aspiracional. Si cada solicitante eligiera su propio nivel, la disciplina de costos dependería de que cada uno eligiera consistentemente el nivel más económico que funcionara — el mismo problema que tiene una plataforma sin ninguna guía de nivel. Enrutar a través del Doorman convierte el punto de cumplimiento en un solo lugar del código, no en el criterio de cada solicitante.
 
+**Por qué importa:** la disciplina de costos no depende de que cada solicitante individual se comporte bien — se aplica en un único lugar, de modo que ningún solicitante que olvide revisar su propio presupuesto puede sortearla en silencio.
+
 ## Por qué esto importa para el costo
 
 Ejecutar el trabajo en el nivel que realmente puede atenderlo — en lugar de enviar cada solicitud por defecto al nivel más capaz disponible — produce un multiplicador de costo efectivo considerable con un presupuesto de cómputo fijo. Las solicitudes simples y bien especificadas que un modelo local atiende correctamente nunca tocan los niveles de ráfaga o externos, más costosos. El ahorro se acumula: una plataforma que opera con esta disciplina sostiene un volumen de solicitudes sustancialmente mayor dentro del mismo costo de infraestructura.
+
+**Por qué importa:** el mismo presupuesto de cómputo fijo atiende sustancialmente más trabajo real — los costos de un cliente no escalan linealmente con el uso como lo harían bajo una plataforma que enruta todo al nivel más capaz y más costoso por defecto.
 
 ## Véase también
 
 - [[service-slm-operationalization-plan]] — la arquitectura de enrutamiento de cómputo que implementa el Doorman
 - [[doorman-protocol]] — el servicio Doorman que realiza este enrutamiento en la puerta de enlace de inferencia
 - [[zero-container-runtime]] — la disciplina de despliegue que el propio Doorman sigue como binario gestionado por systemd
-
-## Procedencia
-
-Versión en español elaborada por project-language, adaptación estratégica — no es una traducción literal del artículo canónico en inglés.

@@ -26,9 +26,11 @@ cites:
 
 The passthrough relay pattern was a real-time collaborative editing design implemented in the wiki engine and later removed. It inverted the normal assumption about where authority sits in a collaborative editing system: the relay server held no document state at all, so the canonical git tree remained the sole authoritative record of every article's content at every point in time. Concurrent editors connected over WebSocket to a per-document broadcast channel, and the server's only job was to forward CRDT update messages between those clients — it never decoded or stored the document state those messages encoded. The design is documented here because the reasoning behind it is worth understanding even though the implementation is gone: it is a clean answer to a question any collaborative-editing feature has to answer eventually.
 
+**Why it matters:** a design that never stores document state on the server has nothing to lose if the server crashes mid-session — the worst case is a dropped connection, never a corrupted or lost document.
+
 ## Why a passthrough relay rather than a CRDT server
 
-Tools such as Etherpad and HackMD operate on a server-authoritative document model: the collaborative editing server holds a live, mutable document object, and that object is the primary record of current content. A git export is a snapshot taken from that server record, not the other way around. The consequence is a permanent second authoritative state — two places in the system hold an answer to "what is the current text of this document," and they can drift if the export mechanism fails or the server crashes before a save.
+Server-authoritative collaborative editors operate on a different model: the collaborative editing server holds a live, mutable document object, and that object is the primary record of current content. A git export is a snapshot taken from that server record, not the other way around. The consequence is a permanent second authoritative state — two places in the system hold an answer to "what is the current text of this document," and they can drift if the export mechanism fails or the server crashes before a save.
 
 The passthrough design eliminates that second record entirely. The server acts as a message conduit, not a store — it relays update messages between clients without ever deserializing or persisting the document state they carry. The only document state the server knows in this design is whatever a client sends through the ordinary save path.
 
@@ -38,13 +40,19 @@ The passthrough design eliminates that second record entirely. The server acts a
 
 This mattered for the disclosure-substrate posture the wiki engine follows. The canonical disclosure record is the git tree: every article's content history is a sequence of signed commits, and that sequence is what an audit would produce. A server-authoritative CRDT store would exist in parallel with that sequence, unsigned, representing content states that never appeared in git. Under the passthrough design, no such parallel record existed — in-flight CRDT state was never written anywhere, so it was never part of the disclosure record to begin with. The record closed at save time, not before.
 
+**Why it matters:** an auditor reconstructing what a document said at any point in time never has to reconcile two competing records — there was only ever one, the signed git history.
+
 ## Current status
 
 The collaboration feature this pattern describes has been removed from the wiki engine. It shipped gated behind an opt-in flag, was never enabled by default, and was later deleted outright rather than left dormant — the engine today has no collaborative-editing code path at all. This article documents the design as a historical record of a pattern that was built, worked as designed, and was subsequently withdrawn; it does not describe current wiki-engine behavior.
 
+**Why it matters:** a reader evaluating the wiki engine today should not expect real-time co-editing to be available — this article explains a design the platform tried and retired, not a currently shipping feature.
+
 ## Generalising beyond the wiki
 
 The passthrough relay is a substrate pattern, not a wiki-specific feature, and the underlying design question outlives this particular implementation. Any service that wants concurrent-editing semantics faces the same question: does the collaboration infrastructure need to hold document state on the server, or can that state live entirely on the clients and in canonical storage? The passthrough answer applies cleanly when the collaborative document type maps directly onto the canonical storage type — a text document collaboratively edited into a git-committed Markdown file, for instance. It applies less cleanly where the canonical storage is a different shape than the live editing session's document model, and where mapping one onto the other would require an adapter layer the passthrough design does not itself provide.
+
+**Why it matters:** the design is a reusable answer, not a one-off wiki feature — any future collaborative surface the platform builds can reuse this reasoning instead of re-deriving it from scratch.
 
 ## See also
 

@@ -9,9 +9,12 @@ content_type: topic
 quality: complete
 short_description: "Por qué un Archivo Totebox se diseña como una unidad de datos autónoma y libremente transferible, en lugar de un registro de base de datos propiedad de la plataforma que lo creó."
 status: active
+audience: vendor-public
 bcsc_class: no-disclosure-implication
+language_protocol: PROSE-TOPIC
 last_edited: 2026-08-24
 editor: pointsav-engineering
+cites: []
 paired_with: totebox-archives-as-the-asset.md
 ---
 

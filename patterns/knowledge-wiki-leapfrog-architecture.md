@@ -9,6 +9,7 @@ content_type: topic
 quality: complete
 index_group: interface-and-user-experience
 status: active
+audience: vendor-public
 bcsc_class: no-disclosure-implication
 language_protocol: PROSE-TOPIC
 last_edited: 2026-08-24
@@ -46,6 +47,8 @@ references:
 
 [[app-mediakit-knowledge|`app-mediakit-knowledge`]] is the PointSav knowledge platform engine, a Rust binary that serves three wiki instances — `documentation.pointsav.com`, `projects.woodfinegroup.com`, and `corporate.woodfinegroup.com` — from flat Markdown files stored in git repositories. The engine renders content with Wikipedia-shaped chrome: sticky table of contents, wikilink resolution with red-link signalling, category pages, edit history, and full-text search. **A reader comparing this wiki to Wikipedia feature-by-feature will find most of the reading experience already matches — the two clearly missing pieces are the infobox and the navbox**, the two highest-impact elements of Wikipedia's visual muscle memory. A planned multi-sprint roadmap is intended to close that gap before adding a Leapfrog 2030 differentiation layer that goes beyond what Wikipedia offers.
 
+**Why it matters:** a reader arrives already knowing how to use this wiki, because the reading and editing patterns are the ones two decades of Wikipedia use have already taught them.
+
 ## Why Topics, not pages
 
 The engine's Wikipedia-shaped chrome serves a specific content model: an article is a
@@ -72,6 +75,8 @@ memory specifically, rather than a generic content-management system: Wikipedia 
 clearest existing example of a platform that is a library, an encyclopedia, and a
 repository at once, at a scale that proves the model holds.
 
+**Why it matters:** a reader never has to ask "is this the current version, and is there a better copy somewhere else" — every Topic has exactly one home, one history, and one answer to "what does this say right now."
+
 ## Why not port MediaWiki
 
 MediaWiki is the software that runs Wikipedia. Porting it to Rust would not serve the platform's goals.
@@ -84,6 +89,8 @@ The wikitext template system is the core of MediaWiki's content richness — inf
 
 The architectural goal of `app-mediakit-knowledge` is not to replicate this design but to achieve the same reader experience through a fundamentally different stack. The content format is Markdown with YAML frontmatter, not wikitext. Version control is git, not a MySQL revision table. The search backend is Tantivy — embedded, zero operational overhead — not an Elasticsearch-backed cluster. Template transclusion is replaced by six native block types that cover approximately 95 percent of what templates are actually used for on Wikipedia.[^3]
 
+**Why it matters:** the reader gets the same familiar page; the operator gets a system that runs as one binary with no database server, no PHP runtime, and no separate search cluster to keep alive.
+
 ## MediaWiki architecture, understood
 
 MediaWiki's namespace system defines 30 namespaces in two axes: subject pages (Article, User, File, Template, Category, Help, Module, Draft) paired with Talk pages. Special pages form a separate class of software-generated pages with no talk equivalent.
@@ -95,6 +102,8 @@ The Vector 2022 skin divides every page into: a sticky header (logo, search, lan
 The Cite extension handles footnotes: `<ref>citation text</ref>` in the article body inserts a numbered superscript; `<references/>` at the section bottom renders the numbered list. Reference Tooltips — a JavaScript gadget — shows citation text on hover without requiring the reader to scroll.[^4]
 
 These elements constitute the muscle memory that Wikipedia readers have developed over two decades. A wiki missing the infobox, the sticky TOC, the `[1][2][3]` footnote superscripts, or the navboxes does not feel like Wikipedia regardless of how good its content is.
+
+**Why it matters:** these are the specific, nameable elements a reader unconsciously checks for — closing this exact list, not a vague "make it feel more like Wikipedia," is what actually closes the gap.
 
 ## Current feature state
 
@@ -119,6 +128,8 @@ As of May 2026, `app-mediakit-knowledge` implements approximately 78 percent of 
 - Notify-based incremental search reindex (no restart required on file changes)
 - Mobile hamburger navigation
 
+**Why it matters:** a reader today already gets working search, working edit history, and working category navigation — the remaining gap is specific and named below, not a sign the whole engine is unfinished.
+
 ### Missing elements ranked by impact
 
 The following elements are stubbed or absent today, ranked by muscle-memory impact:
@@ -138,6 +149,8 @@ The following elements are stubbed or absent today, ranked by muscle-memory impa
 | `/random` article | 5/10 | Absent |
 | Edit summary field | 5/10 | Git commit message populated from author and time only |
 | Definition lists | 4/10 | comrak extension disabled; one-line fix |
+
+**Why it matters:** ranking the gaps by impact rather than listing them alphabetically tells a reader exactly which two elements — the infobox and the navbox — would move the needle most, rather than leaving them to guess which of thirteen items to care about.
 
 ## The native block types approach
 
@@ -164,6 +177,8 @@ The engine walks the comrak AST, matches `CodeBlock` nodes with `info = "infobox
 
 The comrak upgrade this design depends on has already happened — the engine has run comrak 0.52 since before this article was last checked.[^5] That version adds the `block_directive` extension (`:::infobox`, `:::navbox` syntax), cleaner than fenced code blocks for multi-line Markdown content inside the block body. **The upgrade itself was the easy part; the infobox and navbox rendering code that would use it has not been written yet.** Having the newer comrak version in place removes one prerequisite for building these block types — it does not mean they are built.
 
+**Why it matters:** no template database, macro interpreter, or Lua sandbox has to be built or operated to get the infobox and navbox on screen — the remaining work is rendering code against an author-friendly YAML block, not a new subsystem.
+
 ## The Leapfrog 2030 layer
 
 Wikipedia muscle memory is the floor, not the ceiling. Once `app-mediakit-knowledge` achieves full Wikipedia parity, three planned first-class primitives are intended to distinguish it from incumbent alternatives.
@@ -176,6 +191,8 @@ Wikipedia muscle memory is the floor, not the ceiling. Once `app-mediakit-knowle
 
 **BCSC squiggle linting** — the editor currently enforces seven deterministic SAA rules via coloured underlines. The planned complete set includes forward-looking statement detection, Do-Not-Use vocabulary flagging, Sovereign Data Foundation current-tense detection, competitive comparison flagging, and citation-required prompts. This is built into the editing surface rather than applied as a post-publication compliance check.
 
+**Why it matters:** these three primitives are what the platform is intended to offer that no incumbent wiki does — Wikipedia parity closes the gap with existing readers' expectations, and this layer is meant to be the reason to choose this platform over an equally Wikipedia-shaped alternative.
+
 ## Mobile-first and progressive enhancement
 
 The wiki is designed mobile-first: the layout, navigation, and table of contents render correctly and usably at a 375 px viewport before any progressive enhancement for wider screens. Desktop users receive the full sidebar-plus-content layout as an enhancement; mobile users receive the complete reading and editing experience without a stripped-down alternative.
@@ -186,6 +203,8 @@ Touch target discipline follows WCAG 2.2 Success Criterion 2.5.8: all interactiv
 
 The muscle-memory goal extends to mobile. The Wikipedia app's navigation patterns inform the mobile layout — back-to-top, swipe-between-categories, bottom-rail search — not a stripped-down "mobile version" that reads like a fallback. This is the same leapfrog principle applied to form factor: reach full Wikipedia mobile parity first, then add the differentiation layer.
 
+**Why it matters:** a reader on a phone gets the same complete reading and editing experience as a reader at a desk — mobile is never the degraded option.
+
 ## Structural positioning
 
 Incumbent wiki platforms built on hierarchical organisation models — books, chapters, spaces, folders — break the flat hyperlink graph that makes Wikipedia useful. A hierarchical wiki creates knowledge silos; a flat wiki with a category DAG creates a knowledge commons.
@@ -193,6 +212,8 @@ Incumbent wiki platforms built on hierarchical organisation models — books, ch
 Platforms that impose hierarchical organisation typically lack redlinks (the signal that a page is missing and should be created), backlinks, navboxes, and the full Special pages framework. Several lack talk pages entirely.
 
 `app-mediakit-knowledge` is designed as a Rust-native, git-backed, flat-file wiki engine targeting full Wikipedia muscle memory for regulated SMBs operating under continuous-disclosure obligations.
+
+**Why it matters:** a flat, category-linked wiki keeps every article one hop from its neighbours — a reader never has to guess which folder or space a topic was filed under to find it.
 
 ## See also
 

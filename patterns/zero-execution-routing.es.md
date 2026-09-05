@@ -9,6 +9,9 @@ title: "Enrutamiento y script del lado del cliente en la capa de presentación"
 audience: vendor-public
 bcsc_class: current-fact
 language: es
+language_protocol: PROSE-TOPIC
+quality: complete
+cites: []
 paired_with: zero-execution-routing.md
 category: patterns
 last_edited: 2026-08-22
@@ -31,7 +34,3 @@ Las plantillas de la página de inicio cargan un pequeño script en línea con d
 - [[machine-based-auth]] — capa de autenticación basada en máquinas que opera en el mismo contexto de presentación
 - [[decode-time-constraints]] — restricciones en tiempo de decodificación que aplican los límites de ejecución deterministas
 - [[sel4-microkernel-substrate]] — el sustrato de microkernel que fundamenta el modelo de aislamiento de ejecución
-
-## Procedencia
-
-Versión en español elaborada por project-language, adaptación estratégica — no es una traducción literal del artículo canónico en inglés.

@@ -26,6 +26,8 @@ Source-of-truth inversion is a named platform design pattern. In each PointSav a
 
 The pattern recurs across the wiki engine, the Ring 2 extraction pipeline, and the planned `app-workplace-presentation` and `app-workplace-proforma` applications. In each case, the choice of what is canonical follows the same structural logic: the layer with the longest durability requirement, the strongest audit obligation, and the cleanest replication story is canonical. Everything else is derived.
 
+**Why it matters:** a reader never has to wonder which copy of a record is the real one — the canonical layer is always named, and every other layer can be deleted and rebuilt without losing anything that was ever authoritative.
+
 ## Application: wiki engine (anchor instance)
 
 The full treatment of source-of-truth inversion in the wiki engine appears in [[app-mediakit-knowledge]] §2. The summary here: git is canonical, the running binary is a view, and the historical [[collab-via-passthrough-relay|CRDT passthrough relay]] — since removed from the engine — was the session-ephemeral layer while it existed.
@@ -34,15 +36,19 @@ The Tantivy full-text search index, the redb wikilink graph (planned, Phase 4), 
 
 This case grounds the pattern with a live deployment: `https://documentation.pointsav.com` has served this substrate since 2026-04-27.
 
+**Why it matters:** the running server can crash, be redeployed, or be replaced entirely, and no article content is at risk — everything the reader sees is rebuilt from the same git tree every time.
+
 ## Application: service-extraction (Ring 2 multi-author review pipeline)
 
 `service-extraction` is the Ring 2 service that runs the multi-author document review pipeline. The source-of-truth mapping:
 
-**Canonical**: the extraction event log committed to the WORM immutable ledger managed by `service-fs` (binding `0.0.0.0:9100`, ledger root at `/opt/mediakit/data/service-fs/ledger`). An extraction event is durably sequenced the moment it is appended to the ledger; the ledger enforces total order over all events. Ledger entries are not modifiable after the fact — that is what WORM (Write Once Read Many) means structurally, not just operationally. The WORM ledger as canonical storage follows the substrate's general preference for append-only signed records: instead of a mutable relational database as the authority for review state, the substrate is an append-only signed log.
+**Canonical**: the extraction event log committed to the WORM immutable ledger managed by `service-fs`. An extraction event is durably sequenced the moment it is appended to the ledger; the ledger enforces total order over all events. Ledger entries are not modifiable after the fact — that is what WORM (Write Once Read Many) means structurally, not just operationally. The WORM ledger as canonical storage follows the substrate's general preference for append-only signed records: instead of a mutable relational database as the authority for review state, the substrate is an append-only signed log.
 
 **View**: the review queue shown to each reviewer is derived from the set of ledger entries that have not yet received a verdict commit. The per-reviewer verdict summary is derived similarly. Neither the queue nor the summary is stored separately — both re-derive on each query from the ledger. The derivation is deterministic: the same ledger produces the same queue and summary every time it is queried, because the ledger is immutable and total-ordered.
 
 **Ephemeral**: reviewer annotations made before a verdict commit are session-ephemeral. One reviewer's working annotations cannot see or corrupt another reviewer's working annotations, because those annotations have not yet been committed to the canonical ledger. Concurrent reviewers work against their own in-process state; the ledger reconciles when a verdict commit lands. The total-order enforcement of the ledger is the substrate mechanism that makes concurrent review safe without coordination locks.
+
+**Why it matters:** two reviewers working the same queue at the same moment can never produce a corrupted or ambiguous review record — the ledger's total order settles the outcome deterministically, without either reviewer needing to coordinate with the other.
 
 ## Application: app-workplace-presentation (deck collaboration, planned)
 
@@ -54,6 +60,8 @@ This case grounds the pattern with a live deployment: `https://documentation.poi
 
 **Ephemeral**: CRDT multi-cursor collaboration state for real-time co-authoring sessions is planned as session-ephemeral, on the same passthrough-relay design the wiki engine once ran — the wiki's own implementation has since been removed, but the design itself remains the reference for this planned layer. That session-state does not persist between sessions without an explicit commit by a human author. When all authors leave the session, the ephemeral state is discarded; the canonical record in git is unchanged. The CRDT collaboration layer for `app-workplace-presentation` is planned; it is not yet implemented.
 
+**Why it matters:** several authors are intended to be able to co-edit a deck in real time without any of them risking the committed version — a collaboration session that ends badly loses only the in-progress edits, never the deck's last-committed state.
+
 ## Application: app-workplace-proforma (table collaboration, planned)
 
 `app-workplace-proforma` is a planned application for collaborative structured-data editing — proforma tables, financial schedules, and structured documents used in regulated business contexts. The source-of-truth mapping:
@@ -63,6 +71,8 @@ This case grounds the pattern with a live deployment: `https://documentation.poi
 **View**: the rendered table UI with computed fields — totals, cross-row references, conditional formatting — derived from the canonical structured data on each render. Computed fields are not stored in the canonical record; they re-derive. This matters for proforma contexts where a formula change must produce consistent derived values everywhere the formula is referenced, with no cached stale values possible because the cache is not canonical.
 
 **Ephemeral**: CRDT cell-level collaboration state during shared editing sessions is planned as session-ephemeral, following the same commit-gated persistence model as `app-workplace-presentation`. Nothing persists to the canonical record until an explicit commit. The authoritative number is the one committed and signed in git — not the rendered value in a browser tab that may reflect unsaved session edits. The pattern enforces that distinction structurally: the only way to change the canonical record is a commit. Note: the CRDT collaboration layer for `app-workplace-proforma` is planned; it is not yet implemented as of 2026-04-27.
+
+**Why it matters:** in a regulated financial-modeling context, "what number did we actually rely on" always has one unambiguous answer — the committed and signed figure in git, never an unsaved value a collaborator happened to be looking at.
 
 ## Why this pattern matters
 

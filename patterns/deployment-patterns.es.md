@@ -3,7 +3,7 @@ schema: foundry-doc-v1
 title: "Patrones de despliegue"
 slug: deployment-patterns
 category: patterns
-type: concept
+type: topic
 content_type: topic
 quality: complete
 index_group: deployment-and-configuration
@@ -14,6 +14,7 @@ bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
 last_edited: 2026-08-24
 editor: pointsav-engineering
+cites: []
 paired_with: deployment-patterns.md
 references:
   - id: 1
@@ -25,6 +26,8 @@ references:
 ---
 
 Los patrones de despliegue describen las seis configuraciones canónicas en las que se despliega el sustrato PointSav en diferentes contextos institucionales, cada una construida sobre la [[three-ring-architecture|arquitectura de tres anillos]]. Cada configuración se basa en los mismos cinco primitivos — Personas, Comunicaciones, Borradores, Registros, Dinero — y la misma superficie de [[os-console|Libro Mayor de Comandos]]; lo que cambia por configuración es el [[archetypes-and-chart-of-accounts|Plan de Cuentas]] y la superficie de cumplimiento. El sustrato no se bifurca entre segmentos; se adapta. Al finalizar este artículo, el lector comprenderá el posicionamiento de Compañero, las seis configuraciones canónicas y el modelo de aislamiento de cartuchos en tiempo de compilación que hace práctica la versión independiente en los seis.
+
+**Por qué importa:** una corrección o función construida para una configuración se traslada automáticamente a las seis — no existe una base de código separada por segmento que mantener sincronizada.
 
 ## Cinco primitivos que abarcan todos los contextos institucionales [^2]
 
@@ -40,6 +43,8 @@ Cada contexto en el que operan los usuarios institucionales se asigna a las mism
 
 El [[os-console|Libro Mayor de Comandos]] expone cada primitivo como una superficie de tecla F dedicada. El operador presiona una tecla; el chasis carga el plugin relevante; el plugin muestra los registros de ese primitivo dentro del contexto [[totebox-os|Totebox]] actual.
 
+**Por qué importa:** un operador que ya aprendió la disposición de cinco teclas en una firma inmobiliaria ya la conoce en un bufete de abogados o en un hogar — la superficie nunca hay que reaprenderla cuando cambia el negocio subyacente.
+
 ## Cómo la plataforma opera junto a las herramientas incumbentes
 
 La plataforma se posiciona como un motor complementario, no como un reemplazo de las herramientas operativas existentes. Los clientes continúan usando las aplicaciones profesionales y de productividad que ya operan; el sustrato funciona en paralelo, enrutando los registros de esas aplicaciones hacia archivos [[totebox-os|Totebox]] soberanos.
@@ -50,9 +55,11 @@ La plataforma se posiciona como un motor complementario, no como un reemplazo de
 | Aplicaciones de hojas de cálculo | La superficie de hoja de cálculo soberana prevista almacena modelos financieros ejecutados en el [[worm-ledger-design|libro mayor WORM]] |
 | Aplicaciones de procesamiento de texto | La superficie de procesamiento de texto soberana prevista usa Typst para salida con fidelidad de impresión |
 | Plataformas de redes profesionales | Se prevé que [[service-people]] recopile datos de contacto verificados en el libro mayor de identidad del Totebox |
-| Repositorios de documentos corporativos | service-minutebook sella criptográficamente los registros firmados contra el sustrato [[worm-ledger-design|WORM]] |
+| Repositorios de documentos corporativos | Se prevé que service-minutebook selle criptográficamente los registros firmados contra el sustrato [[worm-ledger-design|WORM]] |
 
 El cliente no necesita abandonar ninguna herramienta funcional. El sustrato opera en segundo plano; el Libro Mayor de Comandos proporciona una vista soberana sobre los registros que producen las herramientas incumbentes.
+
+**Por qué importa:** el cliente nunca enfrenta una migración forzada fuera de las herramientas que su personal ya conoce — el sustrato añade un registro soberano por debajo, no reemplaza la interfaz que ya funciona.
 
 ## Seis configuraciones de despliegue canónicas
 
@@ -67,6 +74,8 @@ Las seis configuraciones representan familias de GUIDEs distintas en el catálog
 | Family office | Registros fiscales, documentos de sucesión, contratos del hogar | Anclajes adaptados en Personal y Administración Local |
 | Hogar | Recibos, garantías, correspondencia familiar | Plan simplificado de un solo Perfil |
 
+**Por qué importa:** una nueva configuración para un segmento aún no listado aquí es un ejercicio de Plan de Cuentas, no un nuevo esfuerzo de ingeniería — el sustrato subyacente no necesita reconstruirse.
+
 ## Aislamiento de cartuchos dentro del Libro Mayor de Comandos
 
 El [[os-console|Libro Mayor de Comandos]] es una aplicación de terminal, no una superficie web — no tiene capa HTTP ni HTML, CSS o JavaScript en ninguna parte. **Cada tecla de función carga un fragmento de código completamente separado y compilado de forma independiente, y ningún cartucho puede leer el estado de otro por accidente** — esa separación la aplica el compilador, no una comprobación de permisos en tiempo de ejecución. El chasis es una capa vacía que registra un conjunto fijo de objetos Rust — uno por cartucho — al iniciar. Cuando el operador presiona F2, el chasis despacha al cartucho de Personas ya registrado; F3 despacha al de Correo.
@@ -80,6 +89,8 @@ El [[os-console|Libro Mayor de Comandos]] es una aplicación de terminal, no una
 
 Este modelo de aislamiento logra el mismo objetivo práctico que una arquitectura de micro-frontends[^1] basada en navegador: módulos mutuamente aislados y versionados de forma independiente detrás de una capa compartida. El mecanismo difiere — el sistema de módulos y traits de Rust, aplicado en tiempo de compilación.
 
+**Por qué importa:** un error en un cartucho no puede corromper ni leer los datos de otro cartucho ni siquiera en principio — la garantía se sostiene porque el compilador la aplica, no porque una verificación en tiempo de ejecución lo haya detectado esta vez.
+
 ## Cómo las plantillas de despliegue se asignan al catálogo de flota
 
 | Plantilla | Función | Estado |
@@ -90,9 +101,13 @@ Este modelo de aislamiento logra el mismo objetivo práctico que una arquitectur
 
 Las plantillas en la Capa de Exhibición corresponden a instancias numeradas en la Capa de Instancias — privadas para el operador, ignoradas por git en todos los repositorios públicos. Consulte [[three-layer-architecture]] para el modelo de tres capas.
 
+**Por qué importa:** un cliente puede examinar públicamente el catálogo completo de plantillas sin que ningún dato privado de instancia — precios, credenciales o identidad del cliente — quede expuesto junto a él.
+
 ## La cadencia de despliegue visible-primero
 
 Los patrones de despliegue se lanzan con una cadencia de visible-primero: la URL resuelve y una superficie reconocible responde antes de que comience cualquier trabajo de pulido o endurecimiento. Un patrón que aún no ha sido aprovisionado como un despliegue funcional se describe en términos de planificación, no como infraestructura activa.
+
+**Por qué importa:** un lector que ve una configuración descrita como "desplegada" puede confiar en esa afirmación literalmente — una URL real resuelve a una superficie real y usable, no a una especificación pendiente de construir.
 
 ## Véase también
 

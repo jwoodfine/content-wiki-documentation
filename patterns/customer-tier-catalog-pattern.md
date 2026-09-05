@@ -8,10 +8,14 @@ short_description: "Catalog-versus-instance discipline at the customer tier — 
 category: patterns
 type: topic
 content_type: topic
+quality: complete
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
 last_edited: 2026-08-24
 editor: pointsav-engineering
+cites: []
 paired_with: customer-tier-catalog-pattern.es.md
 index_group: deployment-and-configuration
 ---
@@ -24,15 +28,21 @@ A catalog entry describes a deployment without encoding any tenant-specific or e
 
 An instance encodes the values that make the catalog concrete: the running service version, the environment-specific configuration, and any runtime state local to this copy. Instance data may include credentials or binding details that must not reach a shared code repository. The instance is what is actually running.
 
+**Why it matters:** a credential or binding detail belonging to one running copy can never leak into the shared repository that every other tenant's instance is also provisioned from.
+
 ## What lives in the catalog
 
 Catalog entries live in the fleet-deployment repository, one directory per deployment name. A catalog entry is tenancy-agnostic: its contents describe the deployment as a service definition, not as a running copy. In practice a catalog entry carries a bilingual README describing what the deployment does, plus operational runbooks scoped to that specific deployment. The runbooks live inside the catalog entry directory, not anywhere else in the repository, precisely because they describe one deployment rather than a general pattern.
+
+**Why it matters:** anyone provisioning a new copy of a deployment finds everything they need — the description and the runbooks — in exactly one place, rather than scattered across the repository.
 
 ## What lives in the instance
 
 Instances live in a gitignored local directory, one per numbered copy of a deployment. This path does not appear in any repository. An instance carries a MANIFEST recording the fields that distinguish it from other copies of the same deployment: the running source version, the instance number, and the current lifecycle state. An instance may accumulate additional runtime artefacts after provisioning — log files, local configuration, connection details — that are specific to the running environment and not appropriate for shared version control.
 
 **The manifest that actually describes a specific running copy lives with that copy, not in the shared catalog** — checking two real deployments confirms this in practice: neither carries a manifest file in its catalog entry, only in its provisioned instance.
+
+**Why it matters:** a reader who wants to know what's actually running never has to guess whether the shared repository or the local instance directory holds the current answer — it is always the instance.
 
 ## Deployment names and the prefix taxonomy
 
@@ -50,11 +60,15 @@ Deployment names follow the fleet prefix taxonomy. Seven canonical prefixes defi
 
 The prefix makes the deployment's role readable without opening its catalog entry. A deployment named `gateway-orchestration-gis` is immediately classifiable: it is an external-facing gateway service, the GIS orchestration variant.
 
+**Why it matters:** a reader scanning a list of dozens of deployment names can classify each one's role from the name alone, without opening a single catalog entry.
+
 ## Worked example: gateway-orchestration-gis
 
 The GIS orchestration deployment demonstrates the catalog/instance pattern directly. Its catalog entry carries the README pair describing the geospatial-orchestration service and the operational runbooks for provisioning, pipeline rebuilds, and adding a new country or chain to the dataset. This catalog entry is version-controlled and visible to any contributor with access to the fleet-deployment repository.
 
 The running instance carries the actual deployed configuration and application state accumulated since provisioning. The instance number is the numeric suffix on the instance directory name. If the deployment were reprovisioned from scratch, or a parallel instance created for testing, the next number would increment.
+
+**Why it matters:** a concrete, real deployment shows the abstract catalog/instance split is not just theory — a contributor can go look at both halves of `gateway-orchestration-gis` today and see the separation directly.
 
 ## Provisioning and decommissioning
 
@@ -63,6 +77,8 @@ Provisioning a new instance begins by reading the catalog entry: the README and 
 Decommissioning follows a two-party model. The session that owns the instance performs the graceful tear-down: it stops the running service, archives any runtime state worth preserving, and removes the instance directory. A separate workspace coordination step records the completion of the tear-down.
 
 The catalog entry persists after decommissioning. A future instance of the same deployment name can be provisioned from the same catalog entry without any changes to the fleet-deployment repository. The catalog is the definition; the instance is the transient realisation of that definition.
+
+**Why it matters:** decommissioning an instance is never destructive to the deployment's definition — the same catalog entry can be provisioned again tomorrow, for a different tenant, with zero changes required to the shared repository.
 
 ## See also
 

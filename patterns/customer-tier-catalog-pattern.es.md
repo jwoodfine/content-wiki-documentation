@@ -8,10 +8,14 @@ short_description: "Disciplina catálogo-instancia en el nivel cliente — defin
 category: patterns
 type: topic
 content_type: topic
+quality: complete
 status: active
+audience: vendor-public
 bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
 last_edited: 2026-08-24
 editor: pointsav-engineering
+cites: []
 paired_with: customer-tier-catalog-pattern.md
 index_group: deployment-and-configuration
 ---
@@ -24,13 +28,19 @@ Una entrada de catálogo describe un despliegue sin codificar valores específic
 
 Una instancia codifica los valores que hacen concreto al catálogo: la versión del servicio en ejecución, la configuración específica del entorno y cualquier estado local a esa copia. La instancia es lo que está ejecutándose realmente.
 
+**Por qué importa:** una credencial o un detalle de vínculo perteneciente a una copia en ejecución nunca puede filtrarse al repositorio compartido del que se aprovisiona la instancia de cualquier otro cliente.
+
 ## Qué vive en el catálogo
 
 Las entradas de catálogo viven en el repositorio de gestión de flota, un directorio por nombre de despliegue. En la práctica, una entrada de catálogo lleva un README bilingüe y uno o más manuales operativos propios de ese despliegue específico — por eso viven dentro del directorio de la entrada, no en otro lugar del repositorio.
 
+**Por qué importa:** quien aprovisiona una nueva copia de un despliegue encuentra todo lo que necesita — la descripción y los manuales operativos — en un solo lugar, en lugar de disperso por el repositorio.
+
 ## Qué vive en la instancia
 
 Las instancias viven en un directorio local excluido del control de versiones, uno por copia numerada. Una instancia lleva un manifiesto con los campos que la distinguen de otras copias: la versión en ejecución, el número de instancia y el estado del ciclo de vida. **El manifiesto que realmente describe una copia en ejecución vive con esa copia, no en el catálogo compartido** — al verificar dos despliegues reales, ninguno lleva un archivo de manifiesto en su entrada de catálogo, solo en su instancia aprovisionada.
+
+**Por qué importa:** quien quiera saber qué está realmente en ejecución nunca tiene que adivinar si el repositorio compartido o el directorio de instancia local tiene la respuesta vigente — siempre es la instancia.
 
 ## Nombres de despliegue y la taxonomía de prefijos
 
@@ -44,9 +54,15 @@ Las instancias viven en un directorio local excluido del control de versiones, u
 | `media-` | Servicios de procesamiento de contenido orientados al cliente |
 | `vault-` | Servicios de almacenamiento, libro mayor y criptografía |
 
+La taxonomía de prefijos hace legible el rol de un despliegue sin abrir su entrada de catálogo. Un despliegue llamado `gateway-orchestration-gis` es clasificable de inmediato: es un servicio de puerta de enlace orientado al exterior, en su variante de orquestación GIS.
+
+**Por qué importa:** quien examina una lista de docenas de nombres de despliegue puede clasificar el rol de cada uno solo por el nombre, sin abrir ni una sola entrada de catálogo.
+
 ## Ejemplo práctico: gateway-orchestration-gis
 
 El despliegue de orquestación GIS demuestra el patrón directamente. Su entrada de catálogo lleva el par README y los manuales operativos para aprovisionamiento, reconstrucción del proceso de datos y adición de un país o cadena nueva. La instancia en ejecución lleva la configuración y el estado acumulado desde el aprovisionamiento; el sufijo numérico es el número de instancia.
+
+**Por qué importa:** un despliegue real y concreto demuestra que la separación catálogo/instancia no es solo teoría — cualquier colaborador puede ir a revisar las dos mitades de `gateway-orchestration-gis` hoy mismo y ver la separación directamente.
 
 ## Aprovisionamiento y decomisionamiento
 
@@ -54,12 +70,10 @@ El aprovisionamiento comienza leyendo la entrada de catálogo. La sesión crea e
 
 El decomisionamiento sigue un modelo de dos partes: la sesión propietaria desmantela el servicio ordenadamente; un paso separado de coordinación registra la finalización. El catálogo persiste — una instancia futura puede aprovisionarse desde la misma entrada sin ningún cambio en el repositorio.
 
+**Por qué importa:** decomisionar una instancia nunca es destructivo para la definición del despliegue — la misma entrada de catálogo puede aprovisionarse mañana, para un cliente distinto, sin ningún cambio en el repositorio compartido.
+
 ## Véase también
 
 - [[editorial-pipeline-three-stages]] — un ejemplo de proceso definido en catálogo que ejecuta una instancia aprovisionada
 - [[language-protocol-substrate]] — el sustrato de familia de género que implementa un proceso editorial
 - [[totebox-os]] — el entorno operativo en el que se ejecutan los despliegues de tipo clúster
-
-## Procedencia
-
-Versión en español elaborada por project-language, adaptación estratégica — no es una traducción literal del artículo canónico en inglés.

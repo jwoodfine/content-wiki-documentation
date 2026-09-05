@@ -9,9 +9,12 @@ content_type: topic
 quality: complete
 short_description: "Why a Totebox Archive is designed as a self-contained, freely transferable data unit rather than a database record owned by the platform that created it."
 status: active
+audience: vendor-public
 bcsc_class: no-disclosure-implication
+language_protocol: PROSE-TOPIC
 last_edited: 2026-08-24
 editor: pointsav-engineering
+cites: []
 paired_with: totebox-archives-as-the-asset.es.md
 ---
 
