@@ -28,7 +28,7 @@ paired_with: _index.md
 ## Poner la plataforma en marcha
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: getting-the-platform-running -->
-- [[self-host-a-deployment|Autoalojar un despliegue]] — Arranca las imágenes de appliance seL4/Microkit publicadas de os-totebox y app-orchestration-slm bajo QEMU, con la configuración incrustada en tiempo de compilación mediante bootargs del device tree, y verifica que ambas arrancan en buen estado.
+- [[self-host-a-deployment|Autoalojar un despliegue]] — Compila desde el código fuente las imágenes de appliance seL4/Microkit de os-totebox y app-orchestration-slm y las arranca bajo QEMU, con la configuración incrustada en tiempo de compilación mediante bootargs del device tree, y verifica que ambas arrancan en buen estado.
 - [[deploy-knowledge-instance|Desplegar una instancia de conocimiento]] — Despliega una instancia de app-mediakit-knowledge desde una ruta de contenido local: escribe una configuración knowledge.toml con [site] + [[mount]], compila el binario y arráncalo con el subcomando serve.
 <!-- END AUTO-GENERATED -->
 

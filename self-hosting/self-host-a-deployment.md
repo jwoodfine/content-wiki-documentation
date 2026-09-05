@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Self-host a deployment"
 slug: self-host-a-deployment
-short_description: "Boots the published os-totebox and app-orchestration-slm seL4 appliance images under QEMU, with configuration baked in at build time via device-tree bootargs, and verifies both come up healthy."
+short_description: "Builds the os-totebox and app-orchestration-slm seL4 appliance images from source and boots them under QEMU, with configuration baked in at build time via device-tree bootargs, and verifies both come up healthy."
 category: self-hosting
 index_group: getting-the-platform-running
 content_type: how-to
@@ -14,16 +14,15 @@ last_edited: 2026-08-04
 editor: pointsav-engineering
 paired_with: self-host-a-deployment.es.md
 research_trail:
-  sources: [GUIDE-deploying-os-totebox-orchestration-appliances.draft.md (project-totebox, 2026-08-03), BRIEF-os-totebox-platform.md, .agent/binary-targets.yaml]
-  verification_method: "independently confirmed by project-totebox 2026-08-06 against real source (build-guest-rootfs.sh + deploy-loader-img.sh present for both os-totebox and app-orchestration-slm; vendor-libvmm/ confirmed genuine upstream seL4 Microkit VMM) after this archive raised a direct contradiction question against capability-based-security.md and os-totebox's Cargo.toml; app-orchestration-command's separate, not-yet-built seL4 packaging status was confirmed at the same time and does not apply to this guide, which never references that product"
+  sources: [pointsav-monorepo os-totebox/scripts/build-guest-rootfs.sh, app-orchestration-slm/scripts/build-guest-rootfs.sh, vendor-libvmm]
+  verification_method: "re-verified 2026-09-05: build-guest-rootfs.sh exists for both os-totebox and app-orchestration-slm and produces a loader image as a build output; no evidence found that either appliance's loader image is published as a downloadable artifact under a fixed filename, so this guide describes building from source rather than downloading a release"
 ---
 
 ## Prerequisites
 
 - A host that can run QEMU for `aarch64` (the appliance images target this architecture regardless of your host's own CPU)
-- The published `os-totebox-loader.img` and, optionally, `app-orchestration-slm-loader.img` from `software.pointsav.com`
+- The source repo, the Microkit SDK, and an `aarch64` cross-compilation toolchain — building a loader image for `os-totebox` and, optionally, `app-orchestration-slm`, from source
 - A persistent disk image, created once and kept — an ext4-formatted raw file the guest mounts at `/data`
-- If you need non-default configuration (a specific orchestration endpoint, a Tier B license): the source repo, the Microkit SDK, and an `aarch64` cross-compilation toolchain — the published images alone don't let you change configuration after the fact (see Step 3)
 
 ## Purpose
 
@@ -52,7 +51,7 @@ Self-hosting a deployment means booting one or both of two independent, self-con
      -netdev user,id=netdev0,hostfwd=tcp::<host-port>-:<guest-port>
    ```
 
-3. If the published, generic image's default configuration is sufficient, skip to Step 4. Otherwise, understand this before you try to change anything: **runtime configuration is baked into the image at build time**, in the device tree's `bootargs`. There is no post-boot config file and no `-append` equivalent on this boot path. Changing configuration means rebuilding the image yourself, with your own `foundry.*` bootarg values, and replacing the published one — see the relevant keys below and the full rebuild procedure in the internal dogfood development guide (`GUIDE-live-flow-doorman-orchestration-yoyo.draft.md`, project-totebox).
+3. Understand this before you build: **runtime configuration is baked into the image at build time**, in the device tree's `bootargs`. There is no post-boot config file and no `-append` equivalent on this boot path. Setting configuration means passing your own `foundry.*` bootarg values to the build.
 
    | Key | Appliance | Purpose |
    |---|---|---|
@@ -88,7 +87,7 @@ Stop the QEMU process. The persistent disk (`persistent.raw`) is untouched by st
 ## Known limitations, as shipped (2026-08-03)
 
 - No automated update mechanism — a configuration change means a rebuild and a full image replacement, not a live edit.
-- The published images have not been through a customer-scale security review; treat as an early release.
+- These images have not been through a customer-scale security review; treat as an early release.
 - Real GPU-scale training requires your own Yo-Yo compute backend — the images themselves don't include one.
 
 ## See also

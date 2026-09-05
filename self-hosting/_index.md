@@ -28,7 +28,7 @@ paired_with: _index.es.md
 ## Getting the platform running
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: getting-running -->
-- [[self-host-a-deployment|Self-host a deployment]] — Boots the published os-totebox and app-orchestration-slm seL4 appliance images under QEMU, with configuration baked in at build time via device-tree bootargs, and verifies both come up healthy.
+- [[self-host-a-deployment|Self-host a deployment]] — Builds the os-totebox and app-orchestration-slm seL4 appliance images from source and boots them under QEMU, with configuration baked in at build time via device-tree bootargs, and verifies both come up healthy.
 - [[deploy-knowledge-instance|Deploy a knowledge instance]] — Deploys an instance of app-mediakit-knowledge from a local content path: write a knowledge.toml [site] + [[mount]] configuration, build the binary, and start it with the serve subcommand.
 <!-- END AUTO-GENERATED -->
 

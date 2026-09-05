@@ -33,7 +33,7 @@ Una instancia de conocimiento es un despliegue en ejecución de `app-mediakit-kn
 1. Localice o clone el repositorio de contenido que quiere servir:
 
    ```
-   ls ~/Foundry/clones/project-editorial/media-knowledge-documentation/
+   ls /ruta/a/media-knowledge-documentation/
    ```
 
    Si aún no está clonado:
@@ -61,7 +61,7 @@ Una instancia de conocimiento es un despliegue en ejecución de `app-mediakit-kn
 3. Compile el binario, si aún no dispone de uno:
 
    ```
-   cd ~/Foundry/clones/<su-archivo>/pointsav-monorepo
+   cd /ruta/a/pointsav-monorepo
    cargo build -p app-mediakit-knowledge --release
    ```
 

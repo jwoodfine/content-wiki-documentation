@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Cómo autoalojar un despliegue"
 slug: self-host-a-deployment
-short_description: "Arranca las imágenes de appliance seL4/Microkit publicadas de os-totebox y app-orchestration-slm bajo QEMU, con la configuración incrustada en tiempo de compilación mediante bootargs del device tree, y verifica que ambas arrancan en buen estado."
+short_description: "Compila desde el código fuente las imágenes de appliance seL4/Microkit de os-totebox y app-orchestration-slm y las arranca bajo QEMU, con la configuración incrustada en tiempo de compilación mediante bootargs del device tree, y verifica que ambas arrancan en buen estado."
 category: self-hosting
 index_group: getting-the-platform-running
 content_type: how-to
@@ -10,19 +10,20 @@ type: how-to
 quality: complete
 status: active
 audience: "Ingenieros (con acceso directo al terminal); operadores de cliente"
-language: es
 language_protocol: TRANSLATE-ES
 last_edited: 2026-08-04
 editor: pointsav-engineering
 paired_with: self-host-a-deployment.md
+research_trail:
+  sources: [pointsav-monorepo os-totebox/scripts/build-guest-rootfs.sh, app-orchestration-slm/scripts/build-guest-rootfs.sh, vendor-libvmm]
+  verification_method: "re-verified 2026-09-05: build-guest-rootfs.sh exists for both os-totebox and app-orchestration-slm and produces a loader image as a build output; no evidence found that either appliance's loader image is published as a downloadable artifact under a fixed filename, so this guide describes building from source rather than downloading a release"
 ---
 
 ## Requisitos previos
 
 - Un host capaz de ejecutar QEMU para `aarch64` (las imágenes de appliance apuntan a esta arquitectura con independencia de la CPU propia del host)
-- Las imágenes publicadas `os-totebox-loader.img` y, opcionalmente, `app-orchestration-slm-loader.img`, obtenidas desde `software.pointsav.com`
+- El repositorio fuente, el SDK de Microkit y una cadena de herramientas de compilación cruzada para `aarch64` — para compilar una imagen de arranque de `os-totebox` y, opcionalmente, de `app-orchestration-slm`, desde el código fuente
 - Un disco persistente, creado una sola vez y conservado — un archivo raw formateado en ext4 que el invitado monta en `/data`
-- Si necesita una configuración distinta de la predeterminada (un endpoint de orquestación concreto, una licencia de Tier B): el repositorio fuente, el SDK de Microkit y una cadena de herramientas de compilación cruzada para `aarch64` — las imágenes publicadas por sí solas no permiten cambiar la configuración después del hecho (véase el Paso 3)
 
 ## Propósito
 
@@ -56,7 +57,7 @@ Cada una se ejecuta de forma autónoma por defecto; ninguna necesita que la otra
      -netdev user,id=netdev0,hostfwd=tcp::<host-port>-:<guest-port>
    ```
 
-3. Si la configuración predeterminada de la imagen genérica publicada le resulta suficiente, pase al Paso 4. En caso contrario, entienda esto antes de intentar cambiar nada: **la configuración de ejecución queda incrustada en la imagen en tiempo de compilación**, dentro de los `bootargs` del device tree. No existe archivo de configuración posterior al arranque ni equivalente de `-append` en esta ruta de arranque. Cambiar la configuración implica recompilar usted mismo la imagen, con sus propios valores de bootarg `foundry.*`, y sustituir la publicada — véanse las claves relevantes a continuación.
+3. Entienda esto antes de compilar: **la configuración de ejecución queda incrustada en la imagen en tiempo de compilación**, dentro de los `bootargs` del device tree. No existe archivo de configuración posterior al arranque ni equivalente de `-append` en esta ruta de arranque. Fijar la configuración implica pasar sus propios valores de bootarg `foundry.*` a la compilación.
 
    | Clave | Appliance | Propósito |
    |---|---|---|
@@ -86,7 +87,7 @@ Detenga el proceso de QEMU. El disco persistente (`persistent.raw`) no se ve afe
 ## Limitaciones conocidas, a fecha de envío (2026-08-03)
 
 - No hay mecanismo de actualización automatizada — un cambio de configuración implica una recompilación y una sustitución completa de la imagen, no una edición en vivo.
-- Las imágenes publicadas no han pasado por una revisión de seguridad a escala de cliente; trátelas como una versión temprana.
+- Estas imágenes no han pasado por una revisión de seguridad a escala de cliente; trátelas como una versión temprana.
 - El entrenamiento real a escala de GPU requiere su propio backend de cómputo Yo-Yo — las imágenes no incluyen uno.
 
 ## Próximos pasos

@@ -31,7 +31,7 @@ A knowledge instance is a running deployment of `app-mediakit-knowledge`, the en
 1. Locate or clone the content repository you want to serve:
 
    ```
-   ls ~/Foundry/clones/project-editorial/media-knowledge-documentation/
+   ls /path/to/media-knowledge-documentation/
    ```
 
    If it isn't cloned yet:
@@ -59,7 +59,7 @@ A knowledge instance is a running deployment of `app-mediakit-knowledge`, the en
 3. Build the binary, if you don't already have one:
 
    ```
-   cd ~/Foundry/clones/<your-archive>/pointsav-monorepo
+   cd /path/to/pointsav-monorepo
    cargo build -p app-mediakit-knowledge --release
    ```
 
