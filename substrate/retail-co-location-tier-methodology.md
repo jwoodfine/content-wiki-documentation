@@ -40,8 +40,8 @@ traffic, market share, or a recommendation to acquire, develop, or lease any sit
 
 | Tier | Name | What it represents |
 |---|---|---|
-| 1 | Regional | A major trade-area anchor — top decile nationally by primary catchment population |
-| 2 | District | A significant multi-format node — top quartile nationally by primary catchment |
+| 1 | Regional | A major trade-area anchor — ranks among the strongest nationally by primary catchment population |
+| 2 | District | A significant multi-format node — ranks in the upper range nationally by primary catchment |
 | 3 | Local | A hardware or wholesale hub with civic support |
 | 4 | Fringe | Any cluster that does not clear a Tier 1–3 gate |
 
@@ -61,11 +61,12 @@ where it applies, civic support, and non-overlap:
 - **Catchment population rank** — each cluster's catchment population is ranked
   against every other cluster *within its own country*, not globally, so a Tier 1 cluster
   in a smaller market is compared to its own market's distribution rather than penalized
-  for that market's overall size. Regional requires the top 10% nationally on primary
-  catchment (plus a secondary-catchment population check); District the top 25% on primary
-  catchment; Local the top 50%.
-- **Spend rank** — District additionally requires the cluster to rank in the top quartile
-  nationally on at least one of several consumer-spend measures, not population alone.
+  for that market's overall size. Regional requires ranking among the strongest clusters
+  nationally on primary catchment (plus a secondary-catchment population check); District
+  requires a materially lower, but still above-average, national rank on primary
+  catchment; Local requires clearing a baseline population-rank threshold.
+- **Spend rank** — District additionally requires the cluster to rank among the stronger
+  tier nationally on at least one of several consumer-spend measures, not population alone.
 - **Civic support** — a minimum count of regionally or locally classified hospitals within
   the cluster's outer catchment ring. Regional requires a regional-grade hospital; District
   accepts a regional or district hospital; Local accepts any classified hospital.

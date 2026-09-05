@@ -42,8 +42,8 @@ desarrollar o arrendar ningún sitio.
 
 | Nivel | Nombre | Qué representa |
 |---|---|---|
-| 1 | Regional | Un ancla mayor de área comercial — decil superior a nivel nacional por población de captación primaria |
-| 2 | Distrital | Un nodo multiformato significativo — cuartil superior a nivel nacional por captación primaria |
+| 1 | Regional | Un ancla mayor de área comercial — se ubica entre los más fuertes a nivel nacional por población de captación primaria |
+| 2 | Distrital | Un nodo multiformato significativo — se ubica en el rango superior a nivel nacional por captación primaria |
 | 3 | Local | Un centro de ferretería o mayorista con respaldo cívico |
 | 4 | Marginal | Cualquier clúster que no supere una condición de Nivel 1–3 |
 
@@ -64,12 +64,13 @@ rango de gasto donde aplica, respaldo cívico y no solapamiento:
   se clasifica frente a todos los demás clústeres *dentro de su propio país*, no
   globalmente, de modo que un clúster de Nivel 1 en un mercado más pequeño se compara con
   la distribución de su propio mercado en lugar de ser penalizado por el tamaño general de
-  ese mercado. Regional exige el 10% superior a nivel nacional en captación primaria (más
-  una verificación de captación secundaria); Distrital el 25% superior en captación
-  primaria; Local el 50% superior.
-- **Rango de gasto** — Distrital exige además que el clúster se ubique en el cuartil
-  superior a nivel nacional en al menos una de varias medidas de gasto del consumidor, no
-  solo en población.
+  ese mercado. Regional exige ubicarse entre los clústeres más fuertes a nivel nacional en
+  captación primaria (más una verificación de captación secundaria); Distrital exige un
+  rango nacional materialmente inferior, pero aún por encima del promedio, en captación
+  primaria; Local exige superar un umbral de rango de población de referencia.
+- **Rango de gasto** — Distrital exige además que el clúster se ubique en el rango superior
+  a nivel nacional en al menos una de varias medidas de gasto del consumidor, no solo en
+  población.
 - **Respaldo cívico** — un recuento mínimo de hospitales clasificados como regionales o
   locales dentro del anillo exterior de captación del clúster. Regional exige un hospital
   de grado regional; Distrital acepta un hospital regional o distrital; Local acepta

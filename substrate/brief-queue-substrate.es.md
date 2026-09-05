@@ -91,7 +91,7 @@ Los componentes funcionales son:
 
 - **API de cola** — cuatro operaciones expuestas a los productores: `enqueue` (escribir un archivo de evento en `queue/`), `dequeue` (arrendar atómicamente un archivo desde `queue/`), `release` (mover de `queue-in-flight/` de vuelta a `queue/` en caso de error no fatal) y `poison` (mover a `queue-poison/` en caso de error fatal).
 - **Proceso de vaciado en segundo plano** — un proceso de larga ejecución dentro del Doorman que sondea `queue/` a intervalos configurables, procesa los archivos arrendados y añade al JSONL del corpus. El proceso de vaciado también realiza la recuperación al arrancar de cualquier archivo varado en `queue-in-flight/`.
-- **Graduación del hook post-commit** — el pipeline de captura actual escribe eventos del corpus en línea durante la sesión editorial. Una vez disponible la API de cola, el hook post-commit se actualiza para escribir en `queue/` en lugar de directamente en el archivo del corpus. La ruta de escritura del corpus pasa a ser exclusivamente responsabilidad del proceso de vaciado.
+- **Graduación del hook post-commit** — el pipeline de captura-edición escribe en `queue/` en lugar de directamente en el archivo del corpus; la ruta de escritura del corpus es exclusivamente responsabilidad del proceso de vaciado.
 
 La implementación no cambia el esquema JSONL del corpus. Los consumidores del corpus de aprendizaje — incluido el futuro pipeline de preentrenamiento de PointSav-LLM — no observan ningún cambio en el formato del corpus; solo cambia la ruta de escritura.
 

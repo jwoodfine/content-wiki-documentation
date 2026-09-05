@@ -24,9 +24,15 @@ La primera superficie desplegada es `gis.woodfinegroup.com` — un mapa de co-lo
 
 ## Arquitectura — archivo plano frente a base de datos
 
-Para cargas de trabajo de decenas de miles de registros POI en un pequeño número de países, con escrituras por lotes poco frecuentes y consultas principalmente de lectura, el archivo plano es suficiente y es la arquitectura que tanto Foursquare como Overture Maps Foundation eligieron para sus lanzamientos de sustrato.
+Existen tres opciones para el almacenamiento canónico de registros geográficos:
 
-Recomendación: **GeoParquet como formato canónico en reposo** (un archivo por país y servicio, actualizado mensualmente), **JSONL paralelos para historial rastreable con git y legible por humanos**, **FlatGeobuf como derivado transmisible al navegador**. FlatGeobuf lleva un R-tree de Hilbert empaquetado en la cabecera del archivo que permite a un navegador transmitir solo las características dentro de la ventana gráfica actual mediante solicitudes de rango HTTP.
+**Archivo plano canónico** — JSONL para seguimiento de cambios legible por humanos, GeoParquet para lecturas analíticas de alto rendimiento, FlatGeobuf para transmisión de bbox espacial del lado del navegador. GeoParquet es un estándar incubado por la OGC que añade tipos Punto/Línea/Polígono al formato columnar Parquet. FlatGeobuf lleva un R-tree de Hilbert empaquetado en la cabecera del archivo que permite a un navegador transmitir solo las características dentro de la ventana gráfica actual mediante solicitudes de rango HTTP. Ventajas: soberano por construcción, versionable, portable por el cliente, sin infraestructura que operar. Limitación: las escrituras son de un solo autor a la vez; las ediciones concurrentes en línea competirían entre sí.
+
+**Base de datos canónica** — PostgreSQL más una extensión espacial, la opción por defecto de la industria en este género. Ventajas: SQL espacial rico, concurrencia multi-escritor, operación probada en producción. Limitación: los datos del cliente viven en un daemon en ejecución que debe operar; la portabilidad requiere un volcado y restauración, no un simple movimiento de directorio.
+
+**Híbrida** — archivo plano canónico, con una base de datos efímera materializada a partir del archivo plano como caché de consultas. Coincide con el enfoque de bóveda-como-canónico y tablas-derivadas-como-caché que la plataforma usa para la contabilidad.
+
+Para cargas de trabajo de decenas de miles de registros POI en un pequeño número de países, con escrituras por lotes poco frecuentes y consultas principalmente de lectura, el archivo plano es suficiente y es la arquitectura que tanto Foursquare como Overture Maps Foundation eligieron para sus lanzamientos de sustrato. Recomendación: **GeoParquet como formato canónico en reposo** (un archivo por país y servicio, actualizado mensualmente), **JSONL paralelos para historial rastreable con git y legible por humanos**, **FlatGeobuf como derivado transmisible al navegador**.
 
 ## Stack de renderización
 

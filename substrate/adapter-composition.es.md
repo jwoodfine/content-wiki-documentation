@@ -15,6 +15,7 @@ editor: pointsav-engineering
 cites:
  - lorax-predibase
  - s-lora-2024
+ - federated-lora-2502-05087
 paired_with: adapter-composition.md
 ---
 
@@ -100,8 +101,4 @@ Se pretende que este nivel sea un subproducto del trabajo del [[trajectory-subst
 - [[compounding-doorman]] — el Doorman que implementa el rol de kernel en este álgebra
 - [[apprenticeship-substrate]] — el mecanismo que produce el corpus de adaptadores por inquilino
 - [[language-protocol-substrate]] — la taxonomía de adaptadores de familia de lenguaje que extiende este álgebra para el trabajo editorial
-
-## Referencias
-
-1. LoRAX — servidor de inferencia multi-LoRA de Predibase, código abierto.
-2. S-LoRA — servicio escalable de miles de adaptadores LoRA concurrentes, MLSys 2024.
+- [[knowledge-commons]] — cómo se publican los adaptadores constitucional y de ingeniería como artefactos comunes

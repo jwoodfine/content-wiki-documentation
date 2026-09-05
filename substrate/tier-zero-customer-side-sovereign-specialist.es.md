@@ -25,6 +25,8 @@ El despliegue de referencia del Nivel 0 es un Totebox — un dispositivo compact
 
 La pila incluye el [[worm-ledger-architecture|registro de archivos WORM]] (`service-fs`), el motor de conocimiento ([[service-content|`service-content`]]), la [[compounding-doorman|frontera del Portero]] (`service-slm`), el modelo especialista local (OLMo 3 7B Instruct, cuantizado), la interfaz del operador ([[app-console-slm|app-console-slm]]), y los servicios de entrada, extracción y salida. Todos los componentes son binarios autónomos sin dependencias de tiempo de ejecución más allá del sistema operativo.
 
+El hardware a esta escala cuesta entre trescientos y mil quinientos dólares, según el tamaño y los requisitos del cliente. El costo operativo mensual previsto es cero — no hay suscripción, no hay tarifa de nube recurrente y no hay cargo por asiento.
+
 ## Por qué un especialista en lugar de un generalista
 
 El modelo local en el Totebox es un especialista en administración de sistemas con enrutamiento de propósito específico. Gestiona preguntas de administración de sistemas e infraestructura, ediciones mecánicas como mensajes de confirmación de Git y validación de esquemas, consultas de rutina contra el registro de auditoría y el grafo de conocimiento del cliente, y tareas de salida corta.
@@ -41,6 +43,10 @@ No se requieren GPU, mantenimiento de controladores ni gestión térmica. El per
 
 El Totebox opera sin los servidores de la plataforma, sin ninguna relación continua con los autores originales del modelo (los archivos GGUF existentes funcionan indefinidamente), sin claves de API externas (el Nivel C es opt-in y está desactivado por defecto), sin conectividad a internet y sin ninguna suscripción a la nube. El substrato funciona completamente sin conexión.
 
+## Escala de hardware
+
+Para una empresa de cinco personas, un dispositivo tipo mini-PC es suficiente. Para una firma de treinta personas, un dispositivo ligeramente más grande gestiona las operaciones concurrentes de los Anillos 1, 2 y del nivel de IA. Para una firma de trescientas personas o un hospital regional, se prevé un clúster de varias unidades con una caja de GPU opcional. El enfoque comercial de la plataforma son las dos primeras escalas; los despliegues más grandes son posibles pero no son el mercado principal.
+
 ## Niveles opcionales
 
 El Nivel B (capacidad de GPU en ráfaga) es opt-in por inquilino. El Nivel C (API externa) es opt-in por inquilino y está desactivado por defecto. Cuando se configura, las llamadas a API externas están limitadas a una lista de propósitos explícitamente permitidos, se registran en el registro de auditoría del cliente y se divulgan al operador. Se prevé que la mayoría de los clientes operen sin el Nivel C en absoluto.
@@ -50,15 +56,3 @@ El Nivel B (capacidad de GPU en ráfaga) es opt-in por inquilino. El Nivel C (AP
 - [[substrate-without-inference-base-case]] — operación determinística cuando todos los niveles de IA no están disponibles
 - [[single-boundary-compute-discipline]] — toda la inferencia, incluido el especialista local, pasa por el Portero
 - [[seed-taxonomy-as-smb-bootstrap]] — la taxonomía por inquilino con la que arranca el despliegue del Nivel 0
-
----
-
-## Procedencia
-
-Resumen de adaptación estratégica del archivo fuente `convention-tier-zero-customer-side-sovereign-specialist.md` (refinado el 30 de abril de 2026). Las estimaciones de costos de hardware y el análisis de mercado se presentan como observaciones estructurales; las afirmaciones de enfoque comercial llevan encuadre BCSC prospectivo.
-
-## Véase también
-
-- [[substrate-without-inference-base-case]]
-- [[single-boundary-compute-discipline]]
-- [[seed-taxonomy-as-smb-bootstrap]]

@@ -139,7 +139,7 @@ elfloader:
 The combined image — elfloader binary with the kernel, device tree, and rootserver
 embedded as a CPIO archive — is what QEMU actually boots.
 
-As of Phase 1C.d (moonshot-toolkit v0.3.0), this image is assembled automatically
+As of Phase 1C.d (moonshot-toolkit v0.3.1), this image is assembled automatically
 by the `moonshot-toolkit build` command. The AssembleImage step compiles the elfloader
 sources, generates the CPIO archive using a pure Rust writer, and links the combined
 binary. No Python, CMake, or shell scripts are involved in the image assembly path.

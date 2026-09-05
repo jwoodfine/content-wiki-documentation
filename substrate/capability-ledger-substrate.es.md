@@ -139,6 +139,6 @@ v1.0.0 con 62 pruebas; system-ledger v1.0.0 con 47 pruebas + 12 benchmarks).
 
 ---
 
-*(El TOPIC canónico en inglés está en `topic-capability-ledger-substrate.md`.
+*(El TOPIC canónico en inglés está en `capability-ledger-substrate.md`.
 Esta versión en español es un panorama estratégico, no una traducción
 palabra-por-palabra.)*

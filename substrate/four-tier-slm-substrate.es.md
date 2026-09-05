@@ -46,7 +46,11 @@ En el Nivel 2 el proveedor opera un modelo de 32B en una [[yoyo-compute-substrat
 
 El Nivel 3 es un servicio de IA autónomo planificado, entrenado mediante preentrenamiento continuo sobre el corpus multi-inquilino acumulado del proveedor. No es un adaptador LoRA aplicado sobre un modelo base — es un nuevo modelo base producido siguiendo la receta publicada de AI2: 100 mil millones de tokens de entrenamiento intermedio, extensión de contexto largo y alineación posterior. [^2]
 
-El resultado previsto es un modelo con profunda familiaridad operativa con la plataforma PointSav, accesible como servicio API multi-inquilino a precios por token diseñados para estar al alcance de los contratos SMB. El primer ciclo de preentrenamiento continuo está planificado para iniciarse en 2027, sujeto a la acumulación de corpus y la disponibilidad operativa (véase [[apprenticeship-substrate]]).
+El resultado previsto es un modelo con profunda familiaridad operativa con la plataforma PointSav, accesible como servicio API multi-inquilino a precios por token diseñados para estar al alcance de los contratos SMB.
+
+El Nivel 3 incorpora una ruta de escalamiento estructurada: las consultas que el modelo no puede manejar con confianza adecuada se marcan para revisión humana. Las respuestas humanas a las consultas marcadas se capturan como señal de entrenamiento que alimenta el siguiente ciclo de preentrenamiento continuo, cerrando el ciclo entre el soporte al cliente y la mejora del modelo (véase [[apprenticeship-substrate]]).
+
+El primer ciclo de preentrenamiento continuo está planificado para iniciarse en 2027, sujeto a la acumulación de corpus y la disponibilidad operativa.
 
 ## La regla de custodia de claves API
 
@@ -88,10 +92,4 @@ al cronograma de preentrenamiento continuo mencionado arriba.
 - [[compounding-doorman]] — la frontera del Doorman que aplica la regla de custodia de claves en todos los niveles
 - [[llm-substrate-decision]] — por qué OLMo 3 es el modelo base en todos los niveles
 - [[apprenticeship-substrate]] — el ciclo de entrenamiento que hace que los niveles superiores compongan a lo largo del tiempo
-
-## Véase también
-
-- [[compounding-doorman]]
-- [[llm-substrate-decision]]
-- [[apprenticeship-substrate]]
-- [[economic-model]]
+- [[economic-model]] — cómo se corresponden los cuatro niveles con los niveles comerciales Community y SMB

@@ -18,6 +18,10 @@ cites:
  - ni-51-102
  - np-51-201
  - cff-spec
+ - cff-github
+ - turing-way-cff
+ - knowledge-commons-wiki
+ - opentimestamps
 ---
 
 Cada artículo de esta documentación que realiza una afirmación basada en autoridades externas incluye una declaración `cites:` en su encabezado YAML con los instrumentos regulatorios, artículos académicos o especificaciones técnicas de los que depende. Esos identificadores se resuelven contra un registro YAML único de ámbito de plataforma. El resultado es un grafo de procedencia, no una bibliografía: una estructura que recorre desde una afirmación publicada hasta su fuente primaria, recorrible por una máquina o un revisor sin acceso a sistemas internos.
@@ -30,7 +34,7 @@ Para compradores regulados, esto significa que cada afirmación sobre propiedade
 
 ## Componentes
 
-**El registro** (`citations.yaml`). Un archivo YAML en formato CFF `[cff-spec]` con una entrada por identificador de cita. Cada entrada incluye el tipo, la jurisdicción (para instrumentos regulatorios), el título oficial, la URL estable, la fecha de última verificación, un hash de contenido para detectar cambios, la clase de evidencia, y los alias que puedan aparecer en prosa. El registro contiene 159 entradas.
+**El registro** (`citations.yaml`). Un archivo YAML en formato CFF `[cff-spec]` `[cff-github]` `[turing-way-cff]` con una entrada por identificador de cita. Cada entrada incluye el tipo, la jurisdicción (para instrumentos regulatorios), el título oficial, la URL estable, la fecha de última verificación, un hash de contenido para detectar cambios, la clase de evidencia, y los alias que puedan aparecer en prosa. El registro contiene 159 entradas.
 
 **El encabezado por documento**. Un campo `cites:` en el YAML de cada artículo publicado y documento de especificación. Los identificadores declarados se resuelven contra el registro; las herramientas pueden validar que existan, generar automáticamente una sección de referencias, y construir un índice inverso de quién cita a quién.
 
@@ -73,7 +77,7 @@ identificador no se resuelve en el registro — es un defecto.
 
 **Prevención de divergencia.** Un corpus que crece a lo largo de sesiones, colaboradores y años puede producir documentos que citan la misma autoridad pero hacen afirmaciones contradictorias. El proceso de detección de divergencias del ciclo nocturno de higiene identifica exactamente estos pares y los presenta para revisión antes de que se propaguen al contenido publicado o a los datos de entrenamiento.
 
-**Compuesto de conocimiento público.** Los repositorios de contenido wiki son la parte pública del [[compounding-substrate|Sustrato Compuesto]]. Las citas viajan con el contenido hacia cualquier exportación, espejo o corpus derivado, de acuerdo con el [[knowledge-commons|modelo de publicación en los comunes]]. Un lector o un consumidor de máquina puede seguir la cita hasta la fuente primaria sin necesidad de confiar en las afirmaciones propias de la plataforma.
+**Compuesto de conocimiento público.** Conforme a `[knowledge-commons-wiki]`, los repositorios de contenido wiki son la parte pública del [[compounding-substrate|Sustrato Compuesto]]. Las citas viajan con el contenido hacia cualquier exportación, espejo o corpus derivado, de acuerdo con el [[knowledge-commons|modelo de publicación en los comunes]]. Un lector o un consumidor de máquina puede seguir la cita hasta la fuente primaria sin necesidad de confiar en las afirmaciones propias de la plataforma.
 
 ## Estado y planificación
 
@@ -83,9 +87,11 @@ El sistema de citas actualmente requiere disciplina manual: la entrada del regis
 - Generación automática de una sección de referencias al final de cada artículo, conectada a `app-mediakit-knowledge` como etapa del renderizador.
 - Un índice inverso `cited_by:` reconstruido bajo demanda por el servicio [[service-slm]].
 - Ciclos nocturnos de higiene cubriendo verificación de citas, detección de deriva, indexación inversa y sugerencias de citas — todo como sugerencias al mantenedor, no como correcciones automatizadas (ver [[nightly-datagraph-rebuild]]).
+- Exportación de datos del grafo de citas como parte del patrón de publicación de conocimiento público `[knowledge-commons-wiki]`.
 
 ## Véase también
 
 - [[compounding-substrate]]
 - [[language-protocol-substrate]]
+- [[decode-time-constraints]]
 - [[disclosure-substrate]]

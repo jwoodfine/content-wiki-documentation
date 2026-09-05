@@ -1,11 +1,19 @@
 ---
+schema: foundry-doc-v1
 title: "Protocolo de enrutamiento de borradores editoriales"
 slug: editorial-draft-routing-protocol
+category: substrate
+type: topic
+content_type: topic
+quality: complete
+index_group: core-named-substrates
 short_description: "Capa de clasificación de metadatos que enruta borradores editoriales según language_protocol — qué pasarela procesa cada artefacto y qué reglas de vocabulario aplican."
-category: architecture
+status: active
+bcsc_class: public-disclosure-safe
+language_protocol: TRANSLATE-ES
 last_edited: 2026-06-29
 editor: pointsav-engineering
-status: stable
+paired_with: editorial-draft-routing-protocol.md
 references:
   - id: 1
     text: "Padmakumar, V. et al. Does Writing with Language Models Reduce Content Diversity? arXiv:2310.06992, 2023."

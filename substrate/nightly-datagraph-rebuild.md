@@ -27,7 +27,7 @@ The nightly datagraph rebuild is the scheduled pipeline that reconstructs the pl
 
 The rebuild pattern ensures that the queryable substrate reflects the committed state of the canonical record, not accumulated in-memory drift. Any single run can be replicated from the archived flat files.
 
-Schema-driven joins against the canonical taxonomy and location intelligence indexes are deterministic — no fuzzy matching. Entity extraction itself is not: it is grammar-constrained inference through the Doorman, producing a structured record. Whether a human reviews that record before it becomes a graph write depends on a setting an operator controls, off by default — see the compliance note above. This is a real, currently-open gap between the SYS-ADR-07 boundary's intent (AI never writes to a structured record store directly) and this pipeline's default configuration, tracked separately with Command.
+Schema-driven joins against the canonical taxonomy and location intelligence indexes are deterministic — no fuzzy matching. Entity extraction itself is not: it is grammar-constrained inference through the Doorman, producing a structured record. Whether a human reviews that record before it becomes a graph write depends on a setting an operator controls, off by default — see the compliance note above. This is a real, currently-open gap between the SYS-ADR-07 boundary's intent (AI never writes to a structured record store directly) and this pipeline's default configuration, tracked separately as an open remediation item.
 
 ## Pipeline stages
 

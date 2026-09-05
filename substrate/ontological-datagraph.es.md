@@ -39,7 +39,14 @@ cada dominio aislados dentro de la misma base de datos física.
 Este diseño permite el razonamiento entre dominios sin duplicación. Cuando un servicio
 de contabilidad escribe "ACME Corp es un proveedor con condiciones de pago net-30" y
 un [[service-extraction|servicio de extracción de documentos]] escribe "ACME Corp tiene sede en Toronto",
-ambos hechos existen en el mismo grafo, adjuntos a la misma entidad.
+ambos hechos existen en el mismo grafo, adjuntos a la misma entidad. Una consulta sobre
+ACME Corp recupera ambos hechos en un solo recorrido.
+
+Un grafo separado por servicio requeriría que el [[soft-slm-tiered-gateway|enrutador de
+inferencia]] consultara múltiples fuentes, combinara resultados y resolviera conflictos
+— complejidad que produce respuestas peores a un costo operativo mayor. Los sistemas de
+grafos de conocimiento a escala industrial convergen en una capa semántica unificada,
+sin importar cuántos servicios produzcan los datos subyacentes.
 
 ## Qué pertenece al grafo
 
@@ -62,17 +69,38 @@ es verdad sobre ellas en un momento dado. No almacena registros transaccionales.
 El grafo se configura mediante archivos de ontología cargados al inicio. Cada nodo
 de despliegue puede definir clasificaciones de entidades apropiadas para su dominio
 empresarial. Las clasificaciones base presentes en cada despliegue cubren los
-primitivos organizativos fundamentales: Persona, Empresa, Proyecto, Cuenta y Ubicación.
+primitivos organizativos fundamentales:
+
+- **Persona** — individuos con nombre; lleva rol, información de contacto y afiliación
+  organizativa.
+- **Empresa** — organizaciones registradas; lleva clasificación (proveedor, cliente,
+  socio, regulador) y atributos de relación como los términos del contrato.
+- **Proyecto** — iniciativas con nombre; lleva estado, participantes y políticas que lo
+  gobiernan.
+- **Cuenta** — cuentas financieras y de servicio; lleva clase de saldo y relación con el
+  contrato.
+- **Ubicación** — lugares geográficos y direcciones; lleva jurisdicción y atributos
+  físicos.
 
 Las clasificaciones adicionales se añaden a través de archivos CSV de ontología. Un
 despacho de abogados podría añadir Caso, Regulación y Sentencia. Un administrador de
-propiedades podría añadir Propiedad, Arrendamiento e Inquilino.
+propiedades podría añadir Propiedad, Arrendamiento e Inquilino. Un negocio de
+manufactura podría añadir Equipo, Orden de Trabajo y Especificación. Cada adición
+extiende la capacidad de razonamiento del grafo para ese dominio sin modificar código.
 
 ## Validez temporal
 
 Cada hecho en el grafo lleva una marca de tiempo de creación. Los hechos sobre
-entidades que cambian con el tiempo pueden ser reemplazados en lugar de sobrescritos.
-El grafo conserva el hecho anterior con su ventana de validez.
+entidades que cambian con el tiempo — como quién ocupa un rol, o qué términos lleva un
+contrato — pueden ser reemplazados en lugar de sobrescritos. El grafo conserva el hecho
+anterior con su ventana de validez. Una consulta puede preguntar tanto "¿qué es verdad
+ahora?" como "¿qué era verdad en una fecha dada?"
+
+Esta propiedad temporal es valiosa para la auditoría y para el entrenamiento. Un modelo
+entrenado sobre hechos que eran precisos cuando se escribieron los datos de
+entrenamiento, pero que ya no están vigentes, produce respuestas incorrectas con
+confianza. La validez temporal permite que el grafo sirva contexto preciso incluso a
+medida que la organización cambia.
 
 ## Recorrido multi-salto
 
@@ -117,9 +145,18 @@ correspondencia informal.
 ## Inyección de contexto en tiempo de inferencia
 
 Antes de despachar cualquier solicitud, el [[soft-slm-tiered-gateway|enrutador de inferencia]] consulta el grafo
-organizativo para obtener entidades relevantes para la solicitud actual. Las entidades
-coincidentes se formatean como un bloque de contexto estructurado y se anteponen al
-prompt del sistema. El modelo recibe este contexto de forma transparente.
+organizativo para obtener entidades relevantes para la solicitud actual. La consulta es
+una coincidencia de subcadena contra la última parte del mensaje del usuario. Las
+entidades coincidentes se formatean como un bloque de contexto estructurado y se
+anteponen al prompt del sistema. El modelo recibe este contexto de forma transparente;
+no necesita que se le indique "usar el grafo de conocimiento" — el contexto simplemente
+está presente, como si al modelo se le hubiera informado de antemano sobre las
+relaciones organizativas relevantes.
+
+Esta inyección no es fatal. Si el servicio de grafo no está disponible o no devuelve
+coincidencias, la solicitud continúa sin contexto adicional. Un interruptor de circuito
+en la ruta de consulta del grafo evita que un servicio de grafo lento bloquee la
+inferencia.
 
 ## Privacidad y soberanía
 

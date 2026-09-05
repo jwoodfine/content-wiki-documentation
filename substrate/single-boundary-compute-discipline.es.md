@@ -43,22 +43,10 @@ El [[compounding-doorman|Portero]] es el único punto de entrada al Anillo 3. La
 
 ## Composición con otras reclamaciones
 
-Esta disciplina es un requisito previo estructural para el Aprendizaje Fundamentado en Grafos de Conocimiento (#44): el contexto del grafo se ensambla en el Portero antes del despacho; evitar el Portero produce inferencia sin contexto. También es un requisito previo para el Protocolo Substrato MCP (#46): el Portero es la puerta de enlace MCP; la evasión rompe la integración del grafo. Y es la forma operativa de la soberanía del cliente en el Substrato Soberano de Dos Fondos (#34).
+Esta disciplina compone con varios otros patrones de substrato. [[knowledge-graph-grounded-apprenticeship]] depende de ella: el contexto del grafo se ensambla en el Portero antes del despacho; evitarla implica inferencia sin fundamentación. [[mcp-substrate-protocol]] designa al Portero como la puerta de enlace MCP; evitarla rompe el grafo MCP. El substrato soberano aplica la soberanía del cliente en la frontera del Portero; evitarla es una fuga de soberanía.
 
 ## Véase También
 
 - [[knowledge-graph-grounded-apprenticeship]] — fundamentación del grafo ensamblada en la frontera del Portero
 - [[mcp-substrate-protocol]] — el Portero como puerta de enlace MCP
 - [[substrate-without-inference-base-case]] — operación determinística cuando los niveles de inferencia no están disponibles
-
----
-
-## Procedencia
-
-Resumen de adaptación estratégica del archivo fuente `convention-single-boundary-compute-discipline.md` (refinado el 30 de abril de 2026). El cuerpo en español es una síntesis orientada estratégicamente, no una traducción literal.
-
-## Véase también
-
-- [[knowledge-graph-grounded-apprenticeship]]
-- [[mcp-substrate-protocol]]
-- [[substrate-without-inference-base-case]]

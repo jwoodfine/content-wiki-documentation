@@ -54,6 +54,10 @@ de forma competente la mayoría de las solicitudes rutinarias: resúmenes, clasi
 extracción de entidades de tipos de documentos conocidos, generación de código en
 patrones conocidos.
 
+El Nivel A no maneja bien la salida estructurada restringida por gramática en modelos
+de tamaño pequeño. Las solicitudes que requieren cumplimiento estricto de un esquema
+JSON se enrutan al Nivel B.
+
 ### Nivel B — nodo GPU de expansión
 
 El Nivel B son uno o más nodos de inferencia remotos que ejecutan un modelo más grande
@@ -65,6 +69,10 @@ La pasarela mantiene un disyuntor por nodo y una máquina de estados del ciclo d
 de la VM. Cuando llega una solicitud al Nivel B y el nodo objetivo está detenido, la
 pasarela lo inicia automáticamente. El llamante recibe una respuesta 202 Accepted con
 un punto de consulta mientras arranca el nodo.
+
+Cuando el nodo está en funcionamiento, las solicitudes se despachan de inmediato.
+Cuando el disyuntor se abre — tras fallos consecutivos de sondeo de salud — las
+solicitudes caen al Nivel A o se ponen en cola hasta que el nodo se recupera.
 
 Los nodos del Nivel B se organizan por etiqueta. Una etiqueta `batch` gestiona trabajo
 en segundo plano: extracción de corpus, procesamiento de datos de entrenamiento y
@@ -94,9 +102,16 @@ nivel. La pasarela selecciona el nivel usando esta secuencia de decisión:
    - `drain-batch`: todo el trabajo no-express va al nodo batch.
    - `drain-express`: todo el trabajo va al nodo express para vaciar el backlog.
    - `local-only`: todo el trabajo va al Nivel A independientemente de la complejidad.
+4. Si el nivel seleccionado no está disponible, la solicitud cae al siguiente nivel a
+   menos que se requiera afinidad de nivel (por ejemplo, la extracción estructurada
+   requiere el Nivel B y no cae de vuelta al Nivel A).
 
 La política de enrutamiento es configurable en tiempo de ejecución sin reiniciar la
-pasarela.
+pasarela:
+
+```
+POST /v1/flow/policy  { "policy": "balanced" }
+```
 
 ## El interruptor de emergencia
 
@@ -107,14 +122,40 @@ reabre el interruptor.
 
 El interruptor de emergencia es el control de facturación del operador. Cerrar el
 interruptor del nodo express detiene el arranque de la GPU L4; el coste cae a cero.
+Cerrar el interruptor global detiene todo el gasto de los Niveles B y C mientras
+permite que el Nivel A continúe funcionando.
+
+El carril express — que evita la cola respaldada en archivos para trabajo sensible al
+tiempo — sigue verificando el interruptor de emergencia. Nada evita el interruptor de
+emergencia.
+
+## La cola de prioridad
+
+El trabajo en segundo plano — briefs de aprendizaje, extracción de corpus, generación
+de corpus de entrenamiento — se procesa mediante una cola de prioridad respaldada en
+archivos con tres niveles:
+
+- **P0** se enruta exclusivamente al modelo local para clasificación ligera.
+- **P1** se enruta al nodo GPU batch para trabajo de extracción que requiere salida
+  estructurada.
+- **P2** se enruta al nodo GPU batch para generación de corpus de entrenamiento y
+  tareas similares de larga duración en segundo plano.
+
+El proceso de vaciado de la cola procesa un elemento de cada nivel por ciclo, en orden
+P0 → P1 → P2, y luego repite. Esto evita que un lote grande de trabajo P2 bloquee las
+tareas de extracción P1 durante un período prolongado.
 
 ## La memoria organizativa
 
-Antes de despachar cualquier solicitud, la pasarela consulta el [[ontological-datagraph|grafo de conocimiento
+Antes de despachar cualquier solicitud a cualquier nivel, la pasarela consulta el [[ontological-datagraph|grafo de conocimiento
 organizativo]] para obtener entidades relevantes. Las entidades coincidentes se inyectan
 en el prompt del sistema como contexto estructurado. El modelo ve las relaciones,
 decisiones y políticas conocidas de la organización sin necesidad de derivarlas de
 nuevo mediante inferencia.
+
+Esta inyección de contexto no es fatal: si el servicio de grafo no está disponible, la
+solicitud continúa sin contexto. Un disyuntor en la ruta de consulta del grafo evita
+que un servicio de grafo lento bloquee la inferencia.
 
 ## El servidor MCP
 
@@ -124,4 +165,10 @@ segundo puerto de red en la propia pasarela, sino un programa separado que habla
 MCP por entrada y salida estándar con quien lo invoque, y habla HTTP normal con la
 pasarela como su propio cliente. Cualquier cliente de IA compatible con MCP puede
 invocar este proceso usando su suscripción integrada, sin necesidad de una clave
-API adicional.
+API adicional. La capacidad de razonamiento del cliente se combina con el
+[[ontological-datagraph|grafo de conocimiento organizativo]] de la pasarela para
+producir respuestas fundamentadas en los datos reales de la organización.
+
+Esta es la vía principal de uso interactivo para operadores que ya tienen una
+suscripción a un cliente compatible con MCP. La pasarela gestiona la memoria; el
+cliente gestiona el razonamiento.

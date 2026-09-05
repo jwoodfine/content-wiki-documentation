@@ -110,7 +110,7 @@ Documenta los cuatro hitos completados. Phase 1C.b (2026-05-27): kernel seL4
 compilado desde fuente; `kernel.elf` verificado como ELF AArch64 estático, punto
 de entrada `0xffffff8040000000`. Phase 1C.c (2026-05-28): arranque completo en
 QEMU confirmado; elfloader → kernel seL4 → servidor raíz produce salida serial.
-Phase 1C.d (2026-05-29): moonshot-toolkit v0.3.0 automatiza el pipeline completo;
+Phase 1C.d (2026-05-29): moonshot-toolkit v0.3.1 automatiza el pipeline completo;
 `moonshot-toolkit build` produce `build/system-image.bin` (punto de entrada
 `0x40400000`); el comando de arranque es `qemu-system-aarch64 -machine virt,secure=off
 -cpu cortex-a53 -m 1G -nographic -kernel build/system-image.bin`; salida verificada:

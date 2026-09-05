@@ -57,8 +57,8 @@ configurable budget, defaulting to 7200 seconds.
 
 At the start of the nightly window, `start-yoyo.sh` boots the Yo-Yo #1
 VM and waits up to 90 minutes for vLLM to signal readiness. Once the
-inference server is live, `nightly-datagraph-rebuild.sh` (real script name verified as
-`jennifer-datagraph-rebuild.sh` — corrected 2026-07-18) processes three
+inference server is live, `nightly-datagraph-rebuild.sh` (the script's actual filename in the monorepo differs from the name used
+elsewhere in this article — verified and corrected 2026-07-18) processes three
 document streams from the deployment: meeting transcript markdown files,
 agent research YAML and markdown files, and contact source JSON records. For each document, the script calls
 `POST :9080/v1/chat/completions` through the [[compounding-doorman|Doorman]], which routes the

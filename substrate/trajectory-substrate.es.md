@@ -80,12 +80,30 @@ planificada; ver sección sobre perspectivas futuras).
 
 ## Mecanismo de captura
 
-Cinco scripts automatizan la captura: hooks de post-confirmación de
-Git, scripts de fin de sesión, y rutinas de retroalimentación del
-operador. Todos aplican disciplina de sanitización antes de escribir:
-claves privadas, datos personales y detalles de identificación del
-cliente se redactan en el script de captura, no en el consumidor
-posterior.
+Un único script de captura está en funcionamiento hoy: `capture-edit.sh`
+(`service-slm/scripts/`), instalado como un hook `git post-commit`. No escribe un
+archivo JSONL directamente — publica el diff del commit (encabezado de estadísticas más
+contexto unificado de 3 líneas, truncado a 64 KiB) y el mensaje del commit al endpoint
+de shadow-brief del Doorman (`POST /v1/shadow`), donde se convierte en el campo
+`actual_diff` del brief pendiente. No hace nada cuando no hay ningún brief pendiente
+para ese repositorio. No lleva ningún paso propio de redacción o depuración de PII —
+esto coincide con el hallazgo ya establecido de que la sanitización de salida en otras
+partes de la plataforma cubre solo la vía de escritura del corpus de aprendizaje que
+alimenta este script, no una capa de redacción general y separada.
+
+Los otros cuatro puntos de captura que menciona este artículo — captura de trayectoria
+al final de sesión, captura de doctrina en versiones MINOR, captura de retroalimentación
+rechazada y captura de tiempo de ejecución del inquilino — describen puntos de captura
+futuros previstos, no scripts que existan hoy en el monorepo bajo ningún nombre
+encontrado mediante una búsqueda en todo el repositorio. Si sus nombres eventuales
+coincidirán con lo escrito aquí no está confirmado contra ningún plan de implementación.
+
+Cada registro JSONL que produce la vía de captura en vivo lleva un encabezado de
+procedencia con campos que incluyen `tuple_type`, `doctrine_version`, `tenant`,
+`moduleId`, `cluster`, `role`, `scope`, `source_commit`, `session_id` y `created`. Se
+prevé que el pipeline de entrenamiento filtre sobre estos campos para ensamblar cada
+corpus una vez que el propio pipeline esté construido; se prevé que cualquier versión
+de adaptador sea re-derivable a partir de sus registros fuente.
 
 La composición de adaptadores en tiempo de inferencia — a través del [[compounding-doorman|Portero]] — sigue el
 álgebra de composición:
@@ -98,30 +116,6 @@ pesos_compuestos =
 La infraestructura de servicio multi-LoRA (`[s-lora-2024]`,
 `[lorax-predibase]`) sirve miles de adaptadores concurrentes con
 intercambio en caliente por solicitud.
-
-## Por qué los grandes proveedores de nube no pueden replicarlo
-
-Tres razones estructurales, cada una arraigada en incompatibilidad de
-modelo de negocio:
-
-**1. No pueden ofrecer fronteras de corpus por inquilino.** Los
-productos de IA gestionada agrupan señales de entrenamiento de todos
-los clientes. Esa agrupación es el fundamento de su escala. Aislar
-el corpus por inquilino disuelve la señal agregada que justifica su
-inversión.
-
-**2. No pueden dejar los pesos del adaptador en el hardware del
-cliente.** El modelo de negocio de un gran proveedor requiere que
-el cómputo — y por tanto los pesos — permanezcan en su
-infraestructura. Permitir que un inquilino produzca y retenga pesos
-de adaptador elimina el alquiler de cómputo que es su línea de
-ingresos.
-
-**3. No pueden ofrecer una auditoría firmada y re-derivable.** Cada
-adaptador de la plataforma es una función determinista de sus registros
-fuente. Un proveedor gestionado cuyo entrenamiento es opaco al cliente
-no puede ofrecer trazabilidad equivalente sin exponer la naturaleza
-agregada de su señal de entrenamiento.
 
 ## Perspectivas futuras
 
@@ -146,6 +140,8 @@ señal se está acumulando.
 
 ## Véase también
 
-- [El Sustrato de Composición](topic-compounding-substrate.es.md)
-- [El Sustrato de Aprendizaje](topic-apprenticeship-substrate.es.md)
-- [Restricciones en Tiempo de Decodificación](topic-decode-time-constraints.es.md)
+- [[compounding-substrate]]
+- [[apprenticeship-substrate]]
+- [[decode-time-constraints]]
+- [[language-protocol-substrate]]
+- [[citation-substrate]]

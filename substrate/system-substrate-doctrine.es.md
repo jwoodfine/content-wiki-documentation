@@ -17,6 +17,8 @@ cites:
  - eidas-qualified-preservation
  - rfc-3161
  - opentimestamps
+ - constitutional-ai-2212-08073
+ - olmo3-allenai
 paired_with: system-substrate-doctrine.md
 ---
 
@@ -110,10 +112,4 @@ arranque de seL4.
 
 - [[worm-ledger-architecture]] — el sustrato WORM primitivo que el Registro de Capacidades extiende
 - [[compounding-doorman]] — el límite de inferencia que opera sobre el sustrato del sistema
-
-## Referencias
-
-1. Regla SEC 17a-4(f) — requisitos de preservación de registros electrónicos.
-2. Reglamento eIDAS — firmas electrónicas cualificadas y servicios de confianza.
-3. RFC 3161 — Protocolo de Sellado de Tiempo.
-4. OpenTimestamps — sellado de tiempo anclado a Bitcoin.
+- [[disclosure-substrate]] — el sustrato de registro de divulgación que se apoya en esta capa

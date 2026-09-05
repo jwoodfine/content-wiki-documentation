@@ -28,6 +28,10 @@ cites:
  - sigstore-rekor-v2
  - cloud-act-us
  - w3c-verifiable-credentials
+ - vectara-hhem
+ - fca-ps-24-19
+ - c2pa
+ - c3ai-acm-2025
 ---
 
 Una wiki de documentación puede diseñarse de modo que no sea una descripción de las divulgaciones de una empresa — sino el registro de divulgación en sí mismo. Cada artículo comprometido lleva una cadena de autoría firmada, un hash criptográfico de contenido y una marca de tiempo anclada a un [[worm-ledger-architecture|libro]] externo. Los reguladores y analistas leen el mismo corpus que escriben los colaboradores internos. La presentación regulatoria y el documento de trabajo son el mismo artefacto.
@@ -80,6 +84,8 @@ Está planificada una capa de adaptadores conectables (previsto; la entrega real
 
 Para las jurisdicciones que requieren preservación electrónica cualificada — por ejemplo, `[eidas-qualified-preservation]` de la UE o los estándares de preservación a largo plazo ETSI — los adaptadores planificados están diseñados para producir salidas que satisfagan esos requisitos de preservación incluyendo la cadena de certificados de firma del emisor y el token de marca de tiempo RFC 3161 en el paquete de presentación.
 
+La modernización FCA PS24/19 `[fca-ps-24-19]` del National Storage Mechanism del Reino Unido hacia un sistema basado en iXBRL está incorporada al alcance del adaptador `export-esef` planificado, ya que los emisores cotizados en el Reino Unido que siguen la ruta iXBRL posterior al Brexit usan el mismo formato técnico que ESEF.
+
 Cada adaptador está planificado como un crate de Rust separable. Se prevé que las nuevas jurisdicciones sean aditivas sin modificar el núcleo del sustrato. Las declaraciones prospectivas en esta sección dependen del supuesto material de que el clúster de divulgación se active y de que el trabajo de mapeo de la taxonomía XBRL se complete antes de que los adaptadores sean necesarios en producción.
 
 ### Sustitución de sustrato aplicada a plataformas de divulgación
@@ -104,7 +110,7 @@ El mecanismo planificado (Fase 9 del motor wiki; previsto sujeto a que el clúst
 4. El veredicto se firma como una Credencial Verificable W3C `[w3c-verifiable-credentials]` y se compromete en el mismo compromiso Git que el TOPIC.
 5. El renderizador wiki se niega a servir cualquier TOPIC cuya cadena de prueba de fundamentación no verifique.
 
-Este mecanismo no depende de que el modelo que redactó el TOPIC sea fiable. Depende únicamente de que el registro de citas sea preciso y de que el veredicto de la IA adversaria sea más conservador que el modelo de redacción.
+Este mecanismo no depende de que el modelo que redactó el TOPIC sea fiable. Depende únicamente de que el registro de citas sea preciso y de que el veredicto de la IA adversaria sea más conservador que el modelo de redacción. El estándar C2PA `[c2pa]` para procedencia de contenido y el estudio ACM sobre prácticas de divulgación de IA `[c3ai-acm-2025]` son los puntos de referencia externos para el diseño de esta disciplina de fundamentación.
 
 ## Configuración
 

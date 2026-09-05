@@ -27,7 +27,22 @@ PointSav construye y administra un bien común de IA soberana: un sustrato, una 
 
 Las PYME reguladas. No las grandes cuentas empresariales — atendidas por plataformas con estructuras de ventas y certificaciones de cumplimiento dimensionadas para contratos anuales de seis cifras. No las aplicaciones de consumo masivo — no reguladas y servidas por productos de masa. El segmento intermedio es donde opera el bien común.
 
-Las características definitorias del cliente objetivo: valor contractual anual para herramientas de IA entre $5,000 y $50,000; exposición regulatoria bajo marcos como HIPAA, PIPEDA, GDPR, FINRA y equivalentes provinciales canadienses; y un requisito de que los datos y la infraestructura de IA permanezcan bajo el control del propio cliente.
+Las características definitorias del cliente objetivo:
+
+- Valor contractual anual para herramientas de IA en el rango de $5,000 a $50,000 — por
+  debajo del mínimo económicamente viable para un proceso de venta empresarial
+- Exposición regulatoria bajo marcos que incluyen HIPAA, PIPEDA, GDPR, FINRA y
+  regulaciones provinciales equivalentes
+- Un requisito de que los datos y la infraestructura de IA permanezcan en
+  infraestructura que el cliente controla, no en la nube de un proveedor
+
+Pequeñas clínicas, despachos de abogados regionales, asesores financieros de mediana
+capitalización, operadores inmobiliarios con archivos de documentos corporativos,
+pequeños contratistas del sector público y family offices describen concretamente este
+segmento. Estos clientes son, en conjunto, un mercado grande — la economía de las PYME
+reguladas es una fracción sustancial de la actividad comercial en los mercados
+desarrollados — pero individualmente demasiado pequeños y demasiado regulados para las
+plataformas construidas en torno a la economía de hiperescala.
 
 ## Lo que es común, lo que es soberano
 
@@ -39,21 +54,31 @@ Los bienes comunes aumentan el valor de los despliegues soberanos: cada cliente 
 
 El diseño de la plataforma incorpora cinco propiedades que, en conjunto, son estructuralmente inaccesibles para los grandes proveedores de servicios en la nube:
 
-1. **Soberanía del sustrato.** El código es abierto y bifurcable; un cliente que desee operar de forma independiente del proveedor tiene un camino completo para hacerlo.
-2. **Inteligencia opcional.** Los anillos 1 y 2 — todo el procesamiento determinista — funcionan completamente sin la capa de IA en el anillo 3.
-3. **Enrutamiento de cómputo de múltiples capas.** El [[compounding-doorman|Portero]] selecciona entre modelo local, [[yoyo-compute-substrate|ráfaga GPU]] y API externas por solicitud, incluyendo modelos frontier de terceros en la Capa C.
-4. **Composición federada.** La señal de entrenamiento preservada con privacidad de múltiples adaptadores LoRA de clientes puede agregarse para mejorar el modelo base compartido. [^1]
-5. **Camino de preentrenamiento continuo.** El modelo base OLMo 3 publica datos de entrenamiento, código y puntos de control bajo licencias que permiten continuar el preentrenamiento desde un punto conocido sobre [[trajectory-substrate|corpus propio]].
+**Soberanía del sustrato.** El código del sustrato es abierto y bifurcable. Un cliente que desee operar de forma independiente del proveedor tiene un camino completo para hacerlo. Para un servicio de nube gestionado, bifurcar el sustrato socavaría el modelo de ingresos; la arquitectura no puede estructurarse de esa manera.
+
+**Inteligencia opcional.** Los Anillos 1 y 2 — todo el manejo determinista de datos y el procesamiento de conocimiento — funcionan completamente sin la capa de IA en el Anillo 3. Los clientes pueden operar la plataforma sin IA, añadir IA cuando tienen un uso específico para ella, y retirarla sin perder el resto del sistema. Véase [[substrate-without-inference-base-case]] para la operación exclusivamente determinista. Para una plataforma donde el cómputo de IA es la principal fuente de ingresos, hacer que la IA sea genuinamente opcional elimina el incentivo comercial.
+
+**Enrutamiento de cómputo multi-nivel.** El [[compounding-doorman|Portero]] selecciona entre un modelo local, una [[yoyo-compute-substrate|instancia de GPU en ráfaga]] y servicios de API externos por solicitud. La selección abarca infraestructura que incluye los modelos de frontera de la competencia en el Nivel C. Ninguna organización controla los tres niveles a la vez, y la configuración de enrutamiento del cliente rige qué nivel maneja cada solicitud.
+
+**Composición federada.** La ruta prevista para mejorar la capacidad de IA de la plataforma implica agrupar señal de entrenamiento preservada con privacidad de los adaptadores LoRA de muchos clientes en mejoras a un modelo base compartido. [^1] Las estructuras de facturación y cumplimiento por inquilino hacen que este arreglo no esté disponible para plataformas donde los datos de cada cliente son custodiados por el proveedor bajo un acuerdo de servicio gestionado.
+
+**Camino de preentrenamiento continuo.** El modelo base es OLMo 3, publicado bajo Apache 2.0 con datos de entrenamiento completos y código de entrenamiento disponibles. Este es el único modelo abierto no chino de 2026 que permite a una organización que lo despliega continuar entrenando la base, partiendo de un punto de control conocido, sobre material de corpus que la propia organización acumula a través del [[trajectory-substrate|sustrato de trayectoria]]. El resultado previsto — un modelo base especializado propiedad del cliente — requiere esta propiedad. No está disponible en ningún modelo cuyos datos de entrenamiento sean cerrados.
 
 ## El papel de PointSav
 
-PointSav opera como administrador, no como guardián: opera la pila de protocolos bajo una estructura de gobernanza diseñada para ser transferida a una convención constitucional; planifica el preentrenamiento continuo del modelo base; opera la infraestructura de federación; y vende instalaciones ToteboxOS, integración y soporte.
+PointSav opera como administrador, no como guardián. La distinción es operativa:
 
-Lo que PointSav no hace: retener a los clientes mediante dependencia de infraestructura propietaria; custodiar datos de clientes bajo acuerdos de servicio gestionado; cobrar el cómputo de IA como fuente principal de ingresos.
+Lo que PointSav hace: opera la pila de protocolos bajo una estructura de gobernanza diseñada para ser transferida a una convención constitucional; cura el modelo base mediante preentrenamiento continuo planificado; opera la infraestructura de federación para el mercado de LoRA y el pool de KV; vende dispositivos ToteboxOS, integración y soporte; y mantiene el despliegue de referencia.
+
+Lo que PointSav no hace: encerrar a los clientes en la infraestructura de PointSav; custodiar datos de clientes bajo un acuerdo de servicio gestionado; cobrar el cómputo de IA como fuente principal de ingresos; competir con los grandes proveedores de nube en volumen de IA en la nube.
 
 ## Trayectoria prevista hacia 2030
 
-La trayectoria prevista, como se planifica actualmente, contempla para 2030 un modelo PointSav-OLMo-N competitivo con modelos frontier propietarios en tareas de PYME reguladas; una base de clientes activos en la federación; y una pila de protocolos ratificada a través de convención constitucional. Estas son declaraciones de futuro basadas en el diseño y la trayectoria actuales de la plataforma, sujetas a supuestos materiales que podrían verse afectados por cambios en el entorno tecnológico, regulatorio o de mercado.
+La trayectoria prevista del bien común para los próximos años, según se planifica actualmente:
+
+Para 2030, el resultado previsto incluye una variante de modelo PointSav-OLMo-N competitiva con los modelos propietarios de frontera en tareas de PYME reguladas; una base de despliegues de clientes SMB activos en la federación; una pila de protocolos versionada que ha sido ratificada mediante convención constitucional; y el reconocimiento como implementación de referencia de infraestructura de IA abierta para el mercado de PYME reguladas.
+
+Estas son declaraciones de futuro basadas en el diseño y la trayectoria actuales de la plataforma. Llevan supuestos materiales: que los términos de licencia de OLMo 3 permanecen vigentes, que los costos de cómputo GPU continúan disminuyendo, que las técnicas de aprendizaje federado subyacentes al mercado siguen siendo viables a escala, y que la plataforma alcanza la base de clientes necesaria para financiar el preentrenamiento continuo. Cada supuesto podría verse alterado. El fundamento estructural de la trayectoria está en su lugar; la ejecución aún debe demostrarse.
 
 ## Véase también
 

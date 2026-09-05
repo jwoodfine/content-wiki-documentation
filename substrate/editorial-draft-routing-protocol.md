@@ -1,11 +1,19 @@
 ---
+schema: foundry-doc-v1
 title: "Editorial draft routing protocol"
 slug: editorial-draft-routing-protocol
+category: substrate
+type: topic
+content_type: topic
+quality: complete
+index_group: core-named-substrates
 short_description: "Metadata classification layer that routes editorial drafts by their language_protocol declaration — which gateway processes an artifact and which vocabulary rules apply."
-category: architecture
+status: active
+bcsc_class: public-disclosure-safe
+language_protocol: PROSE-TOPIC
 last_edited: 2026-06-29
 editor: pointsav-engineering
-status: stable
+paired_with: editorial-draft-routing-protocol.es.md
 references:
   - id: 1
     text: "Padmakumar, V. et al. Does Writing with Language Models Reduce Content Diversity? arXiv:2310.06992, 2023."

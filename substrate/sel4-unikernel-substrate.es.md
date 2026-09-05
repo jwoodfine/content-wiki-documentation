@@ -43,6 +43,7 @@ La distinción respecto a una VM convencional:
 | Superficie de ataque del kernel compartido | Sin kernel compartido; sin autoridad ambiental |
 | Huella típica: 500 MB a 2 GB | Huella típica: 10–50 MB |
 | Tiempo de arranque: 5–30 segundos | Tiempo de arranque: < 1 segundo |
+| Explotación: mala configuración del SO, escalada de privilegios | Explotación: solo errores de la capa de aplicación |
 
 Un unikernel no puede ser comprometido con escalada de privilegios convencional porque
 no hay raíz a la que escalar. No hay shell al que acceder. Solo existe la aplicación y
@@ -68,6 +69,8 @@ sistema TOML.
 endpoint PPC. El kernel cambia el contexto de ejecución. El receptor retorna. El llamante
 reanuda. No se involucra memoria compartida a menos que se mapee explícitamente con una
 capacidad.
+
+**Canales y Notificaciones:** Comunicación asíncrona entre PDs mediante objetos de notificación mediados por el kernel. Un PD que posee la capacidad del canal puede señalizar; un PD que posee la capacidad de la notificación puede recibir.
 
 ---
 
@@ -146,6 +149,7 @@ moonshot-sel4-vmm está previsto para proporcionar:
 - Envoltorios de llamadas al sistema seL4 (`sel4_call`, `sel4_send`, `sel4_recv`)
 - Tipo IPC `microkit_msginfo_t` conforme a la ABI de Microkit
 - Callbacks `notified(ch: u64)` y `protected(ch: u64, msginfo)` según el protocolo Microkit
+- `DebugPutChar` para salida en tiempo de desarrollo
 
 Esta crate es compartida entre los tres binarios del sistema operativo: PDs de os-console,
 PDs de servicio de [[totebox-os]] y PDs de app-orchestration-* de [[os-orchestration]].
@@ -187,7 +191,9 @@ es un GET HTTP real y exitoso desde dentro de un PD seL4 hacia el endpoint `/hea
 del Portero, sobre una ruta DMA de VirtIO-red funcional — no una simulación.
 
 **Fase H2 (prevista, 8–16 semanas):** Diseño completo de 3 PDs. moonshot-hypervisor
-reemplaza QEMU. Imagen arrancable en menos de 1 segundo. Pila 100% soberana.
+reemplaza QEMU. Imagen de os-console construida por moonshot-toolkit a partir de
+`examples/os-console-sel4.toml`. Arranca en menos de 1 segundo. Pila 100% soberana;
+QEMU eliminado de la ruta de producto.
 
 **Fase H3 (prevista, Leapfrog 2030):** El emparejamiento F11 se convierte en acuñación
 de capacidades. Tokens de capacidad seL4 a nivel de máquina. Revocación mediante
