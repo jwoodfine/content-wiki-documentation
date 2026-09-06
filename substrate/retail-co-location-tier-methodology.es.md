@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Metodología de niveles de co-localización minorista"
 slug: retail-co-location-tier-methodology
+short_description: "Clasificación por niveles basada en condiciones para clústeres de co-localización minorista — Regional, Distrital, Local o Marginal — asignada al superar pruebas fijas de composición, captación, respaldo cívico y solapamiento, no mediante una puntuación compuesta."
 category: substrate
 type: concept
 content_type: topic

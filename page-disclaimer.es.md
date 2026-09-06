@@ -1,6 +1,7 @@
 ---
 title: "Aviso Legal"
 slug: page-disclaimer
+short_description: "Aviso de marcas comerciales y descargo de no oferta para este wiki: las marcas de Woodfine y PointSav, la declaración de que nada aquí ofrece ni solicita participaciones de inversión en una solución de tenencia directa, y dónde consultar el aviso legal completo."
 category: root
 last_edited: 2026-06-26
 editor: pointsav-engineering

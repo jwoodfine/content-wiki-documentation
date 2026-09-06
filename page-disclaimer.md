@@ -1,6 +1,7 @@
 ---
 title: "Disclaimer"
 slug: page-disclaimer
+short_description: "Trademark notice and no-offer disclaimer for this wiki: the Woodfine and PointSav marks, the statement that nothing here offers or solicits investment units in a direct-hold solution, and where the full legal disclaimer lives."
 category: root
 last_edited: 2026-06-26
 editor: pointsav-engineering

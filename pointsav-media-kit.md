@@ -2,11 +2,15 @@
 schema: foundry-doc-v1
 title: "PointSav media kit"
 slug: pointsav-media-kit
+short_description: "Media kit for PointSav Digital Systems: company description, wordmark and trademark usage terms, press-inquiry contacts, and the CC BY 4.0 licence covering this wiki's content."
 category: governance
+content_type: page
 status: active
 last_edited: 2026-08-26
 editor: pointsav-engineering
 ---
+
+This media kit collects the material a journalist, analyst, or partner needs to write about PointSav accurately: how the company describes itself, which marks are trademarked and on what terms they may be used, where to direct press inquiries, and the licence that covers this wiki's content.
 
 ## About PointSav Digital Systems
 

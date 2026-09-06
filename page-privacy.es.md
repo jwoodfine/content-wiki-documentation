@@ -1,6 +1,7 @@
 ---
 title: "Aviso de privacidad"
 slug: page-privacy
+short_description: "Aviso de privacidad de este wiki: una única medición técnica por página consultada — ruta URL y momento aproximado — sin identificadores, sin cookies, sin compartir datos con terceros y sin scripts de seguimiento externos."
 category: root
 last_edited: 2026-06-24
 editor: pointsav-engineering

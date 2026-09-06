@@ -1,6 +1,7 @@
 ---
 title: "Privacy Notice"
 slug: page-privacy
+short_description: "Privacy notice for this wiki: one technical measurement per page view — URL path and approximate time — with no identifiers, no cookies, no third-party sharing, and no external tracking scripts."
 category: root
 last_edited: 2026-06-24
 editor: pointsav-engineering

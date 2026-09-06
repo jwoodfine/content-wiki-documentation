@@ -2,6 +2,7 @@
 schema: foundry-doc-v1
 title: "Retail co-location tier methodology"
 slug: retail-co-location-tier-methodology
+short_description: "Gate-based tier classification for retail co-location clusters — Regional, District, Local, or Fringe — assigned by passing fixed composition, catchment, civic-support, and overlap tests rather than by a composite score."
 category: substrate
 type: concept
 content_type: topic
