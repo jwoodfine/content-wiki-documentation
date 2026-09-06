@@ -39,7 +39,7 @@ Punto de entrada para la evaluación de adquisición, seguridad y cumplimiento.
 ## Registros de decisiones formales
 
 <!-- AUTO-GENERATED MEMBERSHIP: DO NOT EDIT BELOW — regenerate from index_group: formal-decision-records -->
-- [[architecture-decisions]] — Las doce decisiones de arquitectura vinculantes que restringen toda la ingeniería futura; agrupadas por peso regulatorio, separación de datos, custodia del despliegue e integridad operativa.
+- [[architecture-decisions]] — Doce decisiones de arquitectura vinculantes — compromisos registrados que gobiernan la construcción de la plataforma PointSav y restringen toda la ingeniería futura en el manejo de datos, la supervisión humana, la separación de sistemas y la custodia del despliegue.
 - [[adr-07-zero-ai-in-ring-1]] — SYS-ADR-07 prohíbe la inferencia de IA en todos los servicios de ingestión del Ring 1, garantizando operaciones exclusivamente deterministas en la ruta de escritura WORM para asegurar auditabilidad y composabilidad.
 <!-- END AUTO-GENERATED -->
 
