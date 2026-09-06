@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Figma y Tokens Studio: consumir los tokens del sistema de diseño en una herramienta de diseño"
 slug: figma-tokens-studio-integration
-short_description: "Explica cómo los diseñadores incorporan a Figma la exportación de tokens DTCG publicada por el Sistema de Diseño PointSav mediante la sincronización por URL del plugin Tokens Studio — una lectura de solo consulta desde el propio JSON alojado por el sistema, sin paso de exportación/importación — y por qué la dirección de solo lectura es una característica de gobernanza, con una comparación honesta con el soporte nativo de tokens de Penpot."
+short_description: "Cómo los diseñadores incorporan a Figma la exportación de tokens DTCG del Sistema de Diseño PointSav mediante la sincronización por URL del plugin Tokens Studio — una lectura de solo consulta desde el JSON alojado por el propio sistema, sin paso de exportación/importación — y por qué esa dirección de solo lectura es una característica de gobernanza, con una comparación honesta con Penpot."
 category: design-system
 type: topic
 content_type: topic

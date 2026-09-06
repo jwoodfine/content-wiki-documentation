@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "MCP y sistemas de diseño consumibles por agentes de IA"
 slug: mcp-ai-agent-consumable-design-systems
-short_description: "Explica por qué el Sistema de Diseño PointSav expone una superficie legible por máquinas — un punto de conexión Model Context Protocol alojado en la propia infraestructura, una API de búsqueda de tokens y una exportación de tokens DTCG — para que los agentes de codificación de IA consulten datos actuales de tokens y componentes desde el mismo registro que genera la documentación para lectores humanos, sin que ninguna consulta salga de la infraestructura del anfitrión."
+short_description: "Por qué el Sistema de Diseño PointSav expone una superficie legible por máquinas — un punto de conexión Model Context Protocol propio, una API de búsqueda de tokens y una exportación de tokens DTCG — para que los agentes de codificación de IA consulten tokens y componentes actuales desde el mismo registro que genera la documentación humana, sin que ninguna consulta salga del anfitrión."
 category: design-system
 type: topic
 content_type: topic

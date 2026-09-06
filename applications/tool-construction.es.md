@@ -14,7 +14,7 @@ language_protocol: PROSE-TOPIC
 last_edited: 2026-09-03
 editor: pointsav-engineering
 paired_with: tool-construction.md
-short_description: "Un libro contable de archivos planos, bajo control del propietario, para el costo, cronograma y control de calidad de la construcción, sobre la misma disciplina de partida doble que tool-accounting; el motor central ya funciona como CLI real, contabilizando los estimados de un piloto en vivo a través de las cuatro cadenas de tipo de costo — solo en etapa de estimación y sin superficie de consola todavía."
+short_description: "Libro contable de archivos planos, bajo control del propietario, para costo, cronograma y control de calidad de construcción, sobre la misma disciplina de partida doble que tool-accounting; el motor central ya funciona como CLI real y contabiliza los estimados de un piloto en vivo por las cuatro cadenas de tipo de costo — solo etapa de estimación, sin consola todavía."
 cites: []
 ---
 

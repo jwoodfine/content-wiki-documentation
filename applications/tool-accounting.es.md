@@ -14,7 +14,7 @@ language_protocol: TRANSLATE-ES
 last_edited: 2026-09-01
 editor: pointsav-engineering
 paired_with: tool-accounting.md
-short_description: "Un motor de contabilidad de partida doble, en archivos planos y de propiedad del titular, que produce estados financieros auditables a partir de diarios en texto plano; su motor central y su renderizador PDF/HTML están construidos, verificados contra datos históricos reales multi-entidad, y operados por una cadena de herramientas CLI real de binarios de estados, libro mayor, narrativa y línea de tiempo — solo CLI, sin superficie de consola todavía."
+short_description: "Motor de contabilidad de partida doble, en archivos planos y de propiedad del titular, que produce estados financieros auditables desde diarios en texto plano; su motor central y su renderizador PDF/HTML están construidos y verificados contra datos históricos reales multi-entidad, operados por binarios CLI de estados, libro mayor, narrativa y línea de tiempo — solo CLI, sin consola todavía."
 cites: []
 ---
 

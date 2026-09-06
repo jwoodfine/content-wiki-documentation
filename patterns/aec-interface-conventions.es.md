@@ -14,7 +14,7 @@ bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
 last_edited: 2026-08-26
 editor: pointsav-engineering
-short_description: "Las herramientas de autoría BIM de toda la industria comparten un vocabulario de interfaz común — una jerarquía espacial, un panel de propiedades de elementos, una vista 3D y vistas guardadas — porque se construyen sobre el mismo modelo de datos IFC subyacente. La capa de interfaz planificada del Sistema de Diseño de la Construcción reutiliza ese vocabulario en lugar de inventar uno nuevo, y está pensada para extenderlo a los flujos de trabajo de gestión de instalaciones."
+short_description: "Las herramientas de autoría BIM comparten un vocabulario de interfaz común — jerarquía espacial, panel de propiedades, vista 3D y vistas guardadas — porque se construyen sobre el mismo modelo de datos IFC. La capa de interfaz planificada del Sistema de Diseño de la Construcción reutiliza ese vocabulario en lugar de inventar uno nuevo, y prevé extenderlo a la gestión de instalaciones."
 cites: [ifc-4-3]
 paired_with: aec-interface-conventions.md
 ---

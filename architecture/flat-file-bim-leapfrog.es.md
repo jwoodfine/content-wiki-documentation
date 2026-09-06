@@ -14,7 +14,7 @@ bcsc_class: public-disclosure-safe
 language_protocol: PROSE-TOPIC
 last_edited: 2026-08-26
 editor: pointsav-engineering
-short_description: "El Sistema de Diseño de Edificios se construye sobre cinco restricciones arquitectónicas — almacenamiento en archivos planos, estándares abiertos, Rust y Tauri, funcionamiento sin conexión y licencia Apache 2.0. La propiedad anclada al activo, el uso en campo sin red, la ingesta de sensores y la convergencia del modelo con los registros de arrendamiento y financieros se derivan de la arquitectura, no se añaden encima."
+short_description: "El Sistema de Diseño de Edificios se construye sobre cinco restricciones — archivos planos, estándares abiertos, Rust y Tauri, funcionamiento sin conexión y licencia Apache 2.0. La propiedad anclada al activo, el uso en campo sin red, la ingesta de sensores y la convergencia del modelo con los registros de arrendamiento y financieros se derivan de la arquitectura, no se añaden encima."
 cites: [ifc-4-3, iso-19650]
 paired_with: flat-file-bim-leapfrog.md
 ---

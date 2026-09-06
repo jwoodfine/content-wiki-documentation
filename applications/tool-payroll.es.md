@@ -14,7 +14,7 @@ language_protocol: TRANSLATE-ES
 last_edited: 2026-09-04
 editor: pointsav-engineering
 paired_with: tool-payroll.md
-short_description: "Un motor de nómina y remesas estatutarias sensible a la jurisdicción cuyo primer informe real — un Registro de Nómina por división que agrega las horas laborales presupuestadas del piloto de construcción bajo una fila citada de reglas salariales de una sola jurisdicción — está construido y en funcionamiento; el cálculo bruto-a-neto, la frecuencia de pago y el cálculo de remesas siguen siendo solo diseño."
+short_description: "Motor de nómina y remesas estatutarias sensible a la jurisdicción cuyo primer informe real — un Registro de Nómina por división que agrega las horas laborales presupuestadas del piloto de construcción bajo una fila citada de reglas salariales de una sola jurisdicción — está construido y en funcionamiento; el cálculo bruto-a-neto, la frecuencia de pago y las remesas siguen siendo solo diseño."
 cites: []
 ---
 

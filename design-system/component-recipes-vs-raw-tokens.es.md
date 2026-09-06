@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Recetas de componentes frente a tokens en bruto"
 slug: component-recipes-vs-raw-tokens
-short_description: "Qué añade el nivel de componentes del Sistema de Diseño PointSav más allá del valor de un token: el formato recipe.json — variantes, marcado, referencias de tokens, CSS, guía ARIA y objetivos WCAG en un solo artefacto legible por máquina — demostrado contra la receta publicada del componente Button y el estado documental real del registro (53 componentes: 20 con documentación completa, 33 con receta más al menos un documento de uso)."
+short_description: "Qué añade el nivel de componentes del Sistema de Diseño PointSav más allá del valor de un token: el formato recipe.json — variantes, marcado, referencias de tokens, CSS, guía ARIA y objetivos WCAG en un artefacto legible por máquina — demostrado contra la receta publicada de Button y el estado real del registro (53 componentes: 20 documentados por completo, 33 con receta y un documento de uso)."
 category: design-system
 type: topic
 content_type: topic

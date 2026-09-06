@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Autoalojar un sistema de diseño, y por qué es distinto de usar los tokens"
 slug: self-hosting-customer-controlled-design-systems
-short_description: "Explica las dos ofertas diferenciadas del Sistema de Diseño PointSav — usar directamente los datos de tokens bajo Apache-2.0, que no requiere nada, y por separado autoalojar el motor de publicación para operar el sistema de diseño propio y distinto de otra organización — incluyendo el procedimiento real de bifurcación en cinco pasos, la superficie de configuración de tres variables, la gobernanza basada en git y los límites precisos de licencia entre datos de tokens, código del servidor y texto del artículo."
+short_description: "Las dos ofertas del Sistema de Diseño PointSav — usar directamente los datos de tokens bajo Apache-2.0, que no requiere nada, y autoalojar el motor de publicación para operar el sistema de diseño interno de otra organización — con el procedimiento de bifurcación en cinco pasos, la configuración de tres variables, la gobernanza git y los límites de licencia entre datos, servidor y texto."
 category: design-system
 type: topic
 content_type: topic

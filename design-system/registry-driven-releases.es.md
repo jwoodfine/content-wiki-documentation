@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Versiones dirigidas por registro: una sola fuente de verdad para tokens, componentes y conteos"
 slug: registry-driven-releases
-short_description: "Explica la arquitectura dirigida por registro detrás de las versiones del sitio del sistema de diseño: la navegación, las estadísticas de la portada, el punto de acceso de registro legible por máquina, las respuestas MCP y el empaquetado de versiones se resuelven todos contra un único archivo de registro, de modo que no pueden divergir — ilustrado con dos defectos reales de la propia historia del sistema, no con hipótesis."
+short_description: "Arquitectura dirigida por registro detrás de las versiones del sitio del sistema de diseño: navegación, estadísticas de portada, punto de acceso de registro legible por máquina, respuestas MCP y empaquetado de versiones se resuelven todos contra un único archivo de registro, de modo que no pueden divergir — ilustrado con dos defectos reales de la historia del sistema, no con hipótesis."
 category: design-system
 type: topic
 content_type: topic

@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Self-hosting a design system, and why it's separate from using the tokens"
 slug: self-hosting-customer-controlled-design-systems
-short_description: "Explains the two distinct offers of the PointSav Design System — using the Apache-2.0 token data directly, which requires nothing, and separately self-hosting the serving engine to run a different organization's own in-house design system — including the real five-step fork procedure, the three-variable configuration surface, git-based governance, and the precise license boundaries between token data, server source, and article text."
+short_description: "Two offers of the PointSav Design System — using the Apache-2.0 token data directly, which requires nothing, and separately self-hosting the serving engine to run another organization's in-house design system — including the five-step fork procedure, the three-variable configuration surface, git-based governance, and the license boundaries between token data, server source, and article text."
 category: design-system
 type: topic
 content_type: topic

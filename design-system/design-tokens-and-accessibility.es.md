@@ -2,7 +2,7 @@
 schema: foundry-doc-v1
 title: "Tokens de diseño y conformidad de accesibilidad"
 slug: design-tokens-and-accessibility
-short_description: "Cómo el Sistema de Diseño PointSav expresa los requisitos de accesibilidad — objetivos táctiles mínimos, color del anillo de foco, relaciones de contraste — como tokens de diseño con nombre, de modo que la conformidad WCAG se aplica por la estructura del grafo de tokens en lugar de verificarse ad hoc por componente, demostrado contra la especificación de accesibilidad del componente Button ya publicada."
+short_description: "Cómo el Sistema de Diseño PointSav expresa los requisitos de accesibilidad — objetivos táctiles mínimos, color del anillo de foco, relaciones de contraste — como tokens de diseño con nombre, de modo que la conformidad WCAG se aplica por la estructura del grafo de tokens y no ad hoc por componente, demostrado contra la especificación de accesibilidad de Button ya publicada."
 category: design-system
 type: topic
 content_type: topic
