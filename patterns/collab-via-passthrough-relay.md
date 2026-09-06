@@ -22,6 +22,10 @@ cites:
  - doctrine-claim-16
 ---
 
+The passthrough relay is a collaborative-editing design in which the collaboration server holds no document state at all: it forwards CRDT update messages between connected clients over a per-document WebSocket channel without ever decoding or storing what those messages encode. The canonical git tree stays the sole authoritative record of an article's content, and every edit that reaches it travels the same save path a single-author edit would.
+
+The design was implemented in the wiki engine, shipped behind an opt-in flag, and later removed outright — the engine today has no collaborative-editing code path. This article is a historical record of a pattern that was built and withdrawn, kept because the question it answers recurs for any collaborative surface the platform builds later.
+
 ## The pattern in one paragraph
 
 The passthrough relay pattern was a real-time collaborative editing design implemented in the wiki engine and later removed. It inverted the normal assumption about where authority sits in a collaborative editing system: the relay server held no document state at all, so the canonical git tree remained the sole authoritative record of every article's content at every point in time. Concurrent editors connected over WebSocket to a per-document broadcast channel, and the server's only job was to forward CRDT update messages between those clients — it never decoded or stored the document state those messages encoded. The design is documented here because the reasoning behind it is worth understanding even though the implementation is gone: it is a clean answer to a question any collaborative-editing feature has to answer eventually.

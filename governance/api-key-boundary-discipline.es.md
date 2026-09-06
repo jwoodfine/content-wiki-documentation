@@ -19,9 +19,6 @@ cites:
 paired_with: api-key-boundary-discipline.md
 ---
 
-
-## Resumen estratégico
-
 La disciplina de límite para claves de API establece una regla fundamental en el diseño de plataformas de inteligencia artificial: las credenciales de proveedores externos pertenecen exclusivamente al servicio de pasarela ([[doorman-protocol|Doorman]]), nunca a los motores de inferencia. Esta disciplina aplica a todos los niveles de implementación, desde appliances autohospedados hasta trabajadores de cómputo en la nube.
 
 ## Principio central

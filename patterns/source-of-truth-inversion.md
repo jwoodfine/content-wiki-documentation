@@ -20,6 +20,10 @@ cites:
  - np-51-201
 ---
 
+Source-of-truth inversion is a storage-layer design pattern: exactly one layer is declared canonical — signed, committed, replicated, and disclosed — while every other layer is either a derived view, rebuilt on demand from that record, or a session-ephemeral buffer discarded when the session ends. The inversion is of the common assumption that the running process holds the real record. Here it holds nothing that cannot be thrown away and rebuilt from the canonical layer.
+
+The pattern recurs across four PointSav applications — the wiki engine, the Ring 2 extraction pipeline, and the planned presentation and proforma workplace applications. This article states the pattern, treats each application in turn, and sets out the disclosure and substrate properties that follow from it.
+
 ## Pattern statement
 
 Source-of-truth inversion is a named platform design pattern. In each PointSav application, one storage layer is declared canonical — the authoritative record that is committed, signed, replicated, and disclosed. A second layer is a derived view: the running process's in-memory index, rendered output, or computed summary — rebuilt deterministically from the canonical record on demand and discardable without loss. A third layer, when collaborative editing is enabled, is session-ephemeral: it exists for the duration of a shared editing session and does not write back to canonical until a human author makes a deliberate commit. The canonical layer is typically the [[worm-ledger-design|WORM ledger]] or a signed git tree, depending on the application.

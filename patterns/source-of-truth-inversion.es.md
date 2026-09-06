@@ -21,6 +21,10 @@ cites:
  - np-51-201
 ---
 
+La inversión de la fuente de verdad es un patrón de diseño de la capa de almacenamiento: exactamente una capa se declara canónica — firmada, confirmada, replicada y divulgada — mientras que cualquier otra capa es o bien una vista derivada, reconstruida bajo demanda a partir de ese registro, o bien un búfer efímero de sesión que se descarta al terminar la sesión. La inversión lo es respecto de la suposición habitual de que el proceso en ejecución guarda el registro real. Aquí no guarda nada que no pueda descartarse y reconstruirse desde la capa canónica.
+
+El patrón se repite en cuatro aplicaciones de PointSav — el motor wiki, la canalización de extracción de Ring 2 y las aplicaciones de trabajo de presentación y proforma planificadas. Este artículo enuncia el patrón, trata cada aplicación por turno y expone las propiedades de divulgación y de sustrato que se derivan de él.
+
 ## Descripción del patrón
 
 La inversión de la fuente de verdad es un patrón de diseño nombrado de la plataforma. En cada aplicación de PointSav, una capa de almacenamiento se declara canónica — el registro autoritativo que se confirma, se firma, se replica y se divulga. Una segunda capa es una vista derivada: el índice en memoria del proceso en ejecución, la salida renderizada o el resumen computado — reconstruido de forma determinista desde el registro canónico bajo demanda y descartable sin pérdida de información. Una tercera capa, cuando la edición colaborativa está activa, es efímera de sesión: existe durante la duración de una sesión de edición compartida y no escribe de vuelta al canónico hasta que un autor humano realiza un commit deliberado. La capa canónica es típicamente el [[worm-ledger-design|libro mayor WORM]] o un árbol git firmado, según la aplicación.

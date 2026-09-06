@@ -21,8 +21,6 @@ cites:
 paired_with: knowledge-wiki-leapfrog-architecture.md
 ---
 
-## Resumen
-
 [[app-mediakit-knowledge|`app-mediakit-knowledge`]] es el motor del wiki de conocimiento de PointSav: un binario Rust que sirve tres instancias wiki — `documentation.pointsav.com`, `projects.woodfinegroup.com` y `corporate.woodfinegroup.com` — desde archivos Markdown almacenados en repositorios git. El motor renderiza contenido con la interfaz visual de Wikipedia: tabla de contenidos adherente, resolución de wikilinks con señalización de enlaces rojos, páginas de categoría, historial de edición y búsqueda de texto completo. **Un lector que compare este wiki con Wikipedia función por función encontrará que la mayor parte de la experiencia de lectura ya coincide — las dos piezas claramente ausentes son el infobox y el navbox**, los dos elementos de mayor impacto en la memoria muscular visual de Wikipedia. Una hoja de ruta planificada de varios sprints prevé cerrar esa brecha antes de añadir una capa diferenciadora de Leapfrog 2030 que va más allá de lo que ofrece Wikipedia.
 
 **Por qué importa:** un lector llega ya sabiendo cómo usar este wiki, porque los patrones de lectura y edición son los que dos décadas de uso de Wikipedia ya le enseñaron.

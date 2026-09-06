@@ -26,8 +26,6 @@ references:
 paired_with: yo-yo-lora-training-pipeline.md
 ---
 
-## Adaptación estratégica — Pipeline de Entrenamiento LoRA Nocturno en Yo-Yo #1
-
 [[yoyo-compute-substrate|Yo-Yo #1]] es una instancia g2-standard-4 de Google Cloud equipada con
 una GPU NVIDIA L4 de 24 GB de VRAM, aprovisionada bajo demanda en lugar de como instancia
 spot — la capacidad spot para esta clase de GPU resultó poco fiable.

@@ -22,6 +22,10 @@ cites:
  - doctrine-claim-16
 ---
 
+El relé de paso es un diseño de edición colaborativa en el que el servidor de colaboración no guarda ningún estado del documento: reenvía mensajes de actualización CRDT entre los clientes conectados a través de un canal WebSocket por documento, sin decodificar ni almacenar nunca lo que esos mensajes codifican. El árbol git canónico sigue siendo el único registro autoritativo del contenido de un artículo, y cada edición que llega hasta él recorre la misma ruta de guardado que recorrería una edición de autor único.
+
+El diseño se implementó en el motor wiki, se publicó tras una bandera opcional y posteriormente se eliminó por completo — hoy el motor no tiene ninguna ruta de código de edición colaborativa. Este artículo es un registro histórico de un patrón que se construyó y se retiró, conservado porque la pregunta que responde reaparece en cualquier superficie colaborativa que la plataforma construya más adelante.
+
 ## El patrón en un párrafo
 
 El patrón de relé de paso fue un diseño de edición colaborativa en tiempo real implementado en el motor wiki y retirado posteriormente. Invertía la suposición habitual sobre dónde reside la autoridad en un sistema de edición colaborativa. El servidor de relé no conservaba ningún estado de documento; el árbol git canónico seguía siendo el único registro autoritativo del contenido de cada artículo en todo momento. Los editores concurrentes se conectaban mediante WebSocket a un canal de difusión por documento, y la única responsabilidad del servidor era reenviar mensajes de actualización CRDT entre esos clientes — nunca decodificaba ni almacenaba el estado que esos mensajes codificaban. El diseño se documenta aquí porque el razonamiento detrás de él sigue siendo útil aunque la implementación ya no exista.
