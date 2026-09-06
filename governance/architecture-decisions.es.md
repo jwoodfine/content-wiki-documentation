@@ -3,7 +3,6 @@ schema: foundry-doc-v1
 title: "Decisiones de arquitectura"
 slug: architecture-decisions
 lang: es
-paired_with: architecture-decisions.md
 category: governance
 type: governance
 content_type: topic
